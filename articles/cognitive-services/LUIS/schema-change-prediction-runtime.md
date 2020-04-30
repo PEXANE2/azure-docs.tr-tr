@@ -1,20 +1,20 @@
 ---
-title: Uygulamayı çalışma zamanında genişlet - LUIS
+title: Çalışma zamanında uygulamayı Genişlet-LUSıS
 description: ''
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81538583"
 ---
-# <a name="extend-app-at-prediction-runtime"></a>Tahmin çalışma zamanında uygulamayı genişletme
+# <a name="extend-app-at-prediction-runtime"></a>Uygulamayı tahmin çalışma zamanında genişletme
 
-Uygulamanın şeması (modeller ve özellikler) eğitilmiş ve tahmin bitiş noktasına yayınlanır. Bu yayımlanmış model tahmin çalışma zamanında kullanılır. Öngörüyü artırmak için kullanıcının söyleyişiyle birlikte tahmin çalışma süresine yeni bilgiler iletebilirsiniz.
+Uygulamanın şeması (modeller ve Özellikler) eğitilir ve tahmin uç noktasına yayımlandı. Bu yayımlanmış model, tahmin çalışma zamanında kullanılır. Tahmine karşı tahmin etmek için kullanıcının utterkiyle birlikte yeni bilgileri tahmin çalışma zamanına geçirebilirsiniz.
 
-İki tahmin çalışma zamanı şema değişiklikleri şunlardır:
+İki tahmin çalışma zamanı şeması değişikliği şunları içerir:
 * [Dış varlıklar](#external-entities)
 * [Dinamik listeler](#dynamic-lists)
 
@@ -22,27 +22,27 @@ Uygulamanın şeması (modeller ve özellikler) eğitilmiş ve tahmin bitiş nok
 
 ## <a name="external-entities"></a>Dış varlıklar
 
-Dış varlıklar, LUIS uygulamanıza çalışma zamanı sırasında varlıkları tanımlama ve etiketleme olanağı verir ve bu da mevcut varlıklar için özellik olarak kullanılabilir. Bu, tahmin bitiş noktanıza sorgu göndermeden önce kendi ayrı ve özel varlık çıkarıcılarınızı kullanmanıza olanak tanır. Bu sorgu tahmin bitiş noktasında yapıldığından, modelinizi yeniden e-yılve yayımlamanız gerekmez.
+Dış varlıklar, LUSıS uygulamasına çalışma zamanı sırasında varlıkları tanımlayabilir ve etiketleyebilir, bu da mevcut varlıkların özellikleri olarak kullanılabilir. Bu, sorguları tahmin uç noktanıza göndermeden önce kendi ayrı ve özel varlıklarınızı kullanmanıza olanak sağlar ayıklayıcıları. Bu sorgu tahmini uç noktasında yapıldığından, modelinizi yeniden eğitmeniz ve yayımlamanız gerekmez.
 
-İstemci uygulaması, varlık eşleştirmesini yöneterek ve eşleşen varlığın söyleyerek konumunu belirleyerek ve bu bilgileri istekle birlikte göndererek kendi varlık çıkarıcısını sağlar.
+İstemci uygulaması, varlık eşleşmesini yönetip, bu eşleşen varlığın içindeki konumu belirleyerek ve sonra bu bilgileri istekle göndererek kendi varlık ayıklayıcısı 'nı sağlıyor.
 
-Dış varlıklar, diğer modellere sinyal olarak kullanılırken herhangi bir varlık türünü genişletme mekanizmasıdır.
+Dış varlıklar, hala diğer modellere sinyal olarak kullanılmakta olan herhangi bir varlık türünü genişletmeye yönelik mekanizmadır.
 
-Bu, yalnızca sorgu tahmini çalışma zamanında kullanılabilir veri olan bir varlık için yararlıdır. Bu tür verilere örnek olarak, kullanıcı başına sürekli veri veya belirli veriler değişir. Bir LUIS iletişim kuruluşunu, kullanıcının kişi listesindeki dış bilgilerle genişletebilirsiniz.
+Bu, yalnızca sorgu tahmini çalışma zamanında kullanılabilir verileri olan bir varlık için yararlıdır. Bu tür verilerin örnekleri, sürekli olarak verileri değiştirme veya Kullanıcı başına belirli bir örnektir. Bir LUSıS iletişim varlığını, bir kullanıcının kişi listesindeki dış bilgilerle genişletebilirsiniz.
 
-Dış varlıklar, V3'ün API'yi yazmasının bir parçasıdır. Bu sürüme [geçiş](luis-migration-api-v3.md) hakkında daha fazla bilgi edinin.
+Dış varlıklar v3 yazma API 'sinin bir parçasıdır. Bu sürüme [geçme](luis-migration-api-v3.md) hakkında daha fazla bilgi edinin.
 
-### <a name="entity-already-exists-in-app"></a>Varlık zaten uygulamada var
+### <a name="entity-already-exists-in-app"></a>Varlık uygulamada zaten var
 
-Dış varlık `entityName` için değeri, bitiş noktası istek POST gövdesi geçti, zaten istek yapıldığı anda eğitimli ve yayınlanan uygulamada mevcut olmalıdır. Varlık türü önemli değil, her türlü desteklenir.
+Uç nokta istek `entityName` gönderi gövdesinde geçirilen dış varlığın değeri, istek yapıldığı sırada eğitilen ve yayımlanmış uygulamada zaten mevcut olmalıdır. Varlık türü, tüm türler desteklenir.
 
-### <a name="first-turn-in-conversation"></a>Konuşmada ilk dönüş
+### <a name="first-turn-in-conversation"></a>İlk olarak konuşmayı açın
 
-Bir kullanıcı aşağıdaki eksik bilgileri girer bir sohbet bot konuşma ilk söyleyerek düşünün:
+Bir kullanıcının aşağıdaki eksik bilgileri girdiği bir sohbet bot görüşmesinde ilk göz önünde bulundurun:
 
 `Send Hazem a new message`
 
-Sohbet robotundan LUIS'e gelen istek, POST `Hazem` gövdesindeki bilgileri aktarabilir, böylece kullanıcının kişilerinden biri olarak doğrudan eşleşir.
+Sohbet bot 'tan LUSıS 'e gelen istek, Kullanıcı kişilerinin biri olarak doğrudan eşleştirildiğinden, ilgili `Hazem` posta gövdesinde bilgi gönderebilir.
 
 ```json
     "externalEntities": [
@@ -58,15 +58,15 @@ Sohbet robotundan LUIS'e gelen istek, POST `Hazem` gövdesindeki bilgileri aktar
     ]
 ```
 
-Tahmin yanıtı, istekte tanımlandığı için, diğer tüm öngörülen varlıklarla birlikte dış varlığı içerir.
+Tahmin yanıtı, istek içinde tanımlandığından, diğer tüm öngörülen varlıklar ile bu dış varlığı içerir.
 
-### <a name="second-turn-in-conversation"></a>Konuşmada ikinci dönüş
+### <a name="second-turn-in-conversation"></a>İkinci konuşmayı aç
 
-Sohbet bot içine bir sonraki kullanıcı söyleyerek daha belirsiz bir terim kullanır:
+Sohbet bot 'ta bir sonraki Kullanıcı, daha fazla dönemi kullanır:
 
 `Send him a calendar reminder for the party.`
 
-Konuşmanın bu dönüşünde, söyleyiş `him` bir referans `Hazem`olarak kullanır. Konuşma sohbet bot, POST gövdesinde, `him` varlık değeri ilk söyleyiş çıkarılan harita `Hazem`olabilir.
+Konuşmayı bu şekilde yaptığınızda, söylenişi öğesine `him` `Hazem`başvuru olarak kullanılır. GÖNDERI gövdesinde konuşma sohbeti bot, ilk utterden ayıklanan varlık değeriyle `him` eşlenir `Hazem`.
 
 ```json
     "externalEntities": [
@@ -82,13 +82,13 @@ Konuşmanın bu dönüşünde, söyleyiş `him` bir referans `Hazem`olarak kulla
     ]
 ```
 
-Tahmin yanıtı, istekte tanımlandığı için, diğer tüm öngörülen varlıklarla birlikte dış varlığı içerir.
+Tahmin yanıtı, istek içinde tanımlandığından, diğer tüm öngörülen varlıklar ile bu dış varlığı içerir.
 
-### <a name="override-existing-model-predictions"></a>Varolan model tahminlerini geçersiz kılma
+### <a name="override-existing-model-predictions"></a>Mevcut model tahminlerini geçersiz kıl
 
-Seçenekler `preferExternalEntities` özelliği, kullanıcı nın aynı ada sahip tahmin edilen bir varlıkla çakışan bir dış varlık gönderirse, LUIS'in geçen varlığı veya modelde var olan varlığı seçtiğini belirtir.
+`preferExternalEntities` Options özelliği, Kullanıcı aynı ada sahip bir tahmin edilen varlıkla çakışan bir dış varlık GÖNDERIYORSA, luya geçirilen varlığı veya modelde var olan varlığı seçer.
 
-Örneğin, sorguyu `today I'm free`göz önünde bulundurun. LUIS aşağıdaki `today` yanıt ile bir datetimeV2 olarak algılar:
+Örneğin, sorguyu `today I'm free`göz önünde bulundurun. LUO, `today` aşağıdaki yanıt Ile bir datetimeV2 algılar:
 
 ```JSON
 "datetimeV2": [
@@ -117,7 +117,7 @@ Kullanıcı dış varlığı gönderirse:
 }
 ```
 
-`preferExternalEntities` Ayarlanan `false`, LUIS dış varlık gönderilmemiş gibi bir yanıt döndürür.
+, `preferExternalEntities` Olarak ayarlanırsa `false`, dış varlık gönderilmediği gibi lusıs bir yanıt döndürür.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +133,7 @@ Kullanıcı dış varlığı gönderirse:
 ]
 ```
 
-`true`Ayarlanmışsa, `preferExternalEntities` LUIS aşağıdakiler dahil olmak üzere bir yanıt verir:
+, `preferExternalEntities` Olarak `true`ayarlandıysa, lusıs aşağıdakiler dahil bir yanıt döndürür:
 
 ```JSON
 "datetimeV2": [
@@ -147,14 +147,14 @@ Kullanıcı dış varlığı gönderirse:
 
 #### <a name="resolution"></a>Çözüm
 
-İsteğe _bağlı_ `resolution` özellik, dış varlıkla ilişkili meta verileri geçirmenize ve ardından yanıtta geri almanıza olanak tanıyan tahmin yanıtında geri döner.
+_İsteğe bağlı_ `resolution` özelliği, tahmine yanıt olarak döner ve dış varlıkla ilişkili meta verileri geçirmenize olanak tanır ve ardından yanıtta geri alabilirsiniz.
 
-Birincil amaç, önceden oluşturulmuş varlıkları genişletmektir, ancak bu varlık türüyle sınırlı değildir.
+Birincil amaç, önceden oluşturulmuş varlıkların genişletilmesine karşın bu varlık türüyle sınırlı değildir.
 
-Özellik `resolution` bir sayı, bir dize, nesne veya bir dizi olabilir:
+`resolution` Özelliği bir sayı, dize, nesne veya dizi olabilir:
 
-* "Dallas"
-* {"text": "değer"}
+* Şubesi
+* {"metin": "değer"}
 * 12345
 * ["a", "b", "c"]
 
@@ -162,18 +162,18 @@ Birincil amaç, önceden oluşturulmuş varlıkları genişletmektir, ancak bu v
 
 ## <a name="dynamic-lists"></a>Dinamik listeler
 
-Dinamik listeler, LUIS uygulamasında bulunan mevcut eğitimli ve yayınlanmış bir liste varlığını genişletmenize olanak sağlar.
+Dinamik listeler, zaten LUSıS uygulamasında var olan eğitilen ve yayımlanmış bir liste varlığını genişletmenizi sağlar.
 
-Liste varlık değerlerinizin düzenli aralıklarla değişmesi gerektiğinde bu özelliği kullanın. Bu özellik, önceden eğitilmiş ve yayınlanmış bir liste varlığını genişletmenize olanak tanır:
+Liste varlık değerlerinizin düzenli aralıklarla değiştirilmesi gerektiğinde bu özelliği kullanın. Bu özellik, zaten eğitilen ve yayımlanmış bir liste varlığını genişletmenizi sağlar:
 
-* Sorgu tahmin bitiş noktası isteği sırasında.
+* Sorgu tahmin uç noktası isteği sırasında.
 * Tek bir istek için.
 
-Liste varlığı LUIS uygulamasında boş olabilir, ancak var olması gerekir. LUIS uygulamasındaki liste varlığı değiştirilmez, ancak bitiş noktasındaki tahmin yeteneği yaklaşık 1.000 öğeiçeren en fazla 2 liste içerecek şekilde genişletilir.
+Liste varlığı, LUSıS uygulamasında boş olabilir, ancak var olması gerekiyor. LUSıS uygulamasındaki liste varlığı değiştirilmez, ancak uç noktasındaki tahmin yeteneği, yaklaşık 1.000 öğe içeren en fazla 2 liste içerecek şekilde genişletilir.
 
 ### <a name="dynamic-list-json-request-body"></a>Dinamik liste JSON istek gövdesi
 
-Listeye eşanlamlılarla birlikte yeni bir alt liste eklemek için aşağıdaki JSON gövdesini gönderin ve `LUIS`sorgu `POST` tahmini isteğiyle metin için liste varlığını tahmin edin:
+Aşağıdaki JSON gövdesine göndererek, listeye eş anlamlı olan yeni bir alt liste ekleyin ve `LUIS` `POST` sorgu tahmini isteğiyle metin için liste varlığını tahmin edin:
 
 ```JSON
 {
@@ -200,9 +200,9 @@ Listeye eşanlamlılarla birlikte yeni bir alt liste eklemek için aşağıdaki 
 }
 ```
 
-Tahmin yanıtı, istekte tanımlandığı için, diğer tüm öngörülen varlıklarla birlikte bu liste varlığını içerir.
+Tahmin yanıtı, istekte tanımlandığından, diğer tüm öngörülen varlıkların bulunduğu liste varlığını içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Tahmin puanı](luis-concept-prediction-score.md)
-* [API V3 değişikliklerini yazma](luis-migration-api-v3.md)
+* [API v3 değişikliklerini yazma](luis-migration-api-v3.md)

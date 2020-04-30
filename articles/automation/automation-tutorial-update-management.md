@@ -1,19 +1,19 @@
 ---
-title: Azure VM'leriniz için güncelleştirmeleri ve yamaları yönetme
-description: Bu makalede, Azure ve Azure olmayan VM'leriniziçin güncelleştirmeleri ve yamaları yönetmek için Azure Otomasyon Güncelleştirme Yönetimi'nin nasıl kullanılacağına genel bir bakış sağlanmaktadır.
+title: Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
+description: Bu makalede, Azure ve Azure dışı sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetmek için Azure Otomasyonu Güncelleştirme Yönetimi kullanma hakkında genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
 ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604685"
 ---
-# <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM'leriniz için güncelleştirmeleri ve yamaları yönetme
+# <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
 Güncelleştirme Yönetimi çözümünü kullanarak sanal makineleriniz için güncelleştirmeleri ve yamaları yönetebilirsiniz. Bu öğreticide kullanılabilir durumdaki güncelleştirmelerin durumunu değerlendirmeyi, gerekli güncelleştirmelerin yüklenmesini zamanlamayı, dağıtım sonuçlarını gözden geçirmeyi ve güncelleştirmelerin başarılı bir şekilde uygulandığını doğrulamak için bir uyarı oluşturmayı öğreneceksiniz.
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* VM'lerinizden biri veya birkaçı için [Güncelleştirme Yönetimi](automation-update-management.md) çözümü etkinleştirildi.
+* [Güncelleştirme yönetimi](automation-update-management.md) çözümü bir veya daha fazla VM 'niz için etkinleştirildi.
 * Sisteme eklenecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
@@ -40,34 +40,34 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="view-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
-Güncelleştirme Yönetimini etkinleştirdikten sonra, Güncelleştirme yönetimi sayfası açılır. Herhangi bir güncelleştirme eksik olarak tanımlanırsa, Eksik **güncelleştirmelerin** listesi Eksik güncelleştirmeler sekmesinde gösterilir.
+Güncelleştirme Yönetimi etkinleştirdikten sonra, güncelleştirme yönetimi sayfası açılır. Herhangi bir güncelleştirme eksik olarak tanımlanmışsa eksik güncelleştirmeler listesi **eksik güncelleştirmeler** sekmesinde gösterilir.
 
-**Bilgi bağlantısı**altında, güncelleştirme için destek makalesini açmak için güncelleştirme bağlantısını seçin. Güncelleştirme hakkında önemli bilgiler edinebilirsiniz.
+**Bilgi bağlantısı**altında, güncelleştirme için destek makalesini açmak üzere Güncelleştir bağlantısını seçin. Güncelleştirme hakkında önemli bilgi edinebilirsiniz.
 
 ![Güncelleştirme durumunu görüntüleme](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Seçili güncelleştirmenin Günlük arama bölmesini açmak için güncellemede başka bir yere tıklayın. Günlük araması sorgusu ilgili güncelleştirmeye göre önceden tanımlanmıştır. Ortamınızda dağıtılan veya kaybolan güncelleştirmeler hakkında ayrıntılı bilgileri görüntülemek için bu sorgunuzu değiştirebilir veya kendi sorgunuzu oluşturabilirsiniz.
+Seçili güncelleştirme için günlük araması bölmesini açmak üzere güncelleştirmede başka herhangi bir yere tıklayın. Günlük araması sorgusu ilgili güncelleştirmeye göre önceden tanımlanmıştır. Ortamınızda dağıtılan veya eksik güncelleştirmeler hakkında ayrıntılı bilgileri görüntülemek için bu sorguyu değiştirebilir veya kendi sorgunuzu oluşturabilirsiniz.
 
 ![Güncelleştirme durumunu görüntüleme](./media/automation-tutorial-update-management/logsearch.png)
 
 ## <a name="configure-alerts"></a>Uyarı yapılandırma
 
-Bu adımda, bir güncelleştirme dağıtımının durumunu bildirmek için bir uyarı ayarlamayı öğrenirsiniz.
+Bu adımda, bir güncelleştirme dağıtımının durumunu bilmenizi sağlamak için bir uyarı ayarlamayı öğreneceksiniz.
 
 ### <a name="alert-conditions"></a>Uyarı koşulları
 
-Otomasyon hesabınızda, **İzleme**altındaki **Uyarılar'a** gidin ve ardından Yeni **uyarı kuralını**tıklatın.
+Otomasyon hesabınızda, **izleme**altındaki **Uyarılar** ' a gidin ve ardından **Yeni uyarı kuralı**' nı tıklatın.
 
-Otomasyon hesabınız zaten kaynak olarak seçilmiştir. Değiştirmek **istiyorsanız, Seç'i**tıklatın. Kaynak seç sayfasında, kaynak türü açılır menüsüne **göre Filtre'den** Otomasyon **Hesapları'nı** seçin. Otomasyon hesabınızı seçin ve **ardından Bitti'yi**tıklatın.
+Otomasyon hesabınız kaynak olarak zaten seçildi. Değiştirmek istiyorsanız, **Seç**' e tıklayın. Kaynak seçin sayfasında, **kaynak türüne göre filtrele** açılan menüsünden **Otomasyon hesapları** ' nı seçin. Otomasyon hesabınızı seçin ve **bitti**' ye tıklayın.
 
-Güncelleştirme dağıtımınız için uygun sinyali seçmek için **Ekle koşulunu** tıklatın. Aşağıdaki tablo, kullanılabilir iki sinyalin ayrıntılarını gösterir.
+Güncelleştirme dağıtımınız için uygun olan sinyali seçmek için **Koşul Ekle** ' ye tıklayın. Aşağıdaki tabloda, iki kullanılabilir sinyalin ayrıntıları gösterilmektedir.
 
-|Sinyal Adı|Boyutlar|Açıklama|
+|Sinyal adı|Boyutlar|Açıklama|
 |---|---|---|
-|`Total Update Deployment Runs`|- Dağıtım Adını Güncelleştir<br>- Durum|Bu sinyal, bir güncelleştirme dağıtımının genel durumu hakkında uyarır.|
-|`Total Update Deployment Machine Runs`|- Dağıtım Adını Güncelleştir</br>- Durum</br>- Hedef Bilgisayar</br>- Dağıtım Çalıştırılanın Kimliğini Güncelleştir|Bu sinyal, belirli makineleri hedefleyen bir güncelleştirme dağıtımının durumu hakkında uyarır.|
+|`Total Update Deployment Runs`|-Güncelleştirme dağıtım adı<br>-Durum|Bu sinyal, bir güncelleştirme dağıtımının genel durumu hakkında uyarır.|
+|`Total Update Deployment Machine Runs`|-Güncelleştirme dağıtım adı</br>-Durum</br>-Hedef bilgisayar</br>-Güncelleştirme dağıtımı çalıştırma KIMLIĞI|Bu sinyal, belirli makinelere hedeflenmiş bir güncelleştirme dağıtımının durumu hakkında uyarır.|
 
-Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listede yoksa, boyutun **\+** yanındaki işareti tıklatın ve özel adı yazın. Ardından, arayacak değeri seçin. Bir boyut için tüm değerleri seçmek istiyorsanız, **Seç \* ** düğmesini tıklatın. Bir boyut için bir değer seçmezseniz, Güncelleştirme Yönetimi bu boyutu yoksayılsa.
+Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listede yoksa, boyutun yanındaki **\+** işaretine tıklayın ve özel adı yazın. Ardından aranacak değeri seçin. Bir boyutun tüm değerlerini seçmek istiyorsanız, **Seç \* ** düğmesine tıklayın. Boyut için bir değer seçmeyin, Güncelleştirme Yönetimi bu boyutu yoksayar.
 
 ![Sinyal mantığını yapılandırma](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -75,30 +75,30 @@ Bir boyut için listeden geçerli bir değer seçin. İstediğiniz değer listed
 
 ### <a name="alert-details"></a>Uyarı ayrıntıları
 
-**2'nin altında. Uyarı ayrıntılarını tanımlayın,** uyarı için bir ad ve açıklama girin. **Önem Derecesi**'ni başarılı çalıştırmalar için **Bilgilendirici (Önem Derecesi 2)**, başarısız çalıştırmalar içinse **Bilgilendirici (Önem Derecesi 1)** olarak ayarlayın.
+**2 altında. Uyarı ayrıntılarını tanımlayın**, uyarı için bir ad ve açıklama girin. **Önem Derecesi**'ni başarılı çalıştırmalar için **Bilgilendirici (Önem Derecesi 2)**, başarısız çalıştırmalar içinse **Bilgilendirici (Önem Derecesi 1)** olarak ayarlayın.
 
 ![Sinyal mantığını yapılandırma](./media/automation-tutorial-update-management/define-alert-details.png)
 
-**Eylem grupları altında,** **Yeni Oluştur'u**seçin. Eylem grubu, birden çok uyarıda kullanabileceğiniz eylemlerden oluşan bir gruptur. Eylemler e-posta bildirimleri, runbook'lar, webhooks ve daha birçok içerebilir. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
+**Eylem grupları**' nın altında **Yeni oluştur**' u seçin. Eylem grubu, birden çok uyarıda kullanabileceğiniz eylemlerden oluşan bir gruptur. Eylemler e-posta bildirimleri, runbook 'lar, Web kancaları ve çok daha fazlasını içerebilir. Eylem grupları hakkında daha fazla bilgi edinmek için bkz. [Eylem grupları oluşturma ve yönetme](../azure-monitor/platform/action-groups.md).
 
-Eylem **grubu adı** alanına, uyarı için bir ad ve kısa bir ad girin. Güncelleştirme Yönetimi, belirtilen grubu kullanarak bildirim gönderirken tam eylem grubu adı yerine kısa adı kullanır.
+**Eylem grubu adı** alanında, uyarı için bir ad ve kısa bir ad girin. Güncelleştirme Yönetimi, belirtilen grup kullanılarak bildirim gönderilirken tam eylem grubu adının yerine kısa adı kullanır.
 
-**Eylemler**altında, **E-posta Bildirimi**gibi eylem için bir ad girin. **Eylem Türü**için **E-posta/SMS/Push/Voice'ı**seçin. **Ayrıntılar**için, **ayrıntıları edit'i**seçin.
+**Eylemler**' in altında, eylem Için **e-posta bildirimi**gibi bir ad girin. **Eylem türü**Için **e-posta/SMS/Push/Voice**' ı seçin. **Ayrıntılar**Için **Ayrıntıları Düzenle**' yi seçin.
 
-E-posta/SMS/Anında İletme/Ses bölmesine bir ad girin. **E-posta** onay kutusunu seçin ve ardından geçerli bir e-posta adresi girin.
+E-posta/SMS/Anında İletme/Ses bölmesine bir ad girin. **E-posta** onay kutusunu seçin ve geçerli bir e-posta adresi girin.
 
 ![E-posta eylem grubu yapılandırma](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-E-posta/SMS/Push/Voice bölmesinde **Tamam'ı**tıklatın. Eylem grubu ekle bölmesinde **Tamam'ı**tıklatın.
+E-posta/SMS/gönderim/ses bölmesinde **Tamam**' ı tıklatın. Eylem grubu Ekle bölmesinde **Tamam**' ı tıklatın.
 
-Uyarı e-postasının konusunu özelleştirmek için, **Oluşturma kuralı**altında , **eylemleri Özelleştir**altında, **E-posta konusunu**seçin. İşleminiz bittiğinde **Uyarı kuralı oluştur**'u seçin. Uyarı, güncelleştirme dağıtımının ne zaman başarılı olduğunu ve güncelleştirme dağıtım çalışmasının hangi makinelerin parçası olduğunu bildirir.
+Uyarı e-postası konusunu özelleştirmek için, **kural oluştur**altında, **Eylemler Özelleştir**altında **e-posta konusu**' ı seçin. İşleminiz bittiğinde **Uyarı kuralı oluştur**'u seçin. Uyarı, bir güncelleştirme dağıtımının başarılı olduğunu ve hangi makinelerin güncelleştirme dağıtım çalıştırmasının bir parçası olduğunu söyler.
 
 ## <a name="schedule-an-update-deployment"></a>Güncelleştirme dağıtımı zamanlama
 
-Şimdi güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencerenizi izleyen bir dağıtım zamanlayın. Dağıtıma dahil etmek için güncelleştirme türlerini seçebilirsiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
+Şimdi güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencerenizi izleyen bir dağıtım zamanlayın. Dağıtıma dahil edilecek güncelleştirme türlerini seçebilirsiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
 
 >[!NOTE]
->Güncelleştirme dağıtımının zamanlanması, hedef makinelerde güncelleştirme dağıtımını işleyen **Patch-MicrosoftOMSComputers** runbook'a bağlı bir [zamanlama](shared-resources/schedules.md) kaynağı oluşturur. Zamanlama kaynağını Azure portalından silerseniz veya dağıtımı oluşturduktan sonra PowerShell'i kullanırsanız, silme işlemi zamanlanan güncelleştirme dağıtımını bozar ve zamanlama kaynağını portaldan yeniden yapılandırmaya çalıştığınızda bir hata oluşturur. Zamanlama kaynağını yalnızca ilgili dağıtım zamanlamasını silerek silebilirsiniz.  
+>Güncelleştirme dağıtımının zamanlanması, hedef makinelerdeki güncelleştirme dağıtımını işleyen **Patch-MicrosoftOMSComputers** runbook 'una bağlı bir [zamanlama](shared-resources/schedules.md) kaynağı oluşturur. Azure portal zamanlama kaynağını veya dağıtımı oluşturduktan sonra PowerShell 'i kullanarak silerseniz, silme işlemi zamanlanmış güncelleştirme dağıtımını keser ve zamanlama kaynağını portaldan yeniden yapılandırmayı denediğinizde bir hata oluşturur. Yalnızca ilgili dağıtım zamanlamasını silerek zamanlama kaynağını silebilirsiniz.  
 
 Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme yönetimi**'ne gidip **Güncelleştirme dağıtımı zamanla**'yı seçin.
 
@@ -108,11 +108,11 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 
 * **İşletim sistemi**: Güncelleştirme dağıtımı için hedeflenecek işletim sistemini seçin.
 
-* **Güncelleştirecek gruplar (önizleme)**: Dağıtımınıza dahil etmek üzere dinamik bir Azure VM grubu oluşturmak için abonelik, kaynak grupları, konumlar ve etiketleri birleştiren bir sorgu tanımlayın. Daha fazla bilgi için [Dinamik Gruplar'a](automation-update-management-groups.md)bakın.
+* **Güncelleştirilecek gruplar (Önizleme)**: dağıtımınıza dahil etmek üzere Azure VM 'lerin dinamik bir grubunu derlemek için aboneliği, kaynak gruplarını, konumları ve etiketleri birleştiren bir sorgu tanımlayın. Daha fazla bilgi için bkz. [Dinamik Gruplar](automation-update-management-groups.md).
 
-* **Güncelleştirilecek Makineler**: Kaydedilen arama, Alınan grup veya açılan menüden **Makineler'i** seçin ve tek tek makineleri seçin. **Makineler'i**seçerseniz, her makinenin hazır durumu **Güncelleştirme aracısı hazır olma** sütununda gösterilir. Azure Monitor günlüklerinde bilgisayar grupları oluşturmanın farklı yöntemleri hakkında bilgi edinmek için [Azure Monitor günlüklerinde bilgisayar gruplarına](../azure-monitor/platform/computer-groups.md)bakın.
+* **Güncelleştirilecek makineler**: açılan menüden kaydedilmiş bir arama, içeri aktarılan grup veya Select **makineleri** seçin ve tek tek makineleri seçin. **Makineler**' i seçerseniz, her makinenin hazırlığı **Güncelleştirme Aracısı hazırlığı** sütununda gösterilir. Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md).
 
-* **Güncelleştirme sınıflandırması**: Her ürün için, desteklenen tüm güncelleştirme sınıflandırmalarını ancak güncelleştirme dağıtımınıza dahil olacak sınıflandırmaları seçin. Bu öğretici için, tüm ürünler için seçilen tüm türleri bırakın.
+* **Güncelleştirme sınıflandırması**: her bir ürün için, desteklenen tüm güncelleştirme sınıflandırmalarının seçimini kaldırın, ancak güncelleştirme dağıtımınıza dahil olanlar. Bu öğretici için tüm ürünler için seçili tüm türleri bırakın.
 
   Sınıflandırma türleri şunlardır:
 
@@ -121,58 +121,58 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
    |Windows     | Kritik güncelleştirmeler</br>Güvenlik güncelleştirmeleri</br>Güncelleştirme paketleri</br>Özellik paketleri</br>Hizmet paketleri</br>Tanım güncelleştirmeleri</br>Araçlar</br>Güncelleştirmeler<br>Sürücü        |
    |Linux     | Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri</br>Diğer güncelleştirmeler       |
 
-   Sınıflandırma türlerinin açıklamaları için [bkz.](automation-view-update-assessments.md#update-classifications)
+   Sınıflandırma türlerinin açıklamaları için bkz. [güncelleştirme sınıflandırmaları](automation-view-update-assessments.md#update-classifications).
 
-* **Ekle/hariç tutmak için güncelleştirmeler - Ekle/Hariç** tut sayfasını açar. Eklenecek veya dışlanacak güncelleştirmeler, KB Madde Kimlik numaraları belirtilmek suretiyle ayrı sekmelerde bulunur. Bir veya daha fazla kimlik numarası belirtirken, güncelleştirme dağıtımıyla birlikte tüm sınıflandırmaları kaldırmanız veya denetlemeniz gerekir. Bu, güncelleştirme iI'lerini belirtirken güncelleştirme paketinizde başka güncelleştirmenin dahil olmamasını sağlar.
-
-> [!NOTE]
-> Dışlamaların kapsayıcıları geçersiz kdığını bilmek önemlidir. Örneğin, bir dışlama kuralı `*`tanımlarsanız, Update Management, tümü hariç olduğu için hiçbir düzeltme eki veya paket yüklemez. Dışlanmış yamalar hala makineden eksik olarak göstermektedir. Linux makineleri için, dışlanmış bağımlı bir pakete sahip bir paket eklerseniz, Güncelleştirme Yönetimi ana paketi yüklemez.
+* **Dahil edilecek/hariç tutulacak güncelleştirmeler** -dahil etme/hariç tutma sayfasını açar. Dahil edilecek veya hariç tutulacak güncelleştirmeler, KB makalesi KIMLIK numaralarını belirterek ayrı sekmelerde bulunur. Bir veya daha fazla KIMLIK numarası belirtirken güncelleştirme dağıtımıyla tüm sınıflandırmaların kaldırılması veya işaretini kaldırmanız gerekir. Bu, güncelleştirme kimlikleri belirtildiğinde güncelleştirme paketinize başka hiçbir güncelleştirme eklenmemesini sağlar.
 
 > [!NOTE]
-> Güncelleştirme dağıtımıyla birlikte eklenmesi değiştirilen güncelleştirmeleri belirtemezsiniz.
+> Dışlamaları geçersiz kılmanın dahil olduğunu bilmemiz önemlidir. Örneğin, bir dışlama kuralı tanımlarsanız `*`, güncelleştirme yönetimi hepsi hariç tutuldukları için düzeltme eki veya paket içermez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için, dışlanan bağımlı paketi olan bir paketi eklerseniz Güncelleştirme Yönetimi ana paketi yüklemez.
+
+> [!NOTE]
+> Güncelleştirme dağıtımına dahil edilmek üzere yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
 >
 
 * **Zamanlama ayarları**: Zamanlama Ayarları bölmesi açılır. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 
-   Ayrıca, dağıtımın bir kez gerçekleşeceğini belirtebilir veya yinelenen bir zamanlama ayarlayabilirsiniz. **Yinelenme** bölümünde **Bir Kez**'i seçin. Varsayılanı 1 gün olarak bırakın ve **Tamam'ı**tıklatın. Bu girişler yinelenen bir zamanlama ayarlar.
+   Ayrıca, dağıtımın bir kez gerçekleşeceğini belirtebilir veya yinelenen bir zamanlama ayarlayabilirsiniz. **Yinelenme** bölümünde **Bir Kez**'i seçin. Varsayılanı 1 gün olarak bırakın ve **Tamam**' a tıklayın. Bu girişler yinelenen bir zamanlama ayarlar.
 
 * **Ön betikler + Son betikler**: Dağıtımınızdan önce ve sonra çalıştırılacak betikleri seçin. Daha fazla bilgi için bkz. [Ön ve Son betikleri yönetme](pre-post-scripts.md).
 
-* **Bakım penceresi (dakika)**: Varsayılan değeri bırakın. Bakım pencereleri güncelleştirmelerin yüklenmesi için izin verilen süreyi denetler. Bakım penceresi belirtirken aşağıdaki ayrıntıları göz önünde bulundurun:
+* **Bakım penceresi (dakika)**: Varsayılan değeri bırakın. Bakım pencereleri, güncelleştirmelerin yüklenmesi için izin verilen süre miktarını denetler. Bakım penceresi belirtirken aşağıdaki ayrıntıları göz önünde bulundurun:
 
-  * Bakım pencereleri kaç güncelleştirmenin yüklü olduğunu denetler.
-  * Güncelleştirme Yönetimi, bakım penceresinin sonu yaklaşıyorsa yeni güncelleştirmeler yüklemeyi durdurmaz.
-  * Güncelleştirme Yönetimi, bakım penceresi aşıldığında devam eden güncelleştirmeleri sonlandırmaz.
-  * Windows'da bakım penceresi aşıldıysa, bunun nedeni genellikle bir hizmet paketi güncelleştirmesinin yüklenmesinin uzun zaman almasıdır.
+  * Bakım pencereleri kaç güncelleştirme yüklendiğini denetler.
+  * Bakım penceresinin sonuna yaklaşıyorsa Güncelleştirme Yönetimi yeni güncelleştirmeleri yüklemeyi durdurmaz.
+  * Bakım penceresi aşılırsa Güncelleştirme Yönetimi devam eden güncelleştirmeleri sonlandıramaz.
+  * Bakım penceresi Windows üzerinde aşılırsa, çoğu zaman bir hizmet paketi güncelleştirmesinin yüklenmesi uzun sürmesi nedeniyle oluşur.
 
   > [!NOTE]
-  > Güncelleştirmelerin Ubuntu'daki bir bakım penceresinin dışında uygulanmasını önlemek için, Katılımsız Yükseltme paketini otomatik güncelleştirmeleri devre dışı kilmek için yeniden yapılandırın. Paketin nasıl yapılandırılabildiğini öğrenmek için [Ubuntu Server Guide'daki Otomatik Güncelleştirmeler konusuna](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)bakın.
+  > Güncelleştirmelerin Ubuntu 'da bakım penceresi dışında uygulanmasını önlemek için, katılımsız yükseltme paketini otomatik güncelleştirmeleri devre dışı bırakacak şekilde yeniden yapılandırın. Paketin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Ubuntu sunucu kılavuzunda otomatik güncelleştirmeler konusuna](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)bakın.
 
-* **Yeniden başlatma seçenekleri**: Yeniden başlatma işlemlerini işlemek için seçenekleri belirtmek için kullanın. Aşağıdaki seçenekler mevcuttur:
-  * Gerekirse yeniden başlatma (varsayılan)
+* **Yeniden başlatma seçenekleri: yeniden**başlatmalar işleme seçeneklerini belirtmek için kullanın. Aşağıdaki seçenekler mevcuttur:
+  * Gerekirse yeniden Başlat (varsayılan)
   * Her zaman yeniden başlat
   * Hiçbir zaman yeniden başlatma
-  * Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez
+  * Yalnızca yeniden Başlat-güncelleştirmeleri yüklemez
 
 > [!NOTE]
-> [Yeniden başlatmayı yönetmek için kullanılan Kayıt Defteri anahtarları](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) altında listelenen kayıt defteri anahtarları, yeniden başlatma **seçenekleri** asla yeniden başlatılacaya ayarlanırsa yeniden başlatma olayına neden olabilir. **Never reboot**
+> [Yeniden başlatmayı yönetmek için kullanılan kayıt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) defteri anahtarları altında listelenen kayıt defteri anahtarları, **yeniden başlatma seçenekleri** hiçbir şekilde **yeniden başlatma**olarak ayarlandıysa yeniden başlatma olayına neden olabilir.
 
-Zamanlamayı yapılandırmayı bitirdiğinizde **Oluştur'u**tıklatın.
+Zamanlamayı yapılandırmayı tamamladıktan sonra **Oluştur**' a tıklayın.
 
 ![Güncelleştirme Zamanlama Ayarları bölmesi](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-Durum panosu açılır. Yalnızca oluşturulan dağıtım zamanlamasını göstermek için **Zamanlanmış Güncelleştir dağıtımlarını** seçin.
+Durum panosu açılır. Yeni oluşturulan dağıtım zamanlamasını göstermek için **Zamanlanmış güncelleştirme dağıtımları** ' nı seçin.
 
 > [!NOTE]
-> Update Management, birinci taraf güncelleştirmeleri dağıtmayı ve ön indirme düzeltme emlelerini destekler. Bu destek, yamalı sistemlerde değişiklikler gerektirir. Sistemlerinizde bu ayarları nasıl yapılandırılabildiğini öğrenmek için [Birinci taraf ve ön indirme desteğine](automation-configure-windows-update.md) bakın.
+> Güncelleştirme Yönetimi, birinci taraf güncelleştirmelerin dağıtılmasını ve düzeltme eklerinin önceden indirilmesini destekler. Bu destek, düzeltme eki eklenen sistemlerde değişiklik yapılmasını gerektirir. Bu ayarları sistemlerinizde nasıl yapılandıracağınızı öğrenmek için [ilk taraf ve indirme öncesi destek](automation-configure-windows-update.md) bölümüne bakın.
 
-Güncelleştirme dağıtımlarını programlı olarak da oluşturabilirsiniz. REST API ile nasıl bir güncelleştirme dağıtımı oluşturabilirsiniz öğrenmek için Bkz. [Yazılım Güncelleştirme Yapılandırmaları - Oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca, haftalık güncelleştirme dağıtımı oluşturmak için kullanabileceğiniz örnek bir runbook da vardır. Bu runbook hakkında daha fazla bilgi edinmek [için](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)bkz.
+Ayrıca, programlama yoluyla güncelleştirme dağıtımları da oluşturabilirsiniz. REST API güncelleştirme dağıtımı oluşturmayı öğrenmek için bkz. [yazılım güncelleştirme yapılandırması-oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca haftalık güncelleştirme dağıtımı oluşturmak için kullanabileceğiniz örnek bir runbook vardır. Bu runbook hakkında daha fazla bilgi edinmek için bkz. [bir kaynak grubundaki bir veya daha fazla VM için haftalık güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 ## <a name="view-results-of-an-update-deployment"></a>Güncelleştirme dağıtımının sonuçlarını görüntüleme
 
-Zamanlanmış dağıtım başladıktan sonra, bu dağıtımın durumunu **Güncelleştirme yönetimi** bölümündeki **Güncelleştirme dağıtımları** sekmesinde görebilirsiniz. Dağıtım o anda çalışıyorsa, durum **Sürüyor** şeklinde olur. Dağıtım başarıyla bittiğinde, durum **Başarılı**olarak değişir. Dağıtımda bir veya daha fazla güncelleştirmeyle ilgili hatalar varsa, durum **kısmen başarısız olur.**
+Zamanlanmış dağıtım başladıktan sonra, bu dağıtımın durumunu **Güncelleştirme yönetimi** bölümündeki **Güncelleştirme dağıtımları** sekmesinde görebilirsiniz. Dağıtım o anda çalışıyorsa, durum **Sürüyor** şeklinde olur. Dağıtım başarıyla tamamlandığında durum **başarılı**olarak değişir. Dağıtımda bir veya daha fazla güncelleştirme ile ilgili hata varsa durum **kısmen başarısız**olur.
 
-Panosunu görmek için tamamlanmış güncelleştirme dağıtımını seçin.
+Panosunu görmek için tamamlanan güncelleştirme dağıtımını seçin.
 
 ![Belirli bir dağıtım için Güncelleştirme Dağıtımı durum panosu](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 
@@ -180,17 +180,17 @@ Panosunu görmek için tamamlanmış güncelleştirme dağıtımını seçin.
 
 Kullanılabilir değerler şunlardır:
 
-* **Denenmedi**: Tanımlanan bakım penceresi süresine bağlı olarak yeterli zaman olmadığı için güncelleştirme yüklenmedi.
+* **Denenmedi**: sağlanan bakım penceresi süresine göre yeterli kullanılabilir zaman olmadığından güncelleştirme yüklenmedi.
 * **Başarılı**: Güncelleştirme başarılı oldu.
 * **Başarısız**: Güncelleştirme başarısız oldu.
 
-Dağıtımın oluşturduğu tüm günlük girişlerini görmek için **Tüm günlükleri** seçin.
+Dağıtımın oluşturduğu tüm günlük girişlerini görmek için **Tüm Günlükler** ' i seçin.
 
 Hedef VM'de güncelleştirme dağıtımını yönetmekten sorumlu runbook'un iş akışını görmek için **Çıktı**'yı seçin.
 
 Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgiler için **Hatalar**’ı seçin.
 
-Güncelleştirme dağıtımınız başarılı olduğunda, aşağıdakilere benzer bir onay e-postası alırsınız:
+Güncelleştirme dağıtımınız başarılı olduğunda, aşağıdakine benzer bir onaylama e-postası alırsınız:
 
 ![E-posta eylem grubunu yapılandırma](./media/automation-tutorial-update-management/email-notification.png)
 

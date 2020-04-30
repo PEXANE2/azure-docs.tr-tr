@@ -10,83 +10,83 @@ ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
 ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604950"
 ---
-Bilişsel Hizmetler iki doğal dil işleme hizmetleri sağlar, [Dil Anlayışı](../luis/what-is-luis.md) ve [QnA Maker](../qnamaker/overview/overview.md), her biri farklı bir amaç ile. Her hizmeti ne zaman kullanacağımı ve birbirlerine nasıl iltifat ettiklerini anlayın.
+Bilişsel hizmetler, [Language Understanding](../luis/what-is-luis.md) ve [soru-cevap oluşturma](../qnamaker/overview/overview.md)her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
 
-Doğal dil işleme (NLP), sohbet botu gibi istemci uygulamanızın doğal dil kullanarak kullanıcılarınızla birlikte çalışmasını sağlar. Kullanıcı bir cümle veya tümcecik girer. Kullanıcımetninde zayıf dilbilgisi, yazım ve noktalama işaretleri olabilir. Bilişsel Hizmet zaten kullanıcı cümlesi ile çalışabilir, sohbet bot kullanıcıya yardımcı olmak için gereken bilgileri döndürerek.
+Doğal dil işleme (NLP), bir sohbet bot gibi istemci uygulamanızın, doğal dil kullanarak kullanıcılarınızla çalışmasına izin verir. Kullanıcı tümce veya tümcecik girer. Kullanıcının metninde zayıf dilbilgisi, yazım ve noktalama olabilir. Bilişsel hizmet, Kullanıcı tümcesi aracılığıyla çalışarak sohbet bot 'ın kullanıcıya yardımcı olması için gereken bilgileri geri alabilir.
 
-## <a name="cognitive-services-with-nlp"></a>NLP ile Bilişsel Hizmetler
+## <a name="cognitive-services-with-nlp"></a>NLP ile bilişsel hizmetler
 
-Dil Anlama (LUIS) ve QnA Maker NLP sağlar. İstemci başvurusu doğal dil metni gönderir. Hizmet metni alır, işler ve bir sonuç döndürür.
+Language Understanding (LUSıS) ve Soru-Cevap Oluşturma NLP sağlar. İstemci uygulaması doğal dil metni gönderir. Hizmet metni alır, işler ve bir sonuç döndürür.
 
 ## <a name="when-to-use-each-service"></a>Her hizmetin ne zaman kullanılacağı
 
-Dil Anlama (LUIS) ve QnA Maker farklı sorunları çözmek. LUIS, kullanıcının metninin (söyleyiş olarak bilinir) amacını belirlerken, QnA Maker kullanıcının metninin (sorgu olarak bilinir) yanıtını belirler.
+Language Understanding (LUSıS) ve Soru-Cevap Oluşturma farklı sorunları çözüyor. LUO, bir kullanıcının metninin amacını (utterance olarak bilinir) belirler, Soru-Cevap Oluşturma Kullanıcı metninin (sorgu olarak bilinir) yanıtını belirler.
 
-Doğru hizmeti seçmek için, istemci uygulamasından gelen kullanıcı metnini ve istemci uygulamasının Bilişsel Hizmetten hangi bilgileri alması gerektiğini anlamanız gerekir.
+Doğru hizmeti seçmek için, istemci uygulamasından gelen Kullanıcı metnini ve istemci uygulamanın bilişsel hizmetten alınması gereken bilgileri anlamanız gerekir.
 
-Sohbet robotunuz metni `How do I get to the Human Resources building on the Seattle North campus?`alıyorsa, her hizmetin metinle nasıl çalıştığını anlamak için aşağıdaki grafiği kullanın.
+Sohbet botunuzu metin `How do I get to the Human Resources building on the Seattle North campus?`alırsa, her bir hizmetin metinle nasıl çalıştığını anlamak için aşağıdaki grafiği kullanın.
 
-|Hizmet|İstemci uygulaması belirler|
+|Hizmet|İstemci uygulaması şunları belirler|
 |--|--|
-|LUIS|**Kullanıcının** metin niyetini belirler - hizmet sorunun yanıtını döndürmez. Örneğin, bu metin `FindLocation` amaç eşleşen olarak sınıflandırılır.<br>|
-|Soru-Cevap Oluşturucu|**Sorunun yanıtını** özel bir bilgi tabanından döndürür. Örneğin, bu metin statik metin yanıtı ile bir `Get on the #9 bus and get off at Franklin street`soru olarak belirlenir.|
+|LUIS|**Kullanıcının** metin düzeyini belirler; hizmet soruya cevap vermez. Örneğin, bu metin `FindLocation` amacınızla eşleşen olarak sınıflandırılır.<br>|
+|Soru-Cevap Oluşturucu|Özel bir bilgi bankasından **sorunun yanıtını döndürür** . Örneğin, bu metin, statik metin yanıtı olan bir soru olarak belirlenir `Get on the #9 bus and get off at Franklin street`.|
 |||
 
-## <a name="when-do-you-use-luis"></a>LUIS'i ne zaman kullanıyorsun?
+## <a name="when-do-you-use-luis"></a>Lune zaman kullanıyorsunuz?
 
-Sohbet botundaki bir sürecin parçası olarak söyleyişin niyetini bilmeniz gerektiğinde LUIS'i kullanın. Örnek metinle devam `How do I get to the Human Resources building on the Seattle North campus?`ederek, kullanıcının niyetinin bir konum bulmak olduğunu bildiğinizde, yanıtı almak için bir taşıma sunucusu gibi başka bir hizmete söyleyiş (varlıklarla birlikte çıkarılmış) ile ilgili ayrıntıları aktarabilirsiniz.
+Sohbet botu içindeki bir işlemin parçası olarak söyleyici 'yi bilmeniz gerektiğinde LUO 'u kullanın. Örnek metin `How do I get to the Human Resources building on the Seattle North campus?`ile devam etmek için, kullanıcının amacı bir konum bulmaktan haberdar olduktan sonra, yanıtı almak için bir ulaşım sunucusu gibi başka bir hizmete söylenişi (varlıklarla kullanıma hazır) hakkındaki ayrıntıları geçirebilirsiniz.
 
-Niyeti belirlemek için LUIS ve QnA Maker'ı birleştirmeniz gerekmez.
+Amacı öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez.
 
-Sohbet botu, metni niyetlere ve varlıklara (LUIS kullanarak) göre işlemesi ve belirli statik metin yanıtını (QnA Maker'ı kullanarak) bulması gerekiyorsa, bu söziçin iki hizmeti birleştirebilirsiniz.
+Bu söylemeye yönelik iki hizmeti, sohbet botunuzun, belirli statik metin yanıtını (Soru-Cevap Oluşturma kullanarak) bulmak için metinleri ve varlıkları temel alarak işlemesi gerekiyorsa kullanabilirsiniz.
 
-## <a name="when-do-you-use-qna-maker"></a>QnA Maker'ı ne zaman kullanıyorsunuz?
+## <a name="when-do-you-use-qna-maker"></a>Soru-Cevap Oluşturma ne zaman kullanıyorsunuz?
 
-Yanıtlardan oluşan statik bir bilgi tabanınız olduğunda QnA Maker'ı kullanın. Bu bilgi tabanı, PDF'ler ve URL'ler gibi belgelerle oluşturduğunuz ihtiyaçlarınıza özeldir.
+Yanıt statik bilgi tabanınız varsa Soru-Cevap Oluşturma kullanın. Bu Bilgi Bankası, PDF 'ler ve URL 'Ler gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
 
-Örnek söyleyiş ile devam,, `How do I get to the Human Resources building on the Seattle North campus?`yayınlanan QnA Maker hizmetine bir sorgu olarak metin göndermek ve en iyi cevabı almak.
+Örnekle `How do I get to the Human Resources building on the Seattle North campus?`devam ederek, yayınlanmış soru-cevap oluşturma hizmetinize bir sorgu olarak metin gönderin ve en iyi yanıtı alın.
 
-Sorunun cevabını belirlemek için LUIS ve QnA Maker'ı birleştirmeniz gerekmez.
+Sorunun yanıtını öğrenmek için LUO ve Soru-Cevap Oluşturma birleştirmeniz gerekmez.
 
-Sohbet botu niyetve varlıklara (LUIS kullanarak) dayalı metni işlemek ve (QnA Maker kullanarak) yanı sıra cevap bulmak gerekiyorsa, bu söyleyiş için iki hizmet birleştirebilirsiniz.
+Bu utterance için iki hizmeti birleştirebilirsiniz. sohbet botu, metinleri ve varlıkları temel alarak (LUSıS kullanarak) ve yanıtı bulur (Soru-Cevap Oluşturma kullanarak).
 
-## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Bilgi tabanınız eksikolduğunda her iki hizmeti de kullanın
+## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Bilgi tabanınız tamamlanmadığında her iki hizmeti kullanın
 
-QnA Maker bilgi tabanınızı oluşturuyorsanız ancak konu alanının değiştiğini biliyorsanız (zamanında bilgi gibi), LUIS ve QnA Maker hizmetlerini birleştirebilirsiniz. Bu, bilgi tabanınızdaki bilgileri kullanmanıza ve kullanıcının niyetini belirlemek için LUIS'i kullanmanıza olanak tanır. İstemci uygulaması nın amacı olduğunda, ilgili bilgileri başka bir kaynaktan isteyebilir.
+Soru-Cevap Oluşturma bilgi tabanınızı oluşturuyorsanız, ancak konu etki alanının değiştiğini biliyorsanız (zamanında bilgi gibi), LUVE Soru-Cevap Oluşturma hizmetlerini birleştirebilirsiniz. Bu, bilgi bankasındaki bilgileri kullanmanıza olanak sağlar, ancak Ayrıca bir kullanıcının amaç olduğunu anlamak için LUSıS 'yi de kullanabilirsiniz. İstemci uygulaması amaç olduktan sonra, başka bir kaynaktan ilgili bilgileri talep edebilir.
 
-Müşteri uygulamanız puanları için hem LUIS hem de QnA Maker yanıtlarını izlemeniz gerekir. QnA Maker'ın puanı bazı rasgele eşiğin altındaysa, bilgileri bir üçüncü taraf hizmetine aktarmak için LUIS'ten döndürülen niyet ve varlık bilgilerini kullanın.
+İstemci uygulamanızın puanlar için LUVE Soru-Cevap Oluşturma yanıtlarını izlemesi gerekir. Soru-Cevap Oluşturma skoru rastgele bir eşiğin altındaysa, bu bilgileri bir üçüncü taraf hizmetine iletmek için LUSıS 'den döndürülen amaç ve varlık bilgilerini kullanın.
 
-Örnek metinle devam `How do I get to the Human Resources building on the Seattle North campus?`ederken, QnA Maker'ın düşük bir güven puanı döndürür olduğunu varsayalım. Bu bilgileri başka bir `FindLocation` yanıt için bir eşleme `Human Resources building` `Seattle North campus`veya arama hizmetine göndermek için LUIS'ten döndürülen niyeti ve bu bilgileri ayıklanmış varlıklar gibi kullanın.
+Örnek metinle `How do I get to the Human Resources building on the Seattle North campus?`devam ederseniz, soru-cevap oluşturma düşük Güvenirlik puanı döndürdüğünü varsayalım. Bu bilgileri başka bir yanıt için bir eşleme `FindLocation` veya arama hizmetine göndermek için lusıs `Human Resources building` 'den `Seattle North campus`döndürülen amacı ve ayıklanan tüm varlıkları kullanın.
 
-Doğrulama için bu üçüncü taraf yanıtı kullanıcıya sunabilirsiniz. Kullanıcının onayını aldıktan sonra, bilginizi artırmak için bilgileri eklemek için QnA Maker'a geri dönebilirsiniz.
+Bu üçüncü taraf yanıtını doğrulama için kullanıcıya sunabilirsiniz. Kullanıcının onayını aldıktan sonra, bilginizi büyütmek üzere bilgileri eklemek için Soru-Cevap Oluşturma 'e geri dönebilirsiniz.
 
-## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Sohbet botunuz daha fazla bilgiye ihtiyaç duyduğunda her iki hizmeti de kullanın
+## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Sohbet bot 'ta daha fazla bilgi gerektiğinde her iki hizmeti de kullanın
 
-Sohbet robotunuzun her iki hizmetin sağladığından daha fazla bilgiye ihtiyacı varsa, bir karar ağacı üzerinden devam etmek için, istemci uygulamasında her iki hizmeti de kullanın ve her iki yanıtı da işleyin.
+Sohbet botunuzun hizmetin sağladığından daha fazla bilgiye ihtiyacı varsa, bir karar ağacına devam etmek için her iki hizmeti kullanın ve istemci uygulamasında her iki yanıtı da işleyin.
 
-Her iki hizmetle de çalışmak için bir işlem oluşturmaya yardımcı olmak için Bot çerçevesi **[Gönderme CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, luis ve QnA Maker arasında alt uygulamalar olarak gönderilen en iyi niyet ler için bir LUIS uygulaması oluşturur.
+Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımcı olmak için bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, BASıS ve Soru-Cevap Oluşturma arasında dağıtım yapan bir amaç uygulaması oluşturur.
 
-Bu tür sohbet botlarını uygulamak için [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) veya [Node.js'de](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)Bot oluşturucu örneğini, **NLP'yi sevkiyatla**birlikte kullanın.
+Bu tür bir sohbet bot 'ı uygulamak için, {1} [veya](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)' de, bot Oluşturucu örneği **olan NLP**'yi kullanın.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Her hizmet için en iyi uygulamaları uygulayın:
+Her hizmet için en iyi yöntemleri uygulayın:
 
-* [LUIS](../luis/luis-concept-best-practices.md) en iyi uygulamaları
-* [QnA Maker](../qnamaker/concepts/best-practices.md) en iyi uygulamaları
+* [Lusıs](../luis/luis-concept-best-practices.md) en iyi uygulamaları
+* En iyi [soru-cevap oluşturma](../qnamaker/concepts/best-practices.md) uygulamalar
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Language Understanding (LUIS)](../luis/what-is-luis.md)
-* [QnA Üreticisi](../qnamaker/overview/overview.md)
-* [Sevk CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-* [Bot çerçeve örnekleri](https://github.com/Microsoft/BotBuilder-Samples)
+* [Soru-Cevap Oluşturucu](../qnamaker/overview/overview.md)
+* [CLı dağıtma](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
+* [Bot Framework örnekleri](https://github.com/Microsoft/BotBuilder-Samples)
 * [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Azure bot emülatörü](https://github.com/Microsoft/BotFramework-Emulator)
-* [Bot çerçeve web sohbet](https://github.com/microsoft/BotFramework-WebChat)
+* [Azure bot öykünücüsü](https://github.com/Microsoft/BotFramework-Emulator)
+* [Bot Framework Web sohbeti](https://github.com/microsoft/BotFramework-WebChat)

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB'nin MongoDB için API'si için iş başına (RU/s) geçmek için PowerShell komut dosyası
-description: Azure PowerShell komut dosyası - MongoDB API için Azure Cosmos DB Get Throughput (RU/s)
+title: MongoDB için Azure Cosmos DB API 'SI için üretilen iş (RU/s) almak için PowerShell betiği
+description: MongoDB API 'SI için Azure PowerShell betiği Azure Cosmos DB Get üretilen Iş (RU/s)
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 6421636b806f2c32f5beba8c3cfafc6cd146e945
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81461336"
 ---
-# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB için bir veritabanı veya koleksiyon için Throughput (RU/s) alın - MongoDB API
+# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB-MongoDB API 'SI için bir veritabanı veya koleksiyon için üretilen Iş (RU/sn) alın
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Al-AzCosmosDBMongoDBDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | Belirtilen MongoDB API Veritabanı'nın iş başına ilişkin değerini alır. |
-| [Al-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | Belirtilen MongoDB API Koleksiyonunun iş başına gelir değerini alır. |
-|**Azure Kaynak Grupları**| |
+| [Get-Azcosmosdbmongodbdatabaseverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | Belirtilen MongoDB API veritabanının üretilen iş değerini alır. |
+| [Get-Azcosmosdbmongodbcollectionverimlilik](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | Belirtilen MongoDB API koleksiyonunun üretilen iş değerini alır. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

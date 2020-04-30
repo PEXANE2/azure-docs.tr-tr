@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell Komut Dosyası Örneği - Azure Monitor günlükleri
-description: Azure PowerShell Komut Dosyası Örneği - Azure Monitor günlükleri
+title: Azure PowerShell betik örneği-Azure Izleyici günlükleri
+description: Azure PowerShell betik örneği-Azure Izleyici günlükleri
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,13 +15,13 @@ ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 651705407b6cc371d5b6db2662460e3a3ee7b6d4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460843"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>PowerShell ile Azure MonitörvM oluşturma 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>PowerShell ile Azure Izleyici VM oluşturma 
 
 Bu betik bir Azure Sanal Makinesi oluşturur, Log Analytics aracısını yükler ve sistemi bir Log Analytics çalışma alanına kaydeder. Betik çalıştıktan sonra sanal makine Azure İzleyici’de görünür. Ayrıca Log Analytics çalışma alanı kimliği ve çalışma alanı anahtarını güncelleştirmeniz gerekir.
 
@@ -49,7 +49,7 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve ağ güvenlik grubuna bağlar. Bu komut ayrıca 80 numaralı bağlantı noktasını açar ve yönetici kimlik bilgilerini ayarlar. |
-| [Set-AzvmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Sanal makineye bir VM uzantısı ekleyin. |
+| [Set-Azvmexgeri](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Sanal makineye bir VM uzantısı ekleyin. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

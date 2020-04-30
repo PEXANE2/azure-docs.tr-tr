@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'da sırları önemli bir kasada saklayın | Microsoft Dokümanlar
-description: Bir Azure Anahtar Kasası'nda sırları nasıl depolayacağım ve VM, formül veya ortam oluştururken bunları nasıl kullanacağınızı öğrenin.
+title: Gizli dizileri Azure DevTest Labs bir anahtar kasasında depolayın | Microsoft Docs
+description: Gizli dizileri bir Azure Key Vault nasıl depolayacağınızı ve VM, formül veya ortam oluştururken bunları nasıl kullanacağınızı öğrenin.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461523"
 ---
-# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs'da sırları önemli bir kasada saklayın
-Azure DevTest Labs kullanırken karmaşık bir sır girmeniz gerekebilir: Windows VM'niz için parola, Linux VM'niz için herkese açık SSH anahtarı veya bir yapı aracılığıyla Git repo'nuzu klonlamak için kişisel erişim belirteci. Sırlar genellikle uzun ve rasgele karakterler var. Bu nedenle, bunları girerek zor ve rahatsız edici olabilir, özellikle aynı gizli birden çok kez kullanıyorsanız.
+# <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Gizli dizileri Azure DevTest Labs bir anahtar kasasında depolayın
+Windows VM 'niz için parola, Linux VM 'niz için ortak SSH anahtarı veya bir yapıt aracılığıyla Git deponuzu kopyalamak için kişisel erişim belirteci kullanırken Azure DevTest Labs bir karmaşık parola girmeniz gerekebilir. Gizli dizileri genellikle uzunluğundadır ve rastgele karakterlere sahiptir. Bu nedenle, özellikle de aynı parolayı birden çok kez kullanıyorsanız, bunları girmeye benzer ve güvenilir bir şekilde girebilirsiniz.
 
-Bu sorunu çözmek ve aynı zamanda sırlarınızı güvenli bir yerde saklamak için DevTest Labs, [sırların Azure anahtar kasasında](../key-vault/general/overview.md)depolanmasını destekler. Bir kullanıcı ilk kez bir sır kaydettiğinde, DevTest Labs hizmeti otomatik olarak laboratuarı içeren aynı kaynak grubunda önemli bir kasa oluşturur ve sırrı anahtar kasasında saklar. DevTest Labs her kullanıcı için ayrı bir anahtar kasası oluşturur. 
+Bu sorunu çözmek ve ayrıca gizli dizileri güvenli bir yerde tutmak için DevTest Labs bir [Azure anahtar kasasında](../key-vault/general/overview.md)gizli dizileri depolamayı destekler. Bir Kullanıcı ilk kez gizli dizi kaydettiğinde, DevTest Labs hizmeti Laboratuvarı içeren aynı kaynak grubunda otomatik olarak bir Anahtar Kasası oluşturur ve gizli anahtarı anahtar kasasında depolar. DevTest Labs her bir kullanıcı için ayrı bir Anahtar Kasası oluşturur. 
 
-Anahtar kasasında bir sır oluşturabilmek için önce laboratuvar kullanıcısının bir laboratuvar sanal makinesi oluşturması gerektiğini lütfen unutmayın. Bunun nedeni, DevTest Lab hizmetinin, anahtar kasalarında sır oluşturmalarına ve saklamalarına izin verilmeden önce laboratuvar kullanıcısını geçerli bir kullanıcı belgesiyle ilişkilendirmesi gerektiğidir. 
+Laboratuvar kullanıcısının, anahtar kasasında bir gizli dizi oluşturabilmeniz için önce bir laboratuar sanal makinesi oluşturması gerektiğini lütfen unutmayın. Bunun nedeni, DevTest Laboratuvarı hizmeti 'nin, kendi anahtar kasasında gizli dizileri oluşturmalarına ve depolamasına izin vermeden önce geçerli bir Kullanıcı belgesiyle ilişkilendirilmesi gerekir. 
 
 
-## <a name="save-a-secret-in-azure-key-vault"></a>Azure Anahtar Kasası'nda bir sırrı kaydetme
-Sırrınızı Azure Anahtar Kasası'nda kaydetmek için aşağıdaki adımları yapın:
+## <a name="save-a-secret-in-azure-key-vault"></a>Gizli dizi Azure Key Vault kaydetme
+Gizli anahtarı Azure Key Vault kaydetmek için aşağıdaki adımları uygulayın:
 
-1. Sol menüden **sırlarımı** seçin.
-2. Sır için bir **isim** girin. Bir VM, formül veya ortam oluştururken bu adı açılır listede görürsünüz. 
-3. **Değeri**olarak gizli girin.
+1. Sol menüdeki **gizli dizilerimi** seçin.
+2. Gizli dizi için bir **ad** girin. Bu adı, sanal makine, formül veya ortam oluştururken açılan listede görürsünüz. 
+3. Parolayı **değer**olarak girin.
 
-    ![Mağaza sırrı](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
+    ![Saklama parolası](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 
-## <a name="use-a-secret-from-azure-key-vault"></a>Azure Key Vault'tan bir sır kullanın
-VM, formül veya ortam oluşturmak için bir sır girmeniz gerektiğinde, bir sırrı el ile girebilir veya anahtar kasasından kaydedilmiş bir sırrı seçebilirsiniz. Anahtar kasanızda depolanan bir sırrı kullanmak için aşağıdaki işlemleri yapın:
+## <a name="use-a-secret-from-azure-key-vault"></a>Azure Key Vault bir gizli dizi kullanın
+Bir VM, formül veya ortam oluşturmak için bir parola girmeniz gerektiğinde, el ile gizli anahtar girebilir ya da anahtar kasasından kaydedilmiş bir gizli dizi seçebilirsiniz. Anahtar Kasanızda depolanan bir gizli dizi kullanmak için aşağıdaki işlemleri yapın:
 
-1. **Kaydedilmiş bir sırrı kullan'ı**seçin. 
-2. **Bir sır seç**için açılan listeden sırrınızı seçin. 
+1. **Kaydedilmiş gizli dizi kullan**' ı seçin. 
+2. **Gizli dizi Seç**listesinden gizli anahtarı seçin. 
 
-    ![VM'de gizli kullanın](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
+    ![VM 'de gizli dizi kullanma](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
-## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonunda gizli kullanma
-Aşağıdaki örnekte gösterildiği gibi Bir VM oluşturmak için kullanılan bir Azure Kaynak Yöneticisi şablonunda gizli adınızı belirtebilirsiniz:
+## <a name="use-a-secret-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonunda gizli dizi kullanma
+Aşağıdaki örnekte gösterildiği gibi, bir VM oluşturmak için kullanılan bir Azure Resource Manager şablonunda gizli adınızı belirtebilirsiniz:
 
-![Formül veya ortamda gizli kullanın](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
+![Formülde veya ortamda gizli dizi kullanın](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sırrı kullanarak bir VM oluşturma](devtest-lab-add-vm.md) 
-- [Sırrı kullanarak bir formül oluşturma](devtest-lab-manage-formulas.md)
-- [Sırrı kullanarak bir ortam oluşturma](devtest-lab-create-environment-from-arm.md)
+- [Gizli dizi kullanarak VM oluşturma](devtest-lab-add-vm.md) 
+- [Gizli dizi kullanarak bir formül oluşturma](devtest-lab-manage-formulas.md)
+- [Gizli dizi kullanarak ortam oluşturma](devtest-lab-create-environment-from-arm.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Veri Ambarı’na veri yükleme
-description: Verileri Azure SQL Veri Ambarı'na kopyalamak için Azure Veri Fabrikası'nı kullanın
+description: Azure SQL veri ambarı 'na veri kopyalamak için Azure Data Factory kullanma
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,53 +12,53 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/16/2020
 ms.openlocfilehash: 1a764f392402acf9aa405468470d0fb6f680d755
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461117"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Azure SQL Veri Ambarı’na yükleme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure SQL Veri Ambarı,](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, ölçeklendirilebilen bir veritabanıdır. SQL Veri Ambarı, kurumsal veri ambarı iş yükleri için en iyi duruma getirilmiş büyük ölçüde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolamayı ölçeklendirme ve bağımsız olarak hesaplama esnekliğiile bulut elastikiyeti sunar.
+[Azure SQL veri ambarı](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) , hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, genişleme bir veritabanıdır. SQL veri ambarı, kurumsal veri ambarı iş yükleri için en iyi duruma getirilmiş, yüksek düzeyde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolama ve işlem ölçeğini bağımsız olarak ölçeklendirmeye yönelik esnekliğe sahip bulut esnekliği sunar.
 
-Azure SQL Veri Ambarı'nı kullanmaya başlamak, Azure Veri Fabrikası'nı kullandığınızda her zamankinden daha kolay. Azure Veri Fabrikası, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Hizmeti, bir SQL Veri Ambarı'nı mevcut sisteminizden gelen verilerle doldurmak ve analitik çözümlerinizi yaparken zamandan tasarruf etmek için kullanabilirsiniz.
+Azure Data Factory kullandığınızda Azure SQL veri ambarı 'nı kullanmaya artık hiç olmadığı kadar kolay. Azure Data Factory, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Hizmeti kullanarak bir SQL veri ambarını mevcut sisteminizdeki verilerle doldurabilir ve analiz çözümlerinizi oluştururken zamandan tasarruf edebilirsiniz.
 
-Azure Veri Fabrikası, Verileri Azure SQL Veri Ambarı'na yüklemek için aşağıdaki avantajları sunar:
+Azure Data Factory Azure SQL veri ambarı 'na veri yüklemek için aşağıdaki avantajları sunmaktadır:
 
-* **Kurulumu kolay**: Komut dosyası gerektirmeyen sezgisel 5 adımlı sihirbaz.
-* **Zengin veri deposu desteği**: Şirket içi ve bulut tabanlı veri depolarından oluşan zengin bir dizi için yerleşik destek. Ayrıntılı bir liste için [Desteklenen veri depolarının](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
-* **Güvenli ve uyumlu**: Veriler HTTPS veya ExpressRoute üzerinden aktarılır. Genel hizmet varlığı, verilerinizin coğrafi sınırdan asla çıkmamasını sağlar.
-* **PolyBase : Polybase kullanarak benzersiz performans,** verileri Azure SQL Veri Ambarı'na taşımanın en etkili yoludur. Azure Blob depolama ve Data Lake Store dahil olmak üzere her türlü veri deposundan yüksek yük hızları elde etmek için hazırlama blob özelliğini kullanın. (Polybase varsayılan olarak Azure Blob depolama ve Azure Veri Gölü Deposu'nü destekler.) Ayrıntılar için [bkz.](copy-activity-performance.md)
+* **Kolayca ayarlanabilir**: komut dosyası gerekmeden sezgisel 5 adımlı bir sihirbaz.
+* **Zengin veri deposu desteği**: zengin bir şirket içi ve bulut tabanlı veri deposu kümesi için yerleşik destek. Ayrıntılı bir liste için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)tablosuna bakın.
+* **Güvenli ve uyumlu**: veriler HTTPS veya ExpressRoute üzerinden aktarılır. Küresel hizmet varlığı, verilerinizin hiçbir şekilde coğrafi sınır bırakmamasını sağlar.
+* **PolyBase kullanarak benzersiz olmayan performans**: PolyBase, VERILERI Azure SQL veri ambarı 'na taşımanın en etkili yoludur. Azure Blob depolama ve Data Lake Store dahil olmak üzere tüm veri deposu türlerinden yüksek yük hızları elde etmek için hazırlama blobu özelliğini kullanın. (PolyBase, Azure Blob depolamayı ve varsayılan olarak Azure Data Lake Store destekler.) Ayrıntılar için bkz. [etkinlik performansını kopyalama](copy-activity-performance.md).
 
-Bu makalede, _Azure SQL Veritabanından Azure SQL Veri Ambarı'na veri yüklemek için_Veri Fabrikası Kopyalama Veri aracını nasıl kullanacağınızı gösterir. Diğer veri depolarından veri kopyalamak için benzer adımları izleyebilirsiniz.
+Bu makalede, _Azure SQL veritabanından Azure SQL veri ambarı 'na veri yüklemek_için Data Factory veri kopyalama aracının nasıl kullanılacağı gösterilmektedir. Diğer veri deposu türlerinden veri kopyalamak için benzer adımları izleyebilirsiniz.
 
 > [!NOTE]
-> Daha fazla bilgi için Azure [Veri Fabrikası'nı kullanarak Azure SQL Veri Ambarı'na veya Azure SQL Veri Ambarından veri kopyalama'ya](connector-azure-sql-data-warehouse.md)bakın.
+> Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure SQL veri ambarı 'na veya buradan veri kopyalama](connector-azure-sql-data-warehouse.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği: Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/) oluşturun.
-* Azure SQL Veri Ambarı: Veri ambarı, SQL veritabanından kopyalanan verileri tutar. Azure SQL Veri Ambarı yoksa, SQL Veri [Ambarı Oluştur'daki](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)yönergeleri görün.
-* Azure SQL Veritabanı: Bu öğretici, Adventure Works LT örnek verileriyle birlikte azure SQL veritabanındaki verileri kopyalar. [Azure SQL veritabanı oluştur'daki](../sql-database/sql-database-get-started-portal.md)yönergeleri izleyerek bir SQL veritabanı oluşturabilirsiniz.
-* Azure depolama hesabı: Azure Depolama, toplu kopyalama işleminde _hazırlama_ blob'u olarak kullanılır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
+* Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Azure SQL veri ambarı: veri ambarı, SQL veritabanından kopyalandığı verileri tutar. Azure SQL veri ambarınız yoksa, [SQL veri ambarı oluşturma](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)' daki yönergelere bakın.
+* Azure SQL veritabanı: Bu öğretici, Adventure Works LT örnek verileriyle bir Azure SQL veritabanından veri kopyalar. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md)bölümündeki yönergeleri IZLEYEREK bir SQL veritabanı oluşturabilirsiniz.
+* Azure depolama hesabı: Azure depolama, toplu kopyalama işleminde _hazırlama_ blobu olarak kullanılır. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) bölümündeki yönergelere bakın.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol menüde > kaynak**Veri + Analitik** > **Veri Fabrikası** **Oluştur'u**seçin:
+1. Sol taraftaki menüden > **veri ve analiz** >  **kaynak oluştur**' u seçin**Data Factory**:
 
-2. Yeni **veri fabrikası** sayfasında, aşağıdaki öğeler için değerler sağlayın:
+2. **Yeni Veri Fabrikası** sayfasında, aşağıdaki öğeler için değerler girin:
 
-    * **Adı**: Ad için *LoadSQLDWDemo* girin. Veri fabrikanızın adı *global olarak benzersiz olmalıdır. "LoadSQLDWDemo" hatası alırsanız, veri fabrikası için farklı bir ad girin. Örneğin, _**adınızı**_**ADFTutorialDataFactory**kullanabilirsiniz. Veri fabrikasını yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
-    * **Abonelik**: Veri fabrikasını oluşturmak için Azure aboneliğinizi seçin. 
-    * **Kaynak Grubu**: Açılan listeden varolan bir kaynak grubu seçin veya **Yeni Oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm**: **V2**seçin.
-    * **Konum**: Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Veri Gölü Deposu, Azure Depolama, Azure SQL Veritabanı ve benzeri bilgileri içerir.
+    * **Ad**: ad Için *Loadsqldwdemo* girin. Veri fabrikanızın adı * genel olarak benzersiz olmalıdır. "Data Factory Name ' LoadSQLDWDemo ' kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**ADFTutorialDataFactory**adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
+    * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
+    * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
+    * **Sürüm**: **v2**'yi seçin.
+    * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
 3. **Oluştur**’u seçin.
-4. Oluşturma tamamlandıktan sonra veri fabrikanıza gidin. Aşağıdaki resimde gösterildiği gibi **Veri Fabrikası** ana sayfasını görürsünüz:
+4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
 
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
 
@@ -68,91 +68,91 @@ Bu makalede, _Azure SQL Veritabanından Azure SQL Veri Ambarı'na veri yüklemek
 
 1. **Başlayalım** sayfasında, Veri Kopyalama aracını açmak için **Veri Kopyala** kutucuğunu seçin.
 
-1. **Özellikler** sayfasında, **Görev adı** alanı için **CopyFromSQLToSQLDW'yi** belirtin ve **İleri'yi**seçin.
+1. **Özellikler** sayfasında, **görev adı** alanı Için **Copyfromsqltosqldw** ' i belirtin ve **İleri**' yi seçin.
 
     ![Özellikler sayfası](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
 
-1. Kaynak **veri deposu** sayfasında aşağıdaki adımları tamamlayın:
+1. **Kaynak veri deposu** sayfasında, aşağıdaki adımları izleyin:
     >[!TIP]
-    >Bu öğreticide, kaynak veri deponuzun kimlik doğrulama türü olarak *SQL kimlik doğrulaması* kullanırsınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: Gerekirse*Hizmet Sorumlusu* ve *Yönetilen Kimlik.* Ayrıntılar için [bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties) ilgili bölümlere bakın.
-    >Veri depolarının sırlarını güvenli bir şekilde depolamak için Azure Anahtar Kasası kullanılması da önerilir. Ayrıntılı resimler için [bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
+    >Bu öğreticide, *SQL kimlik* doğrulamasını kaynak veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz:*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties) ilgili bölümlere bakın.
+    >Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
 
-    a. tıklayın **+ Yeni bağlantı oluşturun.**
+    a. **+ Yeni bağlantı oluştur**' a tıklayın.
 
-    b. Galeriden **Azure SQL Veritabanı'nı** seçin ve **Devam et'i**seçin. Bağlayıcılara filtre yazmak için arama kutusuna "SQL" yazabilirsiniz.
+    b. Galeriden **Azure SQL veritabanı** ' nı seçin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
 
     ![Azure SQL veritabanını seçme](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
-    c. Yeni **Bağlantılı Hizmet** sayfasında, açılan listeden sunucu adınızı ve DB adınızı seçin ve kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Test bağlantısını** tıklatın ve ardından **Oluştur'u**seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin.
 
     ![Azure SQL veritabanını yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. Kaynak olarak yeni oluşturulan bağlantılı hizmeti seçin ve **İleri**'ye tıklayın.
 
-1. Verileri **kopyalamak veya özel bir sorgu** sayfası kullanmak için seç tablolarına, tablolara filtre etmek için **SalesLT'i** girin. Kopya için tüm tabloları kullanmak için **(Tümünü Seç)** kutusunu seçin ve ardından **İleri'yi**seçin.
+1. **Verilerin kopyalanacağı tabloları seçin veya özel bir sorgu sayfası kullanın** sayfasında, tabloları filtrelemek Için **SalesLT** girin. Kopyaya ait tüm tabloları kullanmak için **(Tümünü Seç)** kutusunu seçin ve ardından **İleri**' yi seçin.
 
-    ![Kaynak tabloları seçin](./media/load-azure-sql-data-warehouse/select-source-tables.png)
+    ![Kaynak tabloları Seç](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
-1. Filtre **uygula** sayfasında ayarlarınızı belirtin veya **İleri'yi**seçin.
+1. **Filtre Uygula** sayfasında ayarlarınızı belirtin veya **İleri**' yi seçin.
 
-1. Hedef **veri depolama** sayfasında aşağıdaki adımları tamamlayın:
+1. **Hedef veri deposu** sayfasında, aşağıdaki adımları izleyin:
     >[!TIP]
-    >Bu öğreticide, hedef veri deponuz için kimlik doğrulama türü olarak *SQL kimlik doğrulaması* kullanırsınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: Gerekirse*Hizmet Sorumlusu* ve *Yönetilen Kimlik.* Ayrıntılar için [bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties) ilgili bölümlere bakın.
-    >Veri depolarının sırlarını güvenli bir şekilde depolamak için Azure Anahtar Kasası kullanılması da önerilir. Ayrıntılı resimler için [bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
+    >Bu öğreticide, *SQL kimlik doğrulamasını* hedef veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz:*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties) ilgili bölümlere bakın.
+    >Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
 
-    a. Bağlantı eklemek için **+ Yeni bağlantı oluştur'u** tıklatın
+    a. Bağlantı eklemek için **+ Yeni bağlantı oluştur** ' a tıklayın
 
-    b. Galeriden **Azure Synapse Analytics'i (eski adıyla SQL DW)** seçin ve **Devam et'i**seçin. Bağlayıcılara filtre yazmak için arama kutusuna "SQL" yazabilirsiniz.
+    b. Galeriden **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğini belirleyin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
 
-    ![Azure SQL DW'yi seçin](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+    ![Azure SQL DW 'yi seçin](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
-    c. Yeni **Bağlantılı Hizmet** sayfasında, açılan listeden sunucu adınızı ve DB adınızı seçin ve kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Test bağlantısını** tıklatın ve ardından **Oluştur'u**seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adını seçin ve Kullanıcı adını ve parolayı belirtin. Ayarları doğrulamak için **Bağlantıyı Sına** ' ya tıklayın ve ardından **Oluştur**' u seçin.
 
-    ![Azure SQL DW'yi yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+    ![Azure SQL DW 'yi yapılandırma](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri**'ye tıklayın.
 
-1. Tablo **eşleme** sayfasında, içeriği gözden geçirin ve **İleri'yi**seçin. Akıllı bir tablo eşleme görüntüler. Kaynak tablolar, tablo adlarını temel alan hedef tablolara eşlenir. Hedefte bir kaynak tablo yoksa, Azure Veri Fabrikası varsayılan olarak aynı ada sahip bir hedef tablo oluşturur. Bir kaynak tabloyu varolan bir hedef tabloyla eşleyebilirsiniz.
+1. **Tablo eşleme** sayfasında, içeriği gözden geçirin ve **İleri**' yi seçin. Akıllı tablo eşleştirmesi görüntülenir. Kaynak tablolar, tablo adlarına göre hedef tablolarla eşleştirilir. Hedefte bir kaynak tablosu yoksa, Azure Data Factory varsayılan olarak aynı ada sahip bir hedef tablo oluşturur. Ayrıca, bir kaynak tabloyu var olan bir hedef tabloyla eşleyebilirsiniz.
 
    > [!NOTE]
-   > SQL Server veya Azure SQL Veritabanı kaynak olduğunda SQL Veri Ambarı için otomatik tablo oluşturma uygulanır. Başka bir kaynak veri deposundan veri kopyalarsanız, veri kopyasını yürütmeden önce skeci azure SQL Veri Ambarı'nda önceden oluşturmanız gerekir.
+   > SQL veri ambarı havuzu için otomatik tablo oluşturma, SQL Server veya Azure SQL veritabanı kaynak olduğunda geçerlidir. Verileri başka bir kaynak veri deposundan kopyalarsanız, veri kopyasını yürütmeden önce şemayı Azure SQL veri ambarı 'nda önceden oluşturmanız gerekir.
 
    ![Tablo eşleme sayfası](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
-1. Sütun **eşleme** sayfasında, içeriği gözden geçirin ve **İleri'yi**seçin. Akıllı tablo eşleme sütun adını temel adatır. Veri Fabrikası'nın tabloları otomatik olarak oluşturmasına izin ederseniz, kaynak ve hedef depolar arasında uyumsuzluklar olduğunda veri türü dönüştürmesi oluşabilir. Kaynak ve hedef sütun arasında desteklenmeyen bir veri türü dönüştürmesi varsa, ilgili tablonun yanında bir hata iletisi görürsünüz.
+1. **Sütun eşleme** sayfasında, içeriği gözden geçirin ve **İleri**' yi seçin. Akıllı tablo eşleme, sütun adını temel alır. Tabloları otomatik olarak oluşturalım Data Factory, kaynak ve hedef mağazalar arasında uyumsuzluklar olduğunda veri türü dönüştürme gerçekleşebilir. Kaynak ve hedef sütun arasında desteklenmeyen bir veri türü dönüştürmesi varsa, karşılık gelen tablonun yanında bir hata mesajı görürsünüz.
 
     ![Sütun eşleme sayfası](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
-1. **Ayarlar** sayfasında aşağıdaki adımları tamamlayın:
+1. **Ayarlar** sayfasında, aşağıdaki adımları izleyin:
 
-    a. **Hazırlama ayarları** bölümünde , **+ Yeni** evreleme depolamasını tıklatın. Depolama, PolyBase kullanarak verileri SQL Veri Ambarı'na yüklenmesinden önce evrelemek için kullanılır. Kopyalama tamamlandıktan sonra, Azure Blob Depolama'daki geçici veriler otomatik olarak temizlenir.
+    a. **Hazırlama ayarları** bölümünde, yeni bir hazırlama depolaması Için **+ Yeni** öğesine tıklayın. Depolama, PolyBase kullanılarak SQL veri ambarı 'na yüklenmeden önce verileri hazırlamak için kullanılır. Kopyalama işlemi tamamlandıktan sonra, Azure Blob depolama alanındaki geçici veriler otomatik olarak temizlenir.
 
-    b. Yeni **Bağlantılı Hizmet** sayfasında, depolama hesabınızı seçin ve bağlantılı hizmeti dağıtmak için **Oluştur'u** seçin.
+    b. **Yeni bağlı hizmet** sayfasında, depolama hesabınızı seçin ve bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
-    c. Gelişmiş **ayarlar** bölümünde, Kullanım **türü varsayılan** seçeneğini seçin ve **sonra İleri'yi**seçin.
+    c. **Gelişmiş ayarlar** bölümünde, **türü varsayılan kullan** seçeneğinin Işaretini kaldırın ve ardından **İleri**' yi seçin.
 
-    ![PolyBase'i yapılandır](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+    ![PolyBase 'i yapılandırma](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 
-1. **Özet** sayfasında, ayarları gözden geçirin ve **İleri'yi**seçin.
+1. **Özet** sayfasında, ayarları gözden geçirin ve **İleri**' yi seçin.
 
     ![Özet sayfası](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. Dağıtım **sayfasında,** ardışık izlemeyi (görev) izlemek için **Monitör'ü** seçin.
+1. **Dağıtım sayfasında**, işlem hattını (görev) Izlemek için **izleyici** ' yi seçin.
 
-1. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. Ardışık iş aktüeden başarılı bir şekilde tamamlandığında, etkinlik çalıştırma ayrıntılarını görüntülemek ve ardışık ardışık ardışık ardışık lığı yeniden çalıştırmak için **PIPELINE NAME** sütununaltındaki **CopyFromSQLToSQLDW** bağlantısını seçin.
+1. Soldaki **İzleyici** sekmesinin otomatik olarak seçildiğine dikkat edin. İşlem hattı çalıştırması başarıyla tamamlandığında, etkinlik çalıştırma ayrıntılarını görüntülemek ve işlem hattını yeniden çalıştırmak için işlem **hattı adı** sütununun altındaki **Copyfromsqltosqldw** bağlantısını seçin.
 
-    [![İzleme boru hattı çalışır](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
-1. Ardışık hatlar çalışır görünümüne geri dönmek için, en üstteki **Tüm ardışık hatlar çalışır** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
+    [![İşlem hattı çalıştırmalarını izleme](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+1. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Listeyi yenilemek için **Yenile**’yi seçin.
 
     ![Etkinlik çalıştırmalarını izleme](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
-1. Her kopyalama etkinliğinin yürütme ayrıntılarını izlemek için, etkinlik görünümünde **EtkİnLİk** İsİm'inin altındaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. Kaynaktan lavaboya kopyalanan veri hacmi, veri aktarımı, ilgili süreye sahip yürütme adımları ve kullanılan yapılandırmalar gibi ayrıntıları izleyebilirsiniz.
-    ![Etkinlik çalıştırma ayrıntılarını izleme](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
+1. Her kopyalama etkinliğinin yürütme ayrıntılarını izlemek için, etkinlik çalıştırmaları görünümünde **etkınlık adı** ' nın altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. Kaynaktan havuza, veri işleme, karşılık gelen süre ile yürütme adımlarına ve kullanılan yapılandırmalara göre veri hacmi gibi ayrıntıları izleyebilirsiniz.
+    ![Etkinlik çalıştırma ayrıntılarını izle](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
 
-    ![Etkinlik çalıştırma ayrıntılarını izleme](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
+    ![Etkinlik çalıştırma ayrıntılarını izle](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure SQL Veri Ambarı desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin:
+Azure SQL veri ambarı desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin:
 
 > [!div class="nextstepaction"]
->[Azure SQL Veri Ambarı bağlayıcısı](connector-azure-sql-data-warehouse.md)
+>[Azure SQL veri ambarı Bağlayıcısı](connector-azure-sql-data-warehouse.md)

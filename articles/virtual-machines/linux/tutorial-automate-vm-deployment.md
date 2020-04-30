@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure'da bulut init ile bir Linux VM'yi özelleştirin
-description: Bu eğitimde, Linux VM'lerini Azure'da ilk kez önyükleme yaptıklarında özelleştirmek için bulut giriş ve Key Vault'u nasıl kullanacağınızı öğreniyorsunuz
+title: Öğretici-Azure 'da Cloud-init ile Linux VM Özelleştirme
+description: Bu öğreticide, Cloud-init ve Key Vault kullanarak Azure 'da ilk kez önyükleme yaparken Linux VM 'lerini nasıl özelleştireceğinizi öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,10 +15,10 @@ ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d2a6568b0d62c880a688160cf981fb33083ae02e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81461489"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
@@ -41,21 +41,21 @@ Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklem
 
 Azure’a sağladıkları görüntülere cloud-init’in dahil edilmesini ve bu görüntülerde çalışmasını sağlamak için iş ortaklarımızla çalışıyoruz. Aşağıdaki tabloda, Azure platform görüntülerindeki geçerli cloud-init kullanılabilirliği açıklanmaktadır:
 
-| Yayımcı | Sunduğu | SKU | Sürüm | bulut-init hazır |
+| Yayımcı | Sunduğu | SKU | Sürüm | Cloud-init Ready |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |en son |evet | 
+|Canonical |UbuntuServer |18,04-LTS |en son |evet | 
 |Canonical |UbuntuServer |16.04-LTS |en son |evet | 
 |Canonical |UbuntuServer |14.04.5-LTS |en son |evet |
 |CoreOS |CoreOS |Dengeli |en son |evet |
-|OpenLogic 7.6 |CentOS |7-CI |en son |Önizleme |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |evet |
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |Önizleme |
+|OpenLogic 7,6 |CentOS |7-CI |en son |preview |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init yapılandırma dosyası oluşturma
 cloud-init’i uygulamalı olarak görmek için, NGINX’i yükleyen ve basit bir 'Merhaba Dünya' Node.js uygulaması çalıştıran bir sanal makine oluşturun. Aşağıdaki cloud-init yapılandırması, gerekli paketleri yükler, bir Node.js uygulaması oluşturur, ardından uygulamayı kullanıma hazırlar ve başlatır.
 
-Bash isteminizde veya Bulut Kabuğu'nda *cloud-init.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Örneğin, dosyayı oluşturmak için yazın `sensible-editor cloud-init.txt` ve kullanılabilir düzenleyicilerin listesini görün. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
+Bash isteminizdeki veya Cloud Shell, *kabuğunuzda Cloud-init. txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Örneğin, dosyayı oluşturmak `sensible-editor cloud-init.txt` ve kullanılabilir düzenleyicilerin listesini görmek için yazın. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
 
 ```bash
 #cloud-config
@@ -129,7 +129,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Web uygulamasını test etme
-Şimdi bir web tarayıcısı açabilir ve *http girebilirsiniz:\/\/\<adres* çubuğuna>. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
+Artık bir Web tarayıcısı açıp adres çubuğuna *http:\/\/\<publicıpaddress>* yazabilirsiniz. VM oluşturma işleminden kendi herkese açık IP adresinizi sağlayın. Node.js uygulamanız, aşağıdaki örnekte olduğu gibi görüntülenir:
 
 ![Çalışan NGINX sitesini görüntüleme](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -183,7 +183,7 @@ vm_secret=$(az vm secret format --secret "$secret" --output json)
 ### <a name="create-cloud-init-config-to-secure-nginx"></a>NGINX’in güvenliğini sağlamak için cloud-init yapılandırması oluşturma
 VM oluşturduğunuzda, sertifika ve anahtarlar korunan */var/lib/waagent/* dizininde depolanır. VM’ye sertifika eklenmesini ve NGINX’in yapılandırılmasını otomatikleştirmek için önceki örnekte yer alan güncelleştirilmiş bir cloud-init yapılandırmasını kullanabilirsiniz.
 
-*cloud-init-secured.txt* adlı bir dosya oluşturup aşağıdaki yapılandırmayı yapıştırın. Bulut Kabuğu'nu kullanıyorsanız, yerel makinenizde değil, orada bulut init config dosyasını oluşturun. Örneğin, dosyayı oluşturmak için yazın `sensible-editor cloud-init-secured.txt` ve kullanılabilir düzenleyicilerin listesini görün. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
+*cloud-init-secured.txt* adlı bir dosya oluşturup aşağıdaki yapılandırmayı yapıştırın. Cloud Shell kullanıyorsanız, yerel makinenizde değil, bulut-init yapılandırma dosyasını oluşturun. Örneğin, dosyayı oluşturmak `sensible-editor cloud-init-secured.txt` ve kullanılabilir düzenleyicilerin listesini görmek için yazın. Başta birinci satır olmak üzere cloud-init dosyasının tamamının doğru bir şekilde kopyalandığından emin olun:
 
 ```yaml
 #cloud-config
@@ -260,7 +260,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Güvenli web uygulamasını test etme
-Artık bir web tarayıcısı açıp *https adresini\/\/\<girebilirsiniz: adres* çubuğuna>. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
+Artık bir Web tarayıcısı açıp adres çubuğuna *https:\/\/\<publicıpaddress>* girebilirsiniz. Önceki VM oluşturma işleminin çıkışında gösterildiği gibi kendi genel IP adresinizi girin. Otomatik olarak imzalanan sertifika kullanıyorsanız güvenlik uyarısını kabul edin:
 
 ![Web tarayıcısı güvenlik uyarısını kabul edin](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

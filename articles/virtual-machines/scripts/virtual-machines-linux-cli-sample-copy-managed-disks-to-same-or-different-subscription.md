@@ -1,6 +1,6 @@
 ---
-title: Yönetilen diskleri aboneye kopyalama - CLI Sample
-description: Azure CLI Script Örneği - Yönetilen diskleri aynı veya farklı bir aboneye kopyalama (veya taşıma)
+title: Yönetilen diskleri bir abonelik-CLı örneğine kopyalama
+description: Azure CLı betik örneği-yönetilen diskleri aynı veya farklı bir aboneliğe kopyalama (veya taşıma)
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,15 +16,15 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 540f11e2089d6aeac1b6c664695d1dafbf31d65a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460894"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>CLI ile yönetilen diskleri aynı veya farklı aboneliğe kopyalama
 
-Bu betik bir yönetilen diski aynı bölgedeki aynı veya farklı bir aboneliğe kopyalar. Kopya yalnızca abonelikler aynı AAD kiracısının parçası olduğunda çalışır.
+Bu betik bir yönetilen diski aynı bölgedeki aynı veya farklı bir aboneliğe kopyalar. Kopyalama yalnızca abonelikler aynı AAD kiracısının parçası olduğunda işe yarar.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

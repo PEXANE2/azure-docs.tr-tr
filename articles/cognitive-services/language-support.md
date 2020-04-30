@@ -1,7 +1,7 @@
 ---
 title: Dil desteği
 titleSuffix: Azure Cognitive Services
-description: Azure Bilişsel Hizmetler, kullanıcılarınızı gören, duyan, konuşan ve anlayan uygulamalar oluşturmanıza olanak tanır. Bu hizmetler arasında, kullanıcıların uygulamanızla doğal yollarla iletişim kurmasına olanak tanıyan üç düzineden fazla dil desteklenir.
+description: Azure bilişsel hizmetler, kullanıcılarınızı görmenize, duymanıza, konuşmanıza ve anlamanıza yönelik uygulamalar oluşturmanıza olanak sağlar. Bu hizmetler arasında, üç düzine dilden daha fazla dil desteklenir, böylece kullanıcılar uygulamanızla doğal yollarla iletişim kurabilir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,17 +11,17 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530990"
 ---
-# <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Bilişsel Hizmetler için doğal dil desteği
+# <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
 
-Azure Bilişsel Hizmetler, kullanıcılarınızı gören, duyan, konuşan ve anlayan uygulamalar oluşturmanıza olanak tanır. Bu hizmetler arasında, kullanıcıların uygulamanızla doğal yollarla iletişim kurmasına olanak tanıyan üç düzineden fazla dil desteklenir. Hizmete göre dil kullanılabilirliğini görüntülemek için aşağıdaki bağlantıları kullanın.
+Azure bilişsel hizmetler, kullanıcılarınızı görmenizi, duymasını, konuşmasını ve anlamanızı sağlayan uygulamalar oluşturmanıza olanak tanır. Bu hizmetler arasında, üç düzine dilden daha fazla dil desteklenir, böylece kullanıcılar uygulamanızla doğal yollarla iletişim kurabilir. Hizmetin dil kullanılabilirliğini görüntülemek için aşağıdaki bağlantıları kullanın.
 
-Bu Bilişsel Hizmetler dil agnostik ve insan dili dayalı sınırlamalar yok.
+Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamalar içermez.
 
 * [Anomali Algılayıcısı (Önizleme)](./anomaly-detector/index.yml)
 * [Özel Görüntü](./Custom-Vision-Service/index.yml)
@@ -45,9 +45,9 @@ Bu Bilişsel Hizmetler dil agnostik ve insan dili dayalı sınırlamalar yok.
 
 ## <a name="speech"></a>Konuşma
 
-* [Konuşma Hizmeti: Konuşma-Metin](./speech-service/supported-languages.md#speech-to-text)
-* [Konuşma Hizmeti:Metinden Konuşmaya](./speech-service/supported-languages.md#text-to-speech)
-* [Konuşma Servisi: Konuşma Çevirisi](./speech-service/supported-languages.md#speech-translation)
+* [Konuşma hizmeti: konuşmayı metne dönüştürme](./speech-service/supported-languages.md#speech-to-text)
+* [Konuşma hizmeti: metinden konuşmaya](./speech-service/supported-languages.md#text-to-speech)
+* [Konuşma hizmeti: konuşma çevirisi](./speech-service/supported-languages.md#speech-translation)
 
 ## <a name="search"></a>Arama
 
@@ -65,5 +65,5 @@ Bu Bilişsel Hizmetler dil agnostik ve insan dili dayalı sınırlamalar yok.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bilişsel Hizmetler nelerdir?](welcome.md)
+* [Bilişsel hizmetler nelerdir?](welcome.md)
 * [Hesap oluşturma](cognitive-services-apis-create-account.md)

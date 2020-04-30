@@ -1,6 +1,6 @@
 ---
-title: Windows cihazına C# aracısı yükleme
-description: IoT aracısı için Azure Güvenlik Merkezi'ni 32 bit veya 64 bit Windows aygıtlarına nasıl yükleyebilirsiniz hakkında bilgi edinin.
+title: Windows cihaza C# Aracısı 'nı yükler
+description: 32-bit veya 64 bit Windows cihazlarına IoT Aracısı için Azure Güvenlik Merkezi 'nin nasıl yükleneceği hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537619"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows için IoT için Azure Güvenlik Merkezi C# tabanlı güvenlik aracısını dağıtma
 
-Bu kılavuzda, IoT C# tabanlı güvenlik aracısı için Azure Güvenlik Merkezi'nin Windows'a nasıl yükleneceğimiz açıklanmaktadır.
+Bu kılavuzda, Windows 'da IoT C# tabanlı güvenlik aracısının Azure Güvenlik Merkezi 'nin nasıl yükleneceği açıklanmaktadır.
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -36,28 +36,28 @@ Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Diğer platformlar ve aracı tatları için [bkz.](how-to-deploy-agent.md)
+Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını seçme](how-to-deploy-agent.md).
 
 1. Yüklemek istediğiniz makinede yerel yönetici hakları.
 
-1. Aygıt için [bir güvenlik modülü oluşturun.](quickstart-create-security-twin.md)
+1. Cihaz için [bir güvenlik modülü oluşturun](quickstart-create-security-twin.md) .
 
 ## <a name="installation"></a>Yükleme
 
 Güvenlik aracısını yüklemek için aşağıdaki iş akışını kullanın:
 
-1. Aygıta IoT Windows C# aracısı için Azure Güvenlik Merkezi'ni yükleyin. IoT [GitHub deposu](https://github.com/Azure/Azure-IoT-Security-Agent-CS)için Azure Güvenlik Merkezi'nden makinenize en son sürümü indirin.
+1. Cihaza IoT Windows C# Aracısı için Azure Güvenlik Merkezi 'ni yükler. IoT [GitHub deposu](https://github.com/Azure/Azure-IoT-Security-Agent-CS)Için Azure Güvenlik Merkezi ' nden makinenize en son sürümü indirin.
 
-1. Paketin içeriğini ayıklayın ve /Install klasörüne gidin.
+1. Paketin içeriğini ayıklayın ve/Install klasörüne gidin.
 
-1. Windows PowerShell'i Yönetici olarak açın.
-1. Çalıştırarak InstallSecurityAgent komut dosyasına çalışan izinler ekleyin:
+1. Windows PowerShell 'i yönetici olarak açın.
+1. Şu komutu çalıştırarak ınstallsecurityagent betiğine çalışan izinleri ekleyin:
 
     ```
     Unblock-File .\InstallSecurityAgent.ps1
     ```
 
-    sonra çalıştırın:
+    ardından şunu çalıştırın:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
@@ -69,22 +69,22 @@ Güvenlik aracısını yüklemek için aşağıdaki iş akışını kullanın:
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
     ```
 
-    Kimlik doğrulama parametreleri hakkında daha fazla bilgi için kimlik [doğrulamayı nasıl yapılandırılatır'a](concept-security-agent-authentication-methods.md)bakın.
+    Kimlik doğrulama parametreleri hakkında daha fazla bilgi için bkz. [kimlik doğrulamasını yapılandırma](concept-security-agent-authentication-methods.md).
 
-Bu komut dosyası aşağıdaki eylemleri yapar:
+Bu betik aşağıdaki eylemleri yapar:
 
-* Ön koşulları yükler.
+* Önkoşulları kurar.
 * Bir hizmet kullanıcısı ekler (etkileşimli oturum açma devre dışı).
-* Aracıyı **Sistem Hizmeti**olarak yükler.
-* Aracıyı sağlanan kimlik doğrulama parametreleriyle yapılandırır.
+* Aracıyı bir **sistem hizmeti**olarak kurar.
+* Aracıyı, belirtilen kimlik doğrulama parametreleriyle yapılandırır.
 
-Ek yardım için PowerShell'deki Yardım Al komutunu kullanın.
+Ek Yardım için PowerShell 'de Get-Help komutunu kullanın.
 
-Yardım Al örneği:```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help örneği:```Get-Help .\InstallSecurityAgent.ps1```
 
-### <a name="verify-deployment-status"></a>Dağıtım durumunu doğrulama
+### <a name="verify-deployment-status"></a>Dağıtım durumunu doğrula
 
-Aracı dağıtım durumunu çalıştırarak kontrol edin:
+Şunu çalıştırarak aracı dağıtım durumunu denetleyin:
 
 ```sc.exe query "ASC IoT Agent"```
 
@@ -92,7 +92,7 @@ Aracı dağıtım durumunu çalıştırarak kontrol edin:
 
 Aracıyı kaldırmak için:
 
-1. Aşağıdaki PowerShell komut dosyasını - **mod** parametresi kaldır'a ayarlanmış olarak **çalıştırın.**
+1. Aşağıdaki PowerShell betiğini, **-Mode** parametresi **Uninstall**olarak ayarlanmış şekilde çalıştırın.
 
     ```
     .\InstallSecurityAgent.ps1 -Uninstall
@@ -100,13 +100,13 @@ Aracıyı kaldırmak için:
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Aracı başlatılamazsa, daha fazla bilgi almak için günlüğe kaydetmeyi (günlüğe kaydetme varsayılan olarak *kapalıdır)* açın.
+Aracı başlamazsa, daha fazla bilgi almak için günlüğü açın (varsayılan olarak günlüğe kaydetme *kapalıdır* ).
 
 Günlüğe kaydetmeyi açmak için:
 
-1. Standart bir dosya düzenleyicisi kullanarak düzenlemek için yapılandırma dosyasını (General.config) açın.
+1. Standart bir dosya Düzenleyicisi kullanarak düzenleme için yapılandırma dosyasını (genel. config) açın.
 
-1. Aşağıdaki değerleri edin:
+1. Aşağıdaki değerleri düzenleyin:
 
    ```xml
    <add key="logLevel" value="Debug" />
@@ -116,11 +116,11 @@ Günlüğe kaydetmeyi açmak için:
    ```
 
     > [!NOTE]
-    > Sorun giderme tamamlandıktan sonra oturumu **kapatmanızı** öneririz. **Oturum** açma, günlük dosya boyutunu ve veri kullanımını artırır.
+    > Sorun giderme işlemi tamamlandıktan sonra oturumu **kapatmayı** öneririz. Günlüğe kaydetmeyi **bırakmak günlük dosyası** boyutunu ve veri kullanımını artırır.
 
 1. Aşağıdaki PowerShell veya komut satırını çalıştırarak aracıyı yeniden başlatın:
 
-    **Powershell**
+    **PowerShell**
 
      ```
      Restart-Service "ASC IoT Agent"
@@ -128,21 +128,21 @@ Günlüğe kaydetmeyi açmak için:
 
    or
 
-    **Cmd**
+    **CMD**
 
      ```
      sc.exe stop "ASC IoT Agent"
      sc.exe start "ASC IoT Agent"
      ```
 
-1. Hata hakkında daha fazla bilgi için günlük dosyasını gözden geçirin. Günlük dosyası, komut dosyasını çalıştırdığımız çalışma dizininde bulunur. 
+1. Hata hakkında daha fazla bilgi için günlük dosyasını gözden geçirin. Günlük dosyası, betiği çalıştırdığımız çalışma dizininde mevcut olacaktır. 
 
-   Günlük dosya konumu:`.\IoTAgentLog.log`
+   Günlük dosyası konumu:`.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
-* IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
+* IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun
+* IoT [mimarisi](architecture.md) Için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
 * [Hizmeti](quickstart-onboard-iot-hub.md) etkinleştirme
-* [SSS'yi](resources-frequently-asked-questions.md) okuyun
+* [SSS](resources-frequently-asked-questions.md) 'yi okuyun
 * [Uyarıları](concept-security-alerts.md) anlama

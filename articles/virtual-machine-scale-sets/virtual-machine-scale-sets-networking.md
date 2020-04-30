@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
 ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461369"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
@@ -41,27 +41,27 @@ Azure Hızlandırılmış Ağ, sanal makineye tek kökte G/Ç sanallaştırması
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure Yük Dengeleyicisi ile Azure sanal makine ölçeği setleri
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure Load Balancer ile Azure sanal makine ölçek kümeleri
 
-Sanal makine ölçek kümeleri ve yük dengeleyicisi ile çalışırken aşağıdakiler göz önünde bulundurulmalıdır:
+Sanal Makine Ölçek Kümeleri ve yük dengeleyici ile çalışırken aşağıdakiler göz önünde bulundurulmalıdır:
 
-* **Birden çok sanal makine ölçek kümeleri aynı yük dengeleyicikullanamaz.**
-* **Bağlantı Noktası Yönlendirme ve gelen NAT kuralları:**
-  * Her sanal makine ölçeği kümesinin gelen bir NAT kuralı olmalıdır.
-  * Ölçek kümesi oluşturulduktan sonra, arka uç bağlantı noktası yük dengeleyicisinin sistem durumu sondası tarafından kullanılan bir yük dengeleme kuralı için değiştirilemez. Bağlantı noktasını değiştirmek için, Azure sanal makine ölçeği kümesini güncelleştirerek sistem durumu sondasını kaldırabilir, bağlantı noktasını güncelleyebilir ve sistem durumu sondasını yeniden yapılandırabilirsiniz.
-  * Yük dengeleyicisinin arka uç havuzunda ayarlanan sanal makine ölçeğini kullanırken varsayılan gelen NAT kuralları otomatik olarak oluşturulur.
-* **Yük dengeleme kuralları**:
-  * Yük dengeleyicisinin arka uç havuzunda ayarlanan sanal makine ölçeğini kullanırken varsayılan yük dengeleme kuralı otomatik olarak oluşturulur.
-* **Giden kurallar:**
-  *  Yük dengeleme kuralıyla zaten başvurulan bir arka uç havuzu için giden kural oluşturmak için, gelen yük dengeleme kuralı oluşturulduğunda portalda **"Örtülü** **giden kurallar oluşturma"** işareti yapmanız gerekir.
+* **Birden çok sanal makine ölçek kümesi aynı yük dengeleyiciyi kullanamaz**.
+* **Bağlantı noktası iletme ve gelen NAT kuralları**:
+  * Her sanal makine ölçek kümesinin bir gelen NAT kuralı olmalıdır.
+  * Ölçek kümesi oluşturulduktan sonra, yük dengeleyicinin bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemez. Bağlantı noktasını değiştirmek için Azure sanal makine ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz.
+  * Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesi kullanılırken, varsayılan gelen NAT kuralları otomatik olarak oluşturulur.
+* **Yük Dengeleme kuralları**:
+  * Yük dengeleyicinin arka uç havuzunda sanal makine ölçek kümesi kullanılırken, varsayılan Yük Dengeleme kuralı otomatik olarak oluşturulur.
+* **Giden kuralları**:
+  *  Zaten bir yük dengeleme kuralı tarafından başvurulan bir arka uç havuzu için giden kuralı oluşturmak üzere, gelen yük dengeleme kuralı oluşturulduğunda öncelikle portalda **Hayır** olarak **"örtük giden kuralları oluştur"** seçeneğini işaretlemeniz gerekir.
 
-  :::image type="content" source="./media/vmsslb.png" alt-text="Yük dengeleme kuralı oluşturma" border="true":::
+  :::image type="content" source="./media/vmsslb.png" alt-text="Yük Dengeleme kuralı oluşturma" border="true":::
 
-Aşağıdaki yöntemler, varolan bir Azure yük dengeleyicisi ile ayarlanmış sanal makine ölçeğini dağıtmak için kullanılabilir.
+Aşağıdaki yöntemler, mevcut bir Azure yük dengeleyiciye sahip bir sanal makine ölçek kümesi dağıtmak için kullanılabilir.
 
-* [Azure portalını kullanarak mevcut bir Azure Yük Dengeleyicisi ile ayarlanmış sanal makine ölçeğini yapılandırın.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)
-* [Azure PowerShell'i kullanarak mevcut bir Azure Yük Bakiyeleyicisi ile sanal makine ölçeği kümesini yapılandırın.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)
-* [Azure CLI'yi kullanarak mevcut bir Azure Yük Dengeleyicisi ile sanal makine ölçeği kümesini yapılandırın.](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)
+* [Azure Portal kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal).
+* [Azure PowerShell kullanarak bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer yapılandırın](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell).
+* [Azure CLI kullanarak mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi yapılandırın](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli).
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Bir Application Gateway’e başvuran bir ölçek kümesi oluşturma
 Bir uygulama ağ geçidi kullanan bir ölçek kümesi oluşturmak için, bu ARM şablonu yapılandırmasında olduğu gibi ölçek kümenizin ipConfigurations bölümündeki uygulama ağ geçidinin arka uç adres havuzuna başvurun:
@@ -104,7 +104,7 @@ Azure şablonunda özel DNS sunucularını yapılandırmak için, ölçek kümes
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Yapılandırılabilir sanal makine etki alanı adlarıyla ölçek kümesi oluşturma
 CLI kullanarak sanal makineler için özel bir DNS adıyla bir ölçek kümesi oluşturmak için, **virtual machine scale set create** komutuna etki alanı adını temsil eden dizeden sonra **--vm-domain-name** bağımsız değişkenini ekleyin.
 
-Etki alanı adını Azure şablonuna ayarlamak için, ölçek kümesi **ağInterfaceConfigurations** bölümüne bir **dnsAyarlar** özelliği ekleyin. Örneğin:
+Bir Azure şablonunda etki alanı adını ayarlamak için, ölçek kümesi **Networkınterfaceconfigurations** bölümüne bir **dnssettings** özelliği ekleyin. Örneğin:
 
 ```json
 "networkProfile": {
@@ -150,7 +150,7 @@ Genel olarak, Azure ölçek kümesi sanal makinelerinin kendi genel IP adresleri
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Sanal makine başına bir genel IP ile ölçek kümesi oluşturma
 CLI ile her sanal makineye bir genel IP adresi atayan bir ölçek kümesi oluşturmak için, **vmss create** komutuna **--public-ip-per-vm** parametresini ekleyin. 
 
-Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft.Compute/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30**olduğundan emin olun ve ölçek kümesi ipConfigurations bölümüne **bir publicIpAddressConfiguration** JSON özelliği ekleyin. Örneğin:
+Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft. COMPUTE/virtualMachineScaleSets kaynağının API sürümünün en az **2017-03-30**olduğundan emin olun ve ölçek kümesi ipconfigurations bölümüne **Publicıpaddressconfiguration** JSON özelliği ekleyin. Örneğin:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -166,7 +166,7 @@ Azure şablonu kullanarak bir ölçek kümesi oluşturmak için, Microsoft.Compu
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Ölçek kümesinde sanal makinelerin genel IP adreslerini sorgulama
 CLI kullanarak ölçek kümesi sanal makinelerine atanmış genel IP adreslerini listelemek için, **az vmss list-instance-public-ips** komutunu kullanın.
 
-PowerShell kullanarak ortak IP adreslerini ölçeklendirmek için _Get-AzPublicIpAddress_ komutunu kullanın. Örneğin:
+PowerShell kullanarak ölçek kümesi genel IP adreslerini listelemek için _Get-Azpublicıpaddress_ komutunu kullanın. Örneğin:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
