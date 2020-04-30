@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Merkezi Gezgini'ni kullanarak aygıt bağlantısını izleme
-description: Aygıt iletilerini izleyin ve IoT Central Explorer CLI aracılığıyla aygıt ikiz değişikliklerini gözlemleyin.
+title: Azure IoT Central gezginini kullanarak cihaz bağlantısını izleme
+description: Cihaz iletilerini izleyin ve IoT Central Explorer CLı aracılığıyla cihaz ikizi değişikliklerini gözlemleyin.
 author: viv-liu
 ms.author: viviali
 ms.date: 03/27/2020
@@ -9,26 +9,26 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756675"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI'yı kullanarak cihaz bağlantısını izleme
 
-*Bu konu aygıt geliştiricileri ve çözüm oluşturucuları için geçerlidir.*
+*Bu konu, cihaz geliştiricileri ve çözüm oluşturucuları için geçerlidir.*
 
-Aygıtlarınızın IoT Central'a gönderdiği iletileri görmek ve aygıt ikizindeki değişiklikleri gözlemlemek için Azure CLI IoT uzantısını kullanın. Bu aracı, aygıt bağlantısının hata ayıklanması ve gözlemlemesi ve aygıt iletilerinin buluta ulaşmayan veya iki zıt değişikliklere yanıt veremeyeceği sorunları tanılamak için kullanabilirsiniz.
+Cihazlarınızın IoT Central gönderdiği iletileri görmek ve cihaz ikizi değişiklikleri gözlemlemek için Azure CLı IoT uzantısını kullanın. Bu aracı, cihaz bağlantısını hata ayıklama ve gözlemlemek ve ikizi değişikliklerine yanıt vermeyen buluta veya cihazlara ulaşmayan cihaz iletilerinin sorunlarını tanılamak için kullanabilirsiniz.
 
-[Daha fazla ayrıntı için Azure CLI uzantıları başvurusunu ziyaret edin](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[Daha fazla bilgi için Azure CLı uzantıları başvurusunu ziyaret edin](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ Azure CLI yüklendi ve sürüm 2.0.7 veya üstü. Çalıştırarak Azure CLI sürümünü `az --version`kontrol edin. [Azure CLI dokümanlarından](https://docs.microsoft.com/cli/azure/install-azure-cli) nasıl yükleyip güncelleştiringerektiğini öğrenin
-+ Azure'daki bir iş veya okul hesabı, bir IoT Central uygulamasına kullanıcı olarak eklendi.
++ Azure CLı yüklü ve sürüm 2.0.7 veya üzeri. Çalıştırarak `az --version`Azure CLI 'nizin sürümünü denetleyin. [Azure CLI belgelerinden](https://docs.microsoft.com/cli/azure/install-azure-cli) yüklemeyi ve güncelleştirmeyi öğrenin
++ Azure 'da bir IoT Central uygulamasına kullanıcı olarak eklenen bir iş veya okul hesabı.
 
-## <a name="install-the-iot-central-extension"></a>IoT Merkezi uzantısını yükleme
+## <a name="install-the-iot-central-extension"></a>IoT Central uzantısını yükler
 
 Yüklemek için komut satırınızdan aşağıdaki komutu çalıştırın:
 
@@ -36,13 +36,13 @@ Yüklemek için komut satırınızdan aşağıdaki komutu çalıştırın:
 az extension add --name azure-iot
 ```
 
-Uzantının sürümünü çalıştırarak denetleyin:
+Şu çalıştırarak uzantının sürümünü denetleyin:
 
 ```azurecli
 az --version
 ```
 
-Azure-iot uzantısı 0.8.1 veya daha yüksek olduğunu görmelisiniz. Değilse, çalıştırın:
+Azure-IoT uzantısının 0.8.1 veya üzeri olduğunu görmeniz gerekir. Değilse, şunu çalıştırın:
 
 ```azurecli
 az extension update --name azure-iot
@@ -50,28 +50,28 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>Uzantıyı kullanma
 
-Aşağıdaki bölümlerde, çalıştırdığınızda `az iot central`kullanabileceğiniz ortak komutlar ve seçenekler açıklanabilir. Komutların ve seçeneklerin tam kümesini `--help` `az iot central` görüntülemek için, alt komutlarına veya alt komutlarından herhangi birini geçirin.
+Aşağıdaki bölümlerde, çalıştırdığınızda `az iot central`kullanabileceğiniz ortak komutlar ve seçenekler açıklanır. Komutların ve seçeneklerin tam kümesini görüntülemek için alt komutlarına `--help` `az iot central` veya herhangi birine geçiş yapın.
 
 ### <a name="login"></a>Oturum Aç
 
-Azure CLI'de oturum açarak başlayın. 
+Azure CLı 'de oturum açarak başlayın. 
 
 ```azurecli
 az login
 ```
 
-### <a name="get-the-application-id-of-your-iot-central-app"></a>IoT Central uygulamanızın Başvuru Kimliğini Alın
-**Yönetim/Uygulama Ayarlarında,** **Uygulama Kimliğini**kopyalayın. Bu değeri sonraki adımlarda kullanırsınız.
+### <a name="get-the-application-id-of-your-iot-central-app"></a>IoT Central uygulamanızın uygulama KIMLIĞINI alın
+**Yönetim/uygulama ayarları**' nda, **uygulama kimliği**' ni kopyalayın. Bu değeri sonraki adımlarda kullanırsınız.
 
 ### <a name="monitor-messages"></a>İletileri izleme
-IoT Central uygulamanıza gönderilen iletileri cihazlarınızdan izleyin. Çıktı, tüm üstbilgi ve ek açıklamaları içerir.
+Cihazlarınızdan IoT Central uygulamanıza gönderilen iletileri izleyin. Çıktı tüm üst bilgileri ve ek açıklamaları içerir.
 
 ```azurecli
 az iot central app monitor-events --app-id <app-id> --properties all
 ```
 
-### <a name="view-device-properties"></a>Aygıt özelliklerini görüntüleme
-Belirli bir aygıtın geçerli okuma ve okuma/yazma aygıt özelliklerini görüntüleyin.
+### <a name="view-device-properties"></a>Cihaz özelliklerini görüntüle
+Belirli bir cihaz için geçerli okuma ve okuma/yazma cihaz özelliklerini görüntüleyin.
 
 ```azurecli
 az iot central device-twin show --app-id <app-id> --device-id <device-id>
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir aygıt geliştiricisiyseniz, önerilen bir sonraki adım [Azure IoT Central'da Aygıt bağlantısı](./concepts-get-connected.md)hakkında bilgi almaktır.
+Bir cihaz geliştiricisiyseniz, önerilen bir sonraki adım [Azure IoT Central cihaz bağlantısı](./concepts-get-connected.md)hakkında bilgi almanız gerekir.

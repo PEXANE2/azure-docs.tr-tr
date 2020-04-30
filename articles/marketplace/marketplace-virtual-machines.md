@@ -1,6 +1,6 @@
 ---
-title: Azure Marketi için Sanal Makine Teklif Yayımlama Kılavuzu
-description: Bu makalede, bir sanal makine ve Market'ten dağıtılacak yazılımsız deneme sürümü yayımlama gereksinimleri açıklanmaktadır.
+title: Azure Marketi için sanal makine teklifi Yayımlama Kılavuzu
+description: Bu makalede, Market 'ten dağıtılması için bir sanal makine ve yazılım ücretsiz deneme sürümü yayımlama gereksinimleri açıklanmaktadır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -9,62 +9,62 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687507"
 ---
-# <a name="virtual-machine-offer-publishing-guide"></a>Sanal Makine Teklif Yayın Kılavuzu
+# <a name="virtual-machine-offer-publishing-guide"></a>Sanal Makine teklifi Yayımlama Kılavuzu
 
-Sanal Makine görüntüleri, Azure Marketi'nde bir çözüm yayınlamanın başlıca yollarından biridir. Bu teklifin gereksinimlerini anlamak için bu kılavuzu kullanın. 
+Sanal makine görüntüleri, bir çözümü Azure Marketi 'nde yayımlamanın ana yöntemlerinden biridir. Bu teklifin gereksinimlerini anlamak için bu kılavuzu kullanın. 
 
-Bunlar, Market aracılığıyla dağıtılan ve faturalanan işlem teklifleridir. Bir kullanıcının gördüğü eylem çağrısı "Şimdi Al" dır.
+Bunlar Market aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü eyleme yapılan çağrı "Şimdi al" dır.
 
 ## <a name="free-trial"></a>Ücretsiz Deneme 
 
-Kendi Lisansını Getir (BYOL) faturalandırma modelini kullanırken sınırlı süreli yazılım lisanslarına erişerek kullanıcıların teklifinizi test etmesini sağlayabilirsiniz. 
+Kullanıcıları, kendi lisansını getir (KLG) Faturalandırma modelini kullanırken sınırlı süreli yazılım lisanslarına erişerek teklifinizi test etmek üzere düzenleyebilirsiniz. 
 
 ## <a name="test-drive"></a>Test Sürüşü
 
-Bir veya daha fazla sanal makineyi hizmet olarak altyapı (IaaS) veya hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla dağıtMış sınız. Test sürücüsü yayımlama seçeneğinin bir yararı, sanal bir makinenin veya iş ortağıtarafından barındırılan rehberli tur un tümünün otomatik olarak sağlanmasıdır. Test sürüşü, müşterinize ek ücret ödemeden bir değerlendirme sağlar. Deneme deneyimiyle etkileşimde bulunmak için müşterinizin mevcut bir Azure müşterisi olması gerekmez. 
+Hizmet olarak altyapı (IaaS) veya hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla bir veya daha fazla sanal makine dağıtırsınız. Test sürüşü yayımlama seçeneğinin bir avantajı, bir sanal makinenin otomatik olarak sağlanması veya iş ortağının barındırdığı bir Kılavuzlu tura katılarak tamamen bir çözümdür. Sınama sürücüsü, müşterinize hiçbir ek ücret ödemeden bir değerlendirme sağlar. Müşterinizin deneme deneyimine yönelik mevcut bir Azure müşterisi olması gerekmez. 
 
-Başlamak için [amp-testdrive](mailto:amp-testdrive@microsoft.com) bize ulaşın. 
+Başlamak için [amp-testdrive](mailto:amp-testdrive@microsoft.com) 'da bizimle iletişim kurun. 
 
 |Gereksinimler  |Ayrıntılar |
 |---------|---------|
-| Bir Market uygulamanız var   |    IaaS veya SaaS üzerinden bir veya daha fazla sanal makine.      |
+| Market uygulamanız var   |    IaaS veya SaaS aracılığıyla bir veya daha fazla sanal makine.      |
 
-## <a name="interactive-demo"></a>İnteraktif Demo
+## <a name="interactive-demo"></a>Etkileşimli Tanıtım
 
-Etkileşimli bir gösteri kullanarak müşterilerinize çözümünüz hakkında rehberli bir deneyim sunarsınız. Etkileşimli demo yayıncılık seçeneğinin yararı, karmaşık çözümünüzün karmaşık bir şekilde sağlanması olmadan bir deneme deneyimi sağlamanızdır. 
+Etkileşimli bir tanıtım kullanarak müşterilerinizin çözümüne yönelik kılavuzlu bir deneyim sağlarsınız. Etkileşimli Tanıtım yayımlama seçeneğinin avantajı, karmaşık çözümünüzün karmaşık bir şekilde sağlanması gerekmeden bir deneme deneyimi sağlamaktır. 
 
-## <a name="virtual-machine-offer"></a>Sanal Makine Teklifi
+## <a name="virtual-machine-offer"></a>Sanal Makine teklifi
 
-Müşterinizle ilişkili aboneye sanal bir cihaz dağıttığınızda sanal makine teklif türünü kullanın. VM'ler kullandıkça öde veya kendi lisansını getir (BYOL) lisans modelleri kullanılarak tamamen ticaret ekidir. Microsoft, ticaret işlemini barındırıyor ve müşterinizi sizin adınıza faturaediyor. Müşteriniz ve Microsoft arasında, tüm Kurumsal Sözleşmeler de dahil olmak üzere tercih edilen ödeme ilişkisini kullanma avantajından yararlanırsınız.
+Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. VM 'Ler, Kullandıkça Öde veya kendi lisansını getir (KLG) lisanslama modelleri kullanılarak tamamen ticari olarak etkinleştirilmiştir. Microsoft, ticari işlemi barındırır ve müşterinizin adına fatura alır. Müşteri ile Microsoft arasında, kurumsal sözleşmeler dahil tercih edilen ödeme ilişkilerini kullanmanın avantajını elde edersiniz.
 
 > [!NOTE]
-> Şu anda, Kurumsal Sözleşme ile ilişkili parasal taahhütler VM'nizin Azure kullanımına karşı kullanılabilir, ancak yazılım lisans ücretlerinize karşı kullanılamaz.  
+> Şu anda, bir Kurumsal Anlaşma ilişkili parasal taahhütler, VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.  
 > 
 > [!NOTE]
-> Resmi ve fiyatlandırmayı Özel teklif olarak yayımlayarak VM'nizin keşfini ve dağıtımını belirli bir müşteri kümesiyle sınırlandırabilirsiniz. Özel teklifler, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve terimler sunma olanağının kilidini açar. Özelleştirilmiş terimler, özel leştirilmiş fiyatlandırma ve terimlerle alan liderliğindeki anlaşmaların yanı sıra sınırlı sürüm yazılımlarına erken erişim de dahil olmak üzere çeşitli senaryoları vurgulamanızı sağlar. Özel teklifler, bu ayrıntılarla yeni bir SKU oluşturarak sınırlı sayıda müşteriye belirli fiyatlandırma veya ürünler vermenizi sağlar.  
-> *   Özel Teklifler hakkında daha fazla bilgi için, azure.microsoft.com/blog/private-offers-on-azure-marketplace'da bulunan Azure Marketi'ndeki Özel Teklifler sayfasını ziyaret [edin.](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)  
+> Görüntüyü ve fiyatlandırmayı özel bir teklif olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel teklifler, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve koşulları sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel teklifler, bu ayrıntılarla yeni bir SKU oluşturarak belirli fiyatlandırma veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.  
+> *   Özel teklifler hakkında daha fazla bilgi için, [Azure.Microsoft.com/blog/Private-offers-on-Azure-Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)adresinde bulunan Azure Marketi 'Ndeki özel teklifleri ziyaret edin.  
 
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- | 
-| Faturalama ve ölçüm | VM'niz BYOL veya Pay-As-You-Go aylık faturalandırmayı desteklemelidir. |  
-| Azure uyumlu sanal sabit disk (VHD) | VM'ler Windows veya Linux üzerine inşa edilmelidir. <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için [Azure'da onaylanan Linux dağıtımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için [bkz.](./partner-center-portal/azure-vm-create-offer.md)</li> </ul> |  
+| Faturalandırma ve ölçüm | SANAL makinenizin KLG veya Kullandıkça Öde aylık faturalandırmasını desteklemesi gerekir. |  
+| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da desteklenen Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure ile uyumlu bır VHD oluşturma](./partner-center-portal/azure-vm-create-offer.md).</li> </ul> |  
 
 >[!Note]
->Bulut Çözüm Sağlayıcıları (CSP) iş ortağı kanal tercihi artık kullanılabilir.  Microsoft CSP iş ortağı kanalları aracılığıyla teklifinizi pazarlama hakkında daha fazla bilgi için lütfen [Bulut Çözüm Sağlayıcıları'na](./cloud-solution-providers.md) bakın.
+>Bulut çözümü sağlayıcıları (CSP) iş ortağı kanalı kabul etme artık kullanılabilir.  Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için lütfen bkz. [bulut çözümü sağlayıcıları](./cloud-solution-providers.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eğer bunu yapmadıysanız, 
+Daha önce yapmadıysanız, 
 
-- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
+- Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
 
-Kayıtlıysanız ve yeni bir teklif oluşturuyorsanız veya varolan bir teklif üzerinde çalışıyorsanız,
+Kaydolduysanız ve yeni bir teklif oluşturuyor ya da mevcut bir teklif üzerinde çalışıyorsanız,
 
-- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
-- Bkz. daha fazla bilgi için [sanal bir makine teklifi oluşturun.](./partner-center-portal/azure-vm-create-offer.md)
+- Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
+- Daha fazla bilgi için bkz. [Sanal Makine teklifi oluşturma](./partner-center-portal/azure-vm-create-offer.md) .

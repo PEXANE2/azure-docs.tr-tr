@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect "Yapılandırma" | Microsoft Dokümanlar
-description: Bu makalede, Azure AD Connect özelliği ile PTA'nın nasıl devre dışı kıldığı açıklanmaktadır.
+title: Azure AD Connect "yapılandırmayın" olarak kullanırken PTA 'ı devre dışı bırak "| Microsoft Docs
+description: Bu makalede, "yapılandırmayın" özelliği Azure AD Connect PTA 'nin nasıl devre dışı bırakılacağı açıklanmaktadır.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,45 +12,45 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa1046dc64fed3edb6c9d04f76a96f488769ff42
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726806"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>Azure AD Connect "Yapılandırma" kullanırken PTA'yı devre dışı
+# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>"Yapılandırmayın" Azure AD Connect kullanırken PTA 'ı devre dışı bırak "
 
-Azure AD Connect ile Geçiş Kimlik Doğrulaması kullanıyorsanız ve "Yapılandırmayın" olarak ayarlanmışsa, devre dışı bırakabilirsiniz. PTA'nın devre dışı bırakılması aşağıdaki cmdlets kullanılarak yapılabilir. 
+Azure AD Connect ile geçişli kimlik doğrulaması kullanıyorsanız ve "yapılandırmayın" olarak ayarlandıysa, devre dışı bırakabilirsiniz. PTA 'nin devre dışı bırakılması aşağıdaki cmdlet 'ler kullanılarak yapılabilir. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Aşağıdaki ön koşullar gereklidir:
-- PTA aracısını yüklü olan tüm windows makinesi. 
-- Aracı, sürüm 1.5.1742.0 veya sonraki sürümde olmalıdır. 
-- PowerShell cmdlets'i Çalıştırmak için Bir Azure global yönetici hesabı PTA'yı devre dışı bırakırsak.
+Aşağıdaki Önkoşullar gereklidir:
+- PTA aracısının yüklü olduğu herhangi bir Windows makinesi. 
+- Aracı 1.5.1742.0 veya üzeri bir sürümde olmalıdır. 
+- PTA 'yi devre dışı bırakmak üzere PowerShell cmdlet 'lerini çalıştırmak için bir Azure genel yönetici hesabı.
 
 >[!NOTE]
-> Aracınız daha yaşlıysa, bu işlemi tamamlamak için gereken cmdletler olmayabilir. Azure Portal'dan yeni bir aracıyı herhangi bir windows makinesine yükleyebilir ve yönetici kimlik bilgilerini sağlayabilirsiniz. (Aracının yüklenmesi buluttaki PTA durumunu etkilemez)
+> Aracınız daha eskiyse, bu işlemi gerçekleştirmek için gerekli cmdlet 'ler bulunmayabilir. Azure portalından yeni bir aracı, herhangi bir Windows makinesine yükleyebilir ve yönetici kimlik bilgileri sağlayabilirsiniz. (Aracıyı yüklemek, bulutta PTA durumunu etkilemez)
 
 > [!IMPORTANT]
-> Azure Devlet bulutu kullanıyorsanız, aşağıdaki değere sahip ENVIRONMENTNAME parametresini geçmeniz gerekir. 
+> Azure Kamu Bulutu kullanıyorsanız, ENVIRONMENTNAME parametresini aşağıdaki değerle geçirmeniz gerekir. 
 >
 >| Ortam Adı | Bulut |
 >| - | - |
 >| AzureUSGovernment | US Gov|
 
 
-## <a name="to-disable-pta"></a>PTA'yı devre dışı kayırmak için
-PowerShell oturumu içinden, PTA'yı devre dışı kullanabilirsiniz:
-1. PS C:\Program Files\Microsoft Azure AD Connect Kimlik Doğrulama Aracısı>`Import-Module .\Modules\PassthroughAuthPSModule`
+## <a name="to-disable-pta"></a>PTA 'yi devre dışı bırakmak için
+PowerShell oturumunda, PTA 'yi devre dışı bırakmak için aşağıdakileri kullanın:
+1. PS C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama Aracısı>`Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` veya `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` veya `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
-## <a name="if-you-dont-have-access-to-an-agent"></a>Bir temsilciye erişiminiz yoksa
+## <a name="if-you-dont-have-access-to-an-agent"></a>Bir aracıya erişiminiz yoksa
 
-Bir aracı makineniz yoksa, aracı yüklemek için aşağıdaki komutu kullanabilirsiniz.
+Bir aracı makineniz yoksa, bir aracı yüklemek için aşağıdaki komutu kullanabilirsiniz.
 
-1. portal.azure.com en son Auth Agent indirin.
-2. Özelliği yükleyin: `.\AADConnectAuthAgentSetup.exe` veya`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+1. Portal.azure.com adresinden en son auth aracısını indirin.
+2. Özelliği yükler: `.\AADConnectAuthAgentSetup.exe` veya`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

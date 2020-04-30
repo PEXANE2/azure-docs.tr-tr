@@ -1,27 +1,27 @@
 ---
-title: Azure Bahar Bulutu için kaynaklar | Microsoft Dokümanlar
-description: Azure Bahar Bulutu kaynak listesi
+title: Azure yay bulutu için kaynaklar | Microsoft Docs
+description: Azure Spring Cloud kaynak listesi
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 11/1/2019
 ms.author: brendm
 ms.openlocfilehash: 36e9b272bb4648853829364b22881ab8bec1ff70
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733048"
 ---
-# <a name="azure-spring-cloud-developer-resources"></a>Azure Bahar Bulutu geliştirici kaynakları
+# <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud geliştirici kaynakları
 
-Bir geliştirici olarak, aşağıdaki Azure İlkbahar Bulutu kaynaklarını yararlı bulabilirsiniz:
+Geliştirici olarak, aşağıdaki Azure Spring bulut kaynaklarını yararlı bulabilirsiniz:
 
 * [Azure yol haritası](https://azure.microsoft.com/updates)
 * [Sık sorulan sorular](spring-cloud-faq.md)
 * [Sorun giderme kılavuzu](spring-cloud-troubleshoot.md)
 * [MSDN Forumu](https://social.msdn.microsoft.com/Forums/home)
-* [Java Bahar Bulutu web sitesi](https://spring.io/)
-* [Bahar çerçevesi](https://cloud.spring.io/spring-cloud-azure/)
+* [Java Spring Cloud web sitesi](https://spring.io/)
+* [Spring Framework](https://cloud.spring.io/spring-cloud-azure/)
 * [Azure’da Spring](https://docs.microsoft.com/azure/developer/java/spring-framework/)
-* [Pivotal tarafından Spring Cloud microservices mimarisi](https://docs.pivotal.io/spring-cloud-services/1-5/common/index.html)
+* [Yay bulut mikro hizmet mimarisini özetleme](https://docs.pivotal.io/spring-cloud-services/1-5/common/index.html)

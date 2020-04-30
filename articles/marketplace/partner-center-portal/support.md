@@ -1,6 +1,6 @@
 ---
-title: Partner Center'daki Commercial Marketplace portalı için destek alın
-description: Destek isteğinin nasıl dosyalanması da dahil olmak üzere İş Ortağı Merkezi'ndeki destek seçenekleriniz hakkında bilgi edinin.
+title: Iş Ortağı Merkezi 'nde ticari Market portalı için destek alın
+description: Destek isteğine nasıl dosya ekleneceğini de içeren Iş Ortağı Merkezi 'ndeki Destek seçenekleriniz hakkında bilgi edinin.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
@@ -8,74 +8,74 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733107"
 ---
-# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Partner Center'da Ticari Pazar programına destek
+# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market programı desteği
 
-Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Uygun ve zamanında yanıt sağlamak için doğru destek ekibini bulmak önemlidir. Sorgunuzu uygun takıma yönlendirmenize yardımcı olacak aşağıdaki senaryoları göz önünde bulundurun: 
+Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Doğru destek ekibinin bulunması, uygun ve zamanında yanıt sağlamak açısından önemlidir. Sorgunuzu uygun ekibe yönlendirmenize yardımcı olması gereken aşağıdaki senaryoları göz önünde bulundurun: 
 
-- Yayımcıysanız ve bir müşteriden bir sorunuz varsa, [Azure portalındaki](https://portal.azure.com/)destek bağlantılarını kullanarak müşterinizden destek istemesini isteyin. 
+- Bir yayımınız varsa ve müşterimiz varsa, [Azure Portal](https://portal.azure.com/)destek bağlantılarını kullanarak müşterinizden destek istemesine sorun. 
 
-- Yayıncıysanız ve uygulamanız veya hizmetiniz ile ilgili bir sorunuz varsa, aşağıdaki destek seçeneklerini gözden geçirin.
+- Bir yayımsanız ve uygulamanız veya hizmetiniz ile ilgili sorularınız varsa, aşağıdaki destek seçeneklerini gözden geçirin.
 
-## <a name="support-options-for-publishers"></a>Yayıncılar için destek seçenekleri
+## <a name="support-options-for-publishers"></a>Yayımcılar için destek seçenekleri
 
-1. İş hesabınızla [İş Merkezi'ndeki Commercial Marketplace programına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) oturum açın. (Henüz yapmadıysanız, bir İş Ortağı [Merkezi hesabı oluşturmanız](./create-account.md)gerekir.)
+1. İş hesabınızla iş [Ortağı Merkezi ' nde ticari Market programında](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) oturum açın. (Henüz yapmadıysanız, [bir Iş Ortağı Merkezi hesabı oluşturmanız](./create-account.md)gerekecektir.)
 
-2. Sayfanın sağ tarafındaki üst menüde **Destek** simgesini seçin. 
+2. Sayfanın sağ tarafındaki menüden **destek** simgesini seçin. 
  
-3. **Yardım ve destek** bölmesi sayfanın sağ tarafından görüntülenir. 
+3. **Yardım ve destek** bölmesi sayfanın sağ tarafında görünür. 
  
-   ![Destek açılır menüsü](./media/commercial-marketplace-support-pane.png)
+   ![Destek açılan menüsü](./media/commercial-marketplace-support-pane.png)
 
-    Veya Ana **Sayfa** bölmesine gidin ve **Yardım ve destek'i**seçin.
+    Veya **giriş sayfası** bölmesine gidin ve **Yardım ve destek '** i seçin.
 
-   ![Ana Sayfa'dan yardım ve destek](./media/homepage-help-support.png)
+   ![Giriş sayfasından yardım ve destek](./media/homepage-help-support.png)
 
-4. Sorulara ve kaynaklara kapsamlı yanıtları gözden geçirmek için **[Belgeler'i](../index.yml)** seçin. 
+4. Soruların ve kaynakların kapsamlı yanıtlarını gözden geçirmek için **[Belgeler](../index.yml)** ' i seçin. 
 
-5. Diğer Microsoft yayıncılarının bilgilerinden yararlanarak sorularınızı yanıtlamak için **[Market İş Ortağı topluluk forumunu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** seçin. 
+5. Diğer Microsoft yayımcılarından yararlanarak sorularınızı yanıtlamak için **[Market Iş ortağı topluluk Forumu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ' nu seçin. 
 
-6. **Yeni destek isteği** biletini açmak için Ek **[yardım'ı](https://partner.microsoft.com/support/v2/?stage=1)** seçin.  
+6. **Yeni bir destek talebi** bileti açmak için **[ek yardım](https://partner.microsoft.com/support/v2/?stage=1)** ' ı seçin.  
 
-## <a name="how-to-open-a-support-ticket"></a>Destek bileti nasıl açılır?
+## <a name="how-to-open-a-support-ticket"></a>Destek bileti açma
 
-Artık **Yardım ve Destek** ekranında bir destek bileti açmaya hazırsınız.
+Artık **Yardım ve destek** ekranında bir destek bileti açmaya hazır olursunuz.
 
 ![Yardım ve destek](./media/help-and-support.png)
 
 >[!Note]
->İş Ortağı Merkezi'nde oturum açtıysanız, destekle daha iyi bir deneyim elde elabilirsiniz.
+>Iş Ortağı Merkezi 'nde oturum açtıysanız, desteğiyle daha iyi deneyim alacaksınız.
 
-**Seçenek 1:** Şu gibi anahtar kelimeler girin: Marketplace, Azure uygulaması, SaaS teklifi, hesap yönetimi, müşteri adayı yönetimi, dağıtım sorunu, ödeme, vb.
+**Seçenek 1:** Market, Azure uygulaması, SaaS teklifi, hesap yönetimi, müşteri adayı yönetimi, dağıtım sorunu, ödeme vb. gibi anahtar sözcükleri girin.
 
-**Seçenek 2:** Konulara göz atın -> **Kategori** = ticari pazar seçin -> uygun **Konu** sonra **Subtopic**seçin.
+**Seçenek 2:** Konulara gözatıp >- **Kategori** Seç = ticari market-> ilgili **Konu** başlığını seçin **.**
 
-Seçtiğiniz konuyu bulduktan **sonra, Çözümleri Gözden Geçir'i**seçin.
+Seçtiğiniz konuyu bulduktan sonra **çözümleri gözden geçir**' i seçin.
 
 ![Sonraki adım](./media/next-step.png)
 
-Aşağıdaki seçenekler kullanılabilir hale gelecektir:
+Aşağıdaki seçenekler kullanılabilir olacaktır:
 
-* Farklı bir konu seçmek için, **seçili sorunun**altında farklı bir konu bağlantısı seçin.
-* Varsa, bu sorunun açıklamasını gözden geçirin.  **Önerilen adımların**üzerinde gösterilen metindir.
-* **Varsa önerilen adımları**gözden geçirin.
-* **Varsa önerilen belgeleri**gözden geçirin.
+* Farklı bir konu seçmek için, **Seçili sorun**altında farklı bir konu bağlantısı seçin.
+* Varsa, bu sorunun açıklamasını gözden geçirin.  **Önerilen adımların**yukarısında gösterilen metindir.
+* Kullanılabiliyorsa **Önerilen adımları**gözden geçirin.
+* Kullanılabiliyorsa **Önerilen belgeleri**gözden geçirin.
 
 ![Önerilen çözümler](./media/recommended-solutions.png)
 
-**Önerilen çözümlerde**yanıtınızı bulamıyorsanız, **sorun ayrıntılarını sağlamak**için tıklayınız.  Çözüm sürecini hızlandırmaya yardımcı olmak için formu ve gerekli tüm alanları doldurun.  Sonra **gönder'e**tıklayın.
+**Önerilen çözümler**bölümünde yanıtınızı bulamazsanız, **Sorun ayrıntıları sağla**' ya tıklayın.  Çözüm sürecini hızlandırmaya yardımcı olmak için formu ve tüm gerekli alanları girin.  Ardından **Gönder**' e tıklayın.
 
 >[!Note]
->İş Ortağı Merkezi'nde oturum açmadıysanız ve konu kimlik doğrulaması gerektiriyorsa, devam etmeden önce oturum açmanız istenir.  Genel konular için kimlik doğrulama gerekli değildir.
+>Iş Ortağı Merkezi 'nde oturum açmadıysanız ve konu kimlik doğrulaması gerektiriyorsa, devam edebilmeniz için önce oturum açmanız istenir.  Ortak konularda kimlik doğrulaması gerekli değildir.
 
-## <a name="track-your-existing-support-requests"></a>Mevcut destek isteklerinizi izleme 
+## <a name="track-your-existing-support-requests"></a>Mevcut destek isteklerinizi izleyin 
 
-Tüm açık ve kapalı biletlerinizi incelemek için, sol daki gezinti çubuğundaki **Commercial Marketplace'e** gidin ve ardından **desteği**seçin.
+Açık ve kapalı biletlerinizi gözden geçirmek için sol gezinti çubuğunda **ticari Market** ' e gidin ve ardından **destek**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

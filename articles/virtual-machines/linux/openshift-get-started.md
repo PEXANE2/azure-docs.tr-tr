@@ -1,6 +1,6 @@
 ---
-title: Azure'da OpenShift'e genel bakış
-description: Azure'da OpenShift'e genel bakış.
+title: Azure 'da OpenShift genel bakış
+description: Azure 'da OpenShift 'e genel bakış.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,43 +10,43 @@ ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
 ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759460"
 ---
-# <a name="openshift-in-azure"></a>Azure'da OpenShift
+# <a name="openshift-in-azure"></a>Azure 'da OpenShift
 
-OpenShift, Docker ve Kubernetes'i işletmeye getiren açık ve genişletilebilir bir konteyner uygulama platformudur.  
+OpenShift, Docker ve Kubernetes 'i kuruluşa getiren açık ve genişletilebilir bir kapsayıcı uygulama platformudur.  
 
-OpenShift konteyner orkestrasyon ve yönetimi için Kubernetes içerir. Aşağıdakileri etkinleştiren geliştirici merkezli ve operasyon merkezli araçlar ekler:
+OpenShift, kapsayıcı düzenleme ve yönetimi için Kubernetes içerir. Şunları sağlayan geliştirici merkezli ve işlemler merkezli araçlar ekler:
 
 - Hızlı uygulama geliştirme.
-- Kolay dağıtım ve ölçekleme.
-- Ekipler ve uygulamalar için uzun süreli yaşam döngüsü bakımı.
+- Kolay dağıtım ve ölçeklendirme.
+- Takımlar ve uygulamalar için uzun süreli yaşam döngüsü bakımı.
 
-OpenShift'in birden çok sürümü vardır.  Bu sürümlerden yalnızca ikisi bugün müşterilerin Azure'da dağıtılaması için kullanılabilir: OpenShift Kapsayıcı Platformu ve OKD (eski adıyla OpenShift Origin).
+Birden çok OpenShift sürümü mevcuttur.  Bu sürümler, günümüzde müşterilerin Azure 'da dağıtılması için yalnızca iki adet bulunabilir: OpenShift kapsayıcı platformu ve OKD (eski adıyla OpenShift Origin).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift, Azure'da çalışan OpenShift'in tam olarak yönetilen bir teklifidir. Bu hizmet, Microsoft ve Red Hat tarafından ortaklaşa yönetilir ve desteklenir. Daha fazla bilgi için [Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/) belgelerine bakın.
+Red Hat OpenShift Microsoft Azure, Azure 'da çalışan bir OpenShift 'in tamamen yönetilen bir tekliftir. Bu hizmet, Microsoft ve Red Hat tarafından ortaklaşa yönetilir ve desteklenir. Daha fazla ayrıntı için bkz. [Azure Red Hat OpenShift hizmeti](https://docs.microsoft.com/azure/openshift/) belgeleri.
 
 ## <a name="openshift-container-platform"></a>OpenShift Kapsayıcı Platformu
 
-Konteyner Platformu, Red Hat tarafından desteklenen, kurumsal kullanıma hazır bir [ticari sürümdür.](https://www.openshift.com) Bu sürümle, müşteriler OpenShift Konteyner Platformu için gerekli yetkileri satın alır ve tüm altyapının kurulumu ve yönetiminden sorumludur.
+Kapsayıcı platformu, Red Hat tarafından desteklenen ve desteklenen kurumsal özellikli bir [ticari sürümdür](https://www.openshift.com) . Bu sürümde, müşteriler OpenShift kapsayıcı platformu için gerekli yetkilendirmeleri satın alarak tüm altyapının yüklenmesi ve yönetiminden sorumludur.
 
-Müşteriler platformun tamamını "sahip" olduklarından, platformu şirket içi veri merkezlerine veya genel bir buluta (Azure gibi) yükleyebilirler.
+Müşterilerin tüm platforma "sahip olduğu" için, şirket içi veri merkezinize veya genel bir buluta (Azure gibi) yükleyebilir.
 
 ## <a name="okd"></a>OKD
 
-OKD, OpenShift'in topluluk tarafından desteklenen [açık kaynaklı](https://www.okd.io/) bir yukarı akım projesidir. OKD CentOS veya Red Hat Enterprise Linux (RHEL) yüklenebilir.
+OKD, topluluk tarafından desteklenen bir OpenShift 'in [Açık kaynaklı](https://www.okd.io/) yukarı akış projem. OKD, CentOS veya Red Hat Enterprise Linux (RHEL) üzerine yüklenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure'da OpenShift için ortak ön koşulları yapılandırma](./openshift-container-platform-3x-prerequisites.md)
-- [Azure'da OpenShift Kapsayıcı Platformu'na dağıtma](./openshift-container-platform-3x.md)
-- [OpenShift Konteyner Platformu Kendi Kendini Yöneten Pazar Teklifi dağıtın](./openshift-container-platform-3x-marketplace-self-managed.md)
-- [Azure Yığını'nda OpenShift'i dağıtma](./openshift-azure-stack.md)
+- [Azure 'da OpenShift için ortak önkoşulları yapılandırma](./openshift-container-platform-3x-prerequisites.md)
+- [Azure 'da OpenShift kapsayıcı platformunu dağıtma](./openshift-container-platform-3x.md)
+- [OpenShift kapsayıcı platformu dağıtımını otomatik olarak yönetilen Market Teklifini dağıtma](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [Azure Stack 'de OpenShift dağıtma](./openshift-azure-stack.md)
 - [Dağıtım sonrası görevler](./openshift-container-platform-3x-post-deployment.md)
-- [OpenShift dağıtımını giderme](./openshift-container-platform-3x-troubleshooting.md)
+- [OpenShift dağıtımında sorun giderme](./openshift-container-platform-3x-troubleshooting.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta özel Apache Hadoop uygulamalarınızı yükleyin
-description: Azure HDInsight'ta Apache Hadoop kümeleri için HDInsight uygulamalarını nasıl yükleyeceğinizi öğrenin.
+title: Azure HDInsight 'a özel Apache Hadoop uygulamalarınızı yükler
+description: Azure HDInsight 'ta Apache Hadoop kümeleri için HDInsight uygulamalarını yüklemeyi öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768240"
 ---
-# <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight'a özel Apache Hadoop uygulamalarını yükleyin
+# <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
-Bu makalede, Azure portalında yayınlanmamış olan Azure HDInsight'a [apache Hadoop](https://hadoop.apache.org/) uygulamasını nasıl yükleyeceğinizi öğreneceksiniz. Bu makalede yükleyeceğiniz uygulama [Hue'dur.](https://gethue.com/)
+Bu makalede, Azure HDInsight 'a Azure portal yayımlanmayan bir [Apache Hadoop](https://hadoop.apache.org/) uygulamasının nasıl yükleneceğini öğreneceksiniz. Bu makaleye yükleyeceğiniz uygulama [ton](https://gethue.com/)' dır.
 
-HDInsight uygulaması, kullanıcıların bir HDInsight kümesine yükleyebileceği bir uygulamadır.  Bu uygulamalar Microsoft veya bağımsız yazılım satıcıları (ISV) tarafından ya da sizin tarafınızdan geliştirilebilir.  
+An HDInsight uygulama, kullanıcıların bir HDInsight kümesine yükleyebir uygulamadır.  Bu uygulamalar Microsoft veya bağımsız yazılım satıcıları (ISV) tarafından ya da sizin tarafınızdan geliştirilebilir.  
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -39,17 +39,17 @@ Bu uygulamayı (Hue) dağıtmak için gerekli dosyalar:
 
 ### <a name="to-install-hue-to-an-existing-hdinsight-cluster"></a>Var olan bir HDInsight kümesine Hue yüklemek için
 
-1. Azure'da oturum açmak ve Azure portalında Kaynak Yöneticisi şablonu açmak için aşağıdaki resmi seçin.
+1. Azure 'da oturum açmak için aşağıdaki görüntüyü seçin ve Azure portal Kaynak Yöneticisi şablonu açın.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Kaynak Yöneticisi şablonu [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  Bu Resource Manager şablonunun nasıl yazılacağını öğrenmek için bkz. [MSDN: HDInsight uygulaması yükleme](https://msdn.microsoft.com/library/mt706515.aspx).
+    Kaynak Yöneticisi şablonu konumunda [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue)bulunur.  Bu Resource Manager şablonunun nasıl yazılacağını öğrenmek için bkz. [MSDN: HDInsight uygulaması yükleme](https://msdn.microsoft.com/library/mt706515.aspx).
 
-1. Açılan listeden kümenizi içeren varolan **Kaynak grubunu** seçin. Kümeyle aynı kaynak grubunu kullanmak gerekir.
+1. Açılır listeden kümenizi içeren mevcut **kaynak grubunu** seçin. Kümeyle aynı kaynak grubunu kullanmak gereklidir.
 
 1. Uygulamayı yüklemek istediğiniz kümenin adını girin. Bu küme var olan bir küme olmalıdır.
 
-1. **Yukarıda belirtilen hüküm ve koşulları kabul ettiğim için**onay kutusunu seçin.
+1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**onay kutusunu seçin.
 
 1. **Satın al**'ı seçin.
 
@@ -57,11 +57,11 @@ Yükleme durumunu portal panosuna sabitlenmiş kutucuktan ve portal bildiriminde
 
 ### <a name="to-install-hue-while-creating-a-cluster"></a>Küme oluştururken Hue yüklemek için
 
-1. Azure'da oturum açmak ve Azure portalında Kaynak Yöneticisi şablonu açmak için aşağıdaki resmi seçin.
+1. Azure 'da oturum açmak için aşağıdaki görüntüyü seçin ve Azure portal Kaynak Yöneticisi şablonu açın.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Kaynak Yöneticisi şablonu [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Bu Resource Manager şablonunun nasıl yazılacağını öğrenmek için bkz. [MSDN: HDInsight uygulaması yükleme](https://msdn.microsoft.com/library/mt706515.aspx).
+    Kaynak Yöneticisi şablonu konumunda [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json)bulunur.  Bu Resource Manager şablonunun nasıl yazılacağını öğrenmek için bkz. [MSDN: HDInsight uygulaması yükleme](https://msdn.microsoft.com/library/mt706515.aspx).
 
 2. Küme oluşturmak ve Hue uygulamasını yüklemek için yönergeleri izleyin. HDInsight kümeleri oluşturma hakkında daha fazla bilgi için bkz. [HDInsight’ta Linux tabanlı Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -71,23 +71,23 @@ Resource Manager şablonlarını çağırmak için Azure portalına ek olarak [A
 
 ## <a name="validate-the-installation"></a>Yüklemeyi doğrulama
 
-Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu denetleyebilirsiniz. Buna ek olarak, tüm HTTP uç noktaları nın beklendiği gibi ortaya çıktığını ve varsa web sayfasının da geçerli olduğunu doğrulayabilirsiniz.
+Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu denetleyebilirsiniz. Ayrıca, tüm HTTP uç noktalarını beklenen şekilde ve varsa Web sayfasını da doğrulayabilirsiniz.
 
-**Hue**için aşağıdaki adımları kullanabilirsiniz:
+**Ton**için aşağıdaki adımları kullanabilirsiniz:
 
 ### <a name="azure-portal"></a>Azure portal
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
-1. **Ayarlar** menüsünden **Uygulamalar'ı**seçin.
-1. Özellikleri görüntülemek için listeden **ton** seçin.  
+1. **Ayarlar** menüsünde, **uygulamalar**' ı seçin.
+1. Özellikleri görüntülemek için listeden **ton** ' ı seçin.  
 1. Web sitesini doğrulamak için Web sayfası bağlantısını seçin.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Değiştirin `CLUSTERNAME` `RESOURCEGROUP` ve ilgili değerlerle ve ardından aşağıdaki komutları girin:
+Ve `CLUSTERNAME` `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve ardından aşağıdaki komutları girin:
 
-* HDInsight kümesi için tüm uygulamaları listeler.
+* HDInsight kümesinin tüm uygulamalarını listeler.
 
     ```azurecli
     az hdinsight application list --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP
@@ -103,23 +103,23 @@ Değiştirin `CLUSTERNAME` `RESOURCEGROUP` ve ilgili değerlerle ve ardından a�
 
 Uygulama yükleme durumunu portal bildiriminden denetleyebilirsiniz (Portalın üst kısmındaki zil simgesine tıklayın).
 
-Bir uygulama yüklemesi başarısız olduysa, hata iletilerini görebilir ve bilgileri üç yerden ayıklayabilirsiniz:
+Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata ayıklama bilgilerini görebilirsiniz:
 
 * HDInsight Uygulamaları: genel hata bilgileri.
 
-    Kümeyi portaldan açın ve Ayarlar'dan Uygulamalar'ı seçin:
+    Portaldan kümeyi açın ve ayarlardan uygulamalar ' ı seçin:
 
     ![hdinsight applications application installation error](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png)
 
 * HDInsight betik eylemi: HDInsight Uygulamalarının hata iletisi bir betik eylemi hatası belirtiyorsa betik eylemleri bölmesinde betik hatasına ilişkin daha fazla bilgi sunulur.
 
-    Ayarlar'dan Komut Dosyası Eylemi'ni seçin. Betik eylemi geçmişinde hata iletileri gösterilir
+    Ayarlardan betik eylemi ' ni seçin. Betik eylemi geçmişinde hata iletileri gösterilir
 
     ![hdinsight applications script action error](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
 
-* Apache Ambari Web UI: Yükleme komut dosyası hatanın nedeniyse, yükleme komut dosyaları yla ilgili tam günlükleri denetlemek için Ambari Web UI'yi kullanın.
+* Apache ambarı Web Kullanıcı arabirimi: Install betiği hatanın nedeniydi, Install betiklerine ilişkin tam günlükleri denetlemek için, ambarı Web Kullanıcı arabirimini kullanın.
 
-    Daha fazla bilgi için sorun [giderme komut dosyası eylemleri'ne](./troubleshoot-script-action.md)bakın.
+    Daha fazla bilgi için bkz. [betik eylemlerine sorun giderme](./troubleshoot-script-action.md).
 
 ## <a name="remove-hdinsight-applications"></a>HDInsight uygulamalarını kaldırma
 
@@ -127,13 +127,13 @@ Bir uygulama yüklemesi başarısız olduysa, hata iletilerini görebilir ve bil
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
-1. **Ayarlar** menüsünden **Uygulamalar'ı**seçin.
-1. Kaldırmak istediğiniz uygulamayı sağ tıklatın ve sonra **Sil'i**seçin.
+1. **Ayarlar** menüsünde, **uygulamalar**' ı seçin.
+1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil**' i seçin.
 1. Onaylamak için **Evet**'i seçin.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Değiştir `NAME` `CLUSTERNAME`, `RESOURCEGROUP` ve ilgili değerlerle ve ardından aşağıdaki komutu girin:
+, `NAME` `CLUSTERNAME`Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve aşağıdaki komutu girin:
 
 ```azurecli
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP
@@ -145,5 +145,5 @@ az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resourc
 * [HDInsight uygulamaları yükleme](hdinsight-apps-install-applications.md): HDInsight uygulamalarını kümelerinize yükleme hakkında bilgi alın.
 * [HDInsight uygulamalarını yayımlama](hdinsight-apps-publish-applications.md): Özel HDInsight uygulamalarınızı Azure Marketi’nde nasıl yayımlayacağınızı öğrenin.
 * [Betik Eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md): ek uygulamalar yüklemek için Betik Eyleminin nasıl kullanılacağını öğrenin.
-* [Kaynak Yöneticisi şablonlarını kullanarak HDInsight'ta Linux tabanlı Apache Hadoop kümeleri oluşturun:](hdinsight-hadoop-create-linux-clusters-arm-templates.md)HDInsight kümeleri oluşturmak için Kaynak Yöneticisi şablonlarını nasıl çağıracağınız öğrenin.
+* [HDInsight 'ta Kaynak Yöneticisi şablonları kullanarak Linux tabanlı Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md): HDInsight kümeleri oluşturmak için Kaynak Yöneticisi şablonlarının nasıl çağrılacağını öğrenin.
 * [HDInsight’ta boş kenar düğümleri kullanma](hdinsight-apps-use-edge-node.md): HDInsight kümesine erişmek, HDInsight uygulamaları test etmek ve HDInsight uygulamalarını barındırmak için boş bir kenar düğümünü kullanmayı öğrenin.

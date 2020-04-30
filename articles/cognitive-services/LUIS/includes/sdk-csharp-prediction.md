@@ -11,35 +11,35 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732050"
 ---
-.NET için Dil Anlayışı (LUIS) tahmin istemci kitaplığını kullanın:
+.NET için Language Understanding (LUSıS) tahmin istemci kitaplığını kullanın:
 
-* Yuvaya göre tahmin alma
-* Versiyona Göre Tahmin
+* Yuvaya göre tahmin al
+* Sürüme göre tahmin
 
-[Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [Tahmin çalışma zamanı Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# Örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
+[Başvuru belge](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [tahmin çalışma zamanı paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Dil Anlama (LUIS) portal hesabı - [Ücretsiz bir tane oluşturun](https://www.luis.ai)
-* [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
-* Bir LUIS uygulama kimliği - genel IoT uygulama kimliğini `df67dcdb-c37d-46af-88e1-8b97951ca1c2`kullanın. Quickstart kodunda kullanılan kullanıcı sorgusu bu uygulamaya özgüdür.
+* Language Understanding (LUSıS) portal hesabı- [ücretsiz olarak bir tane oluşturun](https://www.luis.ai)
+* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
+* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
 
-## <a name="setting-up"></a>Ayarlama
+## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="create-an-environment-variable"></a>Bir ortam değişkeni oluşturma
+### <a name="create-an-environment-variable"></a>Ortam değişkeni oluşturma
 
 Anahtarınızı ve kaynağınızın adını kullanarak kimlik doğrulaması için iki ortam değişkeni oluşturun:
 
-* `LUIS_PREDICTION_KEY`- İsteklerinizi doğrulamak için kaynak anahtarı.
-* `LUIS_ENDPOINT_NAME`- Anahtarınızla ilişkili kaynak adı.
+* `LUIS_PREDICTION_KEY`-İsteklerinizin kimliğini doğrulamak için kaynak anahtarı.
+* `LUIS_ENDPOINT_NAME`-Anahtarınızla ilişkili kaynak adı.
 
-İşletim sisteminiziçin yönergeleri kullanın.
+İşletim sisteminiz için yönergeleri kullanın.
 
 #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -61,7 +61,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-'nizi `.bash_profile`ve ortam değişkenini ekleyin:
+Hesabınızı `.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
 
 ```bash
 export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
@@ -74,23 +74,23 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE'de yeni bir .NET Core uygulaması oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), adında `new` `language-understanding-quickstart`yeni bir konsol uygulaması oluşturmak için dotnet komutunu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir `Program.cs`"Hello World" C# projesi oluşturur: .
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad `new` `language-understanding-quickstart`ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur `Program.cs`:.
 
     ```dotnetcli
     dotnet new console -n language-understanding-quickstart
     ```
 
-1. Diziniyeniyeniyeni oluşturulan uygulama klasörüne değiştirin.
+1. Dizininizi yeni oluşturulan uygulama klasörüyle değiştirin.
 
-1. Uygulamayı aşağıdakilerle oluşturabilirsiniz:
+1. Uygulamayı ile oluşturabilirsiniz:
 
     ```dotnetcli
     dotnet build
     ```
 
-    Yapı çıktısı hiçbir uyarı veya hata içermemelidir.
+    Derleme çıktısı hiçbir uyarı veya hata içermemelidir.
 
     ```console
     ...
@@ -102,73 +102,73 @@ Tercih ettiğiniz düzenleyicide veya IDE'de yeni bir .NET Core uygulaması olu�
 
 ### <a name="install-the-sdk"></a>SDK yükle
 
-Uygulama dizininde, .NET için Dil Anlayışı (LUIS) tahmin çalışma zamanı istemci kitaplığını aşağıdaki komutla yükleyin:
+Uygulama dizini içinde, aşağıdaki komutla .NET için Language Understanding (LUSıS) tahmin çalışma zamanı istemci Kitaplığı ' nı yüklemelisiniz:
 
 ```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --version 3.0.0
 ```
 
-Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir NuGet paketi olarak kullanılabilir.
+Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
 
 ## <a name="object-model"></a>Nesne modeli
 
-Dil Bilgisi (LUIS) tahmin çalışma zamanı istemcisi, kaynak anahtarınızı içeren Azure'a kimlik doğrulayan bir [LUISRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) nesnesidir.
+Language Understanding (LUSıS) tahmini çalışma zamanı istemcisi, kaynak anahtarınızı içeren Azure 'da kimlik doğrulayan bir [Luisruntimeclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) nesnesidir.
 
-İstemci oluşturulduktan sonra, aşağıdakiler de dahil olmak üzere işlevsellik erişmek için bu istemciyi kullanın:
+İstemci oluşturulduktan sonra aşağıdaki işlevlere erişmek için bu istemciyi kullanın:
 
-* [Evreleme veya ürün yuvası](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet) na göre tahmin
+* [Hazırlama veya ürün yuvasına](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet) göre tahmin
 * [Sürüme](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getversionpredictionasync?view=azure-dotnet) göre tahmin
 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, .NET için Dil Anlama (LUIS) tahmin çalışma zamanı istemci kitaplığı ile aşağıdakileri nasıl yapacağınızı gösterir:
+Bu kod parçacıkları, .NET için Language Understanding (LUSıS) tahmin çalışma zamanı istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
 
 * [Yuvaya göre tahmin](#get-prediction-from-runtime)
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *Program.cs* dosyasını açın. Varolan `using` kodu aşağıdaki `using` yönergelerle değiştirin:
+Proje dizininden, *program.cs* dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodu aşağıdaki `using` yönergelerle değiştirin:
 
 [!code-csharp[Using statements](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_using)]
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-1. Anahtar, ad ve uygulama kimliği için değişkenler oluşturun:
+1. Anahtar, ad ve uygulama KIMLIĞI için değişkenler oluşturun:
 
-    Tahmin anahtarınızı yönetmek için bir değişken adlı `LUIS_PREDICTION_KEY`bir ortam değişkeninden çekilir. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, düzenleyicinin, IDE'nin veya kabuk çalıştıran değişkene erişmek için kapatılması ve yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacaktır.
+    Tahmin anahtarınızı yönetmek için bir değişkenler adlı `LUIS_PREDICTION_KEY`bir ortam değişkeninden çekilir. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
 
-    Kaynak adınızı `LUIS_ENDPOINT_NAME`tutmak için bir değişken oluşturun.
+    Kaynak adınızı `LUIS_ENDPOINT_NAME`tutacak bir değişken oluşturun.
 
-    Uygulama kimliği için bir değişken oluşturun. `LUIS_APP_ID` Ortam değişkenini genel IoT uygulamasına ayarlayın:
+    Uygulama KIMLIĞI için adlı `LUIS_APP_ID`bir ortam değişkeni olarak bir değişken oluşturun. Ortam değişkenini genel IoT uygulamasına ayarlayın:
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 
     [!code-csharp[Create variables](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_variables)]
 
-1. Anahtarınızla bir [ApiKeyServiceClientCredentials nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.apikeyserviceclientcredentials?view=azure-dotnet) oluşturun ve bir [LUISRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) nesnesi oluşturmak için bitiş noktanızla birlikte kullanın.
+1. Anahtarınızla bir [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.apikeyserviceclientcredentials?view=azure-dotnet) nesnesi oluşturun ve bir [Luisruntimeclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.luisruntimeclient?view=azure-dotnet) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_create_client)]
 
-## <a name="get-prediction-from-runtime"></a>Çalışma zamanından tahmin alma
+## <a name="get-prediction-from-runtime"></a>Çalışma zamanından tahmin al
 
-İstek tahmin çalışma süresi oluşturmak için aşağıdaki yöntemi ekleyin.
+İstek tahmin çalışma zamanına oluşturmak için aşağıdaki yöntemi ekleyin.
 
-Kullanıcı söyleyiş, [PredictionRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-dotnet) nesnesinin bir parçasıdır.
+Kullanıcı söylenişi, [PredictionRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-dotnet) nesnesinin bir parçasıdır.
 
-**GetSlotPredictionAsync** yöntemi, isteği yerine getirmek için uygulama kimliği, yuva adı, tahmin isteği nesnesi gibi çeşitli parametrelere ihtiyaç duyar. Ayrıntılı, tüm amaçları gösterir ve günlük isteğe bağlıdır.
+**GetSlotPredictionAsync** yöntemi, isteği yerine getirmek IÇIN uygulama kimliği, yuva adı ve tahmin isteği nesnesi gibi çeşitli parametrelere ihtiyaç duyuyor. Verbose gibi diğer seçenekler, tüm hedefleri gösterir ve günlük isteğe bağlıdır.
 
 [!code-csharp[Create method to get prediction runtime](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_maintask)]
 
 ## <a name="main-code-for-the-prediction"></a>Tahmin için ana kod
 
-Tahmin almak için değişkenleri ve yöntemleri birbirine bağlamak için aşağıdaki ana yöntemi kullanın.
+Tahmin sağlamak için değişkenleri ve yöntemleri birbirine bağlamak üzere aşağıdaki ana yöntemi kullanın.
 
 [!code-csharp[Create method to get prediction runtime](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_main)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulama dizininizin `dotnet run` komutu yla uygulamayı çalıştırın.
+Uygulamayı uygulama dizininizdeki `dotnet run` komutla çalıştırın.
 
 ```dotnetcli
 dotnet run
@@ -176,4 +176,4 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Öngörüleriniz bittiğinde, program.cs dosyasını ve alt dizinlerini silerek bu hızlı başlangıçtan çalışmayı temizleyin.
+Tahminlerinizi tamamladığınızda, program.cs dosyasını ve alt dizinlerini silerek bu hızlı başlangıçta işi temizleyin.

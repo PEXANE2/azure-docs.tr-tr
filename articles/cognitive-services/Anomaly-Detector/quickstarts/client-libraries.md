@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Anomali Dedektörü istemci kitaplığını kullanma'
+title: 'Hızlı başlangıç: anomali algılayıcı istemci kitaplığını kullanma'
 titleSuffix: Azure Cognitive Services
-description: Anomali Dedektörü API' si, veri serinizdeki anormallikleri toplu olarak veya veri akışı nda algılamak için istemci kitaplıkları sunar.
+description: Anomali algılayıcı API 'SI, veri serinizdeki tüm verileri toplu olarak veya akış verilerinde tespit etmek için istemci kitaplıkları sunar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: aahi
 ms.openlocfilehash: 7a48992ab5978824f1ffb4b2c3ac0670f40c1424
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759982"
 ---
-# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Hızlı başlangıç: Anomali Dedektörü istemci kitaplığını kullanma
+# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Hızlı başlangıç: anomali algılayıcı istemci kitaplığını kullanma
 
 ::: zone pivot="programming-language-csharp"
 

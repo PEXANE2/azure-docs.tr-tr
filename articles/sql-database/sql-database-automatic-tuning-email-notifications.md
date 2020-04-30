@@ -1,6 +1,6 @@
 ---
-title: Otomatik ayar e-posta bildirimleri nasıl-nasıl kılavuzu
-description: Azure SQL Veritabanı otomatik sorgu ayarı için e-posta bildirimlerini etkinleştirin.
+title: Otomatik ayarlama e-posta bildirimleri nasıl yapılır Kılavuzu
+description: Azure SQL veritabanı otomatik sorgu ayarlama için e-posta bildirimlerini etkinleştirin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,78 +12,78 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768384"
 ---
-# <a name="email-notifications-for-automatic-tuning"></a>Otomatik ayar için e-posta bildirimleri
+# <a name="email-notifications-for-automatic-tuning"></a>Otomatik ayarlama için e-posta bildirimleri
 
-SQL Veritabanı ayar önerileri Azure SQL Veritabanı [Otomatik ayar](sql-database-automatic-tuning.md)tarafından oluşturulur. Bu çözüm, dizin oluşturma, dizin silme ve sorgu yürütme planlarının optimizasyonu ile ilgili her bir veritabanı için özelleştirilmiş ayar önerileri sağlayan SQL Veritabanlarının iş yüklerini sürekli olarak izler ve çözümler.
+SQL veritabanı ayarlama önerileri, Azure SQL veritabanı [otomatik ayarlama](sql-database-automatic-tuning.md)tarafından oluşturulmuştur. Bu çözüm, dizin oluşturma, dizin silme ve sorgu yürütme planlarının iyileştirmesiyle ilgili her bir veritabanı için özelleştirilmiş ayarlama önerileri sağlayan SQL veritabanlarının iş yüklerini sürekli olarak izler ve çözümler.
 
-SQL Veritabanı Otomatik ayar önerileri, [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) çağrılarıyla veya [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) ve [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) komutları kullanılarak alınan [Azure portalında](sql-database-advisor-portal.md)görüntülenebilir. Bu makale, otomatik ayar önerilerini almak için bir PowerShell komut dosyası kullanmaya dayanır.
+SQL veritabanı otomatik ayarlama önerileri, [Azure portal](sql-database-advisor-portal.md) [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) çağrılarıyla ALıNAN veya [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) ve [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) komutları kullanılarak görüntülenebilir. Bu makale, otomatik ayarlama önerilerini almak için bir PowerShell betiği kullanmayı temel alır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Otomatik ayar önerileri için e-posta bildirimlerini otomatikleştirin
+## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Otomatik ayarlama önerileri için e-posta bildirimlerini otomatikleştirin
 
-Aşağıdaki çözüm, Otomatik ayar önerileri içeren e-posta bildirimlerinin gönderilmesini otomatikleştirir. Açıklanan çözüm, [Azure Otomasyonu](https://docs.microsoft.com/azure/automation/automation-intro)kullanarak önerilerin ayarını almak için bir PowerShell komut dosyasının yürütülmesini otomatikleştirmek ve [Microsoft Flow'u](https://flow.microsoft.com)kullanarak e-posta teslim işini zamanlama otomasyonundan oluşur.
+Aşağıdaki çözüm otomatik ayarlama önerilerini içeren e-posta bildirimlerinin gönderilmesini otomatikleştirir. Açıklanan çözüm, [Azure Otomasyonu 'nu](https://docs.microsoft.com/azure/automation/automation-intro)kullanarak ayarlama önerilerini almak Için bir PowerShell betiğinin otomatikleştirilmesini ve [Microsoft Flow](https://flow.microsoft.com)kullanarak e-posta teslimi işinin planlanmasını içerir.
 
-## <a name="create-azure-automation-account"></a>Azure Otomasyon hesabı oluşturma
+## <a name="create-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
 
-Azure Otomasyonu'nu kullanmak için ilk adım, bir otomasyon hesabı oluşturmak ve PowerShell komut dosyasının yürütülmesi nde kullanmak üzere Azure kaynaklarıyla yapılandırmaktır. Azure Otomasyonu ve yetenekleri hakkında daha fazla bilgi edinmek için Azure [otomasyonuna başlarken](https://docs.microsoft.com/azure/automation/automation-offering-get-started)bkz.
+Azure Otomasyonu 'nu kullanmak için ilk adım bir Otomasyon hesabı oluşturmak ve PowerShell betiğinin yürütülmesi için kullanılacak Azure kaynaklarıyla yapılandırmaktır. Azure Otomasyonu ve özellikleri hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu ile çalışmaya](https://docs.microsoft.com/azure/automation/automation-offering-get-started)başlama.
 
-Market'ten Otomasyon uygulamasını seçme ve yapılandırma yöntemiyle Azure Otomasyon Hesabı oluşturmak için aşağıdaki adımları izleyin:
+Marketten Otomasyon uygulaması seçme ve yapılandırma yöntemi aracılığıyla Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında oturum açın.
-1. Sol üst köşede "**+ Kaynak Oluştur**" düğmesine tıklayın.
-1. "**Automation**" (enter tuşuna basın) için arama yapın.
+1. Sol üst köşedeki "**+ kaynak oluştur**" seçeneğine tıklayın.
+1. "**Otomasyon**" araması yapın (ENTER tuşuna basın).
 1. Arama sonuçlarında Otomasyon uygulamasına tıklayın.
 
-    ![Azure otomasyonu ekleme](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
+    ![Azure Otomasyonu ekleme](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-1. "Bir Otomasyon Hesabı Oluştur" bölmesine girdikten sonra "**Oluştur**" düğmesine tıklayın.
-1. Gerekli bilgileri doldurma: Bu otomasyon hesabı için bir ad girin, PowerShell komut dosyası yürütmesi için kullanılacak Azure abonelik kimliğinizi ve Azure kaynaklarınızı seçin.
-1. "**Azure Run As hesabı "** seçeneği için, PowerShell komut dosyasının Azure Otomasyonu yardımıyla çalıştığı hesap türünü yapılandırmak için **Evet'i** seçin. Hesap türleri hakkında daha fazla bilgi edinmek için, [Bkz. Hesabı Olarak Çalıştır.](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
-1. Oluştur'a tıklayarak otomasyon hesabının oluşturulmasını **sonuçlandırın.**
+1. "Otomasyon hesabı oluşturma" bölmesinin içindeyken "**Oluştur**" düğmesine tıklayın.
+1. Gerekli bilgileri doldur: Bu Otomasyon hesabı için bir ad girin, PowerShell betiği yürütmesi için kullanılacak Azure abonelik KIMLIĞINIZI ve Azure kaynaklarınızı seçin.
+1. "**Azure farklı çalıştır hesabı oluştur**" seçeneği Için, PowerShell betiğinin Azure Otomasyonu yardımıyla çalıştığı hesap türünü yapılandırmak için **Evet** ' i seçin. Hesap türleri hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesabı](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+1. **Oluştur**'a tıklayarak Otomasyon hesabı oluşturmayı sonuçlandırma.
 
 > [!TIP]
-> Azure Otomasyon hesap adınızı, abonelik kimliğinizi ve kaynaklarınızı (not defterine kopyala-yapıştır gibi) Otomasyon uygulamasını oluştururken tam olarak girilen gibi kaydedin. Bu bilgiye daha sonra ihtiyacın olacak.
+> Azure Otomasyonu hesap adınızı, abonelik KIMLIĞINIZI ve kaynaklarınızı (örneğin, kopyalama-Not defteri), otomasyon uygulamasını oluştururken tam olarak girildiği şekilde kaydedin. Bu bilgilere daha sonra ihtiyacınız vardır.
 >
 
-Aynı otomasyonu oluşturmak istediğiniz birkaç Azure aboneliğiniz varsa, diğer abonelikleriniz için bu işlemi yinelemeniz gerekir.
+Aynı otomasyonu oluşturmak istediğiniz birkaç Azure aboneliğiniz varsa, bu işlemi diğer abonelikleriniz için yinelemeniz gerekir.
 
-## <a name="update-azure-automation-modules"></a>Azure Otomasyon modüllerini güncelleştirin
+## <a name="update-azure-automation-modules"></a>Azure Otomasyonu modüllerini güncelleştirme
 
-Otomatik ayar önerisini almak için PowerShell komut dosyası, Azure Modülü sürüm 4 ve üzeri için gerekli olan [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) ve [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) komutlarını kullanır.
+Otomatik ayarlama önerilerini almak için PowerShell betiği, Azure modül Sürüm 4 ve üzeri için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) ve [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) komutlarını kullanır.
 
-- Azure Modüllerinizin güncellenmesi gerektiğinde Azure [Otomasyonu'nda Az modülü desteğine](../automation/shared-resources/modules.md)bakın.
+- Azure modüllerinizin güncelleştirilmesi gerekiyorsa, bkz. [Azure Otomasyonu 'Nda az Module support](../automation/shared-resources/modules.md).
 
-## <a name="create-azure-automation-runbook"></a>Azure Otomasyon Runbook'u Oluşturma
+## <a name="create-azure-automation-runbook"></a>Azure Otomasyonu runbook 'U oluşturma
 
-Bir sonraki adım, azure otomasyonu içinde ayar önerileri nin alınması için PowerShell komut dosyasının bulunduğu bir Runbook oluşturmaktır.
+Sonraki adımda, Azure Otomasyonu 'nda ayarlama önerilerini almak için PowerShell betiğinin bulunduğu bir runbook oluşturulur.
 
-Yeni bir Azure Otomasyonu runbook oluşturmak için aşağıdaki adımları izleyin:
+Yeni bir Azure Otomasyonu runbook 'u oluşturmak için aşağıdaki adımları izleyin:
 
-1. Önceki adımda oluşturduğunuz Azure Otomasyon hesabına erişin.
-1. Otomasyon hesap bölmesine girince, PowerShell komut dosyasıyla yeni bir Azure Otomasyonu runbook'u oluşturmak için sol taraftaki "**Runbook**" menü öğesine tıklayın. Otomasyon runbook'ları oluşturma hakkında daha fazla bilgi edinmek için [bkz.](../automation/manage-runbooks.md#creating-a-runbook)
-1. Yeni bir runbook eklemek için "**+Runbook ekle**" menüsü seçeneğine tıklayın ve ardından "**Hızlı oluştur – Yeni bir runbook oluştur**" seçeneğini tıklayın...
-1. Runbook bölmesinde, runbook'unuzun adını yazın (bu örneğin amacı için "**AutomaticTuningEmailAutomation**" kullanılır), **PowerShell** olarak runbook türünü seçin ve amacını açıklamak için bu runbook'un açıklamasını yazın.
-1. Yeni bir runbook oluşturmayı bitirmek için **Oluştur** düğmesini tıklatın.
+1. Önceki adımda oluşturduğunuz Azure Otomasyonu hesabına erişin.
+1. Otomasyon hesabı bölmesinde, PowerShell betiği ile yeni bir Azure Otomasyonu runbook 'u oluşturmak için sol taraftaki "**runbook 'lar**" menü öğesine tıklayın. Otomasyon Runbook 'ları oluşturma hakkında daha fazla bilgi için bkz. [yeni runbook oluşturma](../automation/manage-runbooks.md#creating-a-runbook).
+1. Yeni bir runbook eklemek için "**+ runbook Ekle**" menü seçeneğine tıklayın ve ardından "**hızlı Oluştur – yeni runbook oluştur**" düğmesine tıklayın.
+1. Runbook bölmesinde, runbook 'unun adını yazın (Bu örneğin, "**Automatictunıngemaılautomation**" kullanılır), runbook 'un türünü **PowerShell** olarak seçin ve bu runbook 'un amacını betimleyen bir açıklama yazın.
+1. Yeni bir runbook oluşturmayı bitirmeden **Oluştur** düğmesine tıklayın.
 
-    ![Azure otomasyon runbook ekle](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
+    ![Azure Otomasyonu runbook 'u ekleme](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
 
-Oluşturulan runbook içine bir PowerShell komut dosyası yüklemek için aşağıdaki adımları izleyin:
+Oluşturulan runbook 'un içine bir PowerShell betiği yüklemek için şu adımları izleyin:
 
-1. "**PowerShell Runbook"u edit"** bölmesinin içinde, menü ağacında "**RUNBOOK"** seçeneğini belirleyin ve runbook'unuzun adını görene kadar görünümü genişletin (bu örnekte "**AutomaticTuningEmailAutomation**"). Bu runbook'u seçin.
-1. "PowerShell Runbook'u Düzenle" (1 numaradan başlayarak) ilk satırında aşağıdaki PowerShell komut dosyası kodunu kopyalayıp yapıştırın. Bu PowerShell komut dosyası, başlamak için olduğu gibi sağlanır. Gereksinimlerinizi karşılamak için komut dosyasını değiştirin.
+1. "**PowerShell runbook 'Unu Düzenle**" bölmesinde, menü ağacında "**runbook 'lar**" ı seçin ve Runbook 'unun adını görene kadar görünümü genişletin (Bu örnekte "**Automatictunıngemailautomation**"). Bu runbook 'u seçin.
+1. "PowerShell runbook 'Unu Düzenle" öğesinin ilk satırında (1 numaralı numaradan itibaren), aşağıdaki PowerShell betik kodunu kopyalayın-yapıştırın. Bu PowerShell betiği, başlangıç olarak olduğu gibi sunulmaktadır. Komut dosyasını gereksinimlerinize uygun şekilde değiştirin.
 
-Sağlanan PowerShell komut dosyasının üstbilgisinde Azure `<SUBSCRIPTION_ID_WITH_DATABASES>` abonelik kimliğinizle değiştirmeniz gerekir. Azure abonelik kimliğinizi nasıl alabildiğini öğrenmek için Azure [Abonelik GUID'inizi alma](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)'ya bakın.
+Belirtilen PowerShell betiğinin üst bilgisinde Azure abonelik KIMLIĞINIZ ile değiştirmeniz `<SUBSCRIPTION_ID_WITH_DATABASES>` gerekir. Azure abonelik KIMLIĞINIZI alma hakkında bilgi edinmek için bkz. [Azure ABONELIK GUID 'Nizi alma](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
 
-Birkaç abonelik olması durumunda, bunları komut dosyasının üstbilgisindeki "$subscriptions" özelliğiyle sınırlı virgülle sınırlandırılmış olarak ekleyebilirsiniz.
+Birkaç abonelik söz konusu olduğunda, komut dosyasının üstbilgisindeki "$subscriptions" özelliğine virgülle ayrılmış olarak ekleyebilirsiniz.
 
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
@@ -170,86 +170,86 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-Komut dosyasını kaydetmek için sağ üst köşedeki "**Kaydet**" düğmesini tıklatın. Komut dosyasından memnun olduğunuzda, bu runbook'u yayınlamak için "**Yayımla**" düğmesini tıklatın.
+Betiği kaydetmek için sağ üst köşedeki "**Kaydet**" düğmesine tıklayın. Betikten memnun olduğunuzda, bu runbook 'u yayımlamak için "**Yayımla**" düğmesine tıklayın.
 
-Ana runbook bölmesine, komut dosyasını **test** etmek için "**Başlat**" düğmesine tıklamayı seçebilirsiniz. "**Çıktı**" üzerine tıklayarak komut dosyasının sonuçlarını görüntüleyin. Bu çıktı e-postanızın içeriği olacak. Komut dosyasından örnek çıktı aşağıdaki ekran görüntüsünde görülebilir.
+Ana runbook bölmesinde, "**Başlat**" düğmesine tıklayarak betiği **Test** edebilirsiniz. Yürütülen betiğin sonuçlarını görüntülemek için "**Çıkış**" düğmesine tıklayın. Bu çıktı, e-postanız içeriğine gidiyor. Komut dosyasındaki örnek çıktı aşağıdaki ekran görüntüsünde görülebilir.
 
-![Azure Otomasyonu ile görünüm otomatik ayar önerilerini çalıştırın](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
+![Azure Otomasyonu ile otomatik ayarlama önerilerini görüntüleme](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
 
-PowerShell komut dosyasını gereksinimlerinize göre özelleştirerek içeriği ayarladığından emin olun.
+PowerShell betiğini gereksinimlerinize göre özelleştirerek içeriği ayarlamayı doğrulayın.
 
-Yukarıdaki adımlarla, Otomatik ayar önerilerini almak için PowerShell komut dosyası Azure Otomasyonu'na yüklenir. Bir sonraki adım, e-posta teslim işini otomatikleştirmek ve zamanlamaktır.
+Yukarıdaki adımlarla otomatik ayarlama önerilerini almaya yönelik PowerShell betiği Azure Automation 'a yüklenir. Bir sonraki adım, e-posta teslimi işinin otomatikleştirilmesi ve planlanmmdır.
 
 ## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Microsoft Flow ile e-posta işlerini otomatikleştirin
 
-Çözümü tamamlamak için, son adım olarak, Microsoft Flow'da üç eylemden (iş) oluşan bir otomasyon akışı oluşturun:
+Çözümü tamamlamaya yönelik son adım olarak, üç eylemden (iş) oluşan Microsoft Flow bir Otomasyon akışı oluşturun:
 
- - Azure**Otomasyonu - İş oluştur**" - Azure Otomasyonu runbook'unda Otomatik ayar önerilerini almak için PowerShell komut dosyasını çalıştırmak için kullanılır.
- - "**Azure Otomasyonu - İş çıktısını al**" – çalıştırılan PowerShell komut dosyasından çıktı almak için kullanılır.
- - "**Office 365 Outlook – E-posta gönder**" – e-posta göndermek için kullanılır. E-postalar, akışı oluşturan kişinin Office 365 hesabı kullanılarak gönderilir.
+ - "**Azure Otomasyonu-oluşturma işi**" – Azure Otomasyonu runbook 'un içindeki otomatik ayarlama önerilerini almak üzere PowerShell betiğini yürütmek için kullanılır.
+ - "**Azure Otomasyonu-iş çıktısını al**" – yürütülen PowerShell betiğindeki çıktıyı almak için kullanılır.
+ - "**Office 365 Outlook – e-posta gönder**" – e-posta göndermek için kullanılır. E-postalar, akışı oluşturan kişinin Office 365 hesabı kullanılarak gönderilir.
 
-Microsoft Akışı özellikleri hakkında daha fazla bilgi edinmek için Microsoft [Akışı'na başlarken](https://docs.microsoft.com/flow/getting-started)bkz.
+Microsoft Flow özellikleri hakkında daha fazla bilgi edinmek için bkz. [Microsoft Flow kullanmaya](https://docs.microsoft.com/flow/getting-started)başlama.
 
-Bu adımın ön [koşulu, Microsoft Flow](https://flow.microsoft.com) hesabına kaydolmak ve oturum açmaktır. Çözüme girdikten sonra, yeni bir **akış**ayarlamak için aşağıdaki adımları izleyin:
+Bu adım için önkoşul, [Microsoft Flow](https://flow.microsoft.com) hesabına kaydolup oturum açmanızı sağlar. Çözüm içindeyken, **Yeni bir akış**ayarlamak için aşağıdaki adımları izleyin:
 
-1. Erişim "**Akışlarım**" menü öğesi.
-1. Akışlarım içinde, sayfanın üst kısmındaki "**+Boş' tan oluştur**" bağlantısını seçin.
-1. Sayfanın altındaki "**Yüzlerce bağlayıcı ve tetikleyici ara**" linkine tıklayın.
-1. Arama alanı türünde "**yineleme**" ve çalışacak e-posta teslim işini planlamak için arama sonuçlarından "**Zamanlama - Yineleme**" seçeneğini belirleyin.
-1. Sıklık alanındaki Yineleme bölmesinde, her Dakika, Saat, Gün, Hafta vb. otomatik e-posta gönderme gibi bu akışın yürütülmesi için zamanlama sıklığını seçin.
+1. "**Akışlarım**" menü öğesine erişin.
+1. Akışlarım içinde sayfanın en üstündeki "**+ boş oluştur**" bağlantısını seçin.
+1. Sayfanın alt kısmındaki "**yüzlerce bağlayıcı ve tetikleyici ara**" bağlantısına tıklayın.
+1. Arama alanında "**yinelenme**" yazın ve e-posta teslimi işinin çalışmasını zamanlamak için arama sonuçlarından "**zamanlama-yinelenme**" yı seçin.
+1. Sıklık alanındaki yineleme bölmesinde, bu akışın yürütülmesi için zamanlama sıklığını seçin (her dakika, saat, gün, hafta vb.).
 
-Bir sonraki adım, yeni oluşturulan yinelenen akışa üç iş eklemektir (oluşturmak, çıktı almak ve e-posta göndermek). Akışa gerekli işleri eklemeyi başarmak için aşağıdaki adımları izleyin:
+Sonraki adım, yeni oluşturulan yinelenen akışa üç iş eklemektir (oluşturma, çıkış alma ve e-posta gönderme). Akışa gerekli işleri eklemeyi tamamlamak için şu adımları izleyin:
 
-1. Atoklama önerilerini almak için PowerShell komut dosyasını çalıştırmak için eylem oluşturma
+1. Ayarlama önerilerini almak için PowerShell betiğini yürütmek üzere eylem Oluştur
 
-   - Yineleme akışı bölmesinin içinde "**+Yeni adım**", ardından "**Eylem ekle**" seçeneğini belirleyin.
-   - Arama alanı türünde "**otomasyon**" ve arama sonuçlarından "**Azure Otomasyonu – İş Yarat**" seçeneğini belirleyin.
-   - İş Oluştur bölmesinde, iş özelliklerini yapılandırın. Bu yapılandırma için, Daha önce **Otomasyon Hesabı bölmesine** **kaydedilmiş** Olan Azure abonelik kimliğinizin, Kaynak Grubunuzun ve Otomasyon Hesabınızın ayrıntılarına ihtiyacınız olacaktır. Bu bölümde bulunan seçenekler hakkında daha fazla bilgi edinmek için Azure [Otomasyonu - İş Oluştur](https://docs.microsoft.com/connectors/azureautomation/#create-job)bölümüne bakın.
-   - "**Akışı kaydet**" düğmesine tıklayarak bu eylemi oluşturmayı tamamlayın.
+   - "**+ Yeni adım**", ardından "**Eylem Ekle**" öğesini seçerek yinelenme akışı bölmesini seçin.
+   - Arama alanına "**Otomasyon**" yazın ve arama sonuçlarından "**Azure Otomasyonu – oluşturma işi**" ni seçin.
+   - İş oluştur bölmesinde, iş özelliklerini yapılandırın. Bu yapılandırma için, **daha önce** **Otomasyon hesabı bölmesine**kaydettiğiniz Azure abonelik kimliğiniz, kaynak grubunuz ve otomasyon hesabınızın ayrıntılarına ihtiyacınız olacaktır. Bu bölümde kullanılabilen seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu-oluşturma işi](https://docs.microsoft.com/connectors/azureautomation/#create-job).
+   - "**Akışı kaydet**" i tıklayarak bu eylemi oluşturmayı tamamen doldurun.
 
-2. Çalıştırılan PowerShell komut dosyasından çıktı almak için eylem oluşturma
+2. Yürütülen PowerShell betiğindeki çıktıyı almak için eylem oluşturma
 
-   - "**+Yeni adım**", ardından " Yineleme akış bölmesinin içinde**eylem ekle**" seçeneğini belirleyin
-   - Arama dosyasında "**otomasyon**" yazın ve arama sonuçlarından "**Azure Otomasyonu – İş çıktısı alın**" seçeneğini belirleyin. Bu bölümde bulunan seçenekler hakkında daha fazla bilgi edinmek için Azure [Otomasyonu – İş çıktısını alın.](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)
-   - Gereken alanları doldurma (önceki işi oluşturmaya benzer) - Azure abonelik kimliğinizi, Kaynak Grubunuzu ve Otomasyon Hesabınızı (Otomasyon Hesabı bölmesinde girilen şekilde) doldurun.
-   - "**Dinamik içerik**" menüsünün gösterilmesi için "**İş Kimliği**" alanının içine tıklayın. Bu menü içinden "**İş Kimliği**" seçeneğini belirleyin.
-   - "**Akışı kaydet**" düğmesine tıklayarak bu eylemi oluşturmayı tamamlayın.
+   - "**+ Yeni adım**", ardından "**Eylem Ekle**" öğesini seçerek yineleme akışı bölmesi içinde
+   - Arama konumunda "**Otomasyon**" yazın ve arama sonuçlarından "**Azure Otomasyonu – iş çıktısını al**" seçeneğini belirleyin. Bu bölümde kullanılabilen seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu – iş çıktısını alma](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
+   - Gerekli alanları doldur (önceki işi oluşturmaya benzer)-Azure abonelik KIMLIĞINIZI, kaynak grubunuzu ve otomasyon hesabınızı (Otomasyon hesabı bölmesine girildiği gibi) doldurun.
+   - "**Dinamik içerik**" menüsünün görünmesi Için "**iş kimliği**" alanının içini tıklatın. Bu menü içinden "**Iş kimliği**" seçeneğini belirleyin.
+   - "**Akışı kaydet**" i tıklayarak bu eylemi oluşturmayı tamamen doldurun.
 
-3. Office 365 tümleştirmesini kullanarak e-posta göndermek için eylem oluşturma
+3. Office 365 tümleştirmesi kullanarak e-posta göndermek için eylem oluşturma
 
-   - Yineleme akışı bölmesinin içinde "**+Yeni adım**", ardından "**Eylem ekle**" seçeneğini belirleyin.
-   - Arama dosyası türünde "**e-posta gönderin**" ve arama sonuçlarından "**Office 365 Outlook – E-posta gönder**" seçeneğini belirleyin.
-   - Bildirim e-postasını göndermeniz gereken e-posta adresindeki "**To**" alanına yazın.
-   - E-postanızın konusundaki "**Konu**" alan türünde, örneğin "Otomatik ayar önerileri e-posta bildirimi".
-   - "**Dinamik içerik**" menüsünün gösterilmesi için "**Gövde**" alanının içine tıklayın. Bu menü içinden , "**İş çıktısını al**", "**İçerik**" seçin.
-   - "**Akışı kaydet**" düğmesine tıklayarak bu eylemi oluşturmayı tamamlayın.
+   - "**+ Yeni adım**", ardından "**Eylem Ekle**" öğesini seçerek yinelenme akışı bölmesini seçin.
+   - Arama konumunda "**e-posta gönder**" yazın ve arama sonuçlarından "**Office 365 Outlook – e-posta gönder**" seçeneğini belirleyin.
+   - Bildirim e-postasını göndermeniz gereken e-posta adresini "**to**" alanına yazın.
+   - E-postanız konusunun "**Konu**" alanına yazın, örneğin "otomatik ayarlama önerileri e-posta bildirimi".
+   - "**Dinamik içerik**" menüsünün görünmesi Için "**gövde**" alanının içini tıklatın. Bu menü içinden, "**iş çıktısını al**" bölümünün altında "**içerik**" i seçin.
+   - "**Akışı kaydet**" i tıklayarak bu eylemi oluşturmayı tamamen doldurun.
 
 > [!TIP]
-> Farklı alıcılara otomatik e-postalar göndermek için ayrı akışlar oluşturun. Bu ek akışlarda, "To" alanında alıcı e-posta adresini ve "Konu" alanındaki e-posta konu satırını değiştirin. Azure Otomasyonu'nda özelleştirilmiş PowerShell komut dosyalarıyla (Azure abonelik kimliğinin değiştirilmesi gibi) yeni runbook'lar oluşturmak, otomatik senaryoların daha da özelleştirilmesini sağlar, örneğin ayrı abonelikler için Otomatik tuning önerileri için ayrı alıcılara e-posta gönderebilirsiniz.
+> Farklı alıcılara otomatik e-postalar göndermek için ayrı akışlar oluşturun. Bu ek akışlarda "Kime" alanındaki alıcının e-posta adresini ve "konu" alanındaki e-posta konu satırını değiştirin. Özelleştirilmiş PowerShell betikleri (örneğin, Azure abonelik KIMLIĞI gibi) ile Azure Otomasyonu 'nda yeni runbook 'lar oluşturmak, otomatik senaryolar için daha fazla özelleştirme imkanı sunar. Örneğin, ayrı abonelikler için otomatik ayarlama önerilerinde ayrı alıcıları gönderme.
 >
 
-Yukarıdaki e-posta teslim iş akışını yapılandırmak için gerekli adımları sonuçlandırır. Yapılan üç eylemden oluşan tüm akış aşağıdaki resimde gösterilmiştir.
+E-posta teslim işi iş akışını yapılandırmak için yukarıdaki sonucuna yönelik adımlar gereklidir. Oluşturulan üç eylemden oluşan tüm akış aşağıdaki görüntüde gösterilmiştir.
 
-![Otomatik ayar e-posta bildirimlerini görüntüleme](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
+![Otomatik ayarlama e-posta bildirimleri akışını görüntüle](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
 
-Akışı test etmek için, akış bölmesinin sağ üst köşesindeki "**Şimdi Koş**" düğmesine tıklayın.
+Akışı test etmek için akış bölmesinin içindeki sağ üst köşedeki "**Şimdi Çalıştır**" düğmesine tıklayın.
 
-Gönderilen e-posta bildirimlerinin başarısını gösteren otomatik işleri çalıştırma istatistikleri Akış analizi bölmesinden görülebilir.
+Gönderilen e-posta bildirimlerinin başarısını gösteren otomatikleştirilmiş işlerin çalıştırılmasına ilişkin istatistikler, Akış Analizi bölmesinden görünebilir.
 
-![Otomatik ayar e-posta bildirimleri için akış çalıştırma](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
+![Otomatik ayarlama e-posta bildirimleri için çalışan akış](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
 
-Akış analizi, iş yürütmelerinin başarısını izlemek ve sorun giderme için gerekirse yardımcı olur.  Sorun giderme durumunda, Azure Otomasyonu uygulaması üzerinden erişilebilen PowerShell komut dosyası yürütme günlüğünü de incelemek isteyebilirsiniz.
+Flow Analytics, iş yürütmelerinin başarısını izlemek için yararlıdır ve sorun giderme için gerekliyse.  Sorun giderme durumunda, Azure Otomasyonu uygulaması aracılığıyla erişilebilen PowerShell betiği yürütme günlüğünü de incelemek isteyebilirsiniz.
 
-Otomatik e-postanın son çıktısı, bu çözümü oluşturma ve çalıştırdıktan sonra alınan aşağıdaki e-postaya benzer:
+Otomatik e-postanın son çıktısı, bu çözümü oluşturup çalıştırdıktan sonra alınan aşağıdaki e-postaya benzer:
 
-![Otomatik ayar e-posta bildirimlerinden örnek e-posta çıkışı](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
+![Otomatik ayarlama e-posta bildirimlerinin örnek e-posta çıkışı](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
 
-PowerShell komut dosyasını ayarlayarak, otomatik e-postanın çıktısını ve biçimlendirmesini gereksinimlerinize göre ayarlayabilirsiniz.
+PowerShell betiğini ayarlayarak, otomatik e-postanın çıktısını ve biçimlendirmesini gereksinimlerinize göre ayarlayabilirsiniz.
 
-Özel senaryolarınıza bağlı olarak, belirli bir tuning olayına ve birden çok alıcıya e-posta bildirimleri oluşturmak için çözümü daha da özelleştirebilirsiniz.
+Özel senaryolarınıza bağlı olarak, belirli bir ayarlama olayına ve birden çok alıcıya, birden çok aboneliğe ve veritabanına göre e-posta bildirimleri oluşturmak için çözümü daha fazla özelleştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Otomatik ayar oluşturmanın veritabanı performansını geliştirmenize nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin, [Azure SQL Veritabanı'nda Otomatik ayar'a](sql-database-automatic-tuning.md)bakın.
-- İş yükünüzü yönetmek için Azure SQL Veritabanı'nda otomatik [ayar](sql-database-automatic-tuning-enable.md)yapmayı etkinleştirmek için bkz.
-- Otomatik ayar önerilerini el ile gözden geçirmek [ve](sql-database-advisor-portal.md)uygulamak için bkz.
+- Otomatik ayarlama 'nın veritabanı performansını artırmanıza nasıl yardımcı olduğu hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda otomatik ayarlama](sql-database-automatic-tuning.md).
+- Azure SQL veritabanı 'nda iş yükünüzü yönetmek üzere otomatik ayarlamayı etkinleştirmek için bkz. [otomatik ayarlamayı etkinleştirme](sql-database-automatic-tuning-enable.md).
+- Otomatik ayarlama önerilerini el ile gözden geçirmek ve uygulamak için bkz. [performans önerilerini bulma ve uygulama](sql-database-advisor-portal.md).

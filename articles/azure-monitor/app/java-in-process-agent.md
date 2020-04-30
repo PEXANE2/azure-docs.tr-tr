@@ -1,50 +1,50 @@
 ---
-title: Java uygulamalarını her ortamda izleyin - Azure Monitör Uygulama Öngörüleri
-description: Uygulama enstrümanting olmadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritası.
+title: Tüm ortamlarda Java uygulamalarını izleme-Azure Izleyici Application Insights
+description: Uygulamayı işaretlemeden herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687726"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Uygulama Öngörüleri izleme Java kodsuz uygulama - genel önizleme
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights-genel önizleme
 
-Java kodsuz uygulama izleme tüm basitlik hakkında - hiçbir kod değişikliği vardır, Java aracısı yapılandırma değişiklikleri sadece bir çift ile etkinleştirilebilir.
+Java kodsuz kullanacaksınız uygulama izleme kolaylık sağlaması, hiçbir kod değişikliği yoktur, Java Aracısı yalnızca birkaç yapılandırma değişikliği aracılığıyla etkinleştirilebilir.
 
- Java aracısı her ortamda çalışır ve tüm Java uygulamalarınızı izlemenizi sağlar. Başka bir deyişle, Ister VM'lerde, ister şirket içinde, ister AKS'de, Ister Windows' da, Linux' ta Java uygulamalarınızı çalıştırın, adını siz adlayın, Java 3.0 aracısı uygulamanızı izleyecektir.
+ Java Aracısı herhangi bir ortamda çalışarak tüm Java uygulamalarınızı izlemenizi sağlar. Diğer bir deyişle, şirket içinde Java uygulamalarınızı, şirket içinde, Windows, Linux 'ta çalıştırıp, Java 3,0 aracısının uygulamanızı izleyecektir.
 
-3.0 aracı istekleri, bağımlılıkları ve günlükleri tek başına otomatik olarak topladığı için, Uygulama Öngörüleri Java SDK'nın uygulamanıza eklenmesi artık gerekli değildir.
+Application Insights Java SDK 'sını uygulamanıza eklemek artık gerekli değildir, çünkü 3,0 Aracısı istekleri, bağımlılıkları ve günlükleri kendi kendine toplar.
 
-Yine de uygulamanızdan özel telemetri gönderebilirsiniz. 3.0 aracısı izleyecek ve tüm otomatik toplanan telemetri ile birlikte ilişkilendirmek.
+Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, tüm oto toplanan Telemetriyi izleyip onunla ilişkilendirilecektir.
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 
-**1. Aracıyı indirin**
+**1. aracıyı indirin**
 
-[Uygulamaları indir-agent-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+[Applicationinsights-Agent-3.0.0-PREVIEW. 3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar) dosyasını indirin
 
-**2. JVM'yi ajana doğru titretin**
+**2. JVM 'yi aracıya işaret edin**
 
-Uygulamanızın JVM args ekleyin `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`
+Uygulamanızın `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` JVM bağımsız değişkenlerini ekleyin
 
-Tipik JVM args içerir `-Xmx512m` ve. `-XX:+UseG1GC` Eğer bunları nereye ekleyacağınızı biliyorsanız, o zaman bunu nereye ekleyebileceğinizi zaten biliyorsunuzdemektir.
+Tipik JVM bağımsız değişkenleri `-Xmx512m` ve `-XX:+UseG1GC`içerir. Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
-Uygulamanızın JVM args yapılandırma ile ek yardım için, [3.0 Önizleme bakın: JVM args güncellemek için ipuçları.](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)
+Uygulamanızın JVM bağımsız değişkenlerini yapılandırmayla ilgili ek yardım için lütfen bkz. [3,0 Preview: JVM bağımsız değişkenlerini güncelleştirme ipuçları](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
 
-**3. Aracıyı Application Insights kaynağınıza yönlendirin**
+**3. aracıyı Application Insights kaynağına getirin**
 
-Zaten bir Uygulama Öngörüleri kaynağınız yoksa, [kaynak oluşturma kılavuzundaki](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)adımları izleyerek yeni bir kaynak oluşturabilirsiniz.
+Zaten bir Application Insights kaynağınız yoksa, [kaynak oluşturma kılavuzundaki](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)adımları izleyerek yeni bir tane oluşturabilirsiniz.
 
-Bir ortam değişkeni ayarlayarak aracıyı Application Insights kaynağınıza yönlendirin:
+Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına getirin:
 
 ```
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Veya adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturarak ve aşağıdaki `applicationinsights-agent-3.0.0-PREVIEW.3.jar`içerikle aynı dizine yerleştirerek:
+Ya da adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturup, ile aynı dizine `applicationinsights-agent-3.0.0-PREVIEW.3.jar`yerleştirilerek aşağıdaki içerikle birlikte:
 
 ```json
 {
@@ -54,13 +54,13 @@ Veya adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturarak ve
 }
 ```
 
-Bağlantı dizenizi Application Insights kaynağınızda bulabilirsiniz:
+Bağlantı dizenizi Application Insights kaynağınız için bulabilirsiniz:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Uygulama Öngörüleri Bağlantı Dizesi":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights bağlantı dizesi":::
 
-**4. Bu kadar!**
+**4. işte!**
 
-Şimdi uygulamanızı başlatın ve izleme verilerinizi görmek için Azure portalındaki Application Insights kaynağınıza gidin.
+Şimdi uygulamanızı başlatın ve izleme verilerinizi görmek için Azure portal Application Insights kaynağına gidin.
 
 > [!NOTE]
 > İzleme verilerinizin portalda gösterilmesi birkaç dakika sürebilir.
@@ -68,71 +68,71 @@ Bağlantı dizenizi Application Insights kaynağınızda bulabilirsiniz:
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-Dosyada, `ApplicationInsights.json` ayrıca yapılandırabilirsiniz:
+`ApplicationInsights.json` Dosyasında, aşağıdakileri de yapılandırabilirsiniz:
 
-* Bulut rol adı
+* Bulut rolü adı
 * Bulut rolü örneği
 * Uygulama günlüğü yakalama
 * JMX ölçümleri
 * Micrometer
 * Sinyal
 * Örnekleme
-* HTTP Proxy
-* Kendi kendine teşhis
+* HTTP proxy 'Si
+* Kendi kendine tanılama
 
-[3.0 Genel Önizleme: Yapılandırma Seçenekleri'nde](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)ayrıntılara bakın.
+Ayrıntılar için bkz. [3,0 genel önizleme: yapılandırma seçenekleri](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Otomatik toplanan istekler, bağımlılıklar, günlükler ve ölçümler
+## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Oto toplanan istekler, bağımlılıklar, Günlükler ve ölçümler
 
 ### <a name="requests"></a>İstekler
 
-* JMS Tüketiciler
-* Kafka Tüketiciler
-* Netty/WebFlux
-* Servlet
-* Bahar Zamanlama
+* JMS tüketicileri
+* Kafka tüketicileri
+* Netty/Webflox
+* Servi sağlar
+* Yay zamanlaması
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>Dağıtılmış izleme yayılımı olan bağımlılıklar
+### <a name="dependencies-with-distributed-trace-propagation"></a>Dağıtılmış izleme yaymaya sahip bağımlılıklar
 
 * Apache HttpClient ve HttpAsyncClient
 * gRPC
-* java.net.HttpURLConnection
-* Jms
+* Java. net. HttpURLConnection
+* JMS
 * Kafka
-* Netty istemci
-* okhttp
+* Netty istemcisi
+* OkHttp
 
 ### <a name="other-dependencies"></a>Diğer bağımlılıklar
 
 * Cassandra
 * JDBC
-* MongoDB (async ve sync)
-* Redis (Marul ve Jedi)
+* MongoDB (Async ve Sync)
+* Redsıs (Lettuce ve Jedsıs)
 
 ### <a name="logs"></a>Günlükler
 
-* java.util.logging
-* Log4j
-* SLF4J/Giriş
+* Java. util. Logging
+* Log4J
+* DOLAYıSıYLA SLF4J/Logback
 
 ### <a name="metrics"></a>Ölçümler
 
 * Micrometer
-* JMX Ölçümleri
+* JMX ölçümleri
 
-## <a name="sending-custom-telemetry-from-your-application"></a>Uygulamanızdan özel telemetri gönderme
+## <a name="sending-custom-telemetry-from-your-application"></a>Uygulamanızdan Özel telemetri gönderme
 
-3.0+'daki amacımız, standart API'leri kullanarak özel telemetrinizi göndermenize olanak sağlamaktır.
+3.0 + ' da hedefiniz, Standart API 'Leri kullanarak özel telemetrinizi göndermenizi sağlamaktır.
 
-Mikrometre, OpenTelemetry API ve popüler günlük çerçevelerini destekliyoruz. Uygulama Insights Java 3.0 otomatik olarak telemetri yakalayacak ve otomatik toplanan telemetri tüm ile birlikte ilişkilendirmek.
+Mikro ölçüm, Opentelemetri API ve popüler günlük çerçevesini destekliyoruz. Application Insights Java 3,0, Telemetriyi otomatik olarak yakalar ve otomatik toplanan telemetriyle birlikte ilişkilendirilecektir.
 
-Bu nedenle, şu anda Application Insights 3.0 içeren bir SDK yayınlamayı planlamiyoruz.
+Bu nedenle, şu anda Application Insights 3,0 ile bir SDK 'Yı serbest bırakmaya planlanıyoruz.
 
-Uygulama Insights Java 3.0 zaten Uygulama Insights Java SDK 2.x gönderilen telemetri için dinliyor. Bu işlevsellik, mevcut 2.x kullanıcıları için yükseltme hikayesinin önemli bir parçasıdır ve OpenTelemetri API GA olana kadar özel telemetri desteğimizde önemli bir boşluğu doldurur.
+Application Insights Java 3,0, Java SDK 'Sı 2. x Application Insights gönderilen telemetri için zaten dinliyor. Bu işlevsellik, var olan 2. x kullanıcıları için yükseltme hikayesinin önemli bir parçasıdır ve Opentelemetri API 'SI GA olana kadar özel telemetri desteğimize önemli bir boşluk girer.
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Uygulama Öngörüleri Java SDK 2.x kullanarak özel telemetri gönderme
+## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Java SDK 2. x Application Insights kullanarak özel telemetri gönderme
 
-Uygulamanıza ekleyin `applicationinsights-core-2.6.0.jar` (tüm 2.x sürümleri Application Insights Java 3.0 tarafından desteklenir, ancak bir seçeneğiniz varsa en son kullanmaya değer):
+Uygulamanıza `applicationinsights-core-2.6.0.jar` ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
 ```xml
   <dependency>
@@ -142,13 +142,13 @@ Uygulamanıza ekleyin `applicationinsights-core-2.6.0.jar` (tüm 2.x sürümleri
   </dependency>
 ```
 
-Bir Telemetriİstesi Oluşturun:
+TelemetryClient oluşturun:
 
   ```java
 private static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-ve özel telemetri göndermek için kullanabilirsiniz.
+ve bunu özel telemetri göndermek için kullanın.
 
 ### <a name="events"></a>Olaylar
 
@@ -157,14 +157,14 @@ telemetryClient.trackEvent("WinGame");
 ```
 ### <a name="metrics"></a>Ölçümler
 
-[Mikrometre](https://micrometer.io)ile metrik telemetri gönderebilirsiniz:
+[Mikro ölçer](https://micrometer.io)aracılığıyla ölçüm telemetrisi gönderebilirsiniz:
 
 ```java
   Counter counter = Metrics.counter("test_counter");
   counter.increment();
 ```
 
-Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
+Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
 
 ```java
   telemetryClient.trackMetric("queueLength", 42.0);
@@ -187,18 +187,18 @@ Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
 ```
 
 ### <a name="logs"></a>Günlükler
-En sevdiğiniz günlük çerçevesi üzerinden özel günlük telemetri gönderebilirsiniz.
+En sevdiğiniz günlük çatısı aracılığıyla özel günlük telemetrisi gönderebilirsiniz.
 
-Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
+Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
 
 ```java
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
 ### <a name="exceptions"></a>Özel Durumlar
-En sevdiğiniz günlük çerçevesi üzerinden özel özel durum telemetrisi gönderebilirsiniz.
+En sevdiğiniz günlük çatısı aracılığıyla özel özel durum telemetrisi gönderebilirsiniz.
 
-Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
+Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
 
 ```java
   try {
@@ -208,9 +208,9 @@ Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
   }
 ```
 
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Uygulama Öngörüleri Java SDK 2.x yükseltme
+## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2. x sürümünden yükseltme
 
-Uygulamanızda Uygulama Öngörüleri Java SDK 2.x kullanıyorsanız, uygulamanızı kaldırmanız gerekmez. Java 3.0 aracısı bunu algılar ve Java SDK 2.x üzerinden gönderdiğiniz özel telemetrileri yakalar ve ilişkilendirirken, java SDK 2.x tarafından gerçekleştirilen otomatik toplamayı yineleyerek yakalamayı önler.
+Uygulamanızda zaten Application Insights Java SDK 'Sı 2. x kullanıyorsanız, kaldırmanız gerekmez. Java 3,0 Aracısı bu dosyayı algılar ve Java SDK 'Sı 2. x aracılığıyla gönderdiğiniz herhangi bir özel Telemetriyi yakalayıp, yinelenen yakalamayı engellemek için Java SDK 'Sı 2. x tarafından gerçekleştirilen herhangi bir yeniden toplamayı engeller.
 
 > [!NOTE]
-> Not: Java SDK 2.x TelemetriInitializers ve Telemetriİşlemciler 3.0 aracısı kullanırken çalışmaz.
+> Not: 3,0 Aracısı kullanılırken Java SDK 2. x TelemetryInitializers ve TelemetryProcessors çalıştırılmayacak.

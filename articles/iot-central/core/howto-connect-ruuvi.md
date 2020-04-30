@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central'da bir RuuviTag'ı bağlayın | Microsoft Dokümanlar
-description: Bir RuuviTag ortam sensörünü IoT Central uygulamanıza nasıl bağlayabilirsiniz öğrenin.
+title: Azure IoT Central bir RuuviTag bağlantısı | Microsoft Docs
+description: IoT Central uygulamanıza bir RuuviTag ortam algılayıcısı bağlamayı öğrenin.
 services: iot-central
 ms.service: iot-central
 ms.topic: how-to
@@ -11,72 +11,72 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758944"
 ---
-# <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Azure IoT Merkezi uygulamanıza bir RuuviTag sensörü bağlayın
+# <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Azure IoT Central uygulamanıza bir RuuviTag algılayıcısı bağlama
 
-*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
+*Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
-Bu makalede, bir çözüm oluşturucu olarak, bir RuuviTag sensörünü Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğiniz açıklanmaktadır.
+Bu makalede, bir çözüm Oluşturucusu olarak, bir RuuviTag algılayıcısı Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi açıklanmaktadır.
 
 Ruuvi etiketi nedir?
 
-RuuviTag, iş müşterilerinin, geliştiricilerin, üreticilerin, öğrencilerin ve hobi cilerin ihtiyaçlarını karşılamak üzere tasarlanmış gelişmiş bir açık kaynak sensör işaret platformudur. Cihaz, kutusundan çıkarır çıkarmaz çalışacak şekilde ayarlanmıştır ve ihtiyacınız olan yere dağıtmanız için hazırdır. Bir ortam sensörü ve ivmeölçer dahili bir Bluetooth LE işaret bulunuyor.
+RuuviTag, iş müşterilerinin, geliştiricilerin, mekanizmalarının, öğrencilerin ve barındırmacıların ihtiyaçlarını karşılamak için tasarlanan, gelişmiş bir açık kaynaklı algılayıcı işaret platformudur. Cihaz, kendi kutudan çıkar almaz ve ihtiyacınız olan yere dağıtmanız için hazır hale gelir. Bu, bir ortam algılayıcısı ve yerleşik hızlandırma içeren bir Bluetooth LE işaret ediyor.
 
-RuuviTag, BLE (Bluetooth Düşük Enerji) üzerinden iletişim kurar ve Azure IoT Central ile konuşmak için bir ağ geçidi aygıtı gerektirir. Bir RuuviTag'ın IoT Central'a bağlanmasını sağlamak için Rigado Cascade 500 gibi bir ağ geçidi aygıtınız olduğundan emin olun.
+RuuviTag, BLE üzerinden iletişim kurar (Bluetooth düşük enerji) ve Azure IoT Central ile iletişim kurmak için bir ağ geçidi cihazı gerektirir. IoT Central bağlantı kurmak üzere bir RuuviTag 'i etkinleştirmek için Rigado Cascade 500 gibi bir ağ geçidi cihazına sahip olduğunuzdan emin olun.
 
-Rigado Cascade 500 ağ geçidi cihazı kurmak istiyorsanız lütfen [buradaki talimatları](./howto-connect-rigado-cascade-500.md) uygulayın.
+Bir Rigado basamaklı 500 ağ geçidi cihazı kurmak istiyorsanız lütfen [buradaki yönergeleri](./howto-connect-rigado-cascade-500.md) izleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-RuuviTag sensörlerini bağlamak için aşağıdaki kaynaklara ihtiyacınız vardır:
+RuuviTag sensörlerinden bağlantı kurmak için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-* Bir RuuviTag sensörü. Daha fazla bilgi için lütfen [RuuviTag](https://ruuvi.com/)adresini ziyaret edin.
-* Rigado Cascade 500 cihazı veya başka bir BLE ağ geçidi. Daha fazla bilgi için lütfen [Rigado'yu](https://www.rigado.com/)ziyaret edin.
-* Azure IoT Merkezi uygulaması. Daha fazla bilgi için [yeni bir uygulama oluşturmaya](./quick-deploy-iot-central.md)bakın.
+* RuuviTag algılayıcısı. Daha fazla bilgi için lütfen [Ruuvitag](https://ruuvi.com/)adresini ziyaret edin.
+* Bir Rigado Cascade 500 cihazı veya başka bir BLE ağ geçidi. Daha fazla bilgi için lütfen [Rigado](https://www.rigado.com/)adresini ziyaret edin.
+* Azure IoT Central uygulaması. Daha fazla bilgi için [Yeni uygulama oluşturma](./quick-deploy-iot-central.md)bölümüne bakın.
 
-## <a name="add-a-ruuvitag-device-template"></a>RuuviTag aygıt şablonu ekleme
+## <a name="add-a-ruuvitag-device-template"></a>RuuviTag cihaz şablonu ekleme
 
-Azure IoT Merkezi uygulama örneğinize bir RuuviTag sensörü nde yer almak için, uygulamanızda ilgili bir aygıt şablonu yapılandırmanız gerekir.
+Azure IoT Central uygulama örneğinize bir RuuviTag algılayıcısı eklemek için, uygulamanız içinde karşılık gelen bir cihaz şablonunu yapılandırmanız gerekir.
 
-RuuviTag aygıt şablonu eklemek için:
+Bir RuuviTag cihaz şablonu eklemek için:
 
-1. Sol bölmede ***Aygıt Şablonları*** sekmesine gidin, seçin **+ Yeni**: ![Yeni aygıt](./media/howto-connect-ruuvi/devicetemplate-new.png) şablonu oluşturma ***Sayfa, size özel bir şablon oluşturma*** veya önceden yapılandırılmış bir aygıt ***şablonu kullanma*** seçeneği sunar
-1. Aşağıda gösterildiği gibi önceden yapılandırılmış aygıt şablonları listesinden RuuviTag ![aygıt şablonu seçin: RuuviTag aygıt şablonu seçin](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. ***Sonraki'ni seçin:*** Bir sonraki adıma devam etmek için özelleştirin.
-1. Bir sonraki ekranda, IoT Central uygulamanızda C500 cihaz şablonuna binecek şekilde ***Oluştur'u*** seçin.
+1. Sol bölmedeki ***cihaz şablonları*** sekmesine gidin ve **+ Yeni** ![: yeni cihaz](./media/howto-connect-ruuvi/devicetemplate-new.png) şablonu oluştur sayfası, ***özel şablon oluşturma*** veya ***önceden yapılandırılmış bir cihaz şablonu kullanma*** seçeneği sunar.
+1. Aşağıda gösterildiği gibi önceden yapılandırılmış cihaz şablonları listesinden RuuviTag cihaz şablonunu seçin: ![ruuvitag cihaz şablonunu seçin](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. Sonraki adıma devam etmek için Ileri 'yi seçin ***: Özelleştir*** .
+1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için ***Oluştur*** ' u seçin.
 
-## <a name="connect-a-ruuvitag-sensor"></a>RuuviTag sensörünü bağlayın
+## <a name="connect-a-ruuvitag-sensor"></a>RuuviTag algılayıcısı bağlama
 
-Daha önce de belirtildiği gibi, RuuviTag'ı IoT Central uygulamanızla bağlamak için bir ağ geçidi aygıtı kurmanız gerekir. Aşağıdaki adımlar, bir Rigado Cascade 500 ağ geçidi aygıtı ayarladığınızvarsa.  
+Daha önce belirtildiği gibi, RuuviTag ' i IoT Central uygulamanızla bağlamak için bir ağ geçidi cihazı ayarlamanız gerekir. Aşağıdaki adımlarda, bir Rigado basamaklı 500 ağ geçidi cihazı ayarlamış olduğunuz varsayılmaktadır.  
 
-1. Rigado Cascade 500 cihazınızı güçlandırın ve ağ bağlantınıza bağlayın (Ethernet veya kablosuz)
-1. RuuviTag'ın kapağını kapatın ve pil ile bağlantıyı korumak için plastik sekmeyi çekin.
-1. RuuviTag'ı, IoT Central uygulamanızda zaten yapılandırılmış olan Rigado Cascade 500 ağ geçidine yakın yerleştirin.
-1. Sadece birkaç saniye içinde, RuuviTag'ınız IoT Central'daki aygıtlar listenizde görünmelidir.  
-    ![RuuviTag Cihaz Listesi](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+1. Rigado Cascade 500 cihazınızda güç yapın ve ağ bağlantınıza bağlayın (Ethernet veya kablosuz aracılığıyla)
+1. RuuviTag 'in kapağını kapatın ve pille bağlantıyı güvenli hale getirmek için plastik sekmesini çekin.
+1. IoT Central uygulamanızda zaten yapılandırılmış bir Rigado basamaklı 500 ağ geçidine RuuviTag Close koyun.
+1. Yalnızca birkaç saniye içinde, RuuviTag 'niz IoT Central içindeki cihazlar listenizde görünmelidir.  
+    ![RuuviTag cihaz listesi](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
 
-Artık bu RuuviTag'ı IoT Central uygulamanızda kullanabilirsiniz.  
+Artık IoT Central uygulamanızda bu RuuviTag ' i kullanabilirsiniz.  
 
-## <a name="create-a-simulated-ruuvitag"></a>Simüle edilmiş Bir RuuviTag oluşturma
+## <a name="create-a-simulated-ruuvitag"></a>Benzetimli RuuviTag oluştur
 
-Fiziksel bir RuuviTag aygıtınız yoksa, Azure IoT Central uygulamanızda test etmek için kullanmak üzere simüle edilmiş bir RuuviTag sensörü oluşturabilirsiniz.
+Fiziksel bir RuuviTag cihazınız yoksa, Azure IoT Central uygulamanızda test için kullanılacak bir benzetimli Ruuvıtag algılayıcısı oluşturabilirsiniz.
 
-Simüle Edilmiş Bir RuuviTag oluşturmak için:
+Benzetimli RuuviTag oluşturmak için:
 
-1. **RuuviTag > Cihazları**seçin.
-1. Seçin **+ Yeni**.
-1. Benzersiz bir **Aygıt Kimliği** ve uygun bir **Aygıt adı**belirtin.  
-1. **Benzetim** li ayarı etkinleştirin.
+1. **Cihaz > RuuviTag**' ı seçin.
+1. **+ Yeni**seçeneğini belirleyin.
+1. Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı**belirtin.  
+1. **Benzetimli** ayarı etkinleştirin.
 1. **Oluştur**’u seçin.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Aygıt geliştiricisiyseniz, önerilen bazı sonraki adımlar şunlardır:
+Bir cihaz geliştiricisiyseniz, önerilen bazı sonraki adımlar şunlardır:
 
-- Azure [IoT Central'da Aygıt bağlantısı](./concepts-get-connected.md) hakkında bilgi edinin
-- [Azure CLI'yi kullanarak aygıt bağlantısını](./howto-monitor-devices-azure-cli.md) nasıl izleyeceğinizi öğrenin
+- [Azure IoT Central cihaz bağlantısı](./concepts-get-connected.md) hakkında bilgi edinin
+- [Azure CLI kullanarak cihaz bağlantısını izlemeyi](./howto-monitor-devices-azure-cli.md) öğrenin

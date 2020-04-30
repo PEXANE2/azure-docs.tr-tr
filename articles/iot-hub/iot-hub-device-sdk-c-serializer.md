@@ -1,6 +1,6 @@
 ---
-title: Azure IoT cihazı C için SDK - Serializer | Microsoft Dokümanlar
-description: Bir IoT hub'ı ile iletişim kuran aygıt uygulamaları oluşturmak için C için Azure IoT aygıt SDK'daki Serializer kitaplığını kullanma.
+title: C-serileştirici için Azure IoT cihaz SDK 'Sı | Microsoft Docs
+description: IoT Hub ile iletişim kuran cihaz uygulamaları oluşturmak için, C için Azure IoT cihaz SDK 'sında seri hale getirici kitaplığı 'nı kullanma.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,29 +10,29 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767018"
 ---
-# <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT cihazı SDK for C – serializer hakkında daha fazla
+# <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C için Azure IoT cihaz SDK 'Sı – serileştirici hakkında daha fazla bilgi
 
-Bu serinin ilk [makalesi, C için Azure IoT aygıtı SDK'ya Giriş'i](iot-hub-device-sdk-c-intro.md)tanıttı. Sonraki [makalede, C için Azure IoT cihazı SDK daha](iot-hub-device-sdk-c-iothubclient.md)ayrıntılı bir açıklama - IoTHubClient . Bu makale, kalan bileşenin daha ayrıntılı bir açıklamasını sağlayarak SDK'nın kapsamını tamamlar: **serializer** kitaplığı.
+Bu serideki ilk makale, [C Için Azure IoT cihaz SDK 'Sına giriş olarak](iot-hub-device-sdk-c-intro.md)tanıtılmıştır. Sonraki makalede, [C--IoTHubClient Için Azure IoT cihaz SDK 'sının](iot-hub-device-sdk-c-iothubclient.md)daha ayrıntılı bir açıklaması verilmiştir. Bu makale, kalan bileşenin daha ayrıntılı bir açıklamasını sağlayarak SDK 'nın kapsamını tamamlar: **serileştirici** kitaplığı.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Giriş makalesi, IoT Hub'a olay göndermek ve iletialmak için **serileştirici** kitaplığını nasıl kullanacağımı açıklamıştır. Bu makalede, **serileştirici** makro dili ile verilerinizi nasıl modellendireceğimize ilişkin daha eksiksiz bir açıklama sağlayarak bu tartışmayı genişletiyoruz. Makale ayrıca kitaplığın iletileri nasıl serileştirdiği (ve bazı durumlarda serileştirme davranışını nasıl denetlediğiniz) hakkında daha fazla ayrıntı da içerir. Ayrıca, oluşturduğunuz modellerin boyutunu belirleyen değiştirebileceğiniz bazı parametreleri de açıklarız.
+IoT Hub, **seri hale getirici** kitaplığı 'nı kullanarak olayları gönderme ve iletileri alma hakkında açıklanan tanıtım makalesi. Bu makalede, verilerin **serileştirici** makro diliyle nasıl modelleceği hakkında daha ayrıntılı bir açıklama sunarak bu tartışmayı genişlettik. Makale Ayrıca kitaplığın iletileri serileştirme (ve bazı durumlarda serileştirme davranışını nasıl denetleyebilmeniz) hakkında daha fazla ayrıntı içerir. Ayrıca, oluşturduğunuz modellerin boyutunu belirleyecek değişiklik yaptığınız bazı parametreleri de açıklayacağız.
 
-Son olarak, makale, ileti ve özellik işleme gibi önceki makalelerde ele alınan bazı konuları yeniden ele alar. Göreceğimiz gibi, bu özellikler **ioTHubClient** kitaplığında olduğu gibi **serileştirici** kitaplığını kullanarak aynı şekilde çalışır.
+Son olarak, makale, ileti ve özellik işleme gibi önceki makalelerde ele alınan bazı konuları yeniden ziyaret ediyor. Öğrendiğimiz gibi bu özellikler, **ıthubclient** kitaplığı ile çalıştıkları gibi **serileştirici** kitaplığı ile aynı şekilde çalışır.
 
-Bu makalede açıklanan her şey **serileştirici** SDK örneklerine dayanmaktadır. Bunu takip etmek istiyorsanız, C için Azure IoT aygıtı SDK'da yer alan **basit örnek\_amqp** ve **simplesample\_http** uygulamalarına bakın.
+Bu makalede açıklanan her şey, **serileştirici** SDK örneklerine dayalıdır. Birlikte izlemek isterseniz, C için Azure IoT cihaz SDK 'sına eklenen **\_SimpleSample AMQP** ve **\_SimpleSample http** uygulamalarına bakın.
 
-C GitHub deposu [**için Azure IoT aygıtı SDK'yı**](https://github.com/Azure/azure-iot-sdk-c) bulabilir ve C [API başvurusunda](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)API'nin ayrıntılarını görüntüleyebilirsiniz.
+C GitHub deposu [**Için Azure IoT CIHAZ SDK**](https://github.com/Azure/azure-iot-sdk-c) 'sını bulabilir ve [c API başvurusunda](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)API 'nin ayrıntılarını görüntüleyebilirsiniz.
 
 ## <a name="the-modeling-language"></a>Modelleme dili
 
-Bu serideki Azure IoT aygıt SDK c modelleme dili **için Azure IoT aygıtı SDK'yı** basit [Azure IoT device SDK for C](iot-hub-device-sdk-c-intro.md) örnek **\_amqp** uygulamasında sağlanan örnek aracılığıyla tanıtmıştır:
+Bu serideki [c Için Azure IoT cihaz SDK 'sı](iot-hub-device-sdk-c-intro.md) makalesi, **SimpleSample\_AMQP** uygulamasında sağlanan örnek aracılığıyla **c modelleme için Azure IoT cihaz SDK 'sını** kullanıma sunmuştur:
 
 ```C
 BEGIN_NAMESPACE(WeatherStation);
@@ -48,41 +48,41 @@ WITH_ACTION(SetAirResistance, int, Position)
 END_NAMESPACE(WeatherStation);
 ```
 
-Gördüğünüz gibi, modelleme dili C makrolarına dayanır. Tanımınıza her zaman **\_BEGIN NAMESPACE** ile başlarsınız ve her zaman **\_END NAMESPACE**ile sona erersiniz. Şirketinizin ad alanını veya bu örnekte olduğu gibi üzerinde çalıştığınız projeyi adlandırmak yaygındır.
+Gördüğünüz gibi, modelleme dili C makrolarını temel alır. **Başlangıç\_ad alanı** ile tanımınızı her zaman başlatın ve **bitiş\_ad**alanıyla her zaman sonlandırın. Şirketinizin ad alanını veya bu örnekteki gibi, üzerinde çalıştığınız projeyi adlandırmak yaygın bir addır.
 
-Ad alanının içine giren şey model tanımlarıdır. Bu durumda, bir anemometre için tek bir model vardır. Bir kez daha, model herhangi bir şey adlandırılabilir, ancak genellikle model aygıt veya IoT Hub ile alışverişi istediğiniz veri türü için adlandırılır.  
+Ad alanı içinde olan özellikler model tanımlardır. Bu durumda, bir Anemometre için tek bir model vardır. Bir kez daha, model herhangi bir şey olarak adlandırılabilir, ancak genellikle model IoT Hub ile değiştirmek istediğiniz cihaz veya veri türü için adlandırılır.  
 
-Modeller, IoT Hub'ına *(veriler)* girebileceğiniz olayların ve IoT Hub'ından alabileceğiniz iletilerin *(eylemler)* bir tanımını içerir. Örnekten de görebileceğiniz gibi, olayların bir türü ve adı var; eylemlerin bir adı ve isteğe bağlı parametreleri vardır (her biri bir türe sahip).
+Modeller, IoT Hub ( *veriler*) ve IoT Hub ( *Eylemler*) içinden alacağınız iletiler için kullanabileceğiniz olayların bir tanımını içerir. Örnekte görebileceğiniz gibi, olayların türü ve adı vardır; eylemlerde bir ad ve isteğe bağlı parametreler (her biri bir tür ile) vardır.
 
-Bu örnekte gösterilmeyecek olan şey, SDK tarafından desteklenen ek veri türleridir. Bir dahaki sefere bunu halledeceğiz.
+Bu örnekte gösterilmediğinden, SDK tarafından desteklenen ek veri türleri de verilmiştir. Bundan sonra ele alınacaktır.
 
 > [!NOTE]
-> IoT Hub, bir aygıtın ona *olay*olarak gönderdiği verileri, modelleme dili ise *veri* olarak ifade eder **(WITH_DATA**kullanılarak tanımlanır). Benzer şekilde, IoT Hub aygıtlara gönderdiğiniz verileri *ileti*olarak ifade ederken, modelleme dili de bu verileri *eylem* olarak ifade eder **(WITH_ACTION**kullanılarak tanımlanır). Bu terimlerin bu makalede birbirinin yerine kullanılabileceğini unutmayın.
+> IoT Hub, bir cihazın kendisine *olay*olarak gönderdiği verileri ifade eder, ancak modelleme dili bunu *veri* olarak ifade eder ( **WITH_DATA**kullanılarak tanımlanır). Benzer şekilde, IoT Hub, aygıtlara *ileti*olarak yollarken, modelleme dili *eylem* olarak ifade eder ( **WITH_ACTION**kullanılarak tanımlanır). Bu koşulların, bu makalede birbirinin yerine kullanılabileceğini unutmayın.
 > 
 > 
 
 ## <a name="supported-data-types"></a>Desteklenen veri türleri
 
-Serileştirici kitaplığı yla oluşturulan modellerde **serializer** aşağıdaki veri türleri desteklenir:
+Aşağıdaki veri türleri, **serileştirici** kitaplığı ile oluşturulan modellerde desteklenir:
 
 | Tür | Açıklama |
 | --- | --- |
-| double |çift hassas kayan nokta numarası |
-| int |32 bit'lik bir sayı |
-| float |tek hassas kayan nokta numarası |
-| long |uzun birer yüzlü |
-| int8\_t |8 bit'lik bir sayı |
-| int16\_t |16 bit'lik bir sayı |
-| int32\_t |32 bit'lik bir sayı |
-| int64\_t |64 bit ortalık |
+| double |çift duyarlık kayan nokta sayısı |
+| int |32 bit tamsayı |
+| float |tek duyarlıklı kayan noktalı sayı |
+| long |uzun tamsayı |
+| int8\_t |8 bit tamsayı |
+| Int16\_t |16 bit tamsayı |
+| Int32\_t |32 bit tamsayı |
+| Int64\_t |64 bit tamsayı |
 | bool |boole |
-| ascii\_\_char ptr |ASCII dize |
-| EDM\_\_TARİh SAAT\_OFSET |tarih süresi mahsup |
-| EDM\_REHBER |GUID |
-| EDM\_İkili |ikili |
-| BEYAN\_YAPI |karmaşık veri türü |
+| ASCII\_char\_PTR |ASCII dizesi |
+| EDM\_Tarih\_saat\_boşluğu |Tarih saat boşluğu |
+| EDM\_GUID |GUID |
+| EDM\_ikili |ikili |
+| yapıyı\_bildir |karmaşık veri türü |
 
-Son veri türüyle başlayalım. **DECLARE\_STRUCT,** diğer ilkel türlerin gruplandırmaları olan karmaşık veri türlerini tanımlamanıza olanak tanır. Bu gruplandırmalar, şuna benzeyen bir modeli tanımlamamıza olanak sağlar:
+Son veri türüyle başlayalım. **Declare\_yapısı** , diğer temel türlerin gruplandırmaları olan karmaşık veri türleri tanımlamanızı sağlar. Bu gruplandırmalar şuna benzer bir model tanımlamamızı sağlar:
 
 ```C
 DECLARE_STRUCT(TestType,
@@ -107,9 +107,9 @@ WITH_DATA(TestType, Test)
 );
 ```
 
-Modelimiz **TestType**türünden tek bir veri olayı içerir. **TestType,** **serileştirici** modelleme dili tarafından desteklenen ilkel türleri topluca gösteren birkaç üye içeren karmaşık bir türdür.
+Modelimiz **TestType**türünde tek bir veri olayı içeriyor. **TestType** , **seri hale getirici** modelleme dili tarafından desteklenen temel türleri topluca gösteren çeşitli Üyeler içeren karmaşık bir türdür.
 
-Böyle bir modelle, IoT Hub'a aşağıdaki gibi görünen veri göndermek için kod yazabiliriz:
+Bunun gibi bir modelde, aşağıdaki gibi görünen IoT Hub veri göndermek için kod yazalım:
 
 ```C
 TestModel* testModel = CREATE_MODEL_INSTANCE(MyThermostat, TestModel);
@@ -140,7 +140,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-Temel olarak, **Test** yapısının her üyesine bir değer atıyoruz ve ardından Test **veri** olayını buluta göndermesi için **SendAsync'i** çağırıyoruz. **SendAsync,** IoT Hub'ına tek bir veri olayı gönderen bir yardımcı işlevdir:
+Temel olarak, **Test** yapısının her üyesine bir değer atacağız ve **Test** verileri olayını buluta göndermek için **sendadsync** çağrılıyor. **Sendadsync** , IoT Hub için tek bir veri olayı gönderen bir yardımcı işlevdir:
 
 ```C
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -169,9 +169,9 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 }
 ```
 
-Bu işlev verilen veri olayını seri hale getirir ve **IoTHubClient\_SendEventAsync**kullanarak IoT Hub'a gönderir. Bu önceki makalelerde tartışılan aynı koddur **(SendAsync** uygun bir işlev içine mantık kapsüller).
+Bu işlev, belirtilen veri olayını seri hale getirir ve **Iothubclient\_SendEventAsync**kullanarak IoT Hub gönderir. Bu, önceki makalelerde ele alınan aynı koddur (**Sendadsync** mantığı uygun bir işlev halinde Kapsüller).
 
-Önceki kodda kullanılan diğer bir yardımcı işlevi **GetDateTimeOffset**olduğunu. Bu fonksiyon verilen süreyi **EDM\_DATE\_TIME\_OFSET**türüne dönüştürür:
+Önceki kodda kullanılan başka bir yardımcı işlev **GetDateTimeOffset**. Bu işlev, verilen süreyi **EDM\_\_tarih saat\_kayması**türünde bir değere dönüştürür:
 
 ```C
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -189,31 +189,31 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 }
 ```
 
-Bu kodu çalıştırdığınızda, Aşağıdaki ileti IoT Hub'a gönderilir:
+Bu kodu çalıştırırsanız aşağıdaki ileti IoT Hub gönderilir:
 
 ```C
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Serileştirmenin, **serializer** kitaplığı tarafından oluşturulan biçim olan JSON'da olduğunu unutmayın. Ayrıca, seri leştirilmiş JSON nesnesinin her üyesinin modelimizde tanımladığımız **TestType** üyeleriyle eşleştiğini unutmayın. Değerler, kodda kullanılandeğerlerle de tam olarak eşleşir. Ancak, ikili verilerin base64 kodlu olduğunu unutmayın: "AQID" {0x01, 0x02, 0x03} kod64 kodlamas›dur.
+Serileştirme, **seri hale getirici** kitaplığı tarafından oluşturulan BIÇIM olan JSON 'da olduğunu unutmayın. Ayrıca, serileştirilmiş JSON nesnesinin her üyesinin, modelimizde tanımladığımız **TestType** üyeleriyle eşleştiğini unutmayın. Değerler kodda kullanılanlarla de tamamen eşleşir. Ancak, ikili verilerin base64 kodlamalı olduğunu unutmayın: "AQıD", {0x01, 0x02, 0x03} öğesinin Base64 kodlaması.
 
-Bu **örnek, seri kitaplığını** kullanmanın avantajını göstermektedir -- uygulamamızda serileştirmeyle açıkça uğraşmak zorunda kalmadan JSON'u buluta göndermemizi sağlar. Endişelenmemiz gereken tek şey modelimizdeki veri olaylarının değerlerini ayarlamak ve sonra bu olayları buluta göndermek için basit API'leri aramaktır.
+Bu örnek, **serileştirici** Kitaplığı kullanmanın avantajlarından yararlanır; bu, uygulamamızda serileştirme ile açıkça uğraşmak zorunda kalmadan JSON 'ı buluta göndermemizi sağlar. Endişelenmemiz gerekenler, modelimizin veri olaylarının değerlerini ayarlamamız ve bu olayları buluta göndermek için basit API 'Ler çağırıyor.
 
-Bu bilgilerle, karmaşık türleri de dahil olmak üzere desteklenen veri türleri aralığını içeren modelleri tanımlayabiliriz (diğer karmaşık türler içinde karmaşık türleri de dahil edebiliriz). Ancak, yukarıdaki örnek tarafından oluşturulan serileştirilmiş JSON önemli bir nokta getiriyor. **Serializer** kitaplığı yla nasıl veri *gönderdiğimiz* JSON'un tam olarak nasıl oluştuğunu belirler. Bu özel nokta, bundan sonra ele alacağız.
+Bu bilgilerle, karmaşık türler de dahil olmak üzere desteklenen veri türleri aralığını içeren modeller tanımlayabiliriz (diğer karmaşık türler içinde karmaşık türler de dahil olmak üzere). Ancak, yukarıdaki örnek tarafından oluşturulan serileştirilmiş JSON önemli bir nokta getirir. **Seri hale getirici** kitaplığı ile veri gönderme işlemi, tam olarak *JSON nasıl biçimlendirildiğini* belirler. Bu belirli nokta, ileri ele alacağız.
 
-## <a name="more-about-serialization"></a>Serileştirme hakkında daha fazla şey
+## <a name="more-about-serialization"></a>Serileştirme hakkında daha fazla bilgi
 
-Önceki **bölümde, serikitaplığı** tarafından oluşturulan çıktının bir örneğini vurgular. Bu bölümde, kitaplığın verileri nasıl seri hale erdirdiğini ve serileştirme API'lerini kullanarak bu davranışı nasıl denetlediğinizi açıklayacağız.
+Önceki bölümde, **serileştirici** kitaplığı tarafından oluşturulan çıktının bir örneği vurgulanmıştır. Bu bölümde, kitaplığın verileri serileştirerek, serileştirme API 'Lerini kullanarak bu davranışı nasıl denetleyebileceğini açıklayacağız.
 
-Serileştirme tartışmasını ilerletmek için, termostat adayalı yeni bir model ile çalışacağız. İlk olarak, ele almaya çalıştığımız senaryo hakkında biraz bilgi verelim.
+Serileştirme ile ilgili tartışmayı ilerletmek için, bir termostat temel alınarak yeni bir modelle çalışacağız. İlk olarak, ele veriyoruz senaryosunda bir arka plan sağlamamız.
 
-Sıcaklık ve nemi ölçen bir termostat modellemek istiyoruz. Her veri parçası Farklı olarak IoT Hub'a gönderilecek. Varsayılan olarak, termostat her 2 dakikada bir sıcaklık olayını bir kez alır; nem olayı her 15 dakikada bir girilir. Her iki olay girildiğinde, ilgili sıcaklık veya nem ölçüldü zaman gösteren bir zaman damgası içermelidir.
+Sıcaklık ve nem ölçtüğünden oluşan bir termostat modellemek istiyoruz. Her veri parçası IoT Hub farklı şekilde gönderilir. Varsayılan olarak, termostat her 2 dakikada bir sıcaklık olayını ihlal eden bir sıcaklığa sahiptir; her 15 dakikada bir nem olayı görüntülenir. Her iki olay da kullanıldığında, karşılık gelen sıcaklık veya nem ölçdüğü süreyi gösteren bir zaman damgası içermelidir.
 
-Bu senaryogöz önüne alındığında, verileri modellemenin iki farklı yolunu göstereceğiz ve modellemenin seri çıktı üzerindeki etkisini açıklayacağız.
+Bu senaryo verildiğinde, verileri modellemenin iki farklı yolunu göstereceğiz ve modelleme 'nin serileştirilmiş çıktıda sahip olduğu etkiyi açıklayacağız.
 
 ### <a name="model-1"></a>Model 1
 
-Önceki senaryoyu destekleyen bir modelin ilk sürümü aşağıda verilmiştir:
+Bir modelin önceki senaryoyu destekleyen ilk sürümü aşağıda verilmiştir:
 
 ```C
 BEGIN_NAMESPACE(Contoso);
@@ -234,9 +234,9 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Modelin iki veri olayı içerdiğini unutmayın: **Sıcaklık** ve **Nem.** Önceki örneklerden farklı olarak, her olayın türü **DECLARE\_STRUCT**kullanılarak tanımlanan bir yapıdır. **TemperatureEvent** bir sıcaklık ölçümü ve bir zaman damgası içerir; **NemEvent** bir nem ölçümü ve bir zaman damgası içerir. Bu model bize yukarıda açıklanan senaryo için verileri modellemek için doğal bir yol verir. Buluta bir etkinlik gönderdiğimizde, bir sıcaklık/zaman damgası veya nem/zaman damgası çifti göndeririz.
+Modelin iki veri olayı içerdiğini unutmayın: **sıcaklık** ve **nem**. Önceki örneklerden farklı olarak, her olayın türü **Declare\_struct**kullanılarak tanımlanan bir yapıdır. **TemperatureEvent** bir sıcaklık ölçümü ve bir zaman damgası içerir; **Humidtyevent** , bir nem ölçümü ve bir zaman damgası içerir. Bu model, yukarıda açıklanan senaryo için verileri modeletmenin doğal bir yolunu sunar. Buluta bir olay gönderdiğimiz zaman, bir sıcaklık/zaman damgası ya da bir nem/zaman damgası çifti göndereceğiz.
 
-Aşağıdaki gibi kodu kullanarak buluta bir sıcaklık olayı gönderebiliriz:
+Aşağıdaki gibi bir kod kullanarak bir sıcaklık olayını buluta gönderebiliriz:
 
 ```C
 time_t now;
@@ -252,9 +252,9 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-Örnek koddaki sıcaklık ve nem için sabit kodlu değerler kullanacağız, ancak termostattaki ilgili sensörleri örnekleyerek bu değerleri aldığımızı hayal edin.
+Örnek kodda sıcaklık ve nem için sabit kodlanmış değerler kullanacağız, ancak gerçekten de termostat 'daki karşılık gelen algılayıcıları örnekleyerek bu değerleri aldığımızda düşünün.
 
-Yukarıdaki kod, daha önce tanıtılan **GetDateTimeOffset** yardımcısını kullanır. Daha sonra netleşecek nedenlerle, bu kod olayı seri leştirme ve gönderme görevini açıkça ayırır. Önceki kod, sıcaklık olayını bir arabelleğe serileştirir. Ardından, **sendMessage** olayı IoT Hub'ına gönderen bir yardımcı işlevdir **(basit\_örnek amqp'ye**dahildir)
+Yukarıdaki kod, daha önce tanıtılan **GetDateTimeOffset** yardımcısını kullanır. Daha sonra açık hale gelecek nedenlerden dolayı, bu kod, etkinliği serileştirme ve gönderme görevini açıkça ayırır. Önceki kod, sıcaklık olayını bir arabelleğe seri hale getirir. Sonra, **SendMessage** , olayı IoT Hub gönderen bir yardımcı işlevdir ( **SimpleSample\_AMQP**'ye dahildir):
 
 ```C
 static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -271,17 +271,17 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-Bu kod, önceki bölümde açıklanan **SendAsync** yardımcısının bir alt kümesidir, bu nedenle burada bir daha üzerinden geçmeyeceğiz.
+Bu kod, önceki bölümde açıklanan **Sendadsync** Yardımcısı 'nın bir alt kümesidir. bu nedenle, burada yeniden gidemezsiniz.
 
-Sıcaklık olayını göndermek için önceki kodu çalıştırdığımızda, olayın bu serileştirilmiş biçimi IoT Hub'ına gönderilir:
+Sıcaklık olayını göndermek için önceki kodu çalıştırdığımızda, olayın bu serileştirilmiş formu IoT Hub gönderilir:
 
 ```C
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-**TemperatureEvent**türünden bir sıcaklık gönderiyoruz ve bu yapı da **bir Sıcaklık** ve **Zaman** üyesi içeriyor. Bu, serileştirilmiş verilere doğrudan yansıtılır.
+**TemperatureEvent**türünde olan bir sıcaklık gönderiyoruz ve bu yapı bir **sıcaklık** ve **saat** üyesi içeriyor. Bu, doğrudan serileştirilmiş verilere yansıtılır.
 
-Benzer şekilde, bu kodla bir nem olayı gönderebiliriz:
+Benzer şekilde, bu kodla nem olayı gönderebiliriz:
 
 ```C
 thermostat->Humidity.Humidity = 45;
@@ -292,21 +292,21 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-IoT Hub'a gönderilen serileştirilmiş form aşağıdaki gibi görünür:
+IoT Hub gönderilen seri hale getirilmiş form aşağıdaki gibi görünür:
 
 ```C
 {"Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Yine, bu beklendiği gibi.
+Bu, beklenildiği gibidir.
 
-Bu modelle, ek olayların nasıl kolayca eklenebileceğini tahmin edebilirsiniz. **DECLARE\_STRUCT**kullanarak daha fazla yapı tanımlarsınız ve **ilgili\_** olayı WITH DATA kullanarak modele eklersiniz.
+Bu modelle, ek olayların nasıl kolayca eklenebileceklerini hayal edebilirsiniz. **\_Declare struct**kullanarak daha fazla yapı tanımlayabilir ve ilgili olayı, **\_verilerle**kullanarak modele dahil edersiniz.
 
-Şimdi, modeli aynı verileri içerebilecek şekilde değiştirelim ama farklı bir yapıya sahip olalım.
+Şimdi, modeli aynı verileri, ancak farklı bir yapıyla birlikte içerecek şekilde değiştirelim.
 
 ### <a name="model-2"></a>Model 2
 
-Yukarıdaki için bu alternatif modeli düşünün:
+Bu alternatif modeli yukarıdaki bir şekilde düşünün:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -316,9 +316,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Bu durumda, **DECLARE\_STRUCT** makrolarını ortadan kaldırdık ve yalnızca modelleme dilindeki basit türleri kullanarak senaryomuzdaki veri öğelerini tanımlıyoruz.
+Bu durumda, **Declare\_yapı** makrolarını ortadan kaldırdık ve yalnızca modelleme dilinden basit türler kullanarak senaryomızdan veri öğeleri tanımlanıyor.
 
-Şu an için **Time** olayını görmezden gelin. Bunu bir kenara bırakırsak, burada giriş **Sıcaklık**kodu:
+Yalnızca o **sırada, zaman** olayını yoksayın. Bu şekilde, **sıcaklık**girişi için kod aşağıda verilmiştir:
 
 ```C
 time_t now;
@@ -333,13 +333,13 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-Bu kod, ioT Hub'a aşağıdaki serileştirilmiş olayı gönderir:
+Bu kod, IoT Hub için aşağıdaki serileştirilmiş olayı gönderir:
 
 ```C
 {"Temperature":75}
 ```
 
-Ve Nem olay göndermek için kod aşağıdaki gibi görünür:
+Ve nem olayını gönderme kodu şu şekilde görünür:
 
 ```C
 thermostat->Humidity = 45;
@@ -349,15 +349,15 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-Bu kod bunu IoT Hub'a gönderir:
+Bu kod bunu IoT Hub gönderir:
 
 ```C
 {"Humidity":45}
 ```
 
-Şu ana kadar hala sürpriz yok. Şimdi SERIALIZE makroyu kullanma şeklimizi değiştirelim.
+Şimdiye kadar hiç sürme yok. Şimdi SERILEŞTIRME makrosunu kullandığımıza bakalım.
 
-**SERIALIZE** makrosu birden çok veri olayını bağımsız değişken olarak alabilir. Bu, **Sıcaklık** ve **Nem** olayını birlikte seri hale getirebilmemizi ve bunları tek bir aramada IoT Hub'a göndermemizi sağlar:
+**Seri hale getirme** makrosu birden çok veri olayını bağımsız değişken olarak alabilir. Bu, **sıcaklık** ve **nem** olayını birlikte serileştirmenizi ve bunları tek bir çağrıda IoT Hub göndermemizi sağlar:
 
 ```C
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity) == IOT_AGENT_OK)
@@ -366,15 +366,15 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 }
 ```
 
-Bu kodun sonucunun iki veri olayının IoT Hub'ına gönderilmesi olduğunu tahmin edebilirsiniz:
+Bu kodun sonucunun IoT Hub için iki veri olayının gönderildiğini tahmin edebilirsiniz:
 
-[ {"Sıcaklık":75}, {"Nem":45} ]
+[{"Sıcaklık": 75}, {"nem": 45}]
 
-Başka bir deyişle, bu kodun **Sıcaklık** ve **Nemi** ayrı göndermeyle aynı olduğunu bekleyebilirsiniz. Her iki olayı da aynı çağrıda **SERIALIZE'a** aktarmak için bir kolaylık. Ancak, durum böyle değil. Bunun yerine, yukarıdaki kod bu tek veri olayını IoT Hub'ına gönderir:
+Diğer bir deyişle, bu kodun **sıcaklık** ve **nem** gönderme ile aynı olduğunu tahmin edebilirsiniz. Her iki olayı da aynı çağrıda **serileştirmek** üzere geçirmek kolaylık vardır. Ancak, bu durum böyle değildir. Bunun yerine, yukarıdaki kod IoT Hub için bu tek veri olayını gönderir:
 
-{"Sıcaklık":75, "Nem":45}
+{"Sıcaklık": 75, "nem": 45}
 
-Modelimiz **Sıcaklık** ve **Nemi** iki *ayrı* olay olarak tanımladığı için bu garip görünebilir:
+Modelimiz, iki *ayrı* olay olarak **sıcaklık** ve **nem** tanımladığından bu işlem garip görünebilir:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -384,7 +384,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Daha da önemlisi, **Sıcaklık** ve **Nem** aynı yapıda olan bu olayları modellemedik:
+Daha fazla nokta için, **sıcaklık** ve **nem** 'nin aynı yapıda olduğu bu olayları modelliyoruz:
 
 ```C
 DECLARE_STRUCT(TemperatureAndHumidityEvent,
@@ -397,9 +397,9 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 );
 ```
 
-Bu modeli kullanırsak, **Sıcaklık** ve **Nem'in** aynı seri mesajla nasıl gönderileceğini anlamak daha kolay olurdu. Ancak, model 2'yi kullanarak her iki veri olayını **SERIALIZE'a** aktardığınızda neden bu şekilde çalıştığı açık olmayabilir.
+Bu modeli kullandığımızda, **sıcaklık** ve **nem** 'nin aynı seri hale getirilmiş mesajta nasıl gönderileceğini anlamak daha kolay olacaktır. Ancak, model 2 ' ye kullanarak her iki veri olayını **serileştirmek** üzere geçirdiğinizde bu şekilde neden bu şekilde çalışmadığını temizlemeyebilir.
 
-**Serileştirici** kitaplığın yaptığı varsayımları biliyorsanız, bu davranışı anlamak daha kolaydır. Bunu anlamak için, modelimize geri dönelim:
+**Seri hale getirici** kitaplığı 'nın yapmakta olduğu varsayımları biliyorsanız, bu davranışın anlaşılması daha kolay olur. Bunu anlamlı hale getirmek için modelinize geri gidelim:
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -409,9 +409,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-Bu modeli nesne yönelimli terimlerle düşünün. Bu durumda, fiziksel bir cihaz (termostat) modelleme konum ve bu cihaz **Sıcaklık** ve **Nem**gibi özellikleri içerir.
+Bu modeli nesne odaklı koşullara göz önünde bulundurun. Bu durumda, fiziksel bir cihaz (bir termostat) modelliyoruz ve bu cihaz **sıcaklık** ve **nem**gibi öznitelikler içerir.
 
-Modelimizin tüm durumunu aşağıdaki gibi kodlarla gönderebiliriz:
+Modelimizin tüm durumunu aşağıdaki gibi kodla gönderebiliriz:
 
 ```C
 if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermostat->Humidity, thermostat->Time) == IOT_AGENT_OK)
@@ -420,37 +420,37 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 }
 ```
 
-Sıcaklık, Nem ve Zaman değerlerinin ayarlı olduğunu varsayarsak, IoT Hub'a gönderilen böyle bir olay görürsünüz:
+Sıcaklık, nem ve zaman değerlerinin ayarlandığı varsayılarak, bu IoT Hub gönderildiği gibi bir olay görüyoruz:
 
 ```C
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Bazen yalnızca modelin *bazı* özelliklerini buluta göndermek isteyebilirsiniz (modeliniz çok sayıda veri olayı içeriyorsa bu özellikle geçerlidir). Önceki örneğimizde olduğu gibi yalnızca bir veri olayı alt kümesi göndermek yararlıdır:
+Bazen yalnızca modelin *bazı* özelliklerini buluta göndermek isteyebilirsiniz (Bu, modelinizde çok sayıda veri olayı varsa bu özellikle doğrudur). Önceki örnekte olduğu gibi, veri olaylarının yalnızca bir alt kümesini göndermek yararlı olur:
 
 ```C
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-Bu, tıpkı model 1'de yaptığımız gibi, **sıcaklık** ve **zaman** üyesi olan bir **TemperatureEvent** tanımladığımız gibi tam olarak aynı serileştirilmiş olayı oluşturur. Bu durumda, **SERIALIZE'yi** farklı bir şekilde adlandırdığımız için farklı bir model (model 2) kullanarak tam olarak aynı serileştirilmiş olayı oluşturabildik.
+Bu, tıpkı model 1 ile yaptığımız gibi, **sıcaklık** ve **saat** üyesi ile bir **TemperatureEvent** tanımladığımız gibi, tam olarak aynı serileştirilmiş olay oluşturur. Bu durumda, **serileştirme** 'i farklı bir şekilde çağırdığımız için farklı bir model (model 2) kullanarak tam olarak aynı serileştirilmiş olay oluşturuyoruz.
 
-Önemli nokta, **serialize** için birden çok veri olayları geçerseniz, o zaman her olay tek bir JSON nesnesi bir özellik olduğunu varsayar.
+Önemli nokta, **seri hale getirmek** için birden çok veri olayı geçirirseniz, her olayın tek bir JSON nesnesinde bir özellik olduğunu varsaymaktadır.
 
-En iyi yaklaşım size ve modeliniz hakkında nasıl düşündüğünüze bağlıdır. Buluta "olaylar" gönderiyorsanız ve her olay tanımlı bir özellik kümesi içeriyorsa, ilk yaklaşım çok anlamlıdır. Bu durumda, her olayın yapısını tanımlamak için **DECLARE\_STRUCT'u** kullanır ve bunları **WITH\_DATA** makrosuyla modelinize eklersiniz. Daha sonra yukarıdaki ilk örnekte yaptığımız gibi her olayı gönderirsiniz. Bu yaklaşımda, yalnızca **SERIALIZER**için tek bir veri olayı geçmek istiyorsunuz.
+En iyi yaklaşım size ve modeliniz hakkında nasıl düşündüğünüzü size bağlıdır. Buluta "olaylar" gönderiyorsanız ve her bir olay tanımlı bir özellikler kümesi içeriyorsa, ilk yaklaşım çok daha anlamlı hale gelir. Bu durumda, her bir olayın yapısını tanımlamak için **Declare\_struct** ' ı kullanın ve ardından bunları, **WITH\_Data** makrosu ile modelinize dahil edebilirsiniz. Ardından, her olayı yukarıdaki ilk örnekte yaptığımız gibi gönderirsiniz. Bu yaklaşımda, yalnızca **seri hale getirici**'e tek bir veri olayı geçitirsiniz.
 
-Modelinizi nesne yönelimli bir şekilde düşünüyorsanız, ikinci yaklaşım size uygun olabilir. Bu durumda, **WITH\_DATA** kullanılarak tanımlanan öğeler nesnenizin "özellikleri"dir. Buluta göndermek istediğiniz "nesnenin" durumunun ne kadarına bağlı olarak, istediğiniz olaylar alt kümesini **SERIALIZE** etmek için geçersiniz.
+Modelinizi nesne odaklı bir biçimde düşünüyorsanız ikinci yaklaşım size uygun olabilir. Bu durumda, **ile\_** kullanılarak tanımlanan öğeler nesnenizin "özelliklerdir". "Nesnenizin" durumunun buluta göndermek istediğiniz miktarına bağlı olarak, istediğiniz **seri hale getirmek** için herhangi bir olay alt kümesini geçitirsiniz.
 
-Nether yaklaşımı doğru ya da yanlış. **Serileştirici** kitaplığın nasıl çalıştığını unutmayın ve ihtiyaçlarınıza en uygun modelleme yaklaşımını seçin.
+Nether yaklaşımı doğru veya yanlış. **Seri hale getirici** kitaplığının nasıl çalıştığını bilmeniz ve gereksinimlerinize en uygun modelleme yaklaşımını seçmeniz yeterlidir.
 
 ## <a name="message-handling"></a>İleti işleme
 
-Şimdiye kadar bu makalede yalnızca IoT Hub'a olay gönderme tartışıldı ve iletileri alma adresi değil. Bunun nedeni, ileti alma hakkında bilmemiz gerekenlerin büyük ölçüde C için [Azure IoT cihazı SDK'da](iot-hub-device-sdk-c-intro.md)ele alınmış olmasıdır. İleti geri arama işlevini kaydederek iletileri işlediğinizi bu makaleden hatırlayın:
+Bu makalede şu ana kadar, yalnızca IoT Hub olayları ve iletileri alma hakkında değinildiği açıklanmaktadır. Bunun nedeni, iletileri alma hakkında bilmemiz gereken, [C Için Azure IoT CIHAZ SDK](iot-hub-device-sdk-c-intro.md)makalesinde büyük ölçüde ele alınmıştır. İleti geri çağırma işlevini kaydederek iletileri işlemekte olduğunuz makaleden geri çekin:
 
 ```C
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
 ```
 
-Daha sonra bir ileti alındığı zaman çağrılan geri arama işlevini yazarsınız:
+Daha sonra bir ileti alındığında çağrılan geri çağırma işlevini yazarsınız:
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -488,13 +488,13 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-**IoTHubMessage'ın** bu uygulaması, modelinizdeki her eylem için belirli işlevi çağırır. Örneğin, modeliniz bu eylemi tanımlıyorsa:
+**Iothubmessage** uygulamasının bu uygulama, modelinizdeki her bir eylem için belirli bir işlevi çağırır. Örneğin, modeliniz bu eylemi tanımlıyorsa:
 
 ```C
 WITH_ACTION(SetAirResistance, int, Position)
 ```
 
-Bu imzaile bir işlev tanımlamanız gerekir:
+Şu imzaya sahip bir işlev tanımlamanız gerekir:
 
 ```C
 EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
@@ -505,72 +505,72 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 }
 ```
 
-Bu ileti cihazınıza gönderildiğinde **SetAirResistance** çağrılır.
+Daha sonra bu ileti cihazınıza gönderildiğinde, **Setaırdiri** çağırılır.
 
-Henüz açıklamadığımız şey, iletinin serileştirilmiş sürümünün neye benzeleştiğidir. Başka bir deyişle, cihazınıza bir **SetAirResistance** mesajı göndermek istiyorsanız, bu neye benziyor?
+Henüz açıklanmadığımız ileti, serileştirilmiş bir ileti olan sürümünün nasıl görüneceğine ilişkin bir şeydir. Diğer bir deyişle, cihazınıza bir **Setaırdire** iletisi göndermek istiyorsanız ne gibi görünüyor?
 
-Bir aygıta ileti gönderiyorsanız, bunu Azure IoT hizmeti SDK aracılığıyla yaparsınız. Yine de belirli bir eylemi çağırmak için hangi dizeyi göndereceğinizi bilmeniz gerekir. İleti göndermenin genel biçimi aşağıdaki gibi görünür:
+Bir cihaza ileti gönderiyorsanız Azure IoT hizmeti SDK 'Sı üzerinden bunu yapabilirsiniz. Yine de belirli bir eylemi çağırmak için hangi dizenin gönderileceğini bilmeniz gerekir. İleti göndermek için genel biçim aşağıdaki gibi görünür:
 
 ```C
 {"Name" : "", "Parameters" : "" }
 ```
 
-İki özelliği olan serileştirilmiş bir JSON nesnesi göndermiyoruz: **Ad** eylemin adıdır (ileti) ve **Parametreler** bu eylemin parametrelerini içerir.
+İki özellik içeren serileştirilmiş bir JSON nesnesi gönderiyorsunuz: **ad** eylemin adı (ileti) ve **Parametreler** bu eylemin parametrelerini içerir.
 
-Örneğin, **SetAirResistance'i** çağırmak için bu iletiyi bir aygıta gönderebilirsiniz:
+Örneğin, **Setaırdiri** çağırmak için bu iletiyi bir cihaza gönderebilirsiniz:
 
 ```C
 {"Name" : "SetAirResistance", "Parameters" : { "Position" : 5 }}
 ```
 
-Eylem adı, modelinizde tanımlanan bir eylemle tam olarak eşleşmelidir. Parametre adları da eşleşmelidir. Ayrıca büyük/küçük harf duyarlılığına da dikkat edin. **Ad** ve **Parametreler** her zaman büyük harfle karşılanır. Modelinizdeki eylem adınızın ve parametrelerinizin durumuyla eşleştirdiğinden emin olun. Bu örnekte, eylem adı "SetAirResistance" değil, "setairresistance".
+Eylem adı, modelinizde tanımlanan bir eylemle tam olarak eşleşmelidir. Parametre adlarının de aynı olması gerekir. Ayrıca büyük/küçük harf duyarlılığı. **Ad** ve **Parametreler** her zaman büyük harfle yazılır. Modelinizdeki eylem adınızın ve parametrelerinizin durumuyla eşleştiğinden emin olun. Bu örnekte, eylem adı "Setaırdirenc" ve "setaırdirenc" değildir.
 
-Diğer iki eylem **TurnFanOn** ve **TurnFanOff** bir cihaza bu mesajları göndererek çağrılabilir:
+Bu iletileri bir cihaza göndererek, iki diğer eylem **Açık** ve **devre dışı bırakma** çağrılabilir:
 
 ```C
 {"Name" : "TurnFanOn", "Parameters" : {}}
 {"Name" : "TurnFanOff", "Parameters" : {}}
 ```
 
-Bu bölümde, **seri kitaplığı** ile etkinlik gönderirken ve ileti alırken bilmeniz gereken her şey açıklanmıştır. Devam etmeden önce, modelinizin ne kadar büyük olduğunu bu denetimi yapılandırabileceğiniz bazı parametreleri ele alalım.
+Bu bölümde, olay gönderirken ve **seri hale getirici** kitaplığı ile ileti alırken bilmeniz gereken her şey açıklanmaktadır. ' In üzerine geçmeden önce, modelinizin ne kadar büyük olduğunu denetlemek için bazı parametreleri kapsayalım.
 
 ## <a name="macro-configuration"></a>Makro yapılandırması
 
-**Serializer** kitaplığını kullanıyorsanız, SDK'nın önemli bir bölümünün azure-c-shared-utility kitaplığında bulunur.
+**Seri hale getirici** kitaplığını kullanıyorsanız, bılmenız için SDK 'nın önemli bir parçası Azure-c-Shared-Utility kitaplığı 'nda bulunur.
 
-Azure-iot-sdk-c deposunu GitHub'dan klonladıysanız ve komutu `git submodule update --init` verdiyseniz, bu paylaşılan yardımcı program kitaplığını burada bulabilirsiniz:
+Azure-IoT-SDK-c deposunu GitHub 'dan klondıysanız ve `git submodule update --init` komutu verildiyse, bu paylaşılan yardımcı program kitaplığını buradan bulabilirsiniz:
 
 ```C
 .\\c-utility
 ```
 
-Eğer kütüphane klonlanmış değilseniz, [burada](https://github.com/Azure/azure-c-shared-utility)bulabilirsiniz.
+Kitaplığı klonlandıysanız, [burada](https://github.com/Azure/azure-c-shared-utility)bulabilirsiniz.
 
-Paylaşılan yardımcı program kitaplığı içinde aşağıdaki klasörü bulacaksınız:
+Paylaşılan yardımcı program kitaplığı 'nda aşağıdaki klasörü bulabilirsiniz:
 
 ```C
 azure-c-shared-utility\\macro\_utils\_h\_generator.
 ```
 
-Bu klasör **makro\_utils\_h\_generator.sln**denilen bir Visual Studio çözüm içerir:
+Bu klasör **makro\_yardımcı programları\_h\_Generator. sln**adlı bir Visual Studio çözümü içerir:
 
-  ![Visual Studio çözüm ekran maco_utils_h_generator](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
+  ![Visual Studio çözümünün maco_utils_h_generator ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-Bu çözümdeki program **makro\_utils.h** dosyasını oluşturur. SDK'da varsayılan\_makro utils.h dosyası vardır. Bu çözüm, bazı parametreleri değiştirmenize ve bu parametreleri temel alan üstbilgi dosyasını yeniden oluşturmanıza olanak tanır.
+Bu çözümdeki program **Macro\_Utils. h** dosyasını oluşturur. SDK 'ya eklenen bir varsayılan\_makro yardımcı programları. h dosyası vardır. Bu çözüm, bazı parametreleri değiştirmenize ve sonra bu parametrelere göre başlık dosyasını yeniden oluşturmanıza olanak sağlar.
 
-Dikkat edilmesi gereken iki temel parametre, makro\_utils.tt bulunan bu iki satırda tanımlanan **nArithmetic** ve **nMacroParameters**vardır:
+İle ilgilenme yapılacak iki anahtar parametresi, Macro\_Utils.tt içinde bulunan bu iki satırda tanımlanan **Naritmetik** ve **nmakroparameters**' dir:
 
 ```C
 <#int nArithmetic=1024;#>
 <#int nMacroParameters=124;/*127 parameters in one macro deﬁnition in C99 in chapter 5.2.4.1 Translation limits*/#>
 ```
 
-Bu değerler, SDK ile birlikte varsayılan parametrelerdir. Her parametrenin anlamı aşağıdaki gibidir:
+Bu değerler, SDK 'ya dahil edilen varsayılan parametrelerdir. Her parametrenin aşağıdaki anlamı vardır:
 
-* nMacroParameters – Bir DECLARE\_MODEL makro tanımında kaç parametreniz olabileceğini denetler.
-* nArithmetic – Bir modelde izin verilen toplam üye sayısını denetler.
+* Nmakroparameters – bir DECLARE\_modeli makro tanımında kaç parametre kullanabileceğinizi denetler.
+* Naritmetik: bir modelde izin verilen üyelerin toplam sayısını denetler.
 
-Bu parametrelerin önemli olmasının nedeni, modelinizin ne kadar büyük olabileceğini kontrol etmeleridir. Örneğin, bu model tanımını göz önünde bulundurun:
+Bu parametrelerin önemli olmasının nedeni, modelinizin ne kadar büyük olduğunu denetlamalardır. Örneğin, bu model tanımını göz önünde bulundurun:
 
 ```C
 DECLARE_MODEL(MyModel,
@@ -578,61 +578,61 @@ WITH_DATA(int, MyData)
 );
 ```
 
-Daha önce de belirtildiği gibi, **DECLARE\_MODEL** sadece bir C makro. Modelin adları ve **WITH\_DATA** deyimi (henüz başka bir makro) **\_DECLARE MODEL'in**parametreleridir. **nMacroParameters,** **\_DECLARE MODEL'e**kaç parametrenin dahil edilebildiğini tanımlar. Bu, etkili bir şekilde kaç veri olayı ve eylem bildirimi olabileceğini tanımlar. Bu nedenle, varsayılan 124 sınırı ile yaklaşık 60 eylem ve veri olayları bir arada bir model tanımlayabilirsiniz anlamına gelir. Bu sınırı aşmaya çalışırsanız, buna benzer derleyici hataları alırsınız:
+Daha önce belirtildiği gibi **,\_bildirme modeli** yalnızca bir C makrosu olur. Model ve **WITH\_Data** deyimlerinin (ancak başka bir makronun) adları, **Declare\_modelinin**parametreleri. **Nmakroparameters** , **\_Declare modeline**kaç parametre ekleneceğini tanımlar. Etkin şekilde, bu, kaç veri olayı ve eylem bildiriminin sahip kalabileceğini tanımlar. Bu nedenle, varsayılan 124 sınırı ile bu, bir modeli, yaklaşık 60 eylemleri ve veri olayları ile tanımlayabilmeniz anlamına gelir. Bu sınırı aşmaya çalışırsanız şuna benzer bir derleyici hatası alırsınız:
 
-  ![Makro ParametrelerDerleyici Hatalarıekran Görüntüsü](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
+  ![Makro parametreleri derleyici hatalarının ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
-**NArithmetik** parametresi, uygulamanızdan çok makro dilinin iç işleyişiyle ilgilidir.  **DECLARE_STRUCT** makrolar da dahil olmak üzere modelinizde sahip olabileceğiniz toplam üye sayısını denetler. Bu gibi derleyici hataları görmeye başlarsanız, o zaman **nArithmetic**artırmayı denemelisiniz:
+**Naritmetik** parametresi, makro dilinin uygulamanıza göre iç işleyişi hakkında daha fazla.  **DECLARE_STRUCT** makrolar dahil, modelinizde sahip olabilirsiniz Toplam üye sayısını denetler. Bu gibi derleyici hatalarını görmeye başladığınızda, **Naritmetiğini**artırmayı denemeniz gerekir:
 
-   ![Aritmetik Derleyici Hatalarıekran Görüntüsü](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
+   ![Aritmetik derleyici hatalarının ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
-Bu parametreleri değiştirmek istiyorsanız,\_makro utils.tt dosyasındaki değerleri değiştirin,\_makro\_utils h\_generator.sln çözümünü yeniden derleyin ve derlenen programı çalıştırın. Bunu yaptığınızda, yeni\_bir makro utils.h dosyası oluşturulur ve yerleştirilir. \\ortak\\inc dizini.
+Bu parametreleri değiştirmek\_istiyorsanız, Macro Utils.tt dosyasındaki değerleri değiştirin, makroyu\_utils\_h\_Oluşturucu. sln çözümünü yeniden derleyin ve derlenen programı çalıştırın. Bunu yaptığınızda, yeni bir makro\_yardımcı programları. h dosyası oluşturulur ve içine yerleştirilir. \\ortak\\Inc dizini.
 
-Makro\_utils.h'nin yeni sürümünü kullanmak için, **serileştirici** NuGet paketini çözümünüzden çıkarın ve onun yerine **serializer** Visual Studio projesini ekleyin. Bu, kodunuzu seri kitaplığın kaynak koduna göre derlemek için sağlar. Bu güncelleştirilmiş\_makro utils.h içerir. Bunu **basit örnek\_amqp**için yapmak istiyorsanız, serializer kitaplığı için NuGet paketini çözümden kaldırarak başlayın:
+Makro\_yardımcı programları. h ' nin yeni sürümünü kullanabilmeniz için, çözümünüzde **serileştirici** NuGet paketini çözümünüzden kaldırın ve onun yerine **serileştirici** Visual Studio projesini ekleyin. Bu, kodunuzun serileştirici kitaplığının kaynak koduna karşı derlenmesini sağlar. Bu, güncelleştirilmiş makro\_yardımcı programları. h ' i içerir. Bunu **SimpleSample\_AMQP**için yapmak istiyorsanız, seri hale getirici kitaplığı için NuGet paketini çözümden kaldırarak başlatın:
 
-   ![Serializer kitaplığı için NuGet paketini kaldırma ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
+   ![Seri hale getirici kitaplığı için NuGet paketini kaldırma ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
 
-Ardından bu projeyi Visual Studio çözümünüze ekleyin:
+Sonra bu projeyi Visual Studio çözümünüze ekleyin:
 
-> . \\c\\\\serializer\\\\windows serializer.vcxproj inşa
+> . \\c\\seri\\hale\\getirici\\derleme Windows seri hale getirici. vcxproj
 > 
 > 
 
-İşinizi bitirdiğinizde, çözümünüz şu şekilde görünmelidir:
+İşiniz bittiğinde çözümünüz şuna benzemelidir:
 
-   ![simplesample_amqp Visual Studio çözümünün ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/05-serializer-project.png)
+   ![Visual Studio çözümünün simplesample_amqp ekran görüntüsü](media/iot-hub-device-sdk-c-serializer/05-serializer-project.png)
 
-Şimdi çözümünüzü derlediğinizde, güncelleştirilmiş makro\_utils.h ikilinize dahildir.
+Artık çözümünüzü derlerken, diğer bir deyişle, güncelleştirilmiş makro\_olan Utils. h, ikiliye dahil edilmiştir.
 
-Bu değerleri yeterince yüksek artırmanın derleyici sınırlarını aşabileceğini unutmayın. Bu noktada, **nMacroParameters** ilgili olmak için ana parametre. C99, makro tanımında en az 127 parametreye izin verildiğini belirtir. Microsoft derleyicisi spec tam olarak izler (ve 127 bir sınırı vardır), böylece varsayılan ötesinde **nMacroParameters** artırmak mümkün olmayacaktır. Diğer derleyiciler bunu yapmanıza izin verebilir (örneğin, GNU derleyicisi daha yüksek bir sınırı destekler).
+Bu değerlerin yeterince artması, derleyici sınırlarını aşabilir. Bu noktada, **Nmakroparameters** , ilgilenme yapılacak ana parametredir. C99 spec, bir makro tanımında en az 127 parametreye izin verildiğini belirtir. Microsoft derleyicisi, özelliği tam olarak (ve 127 sınırı vardır) izler, bu nedenle **Nmakroparameters** 'ı varsayılan dışında artırmanız mümkün olmayacaktır. Diğer derleyiciler bunu yapmanıza izin verebilir (örneğin, GNU derleyicisi daha yüksek bir sınırı destekler).
 
-Şimdiye kadar **serikitap** ile kod yazmak için nasıl bilmeniz gereken hemen hemen her şeyi ele ettik. Sonuçlandırmadan önce, merak ettiğiniz önceki makalelerdeki bazı konuları yeniden gözden geçirelim.
+Şimdiye kadar, **seri hale getirici** kitaplığı ile kod yazma hakkında bilmeniz gereken her şeyi sunuyoruz. İşlem öncesinde, daha önce merak ettiğiniz önceki makalelerden bazı konuları tekrar ziyaret edelim.
 
-## <a name="the-lower-level-apis"></a>Alt düzey API'ler
-Bu makalenin odaklandığı örnek uygulama **basit örnek\_amqp'** tir. Bu örnek, olay göndermek ve ileti almak için üst düzey **(LL**olmayan) API'leri kullanır. Bu API'leri kullanırsanız, hem olay gönderme hem de ileti alma ile ilgiçeken bir arka plan iş parçacığı çalışır. Ancak, bu arka plan iş parçacığı ortadan kaldırmak ve olay göndermek veya buluttan iletileri aldığınızda üzerinde açık denetim almak için alt düzey (LL) API'leri kullanabilirsiniz.
+## <a name="the-lower-level-apis"></a>Alt düzey API 'Ler
+Bu makalenin odaklandığı örnek uygulama, **SimpleSample\_AMQP**'dir. Bu örnek, olayları göndermek ve ileti almak için üst düzey (**ll**olmayan) API 'leri kullanır. Bu API 'Leri kullanırsanız, bir arka plan iş parçacığı çalışır ve bunlar hem gönderme olayları hem de ileti alma işlemini gerçekleştirir. Bununla birlikte, bu arka plan iş parçacığını ortadan kaldırmak ve buluttan ileti aldığınızda açık denetim almak için alt düzey (LL) API 'Lerini kullanabilirsiniz.
 
-[Önceki makalede](iot-hub-device-sdk-c-iothubclient.md)açıklandığı gibi, üst düzey API'lerden oluşan bir dizi işlev vardır:
+[Önceki makalede](iot-hub-device-sdk-c-iothubclient.md)açıklandığı gibi, daha üst düzey API 'lerden oluşan bir işlevler kümesi vardır:
 
-* IoTHubClient\_OluşturmaFromConnectionString
+* IoTHubClient\_createfromconnectionstring
 * IoTHubClient\_SendEventAsync
-* IoTHubClient\_SetMessageCallback
-* IoTHubClient\_Yok
+* IoTHubClient\_setmessagecallback
+* IoTHubClient\_yok etme
 
-Bu API'ler **basit\_örnek amqp**gösterilmiştir.
+Bu API 'Ler **SimpleSample\_AMQP**içinde gösterilmiştir.
 
-Benzer bir alt düzey API kümesi de vardır.
+Benzer bir alt düzey API 'Ler kümesi de vardır.
 
-* IoTHubClient\_\_LL OluşturmaFromConnectionString
-* IoTHubClient\_LL\_SendEventAsync
-* IoTHubClient\_LL\_SetMessageCallback
-* IoTHubClient\_\_LL Yok
+* IoTHubClient\_ll\_createfromconnectionstring
+* IoTHubClient\_ll\_SendEventAsync
+* IoTHubClient\_ll\_setmessagecallback
+* IoTHubClient\_ll\_yok etme
 
-Alt düzey API'lerin önceki makalelerde açıklandığı şekilde çalıştığını unutmayın. Olayları gönderme ve ileti alma işlemlerini işlemek için bir arka plan iş parçacığı istiyorsanız, ilk API kümesini kullanabilirsiniz. IoT Hub'dan veri gönderip aldığınızda açık denetim istiyorsanız ikinci API kümesini kullanırsınız. Her iki API kümesi **de serileştirici** kitaplığıyla eşit derecede iyi çalışır.
+Alt düzey API 'Lerin önceki makalelerde açıklananla tamamen aynı şekilde çalıştığını unutmayın. Bir arka plan iş parçacığının olayları göndermeyi ve ileti almasını işlemesini istiyorsanız ilk API kümesini kullanabilirsiniz. IoT Hub veri gönderdiğinizde ve alırken açık denetim istiyorsanız, ikinci API kümesini kullanırsınız. Her iki API kümesi de **serileştirici** kitaplığı ile aynı şekilde çalışır.
 
-Alt düzey API'lerin **serileştirici** kitaplığıyla nasıl kullanıldığına bir örnek olarak, **basit örnek\_http** uygulamasına bakın.
+**Seri hale getirici** kitaplığı ile alt düzey API 'lerin nasıl kullanıldığına ilişkin bir örnek için bkz. **\_SimpleSample http** uygulaması.
 
 ## <a name="additional-topics"></a>Ek konu başlıkları
-Yeniden belirtilmesi değer birkaç diğer konular, alternatif aygıt kimlik bilgilerini kullanarak özellik işleme ve yapılandırma seçenekleri vardır. Bu [bir önceki makalede](iot-hub-device-sdk-c-iothubclient.md)ele alınan tüm konulardır. Ana nokta, tüm bu özelliklerin **IoTHubClient** kitaplığı ile olduğu gibi **serializer** kitaplığı ile aynı şekilde çalışmasıdır. Örneğin, modelinizdeki bir olaya özellik eklemek istiyorsanız, **ioTHubMessage\_Özellikleri** ve **Harita**\_**AddorUpdate'i**daha önce açıklandığı şekilde kullanırsınız:
+Alternatif olarak, diğer cihaz kimlik bilgilerini ve yapılandırma seçeneklerini kullanarak özellik işleme, diğer birkaç konu daha vardır. Bunlar, [önceki bir makalede](iot-hub-device-sdk-c-iothubclient.md)ele alınan tüm konulardır. Ana nokta, bu özelliklerin tümünün **ıothubclient** kitaplığı ile çalıştıkları şekilde **serileştirici** kitaplığı ile aynı şekilde çalışır. Örneğin, modelinizdeki bir olaya özellikler eklemek istiyorsanız, **\_iothubmessage özelliklerini** kullanır ve daha önce açıklandığı gibi**AddOrUpdate**'i **eşleyin**\_:
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -640,34 +640,34 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-Olayın **serileştirici** kitaplığından oluşturulup oluşturulmadığı veya **IoTHubClient** kitaplığı kullanılarak el ile oluşturulup oluşturulmadığı önemli değildir.
+Olayın **seri hale getirici** kitaplığından oluşturulup oluşturulmayacağı veya **Iothubclient** kitaplığı kullanılarak el ile oluşturulan bir önemi yoktur.
 
-Alternatif aygıt kimlik bilgileri için, **\_IoTHubClient LL\_Create** kullanarak bir **IOTHUB\_CLIENT\_HANDLE**ayırmak için **IoTHubClient\_CreateFromConnectionString** gibi çalışır.
+Diğer cihaz kimlik bilgileri için, **ıothubclient\_ll\_Create** ' in yanı sıra bir **\_ıothub istemci\_tutamacı**ayırmak için **iothubclient\_createfromconnectionstring** ' i kullanın.
 
-Son olarak, **serializer** kitaplığını kullanıyorsanız, **IoTHubClient LL\_\_SetOption** ile yapılandırma seçeneklerini tıpkı **IoTHubClient** kitaplığını kullanırken yaptığınız gibi ayarlayabilirsiniz.
+Son olarak, **seri hale getirici** kitaplığını kullanıyorsanız, ıothubclient **\_\_ll SetOption** yapılandırma seçeneklerini **iothubclient** kitaplığı kullanırken yaptığınız gibi ayarlayabilirsiniz.
 
-**Serikitaplığına** özgü bir özellik, başlatma API'leridir. Kitaplıkla çalışmaya başlamadan önce **serializer\_init'i**aramalısınız:
+**Seri hale getirici** kitaplığı için benzersiz olan bir özellik, başlatma API 'lardır. Kitaplığı ile çalışmaya başlayabilmeniz için önce **seri hale getirici\_init**' i çağırmanız gerekir:
 
 ```C
 serializer_init(NULL);
 ```
 
-Bu, **IoTHubClient\_CreateFromConnectionString'i**aramadan hemen önce yapılır.
+Bu, yalnızca **Iothubclient\_createfromconnectionstring**öğesini çağırmadan önce yapılır.
 
-Benzer şekilde, kütüphane ile çalışmayı bitirdiğinizde, yapacağınız son arama **serializer\_deinit:**
+Benzer şekilde, kitaplıkla çalışmayı tamamladığınızda, yaptığınız son çağrı **seri hale getirici\_'nin deinit**olur:
 
 ```C
 serializer_deinit();
 ```
 
-Aksi takdirde, yukarıda listelenen diğer tüm **özellikler, IoTHubClient** kitaplığında olduğu gibi **serializer** kitaplığında da aynı şekilde çalışır. Bu konulardan herhangi biri hakkında daha fazla bilgi için, bu serinin [önceki makalesine](iot-hub-device-sdk-c-iothubclient.md) bakın.
+Aksi halde, yukarıda listelenen diğer tüm özellikler, **ıthubclient** kitaplığındaki gibi **serileştirici** kitaplığında aynı şekilde çalışır. Bu konuların herhangi biri hakkında daha fazla bilgi için bu serideki [önceki makaleye](iot-hub-device-sdk-c-iothubclient.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, **C için Azure IoT aygıt SDK'da**bulunan **seri kitaplığın** benzersiz yönleri ayrıntılı olarak açıklanmıştır. Sağlanan bilgilerle, etkinlikleri göndermek ve IoT Hub'dan ileti almak için modelleri nasıl kullanacağınızı iyi anlamanız gerekir.
+Bu makalede, **C Için Azure IoT cihaz SDK 'sında**bulunan **seri hale getirici** kitaplığının benzersiz yönleri ayrıntılı olarak açıklanmaktadır. Belirtilen bilgilerle olayları göndermek ve IoT Hub ileti almak için modelleri kullanma konusunda iyi bir fikir sahibi olmanız gerekir.
 
-Bu aynı zamanda **C için Azure IoT cihazı SDK**ile uygulama geliştirmek için nasıl üç bölümlük serisi sona erer. Bu, yalnızca başlamanızı sağlamak için yeterli bilgi değil, aynı zamanda API'lerin nasıl çalıştığı hakkında da kapsamlı bir bilgi vermelidir. Daha fazla bilgi için, SDK'da burada yer almayan birkaç örnek bulunmaktadır. Aksi takdirde, [Azure IoT SDK belgeleri](https://github.com/Azure/azure-iot-sdk-c) ek bilgi için iyi bir kaynaktır.
+Bu Ayrıca, **C Için Azure IoT cihaz SDK 'sı**ile uygulamaların nasıl geliştirileceği ile ilgili üç parçalı seriyi de sonlanır. Bu, yalnızca başlamanıza ve API 'Lerin nasıl çalıştığını iyice anlayabilmeniz için yeterli bilgi almalıdır. Daha fazla bilgi için, SDK 'da burada kapsanmayan birkaç örnek vardır. Aksi takdirde, [Azure ıOT SDK belgeleri](https://github.com/Azure/azure-iot-sdk-c) daha fazla bilgi için iyi bir kaynaktır.
 
-IoT Hub için geliştirme hakkında daha fazla bilgi edinmek için [Azure IoT SDK'larına](iot-hub-devguide-sdks.md)bakın.
+IoT Hub için geliştirme hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 
-IoT Hub'ın özelliklerini daha fazla keşfetmek için Bkz. [Azure IoT Edge'e sahip aygıtları kenara dağıtmak için AI'yi dağıtma.](../iot-edge/tutorial-simulate-device-linux.md)
+IoT Hub yeteneklerini daha fazla incelemek için bkz. [Azure IoT Edge ile uç CIHAZLARA AI dağıtma](../iot-edge/tutorial-simulate-device-linux.md).

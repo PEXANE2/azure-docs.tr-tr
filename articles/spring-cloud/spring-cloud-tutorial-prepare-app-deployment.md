@@ -1,48 +1,48 @@
 ---
-title: Nasıl Kullanılır - Azure Bahar Bulutu'nda dağıtım için Java Spring uygulaması hazırlama
-description: Bu konuda, Azure Bahar Bulutu'na dağıtım için bir Java Bahar uygulaması hazırlarsınız.
+title: Azure yay bulutu 'nda dağıtım için bir Java Spring uygulaması hazırlama
+description: Bu konu başlığında, bir Java Spring uygulamasını Azure Spring buluta dağıtım için hazırlarsınız.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731173"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Bahar Bulutu'nda dağıtım için java spring uygulaması hazırlama
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure yay bulutu 'nda bir Java Spring uygulamasını dağıtıma hazırlama
 
-Bu konu, varolan bir Java Bahar uygulamasının Azure Bahar Bulutu'na dağıtım için nasıl hazırlanacağını gösterir. Azure İlkbahar Bulutu, doğru şekilde yapılandırılırsa, Java Bahar Bulutu uygulamanızı izlemek, ölçeklendirmek ve güncellemek için güçlü hizmetler sağlar.
+Bu konu başlığı altında, mevcut bir Java Spring uygulamasının Azure Spring Cloud 'a dağıtılması için nasıl hazırlanacağı gösterilmektedir. Doğru yapılandırılmışsa, Azure yay bulutu, Java Spring Cloud uygulamanızı izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sunar.
 
-Diğer örnekler, POM dosyası yapılandırıldığında bir uygulamanın Azure İlkbahar Bulutu'na nasıl dağıtılanınca açıklanır. 
-* [Azure portalını kullanarak Uygulamayı Başlat](spring-cloud-quickstart-launch-app-portal.md)
-* [Azure CLI'yi kullanarak Uygulamayı Başlat](spring-cloud-quickstart-launch-app-cli.md)
+Diğer örneklerde pod dosyası yapılandırıldığında bir uygulamanın Azure Spring Cloud 'a nasıl dağıtılacağı açıklanmaktadır. 
+* [Azure portal kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-portal.md)
+* [Azure CLı kullanarak uygulama başlatma](spring-cloud-quickstart-launch-app-cli.md)
 
-Bu makalede, gerekli bağımlılıkları ve bunları POM dosyasına nasıl ekleyeceğiniz açıklanmaktadır.
+Bu makalede, gerekli bağımlılıklar ve bunların Pod dosyasına nasıl ekleneceği açıklanmaktadır.
 
-## <a name="java-runtime-version"></a>Java Runtime sürümü
+## <a name="java-runtime-version"></a>Java çalışma zamanı sürümü
 
-Azure Bahar Bulutu'nda yalnızca Bahar/Java uygulamaları çalıştırılabilir.
+Azure yay bulutu 'nda yalnızca Spring/Java uygulamaları çalıştırılabilir.
 
-Azure Yay Bulutu hem Java 8 hem de Java 11'i destekler. Barındırma ortamı, Azure için Azul Zulu OpenJDK'nın en son sürümünü içerir. Azure için Azul Zulu OpenJDK hakkında daha fazla bilgi için [JDK'yı yükleyin' e](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)bakın.
+Azure yay bulutu hem Java 8 hem de Java 11 ' i destekler. Barındırma ortamı, Azure için Azul Zulu OpenJDK 'nin en son sürümünü içerir. Azure için Azul Zulu OpenJDK hakkında daha fazla bilgi için bkz. [JDK 'Yi yüklemeyin](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
 
-## <a name="spring-boot-and-spring-cloud-versions"></a>Bahar Önyükleme ve Bahar Bulutu sürümleri
+## <a name="spring-boot-and-spring-cloud-versions"></a>Yay önyükleme ve yay bulut sürümleri
 
-Azure Bahar Bulutu'na dağıtım için varolan bir Bahar Önyükleme uygulamasını hazırlamak için, aşağıdaki bölümlerde gösterildiği gibi uygulama POM dosyasındaki Bahar Önyükleme ve Bahar Bulutu bağımlılıklarını ekleyin.
+Mevcut bir Spring Boot uygulamasını Azure yay bulutu 'na dağıtmak üzere hazırlamak için, aşağıdaki bölümlerde gösterildiği gibi, Application Pod dosyasına Spring Boot ve Spring Cloud bağımlılıklarını ekleyin.
 
-Azure İlkbahar Bulutu, yalnızca Bahar Önyükleme uygulamalarını destekler veya Bahar Önyükleme sürüm 2.1 veya sürüm 2.2'dir. Aşağıdaki tabloda desteklenen Bahar Önyükleme ve Bahar Bulutu kombinasyonları listelenir:
+Azure yay bulutu, Spring Boot sürüm 2,1 veya sürüm 2,2 ' nin yalnızca Spring Boot uygulamalarını destekler. Aşağıdaki tabloda desteklenen Spring Boot ve Spring Cloud kombinasyonlarını listelenmektedir:
 
-Bahar Önyükleme sürümü | Bahar Bulutu sürümü
+Spring Boot sürümü | Yay bulutu sürümü
 ---|---
-2.1 | Greenwich.RELEASE
-2,2 | Hoxton.RELEASE
+2.1 | Greenwich. RELEASE
+2,2 | Hoxton. RELEASE
 
-### <a name="dependencies-for-spring-boot-version-21"></a>İlkbahar Önyükleme sürüm 2.1 için bağımlılıklar
+### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
 
-İlkbahar Önyükleme sürüm 2.1 için uygulama POM dosyasına aşağıdaki bağımlılıkları ekleyin.
+Spring Boot sürüm 2,1 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -66,9 +66,9 @@ Bahar Önyükleme sürümü | Bahar Bulutu sürümü
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-22"></a>İlkbahar Önyükleme sürüm 2.2 için bağımlılıklar
+### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot sürüm 2,2 için bağımlılıklar
 
-İlkbahar Önyükleme sürüm 2.2 için uygulama POM dosyasına aşağıdaki bağımlılıkları ekleyin.
+Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -92,22 +92,22 @@ Bahar Önyükleme sürümü | Bahar Bulutu sürümü
     </dependencyManagement>
 ```
 
-## <a name="azure-spring-cloud-client-dependency"></a>Azure Bulut istemci bağımlılığı
+## <a name="azure-spring-cloud-client-dependency"></a>Azure yay bulutu istemci bağımlılığı
 
-Azure Bahar Bulutu, Bahar Bulutu bileşenlerini barındırıyor ve yönetiyor. Bileşenler arasında Spring Cloud Service Registry ve Spring Cloud Config Server bulunmaktadır. Azure İlkbahar Bulutu hizmet örneğinizle iletişime izin vermek için bağımlılıklarınıza Azure İlkbahar Bulutu istemci kitaplığını ekleyin.
+Azure yay bulutu, bahar bulut bileşenlerini barındırır ve yönetir. Bileşenler yay bulut hizmeti kayıt defteri ve yay bulut yapılandırma sunucusu içerir. Azure Spring Cloud Service örneğiniz ile iletişime izin vermek için bağımlılıklarınızı Azure yay bulutu istemci Kitaplığı ' nı dahil edin.
 
-Aşağıdaki tabloda, uygulamanız için Bahar Önyükleme ve Bahar Bulutu kullanan doğru Azure Bahar Bulutu sürümleri listeleniz.
+Aşağıdaki tabloda, uygulamanız için Spring Boot ve Spring Cloud kullanan doğru Azure yay bulut sürümleri listelenmektedir.
 
-Bahar Önyükleme sürümü | Bahar Bulutu sürümü | Azure Bahar Bulutu sürümü
+Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1
-2,2 | Hoxton.RELEASE | 2,2
+2.1 | Greenwich. RELEASE | 2.1
+2,2 | Hoxton. RELEASE | 2,2
 
-Pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure İlkbahar Bulutu sürümü yle eşleşen bağımlılığı seçin.
+Pod. xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure yay bulutu sürümü kendi ile eşleşen bağımlılığı seçin.
 
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure İlkbahar Bulutu sürümü 2.1 için bağımlılık
+### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud sürüm 2,1 için bağımlılık
 
-İlkbahar Önyükleme sürüm 2.1 için uygulama POM dosyasına aşağıdaki bağımlılığı ekleyin.
+Spring Boot sürüm 2,1 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
 
 ```xml
 <dependency>
@@ -117,9 +117,9 @@ Pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure İlkb
 </dependency>
 ```
 
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure İlkbahar Bulutu sürümü 2.2 için bağımlılık
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Azure Spring Cloud sürüm 2,2 için bağımlılık
 
-İlkbahar Önyükleme sürüm 2.2 için uygulama POM dosyasına aşağıdaki bağımlılığı ekleyin.
+Spring Boot sürüm 2,2 için aşağıdaki bağımlılığı uygulama Pod dosyasına ekleyin.
 
 ```xml
 <dependency>
@@ -131,15 +131,15 @@ Pom.xml dosyanıza aşağıdaki bağımlılıklardan birini ekleyin. Azure İlkb
 
 ## <a name="other-required-dependencies"></a>Diğer gerekli bağımlılıklar
 
-Azure İlkbahar Bulutu'nun yerleşik özelliklerini etkinleştirmek için uygulamanızın aşağıdaki bağımlılıkları içermesi gerekir. Bu ekleme, uygulamanızın kendisini her bileşenle doğru şekilde yapılandırması sağlar.
+Azure Spring Cloud 'ın yerleşik özelliklerini etkinleştirmek için, uygulamanız aşağıdaki bağımlılıkları içermelidir. Bu içerme, uygulamanızın her bileşenle doğru bir şekilde yapılandırmasını sağlar.
 
-### <a name="enablediscoveryclient-annotation"></a>DiscoveryClient ek açıklamasını etkinleştirme
+### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient ek açıklaması
 
 Uygulama kaynak koduna aşağıdaki ek açıklamayı ekleyin.
 ```java
 @EnableDiscoveryClient
 ```
-Örneğin, önceki örneklerden piggymetrics uygulamasına bakın:
+Örneğin, önceki örneklerden plımetriler uygulamasına bakın:
 ```java
 package com.piggymetrics.gateway;
 
@@ -159,9 +159,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Hizmet Kayıt Defteri bağımlılığı
+### <a name="service-registry-dependency"></a>Hizmet kayıt defteri bağımlılığı
 
-Yönetilen Azure Hizmet Kayıt Defteri hizmetini `spring-cloud-starter-netflix-eureka-client` kullanmak için, burada gösterildiği gibi pom.xml dosyasındaki bağımlılığı ekleyin:
+Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, `spring-cloud-starter-netflix-eureka-client` bağımlılığı Pod. xml dosyasına aşağıda gösterildiği gibi ekleyin:
 
 ```xml
     <dependency>
@@ -170,11 +170,11 @@ Yönetilen Azure Hizmet Kayıt Defteri hizmetini `spring-cloud-starter-netflix-e
     </dependency>
 ```
 
-Hizmet Kayıt Defteri sunucusunun bitiş noktası, uygulamanızla ortam değişkeni olarak otomatik olarak enjekte edilir. Uygulamalar kendilerini Hizmet Kayıt Defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri keşfedebilir.
+Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenleri olarak otomatik olarak eklenir. Uygulamalar, kendilerini hizmet kayıt defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri bulabilir.
 
-### <a name="distributed-configuration-dependency"></a>Dağıtılmış Yapılandırma bağımlılığı
+### <a name="distributed-configuration-dependency"></a>Dağıtılmış yapılandırma bağımlılığı
 
-Dağıtılmış Yapılandırmayı etkinleştirmek `spring-cloud-config-client` için, pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılıkları ekleyin:
+Dağıtılmış yapılandırmayı etkinleştirmek için, Pok. `spring-cloud-config-client` XML dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılığı ekleyin:
 
 ```xml
 <dependency>
@@ -184,11 +184,11 @@ Dağıtılmış Yapılandırmayı etkinleştirmek `spring-cloud-config-client` i
 ```
 
 > [!WARNING]
-> Bootstrap yapılandırmanızda belirtmeyin. `spring.cloud.config.enabled=false` Aksi takdirde, uygulamanız Config Server ile çalışmayı durdurur.
+> Önyükleme yapılandırmanızda `spring.cloud.config.enabled=false` belirtmeyin. Aksi takdirde, uygulamanız yapılandırma sunucusu ile çalışmayı durduruyor.
 
-### <a name="metrics-dependency"></a>Ölçümler bağımlılığı
+### <a name="metrics-dependency"></a>Ölçüm bağımlılığı
 
-Burada `spring-boot-starter-actuator` gösterildiği gibi pom.xml dosyanızın bağımlılıklar bölümüne bağımlılık ekleyin:
+Aşağıdaki şekilde `spring-boot-starter-actuator` gösterilen Pod. XML dosyanızın bağımlılıklar bölümüne bağımlılığı ekleyin:
 
 ```xml
 <dependency>
@@ -197,11 +197,11 @@ Burada `spring-boot-starter-actuator` gösterildiği gibi pom.xml dosyanızın b
 </dependency>
 ```
 
- Ölçümler periyodik olarak JMX uç noktalarından çekilir. Azure portalını kullanarak ölçümleri görselleştirebilirsiniz.
+ Ölçümler, JMX uç noktalarından düzenli aralıklarla çekilir. Azure portal kullanarak ölçümleri görselleştirebilirsiniz.
 
-### <a name="distributed-tracing-dependency"></a>Dağıtılmış İzleme bağımlılığı
+### <a name="distributed-tracing-dependency"></a>Dağıtılmış Izleme bağımlılığı
 
-Pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki `spring-cloud-starter-sleuth` leri ve `spring-cloud-starter-zipkin` bağımlılıkları ekleyin:
+Pod. `spring-cloud-starter-sleuth` XML `spring-cloud-starter-zipkin` dosyanızın bağımlılıklar bölümüne aşağıdaki ve bağımlılıklarını ekleyin:
 
 ```xml
 <dependency>
@@ -214,20 +214,20 @@ Pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki `spring-cloud-st
 </dependency>
 ```
 
- Ayrıca, Azure İlkbahar Bulutu hizmet örneğinizle çalışmak için bir Azure Uygulama Öngörüleri örneğini etkinleştirmeniz gerekir. Azure Bahar Bulutu ile Uygulama Öngörüleri'ni nasıl kullanacağınızı öğrenmek için [dağıtılmış izleme yle ilgili öğreticiyi](spring-cloud-tutorial-distributed-tracing.md) okuyun.
+ Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanmayı öğrenmek için [Dağıtılmış izleme öğreticisini](spring-cloud-tutorial-distributed-tracing.md) okuyun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Uygulama günlüklerini ve ölçümlerini analiz edin](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Uygulama günlüklerini ve ölçümleri çözümleme](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 * [Yapılandırma Sunucunuzu ayarlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Azure İlkbahar Bulutu ile dağıtılmış izleme yi kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
-* [Bahar Quickstart Kılavuzu](https://spring.io/quickstart)
-* [Bahar Önyükleme belgeleri](https://spring.io/projects/spring-boot)
+* [Azure Spring Cloud ile dağıtılmış izleme kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Yay hızlı başlangıç kılavuzu](https://spring.io/quickstart)
+* [Spring Boot belgeleri](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu konuda, Azure Bahar Bulutu'na dağıtım için Java Spring uygulamanızı nasıl yapılandırabileceğinizi öğrendiniz. Config Server örneğini nasıl ayarlayatılabildiğini öğrenmek için aşağıdaki makaleye bakın.
+Bu konu başlığında, Java Spring uygulamanızı Azure Spring Cloud 'a dağıtmak üzere nasıl yapılandıracağınızı öğrendiniz. Bir yapılandırma sunucusu örneğini ayarlamayı öğrenmek için aşağıdaki makaleye bakın.
 
 > [!div class="nextstepaction"]
-> [Config Server örneğini nasıl ayarlayatılamayı öğrenin](spring-cloud-tutorial-config-server.md)
+> [Bir yapılandırma sunucusu örneğini ayarlamayı öğrenin](spring-cloud-tutorial-config-server.md)
 
-GitHub: Azure Bahar [Bulut Örnekleri'nde](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)daha fazla örnek mevcuttur.
+GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

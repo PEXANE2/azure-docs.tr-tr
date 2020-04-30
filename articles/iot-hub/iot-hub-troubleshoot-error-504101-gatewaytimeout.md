@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme Azure IoT Hub hatası 504101 Ağ GeçidiTimeout
-description: Hata 504101 GatewayTimeout nasıl düzeltilir anlayın
+title: Azure IoT Hub sorunlarını giderme hata 504101 GatewayTimeout
+description: 504101 GatewayTimeout hatasını nasıl düzelteceğinizi öğrenin
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
 ms.openlocfilehash: 373acc30ed652a7f540e840dfad5eeeda65ca179
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759560"
 ---
 # <a name="504101-gatewaytimeout"></a>504101 GatewayTimeout
@@ -22,24 +22,24 @@ Bu makalede, **504101 GatewayTimeout** hatalarının nedenleri ve çözümleri a
 
 ## <a name="symptoms"></a>Belirtiler
 
-IoT Hub'dan aygıta doğrudan bir yöntem çağırmaya çalışırken, istek **504101 GatewayTimeout**hatasıyla başarısız olur.
+IoT Hub bir cihaza doğrudan bir yöntemi çağırmaya çalışırken, istek **504101 GatewayTimeout**hatasıyla başarısız olur.
 
 ## <a name="cause"></a>Nedeni
 
 ### <a name="cause-1"></a>Neden 1
 
-IoT Hub bir hatayla karşılaştı ve zamanlamadan önce doğrudan yöntemin tamamlanıp tamamlanmadığını doğrulayamadı.
+IoT Hub bir hatayla karşılaştı ve zaman aşımından önce doğrudan yöntemin tamamlanıp tamamlanmadığını doğrulayamadık.
 
 ### <a name="cause-2"></a>Neden 2
 
-Azure IoT C# SDK'nın (<1.19.0) önceki bir sürümünü kullanırken, aygıt ve IoT Hub arasındaki AMQP bağlantısı bir hata nedeniyle sessizce bırakılabilir.
+Azure IoT C# SDK 'SıNıN (<1.19.0) önceki bir sürümünü kullanırken, bir hata nedeniyle cihaz ve IoT Hub arasındaki AMQP bağlantısı sessizce bırakılabilir.
 
 ## <a name="solution"></a>Çözüm
 
 ### <a name="solution-1"></a>Çözüm 1
 
-Yeniden deneme.
+Yeniden deneme sorunu.
 
 ### <a name="solution-2"></a>Çözüm 2
 
-Azure IOT C# SDK'nın en son sürümüne yükseltin.
+Azure ıOT C# SDK 'SıNıN en son sürümüne yükseltin.

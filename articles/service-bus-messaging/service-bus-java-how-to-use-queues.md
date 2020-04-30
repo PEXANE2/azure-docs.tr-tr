@@ -1,6 +1,6 @@
 ---
-title: Java ile Azure Servis Veri Servisi kuyruklarını kullanma
-description: Bu eğitimde, bir Azure Hizmet Veri Yolu kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğrenirsiniz.
+title: Java ile Azure Service Bus kuyruklarını kullanma
+description: Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğreneceksiniz.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -16,39 +16,39 @@ ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81732180"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: İleti göndermek ve almak için Java ile Azure Servis Veri Servisi kuyruklarını kullanın
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: ileti göndermek ve almak için Java ile Azure Service Bus kuyrukları kullanma
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-Bu eğitimde, bir Azure Hizmet Veri Yolu kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğrenirsiniz. 
+Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğreneceksiniz. 
 
 > [!NOTE]
-> GitHub'da Java örneklerini [azure servis veri](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)yolunda bulabilirsiniz.
+> [Azure-Service-Bus deposunda](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)GitHub 'da Java örnekleri bulabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
-2. Üzerinde çalışmanız gereken bir sıra yoksa, kuyruk oluşturmak için Hizmet Veri Hizmetleri sırası makalesi [oluşturmak için Azure kullan portalındaki](service-bus-quickstart-portal.md) adımları izleyin.
-    1. Servis Veri Servisi **kuyruklarına**hızlı **bir genel bakış** okuyun. 
-    2. Hizmet Veri Günü **ad alanı**oluşturun. 
-    3. Bağlantı **dizesini**alın.
-    4. Servis Veri Servisi **kuyruğu**oluşturun.
-3. [Java için Azure SDK'yı yükleyin.][Azure SDK for Java] 
+1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
+2. Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
+    1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
+    2. Service Bus **ad alanı**oluşturun. 
+    3. **Bağlantı dizesini**alın.
+    4. Service Bus **kuyruğu**oluşturun.
+3. [Java Için Azure SDK][Azure SDK for Java]'yı yükler. 
 
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı Servis Veri Aracı'nı kullanacak şekilde yapılandırın
-Bu örneği oluşturmadan önce [Azure SDK'yı Java için][Azure SDK for Java] yüklediğinizden emin olun. 
+## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
+Bu örneği oluşturmadan önce [Java Için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. 
 
-Eclipse kullanıyorsanız, Java için [Azure][Azure Toolkit for Eclipse] SDK'yı içeren Azure Araç Seti'ni Eclipse için yükleyebilirsiniz. Ardından, projenize **Java için Microsoft Azure Kitaplıkları** ekleyebilirsiniz. IntelliJ kullanıyorsanız, Bkz. [IntelliJ için Azure Araç Kitini Yükle.](/azure/developer/java/toolkit-for-intellij/installation) 
+Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından, projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz. IntelliJ kullanıyorsanız, bkz. [Azure Toolkit for IntelliJ yüklemesi](/azure/developer/java/toolkit-for-intellij/installation). 
 
-![Eclipse projenize Java için Microsoft Azure Kitaplıkları ekleyin](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+![Çakışan Küreler projenize Java için Microsoft Azure kitaplıkları ekleyin](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 
-Java dosyasının üst kısmında aşağıdaki `import` ifadeleri ekleyin:
+Aşağıdaki `import` deyimlerini Java dosyasının en üstüne ekleyin:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -68,7 +68,7 @@ import org.apache.commons.cli.*;
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
-Hizmet Veri Servisi Kuyruğu'na ileti göndermek için, uygulamanız bir **QueueClient** nesnesini anında alır ve iletileri eşitbir şekilde gönderir. Aşağıdaki kod, portal üzerinden oluşturulan bir Kuyruk için iletinin nasıl gönderilen şekli gösterir.
+Uygulamanız bir Service Bus kuyruğuna ileti göndermek için bir **Queueclient** nesnesi başlatır ve iletileri zaman uyumsuz olarak gönderir. Aşağıdaki kod, Portal üzerinden oluşturulan bir sıra için bir iletinin nasıl gönderileceğini gösterir.
 
 ```java
 public void run() throws Exception {
@@ -116,20 +116,20 @@ public void run() throws Exception {
 
 ```
 
-Hizmet Veri Servisi kuyruklarına gönderilen ve alınan iletiler [İleti](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) sınıfının örnekleridir. İleti nesnelerinin standart özellikleri (Label ve TimeToLive gibi), özel uygulamaya özgü özellikleri tutmak için kullanılan bir sözlük ve rasgele uygulama verileri gövdesi vardır. Bir uygulama, iletinin herhangi bir serileştirilebilir nesnesini İleti'nin oluşturucuya geçirerek ayarlayabilir ve uygun serileştirici daha sonra nesneyi serihale getirmek için kullanılır. Alternatif olarak, bir **java sağlayabilir. ıo. InputStream** nesnesi.
+Service Bus kuyruklarından gönderilen ve alınan iletiler [ileti](/java/api/com.microsoft.azure.servicebus.message?view=azure-java-stable) sınıfının örnekleridir. İleti nesneleri bir dizi standart Özellik (Label ve TimeToLive gibi), uygulamaya özgü özel özellikleri tutmak için kullanılan bir sözlük ve rastgele uygulama verileri gövdesi vardır. Bir uygulama, herhangi bir seri hale getirilebilir nesneyi Ileti oluşturucusuna geçirerek ileti gövdesini ayarlayabilir ve ardından nesneyi seri hale getirmek için uygun seri hale getirici kullanılacaktır. Alternatif olarak, **Java 'yı sağlayabilirsiniz. IO. InputStream** nesnesi.
 
 
 Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Kuyrukta tutulan ileti sayısına ilişkin bir sınır yoktur ancak kuyruk tarafından tutulan iletilerin toplam boyutu için uç sınır vardır. Bu kuyruk boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir.
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
-Bir kuyruktan ileti almanın birincil yolu **ServiceBusContract** nesnesi kullanmaktır. Alınan iletiler iki farklı modda çalışabilir: **ReceiveAndDelete** ve **PeekLock**.
+Sıradan ileti almanın birincil yolu **Servicebuscontract** nesnesini kullanmaktır. Alınan iletiler iki farklı modda çalışabilir: **Receiveanddelete** ve **PeekLock**.
 
-**ReceiveAndDelete** modunu kullanırken, receive tek çekimlik bir işlemdir - yani Servis Veri Servisi kuyruktaki bir ileti için okuma isteği aldığında, iletinin tüketildiği şeklinde işaretler ve uygulamaya geri verir. **ReceiveAndDelete** modu (varsayılan moddur) en basit modeldir ve bir uygulamanın bir hata durumunda bir iletiyi işlememeye tahammül edebileceği senaryolar için en iyi şekilde çalışır. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın.
-Servis Veri Kurumu iletinin tüketildiği olarak işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden almaya başladığında, kilitlenmeden önce tüketilen iletiyi kaçırmıştır.
+**Receiveanddelete** modunu kullanırken alma işlemi tek bir işlem olur. yani, Service Bus kuyruktaki bir ileti için okuma isteği aldığında, iletiyi tüketildiği gibi işaretler ve uygulamaya döndürür. **Receiveanddelete** modu (varsayılan mod) en basit modeldir ve bir uygulamanın hata durumunda bir iletiyi işlememesi için en iyisi senaryolar için geçerlidir. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın.
+Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-**PeekLock** modunda receive, eksik iletileri tolere edemeyen uygulamaları desteklemeyi mümkün kılan iki aşamalı bir işlem haline gelir. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi bitirdikten sonra (veya gelecekteki işlemler için güvenilir bir şekilde depoladıktan) alınan iletide **tam()** çağırarak alma işleminin ikinci aşamasını tamamlar. Servis Veri Servisi aramanın **tamamını** gördüğünde, iletinin tüketildiğini işaretler ve sıradan kaldırır. 
+**PeekLock** modunda, alma işlemi iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiye **tamamlandı ()** çağrısı yaparak alma işleminin ikinci aşamasını tamamlar. Service Bus, **tüm ()** çağrısını gördüğünde, iletiyi tüketildiği gibi işaretler ve kuyruktan kaldırır. 
 
-Aşağıdaki örnek, iletilerin **PeekLock** modu (varsayılan mod değil) kullanılarak nasıl alınabileceğini ve işlenebileceğini gösterir. Aşağıdaki örnekte kayıtlı bir ileti işleyicisi olan geri arama modeli `TestQueue`kullanır ve iletileri bizim . Bu mod, geri arama normal olarak geri döndüğünden otomatik olarak **tam()** çağırır ve geri arama bir özel durum oluşturursa **terk()** çağırır. 
+Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınacağını ve işlenebileceğinizi gösterir (varsayılan mod değil). Aşağıdaki örnek, kayıtlı bir ileti işleyicisiyle geri çağırma modelini kullanır ve mesajlarımıza `TestQueue`geldikçe iletileri işler. Bu mod, geri çağırma normal olarak döner ve geri çağırma bir özel durum oluşturursa **Abandon ()** **öğesini çağırır.** 
 
 ```java
     public void run() throws Exception {
@@ -182,17 +182,17 @@ Aşağıdaki örnek, iletilerin **PeekLock** modu (varsayılan mod değil) kulla
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunmayan iletileri giderme
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulaması iletiyi nedense işleyemiyorsa, **getLockToken()** üzerinden alınan iletinin kilit belirteci ile istemci nesnesi üzerinde **terk etme()** yöntemini arayabilir. Bu işlem Service Bus hizmetinin kuyruktaki iletinin kilidini açmasına ve iletiyi aynı veya başka bir kullanıcı uygulama tarafından tekrar alınabilir hale getirmesine neden olur.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemezse, istemci nesnesinde, **Getlocktoken ()** ile alınan ileti kilit belirteci ile birlikte **Abandon ()** metodunu çağırabilir. Bu işlem Service Bus hizmetinin kuyruktaki iletinin kilidini açmasına ve iletiyi aynı veya başka bir kullanıcı uygulama tarafından tekrar alınabilir hale getirmesine neden olur.
 
-Ayrıca, sırada kilitli bir iletiyle ilişkili bir zaman aşımı da vardır ve uygulama kilit süresi sona ermeden önce iletiyi işlemezse (örneğin, uygulama çöküyorsa), Servis Veri Servisi iletiyi otomatik olarak açar ve yeniden alınmak üzere kullanılabilir hale getirir.
+Ayrıca, kuyruk içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı vardır ve uygulamanın kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse) Service Bus, otomatik olarak iletinin kilidini açar ve tekrar alınabilmesini sağlar.
 
-Uygulamanın iletiyi işledikten sonra ancak **tam()** isteği verilmeden önce çökmesi durumunda, ileti yeniden başlatıldığında uygulamaya yeniden teslim edilir. Bu durum *En Az Bir Kez İşleme* olarak adlandırılır. Her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu genellikle iletinin **getMessageId** yöntemi kullanılarak elde edilir ve bu yöntem, teslim girişimleri arasında sabit kalır.
+Uygulamanın ileti işlendikten sonra çöktüğü durumda, ancak **tamamlanma ()** isteği verildikten önce, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu durum *En Az Bir Kez İşleme* olarak adlandırılır. Her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu genellikle iletinin **Getmessageıd** yöntemi kullanılarak sağlanır ve bu durum, teslim girişimleri arasında sabit kalır.
 
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Artık Servis Veri Servisi kuyruklarının temellerini öğrendiğiniz için, daha fazla bilgi için [Kuyruklar, konular ve aboneliklere][Queues, topics, and subscriptions] bakın.
+Service Bus kuyrukların temellerini öğrendiğinize göre, daha fazla bilgi için bkz. [Kuyruklar, konular ve abonelikler][Queues, topics, and subscriptions] .
 
 Daha fazla bilgi için bkz. [Java Geliştirici Merkezi](https://azure.microsoft.com/develop/java/).
 

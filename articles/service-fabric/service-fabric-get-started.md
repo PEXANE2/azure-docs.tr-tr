@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.custom: sfrev
 ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731748"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
@@ -21,7 +21,7 @@ ms.locfileid: "81731748"
 >
 >
 
-Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK'da yer alan [Windows PowerShell komut dosyalarının yürütülmesini etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
+Windows geliştirme makinenizde [Azure Service Fabric uygulamaları][1] derlemek ve çalıştırmak için Service Fabric çalışma zamanını, SDK'yı ve araçları yükleyin. Ayrıca, SDK 'da bulunan [Windows PowerShell betiklerinin yürütülmesini de etkinleştirmeniz](#enable-powershell-script-execution) gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,19 +37,19 @@ Geliştirme için şu işletim sistemi sürümleri desteklenir:
 
 > [!NOTE]
 > Windows 7 desteği:
-> - Windows 7 varsayılan olarak yalnızca Windows PowerShell 2.0 içerir. Service Fabric PowerShell cmdlet’leri PowerShell 3.0 veya üzerini gerektirir. Windows [PowerShell 5.1'i][powershell5-download] Microsoft Download Center'dan indirebilirsiniz.
+> - Windows 7 varsayılan olarak yalnızca Windows PowerShell 2.0 içerir. Service Fabric PowerShell cmdlet’leri PowerShell 3.0 veya üzerini gerektirir. [Windows PowerShell 5,1][powershell5-download] ' i Microsoft İndirme Merkezi ' nden indirebilirsiniz.
 > - Windows 7'de Service Fabric Ters Proxy kullanılamaz.
 
 ## <a name="install-the-sdk-and-tools"></a>SDK'yı ve araçları yükleme
 
-Web Platform Installer (WebPI) SDK ve araçları yüklemek için önerilen yoldur. WebPI kullanarak çalışma zamanı hataları alırsanız, belirli bir Hizmet Kumaşı sürümü için sürüm notlarında yükleyicilere doğrudan bağlantılar da bulabilirsiniz. Sürüm notları [Service Fabric takım blogunda](https://blogs.msdn.microsoft.com/azureservicefabric/)çeşitli sürüm duyurular bulunabilir.
+Web Platformu Yükleyicisi (WebPI), SDK ve araçları yüklemek için önerilen yoldur. WebPI kullanarak çalışma zamanı hataları alırsanız, belirli bir Service Fabric sürümü için sürüm notlarında yükleyicilerin doğrudan bağlantılarını da bulabilirsiniz. Sürüm notları, [Service Fabric ekip blogundan](https://blogs.msdn.microsoft.com/azureservicefabric/)çeşitli sürüm bildirilerinde bulunabilir.
 
 > [!NOTE]
-> Yerel Hizmet Kumaş geliştirme küme yükseltmeleri desteklenmez.
+> Yerel Service Fabric geliştirme kümesi yükseltmeleri desteklenmez.
 
-### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 veya 2019'u kullanmak için
+### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 veya 2019 kullanmak için
 
-Service Fabric Tools, Visual Studio 2017 ve 2019'daki Azure Geliştirme iş yükünün bir parçasıdır. Bu iş yükünü Visual Studio yüklemenizin bir parçası olarak etkinleştirin.
+Service Fabric Araçları, Visual Studio 2017 ve 2019 ' deki Azure geliştirme iş yükünün parçasıdır. Bu iş yükünü Visual Studio yüklemenizin bir parçası olarak etkinleştirin.
 Ayrıca Web Platformu Yükleyicisini kullanarak Microsoft Azure Service Fabric SDK'sını da yüklemeniz gerekir.
 
 * [Microsoft Azure Service Fabric SDK'sını yükleyin][core-sdk]
@@ -58,7 +58,7 @@ Ayrıca Web Platformu Yükleyicisini kullanarak Microsoft Azure Service Fabric S
 
 Visual Studio 2015 için Service Fabric araçları Web Platformu Yükleyicisi kullanılarak SDK ile birlikte yüklenir:
 
-* [Microsoft Azure Hizmet Kumaşı SDK ve Araçlarını Yükleme][full-bundle-vs2015]
+* [Microsoft Azure Service Fabric SDK ve araçlarını yükler][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Yalnızca SDK'yı yükleme
 
@@ -68,13 +68,13 @@ Yalnızca SDK'yı yüklemeniz gerekiyorsa bu paketi yükleyebilirsiniz:
 
 Geçerli sürümler şunlardır:
 
-* Servis Kumaş ı SDK ve Aletler 4.1.409
-* Servis Kumaş çalışma süresi 7.1.409
+* Service Fabric SDK ve araçlar 4.1.409
+* Service Fabric Runtime 7.1.409
 
-Desteklenen sürümlerin listesi için [Service Fabric sürümlerine](service-fabric-versions.md) bakın
+Desteklenen sürümlerin listesi için bkz. [Service Fabric sürümleri](service-fabric-versions.md)
 
 > [!NOTE]
-> Uygulama veya Küme yükseltmeleri için tek makine kümeleri (OneBox) desteklenmez; Bir Küme yükseltmesi gerçekleştirmeniz gerekiyorsa veya Uygulama yükseltmesi yaparken herhangi bir sorun varsa OneBox kümesini silin ve yeniden oluşturun. 
+> Tek makine kümeleri (OneBox) uygulama veya küme yükseltmeleri için desteklenmez; bir küme yükseltmesi gerçekleştirmeniz veya bir uygulama yükseltmesi gerçekleştirmede herhangi bir sorun olması gerekiyorsa, OneBox kümesini silin ve yeniden oluşturun. 
 
 ## <a name="enable-powershell-script-execution"></a>PowerShell betik yürütmesini etkinleştirme
 
@@ -84,15 +84,15 @@ Service Fabric, yerel geliştirme merkezi oluşturmak ve Visual Studio'dan uygul
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="install-docker-optional"></a>Docker'ı yükleyin (isteğe bağlı)
+## <a name="install-docker-optional"></a>Docker 'ı (isteğe bağlı) yükler
 
-[Service Fabric,](service-fabric-containers-overview.md) mikro hizmetleri bir makine kümesine dağıtmak için kullanılan bir konteyner orkestratördür. Windows kapsayıcı uygulamalarını yerel geliştirme kümenizde çalıştırmak için önce Windows için Docker'ı yüklemeniz gerekir. [Windows için Docker CE alın (kararlı)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Docker’ı yükleyip başlattıktan sonra tepsi simgesine sağ tıklayıp **Windows kapsayıcılarına geç** öğesini seçin. Bu adım, Windows temelinde Docker görüntülerini çalıştırmak için gereklidir.
+Service Fabric, mikro hizmetleri bir makine kümesi genelinde dağıtmaya yönelik [bir kapsayıcı Orchestrator](service-fabric-containers-overview.md) . Windows kapsayıcı uygulamalarını yerel geliştirme kümenizde çalıştırmak için, önce Docker for Windows yüklemeniz gerekir. [Docker CE for Windows (kararlı)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)alın. Docker’ı yükleyip başlattıktan sonra tepsi simgesine sağ tıklayıp **Windows kapsayıcılarına geç** öğesini seçin. Bu adım, Windows temelinde Docker görüntülerini çalıştırmak için gereklidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık geliştirme ortamınızı ayarlamayı tamamladığınıza göre, uygulama derlemeye ve çalıştırmaya başlayın.
 
-* [Uygulamaları nasıl oluşturup dağıtacak ve yöneteceklerini öğrenin](service-fabric-tutorial-create-dotnet-app.md)
+* [Uygulama oluşturmayı, dağıtmayı ve yönetmeyi öğrenin](service-fabric-tutorial-create-dotnet-app.md)
 * [Programlama modelleri hakkında bilgi edinin: Reliable Services ve Reliable Actors](service-fabric-choose-framework.md)
 * [GitHub'da Service Fabric kod örneklerine bakın](https://aka.ms/servicefabricsamples)
 * [Service Fabric Explorer kullanarak kümenizi görselleştirme](service-fabric-visualizing-your-cluster.md)

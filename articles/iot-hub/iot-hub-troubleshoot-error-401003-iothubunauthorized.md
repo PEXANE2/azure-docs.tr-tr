@@ -1,6 +1,6 @@
 ---
-title: Sorun Giderme Azure IoT Hub hatası 401003 IoTHubYetkisiz
-description: Hata 401003 IoTHubYetkisiz nasıl düzeltilir anlayın
+title: Azure IoT Hub hata giderme hatası 401003 Iothubyetkilendirilmemiş
+description: 401003 Iothubyetkilendirilmemiş hatasını nasıl düzelteceğinizi öğrenin
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -12,64 +12,64 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759584"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
-Bu makalede, **401003 IoTHubYetkisiz** hataların nedenleri ve çözümleri açıklanmaktadır.
+Bu makalede, **401003 Iothubyetkilendirilmemiş** hatalara yönelik nedenler ve çözümler açıklanmaktadır.
 
 ## <a name="symptoms"></a>Belirtiler
 
 ### <a name="symptom-1"></a>Belirti 1
 
-Tanılama günlüklerinde, **401003 IoTHubYetkisiz**ile bağlantı kesen bir aygıt deseni görürsünüz , ardından **404104 DeviceConnectionClosedRemotely**, ve kısa bir süre sonra başarıyla bağlanan.
+Tanılama günlükleri ' nde, **401003 Iothubyetkilendirilmemiş**, sonrasında **404104 Deviceconnectioncloseduzaktan**ve sonra kısa bir süre sonra başarılı bir şekilde bağlantı kurarak cihazların bir modelini görürsünüz.
 
 ### <a name="symptom-2"></a>Belirti 2
 
-IoT Hub'a yapılan istekler aşağıdaki hata iletilerinden biriyle başarısız oldu:
+IoT Hub istekleri aşağıdaki hata iletilerinden biriyle başarısız olur:
 
 * Yetkilendirme üstbilgisi eksik
-* IotHub\*' ' belirtilen cihazı\*içermez ' '
-* Yetkilendirme kuralı\*' ' '\*için erişime izin vermez ' '
-* Bu aygıt için kimlik doğrulama başarısız oldu, belirteç veya sertifikayı yenileyin ve yeniden bağlanma
-* Parmak izi yapılandırmaile eşleşmiyor: Thumbprint:\*SHA1Hash=\*, SHA2Hash= ; Yapılandırma: PrimaryThumbprint=\*, İkincilThumbprint=\*
+* Iothub '\*' belirtilen '\*' cihazını içermiyor
+* '\*' Yetkilendirme kuralı '\*' için erişime izin vermiyor
+* Bu cihaz için kimlik doğrulaması başarısız oldu, belirteci veya sertifikayı yenileyip yeniden bağlayın
+* Parmak izi yapılandırma ile eşleşmiyor: Parmak Izi: SHA1Hash\*=, SHA2Hash\*=; Yapılandırma: Primaryparmak Izi\*=, secondaryparmak izi =\*
 
 ## <a name="cause"></a>Nedeni
 
 ### <a name="cause-1"></a>Neden 1
 
-MQTT için, bazı SDK'lar, SAS belirteci ne zaman yenileyeceğimi bilmek için süresi dolduğunda bağlantıyı kesmeyi sağlamak için IoT Hub'ına güvenir. Bu yüzden, 
+MQTT için bazı SDK 'lar, bir kilit süresinin ne zaman yenileneceğini bilmek için SAS belirtecinin süresi dolarsa bağlantıyı kesmek için IoT Hub kullanır. Nedenle 
 
-1. SAS belirteci sona eriyor
-1. IoT Hub son kullanma tarihini bildirir ve aygıtı **401003 IoTHubYetkisiz** ile keser
-1. Cihaz **404104 DeviceConnectionIle** bağlantıyı kapatırKapalı Uzaktan
-1. IoT SDK yeni bir SAS belirteci üretir
-1. Aygıt IoT Hub ile başarıyla yeniden bağlanır
+1. SAS belirtecinin süresi doluyor
+1. IoT Hub sona erme süresini fark eder ve cihazın bağlantısını **401003 Iothubyetkilendirilmemiş** ile keser
+1. Cihaz, **404104 Deviceconnectioncloseduzaktan** bağlantı kesmeyi tamamlar
+1. IoT SDK yeni bir SAS belirteci oluşturur
+1. Cihaz başarıyla IoT Hub yeniden bağlanır
 
 ### <a name="cause-2"></a>Neden 2
 
-IoT Hub auth üstbilgisini, kuralı veya anahtarı doğrulayamadı.
+IoT Hub auth üstbilgisinin, kuralın veya anahtarın kimliğini doğrulayamadı.
 
 ## <a name="solution"></a>Çözüm
 
 ### <a name="solution-1"></a>Çözüm 1
 
-Aygıt bağlantı dizesini kullanarak bağlantı için IoT SDK kullanıyorsanız hiçbir işlem gerekmez. IoT SDK, SAS belirteci sona erme süresi dolmadan yeniden bağlanmak için yeni belirteci yeniler. 
+Cihaz bağlantı dizesini kullanarak bağlantı için IoT SDK kullanıyorsanız hiçbir işlem yapmanız gerekmez. IoT SDK, SAS belirteci süre sonuna yeniden bağlanmak için yeni belirteci yeniden oluşturur. 
 
-Hata hacmi bir sorunsa, son kullanma tarihinden önce SAS belirteci yenileyen C SDK'ya geçin. Ayrıca, AMQP için SAS belirteci kopmadan yenilenebilir.
+Hata hacmi bir sorun oluşturacaksa, SAS belirtecini sona ermeden önce yenilediğinde C SDK 'sına geçin. Ayrıca, AMQP için SAS belirtecinin bağlantısı kesilmeden yenilenebilirler.
 
 ### <a name="solution-2"></a>Çözüm 2
 
-Genel olarak, sunulan hata iletisi hatanın nasıl düzeltilenin isini açıklamalıdır. Herhangi bir nedenle hata iletisi ayrıntısına erişiminiz yoksa, aşağıdakilerden emin olun:
+Genel olarak, sunulan hata iletisinde hatanın nasıl düzeltileceğini açıklamalıdır. Bazı nedenlerle hata iletisi ayrıntısına erişiminiz yoksa şunları yaptığınızdan emin olun:
 
-- Kullandığınız SAS veya diğer güvenlik belirteci süresi dolmamış. 
-- Yetkilendirme kimlik bilgisi, kullandığınız protokol için iyi oluşturulmuştur. Daha fazla bilgi için [IoT Hub erişim denetimine](iot-hub-devguide-security.md)bakın.
-- Kullanılan yetkilendirme kuralı, istenen işlem için izine sahiptir.
+- Kullandığınız SAS veya diğer güvenlik belirtecinin geçerliliği dolmamıştır. 
+- Yetkilendirme kimlik bilgileri, kullandığınız protokol için doğru şekilde biçimlendirilir. Daha fazla bilgi için bkz. [IoT Hub Access Control](iot-hub-devguide-security.md).
+- Kullanılan yetkilendirme kuralı istenen işlem için izne sahip.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub'a kimlik doğrulamayı kolaylaştırmak için [Azure IoT SDK'larını](iot-hub-devguide-sdks.md)kullanmanızı öneririz.
+IoT Hub kimlik doğrulamasını kolaylaştırmak için [Azure IoT SDK](iot-hub-devguide-sdks.md)'larını kullanmanızı öneririz.

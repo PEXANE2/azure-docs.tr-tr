@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makine teknik varlıklarınızı oluşturun
-description: Azure Marketi için sanal makine (VM) teklifi için teknik varlıkları nasıl oluşturup yapılandıracaklarını öğrenin.
+title: Azure sanal makineli teknik varlıklarınızı oluşturun
+description: Azure Marketi için bir sanal makine (VM) teklifiyle ilgili teknik varlıkları oluşturma ve yapılandırma hakkında bilgi edinin.
 author: dannyevers
 ms.author: mingshen
 ms.service: marketplace
@@ -8,195 +8,195 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730710"
 ---
-# <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure Sanal Makine teknik varlıklarınızı oluşturun
+# <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure sanal makineli teknik varlıklarınızı oluşturun
 
 > [!IMPORTANT]
-> Azure Sanal Makine tekliflerinizin yönetimini Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izne gelene kadar, bulut iş ortağı portalının tekliflerinizi yönetmesi [için sanal bir makine teklifi için teknik varlıklar oluştur'daki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) yönergeleri izleyin.
+> Azure sanal makine tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Teklifleriniz geçirilene kadar, tekliflerinizi yönetmek için [bulut iş ortağı portalı bir sanal makine için teknik varlıklar oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) bölümündeki yönergeleri izleyin.
 
-Bu makalede, Azure Marketi için sanal makine (VM) teklifi için teknik varlıkların nasıl oluşturulup yapılandırılabildiğini açıklanmaktadır. VM iki bileşen içerir: işletim sistemi sanal sabit disk (VHD) ve isteğe bağlı ilişkili veri diskleri VHDs:
+Bu makalede, Azure Marketi için bir sanal makine (VM) teklifi için teknik varlıkların nasıl oluşturulacağı ve yapılandırılacağı açıklanmaktadır. VM iki bileşen içerir: işletim sistemi sanal sabit diski (VHD) ve isteğe bağlı ilişkili veri diskleri VHD 'leri:
 
-* **İşletim sistemi VHD** – Teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD'yi hazırlama işlemi, Linux tabanlı, Windows tabanlı veya özel tabanlı VM olmasına bağlı olarak değişir.
-* **Veri diskleri VHDs** - Bir VM için özel, kalıcı depolama. Kalıcı bilgileri depolamak için VHD işletim sistemini (örneğin C: sürücü) kullanmayın.
+* **İşletim sistemi VHD 'si** : teklifinizle birlikte dağıtılan işletim sistemini ve çözümü içerir. VHD 'yi hazırlama işlemi, Linux tabanlı, Windows tabanlı veya özel tabanlı bir VM olmasına bağlı olarak farklılık gösterir.
+* **Veri diskleri VHD** 'ler, bir VM için ayrılmış, kalıcı depolama. Kalıcı bilgileri depolamak için işletim sistemi VHD 'sini (örneğin, C: sürücüsü) kullanmayın.
 
-VM görüntüsü nde bir işletim sistemi diski ve en fazla 16 veri diski bulunur. Disk boş olsa bile, veri diski başına bir VHD kullanın.
+Bir VM görüntüsü, bir işletim sistemi diski ve en fazla 16 veri diski içerir. Disk boş olsa bile, veri diski başına bir VHD kullanın.
 
 > [!NOTE]
-> Hangi işletim sistemini kullandığınızdan bağımsız olarak, çözümün gerektirdiği en az sayıda veri diski ekleyin. Müşteriler dağıtım sırasında görüntünün parçası olan diskleri kaldıramaz, ancak dağıtım sırasında veya sonrasında her zaman disk ekleyebilirler.
+> Kullandığınız işletim sisteminden bağımsız olarak yalnızca çözüm için gereken en az sayıda veri diski ekleyin. Müşteriler, dağıtım sırasında bir görüntünün parçası olan diskleri kaldıramaz, ancak dağıtım sırasında veya sonrasında her zaman disk ekleyebilirler.
 
 > [!IMPORTANT]
-> Plandaki her VM Görüntüsü aynı sayıda veri diski olmalıdır.
+> Bir plandaki her sanal makine görüntüsünün aynı sayıda veri diski olmalıdır.
 
 ## <a name="fundamental-technical-knowledge"></a>Temel teknik bilgi
 
-Bu varlıkların tasarlanması, oluşturulması ve test edilmesi zaman alır ve hem Azure platformu hem de teklifi oluşturmak için kullanılan teknolojiler hakkında teknik bilgi gerektirir. Çözüm etki alanınıza ek olarak, mühendislik ekibiniz aşağıdaki Microsoft teknolojileri hakkında bilgi sahibi olmalıdır:
+Bu varlıkların tasarlanmasına, oluşturulmasına ve test edilmesine zaman alır ve hem Azure platformu hem de teklifi oluşturmak için kullanılan teknolojiler hakkında teknik bilgi gerektirir. Çözüm etki alanınız ' ne ek olarak, mühendislik ekibiniz aşağıdaki Microsoft teknolojileri hakkında bilgi sahibi olmalıdır:
 
-* [Azure Hizmetlerinin](https://azure.microsoft.com/services/) temel anlayışı
-* Azure uygulamaları nasıl [tasarlar ve tasarlar](https://azure.microsoft.com/solutions/architecture/)
-* [Azure Sanal Makineler,](https://azure.microsoft.com/services/virtual-machines/) [Azure Depolama](https://azure.microsoft.com/services/?filter=storage) ve [Azure Ağı](https://azure.microsoft.com/services/?filter=networking) çalışma bilgisi
-* [Azure Kaynak Yöneticisi'nin](https://azure.microsoft.com/features/resource-manager/) çalışma bilgisi
-* [JSON](https://www.json.org/) Çalışma Bilgisi
+* [Azure hizmetlerini](https://azure.microsoft.com/services/) temel olarak anlama
+* [Azure uygulamalarını tasarlama ve mimarın](https://azure.microsoft.com/solutions/architecture/)
+* [Azure sanal makineler](https://azure.microsoft.com/services/virtual-machines/), [Azure depolama](https://azure.microsoft.com/services/?filter=storage) ve [Azure ağı](https://azure.microsoft.com/services/?filter=networking) ile çalışma hakkında bilgi
+* [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) çalışma bilgileri
+* [JSON](https://www.json.org/) hakkında çalışma bilgisi
 
 ## <a name="suggested-tools--optional"></a>Önerilen araçlar – isteğe bağlı
 
-VM'leri ve VH'leri yönetmenize yardımcı olmak için aşağıdaki komut dosyası ortamlarından birini kullanmayı düşünün:
+VM 'Lerin ve VHD 'lerin yönetilmesine yardımcı olmak için aşağıdaki komut dosyası ortamlarının birini kullanmayı göz önünde bulundurun:
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure CLI](https://code.visualstudio.com/)
 
-Ayrıca, geliştirme ortamınıza aşağıdaki araçları eklemeyi düşünün:
+Ayrıca, aşağıdaki araçları geliştirme ortamınıza eklemeyi göz önünde bulundurun:
 
 * [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Visual Studio Code](https://code.visualstudio.com/)
-  * Uzantı: [Azure Kaynak Yöneticisi Araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-  * Uzantısı: [Güzelleştirmek](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  * Uzatma: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+  * Uzantı: [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  * Uzantı: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+  * Uzantı: [prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-[Azure Geliştirici Araçları](https://azure.microsoft.com/product-categories/developer-tools/) sayfasındaki kullanılabilir araçları gözden geçirin ve Visual Studio kullanıyorsanız Visual Studio [Marketplace'i](https://marketplace.visualstudio.com/)inceleyin.
+[Azure Geliştirici Araçları](https://azure.microsoft.com/product-categories/developer-tools/) sayfasındaki kullanılabilir araçları gözden geçirin ve Visual Studio kullanıyorsanız, [Visual Studio Market](https://marketplace.visualstudio.com/).
 
-## <a name="create-a-vm-image-using-an-approved-base"></a>Onaylı bir taban kullanarak VM görüntüsü oluşturma
+## <a name="create-a-vm-image-using-an-approved-base"></a>Onaylanan bir taban kullanarak VM görüntüsü oluşturma
 
 > [!NOTE]
-> Kendi binanızda oluşturduğunuz bir görüntüyü kullanarak sanal makine teknik varlıklarınızı oluşturmak için [kendi resminizi kullanarak Bir VM Oluşturun'e](#create-a-vm-using-your-own-image)gidin.
+> Kendi şirket içi oluşturduğunuz bir görüntüyü kullanarak sanal makine teknik varlıklarınızı oluşturmak için [kendi görüntünüzü kullanarak VM oluşturma](#create-a-vm-using-your-own-image)bölümüne gidin.
 
-Bu bölümde, Uzak Masaüstü Protokolü 'nü (RDP) kullanma, VM için bir boyut seçme, en son Windows güncelleştirmelerini yükleme ve VHD görüntüsünü genelleme gibi onaylanmış bir tabanı kullanmanın çeşitli yönleri açıklanmaktadır.
+Bu bölümde, Uzak Masaüstü Protokolü (RDP), sanal makine için boyut seçme, en son Windows güncelleştirmelerini yükleme ve VHD görüntüsünü Genelleştirme gibi, onaylı bir temel kullanmanın çeşitli yönleri açıklanmaktadır.
 
-Aşağıdaki bölümlerde daha çok windows tabanlı VHD'ler ele alınalmaktadır. Linux tabanlı VHD'ler oluşturma hakkında daha fazla bilgi için [Azure tarafından onaylanan dağıtımlar hakkında Linux'a](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.
+Aşağıdaki bölümler, temel olarak Windows tabanlı VHD 'lere odaklanmaktadır. Linux tabanlı VHD 'ler oluşturma hakkında daha fazla bilgi için bkz. [Azure tarafından onaylanan dağıtımlara Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
 > [!WARNING]
-> Önceden yapılandırılmış, onaylanmış bir işletim sistemi içeren bir VM oluşturmak için Azure'u kullanmak için bu konuyla ilgili kılavuzu izleyin. Bu, çözümünüzle uyumlu değilse, onaylanmış bir işletim sistemi kullanarak şirket içi bir VM oluşturmak ve yapılandırmak mümkündür. Daha sonra, Azure'a yüklemek için [Windows VHD veya VHDX'te](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)açıklandığı gibi yapılandırAbilir ve yüklemeye hazırlayabilirsiniz.
+> Önceden yapılandırılmış, onaylı bir işletim sistemi içeren bir VM oluşturmak için Azure 'u kullanmak üzere bu konudaki yönergeleri izleyin. Çözümünüz ile uyumlu değilse, onaylanmış bir işletim sistemi kullanarak şirket içi bir VM oluşturmak ve yapılandırmak mümkündür. Daha sonra, [Azure 'a yüklemek üzere bir WINDOWS VHD veya vhdx hazırlama](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)bölümünde açıklandığı gibi karşıya yükleme için bu uygulamayı yapılandırabilir ve hazırlarsınız.
 
-### <a name="select-an-approved-base"></a>Onaylı bir taban seçin
+### <a name="select-an-approved-base"></a>Onaylanan bir taban seçin
 
-Temel olarak Windows işletim sistemini veya Linux'u seçin.
+Tabanınız olarak Windows işletim sistemi veya Linux ' u seçin.
 
 #### <a name="windows"></a>Windows
 
-Windows tabanlı VM görüntünüz için işletim sistemi VHD, Windows Server veya SQL Server içeren Azure onaylı bir temel görüntüye dayanmalıdır. Başlamak için, Azure portalından aşağıdaki resimlerden birinden bir VM oluşturun:
+Windows tabanlı VM Görüntünüzün işletim sistemi VHD 'SI, Windows Server veya SQL Server içeren bir Azure onaylı temel görüntüye dayalı olmalıdır. Başlamak için Azure portal aşağıdaki görüntülerden birinden bir VM oluşturun:
 
 * Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
-* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Kurumsal, Standart, Web)
-* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Kurumsal, Standart, Web)
+* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 
 > [!NOTE]
-> Geçerli Azure portalını veya Azure PowerShell'i kullanıyorsanız, 8 Eylül 2014 tarihinde yayınlanan ve daha sonra onaylanan Windows Server görüntüleri onaylanır.
+> Geçerli Azure portal veya Azure PowerShell kullanıyorsanız, 8 Eylül 2014 ' de ve sonrasında yayımlanan Windows Server görüntüleri onaylanır.
 
 #### <a name="linux"></a>Linux
 
-Azure, bir dizi onaylı Linux dağıtımı sunar. Geçerli bir liste için Azure [tarafından onaylanan dağıtımlar hakkında Linux'a](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.
+Azure, onaylı bir Linux dağıtımları yelpazesi sunar. Geçerli bir liste için bkz. [Azure tarafından onaylanan dağıtımlara Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
-### <a name="create-vm-in-the-azure-portal"></a>Azure portalında VM oluşturma
+### <a name="create-vm-in-the-azure-portal"></a>Azure portal VM oluşturma
 
-[Azure portalında](https://ms.portal.azure.com/)temel VM görüntüsünü oluşturmak için aşağıdaki adımları izleyin:
+[Azure Portal](https://ms.portal.azure.com/)temel VM görüntüsünü oluşturmak için aşağıdaki adımları izleyin:
 
-1. VM teklifinizi yayınlamak için kullanmak istediğiniz Azure aboneliğiyle ilişkili Microsoft hesabıyla [Azure portalında](https://ms.portal.azure.com/) oturum açın.
-2. Yeni bir kaynak grubu oluşturun ve **Kaynak grup adınızı,** **Aboneliğinizi**ve **Kaynak grup konumunuzu**sağlayın. Ayrıntılar için [kaynakları yönet'e](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)bakın.
-3. Sanal makineler ayrıntıları sayfasını görüntülemek için soldaki **Sanal makineleri** seçin.
-4. Sanal makine deneyimi **oluşturmak**için + **Ekle'yi** seçin.
-5. Açılan listeden resmi seçin veya kullanılabilir tüm sanal makine görsellerini aramak veya göz atmak için **tüm genel ve özel resimlere göz at'ı** tıklatın.
-6. Aşağıdaki önerileri kullanarak dağıtmak için VM boyutunu seçin:
-    * Eğer şirket içinde VHD geliştirmeyi planlıyorsanız, boyutu önemli değildir. Küçük VM'lerden birini kullanmayı düşünün.
-    * Görüntüyü Azure'da geliştirmeyi planlıyorsanız, seçili görüntü için önerilen VM boyutlarından birini kullanmayı düşünün.
+1. VM teklifinizi yayımlamak için kullanmak istediğiniz Azure aboneliğiyle ilişkili Microsoft hesabı [Azure Portal](https://ms.portal.azure.com/) oturum açın.
+2. Yeni bir kaynak grubu oluşturun ve **kaynak grubu adınızı**, **aboneliğinizi**ve **kaynak grubu konumunu**belirtin. Ayrıntılar için bkz. [kaynakları yönetme](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+3. Sanal makineler Ayrıntılar sayfasını göstermek için sol taraftaki **sanal makineler** ' i seçin.
+4. **+ Ekle** ' yi seçerek **sanal makine oluşturma deneyimini**açın.
+5. Açılan listeden görüntüyü seçin veya tüm kullanılabilir sanal makine görüntülerini aramak veya taramak için **tüm ortak ve özel görüntülere gözatıp** ' ye tıklayın.
+6. Aşağıdaki önerileri kullanarak dağıtılacak VM 'nin boyutunu seçin:
+    * VHD 'yi şirket içinde geliştirmeyi planlıyorsanız, boyut önemi yoktur. Küçük VM 'lerden birini kullanmayı göz önünde bulundurun.
+    * Görüntüyü Azure 'da geliştirmeyi planlıyorsanız, seçilen görüntü için önerilen VM boyutlarından birini kullanmayı göz önünde bulundurun.
 
-7. **Diskler** bölümünde, **Gelişmiş** bölümü genişletin ve **Kullanım yönetilen diskler** seçeneğini **No**olarak ayarlayın.
-8. VM'yi oluşturmak için gerekli diğer ayrıntıları sağlayın.
-9. Seçimlerinizi gözden geçirmek için **Gözden Geçir + oluştur'u** seçin. **Validation geçirilen** iletiyi gördüğünüzde **Oluştur'u**seçin.
+7. **Diskler** bölümünde, **Gelişmiş** bölümünü genişletin ve **yönetilen diskleri kullan** seçeneğini **Hayır**olarak ayarlayın.
+8. VM oluşturmak için gereken diğer ayrıntıları sağlayın.
+9. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin.
 
-Azure, belirttiğiniz sanal makineyi sağlamabaşlar. Soldaki **Sanal Makineler** sekmesini seçerek ilerlemesini izleyebilirsiniz. Oluşturulduktan sonra durum **Çalışan**olarak değişecektir.
+Azure, belirttiğiniz sanal makineyi sağlamaya başlar. Sol taraftaki **sanal makineler** sekmesini seçerek ilerlemesini izleyebilirsiniz. Oluşturulduktan sonra durum **çalışıyor**olarak değişir.
 
-Yeni Azure tabanlı VHD'nizi oluştururken güçlük çekiyorsanız, [VHD oluşturma (SSS) sırasında sık karşılaşılan sorunlara](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)bakın.
+Yeni Azure tabanlı VHD 'nizi oluştururken zorlukla karşılaşırsanız, bkz. [VHD oluşturma (SSS) sırasında yaygın sorunlar](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation).
 
-### <a name="connect-to-your-azure-vm"></a>Azure VM'nize bağlanın
+### <a name="connect-to-your-azure-vm"></a>Azure VM 'nize bağlanma
 
-Bu bölümde, Azure'da oluşturduğunuz VM'ye nasıl bağlanıp oturum açabileceğiniz açıklanmaktadır. Başarıyla bağlandıktan sonra, VM ile ana bilgisayar sunucusunda yerel olarak oturum açmış gibi çalışabilirsiniz.
+Bu bölümde, Azure 'da oluşturduğunuz sanal makineye bağlanma ve oturum açma işlemlerinin nasıl yapılacağı açıklanmaktadır. Başarıyla bağlandıktan sonra, ana bilgisayar sunucusunda yerel olarak oturum açmış olduğunuz gibi VM ile çalışabilirsiniz.
 
-#### <a name="connect-to-a-windows-based-vm"></a>Windows tabanlı bir VM'ye bağlanma
+#### <a name="connect-to-a-windows-based-vm"></a>Windows tabanlı bir VM 'ye bağlanma
 
-Azure'da barındırılan Windows tabanlı VM'ye bağlanmak için uzak masaüstü istemcisini kullanın. Windows'un çoğu sürümü, uzak masaüstü protokolü (RDP) için yerel olarak destek içerir. Diğer işletim sistemleri için, [Uzak Masaüstü istemcilerinde](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)istemciler hakkında daha fazla bilgi bulabilirsiniz.
+Azure 'da barındırılan Windows tabanlı VM 'ye bağlanmak için uzak masaüstü istemcisini kullanın. Windows 'un çoğu sürümü yerel olarak Uzak Masaüstü Protokolü (RDP) desteği içerir. Diğer işletim sistemleri için, [Uzak Masaüstü istemcilerindeki](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)istemciler hakkında daha fazla bilgi edinebilirsiniz.
 
-Bu makalede, VM'nize bağlanmak için yerleşik Windows RDP desteğinin nasıl kullanılacağı ayrıntılı olarak anlatılıyor: [Windows çalıştıran bir Azure sanal makinesine nasıl bağlanıp oturum açabilirsiniz.](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)
+Bu makalede, yerleşik Windows RDP desteğinin sanal makinenize bağlanmak için nasıl kullanılacağı açıklanır: [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).
 
 > [!TIP]
-> İşlem sırasında güvenlik uyarıları alabilirsiniz. Örneğin, ".rdp dosyası bilinmeyen bir yayımcıdan geliyor" veya "Kullanıcı kimliğiniz doğrulanamıyor" gibi uyarılar. Bu uyarıları yoksaymak güvenlidir.
+> İşlem sırasında güvenlik uyarıları alabilirsiniz. Örneğin, ". rdp dosyası bilinmeyen bir yayımcıdan" veya "Kullanıcı kimlik bilgileriniz doğrulanamıyor" gibi uyarılar. Bu uyarıları yoksaymak güvenlidir.
 
-#### <a name="connect-to-a-linux-based-vm"></a>Linux tabanlı bir VM'ye bağlanma
+#### <a name="connect-to-a-linux-based-vm"></a>Linux tabanlı bir VM 'ye bağlanma
 
-Linux tabanlı bir VM'ye bağlanmak için güvenli bir kabuk protokolü (SSH) istemcisine ihtiyacınız vardır. Aşağıdaki adımlarücretsiz [PuTTY](https://www.ssh.com/ssh/putty/) SHH terminalini kullanır.
+Linux tabanlı bir VM 'ye bağlanmak için güvenli bir kabuk Protokolü (SSH) istemcisine ihtiyacınız vardır. Aşağıdaki adımlarda ücretsiz [Putty](https://www.ssh.com/ssh/putty/) Shh terminali kullanılır.
 
-1. [Azure portalına](https://ms.portal.azure.com/)gidin.
+1. [Azure Portal](https://ms.portal.azure.com/)gidin.
 2. **Sanal makineleri**arayın ve seçin.
-3. Bağlanmak istediğiniz VM'yi seçin.
-4. Zaten çalışmıyorsa VM'yi başlatın.
-5. **Genel Bakış** sayfasını açmak için VM'nin adını seçin.
-6. VM'nizin Genel IP adresine ve DNS adını not edin (bu değerler ayarlı değilse, [bir ağ arabirimi oluşturmanız](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)gerekir).
+3. Bağlanmak istediğiniz VM 'yi seçin.
+4. Zaten çalışmıyorsa VM 'yi başlatın.
+5. **Genel bakış** sayfasını açmak için VM 'nin adını seçin.
+6. VM 'nizin genel IP adresi ve DNS adı ' nı not edin (Bu değerler ayarlanmamışsa, [bir ağ arabirimi oluşturmanız](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)gerekir).
 7. PuTTY uygulamasını açın.
-8. PuTTY Configuration iletişim kutusunda, VM'nizin IP adresini veya DNS adını girin.
+8. PuTTY yapılandırması iletişim kutusunda, sanal makinenizin IP adresini veya DNS adını girin.
 
-    :::image type="content" source="media/avm-putty.png" alt-text="PuTTY terminal ayarlarını gösterir. Ana Bilgisayar Adı veya IP adresi ve Bağlantı Noktası kutuları vurgulanır.":::
+    :::image type="content" source="media/avm-putty.png" alt-text="PuTTY terminal ayarlarını gösterir. Ana bilgisayar adı veya IP adresi ve bağlantı noktası kutuları vurgulanır.":::
 
-9. PuTTY terminalini açmak için **Aç'ı** seçin.
+9. PuTTY terminali açmak için **Aç** ' ı seçin.
 10. İstendiğinde, Linux VM hesabınızın hesap adını ve parolasını girin.
 
-Bağlantı sorunlarınız varsa, SSH istemcinizin belgelerine bakın. Örneğin, [Bölüm 10: Yaygın hata iletileri](https://www.ssh.com/ssh/putty/putty-manuals).
+Bağlantı sorunlarınız varsa, SSH istemcinizin belgelerine bakın. Örneğin, [Bölüm 10: ortak hata iletileri](https://www.ssh.com/ssh/putty/putty-manuals).
 
-Sağlanan bir Linux VM'sine masaüstü nasıl ekleyeceğiniz gibi ayrıntılar için, [Azure'daki bir Linux VM'ye bağlanmak için Uzak Masaüstü'nü Yükle ve yapılandırma](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)konusuna bakın.
+Sağlanan bir Linux sanal makinesine masaüstü ekleme gibi ayrıntılar için bkz. [Azure 'da bir LINUX VM 'sine bağlanmak Için uzak masaüstü 'Nü yükleyip yapılandırma](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop).
 
-## <a name="create-a-vm-using-your-own-image"></a>Kendi resminizi kullanarak bir VM oluşturun
+## <a name="create-a-vm-using-your-own-image"></a>Kendi görüntünüzü kullanarak VM oluşturma
 
-Bu bölümde, kullanıcı tarafından sağlanan sanal makine (VM) görüntüsünün nasıl oluşturulup dağıtılanın. Bunu, Azure tarafından dağıtılan sanal sabit diskten (VHD) işletim sistemi ve veri diski VHD görüntüleri sağlayarak yapabilirsiniz.
+Bu bölümde, Kullanıcı tarafından belirtilen bir sanal makine (VM) görüntüsünün nasıl oluşturulacağı ve dağıtılacağı açıklanmaktadır. Bunu, Azure tarafından dağıtılan bir sanal sabit diskten (VHD) işletim sistemi ve veri diski VHD görüntüleri sağlayarak yapabilirsiniz.
 
 > [!NOTE]
-> İsteğe bağlı olarak onaylanmış bir temel görüntü kullanmak için, [onaylanmış bir taban kullanarak VM görüntüsü oluştur'daki](#create-a-vm-image-using-an-approved-base)yönergeleri izleyin.
+> İsteğe bağlı olarak onaylanmış bir temel görüntü kullanmak için, onaylı bir [taban kullanarak VM görüntüsü oluşturma](#create-a-vm-image-using-an-approved-base)bölümündeki yönergeleri izleyin.
 
-1. Resimlerinizi Azure Depolama hesabına yükleyin.
+1. Görüntülerinizi Azure Storage hesabına yükleyin.
 2. VM görüntüsünü dağıtın.
 3. VM görüntüsünü yakalayın.
 
-### <a name="upload-your-images-to-an-azure-storage-account"></a>Resimlerinizi bir Azure depolama hesabına yükleme
+### <a name="upload-your-images-to-an-azure-storage-account"></a>Görüntülerinizi bir Azure depolama hesabına yükleyin
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-2. Genelleştirilmiş işletim sisteminiz VHD'nizi ve veri diski VHD'lerinizi Azure depolama hesabınıza yükleyin.
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
+2. Genelleştirilmiş işletim sistemi VHD 'nizi ve veri diski VHD 'nizi Azure depolama hesabınıza yükleyin.
 
-### <a name="deploy-your-image"></a>Resminizi dağıtma
+### <a name="deploy-your-image"></a>Görüntünüzü dağıtın
 
-Azure portalını veya Azure PowerShell'i kullanarak resminizi oluşturun.
+Azure portal ya da Azure PowerShell kullanarak görüntünüzü oluşturun.
 
 #### <a name="deploy-using-the-azure-portal"></a>Azure portalı kullanarak dağıtma
 
-1. Ana sayfada kaynak **oluştur'u,**"Şablon Dağıtımı"nı arayın'ı ve **Oluştur'u**seçin.
-2. **Editörde kendi şablonunuzu oluştur'u**seçin.
+1. Giriş sayfasında, **kaynak oluştur**' u seçin, "şablon dağıtımı" ifadesini arayın ve **Oluştur**' u seçin.
+2. **Düzenleyicide kendi şablonunuzu oluşturun**öğesini seçin.
 
     :::image type="content" source="media/avm-custom-deployment.png" alt-text="Özel dağıtım sayfasını gösterir.":::
 
-3. Bu [JSON şablonunu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template) editöre yapıştırın ve **Kaydet'i**seçin.
-4. Görüntülenen **Özel dağıtım** özelliği sayfaları için parametre değerlerini sağlayın.
+3. Bu [JSON şablonunu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template) düzenleyiciye yapıştırın ve **Kaydet**' i seçin.
+4. Görüntülenmiş **özel dağıtım** özelliği sayfaları için parametre değerlerini belirtin.
 
     | Parametre | Açıklama |
     | ------------ | ------------- |
-    | Kullanıcı Depolama Hesap Adı | Hücre 2'den gelen içerik |
-    | Kullanıcı Depolama Konteyner Adı | Genelleştirilmiş VHD'nin bulunduğu depolama hesabı adı |
-    | Genel IP için DNS Adı | Genel IP DNS adı. Teklif dağıtıldıktan sonra Azure portalındaki genel IP adresinin DNS adını tanımlayın. |
-    | Yönetici Kullanıcı Adı | Yeni VM için yönetici hesabının kullanıcı adı |
+    | Kullanıcı depolama hesabı adı | Hücreden içerik 2 |
+    | Kullanıcı depolama kapsayıcısı adı | Genelleştirilmiş VHD 'nin bulunduğu depolama hesabı adı |
+    | Genel IP için DNS adı | Genel IP DNS adı. Teklif dağıtıldıktan sonra Azure portal genel IP adresi için DNS adını tanımlayın. |
+    | Yönetici Kullanıcı adı | Yeni VM için yönetici hesabının Kullanıcı adı |
     | Yönetici Parolası | Yeni VM için yönetici hesabının parolası |
     | İşletim Sistemi Türü | VM işletim sistemi: Windows veya Linux |
     | Abonelik Kimliği | Seçili aboneliğin tanımlayıcısı |
     | Konum | Dağıtımın coğrafi konumu |
     | VM Boyutu | [Azure VM boyutu](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), örneğin Standard_A2 |
-    | Genel IP Adresi Adı | Herkese açık IP adresinizin adı |
-    | VM Adı | Yeni VM'nin adı |
-    | Sanal Ağ Adı | VM tarafından kullanılan sanal ağın adı |
-    | NIC Adı | Sanal ağı çalıştıran ağ arabirim kartının adı |
-    | VHD URL | Komple Işletim Sistemi Disk VHD URL |
+    | Genel IP adresi adı | Genel IP adresinizin adı |
+    | VM Adı | Yeni VM 'nin adı |
+    | Sanal ağ adı | VM tarafından kullanılan sanal ağın adı |
+    | NIC adı | Sanal ağı çalıştıran ağ arabirimi kartının adı |
+    | VHD URL 'SI | İşletim sistemi diski VHD URL 'SI |
     |  |  |
 
-5. Bu değerleri tedarik ettikten sonra **Satın al'ı**seçin.
+5. Bu değerleri sağlamadıktan sonra, **satın al**' ı seçin.
 
-Azure dağıtımına başlar. Belirtilen depolama hesabı yolunda belirtilen yönetilmeyen VHD ile yeni bir VM oluşturur. Portalın sol tarafındaki **Sanal Makineler'i** seçerek Azure portalındaki ilerlemeyi izleyebilirsiniz. VM oluşturulduğunda, durum Çalıştırmaya Başlamak'tan itibaren değişir.
+Azure, dağıtıma başlayacak. Belirtilen depolama hesabı yolunda belirtilen yönetilmeyen VHD 'ye sahip yeni bir VM oluşturur. Azure portal ilerlemeyi, portalın sol tarafındaki **sanal makineler** ' i seçerek izleyebilirsiniz. VM oluşturulduğunda, durum başlangıç durumundan çalışmaya başlayacak şekilde değişir.
 
 #### <a name="deploy-using-azure-powershell"></a>Azure PowerShell’i kullanarak dağıtma
 
@@ -208,81 +208,81 @@ Azure dağıtımına başlar. Belirtilen depolama hesabı yolunda belirtilen yö
     New-AzureVM -ServiceName "VMImageCloudService" -VMs $myVM -Location "West US" -WaitForBoot
 ```
 
-### <a name="capture-the-vm-image"></a>VM görüntüsünü yakalama
+### <a name="capture-the-vm-image"></a>VM görüntüsünü yakala
 
 Yaklaşımınıza karşılık gelen aşağıdaki yönergeleri kullanın:
 
-* Azure PowerShell: [Azure VM'den yönetilmeyen bir VM görüntüsü nasıl oluşturulur?](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
-* Azure CLI: [Sanal makine veya VHD görüntüsü nasıl oluşturulur?](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
-* API: [Sanal Makineler - Yakalama](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+* Azure PowerShell: [Azure VM 'den YÖNETILMEYEN VM görüntüsü oluşturma](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
+* Azure CLı: [bir sanal makinenin veya VHD 'nin görüntüsünü oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+* API: [sanal makineler-yakala](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 ## <a name="configure-the-virtual-machine"></a>Sanal makineyi yapılandırma
 
-Bu bölümde, azure VM'yi nasıl boyutlandırıp güncelleştireceğimize ve genelleştireceğimize açıklanmaktadır. Bu adımlar, VM'nizi Azure Marketi'nde dağıtılacak şekilde hazırlamak için gereklidir.
+Bu bölümde bir Azure VM 'nin nasıl boyutlandırılacağını, güncelleştirileceğini ve genelleştirirsiniz. Bu adımlar, VM 'nizi Azure Marketi 'nde dağıtılacak şekilde hazırlamak için gereklidir.
 
-### <a name="sizing-the-vhds"></a>VHD'lerin boyutlandırılması
+### <a name="sizing-the-vhds"></a>VHD 'leri boyutlandırma
 
-Bir işletim sistemiyle (ve isteğe bağlı olarak ek hizmetlerle) önceden yapılandırılmış VM'lerden birini seçtiyseniz, standart bir Azure VM boyutu seçtiniz. Çözümünüzü önceden yapılandırılmış bir işletim sistemiyle başlatmak önerilen yaklaşımdır. Ancak, bir işletim sistemi'ni el ile yüklüyorsanız, birincil VHD'nizi VM görüntünüzde boyutlandırmanız gerekir:
+Bir işletim sistemi (ve isteğe bağlı olarak ek hizmetler) ile önceden yapılandırılmış VM 'lerden birini seçtiyseniz, zaten standart bir Azure VM boyutu seçmiş olursunuz. Çözümünüzü önceden yapılandırılmış bir işletim sistemi ile başlatmak önerilen yaklaşımdır. Ancak, bir işletim sistemini el ile yüklüyorsanız, birincil VHD 'nizi VM yansımanıza göre boyutlandırmanız gerekir:
 
-* Windows için, işletim sistemi VHD 127-128 GB sabit formatlı VHD olarak oluşturulmalıdır.
-* Linux için bu VHD 30-50 GB sabit formatlı VHD olarak oluşturulmalıdır.
+* Windows için, işletim sistemi VHD 'si 127-128 GB sabit biçimli VHD olarak oluşturulmalıdır.
+* Linux için bu VHD, 30 – 50 GB sabit biçimli VHD olarak oluşturulmalıdır.
 
-Fiziksel boyutu 127-128 GB'dan küçükse, VHD Genişletilebilir (seyrek/dinamik) olmalıdır. Sağlanan temel Windows ve SQL Server görüntüleri zaten bu gereksinimleri karşılar, bu nedenle VHD'nin biçimini veya boyutunu değiştirmeyin.
+Fiziksel boyut 127 – 128 GB 'den küçükse, VHD genişletilebilir (seyrek/dinamik) olmalıdır. Belirtilen temel pencereler ve SQL Server görüntüler bu gereksinimleri zaten karşılamış olduğundan, VHD 'nin biçimini veya boyutunu değiştirmeyin.
 
-Veri diskleri 1 TB kadar büyük olabilir. Boyutuna karar verirken, müşterilerin dağıtım sırasında görüntü içindeki VHD'leri yeniden boyutlandıramayacağını unutmayın. Veri diski VHD'leri sabit biçimli VHD'ler olarak oluşturulmalıdır. Onlar da Genişletilebilir (seyrek / dinamik) olmalıdır. Veri diskleri başlangıçta boş olabilir veya veri içerebilir.
+Veri diskleri 1 TB kadar büyük olabilir. Boyut ' a karar verirken, müşterilerin dağıtım sırasında bir görüntü içindeki VHD 'leri yeniden boyutlandıramayacağını unutmayın. Veri diski VHD 'leri sabit biçimli VHD 'ler olarak oluşturulmalıdır. Ayrıca, genişletilebilir (seyrek/dinamik) olmalıdır. Veri diskleri başlangıçta boş olabilir veya veri içerebilir.
 
-### <a name="install-the-most-current-updates"></a>En güncel güncelleştirmeleri yükleme
+### <a name="install-the-most-current-updates"></a>En güncel güncelleştirmeleri yükler
 
-İşletim sistemi VM'lerinin temel görüntüleri, yayımlandığı tarihe kadar en son güncelleştirmeleri içermelidir. Oluşturduğunuz vhd işletim sistemini yayımlamadan önce, işletim sistemini ve yüklü tüm hizmetleri en son güvenlik ve bakım yamaları ile güncelleştirdiğinizden emin olun.
+İşletim sistemi VM 'lerinin temel görüntülerinin yayımlanan tarihleri en son güncelleştirmeleri içermesi gerekir. Oluşturduğunuz işletim sistemi VHD 'sini yayımlamadan önce, IŞLETIM sistemini ve yüklü tüm hizmetleri en son güvenlik ve bakım düzeltme ekleriyle güncelleştirdiğinizden emin olun.
 
-Windows Server için **Güncelleştirmeleri Denetle** komutunu çalıştırın.
+Windows Server için, **Güncelleştirmeleri denetle** komutunu çalıştırın.
 
-Linux dağıtımları için güncelleştirmeler genellikle bir komut satırı aracı veya grafik yardımcı programı aracılığıyla indirilir ve yüklenir. Örneğin, Ubuntu Linux işletim sistemi güncelleştirmek için [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) komutu ve [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) aracını sağlar.
+Linux dağıtımları için güncelleştirmeler genellikle bir komut satırı aracı veya bir grafik yardımcı programıyla indirilir ve yüklenir. Örneğin Ubuntu Linux, işletim sistemini güncelleştirmek için [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) komutunu ve [Güncelleştirme Yöneticisi](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) aracını sağlar.
 
-### <a name="perform-additional-security-checks"></a>Ek güvenlik denetimleri gerçekleştirin
+### <a name="perform-additional-security-checks"></a>Ek güvenlik denetimleri gerçekleştirme
 
-Azure Marketi'ndeki çözüm görselleriniz için yüksek düzeyde güvenlik koruyun. Aşağıdaki makale, size yardımcı olacak güvenlik yapılandırmaları ve yordamlarının bir denetim listesini sağlar: [Azure Marketi Görselleri için Güvenlik Önerileri.](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images) Bu önerilerden bazıları Linux tabanlı görüntülere özgüdir, ancak çoğu herhangi bir VM görüntüsü için geçerlidir.
+Azure Marketi 'nde çözüm görüntüleriniz için yüksek düzeyde güvenlik koruyun. Aşağıdaki makalede size yardımcı olacak güvenlik yapılandırmalarının ve yordamların bir listesini bulabilirsiniz: [Azure Market görüntüleri Için güvenlik önerileri](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images). Bu önerilerin bazıları Linux tabanlı görüntülere özgüdür, ancak çoğu sanal makine görüntüsü için geçerlidir.
 
-### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Özel yapılandırma ve zamanlanmış görevleri gerçekleştirme
+### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Özel yapılandırma ve zamanlanmış görevler gerçekleştirme
 
-Ek yapılandırma gerekiyorsa, dağıtıldıktan sonra VM'de son değişiklikleri yapmak için başlangıçta çalışan zamanlanmış bir görev kullanın. Ayrıca aşağıdaki önerileri göz önünde bulundurun:
+Ek yapılandırma gerekiyorsa, sanal makinede dağıtıldıktan sonra son değişiklikler yapmak için başlangıçta çalışan zamanlanmış bir görev kullanın. Ayrıca aşağıdaki önerileri göz önünde bulundurun:
 
-* Bir kez çalıştırılamalı bir görevse, görev başarıyla tamamlandıktan sonra kendisini silmelidir.
-* Yapılandırmalar C veya D dışındaki sürücülere güvenmemelidir, çünkü yalnızca bu iki sürücünün her zaman var olduğu garanti edilir (C sürücüsü işletim sistemi dir ve D sürücüsü geçici yerel disktir).
+* Bir kez çalıştır görevi varsa, görev başarıyla tamamlandıktan sonra görevin kendisini silmesi gerekir.
+* Yapılandırma C veya D dışındaki sürücülere güvenmemelidir, çünkü yalnızca bu iki sürücünün var olduğu garanti edilir (sürücü C, işletim sistemi diski ve D sürücüsü geçici yerel disktir).
 
-Linux özelleştirmeleri hakkında daha fazla bilgi için, [Linux için Sanal makine uzantıları ve özellikleri](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)ne bakın.
+Linux özelleştirmeleri hakkında daha fazla bilgi için bkz. [Linux Için sanal makine uzantıları ve özellikleri](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux).
 
 ## <a name="generalize-the-image"></a>Görüntüyü genelleştirin
 
-Azure Marketi'ndeki tüm görüntüler genel bir şekilde yeniden kullanılabilir olmalıdır. Bunu başarmak için, işletim sistemi VHD genelleştirilmiş olması gerekir, bir VM tüm örnek özel tanımlayıcıları ve yazılım sürücüleri kaldırır bir işlem.
+Azure Marketi 'ndeki tüm görüntülerin genel bir biçimde yeniden kullanılabilir olması gerekir. Bunu başarmak için, işletim sistemi VHD 'SI, bir VM 'den örneğe özgü tüm tanımlayıcıları ve yazılım sürücülerini kaldıran bir işlem olan genelleştirilmelidir.
 
 ### <a name="windows"></a>Windows
 
-Windows işletim sistemi diskleri [sysprep aracı](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)ile genelleştirilmiştir. Daha sonra işletim sistemi güncelleştirmeveya yeniden yapılandırma, sysprep yeniden gerekir.
+Windows işletim sistemi diskleri, [Sysprep aracıyla](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)genelleştirilmiştir. İşletim sistemini daha sonra güncelleştirip yeniden yapılandırırsanız, Sysprep 'i yeniden çalıştırmanız gerekir.
 
 > [!WARNING]
-> Güncelleştirmeler otomatik olarak çalışabilir, sysprep çalıştırdıktan sonra, dağıtılana kadar VM kapatın. Bu kapatma, sonraki güncelleştirmelerin işletim sisteminde veya yüklü hizmetlerde örnek özel değişiklikler yapmasını önler. Sysprep çalıştırma hakkında daha fazla bilgi için, [bir VHD genelleştirmek için Adımlar'a](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)bakın.
+> Güncelleştirmeler otomatik olarak çalıştırılabileceğinden, Sysprep 'i çalıştırdıktan sonra VM 'yi dağıtıldıktan sonra kapatın. Bu kapanıyor, sonraki güncelleştirmelerin işletim sisteminde veya yüklü hizmetlerde örneğe özgü değişiklikler yapmasını önler. Sysprep 'i çalıştırma hakkında daha fazla bilgi için bkz. [BIR VHD Genelleştirme adımları](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep).
 
 ### <a name="linux"></a>Linux
 
-Aşağıdaki işlem bir Linux VM genelleştirir ve ayrı bir VM olarak yeniden dağılar. Ayrıntılar için, [sanal makine veya VHD görüntüsünü nasıl oluşturabilirsiniz'](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)a bakın. "Yakalanan görüntüden VM oluşturma" bölümüne ulaştığınızda durabilirsiniz.
+Aşağıdaki işlem bir Linux sanal makinesini genelleştirir ve ayrı bir VM olarak yeniden dağıtır. Ayrıntılar için bkz. [sanal makine veya VHD 'nin görüntüsünü oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image). "Yakalanan görüntüden sanal makine oluşturma" bölümüne ulaştığınızda durulabiliyor olabilirsiniz.
 
 1. **Azure Linux aracısını kaldırma**
 
-    1. Bir SSH istemcisi kullanarak Linux VM'nize bağlanın.
-    2. SSH penceresinde aşağıdaki komutu girin: `sudo waagent -deprovision+user`.
-    3. Devam etmek için **Y** yazın (onay adımını önlemek için önceki komuta **kuvvet** parametresi ekleyebilirsiniz).
-    d. Komut tamamlandıktan sonra, SSH istemcisini kapatmak için **Çıkış** yazın.
+    1. SSH istemcisi kullanarak Linux sanal makinenize bağlanın.
+    2. SSH penceresinde şu komutu girin: `sudo waagent -deprovision+user`.
+    3. Devam etmek için **Y** yazın (onay adımını önlemek için önceki komuta **-zorlama** parametresini ekleyebilirsiniz).
+    d. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Exit** yazın.
 
 2. **Sanal makineyi durdurma**
 
-    1. Azure portalında kaynak grubunuzu (RG) seçin ve VM'yi ayırın.
-    2. VHD'niz artık genelleştirilmiştir ve bu VHD'yi kullanarak yeni bir VM oluşturabilirsiniz.
+    1. Azure portal, kaynak grubunuzu (RG) seçin ve VM 'yi serbest olarak ayırın.
+    2. VHD 'niz artık genelleştirilmiştir ve bu VHD 'YI kullanarak yeni bir VM oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni Azure tabanlı VHD'nizi oluştururken zorlukla karşılaştıysanız, [VHD oluşturma sırasında sık karşılaşılan sorunlara](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)bakın.
+Yeni Azure tabanlı VHD 'nizi oluştururken zorluk yaşıyorsanız, bkz. [VHD oluşturma sırasında yaygın sorunlar](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues).
 
 Aksi durumda:.
 
-* [VM resminizi onaylamak,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) *Azure Sertifikalı Sertifikalandırma aracıiçin sertifika test aracını* nereden alacağınız ve VM resminizi onaylamak için nasıl kullanacağınız da dahil olmak üzere Azure Marketi sertifikası için vm görüntüsünü nasıl test edip gönderebileceğinizi açıklar.
+* [VM görüntünüzü onaylama](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) Azure *sertifikalı aracı Için sertifika test aracı* 'Nı nereden alacağınız ve VM görüntünüzü onaylamak için nasıl kullanılacağı dahil olmak üzere Azure MARKETI sertifikası için bir VM görüntüsünü test etme ve gönderme işlemlerinin nasıl yapılacağını açıklar.

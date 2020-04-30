@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central uygulaması oluşturma | Microsoft Docs
-description: Yeni bir Azure IoT Central uygulaması oluşturun. Uygulamayı ücretsiz fiyatlandırma planını veya standart fiyatlandırma planlarından birini kullanarak oluşturun.
+description: Yeni bir Azure IoT Central uygulaması oluşturun. Ücretsiz fiyatlandırma planı veya standart fiyatlandırma planlarından birini kullanarak uygulamayı oluşturun.
 author: viv-liu
 ms.author: viviali
 ms.date: 02/12/2020
@@ -10,60 +10,60 @@ services: iot-central
 ms.custom: mvc
 manager: corywink
 ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81758155"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central uygulaması oluşturma
 
-Bu hızlı başlangıç, azure IoT Merkezi uygulamasını nasıl oluşturabileceğinizi gösterir.
+Bu hızlı başlangıçta, Azure IoT Central uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-[Azure IoT Merkezi Yapı](https://aka.ms/iotcentral) sitesine gidin. Ardından bir Microsoft kişisel, iş veya okul hesabıyla oturum açın.
+[Azure IoT Central Build](https://aka.ms/iotcentral) sitesine gidin. Sonra bir Microsoft kişisel, iş veya okul hesabıyla oturum açın.
 
-Hızlı bir şekilde başlamanıza yardımcı olmak için endüstriyle alakalı IoT Central şablonları listesinden veya **Özel uygulamalar** şablonu kullanarak sıfırdan başlamak için yeni bir uygulama oluşturursunuz. Bu hızlı başlatmada, **Özel uygulama** şablonu kullanın.
+Sektörün hızlı bir şekilde başlamanıza veya **özel bir uygulamalar** şablonunu kullanarak sıfırdan başlamanıza yardımcı olması için sektör ile ilgili IoT Central şablonlar listesinden yeni bir uygulama oluşturursunuz. Bu hızlı başlangıçta, **özel uygulama** şablonunu kullanırsınız.
 
-**Özel uygulama** şablonundan yeni bir Azure IoT Merkezi uygulaması oluşturmak için:
+**Özel uygulama** şablonundan yeni bir Azure IoT Central uygulaması oluşturmak için:
 
-1. **Yapı** sayfasına gidin:
+1. **Derleme** sayfasına gidin:
 
-    ![IoT uygulama sayfanızı oluşturun](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
+    ![IoT uygulama sayfanızı oluşturma](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
 
-1. **Özel uygulamaları** seçin ve **Özel uygulama** şablonundan seçildiğinden emin olun.
+1. **Özel uygulamalar** ' ı seçin ve **özel uygulama** şablonunun seçili olduğundan emin olun.
 
-1. Azure IoT Central, seçtiğiniz uygulama şablonuna göre otomatik olarak bir **uygulama adı** önerir. Bu adı kullanabilir veya kendi kolay uygulama adınızı girebilirsiniz.
+1. Azure IoT Central, seçtiğiniz uygulama şablonuna göre otomatik olarak bir **uygulama adı** önerir. Bu adı kullanabilir veya kendi kolay uygulamanızın adını girebilirsiniz.
 
-1. Azure IoT Central, uygulama adını temel alan benzersiz bir **uygulama URL** öneki de oluşturur. Bu URL'yi uygulamanıza erişmek için kullanırsınız. İsterseniz bu URL önekini daha akılda kalıcı bir şeyle değiştirin.
+1. Azure IoT Central, uygulama adına bağlı olarak sizin için benzersiz bir **Uygulama URL 'si** ön eki de oluşturur. Uygulamanıza erişmek için bu URL 'YI kullanırsınız. İsterseniz bu URL önekini daha kolay bir şekilde değiştirin.
 
-    ![Azure IoT Merkezi Uygulama sayfası oluşturma](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
+    ![Azure IoT Central uygulama sayfası oluşturma](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
 
-    ![Azure IoT Merkezi fatura bilgileri](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
+    ![Azure IoT Central faturalandırma bilgileri](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Önceki sayfada **Özel uygulamayı** seçtiyseniz, bir Uygulama **şablonu** açılır görmezsiniz. Buradan özel ve eski şablonlar arasında geçiş yapabilirsiniz. Kuruluşunuz için kullanıma sunulan diğer şablonları da görebilirsiniz.
+    > Önceki sayfada **özel uygulama** ' yı seçerseniz, bir **uygulama şablonu** açılır listesini görürsünüz. Buradan özel ve eski şablonlar arasında geçiş yapabilirsiniz. Ayrıca, kuruluşunuz için kullanılabilir hale getirilen diğer şablonları da görebilirsiniz.
 
-1. Bu uygulamayı 7 günlük ücretsiz deneme fiyatlandırma planını veya standart fiyatlandırma planlarından birini kullanarak oluşturmayı seçin:
+1. 7 günlük ücretsiz deneme fiyatlandırma planını veya standart fiyatlandırma planlarından birini kullanarak bu uygulamayı oluşturmayı seçin:
 
-    - *Ücretsiz* planı kullanarak oluşturduğunuz uygulamalar yedi gün boyunca ücretsizdir ve beş cihaza kadar destek lenir. Bunları, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planı kullanmaya dönüştürebilirsiniz.
-    - *Standart* bir plan kullanarak oluşturduğunuz uygulamalar cihaz bazında faturalandırılır, ilk iki cihaz ücretsiz olan **Standart 1** veya Standart **2** fiyatlandırma planını seçebilirsiniz. [Azure IoT Merkezi fiyatlandırma sayfasındaki](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin. Standart bir fiyatlandırma planı kullanarak bir uygulama oluşturuyorsanız, *Dizininizi,* *Azure Aboneliğinizi*ve *Konumunuzu*seçmeniz gerekir:
-        - *Dizin,* uygulamanızı oluşturduğunuz Azure Etkin Dizini'dir. Azure Etkin Dizini kullanıcı kimlikleri, kimlik bilgileri ve diğer kuruluş bilgilerini içerir. Azure Etkin Dizin'inyoksa, bir Azure aboneliği oluşturduğunuzda sizin için bir tane oluşturulur.
-        - *Azure Aboneliği*, Azure hizmetlerinin örneklerini oluşturmanıza olanak tanır. IoT Merkezi, aboneliğinizdeki kaynakları sağlar. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)ücretsiz bir abonelik oluşturabilirsiniz. Azure aboneliğini oluşturduktan sonra **Yeni uygulama** sayfasına geri gidin. Yeni aboneliğiniz artık **Azure Aboneliği** açılır açılır yerinde görünür.
-        - *Konum,* uygulamanızı oluşturmak istediğiniz [coğrafyadır.](https://azure.microsoft.com/global-infrastructure/geographies/) Genellikle, en iyi performansı elde etmek için fiziksel olarak aygıtlarınıza en yakın konumu seçmeniz gerekir. Bir konum seçtikten sonra, daha sonra uygulamanızı başka bir konuma taşıyamazsınız.
+    - *Ücretsiz* planı kullanarak oluşturduğunuz uygulamalar yedi gün boyunca ücretsizdir ve en fazla beş cihaz destekler. Bunları, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planı kullanacak şekilde dönüştürebilirsiniz.
+    - *Standart* bir plan kullanarak oluşturduğunuz uygulamalar cihaz başına alınarak faturalandırılır, ilk iki cihazla ücretsiz olarak **Standart 1** veya **Standart 2** fiyatlandırma planı seçebilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin. Standart fiyatlandırma planı kullanarak bir uygulama oluşturursanız, *dizininizi*, *Azure aboneliğinizi*ve *konumunu*seçmeniz gerekir:
+        - *Dizin* , uygulamanızı oluşturduğunuz Azure Active Directory. Azure Active Directory Kullanıcı kimliklerini, kimlik bilgilerini ve diğer kuruluş bilgilerini içerir. Bir Azure Active Directory yoksa, bir Azure aboneliği oluşturduğunuzda sizin için bir tane oluşturulur.
+        - *Azure Aboneliği*, Azure hizmetlerinin örneklerini oluşturmanıza olanak tanır. IoT Central aboneliğinizdeki kaynakları sağlar. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)ücretsiz olarak bir tane oluşturabilirsiniz. Azure aboneliğini oluşturduktan sonra **Yeni uygulama** sayfasına geri gidin. Yeni aboneliğiniz artık **Azure abonelik** açılır penceresinde görünür.
+        - *Konum* , uygulamanızı oluşturmak istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) ' dır. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Bir konum seçtikten sonra uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
 
-1. Şartlar ve Koşulları gözden geçirin ve sayfanın altındaki **Oluştur'u** seçin. Birkaç dakika sonra, IoT Central uygulaması kullanıma hazırdır:
+1. Hüküm ve koşulları gözden geçirin ve sayfanın alt kısmında **Oluştur** ' u seçin. Birkaç dakika sonra, uygulama IoT Central kullanmaya hazırız:
 
-    ![Azure IoT Merkezi uygulaması](media/quick-deploy-iot-central/iotcentral-application.png)
+    ![Azure IoT Central uygulaması](media/quick-deploy-iot-central/iotcentral-application.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. IoT Central hakkında bilgi edinmeye devam etmek için önerilen bir sonraki adım:
+Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. IoT Central hakkında öğrenmeye devam etmek için önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [IoT Merkezi uygulamanıza benzetilen bir aygıt ekleme](./quick-create-simulated-device.md)
+> [IoT Central uygulamanıza sanal cihaz ekleme](./quick-create-simulated-device.md)
 
-Aygıt geliştiricisiyseniz ve bazı kodlara dalmak istiyorsanız, önerilen bir sonraki adım şudur:
+Bir cihaz geliştiricisiyseniz ve bazı kodları incelemek istiyorsanız, önerilen sonraki adım şunları yapmanız gerekir:
 > [!div class="nextstepaction"]
-> [Azure IoT Merkezi uygulamanızda istemci uygulaması oluşturun ve bu uygulamaya bağlayın](./tutorial-connect-device-nodejs.md)
+> [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama](./tutorial-connect-device-nodejs.md)

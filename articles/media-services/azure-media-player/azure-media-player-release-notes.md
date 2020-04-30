@@ -1,5 +1,5 @@
 ---
-title: Azure Media Player Sürüm Notları
+title: Azure Media Player sürüm notları
 description: Azure Media Player için sürüm notları
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,25 +7,25 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/05/2020
 ms.openlocfilehash: cc6b11ebc930c7798cb252f9c322a19c0b8ae0ea
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727131"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
-Aşağıda, bu sürümle ilişkili bilinen sorunların bir listesi verilmiştir.  Ayrıca, geliştirme sırasında yardımcı olmak için test edilmiş ve desteklenmeyen özelliklerin bir listesi aşağıda verilmiştir.
+Bu sürümle ilişkili bilinen sorunların listesi aşağıda verilmiştir.  Ayrıca, geliştirme sırasında yardım için, sınanan ve desteklenmeyen özelliklerin bir listesi aşağıda verilmiştir.
 
-[Özellik Listesi](azure-media-player-feature-list.md)
+[Özellik listesi](azure-media-player-feature-list.md)
 
-[Bilinen Sayı Listesi](azure-media-player-known-issues.md)
+[Bilinen sorun listesi](azure-media-player-known-issues.md)
 
-[Changelog](azure-media-player-changelog.md "Changelog")
+[Değişiklik günlüğü](azure-media-player-changelog.md "Değişiklik günlüğü")
 
 <!-- Typescript definitions were moved to the samples repository.>-->
-[TypeScript Tanımları (d.ts)](https://github.com/Azure-Samples/azure-media-player-samples "TypeScript Tanımları" )
+[TypeScript tanımları (d. TS)](https://github.com/Azure-Samples/azure-media-player-samples "TypeScript tanımları" )
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

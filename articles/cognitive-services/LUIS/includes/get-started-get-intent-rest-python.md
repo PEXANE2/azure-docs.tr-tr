@@ -1,5 +1,5 @@
 ---
-title: Python'da REST araması ile niyet edin
+title: Python 'da REST çağrısıyla amacı al
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,40 +9,40 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: diberry
 ms.openlocfilehash: 2307ef6ea8940a3b3ddfb8c7539f4f809dc4c52c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733253"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.6](https://www.python.org/downloads/) veya üzeri.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Bir LUIS uygulama kimliği - genel IoT uygulama kimliğini `df67dcdb-c37d-46af-88e1-8b97951ca1c2`kullanın. Quickstart kodunda kullanılan kullanıcı sorgusu bu uygulamaya özgüdür.
+* Bir LUSıS uygulama KIMLIĞI-genel IoT uygulama KIMLIĞI ' ni kullanın `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Hızlı başlangıç kodunda kullanılan Kullanıcı sorgusu bu uygulamaya özeldir.
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Öngörüler için LUIS çalışma zamanı anahtarı oluşturma
+## <a name="create-luis-runtime-key-for-predictions"></a>Tahminler için LUSıS çalışma zamanı anahtarı oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açma
-1. [Dil **Anlama Oluştur'u** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklatın
-1. **Runtime** tuşu için gerekli tüm ayarları girin:
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
+1. **Çalışma zamanı** anahtarı için tüm gerekli ayarları girin:
 
     |Ayar|Değer|
     |--|--|
-    |Adı|İstenilen ad (2-64 karakter)|
+    |Adı|İstenen ad (2-64 karakter)|
     |Abonelik|Uygun aboneliği seçin|
     |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0`- minimum fiyatlandırma katmanı|
-    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçme|
+    |Fiyatlandırma Katmanı|`F0`-Minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
 
-1. **Oluştur'u** tıklatın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
-1. Yapılandırılmış `endpoint` ve bir `key`toplamak .
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Toplama yapılandırılmış `endpoint` ve bir `key`.
 
-## <a name="get-intent-from-the-prediction-endpoint"></a>Tahmin bitiş noktasından niyet alma
+## <a name="get-intent-from-the-prediction-endpoint"></a>Tahmin uç noktasından amaç al
 
-[Tahmin bitiş noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucunu almak için Python'u kullanın.
+[Tahmin uç noktasını](https://aka.ms/luis-apim-v3-prediction) sorgulamak ve tahmin sonucu almak için Python kullanın.
 
-1. Bu kod parçacığının bir dosyaya `predict.py`kopyalanması:
+1. Bu kod parçacığını adlı `predict.py`bir dosyaya kopyalayın:
 
     ```python
     ########### Python 3.6 #############
@@ -75,14 +75,14 @@ ms.locfileid: "81733253"
         print(f'{e}')
     ```
 
-1. `YOUR-KEY` Ve `YOUR-ENDPOINT` değerleri kendi tahmininizle **Runtime** tuşu ve bitiş noktasıile değiştirin.
+1. `YOUR-KEY` Ve `YOUR-ENDPOINT` değerlerini kendi tahmin **çalışma zamanı** anahtarınızla ve uç noktanızla değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter tahmini **Runtime** anahtarınız.|
-    |`YOUR-ENDPOINT`| Tahmin URL bitiş noktanız. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|32 karakter tahmini **çalışma zamanı** anahtarınız.|
+    |`YOUR-ENDPOINT`| Tahmin URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
-1. Bağımlılığı `requests` yükleyin. Bu, HTTP isteklerini yapmak için kullanılır:
+1. `requests` Bağımlılığı yükler. Bu, HTTP isteklerini yapmak için kullanılır:
 
     ```console
     pip install requests
@@ -100,7 +100,7 @@ ms.locfileid: "81733253"
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Burada okunabilirlik için biçimlendirilmiş JSON yanıtı:
+    Okunabilirlik için biçimlendirilen JSON yanıtı aşağıda verilmiştir:
 
     ```JSON
     {
@@ -145,9 +145,9 @@ ms.locfileid: "81733253"
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlatmayı bitirdiğinizde, dosyayı dosya sisteminden silin.
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Söyleyiş ve tren ekle](../get-started-get-model-rest-apis.md)
+> [Utterslar ve tren ekleme](../get-started-get-model-rest-apis.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub uç noktalarını anlama | Microsoft Dokümanlar
-description: Geliştirici kılavuzu - IoT Hub aygıta bakan ve hizmete bakan uç noktalar hakkında başvuru bilgileri.
+title: Azure IoT Hub uç noktalarını anlayın | Microsoft Docs
+description: Geliştirici Kılavuzu-cihaza yönelik ve hizmete yönelik uç noktalar IoT Hub ile ilgili başvuru bilgileri.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -12,99 +12,99 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730305"
 ---
-# <a name="reference---iot-hub-endpoints"></a>Referans - IoT Hub uç noktaları
+# <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="iot-hub-names"></a>IoT Hub adları
 
-Uç noktalarınızı barındıran IoT hub'ının ana bilgisayar adını hub'ınızın **Genel Bakış** sayfasında portalda bulabilirsiniz. Varsayılan olarak, bir IoT hub'ının DNS adı aşağıdaki gibi görünür: `{your iot hub name}.azure-devices.net`.
+Kuruluşunuzun **genel bakış** sayfasında uç noktalarınızı barındıran IoT Hub 'ın ana bilgisayar adını bulabilirsiniz. Varsayılan olarak, bir IoT Hub 'ının DNS adı şöyle görünür: `{your iot hub name}.azure-devices.net`.
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Yerleşik IoT Hub uç noktaları listesi
 
-Azure IoT Hub, işlevselliğini çeşitli aktörlere açık bir çok kiracılı hizmettir. Aşağıdaki diyagram, IoT Hub'ın gösterdiği çeşitli uç noktaları gösterir.
+Azure IoT Hub, işlevselliğini çeşitli aktörliklere sunan çok kiracılı bir hizmettir. Aşağıdaki diyagramda IoT Hub açığa çıkardığı çeşitli uç noktalar gösterilmektedir.
 
 ![IoT Hub uç noktaları](./media/iot-hub-devguide-endpoints/endpoints.png)
 
-Aşağıdaki liste uç noktaları açıklar:
+Aşağıdaki listede uç noktalar açıklanmaktadır:
 
-* **Kaynak sağlayıcısı.** IoT Hub kaynak sağlayıcısı bir [Azure Kaynak Yöneticisi](../azure-resource-manager/management/overview.md) arabirimini ortaya çıkarır. Bu arabirim, Azure abonelik sahiplerinin IoT hub'ları oluşturmasına ve silebilmesini ve IoT hub özelliklerini güncelleştirmesini sağlar. IoT Hub özellikleri, aygıt düzeyinde erişim denetiminin aksine [hub düzeyinde güvenlik ilkelerini](iot-hub-devguide-security.md#access-control-and-permissions)ve bulut-aygıtve aygıt-bulut iletisi için işlevsel seçenekleri yönetir. IoT Hub kaynak sağlayıcısı ayrıca [aygıt kimliklerini dışa aktarmanızı](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)da sağlar.
+* **Kaynak sağlayıcısı**. IoT Hub kaynak sağlayıcısı [Azure Resource Manager](../azure-resource-manager/management/overview.md) arabirimini kullanıma sunar. Bu arabirim, Azure aboneliği sahiplerinin IoT Hub 'ları oluşturmasına ve silmesine ve IoT Hub özelliklerini güncelleştirmesine olanak sağlar. IoT Hub özellikler, cihaz düzeyi erişim denetimi ve buluttan cihaza ve cihazdan buluta mesajlaşma için işlevsel seçeneklere karşılık olarak [hub düzeyi güvenlik ilkelerini](iot-hub-devguide-security.md#access-control-and-permissions)yönetir. IoT Hub kaynak sağlayıcısı, [cihaz kimliklerini dışarı aktarmaya](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)de olanak sağlar.
 
-* **Cihaz kimlik yönetimi**. Her IoT hub'ı, aygıt kimliklerini yönetmek (oluşturma, alma, güncelleme ve silme) için bir dizi HTTPS REST uç noktasını ortaya çıkarır. [Aygıt kimlikleri](iot-hub-devguide-identity-registry.md) aygıt kimlik doğrulaması ve erişim denetimi için kullanılır.
+* **Cihaz kimliği yönetimi**. Her IoT Hub 'ı, cihaz kimliklerini yönetmek için bir HTTPS REST uç noktası kümesi sunar (oluşturma, alma, güncelleştirme ve silme). Cihaz [kimlikleri](iot-hub-devguide-identity-registry.md) , cihaz kimlik doğrulaması ve erişim denetimi için kullanılır.
 
-* **Cihaz ikiz yönetimi**. Her IoT hub'ı, [aygıt ikizlerini](iot-hub-devguide-device-twins.md) sorgulamak ve güncelleştirmek için hizmete bakan BIR dizi HTTPS REST bitiş noktasını (güncelleştirme etiketleri ve özellikleri) ortaya çıkarır.
+* **Cihaz ikizi yönetimi**. Her IoT Hub 'ı, [cihaz](iot-hub-devguide-device-twins.md) ikimlerini sorgulamak ve güncelleştirmek için bir hizmet 'e YÖNELIK https REST uç noktası kümesi sunar (etiketleri ve özellikleri Güncelleştir).
 
-* **İş yönetimi.** Her IoT hub'ı, [işleri](iot-hub-devguide-jobs.md)sorgulamak ve yönetmek için hizmete bakan bir dizi HTTPS REST bitiş noktasını ortaya çıkarır.
+* **İş yönetimi**. Her IoT Hub 'ı, [işleri](iot-hub-devguide-jobs.md)sorgulamak ve yönetmek için hizmete YÖNELIK BIR https REST uç noktası kümesi sunar.
 
-* **Aygıt uç noktaları**. IoT Hub, kimlik kayıt defterindeki her bir cihaz için belirli uç noktaları kullanıma sunar:
+* **Cihaz uç noktaları**. IoT Hub, kimlik kayıt defterindeki her bir cihaz için belirli uç noktaları kullanıma sunar:
 
-  * *Aygıttan buluta iletiler gönderin.* Aygıttan [buluta iletigöndermek](iot-hub-devguide-messages-d2c.md)için bu bitiş noktasını kullanır.
+  * *Cihazdan buluta Iletiler gönderme*. Cihaz, [cihazdan buluta iletileri göndermek](iot-hub-devguide-messages-d2c.md)için bu uç noktayı kullanır.
 
-  * *Buluttan cihaza iletiler alın.* Bir aygıt hedeflenen [buluttan aygıta iletileri](iot-hub-devguide-messages-c2d.md)almak için bu bitiş noktasını kullanır.
+  * *Buluttan cihaza Iletileri alın*. Bir cihaz, hedeflenen [buluttan cihaza iletileri](iot-hub-devguide-messages-c2d.md)almak için bu uç noktayı kullanır.
 
-  * *Dosya yüklemelerini başlatın.* Bir aygıt, [bir dosyayı yüklemek](iot-hub-devguide-file-upload.md)için IoT Hub'ından bir Azure Depolama SAS URI almak için bu bitiş noktasını kullanır.
+  * *Karşıya dosya yükleme Işlemini başlatın*. Bir cihaz, [bir dosyayı karşıya yüklemek](iot-hub-devguide-file-upload.md)için IoT Hub 'Den bir Azure Storage SAS URI 'si almak üzere bu uç noktayı kullanır.
 
-  * *Aygıt ikiz özelliklerini alın ve güncelleyin.* Bir aygıt, [aygıtının ikiz](iot-hub-devguide-device-twins.md)özelliklerine erişmek için bu bitiş noktasını kullanır.
+  * *Device ikizi özelliklerini alın ve güncelleştirin*. Cihaz, bu uç noktayı [Device ikizi](iot-hub-devguide-device-twins.md)'in özelliklerine erişmek için kullanır.
 
-  * *Doğrudan yöntem isteklerini alın.* Bir aygıt [doğrudan yöntemin](iot-hub-devguide-direct-methods.md)isteklerini dinlemek için bu bitiş noktasını kullanır.
+  * *Doğrudan yöntem Istekleri alın*. Bir cihaz, [doğrudan metodun](iot-hub-devguide-direct-methods.md)isteklerini dinlemek için bu uç noktayı kullanır.
 
-    Bu uç noktalar [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1 ve [AMQP 1.0](https://www.amqp.org/) protokolleri kullanılarak açıklanır. AMQP, 443 bağlantı [noktasındaki WebSockets](https://tools.ietf.org/html/rfc6455) üzerinden de kullanılabilir.
+    Bu uç noktalar [MQTT v 3.1.1](https://mqtt.org/), https 1,1 ve [AMQP 1,0](https://www.amqp.org/) protokolleri kullanılarak sunulur. AMQP, 443 numaralı bağlantı noktasında [WebSockets](https://tools.ietf.org/html/rfc6455) üzerinden de kullanılabilir.
 
-* **Hizmet bitiş noktaları.** Her IoT hub'ı, aygıtlarınizle iletişim kurmak için çözümünüz için bir dizi uç noktayı ortaya çıkarır. Bir istisna dışında, bu uç noktalar yalnızca [AMQP](https://www.amqp.org/) protokolü kullanılarak açıklanır. Yöntem çağırma bitiş noktası HTTPS protokolü üzerinde ortaya çıkarır.
+* **Hizmet uç noktaları**. Her IoT Hub 'ı, çözüm arka ucunun cihazlarınızla iletişim kurması için bir uç nokta kümesi sunar. Tek bir istisna ile, bu uç noktalar yalnızca [AMQP](https://www.amqp.org/) protokolü kullanılarak sunulur. Yöntem çağırma uç noktası, HTTPS protokolü üzerinden sunulur.
   
-  * *Aygıttan buluta iletileri alın.* Bu bitiş noktası [Azure Etkinlik Hub'ları](https://azure.microsoft.com/documentation/services/event-hubs/)ile uyumludur. Arka uç hizmeti, aygıtlarınız tarafından gönderilen [aygıttan buluta iletileri](iot-hub-devguide-messages-d2c.md) okumak için kullanabilir. Bu yerleşik bitiş noktasına ek olarak IoT hub'ınızda özel uç noktalar oluşturabilirsiniz.
+  * *Cihazdan buluta Iletileri alma*. Bu uç nokta [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)ile uyumludur. Bir arka uç hizmeti, cihazlarınız tarafından gönderilen [cihazdan buluta iletileri](iot-hub-devguide-messages-d2c.md) okumak için bunu kullanabilir. IoT Hub 'ınızda bu yerleşik uç noktaya ek olarak özel uç noktalar oluşturabilirsiniz.
   
-  * *Buluttan cihaza iletiler gönderin ve teslim bildirimleri alın.* Bu uç noktalar, çözümünüzün arka uçtan güvenilir [buluttan cihaza iletiler](iot-hub-devguide-messages-c2d.md)göndermesini ve ilgili teslim veya son kullanma bildirimlerini almasını sağlar.
+  * *Buluttan cihaza Iletiler gönderin ve teslim bildirimleri alın*. Bu uç noktalar, çözüm arka ucunun güvenilir [buluttan cihaza iletiler](iot-hub-devguide-messages-c2d.md)göndermesini ve ilgili teslim veya süre sonu bildirimleri almasını sağlar.
   
-  * *Dosya bildirimleri alın.* Bu ileti bitiş noktası, aygıtlarınızın bir dosyayı başarıyla yüklediklerine ait bildirimleri almanızı sağlar. 
+  * *Dosya bildirimleri alın*. Bu mesajlaşma uç noktası, cihazlarınızın bir dosyayı başarıyla karşıya yüklemesi sırasında bildirimleri almanızı sağlar. 
   
-  * *Doğrudan yöntem çağırma*. Bu uç nokta, bir arka uç hizmetinin aygıtta doğrudan bir [yöntem](iot-hub-devguide-direct-methods.md) çağırmasına olanak tanır.
+  * *Doğrudan yöntem çağırma*. Bu uç nokta, bir arka uç hizmetinin bir cihazda [doğrudan yöntem](iot-hub-devguide-direct-methods.md) çağırmasına izin verir.
   
-  * *Olayları izleme işlemleri alın.* Bu bitiş noktası, IoT hub'ınız bunları yayacak şekilde yapılandırıldıysa, operasyon izleme olaylarını almanızı sağlar. Daha fazla bilgi için [IoT Hub işlemleri izleme](iot-hub-operations-monitoring.md)ye bakın.
+  * *İşlem izleme olaylarını alma*. Bu uç nokta, IoT Hub 'ınız bunları yaymak üzere yapılandırılmışsa işlem izleme olaylarını almanızı sağlar. Daha fazla bilgi için bkz. [IoT Hub işlemler izleme](iot-hub-operations-monitoring.md).
 
-[Azure IoT SDKs](iot-hub-devguide-sdks.md) makalesi, bu uç noktalara erişmenin çeşitli yollarını açıklar.
+[Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) makalesinde, bu uç noktalara erişmenin çeşitli yolları açıklanmaktadır.
 
-Tüm IoT Hub uç noktaları [TLS](https://tools.ietf.org/html/rfc5246) protokolünü kullanır ve şifrelenmemiş/güvenli olmayan kanallarda hiçbir bitiş noktası açıklanır.
+Tüm IoT Hub uç noktaları [TLS](https://tools.ietf.org/html/rfc5246) protokolünü kullanır ve herhangi bir uç nokta şifrelenmemiş/güvenli olmayan kanallar üzerinde kullanıma sunulmaz.
 
 ## <a name="custom-endpoints"></a>Özel uç noktalar
 
-Aboneliğinizdeki mevcut Azure hizmetlerini IoT hub'ınıza bağlayarak ileti yönlendirmeiçin uç nokta olarak hareket edebilirsiniz. Bu uç noktalar hizmet bitiş noktaları olarak hareket eder ve ileti yolları için lavabo olarak kullanılır. Aygıtlar doğrudan ek uç noktalara yazılamaz. [İleti yönlendirme](../iot-hub/iot-hub-devguide-messages-d2c.md)hakkında daha fazla bilgi edinin.
+İleti yönlendirme için uç noktalar olarak davranacak şekilde, aboneliğinizdeki mevcut Azure hizmetlerini IoT Hub 'ınıza bağlayabilirsiniz. Bu uç noktalar hizmet uç noktaları gibi davranır ve ileti yollarının havuzları olarak kullanılır. Cihazlar, ek uç noktalara doğrudan yazamaz. [İleti yönlendirme](../iot-hub/iot-hub-devguide-messages-d2c.md)hakkında daha fazla bilgi edinin.
 
-IoT Hub şu anda ek uç nokta olarak aşağıdaki Azure hizmetlerini destekler:
+IoT Hub Şu anda ek uç noktalar olarak aşağıdaki Azure hizmetlerini desteklemektedir:
 
-* Azure Depolama kapsayıcıları
+* Azure depolama kapsayıcıları
 * Event Hubs
 * Service Bus Kuyrukları
 * Service Bus Konuları
 
-Ekleyebileceğiniz uç nokta sayısının sınırları için [Kotalar ve azaltma](iot-hub-devguide-quotas-throttling.md)bölümüne bakın.
+Ekleyebileceğiniz uç nokta sayısıyla ilgili sınırlar için bkz. [Kotalar ve azaltma](iot-hub-devguide-quotas-throttling.md).
 
-Endpoints sağlık durumunu almak için REST API [Get Endpoint Health'i](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) kullanabilirsiniz. Uç nokta sağlık ölü veya sağlıksız olduğunda hataları tanımlamak ve hata ayıklamak için yönlendirme ileti gecikmesi ile ilgili [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanmanızı öneririz, çünkü bitiş noktası bu durumlardan birindeyken gecikmenin daha yüksek olmasını bekleriz.
+Uç noktaların sistem durumunu almak için [uç nokta durumu al](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) REST API kullanabilirsiniz. Uç nokta bu durumlardan birinde olduğunda gecikme süresinin daha yüksek olması Beklendiğimiz için, uç nokta durumu ölü veya sağlıksız olduğunda hataları tanımlamak ve hatalarını ayıklamak için ileti gecikmesini yönlendirme ile ilgili [IoT Hub ölçümlerini](iot-hub-metrics.md) kullanmanızı öneririz.
 
 |Sistem Durumu|Açıklama|
 |---|---|
-|Sağlıklı|Bitiş noktası beklendiği gibi iletileri kabul etmektir.|
-|Sağlıksız|Bitiş noktası beklendiği gibi iletileri kabul etmiyor ve IoT Hub bu bitiş noktasına veri göndermeye çalışıyor. IoT Hub sonunda tutarlı bir sağlık durumu oluşturduğunda sağlıksız bir bitiş noktasının durumu sağlıklı olarak güncelleştirilir.|
-|Bilinmeyen|IoT Hub bitiş noktasıyla bağlantı kurmadı. Bu son noktadan itibaren hiçbir ileti teslim edilmedi veya reddedilmedi.|
-|Ölü|Bitiş noktası, IoT Hub yeniden deneme dönemi için ileti göndermeyi yeniden denedikten sonra iletileri kabul etmemektir.|
+|sağlıklı|Uç nokta iletileri beklendiği gibi kabul ediyor.|
+|sağlıksız|Uç nokta iletileri beklendiği gibi kabul etmiyor ve IoT Hub bu uç noktaya veri gönderilmeye yeniden deniyor. Sağlıklı olmayan bir uç noktanın durumu, IoT Hub sonunda tutarlı bir sistem durumu oluşturulduğunda sağlıklı olarak güncelleştirilecektir.|
+|bilinmeyen|IoT Hub uç noktayla bir bağlantı kurmadı. Bu uç noktaya gönderilen veya reddedilen ileti yok.|
+|teslim edilemeyen iletiler|Uç nokta, IoT Hub ileti göndermeyi yeniden denendikten sonra iletileri kabul etmez.|
 
 ## <a name="field-gateways"></a>Alan ağ geçitleri
 
-Bir IoT çözümünde, aygıtlarınız ile IoT Hub uç noktalarınız arasında bir *alan ağ geçidi* bulunur. Genellikle aygıtlarınıza yakın bulunur. Aygıtlarınız, aygıtlar tarafından desteklenen bir protokol kullanarak alan ağ geçidiyle doğrudan iletişim kurar. Alan ağ geçidi, IoT Hub tarafından desteklenen bir iletişim kuralı nı kullanarak bir IoT Hub bitiş noktasına bağlanır. Alan ağ geçidi özel bir donanım aygıtı veya özel ağ geçidi yazılımı çalıştıran düşük güçlü bir bilgisayar olabilir.
+Bir IoT çözümünde, bir *alan ağ geçidi* cihazlarınız ve IoT Hub uç noktalarınız arasında yer alır. Genellikle cihazlarınıza yakın bir şekilde bulunur. Cihazlarınız, cihazlar tarafından desteklenen bir protokolü kullanarak alan ağ geçidiyle doğrudan iletişim kurar. Alan ağ geçidi, IoT Hub tarafından desteklenen bir protokolü kullanarak bir IoT Hub uç noktasına bağlanır. Alan ağ geçidi, özel ağ geçidi yazılımını çalıştıran bir ayrılmış donanım aygıtı veya düşük güç lı bir bilgisayar olabilir.
 
-Bir alan ağ geçidi uygulamak için [Azure IoT Edge'i](/azure/iot-edge/) kullanabilirsiniz. IoT Edge, birden çok cihazdan aynı IoT Hub bağlantısına birden fazla iletişim gibi işlevler sunar.
+Bir alan ağ geçidi uygulamak için [Azure IoT Edge](/azure/iot-edge/) kullanabilirsiniz. IoT Edge, birden fazla cihazdan aynı IoT Hub bağlantı üzerinde çoğullama iletişimleri gibi işlevler sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunlardır:
+Bu IoT Hub geliştirici kılavuzundaki diğer başvuru konuları şunları içerir:
 
-* [Aygıt ikizleri, işleri ve ileti yönlendirmesi için IoT Hub sorgu dili](iot-hub-devguide-query-language.md)
+* [Cihaz TWINS, işler ve ileti yönlendirme için sorgu dili IoT Hub](iot-hub-devguide-query-language.md)
 * [Kotalar ve azaltma](iot-hub-devguide-quotas-throttling.md)
 * [IoT Hub MQTT desteği](iot-hub-mqtt-support.md)
-* [IoT hub IP adresinizi anlama](iot-hub-understand-ip-address.md)
+* [IoT Hub IP adresinizi anlayın](iot-hub-understand-ip-address.md)

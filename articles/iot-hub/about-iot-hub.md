@@ -12,10 +12,10 @@ ms.custom:
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 06c0ff7060f4a9d71af11ae75d52ad7f4bf14c6b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81730862"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub nedir?
@@ -28,7 +28,7 @@ IoT Hub'ın özellikleri, sağlık hizmetleri sektöründeki değerli varlıklar
 
 ## <a name="scale-your-solution"></a>Çözümünüzü ölçeklendirme
 
-IoT Hub, IoT iş yüklerinizi desteklemek için saniye başına milyonlarca eş zamanlı cihazı ve milyonlarca etkinliği ölçeklendirir. IoT Hub'ınızı ölçekleme hakkında daha fazla bilgi için [IoT Hub Ölçekleme'ye](iot-hub-scaling.md?branch=release-iotbasic)bakın. IoT Hub tarafından sunulan birden fazla hizmet katmanı ve ölçeklenebilirlik gereksinimlerinize en iyi nasıl uyacağınız hakkında daha fazla bilgi edinmek için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/iot-hub/)göz atın.
+IoT Hub, IoT iş yüklerinizi desteklemek için saniye başına milyonlarca eş zamanlı cihazı ve milyonlarca etkinliği ölçeklendirir. IoT Hub ölçeklendirme hakkında daha fazla bilgi için bkz. [IoT Hub ölçeklendirme](iot-hub-scaling.md?branch=release-iotbasic). IoT Hub tarafından sunulan birden fazla hizmet katmanı hakkında daha fazla bilgi edinmek ve ölçeklenebilirlik ihtiyaçlarınıza en uygun şekilde uyum sağlamak için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/iot-hub/)göz atın.
 
 ## <a name="secure-your-communications"></a>İletişimlerinizin güvenliğini sağlama
 
@@ -52,7 +52,7 @@ IoT Hub, cihazlarınızın veri göndermesi için size güvenli bir iletişim ka
 
 Yerleşik ileti yönlendirme işlevi size otomatik kurallara dayalı ileti yayma esnekliği sunar:
 
-* Hub'ınızın cihaz telemetrisini nereye gönderdiğini denetlemek için [ileti yönlendirmesini](iot-hub-devguide-messages-d2c.md) kullanın.
+* Hub 'ınızın cihaz telemetrisini göndereceğini denetlemek için [ileti yönlendirmeyi](iot-hub-devguide-messages-d2c.md) kullanın.
 
 * Birden fazla uç noktaya iletileri yönlendirmek için ek maliyet yoktur.
 
@@ -112,7 +112,7 @@ IoT Hub ve cihaz SDK’ları, cihazları bağlamak için aşağıdaki protokolle
 
 ## <a name="quotas-and-limits"></a>Kotalar ve sınırlar
 
-Her Azure aboneliği, hizmet kötüye kullanımını önlemek için varsayılan kota sınırları içerir ve bu sınırlar, IoT çözümünüzün kapsamını etkileyebilir. Abonelik başına geçerli sınır, abonelik başına 50 IoT hub'dır. Destek birimiyle görüşerek kota artışı isteyebilirsiniz. Daha fazla bilgi için [IoT Hub Kotaları ve Azaltma bölümüne](iot-hub-devguide-quotas-throttling.md)bakın. Kota sınırları hakkında daha fazla bilgi için aşağıdaki makalelerden birine bakın:
+Her Azure aboneliği, hizmet kötüye kullanımını önlemek için varsayılan kota sınırları içerir ve bu sınırlar, IoT çözümünüzün kapsamını etkileyebilir. Abonelik başına geçerli sınır, abonelik başına 50 IoT Hub 'dır. Destek birimiyle görüşerek kota artışı isteyebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub kotaları ve azaltma](iot-hub-devguide-quotas-throttling.md). Kota limitleri hakkında daha fazla bilgi için aşağıdaki makalelerden birine bakın:
 
 * [Azure abonelik hizmeti sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
@@ -126,4 +126,4 @@ Uçtan uca IoT çözümünü denemek için IoT Hub hızlı başlangıçlarına g
 
 Azure IoT ile IoT çözümleri oluşturma ve dağıtma yolları hakkında daha fazla bilgi edinmek için şu adresi ziyaret edin:
 
-* [Temel leri: Azure IoT teknolojileri ve çözümleri.](../iot-fundamentals/iot-services-and-technologies.md)
+* [Temel bilgiler: Azure IoT teknolojileri ve çözümleri](../iot-fundamentals/iot-services-and-technologies.md).

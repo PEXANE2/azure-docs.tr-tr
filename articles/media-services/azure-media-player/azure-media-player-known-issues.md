@@ -1,114 +1,114 @@
 ---
-title: Azure Media Player Bilinen Sorunlar
-description: Geçerli sürüm aşağıdaki bilinen sorunları vardır.
+title: Bilinen sorunları Azure Media Player
+description: Geçerli yayında aşağıdaki bilinen sorunlar var.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727222"
 ---
 # <a name="known-issues"></a>Bilinen Sorunlar #
 
-Geçerli sürüm aşağıdaki bilinen sorunları vardır:
+Geçerli yayında aşağıdaki bilinen sorunlar var:
 
 ## <a name="azure-media-player"></a>Azure Media Player ##
 
-- Yanlış yapılandırılmış kodlayıcılar oynatma ile ilgili sorunlara neden olabilir
-- Zaman damgaları 2^53'ten büyük olan akışlarda oynatma sorunları olabilir.
-  - Azaltma: 90 kHz video ve 44.1-kHz ses zaman ölçekleri kullanın
-- Kullanıcı etkileşimi olmadan mobil cihazlarda otomatik oynatma yok. Platform tarafından engellendi.
-- Yakın süreksizlikler aranıyor oynatma hatasına neden olabilir.
-- Büyük sunuların karşıdan yüklenirse, ui'nin kilitlenmesine neden olabilir.
-- Sunu sona erdikten sonra aynı kaynağı otomatik olarak oynatamıyorum.
-  - Bir kaynağın sona erdikten sonra yeniden oynatılabilmesi için kaynağı yeniden ayarlaması gerekir.
-- Boş bildirimler oyuncuyla ilgili sorunlara neden olabilir.
-  - Bu sorun, canlı akış başlatılırken oluşabilir ve bildirimde yeterli öbek bulunmaz.
-- Oynatma pozisyonu belki UI arama çubuğu dışında.
-- Olay sıralama tüm teknisyenler arasında tutarlı değildir.
-- Arabelleğe alma özelliği, teknisyenler arasında tutarlı değildir.
-- nativeControlsForTouch "Nesne özelliği veya yöntemi 'setControls' desteklemez önlemek için yanlış (varsayılan) olmalıdır
-- Posterler artık mutlak url'ler olmalıdır
-- Cihazın yüksek kontrastlı modu kullanılarak UI'de küçük estetik sorunlar oluşabilir
-- Tamamen çözülmüş dizede "%" veya "+" içeren URL'ler kaynağı ayarlarken sorun yaşayabilir
+- Yanlış yapılandırılmış kodlayıcılar kayıttan yürütme ile ilgili sorunlara neden olabilir
+- 2 ^ 53 ' ten büyük zaman damgalarına sahip akışlar kayıttan yürütme sorunlarına sahip olabilir.
+  - Risk azaltma: 90-kHz video ve 44,1-kHz ses zaman dilimlerini kullanma
+- Mobil cihazlarda Kullanıcı etkileşimi olmadan otomatik olarak oynatma yok. Platform tarafından engelleniyor.
+- Neredeyse süreksizlik arama, kayıttan yürütme hatasına neden olabilir.
+- Büyük sunuların indirilmesi, Kullanıcı arabiriminin kilitlenmesine neden olabilir.
+- Sunum sona erdikten sonra otomatik olarak aynı kaynağı yeniden oynatabilir.
+  - Bir kaynağı sonlandırdıktan sonra yeniden oynatmak için, kaynağı tekrar ayarlamanız gerekir.
+- Boş bildirimler Player ile ilgili sorunlara neden olabilir.
+  - Bu sorun, canlı bir akış başlatıldığında ve bildirimde yeterli sayıda öbek bulunamadığında ortaya çıkabilir.
+- Kayıttan yürütme konumu UI SeekBar dışında olabilir.
+- Olay sıralaması tüm Techs 'lerde tutarlı değil.
+- Arabelleğe alınan özellik Techs genelinde tutarlı değil.
+- "Object özelliği veya ' setControls ' metodunu desteklemediğinden, nativeControlsForTouch yanlış olmalıdır (varsayılan)
+- Posterler artık mutlak URL 'ler olmalıdır
+- Cihazın yüksek karşıtlık modu kullanılırken küçük Aesthetic Characteristics sorunları Kullanıcı arabiriminde oluşabilir
+- Tam olarak çözülen dizede "%" veya "+" içeren URL 'Ler, kaynağı ayarlarken sorunlarla karşılaşabilir
 
-## <a name="ad-insertion"></a>Reklam ekleme ##
+## <a name="ad-insertion"></a>Ad ekleme ##
 
-- Tarayıcıya bir reklam engelleyici yüklendiğinde reklamların eklenmesinde (isteğe bağlı veya canlı) sorunlar olabilir
-- Mobil cihazlarda reklamları oynatma da sorun yaşayabilir.
+- Tarayıcıya bir ad engelleyicisinin yüklendiği durumlarda reklamları (isteğe bağlı veya canlı) ekleme sorunları olabilir
+- Mobil cihazlarda reklamları kayıttan yürütme sorunları olabilir.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
-- Canlı içeriğin DVR penceresinde, içerik bittiğinde zaman çizelgesi alana arayana veya sununun sonuna ulaşana kadar büyümeye devam eder.
-- MSE etkin Firefox'ta canlı sunumlar bazı sorunlar var
-- Yalnızca ses veya video olan varlıklar AzureHtml5JS teknolojisi aracılığıyla oynatılmıyor.
-  - Varlıkları ses veya video olmadan oynatmak istiyorsanız, [Azure Media Services Explorer aracını](https://aka.ms/amse) kullanarak boş ses veya video ekleyerek bunu yapabilirsiniz
-    - Sessiz ses inekletmek için nasıl talimatlar [burada](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) bulunabilir
+- Canlı içeriğin DVR penceresinde, içerik tamamlandığında zaman çizelgesi alana ulaşılıncaya veya sununun sonuna ulaşana kadar büyümeye devam edecektir.
+- MSE 'nin etkin olduğu canlı sunularda bazı sorunlar vardır
+- Ses veya video olan varlıklar yalnızca AzureHtml5JS Tech aracılığıyla kayıttan yürütülmezler.
+  - Varlıkları ses veya video olmadan oynatmak isterseniz, [Azure Media Services Explorer aracını](https://aka.ms/amse) kullanarak boş ses veya video ekleyerek bunu yapabilirsiniz.
+    - Sessiz ses ekleme yönergeleri [burada](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) bulunabilir
 
-## <a name="flash"></a>Flash ##
+## <a name="flash"></a>In ##
 
-- AES içeriği, Adobe'nin önbelleğe alma mantığındaki bir hata nedeniyle Flash sürüm 30.0.0.134'te oynatılmaz. Adobe sorunu giderdi ve 30.0.0.154 yılında yayımladı
-- Teknik ve http hataları (404 ağ zaman aşımı gibi), oyuncu diğer teknisyenler daha kurtarmak için daha uzun sürer.
-- flashSS teknolojisi ile video alanına tıklayın oynatmaz/duraklatamaz.
-- Kullanıcı Flash yüklüyse ancak siteye yükleme izni vermiyorsa, sonsuz döndürme oluşabilir. Oyuncu eklentisi yüklü ve kullanılabilir olduğunu düşünüyor ve eklenti içeriği çalıştırıyor düşünüyor olmasıdır. JavaScript kodu gönderildi ancak kullanıcı eklentiye izin vermek için istem'i kabul edene kadar tarayıcı ayarları eklentinin çalıştırMasını engelledi. Bu, tüm tarayıcılarda oluşabilir.  
+- Adobe 'un önbelleğe alma mantığındaki bir hata nedeniyle, AES içeriği Flash Version 30.0.0.134 'da kayıttan çalınmıyor. Adobe sorunu düzeltti ve 30.0.0.154 içinde yayımladı
+- Teknik ve http arızaları (404 ağ zaman aşımları gibi), Player diğer Techs 'den kurtarmak için daha uzun sürer.
+- FlashSS Tech ile video alanına tıkladığınızda Player çalınmaz/duraklatılır.
+- Kullanıcı Flash yüklüyse ancak sitede yükleme izni vermezse, sonsuz bir dönme meydana gelebilir. Bunun nedeni, eklentinin, eklentinin yüklü ve kullanılabilir olduğunu ve eklentinin içeriği çalıştırmakta olduğunu düşündüğü bir eklentidir. JavaScript kodu gönderildi, ancak tarayıcı ayarları, Kullanıcı eklentiye izin verme isteğini kabul edene kadar eklentinin yürütülmesini engelledi. Bu, tüm tarayıcılarda gerçekleşebilir.  
 
 ## <a name="silverlight"></a>Silverlight ##
 
-- Eksik özellikler
-- Teknik ve http hataları (404 ağ zaman aşımı gibi), oyuncu diğer teknisyenler daha kurtarmak için daha uzun sürer.
-- Safari ve Firefox Silverlight ile Mac oynatma `"http://` açıkça `https://` tanımlama veya kaynak için gerektirir.
-- Bu teknoloji için bir API eksikse, genellikle null geri döner.
-- Kullanıcı Flash yüklüyse ancak siteye yükleme izni vermiyorsa, sonsuz döndürme oluşabilir. Oyuncu eklentisi yüklü ve kullanılabilir olduğunu düşünüyor ve eklenti içeriği çalıştırıyor düşünüyor olmasıdır. JavaScript kodu gönderildi ancak kullanıcı eklentiye izin vermek için istem'i kabul edene kadar tarayıcı ayarları eklentinin çalıştırMasını engelledi. Bu, tüm tarayıcılarda oluşabilir.  
+- Eksik Özellikler
+- Teknik ve http arızaları (404 ağ zaman aşımları gibi), Player diğer Techs 'den kurtarmak için daha uzun sürer.
+- Silverlight ile Mac 'te yürütülen Safari ve Firefox, kaynak `"http://` `https://` için açıkça tanımlamayı gerektirir.
+- Bu teknik için bir API eksikse genellikle null döndürülür.
+- Kullanıcı Flash yüklüyse ancak sitede yükleme izni vermezse, sonsuz bir dönme meydana gelebilir. Bunun nedeni, eklentinin, eklentinin yüklü ve kullanılabilir olduğunu ve eklentinin içeriği çalıştırmakta olduğunu düşündüğü bir eklentidir. JavaScript kodu gönderildi, ancak tarayıcı ayarları, Kullanıcı eklentiye izin verme isteğini kabul edene kadar eklentinin yürütülmesini engelledi. Bu, tüm tarayıcılarda gerçekleşebilir.  
 
 ## <a name="native-html5"></a>Yerel HTML5 ##
 
-- Html5 tech sadece ilk set kaynağı için canplaythrough olay gönderiyor.
-- Bu teknoloji yalnızca tarayıcının uyguladığı şeyi destekler.  Bazı özellikler bu teknoloji eksik olabilir.  
-- Bu teknoloji için bir API eksikse, genellikle null geri döner.
-- Bu teknoloji üzerinde Altyazılar ve Altyazılar ile ilgili sorunlar vardır. Bu teknolojide kullanılabilir veya görüntülenebilir veya görüntülenemeyebilirler.
-- HLS/Html5 teknoloji senaryosunda sınırlı bant genişliğine sahip olmak, video olmadan ses oynatmayla sonuçlanır.
+- HTML5 Tech yalnızca ilk küme kaynağı için canplaythrough olay gönderiyor.
+- Bu teknik yalnızca tarayıcının uygulandığını destekler.  Bu teknik, bazı özellikler eksik olabilir.  
+- Bu teknik için bir API eksikse genellikle null döndürülür.
+- Bu teknoloji üzerinde açıklamalı alt yazılar ve alt yazılar ile ilgili sorunlar var. Bu teknoloji, kullanılabilir veya kullanılamıyor olabilir.
+- HLS/HTML5 teknik senaryosunda sınırlı bant genişliğine sahip olmak, video olmadan ses çalmaya neden olur.
 
 ### <a name="microsoft"></a>Microsoft ###
 
-- IE8 oynatma şu anda ECMAScript 5 ile uyumsuzluk nedeniyle çalışmıyor
-- IE ve Edge'in bazı sürümlerinde, tam ekran düğmesine sekme yle ve seçilerek veya F/f hotkey kullanılarak girilemez.
+- IE8 oynatma, ECMAScript 5 ile uyumsuzluk nedeniyle şu anda çalışmıyor
+- IE ve bazı Edge sürümlerinde, tam ekran, düğmeye sekmeyle göre ve seçilerek ya da F/f kısayol tuşu kullanılarak girilemez.
 
 ## <a name="google"></a>Google ##
 
-- Aynı bildirimdeki birden çok kodlama profili Chrome'da bazı oynatma sorunları vardır ve önerilmez.
-- Chrome, He-AAC'yi AzureHtml5JS ile oynatamaz. [Hata izleyicisi](https://bugs.chromium.org/p/chromium/issues/detail?id=534301)hakkındaki ayrıntıları takip edin.
-- Chrome v58 itibariyle, widevine içeriğihttps:// protokolü aracılığıyla yüklenmeli/oynatılmalıdır aksi takdirde oynatma başarısız olur.
+- Aynı bildirimde bulunan birden çok kodlama profili Chrome 'da bazı kayıttan yürütme sorunları yaşıyor ve önerilmez.
+- Chrome, AzureHtml5JS ile Back-AAC 'yi yürütemiyor. [Hata İzleyicisi](https://bugs.chromium.org/p/chromium/issues/detail?id=534301)hakkındaki ayrıntıları izleyin.
+- Chrome V58 itibariyle wıdevine içeriği https://protokolü aracılığıyla yüklenmelidir/çalınmalıdır, aksi halde kayıttan yürütme başarısız olur.
 
 ## <a name="mozilla"></a>Mozilla ##
 
-- Ses akışı anahtarı, AzureHtml5JS kullanırken ses akışlarının aynı codec özel verilere sahip olmasını gerektirir. Firefox platformu bunu gerektirir.
+- Ses akışı anahtarı, AzureHtml5JS kullanırken aynı codec bileşeninin özel verilerine sahip olmak için ses akışları gerektirir. Firefox platformu için bu gereklidir.
 
 ## <a name="apple"></a>Apple ##
 
-- Mac'teki Safari, kullanıcıya lehine olmadığına inandıkları flash ve Silverlight gibi eklentileri engelleyen "Güç tasarrufu için eklentileri durdurun" ayarı ile genellikle Varsayılan olarak Power Saver moduna olanak tanır. Bu blok eklentinin var olan, yalnızca yeteneklerini engellemez. Varsayılan techOrder göz önüne alındığında, bu oynatmagirişiminde sorunlara neden olabilir
-  - Azaltma 1: Video oynatıcı 'ön ve orta' ise (belgenin sol üst köşesinden başlayarak 3000 x 3000 piksel lik bir sınır içinde), yine de oynatılmalıdır.
-  - Azaltma 2: Safari için techOrder'ı ["azureHtml5JS", "html5"] olarak değiştirin. Bu azaltma, FlashSS teknolojisinde bulunan tüm özellikleri almama imasa sahiptir.
-- Silverlight üzerinden PlayReady içeriği Safari'de oynatılabilecek sorunlar olabilir.
-- AES ve sınırlı belirteç içeriği iOS ve eski Android cihazları kullanarak oynatılamıyor.
-  - Bu senaryoyu gerçekleştirmek için hizmetinize bir proxy eklenmesi gerekir.
-- iOS Telefon için varsayılan görünüm ler ile gösterir.
-- iPhone oynatma her zaman yerli oyuncu tam ekran oluşur.
-  - Altyazılar da dahil olmak üzere özellikler, bu satır içi oynatma da devam olmayabilir.
-- Canlı sunu sona erdiğinde, iOS aygıtları sunuyu düzgün bir şekilde sona erdirmez.
-- iOS DVR yetenekleriiçin izin vermez.
-- iOS ses akışı anahtarı yalnızca iOS yerel oyuncu ui olsa yapılabilir ve ses akışlarının aynı codec özel verilere sahip olmasını gerektirir
-- Safari'nin eski sürümlerinde canlı akışları oynatma sorunları olabilir.
+- Mac üzerinde Safari, genellikle "güç tasarrufu yapmak için eklentileri Durdur" ayarıyla birlikte varsayılan olarak güç tasarrufu modunu etkinleştirerek, Kullanıcı tarafından kullanım dışı olduğuna inandıklarında Flash ve Silverlight gibi eklentileri engeller. Bu blok, eklentinin var olan yalnızca yeteneklerini engellemez. Varsayılan techOrder verildiğinde, bu durum kayıttan oynatılmaya çalışıldığında sorunlara neden olabilir
+  - Hafifletme 1: video oynatıcı ' ön ve Merkez ' ise (bir 3000 x 3000 piksel sınırının içinde belgenin sol üst köşesinden başlayarak), yine de oynamalıdır.
+  - Risk azaltma 2: Safari için techOrder öğesini ["azureHtml5JS", "HTML5"] olacak şekilde değiştirin. Bu hafifletme, FlashSS Tech ' de kullanılabilen tüm özellikleri elde etmez.
+- Silverlight aracılığıyla PlayReady içeriği Safari 'de kayıttan yürütme sorunları yaşıyor olabilir.
+- AES ve kısıtlı belirteç içeriği iOS ve daha eski Android cihazları kullanılarak kayıttan yürütülmez.
+  - Bu senaryoya ulaşmak için hizmetinize bir ara sunucu eklenmelidir.
+- İOS telefonu için varsayılan dış görünüm aracılığıyla gösterilir.
+- iPhone oynatma, her zaman yerel oynatıcı tam ekran üzerinden gerçekleşir.
+  - Resim yazıları dahil özellikler, bu satır içi olmayan Kayıttan yürütmede kalıcı olmayabilir.
+- Canlı sunum sona erdiğinde, iOS cihazları sunuyu düzgün bir şekilde sonlandırmaz.
+- iOS, DVR özelliklerine izin vermez.
+- iOS ses akışı anahtarı yalnızca iOS yerel oynatıcı kullanıcı arabiriminden yapılabilir ve aynı codec bileşeninin özel verilerine sahip olmak için ses akışları gerekir
+- Safari 'nin eski sürümlerinde canlı akışlar kayıttan yürütme sorunları olabilir.
 
-## <a name="older-android"></a>Eski Android ##
+## <a name="older-android"></a>Daha eski Android ##
 
-- AES ve sınırlı belirteç içeriği iOS ve eski Android cihazları kullanarak oynatılamıyor.
-  - Bu senaryoyu gerçekleştirmek için hizmetinize bir proxy eklenmesi gerekir.
+- AES ve kısıtlı belirteç içeriği iOS ve daha eski Android cihazları kullanılarak kayıttan yürütülmez.
+  - Bu senaryoya ulaşmak için hizmetinize bir ara sunucu eklenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

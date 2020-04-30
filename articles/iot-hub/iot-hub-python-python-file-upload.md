@@ -1,6 +1,6 @@
 ---
-title: Python ile aygıtlardan Azure IoT Hub'ına dosya yükleme | Microsoft Dokümanlar
-description: Python için Azure IoT aygıtı SDK'yı kullanarak bir cihazdan buluta dosya yükleme. Yüklenen dosyalar bir Azure depolama blob kapsayıcısında depolanır.
+title: Python ile Azure IoT Hub dosyaları cihazlardan yükleme | Microsoft Docs
+description: Python için Azure IoT cihaz SDK 'sını kullanarak bir cihazdan buluta dosya yükleme. Karşıya yüklenen dosyalar bir Azure Storage blob kapsayıcısında depolanır.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,27 +10,27 @@ ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759697"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub (Python) ile cihazınızdan buluta dosya yükleme
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-Bu makalede, Bir dosyayı [Azure blob depolamasına](../storage/index.yml)yüklemek için [IoT Hub'ın dosya yükleme özelliklerinin](iot-hub-devguide-file-upload.md) nasıl kullanılacağı gösterilmektedir. Öğretici şunların nasıl yapıldığını göstermektedir:
+Bu makalede, [Azure Blob depolamaya](../storage/index.yml)bir dosyayı karşıya yüklemek için [IoT Hub dosya yükleme yeteneklerinin](iot-hub-devguide-file-upload.md) nasıl kullanılacağı gösterilmektedir. Öğretici şunların nasıl yapıldığını göstermektedir:
 
-* Güvenli bir şekilde bir dosya yüklemek için bir depolama kapsayıcısı sağlayın.
+* Bir dosyayı karşıya yüklemek için güvenli bir şekilde depolama kapsayıcısı sağlayın.
 
-* IoT hub'ınızüzerinden bir dosya yüklemek için Python istemcisini kullanın.
+* IoT Hub 'ınız aracılığıyla bir dosyayı karşıya yüklemek için Python istemcisini kullanın.
 
-[Bir aygıttan IoT hub'ına](quickstart-send-telemetry-python.md) hızlı başlatma gönder telemetrisi, IoT Hub'ın temel aygıttan buluta mesajlaşma işlevselliğini gösterir. Ancak, bazı senaryolarda, aygıtlarınızın gönderdiği verileri IoT Hub'ın kabul ettiği nispeten küçük aygıttan buluta iletilerle kolayca eşleyemezsiniz. Bir aygıttan yayla dosyaları yapmanız gerektiğinde, IoT Hub'ın güvenliğini ve güvenilirliğini kullanmaya devam edebilirsiniz.
+[Bir cihazdan IoT Hub 'ına hızlı başlangıç Telemetriyi](quickstart-send-telemetry-python.md) , IoT Hub temel cihazdan buluta mesajlaşma işlevlerini gösterir. Ancak, bazı senaryolarda, cihazlarınızın IoT Hub kabul ettiği görece küçük cihazdan buluta iletileri içine gönderdikleri verileri kolayca eşleyemezsiniz. Dosyaları bir cihazdan kapladığınızda, IoT Hub güvenlik ve güvenilirliğini kullanmaya devam edebilirsiniz.
 
-Bu eğitimin sonunda Python konsol uyrama uygulamasını çalıştırın:
+Bu öğreticinin sonunda, Python konsol uygulamasını çalıştırırsınız:
 
-* python aygıt SDK kullanarak depolama bir dosya yükler **FileUpload.py.**
+* Python cihaz SDK 'sını kullanarak bir dosyayı depolamaya yükleyen **FileUpload.py**.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -38,31 +38,31 @@ Bu eğitimin sonunda Python konsol uyrama uygulamasını çalıştırın:
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu makaledeki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
-## <a name="upload-a-file-from-a-device-app"></a>Aygıt uygulamasından dosya yükleme
+## <a name="upload-a-file-from-a-device-app"></a>Bir cihaz uygulamasından bir dosya yükleme
 
-Bu bölümde, bir dosyayı IoT hub'ına yüklemek için aygıt uygulamasını oluşturursunuz.
+Bu bölümde, IoT Hub 'a bir dosya yüklemek üzere cihaz uygulaması oluşturacaksınız.
 
-1. Komut isteminizde **azure-iot-device** paketini yüklemek için aşağıdaki komutu çalıştırın. Bu paketi, dosya yüklemesini IoT hub'ınızla koordine etmek için kullanırsınız.
+1. Komut istemindeki **Azure-IoT-Device** paketini yüklemek için aşağıdaki komutu çalıştırın. Bu paketi, dosyayı IoT Hub 'ınızla birlikte karşıya yüklemeyi koordine etmek için kullanırsınız.
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Komut isteminizde [**azure.storage.blob**](https://pypi.org/project/azure-storage-blob/) paketini yüklemek için aşağıdaki komutu çalıştırın. Dosya yüklemesini gerçekleştirmek için bu paketi kullanırsınız.
+1. Komut istemindeki [**Azure. Storage. blob**](https://pypi.org/project/azure-storage-blob/) paketini yüklemek için aşağıdaki komutu çalıştırın. Dosyayı karşıya yüklemeyi gerçekleştirmek için bu paketi kullanın.
 
     ```cmd/sh
     pip install azure.storage.blob
     ```
 
-1. Blob depolama alanına yükleyeceğiniz bir test dosyası oluşturun.
+1. Blob depolamaya yüklenecek bir test dosyası oluşturun.
 
-1. Metin düzenleyicisi kullanarak, çalışma klasörünüzde **FileUpload.py** bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak çalışma klasörünüzde bir **FileUpload.py** dosyası oluşturun.
 
-1. `import` **FileUpload.py** dosyanın başında aşağıdaki ifadeleri ve değişkenleri ekleyin.
+1. **FileUpload.py** dosyasının başlangıcında `import` aşağıdaki deyimleri ve değişkenleri ekleyin.
 
     ```python
     import os
@@ -75,9 +75,9 @@ Bu bölümde, bir dosyayı IoT hub'ına yüklemek için aygıt uygulamasını ol
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. Dosyanızda, IoT hub aygıtınızın bağlantı dizesiyle değiştirin. `[Device Connection String]` Oluşturduğunuz test dosyasına giden yolu veya cihazınızda yüklemek istediğiniz herhangi bir dosyayla değiştirin. `[Full path to local file]`
+1. Dosyanızda, ' yi IoT `[Device Connection String]` hub cihazınızın bağlantı dizesiyle değiştirin. Oluşturduğunuz `[Full path to local file]` test dosyasının yoluyla veya cihazınızda karşıya yüklemek istediğiniz herhangi bir dosya ile değiştirin.
 
-1. Dosyayı blob depolama alanına yüklemek için bir işlev oluşturun:
+1. Dosyayı blob depolamaya yüklemek için bir işlev oluşturun:
 
     ```python
     async def store_blob(blob_info, file_name):
@@ -107,9 +107,9 @@ Bu bölümde, bir dosyayı IoT hub'ına yüklemek için aygıt uygulamasını ol
             return (False, ex)
     ```
 
-    Bu işlev, [azure.storage.blob.BlobClient'ı](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)başlatmayı kullandığı bir URL oluşturmak için içine geçirilen *blob_info* yapıyı ayrıştırır. Ardından bu istemciyi kullanarak dosyanızı Azure blob depolama alanına yükler.
+    Bu işlev, bir [Azure. Storage. blob. BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)başlatmak için KULLANDıĞı bir URL oluşturmak üzere kendisine geçirilen *blob_info* yapısını ayrıştırır. Daha sonra bu istemciyi kullanarak dosyanızı Azure Blob depolama alanına yükler.
 
-1. İstemciyi bağlamak ve dosyayı yüklemek için aşağıdaki kodu ekleyin:
+1. İstemcisini bağlamak ve dosyayı karşıya yüklemek için aşağıdaki kodu ekleyin:
 
     ```python
     async def main():
@@ -169,44 +169,44 @@ Bu bölümde, bir dosyayı IoT hub'ına yüklemek için aygıt uygulamasını ol
         #loop.close()
     ```
 
-    Bu kod, eşzamanlı bir **IoTHubDeviceClient** oluşturur ve dosya yüklemesini IoT hub'ınızla yönetmek için aşağıdaki API'leri kullanır:
+    Bu kod, zaman uyumsuz bir **ıothubdeviceclient** oluşturur ve, IoT Hub 'ınız ile karşıya dosya yüklemeyi yönetmek Için aşağıdaki API 'leri kullanır:
 
-    * **get_storage_info_for_blob,** IoT hub'ınızdan daha önce oluşturduğunuz bağlantılı Depolama Hesabı hakkında bilgi alır. Bu bilgiler, ana bilgisayar adı, kapsayıcı adı, blob adı ve Bir SAS belirteci içerir. Depolama bilgileri **store_blob** işlevine (önceki adımda oluşturulmuş) aktarılır, böylece bu işlevdeki **BlobClient** Azure depolama ile kimlik doğrulaması yapabilir. **get_storage_info_for_blob** yöntemi, **notify_blob_upload_status** yönteminde kullanılan bir correlation_id de döndürür. correlation_id, IoT Hub'ın üzerinde çalıştığınız blob'u işaretleme şeklidir.
+    * **get_storage_info_for_blob** , IoT Hub 'ınızdan daha önce oluşturduğunuz bağlı depolama hesabı hakkında bilgi alır. Bu bilgiler, ana bilgisayar adı, kapsayıcı adı, blob adı ve SAS belirtecini içerir. Depolama bilgileri **store_blob** işlevine geçirilir (önceki adımda oluşturulur), bu nedenle bu Işlevdeki **Blobclient** , Azure depolama ile kimlik doğrulaması yapabilir. **Get_storage_info_for_blob** yöntemi, **notify_blob_upload_status** yönteminde kullanılan bir correlation_id de döndürür. Correlation_id, hangi Blobun üzerinde çalıştığınızı işaretleyen IoT Hub yoludur.
 
-    * **notify_blob_upload_status,** ioT Hub'a blob depolama işleminizin durumunu belirtir. **get_storage_info_for_blob** yöntemiyle elde edilen correlation_id aktarın. IoT Hub tarafından, dosya yükleme görevinin durumu yla ilgili bir bildirimi dinleyen herhangi bir hizmeti bildirmek için kullanılır.
+    * **notify_blob_upload_status** blob Storage işleminin durumunun IoT Hub bildirir. **Get_storage_info_for_blob** yöntemi tarafından elde edilen correlation_id geçirirsiniz. Bu, dosya yükleme görevinin durumu hakkında bir bildirim dinlebilecek herhangi bir hizmeti bilgilendirmek için IoT Hub tarafından kullanılır.
 
 1. **UploadFile.py** dosyasını kaydedin ve kapatın.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Artık uygulamayı çalıştırmaya hazırsınız.
+Şimdi uygulamayı çalıştırmaya hazırsınız.
 
-1. Çalışma klasörünüzdeki komut isteminde aşağıdaki komutu çalıştırın:
+1. Çalışma klasörünüzdeki bir komut isteminde aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     python FileUpload.py
     ```
 
-2. Aşağıdaki ekran görüntüsü **FileUpload** uygulamasından çıktıgösterir:
+2. Aşağıdaki ekran görüntüsünde, **FileUpload** uygulamasının çıktısı gösterilmektedir:
 
-    ![Simüle edilmiş cihaz uygulamasından çıktı](./media/iot-hub-python-python-file-upload/run-device-app.png)
+    ![Benzetimli cihaz uygulamasından çıkış](./media/iot-hub-python-python-file-upload/run-device-app.png)
 
-3. Yüklediğiniz dosyayı yapılandırılan depolama kapsayıcısında görüntülemek için portalı kullanabilirsiniz:
+3. Yapılandırdığınız depolama kapsayıcısında karşıya yüklenen dosyayı görüntülemek için portalını kullanabilirsiniz:
 
-    ![Yüklenen dosya](./media/iot-hub-python-python-file-upload/view-blob.png)
+    ![Karşıya yüklenen dosya](./media/iot-hub-python-python-file-upload/view-blob.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, cihazlardan gelen dosya yüklemelerini basitleştirmek için IoT Hub'ın dosya yükleme özelliklerini nasıl kullanacağınızı öğrendiniz. Aşağıdaki makalelerle IoT hub özelliklerini ve senaryolarını keşfetmeye devam edebilirsiniz:
+Bu öğreticide, cihazların dosya karşıya yüklemelerini basitleştirmek için IoT Hub dosya yükleme yeteneklerini nasıl kullanacağınızı öğrendiniz. Aşağıdaki makalelerle IoT Hub özelliklerini ve senaryolarını keşfetmeye devam edebilirsiniz:
 
-* [Programlı bir IoT hub'ı oluşturma](iot-hub-rm-template-powershell.md)
+* [Programlama yoluyla IoT Hub 'ı oluşturma](iot-hub-rm-template-powershell.md)
 
-* [C SDK'ya Giriş](iot-hub-device-sdk-c-intro.md)
+* [C SDK 'ya giriş](iot-hub-device-sdk-c-intro.md)
 
 * [Azure IoT SDK’ları](iot-hub-devguide-sdks.md)
 
-Azure Blob Depolama hakkında aşağıdaki bağlantılarla daha fazla bilgi edinin:
+Aşağıdaki bağlantılarla Azure Blob depolama hakkında daha fazla bilgi edinin:
 
-* [Azure Blob Depolama belgeleri](https://docs.microsoft.com/azure/storage/blobs/)
+* [Azure Blob depolama belgeleri](https://docs.microsoft.com/azure/storage/blobs/)
 
-* [Python API belgeleri için Azure Blob Depolama](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Python API belgeleri için Azure Blob depolama](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)

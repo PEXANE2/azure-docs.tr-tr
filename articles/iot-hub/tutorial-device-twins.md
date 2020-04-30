@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub’dan cihaz durumunu eşitleme | Microsoft Docs
-description: Aygıtlarınızı buluttan yapılandırmak ve cihazlarınızdan durum ve uyumluluk verilerini almak için aygıt ikizlerini nasıl kullanacağınızı öğrenin.
+description: Cihazlarınızı buluttan yapılandırmak ve cihazlarınızdan durum ve uyumluluk verileri almak için cihaz ikizlerini nasıl kullanacağınızı öğrenin.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81767816"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -37,11 +37,11 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Node.js kullanılarak yazılır. Node.js v10.x.x veya daha sonra geliştirme makinenizde ihtiyacınız vardır.
+Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Node.js kullanılarak yazılır. Geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
 
 [nodejs.org](https://nodejs.org) adresinden birden fazla platform için Node.js’yi indirebilirsiniz.
 
@@ -53,13 +53,13 @@ node --version
 
 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip adresinden örnek Node.js projesini indirin ve ZIP arşivini ayıklayın.
 
-8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu öğreticideki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
+Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="set-up-azure-resources"></a>Azure kaynakları ayarlama
 
 Bu öğreticiyi tamamlayabilmeniz için Azure aboneliğinizin cihaz kimliği kayıt defterine cihaz eklenmiş bir IOT hub içermesi gerekir. Cihaz kimliği kayıt defterindeki giriş, bu öğreticide çalıştırdığınız simülasyon cihazının hub’ınıza bağlanmasına imkan tanır.
 
-Aboneliğinizde zaten bir IoT hub'ınız yoksa, aşağıdaki CLI komut dosyasıyla bir tane ayarlayabilirsiniz. Bu betikte IoT hub için **tutorial-iot-hub** adı kullanılır ve betiği çalıştırırken bu adı kendi benzersiz adınızla değiştirmeniz gerekir. Betik, kaynak grubunu ve hub’ı **Orta ABD** bölgesinde oluşturur ve bunu size daha yakın bir konum olacak şekilde değiştirebilirsiniz. Betik, IoT hub hizmetinizin arka uç örneğinde IoT hub’ınıza bağlanmak için kullanacağınız bağlantı dizesini döndürür:
+Aboneliğinizde zaten bir IoT Hub 'ı ayarlanmamışsa, aşağıdaki CLı betiği ile bir tane ayarlayabilirsiniz. Bu betikte IoT hub için **tutorial-iot-hub** adı kullanılır ve betiği çalıştırırken bu adı kendi benzersiz adınızla değiştirmeniz gerekir. Betik, kaynak grubunu ve hub’ı **Orta ABD** bölgesinde oluşturur ve bunu size daha yakın bir konum olacak şekilde değiştirebilirsiniz. Betik, IoT hub hizmetinizin arka uç örneğinde IoT hub’ınıza bağlanmak için kullanacağınız bağlantı dizesini döndürür:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +240,7 @@ Aşağıdaki ekran görüntüsünde simülasyon cihazı uygulamasından alınan 
 
 ![Sanal cihaz](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-Aşağıdaki ekran görüntüsü arka uç uygulamasından çıktıyı gösterir ve bir aygıttan bildirilen özellik güncelleştirmesini nasıl aldığını ve işlediğini vurgular:
+Aşağıdaki ekran görüntüsünde, arka uç uygulamasından alınan çıkış gösterilmektedir ve bir cihazdan bildirilen bir özellik güncelleştirmesi 'nin nasıl aldığı ve işlediği vurgulanmıştır:
 
 ![Arka uç uygulaması](./media/tutorial-device-twins/BackEnd2.png)
 

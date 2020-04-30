@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault tuşları, sırlar ve sertifikalar hakkında - Azure Key Vault
-description: Anahtarlar, sırlar ve sertifikalar için Azure Key Vault REST arabirimine ve geliştirici ayrıntılarına genel bakış.
+title: Azure Key Vault anahtarlar, gizli diziler ve sertifikalar hakkında-Azure Key Vault
+description: Anahtarlar, gizli diziler ve sertifikalar için Azure Key Vault REST arabirimine ve geliştirici ayrıntılarına genel bakış.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,49 +10,49 @@ ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726448"
 ---
-# <a name="about-keys-secrets-and-certificates"></a>Anahtarlar, sırlar ve sertifikalar hakkında
+# <a name="about-keys-secrets-and-certificates"></a>Anahtarlar, gizli diziler ve sertifikalar hakkında
 
-Azure Key Vault, Microsoft Azure uygulamalarının ve kullanıcılarının çeşitli gizli/anahtar verileri depolamasını ve kullanmasını sağlar:
+Azure Key Vault, Microsoft Azure uygulamaların ve kullanıcıların çeşitli türlerdeki gizli/anahtar verileri depolamasını ve kullanmasını sağlar:
 
-- Şifreleme tuşları: Birden çok anahtar türünü ve algoritmasını destekler ve yüksek değerli anahtarlar için Donanım Güvenlik Modüllerinin (HSM) kullanılmasını sağlar. Daha fazla bilgi [için, anahtarlar hakkında](../keys/about-keys.md)bakın.
-- Sırlar: Parolalar ve veritabanı bağlantı dizeleri gibi sırların güvenli bir şekilde depolanmasını sağlar. Daha fazla bilgi [için, sırlar hakkında](../secrets/about-secrets.md)bakın.
-- Sertifikalar: Anahtarların ve sırların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler. Daha fazla bilgi için [sertifikalar hakkında](../certificates/about-certificates.md)bkz.
-- Azure Depolama: Bir Azure Depolama hesabının anahtarlarını sizin için yönetebilirsiniz. Dahili olarak, Key Vault anahtarlarını Azure Depolama Hesabı ile listeleyebilir (eşitleyebilir) ve anahtarları düzenli aralıklarla yeniden oluşturabilir (döndürebilir). Daha fazla bilgi için, [Key Vault ile depolama hesabı anahtarlarını yönet'e](../secrets/overview-storage-keys.md)bakın.
+- Şifreleme anahtarları: birden çok anahtar türünü ve algoritmaları destekler ve yüksek değerli anahtarlar için donanım güvenlik modüllerinin (HSM) kullanılmasını mümkün. Daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md).
+- Gizlilikler: parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar. Daha fazla bilgi için bkz. [gizlilikler hakkında](../secrets/about-secrets.md).
+- Sertifikalar: anahtarların ve parolaların üzerine inşa edilen sertifikaları destekler ve otomatik yenileme özelliği ekler. Daha fazla bilgi için bkz. [Sertifikalar hakkında](../certificates/about-certificates.md).
+- Azure depolama: bir Azure depolama hesabının anahtarlarını sizin için yönetebilir. Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir) ve anahtarları düzenli olarak yeniden oluşturabilir (döndürün). Daha fazla bilgi için bkz. [Key Vault depolama hesabı anahtarlarını yönetme](../secrets/overview-storage-keys.md).
 
-Key Vault hakkında daha fazla bilgi için [Azure Anahtar Kasası Hakkında'ya](overview.md)bakın.
+Key Vault hakkında daha fazla genel bilgi için bkz. [Azure Key Vault hakkında](overview.md).
 
 ## <a name="data-types"></a>Veri türleri
 
-Anahtarlar, şifreleme ve imzalama için ilgili veri türleri için JOSE belirtimlerine bakın.  
+Anahtarlar, şifreleme ve imzalama için ilgili veri türleri için JOTE belirtimlerine bakın.  
 
--   **algoritma** - örneğin, RSA1_5 önemli bir işlem için desteklenen bir algoritma  
--   **şifremetin değeri** - codeher metin sekizli, Base64URL kullanılarak kodlanmış  
--   **digest-value** - Base64URL kullanılarak kodlanmış bir karma algoritma, çıktı  
--   **anahtar türü** - desteklenen anahtar türlerinden biri, örneğin RSA (Rivest-Shamir-Adleman).  
--   **düz metin değeri** - düz metin sekizli, Base64URL kullanılarak kodlanmış  
--   **imza değeri** - Base64URL kullanılarak kodlanmış imza algoritmasının çıktısı  
--   **base64URL** - bir Base64URL [RFC4648] kodlanmış ikili değer  
--   **boolean** - ya doğru ya da yanlış  
--   **Kimlik** - Azure Active Directory (AAD) bir kimlik.  
--   **IntDate** - belirtilen UTC tarih/saatine kadar 1970-01-01T0:0:0Z UTC saniye sayısını temsil eden bir JSON ondalık değer. Genel olarak tarih/saat ve özellikle UTC ile ilgili ayrıntılar için RFC3339'a bakın.  
+-   **algoritma** -anahtar işlemi için desteklenen bir algoritma; örneğin, RSA1_5  
+-   **şifreli-değer** -şifre metin Sekizlilileri, Base64URL kullanarak kodlanmış  
+-   **Özet-değer** -Base64URL kullanılarak kodlanan karma algoritmanın çıkışı  
+-   **anahtar türü** -desteklenen anahtar türlerinden biri, örneğin RSA (Rivest-Shamir-Adliman).  
+-   **düz metin-değer** -düz metin sekizlik, Base64URL kullanılarak kodlanır  
+-   **imza-değer** -Base64URL kullanılarak kodlanan imza algoritmasının çıkışı  
+-   **base64URL** -a BASE64URL [RFC4648] kodlamalı ikili değer  
+-   **Boolean** -true veya false  
+-   **Kimlik** -Azure Active Directory bir KIMLIK (AAD).  
+-   **Intdate** -belirtilen UTC tarih/saatine kadar 1970-01-01T0:0: 0z UTC 'den saniye sayısını temsil eden bir JSON ondalık değeri. Genel ve UTC 'de tarih/saat ile ilgili ayrıntılar için bkz. RFC3339.  
 
-## <a name="objects-identifiers-and-versioning"></a>Nesneler, tanımlayıcılar ve sürüm
+## <a name="objects-identifiers-and-versioning"></a>Nesneler, tanımlayıcılar ve sürüm oluşturma
 
-Key Vault'ta depolanan nesneler, yeni bir nesne örneği oluşturulduğunda sürülür. Her sürüme benzersiz bir tanımlayıcı ve URL atanır. Bir nesne ilk oluşturulduğunda, özgün bir sürüm tanımlayıcısı verilir ve nesnenin geçerli sürümü olarak işaretlenir. Aynı nesne adı ile yeni bir örnek oluşturma yeni nesne özgün bir sürüm tanımlayıcısı verir, geçerli sürümü haline neden.  
+Key Vault depolanan nesneler, bir nesnenin yeni bir örneği oluşturulduğunda sürümlüdür. Her sürüme benzersiz bir tanımlayıcı ve URL atanır. Bir nesne ilk oluşturulduğunda, benzersiz bir sürüm tanımlayıcısı verilir ve nesnenin geçerli sürümü olarak işaretlenir. Aynı nesne adına sahip yeni bir örnek oluşturmak, yeni nesneye benzersiz bir sürüm tanımlayıcısı sağlar ve bunun geçerli sürüm olmasına neden olur.  
 
-Key Vault'taki nesneler geçerli tanımlayıcı veya sürüme özgü tanımlayıcı kullanılarak ele alınabilir. Örneğin, adla `MasterKey`birlikte bir Anahtar verildiğinde, geçerli tanımlayıcıyla işlemleri gerçekleştirmek, sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıile işlemleri gerçekleştirmek, sistemin nesnenin belirli bir sürümünü kullanmasına neden olur.  
+Key Vault nesneler, geçerli tanımlayıcı veya sürüme özgü tanımlayıcı kullanılarak çözülebilir. Örneğin, ada `MasterKey`sahip bir anahtar verildiğinde, geçerli tanımlayıcıyla işlem gerçekleştirmek sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıyla işlem gerçekleştirmek sistemin nesnenin o belirli sürümünü kullanmasına neden olur.  
 
-Nesneler, Key Vault içinde bir URL kullanılarak benzersiz bir şekilde tanımlanır. Sistemdeki hiçbir iki nesne, coğrafi konuma bakılmaksızın aynı URL'ye sahip değildir. Bir nesnenin tam URL'si Nesne Tanımlayıcısı olarak adlandırılır. URL, Anahtar Kasası' nı, nesne türünü, kullanıcıtarafından sağlanan Nesne Adı'nı ve Nesne Sürümünü tanımlayan bir önekten oluşur. Nesne Adı büyük/küçük harf duyarsız ve değişmez. Nesne Sürümü içermeyen tanımlayıcılara Temel Tanımlayıcılar denir.  
+Nesneler bir URL kullanarak Key Vault içinde benzersiz şekilde tanımlanır. Coğrafi konumdan bağımsız olarak sistemdeki iki nesne aynı URL 'ye sahip değildir. Bir nesnenin tüm URL 'SI, nesne tanımlayıcısı olarak adlandırılır. URL, Key Vault, nesne türü, Kullanıcı tarafından sağlanmış nesne adı ve bir nesne sürümü tanımlayan bir önekden oluşur. Nesne adı büyük/küçük harfe duyarlıdır ve sabittir. Nesne sürümünü içermeyen tanımlayıcılar temel tanımlayıcılar olarak adlandırılır.  
 
-Daha fazla bilgi için kimlik [doğrulama, istekler ve yanıtlar](authentication-requests-and-responses.md)
+Daha fazla bilgi için bkz. [kimlik doğrulaması, istekler ve yanıtlar](authentication-requests-and-responses.md)
 
-Nesne tanımlayıcısı aşağıdaki genel biçimi vardır:  
+Bir nesne tanımlayıcısı aşağıdaki genel biçime sahiptir:  
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
@@ -60,10 +60,10 @@ Konumlar:
 
 |||  
 |-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault hizmetindeki önemli bir kasanın adı.<br /><br /> Anahtar Vault adları kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br /> Anahtar Vault adı sadece 0-9, a-z, A-Z ve -içeren bir 3-24 karakter dize olmalıdır.|  
-|`object-type`|Nesnenin türü, "anahtarlar", "sırlar" veya "sertifikalar".|  
-|`object-name`|A, `object-name` kullanıcıadına verilen bir addır ve Bir Anahtar Kasası içinde benzersiz olmalıdır. Ad, yalnızca 0-9, a-z, A-Z ve -'yi içeren 1-127 karakterli bir dize olmalıdır.|  
-|`object-version`|An, `object-version` isteğe bağlı olarak bir nesnenin benzersiz bir sürümünü adreslemek için kullanılan bir sistem tarafından oluşturulan, 32 karakter dize tanımlayıcısıdır.|  
+|`keyvault-name`|Microsoft Azure Key Vault hizmetindeki bir anahtar kasasının adı.<br /><br /> Key Vault adlar Kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br /> Key Vault ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 3-24 karakter dizesi olmalıdır.|  
+|`object-type`|Nesnenin türü, "anahtarlar", "gizlilikler" veya ' Certificates '.|  
+|`object-name`|`object-name` , İçin Kullanıcı tarafından sağlanmış bir addır ve bir Key Vault içinde benzersiz olmalıdır. Ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır.|  
+|`object-version`|`object-version` , İsteğe bağlı olarak bir nesnenin benzersiz bir sürümünü ele almak için kullanılan, sistem tarafından oluşturulan 32 karakter dizesi tanımlayıcısıdır.|  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -71,4 +71,4 @@ Konumlar:
 - [Gizli diziler hakkında](../secrets/about-secrets.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)
+- [Geliştirici Kılavuzu Key Vault](../general/developers-guide.md)

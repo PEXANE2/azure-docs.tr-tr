@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute Özel Eşleme için yedekleme olarak S2S VPN kullanma | Microsoft Dokümanlar
-description: Bu sayfa, Azure ExpressRoute özel s2S VPN ile yedeklemek için mimari öneriler sağlar.
+title: S2S VPN 'i Azure ExpressRoute özel eşlemesi için yedekleme olarak kullanma | Microsoft Docs
+description: Bu sayfa, S2S VPN ile Azure ExpressRoute özel eşlemesini yedeklemeye yönelik mimari öneriler sağlar.
 services: networking
 author: rambk
 ms.service: expressroute
@@ -8,68 +8,68 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: rambala
 ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687861"
 ---
-# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute özel eşleme için yedek olarak S2S VPN kullanma
+# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute özel eşlemesi için S2S VPN 'i yedekleme olarak kullanma
 
-[ExpressRoute özel bakışile olağanüstü durum kurtarma tasarımı][DR-PP]başlıklı makalede, bir ExpressRoute özel bakan bağlantı için yedek bağlantı çözümü için ihtiyaç ve nasıl amaç için coğrafi-yedekli ExpressRoute devreleri kullanmak tartışıldı. Bu makalede, expressroute özel bakış için bir geri olarak siteden siteye (S2S) VPN kaldıraç ve korumak nasıl düşünelim. 
+[ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma Için tasarlama][DR-PP]başlıklı makalede, bir ExpressRoute özel eşleme bağlantısı için yedekleme bağlantısı çözümü gereksinimi ve coğrafi olarak yedekli ExpressRoute devrelerinin amaç için nasıl kullanılacağı ele alınmıştır. Bu makalede, bir ExpressRoute özel eşlemesi için siteden siteye (S2S) VPN 'i nasıl kullanacağınızı ve koruyacağınızı düşünmemize izin verin. 
 
-Coğrafi yedekli ExpressRoute devrelerinin aksine, ExpressRoute-VPN olağanüstü durum kurtarma birleşimini yalnızca etkin-pasif modda kullanabilirsiniz. Pasif modda herhangi bir yedekleme ağı bağlantısı kullanmanın en büyük zorluğu, pasif bağlantının genellikle birincil bağlantının yanında başarısız olmasıdır. Pasif bağlantı hatalarının yaygın nedeni etkin bakım eksikliğidir. Bu nedenle, bu makalede, expressroute özel bir bakış yedekleme s2S VPN bağlantısı doğrulamak ve aktif olarak korumak için nasıl odaklanalım.
+Coğrafi olarak yedekli ExpressRoute devrelerinin aksine, ExpressRoute-VPN olağanüstü durum kurtarma birleşimini yalnızca etkin-pasif modda kullanabilirsiniz. Pasif modda yedek ağ bağlantısı kullanmanın önemli bir zorluğu, pasif bağlantının genellikle birincil bağlantıyla birlikte başarısız olmasına neden olur. Pasif bağlantı hatalarının yaygın nedenlerinden biri etkin bakım olmamasıdır. Bu nedenle, bu makalede bir ExpressRoute özel eşlemesini yedekleyen S2S VPN bağlantısını doğrulamaya ve etkin bir şekilde korumaya odaklanalım.
 
 >[!NOTE] 
->Belirli bir rota hem ExpressRoute hem de VPN üzerinden duyurulduğunda, Azure ExpressRoute üzerinden yönlendirmeyi tercih eder.  
+>Belirli bir yol ExpressRoute ve VPN aracılığıyla tanıtıldığında Azure, ExpressRoute üzerinden yönlendirmeyi tercih eder.  
 >
 
-Bu makalede, hem Azure perspektifinden hem de müşteri yan ağ kenarı perspektifinden bağlantının nasıl doğrulaşdırılabildiğini görelim. Microsoft ağ varlıklarıyla eşleyen müşteri yan ağ aygıtlarını yönetip yönetmediğinize bakılmaksızın, her iki uçtan da doğrulama olanağı yardımcı olur. 
+Bu makalede, hem Azure perspektifinden hem de müşteri tarafı ağ kenarı perspektifinden bağlantıyı nasıl doğrulayabildiğinizi görelim. Bunlardan herhangi birini doğrulama özelliği, Microsoft ağ varlıklarıyla eş olan müşteri tarafı ağ cihazlarını yönetip yönetmeyeceğinizi bağımsız olarak size yardımcı olur. 
 
 ## <a name="example-topology"></a>Örnek topoloji
 
-Kurulumumuzda, hem ExpressRoute devresi hem de S2S VPN bağlantısı üzerinden Azure hub VNet'e bağlı bir şirket içi ağımız vardır. Azure hub'ı VNet, aşağıdaki diyagramda gösterildiği gibi, sırayla bir vnet'e bakar:
+Kurulumumuzda, bir ExpressRoute bağlantı hattı ve bir S2S VPN bağlantısı aracılığıyla Azure hub VNet 'e bağlı bir şirket içi ağa sahipsiniz. Azure hub VNet, aşağıdaki diyagramda gösterildiği gibi bir bağlı olan VNet 'e sırayla depolanır:
 
 ![1][1]
 
-Kurulumda, ExpressRoute devresi şirket içi "Customer Edge" (CE) yönlendiricileri bir çift sonlandırılır. Şirket içi LAN, lider takipçi modunda çalışan bir çift güvenlik duvarı aracılığıyla CE yönlendiricilerine bağlanır. S2S VPN doğrudan güvenlik duvarlarında sonlandırılır.
+Kurulumda ExpressRoute bağlantı hattı, şirket içi bir "müşteri Edge" (CE) yönlendiricileri çiftinde sonlandırılır. Şirket içi LAN, lider modunda çalışan bir güvenlik duvarı çifti üzerinden CE yönlendiricilerine bağlanır. S2S VPN, güvenlik duvarları üzerinde doğrudan sonlandırılır.
 
-Aşağıdaki tabloda topolojinin anahtar IP önekleri listelenebedilir:
+Aşağıdaki tabloda, topolojinin anahtar IP önekleri listelenmektedir:
 
 | **Varlık** | **Ön ek** |
 | --- | --- |
 | Şirket içi LAN | 10.1.11.0/25 |
-| Azure Hub VNet | 10.17.11.0/25 |
-| Azure VNet konuştu | 10.17.11.128/26 |
+| Azure hub VNet | 10.17.11.0/25 |
+| Azure sanal ağ VNet | 10.17.11.128/26 |
 | Şirket içi test sunucusu | 10.1.11.10 |
-| Kollu VNet testi VM | 10.17.11.132 |
-| ExpressRoute birincil bağlantı p2p alt ağ | 192.168.11.16/30 |
-| ExpressRoute ikincil bağlantı p2p subnet | 192.168.11.20/30 |
-| VPN ağ geçidi birincil BGP eş IP | 10.17.11.76 |
-| VPN ağ geçidi ikincil BGP eş IP | 10.17.11.77 |
-| Şirket içi güvenlik duvarı VPN BGP eş IP | 192.168.11.88 |
-| Güvenlik duvarı IP'sine doğru birincil CE yönlendirici i/f | 192.168.11.0/31 |
-| Birincil CE yönlendirici IP'ye doğru güvenlik duvarı i/f | 192.168.11.1/31 |
-| Güvenlik duvarı IP'sine doğru ikincil CE yönlendirici i/f | 192.168.11.2/31 |
-| İkincil CE yönlendirici IP'ye doğru güvenlik duvarı i/f | 192.168.11.3/31 |
+| Bağlı ağ VNet test sanal makinesi | 10.17.11.132 |
+| ExpressRoute birincil bağlantı P2P alt ağı | 192.168.11.16/30 |
+| ExpressRoute ikincil bağlantı P2P alt ağı | 192.168.11.20/30 |
+| VPN Gateway birincil BGP eşi IP 'si | 10.17.11.76 |
+| VPN Gateway ikincil BGP eşi IP 'si | 10.17.11.77 |
+| Şirket içi güvenlik duvarı VPN BGP eş IP 'si | 192.168.11.88 |
+| Birincil CE yönlendirici ı/f güvenlik duvarı IP 'si | 192.168.11.0/31 |
+| Birincil CE yönlendirici IP 'ye yönelik güvenlik duvarı g/f | 192.168.11.1/31 |
+| İkincil CE yönlendirici güvenlik duvarı IP 'si | 192.168.11.2/31 |
+| İkincil CE yönlendirici IP 'ye yönelik güvenlik duvarı g/f | 192.168.11.3/31 |
 
 
-Aşağıdaki tabloda topolojinin ASN'leri listelenebilmişve listelenebilmişdir:
+Aşağıdaki tabloda topolojinin ASNs listelenmiştir:
 
 | **Özerk sistem** | **ASN** |
 | --- | --- |
 | Şirket içi | 65020 |
-| Microsoft Kurumsal Kenar | 12076 |
-| Sanal Ağ GW (ExR) | 65515 |
-| Sanal Ağ GW (VPN) | 65515 |
+| Microsoft Enterprise Edge | 12076 |
+| Sanal ağ GW (ExR) | 65515 |
+| Sanal ağ GW (VPN) | 65515 |
 
-## <a name="high-availability-without-asymmetricity"></a>Asimetri olmadan yüksek kullanılabilirlik
+## <a name="high-availability-without-asymmetricity"></a>Asymmetrity olmadan yüksek kullanılabilirlik
 
 ### <a name="configuring-for-high-availability"></a>Yüksek kullanılabilirlik için yapılandırma
 
-[ExpressRoute ve Siteden Siteye birlikte var olan bağlantıları yapılandırın,][Conf-CoExist] birlikte var olan ExpressRoute devresi ve S2S VPN bağlantılarının nasıl yapılandırılabildiğini tartışır. [ExpressRoute ile yüksek kullanılabilirlik için Tasarım][HA]tartışılan gibi , ExpressRoute yüksek kullanılabilirlik geliştirmek için kurulum ağ artıklığı korur (başarısızlık tek bir nokta önler) uç noktalara kadar tüm yol. Ayrıca, ExpressRoute devrelerinin hem birincil hem de ikincil bağlantıları, şirket içi önekleri her iki bağlantıda da aynı şekilde reklam vererek etkin-etkin modda çalışacak şekilde yapılandırılmıştır. 
+[ExpressRoute ve siteden siteye birlikte mevcut bağlantıları yapılandırma][Conf-CoExist] , birlikte var olan ExpressRoute bağlantı HATTıNıN ve S2S VPN bağlantılarının nasıl yapılandırılacağını açıklar. [ExpressRoute ile yüksek kullanılabilirlik tasarlama konusunda][HA]anlatıldığı gibi, kurduğumuz ExpressRoute yüksek kullanılabilirliğini geliştirmek için, tüm uç noktalara kadar ağ yedekliliği (tek hata noktasını engeller) korur. Ayrıca, ExpressRoute devrelerinin birincil ve ikincil bağlantıları, şirket içi önekleri her iki bağlantıyla de aynı şekilde duyurarak etkin-etkin modda çalışacak şekilde yapılandırılmıştır. 
 
-ExpressRoute devresinin birincil bağlantısı üzerinden birincil CE yönlendiricinin şirket içi rota reklamı aşağıda gösterilmiştir (Junos komutları):
+ExpressRoute devresinin birincil bağlantısı aracılığıyla birincil CE yönlendiricisinin şirket içi yol tanıtımı aşağıda gösterilmektedir (Junos komutları):
 
     user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
@@ -77,7 +77,7 @@ ExpressRoute devresinin birincil bağlantısı üzerinden birincil CE yönlendir
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-ExpressRoute devresinin ikincil bağlantısı üzerinden ikincil CE yönlendiricinin şirket içi rota reklamı aşağıda gösterilmiştir (Junos komutları):
+ExpressRoute devresinin ikincil bağlantısı üzerinden ikincil CE yönlendiricisinin şirket içi yol tanıtımı aşağıda gösterilmektedir (Junos komutları):
 
     user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
@@ -85,11 +85,11 @@ ExpressRoute devresinin ikincil bağlantısı üzerinden ikincil CE yönlendiric
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-Yedekleme bağlantısının yüksek kullanılabilirliğini artırmak için, S2S VPN de etkin-aktif modda yapılandırılır. Azure VPN ağ geçidi yapılandırması aşağıda gösterilmiştir. VPN yapılandırması VPN bir parçası olarak ağ geçidiBGP peer IP adresleri -10.17.11.76 ve 10.17.11.77- de listelenir.
+Yedek bağlantının yüksek oranda kullanılabilirliğini artırmak için, S2S VPN etkin-etkin modda da yapılandırılır. Azure VPN ağ geçidi yapılandırması aşağıda gösterilmiştir. VPN yapılandırması VPN 'nin bir parçası olarak bkz. ağ geçidinin BGP eşi IP adresleri--10.17.11.76 ve 10.17.11.77--Ayrıca listelenir.
 
 ![2][2]
 
-Şirket içi rota, güvenlik duvarları tarafından VPN ağ geçidinin birincil ve ikincil BGP eşlerine duyurulur. Rota reklamları aşağıda gösterilmiştir (Junos):
+Şirket içi yol, VPN ağ geçidinin birincil ve ikincil BGP eşlerine güvenlik duvarları tarafından tanıtılabilir. Yol reklamları aşağıda gösterilmiştir (Junos):
 
     user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
@@ -105,16 +105,16 @@ Yedekleme bağlantısının yüksek kullanılabilirliğini artırmak için, S2S 
     * 10.1.11.0/25            Self                                    I
 
 >[!NOTE] 
->S2S VPN'in etkin-etkin modda yapılandırılması yalnızca olağanüstü durum kurtarma yedekleme ağ bağlantınıza yüksek kullanılabilirlik sağlamakla kalmıyor, aynı zamanda yedekleme bağlantısına daha yüksek verim sağlar. Başka bir deyişle, S2S VPN'in etkin-etkin modda yapılandırılma, temeltünellerin birden çok oluşturulmasına zorlanması önerilir.
+>S2S VPN 'i etkin-etkin modda yapılandırmak, yalnızca olağanüstü durum kurtarma yedek ağ bağlantınız için yüksek kullanılabilirlik sağlar, ancak yedekleme bağlantısına daha yüksek performans sağlar. Diğer bir deyişle, etkin-etkin modda S2S VPN yapılandırması, birden çok temel tünel oluşturmayı zorgerektirdiğinden önerilir.
 >
 
 ### <a name="configuring-for-symmetric-traffic-flow"></a>Simetrik trafik akışı için yapılandırma
 
-Belirli bir şirket içi rota hem ExpressRoute hem de S2S VPN üzerinden duyurulduğunda, Azure'un ExpressRoute yolunu tercih edeceğini kaydettik. Azure'u birlikte var olan ExpressRoute üzerinden S2S VPN yolunu tercih etmeye zorlamak için VPN bağlantısı üzerinden daha spesifik yolların (daha büyük alt ağ maskesi ile daha uzun önek) reklamını yapmanız gerekir. Buradaki amacımız VPN bağlantılarını sadece geri kullanmaktır. Bu nedenle, Azure'un varsayılan yol seçimi davranışı hedefimizle uyumludur. 
+Verilen şirket içi bir rota hem ExpressRoute hem de S2S VPN aracılığıyla tanıtıldığında Azure, ExpressRoute yolunu tercih edebiliyoruz. Azure 'un aynı ExpressRoute üzerinden S2S VPN yolunu tercih etmeye zorlamak için, VPN bağlantısı aracılığıyla daha fazla özel yol (daha büyük alt ağ maskesiyle daha uzun ön ek) duyurmanız gerekir. Buradaki amaç VPN bağlantılarını yalnızca geri olarak kullanmaktır. Bu nedenle, Azure 'un varsayılan yol seçimi davranışı hedefimize göre çevrimiçi. 
 
-Şirket içinde Azure'a giden trafiğin S2S VPN üzerinden ExpressRoute yolunu da tercih etmesini sağlamak bizim sorumluluğumuzdur. Şirket içi kurulumumuzda CE yönlendiricilerinin ve güvenlik duvarlarının varsayılan yerel tercihi 100'dür. Bu nedenle, ExpressRoute özel bakışları üzerinden alınan rotaların yerel tercihini 100'den büyük (örneğin 150) yapılandırarak, Azure'a giden trafiğin sabit durumda ExpressRoute devresini tercih etmesini sağlayabiliriz.
+Şirket içinden Azure 'a giden trafiğin aynı zamanda S2S VPN üzerinden ExpressRoute yolunu tercih ettiği bir sorumluluktur. Şirket içi kurulumumuzdaki CE yönlendiricilerinin ve güvenlik duvarlarının varsayılan yerel tercihi 100 ' dir. Bu nedenle, ExpressRoute özel eşayarları 100 ' den büyük olan yolların yerel tercihini yapılandırarak (150), Azure 'a hedeflenen trafiği, düzenli durumda ExpressRoute devresini tercih edebiliriz.
 
-ExpressRoute devresinin birincil bağlantısını sonlandıran birincil CE yönlendiricisinin BGP yapılandırması aşağıda gösterilmiştir. iBGP oturumu üzerinden reklamı yapılan yolların yerel tercihinin değeri 150 olarak yapılandırılmıştır. Benzer şekilde, ExpressRoute devresinin ikincil bağlantısını sonlandıran ikincil CE yönlendiricisinin yerel tercihinin de 150 olarak yapılandırıldığından emin olmamız gerekir.
+ExpressRoute devresinin birincil bağlantısını sonlandıran birincil CE yönlendiricisinin BGP yapılandırması aşağıda gösterilmiştir. IGP oturumu üzerinden tanıtılan yolların yerel tercihinin değeri 150 olacak şekilde yapılandırılır. Benzer şekilde, ExpressRoute bağlantı hattının ikincil bağlantısını sonlandıran ikincil CE yönlendiricisinin yerel tercihlerinin de 150 olarak yapılandırıldığından emin olunması gerekir.
 
     user@SEA-MX03-01> show configuration routing-instances Cust11 
     description "Customer 11 VRF";
@@ -139,7 +139,7 @@ ExpressRoute devresinin birincil bağlantısını sonlandıran birincil CE yönl
       }
     }
 
-Şirket içi güvenlik duvarlarının yönlendirme tablosu, Azure'a giden şirket içi trafik için tercih edilen yolun sabit durumda ExpressRoute üzerinde olduğunu (aşağıda gösterilmiştir) doğrular.
+Şirket içi güvenlik duvarları 'nin yönlendirme tablosu, Azure 'a gidecek şirket içi trafiğin, Azure 'a yönelik olarak tercih edilen yolda ExpressRoute üzerinden olduğunu doğrular (aşağıda gösterilmiştir).
 
     user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
 
@@ -177,11 +177,11 @@ ExpressRoute devresinin birincil bağlantısını sonlandıran birincil CE yönl
                           AS path: 65515 I, validation-state: unverified
                         > via st0.119
 
-Yukarıdaki rota tablosunda, hub ve kollu VNet rotaları için--10.17.11.0/25 ve 10.17.11.128/26-- ExpressRoute devresinin VPN bağlantıları na göre tercih edilir. 192.168.11.0 ve 192.168.11.2, CE yönlendiricilere yönelik güvenlik duvarı arabirimindeki IP'lerdir.
+Yukarıdaki yol tablosunda, hub ve bağlı bileşen VNet rotaları için--10.17.11.0/25 ve 10.17.11.128/26--VPN bağlantıları üzerinden ExpressRoute bağlantı hattı tercih ederiz. 192.168.11.0 ve 192.168.11.2, CE yönlendiricilerine yönelik güvenlik duvarı arabirimindeki IP 'lardır.
 
-## <a name="validation-of-route-exchange-over-s2s-vpn"></a>S2S VPN üzerinden rota değişiminin doğrulanması
+## <a name="validation-of-route-exchange-over-s2s-vpn"></a>S2S VPN üzerinden rota değişimi doğrulaması
 
-Bu makalenin başlarında, güvenlik duvarlarının vpn ağ geçidinin birincil ve ikincil BGP eşlerine şirket içi rota reklamını doğruladık. Ayrıca, VPN ağ geçidinin birincil ve ikincil BGP eşlerinden güvenlik duvarları tarafından alınan Azure rotalarını da doğrulayalım.
+Bu makalenin önceki kısımlarında, güvenlik duvarlarının şirket içi yol tanıtımını VPN ağ geçidinin birincil ve ikincil BGP eşleri için doğruladık. Ayrıca, VPN ağ geçidinin birincil ve ikincil BGP eşlerinden gelen güvenlik duvarları tarafından alınan Azure yollarını doğrulayalim.
 
     user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
@@ -198,7 +198,7 @@ Bu makalenin başlarında, güvenlik duvarlarının vpn ağ geçidinin birincil 
       10.17.11.0/25           10.17.11.77                             65515 I
       10.17.11.128/26         10.17.11.77                             65515 I
 
-Benzer şekilde, Azure VPN ağ geçidi tarafından alınan şirket içi ağ rotası önekleri için de doğrulayalım. 
+Benzer şekilde, Azure VPN ağ geçidi tarafından alınan şirket içi ağ yolu öneklerini doğrulayalım. 
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
@@ -213,9 +213,9 @@ Benzer şekilde, Azure VPN ağ geçidi tarafından alınan şirket içi ağ rota
     10.1.11.0/25 10.17.11.69   12076-65020  32769
     10.1.11.0/25 10.17.11.69   12076-65020  32769
 
-Yukarıda görüldüğü gibi, VPN ağ geçidi, VPN ağ geçidinin birincil ve ikincil BGP eşleri tarafından alınan rotalara sahiptir. Ayrıca birincil ve ikincil ExpressRoute bağlantıları (12076 ile hazırlanmış AS-path olanlar) üzerinden alınan güzergahlar üzerinde görünürlüğe sahiptir. VPN bağlantıları üzerinden alınan yolları doğrulamak için, bağlantıların şirket içi BGP eş IP'sini bilmemiz gerekir. Göz önünde bulundurulan kurulumumuzda 192.168.11.88 ve biz ondan alınan yolları görüyoruz.
+Yukarıda görüldüğü gibi, VPN ağ geçidinin hem VPN ağ geçidinin birincil ve ikincil BGP eşleri tarafından alınan yolları vardır. Ayrıca birincil ve ikincil ExpressRoute bağlantıları aracılığıyla alınan yolların üzerinde görünebilirliği vardır (AS-Path 'e sahip olanlar 12076 ile sona erer). VPN bağlantıları aracılığıyla alınan yolları onaylamak için, bağlantıların şirket içi BGP eş IP 'sini bilmelidir. Göz önüne alındığında, 192.168.11.88, bundan alınan yolları görmemiz gerekir.
 
-Ardından, Azure VPN ağ geçidi tarafından şirket içi güvenlik duvarı BGP eşine (192.168.11.88) reklamı yapılan yolları doğrulayalım.
+Daha sonra, Azure VPN ağ geçidi tarafından tanıtılan yolları şirket içi güvenlik duvarı BGP eşine (192.168.11.88) doğrulayalim.
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
@@ -227,17 +227,17 @@ Ardından, Azure VPN ağ geçidi tarafından şirket içi güvenlik duvarı BGP 
     10.17.11.128/26 10.17.11.77 65515       0
 
 
-Rota alışverişinin yapılamaması bağlantı hatasını gösterir. Sorun [Giderme: Azure sitesinden siteye VPN bağlantısı bağlanamaz ve][VPN Troubleshoot] VPN bağlantısını giderme de yardım için çalışmayı durdurur.
+Yol alışverişlerini görmemesi bağlantı hatasını gösteriyor. Bkz. [sorun giderme: Azure siteden sıteye VPN bağlantısı][VPN Troubleshoot] , VPN bağlantısının sorunlarını gidermeye yönelik yardım için bağlantı ve çalışmayı durduruyor.
 
-## <a name="testing-failover"></a>Test başarısız
+## <a name="testing-failover"></a>Yük devretmeyi test etme
 
-Şimdi VPN bağlantısı (kontrol uçağı) üzerinden başarılı rota alışverişi doğruladı, biz VPN bağlantısı ExpressRoute bağlantısı ndan trafik (veri düzlemi) geçiş için ayarlanır. 
+Artık VPN bağlantısı (denetim düzlemi) üzerinden başarılı yol alışverişlerini Onayladığımıza göre, ExpressRoute bağlantınızdan VPN bağlantısına trafik (veri düzlemi) geçirmek üzere ayarlandık. 
 
 >[!NOTE] 
->Üretim ortamlarında arıza testi, servis aksatıcı olabileceğiiçin zamanlanan ağ bakım iş penceresi sırasında yapılmalıdır.
+>Üretim ortamlarında yük devretme testi, zamanlanmış ağ bakımı çalışma penceresinde, hizmet karışıklığa yol açabileceği için yapılmalıdır.
 >
 
-Trafik anahtarını yapmak için önce, kurulumumuzdaki geçerli yolu şirket içi test sunucusundan konuşan VNet'teki test VM'ye kadar takip edelim.
+Trafik anahtarını yapmadan önce, ayarımızda bulunan geçerli yolu, şirket içi test sunucusundan bağlı olan VNet 'teki test sanal makinesine yönlendirmenizi sağlar.
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -251,15 +251,15 @@ Trafik anahtarını yapmak için önce, kurulumumuzdaki geçerli yolu şirket i�
 
     Trace complete.
 
-Kurulumumuzun birincil ve ikincil ExpressRoute noktadan noktaya bağlantı alt ağları sırasıyla 192.168.11.16/30 ve 192.168.11.20/30'dır. Yukarıdaki izleme rotasında, 3. MSEE arabiriminin varlığı, beklendiği gibi mevcut yolumuzun ExpressRoute üzerinde olduğunu doğrulamaktadır.
+Kurulumumuz birincil ve ikincil ExpressRoute noktadan noktaya bağlantı alt ağları sırasıyla, 192.168.11.16/30 ve 192.168.11.20/30 ' dur. Yukarıdaki izleme rotasında, adım 3 ' te, birincil MSEE 'in Arabirim IP 'si olan 192.168.11.18 'e ulaşdığımızda görüyoruz. MSEE arabirimi varlığı, geçerli yolumuz ExpressRoute 'un üzerinde olduğunu onaylar.
 
-[Reset ExpressRoute devresi eşlemelerinde][RST]bildirildiği gibi, ExpressRoute devresinin hem birincil hem de ikincil eşlemesini devre dışı bırakmak için aşağıdaki powershell komutlarını kullanalım.
+[ExpressRoute][RST]bağlantı hattı eşlerinin sıfırlanması sırasında bildirildiği gibi, ExpressRoute bağlantı hattının birincil ve ikincil eşlemesini devre dışı bırakmak için aşağıdaki PowerShell komutlarını kullanalım.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Disabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Başarısız geçiş süresi BGP yakınsama süresine bağlıdır. Kurulumumuzda, arıza anahtarı birkaç saniye sürer (10'dan az). Geçişten sonra, izleme yolunun tekrarı aşağıdaki yolu gösterir:
+Yük devretme anahtarı süresi BGP yakınsama zamanına bağlıdır. Kurulumumuzda, yük devretme anahtarı birkaç saniye sürer (10 ' dan az). Anahtardan sonra, izleme yolu ' nu yinelemek aşağıdaki yolu gösterir:
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -271,24 +271,24 @@ Başarısız geçiş süresi BGP yakınsama süresine bağlıdır. Kurulumumuzda
 
     Trace complete.
 
-İzleme rotası sonucu, S2S VPN üzerinden yedekleme bağlantısının etkin olduğunu ve hem birincil hem de ikincil ExpressRoute bağlantılarının başarısız olması durumunda hizmet sürekliliği sağlayabileceğini doğrular. Başarısız lık testini tamamlamak için, aşağıdaki komut kümesini kullanarak ExpressRoute bağlantılarını etkinleştirelim ve trafik akışını normalleştirelim.
+İzleme işlemi sonucu, S2S VPN aracılığıyla yedekleme bağlantısının etkin olduğunu doğrular ve hem birincil hem de ikincil ExpressRoute bağlantıları başarısız olursa hizmet devamlılığını sağlayabilir. Yük devretme testini gerçekleştirmek için aşağıdaki komut kümesini kullanarak ExpressRoute bağlantılarını geri etkinleştirip trafik akışını normalleştirin.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Enabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Trafiğin ExpressRoute'a geri döndüğünü doğrulamak için, izleme rotasını tekrarlayın ve ExpressRoute özel eşlemelerinden geçtiğinden emin olun.
+Trafiğin ExpressRoute 'a geri yüklendiğini doğrulamak için, izleme Oute öğesini tekrarlayın ve ExpressRoute özel eşlemeden devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ExpressRoute, Microsoft ağında tek bir hata noktası olmadan yüksek kullanılabilirlik için tasarlanmıştır. Yine de bir ExpressRoute devresi tek bir coğrafi bölge ve bir servis sağlayıcı ile sınırlıdır. S2S VPN bir ExpressRoute devre için iyi bir felaket kurtarma pasif yedekleme çözümü olabilir. Güvenilir bir pasif yedekleme bağlantısı çözümü, pasif yapılandırmanın düzenli olarak sürdürülmesi ve periyodik doğrulama için bağlantı önemlidir. VPN yapılandırmasının eskihaline gelmesine izin vermemek ve periyodik olarak (her üç ayda bir söylemek gerekirse) bakım penceresi sırasında bu makalede açıklanan doğrulama ve başarısız test adımlarını yinelemek önemlidir.
+ExpressRoute, Microsoft ağı içinde tek hata noktası olmadan yüksek kullanılabilirlik için tasarlanmıştır. Hala bir ExpressRoute bağlantı hattı, tek bir coğrafi bölgeye ve bir hizmet sağlayıcısına göre sınırlandırlanır. S2S VPN, bir ExpressRoute devresine yönelik iyi bir olağanüstü durum kurtarma pasif yedekleme çözümüdür. Güvenilir bir pasif yedekleme bağlantısı çözümü için, pasif yapılandırmanın düzenli olarak bakımı ve dönemsel doğrulama doğrulaması için bağlantı önemlidir. VPN yapılandırmasının eski hale gelmesi ve düzenli aralıklarla (her üç ayda bir şekilde), bakım penceresi sırasında bu makalede açıklanan doğrulama ve yük devretme testi adımlarını tekrarlamasına yönelik önemli değildir.
 
-VPN ağ geçidi ölçümlerine dayalı izleme ve uyarıları etkinleştirmek için VPN [Ağ Geçidi ölçümlerinde uyarıları ayarlama'ya][VPN-alerts]bakın.
+VPN ağ geçidi ölçümlerine göre izleme ve uyarıları etkinleştirmek için bkz. [VPN Gateway ölçümleri üzerinde uyarıları ayarlama][VPN-alerts].
 
-Bir ExpressRoute hatasının ardından BGP yakınsamasını hızlandırmak [için BFD'yi ExpressRoute üzerinden yapılandırın.][BFD]
+ExpressRoute hatasından sonra BGP yakınsama sürecini hızlandırmak için, [BFD 'Yi ExpressRoute üzerinden yapılandırın][BFD].
 
 <!--Image References-->
-[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "topoloji göz önünde bulunduruluyor"
+[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "değerlendirme kapsamındaki topoloji"
 [2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "VPN GW yapılandırması"
 
 <!--Link References-->

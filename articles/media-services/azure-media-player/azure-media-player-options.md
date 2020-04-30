@@ -1,109 +1,109 @@
 ---
-title: Azure Medya Oynatıcı Seçenekleri
-description: Azure Media Player gömme kodu yalnızca bir HTML5 video etiketidir, bu nedenle seçeneklerin çoğu için seçenekleri ayarlamak için standart etiket özniteliklerini kullanabilirsiniz.
+title: Azure Media Player seçenekleri
+description: Azure Media Player ekleme kodu yalnızca HTML5 video etiketleridir, bu nedenle seçeneklerin birçoğu için standart etiket özniteliklerini kullanarak seçenekleri ayarlayabilirsiniz.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727170"
 ---
 # <a name="options"></a>Seçenekler #
 
 ## <a name="setting-options"></a>Ayar seçenekleri ##
 
-Azure Media Player gömme kodu yalnızca bir HTML5 video etiketidir, bu nedenle seçeneklerin çoğu için seçenekleri ayarlamak için standart etiket özniteliklerini kullanabilirsiniz.
+Azure Media Player ekleme kodu yalnızca HTML5 video etiketleridir, bu nedenle seçeneklerin birçoğu için standart etiket özniteliklerini kullanarak seçenekleri ayarlayabilirsiniz.
 
 `<video controls autoplay ...>`
 
-Alternatif olarak, [JSON](http://json.org/example.html) biçiminde seçenekler sağlamak için veri kurulumu özniteliğini kullanabilirsiniz. Video etiketinde standart olmayan seçenekleri de bu şekilde ayarlayabilirsiniz.
+Alternatif olarak, [JSON](http://json.org/example.html) biçiminde seçenekler sağlamak için Data-Setup özniteliğini de kullanabilirsiniz. Bu Ayrıca, video etiketiyle standart olmayan seçenekleri nasıl ayarlayabileceğinizi de sağlar.
 
 `<video data-setup='{ "controls": true, "autoplay": false }'...>`
 
-Son olarak, oyuncu kurulumunu tetiklemek için veri kurulumu özniteliğini kullanmıyorsanız, JavaScript kurulum işlevindeki ikinci bağımsız değişken olarak oyuncu seçeneklerine sahip bir nesneyi geçirebilirsiniz.
+Son olarak, Player kurulumunu tetiklemek için Data-Setup özniteliğini kullanmıyorsanız, JavaScript kurulum işlevindeki ikinci bağımsız değişken olarak oynatıcı seçenekleriyle bir nesne geçirebilirsiniz.
 
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> Oluşturucudaki seçenekler yalnızca kaynak ayarlanmadan önce ilk başlatma üzerinde ayarlanır.  Aynı başharfe bürünen Azure Media Player öğesindeki seçenekleri değiştirmek istiyorsanız, kaynağı değiştirmeden önce seçenekleri güncelleştirmeniz gerekir. JavaScript'teki seçenekleri kullanarak `myPlayer.options({/*updated options*/});`güncelleştirebilirsiniz. Yalnızca değiştirilen seçeneklerin etkileneceğini, önceden ayarlanmış diğer tüm seçeneklerin devam edeceğini unutmayın.
+> Oluşturucudaki seçenekler, kaynak ayarlamadan önce yalnızca ilk başlatma üzerinde ayarlanır.  Aynı başlatılmış Azure Media Player öğesindeki seçenekleri değiştirmek istiyorsanız, kaynağı değiştirmeden önce seçenekleri güncelleştirmeniz gerekir. JavaScript 'teki seçenekleri kullanarak `myPlayer.options({/*updated options*/});`güncelleştirebilirsiniz. Yalnızca değiştirilen seçeneklerin etkileneceğini, diğer tüm daha önceden ayarlanan seçeneklerin kalıcı olacağını unutmayın.
 
 ## <a name="individual-options"></a>Bireysel seçenekler ##
 
 > [!NOTE]
->Video Etiket Öznitelikleri yalnızca doğru veya yanlış (boolean) olabilir, yalnızca açmak için özniteliği (eşit işareti yok) ekler veya kapatmak için hariç tutarsınız. Örneğin, denetimleri açmak için: YANLIŞ `<video controls="true" ...>` DOĞRU `<video controls ...>` İnsanların karşısına çıkan en büyük sorun, bu değerleri false olarak false olarak ayarlamaya çalışmaktır (örn. denetimler="false") aslında tam tersini yapar ve öznitelik hala dahil olduğu için değeri doğru olarak ayarlar.
+>Video etiketi öznitelikleri yalnızca true veya false (Boolean) olabilir, bunu açmak için özniteliği (eşittir işareti olmadan) dahil edin veya devre dışı bırakmak için hariç tutun. Örneğin, denetimleri açmak için: `<video controls="true" ...>` `<video controls ...>` en büyük sorunun en büyük olması, bu değerleri yanlış olarak doğru olarak ayarlayan (ör. Controls = "false") değer olarak false olarak ayarlamaya çalışıyor ve öznitelik hala dahil edildiğinden değeri true olarak ayartı.
 
 ### <a name="controls"></a>denetimler ###
 
-Denetimler seçeneği, oyuncunun kullanıcıyla etkileşimkurabileceği denetimleri olup olmadığını belirler. Denetimler olmadan video oynatma başlatmak için tek yol otomatik oynatma özniteliği veya API ile.
+Denetimler seçeneği, oynatıcının kullanıcının etkileşime girebileceği denetimleri içerip içermediğini ayarlar. Denetimleri olmadan, video oynatmayı başlatmak için tek yol, AutoPlay özniteliğiyle veya API aracılığıyla yapılır.
 
 `<video controls ...>` veya `{ "controls": true }`
 
 ### <a name="autoplay"></a>autoplay ###
 
-Otomatik oynatma doğruysa, sayfa yüklenir yüklenmez (kullanıcıdan herhangi bir etkileşim olmaksızın) video oynatılmaya başlar.
+Otomatik Kullan doğru ise, sayfa yüklendikten hemen sonra (kullanıcıdan herhangi bir etkileşim olmadan) video yürütülmeye başlayacaktır.
 
 > [!NOTE]
-> Bu seçenek Windows Phone, Apple iOS ve Android gibi mobil cihazlar tarafından desteklenmez. Mobil cihazlar, tüketicinin aylık veri planlarının (genellikle pahalı) aşırı kullanımını önlemek için otomatik oynatma işlevini engeller. Bu durumda videoyu başlatmak için kullanıcı ya da tıklama gerekir.
+> Bu seçenek Windows Phone, Apple iOS ve Android gibi mobil cihazlar tarafından desteklenmez. Mobil cihazlar, tüketicinin aylık veri planlarının kullanımını engellemek için Otomatik Kullan işlevselliğini engeller (genellikle pahalıdır). Bu durumda videoyu başlatmak için bir Kullanıcı dokunması/tıklaması gerekir.
 
-`<video autoplay ...>`Veya`{ "autoplay": true }`
+`<video autoplay ...>`veya`{ "autoplay": true }`
 
-### <a name="poster"></a>Poster ###
-Poster özniteliği, video oynatılıktan önce görüntüleyen görüntüyü ayarlar. Bu genellikle videonun bir çerçevesi veya özel bir başlık ekranıdır. Kullanıcı oynatTıkları anda görüntü ortadan kaldıracaktır.
+### <a name="poster"></a>AF ###
+Poster özniteliği, video yürütülmeye başlamadan önce görüntülenen görüntüyü ayarlar. Bu genellikle videonun veya özel bir başlık ekranının bir çerçevesidir. Kullanıcı oynat ' a tıkladığı anda görüntü çalışır.
 
 `<video poster="myPoster.jpg" ...>` veya `{ "poster": "myPoster.jpg" }`
 
 ### <a name="width"></a>genişlik ###
 
-Genişlik özniteliği videonun ekran genişliğini ayarlar.
+Width özniteliği videonun görüntü genişliğini ayarlar.
 
 `<video width="640" ...>` veya `{ "width": 640 }`
 
 ### <a name="height"></a>yükseklik ###
 
-Yükseklik özniteliği videonun ekran yüksekliğini ayarlar.
+Height özniteliği videonun görüntüleme yüksekliğini ayarlar.
 
 `<video height="480" ...>` veya `{ "height": 480 }`
 
-### <a name="plugins"></a>Eklentiler ###
+### <a name="plugins"></a>Kaydet ###
 
-JSON eklentileri, hangi eklentilerin bu AMP örneğine yüklenebileceğini belirler ve eklentinin sahip olabileceği seçenekleri yapılandırmanızı sağlar.
+Eklenti JSON, bu AMP örneğiyle hangi eklentilerin yüklendiğini belirler, eklentinin sahip olabileceği herhangi bir seçeneği yapılandırmanızı sağlar.
 
    `<video... data-setup='{plugins: { "contentTitle": {"name": "Azure Medi Services Overview"}}}'...>`
 
-Eklenti geliştirme ve kullanımı hakkında daha fazla bilgi için [yazı eklentilerine](azure-media-player-writing-plugins.md) bakın
+Eklenti geliştirme ve kullanımı hakkında daha fazla bilgi için bkz. eklenti [yazma](azure-media-player-writing-plugins.md)
 
 ### <a name="other-options"></a>diğer seçenekler ###
 
-Diğer seçenekler, JSON `<video>` alan `data-setup` parametre kullanılarak etiketüzerinde ayarlanabilir.
+Diğer seçenekler JSON alan `<video>` `data-setup` parametresi kullanılarak etiketinde ayarlanabilir.
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
 #### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
 
-Bu açıkça yanlış olarak ayarlanır. Yanlış ayarı yaparak, Azure Media Player cildinin platformlar arasında aynı şekilde işlenmesine olanak tanır.  Ayrıca, adı aksine, dokunma hala etkin olacaktır.
+Bu, açıkça false olarak ayarlanmıştır. Yanlış olarak ayarlayarak Azure Media Player kaplamanın platformlar arasında aynı şekilde işlenmesine izin verir.  Ayrıca, adın aksine dokunma özelliği de etkinleştirilir.
 
-### <a name="fluid"></a>Sıvı ###
+### <a name="fluid"></a>akıcı ###
 
-Bu seçeneği gerçek video öğesine ayarlayarak üst kapsayıcının tam genişliğini alır ve yükseklik standart 16:9 en boy oranına sahip bir videoya uyacak şekilde ayarlanır.
+Bu seçeneği gerçek video öğesine ayarlayarak, Ana kapsayıcının tam genişliği ve yüksekliği standart 16:9 en boy oranına sahip bir videoya uyacak şekilde ayarlanır.
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`seçeneği açık `width` ve `height` ayarları geçersiz kılar. Bu seçenek yalnızca Azure Media `2.0.0` Player sürümünde ve daha sonra kullanılabilir.
+`fluid`seçenek açık `width` ve `height` ayarları geçersiz kılar. Bu seçenek yalnızca Azure Media Player sürümünde `2.0.0` ve sonrasında kullanılabilir.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`seçenek oynatmaHız denetimini ve kullanıcı için kullanılabilir oynatma hızı ayarlarını kontrol eder. `playbackSpeed`bir nesne alır. Denetim çubuğunda oynatma hızı denetimini etkinleştirmek için nesnenin özelliğinin `enabled` doğru olarak ayarlanması gerekir. Biçimlendirmede oynatma hızını etkinleştirme örneği:
+`playbackSpeed`seçenek, Kullanıcı için kullanılabilir playbackSpeed denetimini ve kayıttan yürütme hızı ayarlarını denetler. `playbackSpeed`bir nesnesi alır. Denetim çubuğunda kayıttan yürütme hızı denetimini etkinleştirmek için nesnenin özelliğinin `enabled` true olarak ayarlanması gerekir. Biçimlendirme sırasında kayıttan yürütme hızını etkinleştirmeye bir örnek:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Ayarın `playbackSpeed` diğer özellikleri [PlaybackSpeedOptions nesnesi](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) tarafından verilir.
+`playbackSpeed` Ayarın diğer özellikleri [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) nesnesi tarafından verilir.
 
-JavaScript'te oynatma hızı seçenekleri ayarlama örneği:
+JavaScript 'te kayıttan yürütme hızı seçeneklerini ayarlama örneği:
 
 ```javascript
     var myPlayer = amp('vid1', {
@@ -126,15 +126,15 @@ JavaScript'te oynatma hızı seçenekleri ayarlama örneği:
     });
 ```
 
-Bu seçenek yalnızca Azure Media Player sürüm 2.0.0 ve sonraki sürümlerinde kullanılabilir.
+Bu seçenek yalnızca Azure Media Player Version 2.0.0 ve üzeri sürümlerde kullanılabilir.
 
-### <a name="staledatatimelimitinsec"></a>staleDataTimeLimitInSec ###
+### <a name="staledatatimelimitinsec"></a>Staledatatimelimitınsec ###
 
-Bu `staleDataTimeLimitInSec` seçenek, mediaSource arabelleklerinde tutmak istediğiniz kaç saniyelik eski verileri yapılandırmanızı sağlayan bir optimizasyondur. Bu, varsayılan olarak devre dışıdır.
+Bu `staleDataTimeLimitInSec` seçenek, MediaSource arabelleklerinde tutmak istediğiniz kaç saniyelik eski verinin sayısını yapılandırmanıza imkan tanıyan bir iyileştirmedir. Bu, varsayılan olarak devre dışıdır.
 
-### <a name="cea708captionssettings"></a>cea708CaptionsAyarlar ###
+### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 
-Gerçek olarak etkinleştirilen ayar, canlı akışlarınızda ve canlı arşivlerinizde canlı CEA altyazılarını görüntülemenize olanak tanır. Etiket özniteliği gerekli değildir, eğer oyuncu varsayılan etikete geri düşecek dahil değilse.
+True olarak ayarlanması, canlı akışlarınızın ve canlı arşivlerinizin canlı CEA açıklamalı alt görüntüsünü görüntülemenize izin verir. Etiket özniteliği gerekli değildir, yoksa Player varsayılan bir etikete geri dönecektir.
 
 ```javascript
      cea708CaptionsSettings: {
@@ -144,8 +144,8 @@ Gerçek olarak etkinleştirilen ayar, canlı akışlarınızda ve canlı arşivl
             }
 ```
 
-Bu seçenek yalnızca Azure Media Player sürüm 2.1.1 ve sonraki sürümlerde kullanılabilir.
+Bu seçenek yalnızca Azure Media Player Version 2.1.1 ve üzeri sürümlerde kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

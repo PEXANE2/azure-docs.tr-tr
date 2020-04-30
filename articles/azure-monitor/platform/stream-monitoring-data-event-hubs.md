@@ -1,6 +1,6 @@
 ---
-title: Azure izleme verilerini etkinlik merkezine aktarın
-description: Verileri iş ortağı SIEM veya analiz aracına dönüştürmek için Azure izleme verilerinizi bir etkinlik merkezine nasıl aktarılacınız öğrenin.
+title: Azure izleme verilerini Olay Hub 'ına akış
+description: Verileri bir iş ortağı SıEM veya analiz aracına almak için Azure izleme verilerinizi bir olay hub 'ına nasıl akıtirecağınızı öğrenin.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,60 +8,60 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733093"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub'ına gönderme
-Azure Monitor, Azure'daki uygulamalar ve hizmetler için, diğer bulutlarda ve şirket içinde tam bir yığın izleme çözümü sağlar. Bu verileri çözümlemek ve farklı izleme senaryoları için kullanmak için Azure Monitor'u kullanmanın yanı sıra, ortamınızdaki diğer izleme araçlarına da göndermeniz gerekebilir. Çoğu durumda izleme verilerini harici araçlara aktarmak için en etkili yöntem [Azure Etkinlik Hub'larını](/azure/event-hubs/)kullanmaktır. Bu makalede, izleme verilerini farklı kaynaklardan bir olay merkezine nasıl aktarabileceğiniz ve ayrıntılı kılavuza bağlantılar için kısa bir açıklama sağlanmaktadır.
+Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede, farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Herhangi bir veri kaynağı için akışı yapılandırmadan [önce, bir Olay Hub'ları ad alanı ve olay hub'ı oluşturmanız](../../event-hubs/event-hubs-create.md)gerekir. Bu ad alanı ve olay hub'ı, tüm izleme verilerinizin hedefidir. Olay Hub'ları ad alanı, aynı erişim ilkesini paylaşan olay hub'larının mantıksal bir gruplandırmasIdır, tıpkı bir depolama hesabının bu depolama hesabında tek tek blob'ları olması gibi. İzleme verilerini akışı için kullandığınız olay hub'ları ad alanı ve olay hub'ları hakkında aşağıdaki ayrıntıları göz önünde bulundurun:
+Herhangi bir veri kaynağı için akışı yapılandırmadan önce, [bir Event Hubs ad alanı ve Olay Hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md)gerekir. Bu ad alanı ve Olay Hub 'ı tüm izleme verilerinizin hedefdir. Event Hubs ad alanı, aynı erişim ilkesini paylaşan bir olay hub 'larının mantıksal gruplandırmasıdır. Bu, depolama hesabının bu depolama hesabı içinde ayrı blob 'lara sahip olduğu gibidir. İzleme verileri akışı için kullandığınız Olay Hub 'ları ad alanı ve Olay Hub 'ları hakkında aşağıdaki ayrıntıları göz önünde bulundurun:
 
-* Üretim birimlerinin sayısı, olay hub'larınız için üretim ölçeğini artırmanıza olanak tanır. Genellikle yalnızca bir iş birimi gereklidir. Günlük kullanımınız arttıkça ölçeklendirmeniz gerekiyorsa, ad alanı için üretim birimi sayısını el ile artırabilir veya otomatik enflasyonu etkinleştirebilirsiniz.
-* Bölüm sayısı, tüketimi birçok tüketici arasında paralelleştirmenize olanak tanır. Tek bir bölüm, saniyede 20 MBps'ye kadar veya yaklaşık 20.000 iletidestekleyebilir. Verileri tüketen araca bağlı olarak, birden çok bölümden tüketenleri destekleyebilir veya desteklemeyebilir. Ayarlayacak bölüm sayısı hakkında emin değilseniz, dört bölüm başlamak için makul.
-* Olay merkezinizdeki ileti bekletme olayını en az 7 gün olarak ayarlarsınız. Tüketen aracınız bir günden uzun süre batılırsa, bu, aracın 7 güne kadar olan olaylar için kaldığı yerden devam etmesini sağlar.
-* Olay merkeziniz için varsayılan tüketici grubunu kullanmalısınız. Aynı olay merkezinden aynı verileri iki farklı araç tüketmeyi planlamadığınız sürece, başka tüketici grupları oluşturmanıza veya ayrı bir tüketici grubu kullanmaya gerek yoktur.
-* Azure Etkinliği günlüğü için bir Etkinlik Hub'ları ad alanı seçersiniz ve Azure Monitor bu ad alanı içinde _insights-logs-operational-logs_adı verilen bir olay hub'ı oluşturur. Diğer günlük türleri için, varolan bir olay hub'ı seçebilir veya Azure Monitor'un günlük kategorisi başına bir etkinlik hub'ı oluşturması gerekir.
-* Giden bağlantı noktası 5671 ve 5672 genellikle bilgisayarda veya Olay hub'ından VNET tüketen veri açılmalıdır.
+* Üretilen iş birimi sayısı, Olay Hub 'larınız için üretilen iş ölçeğini artırmanıza olanak tanır. Genellikle yalnızca bir üretilen iş birimi gereklidir. Günlük kullanımınız arttıkça ölçeği büyütmeniz gerekiyorsa, ad alanı için üretilen iş birimi sayısını el ile artırabilir veya otomatik enflasyon sağlayabilirsiniz.
+* Bölüm sayısı, birçok tüketici genelinde tüketim paralel hale getirmek sağlar. Tek bir bölüm, saniyede en fazla 20 Mbps veya yaklaşık 20.000 ileti destekleyebilir. Verileri kullanan araca bağlı olarak, birden çok bölümden kullanmayı desteklemiyor olabilir veya desteklemeyebilir. Ayarlanacak bölüm sayısı hakkında emin değilseniz, bunun için dört bölüm başlamak mantıklı değildir.
+* Olay Hub 'ınızdaki ileti bekletmesini en az 7 güne ayarlayın. Tüketim aracınız bir günden daha uzun bir süre kapanıyorsa bu, aracın 7 güne kadar eski olaylar için kaldığınız yerden devam edebilmesini sağlar.
+* Olay Hub 'ınız için varsayılan tüketici grubunu kullanmanız gerekir. Aynı Olay Hub 'ından aynı verileri tüketmek üzere iki farklı araca sahip olmak için başka tüketici grupları oluşturmanız veya ayrı bir tüketici grubu kullanmanız gerekmez.
+* Azure etkinlik günlüğü için bir Event Hubs ad alanı seçmelisiniz ve Azure Izleyici, bu ad alanı içinde _Öngörüler-logs-işletimsel-logs_adlı bir olay hub 'ı oluşturur. Diğer günlük türleri için, mevcut bir olay hub 'ını seçebilir veya Azure Izleyici 'nin günlük kategorisi başına bir olay hub 'ı oluşturmasını sağlayabilirsiniz.
+* Giden bağlantı noktası 5671 ve 5672, genellikle olay hub 'ından veri kullanan bilgisayar veya VNET üzerinde açılmalıdır.
 
-## <a name="monitoring-data-available"></a>Mevcut verileri izleme
-[Azure Monitor için izleme verisi kaynakları,](data-sources.md) Azure uygulamaları için farklı veri katmanlarını ve her biri için kullanılabilir izleme verisi türlerini açıklar. Aşağıdaki tabloda bu katmanların her biri ve bu verilerin bir olay hub'ına nasıl aktarılabildiğinin açıklaması listelenir. Daha fazla ayrıntı için sağlanan bağlantıları izleyin.
+## <a name="monitoring-data-available"></a>İzleme verileri kullanılabilir
+[Azure izleyici için izleme verileri kaynakları](data-sources.md) , Azure uygulamaları için farklı veri katmanlarını ve her biri için kullanılabilen izleme verileri türlerini açıklar. Aşağıdaki tabloda bu katmanların her biri ve bu verilerin bir olay hub 'ına nasıl akışa alınacağını gösteren bir açıklama listelenmektedir. Daha ayrıntılı bilgi için sağlanan bağlantıları izleyin.
 
 | Katman | Veriler | Yöntem |
 |:---|:---|:---|
-| [Azure kiracısı](data-sources.md#azure-tenant) | Azure Active Directory denetim günlükleri | AAD kiracınızda kiracı tanılama ayarını yapılandırın. Bkz. Öğretici: Ayrıntılar için [Azure Etkin Dizin günlüğünü bir Azure etkinlik merkezine](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) aktarın. |
-| [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik Günlüğü olaylarını Olay Hub'larına aktarmak için bir günlük profili oluşturun.  Ayrıntılar için Azure Platformu Akış [günlüğe](resource-logs-stream-event-hubs.md) bakın. |
-| [Azure kaynakları](data-sources.md#azure-resources) | Platform ölçümleri<br> Kaynak günlükleri |Her iki veri türü de kaynak tanılama ayarı kullanılarak bir olay hub'ına gönderilir. Ayrıntılar için [Azure kaynak günlüğe](resource-logs-stream-event-hubs.md) aktarın. |
-| [İşletim sistemi (misafir)](data-sources.md#operating-system-guest) | Azure sanal makineleri | Azure'daki Windows ve Linux sanal makinelerinde [Azure Tanılama Uzantısı'nı](diagnostics-extension-overview.md) yükleyin. Windows VM'ler hakkındaki ayrıntılar için [Olay Hub'larını kullanarak Azure Tanılama verilerini sıcak yolda akışına](diagnostics-extension-stream-event-hubs.md) bakın ve Linux SANAL'ları hakkındaki ayrıntıları kaydetmek [için ölçümleri ve günlükleri izlemek için Linux Tanı uzantısını kullanın.](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) |
-| [Uygulama kodu](data-sources.md#application-code) | Application Insights | Application Insights, olay merkezlerine veri akışı için doğrudan bir yöntem sağlamaz. Application Insights verilerinin bir depolama hesabına [sürekli dışa aktarılmasını ayarlayabilir](../../azure-monitor/app/export-telemetry.md) ve ardından verileri [Logic App ile Manuel akışta](#manual-streaming-with-logic-app)açıklandığı gibi bir etkinlik merkezine göndermek için bir Mantık Uygulaması kullanabilirsiniz. |
+| [Azure kiracısı](data-sources.md#azure-tenant) | Denetim günlüklerini Azure Active Directory | AAD kiracınızda kiracı tanılama ayarını yapılandırın. Ayrıntılar için bkz. [öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) . |
+| [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik günlüğü olaylarını Event Hubs dışarı aktarmak için bir günlük profili oluşturun.  Ayrıntılar için bkz. Azure [Platform günlüklerini Azure 'Da akışa almak Event Hubs](resource-logs-stream-event-hubs.md) . |
+| [Azure kaynakları](data-sources.md#azure-resources) | Platform ölçümleri<br> Kaynak günlükleri |Her iki tür veri, bir kaynak tanılama ayarı kullanılarak bir olay hub 'ına gönderilir. Ayrıntılar için bkz. [Azure Kaynak günlüklerini bir olay hub 'ına akış](resource-logs-stream-event-hubs.md) . |
+| [İşletim sistemi (konuk)](data-sources.md#operating-system-guest) | Azure sanal makineleri | Azure 'daki Windows ve Linux sanal makinelerine [Azure tanılama uzantısını](diagnostics-extension-overview.md) yükler. Windows VM 'Lerle ilgili ayrıntılar için [Event Hubs kullanarak bkz. Azure Tanılama verileri etkin yolda](diagnostics-extension-stream-event-hubs.md) ve Linux VM 'lerinde Ayrıntılar için [ölçümleri ve günlükleri Izlemek üzere Linux Tanılama uzantısı 'nı kullanın](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
+| [Uygulama kodu](data-sources.md#application-code) | Application Insights | Application Insights, Olay Hub 'larına veri akışı için doğrudan bir yöntem sağlamaz. Application Insights verilerinin sürekli olarak bir depolama hesabına [dışarı aktarılmasını ayarlayabilir](../../azure-monitor/app/export-telemetry.md) ve ardından mantıksal uygulama [ile el ile akışta](#manual-streaming-with-logic-app)açıklanan şekilde verileri bir olay hub 'ına göndermek için bir mantıksal uygulama kullanabilirsiniz. |
 
-## <a name="manual-streaming-with-logic-app"></a>Mantık Uygulaması ile manuel akış
-Doğrudan bir olay hub'ına aktaramadığınız veriler için Azure depolama alanına yazabilir ve ardından [blob depolamadan veri çeken](../../connectors/connectors-create-api-azureblobstorage.md#add-action) ve olay merkezine ileti olarak [iten](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)zaman tetiklenmiş bir Mantık Uygulaması kullanabilirsiniz. 
+## <a name="manual-streaming-with-logic-app"></a>Mantıksal uygulamayla el ile akış
+Bir olay hub 'ına doğrudan akış yapamazsınız, Azure depolama 'ya yazabilir ve ardından [BLOB depolamadan veri alıp](../../connectors/connectors-create-api-azureblobstorage.md#add-action) [Olay Hub 'ına ileti olarak](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)gönderen bir zaman tetiklenen mantıksal uygulama kullanabilirsiniz. 
 
 
-## <a name="partner-tools-with-azure-monitor-integration"></a>Azure Monitor entegrasyonu ile iş ortağı araçları
+## <a name="partner-tools-with-azure-monitor-integration"></a>Azure Izleyici tümleştirmesiyle iş ortağı araçları
 
-Azure Monitor ile izleme verilerinizi bir etkinlik merkezine yönlendirmeniz, harici SIEM ve izleme araçlarıyla kolayca entegre etmenizi sağlar. Azure Monitor tümleştirmesi ile birlikte araçlara örnek olarak aşağıdakiler verilebilir:
+İzleme verilerinizi Azure Izleyici ile bir olay hub 'ına yönlendirme, dış SıEM ve izleme araçlarıyla kolayca tümleştirmenize olanak sağlar. Azure Izleyici tümleştirmesi ile araçlara örnek olarak şunlar verilebilir:
 
-| Araç | Azure'da barındırılan | Açıklama |
+| Araç | Azure 'da barındırılıyor | Açıklama |
 |:---|:---| :---|
-|  IBM QRadar | Hayır | Microsoft Azure DSM ve Microsoft Azure Etkinlik Hub Protokolü [IBM destek web sitesinden](https://www.ibm.com/support)indirilebilir. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)nda Azure ile tümleştirme hakkında daha fazla bilgi edinebilirsiniz. |
-| Splunk | Hayır | [Splunk için Azure Monitör Eklentisi,](https://splunkbase.splunk.com/app/3534/) Splunkbase'de bulunan açık kaynak kodlu bir projedir. Belgeler, Azure [Monitor Addon For Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)adresinde mevcuttur.<br><br> Splunk örneğinize bir eklenti yükleyemiyorsanız, örneğin bir proxy kullanıyorsanız veya Splunk Cloud'da çalışıyorsanız, bu olayları olay merkezindeki yeni iletiler tarafından tetiklenen [Azure İşlevi Splunk Için Splunk İşletmesini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak Splunk HTTP Olay Toplayıcısı'na iletebilirsiniz. |
-| SumoLogic | Hayır | Etkinlik hub'ından Bir Etkinlik Hub'ından veri tüketecek SumoLogic'i ayarlama yönergeleri, [Etkinlik Hub'ından Azure Denetim Uygulaması için Bilgi İşlem Lerini Topla'da](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)kullanılabilir. |
-| ArcSight | Hayır | ArcSight Azure Etkinlik Hub akıllı konektörü, [ArcSight akıllı konektör koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
-| Syslog sunucusu | Hayır | Azure Monitor verilerini doğrudan bir syslog sunucusuna aktarmak istiyorsanız, [Azure işlevini temel alan bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
-| LogRhythm | Hayır| Bir olay merkezinden günlükleri toplamak için LogRhythm'i ayarlama [yönergelerine buradan](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)ulaşabilirsiniz. 
-|Logz.io | Evet | Daha fazla bilgi için, [Azure'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetmeye başlama](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio)
+|  IBM QRadar | Hayır | Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. Azure ile tümleştirme hakkında daha fazla bilgi için bkz. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | Hayır | [Splunk Için Azure Izleyici eklentisi](https://splunkbase.splunk.com/app/3534/) , Splunkbase 'de kullanılabilen açık kaynaklı bir projem. Belgeler, [Azure Izleyici eklentisi Ile splunk için](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)kullanılabilir.<br><br> Splunk örneğiniz için bir eklenti yükleyemezseniz, örneğin bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız, bu olayları splunk [Için Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak splunk http olay toplayıcısına iletebilir. Bu, Olay Hub 'ında yeni iletiler tarafından tetiklenir. |
+| SumoLogic | Hayır | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Hayır | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
+| Syslog sunucusu | Hayır | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
+| Logrhythd | Hayır| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+|Logz.io | Yes | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Etkinlik günlüğünü bir depolama hesabına arşivleme](../../azure-monitor/platform/archive-activity-log.md)
-* [Azure Etkinliği günlüğüne genel bakışı okuyun](../../azure-monitor/platform/platform-logs-overview.md)
-* [Etkinlik günlüğü olayına dayalı bir uyarı ayarlama](../../azure-monitor/platform/alerts-log-webhook.md)
+* [Azure etkinlik günlüğü 'ne genel bakış konusunu okuyun](../../azure-monitor/platform/platform-logs-overview.md)
+* [Etkinlik günlüğü olayına göre uyarı ayarlama](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

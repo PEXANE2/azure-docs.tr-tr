@@ -1,6 +1,6 @@
 ---
-title: Azure'da OpenShift Kapsayıcı Platformu 3.11 Kendi Kendini Yöneten Pazar Teklifi dağıtın
-description: OpenShift Kapsayıcı Platformu 3.11 Azure'da Kendi Kendini Yöneten Pazar Teklifi'ni dağıtın.
+title: Azure 'da OpenShift kapsayıcı platformu 3,11 otomatik yönetilen Market teklifi dağıtma
+description: Azure 'da OpenShift kapsayıcı platformu 3,11 kendinden yönetilen Market Teklifini dağıtın.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,181 +11,181 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759582"
 ---
-# <a name="configure-prerequisites"></a>Ön koşulları yapılandırma
+# <a name="configure-prerequisites"></a>Önkoşulları yapılandırma
 
-Azure'da kendi kendini yöneten OpenShift Container Platform 3.11 kümesini dağıtmak için Market teklifini kullanmadan önce birkaç ön koşul yapılandırılması gerekir.  Bir ssh anahtarı (parola olmadan), Azure anahtar kasası, anahtar kasası sırrı ve bir hizmet sorumlusu oluşturmak için talimatlar için [OpenShift önkoşullar](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) makalesini okuyun.
+Azure 'da otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 kümesi dağıtmak için Market Teklifini kullanmadan önce birkaç koşulun yapılandırılması gerekir.  Bir SSH anahtarı (parola olmadan), Azure Anahtar Kasası, Anahtar Kasası gizli anahtarı ve hizmet sorumlusu oluşturma yönergeleri için [OpenShift önkoşulları](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) makalesini okuyun.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Market teklifini kullanarak dağıtma
 
-Kendi kendini yöneten OpenShift Container Platform 3.11 kümesini Azure'a dağıtmanın en basit yolu [Azure Marketi teklifini](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)kullanmaktır.
+Azure 'a otomatik olarak yönetilen bir OpenShift kapsayıcı platformu 3,11 kümesi dağıtmanın en kolay yolu [Azure Market Teklifini](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)kullanmaktır.
 
-Bu seçenek en basitidir, ancak özelleştirme özellikleri de sınırlıdır. Market teklifi OpenShift Konteyner Platformu 3.11.82 dağıtır ve aşağıdaki yapılandırma seçeneklerini içerir:
+Bu seçenek en basit seçenektir, ancak aynı zamanda sınırlı özelleştirme yeteneklerine sahiptir. Market teklifi, OpenShift kapsayıcı platformu 3.11.82 dağıtır ve aşağıdaki yapılandırma seçeneklerini içerir:
 
-- **Ana Düğümler**: Üç (3) Ana Düğümler yapılandırılabilir örnek türü.
-- **Infra Düğümleri**: Üç (3) Yapılabilen örnek türüne sahip Infra Düğümleri.
-- **Düğümler**: Düğüm sayısı (1 ile 9 arasında) ve örnek türü yapılandırılabilir.
-- **Disk Türü**: Yönetilen Diskler kullanılır.
-- **Ağ :** Yeni veya mevcut Ağ ve özel CIDR aralığı için destek.
+- **Ana düğümler**: yapılandırılabilir örnek türüne sahip üç (3) ana düğüm.
+- **Infra düğümleri**: yapılandırılabilir örnek türüne sahip üç (3) infra düğümleri.
+- **Düğümler**: düğüm sayısı (1 ile 9 arasında) ve örnek türü yapılandırılabilir.
+- **Disk türü**: yönetilen diskler kullanılır.
+- **Ağ iletişimi**: yeni veya mevcut ağ ve özel CIDR aralığı için destek.
 - **CNS**: CNS etkinleştirilebilir.
-- **Ölçümler**: Hawkular Ölçümleri etkinleştirilebilir.
-- **Günlük**: EFK Günlük özelliği etkinleştirilebilir.
-- **Azure Bulut Sağlayıcısı**: Varsayılan olarak etkinleştirilebilir, devre dışı edilebilir.
+- **Ölçümler**: hawksel ölçümler etkinleştirilebilir.
+- **Günlüğe kaydetme**: EFK günlüğü etkinleştirilebilir.
+- **Azure bulut sağlayıcısı**: varsayılan olarak etkindir, devre dışı bırakılabilir.
 
-Azure portalının sol üst kısmında, **kaynak oluştur'u**tıklatın, arama kutusuna 'openshift kapsayıcı platformu' girin ve Enter tuşuna basın.
+Azure portal sol üst tarafında, **kaynak oluştur ' a**tıklayın, arama kutusuna ' openshıft kapsayıcı platformu ' yazın ve ENTER tuşuna basın.
 
    ![Yeni kaynak arama](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
 
-Sonuçlar sayfası Red **Hat OpenShift Konteyner Platformu 3.11 Kendi Kendini Yöneten** listede ile açılacaktır. 
+Sonuçlar sayfası, listede **Red Hat OpenShift kapsayıcı platformu 3,11** içinde açılır. 
 
    ![Yeni kaynak arama sonucu](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-Teklifin ayrıntılarını görüntülemek için teklifi tıklayın. Bu teklifi dağıtmak için **Oluştur'u**tıklatın. Gerekli parametreleri girmek için UI görüntülenir. İlk ekran **Basics** bıçağıdır.
+Teklifin ayrıntılarını görüntülemek için teklifine tıklayın. Bu teklifi dağıtmak için **Oluştur**' a tıklayın. Gerekli parametreleri girmek için Kullanıcı arabirimi görüntülenir. İlk ekran **temel bilgiler** dikey penceresdir.
 
-   ![Teklif başlık sayfası](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
+   ![Teklif başlığı sayfası](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
 **Temel Bilgiler**
 
-Giriş parametrelerinden herhangi biri hakkında yardım almak için parametre adının yanındaki ***i'nin*** üzerine geçin.
+Giriş parametrelerinden herhangi biri hakkında yardım almak için, parametre adının yanında ***g*** 'nin üzerine gelin.
 
-Giriş parametreleri için değerleri girin ve **Tamam'ı**tıklatın.
+Giriş parametrelerinin değerlerini girin ve **Tamam**' a tıklayın.
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| VM Admin Kullanıcı Adı | Tüm VM örneklerinde oluşturulacak yönetici kullanıcı |
-| Yönetici Kullanıcı için SSH Ortak Anahtarı | VM'ye giriş yapmak için kullanılan SSH ortak anahtarı - parolalı bir ifadeye sahip olmamalıdır |
-| Abonelik | Kümedağıtmak için Azure aboneliği |
-| Kaynak Grubu | Küme kaynakları için yeni bir kaynak grubu oluşturun veya varolan boş bir kaynak grubu seçin |
-| Konum | Kümedağıtmak için Azure bölgesi |
+| VM Yöneticisi Kullanıcı adı | Tüm sanal makine örneklerinde oluşturulacak Yönetici Kullanıcı |
+| Yönetici Kullanıcı için SSH ortak anahtarı | VM 'de oturum açmak için kullanılan SSH ortak anahtarı-bir parola içermemelidir |
+| Abonelik | Kümenin dağıtılacağı Azure aboneliği |
+| Kaynak Grubu | Küme kaynakları için yeni bir kaynak grubu oluşturun veya var olan boş bir kaynak grubunu seçin |
+| Konum | Kümenin dağıtılacağı Azure bölgesi |
 
-   ![Teklif temelbıçak](media/openshift-marketplace-self-managed/ocp-basics.png)  
+   ![Teklif temelleri dikey penceresi](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
 
-**Altyapı Ayarları**
+**Altyapı ayarları**
 
-Giriş parametreleri için değerleri girin ve **Tamam'ı**tıklatın.
+Giriş parametrelerinin değerlerini girin ve **Tamam**' a tıklayın.
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| OCP Küme Adı Öneki | Tüm düğümler için ana bilgisayar adlarını yapılandırmak için kullanılan Küme Öneki. 1 ile 20 karakter arasında |
-| Ana Düğüm Boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu değiştir'i** tıklatın.  İş yükünüz için uygun VM boyutunu seçin |
-| Altyapı Düğümü Boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu değiştir'i** tıklatın.  İş yükünüz için uygun VM boyutunu seçin |
-| Uygulama Düğümleri Sayısı | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu değiştir'i** tıklatın.  İş yükünüz için uygun VM boyutunu seçin |
-| Uygulama Düğümü Boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu değiştir'i** tıklatın.  İş yükünüz için uygun VM boyutunu seçin |
-| Burç Host Boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu değiştir'i** tıklatın.  İş yükünüz için uygun VM boyutunu seçin |
-| Yeni veya Mevcut Sanal Ağ | Yeni bir vNet (Varsayılan) oluşturun veya varolan bir vNet kullanın |
-| Varsayılan CIDR Ayarlarını seçin veya IP Aralığını (CIDR) özelleştirin | Varsayılan CIDR aralıklarını kabul edin veya **Özel IP Aralığı** seçin ve özel CIDR bilgilerini girin.  Varsayılan Ayarlar 10.0.0.0/14 CIDR ile vNet, 10.1.0.0/16 ile ana alt ağ, 10.2.0.0/16 ile infra subnet ve 10.3.0.0/16 ile hesaplama ve cns alt net oluşturacaktır |
-| Anahtar Vault Kaynak Grup Adı | Anahtar Kasası'nı içeren Kaynak Grubunun adı |
-| Anahtar Kasa Adı | Ssh private tuşu ile gizli içeren Key Vault adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir ve 3 ile 24 karakter arasında olmalıdır |
-| Gizli Ad | Ssh özel anahtarı içeren sırrın adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir |
+| OCP kümesi adı ön eki | Tüm düğümlerde konak adlarını yapılandırmak için kullanılan küme öneki. 1 ila 20 karakter arasında |
+| Ana düğüm boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu Değiştir** ' e tıklayın.  İş yüklerinizin uygun VM boyutunu seçin |
+| Altyapı düğümü boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu Değiştir** ' e tıklayın.  İş yüklerinizin uygun VM boyutunu seçin |
+| Uygulama düğümlerinin sayısı | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu Değiştir** ' e tıklayın.  İş yüklerinizin uygun VM boyutunu seçin |
+| Uygulama düğümü boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu Değiştir** ' e tıklayın.  İş yüklerinizin uygun VM boyutunu seçin |
+| Savunma ana bilgisayar boyutu | Varsayılan VM boyutunu kabul edin veya farklı bir VM boyutu seçmek için **boyutu Değiştir** ' e tıklayın.  İş yüklerinizin uygun VM boyutunu seçin |
+| Yeni veya var olan sanal ağ | Yeni vNet oluştur (varsayılan) veya var olan bir sanal ağı kullan |
+| Varsayılan CıDR ayarlarını seçin veya IP aralığını (CıDR) özelleştirin | Varsayılan CıDR aralıklarını kabul edin veya **özel IP aralığı** ' nı seçin ve özel CIDR bilgilerini girin.  Varsayılan ayarlar, 10.0.0.0/14 CıDR, 10.1.0.0/16 ile ana alt ağ, 10.2.0.0/16 ve bilgi işlem ve CNS subnet with 10.3.0.0/16 olan sanal ağ oluşturur |
+| Key Vault kaynak grubu adı | Key Vault içeren kaynak grubunun adı |
+| Key Vault adı | SSH özel anahtarıyla gizli dizi içeren Key Vault adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir ve 3 ila 24 karakter arasında olmalıdır |
+| Gizli dizi adı | SSH özel anahtarını içeren gizli dizinin adı.  Yalnızca alfasayısal karakterlere ve tirelere izin verilir |
 
-   ![Teklif altyapı bıçak](media/openshift-marketplace-self-managed/ocp-inframain.png)  
+   ![Teklif altyapısı dikey penceresi](media/openshift-marketplace-self-managed/ocp-inframain.png)  
 <br>
 
-**Boyutu değiştir**
+**Değişiklik boyutu**
 
-Farklı bir VM boyutu seçmek için ***boyutu değiştir'i***tıklatın.  VM seçim penceresi açılır.  İstediğiniz VM boyutunu seçin ve **Seç'i**tıklatın.
+Farklı bir VM boyutu seçmek için ***boyutu Değiştir***' e tıklayın.  VM seçim penceresi açılır.  İstediğiniz VM boyutunu seçin ve **Seç**' e tıklayın.
 
-   ![VM Boyutunu seçin](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
+   ![VM boyutunu seçin](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
 
-**Mevcut Sanal Ağ**
+**Var olan sanal ağ**
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| Mevcut Sanal Ağ Adı | Varolan vNet'in adı |
-| Ana düğümler için alt ağ adı | Ana düğümler için varolan alt netin adı.  En az 16 IP adresi içermesi ve RFC 1918'i izlemesi gerekiyor |
-| Infra düğümleri için alt ağ adı | Infra düğümleri için varolan alt netin adı.  En az 32 IP adresi içermesi ve RFC 1918'i izlemesi gerekiyor |
-| İşlem ve cns düğümleri için alt ağ adı | İşlem ve cns düğümleri için varolan alt ağın adı.  En az 32 IP adresi içermesi ve RFC 1918'i izlemesi gerekiyor |
-| Varolan Sanal Ağ için Kaynak Grubu | Varolan vNet'i içeren kaynak grubunun adı |
+| Var olan sanal ağ adı | Mevcut vNet 'in adı |
+| Ana düğümlerin alt ağ adı | Ana düğümlerin mevcut alt ağının adı.  En az 16 IP adresi içermesi ve RFC 1918 ' i izlemeniz gerekir |
+| Infra düğümleri için alt ağ adı | Infra düğümleri için mevcut alt ağın adı.  En az 32 IP adresi içermesi ve RFC 1918 ' i izlemeniz gerekir |
+| İşlem ve CNS Nodes için alt ağ adı | İşlem ve CNS düğümleri için mevcut alt ağın adı.  En az 32 IP adresi içermesi ve RFC 1918 ' i izlemeniz gerekir |
+| Mevcut sanal ağın kaynak grubu | Mevcut vNet 'i içeren kaynak grubunun adı |
 
-   ![Mevcut vnet altyapı teklif edin](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
+   ![Altyapı mevcut VNET 'i sunma](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
 <br>
 
-**Özel IP Aralığı**
+**Özel IP aralığı**
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| Sanal Ağ için Adres Aralığı | vNet için özel CIDR |
-| Ana düğümleri içeren alt ağ için Adres Aralığı | Ana subnet için özel CIDR |
-| Altyapı düğümlerini içeren alt ağ için Adres Aralığı | Altyapı alt ağı için özel CIDR |
-| İşlem ve cns düğümlerini içeren alt ağ için Adres Aralığı | İşlem ve cns düğümleri için özel CIDR |
+| Sanal ağın adres aralığı | VNet için özel CıDR |
+| Ana düğümleri içeren alt ağın adres aralığı | Ana alt ağ için özel CıDR |
+| Altyapı düğümlerini içeren alt ağın adres aralığı | Altyapı alt ağı için özel CıDR |
+| İşlem ve CNS Nodes içeren alt ağın adres aralığı | İşlem ve CNS düğümleri için özel CıDR |
 
-   ![Teklif altyapısına özel IP aralığı](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
+   ![Teklif altyapısı özel IP aralığı](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
 <br>
 
 **OpenShift Kapsayıcı Platformu 3.11**
 
-Giriş Parametreleri için değerleri girin ve **Tamam'ı** tıklatın
+Giriş parametrelerinin değerlerini girin ve **Tamam 'a** tıklayın
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| OpenShift Admin Kullanıcı Şifresi | İlk OpenShift kullanıcısının parolası.  Bu kullanıcı da küme yöneticisi olacak |
-| OpenShift Yönetici Kullanıcı Parolasını Onayla | OpenShift Yönetici Kullanıcı Şifresini Yeniden Yazın |
-| Red Hat Abonelik Yöneticisi Kullanıcı Adı | Red Hat Aboneliğinize veya Kuruluş Kimliğinize erişmek için kullanıcı adı.  Bu kimlik bilgisi RHEL örneğini aboneliğinize kaydetmek için kullanılır ve Microsoft veya Red Hat tarafından depolanmaz |
-| Red Hat Abonelik Yöneticisi Kullanıcı Şifresi | Red Hat Aboneliğinize veya Etkinleştirme Anahtarınıza erişmek için parola.  Bu kimlik bilgisi RHEL örneğini aboneliğinize kaydetmek için kullanılır ve Microsoft veya Red Hat tarafından depolanmaz |
-| Red Hat Abonelik Yöneticisi OpenShift Havuz Kimliği | OpenShift Kapsayıcı Platformu yetkilendirmesi içeren Havuz Kimliği. Kümenin kurulumu için OpenShift Konteyner Platformu'ndan yeterli yetkiye sahip olduğundan emin olun |
-| Broker / Master Düğümleri için Red Hat Abonelik Yöneticisi OpenShift Havuz Kimliği | Broker / Master Düğümler için OpenShift Konteyner Platformu yetkilendirmeleri içeren Havuz Kimliği. Kümenin yüklenmesi için OpenShift Konteyner Platformu'ndan yeterli yetkiye sahip olduğundan emin olun. Broker / ana havuz kimliği kullanmıyorsanız, Uygulama Düğümleri için havuz kimliğini girin |
-| Azure Bulut Sağlayıcısını Yapılandırma | Azure Bulut Sağlayıcısı'nı kullanmak için OpenShift'i yapılandırın. Kalıcı birimler için Azure disk ekleme kullanıyorsanız gereklidir.  Varsayılan değer Evet'tir |
-| Azure AD Hizmeti Temel İstemci Kimliği GUID | Azure AD Service Principal Client ID GUID - AppID olarak da bilinir. Yalnızca Azure Bulut Sağlayıcısını Yapılandırmak **Evet** olarak ayarlanmışsa gereklidir |
-| Azure AD Hizmeti Ana İstemci Kimliği Gizli | Azure AD Hizmeti Ana İstemci Kimliği Gizli. Yalnızca Azure Bulut Sağlayıcısını Yapılandırmak **Evet** olarak ayarlanmışsa gereklidir |
+| OpenShift Yönetici Kullanıcı parolası | İlk OpenShift kullanıcısının parolası.  Bu Kullanıcı da Küme Yöneticisi olacak |
+| OpenShift Yönetici Kullanıcı parolasını onayla | OpenShift Yönetici Kullanıcı parolasını yeniden yazın |
+| Red Hat abonelik Yöneticisi Kullanıcı adı | Red Hat aboneliğinize veya kuruluş KIMLIĞINIZE erişmek için Kullanıcı adı.  Bu kimlik bilgisi, RHEL örneğini aboneliğinize kaydetmek ve Microsoft veya Red Hat tarafından depolanmayacak şekilde kullanılır |
+| Red Hat abonelik Yöneticisi Kullanıcı parolası | Red Hat aboneliğinize veya etkinleştirme anahtarına erişmek için parola.  Bu kimlik bilgisi, RHEL örneğini aboneliğinize kaydetmek ve Microsoft veya Red Hat tarafından depolanmayacak şekilde kullanılır |
+| Red Hat abonelik Yöneticisi OpenShift havuz KIMLIĞI | OpenShift kapsayıcı platformu Yetkilendiricisi içeren havuz KIMLIĞI. Kümenin yüklenmesi için OpenShift kapsayıcı platformu için yeterli yetkilendirmediğinizden emin olun |
+| Red Hat abonelik Yöneticisi aracı/ana düğümler için OpenShift havuz KIMLIĞI | Aracı/ana düğümler için OpenShift kapsayıcı platformu yetkilendirmelerini içeren havuz KIMLIĞI. Kümenin yüklenmesi için OpenShift kapsayıcı platformunun yeterli yetkilendirmelerinizi bulundurtığınızdan emin olun. Aracı/ana havuz KIMLIĞI kullanmıyorsanız, uygulama düğümleri için havuz KIMLIĞINI girin |
+| Azure bulut sağlayıcısını yapılandırma | Azure bulut sağlayıcısını kullanmak için OpenShift 'i yapılandırın. Kalıcı birimler için Azure disk iliştirme kullanılıyorsa gereklidir.  Varsayılan değer Evet ' tir |
+| Azure AD hizmet sorumlusu Istemci KIMLIĞI GUID | Azure AD hizmet sorumlusu Istemci KIMLIĞI GUID 'SI-AppID olarak da bilinir. Yalnızca Azure Cloud Provider 'ı **Evet** olarak ayarlandıysa gereklidir |
+| Azure AD hizmet sorumlusu Istemci KIMLIĞI gizli anahtarı | Azure AD hizmet sorumlusu Istemci KIMLIĞI gizli anahtarı. Yalnızca Azure Cloud Provider 'ı **Evet** olarak ayarlandıysa gereklidir |
  
-   ![OpenShift bıçak teklif edin](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
+   ![OpenShift dikey penceresini teklif edin](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
 <br>
 
-**Ek Ayarlar**
+**Ek ayarlar**
 
-Ek Ayarlar bıçağı, glusterfs depolama, Günlük, Ölçümler ve Router Alt etki alanı için CNS yapılandırmasına olanak tanır.  Varsayılan, bu seçeneklerden hiçbirini yüklemez ve nip.io sınama amacıyla yönlendirici alt etki alanı olarak kullanır. CNS'yi etkinleştirmek, glusterfs bölmelerini barındıracak üç ek ekli diskiçeren üç ek bilgi işlem düğümü yükler.  
+Ek ayarlar dikey penceresi, GlusterFS depolama, günlüğe kaydetme, ölçümler ve yönlendirici alt etki alanı için CNS yapılandırmasına izin verir.  Varsayılan değer bu seçeneklerden hiçbirini yüklemez ve test amacıyla yönlendirici alt etki alanı olarak nip.io kullanır. CNS 'in etkinleştirilmesi, GlusterFS pods 'yi barındıracak üç ek bağlı disk ile üç ek işlem düğümü yükler.  
 
-Giriş Parametreleri için değerleri girin ve **Tamam'ı** tıklatın
+Giriş parametrelerinin değerlerini girin ve **Tamam 'a** tıklayın
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| Yapılaşı Yerel Depolama (CNS) | CNS'yi OpenShift kümesine yükler ve depolama alanı olarak etkinleştirin. Azure Sağlayıcısı devre dışı bırakılırsa varsayılan olur |
-| Küme Günlüğe Kaydetmeyi Yapılandır | EFK günlüğe kaydetme işlevini kümeye yükler.  EFK bölmelerini barındırmak için uygun boyut altyapı düğümleri |
-| Küme için Ölçümleri Yapılandırma | OpenShift kümesine Hawkular ölçümlerini yükler.  Hawkular ölçüm bölmelerini barındırmak için uygun boyut altyapı düğümleri |
-| Varsayılan Yönlendirici Alt etki alanı | Üretim için kendi alt etki alanınızı girmek için test veya özel için nipio'nuzu seçin |
+| Kapsayıcı yerel depolamayı yapılandırma (CNS) | OpenShift kümesine CNS yükleme yapar ve depolama olarak etkinleştirir. Azure sağlayıcısı devre dışıysa varsayılan olacak |
+| Küme günlüğünü yapılandırma | , Kümeye EFK günlüğü işlevini kurar.  EFK Pod 'leri barındırmak için Infra düğümlerini uygun şekilde boyutlandır |
+| Küme için ölçümleri yapılandırma | OpenShift kümesine Hawksel ölçümler yükleme.  Cara düğümlerini, Hawksel ölçüm yığınlarını barındıracak şekilde boyutlandırın |
+| Varsayılan yönlendirici alt etki alanı | Test için nipio veya üretim için kendi alt etki alanınızı girmek üzere özel ' i seçin |
  
-   ![Ek bıçak sunun](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
+   ![Ek dikey pencere sunun](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
 <br>
 
-**Ek Ayarlar - Ekstra Parametreler**
+**Ek ayarlar-ek parametreler**
 
-| Giriş Parametresi | Parametre Açıklaması |
+| Giriş parametresi | Parametre açıklaması |
 |-----------------------|-----------------|
-| (CNS) Düğüm Boyutu | Varsayılan düğüm boyutunu kabul edin veya yeni bir VM boyutu seçmek için **Değiştir boyutunu** seçin |
-| Özel alt etki alanınızı girin | OpenShift kümesindeki yönlendirici üzerinden uygulamaları açığa çıkarmak için kullanılacak özel yönlendirme etki alanı.  Uygun joker karakter DNS girişini oluşturduğunuzdan emin olun] |
+| CNS Düğüm boyutu | Varsayılan düğüm boyutunu kabul edin veya yeni bir VM boyutu seçmek için **boyutu Değiştir** ' i seçin |
+| Özel alt etki alanınızı girin | OpenShift kümesindeki yönlendirici aracılığıyla uygulamaları ortaya çıkarmak için kullanılacak özel yönlendirme etki alanı.  Uygun joker karakter DNS girişini oluşturmayı unutmayın] |
  
-   ![Teklif ek cns Yükleyin](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
+   ![Ek CNS Install sunun](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
 **Özet**
 
-Doğrulama, küme için seçilen toplam VM sayısını dağıtmak için çekirdek kotasını denetlemek için bu aşamada gerçekleşir.  Girilen tüm parametreleri gözden geçirin.  Girişler kabul edilebilirse, devam etmek için **Tamam'ı** tıklatın.
+Çekirdek kotasının, küme için seçilen toplam VM sayısını dağıtmak için yeterli olup olmadığını denetlemek için bu aşamada doğrulama gerçekleşir.  Girilen tüm parametreleri gözden geçirin.  Girişler kabul edilebilir ise devam etmek için **Tamam** ' ı tıklatın.
 
-   ![Teklif özeti bıçak](media/openshift-marketplace-self-managed/ocp-summary.png)  
+   ![Teklif Özeti dikey penceresi](media/openshift-marketplace-self-managed/ocp-summary.png)  
 <br>
 
 **Satın Al**
 
-Satın Al sayfasındaki iletişim bilgilerini onaylayın ve Kullanım koşullarını kabul etmek ve OpenShift Kapsayıcı Platformu kümesinin dağıtımını başlatmak için **Satın Al'ı** tıklatın.
+Satın alma sayfasında iletişim bilgilerini onaylayın ve OpenShift kapsayıcı platformu kümesinin kullanım koşullarını ve dağıtım başlangıcını kabul etmek için **satın al** ' a tıklayın.
 
-   ![Teklif satın alma bıçağı](media/openshift-marketplace-self-managed/ocp-purchase.png)  
+   ![Teklif satın alma dikey penceresi](media/openshift-marketplace-self-managed/ocp-purchase.png)  
 <br>
 
 
 ## <a name="connect-to-the-openshift-cluster"></a>OpenShift kümesine bağlanma
 
-Dağıtım bittiğinde, bağlantıyı dağıtımın çıktı bölümünden alın. **OpenShift Konsol URL'sini**kullanarak openshift konsoluna tarayıcınızla bağlanın. Ayrıca Bastion ana bilgisayara SSH yapabilirsiniz. Aşağıda yönetici kullanıcı adı clusteradmin ve burç kamu IP DNS FQDN bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com bir örnektir:
+Dağıtım tamamlandığında, dağıtımın çıkış bölümünden bağlantıyı alın. **OpenShift konsol URL**'sini kullanarak, tarayıcınızla OpenShift konsoluna bağlanın. Ayrıca, savunma ana bilgisayarına SSH de ekleyebilirsiniz. Aşağıda Yönetici Kullanıcı adının kümeyöneticisi olduğu ve savunma genel IP DNS FQDN 'sinin bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com olduğu bir örnek verilmiştir:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -193,7 +193,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynak grubunu, OpenShift kümesini ve ilgili tüm kaynakları artık ihtiyaç duyulmadığında kaldırmak için [az grubu silme](/cli/azure/group) komutunu kullanın.
+Kaynak grubunu, OpenShift kümesini ve artık gerekli olmadığında tüm ilgili kaynakları kaldırmak için [az Group Delete](/cli/azure/group) komutunu kullanın.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -202,6 +202,6 @@ az group delete --name openshiftrg
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Dağıtım sonrası görevler](./openshift-container-platform-3x-post-deployment.md)
-- [Azure'da OpenShift dağıtımını sorun giderme](./openshift-container-platform-3x-troubleshooting.md)
-- [OpenShift Konteyner Platformu ile başlarken](https://docs.openshift.com)
+- [Azure 'da OpenShift dağıtımında sorun giderme](./openshift-container-platform-3x-troubleshooting.md)
+- [OpenShift kapsayıcı platformu ile çalışmaya başlama](https://docs.openshift.com)
 - 

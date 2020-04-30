@@ -1,33 +1,33 @@
 ---
-title: Azure Media Player Korumalı İçerik
-description: Azure Media Player şu anda AES-128 bit zarf şifreli içeriği ve yaygın şifrelenmiş içeriği destekler.
+title: Azure Media Player korumalı Içerik
+description: Azure Media Player şu anda AES-128 bit zarfı şifrelenmiş içeriği ve ortak şifrelenmiş içeriği desteklemektedir.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726497"
 ---
 # <a name="protected-content"></a>Korumalı içerik #
 
-Azure Media Player şu anda AES-128 bit zarf şifreli içeriği ve yaygın şifrelenmiş içeriği (PlayReady ve Widevine aracılığıyla) veya FairPlay üzerinden şifrelenmiş içeriği destekler. Korumalı içeriği doğru bir şekilde oynatmak için Azure `protectionInfo`Media Player'a . Bu bilgiler kaynak başına var ve `<source>` doğrudan etikete `data-setup`eklenebilir.  Kaynağı dinamik olarak `protectionInfo` ayarlıyorsanız doğrudan parametre olarak da ekleyebilirsiniz.
+Azure Media Player şu anda AES-128 bit zarfı şifrelenmiş içeriği ve ortak şifrelenmiş içeriği (PlayReady ve Widevine aracılığıyla) veya FairPlay aracılığıyla şifrelenmiş içeriği desteklemektedir. Korumalı içeriği doğru bir şekilde kayıttan yürütmek için Azure Media Player bildirmeniz gerekir `protectionInfo`. Bu bilgiler kaynak başına mevcuttur ve aracılığıyla doğrudan `<source>` etiketine eklenebilir. `data-setup`  Ayrıca, `protectionInfo` kaynağı dinamik olarak ayarlarsanız doğrudan bir parametre olarak ekleyebilirsiniz.
 
-`protectionInfo`bir JSON nesnesi kabul eder ve şunları içerir:
+`protectionInfo`JSON nesnesini kabul eder ve şunları içerir:
 
-- `type`: `AES` `PlayReady` veya `Widevine` ya da`FairPlay`
-- `certificateUrl`: Bu ev sahipliği fairplay sertifika doğrudan bir bağlantı olmalıdır
+- `type`: `AES` veya `PlayReady` `Widevine` veya veya`FairPlay`
+- `certificateUrl`: Bu, barındırılan FairPlay CERT için doğrudan bir bağlantı olmalıdır
 
-- `authenticationToken`: bu, kodlanmamış kimlik doğrulama belirteci eklemek için bir seçenek alanıdır
+- `authenticationToken`: Bu, kodlanmamış bir kimlik doğrulama belirteci eklemek için bir seçenek alanıdır
 
 > [!IMPORTANT]
-> **SertifikaUrl** nesnesi yalnızca FairPlay DRM için gereklidir.***
+> **Certificateurl** nesnesi yalnızca FairPlay DRM için gereklidir. * * *
 >[!NOTE]
-> Varsayılan techOrder, `html5FairPlayHLS` özellikle FairPlay içeriğini destekleyen tarayıcılarda (OSX 8+'da Safari) yerel olarak oynatmak için yeni teknolojiye uyacak şekilde değiştirilmiştir. Oynatmak için FairPlay içeriğiniz varsa **ve** varsayılan techOrder'ı uygulamanızda özel bir siparişle değiştirdiyseniz, bu yeni teknolojiyi techOrder nesnenize eklemeniz gerekir. İçeriğinizin PlayReady üzerinden oynatılması için silverlightSS'a önce eklemenizi öneririz.
+> Varsayılan teknik sipariş, FairPlay içeriğini destekleyen tarayıcılarda yerel `html5FairPlayHLS` olarak kayıttan yürütmek IÇIN (OSX 8 + üzerinde Safari) yeni teknoloji ile uyumlu olacak şekilde değiştirilmiştir. Kayıttan yürütmek için FairPlay içeriğiniz varsa **ve** varsayılan techorder öğesini uygulamanızda özel bir tane olarak değiştirdiyseniz, bu yeni teknik, techorder nesneniz içine eklemeniz gerekecektir. İçeriğinizi PlayReady aracılığıyla kayıttan yürütmemesi için silverlightSS önce eklemeniz önerilir.
 
 ## <a name="code-sample"></a>Kod örneği ##
 
@@ -55,7 +55,7 @@ or
     );
 ```
 
-veya birden fazla DRM ile
+veya birden çok DRM ile
 
 ```javascript
     var myPlayer = amp("vid1", /* Options */);
@@ -79,10 +79,10 @@ veya birden fazla DRM ile
 ```
 
 > [!NOTE]
-> Tüm tarayıcılar/platformlar korumalı içeriği oynatma yeteneğine sahip değildir. Desteklenenler hakkında daha fazla bilgi için [Oynatma Teknolojisi](azure-media-player-playback-technology.md) bölümüne bakın.
+> Tüm tarayıcılar/platformlar, korunan içeriği kayıttan yürütebilme yeteneğine sahip değildir. Desteklenen özellikler hakkında daha fazla bilgi için [kayıttan yürütme teknolojisi](azure-media-player-playback-technology.md) bölümüne bakın.
 > [!IMPORTANT]
-> Oynatıcıya geçirilen belirteç güvenli içerik içindir ve yalnızca kimlik doğrulaması yapılan kullanıcılar için kullanılır. Uygulamanın SSL veya başka bir güvenlik önlemi biçimi kullandığı varsayılır. Ayrıca, son kullanıcı belirteci kötüye değil güvenilir olarak kabul edilir; durum bu değilse, lütfen güvenlik uzmanlarınızı dahil edin.
+> Player 'a geçirilen belirteç güvenli içerik amaçlıdır ve yalnızca kimliği doğrulanmış kullanıcılar için kullanılır. Uygulamanın SSL veya başka bir güvenlik ölçüsü biçimi kullanıldığı varsayılır. Ayrıca, son kullanıcının belirtecin kötüye kullanımı için güvenilir olması gerekir; Böyle bir durum yoksa, lütfen güvenlik uzmanlarınızı dahil edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

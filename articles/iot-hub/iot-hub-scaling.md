@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub ölçekleme | Microsoft Dokümanlar
-description: IoT hub'ınızı, beklenen ileti iş inizi ve istediğiniz özellikleri desteklemek için nasıl ölçeklendirilir? Her katman için desteklenen iş tamsayısının bir özetini ve parçalama seçenekleriiçerir.
+title: Azure IoT Hub ölçeklendirme | Microsoft Docs
+description: IoT Hub 'ınızı, beklenen ileti aktarım hızını ve istenen özellikleri destekleyecek şekilde ölçeklendirirsiniz. Her katman için desteklenen aktarım hızının özetini ve parçalama seçeneklerini içerir.
 author: wesmc7777
 manager: timlt
 ms.service: iot-hub
@@ -12,133 +12,133 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759626"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Çözümünüz için doğru IoT Hub katmanını seçin
 
-Her IoT çözümü farklıdır, bu nedenle Azure IoT Hub fiyatlandırma ve ölçeğe dayalı çeşitli seçenekler sunar. Bu makale, IoT Hub gereksinimlerinizi değerlendirmenize yardımcı olmak içindir. IoT Hub katmanları hakkında fiyatlandırma bilgileri için [IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub)fiyatlandırması'na bakın.
+Her IoT çözümü farklıdır, bu nedenle Azure IoT Hub fiyatlandırma ve ölçeğe göre çeşitli seçenekler sunar. Bu makale, IoT Hub gereksinimlerinizi değerlendirmenize yardımcı olmak için tasarlanmıştır. IoT Hub katmanları hakkında fiyatlandırma bilgileri için bkz. [IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub).
 
-Hangi IoT Hub katmanının çözümünüz için doğru olduğuna karar vermek için kendinize iki soru sorun:
+Çözümünüz için hangi IoT Hub katmanının doğru olduğuna karar vermek için kendinize iki soru sorun:
 
-**Hangi özellikleri kullanmayı planlıyorum?**
+**Hangi özellikleri kullanacağınızı planlıyorum?**
 
-Azure IoT Hub, destekledikleri özellik sayısında farklılık gösteren temel ve standart olmak üzere iki katman sunar. IoT çözümünüz aygıtlardan veri toplama ve merkezi olarak analiz etme üzerine kuruluysa, temel katman muhtemelen sizin için doğru olacaktır. IoT aygıtlarını uzaktan denetlemek veya iş yüklerinizi aygıtlara dağıtmak için daha gelişmiş yapılandırmalar kullanmak istiyorsanız, standart katmanı göz önünde bulundurmalısınız. Özellikleri her katmanda yer alan ayrıntılı bir dökümü için [Temel ve standart katmanlara](#basic-and-standard-tiers)devam edin.
+Azure IoT Hub, destekledikleri özellik sayısına göre farklılık gösteren, temel ve standart olmak üzere iki katman sağlar. IoT çözümünüz cihazlardan veri toplamayı ve merkezi olarak çözümlemeyi temel alıyorsa, temel katman muhtemelen sizin için uygun olabilir. IoT cihazlarını uzaktan denetlemek için daha gelişmiş yapılandırma kullanmak veya iş yüklerinizin bir kısmını cihazlara dağıtmak istiyorsanız, standart katmanı dikkate almanız gerekir. Her katmana eklenen özelliklerin ayrıntılı bir dökümü için [temel ve standart katmanlara](#basic-and-standard-tiers)devam edin.
 
-**Günlük ne kadar veri taşımayı planlıyorum?**
+**Her gün ne kadar veri taşımayı planlıyorum?**
 
-Her IoT Hub katmanı, herhangi bir günde ne kadar veri veri verisi işleyebilir lerine bağlı olarak üç boyutta kullanılabilir. Bu boyutlar sayısal olarak 1, 2 ve 3 olarak tanımlanır. Örneğin, düzey 1 IoT hub'ının her birimi günde 400 bin ileti işleyebilirken, düzey 3 birimi 300 milyon iletiişleyebilir. Veri yönergeleri hakkında daha fazla bilgi için, İleti iş bilgili olmaya devam [edin.](#message-throughput)
+Her bir IoT Hub katmanı, belirli bir günde işleyebilecekleri veri işleme miktarına bağlı olarak üç boyutta sunulur. Bu boyutlar sayısal olarak 1, 2 ve 3 olarak tanımlanır. Örneğin, düzey 1 IoT Hub 'ın her bir birimi günde 400.000 iletiyi işleyebilir, 3. düzey bir birim 300.000.000 ' i işleyebilir. Veri yönergeleri hakkında daha fazla ayrıntı için [ileti işleme](#message-throughput)devam edin.
 
-## <a name="basic-and-standard-tiers"></a>Temel ve standart katmanlar
+## <a name="basic-and-standard-tiers"></a>Temel ve Standart katmanlar
 
-IoT Hub'ın standart katmanı tüm özellikleri etkinleştirir ve çift yönlü iletişim özelliklerinden yararlanmak isteyen tüm IoT çözümleri için gereklidir. Temel katman, özelliklerin alt kümesini kullanıma sunar ve yalnızca cihazlardan buluta tek yönlü iletişim ihtiyacı duyan IoT çözümlerine yöneliktir. İki katman da aynı güvenlik ve kimlik doğrulaması özelliklerini sunar.
+IoT Hub standart katmanı tüm özellikleri sağlar ve çift yönlü iletişim yeteneklerini kullanmak isteyen IoT çözümleri için gereklidir. Temel katman, özelliklerin alt kümesini kullanıma sunar ve yalnızca cihazlardan buluta tek yönlü iletişim ihtiyacı duyan IoT çözümlerine yöneliktir. İki katman da aynı güvenlik ve kimlik doğrulaması özelliklerini sunar.
 
-IoT Hub başına bir katman içinde yalnızca bir [baskı](https://azure.microsoft.com/pricing/details/iot-hub/) türü seçilebilir. Örneğin, birden çok S1 birimine sahip bir IoT Hub'ı oluşturabilirsiniz, ancak S1 ve S2 gibi farklı sürümlerden birimlerin karışımıyla oluşturamaz.
+Her IoT Hub için bir katmanda yalnızca bir tür [sürümü](https://azure.microsoft.com/pricing/details/iot-hub/) seçilebilir. Örneğin, S1 ve S2 gibi farklı sürümlerden birim karışımı olmadan birden fazla S1 birimiyle bir IoT Hub oluşturabilirsiniz.
 
 | Özellik | Temel katman | Ücretsiz/Standart katman |
 | ---------- | ---------- | ------------- |
-| [Cihazdan buluta telemetri](iot-hub-devguide-messaging.md) | Evet | Evet |
-| [Cihaz başına kimlik](iot-hub-devguide-identity-registry.md) | Evet | Evet |
-| [İleti yönlendirme,](iot-hub-devguide-messages-read-custom.md) [ileti zenginleştirmeleri](iot-hub-message-enrichments-overview.md)ve [Olay Izgara tümleştirmesi](iot-hub-event-grid.md) | Evet | Evet |
-| [HTTP, AMQP ve MQTT protokolleri](iot-hub-devguide-protocols.md) | Evet | Evet |
-| [Cihaz Sağlama Hizmeti](../iot-dps/about-iot-dps.md) | Evet | Evet |
-| [İzleme ve tanılama](iot-hub-monitor-resource-health.md) | Evet | Evet |
-| [Bulut-aygıt mesajlaşma](iot-hub-devguide-c2d-guidance.md) |   | Evet |
-| [Cihaz ikizleri](iot-hub-devguide-device-twins.md), [Modül ikizleri](iot-hub-devguide-module-twins.md)ve [Cihaz yönetimi](iot-hub-device-management-overview.md) |   | Evet |
-| [Aygıt akışları (önizleme)](iot-hub-device-streams-overview.md) |   | Evet |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Evet |
-| [IoT Tak ve Çalıştır Önizleme](../iot-pnp/overview-iot-plug-and-play.md) |   | Evet |
+| [Cihazdan buluta telemetri](iot-hub-devguide-messaging.md) | Yes | Yes |
+| [Cihaz başına kimlik](iot-hub-devguide-identity-registry.md) | Yes | Yes |
+| [İleti yönlendirme](iot-hub-devguide-messages-read-custom.md), [ileti zenginleştirme](iot-hub-message-enrichments-overview.md)ve [Event Grid tümleştirme](iot-hub-event-grid.md) | Yes | Yes |
+| [HTTP, AMQP ve MQTT protokolleri](iot-hub-devguide-protocols.md) | Yes | Yes |
+| [Cihaz sağlama hizmeti](../iot-dps/about-iot-dps.md) | Yes | Yes |
+| [İzleme ve tanılama](iot-hub-monitor-resource-health.md) | Yes | Yes |
+| [Buluttan cihaza mesajlaşma](iot-hub-devguide-c2d-guidance.md) |   | Yes |
+| [Cihaz](iot-hub-devguide-device-twins.md)ikne, [Modül TWINS](iot-hub-devguide-module-twins.md)ve [cihaz yönetimi](iot-hub-device-management-overview.md) |   | Yes |
+| [Cihaz akışları (Önizleme)](iot-hub-device-streams-overview.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
+| [IoT Tak ve Kullan önizlemesi](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
 
-IoT Hub ayrıca test ve değerlendirme için direnen ücretsiz bir katman da sunar. Standart katmanın tüm özelliklerine sahiptir, ancak mesajlaşma izinleri sınırlıdır. Ücretsiz katmandan temel veya standart yükseltme yapamazsınız.
+IoT Hub Ayrıca, test ve değerlendirme için tasarlanmış bir ücretsiz katman sağlar. Standart katmanın tüm özelliklerine sahiptir, ancak sınırlı mesajlaşma kesintileri vardır. Ücretsiz katmandan temel ya da standart sürümüne yükseltemezsiniz.
 
 ## <a name="partitions"></a>Bölümler
 
-Azure IoT Hub'ları, [Bölümler](../event-hubs/event-hubs-features.md#partitions)de dahil olmak üzere [Azure Etkinlik Hub'larının](../event-hubs/event-hubs-features.md)birçok temel bileşenini içerir. IoT Hub'ları için olay akışları genellikle çeşitli IoT aygıtları tarafından bildirilen gelen telemetri verileriyle doldurulur. Olay akışının bölümlemi, olay akışlarına aynı anda okuma ve yazma yaparken oluşan çekişmeleri azaltmak için kullanılır.
+Azure IoT Hub 'Ları, [azure Event Hubs](../event-hubs/event-hubs-features.md) [bölümler](../event-hubs/event-hubs-features.md#partitions)dahil pek çok çekirdek bileşeni içerir. IoT Hub 'Ları için olay akışları, genellikle çeşitli IoT cihazları tarafından raporlanan gelen telemetri verileriyle doldurulur. Olay akışının bölümlenmesi, olay akışlarına eşzamanlı okuma ve yazma sırasında oluşan çekişmeleri azaltmak için kullanılır.
 
-IoT Hub oluşturulduğunda bölüm sınırı seçilir ve değiştirilemez. Temel katman IoT Hub'ı ve standart katman IoT Hub'ı için maksimum bölüm sınırı 32'dir. Çoğu IoT hub'ı yalnızca 4 bölüme ihtiyaç duyar. Bölümleri belirleme hakkında daha fazla bilgi için Olay Hub'ları SSS'ye bakın [kaç bölüme ihtiyacım var?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+IoT Hub oluşturulduğunda bölüm sınırı seçilir ve değiştirilemez. Temel katman IoT Hub ve Standart katman IoT Hub için maksimum bölüm sınırı 32 ' dir. Birçok IoT Hub 'ı yalnızca 4 bölümden yeterlidir. Bölümleri belirleme hakkında daha fazla bilgi için, [kaç bölüme Ihtiyacım olduğunu](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need) Event Hubs hakkında SSS bölümüne bakın.
 
 ## <a name="tier-upgrade"></a>Katman yükseltme
 
-IoT hub'ınızı oluşturduktan sonra, mevcut işlemlerinizi kesintiye uğratmadan temel katmandan standart katmana yükseltebilirsiniz. Daha fazla bilgi için [IoT hub'ınızı nasıl yükselteceğimize](iot-hub-upgrade.md)bakın.
+IoT Hub 'ınızı oluşturduktan sonra, mevcut işlemlerinizi kesintiye uğramadan temel katmandan Standart katmana yükseltebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub 'ınızı yükseltme](iot-hub-upgrade.md).
 
-Temel katmandan standart katmana geçiş yaptığınızda bölüm yapılandırması değişmeden kalır.
+Temel katmandan Standart katmana geçiş yaptığınızda bölüm yapılandırması değişmeden kalır.
 
 > [!NOTE]
-> Ücretsiz katman temel veya standart yükseltme desteklemez.
+> Ücretsiz katman, temel veya standart sürümüne yükseltmeyi desteklemez.
 
-## <a name="iot-hub-rest-apis"></a>IoT Hub REST API'leri
+## <a name="iot-hub-rest-apis"></a>REST API 'Leri IoT Hub
 
-Desteklenen özelliklerarasındaki IoT Hub'ın temel ve standart katmanları arasındaki fark, bazı API çağrılarının temel katman hub'larıyla çalışmadığı anlamına gelir. Aşağıdaki tablo, hangi API'lerin kullanılabildiği gösterir:
+IoT Hub temel ve standart katmanları arasındaki desteklenen özelliklerde fark, bazı API çağrılarının temel katman hub 'ları ile çalışmamasıdır. Aşağıdaki tabloda hangi API 'Lerin kullanılabildiği gösterilmektedir:
 
 | API | Temel katman | Ücretsiz/Standart katman |
 | --- | ---------- | ------------- |
-| [Cihazı silme](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | Evet | Evet |
-| [Cihazı alın](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | Evet | Evet |
-| [Modülü silme](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | Evet | Evet |
-| [Modülü alın](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | Evet | Evet |
-| [Kayıt defteri istatistiklerini alın](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | Evet | Evet |
-| [Hizmet istatistiklerini alın](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | Evet | Evet |
-| [Aygıt oluşturma veya güncelleme](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | Evet | Evet |
-| [Modül oluşturma veya güncelleme](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | Evet | Evet |
-| [IoT Hub sorgula](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | Evet | Evet |
-| [Dosya yüklemesi SAS URI oluşturma](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Evet | Evet |
-| [Aygıta bağlı bildirim alma](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Evet | Evet |
-| [Aygıt olayını gönderme](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Evet | Evet |
-| Modül olayını gönder | Yalnızca AMQP ve MQTT | Yalnızca AMQP ve MQTT |
-| [Dosya yükleme durumunu güncelleştir](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Evet | Evet |
-| [Toplu cihaz çalışması](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Evet, IoT Edge özellikleri hariç | Evet |
-| [Alma dışa aktarma işini iptal etme](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Evet | Evet |
-| [Alma dışa aktarma işi oluşturma](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | Evet | Evet |
-| [İthalat ihracat işi alın](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | Evet | Evet |
-| [İthalat ihracat işleri alın](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Evet | Evet |
-| [Temizleme komut sırası](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Evet |
-| [Aygıt ikizini alın](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Evet |
-| [Modül ikizi alın](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Evet |
-| [Aygıt yöntemini çağırma](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Evet |
-| [Aygıt ikizini güncelleştir](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Evet |
-| [Modül ikizini güncelleştir](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Evet |
-| [Aygıt alıtosı bildirimini terk etme](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Evet |
-| [Cihaza bağlı bildirimi tamamlayın](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Evet |
-| [İşi iptal etme](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Evet |
-| [İş oluştur](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Evet |
-| [İş bul](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Evet |
-| [İşleri sorgula](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Evet |
+| [Cihazı silme](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | Yes | Yes |
+| [Cihazı al](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | Yes | Yes |
+| [Modülü Sil](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | Yes | Yes |
+| [Modül al](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | Yes | Yes |
+| [Kayıt defteri istatistiklerini al](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | Yes | Yes |
+| [Hizmet istatistiklerini al](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | Yes | Yes |
+| [Cihaz oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | Yes | Yes |
+| [Modül oluştur veya güncelleştir](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | Yes | Yes |
+| [Sorgu IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | Yes | Yes |
+| [Karşıya dosya yükleme SAS URI 'SI oluştur](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Yes | Yes |
+| [Cihaz ile sınırlı bildirim al](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Yes | Yes |
+| [Cihaz olayı gönder](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Yes | Yes |
+| Modül olayı gönder | Yalnızca AMQP ve MQTT | Yalnızca AMQP ve MQTT |
+| [Karşıya dosya yükleme durumunu güncelleştir](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Yes | Yes |
+| [Toplu cihaz işlemi](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Evet, IoT Edge özellikleri dışında | Yes |
+| [İçeri aktarma dışarı aktarma işini iptal et](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Yes | Yes |
+| [İçeri aktarma dışarı aktarma işi oluştur](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | Yes | Yes |
+| [İçeri aktarma dışarı aktarma işi al](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | Yes | Yes |
+| [İçeri aktarma işlerini al](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Yes | Yes |
+| [Komut kuyruğunu temizle](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Yes |
+| [Cihaz ikizi al](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Yes |
+| [Modül ikizi al](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Yes |
+| [Cihaz yöntemini çağır](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Yes |
+| [Cihaz ikizi Güncelleştir](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Yes |
+| [Modül ikizi Güncelleştir](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Yes |
+| [Cihaza bağlanma bildirimini bırakma](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
+| [Cihaz ile sınırlı bildirimi doldurun](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
+| [İşi iptal et](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Yes |
+| [İş oluştur](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Yes |
+| [İşi al](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Yes |
+| [Sorgu işleri](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Yes |
 
-## <a name="message-throughput"></a>İleti girişi
+## <a name="message-throughput"></a>İleti işleme
 
-IoT Hub çözümlerini boyutlandırmanın en iyi yolu trafiği birim başına değerlendirmektir. Özellikle, aşağıdaki işlem kategorileri için gerekli tepe iş artışını göz önünde bulundurun:
+Bir IoT Hub çözümü boyutunun en iyi yolu, trafiği birim başına göre değerlendirmelidir. Özellikle, aşağıdaki işlem kategorileri için gereken en yüksek aktarım hızını göz önünde bulundurun:
 
 * Cihazdan buluta iletiler
 * Buluttan cihaza iletiler
 * Kimlik kayıt defteri işlemleri
 
-Trafik, IoT hub'ınız için birim başına olarak ölçülür. Bir IoT hub'ı oluşturduğunuzda, katmanını ve sürümünü seçer ve kullanılabilir birim sayısını ayarlarsınız. B1, B2, S1 veya S2 sürümü için en fazla 200 adet veya B3 veya S3 sürümü için en fazla 10 birim satın alabilirsiniz. IoT hub'ınız oluşturulduktan sonra, sürümünde bulunan birim sayısını değiştirebilir, katmanındaki sürümler arasında yükseltebilir veya düşürebilir veya temel katmandan (B1'den S1'e) mevcut işlemlerinizi kesintiye uğratmadan yükseltebilirsiniz. Daha fazla bilgi için [IoT hub'ınızı nasıl yükselteceğimize](iot-hub-upgrade.md)bakın.  
+Trafik, IoT Hub 'ınız için birim başına ölçülür. Bir IoT Hub 'ı oluşturduğunuzda, katmanını ve sürümünü seçersiniz ve kullanılabilir birim sayısını ayarlarsınız. B1, B2, S1 veya S2 sürümü için en fazla 200 birim satın alabilir veya B3 veya S3 sürümü için en fazla 10 birim satın alabilirsiniz. IoT Hub 'ınız oluşturulduktan sonra, kendi sürümü içinde kullanılabilir birim sayısını değiştirebilir, katmanı içindeki sürümler arasında yükseltme veya düşürme (B1-B2) veya mevcut işlemlerinizi kesintiye uğramadan temel bilgisayardan Standart katmana (B1-S1) yükseltebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub 'ınızı yükseltme](iot-hub-upgrade.md).  
 
-Her kademenin trafik yeteneklerine bir örnek olarak, aygıttan buluta iletiler aşağıdaki sürekli iş ortası yönergelerini izler:
+Her bir katmanın trafik özelliklerine örnek olarak, cihazdan buluta iletiler şu sürekli işleme talimatlarını izler:
 
-| Katman sürümü | Sürekli iş artışı | Sürekli gönderme oranı |
+| Katman sürümü | Sürekli üretilen iş | Sürekli gönderme oranı |
 | --- | --- | --- |
-| B1, S1 |Birim başına 1111 KB/dakika'ya kadar<br/>(1,5 GB/gün/birim) |Birim başına ortalama 278 ileti/dakika<br/>(Birim başına 400.000 mesaj/gün) |
-| B2, S2 |Birim başına 16 MB/dakikaya kadar<br/>(22,8 GB/gün/birim) |Birim başına ortalama 4.167 ileti/dakika<br/>(Birim başına 6 milyon mesaj/gün) |
-| B3, S3 |Birim başına 814 MB/dakikaya kadar<br/>(1144,4 GB/gün/birim) |Birim başına ortalama 208.333 ileti/dakika<br/>(Birim başına 300 milyon ileti/gün) |
+| B1, S1 |Birim başına en fazla 1111 KB/dakika<br/>(1,5 GB/gün/birim) |Birim başına ortalama 278 ileti/dakika<br/>(400.000 ileti/birim başına gün) |
+| B2, S2 |Birim başına en fazla 16 MB/dakika<br/>(22,8 GB/gün/birim) |Birim başına ortalama 4.167 ileti/dakika<br/>(6.000.000 ileti/birim başına gün) |
+| B3, S3 |Birim başına en fazla 814 MB/dakika<br/>(1144,4 GB/gün/birim) |Birim başına ortalama 208.333 ileti/dakika<br/>(300.000.000 ileti/birim başına gün) |
 
-Aygıttan buluta iş hacmi, bir IoT çözümü tasarlarken göz önünde bulundurmanız gereken ölçümlerden yalnızca biridir. Daha kapsamlı bilgi için [IoT Hub kotaları ve azaltmalarına](iot-hub-devguide-quotas-throttling.md)bakın.
+Cihazdan buluta aktarım hızı, IoT çözümünü tasarlarken göz önünde bulundurmanız gereken ölçülerden yalnızca biridir. Daha kapsamlı bilgi için bkz. [IoT Hub kotaları ve kısıtları](iot-hub-devguide-quotas-throttling.md).
 
-### <a name="identity-registry-operation-throughput"></a>Kimlik kayıt işlemi işletilmesi
+### <a name="identity-registry-operation-throughput"></a>Kimlik kayıt defteri işlem performansı
 
-IoT Hub kimlik kayıt işlemleri çoğunlukla aygıt sağlama ile ilgili olduğundan, çalışma zamanı işlemleri olması gerekmez.
+IoT Hub kimlik kayıt defteri işlemlerinin, genellikle cihaz sağlama ile ilişkili olduklarından, çalıştırma zamanı işlemleri olması gerekmez.
 
-Belirli seri performans numaraları için [IoT Hub kotaları ve azaltmalara](iot-hub-devguide-quotas-throttling.md)bakın.
+Belirli veri bloğu performans numaraları için bkz. [IoT Hub kotaları ve kısıtlar](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="auto-scale"></a>Otomatik ölçeklendirme
 
-IoT hub'ınızda izin verilen ileti sınırına yaklaşıyorsanız, aynı IoT Hub katmanında bir IoT Hub birimini otomatik olarak ölçeklendirmek için bu [adımları](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) kullanabilirsiniz.
+IoT Hub 'ınızda izin verilen ileti sınırına yaklaşırsanız, aynı IoT Hub katmanındaki IoT Hub birimini artırmak üzere [otomatik olarak ölçeklendirmek](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) için bu adımları kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* IoT Hub özellikleri ve performans ayrıntıları hakkında daha fazla bilgi [için, IoT Hub fiyatlandırmaveya](https://azure.microsoft.com/pricing/details/iot-hub) [IoT Hub kotaları ve azaltma bölümüne](iot-hub-devguide-quotas-throttling.md)bakın.
+* IoT Hub özellikleri ve performans ayrıntıları hakkında daha fazla bilgi için bkz. [IoT Hub fiyatlandırma](https://azure.microsoft.com/pricing/details/iot-hub) veya [IoT Hub kotalar ve kısıtlar](iot-hub-devguide-quotas-throttling.md).
 
-* IoT Hub katmanınızı değiştirmek [için, IoT hub'ınızı Yükselt'teki](iot-hub-upgrade.md)adımları izleyin.
+* IoT Hub katmanınızı değiştirmek için [IoT Hub 'ınızı yükseltme](iot-hub-upgrade.md)bölümündeki adımları izleyin.

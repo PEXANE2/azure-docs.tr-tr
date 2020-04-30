@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub iletişim protokolleri ve bağlantı noktaları | Microsoft Dokümanlar
-description: Geliştirici kılavuzu - aygıt-bulut ve bulut-aygıtiletişimi için desteklenen iletişim protokollerini ve açık olması gereken bağlantı noktası numaralarını açıklar.
+title: Azure IoT Hub iletişim protokolleri ve bağlantı noktaları | Microsoft Docs
+description: Geliştirici Kılavuzu-cihazdan buluta ve buluttan cihaza iletişimler için desteklenen iletişim protokollerini ve açık olması gereken bağlantı noktası numaralarını açıklar.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -12,13 +12,13 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729127"
 ---
-# <a name="reference---choose-a-communication-protocol"></a>Başvuru - bir iletişim protokolü seçin
+# <a name="reference---choose-a-communication-protocol"></a>Başvuru-iletişim protokolü seçin
 
 IoT Hub cihazların, cihaz tarafındaki iletişimler için şu protokolleri kullanmasına izin verir:
 
@@ -28,34 +28,34 @@ IoT Hub cihazların, cihaz tarafındaki iletişimler için şu protokolleri kull
 * WebSockets üzerinden AMQP
 * HTTPS
 
-Bu protokollerin belirli IoT Hub özelliklerini nasıl desteklediği hakkında bilgi için [aygıt-bulut](iot-hub-devguide-d2c-guidance.md) iletişim kılavuzu ve [bulut-aygıt iletişim kılavuzuna](iot-hub-devguide-c2d-guidance.md)bakın.
+Bu protokollerin belirli IoT Hub özelliklerini nasıl desteklediği hakkında bilgi için, bkz. [cihazdan buluta iletişim Kılavuzu](iot-hub-devguide-d2c-guidance.md) ve [buluttan cihaza iletişim Kılavuzu](iot-hub-devguide-c2d-guidance.md).
 
-Aşağıdaki tablo, protokol seçiminiz için üst düzey öneriler sağlar:
+Aşağıdaki tabloda, protokol seçiminiz için üst düzey öneriler verilmiştir:
 
-| Protokol | Bu protokolü ne zaman seçmeniz gerekir? |
+| Protokol | Bu protokolü seçmeniz gerekir |
 | --- | --- |
-| MQTT <br> WebSocket üzerinde MQTT |Aynı TLS bağlantısı üzerinden birden fazla aygıtı (her biri cihaz başına kendi kimlik bilgilerine sahip) bağlaması gerektirmeyen tüm aygıtlarda kullanın. |
-| AMQP <br> WebSocket üzerinde AMQP |Aygıtlar arasında bağlantı çoklama dan yararlanmak için alan ve bulut ağ geçitlerini kullanın. |
-| HTTPS |Diğer protokolleri destekleyemeyen aygıtlar için kullanın. |
+| MQTT <br> WebSocket üzerinden MQTT |Aynı TLS bağlantısı üzerinden birden çok cihaza (her biri kendi cihaz başına kimlik bilgileri ile) bağlanmasını gerektirmeyen tüm cihazlarda kullanın. |
+| AMQP <br> WebSocket üzerinden AMQP |Cihazlarda bağlantı çoğullama özelliğinden yararlanmak için alan ve bulut ağ geçitlerinde kullanın. |
+| HTTPS |Diğer protokolleri desteklemeyen cihazlar için kullanın. |
 
-Aygıt tarafı iletişimiçin protokolünüzü seçerken aşağıdaki noktaları göz önünde bulundurun:
+Cihaz tarafı iletişimleri için protokollerinizi seçerken aşağıdaki noktaları göz önünde bulundurun:
 
-* **Bulut-aygıt deseni.** HTTPS sunucu itme uygulamak için etkili bir yolu yoktur. Bu nedenle, HTTPS kullanırken, aygıtlar ioT Hub'ı buluttan aygıta iletiler için yoklar. Bu yaklaşım hem aygıt hem de IoT Hub için verimsizdir. Geçerli HTTPS yönergelerine göre, her cihaz iletileri her 25 dakikada bir veya daha fazla ankete etmelidir. MQTT ve AMQP, buluttan cihaza iletiler alırken sunucu itme sini destekler. IoT Hub'dan aygıta iletilerin anında itilmesini sağlarlar. Teslimat gecikmesi bir sorunsa, MQTT veya AMQP kullanılacak en iyi protokollerdir. Nadiren bağlı aygıtlar için HTTPS de çalışır.
+* **Buluttan cihaza yönelik model**. HTTPS, sunucu gönderimi uygulamak için etkili bir yola sahip değildir. Bu nedenle, HTTPS kullanırken, cihazlar buluttan cihaza iletiler için IoT Hub yoklar. Bu yaklaşım hem cihaz hem de IoT Hub için verimsiz bir değer. Geçerli HTTPS yönergeleri altında her bir cihaz, her 25 dakikada bir veya daha fazla ileti yoklamalıdır. MQTT ve AMQP, buluttan cihaza iletiler alırken sunucu gönderimi destekler. IoT Hub iletileri cihaza anında göndermeyi etkinleştirir. Teslim gecikmesi bir sorun oluşturacaksa, MQTT veya AMQP kullanılacak en iyi protokollerdir. Nadiren bağlanan cihazlarda, HTTPS de kullanılabilir.
 
-* **Alan ağ geçitleri.** MQTT ve HTTPS, TLS bağlantısı başına yalnızca tek bir aygıt kimliğini (aygıt kimliği artı kimlik bilgileri) destekler. Bu nedenle, bu protokoller, tek bir aygıt kimliği veya IoT Hub'a yukarı akım bağlantıları havuzunda birden çok aygıt kimliği kullanarak çoklama iletileri gerektiren [Alan ağ geçidi senaryoları](iot-hub-devguide-endpoints.md#field-gateways) için desteklenmez. Bu tür ağ geçitleri, akış yukarı trafiği için AMQP gibi bağlantı başına birden çok aygıt kimliği destekleyen bir iletişim kuralı kullanabilir.
+* **Alan ağ geçitleri**. MQTT ve HTTPS, TLS bağlantısı başına yalnızca tek bir cihaz kimliğini (cihaz KIMLIĞI ve kimlik bilgileri) destekler. Bu nedenle, bu protokoller IoT Hub için tek bir veya yukarı akış bağlantısı havuzu genelinde birden çok cihaz kimliği kullanarak çoğullama iletileri gerektiren [alan ağ geçidi senaryolarında](iot-hub-devguide-endpoints.md#field-gateways) desteklenmez. Bu tür ağ geçitleri, her bağlantı için, yukarı akış trafiği için AMQP gibi birden çok cihaz kimliği destekleyen bir protokol kullanabilir.
 
-* **Düşük kaynak aygıtları.** MQTT ve HTTPS kitaplıkları AMQP kitaplıkları daha küçük bir ayak izi var. Bu nedenle, aygıtın sınırlı kaynakları varsa (örneğin, 1 MB RAM'den az), bu protokoller kullanılabilir tek protokol uygulaması olabilir.
+* **Düşük kaynak cihazları**. MQTT ve HTTPS kitaplıklarının AMQP kitaplıklarından daha küçük bir parmak izi vardır. Bu nedenle, cihaz sınırlı kaynaklara sahipse (örneğin, 1 MB 'den az RAM), bu protokoller kullanılabilir tek protokol uygulamasıdır.
 
-* **Ağ geçişi.** Standart AMQP protokolü 5671 portu kullanır ve MQTT 8883 bağlantı noktasını dinler. Bu bağlantı noktalarının USe'si, HTTPS olmayan protokollere kapalı olan ağlarda sorunlara neden olabilir. Bu senaryoda WebSockets üzerinden MQTT' yi, WebSockets üzerinden AMQP veya HTTPS üzerinden kullanın.
+* **Ağ geçişi**. Standart AMQP Protokolü 5671 numaralı bağlantı noktasını kullanır ve MQTT, bağlantı noktası 8883 ' de dinler. Bu bağlantı noktalarının kullanımı, HTTPS olmayan protokollere kapatılan ağlarda sorun oluşmasına neden olabilir. Bu senaryoda WebSockets üzerinden MQTT, AMQP WebSockets veya HTTPS kullanın.
 
-* **Yük boyutu**. MQTT ve AMQP ikili protokollerdir ve bu da HTTPS'den daha fazla kompakt yük sağlar.
+* **Yük boyutu**. MQTT ve AMQP ikili protokollerdir ve bu da HTTPS 'den daha küçük bir yük yükleri oluşmasına neden olur.
 
 > [!WARNING]
-> HTTPS kullanırken, her cihaz buluttan cihaza iletileri en fazla 25 dakikada bir anket yapmalıdır. Geliştirme aşamasında, her aygıt istenirse daha sık yoklama yapabilir.
+> HTTPS kullanılırken her cihaz, her 25 dakikada bir bulut-cihaz iletilerini birden çok kez yoklamalıdır. Geliştirme aşamasında, her cihaz istenirse daha sık yoklama yapabilir.
 
 ## <a name="port-numbers"></a>Bağlantı noktası numaraları
 
-Aygıtlar çeşitli protokolleri kullanarak Azure'daki IoT Hub ile iletişim kurabilir. Genellikle, protokol seçimi çözümün belirli gereksinimleri tarafından yönlendirilir. Aşağıdaki tablo, bir aygıtın belirli bir protokolü kullanabilmesi için açık olması gereken giden bağlantı noktalarını listeler:
+Cihazlar, çeşitli protokolleri kullanarak Azure 'da IoT Hub ile iletişim kurabilir. Genellikle, protokol seçimi çözümün belirli gereksinimlerine göre çalıştırılır. Aşağıdaki tabloda, bir cihazın belirli bir protokolü kullanabilmesi için açık olması gereken giden bağlantı noktaları listelenmektedir:
 
 | Protokol | Bağlantı noktası |
 | --- | --- |
@@ -65,8 +65,8 @@ Aygıtlar çeşitli protokolleri kullanarak Azure'daki IoT Hub ile iletişim kur
 | WebSockets üzerinden AMQP |443 |
 | HTTPS |443 |
 
-Bir Azure bölgesinde bir IoT hub'ı oluşturduktan sonra, IoT hub'ı o IoT hub'ının kullanım ömrü boyunca aynı IP adresini tutar. Ancak, Microsoft hizmet kalitesini korumak için IoT hub'ını farklı bir ölçek birimine taşırsa, yeni bir IP adresi atanır.
+Bir Azure bölgesinde IoT Hub 'ı oluşturduktan sonra, IoT Hub 'ı söz konusu IoT Hub 'ının ömrü boyunca aynı IP adresini tutar. Ancak, Microsoft, hizmet kalitesi sağlamak için IoT Hub 'ını farklı bir ölçek birimine taşıdıysanız, yeni bir IP adresi atanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub'ın MQTT protokolünü nasıl uyguladığı hakkında daha fazla bilgi edinmek için, [MQTT protokolünü kullanarak IoT hub'ınızla iletişim kurma'ya](iot-hub-mqtt-support.md)bakın.
+IoT Hub MQTT protokolünü nasıl uygulayan hakkında daha fazla bilgi edinmek için bkz. [MQTT protokolünü kullanarak IoT Hub 'ınız Ile Iletişim kurma](iot-hub-mqtt-support.md).

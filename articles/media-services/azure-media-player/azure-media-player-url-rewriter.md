@@ -1,21 +1,21 @@
 ---
-title: Azure Media Player URL Rewriter
-description: Azure Media Player, SMOOTH, DASH, HLS v3 ve HLS v4 akışları sağlamak için Azure Media Services'ten belirli bir URL'yi yeniden yazar.
+title: Azure Media Player URL yeniden yazıcı
+description: Azure Media Player, sorunsuz, DASH, HLS v3 ve HLS v4 için akışlar sağlamak üzere Azure Media Services verilen bir URL 'yi yeniden yazmaktır.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726462"
 ---
-# <a name="url-rewriter"></a>URL yeniden yazar #
+# <a name="url-rewriter"></a>URL yeniden yazıcı #
 
-Varsayılan olarak, Azure Media Player, SMOOTH, DASH, HLS v3 ve HLS v4 için akış sağlamak için Azure Media Services'ten belirli bir URL'yi yeniden yazar. Örneğin, kaynak aşağıdaki gibi verilirse, Azure Media Player yukarıdaki protokollerin tümünü oynatmaya çalıştığından emin olur:
+Azure Media Player, düz, TIRE, HLS v3 ve HLS v4 için akışlar sağlamak üzere Azure Media Services verilen bir URL 'yi yeniden yazmaktır. Örneğin, kaynak aşağıdaki gibi verildiğinde, Azure Media Player yukarıdaki protokollerin tümünü yürütmeye çalıştığını güvence altına alacak:
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -23,7 +23,7 @@ Varsayılan olarak, Azure Media Player, SMOOTH, DASH, HLS v3 ve HLS v4 için ak�
     </video>
 ```
 
-Ancak, URL rewriter kullanmak istemiyorsanız, parametre özelliği ekleyerek `disableUrlRewriter` yapabilirsiniz. Bu, kaynaklara aktarılan tüm bilgilerin doğrudan değiştirilmeden oyuncuya iletildiği anlamına gelir.  Burada dash ve bir SMOOTH Streaming üzerinde, oyuncuya iki kaynak ekleme bir örnektir.
+Bununla birlikte, URL yeniden yazıcısını kullanmak istemiyorsanız, `disableUrlRewriter` özelliği parametresine ekleyerek bunu yapabilirsiniz. Bu, kaynaklara iletilen tüm bilgilerin doğrudan Player 'a değişiklik yapılmadan geçirilme anlamına gelir.  İşte, DASH ve tek bir KESINTISIZ akış üzerinde iki kaynak eklemeye örnek verilmiştir.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -41,7 +41,7 @@ or
     ]);
 ```
 
-Ayrıca, isterseniz, `streamingFormats` Azure Media Player'ın parametreyi kullanarak yeniden yazmasını istediğiniz belirli akış biçimlerini belirtebilirsiniz. Seçenekler `DASH`arasında `SMOOTH` `HLSv3`, `HLSv4` `HLS`, , , . HLS ve HLSv3 & v4 arasındaki fark, HLS biçiminin FairPlay içeriğinin oynatını desteklemesidir. v3 ve v4 FairPlay'i desteklemez. Bu, belirli bir iletişim kuralı için bir teslim ilkesi yoksa yararlıdır.  Aşağıda, kıymetinizle birlikte bir DASH protokolüetkinleştirilen bir örnek verilmiştir.
+Ayrıca, isterseniz, `streamingFormats` parametresini kullanarak yeniden yazmak Azure Media Player istediğiniz belirli akış biçimlerini belirtebilirsiniz. Seçenekler şunlardır `DASH` `SMOOTH` `HLSv3`,,,, `HLS` `HLSv4` HLS ve HLSv3 & v4 arasındaki fark, HLS biçiminin FairPlay içeriğinin kayıttan yürütmesini destekliyor olması şeklindedir. v3 ve v4, FairPlay desteklemez. Kullanılabilir belirli bir protokol için teslim ilkeniz yoksa, bu faydalıdır.  İşte, varlığınız için bir DASH protokolünün etkin olmadığı bir örnektir.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -57,11 +57,11 @@ or
     ]);
 ```
 
-Yukarıdaki iki belirli varlık dayalı birden fazla durum için birbirleri ile birlikte kullanılabilir.
+Yukarıdaki ikisi, belirli varlığınıza bağlı olarak birden çok koşulda birbirleriyle birlikte kullanılabilir.
 
 > [!NOTE]
-> Widevine koruma bilgileri yalnızca DASH protokolünde devam eder.
+> Wıdevine koruma bilgileri yalnızca DASH protokolünde devam ettirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

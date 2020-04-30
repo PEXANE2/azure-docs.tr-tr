@@ -1,63 +1,63 @@
 ---
-title: Azure Uygulama Yapılandırması ile Bahar Önyüklemesine özellik bayrakları eklemek için hızlı başlangıç
-description: Azure Uygulama Yapılandırması'nı kullanarak Bahar Önyükleme uygulamalarına özellik bayrakları ekleyin ve bunları yönetin
+title: Azure Uygulama yapılandırması ile yay önyüklemesine özellik bayrakları eklemeye yönelik hızlı başlangıç
+description: Spring Boot uygulamalarına özellik bayrakları ekleyin ve Azure Uygulama yapılandırması 'nı kullanarak bunları yönetin
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81687357"
 ---
-# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Bahar Önyükleme uygulamasına özellik bayrakları ekleme
+# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
-Bu hızlı başlangıçta, özellik yönetiminin uçtan uca uygulanmasını oluşturmak için Azure Uygulama Yapılandırmasını Bahar Önyükleme web uygulamasına dahil eleştirirsiniz. Tüm özellik bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için Uygulama Yapılandırma hizmetini kullanabilirsiniz.
+Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını oluşturmak için Azure uygulama yapılandırmasını bir Spring Boot Web uygulamasına katabilirsiniz. Tüm özellik Bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için uygulama yapılandırma hizmetini kullanabilirsiniz.
 
-Bahar Önyükleme Özellik Yönetimi kitaplıkları, kapsamlı özellik bayrak desteğiyle çerçeveyi genişletir. Bu kitaplıkların azure kitaplıkları üzerinde bir bağımlılığı **yoktur.** Bahar Önyükleme yapılandırma sağlayıcısı aracılığıyla App Configuration ile sorunsuz bir şekilde entegre olurlar.
+Yay önyükleme özelliği yönetim kitaplıkları çerçeveyi kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıkların hiçbir Azure kitaplığına **bağımlılığı yoktur.** Bunlar, Spring Boot yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
-* Sürüm 8 ile desteklenen [Bir Java Geliştirme Kiti SDK.](https://docs.microsoft.com/java/azure/jdk)
-* [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3.0 veya üzeri.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Sürüm 8 ile desteklenen bir [Java geliştirme seti SDK 'sı](https://docs.microsoft.com/java/azure/jdk) .
+* [Apache Maven](https://maven.apache.org/download.cgi) sürüm 3,0 veya üzeri.
 
-## <a name="create-an-app-configuration-instance"></a>Uygulama Yapılandırma örneği oluşturma
+## <a name="create-an-app-configuration-instance"></a>Uygulama yapılandırma örneği oluşturma
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Özellik Yöneticisi** > **+Ekle** adlı bir `Beta`özellik bayrağı eklemek için seçin.
+6. Özellik **Yöneticisi** > **+ Ekle** ' yi seçerek Özellik bayrağı ekleyin `Beta`.
 
     > [!div class="mx-imgBorder"]
-    > ![Beta adlı özellik bayrağını etkinleştirme](media/add-beta-feature-flag.png)
+    > ![Beta adlı özellik bayrağını etkinleştir](media/add-beta-feature-flag.png)
 
-    Şimdilik `label` tanımsız bırak.
+    Şimdilik `label` tanımsız bırakın.
 
-## <a name="create-a-spring-boot-app"></a>Bahar Önyükleme uygulaması oluşturma
+## <a name="create-a-spring-boot-app"></a>Spring Boot uygulaması oluşturma
 
-Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı](https://start.spring.io/) kullanın.
+Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.spring.io/) ' i kullanın.
 
 1. <https://start.spring.io/> adresine gidin.
 
 1. Aşağıdaki seçenekleri belirtin:
 
    * **Java** ile bir **Maven** projesi oluşturun.
-   * 2.0'a eşit veya daha büyük bir **Bahar Önyükleme** sürümü belirtin.
-   * Uygulamanız için **Grup** ve **Yapıt** adlarını belirtin.  Bu makalede `com.example` `demo`kullanır ve .
-   * Bahar **Web** bağımlılığını ekleyin.
+   * 2,0 ' e eşit veya ondan büyük bir **Spring Boot** sürümü belirtin.
+   * Uygulamanız için **Grup** ve **Yapıt** adlarını belirtin.  Bu makalede ve `com.example` `demo`kullanılmaktadır.
+   * **Yay Web** bağımlılığını ekleyin.
 
-1. Önceki seçenekleri belirttikten sonra **Project Oluştur'u**seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
+1. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
 
-## <a name="add-feature-management"></a>Özellik yönetimi ekleme
+## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
-1. Yerel sisteminizdeki dosyaları ayıkladıktan sonra, Bahar Önyükleme uygulamanız düzenlemeye hazırdır. Uygulamanızın kök dizininde *pom.xml'i* bulun.
+1. Dosyaları yerel sisteminizde ayıkladıktan sonra, Spring Boot uygulamanız düzenlenmek üzere hazırlanın. *Pok. xml* ' i uygulamanızın kök dizininde bulun.
 
-1. Bir metin düzenleyicisi *içinde pom.xml* dosyasını açın `<dependencies>`ve aşağıdakileri listeye ekleyin:
+1. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve aşağıdakileri listesine ekleyin `<dependencies>`:
 
-    **Bahar Bulutu 1.1.x**
+    **Yay bulutu 1.1. x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     </dependency>
     ```
 
-    **Bahar Bulutu 1.2.x**
+    **Yay bulutu 1.2. x**
 
     ```xml
     <dependency>
@@ -96,21 +96,21 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     ```
 
 > [!Note]
-> Bahar-web'e bağımlı olmayan bir web Özellik Yönetimi Kitaplığı vardır. Farklılıklar için GitHub'ın [belgelerine](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) bakın.
+> Spring-Web 'e bağımlılığı olmayan Web dışı bir özellik Yönetim Kitaplığı var. Farklar için GitHub [belgelerine](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) bakın.
 
-## <a name="connect-to-an-app-configuration-store"></a>Uygulama Yapılandırma mağazasına bağlanma
+## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Uygulamanızın `resources` dizinine gidin ve `bootstrap.properties`açın.  Dosya yoksa, dosyayı oluşturun. Aşağıdaki satırı dosyaya ekleyin.
+1. Uygulamanızın `resources` dizinine gidin ve açın `bootstrap.properties`.  Dosya yoksa, oluşturun. Dosyasına aşağıdaki satırı ekleyin.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Config mağazanızın Uygulama Yapılandırma portalında `Access keys` kenar çubuğundan seçim yapın. Salt okunur tuşlar sekmesini seçin. Birincil bağlantı dizesinin değerini kopyalayın.
+1. Yapılandırma deponuzu uygulama yapılandırma portalında kenar çubuğundan seçeneğini belirleyin `Access keys` . Salt okuma anahtarları sekmesini seçin. birincil bağlantı dizesinin değerini kopyalayın.
 
-1. Değişken adını `APP_CONFIGURATION_CONNECTION_STRING`kullanarak birincil bağlantı dizesini ortam değişkeni olarak ekleyin.
+1. Birincil bağlantı dizesini, değişken adını `APP_CONFIGURATION_CONNECTION_STRING`kullanarak bir ortam değişkeni olarak ekleyin.
 
-1. Ana uygulama Java dosyasını `@EnableConfigurationProperties` açın ve bu özelliği etkinleştirmek için ekleyin.
+1. Ana uygulama Java dosyasını açın ve bu özelliği etkinleştirmek `@EnableConfigurationProperties` için ekleyin.
 
     ```java
     package com.example.demo;
@@ -130,7 +130,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-1. Uygulamanızın paket dizininde *MessageProperties.java* adında yeni bir Java dosyası oluşturun.
+1. Uygulamanızın paket dizininde *MessageProperties. Java* adlı yeni bir Java dosyası oluşturun.
 
     ```java
     package com.example.demo;
@@ -153,7 +153,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-1. Uygulamanızın paket dizininde *HelloController.java* adında yeni bir Java dosyası oluşturun.
+1. Uygulamanızın paket dizininde *Hellocontroller. Java* adlı yeni bir Java dosyası oluşturun.
 
     ```java
     package com.example.demo;
@@ -184,7 +184,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-1. Uygulamanızın şablon dizinde *welcome.html* adlı yeni bir HTML dosyası oluşturun.
+1. Uygulamanızın şablonlar dizininde *Welcome. html* adlı yenı bir HTML dosyası oluşturun.
 
     ```html
     <!DOCTYPE html>
@@ -241,7 +241,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 
     ```
 
-1. Altında `static` ve içinde *Main.css*adlı yeni bir CSS dosyası CSS adlı yeni bir klasör oluşturun.
+1. *Ana. css*adlı yenı bir CSS `static` dosyası içinde ve içinde CSS adlı yeni bir klasör oluşturun.
 
     ```css
     html {
@@ -274,7 +274,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak oluşturma ve çalıştırma
+## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
 1. Spring Boot uygulamanızı Maven’le oluşturun ve çalıştırın.
 
@@ -283,11 +283,11 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     mvn spring-boot:run
     ```
 
-1. Tarayıcı penceresi açın ve URL'ye `http://localhost:8080/welcome`gidin: .
+1. Bir tarayıcı penceresi açın ve URL 'ye gidin: `http://localhost:8080/welcome`.
 
-    ![Quickstart uygulaması yerel başlatmak](./media/quickstarts/spring-boot-feature-flag-local-before.png)
+    ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Uygulama Yapılandırma portalında **Özellik Yöneticisi'ni**seçin ve **Beta** anahtarının durumunu **On**olarak değiştirin:
+1. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
     | Anahtar | Durum |
     |---|---|
@@ -295,7 +295,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 
 1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 
-    ![Quickstart uygulaması yerel başlatmak](./media/quickstarts/spring-boot-feature-flag-local-after.png)
+    ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -303,8 +303,8 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, yeni bir Uygulama Yapılandırma mağazası oluşturdunuz ve [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla Bahar Önyükleme web uygulamasındaki özellikleri yönetmek için kullandınız.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir Spring Boot Web uygulamasındaki özellikleri yönetmek için kullandınız.
 
 * [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
-* [Özellik bayraklarını yönetin.](./manage-feature-flags.md)
-* [Bahar Önyükleme Core uygulamasında özellik bayraklarını kullanın.](./use-feature-flags-spring-boot.md)
+* [Özellik bayraklarını yönetin](./manage-feature-flags.md).
+* [Bir Spring Boot Core uygulamasında Özellik bayraklarını kullanın](./use-feature-flags-spring-boot.md).

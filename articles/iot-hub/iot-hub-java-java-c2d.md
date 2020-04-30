@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub (Java) ile buluttan cihaza iletiler | Microsoft Dokümanlar
-description: Java için Azure IoT SDK'larını kullanarak bir Azure IoT hub'ından bir aygıta buluttan aygıta ileti gönderme. Simüle edilmiş bir aygıt uygulamasını, buluttan cihaza iletiler almak için ve buluttan cihaza iletigöndermek için bir arka uç uygulamasını değiştirmek için değiştirirsiniz.
+title: Azure IoT Hub ile buluttan cihaza iletiler (Java) | Microsoft Docs
+description: Java için Azure IoT SDK 'larını kullanarak Azure IoT Hub 'ından bir cihaza buluttan cihaza ileti gönderme. Bir sanal cihaz uygulamasını buluttan cihaza iletiler alacak şekilde değiştirirsiniz ve bir arka uç uygulamasını, buluttan cihaza iletileri gönderecek şekilde değiştirirsiniz.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -13,58 +13,58 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732526"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub (Java) ile buluttan cihaza iletiler gönderme
+# <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub ile buluttan cihaza iletileri gönderme (Java)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub, milyonlarca aygıt ve bir çözüm arka uç arasında güvenilir ve güvenli çift yönlü iletişim sağlamaya yardımcı olan tam olarak yönetilen bir hizmettir. Bir [aygıttan IoT hub'ına hızlı başlat'a gönder telemetrisi,](quickstart-send-telemetry-java.md) bir IoT hub'ı oluşturmanın, içinde aygıt kimliğini nasıl sağlayabilirsiniz ve aygıttan buluta iletigönderen simüle edilmiş bir aygıt uygulamasını kodlamayı gösterir.
+Azure IoT Hub, milyonlarca cihaz ile bir çözüm arka ucu arasında güvenilir ve güvenli çift yönlü iletişimin sağlanmasına yardımcı olan, tam olarak yönetilen bir hizmettir. [Bir cihazdan IoT Hub 'ına yönelik Telemetriyi, bir](quickstart-send-telemetry-java.md) IoT Hub 'ı oluşturmayı, bu kodda bir cihaz kimliği sağlamayı ve cihazdan buluta iletiler gönderen bir sanal cihaz uygulamasını nasıl kodlayacağınızı gösterir.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bu öğretici, [bir aygıttan IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-java.md)biryapılsa. Aşağıdakileri nasıl yapacağınızı gösterir:
+Bu öğretici, [bir cihazdan IoT Hub 'ına telemetri gönderme hakkında bir](quickstart-send-telemetry-java.md)yapı oluşturur. Aşağıdakileri nasıl yapılacağını gösterir:
 
-* Çözümünüzden arka uçtan, IoT Hub üzerinden tek bir cihaza buluttan cihaza iletigönderin.
+* Çözüm arka ucundan, IoT Hub aracılığıyla buluttan cihaza iletileri tek bir cihaza gönderin.
 
-* Bir aygıttan buluttan aygıta iletiler alın.
+* Bir cihazda buluttan cihaza iletiler alın.
 
-* Çözümünüzden arka uçtan, IoT Hub'dan bir cihaza gönderilen iletiler için teslimat bildirimi *(geri bildirim)* isteyin.
+* Çözüm arka uçta, IoT Hub bir cihaza gönderilen iletiler için teslim bildirimi (*geri bildirim*) isteyin.
 
-[IoT Hub geliştirici kılavuzunda buluttan cihaza iletiler](iot-hub-devguide-messaging.md)hakkında daha fazla bilgi bulabilirsiniz.
+[IoT Hub geliştirici kılavuzunda buluttan cihaza iletiler](iot-hub-devguide-messaging.md)hakkında daha fazla bilgi edinebilirsiniz.
 
-Bu eğitimin sonunda, iki Java konsolu uygulaması çalıştırın:
+Bu öğreticinin sonunda iki Java konsol uygulaması çalıştırırsınız:
 
-* **simüle edilen aygıt,** [bir cihazdan IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-java.md)oluşturulan uygulamanın değiştirilmiş bir sürümü , IoT hub'ınıza bağlanır ve buluttan cihaza iletiler alır.
+* **benzetimli-Device**, bir cihazdan telemetri göndererek IoT Hub 'ınıza bağlanan ve buluttan cihaza iletiler alan bir [IoT Hub 'ına bir cihazdan telemetri gönderme](quickstart-send-telemetry-java.md).
 
-* ioT Hub üzerinden simüle edilen aygıt uygulamasına buluttan cihaza ileti gönderen ve ardından teslim bildirimini alan **send-c2d-messages.**
+* IoT Hub aracılığıyla sanal cihaz uygulamasına buluttan cihaza ileti gönderen ve sonra teslim onayını alan **Send-C2D-messages**.
 
 > [!NOTE]
-> IoT Hub, Azure IoT aygıt SDK'ları aracılığıyla birçok aygıt platformu ve dili (C, Java, Python ve Javascript dahil) için SDK desteğine sahiptir. Cihazınızı bu öğreticinin koduna ve genellikle Azure IoT Hub'ına nasıl bağlayacaklarına ilişkin adım adım talimatlar için [Azure IoT Geliştirici Merkezi'ne](https://azure.microsoft.com/develop/iot)bakın.
+> IoT Hub, Azure IoT cihaz SDK 'Ları aracılığıyla birçok cihaz platformu ve dili (C, Java, Python ve JavaScript dahil) için SDK desteğine sahiptir. Cihazınızı Bu öğreticinin koduna bağlama ve genellikle Azure IoT Hub 'e yönelik adım adım yönergeler için bkz. [Azure IoT Geliştirici Merkezi](https://azure.microsoft.com/develop/iot).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bir [aygıttan IoT hub](quickstart-send-telemetry-java.md) quickstart veya [IoT Hub](tutorial-routing.md) öğretici ile Yapılandırma ileti yönlendirme telemetri gönder tam bir çalışma sürümü.
+* [Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) veya [IoT Hub öğreticisiyle ileti yönlendirmeyi yapılandırma ile Telemetriyi](tutorial-routing.md) gönderme işleminin tamamen bir çalışma sürümü.
 
-* [Java SE Geliştirme Kiti 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için indirme almak için **Uzun vadeli destek** altında Java **8** seçtiğinizden emin olun.
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). JDK 8 için karşıdan yüklemeye ulaşmak üzere **uzun süreli destek** altında **Java 8** ' i seçtiğinizden emin olun.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Etkin bir Azure hesabı. Hesabınız yoksa, yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.
 
-* 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu makaledeki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
+* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>Benzetimli cihaz uygulamasından ileti alma
+## <a name="receive-messages-in-the-simulated-device-app"></a>Sanal cihaz uygulamasında ileti alma
 
-Bu bölümde, IoT hub'ından buluttan aygıta iletiler almak için telemetri gönder'de oluşturduğunuz simüle edilmiş aygıt uygulamasını [bir aygıttan IoT](quickstart-send-telemetry-java.md) hub'ına değiştirirsiniz.
+Bu bölümde, IoT Hub 'ından buluttan cihaza iletileri almak için [bir cihazdan Telemetriyi bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md) oluşturduğunuz sanal cihaz uygulamasını değiştirirsiniz.
 
 1. Bir metin düzenleyicisi kullanarak simulated-device\src\main\java\com\mycompany\app\App.java dosyasını açın.
 
-2. Aşağıdaki **MessageCallback** sınıfını **App** sınıfının içine iç içe bir sınıf olarak ekleyin. Yürütme **execute** yöntemi, aygıt IoT Hub'ından bir ileti aldığında çağrılır. Bu örnekte, aygıt her zaman IoT hub'ına iletiyi tamamladığını belirtir:
+2. Aşağıdaki **Messagecallback** sınıfını, **uygulama** sınıfının içine bir iç içe sınıf olarak ekleyin. **Yürütme** yöntemi, cihaz IoT Hub bir ileti aldığında çağrılır. Bu örnekte cihaz her zaman IoT Hub 'ına iletiyi tamamladığını bildirir:
 
     ```java
     private static class AppMessageCallback implements MessageCallback {
@@ -77,7 +77,7 @@ Bu bölümde, IoT hub'ından buluttan aygıta iletiler almak için telemetri gö
     }
     ```
 
-3. **AppMessageCallback** örneği oluşturmak için **ana** yöntemi değiştirin ve istemciyi aşağıdaki gibi açmadan önce **setMessageCallback** yöntemini arayın:
+3. **Appmessagecallback** örneği oluşturmak için **Main** metodunu değiştirin ve istemciyi şu şekilde açmadan önce **setmessagecallback** metodunu çağırın:
 
     ```java
     client = new DeviceClient(connString, protocol);
@@ -88,7 +88,7 @@ Bu bölümde, IoT hub'ından buluttan aygıta iletiler almak için telemetri gö
     ```
 
     > [!NOTE]
-    > Aktarım olarak MQTT veya AMQP yerine HTTPS kullanıyorsanız, **DeviceClient** örneği IoT Hub'ından gelen iletileri seyrek olarak denetler (her 25 dakikadan az). MQTT, AMQP ve HTTPS desteği ve IoT Hub azaltma arasındaki farklar hakkında daha fazla bilgi için [IoT Hub geliştirici kılavuzunun ileti bölümüne](iot-hub-devguide-messaging.md)bakın.
+    > Taşıma olarak MQTT veya AMQP yerine HTTPS kullanırsanız, **Deviceclient** örneği IoT Hub seyrek 'tan (her 25 dakikada bir daha az) ileti olup olmadığını denetler. MQTT, AMQP ve HTTPS desteği arasındaki farklar ve IoT Hub azaltma hakkında daha fazla bilgi için, [IoT Hub geliştirici kılavuzunun mesajlaşma bölümüne](iot-hub-devguide-messaging.md)bakın.
 
 4. Maven kullanarak **simulated-device** uygulamasını oluşturmak için, simulated-device klasöründeki komut isteminde aşağıdaki komutu yürütün:
 
@@ -96,25 +96,25 @@ Bu bölümde, IoT hub'ından buluttan aygıta iletiler almak için telemetri gö
     mvn clean package -DskipTests
     ```
 
-## <a name="get-the-iot-hub-connection-string"></a>IoT hub bağlantı dizesini alın
+## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-Bu makalede, bir aygıttan bir [IoT hub'ına telemetri gönder'de](quickstart-send-telemetry-java.md)oluşturduğunuz IoT hub'ı üzerinden buluttan aygıta iletigöndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza ileti göndermek için hizmetinizin **hizmet bağlantısı** namına ihtiyacı vardır. Varsayılan olarak, her IoT Hub'ı bu izni veren paylaşılan erişim ilkesi adlı **hizmetle** oluşturulur.
+Bu makalede, [bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-java.md)bölümünde oluşturduğunuz IoT Hub 'ı aracılığıyla buluttan cihaza iletileri göndermek için bir arka uç hizmeti oluşturursunuz. Buluttan cihaza iletiler göndermek için hizmetinize **hizmet bağlantısı** izni verilmesi gerekir. Varsayılan olarak, her IoT Hub, bu izni veren **hizmet** adlı paylaşılan bir erişim ilkesiyle oluşturulur.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="send-a-cloud-to-device-message"></a>Buluttan aygıta ileti gönderme
+## <a name="send-a-cloud-to-device-message"></a>Buluttan cihaza ileti gönderme
 
-Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen bir Java konsol uygulaması oluşturursunuz. Bir [aygıttan IoT](quickstart-send-telemetry-java.md) hub'ına hızlı başlat'a telemetri gönder'e eklediğiniz aygıtın aygıt kimliğine ihtiyacınız vardır. Ayrıca, IoT hub bağlantı dizesini al'da daha önce kopyaladığınız [IoT hub bağlantı dizesini](#get-the-iot-hub-connection-string)de almanız gerekir.
+Bu bölümde, sanal cihaz uygulamasına buluttan cihaza iletiler gönderen bir Java konsol uygulaması oluşturursunuz. [Bir cihazdan IoT Hub 'ına bir cihazdan Telemetriyi gönder](quickstart-send-telemetry-java.md) hızlı başlangıç bölümünde eklediğiniz CIHAZıN cihaz kimliği gereklidir. [IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde daha önce kopyaladığınız IoT Hub bağlantı dizesine da ihtiyacınız vardır.
 
-1. Komut isteminizde aşağıdaki komutu kullanarak **send-c2d-iletileri** adlı bir Maven projesi oluşturun. Bu komutun tek ve uzun bir komut olduğunu unutmayın:
+1. Komut istemindeki aşağıdaki komutu kullanarak **Send-C2D-messages** adlı bir Maven projesi oluşturun. Bu komutun tek bir uzun komut olduğunu aklınızda:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Komut isteminizde, yeni send-c2d iletileri klasörüne gidin.
+2. Komut istemindeki yeni Send-C2D-messages klasörüne gidin.
 
-3. Metin düzenleyicisi kullanarak, send-c2d iletileri klasöründeki pom.xml dosyasını açın ve **bağımlılık** düğümüne aşağıdaki bağımlılıkları ekleyin. Bağımlılık eklemek, IoT hub hizmetinizle iletişim kurmak için uygulamanızdaki **iothub-java-service-client** paketini kullanmanıza olanak tanır:
+3. Bir metin düzenleyicisi kullanarak, Send-C2D-messages klasöründeki POTM. xml dosyasını açın ve aşağıdaki bağımlılığı **Bağımlılıklar** düğümüne ekleyin. Bağımlılığı eklemek, IoT Hub hizmetinize iletişim kurmak için uygulamanızdaki **ıothub-Java-Service-Client** paketini kullanmanıza olanak sağlar:
 
     ```xml
     <dependency>
@@ -129,7 +129,7 @@ Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen
 
 4. pom.xml dosyasını kaydedin ve kapatın.
 
-5. Metin düzenleyicisi kullanarak send-c2d-messages\src\main\java\com\mycompany\app\App.java dosyasını açın.
+5. Bir metin düzenleyicisi kullanarak send-c2d-messages\src\main\java\com\mycompany\app\App.java dosyasını açın.
 
 6. Aşağıdaki **içeri aktarma** deyimlerini dosyaya ekleyin:
 
@@ -139,7 +139,7 @@ Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen
     import java.net.URISyntaxException;
     ```
 
-7. **Uygulama** sınıfına aşağıdaki sınıf düzeyinde değişkenleri ekleyin, **{yourhubconnectionstring}** ve **{yourdeviceid}** değerlerini daha önce belirttiğiniz değerlerle değiştirin:
+7. Aşağıdaki sınıf düzeyi değişkenleri **uygulama** sınıfına ekleyerek **{yourhubconnectionstring}** ve **{yourdeviceıd}** değerlerini daha önce not ettiğiniz değerlerle değiştirin:
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -148,7 +148,7 @@ Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen
         IotHubServiceClientProtocol.AMQPS;
     ```
 
-8. **Ana** yöntemi aşağıdaki kodla değiştirin. Bu kod IoT hub'ınıza bağlanır, cihazınıza bir ileti gönderir ve ardından aygıtın iletiyi alıp işlediğine dair bir bildirim bekler:
+8. **Main** yöntemini aşağıdaki kodla değiştirin. Bu kod, IoT Hub 'ınıza bağlanır, cihazınıza bir ileti gönderir ve ardından cihazın aldığı ve iletiyi işlediği bir bildirim bekler:
 
     ```java
     public static void main(String[] args) throws IOException,
@@ -181,7 +181,7 @@ Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen
     ```
 
     > [!NOTE]
-    > Basitlik için, bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkeleri (üstel geri tepme gibi) uygulamanız gerekir.
+    > Kolaylık olması için, bu öğretici herhangi bir yeniden deneme ilkesi uygulamaz. Üretim kodunda, [geçici hata işleme](/azure/architecture/best-practices/transient-faults)makalesinde önerildiği gibi yeniden deneme ilkelerini (üstel geri alma gibi) uygulamanız gerekir.
 
 9. Maven kullanarak **simulated-device** uygulamasını oluşturmak için, simulated-device klasöründeki komut isteminde aşağıdaki komutu yürütün:
 
@@ -193,26 +193,26 @@ Bu bölümde, simüle edilen aygıt uygulamasına buluttan cihaza iletigönderen
 
 Şimdi uygulamaları çalıştırmaya hazırsınız.
 
-1. Benzetimli aygıt klasöründeki komut isteminde, IoT hub'ınıza telemetri göndermeye başlamak ve hub'ınızdan gönderilen buluttan cihaza iletileri dinlemek için aşağıdaki komutu çalıştırın:
+1. Sanal cihaz klasöründeki bir komut isteminde, IoT Hub 'ınıza telemetri göndermeye başlamak ve hub 'ınızdan gönderilen buluttan cihaza iletileri dinlemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Benzetimli cihaz uygulamasını çalıştırma](./media/iot-hub-java-java-c2d/receivec2d.png)
+    ![Sanal cihaz uygulamasını çalıştırma](./media/iot-hub-java-java-c2d/receivec2d.png)
 
-2. Send-c2d iletileri klasöründeki komut isteminde, buluttan aygıta ileti göndermek ve geri bildirim bildirimini beklemek için aşağıdaki komutu çalıştırın:
+2. Send-C2D-messages klasöründeki bir komut isteminde, buluttan cihaza ileti göndermek ve geri bildirim bildirimi için beklemek üzere aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Buluttan aygıta ileti göndermek için komutu çalıştırın](media/iot-hub-java-java-c2d/sendc2d.png)
+    ![Buluttan cihaza ileti göndermek için komutunu çalıştırın](media/iot-hub-java-java-c2d/sendc2d.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, buluttan cihaza ileti göndermeyi ve almayı öğrendiniz.
+Bu öğreticide, buluttan cihaza iletileri gönderme ve alma hakkında daha fazla öğrendiniz.
 
-IoT Hub'ı kullanan eksiksiz uçtan uca çözümlerin örneklerini görmek için [Azure IoT Çözüm Hızlandırıcıları'na](https://azure.microsoft.com/documentation/suites/iot-suite/)bakın.
+IoT Hub kullanan uçtan uca çözümlerin tam örneklerini görmek için bkz. [Azure IoT Çözüm Hızlandırıcıları](https://azure.microsoft.com/documentation/suites/iot-suite/).
 
-IoT Hub ile çözüm geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub geliştirici kılavuzuna](iot-hub-devguide.md)bakın.
+IoT Hub çözümleri geliştirme hakkında daha fazla bilgi edinmek için [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.

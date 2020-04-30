@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM'de komut dosyaları çalıştırma
-description: Bu konu, sanal bir makine içinde komut dosyalarının nasıl çalıştırılabildiğini açıklar
+title: Azure Linux VM 'de betikleri çalıştırma
+description: Bu konu, bir sanal makine içinde betikleri çalıştırmayı açıklar
 services: automation
 ms.service: virtual-machines-linux
 author: bobbytreed
@@ -8,64 +8,64 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
 ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758591"
 ---
-# <a name="run-scripts-in-your-linux-vm"></a>Linux VM'nizde komut dosyaları çalıştırın
+# <a name="run-scripts-in-your-linux-vm"></a>Linux sanal makinenizde betikleri çalıştırma
 
-Görevleri otomatikleştirmek veya sorunları gidermek için vm komutları çalıştırmanız gerekebilir. Aşağıdaki makalede, VM'lerinizde komut dosyaları ve komutları çalıştırmak için kullanılabilen özellikler hakkında kısa bir genel bakış sunulmaktadır.
+Görevleri otomatikleştirmek veya sorunları gidermek için, bir VM 'de komutları çalıştırmanız gerekebilir. Aşağıdaki makale, VM 'lerinizde betikleri ve komutları çalıştırmak için kullanılabilen özelliklere kısa bir genel bakış sunar.
 
 ## <a name="custom-script-extension"></a>Özel Betik Uzantısı
 
-[Özel Komut Dosyası Uzantısı](../extensions/custom-script-linux.md) öncelikle dağıtım sonrası yapılandırma ve yazılım yüklemesi için kullanılır.
+[Özel Betik uzantısı](../extensions/custom-script-linux.md) öncelikle dağıtım sonrası yapılandırma ve yazılım yüklemesi için kullanılır.
 
-* Azure sanal makinelerinde komut dosyalarını indirin ve çalıştırın.
-* Azure Kaynak Yöneticisi şablonları, Azure CLI, REST API, PowerShell veya Azure portalı kullanılarak çalıştırılabilir.
-* Komut dosyası dosyaları Azure depolama veya GitHub'dan indirilebilir veya Azure portalından çalıştırıldığında bilgisayarınızdan sağlanabilir.
-* Windows makinelerinde PowerShell komut dosyasını ve Linux makinelerinde Bash komut dosyasını çalıştırın.
-* Dağıtım sonrası yapılandırma, yazılım yüklemesi ve diğer yapılandırma veya yönetim görevleri için kullanışlıdır.
+* Azure sanal makinelerinde betikleri indirip çalıştırın.
+* Azure Resource Manager şablonları, Azure CLı, REST API, PowerShell veya Azure portal kullanılarak çalıştırılabilir.
+* Betik dosyaları Azure Storage veya GitHub 'dan indirilebilir veya Azure portal çalıştırıldığında BILGISAYARıNıZDAN sağlanmalıdır.
+* Linux makinelerde Windows makinelerinde ve Bash betikte PowerShell betiğini çalıştırın.
+* Dağıtım sonrası yapılandırma, yazılım yükleme ve diğer yapılandırma ya da yönetim görevleri için faydalıdır.
 
-## <a name="run-command"></a>Çalıştır komutu
+## <a name="run-command"></a>Komutu Çalıştır
 
-[Çalıştır Komutu](run-command.md) özelliği, komut dosyalarını kullanarak sanal makine ve uygulama yönetimi ve sorun giderme olanağı sağlar ve örneğin konuk güvenlik duvarı RDP veya SSH bağlantı noktası açık değilse, makineye erişilemese bile kullanılabilir.
+[Çalıştır komutu](run-command.md) özelliği, sanal makine ve uygulama yönetimini ve betikleri kullanarak sorun gidermeyi ve makinenin ulaşılamaz olduğu durumlarda bile kullanılabilir. Örneğin, Konuk GÜVENLIK duvarında RDP veya SSH bağlantı noktası açık olmaz.
 
-* Azure sanal makinelerinde komut dosyaları çalıştırın.
-* [Azure portalı](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)veya [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) kullanılarak çalıştırılabilir
-* Hızlı bir şekilde bir komut dosyası çalıştırın ve çıktıgörüntülemek ve Azure portalında gerektiği gibi tekrarlayın.
-* Komut dosyası doğrudan yazılabilir veya yerleşik komut dosyalarından birini çalıştırabilirsiniz.
-* Windows makinelerinde PowerShell komut dosyasını ve Linux makinelerinde Bash komut dosyasını çalıştırın.
-* Sanal makine ve uygulama yönetimi ve ulaşılamayan sanal makinelerde komut dosyaları çalıştırmak için yararlıdır.
+* Azure sanal makinelerinde betikleri çalıştırın.
+* [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)veya [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) kullanarak çalıştırılabilir
+* Azure portal hızlıca bir betiği çalıştırın ve çıktıyı görüntüleyin ve gerektiğinde tekrarlayın.
+* Betik doğrudan yazılabilir veya yerleşik betiklerin birini çalıştırabilirsiniz.
+* Linux makinelerde Windows makinelerinde ve Bash betikte PowerShell betiğini çalıştırın.
+* Sanal makine ve uygulama yönetimi için ve ulaşılamaz olan sanal makinelerde betikleri çalıştırmak için faydalıdır.
 
 ## <a name="hybrid-runbook-worker"></a>Karma Runbook Çalışanı
 
-[Karma Runbook Worker,](../../automation/automation-hybrid-runbook-worker.md) genel makine, uygulama ve ortam yönetimini, kullanıcının otomasyon hesabında depolanan özel komut dosyalarıyla birlikte sağlar.
+[Karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) , kullanıcının bir Otomasyon hesabında depolanan özel betiklerine sahip genel makine, uygulama ve ortam yönetimi sağlar.
 
-* Azure ve Azure olmayan makinelerde komut dosyaları çalıştırın.
-* Azure portalı, Azure CLI, REST API, PowerShell, webhook kullanılarak çalıştırılabilir.
-* Bir Otomasyon Hesabında depolanan ve yönetilen komut dosyaları.
-* PowerShell, PowerShell İş Akışı, Python veya Grafik çalışma kitaplarını çalıştırın
-* Komut dosyası çalışma süresinde zaman sınırı yok.
-* Birden çok komut dosyası aynı anda çalıştırılabilir.
-* Tam komut dosyası çıktısı döndürülür ve depolanır.
-* İş geçmişi 90 gün için kullanılabilir.
-* Komut dosyaları Yerel Sistem olarak veya kullanıcı tarafından sağlanan kimlik bilgileriyle çalıştırılabilir.
-* [Manuel kurulum](../../automation/automation-windows-hrw-install.md) gerektirir
+* Betikleri Azure 'da ve Azure dışı makinelerde çalıştırın.
+* Azure portal, Azure CLı, REST API, PowerShell, Web kancası kullanılarak çalıştırılabilir.
+* Otomasyon hesabında depolanan ve yönetilen betikler.
+* PowerShell, PowerShell Iş akışı, Python veya grafik runbook 'ları çalıştırma
+* Betik çalıştırma sırasında zaman sınırı yok.
+* Birden çok komut dosyası aynı anda çalışabilir.
+* Tam betik çıkışı döndürülür ve depolanır.
+* İş geçmişi 90 gün boyunca kullanılabilir.
+* Betikler, yerel sistem veya Kullanıcı tarafından sağlanan kimlik bilgileriyle çalıştırılabilir.
+* [El ile yükleme](../../automation/automation-windows-hrw-install.md) gerektirir
 
 ## <a name="serial-console"></a>Seri konsol
 
-[Seri konsol,](serial-console.md) VM'ye bağlı bir klavyeye sahip olmaya benzer bir VM'ye doğrudan erişim sağlar.
+[Seri konsol](serial-console.md) , VM 'ye bağlı bir klavye olmasına benzer şekilde, bir VM 'ye doğrudan erişim sağlar.
 
 * Azure sanal makinelerinde komutları çalıştırın.
-* Azure portalındaki makineye metin tabanlı bir konsol kullanılarak çalıştırılabilir.
-* Yerel bir kullanıcı hesabıyla makineye giriş yapın.
-* Makinenin ağ veya işletim sistemi durumuna bakılmaksızın sanal makineye erişim gerektiğinde kullanışlıdır.
+* Azure portal makineye metin tabanlı bir konsol kullanılarak çalıştırılabilir.
+* Yerel bir kullanıcı hesabı ile makinede oturum açın.
+* Makinenin ağı veya işletim sistemi durumu ne olursa olsun, sanal makineye erişim gerektiğinde faydalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM'lerinizde komut dosyalarını ve komutları çalıştırmak için kullanılabilen farklı özellikler hakkında daha fazla bilgi edinin.
+Sanal makinelerinizdeki betikleri ve komutları çalıştırmak için kullanılabilen farklı özellikler hakkında daha fazla bilgi edinin.
 
 * [Özel Betik Uzantısı](../extensions/custom-script-linux.md)
 * [Çalıştır Komutu](run-command.md)

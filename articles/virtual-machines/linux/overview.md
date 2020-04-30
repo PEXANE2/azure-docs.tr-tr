@@ -1,6 +1,6 @@
 ---
-title: Azure'da Linux VM'lere Genel Bakış
-description: Azure'daki Linux sanal makinelerine genel bakış.
+title: Azure 'da Linux VM 'lerine genel bakış
+description: Azure 'da Linux sanal makinelerine genel bakış.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: overview
@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81759414"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |VM oluştururken listeden konum seçin. |
+| Azure portalı |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -58,7 +58,7 @@ Azure, sanal makineyi tüm diskler için premium depolamayla dağıtmanız koşu
 ## <a name="vm-size"></a>VM Boyutu
 Kullandığınız VM’nin [boyutu](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), çalıştırmak istediğiniz iş yüküne göre belirlenir. Seçtiğiniz boyut işlemci gücü, bellek ve depolama kapasitesi gibi ölçütleri belirler. Azure çok sayıda kullanım türünü desteklemek için büyük çeşitlilikteki boyutları sunar.
 
-Azure, VM'nin boyutuna ve işletim sistemine bağlı olarak saatlik bir [fiyat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ücrete dahil eder. Kısmi saatler için, Azure yalnızca kullanılan dakikaları ücretlendirir. Depolama ayrı olarak fiyatlandırılır ve ücretlendirilir.
+Azure, VM 'nin boyut ve işletim sistemine göre [saatlik bir fiyat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) ücretlendirir. Kısmi saatler için, Azure yalnızca kullanılan dakikaları ücretlendirir. Depolama ayrı olarak fiyatlandırılır ve ücretlendirilir.
 
 ## <a name="vm-limits"></a>VM Sınırları
 Aboneliğinizde, projeniz için birden fazla VM dağıtımını etkileyebilecek varsayılan [kota sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md) vardır. Geçerli sınırlar abonelik başına her bölge için 20 VM olarak belirlenmiştir. Sınırların [yükseltilmesini talep etmek için destek bileti oluşturabilirsiniz](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
@@ -69,7 +69,7 @@ Yönetilen Diskler, Azure Depolama hesabı oluşturma ve yönetme işlemini arka
 
 Ayrıca, her Azure bölgesinde bir depolama hesabındaki özel görüntülerinizi yönetebilir ve aynı abonelikte yüzlerce VM oluşturmak için kullanabilirsiniz. Yönetilen Diskler hakkında daha fazla bilgi için bkz. [Yönetilen Disklere Genel Bakış](../linux/managed-disks-overview.md).
 
-## <a name="distributions"></a>Dağıtım 
+## <a name="distributions"></a>Dağıtımları 
 Microsoft Azure, çeşitli iş ortakları tarafından sağlanan ve bakımı yapılan bir dizi popüler Linux dağıtımının çalıştırılmasını destekler.  Azure Market'te Red Hat Enterprise, CentOS, SUSE Linux Enterprise, Debian, Ubuntu, CoreOS, RancherOS, FreeBSD gibi daha birçok dağıtım bulabilirsiniz. Microsoft, [Azure destekli Linux Dağıtımları](endorsed-distros.md) listesine daha da fazla çeşitleme katmak için çeşitli Linux topluluklarıyla etkin bir çalışma sürdürüyor.
 
 Tercih ettiğiniz Linux dağıtımı şu anda galeride yoksa, [Azure'da Linux VHD'si oluşturma ve karşıya yükleme](create-upload-generic.md) yoluyla "Kendi Linux VM'inizi getirebilirsiniz".
@@ -81,7 +81,7 @@ Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma za
 * Red Hat - [Azure Market - Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical - [Azure Market - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian - [Azure Market - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD - [Azure Marketi - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+* FreeBSD- [Azure Marketi-freebsd 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 * CoreOS - [Azure Market - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
 * RancherOS - [Azure Market - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami - [Azure için Bitnami Kitaplığı](https://azure.bitnami.com/)
@@ -92,12 +92,12 @@ Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma za
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-Düzgün bir DevOps kültürünü başarmak için tüm altyapı kod olmalıdır.  Tüm altyapı kod içinde yaşadığında kolayca yeniden oluşturulabilir.  Azure tüm önemli otomasyon araçlarıyla, örneğin Ansible, Chef, SaltStack ve Puppet ile çalışır.  Azure'un ayrıca kendi otomasyon aracı da vardır:
+Düzgün bir DevOps kültürünü başarmak için tüm altyapı kod olmalıdır.  Tüm altyapı kodda bulunduğunda kolayca yeniden oluşturulabilir.  Azure tüm önemli otomasyon araçlarıyla, örneğin Ansible, Chef, SaltStack ve Puppet ile çalışır.  Azure'un ayrıca kendi otomasyon aracı da vardır:
 
-* [Azure Şablonları](create-ssh-secured-vm-from-template.md)
+* [Azure şablonları](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure, bulut ların karşısına [çıkan](https://cloud-init.io/) ve onu destekleyen çoğu Linux Dağıtımcısı'na yönelik destekler.  Azure pazarda bulut ekleme özellikli görüntülerin kullanılabilmesi için onaylanan Linux dağıtım ortaklarımızla aktif olarak çalışıyoruz. Bu görüntüler, bulut-init dağıtımlarınızın ve yapılandırmalarınızın VM'ler ve sanal makine ölçek kümeleriyle sorunsuz çalışmasını sağlar.
+Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://cloud-init.io/) 'yi destekler.  Azure Marketi 'nde Cloud-init özellikli görüntülerin kullanılabilmesini sağlamak için, onaylanan Linux olmayan iş ortaklarıyla etkin bir şekilde çalışıyoruz. Bu görüntüler, Cloud-init dağıtımlarınızın ve yapılandırmalarının VM 'Ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışmasını sağlayacak.
 
 * [Azure Linux VM'lerinde cloud-init kullanma](using-cloud-init.md)
 
@@ -115,7 +115,7 @@ Azure, bulut ların karşısına [çıkan](https://cloud-init.io/) ve onu destek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlk VM'inizi oluşturun!
+İlk VM 'nizi oluşturun!
 
 - [Portal](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)

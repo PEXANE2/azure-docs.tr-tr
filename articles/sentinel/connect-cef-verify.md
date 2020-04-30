@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel'e bağlantı doğrulama | Microsoft Dokümanlar
-description: CEF iletilerinin Azure Sentinel'e iletildiğinden emin olmak için güvenlik çözümünüzün bağlantılarını doğrulayın.
+title: Azure Sentinel 'e bağlantıyı doğrulama | Microsoft Docs
+description: CEF iletilerinin Azure Sentinel 'e iletildiğinden emin olmak için güvenlik çözümünüzün bağlantısını doğrulayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,44 +15,44 @@ ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731824"
 ---
-# <a name="step-3-validate-connectivity"></a>ADIM 3: Bağlantıyı doğrulama
+# <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
-Günlük iletmecinizi (Adım 1'de) dağıttıktan ve güvenlik çözümünüzü CEF iletileri (Adım 2'de) gönderecek şekilde yapılandırdıktan sonra, güvenlik çözümünüzle Azure Sentinel arasındaki bağlantıyı doğrulamak için aşağıdaki yönergeleri izleyin. 
+Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümünüzü BT CEF iletileri gönderecek şekilde yapılandırdıysanız (adım 2 ' de), güvenlik çözümünüz ile Azure Sentinel arasındaki bağlantıyı doğrulamak için bu yönergeleri izleyin. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Günlük ileti makinenizde yüksek izinlere (sudo) sahip olmalısınız.
+- Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
-- Günlük forwarder makinenizde Python yüklü olmalıdır.<br>
-Kontrol `python –version` etmek için komutu kullanın.
+- Günlük ileticisi makinenizde Python yüklü olmalıdır.<br>
+Denetlemek için `python –version` komutunu kullanın.
 
-## <a name="how-to-validate-connectivity"></a>Bağlantı nasıl doğrulanır?
+## <a name="how-to-validate-connectivity"></a>Bağlantıyı doğrulama
 
-1. Azure Sentinel gezinti menüsünden **Günlükler'i**açın. Güvenlik çözümünüzden günlük alıp almadığınızı görmek için **CommonSecurityLog** şemasını kullanarak bir sorgu çalıştırın.<br>
-**Günlüklerinizin Log Analytics'te**görünmeye başlamasının yaklaşık 20 dakika sürebileceğini unutmayın. 
+1. Azure Sentinel gezinti menüsünde **Günlükler**' i açın. Güvenlik çözümünüzdeki günlükleri alıp almadığınızı görmek için **Commonsecuritylog** şemasını kullanarak bir sorgu çalıştırın.<br>
+Günlüklerinizin **Log Analytics**görünmeye başlaması için 20 dakika sürecağına dikkat edin. 
 
-1. Sorgudan herhangi bir sonuç görmüyorsanız, olayların güvenlik çözümünüzden oluşturulduğunu doğrulayın veya bazılarını oluşturmayı deneyin ve bunların belirlediğiniz Syslog iletme makinesine iletildiğini doğrulayın. 
+1. Sorgudan herhangi bir sonuç görmüyorsanız, olayların güvenlik çözümünden oluşturulduğunu doğrulayın veya bir süre oluşturmayı deneyin ve belirlediğiniz Syslog iletici makinesine iletildiğini doğrulayın. 
 
-1. Güvenlik çözümünüz, günlük iletmeciniz ve Azure Sentinel arasındaki bağlantıyı denetlemek için günlük iletmecinde aşağıdaki komut dosyasını çalıştırın. Bu komut dosyası, daemon'un doğru bağlantı noktalarında dinlediğini, iletmenin düzgün yapılandırıldığından ve daemon ile Log Analytics aracısı arasındaki iletişimi hiçbir şeyin engellemediğini denetler. Ayrıca uçtan uca bağlantıyı denetlemek için sahte mesajlar 'TestCommonEventFormat' gönderir. <br>
+1. Güvenlik çözümünüz, günlük ileticisi ve Azure Sentinel arasındaki bağlantıyı denetlemek için günlük ileticisinde aşağıdaki betiği çalıştırın. Bu betik, arka plan programının doğru şekilde yapılandırıldığını ve arka plan programı ile Log Analytics Aracısı arasındaki iletişimi engellemediğini kontrol eder. Ayrıca, uçtan uca bağlantıyı denetlemek için ' TestCommonEventFormat ' adlı sahte iletiler gönderir. <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
-## <a name="validation-script-explained"></a>Doğrulama komut dosyası açıklandı
+## <a name="validation-script-explained"></a>Doğrulama betiği açıklanmıştı
 
-Doğrulama komut dosyası aşağıdaki denetimleri gerçekleştirir:
+Doğrulama betiği aşağıdaki denetimleri gerçekleştirir:
 
-# <a name="rsyslog-daemon"></a>[rsyslog daemon](#tab/rsyslog)
+# <a name="rsyslog-daemon"></a>[rsyslog Daemon](#tab/rsyslog)
 
 1. Dosyanın<br>
     `/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf`<br>
-    vardır ve geçerlidir.
+    var ve geçerli.
 
-1. Dosyanın aşağıdaki metni içermelerini denetler:
+1. Dosyanın aşağıdaki metni içerip içermediğini denetler:
 
         <source>
             type syslog
@@ -70,31 +70,31 @@ Doğrulama komut dosyası aşağıdaki denetimleri gerçekleştirir:
             type filter_syslog_security
         </filter>
 
-1. Makinede ağ trafiğini engelleyebilecek (ana bilgisayar güvenlik duvarı gibi) güvenlik geliştirmeleri olup olmadığını denetler.
+1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
-1. Syslog daemon'un (rsyslog) CEF (regex kullanarak) olarak tanımladığı iletileri TCP bağlantı noktası 25226'daki Log Analytics temsilcisine gönderecek şekilde düzgün bir şekilde yapılandırıldığından kontrol edilir:
+1. Syslog Daemon (rsyslog), TCP bağlantı noktası 25226 ' deki Log Analytics aracısına CEF (Regex kullanılarak) olarak tanımladığı iletileri göndermek için düzgün şekilde yapılandırıldığını denetler:
 
     - Yapılandırma dosyası:`/etc/rsyslog.d/security-config-omsagent.conf`
 
             :rawmsg, regex, "CEF\|ASA" ~
             *.* @@127.0.0.1:25226
 
-1. Syslog daemon port 514 veri alıyor denetler
+1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını denetler
 
-1. Gerekli bağlantıların kurulup kurulmadığını denetler: veri almak için tcp 514, syslog daemon ile Log Analytics aracısı arasındaki iç iletişim için tcp 25226
+1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki iç iletişim için TCP 25226
 
-1. Mock verilerini localhost'taki 514 bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında gözlemlenebilir olmalıdır:
+1. SAHTE verileri, localhost üzerinde 514 numaralı bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında observable olmalıdır:
 
         CommonSecurityLog
         | where DeviceProduct == "MOCK"
 
-# <a name="syslog-ng-daemon"></a>[syslog-ng daemon](#tab/syslogng)
+# <a name="syslog-ng-daemon"></a>[Syslog-ng Daemon](#tab/syslogng)
 
 1. Dosyanın<br>
     `/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf`<br>
-    vardır ve geçerlidir.
+    var ve geçerli.
 
-1. Dosyanın aşağıdaki metni içermelerini denetler:
+1. Dosyanın aşağıdaki metni içerip içermediğini denetler:
 
         <source>
             type syslog
@@ -112,9 +112,9 @@ Doğrulama komut dosyası aşağıdaki denetimleri gerçekleştirir:
             type filter_syslog_security
         </filter>
 
-1. Makinede ağ trafiğini engelleyebilecek (ana bilgisayar güvenlik duvarı gibi) güvenlik geliştirmeleri olup olmadığını denetler.
+1. Makinede ağ trafiğini (örneğin, bir ana bilgisayar güvenlik duvarı) engelliyor olabilecek herhangi bir güvenlik geliştirmesi olup olmadığını denetler.
 
-1. Syslog daemon'un (syslog-ng) CEF (regex kullanarak) olarak tanımladığı iletileri TCP bağlantı noktası 25226'daki Log Analytics temsilcisine gönderecek şekilde düzgün bir şekilde yapılandırıldığından kontrol edilir:
+1. Syslog Daemon (syslog-ng), TCP bağlantı noktası 25226 ' deki Log Analytics aracısına CEF (Regex kullanılarak) olarak tanımladığı iletileri göndermek için düzgün şekilde yapılandırıldığını denetler:
 
     - Yapılandırma dosyası:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
@@ -122,11 +122,11 @@ Doğrulama komut dosyası aşağıdaki denetimleri gerçekleştirir:
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
             log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
 
-1. Syslog daemon port 514 veri alıyor denetler
+1. Syslog arka plan programının 514 numaralı bağlantı noktasında veri aldığını denetler
 
-1. Gerekli bağlantıların kurulup kurulmadığını denetler: veri almak için tcp 514, syslog daemon ile Log Analytics aracısı arasındaki iç iletişim için tcp 25226
+1. Gerekli bağlantıların kurulu olduğunu denetler: veri almak için TCP 514, Syslog Daemon ve Log Analytics Aracısı arasındaki iç iletişim için TCP 25226
 
-1. Mock verilerini localhost'taki 514 bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında gözlemlenebilir olmalıdır:
+1. SAHTE verileri, localhost üzerinde 514 numaralı bağlantı noktasına gönderir. Bu veriler, aşağıdaki sorguyu çalıştırarak Azure Sentinel çalışma alanında observable olmalıdır:
 
         CommonSecurityLog
         | where DeviceProduct == "MOCK"
@@ -134,8 +134,8 @@ Doğrulama komut dosyası aşağıdaki denetimleri gerçekleştirir:
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, CEF cihazlarını Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
+Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
 

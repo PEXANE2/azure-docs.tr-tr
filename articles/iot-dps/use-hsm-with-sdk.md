@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Aygıt Sağlama Hizmeti İstemci SDK ile farklı attestation mekanizmaları kullanın
-description: Azure Nasıl Yapılır - Azure'daki Aygıt Sağlama Hizmeti (DPS) İstemci SDK ile farklı attestation mekanizmaları nasıl kullanılır?
+title: Azure IoT Hub cihaz sağlama hizmeti Istemci SDK 'Sı ile farklı kanıtlama mekanizmaları kullanma
+description: Azure nasıl yapılır-Azure 'da cihaz sağlama hizmeti (DPS) Istemci SDK 'Sı ile farklı kanıtlama mekanizmaları kullanma
 author: robinsh
 ms.author: robinsh
 ms.date: 03/30/2018
@@ -11,10 +11,10 @@ ms.custom:
 - mvc
 - amqp
 ms.openlocfilehash: c110e90f26f595bcbf181b72e13f12a6de2fa8ce
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687216"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Azure’da Cihaz Sağlama Hizmeti İstemci SDK'sı ile farklı kanıtlama mekanizmaları kullanma
@@ -41,7 +41,7 @@ Fiziksel cihazın veya simülatörün Azure portalına kaydedilebilmesi için SD
 
 ### <a name="use-x509-with-simulator"></a>Simülatör ile X.509 kullanma
 
-Cihazın kimliğini doğrulamak için **X.509** sertifikası üreten bir Aygıt Kimlik Kompozisyon Motoru (DICE) emülatörü ile hizmet gemileri sağlar. **X.509** kimlik doğrulamasını etkinleştirmek için aşağıdaki komutu çalıştırın: 
+Sağlama Hizmeti, cihazın kimliğini doğrulamak için bir **X. 509.440** sertifikası üreten bir cihaz kimliği bileşim ALTYAPıSı (zar) öykünücüsü ile birlikte gelir. **X. 509.952** kimlik doğrulamasını etkinleştirmek için aşağıdaki komutu çalıştırın: 
 
 ```
 cmake -Ddps_auth_type=x509 ..
@@ -51,7 +51,7 @@ DICE özellikli donanım hakkında bilgiler [burada](https://azure.microsoft.com
 
 ### <a name="use-x509-with-hardware"></a>Donanım ile X.509 kullanma
 
-Sağlama hizmeti **x.509** ile diğer donanımlarda kullanılabilir. Bağlantı kurmak için donanım ile SDK arasında bir arabirim bulunması gerekir. Arabirim hakkında bilgi almak için HSM üreticinizle iletişime geçin.
+Sağlama Hizmeti, diğer donanımlar üzerinde **X. 509.440** ile kullanılabilir. Bağlantı kurmak için donanım ile SDK arasında bir arabirim bulunması gerekir. Arabirim hakkında bilgi almak için HSM üreticinizle iletişime geçin.
 
 ### <a name="use-tpm"></a>TPM kullanma
 
@@ -149,9 +149,9 @@ TPM kullanıyorsanız [“IoT Hub Cihazı Sağlama Hizmetini kullanarak simülas
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
-2. Azure portalında oturum açın, sol menüdeki **Tüm kaynaklar** düğmesine tıklayın ve Cihaz Sağlama hizmetinizi açın.
-   - **X.509 Bireysel Kayıt**: Hizmet özeti **nde, kayıtları yönet'i**seçin. **Bireysel Kayıtlar** sekmesini seçin ve üstteki **Ekle** düğmesini tıklatın. Kimlik attestation *Mekanizması*olarak **X.509'u** seçin, yaprak sertifikasını bıçağın gerektirdiği şekilde yükleyin. Tamamlandığında **Kaydet** düğmesine tıklayın. 
-   - **X.509 Grup Kaydı**: Hizmet özeti nde **Kayıtları Yönet'i**seçin. **Grup Kayıtları** sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Kimlik attestation *Mekanizması*olarak **X.509'u** seçin, bir grup adı ve sertifika adı girin, bıçağın gerektirdiği CA/Intermediate sertifikasını yükleyin. Tamamlandığında **Kaydet** düğmesine tıklayın. 
+2. Azure portal oturum açın, sol taraftaki menüden **tüm kaynaklar** düğmesine tıklayın ve cihaz sağlama hizmetinizi açın.
+   - **X. 509.440 bireysel kayıt**: sağlama hizmeti Özeti dikey penceresinde kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Kimlik kanıtlama *mekanizması*olarak **X. 509.952** ' i seçin, yaprak sertifikayı dikey pencerenin gerektirdiği şekilde karşıya yükleyin. Tamamlandığında **Kaydet** düğmesine tıklayın. 
+   - **X. 509.440 grup kaydı**: sağlama hizmeti Özeti dikey penceresinde kayıtları **Yönet**' i seçin. **Grup Kayıtları** sekmesini seçin ve üstteki **Ekle** düğmesine tıklayın. Kimlik kanıtlama *mekanizması*olarak **X. 509.952** ' ı seçin, bir grup adı ve SERTIFIKA adı girin, CA/ara sertifikayı dikey pencerenin gerektirdiği şekilde karşıya yükleyin. Tamamlandığında **Kaydet** düğmesine tıklayın. 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>Özel bir kanıtlama mekanizması kullanarak cihazlar için kimlik doğrulamasını etkinleştirme (isteğe bağlı)
 
@@ -183,7 +183,7 @@ Kitaplığınız başarıyla oluşturulduktan sonra, kitaplığınıza yönelik 
 
 ## <a name="connecting-to-iot-hub-after-provisioning"></a>Sağlama sonrasında IoT Hub'a bağlanma
 
-Aygıt sağlama hizmetiyle birlikte sağlandıktan sonra, bu API IoT Hub'a bağlanmak için belirtilen kimlik doğrulama modunu **(X.509** veya TPM) kullanır: 
+Cihaz sağlama hizmeti ile sağlandıktan sonra, bu API IoT Hub bağlanmak için belirtilen kimlik doğrulama modunu (**X. 509.440** veya TPM) kullanır: 
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```

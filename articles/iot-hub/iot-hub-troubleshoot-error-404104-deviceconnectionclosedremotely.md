@@ -1,6 +1,6 @@
 ---
-title: Sorun Giderme Azure IoT Hub hatası 404104 DeviceConnectionClosedRemotely
-description: Hata 404104 DeviceConnectionClosedRemotely nasıl düzeltilir anlayın
+title: Azure IoT Hub sorun giderme hatası 404104 Deviceconnectioncloseduzaktan
+description: 404104 Deviceconnectioncloseduzaktan hatasını nasıl düzelteceğinizi öğrenin
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -10,68 +10,68 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758732"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
-Bu **makalede, 404104 DeviceConnectionClosedRemotely** hatalarının nedenleri ve çözümleri açıklanmaktadır.
+Bu makalede, **404104 Deviceconnectioncloseduzaktan** hatalarının nedenleri ve çözümleri açıklanmaktadır.
 
 ## <a name="symptoms"></a>Belirtiler
 
 ### <a name="symptom-1"></a>Belirti 1
 
-Aygıtlar düzenli aralıklarla (örneğin her 65 dakikada bir) bağlantısını keser ve IoT Hub tanı günlüklerinde **404104 DeviceConnectionClosedRemotely'yi** görürsünüz. Bazen, **401003 IoTHubYetkisiz** ve başarılı bir aygıt bağlantısı olayı bir dakikadan kısa bir süre sonra da görürsünüz.
+Cihazların düzenli aralıklarla bağlantısını keser (örneğin, her 65 dakikada bir) ve IoT Hub tanılama günlüklerinde **404104 Deviceconnectioncloseduzaktan** ' yi görürsünüz. Bazen **401003 Iothubyetkilendirilmemiş** ve başarılı bir cihaz bağlantısı olayının bir dakikadan daha kısa bir sürede olduğunu da görürsünüz.
 
 ### <a name="symptom-2"></a>Belirti 2
 
-Aygıtlar bağlantıyı rasgele keser ve IoT Hub tanı günlüklerinde **404104 DeviceConnectionClosedRemotely'yi** görürsünüz.
+Cihazların bağlantısı rastgele kesilir ve IoT Hub tanılama günlüklerinde **404104 Deviceconnectioncloseduzaktan** bakın.
 
 ### <a name="symptom-3"></a>Belirti 3
 
-Birçok aygıt aynı anda bağlantısını keser, [bağlı aygıtlar metrik](iot-hub-metrics.md)bir dip görmek ve daha **fazla 404104 DeviceConnectionClosedRemotely** ve [500xxx Dahili hatalar](iot-hub-troubleshoot-error-500xxx-internal-errors.md) tanı günlükleri normalden daha vardır.
+Birçok cihaz bağlantısı kesildiğinde, [bağlı cihazlar ölçümünde](iot-hub-metrics.md)bir DIP görürsünüz ve tanılama günlüklerinde normalden fazla **404104 Deviceconnectioncloseduzaktan** ve [500 xxx iç hata](iot-hub-troubleshoot-error-500xxx-internal-errors.md) vardır.
 
 ## <a name="causes"></a>Nedenler
 
 ### <a name="cause-1"></a>Neden 1
 
-[IoT Hub'a bağlanmak için kullanılan SAS belirteci](iot-hub-devguide-security.md#security-tokens) süresi doldu ve bu da IoT Hub'ın aygıtın bağlantısını kesmesine neden oldu. Bağlantı, belirteç aygıt tarafından yenilendiğinde yeniden kurulur. Örneğin, [SAS belirteci](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)c SDK için varsayılan olarak her saat sona erer , hangi düzenli keser neden olabilir.
+[IoT Hub bağlanmak için kullanılan SAS belirteci](iot-hub-devguide-security.md#security-tokens) , IoT Hub cihazın bağlantısının kesilip kesilmesine neden olur. Belirteç cihaz tarafından yenilendiğinde bağlantı yeniden oluşturulur. Örneğin, [SAS belirtecinin her saat, her saat için varsayılan olarak zaman aşımına uğrar](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)ve bu da normal bağlantı kesilmesine yol açabilir.
 
-Daha fazla bilgi için bkz: [401003 IoTHubYetkisiz neden.](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1)
+Daha fazla bilgi için bkz. [401003 Iothubyetkisiz nedeni](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1).
 
 ### <a name="cause-2"></a>Neden 2
 
-Bazı olasılıklar şunlardır:
+Bazı olanaklar şunlardır:
 
-- Cihaz, [MQTT'nin canlı tutulmasından](iot-hub-mqtt-support.md#default-keep-alive-timeout)daha uzun süre altta yatan ağ bağlantısını kaybederek uzaktan boşta zaman aşımına neden olur. MQTT canlı tutma ayarı cihaz başına farklı olabilir.
+- Cihazın arka plandaki ağ bağlantısı, bir uzak boşta kalma zaman aşımı [ile sonuçlanan MQTT etkin](iot-hub-mqtt-support.md#default-keep-alive-timeout)'den uzun MQTT Keep-canlı ayarı cihaz başına farklı olabilir.
 
-- Aygıt Bir TCP/IP düzeyi sıfırlama gönderdi, ancak uygulama düzeyi `MQTT DISCONNECT`göndermedi. Temel olarak, cihaz aniden altta yatan soket bağlantısı kapattı. Bazen bu sorun, Azure IoT SDK'nın eski sürümlerindeki hatalardan kaynaklanır.
+- Cihaz TCP/IP düzeyinde sıfırlama gönderdi, ancak uygulama düzeyi `MQTT DISCONNECT`göndermedi. Temel olarak, cihaz temeldeki yuva bağlantısını aniden kapattı. Bazen bu sorun, Azure IoT SDK 'sının eski sürümlerindeki hataların oluşmasına neden olur.
 
-- Aygıt tarafı uygulaması çöktü.
+- Cihaz tarafı uygulaması kilitlendi.
 
 ### <a name="cause-3"></a>Neden 3
 
-IoT Hub geçici bir sorun yaşıyor olabilir. [Bkz. IoT Hub iç sunucu hatası nedeni.](iot-hub-troubleshoot-error-500xxx-internal-errors.md#cause)
+IoT Hub geçici bir sorun yaşıyor olabilir. [IoT Hub iç sunucu hatası nedeni](iot-hub-troubleshoot-error-500xxx-internal-errors.md#cause)' ne bakın.
 
 ## <a name="solutions"></a>Çözümler
 
 ### <a name="solution-1"></a>Çözüm 1
 
-Bkz. [401003 IoTHubYetkisiz çözüm 1](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#solution-1)
+Bkz. [401003 Iothubyetkilendirilmemiş çözüm 1](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#solution-1)
 
 ### <a name="solution-2"></a>Çözüm 2
 
-- Bağlantıyı test ederek aygıtın IoT Hub'a iyi bir [bağlantıya](tutorial-connectivity.md)sahip olduğundan emin olun. Ağ güvenilir değilse veya aralıklıysa, algılamaya (örneğin Azure Monitor uyarıları aracılığıyla) daha uzun süre neden olabileceğinden canlı kalma değerini artırmanızı önermiyoruz. 
+- Cihazın [bağlantıyı test](tutorial-connectivity.md)ederek IoT Hub iyi bir bağlantı olduğundan emin olun. Ağ güvenilmez veya kesintili ise, algılama işleminin (örneğin, Azure Izleyici uyarıları aracılığıyla) daha uzun sürmesiyle sonuçlanabileceğinden, etkin tut değerinin arttırılmayı önermiyoruz. 
 
-- [IoT SDK'ların](iot-hub-devguide-sdks.md)en son sürümlerini kullanın.
+- [IoT SDK](iot-hub-devguide-sdks.md)'larının en son sürümlerini kullanın.
 
 ### <a name="solution-3"></a>Çözüm 3
 
-[IoT Hub dahili sunucu hatalarının çözümlerine](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution)bakın.
+[IoT Hub iç sunucu hatalarını giderme çözümlerine](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantıları güvenilir bir şekilde yönetmek için Azure IoT aygıt SDK'larını kullanmanızı öneririz. Daha fazla bilgi için [Azure IoT Hub aygıt SDK'larını kullanarak bağlantıyı ve güvenilir mesajlaşmayı yönet'e](iot-hub-reliability-features-in-sdks.md) bakın
+Bağlantıları güvenilir bir şekilde yönetmek için Azure IoT cihaz SDK 'larını kullanmanızı öneririz. Daha fazla bilgi edinmek için bkz. [Azure IoT Hub cihaz SDK 'larını kullanarak bağlantı ve güvenilir mesajlaşmayı yönetme](iot-hub-reliability-features-in-sdks.md)

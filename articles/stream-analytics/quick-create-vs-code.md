@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Visual Studio Code'da Azure Akışı Analizi işi oluşturun
-description: Bu hızlı başlangıç, bir Akış Analizi işi oluşturarak, giriş ve çıktıları yapılandırarak ve Visual Studio Code ile bir sorgu tanımlayarak nasıl başlayacağınızı gösterir.
+title: Hızlı Başlangıç-Visual Studio Code Azure Stream Analytics iş oluşturma
+description: Bu hızlı başlangıçta, Stream Analytics işi oluşturma, girdileri ve çıkışları yapılandırma ve Visual Studio Code bir sorgu tanımlama ile nasıl başlacağınız gösterilmektedir.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,132 +8,132 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81767760"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Hızlı başlangıç: Visual Studio Code'da Bir Azure Akışı Analizi işi oluşturun (önizleme)
+# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Hızlı başlangıç: Visual Studio Code Azure Stream Analytics işi oluşturma (Önizleme)
 
-Bu hızlı başlangıç, Visual Studio Code için Azure Akış Analiz Araçları uzantısını kullanarak bir Azure Akışı Analizi işini nasıl oluşturup çalıştırabileceğinizi gösterir. Örnek iş, bir Azure IoT Hub aygıtından veri akışı okur. 27° üzerindeyken ortalama sıcaklığı hesaplayan ve ortaya çıkan çıktı olaylarını blob depolamasındaki yeni bir dosyaya yazan bir iş tanımlarsınız.
+Bu hızlı başlangıçta, Visual Studio Code için Azure Stream Analytics araçları uzantısını kullanarak bir Azure Stream Analytics işinin nasıl oluşturulacağı ve çalıştırılacağı gösterilmektedir. Örnek iş, bir Azure IoT Hub cihazından akış verilerini okur. 27 ° üzerinde ortalama sıcaklığı hesaplayan ve sonuç çıktı olaylarını BLOB depolama alanındaki yeni bir dosyaya yazan bir iş tanımlarsınız.
 
 > [!NOTE]
-> Visual Studio ve Visual Studio Code araçları Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya KuzeyDoğu bölgelerindeki işleri desteklemez.
+> Visual Studio ve Visual Studio Code araçları, Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya kuzeydoğu bölgelerinde bulunan işleri desteklemez.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/)oluşturun.
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
 
 * [Azure Portal](https://portal.azure.com/) oturum açın.
 
-* [Visual Studio Kodunu](https://code.visualstudio.com/)Yükleyin.
+* [Visual Studio Code](https://code.visualstudio.com/)'i yükler.
 
-## <a name="install-the-azure-stream-analytics-tools-extension"></a>Azure Akış Analiz Araçları uzantısını yükleme
+## <a name="install-the-azure-stream-analytics-tools-extension"></a>Azure Stream Analytics araçları uzantısını yükler
 
 1. Visual Studio Code'u açın.
 
-2. Sol bölmedeki **Uzantılardan** Akış **Analizi'ni** arayın ve **Azure Akışı Analitik Araçları** uzantısında **Yükle'yi** seçin.
+2. Sol bölmedeki **uzantılardan** **Stream Analytics** arayın ve **Azure Stream Analytics araçları** uzantısında **Install** ' u seçin.
 
-3. Uzantı yüklendikten sonra **Azure Akışı Analizi Araçları'nın** Etkin **Uzantılar'da**görünür olduğunu doğrulayın.
+3. Uzantı yüklendikten sonra, **Azure Stream Analytics araçlarının** **etkin uzantılar**' da görünür olduğunu doğrulayın.
 
-   ![Visual Studio Code'da etkin leştirilmiş uzantılar altında Azure Akışı Analiz Araçları](./media/quick-create-vs-code/enabled-extensions.png)
+   ![Visual Studio Code Azure Stream Analytics araçları etkinleştirilmiş Uzantılar altında](./media/quick-create-vs-code/enabled-extensions.png)
 
-## <a name="activate-the-azure-stream-analytics-tools-extension"></a>Azure Akış Analiz Araçları uzantısını etkinleştirme
+## <a name="activate-the-azure-stream-analytics-tools-extension"></a>Azure Stream Analytics araçları uzantısını etkinleştirin
 
-1. Visual Studio Code etkinlik çubuğundaki **Azure** simgesini seçin. Yan çubuktaki **Akış Analizi** altında **Azure'da Oturum Aç'ı'nı**seçin.
+1. Visual Studio Code etkinlik çubuğunda **Azure** simgesini seçin. Yan çubukta **Stream Analytics** altında **Azure 'da oturum aç**' ı seçin.
 
-   ![Visual Studio Code'da Azure'da oturum açma](./media/quick-create-vs-code/azure-sign-in.png)
+   ![Visual Studio Code 'de Azure 'da oturum açın](./media/quick-create-vs-code/azure-sign-in.png)
 
-2. Oturum açKen, Azure hesap adınız Visual Studio Code penceresinin sol alt köşesindeki durum çubuğunda görünür.
+2. Oturum açtığınızda, Azure hesabınızın adı Visual Studio Code penceresinin sol alt köşesindeki durum çubuğunda görüntülenir.
 
 > [!NOTE]
-> Azure Akış Analiz Araçları uzantısı, oturum açmazsanız bir sonraki seferde sizi otomatik olarak imzalar. Hesabınızda iki faktörlü kimlik doğrulaması varsa, PIN kullanmak yerine telefon kimlik doğrulaması kullanmanızı öneririz.
-> Kaynakları listelemeyle ilgili sorunlarınız varsa, oturum açma ve yeniden oturum açma genellikle yardımcı olur. Oturum unu imzalamak için `Azure: Sign Out`komutu girin.
+> Azure Stream Analytics araçları uzantısı, oturumu kapatıp bir sonraki sefer oturumunuzu otomatik olarak açacaktır. Hesabınızda iki öğeli kimlik doğrulaması varsa, PIN kullanmak yerine telefon kimlik doğrulaması kullanmanızı öneririz.
+> Listeleme kaynaklarıyla ilgili sorunlarınız varsa oturumu kapatıp yeniden oturum açmak genellikle yardımcı olur. Oturumu kapatmak için komutunu `Azure: Sign Out`girin.
 
 ## <a name="prepare-the-input-data"></a>Girdi verilerini hazırlama
 
-Akış Analizi işini tanımlamadan önce, daha sonra iş girişi olarak yapılandırılan verileri hazırlamanız gerekir. İşin gerektirdiği giriş verilerini hazırlamak için aşağıdaki adımları tamamlayın:
+Stream Analytics işini tanımladıktan önce, daha sonra iş girişi olarak yapılandırılmış verileri hazırlamanız gerekir. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları uygulayın:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. IoT >  **Hub'ın kaynak** > **Internet'ini**seçin.**IoT Hub**
+2.  > **IoT Hub****nesnelerin interneti** **kaynak** > oluştur ' u seçin.
 
-3. **IoT Hub** bölmesine aşağıdaki bilgileri girin:
+3. **IoT Hub** bölmesinde aşağıdaki bilgileri girin:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
    |Abonelik  | \<Aboneliğiniz\> |  Kullanmak istediğiniz Azure aboneliğini seçin. |
    |Kaynak Grubu   |   asaquickstart-resourcegroup  |   **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin. |
-   |Bölge  |  \<Kullanıcılarınıza en yakın bölgeyi seçin\> | IoT hub'ınızı barındırabileceğiniz bir coğrafi konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
-   |IoT Hub Adı  | MyASAIoTHub  |   IoT hub'ınız için bir ad seçin.   |
+   |Bölge  |  \<Kullanıcılarınıza en yakın bölgeyi seçin\> | IoT Hub 'ınızı barındırabileceğiniz bir coğrafi konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
+   |IoT Hub adı  | MyASAIoTHub  |   IoT Hub 'ınız için bir ad seçin.   |
 
    ![IoT hub oluşturma](./media/quick-create-vs-code/create-iot-hub.png)
 
-4. **Sonraki'ni seçin: Boyut ve ölçek ayarlayın.**
+4. **İleri ' yi seçin: boyut ve ölçek ayarla**.
 
-5. Fiyatlandırma ve **ölçek katmanı**için seçim yapın. Bu hızlı başlangıç için, aboneliğinizde hala mevcutsa **F1 - Free** katmanını seçin. Boş katman kullanılamıyorsa, kullanılabilir en düşük katmanı seçin. Daha fazla bilgi için [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/)için bkz.
+5. **Fiyatlandırma ve ölçek katmanı**için bir seçim yapın. Bu hızlı başlangıçta, aboneliğinizde hala kullanılabiliyorsa **F1-ücretsiz** katmanını seçin. Ücretsiz katman kullanılamıyorsa, kullanılabilir en düşük katmanı seçin. Daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-   ![IoT hub'ınızı boyutlandırın ve ölçeklendirin](./media/quick-create-vs-code/iot-hub-size-and-scale.png)
+   ![IoT Hub 'ınızı boyutlandırma ve ölçeklendirme](./media/quick-create-vs-code/iot-hub-size-and-scale.png)
 
-6. **İncele ve oluştur**’u seçin. IoT hub bilgilerinizi gözden geçirin ve **Oluştur'u**seçin. IoT hub’ınızın oluşturulması birkaç dakika sürebilir. **Bildirimler** bölmesindeki ilerlemeyi izleyebilirsiniz.
+6. **İncele ve oluştur**’u seçin. IoT Hub bilgilerinizi gözden geçirin ve **Oluştur**' u seçin. IoT hub’ınızın oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinde izleyebilirsiniz.
 
-7. IoT hub'ınızın gezinti menüsünde, **IoT aygıtlarının**altına **ekle'yi** seçin. **Aygıt Kimliği**için bir kimlik ekleyin ve **Kaydet'i**seçin.
+7. IoT Hub 'ının gezinti menüsünde **IoT cihazları**altında **Ekle** ' yi seçin. **CIHAZ kimliği**IÇIN bir kimlik ekleyin ve **Kaydet**' i seçin.
 
-   ![IoT hub'ınıza aygıt ekleme](./media/quick-create-vs-code/add-device-iot-hub.png)
+   ![IoT Hub 'ınıza cihaz ekleme](./media/quick-create-vs-code/add-device-iot-hub.png)
 
-8. Aygıt oluşturulduktan sonra aygıtı **IoT aygıtlar** listesinden açın. **Bağlantı dizesinde (birincil anahtar)** dizekopyalayın ve daha sonra kullanmak üzere bir not defterine kaydedin.
+8. Cihaz oluşturulduktan sonra, **IoT cihazları** listesinden cihazı açın. Dizeyi **bağlantı dizesinde (birincil anahtar)** kopyalayın ve daha sonra kullanmak için bir not defteri 'ne kaydedin.
 
-   ![Copy IoT hub cihaz bağlantı dizesi](./media/quick-create-vs-code/save-iot-device-connection-string.png)
+   ![IoT Hub cihaz bağlantı dizesini Kopyala](./media/quick-create-vs-code/save-iot-device-connection-string.png)
 
-## <a name="run-the-iot-simulator"></a>IoT simülatörünü çalıştırın
+## <a name="run-the-iot-simulator"></a>IoT simülatörü çalıştırma
 
-1. [Raspberry Pi Azure IoT Online Simulator'u](https://azure-samples.github.io/raspberry-pi-web-simulator/) yeni bir tarayıcı sekmesinde veya penceresinde açın.
+1. Yeni bir tarayıcı sekmesinde veya penceresinde [Raspberry PI Azure IoT çevrimiçi simülatörünü](https://azure-samples.github.io/raspberry-pi-web-simulator/) açın.
 
-2. Satır 15'teki yer tutucuyu daha önce kaydettiğiniz IoT hub aygıt bağlantı dizesiyle değiştirin.
+2. 15. satırdaki yer tutucusunu, daha önce kaydettiğiniz IoT Hub cihaz bağlantı dizesiyle değiştirin.
 
-3. **Çalıştır**'ı seçin. Çıktı, IoT hub'ınıza gönderilen sensör verilerini ve iletilerini göstermelidir.
+3. **Çalıştır**'ı seçin. Çıktıda, IoT Hub 'ınıza gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
-   ![Çıktı ile Raspberry Pi Azure IoT Online Simulator](./media/quick-create-vs-code/ras-pi-connection-string.png)
+   ![Çıkış ile Raspberry PI Azure IoT çevrimiçi simülatörü](./media/quick-create-vs-code/ras-pi-connection-string.png)
 
-## <a name="create-blob-storage"></a>Blob depolama oluşturma
+## <a name="create-blob-storage"></a>BLOB depolama oluştur
 
-1. Azure portalının sol üst köşesinden **kaynak** > **Depolama Deposu** > **hesabı**oluştur'u seçin.
+1. Azure Portal, **kaynak** > **depolama** > **depolama hesabı**oluştur ' u seçin.
 
-2. Depolama **hesabı oluştur** bölmesine bir depolama hesabı adı, konum ve kaynak grubu girin. Oluşturduğunuz IoT hub'ı yla aynı konum ve kaynak grubunu seçin. Ardından hesabı oluşturmak için **Gözden Geçir + oluştur'u** seçin.
+2. **Depolama hesabı oluştur** bölmesinde, bir depolama hesabı adı, konum ve kaynak grubu girin. Oluşturduğunuz IoT Hub 'ı ile aynı konumu ve kaynak grubunu seçin. Ardından hesabı oluşturmak için **gözden geçir + oluştur** ' u seçin.
 
    ![Depolama hesabı oluştur](./media/quick-create-vs-code/create-storage-account.png)
 
-3. Depolama hesabınız oluşturulduktan **sonra, Genel Bakış** bölmesindeki **Blobs** döşemesini seçin.
+3. Depolama Hesabınız oluşturulduktan sonra **genel bakış** bölmesinde **Bloblar** kutucuğunu seçin.
 
    ![Depolama hesabına genel bakış](./media/quick-create-vs-code/blob-storage.png)
 
-4. **Blob Servis** sayfasından **Kapsayıcı'yı** seçin ve **kapsayıcınız**1 gibi bir ad sağlayın. **Ortak erişim düzeyini** Özel olarak bırakın **(anonim erişim yok)** ve **Tamam'ı**seçin.
+4. **BLOB hizmeti** sayfasından **kapsayıcı** ' yı seçin ve Kapsayıcınız için **kapsayıcı1**gibi bir ad sağlayın. **Genel erişim düzeyini** **özel (anonim erişim yok)** olarak bırakın ve **Tamam**' ı seçin.
 
    ![Blob kapsayıcısı oluşturma](./media/quick-create-vs-code/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>Stream Analytics projesi oluşturma
 
-1. Visual Studio Code'da komut paletini açmak için **Ctrl+Shift+P'yi** seçin. Sonra **ASA** girin ve **ASA seçin: Yeni Proje oluşturun.**
+1. Visual Studio Code ' de, komut paletini açmak için **CTRL + SHIFT + P** ' yi seçin. Ardından **asa** girin ve **asa: yeni proje oluştur**' u seçin.
 
    ![Yeni bir proje oluşturma](./media/quick-create-vs-code/create-new-project.png)
 
 2. **MyASAproj**gibi proje adınızı girin ve projeniz için bir klasör seçin.
 
-    ![Proje adı oluşturma](./media/quick-create-vs-code/create-project-name.png)
+    ![Proje adı oluştur](./media/quick-create-vs-code/create-project-name.png)
 
-3. Yeni proje çalışma alanınıza eklenir. Bir Akış Analizi projesi üç klasörden oluşur: **Girişler,** Çıktılar ve **Fonksiyonlar.** **Functions** Ayrıca sorgu komut dosyası **(*.asaql)**, **Bir JobConfig.json** dosyası ve bir **asaproj.json** yapılandırma dosyası vardır.
+3. Yeni proje çalışma alanınıza eklenir. Bir Stream Analytics projesi üç klasörden oluşur: **girişler**, **çıktılar**ve **işlevler**. Ayrıca sorgu betiğine **(*. asaql)**, bir **jobconfig. JSON** dosyasına ve bir **asaproj. JSON** yapılandırma dosyasına sahiptir.
 
-    **asaproj.json** yapılandırma dosyası, Akış Analizi işini Azure'a göndermek için gereken girdileri, çıktıları ve iş yapılandırma dosya bilgilerini içerir.
+    **Asaproj. JSON** yapılandırma dosyası Stream Analytics işini Azure 'a göndermek için gereken girdileri, çıkışları ve iş yapılandırma dosyası bilgilerini içerir.
 
-    ![Visual Studio Code'daki Stream Analytics proje dosyaları](./media/quick-create-vs-code/asa-project-files.png)
+    ![Visual Studio Code içinde proje dosyaları Stream Analytics](./media/quick-create-vs-code/asa-project-files.png)
 
 > [!Note]
-> Komut paletinden giriş ve çıktı eklerken, ilgili yollar otomatik olarak **asaproj.json'a** eklenir. Doğrudan diske giriş veya çıkışları ekler veya kaldırırsanız, bunları el ile eklemeniz veya **asaproj.json'dan**kaldırmanız gerekir. Giriş ve çıktıları tek bir yere koymayı ve her **asaproj.json** dosyasındaki yolları belirterek bunları farklı işlerde referans almayı seçebilirsiniz.
+> Komut paletinden giriş ve çıkış eklerken, ilgili yollar otomatik olarak **asaproj. JSON** ' a eklenir. Doğrudan disk üzerinde giriş veya çıkış ekler veya kaldırırsanız, bu uygulamaları **asaproj. JSON**' dan el ile eklemeniz veya kaldırmanız gerekir. Giriş ve çıkışları tek bir yere yerleştirmeyi ve sonra her bir **asaproj. JSON** dosyasındaki yolları belirterek farklı işlere başvurmalarını seçebilirsiniz.
 
 ## <a name="define-the-transformation-query"></a>Dönüşüm sorgusunu tanımlama
 
-1. Proje klasörünüzden **myASAproj.asaql'ı** açın.
+1. Proje klasörünüzdeki **myASAproj. asaql** ' i açın.
 
 2. Aşağıdaki sorguyu ekleyin:
 
@@ -146,139 +146,139 @@ Akış Analizi işini tanımlamadan önce, daha sonra iş girişi olarak yapıla
 
 ## <a name="define-a-live-input"></a>Canlı giriş tanımlama
 
-1. Akış Analizi projenizdeki **Girişler** klasörüne sağ tıklayın. Ardından **ASA:** Bağlam menüsünden Giriş Ekle'yi seçin.
+1. Stream Analytics projenizdeki **girişler** klasörüne sağ tıklayın. Ardından **asa: bağlam menüsünden giriş Ekle** öğesini seçin.
 
     ![Girişler klasöründen giriş ekleme](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
 
-    Veya komut paletini açmak için **Ctrl+Shift+P'yi** seçin ve **ASA girin: Giriş ekleyin.**
+    Ya da **CTRL + SHIFT + P** ' yi seçerek komut paletini açın ve **asa: giriş Ekle**' ye tıklayın.
 
-   ![Visual Studio Koduna Akış Analizi girişi ekleme](./media/quick-create-vs-code/add-input.png)
+   ![Visual Studio Code Stream Analytics girişi ekleme](./media/quick-create-vs-code/add-input.png)
 
-2. Giriş türü için **IoT Hub'ı** seçin.
+2. Giriş türü için **IoT Hub** seçin.
 
-   ![Giriş seçeneği olarak IoT hub'ını seçin](./media/quick-create-vs-code/iot-hub.png)
+   ![Giriş seçeneği olarak IoT Hub 'ı seçin](./media/quick-create-vs-code/iot-hub.png)
 
-3. Komut paletinden girişi eklediyseniz, girişi kullanacak Stream Analytics sorgu komut dosyasını seçin. Otomatik olarak **myASAproj.asaql**için dosya yolu ile doldurulmalıdır.
+3. Girişi komut paletinden eklediyseniz, girişi kullanacak Stream Analytics sorgu betiğini seçin. **MyASAproj. aşama QL**dosya yoluyla otomatik olarak doldurulmalıdır.
 
-   ![Visual Studio Code'da bir Akış Analizi komut dosyası seçin](./media/quick-create-vs-code/asa-script.png)
+   ![Visual Studio Code bir Stream Analytics betiği seçin](./media/quick-create-vs-code/asa-script.png)
 
-4. Açılan menüden **Azure Aboneliklerinizden Seç'i** seçin.
+4. Açılır menüden **Azure aboneliklerinizden Seç ' i** seçin.
 
-    ![Aboneliklerden seçim](./media/quick-create-vs-code/add-input-select-subscription.png)
+    ![Aboneliklerden Seç](./media/quick-create-vs-code/add-input-select-subscription.png)
 
-5. Yeni oluşturulan **IoTHub1.json** dosyasını aşağıdaki değerlerle edin. Burada belirtilmeyen alanlar için varsayılan değerleri tutun.
-
-   |Ayar|Önerilen değer|Açıklama|
-   |-------|---------------|-----------|
-   |Adı|Giriş|İş girişini tanımlamak için bir ad girin.|
-   |IotHubNamespace|MyASAIoTHub|IoT hub'ınızın adını seçin veya girin. IoT hub adları, aynı abonelikte oluşturulduklarında otomatik olarak algılanır.|
-   |PaylaşılanAccessPolitikasıAdı|iothubowner| |
-
-   CodeLens özelliğini kullanarak bir dize girmenize, açılır listeden seçim yapmaya veya doğrudan dosyadaki metni değiştirmenize yardımcı olabilirsiniz. Aşağıdaki ekran görüntüsü, **Aboneliklerinizden Select'i** örnek olarak gösterir. Kimlik bilgileri otomatik olarak listelenir ve yerel kimlik bilgisi yöneticisine kaydedilir.
-
-   ![Visual Studio Kodu'nda girişi yapılandırma](./media/quick-create-vs-code/configure-input.png)
-
-   ![Visual Studio Kodu'nda giriş değerini yapılandırma](./media/quick-create-vs-code/configure-input-value.png)
-
-## <a name="preview-input"></a>Girişi önizleme
-
-Üst hattan **IoTHub1.json'da** **Verileri Önizleme'yi** seçin. Bazı giriş verileri IoT hub'ından getirilir ve önizleme penceresinde gösterilir. Bu işlem biraz zaman alabilir.
-
- ![Canlı girişi önizleme](./media/quick-create-vs-code/preview-live-input.png)
-
-## <a name="define-an-output"></a>Çıktı tanımlama
-
-1. Komut paletini açmak için **Ctrl+Shift+P'yi** seçin. Sonra, **ASA girin: Çıktı ekle**.
-
-   ![Visual Studio Koduna Akış Analizi çıktısı ekleme](./media/quick-create-vs-code/add-output.png)
-
-2. Lavabo türü için **Blob Depolama'yı** seçin.
-
-3. Bu girişi kullanacak Stream Analytics sorgu komut dosyasını seçin.
-
-4. Çıktı dosya adını **BlobStorage**olarak girin.
-
-5. Aşağıdaki değerleri kullanarak **BlobStorage'ı** düzenleme. Burada belirtilmeyen alanlar için varsayılan değerleri tutun. Açılan listeden seçim seçmenize veya bir dize girmenize yardımcı olmak için CodeLens özelliğini kullanın.
+5. Yeni oluşturulan **IoTHub1. JSON** dosyasını aşağıdaki değerlerle düzenleyin. Burada belirtilmeyen alanlar için varsayılan değerleri tutun.
 
    |Ayar|Önerilen değer|Açıklama|
    |-------|---------------|-----------|
-   |Adı|Çıktı| İş çıktısını tanımlamak için bir ad girin.|
+   |Adı|Girdi|İşin girişini tanımlamak için bir ad girin.|
+   |IotHubNamespace|MyASAIoTHub|IoT Hub 'ınızın adını seçin veya girin. IoT Hub adları, aynı abonelikte oluşturulduklarında otomatik olarak algılanır.|
+   |SharedAccessPolicyName|iothubowner| |
+
+   CodeLens özelliğini kullanarak bir dize girmenize, açılan listeden seçim yapmanıza veya metnin doğrudan dosyada değiştirilmesini sağlayabilirsiniz. Aşağıdaki ekran görüntüsünde bir örnek olarak **aboneliklerinizden seçim** gösterilmektedir. Kimlik bilgileri otomatik olarak listelenir ve yerel kimlik bilgileri Yöneticisi 'ne kaydedilir.
+
+   ![Visual Studio Code girişi yapılandırma](./media/quick-create-vs-code/configure-input.png)
+
+   ![Visual Studio Code giriş değerini yapılandırma](./media/quick-create-vs-code/configure-input-value.png)
+
+## <a name="preview-input"></a>Önizleme girişi
+
+En üstteki satırdaki **IoTHub1. JSON** dosyasındaki **Önizleme verileri** ' ni seçin. Bazı giriş verileri IoT Hub 'ından alınacaktır ve önizleme penceresinde gösterilir. Bu işlem biraz zaman alabilir.
+
+ ![Canlı giriş önizlemesi](./media/quick-create-vs-code/preview-live-input.png)
+
+## <a name="define-an-output"></a>Çıkış tanımlama
+
+1. Komut paletini açmak için **CTRL + SHIFT + P** ' yi seçin. Ardından **asa: çıkış Ekle**yazın.
+
+   ![Visual Studio Code Stream Analytics çıkış Ekle](./media/quick-create-vs-code/add-output.png)
+
+2. Havuz türü için **BLOB depolama alanını** seçin.
+
+3. Bu girişi kullanacak Stream Analytics sorgu betiğini seçin.
+
+4. Çıkış dosyası adını **Blobstorage**olarak girin.
+
+5. **Blobstorage** 'ı aşağıdaki değerleri kullanarak düzenleyin. Burada belirtilmeyen alanlar için varsayılan değerleri tutun. Bir açılan listeden seçim yapmanıza veya bir dize girmenize yardımcı olması için CodeLens özelliğini kullanın.
+
+   |Ayar|Önerilen değer|Açıklama|
+   |-------|---------------|-----------|
+   |Adı|Çıktı| İşin çıkışını tanımlamak için bir ad girin.|
    |Depolama Hesabı|asaquickstartstorage|Depolama hesabınızın adını seçin veya girin. Depolama hesabı adları, aynı abonelikte oluşturulduklarında otomatik olarak algılanır.|
    |Kapsayıcı|kapsayıcı1|Depolama hesabınızda oluşturduğunuz mevcut kapsayıcıyı seçin.|
    |Yol Deseni|çıkış|Kapsayıcıda oluşturulacak dosya yolunun adını girin.|
 
-   ![Visual Studio Code'da çıktıyı yapılandırma](./media/quick-create-vs-code/configure-output.png)
+   ![Visual Studio Code çıktıyı yapılandırma](./media/quick-create-vs-code/configure-output.png)
 
-## <a name="compile-the-script"></a>Komut dosyasını derleme
+## <a name="compile-the-script"></a>Betiği derle
 
-Komut dosyası derlemesi sözdizimini denetler ve otomatik dağıtım için Azure Kaynak Yöneticisi şablonlarını oluşturur.
+Betik derlemesi, sözdizimini denetler ve otomatik dağıtım için Azure Resource Manager şablonları oluşturur.
 
-Komut dosyası derlemesini tetiklemenin iki yolu vardır:
+Betik derlemesini tetiklemenin iki yolu vardır:
 
-- Çalışma alanından komut dosyasını seçin ve ardından komut paletinden derle.
+- Çalışma alanından betiği seçin ve ardından komut paletinden derleyin.
 
-   ![Komut dosyasını derlemek için Visual Studio Code komut paletini kullanın](./media/quick-create-vs-code/compile-script1.png)
+   ![Betiği derlemek için Visual Studio Code komut paletini kullanın](./media/quick-create-vs-code/compile-script1.png)
 
-- Komut dosyasına sağ tıklayın ve **ASA'yı seçin: Scripti Derle**.
+- Betiğe sağ tıklayıp **asa: betiği derle**' yi seçin.
 
     ![Derlemek için Stream Analytics komut dosyasına sağ tıklayın](./media/quick-create-vs-code/compile-script2.png)
 
-Derlemeden sonra, oluşturulan iki Azure Kaynak Yöneticisi şablonunu projenizin **Dağıt** klasöründe bulabilirsiniz. Bu iki dosya otomatik dağıtım için kullanılır.
+Derlemeden sonra, oluşturulan iki Azure Resource Manager şablonunu projenizin **Deploy** klasöründe bulabilirsiniz. Bu iki dosya otomatik dağıtım için kullanılır.
 
-![Dosya Gezgini'nde Akış Analizi dağıtım şablonları](./media/quick-create-vs-code/deployment-templates.png)
+![Dosya Gezgini 'nde dağıtım şablonlarını Stream Analytics](./media/quick-create-vs-code/deployment-templates.png)
 
-## <a name="submit-a-stream-analytics-job-to-azure"></a>Azure'a Akış Analizi işi gönderme
+## <a name="submit-a-stream-analytics-job-to-azure"></a>Stream Analytics işini Azure 'a gönderme
 
-1. Sorgu komut dosyanızın komut dosyası nın komut dosyası penceresinde **Azure'a Gönder'i**seçin.
+1. Sorgu betiğinizin betik Düzenleyicisi penceresinde **Azure 'A gönder**' i seçin.
 
-   ![Komut dosyası düzenleyicisindeki abonelikmetninizden seçim](./media/quick-create-vs-code/submit-job.png)
+   ![Betik düzenleyicisinde abonelik metinlerinizden seçim yapın](./media/quick-create-vs-code/submit-job.png)
 
-2. Aboneliğinizi açılan listeden seçin.
+2. Açılır listeden aboneliğinizi seçin.
 
-3. **İş seç'i**seçin. Ardından **Yeni İş Oluştur'u**seçin.
+3. **Iş Seç ' i**seçin. Sonra **Yeni Iş oluştur**' u seçin.
 
-4. İş adınızı girin, **myASAjob.** Ardından kaynak grubunu ve konumu seçmek için yönergeleri izleyin.
+4. İş adınızı girin, **myASAjob**. Ardından kaynak grubunu ve konumunu seçmek için yönergeleri izleyin.
 
-5. **Azure'a Gönder'i**seçin. Çıkış penceresinde günlükleri bulabilirsiniz. 
+5. **Azure 'A gönder**' i seçin. Günlükleri çıkış penceresinde bulabilirsiniz. 
 
-6. İşiniz oluşturulduğunda, akışı Akış **Analizi Gezgini'nde**görebilirsiniz.
+6. İşiniz oluşturulduğunda, **Stream Analytics Explorer**'da görebilirsiniz.
 
-    ![Stream Analytics Explorer'da listelenen iş](./media/quick-create-vs-code/list-job.png)
+    ![Stream Analytics Gezgininde listelenen iş](./media/quick-create-vs-code/list-job.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>Stream Analytics işini başlatıp çıktıyı denetleyin
 
-1. Visual Studio Code'da **Stream Analytics Explorer'ı** açın ve işinizi bulun, **myASAJob**.
+1. Visual Studio Code **Stream Analytics Gezginini** açın ve işinizi bulun, **myASAJob**.
 
-2. İş adını sağ tıklatın. Ardından, bağlam menüsünden **Başlat'ı** seçin.
+2. İş adına sağ tıklayın. Ardından bağlam menüsünden **Başlat** ' ı seçin.
 
-   ![Visual Studio Code'da Stream Analytics işini başlatın](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![Stream Analytics işi Visual Studio Code başlatın](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
-3. İşi başlatmak için açılan pencerede **Şimdi'i** seçin.
+3. İşi başlatmak için açılır pencerede **Şimdi** öğesini seçin.
 
-4. İş durumunun **Running**olarak değiştiğini unutmayın. Giriş ve çıktı olay ölçümlerini görmek için iş adını sağ tıklatın ve **Portal'da İş Görünümü Aç'ı** seçin. Bu eylem birkaç dakika sürebilir.
+4. İş durumunun **çalışıyor**olarak değiştirildiğini unutmayın. Giriş ve çıkış olayı ölçümlerini görmek için iş adına sağ tıklayın ve **portalda Iş görünümü aç** ' ı seçin. Bu işlem birkaç dakika sürebilir.
 
-5. Sonuçları görüntülemek için, Görsel Stüdyo Kodu uzantısında veya Azure portalında blob depolama alanını açın.
+5. Sonuçları görüntülemek için Visual Studio Code uzantısında veya Azure portal BLOB depolama alanını açın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duyulmadığında, kaynak grubunu, akış işini ve ilgili tüm kaynakları silin. İşi silerken, işin tükettiği akış birimlerinin faturalanması önler. 
+Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşi silmek, işin kullandığı akış birimlerinin faturalandırmasını önler. 
 
-İşi gelecekte kullanmayı planlıyorsanız, işi durdurabilir ve daha sonra yeniden başlatabilirsiniz. Bu işi bir daha kullanmayacaksanız, bu hızlı başlangıçta oluşturduğunuz tüm kaynakları silmek için aşağıdaki adımları kullanın:
+İşi gelecekte kullanmayı planlıyorsanız, durdurup daha sonra yeniden başlatabilirsiniz. Bu işi yeniden kullanacaksanız, bu hızlı başlangıçta oluşturduğunuz tüm kaynakları silmek için aşağıdaki adımları kullanın:
 
-1. Azure portalındaki sol menüden **Kaynak gruplarını** seçin ve ardından oluşturduğunuz kaynağın adını seçin.  
+1. Azure portal sol menüden **kaynak grupları** ' nı seçin ve ardından oluşturduğunuz kaynağın adını seçin.  
 
-2. Kaynak grubunuzun sayfasında **Sil**’i seçin. Metin kutusuna silmek için kaynağın adını girin ve sonra **Sil'i**seçin.
+2. Kaynak grubunuzun sayfasında **Sil**’i seçin. Metin kutusuna silinecek kaynağın adını girin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Visual Studio Code'u kullanarak basit bir Stream Analytics işini dağıttınız. [Azure portalı,](stream-analytics-quick-create-portal.md) [PowerShell](stream-analytics-quick-create-powershell.md)ve [Visual Studio'yu](stream-analytics-quick-create-vs.md)kullanarak Stream Analytics işlerini de dağıtabilirsiniz.
+Bu hızlı başlangıçta, Visual Studio Code kullanarak basit bir Stream Analytics işi dağıttınız. Ayrıca, [Azure Portal](stream-analytics-quick-create-portal.md), [PowerShell](stream-analytics-quick-create-powershell.md)ve [Visual Studio](stream-analytics-quick-create-vs.md)kullanarak Stream Analytics işleri dağıtabilirsiniz.
 
-Visual Studio Code için Azure Akış Analiz Araçları hakkında bilgi edinmek için aşağıdaki makalelere devam edin:
+Visual Studio Code için Azure Stream Analytics araçları hakkında bilgi edinmek için aşağıdaki makalelere geçin:
 
-* [Visual Studio Code kullanarak örnek verilerle test Akışı Analizi sorguları](visual-studio-code-local-run.md)
+* [Visual Studio Code kullanarak örnek verilerle yerel olarak Stream Analytics sorguları test edin](visual-studio-code-local-run.md)
 
-* [Visual Studio Code ile Azure Akış Analizi işlerini canlı girdiye karşı yerel olarak test edin](visual-studio-code-local-run-live-input.md)
+* [Visual Studio Code ile canlı girişte yerel olarak test Azure Stream Analytics işleri](visual-studio-code-local-run-live-input.md)
 
-* [Azure Akış Analizi işlerini görüntülemek için Visual Studio Kodunu kullanın](visual-studio-code-explore-jobs.md)
+* [Azure Stream Analytics işleri görüntülemek için Visual Studio Code kullanma](visual-studio-code-explore-jobs.md)
 
-* [npm paketini kullanarak CI/CD ardışık hatlarını ayarlama](setup-cicd-vs-code.md)
+* [NPM paketini kullanarak CI/CD işlem hatlarını ayarlama](setup-cicd-vs-code.md)

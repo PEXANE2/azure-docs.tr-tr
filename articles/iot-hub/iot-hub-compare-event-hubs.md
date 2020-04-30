@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub'ı Azure Etkinlik Hub'larıyla karşılaştırın | Microsoft Dokümanlar
-description: IoT Hub ve Etkinlik Hub'ları Azure hizmetlerinin işlevsel farklılıkları ve kullanım durumlarını vurgulayan karşılaştırması. Karşılaştırma desteklenen protokolleri, aygıt yönetimini, izlemeyi ve dosya yüklemelerini içerir.
+title: Azure IoT Hub Azure Event Hubs karşılaştırın | Microsoft Docs
+description: IoT Hub karşılaştırması ve Azure hizmetleri Event Hubs işlevsel farklılıkları ve kullanım örneklerini vurgulamaktadır. Karşılaştırma desteklenen protokolleri, cihaz yönetimini, izlemeyi ve dosya yüklemelerini içerir.
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -12,42 +12,42 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7aa59f8181ad60b3d43846a3f4f1f471a050b238
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733431"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT Aygıtlarını Azure'a Bağlama: IoT Hub'ı ve Etkinlik Hub'ları
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT cihazlarını Azure 'a bağlama: IoT Hub ve Event Hubs
 
-Azure, verilerinizi bulutun gücüne bağlamanıza yardımcı olmak için çeşitli bağlantı ve iletişim türleri için özel olarak geliştirilmiş hizmetler sunar. Hem Azure IoT Hub'ı hem de Azure Etkinlik Hub'ları, büyük miktarda veri yutabilecek ve iş öngörüleri için bu verileri işleyebilir veya depolayabilen bulut hizmetleridir. Bu iki hizmet, her ikisi nin de düşük gecikme gecikmesi ve yüksek güvenilirlikle verilerin alımını desteklemesi açısından benzerdir, ancak farklı amaçlar için tasarlanmıştır. IoT Hub, IoT aygıtlarını Azure bulutuna bağlamanın benzersiz gereksinimlerini karşılamak üzere geliştirilirken, Etkinlik Hub'ları büyük veri akışı için tasarlanmıştır. Microsoft, IoT aygıtlarını Azure'a bağlamak için Azure IoT Hub'ı kullanmanızı önerir
+Azure, verilerinizi bulutun gücüne bağlamanıza yardımcı olacak farklı türlerde bağlantılar ve iletişim için özel olarak geliştirilmiş hizmetler sunar. Hem Azure IoT Hub hem de Azure Event Hubs, büyük miktarlarda veri alabilen ve bu verileri iş öngörüleri için depolayabilen bulut hizmetlerdir. Bu iki hizmet, düşük gecikme süresi ve yüksek güvenilirlikle verilerin alımını desteklemeye benzer ancak farklı amaçlar için tasarlanırlar. IoT Hub, IoT cihazlarını Azure bulutuna bağlamaya yönelik benzersiz gereksinimleri karşılamak üzere geliştirildiği için Event Hubs büyük veri akışı için tasarlanmıştı. Microsoft IoT cihazlarını Azure 'a bağlamak için Azure IoT Hub kullanılmasını önerir
 
-Azure IoT Hub, veri toplamak ve iş öngörülerini ve otomasyonu sağlamak için IoT aygıtlarını birbirine bağlayan bulut ağ geçididir. Ayrıca, IoT Hub aygıtlarınız ve arka uç sistemleriniz arasındaki ilişkiyi zenginleştiren özellikler içerir. Çift yönlü iletişim özellikleri, aygıtlardan veri alırken komutları ve ilkeleri aygıtlara geri gönderebileceğiniz anlamına gelir. Örneğin, özellikleri güncelleştirmek veya aygıt yönetimi eylemlerini çağırmak için bulut-aygıt iletisini kullanın. Bulut-aygıt iletişimi, Azure IoT Edge ile kenar aygıtlarınıza bulut zekası göndermenize de olanak tanır. IoT Hub tarafından sağlanan benzersiz cihaz düzeyindekimlik, IoT çözümünüzü olası saldırılara karşı daha iyi korumaya yardımcı olur. 
+Azure IoT Hub, IoT cihazlarını veri toplamak ve iş öngörülerini ve Otomasyonu yönlendirmek için bağlayan bulut ağ geçidindür. Ayrıca, IoT Hub cihazlarınız ve arka uç sistemleriniz arasındaki ilişkiyi zenginleştiren özellikler içerir. İki yönlü iletişim özellikleri, cihazlardan veri alırken aynı zamanda komutları ve ilkeleri cihazlara geri gönderebilirken olduğu anlamına gelir. Örneğin, özellikleri güncelleştirmek veya cihaz yönetimi eylemlerini çağırmak için buluttan cihaza mesajlaşma 'yı kullanın. Buluttan cihaza iletişim Ayrıca, Azure IoT Edge ile uç cihazlarınıza bulut zekası göndermenizi de sağlar. IoT Hub tarafından sunulan benzersiz cihaz düzeyi kimliği, IoT çözümünüzün olası saldırılara karşı daha iyi korunmasına yardımcı olur. 
 
-[Azure Etkinlik Hub'ları](../event-hubs/event-hubs-what-is-event-hubs.md) Azure'un büyük veri akışı hizmetidir. Müşterilerin günde milyarlarca istek gönderebildiği, yüksek aktarım hızında veri akışı senaryoları için tasarlanmıştır. Event Hubs akışınızın ölçeğini genişletmek için bölümlenmiş bir tüketici modeli kullanır ve Azure'ın Databricks, Stream Analytics, ADLS ve HDInsight gibi büyük veri ve analiz hizmetleriyle tümleşik çalışır. Event Hub'ları Yakalama ve Otomatik Şişirme gibi özelliklerle bu hizmet, büyük veri uygulamalarınızı ve çözümlerinizi desteklemek üzere tasarlanmıştır. Ayrıca, IoT Hub telemetri akış yolu için Olay Hub'larını kullanır, böylece IoT çözümünüz De'nin Etkinlik Hub'larının muazzam gücünden yararlanır.
+Azure [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) , Azure 'un büyük veri akışı hizmetidir. Müşterilerin günde milyarlarca istek gönderebildiği, yüksek aktarım hızında veri akışı senaryoları için tasarlanmıştır. Event Hubs akışınızın ölçeğini genişletmek için bölümlenmiş bir tüketici modeli kullanır ve Azure'ın Databricks, Stream Analytics, ADLS ve HDInsight gibi büyük veri ve analiz hizmetleriyle tümleşik çalışır. Event Hubs yakalama ve otomatik Şişir gibi özelliklerle bu hizmet, büyük veri uygulamalarınızı ve çözümlerinizi destekleyecek şekilde tasarlanmıştır. Ayrıca, IoT Hub telemetri akış yolu için Event Hubs kullanır, bu nedenle IoT çözümünüz Event Hubs inanılmaz gücünden de faydalanır.
 
-Özetlemek gerekirse, her iki çözüm de büyük ölçekte veri alımı için tasarlanmıştır. Yalnızca IoT Hub, IoT aygıtlarınızı Azure bulutuna bağlamanın iş değerini en üst düzeye çıkarmak için tasarlanmış ioT'ye özel zengin özellikleri sağlar.  IoT yolculuğunuz daha yeni başlıyorsa, veri alma senaryolarınızı desteklemek için IoT Hub ile başlamak, iş ve teknik ihtiyaçlarınız gerektirdiğinde tam özellikli IoT yeteneklerine anında erişmenizi sağlayacaktır.
+Özetlemek gerekirse, her iki çözüm de büyük ölçekte veri alımı için tasarlanmıştır. Yalnızca IoT Hub, IoT cihazlarınızı Azure bulutuna bağlayan iş değerini en üst düzeye çıkarmak için tasarlanan zengin IoT 'ye özgü yetenekler sağlar.  IoT yolculuğu, veri alma senaryolarınızı desteklemek için IoT Hub başlayıp, işiniz ve teknik gereksinimleriniz için ihtiyaç duyduktan sonra tam özellikli IoT özelliklerine anında erişebilmeniz güvence altına alınır.
 
-Aşağıdaki tablo, IoT Hub'ının iki katmanının IoT yetenekleri için değerlendirirken Olay Hub'larıyla nasıl karşılaştırışları hakkında ayrıntılı bilgi sağlar. IoT Hub'ın standart ve temel katmanları hakkında daha fazla bilgi için [doğru IoT Hub katmanını nasıl seçeceğinizi](iot-hub-scaling.md)öğrenin.
+Aşağıdaki tabloda, IoT Hub iki katmanının IoT özelliklerine göre değerlendirilirken Event Hubs nasıl Karşılaştırıldığı hakkında ayrıntılar verilmektedir. IoT Hub standart ve temel katmanları hakkında daha fazla bilgi için, bkz. [doğru IoT Hub katmanını seçme](iot-hub-scaling.md).
 
-| IoT Yeteneği | IoT Hub standart katmanı | IoT Hub temel katmanı | Event Hubs |
+| IoT özelliği | Standart katman IoT Hub | Temel katmanı IoT Hub | Event Hubs |
 | --- | --- | --- | --- |
-| Aygıt-bulut mesajlaşma | ![İşaretli][checkmark] | ![İşaretli][checkmark] | ![İşaretli][checkmark] |
-| Protokoller: HTTPS, AMQP, WEBSockets üzerinden AMQP | ![İşaretli][checkmark] | ![İşaretli][checkmark] | ![İşaretli][checkmark] |
-| Protokoller: MQTT, MQTT webSockets üzerinde | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
+| Cihazdan buluta mesajlaşma | ![İşaretli][checkmark] | ![İşaretli][checkmark] | ![İşaretli][checkmark] |
+| Protokoller: HTTPS, AMQP, AMQP webSockets üzerinden | ![İşaretli][checkmark] | ![İşaretli][checkmark] | ![İşaretli][checkmark] |
+| Protokoller: MQTT, webSockets üzerinden MQTT | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
 | Cihaz başına kimlik | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
-| Aygıtlardan dosya yükleme | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
-| Cihaz Sağlama Hizmeti | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
-| Bulut-aygıt mesajlaşma | ![İşaretli][checkmark] |  |  |
-| Aygıt ikizi ve cihaz yönetimi | ![İşaretli][checkmark] |  |  |
-| Aygıt akışları (önizleme) | ![İşaretli][checkmark] |  |  |
+| Cihazlardan karşıya dosya yükleme | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
+| Cihaz sağlama hizmeti | ![İşaretli][checkmark] | ![İşaretli][checkmark] |  |
+| Buluttan cihaza mesajlaşma | ![İşaretli][checkmark] |  |  |
+| Cihaz ikizi ve cihaz yönetimi | ![İşaretli][checkmark] |  |  |
+| Cihaz akışları (Önizleme) | ![İşaretli][checkmark] |  |  |
 | IoT Edge | ![İşaretli][checkmark] |  |  |
 
-Tek kullanım örneği aygıt-bulut veri alımı olsa bile, IoT aygıt bağlantısı için tasarlanmış bir hizmet sağladığı için IoT Hub'ı kullanmanızı şiddetle öneririz. 
+Tek kullanım durumu cihazdan buluta veri alımı olsa bile, IoT cihaz bağlantısı için tasarlanan bir hizmet sağladığından IoT Hub kullanmanızı kesinlikle öneririz. 
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub'ın yeteneklerini daha fazla keşfetmek için [IoT Hub geliştirici kılavuzuna](iot-hub-devguide.md)bakın.
+IoT Hub yeteneklerini daha fazla incelemek için, [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)' na bakın.
 
 <!-- This one reference link is used over and over. --robinsh -->
 [checkmark]: ./media/iot-hub-compare-event-hubs/ic195031.png

@@ -1,29 +1,29 @@
 ---
-title: Şirket içinde çalışan Java uygulamalarını izleme - Azure Monitör Uygulama Öngörüleri
-description: Uygulama enstrümanting olmadan tesislerinde çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritası.
+title: Şirket içi Azure Izleyici Application Insights çalışan Java uygulamalarını izleme
+description: Uygulamayı işaretlemeden önce şirket içinde çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 04/16/2020
 ms.openlocfilehash: ea604a4e0f11db7146e6e3c11b47d5687abf571e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733654"
 ---
-# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Java'da kodsuz uygulama izleme şirket içi - Azure Monitor Uygulama Öngörüleri - genel önizleme
+# <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>Java kodsuz kullanacaksınız uygulama izleme-şirket içi-Azure izleyici Application Insights-genel önizleme
 
-Java kodsuz uygulama izleme tüm basitlik hakkında - hiçbir kod değişikliği vardır, Java aracısı yapılandırma değişiklikleri sadece bir çift ile etkinleştirilebilir.
+Java kodsuz kullanacaksınız uygulama izleme kolaylık sağlaması, hiçbir kod değişikliği yoktur, Java Aracısı yalnızca birkaç yapılandırma değişikliği aracılığıyla etkinleştirilebilir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Etkinleştirildiğinde, Java aracısı en yaygın olarak kullanılan kitaplıklardan ve çerçevelerden çok sayıda istek, bağımlılık, günlük ve ölçüm otomatik olarak toplar.
+Java Aracısı etkinleştirildikten sonra, en yaygın kullanılan kitaplıklar ve çerçevelerden çok sayıda isteği, bağımlılığı, günlüğü ve ölçümü otomatik olarak toplar.
 
-Lütfen şirket içi de dahil olmak üzere tüm ortamlar için [ayrıntılı talimatları](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) uygulayın.
+Lütfen şirket içi dahil olmak üzere tüm ortamlara yönelik [ayrıntılı yönergeleri](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) izleyin.
 
  ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Java aracısını indirmek için talimatları alın](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [JVM arglarınızı yapılandırın](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
+* [Java aracısını indirme yönergelerini alın](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [JVM bağımsız değişkenlerini yapılandırma](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
 * [Yapılandırmayı özelleştirme](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)

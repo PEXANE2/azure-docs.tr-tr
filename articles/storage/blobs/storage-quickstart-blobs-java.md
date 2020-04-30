@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Azure Blob depolama kitaplığı v12 - Java'
-description: Bu hızlı başlangıçta, Blob (nesne) depolama alanında bir kapsayıcı ve bir blob oluşturmak için Java için Azure Blob depolama istemcisi kitaplık 12 sürümünü nasıl kullanacağınızı öğrenirsiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
+title: 'Hızlı başlangıç: Azure Blob depolama kitaplığı V12-Java'
+description: Bu hızlı başlangıçta, blob (nesne) deposunda bir kapsayıcı ve BLOB oluşturmak için Java için Azure Blob depolama istemci kitaplığı sürüm 12 ' yi nasıl kullanacağınızı öğrenirsiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobların listesini görüntülemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/27/2020
@@ -8,39 +8,39 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 15e0eaaeb407ad22220faa7d085eea805fe62679
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731353"
 ---
-# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Quickstart: Java v12 SDK ile blobs yönetin
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Hızlı başlangıç: Java V12 SDK ile Blobları yönetme
 
-Bu hızlı başlangıçta, Java kullanarak lekeleri yönetmeyi öğrenirsiniz. Blobs, resimler, belgeler, akışlı ortam ve arşiv verileri de dahil olmak üzere büyük miktarda metin veya ikili veri tutabilen nesnelerdir. Blob'ları yükler, indirir ve listelersiniz ve kapsayıcılar oluşturup silebilirsiniz.
+Bu hızlı başlangıçta, Java kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listetireceksiniz ve kapsayıcı oluşturup sileceksiniz.
 
-[API başvuru belgeleri](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [Paketi (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [Örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API başvurusu belge](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [paketi (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Azure Depolama hesabı. [Bir depolama hesabı oluşturun.](../common/storage-account-create.md)
-- [Java Geliştirme Kiti (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
+- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 
 > [!NOTE]
-> Önceki SDK sürümüyle başlamak için [Quickstart: Java v8 SDK ile blobları yönetin.](storage-quickstart-blobs-java-legacy.md)
+> Önceki SDK sürümünü kullanmaya başlamak için bkz. [hızlı başlangıç: Java V8 SDK ile Blobları yönetme](storage-quickstart-blobs-java-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="setting-up"></a>Ayarlama
+## <a name="setting-up"></a>Ayarlanıyor
 
-Bu bölüm, Java için Azure Blob depolama istemcisi kitaplığı v12 ile çalışmak üzere bir proje hazırlamakonusunda size yol sunar.
+Bu bölüm, Java için Azure Blob depolama istemci kitaplığı V12 ile çalışmak üzere bir proje hazırlama konusunda size yol gösterir.
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-*blob-quickstart-v12*adlı bir Java uygulaması oluşturun.
+*BLOB-QuickStart-V12*adlı bir Java uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), *blob-quickstart-v12*adını taşıyan yeni bir konsol uygulaması oluşturmak için Maven'i kullanın. "Merhaba dünya!" oluşturmak için aşağıdaki **mvn** komutunu yazın. Java projesi.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *BLOB-QuickStart-V12*adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -50,7 +50,7 @@ Bu bölüm, Java için Azure Blob depolama istemcisi kitaplığı v12 ile çalı
                           -DinteractiveMode=false
    ```
 
-1. Proje oluşturma çıktısı şuna benzer:
+1. Projenin üretilme çıktısı şuna benzer görünmelidir:
 
     ```console
     [INFO] Scanning for projects...
@@ -93,15 +93,15 @@ Bu bölüm, Java için Azure Blob depolama istemcisi kitaplığı v12 ile çalı
    cd blob-quickstart-v12
    ```
 
-1. Yan *blob-quickstart-v12* dizin, *veri*adlı başka bir dizin oluşturun. Burada blob veri dosyaları oluşturulacak ve depolanır.
+1. *BLOB-QuickStart-V12* dizininde, *veri*adlı başka bir dizin oluşturun. Blob veri dosyalarının oluşturulup depolanacağı yerdir.
 
     ```console
     mkdir data
     ```
 
-### <a name="install-the-package"></a>Paketi yükleyin
+### <a name="install-the-package"></a>Paketi yükler
 
-Metin düzenleyicinizdeki *pom.xml* dosyasını açın. Bağımlılıklar grubuna aşağıdaki bağımlılık öğesini ekleyin.
+*Pod. xml* dosyasını metin düzenleyicinizde açın. Aşağıdaki bağımlılık öğesini bağımlılıklar grubuna ekleyin.
 
 ```xml
 <dependency>
@@ -115,12 +115,12 @@ Metin düzenleyicinizdeki *pom.xml* dosyasını açın. Bağımlılıklar grubun
 
 Proje dizininden:
 
-1. */src/main/java/com/blobs/quickstart* dizinine gidin
-1. Editörünüzde *App.java* dosyasını açın
-1. İfadeyi `System.out.println("Hello world!");` silme
-1. `import` Yönergeekleme
+1. */Src/Main/Java/com/Blobs/QuickStart* dizinine gidin
+1. Düzenleyicinizde *app. Java* dosyasını açın
+1. `System.out.println("Hello world!");` İfadeyi sil
+1. Yönergeler `import` ekleme
 
-İşte kod:
+Kod şu şekildedir:
 
 ```java
 package com.blobs.quickstart;
@@ -144,40 +144,40 @@ public class App
 
 ## <a name="object-model"></a>Nesne modeli
 
-Azure Blob depolama, büyük miktarda yapılandırılmamış veri depolamak için optimize edilebiyi sunar. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanıma bağlı olmayan verilerdir. Blob depolama üç tür kaynak sunar:
+Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri depolamak için iyileştirilmiştir. Yapılandırılmamış veriler, metin veya ikili veriler gibi belirli bir veri modeline veya tanıma bağlı olmayan verilerdir. BLOB depolama üç tür kaynak sunar:
 
 * Depolama hesabı
 * Depolama hesabındaki bir kapsayıcı
-* Konteynerde bir leke
+* Kapsayıcıda bir blob
 
 Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
-![Blob depolama mimarisi diyagramı](./media/storage-blobs-introduction/blob1.png)
+![BLOB depolama mimarisi diyagramı](./media/storage-blobs-introduction/blob1.png)
 
-Bu kaynaklarla etkileşimde kalmak için aşağıdaki Java sınıflarını kullanın:
+Şu kaynaklarla etkileşim kurmak için aşağıdaki Java sınıflarını kullanın:
 
-* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): `BlobServiceClient` Sınıf, Azure Depolama kaynaklarını ve blob kapsayıcılarını işlemenizi sağlar. Depolama hesabı Blob hizmeti için üst düzey ad alanı sağlar.
-* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): `BlobServiceClientBuilder` Sınıf, `BlobServiceClient` nesnelerin yapılandırmasına ve anlık haline yardımcı olmak için akıcı bir oluşturucu API sağlar.
-* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): `BlobContainerClient` Sınıf, Azure Depolama kapsayıcılarını ve bunların lekelerini işlemenizi sağlar.
-* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): `BlobClient` Sınıf, Azure Depolama lekelerini işlemenizi sağlar.
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): `BlobItem` Sınıf, bir çağrıdan döndürülen `listBlobsFlat`tek tek lekeleri temsil eder.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): sınıfı `BlobServiceClient` , Azure depolama kaynaklarını ve BLOB kapsayıcılarını değiştirmenize olanak sağlar. Depolama hesabı, blob hizmeti için en üst düzey ad alanını sağlar.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): `BlobServiceClientBuilder` sınıfı, `BlobServiceClient` nesnelerin yapılandırılmasına ve örneklemesine yardımcı olmak için akıcı bir Oluşturucu API 'si sağlar.
+* [Blobcontainerclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): sınıfı `BlobContainerClient` , Azure depolama kapsayıcılarını ve bloblarını değiştirmenize olanak sağlar.
+* [Blobclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): sınıfı `BlobClient` , Azure Storage bloblarını değiştirmenize izin verir.
+* [Blobitem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): sınıf `BlobItem` , çağrısından döndürülen ayrı Blobları temsil eder `listBlobsFlat`.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu örnek kod parçacıkları, Java için Azure Blob depolama istemcisi kitaplığıyla aşağıdakileri nasıl gerçekleştireceklerini gösterir:
+Bu örnek kod parçacıkları, Java için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
 * [Bağlantı dizesini alma](#get-the-connection-string)
 * [Bir kapsayıcı oluşturma](#create-a-container)
-* [Blob'ları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
+* [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Blob’ları bir kapsayıcıda listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
 * [Kapsayıcı silme](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
-Aşağıdaki kod, [depolama bağlantı dizesi bölümüyapılanınoluşturulan](#configure-your-storage-connection-string) ortam değişkeninden depolama hesabının bağlantı dizesini alır.
+Aşağıdaki kod, depolama [bağlantı dizesini yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninden depolama hesabının bağlantı dizesini alır.
 
-Bu kodu yöntemin `Main` içine ekleyin:
+Bu kodu `Main` metodun içine ekleyin:
 
 ```java
 System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
@@ -193,14 +193,14 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir UUID değerini ekler.
+Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir UUID değeri ekler.
 
 > [!IMPORTANT]
 > Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcıları ve blobları adlandırma hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Ardından, [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) sınıfının bir örneğini oluşturun ve ardından depolama hesabınızdaki kapsayıcıyı oluşturmak için [oluşturma](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) yöntemini arayın.
+Ardından, [Blobcontainerclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) sınıfının bir örneğini oluşturun ve ardından depolama hesabınızda kapsayıcıyı gerçekten oluşturmak için [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) yöntemini çağırın.
 
-Bu kodu `Main` yöntemin sonuna ekleyin:
+Bu kodu `Main` yönteminin sonuna ekleyin:
 
 ```java
 // Create a BlobServiceClient object which will be used to create a container client
@@ -213,15 +213,15 @@ String containerName = "quickstartblobs" + java.util.UUID.randomUUID();
 BlobContainerClient containerClient = blobServiceClient.createBlobContainer(containerName);
 ```
 
-### <a name="upload-blobs-to-a-container"></a>Blob'ları bir kapsayıcıya yükleme
+### <a name="upload-blobs-to-a-container"></a>Blobları bir kapsayıcıya yükleme
 
 Aşağıdaki kod parçacığı:
 
 1. Yerel *veri* dizininde bir metin dosyası oluşturur.
-1. Kapsayıcı daki [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) yöntemini [bir kapsayıcı oluştur](#create-a-container) bölümünden arayarak [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) nesnesine başvuru alır.
-1. [UploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) yöntemini arayarak yerel metin dosyasını blob'a yükler. Bu yöntem, zaten yoksa blob oluşturur, ancak varsa üzerine yazmaz.
+1. Kapsayıcı [oluşturma](#create-a-container) bölümünde, kapsayıcıda [getblobclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) yöntemini çağırarak bir [blobclient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) nesnesine bir başvuru alır.
+1. [Uploadfromfile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) yöntemini çağırarak yerel metin dosyasını bloba yükler. Bu yöntem, zaten mevcut değilse blobu oluşturur, ancak varsa üzerine yazmaz.
 
-Bu kodu `Main` yöntemin sonuna ekleyin:
+Bu kodu `Main` yönteminin sonuna ekleyin:
 
 ```java
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -245,9 +245,9 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-[ListeBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) yöntemini arayarak konteynerdeki lekeleri listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiştir, bu nedenle listeleme işlemi yalnızca bir blob döndürür.
+[Listbloblar](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) metodunu çağırarak kapsayıcıdaki Blobları listeleyin. Bu durumda, kapsayıcıya yalnızca bir blob eklenmiş, bu nedenle listeleme işlemi yalnızca bir BLOB döndürüyor.
 
-Bu kodu `Main` yöntemin sonuna ekleyin:
+Bu kodu `Main` yönteminin sonuna ekleyin:
 
 ```java
 System.out.println("\nListing blobs...");
@@ -260,9 +260,9 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blob’ları indirme
 
-[DownloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) yöntemini arayarak daha önce oluşturulmuş blob'u indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı görebilmeniz için dosya adına "DOWNLOAD" eki ekler.
+[DownloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) yöntemini çağırarak önceden oluşturulmuş blobu indirin. Örnek kod, yerel dosya sisteminde her iki dosyayı da görebilmeniz için dosya adına "ındır" adlı bir sonek ekler.
 
-Bu kodu `Main` yöntemin sonuna ekleyin:
+Bu kodu `Main` yönteminin sonuna ekleyin:
 
 ```java
 // Download the blob to a local file
@@ -277,11 +277,11 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Kapsayıcı silme
 
-Aşağıdaki kod, [silme](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) yöntemini kullanarak tüm kapsayıcıyı kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca uygulama tarafından oluşturulan yerel dosyaları da siler.
+Aşağıdaki kod, [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) yöntemi kullanılarak kapsayıcının tamamını kaldırarak uygulamanın oluşturduğu kaynakları temizler. Ayrıca, uygulama tarafından oluşturulan yerel dosyaları da siler.
 
-Uygulama, blob, kapsayıcı ve `System.console().readLine()` yerel dosyaları silmeden önce arayarak kullanıcı girişi için duraklar. Bu, kaynakların silinmeden önce doğru oluşturulduğunu doğrulamak için iyi bir şanstır.
+Uygulama, blob, kapsayıcı ve yerel dosyaları `System.console().readLine()` silmeden önce çağırarak kullanıcı girişi için duraklatılır. Bu, kaynakların silinmeden önce doğru bir şekilde oluşturulduğunu doğrulamak iyi bir şansınız olur.
 
-Bu kodu `Main` yöntemin sonuna ekleyin:
+Bu kodu `Main` yönteminin sonuna ekleyin:
 
 ```java
 // Clean up
@@ -300,21 +300,21 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Bu uygulama yerel klasörünüzde bir test dosyası oluşturur ve Blob depolama alanına yükler. Örnek daha sonra kapsayıcıdaki lekeleri listeler ve eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla karşıdan yükler.
+Bu uygulama yerel klasörünüzde bir sınama dosyası oluşturur ve BLOB depolamaya yükler. Örnek daha sonra kapsayıcıdaki Blobları listeler ve eski ve yeni dosyaları karşılaştırabilmeniz için dosyayı yeni bir adla indirir.
 
-*pom.xml* dosyasını içeren dizine gidin ve aşağıdaki `mvn` komutu kullanarak projeyi derle.
+*Pod. xml* dosyasını içeren dizine gidin ve aşağıdaki `mvn` komutu kullanarak projeyi derleyin.
 
 ```console
 mvn compile
 ```
 
-Sonra, paketi oluşturun.
+Ardından, paketini oluşturun.
 
 ```console
 mvn package
 ```
 
-Uygulamayı çalıştırmak `mvn` için aşağıdaki komutu çalıştırın.
+Uygulamayı yürütmek için `mvn` aşağıdaki komutu çalıştırın.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
@@ -343,16 +343,16 @@ Done
 
 Temizleme işlemine başlamadan önce, iki dosya için *veri* klasörünüzü denetleyin. Dosyaları açarak aynı olduklarını görebilirsiniz.
 
-Dosyaları doğruladıktan sonra, test dosyalarını silmek ve demoyu bitirmek için **Enter** tuşuna basın.
+Dosyaları doğruladıktan sonra, test dosyalarını silmek ve tanıtımı sona almak için **ENTER** tuşuna basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Java'yı kullanarak blob'ları yüklemeyi, indirmeyi ve listelemeyi öğrendiniz.
+Bu hızlı başlangıçta, Java kullanarak Blobları karşıya yükleme, indirme ve listeleme hakkında daha fazla öğrendiniz.
 
-Blob depolama örnek uygulamalarını görmek için şunları yapmaya devam edin:
+BLOB depolama örnek uygulamalarını görmek için devam edin:
 
 > [!div class="nextstepaction"]
-> [Azure Blob depolama SDK v12 Java örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Azure Blob Storage SDK V12 Java örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* Daha fazla bilgi için [Java için Azure SDK'ya](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)bakın.
-* Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için Java bulut geliştiricileri için Azure'u ziyaret [edin.](/azure/developer/java/)
+* Daha fazla bilgi için bkz. [Java Için Azure SDK](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
+* Öğreticiler, örnekler, hızlı başlangıçler ve diğer belgeler için, [Java bulut geliştiricileri Için Azure](/azure/developer/java/)' u ziyaret edin.

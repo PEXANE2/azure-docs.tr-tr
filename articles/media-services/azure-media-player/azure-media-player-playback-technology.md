@@ -1,31 +1,31 @@
 ---
-title: Azure Media Player Oynatma Teknolojisi
-description: Videoyu veya sesi oynatmak için kullanılan oynatma teknolojisi hakkında daha fazla bilgi edinin.
+title: Azure Media Player oynatma teknolojisi
+description: Video veya ses çalmak için kullanılan kayıttan yürütme teknolojisi hakkında daha fazla bilgi edinin.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 85eaa04836774b838da67e073017f4af3d2fe179
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726490"
 ---
-# <a name="playback-technology-tech"></a>Oynatma teknolojisi ("teknoloji") #
+# <a name="playback-technology-tech"></a>Kayıttan yürütme teknolojisi ("Tech") #
 
-Oynatma Teknolojisi, videoyu veya sesi oynatmak için kullanılan belirli tarayıcı veya eklenti teknolojisini ifade eder.
+Kayıttan yürütme teknolojisi, video veya ses çalmak için kullanılan belirli tarayıcı veya eklenti teknolojisine başvurur.
 
-- **azureHtml5JS**: Azure Medya Hizmetleri'nden AES-128 bit zarf şifreli içerik veya DRM ortak şifreli içerik (tarayıcı desteklediğinde PlayReady ve Widevine üzerinden) desteği yle DASH içeriğinin eklentisiz tabanlı oynatımı için video öğesi ile birlikte MSE ve EME standartlarını kullanır
-- **flashSS**: Azure Medya Hizmetleri'nden AES-128 bit zarf şifre çözme desteği ile Düzgün içeriği oynatmak için flash player teknolojisini kullanır - 11.4 veya üzeri Flash sürümü gerektirir
-- **html5FairPlayHLS**: video öğesi ile HLS üzerinden tarayıcı tabanlı oynatma teknolojisisafari özel kullanır. Bu teknoloji, Azure Medya Hizmetleri'nden FairPlay korumalı içeriği oynatmayı gerektirir ve 10/19/16 itibariyle techOrder'a eklendi
-- **silverlightSS**: Azure Media Services'in PlayReady korumalı içeriği için destek le Pürüzsüz içeriği oynatmak için silverlight teknolojisini kullanır.
-- **html5**: video öğesi ile tarayıcı tabanlı oynatma teknolojisikullanır.  Bir Apple iOS veya Android cihazda yken, bu teknoloji AES-128 bit zarf şifreleme veya DRM içeriği için bazı temel destekle HLS akışlarının oynatTırılmasına izin verir (tarayıcı desteklediğinde FairPlay üzerinden).
+- **azureHtml5JS**:, MSE ve eme standartlarından yararlanarak, AES-128 bit zarfı şifrelenmiş IÇERIK veya DRM ortak şifrelenmiş içerik (tarayıcının bunu desteklediği sırada PlayReady ve Widevine aracılığıyla Azure Media Services) DESTEĞIYLE kısa çizgi içeriğinin eklenti tabanlı kayıttan yürütülmesi için video öğesiyle birlikte
+- **flashss**: Azure MEDIA SERVICES 'den AES-128 bit zarfı şifre çözme desteğiyle sorunsuz içerik çalmak için Flash Player teknolojisini kullanır-11,4 veya üzeri Flash sürümünü gerektirir
+- **html5FairPlayHLS**: video öğesiyle HLS aracılığıyla tarayıcı tabanlı kayıttan yürütme teknolojisinde Safari 'ye özel bir işlem kullanır. Bu teknik, Azure Media Services 'den FairPlay korumalı içeriğin kayıttan yürütülmesi ve 10/19/16 itibariyle techOrder 'a eklenmesidir
+- **silverlightSS**: Azure Media Services 'ten PlayReady korumalı Içerik desteğiyle sorunsuz içerik çalmak için Silverlight teknolojisini kullanır.
+- **HTML5**: video öğesiyle tarayıcı tabanlı kayıttan yürütme teknolojisinden yararlanır.  Bir Apple iOS veya Android cihazında, bu teknoloji, HLS akışlarının, AES-128 bit zarf şifrelemesi veya DRM içeriği (tarayıcı tarafından desteklendiği zaman FairPlay aracılığıyla) için bazı temel destekle birlikte oynatılmasını sağlar.
 
-## <a name="tech-order"></a>Teknik Sipariş ##
+## <a name="tech-order"></a>Teknoloji siparişi ##
 
-Kıymetinizin çok çeşitli cihazlarda oynanabilir olduğundan emin olmak için, aşağıdaki teknik sipariş `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` önerilir ve aşağıdaki `<video>` durumlarda varsayılandır: ve seçeneklerde doğrudan veya programlı olarak ayarlanabilir:
+Varlığınızın çok çeşitli cihazlarda yürütülebilir olmasını sağlamak için aşağıdaki teknik sipariş önerilir ve varsayılan olarak, `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` ve seçeneklerinde doğrudan `<video>` veya program aracılığıyla üzerinde ayarlanabilir:
 
 `<video data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS, "silverlightSS", "html5"]}`
 
@@ -37,37 +37,37 @@ or
     });
 ```
 
-## <a name="compatibility-matrix"></a>Uyumluluk Matrisi ##
+## <a name="compatibility-matrix"></a>Uyumluluk matrisi ##
 
-Azure Media Services'ten akış içeriği içeren önerilen teknik sipariş göz önüne alındığında, aşağıdaki uyumluluk oynatma matrisi beklenmektedir
+Azure Media Services akış içeriğiyle önerilen teknik sipariş verildiğinde, aşağıdaki uyumluluk kayıttan yürütme matrisi beklenmektedir
 
-| Tarayıcı        | İşletim Sistemi                                                       | Beklenen Teknoloji (Clear)  | Beklenen Teknoloji (AES)  | Beklenen Teknoloji (DRM)          |
+| Tarayıcı        | İşletim Sistemi                                                       | Beklenen teknik (açık)  | Beklenen teknik (AES)  | Beklenen teknik (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| Kenar 11      | Windows 10, Windows 8.1, Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| Yani 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| EdgeIE 11      | Windows 10, Windows 8.1, Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | desteklenmiyor                |
-| Edge           | Xbox One<sup>1</sup> (Kasım 2015 güncellemesi)                   | azureHtml5JS           | azureHtml5JS         | desteklenmiyor                |
-| Krom 37+     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 47+    | Windows 10, Windows 8.1, macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 42-46  | Windows 10, Windows 8.1, macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | silverlightSS (PlayReady)    |
+| Edge           | Xbox One<sup>1</sup> (Kas 2015 güncelleştirmesi)                   | azureHtml5JS           | azureHtml5JS         | desteklenmiyor                |
+| Chrome 37 +     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Firefox 47 +    | Windows 10, Windows 8.1, macOS X Yosemite +<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Firefox 42-46  | Windows 10, Windows 8.1, macOS X Yosemite +<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | silverlightSS (PlayReady)    |
 | Firefox 35-41  | Windows 10, Windows 8.1                                  | flashSS                | flashSS              | silverlightSS (PlayReady)    |
-| Safari         | iOS 6+                                                   | html5                  | html5 (belirteç yok)3    | desteklenmiyor                |
-| Safari 8+      | OS X Yosemite+                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
-| Safari 6       | OS X Dağ Aslanı<sup>1</sup>                           | flashSS                | flashSS              | silverlightSS (PlayReady)    |
-| Krom 37+     | Android 4.4.4+<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Krom 37+     | Android 4.02                                             | html5                  | html5 (belirteç yok)<sup>3</sup>    | desteklenmiyor                |
-| Firefox 42+    | Android 5.0+<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | desteklenmiyor                |
+| Safari         | iOS 6+                                                   | HTML5                  | HTML5 (belirteç yok) 3    | desteklenmiyor                |
+| Safari 8 +      | OS X Yosemite +                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
+| Safari 6       | OS X Sıradağlar LION<sup>1</sup>                           | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Chrome 37 +     | Android 4.4.4 +<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Chrome 37 +     | Android 4,02                                             | HTML5                  | HTML5 (belirteç yok)<sup>3</sup>    | desteklenmiyor                |
+| Firefox 42 +    | Android 5.0 +<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | desteklenmiyor                |
 | IE 8           | Windows                                                  | desteklenmiyor          | desteklenmiyor        | desteklenmiyor                |
 
-<sup>1</sup> Yapılandırma desteklenmez veya test edilmez; tamamlanmak için referans olarak listelenir.
+<sup>1</sup> yapılandırma desteklenmiyor veya test edildi; tamamlama için başvuru olarak listelenir.
 
-<sup>2</sup> Android cihazlarda başarılı oynatma, aygıt özellikleri, grafik desteği, codec oluşturma, işletim sistemi desteği ve daha fazlasının bir birleşimini gerektirir. Android telefon üreticileri Google tarafından sağlanan Vanilla Android işletim sistemi değiştirmek için izin veren bir açık kaynak platformu olduğundan, Bu Android alanında bazı parçalanma neden, ve bazı cihazlar özellikleri eksikliği nedeniyle desteklenmeyebilir. Ayrıca, bazı Android cihazlar tüm codec desteği yok.  
+<sup>2</sup> Android cihazlarda başarılı kayıttan yürütme, cihaz özellikleri, grafik desteği, codec bileşeni oluşturma, işletim sistemi desteği ve daha fazlası için bir bileşim gerektirir. Android, telefon üreticilerinin Google tarafından sunulan Vanilla Android işletim sistemini değiştirmesine izin veren açık kaynaklı bir platform olduğundan, bu, Android alanında bazı parçalanmaya neden olur ve bazı cihazlarda bazı cihazlar desteklenmeyebilir. Ayrıca, bazı Android cihazlarda tüm codec bileşenleri desteklenmez.  
 
-<sup>3</sup> Belirteç için destek olmadığı durumlarda, bu işlevselliği eklemek için bir proxy kullanılabilir. Bu çözüm hakkında daha fazla bilgi edinmek için bu [bloga](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) göz atın.
+<sup>3</sup> belirteç desteği olmayan durumlarda, bu işlevselliği eklemek için bir ara sunucu kullanılabilir. Bu çözüm hakkında daha fazla bilgi edinmek için bu [bloga](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) göz atın.
 
 > [!NOTE]
-> Beklenen teknoloji seçilen flash gibi bir eklenti yüklü gerektirir, ve kullanıcının makineyüklü değilse, AMP kaynak türleri ve koruma bilgileri ile birlikte, teknoloji listesinde bir sonraki teknolojinin yeteneklerini kontrol etmeye devam edecektir. Örneğin, OS X Yosemite'de Safari 8'de korumasız isteğe bağlı bir akış görüntülemeye çalışırken ve hem Flash hem de Silverlight yüklenmezse, AMP oynatma için yerel Html5 teknik ini seçer.<br/><br/>Yeni tarayıcı teknolojileri her gün ortaya çıkmaktadır ve bu nedenle bu matrisi etkileyebilir.
+> Beklenen teknik, Flash gibi bir eklenti yüklenmesini gerektiriyorsa ve bu kullanıcının makinesinde yüklü değilse, AMP, teknik listede kaynak türleri ve koruma bilgileriyle birlikte sonraki teknik özellikleri denetlemeye devam edecektir. Örneğin, işletim sistemi X Yosemite üzerinde Safari 8 ' de korunmayan bir isteğe bağlı akış görüntülemeye çalışıyorsanız ve hem Flash hem de Silverlight yüklü değilse, AMP oynatma için yerel HTML5 Tech ' i seçer.<br/><br/>Yeni tarayıcı teknolojileri günlük olarak gelişmektedir ve bu da bu matrisi etkileyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

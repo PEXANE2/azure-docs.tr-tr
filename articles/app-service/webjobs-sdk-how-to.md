@@ -1,51 +1,51 @@
 ---
-title: WebJobs SDK nasıl kullanılır?
-description: WebJobs SDK için kod yazma hakkında daha fazla bilgi edinin. Azure ve üçüncü taraf hizmetlerinde verilere erişen olay odaklı arka plan işleme işleri oluşturun.
+title: WebJobs SDK 'sını kullanma
+description: Web Işleri SDK 'Sı için kod yazma hakkında daha fazla bilgi edinin. Azure ve üçüncü taraf hizmetlerindeki verilere erişen olay odaklı arka plan işleme işleri oluşturun.
 author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758900"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
-Bu makalede, Azure Web İşlerI SDK ile nasıl çalışılabilenler hakkında kılavuz lar verilmektedir. Web İşler'e hemen başlamak [için, etkinlik odaklı arka plan işleme için Azure Web İşleri SDK'ya başlayın'ı](webjobs-sdk-get-started.md)görün. 
+Bu makalede, Azure WebJobs SDK ile çalışmaya yönelik yönergeler sunulmaktadır. WebJobs 'ı hemen kullanmaya başlamak için bkz. [olay odaklı arka plan işleme Için Azure WebJobs SDK ile çalışmaya başlama](webjobs-sdk-get-started.md). 
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK sürümleri
 
-Bunlar sürüm 3 arasındaki temel farklar. *x* ve sürüm 2. WebJobs SDK *x:*
+Bunlar 3. sürüm arasındaki önemli farklardır. *x* ve sürüm 2. Web Işleri SDK 'sının *x* 'i:
 
 * Sürüm 3. *x* .NET Core için destek ekler.
-* Sürüm 3'te. *x,* WebJobs SDK tarafından gerekli depolama bağlama uzantısını açıkça yüklemeniz gerekir. Sürüm 2'de. *x,* Depolama ciltleri SDK'ya dahil edilmiştir.
-* .NET Core için Visual Studio aracı (3.* x*) projeleri .NET Framework için takımlamadan farklıdır (2.* x*) projeleri. Daha fazla bilgi edinmek için [Visual Studio - Azure Uygulama Hizmeti'ni kullanarak Web İşler geliştir in ve dağıt'a](webjobs-dotnet-deploy-vs.md)bakın.
+* Sürüm 3 ' te. *x*, Web İşleri SDK 'sı tarafından gerekli olan depolama bağlama uzantısını açıkça yüklemeniz gerekir. Sürüm 2 ' de. *x*, depolama bağlamaları SDK 'ya eklenmiştir.
+* .NET Core için Visual Studio Araçları (3.* x*) projeleri, .NET Framework (2) için araç aracılığıyla farklılık gösterir.* x*) projeleri. Daha fazla bilgi için bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-Mümkün olduğunda, her iki sürüm 3 için de örnekler sağlanır. *x* ve sürüm 2. *x*.
+Mümkün olduğunda, her iki sürüm 3 için örnek sağlanır. *x* ve sürüm 2. *x*.
 
 > [!NOTE]
-> [Azure İşlerİ](../azure-functions/functions-overview.md) Web İşler Iş. SDK'da oluşturulmuştür ve bu makale, bazı konular için Azure İşlevleri belgelerine bağlantılar sağlar. İşlevler ve WebJobs SDK arasındaki bu farkları not edin:
-> * Azure İşlevler sürüm 2. *x,* WebJobs SDK sürüm 3'e karşılık gelir. *x*ve Azure İşlevleri 1. *x,* WebJobs SDK 2'ye karşılık gelir. *x*. Kaynak kodu depolarında WebJobs SDK numaralandırması kullanılır.
-> * Azure İşlerİ C# sınıfı kitaplıkları için örnek kod, Webİşler `FunctionName` SDK kodu gibidir, ancak bir Webİşler SDK projesinde özniteliğe ihtiyacınız yoktur.
-> * Bazı bağlama türleri yalnızca HTTP (Webhooks) ve Olay Izgarası (HTTP'ye dayalı) gibi işlevlerde desteklenir.
+> [Azure işlevleri](../azure-functions/functions-overview.md) , Web İşleri SDK 'sı üzerine kurulmuştur ve bu makalede bazı konular Için Azure işlevleri belgelerine bağlantılar sağlanmaktadır. Işlevler ve WebJobs SDK arasındaki bu farklılıkları göz önünde edin:
+> * Azure Işlevleri sürüm 2. *x* , Web İşleri SDK 'sı sürüm 3 ' e karşılık gelir. *x*ve Azure işlevleri 1. *x* , Web İşleri SDK 'sı 2 ' ye karşılık gelir. *x*. Kaynak kodu depoları, WebJobs SDK numaralandırmasını kullanır.
+> * Azure Işlevleri C# sınıf kitaplıkları için örnek kod, WebJobs SDK projesinde bir `FunctionName` özniteliğe gerek kalmaması dışında WebJobs SDK kodu gibidir.
+> * Bazı bağlama türleri yalnızca HTTP (Web kancaları) ve Event Grid (HTTP tabanlı) gibi Işlevlerde desteklenir.
 >
-> Daha fazla bilgi için Bkz. [Web İşlerI SDK ve Azure İşlerini Karşılaştır.](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)
+> Daha fazla bilgi için bkz. [WebJobs SDK ve Azure Işlevlerini karşılaştırın](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
-## <a name="webjobs-host"></a>WebJobs ana bilgisayar
+## <a name="webjobs-host"></a>Web Işleri ana bilgisayarı
 
-Ana bilgisayar, işlevler için bir çalışma zamanı kapsayıcısır.  Tetikleyicileri dinler ve işlevleri çağırır. Sürüm 3'te. *x*, ana bilgisayar `IHost`bir uygulamadır . Sürüm 2'de. *x*, nesneyi `JobHost` kullanırsınız. Kodunuzda bir ana bilgisayar örneği oluşturur ve davranışını özelleştirmek için kod yazarsınız.
+Konak, işlevleri için bir çalışma zamanı kapsayıcısıdır.  Tetikleyiciler ve çağrılar işlevlerini dinler. Sürüm 3 ' te. *x*, ana bilgisayar uygulamasının uygulamasıdır `IHost`. Sürüm 2 ' de. *x*, `JobHost` nesnesini kullanıyorsunuz. Kodunuzda bir konak örneği oluşturup davranışını özelleştirmek için kod yazabilirsiniz.
 
-Bu, Web İşler SDK'sını doğrudan kullanmakla Azure İşlerinden dolaylı olarak kullanmak arasında önemli bir farktır. Azure İşlevler'de hizmet ana bilgisayarı denetler ve ana bilgisayarı kod yazarak özelleştiremezsiniz. Azure İşlevler, ana bilgisayar.json dosyasındaki ayarlar aracılığıyla ana bilgisayar davranışını özelleştirmenize olanak tanır. Bu ayarlar kod değil dizeleri dir ve bu yapabileceğiniz özelleştirme türlerini sınırlar.
+Bu, Web Işleri SDK 'sını doğrudan kullanma ve Azure Işlevleri aracılığıyla dolaylı olarak kullanma arasındaki önemli bir farktır. Azure Işlevleri 'nde hizmet ana bilgisayarı denetler ve kodu yazarak Konağı özelleştiremezsiniz. Azure Işlevleri, Host. JSON dosyasındaki ayarlar aracılığıyla ana bilgisayar davranışını özelleştirmenize olanak sağlar. Bu ayarlar, kod değil dizelerdir ve bu, yapabileceğiniz özelleştirmeler türlerini sınırlandırır.
 
 ### <a name="host-connection-strings"></a>Ana bilgisayar bağlantı dizeleri
 
-WebJobs SDK, yerel olarak çalıştırdığınızda yerel ayarlar.json dosyasında veya Azure'da çalıştırdığınızda Webİş ortamında Azure Depolama ve Azure Hizmet Veri Yolunda bağlantı dizelerini arar. Varsayılan olarak, adlı `AzureWebJobsStorage` bir depolama bağlantısı dize ayarı gereklidir.  
+Web Işleri SDK 'Sı yerel. Settings. json dosyasında yerel. Settings. json dosyasında ya da Azure 'da çalıştırdığınızda Web Işi ortamında Azure Storage ve Azure Service Bus bağlantı dizelerini arar. Varsayılan olarak, adlı `AzureWebJobsStorage` bir depolama bağlantı dizesi ayarı gereklidir.  
 
-Sürüm 2. *x* sdk bu bağlantı dizeleri için kendi adlarınızı kullanmanıza veya başka bir yerde saklamanızı sağlar. Burada gösterildiği [`JobHostConfiguration`]gibi, kodları koda ayarlayabilirsiniz:
+Sürüm 2. SDK 'nın *x* 'i, bu bağlantı dizeleri için kendi adlarınızı kullanmanıza veya onları başka bir yerde depolamanıza olanak sağlar. Aşağıdaki gibi kullanarak [`JobHostConfiguration`]koddaki adları burada gösterildiği gibi ayarlayabilirsiniz:
 
 ```cs
 static void Main(string[] args)
@@ -65,23 +65,23 @@ static void Main(string[] args)
 }
 ```
 
-Çünkü sürüm 3. *x* varsayılan .NET Core yapılandırma API'lerini kullanır, bağlantı dize adlarını değiştirmek için API yoktur.
+3. sürüm. *x* varsayılan .NET Core Yapılandırma API 'lerini kullanır, bağlantı dizesi adlarını değiştirmek IÇIN bir API yoktur.
 
-### <a name="host-development-settings"></a>Ana bilgisayar geliştirme ayarları
+### <a name="host-development-settings"></a>Konak geliştirme ayarları
 
-Yerel geliştirmeyi daha verimli hale getirmek için ana bilgisayarı geliştirme modunda çalıştırabilirsiniz. Geliştirme modunda çalıştırdığınızda değiştirilen ayarlardan bazıları şunlardır:
+Yerel geliştirmeyi daha verimli hale getirmek için Konağı geliştirme modunda çalıştırabilirsiniz. Geliştirme modunda çalıştırdığınızda değiştirilen ayarlardan bazıları şunlardır:
 
 | Özellik | Geliştirme ayarı |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`günlük çıktısını en üst düzeye çıkarmak için. |
-| `Queues.MaxPollingInterval`  | Sıra yöntemlerinin hemen tetiklenmesini sağlamak için düşük bir değer.  |
-| `Singleton.ListenerLockPeriod` | Hızlı yinelemeli gelişime yardımcı olmak için 15 saniye. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`günlük çıkışını en üst düzeye çıkarmak için. |
+| `Queues.MaxPollingInterval`  | Sıra yöntemlerinin hemen tetiklendiğinden emin olmak için düşük bir değer.  |
+| `Singleton.ListenerLockPeriod` | hızlı yinelemeli geliştirmeye yardımcı olmak için 15 saniye. |
 
 Geliştirme modunu etkinleştirme işlemi SDK sürümüne bağlıdır. 
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
-Sürüm 3. *x,* Core API'ASP.NET standartını kullanır. [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) Örnekte [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) yöntemi arayın. Bu örnekte `development`olduğu gibi, adlı bir dize geçirin:
+Sürüm 3. *x* standart ASP.NET Core API 'lerini kullanır. [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) Örneğinde [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) yöntemi çağırın. Aşağıdaki örnekteki gibi adlı `development`bir dize geçirin:
 
 ```cs
 static async Task Main()
@@ -102,7 +102,7 @@ static async Task Main()
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Sınıfın `JobHostConfiguration` geliştirme `UseDevelopmentSettings` modunu etkinleştiren bir yöntemi vardır.  Aşağıdaki örnek, geliştirme ayarlarının nasıl kullanılacağını gösterir. Yerel `config.IsDevelopment` olarak `true` çalıştığında geri dönüş yapmak için, `AzureWebJobsEnv` değeri `Development`ile adlı yerel bir ortam değişkeni ayarlayın.
+`JobHostConfiguration` Sınıfında geliştirme modunu sağlayan `UseDevelopmentSettings` bir yöntemi vardır.  Aşağıdaki örnek, geliştirme ayarlarının nasıl kullanılacağını göstermektedir. Yerel olarak `config.IsDevelopment` çalıştırıldığında `true` geri dönüş yapmak için, adlı `AzureWebJobsEnv` bir yerel ortam değişkeni ayarlayın. `Development`
 
 ```cs
 static void Main()
@@ -119,19 +119,19 @@ static void Main()
 }
 ```
 
-### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Eşzamanlı bağlantıları yönetme (sürüm 2.* x*)
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Eş zamanlı bağlantıları yönetme (sürüm 2.* x*)
 
-Sürüm 3'te. *x*, bağlantı sınırı varsayılan sonsuz bağlantılar için. Bu sınırı değiştirmeniz gerekiyorsa, sınıfın özelliğini [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) kullanabilirsiniz.
+Sürüm 3 ' te. *x*, bağlantı sınırı varsayılan olarak sonsuz bağlantılardır. Bir nedenden dolayı bu sınırı değiştirmeniz gerekiyorsa, [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) sınıfının özelliğini kullanabilirsiniz.
 
-Sürüm 2'de. *x*, [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API'yi kullanarak bir ana bilgisayara eşzamanlı bağlantı sayısını denetlersiniz. 2'de. *x*, Webİşler ana bilgisayarını başlatmadan önce bu değeri 2 varsayılanından artırmalısınız.
+Sürüm 2 ' de. *x*, [ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API 'sini kullanarak bir konağa yönelik eşzamanlı bağlantı sayısını kontrol edersiniz. 2 içinde. *x*, Web işleri ana bilgisayarınızı başlatmadan önce bu değeri varsayılan değer olan 2 ' den artırmanız gerekir.
 
-Bir işlevden yaptığınız tüm giden HTTP `HttpClient` istekleri `ServicePointManager`akış kullanarak. Ayarlanan değere `DefaultConnectionLimit`ulaştıktan `ServicePointManager` sonra, göndermeden önce istekleri sıraya başlar. Sizin `DefaultConnectionLimit` 2 olarak ayarlanmış ve kod 1.000 HTTP istekleri yapar varsayalım. Başlangıçta, işletim sistemi için yalnızca iki istek izin verilir. Diğer 998'i onlara yer olana kadar sıraya girdi. Bu, `HttpClient` isteği yapmış gibi göründüğünden, ancak istek işletim sistemi tarafından hedef sunucuya gönderilmediği için zaman ınızı alabilirsiniz anlamına gelir. Bu nedenle, mantıklı görünmeyen davranışlar görebilirsiniz: `HttpClient` yerel cihazınızın bir isteği tamamlaması 10 saniye sürüyor, ancak hizmetiniz her isteği 200 ms'de iade ediyor. 
+Öğesinden akışı kullanarak `HttpClient` bir işlevden yaptığınız tüm giden http istekleri `ServicePointManager`. İçinde `DefaultConnectionLimit`ayarlanan değere ulaştığınızda, `ServicePointManager` göndermeden önce sıraya alma isteklerini başlatır. `DefaultConnectionLimit` 2 olarak ayarlandığını ve KODUNUZUN 1.000 http isteği oluşturduğunu varsayalım. Başlangıçta, işletim sistemine yalnızca iki istek için izin verilir. Diğer 998, bunlar için yer alana kadar sıraya alınır. Bu, isteği `HttpClient` yaptığı gibi göründüğünden zaman aşımına uğramadığı anlamına gelir, ancak istek işletim sistemi tarafından hedef sunucuya gönderilmedi. Bu nedenle, anlamlı olmayan davranışları görebilirsiniz: yerel `HttpClient` ağınızın bir isteği tamamlaması 10 saniye sürüyorsa, ancak hizmetiniz her isteği 200 MS 'de döndürüyor. 
 
-ASP.NET uygulamalar için varsayılan `Int32.MaxValue`değer, temel veya daha yüksek bir Uygulama Hizmeti Planı'nda çalışan Webİşler için iyi çalışması olasıdır. WebJobs genellikle Her Zaman Ayarı gerekir ve bu yalnızca Temel ve daha yüksek Uygulama Hizmeti Planları tarafından desteklenir.
+ASP.NET uygulamaları için varsayılan değer `Int32.MaxValue`, ve bir temel veya daha yüksek App Service planında çalışan Web işleri için iyi bir çalışma olabilir. Web Işleri genellikle her zaman açık ayarına gerek duyar ve yalnızca temel ve daha yüksek App Service planlarında desteklenir.
 
-WebJob'unuzun Ücretsiz veya Paylaşılan Uygulama Hizmet Planı'nda çalışması durumunda, uygulamanız şu anda [bağlantı sınırı 300](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)olan App Service sandbox ile sınırlıdır. Sınırsız bağlantı sınırı yla, `ServicePointManager`kum havuzu bağlantı eşiğine ulaşılması ve sitenin kapatılması daha olasıdır. Bu durumda, `DefaultConnectionLimit` 50 veya 100 gibi daha düşük bir şeye ayar, bunun olmasını engelleyebilir ve yine de yeterli iş elde etmeye izin verebilir.
+WebJob 'niz ücretsiz veya paylaşılan bir App Service planında çalışıyorsa, uygulamanız Şu anda [300 bağlantı sınırına](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)sahip olan App Service korumalı alana göre kısıtlanır. ' De `ServicePointManager`ilişkisiz bağlantı sınırı ile, korumalı alan bağlantı eşiğine ulaşılmaya ve sitenin kapanması daha yüksektir. Bu durumda, 50 veya `DefaultConnectionLimit` 100 gibi bir şeyin daha düşük bir değere ayarlanması, bunun oluşmasını engelleyebilir ve yeterli aktarım hızına izin verebilir.
 
-Herhangi bir HTTP isteği yapılmadan önce ayar yapılmalıdır. Bu nedenle, Web İşler ana bilgisayarı ayarı otomatik olarak ayarlamamalıdır. Ana bilgisayar başlamadan önce gerçekleşen VE beklenmeyen davranışlara yol açabilecek HTTP istekleri olabilir. En iyi `Main` `JobHost`yaklaşım, burada gösterildiği gibi, başlatmadan önce yönteminizdeki değeri hemen ayarlamaktır:
+Ayar, herhangi bir HTTP isteği yapılmadan önce yapılandırılmalıdır. Bu nedenle, WebJobs ana bilgisayarı ayarı otomatik olarak ayarlamamamalıdır. Ana bilgisayar başlamadan önce oluşan HTTP istekleri olabilir, bu durum beklenmeyen davranışlara neden olabilir. En iyi yaklaşım, burada gösterildiği gibi `Main` `JobHost`, başlamadan önce bu değeri hemen ayarlamanız gerekir:
 
 ```csharp
 static void Main(string[] args)
@@ -146,11 +146,11 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>Tetikleyiciler
 
-İşlevler ortak yöntemler olmalı ve bir [`NoAutomaticTrigger`](#manual-triggers) tetikleyici özniteliği veya özniteliği olmalıdır.
+İşlevler ortak Yöntemler olmalıdır ve bir tetikleyici özniteliği veya [`NoAutomaticTrigger`](#manual-triggers) özniteliği olmalıdır.
 
-### <a name="automatic-triggers"></a>Otomatik tetikleyiciler
+### <a name="automatic-triggers"></a>Otomatik Tetikleyiciler
 
-Otomatik tetikleyiciler bir olaya yanıt olarak bir işlevi çağırır. Azure Kuyruk depolama alanına eklenen bir ileti tarafından tetiklenen bir işlev örneği bu örneği göz önünde bulundurun. Azure Blob depolama dan bir blob okuyarak yanıt verir:
+Otomatik Tetikleyiciler bir olaya yanıt olarak bir işlev çağırır. Azure kuyruk depolamaya eklenen bir ileti tarafından tetiklenen bir işlev örneğini göz önünde bulundurun. Azure Blob depolamadan bir blob okuyarak yanıt verir:
 
 ```cs
 public static void Run(
@@ -162,13 +162,13 @@ public static void Run(
 }
 ```
 
-Öznitelik, `QueueTrigger` `myqueue-items` kuyrukta bir kuyruk iletisi görüntülendiğinde işlevi çağırma saatini bildirir. Öznitelik, `Blob` *örnek çalışma öğeleri* kapsayıcısındaki bir blob'u okumak için sıra iletisini kullanma saatini söyler. `samples-workitems` Kapsayıcıdaki blob öğesinin adı, bağlama ifadesi olarak doğrudan sıra`{queueTrigger}`tetikleyicisinden elde edilir .
+`QueueTrigger` Özniteliği, `myqueue-items` kuyrukta bir kuyruk iletisi göründüğünde çalışma zamanına işlevi çağırmasını söyler. `Blob` Özniteliği, çalışma zamanına, *örnek-WorkItems* kapsayıcısında bir blobu okumak için kuyruk iletisini kullanmasını söyler. `samples-workitems` Kapsayıcıdaki blob öğesinin adı doğrudan kuyruk tetikleyicisinden bir bağlama ifadesi (`{queueTrigger}`) olarak alınır.
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-### <a name="manual-triggers"></a>Manuel tetikleyiciler
+### <a name="manual-triggers"></a>El ile Tetikleyiciler
 
-Bir işlevi el ile tetiklemek için, burada gösterildiği gibi özniteliği kullanın: `NoAutomaticTrigger`
+Bir işlevi el ile tetiklemek için, aşağıda `NoAutomaticTrigger` gösterildiği gibi özniteliğini kullanın:
 
 ```cs
 [NoAutomaticTrigger]
@@ -182,7 +182,7 @@ string value,
 }
 ```
 
-İşlevin el ile tetiklenmesi işlemi SDK sürümüne bağlıdır.
+İşlevi el ile tetikleme süreci SDK sürümüne bağlıdır.
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
@@ -223,17 +223,17 @@ static void Main(string[] args)
 
 ## <a name="input-and-output-bindings"></a>Giriş ve çıkış bağlamaları
 
-Giriş bağlamaları, Azure veya üçüncü taraf hizmetlerinden gelen verileri kodunuzda kullanılabilir hale getirmek için bildirimsel bir yol sağlar. Çıktı bağlamaları verileri güncelleştirmek için bir yol sağlar. [Başlat](webjobs-sdk-get-started.md) makalesi her birinin bir örneğini gösterir.
+Giriş bağlamaları, Azure veya üçüncü taraf hizmetlerden gelen verileri kodunuzun kullanımına sunmak için bildirim temelli bir yol sağlar. Çıkış bağlamaları, verileri güncelleştirmek için bir yol sağlar. [Başlarken](webjobs-sdk-get-started.md) makalesinde her birine bir örnek gösterilir.
 
-Yöntem iade değeriözasyon uygulayarak çıktı bağlama için bir yöntem iade değeri kullanabilirsiniz. [Azure İşi return değerini kullanma](../azure-functions/functions-bindings-return-value.md)örneğine bakın.
+Özniteliği yöntem dönüş değerine uygulayarak bir çıkış bağlaması için bir yöntem dönüş değeri kullanabilirsiniz. [Azure işlevi dönüş değerini kullanma](../azure-functions/functions-bindings-return-value.md)bölümündeki örneğe bakın.
 
 ## <a name="binding-types"></a>Bağlama türleri
 
-Bağlama türlerini yükleme ve yönetme işlemi, sürüm 3'nü kullanıp kullanmadığınıza bağlıdır. *x* veya sürüm 2. SDK *x.* Belirli bir bağlama türü için yüklenmesi gereken paketi, bu bağlama türünün Azure İşlevleri [başvuru makalesinin](#binding-reference-information)"Paketler" bölümünde bulabilirsiniz. Bunun bir istisnası, Azure İşlevleri tarafından desteklenmeyen Dosyalar tetikleyicisi ve bağlama (yerel dosya sistemi için) dir.
+Bağlama türlerini yükleme ve yönetme işlemi, sürüm 3 ' ü kullanıp kullanmayacağınızı bağlıdır. *x* veya sürüm 2. SDK 'nın *x* . Belirli bir bağlama türü için yüklemek üzere paketi, söz konusu bağlama türünün Azure Işlevleri [başvuru makalesinin](#binding-reference-information)"paketler" bölümünde bulabilirsiniz. Özel durum, Azure Işlevleri tarafından desteklenmeyen dosya tetikleyicisi ve bağlamadır (yerel dosya sistemi için).
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
-Sürüm 3'te. *x,* depolama ciltleri `Microsoft.Azure.WebJobs.Extensions.Storage` pakete dahildir. Burada `AddAzureStorage` gösterildiği gibi, `ConfigureWebJobs` yöntemde uzantı yöntemini çağırın:
+Sürüm 3 ' te. *x*, depolama bağlamaları `Microsoft.Azure.WebJobs.Extensions.Storage` pakete dahildir. `ConfigureWebJobs` Yönteminde `AddAzureStorage` uzantı yöntemini burada gösterildiği gibi çağırın:
 
 ```cs
 static async Task Main()
@@ -252,7 +252,7 @@ static async Task Main()
 }
 ```
 
-Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren `Add<binding>` NuGet paketini yükleyin ve uzantıda uygulanan uzantı yöntemini çağırın. Örneğin, bir Azure Cosmos DB bağlama kullanmak `Microsoft.Azure.WebJobs.Extensions.CosmosDB` istiyorsanız, `AddCosmosDB`yükleyin ve çağırın, bu gibi:
+Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren NuGet paketini yükledikten sonra uzantıya uygulanan `Add<binding>` genişletme yöntemini çağırın. Örneğin, bir Azure Cosmos DB bağlama kullanmak istiyorsanız, aşağıdaki gibi yükleyip `Microsoft.Azure.WebJobs.Extensions.CosmosDB` çağırın: `AddCosmosDB`
 
 ```cs
 static async Task Main()
@@ -271,17 +271,17 @@ static async Task Main()
 }
 ```
 
-Temel hizmetlerin bir parçası olan Zamanlayıcı tetikleyicisini veya Dosyaları `AddTimers` bağlamayı kullanmak için sırasıyla veya `AddFiles` uzantı yöntemlerini arayın.
+Çekirdek hizmetlerin bir parçası olan Zamanlayıcı tetikleyicisini veya dosya bağlamayı kullanmak için sırasıyla `AddTimers` veya `AddFiles` genişletme yöntemlerini çağırın.
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Bu tetikleyici ve bağlama türleri sürüm 2'ye dahildir. `Microsoft.Azure.WebJobs` paketin *x:*
+Bu tetikleyici ve bağlama türleri sürüm 2 ' ye dahildir. `Microsoft.Azure.WebJobs` paketin *x* :
 
 * Blob depolama
 * Kuyruk depolama
 * Tablo depolama
 
-Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren `Use<binding>` NuGet `JobHostConfiguration` paketini yükleyin ve nesneye bir yöntem çağırın. Örneğin, burada gösterildiği gibi `Microsoft.Azure.WebJobs.Extensions` `UseTimers` `Main` yöntemde bir Timer tetikleyicisi, yükleme ve arama yapmak istiyorsanız:
+Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren NuGet paketini yükleyip `Use<binding>` `JobHostConfiguration` nesnede bir yöntemi çağırın. Örneğin, bir Zamanlayıcı tetikleyicisi kullanmak istiyorsanız, `Microsoft.Azure.WebJobs.Extensions` `UseTimers` `Main` yöntemi aşağıda gösterildiği gibi yükleyip çağırın:
 
 ```cs
 static void Main()
@@ -293,11 +293,11 @@ static void Main()
 }
 ```
 
-Dosyaları bağlamayı kullanmak `Microsoft.Azure.WebJobs.Extensions` için `UseFiles`yükleyin ve arayın.
+Dosyaları bağlamayı kullanmak için, yükleyip `Microsoft.Azure.WebJobs.Extensions` çağırın. `UseFiles`
 
-### <a name="executioncontext"></a>Executioncontext
+### <a name="executioncontext"></a>ExecutionContext
 
-WebJobs bir [`ExecutionContext`]. Bu bağlama ile işlev [`ExecutionContext`] imzanızda parametre olarak erişebilirsiniz. Örneğin, aşağıdaki kod, belirli bir işlev çağırma tarafından üretilen tüm günlükleri ilişkilendirmek için kullanabileceğiniz çağırma kimliğine erişmek için bağlam nesnesini kullanır.  
+WebJobs, ' a bağlamanıza olanak [`ExecutionContext`]sağlar. Bu bağlama ile, [`ExecutionContext`] öğesine işlev imzanıza parametre olarak erişebilirsiniz. Örneğin, aşağıdaki kod, belirli bir işlev çağrısı tarafından üretilen tüm günlükleri ilişkilendirmek için kullanabileceğiniz, çağırma KIMLIĞINE erişmek için bağlam nesnesini kullanır.  
 
 ```cs
 public class Functions
@@ -311,11 +311,11 @@ public class Functions
 }
 ```
 
-Bağlama işlemi SDK [`ExecutionContext`] sürümünüze bağlıdır.
+Öğesine bağlama işlemi SDK sürümünüze [`ExecutionContext`] bağlıdır.
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
-Burada `AddExecutionContextBinding` gösterildiği gibi, `ConfigureWebJobs` yöntemde uzantı yöntemini çağırın:
+`ConfigureWebJobs` Yönteminde `AddExecutionContextBinding` uzantı yöntemini burada gösterildiği gibi çağırın:
 
 ```cs
 static async Task Main()
@@ -336,7 +336,7 @@ static async Task Main()
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Daha `Microsoft.Azure.WebJobs.Extensions` önce bahsedilen paket, `UseCore` yöntemi arayarak kaydolabileceğiniz özel bir bağlama türü de sağlar. Bu bağlama, işlev [`ExecutionContext`] imzanızda aşağıdaki gibi etkinleştirilen bir parametre tanımlamanızı sağlar:
+Daha `Microsoft.Azure.WebJobs.Extensions` önce bahsedilen paket, `UseCore` yöntemini çağırarak kaydedebilmeniz için özel bir bağlama türü de sağlar. Bu bağlama, işlev imzanız içinde [`ExecutionContext`] şu şekilde etkinleştirilen bir parametre tanımlamanızı sağlar:
 
 ```cs
 class Program
@@ -353,24 +353,24 @@ class Program
 
 ## <a name="binding-configuration"></a>Bağlama yapılandırması
 
-Bazı tetikleyicilerin ve bağlamaların davranışını yapılandırabilirsiniz. Bunları yapılandırma işlemi SDK sürümüne bağlıdır.
+Bazı Tetikleyiciler ve bağlamaların davranışını yapılandırabilirsiniz. Yapılandırma süreci SDK sürümüne göre değişir.
 
-* **Sürüm 3. *x*:** Yöntem `Add<Binding>` çağrıldığında `ConfigureWebJobs`yapılandırmayı ayarlayın.
-* **Sürüm 2. *x*:** `JobHost`' ye geçtiğiniz bir yapılandırma nesnesi özellikleri ayarlayarak yapılandırmayı ayarlayın
+* **Sürüm 3. *x*:** `Add<Binding>` yöntemi içinde `ConfigureWebJobs`çağrıldığında yapılandırmayı ayarlayın.
+* **Sürüm 2. *x*:** ' ye `JobHost`geçirdiğiniz bir yapılandırma nesnesindeki özellikleri ayarlayarak yapılandırmayı ayarlayın.
 
-Bu bağlamaya özel ayarlar, Azure İşlevlerindeki [ana bilgisayar.json proje dosyasındaki](../azure-functions/functions-host-json.md) ayarlara eşdeğerdir.
+Bu bağlamaya özgü ayarlar, Azure Işlevleri 'ndeki [Host. JSON proje dosyasındaki](../azure-functions/functions-host-json.md) ayarlara eşdeğerdir.
 
 Aşağıdaki bağlamaları yapılandırabilirsiniz:
 
 * [Azure CosmosDB tetikleyicisi](#azure-cosmosdb-trigger-configuration-version-3x)
-* [Olay Hub'ları tetikleyici](#event-hubs-trigger-configuration-version-3x)
+* [Event Hubs tetikleyicisi](#event-hubs-trigger-configuration-version-3x)
 * [Kuyruk depolama tetikleyicisi](#queue-storage-trigger-configuration)
 * [SendGrid bağlama](#sendgrid-binding-configuration-version-3x)
-* [Servis Veri Otobüsü tetikleyicisi](#service-bus-trigger-configuration-version-3x)
+* [Service Bus tetikleyicisi](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Azure CosmosDB tetik yapılandırması (sürüm 3.* x*)
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Azure CosmosDB tetikleme yapılandırması (sürüm 3.* x*)
 
-Bu örnek, Azure Cosmos DB tetikleyicisinin nasıl yapılandırılabildiğini gösterir:
+Bu örnek, Azure Cosmos DB tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
 ```cs
 static async Task Main()
@@ -395,11 +395,11 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [Azure CosmosDB bağlama](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) makalesine bakın.
+Daha ayrıntılı bilgi için bkz. [Azure CosmosDB bağlama](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) makalesi.
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Olay Hub'ları yapılandırmayı tetikler (sürüm 3.* x*)
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs tetikleyicisi yapılandırması (sürüm 3.* x*)
 
-Bu örnek, Olay Hub'larının tetikleyicisinin nasıl yapılandırılabildiğini gösterir:
+Bu örnek, Event Hubs tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
 ```cs
 static async Task Main()
@@ -423,11 +423,11 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [Olay Hub'ları bağlayıcı](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json) makaleye bakın.
+Daha fazla ayrıntı için [Event Hubs bağlama](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json) makalesine bakın.
 
-### <a name="queue-storage-trigger-configuration"></a>Sıra depolama tetikleyici yapılandırması
+### <a name="queue-storage-trigger-configuration"></a>Kuyruk depolama tetikleyicisi yapılandırması
 
-Bu örnekler, Sıra depolama tetikleyicisinin nasıl yapılandırılabildiğini gösterir:
+Bu örneklerde, kuyruk depolama tetikleyicisinin nasıl yapılandırılacağı gösterilmektedir:
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [Sıra depolama bağlama](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties) makalesine bakın.
+Daha ayrıntılı bilgi için bkz. [kuyruk depolama bağlama](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties) makalesi.
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
@@ -470,11 +470,11 @@ static void Main(string[] args)
 }
 ```
 
-Daha fazla bilgi için [host.json v1.x referansına](../azure-functions/functions-host-json-v1.md#queues)bakın.
+Daha fazla ayrıntı için bkz. [Host. JSON v1. x başvurusu](../azure-functions/functions-host-json-v1.md#queues).
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid bağlama yapılandırması (sürüm 3.* x*)
 
-Bu örnek, SendGrid çıktı bağlamanasıl yapılandırılabildiğini gösterir:
+Bu örnek, SendGrid çıkış bağlamasının nasıl yapılandırılacağını gösterir:
 
 ```cs
 static async Task Main()
@@ -497,11 +497,11 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [SendGrid bağlama](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) makalesine bakın.
+Daha fazla ayrıntı için bkz. [SendGrid bağlama](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) makalesi.
 
-### <a name="service-bus-trigger-configuration-version-3x"></a>Servis Veri Servisi tetik yapılandırması (sürüm 3.* x*)
+### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus tetikleyicisi yapılandırması (sürüm 3.* x*)
 
-Bu örnek, Hizmet Veri Servisi tetikleyicisinin nasıl yapılandırılabildiğini gösterir:
+Bu örnek, Service Bus tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
 ```cs
 static async Task Main()
@@ -524,11 +524,11 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [Servis Veri Servisi bağlayıcı](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings) makalesine bakın.
+Daha fazla ayrıntı için [Service Bus bağlama](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings) makalesine bakın.
 
-### <a name="configuration-for-other-bindings"></a>Diğer bağlamalar için yapılandırma
+### <a name="configuration-for-other-bindings"></a>Diğer bağlamaların yapılandırması
 
-Bazı tetikleyici ve bağlama türleri kendi özel yapılandırma türlerini tanımlar. Örneğin, Dosya tetikleyicisi, aşağıdaki örneklerde olduğu gibi izlenecek kök yolu belirtmenize olanak tanır:
+Bazı tetikleyici ve bağlama türleri kendi özel yapılandırma türlerini tanımlar. Örneğin, dosya tetikleyicisi aşağıdaki örneklerde olduğu gibi, izlenecek kök yolunu belirtmenizi sağlar:
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
@@ -567,7 +567,7 @@ static void Main()
 
 ## <a name="binding-expressions"></a>Bağlama ifadeleri
 
-Öznitelik oluşturucu parametrelerinde, çeşitli kaynaklardan gelen değerlere çözüm veren ifadeler kullanabilirsiniz. Örneğin, aşağıdaki kodda, `BlobTrigger` öznitelik için yol adlı `filename`bir ifade oluşturur. Çıktı bağlama için kullanıldığında, `filename` tetikleyici blob adına giderir.
+Öznitelik Oluşturucu parametrelerinde, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz. Örneğin, aşağıdaki kodda `BlobTrigger` özniteliğin yolu adlı `filename`bir ifade oluşturur. Çıkış bağlaması için kullanıldığında, `filename` tetikleme blobu adına çözümler.
 
 ```cs
 public static void CreateThumbnail(
@@ -581,13 +581,13 @@ public static void CreateThumbnail(
 }
 ```
 
-Bağlama ifadeleri hakkında daha fazla bilgi için Azure İşlevleri belgelerinde [bağlayıcı ifadeler ve desenler](../azure-functions/functions-bindings-expressions-patterns.md) ebakını görün.
+Bağlama ifadeleri hakkında daha fazla bilgi için bkz. Azure Işlevleri belgelerinde [ifadeleri ve desenleri bağlama](../azure-functions/functions-bindings-expressions-patterns.md) .
 
 ### <a name="custom-binding-expressions"></a>Özel bağlama ifadeleri
 
-Bazen bir sıra adı, bir blob adı veya kapsayıcı veya kod içinde bir tablo adı yerine zor kodlama belirtmek istiyorum. Örneğin, bir yapılandırma dosyasıveya ortam değişkeninde `QueueTrigger` öznitelik için sıra adını belirtmek isteyebilirsiniz.
+Bazen bir kuyruk adı, bir blob adı veya kapsayıcısı ya da kod içinde sabit kodlamak yerine bir tablo adı belirtmek isteyebilirsiniz. Örneğin, bir yapılandırma dosyasında veya ortam değişkeninde `QueueTrigger` özniteliği için sıra adını belirtmek isteyebilirsiniz.
 
-Bunu nesneye `NameResolver` `JobHostConfiguration` bir nesne geçirerek yapabilirsiniz. Yer tutucuları tetikleyici veya bağlama öznitelik oluşturucu `NameResolver` parametrelerine eklersiniz ve kodunuz bu yer tutucuların yerine kullanılacak gerçek değerleri sağlar. Yer tutucuları yüzde (%) ile çevreleyerek tanımlarsınız işaretler, burada gösterildiği gibi:
+`JobHostConfiguration` Nesneyi nesnesine geçirerek `NameResolver` bunu yapabilirsiniz. Tetikleyici veya bağlama öznitelik Oluşturucu parametrelerine yer tutucuları dahil edersiniz ve `NameResolver` kodunuz, bu yer tutucular yerine kullanılacak gerçek değerleri sağlar. Yer tutucuları, yüzde (%) ile çevreleyerek belirlersiniz burada gösterildiği gibi imzalar:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
@@ -596,11 +596,11 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Bu kod, test ortamında `logqueuetest` ve üretimde adı `logqueueprod` geçen bir sıra kullanmanıza olanak sağlar. Sabit kodlanmış bir sıra adı yerine, `appSettings` koleksiyondaki bir girişin adını belirtirsiniz.
+Bu kod, test ortamında adlı `logqueuetest` bir kuyruğu ve üretimde adlandırılmış `logqueueprod` bir kuyruğu kullanmanıza olanak sağlar. Sabit kodlanmış bir sıra adı yerine, `appSettings` koleksiyondaki bir girdinin adını belirtirsiniz.
 
-Özel bir varsayılan `NameResolver` sağlamazsanız etkili olan bir varsayılan vardır. Varsayılan değer, uygulama ayarlarından veya ortam değişkenlerinden değerler alır.
+Özel bir tane sağlamazsanız `NameResolver` geçerli bir varsayılan değer vardır. Varsayılan değer, uygulama ayarlarından veya ortam değişkenlerinden değerleri alır.
 
-Sınıfınız, `NameResolver` burada gösterildiği `appSettings`gibi sıra adını alır:
+`NameResolver` Sınıfınız, burada gösterildiği gibi kuyruk adını `appSettings`' dan alır:
 
 ```cs
 public class CustomNameResolver : INameResolver
@@ -614,13 +614,13 @@ public class CustomNameResolver : INameResolver
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
-Bağımlılık enjeksiyonu kullanarak çözümleyiciyi yapılandırAbilirsiniz. Bu örnekler aşağıdaki `using` ifadeyi gerektirir:
+Çözümleyici 'yi bağımlılık ekleme kullanarak yapılandırırsınız. Bu örnekler aşağıdaki `using` ifadeyi gerektirir:
 
 ```cs
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-Bu örnekte olduğu gibi [`ConfigureServices`] [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)uzantı yöntemini çağırarak çözümleyiciyi eklersiniz:
+Bu örnekte olduğu gibi [`ConfigureServices`] [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder), genişletme yöntemini ' de çağırarak çözümleyici eklersiniz:
 
 ```cs
 static async Task Main(string[] args)
@@ -642,7 +642,7 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Burada `NameResolver` gösterildiği gibi `JobHost` sınıfınızı nesneye geçirin:
+`NameResolver` Sınıfınızı, burada gösterildiği gibi `JobHost` nesnesine geçirin:
 
 ```cs
  static void Main(string[] args)
@@ -654,13 +654,13 @@ Burada `NameResolver` gösterildiği gibi `JobHost` sınıfınızı nesneye geç
 }
 ```
 
-Azure İşlevleri, `INameResolver` örnekte gösterildiği gibi uygulama ayarlarından değerler almak için uygular. WebJobs SDK'yı doğrudan kullandığınızda, tercih ettiğiniz kaynaktan yer tutucu değiştirme değerlerini alan özel bir uygulama yazabilirsiniz.
+Azure Işlevleri, `INameResolver` örnekte gösterildiği gibi uygulama ayarlarından değerleri almak için uygular. WebJobs SDK 'sını doğrudan kullandığınızda, tercih ettiğiniz herhangi bir kaynaktan yer tutucu değiştirme değerlerini alan özel bir uygulama yazabilirsiniz.
 
 ## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
 
-", " veya `Table`, , gibi `IBinder` `Blob`bağlayıcı bir öznitelik kullanmadan önce işlevinizde bazı işler yapmanız gerekiyorsa, arabirimi kullanabilirsiniz. `Queue`
+`Queue`, Veya `Blob` `Table`gibi bir bağlama özniteliği kullanmadan önce işlevinizde bazı çalışmalar yapmanız gerekiyorsa, `IBinder` arabirimini kullanabilirsiniz.
 
-Aşağıdaki örnek, bir giriş sırası iletisi alır ve çıktı kuyruğunda aynı içeriğe sahip yeni bir ileti oluşturur. Çıkış sıra adı işlevin gövdesinde kod tarafından ayarlanır.
+Aşağıdaki örnek bir giriş kuyruğu iletisi alır ve bir çıkış kuyruğunda aynı içeriğe sahip yeni bir ileti oluşturur. Çıkış sırası adı, işlevin gövdesinde kodla ayarlanır.
 
 ```cs
 public static void CreateQueueMessage(
@@ -674,25 +674,25 @@ public static void CreateQueueMessage(
 }
 ```
 
-Daha fazla bilgi için Azure İşlevleri belgelerinde [çalışma zamanında Bağlama'ya](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime) bakın.
+Daha fazla bilgi için bkz. Azure Işlevleri belgelerinde [çalışma zamanında bağlama](../azure-functions/functions-dotnet-class-library.md#binding-at-runtime) .
 
-## <a name="binding-reference-information"></a>Bağlayıcı referans bilgileri
+## <a name="binding-reference-information"></a>Başvuru bilgilerini bağlama
 
-Azure İşlevler belgeleri her bağlama türü hakkında başvuru bilgileri sağlar. Her bağlayıcı başvuru makalesinde aşağıdaki bilgileri bulacaksınız. (Bu örnek Depolama sırasına dayanır.)
+Azure Işlevleri belgeleri, her bağlama türü hakkında başvuru bilgileri sağlar. Her bağlama başvuru makalesinde aşağıdaki bilgileri bulabilirsiniz. (Bu örnek, depolama kuyruğuna dayalıdır.)
 
-* [Paketler](../azure-functions/functions-bindings-storage-queue.md). Bir WebJobs SDK projesinde bağlama desteği içerecek şekilde yüklemeniz gereken paket.
-* [Örnekler](../azure-functions/functions-bindings-storage-queue-trigger.md). Kod örnekleri. C# sınıfı kitaplık örneği WebJobs SDK için geçerlidir. Sadece özniteliği `FunctionName` atla.
+* [Paketler](../azure-functions/functions-bindings-storage-queue.md). Web Işleri SDK projesinde bağlama desteğini dahil etmek için yüklemeniz gereken paket.
+* [Örnekler](../azure-functions/functions-bindings-storage-queue-trigger.md). Kod örnekleri. C# sınıf kitaplığı örneği Web Işleri SDK 'Sı için geçerlidir. Yalnızca `FunctionName` özniteliği atlayın.
 * [Öznitelikler](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations). Bağlama türü için kullanılacak öznitelikler.
-* [Yapılandırma](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Öznitelik özellikleri ve yapıcı parametrelerin açıklamaları.
-* [Kullanım](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Bağlayabileceğiniz türleri ve bağlamanın nasıl çalıştığı hakkında bilgi. Örneğin: yoklama algoritması, zehirli sıra işleme.
+* [Yapılandırma](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Öznitelik özellikleri ve Oluşturucu parametrelerinin açıklamaları.
+* [Kullanım](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Bağlayacağınız türler ve bağlamanın nasıl çalıştığı hakkında bilgi alabilirsiniz. Örneğin: yoklama algoritması, zarar kuyruğu işleme.
   
-Bağlayıcı başvuru makalelerinin listesi için, Azure İşlevleri için [Tetikleyiciler ve bağlamalar](../azure-functions/functions-triggers-bindings.md#supported-bindings) makalesindeki "Desteklenen bağlamalar" bölümüne bakın. Bu listede, HTTP, Webhooks ve Olay Izgara bağlamaları WebJobs SDK tarafından değil, yalnızca Azure İşleri tarafından desteklenir.
+Bağlama başvuru makalelerinin bir listesi için bkz. Azure Işlevleri için [Tetikleyiciler ve bağlamalar](../azure-functions/functions-triggers-bindings.md#supported-bindings) makalesindeki "desteklenen bağlamalar". Bu listede, HTTP, Web kancaları ve Event Grid bağlamaları yalnızca Azure Işlevleri tarafından desteklenir, Web Işleri SDK 'Sı tarafından desteklenmez.
 
-## <a name="disable-attribute"></a>Özniteliği devre dışı 
+## <a name="disable-attribute"></a>Özniteliği devre dışı bırak 
 
-Öznitelik, [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) bir işlevin tetiklenip tetiklenmeyeceğini denetlemenize olanak tanır. 
+Özniteliği [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) , bir işlevin tetiklenip tetiklenmeyeceğini denetlemenizi sağlar. 
 
-Aşağıdaki örnekte, uygulama ayarı `Disable_TestJob` bir `1` değere sahipse veya `True` (büyük/küçük harf duyarsızca) işlev çalışmaz. Bu durumda, çalışma zamanı bir günlük *iletisi Işlevi 'Functions.TestJob' devre dışı bırakılır*oluşturur.
+Aşağıdaki örnekte, uygulama ayarının `Disable_TestJob` değeri `1` veya `True` (büyük/küçük harf duyarsız) varsa, işlev çalıştırılmaz. Bu durumda, çalışma zamanı *' Functions. TestJob '* bir günlük iletisi işlevi oluşturur.
 
 ```cs
 [Disable("Disable_TestJob")]
@@ -702,13 +702,13 @@ public static void TestJob([QueueTrigger("testqueue2")] string message)
 }
 ```
 
-Azure portalında uygulama ayar değerlerini değiştirdiğinizde, WebJob yeni ayarı almak için yeniden başlar.
+Azure portal uygulama ayarı değerlerini değiştirdiğinizde, WebJob yeni ayarı seçmek için yeniden başlatılır.
 
-Öznitelik parametre, yöntem veya sınıf düzeyinde bildirilebilir. Ayar adı bağlayıcı ifadeler de içerebilir.
+Özniteliği parametresi, yöntemi veya sınıf düzeyinde bildirilebilecek. Ayar adı, bağlama ifadeleri de içerebilir.
 
-## <a name="timeout-attribute"></a>Zaman arası özniteliği
+## <a name="timeout-attribute"></a>Timeout özniteliği
 
-Öznitelik, [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) belirli bir süre içinde bitmezse işlevin iptal edilmesine neden olur. Aşağıdaki örnekte, işlev Timeout özniteliği olmadan bir gün boyunca çalışır. Zaman anına 15 saniye sonra işlevin iptal edilmesine neden olur.
+Öznitelik [`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs) , belirli bir süre içinde bitmemişse bir işlevin iptal edilmesine neden olur. Aşağıdaki örnekte, işlevi zaman aşımı özniteliği olmadan bir gün çalışır. Zaman aşımı işlevin 15 saniye sonra iptal edilmesine neden olur.
 
 ```cs
 [Timeout("00:00:15")]
@@ -723,13 +723,13 @@ public static async Task TimeoutJob(
 }
 ```
 
-Zaman Alameti özniteliğini sınıf veya yöntem düzeyinde uygulayabilir ve genel `JobHostConfiguration.FunctionTimeout`bir zaman açiğini kullanarak belirtebilirsiniz. Sınıf düzeyinde veya yöntem düzeyinde zaman ayarı genel zaman zaman larını geçersiz kılar.
+Zaman aşımı özniteliğini sınıf veya yöntem düzeyinde uygulayabilir ve kullanarak `JobHostConfiguration.FunctionTimeout`genel zaman aşımı belirtebilirsiniz. Sınıf düzeyi veya yöntem düzeyi zaman aşımları genel zaman aşımlarını geçersiz kılar.
 
 ## <a name="singleton-attribute"></a>Singleton özniteliği
 
-Öznitelik, [`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) ana bilgisayar web uygulamasının birden çok örneği olsa bile, bir işlevin yalnızca bir örneğinin çalışmasını sağlar. Bunu [dağıtılmış kilitleme](#viewing-lease-blobs)kullanarak yapar.
+[`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs) Özniteliği, ana bilgisayar Web uygulamasının birden fazla örneği olsa bile, bir işlevin yalnızca bir örneğinin çalışmasını sağlar. Bunu, [Dağıtılmış kilitlemeyi](#viewing-lease-blobs)kullanarak yapar.
 
-Bu örnekte, işlevin `ProcessImage` yalnızca tek bir örneği herhangi bir zamanda çalışır:
+Bu örnekte, belirli bir zamanda `ProcessImage` işlevin yalnızca tek bir örneği çalışır:
 
 ```cs
 [Singleton]
@@ -739,19 +739,19 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 }
 ```
 
-### <a name="singletonmodelistener"></a>SingletonMode.Dinleyici
+### <a name="singletonmodelistener"></a>SingletonMode. dinleyicisi
 
-Bazı tetikleyiciler eşzamanlılık yönetimi için yerleşik desteğe sahiptir:
+Bazı Tetikleyiciler eşzamanlılık yönetimi için yerleşik desteğe sahiptir:
 
-* **QueueTrigger**. `1`Ayarlayın. `JobHostConfiguration.Queues.BatchSize`
-* **ServiceBusTrigger**. `1`Ayarlayın. `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls`
-* **FileTrigger**. `1`Ayarlayın. `FileProcessor.MaxDegreeOfParallelism`
+* **Queuetrigger**. Olarak `JobHostConfiguration.Queues.BatchSize` `1`ayarlayın.
+* **Servicebustrigger**. Olarak `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` `1`ayarlayın.
+* **Dosya tetikleyicisi**. Olarak `FileProcessor.MaxDegreeOfParallelism` `1`ayarlayın.
 
-Bu ayarları, işlevinizin tek bir örnekte tek ton olarak çalıştığından emin olmak için kullanabilirsiniz. Web uygulaması birden çok örneğe ölçeklendiğinde işlevin yalnızca tek bir örneğinin çalıştığından emin olmak için, işleve`[Singleton(Mode = SingletonMode.Listener)]`dinleyici düzeyinde singleton kilidi uygulayın ( ). Dinleyici kilitleri JobHost başladığında elde edilir. Üç ölçeklenmiş örnek aynı anda başlatılırsa, yalnızca bir örnek kilidi kazanır ve yalnızca bir dinleyici başlar.
+Bu ayarları, işlevinizin tek bir örnek üzerinde Singleton olarak çalıştığından emin olmak için kullanabilirsiniz. Web uygulaması birden çok örneğe ölçeklendirirken işlevin yalnızca tek bir örneğinin çalıştığından emin olmak için, (`[Singleton(Mode = SingletonMode.Listener)]`) işlevine dinleyici düzeyinde bir tek kilit uygulayın. JobHost başlatıldığında dinleyici kilitleri elde edilir. Üç ölçekli örnek hepsi aynı anda başladıysanız, örneklerden yalnızca biri kilidi alır ve yalnızca bir dinleyici başlatılır.
 
 ### <a name="scope-values"></a>Kapsam değerleri
 
-Bir singleton üzerinde bir *kapsam ifadesi/değeri* belirtebilirsiniz. İfade/değer, işlevin belirli bir kapsamdaki tüm yürütmelerinin serihale getirilmesini sağlar. Bu şekilde daha ayrıntılı kilitleme uygulamak, gereksinimleriniz tarafından dikte edilen diğer çağrıları seri hale getirirken işleviniz için bir miktar paralellik sağlar. Örneğin, aşağıdaki kodda, kapsam ifadesi gelen iletinin değerine `Region` bağlanır. Sıra, doğu, doğu ve batı bölgelerinde sırasıyla üç ileti içeriyorsa, Doğu bölgesi olan iletiler seri olarak çalıştırılırken, Bölge Batı'daki ileti Doğu'dakiyle paralel olarak çalıştırılır.
+Tek başına bir *kapsam ifadesi/değeri* belirtebilirsiniz. İfade/değer, belirli bir kapsamdaki işlevin tüm yürütmelerinin serileştirilmesini sağlar. Bu şekilde daha ayrıntılı kilitleme uygulamak, gereksinimlerinize göre dikte edilen diğer çağırmaları serileştirirken işleviniz için bazı paralellik düzeyine izin verebilir. Örneğin, aşağıdaki kodda, kapsam ifadesi gelen iletinin `Region` değerine bağlanır. Sıra, Doğu, Doğu ve Batı bölgelerinde üç ileti içerdiğinde, Doğu bölgesi olan iletiler, Batı bölgesindeki ileti, Doğu ile paralel olarak çalıştırılyana çalışır.
 
 ```csharp
 [Singleton("{Region}")]
@@ -769,9 +769,9 @@ public class WorkItem
 }
 ```
 
-### <a name="singletonscopehost"></a>SingletonScope.Host
+### <a name="singletonscopehost"></a>SingletonScope. Host
 
-Bir kilit için varsayılan `SingletonScope.Function`kapsam, kilit kapsamı (blob kiralama yolu) tam nitelikli işlev adına bağlı olduğu anlamına gelir. İşlevler arasında `SingletonScope.Host` kilitlemek için, aynı anda çalıştırmak istemediğiniz tüm işlevlerde aynı olan bir kapsam kimliği adı belirtin ve kullanın. Aşağıdaki örnekte, aynı anda yalnızca bir örneği `AddItem` veya `RemoveItem` çalışır:
+Bir kilit `SingletonScope.Function`için varsayılan kapsam, yani kilit kapsamı (blob kira yolu) tam olarak nitelenmiş işlev adına bağlıdır. İşlevleri arasında kilitlemek için, aynı `SingletonScope.Host` anda çalıştırmak istemediğiniz tüm işlevlerde aynı olan BIR kapsam kimliği adı belirtin ve kullanın. Aşağıdaki örnekte, tek seferde yalnızca bir örneği `AddItem` veya `RemoveItem` çalışır:
 
 ```csharp
 [Singleton("ItemsLock", SingletonScope.Host)]
@@ -787,39 +787,39 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 }
 ```
 
-### <a name="viewing-lease-blobs"></a>Kira lekelerini görüntüleme
+### <a name="viewing-lease-blobs"></a>Kira bloblarını görüntüleme
 
-WebJobs SDK, dağıtılmış kilitlemeyi uygulamak için kapakların altında [Azure blob kiralamaları](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) kullanır. Singleton tarafından kullanılan kira lekeleri yol `azure-webjobs-host` "kilitler" altında `AzureWebJobsStorage` depolama hesabında konteyner bulunabilir. Örneğin, daha önce gösterilen ilk `ProcessImage` örnek için kira `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage`blob yolu olabilir. Tüm yollar JobHost ID, bu durumda 061851c758f04938a4426aaa9ab3869c0 içerir.
+Web Işleri SDK 'Sı, dağıtılmış kilitlemeyi uygulamak için, kapakların altında [Azure Blob kiraları](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) kullanır. Tek tarafından kullanılan kira Blobları, "kilitler" yolu `azure-webjobs-host` altındaki `AzureWebJobsStorage` depolama hesabındaki kapsayıcıda bulunabilir. Örneğin, daha önce gösterilen ilk `ProcessImage` örnek için kira blobu yolu olabilir. `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` Tüm yollar, bu durumda 061851c758f04938a4426aa9ab3860 ' da JobHost KIMLIĞINI içerir.
 
-## <a name="async-functions"></a>Async fonksiyonları
+## <a name="async-functions"></a>Zaman uyumsuz işlevler
 
-Async işlevlerinin nasıl kodlanır hakkında bilgi için [Azure İşlevleri belgelerine](../azure-functions/functions-dotnet-class-library.md#async)bakın.
+Zaman uyumsuz işlevlerin nasıl kodgörüntüleneceği hakkında daha fazla bilgi için bkz. [Azure işlevleri belgeleri](../azure-functions/functions-dotnet-class-library.md#async).
 
 ## <a name="cancellation-tokens"></a>İptal belirteçleri
 
-İptal belirteçleri nasıl işleyeceğiniz hakkında bilgi [için, iptal belirteçleri ve zarif kapatma](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens)yla ilgili Azure İşlevleri belgelerine bakın.
+İptal belirteçlerini işleme hakkında daha fazla bilgi için bkz. [iptal belirteçleri ve düzgün kapanma](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens)hakkında Azure işlevleri belgeleri.
 
 ## <a name="multiple-instances"></a>Birden çok örnek
 
-Web uygulamanız birden çok örnekte çalışıyorsa, tetikleyicileri ve arama işlevlerini dinleyerek her örnekte sürekli bir WebJob çalışır. Çeşitli tetikleyici bağlamaları, daha fazla örne ölçeklemenin daha fazla yük taşımanızı sağlayacak şekilde, çalışmaları örnekler arasında işbirliği içinde verimli bir şekilde paylaşmak üzere tasarlanmıştır.
+Web uygulamanız birden çok örnek üzerinde çalışıyorsa, her örnekte sürekli bir WebJob çalışarak Tetikleyiciler ve çağırma işlevlerini dinler. Çeşitli tetikleyici bağlamaları, diğer örneklere göre ölçeklendirilmesi için daha fazla yük işleyebilmenizi sağlamak üzere iş ortak çalışan örnekleri arasında verimli bir şekilde paylaşılacak şekilde tasarlanmıştır.
 
-Bazı tetikleyiciler çift işlemeyle sonuçlanabilirken, sıra ve blob depolama tetikleyicileri bir işlevin bir sıra iletisini işlemesini veya birden fazla kez blob çalışmasını otomatik olarak engeller. Daha fazla bilgi için Azure İşlevleri belgelerinde [aynı girdi için Tasarım](../azure-functions/functions-idempotent.md) bölümüne bakın.
+Bazı Tetikleyiciler çift işleme ile sonuçlanabileceğinden, kuyruk ve BLOB depolama Tetikleyicileri, bir işlevin bir sıra iletisini veya blobu birden çok kez işlemesini otomatik olarak önler. Daha fazla bilgi için bkz. Azure Işlevleri belgelerinde [özdeş giriş Için tasarlama](../azure-functions/functions-idempotent.md) .
 
-Zamanlayıcı tetikleyicisi otomatik olarak zamanlayıcının yalnızca bir örneğinin çalışmasını sağlar, böylece belirli bir zamanlanan zamanda birden fazla işlev örneği çalışmazsınız.
+Zamanlayıcı tetikleyicisi, yalnızca bir Zamanlayıcı örneğinin çalışmasını sağlar, böylece belirli bir zamanlanan sürede çalışan birden fazla işlev örneği almaz.
 
-Ana bilgisayar web uygulamasının birden çok örneği olsa bile bir işlevin yalnızca bir örneğinin [`Singleton`](#singleton-attribute) çalıştığından emin olmak istiyorsanız, bu özelliği kullanabilirsiniz.
+Konak Web uygulamasının birden çok örneği olduğunda bile bir işlevin yalnızca bir örneğinin çalışmasını sağlamak istiyorsanız, [`Singleton`](#singleton-attribute) özniteliğini kullanabilirsiniz.
 
-## <a name="filters"></a>Filtreler
+## <a name="filters"></a>FilTReleri
 
-İşlev Filtreleri (önizleme), Web İşler yürütme ardışık hattını kendi mantığınızla özelleştirmenin bir yolunu sağlar. Filtreler [ASP.NET Core filtrelerine](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)benzer. Bunları işlevlerinize veya sınıflarınıza uygulanan bildirimsel öznitelikler olarak uygulayabilirsiniz. Daha fazla bilgi için [Bkz. İşlev Filtreleri.](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)
+İşlev filtreleri (Önizleme), Web Işleri yürütme işlem hattını kendi mantığınızla özelleştirmek için bir yol sağlar. Filtreler [ASP.NET Core filtreye](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)benzerdir. Bunları, işlevleriniz veya sınıflarınıza uygulanan bildirim temelli öznitelikler olarak uygulayabilirsiniz. Daha fazla bilgi için bkz. [Işlev filtreleri](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
-ASP.NET için geliştirilen günlük çerçevesini öneririz. [Başlangıç](webjobs-sdk-get-started.md) makalesi nasıl kullanılacağını gösterir. 
+ASP.NET için geliştirilen günlük çerçevesini öneririz. [Başlarken](webjobs-sdk-get-started.md) makalesinde nasıl kullanılacağı gösterilir. 
 
 ### <a name="log-filtering"></a>Günlük filtreleme
 
-Bir `ILogger` örnek tarafından oluşturulan her `Category` `Level`günlük ilişkili ve . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)numaralandırmadır ve sonsayı kodu göreli önemi gösterir:
+Bir `ILogger` örnek tarafından oluşturulan her günlük ilişkili `Category` bir ve `Level`içerir. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir numaralandırmadır ve tamsayı kodu göreli önemi gösterir:
 
 |LogLevel    |Kod|
 |------------|---|
@@ -831,19 +831,19 @@ Bir `ILogger` örnek tarafından oluşturulan her `Category` `Level`günlük ili
 |Kritik    | 5 |
 |Hiçbiri        | 6 |
 
-Her kategoriyi bağımsız olarak belirli [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir kategoriye filtreleyebilirsiniz. Örneğin, blob tetikleme işleme için tüm günlükleri `Error` görmek isteyebilirsiniz ama sadece ve her şey için daha yüksek.
+Her kategoriyi bağımsız olarak belirli [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir şekilde filtreleyebilirsiniz. Örneğin, diğer her şey için yalnızca `Error` ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
-Sürüm 3. *x* sdk .NET Core yerleşik filtreleme dayanır. Sınıf, `LogCategories` belirli işlevler, tetikleyiciler veya kullanıcılar için kategoriler tanımlamanıza olanak tanır. Ayrıca, belirli ana bilgisayar durumları için `Startup` `Results`filtreler tanımlar, gibi ve. Bu, günlüğe kaydetme çıktısına ince ayar yapmanızı sağlar. Tanımlanan kategorilerde eşleşme bulunmazsa, iletiye filtre `Default` uygulayıp filtrelemeyeceğine karar verirken filtre değere geri döner.
+Sürüm 3. SDK 'nın *x* , .NET Core 'da yerleşik olarak bulunan filtrelemeyi temel alır. `LogCategories` Sınıfı, belirli işlevler, Tetikleyiciler veya kullanıcılar için kategoriler tanımlamanıza olanak sağlar. Ayrıca, ve `Startup` `Results`gibi belirli ana bilgisayar durumlarının filtrelerini tanımlar. Bu, günlüğe kaydetme çıkışının ince ayar yapmanıza olanak sağlar. Tanımlı kategorilerde eşleşme bulunmazsa, iletiyi filtrelemeye karar verirken filtre `Default` değere geri döner.
 
-`LogCategories`aşağıdaki leri kullanarak ifade gerektirir:
+`LogCategories`Aşağıdaki using ifadesini gerektirir:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Aşağıdaki örnek, varsayılan olarak tüm günlükleri `Warning` düzeyinde filtreleyen bir filtre oluşturuyor. Ve kategoriler (sürüm `Host.Results` 2'ye eşdeğerdir. `results` `Function` * x*) `Error` düzeyinde süzülür. Filtre, geçerli kategoriyi `LogCategories` örnekteki tüm kayıtlı düzeylerle karşılaştırır ve en uzun eşleşmeyi seçer. Bu, `Debug` eşleşmeler `Host.Triggers` `Host.Triggers.Queue` için kayıtlı `Host.Triggers.Blob`düzeyin veya . Bu, her birini eklemenize gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
+Aşağıdaki örnek, varsayılan olarak tüm günlüklere `Warning` filtre uygulayan bir filtre oluşturur. `Function` Ve `results` kategorileri (sürüm 2 `Host.Results` ' de eşdeğerdir.* x*) `Error` düzeyinde filtrelenmiştir. Filtre geçerli kategoriyi `LogCategories` örnekteki tüm kayıtlı düzeylerine göre karşılaştırır ve en uzun eşleşmeyi seçer. Diğer bir deyişle, `Debug` bu düzeyin eşleşme `Host.Triggers` `Host.Triggers.Queue` için kayıtlı `Host.Triggers.Blob`veya. Bu, her birini eklemeye gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
 
 ```cs
 static async Task Main(string[] args)
@@ -872,11 +872,11 @@ static async Task Main(string[] args)
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Sürüm 2'de. *x* SDK, filtreleme `LogCategoryFilter` denetlemek için sınıf kullanın. Başlangıç `LogCategoryFilter` değeri `Default` olan bir özelliğe sahip olan `Information`, `Information`yani `Warning` `Error`, `Critical` , , , veya düzeylerdeki `Debug` iletilerin günlüğe kaydedildiği, ancak veya düzeylerdeki `Trace` iletilerin filtrelenmiş olması anlamına gelir.
+Sürüm 2 ' de. SDK 'nın *x* ' i, filtrelemeyi denetlemek `LogCategoryFilter` için kullanırsınız. , `LogCategoryFilter` Başlangıç değeri `Default` olan bir özelliğine sahiptir `Information`, yani,, veya `Information` `Warning` `Error` `Critical` düzeylerindeki tüm iletiler günlüğe kaydedilir, ancak `Debug` veya `Trace` düzeylerindeki tüm iletiler dışarıda filtrelenir.
 
-Sürüm `LogCategories` 3'te olduğu gibi. *x*, `CategoryLevels` özellik, günlük çıktıince ayar böylece belirli kategoriler için günlük düzeyleri belirtmenize olanak sağlar. `CategoryLevels` Sözlükte eşleşme bulunmazsa, iletiye filtre uygulayıp filtrelemeyeceğine karar verirken filtre `Default` değere geri döner.
+Sürüm 3 `LogCategories` ' te olduğu gibi. *x*, bu `CategoryLevels` özellik, günlük çıktısını hassas bir şekilde ayarlayabilmeniz için belirli kategoriler için günlük düzeylerini belirtmenize olanak tanır. `CategoryLevels` Sözlük içinde eşleşme bulunmazsa, iletiyi filtrelemeye karar verirken filtre `Default` değere geri döner.
 
-Aşağıdaki örnekte, varsayılan olarak tüm günlükleri düzeyinde `Warning` filtreleyen bir filtre yapılsın. `Function` Ve `Host.Results` kategoriler `Error` düzeyinde filtrelenir. Geçerli `LogCategoryFilter` kategoriyi tüm kayıtlılarla `CategoryLevels` karşılaştırır ve en uzun eşleşmeyi seçer. Yani `Debug` kayıtlı seviye `Host.Triggers` `Host.Triggers.Queue` eşleşecek `Host.Triggers.Blob`ya da . Bu, her birini eklemenize gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
+Aşağıdaki örnek, varsayılan olarak tüm günlüklere `Warning` filtre uygulayan bir filtre oluşturur. `Function` Ve `Host.Results` kategorileri `Error` düzeyinde filtrelenmiştir. Geçerli `LogCategoryFilter` kategoriyi tümü kayıtlı `CategoryLevels` ile karşılaştırır ve en uzun eşleşmeyi seçer. Bu nedenle `Debug` , için `Host.Triggers` kayıtlı olan düzey `Host.Triggers.Queue` , `Host.Triggers.Blob`veya ile eşleşir. Bu, her birini eklemeye gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
 
 ```csharp
 var filter = new LogCategoryFilter();
@@ -890,20 +890,20 @@ config.LoggerFactory = new LoggerFactory()
     .AddConsole(filter.Filter);
 ```
 
-### <a name="custom-telemetry-for-application-insights"></a>Uygulama Öngörüleri için özel telemetri
+### <a name="custom-telemetry-for-application-insights"></a>Application Insights için özel telemetri
 
-[Uygulama Öngörüleri](../azure-monitor/app/app-insights-overview.md) için özel telemetri uygulama işlemi SDK sürümüne bağlıdır. Uygulama Öngörülerini nasıl yapılandırılabildiğini öğrenmek için [bkz.](webjobs-sdk-get-started.md#add-application-insights-logging)
+[Application Insights](../azure-monitor/app/app-insights-overview.md) için özel telemetri uygulama işlemi SDK sürümüne bağlıdır. Application Insights nasıl yapılandırılacağını öğrenmek için bkz. [Application Insights günlüğü ekleme](webjobs-sdk-get-started.md#add-application-insights-logging).
 
 #### <a name="version-3x"></a>Sürüm 3. *x*
 
-Çünkü sürüm 3. *X* WebJobs SDK .NET Core genel ana bilgisayara dayanır, özel bir telemetri fabrikası artık sağlanmaz. Ancak, bağımlılık enjeksiyonu kullanarak boru hattına özel telemetri ekleyebilirsiniz. Bu bölümdeki örnekler aşağıdaki `using` ifadeleri gerektirir:
+3. sürüm. Web Işleri SDK 'sının *x* 'ı .NET Core genel ana bilgisayarına dayanır, artık özel bir telemetri fabrikası sağlanmamıştır. Ancak bağımlılık ekleme kullanarak işlem hattına özel telemetri ekleyebilirsiniz. Bu bölümdeki örneklerde aşağıdaki `using` deyimler gereklidir:
 
 ```cs
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-Aşağıdaki özel uygulama [`ITelemetryInitializer`] varsayılan [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) [`TelemetryConfiguration`]kendi eklemenize olanak sağlar.
+Aşağıdaki özel uygulama, kendi [`ITelemetryInitializer`] [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) varsayılan [`TelemetryConfiguration`]uygulamanıza eklemenizi sağlar.
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -915,7 +915,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 }
 ```
 
-Özel [`ConfigureServices`] inizi boru hattına [`ITelemetryInitializer`] eklemek için oluşturucuyu çağırın.
+Özel [`ConfigureServices`] [`ITelemetryInitializer`] olarak işlem hattına eklemek için oluşturucuyu çağırın.
 
 ```cs
 static async Task Main()
@@ -950,17 +950,17 @@ static async Task Main()
 }
 ```
 
-[`TelemetryConfiguration`] Oluşturulduğunda, tüm kayıtlı türleri [`ITelemetryInitializer`] dahildir. Daha fazla bilgi edinmek [için özel olaylar ve ölçümler için Uygulama Öngörüleri API'sine](../azure-monitor/app/api-custom-events-metrics.md)bakın.
+[`TelemetryConfiguration`] Oluşturulduğunda, tüm kayıtlı türleri dahil [`ITelemetryInitializer`] edilir. Daha fazla bilgi için bkz. [özel olaylar ve ölçümler için Application Insights API 'si](../azure-monitor/app/api-custom-events-metrics.md).
 
-Sürüm 3'te. *x*, artık ana bilgisayar [`TelemetryClient`] durduğunda sifonu çekmeniz gerekmez. .NET Core bağımlılık enjeksiyon sistemi otomatik olarak `ApplicationInsightsLoggerProvider`kayıtlı bertaraf , [`TelemetryClient`]hangi floşlar .
+Sürüm 3 ' te. *x*, artık ana bilgisayar durdurulduğunda temizleme işlemini temizleyemiyor [`TelemetryClient`] . .NET Core bağımlılığı ekleme sistemi, `ApplicationInsightsLoggerProvider` [`TelemetryClient`]kayıtlı olan kaydı otomatik olarak ortadan kaldırır ve bunu temizler.
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Sürüm 2'de. *x,* [`TelemetryClient`] WebJobs SDK için Application Insights sağlayıcısı tarafından [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)dahili olarak oluşturulan kullanır. Application Insights bitiş noktası kullanılamadığında veya gelen istekleri azalttığında, bu kanal [istekleri web uygulamasının dosya sisteminde kaydeder ve daha sonra yeniden gönderir.](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)
+Sürüm 2 ' de. *x*, Web [`TelemetryClient`] işleri SDK 'sı için Application Insights sağlayıcısı tarafından dahili olarak oluşturulan x [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Application Insights uç noktası kullanılamaz veya gelen istekleri azaltdığı zaman, bu kanal [istekleri Web uygulamasının dosya sistemine kaydeder ve daha sonra resubmits](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-Uygular [`TelemetryClient`] bir sınıf tarafından `ITelemetryClientFactory`oluşturulur. Varsayılan olarak, [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)bu.
+, [`TelemetryClient`] Uygulayan `ITelemetryClientFactory`bir sınıf tarafından oluşturulur. Varsayılan olarak, bu ' dir [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
 
-Application Insights ardışık hattının herhangi bir bölümünü değiştirmek istiyorsanız, kendi `ITelemetryClientFactory`'nizi sağlayabilirsiniz ve [`TelemetryClient`]ana bilgisayar sınıfınızı bir . Örneğin, bu kod `DefaultTelemetryClientFactory` bir özelliği değiştirmek `ServerTelemetryChannel`için geçersiz kılar:
+Application Insights işlem hattının herhangi bir bölümünü değiştirmek istiyorsanız, kendinizinkini `ITelemetryClientFactory`sağlayabilirsiniz ve ana bilgisayar, oluşturmak için sınıfınızı kullanır. [`TelemetryClient`] Örneğin, bu kod bir özelliğini `DefaultTelemetryClientFactory` değiştirmek için geçersiz kılar `ServerTelemetryChannel`:
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
@@ -982,9 +982,9 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-Nesne `SamplingPercentageEstimatorSettings` [uyarlanabilir örneklemeyi](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)yapılandırır. Bu, bazı yüksek hacimli senaryolarda Applications Insights'ın seçili bir telemetri veri kümesini sunucuya gönderdiği anlamına gelir.
+`SamplingPercentageEstimatorSettings` Nesne [Uyarlamalı örnekleme](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)yapılandırır. Yani, bazı yüksek hacimli senaryolarda, Application Insights, Telemetri verilerinin seçili bir alt kümesini sunucusuna gönderir.
 
-Telemetri fabrikasını oluşturduktan sonra, uygulama istatistiklerini Uygulama Öngörüleri günlüğe kaydetme sağlayıcısına aktarın:
+Telemetri fabrikası oluşturduktan sonra, Application Insights günlük sağlayıcısına geçitirsiniz:
 
 ```csharp
 var clientFactory = new CustomTelemetryClientFactory(instrumentationKey, filter.Filter);
@@ -995,11 +995,11 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Sonraki adımlar
 
-Bu makalede, Webİşler SDK ile çalışmak için ortak senaryoların nasıl işleyeceğini gösteren kod parçacıkları sağlanmıştır. Tam örnekler için [azure-webjobs-sdk-örneklerine](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost)bakın.
+Bu makale, Web Işleri SDK 'Sı ile çalışmaya yönelik yaygın senaryoları nasıl işleyeceğinizi gösteren kod parçacıkları sağlamıştır. Tam örnekler için bkz. [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-['Yürütme Bağlamı']: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-['TelemetriMüşteri']: /dotnet/api/microsoft.applicationinsights.telemetryclient
-['Yapılandırılan Hizmetler']: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-['TelemetriYapılandırma']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+[' Itelemetrybaşlatıcısı ']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+[' JobHostConfiguration ']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

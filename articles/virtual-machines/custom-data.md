@@ -1,6 +1,6 @@
 ---
-title: Özel veriler ve Azure Sanal Makineleri
-description: Azure Sanal Makinelerde Özel verilerin ve Cloud-Init'in kullanımıyla ilgili ayrıntılar
+title: Özel veriler ve Azure sanal makineleri
+description: Azure sanal makinelerinde özel veriler ve Cloud-Init kullanımıyla ilgili ayrıntılar
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759127"
 ---
-# <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure Sanal Makinelerde Özel Veriler ve Bulut-Init
+# <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure sanal makinelerinde özel veriler ve Cloud-Init
 
 ## <a name="what-is-custom-data"></a>Özel veriler nedir?
 
-Müşteriler genellikle bir komut dosyası veya diğer meta verileri sağlama zamanında microsoft Azure sanal makinesine nasıl enjekte edebileceklerini sorarlar.  Diğer bulutlarda, bu kavram genellikle kullanıcı verileri olarak adlandırılır.  Microsoft Azure'da, özel veri adı verilen benzer bir özelliğimiz vardır. 
+Müşteriler genellikle, sağlama zamanında bir Microsoft Azure sanal makinesine bir betiği veya diğer meta verileri nasıl ekleyebilecekleri hakkında sorun.  Diğer bulutlarda, bu kavram genellikle kullanıcı verileri olarak adlandırılır.  Microsoft Azure, özel veri adlı benzer bir özelliktir. 
 
-Özel veriler sadece ilk önyükleme/ilk kurulum sırasında VM'ye sunulmuştur, biz buna 'sağlama' diyoruz. Sağlama, VM Oluşturma parametrelerinin (örneğin, ana bilgisayar adı, kullanıcı adı, parola, sertifikalar, özel veriler, anahtarlar vb.) VM'nin kullanımına sunulduğu ve [linux aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ve bulut girişi gibi bir sağlama aracısının bunları işlediği bir [işlemdir.](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init) 
+Özel veriler yalnızca ilk önyükleme/ilk kurulum sırasında VM için kullanılabilir hale getirilir, bu ' sağlama ' işlemini çağıracağız. Sağlama, sanal makine oluşturma parametrelerinin (örneğin, ana bilgisayar adı, Kullanıcı adı, parola, sertifikalar, özel veriler, anahtarlar vb.) VM için kullanılabilir hale getirilme işlemidir ve [Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ve [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)gibi bir sağlama Aracısı tarafından işlenir. 
 
 
-## <a name="passing-custom-data-to-the-vm"></a>Özel verileri VM'ye aktarma
-Özel verileri kullanmak için, AZ CLI gibi dönüştürmeyi sizin için yapan bir CLI aracı kullanmıyorsanız, içeriği API'ye geçirmeden önce 64 kodlamalısınız. Boyutu 64 KB'yi geçemez.
+## <a name="passing-custom-data-to-the-vm"></a>Özel verileri VM 'ye geçirme
+Özel verileri kullanmak için, dönüştürme yapan AZ CLı gibi bir CLı Aracı kullanmadığınız sürece, API 'ye geçirmeden önce içerikleri Base64 olarak kodlamanız gerekir. Boyut 64 KB 'ı aşamaz.
 
-CLI'de, özel verilerinizi bir dosya olarak geçirebilirsiniz ve bu veri base64'e dönüştürülür.
+CLı 'da, özel verilerinizi bir dosya olarak geçirebilir ve Base64 'e dönüştürülecektir.
 ```bash
 az vm create \
   --resource-group myResourceGroup \
@@ -36,7 +36,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Azure Kaynak Yöneticisi'nde (ARM) [base64 işlevi](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64)vardır.
+Azure Resource Manager (ARM) içinde, bir [Base64 işlevi](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64)vardır.
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -59,39 +59,39 @@ Azure Kaynak Yöneticisi'nde (ARM) [base64 işlevi](https://docs.microsoft.com/a
 ```
 
 ## <a name="processing-custom-data"></a>Özel verileri işleme
-VM'lere yüklenen sağlama aracıları platformla kesişen ve dosya sistemine yerleştirerek işler. 
+VM 'lerde yüklü olan sağlama aracıları, platformla ve dosya sistemine yerleştirilerek bir arabirim işleme alır. 
 
 ### <a name="windows"></a>Windows
-Özel veriler *%SYSTEMDRIVE%\AzureData\CustomData.bin'e* ikili dosya olarak yerleştirilir, ancak işlenmez. Bu dosyayı işlemek istiyorsanız, özel bir resim oluşturmanız ve CustomData.bin'i işlemek için kod yazmanız gerekir.
+Özel veriler bir ikili dosya olarak *%SYSTEMDRIVE%\AzureData\CustomData.bin* 'e yerleştirilir, ancak işlenmemiştir. Bu dosyayı işlemek isterseniz, özel bir görüntü oluşturmanız ve CustomData. bin işlemek için kod yazmanız gerekir.
 
 ### <a name="linux"></a>Linux  
-Linux OS'lerde, özel veriler ovf-env.xml dosyası üzerinden VM'ye aktarılır ve bu dosya, sağlama sırasında */var/lib/waagent* dizinine kopyalanır.  Microsoft Azure Linux Aracısı'nın yeni sürümleri de base64 kodlanmış verileri kolaylık sağlamak için */var/lib/waagent/CustomData'ya* kopyalar.
+Linux IŞLETIM sisteminde, özel veriler VM 'ye, sağlama sırasında */var/lib/waagent* dizinine kopyalanmış olan ovf-env. xml dosyası aracılığıyla geçirilir.  Microsoft Azure Linux aracısının daha yeni sürümleri, Base64 kodlamalı verileri de */var/lib/waagent/CustomData dizinine* kopyalar ve kolaylık sağlar.
 
-Azure şu anda iki sağlama aracısı destekler:
-* Linux Agent - Varsayılan olarak aracı özel verileri işlemez, etkin özel bir görüntü oluşturmak gerekir. [Belgelere](https://github.com/Azure/WALinuxAgent#configuration) göre ilgili ayarlar şunlardır:
-    * Provisioning.DecodeCustomData
-    * Provisioning.ExecuteCustomData
+Azure Şu anda iki sağlama aracısını desteklemektedir:
+* Linux Aracısı-varsayılan olarak aracı özel verileri işlemez, etkin olan özel bir görüntü oluşturmanız gerekir. [Belgelere](https://github.com/Azure/WALinuxAgent#configuration) göre ilgili ayarlar şunlardır:
+    * . DecodeCustomData sağlama
+    * Sağlama. ExecuteCustomData
 
-Özel verileri etkinleştirdiğinizde ve bir komut dosyası çalıştırdığınızda, hazır olan VM raporlamasını veya komut dosyası tamamlanana kadar sağlamanın başarılı olduğunu geciktirir. Komut dosyası 40 dakika toplam VM sağlama süresi ödeneği aşarsa, VM Oluşturma başarısız olur. Not, komut dosyası yürütmek için başarısız olursa veya yürütme sırasında hatalar, bu önemli bir sağlama hatası olarak kabul edilmez, komut dosyasının tamamlanma durumu için sizi uyarmak için bir bildirim yolu oluşturmanız gerekir.
+Özel verileri etkinleştirdiğinizde ve bir betiği yürüttüğünüzde, bu, hazırlama işlemi olan VM raporlanmasını erteleyebilir veya komut dosyası tamamlanana kadar sağlama başarılı olur. Betik 40 dakikalık toplam VM sağlama süresi indirimini aşarsa, VM oluşturma başarısız olur. Not, komut dosyası yürütülemezse veya yürütme sırasında hatalar ortaya çıkarsa, önemli bir sağlama hatası kabul edilmez, betiğin tamamlanma durumu için sizi uyarmak üzere bir bildirim yolu oluşturmanız gerekecektir.
 
-Özel veri yürütme sorunu gidermek için , gözden */var/log/waagent.log*
+Özel veri yürütme sorunlarını gidermek için */var/log/waagent.log* inceleyin
 
-* cloud-init - Varsayılan olarak varsayılan olarak özel verileri işleyecek, cloud-init bulut init yapılandırması, komut dosyaları vb. gibi [birden çok](https://cloudinit.readthedocs.io/en/latest/topics/format.html) özel veri biçimini kabul eder. Linux Agent'ına benzer şekilde, bulut init özel verileri işler. Yapılandırma işleme veya komut dosyası yürütülmesi sırasında hatalar varsa, bu önemli bir sağlama hatası olarak kabul edilmez ve komut dosyasının tamamlanma durumu için sizi uyarmak için bir bildirim yolu oluşturmanız gerekir. Ancak, Linux Agent farklı, bulut-init VM hazır olduğunu platforma raporlama önce tamamlamak için kullanıcı özel veri yapılandırmaları beklemez. Azure'da bulut-init hakkında daha fazla bilgi için [belgeleri](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)inceleyin.
+* Cloud-init varsayılan olarak özel verileri varsayılan olarak işler, Cloud-init, bulut-init yapılandırması, betikler vb. gibi özel verilerin [birden çok biçimini](https://cloudinit.readthedocs.io/en/latest/topics/format.html) kabul eder. Linux aracısına benzer ve Cloud-init özel verileri işler. Yapılandırma işleminin veya betiklerin yürütülmesi sırasında hatalar oluşursa, önemli bir sağlama hatası değildir ve betiğin tamamlanma durumu için sizi uyarmak üzere bir bildirim yolu oluşturmanız gerekir. Ancak, Linux aracısıyla farklı olarak, Cloud-init, Kullanıcı özel veri yapılandırmalarının VM 'ye hazırlanmadan önce tamamlanmasını beklemez. Azure 'da Cloud-init hakkında daha fazla bilgi için [belgeleri](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)gözden geçirin.
 
 
-Özel veri yürütme sorun larını gidermek için sorun giderme [belgelerini](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)gözden geçirin.
+Özel veri yürütme sorunlarını gidermek için sorun giderme [belgelerini](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)gözden geçirin.
 
 
 ## <a name="faq"></a>SSS
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM oluşturulduktan sonra özel verileri güncelleştirebilir miyim?
-Tek VM'ler için, VM modelindeki özel veriler güncelleştirilemez, ancak VMSS için, REST API (PS veya AZ CLI istemcileri için geçerli değildir) aracılığıyla VMSS özel verilerini güncelleştirebilirsiniz. VMSS modelinde özel verileri güncelleştirdiğinizde:
-* VMSS'deki varolan örnekler, yalnızca yeniden görüntülenene kadar güncelleştirilmiş özel verileri almaz.
-* VMSS'de yükseltilen varolan örnekler güncelleştirilmiş özel verileri almaz.
+Tek VM 'Lerde, VM modelindeki özel veriler güncelleştirilemez, ancak VMSS için, REST API aracılığıyla VMSS özel verilerini güncelleştirebilirsiniz (PS veya AZ CLı istemcileri için geçerli değildir). VMSS modelinde özel verileri güncelleştirdiğinizde:
+* VMSS 'deki mevcut örnekler, yalnızca yeniden yansıma oluşturuluncaya kadar güncelleştirilmiş özel verileri almaz.
+* VMSS yükseltilen mevcut örnekler güncelleştirilmiş özel verileri almaz.
 * Yeni örnekler yeni özel verileri alır.
 
-### <a name="can-i-place-sensitive-values-in-custom-data"></a>Hassas değerleri özel verilere yerleştirebilir miyim?
-Hassas verileri özel verilerde **depolamamanızı** tavsiye ederiz. Daha fazla bilgi için [Azure Güvenlik ve şifreleme en iyi uygulamaları](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices)görün.
+### <a name="can-i-place-sensitive-values-in-custom-data"></a>Gizli değerleri özel verilere ekleyebilir miyim?
+Gizli verileri **not** özel verilerde depolamadığımğiz. Daha fazla bilgi için bkz. [Azure Güvenlik ve şifreleme en iyi uygulamaları](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices).
 
 
-### <a name="is-custom-data-made-available-in-imds"></a>ÖZEL veriler IMDS'de kullanılabilir mi?
+### <a name="is-custom-data-made-available-in-imds"></a>Özel veriler IMDS 'de kullanıma sunuldu mu?
 Hayır, bu özellik şu anda kullanılamıyor.

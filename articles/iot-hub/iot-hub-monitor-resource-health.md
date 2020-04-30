@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub'ınızın sistem durumunu izleyin | Microsoft Dokümanlar
-description: IoT Hub'ınızı izlemek ve sorunları hızlı bir şekilde tanılamak için Azure Monitörü ve Azure Kaynak Durumu'nun kullanımını kullanın
+title: Azure IoT Hub sistem durumunu izleyin | Microsoft Docs
+description: IoT Hub izlemek ve sorunları hızla tanılamak için Azure Izleyici ve Azure Kaynak Durumu kullanın
 author: kgremban
 manager: philmea
 ms.service: iot-hub
@@ -10,45 +10,45 @@ ms.date: 11/11/2019
 ms.author: kgremban
 ms.custom: amqp
 ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732439"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub durumunu izleyin ve sorunları hızla tanılayın
 
-Azure IoT Hub'ını uygulayan işletmeler kaynaklarından güvenilir performans bekler. IoT Hub, işlemlerinizi yakından izlemenize yardımcı olmak için [Azure Monitor](../azure-monitor/index.yml) ve [Azure Kaynak Durumu](../service-health/resource-health-overview.md)ile tamamen entegre edilmiştir. Bu iki hizmet, IoT çözümlerinizi sağlıklı bir durumda çalışır durumda tutmak için ihtiyacınız olan verileri sağlamak için çalışır.
+Azure IoT Hub uygulayan işletmeler, kaynaklarından güvenilir performans bekler. Operasyonlarınızın yakından bir izlemesini korumanıza yardımcı olmak için IoT Hub [Azure izleyici](../azure-monitor/index.yml) ve [Azure Kaynak durumu](../service-health/resource-health-overview.md)ile tamamen tümleşiktir. Bu iki hizmet, IoT çözümlerinizi sağlıklı bir durumda tutmanız için ihtiyacınız olan verileri size sağlamak üzere çalışır.
 
-Azure Monitor, tüm Azure hizmetleriniz için tek bir izleme ve günlüğe kaydetme kaynağıdır. Azure Monitor'un oluşturduğu tanı günlüklerini özel işleme için Azure Monitor günlüklerine, Etkinlik Hub'larına veya Azure Depolama'ya gönderebilirsiniz. Azure Monitor'un ölçüm ve tanılama ayarları, kaynaklarınızın performansında görünürlük sağlar. IoT hub'ınızla Azure Monitör'ü nasıl [kullanacağınızı](#use-azure-monitor) öğrenmek için bu makaleyi okumaya devam edin. 
+Azure Izleyici, tüm Azure hizmetlerinizin tek bir izleme ve günlüğe kaydetme kaynağıdır. Azure Izleyici 'nin oluşturduğu tanılama günlüklerini özel işleme için Azure Izleyici günlüklerine, Event Hubs veya Azure depolama 'ya gönderebilirsiniz. Azure Izleyici 'nin ölçümleri ve Tanılama ayarları, kaynaklarınızın performansına ilişkin görünürlük sağlar. [Azure izleyici](#use-azure-monitor) 'yi IoT Hub 'ınızla nasıl kullanacağınızı öğrenmek için bu makaleyi okumaya devam edin. 
 
 > [!IMPORTANT]
-> Azure Monitor tanı günlüklerini kullanarak IoT Hub hizmeti tarafından yayılan olayların güvenilir veya düzenli olduğu garanti edilmez. Bazı olaylar kaybolabilir veya sıra dışı teslim edilebilir. Tanılama günlüklerinin gerçek zamanlı olması da beklenmiyor ve olayların seçtiğiniz hedefe kaydedilmesi birkaç dakika sürebilir.
+> Azure Izleyici tanılama günlüklerini kullanarak IoT Hub hizmeti tarafından yayılan olayların güvenilir veya sıralı olması garanti edilmez. Bazı olaylar kaybolmuş veya sıra dışında teslim edilebilir. Tanılama günlükleri de gerçek zamanlı olarak değildir ve olayların seçtiğiniz hedefe eklenmesi birkaç dakika sürebilir.
 
-Azure Kaynak Durumu, bir Azure sorunu kaynaklarınızı etkilediğinde tanılamanıza ve destek almanıza yardımcı olur. Pano, IoT hub'larınızın her biri için geçerli ve geçmiş sistem durumu durumu sağlar. IoT hub'ınızla Azure Kaynak Durumu'nu nasıl [kullanacağınızı](#use-azure-resource-health) öğrenmek için bu makalenin altındaki bölüme devam edin. 
+Azure Kaynak Durumu, kaynaklarınızı etkileyen bir Azure sorunu tanılamanıza ve destek almanıza yardımcı olur. Bir Pano, IoT Hub 'larınızın her biri için geçerli ve geçmiş sistem durumu sağlar. IoT Hub 'ınızla [Azure Kaynak durumu kullanmayı](#use-azure-resource-health) öğrenmek için bu makalenin altındaki bölümüne ilerleyin. 
 
-IoT Hub, IoT kaynaklarınızın durumunu anlamak için kullanabileceğiniz kendi ölçümlerini de sağlar. Daha fazla bilgi için [Bkz. IoT Hub ölçümlerini anlayın.](iot-hub-metrics.md)
+IoT Hub, IoT kaynaklarınızın durumunu anlamak için kullanabileceğiniz kendi ölçümlerini da sağlar. Daha fazla bilgi için bkz. [IoT Hub ölçümleri anlama](iot-hub-metrics.md).
 
 ## <a name="use-azure-monitor"></a>Azure İzleyici’yi kullanma
 
-Azure Monitor, Azure kaynakları için tanılama bilgileri sağlar, bu da IoT hub'ınızda gerçekleşen işlemleri izleyebileceğiniz anlamına gelir.
+Azure Izleyici, Azure kaynakları için tanılama bilgileri sağlar. Bu, IoT Hub 'ınız içinde gerçekleşen işlemleri izleyebilmeniz anlamına gelir.
 
-Azure Monitor'un tanılama ayarları, IoT Hub işlemleri monitörünyerini alır. Şu anda işlem izleme kullanıyorsanız, iş akışlarınızı geçirmeniz gerekir. Daha fazla bilgi için bkz: [Operasyon izlemeden tanılama ayarlarına geçir.](iot-hub-migrate-to-diagnostics-settings.md)
+Azure Izleyici 'nin Tanılama ayarları IoT Hub işlemler izleyicisinin yerini alır. Şu anda işlem izlemeyi kullanıyorsanız, iş akışlarınızı geçirmeniz gerekir. Daha fazla bilgi için bkz. [Operations Monitoring 'tan tanılama ayarlarına geçiş](iot-hub-migrate-to-diagnostics-settings.md).
 
-Azure Monitor'un izlediği belirli ölçümler ve etkinlikler hakkında daha fazla bilgi edinmek için Azure Monitor ve [Desteklenen hizmetler, şemalar ve Azure Tanı Günlükleri için kategorileriçeren](../azure-monitor/platform/diagnostic-logs-schema.md) [Desteklenen ölçümlere](../azure-monitor/platform/metrics-supported.md) bakın.
+Azure Monitor 'un izleyen belirli ölçümler ve olaylar hakkında daha fazla bilgi edinmek için bkz. Azure [izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md) ve [Azure tanılama günlükleri için desteklenen hizmetler, şemalar ve Kategoriler](../azure-monitor/platform/diagnostic-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
 ### <a name="understand-the-logs"></a>Günlükleri anlama
 
-Azure Monitor, IoT Hub'da gerçekleşen farklı işlemleri izler. Her kategoride, bu kategorideki olayların nasıl raporlandığını tanımlayan bir şema vardır.
+Azure Izleyici, IoT Hub oluşan farklı işlemleri izler. Her kategorinin, bu kategorideki olayların nasıl raporlandığını tanımlayan bir şeması vardır.
 
 #### <a name="connections"></a>Bağlantılar
 
-Bağlantılar kategorisi, aygıt bağlantısını izler ve olayları bir IoT hub'ından ve hataların bağlantısını keser. Bu kategori, yetkisiz bağlantı girişimlerini tanımlamak ve aygıtlara bağlantınızı kaybettiğinde uyarmak için yararlıdır.
+Bağlantılar kategorisi, cihaz bağlantısını ve bir IoT Hub 'ından olayları ve bağlantı kesmeyi izler. Bu kategori, cihazların bağlantısını kaybettiyseniz yetkisiz bağlantı girişimlerini belirlemek ve veya uyarma için faydalıdır.
 
 > [!NOTE]
-> Aygıtların güvenilir bağlantı durumu için [Aygıt sinyalatışını](iot-hub-devguide-identity-registry.md#device-heartbeat)kontrol edin.
+> Cihazların güvenilir bağlantı durumu için [cihaz sinyalini](iot-hub-devguide-identity-registry.md#device-heartbeat)denetleyin.
 
 ```json
 {
@@ -67,15 +67,15 @@ Bağlantılar kategorisi, aygıt bağlantısını izler ve olayları bir IoT hub
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Bulut-aygıt komutları
+#### <a name="cloud-to-device-commands"></a>Buluttan cihaza komutlar
 
-Buluttan aygıta komutlar kategorisi, IoT hub'ında oluşan hataları izler ve buluttan aygıta ileti ardışık ardışık olayla ilişkilidir. Bu kategori, şunlardan kaynaklanan hataları içerir:
+Buluttan cihaza komutlar kategorisi, IoT Hub 'ında oluşan ve buluttan cihaza ileti işlem hattı ile ilgili hataları izler. Bu kategori, şuradan oluşan hataları içerir:
 
-* Buluttan aygıta ileti gönderme (yetkisiz gönderen hataları gibi),
-* Buluttan aygıta iletiler alma (teslim sayısı aşıldı hataları gibi) ve
-* Buluttan cihaza ileti geri bildirimi alma (süresi dolmuş geri bildirim hataları gibi).
+* Buluttan cihaza iletileri gönderme (yetkisiz gönderen hatalar gibi),
+* Buluttan cihaza iletileri alma (örneğin, teslim sayısı aşıldı hataları) ve
+* Buluttan cihaza ileti geri bildirimi alma (geri bildirim süre sonu hataları gibi).
 
-Bu kategori, buluttan aygıta ileti başarılı bir şekilde teslim edildiğinde hataları yakalamaz, ancak aygıt tarafından yanlış şekilde işlenir.
+Bu kategori, buluttan cihaza ileti başarıyla teslim edildiğinde, ancak cihaz tarafından yanlış işlenirse hataları yakalamaz.
 
 ```json
 {
@@ -96,9 +96,9 @@ Bu kategori, buluttan aygıta ileti başarılı bir şekilde teslim edildiğinde
 }
 ```
 
-#### <a name="device-identity-operations"></a>Cihaz kimlik işlemleri
+#### <a name="device-identity-operations"></a>Cihaz kimliği işlemleri
 
-Aygıt kimlik işlemleri kategorisi, IoT hub'ınızın kimlik kayıt defterinde bir giriş oluşturmaya, güncelleştirmeye veya silmeye çalıştığınızda oluşan hataları izler. Bu kategoriyi izlemek, senaryoları sağlamada yararlıdır.
+Cihaz kimliği işlemler kategorisi, IoT Hub 'ının kimlik kayıt defterinde bir girişi oluşturmaya, güncelleştirmeye veya silmeye çalıştığınızda oluşan hataları izler. Bu kategoriyi izlemek, senaryoları sağlamak için faydalıdır.
 
 ```json
 {
@@ -121,13 +121,13 @@ Aygıt kimlik işlemleri kategorisi, IoT hub'ınızın kimlik kayıt defterinde 
 
 #### <a name="routes"></a>Yollar
 
-İleti yönlendirme kategorisi, ileti rotası değerlendirmesi ve uç nokta durumu sırasında ioT Hub tarafından algılanan hataları izler. Bu kategori, şunlar gibi olayları içerir:
+İleti yönlendirme kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
 
-* Bir kural "tanımsız" olarak değerlendirir,
-* IoT Hub ölü olarak bir bitiş noktası işaretler, ya da
-* Bitiş noktasından alınan hatalar. 
+* Bir kural "tanımsız" olarak değerlendirilir,
+* IoT Hub bir uç noktayı ölü olarak işaretler veya
+* Bir uç noktadan alınan hatalar. 
 
-Bu kategori, "aygıt telemetrisi" kategorisi altında bildirilen iletilerin kendileri (aygıt azaltma hataları gibi) ile ilgili belirli hataları içermez.
+Bu kategori, "cihaz telemetrisi" kategorisi altında bildirilen iletiler hakkındaki belirli hataları (cihaz azaltma hataları gibi) içermez.
 
 ```json
 {
@@ -148,7 +148,7 @@ Bu kategori, "aygıt telemetrisi" kategorisi altında bildirilen iletilerin kend
 
 #### <a name="device-telemetry"></a>Cihaz telemetrisi
 
-Aygıt telemetri seçimleri kategorisi, IoT hub' ında meydana gelen ve telemetri ardısıyla ilgili hataları izler. Bu kategori, telemetri olayları gönderirken (azaltma gibi) ve telemetri olayları (yetkisiz okuyucu gibi) alırken oluşan hataları içerir. Bu kategori, aygıtın kendisinde çalışan koddan kaynaklanan hataları yakalayamıyor.
+Cihaz telemetri kategorisi, IoT Hub 'ında oluşan hataları izler ve telemetri işlem hattı ile ilgilidir. Bu kategori telemetri olayları gönderilirken (daraltma gibi) ve telemetri olaylarının (yetkisiz okuyucu gibi) alınması sırasında oluşan hataları içerir. Bu kategori, cihazın kendisinde çalışan kodun neden olduğu hataları yakalayamaz.
 
 ```json
 {
@@ -171,15 +171,15 @@ Aygıt telemetri seçimleri kategorisi, IoT hub' ında meydana gelen ve telemetr
 
 #### <a name="file-upload-operations"></a>Dosya karşıya yükleme işlemleri
 
-Dosya yükleme kategorisi, IoT hub'ında oluşan hataları izler ve dosya yükleme işleviyle ilgilidir. Bu kategori şunları içerir:
+Karşıya dosya yükleme kategorisi, IoT Hub 'ında oluşan ve karşıya dosya yükleme işlevselliğiyle ilgili hataları izler. Bu kategori şunları içerir:
 
-* SAS URI ile oluşan hatalar ( örneğin, aygıtın tamamlanmış yükleme nin hub'ını bildiriminde önce süresi dolduğunda olduğu gibi.
+* Bir cihazın, tamamlanmış bir karşıya yükleme merkezine bildirim göndermeden önce ne zaman dolacağını belirten SAS URI 'SI ile oluşan hatalar.
 
-* Aygıt tarafından bildirilen başarısız yüklemeler.
+* Cihaz tarafından raporlanan karşıya yüklemeler başarısız oldu.
 
-* IoT Hub bildirim iletisi oluşturma sırasında depolama alanında bir dosya bulunamadığında oluşan hatalar.
+* IoT Hub bildirim iletisi oluşturma sırasında depolamada bir dosya bulunamadığında oluşan hatalar.
 
-Bu kategori, aygıt bir dosyayı depolama alanına yüklerken doğrudan oluşan hataları yakalayamaz.
+Bu kategori, cihaz bir dosyayı depoya yüklerken doğrudan oluşan hataları yakalayamaz.
 
 ```json
 {
@@ -201,9 +201,9 @@ Bu kategori, aygıt bir dosyayı depolama alanına yüklerken doğrudan oluşan 
 }
 ```
 
-#### <a name="cloud-to-device-twin-operations"></a>Bulut-aygıtikiz işlemleri
+#### <a name="cloud-to-device-twin-operations"></a>Buluttan cihaza ikizi işlemleri
 
-Bulut-aygıta çift işlemler kategorisi, aygıt ikizleri üzerinde hizmet tarafından başlatılan olayları izler. Bu işlemler ikiz alma, güncelleştirme veya etiketleri değiştirme ve istenen özellikleri güncelleştirmeyi veya değiştirmeyi içerebilir.
+Buluttan cihaza ikizi Operations kategorisi, cihaz ikizlerinin hizmet tarafından başlatılan olaylarını izler. Bu işlemler, Get ikizi, etiketleri güncelleştirebilir veya değiştirebilir ve istenen özellikleri güncelleştirebilir veya değiştirebilir.
 
 ```json
 {
@@ -223,9 +223,9 @@ Bulut-aygıta çift işlemler kategorisi, aygıt ikizleri üzerinde hizmet taraf
 }
 ```
 
-#### <a name="device-to-cloud-twin-operations"></a>Aygıt-buluta ikiz işlemleri
+#### <a name="device-to-cloud-twin-operations"></a>Cihazdan buluta ikizi işlemleri
 
-Aygıt-buluta ikiz işlemler kategorisi, aygıt ikizleri üzerinde aygıt tarafından başlatılan olayları izler. Bu işlemler ikiz almak, bildirilen özellikleri güncelleştirmek ve istenen özelliklere abone içerebilir.
+Cihazdan buluta ikizi Operations kategorisi cihaz ikizlerinin cihaz tarafından başlatılan olaylarını izler. Bu işlemler Get ikizi, bildirilen özellikleri güncelleştirebilir ve istenen özelliklere abone olabilir.
 
 ```json
 {
@@ -245,9 +245,9 @@ Aygıt-buluta ikiz işlemler kategorisi, aygıt ikizleri üzerinde aygıt taraf�
 }
 ```
 
-#### <a name="twin-queries"></a>İkiz sorgular
+#### <a name="twin-queries"></a>İkizi sorguları
 
-İkiz sorgular kategorisi, bulutta başlatılan aygıt ikizlerine yönelik sorgu isteklerini bildirir.
+İkizi, bulutta başlatılan cihaz TWINS 'e yönelik sorgu istekleri hakkında rapor raporlar.
 
 ```json
 {
@@ -269,7 +269,7 @@ Aygıt-buluta ikiz işlemler kategorisi, aygıt ikizleri üzerinde aygıt taraf�
 
 #### <a name="jobs-operations"></a>İş işlemleri
 
-İş işlemleri kategorisi, aygıt ikizlerini güncelleştirmek veya birden çok cihazda doğrudan yöntemler çağırmak için iş isteklerini bildirir. Bu istekler bulutta başlatılır.
+İş istekleri kategorisi, cihaz iklerini güncelleştirmek veya birden çok cihazda doğrudan yöntemleri çağırmak için iş istekleri hakkında rapor sağlar. Bu istekler bulutta başlatılır.
 
 ```json
 {
@@ -291,7 +291,7 @@ Aygıt-buluta ikiz işlemler kategorisi, aygıt ikizleri üzerinde aygıt taraf�
 
 #### <a name="direct-methods"></a>Doğrudan Yöntemler
 
-Doğrudan yöntemler kategorisi, tek tek aygıtlara gönderilen istek-yanıt etkileşimlerini izler. Bu istekler bulutta başlatılır.
+Doğrudan Yöntemler kategorisi, bireysel cihazlara gönderilen istek-yanıt etkileşimlerini izler. Bu istekler bulutta başlatılır.
 
 ```json
 {
@@ -311,15 +311,15 @@ Doğrudan yöntemler kategorisi, tek tek aygıtlara gönderilen istek-yanıt etk
 }
 ```
 
-#### <a name="distributed-tracing-preview"></a>Dağıtılmış İzleme (Önizleme)
+#### <a name="distributed-tracing-preview"></a>Dağıtılmış Izleme (Önizleme)
 
-Dağıtılmış izleme kategorisi, izleme bağlamı üstbilgisini taşıyan iletilerin korelasyon iliklerini izler. Bu günlükleri tam olarak etkinleştirmek için, istemci tarafı kodu Çözümle'yi izleyerek güncelleştirilmeli [ve IoT Hub dağıtılmış izleme (önizleme) ile IoT uygulamalarını uçtan uca](iot-hub-distributed-tracing.md)tanılamalıdır.
+Dağıtılmış izleme kategorisi, izleme bağlam üstbilgisini taşıyan iletiler için bağıntı kimliklerini izler. Bu günlükleri tam olarak etkinleştirmek için, istemci tarafı kodu, [IoT Hub dağıtılmış izleme (Önizleme) ile uçtan uca olan IoT uygulamalarını çözümleyin ve tanılayın](iot-hub-distributed-tracing.md).
 
-`correlationId` [W3C İzleme Bağlamı](https://github.com/w3c/trace-context) önerisine uygun olduğunu unutmayın, burada `trace-id` `span-id`bir de .
+[W3C Trace bağlam](https://github.com/w3c/trace-context) teklifine, ve ' a ve ' `trace-id` a sahip olduğunu `span-id` `correlationId` unutmayın.
 
-##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (aygıt-bulut) günlükleri
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (cihazdan buluta) günlükleri
 
-IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub'a geldiğinde bu günlüğü kaydeder.
+IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub geldiğinde bu günlüğü kaydeder.
 
 ```json
 {
@@ -342,18 +342,18 @@ IoT Hub, geçerli izleme özellikleri içeren bir ileti IoT Hub'a geldiğinde bu
 }
 ```
 
-Burada, `durationMs` IoT Hub'ın saati aygıt saati ile eşitlenmemiş olabileceğinden hesaplanmaz ve böylece bir süre hesaplaması yanıltıcı olabilir. Aygıt-bulut gecikmesi ndeki ani artışları yakalamak için `properties` bölümdeki zaman damgalarını kullanarak mantık yazmanızı öneririz.
+Burada, `durationMs` IoT Hub saatinin cihaz saatiyle eşitlenmiş olmaması ve bu nedenle bir süre hesaplamasının yanıltıcı olması için hesaplanmaz. Cihazdan buluta gecikme süresini yakalamak için `properties` bölümündeki zaman damgalarını kullanarak mantık yazma öneririz.
 
 | Özellik | Tür | Açıklama |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **messageBoyut** | Tamsayı | Baytlarda aygıttan buluta iletinin boyutu |
-| **deviceId** | ASCII 7-bit alfasayısal karakter dizesi | Aygıtın kimliği |
-| **arayanLocalTimeUtc** | UTC zaman damgası | Aygıt yerel saat tarafından bildirilen iletinin oluşturma süresi |
-| **calleeLocalTimeUtc** | UTC zaman damgası | IoT Hub hizmet yan saati tarafından bildirilen IoT Hub'ın ağ geçidine ileti varış saati |
+| **messageSize** | Tamsayı | Cihazdan buluta iletinin bayt cinsinden boyutu |
+| **deviceId** | ASCII 7 bit alfasayısal karakter dizesi | Cihazın kimliği |
+| **callerLocalTimeUtc** | UTC zaman damgası | Cihazın yerel saat tarafından raporlanan Oluşturulma saati |
+| **calleeLocalTimeUtc** | UTC zaman damgası | IoT Hub ağ geçidinde ileti alma zamanı IoT Hub hizmet tarafı saatine göre bildirildi |
 
-##### <a name="iot-hub-ingress-logs"></a>IoT Hub giriş günlükleri
+##### <a name="iot-hub-ingress-logs"></a>Giriş günlüklerini IoT Hub
 
-IoT Hub, geçerli izleme özellikleri içeren ileti dahili veya yerleşik Olay Hub'ına yazdığında bu günlüğü kaydeder.
+IoT Hub, geçerli izleme özellikleri içeren ileti iç veya yerleşik Olay Hub 'ına yazdığında bu günlüğü kaydeder.
 
 ```json
 {
@@ -376,16 +376,16 @@ IoT Hub, geçerli izleme özellikleri içeren ileti dahili veya yerleşik Olay H
 }
 ```
 
-`properties` Bölümde, bu günlük ileti girişi hakkında ek bilgiler içerir.
+`properties` Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
 | Özellik | Tür | Açıklama |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEtkin** | Dize | Doğru veya yanlış, IoT Hub'ında ileti yönlendirmesinin etkin olup olmadığını gösterir |
-| **ebeveynSpanId** | Dize | Bu durumda D2C iletisi izleme olacak ana iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
+| **isRoutingEnabled** | Dize | True veya false, IoT Hub ileti yönlendirmenin etkin olup olmadığını gösterir |
+| **Parentspanıd** | Dize | Bu durumda D2C ileti izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
 
-##### <a name="iot-hub-egress-logs"></a>IoT Hub çıkış günlükleri
+##### <a name="iot-hub-egress-logs"></a>Çıkış günlüklerini IoT Hub
 
-Yönlendirme [etkinleştirildiğinde](iot-hub-devguide-messages-d2c.md) ve ileti [bitiş noktasına](iot-hub-devguide-endpoints.md)yazıldığında IoT Hub bu günlüğü kaydeder. Yönlendirme etkin değilse, IoT Hub bu günlüğü kaydetmez.
+IoT Hub [yönlendirme](iot-hub-devguide-messages-d2c.md) etkinken ve ileti bir [uç noktaya](iot-hub-devguide-endpoints.md)yazıldığında bu günlüğü kaydeder. Yönlendirme etkinleştirilmemişse IoT Hub bu günlüğü kaydetmez.
 
 ```json
 {
@@ -408,17 +408,17 @@ Yönlendirme [etkinleştirildiğinde](iot-hub-devguide-messages-d2c.md) ve ileti
 }
 ```
 
-`properties` Bölümde, bu günlük ileti girişi hakkında ek bilgiler içerir.
+`properties` Bölümünde, bu günlük ileti girişi hakkında ek bilgiler içerir.
 
 | Özellik | Tür | Açıklama |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | Dize | Yönlendirme bitiş noktasının adı |
-| **endpointType** | Dize | Yönlendirme bitiş noktasının türü |
-| **ebeveynSpanId** | Dize | Bu durumda IoT Hub giriş iletisi izleme olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
+| **Uçnoktaadı** | Dize | Yönlendirme uç noktasının adı |
+| **endpointType** | Dize | Yönlendirme uç noktasının türü |
+| **Parentspanıd** | Dize | Bu durumda IoT Hub giriş iletisi izlemesi olacak üst iletinin [yayılma kimliği](https://w3c.github.io/trace-context/#parent-id) |
 
 #### <a name="configurations"></a>Yapılandırmalar
 
-IoT Hub yapılandırma günlükleri, Otomatik Aygıt Yönetimi özellik kümesi için olayları ve hataları izler.
+IoT Hub yapılandırma günlükleri, otomatik cihaz yönetimi özellik kümesi için olayları ve hataları izler.
 
 ```json
 {
@@ -440,9 +440,9 @@ IoT Hub yapılandırma günlükleri, Otomatik Aygıt Yönetimi özellik kümesi 
 }
 ```
 
-### <a name="device-streams-preview"></a>Aygıt Akışları (Önizleme)
+### <a name="device-streams-preview"></a>Cihaz akışları (Önizleme)
 
-Aygıt akışı kategorisi, tek tek aygıtlara gönderilen istek-yanıt etkileşimlerini izler.
+Cihaz akışları kategorisi, bireysel cihazlara gönderilen istek-yanıt etkileşimlerini izler.
 
 ```json
 {
@@ -464,9 +464,9 @@ Aygıt akışı kategorisi, tek tek aygıtlara gönderilen istek-yanıt etkileş
 }
 ```
 
-### <a name="read-logs-from-azure-event-hubs"></a>Azure Etkinlik Hub'larından günlükleri okuma
+### <a name="read-logs-from-azure-event-hubs"></a>Azure Event Hubs günlüklerini okuyun
 
-Tanılama ayarları nda olay günlüğe kaydetmeyi ayarladıktan sonra, günlükleri okuyan uygulamalar oluşturabilir, böylece bu ayarlardaki bilgilere göre işlem yapabilirsiniz. Bu örnek kod, bir olay merkezinden günlükleri alır:
+Tanılama ayarları aracılığıyla olay günlüğü ayarladıktan sonra, içerdikleri bilgilere göre işlem yapabilmeniz için günlükleri okuyan uygulamalar oluşturabilirsiniz. Bu örnek kod, bir olay hub 'ından günlükleri alır:
 
 ```csharp
 class Program
@@ -533,23 +533,23 @@ class Program
 }
 ```
 
-## <a name="use-azure-resource-health"></a>Azure Kaynak Durumu'nun kullanımı
+## <a name="use-azure-resource-health"></a>Azure Kaynak Durumu kullan
 
-IoT hub'ınızın çalışır durumda olup olmadığını izlemek için Azure Kaynak Durumu'nun kullanımını kullanın. Bölgesel bir kesintinin IoT hub'ınızın sağlığını etkileyip etkilemediğini de öğrenebilirsiniz. Azure IoT Hub'ınızın sistem durumu yla ilgili belirli ayrıntıları anlamak için [Azure Monitörü kullanmanızı](#use-azure-monitor)öneririz.
+IoT Hub 'ınızın çalışır duruma yapılıp yapılmayacağını izlemek için Azure Kaynak Durumu kullanın. Ayrıca, bir bölgesel kesintide IoT Hub 'ınızın sistem durumunu etkileyip etkilemediğini de öğrenebilirsiniz. Azure IoT Hub sistem durumu hakkında belirli ayrıntıları anlamak için [Azure Izleyici kullanmanızı](#use-azure-monitor)öneririz.
 
-Azure IoT Hub,sağlık durumunu bölgesel düzeyde gösterir. Bölgesel bir kesinti IoT hub'ınızı etkiliyorsa, sistem durumu **Bilinmiyor**olarak gösterir. Daha fazla bilgi edinmek için [Azure kaynak sağlığında Kaynak türleri ve sistem durumu denetimlerine](../service-health/resource-health-checks-resource-types.md)bakın.
+Azure IoT Hub, bölgesel düzeyde sistem durumunu gösterir. Bir bölgesel kesinti IoT Hub 'ınızı etkileirse sistem durumu **bilinmiyor**olarak görünür. Daha fazla bilgi edinmek için bkz. [Azure Kaynak durumu 'Nda kaynak türleri ve durum denetimleri](../service-health/resource-health-checks-resource-types.md).
 
-IoT hub'larınızın durumunu kontrol etmek için aşağıdaki adımları izleyin:
+IoT Hub 'larınızın sistem durumunu denetlemek için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Hizmet **Durumu** > **Kaynak durumu**için gidin.
+2. **Hizmet sistem durumu** > **kaynak sistem durumu**' na gidin.
 
-3. Açılan kutulardan aboneliğinizi seçin ve kaynak türü olarak **IoT Hub'ı** seçin.
+3. Aşağı açılan kutularda, aboneliğinizi seçin ve kaynak türü olarak **IoT Hub** ' yi seçin.
 
-Sistem durumu verilerini nasıl yorumladığınız hakkında daha fazla bilgi edinmek için [Azure kaynak durumu genel bakışı'na](../service-health/resource-health-overview.md)bakın.
+Sistem durumu verilerini yorumlama hakkında daha fazla bilgi edinmek için bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [IoT Hub ölçümlerini anlama](iot-hub-metrics.md)
-* [IoT hub'ınızı ve posta kutunuzu bağlayan Azure Logic Apps ile IoT uzaktan izleme ve bildirimler](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [IoT Hub ölçümlerini anlayın](iot-hub-metrics.md)
+* [IoT Hub 'ınızı ve posta kutunuzu bağlama Azure Logic Apps IoT uzaktan izleme ve bildirimler](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

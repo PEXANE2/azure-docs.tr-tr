@@ -1,133 +1,133 @@
 ---
 title: Azure Geçişi Hakkında
-description: Azure Geçiş hizmeti hakkında bilgi edinin.
+description: Azure geçişi hizmeti hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: fe6386346282cf182397f6420c541d629ba0aab3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81768391"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
-Bu makalede, Azure Geçiş hizmetine hızlı bir genel bakış sağlanmaktadır.
+Bu makalede, Azure geçişi hizmetine hızlı bir genel bakış sunulmaktadır.
 
-Azure Geçiş, Azure şirket içi sunucuları, altyapı, uygulamalar ve verileri değerlendirmek ve Azure'a geçirmek için merkezi bir hub sağlar.
+Azure geçişi, Azure şirket içi sunucuları, altyapısı, uygulamaları ve verileri değerlendirmek ve bu uygulamalara geçiş yapmak için merkezi bir merkez sağlar.
 
-Azure Geçiş aşağıdaki özellikleri sağlar:
+Azure geçişi aşağıdaki özellikleri sağlar:
 
-- **Birleşik geçiş platformu**: Azure'a geçişinizi başlatmak, çalıştırmak ve izlemek için tek bir portal.
-- **Araç aralığı**: Değerlendirme ve geçiş için çeşitli araçlar. Araçlar arasında Azure Geçişi: Sunucu Değerlendirmesi ve Azure Geçişi: Sunucu Geçişi. Azure Geçir, diğer Azure hizmetleriyle ve diğer araçlarla ve bağımsız yazılım satıcısı (ISV) teklifleriyle tümleşir.
-- **Değerlendirme ve geçiş**: Azure Geçir hub'ında şunları değerlendirebilir ve geçirebilirsiniz:
-    - **Sunucular**: Şirket içi sunucuları değerlendirin ve azure sanal makinelerine geçirin.
-    - **Veritabanları**: Şirket içi veritabanlarını değerlendirin ve bunları Azure SQL Veritabanı'na veya Azure SQL Veritabanı yönetilen bir örneğe geçirin.
-    - **Web uygulamaları**: Azure Uygulama Hizmeti Geçiş Yardımcısı'nı kullanarak şirket içi web uygulamalarını değerlendirin ve Azure Uygulama Hizmeti'ne geçirin.
-    - **Sanal masaüstü bilgisayarlar**: Şirket içi sanal masaüstü altyapınızı (VDI) değerlendirin ve Azure'da Windows Sanal Masaüstüne geçirin.
-    - **Veri**: Azure Veri Kutusu ürünlerini kullanarak büyük miktarda veriyi Hızlı ve uygun maliyetli bir şekilde Azure'a taşıyın.
+- **Birleşik geçiş platformu**: Azure 'a geçişinizi başlatmak, çalıştırmak ve izlemek için tek bir portal.
+- **Araç aralığı**: değerlendirme ve geçiş için bir dizi araç. Azure geçişi: Sunucu değerlendirmesi ve Azure geçişi: sunucu geçişi araçları dahil araçlar. Azure geçişi diğer Azure hizmetleriyle ve diğer araçlarla ve bağımsız yazılım satıcısı (ISV) teklifleriyle tümleştirilir.
+- **Değerlendirme ve geçiş**: Azure geçiş hub 'ında şunları değerlendirebileceğiniz ve geçirebilirsiniz:
+    - **Sunucular**: şirket içi sunucuları değerlendirin ve bunları Azure sanal makinelerine geçirin.
+    - **Veritabanları**: şirket içi veritabanlarını değerlendirin ve BUNLARı Azure SQL veritabanı 'Na veya Azure SQL veritabanı yönetilen örneğine geçirin.
+    - **Web uygulamaları**: şirket içi Web uygulamalarını değerlendirin ve Azure App Service Geçiş Yardımcısı kullanarak onları Azure App Service geçirin.
+    - **Sanal masaüstleri**: şirket içi sanal masaüstü ALTYAPıNıZı (VDI) değerlendirin ve Azure 'Da Windows sanal masaüstüne geçirin.
+    - **Veriler**: büyük miktarlarda verileri Azure 'a hızla ve Azure Data Box ürünlerini kullanarak uygun maliyetli bir şekilde geçirin.
 
-## <a name="integrated-tools"></a>Entegre araçlar
+## <a name="integrated-tools"></a>Tümleşik araçlar
 
-Azure Geçiş merkezi şu araçları içerir:
+Azure geçişi hub 'ı şu araçları içerir:
 
-**Araç** | **Değerlendirme ve göç** | **Şey**
+**Araç** | **Değerlendirin ve geçirin** | **Bilgileri**
 --- | --- | ---
-**Azure Geçiş: Sunucu Değerlendirmesi** | Sunucuları değerlendirin. | Azure'a geçiş ekihazırlık için şirket içi VMware VM'leri, Hyper-V V'leri ve fiziksel sunucuları keşfedin ve değerlendirin.
-**Azure Geçiş: Sunucu Geçişi** | Sunucuları geçirin. | VMware VM'leri, Hyper-V VM'leri, fiziksel sunucuları, diğer sanallaştırılmış makineleri ve genel bulut VM'lerini Azure'a geçirin.
-**Data Migration Yardımcısı** | Azure SQL Veritabanı'na geçiş için şirket içi SQL Server veritabanlarını, Azure SQL Veritabanı yönetilen örneğini veya SQL Server çalıştıran Azure VM'leri değerlendirin. | Veri Geçişi Yardımcısı, geçişi engelleyen olası sorunları belirlemeye yardımcı olur. Desteklenmeyen özellikleri, geçişten sonra size fayda sağabilecek yeni özellikleri ve veritabanı geçişi için doğru yolu tanımlar. [Daha fazla bilgi edinin](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
-**Azure Veritabanı Geçiş Hizmeti** | Şirket içi veritabanlarını SQL Server, Azure SQL Veritabanı veya Azure SQL Veritabanı yönetilen örnekleri çalıştıran Azure VM'lerine geçirin. | Veritabanı Geçiş Hizmeti hakkında [daha fazla bilgi edinin.](https://docs.microsoft.com/azure/dms/dms-overview)
-**Movere** | Sunucuları değerlendirin. | Movere hakkında [daha fazla bilgi edinin.](#movere)
-**Web uygulaması geçiş asistanı** | Şirket içi web uygulamalarını değerlendirin ve Azure'a geçirin. |  Şirket içi web sitelerini Azure Uygulama Hizmeti'ne geçiş için değerlendirmek için Azure Uygulama Hizmeti Geçiş Yardımcısı'nı kullanın.<br/><br/> .NET ve PHP web uygulamalarını Azure'a geçirmek için Geçiş Yardımcısı'nı kullanın. Azure Uygulama Hizmeti Geçiş Yardımcısı hakkında [daha fazla bilgi edinin.](https://appmigration.microsoft.com/)
-**Azure Data Box** | Çevrimdışı verileri geçirin. | Büyük miktarda çevrimdışı veriyi Azure'a taşımak için Azure Veri Kutusu ürünlerini kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databox/).
+**Azure geçişi: Sunucu değerlendirmesi** | Sunucuları değerlendirin. | Şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları Azure 'a geçişe hazırlık olarak bulun ve değerlendirin.
+**Azure geçişi: sunucu geçişi** | Sunucuları geçirin. | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, diğer sanallaştırılmış makineler ve genel bulut VM 'lerini Azure 'a geçirin.
+**Data Migration Yardımcısı** | Azure SQL veritabanı 'na geçiş için şirket içi SQL Server veritabanlarını, Azure SQL veritabanı yönetilen örneğini veya SQL Server çalıştıran Azure sanal makinelerini değerlendirin. | Data Migration Yardımcısı, geçişi engelleyen olası sorunları belirlemenize yardımcı olur. Desteklenmeyen özellikleri, geçişten sonra size faydalanabilir yeni özellikleri ve veritabanı geçişinin doğru yolunu tanımlar. [Daha fazla bilgi edinin](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
+**Azure Veritabanı Geçiş Hizmeti** | Şirket içi veritabanlarını SQL Server, Azure SQL veritabanı veya Azure SQL veritabanı yönetilen örnekleri çalıştıran Azure VM 'lerine geçirin. | Veritabanı geçiş hizmeti hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/dms/dms-overview) .
+**Movere** | Sunucuları değerlendirin. | Movere hakkında [daha fazla bilgi edinin](#movere) .
+**Web uygulaması Geçiş Yardımcısı** | Şirket içi Web uygulamalarını değerlendirin ve bunları Azure 'a geçirin. |  Azure App Service geçiş için şirket içi web sitelerini değerlendirmek üzere Azure App Service Geçiş Yardımcısı kullanın.<br/><br/> .NET ve PHP Web uygulamalarını Azure 'a geçirmek için Geçiş Yardımcısı kullanın. Azure App Service Geçiş Yardımcısı hakkında [daha fazla bilgi edinin](https://appmigration.microsoft.com/) .
+**Azure Data Box** | Çevrimdışı verileri geçirin. | Büyük miktarlarda çevrimdışı verileri Azure 'a taşımak için Azure Data Box ürünlerini kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databox/).
 
 > [!NOTE]
-> Azure Kamu'daysanız, harici tümleşik araçlar ve ISV teklifleri Azure Geçiş projelerine veri gönderemez. Araçları bağımsız olarak kullanabilirsiniz.
+> Azure Kamu kullanıyorsanız, dış tümleşik araçlar ve ISV teklifleri verileri Azure geçişi projelerine gönderemez. Araçları bağımsız olarak kullanabilirsiniz.
 
-## <a name="isv-integration"></a>ISV entegrasyonu
+## <a name="isv-integration"></a>ISV tümleştirmesi
 
-Azure Geçir, çeşitli ISV teklifleri ile tümleşir. 
+Azure geçişi, çeşitli ISV teklifleriyle tümleştirilir. 
 
-**ısv**    | **Özellik**
+**'Ye**    | **Özellik**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Sunucuları geçirin.
 [Cloudamize](https://www.cloudamize.com/platform) | Sunucuları değerlendirin.
 [Corent Technology](https://www.corenttech.com/AzureMigrate/) | Sunucuları değerlendirin ve geçirin.
 [Device42](https://docs.device42.com/) | Sunucuları değerlendirin.
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI'yi değerlendirin.
-[Raf Lar](https://go.microsoft.com/fwlink/?linkid=2102735) | Sunucuları geçirin.
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | VDı 'yi değerlendirin.
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Sunucuları geçirin.
 [Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Sunucuları değerlendirin.
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Sunucuları ve veritabanlarını değerlendirin.
 
-## <a name="azure-migrate-server-assessment-tool"></a>Azure Geçiş: Sunucu Değerlendirme aracı
+## <a name="azure-migrate-server-assessment-tool"></a>Azure geçişi: Sunucu değerlendirmesi aracı
 
-Azure Geçişi: Sunucu Değerlendirme aracı, Azure'a geçiş için şirket içi VMware VM'leri, Hyper-V V'leri ve fiziksel sunucuları keşfeder ve değerlendirir.
+Azure geçişi: Sunucu değerlendirmesi Aracı, Azure 'a geçiş için şirket içi VMware VM 'Leri, Hyper-V VM 'Leri ve fiziksel sunucuları bulur ve değerlendirir.
 
 Araç şunları yapar:
 
-- **Azure'a hazırlık**: Şirket içi makinelerin Azure'a geçişe hazır olup olmadığını değerlendirir.
-- **Azure boyutlandırma**: Geçişten sonra Azure VM'lerinin boyutunu tahmin eder.
-- **Azure maliyet tahmini**: Azure'da şirket içi sunucuçalıştırma maliyetlerini tahmin eder.
-- **Bağımlılık çözümlemesi**: Bağımlı sunucuları Azure'a taşımak için sunucular arası bağımlılıkları ve optimizasyon stratejilerini tanımlar. [Bağımlılık analizi](concepts-dependency-visualization.md)ile Sunucu Değerlendirmesi hakkında daha fazla bilgi edinin.
+- **Azure hazırlığı**: değerlendirir şirket Içi makinelerin Azure 'a geçiş için hazır olup olmadığını belirtir.
+- **Azure boyutlandırma**: geçişten sonra Azure VM 'lerinin boyutunu tahmin eder.
+- **Azure maliyet tahmini**: Azure 'da şirket içi sunucuları çalıştırmaya yönelik maliyetleri tahmin eder.
+- **Bağımlılık Analizi**: bağımlı sunucuları Azure 'a taşımak için çapraz sunucu bağımlılıklarını ve iyileştirme stratejilerini belirler. [Bağımlılık analizine](concepts-dependency-visualization.md)sahip sunucu değerlendirmesi hakkında daha fazla bilgi edinin.
 
-Sunucu Değerlendirmesi, şirket içinde dağıttığınız hafif bir [Azure Geçiş cihazı](migrate-appliance.md) kullanır.
+Sunucu değerlendirmesi, şirket içinde dağıttığınız basit bir [Azure geçiş](migrate-appliance.md) gereci kullanır.
 
-- Cihaz VM veya fiziksel sunucuda çalışır. İndirilen bir şablonu kullanarak kolayca yükleyebilirsiniz.
-- Cihaz, şirket içi makineleri keşfeder. Ayrıca, makine meta verilerini ve performans verilerini Sürekli olarak Azure Geçiş'e gönderir.
-- Cihaz keşfi aracısızdır. Keşfedilen makinelere hiçbir şey yüklenmesin.
-- Cihaz keşfinden sonra, keşfedilen makineleri gruplar halinde toplayabilir ve her grup için değerlendirmeler çalıştırabilirsiniz.
+- Gereç bir VM veya fiziksel sunucuda çalışır. İndirilen bir şablonu kullanarak kolayca yükleyebilirsiniz.
+- Gereç, şirket içi makineleri bulur. Ayrıca, Azure geçişi 'ne sürekli olarak makine meta verileri ve performans verileri gönderir.
+- Gereç keşfi aracısız. Bulunan makinelerde hiçbir şey yüklü değil.
+- Gereç keşfi sonrasında, bulunan makineleri gruplar halinde toplayabilir ve her grup için değerlendirmeler çalıştırabilirsiniz.
 
-## <a name="azure-migrate-server-migration-tool"></a>Azure Geçiş: Sunucu Geçişi aracı
+## <a name="azure-migrate-server-migration-tool"></a>Azure geçişi: sunucu geçiş aracı
 
-Azure Geçir: Sunucu Geçişi aracı Azure'a geçiş yapmaya yardımcı olur:
+Azure geçişi: sunucu geçiş aracı, Azure 'a geçiş yapmanıza yardımcı olur:
 
 - Şirket içi VMware sanal makineleri
 - Hyper-V Sanal Makineleri
 - Fiziksel sunucular
 - Diğer sanallaştırılmış makineler
-- Genel bulut VM'leri
+- Genel bulut VM 'Leri
 
-Makineleri değerlendirdikten sonra geçirebilir veya değerlendirme yapmadan geçirebilirsiniz.
+Makineleri değerlendirdikten veya değerlendirmeden geçirdikten sonra geçirebilirsiniz.
 
-VMware VM'lerinin aracısız geçişi ve Hyper-V VM'lerin geçişi için Sunucu Geçişi, şirket içinde dağıttığınız bir Azure Geçiş cihazı kullanır. Sunucu değerlendirmesini ayarlarsanız cihaz da kullanılır. Bir önceki bölümde açıklanmıştır.
+VMware VM 'lerinin aracısız geçişi ve Hyper-V VM 'lerinin geçirilmesi için sunucu geçişi, şirket içinde dağıttığınız bir Azure geçiş gereci kullanır. Sunucu değerlendirmesi ayarlarsanız gereç da kullanılır. Önceki bölümde açıklanmaktadır.
 
-## <a name="selecting-assessment-and-migration-tools"></a>Değerlendirme ve geçiş araçlarının seçilmesi
+## <a name="selecting-assessment-and-migration-tools"></a>Değerlendirme ve geçiş araçlarını seçme
 
-Azure Geçir hub'ında, değerlendirme veya geçiş için kullanmak istediğiniz aracı seçin ve bir Azure Geçiş projesine eklersiniz. Bir ISV aracı veya Movere eklerseniz:
+Azure geçişi hub 'ında değerlendirme veya geçiş için kullanmak istediğiniz aracı seçin ve bunu bir Azure geçişi projesine ekleyin. Bir ISV aracı veya Movere eklerseniz:
 
-- Başlamak için, bir lisans almak veya araç yönergelerini izleyerek ücretsiz deneme için kaydolun. Her ISV veya araç araç lisanslama belirtir.
-- Her aracın Azure Geçiş'e bağlanma seçeneği vardır. Bağlanmak için araç yönergelerini izleyin.
-- Azure Geçiş projesi nin içinden tüm araçlararasında geçişinizi izleyin.
+- Başlamak için, araç yönergelerini izleyerek bir lisans alın veya ücretsiz deneme için kaydolun. Her ISV veya araç, araç lisansını belirler.
+- Her aracın Azure geçişi 'ne bağlanma seçeneği vardır. Bağlanmak için araç yönergelerini izleyin.
+- Azure geçişi projesi içinden tüm araçlarda geçişlerinizi izleyin.
 
 ## <a name="movere"></a>Movere
 
-Movere bir hizmet (SaaS) platformu olarak bir yazılımdır. Tüm BT ortamlarını tek bir gün içinde doğru bir şekilde sunarak iş zekalarını artırır. Kuruluşlar ve işletmeler büyür, değişir ve dijital olarak optimize eder. Bunu yaparken, Movere platform, uygulama veya coğrafya ne olursa olsun, çevrelerini görmek ve kontrol etmek için gerekli güveni sağlar.
+Movere, hizmet olarak yazılım (SaaS) platformudur. Tek bir gün içinde tüm BT ortamlarını doğru şekilde sunarak iş zekası artar. Kuruluşlar ve kuruluşlar büyür, değişir ve dijital olarak iyileştirmektedir. Bu şekilde, Movere, platformlarını, platformunu, uygulamayı veya coğrafi konumu her ne olursa olsun, ortamları görmek ve denetlemek için gereken güvenle sağlar.
 
-Microsoft [Movere'ı satın aldı](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) ve artık tek başına bir teklif olarak satılmadı. Movere, Microsoft Çözüm Değerlendirmesi ve Microsoft Bulut Ekonomisi Programı aracılığıyla kullanılabilir. Movere hakkında [daha fazla bilgi edinin.](https://www.movere.io)
+Microsoft movere 'yi [edinmiş](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) ve artık tek başına bir teklif olarak satılmamaktadır. Movere, Microsoft çözüm değerlendirmesi ve Microsoft Bulut Ekonomikler programı aracılığıyla kullanılabilir. Movere hakkında [daha fazla bilgi edinin](https://www.movere.io) .
 
-Yerleşik geçiş hizmetimiz olan Azure Geçiş'e de bakmanızı öneririz. Azure Geçiş, bulut geçişinizi basitleştirmek için merkezi bir hub sağlar. Hub, fiziksel ve sanal sunucular, veritabanları ve uygulamalar gibi iş yüklerini kapsamlı bir şekilde destekler. Uçtan uca görünürlük, keşif, değerlendirme ve geçiş boyunca kaydedilen ilerlemeyi kolayca izlemenize olanak tanır.
+Ayrıca, yerleşik geçiş hizmetimiz olan Azure geçişi ' ne da bakmanız önerilir. Azure geçişi, bulut geçişinizi basitleştirecek bir merkezi Merkez sağlar. Merkez, fiziksel ve sanal sunucular, veritabanları ve uygulamalar gibi iş yüklerini büyük ölçüde destekler. Uçtan uca görünürlük, bulma, değerlendirme ve geçiş genelinde ilerlemeyi kolayca izlemenize olanak sağlar.
 
-Azure ve iş ortağı ISV araçları nın yerleşik olduğu Azure Geçiş, aşağıdakiler dahil olmak üzere çok çeşitli özelliklere sahiptir:
+Hem Azure hem de iş ortağı ISV araçlarıyla Azure geçişi, aşağıdakiler dahil olmak üzere çok çeşitli özelliklere sahiptir:
 
-- Sanal ve fiziksel sunucuların keşfi.
-- Performansa dayalı hak etme.
+- Sanal ve fiziksel sunucuları bulma.
+- Performans tabanlı doğru geliştirme.
 - Maliyet planlaması.
-- İthalat tabanlı değerlendirmeler.
+- İçeri aktarma temelli değerlendirmeler.
 - Aracısız uygulamaların bağımlılık analizi.
 
-Başlamak için uzman yardımı arıyorsanız, Microsoft size rehberlik edecek yetenekli [Azure Uzman Yönetilen Hizmet Sağlayıcılarına](https://azure.microsoft.com/partners) sahiptir. [Azure Geçiş web sitesine](https://azure.microsoft.com/services/azure-migrate/)göz atın. 
+Kullanmaya başlamak için uzman yardımı arıyorsanız, Microsoft size rehberlik etmek için [Azure uzman tarafından yönetilen hizmet sağlayıcılarına](https://azure.microsoft.com/partners) sahiptir. [Azure geçişi Web sitesine](https://azure.microsoft.com/services/azure-migrate/)göz atın. 
 
-## <a name="azure-migrate-versions"></a>Azure Geçiş sürümleri
+## <a name="azure-migrate-versions"></a>Azure geçişi sürümleri
 
-Azure Geçiş hizmetinin iki sürümü vardır.
+Azure geçişi hizmetinin iki sürümü vardır.
 
-- **Geçerli sürüm**: Azure Geçir projeleri oluşturmak, şirket içi makineleri keşfetmek ve değerlendirmeleri ve geçişleri düzenlemek için bu sürümü kullanın. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin.](whats-new.md)
-- **Önceki sürüm**: Azure Geçir'in önceki sürümü yalnızca şirket içi VMware VM'lerin değerlendirilmesini destekler. Önceki sürümü kullandıysanız, şimdi geçerli sürümü kullanmanız gerekir. Önceki sürümü kullanarak Azure Geçiş projeleri oluşturamaz. Ve onunla yeni keşifler yapmamanızı öneririz.
+- **Geçerli sürüm**: bu sürümü kullanarak Azure geçişi projelerini oluşturun, şirket içi makineleri bulun ve değerlendirmeleri ve geçişleri düzenleyin. Bu sürümdeki yenilikler hakkında [daha fazla bilgi edinin](whats-new.md) .
+- **Önceki sürüm**: Azure geçişi 'nin önceki sürümü yalnızca şirket Içi VMware VM 'lerinin değerlendirmesini destekler. Önceki sürümü kullandıysanız, artık geçerli sürümü kullanmanız gerekir. Artık önceki sürümü kullanarak Azure geçişi projelerini oluşturamazsınız. Ayrıca, bununla yeni bulmalar yapmanızı öneririz.
 
-    Azure portalındaki varolan projelere erişmek için **Azure Geçiş'i**arayın ve seçin. **Azure Geçir** panosunda eski Azure Geçir projelerine erişmek için bir bildirim ve bağlantı vardır.
+    Azure portal mevcut projelere erişmek için **Azure geçişi**' ni arayıp seçin. **Azure geçiş** panosu, eski Azure geçiş projelerine erişim için bir bildirime ve bağlantıya sahiptir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [VMware VM'leri,](tutorial-prepare-vmware.md) [Hyper-V VM'leri](tutorial-prepare-hyper-v.md)veya [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirmek için eğitimlerimizi deneyin.
+- [VMware VM](tutorial-prepare-vmware.md)'leri, [Hyper-V VM](tutorial-prepare-hyper-v.md)'lerini veya [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirmek için öğreticilerimizi deneyin.
 - Azure Geçişi hakkında [sık sorulan soruları gözden geçirin](resources-faq.md).

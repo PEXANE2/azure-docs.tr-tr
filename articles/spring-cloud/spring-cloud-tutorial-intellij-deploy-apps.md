@@ -1,102 +1,102 @@
 ---
-title: Öğretici - Azure Bahar Bulutu uygulamalarını dağıtmak için IntelliJ'i kullanın
-description: Uygulamaları Azure Bahar Bulutu'na dağıtmak için IntelliJ'i kullanın.
+title: Öğretici-Azure yay bulut uygulamalarını dağıtmak için IntelliJ kullanma
+description: Azure Spring Cloud 'a uygulama dağıtmak için IntelliJ kullanın.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81731367"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
-Azure Bahar Bulutu için IntelliJ eklentisi, IntelliJ IDEA'dan uygulama dağıtımını destekler.  
+Azure yay bulutu için IntelliJ eklentisi, IntelliJ FIKRINDEN uygulama dağıtımını destekler.  
 
 ## <a name="prerequisites"></a>Ön koşullar
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
-* [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA, Topluluk/Ultimate Edition, sürüm 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
+* [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
+* [IntelliJ fıkır, topluluk/Ultimate Edition, sürüm 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
-## <a name="install-the-plug-in"></a>Eklentiyi yükleme
-IntelliJ **Plugins** UI'den IntelliJ IDEA 3.35.0 için Azure Araç Seti'ni ekleyebilirsiniz.
+## <a name="install-the-plug-in"></a>Eklentiyi yükler
+IntelliJ **eklentileri** kullanıcı ARABIRIMINDEN Azure Toolkit for IntelliJ fikir 3.35.0 ekleyebilirsiniz.
 
-1. IntelliJ'i başlatın.  Daha önce bir proje açtıysanız, hoş geldiniz iletişim kutusunu göstermek için projeyi kapatın. Sağ alttaki bağlantıdan **Yapıla'yı** seçin ve eklenti yapılandırma iletişim kutusunu açmak için **Eklentiler'i** tıklatın ve **diskten Eklentileri Yükle'yi**seçin.
+1. IntelliJ 'yi başlatın.  Daha önce bir proje açtıysanız, hoş geldiniz iletişim kutusunu görüntülemek için projeyi kapatın. Sağ alt bağlantıdan **Yapılandır** ' ı seçin ve sonra eklenti yapılandırması iletişim kutusunu **açmak için eklentiler** ' i tıklatın ve **eklentileri diskten yüklemeyi**seçin.
 
-    ![Yapılandırma'yı seçin](media/spring-cloud-intellij-howto/configure-plugin-1.png)
+    ![Yapılandır 'ı seçin](media/spring-cloud-intellij-howto/configure-plugin-1.png)
 
-1. IntelliJ için Azure Araç Kiti'ni arayın.  **Yükle'yi**tıklatın.
+1. Azure Toolkit for IntelliJ arayın.  **Install**'a tıklayın.
 
-    ![Eklentiyi yükleyin](media/spring-cloud-intellij-howto/install-plugin.png)
+    ![Eklentiyi yükler](media/spring-cloud-intellij-howto/install-plugin.png)
 
-1. **IDE'yi Yeniden Başlat'ı**tıklatın.
+1. **IDE 'Yi yeniden Başlat**seçeneğine tıklayın.
 
-## <a name="tutorial-procedures"></a>Öğretici prosedürler
-Aşağıdaki yordamlar IntelliJ IDEA kullanarak bir Hello World uygulaması dağıtmak.
+## <a name="tutorial-procedures"></a>Öğretici yordamları
+Aşağıdaki yordamlar IntelliJ FIKRINI kullanarak bir Merhaba Dünya uygulaması dağıtır.
 
-* Açık gs-bahar-önyükleme projesi
-* Azure İlkbahar Bulutuna Dağıl
+* Açık GS-yay-önyükleme projesi
+* Azure yay bulutuna dağıtın
 * Akış günlüklerini göster
 
-## <a name="open-gs-spring-boot-project"></a>Açık gs-bahar-önyükleme projesi
+## <a name="open-gs-spring-boot-project"></a>Açık GS-yay-önyükleme projesi
 
-1. Bu öğretici için kaynak deposunu indirin ve indirin veya unzip'ini yapın veya Git: git klonunu kullanarak klonlahttps://github.com/spring-guides/gs-spring-boot.git 
-1. cd içine gs-spring-boot\complete.
-1. IntelliJ **Hoşgeldiniz** iletişim kutusunu açın, alma sihirbazını açmak için **Project'i aktar'ı** seçin.
-1. Klasörü seçin. `gs-spring-boot\complete`
+1. Bu öğretici için kaynak depoyu indirip sıkıştırmasını açın veya git 'i kullanarak kopyalayın: git Clonehttps://github.com/spring-guides/gs-spring-boot.git 
+1. CD 'ye GS-Spring-boot\complete.
+1. IntelliJ **karşılama** iletişim kutusunu açın, içeri aktar sihirbazını açmak Için **projeyi içeri aktar** ' ı seçin.
+1. Klasör `gs-spring-boot\complete` seçin.
 
-    ![İthalat Projesi](media/spring-cloud-intellij-howto/import-project-1.png)
+    ![Projeyi içeri aktar](media/spring-cloud-intellij-howto/import-project-1.png)
 
-## <a name="deploy-to-azure-spring-cloud"></a>Azure İlkbahar Bulutuna Dağıl
-Azure'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için [Yükleme ve oturum açma'ya](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)bakın.
+## <a name="deploy-to-azure-spring-cloud"></a>Azure yay bulutuna dağıtın
+Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. IntelliJ proje gezgininde projenizi sağ tıklatın ve **Azure** -> **Bulutu'na Azure Dağıt'ı**seçin.
+1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure** -> **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
-    ![Azure 1'e Dağıt](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
+    ![Azure 'a dağıtma 1](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 
-1. **Ad** alanında uygulamanın adını kabul edin. **Ad,** uygulama adını değil yapılandırmayı ifade eder. Kullanıcıların genellikle değiştirmesi gerekmez.
-1. Artifon için projeden tanımlayıcıyı kabul **edin.**
-1. **Uygulamayı Seçiniz:** ardından **Uygulamayı Oluştur'a tıklayın...**.
+1. **Ad** alanındaki uygulamanın adını kabul edin. **Ad** , uygulama adı değil, yapılandırmaya başvurur. Kullanıcıların genellikle bunu değiştirmesi gerekmez.
+1. **Yapıt**için projeden tanımlayıcıyı kabul edin.
+1. **Uygulama seçin:** ardından **uygulama oluştur...** öğesine tıklayın.
 
-    ![Azure 2'ye Dağıt](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
+    ![Azure 2 ' ye dağıtma](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
-1. **Uygulama adını**girin, ardından **Tamam'ı**tıklatın.
+1. **Uygulama adı**girin ve ardından **Tamam**' a tıklayın.
 
-    ![Azure Ok'a Dağıt](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
+    ![Azure 'a dağıtma Tamam](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
 
-1. Çalıştır düğmesini tıklatarak dağıtımı **başlatın.** 
+1. **Çalıştır** düğmesine tıklayarak dağıtımı başlatın. 
 
-    ![Azure 3'e Dağıt](media/spring-cloud-intellij-howto/deploy-to-azure-3.png)
+    ![Azure 'a dağıtma 3](media/spring-cloud-intellij-howto/deploy-to-azure-3.png)
 
-1. Eklenti projedeki komutu `mvn package` çalıştırır ve ardından yeni uygulamayı oluşturur ve `package` komut tarafından oluşturulan kavanozu dağıtır.
+1. Eklenti, projede komutunu `mvn package` çalıştırır ve ardından yeni uygulamayı oluşturur ve `package` komut tarafından oluşturulan jar 'yi dağıtır.
 
-1. Uygulama URL'si çıkış penceresinde görünmüyorsa, azure portalından alın. Kaynak grubunuzdan Azure İlkbahar Bulutu örneğine gidin.  Ardından **Uygulamalar'ı**tıklatın.  Çalışan uygulama listelenir.
+1. Uygulama URL 'SI çıkış penceresinde gösterilmezse, Azure portal alın. Kaynak grupınızdan Azure Spring Cloud örneğine gidin.  Ardından **uygulamalar**' a tıklayın.  Çalışan uygulama listelenecektir.
 
-    ![Test URL'si alın](media/spring-cloud-intellij-howto/get-test-url.png)
+    ![Test URL 'SI al](media/spring-cloud-intellij-howto/get-test-url.png)
 
-1. Tarayıcıdaki URL'ye gidin.
+1. Tarayıcıdaki URL 'ye gidin.
 
-    ![Tarayıcı 2'de Gezinme](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
+    ![Tarayıcıda gezin 2](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
 
 ## <a name="show-streaming-logs"></a>Akış günlüklerini göster
 Günlükleri almak için:
-1. **Azure Gezgini'ni**seçin, ardından **Yay Bulutu' nun.**
+1. **Azure Gezgini**' ni ve ardından **yay bulutu**' nı seçin.
 1. Çalışan uygulamaya sağ tıklayın.
-1. Açılan listeden **Akış Günlükleri'ni** seçin.
+1. Açılan listeden **akış günlükleri** ' ni seçin.
 
-    ![Akış günlüklerini seçin](media/spring-cloud-intellij-howto/streaming-logs.png)
+    ![Akış günlüklerini seçme](media/spring-cloud-intellij-howto/streaming-logs.png)
 
-1. Örneği seçin.
+1. Örnek seçin.
 
     ![Örnek seçin](media/spring-cloud-intellij-howto/select-instance.png)
 
-1. Akış günlüğü çıkış penceresinde görünür olacaktır.
+1. Akış günlüğü, çıkış penceresinde görünür olur.
 
-    ![Akış günlüğü çıktısı](media/spring-cloud-intellij-howto/streaming-log-output.png)
+    ![Akış günlüğü çıkışı](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Bahar Bulutu için Bahar uygulamasını hazırlayın](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [IntelliJ için Azure Araç Seti hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Azure yay bulutu için yay uygulamasını hazırlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Azure Toolkit for IntelliJ hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

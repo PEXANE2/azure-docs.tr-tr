@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Azure Bahar Bulutu ile Maven'i kullanarak uygulama başlatın
+title: Hızlı başlangıç-Azure Spring Cloud ile Maven kullanarak uygulama başlatma
 description: Bu hızlı başlangıçta, Maven kullanarak örnek bir uygulama başlatın
 author: bmitchell287
 ms.service: spring-cloud
@@ -7,120 +7,120 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81687085"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak Bir Azure Bahar Bulutu uygulaması başlatın
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Hızlı başlangıç: Maven eklentisini kullanarak bir Azure Spring Cloud uygulaması başlatın
 
-Azure Bahar Bulutu Maven eklentisini kullanarak Azure Bahar Bulutu uygulamalarınızı kolayca oluşturabilir ve güncelleyebilirsiniz. Bir yapılandırmayı önceden tanımlayarak, uygulamaları mevcut Azure Bulut hizmetinize dağıtabilirsiniz. Bu makalede, bu özelliği göstermek için PiggyMetrics adlı örnek bir uygulama kullanıyorsunuz.
+Azure Spring Cloud Maven eklentisini kullanarak Azure Spring Cloud uygulamalarınızı kolayca oluşturabilir ve güncelleştirebilirsiniz. Bir yapılandırmayı önceden tanımlayarak, mevcut Azure yay bulut hizmetinize uygulama dağıtabilirsiniz. Bu makalede, bu özelliği göstermek için POF ölçümleri adlı örnek bir uygulama kullanırsınız.
 
-Bu hızlı başlangıcın ardından, nasıl yapılacağını öğreneceksiniz:
+Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Hizmet örneğini sağlama
+> * Hizmet örneği sağlama
 > * Bir örnek için yapılandırma sunucusu ayarlama
-> * Yerel olarak mikro hizmetler uygulamasını klonla ve oluşturun
-> * Her microservice dağıtma
-> * Uygulamanız için genel bir bitiş noktası atama
+> * Mikro hizmetler uygulamasını yerel olarak kopyalama ve derleme
+> * Her mikro hizmeti dağıtma
+> * Uygulamanız için genel bir uç nokta atama
 
 >[!Note]
-> Azure İlkbahar Bulutu şu anda genel önizleme olarak sunulmaktadır. Genel önizleme teklifleri, müşterilerin resmi yayınlanmalarından önce yeni özelliklerle denemeler e-sayılsa.  Genel önizleme özellikleri ve hizmetleri üretim kullanımı için değildir.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen [SSS'mizi](https://azure.microsoft.com/support/faq/) gözden geçirin veya daha fazla bilgi edinmek için bir [Destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) dosyalayın.
+> Azure yay bulutu Şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, müşterilerin resmi sürümünden önceki yeni özelliklerle deneme yapmasına olanak tanır.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Önizleme sırasında destek hakkında daha fazla bilgi için lütfen [SSS](https://azure.microsoft.com/support/faq/) veya dosya dosyası [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) inceleyerek daha fazla bilgi edinebilirsiniz.
 
 
 >[!TIP]
-> Azure Bulut Kabuğu, bu makaledeki komutları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Git, Java Geliştirme Kiti (JDK), Maven ve Azure CLI'nin en son sürümleri de dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız Azure [Bulut Bulutu'nu](https://shell.azure.com)başlatın. Daha fazla bilgi için Azure [Bulut BulutU'na Genel Bakış](../cloud-shell/overview.md)bölümüne bakın.
+> Azure Cloud Shell, bu makaledeki komutları çalıştırmak için kullanabileceğiniz, ücretsiz bir etkileşimli kabuktur. Git 'in en son sürümleri, Java Geliştirme Seti (JDK), Maven ve Azure CLı dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız [Azure Cloud Shell](https://shell.azure.com)başlatın. Daha fazla bilgi için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md).
 
 Bu hızlı başlangıcı tamamlamak için:
 
-1. [Git'i yükleyin.](https://git-scm.com/)
-2. [JDK 8'i yükleyin.](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-3. [Maven 3.0 veya sonrası yükleyin.](https://maven.apache.org/download.cgi)
-4. [Ücretsiz Azure aboneliği için kaydolun.](https://azure.microsoft.com/free/)
+1. [Git 'ı yükler](https://git-scm.com/).
+2. [JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)' i yükler.
+3. [Maven 3,0 veya üstünü yükler](https://maven.apache.org/download.cgi).
+4. [Ücretsiz bir Azure aboneliğine kaydolun](https://azure.microsoft.com/free/).
 
-## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portalında bir hizmet örneği sağlama
+## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portal bir hizmet örneği sağlayın
 
-1. Bir web tarayıcısında, [Azure portalındaki Azure İlkbahar Bulutu'nun bu bağlantısını](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)açın ve hesabınızda oturum açın.
+1. Bir Web tarayıcısında, [Bu bağlantıyı Azure Portal Azure Spring Cloud 'a](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)açın ve hesabınızda oturum açın.
 
-1. Örnek uygulama için **Proje Ayrıntılarını** aşağıdaki gibi sağlayın:
+1. Örnek uygulama için **proje ayrıntılarını** aşağıdaki gibi sağlayın:
 
-    1. Uygulamanın ilişkilendirileceği **Abonelik'i** seçin.
-    1. Uygulama için bir kaynak grubu seçin veya oluşturun. Yeni bir kaynak grubu oluşturmanızı öneririz.  Aşağıdaki örnekte yeni bir `myspringservice`kaynak grubu .
-    1. Yeni Azure İlkbahar Bulutu hizmeti için bir ad sağlayın.  Ad 4 ile 32 karakter uzunluğunda olmalı ve yalnızca küçük harfler, sayılar ve tireler içerebilir. Hizmet adının ilk karakteri bir harf, son karakter ise bir harf veya sayı olmalıdır.  Aşağıdaki örnekteki hizmetin adı `contosospringcloud`vardır.
-    1. Sağlanan seçeneklerden uygulamanız için bir konum seçin.  Bu örnekte, `East US`biz seçin.
-    1. Yeni hizmetinizin özetini incelemek için **Gözden Geçir + oluşturun'u** seçin.  Her şey doğru **görünüyorsa, Oluştur'u**seçin.
+    1. Uygulamanın ilişkilendirileceği **aboneliği** seçin.
+    1. Uygulama için bir kaynak grubu seçin veya oluşturun. Yeni bir kaynak grubu oluşturmanızı öneririz.  Aşağıdaki örnekte adlı `myspringservice`yeni bir kaynak grubu gösterilmektedir.
+    1. Yeni Azure yay bulut hizmeti için bir ad sağlayın.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir. Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.  Aşağıdaki örnekteki hizmetin adı `contosospringcloud`vardır.
+    1. Belirtilen seçeneklerden uygulamanız için bir konum seçin.  Bu örnekte, ' yi seçtik `East US`.
+    1. Yeni hizmetinizin özetini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.  Her şey doğru görünüyorsa **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Gözden Geçir ' i seçin + oluştur](media/maven-qs-review-create.jpg)
+    > ![Gözden geçir + oluştur ' u seçin](media/maven-qs-review-create.jpg)
 
-Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan sonra **kaynağa Git'i** seçin ve hizmet örneği için **Genel Bakış** sayfası görüntülenir.
+Hizmetin dağıtılması yaklaşık 5 dakika sürer. Hizmet dağıtıldıktan sonra **Kaynağa Git** ' i seçin ve hizmet örneği Için **genel bakış** sayfası görüntülenir.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
 
 ## <a name="set-up-your-configuration-server"></a>Yapılandırma sunucunuzu ayarlama
 
-1. Hizmete **Genel Bakış** sayfasında **Config Server'ı**seçin.
-1. Varsayılan **depo** bölümünde **https://github.com/Azure-Samples/piggymetrics-config**URI'yi **URI** ayarlayın ve değişikliklerinizi kaydetmek için **Uygula'yı** seçin.
+1. Hizmete **genel bakış** sayfasında, **yapılandırma sunucusu**' nu seçin.
+1. **Varsayılan depo** bölümünde, **URI değerini** olarak **https://github.com/Azure-Samples/piggymetrics-config**ayarlayın ve ardından değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Config ayarlarını tanımlama ve uygulama](media/maven-qs-apply-config.jpg)
+    > ![Yapılandırma ayarlarını tanımlama ve uygulama](media/maven-qs-apply-config.jpg)
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
-## <a name="clone-and-build-the-sample-application-repository"></a>Örnek uygulama deposunu klonla ve oluşturun
+## <a name="clone-and-build-the-sample-application-repository"></a>Örnek uygulama deposunu kopyalama ve derleme
 
-1. Azure [Bulut Kabuğunu](https://shell.azure.com)başlatın.
+1. [Azure Cloud Shell](https://shell.azure.com)başlatın.
 
-1. Aşağıdaki komutu çalıştırarak Git deposunu klonla:
+1. Aşağıdaki komutu çalıştırarak Git deposunu kopyalayın:
 
     ```console
     git clone https://github.com/Azure-Samples/PiggyMetrics
     ```
   
-1. Dizin değiştirin ve aşağıdaki komutu çalıştırarak projeyi oluşturun:
+1. Dizini değiştirin ve aşağıdaki komutu çalıştırarak projeyi derleyin:
 
     ```console
     cd piggymetrics
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Yapılandırmalar oluşturun ve Azure İlkbahar Bulutu'na dağıtın
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Azure yay bulutuna yapılandırma ve dağıtım oluşturma
 
-1. Üst POM'u içeren PiggyMetrics'in kök klasöründe aşağıdaki komutu çalıştırarak yapılandırmalar oluşturun:
+1. Üst POB 'yi içeren Pumetrik ölçümleri kök klasöründe aşağıdaki komutu çalıştırarak yapılandırma oluşturun:
 
     ```console
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
-    a. Modülleri `gateway``auth-service`seçin ve `account-service`.
+    a. , Ve `account-service`modüllerini `gateway``auth-service`seçin.
 
-    b. Aboneliğinizi ve Azure Bahar Bulutu hizmet kümenizi seçin.
+    b. Aboneliğinizi ve Azure yay bulut hizmeti kümenizi seçin.
 
-    c. Sağlanan projeler listesine, genel erişim sağlamak `gateway` için karşılık gelen numarayı girin.
+    c. Belirtilen projeler listesinde, ortak erişim sağlamak `gateway` için öğesine karşılık gelen sayıyı girin.
     
     d. Yapılandırmayı onaylayın.
 
-1. POM artık eklenti bağımlılıklarını ve yapılandırmalarını içerir. Uygulamaları aşağıdaki komutu kullanarak dağıtın:
+1. Pod artık eklenti bağımlılıklarını ve yapılandırmasını içerir. Aşağıdaki komutu kullanarak uygulamaları dağıtın:
 
    ```console
    mvn azure-spring-cloud:deploy
    ```
 
-1. Dağıtım tamamlandıktan sonra, önceki komuttan çıktıda sağlanan URL'yi kullanarak PiggyMetrics'e erişebilirsiniz.
+1. Dağıtım tamamlandıktan sonra, önceki komutun çıktısında belirtilen URL 'YI kullanarak Pudmetriye erişebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Bir Maven deposundan bir Bahar Bulutu uygulaması dağıttınız. Azure Bahar Bulutu hakkında daha fazla bilgi edinmek için uygulamanızı dağıtıma hazırlama konusunda öğreticiye devam edin.
+Bu hızlı başlangıçta, Maven deposundan bir yay bulutu uygulaması dağıttınız. Azure Spring Cloud hakkında daha fazla bilgi edinmek için uygulamanızı dağıtıma hazırlama hakkında öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Azure Bahar Bulutu uygulamanızı dağıtıma hazırlayın](spring-cloud-tutorial-prepare-app-deployment.md)
-> [Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugin)
+> [Azure Spring Cloud uygulamanızı dağıtıma](spring-cloud-tutorial-prepare-app-deployment.md)
+> hazırlama[Azure için Maven eklentileri hakkında daha fazla bilgi edinin](https://github.com/microsoft/azure-maven-plugin)
 
-GitHub: Azure Bahar [Bulut Örnekleri'nde](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql)daha fazla örnek mevcuttur.
+GitHub 'da daha fazla örnek vardır: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

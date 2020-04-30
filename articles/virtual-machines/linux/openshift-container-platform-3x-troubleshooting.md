@@ -1,6 +1,6 @@
 ---
-title: Azure'da OpenShift Kapsayıcı Platformu 3.11 dağıtımında sorun giderme
-description: Azure'da OpenShift Kapsayıcı Platformu 3.11 dağıtımında sorun giderme.
+title: Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtımında sorun giderme
+description: Azure 'da Openshıft kapsayıcı platformu 3,11 dağıtımında sorun giderin.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,37 +11,37 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759475"
 ---
-# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure'da OpenShift Kapsayıcı Platformu 3.11 dağıtımında sorun giderme
+# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtımında sorun giderme
 
-OpenShift kümesi başarıyla dağıtılamazsa, Azure portalı hata çıktısı sağlar. Çıktının okunması zor olabilir ve bu da sorunu tanımlamayı zorlaştırır. Çıkış kodu 3, 4 veya 5 için bu çıktıyı hızlıca tarar. Aşağıdaki üç çıkış kodu hakkında bilgi sağlar:
+OpenShift kümesi başarılı bir şekilde dağıtımazsa, Azure portal hata çıktısı sağlayacaktır. Çıktının okunması zor olabilir, bu da sorunu belirlemeyi zorlaştırır. Bu çıktıyı, 3, 4 veya 5 çıkış kodu için hızlıca tarayın. Aşağıda bu üç çıkış kodu hakkında bilgi verilmektedir:
 
-- Çıkış kodu 3: Red Hat Aboneliği Kullanıcı Adı / Şifre veya Kuruluş Kimliği / Etkinleştirme Anahtarı yanlış
-- Çıkış kodu 4: Kırmızı Şapka Havuzu Kimliğiniz yanlış veya kullanılabilir hak yok
-- Çıkış kodu 5: Docker İnce Havuz Hacmi sağlayamıyor
+- Çıkış kodu 3: Red Hat aboneliğinizin Kullanıcı adı/parolası veya kuruluş KIMLIĞI/etkinleştirme anahtarınız hatalı
+- Çıkış kodu 4: Red Hat havuzu KIMLIĞINIZ yanlış veya kullanılabilir yetkilendirmeler yok
+- Çıkış kodu 5: Docker Ince havuz birimi sağlanamıyor
 
-Diğer tüm çıkış kodları için, günlük dosyalarını görüntülemek için ssh üzerinden ana bilgisayara bağlanın.
+Diğer tüm çıkış kodları için, günlük dosyalarını görüntülemek için SSH aracılığıyla ana bilgisayara bağlanın.
 
 **OpenShift Kapsayıcı Platformu 3.11**
 
-SSH'den ansible playbook sunucusuna. Şablon veya Market teklifi için burç ana bilgisayarını kullanın. Burçtan, Kümedeki diğer tüm düğümlere (ana, infra, CNS, hesaplama) SSH yapabilirsiniz. Günlük dosyalarını görüntülemek için kök olmanız gerekir. Root varsayılan olarak SSH erişimi için devre dışı bırakılır, bu nedenle diğer düğümlere SSH kökünü kullanmayın.
+Anerişilebilir PlayBook konağına SSH. Şablon veya Market teklifi için savunma konağını kullanın. Savunma sırasında kümedeki diğer tüm düğümlere SSH ekleyebilirsiniz (Master, infra, CNS, COMPUTE). Günlük dosyalarını görüntülemek için kök olmanız gerekir. Kök, varsayılan olarak SSH erişimi için devre dışıdır, bu nedenle diğer düğümlere SSH için kök kullanmayın.
 
 **OKD**
 
-SSH'den ansible playbook sunucusuna. OKD şablonu (sürüm 3.9 ve önceki sürüm) için ana-0 ana bilgisayar ını kullanın. OKD şablonu (sürüm 3.10 ve sonrası) için burç ana bilgisayarını kullanın. Ansible playbook ana bilgisayardan, SSH kümedeki diğer tüm düğümlere (ana, infra, CNS, işlem) yapabilirsiniz. Günlük dosyalarını görüntülemek için root (sudo su -) olmanız gerekir. Root varsayılan olarak SSH erişimi için devre dışı bırakılır, bu nedenle diğer düğümlere SSH kökünü kullanmayın.
+Anerişilebilir PlayBook konağına SSH. OKD şablonu (sürüm 3,9 ve önceki sürümler) için ana-0 konağını kullanın. OKD şablonu için (sürüm 3,10 ve üzeri), savunma konağını kullanın. Anormal PlayBook ana bilgisayarında, kümedeki diğer tüm düğümlere SSH ekleyebilirsiniz (Master, infra, CNS, COMPUTE). Günlük dosyalarını görüntülemek için kök (sudo su-) olmanız gerekir. Kök, varsayılan olarak SSH erişimi için devre dışıdır, bu nedenle diğer düğümlere SSH için kök kullanmayın.
 
 ## <a name="log-files"></a>Günlük dosyaları
 
-Ana bilgisayar hazırlama komut dosyaları için günlük dosyaları (stderr ve `/var/lib/waagent/custom-script/download/0` stdout) tüm ana bilgisayarlarda bulunur. Ana bilgisayarın hazırlanması sırasında bir hata oluştuysa, hatayı belirlemek için bu günlük dosyalarını görüntüleyin.
+Konak hazırlama betikleri için günlük dosyaları (stderr ve STDOUT), tüm konaklarda ' de `/var/lib/waagent/custom-script/download/0` bulunur. Konağın hazırlanması sırasında bir hata oluştuysa, hatayı öğrenmek için bu günlük dosyalarını görüntüleyin.
 
-Hazırlık komut dosyaları başarıyla çalıştırılırsa, ansible playbook ana bilgisayar `/var/lib/waagent/custom-script/download/1` dizinindeki günlük dosyalarının incelenmesi gerekir. Hata OpenShift gerçek yükleme sırasında oluştu, stdout dosyası hata görüntüler. Daha fazla yardım için Destek'e başvurmak için bu bilgileri kullanın.
+Hazırlama betikleri başarıyla çalıştırılmışsa, anlabilen PlayBook konağının `/var/lib/waagent/custom-script/download/1` dizinindeki günlük dosyalarının incelenmesi gerekir. OpenShift 'in gerçek yüklemesi sırasında hata oluştuysa, stdout dosyasında hata görüntülenir. Daha fazla yardım için desteğe başvurmak üzere bu bilgileri kullanın.
 
-Örnek çıktı
+Örnek çıkış
 
 ```json
 TASK [openshift_storage_glusterfs : Load heketi topology] **********************
@@ -79,32 +79,32 @@ Failure summary:
      Message:  Failed without returning a message.
 ```
 
-Yükleme sırasında en sık karşılaşılan hatalar şunlardır:
+Yükleme sırasında en yaygın hatalar şunlardır:
 
-1. Özel anahtar parolası vardır
-2. Özel anahtarlı anahtar kasası sırrı doğru oluşturulmadı
-3. Hizmet temel kimlik bilgileri yanlış girildi
-4. Hizmet sorumlusunun kaynak grubuna katkıda bulunan erişimi yoktur
+1. Özel anahtarda parola vardır
+2. Özel anahtarla Anahtar Kasası gizli anahtarı doğru bir şekilde oluşturulmadı
+3. Hizmet sorumlusu kimlik bilgileri yanlış girildi
+4. Hizmet sorumlusu, kaynak grubuna katkıda bulunan erişimi yok
 
-### <a name="private-key-has-a-passphrase"></a>Private Key'in bir parolası vardır
+### <a name="private-key-has-a-passphrase"></a>Özel anahtarda bir parola vardır
 
-SSH için izin reddedildi bir hata görürsünüz. özel anahtar üzerinde bir geçiş ifadesini kontrol etmek için ansible playbook ana bilgisayara ssh.
+SSH için iznin reddedildiğini belirten bir hata görürsünüz. Özel anahtardaki bir parolayı denetlemek için anerişilebilir PlayBook konağına SSH.
 
-### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Özel anahtarlı anahtar kasası sırrı doğru oluşturulmadı
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Özel anahtarla Anahtar Kasası gizli anahtarı doğru bir şekilde oluşturulmadı
 
-Özel anahtar ansible playbook ana bilgisayara kopyalanır - ~/.ssh/id_rsa. Bu dosyanın doğru olduğunu onaylayın. Bir SSH oturumunu ansible playbook ana bilgisayardan küme düğümlerinden birine açarak test edin.
+Özel anahtar, anerişilebilir PlayBook konağına kopyalanır-~/. ssh/id_rsa. Bu dosyanın doğru olduğundan emin olun. Anerişilebilir PlayBook ana bilgisayarındaki küme düğümlerinden birine bir SSH oturumu açarak test edin.
 
-### <a name="service-principal-credentials-were-entered-incorrectly"></a>Hizmet temel kimlik bilgileri yanlış girildi
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>Hizmet sorumlusu kimlik bilgileri yanlış girildi
 
-Şablonveya Market teklifine giriş sağlanırken, yanlış bilgiler sağlandı. Hizmet sorumlusu için doğru appId (clientId) ve parolayı (clientSecret) kullandığınızdan emin olun. Aşağıdaki azure cli komutunu vererek doğrulayın.
+Şablona veya Market teklifine giriş sağlarken yanlış bilgiler sağlandı. Hizmet sorumlusu için doğru AppID (ClientID) ve parolayı (clientSecret) kullandığınızdan emin olun. Aşağıdaki Azure CLI komutunu vererek doğrulayın.
 
 ```azurecli
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
-### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Hizmet sorumlusunun kaynak grubuna katkıda bulunan erişimi yoktur
+### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Hizmet sorumlusu, kaynak grubuna katkıda bulunan erişimi yok
 
-Azure bulut sağlayıcısı etkinse, kullanılan hizmet sorumlusunun kaynak grubuna katkıda bulunan lara erişimi olmalıdır. Aşağıdaki azure cli komutunu vererek doğrulayın.
+Azure bulut sağlayıcısı etkinse kullanılan hizmet sorumlusu, kaynak grubuna katkıda bulunan erişimine sahip olmalıdır. Aşağıdaki Azure CLI komutunu vererek doğrulayın.
 
 ```azurecli
 az group update -g <openshift resource group> --set tags.sptest=test
@@ -112,7 +112,7 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 ## <a name="additional-tools"></a>Ek araçlar
 
-Bazı hatalar için, daha fazla bilgi almak için aşağıdaki komutları da kullanabilirsiniz:
+Bazı hatalarda, daha fazla bilgi edinmek için aşağıdaki komutları da kullanabilirsiniz:
 
-1. systemctl \<durum hizmeti>
-2. journalctl -xe
+1. systemctl durum \<hizmeti>
+2. journalctl-XE

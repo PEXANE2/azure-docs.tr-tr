@@ -5,48 +5,48 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
 ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768763"
 ---
-### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Anahtar hareketler (10 saniyede izin verilen maksimum işlemler, bölge başına kasa başına<sup>1):</sup>
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Anahtar işlemleri (bölge başına en fazla 10 saniye içinde izin verilen işlem sayısı<sup>1</sup>):
 
-|Anahtar türü|HSM tuşu<br>CREATE anahtarı|HSM tuşu<br>Diğer tüm işlemler|Yazılım anahtarı<br>CREATE anahtarı|Yazılım anahtarı<br>Diğer tüm işlemler|
+|Anahtar türü|HSM anahtarı<br>Anahtar oluştur|HSM anahtarı<br>Diğer tüm işlemler|Yazılım anahtarı<br>Anahtar oluştur|Yazılım anahtarı<br>Diğer tüm işlemler|
 |:---|---:|---:|---:|---:|
-|RSA 2,048-bit|5|1000|10|2.000|
-|RSA 3,072-bit|5|250|10|500|
-|RSA 4,096-bit|5|125|10|250|
+|RSA 2.048 bit|5|1000|10|2.000|
+|RSA 3.072 bit|5|250|10|500|
+|RSA 4.096 bit|5|125|10|250|
 |ECC P-256|5|1000|10|2.000|
 |ECC P-384|5|1000|10|2.000|
 |ECC P-521|5|1000|10|2.000|
 |ECC SECP256K1|5|1000|10|2.000|
 
 > [!NOTE]
-> Önceki tabloda, RSA 2.048 bit yazılım anahtarları için, 10 saniyede 2.000 GET işlemine izin verildiğini görüyoruz. RSA 2.048 bit HSM tuşları için 10 saniyede 1.000 GET işlemine izin verilir.
+> Önceki tabloda, RSA 2.048-bit yazılım anahtarları için, 2.000/10 saniyeye kadar işlem yapılmasına izin verileceğini görüyoruz. RSA 2.048 bit HSM anahtarları için, her 10 saniye başına 1.000 al işlem yapılmasına izin verilir.
 >
-> Azaltma eşikleri ağırlıklıdır ve uygulama bunların toplamındadır. Örneğin, önceki tabloda gösterildiği gibi, RSA HSM tuşlarında GET işlemleri gerçekleştirdiğinizde, 2.048 bit anahtarlara kıyasla 4.096 bit tuşları kullanmak sekiz kat daha pahalıdır. Çünkü 1.000/125 = 8.
+> Daraltma eşikleri ağırlıklı olur ve zorlamasının toplam üzerinde olması gerekir. Örneğin, önceki tabloda gösterildiği gibi, RSA HSM anahtarları üzerinde al işlemleri gerçekleştirdiğinizde, 2.048-bit anahtarlara kıyasla 4.096 bitlik anahtarların kullanılması sekiz kat daha pahalıdır. Bunun nedeni 1000/125 = 8 ' dir.
 >
-> Belirli bir 10 saniyelik aralıkta, bir *only one* Azure Anahtar Kasası istemcisi `429` azaltma http durum koduyla karşılaşmadan önce aşağıdaki işlemlerden yalnızca birini yapabilir:
-> - 2.000 RSA 2.048 bit yazılım anahtarlı GET işlemleri
-> - 1.000 RSA 2.048 bit HSM-anahtar GET işlemleri
-> - 125 RSA 4.096 bit HSM-anahtar GET işlemleri
-> - 124 RSA 4.096 bit HSM-key GET işlemleri ve 8 RSA 2.048 bit HSM-key GET işlemleri
+> Belirli bir 10 saniyelik aralıkta, bir Azure Key Vault istemci, `429` azaltma http durum kodu ile karşılaşmadan önce aşağıdaki işlemlerden *yalnızca birini* gerçekleştirebilir:
+> - 2.000 RSA 2.048-bit yazılım-anahtar al işlemler
+> - 1.000 RSA 2.048-bit HSM-anahtar al işlemleri
+> - 125 RSA 4.096-bit HSM-anahtar al işlemleri
+> - 124 RSA 4.096-bit HSM-anahtar al işlem ve 8 RSA 2.048-bit HSM-anahtar al işlem
 
-### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Sırlar, yönetilen depolama hesabı anahtarları ve kasa işlemleri:
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Gizli dizileri, yönetilen depolama hesabı anahtarları ve kasa işlemleri:
 
-| İşlemtürü | 10 saniyede izin verilen maksimum işlemler, bölge başına kasa başına<sup>1</sup> |
+| İşlem türü | Bölge başına en fazla 10 saniye içinde izin verilen işlem sayısı<sup>1</sup> |
 | --- | --- |
 | Tüm işlemler |2.000 |
 
-Bu sınırlar aşıldığında azaltmanın nasıl işleyeceğiniz hakkında bilgi için [Azure Anahtar Kasası azaltma kılavuzuna](../articles/key-vault/key-vault-ovw-throttling.md)bakın.
+Bu sınırlar aşıldığında azaltmayı işleme hakkında daha fazla bilgi için bkz. [Azure Key Vault azaltma Kılavuzu](../articles/key-vault/key-vault-ovw-throttling.md).
 
-<sup>1</sup> Tüm işlem türleri için abonelik genelindeki sınır, anahtar kasa sınırı başına beş katıdır. Örneğin, abonelik başına HSM-diğer işlemler abonelik başına 10 saniye içinde 5.000 işlemle sınırlıdır.
+<sup>1</sup> tüm işlem türleri için abonelik genelinde sınır, Anahtar Kasası sınırı başına beş kat olur. Örneğin, HSM-abonelik başına diğer işlemler, abonelik başına 10 saniye içinde 5.000 işlem ile sınırlıdır.
 
-### <a name="azure-private-link-integration"></a>Azure Özel Bağlantı tümleştirmesi
+### <a name="azure-private-link-integration"></a>Azure özel bağlantı tümleştirmesi
 
 | Kaynak | Sınır |
 | -------- | ----- |
-| Anahtar kasası başına özel uç noktaları | 64 |
-| Abonelik başına özel uç noktaları olan anahtar kasaları | 64 |
+| Anahtar Kasası başına özel uç noktalar | 64 |
+| Abonelik başına özel uç noktalara sahip anahtar kasaları | 64 |

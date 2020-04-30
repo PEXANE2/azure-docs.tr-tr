@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB'nin MongoDB için API'sinde dizin oluşturmayı yönetme
-description: Bu makalede, MongoDB API'yi kullanarak Azure Cosmos DB dizin oluşturma özelliklerine genel bir bakış sunulur.
+title: MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
+description: Bu makalede, MongoDB API 'sini kullanarak Azure Cosmos DB Dizin oluşturma özelliklerine ilişkin bir genel bakış sunulmaktadır.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
@@ -9,82 +9,82 @@ ms.date: 04/03/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: fd602f88acf26e821e57e0a844f543aac08dad0d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732700"
 ---
-# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB'nin MongoDB için API'sinde dizin oluşturmayı yönetme
+# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
 
-Azure Cosmos DB'nin MongoDB için API'si, Azure Cosmos DB'nin temel dizin yönetimi özelliklerinden yararlanır. Bu makalede, MongoDB için Azure Cosmos DB'nin API'sini kullanarak dizin lerin nasıl eklenilen üzerinde duruluyor. [Azure Cosmos DB'de](index-overview.md) tüm API'lerde alakalı olan dizin oluşturmayla ilgili bir genel bakış da okuyabilirsiniz.
+MongoDB için Azure Cosmos DB API 'SI, Azure Cosmos DB temel dizin yönetimi olanaklarından yararlanır. Bu makalede, MongoDB için Azure Cosmos DB API 'sini kullanarak dizin ekleme konusu ele alınmaktadır. Ayrıca, tüm API 'lerde ilgili olan [Azure Cosmos DB Dizin oluşturma hakkında genel bir bakış](index-overview.md) da okuyabilirsiniz.
 
-## <a name="indexing-for-mongodb-server-version-36"></a>MongoDB sunucu sürümü 3.6 için dizin oluşturma
+## <a name="indexing-for-mongodb-server-version-36"></a>MongoDB sunucu sürümü 3,6 için dizin oluşturma
 
-Azure Cosmos DB'nin MongoDB sunucu sürümü için 3.6 `_id` API'si alanı otomatik olarak dizine dizine dizine dizine ekleyebilir ve bu da bırakılamaz. Parça anahtarı başına `_id` alanın benzersizliğini otomatik olarak zorlar.
+Azure Cosmos DB MongoDB Server sürüm 3,6 için API 'SI, `_id` alanı otomatik olarak dizinlenebilir ve bu bırakılamaz. Bu, parça anahtarı başına `_id` alanın benzersizlik düzeyini otomatik olarak zorlar.
 
-Ek alanları dizine koymak için MongoDB dizin yönetimi komutlarını uygularsınız. MongoDB'de olduğu gibi, Azure Cosmos DB'nin MongoDB `_id` için api'si yalnızca alanı otomatik olarak dizine dizine dahil eder. Bu varsayılan dizin oluşturma ilkesi, varsayılan olarak tüm alanları dizine ekleyen Azure Cosmos DB SQL API'den farklıdır.
+Ek alanlara dizin eklemek için MongoDB Dizin Yönetimi komutlarını uygularsınız. MongoDB 'de olduğu gibi, MongoDB için Azure Cosmos DB API 'SI yalnızca `_id` alanı otomatik olarak dizine ekler. Bu varsayılan dizin oluşturma ilkesi, tüm alanları varsayılan olarak dizinleyen Azure Cosmos DB SQL API 'sinden farklıdır.
 
-Bir sorguya bir sıralama uygulamak için, sıralama işleminde kullanılan alanlarda bir dizin oluşturmanız gerekir.
+Bir sorguya sıralama uygulamak için sıralama işleminde kullanılan alanlarda bir dizin oluşturmanız gerekir.
 
 ## <a name="index-types"></a>Dizin türleri
 
 ### <a name="single-field"></a>Tek alan
 
-Herhangi bir alanda dizinler oluşturabilirsiniz. Tek alan dizininin sıralama sırası önemli değildir. Aşağıdaki komut alanında `name`bir dizin oluşturur:
+Tek bir alanda dizinler oluşturabilirsiniz. Tek alan dizininin sıralama düzeni önemi değildir. Aşağıdaki komut, alanında `name`bir dizin oluşturur:
 
 `db.coll.createIndex({name:1})`
 
-Bir sorgu, varsa birden çok tek alan dizini kullanır. Kapsayıcı başına en fazla 500 tek alan dizini oluşturabilirsiniz.
+Bir sorgu, kullanılabilir yerlerde birden çok tek alan dizini kullanır. Kapsayıcı başına en çok 500 tek alan dizini oluşturabilirsiniz.
 
-### <a name="compound-indexes-mongodb-server-version-36"></a>Bileşik dizinler (MongoDB sunucu sürümü 3.6)
+### <a name="compound-indexes-mongodb-server-version-36"></a>Bileşik dizinler (MongoDB sunucusu sürüm 3,6)
 
-Azure Cosmos DB'nin MongoDB için API'si, sürüm 3.6 wire protokolünü kullanan hesaplar için bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. MongoDB'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda verimli bir şekilde sıralanması gerekiyorsa bileşik dizini oluşturmanız gerekir. Sıralaması gerekmeyen birden çok filtresi olan sorgular için, tek bir bileşik dizin yerine birden çok tek alan dizinleri oluşturun.
+Azure Cosmos DB, MongoDB için API, sürüm 3,6 kablo protokolünü kullanan hesaplara yönelik bileşik dizinleri destekler. Bileşik dizine en fazla sekiz alan ekleyebilirsiniz. MongoDB 'nin aksine, yalnızca sorgunuzun aynı anda birden çok alanda etkili bir şekilde sıralanması gerekiyorsa bileşik bir dizin oluşturmanız gerekir. Sıralama gerektirmeyen birden çok filtreye sahip sorgularda tek bir bileşik dizin yerine birden çok tek alan dizini oluşturun.
 
-Aşağıdaki komut alanlarda `name` bileşik bir indeks oluşturur ve: `age`
+Aşağıdaki komut, alanlarda `name` bir bileşik dizin oluşturur ve: `age`
 
 `db.coll.createIndex({name:1,age:1})`
 
-Bileşik dizinleri, aşağıdaki örnekte gösterildiği gibi, aynı anda birden çok alanda verimli bir şekilde sıralamak için kullanabilirsiniz:
+Aşağıdaki örnekte gösterildiği gibi, aynı anda birden çok alanda etkili bir şekilde sıralamak için bileşik dizinleri kullanabilirsiniz:
 
 `db.coll.find().sort({name:1,age:1})`
 
-Tüm alanlarda ters sıralama sırası ile bir sorguüzerinde verimli bir şekilde sıralamak için önceki bileşik dizini de kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
+Yukarıdaki bileşik dizini, tüm alanlarda ters sıralama düzeni ile bir sorguyu etkin bir şekilde sıralamak için de kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
 
 `db.coll.find().sort({name:-1,age:-1})`
 
-Ancak, bileşik dizindeki yolların sırası sorguyla tam olarak eşleşmelidir. Ek bir bileşik dizin gerektiren bir sorgu örneği aşağıda verilmiştir:
+Ancak, Birleşik dizindeki yolların sırası sorguyla tam olarak eşleşmelidir. Ek bir bileşik dizin gerektirecek bir sorgu örneği aşağıda verilmiştir:
 
 `db.coll.find().sort({age:1,name:1})`
 
-### <a name="multikey-indexes"></a>Çok anahtarlı dizinler
+### <a name="multikey-indexes"></a>Çok tuşlu dizinler
 
-Azure Cosmos DB, dizilerde depolanan içeriği dizileri dizilere diziletmek için çok anahtarlı dizinler oluşturur. Bir alanı dizi değeriyle diziye diziye diziye diziye diziye diziye diziye diziye diziye diziyle diziye otomatik olarak dizilersiniz.
+Azure Cosmos DB diziler içinde depolanan içeriğe dizin eklemek için çok tuşlu dizinler oluşturur. Bir alanı bir dizi değeriyle dizinleyiniz, Azure Cosmos DB dizideki her öğeyi otomatik olarak dizine ekler.
 
-### <a name="geospatial-indexes"></a>Jeouzamsal indeksler
+### <a name="geospatial-indexes"></a>Jeo-uzamsal dizinler
 
-Birçok jeouzamsal operatör jeouzamsal indekslerden yararlanacaktır. Şu anda Azure Cosmos DB'nin MongoDB için API'si dizinleri destekler. `2dsphere` API henüz dizinleri desteklemiyor. `2d`
+Birçok Jeo-uzamsal işleç, Jeo-uzamsal dizinlerden faydalanır. Şu anda, MongoDB için Azure Cosmos DB API 'leri `2dsphere` destekler. API henüz dizinleri desteklemez `2d` .
 
-Aşağıda, sahada bir jeouzamsal indeks oluşturmanın `location` bir örneği verilmiştir:
+`location` Alanda Jeo-uzamsal dizin oluşturma örneği aşağıda verilmiştir:
 
 `db.coll.createIndex({ location : "2dsphere" })`
 
 ### <a name="text-indexes"></a>Metin dizinleri
 
-Azure Cosmos DB'nin MongoDB için API'si şu anda metin dizini desteklememektedir. Dizelerdeki metin arama sorguları için Azure Cosmos DB ile [Azure Bilişsel Arama](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) tümleştirmesi kullanmanız gerekir.
+MongoDB için Azure Cosmos DB API 'SI Şu anda metin dizinlerini desteklememektedir. Dizelerde metin arama sorguları için, Azure Cosmos DB ile [Azure bilişsel arama](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) tümleştirmesini kullanmanız gerekir.
 
-## <a name="index-properties"></a>Dizin özellikleri
+## <a name="index-properties"></a>Dizin Özellikleri
 
-Aşağıdaki işlemler, havale protokolü sürüm 3.6'yı sunan hesaplar ve önceki sürümler sunan hesaplar için yaygındır. [Desteklenen dizinler ve dizinlenmiş özellikler](mongodb-feature-support-36.md#indexes-and-index-properties)hakkında daha fazla bilgi edinebilirsiniz.
+Aşağıdaki işlemler, hat Protokolü sürüm 3,6 ' a hizmet veren hesaplar ve önceki sürümlere hizmet veren hesaplar için ortaktır. [Desteklenen dizinler ve dizinli Özellikler](mongodb-feature-support-36.md#indexes-and-index-properties)hakkında daha fazla bilgi edinebilirsiniz.
 
 ### <a name="unique-indexes"></a>Benzersiz dizinler
 
-[Benzersiz dizinler,](unique-keys.md) iki veya daha fazla belgenin dizine alınan alanlar için aynı değeri içermediğini zorlamak için yararlıdır.
+[Benzersiz dizinler](unique-keys.md) , iki veya daha fazla belgenin dizinli alanlar için aynı değeri içermediğini zorlarken faydalıdır.
 
 > [!IMPORTANT]
-> Benzersiz dizinler yalnızca koleksiyon boşolduğunda (belge içermediğinde) oluşturulabilir.
+> Benzersiz dizinler yalnızca koleksiyon boş olduğunda (belge içermiyorsa) oluşturulabilir.
 
-Aşağıdaki komut alanında `student_id`benzersiz bir dizin oluşturur:
+Aşağıdaki komut, alanında `student_id`benzersiz bir dizin oluşturur:
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
@@ -97,9 +97,9 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 }
 ```
 
-Parçalı koleksiyonlar için, benzersiz bir dizin oluşturmak için parça (bölüm) anahtarısağlamanız gerekir. Diğer bir deyişle, parçalı bir koleksiyondaki tüm benzersiz dizinler, alanlardan birinin bölüm anahtarı olduğu bileşik dizinlerdir.
+Parçalı koleksiyonlar için, benzersiz bir dizin oluşturmak üzere parça (bölüm) anahtarını sağlamanız gerekir. Diğer bir deyişle, parçalı bir koleksiyondaki tüm benzersiz dizinler, alanlardan birinin bölüm anahtarı olduğu bileşik dizinlerdir.
 
-Aşağıdaki ```coll``` komutlar, alanlarda ```university``` `student_id` benzersiz bir dizin içeren, parçalanmış bir koleksiyon `university`(parça anahtarı) oluşturur ve:
+Aşağıdaki ```coll``` komutlar, alanlar ```university``` `student_id` üzerinde benzersiz bir dizin içeren parçalı bir koleksiyon (parça anahtarı) oluşturur: `university`
 
 ```shell
 globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
@@ -118,13 +118,13 @@ globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {
 }
 ```
 
-Önceki örnekte, yan tümceyi ```"university":1``` atlayarak aşağıdaki ileti ile bir hata döndürür:
+Önceki örnekte, ```"university":1``` yan tümcesini atlayarak aşağıdaki iletiyle bir hata döndürülür:
 
 ```"cannot create unique index over {student_id : 1.0} with shard key pattern { university : 1.0 }"```
 
 ### <a name="ttl-indexes"></a>TTL dizinleri
 
-Belirli bir koleksiyonda belgenin sona ermesini etkinleştirmek [için, zaman-to-live (TTL) dizini](../cosmos-db/time-to-live.md)oluşturmanız gerekir. TTL dizini, `_ts` alan üzerinde değeri `expireAfterSeconds` olan bir dizindir.
+Belirli bir koleksiyonda belge kullanım süresini etkinleştirmek için [yaşam süresi (TTL) dizini](../cosmos-db/time-to-live.md)oluşturmanız gerekir. TTL dizini, bir `_ts` `expireAfterSeconds` değeri olan alan üzerindeki bir dizindir.
 
 Örnek:
 
@@ -132,40 +132,40 @@ Belirli bir koleksiyonda belgenin sona ermesini etkinleştirmek [için, zaman-to
 globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ```
 
-Önceki komut, ```db.coll``` koleksiyonda son 10 saniye içinde değiştirilmemiş tüm belgeleri siler.
+Yukarıdaki komut, ```db.coll``` koleksiyonda son 10 saniye içinde değiştirilmeyen tüm belgeleri siler.
 
 > [!NOTE]
-> **_ts** alanı Azure Cosmos DB'ye özgüdür ve MongoDB istemcilerinden erişilemez. Belgenin son modifikasyonunun zaman damgasını içeren ayrılmış (sistem) özelliğidir.
+> **_Ts** alanı Azure Cosmos DB özeldir ve MongoDB istemcilerinden erişilemez. Belgenin son değiştirildiği zaman damgasını içeren bir ayrılmış (sistem) özelliğidir.
 
 ## <a name="track-index-progress"></a>Dizin ilerlemesini izleme
 
-Azure Cosmos DB'nin MongoDB için API'sinin `currentOp()` 3.6 sürümü, bir veritabanı örneğinde dizin ilerlemesini izleme komutunu destekler. Bu komut, veritabanı örneğinde devam eden işlemler hakkında bilgi içeren bir belge döndürür. Yerel MongoDB'deki tüm devam eden işlemleri izlemek için `currentOp` komutu kullanırsınız. Azure Cosmos DB'nin MongoDB için API'sinde bu komut yalnızca dizin işlemini izlemeyi destekler.
+Azure Cosmos DB MongoDB için API 'sinin 3,6 sürümü, `currentOp()` veritabanı örneğindeki dizin ilerlemesini izleme komutunu destekler. Bu komut, bir veritabanı örneği üzerinde devam eden işlemler hakkında bilgi içeren bir belge döndürür. Yerel MongoDB 'de tüm devam eden işlemleri izlemek için `currentOp` komutunu kullanın. MongoDB için Azure Cosmos DB API 'sinde bu komut yalnızca dizin işleminin izlenmesini destekler.
 
-Dizin ilerlemesini izlemek için komutun nasıl kullanılacağını `currentOp` gösteren bazı örnekler aşağıda verilmiştir:
+İşte Dizin ilerlemesini izlemek için `currentOp` komutunun nasıl kullanılacağını gösteren bazı örnekler:
 
-* Koleksiyon için dizin ilerlemesini alın:
+* Bir koleksiyon için Dizin ilerlemesini al:
 
    ```shell
    db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
    ```
 
-* Veritabanındaki tüm koleksiyonlar için dizin ilerleme sini alın:
+* Bir veritabanındaki tüm koleksiyonlar için Dizin ilerlemesini al:
 
   ```shell
   db.currentOp({"command.$db": <databaseName>})
   ```
 
-* Azure Cosmos hesabındaki tüm veritabanları ve koleksiyonlar için dizin ilerlemesini alın:
+* Azure Cosmos hesabındaki tüm veritabanları ve koleksiyonlar için Dizin ilerlemesini alın:
 
   ```shell
   db.currentOp({"command.createIndexes": { $exists : true } })
   ```
 
-### <a name="examples-of-index-progress-output"></a>Dizin ilerleme çıktısı örnekleri
+### <a name="examples-of-index-progress-output"></a>Dizin ilerleme çıkışı örnekleri
 
-Dizin ilerleme ayrıntıları, geçerli dizin çalışması için ilerleme yüzdesini gösterir. Dizin ilerlemenin farklı aşamaları için çıktı belge biçimini gösteren bir örnek aşağıda verilmiştir:
+Dizin ilerleme durumu ayrıntıları geçerli dizin işleminin ilerleme yüzdesini gösterir. Dizin ilerleme durumunun farklı aşamaları için çıkış belgesi biçimini gösteren bir örnek aşağıda verilmiştir:
 
-- Yüzde 60'ı tamamlanmış bir "foo" koleksiyonu ve "çubuk" veritabanındaki dizin işlemi aşağıdaki çıktı belgesine sahip olacaktır. Alan, `Inprog[0].progress.total` hedef tamamlama yüzdesi olarak 100'u gösterir.
+- "Foo" koleksiyonundaki bir dizin işlemi ve yüzde 60 olan "çubuk" veritabanı aşağıdaki çıktı belgesine sahip olacaktır. `Inprog[0].progress.total` Alan, hedef tamamlanma yüzdesi olarak 100 gösterir.
 
    ```json
    {
@@ -189,7 +189,7 @@ Dizin ilerleme ayrıntıları, geçerli dizin çalışması için ilerleme yüzd
    }
    ```
 
-- Bir dizin işlemi bir "foo" koleksiyonu ve "çubuk" veritabanında yeni başladıysa, çıktı belgesi ölçülebilir bir düzeye ulaşana kadar yüzde 0 ilerleme gösterebilir.
+- Bir dizin işlemi bir "foo" koleksiyonu ve "çubuk" veritabanı üzerinde yeni başlamışsa, çıkış belgesi ölçülebilir bir düzeye ulaşıncaya kadar yüzde 0 ilerleme durumu gösterebilir.
 
    ```json
    {
@@ -213,7 +213,7 @@ Dizin ilerleme ayrıntıları, geçerli dizin çalışması için ilerleme yüzd
    }
    ```
 
-- Devam eden dizin işlemi sona erdiğinde, çıktı `inprog` belgesi boş işlemleri gösterir.
+- Devam eden dizin işlemi tamamlandığında, çıktı belgesinde boş `inprog` işlemler görüntülenir.
 
    ```json
    {
@@ -224,36 +224,36 @@ Dizin ilerleme ayrıntıları, geçerli dizin çalışması için ilerleme yüzd
 
 ### <a name="background-index-updates"></a>Arka plan dizini güncelleştirmeleri
 
-**Arka Plan** dizin özelliği için belirtilen değerne bakılmaksızın, dizin güncelleştirmeleri her zaman arka planda yapılır. Dizin güncelleştirmeleri İstek Birimlerini (RUs) diğer veritabanı işlemlerine göre daha düşük bir öncelikle tükettiği için, dizin değişiklikleri yazma, güncelleştirme veya silme için herhangi bir kapalı kalma süresine neden olmaz.
+**Arka** plan dizini özelliği için belirtilen değerden bağımsız olarak, dizin güncelleştirmeleri her zaman arka planda yapılır. Dizin güncelleştirmeleri, diğer veritabanı işlemlerinden daha düşük bir öncelikte Istek birimlerini (ru) tükettiğinden, dizin değişiklikleri yazma, güncelleştirme veya silme işlemlerine hiçbir kesinti oluşmasına neden olmaz.
 
-Yeni bir dizin eklediğinizde, sorgular hemen dizini kullanır. Bu, sorguların eşleşen tüm sonuçları döndürmeyebileceği ve bunu hata döndürmeden yapacağı anlamına gelir. Dizin dönüşümü tamamlandığında, sorgu sonuçları tutarlı olacaktır. [Dizin ilerlemesini izleyebilirsiniz.](#track-index-progress)
+Yeni bir dizin eklediğinizde, sorgular dizini hemen kullanacaktır. Bu, sorguların tüm eşleşen sonuçları döndürmeyeceği ve herhangi bir hata döndürülmeksizin yapamayacağı anlamına gelir. Dizin dönüştürmesi tamamlandığında sorgu sonuçları tutarlı olur. [Dizin ilerlemesini izleyebilirsiniz](#track-index-progress).
 
-## <a name="migrate-collections-with-indexes"></a>Koleksiyonları dizinlerle geçirin
+## <a name="migrate-collections-with-indexes"></a>Koleksiyonları dizinlerle geçirme
 
-Şu anda, yalnızca koleksiyon belge içermediğinde benzersiz dizinler oluşturabilirsiniz. Popüler MongoDB geçiş araçları verileri aldıktan sonra benzersiz dizinler oluşturmaya çalışın. Bu sorunu aşmak için, geçiş aracının denemesine izin vermek yerine ilgili koleksiyonları ve benzersiz dizinleri el ile oluşturabilirsiniz. (Bu davranışı ```mongorestore``` komut satırındaki `--noIndexRestore` bayrağı kullanarak elde edebilirsiniz.)
+Şu anda, koleksiyon belge içermiyorsa yalnızca benzersiz dizinler oluşturabilirsiniz. Popüler MongoDB geçiş araçları, verileri içeri aktardıktan sonra benzersiz dizinler oluşturmaya çalışır. Bu sorunu aşmak için, geçiş aracının denemeye izin vermek yerine, ilgili koleksiyonları ve benzersiz dizinleri el ile oluşturabilirsiniz. (Komut satırındaki ```mongorestore``` `--noIndexRestore` bayrağını kullanarak için bu davranışı elde edebilirsiniz.)
 
-## <a name="indexing-for-mongodb-version-32"></a>MongoDB sürüm 3.2 için dizin oluşturma
+## <a name="indexing-for-mongodb-version-32"></a>MongoDB sürüm 3,2 için dizin oluşturma
 
-Kullanılabilir dizin oluşturma özellikleri ve varsayılanları, MongoDB havale protokolünün 3.2 sürümüyle uyumlu olan Azure Cosmos hesapları için farklıdır. [Hesabınızın sürümünü kontrol](mongodb-feature-support-36.md#protocol-support)edebilirsiniz. Bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)doldurarak 3.6 sürümüne yükseltebilirsiniz.
+Kullanılabilir dizin oluşturma özellikleri ve varsayılanlar, MongoDB kablo protokolünün 3,2 sürümü ile uyumlu olan Azure Cosmos hesapları için farklıdır. [Hesabınızın sürümüne](mongodb-feature-support-36.md#protocol-support)bakabilirsiniz. Bir [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltebilirsiniz.
 
-Sürüm 3.2 kullanıyorsanız, bu bölümde sürüm 3.6 ile ilgili temel farklılıklar özetler.
+Sürüm 3,2 kullanıyorsanız, bu bölümde sürüm 3,6 ile ilgili önemli farklılıklar özetlenmektedir.
 
-### <a name="dropping-default-indexes-version-32"></a>Varsayılan dizinleri düşürme (sürüm 3.2)
+### <a name="dropping-default-indexes-version-32"></a>Varsayılan dizinler bırakılıyor (sürüm 3,2)
 
-Azure Cosmos DB'nin MongoDB için API'sinin 3,6 sürümünün aksine, sürüm 3,2 varsayılan olarak her özelliği dizinler. Bir koleksiyon için bu varsayılan dizinleri bırakmak```coll```için aşağıdaki komutu kullanabilirsiniz ( ):
+Azure Cosmos DB 3,6 sürümünün MongoDB için API 'sinin aksine, sürüm 3,2 varsayılan olarak her özelliği dizine ekler. Bir koleksiyon (```coll```) için bu varsayılan dizinleri bırakmak üzere aşağıdaki komutu kullanabilirsiniz:
 
 ```JavaScript
 > db.coll.dropIndexes()
 { "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
 ```
 
-Varsayılan dizinleri bıraktıktan sonra, sürüm 3.6'da olduğu gibi daha fazla dizin ekleyebilirsiniz.
+Varsayılan dizinleri bırakırken, sürüm 3,6 ' de olduğu gibi daha fazla dizin ekleyebilirsiniz.
 
-### <a name="compound-indexes-version-32"></a>Bileşik dizinler (sürüm 3.2)
+### <a name="compound-indexes-version-32"></a>Bileşik dizinler (sürüm 3,2)
 
-Bileşik dizinler bir belgenin birden çok alanına başvurular içerir. Bileşik dizin oluşturmak istiyorsanız, [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)doldurarak sürüm 3.6'ya yükseltin.
+Bileşik dizinler bir belgenin birden çok alanına başvurular içerir. Bileşik dizin oluşturmak isterseniz, [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)kaydederek 3,6 sürümüne yükseltin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB’de dizin oluşturma](../cosmos-db/index-policy.md)
-* [Azure Cosmos DB'deki verilerin süresi, yaşamak için zaman içinde otomatik olarak sona eriyor](../cosmos-db/time-to-live.md)
+* [Azure Cosmos DB verileri yaşam süresi ile otomatik olarak sona erer](../cosmos-db/time-to-live.md)

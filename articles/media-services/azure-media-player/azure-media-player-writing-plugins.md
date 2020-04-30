@@ -1,25 +1,25 @@
 ---
 title: Azure Media Player için eklenti yazma
-description: JavaScript ile Azure Media Player ile eklenti yazmayı öğrenin
+description: JavaScript ile Azure Media Player eklenti yazma hakkında bilgi edinin
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727118"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Azure Media Player için eklenti yazma #
 
-Bir eklenti JavaScript uzatmak veya oyuncu geliştirmek için yazılmıştır. Azure Media Player'ın görünümünü, işlevselliğini değiştiren eklentiler yazabilir ve hatta diğer hizmetlerle arabirimine sahip olabilirsiniz. Bunu iki kolay adımda yapabilirsiniz:
+Bir eklenti, oynatıcıyı genişletmek veya geliştirmek için yazılmış bir JavaScript 'dir. Azure Media Player görünümünü değiştiren eklentiler yazabilir, işlevselliği, hatta diğer hizmetlerle BT arabirimine sahip olur. Bunu iki kolay adımda yapabilirsiniz:
 
 ## <a name="step-1"></a>1. Adım ##
 
-JavaScript'inizi aşağıdaki gibi bir fonksiyonla yazın:
+JavaScript kodunuzu şöyle bir işlevde yazın:
 
 ```javascript
 
@@ -33,7 +33,7 @@ JavaScript'inizi aşağıdaki gibi bir fonksiyonla yazın:
     }).call(this);
 ```
 
-Kodunuzu doğrudan HTML sayfanıza etiketler `<script>` içinde veya harici bir JavaScript dosyasında yazabilirsiniz. İkincisini yaparsanız, AMP komut dosyasından *sonra* `<head>` JavaScript dosyasını HTML sayfanızın dosyasına eklediğinizden emin olun.
+Kodunuzu doğrudan HTML sayfanıza `<script>` veya bir dış JavaScript dosyasına yazabilirsiniz. İkincisini yaparsanız, AMP betiği `<head>` *sonrasında* HTML sayfanıza JavaScript dosyasını eklediğinizden emin olun.
 
 Örnek:
 
@@ -47,7 +47,7 @@ Kodunuzu doğrudan HTML sayfanıza etiketler `<script>` içinde veya harici bir 
 ```
 
 ## <a name="step-2"></a>2. Adım ##
-JavaScript ile eklentiyi iki şekilde başlatma:
+Eklentiyi JavaScript ile iki şekilde başlatın:
 
 1. Yöntem:
 
@@ -74,21 +74,21 @@ Yöntem 2:
     video.yourPluginName({[your plugins option]: [example option]});
 ```
 
-Eklenti seçenekleri gerekli değildir, bunlar da dahil olmak üzere sadece kaynak kodunu değiştirmek zorunda kalmadan davranışını yapılandırmak için eklentinizi kullanan geliştiriciler sağlar.
+Eklenti seçenekleri gerekli değildir, bunlar da dahil olmak üzere, kendi eklentisini kullanan geliştiricilerin, kaynak kodu değiştirmeye gerek kalmadan davranışını yapılandırmasına izin verir.
 
-İlham ve eklenti oluşturma hakkında daha fazla örnek için [galerimize](azure-media-player-plugin-gallery.md) bir göz atın
+Bir eklenti oluşturmaya yönelik daha fazla örnek için [galerimize](azure-media-player-plugin-gallery.md) göz atın
 
 >[!NOTE]
-> Plugin kodu, izleyicinin oyuncu deneyimi boyunca DOM'daki öğeleri dinamik olarak değiştirir, asla oyuncunun kaynak kodunda kalıcı değişiklikler yapmayız. Burası, tarayıcınızın geliştirici araçlarının anlaşılmasının işe yarayabilir. Örneğin, bir öğenin oyuncudaki görünümünü değiştirmek isterseniz, HTML öğesini sınıf adına göre bulabilir ve ardından öznitelikleri buradan ekleyebilir veya değiştirebilirsiniz. Burada [HTML özniteliklerini değiştirme](http://www.w3schools.com/js/js_htmldom_html.asp) konusunda büyük bir kaynak.
+> Eklenti kodu, görüntüleyicisinin oynatıcı deneyimi süresince DOM 'daki öğeleri dinamik olarak değiştirir, Player 'ın kaynak kodunda hiçbir şekilde kalıcı değişiklik yapmaz. Bu, tarayıcınızın Geliştirici araçlarının anlaşıldığının yararlı olduğu yerdir. Örneğin, Player 'daki bir öğenin görünümünü değiştirmek isterseniz, kendi HTML öğesini sınıf adına göre bulabilir ve ardından buradan öznitelikleri ekleyebilir veya değiştirebilirsiniz. [HTML özniteliklerini değiştirirken](http://www.w3schools.com/js/js_htmldom_html.asp) harika bir kaynak aşağıda verilmiştir.
 
-### <a name="integrated-plugins"></a>Entegre Eklentiler ###
+### <a name="integrated-plugins"></a>Tümleşik eklentiler ###
 
- Şu anda AMP pişmiş iki eklentileri vardır: [zaman ucu](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) ve [anahtarlar.](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html) Bu eklentiler aslında oyuncu için modüler eklentileri olarak geliştirilmiştir ama şimdi oyuncu kaynak koduna dahildir.
+ Şu anda AMP: [zaman ipucu](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) ve [kısayol tuşlarının](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)bulunduğu iki eklenti vardır. Bu eklentiler, başlangıçta Player için modüler eklentiler olacak şekilde geliştirilmiştir ancak artık oynatıcı kaynak koduna eklenmiştir.
 
 ### <a name="plugin-gallery"></a>Eklenti Galerisi ###
 
-[Eklenti galerisinde,](http//:aka.ms/ampplugins) topluluğun zaman çizgisi işaretçileri, yakınlaştırma, analitik ve daha fazlası gibi özellikler için zaten katkıda bulunan birkaç eklentisi vardır. Sayfa eklentileri ve nasıl kurmak için talimatlar yanı sıra eklenti eylem gösteren bir demo erişim sağlar. Eğer bizim galeride yer alması gerektiğini düşünüyorum serin bir eklenti oluşturursanız, biz kontrol edebilirsiniz böylece göndermek için çekinmeyin.
+[Eklenti galerisinde](http//:aka.ms/ampplugins) , topluluğun zaman çizgisi işaretçileri, yakınlaştırma, analiz ve daha fazlası gibi özellikler için zaten katkıda bulunduğu çeşitli eklentileri vardır. Sayfa, eklentiye ve bu eklentinin eylemde bulunduğu bir tanıtıma yönelik olarak nasıl ayarlanalınacağını ve talimatlarına erişim sağlar. Galerimize dahil etmeniz gereken güzel bir eklenti oluşturursanız, bunları kullanıma sunmamız için gönderebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Azure Media Player Quickstart](azure-media-player-quickstart.md)
+- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)

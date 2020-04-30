@@ -1,6 +1,6 @@
 ---
-title: Azure Lsv2 serisi sanal makinelerde performansı optimize edin - Depolama
-description: Lsv2 serisi sanal makinelerde çözümünüz için performansı nasıl optimize edebilirsiniz öğrenin.
+title: Azure Lsv2-Series sanal makinelerinde performansı iyileştirme-depolama
+description: Lsv2 serisi sanal makinelerde çözümünüz için performansı en uygun hale getirmeyi öğrenin.
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -11,103 +11,103 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757693"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı optimize edin
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 serisi sanal makinelerde performansı iyileştirin
 
-Lsv2 serisi sanal makineler, çok çeşitli uygulamalar ve endüstriler de yerel depolama da yüksek G/Ç ve iş gücü gerektiren çeşitli iş yüklerini destekler.  Lsv2 serisi Büyük Veri, SQL, NoSQL veritabanları, veri ambarı ve Cassandra, MongoDB, Cloudera ve Redis gibi büyük işlem veritabanları için idealdir.
+Lsv2 serisi sanal makineler, çok sayıda uygulama ve sektör genelinde yerel depolamada yüksek g/ç ve aktarım hızı gerektiren çeşitli iş yüklerini destekler.  Lsv2-Series, Cassandra, MongoDB, Cloudera ve Redsıs gibi büyük veri, SQL, NoSQL veritabanları, veri ambarı ve büyük işlem veritabanları için idealdir.
 
-Lsv2 serisi Sanal Makineler (VM) tasarımı AMD EPYC™ 7551 işlemci işlemci, bellek, NVMe cihazlar ve VM'ler arasında en iyi performansı sağlamak için en üst düzeye çıkarır. Linux'taki iş ortaklarıyla çalışan çeşitli yapılar, Lsv2 serisi performans için optimize edilmiş ve şu anda şunları içerir:
+Lsv2 serisi sanal makinelerin (VM 'Ler) tasarımı, işlemci, bellek, NVMe cihazları ve VM 'Ler arasında en iyi performansı sağlamak için AMD EPN™ 7551 işlemcisini en üst düzeye çıkarır. Linux 'ta iş ortaklarıyla çalışırken, çeşitli derlemeler Lsv2 serisi performans için iyileştirilmiş ve şu anda şunları içerir:
 
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 8.0
+- RHEL 8,0
 - Debian 9
 - Debian 10
 
-Bu makalede, iş yüklerinizin ve uygulamalarınızın VM'lerde tasarlanan maksimum performansa ulaşmasını sağlamak için ipuçları ve öneriler sağlar. Azure Marketi'ne daha fazla Lsv2 optimize edilmiş resim eklendikçe bu sayfadaki bilgiler sürekli olarak güncellenir.
+Bu makalede, iş yüklerinizin ve uygulamalarınızın VM 'Lerde tasarlanan maksimum performansı elde etmelerini sağlamak için ipuçları ve öneriler sağlanmaktadır. Bu sayfadaki bilgiler, Azure Market 'e daha fazla Lsv2 iyileştirilmiş görüntü eklendikçe sürekli olarak güncelleştirilir.
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ yonga seti mimarisi
+## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ yonga kümesi mimarisi
 
-Lsv2 serisi VM'ler, Zen mikromimarisine dayalı AMD EYPC™ sunucu işlemcilerini kullanır. AMD, ON-die, on-package ve çok paketli iletişim için kullanılabilecek NUMA modeli için ölçeklenebilir ara bağlantı olarak ™ EYPC için Infinity Fabric (IF) geliştirdi. Intel modern monolitik kalıp işlemcilerde kullanılan QPI (Hızlı Yol Ara Bağlantısı) ve UPI (Ultra-Path Ara Bağlantı) ile karşılaştırıldığında, AMD'nin çok sayıdaNUMA küçük kalıp mimarisi hem performans avantajları hem de zorluklar getirebilir. Bellek bant genişliği ve gecikme kısıtlamalarının gerçek etkisi, çalışan iş yüklerinin türüne bağlı olarak değişebilir.
+Lsv2 serisi VM 'Ler, Zen mikro mimarisine bağlı olarak AMD EYPC™ sunucu işlemcileri kullanır. , Şirket içi, paket içi ve çok düzeyli iletişimler için kullanılabilen, NUMA modeli için ölçeklendirilebilir bağlantı olarak™ EYPC için AMD tarafından geliştirilen sonsuz yapı (IF). Intel modern monoparçalı-zar işlemcilerde kullanılan QPı (hızlı yol bağlantısı) ve UPı (Ultra Path Interconnect) ile karşılaştırıldığında, AMD 'nin çok-NUMA küçük-zar mimarisi, her iki performans avantajlarının yanı sıra zorlukları de getirebilir. Bellek bant genişliği ve gecikme kısıtlamalarının gerçek etkisi, çalışan iş yüklerinin türüne bağlı olarak değişebilir.
 
-## <a name="tips-to-maximize-performance"></a>Performansı en üst düzeye çıkarmak için ipuçları
+## <a name="tips-to-maximize-performance"></a>Performansı en üst düzeye çıkarmaya yönelik ipuçları
 
-* İş yükünüz için özel bir Linux GuestOS yüklüyorsanız, Hızlandırılmış Ağ'ın varsayılan olarak **KAPALı** olacağını unutmayın. Hızlandırılmış Ağ'ı etkinleştirmek istiyorsanız, en iyi performans için VM oluşturma sırasında etkinleştirin.
+* İş yükünüz için özel bir Linux tahmin TOS yüklüyorsanız, hızlandırılmış ağın varsayılan olarak **kapalı** olacağını unutmayın. Hızlandırılmış ağı etkinleştirmek istiyorsanız, en iyi performans için VM oluşturma sırasında etkinleştirin.
 
-* Lsv2 serisi VM'lere güç veren donanım, sekiz G/Ç Kuyruk Çifti (QP) içeren NVMe aygıtlarını kullanır. Her NVMe aygıtı G/Ç kuyruğu aslında bir çifttir: bir gönderme sırası ve tamamlama sırası. NVMe sürücüsü yuvarlak robin zamanlama da Dağıtarak bu sekiz G/Ç QPs kullanımını optimize etmek için ayarlanır. Maksimum performans elde etmek için, eşleşecek şekilde aygıt başına sekiz iş çalıştırın.
+* Lsv2 serisi VM 'Leri destekleyen donanım, en fazla sekiz g/ç kuyruğu çifti (QP) s ile NVMe cihazları kullanır. Her NVMe cihaz g/ç kuyruğu aslında bir çifdir: gönderim kuyruğu ve tamamlanma kuyruğu. NVMe sürücüsü, g/ç 'yi hepsini bir kez deneme zamanlamasında dağıtarak bu sekiz g/ç QPs kullanımını iyileştirmek üzere ayarlanır. En yüksek performans kazanmak için cihaz başına sekiz işi eşleştirmek üzere çalıştırın.
 
-* Etkin iş yükleri sırasında NVMe yönetici komutlarını (örneğin, NVMe SMART bilgi sorgusu, vb.) NVMe G/Ç komutlarıyla karıştırmaktan kaçının. Lsv2 NVMe aygıtları Hyper-V NVMe Direct teknolojisi ile desteklenen ve herhangi bir NVMe yöneticisi beklemede olduğunda "yavaş moduna" geçiş yapan teknoloji. Lsv2 kullanıcıları bu durumda NVMe G/Ç performansında dramatik bir performans düşüşü görebilirler.
+* Etkin iş yükleri sırasında NVMe g/ç komutlarıyla NVMe yönetici komutlarını (örneğin, NVMe akıllı bilgi sorgusu, vb.) karıştırmaktan kaçının. Lsv2 NVMe cihazları, herhangi bir NVMe yönetici komutu beklendiğinde "yavaş mod" a geçiş yaparak Hyper-V NVMe Direct teknolojisi tarafından desteklenir. Lsv2 kullanıcılar, bu durumda NVMe g/ç performansında önemli bir performans bırakabilir.
 
-* Lsv2 kullanıcıları, uygulamalarına yönelik NUMA yakınlığına karar vermek için veri sürücüleri için VM'den bildirilen cihaz NUMA bilgilerine (tüm 0) güvenmemelidir. Daha iyi performans için önerilen yol, iş yüklerini mümkünse CPU'lara yaymaktır.
+* Lsv2 kullanıcılar, uygulamalarına yönelik NUMA benzeşimini belirlemek üzere veri sürücüleri için VM içinden bildirilen cihaz NUMA bilgilerine (tümü 0) güvenmemelidir. Daha iyi performans için önerilen yol, mümkünse iş yüklerini CPU 'larda yaymasıdır.
 
-* Lsv2 VM NVMe aygıtı için G/Ç sıra çifti başına desteklenen maksimum sıra derinliği 1024'dür (Amazon i3 QD 32 sınırına karşı). Lsv2 kullanıcıları, performansı azaltabilecek tam koşulları tetiklemeyi önlemek için (sentetik) kıyaslama iş yüklerini 1024 veya daha düşük sıraya kadar sınırlandırmalıdır.
+* Lsv2 VM NVMe cihazı için g/ç sıra çifti başına desteklenen en fazla sıra derinliği 1024 (vs. Amazon i3 QD 32 limit). Lsv2 kullanıcılar, (yapay) bir değerlendirme iş yüklerini sıra derinliği 1024 veya daha düşük olarak sınırlandırmalıdır ve bu da performansı düşürebilir.
 
-## <a name="utilizing-local-nvme-storage"></a>Yerel NVMe depolama yı kullanma
+## <a name="utilizing-local-nvme-storage"></a>Yerel NVMe Storage kullanma
 
-Tüm Lsv2 VM'lerinde 1.92 TB NVMe diskindeki yerel depolama geçicidir. VM'nin başarılı bir standart yeniden başlatması sırasında, yerel NVMe diskindeki veriler devam edecektir. VM yeniden dağıtılırsa, ayrılmış veya silinirse veriler NVMe'de kalıcı olmayacaktır. Başka bir sorun VM'nin veya üzerinde çalıştırdığı donanımın sağlıksız hale gelmesine neden olursa veriler kalıcı olmayacaktır. Bu durumda, eski ana bilgisayardaki tüm veriler güvenli bir şekilde silinir.
+Tüm Lsv2 VM 'lerinde 1,92 TB NVMe diskinde yerel depolama alanı kısa ömürlü. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, yerel NVMe diskindeki veriler korunur. VM yeniden dağıtılırsa, serbest bırakılır veya silinirse veriler NVMe üzerinde kalıcı olmayacaktır. Başka bir sorun VM 'nin veya üzerinde çalıştığı donanımın sağlıksız hale gelmesi durumunda veriler kalıcı olmaz. Bu durumda, eski konaktaki tüm veriler güvenli bir şekilde silinir.
 
-VM'nin planlı bir bakım işlemi sırasında farklı bir ana bilgisayara taşınması gereken durumlar da olacaktır. [Planlanmış Etkinlikler](scheduled-events.md)ile planlanan bakım işlemleri ve bazı donanım hataları tahmin edilebilir. Planlanmış Olaylar, tahmin edilen tüm bakım ve kurtarma işlemlerinde güncel kalmak için kullanılmalıdır.
+Ayrıca, VM 'nin bir planlı bakım işlemi sırasında farklı bir ana makineye taşınması gereken durumlar da olacaktır. Planlı bakım işlemleri ve bazı donanım arızaları [zamanlanan olaylar](scheduled-events.md)ile tahmin edilebilir. Zamanlanan Olaylar, tüm tahmin edilen bakım ve kurtarma işlemlerinde güncel kalmak için kullanılmalıdır.
 
-Planlı bir bakım olayının VM'nin boş yerel disklere sahip yeni bir ana bilgisayarda yeniden oluşturulmasını gerektirmesi durumunda, verilerin yeniden eşitlenmesine gerek vardır (yine, eski ana bilgisayardaki veriler güvenli bir şekilde silinir). Lsv2 serisi VM'ler şu anda yerel NVMe diskinde canlı geçişi desteklemediği için bu durum oluşur.
+Planlı bir bakım olayının VM 'nin boş yerel disklere sahip yeni bir konakta yeniden oluşturulmasını gerektirmesi durumunda, verilerin yeniden eşitlenmesi gerekir (eski konaktaki veriler güvenli bir şekilde silinmekte). Bu durum, Lsv2 serisi VM 'Lerin yerel NVMe diskinde Şu anda dinamik geçişi desteklemediği için oluşur.
 
 Planlı bakım için iki mod vardır.
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>Standart VM müşteri kontrollü bakım
+### <a name="standard-vm-customer-controlled-maintenance"></a>Standart VM müşteri denetimli Bakımı
 
-- VM, 30 günlük bir süre boyunca güncelleştirilmiş bir ana bilgisayara taşınır.
-- Lsv2 yerel depolama verileri kaybolabilir, bu nedenle etkinlikten önce yedekleme verileri önerilir.
+- VM, 30 günlük bir pencere sırasında güncelleştirilmiş bir konağa taşınır.
+- Lsv2 yerel depolama verileri kaybolabilir. bu nedenle, olaydan önce verilerin yedeklenmesi önerilir.
 
 ### <a name="automatic-maintenance"></a>Otomatik bakım
 
-- Müşteri müşteri kontrollü bakım yürütmez veya bir güvenlik sıfır gün olay gibi acil durumlarda oluşur.
-- Müşteri verilerini korumak için tasarlanmıştır, ancak VM dondurma veya yeniden başlatma küçük bir risk vardır.
-- Lsv2 yerel depolama verileri kaybolabilir, bu nedenle etkinlikten önce yedekleme verileri önerilir.
+- Müşteri, müşteri denetimli Bakımı yürütmez veya güvenlik sıfır günlük olay gibi acil yordamlar durumunda oluşur.
+- Müşteri verilerini korumak için tasarlanmıştır, ancak VM donması veya yeniden başlatılması için küçük bir risk vardır.
+- Lsv2 yerel depolama verileri kaybolabilir. bu nedenle, olaydan önce verilerin yedeklenmesi önerilir.
 
-Yaklaşan servis olayları için, güncelleştirme için size en uygun zamanı seçmek için kontrollü bakım işlemini kullanın. Etkinlikten önce, verilerinizi premium depolamada yedekleyebilirsiniz. Bakım olayı tamamlandıktan sonra, verilerinizi yenilenmiş Lsv2 VM'ler yerel NVMe depolama alanına döndürebilirsiniz.
+Yaklaşan hizmet olayları için, güncelleştirme için en uygun zamanı seçmek üzere denetimli bakım sürecini kullanın. Olaydan önce Premium depolamada verilerinizi yedekleyebilirsiniz. Bakım olayı tamamlandıktan sonra, verilerinizi yenilenen Lsv2 VM 'Ler yerel NVMe depolama alanına döndürebilirsiniz.
 
-Yerel NVMe diskleri ile ilgili verileri koruyan senaryolar şunlardır:
+Yerel NVMe disklerinde verilerin bakımını yapan senaryolar şunlardır:
 
 - VM çalışıyor ve sağlıklı.
-- VM yerinde yeniden başlatılır (siz veya Azure tarafından).
-- VM duraklatıldı (ayırma yapılmadan durduruldu).
-- Planlanan bakım servis işlemlerinin çoğu.
+- VM, yerinde (siz veya Azure tarafından) yeniden başlatılır.
+- VM duraklatıldı (serbest ayırma olmadan durduruldu).
+- Planlı bakım hizmeti işlemlerinin çoğunluğu.
 
-Müşteriyi korumak için verileri güvenli bir şekilde silen senaryolar şunlardır:
+Müşteriyi korumaya yönelik verileri güvenli bir şekilde silmeyen senaryolar şunlardır:
 
-- VM yeniden dağıtılır, durdurulur (tahsis edilir) veya silinir (sizin yeriniz tarafından).
-- VM sağlıksız hale gelir ve bir donanım sorunu nedeniyle başka bir düğüme iyileşmek için hizmet etmek zorundadır.
-- VM'nin servis için başka bir ana bilgisayara tahsis edilmesi gereken az sayıda planlı bakım servis işlemi.
+- VM yeniden dağıtıldı, durduruldu (serbest bırakıldı) veya silindi (sizin tarafınızdan).
+- VM sağlıksız hale gelir ve bir donanım sorunu nedeniyle başka bir düğüme hizmet vermek zorunda olur.
+- VM 'nin bakım için başka bir konağa yeniden ayrılmasını gerektiren planlı bakım hizmeti işlemlerinin az olması.
 
-Yerel depolama alanında verileri yedekleme seçenekleri hakkında daha fazla bilgi edinmek [için Azure IaaS diskleri için Yedekleme ve olağanüstü durum kurtarma bilgisine](backup-and-disaster-recovery-for-azure-iaas-disks.md)bakın.
+Yerel depolamada verileri yedekleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Azure IaaS diskleri Için Yedekleme ve olağanüstü durum kurtarma](backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-* **Lsv2 serisi VM'leri dağıtmaya nasıl başlarım?**  
-   Diğer VM'ler gibi, VM oluşturmak için [Portal,](quick-create-portal.md) [Azure CLI](quick-create-cli.md)veya [PowerShell'i](quick-create-powershell.md) kullanın.
+* **Lsv2 serisi VM 'Leri dağıtmaya Nasıl yaparım? misiniz?**  
+   Diğer tüm VM 'ler gibi, bir VM oluşturmak için [Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)veya [PowerShell](quick-create-powershell.md) kullanın.
 
-* **Tek bir NVMe disk hatası ana bilgisayardaki tüm VM'lerin başarısız lığa neden olur mu?**  
-   Donanım düğümünde bir disk hatası algılanırsa, donanım başarısız durumdadır. Bu durumda, düğümdeki tüm VM'ler otomatik olarak ayrılır ve sağlıklı bir düğüme taşınır. Lsv2 serisi VM'ler için bu, başarısız düğümdeki müşterinin verilerinin de güvenli bir şekilde silindiği ve yeni düğümüzerinde müşteri tarafından yeniden oluşturulması gerektiği anlamına gelir. Belirtildiği gibi, Lsv2'de canlı geçiş kullanılabilir hale gelmeden önce, başarısız düğümdeki veriler, başka bir düğüme aktarılırken VM'lerle proaktif olarak taşınır.
+* **Tek bir NVMe disk hatası, konaktaki tüm VM 'Lerin başarısız olmasına neden olur mu?**  
+   Donanım düğümünde bir disk hatası algılanırsa, donanım başarısız durumunda olur. Bu gerçekleştiğinde, düğümdeki tüm VM 'Ler otomatik olarak ayrılır ve sağlıklı bir düğüme taşınır. Lsv2 serisi VM 'Ler için bu, müşterinin hatalı düğümdeki verilerin da güvenli bir şekilde silineceği ve yeni düğümdeki müşteri tarafından yeniden oluşturulması gereken anlamına gelir. Belirtildiği gibi, dinamik geçiş Lsv2 ' de kullanılabilir hale gelmeden önce, hatalı düğümdeki veriler, başka bir düğüme aktarıldıklarından, bu VM 'Ler için uygun şekilde taşınabilir.
 
-* **Performans için rq_affinity için herhangi bir ayarlama yapmam gerekiyor mu?**  
-   rq_affinity ayarı, saniyede mutlak maksimum giriş/çıkış işlemleri (IOPS) kullanırken küçük bir ayarlamadır. Bir kez her şey iyi çalışıyor, o zaman bir fark yapar görmek için 0 rq_affinity ayarlamaya çalışın.
+* **Performans için rq_affinity ayarlamalar yapmam gerekiyor mu?**  
+   Rq_affinity ayar, saniye başına en fazla giriş/çıkış işlemi (ıOPS) kullanılırken küçük bir ayarlamadır. Diğer her şey iyi çalışır duruma getirildikten sonra, fark olup olmadığını görmek için rq_affinity 0 olarak ayarlamayı deneyin.
 
-* **blk_mq ayarlarını değiştirmem gerekiyor mu?**  
-   RHEL/CentOS 7.x, NVMe cihazları için blk-mq'yu otomatik olarak kullanır. Yapılandırma değişikliği veya ayar gerekmez. scsi_mod.use_blk_mq ayarı yalnızca SCSI içindir ve Lsv2 Preview sırasında kullanılmıştır, çünkü NVMe aygıtları konuk VM'lerde SCSI aygıtları olarak görünürdü. Şu anda, NVMe aygıtları NVMe aygıtları olarak görülebilir, bu nedenle SCSI blk-mq ayarı alakasızdır.
+* **Blk_mq ayarlarını değiştirmem gerekiyor mu?**  
+   RHEL/CentOS 7. x, NVMe cihazları için otomatik olarak blk-MQ kullanır. Yapılandırma değişikliği veya ayarları gerekli değildir. Scsi_mod. use_blk_mq ayarı yalnızca SCSI içindir ve NVMe cihazları Konuk VM 'lerde SCSI cihazları olarak göründüğünden, Lsv2 Preview sırasında kullanılmıştır. Şu anda NVMe cihazları NVMe cihazları olarak görülebilir, bu nedenle SCSI blk-MQ ayarı ilgisiz olur.
 
-* **"Fio"yı değiştirmem gerekiyor mu?**  
-   L64v2 ve L80v2 VM boyutlarındaki 'fio' gibi bir performans ölçüm aracıyla maksimum IOPS elde etmek için her NVMe cihazında "rq_affinity"i 0'a ayarlayın.  Örneğin, bu komut satırı L80v2 VM'deki tüm 10 NVMe aygıtı için "rq_affinity" sıfıra ayarlar:
+* **"Fio" öğesini değiştirmem gerekiyor mu?**  
+   L64v2 ve L80v2 VM boyutlarında ' Fio ' gibi bir performans ölçme aracıyla maksimum ıOPS 'yi almak için, her bir NVMe cihazında "rq_affinity" öğesini 0 olarak ayarlayın.  Örneğin, bu komut satırı, bir L80v2 VM 'deki tüm 10 NVMe cihazları için "rq_affinity" değerini sıfıra ayarlar:
 
    ```console
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Ayrıca, G/Ç doğrudan hiçbir bölümleme, hiçbir dosya sistemleri, hiçbir RAID 0 config, vb ham NVMe cihazların her yapılır en iyi performans elde edilir unutmayın. Bir test oturumuna başlamadan önce, nvme aygıtlarının `blkdiscard` her birinde çalıştırılarak yapılandırmanın bilinen taze/temiz durumda olduğundan emin olun.
+   Ayrıca, g/ç, bölümleme olmadan, hiçbir dosya sistemi, RAID 0 yapılandırma vb. olmayan ham NVMe cihazlarının her birine doğrudan yapıldığında en iyi performansı elde edin. Bir test oturumuna başlamadan önce, her NVMe cihazlarından birini çalıştırarak `blkdiscard` yapılandırmanın bilinen bir yeni/temiz durumunda olduğundan emin olun.
    
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure'da [depolama performansı için optimize edilmiş](sizes-storage.md) tüm VM'lerin teknik özelliklerine bakın
+* Azure 'da [depolama performansı için en iyi duruma getirilmiş tüm sanal makinelerin](sizes-storage.md) belirtimlerine bakın
