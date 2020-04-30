@@ -1,6 +1,6 @@
 ---
-title: Çalışma alanlarına, verilere ve ardışık işlere erişimi yönetme
-description: Azure Synapse Analytics çalışma alanında (önizleme) çalışma alanlarına, verilere ve ardışık işlere erişim denetimini nasıl yönettiğinizi öğrenin.
+title: Çalışma alanları, veriler ve işlem hatları erişimini yönetme
+description: Bir Azure SYNAPSE Analytics çalışma alanında (Önizleme) çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,85 +10,85 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 89d2105ab080309639c4341072c3f5f36608dfce
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424772"
 ---
-# <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanlarına, verilere ve ardışık işlere erişimi yönetme
+# <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
-Azure Synapse Analytics çalışma alanında (önizleme) çalışma alanlarına, verilere ve ardışık işlere erişim denetimini nasıl yönettiğinizi öğrenin.
-
-> [!NOTE]
-> GA için RBAC, Synapse'ye özel Azure RBAC rollerinin piyasaya sürülmesiyle daha da geliştirilecektir
-
-## <a name="access-control-for-workspace"></a>Çalışma Alanı için Erişim Denetimi
-
-Bir Azure Synapse çalışma alanına bir üretim dağıtımı için, kullanıcıları ve yöneticileri sağlamayı kolaylaştırmak için ortamınızı düzenlemenizi öneririz.
+Bir Azure SYNAPSE Analytics çalışma alanında (Önizleme) çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
 
 > [!NOTE]
-> Burada alınan yaklaşım, birden çok güvenlik grubu oluşturmak ve daha sonra çalışma alanını bunları tutarlı bir şekilde kullanacak şekilde yapılandırmaktır. Gruplar kurulduktan sonra, bir yöneticinin yalnızca güvenlik grupları içindeki üyeliği yönetmesi gerekir.
+> GA için, SYNAPSE özgü Azure RBAC rollerinin tanıtımı aracılığıyla RBAC daha fazla geliştirilecektir.
 
-### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>Adım 1: Bu deseni izleyen adlarla güvenlik grupları ayarlama
+## <a name="access-control-for-workspace"></a>Çalışma alanı için Access Control
 
-1. Çağrılan güvenlik grubu oluşturma`Synapse_WORKSPACENAME_Users`
-2. Çağrılan güvenlik grubu oluşturma`Synapse_WORKSPACENAME_Admins`
+Azure SYNAPSE çalışma alanına bir üretim dağıtımı için, ortamınızı, kullanıcıların ve yöneticilerin sağlanması kolay hale getirmek üzere düzenlemeyi öneririz.
+
+> [!NOTE]
+> Burada gerçekleştirilen yaklaşım birkaç güvenlik grubu oluşturmak ve ardından çalışma alanını tutarlı bir şekilde kullanacak şekilde yapılandırmaktır. Gruplar ayarlandıktan sonra bir yöneticinin yalnızca güvenlik grupları içindeki üyeliği yönetmesi gerekir.
+
+### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>1. Adım: bu kalıbı izleyen adlarla güvenlik grupları ayarlama
+
+1. Adlı güvenlik grubu oluştur`Synapse_WORKSPACENAME_Users`
+2. Adlı güvenlik grubu oluştur`Synapse_WORKSPACENAME_Admins`
 3. `ProjectSynapse_WORKSPACENAME_Users` için `Synapse_WORKSPACENAME_Admins` eklendi
 
-### <a name="step-2-prepare-the-default-adls-gen2-account"></a>Adım 2: Varsayılan ADLS Gen2 Hesabını Hazırlama
+### <a name="step-2-prepare-the-default-adls-gen2-account"></a>2. Adım: varsayılan ADLS 2. hesabını hazırlama
 
-Çalışma alanınızı sağlarken, çalışma alanının kullanması için bir ADLSGEN2 hesabı ve dosya sistemi için bir kapsayıcı seçmeniz gerekiyordu.
+Çalışma alanınızı sağladığınızda, çalışma alanının kullanması için bir ADLSGEN2 hesabı ve FileSystem için bir kapsayıcı seçmeniz gerekiyordu.
 
-1. Azure [portalını](https://portal.azure.com) açın
+1. [Azure Portal](https://portal.azure.com) açın
 2. ADLSGEN2 hesabına gidin
-3. Azure Synapse çalışma alanı için seçtiğiniz kapsayıcıya (dosya sistemi) gidin
-4. **Erişim Denetimi'ni (IAM)** tıklatın
-5. Aşağıdaki rolleri atama:
+3. Azure SYNAPSE çalışma alanı için seçtiğiniz kapsayıcıya (dosya sistemi) gidin
+4. **Access Control (IAM)** seçeneğine tıklayın
+5. Aşağıdaki rolleri atayın:
    1. **Okuyucu** rolü:`Synapse_WORKSPACENAME_Users`
-   2. **Depolama Blob Veri Sahibi** rolü:`Synapse_WORKSPACENAME_Admins`
-   3. **Depolama Blob Veri Katılımcısı** rolü:`Synapse_WORKSPACENAME_Users`
-   4. **Depolama Blob Veri Sahibi** rolü:`WORKSPACENAME`
+   2. **Depolama Blobu veri sahibi** rolü:`Synapse_WORKSPACENAME_Admins`
+   3. **Depolama Blobu veri katılımcısı** rolü:`Synapse_WORKSPACENAME_Users`
+   4. **Depolama Blobu veri sahibi** rolü:`WORKSPACENAME`
   
-### <a name="step-3-configure-the-workspace-admin-list"></a>Adım 3: Çalışma alanı yönetici listesini yapılandırma
+### <a name="step-3-configure-the-workspace-admin-list"></a>3. Adım: çalışma alanı yönetici listesini yapılandırma
 
-1. Go to the [ **Azure Synapse Web UI**](https://web.azuresynapse.net)
-2.  > **Güvenlik****Erişimi denetimini** **yönet'e**  > git
-3. **Yönetici Ekle'yi**tıklatın ve`Synapse_WORKSPACENAME_Admins`
+1. [ **Azure SYNAPSE Web Kullanıcı arabirimine** gidin](https://web.azuresynapse.net)
+2.   > **Security**Güvenlik > **erişimi denetimini** **Yönet**'e gidin
+3. **Yönetici Ekle**' ye tıklayın ve`Synapse_WORKSPACENAME_Admins`
 
-### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Adım 4: Çalışma alanı için SQL Yönetici Erişimini Yapılandırma
+### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>4. Adım: çalışma alanı için SQL yönetici erişimini yapılandırma
 
-1. [Azure portalına](https://portal.azure.com) gidin
+1. [Azure Portal](https://portal.azure.com) git
 2. Çalışma alanınıza gidin
-3. **Ayarlar** > **Etkin Dizin yöneticisine** git
-4. **Yönetici Yi Ayarla'yı** tıklatın
+3. **Ayarlar** > **Active Directory yönetici** 'a git
+4. **Yönetici ayarla** öğesine tıklayın
 5. `Synapse_WORKSPACENAME_Admins` seçeneğini belirleyin
-6. **seç'i** tıklatın
-7. **Kaydet'i** tıklatın
+6. **Seç** 'e tıklayın
+7. **Kaydet** 'e tıklayın
 
-### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Adım 5: Güvenlik gruplarına Kullanıcı ve Yönetici Ekleme ve Kaldırma
+### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>5. Adım: kullanıcıları ve yöneticileri güvenlik gruplarına ekleme ve kaldırma
 
-1. Yönetim erişimine ihtiyaç duyan kullanıcıları ekleme`Synapse_WORKSPACENAME_Admins`
-2. Diğer tüm kullanıcıları`Synapse_WORKSPACENAME_Users`
+1. Üzerinde yönetici erişimi olması gereken kullanıcıları ekleyin`Synapse_WORKSPACENAME_Admins`
+2. Diğer tüm kullanıcıları buraya ekle`Synapse_WORKSPACENAME_Users`
 
-## <a name="access-control-to-data"></a>Verilere Erişim Denetimi
+## <a name="access-control-to-data"></a>Verilere Access Control
 
-Temel verilere erişim denetimi üç bölüme ayrılır:
+Temel alınan verilere erişim denetimi üç parçaya bölünür:
 
-- Depolama hesabına veri düzlemi erişimi (yukarıda Adım 2'de yapılandırılmıştır)
-- SQL Veritabanlarına veri düzlemi erişimi (hem SQL havuzları hem de isteğe bağlı SQL için)
-- Depolama hesabı üzerinden SQL isteğe bağlı veritabanları için bir kimlik bilgisi oluşturma
+- Depolama hesabına veri düzlemi erişimi (adım 2 ' de yukarıda zaten yapılandırılmış)
+- SQL veritabanlarına veri düzlemi erişimi (SQL havuzları ve isteğe bağlı SQL için)
+- Depolama hesabı üzerinden SQL isteğe bağlı veritabanları için kimlik bilgisi oluşturma
 
-## <a name="access-control-to-sql-databases"></a>SQL Veritabanlarına erişim denetimi
+## <a name="access-control-to-sql-databases"></a>SQL veritabanlarına erişim denetimi
 
 > [!TIP]
-> Tüm SQL veritabanlarına kullanıcı erişimi sağlamak için **her** SQL veritabanı için aşağıdaki adımların çalıştırılması gerekir.
+> Aşağıdaki adımların **her** SQL veritabanı için, tüm SQL veritabanlarına Kullanıcı erişimi vermesi için çalıştırılması gerekir.
 
 ### <a name="sql-on-demand"></a>İsteğe bağlı SQL
 
-Bir kullanıcıya **isteğe** bağlı tek bir SQL veritabanına erişim izni vermek için aşağıdaki örnekteki adımları izleyin:
+Bir kullanıcıya **tek** bir SQL isteğe bağlı veritabanına erişim izni vermek için bu örnekteki adımları izleyin:
 
-1. Gİrİş YAP
+1. OTURUM açma oluştur
 
     ```sql
     use master
@@ -97,7 +97,7 @@ Bir kullanıcıya **isteğe** bağlı tek bir SQL veritabanına erişim izni ver
     go
     ```
 
-2. KULLANICI OLUŞTUR
+2. Kullanıcı Oluştur
 
     ```sql
     use yourdb -- Use your DB name
@@ -105,7 +105,7 @@ Bir kullanıcıya **isteğe** bağlı tek bir SQL veritabanına erişim izni ver
     CREATE USER john FROM LOGIN [John.Thomas@microsoft.com];
     ```
 
-3. Belirtilen rolün üyelerine KULLANICI ekleme
+3. Belirtilen rolün üyelerine Kullanıcı Ekle
 
     ```sql
     use yourdb -- Use your DB name
@@ -113,18 +113,18 @@ Bir kullanıcıya **isteğe** bağlı tek bir SQL veritabanına erişim izni ver
     alter role db_owner Add member john -- Type USER name from step 2
     ```
 
-### <a name="sql-pools"></a>SQL Havuzları
+### <a name="sql-pools"></a>SQL havuzları
 
-Bir kullanıcıya **tek** bir SQL Veritabanına erişim izni vermek için aşağıdaki adımları izleyin:
+Bir kullanıcıya **tek** bir SQL veritabanına erişim izni vermek için şu adımları izleyin:
 
-1. Bağlam seçicide istenen veritabanını hedefleyen aşağıdaki komutu çalıştırarak veritabanında kullanıcıyı oluşturun (belirli veritabanlarına açılan açılır:
+1. Bağlam seçicide istenen veritabanını hedefleyen aşağıdaki komutu çalıştırarak kullanıcıyı veritabanında oluşturun (veritabanlarını seçmek için açılan menü):
 
     ```sql
     --Create user in SQL DB
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
-2. Kullanıcıya veritabanına erişmek için bir rol ver:
+2. Kullanıcıya veritabanına erişmek için bir rol verin:
 
     ```sql
     --Create user in SQL DB
@@ -132,10 +132,10 @@ Bir kullanıcıya **tek** bir SQL Veritabanına erişim izni vermek için aşağ
     ```
 
 > [!IMPORTANT]
-> *db_datareader* ve *db_datawriter,* *db_owner* izin verilmesi istiflenmemişse okuma/yazma izinleri için çalışabilir.
-> Bir Spark kullanıcısının doğrudan Spark'tan SQL havuzuna/sql havuzundan doğrudan okuma ve yazma izni *db_owner* gereklidir.
+> *db_datareader* ve *db_datawriter* , *db_owner* izin verilmesinin istenmeyen olması durumunda okuma/yazma izinleri için çalışabilir.
+> Spark kullanıcısının, bir SQL havuzundan doğrudan Spark 'tan/içinden okuması ve yazması için *db_owner* izin gerekir.
 
-Kullanıcıları oluşturduktan sonra, isteğe bağlı SQL'in depolama hesabını sorgulayabileceğini doğrulayın:
+Kullanıcıları oluşturduktan sonra, isteğe bağlı SQL 'in depolama hesabını sorgulayadiğini doğrulayın:
 
 - İsteğe bağlı SQL **ana** veritabanını hedefleyen aşağıdaki komutu çalıştırın:
 
@@ -144,14 +144,14 @@ Kullanıcıları oluşturduktan sonra, isteğe bağlı SQL'in depolama hesabın�
     WITH IDENTITY='User Identity';
     ```
 
-## <a name="access-control-to-workspace-pipeline-runs"></a>Çalışma alanı ardışık işaklerine erişim denetimi
+## <a name="access-control-to-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmaları için erişim denetimi
 
 ### <a name="workspace-managed-identity"></a>Çalışma alanı tarafından yönetilen kimlik
 
 > [!IMPORTANT]
-> Veri kümelerini veya SQL havuzuna başvuran etkinlikleri içeren ardışık olarak çalıştırmak için çalışma alanı kimliğinin doğrudan SQL havuzuna erişmesi gerekir.
+> Bir SQL havuzuna başvuran veri kümelerini veya etkinlikleri içeren işlem hatlarını başarılı bir şekilde çalıştırmak için, çalışma alanı kimliğine doğrudan SQL havuzuna erişim verilmesi gerekir.
 
-Çalışma alanı yönetilen kimliğin SQL havuz veritabanında ardışık hatlar çalışmasına izin vermek için her SQL havuzunda aşağıdaki komutları çalıştırın:
+Çalışma alanı yönetilen kimliğinin SQL havuzu veritabanında işlem hatlarını çalıştırmasına izin vermek için her bir SQL havuzunda aşağıdaki komutları çalıştırın:
 
 ```sql
 --Create user in DB
@@ -161,7 +161,7 @@ CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 ```
 
-Bu izin, aynı SQL havuzunda aşağıdaki komut dosyası çalıştırılarak kaldırılabilir:
+Bu izin, aynı SQL havuzunda aşağıdaki betiği çalıştırılarak kaldırılabilir:
 
 ```sql
 --Revoking permission to the identity
@@ -173,4 +173,4 @@ DROP USER [<workspacename>];
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Synapse SQL'de erişim ve denetime genel bir bakış için [Synapse SQL erişim denetimine](../sql/access-control.md)bakın. Veritabanı ilkeleri hakkında daha fazla bilgi edinmek [için, Bkz. İlkeler.](https://msdn.microsoft.com/library/ms181127.aspx) Veritabanı rolleri hakkında ek bilgiler, [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx) makalesinde bulunabilir.
+SYNAPSE SQL 'deki erişime ve denetime genel bakış için bkz. [SYNAPSE SQL Access Control](../sql/access-control.md). Veritabanı sorumluları hakkında daha fazla bilgi edinmek için bkz. [sorumlular](https://msdn.microsoft.com/library/ms181127.aspx). Veritabanı rolleri hakkında ek bilgi, [veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx) makalesinde bulunabilir.
