@@ -1,6 +1,6 @@
 ---
-title: Azure'da Windows VM'nin işletim sistemi sürücüsünün genişletilmesi
-description: Kaynak Yöneticisi dağıtım modelinde Azure Powershell'i kullanarak sanal bir makinenin işletim sistemi sürücüsünün boyutunu genişletin.
+title: Azure 'da Windows VM 'nin işletim sistemi sürücüsünü genişletme
+description: Kaynak Yöneticisi dağıtım modelinde Azure PowerShell kullanarak bir sanal makinenin işletim sistemi sürücüsünün boyutunu genişletin.
 author: mimckitt
 manager: vashan
 ms.service: virtual-machines-windows
@@ -10,22 +10,22 @@ ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
 ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869681"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Bir sanal makinenin işletim sistemi sürücüsünü genişletme
 
-[Azure](https://azure.microsoft.com/marketplace/)Marketi'nden bir görüntü dağıtarak Kaynak Grubunda yeni bir sanal makine (VM) oluşturduğunuzda, varsayılan işletim sistemi sürücüsü genellikle 127 GB'dır (bazı görüntülerde varsayılan olarak daha küçük işletim sistemi disk boyutları vardır). VM’ye veri diskleri eklemek (kaç tane ekleyebileceğiniz seçtiğiniz SKU’ya bağlıdır) mümkün olmasına, hatta uygulamaları ve yoğun CPU kullanımlı iş yüklerini bu ek disklere yüklemeniz önerilmesine rağmen, sıklıkla müşterilerin aşağıdaki gibi belirli senaryoları etkinleştirmesi için işletim sistemi sürücüsünü genişletmesi gerekir:
+[Azure Marketi](https://azure.microsoft.com/marketplace/)'nden bir görüntü dağıtarak bir kaynak grubunda yeni bir sanal makıne (VM) oluşturduğunuzda, varsayılan işletim sistemi sürücüsü genellıkle 127 GB olur (bazı görüntülerde varsayılan olarak daha küçük işletim sistemi disk boyutları bulunur). VM’ye veri diskleri eklemek (kaç tane ekleyebileceğiniz seçtiğiniz SKU’ya bağlıdır) mümkün olmasına, hatta uygulamaları ve yoğun CPU kullanımlı iş yüklerini bu ek disklere yüklemeniz önerilmesine rağmen, sıklıkla müşterilerin aşağıdaki gibi belirli senaryoları etkinleştirmesi için işletim sistemi sürücüsünü genişletmesi gerekir:
 
 - İşletim sistemi sürücüsüne bileşen yükleyen eski uygulamaları destekleme.
 - Fiziksel bir bilgisayarı veya sanal makineyi daha büyük bir işletim sistemi sürücüsüne sahip şirket içi kaynaktan geçirme.
 
 
 > [!IMPORTANT]
-> Azure Sanal Makine'nin işletim sistemi diskini yeniden boyutlandırmak için sanal makinenin ayrılması gerekir.
+> Bir Azure sanal makinesinin işletim sistemi diskinin yeniden boyutlandırılması için sanal makinenin serbest bırakılmış olması gerekir.
 >
 > Diskleri genişlettikten sonra, daha büyük diskten yararlanmak için [işletim sistemi içindeki birimi genişletmeniz](#expand-the-volume-within-the-os) gerekir.
 > 
@@ -34,7 +34,7 @@ ms.locfileid: "81869681"
  
 
 
-## <a name="resize-a-managed-disk"></a>Yönetilen bir diski yeniden boyutlandırma
+## <a name="resize-a-managed-disk"></a>Yönetilen diski yeniden boyutlandırma
 
 Powershell ISE veya Powershell pencerenizi yönetim modunda açın ve aşağıdaki adımları izleyin:
 
@@ -60,7 +60,7 @@ Powershell ISE veya Powershell pencerenizi yönetim modunda açın ve aşağıda
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Yönetilen işletim sistemi diskine bir başvuru alın. Yönetilen işletim sistemi diskinin boyutunu istenilen değere ayarlayın ve Diski aşağıdaki gibi güncelleştirin:
+5. Yönetilen işletim sistemi diskine bir başvuru alın. Yönetilen işletim sistemi diskinin boyutunu istenen değere ayarlayın ve diski aşağıdaki gibi güncelleştirin:
    
    ```Powershell
    $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
@@ -68,7 +68,7 @@ Powershell ISE veya Powershell pencerenizi yönetim modunda açın ve aşağıda
    Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
-   > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen maksimum 2048 GB'dır. (Bu boyutun ötesinde VHD blob genişletmek mümkündür, ancak işletim sistemi sadece alan ilk 2048 GB ile çalışmak mümkün olacak.)
+   > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen en yüksek 2048 GB 'dir. (VHD blobunun boyutunu bu boyuttan daha büyük bir şekilde genişletmek mümkündür, ancak işletim sistemi yalnızca ilk 2048 GB alan ile çalışabilir.)
    > 
    > 
 6. VM güncelleştirmesi biraz zaman alabilir. Komutun yürütülmesi tamamlandığında aşağıdakileri yaparak VM’yi yeniden başlatın:
@@ -105,7 +105,7 @@ Powershell ISE veya Powershell pencerenizi yönetim modunda açın ve aşağıda
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Yönetilmeyen işletim sistemi diskinin boyutunu istenilen değere ayarlayın ve VM'yi aşağıdaki gibi güncelleştirin:
+5. Yönetilmeyen işletim sistemi diskinin boyutunu istenen değere ayarlayın ve VM 'yi aşağıdaki şekilde güncelleştirin:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -113,7 +113,7 @@ Powershell ISE veya Powershell pencerenizi yönetim modunda açın ve aşağıda
    ```
    
    > [!WARNING]
-   > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen maksimum 2048 GB'dır. (Bu boyutun ötesinde VHD blob genişletmek mümkündür, ancak işletim sistemi sadece alan ilk 2048 GB ile çalışmak mümkün olacak.)
+   > Yeni boyut mevcut disk boyutundan büyük olmalıdır. İşletim sistemi diskleri için izin verilen en yüksek 2048 GB 'dir. (VHD blobunun boyutunu bu boyuttan daha büyük bir şekilde genişletmek mümkündür, ancak işletim sistemi yalnızca ilk 2048 GB alan ile çalışabilir.)
    > 
    > 
    
@@ -124,9 +124,9 @@ Powershell ISE veya Powershell pencerenizi yönetim modunda açın ve aşağıda
    ```
 
 
-## <a name="scripts-for-os-disk"></a>İşletim sistemi diski için komut dosyaları
+## <a name="scripts-for-os-disk"></a>İşletim sistemi diski için betikler
 
-Aşağıda hem yönetilen hem de yönetilmeyen diskler için başvuru için tam komut dosyası:
+Hem yönetilen hem de yönetilmeyen diskler için başvurağınız için tüm komut dosyası aşağıda verilmiştir:
 
 
 **Yönetilen diskler**
@@ -160,7 +160,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Veri disklerini yeniden boyutlandırma
 
-Bu makale, öncelikle VM işletim sistemi diskini genişletmeye odaklanmıştır, ancak komut dosyası VM'ye bağlı veri disklerini genişletmek için de kullanılabilir. Örneğin, VM’ye bağlı ilk veri diskini genişletmek için `StorageProfile` öğesinin `OSDisk` nesnesini `DataDisks` dizisi ile değiştirin ve aşağıda gösterildiği gibi sayısal bir dizin kullanarak ilk bağlanan veri diskinin başvurusunu edinin:
+Bu makale, birincil olarak VM 'nin işletim sistemi diskini genişletmeden odaklanır, ancak betik, VM 'ye bağlı veri disklerini genişletmek için de kullanılabilir. Örneğin, VM’ye bağlı ilk veri diskini genişletmek için `StorageProfile` öğesinin `OSDisk` nesnesini `DataDisks` dizisi ile değiştirin ve aşağıda gösterildiği gibi sayısal bir dizin kullanarak ilk bağlanan veri diskinin başvurusunu edinin:
 
 **Yönetilen disk**
 
@@ -178,7 +178,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-Benzer şekilde, yukarıda gösterildiği gibi bir dizin veya diskin **Ad** özelliğini kullanarak VM'ye iliştirilen diğer veri disklerine başvuruda bulunabilirsiniz:
+Benzer şekilde, yukarıda gösterildiği gibi bir dizin kullanarak VM 'ye bağlı diğer veri disklerine ya da diskin **Name** özelliğine başvurabilirsiniz:
 
 
 **Yönetilen disk**
@@ -193,21 +193,21 @@ Benzer şekilde, yukarıda gösterildiği gibi bir dizin veya diskin **Ad** öze
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
 
-## <a name="expand-the-volume-within-the-os"></a>İşletim sistemi içindeki hacmi genişletme
+## <a name="expand-the-volume-within-the-os"></a>İşletim sistemi içindeki birimi genişletme
 
-VM için diski genişlettikten sonra işletim sistemi içine girmeniz ve yeni alanı kapsayacak şekilde ses düzeyini genişletmeniz gerekir. Bir bölümü genişletmek için çeşitli yöntemler vardır. Bu bölüm, **DiskPart**kullanarak bölümü genişletmek için bir RDP bağlantısı kullanarak VM bağlamayı kapsar.
+VM 'nin diskini genişlettikten sonra, işletim sistemine gitmeniz ve yeni alanı kapsayacak şekilde birimi genişletmeniz gerekir. Bölüm genişletmek için birkaç yöntem vardır. Bu bölümde, **DiskPart**kullanarak bölümü genişletmek IÇIN bir RDP BAĞLANTıSı kullanarak VM 'nin bağlanması ele alınmaktadır.
 
-1. VM'nize bir RDP bağlantısı açın.
+1. VM 'nize bir RDP bağlantısı açın.
 
-2.  Komut istemi ni açın ve **disk parçası**yazın.
+2.  Bir komut istemi açın ve **DiskPart**yazın.
 
-2.  **DISKPART** isteminde, `list volume`yazın. Uzatmak istediğiniz ses düzeyine dikkat edin.
+2.  **DISKPART** isteminde yazın `list volume`. Genişletmek istediğiniz birimi unutmayın.
 
-3.  **DISKPART** isteminde, `select volume <volumenumber>`yazın. Bu, aynı diskte bitişik, boş alana genişletmek istediğiniz *birim numarasını* seçer.
+3.  **DISKPART** isteminde yazın `select volume <volumenumber>`. Bu, aynı diskteki bitişik boş alana genişletmek istediğiniz birim *volumenumber* seçer.
 
-4.  **DISKPART** isteminde, `extend [size=<size>]`yazın. Bu megabayt (MB) *boyutuna* göre seçilen hacmi genişletir.
+4.  **DISKPART** isteminde yazın `extend [size=<size>]`. Bu, seçilen birimi megabayt (MB) cinsinden *boyuta* genişletir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure portalını](attach-managed-disk-portal.md)kullanarak disk ekleyebilirsiniz.
+[Azure Portal](attach-managed-disk-portal.md)kullanarak da disk ekleyebilirsiniz.

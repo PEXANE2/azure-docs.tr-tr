@@ -1,6 +1,6 @@
 ---
-title: PowerShell ' ile işletim sistemi diskini Azure VM ile değiştirin
-description: PowerShell kullanarak bir Azure sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirin.
+title: PowerShell ile bir Azure VM için işletim sistemi diskini değiştirme
+description: PowerShell kullanarak bir Azure sanal makinesi tarafından kullanılan işletim sistemi diskini değiştirme.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -8,29 +8,29 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.openlocfilehash: 566347414ffe707b1d68a61b00ba21d19ff2b1eb
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869379"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell kullanarak Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell kullanarak bir Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
 
-Varolan bir VM'iniz varsa, ancak diski bir yedekleme diski veya başka bir işletim sistemi diski ile değiştirmek istiyorsanız, işletim sistemi disklerini değiştirmek için Azure PowerShell'i kullanabilirsiniz. VM'yi silmek ve yeniden oluşturmak zorunda değilsiniz. Zaten kullanılmamış olması durumunda yönetilen bir diski başka bir kaynak grubunda bile kullanabilirsiniz.
+Var olan bir VM varsa, ancak diski bir yedekleme diski veya başka bir işletim sistemi diski için değiştirmek istiyorsanız, işletim sistemi disklerini değiştirmek için Azure PowerShell kullanabilirsiniz. VM 'yi silip yeniden oluşturmanız gerekmez. Zaten kullanımda olmadığı sürece, başka bir kaynak grubunda yönetilen bir disk de kullanabilirsiniz.
 
  
 
-VM durdurulması\tahsis edilmesi gerekir, sonra yönetilen diskin kaynak kimliği farklı bir yönetilen diskin kaynak kimliği ile değiştirilebilir.
+VM 'nin stopped\serbest bırakılmış olması gerekir, ardından yönetilen diskin kaynak KIMLIĞI, farklı bir yönetilen diskin kaynak KIMLIĞI ile değiştirilebilir.
 
-VM boyutunun ve depolama türünün eklemek istediğiniz diskle uyumlu olduğundan emin olun. Örneğin, kullanmak istediğiniz disk Premium Depolama'daysa, VM'nin Premium Depolama özelliğine sahip olması gerekir (DS serisi boyutu gibi). Her iki disk de aynı boyutta olmalıdır.
+VM boyutunun ve depolama türünün iliştirmek istediğiniz diskle uyumlu olduğundan emin olun. Örneğin, kullanmak istediğiniz disk Premium depolamada ise, VM 'nin Premium depolama alanı (DS serisi boyutu gibi) olması gerekir. Her iki diskin de aynı boyutta olması gerekir.
 
-[Get-AzDisk'i](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) kullanarak kaynak grubundaki disklerin listesini alma
+[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) kullanarak bir kaynak grubundaki disklerin listesini alın
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-Kullanmak istediğiniz diskin adını aldığınızda, bunu VM'nin işletim sistemi diski olarak ayarlayın. Bu örnek stop\deallocates *myVM* adlı VM ve yeni işletim sistemi diski olarak *newDisk* adlı disk atar. 
+Kullanmak istediğiniz diskin adına sahip olduğunuzda, sanal makine için işletim sistemi diski olarak ayarlayın. Bu örnek, *Myvm* adlı VM 'yi kaldırır ve yeni işletim sistemi diski olarak *newdisk* adlı diski atar. 
  
 ```azurepowershell-interactive 
 # Get the VM 
@@ -55,4 +55,4 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 **Sonraki adımlar**
 
-Bir diskin kopyasını oluşturmak için, [bir diskin Anlık Görüntüsü'ne](snapshot-copy-managed-disk.md)bakın.
+Bir diskin kopyasını oluşturmak için bkz. [disk anlık görüntüsü](snapshot-copy-managed-disk.md).
