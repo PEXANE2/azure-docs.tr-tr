@@ -1,15 +1,15 @@
 ---
-title: Quickstart - Azure CLI ile VM yedekleme
-description: Bu Quickstart'ta, Kurtarma Hizmetleri kasası oluşturmayı, VM'de korumayı nasıl etkinleştirin ve Azure CLI ile ilk kurtarma noktasını nasıl oluşturabileceğinizi öğrenin.
+title: Hızlı başlangıç-Azure CLı ile sanal makine yedekleme
+description: Bu hızlı başlangıçta, bir kurtarma hizmetleri Kasası oluşturmayı, bir VM 'de korumayı etkinleştirmeyi ve Azure CLı ile ilk kurtarma noktasını oluşturmayı öğrenin.
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74171981"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI ile Azure'daki bir sanal makineyi yedekleme
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-Varsayılan olarak Kurtarma Hizmetleri kasasında Coğrafi Olarak Yedekli depolama özelliği etkindir. Coğrafi Olarak Yedekli depolama, yedeklenen verilerinizin birincil bölgeden yüzlerce kilometre uzaktaki ikincil bir Azure bölgesinde çoğaltılmasını sağlar. Depolama artıklığı ayarını değiştirilmesi gerekiyorsa, [az yedekleme tonoz yedekleme özellikleri kümesi](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet kullanın.
+Varsayılan olarak Kurtarma Hizmetleri kasasında Coğrafi Olarak Yedekli depolama özelliği etkindir. Coğrafi Olarak Yedekli depolama, yedeklenen verilerinizin birincil bölgeden yüzlerce kilometre uzaktaki ikincil bir Azure bölgesinde çoğaltılmasını sağlar. Depolama artıklığı ayarının değiştirilmesi gerekiyorsa, [az Backup kasa Backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet 'ini kullanın.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Aynı anda birden çok VM'nin yedeklemesini etkinleştirmek için CLI kullanırken, tek bir ilkeyle ilişkili 100'den fazla VM olmadığından emin olun. Bu [önerilen en iyi uygulamadır.](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy) Şu anda, PS istemcisi 100'den fazla VM varsa açıkça engellemez, ancak çek gelecekte eklenmesi planlanmaktadır.
+> Aynı anda birden çok VM için yedeklemeyi etkinleştirmek üzere CLı kullanırken, tek bir ilkenin onunla ilişkilendirilmiş 100 ' den fazla VM 'ye sahip olmadığından emin olun. Bu [Önerilen en iyi uygulamadır](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy). Şu anda, PS istemcisi 100 'den fazla VM olup olmadığını açıkça engellemez, ancak bu denetim gelecekte eklenmek üzere planlanmaktadır.
 
 ## <a name="start-a-backup-job"></a>Bir yedekleme işi başlatma
 

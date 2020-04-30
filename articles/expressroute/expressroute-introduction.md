@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute Genel Bakış: Özel bir bağlantı üzerinden bağlanma'
+title: "Azure ExpressRoute 'A genel bakış: özel bir bağlantı üzerinden Bağlan"
 description: ExpressRoute’a Teknik Genel Bakış bölümünde, şirket içi ağınızı bir özel bağlantı üzerinden Azure’a genişletmek üzere ExpressRoute bağlantısının nasıl çalıştığı açıklanmaktadır.
 services: expressroute
 author: mialdrid
@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
 ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75770960"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute'a genel bakış
 ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
 
-Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VPN), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.  ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, ExpressRoute bağlantılarının Internet üzerinden normal bağlantılara göre daha fazla güvenilirlik, daha hızlı hız, tutarlı gecikme süreleri ve daha yüksek güvenlik sunmasına olanak tanır. ExpressRoute kullanarak ağınızı Microsoft’a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](expressroute-connectivity-models.md).
+Ortak yerleşim tesisinde bağlantı sağlayıcısı üzerinden herhangi bir ağdan herhangi bir ağa (IP VPN), noktadan noktaya Ethernet ağı veya sanal çapraz bağlantısından bağlantı olabilir.  ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, ExpressRoute bağlantılarına Internet üzerinden tipik bağlantılardan daha fazla güvenilirlik, daha hızlı hız, tutarlı gecikme süreleri ve daha yüksek güvenlik sunma olanağı sağlar. ExpressRoute kullanarak ağınızı Microsoft’a bağlama hakkında bilgi için bkz. [ExpressRoute bağlantı modelleri](expressroute-connectivity-models.md).
 
 ![ExpressRoute bağlantısına genel bakış](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -39,7 +39,7 @@ Daha fazla bilgi için bkz. [ExpressRoute SSS](expressroute-faqs.md).
 Microsoft, şirket içi ağınız ile Azure ve Microsoft ortak adreslerinde bulunan örnekleriniz arasındaki yolları değiştirmek için endüstri standardı bir dinamik yönlendirme protokolü olan BGP'yi kullanır. Farklı trafik profilleri için ağınızda çoklu BGP oturumları kuruyoruz. Daha fazla bilgi [ExpressRoute bağlantı hattı ve yönlendirme etki alanları](expressroute-circuit-peerings.md) makalesinde bulunabilir. 
 
 ### <a name="redundancy"></a>Yedeklilik
-Her ExpressRoute devresi, bağlantı sağlayıcısından/ağ kenarındakin [expressroute konumundaki](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) iki Microsoft Enterprise kenar yönlendiricisine (MSEE) iki bağlantıdan oluşur. Microsoft, her MSEE için bir adet olmak üzere bağlantı sağlayıcısından veya ağınızın çıkış noktasından ikili BGP bağlantısı gerektirir. Kendi tarafınızdaki yedekli cihazlara veya Ethernet bağlantı hattına dağıtmamayı seçebilirsiniz. Ancak, bağlantı sağlayıcılar bağlantılarınızın yedekli olarak Microsoft’a devredildiğinden emin olmak için yedekli cihazlar kullanır. Yedekli Layer 3 bağlantı yapılandırması [SLA](https://azure.microsoft.com/support/legal/sla/)’mızın geçerli olması için bir gereksinimdir.
+Her ExpressRoute bağlantı hattı, bağlantı sağlayıcısından/ağ ucunuzdaki bir [ExpressRoute konumundaki](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) Iki Microsoft Enterprise Edge yönlendiricilerine (MSEE) iki bağlantı içerir. Microsoft, her MSEE için bir adet olmak üzere bağlantı sağlayıcısından veya ağınızın çıkış noktasından ikili BGP bağlantısı gerektirir. Kendi tarafınızdaki yedekli cihazlara veya Ethernet bağlantı hattına dağıtmamayı seçebilirsiniz. Ancak, bağlantı sağlayıcılar bağlantılarınızın yedekli olarak Microsoft’a devredildiğinden emin olmak için yedekli cihazlar kullanır. Yedekli Layer 3 bağlantı yapılandırması [SLA](https://azure.microsoft.com/support/legal/sla/)’mızın geçerli olması için bir gereksinimdir.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Microsoft bulut hizmetlerine bağlantı
 ExpressRoute bağlantıları aşağıdaki hizmetlere erişim sağlar:
@@ -57,11 +57,11 @@ ExpressRoute üzerinde desteklenen hizmetlerin ayrıntılı listesi için [Expre
 
 Örneğin, Microsoft'a Amsterdam'da ExpressRoute aracılığıyla bağlandıysanız Kuzey ve Batı Avrupa'da barındırılan tüm Microsoft bulut hizmetlerine erişiminiz olur. Jeopolitik bölgeler, ilişkili Microsoft bulut bölgeleri ve karşılık gelen ExpressRoute eşleme konumlarına genel bakış için [ExpressRoute iş ortakları ve eşleme konumları](expressroute-locations.md) makalesine bakın.
 
-### <a name="global-connectivity-with-expressroute-premium"></a>ExpressRoute Premium ile küresel bağlantı
-[ExpressRoute Premium'un](expressroute-faqs.md) bağlantıyı jeopolitik sınırlar arasında genişletmesini etkinleştirebilirsiniz. Örneğin, Microsoft'a Amsterdam'da ExpressRoute aracılığıyla bağlanırsanız dünyadaki tüm bölgelerde barındırılan tüm Microsoft bulut hizmetlerine (ulusal bulutlar dışında) erişiminiz olur. Güney Amerika ve Avustralya'da dağıtılan hizmetlere Kuzey ve Batı Avrupa bölgeleriyle aynı şekilde erişebilirsiniz.
+### <a name="global-connectivity-with-expressroute-premium"></a>ExpressRoute Premium ile genel bağlantı
+Gentik sınırlar arasında bağlantıyı genişletmek için [ExpressRoute Premium](expressroute-faqs.md) 'u etkinleştirebilirsiniz. Örneğin, Microsoft'a Amsterdam'da ExpressRoute aracılığıyla bağlanırsanız dünyadaki tüm bölgelerde barındırılan tüm Microsoft bulut hizmetlerine (ulusal bulutlar dışında) erişiminiz olur. Güney Amerika ve Avustralya'da dağıtılan hizmetlere Kuzey ve Batı Avrupa bölgeleriyle aynı şekilde erişebilirsiniz.
 
-### <a name="local-connectivity-with-expressroute-local"></a>ExpressRoute Local ile yerel bağlantı
-Verilerinizi istediğiniz Azure bölgesinin yakınındaki bir ExpressRoute konumuna [getirebilirseniz, Yerel SKU'yu](expressroute-faqs.md) etkinleştirerek verilerinizi uygun maliyetli bir şekilde aktarabilirsiniz. Yerel ile Veri aktarımı ExpressRoute bağlantı noktası ücretine dahildir. 
+### <a name="local-connectivity-with-expressroute-local"></a>ExpressRoute yerel ile yerel bağlantı
+Verilerinizi istediğiniz Azure bölgenize yakın bir ExpressRoute konumuna getirebiliyorsanız, [Yerel SKU 'yu](expressroute-faqs.md) etkinleştirerek verileri uygun maliyetli bir şekilde aktarabilirsiniz. Yerel ile veri aktarımı ExpressRoute bağlantı noktası ücretine dahil edilmiştir. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>ExpressRoute Global Reach ile şirket içi bağlantılar
 ExpressRoute bağlantı hattınızı bağlayarak şirket içi siteleriniz arasında veri alışverişi yapmak için ExpressRoute Global Reach’i etkinleştirebilirsiniz. Örneğin Kaliforniya’da, Silikon Vadisi’ndeki ExpressRoute’a bağlanmış olan özel bir veri merkeziniz ve Teksas'ta, Dallas'taki ExpressRoute'a bağlanmış bir başka özel veri merkeziniz varsa ExpressRoute Global Reach ile özel veri merkezlerinizi iki ExpressRoute bağlantı hattı aracılığıyla birbirlerine bağlayabilirsiniz. Veri merkezleri arası trafiğiniz Microsoft ağı üzerinden geçer.
@@ -117,9 +117,9 @@ ExpressRoute hakkında sık sorulan sorular için bkz. [ExpressRoute SSS](expres
 * ExpressRoute bağlantıları ve yönlendirme etki alanları hakkında bilgi edinin. Bkz. [ExpressRoute bağlantı hatları ve etki alanlarını yönlendirme](expressroute-circuit-peerings.md).
 * Bir hizmet sağlayıcı bulun. Bkz. [ExpressRoute ortakları ve eşleme konumları](expressroute-locations.md).
 * Tüm önkoşulların sağlandığından emin olun. Bkz. [ExpressRoute önkoşulları](expressroute-prerequisites.md).
-* [Yönlendirme,](expressroute-routing.md) [NAT](expressroute-nat.md)ve [QoS gereksinimlerine](expressroute-qos.md)bakın.
+* [Yönlendirme](expressroute-routing.md), [NAT](expressroute-nat.md)ve [QoS](expressroute-qos.md)için gereksinimlere bakın.
 * ExpressRoute bağlantınızı yapılandırın.
-  * [ExpressRoute bağlantı hattı oluşturma ve değiştirme](expressroute-howto-circuit-portal-resource-manager.md)
+  * [ExpressRoute bağlantı hattını oluşturma ve değiştirme](expressroute-howto-circuit-portal-resource-manager.md)
   * [Bir ExpressRoute bağlantı hattı için eşlemeyi oluşturma ve değiştirme](expressroute-howto-routing-portal-resource-manager.md)
   * [Bir sanal ağı ExpressRoute bağlantı hattına bağlama](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Azure'un diğer başlıca [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.

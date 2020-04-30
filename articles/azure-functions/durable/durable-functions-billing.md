@@ -1,56 +1,56 @@
 ---
-title: Dayanıklı işlevler faturalandırma - Azure Fonksiyonları
-description: Dayanıklı İşlevlerin iç davranışları ve Azure İşlevleri için faturalandırmayı nasıl etkilediği hakkında bilgi edinin.
+title: Dayanıklı işlevler faturalandırma-Azure Işlevleri
+description: Dayanıklı İşlevler iç davranışları ve bunların Azure Işlevleri için faturalandırmayı nasıl etkilediği hakkında bilgi edinin.
 author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74233006"
 ---
-# <a name="durable-functions-billing"></a>Dayanıklı Fonksiyonlar faturalandırma
+# <a name="durable-functions-billing"></a>Dayanıklı İşlevler faturalandırma
 
-[Dayanıklı Işlevler,](durable-functions-overview.md) Azure İşlevler ile aynı şekilde faturalandırılır. Daha fazla bilgi için Azure [İşlevler fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/)'na bakın.
+[Dayanıklı işlevler](durable-functions-overview.md) Azure işlevleriyle aynı şekilde faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/).
 
-Azure İşlevler [Tüketim planında](../functions-scale.md#consumption-plan)orkestratör işlevlerini yürütürken, bazı faturalandırma davranışlarına dikkat etseniz gerekir. Aşağıdaki bölümlerde bu davranışları ve bunların etkileri daha ayrıntılı olarak açıklayınız.
+Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevlerini yürütürken bazı faturalandırma davranışlarından haberdar olmanız gerekir. Aşağıdaki bölümlerde bu davranışlar ve bunların etkileri daha ayrıntılı olarak açıklanır.
 
-## <a name="orchestrator-function-replay-billing"></a>Orchestrator işlevi yeniden faturalandırma
+## <a name="orchestrator-function-replay-billing"></a>Orchestrator işlevi yeniden yürütme faturalandırma
 
-[Orchestrator işlevleri](durable-functions-orchestrations.md) bir orkestrasyon ömrü boyunca birkaç kez yeniden çalabilir. Her tekrar, Azure İşlevleri çalışma zamanı tarafından ayrı bir işlev çağırması olarak görüntülenir. Bu nedenle, Azure İşlevler Tüketim planında bir orkestratör işlevinin her tekrarı için faturalandırılırsınız. Diğer plan türleri orchestrator işlevi tekrarı için ücret lendirmez.
+[Orchestrator işlevleri](durable-functions-orchestrations.md) , bir Orchestration 'un ömrü boyunca birkaç kez tekrar çalışabilir. Her yeniden yürütme işlemi, Azure Işlevleri çalışma zamanı tarafından ayrı bir işlev çağrısı olarak görüntülenir. Bu nedenle, Azure Işlevleri tüketim planında bir Orchestrator işlevinin her yeniden oynaması için faturalandırılırsınız. Diğer plan türleri Orchestrator işlevi yeniden yürütmeyi ücretlendirilmez.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Orkestratör işlevlerini beklemek ve verimli olmak
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Orchestrator işlevleri bekleniyor ve sürüyor
 
-Bir orkestratör işlevi C# veya JavaScript'te **verim** için **bekleme** yi kullanarak asynchronous eyleminin bitmesini beklediğinde, çağrıda belirli bir işletmenin tamamlanmışolması dikkate Orkestratör işlevinin faturalandırması bu noktada durur. Bir sonraki orkestratör işlevi tekrarı kadar devam etmez. Bir orkestratör işlevini beklerken veya vermek için harcanan herhangi bir zaman için faturalandırılmamanız.
+Bir Orchestrator işlevi, bir zaman uyumsuz eylemin, **C# veya JavaScript** 'te **await** kullanarak tamamlanmasını bekliyorsa, çalışma zamanı belirli yürütmenin tamamlanmasını kabul eder. Orchestrator işlevinin faturalandırması bu noktada sona erer. Sonraki Orchestrator işlevi yeniden yürütmeden önce bu işlemi sürdürmez. Orchestrator işlevinde bekleyen veya olmayan herhangi bir zaman faturalandırılmaz.
 
 > [!NOTE]
-> Diğer işlevleri çağıran işlevler bazıları tarafından bir antipattern olarak kabul edilir. Bunun _nedeni, çift faturalama_olarak bilinen bir sorundur. Bir işlev başka bir işlevi doğrudan aradığında, her ikisi de aynı anda çalışır. Çağrı işlevi yanıt beklerken çağrı işlevi etkin bir şekilde kod çalıştırıyor. Bu durumda, arama işlevinin çağrılan işlevin çalışmasını bekleyerek harcadığı süreyi ödemeniz gerekir.
+> Diğer işlevleri çağıran işlevler bazıları bir kötü model olarak değerlendirilir. Bunun nedeni, _Double faturalandırma_olarak bilinen bir sorundur. Bir işlev doğrudan başka bir işlevi çağırdığında, her ikisi de aynı anda çalışır. Çağrılan işlev, çağırma işlevi bir yanıt beklerken kodu etkin bir şekilde çalıştırır. Bu durumda, çağırma işlevinin çağrılan işlevin çalışmasını beklerken geçen süre için ödeme yapmanız gerekir.
 >
-> Orkestratör işlevlerinde çift faturalama yoktur. Bir orchestratör işlevinin faturalandırması, bir etkinlik işlevinin veya alt orkestrasyonun sonucunu beklerken durur.
+> Orchestrator işlevlerinde bir Double faturalandırma yoktur. Bir Orchestrator işlevinin faturalandırması, bir etkinlik işlevi veya alt düzenleme sonucunu beklerken duraklar.
 
-## <a name="durable-http-polling"></a>Dayanıklı HTTP yoklama
+## <a name="durable-http-polling"></a>Kalıcı HTTP yoklaması
 
-Orchestrator [işlevleri, HTTP özellikleri makalesinde](durable-functions-http-features.md)açıklandığı gibi harici uç noktalara uzun süreli HTTP çağrıları yapabilir. C#'daki **CallHttpAsync** yöntemi ve JavaScript'teki **callHttp** yöntemi, [eşzamanlı 202 desenini](durable-functions-http-features.md#http-202-handling)takip ederken bir HTTP bitiş noktasını dahili olarak yoklayababilir.
+Orchestrator işlevleri, [http özellikleri makalesinde](durable-functions-http-features.md)açıklandığı gibi dış uç noktalara uzun süre çalışan http çağrıları yapabilir. C# ' deki **CallHttpAsync** yöntemi ve JavaScript 'Teki **callhttp** yöntemi, [zaman uyumsuz 202 modelini](durable-functions-http-features.md#http-202-handling)takip ederken bir HTTP uç noktasını dahili olarak yoklayabilirler.
 
-Şu anda dahili HTTP yoklama işlemleri için doğrudan faturalama yoktur. Ancak, dahili yoklama orkestratör işlevinin düzenli olarak yeniden çalmasına neden olabilir. Bu dahili işlev tekrarları için standart ücretler faturalandırılırsınız.
+Şu anda iç HTTP yoklama işlemleri için doğrudan faturalandırma yoktur. Ancak iç yoklama, Orchestrator işlevinin düzenli olarak yeniden oynamasına neden olabilir. Bu iç işlev yeniden yürütüldüğünde standart ücretler faturalandırılırsınız.
 
-## <a name="azure-storage-transactions"></a>Azure Depolama işlemleri
+## <a name="azure-storage-transactions"></a>Azure depolama işlemleri
 
-Dayanıklı Işlevler, durumları kalıcı tutmak, iletileri işlemek ve bölme kiralama yoluyla bölümleri yönetmek için varsayılan olarak Azure Depolama'yı kullanır. Bu depolama hesabına sahip olduğunuz için, tüm işlem maliyetleri Azure aboneliğinize faturalandırılır. Dayanıklı İşlevler tarafından kullanılan Azure Depolama yapıları hakkında daha fazla bilgi için [Görev hub'ları makalesine](durable-functions-task-hubs.md)bakın.
+Dayanıklı İşlevler, durumu kalıcı tutmak, iletileri işlemek ve BLOB kiraları aracılığıyla bölümleri yönetmek için varsayılan olarak Azure Storage 'ı kullanır. Bu depolama hesabına sahip olduğunuzdan, tüm işlem maliyetleri Azure aboneliğinize faturalandırılır. Dayanıklı İşlevler tarafından kullanılan Azure depolama yapıtları hakkında daha fazla bilgi için bkz. [görev hub 'ları makalesi](durable-functions-task-hubs.md).
 
-Dayanıklı İşlevler uygulamanızın neden olduğu gerçek Azure Depolama maliyetlerine çeşitli etkenler katkıda bulunur:
+Dayanıklı İşlevler uygulamanız tarafından tahakkuk eden gerçek Azure depolama maliyetlerine birçok etken katkıda bulunur:
 
-* Tek bir işlevli uygulama, bir dizi Azure Depolama kaynaklarını paylaşan tek bir görev hub'ı ile ilişkilidir. Bu kaynaklar, bir işlev uygulamasındaki tüm dayanıklı işlevler tarafından kullanılır. İşlev uygulamasındaki gerçek işlev sayısının Azure Depolama işlem maliyetleri üzerinde hiçbir etkisi yoktur.
-* Her işlev uygulaması örneği, üstel bir geri tepme yoklama algoritması kullanarak depolama hesabındaki birden çok sırayı içten olarak yoklar. Boşta bulunan bir uygulama örneği, kuyrukları etkin bir uygulamadan daha az eşler ve bu da daha az işlem maliyetiyle sonuçlanır. Dayanıklı Işlevler sıra yoklama davranışı hakkında daha fazla bilgi [için, Performans ve Ölçek makalesinin sıra yoklama bölümüne](durable-functions-perf-and-scale.md#queue-polling)bakın.
-* Azure İşlevler Tüketimi veya Premium planlarında çalışırken, [Azure İşlevler ölçeği denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) arka plandaki tüm görev merkezi kuyruklarını düzenli olarak yoklar. Bir işlev uygulaması ışık altında orta ölçekli ise, yalnızca tek bir ölçek denetleyici örneği bu kuyrukları yoklar. İşlev uygulaması çok sayıda örneğe ölçeklendirilebilirse, daha fazla ölçek denetleyici örnekleri eklenebilir. Bu ek ölçek denetleyici örnekleri toplam sıra hareket maliyetlerini artırabilir.
-* Her işlev uygulaması örneği, bir dizi blob kiralaması için rekabet eder. Bu örnekler, tutulan kiraları yenilemek veya yeni kiralamalar elde etmeye çalışmak için Azure Blob hizmetini düzenli aralıklarla arar. Görev merkezinin yapılandırılmış bölüm sayısı, blob kiralama sayısını belirler. Daha fazla sayıda işlev uygulaması örneğine ölçekleme, büyük olasılıkla bu kiralama işlemleriyle ilişkili Azure Depolama işlem maliyetlerini artırır.
+* Tek bir işlev uygulaması, bir dizi Azure depolama kaynağını paylaşan tek bir görev hub 'ı ile ilişkilendirilir. Bu kaynaklar, bir işlev uygulamasındaki tüm dayanıklı işlevler tarafından kullanılır. İşlev uygulamasındaki gerçek işlev sayısı, Azure depolama işlem maliyetlerine hiçbir etkiye sahip değildir.
+* Her işlev uygulaması örneği, bir üstel geri alma yoklama algoritması kullanarak depolama hesabındaki birden çok kuyruğu dahili olarak yoklar. Boş bir uygulama örneği, kuyrukları etkin bir uygulama uygulamaktan daha az bir şekilde yoklar, bu da daha az işlem maliyeti elde etmez. Dayanıklı İşlevler kuyruğu-yoklama davranışı hakkında daha fazla bilgi için [performans ve ölçek makalesinin sıra yoklaması bölümüne](durable-functions-perf-and-scale.md#queue-polling)bakın.
+* Azure işlevleri tüketimine veya Premium planlarında çalışırken, [Azure işlevleri ölçek denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) arka plandaki tüm görev hub kuyruklarını düzenli aralıklarla yoklar. Bir işlev uygulaması hafif ve orta ölçekli ölçeğe sahip ise, yalnızca tek bir ölçek denetleyicisi örneği bu kuyrukları yoklayacaktır. İşlev uygulaması çok sayıda örneğe ölçeklenirken, daha fazla ölçek denetleyicisi örneği eklenebilir. Bu ek ölçek denetleyicisi örnekleri toplam kuyruk işlem maliyetlerini artırabilir.
+* Her işlev uygulama örneği bir blob kiraları kümesi için. Bu örnekler, tutulan kiraları yenilemek veya yeni kiralamalar edinmeyi denemek için düzenli aralıklarla Azure Blob hizmetine çağrı yapar. Görev merkezinin yapılandırılan bölüm sayısı, blob kiralamaları sayısını belirler. Çok sayıda işlev uygulaması örneğine genişleme, büyük olasılıkla bu kira işlemleriyle ilişkili Azure depolama işlem maliyetlerini artırır.
 
-Azure Depolama [fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) hakkında daha fazla bilgiyi Azure Depolama fiyatlandırma belgelerinde bulabilirsiniz. 
+Azure [depolama fiyatlandırma belgelerindeki Azure](https://azure.microsoft.com/pricing/details/storage/) Depolama fiyatlandırması hakkında daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure İşlevleri fiyatlandırması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/functions/)
+> [Azure Işlevleri fiyatlandırması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/functions/)

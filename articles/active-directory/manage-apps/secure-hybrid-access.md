@@ -1,6 +1,6 @@
 ---
-title: Azure AD güvenli karma erişim | Microsoft Dokümanlar
-description: Bu makalede, eski şirket içi, genel bulut veya özel bulut uygulamalarınızı Azure AD ile tümleştirmek için iş ortağı çözümleri açıklanmaktadır. Uygulama teslim denetleyicilerini veya ağlarını Azure AD'ye bağlayarak eski uygulamalarınızı güvence altına alın.
+title: Azure AD güvenli karma erişim | Microsoft Docs
+description: Bu makalede, Azure AD ile eski şirket içi, genel bulutunuzun veya özel bulut uygulamalarınızın tümleştirilmesine yönelik iş ortağı çözümleri açıklanmaktadır. Uygulama teslim denetleyicilerini veya ağlarını Azure AD 'ye bağlayarak eski uygulamalarınızın güvenliğini sağlayın.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 12/18/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e97b95e290ef74ffd98a3396ffe4705270132b2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75433757"
 ---
-# <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Güvenli karma erişim: Uygulama teslim denetleyicileri ve ağlarla eski uygulamaları güvenli hale
+# <a name="secure-hybrid-access-secure-legacy-apps-with-app-delivery-controllers-and-networks"></a>Güvenli karma erişim: uygulama teslim denetleyicileri ve ağlarla güvenli eski uygulamalar sağlayın
 
-Artık şirket içi ve bulut eski kimlik doğrulama uygulamalarınızı azure AD'ye mevcut uygulama teslim denetleyiciniz veya ağınızla bağlayarak koruyabilirsiniz. Bu şekilde, Azure AD Koşullu Erişim ve Azure AD Kimlik Koruması gibi Azure AD özellikleriyle tüm uygulamalarda boşluğu kapatabilir ve güvenlik duruşunuzu güçlendirebilirsiniz.
+Artık şirket içi ve bulut eski kimlik doğrulama uygulamalarınızı, mevcut uygulama teslim denetleyicinize veya ağınıza Azure AD 'ye bağlayarak koruyabilirsiniz. Bu şekilde, Azure AD koşullu erişim ve Azure AD Kimlik Koruması gibi Azure AD özelliklerine sahip tüm uygulamalarda, boşluğu köprülemek ve güvenlik duruşunuzu güçlendirebilirsiniz.
 
-Mevcut ağ ve teslim denetleyicinizi kullanarak, iş süreçleriniz için hala kritik olan ancak Azure AD ile daha önce koruyamadığınız eski uygulamaları kolayca koruyabilirsiniz. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahip sinizdir.
+Mevcut ağ ve teslim denetleyicinizi kullanarak, İş süreçleriniz için hala kritik olan eski uygulamaları kolayca koruyabilir ancak Azure AD ile önce koruyamazsınız. Bu uygulamaları korumaya başlamak için ihtiyacınız olan her şeye zaten sahipsiniz.
 
-![Güvenli karma erişimi gösteren görüntü](media/secure-hybrid-access/secure-hybrid-access.png)
+![Güvenli karma erişimi gösteren resim](media/secure-hybrid-access/secure-hybrid-access.png)
 
-Aşağıdaki satıcılar, Azure AD ile tümleştirme için önceden oluşturulmuş çözümler ve ayrıntılı kılavuzlar sunar.
+Aşağıdaki satıcılar, Azure AD ile tümleştirme için önceden oluşturulmuş çözümler ve ayrıntılı kılavuz sunar.
 
-* [Akamai Kurumsal Uygulama Erişimi (EAA)](../saas-apps/akamai-tutorial.md)
-* [Citrix Uygulama Dağıtım Denetleyicisi (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
-* [F5 Büyük IP APM](https://aka.ms/f5-hybridaccessguide)
+* [Akamai kurumsal uygulama erişimi (EAA)](../saas-apps/akamai-tutorial.md)
+* [Citrix uygulama teslim denetleyicisi (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
+* [F5 Big-IP APM](https://aka.ms/f5-hybridaccessguide)
 * [Zscaler Private Access (ZPA)](https://aka.ms/zscaler-hybridaccessguide)

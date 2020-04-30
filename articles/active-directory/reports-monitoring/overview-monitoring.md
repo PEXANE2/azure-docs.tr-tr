@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68988200"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory izleme nedir?
@@ -57,16 +57,16 @@ Günlükleri bir Azure depolama hesabına yönlendirerek [saklama ilkelerimizde]
 
 ## <a name="stream-logs-to-event-hub"></a>Günlükleri olay hub’ına aktarma
 
-Günlükleri bir Azure olay hub'ına aktarmak, Sumologic ve Splunk gibi üçüncü taraf SIEM araçlarına tümleştirmenizi sağlar. Bu tümleştirme, azure REKLAM etkinliği günlük verilerini, çevrenize daha zengin bakış açısı sağlamak için SIEM'iniz tarafından yönetilen diğer verilerle birleştirmenize olanak tanır. [Olay hub'ına günlük akışı yapmayı](tutorial-azure-monitor-stream-logs-to-event-hub.md) öğrenin.
+Günlükleri bir Azure olay hub'ına aktarmak, Sumologic ve Splunk gibi üçüncü taraf SIEM araçlarına tümleştirmenizi sağlar. Bu tümleştirme, ortamınızda daha zengin Öngörüler sağlamak için Azure AD etkinlik günlüğü verilerini SıEM 'niz tarafından yönetilen diğer verilerle birleştirmenizi sağlar. [Olay hub'ına günlük akışı yapmayı](tutorial-azure-monitor-stream-logs-to-event-hub.md) öğrenin.
 
-## <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Monitor günlüklerine gönderme
+## <a name="send-logs-to-azure-monitor-logs"></a>Günlükleri Azure Izleyici günlüklerine gönder
 
-[Azure Monitor günlükleri,](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) farklı kaynaklardan gelen izleme verilerini birleştiren ve uygulamalarınızın ve kaynaklarınızın işleyişi hakkında öngörüler sağlayan bir sorgu dili ve analiz motoru sağlayan bir çözümdür. Azure AD etkinlik günlüklerini Azure Monitor günlüklerine göndererek, toplanan verileri hızla alabilir, izleyebilir ve uyarabilirsiniz. [Azure Monitor günlüklerine nasıl veri göndereceğinizi](howto-integrate-activity-logs-with-log-analytics.md)öğrenin.
+[Azure izleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) , farklı kaynaklardan izleme verilerini birleştiren ve uygulamalarınızın ve kaynaklarınızın çalışması hakkında Öngörüler sunan bir sorgu dili ve analiz altyapısı sağlayan bir çözümdür. Azure AD etkinlik günlüklerini Azure Izleyici günlüklerine göndererek, toplanan verileri hızlıca alabilir, izleyebilir ve uyarabilir. [Azure izleyici günlüklerine veri gönderme](howto-integrate-activity-logs-with-log-analytics.md)hakkında bilgi edinin.
 
-Oturum açma ve denetim etkinlikleri gibi yaygın senaryoları izlemek için önceden oluşturulmuş Azure AD etkinlik günlüklerini de görüntüleyebilirsiniz. [Azure AD etkinlik günlükleri için günlük analizi görünümlerini nasıl yükleyip kullanacağınızı](howto-install-use-log-analytics-views.md)öğrenin.
+Oturum açma ve denetim etkinlikleri gibi yaygın senaryoları izlemek için önceden oluşturulmuş Azure AD etkinlik günlüklerini de görüntüleyebilirsiniz. [Azure ad etkinlik günlükleri için Log Analytics görünümlerini yüklemeyi ve kullanmayı](howto-install-use-log-analytics-views.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure İzleyici'deki etkinlik günlükleri](concept-activity-logs-azure-monitor.md)
 * [Günlükleri olay hub’ına aktarma](tutorial-azure-monitor-stream-logs-to-event-hub.md)
-* [Günlükleri Azure Monitor günlüklerine gönderme](howto-integrate-activity-logs-with-log-analytics.md)
+* [Günlükleri Azure Izleyici günlüklerine gönder](howto-integrate-activity-logs-with-log-analytics.md)

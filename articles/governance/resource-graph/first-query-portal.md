@@ -1,59 +1,59 @@
 ---
-title: 'Quickstart: İlk portal sorgunuz'
-description: Bu hızlı başlangıçta, Azure Kaynak Grafiği Gezgini'ni kullanarak Azure portalından ilk sorgunuzu çalıştırma adımlarını izlersiniz.
+title: 'Hızlı başlangıç: ilk portal sorgunuz'
+description: Bu hızlı başlangıçta, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74406789"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlatma: Azure Kaynak Grafiği Gezgini'ni kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırma
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
-Azure Kaynak Grafiği'nin gücü, Azure Kaynak Grafiği Gezgini aracılığıyla doğrudan Azure portalında kullanılabilir. Kaynak Grafiği Gezgini, Sorgulayabildiğiniz Azure Kaynak Yöneticisi kaynak türleri ve özellikleri hakkında göz atılabilir bilgiler sağlar. Kaynak Grafiği Gezgini ayrıca birden çok sorguyla çalışmak, sonuçları değerlendirmek ve hatta bazı sorguların sonuçlarını Azure panosuna sabitlenebilecek bir grafiğe dönüştürmek için temiz bir arayüz sağlar.
+Azure Kaynak Graph 'ın gücü Azure Kaynak grafik Gezgini aracılığıyla Azure portal doğrudan kullanılabilir. Kaynak grafik Gezgini, sorgulayabilmeniz için Azure Resource Manager kaynak türleri ve özellikleri hakkında gözatılabilir bilgiler sağlar. Kaynak Grafiği Gezgini Ayrıca birden çok sorgu ile çalışmak, sonuçları değerlendirmek ve hatta bazı sorguların sonuçlarını bir Azure panosuna sabitlenebilir bir grafiğe dönüştürmek için temiz bir arabirim sağlar.
 
-Bu hızlı başlangıcın sonunda, ilk Kaynak Grafiği sorgunuzu çalıştırmak için Azure portalını ve Kaynak Grafiği Gezgini'ni kullanmış ve sonuçları bir panoya sabitlemiş olacaksınız.
+Bu hızlı başlangıçta, ilk kaynak Graph sorgunuzu çalıştırmak ve sonuçları bir panoya sabitlediğiniz Azure portal ve kaynak Graph Explorer 'ı kullandınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="run-your-first-resource-graph-query"></a>İlk Kaynak Grafiği sorgunuzu çalıştırma
 
-İlk Kaynak Grafiği sorgunuzu çalıştırmak için aşağıdaki adımları izleyen Kaynak Grafiği Gezgini'ni bulmak ve kullanmak için [Azure portalını](https://portal.azure.com) açın:
+İlk kaynak grafik sorgunuzu çalıştırmak için aşağıdaki adımları izleyerek kaynak grafiği Gezginini bulmak ve kullanmak üzere [Azure Portal](https://portal.azure.com) açın:
 
-1. Sol bölmede **Tüm hizmetler**'i seçin. Kaynak Grafiği **Gezgini'ni**arayın ve seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Kaynak Grafiği Gezginini**arayın ve seçin.
 
-1. Pencerenin **Sorgu 1** bölümünde, sorguyu `Resources | project name, type | limit 5` girin ve **sorguyu çalıştır'ı**seçin.
+1. Pencerenin **sorgu 1** bölümünde sorguyu `Resources | project name, type | limit 5` girin ve **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
-   > Bu sorgu örneği gibi `order by`bir sıralama değiştirici sağlamadığından, bu sorgunun birden çok kez çalıştırış, istek başına farklı bir kaynak kümesi verim olasılığı yüksektir.
+   > Bu sorgu örneği gibi bir sıralama değiştiricisi sağlamadığından `order by`, bu sorguyu birden çok kez çalıştırmak, istek başına farklı bir kaynak kümesi sunmamasından kaynaklanıyor olabilir.
 
-1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden **Messages** geçirin. Varsa hatalar bu sekme altında görüntülenir.
+1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden geçirin. sorgu hakkındaki ayrıntıları ve sorgu süresini görmek için **iletiler** sekmesini seçin. Varsa, bu sekme altında hatalar görüntülenir.
 
-1. Sorguyu `order by` **Ad** özelliğine `Resources | project name, type | limit 5 | order by name asc`güncelleştirin: . Ardından **sorguyı çalıştır'ı**seçin.
+1. Sorguyu Name özelliği olarak `order by` güncelleştirin **Name** : `Resources | project name, type | limit 5 | order by name asc`. Sonra **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
    > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu, sorgu sonuçlarını önce sınırlar, sonra düzenler.
 
-1. `order by` Önce **Ad** özelliğine, ardından `limit` ilk beş sonuçiçin `Resources | project name, type | order by name asc | limit 5`sorguyu güncelleştirin: . Ardından **sorguyı çalıştır'ı**seçin.
+1. `order by` Sorguyu önce **ad** özelliğine, sonra `limit` da en üstteki beş sonuca güncelleştirin:. `Resources | project name, type | order by name asc | limit 5` Sonra **Sorguyu Çalıştır**' ı seçin.
 
-Son sorgu birkaç kez çalıştırıldığında, ortamınızda hiçbir şeyin değişmediğini varsayarsak, döndürülen sonuçlar tutarlıdır ve beklendiği gibi **Ad** özelliği tarafından sıralanır, ancak yine de ilk beş sonuçla sınırlıdır.
+Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar, **ad** özelliğine göre sıralanmış, ancak yine de en üstteki beş sonuçla sınırlandırıldı.
 
 ### <a name="schema-browser"></a>Şema tarayıcısı
 
-Şema tarayıcısı Kaynak Grafiği Gezgini'nin sol bölmesinde yer alır. Bu kaynak listesi, her ikisi de Azure Kaynak Grafiği tarafından desteklenen ve erişebildiğiniz bir kiracıda bulunan tüm Azure _kaynakları kaynak türlerini_ gösterir. Kaynak türünü veya alt özellikleri genişletmek, Kaynak Grafiği sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir.
+Şema tarayıcısı, kaynak grafik Gezgini 'nin sol bölmesinde bulunur. Bu kaynak listesi, Azure Kaynak Grafiği tarafından desteklenen ve erişim sahibi olduğunuz bir kiracıda bulunan Azure kaynaklarının tüm _kaynak türlerini_ gösterir. Kaynak türü veya alt özellikleri genişletmek, kaynak grafik sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir.
 
-Kaynak türü yerlerini `where type =="<resource type>"` sorgu kutusuna seçmek. Alt özelliklerden birini seçmek `where <propertyName> == "INSERT_VALUE_HERE"` sorgu kutusuna ekler.
-Şema tarayıcısorgularda kullanım özellikleri keşfetmek için harika bir yoldur. _INSERT\_VALUE\_HERE'ı_ kendi değerinizle değiştirdiğinizden emin olun, istenen sonuçları elde etmek için sorguyu koşullarla, işleçlerle ve işlevlerle ayarlayın.
+Kaynak türünü seçme sorgu kutusuna `where type =="<resource type>"` yer koyar. Alt özelliklerden birini seçmek sorgu kutusuna eklenir `where <propertyName> == "INSERT_VALUE_HERE"` .
+Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _Buraya, ekleme\_değerini\__ kendi değer ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
 
-## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak Grafiği sorgusundan grafik oluşturma
+## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
-Yukarıdaki son sorguyu çalıştırdıktan sonra, **Grafikler** sekmesini seçerseniz, "sonuç kümesi pasta grafiği görselleştirmesiyle uyumlu değildir" iletisi alırsınız. Sonuçları listeleyen sorgular bir grafiğe dönüştürülemez, ancak kaynak sayısı sağlayan sorgular yapılabilir. Örnek [sorguyu kullanma - Sanal makineleri işletim sistemi türüne göre say,](./samples/starter.md#count-virtual-machines-by-os-type)Kaynak Grafiği sorgusundan bir görselleştirme oluşturalım.
+Yukarıdaki son sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçerseniz "sonuç kümesi bir pasta grafik görselleştirmesi ile uyumlu değildir." iletisini alırsınız. Sonuçları listelemek için gereken sorgular bir grafiğe yapılamaz, ancak kaynak sayısı sağlayan sorgular olabilir. [Örnek sorgu-sayı sanal makinelerini işletim sistemi türüne göre](./samples/starter.md#count-virtual-machines-by-os-type)kullanarak, kaynak Graph sorgusundan bir görselleştirme oluşturalım.
 
-1. Pencerenin **Sorgu 1** bölümünde, aşağıdaki sorguyu girin ve **sorguyu çalıştır'ı**seçin.
+1. Pencerenin **sorgu 1** bölümünde aşağıdaki sorguyu girin ve **Sorguyu Çalıştır**' ı seçin.
 
    ```kusto
    Resources
@@ -61,65 +61,65 @@ Yukarıdaki son sorguyu çalıştırdıktan sonra, **Grafikler** sekmesini seçe
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. **Sonuçlar** sekmesini seçin ve bu sorguiçin yanıtın sayımlar sağladığını unutmayın.
+1. **Sonuçlar** sekmesini seçin ve bu sorguya yönelik yanıtın sayımlar sağladığını unutmayın.
 
-1. **Grafikler** sekmesini seçin. Şimdi, sorgu görselleştirmelerle sonuçlanır. Kullanılabilir görselleştirme seçeneklerini denemek için türü _Select chart türünden_ _Çubuk grafiğine_ veya _Donut grafiğine_ değiştirin.
+1. **Grafikler** sekmesini seçin. Artık sorgu görselleştirmelere neden olur. Kullanılabilir görselleştirme seçenekleriyle denemeler yapmak için _grafik türünü seçin..._ ' yi _çubuk grafik_ veya _halka grafik_ olarak değiştirin.
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>Sorgu görselleştirmesini panoya sabitleme
 
-Görüntülenebilen bir sorgudan sonuçlar aldığınızda, bu veri görselleştirmesi panolarınızdan birine sabitlenebilir. Yukarıdaki sorguyu çalıştırdıktan sonra aşağıdaki adımları izleyin:
+Görselleştirilebilen bir sorgunun sonuçları varsa, bu veri görselleştirmesi daha sonra panolarınızdan birine sabitlenebilir. Yukarıdaki sorguyu çalıştırdıktan sonra aşağıdaki adımları izleyin:
 
-1. **Kaydet'i** seçin ve "OS Türüne Göre VM' ler" adını sağlayın. Ardından sağ bölmenin altındaki **Kaydet'i** seçin.
+1. **Kaydet** ' i seçin ve "Işletim sistemi türüne göre VM 'ler" adını sağlayın. Ardından sağ bölmenin alt kısmındaki **Kaydet** ' i seçin.
 
-1. Kaydedilmiş olan sorguyu yeniden çalıştırmak için **Sorguyu Çalıştır'ı** seçin.
+1. Sorguyu yeniden **çalıştırmak için sorguyu Çalıştır** ' ı seçin.
 
-1. **Grafikler** sekmesinde bir veri görselleştirmesi seçin. Ardından **panoya Sabitle'yi**seçin.
+1. **Grafikler** sekmesinde bir veri görselleştirme seçin. Sonra **panoya sabitle**' yi seçin.
 
-1. Görünen portal bildirimini seçin veya sol bölmeden **Pano'yu** seçin.
+1. Görüntülenen Portal bildirimini seçin ya da sol bölmeden **Pano** ' yı seçin.
 
-Sorgu artık panonuzda sorgu adıyla eşleşen döşeme başlığıyla kullanılabilir. Sorgu sabitlendiğinde kaydedilmemişse, bunun yerine 'Sorgu 1' adı verilmiştir.
+Sorgu artık panonuzda sorgu adıyla eşleşen kutucuğun başlığı ile kullanılabilir. Sorgu sabitlenmemişse kaydedilmemiş ise bunun yerine ' Query 1 ' adı gelir.
 
-Sorgu ve ortaya çıkan veri görselleştirmesi, pano her yükleninher yılında çalışır ve güncellenir ve doğrudan iş akışınızda Azure ortamınıza gerçek zamanlı ve dinamik öngörüler sağlar.
-
-> [!NOTE]
-> Bir listeyle sonuçlanan sorgular da panoya sabitlenebilir. Özellik, sorguların veri görselleştirmeleri ile sınırlı değildir.
-
-## <a name="import-example-resource-graph-explorer-dashboards"></a>İçe aktarma örneği Kaynak Grafiği Explorer panoları
-
-Kaynak Grafiği sorgularına örnekler vermek ve Kaynak Grafiği Gezgini'nin Azure portal iş akışınızı geliştirmek için nasıl kullanılabileceğini sağlamak için bu örnek panoları deneyin.
-
-- [Kaynak Grafiği Gezgini - Örnek Pano #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
-
-  [![Örnek Pano #1 için örnek resim](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
-
-- [Kaynak Grafiği Gezgini - Örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
-
-  [![Örnek Pano #2 için örnek resim](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+Sorgu ve sonuçta elde edilen veri görselleştirme, pano her yüklendiğinde, Azure ortamınızda doğrudan iş akışınızda gerçek zamanlı ve dinamik Öngörüler sağlayan her seferinde çalışır ve güncelleştirir.
 
 > [!NOTE]
-> Yukarıdaki örnek pano ekran görüntülerindeki sayımlar ve grafikler Azure ortamınıza bağlı olarak değişir.
+> Bir liste ile sonuçlanan sorgular da panoya sabitlenebilir. Özellik, sorguların veri görselleştirmeleriyle sınırlı değildir.
 
-1. Değerlendirmek istediğiniz örnek panosunu seçin ve indirin.
+## <a name="import-example-resource-graph-explorer-dashboards"></a>Örnek kaynak grafik Gezgini panoları içeri aktarma
 
-1. Azure portalında, sol bölmeden **Pano'yu** seçin.
+Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azure portal iş akışınızı iyileştirmek için nasıl kullanılabileceğini sağlamak için bu örnek panoları deneyin.
 
-1. **Yükle'yi**seçin, ardından indirilen örnek pano dosyasını bulun ve seçin. Sonra **Aç'ı**seçin.
+- [Kaynak Grafiği Gezgini-örnek Pano #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-Alınan pano otomatik olarak görüntülenir. Azure portalınızda artık var olduğundan, gerektiğinde değişiklikleri keşfedebilir ve yapabilir veya ekiplerinizle paylaşmak için örnekten yeni panolar oluşturabilirsiniz. Panolarla çalışma hakkında daha fazla bilgi için Azure [portalında pano oluştur ve paylaş'a](../../azure-portal/azure-portal-dashboards.md)bakın.
+  [![Örnek Pano için örnek resim #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+
+- [Kaynak Grafiği Gezgini-örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
+
+  [![Örnek Pano için örnek resim #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+
+> [!NOTE]
+> Yukarıdaki örnek panodaki sayımlar ve grafikler, Azure ortamınıza bağlı olarak değişir.
+
+1. Değerlendirmek istediğiniz örnek panoyu seçin ve indirin.
+
+1. Azure portal sol bölmeden **Pano** ' yı seçin.
+
+1. **Karşıya yükle**' yi seçin, ardından indirilen örnek Pano dosyasını bulun ve seçin. Sonra **Aç**' ı seçin.
+
+İçeri aktarılan pano otomatik olarak görüntülenir. Azure portal artık mevcut olduğundan, takımınızla paylaşmak için, gerektiğinde değişiklikler yapabilir veya örnek üzerinde yeni panolar oluşturabilirsiniz. Panolarla çalışma hakkında daha fazla bilgi için, [Azure Portal panoları oluşturma ve paylaşma](../../azure-portal/azure-portal-dashboards.md)konusuna bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Örnek Kaynak Grafiği panolarını Azure portal ortamınızdan kaldırmak istiyorsanız, bunu aşağıdaki adımlarla yapabilirsiniz:
+Azure portal ortamınızdan örnek kaynak Graflarını kaldırmak istiyorsanız, bunu aşağıdaki adımlarla yapabilirsiniz:
 
-1. Sol bölmeden **Pano'yu** seçin.
+1. Sol bölmeden **Pano** ' yı seçin.
 
-1. Pano açılır panelinden, silmek istediğiniz örnek Kaynak Grafiği panosunu seçin.
+1. Pano açılır listesinden silmek istediğiniz örnek kaynak grafik panosunu seçin.
 
-1. Pano üst kısmındaki pano menüsünden **Sil'i** ve onaylamak için **Tamam'ı** seçin.
+1. Panonun üstündeki Pano menüsünden **Sil** ' i seçin ve onaylamak için **Tamam** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, ilk sorgunuzu çalıştırmak için Azure Kaynak Grafiği Gezgini'ni kullandınız ve Kaynak Grafiği tarafından desteklenen pano örneklerine baktınız. Kaynak grafik dili hakkında daha fazla bilgi edinmek için, sorgu dili ayrıntıları sayfasına devam edin.
+Bu hızlı başlangıçta, ilk sorgunuzu çalıştırmak ve kaynak Graph tarafından desteklenen Pano örneklerine bakarak Azure Kaynak Grafiği Gezginini kullandınız. Kaynak grafik dili hakkında daha fazla bilgi edinmek için sorgu dili ayrıntıları sayfasına ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Sorgu dili hakkında daha fazla bilgi alın](./concepts/query-language.md)
