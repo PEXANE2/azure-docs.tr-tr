@@ -1,7 +1,7 @@
 ---
-title: Derin Öğrenme & AI çerçeveleri
+title: Ayrıntılı öğrenme & AI çerçeveleri
 titleSuffix: Azure Data Science Virtual Machine
-description: Azure Veri Bilimi Sanal Makine'de kullanılabilir derin öğrenme çerçeveleri ve araçları.
+description: Azure Veri Bilimi Sanal Makinesi 'de kullanılabilir derin öğrenme çerçeveleri ve araçları.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 ms.service: machine-learning
@@ -11,139 +11,139 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270075"
 ---
-# <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM için derin öğrenme ve AI çerçeveleri
-DSVM üzerinde derin öğrenme çerçeveleri aşağıda listelenmiştir.
+# <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
+DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 
 ## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | |
+| Desteklenen sürüm (ler) | |
 | Desteklenen DSVM sürümleri      | Linux (Ubuntu)     |
-| Nasıl yapılandırılır / DSVM yüklü?  | Caffe yüklü `/opt/caffe`.   Örnekler içinde. `/opt/caffe/examples`|
-| Nasıl çalıştırılır?      | VM'nizde oturum kurmak için X2Go'yu kullanın ve ardından yeni bir terminal başlatın ve aşağıdakileri girin:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Örnek not defterleriyle yeni bir tarayıcı penceresi açılır. İkili /opt/caffe/build/install/bin'e yüklenir.<br/><br/>Caffe'nin yüklü sürümü Python 2.7 gerektirir ve varsayılan olarak etkinleştirilen Python 3.5 ile çalışmaz. Python 2.7'ye geçmek `source activate root` için Anaconda ortamına geçmek için çalıştırın.|    
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Caffe, ' da `/opt/caffe`yüklüdür.   Örnekler içinde `/opt/caffe/examples`.|
+| Nasıl çalıştırılır?      | X2Go kullanarak sanal makinenizde oturum açın ve ardından yeni bir Terminal başlatın ve aşağıdakileri girin:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Örnek Not defterleri ile yeni bir tarayıcı penceresi açılır. İkililer/seçenek/Caffe/Build/Install/bina 'da yüklenir.<br/><br/>Caffe 'nin yüklü sürümü Python 2,7 gerektirir ve varsayılan olarak etkinleştirilen Python 3,5 ile çalışmaz. Python 2,7 ' ye geçmek için, `source activate root` Anaconda ortamına geçiş yapmak üzere öğesini çalıştırın.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | |
+| Desteklenen sürüm (ler) | |
 | Desteklenen DSVM sürümleri      | Linux (Ubuntu)     |
-| Nasıl yapılandırılır / DSVM yüklü?  | Caffe2 [Python 2.7 (root) conda ortamında yüklenir. |
-| Nasıl çalıştırılır?      | Terminal: Python'u başlatın ve Caffe2'yi aktarın. <br/> * JupyterHub: [JupyterHub bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve sonra örnek dizüstü bilgisayarlar bulmak için Caffe2 dizinine gidin. Bazı not defterleri, Python kodunda ayarlanacak Caffe2 kökünü gerektirir; /opt/caffe2 girin. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Caffe2, [Python 2,7 (root) Conda ortamına yüklenir. |
+| Nasıl çalıştırılır?      | Terminal: Python 'u başlatın ve Caffe2 içeri aktarın. <br/> * JupyterHub: [jupyterhub 'A bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve ardından örnek not defterlerini bulmak için Caffe2 dizinine gidin. Bazı Not defterleri, Python kodunda Caffe2 kökünün ayarlanmış olmasını gerektirir; /seçenek/caffe2yazın. |
 
 ## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 5.2 |
+| Desteklenen sürüm (ler) | 5,2 |
 | Desteklenen DSVM sürümleri      | Linux (Ubuntu)     |
-| Nasıl yapılandırılır / DSVM yüklü?  | Chainer Python 3.5'e yüklenir. |
-| Nasıl çalıştırılır?      | Terminal: Python 3.5 ortamını `python`etkinleştirin, çalıştırın ve sonra `import chainer`. <br/> * JupyterHub: [JupyterHub bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve sonra örnek dizüstü bilgisayarlar bulmak için Chainer dizinine gidin.| 
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Chainer, Python 3,5 ' ye yüklenir. |
+| Nasıl çalıştırılır?      | Terminal: Python 3,5 ortamını etkinleştirin, çalıştırın `python`ve ardından. `import chainer` <br/> * JupyterHub: [jupyterhub 'A bağlanın](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)ve ardından örnek not defterlerini bulmak Için Chainer dizinine gidin.| 
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA, cuDNN, NVIDIA Sürücüsü](https://developer.nvidia.com/cuda-toolkit)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 10.0.130|
+| Desteklenen sürüm (ler) | 10.0.130|
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
-| Nasıl yapılandırılır / DSVM yüklü?  |_nvidia-smi_ sistem yolunda mevcuttur.  |
-| Nasıl çalıştırılır?      | Bir komut istemi (Windows' da) veya terminal (Linux'ta) açın ve ardından _nvidia-smi_çalıştırın. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  |_NVIDIA-SMI_ sistem yolunda kullanılabilir.  |
+| Nasıl çalıştırılır?      | Bir komut istemi (Windows üzerinde) veya bir Terminal (Linux 'ta) açın ve ardından _NVIDIA-SMI_' yi çalıştırın. |
 
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 0.16.1|
+| Desteklenen sürüm (ler) | 0.16.1|
 | Desteklenen DSVM sürümleri      | Linux (Ubuntu)   |
-| Nasıl yapılandırılır / DSVM yüklü?  | Horovod Python 3.5 yüklü |
-| Nasıl çalıştırılır?      | Terminalde doğru ortamı etkinleştirin ve Python çalıştırın. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Horovod, Python 3,5 ' de yüklü |
+| Nasıl çalıştırılır?      | Terminalde doğru ortamı etkinleştirin ve Python 'u çalıştırın. |
 
 ## <a name="keras"></a>[Keras](https://keras.io/)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 2.2.4 |
+| Desteklenen sürüm (ler) | 2.2.4 |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
-| Nasıl yapılandırılır / DSVM yüklü?  | Keras, Python 3.6'da Windows'da ve Python 3.5'te Linux'ta yüklenir |
-| Nasıl çalıştırılır?      | Terminalde doğru ortamı etkinleştirin ve Python çalıştırın. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Keras, Python 3,6 ' ye Windows üzerinde ve Linux 'ta Python 3,5 ' de yüklendi |
+| Nasıl çalıştırılır?      | Terminalde doğru ortamı etkinleştirin ve Python 'u çalıştırın. |
 
 ## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Bilişsel Araç Seti (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 2.5.1 |
+| Desteklenen sürüm (ler) | 2.5.1 |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
-| Nasıl yapılandırılır / DSVM yüklü?  | CNTK, Python 3.6'da [Windows 2016'da](dsvm-tools-languages.md#python-windows-server-2016-edition) ve Python 3.5'te [Linux'ta](./dsvm-tools-languages.md#python-linux-edition)yüklenir) |
-| Nasıl çalıştırılır?      | Terminal: Doğru ortamı etkinleştirin ve Python çalıştırın. <br/>Jupyter: [Jupyter](provision-vm.md) veya [JupyterHub'a](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)bağlanın ve ardından cntk dizinini örnekler için açın. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | CNTK, [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' de ve [Linux](./dsvm-tools-languages.md#python-linux-edition)üzerinde Python 3,5 ' de yüklüdür) |
+| Nasıl çalıştırılır?      | Terminal: doğru ortamı etkinleştirin ve Python 'U çalıştırın. <br/>Jupyter: [Jupyter](provision-vm.md) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve ardından örnekler için cntk dizinini açın. |
 
 ## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 1.3.0 |
+| Desteklenen sürüm (ler) | 1.3.0 |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
-| Nasıl yapılandırılır / DSVM yüklü?  | MXNet Windows ve `C:\dsvm\tools\mxnet` `/dsvm/tools/mxnet` Ubuntu'da yüklenir. Python bağlamaları [Windows 2016'da](dsvm-tools-languages.md#python-windows-server-2016-edition) Python 3.6'ya ve [Linux'ta](./dsvm-tools-languages.md#python-linux-edition)Python 3.5'te yüklenir) R bağlamaları ubuntu DSVM'ye de dahildir. |
-| Nasıl çalıştırılır?      | Terminal: Doğru conda ortamını `import mxnet`etkinleştirin, ardından çalıştırın. <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) veya [JupyterHub'a](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)bağlanın ve ardından örnekler için dizini `mxnet` açın. |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | MXNet, Windows 'da `C:\dsvm\tools\mxnet` ve `/dsvm/tools/mxnet` Ubuntu 'da yüklüdür. Python bağlamaları [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' ye yüklenir ve [Linux](./dsvm-tools-languages.md#python-linux-edition)üzerinde Python 3,5 ' de bulunur), Ubuntu dsvm 'ye de R bağlamaları dahildir. |
+| Nasıl çalıştırılır?      | Terminal: doğru Conda ortamını etkinleştirip çalıştırın `import mxnet`. <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve sonra örnekler için `mxnet` dizini açın. |
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 1.0.1 |
+| Desteklenen sürüm (ler) | 1.0.1 |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
-| Nasıl yapılandırılır / DSVM yüklü?  | MXNet Model Server, Python 3.6'da [Windows 2016'da](dsvm-tools-languages.md#python-windows-server-2016-edition) ve Python 3.5'te [Linux'ta](./dsvm-tools-languages.md#python-linux-edition)yüklenir) |
-| Nasıl çalıştırılır?      | Terminal: `sudo systemctl stop jupyterhub` Her ikisi de aynı bağlantı noktasında dinlediği için önce JupyterHub hizmetini durdurmak için çalıştırın. Sonra doğru conda ortamı etkinleştirin ve çalıştırın`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | MXNet model sunucusu, [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' de ve [Linux](./dsvm-tools-languages.md#python-linux-edition)üzerinde Python 3,5 ' de yüklüdür) |
+| Nasıl çalıştırılır?      | Terminal: her `sudo systemctl stop jupyterhub` ikisi de aynı bağlantı noktasını dinlemek için, önce JupyterHub hizmetini durdurmak üzere çalıştırın. Ardından, doğru Conda ortamını etkinleştirip çalıştırın`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
-## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia Sistem Yönetim Arayüzü (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVIDIA sistem yönetimi arabirimi (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli |  |
+| Desteklenen sürüm (ler) |  |
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
-| Ne için? | GPU etkinliğini sorgulamak için NVIDIA aracı |
-| Nasıl yapılandırılır / DSVM yüklü?  | `nvidia-smi`sistem yolu üzerindedir. |
-| Nasıl çalıştırılır?      | **GPU'lu**sanal bir makinede, bir komut istemi (Windows'ta) veya terminal `nvidia-smi`(Linux'ta) açın ve ardından çalıştırın. |
+| Ne için? | GPU etkinliğini sorgulamak için NVıDıA aracı |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | `nvidia-smi`sistem yolunda. |
+| Nasıl çalıştırılır?      | **GPU 'nun bulunduğu**bir sanal makinede, bir komut istemi açın (Windows üzerinde) veya bir terminalde (Linux 'ta) ve ardından komutunu çalıştırın `nvidia-smi`. |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 1.2.0 (Ubuntu 16.04, Windows 2016), 1.4.0 (Ubuntu 18.04, Windows 2019) |
+| Desteklenen sürüm (ler) | 1.2.0 (Ubuntu 16,04, Windows 2016), 1.4.0 (Ubuntu 18,04, Windows 2019) |
 | Desteklenen DSVM sürümleri      | Linux |
-| Nasıl yapılandırılır / DSVM yüklü?  | [Python 3.5](dsvm-tools-languages.md#python-linux-edition)yüklü . Örnek Jupyter dizüstü bilgisayarlar dahildir ve örnekler /dsvm/samples/pytorch'dadır. |
-| Nasıl çalıştırılır?      | Terminal: Doğru ortamı etkinleştirin ve python çalıştırın.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Bağlanın ve örnekler için PyTorch dizinini açın.  |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | [Python 3,5](dsvm-tools-languages.md#python-linux-edition)' de yüklü. Örnek Jupkiter Not defterleri dahil edilmiştir ve örnekler/dsvm/Samples/pytorch. |
+| Nasıl çalıştırılır?      | Terminal: doğru ortamı etkinleştirin ve sonra Python 'u çalıştırın.<br/>* [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): bağlanın ve ardından örnekler Için PyTorch dizinini açın.  |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 1.13 |
+| Desteklenen sürüm (ler) | 1.13 |
 | Desteklenen DSVM sürümleri      | Windows, Linux |
-| Nasıl yapılandırılır / DSVM yüklü?  | [Windows 2016'da](dsvm-tools-languages.md#python-windows-server-2016-edition) [Linux](dsvm-tools-languages.md#python-linux-edition) ve Python 3.6'da Python 3.5 yüklü |
-| Nasıl çalıştırılır?      | Terminal: Doğru ortamı etkinleştirin ve python çalıştırın. <br/> * Jupyter: [Jupyter](provision-vm.md) veya [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)bağlanın ve sonra örnekler için TensorFlow dizinini açın.   |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) üzerinde [Linux](dsvm-tools-languages.md#python-linux-edition) ve Python 3,6 ' de Python 3,5 ' ye yüklendi |
+| Nasıl çalıştırılır?      | Terminal: doğru ortamı etkinleştirin ve sonra Python 'u çalıştırın. <br/> * Jupyter: [Jupyter](provision-vm.md) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve örnekler için TensorFlow dizinini açın.   |
 
 ## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 1.12 |
+| Desteklenen sürüm (ler) | 1.12 |
 | Desteklenen DSVM sürümleri      | Linux |
-| Nasıl yapılandırılır / DSVM yüklü?  | tensorflow_model_server terminalde mevcuttur. |
-| Nasıl çalıştırılır?      |  Örnekler [online](https://www.tensorflow.org/serving/)olarak mevcuttur.   |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | tensorflow_model_server terminalde mevcuttur. |
+| Nasıl çalıştırılır?      |  Örnekler [çevrimiçi](https://www.tensorflow.org/serving/)olarak kullanılabilir.   |
 
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
 |    |           |
 | ------------- | ------------- |
-| Sürüm(ler) destekli | 1.0.3 |
+| Desteklenen sürüm (ler) | 1.0.3 |
 | Desteklenen DSVM sürümleri      | Linux |
-| Nasıl yapılandırılır / DSVM yüklü?  |Theano Python 2.7 _(kök)_ ve Python 3.5 _(py35_) ortamında yüklenir. |
-| Nasıl çalıştırılır?      |  Terminal: İstediğindiğiniz Python sürümünü etkinleştirin (root veya py35), Python'u çalıştırın ve theano'yu içe aktarın.<br/>* Jupyter: Python 2.7 veya 3.5 çekirdeğini seçin ve sonra Theano'yu aktarın.  <br/>Yeni bir matematik çekirdeği kitaplığı (MKL) hatasını aşmak için öncelikle MKL iş parçacığı katmanını aşağıdaki gibi ayarlamanız gerekir:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  |Bu, Python 2,7 ' de (_root_) ve Python 3,5 (_py35_) ortamında yüklenir. |
+| Nasıl çalıştırılır?      |  Terminal: istediğiniz Python sürümünü etkinleştirin (root veya py35), Python 'u çalıştırın ve ardından Ano içeri aktarın.<br/>* Jupyter: Python 2,7 veya 3,5 çekirdeğini seçin ve sonra da Ano içeri aktarın.  <br/>Son matematik çekirdek kitaplığı (MKL) hatasını geçici olarak çözmek için öncelikle MKL iş parçacığı katmanını aşağıdaki şekilde ayarlamanız gerekir:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

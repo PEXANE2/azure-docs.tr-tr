@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute ve S2S VPN birlikte varolan bağlantıları yapılandırın: klasik'
+title: 'ExpressRoute ve S2S VPN birlikte var olan bağlantıları yapılandırma: klasik'
 description: Bu makalede klasik dağıtım modeli için bir arada varolabilen ExpressRoute ve bir Siteden Siteye VPN bağlantısını nasıl yapılandıracağınız anlatılmaktadır.
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272935"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Birlikte bulunan ExpressRoute bağlantıları ile Siteden Siteye bağlantıları yapılandırma (klasik)
@@ -22,7 +22,7 @@ ms.locfileid: "79272935"
 > 
 > 
 
-Bu makale, ExpressRoute ve Siteden Siteye VPN bağlantılarını yapılandırmanıza yardımcı olur. Siteden Siteye VPN ve ExpressRoute yapılandırma yeteneğine sahip olmanın çeşitli avantajları vardır. Siteden Siteye VPN'i ExpressRoute için güvenli bir arıza yolu olarak yapılandırabilir veya ExpressRoute üzerinden bağlanmayan sitelere bağlanmak için Siteden Siteye VPN'leri kullanabilirsiniz. Bu makalede iki senaryo için de yapılandırma adımları verilmektedir. Bu makale klasik dağıtım modeli için geçerlidir. Bu yapılandırma portalda kullanılabilir değildir.
+Bu makale, birlikte bulunan ExpressRoute ve siteden siteye VPN bağlantılarını yapılandırmanıza yardımcı olur. Siteden Siteye VPN ve ExpressRoute yapılandırma yeteneğine sahip olmanın çeşitli avantajları vardır. ExpressRoute için güvenli bir yük devretme yolu olarak siteden siteye VPN yapılandırabilir veya ExpressRoute aracılığıyla bağlanmayan sitelere bağlanmak için siteden siteye VPN 'Ler kullanabilirsiniz. Bu makalede iki senaryo için de yapılandırma adımları verilmektedir. Bu makale klasik dağıtım modeli için geçerlidir. Bu yapılandırma portalda kullanılabilir değildir.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -73,7 +73,7 @@ Bir arada var olabilen bağlantılar yapılandırmak için seçebileceğiniz iki
     Zaten bir sanal ağınız yoksa, bu yordam klasik dağıtım modelini kullanarak yeni bir sanal ağ oluşturmak ve yeni ExpressRoute ve Siteden Siteye VPN bağlantıları oluşturmak için size yol gösterir. Yapılandırmak için, makalenin [Yeni bir sanal ağ ve bir arada var olabilen bağlantılar oluşturmak için](#new) bölümündeki adımları izleyin.
 * Zaten bir klasik dağıtım modeli VNet’im var.
   
-    Mevcut bir Siteden Siteye VPN bağlantısı veya ExpressRoute bağlantısına sahip bir sanal ağınız zaten olabilir. Makale bölümü [Zaten varolan bir VNet için birlikte varolan bağlantıları yapılandırmak için](#add) ağ geçidi silme yoluyla size yol ve daha sonra yeni ExpressRoute ve Site-to-Site VPN bağlantıları oluşturma yol açacaktır. Yeni bir bağlantı oluşturulurken adımların belirli bir sırayla tamamlanması gerektiğine dikkat edin. Ağ geçitleriniz ve bağlantılarınızı oluşturmak için diğer makalelerdeki yönergeleri kullanmayın.
+    Mevcut bir Siteden Siteye VPN bağlantısı veya ExpressRoute bağlantısına sahip bir sanal ağınız zaten olabilir. [Zaten mevcut bir VNET için birlikte var olan bağlantıları yapılandırma](#add) bölümü, ağ geçidini silme ve ardından yeni ExpressRoute ve sıteden siteye VPN bağlantıları oluşturma konusunda size yol gösterecektir. Yeni bir bağlantı oluşturulurken adımların belirli bir sırayla tamamlanması gerektiğine dikkat edin. Ağ geçitleriniz ve bağlantılarınızı oluşturmak için diğer makalelerdeki yönergeleri kullanmayın.
   
     Bu yordamda, bir arada var olabilen bağlantılar oluşturmak, ağ geçidinizi silmenizi ve ardından yeni ağ geçitlerini yapılandırmanızı gerektirir. Bu, ağ geçidiniz ve bağlantıları silip yeniden oluştururken şirket içi ve dışı bağlantılarınız için kapalı kalma süresi yaşayacağınız ancak VM’leriniz veya hizmetlerinizi yeni bir sanal ağa geçirmeniz gerekmeyeceği anlamına gelir. VM'leriniz ve hizmetleriniz bunu yapmak için yapılandırılmışsa, ağ geçidi yapılandırması sırasında yük dengeleyici üzerinden iletişim kurmaya devam eder.
 
@@ -226,5 +226,5 @@ Ağ geçidi alt ağı /27 veya daha büyükse ve sanal ağ ExpressRoute üzerind
 6. Bu noktada, hiçbir ağ geçidi olmayan bir VNet’e sahip olursunuz. Yeni ağ geçitleri oluşturmak ve bağlantılarınızı tamamlamak için, önceki adım kümesinde bulabileceğiniz [4. Adım - Bir ExpressRoute ağ geçidi oluşturma](#gw) bölümüyle devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-ExpressRoute hakkında daha fazla bilgi için [ExpressRoute SSS](expressroute-faqs.md) bölümüne bakın
+ExpressRoute hakkında daha fazla bilgi için bkz. [EXPRESSROUTE SSS](expressroute-faqs.md)
 

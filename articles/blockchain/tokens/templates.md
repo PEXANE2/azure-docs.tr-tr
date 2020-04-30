@@ -1,91 +1,91 @@
 ---
-title: Azure Blockchain Belirteçleri şablonları
-description: Azure Blockchain Belirteçleri şablonları, genel muhasebe tabanlı belirteçlerin oluşturulmasını ve dağıtılmasını basitleştiren standartlaştırılmış ve yeniden kullanılabilir şablonlardır.
+title: Azure blok zinciri belirteçleri şablonları
+description: Azure blok zinciri belirteçleri şablonları, defter tabanlı belirteçlerin oluşturulmasını ve dağıtılmasını kolaylaştıran standartlaştırılmış ve yeniden kullanılabilir şablonlardır.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252213"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain Belirteçleri şablonları
+# <a name="azure-blockchain-tokens-templates"></a>Azure blok zinciri belirteçleri şablonları
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure Blockchain Belirteçleri şablonu, genel muhasebe tabanlı belirteçlerin oluşturulmasını ve dağıtılmasını kolaylaştıran standart laştırılmış ve yeniden kullanılabilir bir şablondur. Şablon, [Token Taksonomi Çerçevesi (TTF)](overview.md#token-taxonomy-framework) dilbilgisine dayalı bir formülden oluşur. Dilbilgisi, temel belirteç türünü ve belirteç için davranış kümesini kapsar.  
+Azure blok zinciri belirteçleri şablonu, genel muhasebe tabanlı belirteçlerin oluşturulmasını ve dağıtılmasını kolaylaştıran standartlaştırılmış ve yeniden kullanılabilir bir şablondur. Şablon, [belirteç taksonomi çerçevesi (ttf)](overview.md#token-taxonomy-framework) dilbilgisini temel alarak formülden oluşur. Dilbilgisi taban belirteç türünü ve belirtecin davranış kümesini kapsar.  
 
-Örneğin, **τ{d,m,b,r}** belirteç şablonu, alt bölünebilir, mintable, burnable ve rol desteği ne kadar fungible temel belirteci açıklar.
+Örneğin, **τϜ {d, m, b, r}** belirteç şablonu, alt, daha okunaklı, mintable, Bur ve rol desteği olan, uygun bir temel belirteci açıklar.
   
-## <a name="base-token-types"></a>Temel belirteç türleri
+## <a name="base-token-types"></a>Taban belirteç türleri
 
-Belirli bir kıymetiniz için genel muhasebe tabanlı belirteci tanımlarken ve oluştururken, hangi temel belirteç kullanılacağını göz önünde bulundurmanız önemlidir.
+Belirli varlığınız için genel muhasebe tabanlı belirteci tanımlayıp oluştururken, hangi temel belirtecin kullanılacağını göz önünde bulundurmanız önemlidir.
 
-### <a name="fungible"></a>Fungible
+### <a name="fungible"></a>Farklı
 
-Fungible belirteçleri (τF) aynı sınıf veya dizi de olduğu sürece birbirleri ile değiştirilebilir değeri vardır. Bir belirteç, başka bir belirteçle aynı değere veya belirli bir belirteç miktarıyla aynı değere sahiptir. Örneğin, bir dolar fungible bir belirteçtir. Eğer iki kişi her biri bir dolar banknot tutuyorsa, bu dolar banknotlarını sonuç olarak değiştirebilirler. Dolar banknotları eşit değere sahiptir. 
+Uygun olmayan belirteçlerin (τF), aynı sınıfta veya dizide oldukları sürece birbirleriyle değiştirilebilir değer vardır. Bir belirteç, başka bir belirteçle aynı değere sahip veya belirli bir belirteç miktarı aynı değere sahip başka bir eşit miktarla aynı değere sahip. Örneğin, bir dolar, komik bir belirteçtir. Her biri dolar faturanız iki kişi tarafından kullanılıyorsa, bu dolar faturaları hiçbir sonuç olmadan değiş tokuş edebilirler. Dolar faturaları eşittir değeri vardır. 
 
-### <a name="non-fungible"></a>Fungible olmayan
+### <a name="non-fungible"></a>Komik olmayan
 
-Fungible olmayan belirteçleri (τN) genellikle farklı değerlere sahip olduğu gibi aynı türdeki diğer belirteçleri ile değiştirilebilir değildir. Örneğin, bir özellik başlığı fungible olmayan bir belirteçtir. Bir apartman kompleksinde iki farklı daireiçin mülkiyet başlıkları mutlaka eşit değerde değildir, birimin konumu ya da birim üzerinde hangi katta nedeniyle. İki özellik unvan belirteçlerinin algılanan değeri eşit değildir.
+Komik olmayan belirteçler (τN), genellikle farklı değerlere sahip olan aynı türdeki diğer belirteçlerle birlikte kullanılamaz. Örneğin, bir özellik başlığı, komik olmayan bir belirteçtir. Bir grup karmadında bulunan iki farklı apartmandaki Özellik başlıkları, birimin konumu ya da birimin bulunduğu kata bağlı olarak eşit değer değildir. İki özellik başlığı belirtecinin algılanan değeri eşit değil.
 
-### <a name="hybrid"></a>Karma
+### <a name="hybrid"></a>Hibrit
 
-Hibrit belirteçler, hem fungible belirteçleri hem de fungible belirteçleri bileşenlerine sahip belirteçleri vardır. Karma belirteç, diğer belirteç türünden bir sınıfa sahip bir temel belirteç türüdür.
+Karma belirteçler, hem uygun olmayan belirteçlerin hem de bir komik olmayan belirteçlerin bileşenlerine sahip belirteçlerdir. Karma belirteç, diğer belirteç türündeki bir sınıfa sahip olan bir taban belirteç türüdür.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Fungible segmentleri ile hibrid non fungible tabanı
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Komik olmayan kesimlerle karma, komik olmayan taban
 
-Fungible segmentleri belirteci ile bir hibrid olmayan fungible baz fungible belirteçleri ile olmayan bir fungible tabanı vardır.
-Örneğin, konser bileti, konserin tarih ve saatinin fungible olmayan temel belirteci olduğu melez bir belirteçtir. Verilen konser için çeşitli oturma bölümlerinde bilet fungible belirteçleri ile segmentleri vardır. Biletler kendi oturma bölümlerinde değiştirilebilir, ancak bölümler arasında değil.
+Komik olmayan kesimlerdeki karma olmayan bir temel, uygun olmayan belirteç kesimlerine sahip, komik olmayan bir temel sahiptir.
+Örneğin, konser bileti, konser 'ın tarih ve saatinin, komik olmayan temel belirteç olduğu karma bir belirteçtir. Verilen konser için çeşitli parçalar bölümündeki biletler, komik belirteçlere sahip segmentlerdir. Biletler, bölümler arasında değil, kendi bireysel bölümlerinin yerini alırlar.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Fungible olmayan segmentleri ile hibrid fungible baz
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Komik olmayan kesimlerle karma değerli temel
 
-Olmayan bir fungible segmentleri belirteci ile bir hibrid fungible baz olmayan fungible belirteç leri ile fungible tabanı vardır. Örneğin, ipotek destekli güvenlik, birden çok sahibinin birçok sahip arasında bölünmüş olan fungible tabanı olan melez bir belirteçtir. Güvenlik değiştirilebilir. Bireysel ipotek belirli ipotek destekli güvenlik temsil fungible olmayan segmentleri vardır.
+Komik olmayan bir kesim belirtecine sahip bir karma değerli temel, değerli olmayan belirteç kesimlerine sahip komik bir temel sahiptir. Örneğin, ipotek sağlayan bir güvenlik, birçok Sahibe bölünen, çok sayıda sahibe sahip olan bir karma belirteçtir. Güvenlik, değiştirilebilir. Tek tek Mortgages, belirli ipotek düzeyli güvenliği temsil eden, komik olmayan kesimlerdir.
 
 ## <a name="token-behaviors"></a>Belirteç davranışları
 
-Belirteç davranışı, belirteç lerin özelliklerini veya kısıtlamalarını tanımlar. Davranış belirteç tanımının bir parçası olan destekleyen özellikleri içerir. Davranışlar tüm belirteç türlerine veya sadece bir taneye uygulanabilir. Davranışlar, davranışın etkilerine bağlı olarak dahili veya harici olabilir. İç davranış, belirteç üzerindeki özellikleri etkinleştirir veya kısıtlar. Harici bir davranış, davranışın dış aktörden çağrılmasını sağlar veya kısıtlar.
+Belirteç davranışı, belirtecin yeteneklerini veya kısıtlamalarını tanımlar. Davranışı, belirteç tanımının bir parçası olan destekleyici özellikleri içerir. Davranışlar, tüm belirteç türlerine veya yalnızca birine uygulanabilir. Davranışlar, davranışın etkilerinin ne olduğuna bağlı olarak iç veya dış olabilir. Bir iç davranış, belirtecin kendisindeki özellikleri sağlar veya kısıtlar. Dış bir davranış, bir dış aktörden davranışın çağrılmasını sağlar veya kısıtlar.
 
-Token Taksonomi Çerçevesi (TTF) belirteç davranışları desteklenen Azure Blockchain Belirteçleri hakkında daha fazla bilgi için [belirteç birleştirme özelliğine](composability.md)bakın.
+Azure blok zinciri belirteçleri desteklenen belirteç taksonomi çerçevesi (TTF) belirteci davranışları hakkında daha fazla bilgi için bkz. [belirteç bileşim](composability.md).
 
 ## <a name="pre-built-token-templates"></a>Önceden oluşturulmuş belirteç şablonları
 
-Azure Blockchain Belirteçleri, değiştirilmeden kullanılabilen önceden oluşturulmuş dört belirteç şablonu sağlar. Belirteçlerinizi hızla oluşturmaya, dağıtmaya ve yönetmeye başlamak için çoğu kullanım örneğinde önceden oluşturulmuş bu şablonları arayabilirsiniz.
+Azure blok zinciri belirteçleri, değişiklik yapılmadan kullanılabilecek dört önceden oluşturulmuş belirteç şablonu sağlar. Belirteçlerinizi hızlıca oluşturmaya, dağıtmaya ve yönetmeye başlamak için kullanım örneklerinin çoğu için önceden oluşturulmuş bu şablonlara çağrı yapabilirsiniz.
 
 ### <a name="commodity-tokens"></a>Emtia belirteçleri
 
-Emtia belirteçleri tutarlı bir değere sahiptir ve devredilebilir. Örneğin, bir varil petrol veya bir enerji birimi.
+Emtia belirteçleri tutarlı bir değere sahiptir ve bu şekilde aktarılabilir. Örneğin, yağ veya enerji birimi gibi.
 
-**τF{~d,t,m,b,r}** - fungible, bütün, devredilebilir, mintable, yanıcı ve rol desteğine sahip
+**τF {~ d, t, m, b, r}** -komik, tam, transferlenebilir, mintable, burlik, ve rol desteği var
 
-Birçok blockchain senaryosu, tedarik zinciri veya birden çok kuruluş arasında şeffaflık ve görünürlük gerektirir. Emtia belirteçleri bu yaygın kullanım durumlarına dayanır. Belirteçleri değiştirilebilir ve tutarlıdır. Emtia belirteci şablonu esnektir ve meta verilerle özelleştirilebilir.
+Birçok blok zinciri senaryosu, tedarik zinciri veya birden çok kuruluş genelinde saydamlık ve görünürlük gerektirir. Emtia belirteçleri, bu genel kullanım durumlarını temel alınır. Belirteçler, değiştirilebilir ve tutarlıdır. Emtia belirteci şablonu esnektir ve meta verilerle özelleştirilebilir.
 
-### <a name="qualified-tokens"></a>Nitelikli jetonlar
+### <a name="qualified-tokens"></a>Nitelikli belirteçler
 
-Nitelikli belirteçler kazanılan bir şeyi temsil eder ve genellikle tek bir varlıkla ilişkilidir ve aktarılamaz. Örneğin, bir diploma veya park ihlali.
+Nitelikli belirteçler, kazanılan bir şeyi temsil eder ve genellikle bir varlıkla ilişkilendirilir ve aktarılamaz. Örneğin, bir dıloma veya park ihlali.
 
-**τN{s,~t}** - fungible olmayan, singleton ve devredilemez
+**τN {s, ~ t}** -komik olmayan, tek ve aktarılamayan olmayan
 
-Çeşitli denetim ve attestation senaryoları belirteç sahipliğideğiştirilemez gerektirir. Derneğin iyi veya kötü olup olmadığı konusunda nitelikli bir belirteç sağlama gereksinimi olan bir dizi kullanım örnekleri vardır.
+Çeşitli denetim ve kanıtlama senaryoları, belirtecin sahipliğinin değiştirilmesini gerektirir. İlişkilendirmenin iyi veya hatalı olup olmadığını tam bir belirteç sağlaması gereken bir dizi kullanım durumu vardır.
 
 ### <a name="asset-tokens"></a>Varlık belirteçleri
 
-Kıymet belirteçleri maddeye bağlı benzersiz bir değere sahiptir ve emtiaya alınmaz. Örneğin, bir müze eser veya bir özellik başlığı.
+Varlık belirteçlerinin öğeye bağımlı benzersiz bir değeri vardır ve commoditized değildir. Örneğin, bir Museum yapıtı veya bir özellik başlığı.
 
-**τN{s,t}** - fungible olmayan, singleton ve aktarılabilir
+**τN {s, t}** -komik olmayan, tek ve aktarılamayan
 
-Varlık belirteçleri emtia belirteçleri ile karıştırılabilir. İki belirteç arasındaki en büyük fark, varlık belirteçlerinin doğal olarak benzersiz olması ve değerin bu belirteç türünden bağımsız olmasıdır. Örneğin, köklü bir sanatçı tarafından yağlıboya resim gibi bir sanat eseri bir varlık belirtecidir. Ancak, Mona Lisa bir sanat baskı bir emtia belirteci olarak kabul edilir. Benzer şekilde, değer mülkün öznel niteliklerinde var olduğundan, özellik başlığı bir varlık belirtecidir.
+Varlık belirteçleri, emtia belirteçleriyle karıştırılır. İki belirteç arasındaki önemli fark, varlık belirteçlerinin doğal olarak benzersiz olması ve değerin olduğu belirteç türünden bağımsız olması olabilir. Örneğin, kurulu bir sanatçının yağ boyama gibi bir resim parçası bir varlık belirtecidir. Ancak, Mona Lisa 'nın bir sanat basımı, bir emtia belirteci olarak kabul edilir. Benzer şekilde, Özellik başlığı özelliğin öznel kalitede bulunduğundan bir varlık belirtecidir.
 
-### <a name="ticket-tokens"></a>Bilet jetonları
+### <a name="ticket-tokens"></a>Bilet belirteçleri
 
-Bilet belirteçleri tutarlı bir değere sahiptir ancak genellikle süresi dolur. Örneğin, bir uçak bileti.
+Bilet belirteçleri tutarlı bir değere sahiptir, ancak genellikle sona erer. Örneğin, bir düzlem bileti.
 
-**τN{m,b,r}** - fungible olmayan, mintable, yanıcı ve rol desteğine sahip.
+**τN {m, b, r}** -komik olmayan, mintable, patlama ve rol desteği var.
 
-Bilet belirteçleri genellikle onları normal bir emtia belirteci farklı kılan bir son kullanma tarihi vardır. Örneğin, uçak bileti, konser bileti veya spor biletinin tümü, belirli kullanım tarihlerine sahip atanmış oturma seçeneklerine sahiptir. Biletlerin tarih ler veya oturma alanları arasında kolayca değiş tokuş edilemeyeceğiniz.
+Bilet belirteçlerinin tipik olarak normal bir emtia belirtecinden farklı hale getiren bir sona erme tarihi vardır. Örneğin, bir uçak bileti, konser bileti veya spor bileti, belirli kullanım tarihleriyle atanmış atama seçeneklerine sahiptir. Tarihler veya alan bölümleri arasındaki anahtarları kolayca değiştiremezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Senaryonuz için daha fazla esneklik gerektiriyorsanız, [belirteç birleştirme özelliğini](composability.md)kullanarak kendi belirteç şablonlarınızı oluşturma hakkında bilgi edinin.
+Senaryonuz için daha fazla esneklik gerekiyorsa, [belirteç bileşmesini](composability.md)kullanarak kendi belirteç şablonlarınızı oluşturma hakkında bilgi edinin.
