@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240719"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box nedir?
@@ -63,7 +63,7 @@ Data Box cihazı bu sürümde aşağıdaki özelliklere sahiptir.
 | Raf alanı                                              | Yanlamasına rafa yerleştirildiğinde 7 U (rafa takılamaz)|
 | Gerekli kablolar                                         | 1 X güç kablosu (dahildir) <br> 2 RJ45 kablosu <br> 2 X SFP+ Twinax bakır kablo|
 | Depolama kapasitesi                                        | 100 TB boyutundaki cihaz, RAID 5 korumasından sonra 80 TB kullanılabilir kapasiteye sahip|
-| Güç derecelendirmesi                                            | Güç kaynağı ünitesi 700 W olarak derecelendirilmiştir. <br> Genellikle, birim 375 W çizer.|
+| Güç derecelendirmesi                                            | Güç kaynağı birimi 700 W için derecelendirilir. <br> Genellikle, birim 375 W çizer.|
 | Ağ arabirimleri                                      | 2 X 1 GbE arabirimi - MGMT, DATA 3. <br> MGMT - yönetim için, kullanıcı tarafından yapılandırılamaz, ilk kurulumda kullanılır <br> DATA3 - veriler için, kullanıcı tarafından yapılandırılabilir ve varsayılan olarak dinamiktir <br> MGMT ve DATA 3, 10 GbE olarak da çalışabilir <br> 2 X 10 GbE arabirimi - DATA 1, DATA 2 <br> Her ikisi de veriler içindir, dinamik (varsayılan) veya statik olarak yapılandırılabilir |
 | Veri aktarım medyası                                     | RJ45, SFP+ bakır 10 GbE Ethernet  |
 | Güvenlik                                                | Üzerinde oynanmasına karşı dayanıklı özel vidaları olan, sağlamlaştırılmış cihaz kasası <br> Cihazın altına yapıştırılmış, üzerinde oynandığını belli eden çıkartmalar|
@@ -109,9 +109,9 @@ Bu işlem boyunca tüm durum değişiklikleri e-posta ile bildirilir. Ayrıntıl
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Veri Kutusu, hizmetin dağıtıldığı bölgeye, aygıtın sevk edildiği ülkeye/bölgeye ve verileri aktardığınız hedef Azure depolama hesabına göre veri aktarımı yapabilir. 
+Data Box, Hizmetin dağıtıldığı bölge, cihazın gönderildiği ülke/bölge ve verileri aktardığınız hedef Azure depolama hesabı temelinde veri aktarabilir. 
 
-- **Hizmet kullanılabilirliği** - Bölge kullanılabilirliği hakkında bilgi için [bölgeye göre kullanılabilen Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. Veri Kutusu, Azure Devlet Bulutu'nda da dağıtılabilir. Daha fazla bilgi için azure [devlet nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+- **Hizmet kullanılabilirliği** -bölge kullanılabilirliği hakkında bilgi için [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. Data Box, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, hizmetin kullanılabildiği tüm Azure bölgelerinde sağlanır.  
 

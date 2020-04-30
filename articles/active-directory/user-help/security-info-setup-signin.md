@@ -1,6 +1,6 @@
 ---
-title: Güvenlik bilgilerinizi oturum açma isteminden ayarlama - Azure AD
-description: Kuruluşunuzun oturum açma sayfasından istendikten sonra, iş veya okul hesabınız için Güvenlik bilgilerinizi nasıl ayarlayabilirsiniz?
+title: Güvenlik bilgilerinizi bir oturum açma isteminden ayarlama-Azure AD
+description: Kuruluşunuzun oturum açma sayfasından istemde bulunulduktan sonra iş veya okul hesabınız için güvenlik bilgilerinizi nasıl ayarlayacağız.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,158 +12,158 @@ ms.topic: overview
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81454494"
 ---
-# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi oturum açma isteminden ayarlama
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi bir oturum açma isteminden ayarlama
 
-İş veya okul hesabınızda oturum açtıktan hemen sonra güvenlik bilgilerinizi ayarlamanız istenirse aşağıdaki adımları izleyebilirsiniz.
+İş veya okul hesabınızda oturum açtıktan hemen sonra güvenlik bilgilerinizi ayarlamanız istenirse, bu adımları izleyebilirsiniz.
 
-Bu istemi yalnızca kuruluşunuzun gerektirdiği güvenlik bilgilerini ayarlamadıysanız görürsünüz. Güvenlik bilgilerinizi daha önce ayarladıysanız, ancak değişiklik yapmak istiyorsanız, çeşitli yöntem tabanlı nasıl yapılır makalelerinde adımları izleyebilirsiniz. Daha fazla bilgi için [bkz.](security-info-add-update-methods-overview.md)
+Bu istemi yalnızca kuruluşunuz için gereken güvenlik bilgilerini ayarlamadıysanız görürsünüz. Daha önce güvenlik bilgilerinizi ayarladıysanız ancak değişiklik yapmak istiyorsanız, çeşitli Yöntem tabanlı nasıl yapılır makalelerindeki adımları izleyebilirsiniz. Daha fazla bilgi için bkz. [güvenlik bilgilerine genel bakış ekleme veya güncelleştirme](security-info-add-update-methods-overview.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Parola sıfırlama kimlik doğrulaması ile güvenlik doğrulama
+## <a name="security-verification-versus-password-reset-authentication"></a>Güvenlik doğrulaması ve parola sıfırlama kimlik doğrulaması
 
-Güvenlik bilgileri yöntemleri hem iki faktörlü güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, tüm yöntemler her ikisi için de kullanılamaz.
+Güvenlik bilgileri yöntemleri hem iki öğeli güvenlik doğrulaması hem de parola sıfırlama için kullanılır. Ancak, her ikisi için tüm yöntemler kullanılamaz.
 
 | Yöntem | Kullanıldığı yerler |
 | ------ | -------- |
-| Doğrulayıcı uygulama | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| SMS mesajları | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| Telefon | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| Güvenlik anahtarı | İki faktörlü doğrulama ve parola sıfırlama kimlik doğrulaması. |
-| E-posta hesabı | Parola sıfırlama kimlik doğrulaması yalnızca. İki faktörlü doğrulama için başka bir yöntem seçmeniz gerekir. |
-| Güvenlik soruları | Parola sıfırlama kimlik doğrulaması yalnızca. İki faktörlü doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Doğrulayıcı uygulama | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| SMS mesajları | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Telefon görüşmeleri | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| Güvenlik anahtarı | İki öğeli doğrulama ve parola sıfırlama kimlik doğrulaması. |
+| E-posta hesabı | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
+| Güvenlik soruları | Yalnızca parola sıfırlama kimlik doğrulaması. İki öğeli doğrulama için başka bir yöntem seçmeniz gerekir. |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>İş veya okul hesabınızda oturum açın
 
-İş veya okul hesabınızda oturum açtıktan sonra, hesabınıza erişmeden önce sizden daha fazla bilgi vermenizi isteyen bir istem görürsünüz.
+İş veya okul hesabınızda oturum açtıktan sonra hesabınıza erişmenize izin vermeden önce daha fazla bilgi sağlamanızı isteyen bir istem görürsünüz.
 
-![Daha fazla bilgi isteme](media/security-info/securityinfo-prompt.png)
+![Daha fazla bilgi istesin](media/security-info/securityinfo-prompt.png)
 
 ## <a name="set-up-your-security-info-using-the-wizard"></a>Sihirbazı kullanarak güvenlik bilgilerinizi ayarlama
 
-İş veya okul hesabınız için güvenlik bilgilerinizi istem'den ayarlamak için aşağıdaki adımları izleyin.
+İş veya okul hesabınızla ilgili güvenlik bilgilerinizi istemden ayarlamak için bu adımları izleyin.
 
 >[!Important]
->Bu yalnızca sürecin bir örneğidir. Kuruluşunuzun gereksinimlerine bağlı olarak, yöneticiniz bu işlem sırasında ayarlamanız gereken farklı doğrulama yöntemleri ayarlamış olabilir. Bu örnekte, doğrulama çağrıları veya kısa mesajlar için iki yöntem, Microsoft Authenticator uygulaması ve bir cep telefonu numarası istiyoruz.
+>Bu işlem yalnızca bir örnektir. Kuruluşunuzun gereksinimlerine bağlı olarak, yöneticiniz bu işlem sırasında ayarlamanız gereken farklı doğrulama yöntemleri ayarlamış olabilir. Bu örnekte, Microsoft Authenticator uygulaması ve doğrulama çağrıları veya SMS iletileri için bir cep telefonu numarası olmak üzere iki yöntem gerekli.
 
-1. İstemden **İleri'yi** seçtikten sonra, **yöneticinizin** ve kuruluşunuzun ayarlamanızı gerektirdiği ilk yöntemi gösteren bir hesap güvenli tut sihirbazı görüntülenir. Bu örnek, Microsoft Authenticator uygulamasıdır.
+1. İstemde **İleri** ' yi seçtikten sonra, yönetici ve kuruluşunuzun ayarlamanız gereken ilk yöntemi gösteren **Hesabınızı güvenli tut Sihirbazı** görüntülenir. Bu örnek için Microsoft Authenticator uygulamasıdır.
 
    > [!Note]
-   > Microsoft Authenticator uygulaması dışında bir kimlik doğrulayıcı uygulaması kullanmak istiyorsanız, **farklı bir kimlik doğrulayıcı uygulaması bağlantısı kullanmak istiyorum I'yi** seçin.
+   > Microsoft Authenticator uygulaması dışında bir Authenticator uygulaması kullanmak istiyorsanız, **farklı bir Authenticator uygulama bağlantısı kullanmak istiyorum** bağlantısını seçin.
    >
-   > Kuruluşunuz kimlik doğrulayıcı uygulaması dışında farklı bir yöntem seçmenize izin veriyorsa, **farklı bir yöntem bağlantısı kurmak istiyorum'u**seçebilirsiniz.
+   > Kuruluşunuz, doğrulayıcı uygulamasının yanı sıra farklı bir yöntem seçmenizi sağlar, **farklı bir yöntem bağlantısı kurmak istiyorum**' u seçebilirsiniz.
 
-    ![Auth uygulaması indirme sayfasını göstererek hesabınızın güvenliğini sağlama sihirbazı](media/security-info/securityinfo-prompt-get-auth-app.png)
+    ![Kimlik doğrulama uygulaması indirme sayfasını gösteren hesap güvenli Sihirbazı 'nı koruyun](media/security-info/securityinfo-prompt-get-auth-app.png)
 
-2. Microsoft Authenticator uygulamasını mobil cihazınıza indirip yüklemek için **hemen indir'i** seçin ve ardından **İleri'yi**seçin. Uygulamayı nasıl indirip yükleyin, microsoft [authenticator uygulamasını indirin ve yükleyin.](user-help-auth-app-download-install.md)
+2. Mobil cihazınıza Microsoft Authenticator uygulamayı indirip yüklemek için **Şimdi İndir** ' i seçin ve ardından **İleri**' yi seçin. Uygulamanın nasıl indirileceği ve yükleneceği hakkında daha fazla bilgi için, bkz. [Microsoft Authenticator uygulamasını indirme ve yükleme](user-help-auth-app-download-install.md).
 
-    ![Hesap doğrulayıcıyı hesap sayfanızı ayarlamayı gösteren hesabınızın güvenliğini sağlama sihirbazı](media/security-info/securityinfo-prompt-auth-app-setup-acct.png)
+    ![Hesap sayfanızı ayarlama kimlik doğrulamasını gösteren hesap güvenli Sihirbazı 'nı koruyun](media/security-info/securityinfo-prompt-auth-app-setup-acct.png)
 
-3. Mobil cihazınızda Microsoft Authenticator uygulamasını ayarlarken **hesap sayfanızı ayarlama'da** kal.
+3. Mobil cihazınızda Microsoft Authenticator uygulamayı ayarlarken **hesabınızı ayarlama** sayfasında kalır.
 
-4. Microsoft Authenticator uygulamasını açın, bildirimlere izin vermeyi seçin (istenirse), sağ üstteki **Özelleştir ve kontrol** simgesinden **hesap ekle'yi** seçin ve ardından İş veya **okul hesabını**seçin.
+4. Microsoft Authenticator uygulamasını açın, bildirimlere izin ver ' i seçin (istenirse), sağ üst köşedeki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve sonra **iş veya okul hesabı**' nı seçin.
 
     >[!Note]
-    >Microsoft Authenticator uygulamasını ilk kez bu kez kuruyorsanız, uygulamanın kameranıza (iOS) erişmesine izin mi yoksa uygulamanın fotoğraf çekmesine ve video (Android) kaydetmesine izin verip vermemenizi isteyen bir istem alabilirsiniz. Kimlik doğrulayıcı uygulamasının bir sonraki adımda QR kodunun fotoğrafını çekmek için kameranıza erişebilmesi için **İzin Ver'i** seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile nasıl ekleyeceğiniz hakkında bilgi için [bkz.](user-help-auth-app-add-account-manual.md)
+    >Microsoft Authenticator uygulamasını ilk kez ayarlıyorsanız, uygulamanın kameranıza erişmesine izin verip vermeyeceğinizi (iOS) veya uygulamanın resim almasına ve video (Android) kaydetmesine izin verip vermeyeceğinizi soran bir istem alabilirsiniz. Bir sonraki adımda QR kodunun bir resmini almak için, kimlik doğrulayıcı uygulamasının kameranıza erişebilmesi için **Izin ver** ' i seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
 
-5. Bilgisayarınızdaki **hesap sayfanızı** ayarla'ya dönün ve ardından **İleri'yi**seçin.
+5. Bilgisayarınızda **hesabınızı ayarlama** sayfasına dönün ve sonra **İleri**' yi seçin.
 
-    QR kod sayfasını **taz.rama** görüntülenir.
+    **QR kodunu Tara** sayfası görüntülenir.
 
-    ![Authenticator uygulamasını kullanarak QR kodunu tazyin](media/security-info/securityinfo-prompt-auth-app-qrcode.png)
+    ![Doğrulayıcı uygulamasını kullanarak QR kodunu tarama](media/security-info/securityinfo-prompt-auth-app-qrcode.png)
 
-6. Sağlanan kodu, adım 5'te iş veya okul hesabınızı oluşturduktan sonra mobil cihazınızda görünen Microsoft Authenticator uygulaması QR kod okuyucuyla tarayabilir.
+6. 5. adımda iş veya okul hesabınızı oluşturduktan sonra mobil cihazınızda görünen Microsoft Authenticator App QR kod okuyucusu ile belirtilen kodu tarayın.
 
-    Kimlik doğrulayıcı uygulaması, sizden herhangi bir ek bilgi gerektirmeden iş veya okul hesabınızı başarıyla eklemelidir. Ancak, QR kod okuyucu kodu okuyamazsa, **QR görüntüsünü tarayıp** kodu ve URL'yi Microsoft Authenticator uygulamasına el ile girebilirsiniz. Kod el ile ekleme hakkında daha fazla bilgi için [bkz.](user-help-auth-app-add-account-manual.md)
+    Kimlik doğrulayıcı uygulaması, size herhangi bir ek bilgi gerekmeden iş veya okul hesabınızı başarıyla eklememelidir. Ancak, QR kod okuyucusu kodu okuyaamazsa, **QR görüntüsünü tarayamaz** ve Microsoft Authenticator uygulamasına kodu ve URL 'yi el ile girebilirsiniz. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
 
-7. Bilgisayarınızdaki QR kod sayfasını **Tarama'da** **İleri'yi** seçin.
+7. Bilgisayarınızdaki **QR kodunu Tara** sayfasında **İleri ' yi** seçin.
 
     Hesabınızı test etmek için mobil cihazınızdaki Microsoft Authenticator uygulamasına bir bildirim gönderilir.
 
-    ![Hesabınızı kimlik doğrulayıcı uygulamasıyla test edin](media/security-info/securityinfo-prompt-test-app.png)
+    ![Kimlik doğrulayıcı uygulamasıyla hesabınızı test etme](media/security-info/securityinfo-prompt-test-app.png)
 
-8. Microsoft Authenticator uygulamasında bildirimi onaylayın ve ardından **İleri'yi**seçin.
+8. Microsoft Authenticator uygulamasındaki bildirimi onaylayın ve ardından **İleri**' yi seçin.
 
     ![Başarı bildirimi, uygulamayı ve hesabınızı bağlama](media/security-info/securityinfo-prompt-auth-app-success.png)
 
-    Güvenlik bilgileriniz, iki aşamalı doğrulama veya parola sıfırlama kullanırken kimliğinizi doğrulamak için varsayılan olarak Microsoft Authenticator uygulamasını kullanmak üzere güncelleştirilir.
+    Güvenlik bilgileriniz, iki adımlı doğrulama veya parola sıfırlama kullanırken kimliğinizi doğrulamak için varsayılan olarak Microsoft Authenticator uygulamasını kullanacak şekilde güncelleştirilir.
 
-9. **Telefon** ayar sayfasında, kısa mesaj veya telefon görüşmesi almak isteyip istemediğinizi seçin ve ardından **İleri'yi**seçin. Bu örneğin amaçları doğrultusunda, metin iletileri kullanıyoruz, bu nedenle metin iletilerini kabul eden bir aygıt için telefon numarası kullanmanız gerekir.
+9. **Telefon** kurulum sayfasında, kısa mesaj veya telefon araması almak isteyip istemediğinizi seçin ve ardından **İleri**' yi seçin. Bu örneğin, metin iletilerini kullanacağız, bu nedenle metin iletilerini kabul edebilecek bir cihaz için telefon numarası kullanmanız gerekir.
 
-    ![Kısa mesaj için telefon numaranızı ayarlamaya başlayın](media/security-info/securityinfo-prompt-text-msg.png)
+    ![SMS mesajlaşması için telefon numaranızı ayarlamaya başlayın](media/security-info/securityinfo-prompt-text-msg.png)
 
-    Telefon numaranıza kısa mesaj gönderilir. Bir telefon almak için tercih ederseniz, işlem aynıdır. Ancak, kısa mesaj yerine talimatlar içeren bir telefon görüşmesi alırsınız.
+    Telefon numaranızı bir SMS mesajı gönderilir. Telefon araması yapmayı tercih ediyorsanız, işlem aynıdır. Bununla birlikte, kısa mesaj yerine yönergeler içeren bir telefon araması alırsınız.
 
-10. Mobil cihazınıza gönderilen kısa mesajla sağlanan kodu girin ve **sonra İleri'yi**seçin.
+10. Mobil cihazınıza gönderilen SMS iletisinin verdiği kodu girin ve ardından **İleri**' yi seçin.
 
     ![Kısa mesajla hesabınızı test edin](media/security-info/securityinfo-prompt-text-msg-enter-code.png)
 
-11. Başarı bildirimini gözden geçirin ve **ardından Bitti'yi**seçin.
+11. Başarı bildirimini gözden geçirin ve **bitti**' yi seçin.
 
     ![Başarı bildirimi](media/security-info/securityinfo-prompt-call-answered-success.png)
 
-    Güvenlik bilgileriniz, iki aşamalı doğrulama veya parola sıfırlama kullanırken kimliğinizi doğrulamak için metin mesajlamayı yedekleme yöntemi olarak kullanmak üzere güncelleştirilir.
+    Güvenlik bilgileriniz, iki adımlı doğrulama veya parola sıfırlama kullanılırken kimliğinizi doğrulamak için bir yedekleme yöntemi olarak metin iletilerini kullanacak şekilde güncelleştirilir.
 
-12. Güvenlik bilgileriniz için hem Microsoft Authenticator uygulamasını hem de telefonu (kısa mesaj veya telefon görüşmesi) yöntemini başarıyla ayarladığınızı doğrulamak için **Başarı** sayfasını gözden geçirin ve **ardından Bitti'yi**seçin.
+12. Güvenlik bilgileriniz için hem Microsoft Authenticator uygulamasını hem de telefon (kısa mesaj veya telefon araması) yöntemini başarıyla ayarladığınızı doğrulamak için **başarı** sayfasını gözden geçirin ve **bitti**' yi seçin.
 
-    ![Sihirbaz başarıyla tamamlanmış sayfa](media/security-info/securityinfo-prompt-setup-success.png)
+    ![Sihirbaz başarıyla tamamlandı sayfası](media/security-info/securityinfo-prompt-setup-success.png)
 
     >[!Note]
-    >Kuruluşunuz uygulama parolalarını kullanmanızı gerektiriyorsa, bu sihirbazda ayarlayabileceğiniz ek bir bölüm görebilirsiniz. **Uygulama parolaları**adı verilen üçüncü bir bölüm görürseniz, sihirbazı tamamlamadan önce bu bölümü doldurmanız gerekir. Uygulama parolası ekleme yle ilgili adımlar için bu makalenin [uygulama parolalarını yönet](#manage-your-app-passwords) bölümüne bakın.
+    >Kuruluşunuz uygulama parolalarını kullanmanızı gerektiriyorsa, bu sihirbazda ayarlayabileceğiniz ek bir bölüm görürsünüz. **Uygulama parolaları**olarak adlandırılan üçüncü bir bölüm görürseniz, Sihirbazı tamamlayabilmeniz için önce onu doldurmanız gerekir. Uygulama parolası ekleme hakkında adımlar için bu makalenin [uygulama parolalarını yönetme](#manage-your-app-passwords) bölümüne bakın.
 
-### <a name="manage-your-app-passwords"></a>Uygulama parolalarınızı yönetme
+### <a name="manage-your-app-passwords"></a>Uygulama parolalarınızı yönetin
 
-Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmayamayacağı anlamına gelir. Bu sorunu aşmak için, normal parolanızdan ayrı olarak tarayıcı olmayan her uygulamayla kullanmak üzere otomatik olarak oluşturulmuş bir parola oluşturabilirsiniz.
+Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmamasıdır. Bu sorunu çözmek için, normal parolanınızdan ayrı olarak, her tarayıcı olmayan uygulamayla birlikte kullanmak üzere otomatik olarak kullanılan bir parola oluşturabilirsiniz.
 
 >[!Note]
->Sihirbazda bu seçeneği görmüyorsanız, yöneticinizin bu seçeneği ayarlamadığı anlamına gelir. Bu ayarlı değilse, ancak uygulama parolalarını kullanmanız gerektiğini biliyorsanız, [Güvenlik bilgileri sayfasından uygulama parolalarını ayarla](security-info-app-passwords.md)adımlarını takip edebilirsiniz.
+>Sihirbazda bu seçeneği görmüyorsanız, yöneticinizin bunu ayarlamadığı anlamına gelir. Bu ayarlanmamışsa, ancak uygulama parolalarını kullanmanız gerektiğini biliyorsanız, [güvenlik bilgileri sayfasından uygulama parolalarını ayarlama](security-info-app-passwords.md)bölümündeki adımları izleyebilirsiniz.
 
-Uygulama parolalarını kullanırken şunları unutmamak önemlidir:
+Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 - Uygulama parolaları otomatik olarak oluşturulur ve uygulama başına yalnızca bir kez girilir.
 
-- Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmaya çalışırsanız, yenisini oluşturmasına izin verilmeden önce varolan bir parolayı silmeniz istenir.
+- Kullanıcı başına 40 parola sınırı vardır. Bu sınırdan sonra bir tane oluşturmayı denerseniz, yenisini oluşturmaya izin verilmeden önce mevcut bir parolayı silmeniz istenir.
 
-- Cihaz başına bir uygulama parolası kullanın, uygulama başına değil. Örneğin, dizüstü bilgisayarınızdaki tüm uygulamalar için tek bir parola ve ardından masaüstünüzdeki tüm uygulamalar için başka bir parola oluşturun.
+- Her uygulama için değil, cihaz başına bir uygulama parolası kullanın. Örneğin, dizüstü bilgisayarınızdaki tüm uygulamalar için tek bir parola ve masaüstünüzdeki tüm uygulamalar için tek bir parola oluşturun.
 
-#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>Oturum açma sihirbazına uygulama parolaları eklemek için
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>Uygulama parolalarını oturum açma sihirbazına eklemek için
 
-1. Sihirbazın önceki bölümlerini tamamladıktan sonra **İleri'yi** seçin ve **Uygulama parolası** bölümünü tamamlayın.
+1. Sihirbazın önceki bölümlerini tamamladıktan sonra, **İleri** ' yi seçin ve **uygulama parolası** bölümünü doldurun.
 
-2. Parolaya ihtiyaç duyduğu uygulamanın adını yazın, örneğin `Outlook 2010`, ve sonra **İleri'yi**seçin.
+2. Parola gerektiren uygulamanın adını yazın (örneğin `Outlook 2010`,) ve ardından **İleri**' yi seçin.
 
-    ![Sihirbaza uygulama parola adı ekleme](media/security-info/app-password-app-password.png)
+    ![Sihirbazda uygulama parolası adını ekleme](media/security-info/app-password-app-password.png)
 
-3. Parola kodunu Uygulama **parola** ekranından kopyalayın ve uygulamanın **Parola** alanına yapıştırın (bu örnekte, Outlook 2010).
+3. Parola kodunu **uygulama parolası** ekranından kopyalayın ve uygulamanın **parola** alanına yapıştırın (bu örnekte, Outlook 2010).
 
-    ![Uygulama şifre sayfası, kopyalamak için şifre ile](media/security-info/app-password-copy-password.png)
+    ![Kopyalama parolası olan uygulama parolası sayfası](media/security-info/app-password-copy-password.png)
 
-4. Parolayı kopyalayıp uygulamaya yapıştırdıktan sonra, oturum açma yöntemi bilgilerinizin doğru olduğundan emin olmak için bu sihirbaza dönün ve **ardından Bitti'yi**seçin.
+4. Parolayı kopyaladıktan ve uygulamaya yapıştırdıktan sonra, tüm oturum açma yöntemi bilgilerinizin doğru olduğundan emin olmak için Bu sihirbaza dönün ve **bitti**' yi seçin.
 
-    ![Uygulama şifre sayfası, tamamlanma bildirimi ile](media/security-info/app-password-complete.png)
+    ![Uygulama parolası sayfası, tamamlanma bildirimi](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Varsayılan güvenlik bilgileri yöntemlerini değiştirmek, silmek veya güncelleştirmek için bkz:
+- Varsayılan güvenlik bilgisi yöntemlerini değiştirmek, silmek veya güncelleştirmek için bkz.:
 
-    - [Kimlik doğrulayıcı uygulaması için güvenlik bilgilerini ayarlayın.](security-info-setup-auth-app.md)
+    - [Bir doğrulayıcı uygulaması için güvenlik bilgilerini ayarlayın](security-info-setup-auth-app.md).
 
-    - [Kısa mesaj için güvenlik bilgilerini ayarlayın.](security-info-setup-text-msg.md)
+    - [SMS mesajlaşma için güvenlik bilgilerini ayarlayın](security-info-setup-text-msg.md).
 
-    - [Telefon görüşmelerini kullanmak için güvenlik bilgilerini ayarlayın.](security-info-setup-phone-number.md)
+    - [Telefon aramalarını kullanmak için güvenlik bilgilerini ayarlayın](security-info-setup-phone-number.md).
 
-    - [E-postayı kullanmak için güvenlik bilgilerini ayarlayın.](security-info-setup-email.md)
+    - [E-posta kullanmak için güvenlik bilgilerini ayarlayın](security-info-setup-email.md).
 
-    - [Önceden tanımlanmış güvenlik sorularını kullanmak için güvenlik bilgilerini ayarlayın.](security-info-setup-questions.md)
+    - [Önceden tanımlanmış güvenlik sorularını kullanmak için güvenlik bilgilerini ayarlayın](security-info-setup-questions.md).
 
-- Belirtilen yöntemi kullanarak oturum açma hakkında bilgi için [bkz.](user-help-sign-in.md)
+- Belirtilen yöntemi kullanarak oturum açma hakkında daha fazla bilgi için bkz. [oturum açma](user-help-sign-in.md).
 
-- [Parola sıfırlama portalından](https://passwordreset.microsoftonline.com/) parolanızı kaybettiyseniz veya unuttuysanız sıfırlayın veya iş [veya okul parolanızı sıfırla makalenizdeki](active-directory-passwords-update-your-own-password.md) adımları izleyin.
+- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) makalesindeki adımları izleyin.
 
-- [Microsoft hesap makalenizde oturum açamıyorum'da](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorun giderme ipuçları alın ve oturum açma sorunları için yardım alın.
+- [Microsoft hesabı makalesinde oturum açma](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorunları için sorun giderme ipuçları ve yardım alın.

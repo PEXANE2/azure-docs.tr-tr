@@ -1,73 +1,73 @@
 ---
-title: Azure FarmBeats nedir
-description: Azure FarmBeats'e genel bakış sağlar
+title: Azure Farmtempts nedir?
+description: Azure Farmtts 'ye genel bakış sağlar
 author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80667317"
 ---
-# <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats'e Genel Bakış (Önizleme)
+# <a name="overview-of-azure-farmbeats-preview"></a>Azure Farmtts 'ye Genel Bakış (Önizleme)
 
-Azure FarmBeats, Azure Marketi'nde kullanılabilen bir işletmeden işletmeye bir tekliftir. Tarım veri kümelerinin sağlayıcılar arasında toplanmasını sağlar. Azure FarmBeats, erimiş veri kümelerini temel alan yapay zeka (AI) veya makine öğrenimi (ML) modelleri oluşturmanıza olanak tanır. Azure FarmBeats'i kullanarak, tarım işletmeleri veri mühendisliğinin farklılaşmamış ağır kaldırma sıyerine temel katma değer ekibe odaklanabilir.
+Azure Farm, Azure Marketi 'nde bulunan işletmeden işletmeye yönelik bir tekliftir. Sağlayıcılar arasında belirsiz veri kümelerinin toplanmasının mümkün olduğunu belirler. Azure Farmtts, fkullanılan veri kümelerine göre yapay zeka (AI) veya Machine Learning (ML) modelleri oluşturmanıza olanak sağlar. Azure Farmcts 'yi kullanarak, büyük ölçekli işletmeler, veri mühendisinin belirsiz bir şekilde kaldırılması yerine temel değere odaklanabilir.
 
 > [!NOTE]
-> Azure FarmBeats şu anda genel önizlemede. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın. Azure FarmBeats hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure FarmBeats Forumu'nu](https://aka.ms/FarmBeatsMSDN ) kullanın.
+> Azure Farmtts Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Farmtts, bir hizmet düzeyi sözleşmesi olmadan sağlanır. Destek için [Azure Farmtempts forumunu](https://aka.ms/FarmBeatsMSDN ) kullanın.
 
-![Proje Çiftlik Beats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
+![Proje grubu ları](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
-Azure FarmBeats önizlemesi ile şunları yapabilirsiniz:
+Azure Farmtörler önizleme ile şunları yapabilirsiniz:
 
-- Uydu görüntülerine göre bitki örtüsü indeksi ve su indeksinkullanarak çiftlik sağlığını değerlendirin.
-- Kaç tane toprak nem sensörü kullanacağıve nereye yerleştirebileceğiniz konusunda öneriler alın.
-- Çeşitli satıcılardan sensörler tarafından toplanan zemin verilerini görselleştirerek çiftlik koşullarını izleyin.
-- Uydu ve sensör verilerinin birleştirilmesine dayalı toprak nem haritası alın.
-- AI/ML modellerini toplanan veri kümelerinin üzerine oluşturarak işlem uygulanabilir öngörüler elde edin.
-- Çiftlik sağlığı danışmanlığı sağlayarak dijital tarım çözümünüzü oluşturun veya artırın.
+- Kültür dizinini ve su dizinini kullanarak, uydu imagery 'yi temel alan grup durumunu değerlendirin.
+- Kaç SOIL nemi algılayıcılarının ve nerede yerleştirileceği hakkında öneriler alın.
+- Çeşitli satıcıların sensörlerinden toplanan verileri görselleştirerek grup koşullarını izleyin.
+- Uydu ve algılayıcı verilerini Fusion 'a göre SOIL nemi haritasını alın.
+- Toplu veri kümelerinin üstünde AI/ML modelleri oluşturarak eyleme dönüştürülebilir Öngörüler elde edin.
+- Grup durumu Danışma belgeleri sunarak dijital tarım çözümünüzü oluşturun veya geliştirin.
 
-## <a name="datahub"></a>Datahub
+## <a name="datahub"></a>Veri hub 'ı
 
-Azure FarmBeats Datahub, sağlayıcılar arasında çeşitli tarım veri kümelerinin biraraya getirilmesini, normalleştirilmesini ve bağlamsallaştırılmasını sağlayan bir API katmanıdır. Şunları elde etmek için Azure FarmBeats'i kullanabilirsiniz:
-- İki sensör [sağlayıcısıdavis Instruments,](https://www.davisinstruments.com/product/enviromonitor-gateway/) [Teralitik,](https://teralytic.com/) [Pessl Instruments'dan](https://metos.at/) gelen sensör **verileri**
-- Avrupa Uzay Ajansı'nın [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) uydu görevinden **uydu görüntüleri**
-- Üç drone görüntü sağlayıcıları [senseFly,](https://www.sensefly.com/) [SlantRange,](https://slantrange.com/) [DJI](https://dji.com/) **gelen Drone görüntüleri**
+Azure Farmders verileri hub 'ı, sağlayıcılar arasında çeşitli agriclaral veri kümelerinin toplama, normalleştirme ve kümeleştirme özelliğini sağlayan bir API katmanıdır. Azure Farmtts 'yi kullanarak şunları yapabilirsiniz:
+- İki algılayıcı sağlayıcısından gelen **algılayıcı verileri algılayıcı** [araçları](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [peşinatlı aletler](https://metos.at/)
+- Avrupa Space ajansın [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) uydu iş 'ten **uydu canlandırın**
+- Üç adet drone canlandırın [sağlayıcısından](https://www.sensefly.com/) **drone canlandırın** , [SlantRange](https://slantrange.com/) , [dji](https://dji.com/)
 
-Datahub genişletilebilir bir API platformu olarak tasarlanmıştır. Azure FarmBeats ile entegre olmak için çok daha fazla sağlayıcıyla birlikte çalışıyoruz, böylece çözümünüzü yaparken daha fazla seçeneğiniz var.
+Datahub, genişletilebilir bir API platformu olarak tasarlanmıştır. Azure Farmpts ile tümleştirilebilen çok daha fazla sağlayıcı ile çalışıyoruz, bu nedenle Çözümünüzü oluştururken daha fazla seçeneğiniz vardır.
 
-## <a name="accelerator"></a>Hızlandırıcı
+## <a name="accelerator"></a>Hızlandır
 
-Azure FarmBeats Hızlandırıcı, Datahub'ın üzerine inşa edilmiş örnek bir web uygulamasıdır. Hızlandırıcı, kullanıcı arabiriminizi ve model geliştirmenizi hızlandırıyor. Azure FarmBeats hızlandırıcısı Azure FarmBeats'in API'lerini kullanır. Sindirilen sensör verilerini grafikler ve model çıktıları olarak harita olarak görselleştirir. Örneğin, hızlandırıcıyı hızlı bir şekilde bir çiftlik oluşturmak ve o çiftlik için bir bitki indeksi haritası veya sensör yerleştirme haritası almak için kullanabilirsiniz.
+Azure Farmtts hızlandırıcısı, veri hub 'ının üzerine inşa edilen örnek bir Web uygulamasıdır. Hızlandırıcı hızlı geçiş-Kullanıcı arabiriminizi ve model geliştirmeyi başlatır. Azure Farmtts hızlandırıcısı, Azure Farmtts API 'Lerini kullanır. Alınan algılayıcı verilerini grafik olarak ve model çıkışları harita olarak görselleştirir. Örneğin, Hızlandırıcıyı kullanarak bir grubu hızlı bir şekilde oluşturabilir ve bu grup için kolayca bir vegetation Dizin eşlemesi ya da bir algılayıcı yerleştirme eşlemesi alabilirsiniz.
 
 ## <a name="role-based-access-control-rbac"></a>Rol Tabanlı Access Control (RBAC)
 
-Yönetici, önceden tanımlanmış rollerden birini kullanarak Azure FarmBeats için erişim kurallarını tanımlayabilir. Roller, bir kullanıcının uygulamanın hangi alanlarına erişebileceğini ve hangi eylemleri gerçekleştirebileceğini belirler. Azure FarmBeats'te kullanıcılar ve iş ortakları için iki tür rol vardır.
+Yönetici, önceden tanımlanmış rollerden birini kullanarak Azure Farmtts için erişim kuralları tanımlayabilir. Roller, uygulamanın ne kadar kullanıcıya erişimi olduğunu ve gerçekleştirebileceği eylemleri tespit edebilir. Azure Farmtempts 'de, kullanıcılar ve iş ortakları için iki tür rol vardır.
 
 ### <a name="user-roles"></a>Kullanıcı Rolleri
 
-Yönetici, [kullanıcıları ekleyebilir ve yönetebilir](manage-users-in-azure-farmbeats.md) ve erişim düzeylerini iki kullanıcı rolüne göre tanımlayabilir: Yalnızca Yönetici ve Salt Okunur.
+Yönetici, Kullanıcı [ekleyebilir ve yönetebilir](manage-users-in-azure-farmbeats.md) ve iki kullanıcı rolüne göre erişim düzeylerini tanımlayabilir: yönetici ve salt okunurdur.
 
-### <a name="partner-roles"></a>Ortak Rolleri
+### <a name="partner-roles"></a>İş ortağı rolleri
 
-Bir yönetici Azure FarmBeats'e veri sağlayıcısı olarak birden çok iş ortağı ekleyebilir. FarmBeats'teki kullanılabilir iş ortağı rollerini ve izinlerini aşağıda özetler:
+Bir yönetici, Azure Farm'e veri sağlayıcıları olarak birden çok iş ortağı ekleyebilir. Aşağıda, Farmtts 'deki kullanılabilir iş ortağı rolleri ve bunların izinleri özetlenmektedir:
 
-| Ortak Türü    |   Eylemler  | Kapsam |
+| İş ortağı türü    |   Eylemler  | Kapsam |
 | ---- | -------- | -------- |
-| Sensör Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme | DeviceModel, Cihaz, Sensör Modeli, Sensör <br/> <br/> Genişletilmiş Tip |
-| Görüntü Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | Sahne, SahneDosyası <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
-| Hava Durumu Ortağı* <br/> <br/>  (* Yakında) |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | WeatherDataModel, WeatherDataLocation, İş Tipi <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
+| Algılayıcı Iş ortağı  |   Oluşturma, okuma, güncelleştirme <br/> <br/> Okuma, Güncelleştirme | DeviceModel, cihaz, SensorModel, algılayıcı <br/> <br/> ExtendedType |
+| Imagery Iş ortağı  |   Oluşturma, okuma, güncelleştirme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | Sahne, manzara <br/> <br/> ExtendedType <br/> <br/> Çiftlik |
+| Hava durumu ortağı * <br/> <br/>  (* Çok yakında) |   Oluşturma, okuma, güncelleştirme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | Dalgalı veri modeli, dalgalı iş Datalocation, JobType <br/> <br/> ExtendedType <br/> <br/> Çiftlik |
 
 ## <a name="resources"></a>Kaynaklar
 
-Azure FarmBeats ek ücret ödemeden sunulur ve yalnızca kullandığınız Azure kaynakları için ödeme yaptığınızda ödeme yapılır. Teklif hakkında daha fazla şey öğrenmek için aşağıdaki kaynakları kullanabilirsiniz:
+Azure Farmtts hiçbir ek ücret ödemeden sunulur ve yalnızca kullandığınız Azure kaynakları için ödeme yaparsınız. Teklif hakkında daha fazla bilgi edinmek için aşağıdaki kaynakları kullanabilirsiniz:
 
-- [Azure FarmBeats blogumuzu](https://aka.ms/farmbeatsblog)ziyaret ederek en son Azure FarmBeats haberlerinden haberdar olun.
-- [Azure FarmBeats destek forumumuzda](https://aka.ms/farmbeatssupport)bir soru göndererek yardım isteyin.
-- [Azure FarmBeats geri bildirim forumumuzda](https://aka.ms/farmbeatsfeedback)bir özellik fikri göndererek veya bir özellik fikri için oy vererek geri bildirim sağlayın.
+- [Azure farmtts blogumuzu](https://aka.ms/farmbeatsblog)ziyaret ederek en son Azure farmm haberleri hakkında bilgi sahibi olun.
+- [Azure Farmtts destek forumumuza](https://aka.ms/farmbeatssupport)bir soru göndererek yardım isteyin.
+- [Azure Farmtts geri bildirim forumumuzda](https://aka.ms/farmbeatsfeedback)bir özellik fikrini naklederek veya oylayarak geri bildirim sağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

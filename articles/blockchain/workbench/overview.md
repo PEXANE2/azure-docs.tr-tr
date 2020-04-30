@@ -1,19 +1,19 @@
 ---
-title: Azure Blockchain Çalışma Tezgahı Önizleme genel bakış
-description: Azure Blockchain Workbench Preview'a ve özelliklerine genel bakış.
+title: Azure blok zinciri çalışma ekranı önizlemesine genel bakış
+description: Azure blok zinciri çalışma ekranı önizlemesine ve özelliklerine genel bakış.
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
 ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79203653"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench nedir?
 
-Azure Blockchain Workbench Preview, iş süreçlerini ve verileri diğer kuruluşlarla paylaşmak için blockchain uygulamaları oluşturmanıza ve dağıtmanıza yardımcı olmak üzere tasarlanmış bir Azure hizmetleri ve yetenekleri topluluğudur. Azure Blockchain Workbench, blok zinciri uygulamaları derlemeye ilişkin altyapı iskeleti sağlayarak geliştiricilerin iş mantığı ve akıllı sözleşmeler oluşturmaya odaklanmasına imkan tanır. Ayrıca genel geliştirme görevlerinin otomatikleştirilmesine yardımcı olacak birçok Azure hizmetini ve özelliğini tümleştirerek blok zinciri uygulamaları oluşturulmasını da kolaylaştırır.
+Azure blok zinciri çalışma ekranı önizlemesi, iş süreçlerini ve verileri diğer kuruluşlarla paylaşmak üzere blok zinciri uygulamaları oluşturmanıza ve dağıtmanıza yardımcı olmak üzere tasarlanmış bir Azure hizmetleri ve özellikleri koleksiyonudur. Azure Blockchain Workbench, blok zinciri uygulamaları derlemeye ilişkin altyapı iskeleti sağlayarak geliştiricilerin iş mantığı ve akıllı sözleşmeler oluşturmaya odaklanmasına imkan tanır. Ayrıca genel geliştirme görevlerinin otomatikleştirilmesine yardımcı olacak birçok Azure hizmetini ve özelliğini tümleştirerek blok zinciri uygulamaları oluşturulmasını da kolaylaştırır.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench, blok zinciri uygulamalarını ve kullanıcılarını
 
 Mevcut sistemlerle tümleştirmek için Blockchain Workbench REST API’lerini ve ileti tabanlı API’leri kullanabilirsiniz. API’ler, birden fazla dağıtılmış defter teknolojisinin, depolama ve veritabanı teklifinin değiştirilmesine veya kullanılmasına imkan tanıyacak bir arabirim sağlar.
 
-Blockchain Workbench, ileti tabanlı API'sine gönderilen iletileri, blockchain'in yerel API'si tarafından beklenen bir biçimde işlem oluşturmak için dönüştürebilir.  Workbench, işlemleri imzalayıp uygun blok zincirine yönlendirebilir. 
+Blok zinciri çalışma ekranı, bu blok zincirinin yerel API 'SI tarafından beklenen biçimde işlem oluşturmak için ileti tabanlı API 'sine gönderilen iletileri dönüştürebilir.  Workbench, işlemleri imzalayıp uygun blok zincirine yönlendirebilir. 
 
 Workbench, aşağı akış tüketicilerine ileti göndermek için Service Bus ve Event Grid’e otomatik olarak olaylar sunar. Geliştiriciler, işlemleri desteklemek ve sonuçlara bakmak için bu ileti sistemlerinin herhangi biriyle tümleştirme gerçekleştirebilir.
 
@@ -43,19 +43,19 @@ Mevcut blok zinciri protokolleri ile blok zinciri kimlikleri, ağ üzerindeki bi
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Zincir üzerindeki verileri, zincir dışı depolama ile eşitleme
 
-Azure Blockchain Workbench, blok zinciri üzerindeki verileri otomatik olarak zincir dışı depolama ile eşitleyerek blok zinciri olaylarının ve verilerinin analiz edilmesini kolaylaştırır. Doğrudan blok zincirinden verileri ayıklamak yerine, SQL Server gibi zincir dışı veritabanı sistemlerini sorgulayabilirsiniz. Veri analizi görevleri yapan son kullanıcılar için Blockchain uzmanlığı gerekmez.
+Azure Blockchain Workbench, blok zinciri üzerindeki verileri otomatik olarak zincir dışı depolama ile eşitleyerek blok zinciri olaylarının ve verilerinin analiz edilmesini kolaylaştırır. Doğrudan blok zincirinden verileri ayıklamak yerine, SQL Server gibi zincir dışı veritabanı sistemlerini sorgulayabilirsiniz. Blok zinciri uzmanlığı, veri analizi görevleri gerçekleştiren son kullanıcılar için gerekli değildir.
 
 ## <a name="support-and-feedback"></a>Destek ve geri bildirim
 
-Azure Blockchain haberleri için, Blockchain hizmet teklifleri ve Azure Blockchain mühendislik ekibinden gelen bilgiler hakkında güncel kalmak için [Azure Blockchain blogunu](https://azure.microsoft.com/blog/topics/blockchain/) ziyaret edin.
+Azure blok zinciri haberleri için Azure blok zinciri [blogu](https://azure.microsoft.com/blog/topics/blockchain/) ' nı ziyaret ederek, blok zinciri hizmeti tekliflerini ve Azure blok zinciri Mühendisliği ekibinin bilgilerini güncel tutun.
 
-Ürün geri bildirimi sağlamak veya yeni özellikler istemek için [blockchain için Azure geri bildirim forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir için oy gönderebilirsiniz.
+Ürün geri bildirimi sağlamak veya yeni özellikler istemek için, [blok zinciri Için Azure geri bildirim Forumu](https://aka.ms/blockchainuservoice)aracılığıyla bir fikir oylayın.
 
 ### <a name="community-support"></a>Topluluk desteği
 
-Microsoft mühendisleri ve Azure Blockchain topluluk uzmanlarıyla etkileşimde bulunun.
+Microsoft mühendisleri ve Azure blok zinciri topluluk uzmanlarıyla birlikte katılın.
 
-* [Azure Blockchain MSDN forumu](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure blok zinciri MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
 * [Microsoft Teknoloji Topluluğu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

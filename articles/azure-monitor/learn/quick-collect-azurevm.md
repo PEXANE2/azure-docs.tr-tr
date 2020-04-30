@@ -1,5 +1,5 @@
 ---
-title: Azure Monitörü ile Azure sanal makinesinden veri toplama | Microsoft Dokümanlar
+title: Azure Izleyici ile Azure sanal makinesinden veri toplama | Microsoft Docs
 description: Log Analytics Aracısı VM Uzantısını etkinleştirmeyi ve Log Analytics ile Azure VM’lerinizden veri toplamayı etkinleştirmeyi öğrenin.
 ms.subservice: logs
 ms.topic: quickstart
@@ -8,39 +8,39 @@ ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
 ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240341"
 ---
-# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor ile Azure sanal makinesinden veri toplama
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinesinden veri toplama
 
-[Azure Monitor,](../overview.md) ayrıntılı analiz ve korelasyon için doğrudan Azure sanal makinelerinizden bir Log Analytics çalışma alanına veri toplayabilir. [Windows](../../virtual-machines/extensions/oms-windows.md) ve [Linux](../../virtual-machines/extensions/oms-linux.md) için Log Analytics VM uzantısının yüklenmesi, Azure Monitor'un Azure VM'lerinizden veri toplamasına olanak tanır. Bu hızlı başlangıç, VM uzantısını birkaç kolay adımla kullanarak Azure Linux veya Windows SANAL'larınızdan nasıl veri yapılandırabileceğinizi ve topladığınızı gösterir.  
+[Azure izleyici](../overview.md) , ayrıntılı analiz ve bağıntı için Azure sanal makinelerinizden doğrudan bir Log Analytics çalışma alanına veri toplayabilir. [Windows](../../virtual-machines/extensions/oms-windows.md) ve [LINUX](../../virtual-machines/extensions/oms-linux.md) için Log Analytics VM uzantısının yüklenmesi, Azure izleyici 'nin Azure sanal makinelerinizden veri toplamasına izin verir. Bu hızlı başlangıçta, birkaç kolay adımla VM uzantısını kullanarak Azure Linux veya Windows sanal makinelerinizdeki verileri nasıl yapılandıracağınız ve toplayacağınız gösterilmektedir.  
  
 Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılmaktadır. Yoksa VM hızlı başlangıçlarımızı izleyerek bir [Windows VM](../../virtual-machines/windows/quick-create-portal.md) veya bir [Linux VM](../../virtual-machines/linux/quick-create-cli.md) oluşturabilirsiniz.
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç. 
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-1. Azure portalında **Tüm hizmetler'i**seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Günlük Analizi çalışma alanlarını**seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portalında](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. **Oluştur'u**seçin ve ardından aşağıdaki öğeler için seçenekleri seçin:
+2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
-   * *Varsayılan LAWorkspace*gibi yeni **Log Analytics çalışma alanı**için bir ad sağlayın.  
+   * Yeni **Log Analytics çalışma alanı**Için *defaultlaworkspace*gibi bir ad sağlayın.  
    * Varsayılan seçili abonelik uygun değilse açılan listeden bağlanacak bir **Abonelik** seçin.
    * **Kaynak Grubu** için, bir veya daha fazla Azure sanal makinesi içeren mevcut bir kaynak grubunu seçin.  
    * VM’lerinizin dağıtıldığı **Konum**’u seçin.  Ek bilgi için bkz. [Log Analytics’in sunulduğu bölgeler](https://azure.microsoft.com/regions/services/).
    * 2 Nisan 2018 tarihinden sonra oluşturulan yeni bir abonelikte çalışma alanı oluşturuyorsanız bu, otomatik olarak *GB başına* fiyatlandırma planını kullanır ve fiyatlandırma katmanı seçme seçeneği kullanılamaz.  2 Nisan’dan önce oluşturulmuş mevcut bir abonelik için veya mevcut bir EA kaydına bağlı aboneliğe yönelik çalışma alanı oluşturuyorsanız, tercih ettiğiniz fiyatlandırma katmanını seçin.  Katmanlar hakkında daha fazla bilgi için bkz. [Log Analytics Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Log Analytics kaynak bıçağı oluşturun](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
+        ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
-3. **Log Analytics çalışma alanı** bölmesi üzerinde gerekli bilgileri sağladıktan sonra **Tamam'ı**seçin.  
+3. **Log Analytics çalışma alanı** bölmesinde gerekli bilgileri sağladıktan sonra **Tamam**' ı seçin.  
 
 Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlemin ilerleme durumunu menüdeki **Bildirimler**’in altından izleyebilirsiniz. 
 
@@ -48,26 +48,26 @@ Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlem
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analytics aracısını Log Analytics VM Uzantısı ile yüklersiniz. Uzantıyı kullanmak yükleme işlemini kolaylaştırır ve aracıyı belirttiğiniz Log Analytics çalışma alanına veri göndermek üzere otomatik olarak yapılandırır. Aracı, en son özelliklere ve düzeltmelere sahip olduğunuzdan emin olmak için daha yeni bir sürüm piyasaya sürüldüğünde de otomatik olarak yükseltilir. İşleme devam etmeden önce, VM'nin çalıştığını doğrulayın aksi takdirde işlem başarılı bir şekilde tamamlanacak şekilde başarısız olur.  
+Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analytics aracısını Log Analytics VM Uzantısı ile yüklersiniz. Uzantıyı kullanmak yükleme işlemini kolaylaştırır ve aracıyı belirttiğiniz Log Analytics çalışma alanına veri göndermek üzere otomatik olarak yapılandırır. Aracı Ayrıca yeni bir sürüm yayınlandığında otomatik olarak yükseltilir ve en son özelliklere ve düzeltmelere sahip olmanızı sağlar. Devam etmeden önce, VM 'nin çalıştığını doğrulayın, aksi takdirde işlem başarıyla tamamlanacaktır.  
 
 >[!NOTE]
 >Linux için Log Analytics aracısı birden fazla Log Analytics çalışma alanına raporlamak için yapılandırılamaz. 
 
-1. Azure portalında, sol üst köşede bulunan **Tüm hizmetleri** seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Günlük Analizi çalışma alanlarını**seçin.
+1. Azure portal sol üst köşede bulunan **tüm hizmetler** ' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
 2. Log Analytics çalışma alanlarınızın listesinde, daha önceden oluşturduğunuz *DefaultLAWorkspace* çalışma alanını seçin.
 
-3. Sol menüde, Çalışma Alanı Veri Kaynakları altında **Sanal makineleri**seçin.  
+3. Sol taraftaki menüde, çalışma alanı veri kaynakları altında, **sanal makineler**' i seçin.  
 
 4. **Sanal makine** listesinden aracıyı yüklemek istediğiniz bir sanal makine seçin. VM için **Log Analytics bağlantı durumunun****Bağlı değil** olduğuna dikkat edin.
 
-5. Sanal makinenizin ayrıntılarında, **Bağlan**’ı seçin. Aracı otomatik olarak yüklenir ve Log Analytics çalışma alanınız için yapılandırılır. Bu işlem birkaç dakika sürer ve bu süre içinde **Durum** **Bağlantıyı**gösterir.
+5. Sanal makinenizin ayrıntılarında, **Bağlan**’ı seçin. Aracı otomatik olarak yüklenir ve Log Analytics çalışma alanınız için yapılandırılır. Bu işlem birkaç dakika sürer. bu süre, **durumun** **bağlantı**gösterdiği zamanı gösterir.
 
 6. Aracıyı yükleyip bağlandıktan sonra, **Log Analytics bağlantı durumu****Bu çalışma alanı** olarak güncelleştirilir.
 
 ## <a name="collect-event-and-performance-data"></a>Olay ve performans verilerini toplama
 
-Azure Monitor, Windows olay günlüklerinden veya Linux Syslog'dan ve daha uzun vadeli analiz ve raporlama için belirttiğiniz performans sayaçlarından olayları toplayabilir ve belirli bir koşul algılandığında harekete geçebilir. Windows sistem günlüğü ve Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
+Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windows olay günlüklerinden veya Linux Syslog ve performans sayaçlarından olayları toplayabilir ve belirli bir koşul algılandığında işlem yapabilir. Windows sistem günlüğü ve Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
 
 ### <a name="data-collection-from-windows-vm"></a>Windows VM’den veri toplama
 
@@ -77,11 +77,11 @@ Azure Monitor, Windows olay günlüklerinden veya Linux Syslog'dan ve daha uzun 
 
 2. **Veri**’yi seçin ve ardından **Windows Olay Günlükleri**’ni seçin.
 
-3. Bir olay günlüğü eklemek için günlüğün adını yazın.  **Sistem** yazın ve sonra **+** artı işaretini seçin.
+3. Bir olay günlüğü eklemek için günlüğün adını yazın.  **System** yazın ve ardından artı işaretini **+** seçin.
 
 4. Tabloda, **Hata** ve **Uyarı** önem derecelerini işaretleyin.
 
-5. Yapılandırmayı kaydetmek için sayfanın üst kısmında **Kaydet'i** seçin.
+5. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
 6. Bir Windows bilgisayarda performans sayaçlarını toplamayı etkinleştirmek için **Windows Performans Verileri**’ni seçin.
 
@@ -89,19 +89,19 @@ Azure Monitor, Windows olay günlüklerinden veya Linux Syslog'dan ve daha uzun 
 
     ![Varsayılan Windows performans sayaçları seçildi](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
-    **Seçili performans sayaçlarını ekle'yi**seçin.  Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.
+    **Seçili performans sayaçlarını Ekle**' yi seçin.  Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.
   
-8. Yapılandırmayı kaydetmek için sayfanın üst kısmında **Kaydet'i** seçin.
+8. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
 ### <a name="data-collection-from-linux-vm"></a>Linux VM’den veri toplama
 
 1. **Syslog**’u seçin.  
 
-2. Bir olay günlüğü eklemek için günlüğün adını yazın.  **Syslog** yazın ve sonra **+** artı işaretini seçin.  
+2. Bir olay günlüğü eklemek için günlüğün adını yazın.  **Syslog** yazın ve ardından artı işaretini **+** seçin.  
 
-3. Tabloda, önem leri **Bilgi,** **Bildirim** ve **Hata Ayıklama**seçin. 
+3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama**seçimlerini kaldırın. 
 
-4. Yapılandırmayı kaydetmek için sayfanın üst kısmında **Kaydet'i** seçin.
+4. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
 5. Bir Linux bilgisayarda performans sayaçlarını toplamayı etkinleştirmek için **Linux Performans Verileri**’ni seçin. 
 
@@ -109,27 +109,27 @@ Azure Monitor, Windows olay günlüklerinden veya Linux Syslog'dan ve daha uzun 
 
     ![Varsayılan Windows performans sayaçları seçildi](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
-    **Makinelerime aşağıdaki yapılandırmayı uygula'yı** seçin ve **ardından seçili performans sayaçlarını ekle'yi**seçin.  Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.  
+    **Aşağıdaki yapılandırmayı makinelerime Uygula** ' yı seçin ve ardından **Seçili performans sayaçlarını Ekle**' yi seçin.  Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.  
 
-7. Yapılandırmayı kaydetmek için sayfanın üst kısmında **Kaydet'i** seçin.
+7. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
 ## <a name="view-data-collected"></a>Toplanan verileri görüntüleyin
 
 Veri toplamayı etkinleştirdiyseniz, şimdi hedef VM’lerden verileri görmek için basit bir günlük araması örneği çalıştıralım.  
 
-1. Seçili çalışma alanında, sol bölmeden **Günlükler'i**seçin.
+1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. Günlükler sorgu sayfasında, `Perf` sorgu düzenleyicisini yazın ve **Çalıştır'ı**seçin.
+2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' `Perf` ni yazın ve **Çalıştır**' ı seçin.
 
     ![Log Analytics günlük araması sorgu örneği](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-    Örneğin, aşağıdaki resimdeki sorgu 10.000 performans kaydı döndürdü. Sonuçlarınız önemli ölçüde daha az olacaktır.
+    Örneğin, aşağıdaki görüntüdeki sorgu 10.000 performans kaydı döndürdü. Sonuçlarınız önemli ölçüde daha az olacaktır.
 
     ![Log Analytics günlük araması sonucu](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında, Log Analytics çalışma alanını silin. Bunu yapmak için, daha önce oluşturduğunuz Günlük Analizi çalışma alanını seçin ve kaynak sayfasında **Sil'i**seçin.
+Artık gerekli olmadığında, Log Analytics çalışma alanını silin. Bunu yapmak için, daha önce oluşturduğunuz Log Analytics çalışma alanını seçin ve kaynak sayfasında **Sil**' i seçin.
 
 
 ![Log Analytics kaynağını silme](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)

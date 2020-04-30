@@ -1,77 +1,77 @@
 ---
 title: Unity örneğini Masaüstüne dağıtma
-description: Unity örneğini masaüstü bilgisayara nasıl alacağımı gösteren hızlı başlatma
+description: Bir masaüstü BILGISAYAR üzerinde Unity örneğinin nasıl alınacağını gösteren hızlı başlangıç
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
 ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81415715"
 ---
-# <a name="quickstart-deploy-unity-sample-to-desktop"></a>Quickstart: Unity örneğini Masaüstüne dağıtın
+# <a name="quickstart-deploy-unity-sample-to-desktop"></a>Hızlı başlangıç: Unity örneğini masaüstüne dağıtma
 
-Bu hızlı başlangıç, Unity için hızlı başlatma örnek uygulamasını bir masaüstü bilgisayara nasıl dağıtılanın ve çalıştırılabilmek için olduğunu kapsar.
+Bu hızlı başlangıçta, bir masaüstü BILGISAYARA Unity için hızlı başlangıç örneği uygulamasının nasıl dağıtılacağı ve çalıştırılacağı ele alınmaktadır.
 
-Bu hızlı başlangıçta nasıl öğreneceksiniz:
+Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
 >
->* Masaüstü için hızlı başlatma örnek uygulamasını oluşturun
->* Örneği bilgisayara dağıtma
->* Örneği bilgisayarda çalıştırma
+>* Masaüstü için hızlı başlangıç örnek uygulamasını oluşturma
+>* Örneği bir BILGISAYARA dağıtma
+>* Örneği bir bılgısayarda çalıştırın
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıçta örnek projeyi [Quickstart:Unity ile bir model oluşturma'dan](render-model.md)dağıtacağız.
+Bu hızlı başlangıçta örnek projeyi hızlı başlangıç konumundan dağıtacağız [: Unity ile model işleme](render-model.md).
 
-Kimlik bilgilerinizin sahneyle birlikte doğru şekilde kaydolduğundan emin olun ve Unity düzenleyicisinin içinden bir oturuma bağlanabilirsiniz.
+Kimlik bilgilerinizin sahneye doğru şekilde kaydedildiğinden emin olun ve Unity Düzenleyicisi içinden bir oturuma bağlanabilirsiniz.
 
-## <a name="disable-virtual-reality-support"></a>Sanal gerçeklik desteğini devre dışı
+## <a name="disable-virtual-reality-support"></a>Sanal gerçeklik desteğini devre dışı bırak
 
-Vr desteğinin devre dışı bırakılması için şu anda masaüstünde yalnızca düz masaüstü uygulamaları desteklenir.
+Şu anda masaüstünde yalnızca düz masaüstü uygulamaları desteklenmektedir. bu nedenle, VR desteği devre dışı bırakılmalıdır.
 
-1. *Proje Ayarlarını > Edit'i Aç...*
-1. Soldaki **Player'ı** seçin.
-1. Evrensel **Windows Platformu ayarları** sekmesini seçin.
-1. **XR Ayarlarını**Genişletin.
-1. **Sanal Gerçeklik Destekli**devre dışı.
-    ![oyuncu ayarları](./media/unity-disable-xr.png)
-1. *XR Ayarları'nın*üzerinde, **Yayımlama Ayarlarını genişletin.**
-1. **Desteklenen Aygıt Ailelerinde**Masaüstü'nin **Desktop** kontrol edildiğinden emin olun.
+1. *> proje ayarlarını Düzenle 'yi aç...*
+1. Sol taraftaki **oynatıcı** ' yı seçin.
+1. **Evrensel Windows platformu ayarları** sekmesini seçin.
+1. **XR ayarlarını**genişletin.
+1. **Sanal Reality**'yi devre dışı bırakma destekleniyor.
+    ![Oynatıcı ayarları](./media/unity-disable-xr.png)
+1. *XR ayarları*' nın üzerinde **Yayımlama ayarları**' nı genişletin.
+1. **Desteklenen cihaz ailelerinde** **Masaüstü 'nün** işaretli olduğundan emin olun.
 
 ## <a name="build-the-sample-project"></a>Örnek projeyi oluşturma
 
-1. *Dosya > Yapı Ayarları'nı*açın.
-1. *Platformu* **Evrensel Windows Platformu'na**değiştirin.
-1. *Hedef Aygıtı* **PC'ye**ayarlayın.
-1. *Mimari'yi* **x86**olarak ayarlayın.
-1. *Yapı Türünü* **D3D Projesi'ne**ayarlayın.
-  ![Yapı ayarları](./media/unity-build-settings-pc.png)
-1. **Platforma Geçiş'i**seçin.
-1. **Yap** (veya 'Yap ve Çalıştır' tuşuna bastığınızda), çözümün depolanması gereken bazı klasörü seçmeniz istenir.
-1. Visual Studio ile oluşturulan **Quickstart.sln'yi** açın.
+1. *Dosya > derleme ayarları*'nı açın.
+1. *Platformu* **Evrensel Windows platformu**değiştirin.
+1. *Hedef cihazı* **bilgisayar**olarak ayarlayın.
+1. *Mimariyi* **x86**olarak ayarlayın.
+1. *Yapı türünü* **D3D projesi**olarak ayarlayın.
+  ![Derleme ayarları](./media/unity-build-settings-pc.png)
+1. **Platforma geç**' i seçin.
+1. **Derleme** (veya ' derleme ve çalıştırma ') tuşlarına basıldığında çözümün depolanması gereken bir klasör seçmeniz istenir.
+1. Visual Studio ile oluşturulan **hızlı başlangıç. sln** 'yi açın.
 1. Yapılandırmayı **Release** ve **x86**olarak değiştirin.
-1. Hata ayıklama modunu **Yerel Makine'ye**geçirin.
+1. Hata ayıklayıcı modunu **yerel makineye**değiştirin.
   ![Çözüm yapılandırması](./media/unity-deploy-config-pc.png)
 1. Çözümü oluşturun (F7).
 
 > [!WARNING]
-> **x86 seçtiğinizden**emin olun. **x64** şu anda desteklenmiyor, [platform sınırlamaları](../reference/limits.md#platform-limitations)bakın.
+> **X86**' yı seçtiğinizden emin olun. **x64** Şu anda desteklenmiyor, bkz. [Platform sınırlamaları](../reference/limits.md#platform-limitations).
 
-## <a name="launch-the-sample-project"></a>Örnek projeyi başlatın
+## <a name="launch-the-sample-project"></a>Örnek projeyi başlatma
 
-Debugger'ı Visual Studio(F5) ile başlatın. Uygulamayı otomatik olarak BILGISAYARa dağıtır.
+Visual Studio 'da hata ayıklayıcıyı başlatın (F5). Uygulamayı otomatik olarak BILGISAYARA dağıtır.
 
-Örnek uygulama başlatılmalı ve ardından yeni bir oturum başlatılmalıdır. Bir süre sonra oturum hazır olur ve uzaktan işlenen model önünüzde görünür.
-Örneği ikinci kez başlatmak isterseniz, şimdi Başlat menüsünden de bulabilirsiniz.
+Örnek uygulama, yeni bir oturum başlatıp başlatmalıdır. Bir süre sonra, oturum hazırlanıyor ve uzaktan işlenen model sizin sizin için görünür olacaktır.
+Daha sonra örneği ikinci kez başlatmak istiyorsanız, Şimdi Başlat menüsünden de bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki hızlı başlangıçta, özel bir modeli dönüştürmeye bir göz atacağız.
+Bir sonraki hızlı başlangıçta, özel bir modeli dönüştürmeye göz atacağız.
 
 > [!div class="nextstepaction"]
-> [Quickstart: Oluşturma için bir modeli dönüştürme](convert-model.md)
+> [Hızlı başlangıç: bir modeli işleme için dönüştürme](convert-model.md)
