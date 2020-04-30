@@ -1,7 +1,7 @@
 ---
-title: Yeni özellik duyuruları
+title: Yeni Özellik Duyuruları
 titleSuffix: Azure Cognitive Search
-description: Azure Arama'nın Azure Bilişsel Arama'ya bir hizmet yeniden adı da dahil olmak üzere yeni ve gelişmiş özelliklerin duyuruları.
+description: Azure Bilişsel Arama Azure Search hizmet yeniden adlandırma özelliği de dahil olmak üzere yeni ve geliştirilmiş özelliklerin duyuruları.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,71 +9,71 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/24/2020
 ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80247206"
 ---
-# <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki yenilikler
+# <a name="whats-new-in-azure-cognitive-search"></a>Azure Bilişsel Arama yenilikleri
 
-Hizmetteki yenilikleri öğrenin. Hizmetten haberdar olmak için bu sayfayı yer imi.
+Hizmette nelerin yeni olduğunu öğrenin. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 <a name="new-service-name"></a>
 
 ## <a name="new-service-name"></a>Yeni hizmet adı
 
-Azure **Arama,** bilişsel becerilerin genişletilmiş (ancak isteğe bağlı) kullanımını ve temel işlemlerde AI işlemeyi yansıtacak şekilde Azure Bilişsel Arama olarak yeniden adlandırılmıştır. API sürümleri, NuGet paketleri, ad alanları ve uç noktaları değişmez. Yeni ve varolan arama çözümleri hizmet adı değişikliğinden etkilenmez.
+Azure Search, çekirdek işlemlerde bilişsel yeteneklerin ve AI işlemenin genişletilmiş (henüz isteğe bağlı) kullanımını yansıtmak için artık **Azure bilişsel arama** olarak yeniden adlandırıldı. API sürümleri, NuGet paketleri, ad alanları ve uç noktalar değiştirilmez. Yeni ve mevcut arama çözümleri, hizmet adı değişikliğinden etkilenmez.
 
-## <a name="feature-announcements"></a>Özellik duyuruları
+## <a name="feature-announcements"></a>Özellik Duyuruları
 
 ### <a name="march-2020"></a>Mart 2020
 
-+ [Yerel blob yumuşak silme (önizleme),](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) Azure Bilişsel Arama'daki Azure Blob Depolama dizinleyicisinin yumuşak silinmiş durumdaolan lekeleri tanıyacağı ve dizin oluşturma sırasında ilgili arama belgesini kaldıracağı anlamına gelir.
++ [Yerel blob geçici silme (Önizleme)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) , Azure bilişsel arama Azure Blob depolama Dizin Oluşturucu, geçici olarak silinen bir durumda olan Blobları tanıyacak ve dizin oluşturma sırasında ilgili arama belgesini kaldıracağı anlamına gelir.
 
-+ Yeni istikrarlı [Yönetim REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) artık kullanılabilir. 
++ Yeni kararlı [yönetim REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) artık kullanıma sunuldu. 
 
 ### <a name="february-2020"></a>Şubat 2020
 
-+ [PII Algılama (önizleme),](cognitive-search-skill-pii-detection.md) bir giriş metninden kişisel olarak tanımlanabilir bilgileri ayıklayan ve bu metinden çeşitli şekillerde gizleme seçeneği veren dizin oluşturma sırasında kullanılan bilişsel bir beceridir.
++ [PII algılama (Önizleme)](cognitive-search-skill-pii-detection.md) , bir giriş metninin kişisel olarak tanımlanabilir bilgilerini çıkaran ve bu metinden çeşitli yollarla maske sağlayan bir seçenek sunan, dizin oluşturma sırasında kullanılan bilişsel bir yetenördir.
 
-+ [Özel Varlık Arama (önizleme),](cognitive-search-skill-custom-entity-lookup.md ) özel, kullanıcı tarafından tanımlanan sözcük ve tümcecikler listesinden metin arar. Bu listeyi kullanarak, tüm belgeleri eşleşen varlıklarla etiketler. Beceri aynı zamanda benzer ama oldukça kesin olmayan eşleşmeleri bulmak için uygulanabilir bulanık eşleştirme bir dereceyi destekler. 
++ [Özel varlık arama (Önizleme)](cognitive-search-skill-custom-entity-lookup.md ) , özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler. 
 
 ### <a name="january-2020"></a>Ocak 2020
 
-+ [Müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) artık genel olarak kullanılabilir. REST kullanıyorsanız, özelliği kullanarak `api-version=2019-05-06`erişebilirsiniz. Yönetilen kod için, özellik önizleme dışında olsa bile doğru paket hala [.NET SDK sürüm 8.0-önizlemedir.](search-dotnet-sdk-migration-version-9.md) 
++ [Müşterinin yönettiği şifreleme anahtarları](search-security-manage-encryption-keys.md) artık genel kullanıma sunulmuştur. REST kullanıyorsanız, özelliğini kullanarak `api-version=2019-05-06`erişebilirsiniz. Yönetilen kod için, özellik Önizleme dışında olsa bile, doğru paket yine de [.NET SDK sürüm 8,0-Önizleme](search-dotnet-sdk-migration-version-9.md) ' dir. 
 
-+ Bir arama hizmetine özel erişim, her ikisi de şu anda önizlemede olan iki mekanizma aracılığıyla kullanılabilir:
++ Bir arama hizmetine özel erişim, şu anda önizleme aşamasında olan iki mekanizma aracılığıyla sunulmaktadır:
 
-  + Hizmeti oluşturmak için Management REST API'sini `api-version=2019-10-01-Preview` kullanarak belirli IP adreslerine erişimi kısıtlayabilirsiniz. Önizleme API [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)yeni **IpRule** ve **NetworkRuleSet** özelliklere sahiptir. Bu önizleme özelliği seçili bölgelerde kullanılabilir. Daha fazla bilgi [için, Yönetim REST API'sini nasıl kullanacağız'a](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)bakın.
+  + Hizmeti oluşturmak için yönetim REST API `api-version=2019-10-01-Preview` kullanarak belirli IP adreslerine erişimi kısıtlayabilirsiniz. Preview API 'sinin [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)'de yeni **ıprule** ve **networkruleset** özellikleri vardır. Bu önizleme özelliği seçili bölgelerde kullanılabilir. Daha fazla bilgi için bkz. [yönetim REST API nasıl kullanılır](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
-  + Şu anda sınırlı erişimli bir önizleme aracılığıyla kullanılabilen Azure Arama hizmeti, aynı sanal ağdaki istemcilerin bağlantıları için Azure Özel Bitiş Noktası'nı destekleyen bir Azure Arama hizmeti sağlayabilir. Daha fazla bilgi [için, güvenli bir bağlantı için Özel Bitiş Noktası Oluştur'a](service-create-private-endpoint.md)bakın.
+  + Şu anda sınırlı erişimli bir önizleme aracılığıyla kullanılabilir, aynı sanal ağdaki istemcilerden gelen bağlantılar için Azure özel uç noktasını destekleyen bir Azure Search hizmeti sağlayabilirsiniz. Daha fazla bilgi için bkz. [güvenli bağlantı Için özel uç nokta oluşturma](service-create-private-endpoint.md).
 
 ### <a name="december-2019"></a>Aralık 2019
 
-+ [Uygulama Oluştur (önizleme),](search-create-app-portal.md) portalda indirilebilir bir HTML dosyası oluşturan yeni bir sihirbazdır. Dosya, arama hizmetinizdeki bir dizine bağlı olarak operasyonel bir "localhost" tarzı web uygulaması oluşturan gömülü komut dosyasıyla birlikte gelir. Sayfalar sihirbazda yapılandırılabilir ve bir arama çubuğu, sonuç alanı, kenar çubuğu gezintisi ve typeahead sorgu desteği içerebilir. İş akışını veya görünümü genişletmek veya özelleştirmek için HTML'yi çevrimdışı olarak değiştirebilirsiniz.
++ [Uygulama oluşturma (Önizleme)](search-create-app-portal.md) , portalda INDIRILEBILIR bir HTML dosyası üreten yeni bir sihirbazdır. Dosya, arama hizmetinizde bir dizine bağlı olan, işlemsel bir "localhost" stili Web uygulaması işleyen katıştırılmış komut dosyası ile birlikte gelir. Sayfalar sihirbazda yapılandırılabilir ve bir arama çubuğu, sonuç alanı, kenar çubuğu gezintisi ve typeahead sorgu desteği bulunabilir. İş akışını veya görünümü genişletmek veya özelleştirmek için HTML 'yi çevrimdışı değiştirebilirsiniz.
 
-+ [Güvenli bağlantılar için özel bir bitiş noktası (önizleme) oluşturma,](service-create-private-endpoint.md) arama hizmetinize güvenli bağlantılar için özel bağlantının nasıl ayarlangerektiğini açıklar. Bu önizleme özelliği istek üzerine kullanılabilir ve çözümün bir parçası olarak [Azure Özel Bağlantı](../private-link/private-link-overview.md) ve Azure Sanal [Ağı'nı](../virtual-network/virtual-networks-overview.md) kullanır.
++ [Güvenli bağlantılar için özel bir uç nokta oluşturma (Önizleme)](service-create-private-endpoint.md) arama hizmetinize güvenli bağlantılar için özel bir bağlantı ayarlamayı açıklar. Bu önizleme özelliği, istek üzerine kullanılabilir ve çözümün bir parçası olarak [Azure özel bağlantısı](../private-link/private-link-overview.md) ve [Azure sanal ağı](../virtual-network/virtual-networks-overview.md) kullanır.
 
-### <a name="november-2019---ignite-conference"></a>Kasım 2019 - Ignite Konferansı
+### <a name="november-2019---ignite-conference"></a>Kasım 2019-Menite Konferansı
 
-+ [Artımlı zenginleştirme (önizleme),](cognitive-search-incremental-indexing-conceptual.md) zaten işlenmiş içeriği kaybetmeden belirli adımlar veya aşamalar üzerinde çalışabilmeniz için bir zenginleştirme ardışık lığına önbelleğe alma ve durum doluluğu ekler. Daha önce, bir zenginleştirme boru hattı için herhangi bir değişiklik tam bir yeniden gerekli. Artımlı zenginleştirme ile, pahalı analiz çıktısı, özellikle görüntü analizi, korunur.
++ [Artımlı zenginleştirme (Önizleme)](cognitive-search-incremental-indexing-conceptual.md) , bir zenginleştirme ardışık düzenine önbelleğe alma ve statefullstate ekler. böylece, zaten işlenmiş olan içeriği kaybetmeden belirli adımlarla veya aşamalarda çalışabilirsiniz. Daha önce, bir zenginleştirme ardışık düzeninde yapılan herhangi bir değişiklik tam yeniden oluşturma gerektirdi. Artımlı çözümlemenin, özellikle de görüntü analizinden oluşan çıkış, korunur.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->
 
-+ [Belge Çıkarma (önizleme),](cognitive-search-skill-document-extraction.md) bir dosyanın içeriğini bir beceri nin içinden çıkarmanızı sağlayan dizin oluşturma sırasında kullanılan bilişsel bir beceridir. Daha önce, belge kırma yalnızca skillset yürütme önce oluştu. Bu becerinin eklenmesiyle, bu işlemi skillset execution içinde de gerçekleştirebilirsiniz.
++ [Belge ayıklama (Önizleme)](cognitive-search-skill-document-extraction.md) , dizin oluşturma sırasında kullanılan bilişsel bir beceriye sahiptir ve bir dosyanın içeriğini bir beceri içinden ayıklamanızı sağlar. Daha önce belge çözme yalnızca beceri yürütmeden önce oluşmuştur. Bu beceriye ek olarak, bu işlemi beceri yürütme içinde de gerçekleştirebilirsiniz.
 
-+ [Metin Çevirisi,](cognitive-search-skill-text-translation.md) metni değerlendiren ve her kayıt için belirtilen hedef dile çevrilen metni döndüren dizin oluşturma sırasında kullanılan bilişsel bir beceridir.
++ [Metin çevirisi](cognitive-search-skill-text-translation.md) , dizinleme sırasında metni değerlendiren ve her kayıt için belirtilen hedef dile çevrilen metni döndüren bilişsel bir yetenküldür.
 
-+ [Power BI şablonları,](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) Power BI masaüstündeki bir bilgi deposunda görselleştirmelerinizi ve zenginleştirilmiş içeriğin analizini hızlandırabilir. Bu şablon, [Veri Alma sihirbazı](knowledge-store-create-portal.md)aracılığıyla oluşturulan Azure tablo projeksiyonları için tasarlanmıştır.
++ [Power BI şablonlar](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) , görselleştirmelerinizi ve Power BI masaüstündeki bir bilgi deposunda zenginleştirme içeriği analizini başlatabilir. Bu şablon, [veri Içeri aktarma Sihirbazı](knowledge-store-create-portal.md)aracılığıyla oluşturulan Azure Tablo projeksiyonlarını için tasarlanmıştır.
 
-+ [Azure Veri Gölü Depolama Gen2 (önizleme)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin API (önizleme)](search-howto-index-cosmosdb.md)ve [Cosmos DB Cassandra API (önizleme)](search-howto-index-cosmosdb.md) artık dizinleyicilerde desteklenir. [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)kullanarak kaydolabilirsiniz. Önizleme programına kabul edildikten sonra bir onay e-postası alacaksınız.
++ [Azure Data Lake Storage 2. (Önizleme)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB GREMLIN API (önizleme)](search-howto-index-cosmosdb.md)ve [Cosmos DB Cassandra API (Önizleme)](search-howto-index-cosmosdb.md) Dizin oluşturucularda artık desteklenmektedir. [Bu formu](https://aka.ms/azure-cognitive-search/indexer-preview)kullanarak kaydolabilirsiniz. Önizleme programına kabul edildikten sonra bir onay e-postası alacaksınız.
 
 ### <a name="july-2019"></a>Temmuz 2019
 
-+ Genellikle Azure [Genel Bulut'ta](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)kullanılabilir.
++ [Azure Kamu Bulutu](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)'nda genel olarak kullanılabilir.
 
 ## <a name="service-updates"></a>Hizmet güncelleştirmeleri
 
-Azure Bilişsel Arama için [hizmet güncelleştirme duyuruları](https://azure.microsoft.com/updates/?product=search&status=all) Azure web sitesinde bulunabilir.
+Azure Bilişsel Arama için [hizmet güncelleştirme duyuruları](https://azure.microsoft.com/updates/?product=search&status=all) Azure Web sitesinde bulunabilir.
