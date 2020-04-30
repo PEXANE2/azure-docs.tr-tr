@@ -4,14 +4,14 @@ description: Azure Cosmos DB ' de otomatik dizin oluşturma ve daha fazla perfor
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80292048"
+ms.locfileid: "82232079"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 
@@ -97,6 +97,26 @@ Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olu
 
 Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini oluşturma [bölümüne](how-to-manage-indexing-policy.md#indexing-policy-examples) bakın.
 
+## <a name="includeexclude-precedence"></a>Dahil etme/hariç tutma önceliği
+
+Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, daha kesin yol daha önceliklidir.
+
+Bir örneği aşağıda verilmiştir:
+
+**Dahil edilen yol**:`/food/ingredients/nutrition/*`
+
+**Dışlanan yol**:`/food/ingredients/*`
+
+Bu durumda, dahil edilen yol daha kesin olduğundan, dışlanan yol üzerinden önceliklidir. Bu yollara bağlı olarak, `food/ingredients` yoldaki veya iç içe yerleştirilmiş tüm veriler dizinden dışlanıyor. Özel durum, dahil edilen yol içindeki veriler olabilir: `/food/ingredients/nutrition/*`, Dizin oluşturulacak.
+
+Azure Cosmos DB, dahil edilen ve dışlanan yolların önceliği için bazı kurallar aşağıda verilmiştir:
+
+- Daha derin yollar daha dar yollardan daha belirgin. Örneğin: `/a/b/?` daha kesin `/a/?`.
+
+- `/?` Daha kesin `/*`. Örneğin `/a/?` , öncelik alından `/a/*` daha kesin `/a/?` bir değer alır.
+
+- Yol `/*` , içerilen bir yol veya dışlanan yol olmalıdır.
+
 ## <a name="spatial-indexes"></a>Uzamsal dizinler
 
 Dizin oluşturma ilkesinde bir uzamsal yol tanımladığınızda, bu yola hangi dizinin ```type``` uygulanacağını tanımlamanız gerekir. Uzamsal dizinler için olası türler şunlardır:
@@ -114,6 +134,8 @@ Azure Cosmos DB, varsayılan olarak hiçbir uzamsal dizin oluşturmaz. Uzamsal S
 ## <a name="composite-indexes"></a>Bileşik dizinler
 
 İki veya daha fazla `ORDER BY` özelliği olan bir yan tümcesine sahip sorgular bileşik bir dizin gerektirir. Ayrıca, birçok eşitlik ve Aralık sorgusunun performansını artırmak için bir bileşik dizin tanımlayabilirsiniz. Varsayılan olarak, bir bileşik dizin tanımlanmadığında, gereken şekilde [Bileşik dizinler eklemelisiniz](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+
+Dahil edilen veya dışlanan yolların aksine, `/*` joker karakterle bir yol oluşturamazsınız. Her bileşik yol, belirtmeniz gerekmeyen `/?` yolun sonuna örtülü olarak sahiptir. Bileşik yollar skaler bir değere yol açabilir ve bileşik dizine dahil olan tek değerdir.
 
 Bileşik dizin tanımlarken şunu belirtirsiniz:
 

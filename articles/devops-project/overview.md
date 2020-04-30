@@ -1,6 +1,6 @@
 ---
-title: Azure DevOps Projelerine Genel Bakış | Microsoft Dokümanlar
-description: Azure DevOps Projelerinin değerini anlama
+title: Azure DevOps Starter 'a genel bakış | Microsoft Docs
+description: Azure DevOps başlangıç değerini anlayın
 services: devops-project
 documentationcenter: ''
 author: mlearned
@@ -12,70 +12,70 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 05/03/2018
+ms.date: 03/24/2020
 ms.author: mlearned
-ms.openlocfilehash: d39702f8e30046dd3cf634fc67ed7095471cd629
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 99a1fdb8caff9953041c996d0f5581318ce11c66
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71971484"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233695"
 ---
-# <a name="overview-of-azure-devops-projects"></a>Azure DevOps Projelerine Genel Bakış
+# <a name="overview-of-azure-devops-starter"></a>Azure DevOps Starter 'a genel bakış
 
- Azure DevOps Projeleri, Azure'a başlamayı kolaylaştırır. En sevdiğiniz uygulamayı Azure portalından sadece birkaç hızlı adımda seçtiğiniz Azure hizmetinde başlatmanıza yardımcı olur. 
+ Azure DevOps Starter, Azure 'u kullanmaya başlamanızı kolaylaştırır. Yalnızca birkaç hızlı adımda Azure portal en sevdiğiniz uygulamanızı seçtiğiniz Azure hizmetinde başlatmanıza yardımcı olur. 
 
- DevOps Projects, uygulamanızı geliştirmek, dağıtmak ve izlemek için ihtiyacınız olan her şeyi ayarlar. DevOps Projects panosunu, azure portalındaki tek bir görünümden kod taahhütlerini, yapılarını ve dağıtımları izlemek için kullanabilirsiniz.
+ DevOps Starter, uygulamanızı geliştirmek, dağıtmak ve izlemek için ihtiyaç duyduğunuz her şeyi ayarlar. Kod yürütmelerinin, derlemelerin ve dağıtımlarınızın tümünü Azure portal tek bir görünümden izlemek için DevOps başlangıç panosunu kullanabilirsiniz.
 
-## <a name="why-should-i-use-devops-projects"></a>DevOps Projelerini Neden Kullanmalıyım?
+## <a name="advantages-of-using-devops-starter"></a>DevOps başlangıç kullanmanın avantajları
 
-  DevOps Project, Azure'a sürekli tümleştirme (CI) ve sürekli teslim (CD) ardışık düzenini otomatikleştirir.  Varolan kodla başlayabilir veya sağlanan örnek uygulamalardan birini kullanabilirsiniz. Ardından, bu uygulamayı Sanal Makineler, Uygulama Hizmeti, Azure Kubernetes Hizmetleri (AKS), Azure SQL Veritabanı ve Azure Hizmet Dokusu gibi çeşitli Azure hizmetlerine hızla dağıtabilirsiniz.  
+  DevOps Starter, tüm sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattının kurulumunu Azure 'a otomatikleştirir.  Mevcut kodla başlayabilir veya belirtilen örnek uygulamalardan birini kullanabilirsiniz. Daha sonra bu uygulamayı sanal makineler, App Service, Azure Kubernetes Hizmetleri (AKS), Azure SQL veritabanı ve Azure Service Fabric gibi çeşitli Azure hizmetlerine hızlıca dağıtabilirsiniz.  
 
-  DevOps Projects, ilk Git deposunun kurulması, CI/CD ardışık akışının yapılandırılması, izleme için bir Application Insights kaynağı oluşturulması ve Azure portalında bir DevOps Projects panosu oluşturulmasıyla tüm çözümün tek bir görünümünü niçin sağladığı her şeyi içeren bir DevOps ardışık kuruluşunun ilk yapılandırması için tüm çalışmaları yapar.
+  DevOps Starter, ilk Git deposunu ayarlamayı, CI/CD işlem hattını yapılandırmayı, izleme için bir Application Insights kaynağı oluşturmayı ve Azure portal bir DevOps Projeleri panosunun oluşturulmasıyla tüm çözümün tek bir görünümünü sağlamayı içeren bir DevOps işlem hattının ilk yapılandırması için tüm işleri yapar.
 
-DevOps Projelerini şu şekilde kullanabilirsiniz:
+DevOps Starter 'ı şu şekilde kullanabilirsiniz:
 
 * Uygulamanızı Azure’a hızlı şekilde dağıtma
-* CI/CD ardışık düzenini otomatikleştirme
-* Bir CI/CD ardışık hattının düzgün bir şekilde nasıl ayarlangerektiğini görüntüleyin ve anlayın
-* Belirli senaryolarınıza göre sürüm ardışık hatlarını daha da özelleştirin
+* CI/CD işlem hattının kurulumunu otomatikleştirin
+* Bir CI/CD işlem hattının düzgün bir şekilde nasıl ayarlanacağını görüntüleme ve anlama
+* Yayın işlem hatlarını belirli senaryolarınıza göre daha fazla özelleştirme
 
-## <a name="how-do-i-use-devops-projects"></a>DevOps Projelerini nasıl kullanırım?
+## <a name="how-to-use-devops-starter"></a>DevOps Starter nasıl kullanılır?
 
-  DevOps Projects, Azure portalından edinilebilir. Portaldan başka bir Azure kaynağı oluşturduğunuz gibi bir DevOps Projects kaynağı oluşturursunuz. DevOps Projects, çeşitli yapılandırma seçenekleri için adım adım sihirbazbenzeri bir deneyim sağlar.  
+  DevOps Starter Azure portal kullanılabilir. Portaldan başka bir Azure kaynağı oluşturduğunuz gibi bir DevOps başlangıç kaynağı oluşturursunuz. DevOps Projeleri çeşitli yapılandırma seçenekleri için adım adım sihirbaza benzer bir deneyim sağlar.  
 
 İlk kurulumun parçası olarak birçok yapılandırma seçeneği arasından seçim yaparsınız. Bu seçenekler şunlardır:
 
-* Sağlanan örnek uygulamayı kullanma veya kendi kodunuzu getirme
+* Belirtilen örnek uygulamayı kullanma veya kendi kodunuzu getirme
 * Uygulama dili seçme
-* Dile dayalı bir uygulama çerçevesi seçme
-* Azure hizmeti seçme (dağıtım hedefi)
-* Yeni bir Azure DevOps kuruluşu oluşturma veya varolan bir kuruluş kullanma 
+* Bir uygulama çerçevesini dile göre seçme
+* Azure hizmeti (dağıtım hedefi) seçme
+* Yeni bir Azure DevOps organizasyonu oluşturma veya mevcut bir kuruluşu kullanma 
 * Azure aboneliğinizi seçme
 * Azure hizmetlerinin konumunu seçme
-* Azure hizmetleri için çeşitli fiyatlandırma katmanlarından seçim yapmak
+* Azure hizmetleri için çeşitli fiyatlandırma katmanlarından seçim yapma
 
-DevOps Projeleri'ni kullandıktan sonra, Azure portalındaki DevOps Projeleri panosundan tüm kaynakları tek bir yerden de silebilirsiniz.
+DevOps Starter 'ı kullandıktan sonra, Azure portal DevOps başlangıç panosundan tek bir yerden tüm kaynakları da silebilirsiniz.
 
-## <a name="devops-projects-and-azure-devops-integration"></a>DevOps Projeleri ve Azure DevOps entegrasyonu
+## <a name="devops-starter-and-azure-devops-integration"></a>DevOps Başlatıcı ve Azure DevOps tümleştirmesi
 
-DevOps Projeleri Azure DevOps tarafından desteklenmektedir. DevOps Projects, Bir CI/CD ardışık hatlar oluşturmak için Azure Altyapı Hatlar'da gereken tüm çalışmaları otomatikleştirir. Yeni veya varolan bir Azure DevOps kuruluşunda bir Git deposu oluşturur ve ardından örnek bir uygulama veya varolan kodunuzu yeni bir Git deposuna adatır.  
+DevOps Starter, Azure DevOps tarafından desteklenmektedir. DevOps Starter, Azure Pipelines bir CI/CD işlem hattı ayarlamak için gereken tüm işleri otomatikleştirir. Yeni veya mevcut bir Azure DevOps kuruluşunda git deposu oluşturur ve ardından örnek bir uygulama ya da mevcut kodunuzu yeni bir git deposuna kaydeder.  
 
-Otomasyon ayrıca, her yeni kodun bir yapı başlatması için yapı için bir CI tetikleyicisi oluşturur. DevOps Projects bir CD tetikleyicisi oluşturur ve her yeni başarılı yapıyı seçtiğiniz Azure hizmetine dağıtır.  
+Otomasyon Ayrıca derleme için bir CI tetikleyicisi oluşturur, böylece her yeni kod yürütmesi bir derlemeyi başlatır. DevOps Starter, bir CD tetikleyicisi oluşturur ve her yeni başarılı derlemeyi seçtiğiniz Azure hizmetine dağıtır.  
 
-Derleme ve yayın işlem hatları, ek senaryolar için özelleştirilebilir. Ayrıca, yapı ve sürüm ardışık hatlarını diğer projelerde kullanmak üzere klonlayabilirsiniz.
+Derleme ve yayın işlem hatları, ek senaryolar için özelleştirilebilir. Ayrıca, derleme ve yayın işlem hatlarını diğer projelerde kullanmak üzere kopyalayabilirsiniz.
 
-DevOps Projenizi oluşturduktan sonra aşağıdakileri yapabilirsiniz:
+DevOps Starter 'nizi oluşturduktan sonra şunları yapabilirsiniz:
 
 * Derleme ve yayın işlem hattınızı özelleştirme
 * Kod akışınızı yönetmek ve kalitenizi yüksek tutmak için çekme isteklerini kullanma
 * Kalite çıtasını yükseltmek için kodunuzu birleştirmeden önce her bir kaydı test edip derleme
-* Biriktirme listenizi ve sorunlarınızı başvurunuzla birlikte hemen izleyin
+* Kapsamınızı ve sorunlarınızı doğrudan uygulamanızla birlikte izleyin
 
-## <a name="how-do-i-start-using-devops-projects"></a>DevOps Projelerini kullanmaya nasıl başlarım?
+## <a name="getting-started-with-devops-starter"></a>DevOps Starter ile çalışmaya başlama
 
-* [DevOps Projelerine Başlayın](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
+* [DevOps Starter ile çalışmaya başlama](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
 
-##  <a name="devops-projects-videos"></a>DevOps Projeleri videoları
+##  <a name="devops-starter-videos"></a>DevOps başlangıç videoları
 
-* [Azure DevOps Projeleri ile CI/CD oluşturma](https://www.youtube.com/watch?v=NuYDAs3kNV8)
+* [Azure DevOps Starter ile CI/CD oluşturma](https://www.youtube.com/watch?v=NuYDAs3kNV8)

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74169046"
+ms.locfileid: "82232658"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN etiketlerine genel bakış
 
@@ -36,6 +36,7 @@ Aşağıdaki tabloda kullanabileceğiniz geçerli FQDN etiketleri gösterilmekte
 |App Service Ortamı (Ao)|ASA platformu trafiğine giden erişime izin verir. Bu etiket, asa tarafından oluşturulan müşteriye özgü depolama ve SQL uç noktalarını kapsamıyor. Bunların [hizmet uç noktaları](../virtual-network/tutorial-restrict-network-access-to-resources.md) aracılığıyla etkinleştirilmesi veya el ile eklenmesi gerekir.<br><br>Azure Güvenlik duvarını as ile tümleştirme hakkında daha fazla bilgi için bkz. [App Service ortamı kilitleme](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Azure Backup hizmetlerine giden erişime izin verir.|
 |Azure HDInsight|HDInsight platform trafiği için giden erişime izin verir. Bu etiket, HDInsight 'tan müşteriye özgü depolamayı veya SQL trafiğini kapsamaz. [Hizmet uç noktalarını](../virtual-network/tutorial-restrict-network-access-to-resources.md) kullanarak bunları etkinleştirin veya el ile ekleyin.|
+|WindowsVirtualDesktop (WVD)|Giden Windows sanal masaüstü platformu trafiğine izin verir. Bu etiket, WVD tarafından oluşturulan dağıtıma özgü depolamayı ve Service Bus uç noktalarını kapsamıyor. Ayrıca, DNS ve KMS ağ kuralları gereklidir. Azure Güvenlik duvarını WVD ile tümleştirme hakkında daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](protect-windows-virtual-desktop.md). 
 
 > [!NOTE]
 > Bir uygulama kuralında FQDN etiketi seçilirken protokol: bağlantı noktası alanı **https**olarak ayarlanmalıdır.

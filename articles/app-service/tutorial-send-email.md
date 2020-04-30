@@ -4,12 +4,12 @@ description: App Service uygulamanızdan iş süreçlerini çağırmayı öğren
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604844"
+ms.locfileid: "82562313"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: App Service e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -26,27 +26,27 @@ Bu öğreticide, [Azure Logic Apps](../logic-apps/logic-apps-overview.md)kullana
 
 App Service için tercih ettiğiniz dil çerçevesiyle bir uygulama dağıtın. Örnek bir uygulama dağıtmaya yönelik öğreticiyi izlemek için aşağıdakilere bakın:
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 [Öğretici: Azure’da SQL Veritabanı ile ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md)
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 [Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma](app-service-web-tutorial-dotnetcore-sqldb.md)
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 [Öğretici: Azure 'da bir Node. js ve MongoDB uygulaması derleme](app-service-web-tutorial-nodejs-mongodb-app.md)
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 [Öğretici: Azure 'da PHP ve MySQL uygulaması derleme](app-service-web-tutorial-php-mysql.md)
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 [Öğretici: Azure App Service içindeki PostgreSQL ile Python (Docgo) Web uygulaması çalıştırma](containers/tutorial-python-postgresql-app.md)
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 [Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma](containers/tutorial-ruby-postgres-app.md)
 
@@ -150,7 +150,7 @@ Kodunuzda, dil iskeyağınız için kullanılabilen herhangi bir HTTP istemci di
 
 Bir örnek görmek için aşağıdaki tercih edilen dil/çerçeve sekmesine tıklayın.
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 ASP.NET ' de, HTTP POST 'u [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
 
@@ -175,7 +175,7 @@ var statusCode = result.StatusCode.ToString();
 
 Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'DA SQL veritabanı ile bir ASP.NET uygulaması derleme](app-service-web-tutorial-dotnet-sqldatabase.md), `Todo` öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)bir e-posta onayı göndermek için kullanabilirsiniz. Yukarıdaki zaman uyumsuz kodu kullanmak için, oluşturma eylemini zaman uyumsuz olarak dönüştürün.
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 ASP.NET Core ' de, HTTP gönderisini [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) sınıfı ile gönderebilirsiniz. Örneğin:
 
@@ -203,7 +203,7 @@ var statusCode = result.StatusCode.ToString();
 
 Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de bir ASP.NET Core ve SQL veritabanı uygulaması oluşturun](app-service-web-tutorial-dotnetcore-sqldb.md), `Todo` öğe eklendikten sonra [oluşturma eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 Node. js ' de, HTTP POST 'u [Axios](https://www.npmjs.com/package/axios)gibi bir NPM paketiyle kolayca gönderebilirsiniz. Örneğin:
 
@@ -230,7 +230,7 @@ var jsonData = {
 
 Bu kodu öğretici için örnek uygulamada test ediyorsanız [: Azure 'da bir Node. js ve MongoDB uygulaması oluşturun](app-service-web-tutorial-nodejs-mongodb-app.md), [Makale başarıyla kaydedildikten](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)sonra [Create işlevinde](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)bir e-posta onayı göndermek için kullanabilirsiniz.
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 PHP 'de, HTTP POST 'u [guzzle](http://docs.guzzlephp.org/en/stable/index.html)ile kolayca gönderebilirsiniz. Örneğin:
 
@@ -262,7 +262,7 @@ Log::info(print_r($response, TRUE));
 
 Bu kodu örnek uygulamada test ediyorsanız, [öğretici: Azure 'da BIR php ve MySQL uygulaması oluşturun](app-service-web-tutorial-php-mysql.md), return ifadesinden hemen önce [Route::p OST işlevinde](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)bir e-posta onayı göndermek için bunu kullanabilirsiniz.
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 Python 'da HTTP POST 'u [isteklerle](https://pypi.org/project/requests/)kolayca gönderebilirsiniz. Örneğin:
 
@@ -293,7 +293,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 Bu kodu örnek uygulamada test ediyorsanız [: Azure App Service ' de PostgreSQL Ile Python (Docgo) Web uygulaması çalıştırın](containers/tutorial-python-postgresql-app.md), bunu, return ifadesinden hemen önce [Route::p OST işlevinde](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)bir e-posta onayı göndermek için kullanabilirsiniz.
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 Ruby 'de, HTTP POST 'u [Jsonclient](https://www.rubydoc.info/gems/httpclient/JSONClient)ile kolayca gönderebilirsiniz. Örneğin:
 
@@ -312,7 +312,7 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 
 ---
 
-# <a name="more-resources"></a>Diğer kaynaklar
+## <a name="more-resources"></a>Diğer kaynaklar
 
 [Öğretici: Azure App Service’te CORS ile RESTful API barındırma](app-service-web-tutorial-rest-api.md)  
 [Logic Apps için HTTP istek/yanıt başvurusu](../connectors/connectors-native-reqres.md)  

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399831"
+ms.locfileid: "82583213"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -274,7 +274,7 @@ Sözcükler arasına `break` duraklamalar (veya kesintiler) eklemek için öğes
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -469,7 +469,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 | Öznitelik | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `pitch` | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600 Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80 Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>zayıf</li><li>orta</li><li>yüksek</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
-| `contour` | Sinir sesleriniz için kontur desteklenmez. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch`.). | İsteğe Bağlı |
+| `contour` |Artık kontur hem sinir hem de standart sesleri desteklemektedir. Dağılım, sıklık içindeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirlenen zaman konumlarında bir hedef dizisi olarak gösterilir. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch`.). | İsteğe Bağlı |
 | `range` | Metin için sıklık aralığını temsil eden bir değer. ' I betimleyen `range` `pitch`mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade edebilirsiniz. | İsteğe Bağlı |
 | `rate` | Metnin konuşma oranını gösterir. Şöyle ifade `rate` edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *0,5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>orta</li><li>Hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
 | `duration` | Konuşma birleştirme (TTS) hizmeti, metni saniye veya milisaniye olarak okurken geçmesi gereken süre. Örneğin, *2s* veya *1800ms*. | İsteğe Bağlı |
@@ -477,13 +477,13 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 
 ### <a name="change-speaking-rate"></a>Konuşma hızını değiştir
 
-Konuşma ücreti, standart seslere veya tümce düzeyinde uygulanabilir. Konuşma oranı yalnızca tümce düzeyinde sinir seslere uygulanabilir.
+Konuşma ücreti, sinir seslere ve standart seslere, sözcük veya tümce düzeyinde uygulanabilir. 
 
 **Örneğinde**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-GuyNeural">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -524,15 +524,15 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 ### <a name="change-pitch-contour"></a>Aralık dağılımı değiştirme
 
 > [!IMPORTANT]
-> Aralık dağılımı değişiklikleri sinir seslerle desteklenmez.
+> Aralık dağılımı değişiklikleri artık sinir seslerle desteklenmektedir.
 
 **Örneğinde**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
-        <prosody contour="(80%,+20%) (90%,+30%)" >
-            Good morning.
+    <voice name="en-US-AriaNeural">
+        <prosody contour="(60%,-60%) (100%,+80%)" >
+            Were you the only person in the room? 
         </prosody>
     </voice>
 </speak>

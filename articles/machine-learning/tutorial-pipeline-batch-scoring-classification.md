@@ -10,18 +10,18 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41d68c58c43262b36b93af0008e7d35de13dff4d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472229"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562279"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Batch Puanlama işini çalıştırmak için Azure Machine Learning bir işlem hattı oluşturmayı öğrenin. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
+Bu gelişmiş öğreticide, Batch Puanlama işi çalıştırmak için Azure Machine Learning bir işlem hattı oluşturmayı öğreneceksiniz. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
 
 Örnek, etiketli görüntüleri sınıflandırmak için TensorFlow 'da uygulanan önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) sinir ağ modelini kullanır. [Makine öğrenimi işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
 

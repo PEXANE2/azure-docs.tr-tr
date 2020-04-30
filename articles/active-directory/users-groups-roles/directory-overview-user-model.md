@@ -1,5 +1,5 @@
 ---
-title: Kullanıcılara, gruplara, lisanslama ve rollere genel bakış - Azure AD | Microsoft Dokümanlar
+title: Kullanıcılar, gruplar, lisanslama ve rollere genel bakış-Azure AD | Microsoft Docs
 description: Azure Active Directory'deki kullanıcılar ile atanan lisanslar, yönetici rolleri ve grup üyelikleri arasındaki ilişki
 keywords: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046332"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583008"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Büyük kuruluşlar için kullanıcılar, gruplar, lisanslama ve roller
 
@@ -31,7 +31,7 @@ Bu makale Azure AD yöneticilerine gruplar, lisanslar, dağıtılan kurumsal uyg
 
 ## <a name="assign-users-to-groups"></a>Kullanıcıları gruplara atama
 
-Azure AD'deki grupları kullanarak çok sayıda kullanıcıya lisans atayabilir veya dağıtılan kurumsal uygulamalara kullanıcı erişimi verebilirsiniz. Grupları Azure AD'deki Global Administrator dışındaki tüm yönetici rollerini atamak için kullanabilir veya SaaS uygulamaları veya SharePoint siteleri gibi harici kaynaklara erişim izni verebilirsiniz.
+Azure AD'deki grupları kullanarak çok sayıda kullanıcıya lisans atayabilir veya dağıtılan kurumsal uygulamalara kullanıcı erişimi verebilirsiniz. Azure AD 'de Genel yönetici hariç tüm yönetici rollerini atamak için grupları kullanabilir veya SaaS uygulamaları veya SharePoint siteleri gibi dış kaynaklara erişim izni verebilirsiniz.
 
 Daha fazla esneklik sağlamak veya grup üyeliği yönetim yükünü azaltmak için Azure AD'deki [dinamik grupları](groups-create-rule.md) kullanarak grup üyeliklerinin otomatik olarak verilmesini ve alınmasını sağlayabilirsiniz. Bir veya daha fazla dinamik gruba üye olan her benzersiz kullanıcı için bir Azure AD Premium P1 lisansına ihtiyacınız vardır.
 
@@ -52,7 +52,7 @@ Yeterli sayıda lisans olmadığında veya aynı anda atanamayan hizmet planlar�
 
  Rol adı | İzin özeti
  --------- | -------------------
- **Uygulama Yöneticisi** | Kurumsal uygulamalar ve uygulama kayıtları ekleyip yönetebilir, uygulama proxy'si ayarlarını yapılandırabilir. Uygulama Yöneticileri Koşullu Erişim ilkelerini ve aygıtlarını görüntüleyebilir, ancak bunları yönetemez.
+ **Uygulama Yöneticisi** | Kurumsal uygulamalar ve uygulama kayıtları ekleyip yönetebilir, uygulama proxy'si ayarlarını yapılandırabilir. Uygulama yöneticileri, koşullu erişim ilkelerini ve cihazlarını görüntüleyebilir, ancak yönetmez.
  **Bulut Uygulaması Yöneticisi** | Kurumsal uygulamalar ve kurumsal uygulama kayıtları ekleyip yönetebilir. Bu rol, Uygulama Yöneticisi rolünün tüm izinlerine sahiptir ancak uygulama proxy'si ayarlarını yönetemez.
 **Uygulama Geliştirici** | Uygulama kayıtlarını ekleyip yönetebilir ancak kurumsal uygulamaları yönetemez ve uygulama proxy'si yapılandıramaz.
 
@@ -60,7 +60,7 @@ Yeni Azure AD yönetici rolleri eklenmektedir. Kullanılabilir rollerin listesi 
 
 ## <a name="assign-app-access"></a>Uygulama erişimi atama
 
-Azure AD'yi kullanarak [Azure AD kiracınızda dağıtılmış olan kurumsal uygulamalara](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) grup erişimi atayabilirsiniz. Dinamik grupları uygulamalara grup atama özelliğiyle birlikte kullanarak kuruluşunuz büyürken kullanıcıların uygulama erişimi atamalarını otomatikleştirebilirsiniz. Kurumsal uygulamalara erişim atamak için Azure Active Directory Premium P1 veya Premium P2 lisansına ihtiyacınız olacaktır.
+Azure AD [kuruluşunuzda dağıtılan kurumsal uygulamalara](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)grup erişimi atamak IÇIN Azure ad kullanabilirsiniz. Dinamik grupları uygulamalara grup atama özelliğiyle birlikte kullanarak kuruluşunuz büyürken kullanıcıların uygulama erişimi atamalarını otomatikleştirebilirsiniz. Kurumsal uygulamalara erişim atamak için Azure Active Directory Premium P1 veya Premium P2 lisansına ihtiyacınız olacaktır.
 
 Azure AD ayrıca uygulama ile erişim atadığınız gruplar arasındaki veri akışı üzerinde ayrıntılı denetime sahip olmanızı da sağlar. [Kurumsal Uygulamalar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) sayfasında bir uygulamayı açıp **Sağlama**'yı seçerek:
 
