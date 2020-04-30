@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "77026005"
+ms.locfileid: "82233542"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management dağıtma (PıM)
 
@@ -325,7 +325,7 @@ Roller için ayarladığınız tüm yapılandırmanın doğru çalışıp çalı
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Privileged Identity Management etkilenen hissedarlarla iletişim kurun
 
-Privileged Identity Management dağıtmak, ayrıcalıklı rol kullanıcıları için ek adımlar sunar. Privileged Identity Management ayrıcalıklı kimliklerle ilişkili güvenlik sorunlarını büyük ölçüde azaltsa da, değişikliğin kiracı genelinde dağıtımdan önce etkin bir şekilde iletilmesi gerekir. Etkilenen yöneticilerin sayısına bağlı olarak kuruluşlar genellikle dahili bir belge, bir video veya değişiklik hakkında bir e-posta oluşturmayı tercih etmesidir. Bu iletişimlere genellikle şunlar dahildir:
+Privileged Identity Management dağıtmak, ayrıcalıklı rol kullanıcıları için ek adımlar sunar. Privileged Identity Management, ayrıcalıklı kimliklerle ilişkili güvenlik sorunlarını büyük ölçüde azaltsa da, kuruluşun genelinde dağıtımdan önce değişikliğin etkin bir şekilde bildirilmesi gerekir. Etkilenen yöneticilerin sayısına bağlı olarak kuruluşlar genellikle dahili bir belge, bir video veya değişiklik hakkında bir e-posta oluşturmayı tercih etmesidir. Bu iletişimlere genellikle şunlar dahildir:
 
 - PıM nedir?
 - Kuruluşun avantajı nedir?
@@ -371,7 +371,7 @@ Privileged Identity Management, üretim ortamında istendiği şekilde çalış�
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Ayrıcalıklı erişiminizi korumak için Privileged Identity Management uyarıları kullanın
 
-Kiracınızı daha iyi korumak için Privileged Identity Management yerleşik uyarı işlevini kullanmanız gerekir. Daha fazla bilgi için bkz. [güvenlik uyarıları](pim-how-to-configure-security-alerts.md#security-alerts). Bu uyarılar şunları içerir: Yöneticiler ayrıcalıklı roller kullanmıyor, roller Privileged Identity Management dışında atanıyor, roller çok sık ve daha fazla etkinleştiriliyor. Kuruluşunuzu tam olarak korumak için, uyarı listenizde düzenli olarak gidip sorunları düzelmelisiniz. Uyarılarınızı aşağıdaki şekilde görüntüleyebilir ve çözebilirsiniz:
+Kuruluşunuzu daha iyi korumak için Privileged Identity Management yerleşik uyarı işlevini kullanmanız gerekir. Daha fazla bilgi için bkz. [güvenlik uyarıları](pim-how-to-configure-security-alerts.md#security-alerts). Bu uyarılar şunları içerir: Yöneticiler ayrıcalıklı roller kullanmıyor, roller Privileged Identity Management dışında atanıyor, roller çok sık ve daha fazla etkinleştiriliyor. Kuruluşunuzu tam olarak korumak için, uyarı listenizde düzenli olarak gidip sorunları düzelmelisiniz. Uyarılarınızı aşağıdaki şekilde görüntüleyebilir ve çözebilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Azure AD Privileged Identity Management**açın.

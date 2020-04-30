@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ' de sanal ağ kaynakları ve bağla
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: d887f084ae329be30579b3400b4dc6cfb22c64ca
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145455"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208066"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hizmetinde ağ bağlantısı ve güvenlik için en iyi yöntemler
 
@@ -45,7 +45,7 @@ Azure CNı ağı kullandığınızda, sanal ağ kaynağı AKS kümesine ayrı bi
 
 AKS hizmet sorumlusu temsilcisi hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına erişim yetkisi verme][sp-delegation]. Hizmet sorumlusu yerine, izinler için sistem tarafından atanmış yönetilen kimliği de kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md).
 
-Her düğüm ve pod kendi IP adresini aldığından, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, pods ve ağ kaynağı için IP adresi sağlayacak kadar büyük olmalıdır. Her bir AKS kümesinin kendi alt ağına yerleştirilmesi gerekir. Azure 'da şirket içi veya eşlenmiş ağların bağlanmasına izin vermek için, mevcut ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem Kubernetes kullanan hem de Azure CNı ağı ile çalıştığı düğüm sayısı için varsayılan sınırlar vardır. Ölçek Genişletme olaylarını veya küme yükseltmelerini işlemek için atanan alt ağda kullanabileceğiniz ek IP adresleri de gereklidir. Bu ek adres alanı, bu düğüm havuzlarının en son güvenlik düzeltme eklerini uygulamak için bir yükseltme gerektirdiğinden (Şu anda AKS 'de önizleme aşamasında) Windows Server kapsayıcıları kullanıyorsanız önemlidir. Windows Server düğümleri hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
+Her düğüm ve pod kendi IP adresini aldığından, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, pods ve ağ kaynağı için IP adresi sağlayacak kadar büyük olmalıdır. Her bir AKS kümesinin kendi alt ağına yerleştirilmesi gerekir. Azure 'da şirket içi veya eşlenmiş ağların bağlanmasına izin vermek için, mevcut ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem Kubernetes kullanan hem de Azure CNı ağı ile çalıştığı düğüm sayısı için varsayılan sınırlar vardır. Ölçek Genişletme olaylarını veya küme yükseltmelerini işlemek için atanan alt ağda kullanabileceğiniz ek IP adresleri de gereklidir. Bu ek adres alanı özellikle Windows Server kapsayıcıları kullanıyorsanız önemlidir, çünkü bu düğüm havuzları en son güvenlik düzeltme eklerini uygulamak için bir yükseltme gerektirir. Windows Server düğümleri hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 
 Gerekli IP adresini hesaplamak için bkz. [AKS 'de Azure CNI ağını yapılandırma][advanced-networking].
 
@@ -99,7 +99,7 @@ spec:
 
 Giriş denetleyicisi, AKS düğümünde çalışan ve gelen istekleri izleyen bir Daemon. Daha sonra trafik, giriş kaynağında tanımlanan kurallara göre dağıtılır. En yaygın giriş denetleyicisi [NGINX]'i temel alır. AKS, sizi belirli bir denetleyiciyle kısıtlayamaz, bu sayede [dağılım][contour], [HAProxy][haproxy]veya [Traefik][traefik]gibi diğer denetleyicileri kullanabilirsiniz.
 
-Giriş denetleyicileri bir Linux düğümünde zamanlanmalıdır. Windows Server düğümleri (Şu anda AKS 'deki önizlemede) giriş denetleyicisini çalıştırmamalıdır. Kaynağın Linux tabanlı bir düğümde çalışması gerektiğini belirtmek için, YAML bildiriminizde veya Held grafik dağıtımınızda bir düğüm seçici kullanın. Daha fazla bilgi için bkz. [düğüm seçicileri kullanarak aks 'de Pod 'nin nerede zamanlandığını denetleme][concepts-node-selectors].
+Giriş denetleyicileri bir Linux düğümünde zamanlanmalıdır. Giriş denetleyicisi, Windows Server düğümlerinde çalıştırılmamalıdır. Kaynağın Linux tabanlı bir düğümde çalışması gerektiğini belirtmek için, YAML bildiriminizde veya Held grafik dağıtımınızda bir düğüm seçici kullanın. Daha fazla bilgi için bkz. [düğüm seçicileri kullanarak aks 'de Pod 'nin nerede zamanlandığını denetleme][concepts-node-selectors].
 
 Giriş için aşağıdaki nasıl yapılır kılavuzlarıyla birlikte pek çok senaryo vardır:
 

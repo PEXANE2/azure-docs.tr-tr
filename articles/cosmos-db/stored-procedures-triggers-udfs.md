@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010554"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509678"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler
 
@@ -64,6 +64,9 @@ Saklı yordamlar bir Azure Cosmos kapsayıcısı ile ilişkilendirilir ve saklı
 ### <a name="data-consistency"></a>Veri tutarlılığı
 
 Saklı yordamlar ve Tetikleyiciler, her zaman bir Azure Cosmos kapsayıcısının birincil çoğaltmasında yürütülür. Bu özellik, saklı yordamlardan gelen okumaların [güçlü tutarlılık](consistency-levels-tradeoffs.md)sunmasını sağlar. Kullanıcı tanımlı işlevleri kullanan sorgular birincil veya herhangi bir ikincil çoğaltmada yürütülebilir. Saklı yordamlar ve Tetikleyiciler işlem yazma işlemlerini desteklemek için tasarlanmıştır: salt okuma mantığı, [Azure Cosmos db SQL API SDK 'ları](sql-api-dotnet-samples.md)kullanarak uygulama tarafı mantığı ve sorgular olarak en iyi şekilde uygulandığından, veritabanı aktarım hızını ortadan kaldırmaya yardımcı olur. 
+
+> [!TIP]
+> Saklı yordam veya tetikleyici içinde yürütülen sorgular, aynı betik işlemi tarafından yapılan öğelerde yapılan değişiklikleri göremeyebilir. Bu ifade `getContent().getCollection.queryDocuments()`, ve gibi tümleşik dil sorgularının yanı sıra SQL sorgularına de uygulanır `getContext().getCollection().filter()`.
 
 ## <a name="bounded-execution"></a>Sınırlanmış yürütme
 

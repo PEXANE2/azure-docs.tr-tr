@@ -1,28 +1,28 @@
 ---
-title: Azure Cosmos DB'deki verilere erişimi nasıl güvenli hale erdirebilirsiniz öğrenin
-description: Azure Cosmos DB'deki erişim denetimi kavramları hakkında (ana anahtarlar, salt okunur tuşlar, kullanıcılar ve izinler dahil) hakkında bilgi edinin.
+title: Azure Cosmos DB veri erişimini güvenli hale getirme hakkında bilgi edinin
+description: Ana anahtarlar, salt okuma anahtarları, kullanıcılar ve izinler dahil Azure Cosmos DB erişim denetimi kavramları hakkında bilgi edinin.
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251823"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208729"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 
-Bu makale, [Microsoft Azure Cosmos DB'de](https://azure.microsoft.com/services/cosmos-db/)depolanan verilere erişimi güvence altına almaya genel bir bakış sağlar.
+Bu makalede, [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)depolanan verilere erişimin güvenliğini sağlamaya yönelik bir genel bakış sunulmaktadır.
 
-Azure Cosmos DB, kullanıcıların kimliğini doğrulamak ve verilerine ve kaynaklarına erişim sağlamak için iki tür anahtar kullanır. 
+Azure Cosmos DB, kullanıcıların kimliğini doğrulamak ve veri ve kaynaklarına erişim sağlamak için iki tür anahtar kullanır. 
 
 |Anahtar türü|Kaynaklar|
 |---|---|
 |[Ana anahtarlar](#master-keys) |Yönetim kaynakları için kullanılır: veritabanı hesapları, veritabanları, kullanıcılar ve izinler|
-|[Kaynak belirteçleri](#resource-tokens)|Uygulama kaynakları için kullanılır: kapsayıcılar, belgeler, ekler, depolanan yordamlar, tetikleyiciler ve UDF'ler|
+|[Kaynak belirteçleri](#resource-tokens)|Uygulama kaynakları için kullanılır: kapsayıcılar, belgeler, ekler, saklı yordamlar, Tetikleyiciler ve UDF 'ler|
 
 <a id="master-keys"></a>
 
@@ -32,24 +32,32 @@ Ana anahtarlar veritabanı hesabının tüm yönetim kaynaklarına erişim sağl
 
 - Hesaplara, veritabanlarına, kullanıcılara ve izinlere erişim sağlayın. 
 - Kapsayıcılara ve belgelere parçalı erişim sağlamak için kullanılamaz.
-- Bir hesap oluşturulur sırasında oluşturulur.
-- Herhangi bir zamanda yenilenebilir.
+- , Bir hesabın oluşturulması sırasında oluşturulur.
+- Herhangi bir zamanda yeniden oluşturulabilir.
 
-Her hesap iki Ana anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesabınıza ve verilerinize sürekli erişim sağlayarak anahtarları yeniden oluşturabilmeniz veya yuvarlamanızdır.
+Her hesap iki ana anahtardan oluşur: birincil anahtar ve ikincil anahtar. Çift anahtarların amacı, hesap ve verilerinize sürekli erişim sağlamak için, anahtarları yeniden oluşturmak veya almak için kullanılır.
 
-Cosmos DB hesabının iki ana anahtarına ek olarak, salt okunur iki anahtar vardır. Salt okunur bu anahtarlar yalnızca hesaptaki okuma işlemlerine izin verir. Salt okunur anahtarlar okuma izinlerine erişim sağlamaz.
+Cosmos DB hesap için iki ana anahtara ek olarak, salt okunurdur iki anahtar vardır. Salt okunurdur bu anahtarlar yalnızca hesapta okuma işlemlerine izin verir. Salt okuma anahtarları okuma izni kaynaklarına erişim sağlamaz.
 
-Birincil, ikincil, salt okunur ve okundu-yazma ana anahtarları Azure portalı kullanılarak alınabilir ve yeniden oluşturulabilir. Yönergeler için [bkz.](manage-with-cli.md#regenerate-account-key)
+Birincil, ikincil, salt okuma ve okuma/yazma ana anahtarları Azure portal kullanılarak alınabilir ve yeniden oluşturulabilir. Yönergeler için bkz. [erişim anahtarlarını görüntüleme, kopyalama ve yeniden](manage-with-cli.md#regenerate-account-key)oluşturma.
 
-![Azure portalında erişim denetimi (IAM) - NoSQL veritabanı güvenliğini gösterme](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+![Azure portal-gösteren NoSQL veritabanı güvenliğine erişim denetimi (ıAM)](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-Ana anahtarınızı döndürme işlemi basittir. İkincil anahtarınızı almak için Azure portalına gidin, ardından uygulamanızdaki birincil anahtarınızı ikincil anahtarınızla değiştirin ve ardından Azure portalındaki birincil anahtarı döndürün.
+### <a name="key-rotation"></a>Anahtar döndürme<a id="key-rotation"></a>
 
-![Azure portalında ana anahtar döndürme - NoSQL veritabanı güvenliğini gösterme](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+Ana anahtarınızı döndürme işlemi basittir. 
+
+1. İkincil anahtarınızı almak için Azure portal gidin.
+2. Birincil anahtarınızı uygulamanızdaki ikincil anahtarınızla değiştirin. Tüm dağıtımlardaki tüm Cosmos DB istemcilerinin hemen yeniden başlatıldığından ve güncelleştirilmiş anahtarın kullanılmasına başlayadığınızdan emin olun.
+3. Azure portal birincil anahtarı döndürün.
+4. Yeni birincil anahtarın tüm kaynaklara karşı çalışıp çalışmadığını doğrulayın. Anahtar döndürme işlemi, Cosmos DB hesabının boyutuna bağlı olarak bir dakikadan kısa bir süreden saate kadar olan her yerde olabilir.
+5. İkincil anahtarı yeni birincil anahtarla değiştirin.
+
+![Azure portal-gösteren NoSQL veritabanı güvenliğine ana anahtar döndürme](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
 ### <a name="code-sample-to-use-a-master-key"></a>Ana anahtar kullanmak için kod örneği
 
-Aşağıdaki kod örneği, DocumentClient'ı anında kullanmak ve bir veritabanı oluşturmak için Cosmos DB hesap bitiş noktası nın ve ana anahtarın nasıl kullanılacağını göstermektedir.
+Aşağıdaki kod örneği, bir Cosmos DB hesabı uç noktasının ve ana anahtarın bir DocumentClient örneği oluşturmak ve bir veritabanı oluşturmak için nasıl kullanılacağını göstermektedir.
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -64,40 +72,40 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 ## <a name="resource-tokens"></a>Kaynak belirteçleri<a id="resource-tokens"></a>
 
-Kaynak belirteçleri, veritabanıiçindeki uygulama kaynaklarına erişim sağlar. Kaynak belirteçleri:
+Kaynak belirteçleri, bir veritabanı içindeki uygulama kaynaklarına erişim sağlar. Kaynak belirteçleri:
 
-- Belirli kapsayıcılara, bölme anahtarlarına, belgelere, eklere, depolanan yordamlara, tetikleyicilere ve UDF'lere erişim sağlayın.
-- Bir [kullanıcıya](#users) belirli bir kaynağa [izin](#permissions) verildiğinde oluşturulur.
-- Bir izin kaynağı POST, GET veya PUT çağrısı tarafından harekete geçirildiğinde yeniden oluşturulur.
-- Kullanıcı, kaynak ve izin için özel olarak oluşturulmuş karma kaynak belirteci kullanın.
-- Zaman özelleştirilebilir bir geçerlilik süresi ile bağlıdır. Varsayılan geçerli zaman aralığı bir saattir. Ancak, belirteç ömrü en fazla beş saate kadar açıkça belirtilebilir.
+- Belirli kapsayıcılara, Bölüm anahtarlarına, belgelere, eklere, saklı yordamlara, tetikleyicilere ve UDF erişimine erişim sağlar.
+- , Bir [kullanıcıya](#users) belirli bir kaynağa [izin](#permissions) verildiğinde oluşturulur.
+- , Bir izin kaynağı GÖNDERI, al veya koy çağrısıyla üzerinde işlem yapıldığında yeniden oluşturulur.
+- Kullanıcı, kaynak ve izin için özel olarak oluşturulan bir karma kaynak belirteci kullanın.
+- , Özelleştirilebilir bir geçerlilik süresi ile zaman bağlalardır. Varsayılan geçerli zaman aralığı bir saattir. Ancak, belirteç ömrü, en fazla beş saate kadar açıkça belirtilebilir.
 - Ana anahtarı vermek için güvenli bir alternatif sağlayın.
-- İstemcilerin Cosmos DB hesabındaki kaynakları, verilen izinlere göre okumalarını, yazmalarını ve silmelerini sağlar.
+- İstemcilerin, izin verilen izinlere göre Cosmos DB hesabındaki kaynakları okumasını, yazmasını ve silmesini sağlar.
 
-Cosmos DB hesabınızdaki kaynaklara ana anahtarla güvenilemeyen bir istemciye erişim sağlamak istediğinizde (Cosmos DB kullanıcıları ve izinleri oluşturarak) bir kaynak belirteci kullanabilirsiniz.  
+Ana anahtarla güvenilmeyen bir istemciye Cosmos DB hesabınızdaki kaynaklara erişim sağlamak istediğinizde bir kaynak belirteci (Cosmos DB kullanıcılar ve izinler oluşturarak) kullanabilirsiniz.  
 
-Cosmos DB kaynak belirteçleri, müşterilerin Cosmos DB hesabınızdaki kaynakları verdiğiniz izinlere göre ve bir ana veya yalnızca anahtarı okumaya gerek kalmadan okumasına, yazmasına ve silebilmesini sağlayan güvenli bir alternatif sağlar.
+Cosmos DB kaynak belirteçleri, istemcilerin Cosmos DB hesabınızdaki kaynakları, verdiğiniz izinlere göre okumasını, yazmasına ve silmesine olanak tanıyan güvenli bir alternatif sağlar.
 
-Kaynak belirteçlerinin istenebileceği, oluşturulabileceği ve istemcilere teslim edilebildiği tipik bir tasarım deseni aşağıda veda eder:
+Kaynak belirteçlerinin istendiği, üretibildiği ve istemcilere teslim edileceği tipik bir tasarım deseninin olması aşağıda verilmiştir:
 
-1. Kullanıcı fotoğraflarını paylaşmak için bir mobil uygulama sunmak üzere orta katman bir hizmet ayarlanır.
-2. Orta katman hizmeti, Cosmos DB hesabının ana anahtarına sahip.
-3. Fotoğraf uygulaması son kullanıcı mobil cihazlara yüklenir.
-4. Oturum açmada, fotoğraf uygulaması orta katman hizmeti ile kullanıcının kimliğini belirler. Kimlik kurma mekanizması tamamen uygulamaya bağlıdır.
-5. Kimlik oluşturulduktan sonra, orta katman hizmet kimliğe dayalı izinler ister.
-6. Orta katman hizmeti, telefon uygulamasına bir kaynak belirteci gönderir.
-7. Telefon uygulaması, kaynak belirteci tarafından tanımlanan izinlerle ve kaynak belirteci tarafından izin verilen aralıkla Cosmos DB kaynaklarına doğrudan erişmek için kaynak belirteci kullanmaya devam edebilir.
-8. Kaynak belirteci süresi dolduğunda, sonraki istekler 401 yetkisiz özel durum alır.  Bu noktada, telefon uygulaması kimliği yeniden belirler ve yeni bir kaynak belirteci ister.
+1. Orta katman hizmeti, Kullanıcı fotoğraflarını paylaşmak üzere bir mobil uygulama sunacak şekilde ayarlanır.
+2. Orta katman hizmeti Cosmos DB hesabının ana anahtarına sahiptir.
+3. Fotoğraf uygulaması, Son Kullanıcı mobil cihazlarına yüklenir.
+4. Oturum açıldığında, fotoğraf uygulaması, orta katman hizmeti ile kullanıcının kimliğini belirler. Bu kimlik kurulumu mekanizması, uygulamaya tamamen sahiptir.
+5. Kimlik kurulduktan sonra, orta katman hizmeti kimlik temelinde izinleri ister.
+6. Orta katman hizmeti, bir kaynak belirtecini telefon uygulamasına geri gönderir.
+7. Telefon uygulaması, kaynak belirteci tarafından tanımlanan izinlerle ve kaynak belirtecinin izin verdiği aralığa göre Cosmos DB kaynaklarına doğrudan erişmek için kaynak belirtecini kullanmaya devam edebilir.
+8. Kaynak belirtecinin süresi dolmuşsa, sonraki istekler 401 Yetkisiz bir özel durum alır.  Bu noktada, telefon uygulaması kimliği yeniden oluşturur ve yeni bir kaynak belirteci ister.
 
-    ![Azure Cosmos DB kaynak belirteçleri iş akışı](./media/secure-access-to-data/resourcekeyworkflow.png)
+    ![Kaynak belirteçleri Azure Cosmos DB iş akışı](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Kaynak belirteç oluşturma ve yönetimi yerel Cosmos DB istemci kitaplıkları tarafından işlenir; ancak, REST kullanıyorsanız istek/kimlik doğrulama üstbilgisini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için [Cosmos DB Kaynaklarında Erişim Denetimi'ne](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) veya [Node.js SDK'mızın](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)kaynak koduna bakın.
+Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından gerçekleştirilir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) veya [Node. js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
 
-Kaynak belirteçleri oluşturmak veya aracılık etmek için kullanılan bir orta katman hizmeti örneği için [ResourceTokenBroker uygulamasına](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)bakın.
+Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örneği için, bkz. [Resourcetokenbroker uygulaması](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## <a name="users"></a>Kullanıcı<a id="users"></a>
+## <a name="users"></a>Kullanıcılar<a id="users"></a>
 
-Azure Cosmos DB kullanıcıları bir Cosmos veritabanıyla ilişkilidir.  Her veritabanı sıfır veya daha fazla Cosmos DB kullanıcısı içerebilir. Aşağıdaki kod örneği, [Azure Cosmos DB .NET SDK v3'ü](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)kullanarak bir Cosmos DB kullanıcısının nasıl oluşturulacak olduğunu gösterir.
+Azure Cosmos DB kullanıcılar bir Cosmos veritabanıyla ilişkilendirilir.  Her veritabanı sıfır veya daha fazla Kullanıcı Cosmos DB içerebilir. Aşağıdaki kod örneği, [.NET SDK v3 Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)kullanarak Cosmos DB bir kullanıcının nasıl oluşturulacağını göstermektedir.
 
 ```csharp
 //Create a user.
@@ -107,21 +115,21 @@ User user = await database.CreateUserAsync("User 1");
 ```
 
 > [!NOTE]
-> Her Cosmos DB kullanıcısı, kullanıcıyla ilişkili [izinlerin](#permissions) listesini almak için kullanılabilecek bir ReadAsync() yöntemine sahiptir.
+> Her Cosmos DB kullanıcının, kullanıcıyla ilişkili [izin](#permissions) listesini almak için kullanılabilecek bir ReadAsync () yöntemi vardır.
 
-## <a name="permissions"></a>Izin<a id="permissions"></a>
+## <a name="permissions"></a>İzinler<a id="permissions"></a>
 
-İzin kaynağı bir kullanıcıyla ilişkilidir ve kapsayıcının yanı sıra bölüm anahtar düzeyinde atanır. Her kullanıcı sıfır veya daha fazla izin içerebilir. İzin kaynağı, belirli bir kapsayıcıya veya belirli bir bölüm anahtarındaki verilere erişmeye çalışırken kullanıcının ihtiyaç duyduğu bir güvenlik belirtecine erişim sağlar. İzin kaynağı tarafından sağlanabilecek iki kullanılabilir erişim düzeyi vardır:
+Bir izin kaynağı, bir kullanıcıyla ilişkilendirilir ve bölüm anahtarı düzeyi olarak kapsayıcıda atanır. Her Kullanıcı sıfır veya daha fazla izin içerebilir. Bir izin kaynağı, belirli bir bölüm anahtarındaki belirli bir kapsayıcıya veya verilere erişmeyi denerken kullanıcının ihtiyacı olan bir güvenlik belirtecine erişim sağlar. Bir izin kaynağı tarafından sağlanarak kullanılabilecek iki erişim düzeyi vardır:
 
-- Tüm: Kullanıcı kaynak üzerinde tam izine sahiptir.
-- Oku: Kullanıcı yalnızca kaynağın içeriğini okuyabilir, ancak kaynak üzerindeki yazma, güncelleme veya silme işlemlerini gerçekleştiremez.
+- Tümü: kullanıcının kaynakta tam izni vardır.
+- Okuma: Kullanıcı yalnızca kaynağın içeriğini okuyabilir, ancak kaynakta yazma, güncelleştirme veya silme işlemlerini gerçekleştiremez.
 
 > [!NOTE]
-> Saklanan yordamları çalıştırmak için kullanıcının, depolanan yordamın çalıştırılacak kapsayıcıda Tüm iznine sahip olması gerekir.
+> Saklı yordamları çalıştırmak için kullanıcının saklı yordamın çalıştırılacağı kapsayıcıda tüm izne sahip olması gerekir.
 
 ### <a name="code-sample-to-create-permission"></a>İzin oluşturmak için kod örneği
 
-Aşağıdaki kod örneği, izin kaynağının nasıl oluşturulup oluşturulacak, izin kaynağının kaynak belirteci nin nasıl okunduğunu ve izinlerin yukarıda oluşturulan [kullanıcıyla](#users) nasıl ilişkilendirileni gösterir.
+Aşağıdaki kod örneği, bir izin kaynağı oluşturmayı, izin kaynağının kaynak belirtecini okumayı ve izinleri yukarıda oluşturulan [kullanıcıyla](#users) ilişkilendirmeyi gösterir.
 
 ```csharp
 // Create a permission on a container and specific partition key value
@@ -134,9 +142,9 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>Kullanıcı için izin okumak için kod örneği
+### <a name="code-sample-to-read-permission-for-user"></a>Kullanıcı için okuma izni için kod örneği
 
-Aşağıdaki kod snippet yukarıda oluşturulan kullanıcı ile ilişkili izin almak ve kullanıcı adına yeni bir CosmosClient anlık, tek bir bölüm anahtarı na mı kapsanan gösterir.
+Aşağıdaki kod parçacığı, yukarıda oluşturulan kullanıcıyla ilişkili iznin nasıl alınacağını gösterir ve tek bir bölüm anahtarı kapsamındaki Kullanıcı adına yeni bir CosmosClient örneği oluşturur.
 
 ```csharp
 //Read a permission, create user client session.
@@ -145,28 +153,28 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
 
-## <a name="add-users-and-assign-roles"></a>Kullanıcı ekleme ve roller atama
+## <a name="add-users-and-assign-roles"></a>Kullanıcı ekleme ve rol atama
 
-Azure Cosmos DB hesap okuyucu erişimini kullanıcı hesabınıza eklemek için, bir abonelik sahibinin Azure portalında aşağıdaki adımları gerçekleştirmesini sağlar.
+Kullanıcı hesabınıza Azure Cosmos DB hesap okuyucusu erişimi eklemek için bir abonelik sahibine Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portalını açın ve Azure Cosmos DB hesabınızı seçin.
-2. Access **denetimi (IAM)** sekmesini tıklatın ve sonra **+ Rol Atamaekle'yi**tıklatın.
-3. Rol **atama ekle** bölmesinde, **Rol** kutusunda **Cosmos DB Hesap Okuyucu Rolü'nü**seçin.
-4. **Kutuya Erişim Atla'da** **Azure AD kullanıcısını, grubunu veya uygulamasını**seçin.
-5. Dizininizde erişim izni vermek istediğiniz kullanıcıyı, grubu veya uygulamayı seçin.  Dizinde görüntü adına, e-posta adresine veya nesne tanımlayıcılarıile arama yapabilirsiniz.
-    Seçili kullanıcı, grup veya uygulama seçili üyeler listesinde görünür.
-6. **Kaydet**'e tıklayın.
+1. Azure portal açın ve Azure Cosmos DB hesabınızı seçin.
+2. **Erişim denetimi (IAM)** sekmesine tıklayın ve ardından **+ rol ataması Ekle**' ye tıklayın.
+3. **Rol ataması Ekle** bölmesinde, **rol** kutusunda **Cosmos DB hesap okuyucu rolü**' nü seçin.
+4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
+5. Dizininizde erişim vermek istediğiniz kullanıcı, Grup veya uygulamayı seçin.  Dizinde görünen ad, e-posta adresi veya nesne tanımlayıcıları ile arama yapabilirsiniz.
+    Seçilen Kullanıcı, Grup veya uygulama seçilen Üyeler listesinde görünür.
+6. **Kaydet**’e tıklayın.
 
 Varlık artık Azure Cosmos DB kaynaklarını okuyabilir.
 
-## <a name="delete-or-export-user-data"></a>Kullanıcı verilerini silme veya dışa aktarma
+## <a name="delete-or-export-user-data"></a>Kullanıcı verilerini silme veya dışarı aktarma
 
-Azure Cosmos DB, veritabanında veya koleksiyonlarda bulunan kişisel verileri aramanızı, seçmenize, değiştirmenize ve silmenize olanak tanır. Azure Cosmos DB, kişisel verileri bulmak ve silmek için API'ler sağlar, ancak KIŞISEL verileri silmek için gerekli API'leri kullanmak ve mantığı tanımlamak sizin sorumluluğunuzdadır. Her çok modelli API (SQL, MongoDB, Gremlin, Cassandra, Tablo) kişisel verileri arama ve silme yöntemleri içeren farklı dil SDK'ları sağlar. Ayrıca, belirli bir süre sonra, herhangi bir ek ücret ödemeden verileri otomatik olarak silmek [için canlı (TTL) özelliğinin süresini](time-to-live.md) de etkinleştirebilirsiniz.
+Azure Cosmos DB, veritabanı veya koleksiyonlardaki tüm kişisel verileri aramanıza, seçmenize, değiştirmenize ve silmenizi sağlar. Azure Cosmos DB, kişisel verileri bulmak ve silmek için API 'Ler sağlar. Bu, API 'Leri kullanmak ve kişisel verileri silmek için gerekli mantığı tanımlamak sizin sorumluluğunuzdadır. Her bir çok modelli API (SQL, MongoDB, Gremlin, Cassandra, tablo), kişisel verileri aramak ve silmek için yöntemler içeren farklı dil SDK 'leri sağlar. Ayrıca, belirli bir süreden sonra verileri otomatik olarak silmek için [yaşam süresi (TTL)](time-to-live.md) özelliğini de etkinleştirebilirsiniz.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Cosmos veritabanı güvenliği hakkında daha fazla bilgi edinmek için [Cosmos DB Veritabanı güvenliğine](database-security.md)bakın.
-- Azure Cosmos DB yetkilendirme belirteçlerini nasıl oluşturacağız öğrenmek için Azure [Cosmos DB Kaynaklarında Erişim Denetimi'ne](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)bakın.
-- Kullanıcı ve izinleri olan kullanıcı yönetimi [örnekleri, .NET SDK v3 kullanıcı yönetimi örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)
+- Cosmos veritabanı güvenliği hakkında daha fazla bilgi edinmek için bkz. [Cosmos DB veritabanı güvenliği](database-security.md).
+- Azure Cosmos DB yetkilendirme belirteçleri oluşturmayı öğrenmek için [Azure Cosmos DB kaynaklarında Access Control](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)bakın.
+- Kullanıcılar ve izinlerle Kullanıcı yönetimi örnekleri, [.NET SDK V3 Kullanıcı yönetimi örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

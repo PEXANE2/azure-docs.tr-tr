@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: e76c75e172e48866565cc292ac673f7bbddabf1f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084898"
+ms.locfileid: "82232828"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -48,17 +48,26 @@ Bu sürümde hiçbir davranış değişikliği yok. Yaklaşan değişikliklere h
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur. 
 
+### <a name="deprecate-spark-21-and-22-for-hdinsight-36-spark-cluster"></a>HDInsight 3,6 Spark kümesi için Spark 2,1 ve 2,2 'i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintisinden kaçınmak için HDInight 3,6 tarihinde Haziran 30 2020 ' ye kadar Spark 2,3 ' a geçiş yapmayı düşünün.
+
+### <a name="deprecate-spark-23-for-hdinsight-40-spark-cluster"></a>HDInsight 4,0 Spark kümesi için Spark 2,3 'i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintisinden kaçınmak için HDInight 4,0 tarihinde Haziran 30 2020 ' ye kadar Spark 2,4 ' a geçiş yapmayı düşünün.
+
+### <a name="deprecate-kafka-11-for-hdinsight-40-kafka-cluster"></a>HDInsight 4,0 Kafka kümesi için Kafka 1,1 'i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInight 4,0 tarihinde Haziran 30 2020 ' ye Kafka 2,1 ' a geçiş yapmayı düşünün.
+
+### <a name="hbase-20-to-21"></a>HBase 2,0-2,1
+Yakında düzenlenecek HDInsight 4,0 sürümünde HBase sürümü 2,0 sürümünden 2,1 sürümüne yükseltilir.
+
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Baş düğüm için en az 4 çekirdekli bir VM gereklidir 
-Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 Nisan 2020 ' den başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecektir. 
+Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 2020 Nisan 'dan başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecektir. 
 
 ### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark kümesi düğüm boyutu değişikliği 
 Yaklaşan sürümde, ESP Spark kümesi için izin verilen en düşük düğüm boyutu Standard_D13_V2 olarak değiştirilecektir. A serisi VM 'Ler görece düşük CPU ve bellek kapasitesi nedeniyle ESP kümesi sorunlarına neden olabilir. Yeni ESP kümeleri oluşturmak için A serisi VM 'Ler kullanım dışı olacaktır.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
 HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Yaklaşan sürümde, HDInsight bunun yerine Azure sanal makine ölçek kümelerini kullanacaktır. Azure sanal makine ölçek kümeleri hakkında daha fazla bilgi için bkz..
-
-### <a name="hbase-20-to-21"></a>HBase 2,0-2,1
-Yakında düzenlenecek HDInsight 4,0 sürümünde HBase sürümü 2,0 sürümünden 2,1 sürümüne yükseltilir.
 
 ## <a name="bug-fixes"></a>Hata düzeltmeleri
 HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam eder. 

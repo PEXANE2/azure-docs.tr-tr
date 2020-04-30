@@ -1,30 +1,25 @@
 ---
-title: Şirket içinde barındırılan Azure API Management Gateway 'e genel bakış | Microsoft Docs
-description: Şirket içinde barındırılan Azure API Management Gateway 'in karma ve çok yüksek ortamlarda API 'Leri yönetmesine nasıl yardımcı olduğunu öğrenin.
+title: Şirket içinde barındırılan ağ geçidine genel bakış | Microsoft Docs
+description: Azure API Management şirket içinde barındırılan ağ geçidi özelliğinin, kuruluşların karma ve çok yüksek ortamlarda API 'Leri yönetmesine yardımcı olduğunu öğrenin.
 services: api-management
 documentationcenter: ''
 author: vlvinogr
 manager: gwallace
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73513724"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232981"
 ---
-# <a name="self-hosted-api-management-gateway-overview"></a>Şirket içinde barındırılan API Management ağ geçidine genel bakış
+# <a name="self-hosted-gateway-overview"></a>Şirket içinde barındırılan ağ geçidine genel bakış
 
-Bu makalede, şirket içinde barındırılan ağ geçidi özelliğinin karma ve çok bulut API yönetimini nasıl sağladığından, üst düzey mimarisini sunduğu ve temel yeteneklerini vurguladığı açıklanır.
-
-> [!NOTE]
-> Şirket içinde barındırılan ağ geçidi özelliği önizlemededir. Önizleme sırasında, şirket içinde barındırılan ağ geçidi, yalnızca geliştirici ve Premium katmanlarda ek ücret ödemeden kullanılabilir. Geliştirici katmanı, tek bir şirket içinde barındırılan ağ geçidi dağıtımıyla sınırlıdır.
+Bu makalede, Azure API Management 'in şirket içinde barındırılan ağ geçidi özelliğinin karma ve çok bulut API yönetimini nasıl sağladığından, üst düzey mimarisini nasıl sunduğu ve özelliklerini vurguladığı açıklanır.
 
 ## <a name="hybrid-and-multi-cloud-api-management"></a>Karma ve çoklu bulut API Yönetimi
 
@@ -42,20 +37,27 @@ Varsayılan olarak, tüm bu bileşenler Azure 'da dağıtılır ve API 'Lerin al
 
 ![Kendi kendine barındırılan ağ geçitleri olmadan API trafik akışı](media/self-hosted-gateway-overview/without-gateways.png)
 
-Şirket içinde barındırılan ağ geçitlerini arka uç API uygulamalarıyla aynı ortamlara dağıtmak ve bunları API Management hizmetine eklemek, API trafiğinin doğrudan arka uç API 'Lerine akmasını sağlar, bu da gecikme süresini iyileştirir, veri aktarım maliyetlerini iyileştirir ve uygulamaların barındırıldığı yere bakılmaksızın kuruluştaki tüm API 'lerin tek bir yönetim noktası ve keşfedilmesi avantajlarını korurken uyumluluk sağlar.
+Şirket içinde barındırılan ağ geçitlerini arka uç API uygulamalarının barındırıldığı ortamlara dağıtmak, API trafiğinin doğrudan arka uç API 'Lerine akmasını sağlar, gecikme süresini iyileştirir, veri aktarım maliyetlerini iyileştirir ve uygulamaların barındırıldığı yere bakılmaksızın kuruluştaki tüm API 'lerin tek bir yönetimi, Observability ve keşfedilmesi avantajlarını korurken uyumluluk sağlar.
 
 ![Şirket içinde barındırılan ağ geçitleriyle API trafik akışı](media/self-hosted-gateway-overview/with-gateways.png)
 
 ## <a name="packaging-and-features"></a>Paketleme ve Özellikler
 
-Şirket içinde barındırılan ağ geçidi, her API Management hizmetinin bir parçası olarak Azure 'a dağıtılan yönetilen ağ geçidinin Kapsayıcılı, işlevsel olarak eşdeğer bir sürümüdür. Şirket içinde barındırılan ağ geçidi, Microsoft Container Registry Linux tabanlı bir Docker kapsayıcısı olarak kullanılabilir. Docker, Kubernetes veya bir masaüstü, sunucu kümesi veya bulut altyapısında çalışan başka bir kapsayıcı düzenleme çözümüne dağıtılabilir.
+Şirket içinde barındırılan ağ geçidi, her API Management hizmetinin bir parçası olarak Azure 'a dağıtılan yönetilen ağ geçidinin Kapsayıcılı, işlevsel olarak eşdeğer bir sürümüdür. Şirket içinde barındırılan ağ geçidi, Microsoft Container Registry Linux tabanlı bir Docker [kapsayıcısı](https://aka.ms/apim/sputnik/dhub) olarak kullanılabilir. Docker, Kubernetes veya Şirket içindeki bir sunucu kümesinde çalışan, bulut altyapısındaki veya değerlendirme ve geliştirme amaçları için kişisel bir bilgisayardaki herhangi bir kapsayıcı düzenleme çözümüne dağıtılabilir.
 
-> [!IMPORTANT]
-> Yönetilen ağ geçidinde bulunan bazı işlevler henüz önizlemede kullanılamıyor. En önemlisi: Olay Hub 'ı ilkesinde oturum açın, Service Fabric tümleştirme, aşağı akış HTTP/2. Şirket içinde barındırılan ağ geçidinde yerleşik bir önbelleğin kullanılabilmesini sağlama planı yoktur.
+Yönetilen ağ geçitlerinde bulunan aşağıdaki işlevsellik, şirket içinde barındırılan ağ geçitlerinde **kullanılamaz** :
+
+- Azure İzleyici günlükleri
+- Yukarı akış (arka uç tarafı) TLS sürümü ve şifre yönetimi
+- API Management hizmetine yüklenen [CA kök sertifikalarını](api-management-howto-ca-certificates.md) kullanarak sunucu ve istemci sertifikalarının doğrulanması. Özel CA desteği eklemek için, CA 'nın kök sertifikasını yükleyen şirket içinde barındırılan ağ geçidi kapsayıcı görüntüsüne bir katman ekleyin.
+- [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) ile tümleştirme
+- TLS oturum sürdürme
+- İstemci sertifikası yeniden anlaşması. Diğer bir deyişle, [istemci sertifikası kimlik doğrulamasının](api-management-howto-mutual-certificates-for-clients.md) iş API tüketicileri, ilk TLS el sıkışma kapsamında sertifika sunması gerekir. Bunun emin olmak için, şirket içinde barındırılan bir ağ geçidi özel ana bilgisayar adı yapılandırırken istemci sertifikası ayarını etkinleştirin.
+- Yerleşik önbellek. Şirket içinde barındırılan ağ geçitlerinde dış önbellek kullanma hakkında bilgi edinmek için bu [belgeye](api-management-howto-cache-external.md) bakın.
 
 ## <a name="connectivity-to-azure"></a>Azure bağlantısı
 
-Şirket içinde barındırılan ağ geçidi 443 numaralı bağlantı noktasında Azure 'a giden TCP/IP bağlantısı gerektirir. Her şirket içinde barındırılan her ağ geçidinin tek bir API Management hizmetiyle ilişkilendirilmesi ve yönetim düzlemi aracılığıyla yapılandırılması gereklidir. Şirket içinde barındırılan ağ geçidi, için Azure bağlantısını kullanır:
+Şirket içinde barındırılan ağ geçitleri 443 numaralı bağlantı noktasında Azure 'a giden TCP/IP bağlantısı gerektirir. Şirket içinde barındırılan her ağ geçidinin tek bir API Management hizmetiyle ilişkilendirilmesi ve yönetim düzlemi aracılığıyla yapılandırılması gerekir. Şirket içinde barındırılan ağ geçidi, için Azure bağlantısını kullanır:
 
 -   Her dakikada sinyal mesajları göndererek durumunu raporlama
 -   Düzenli olarak (10 saniyede bir) denetleniyor ve her kullanılabilir olduğunda yapılandırma güncelleştirmeleri uygulanıyor
@@ -64,22 +66,22 @@ Varsayılan olarak, tüm bu bileşenler Azure 'da dağıtılır ve API 'Lerin al
 
 Azure ile bağlantı kesildiğinde, şirket içinde barındırılan ağ geçidi yapılandırma güncelleştirmelerini alamıyor, durumunu bildiremeyecek veya Telemetriyi karşıya yükleyemeyecektir.
 
-Şirket içinde barındırılan ağ geçidi, "başarısız statik" olarak tasarlanmıştır ve Azure ile geçici bağlantı kaybını da sürdürabilir. Yerel yapılandırma yedeklemesi açık olarak veya olmadan dağıtılabilir. Önceki durumda, şirket içinde barındırılan ağ geçitleri düzenli olarak bir yapılandırmanın yedek kopyasını kapsayıcıya veya Pod 'a bağlı kalıcı bir birime kaydeder.
+Şirket içinde barındırılan ağ geçidi, "başarısız statik" olarak tasarlanmıştır ve Azure ile geçici bağlantı kaybını da sürdürmektedir. Yerel yapılandırma yedeklemesi olmadan veya olmadan dağıtılabilir. Önceki durumda, şirket içinde barındırılan ağ geçitleri, en son indirilen yapılandırmanın bir yedek kopyasını, kapsayıcısına veya Pod 'a bağlı kalıcı bir birimde düzenli olarak kaydeder.
 
 Yapılandırma Yedeklemesi devre dışı bırakıldığında ve Azure bağlantısı kesintiye uğradığında:
 
--   Çalıştıran şirket içinde barındırılan ağ geçitleri, yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam edecektir
+-   Şirket içinde barındırılan ağ geçitlerinin çalıştırılması, yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam edecektir
 -   Kendi kendine barındırılan ağ geçitleri başlatılamaz
 
 Yapılandırma Yedeklemesi açık olduğunda ve Azure ile bağlantı kesildiğinde:
 
--   Çalıştıran şirket içinde barındırılan ağ geçitleri, yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam edecektir
--   Kendi kendine barındırılan ağ geçitleri, yapılandırmanın yedek bir kopyasını kullanmaya başlayacak
+-   Şirket içinde barındırılan ağ geçitlerinin çalıştırılması, yapılandırmanın bellek içi bir kopyasını kullanarak çalışmaya devam edecektir
+-   Şirket içinde barındırılan ağ geçitleri, yapılandırmanın bir yedek kopyasını kullanmaya başlayabilecektir
 
 Bağlantı geri yüklendiğinde, kesintiden etkilenen her bir şirket içinde barındırılan ağ geçidi, ilişkili API Management hizmetine otomatik olarak yeniden bağlanır ve ağ geçidi "çevrimdışı" iken gerçekleşen tüm yapılandırma güncelleştirmelerini indirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -   [Bu konuda ek arka plan için bir teknik incelemeyi okuyun](https://aka.ms/hybrid-and-multi-cloud-api-management)
--   [Şirket içinde barındırılan ağ geçidini Docker 'a dağıtma](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
--   [Kubernetes 'e şirket içinde barındırılan ağ geçidi dağıtma](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+-   [Şirket içinde barındırılan ağ geçidini Docker 'a dağıtma](how-to-deploy-self-hosted-gateway-docker.md)
+-   [Kubernetes 'e şirket içinde barındırılan ağ geçidi dağıtma](how-to-deploy-self-hosted-gateway-kubernetes.md)

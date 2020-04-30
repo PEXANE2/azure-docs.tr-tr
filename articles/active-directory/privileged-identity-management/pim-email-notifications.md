@@ -1,6 +1,6 @@
 ---
-title: PIM'deki e-posta bildirimleri - Azure Active Directory | Microsoft Dokümanlar
-description: Azure AD Ayrıcalıklı Kimlik Yönetimi'nde (PIM) e-posta bildirimlerini açıklar.
+title: PıM-Azure Active Directory 'de e-posta bildirimleri | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) ' de e-posta bildirimlerini açıklar.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -11,107 +11,107 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866429"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232317"
 ---
-# <a name="email-notifications-in-pim"></a>PIM'deki e-posta bildirimleri
+# <a name="email-notifications-in-pim"></a>PıM 'de e-posta bildirimleri
 
-Ayrıcalıklı Kimlik Yönetimi (PIM), Azure Etkin Dizin (Azure AD) kuruluşunuzda bir rolün atanması veya etkinleştirilmeleri gibi önemli olayların ne zaman meydana geldiğini bilmenizi sağlar. Ayrıcalıklı Kimlik Yönetimi size ve diğer katılımcılara e-posta bildirimleri göndererek sizi bilgilendirir. Bu e-postalar, bir rolü etkinleştirme veya yenileme gibi alakalı görevlere bağlantılar da içerebilir. Bu makalede, bu e-postaların neye benzedikleri, ne zaman gönderildikleri ve kimlerin aldığı açıklanmaktadır.
+Privileged Identity Management (PıM), bir rolün atanma veya etkinleştirilme gibi, Azure Active Directory (Azure AD) kuruluşunuzda önemli olayların ne zaman meydana geldiğinden haberdar olmanızı sağlar. Privileged Identity Management sizi ve diğer katılımcı e-posta bildirimlerini göndererek sizi bilgilendirerek haberdar olmanızı sağlayabilirsiniz. Bu e-postalar, bir rolün etkinleştirilmesi veya yenilenmesi gibi ilgili görevlere ait bağlantıları da içerebilir. Bu makalede, bu e-postaların ne zaman gönderileceğini ve kimlerin bunları alacağını açıklanmaktadır.
 
-## <a name="sender-email-address-and-subject-line"></a>Gönderen e-posta adresi ve konu satırı
+## <a name="sender-email-address-and-subject-line"></a>Gönderenin e-posta adresi ve konu satırı
 
-Hem Azure AD hem de Azure kaynak rolleri için Ayrıcalıklı Kimlik Yönetimi'nden gönderilen e-postalar aşağıdaki gönderene e-posta adresine sahiptir:
+Hem Azure AD hem de Azure Kaynak rolleri için Privileged Identity Management gönderilen e-postaların aşağıdaki Gönderici e-posta adresi vardır:
 
-- E-posta adresi: **azure-noreply\@microsoft.com**
-- Görüntü adı: Microsoft Azure
+- E-posta adresi: **Azure-\@noreply Microsoft.com**
+- Görünen ad: Microsoft Azure
 
-Bu e-postalar, konu satırında bir **PIM** öneki içerir. Bir örneği aşağıda verilmiştir:
+Bu e-postalar konu satırında bir **PIM** öneki içerir. Bir örneği aşağıda verilmiştir:
 
-- PIM: Alain Charon kalıcı Yedekleme Okuyucu rolü atandı
+- PıM: Alain Charon, yedekleme okuyucusu rolüne kalıcı olarak atandı
 
 ## <a name="notifications-for-azure-ad-roles"></a>Azure AD rolleri için bildirimler
 
-Ayrıcalıklı Kimlik Yönetimi, Azure AD rolleri için aşağıdaki olaylar oluştuğunda e-posta gönderir:
+Privileged Identity Management, Azure AD rolleri için aşağıdaki olaylar gerçekleştiğinde e-posta gönderir:
 
-- Ayrıcalıklı bir rol etkinleştirme onay bekliyor
+- Ayrıcalıklı bir rol etkinleştirmesi onay bekliyor olduğunda
 - Ayrıcalıklı bir rol etkinleştirme isteği tamamlandığında
-- Azure AD Ayrıcalıklı Kimlik Yönetimi etkinleştirildiğinde
+- Azure AD Privileged Identity Management etkinleştirildiğinde
 
-Azure AD rolleri için bu e-postaları kimlerin aldığı rolünüze, etkinliğinize ve bildirim ayarlarına bağlıdır:
+Bu e-postaları Azure AD rolleri için alan rolünüz, olayınıza ve bildirimler ayarlarına bağlıdır:
 
-| Kullanıcı | Rol etkinleştirme onay bekliyor | Rol etkinleştirme isteği tamamlandı | PIM etkin |
+| Kullanıcı | Rol etkinleştirme onay bekliyor | Rol etkinleştirme isteği tamamlandı | PıM etkin |
 | --- | --- | --- | --- |
-| Ayrıcalıklı Rol Yöneticisi</br>(Etkinleştirildi/Uygun) | Evet</br>(yalnızca açık onaylayıcı belirtilmemişse) | Evet* | Evet |
-| Güvenlik Yöneticisi</br>(Etkinleştirildi/Uygun) | Hayır | Evet* | Evet |
-| Genel Yönetici</br>(Etkinleştirildi/Uygun) | Hayır | Evet* | Evet |
+| Ayrıcalıklı rol yöneticisi</br>(Etkin/uygun) | Yes</br>(yalnızca açık onaylayanlar belirtilmemişse) | Evet* | Yes |
+| Güvenlik Yöneticisi</br>(Etkin/uygun) | Hayır | Evet* | Yes |
+| Genel Yönetici</br>(Etkin/uygun) | Hayır | Evet* | Yes |
 
-\*Bildirimler ayarı **Etkinleştir'e** [ **ayarlanmışsa.** ](pim-how-to-change-default-settings.md#notifications)
+\*[ **Bildirimler** ayarı](pim-how-to-change-default-settings.md#notifications) **Etkinleştir**olarak ayarlandıysa.
 
-Aşağıda, bir kullanıcı kurgusal Contoso kuruluşu için bir Azure REKLAM rolünü etkinleştirdiğinde gönderilen örnek bir e-posta gösterilmektedir.
+Aşağıda, bir Kullanıcı kurgusal contoso organizasyonu için bir Azure AD rolünü etkinleştirdiğinde gönderilen örnek bir e-posta gösterilmektedir.
 
-![Azure AD rolleri için yeni Ayrıcalıklı Kimlik Yönetimi e-postası](./media/pim-email-notifications/email-directory-new.png)
+![Azure AD rolleri için yeni Privileged Identity Management e-posta](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Azure AD rolleri için Haftalık Ayrıcalıklı Kimlik Yönetimi e-postayı sindirir
+### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Azure AD rolleri için haftalık Privileged Identity Management Özet e-postası
 
-Azure AD rolleri için haftalık Ayrıcalıklı Kimlik Yönetimi özet e-postası, Ayrıcalıklı Kimlik Yönetimi'ni etkinleştiren Ayrıcalıklı Rol Yöneticileri, Güvenlik Yöneticileri ve Global Yöneticilere gönderilir. Bu haftalık e-posta, hafta için Ayrıcalıklı Kimlik Yönetimi etkinliklerinin yanı sıra ayrıcalıklı rol atamalarının anlık görüntüsünü sağlar. Yalnızca genel bulutta kiracılar için kullanılabilir. İşte örnek bir e-posta:
+Azure AD rolleri için haftalık Privileged Identity Management Özet e-postası, Privileged Identity Management etkinleştirilmiş ayrıcalıklı rol yöneticilerine, güvenlik yöneticilerine ve genel yöneticilere gönderilir. Bu haftalık e-posta, hem hafta hem de ayrıcalıklı rol atamaları için Privileged Identity Management etkinliklerin anlık görüntüsünü sağlar. Yalnızca genel buluttaki Azure AD kuruluşları için kullanılabilir. Örnek bir e-posta aşağıda verilmiştir:
 
-![Azure AD rolleri için Haftalık Ayrıcalıklı Kimlik Yönetimi e-postayı sindirir](./media/pim-email-notifications/email-directory-weekly.png)
+![Azure AD rolleri için haftalık Privileged Identity Management Özet e-postası](./media/pim-email-notifications/email-directory-weekly.png)
 
-E-posta dört kutucuk içerir:
+E-postada dört kutucuk bulunur:
 
 | Kutucuk | Açıklama |
 | --- | --- |
-| **Kullanıcılar etkinleştirildi** | Kullanıcıların kiracı içindeki uygun rollerini etkinleştirme sayısı. |
-| **Kullanıcılar kalıcı hale** | Uygun bir atamaya sahip kullanıcıların kaç kez kalıcı hale getirilir. |
-| **Ayrıcalıklı Kimlik Yönetiminde Rol Atamaları** | Ayrıcalıklı Kimlik Yönetimi içinde kullanıcılara uygun bir rol atananma sayısı. |
-| **PIM dışındaki rol atamaları** | Kullanıcılara Ayrıcalıklı Kimlik Yönetimi dışında (Azure AD içinde) kalıcı bir rol atananma sayısı. |
+| **Etkinleştirilen kullanıcılar** | Kullanıcıların kuruluş içinde uygun rollerini etkinleştirme sayısı. |
+| **Kullanıcılar kalıcı yaptı** | Uygun atamaya sahip kullanıcıların kalıcı hale getirilme sayısı. |
+| **Privileged Identity Management rol atamaları** | Privileged Identity Management içinde kullanıcılara uygun bir rol atama sayısı. |
+| **PıM dışında rol atamaları** | Kullanıcıların Privileged Identity Management dışında kalıcı bir rol atanma sayısı (Azure AD içinde). |
 
-**En iyi roller bölümünüze genel bakış,** her rol için toplam kalıcı ve uygun yönetici sayısına bağlı olarak kiracınızdaki en iyi beş rolü listeler. **Eyleme Geç** bağlantısı, kalıcı yöneticileri toplu olarak uygun yöneticilere dönüştürebileceğiniz [PIM sihirbazını](pim-security-wizard.md) açar.
+**En üst rolleriniz bölümüne genel bakış** bölümünde her bir rol için toplam kalıcı ve uygun yönetici sayısına göre kuruluşunuzdaki ilk beş rol listelenir. **Eylem al** bağlantısı, kalıcı yöneticileri toplu gruplar halinde uygun yöneticilere dönüştürebileceğiniz [PIM Sihirbazı](pim-security-wizard.md) ' nı açar.
 
 ## <a name="email-timing-for-activation-approvals"></a>Etkinleştirme onayları için e-posta zamanlaması
 
-Kullanıcılar rollerini etkinleştirdiğinde ve rol ayarı onay gerektiriyorsa, onaylayanlar her onay için üç e-posta alır:
+Kullanıcılar rolünü etkinleştirdiğinde ve rol ayarı onay gerektiriyorsa, onaylayanlar her onay için üç e-posta alır:
 
-- Kullanıcının etkinleştirme isteğini onaylama veya reddetme isteği (istek onay motoru tarafından gönderilir)
-- Kullanıcının isteği onaylanır (istek onay motoru tarafından gönderilir)
-- Kullanıcının rolü etkinleştirilir (Ayrıcalıklı Kimlik Yönetimi tarafından gönderilir)
+- Kullanıcının etkinleştirme isteğini onaylama veya reddetme isteği (istek onay altyapısı tarafından gönderilir)
+- Kullanıcının isteği onaylandı (istek onay altyapısı tarafından gönderilir)
+- Kullanıcının rolü etkinleştirilir (Privileged Identity Management tarafından gönderilir)
 
-İstek onay motoru tarafından gönderilen ilk iki e-posta gecikebilir. Şu anda, e-postaların% 90 üç ila on dakika sürer, ama% 1 müşteriler için çok daha uzun olabilir, on beş dakikakadar.
+İstek onay altyapısı tarafından gönderilen ilk iki e-posta gecikiyor olabilir. Şu anda, e-postaların %90 ' üne üç ila on dakika kaldı, ancak %1 müşteri için en fazla on beş dakikaya kadar çok daha uzun sürebilir.
 
-İlk e-posta gönderilmeden önce Azure portalında bir onay isteği onaylanırsa, ilk e-posta artık tetiklenmez ve diğer onaylayanlar onay isteğinin e-postayoluyla bildirilmez. Onlar bir e-posta alamadım ama beklenen davranış gibi görünebilir.
+İlk e-posta gönderilmeden önce Azure portal bir onay isteği onaylanırsa, ilk e-posta artık tetiklenmeyecektir ve diğer onaylayanlara onay isteğinin e-postası tarafından bildirilmeyecektir. E-posta almadıkları gibi görünebilir, ancak beklenen davranıştır.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>Azure kaynak rolleri için PIM e-postaları
+## <a name="pim-emails-for-azure-resource-roles"></a>Azure Kaynak rolleri için PıM e-postaları
 
-Ayrıcalıklı Kimlik Yönetimi, Azure kaynak rolleri için aşağıdaki olaylar meydana geldiğinde Sahipsahiplerine ve Kullanıcı Erişim Yöneticilerine e-posta gönderir:
+Privileged Identity Management, Azure Kaynak rolleri için aşağıdaki olaylar gerçekleştiğinde Sahibe ve Kullanıcı erişimi yöneticilerine e-posta gönderir:
 
-- Bir rol ataması onay beklerken
+- Bir rol ataması onay bekliyor olduğunda
 - Bir rol atandığında
-- Bir rolün süresi yakında sona erdiğinde
-- Bir rolü n
-- Bir rol son kullanıcı tarafından yenileniyorsa
-- Rol etkinleştirme isteği tamamlandığında
+- Bir rolün kullanım süresini yakında dolacak
+- Bir rol genişletmeye uygun olduğunda
+- Bir rol Son Kullanıcı tarafından yenilendiğinde
+- Bir rol etkinleştirme isteği tamamlandığında
 
-Ayrıcalıklı Kimlik Yönetimi, Azure kaynak rolleri için aşağıdaki olaylar oluştuğunda son kullanıcılara e-posta gönderir:
+Privileged Identity Management, Azure Kaynak rolleri için aşağıdaki olaylar gerçekleştiğinde son kullanıcılara e-posta gönderir:
 
-- Bir rol kullanıcıya atandığında
-- Bir kullanıcının rolü sona erdiğinde
+- Kullanıcıya bir rol atandığında
+- Bir kullanıcının rolü süre dolduğunda
 - Bir kullanıcının rolü genişletildiğinde
 - Bir kullanıcının rol etkinleştirme isteği tamamlandığında
 
-Aşağıda, bir kullanıcıya kurgusal Contoso organizasyonu için bir Azure kaynak rolü atandığında gönderilen örnek bir e-posta gösterilmektedir.
+Aşağıda, bir kullanıcıya kurgusal contoso organizasyonu için bir Azure Kaynak rolü atandığında gönderilen örnek bir e-posta gösterilmektedir.
 
-![Azure kaynak rolleri için yeni Ayrıcalıklı Kimlik Yönetimi e-postası](./media/pim-email-notifications/email-resources-new.png)
+![Azure Kaynak rolleri için yeni Privileged Identity Management e-posta](./media/pim-email-notifications/email-resources-new.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ayrıcalıklı Kimlik Yönetimi'nde Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
-- [Ayrıcalıklı Kimlik Yönetimi'nde Azure AD rolleri için istekleri onaylama veya reddetme](azure-ad-pim-approval-workflow.md)
+- [Privileged Identity Management Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
+- [Privileged Identity Management Azure AD rolleri için istekleri onaylama veya reddetme](azure-ad-pim-approval-workflow.md)

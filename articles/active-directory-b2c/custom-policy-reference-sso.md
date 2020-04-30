@@ -8,32 +8,36 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80cf0d101a29de7fca9d4dd36e188a500d35e290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246038"
+ms.locfileid: "82229689"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) içindeki çoklu oturum açma (SSO) oturum yönetimi, kullanıcının kimliği doğrulandıktan sonra bir kullanıcının Kullanıcı ile etkileşimini denetlemesine olanak sağlar. Örneğin, yönetici, kimlik sağlayıcılarının seçiminin görüntülenip görüntülenmediğini veya yerel hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir. Bu makalede Azure AD B2C için SSO ayarlarının nasıl yapılandırılacağı açıklanır.
-
-SSO oturum yönetiminin iki bölümü vardır. İlk olarak, kullanıcının etkileşimiyle doğrudan Azure AD B2C ve diğeri de Facebook gibi dış taraflarla ilgili etkileşimlerle ilgili etkileşimlerle ilgilidir. Azure AD B2C dış taraflar tarafından tutulabilecek SSO oturumlarını geçersiz kılmaz veya atlamaz. Dış tarafa ulaşmak için Azure AD B2C üzerinden yol "hatırlanır", bunun yerine kullanıcıdan sosyal veya kurumsal kimlik sağlayıcısını seçmesini yeniden sorma gereksinimini ortadan kaldırmaktan kaçının. Son SSO kararı dış tarafla birlikte kalır.
+Azure Active Directory B2C (Azure AD B2C) içindeki [Çoklu oturum açma (SSO) oturum](session-overview.md) yönetimi, kullanıcının kimliği doğrulandıktan sonra bir kullanıcının Kullanıcı ile etkileşimini denetlemesine olanak sağlar. Örneğin, yönetici, kimlik sağlayıcılarının seçiminin görüntülenip görüntülenmediğini veya hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir. Bu makalede Azure AD B2C için SSO ayarlarının nasıl yapılandırılacağı açıklanır.
 
 SSO oturum yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvuru için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
 
 Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
-* NoopSSOSessionProvider
-* DefaultSSOSessionProvider
-* ExternalLoginSSOSessionProvider
-* SamlSSOSessionProvider
+|Oturum sağlayıcısı  |Kapsam  |
+|---------|---------|
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Hiçbiri       |       
+|[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C iç oturum Yöneticisi.      |       
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C ile OAuth1, OAuth2 veya OpenID Connect kimlik sağlayıcısı arasında.        |         |
+|[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Bir OAuth2 veya OpenID Connect bağlı olan taraf uygulaması ve Azure AD B2C.        |        
+|[SamlSSOSessionProvider](#samlssosessionprovider)     | Azure AD B2C ve SAML kimlik sağlayıcısı arasında. Ve bir SAML hizmet sağlayıcısı (bağlı olan taraf uygulaması) ve Azure AD B2C.  |        
+
+
+
 
 SSO yönetim sınıfları, `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` bir teknik profilin öğesi kullanılarak belirtilir.
 
@@ -64,11 +68,11 @@ Ad, bu sağlayıcı hiçbir şey yapmaz. Bu sağlayıcı, belirli bir teknik pro
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel hesapları yönetmek için kullanılan bir teknik profilde başvurulur. Aşağıdaki `SM-AAD` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağlayıcıya genellikle yerel ve Federasyon hesaplarını yönetmek için kullanılan teknik bir profilde başvurulur. Aşağıdaki `SM-AAD` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <PersistedClaims>
     <PersistedClaim ClaimTypeReferenceId="objectId" />
@@ -83,6 +87,7 @@ Bu sağlayıcı, talepleri bir oturumda depolamak için kullanılabilir. Bu sağ
   </OutputClaims>
 </TechnicalProfile>
 ```
+
 
 Aşağıdaki `SM-MFA` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`dahildir. Bu teknik profil, Multi-Factor Authentication oturumunu yönetir.
 
@@ -101,11 +106,11 @@ Aşağıdaki `SM-MFA` teknik profil [özel ilke başlangıç paketine](custom-po
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-Bu sağlayıcı, "kimlik sağlayıcısını Seç" ekranının görüntülenmesini sağlamak için kullanılır. Genellikle Facebook gibi bir dış kimlik sağlayıcısı için yapılandırılmış teknik bir profilde başvurulur. Aşağıdaki `SM-SocialLogin` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
+Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Federasyon kimlik sağlayıcısından oturumu kapatmak için kullanılır. Genellikle Facebook veya Azure Active Directory gibi bir federal kimlik sağlayıcısı için yapılandırılmış teknik bir profilde başvurulur. Aşağıdaki `SM-SocialLogin` teknik profil [özel ilke başlangıç paketine](custom-policy-get-started.md#custom-policy-starter-pack)dahildir.
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
-  <DisplayName>Session Mananagement Provider</DisplayName>
+  <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
     <Item Key="AlwaysFetchClaimsFromProvider">true</Item>
@@ -122,9 +127,20 @@ Bu sağlayıcı, "kimlik sağlayıcısını Seç" ekranının görüntülenmesin
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Hayır | Şu anda kullanılmıyor olabilir. |
 
+### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
+
+Bu sağlayıcı, OAuth2 veya OpenID Connect bağlı olan taraf ve Azure AD B2C arasında Azure AD B2C oturumlarını yönetmek için kullanılır.
+
+```xml
+<TechnicalProfile Id="SM-jwt-issuer">
+  <DisplayName>Session Management Provider</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.OAuthSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+</TechnicalProfile>
+```
+
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, olarak `RegisterServiceProviders` `false`ayarlanması gerekir. Aşağıdaki `SM-Saml-idp` teknik profil [SAML teknik profili](saml-technical-profile.md)tarafından kullanılır.
+Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlayıcısı arasında Azure AD B2C SAML oturumlarını yönetmek için kullanılır. SAML kimlik sağlayıcısı oturumunu depolamak için SSO sağlayıcısını kullanırken, olarak `RegisterServiceProviders` `false`ayarlanması gerekir. Aşağıdaki `SM-Saml-idp` teknik profil [SAML kimlik sağlayıcısı teknik profili](saml-identity-provider-technical-profile.md)tarafından kullanılır.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -138,14 +154,15 @@ Bu sağlayıcı, bağlı olan taraf uygulaması veya Federe SAML kimlik sağlay�
 
 B2C SAML oturumunu `RegisterServiceProviders` depolamak için sağlayıcıyı kullanırken, olarak `true`ayarlanmalıdır. SAML oturumu kapatma için `SessionIndex` ve `NameID` işleminin tamamlanmasını gerekir.
 
-Aşağıdaki `SM-Saml-idp` teknik profil, [SAML verenin teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
+Aşağıdaki `SM-Saml-issuer` teknik profil, [SAML verenin teknik profili](saml-issuer-technical-profile.md) tarafından kullanılır
 
 ```XML
-<TechnicalProfile Id="SM-Saml-sp">
+<TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 </TechnicalProfile>
 ```
+
 #### <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama|
@@ -154,4 +171,6 @@ Aşağıdaki `SM-Saml-idp` teknik profil, [SAML verenin teknik profili](saml-iss
 | RegisterServiceProviders | Hayır | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
 
 
+## <a name="next-steps"></a>Sonraki adımlar
 
+- [Azure AD B2C oturum](session-overview.md)hakkında daha fazla bilgi edinin.

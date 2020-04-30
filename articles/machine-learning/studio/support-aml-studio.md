@@ -1,45 +1,45 @@
 ---
-title: Destek & eğitim alın
+title: Destek & eğitimi alın
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik) için destek ve eğitim alın ve geri bildirim sağlayın
+description: Azure Machine Learning Studio için destek ve eğitim alın ve geri bildirim sağlayın (klasik)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: d330235815b746a5bbdc7682622c0e238a3ab0ea
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411915"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209443"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) için destek ve eğitim alın
+# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio için destek ve eğitim alın (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Bu makalede, Azure Machine Learning Studio (klasik) hakkında daha fazla bilgi edinme ve sorunlarınız ve sorularınız için destek alma hakkında bilgi verilmektedir.
+Bu makalede Azure Machine Learning Studio (klasik) hakkında daha fazla bilgi edinme ve sorunlar ve sorularınız için destek alma hakkında bilgiler sağlanmaktadır.
 
-## <a name="learn-more-about-studio-classic"></a>Studio (klasik) hakkında daha fazla bilgi edinin
+## <a name="learn-more-about-studio-classic"></a>Studio hakkında daha fazla bilgi edinin (klasik)
 
 Öğrenme kaynaklarımıza bakın:
-+ [Öğreticiler ve nasıl-makaleler](../studio/index.yml) 
++ [Öğreticiler ve nasıl yapılır makaleleri](../studio/index.yml) 
 + [Başlangıç veri bilimi videoları](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 
-## <a name="submit-doc-feedback"></a>Doküman geri bildirimi gönderme
+## <a name="submit-doc-feedback"></a>Belge geri bildirimi gönder
 
-Her makalenin sonundaki İçerik **geri bildirimi** düğmesini kullanarak ek öğrenme materyalleri için **istekler gönderebilirsiniz.**
+Her bir makalenin sonundaki **içerik geri bildirim** düğmesini kullanarak ek öğrenme malzemeleri için **istekler gönderebilirsiniz** .
 
-## <a name="get-service-support"></a>Servis desteği alın
+## <a name="get-service-support"></a>Hizmet desteğini al
 
 Bu destek kaynaklarına göz atın:
 
-+ **Azure Müşterileri için teknik destek**: Azure portalı üzerinden destek [isteklerini gönderin ve yönetin.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
++ **Azure müşterileri Için Teknik destek**: Azure Portal aracılığıyla [destek istekleri gönderir ve yönetin](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
 
-+ **Kullanıcı forumu**: [MSDN'deki Azure Machine Learning Studio (klasik) destek forumunda](https://aka.ms/aml-forum-studio)soru sorun, soruları yanıtlayın ve diğer kullanıcılarla bağlantı kurun.
++ **Kullanıcı Forumu**: [MSDN 'deki Azure Machine Learning Studio (klasik) destek forumundaki](https://aka.ms/aml-forum-studio)soru sorun, soruları yanıtlayın ve diğer kullanıcılarla bağlantı yapın.
 
-+ **Yığın Taşma**: [StackOverflow'da](https://stackoverflow.com/questions/tagged/azure-machine-learning) "Azure-Machine-Learning" etiketli Azure Machine Learning topluluğunu ziyaret edin.
++ **Stack Overflow**: "Azure-Machine-Learning" Ile etiketlenen [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) üzerinde Azure Machine Learning topluluğunu ziyaret edin.
 
-+ Azure Machine Learning Geri [Bildirim Kanalımızda](https://feedback.azure.com/forums/257792-machine-learning)ürün önerilerini ve özellik isteklerini **paylaşın.** Geri bildiriminizi paylaşmak için, her makalenin sonundaki **Ürün geri bildirimi** düğmesini seçin.
++ [Azure Machine Learning geri bildirim kanalımızda](https://feedback.azure.com/forums/257792-machine-learning) **ürün önerilerini** ve özellik isteklerini paylaşabilirsiniz. Geri bildiriminizi paylaşmak için, her bir makalenin sonundaki **ürün geri bildirim** düğmesini seçin.

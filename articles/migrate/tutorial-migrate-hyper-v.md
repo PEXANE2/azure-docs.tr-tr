@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535358"
+ms.locfileid: "82583324"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -40,7 +40,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 1. Hyper-V geçiş mimarisini [gözden geçirin](hyper-v-migration-architecture.md) .
 2. [İnceleme](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V ana bilgisayar gereksinimleri ve Hyper-V konaklarının erişmesi gereken Azure URL 'Leri.
 3. Geçirmek istediğiniz Hyper-V VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) . Hyper-V VM 'Leri, [Azure VM gereksinimleriyle](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)uyumlu olmalıdır.
-2. Bu serideki önceki öğreticilerin tamamlanmasını öneririz. [İlk öğreticide](tutorial-prepare-hyper-v.md) , geçiş için Azure ve Hyper-V ' i ayarlama gösterilmektedir. İkinci öğreticide, Azure geçişi: Sunucu değerlendirmesi kullanarak geçişten önce [Hyper-V VM 'lerini değerlendirme] (öğretici-değerlendir-Hyper-v.md) gösterilmektedir. 
+2. Bu serideki önceki öğreticilerin tamamlanmasını öneririz. [İlk öğreticide](tutorial-prepare-hyper-v.md) , geçiş için Azure ve Hyper-V ' i ayarlama gösterilmektedir. İkinci öğreticide, Azure geçişi: Sunucu değerlendirmesi kullanılarak geçişten önce [Hyper-V VM 'lerinin nasıl Değerlendirireceğiniz](tutorial-assess-hyper-v.md) gösterilmektedir. 
     > [!NOTE]
     > Bir değerlendirmeyi denemenizi öneririz, ancak VM 'Leri geçirmeden önce bir değerlendirme çalıştırmanız gerekmez.
     > Hyper-V VM 'lerini geçirmek için Azure geçişi: sunucu geçişi, Hyper-V konaklarında veya küme düğümlerinde yazılım aracılarını (Microsoft Azure Site Recovery sağlayıcı ve Microsoft Azure kurtarma hizmeti Aracısı) çalıştırarak verileri Azure geçişi 'ne göre düzenleyin ve çoğaltın. Hyper-V geçişi için [Azure geçişi](migrate-appliance.md) gereci kullanılmaz.

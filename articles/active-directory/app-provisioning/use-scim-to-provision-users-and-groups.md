@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297673"
+ms.locfileid: "82229927"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
 
@@ -810,7 +810,7 @@ Azure Active Directory istekleri OAuth 2,0 taşıyıcı belirtecini içerir. İs
 
 Belirteçte veren, gibi `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`bir ISS talebi tarafından tanımlanır. Bu örnekte, talep değerinin `https://sts.windows.net`temel adresi veren olarak Azure Active Directory tanımlar, göreli adres segmenti, _cbb1a5ac-f33b-45fa-9BF5-f37db0fed422_, belirtecin verildiği Azure Active Directory kiracının benzersiz tanımlayıcısıdır.
 
-Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır, tek bir kiracıya kayıtlı uygulamaların her biri SCIM istekleriyle aynı `iss` talebi alabilir. Galerideki her bir uygulama için uygulama şablonu KIMLIĞI farklılık gösterir, lütfen bir galeri [ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) uygulamasının uygulama şablonu kimliği etrafında sorular için başvurun. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_' dir.
+Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır, tek bir kiracıya kayıtlı uygulamaların her biri SCIM istekleriyle aynı `iss` talebi alabilir. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_' dir. Azure AD sağlama hizmeti tarafından oluşturulan belirteç yalnızca test için kullanılmalıdır. Üretim ortamlarında kullanılmamalıdır.
 
 Örnek kodda, istekler Microsoft. AspNetCore. Authentication. Jwttaşıyıcı paketi kullanılarak doğrulanır. Aşağıdaki kod, belirli bir kiracı için Azure Active Directory tarafından verilen taşıyıcı belirteci kullanılarak hizmet uç noktalarından herhangi birine yönelik isteklerin kimliklerinin doğrulanmasını zorunlu kılar:
 
