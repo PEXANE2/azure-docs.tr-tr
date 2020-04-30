@@ -1,6 +1,6 @@
 ---
 title: Azure Sanal WAN’ye genel bakış | Microsoft Docs
-description: Sanal WAN otomatik ölçeklenebilir daldan şubeye bağlantı, kullanılabilir bölgeler ve iş ortakları hakkında bilgi edinin.
+description: Sanal WAN otomatik ölçeklenebilir dalı-dal bağlantısı, kullanılabilir bölgeler ve iş ortakları hakkında bilgi edinin.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,37 +9,37 @@ ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80743110"
 ---
-# <a name="about-azure-virtual-wan"></a>Azure Virtual WAN Hakkında
+# <a name="about-azure-virtual-wan"></a>Azure sanal WAN hakkında
 
-Azure Virtual WAN, tek bir operasyonel arabirim sağlamak için birçok ağ, güvenlik ve yönlendirme işlevlerini bir araya getiren bir ağ hizmetidir. Bu işlevler arasında Şube bağlantısı (SD-WAN veya VPN CPE gibi Sanal WAN İş Ortağı aygıtlarından bağlantı otomasyonu yoluyla) , Siteden siteye VPN bağlantısı, Uzaktan Kullanıcı VPN (noktaya sayfa) bağlantısı, Özel (ExpressRoute) bağlantısı, Bulut içi bağlantı (Sanal Ağlar için geçişli bağlantı), VPN ExpressRoute Bağlantı, Routing, Azure güvenlik duvarı, şifreleme vb. bulunmaktadır. Sanal WAN kullanmaya başlamak için bu kullanım örneklerinin tümüne sahip olmak zorunda değildir. Sadece tek bir kullanım örneği ile başlamak ve geliştikçe ağınızı ayarlayabilirsiniz. Virtual WAN mimarisi, şubeler (VPN/SD-WAN aygıtları), kullanıcılar (Azure VPN/OpenVPN/IKEv2 Istemcileri), ExpressRoute devreleri ve Sanal Ağlar için ölçek ve performans yerleşik bir hub ve kollu mimarisidir. Bulut barındırılan ağ 'hub'ının farklı sözcü türlerine dağıtılabilen uç noktalar arasında geçişli bağlantı sağladığı [küresel geçiş ağı mimarisine](virtual-wan-global-transit-network-architecture.md) olanak tanır.
+Azure sanal WAN, tek bir işlemsel arabirim sağlamak için birçok ağ, güvenlik ve yönlendirme işlevlerini birlikte getiren bir ağ hizmetidir. Bu işlevler, dal bağlantısını (SD-WAN veya VPN CPE gibi sanal WAN Iş ortağı cihazlarından bağlantı Otomasyonu aracılığıyla) içerir. siteden siteye VPN bağlantısı, uzak kullanıcı VPN (Noktadan siteye) bağlantısı, özel (ExpressRoute) bağlantısı, bulut Içi bağlantı (sanal ağlar için geçişli bağlantı), VPN ExpressRoute ınterconnectivity, yönlendirme, Azure Güvenlik Duvarı, özel bağlantı için şifreleme vb. Sanal WAN kullanmaya başlamak için bu kullanım örneklerinin tümünün olması gerekmez. Yalnızca bir kullanım örneğini kullanmaya başlayabilir ve ağınızı geliştikçe ayarlayabilirsiniz. Sanal WAN mimarisi, dallar (VPN/SD-WAN cihazları), kullanıcılar (Azure VPN/OpenVPN/Ikev2 Istemcileri), ExpressRoute devreleri ve sanal ağlar için yerleşik ölçek ve performansa sahip bir hub ve bağlı olan mimaridir. Bulut barındırılan Ağı ' hub ' 'ın, farklı türlerde (' tekerlek) dağıtılabilecek uç noktalar arasında geçişli bağlantı sağladığından, [genel aktarım ağı mimarisine](virtual-wan-global-transit-network-architecture.md) izin vermez.
 
-Azure bölgeleri, bağlanmayı seçebileceğiniz hub'lar olarak hizmet vermektedir. Tüm hub'lar Standart Sanal WAN'da tam ağ la bağlanır ve kullanıcının Microsoft omurgasını herhangi bir (herhangi bir konuşmalı) bağlantı için kullanmasını kolaylaştırır. SD-WAN/VPN aygıtlarıyla yapılan konuşmalı bağlantı için kullanıcılar, Azure Sanal WAN'da el ile ayarlayabilir veya Azure bağlantısı ayarlamak için Virtual WAN CPE (SD-WAN/VPN) iş ortağı çözümünü kullanabilir. Azure Virtual WAN ile bağlantı otomasyonu (aygıt bilgilerini Azure'a dışa aktarma, Azure yapılandırmasını indirme ve bağlantı kurma) destekleyen iş ortaklarının bir listesi var. Daha fazla bilgi için [Virtual WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesine bakın. 
+Azure bölgeleri, bağlanmayı seçebileceğiniz hub olarak görev yapar. Tüm Hub 'lar standart bir sanal WAN 'da tam ağa bağlanır ve kullanıcının herhangi bir (bağlı olan) bağlantı için Microsoft omurgasını kullanmasını kolaylaştırır. SD-WAN/VPN cihazlarıyla bağlı bileşen bağlantısı için, kullanıcılar Azure sanal WAN ' ta el ile ayarlayabilir veya sanal WAN CPE (SD-WAN/VPN) iş ortağı çözümünü kullanarak Azure bağlantısının kurulumunu yapabilir. Bağlantı otomasyonunu destekleyen iş ortakları listeliyoruz (cihaz bilgilerini Azure 'a dışarı aktarma, Azure yapılandırmasını indirme ve bağlantı kurma özelliği) ile Azure sanal WAN. Daha fazla bilgi için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi. 
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwan1.png)
 
-Bu makale, Azure Virtual WAN'da ağ bağlantısına hızlı bir görünüm sağlar. Sanal WAN şu avantajları sunar:
+Bu makalede, Azure sanal WAN 'da ağ bağlantısına hızlı bir bakış sunulmaktadır. Sanal WAN şu avantajları sunar:
 
-* **Hub ve spoke'de entegre bağlantı çözümleri:** Şirket içi siteler ve Azure hub'ı arasında siteden siteye yapılandırmayı ve bağlantıyı otomatikleştirin.
+* **Hub ve bağlı bileşen 'de tümleşik bağlantı çözümleri:** Siteden siteye yapılandırmayı ve şirket içi siteler ile bir Azure hub 'ı arasındaki bağlantıyı otomatikleştirin.
 * **Otomatik uç kurulumu ve yapılandırması:** Sanal ağlarınızı ve iş yüklerinizi Azure hub'ına rahatça bağlayın.
-* **Sezgisel sorun giderme:** Azure'da uçuça akışı görebilir ve gerekli eylemleri yapmak için bu bilgileri kullanabilirsiniz.
+* **Sezgisel sorun giderme:** Azure 'da uçtan uca akışı görebilir ve sonra gerekli eylemleri gerçekleştirmek için bu bilgileri kullanabilirsiniz.
 
-## <a name="basic-and-standard-virtual-wans"></a><a name="basicstandard"></a>Temel ve Standart sanal WAN'lar
+## <a name="basic-and-standard-virtual-wans"></a><a name="basicstandard"></a>Temel ve standart sanal WAN 'Lar
 
-İki tür sanal WAN vardır: Temel ve Standart. Aşağıdaki tablo, her tür için kullanılabilir yapılandırmaları gösterir.
+İki tür sanal WAN vardır: temel ve standart. Aşağıdaki tabloda her tür için kullanılabilir yapılandırma gösterilmektedir.
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
-Sanal bir WAN yükseltme adımları için, [temelden Standarda sanal bir WAN yükseltme'ye](upgrade-virtual-wan.md)bakın.
+Bir sanal WAN yükseltme adımları için bkz. [bir sanal WAN 'ı temel 'Ten standart sürümüne yükseltme](upgrade-virtual-wan.md).
 
 ## <a name="architecture"></a><a name="architecture"></a>Mimari
 
-Sanal WAN mimarisi ve Virtual WAN'a nasıl geçirilir hakkında bilgi için aşağıdaki makalelere bakın:
+Sanal WAN mimarisi ve sanal WAN 'a geçiş hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Sanal WAN mimarisi](migrate-from-hub-spoke-topology.md)
 * [Genel geçiş ağ mimarisi](virtual-wan-global-transit-network-architecture.md)
@@ -48,35 +48,35 @@ Sanal WAN mimarisi ve Virtual WAN'a nasıl geçirilir hakkında bilgi için aşa
 
 Uçtan uca sanal WAN'yi yapılandırmak için şu kaynakları oluşturursunuz:
 
-* **virtualWAN:** virtualWAN kaynağı Azure ağınızdaki sanal bir katmanı temsil eder ve birden fazla kaynağı içeren bir koleksiyondur. Sanal WAN’de bulunmasını istediğiniz tüm sanal hub'larınızın bağlantılarını içerir. Sanal WAN kaynakları birbirinden yalıtılmıştır ve ortak bir hub içeremezler. Virtual WAN'daki sanal hub'lar birbirleriyle iletişim kurmaz.
+* **virtualWAN:** virtualWAN kaynağı Azure ağınızdaki sanal bir katmanı temsil eder ve birden fazla kaynağı içeren bir koleksiyondur. Sanal WAN’de bulunmasını istediğiniz tüm sanal hub'larınızın bağlantılarını içerir. Sanal WAN kaynakları birbirinden yalıtılmıştır ve ortak bir hub içeremezler. Sanal WAN genelindeki sanal hub 'lar birbirleriyle iletişim kurmaz.
 
-* **Hub:** Sanal hub Microsoft tarafından yönetilen bir sanal ağdır. Hub, bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları içerir. Şirket içi ağınızdan (vpn sitesi) sanal hub içindeki bir VPN Ağ Geçidi'ne bağlanabilir, ExpressRoute devrelerini sanal bir hub'a bağlayabilir ve hatta mobil kullanıcıları sanal hub'daki bir noktadan siteye ağ geçidine bağlayabilirsiniz. Hub, bir bölgedeki ağınızın merkezidir. Her Azure bölgesinde tek bir hub bulunabilir.
+* **Hub:** Sanal hub Microsoft tarafından yönetilen bir sanal ağdır. Hub, bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları içerir. Şirket içi ağınızdan (vpnsite), sanal hub 'ın içindeki bir VPN Gateway bağlanabilir, ExpressRoute devrelerini bir sanal hub 'a bağlayabilir veya mobil kullanıcıları sanal hub 'daki Noktadan siteye ağ geçidine bağlayabilirsiniz. Hub, bir bölgedeki ağınızın merkezidir. Her Azure bölgesinde tek bir hub bulunabilir.
 
-  Hub ağ geçidi, ExpressRoute ve VPN Gateway için kullandığınız sanal ağ geçidiyle aynı değildir. Örneğin, Virtual WAN kullanırken, şirket içi sitenizden doğrudan VNet'inize site-site bağlantısı oluşturmazsınız. Bunun yerine, hub'a siteden siteye bağlantı oluşturursunuz. Trafik her zaman hub ağ geçidi üzerinden gider. Başka bir deyişle, Sanal Ağlarınızın kendi sanal ağ geçitlerine gerek kalmaz. Sanal WAN, Sanal Ağlarınızın sanal hub ve sanal hub ağ geçidi aracılığıyla ölçeklemeden kolayca yararlanmasına olanak tanır.
+  Hub ağ geçidi, ExpressRoute ve VPN Gateway için kullandığınız sanal ağ geçidiyle aynı değildir. Örneğin, sanal WAN kullanırken, şirket içi sitenizden doğrudan VNet 'iniz için siteden siteye bağlantı oluşturmazsınız. Bunun yerine, hub 'a siteden siteye bağlantı oluşturursunuz. Trafik her zaman hub ağ geçidi üzerinden gider. Başka bir deyişle, Sanal Ağlarınızın kendi sanal ağ geçitlerine gerek kalmaz. Sanal WAN, Sanal Ağlarınızın sanal hub ve sanal hub ağ geçidi aracılığıyla ölçeklemeden kolayca yararlanmasına olanak tanır.
 
 * **Hub sanal ağ bağlantısı:** Hub'ı sorunsuzca sanal ağınıza bağlamak için bir hub sanal ağ bağlantı kaynağı kullanılır.
 
-* **(Önizleme) Hub'dan Hub'a bağlantı** - Hub'ların tümü sanal BIR WAN'da birbirine bağlıdır. Bu, yerel bir hub'a bağlı bir şubenin, kullanıcının veya VNet'in bağlı hub'ların tam kafes mimarisini kullanarak başka bir dalla veya VNet ile iletişim kurabileceği anlamına gelir. Ayrıca, sanal hub üzerinden geçen bir hub'ın içindeki VNets'i ve hub üzerinden vnet'leri hub'a bağlı çerçeveyi kullanarak bağlayabilirsiniz.
+* **(Önizleme) hub 'Dan hub 'a bağlantı** -hub 'ların hepsi bır sanal WAN 'da birbirlerine bağlanır. Bu, bir yerel hub 'a bağlı bir dalın, kullanıcının veya VNet 'in bağlı hub 'ların tam ağ mimarisini kullanarak başka bir dalla veya VNet ile iletişim kurabildiğini gösterir. Ayrıca, hub 'dan hub 'a bağlı çerçeveyi kullanarak sanal hub 'dan ve hub 'daki VNET 'lerde VNET 'ler arasında VNET 'ler de bağlayabilirsiniz.
 
 * **Hub rota tablosu:** Bir sanal hub rotası oluşturarak rotayı sanal hub rota tablosuna uygulayabilirsiniz. Sanal hub rota tablosuna birden fazla rota uygulayabilirsiniz.
 
-**Ek Sanal WAN kaynakları**
+**Ek sanal WAN kaynakları**
 
-  * **Site:** Bu kaynak yalnızca siteden siteye bağlantılar için kullanılır. Site kaynağı **vpnsite**. Şirket içi VPN aygıtınızı ve ayarlarını temsil eder. Sanal WAN iş ortağıyla çalıştığınızda, bu bilgileri otomatik olarak Azure’a aktarmak için yerleşik bir çözümünüz olur.
+  * **Site:** Bu kaynak yalnızca siteden siteye bağlantılar için kullanılır. Site kaynağı **vpnsite**. Şirket içi VPN cihazınızı ve ayarlarını temsil eder. Sanal WAN iş ortağıyla çalıştığınızda, bu bilgileri otomatik olarak Azure’a aktarmak için yerleşik bir çözümünüz olur.
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>Bağlantı türleri
 
-Virtual WAN aşağıdaki bağlantı türlerine izin verir: Siteden Siteye VPN, Kullanıcı VPN 'i (Noktadan Siteye) ve ExpressRoute.
+Sanal WAN, aşağıdaki bağlantı türlerine izin verir: siteden siteye VPN, kullanıcı VPN (Noktadan siteye) ve ExpressRoute.
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>Siteden Siteye VPN bağlantıları
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwan.png)
 
-Sanal bir WAN site-site bağlantısı oluşturduğunuzda, kullanılabilir bir iş ortağıyla çalışabilirsiniz. İş ortağı kullanmak istemiyorsanız, bağlantıyı el ile yapılandırabilirsiniz. Daha fazla bilgi için bkz: [Virtual WAN kullanarak siteden siteye bağlantı oluştur.](virtual-wan-site-to-site-portal.md)
+Bir sanal WAN siteden siteye bağlantı oluşturduğunuzda, kullanılabilir bir iş ortağıyla çalışabilirsiniz. Bir iş ortağı kullanmak istemiyorsanız bağlantıyı el ile yapılandırabilirsiniz. Daha fazla bilgi için bkz. [sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md).
 
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Sanal WAN iş ortağı iş akışı
+#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Sanal WAN iş akışı
 
-Sanal WAN iş ortağıyla çalışırken, iş akışı:
+Bir sanal WAN ortağıyla çalışırken iş akışı şu şekilde olur:
 
 1. Dal cihazı (VPN/SDWAN) denetleyicisinin, [Azure Hizmet Sorumlusu](../active-directory/develop/howto-create-service-principal-portal.md) kullanarak site merkezli bilgileri Azure’a aktarmak için kimliği doğrulanır.
 2. Dal cihazı (VPN/SDWAN) denetleyicisi Azure bağlantı yapılandırmasını alır ve yerel cihazı güncelleştirir. Bu, şirket içi VPN cihazının yapılandırma indirme, düzenleme ve güncelleştirme işlemlerini otomatikleştirir.
@@ -84,18 +84,18 @@ Sanal WAN iş ortağıyla çalışırken, iş akışı:
 
 #### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>Siteden siteye sanal WAN bağlantıları için iş ortakları
 
-Kullanılabilir iş ortaklarının ve konumlarının listesi için [Sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesine bakın.
+Kullanılabilir iş ortaklarının ve konumların bir listesi için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi.
 
-### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Kullanıcı VPN (noktadan siteye) bağlantıları
+### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Kullanıcı VPN (Noktadan siteye) bağlantıları
 
-IPsec/IKE (IKEv2) veya OpenVPN bağlantısı üzerinden Azure'daki kaynaklarınıza bağlanabilirsiniz. Bu tür bir bağlantı istemci bilgisayarda yapılandırılması için bir VPN istemcisi gerektirir. Daha fazla bilgi için [bkz.](virtual-wan-point-to-site-portal.md)
+Azure 'daki kaynaklarınıza bir IPSec/ıKE (Ikev2) veya OpenVPN bağlantısı üzerinden bağlanabilirsiniz. Bu tür bir bağlantı, istemci bilgisayarda bir VPN istemcisinin yapılandırılmasını gerektirir. Daha fazla bilgi için bkz. [Noktadan siteye bağlantı oluşturma](virtual-wan-point-to-site-portal.md).
 
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute bağlantıları
-ExpressRoute, şirket içi ağı azure'a özel bir bağlantı üzerinden bağlamanızı sağlar. Bağlantıyı oluşturmak için bkz. [Sanal WAN kullanarak ExpressRoute bağlantısı oluştur.](virtual-wan-expressroute-portal.md)
+ExpressRoute, şirket içi ağı özel bir bağlantı üzerinden Azure 'a bağlamanıza olanak tanır. Bağlantıyı oluşturmak için bkz. [sanal WAN kullanarak ExpressRoute bağlantısı oluşturma](virtual-wan-expressroute-portal.md).
 
 ## <a name="locations"></a><a name="locations"></a>Konumlar
 
-Konum bilgileri için [Sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesine bakın.
+Konum bilgileri için bkz. [sanal WAN iş ortakları ve konumları](virtual-wan-locations-partners.md) makalesi.
 
 ## <a name="faq"></a><a name="faq"></a>SSS
 
@@ -103,4 +103,4 @@ Konum bilgileri için [Sanal WAN iş ortakları ve konumları](virtual-wan-locat
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Virtual WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md)
+[Sanal WAN kullanarak siteden siteye bağlantı oluşturma](virtual-wan-site-to-site-portal.md)

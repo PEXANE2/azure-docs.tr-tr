@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL için Azure Veritabanına bağlanmak için Node.js'i kullanın - Tek Sunucu
-description: Bu hızlı başlatma, PostgreSQL - Single Server için Azure Veritabanı'ndan veri bağlamak ve sorgulamak için kullanabileceğiniz bir Düğüm kodu örneği sağlar.
+title: PostgreSQL için Azure veritabanı 'na bağlanmak için Node. js kullanma-tek sunucu
+description: Bu hızlı başlangıç, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Node. js kod örneği sağlar-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -13,21 +13,21 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80062253"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: PostgreSQL - Single Server için Azure Veritabanı'ndaki verileri bağlamak ve sorgulamak için Node.js'i kullanın
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node. js kullanma-tek sunucu
 
-Bu hızlı başlangıçta, Bir Düğüm.js uygulaması kullanarak PostgreSQL için bir Azure Veritabanına bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
+Bu hızlı başlangıçta, Node. js uygulaması kullanarak PostgreSQL için Azure veritabanı 'na bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Node.js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- [Quickstart'ın Tamamlanması: Azure portalında veya Quickstart'ta PostgreSQL sunucusu için bir Azure Veritabanı oluşturun:](quickstart-create-server-database-portal.md) [Azure CLI'yi kullanarak PostgreSQL için bir Azure Veritabanı oluşturun.](quickstart-create-server-database-azure-cli.md)
+- Hızlı başlangıç: Azure portal veya [hızlı başlangıç: Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)PostgreSQL [için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) .
 
 - [Node.js](https://nodejs.org)
 
@@ -47,11 +47,11 @@ npm list
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. Azure [portalında,](https://portal.azure.com/)oluşturduğunuz sunucuyu **(mydemoserver**gibi) arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com/), oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın ve seçin.
 
-1. Sunucunun Genel **Bakış** panelinden, Sunucu **adını** ve **Yönetici kullanıcı adını**not edin. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+1. Sunucunun **genel bakış** panelinden **sunucu adı** ve **Yönetici Kullanıcı adı**' nı bir yere göz atın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
 
-   ![PostgreSQL bağlantı dizesi için Azure Veritabanı](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+   ![PostgreSQL için Azure veritabanı bağlantı dizesi](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js’de JavaScript kodunu çalıştırma
 `node` yazarak Node.js’yi Bash kabuğundan, Terminal’den veya Windows Komut İstemi’nden başlatabilir, ardından isteme kopyalayıp yapıştırarak örnek JavaScript kodunu etkili bir şekilde çalıştırabilirsiniz. Alternatif olarak, JavaScript kodunu bir metin dosyasına kaydedebilir ve `node filename.js` öğesini, bunu çalıştıracak bir parametre olarak dosya adıyla başlatabilirsiniz.

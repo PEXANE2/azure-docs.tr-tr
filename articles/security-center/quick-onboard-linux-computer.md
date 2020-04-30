@@ -1,5 +1,5 @@
 ---
-title: Yerleşik Linux bilgisayarları Azure Güvenlik Merkezi'ne | Microsoft Dokümanlar
+title: Linux bilgisayarlarını Azure Güvenlik Merkezi 'ne ekleme | Microsoft Docs
 description: Bu hızlı başlangıç, Linux bilgisayarlarınızı Güvenlik Merkezi’ne nasıl ekleyebileceğinizi gösterir.
 services: security-center
 documentationcenter: na
@@ -15,31 +15,31 @@ ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
 ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435969"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Hızlı başlangıç: Linux bilgisayarlarını Azure Güvenlik Merkezi’ne ekleme
-Azure aboneliklerinize bindikten sonra, bir Aracı sağlayarak Azure dışında (örneğin şirket içinde veya diğer bulutlarda) çalışan Linux kaynakları için Güvenlik Merkezi'ni etkinleştirebilirsiniz. Aracı, Log Analytics aracısı olarak adlandırılır, ancak OMS aracısı olarak da bilinir.
+Azure aboneliklerinizi ekledikten sonra, Azure dışında çalışan Linux kaynakları için güvenlik merkezini, örneğin şirket içi veya diğer bulutlarda, bir aracı sağlayarak etkinleştirebilirsiniz. Aracıya Log Analytics Aracısı denir, ancak OMS Aracısı olarak da bilinir.
 
-Bu hızlı başlangıç, Aracıyı Linux bilgisayarına nasıl yükleyersiniz gösterir.
+Bu hızlı başlangıçta aracının bir Linux bilgisayara nasıl yükleneceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bu hızlı başlangıç yapmadan önce Güvenlik Merkezi'nin Standart fiyatlandırma katmanında olmalısınız. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi'nin Standard'ına ücretsiz olarak bakabilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi 'nin standardını ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Yeni Linux bilgisayarı ekleme
 
-1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. Microsoft **Azure** menüsünde **Güvenlik Merkezi'ni**seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 
 3. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
-4. **Başlat** sekmesini seçin. ![][3]
+4. **Kullanmaya** başlayın sekmesini seçin. ![kullanmaya başlayın][3]
 
 5. **Yeni Azure olmayan bilgisayarlar ekleme** atında **Yapılandır**’a tıklayın, Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
@@ -56,7 +56,7 @@ Bu hızlı başlangıç yapmadan önce Güvenlik Merkezi'nin Standart fiyatland�
 
    ![Aracıyı yükleme][5]
 
-Aracının günlüklerini şu telefondan bulabilir: */var/opt/microsoft/omsagent/\<workspace id>/log/*
+Aracının günlükleri şurada bulunabilir: */var/SeçenekKodu/Microsoft/omsagent/\<Workspace ID>/log/*
 
   ![Aracı günlükleri][6]
 
@@ -81,7 +81,7 @@ Aracıyı kaldırmak için:
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, aracıyı bir Linux bilgisayarında sağladınız. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
+Bu hızlı başlangıçta aracıyı bir Linux bilgisayarda sağladınız. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Öğretici: Güvenlik ilkelerini tanımlama ve değerlendirme](tutorial-security-policy.md)

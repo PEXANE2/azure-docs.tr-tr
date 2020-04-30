@@ -1,5 +1,5 @@
 ---
-title: Node.js kullanarak bağlan - MySQL için Azure Veritabanı
+title: Node. js kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç Node.js kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -9,33 +9,33 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067944"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: MySQL için Azure Veritabanı'ndaki verileri bağlamak ve sorgulamak için Node.js'yi kullanın
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node. js kullanma
 
-Bu hızlı başlangıçta, Node.js kullanarak MySQL için bir Azure Veritabanına bağlanırsınız. Daha sonra, veritabanındaki verileri Mac, Ubuntu Linux ve Windows platformlarından sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanırsınız. 
+Bu hızlı başlangıçta, Node. js kullanarak MySQL için Azure veritabanı 'na bağlanırsınız. Ardından, Mac, Ubuntu Linux ve Windows platformlarındaki veritabanındaki verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanın. 
 
-Bu konu, Node.js kullanarak geliştirmeye aşina olduğunuzu varsayar, ancak MySQL için Azure Veritabanı ile çalışmaya yeni başlıyorsunuz.
+Bu konuda, Node. js kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure veritabanı ile çalışmaya yeni başladığınızı varsaymaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- MySQL sunucusu için bir Azure Veritabanı. [Azure portalı kullanarak MySQL sunucusu için bir Azure Veritabanı oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya Azure [CLI'yi kullanarak MySQL sunucusu için bir Azure Veritabanı oluşturun.](quickstart-create-mysql-server-database-using-azure-cli.md)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- MySQL için Azure veritabanı sunucusu. [Azure Portal kullanarak MySQL Için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturun](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Node.js’yi ve MySQL bağlayıcısını yükleme
 
-Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun bölümde talimatları izleyin. [mysql](https://www.npmjs.com/package/mysql) paketini ve bağımlılıklarını proje klasörünüze yüklemek için npm'yi kullanın.
+Platformunuza bağlı olarak, [Node. js](https://nodejs.org)' yi yüklemek için uygun bölümdeki yönergeleri izleyin. [MySQL](https://www.npmjs.com/package/mysql) paketini ve bağımlılıklarını proje klasörünüze yüklemek için NPM kullanın.
 
 ### <a name="windows"></a>**Windows**
 
 1. [Node.js indirme sayfasını](https://nodejs.org/en/download/) ziyaret edin ve istediğiniz Windows yükleyici seçeneğini belirleyin.
 2. `nodejsmysql` gibi yerel bir proje klasörü oluşturun. 
-3. Komut istemini açın ve ardından dizini proje klasörüne değiştirin, örneğin`cd c:\nodejsmysql\`
-4. Mysql kitaplığını proje klasörüne yüklemek için NPM aracını çalıştırın.
+3. Komut istemi ' ni açın ve ardından dizini proje klasörüne değiştirin, örneğin`cd c:\nodejsmysql\`
+4. MySQL kitaplığını proje klasörüne yüklemek için NPM aracını çalıştırın.
 
    ```cmd
    cd c:\nodejsmysql\
@@ -43,7 +43,7 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
    "C:\Program Files\nodejs\npm" list
    ```
 
-5. Çıktı metnini denetleyerek yüklemeyi `npm list` doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
+5. `npm list` Çıkış metnini denetleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
@@ -53,7 +53,7 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
    sudo apt-get install -y nodejs npm
    ```
 
-2. Bir proje klasörü `mysqlnodejs` oluşturmak ve mysql paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
+2. Bir proje klasörü `mysqlnodejs` oluşturmak ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
    mkdir nodejsmysql
@@ -61,7 +61,7 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
    npm install --save mysql
    npm list
    ```
-3. npm liste çıktı metnini işaretleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
+3. NPM listesi çıkış metnini denetleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
 
 ### <a name="mac-os"></a>**Mac OS**
 
@@ -71,7 +71,7 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Bir proje klasörü `mysqlnodejs` oluşturmak ve mysql paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
+2. Bir proje klasörü `mysqlnodejs` oluşturmak ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
    mkdir nodejsmysql
@@ -80,14 +80,14 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
    npm list
    ```
 
-3. Çıktı metnini denetleyerek yüklemeyi `npm list` doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
+3. `npm list` Çıkış metnini denetleyerek yüklemeyi doğrulayın. Yeni yamalar yayımlandıkça sürüm numarası değişebilir.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure portalına](https://portal.azure.com/)giriş yapın.
-2. Azure portalındaki sol menüden **Tüm kaynakları**seçin ve ardından oluşturduğunuz sunucuyu **(mydemoserver**gibi) arayın.
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
+2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
 3. Sunucu adını seçin.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  ![MySQL için Azure Veritabanı sunucu adı](./media/connect-nodejs/server-name-azure-database-mysql.png)
@@ -95,8 +95,8 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js’de JavaScript kodunu çalıştırma
 
 1. JavaScript kodunu metin dosyalarına yapıştırın ve dosyaları .js uzantısıyla bir proje klasörüne kaydedin (örneğin, C:\nodejsmysql\createtable.js veya /home/username/nodejsmysql/createtable.js).
-2. Komut istemini veya bash kabuğunu açın ve ardından `cd nodejsmysql`dizini proje klasörünüzde değiştirin.
-3. Uygulamayı çalıştırmak için, dosya adı gibi takip düğüm komutunu `node createtable.js`girin.
+2. Komut istemi veya bash kabuğunu açın ve ardından dizini proje klasörünüze `cd nodejsmysql`değiştirin.
+3. Uygulamayı çalıştırmak için, Node komutunu ve ardından dosya adını girin (örneğin,) `node createtable.js`.
 4. Windows’da düğüm uygulamanız ortam değişkeni yolunuzda değilse düğüm uygulamasını başlatmak için tam yolu kullanmanız gerekebilir; örneğin, `"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme

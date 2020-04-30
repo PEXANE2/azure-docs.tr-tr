@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254062"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma
@@ -43,7 +43,7 @@ CDN profili oluşturduktan sonra bir uç nokta oluşturmak için bunu kullanabil
    
     CDN profili sayfası görüntülenir.
 
-2. **Bitiş Noktası'nı**seçin.
+2. **Uç nokta**seçin.
    
     ![CDN profili](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
@@ -53,12 +53,12 @@ CDN profili oluşturduktan sonra bir uç nokta oluşturmak için bunu kullanabil
 
     | Ayar | Değer |
     | ------- | ----- |
-    | **Adı** | Uç nokta konak adınız için *my-endpoint-123* değerini girin. Bu ad küresel olarak benzersiz olmalıdır; zaten kullanılıyorsa farklı bir ad girebilirsiniz. Bu ad, önbelleğe alınmış kaynaklarınızı etki alanı _ &lt;bitiş noktası adından&gt;_ azureedge.net olarak erişmek için kullanılır.|
+    | **Adı** | Uç nokta konak adınız için *my-endpoint-123* değerini girin. Bu ad küresel olarak benzersiz olmalıdır; zaten kullanılıyorsa farklı bir ad girebilirsiniz. Bu ad, etki alanı _ &lt;uç noktası adı&gt;_. azureedge.net olan önbelleğe alınmış kaynaklarınıza erişmek için kullanılır.|
     | **Kaynak türü** | **Depolama**’yı seçin. | 
     | **Kaynak konak adı** | Konak adınız için *mystorageacct123.blob.core.windows.net* değerini girin. Bu ad küresel olarak benzersiz olmalıdır; zaten kullanılıyorsa farklı bir ad girebilirsiniz. |
     | **Kaynak yolu** | Boş bırakın. |
     | **Kaynak barındırma üst bilgisi** | Varsayılan olarak oluşturulan değeri değiştirmeyin. |  
-    | **Protokolü** | Varsayılan **HTTP** ve **HTTPS** seçeneklerini seçili şekilde bırakın. |
+    | **Protocol** | Varsayılan **HTTP** ve **HTTPS** seçeneklerini seçili şekilde bırakın. |
     | **Kaynak bağlantı noktası** | Varsayılan bağlantı noktası değerlerini değiştirmeyin. | 
     | **Şunun için iyileştirildi:** | Varsayılan **Genel web teslimatı** seçimini değiştirmeyin. |
 

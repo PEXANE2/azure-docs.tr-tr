@@ -1,6 +1,6 @@
 ---
-title: Ek doğrulama sayfası nedir? - Azure REKLAM
-description: İki faktörlü doğrulama için Ek güvenlik doğrulama sayfasına nasıl gidilir?
+title: Ek doğrulama sayfası nedir? -Azure AD
+description: İki öğeli doğrulama için ek güvenlik doğrulama sayfasına nasıl ulaşırsanız.
 services: active-directory
 author: curtand
 manager: daveba
@@ -11,68 +11,68 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77062566"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Ek doğrulama sayfası nedir?
 
-BT ekibinizden veya patronunuzdan kuruluşunuzun hesabınıza ek bir güvenlik doğrulaması eklediğine dair bir e-posta aldınız. Bu ne anlama geliyor? Bu durum kuruluşunuzun oturum açma sırasında gerçekten söylediğiniz kişi olduğunuzdan emin olmak için ek adımları uygulamaya aldığını göstermektedir. İki faktörlü doğrulama olarak da bilinen bu ekstra doğrulama, kullanıcı adınız, parolanız ve bir mobil cihaz veya telefonun birleşimi aracılığıyla yapılır.
+BT ekibinizden veya patronunuzdan kuruluşunuzun hesabınıza ek bir güvenlik doğrulaması eklediğine dair bir e-posta aldınız. Bu ne anlama geliyor? Bu durum kuruluşunuzun oturum açma sırasında gerçekten söylediğiniz kişi olduğunuzdan emin olmak için ek adımları uygulamaya aldığını göstermektedir. İki öğeli doğrulama olarak da bilinen bu ek doğrulama, Kullanıcı adınızın, parolanızın ve bir mobil cihazın veya telefonunuzun bir birleşimi aracılığıyla yapılır.
 
-İki faktörlü doğrulama, iki kimlik doğrulama biçimine dayandığı için paroladan daha güvenlidir: bildiğiniz bir şey ve sizinle birlikte olduğunuz bir şey. Bildiğiniz şey parolanızdır. Sahip olduğunuz şey ise genelde yanınızda olan telefonunuz veya başka bir cihazdır. İki faktörlü doğrulama, kötü amaçlı bilgisayar korsanlarının sizin gibi davranmasını engellemeye yardımcı olabilir, çünkü parolanız olsa bile, bunların da cihazınıza sahip olmama olasılığı vardır.
+İki öğeli doğrulama iki farklı kimlik doğrulama biçimini temel aldığından yalnızca bir paroladan daha güvenlidir: bildiğiniz bir şey ve sizinle bir şeyler. Bildiğiniz şey parolanızdır. Sahip olduğunuz şey ise genelde yanınızda olan telefonunuz veya başka bir cihazdır. İki öğeli doğrulama kötü amaçlı korsanların sizin için hazır olmasını durdurmaya yardımcı olabilir, çünkü parolankenizin olsa da, gürültü, cihazınıza sahip olmalardır.
 
 >[!Important]
->Bu makale, bir çalışma veya okul hesabıyla (örneğin) alain@contoso.comiki faktörlü doğrulama kullanmaya çalışan kullanıcılar için hazırlanmıştır. Çalışanlarınız veya diğer kullanıcılar için iki faktörlü doğrulamayı nasıl açabileceğiniz hakkında bilgi arayan bir yöneticiyseniz, [Azure Etkin Dizin Kimlik Doğrulama belgelerine](https://docs.microsoft.com/azure/active-directory/authentication/)bakın.
+>Bu makale, bir iş veya okul hesabıyla (örneğin, alain@contoso.com) iki öğeli doğrulama kullanmaya çalışan kullanıcılara yöneliktir. Çalışanlarınız veya diğer kullanıcılar için iki öğeli doğrulamanın nasıl kullanılacağına ilişkin bilgi arayan bir yöneticiyseniz, [Azure Active Directory kimlik doğrulama belgelerine](https://docs.microsoft.com/azure/active-directory/authentication/)bakın.
 
-## <a name="who-decides-if-you-use-this-feature"></a>Bu özelliği kullanıp kullanmadığınıza kim karar verir?
+## <a name="who-decides-if-you-use-this-feature"></a>Bu özelliği kullanıp kullanmayacağına karar veriyor musunuz?
 
-Hesap türünüze bağlı olarak, kuruluşunuz iki faktörlü doğrulama kullanmanız gerektiğine karar verebilir veya kendiniz karar verebilirsiniz.
+Kuruluşunuz, hesap türüne bağlı olarak iki öğeli doğrulama kullanmanız gerektiğine karar verebilir veya kendiniz karar veremeyebilirsiniz.
 
-- **İş veya okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin,), alain@contoso.combelirli doğrulama yöntemleriyle birlikte iki faktörlü doğrulama kullanıp kullanmanız kuruluşunuzun dır. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, bu özelliği tek tek kapatmanız için bir yol yoktur.
+- **İş veya okul hesabı.** Bir iş veya okul hesabı kullanıyorsanız (örneğin, alain@contoso.com), bu, belirli doğrulama yöntemleriyle birlikte iki öğeli doğrulama kullanmanız gerekip gerekmediğini kuruluşunuza göre yapılır. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur.
 
-- **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki faktörlü doğrulama ayarlamayı alain@outlook.comseçebilirsiniz (örneğin, ). İki faktörlü doğrulama ve kişisel Microsoft hesabınızla ilgili sorunlar yaşıyorsanız, [Microsoft hesabınız için iki faktörlü doğrulamayı açma veya kapatma'ya](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bakın. Bu özelliği kullanıp kullanmamayı seçtiğinizden, istediğiniz zaman açıp kapatabilirsiniz.
+- **Kişisel Microsoft hesabı.** Kişisel Microsoft hesaplarınız için iki öğeli doğrulama ayarlamayı seçebilirsiniz (örneğin, alain@outlook.com). İki öğeli doğrulamayla ve kişisel Microsoft hesabı ilgili sorun yaşıyorsanız, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bölümüne bakın. Bu özelliği kullanmak isteyip istemediğinizi seçerken dilediğiniz zaman açıp kapatabilirsiniz.
 
     >[!Note]
-    >İki faktörlü doğrulama ve kişisel Microsoft hesaplarınızdan biriyle ilgili sorunlar danielle@outlook.comyaşıyorsanız (örneğin), [Microsoft hesabınızla iki aşamalı doğrulamayı nasıl kullanacağınız](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification)la ilgili önerileri deneyebilirsiniz.
+    >İki öğeli doğrulamayla ve kişisel Microsoft hesaplarınızdan biriyle ilgili sorun yaşıyorsanız (örneğin, danielle@outlook.com), [Microsoft hesabı iki aşamalı doğrulamayı kullanma](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification)önerilerini deneyebilirsiniz.
 
 ## <a name="access-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasına erişin
 
-Kuruluşunuz açılıp iki faktörlü doyırım kurduktan sonra, hesabınızın güvenliğini korumasına yardımcı olmak için daha fazla bilgi sağlamışbir istem alırsınız.
+Kuruluşunuz, iki öğeli doğrulamayı etkinleştirdikten ve ayarladıktan sonra, hesabınızı güvende tutmaya yardımcı olmak için daha fazla bilgi sağlamanızı söyleyen bir istem alırsınız.
 
-![Daha fazla bilgi istemi gerekli](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
+![Daha fazla bilgi gerekli istemi](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
 
 ### <a name="to-access-the-additional-security-verification-page"></a>Ek güvenlik doğrulama sayfasına erişmek için
 
-1. İstenilen **diğer bilgilerden** **İleri'yi** seçin.
+1. **Daha fazla bilgi gerekli** isteminde **İleri ' yi** seçin.
 
     **Ek güvenlik doğrulama** sayfası görüntülenir.
 
-2. Ek **güvenlik doğrulama** sayfasından, iş veya okul hesabınızda oturum açtıktan sonra kim olduğunuzu söylediğiniz kişi olduğunuzu doğrulamak için hangi iki faktörlü doğrulama yöntemini kullanacağınıza karar vermeniz gerekir. Şunları seçebilirsiniz:
+2. **Ek güvenlik doğrulaması** sayfasında, iş veya okul hesabınızda oturum açtıktan sonra nerede olduğunuzu doğrulamak için hangi iki öğeli doğrulama yönteminin kullanılacağına karar vermelisiniz. Şunları seçebilirsiniz:
 
     | İletişim yöntemi | Açıklama |
     | --- | --- |
-    | Mobil uygulama | <ul><li>**Doğrulama için bildirimler alın.** Bu seçenek, akıllı telefonunuzdaki veya tabletinizdeki kimlik doğrulayıcı uygulamasına bir bildirim ilişir. Bildirimi görüntüleyin ve yasalsa uygulamada **Kimlik Doğrulaması'nı** seçin. İşiniz veya okulunuzun kimliği doğrulatmadan önce bir PIN girmeniz gerekebilir.</li><li>**Doğrulama kodunu kullanın.** Bu modda, kimlik doğrulayıcı uygulaması her 30 saniyede bir güncellenen bir doğrulama kodu oluşturur. Oturum açma ekranına en güncel doğrulama kodunu girin.<br>Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir.</li></ul> |
-    | Kimlik doğrulama telefonu | <ul><li>**Telefon görüşmesi,** sağladığınız telefon numarasına otomatik bir sesli arama yerleştirir. Aramayı yanıtlayın ve kimlik doğrulaması için telefon tuş ucundaki pound tuşuna (#) basın.</li><li>**Metin iletisi** doğrulama kodu içeren bir metin iletisini sona erdirer. Metindeki istemi takiben, metin iletisini yanıtlayın veya oturum açma arabirimine sağlanan doğrulama kodunu girin.</li></ul> |
-    | Ofis telefonu | Sağladığınız telefon numarasına otomatik sesli arama yerleştirir. Aramayı yanıtlayın ve kimlik doğrulaması için telefon tuş ucundaki pound tuşuna (#) basın. |
+    | Mobil uygulama | <ul><li>**Doğrulama için bildirim alın.** Bu seçenek, Smartphone veya tabletinizdeki kimlik doğrulayıcı uygulamasına bir bildirim gönderir. Bildirimi görüntüleyin ve mümkünse, uygulamada **kimlik doğrulaması** ' nı seçin. Çalışmanız veya okulunuz, kimlik doğrulamasından önce bir PIN girmenizi gerektirebilir.</li><li>**Doğrulama kodunu kullanın.** Bu modda, Authenticator uygulaması 30 saniyede bir güncelleştirme yapan bir doğrulama kodu üretir. Oturum açma ekranında en güncel doğrulama kodunu girin.<br>Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594) ve [iOS](https://go.microsoft.com/fwlink/?linkid=866594)için kullanılabilir.</li></ul> |
+    | Kimlik doğrulama telefonu | <ul><li>**Telefon araması** , sağladığınız telefon numarasına otomatik bir sesli çağrı koyar. Çağrıyı yanıtlayın ve kimlik doğrulaması için telefon tuş takımındaki kare tuşuna (#) basın.</li><li>**Kısa mesaj** , doğrulama kodu içeren bir kısa mesaj sonlandırır. Metinde istemden sonra, metin iletisini yanıtlayın ya da oturum açma arabirimine sunulan doğrulama kodunu girin.</li></ul> |
+    | Ofis telefonu | Sağladığınız telefon numarasına otomatik bir sesli çağrı koyar. Çağrıyı yanıtlayın ve kimlik doğrulaması için telefon tuş takımındaki kare tuşuna (#) basın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Ek güvenlik doğrulama** sayfasına eriştinkten sonra, iki faktörlü doğrulama yönteminizi seçmeli ve ayarlamanız gerekir:
+**Ek güvenlik doğrulama** sayfasına eriştiyseniz, iki öğeli doğrulama yönteminizi seçip ayarlamanız gerekir:
 
-- [Mobil cihazınızı doğrulama yönteminiz olarak ayarlama](multi-factor-authentication-setup-phone-number.md)
+- [Mobil cihazınızı doğrulama yönteminiz olarak ayarlayın](multi-factor-authentication-setup-phone-number.md)
 
-- [Ofis telefonunuzu doğrulama yönteminiz olarak ayarlama](multi-factor-authentication-setup-office-phone.md)
+- [Office telefonunuzu doğrulama yönteminiz olarak ayarlayın](multi-factor-authentication-setup-office-phone.md)
 
-- [Microsoft Authenticator uygulamasını doğrulama yönteminiz olarak ayarlama](multi-factor-authentication-setup-auth-app.md)
+- [Doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını ayarlama](multi-factor-authentication-setup-auth-app.md)
 
 ## <a name="related-resources"></a>İlgili kaynaklar
 
-- [İki faktörlü doğrulama yöntemi ayarlarınızı yönetme](multi-factor-authentication-end-user-manage-settings.md)
+- [İki öğeli doğrulama yöntemi ayarlarınızı yönetin](multi-factor-authentication-end-user-manage-settings.md)
 
 - [Uygulama parolalarını yönetme](multi-factor-authentication-end-user-app-passwords.md)
 
-- [İki faktörlü doğrulama kullanarak oturum açma](multi-factor-authentication-end-user-signin.md)
+- [İki öğeli doğrulama kullanarak oturum açın](multi-factor-authentication-end-user-signin.md)
 
-- [İki faktörlü doğrulama ile yardım alın](multi-factor-authentication-end-user-troubleshoot.md) 
+- [İki öğeli doğrulamayla ilgili yardım alın](multi-factor-authentication-end-user-troubleshoot.md) 

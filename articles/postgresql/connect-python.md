@@ -1,6 +1,6 @@
 ---
-title: Python ile bağlanın - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: Bu hızlı başlatma, PostgreSQL - Single Server için Azure Veritabanı'ndan veri bağlamak ve sorgulamak için kullanabileceğiniz Python kod örnekleri sağlar.
+title: Python ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verilere veri sorgulamak için kullanabileceğiniz Python kod örnekleri sağlanır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,58 +9,58 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
 ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76769050"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: PostgreSQL için Azure Veritabanı'ndaki verileri bağlamak ve sorgulamak için Python'u kullanın - Tek Sunucu
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
-Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows'da Python kullanarak PostgreSQL için bir Azure Veritabanı ile çalışırsınız. Hızlı başlangıç, veritabanına nasıl bağlanılsüreceğini ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağımı gösterir. Makale, Python'u bildiğinizi, ancak PostgreSQL için Azure Veritabanı ile çalışmaya yeni bir şey yaptığınızı varsayar.
+Bu hızlı başlangıçta, macOS, Ubuntu Linux veya Windows üzerinde Python kullanarak PostgreSQL için Azure veritabanı ile çalışırsınız. Hızlı başlangıç, veritabanına bağlanmayı ve verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanmayı gösterir. Makalede, Python hakkında bilgi sahibi olduğunuz ancak PostgreSQL için Azure veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- [Quickstart'ın Tamamlanması: Azure portalında veya Quickstart'ta PostgreSQL sunucusu için bir Azure Veritabanı oluşturun:](quickstart-create-server-database-portal.md) [Azure CLI'yi kullanarak PostgreSQL için bir Azure Veritabanı oluşturun.](quickstart-create-server-database-azure-cli.md)
+- Hızlı başlangıç: Azure portal veya [hızlı başlangıç: Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)PostgreSQL [için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) .
   
-- [Python](https://www.python.org/downloads/) 2.7.9+ veya 3.4+
+- [Python](https://www.python.org/downloads/) 2.7.9 + veya 3.4 +.
   
-- En son [pip](https://pip.pypa.io/en/stable/installing/) paket yükleyici.
+- En son [PIP](https://pip.pypa.io/en/stable/installing/) paketi yükleyicisi.
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>PostgreSQL için Python kitaplıklarını yükleme
-[Psycopg2](https://pypi.python.org/pypi/psycopg2/) modülü, Bir PostgreSQL veritabanına bağlanmanızı ve sorgulamanızı sağlar ve Linux, macOS veya Windows [tekerlek](https://pythonwheels.com/) paketi olarak kullanılabilir. Tüm bağımlılıklar da dahil olmak üzere modülün ikili sürümünü yükleyin. Yükleme ve `psycopg2` gereksinimler hakkında daha fazla bilgi için [yükleme](http://initd.org/psycopg/docs/install.html)ye bakın. 
+[Psycopg2](https://pypi.python.org/pypi/psycopg2/) modülü, bir PostgreSQL veritabanına bağlanma ve sorgulama sağlar ve Linux, MacOS veya Windows [tekerlek](https://pythonwheels.com/) paketi olarak kullanılabilir. Tüm bağımlılıklar dahil olmak üzere modülün ikili sürümünü yükler. Yükleme ve gereksinimler hakkında `psycopg2` daha fazla bilgi için bkz. [yükleme](http://initd.org/psycopg/docs/install.html). 
 
-Yüklemek `psycopg2`için, bir terminal veya komut `pip install psycopg2`istemi açın ve komutu çalıştırın.
+Yüklemek `psycopg2`için bir Terminal veya komut istemi açın ve komutunu `pip install psycopg2`çalıştırın.
 
-## <a name="get-database-connection-information"></a>Veritabanı bağlantı bilgilerini alma
-PostgreSQL veritabanı için bir Azure Veritabanına bağlanmak için tam nitelikli sunucu adı ve giriş kimlik bilgileri gerekir. Bu bilgileri Azure portalından alabilirsiniz.
+## <a name="get-database-connection-information"></a>Veritabanı bağlantı bilgilerini al
+PostgreSQL için Azure veritabanı veritabanına bağlanmak için tam sunucu adı ve oturum açma kimlik bilgileri gerekir. Bu bilgileri Azure portal alabilirsiniz.
 
-1. Azure [portalında,](https://portal.azure.com/)PostgreSQL sunucu adı için Azure Veritabanınızı arayın ve seçin. 
-1. Sunucunun Genel **Bakış** sayfasında, tam nitelikli **Sunucu adını** ve **Yönetici kullanıcı adını**kopyalayın. Tam nitelikli **Sunucu adı** her zaman formu * \<my-server-name>.postgres.database.azure.com*ve Yönetici kullanıcı **adı** her zaman formu * \<my-admin-kullanıcı adı> @\<my-server-name>*. 
+1. [Azure Portal](https://portal.azure.com/), PostgreSQL Için Azure veritabanı sunucu adı ' nı arayıp seçin. 
+1. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı**' nı kopyalayın. Tam **sunucu adı** her zaman * \<My-Server-Name>. Postgres.Database.Azure.com*biçimindedir ve **Yönetici Kullanıcı** adı her zaman * \<My-admin-username> @\<My-Server-Name>* biçiminde olur. 
    
-   Ayrıca yönetici şifrenizi de ihtiyacınız var. Unutursanız, bu sayfadan sıfırlayabilirsiniz. 
+   Yönetici parolanızla de ihtiyacınız vardır. Unutursanız, bu sayfadan sıfırlayabilirsiniz. 
    
    ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-python/1-connection-string.png)
 
-## <a name="how-to-run-the-python-examples"></a>Python örnekleri nasıl çalıştırılır?
+## <a name="how-to-run-the-python-examples"></a>Python örneklerini çalıştırma
 
 Bu makaledeki her kod örneği için:
 
 1. Metin düzenleyicisinde yeni bir dosya oluşturun. 
    
-1. Kod örneğini dosyaya ekleyin. Kodda, değiştirin:
-   - `<server-name>`ve `<admin-username>` Azure portalından kopyaladığınız değerlerle.
-   - `<admin-password>`sunucu şifrenizle.
-   - `<database-name>`PostgreSQL veritabanı için Azure Veritabanınızın adı ile. Sunucunuzu oluşturduğunuzda, *postgres* adlı varsayılan veritabanı otomatik olarak oluşturuldu. SQL komutlarını kullanarak bu veritabanını yeniden adlandırabilir veya yeni bir veritabanı oluşturabilirsiniz. 
+1. Kod örneğini dosyaya ekleyin. Kodda, şunu değiştirin:
+   - `<server-name>`ve `<admin-username>` Azure Portal kopyaladığınız değerlerle birlikte.
+   - `<admin-password>`Sunucu parolanızla birlikte.
+   - `<database-name>`PostgreSQL için Azure veritabanı veritabanınızın adı ile. Sunucunuzu oluştururken *Postgres* adlı varsayılan veritabanı otomatik olarak oluşturulmuştur. Bu veritabanını yeniden adlandırabilir veya SQL komutlarını kullanarak yeni bir veritabanı oluşturabilirsiniz. 
    
-1. Dosyayı proje klasörünüze *,postgres-insert.py*gibi bir *.py* uzantısı ile kaydedin. Windows için, dosyayı kaydederken UTF-8 kodlamasının seçildiğinden emin olun. 
+1. Dosyayı, *Postgres-insert.py*gibi bir *. Kopyala* uzantısıyla birlikte proje klasörünüze kaydedin. Windows için, dosyayı kaydettiğinizde UTF-8 kodlamasının seçildiğinden emin olun. 
    
-1. Dosyayı çalıştırmak için, komut satırı arabiriminde proje klasörünüzde değiştirin ve `python postgres-insert.py`örneğin dosya adını takip eden yazın. `python`
+1. Dosyayı çalıştırmak için, bir komut satırı arabirimindeki proje klasörünüze geçin ve ardından dosya adını (örneğin `python` `python postgres-insert.py`,) yazın.
 
 ## <a name="create-a-table-and-insert-data"></a>Tablo oluşturma ve veri ekleme
-Aşağıdaki kod [örneği, psycopg2.connect](http://initd.org/psycopg/docs/connection.html) işlevini kullanarak PostgreSQL veritabanıiçin Azure Veritabanınıza bağlanır ve verileri SQL **INSERT** deyimiyle yükler. [Imleç.execute](http://initd.org/psycopg/docs/cursor.html#execute) işlevi veritabanına karşı SQL sorgusu yürütür. 
+Aşağıdaki kod örneği, [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) Işlevini kullanarak PostgreSQL Için Azure veritabanı veritabanınıza bağlanır ve VERILERI bir SQL **Insert** ifadesiyle yükler. [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) işlevi SQL sorgusunu veritabanına karşı yürütür. 
 
 ```Python
 import psycopg2
@@ -99,12 +99,12 @@ cursor.close()
 conn.close()
 ```
 
-Kod başarılı bir şekilde çalıştığında, aşağıdaki çıktıyı üretir:
+Kod başarıyla çalıştırıldığında, şu çıktıyı üretir:
 
 ![Komut satırı çıkışı](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>Verileri okuma
-Aşağıdaki kod örneği PostgreSQL veritabanı için Azure Veritabanınıza bağlanır ve verileri okumak için SQL **SELECT** deyimiyle [imleç.execute](http://initd.org/psycopg/docs/cursor.html#execute) kullanır. Bu işlev bir sorgu kabul eder ve [imleç.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)kullanarak yinelemek için ayarlanmış bir sonuç döndürür. 
+Aşağıdaki kod örneği, PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve [imleç kullanır.](http://initd.org/psycopg/docs/cursor.html#execute) verileri okumak Için SQL **Select** ifadesiyle yürütün. Bu işlev bir sorguyu kabul eder ve [Cursor. fetchAll ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)kullanılarak yinelemek için bir sonuç kümesi döndürür. 
 
 ```Python
 import psycopg2
@@ -138,7 +138,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>Verileri güncelleştirme
-Aşağıdaki kod örneği PostgreSQL veritabanı için Azure Veritabanınıza bağlanır ve verileri güncelleştirmek için SQL **UPDATE** deyimiyle [imleç.execute](http://initd.org/psycopg/docs/cursor.html#execute) kullanır. 
+Aşağıdaki kod örneği PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve [Cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) öğesini SQL **Update** ifadesiyle kullanarak verileri güncelleştirin. 
 
 ```Python
 import psycopg2
@@ -168,7 +168,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>Verileri silme
-Aşağıdaki kod örneği PostgreSQL veritabanı için Azure Veritabanınıza bağlanır ve daha önce eklediğiniz bir stok öğesini silmek için [IMLEÇ.execute'i](http://initd.org/psycopg/docs/cursor.html#execute) SQL **DELETE** deyimiyle kullanır. 
+Aşağıdaki kod örneği PostgreSQL için Azure veritabanı veritabanınıza bağlanır ve [imleç kullanır.](http://initd.org/psycopg/docs/cursor.html#execute) daha önce eklediğiniz bir envanter öğesini sılmek Için SQL **Delete** ifadesiyle yürütün. 
 
 ```Python
 import psycopg2

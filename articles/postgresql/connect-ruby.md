@@ -1,6 +1,6 @@
 ---
-title: Ruby ile bağlanın - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: Bu hızlı başlatma, PostgreSQL - Single Server için Azure Veritabanı'ndan veri bağlamak ve sorgulamak için kullanabileceğiniz bir Ruby kodu örneği sağlar.
+title: Ruby ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Ruby kodu örneği sunulmaktadır-tek sunucu.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,13 +9,13 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74766914"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>PostgreSQL için Azure Veritabanı - Tek Sunucu: Verileri bağlamak ve sorgulamak için Ruby'yi kullanın
+# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>PostgreSQL için Azure veritabanı-tek sunucu: verileri bağlamak ve sorgulamak için Ruby kullanın
 Bu hızlı başlangıçta, [Ruby](https://www.ruby-lang.org) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Ruby kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -25,19 +25,19 @@ Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birin
 
 Ayrıca yüklü olması gerekir:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby pg, Ruby için PostgreSQL modülü
+- Ruby için PostgreSQL modülü olan Ruby pg
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure portalına](https://portal.azure.com/)giriş yapın.
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  ![PostgreSQL için Azure Veritabanı sunucu adı](./media/connect-ruby/1-connection-string.png)
 
 > [!NOTE]
-> Azure `@` Postgres kullanıcı adındaki sembol, tüm bağlantı `%40` dizelerinde olduğu gibi url olarak kodlanmıştır. 
+> Azure `@` Postgres Kullanıcı adı içindeki simge, tüm bağlantı dizelerinde olduğu `%40` gibi URL 'yi kodladı. 
 
 ## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.

@@ -10,74 +10,74 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80437771"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy nedir?
 
-Azure Veri Kutusu Heavy, yüzlerce terabaytlık veriyi Azure'a hızlı, ucuz ve güvenilir bir şekilde göndermenize olanak tanır. Veriler, verilerinizle doldurduğunuz ve Microsoft'a geri gönderdiğiniz 1PB depolama kapasitesine sahip bir Veri Kutusu Ağır aygıtı göndererek Azure'a aktarılır. Cihaz, aktarım sırasında verilerinizi korumak ve güvence altına almak için sağlam bir kasaya sahiptir.
+Azure Data Box Heavy, Azure 'a hızlı, ucuz ve güvenilir bir şekilde yüzlerce terabayt veri göndermenize olanak tanır. Veriler, verilerinize göre doldurduğunuz ve Microsoft 'a geri göndereceğiniz 1 PB depolama kapasitesine sahip Data Box Heavy bir cihaz göndererek Azure 'a aktarılır. Cihazda, aktarım sırasında verilerinizi korumak ve güvenliğini sağlamak için bir Rugged büyük/küçük harfe sahip olabilirsiniz.
 
-Once the device is received at your datacenter, set it up using the local web UI. Sunucularınızdaki verileri cihaza kopyalayın ve cihazı Azure'a geri gönderin. Azure veri merkezinde verileriniz Azure Depolama hesabınıza (lar) yüklenir. Azure portalında tüm uçuçişlem işlemini izleyebilirsiniz.
+Cihaz, veri merkezinizde alındıktan sonra yerel Web Kullanıcı arabirimini kullanarak ayarlayın. Sunucularınızdaki verileri cihaza kopyalayın ve cihazı Azure'a geri gönderin. Azure veri merkezinde Verileriniz Azure depolama hesabınıza yüklenir. Azure portal uçtan uca işlemin tamamını izleyebilirsiniz.
 
 
 > [!IMPORTANT]
-> - Bir aygıt istemek için [Azure portalına](https://portal.azure.com)kaydolun.
+> - Bir cihaz istemek için [Azure Portal](https://portal.azure.com)kaydolun.
 
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-Data Box Heavy, ağ bağlantısının verileri Azure'a yüklemek için yetersiz olduğu yüzlerce terabayttaki veri boyutları için en uygun uyrmaktadır. Veri taşıma işlemi tek seferlik, düzenli veya başta toplu veri aktarımı ve ardından düzenli aktarımlardan oluşabilir. Burada Data Box Heavy'nin veri aktarımı için kullanılabileceği çeşitli senaryoları bulabilirsiniz.
+Data Box Heavy yüzlerce terabayt 'daki veri boyutları için en uygun seçenektir; burada ağ bağlantısı, verileri Azure 'a yüklemek için yeterli değildir. Veri taşıma işlemi tek seferlik, düzenli veya başta toplu veri aktarımı ve ardından düzenli aktarımlardan oluşabilir. Burada Data Box Heavy'nin veri aktarımı için kullanılabileceği çeşitli senaryoları bulabilirsiniz.
 
  - **Tek seferlik geçiş**: Büyük miktardaki şirket içi verilerinin Azure'a taşınmasıdır.
-     - Çevrimiçi medya kitaplığı oluşturmak için medya kitaplığını çevrimdışı teyplerden Azure'a taşıyın.
-     - VM çiftliğinizi, SQL sunucunuzu ve uygulamalarınızı Azure'a geçirin.
-     - HDInsight'ı kullanarak ayrıntılı analiz ve rapor için geçmiş verileri Azure'a taşıyın.
+     - Çevrimiçi bir medya kitaplığı oluşturmak için çevrimdışı bantlardan bir medya kitaplığını Azure 'a taşıyın.
+     - VM grubunuzu, SQL Server 'ı ve uygulamalarınızı Azure 'a geçirin.
+     - HDInsight 'ı kullanarak derinlemesine bir analiz ve rapor için geçmiş verileri Azure 'a taşıyın.
 
  - **İlk toplu aktarım**: Data Box Heavy (seed) ile toplu veri aktarımı yapıldıktan sonra ağ üzerinden artımlı aktarım işlemlerinin gerçekleştirilmesidir.
-     - Örneğin, Data Box Heavy ve yedek çözümler iş ortağı, ilk büyük geçmiş yedeklemeyi Azure'a taşımak için kullanılır. İşlem tamamlandıktan sonra, artımlı veriler ağ üzerinden Azure depolamasına aktarılır.
+     - Örneğin, Data Box Heavy ve bir yedekleme çözümleri iş ortağı ilk büyük geçmişteki yedeklemeyi Azure 'a taşımak için kullanılır. İşlem tamamlandıktan sonra, artımlı veriler ağ üzerinden Azure depolamasına aktarılır.
 
  - **Düzenli yüklemeler**: Düzenli olarak oluşturulan büyük miktarlardaki verilerin Azure'a taşınması gerektiği durumlardır. Enerji keşfinde petrol kuyularında ve rüzgar enerjisini santrallerinde oluşturulan videolar örnek olarak verilebilir.
 
 ## <a name="benefits"></a>Avantajlar
 
-Data Box Heavy, büyük miktarda veriyi ağınız üzerinde çok az ve hiç etkisi olmadan Azure'a taşımak için tasarlanmıştır. Çözümün şöyle avantajları vardır:
+Data Box Heavy, ağınızda çok büyük miktarlarda verileri Azure 'a taşımak için tasarlanmıştır. Çözümün şöyle avantajları vardır:
 
-- **Hız** - Data Box Heavy yüksek performanslı 40 Gbps ağ arabirimleri kullanır.
+- **Hız** -Data Box Heavy yüksek performanslı 40-Gbps ağ arabirimlerini kullanır.
 
-- **Güvenlik** - Data Box Heavy, aygıt, veri ve hizmet için yerleşik güvenlik korumalarına sahiptir.
+- **Güvenlik** -Data Box Heavy cihaz, veri ve hizmet için yerleşik güvenlik korumalarının bulunur.
     - Cihaz, üzerinde oynanmaya karşı korumalı vidalar ve üzerinde oynandığını belli eden çıkartmalarla korunan, sağlamlaştırılmış bir cihaz kasasına sahiptir.
     - Cihazdaki veriler her zaman AES 256 bit ile şifrelenir.
     - Cihaz kilidi yalnızca Azure portalından alınan parolayla açılabilir.
     - Hizmet, Azure güvenlik özelliklerinin koruması altındadır.
-    - Verileriniz Azure'a yüklendikten sonra, ulusal Standartlar ve Teknoloji Enstitüsü (NIST) 800-88r1 standartlarına uygun olarak cihazdaki diskler silinir.
+    - Verileriniz Azure 'a yüklendikten sonra, ulusal standartlar ve Teknoloji Enstitüsü (NıST) 800-88r1 standartlarına uygun olarak cihazdaki diskler temiz temizlenir.
 
 
 ## <a name="features-and-specifications"></a>Özellikler ve belirtimler
 
-Data Box Heavy cihazı bu sürümde aşağıdaki özelliklere sahiptir.
+Data Box Heavy cihaz bu sürümde aşağıdaki özelliklere sahiptir.
 
 | Belirtimler                                          | Açıklama              |
 |---------------------------------------------------------|--------------------------|
-| Ağırlık                                                  | Yaklaşık 500 lbs. <br>Taşıma için kilitleme tekerleklerinde cihaz|
-| Boyutlar                                              | Genişlik: 26 inç Yükseklik: 28 inç Uzunluk: 48 inç |
-| Raf alanı                                              | Rafa monte edilemez|
-| Gerekli kablolar                                         | 4 topraklı 120 V / 10 A güç kablosu (NEMA 5-15) dahil <br> Cihaz 240 V'a kadar gücü destekler ve C-13 güç alıcılarına sahiptir <br> [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) ile uyumlu ağ kablolarını kullanın  |
-| Üs                                                    | Cihaz düğümlerinde paylaşılan 4 dahili güç kaynağı ünitesi (PSU) <br> 1.200 watt tipik güç çekme|
-| Depolama kapasitesi                                        | ~ 1-PB ham, 14 TB her 70 diskler <br> 770-TB kullanılabilir kapasite|
-| Düğüm sayısı                                          | Cihaz başına 2 bağımsız düğüm (her biri 500 TB) |
-| Düğüm başına ağ arabirimleri                             | Düğüm başına 4 ağ arabirimi <br><br> MGMT, DATA3 <ul><li> 2 X 1 GbE arabirimleri </li><li> MGMT yönetim ve ilk kurulum içindeğil, kullanıcı yapılandırılabilir </li><li> DATA3 varsayılan olarak kullanıcı tarafından yapılandırılabilir ve Dinamik Ana Bilgisayar Yapılandırma Protokolü (DHCP)</li></ul>DATA1, DATA2 veri arayüzleri <ul><li>2 X 40 GbE arabirimleri </li><li> DHCP (varsayılan) veya statik için kullanıcı yapılandırılabilir</li></ul>|
+| Ağırlık                                                  | ~ 500 lbs. <br>Taşıma için tekerlek kilitleme üzerindeki cihaz|
+| Boyutlar                                              | Genişlik: 26 inç Yükseklik: 28 inç uzunluk: 48 inç |
+| Raf alanı                                              | Rafa bağlı olamaz|
+| Gerekli kablolar                                         | 4 topraklanmış 120 V/10 güç kablosu (NEMA 5-15) dahil <br> Cihaz en fazla 240 V gücünü destekler ve C-13 güç Alım ptacles 'e sahiptir <br> [MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) ile uyumlu ağ kablolarını kullanma  |
+| Üs                                                    | 4 cihaz düğümleri genelinde paylaşılan 4 yerleşik güç kaynağı birimi (PSUs) <br> 1.200 watt tipik güç çiz|
+| Depolama kapasitesi                                        | ~ 1-PB RAW, 70 her biri 14 TB disk <br> 770-TB kullanılabilir kapasite|
+| Düğüm sayısı                                          | cihaz başına 2 bağımsız düğüm (her biri 500 TB) |
+| Düğüm başına ağ arabirimleri                             | düğüm başına 4 ağ arabirimi <br><br> MGMT, DATA3 <ul><li> 2 X 1-GbE arabirimler </li><li> MGMT yönetim ve ilk kurulum içindir, Kullanıcı yapılandırılamaz </li><li> DATA3, varsayılan olarak Kullanıcı tarafından yapılandırılabilir ve dinamik ana bilgisayar Yapılandırma Protokolü (DHCP)</li></ul>VERI1, VERI2 veri arabirimleri <ul><li>2 X 40-GbE arabirimler </li><li> DHCP (varsayılan) veya statik için yapılandırılabilir Kullanıcı</li></ul>|
 
 
 ## <a name="components"></a>Bileşenler
 
 Data Box Heavy aşağıdaki bileşenleri içerir:
 
-* **Data Box Heavy cihazı**: Verileri güvenle depolayan, dış yüzeyi sağlamlaştırılmış bir fiziksel cihaz. Bu cihaz 770 TB kullanılabilir depolama kapasitesine sahiptir.
+* **Data Box Heavy cihazı**: Verileri güvenle depolayan, dış yüzeyi sağlamlaştırılmış bir fiziksel cihaz. Bu cihazda kullanılabilir 770 TB depolama kapasitesi vardır.
     
-* **Data Box hizmeti**: Azure portalının, farklı coğrafi konumlardan erişebildiğiniz bir web arabiriminde Data Box Heavy cihazını yönetmenize olanak tanıyan bir uzantısı. Veri Kutusu Ağır cihazınızı yönetmek için Veri Kutusu hizmetini kullanın. Hizmetin görevleri, siparişleri oluşturma ve yönetmeyi, uyarıları görüntülemeyi ve yönetmeyi, paylaşımları yönetmeyi içerir.  
+* **Data Box hizmeti**: Azure portalının, farklı coğrafi konumlardan erişebildiğiniz bir web arabiriminde Data Box Heavy cihazını yönetmenize olanak tanıyan bir uzantısı. Data Box Heavy cihazınızı yönetmek için Data Box hizmetini kullanın. Hizmetin görevleri, siparişleri oluşturma ve yönetmeyi, uyarıları görüntülemeyi ve yönetmeyi, paylaşımları yönetmeyi içerir.  
 
 * **Yerel web kullanıcı arabirimi**: Yerel ağa bağlanabilmesi için cihazı yapılandırmak ve ardından Data Box hizmetine kaydetmek için kullanılan, web tabanlı kullanıcı arabirimi. Yerel web kullanıcı arabirimini cihazı kapatmak ve yeniden başlatmak, kopya günlüklerini görüntülemek ve hizmet isteğinde bulunmak üzere Microsoft Desteği'ne başvurmak için de kullanın.
 
@@ -96,11 +96,11 @@ Tipik iş akışı aşağıdaki adımlardan oluşur:
 
 5. **Karşıya yükleme**: Veriler otomatik olarak cihazdan Azure'a kopyalanır. Cihazın diskleri Ulusal Standart ve Teknoloji Kurumu (NIST) yönergelerine uygun ve güvenli bir şekilde silinir.
 
-Bu işlem boyunca, tüm durum değişiklikleri hakkında e-posta yoluyla bilgilendirilirsiniz.
+Bu süreç boyunca tüm durum değişikliklerinde e-posta ile bildirim alırsınız.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Data Box Heavy, hizmetin dağıtıldığı bölgeye, aygıtın sevk edildiği ülkeye/bölgeye ve verileri aktardığınız hedef Azure depolama hesabına göre veri aktarımı yapabilir.
+Data Box Heavy, Hizmetin dağıtıldığı bölge, cihazın gönderildiği ülke/bölge ve verileri aktardığınız hedef Azure depolama hesabı temelinde veri aktarabilir.
 
 - **Hizmet kullanılabilirliği** - Bu sürümde, Data Box Heavy şu bölgelerde kullanılabilir:
     - Birleşik Devletler'deki tüm genel bulut bölgeleri: Orta Batı ABD, Batı ABD2, Batı ABD, Orta Güney ABD, Orta ABD, Orta Kuzey ABD, Doğu ABD ve Doğu ABD2.
@@ -110,18 +110,18 @@ Data Box Heavy, hizmetin dağıtıldığı bölgeye, aygıtın sevk edildiği ü
 
 - **Hedef Depolama hesapları**: Verilerin depolandığı depolama hesapları, hizmetin kullanılabildiği tüm Azure bölgelerinde sağlanır.
 
-Data Box Heavy için bölge kullanılabilirliği yle ilgili en güncel bilgiler [için, bölgeye göre Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin.
+Data Box Heavy bölgenin kullanılabilirliği hakkında en güncel bilgiler için [bölgeye göre Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)' ne gidin.
 
 ## <a name="sign-up"></a>Kaydolma
 
-Data Box Heavy'ye kaydolmak için aşağıdaki adımları izleyin:
+Data Box Heavy kaydolmak için aşağıdaki adımları uygulayın:
 
-1. [Azure portalında oturum açın.](https://portal.azure.com)
-2. Yeni bir kaynak oluşturmak için **+ kaynak** oluşturun' seçeneğini tıklatın. **Azure Data Box** için arama yapın. **Azure Data Box** hizmetini seçin.
-3. **Oluştur'u**tıklatın.
+1. [Azure Portal oturum açın](https://portal.azure.com).
+2. Yeni kaynak oluşturmak için **+ kaynak oluştur ' a** tıklayın. **Azure Data Box** için arama yapın. **Azure Data Box** hizmetini seçin.
+3. **Oluştur**' a tıklayın.
 4. Data Box Heavy için kullanmak istediğiniz aboneliği seçin. Data Box Heavy kaynağını dağıtmak istediğiniz bölgeyi seçin. **Data Box Heavy** seçeneğinde **Kaydol**'a tıklayın.
-5. Veri ikamet ülke / bölge, zaman çerçevesi, hedef Azure hizmeti veri aktarım, ağ bant genişliği ve veri aktarım sıklığı ile ilgili soruları yanıtlayın. Gizlilik ve koşulları gözden geçirdikten sonra, Microsoft sizinle iletişim kurmak için e-posta adresinizi kullanabilir onay kutusunu seçin.
+5. Veri aktarım ülkesi/bölgesi, zaman çerçevesi, veri aktarımı için hedef Azure hizmeti, ağ bant genişliği ve veri aktarımı sıklığı hakkındaki soruları yanıtlayın. Gizlilik ve koşulları gözden geçirdikten sonra, Microsoft sizinle iletişim kurmak için e-posta adresinizi kullanabilir onay kutusunu seçin.
 
-Kaydolduktan sonra, Bir Veri Kutusu Ağır sipariş edebilirsiniz.
+Kaydolduktan sonra bir Data Box Heavy sipariş edebilirsiniz.
 
     

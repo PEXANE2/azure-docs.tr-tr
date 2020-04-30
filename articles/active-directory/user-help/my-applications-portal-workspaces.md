@@ -1,6 +1,6 @@
 ---
-title: Uygulamalarım portalından koleksiyonları kullanarak uygulamaları düzenleme - Azure Active Directory | Microsoft Dokümanlar
-description: My Apps portalından kuruluşunuzun bulut tabanlı uygulamalarına nasıl erişip kullanılacağını öğrenin.
+title: Uygulamalar portalından koleksiyonları kullanarak uygulamaları düzenleme-Azure Active Directory | Microsoft Docs
+description: Uygulamalarım portalından kuruluşunuzun bulut tabanlı uygulamalarına yönelik koleksiyonlara erişme ve bunları kullanma hakkında bilgi edinin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,43 +13,43 @@ ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77064045"
 ---
-# <a name="use-collections-in-the-my-apps-portal"></a>Uygulamalarım portalında koleksiyonları kullanma
+# <a name="use-collections-in-the-my-apps-portal"></a>Uygulamalarım portalındaki koleksiyonları kullanma
 
-Koleksiyonlar, **Uygulamalarım** portalında gördüğünüz farklı uygulama görünümleridir. Uygulamalar, örneğin departman işlevine veya kullanıcı rolüne göre koleksiyonlar halinde gruplandırılabilir. Kullanılabilir koleksiyon veya kategori görmüyorsanız, yöneticinizin herhangi bir koleksiyon ayarlamadığı veya sizinle paylaşmadığı anlamına gelir. Paylaşılan koleksiyonları görmek için ek yardım veya izinler için kuruluşunuzun Yardım Masası'na başvurun.
+Koleksiyonlar, **My Apps** portalında gördüğünüz farklı uygulama görünümleridir. Uygulamalar, örneğin, Bölüm işlevine veya kullanıcı rolüne göre koleksiyonlar halinde gruplandırılabilir. Herhangi bir koleksiyon veya kategori görmüyorsanız, yöneticinizin sizinle hiç bir şekilde ayarlanmamış veya paylaşmadığı anlamına gelir. Paylaşılan koleksiyonları görmek için ek yardım veya izinler için kuruluşunuzun yardım masasına başvurun.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Bu içerik **Uygulamalarım** kullanıcıları için tasarlanmıştır. Yöneticiyseniz, [Uygulama Yönetimi Dokümantasyonu'nda](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)bulut tabanlı uygulamalarınızı nasıl ayarlayıp yönetebileceğiniz hakkında daha fazla bilgi bulabilirsiniz.
+>Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="access-apps-using-collections"></a>Koleksiyonları kullanarak uygulamalara erişin
+## <a name="access-apps-using-collections"></a>Koleksiyonları kullanarak uygulamalara erişme
 
-**Uygulamalarım** portalındaki koleksiyonların listesi, erişebildiğiniz her uygulamaya sahip olan **Tüm Uygulamalar**adlı bir uygulamayı göstermek için varsayılan olarak:
+**Uygulamalarım** portalındaki koleksiyonların listesi varsayılan olarak, erişim sahibi olduğunuz her uygulamayı Içeren **tüm uygulamalar**adlı bir adı gösterir:
 
 ![Uygulamalarım portalındaki tüm uygulamalar sayfası](media/my-applications-portal-workspaces/my-apps-all.png)
 
-Bu listede gördüğünüz diğer tüm koleksiyon yöneticiniz tarafından oluşturuldu ve sizinle paylaşıldı. Aşağıdaki örnekte *Destek* gibi daha kapsamlı bir uygulama kümesini görmek için bu koleksiyonlardan birini seçebilirsiniz:
+Bu listede gördüğünüz herhangi bir koleksiyon, yöneticiniz tarafından oluşturulmuştur ve sizinle paylaşılır. Aşağıdaki örnekte *destek* gibi daha kapsamlı bir uygulamalar kümesini görmek için bu koleksiyonlardan birini seçebilirsiniz:
 
-![Uygulamalarım portalında tek tek toplama ve kapsamlı uygulama kümesi](media/my-applications-portal-workspaces/my-apps-workspace.png)
+![Uygulamalarım portalındaki tek tek koleksiyon ve kapsamlı uygulamalar kümesi](media/my-applications-portal-workspaces/my-apps-workspace.png)
 
-Bir koleksiyonu seçip görüntülediğinizde, yalnızca erişebildiğiniz varsayılan uygulamaları görürsünüz.
+Bir koleksiyonu seçip görüntülediğinizde, yalnızca erişiminiz olan varsayılan uygulamaları görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Uygulamalarınızı Uygulamalarım** portalındaki çeşitli kategorilerde düzenledikten sonra şunları yapabilirsiniz:
+Uygulamalarınızı **uygulamalarım** portalındaki çeşitli kategorilerde organize ettikten sonra şunları yapabilirsiniz:
 
-- Uygulamalara verilen izinleri gözden geçirin, güncelleyin veya iptal edin. Daha fazla bilgi için, [Uygulamalarım portalında uygulama izinlerini edin veya iptal edin.](my-applications-portal-permissions-saved-accounts.md)
+- Uygulamalara verilen izinleri gözden geçirin, güncelleştirin veya iptal edin. Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulama Izinlerini düzenleme veya iptal etme](my-applications-portal-permissions-saved-accounts.md).
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [Profil ve hesap bilgilerinizi güncelleyin.](my-account-portal-overview.md) **Profilim** portalında görünen kişisel bilgilerinizin nasıl güncelleştirilene ilişkin talimatlar.
+- [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profil** portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
 
-- [Kuruluşlarınızı yönetin.](my-account-portal-organizations-page.md) **Profilim** portalının **Kuruluşlar** sayfasında kuruluşla ilgili bilgilerinizi görüntüleme ve yönetme hakkında talimatlar.
+- [Kuruluşları yönetin](my-account-portal-organizations-page.md). Kuruluşunuzda ilgili bilgilerinizin, **profil** portalının **kuruluşlar** sayfasında nasıl görüntüleneceği ve yönetileceği ile ilgili yönergeler.
 
-- [Bağlı cihazlarınızı yönetin.](my-account-portal-devices-page.md) İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazları **Profilim** portalının **Cihazlar** sayfasında nasıl yönetacağınız hakkında talimatlar.
+- [Bağlı cihazlarınızı yönetin](my-account-portal-devices-page.md). İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazların nasıl yönetileceği hakkındaki yönergeler, **profil** portalının **cihazlar** sayfasında.

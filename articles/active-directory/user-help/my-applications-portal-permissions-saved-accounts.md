@@ -1,6 +1,6 @@
 ---
-title: Uygulamalarım portalından uygulama izinlerini yönetme - Azure Active Directory | Microsoft Dokümanlar
-description: Uygulamam portalından kuruluşunuzun bulut tabanlı uygulamaları için uygulama izinlerini nasıl yöneteceklerinizi öğrenin.
+title: Uygulama izinlerini uygulamalarım portalından yönetme-Azure Active Directory | Microsoft Docs
+description: Uygulamalarım portalından kuruluşunuzun bulut tabanlı uygulamalar için uygulama izinlerini yönetmeyi öğrenin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,45 +13,45 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77022418"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Uygulamalarım portalında uygulama izinlerini edin veya iptal edin
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Uygulamalarım portalındaki uygulama izinlerini düzenleme veya iptal etme
 
-**Uygulamalarım** portalında kuruluş uygulamalarını kullandığınızda, genellikle izin verir ve hesap bilgilerini kaydedersiniz. Verilerinizin güvenliğini sağlamak için, izinleri gözden geçirmek ve iptal etmek veya kayıtlı hesap kimlik bilgilerini temizlemek isteyebilirsiniz. İzinlerin veya hesapların kaldırılması bazı uygulama işlevlerini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorun yaşıyorsanız, ek yardım için kuruluşunuzun Yardım Masası'na başvurun.
+Uygulamalarım portalındaki kurumsal uygulamaları kullandığınızda, **My Apps** genellikle izinler verirsiniz ve hesap bilgilerini kaydedersiniz. Verilerinizin güvenliğini sağlamak için izinleri gözden geçirmek ve iptal etmek ya da kayıtlı hesap kimlik bilgilerini temizlemek isteyebilirsiniz. İzinlerin veya hesapların kaldırılması bazı uygulama işlevlerini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [Uygulama Yönetimi Dokümantasyonu'nda](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)bulut tabanlı uygulamalarınızı nasıl ayarlayıp yönetebileceğiniz hakkında daha fazla bilgi bulabilirsiniz.
+>Bu içerik kullanıcılara yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="manage-app-permissions"></a>Uygulama izinlerini yönetme
 
-Sizin veya yöneticinizin onay verdiği izinleri görüntülemek **için, Uygulamalarım** portalında bir uygulamanın üzerine gezinirken **...** seçeneğini belirleyin ve ardından **uygulamanızı yönet'i**seçin:
+Siz veya yöneticiniz tarafından onaylanan izinleri görüntülemek için **.** .. **uygulamalarım** portalındaki bir uygulamanın üzerine geldiğinizde, **uygulamanızı Yönet**' i seçin:
 
-![Uygulamalarım portalında bir uygulamayı yönetme](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![Uygulamalarım portalındaki bir uygulamayı yönetme](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
 
-İzinler penceresinin üst kısmı, kişisel olarak neye rıza gösterdiğinigösterir. Uygulama izinlerine örnek olarak takviminize, kişilerinize veya kameranıza erişebilme verilebilir.
+İzinler penceresinin en üst bölümü, kişisel olarak ne kadar duyduhangilerinin olduğunu gösterir. Uygulama izinlerinin örnekleri, takviminize, kişilerinize veya kameranıza erişme olanağını içerir.
 
-İzinleri İptal Et'i seçerek onay ettiğiniz **izinlerden**herhangi birini iptal edebilirsiniz, ancak izni kaldırmak bazı uygulamaların işlevselliğini bozabilir. İzinleri veya hesapları kaldırdıktan sonra sorun yaşıyorsanız, ek yardım için kuruluşunuzun Yardım Masası'na başvurun.
+**Izinleri Iptal et**' i seçerek tüm izinleri iptal edebilirsiniz, ancak izin kaldırıldığında bazı uygulama işlevleri bozulabilir. İzinleri veya hesapları kaldırdıktan sonra sorunlarla karşılaşırsanız, ek yardım için kuruluşunuzun yardım masasına başvurun.
 
-![Uygulamalarım portalındaki bir uygulama için izinleri iptal et](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
+![Uygulamalarım portalındaki bir uygulama için izinleri iptal etme](media/my-applications-portal-permissions-saved-accounts/revoke-permissions.png)
 
-İzinler penceresinin alt kısmı yöneticinizin sizin adınıza neyi onaylarken onaylar olduğunu gösterir. Yönetici izinleri yoksa bu bölüm gösterilmez. Yönetici izin verdiği ve genellikle kuruluşunuzun ilkesi için gerekli olduğu için bu izinleri iptal edemezsiniz.
+İzinler penceresinin alt kısmında, yöneticinizin sizin adınıza ne şekilde olduğunu gösterir. Bu bölüm, yönetici onaylı izinler yoksa gösterilmez. Yönetici kendisine katıldığından ve genellikle kuruluşunuzun ilkesi için gerekli olduklarından, bu izinleri iptal edemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama izinlerini ve kaydedilmiş hesapları **Uygulamalarım** portalında yönledikten sonra şunları yapabilirsiniz:
+Uygulama izinlerini ve kaydedilmiş hesapları **uygulamalarım** portalında yönettiğinizde şunları yapabilirsiniz:
 
-- Uygulamalarınızı kuruluşunuz tarafından oluşturulan ve sağlanan çeşitli kategorilerde düzenleyin. Daha fazla bilgi [için, Uygulamalarım portalındaki Access ve kullanım koleksiyonlarına](my-applications-portal-workspaces.md)bakın.
+- Uygulamalarınızı, kuruluşunuz tarafından oluşturulan ve sunulan çeşitli kategorilerde düzenleyin. Daha fazla bilgi için bkz. [My Apps Portalındaki koleksiyonlara erişin ve bunları kullanın](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [Profil ve hesap bilgilerinizi güncelleyin.](my-account-portal-overview.md) **Profilim** portalında görünen kişisel bilgilerinizin nasıl güncelleştirilene ilişkin talimatlar.
+- [Profilinizi ve hesap bilgilerinizi güncelleştirin](my-account-portal-overview.md). **Profil** portalında görüntülenen kişisel bilgilerinizi güncelleştirme yönergeleri.
 
-- [Kuruluşlarınızı yönetin.](my-account-portal-organizations-page.md) **Profilim** portalının **Kuruluşlar** sayfasında kuruluşla ilgili bilgilerinizi görüntüleme ve yönetme hakkında talimatlar.
+- [Kuruluşları yönetin](my-account-portal-organizations-page.md). Kuruluşunuzda ilgili bilgilerinizin, **profil** portalının **kuruluşlar** sayfasında nasıl görüntüleneceği ve yönetileceği ile ilgili yönergeler.
 
-- [Bağlı cihazlarınızı yönetin.](my-account-portal-devices-page.md) İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazları **Profilim** portalının **Cihazlar** sayfasında nasıl yönetacağınız hakkında talimatlar.
+- [Bağlı cihazlarınızı yönetin](my-account-portal-devices-page.md). İş veya okul hesabınızı kullanarak bağlı olduğunuz cihazların nasıl yönetileceği hakkındaki yönergeler, **profil** portalının **cihazlar** sayfasında.

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Tablo API'sine Giriş
-description: Azure Tabloları API'sini kullanarak büyük hacimli anahtar değerli verileri düşük gecikme li olarak depolamak ve sorgulamak için Azure Cosmos DB'yi nasıl kullanabileceğinizi öğrenin.
+title: Azure Cosmos DB Tablo API'si giriş
+description: Azure tabloları API 'sini kullanarak düşük gecikme süresine sahip çok büyük hacimli anahtar-değer verilerini depolamak ve sorgulamak için Azure Cosmos DB nasıl kullanabileceğinizi öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240159"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
 
 [Azure Cosmos DB](introduction.md), Azure Tablo depolaması için yazılmış olan ve aşağıdaki gibi üst düzey özelliklere ihtiyaç duyan uygulamalar için Tablo API'sini sunar:
 
-* [Anahtar teslimi küresel dağıtım.](distribute-data-globally.md)
+* [Anahtar genel dağıtımı](distribute-data-globally.md).
 * Dünya genelinde [adanmış aktarım hızı](partition-data.md).
 * 99 yüzdebirlikte tek basamaklı milisaniyelik gecikme süresi.
 * Garantili yüksek kullanılabilirlik.
@@ -27,21 +27,21 @@ ms.locfileid: "79240159"
 Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikliği olmadan Tablo API'sini kullanarak Azure Cosmos DB'ye geçirilebilir ve üst düzey özelliklerden yararlanabilir. Tablo API’si, .NET, Java, Python ve Node.js ile kullanılabilecek istemci SDK’larına sahiptir.
 
 > [!IMPORTANT]
-> .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) bakım modundadır ve yakında amortismana dahil edilir. Tablo API tarafından desteklenen en son özellikleri almaya devam etmek için lütfen yeni .NET Standart kitaplığı [Microsoft.Azure.Cosmos.Table'a](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) yükseltin.
+> .NET Framework SDK [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) bakım modunda ve yakında kullanım dışı bırakılacak. Tablo API'si tarafından desteklenen en son özellikleri almaya devam etmek için lütfen yeni .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) ' a yükseltin.
 
 ## <a name="table-offerings"></a>Tablo teklifleri
 Şu anda Azure Tablo Depolama hizmetini kullanıyorsanız, Azure Cosmos DB Tablo API’sine geçerek aşağıdaki avantajlara sahip olabilirsiniz:
 
 | | Azure Tablo depolama | Azure Cosmos DB Tablo API’si |
 | --- | --- | --- |
-| Gecikme süresi | Hızlıdır, ancak gecikme süresi için üst sınır yoktur. | Okuma ve yazma için tek basamaklı milisaniye gecikmesi, dünyanın herhangi bir yerinde, herhangi bir ölçekte, 99 yüzdelik olarak okuma ve yazma için <10 ms gecikme ile desteklenen. |
+| Gecikme süresi | Hızlıdır, ancak gecikme süresi için üst sınır yoktur. | Okuma ve yazma işlemleri için tek basamaklı milisaniyelik gecikme süresi, her ölçekte, dünyanın her yerindeki 99. yüzdebirlik ' de okuma ve yazma işlemleri için <10 ms gecikme süresi ile desteklenir. |
 | Aktarım hızı | Değişken aktarım hızı modeli. Tabloların 20.000 işlem/sn'lik bir ölçeklenebilirlik sınırı vardır. | SLA'lar ile desteklenen [tablo başına adanmış, ayrılmış aktarım hızı](request-units.md) ile yüksek düzeyde ölçeklenebilir. Hesapların aktarım hızı açısından üst sınırı yoktur ve tablo başına saniyede 10 milyondan fazla işlem desteklenir. |
-| Genel dağıtım | Yüksek kullanılabilirlik için isteğe bağlı okunabilir bir ikincil okuma bölgesi olan tek bölge. Yük devretme başlatamazsınız. | Bir bölgeden herhangi bir bölgeye [anahtar teslimi küresel dağıtım.](distribute-data-globally.md) Her zaman, dünyanın her yerinde [otomatik ve el ile yük devretme](high-availability.md) desteği. Herhangi bir bölgenin yazma işlemlerini kabul etmesini sağlamak için çok yönlü yetenek. |
-| Dizin Oluşturma | Yalnızca PartitionKey ve RowKey’de birincil dizin. İkincil dizin yok. | Tüm özelliklerde varsayılan olarak, dizin yönetimi olmadan otomatik ve tam dizin oluşturma. |
+| Genel dağıtım | Yüksek kullanılabilirlik için isteğe bağlı okunabilir bir ikincil okuma bölgesi olan tek bölge. Yük devretme başlatamazsınız. | Bir bilgisayardan istediğiniz sayıda bölgeden [anahtar genel dağıtımı](distribute-data-globally.md) . Her zaman, dünyanın her yerinde [otomatik ve el ile yük devretme](high-availability.md) desteği. Herhangi bir bölgenin yazma işlemlerini kabul etmesine izin vermek için çoklu yönetici özelliği. |
+| Dizinleme | Yalnızca PartitionKey ve RowKey’de birincil dizin. İkincil dizin yok. | Varsayılan olarak dizin yönetimi olmadan tüm özelliklerde otomatik ve tamamen dizin oluşturma. |
 | Sorgu | Sorgu yürütme birincil anahtar için dizini kullanır, aksi durumda tarar. | Sorgular, hızlı sorgu süreleri için özelliklerde otomatik dizin oluşturma avantajından yararlanabilir. |
-| Tutarlılık | Birincil bölge içinde güçlü. İkincil bölge içinde nihai. | Uygulama gereksinimlerinize bağlı olarak kullanılabilirliği, gecikmeyi, iş ortalığını ve tutarlılığı kapatmak için [iyi tanımlanmış beş tutarlılık düzeyi.](consistency-levels.md) |
+| Tutarlılık | Birincil bölge içinde güçlü. İkincil bölge içinde nihai. | Uygulama gereksinimlerinize bağlı olarak kullanılabilirlik, gecikme süresi, aktarım hızı ve tutarlılığı karşılamak için [iyi tanımlanmış beş tutarlılık düzeyi](consistency-levels.md) . |
 | Fiyatlandırma | Depolama açısından iyileştirilmiş. | Aktarım hızı açısından iyileştirilmiş. |
-| SLA’lar | Çoğaltma stratejisine bağlı olarak %99,9 ila %99,99 kullanılabilirlik. | %99,999'u okuma kullanılabilirliği, %99,99'u tek bölgeli hesaplarda yazma kullanılabilirliği ve %99,999'u çok bölgeli hesaplarda kullanılabilirlik yazmaktadır. Kullanılabilirlik, gecikme süresi, iş artışı ve tutarlılığı kapsayan [kapsamlı SLA'lar.](https://azure.microsoft.com/support/legal/sla/cosmos-db/) |
+| SLA’lar | çoğaltma stratejisine bağlı olarak% 99,9% 99,99 oranında kullanılabilirlik. | % 99,999, tek bölgede hesapta kullanılabilirliği ve% 99,99 yazma kullanılabilirliği ve çok bölgeli hesaplarda% 99,999 yazma kullanılabilirliği. Kullanılabilirlik, gecikme süresi, aktarım hızı ve tutarlılığı kapsayan [kapsamlı SLA 'lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/) . |
 
 ## <a name="get-started"></a>Kullanmaya başlayın
 
@@ -58,8 +58,8 @@ Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikli�
 * [.NET’te Tablo API’siyle geliştirme](tutorial-develop-table-dotnet.md)
 * [Tablo API’sini kullanarak tablo verilerini sorgulama](tutorial-query-table.md)
 * [Tablo API'sini kullanarak Azure Cosmos DB genel dağıtımını ayarlamayı öğrenin](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB Tablosu .NET Standart SDK](table-sdk-dotnet-standard.md)
-* [Azure Cosmos DB Tablosu .NET SDK](table-sdk-dotnet.md)
-* [Azure Cosmos DB Tablo Java SDK](table-sdk-java.md)
-* [Azure Cosmos DB Tablo Düğümü.js SDK](table-sdk-nodejs.md)
+* [Azure Cosmos DB tablo .NET Standard SDK](table-sdk-dotnet-standard.md)
+* [Azure Cosmos DB tablosu .NET SDK 'Sı](table-sdk-dotnet.md)
+* [Azure Cosmos DB tablosu Java SDK 'Sı](table-sdk-java.md)
+* [Azure Cosmos DB Table Node. js SDK 'Sı](table-sdk-nodejs.md)
 * [Python için Azure Cosmos DB Tablosu SDK'sı](table-sdk-python.md)

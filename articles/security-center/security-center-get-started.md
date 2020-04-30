@@ -1,5 +1,5 @@
 ---
-title: Standart katmana yükseltme - Azure Güvenlik Merkezi
+title: Standart katmana yükseltme-Azure Güvenlik Merkezi
 description: Bu hızlı başlangıçta, ek güvenlik kapsamı için Güvenlik Merkezinizin Standart fiyatlandırma katmanına nasıl yükseltme yapacağınız gösterilmektedir.
 services: security-center
 documentationcenter: na
@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435794"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Hızlı Başlangıç: Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme
-Azure Güvenlik Merkezi, hibrit bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz katman yalnızca Azure kaynaklarınız için sınırlı güvenlik sunarken Standart katman bu özellikleri şirket içine ve diğer bulutlara genişletir. Güvenlik Merkezi Standart katmanı; güvenlik açıklarını bulup gidermenize, zararlı etkinlikleri engellemek için erişim ve uygulama denetimleri uygulamanıza, analizden ve bilgilerden yararlanarak tehditleri algılamanıza ve saldırı altındayken hızlıca yanıt vermenize yardımcı olur. Güvenlik Merkezi Standard'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Azure Güvenlik Merkezi, hibrit bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz katman yalnızca Azure kaynaklarınız için sınırlı güvenlik sunarken Standart katman bu özellikleri şirket içine ve diğer bulutlara genişletir. Güvenlik Merkezi Standart katmanı; güvenlik açıklarını bulup gidermenize, zararlı etkinlikleri engellemek için erişim ve uygulama denetimleri uygulamanıza, analizden ve bilgilerden yararlanarak tehditleri algılamanıza ve saldırı altındayken hızlıca yanıt vermenize yardımcı olur. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
-Bu makalede, daha fazla güvenlik için Standart katmana yükseltin ve güvenlik açıklarını ve tehditlerini izlemek için Log Analytics aracısını sanal makinelerinize yüklersiniz.
+Bu makalede, güvenlik açıklarını ve tehditleri izlemek için, ek güvenlik için Standart katmana yükseltirsiniz ve sanal makinelerinize Log Analytics aracısını yüklersiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
@@ -33,8 +33,8 @@ Bir aboneliği Standart katmana yükseltebilmeniz için size Abonelik Sahibi, Ab
 
 ## <a name="enable-your-azure-subscription"></a>Azure aboneliğinizi etkinleştirme
 
-1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. Microsoft **Azure** menüsünde **Güvenlik Merkezi'ni**seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır.
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 
@@ -47,14 +47,14 @@ Güvenlik Merkezi’ni başlattıktan sonraki ilk birkaç dakika içinde şunlar
 - Azure aboneliklerinizin güvenliğini artırmaya yönelik yöntemlere ilişkin **öneriler**. **Öneriler** kutucuğuna tıkladığınızda bir öncelik listesi açılır.
 - Güvenlik Merkezi tarafından her birinin güvenlik durumuyla birlikte değerlendirilen **İşlem ve uygulamalar**, **Ağ İletişimi**, **Veri güvenliği**, **Kimlik ve erişim** kaynaklarının bir envanteri.
 
-Güvenlik Merkezi'nden tam olarak yararlanmak için Standart katmana yükseltmek ve Log Analytics aracısını yüklemek için aşağıdaki adımları tamamlamanız gerekir.
+Güvenlik Merkezi 'Nden tam olarak yararlanabilmek için, Standart katmana yükseltmek ve Log Analytics aracıyı yüklemek üzere aşağıdaki adımları gerçekleştirmeniz gerekir.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standart katmana yükseltme
-Güvenlik Merkezi hızlı başlangıçlarının ve öğreticilerinin amacı doğrultusunda Standart katmana yükseltme yapmanız gerekir. Güvenlik Merkezi Standardı'nın ücretsiz deneme sürümü var. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
+Güvenlik Merkezi hızlı başlangıçlarının ve öğreticilerinin amacı doğrultusunda Standart katmana yükseltme yapmanız gerekir. Güvenlik Merkezi standardının ücretsiz bir denemesi vardır. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
  
-   ![başlarken][4]
+   ![Kullanmaya başlayın][4]
 
 2. **Yükselt** altında, Güvenlik Merkezi, ekleme işlemi için uygun abonelikleri ve çalışma alanlarını listeler. 
    - Tüm abonelikleri ve çalışma alanlarını deneme sürümü uygunluk durumlarıyla birlikte listelemek için, genişletilebilir **Deneme sürümünüzü uygulayın**’a tıklayabilirsiniz.
@@ -66,16 +66,16 @@ Güvenlik Merkezi hızlı başlangıçlarının ve öğreticilerinin amacı doğ
   ![Güvenlik uyarıları][9]
 
 ## <a name="automate-data-collection"></a>Veri toplama işlemini otomatikleştirme
-Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure VM’lerinizden ve Azure olmayan bilgisayarlarınızdan veri toplar. Veriler, makineden çeşitli güvenlikle ilgili yapılandırmaları ve olay günlüklerini okuyan ve verileri analiz için çalışma alanınıza kopyalayan Log Analytics aracısı kullanılarak toplanır. Varsayılan olarak Güvenlik Merkezi sizin için yeni bir çalışma alanı oluşturur.
+Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure VM’lerinizden ve Azure olmayan bilgisayarlarınızdan veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Varsayılan olarak Güvenlik Merkezi sizin için yeni bir çalışma alanı oluşturur.
 
-Otomatik sağlama etkinleştirildiğinde, Güvenlik Merkezi desteklenen tüm Azure VM'lerine ve oluşturulan yeni tüm yeni lere Log Analytics aracısını yükler. Otomatik sağlama önemle önerilir.
+Otomatik sağlama etkinleştirildiğinde, Güvenlik Merkezi, desteklenen tüm Azure VM 'lerine ve oluşturulan tüm yeni sanal makinelere Log Analytics aracısını yükleme. Otomatik sağlama önemle önerilir.
 
-Log Analytics aracısının otomatik olarak sağlanmasını etkinleştirmek için:
+Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
-1. Güvenlik Merkezi ana menüsü **altında, Fiyatlandırma & ayarlarını**seçin.
-2. Abonelik satırında, ayarları değiştirmek istediğiniz aboneliği tıklatın.
+1. Güvenlik Merkezi ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
+2. Aboneliğin satırı üzerinde, ayarları değiştirmek istediğiniz aboneliğe tıklayın.
 3. **Veri Toplama** sekmesinde, **Otomatik sağlama**’yı **Açık** olarak ayarlayın.
-4. **Kaydet'i**seçin.
+4. **Kaydet**’i seçin.
 ---
   ![Otomatik sağlamayı etkinleştirme][6]
 
@@ -86,24 +86,24 @@ Azure VM’lerinize ilişkin bu yeni öngörüyle Güvenlik Merkezi, sistem gün
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız Standart katmanını çalıştırmaya devam edin ve otomatik sağlamayı etkinleştirilmiş halde tutun. Devam etmeyi planlamıyorsanız veya Ücretsiz katmanına dönmek istiyorsanız:
 
-1. Güvenlik Merkezi ana menüsüne dönün ve **Fiyatlandırma & ayarlarını**seçin.
-2. Ücretsiz katmana değiştirmek istediğiniz aboneliği tıklatın.
+1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma & ayarları**' nı seçin.
+2. Ücretsiz katmana değiştirmek istediğiniz aboneliğe tıklayın.
 3. Aboneliği Standart katmanından Ücretsiz katmanına geçirmek için **Fiyatlandırma katmanı**’nı ve **Ücretsiz**’i seçin.
-5. **Kaydet'i**seçin.
+5. **Kaydet**’i seçin.
 
 Otomatik sağlamayı devre dışı bırakmak istiyorsanız:
 
-1. Güvenlik Merkezi ana menüsüne dönün ve **Fiyatlandırma & ayarlarını**seçin.
-2. Otomatik sağlamayı devre dışı kaltın istediğiniz aboneliği temizleyin.
+1. Güvenlik Merkezi ana menüsüne dönüp **fiyatlandırma & ayarları**' nı seçin.
+2. Otomatik sağlamayı devre dışı bırakmak istediğiniz abonelikte temizleyin.
 3. **Veri Toplama** sekmesinde, **Otomatik sağlama**’yı **Kapalı** olarak ayarlayın.
-4. **Kaydet'i**seçin.
+4. **Kaydet**’i seçin.
 
 >[!NOTE]
-> Otomatik sağlamanın devre dışı bırakılması, log analytics aracısını aracının sağlandığı Azure VM'lerinden kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
+> Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Log Analytics aracısını kaldırmaz. Otomatik sağlamanın devre dışı bırakılması, kaynaklarınızın güvenliğinin izlenmesini kısıtlar.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta Standart katmana yükselttiniz ve karma bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması için Log Analytics aracısını sayıltınız. Güvenlik Merkezi’ni kullanma hakkında daha fazla bilgi edinmek için şirket içi ortamda ve diğer bulutlarda bulunan Windows bilgisayarları eklemeye ilişkin hızlı başlangıca geçin.
+Bu hızlı başlangıçta Standart katmana yükseltmiş ve hibrit bulut iş yükleriniz genelinde birleştirilmiş güvenlik yönetimi ve tehdit koruması için Log Analytics aracısına hazırlandınız. Güvenlik Merkezi’ni kullanma hakkında daha fazla bilgi edinmek için şirket içi ortamda ve diğer bulutlarda bulunan Windows bilgisayarları eklemeye ilişkin hızlı başlangıca geçin.
 
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme](quick-onboard-windows-computer.md)

@@ -1,6 +1,6 @@
 ---
-title: "Hızlı başlangıç: Olay Hub'larına özel etkinlikler gönderme - Event Grid, Azure CLI"
-description: "Hızlı başlangıç: Bir konuyu yayımlamak için Azure Olay Ağıt'ı ve Azure CLI'yi kullanın ve bu etkinliğe abone olun. Uç nokta için bir olay hub’ı kullanılır."
+title: 'Hızlı başlangıç: Event Hubs için özel olaylar gönderme-Event Grid, Azure CLı'
+description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak için Azure Event Grid ve Azure CLı kullanın. Uç nokta için bir olay hub’ı kullanılır.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 832c4e453befc9e54051c968e0c364d22afd2bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73721414"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLI ve Olay Izgarası ile özel etkinlikleri Azure Etkinlik Hub'larına yönlendirin
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid ile Azure Event Hubs özel olayları yönlendirme
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Event Hubs, desteklenen olay işleyicilerinden biridir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz. Bir Event Hub’a olaylar gönderirsiniz.
 
@@ -59,7 +59,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Özel konuya abone olma
 
-Olay Izgarası'na hangi olayları izlemek istediğinizi söylemek için bir olay ızgarası konusuna abone olabilirsiniz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone dir ve bitiş noktası için olay merkezinin kaynak kimliğini geçer. Uç nokta şu biçimdedir:
+İzlemek istediğiniz olayları Event Grid söylemek için bir Event Grid konusuna abone olursunuz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone olur ve uç nokta için Olay Hub 'ının kaynak KIMLIĞINI geçirir. Uç nokta şu biçimdedir:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 

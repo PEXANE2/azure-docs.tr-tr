@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: .NET Core uygulamalarıyla Redis için Azure Önbelleğini kullanma'
-description: Bu hızlı başlangıçta, .NET Core uygulamalarınızda Redis için Azure Önbelleği'ne nasıl erişeceğinizi öğrenin
+title: 'Hızlı başlangıç: .NET Core uygulamalarıyla Redsıs için Azure önbelleğini kullanma'
+description: Bu hızlı başlangıçta, .NET Core uygulamalarınızda Redsıs için Azure önbelleğine nasıl erişebileceğinizi öğrenin
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -9,21 +9,21 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75413048"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Quickstart: .NET Core uygulamasıyla Redis için Azure Önbelleğini kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Hızlı başlangıç: .NET Core uygulaması ile Redsıs için Azure önbelleğini kullanma
 
-Bu hızlı başlangıçta, Azure'daki herhangi bir uygulamadan erişilebilen güvenli ve özel bir önbelleğe erişebilmek için Redis için Azure Önbelleğini bir .NET Core uygulamasına dahil eleştirirsiniz. [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle .NET Core konsol uygulamasında C# koduyla kullanırsınız.
+Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir .NET Core uygulamasına dahil edersiniz. .NET Core konsol uygulamasında C# kodu ile [StackExchange. Redo](https://github.com/StackExchange/StackExchange.Redis) istemcisini özellikle kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
-- [.NET Çekirdek SDK](https://dotnet.microsoft.com/download)
-- StackEdchange.Redis istemcisi tarafından gerekli olan [.NET Framework 4 veya üstü.](https://www.microsoft.com/net/download/dotnet-framework-runtime)
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- [.NET Framework 4 veya üzeri](https://www.microsoft.com/net/download/dotnet-framework-runtime), StackEdchange. redsıs istemcisi için gereklidir.
 
 ## <a name="create-a-cache"></a>Bir önbellek oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -90,7 +90,7 @@ Aşağıdaki `using` deyimini *Program.cs* dosyasına ekleyin:
 using Microsoft.Extensions.Configuration;
 ```
 
-Aşağıdaki üyeleri, *Program.cs* dosyasında `Program` sınıfına ekleyin. Bu kod, Redis bağlantı dizesi için Azure Önbelleği için kullanıcı sırrına erişmek için bir yapılandırma yımaz.
+Aşağıdaki üyeleri, *Program.cs* dosyasında `Program` sınıfına ekleyin. Bu kod, Redsıs bağlantı dizesinin Azure önbelleği için kullanıcı gizliliğine erişmek üzere bir yapılandırmayı başlatır.
 
 ```csharp
         private static IConfigurationRoot Configuration { get; set; }
@@ -126,7 +126,7 @@ Aşağıdaki `using` deyimini *Program.cs* dosyasına ekleyin:
 using StackExchange.Redis;
 ```
 
-Redis için Azure Önbelleğine bağlantı `ConnectionMultiplexer` sınıf tarafından yönetilir. Bu sınıf, istemci uygulamanız genelinde paylaşılmalı ve yeniden kullanılmalıdır. Her işlem için yeni bir bağlantı oluşturmayın. 
+Redo için Azure önbelleği bağlantısı, `ConnectionMultiplexer` sınıfı tarafından yönetilir. Bu sınıf, istemci uygulamanız genelinde paylaşılmalı ve yeniden kullanılmalıdır. Her işlem için yeni bir bağlantı oluşturmayın. 
 
 *Program.cs* dosyasında, konsol uygulamanızın `Program` sınıfına aşağıdaki üyeleri ekleyin:
 
@@ -146,7 +146,7 @@ Redis için Azure Önbelleğine bağlantı `ConnectionMultiplexer` sınıf taraf
         }
 ```
 
-Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu yaklaşım, bağlı bir örnek döndüren bir statik özelliği kullanır. Kod yalnızca tek bir bağlı `ConnectionMultiplexer` örneği başlatmak için iş parçacığı güvenli bir yol sağlar. `abortConnect`yanlış olarak ayarlanır, bu da Redis için Azure Önbelleği bağlantısı kurulmasa bile aramanın başarılı olduğu anlamına gelir. `ConnectionMultiplexer` temel özelliklerinden biri ağ sorunu ya da diğer nedenler çözümlendiğinde önbellek bağlantısını otomatik olarak geri yüklemesidir.
+Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu yaklaşım, bağlı bir örnek döndüren bir statik özelliği kullanır. Kod yalnızca tek bir bağlı `ConnectionMultiplexer` örneği başlatmak için iş parçacığı güvenli bir yol sağlar. `abortConnect`, false olarak ayarlanır, bu da çağrının başarılı olduğu anlamına gelen redin için Azure önbelleğine bir bağlantı kurulamazsa. `ConnectionMultiplexer` temel özelliklerinden biri ağ sorunu ya da diğer nedenler çözümlendiğinde önbellek bağlantısını otomatik olarak geri yüklemesidir.
 
 *CacheConnection* gizli dizisinin değerine, Gizli Dizi Yöneticisi yapılandırma sağlayıcısı kullanılarak erişilir ve bu gizli dizi, parola parametresi olarak kullanılır.
 
@@ -195,7 +195,7 @@ Uygulamanızda bir `ConnectionMultiplexer` örneğini paylaşmaya ilişkin bu ya
 
 *Program.cs* dosyasını kaydedin.
 
-Redis için Azure Önbelleği, Redis için bir Azure Önbelleği içindeki verileri mantıksal olarak ayırmak için kullanılabilecek yapılandırılabilir sayıda veritabanına (varsayılan 16) sahiptir. Kod, DB 0 adlı varsayılan veritabanına bağlanır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration).
+Redsıs için Azure önbelleğinde, Redsıs için bir Azure önbelleğindeki verileri mantıksal olarak ayırmak üzere kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Kod, DB 0 adlı varsayılan veritabanına bağlanır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration).
 
 `StringSet` ve `StringGet` yöntemleri kullanılarak önbellek öğeleri depolanabilir ve alınabilir.
 
@@ -220,7 +220,7 @@ Aşağıdaki örnekte, `Message` anahtarının Azure portalındaki Redis Konsolu
 
 ## <a name="work-with-net-objects-in-the-cache"></a>Önbellekte .NET nesneleriyle çalışma
 
-Redis için Azure Önbelleği hem .NET nesnelerini hem de ilkel veri türlerini önbelleğe alabilir, ancak bir .NET nesnesi önbelleğe alınamadan önce seri hale getirilmelidir. Bu .NET nesne serileştirmesi uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye seri hale getirici tercihinde esneklik sağlar.
+Redsıs için Azure Cache hem .NET nesnelerini hem de ilkel veri türlerini önbelleğe alabilir, ancak bir .NET nesnesi önbelleğe alınmadan önce serileştirilmelidir. Bu .NET nesne serileştirmesi uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye seri hale getirici tercihinde esneklik sağlar.
 
 Nesneleri seri hale getirmenin basit bir yolu, [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)’da `JsonConvert` seri hale getirme yöntemlerini kullanmak ve JSON’a ve JSON’dan seri hale getirmektir. Bu bölümde, önbelleğe bir .NET nesnesi ekleyeceksiniz.
 
@@ -311,10 +311,10 @@ Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Bir .NET Core uygulamasından Redis için Azure Önbelleği'ni nasıl kullanacağınızı öğrendiniz. redis için Azure Önbelleğini ASP.NET bir web uygulamasıyla kullanmak için bir sonraki hızlı başlatmaya devam edin.
+Bu hızlı başlangıçta, .NET Core uygulamasından Redsıs için Azure önbelleğini nasıl kullanacağınızı öğrendiniz. Bir ASP.NET Web uygulamasıyla Redsıs için Azure önbelleği 'ni kullanmak üzere bir sonraki hızlı başlangıca devam edin.
 
 > [!div class="nextstepaction"]
-> [Redis için Azure Önbelleği kullanan ASP.NET bir web uygulaması oluşturun.](./cache-web-app-howto.md)
+> [Redsıs için Azure önbelleği kullanan bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)
 
 
 

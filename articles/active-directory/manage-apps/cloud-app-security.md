@@ -1,6 +1,6 @@
 ---
 title: Microsoft Cloud App Security ile uygulama görünürlüğü ve denetimi
-description: Uygulama risk düzeylerini belirlemenin, ihlalleri ve sızıntıları gerçek zamanlı olarak durdurmanın ve görünürlük ve yönetim için sağlayıcı API'lerinden yararlanmak için uygulama bağlayıcılarını kullanmanın yollarını öğrenin.
+description: Uygulama risk düzeylerini belirlemeyi, ihlal ve sızıntıları gerçek zamanlı olarak durdurmayı ve uygulama bağlayıcılarını kullanarak görünürlük ve idare için sağlayıcı API 'Lerinden yararlanmanızı sağlayan yollar edinin.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,60 +12,60 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 206e1a06acddae0973d5dbc7e64212026149f217
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77069745"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Bulut uygulama görünürlüğü ve denetimi
 
-Bulut uygulama larından ve hizmetlerinden tam olarak yararlanmak için, bt ekibinin kritik verileri korumak için denetimi korurken erişimi desteklemenin doğru dengesini bulması gerekir. Microsoft Cloud App Security, tüm Microsoft ve üçüncü taraf bulut hizmetlerinizde siber tehditleri belirlemek ve bunlarla mücadele etmek için zengin görünürlük, veri yolculuğu üzerinde denetim ve gelişmiş analizsağlar.
+Bulut uygulamalarının ve hizmetlerinin tam avantajlarından yararlanmak için, bir BT ekibinin, kritik verileri korumak için denetimi korurken doğru destekleyici erişim dengesini bulması gerekir. Microsoft Cloud App Security, tüm Microsoft ve üçüncü taraf bulut hizmetlerinize ilişkin zengin görünürlük, veri yolculuğu üzerinde denetim ve gelişmiş analizler sağlar.
 
 ## <a name="discover-and-manage-shadow-it-in-your-network"></a>Ağınızda gölge BT’yi keşfetme ve yönetme
 
-BT yöneticilerine çalışanlarının ortalama olarak kaç bulut uygulaması kullandığını düşündükleri sorulduğunda, gerçekte ortalama 1.000'den fazla ayrı uygulama kuruluşunuzdaki çalışanlar tarafından kullanılıyor. Gölge BT, hangi uygulamaların kullanıldığını ve risk seviyenizin ne olduğunu bilmenize ve belirlemenize yardımcı olur. Çalışanların yüzde 80'i, kimsenin incelemediği ve güvenlik ve uyumluluk ilkelerinizle uyumlu olmadığı onaylanmamış uygulamalar kullanır. Ayrıca çalışanlarınız kaynaklarınıza ve uygulamalarınıza şirket ağınızın dışından erişebildiği için, güvenlik duvarlarınızda kurallar ve ilkeler olması artık yeterli değildir.
+BT yöneticileri, çalışanlarının ne kadar çok sayıda bulut uygulaması kullandığını sorduğu zaman, gerçekte 30 veya 40 olduğunu düşünürken, ortalama, kuruluşunuzda çalışanlar tarafından kullanılan 1.000 ayrı farklı uygulama. Gölge BT, hangi uygulamaların kullanıldığını ve risk düzeyinin ne olduğunu bilmenize ve belirlemenize yardımcı olur. Çalışanların yüzde 80 ' i gözden geçirilmemiş ve güvenlik ve uyumluluk ilkelerinizle uyumlu olmayan, tasdiksiz uygulamalar kullanıyor. Ve çalışanlarınız, kaynak ve uygulamalarınıza şirket ağınızın dışından erişebildiğinden, artık güvenlik duvarlarınızda kuralların ve ilkelerin olması yeterli değildir.
 
-Hangi uygulamaların kullanıldığını keşfetmek, bu uygulamaların riskini keşfetmek, yeni riskli uygulamaları belirlemek için ilkeleri yapılandırmak ve bu uygulamaları yerel olarak kullanmak için onaylamamak için Microsoft Cloud App Discovery'yi (Azure Active Directory Premium P1 özelliği) kullanın proxy veya güvenlik duvarı cihazı.
+Hangi uygulamaların kullanıldığını bulmak, bu uygulamaların riskini araştırmak, yeni riskli uygulamaları belirlemek için ilkeleri yapılandırmak ve proxy veya güvenlik duvarı gerecinizi yerel olarak engellemek için bu uygulamaların tasdikini kaldırmak için Microsoft Bulut uygulama bulma (Azure Active Directory Premium P1 özelliği) kullanın.
 
 - Gölge BT’yi keşfetme ve tanımlama
 - Değerlendirme ve analiz etme
 - Uygulamalarınızı yönetme
-- Gelişmiş Gölge BT bulma raporlaması
-- Onaylı uygulamaları kontrol edin
+- Gelişmiş gölge BT bulma raporlaması
+- Tasdikli uygulamaları denetleme
  
 ### <a name="learn-more"></a>Daha fazla bilgi edinin
 
-- [Ağınızdaki gölge BT' yi keşfedin ve yönetin](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Cloud App Security ile keşfedilen uygulamalar](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Ağınızda gölge BT 'yi bulma ve yönetme](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
+- [Cloud App Security ile bulunan uygulamalar](https://docs.microsoft.com/cloud-app-security/discovered-apps)
  
 ## <a name="user-session-visibility-and-control"></a>Kullanıcı oturumu görünürlüğü ve denetimi 
 
-Günümüzün işyerinde, olaydan sonra bulut ortamınızda neler olduğunu bilmek genellikle yeterli değildir. Çalışanların verilerinizi ve kuruluşunuzu kasıtlı veya istemeden riske atmadan önce ihlalleri ve sızıntıları gerçek zamanlı olarak durdurmak istiyorsunuz. Microsoft Cloud App Security, Azure Active Directory (Azure AD) ile birlikte bu özellikleri Koşullu Erişim Uygulama Denetimi ile bütünsel ve tümleşik bir deneyimle sunar. 
+Bugünün çalışma alanında, aslında bulut ortamınızda ne olduğunu bilmekte olan bu durum genellikle yeterli değildir. Çalışanlar kasıtlı olarak veya farkında olmadan verilerinizi ve kuruluşunuzu riske almadan önce gerçek zamanlı olarak ihlal etmek ve sızıntıları durdurmak istiyorsunuz. Azure Active Directory (Azure AD) ile birlikte Microsoft Cloud App Security, bu özellikleri Koşullu Erişim Uygulama Denetimi bütünsel ve tümleşik bir deneyime sunar. 
 
-Oturum denetimi ters proxy mimarisi kullanır ve Azure AD Koşullu Erişim ile benzersiz bir şekilde tümleştirilir. Azure AD Koşullu Erişim, kuruluşunuzun uygulamalarında belirli koşullara bağlı olarak erişim denetimleri uygulamanıza olanak tanır. Koşullar, koşullu Erişim ilkesinin kime (kullanıcı veya kullanıcı grubu) ve hangi (hangi bulut uygulamaları) ve nerede (hangi konumlar ve ağlar) uygulandığını tanımlar. Koşulları belirledikten sonra, kullanıcıları verileri gerçek zamanlı olarak koruyabileceğiniz Bulut Uygulaması Güvenliği'ne yönlendirebilirsiniz.  
+Oturum denetimi ters bir ara sunucu mimarisi kullanır ve Azure AD koşullu erişimiyle benzersiz bir şekilde tümleşiktir. Azure AD koşullu erişimi, kuruluşunuzun uygulamalarında belirli koşullara göre erişim denetimleri zorlamanıza olanak sağlar. Koşullar, kimlerin (Kullanıcı veya Kullanıcı grubu) ve ne (bulut uygulamaları) ve koşullu erişim ilkesinin hangi konuma uygulanacağını tanımlar. Koşulları belirledikten sonra, verileri gerçek zamanlı olarak koruyabileceğiniz Cloud App Security kullanıcılara yönlendirebilirsiniz.  
 
-Bu denetim le şunları yapabilirsiniz:  
-- Dosya indirmelerini kontrol edin
-- B2B senaryolarını izleyin  
+Bu denetimle şunları yapabilirsiniz:  
+- Dosya indirmelerini denetle
+- B2B senaryolarını izleme  
 - Dosyalara erişimi denetleme  
-- İndirmede belgeleri koruma  
+- İndirme sırasında belgeleri koruma  
  
 ### <a name="learn-more"></a>Daha fazla bilgi edinin
 
-- [Bulut Uygulaması Güvenliğinde Oturum Kontrolü ile uygulamaları koruyun](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Cloud App Security oturum denetimi ile uygulamaları koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
  
 ## <a name="advanced-app-visibility-and-controls"></a>Gelişmiş uygulama görünürlüğü ve denetimleri 
 
-Uygulama bağlayıcıları, bağlandığınız uygulamalar üzerinde Microsoft Cloud App Security tarafından daha fazla görünürlük ve denetim sağlamak için uygulama sağlayıcılarının API'lerini kullanır. Bulut App Security, bulut sağlayıcısı tarafından sağlanan API'lerden yararlanır. Her hizmetin kendi çerçevesi ve azaltma, API sınırları, dinamik zaman değiştiren API pencereleri ve diğerleri gibi API sınırlamaları vardır. Cloud App Security ürün ekibi, API kullanımını optimize etmek ve en iyi performansı sağlamak için bu hizmetlerle birlikte çalıştı. Bulut App Security motorları, hizmetlerin API'lerine uyguladığı farklı sınırlamaları dikkate alarak, izin verilen maksimum kapasitelerini kullanır. Kiracıdaki tüm dosyaları taramak gibi bazı işlemler, daha uzun bir süreye yayılmasını için çok sayıda API çağrısı gerektirir. Bazı ilkelerin birkaç saat veya gün boyunca çalışmasını bekleyin. 
+Uygulama bağlayıcıları, bağlandığınız uygulamalar üzerinde Microsoft Cloud App Security daha fazla görünürlük ve denetim sağlamak için uygulama sağlayıcılarının API 'Lerini kullanır. Cloud App Security, bulut sağlayıcısı tarafından sunulan API 'lerden yararlanır. Her hizmetin kendi çerçevesi ve daraltma, API sınırları, dinamik süre değiştirme API pencereleri ve diğerleri gibi API sınırlamaları vardır. Cloud App Security ürün ekibi, API 'lerin kullanımını iyileştirmek ve en iyi performansı sağlamak için bu hizmetlerle birlikte çalışmıştır. Farklı sınırlamalar Hizmetleri API 'lerine göre hesaba katılarak, Cloud App Security motorları izin verilen en büyük kapasiteyi kullanır. Kiracıdaki tüm dosyaları tarama gibi bazı işlemler, daha uzun bir süre içinde yayılmaları için çok sayıda API çağrısı gerektirir. Bazı ilkelerin birkaç saat veya gün boyunca çalışmasını bekliyor. 
  
 ### <a name="learn-more"></a>Daha fazla bilgi edinin  
 
-- [Bulut Uygulaması Güvenliği'ndeki uygulamaları bağlama](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Cloud App Security uygulamaları bağlama](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ağınızdaki gölge BT' yi keşfedin ve yönetin](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
-- [Cloud App Security ile keşfedilen uygulamalar](https://docs.microsoft.com/cloud-app-security/discovered-apps)
-- [Bulut Uygulaması Güvenliğinde Oturum Kontrolü ile uygulamaları koruyun](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [Bulut Uygulaması Güvenliği'ndeki uygulamaları bağlama](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
+- [Ağınızda gölge BT 'yi bulma ve yönetme](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
+- [Cloud App Security ile bulunan uygulamalar](https://docs.microsoft.com/cloud-app-security/discovered-apps)
+- [Cloud App Security oturum denetimi ile uygulamaları koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Cloud App Security uygulamaları bağlama](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)

@@ -1,6 +1,6 @@
 ---
-title: Java ile bağlanın - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: Bu hızlı başlatma, PostgreSQL - Single Server için Azure Veritabanı'ndan veri bağlamak ve sorgulamak için kullanabileceğiniz bir Java kodu örneği sağlar.
+title: Java ile bağlanma-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'na bağlanmak ve bu verileri sorgulamak için kullanabileceğiniz bir Java kod örneği sağlanmıştır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -11,36 +11,36 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80063120"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: PostgreSQL - Single Server için Azure Veritabanı'ndaki verilere bağlanmak ve bunları sorgulamak için Java'yı kullanın
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Java kullanma-tek sunucu
 
-Bu hızlı başlangıçta, Bir Java uygulamasını kullanarak PostgreSQL için bir Azure Veritabanına bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
+Bu hızlı başlangıçta, Java uygulaması kullanarak PostgreSQL için Azure veritabanı 'na bağlanırsınız. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Java kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- [Quickstart'ın Tamamlanması: Azure portalında veya Quickstart'ta PostgreSQL sunucusu için bir Azure Veritabanı oluşturun:](quickstart-create-server-database-portal.md) [Azure CLI'yi kullanarak PostgreSQL için bir Azure Veritabanı oluşturun.](quickstart-create-server-database-azure-cli.md)
+- Hızlı başlangıç: Azure portal veya [hızlı başlangıç: Azure CLI kullanarak](quickstart-create-server-database-azure-cli.md)PostgreSQL [için Azure veritabanı sunucusu oluşturma](quickstart-create-server-database-portal.md) .
 
-- [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html) - Java ve Java Geliştirme Kiti sizin sürümünüz maç.
-- [Classpath ayrıntıları](https://jdbc.postgresql.org/documentation/head/classpath.html) - PostgreSQL JDBC jar dosyasını (örneğin postgresql-42.1.1.jar) uygulama sınıfınıza ekleyin.
+- [PostgreSQL JDBC sürücüsü](https://jdbc.postgresql.org/download.html) -Java ve Java geliştirme seti sürümünüzü eşleştirin.
+- [Sınıfyolu ayrıntıları](https://jdbc.postgresql.org/documentation/head/classpath.html) -uygulama Sınıfdosyanıza PostgreSQL JDBC jar dosyasını (örneğin, PostgreSQL-42.1.1. jar) dahil edin.
 
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. Azure [portalında,](https://portal.azure.com/)oluşturduğunuz sunucuyu **(mydemoserver**gibi) arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com/), oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın ve seçin.
 
-1. Sunucunun Genel **Bakış** panelinden, Sunucu **adını** ve **Yönetici kullanıcı adını**not edin. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+1. Sunucunun **genel bakış** panelinden **sunucu adı** ve **Yönetici Kullanıcı adı**' nı bir yere göz atın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
 
-    ![PostgreSQL bağlantı dizesi için Azure Veritabanı](./media/connect-java/server-details-azure-database-postgresql.png)
+    ![PostgreSQL için Azure veritabanı bağlantı dizesi](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Bağlanma, tablo oluşturma ve veri ekleme
-Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri veritabanına yüklemek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, tabloyu bırakmak ve oluşturmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) nesnesi, parametre değerlerini bağlamak için setString() ve setInt() ile insert komutlarını oluşturmak için kullanılır. [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemi, her parametre kümesi için komutu çalıştırır. 
+Bağlanmak ve **INSERT** SQL deyimiyle birlikte işlevi kullanarak verileri veritabanına yüklemek için aşağıdaki kodu kullanın. Veritabanına bağlanmak, tabloyu bırakmak ve oluşturmak için [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) ve [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) yöntemleri kullanılır. [Hazırlık Estatement](https://jdbc.postgresql.org/documentation/head/query.html) nesnesi, parametre değerlerini bağlamak Için SetString () ve setınt () ile birlikte INSERT komutlarını oluşturmak için kullanılır. [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) yöntemi, her parametre kümesi için komutu çalıştırır. 
 
 host, database, user ve password parametrelerini kendi sunucunuzu ve veritabanınızı oluştururken belirttiğiniz değerlerle değiştirin.
 
