@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL içinde isteğe bağlı SQL (önizleme) kullanarak depolama dosyalarını sorgula
-description: Synapse SQL'deki SQL isteğe bağlı (önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulamayı açıklar.
+title: SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kullanarak depolama dosyalarını sorgulama
+description: SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarının sorgulanmasını açıklar.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,57 +10,57 @@ ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81676683"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL içindeki SQL isteğe bağlı (önizleme) kaynaklarını kullanarak depolama dosyalarını sorgula
+# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
-İsteğe bağlı SQL (önizleme), veri gölünüzdeki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularını barındıran bir T-SQL sorgu yüzey alanı sunar.
+İsteğe bağlı SQL (Önizleme), Data Lake 'inizdeki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar.
 
-Sorgulama için aşağıdaki T-SQL yönleri desteklenir:
+Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
 
-- SQL işlevlerinin, işleçlerin ve benzeri işlevlerin çoğunluğu da dahil olmak üzere tam [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzey alanı.
-- SELECT ([CETAŞ)](develop-tables-cetas.md)OLARAK Dış TABLO OLUŞTUR Harici bir [tablo](develop-tables-external-tables.md) oluşturur ve buna paralel olarak Bir Transact-SQL SELECT deyiminin sonuçlarını Azure Depolama'ya dış tablo olarak dışa aktarır.
+- SQL işlevlerinin büyük çoğunluğu, işleçler vb. dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzeyi alanı.
+- SELECT ([Cetas](develop-tables-cetas.md)) olarak dış tablo oluşturma bir [dış tablo](develop-tables-external-tables.md) oluşturur ve ardından Transact-SQL SELECT ifadesinin sonuçlarını Azure Storage 'a aktarır.
 
-Şu anda desteklenmeyenlere karşı neyin ne olduğu hakkında daha fazla bilgi [için, SQL on-demand genel bakış](on-demand-workspace-overview.md) makalesini okuyun.
+İle ilgili daha fazla bilgi için, şu anda desteklenmeyen [SQL isteğe bağlı genel bakış](on-demand-workspace-overview.md) makalesini okuyun.
 
-Azure AD kullanıcıları sorguları çalıştırdığında, varsayılan olarak depolama hesaplarına Azure AD geçiş kimlik doğrulama iletişim kuralını kullanarak erişilmesi gerekir. Bu nedenle, kullanıcılar taklit edilecek ve izinler depolama düzeyinde denetlenir. İhtiyaçlarınıza uygun [depolama erişimini kontrol](develop-storage-files-storage-access-control.md) edebilirsiniz.
+Azure AD kullanıcıları sorguları çalıştırladığında, varsayılan olarak depolama hesaplarına Azure AD geçişli kimlik doğrulama protokolü kullanılarak erişilir. Bu nedenle, kullanıcıların kimliğine bürünerek, izinleri depolama düzeyinde denetlenir. Gereksinimlerinize uyacak şekilde, [depolama erişimini denetleyebilirsiniz](develop-storage-files-storage-access-control.md) .
 
 ## <a name="extensions"></a>Uzantıları
 
-Azure Depolama dosyalarında bulunan verilerin yerinde sorgulanması için sorunsuz bir deneyimi desteklemek için, SQL isteğe bağlı olarak [OPENROWSET](develop-openrowset.md) işlevini ek özelliklerle kullanır:
+Azure depolama dosyalarında bulunan verilerin yerinde sorgulanmasına yönelik sorunsuz bir deneyim desteklemek için, SQL isteğe bağlı, ek yetenekler ile [OPENROWSET](develop-openrowset.md) işlevini kullanır:
 
-- [Birden çok dosya veya klasörü sorgula](#query-multiple-files-or-folders)
-- [PARKE dosya formatı](#parquet-file-format)
-- [Sınırlı metinle çalışmak için ek seçenekler (alan sonlandırıcısı, satır sonlandırıcısı, kaçış char)](#additional-options-for-working-with-delimited-text)
-- [Sütunların seçilen bir alt kümesini okuma](#read-a-chosen-subset-of-columns)
+- [Birden çok dosyayı veya klasörü sorgulama](#query-multiple-files-or-folders)
+- [PARQUET dosya biçimi](#parquet-file-format)
+- [Sınırlandırılmış metinle çalışmak için ek seçenekler (alan Sonlandırıcı, satır Sonlandırıcı, kaçış karakteri)](#additional-options-for-working-with-delimited-text)
+- [Seçili sütunların bir alt kümesini okuyun](#read-a-chosen-subset-of-columns)
 - [Şema çıkarımı](#schema-inference)
-- [dosya adı fonksiyonu](#filename-function)
-- [filepath fonksiyonu](#filepath-function)
-- [Karmaşık türleri ve iç içe veya yinelenen veri yapıları ile çalışma](#work-with-complex-types-and-nested-or-repeated-data-structures)
+- [filename işlevi](#filename-function)
+- [FilePath işlevi](#filepath-function)
+- [Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma](#work-with-complex-types-and-nested-or-repeated-data-structures)
 
-### <a name="query-multiple-files-or-folders"></a>Birden çok dosya veya klasörü sorgula
+### <a name="query-multiple-files-or-folders"></a>Birden çok dosyayı veya klasörü sorgulama
 
-Tek bir varlık veya satır kümesi olarak davranırken bir klasör veya klasör kümesi içinde bir dosya kümesi üzerinde bir T-SQL sorgusu çalıştırmak için, bir klasör veya desen (joker karakter kullanarak) bir dosya veya klasör kümesi üzerinde bir yol sağlayın.
+Tek bir varlık veya satır kümesi olarak davranırken bir klasör veya klasör kümesi içindeki bir dosya kümesi üzerinde bir T-SQL sorgusu çalıştırmak için bir dosya veya klasör kümesi üzerinde bir klasöre veya bir modele (joker karakter kullanarak) bir yol sağlayın.
 
 Aşağıdaki kurallar geçerlidir:
 
-- Desenler dizin yolunun bir bölümünde veya dosya adında görünebilir.
-- Aynı dizin adımında veya dosya adında birkaç desen görünebilir.
-- Birden çok joker karakter varsa, eşleşen tüm yollardaki dosyalar ortaya çıkan dosya kümesine dahil edilir.
+- Desenler, bir dizin yolunun veya dosya adının bir kısmında görünebilir.
+- Aynı dizin adımında veya dosya adında çeşitli desenler görünebilir.
+- Birden çok joker karakter varsa, tüm eşleşen yolların içindeki dosyalar elde edilen dosya kümesine dahil edilir.
 
 ```
 N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.csv'
 ```
 
-Kullanım örnekleri için [Sorgu klasörlerine ve birden çok dosyaya](query-folders-multiple-csv-files.md) bakın.
+Kullanım örnekleri için [sorgu klasörlerine ve birden çok dosyaya](query-folders-multiple-csv-files.md) bakın.
 
-### <a name="parquet-file-format"></a>PARKE dosya formatı
+### <a name="parquet-file-format"></a>PARQUET dosya biçimi
 
-Parke kaynak verilerini sorgulamak için FORMAT = 'PARKE'
+Parquet kaynak verilerini sorgulamak için FORMAT = ' PARQUET ' kullanın
 
 ```syntaxsql
 OPENROWSET
@@ -74,11 +74,11 @@ AS table_alias(column_alias,...n)
 [ , FORMAT = {'CSV' | 'PARQUET'} ]
 ```
 
-Kullanım örnekleri için [Sorgu Parke dosyaları](query-parquet-files.md) makalesini inceleyin.
+Kullanım örnekleri için [sorgu Parquet dosyaları](query-parquet-files.md) makalesini gözden geçirin.
 
-### <a name="additional-options-for-working-with-delimited-text"></a>Sınırlı metinle çalışmak için ek seçenekler
+### <a name="additional-options-for-working-with-delimited-text"></a>Sınırlandırılmış metinle çalışmak için ek seçenekler
 
-Bu ek parametreler CSV (sınırlı metin) dosyaları ile çalışmak için tanıtıldı:
+Bu ek parametreler CSV (sınırlandırılmış metin) dosyaları ile çalışmaya yönelik olarak sunulmuştur:
 
 ```syntaxsql
 <bulk_options> ::=
@@ -89,17 +89,17 @@ Bu ek parametreler CSV (sınırlı metin) dosyaları ile çalışmak için tanı
 ...
 ```
 
-- ESCAPE_CHAR = 'char' Dosyadaki karakteri kendisive dosyadaki tüm sınırlayıcı değerleri kaçmak için kullanılır belirtir. Kaçış karakteri kendisinden başka bir değer veya sınır layıcı değerlerden herhangi biri tarafından takip edilirse, değeri okurken kaçış karakteri bırakılır.
-ESCAPE_CHAR parametresi, FIELDQUOTE'ın etkin olup olmadığına bakılmaksızın uygulanır. Alıntı karakterinden kaçmak için kullanılmaz. Alıntı karakteri, Excel CSV davranışıyla uyumlu çift tırnak işaretleriyle kaçar.
-- FIELDTERMINATOR ='field_terminator' Kullanılacak alan terminatörü belirtir. Varsayılan alan sonlandırıcısı virgüldür ("**,**")
-- ROWTERMINATOR ='row_terminator' Kullanılacak satır sonlandırıcısını belirtir. Varsayılan satır sonlandırıcısı yeni bir çizgi karakteridir: **\r\n**.
+- ESCAPE_CHAR = ' Char ', dosyanın kendisini ve tüm sınırlayıcı değerlerini kaçış için kullanılan dosyadaki karakteri belirtir. Kaçış karakterinin arkasından veya kendisi dışında bir değer veya sınırlayıcı değerlerinden herhangi biri gelmesi durumunda, değer okunurken kaçış karakteri bırakılır.
+ESCAPE_CHAR parametresi, FIELDQUOTE 'un etkin olup olmamasından bağımsız olarak uygulanır. Tırnak işareti karakterini atlamak için kullanılmaz. Tırnak işareti karakteri, Excel CSV davranışına göre hizalamayla birlikte çift tırnak işareti karakteriyle sonuçlanır.
+- FIELDSONLANDıRıCı = ' field_terminator ' kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı bir virgül ("**,**")
+- ROWSONLANDıRıCı = ' row_terminator ' kullanılacak satır sonlandırıcıyı belirtir. Varsayılan satır Sonlandırıcı bir yeni satır karakteri: **\r\n**.
 
-### <a name="read-a-chosen-subset-of-columns"></a>Sütunların seçilen bir alt kümesini okuma
+### <a name="read-a-chosen-subset-of-columns"></a>Seçili sütunların bir alt kümesini okuyun
 
-Okumak istediğiniz sütunları belirtmek için OPENROWSET ekstrenizde isteğe bağlı WITH yan tümcesi sağlayabilirsiniz.
+Okumak istediğiniz sütunları belirtmek için, OPENROWSET deyiminiz içinde isteğe bağlı bir WıTH yan tümcesi sağlayabilirsiniz.
 
-- CSV veri dosyaları varsa, tüm sütunları okumak için sütun adları ve veri türlerini sağlayın. Sütunalt kümesi istiyorsanız, gelen veri dosyalarından gelen sütunları ordinal'e göre seçmek için ordinal numaraları kullanın. Sütunlar ordinal atama ile bağlı olacaktır.
-- Parke veri dosyaları varsa, kaynak veri dosyalarındaki sütun adlarıyla eşleşen sütun adları sağlayın. Sütunlar ada göre bağlı olacaktır.
+- CSV veri dosyaları varsa tüm sütunları okumak için sütun adlarını ve bunların veri türlerini belirtin. Sütunların bir alt kümesini isterseniz, kaynak veri dosyalarından sütunları sıralı olarak seçmek için sıralı numaraları kullanın. Sütunlar sıra atamağına göre bağlanacaktır.
+- Parquet veri dosyaları varsa, kaynak veri dosyalarındaki sütun adlarıyla eşleşen sütun adları sağlayın. Sütunlar ada göre bağlanacaktır.
 
 ```syntaxsql
 OPENROWSET
@@ -109,42 +109,42 @@ OPENROWSET
 ) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 ```
 
-Örnekler için, [tüm sütunları belirtmeden CSV dosyalarını oku'ya](query-single-csv-file.md#returning-subset-of-columns)bakın.
+Örnekler için, [tüm sütunları BELIRTMEDEN CSV dosyalarını oku](query-single-csv-file.md#returning-subset-of-columns)bölümüne bakın.
 
 ### <a name="schema-inference"></a>Şema çıkarımı
 
-OPENROWSET deyimindeki WITH yan tümcesini atlayarak, hizmete şemayı temel dosyalardan otomatik olarak algılaması (çıkartmasını) öğretebilirsiniz.
+OPENROWSET ifadesinden WıTH yan tümcesini atlayarak, bu hizmeti temel alınan dosyalardaki şemayı otomatik olarak algılamaya (çıkarsaymasını) söyleyebilirsiniz.
 
 > [!NOTE]
-> Bu şu anda sadece PARKQUET dosya biçimi için çalışır.
+> Bu şu anda yalnızca PARQUET dosya biçimi için geçerlidir.
 
 ```sql
 OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
-### <a name="filename-function"></a>Dosya adı fonksiyonu
+### <a name="filename-function"></a>Filename işlevi
 
-Bu işlev, satırın kaynağı olduğu dosya adını döndürür.
+Bu işlev, satırın kaynaklandığı dosya adını döndürür.
 
-Belirli dosyaları sorgulamak için Sorgu [belirli dosyalar](query-specific-files.md#filename) makalesinde Dosya Adı bölümünü okuyun.
+Belirli dosyaları sorgulamak için, [dosyaya özel dosyaları sorgula](query-specific-files.md#filename) makalesindeki dosya adı bölümünü okuyun.
 
-### <a name="filepath-function"></a>Filepath işlevi
+### <a name="filepath-function"></a>FilePath işlevi
 
-Bu işlev, tam bir yol veya yolun bir bölümünü döndürür:
+Bu işlev, yolun tam yolunu veya bir parçasını döndürür:
 
-- Parametre olmadan çağrıldığında, bir satırın kaynağı olan tam dosya yolunu döndürür.
-- Parametre ile çağrıldığında, parametrede belirtilen konumdaki joker karakterle eşleşen yolun bir bölümünü döndürür. Örneğin, parametre değeri 1, ilk joker ile eşleşen yolun bir bölümünü döndürer.
+- Parametresi olmadan çağrıldığında, bir satırın kaynaklandığı tam dosya yolunu döndürür.
+- Parametresi ile çağrıldığında, parametresinde belirtilen konumda joker karakterle eşleşen yolun bir bölümünü döndürür. Örneğin, parametre değeri 1 ilk joker karakterle eşleşen yolun bir bölümünü döndürür.
 
-Ek bilgi için, Sorgu belirli [dosyalar](query-specific-files.md#filepath) makalesinin Filepath bölümünü okuyun.
+Daha fazla bilgi için, [özel dosyaları sorgula](query-specific-files.md#filepath) makalesindeki FilePath bölümünü okuyun.
 
-### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Karmaşık türleri ve iç içe veya yinelenen veri yapıları ile çalışma
+### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma
 
-[Parke](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) dosyaları gibi iç içe veya tekrarlanan veri türlerinde depolanan verilerle çalışırken sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı olarak aşağıdaki uzantıları ekledi.
+İç içe geçmiş veya yinelenen veri türlerinde depolanan verilerle çalışırken sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı SQL [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) aşağıdaki uzantıları eklemiştir.
 
-#### <a name="project-nested-or-repeated-data"></a>İç içe veya yinelenen verileri projelendirin
+#### <a name="project-nested-or-repeated-data"></a>Proje iç içe veya yinelenen veriler
 
-Verileri yansıtmak için, iç içe veri türlerinin sütunlarını içeren Parke dosyası nın üzerinde bir SELECT deyimi çalıştırın. Çıktıda, iç içe geçen değerler JSON'a serihale edilecek ve varchar(8000) SQL veri türü olarak döndürülür.
+Verileri proje için, iç içe geçmiş veri türlerinin sütunlarını içeren Parquet dosyası üzerinde bir SELECT ifadesini çalıştırın. Çıkışta, iç içe geçmiş değerler JSON 'a serileştirilir ve varchar (8000) SQL veri türü olarak döndürülür.
 
 ```sql
     SELECT * FROM
@@ -154,11 +154,11 @@ Verileri yansıtmak için, iç içe veri türlerinin sütunlarını içeren Park
     [AS alias]
 ```
 
-Daha ayrıntılı bilgi için, [Sorgu Parke iç içe türleri](query-parquet-nested-types.md#project-nested-or-repeated-data) makalesinin Project iç içe veya yinelenen veri bölümüne bakın.
+Daha ayrıntılı bilgi için, [sorgu Parquet iç içe türler](query-parquet-nested-types.md#project-nested-or-repeated-data) makalesinin iç içe veya yinelenen veri bölümüne bakın.
 
-#### <a name="access-elements-from-nested-columns"></a>İç içe sütunlardan öğelere erişim
+#### <a name="access-elements-from-nested-columns"></a>İç içe geçmiş sütunlardan öğelere erişin
 
-Struct gibi iç içe bir sütundan iç içe kullanılan öğelere erişmek için alan adlarını yola ayırmak için "nokta gösterimi" kullanın. OPENROWSET işlevinin WITH yan tümcesindeki yolu column_name olarak sağlayın.
+Yuvalanmış bir sütundan iç içe geçmiş öğelere (struct gibi) erişmek için, alan adlarını yola birleştirmek için "nokta gösterimi" kullanın. Yolu OPENROWSET işlevinin WıTH yan tümcesinde column_name olarak girin.
 
 Sözdizimi parçası örneği aşağıdaki gibidir:
 
@@ -171,30 +171,30 @@ Sözdizimi parçası örneği aşağıdaki gibidir:
     'column_name' ::= '[field_name.] field_name'
 ```
 
-Varsayılan olarak, OPENROWSET işlevi kaynak alan adı ve yolu WITH yan tümcesinde sağlanan sütun adlarıyla eşleşir. Aynı kaynak Parke dosyası içinde farklı yuvalama düzeylerinde bulunan elemanlara WITH maddesi ile erişilebilir.
+Varsayılan olarak, OPENROWSET işlevi WıTH yan tümcesinde belirtilen sütun adlarıyla kaynak alan adı ve yoluyla eşleşir. Aynı kaynak Parquet dosyası içindeki farklı iç içe düzeylerde bulunan öğelere WıTH yan tümcesi aracılığıyla erişilebilir.
 
 **Döndürülen değerler**
 
-- İşlev, Iç Içe Tür grubunda olmayan tüm Parke türleri için belirtilen öğeden ve belirtilen yolda int, ondalık ve varchar gibi skaler bir değer döndürür.
-- Yol İç Içe Tür'e ait bir öğeyi işaret ederse, işlev belirtilen yolüzerindeki üst öğeden başlayarak bir JSON parçası döndürür. JSON parçası tip varchar(8000) biridir.
+- İşlev, Iç Içe geçmiş tür grubunda olmayan tüm Parquet türleri için, belirtilen öğeden ve belirtilen yoldaki int, Decimal ve varchar gibi bir skaler değer döndürür.
+- Yol, Iç Içe geçmiş bir türün bir öğesini işaret ediyorsa, işlev belirtilen yoldaki en üstteki öğeden başlayarak bir JSON parçası döndürür. JSON parçası varchar (8000) türündedir.
 - Özellik belirtilen column_name bulunamazsa, işlev bir hata döndürür.
-- Özellik belirtilen column_path bulunamazsa, [Yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)bağlı olarak, işlev, gevşek modda katı modda veya null modundayken bir hata döndürür.
+- Özellik, [yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)bağlı olarak belirtilen column_path bulunamazsa, işlev katı modda veya LAX modundayken null olduğunda bir hata döndürür.
 
-Sorgu örnekleri için, Sorgu Parke iç içe türleri makalesinde iç içe sütunlar bölümünden Erişim öğelerini gözden [geçirin.](query-parquet-nested-types.md#access-elements-from-nested-columns)
+Sorgu örnekleri için, [sorgu Parquet iç içe türler](query-parquet-nested-types.md#access-elements-from-nested-columns) makalesindeki iç içe geçmiş sütunlarda bulunan erişim öğeleri bölümünü gözden geçirin.
 
-#### <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelere erişim
+#### <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
-Dizi veya Harita öğesi gibi yinelenen bir sütundan öğelere erişmek için, projelevermeniz ve sağlamanız gereken her skaler öğe için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini kullanın:
+Bir dizi veya haritanın bir öğesi gibi yinelenen bir sütundan öğelere erişmek için, proje yapmanız ve sağlamanız gereken her skalar öğe için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini kullanın:
 
-- İç içe veya yinelenen sütun, ilk parametre olarak
-- İkinci bir parametre olarak öğeyi veya özelliği ni belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- İlk parametre olarak iç içe veya yinelenen sütun
+- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Yinelenen bir sütundan skaler olmayan öğelere erişmek için, projeve sağlamanız gereken her skaler olmayan öğe için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini kullanın:
+Yinelenen bir sütundan skalar olmayan öğelere erişmek için, proje yapmanız ve sağlamanız gereken skalar olmayan her öğe için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini kullanın:
 
-- İç içe veya yinelenen sütun, ilk parametre olarak
-- İkinci bir parametre olarak öğeyi veya özelliği ni belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- İlk parametre olarak iç içe veya yinelenen sütun
+- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Aşağıdaki sözdizimi fragmanına bakın:
+Aşağıdaki sözdizimi parçasını inceleyin:
 
 ```syntaxsql
     SELECT
@@ -207,16 +207,16 @@ Aşağıdaki sözdizimi fragmanına bakın:
     [AS alias]
 ```
 
-[Sorgu Parke iç içe](query-parquet-nested-types.md#access-elements-from-repeated-columns) türleri makalesinde yinelenen sütunlardan öğelere erişmek için sorgu örneklerini bulabilirsiniz.
+[Sorgu Parquet iç içe türler](query-parquet-nested-types.md#access-elements-from-repeated-columns) makalesindeki yinelenen sütunlardan öğelere erişmek için sorgu örnekleri bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Farklı dosya türlerinin nasıl sorgulanır ve görünümler oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Farklı dosya türlerini sorgulama ve görünümleri oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Tek CSV dosyasorgulama](query-single-csv-file.md)
+- [Tek CSV dosyasını sorgula](query-single-csv-file.md)
 - [Parquet dosyalarını sorgulama](query-parquet-files.md)
 - [JSON dosyalarını sorgulama](query-json-files.md)
 - [Parquet iç içe türlerini sorgulama](query-parquet-nested-types.md)
 - [Sorgu klasörleri ve birden çok CSV dosyası](query-folders-multiple-csv-files.md)
-- [Sorgularda dosya meta verilerini kullanma](query-specific-files.md)
+- [Sorgularda dosya meta verilerini kullan](query-specific-files.md)
 - [Görünümleri oluşturma ve kullanma](create-use-views.md)

@@ -1,45 +1,45 @@
 ---
 title: Modeller
-description: Azure Uzaktan İşleme'de bir modelin ne olduğunu açıklar
+description: Bir modelin Azure uzaktan Işlemede ne olduğunu açıklar
 author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617946"
 ---
 # <a name="models"></a>Modeller
 
-Azure Uzaktan İşleme'deki bir *model,* [varlıklar](entities.md) ve [bileşenlerden](components.md)oluşan tam nesne gösterimini ifade eder. Modeller, özel verileri uzaktan işleme hizmetine sokmanın ana yoludur.
+Azure uzaktan Işleme 'deki bir *model* , [varlıkların](entities.md) ve [bileşenlerden](components.md)oluşan tam bir nesne temsiline başvurur. Modeller, uzaktan işleme hizmetine özel veri almanın ana yoludur.
 
 ## <a name="model-structure"></a>Model yapısı
 
-Bir modelin kök düğümü olarak tam olarak bir [varlığı](entities.md) vardır. Aşağıda alt varlıklar rasgele bir hiyerarşi olabilir. Bir model yüklenirken, bu kök varlığa bir başvuru döndürülür.
+Bir modelin kök düğümü olarak tam olarak bir [varlığı](entities.md) vardır. Aşağıda, alt varlıkların rastgele bir hiyerarşisi olabilir. Bir model yüklerken, bu kök varlığa bir başvuru döndürülür.
 
-Her varlığın [bileşenleri](components.md) eklenmiş olabilir. En yaygın durumda, varlıklar *MeshComponents*var , hangi başvuru [örgü kaynakları](meshes.md).
+Her varlıkta [bileşen](components.md) eklenmiş olabilir. En yaygın durumda, varlıkların, [kafes kaynaklarına](meshes.md)başvuran *meshcomponents*vardır.
 
 ## <a name="creating-models"></a>Modeller oluşturma
 
-Giriş modellerinin FBX ve GLTF gibi dosya biçimlerinden [dönüştürülmesiyle](../how-tos/conversion/model-conversion.md) çalışma süresi için modeller oluşturma sağlanır. Dönüştürme işlemi dokular, malzemeler ve çerçeveler gibi tüm kaynakları ayıklar ve bunları en iyi duruma getirilmiş çalışma zamanı biçimlerine dönüştürür. Ayrıca yapısal bilgileri ayıklayacak ve bunu ARR'ın varlık/bileşen grafik yapısına dönüştürecektir.
+Çalışma zamanı için model oluşturma, FBX ve GLTF gibi dosya biçimlerinden [giriş modellerini dönüştürerek](../how-tos/conversion/model-conversion.md) elde edilir. Dönüştürme işlemi, dokular, malzemeler ve kafesler gibi tüm kaynakları ayıklar ve bunları iyileştirilmiş çalışma zamanı biçimlerine dönüştürür. Ayrıca yapısal bilgileri ayıklar ve bunu ARR 'nin varlık/bileşen grafik yapısına dönüştürür.
 
 > [!IMPORTANT]
 >
-> [Model dönüştürme,](../how-tos/conversion/model-conversion.md) [meshes](meshes.md)oluşturmak için tek yoldur. Kafesler çalışma zamanında varlıklar arasında paylaşılabilir, ancak bir model yükleme dışında çalışma süresi içine bir mesh almak için başka bir yolu yoktur.
+> [Model dönüştürme](../how-tos/conversion/model-conversion.md) , [kafeslerin](meshes.md)oluşturmanın tek yoludur. Kafesler, çalışma zamanında varlıklar arasında paylaşılabilecek olsa da, bir modeli yükleme dışında çalışma zamanına bir ağ almanın başka bir yolu yoktur.
 
-## <a name="loading-models"></a>Yükleme modelleri
+## <a name="loading-models"></a>Modeller yükleniyor
 
-Bir model dönüştürüldükten sonra, Azure blob depolamadan çalışma süresine yüklenebilir.
+Model dönüştürüldükten sonra, Azure Blob depolamadan çalışma zamanına yüklenebilir.
 
-Kıymetin blob depolamada ele alınma şekline göre farklılık gösteren iki farklı yükleme işlevi vardır:
+Varlığın BLOB depolama alanında ilgilenme yöntemiyle farklı olan iki farklı yükleme işlevi vardır:
 
-* Model, SAS URI ile ele alınabilir. İlgili yükleme `LoadModelFromSASAsync` işlevi parametre `LoadModelFromSASParams`ile. [Yerleşik modelleri](../samples/sample-model.md)yüklerken de bu varyantı kullanın.
-* Model blob depolama parametreleri doğrudan, [blob depolama hesabına bağlı durumda](../how-tos/create-an-account.md#link-storage-accounts)ele alınabilir. Bu durumda ilgili yükleme `LoadModelAsync` işlevi `LoadModelParams`parametre ile.
+* Model, SAS URI 'SI tarafından çözülebilir. İlgili yükleme işlevi parametresi `LoadModelFromSASAsync` `LoadModelFromSASParams`ile. [Yerleşik modeller](../samples/sample-model.md)yüklenirken de bu değişkeni kullanın.
+* BLOB depolama, bu [Hesapla](../how-tos/create-an-account.md#link-storage-accounts)doğrudan BLOB depolama parametreleri ile çözülebilir. Bu durumda ilgili yükleme işlevi parametresiyle `LoadModelAsync` `LoadModelParams`birlikte.
 
-Aşağıdaki kod parçacıkları, her iki işleve de sahip modellerin nasıl yüklenir olduğunu gösterir. SAS URI kullanarak bir model yüklemek için aşağıdaki gibi kodu kullanın:
+Aşağıdaki kod parçacıkları, her iki işlevle de modellerin nasıl yükleneceğini gösterir. SAS URI 'sini kullanarak bir model yüklemek için aşağıdaki gibi bir kod kullanın:
 
 ```csharp
 async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
@@ -58,7 +58,7 @@ async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
 }
 ```
 
-Bir modeli doğrudan blob depolama parametrelerini kullanarak yüklemek istiyorsanız, aşağıdaki parçacıka benzer kod kullanın:
+Bir modeli doğrudan BLOB depolama parametrelerini kullanarak yüklemek istiyorsanız, aşağıdaki kod parçacığına benzer bir kod kullanın:
 
 ```csharp
 async void LoadModel(AzureSession session, Entity modelParent, string storageAccount, string containerName, string assetFilePath)
@@ -77,10 +77,10 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 }
 ```
 
-Daha sonra varlık hiyerarşisi çapraz ve varlıkları ve bileşenleri değiştirebilirsiniz. Aynı modelin birden çok kez yüklenmesi, her biri varlık/bileşen yapısının kendi kopyasına sahip birden çok örnek oluşturur. Ancak, meshes, malzemeler ve dokular [paylaşılan kaynaklar](../concepts/lifetime.md)olduğundan, verileri yine yüklenmez. Bu nedenle, bir modeli birden fazla kez anlık olarak anons etmek, nispeten az bellek yüküne neden olabilir.
+Daha sonra varlık hiyerarşisinde çapraz geçiş yapabilir ve varlıkları ve bileşenleri değiştirebilirsiniz. Aynı modeli birden çok kez yüklemek, her biri varlığın/bileşen yapısının kopyasıyla birlikte birden çok örnek oluşturur. Kafesler, malzemeler ve dokular [paylaşılan kaynaklar](../concepts/lifetime.md)olduğundan, verileri de yeniden yüklenmez. Bu nedenle, bir modelin birden çok kez örnekleniyor görece daha az bellek yükü doğurur.
 
 > [!CAUTION]
-> ARR'daki tüm *Async* işlevleri eşsenkronize işlem nesnelerini döndürer. İşlem tamamlanana kadar bu nesnelere bir başvuru depolamanız gerekir. Aksi takdirde C# çöp toplayıcı işlemi erken silebilir ve asla bitiremez. Bekleme *nin* yukarıdaki örnek kodunda, model yüklemesi bitene kadar yerel değişken 'loadOp'un referans tuttuğunu garanti eder. Ancak, bunun yerine *Tamamlanan* olayı kullanacaksanız, asynchronous işlemini bir üye değişkende depolamanız gerekir.
+> ARR 'deki tüm *zaman uyumsuz* işlevler zaman uyumsuz işlem nesneleri döndürüyor. İşlem tamamlanana kadar bu nesnelere bir başvuru depolamanız gerekir. Aksi halde, C# çöp toplayıcı işlemi erken silebilir ve hiçbir şekilde bitmeyebilir. Yukarıdaki örnek kodda, *await* öğesinin kullanımı, model yüklemesi tamamlanana kadar ' loadOp ' yerel değişkeninin bir başvuru bulundurduğunu garanti eder. Ancak, bunun yerine *tamamlanmış* olayını kullanıyorsanız, zaman uyumsuz işlemi bir üye değişkeninde depolamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

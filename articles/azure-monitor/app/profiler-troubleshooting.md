@@ -1,147 +1,147 @@
 ---
-title: Azure Application Insights Profiler ile ilgili sorun giderme
-description: Bu makalede, Uygulama Öngörüleri Profil Oluşturucusu'nun etkinleştirilmesi veya kullanılmasında sorun yaşayan geliştiricilere yardımcı olmak için sorun giderme adımları ve bilgiler yer alıyor.
+title: Azure Application Insights Profiler sorunlarını giderme
+description: Bu makalede, Application Insights Profiler etkinleştirme veya kullanma konusunda sorun yaşayan geliştiricilere yardımcı olacak sorun giderme adımları ve bilgiler sunulmaktadır.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640956"
 ---
-# <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Uygulama Öngörüleri Profiler'ı etkinleştirme veya görüntüleme sorunlarını giderme
+# <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
 
 ## <a name="active-issues"></a>Etkin sorunlar
 
-* ASP.NET Core 3.x uygulamaları için profil oluşturma artık Azure Uygulama Hizmetleri'nde desteklenir.
+* ASP.NET Core 3. x uygulamaları için profil oluşturma işlemi artık Azure Uygulama Hizmetleri 'nde desteklenir.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Genel sorun giderme
 
-### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profiller yalnızca Profiler çalışırken uygulamanız için istek varsa yüklenir
+### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profiller yalnızca, profil oluşturucu çalışırken uygulamanıza yönelik istekler varsa yüklenir
 
-Azure Application Insights Profiler profil oluşturma verilerini saatte iki dakika toplar. **Ayrıca, Yapıl'ı Uygulama Öngörüleri Profil oluşturbölmesinde** **Profil Şimdi** düğmesini seçtiğinizde de veri toplar. Ancak profil oluşturma verileri yalnızca Profiler çalışırken gerçekleşen bir isteğe eklenebileceğinde yüklenir. 
+Azure Application Insights Profiler her saatte iki dakikalık profil oluşturma verilerini toplar. Ayrıca, **yapılandır Application Insights Profiler** bölmesinde **Şimdi profil** düğmesini seçtiğinizde verileri de toplar. Ancak profil oluşturma verileri, yalnızca profil oluşturucu çalışırken meydana gelen bir isteğe iliştirilebilecek olduğunda karşıya yüklenir. 
 
-Profiler, Application Insights kaynağınıza izleme iletileri ve özel olaylar yazar. Profiler'ın nasıl çalıştığını görmek için bu olayları kullanabilirsiniz. Profiler'ın izlemeleri çalıştırıp yakalaması gerektiğini düşünüyorsanız, ancak bunlar **Performans** bölmesinde görüntülenmiyorsa, Profiler'ın nasıl çalıştığını görmek için denetleyebilirsiniz:
+Profiler, izleme iletilerini ve özel olayları Application Insights kaynağına yazar. Profil oluşturucunun nasıl çalıştığını görmek için bu olayları kullanabilirsiniz. Profil oluşturucunun çalışıyor ve izlemeleri yakalama olması gerektiğini düşünüyorsanız, ancak **performans** bölmesinde görüntülenmezler, profil oluşturucunun nasıl çalıştığını görmek için kontrol edebilirsiniz:
 
-1. Profiler tarafından Application Insights kaynağınıza gönderilen izleme iletilerini ve özel olayları arayın. İlgili verileri bulmak için bu arama dizesini kullanabilirsiniz:
+1. Application Insights kaynağına profil oluşturucu tarafından gönderilen izleme iletilerini ve özel olayları arayın. İlgili verileri bulmak için bu arama dizesini kullanabilirsiniz:
 
     ```
     stopprofiler OR startprofiler OR upload OR ServiceProfilerSample
     ```
-    Aşağıdaki resim, iki AI kaynağından iki arama örneği görüntüler: 
+    Aşağıdaki görüntüde iki AI kaynağından gelen aramaların iki örneği görüntülenmektedir: 
     
-   * Profil oluşturucu çalışırken uygulama solda istek almıyor. İleti, yüklemenin hiçbir etkinlik olmadığı için iptal edildiğini açıklar. 
+   * Profil Oluşturucu çalışırken uygulama istek almıyor. İleti, hiçbir etkinlik olmadığı için karşıya yüklemenin iptal edildiğini açıklar. 
 
-   * Sağda Profiler, Profiler çalışırken gerçekleşen istekleri algıladığında özel olaylar başlattı ve gönderdi. ServiceProfilerSample özel olayı görüntülenirse, Profiler'ın bir isteğe izleme iliştirdi ve **izlemeyi Uygulama Öngörüleri Performans** bölmesinde görüntüleyebilirsiniz.
+   * Sağ tarafta, profil oluşturucu çalışırken meydana gelen istekleri algıladığında profil oluşturucu başlatılır ve özel olaylar gönderilir. ServiceProfilerSample özel olayı görüntüleniyorsa, profil oluşturucunun bir istek için bir izleme iliştirdiğinden ve **Application Insights performans** bölmesinde izlemeyi görüntüleyebiliyorsanız, bu, izlemeyi gösterir.
 
-     Telemetri görüntülenmiyorsa Profiler çalışmıyor. Sorun gidermek için, bu makalenin ilerleyen bölümlerinde belirli uygulama türünüz için sorun giderme bölümlerine bakın.  
+     Hiçbir telemetri görüntülenmiyorsa, Profil Oluşturucu çalışmıyor demektir. Sorunu gidermek için, bu makalenin ilerleyen kısımlarında belirli uygulama türü için sorun giderme bölümlerine bakın.  
 
-     ![Profil oluşturucu telemetrisini ara][profiler-search-telemetry]
+     ![Profil Oluşturucu telemetrisi ara][profiler-search-telemetry]
 
-1. Profiler çalışırken istekler varsa, isteklerin uygulamanızın Profiler etkinleştirilmiş bölümü tarafından işlendiğinden emin olun. Uygulamalar bazen birden çok bileşenden oluşsa da, Profiler bileşenlerin yalnızca bazıları için etkinleştirilir. **Yapılandır Uygulama Öngörüleri Profiler** bölmesi, izleme yüklemiş bileşenleri görüntüler.
+1. Profil oluşturucunun çalıştırıldığı sırada istekler varsa, isteklerin profil oluşturucu etkin olan uygulamanızın parçası tarafından işlendiğinden emin olun. Uygulamalar bazen birden çok bileşenden oluşsa da, bazı bileşenler için profil oluşturucu etkinleştirilir. **Yapılandırma Application Insights Profiler** bölmesi, karşıya yüklenen izlemeler içeren bileşenleri görüntüler.
 
-### <a name="other-things-to-check"></a>Kontrol etmek için diğer şeyler
-* Uygulamanızın .NET Framework 4.6'da çalışırken olduğundan emin olun.
-* Web uygulamanız ASP.NET Core uygulamasıysa, en az Core 2.0 ASP.NET çalışıyor olmalıdır.
-* Görüntülemeye çalıştığınız veriler birkaç haftadan eskiyse, zaman filtrenizi sınırlamayı deneyin ve yeniden deneyin. İzler yedi gün sonra silinir.
-* Yakınlık veya güvenlik duvarının erişimi engellemediğinden emin https://gateway.azureserviceprofiler.netolun.
-* Profiler ücretsiz veya paylaşılan uygulama hizmeti planlarında desteklenmez. Bu planlardan birini kullanıyorsanız, temel planlardan birine kadar ölçeklemayı deneyin ve Profiler çalışmaya başlamalıdır.
+### <a name="other-things-to-check"></a>Denetlenecek diğer şeyler
+* Uygulamanızın .NET Framework 4,6 ' de çalıştığından emin olun.
+* Web uygulamanız ASP.NET Core bir uygulama ise, en az ASP.NET Core 2,0 çalıştırıyor olmalıdır.
+* Görüntülemeye çalıştığınız veriler birkaç haftadan daha eskiyse, zaman filtrenizi sınırlamayı deneyin ve yeniden deneyin. İzlemeler yedi gün sonra silinir.
+* Proxy 'lerin veya güvenlik duvarının öğesine https://gateway.azureserviceprofiler.neterişiminin engellenmediğinden emin olun.
+* Profil Oluşturucu ücretsiz veya paylaşılan App Service planlarında desteklenmez. Bu planlardan birini kullanıyorsanız, temel planların birine kadar ölçeği ölçeklendirmeyi deneyin ve profil oluşturucu çalışmaya başlaması gerekir.
 
-### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Paralel iş parçacıklarında çift sayma
+### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Paralel iş parçacıklarında Double sayma
 
-Bazı durumlarda, yığın görüntüleyicideki toplam zaman ölçümü istek süresinden fazladır.
+Bazı durumlarda, yığın görüntüleyicisinde toplam zaman ölçümü, istek süresinden daha fazla olur.
 
-Bu durum, iki veya daha fazla iş parçacığı bir istekle ilişkili olduğunda ve bunlar paralel olarak çalıştıklarında oluşabilir. Bu durumda, toplam iş parçacığı süresi geçen süreden daha fazladır. Bir iş parçacığı tamamlanmak üzere diğer bekliyor olabilir. İzleyici bu durumu algılamaya çalışır ve ilginç olmayan beklemeyi atlar. Bunu yaparken, kritik bilgi olabilecek bilgileri atlayabilmek yerine çok fazla bilgi görüntüleme tarafında hatalıdır.
+İki veya daha fazla iş parçacığı bir istekle ilişkilendirildiğinde ve paralel olarak çalıştıklarında bu durum oluşabilir. Bu durumda, toplam iş parçacığı süresi geçen süreden daha fazla. Bir iş parçacığı diğerinin tamamlanmasını bekliyor olabilir. Görüntüleyici bu durumu algılamaya çalışır ve ilgi çekici olmayan beklemeyi atlar. Bunu yaparken, önemli bilgiler olabileceğini atlamak yerine çok fazla bilgi görüntüleme bölümünde yer alır.
 
-İzlemelerinizde paralel iş parçacıkları gördüğünüzde, istek için kritik yolu tespit etmek için hangi iş parçacıklarının beklediğini belirleyin. Genellikle, hızlı bir şekilde bekleme durumuna gider iş parçacığı sadece diğer iş parçacığı bekliyor. Diğer iş parçacıklarına odaklanın ve bekleyen iş parçacıklarındaki zamanı yoksayın.
+İzleyicizlerde paralel iş parçacıkları gördüğünüzde, isteğin kritik yolunu belirleyebilmeniz için hangi iş parçacıklarının beklediğini belirlemek için bu iş parçacıklarını da beklediğini saptayın. Genellikle, bir bekleme durumuna hızlıca giden iş parçacığı yalnızca diğer iş parçacıkları üzerinde bekliyor. Diğer iş parçacıklarıyla yoğunlaşın ve bekleyen iş parçacıklarında süreyi yoksayın.
 
-### <a name="error-report-in-the-profile-viewer"></a>Profil görüntüleyicide hata raporu
-Portala bir destek bileti gönderin. Hata iletisinden korelasyon kimliğini eklediğinden emin olun.
+### <a name="error-report-in-the-profile-viewer"></a>Profil görüntüleyicisinde hata raporu
+Portalda bir destek bileti gönderme. Hata iletisinden bağıntı KIMLIĞINI eklediğinizden emin olun.
 
-## <a name="troubleshoot-profiler-on-azure-app-service"></a>Azure Uygulama Hizmetinde Sorun Giderme Profilleyicisi
-Profiler'ın düzgün çalışması için:
-* Web uygulaması hizmet planınız Temel katman veya daha yüksek olmalıdır.
-* Web uygulamanız Uygulama Öngörüleri etkin olmalıdır.
+## <a name="troubleshoot-profiler-on-azure-app-service"></a>Azure App Service profil oluşturucu sorunlarını giderme
+Profil oluşturucunun düzgün çalışması için:
+* Web App Service planınız temel katman veya daha yüksek olmalıdır.
+* Web uygulamanızda Application Insights etkinleştirilmiş olması gerekir.
 * Web uygulamanız aşağıdaki uygulama ayarlarına sahip olmalıdır:
 
     |Uygulama Ayarı    | Değer    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | uygulama öngörüleri kaynağınız için iKey    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights kaynağınız için Ikey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-* **ApplicationInsightsProfiler3** webjob çalışıyor olmalıdır. Web job'u kontrol etmek için:
-   1. [Kudu'ya](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)git.
-   1. **Araçlar** menüsünde **Web İşler Panosu'nu**seçin.  
-      **Webİşler** bölmesi açılır. 
+* **ApplicationInsightsProfiler3** WebJob çalışıyor olmalıdır. WebJob 'u denetlemek için:
+   1. [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)'ye gidin.
+   1. **Araçlar** menüsünde, **Web İşleri Panosu**' nu seçin.  
+      **Web işleri** bölmesi açılır. 
    
-      ![profiler-webjob]   
+      ![Profil Oluşturucu-WebJob]   
    
-   1. Günlük de dahil olmak üzere web işinin ayrıntılarını görüntülemek için **ApplicationInsightsProfiler3** bağlantısını seçin.  
-     **Sürekli Webİş Ayrıntıları** bölmesi açılır.
+   1. Web işi 'nin ayrıntılarını görüntülemek için, günlüğü de içeren **ApplicationInsightsProfiler3** bağlantısını seçin.  
+     **Sürekli WebJob ayrıntıları** bölmesi açılır.
 
-      ![profiler-webjob-log]
+      ![Profiler-WebJob-log]
 
-Profiler'ın neden sizin için çalışmadığını çözemezseniz, günlüğü indirebilir ve yardım için ekibimize serviceprofilerhelp@microsoft.comgönderebilirsiniz. 
+Profil oluşturucunun neden sizin için çalışmadığını anlamak için günlüğü indirebilir ve yardım için ekibimize gönderebilirsiniz serviceprofilerhelp@microsoft.com. 
     
 ### <a name="manual-installation"></a>El ile yükleme
 
-Profiler'ı yapılandırdığınızda, web uygulamasının ayarlarında güncelleştirmeler yapılır. Ortamınız gerektiriyorsa, güncelleştirmeleri el ile uygulayabilirsiniz. Uygulamanızın PowerApps için bir Web Apps ortamında çalışıyor olması bir örnek olabilir. Güncelleştirmeleri el ile uygulamak için:
+Profil oluşturucuyu yapılandırırken, Web uygulamasının ayarlarına güncelleştirmeler yapılır. Ortamınız gerektiriyorsa, güncelleştirmeleri el ile uygulayabilirsiniz. Örneğin, uygulamanızın PowerApps için bir Web Apps ortamda çalışıyor olması olabilir. Güncelleştirmeleri el ile uygulamak için:
 
-1. Web **App Control** bölmesinde **Ayarlar'ı**açın.
+1. **Web uygulaması denetim** bölmesinde **Ayarlar**' ı açın.
 
-1. **.NET Framework sürümünü** **v4.6**olarak ayarlayın.
+1. **.NET Framework sürümünü** **v 4.6**olarak ayarlayın.
 
-1. Her Zaman **Anına**Ayarlayın. **Always On**
+1. **Her zaman** **Açık olarak ayarlayın.**
 1. Bu uygulama ayarlarını oluşturun:
 
     |Uygulama Ayarı    | Değer    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | uygulama öngörüleri kaynağınız için iKey    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights kaynağınız için Ikey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
-    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+    |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Çok fazla etkin profil oluşturma oturumu
 
-Şu anda Profiler'ı aynı hizmet planında çalışan en fazla dört Azure web uygulaması ve dağıtım yuvasında etkinleştirebilirsiniz. Bir uygulama hizmet planında çalışan birden fazla web uygulamanız varsa, Profiler bir *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException*atabilir. Profiler her web uygulaması için ayrı ayrı çalışır ve her uygulama için bir Etkinlik Windows İzleme (ETW) oturumu başlatmaya çalışır. Ancak sınırlı sayıda ETW oturumu aynı anda etkin olabilir. Profiler webjob çok fazla etkin profil oluşturma oturumu bildiriyorsa, bazı web uygulamalarını farklı bir hizmet planına taşıyın.
+Şu anda, profil oluşturucuyu aynı hizmet planında çalışan en fazla dört Azure Web uygulaması ve dağıtım yuvası üzerinde etkinleştirebilirsiniz. Tek bir App Service planında çalışan dörtten fazla Web uygulamanız varsa, Profiler bir *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*oluşturabilir. Profil Oluşturucu her Web uygulaması için ayrı ayrı çalışır ve her bir uygulama için bir Windows için olay Izleme (ETW) oturumu başlatmaya çalışır. Ancak, sınırlı sayıda ETW oturumu tek seferde etkin olabilir. Profiler WebJob çok sayıda etkin profil oluşturma oturumu bildirirse, bazı Web uygulamalarını farklı bir hizmet planına taşıyın.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Dağıtım hatası: D:\\ev\\sitesi\\wwwroot\\\\App_Data işleri' Boş Değil
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Dağıtım hatası: Dizin boş\\değil: Ana\\site\\Wwwroot\\App_Data\\işleri '
 
-Web uygulamanızı Profiler etkinleştirilmiş bir Web Apps kaynağına yeniden dağıtıyorsanız, aşağıdaki iletiyi görebilirsiniz:
+Web uygulamanızı Profiler özellikli bir Web Apps kaynağına yeniden dağıtıyorsanız, aşağıdaki iletiyi görebilirsiniz:
 
-*\\D: ev\\sitesi\\wwwroot\\App_Data\\işleri'*
+*Dizin boş\\değil: Ana\\site\\Wwwroot\\App_Data\\işleri '*
 
-Bu hata, web dağıtımı komut dosyalarından veya Azure DevOps dağıtım ardışık ardışık ardışık kaynaktan çalıştırırsanız oluşur. Çözüm, Web Dağıtım görevine aşağıdaki ek dağıtım parametrelerini eklemektir:
+Bu hata, betiklerden veya Azure DevOps dağıtım ardışık düzeninde Web Dağıtımı çalıştırırsanız oluşur. Çözüm, Web Dağıtımı görevine aşağıdaki ek dağıtım parametrelerini eklemektir:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
 ```
 
-Bu parametreler, Application Insights Profiler tarafından kullanılan klasörü siler ve yeniden dağıtma işleminin engelini kaldır. Şu anda çalışan Profiler örneğini etkilemez.
+Bu parametreler Application Insights Profiler tarafından kullanılan klasörü siler ve yeniden dağıtma işleminin engelini kaldırın. Halen çalışmakta olan profil Oluşturucu örneğini etkilemez.
 
-### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Application Insights Profiler'ın çalışıp çalışmadığını nasıl belirleyebilirim?
+### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Application Insights Profiler çalışıp çalışmadığını Nasıl yaparım? mi?
 
-Profiler web uygulamasında sürekli bir web işi olarak çalışır. Azure [portalında](https://portal.azure.com)web uygulaması kaynağını açabilirsiniz. **Webİşler** bölmesinde **ApplicationInsightsProfiler'ın**durumunu kontrol edin. Çalışmıyorsa, daha fazla bilgi almak için **Günlükler'i** açın.
+Profiler, Web uygulamasında sürekli bir WebJob olarak çalışır. Web uygulaması kaynağını [Azure Portal](https://portal.azure.com)açabilirsiniz. **WebJobs** bölmesinde **Applicationınsightsprofiler**durumunu kontrol edin. Çalışmıyorsa, daha fazla bilgi almak için **günlükleri** açın.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler ve Azure Tanılama ile ilgili sorun giderme sorunları
+## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profil Oluşturucu ve Azure Tanılama sorunlarını giderme
 
->**Bulut Hizmetleri için WAD'da bulunan profil oluşturucudaki hata düzeltildi.** Bulut Hizmetleri için WAD'ın (1.12.2.0) en son sürümü, App Insights SDK'nın tüm son sürümleriyle çalışır. Bulut Hizmeti ana bilgisayarları WAD'ı otomatik olarak yükseltir, ancak hemen yükseltmeyapmaz. Yükseltmeyi zorlamak için, hizmetinizi yeniden dağıtabilir veya düğümü yeniden başlatabilirsiniz.
+>**Cloud Services için WAD içinde yer alan Profiler 'daki hata düzeltildi.** Cloud Services için en son WAD (1.12.2.0) sürümü, App Insights SDK 'sının tüm son sürümleriyle birlikte çalışmaktadır. Bulut hizmeti ana bilgisayarları WAD 'yi otomatik olarak yükseltir, ancak bu işlem anında değil. Bir yükseltmeyi zorlamak için hizmetinizi yeniden dağıtabilirsiniz veya düğümü yeniden başlatabilirsiniz.
 
-Profiler'ın Azure Tanılama tarafından doğru şekilde yapılandırılıp yapılandırılmadığını görmek için aşağıdaki üç şeyi yapın: 
-1. İlk olarak, dağıtılan Azure Tanılama yapılandırmasının içeriğinin beklediğiniz şey olup olmadığını kontrol edin. 
+Profiler 'ın Azure Tanılama tarafından doğru yapılandırılıp yapılandırılmadığını görmek için aşağıdaki üç şeyi yapın: 
+1. İlk olarak, dağıtılan Azure Tanılama yapılandırmanın içeriklerinin beklediğiniz şeydir olup olmadığını denetleyin. 
 
-1. İkinci olarak, Azure Diagnostics'in Profiler komut satırında uygun iKey'i geçtiğinden emin olun. 
+1. İkinci olarak, Azure Tanılama profil oluşturucu komut satırında uygun Ikey ' i geçirdiğinizden emin olun. 
 
-1. Üçüncü olarak, Profiler'ın çalışıp çalışmadığını ancak bir hata döndürüp döndürmediğini görmek için Profiler günlük dosyasını denetleyin. 
+1. Üçüncü olarak, profil oluşturucunun bir hata döndürdüğünden çalışıp çalışmadığını görmek için profil oluşturucu günlük dosyasını denetleyin. 
 
-Azure Tanılama'yı yapılandırmak için kullanılan ayarları denetlemek için:
+Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
 
-1. Sanal makinede (VM) oturum açın ve ardından bu konumdaki günlük dosyasını açın. (Sürücü c olabilir: veya d: ve eklenti sürümü farklı olabilir.)
+1. Sanal makinede (VM) oturum açın ve ardından günlük dosyasını bu konumda açın. (Sürücü c: veya d: olabilir ve eklenti sürümü farklı olabilir.)
 
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
@@ -151,31 +151,31 @@ Azure Tanılama'yı yapılandırmak için kullanılan ayarları denetlemek için
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
-1. Dosyada, Azure Tanılama'yı yapılandırmak için VM'ye geçirilen ayarları bulmak için **WadCfg** dizesini arayabilirsiniz. Profiler lavabosu tarafından kullanılan iKey'in doğru olup olmadığını kontrol edebilirsiniz.
+1. Dosyasında, Azure Tanılama yapılandırmak için sanal makineye geçirilen ayarları bulmak üzere **Wadcfg** dizesini arama yapabilirsiniz. Profil Oluşturucu havuzu tarafından kullanılan Ikey 'in doğru olup olmadığını kontrol edebilirsiniz.
 
-1. Profiler'ı başlatmak için kullanılan komut satırını kontrol edin. Profiler'ı başlatmak için kullanılan bağımsız değişkenler aşağıdaki dosyada yer alıyor. (Sürücü c olabilir: veya d:)
+1. Profil oluşturucuyu başlatmak için kullanılan komut satırını kontrol edin. Profil oluşturucuyu başlatmak için kullanılan bağımsız değişkenler aşağıdaki dosyadır. (Sürücü c: veya d:) olabilir
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
-1. Profiler komut satırındaki iKey'in doğru olduğundan emin olun. 
+1. Profil oluşturucu komut satırındaki Ikey 'in doğru olduğundan emin olun. 
 
-1. Önceki *config.json* dosyasında bulunan yolu kullanarak Profiler günlük dosyasını denetleyin. Profiler'ın kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca Profiler'dan gelen durum ve hata iletilerini de görüntüler.  
+1. Önceki *config. JSON* dosyasında bulunan yolu kullanarak profil oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
 
-    Uygulamanız istek alırken Profiler çalışıyorsa, aşağıdaki ileti görüntülenir: *iKey'den algılanan etkinlik.* 
+    Uygulamanız istek alırken profil oluşturucu çalışıyorsa şu ileti görüntülenir: *Ikey 'Den etkinlik algılandı*. 
 
-    İzleme yüklenirken aşağıdaki ileti görüntülenir: *İzlemeyi yüklemeye başlayın.* 
+    İzleme karşıya yüklenirken şu ileti görüntülenir: *izlemeyi karşıya yüklemeye başlayın*. 
 
 
-## <a name="edit-network-proxy-or-firewall-rules"></a>Ağ proxy'si veya güvenlik duvarı kurallarını edin
+## <a name="edit-network-proxy-or-firewall-rules"></a>Ağ ara sunucusunu veya güvenlik duvarı kurallarını Düzenle
 
-Uygulamanız bir proxy veya güvenlik duvarı aracılığıyla Internet'e bağlanıyorsa, uygulamanızın Application Insights Profiler hizmetiyle iletişim kurabilmesi için kuralları yeniden oluşturmanız gerekebilir. Application Insights Profiler tarafından kullanılan IP'ler Azure Monitor hizmet etiketine dahildir.
+Uygulamanız bir ara sunucu veya güvenlik duvarı üzerinden Internet 'e bağlanırsa, uygulamanızın Application Insights Profiler hizmetiyle iletişim kurmasına izin vermek için kuralları düzenlemeniz gerekebilir. Application Insights Profiler tarafından kullanılan IP 'Ler, Azure Izleyici hizmeti etiketine dahildir.
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
-[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[Profil Oluşturucu-WebJob]:./media/profiler-troubleshooting/Profiler-webjob.png
+[Profiler-WebJob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure dosya paylaşımlarına geçirme
-description: Azure dosya paylaşımlarına geçişler hakkında bilgi edinin ve geçiş kılavuzunuzu bulun.
+description: Azure dosya paylaşımlarına geçişler ve geçiş kılavuzlarınızı bulma hakkında bilgi edinin.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,149 +8,149 @@ ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685983"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure dosya paylaşımlarına geçirme
 
-Bu makalede, Azure dosya paylaşımlarına geçişin temel yönleri ele allanmıştır.
+Bu makalede, Azure dosya paylaşımlarına geçişin temel yönleri ele alınmaktadır.
 
-Bu makalede, geçiş temelleri ve geçiş kılavuzları tablosu içerir. Bu kılavuzlar, dosyalarınızı Azure dosya paylaşımlarına taşımanıza yardımcı olur. Kılavuzlar, verilerinizin nerede olduğuna ve hangi dağıtım modeline (yalnızca bulut veya karma) taşındığınıza bağlı olarak düzenlenir.
+Bu makale, geçiş temelleri ve geçiş kılavuzlarından oluşan bir tablo içerir. Bu kılavuzlar, dosyalarınızı Azure dosya paylaşımlarına taşımanıza yardımcı olur. Kılavuzlar, verilerinizin nerede olduğu ve taşıdığınız dağıtım modelinin (yalnızca bulut veya karma) temel alınarak düzenlenmiştir.
 
 ## <a name="migration-basics"></a>Geçiş temelleri
 
-Azure'da birden çok kullanılabilir bulut depolama türü vardır. Azure'a dosya geçişlerinin temel bir yönü, verileriniz için hangi Azure depolama seçeneğinin doğru olduğunu belirlemektir.
+Azure 'da birden fazla kullanılabilir bulut depolama türü vardır. Azure 'a dosya geçişlerinin temel bir yönü, verilerinize yönelik olarak hangi Azure Storage seçeneğinin doğru olduğunu belirliyor.
 
-[Azure dosya paylaşımları](storage-files-introduction.md) genel amaçlı dosya verileri için uygundur. Bu veriler, şirket içi SMB veya NFS paylaşımını kullandığınız her şeyi içerir. [Azure Dosya Eşitlemi](storage-sync-files-planning.md)ile, Windows Server'ı şirket içinde çalıştıran sunucularda birkaç Azure dosya paylaşımının içeriğini önbelleğe alabilirsiniz.
+[Azure dosya paylaşımları](storage-files-introduction.md) , genel amaçlı dosya verileri için uygundur. Bu veriler, için bir şirket içi SMB veya NFS paylaşımının kullanıldığı her şeyi içerir. [Azure dosya eşitleme](storage-sync-files-planning.md)ile, şirket Içi Windows Server çalıştıran sunuculardaki çeşitli Azure dosya paylaşımlarının içeriğini önbelleğe alabilirsiniz.
 
-Şu anda şirket içi bir sunucuda çalışan bir uygulama için, dosyaları Azure dosya paylaşımında depolamak iyi bir seçim olabilir. Uygulamayı Azure'a taşıyabilir ve Azure dosya paylaşımlarını paylaşılan depolama alanı olarak kullanabilirsiniz. Bu senaryo için [Azure Diskleri'ni](../../virtual-machines/windows/managed-disks-overview.md) de düşünebilirsiniz.
+Şu anda bir şirket içi sunucuda çalışan bir uygulama için, dosyaları bir Azure dosya paylaşımında depolamak iyi bir seçenek olabilir. Uygulamayı Azure 'a taşıyabilir ve Azure dosya paylaşımlarını paylaşılan depolama alanı olarak kullanabilirsiniz. Ayrıca, bu senaryo için [Azure disklerini](../../virtual-machines/windows/managed-disks-overview.md) de göz önünde bulundurun.
 
-Bazı bulut uygulamaları Kobİ'ye veya makine-yerel veri erişimine veya paylaşılan erişime bağlı değildir. Bu uygulamalar için [Azure lekeleri](../blobs/storage-blobs-overview.md) gibi nesne depolama genellikle en iyi seçimdir.
+Bazı bulut uygulamaları SMB 'ye veya makine yerel veri erişimi veya paylaşılan erişim 'e bağlı değildir. Bu uygulamalar için, [Azure Blob 'ları](../blobs/storage-blobs-overview.md) gibi nesne depolama genellikle en iyi seçenektir.
 
-Herhangi bir geçişin anahtarı, dosyalarınızı geçerli depolama konumlarından Azure'a taşınırken geçerli tüm dosya doğrularını yakalamaktır. Azure depolama seçeneğinin ne kadar sadakati desteklediği ve senaryonuzun ne kadar gerektirdiği de doğru Azure depolama alanını seçmenize yardımcı olur. Genel amaçlı dosya verileri geleneksel olarak dosya meta verilerine bağlıdır. Uygulama verileri olmayabilir.
+Herhangi bir geçişte anahtar, dosyalarınızı geçerli depolama konumlarından Azure 'a taşırken uygun olan tüm dosya uygunluğunu yakalamamaktır. Azure Storage seçeneğinin ne kadar aslına göre desteklediği ve senaryonuzun ne kadar uygunluk, doğru Azure depolama alanını seçmenize yardımcı olur. Genel amaçlı dosya verileri, geleneksel olarak dosya meta verilerine bağlıdır. Uygulama verileri çalışmayabilir.
 
-Bir dosyanın iki temel bileşeni şunlardır:
+Bir dosyanın iki temel bileşeni aşağıda verilmiştir:
 
-- **Veri akışı**: Bir dosyanın veri akışı dosya içeriğini depolar.
-- **Dosya meta verileri**: Dosya meta verileri şu alt bileşenlere sahiptir:
-   * Salt okunur gibi dosya öznitelikleri
-   * *NTFS izinleri* veya *dosya ve klasör Aç'ları* olarak adlandırılabilen dosya izinleri
-   * Zaman damgaları, en önemlisi oluşturma ve son değiştirilmiş zaman damgaları
-   * Daha büyük miktarda standart dışı özellikleri depolamak için bir alan olan alternatif bir veri akışı
+- **Veri akışı**: dosya içeriğini depolayan bir dosyanın veri akışı.
+- **Dosya meta verileri**: dosya meta verileri aşağıdaki alt bileşenlere sahiptir:
+   * Salt okuma gibi dosya öznitelikleri
+   * *NTFS izinleri* veya *dosya ve klasör ACL 'leri* olarak başvurulabilen dosya izinleri
+   * Zaman damgaları, en önemlisi oluşturma ve son değiştirilme zaman damgaları
+   * Daha büyük miktarlarda standart olmayan özellikleri depolamak için bir alan olan alternatif bir veri akışı
 
-Bir geçişteki dosya doğruluğu aşağıdaki leri yapma özelliği olarak tanımlanabilir:
+Bir geçişte dosya uygunluk özelliği şu şekilde tanımlanabilir:
 
-- Geçerli tüm dosya bilgilerini kaynakta saklayın.
-- Geçiş aracıyla dosyaları aktarın.
+- Kaynak üzerinde geçerli tüm dosya bilgilerini depolayın.
+- Geçiş Aracı ile dosyaları aktarın.
 - Dosyaları geçişin hedef deposunda depolayın.
 
-Geçişinizin sorunsuz bir şekilde iletilmesini sağlamak [için, gereksinimleriniz için en iyi kopyalama aracını belirleyin](#migration-toolbox) ve bir depolama hedefini kaynağınızla eşleştirin.
+Geçişinizin sorunsuz bir şekilde yapıldığından emin olmak için [gereksinimlerinize uygun en iyi kopyalama aracını](#migration-toolbox) belirleyip bir depolama hedefini kaynağınıza eşleştirin.
 
-Önceki bilgileri göz önünde bulundurarak, Azure'daki genel amaçlı dosyalar için hedef depolama alanının [Azure dosya paylaşımları](storage-files-introduction.md)olduğunu görebilirsiniz.
+Önceki bilgilerin hesaba alınması, Azure 'daki genel amaçlı dosyalar için hedef depolamanın [Azure dosya paylaşımları](storage-files-introduction.md)olduğunu görebilirsiniz.
 
-Azure blobs nesne depolama aksine, Bir Azure dosya paylaşımı yerel dosya meta verileri saklayabilir. Azure dosya paylaşımları dosya ve klasör hiyerarşisini, özniteliklerini ve izinleri de korur. NTFS izinleri şirket içinde oldukları için dosya ve klasörlerde depolanabilir.
+Azure Bloblarındaki nesne depolamadan farklı olarak, bir Azure dosya paylaşımının dosya meta verilerini yerel olarak depolayabileceği. Azure dosya paylaşımları dosya ve klasör hiyerarşisini, özniteliklerini ve izinlerini de korur. NTFS izinleri, şirket içinde olduklarından dosyalar ve klasörler üzerinde depolanabilir.
 
-Şirket içi etki alanı denetleyicisi olan Active Directory kullanıcısı, azure dosya paylaşımına yerel olarak erişebilir. Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS) kullanıcısı da olabilir. Her biri, paylaşım izinlerine ve dosya ve klasör ALA'larına dayalı olarak erişim elde etmek için geçerli kimliklerini kullanır. Bu davranış, şirket içi dosya paylaşımına bağlanan bir kullanıcıya benzer.
+Active Directory bir kullanıcısı, şirket içi etki alanı denetleyicisi olan bir Azure dosya paylaşımında yerel olarak erişebilir. Bu nedenle Azure Active Directory Domain Services (Azure AD DS) kullanıcısı olabilir. Her biri, paylaşma izinlerine ve dosya ve klasör ACL 'Lerine göre erişim sağlamak için geçerli kimliğini kullanır. Bu davranış, şirket içi dosya paylaşımıyla bağlantı kurma kullanıcısına benzer.
 
-Alternatif veri akışı, şu anda bir Dosya'da Azure dosya paylaşımında depolanamamakta olan dosya doğruluğunun birincil yönüdür. Azure Dosya Eşitlemi kullanıldığında şirket içinde korunur.
+Alternatif veri akışı, şu anda Azure dosya paylaşımındaki bir dosyada depolanmayan dosya uygunlukta birincil yönüdür. Azure Dosya Eşitleme kullanıldığında şirket içinde korunur.
 
-Azure dosya paylaşımları için [Azure AD kimlik doğrulaması](storage-files-identity-auth-active-directory-enable.md) ve Azure AD [DS kimlik doğrulaması](storage-files-identity-auth-active-directory-domain-service-enable.md) hakkında daha fazla bilgi edinin.
+Azure [ad kimlik doğrulaması](storage-files-identity-auth-active-directory-enable.md) ve Azure [AD DS kimlik doğrulaması](storage-files-identity-auth-active-directory-domain-service-enable.md) hakkında daha fazla bilgi edinmek için Azure dosya paylaşımları.
 
 ## <a name="migration-guides"></a>Geçiş kılavuzları
 
-Aşağıdaki tabloda ayrıntılı geçiş kılavuzları listelendir.
+Aşağıdaki tabloda, ayrıntılı geçiş kılavuzlarını listelenmektedir.
 
-Tablo nasıl kullanılır:
+Tabloyu kullanma:
 
-1. Dosyalarınızın şu anda depolanan kaynak sistem için satırı bulun.
+1. Dosyalarınızın Şu anda depolandığı kaynak sistem için satırı bulun.
 
-1. Bu hedeflerden birini seçin:
+1. Şu hedeflerden birini seçin:
 
-   - Azure dosya paylaşımlarının içeriğini şirket içinde önbelleğe almak için Azure Dosya Eşitlemeyi'ni kullanarak karma dağıtım
-   - Azure dosyası bulutta paylaşımları
+   - Şirket içinde Azure dosya paylaşımlarının içeriğini önbelleğe almak için Azure Dosya Eşitleme kullanan karma dağıtım
+   - Buluttaki Azure dosya paylaşımları
 
-   Seçtiğiniz hedef sütunu seçin.
+   Seçiminizden eşleşen hedef sütunu seçin.
 
-1. Kaynak ve hedefkesiştiği noktada, bir tablo hücresi kullanılabilir geçiş senaryolarını listeler. Ayrıntılı geçiş kılavuzuna doğrudan bağlantı vermek için birini seçin.
+1. Kaynak ve hedefin kesişimi içinde, bir tablo hücresinde kullanılabilir geçiş senaryoları listelenir. Ayrıntılı geçiş kılavuzuna doğrudan bağlanacak bir tane seçin.
 
-Bağlantısı olmayan bir senaryoda henüz yayımlanmış bir geçiş kılavuzu yok. Güncelleştirmeler için ara sıra bu tabloyu kontrol edin. Yeni kılavuzlar kullanılabilir olduklarında yayınlanacaktır.
+Bağlantı olmadan bir senaryoda, henüz yayımlanmış bir geçiş kılavuzu yoktur. Bu tabloyu güncelleştirmeler için zaman içinde işaretleyin. Yeni Kılavuzlar, kullanılabilir olduğunda yayımlanacak.
 
-| Kaynak | Hedef: </br>Karma dağıtım | Hedef: </br>Yalnızca bulut dağıtımı |
+| Kaynak | Hedef: </br>Karma dağıtım | Hedef: </br>Yalnızca bulutta dağıtım |
 |:---|:--|:--|
-| | Araç kombinasyonu:| Araç kombinasyonu: |
-| Windows Server 2012 R2 ve sonrası | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure Veri Kutusu](storage-sync-offline-data-transfer.md)</li><li>Azure Dosya Eşitleme ve Depolama Geçiş Hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme</li><li>Azure Dosya Eşitleme ve Veri Kutusu</li><li>Azure Dosya Eşitleme ve Depolama Geçiş Hizmeti</li><li>Robocopy</li></ul> |
-| Windows Server 2012 ve önceki | <ul><li>Azure Dosya Eşitleme ve Veri Kutusu</li><li>Azure Dosya Eşitleme ve Depolama Geçiş Hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme ve Depolama Geçiş Hizmeti</li><li>Robocopy</li></ul> |
-| Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
-| Linux veya Samba | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>Robocopy</li></ul> |
-| Microsoft Azure StorBasit Bulut Cihazı 8100 veya StorBasit Bulut Cihazı 8600 | <ul><li>[Azure Dosya Eşitleme ve StorBasit Bulut Cihazı 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple Bulut Cihazı 1200 | <ul><li>[Azure Dosya Eşitleme](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| | Araç birleşimi:| Araç birleşimi: |
+| Windows Server 2012 R2 ve üzeri | <ul><li>[Azure Dosya Eşitleme](storage-sync-files-deployment-guide.md)</li><li>[Azure Dosya Eşitleme ve Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme</li><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 ve öncesi | <ul><li>Azure Dosya Eşitleme ve Data Box</li><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li></ul> | <ul><li>Azure Dosya Eşitleme ve depolama geçiş hizmeti</li><li>RoboCopy</li></ul> |
+| Ağa bağlı depolama (NAS) | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
+| Linux veya Samba | <ul><li>[Azure Dosya Eşitleme ve RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
+| Microsoft Azure StorSimple Cloud gereç 8100 veya StorSimple Cloud Appliance 8600 | <ul><li>[Azure Dosya Eşitleme ve StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Azure Dosya Eşitleme](storage-files-migration-storsimple-1200.md)</li></ul> | |
 | | | |
 
-## <a name="migration-toolbox"></a>Geçiş araç kutusu
+## <a name="migration-toolbox"></a>Geçiş Araç kutusu
 
 ### <a name="file-copy-tools"></a>Dosya kopyalama araçları
 
-Microsoft ve diğer kişiler tarafından kullanılabilen birkaç dosya kopyalama aracı vardır. Geçiş senaryonuz için doğru aracı seçmek için şu temel soruları göz önünde bulundurmanız gerekir:
+Microsoft ve diğerleri tarafından kullanılabilen birkaç dosya kopyalama aracı vardır. Geçiş senaryonuz için doğru aracı seçmek üzere şu temel soruları göz önünde bulundurmanız gerekir:
 
-* Araç, dosya kopyanızın kaynak ve hedef konumlarını destekliyor mu?
+* Araç, dosya kopyanız için kaynak ve hedef konumları destekliyor mu?
 
-* Araç, kaynak ve hedef depolama yerleri arasında ağ yolunuzu veya kullanılabilir protokollerinizi (REST, SMB veya NFS gibi) destekliyor mu?
+* Araç, kaynak ve hedef depolama konumları arasında ağ yolunuzu veya kullanılabilir protokollerinizi (REST, SMB veya NFS) destekliyor mu?
 
-* Araç, kaynak ve hedef konumlarınız tarafından desteklenen gerekli dosya doğrulatuğu korunuyor mu?
+* Araç, kaynak ve hedef konumlarınız tarafından desteklenen gerekli dosya kalitesini korusun mu?
 
-    Bazı durumlarda, hedef depolama alanınız kaynağınızla aynı sadakati desteklemez. Hedef depolama gereksinimleriniz için yeterliyse, araç yalnızca hedefin dosya doğruluğu özellikleriyle eşleşmelidir.
+    Bazı durumlarda, hedef depolama alanı, kaynağınıza göre aynı uygunluğu desteklemez. Hedef depolama gereksinimleriniz için yeterliyse, araç yalnızca hedefin dosya uygunluğu özelliklerine uymalıdır.
 
-* Aracın geçiş stratejinize uymasını sağlayan özellikler var mı?
+* Aracın geçiş stratejinize sığdırmasına izin veren özellikleri var mı?
 
-    Örneğin, aracın kapalı kalma sürenizi en aza indirmenize izin verip vermeyi göz önünde bulundurun.
+    Örneğin, aracın kapalı kalma süresini en aza indirmenize izin verip etmediğini düşünün.
     
-    Bir araç bir hedefi yansıtma seçeneğini desteklediğinde, kaynak erişilebilir kalırken genellikle aynı kaynak ve hedef üzerinde birden çok kez çalıştırabilirsiniz.
+    Bir araç, kaynağı bir hedefe yansıtmaya yönelik bir seçeneği desteklediğinde, kaynak erişilebilir durumda kaldığında genellikle aynı kaynak ve hedefte birden çok kez çalıştırabilirsiniz.
 
-    Aracı ilk çalıştırdığınızda, verilerin büyük bir kısmını kopyalar. Bu ilk çalıştırma bir süre sürebilir. Genellikle iş süreçleriniz için veri kaynağını çevrimdışı na almak istediğinizden daha uzun sürer.
+    Aracı ilk kez çalıştırdığınızda verilerin toplu bölümünü kopyalar. Bu ilk çalıştırma en son bir kez sürebilir. Bu, genellikle veri kaynağını iş işlemleriniz için çevrimdışı duruma almak istediğinizden daha uzun sürer.
 
-    Bir kaynağı bir hedefe yansıtarak **(robocopy /MIR'de**olduğu gibi), aracı aynı kaynak ve hedefüzerinde tekrar çalıştırabilirsiniz. Önceki çalıştırmadan sonra oluşan yalnızca kaynak değişikliklerini taşıması gerektiğinden, çalıştırma çok daha hızlıdır. Bir kopyalama aracını bu şekilde yeniden çalıştırmak, kapalı kalma süresini önemli ölçüde azaltabilir.
+    Kaynağı bir hedefe yansıtarak ( **Robocopy/MIR**'de olduğu gibi), aracı aynı kaynak ve hedefte bir kez daha çalıştırabilirsiniz. Yalnızca önceki çalıştırdıktan sonra gerçekleşen kaynak değişikliklerini taşıması gerektiğinden, çalıştırma çok daha hızlıdır. Kopyalama aracını bu şekilde yeniden çalıştırmak, kapalı kalma süresini önemli ölçüde azaltabilir.
 
-Aşağıdaki tablo, Microsoft araçlarını ve Azure dosya paylaşımlarına uygunluğunu sınıflandırıştır:
+Aşağıdaki tabloda, Microsoft araçları ve Azure dosya paylaşımları için geçerli uygunluğu sınıflandırmaktadır:
 
-| Önerilen | Araç | Azure dosya paylaşımları için destek | Dosya doğruluğunun korunması |
+| Önerilen | Araç | Azure dosya paylaşımları için destek | Dosya uygunluk koruması |
 | :-: | :-- | :---- | :---- |
-|![Evet, tavsiye edilen](media/storage-files-migration-overview/circle-green-checkmark.png)| Robocopy | Destekleniyor. Azure dosya paylaşımları ağ sürücüleri olarak monte edilebilir. | Tam sadakat.* |
-|![Evet, tavsiye edilen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure Dosya Eşitleme | Azure dosya paylaşımlarına yerel olarak entegre edilmiştir. | Tam sadakat.* |
-|![Evet, tavsiye edilen](media/storage-files-migration-overview/circle-green-checkmark.png)| Depolama Geçiş Hizmeti | Dolaylı olarak desteklenir. Azure dosya paylaşımları, SMS hedef sunucularında ağ sürücüleri olarak monte edilebilir. | Tam sadakat.* |
-|![Tam olarak tavsiye edilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Destekleniyor. | Meta verileri kopyalamaz. [Veri Kutusu Azure Dosya Eşitlemi ile kullanılabilir.](storage-sync-offline-data-transfer.md) |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Destekleniyor. Azure dosya paylaşımları, ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure Dosya Eşitleme | Azure dosya paylaşımları ile yerel olarak tümleşiktir. | Tam doğruluk. * |
+|![Evet, önerilir](media/storage-files-migration-overview/circle-green-checkmark.png)| Depolama geçiş hizmeti | Dolaylı olarak desteklenir. Azure dosya paylaşımları, SMS hedef sunucularına ağ sürücüleri olarak takılabilir. | Tam doğruluk. * |
+|![Tam olarak önerilmez](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Destekleniyor. | Meta verileri kopyalamaz. [Data Box, Azure dosya eşitleme birlikte kullanılabilir](storage-sync-offline-data-transfer.md). |
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Destekleniyor. | Meta verileri kopyalamaz. |
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Depolama Gezgini | Destekleniyor. | Meta verileri kopyalamaz. |
 |![Önerilmez](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Destekleniyor. | Meta verileri kopyalamaz. |
 |||||
 
-*\*Tam doğruluk: Azure dosya paylaşımı özelliklerini karşılar veya aşar.*
+*\*Tam doğruluk: Azure dosya paylaşma yeteneklerini karşılar veya aşar.*
 
-### <a name="migration-helper-tools"></a>Geçiş yardımcı araçları
+### <a name="migration-helper-tools"></a>Geçiş Yardımcısı araçları
 
-Bu bölümde, geçişleri planlamanıza ve çalıştırmanıza yardımcı olan araçlar açıklanmaktadır.
+Bu bölümde, geçişleri planlayıp çalıştırmanıza yardımcı olan araçlar açıklanmaktadır.
 
-#### <a name="robocopy-from-microsoft-corporation"></a>Microsoft Corporation'dan RoboCopy
+#### <a name="robocopy-from-microsoft-corporation"></a>Microsoft Corporation 'ın RoboCopy
 
-RoboCopy dosya geçişleri için en uygun araçlardan biridir. Windows'un bir parçası olarak gelir. Ana [RoboCopy belgeleri,](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) bu aracın birçok seçeneği için yararlı bir kaynaktır.
+RoboCopy, dosya geçişleri için en uygun araçlardan biridir. Windows 'un bir parçası olarak gelir. Ana [Robocopy belgeleri](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) , bu aracın birçok seçeneği için yararlı bir kaynaktır.
 
-#### <a name="treesize-from-jam-software-gmbh"></a>JAM Software GmbH'den TreeSize
+#### <a name="treesize-from-jam-software-gmbh"></a>SıKıŞTı Software GmbH TreeSize
 
-Azure Dosya Eşitleme, toplam depolama miktarıyla değil, öncelikle öğe (dosya ve klasör) sayısıyla ölçeklendirilir. TreeSize aracı, Windows Server birimlerinizdeki öğe sayısını belirlemenize olanak tanır.
+Azure Dosya Eşitleme, birincil olarak öğe sayısıyla (dosyalar ve klasörler), toplam depolama miktarı ile değil, ölçeklendirir. TreeSize Aracı, Windows Server birimlerinizde bulunan öğelerin sayısını belirlemenizi sağlar.
 
-Aracı, [Azure Dosya Eşitleme dağıtımından](storage-sync-files-deployment-guide.md)önce bir perspektif oluşturmak için kullanabilirsiniz. Dağıtımdan sonra bulut katmanlama devreye girdiğinde de kullanabilirsiniz. Bu senaryoda, öğe sayısını ve sunucu önbelleğinizi en çok hangi dizinlerin kullandığını görürsünüz.
+[Azure dosya eşitleme dağıtımından](storage-sync-files-deployment-guide.md)önce perspektif oluşturmak için aracını kullanabilirsiniz. Ayrıca, bulut katmanlaması dağıtımdan sonra kullanıldığında de kullanabilirsiniz. Bu senaryoda, öğe sayısını ve hangi dizinlerin sunucu önbelleğinizi en iyi şekilde kullanmasını görürsünüz.
 
-Aracın test edilmiş sürümü sürüm 4.4.1'dir. Bulut katmanlı dosyalarla uyumludur. Araç, normal çalışması sırasında katmanlı dosyaların geri çağrılması na neden olmaz.
+Aracın sınanan sürümü 4.4.1 sürümüdür. Bulut katmanlı dosyalarla uyumludur. Araç, normal işlemleri sırasında katmanlı dosyaların geri çekmesine neden olmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-1. Azure dosya paylaşımlarının (yalnızca bulut veya karma) dağıtılmasını istediğiniz bir plan oluşturun.
-1. Azure dosya paylaşımlarının kaynağınızla ve dağıtımınızla eşleşen ayrıntılı kılavuzu bulmak için kullanılabilir geçiş kılavuzları listesini gözden geçirin.
+1. İstediğiniz Azure dosya paylaşımları (yalnızca bulut veya karma) dağıtımı için bir plan oluşturun.
+1. Azure dosya paylaşımlarınızın kaynağı ve dağıtımı ile eşleşen ayrıntılı Kılavuzu bulmak için kullanılabilir geçiş kılavuzlarından oluşan listeyi gözden geçirin.
 
-Bu makalede bahsedilen Azure Dosyaları teknolojileri hakkında daha fazla bilgi aşağıda verebilmektedir:
+Bu makalede bahsedilen Azure dosyaları teknolojileri hakkında daha fazla bilgi aşağıda verilmiştir:
 
-* [Azure dosya paylaşımına genel bakış](storage-files-introduction.md)
+* [Azure dosya paylaşımında genel bakış](storage-files-introduction.md)
 * [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)
-* [Azure Dosya Eşitleme: Bulut katmanlama](storage-sync-cloud-tiering.md)
+* [Azure Dosya Eşitleme: bulut katmanlaması](storage-sync-cloud-tiering.md)

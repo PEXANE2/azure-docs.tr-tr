@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Kaynak Yöneticisi şablonlarını kullanarak profil ve bitiş noktası oluşturma
+title: Hızlı başlangıç-Kaynak Yöneticisi şablonları kullanarak bir profil ve uç nokta oluşturma
 titleSuffix: Azure Content Delivery Network
-description: Kaynak Yöneticisi şablonlarını kullanarak Azure İçerik Teslim Ağı profili ve bitiş noktası oluşturmayı öğrenin
+description: Kaynak Yöneticisi şablonları kullanarak ağ profili ve uç nokta sunma Azure Içeriği oluşturma hakkında bilgi edinin
 services: cdn
 documentationcenter: ''
 author: senthuransivananthan
@@ -17,30 +17,30 @@ ms.date: 03/05/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: dfd7b933502b96c0952a24dbee563e9b537dcdd8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81683467"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Hızlı başlatma: Kaynak Yöneticisi şablonu kullanarak Bir Azure CDN profili ve bitiş noktası oluşturma
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure CDN profili ve uç noktası oluşturma
 
-Bu hızlı başlangıçta, CLI'yi kullanarak bir Azure Kaynak Yöneticisi şablonu dağıtırsınız. Oluşturduğunuz şablon, web uygulamanızın önüne bir CDN profili ve CDN bitiş noktası dağıtır.
-Bu adımları tamamlamak için yaklaşık on dakika sürer.
+Bu hızlı başlangıçta, CLı kullanarak bir Azure Resource Manager şablonu dağıtırsınız. Oluşturduğunuz şablon, Web uygulamanıza ön bir CDN profili ve CDN uç noktası dağıtır.
+Bu adımların tamamlanması yaklaşık on dakika sürer.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prequisites"></a>Ön Koşullar
+## <a name="prequisites"></a>Belgelerinden
 
-Bu hızlı başlangıç amacıyla, Origin olarak kullanmak için bir Web Uygulaması olması gerekir. Bu hızlı başlatmada kullanılan örnek Web Uygulaması,https://cdndemo.azurewebsites.net
+Bu hızlı başlangıç amacıyla, kaynağınız olarak kullanılacak bir Web uygulamasına sahip olmanız gerekir. Bu hızlı başlangıçta kullanılan örnek Web uygulaması şu şekilde dağıtılırhttps://cdndemo.azurewebsites.net
 
-Daha fazla bilgi için [azure'da statik bir HTML web uygulaması oluşturma 'na](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)bakın.
+Daha fazla bilgi için bkz. [Azure 'da STATIK HTML Web uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Tüm kaynaklar aynı kaynak grubunda dağıtılmalıdır.
+Tüm kaynakların aynı kaynak grubunda dağıtılması gerekir.
 
-Seçtiğiniz konumda kaynak grubu oluşturun. Bu örnek, Doğu ABD konumunda cdn adlı bir kaynak grubunun oluşturulmasını gösterir.
+Seçtiğiniz konumda kaynak grubunu oluşturun. Bu örnek, Doğu ABD konumunda CDN adlı bir kaynak grubu oluşturmayı gösterir.
 
 ```azurecli-interactive
 az group create --name cdn --location eastus
@@ -50,13 +50,13 @@ az group create --name cdn --location eastus
 
 ## <a name="create-the-resource-manager-template"></a>Resource Manager şablonu oluşturma
 
-Bu adımda, kaynakları dağıtan bir şablon dosyası oluşturursunuz.
+Bu adımda, kaynakları dağıtan bir şablon dosyası oluşturacaksınız.
 
-Bu örnek, Genel Web Sitesi Hızlandırma senaryosunda yürürken, yapılandırılabilen birçok ayar vardır. Bu ayarlar Azure Kaynak Yöneticisi şablon uyşunda kullanılabilir. Lütfen [CDN Profili](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) ve [CDN Profil Bitiş Noktası](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)için referanslar bakın.
+Bu örnek, genel bir Web sitesi hızlandırma senaryosunda, yapılandırılabilecek birçok başka ayar de vardır. Bu ayarlar Azure Resource Manager şablonu başvurusunda bulunur. Lütfen [CDN profili](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) ve [CDN profil uç noktası](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)başvurularını inceleyin.
 
-Microsoft CDN'nin içerik türü listesini değiştirmeyi desteklemediğini unutmayın.
+Microsoft CDN 'nin içerik türü listesini değiştirmeyi desteklemediğini unutmayın.
 
-Şablonu **kaynak yöneticisi-cdn.json**olarak kaydedin.
+Şablonu **Resource-Manager-CDN. JSON**olarak kaydedin.
 
 ```json
 {
@@ -178,55 +178,55 @@ Microsoft CDN'nin içerik türü listesini değiştirmeyi desteklemediğini unut
 
 ## <a name="create-the-resources"></a>Kaynakları oluşturma
 
-Azure CLI'yi kullanarak şablonu dağıtın. 2 giriş için istenir:
+Azure CLı kullanarak şablonu dağıtın. Sizden 2 giriş istenir:
 
-**cdnProfileSku** - kullanmak istediğiniz CDN sağlayıcısı. Seçenekler şunlardır:
+**Cdnprofilesku** -kullanmak istediğiniz CDN sağlayıcısı. Seçenekler şunlardır:
 
 * Standard_Microsoft
 * Standard_Akamai
 * Standard_Verizon
 * Premium_Verizon.
 
-**endpointOriginHostName** - CDN üzerinden sunulacak bitiş noktası, örneğin, cdndemo.azurewebsites.net.
+**endpointOriginHostName** -CDN aracılığıyla sunulacak uç nokta, örneğin, cdndemo.azurewebsites.net.
 
 ```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
-![Kaynak Yöneticisi Şablonu Dağıtma](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
+![Kaynak Yöneticisi şablonu dağıtma](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
 
-## <a name="view-the-cdn-profile"></a>CDN profilini görüntüle
+## <a name="view-the-cdn-profile"></a>CDN profilini görüntüleme
 
 ```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
-![CDN Profilini Görüntüle](./media/create-profile-resource-manager-template/cdn-view-profile.png)
+![CDN profilini görüntüle](./media/create-profile-resource-manager-template/cdn-view-profile.png)
 
-## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Standart profil için CDN Bitiş Noktasını görüntüleyin
+## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Profil standardı için CDN uç noktasını görüntüleme-Microsoft
 
 ```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
-![CDN Bitiş Noktasını Görüntüle](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
+![CDN uç noktasını görüntüle](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-İçeriği görüntülemek için HostName'yi kullanın. Örneğin, https:\//cdndemo-azurewebsites-net.azureedge.net tarayıcınızı kullanarak erişin.
+İçeriği görüntülemek için ana bilgisayar adını kullanın. Örneğin, tarayıcınızı kullanarak https:\//cdndemo-azurewebsites-net.azureedge.net erişin.
 
 ## <a name="clean-up"></a>Temizleme
 
-Kaynak grubunun silinmesi, kaynak grubunda dağıtılan tüm kaynakları otomatik olarak kaldırır.
+Kaynak grubunun silinmesi, içinde dağıtılan tüm kaynakları otomatik olarak kaldırır.
 
 ```azurecli-interactive
 az group delete --name cdn
 ```
 
-![Kaynak Grubunu Sil](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
+![Kaynak grubunu sil](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
 
 ## <a name="references"></a>Başvurular
 
-* CDN Profili - [Azure Kaynak Yöneticisi Şablon Başvurusu](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN Endpoint - [Azure Kaynak Yöneticisi ŞablonU Başvuru Belgeleri](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN profili- [Azure Resource Manager şablonu başvurusu](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN uç noktası- [Azure Resource Manager şablonu başvuru belgeleri](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

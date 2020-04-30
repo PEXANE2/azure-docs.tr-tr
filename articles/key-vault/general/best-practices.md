@@ -1,6 +1,6 @@
 ---
-title: Key Vault - Azure Key Vault | Microsoft Dokümanlar
-description: Bu belge, Key Vault kullanmak için en iyi uygulamalardan bazılarını açıklar
+title: Key Vault kullanmak için en iyi uygulamalar | Azure Key Vault | Microsoft Docs
+description: Bu belgede, kullanmak için en iyi uygulamalardan bazıları açıklanmaktadır Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,37 +11,37 @@ ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 923fb90f7f0e8eefec650515ed2a3b9b75d2ae77
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617909"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 
-## <a name="control-access-to-your-vault"></a>Kasanıza Erişimi Kontrol Edin
+## <a name="control-access-to-your-vault"></a>Kasanıza erişimi denetleme
 
-Azure Key Vault, sertifikalar, bağlantı dizeleri ve parolalar gibi şifreleme anahtarlarını ve sırlarını koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara izin vererek anahtar kasalarınıza erişimi güvence altına almanız gerekir. Bu [makale)](secure-your-key-vault.md)Key Vault erişim modeline genel bir bakış sağlar. Kimlik doğrulamayı ve yetkilendirmeyi açıklar ve anahtar kasalarınıza nasıl güvenli erişimi sağlayacağınızı açıklar.
+Azure Key Vault, şifreleme anahtarlarını ve sertifikalar, bağlantı dizeleri ve parolalar gibi gizli dizileri koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara izin vererek anahtar kasalarınıza güvenli bir şekilde erişmeniz gerekir. Bu [Makale](secure-your-key-vault.md)) Key Vault erişim modeline genel bir bakış sağlar. Kimlik doğrulama ve yetkilendirmeyi açıklar ve anahtar kasalarınıza erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
 
-Kasanıza erişimi kontrol ederken öneriler aşağıdaki gibidir:
-1. Aboneliğinize, kaynak grubunuza ve Anahtar Kasalarına (RBAC) erişimi kilitleme
-2. Her kasa için Erişim ilkeleri oluşturma
-3. Erişim sağlamak için en az ayrıcalık erişim ilkesini kullanma
-4. Güvenlik Duvarı ve [VNET Hizmet Bitiş Noktalarını](overview-vnet-service-endpoints.md)açın )
+Kasanıza erişimi denetlerken öneriler aşağıdaki gibidir:
+1. Aboneliğiniz, kaynak grubunuz ve Anahtar kasaları (RBAC) için erişimi kilitleme
+2. Her kasa için erişim ilkeleri oluşturma
+3. Erişim vermek için en az ayrıcalık erişim sorumlusunu kullanın
+4. Güvenlik Duvarı ve [sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md)aç)
 
-## <a name="use-separate-key-vault"></a>Ayrı Anahtar Kasası kullanın
+## <a name="use-separate-key-vault"></a>Ayrı Key Vault kullan
 
-Tavsiyemiz, her ortam için uygulama başına kasa (Geliştirme, Üretim öncesi ve Üretim) kullanmaktır. Bu, ortamlar arasında sırları paylaşmamanıza yardımcı olur ve bir ihlal durumunda tehdidi azaltır.
+Önerimiz, ortam başına uygulama başına (geliştirme, ön üretim ve üretim) bir kasa kullanmaktır. Bu, ortamlar genelinde gizli dizileri paylaşmanıza ve ayrıca bir ihlal durumunda tehdidi azaltmanıza yardımcı olur.
 
 ## <a name="backup"></a>Backup
 
-Vault içindeki nesneleri güncelleme/silme/oluşturma'da [kasanızın](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) düzenli geri alımlarını aldığınızdan emin olun.
+Bir kasadaki nesnelerin güncelleştirme/silme/silme işlemleri sırasında [kasanızın](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) düzenli olarak arka pencerelerini aldığınızdan emin olun.
 
-## <a name="turn-on-logging"></a>Günlük Açmayı Aç
+## <a name="turn-on-logging"></a>Günlüğü aç
 
-[Günlüğe kaydetmeyi açın](logging.md)) Vault için. Ayrıca uyarılar ayarlayın.
+[Günlüğü aç](logging.md)) Kasa için. Ayrıca uyarıları ayarlayın.
 
-## <a name="turn-on-recovery-options"></a>Kurtarma seçeneklerini açma
+## <a name="turn-on-recovery-options"></a>Kurtarma seçeneklerini aç
 
-1. Yumuşak [Silme'yi](overview-soft-delete.md)açın).
-2. Yumuşak silme açık olduktan sonra bile gizli / kasanın zorla silinmesine karşı korumak istiyorsanız temizleme korumasını açın.
+1. [Geçici silme](overview-soft-delete.md)özelliğini açın).
+2. Geçici silme etkin olduktan sonra bile gizli dizi/kasaların silinmesini zorlamak istiyorsanız Temizleme korumasını açın.

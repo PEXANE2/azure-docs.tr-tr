@@ -1,7 +1,7 @@
 ---
-title: Azure portalını kullanarak Exchange eşlemi oluşturma veya değiştirme
+title: Azure portal kullanarak bir Exchange eşlemesi oluşturun veya değiştirin
 titleSuffix: Azure
-description: Azure portalını kullanarak Exchange eşlemi oluşturma veya değiştirme
+description: Azure portal kullanarak bir Exchange eşlemesi oluşturun veya değiştirin
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,51 +9,51 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e4f2ee72cbe17c094567aab5c7cc4720b02cde68
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680934"
 ---
-# <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Azure portalını kullanarak Exchange eşlemi oluşturma veya değiştirme
+# <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Azure portal kullanarak bir Exchange eşlemesi oluşturun veya değiştirin
 
-Bu makalede, Azure portalını kullanarak Microsoft Exchange eşlemesinin nasıl oluşturulacak olduğu açıklanmaktadır. Bu makalede, kaynağın durumunu denetlemek, güncelleştirmek veya silmek ve deprovision nasıl gösterir.
+Bu makalede, Azure portal kullanarak bir Microsoft Exchange eşlemesinin nasıl oluşturulacağı açıklanır. Bu makalede ayrıca kaynağın durumunu denetleme, güncelleştirme veya silme ve sağlamayı kaldırma işlemlerinin nasıl yapılacağı gösterilir.
 
 İsterseniz, [PowerShell](howto-exchange-powershell.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Exchange bakış [geçiş ini](walkthrough-exchange-all.md) gözden geçirin.
-* Microsoft ile Azure kaynaklarına dönüştürülmemiş Exchange eşlemeleri zaten varsa, [portalı kullanarak azure kaynağına bakan eski bir Exchange'i dönüştür'e](howto-legacy-exchange-portal.md)bakın.
+* Yapılandırmaya başlamadan önce [önkoşulları](prerequisites.md) ve [Exchange eşleme](walkthrough-exchange-all.md) Kılavuzu ' nu gözden geçirin.
+* Azure kaynaklarına Dönüştürülmeyen Microsoft ile Exchange eşlemeleri zaten varsa, bkz. [portalı kullanarak eski Exchange eşlemesini bir Azure kaynağına dönüştürme](howto-legacy-exchange-portal.md).
 
-## <a name="create-and-provision-an-exchange-peering"></a>Exchange eşleme oluşturma ve sağlama
+## <a name="create-and-provision-an-exchange-peering"></a>Bir Exchange eşlemesi oluşturma ve sağlama
 
 ### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>Portalda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange eşleme oluşturma
+### <a name="create-an-exchange-peering"></a><a name=create></a>Exchange eşlemesi oluşturma
 
-**Peering** kaynağını kullanarak yeni bir eşleme isteği oluşturabilirsiniz.
+**Eşleme** kaynağını kullanarak yeni bir eşleme isteği oluşturabilirsiniz.
 
-#### <a name="launch-the-resource-and-configure-basic-settings"></a>Kaynağı başlatın ve temel ayarları yapılandırır
+#### <a name="launch-the-resource-and-configure-basic-settings"></a>Kaynağı başlatın ve temel ayarları yapılandırın
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>Bağlantıları yapılandırma ve gönderme
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration.md)]
 
-### <a name="verify-an-exchange-peering"></a><a name=get></a>Exchange eşlemelerini doğrulama
+### <a name="verify-an-exchange-peering"></a><a name=get></a>Bir Exchange eşlemesini doğrulama
 [!INCLUDE [peering-exchange-get-portal](./includes/exchange-portal-get.md)]
 
-## <a name="modify-an-exchange-peering"></a><a name="modify"></a>Exchange eşleme sini değiştirme
+## <a name="modify-an-exchange-peering"></a><a name="modify"></a>Bir Exchange eşlemesini değiştirme
 [!INCLUDE [peering-exchange-modify-portal](./includes/exchange-portal-modify.md)]
 
-## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Exchange'e bakmayı deprovision
+## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Bir Exchange eşlemesi sağlamayı kaldırma
 [!INCLUDE [peering-exchange-delete-portal](./includes/delete.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Portalı kullanarak Doğrudan bir bakış oluşturma veya değiştirme](howto-direct-portal.md)
-* [Portalı kullanarak bir azure kaynağına doğrudan bakış dönüştürme](howto-legacy-direct-portal.md)
+* [Portalı kullanarak doğrudan eşleme oluşturma veya değiştirme](howto-direct-portal.md)
+* [Portalı kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme](howto-legacy-direct-portal.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.
+Daha fazla bilgi için bkz. [Internet eşlemesi SSS](faqs.md).

@@ -11,18 +11,18 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 23984bdbcfc649c2bfe04a08787bc10149a1ed91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231904"
+ms.locfileid: "81682782"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, yerel veya uzak denemeleri verilerinize erişmek için Azure Machine Learning veri kümeleri oluşturmayı öğreneceksiniz. Veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
+Bu makalede, yerel veya uzak denemeleri verilerinize erişmek için Azure Machine Learning veri kümeleri oluşturmayı öğreneceksiniz.
 
 Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
@@ -60,11 +60,13 @@ Kullanıcıların eğitiminde kullanıcıları nasıl tükettiği temel alınara
 
 * [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Bu, verileri bir Pandas veya Spark DataFrame 'e nasıl bir şekilde sunmanızı sağlar. . Csv,. `TabularDataset` tsv,. Parquet,. jsonl DOSYALARıNDAN ve SQL sorgu sonuçlarından bir nesne oluşturabilirsiniz. Tüm liste için bkz. [Tabulardatasetfactory sınıfı](https://aka.ms/tabulardataset-api-reference).
 
-* [Filedataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) sınıfı, veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Bu yöntemde, dosyaları dosya veri kümesi nesnesi olarak işlem dosyalarınıza indirebilir veya bağlayabilirsiniz. Dosyalar, derin öğrenme dahil olmak üzere daha geniş bir makine öğrenimi senaryolarına izin veren herhangi bir biçimde olabilir. 
+* [Filedataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) sınıfı, veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Bu yöntemde, dosyaları dosya veri kümesi nesnesi olarak işlem dosyalarınıza indirebilir veya bağlayabilirsiniz. Dosyalar, derin öğrenme dahil olmak üzere daha geniş bir makine öğrenimi senaryolarına izin veren herhangi bir biçimde olabilir.
+
+Yaklaşan API değişiklikleri hakkında daha fazla bilgi edinmek için bkz. [DataSet API Change bildirimi](https://aka.ms/tabular-dataset).
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
-Bir veri kümesi oluşturarak, veri kaynağı konumuna, meta verilerinin bir kopyasıyla birlikte bir başvuru oluşturursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz gerekmez. ' `TabularDataset` `FileDataset` De Python SDK 'sını veya Azure Machine Learning Studio 'yu kullanarak hem hem de veri kümeleri oluşturabilirsiniz https://ml.azure.com.
+Bir veri kümesi oluşturarak, veri kaynağı konumuna, meta verilerinin bir kopyasıyla birlikte bir başvuru oluşturursunuz. Veriler mevcut konumunda kaldığı için ek depolama ücreti ödemeniz gerekmez. Hem hem de `TabularDataset` `FileDataset` veri kümelerini Python SDK 'sını kullanarak oluşturabilirsiniz https://ml.azure.com.
 
 Azure Machine Learning tarafından erişilebilmesi için, veri kümelerinin [Azure veri depoları](how-to-access-data.md) veya genel Web URL 'lerinde yollardan oluşturulması gerekir. 
 
@@ -75,15 +77,12 @@ Python SDK kullanarak bir [Azure veri deposundan](how-to-access-data.md) veri k�
 1. Kayıtlı Azure veri deposuna `contributor` sahip `owner` olduğunuzu veya erişiminiz olduğunu doğrulayın.
 
 2. Veri deposundaki yollara başvurarak veri kümesini oluşturun.
-
 > [!Note]
-> Birden çok veri mağazasında birden çok yoldan bir veri kümesi oluşturabilirsiniz. İçinden veri kümesi oluşturabileceğiniz dosya sayısı veya veri boyutu için sabit sınır yoktur. Bununla birlikte, her bir veri yolu için depolama hizmetine bir dosya veya klasöre işaret edilip edilmeyeceğini denetlemek için birkaç istek gönderilir. Bu ek yük, performansın düşmesine veya başarısız olmasına neden olabilir. İçindeki 1000 dosya içeren bir klasöre başvuran bir veri kümesi, bir veri yoluna başvurulur. En iyi performansı elde etmek için veri depolarında 100 ' den az yola başvuruda bulunan veri kümesi oluşturmanızı öneririz.
+> Birden çok veri mağazasında birden çok yoldan bir veri kümesi oluşturabilirsiniz. İçinden veri kümesi oluşturabileceğiniz dosya sayısı veya veri boyutu için sabit sınır yoktur. Bununla birlikte, her bir veri yolu için depolama hizmetine bir dosya veya klasöre işaret edilip edilmeyeceğini denetlemek için birkaç istek gönderilir. Bu ek yük, performansın düşmesine veya başarısız olmasına neden olabilir. İçindeki 1000 dosya içeren bir klasöre başvuran bir veri kümesi, bir veri yoluna başvurulur. En iyi performansı elde etmek için veri depolarında 100 ' den az yola başvuran veri kümesi oluşturmayı öneririz.
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset oluşturma
 
 . Csv [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) veya. tsv `TabularDatasetFactory` biçimindeki dosyaları okumak ve kayıtlı olmayan bir tabulardataset oluşturmak için sınıfındaki yöntemini kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır. 
-
-Aşağıdaki kod, çalışma alanının mevcut çalışma alanını ve istenen veri deposunu ada göre alır. Ardından, `weather_ds`yeni bir TabularDataset oluşturmak için `path` veri deposunu ve dosya konumlarını parametreye geçirir.
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -96,11 +95,10 @@ workspace = Workspace.from_config()
 # retrieve an existing datastore in the workspace by name
 datastore = Datastore.get(workspace, datastore_name)
 
-# create a TabularDataset from 3 file paths in datastore
+# create a TabularDataset from 3 paths in datastore
 datastore_paths = [(datastore, 'weather/2018/11.csv'),
                    (datastore, 'weather/2018/12.csv'),
                    (datastore, 'weather/2019/*.csv')]
-
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
@@ -126,6 +124,7 @@ titanic_ds.take(3).to_pandas_dataframe()
 0|1|False|3|Braund, Mr. Owen HARRIS|erkek|22,0|1|0|A/5 21171|7,2500||S
 1|2|True|1|Hanler, Mrs. John Bradley (çiçek)...|kadın|38,0|1|0|BILGISAYAR 17599|71,2833|C85|C
 2|3|True|3|Heıkkinen, Isabetsizlik. Laina|kadın|26,0|0|0|STON/O2. 3101282|7,9250||S
+
 
 Bellek Pandas dataframe 'ten bir veri kümesi oluşturmak için, verileri CSV gibi yerel bir dosyaya yazın ve veri kümenizi bu dosyadan oluşturun. Aşağıdaki kod bu iş akışını gösterir.
 
@@ -216,7 +215,7 @@ Studio 'da bir veri kümesi oluşturmak için:
 
 ## <a name="register-datasets"></a>Veri kümelerini Kaydet
 
-Oluşturma işlemini gerçekleştirmek için, veri kümelerinizi bir çalışma alanına kaydedin. Çalışma alanınızda [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) başkalarıyla paylaşmak ve çalışma alanınızdaki denemeleri genelinde yeniden kullanmak için veri kümelerini çalışma alanınıza kaydetmek üzere yöntemini kullanın:
+Oluşturma işlemini gerçekleştirmek için, veri kümelerinizi bir çalışma alanına kaydedin. Veri kümelerini [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) başkalarıyla paylaşmak ve çeşitli denemeleri genelinde yeniden kullanmak için çalışma alanınıza kaydetmek üzere yöntemini kullanın:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

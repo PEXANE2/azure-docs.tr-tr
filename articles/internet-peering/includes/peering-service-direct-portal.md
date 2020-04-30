@@ -9,32 +9,32 @@ ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687035"
 ---
-1. Azure Bakma Hizmeti için etkinleştirmek istediğiniz bir karşılama bağlantısı seçin. Sonra seçin **...**  >  **Bağlantıyı edin.**
+1. Azure eşleme hizmeti için etkinleştirmek istediğiniz eşleme bağlantısını seçin. Ardından **.** .. öğesini seçin  >  **Bağlantıyı Düzenle**.
     > [!div class="mx-imgBorder"]
-    > ![Peering bağlantısı Edit bağlantısı](../media/setup-direct-modify-editconnection.png)
-1. **Peering Service için Kullanım**altında, **Etkin'i** seçin ve ardından **Kaydet'i**seçin.
+    > ![Eşleme bağlantısı bağlantıyı Düzenle](../media/setup-direct-modify-editconnection.png)
+1. **Eşleme hizmeti Için kullanım**altında, **etkin** ' i seçin ve ardından **Kaydet**' i seçin.
     > [!div class="mx-imgBorder"]
-    > ![Peering bağlantısı Arayı Etkinleştir eki](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
-1. Genel **Bakış** ekranında dağıtım ayrıntılarını görürsünüz. Dağıtımınız bittikten sonra **kaynağa git'i**seçin.
+    > ![Eşleme bağlantısı eşleme hizmetini etkinleştir](../media/setup-direct-modify-editconnectionsettings-peering-service.png)
+1. **Genel bakış** ekranında dağıtım ayrıntılarını görürsünüz. Dağıtımınız tamamlandıktan sonra **Kaynağa Git**' i seçin.
     > [!div class="mx-imgBorder"]
-    > ![Dağıtımınız tamamlandı](../media/setup-direct-modify-overview-deployment-complete.png)
+    > ![Dağıtımınız tamamlanmıştır](../media/setup-direct-modify-overview-deployment-complete.png)
 
-1. Kayıtlı **Önekleri** bölmesine kayıtlı **önek ekle'yi**seçin.
+1. Kayıtlı ön **ekler** bölmesinde, **kayıtlı ön ek ekle**' yi seçin.
     > [!div class="mx-imgBorder"]
-    > ![Kayıtlı önek ekleme](../media/setup-direct-modify-add-registered-prefix.png)
-1. **Ad** ve **Önek** seçip Kaydet'i seçerek bir önek **kaydedin.**
+    > ![Kayıtlı ön ek ekle](../media/setup-direct-modify-add-registered-prefix.png)
+1. Bir **ad** ve **ön ek** seçerek ve **Kaydet**' i seçerek ön eki kaydedin.
     > [!div class="mx-imgBorder"]
-    >  ![Önek kaydetme](../media/setup-direct-modify-register-a-prefix.png) 
+    >  ![Ön ek Kaydet](../media/setup-direct-modify-register-a-prefix.png) 
 
-1. Bir önek oluşturulduktan sonra, **kayıtlı öneekler**listesinde görürsünüz. Daha **Name** fazla ayrıntı görmek için önek adı'nı seçin.
+1. Ön ek oluşturulduktan sonra, **kayıtlı ön ekler**listesinde görürsünüz. Daha fazla ayrıntı görmek için ön ek **adını** seçin.
     > [!div class="mx-imgBorder"]
-    > ![Kayıtlı önekler ve bağlantılar](../media/setup-direct-modify-registered-prefixes.png)
-1. Kayıtlı önek sayfasında, her önek için **Önek anahtarını** içeren tüm ayrıntıları görürsünüz. Bu anahtar, sağlayıcı ISS'den bu önek ayrılan müşteriye sağlanmalıdır. Müşteri daha sonra bu anahtarı kullanarak kendi aboneliği içinde kendi önek kaydedebilirsiniz.
+    > ![Kayıtlı ön ekler ve bağlantılar](../media/setup-direct-modify-registered-prefixes.png)
+1. Kayıtlı önek sayfasında, her ön ek için **önek anahtarını** içeren tüm ayrıntıları görürsünüz. Bu anahtarın, sağlayıcı ISS 'sinden bu öneki ayırdığı müşteriye sağlanması gerekir. Daha sonra bu anahtarı kullanarak, müşteri ön eklerini kendi abonelikleri içinde kaydedebilir.
     > [!div class="mx-imgBorder"]
-    > ![Önek tuşu ile önek](../media/setup-direct-modify-registered-prefix-detail.png)
+    > ![Ön ek anahtarına sahip önek](../media/setup-direct-modify-registered-prefix-detail.png)

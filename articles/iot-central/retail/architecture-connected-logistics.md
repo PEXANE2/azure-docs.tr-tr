@@ -1,6 +1,6 @@
 ---
-title: Architecture IoT Connected lojistik | Microsoft Dokümanlar
-description: IoT Central için IoT Connected Logistics uygulama şablonunun mimarisi
+title: Mimari IoT bağlı lojistik | Microsoft Docs
+description: IoT Central için IoT bağlı lojistik uygulama şablonu mimarisi
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -9,43 +9,43 @@ ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81686221"
 ---
-# <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central bağlantılı lojistik uygulama şablonu mimarisi
+# <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central bağlı lojistik uygulama şablonu mimarisi
 
 
 
-İş ortakları & müşteri, bitişten uca **bağlı lojistik çözümleri**geliştirmek için aşağıdaki kılavuz& uygulama şablonu kullanabilir.
+İş ortakları & müşteri, uçtan uca **bağlı lojistik çözümlerini**geliştirmek için aşağıdaki kılavuzdan & uygulama şablonunu kullanabilir.
 
 > [!div class="mx-imgBorder"]
 > ![bağlı lojistik panosu](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
 
-1. Bir ağ geçidi aygıtına telemetri verileri gönderen IoT etiketleri kümesi
-2. IoT Central'a telemetri ve toplu kavrayış gönderen ağ geçidi cihazları
-3. Veriler, manipülasyon için istenilen Azure hizmetine yönlendirilir
-4. ASA veya Azure İşlevleri gibi Azure hizmetleri, veri akışlarını yeniden biçimlemek ve istenen depolama hesaplarına göndermek için kullanılabilir 
-5. Çeşitli iş akışları son kullanıcı iş uygulamaları tarafından desteklenebilir
+1. Bir ağ geçidi cihazına telemetri verileri gönderen IoT etiketleri kümesi
+2. IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
+3. Veriler, işleme için istenen Azure hizmetine yönlendirilir
+4. ASA veya Azure Işlevleri gibi Azure Hizmetleri, veri akışlarını yeniden biçimlendirmek ve istenen depolama hesaplarına göndermek için kullanılabilir 
+5. Çeşitli iş iş akışları, son kullanıcı iş uygulamaları tarafından desteklenmektedir
 
 ## <a name="details"></a>Ayrıntılar
-Aşağıdaki bölümde IoT Etiketleri & Ağ Geçitleri kavramsal mimari Telemetri yutma her bölümü özetliyor
+Aşağıdaki bölümde, IoT etiketlerinden & ağ geçitlerinden kavramsal mimari telemetri alma 'nın her bir bölümü özetlenmektedir
 
 ## <a name="iot-tags"></a>IoT etiketleri
-IoT etiketleri Sıcaklık, Nem, Şok, Tilt &Işığı gibi fiziksel, ortam ve çevresel sensör özellikleri sağlar. IoT etiketleri genellikle Zigbee (802.15.4) üzerinden ağ geçidi aygıtına bağlanır. Etiketler daha az pahalı sensörler; bu nedenle, ters lojistik ile zorlukları önlemek için tipik bir lojistik yolculuğun sonunda atılabilir.
+IoT etiketleri; sıcaklık, nem, darbe, eğim &ışığı gibi fiziksel, çevresel ve çevresel algılayıcı özellikleri sağlar. IoT etiketleri genellikle Zigbee (802.15.4) aracılığıyla ağ geçidi cihazına bağlanır. Etiketler daha ucuz sensörlerdir; Bu nedenle, ters lojistik ile güçlüklere engel olmak için tipik bir lojistik yolculuğunun sonunda atılabilir.
 
 ## <a name="gateway"></a>Ağ geçidi
-Ağ geçitleri, ortam algılama yetenekleriyle IoT etiketleri olarak da hareket edebilir. Ağ geçidi, hücresel, Wi-Fi kanallarını kullanarak azure ioT bulut bağlantısının (MQTT) yukarı yada akışını sağlar.  Bluetooth, NFC ve 802.15.4 Kablosuz Sensör Ağı (WSN) modları, IoT etiketleri ile aşağı akış iletişimi için kullanılır. Ağ geçitleri uçlardan uca güvenli bulut bağlantısı, IoT etiket eşleştirme, sensör veri toplama, veri tutma ve alarm eşiklerini yapılandırma olanağı sağlar.
+Ağ geçitleri Ayrıca çevresel algılama özelliklerine sahip IoT etiketleri olarak davranabilir. Ağ Geçidi, hücresel, Wi-Fi kanalları kullanarak yukarı akış Azure IoT bulut bağlantısına (MQTT) izin verebilir.  Bluetooth, NFC ve 802.15.4 kablosuz algılayıcı ağı (WSN) modları, IoT etiketleriyle aşağı akış iletişimi için kullanılır. Ağ geçitleri uçtan uca güvenli bulut bağlantısı, IoT etiketi eşleştirmesi, algılayıcı veri toplama, veri saklama ve uyarı eşiklerini yapılandırma yeteneği sağlar.
 
 ## <a name="device-management-with-iot-central"></a>IoT Central ile cihaz yönetimi 
-Azure IoT Central, IoT aygıt bağlantısını, yapılandırmayı ve yönetimini basitleştiren bir çözüm geliştirme platformudur. Platform, IoT cihaz yönetimi, operasyonları ve ilgili gelişmelerin yükünü ve maliyetlerini önemli ölçüde azaltır. İş ortakları & müşteriler, lojistikte dijital geri bildirim döngüsü elde etmek için son dan sona kurumsal çözümler oluşturabilir.
+Azure IoT Central, IoT cihaz bağlantısı, yapılandırma ve yönetimini kolaylaştıran bir çözüm geliştirme platformudur. Platform IoT cihaz yönetimi, işlemler ve ilgili geliştirmelerin yükünü ve maliyetlerini önemli ölçüde azaltır. Müşteriler & iş ortakları, bir uçtan uca kurumsal çözüm oluşturabilir ve bu da lojistik 'de dijital bir geri bildirim döngüsü elde edebilir.
 
-## <a name="business-insights-and-actions-using-data-egress"></a>Veri çıkışlarını kullanarak iş öngörüleri ve eylemler 
-IoT Merkezi platformu, Sürekli Veri Aktarım (CDE) ve API'ler aracılığıyla zengin genişletilebilirlik seçenekleri sağlar. Telemetri veri işleme veya ham telemetriye dayalı iş öngörüleri genellikle tercih edilen bir iş yeri uygulamasına aktarılır. Webhook, servis veri merkezi, etkinlik merkezi veya blob depolama sı kullanılarak, makine öğrenimi modellerini oluşturmak, eğitmek ve dağıtmak & öngörüleri daha da zenginleştirmek sağlanabilir.
+## <a name="business-insights-and-actions-using-data-egress"></a>Veri çıkışı kullanan iş öngörüleri ve eylemleri 
+IoT Central platform sürekli veri dışa aktarma (CDE) ve API 'Ler aracılığıyla zengin genişletilebilirlik seçenekleri sağlar. Telemetri veri işleme veya ham telemetri temelinde iş öngörüleri genellikle tercih edilen iş kolu uygulamasına aktarılabilir. Daha zengin Öngörüler & makine öğrenimi modellerini derlemek, eğitme ve dağıtmak için Web kancası, hizmet veri yolu, Olay Hub 'ı veya blob depolama kullanılarak elde edilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bağlı lojistik [çözüm şablonu](./tutorial-iot-central-connected-logistics.md) nasıl dağıtılayacaklarını öğrenin
+* [Bağlı lojistik çözüm şablonunu](./tutorial-iot-central-connected-logistics.md) dağıtmayı öğrenin
 * [IoT Central perakende şablonları](./overview-iot-central-retail.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi için [IoT Central genel bakış](../core/overview-iot-central.md)
+* IoT Central hakkında daha fazla bilgi edinin [IoT Central genel bakış](../core/overview-iot-central.md)

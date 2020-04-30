@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Cihazı Sağlama Hizmeti’ne Genel Bakış | Microsoft Docs
-description: Aygıt Sağlama Hizmeti (DPS) ve IoT Hub ile Azure'da aygıt sağlamayı açıklar
+description: Cihaz sağlama hizmeti (DPS) ve IoT Hub Azure 'da cihaz sağlamayı açıklar
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -12,52 +12,52 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81683301"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
-Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub Aygıt Sağlama Hizmeti (DPS), IoT Hub için insan müdahalesi gerektirmeden doğru IoT hub'ına sıfır dokunuş, tam zamanında sağlama sağlayan bir yardımcı hizmettir. DPS, milyonlarca aygıtın güvenli ve ölçeklenebilir bir şekilde sağlanmasına olanak tanır.
+Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub cihaz sağlama hizmeti (DPS), doğru IoT Hub 'a, Kullanıcı müdahalesi gerektirmeden tam zamanında sağlama sağlayan, IoT Hub için bir yardımcı hizmettir. DPS, milyonlarca cihazın güvenli ve ölçeklenebilir bir şekilde sağlanması için izin vermez.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Cihaz Sağlama Hizmeti’ni kullanma zamanı
-DPS'nin aygıtları bağlı hale getirmek ve IoT Hub'a yapılandırmak için mükemmel bir seçim olduğu birçok sağlama senaryosu vardır:
+DPS 'nin, IoT Hub için bağlı ve yapılandırılmış cihazları almak için mükemmel bir seçim olduğu birçok sağlama senaryosu vardır; örneğin:
 
 * IoT Hub bağlantı bilgilerini fabrikada sabit kodlamaya gerek kalmadan tek bir IoT çözümüne dokunma olmadan sağlama (ilk kurulum)
-* Birden çok hub'da yük dengeleme cihazları
-* Cihazları satış işlem verilerine dayalı olarak sahiplerinin IoT çözümüne bağlama (çoklu kiralama)
+* Birden çok hub genelinde cihazları Yük Dengeleme
+* Cihazları kendi sahip olduğu IoT çözümüne, satış işlem verilerine göre bağlama (çok kiracılı)
 * Cihazları kullanım durumuna göre belirli bir IoT çözümüne bağlama (çözüm yalıtımı)
 * Bir cihazı en düşük gecikme süresine sahip IoT hub’a bağlama (coğrafi parçalama)
 * Cihazdaki bir değişikliğe göre yeniden sağlama
 * Cihaz tarafından IoT Hub’a bağlanmak için kullanılan anahtarları değiştirme (bağlanmak için X.509 sertifikaları kullanılmadığında)
 
 ## <a name="behind-the-scenes"></a>Arka planda
-Önceki bölümde listelenen tüm senaryolar aynı akış ile sıfır dokunmatik sağlama için DPS kullanılarak yapılabilir. Geleneksel olarak tedarik le ilgili el ile atılan adımların çoğu, IoT aygıtlarını dağıtma süresini azaltmak ve el ile hata riskini azaltmak için DPS ile otomatikleştirilmiştir. Aşağıdaki bölümde bir cihazın sağlanması için arka planda gerçekleştirilen işlemler açıklanmaktadır. İlk adım el ile, sonraki adımların tümü ise otomatik olarak gerçekleştirilmektedir.
+Önceki bölümde listelenen tüm senaryolar, aynı akışla sıfır dokunma sağlama için DPS kullanılarak yapılabilir. Geleneksel olarak sağlamaya dahil olan el ile yapılan adımların birçoğu, IoT cihazlarını dağıtma süresini azaltmak ve el ile hata riskini düşürmek için DPS ile otomatikleştirilir. Aşağıdaki bölümde bir cihazın sağlanması için arka planda gerçekleştirilen işlemler açıklanmaktadır. İlk adım el ile, sonraki adımların tümü ise otomatik olarak gerçekleştirilmektedir.
 
 ![Temel sağlama akışı](./media/about-iot-dps/dps-provisioning-flow.png)
 
 1. Cihaz üreticisi, cihaz kayıt bilgilerini Azure portalındaki kayıt listesine ekler.
-2. Aygıt, fabrikada dps uç noktası kümesine temas eder. Aygıt, kimliğini kanıtlamak için tanımlayıcı bilgileri DPS'ye aktarıyor.
-3. DPS, kayıt kimliği ve anahtarını nonce mücadelesi[(Güvenilir Platform Modülü)](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)veya standart X.509 doğrulamasını (X.509) kullanarak kayıt listesi girişine karşı doğrulayarak cihazın kimliğini doğrular.
-4. DPS aygıtı bir IoT hub'ına kaydeder ve aygıtın [istenen ikiz durumunu](../iot-hub/iot-hub-devguide-device-twins.md)doldurur.
-5. IoT hub'ı aygıt kimliği bilgilerini DPS'ye döndürür.
-6. DPS, IoT hub bağlantı bilgilerini aygıta döndürür. Cihaz artık doğrudan IoT hub’a veri göndermeye başlayabilir.
+2. Cihaz, fabrikada ayarlanan DPS uç noktası ile iletişim kurar. Bu cihaz, kimliğini kanıtlamak için tanımlama bilgilerini DPS 'e geçirir.
+3. DPS, anahtar nonce sınaması ([Güvenilir Platform Modülü](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) veya standart X. 509.440 doğrulaması (X. 509.440) kullanarak kayıt kimliği ve anahtarı kayıt listesi girişinde doğrulayarak aygıtın kimliğini doğrular.
+4. DPS, cihazı bir IoT Hub 'ına kaydeder ve cihazın [istenen ikizi durumunu](../iot-hub/iot-hub-devguide-device-twins.md)doldurur.
+5. IoT Hub 'ı, cihaz KIMLIĞI bilgilerini DPS 'e döndürür.
+6. DPS, cihaza IoT Hub bağlantı bilgilerini döndürür. Cihaz artık doğrudan IoT hub’a veri göndermeye başlayabilir.
 7. Cihaz IoT hub’a bağlanır.
 8. Cihaz IoT hub’daki cihaz ikizinden istenen durumu alır.
 
 ## <a name="provisioning-process"></a>Sağlama işlemi
-DPS'nin bağımsız olarak yapılabilecek bir rol aldığı bir aygıtın dağıtım işleminde iki farklı adım vardır:
+Bir cihazın dağıtım işleminde, DPS bağımsız olarak yapılabilecek bir bölümü alan iki ayrı adım vardır:
 
 * Fabrikada cihazın oluşturulduğu ve hazırlandığı **üretim adımı** ve
 * Cihaz Sağlama Hizmeti’nin otomatik sağlama için yapılandırıldığı **bulut kurulumu adımı**.
 
-Bu adımların ikisi de mevcut üretim ve dağıtım işlemlerine sorunsuz olarak eklenebilir. DPS, aygıta bağlantı bilgilerini almak için manuel çalışma içeren bazı dağıtım işlemlerini bile basitleştirir.
+Bu adımların ikisi de mevcut üretim ve dağıtım işlemlerine sorunsuz olarak eklenebilir. DPS, cihaz üzerinde bağlantı bilgilerini almak için el ile çalışmayı içeren bazı dağıtım süreçlerini de basitleştirir.
 
 ### <a name="manufacturing-step"></a>Üretim adımı
 Bu adım, üretim hattında gerçekleştirilen işlemleri kapsar. Bu adımda bulunan roller silikon tasarımcısı, silikon üreticisi, tümleştirici ve/veya cihazın son üreticisidir. Bu adım, donanımı oluşturmayla ilgilidir.
 
-DPS üretim sürecinde yeni bir adım getirmez; bunun yerine, ilk yazılımı ve (ideal olarak) hsm'yi aygıta yükleyen varolan adıma bağlar. Bu adımda cihaz kimliği oluşturma yerine cihaz, sağlama hizmeti bilgileriyle programlanarak açıldığında bağlantı bilgilerini/IoT çözümü atamasını almak üzere sağlama hizmetini araması sağlanır.
+DPS, üretim sürecinde yeni bir adım sunmaz; Bunun yerine, ilk yazılımı yükleyen mevcut adıma ve (ideal olarak) cihaza HSM 'yi alır. Bu adımda cihaz kimliği oluşturma yerine cihaz, sağlama hizmeti bilgileriyle programlanarak açıldığında bağlantı bilgilerini/IoT çözümü atamasını almak üzere sağlama hizmetini araması sağlanır.
 
 Ayrıca bu adımda üretici cihaz dağıtıcısına/operatöre kimlik anahtarı bilgilerini iletir. Bu bilgilerin sağlanması, tüm cihazların cihaz dağıtıcısı/operatörü tarafından sağlanan imzalama sertifikası ile oluşturulmuş olan bir X.509 sertifikasına sahip olduğunun onaylanması kadar basit veya her bir TPM cihazından TPM onay anahtarının genel bölümünün ayıklanması kadar karmaşık olabilir. Bu hizmetler günümüzde birçok silikon üreticisi tarafından sunulmaktadır.
 
@@ -74,24 +74,24 @@ Hizmet otomatik sağlama için yapılandırıldıktan sonra cihaz kaydına hazı
 1. İlk bölüm, cihazı kaydederek cihaz ile IoT çözümü arasındaki ilk bağlantıyı kurmaktır.
 2. İkinci bölüm ise kaydedildiği çözümün gereksinimlerine bağlı olarak cihaz uygun yapılandırmanın uygulanmasıdır.
 
-Bu adımların ikisi de tamamlandıktan sonra cihazın tam olarak sağlandığını söylemek mümkündür. Bazı bulut hizmetleri cihazları IoT çözümü uç noktasına kaydedip ilk yapılandırmayı gerçekleştirmeyerek sağlama işleminin yalnızca ilk bölümünü tamamlar. DPS, aygıt için sorunsuz bir sağlama deneyimi sağlamak için her iki adımı da otomatikleştirir.
+Bu adımların ikisi de tamamlandıktan sonra cihazın tam olarak sağlandığını söylemek mümkündür. Bazı bulut hizmetleri cihazları IoT çözümü uç noktasına kaydedip ilk yapılandırmayı gerçekleştirmeyerek sağlama işleminin yalnızca ilk bölümünü tamamlar. DPS, cihaz için sorunsuz bir sağlama deneyimi sağlamak üzere her iki adımı da otomatikleştirir.
 
 ## <a name="features-of-the-device-provisioning-service"></a>Cihaz Sağlama Hizmeti’nin özellikleri
-DPS birçok özelliğe sahiptir, bu da onu aygıt sağlama için ideal hale getirir.
+DPS birçok özelliğe sahiptir ve bu, cihazları sağlamak için ideal hale getirir.
 
 * **Güvenli kanıtlama**: Hem X.509 hem de TPM tabanlı kimlikler için destek.
 * **Kayıt listesi**: Bir noktada kaydedilebilecek cihazların/cihaz gruplarının tam kaydını içerir. Kayıt listesi, kaydedilen cihazın istenen yapılandırması hakkında bilgi içerir ve istenen zamanda güncelleştirilebilir.
-* DPS'nin senaryolarınızı desteklemek üzere aygıtları IoT hub'larına nasıl atadığını denetlemek için **birden çok ayırma ilkeleri:** En düşük gecikme, eşit ağırlıklı dağıtım (varsayılan) ve kayıt listesi üzerinden statik yapılandırma. Gecikme, [Trafik Yöneticisi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)ile aynı yöntem kullanılarak belirlenir.
+* Senaryolarınızı desteklemek için DPS Cihazları IoT Hub 'larına nasıl atayacağını denetlemek için **birden çok ayırma ilkesi** : en düşük gecikme süresi, eşit ağırlıklı dağıtım (varsayılan) ve kayıt listesi aracılığıyla statik yapılandırma. Gecikme süresi [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)ile aynı yöntem kullanılarak belirlenir.
 * **İzleme ve tanılama günlüğü**: Her şeyin düzgün çalıştığından emin olmanızı sağlar.
-* **Çok hub'lı destek,** DPS'nin aygıtları birden fazla IoT hub'ına atamasına olanak tanır. DPS, birden çok Azure aboneliğinde hub'larla konuşabilir.
-* **Bölgeler arası destek,** DPS'nin aygıtları diğer bölgelerdeki IoT hub'larına atamasına olanak tanır.
-* **Geri kalan veriler için şifreleme** DPS'deki verilerin, mevcut en güçlü blok şifrelemelerinden biri olan 256 bit AES şifrelemesi kullanılarak şifrelenmesini ve şifrelerinin şifresini çözmesini sağlar ve FIPS 140-2 uyumludur.
+* **Çoklu Hub desteği** , DPS 'nin birden fazla IoT Hub 'ına cihaz atamasına izin verir. DPS, birden çok Azure aboneliği genelinde hub 'larla iletişim kurabilir.
+* **Çapraz bölge desteği** , DPS 'nin diğer bölgelerde IoT Hub 'larına cihaz atamasını sağlar.
+* **Bekleyen veriler Için şifreleme** , DPS 'nin 256 bit AES şifrelemesi kullanılarak şifrelenmiş ve şifresi çözülebilmesi, en güçlü blok şifrelemeleri mevcuttur ve FIPS 140-2 uyumludur.
 
 
 [Cihaz kavramları](concepts-device.md), [hizmet kavramları](concepts-service.md) ve [güvenlik kavramları](concepts-security.md) bölümlerinde cihaz sağlamayla ilgili kavramlar ve özellikler hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="cross-platform-support"></a>Platformlar arası destek
-Tüm Azure IoT hizmetleri gibi DPS de çeşitli işletim sistemleriyle çapraz platform da çalışır. Azure, cihazların bağlanmasını ve hizmetin yönetilmesini kolaylaştırmak amacıyla birçok [dilde](https://github.com/Azure/azure-iot-sdks) açık kaynak SDK’ları sunar. DPS, aygıtları bağlamak için aşağıdaki protokolleri destekler:
+Tüm Azure IoT hizmetlerinde olduğu gibi, DPS, çeşitli işletim sistemleriyle platformlar arası çalışıyor. Azure, cihazların bağlanmasını ve hizmetin yönetilmesini kolaylaştırmak amacıyla birçok [dilde](https://github.com/Azure/azure-iot-sdks) açık kaynak SDK’ları sunar. DPS, cihazları bağlamak için aşağıdaki protokolleri destekler:
 
 * HTTPS
 * AMQP
@@ -99,16 +99,16 @@ Tüm Azure IoT hizmetleri gibi DPS de çeşitli işletim sistemleriyle çapraz p
 * MQTT
 * Web yuvaları üzerinden MQTT
 
-DPS yalnızca hizmet işlemleri için HTTPS bağlantılarını destekler.
+DPS, hizmet işlemleri için yalnızca HTTPS bağlantılarını destekler.
 
 ## <a name="regions"></a>Bölgeler
 DPS birçok bölgede kullanılabilir. Tüm hizmetler için mevcut ve yeni duyurulan bölgelerin güncel listesi [Azure Bölgeleri](https://azure.microsoft.com/regions/) sayfasında yer almaktadır. Cihaz Sağlama Hizmeti’nin kullanılabilirliğini [Azure Durumu](https://azure.microsoft.com/status/) sayfasından kontrol edebilirsiniz.
 
 > [!NOTE]
-> DPS geneldir ve bir konuma bağlı değildir. Ancak, DPS profilinizle ilişkili meta verilerin bulunduğu bir bölge belirtmeniz gerekir.
+> DPS geneldir ve bir konum ile bağlantılı değildir. Ancak, DPS profilinizde ilişkilendirilen meta verilerin bulunacağı bir bölge belirtmeniz gerekir.
 
 ## <a name="availability"></a>Kullanılabilirlik
-DPS için %99,9 Hizmet Düzeyi Sözleşmesi vardır ve [SLA'yı okuyabilirsiniz.](https://azure.microsoft.com/support/legal/sla/iot-hub/) [Azure SLA](https://azure.microsoft.com/support/legal/sla/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
+DPS için% 99,9 Hizmet Düzeyi Sözleşmesi vardır ve [SLA 'yı okuyabilirsiniz](https://azure.microsoft.com/support/legal/sla/iot-hub/). [Azure SLA](https://azure.microsoft.com/support/legal/sla/) şartları, Azure’un tamamının kullanılabilirlik garantisini açıklamaktadır.
 
 ## <a name="quotas"></a>Kotalar
 Her Azure aboneliği varsayılan kota sınırları içerir ve bu sınırlar, IoT çözümünüzün kapsamını etkileyebilir. Abonelik başına geçerli sınır, 10 Cihaz Sağlama Hizmeti/abonelik şeklindedir.
@@ -119,11 +119,11 @@ Kota sınırları hakkındaki diğer ayrıntılar için:
 * [Azure Aboneliği Hizmet Sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>İlgili Azure bileşenleri
-DPS, Azure IoT Hub ile aygıt sağlamayı otomatikleştirir. [IoT Hub](https://docs.microsoft.com/azure/iot-hub/) hakkında daha fazla bilgi edinin.
+DPS cihaz sağlamayı Azure IoT Hub otomatikleştirir. [IoT Hub](https://docs.microsoft.com/azure/iot-hub/) hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Artık Azure’da IoT cihazlarını sağlama hakkında genel bilgilere sahipsiniz. Bir sonraki adımda uçtan uca bir IoT senaryosunu tamamlamayı deneyeceksiniz.
 > [!div class="nextstepaction"]
-> [Azure portalı](quick-setup-auto-provision.md)
-> Oluşturma ile IoT Hub Aygıt Sağlama Hizmeti'ni ayarlama[ve simüle edilmiş bir aygıt](quick-create-simulated-device.md)
-> [sağlama için cihaz ayarlama](tutorial-set-up-device.md)
+> [Cihaz sağlama hizmeti 'ni Azure Portal](quick-setup-auto-provision.md)
+> [bir sanal cihaz](quick-create-simulated-device.md)
+> oluşturma ve sağlama IoT Hub ayarlama[cihaz sağlama için cihazı ayarlama](tutorial-set-up-device.md)

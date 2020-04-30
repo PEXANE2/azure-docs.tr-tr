@@ -1,122 +1,122 @@
 ---
-title: Şablon oluşturma - Visual Studio Code
+title: Şablon oluşturma-Visual Studio Code
 description: Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları eklentisini kullanın.
 author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
 ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81686623"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlatma: Visual Studio Kodu ile Azure Kaynak Yöneticisi şablonları oluşturma
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma
 
-Visual Studio Code için Azure Kaynak Yöneticisi Araçları dil desteği, kaynak parçacıkları ve kaynak otomatik tamamlama sağlar. Bu araçlar, Azure Kaynak Yöneticisi şablonlarının oluşturulmasına ve doğrulanmasına yardımcı olur. Bu hızlı başlangıçta, uzantıyı sıfırdan bir Azure Kaynak Yöneticisi şablonu oluşturmak için kullanırsınız. Bunu yaparken ARM şablon parçacıkları, doğrulama, tamamlama lar ve parametre dosya desteği gibi uzantı özelliklerini deneyimlersiniz.
+Visual Studio Code için Azure Resource Manager araçları dil desteği, kaynak parçacıkları ve kaynak otomatik tamamlama sağlar. Bu araçlar Azure Resource Manager şablonları oluşturma ve doğrulamaya yardımcı olur. Bu hızlı başlangıçta uzantıyı, sıfırdan bir Azure Resource Manager şablonu oluşturmak için kullanırsınız. Bunu yaparken ARM şablon parçacıkları, doğrulama, tamamlama ve parametre dosyası desteği gibi uzantı özelliklerine sahip olursunuz.
 
-Bu hızlı başlangıcı tamamlamak için, [Azure Kaynak Yöneticisi araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklü visual studio [koduna](https://code.visualstudio.com/)ihtiyacınız vardır. Ayrıca [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) veya [Azure PowerShell modülüyüklü](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) ve kimlik doğrulaması gerekir.
+Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Resource Manager araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklüyken [Visual Studio Code](https://code.visualstudio.com/)gerekir. Ayrıca, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) veya [Azure PowerShell modülünün](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) yüklü ve kimliği doğrulanmış olması gerekir.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="create-an-arm-template"></a>ARM şablonu oluşturma
 
-Visual Studio Code ile *azuredeploy.json*adında yeni bir dosya oluşturun ve açın. ARM `arm` şablonu oluşturmak için Azure Kaynak Yöneticisi parçacıklarını başlatan kod düzenleyicisine girin.
+*Azuredeploy. JSON*adlı yeni bir dosya Visual Studio Code oluşturun ve açın. ARM `arm` şablonuna yönelik yapı iskelesi için Azure Resource Manager parçacıkları başlatan kod düzenleyicisine girin.
 
-Azure `arm!` kaynak grubu dağıtımı için kapsamlı bir şablon oluşturmak için seçin.
+Azure `arm!` kaynak grubu dağıtımı için kapsamı belirlenmiş bir şablon oluşturmayı seçin.
 
-![Azure Kaynak Yöneticisi iskelesi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Azure Resource Manager yapı iskelesi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-Bu parçacık, ARM şablonu için temel yapı taşlarını oluşturur.
+Bu kod parçacığı bir ARM şablonu için temel yapı taşlarını oluşturur.
 
-![Tam iskeleli ARM şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/2.png)
+![Tam yapı iskelesi bir ARM şablonunu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Visual Studio Code dil modunun *JSON'dan* *Azure Kaynak Yöneticisi Şablonu'na*dönüştüğüne dikkat edin. Uzantı, ARM şablonuna özgü doğrulama, tamamlama ve diğer dil hizmetlerini sağlayan ARM şablonlarına özgü bir dil sunucusu içerir.
+Visual Studio Code dil modunun *JSON* olarak *Azure Resource Manager şablonuna*değiştiği hakkında dikkat edin. Uzantı, ARM şablonlarına özgü, ARM şablonuna özgü doğrulama, tamamlama ve diğer dil hizmetleri sağlayan bir dil sunucusu içerir.
 
-![Azure Kaynak Yöneticisi'ni Visual Studio Code dil modu olarak gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/3.png)
+![Visual Studio Code dil modu olarak Azure Resource Manager gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
 ## <a name="add-an-azure-resource"></a>Azure kaynağı ekleme
 
-Uzantı, birçok Azure kaynağı için parçacıklar içerir. Bu parçacıklar, şablon dağıtımınıza kolayca kaynak eklemek için kullanılabilir.
+Uzantı birçok Azure kaynağı için kod parçacıkları içerir. Bu kod parçacıkları, şablon dağıtımınıza kolayca kaynak eklemek için kullanılabilir.
 
-İmleci şablon **kaynakları** bloğuna yerleştirin, `storage`yazın ve *kol depolama* parçacığı seçin.
+İmleci şablon **kaynakları** bloğuna yerleştirin, yazın `storage`ve *ARM depolama* kod parçacığını seçin.
 
-![ARM şablonuna eklenen bir kaynağı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/4.png)
+![ARM şablonuna eklenmekte olan bir kaynağı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-Bu eylem şablona bir depolama kaynağı ekler.
+Bu eylem, şablona bir depolama kaynağı ekler.
 
-![ARM şablonundaki Azure Depolama kaynağını gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/5.png)
+![ARM şablonunda bir Azure depolama kaynağını gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-**Sekme** tuşu, depolama hesabındayapılan yapılandırılabilir özellikleri sekmelemek için kullanılabilir.
+**Sekme** tuşu, depolama hesabındaki yapılandırılabilir özellikler arasında sekme almak için kullanılabilir.
 
-![Sekme anahtarının kaynak yapılandırması nda gezinmek için nasıl kullanılabileceğini gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/6.png)
+![Sekme anahtarının kaynak yapılandırması üzerinden gezinmek için nasıl kullanılabileceğini gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
 ## <a name="completion-and-validation"></a>Tamamlama ve doğrulama
 
-Uzantının en güçlü özelliklerinden biri, Azure şemalarıyla tümleştirilmesidir. Azure şemaları uzantıyı doğrulama ve kaynağa duyarlı tamamlama özellikleriyle sağlar. Doğrulama ve tamamlanma eylemini görmek için depolama hesabını değiştirelim. 
+Uzantının en güçlü özelliklerinden biri, Azure şemalarıyla tümleştirmedir. Azure şemaları, bir uzantıyı doğrulama ve kaynak kullanan tamamlama özellikleri sağlar. Doğrulama ve tamamlama eylemini görmek için depolama hesabını değiştirelim. 
 
-İlk olarak, depolama hesabı türünü '. `megaStorage` Bu eylemin geçerli bir değer `megaStorage` olmadığını belirten bir uyarı ürettiğine dikkat edin.
+İlk olarak, depolama hesabı türünü gibi `megaStorage`geçersiz bir değere güncelleştirin. Bu eylemin geçerli bir değer olmadığını belirten `megaStorage` bir uyarı ürettiğine dikkat edin.
 
-![Geçersiz depolama yapılandırması gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+![Geçersiz depolama yapılandırmasını gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/7.png)
 
-Tamamlama özelliklerini kullanmak için, `megaStorage`kaldır, imleci çift tırnak içine yerleştirin `ctrl`  +  `space`ve . Bu eylem, geçerli değerlerin bir tamamlanma listesini sunar.
+Tamamlanma yeteneklerini kullanmak için, `megaStorage`imleci çift tırnak işareti içine yerleştirin ve tuşuna basın. `ctrl`  +  `space` Bu eylem geçerli değerlerin tamamlanma listesini gösterir.
 
-![Uzantılı otomatik tamamlamayı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+![Uzantı otomatik tamamlamayı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/8.png)
 
-## <a name="add-template-parameters"></a>Şablon parametreleri ekleme
+## <a name="add-template-parameters"></a>Şablon parametreleri Ekle
 
 Şimdi depolama hesabı adını belirtmek için bir parametre oluşturun ve kullanın.
 
-İmlecinizi parametre bloğuna yerleştirin, bir `par`satır başı ekleyin, yazın ve sonra `arm-param-value` parçacığı seçin. Bu eylem şablona genel bir parametre ekler.
+İmlecinizi parametreler bloğuna yerleştirin, bir satır başı ekleyin, yazın `par`ve sonra `arm-param-value` kod parçacığını seçin. Bu eylem, şablona bir genel parametre ekler.
 
-![ARM şablonuna eklenen bir parametreyi gösteren görüntü](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+![ARM şablonuna eklenen bir parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 
-Parametrenin adını `storageAccountName` ve açıklamasını `Storage Account Name`güncelleştirin.
+Parametresinin adını `storageAccountName` ve açıklamasını güncelleştirin `Storage Account Name`.
 
 ![ARM şablonunda tamamlanan parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/10.png)
 
-Azure depolama hesabı adlarının en az 3 karakter uzunluğunda ve en fazla 24 karakteri vardır. Hem `minLength` de `maxLength` parametre ye ekleyin ve uygun değerleri sağlayın.
+Azure depolama hesabı adlarında en az 3 karakter uzunluğunda ve en fazla 24 tane vardır. Parametresini `minLength` ve `maxLength` parametresine ekleyin ve uygun değerleri sağlayın.
 
-![ARM şablon parametresine eklenen minLength ve maxLength'ı gösteren görüntü](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+![ARM Şablon parametresine eklenen minLength ve maxLength gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-Şimdi, depolama kaynağında, parametreyi kullanmak için ad özelliğini güncelleştirin. Bunu yapmak için geçerli adı kaldırın. ARM şablon işlevlerinin bir `[`listesini oluşturan bir çift teklif ve açılış kare ayraç girin. Listeden *parametreleri* seçin. 
+Şimdi, depolama kaynağında, parametresini kullanmak için Name özelliğini güncelleştirin. Bunu yapmak için geçerli adı kaldırın. Bir çift tırnak ve bir sol köşeli ayraç `[`girerek ARM şablon işlevlerinin bir listesini oluşturur. Listeden *Parametreler* ' i seçin. 
 
-![ARM şablon kaynaklarında parametreleri kullanırken otomatik tamamlamayı gösteren görüntü](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+![ARM şablon kaynaklarında parametreler kullanılırken otomatik tamamlamayı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 
-Yuvarlak parantez içinde `'` tek bir teklif girerek şablonda tanımlanan tüm parametrelerin bir listesini üretir, bu durumda, *storageAccountName*. Parametreyi seçin.
+Yuvarlak köşeli ayracın `'` içinde tek bir tırnak işareti girilmesi şablonda tanımlanan tüm parametrelerin bir listesini oluşturur, bu durumda *storageAccountName*. Parametresini seçin.
 
-![ARM şablon uytundaki tamamlanmış parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+![ARM şablon kaynağında tamamlanan parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/13.png)
 
 ## <a name="create-a-parameter-file"></a>Parametre dosyası oluşturma
 
-ARM şablon parametre dosyası, ortama özgü parametre değerlerini depolamanızı ve bu değerleri dağıtım zamanında grup olarak geçirmenize olanak tanır. Örneğin, bir test ortamına özgü değerlere sahip bir parametre dosyanız ve üretim ortamı için başka bir parametre dosyanız olabilir.
+ARM şablon parametre dosyası, ortama özgü parametre değerlerini depolamanıza ve bu değerleri dağıtım zamanında bir grup olarak geçirmenize olanak sağlar. Örneğin, bir test ortamına özgü değerler içeren bir parametre dosyasına ve bir üretim ortamı için başka bir parametreye sahip olabilirsiniz.
 
-Uzantı, varolan şablonlarınızdan parametre dosyası oluşturmayı kolaylaştırır. Bunu yapmak için, kod düzenleyicisindeki şablona `Select/Create Parameter File`sağ tıklayın ve .
+Uzantı, mevcut şablonlarınızla bir parametre dosyası oluşturmayı kolaylaştırır. Bunu yapmak için, kod düzenleyicisinde şablona sağ tıklayın ve öğesini seçin `Select/Create Parameter File`.
 
-![ARM şablonundan parametre dosyası oluşturmak için sağ tıklatma işlemini gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+![ARM şablonundan bir parametre dosyası oluşturmak için sağ tıklama işlemini gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/14.png)
 
 Parametre `New`  >  `All Parameters` dosyası için bir ad ve konum seçin > seçin.
 
-![ARM şablonundan parametre dosyası oluştururken adı gösteren resim ve dosya iletişim kutusunu kaydetme](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+![ARM şablonundan parametreler dosyası oluştururken adı ve dosya Kaydet iletişim kutusunu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/15.png)
 
-Bu eylem yeni bir parametre dosyası oluşturur ve oluşturulduğu şablonla eşler. Şablon seçilirken Visual Studio Code durum çubuğundaki geçerli şablon/parametre dosya eşlemini görebilir ve değiştirebilirsiniz.
+Bu eylem yeni bir parametre dosyası oluşturur ve onu oluşturulduğu şablonla eşler. Şablon seçiliyken Visual Studio Code durum çubuğunda geçerli şablon/parametre dosya eşlemesini görebilir ve değiştirebilirsiniz.
 
 ![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
-Parametre dosyası şablona eşlenmiş olduğundan, uzantı hem şablonu hem de parametre dosyasını birlikte doğrular. Uygulamada bu doğrulamayı görmek için parametre dosyasındaki `storageAccountName` parametreye iki karakterli bir değer ekleyin ve dosyayı kaydedin.
+Artık parametre dosyası şablonla eşlendiğine göre, uzantı hem şablonu hem de parametre dosyasını birlikte doğrular. Bu doğrulamayı uygulamada görmek için, parametre dosyasındaki `storageAccountName` parametresine iki karakterli bir değer ekleyin ve dosyayı kaydedin.
 
-![Parametre dosyası sorunu nedeniyle geçersiz kılınan şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+![Parametre dosyası sorunu nedeniyle geçersiz kılınan bir şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/17.png)
 
-ARM şablonuna geri gidin ve değerin parametre ölçütlerini karşılamadığını belirten bir hatanın yükseltildiğini fark edin.
+ARM şablonuna geri gidin ve değerin parametre ölçütlerini karşılamadığını belirten bir hata yapıldığını unutmayın.
 
-![Geçerli bir ARM şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+![Geçerli bir ARM şablonunu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/18.png)
 
-Değeri uygun bir şeyle güncelleştirin, dosyayı kaydedin ve şablona geri gidin. Parametredeki hatanın çözüldüğüne dikkat edin.
+Değeri uygun bir şekilde güncelleştirin, dosyayı kaydedin ve şablona geri gidin. Parametresindeki hatanın çözümlendiğine dikkat edin.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Tümleşik Visual Studio Code `ctrl`  +  ```` ` ```` terminalini anahtar kombinasyonunu kullanarak açın ve şablonu dağıtmak için Azure CLI veya Azure PowerShell modüllerini kullanın.
+Anahtar birleşimini kullanarak `ctrl`  +  tümleşik Visual Studio Code terminalini açın ve şablonu dağıtmak için Azure CLI ya da Azure PowerShell modülünü kullanın. ```` ` ````
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -137,7 +137,7 @@ New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azur
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure kaynaklarına artık ihtiyaç duyulmadığında, hızlı başlangıç kaynak grubunu silmek için Azure CLI veya Azure PowerShell modülünü kullanın.
+Azure kaynaklarına artık ihtiyaç duyulmadığında hızlı başlangıç kaynak grubunu silmek için Azure CLı veya Azure PowerShell modülünü kullanın.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 

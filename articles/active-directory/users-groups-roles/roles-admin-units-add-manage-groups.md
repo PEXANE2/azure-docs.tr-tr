@@ -1,6 +1,6 @@
 ---
-title: Yönetim biriminde gruplar ekleme, kaldırma ve listeleme (önizleme) - Azure Etkin Dizini | Microsoft Dokümanlar
-description: Azure Etkin Dizini'ndeki bir yönetim biriminde grupları ve rol izinlerini yönetme
+title: Yönetim biriminde gruplar ekleme, kaldırma ve listeleme (Önizleme)-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory bir yönetim biriminde grupları ve rol izinlerini yönetme
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,35 +15,35 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683265"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Etkin Dizini'nde yönetim birimlerinde gruplar ekleme ve yönetme
+# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Active Directory içindeki yönetim birimlerindeki grupları ekleme ve yönetme
 
-Azure Etkin Dizini'nde (Azure AD), daha ayrıntılı denetim kapsamı için bir yönetim birimine (AU) gruplar ekleyebilirsiniz.
+Azure Active Directory (Azure AD) içinde, denetimin daha ayrıntılı yönetim kapsamı için yönetim birimine (AU) gruplar ekleyebilirsiniz.
 
-Yönetim birimi yönetimi için PowerShell ve Microsoft Graph'ı kullanmaya hazırlanma adımları [için](roles-admin-units-manage.md#get-started)bkz.
+PowerShell 'i kullanmaya hazırlanma ve yönetim birimi yönetimi için Microsoft Graph adımlar için bkz. [kullanmaya başlayın](roles-admin-units-manage.md#get-started).
 
-## <a name="add-groups-to-an-au"></a>AU'ya grup ekleme
+## <a name="add-groups-to-an-au"></a>AU 'ya gruplar ekleme
 
 ### <a name="azure-portal"></a>Azure portal
 
-Önizlemede, grupları yalnızca tek tek bir yönetim birimine atayabilirsiniz. Grupların yönetim birimine toplu atama seçeneği yoktur. Bir grubu portaldaki iki şekildebir yönetim birimine atayabilirsiniz:
+Önizlemede, grupları yalnızca bir yönetim birimine tek tek atayabilirsiniz. Yönetim birimine grupların toplu atama seçeneği yoktur. Portal 'da iki farklı şekilde yönetim birimine bir grup atayabilirsiniz:
 
-1. Azure **AD > Grupları** sayfasından
+1. **Azure AD > grupları** sayfasından
 
-    Azure AD'de Gruplara genel bakış sayfasını açın ve yönetim birimine atanması gereken grubu seçin. Sol tarafta, grubun atandığı yönetim birimlerini listelemek için **Yönetim birimlerini** seçin. Üstte yönetim birimine atama seçeneğini bulacaksınız ve üzerine tıklayarak yönetim birimi seçmek için sağ tarafta bir panel verecektir.
+    Azure AD 'de gruplara genel bakış sayfasını açın ve yönetim birimine atanması gereken grubu seçin. Sol tarafta, grubun atandığı yönetim birimlerini listelemek için **yönetim birimleri** ' ni seçin. En üstte, yönetim birimine ata seçeneğini bulacak ve üzerine tıkladığınızda, yönetim birimini seçmek için sağ tarafa bir panel verecektir.
 
-    ![bir grubu tek tek bir yönetim birimine atamak](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
+    ![bir yönetim birimine tek bir grup atama](./media/roles-admin-units-add-manage-groups/assign-to-group-1.png)
 
-1. Azure **AD > Yönetim birimlerinden Tüm Gruplar** sayfasını >
+1. **Tüm Gruplar sayfasında > Azure AD > yönetim birimleri** ' nden
 
-    Azure AD > Yönetim Birimlerinde Tüm Gruplar bıçağını açın. Yönetim birimine atanmış gruplar varsa, bunlar sağ tarafta görüntülenir. Üstte **Ekle'yi** seçin ve sağ panel Azure REKLAM kuruluşunuzdaki grupları listelerken slayt olur. Yönetim birimlerine atanacak bir veya daha fazla grup seçin.
+    Azure AD > yönetim birimlerindeki tüm gruplar dikey penceresini açın. Yönetim birimine zaten atanmış gruplar varsa, bu gruplar sağ tarafta görüntülenir. Üstteki **Ekle** ' yi seçin ve sağ panel, Azure AD kuruluşunuzda mevcut olan grupları listelemek Için slayt ekler. Yönetim birimlerine atanacak bir veya daha fazla grup seçin.
 
-    ![bir yönetim birimi seçin ve sonra üye ekle'yi seçin](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
+    ![bir yönetim birimi seçip üye Ekle ' yi seçin.](./media/roles-admin-units-add-manage-groups/assign-to-admin-unit.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -51,7 +51,7 @@ Yönetim birimi yönetimi için PowerShell ve Microsoft Graph'ı kullanmaya haz�
     $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
     Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 
-Bu örnekte, cmdlet Add-AzureADAdministrativeUnitMember, grubu yönetim birimine eklemek için kullanılır. İdari birimin nesne kimliği ve eklenecek grubun nesne kimliği bağımsız değişken olarak alınır. Vurgulanan bölüm, belirli bir ortam için gerektiği gibi değiştirilebilir.
+Bu örnekte, grubu yönetim birimine eklemek için Add-AzureADAdministrativeUnitMember cmdlet 'i kullanılır. Yönetim biriminin nesne KIMLIĞI ve eklenecek grubun nesne KIMLIĞI bağımsız değişken olarak alınır. Vurgulanan bölüm, belirli bir ortam için gerektiği şekilde değiştirilebilir.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -69,20 +69,20 @@ Bu örnekte, cmdlet Add-AzureADAdministrativeUnitMember, grubu yönetim birimine
       "@odata.id":"https://graph.microsoft.com/beta/users/ 871d21ab-6b4e-4d56-b257-ba27827628f3"
     }
 
-## <a name="list-groups-in-an-au"></a>AU'daki grupları listele
+## <a name="list-groups-in-an-au"></a>AU 'daki liste grupları
 
 ### <a name="azure-portal"></a>Azure portal
 
-Portaldaki **Azure AD > Yönetim birimlerine** gidin. Kullanıcıları listelemek istediğiniz yönetim birimini seçin. Varsayılan olarak, **tüm kullanıcılar** sol panelde zaten seçilir. **Tüm grupları** seçin ve sağda seçilen yönetim biriminin üyesi grupların listesini bulacaksınız.
+Portalda **Azure AD > yönetim birimleri** ' ne gidin. Kullanıcıları listelemek istediğiniz yönetim birimini seçin. Varsayılan olarak, **tüm kullanıcılar** zaten sol panelde seçilidir. **Tüm grupları** seçin ve sağ tarafta seçili yönetim biriminin üyesi olan grupların listesini bulabilirsiniz.
 
-![Silmek için bir yönetim birimi seçin](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Silinecek yönetim birimini seçin](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 
-Bu, idari birimin tüm üyelerini almanıza yardımcı olacaktır. Yönetim biriminin üyesi olan tüm grupları görüntülemek istiyorsanız, aşağıdaki kod parçacıklarını kullanabilirsiniz:
+Bu, yönetim biriminin tüm üyelerini almanıza yardımcı olur. Yönetim biriminin üyesi olan tüm grupları göstermek istiyorsanız aşağıdaki kod parçacığını kullanabilirsiniz:
 
     foreach ($member in (Get-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
     {
@@ -99,13 +99,13 @@ Bu, idari birimin tüm üyelerini almanıza yardımcı olacaktır. Yönetim biri
     Request body
     {}
 
-## <a name="list-aus-for-a-group"></a>Bir grup için AUs'ları listele
+## <a name="list-aus-for-a-group"></a>Bir grup için au listesini listeleyin
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure AD portalında, **Gruplar'ı**açarak bir grubun ayrıntılarını açabilirsiniz. Grubun profilini açmak için bir grup seçin. Grubun üyesi olduğu tüm yönetim birimlerini listelemek için **Yönetim birimlerini** seçin.
+Azure AD portalında, **gruplar**' ı açarak bir grubun ayrıntılarını açabilirsiniz. Grubun profilini açmak için bir grup seçin. Grubun üye olduğu tüm yönetim birimlerini listelemek için **yönetim birimleri** ' ni seçin.
 
-![Bir grup için yönetim birimlerini listele](./media/roles-admin-units-add-manage-groups/list-group-au.png)
+![Bir grup için yönetim birimlerini listeleme](./media/roles-admin-units-add-manage-groups/list-group-au.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -115,19 +115,19 @@ Azure AD portalında, **Gruplar'ı**açarak bir grubun ayrıntılarını açabil
 
     https://graph.microsoft.com/beta/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
 
-## <a name="remove-a-group-from-an-au"></a>Grubu AU'dan kaldırma
+## <a name="remove-a-group-from-an-au"></a>AU 'dan bir grubu kaldırma
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portalındaki bir yönetim biriminden bir grubu kaldırmanın iki yolu vardır.
+Azure portal bir grubu bir yönetim biriminden kaldırabilmeniz için iki yol vardır.
 
-**Azure REKLAM** > **Grupları'nı** açın ve yönetim biriminden kaldırmak istediğiniz grup için profili açın. Grubun üyesi olduğu tüm yönetim birimlerini listelemek için sol panelde **Yönetim birimlerini** seçin. Grubu kaldırmak istediğiniz yönetim birimini seçin ve ardından **yönetim biriminden kaldır'ı**seçin.
+**Azure AD** > **gruplarını** açın ve yönetim biriminden kaldırmak istediğiniz grubun profilini açın. Grubun üye olduğu tüm yönetim birimlerini listelemek için sol panelde **yönetim birimleri** ' ni seçin. Grubu kaldırmak istediğiniz yönetim birimini seçin ve ardından **Yönetim biriminden kaldır**' ı seçin.
 
-![Bir grubu yönetim biriminden kaldırma](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+![Yönetim biriminden bir grubu kaldırma](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-Alternatif olarak, Azure **AD** > **Yönetim birimlerine** gidebilir ve grubun üyesi olduğu yönetim birimini seçebilirsiniz. Üye grupları listelemek için sol paneldeki **Gruplar'ı** seçin. Yönetim biriminden kaldırılacak grubu seçin ve ardından **Grupları Kaldır'ı**seçin.
+Alternatif olarak, **Azure AD** > **yönetim birimlerine** gidebilir ve grubun üye olduğu yönetim birimini seçebilirsiniz. Üye gruplarını listelemek için sol paneldeki **gruplar** ' ı seçin. Yönetim biriminden kaldırılacak grubu seçin ve ardından **grupları kaldır**' ı seçin.
 
-![Yönetim birimindeki grupları listele](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+![Yönetim birimindeki grupları listeleme](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -139,5 +139,5 @@ Alternatif olarak, Azure **AD** > **Yönetim birimlerine** gidebilir ve grubun �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İdari bir birime rol atama](roles-admin-units-assign-roles.md)
-- [Yönetim birimindeki kullanıcıları yönetme](roles-admin-units-add-manage-users.md)
+- [Yönetim birimine rol atama](roles-admin-units-assign-roles.md)
+- [Yönetici birimindeki kullanıcıları yönetme](roles-admin-units-add-manage-users.md)

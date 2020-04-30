@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu Ağ Geçidi sınırları | Microsoft Dokümanlar
-description: Microsoft Azure Veri Kutusu Ağ Geçidi için sistem sınırlarını ve önerilen boyutları açıklar.
+title: Azure Data Box Gateway sınırları | Microsoft Docs
+description: Microsoft Azure Data Box Gateway için sistem sınırlarını ve önerilen boyutları açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,30 +9,30 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683347"
 ---
-# <a name="azure-data-box-gateway-limits"></a>Azure Veri Kutusu Ağ Geçidi sınırları
+# <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway sınırları
 
-Microsoft Azure Veri Kutusu Ağ Geçidi çözümünüzü dağıtırken ve çalıştırırken bu sınırları göz önünde bulundurun. 
+Microsoft Azure Data Box Gateway çözümünüzü dağıtırken ve işletirken bu limitleri göz önünde bulundurun. 
 
-## <a name="data-box-gateway-service-limits"></a>Veri Kutusu Ağ Geçidi hizmet sınırları
+## <a name="data-box-gateway-service-limits"></a>Hizmet sınırlarını Data Box Gateway
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="data-box-gateway-device-limits"></a>Veri Kutusu Ağ Geçidi aygıt sınırları
+## <a name="data-box-gateway-device-limits"></a>Cihaz sınırlarını Data Box Gateway
 
-Aşağıdaki tabloda Veri Kutusu Ağ Geçidi aygıtının sınırları açıklanmaktadır.
+Aşağıdaki tabloda Data Box Gateway cihazının sınırları açıklanmaktadır.
 
 | Açıklama | Değer |
 |---|---|
-|Hayır. cihaz başına dosyaların |100 milyon <br> Eklenen her 25 milyon dosya için (maksimum limit 100 milyon ile), 2 TB disk alanı, 8 GB RAM ve 4 cpu çekirdeği eklemeniz gerekir. |
-|Hayır. cihaz başına hisse |24 |
-|Hayır. Azure depolama kapsayıcısı başına hisse |1 |
-|Bir paylaşıma yazılan en büyük dosya boyutu|2-TB sanal aygıt için maksimum dosya boyutu 500 GB'dır. <br> Maksimum dosya boyutu, veri diskboyutu yla birlikte en fazla 5 TB'ye ulaşana kadar önceki oranda artar. |
+|Hayır. cihaz başına dosya |100.000.000 <br> Eklenmekte olan her 25.000.000 dosya için (en fazla 100.000.000 ' de maksimum sınıra sahip), 2 TB disk alanı, 8 GB RAM ve 4 çekirdek CPU eklemeniz gerekir. |
+|Hayır. cihaz başına paylaşım sayısı |24 |
+|Hayır. Azure depolama kapsayıcısı başına paylaşım sayısı |1 |
+|Bir paylaşıma yazılan en büyük dosya boyutu|2 TB 'lik bir sanal cihaz için maksimum dosya boyutu 500 GB 'tır. <br> En büyük dosya boyutu, en fazla 5 TB 'ye ulaşana kadar önceki orandaki veri diski boyutuyla artar. |
 
 ## <a name="azure-storage-limits"></a>Azure depolama sınırları
 

@@ -1,6 +1,6 @@
 ---
-title: OPC Publisher Nedir - Azure | Microsoft Dokümanlar
-description: Bu makalede, OPC Publisher'ın özelliklerine genel bir bakış sağlanmaktadır. Kodlanmış JSON telemetri verilerini Bir JSON yükü kullanarak Azure IoT Hub'ına yayımlamanızı sağlar.
+title: OPC yayımcısı-Azure | Microsoft Docs
+description: Bu makale OPC yayımcısının özelliklerine genel bakış sağlar. Azure IoT Hub bir JSON yükü kullanarak kodlanmış JSON telemetri verilerini yayımlamanıza olanak sağlar.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -12,38 +12,38 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c77dff4a4f89a78dc0a0d723fbb45fe691246112
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81681931"
 ---
-# <a name="what-is-opc-publisher"></a>OPC Publisher nedir?
+# <a name="what-is-opc-publisher"></a>OPC yayımcısı nedir?
 
-OPC Publisher nasıl yapılacağını gösteren bir başvuru uygulamasıdır:
+OPC yayımcısı, nasıl yapılacağını gösteren bir başvuru uygulamasıdır:
 
-- Varolan OPC UA sunucularına bağlanın.
-- OPC UA Pub/Alt formatındaki OPC UA sunucularından JSON kodlanmış telemetri verilerini, JSON yükü kullanarak Azure IoT Hub'ına yayımlayın.
+- Mevcut OPC UA sunucularına bağlanın.
+- Azure IoT Hub için bir JSON yükü kullanarak OPC UA pub/Sub biçimindeki OPC UA sunucularından JSON kodlu telemetri verilerini yayımlayın.
 
-Azure IoT Hub istemcisi SDK'nın desteklediği aktarım protokollerinden herhangi birini kullanabilirsiniz: HTTPS, AMQP ve MQTT.
+Azure IoT Hub istemci SDK 'sının desteklediği aktarım protokollerinden herhangi birini kullanabilirsiniz: HTTPS, AMQP ve MQTT.
 
-Başvuru uygulaması şunları içerir:
+Başvuru uygulama şunları içerir:
 
-- Ağınızdaki varolan OPC UA sunucularına bağlanmak için bir OPC UA *istemcisi.*
-- 62222 bağlantı noktasında yayınlananları yönetmek için kullanabileceğiniz ve IoT Hub'a aynı şeyi yapmak için doğrudan yöntemler sunan bir OPC UA *sunucusu.*
+- Ağınızda bulunan mevcut OPC UA sunucularına bağlanmak için OPC UA *istemcisi* .
+- 62222 numaralı bağlantı noktasındaki OPC UA *sunucusu* , nelerin yayımlandığını yönetmek için kullanabileceğiniz ve doğrudan aynı yapmak için IoT Hub doğrudan yöntemler sunmaktadır.
 
-[OPC Publisher başvuru uygulamasını](https://github.com/Azure/iot-edge-opc-publisher) GitHub'dan indirebilirsiniz.
+GitHub 'dan [OPC yayımcı başvuru uygulamasını](https://github.com/Azure/iot-edge-opc-publisher) indirebilirsiniz.
 
 Uygulama .NET Core teknolojisi kullanılarak uygulanır ve .NET Core tarafından desteklenen herhangi bir platformda çalıştırılabilir.
 
-OPC Publisher, belirli sayıda canlı tutma isteklerine yanıt vermeyen uç noktalara bağlantılar kurmak için yeniden deneme mantığını uygular. Örneğin, bir OPC UA sunucusu bir elektrik kesintisi nedeniyle yanıt vermeyi durdurursa.
+OPC yayımcısı, belirli bir etkin tutma isteğine yanıt vermeyen uç noktalara bağlantı kurmak için yeniden deneme mantığı uygular. Örneğin, bir güç kesintisi nedeniyle OPC UA sunucusu yanıt vermemeye başlıyor.
 
-Bir OPC UA sunucusuna her ayrı yayımlama aralığı için, uygulama üzerinde bu yayımlama aralığı ile tüm düğümleri güncelleştirilen ayrı bir abonelik oluşturur.
+Bir OPC UA sunucusuna her ayrı yayımlama aralığı için, uygulama, bu yayımlama aralığındaki tüm düğümlerin güncelleştirildiği ayrı bir abonelik oluşturur.
 
-OPC Publisher, ağ yükünü azaltmak için IoT Hub'a gönderilen verilerin toplu olarak gruplandırını destekler. Bu toplu işlem, yalnızca yapılandırılan paket boyutuna ulaşıldığında Bir paket ioT Hub'ına gönderir.
+OPC yayımcısı, ağ yükünü azaltmak için IoT Hub gönderilen verilerin toplu olarak toplu olarak kullanılmasını destekler. Bu toplu işlem, yalnızca yapılandırılan paket boyutuna ulaşıldığında IoT Hub bir paket gönderir.
 
-Bu uygulama NuGet paketleri olarak OPC Vakfı OPC UA başvuru yığınını kullanır. Lisans [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) koşulları için bkz.
+Bu uygulama, NuGet paketleri olarak OPC Foundation OPC UA başvuru yığınını kullanır. Lisanslama [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) koşulları için bkz..
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi OPC Publisher ne olduğunu öğrendim, önerilen bir sonraki adım [Nasıl OPC Publisher](howto-opc-publisher-configure.md)Yapılandırmaöğrenmektir.
+Artık OPC yayımcısının ne olduğunu öğrendiğinize göre, önerilen sonraki adım [OPC yayımcısını nasıl yapılandıracağınızı](howto-opc-publisher-configure.md)öğrenirsiniz.

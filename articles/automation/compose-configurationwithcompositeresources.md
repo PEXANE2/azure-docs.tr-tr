@@ -1,48 +1,48 @@
 ---
-title: Bileşik kaynakları kullanarak Azure Otomasyon Durumu Yapılandırmasında DSC yapılandırmaları oluşturma
-description: Azure Otomasyon Durumu Yapılandırmasında bileşik kaynakları kullanarak yapılandırmaları nasıl oluşturabilirsiniz öğrenin.
-keywords: powershell dsc, istenilen durum yapılandırması, powershell dsc azure, kompozit kaynaklar
+title: Bileşik kaynakları kullanarak Azure Otomasyonu durum yapılandırmasında DSC yapılandırmaları oluşturma
+description: Azure Otomasyonu durum yapılandırması 'nda bileşik kaynakları kullanarak yapılandırma oluşturmayı öğrenin.
+keywords: PowerShell DSC, istenen durum yapılandırması, PowerShell DSC Azure, bileşik kaynaklar
 services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682921"
 ---
-# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Bileşik kaynakları kullanarak Azure Otomasyon Durumu Yapılandırmasında DSC yapılandırmaları oluşturma
+# <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Bileşik kaynakları kullanarak Azure Otomasyonu durum yapılandırmasında DSC yapılandırmaları oluşturma
 
-Kaynağı tek bir durumdan daha fazla durum yapılandırmasıyla (DSC) yönetmeniz gerektiğinde, en iyi yol [bileşik kaynakları](/powershell/scripting/dsc/resources/authoringresourcecomposite)kullanmaktır. Bileşik kaynak, başka bir yapılandırma içinde DSC kaynağı olarak kullanılan iç içe ve parametreli yapılandırmadır. Bileşik kaynakların kullanımı, temel bileşik kaynakların tek tek yönetilmesine ve oluşturulmasına olanak sağlarken karmaşık yapılandırmalar oluşturmanıza olanak tanır.
+Kaynağı tek bir istenen durum yapılandırması (DSC) ile yönetihtiyacınız olduğunda, en iyi yol [bileşik kaynakları](/powershell/scripting/dsc/resources/authoringresourcecomposite)kullanmaktır. Bileşik kaynak, başka bir yapılandırma içinde DSC kaynağı olarak kullanılan iç içe ve parametreli bir yapılandırmadır. Bileşik kaynakların kullanımı, temel alınan bileşik kaynakların tek tek yönetilmesine ve oluşturulmasına izin verirken karmaşık yapılandırma oluşturmanıza olanak sağlar.
 
-Azure [Otomasyonu, bileşik kaynakların içe aktarılmasını ve derlenmesine](automation-dsc-compile.md)olanak tanır. Otomasyon hesabınıza bileşik kaynaklar aktardıktan sonra, Devlet Yapılandırması (Azure portalındaki **DSC özelliği)** aracılığıyla Azure Otomasyon Durumu Yapılandırmasını kullanabilirsiniz.
+Azure Otomasyonu [bileşik kaynakların içeri ve derlemesini](automation-dsc-compile.md)sunar. Otomasyon hesabınıza bileşik kaynakları içeri aktardıktan sonra, Azure portal **Durum Yapılandırması (DSC** özelliği aracılığıyla Azure Automation durum yapılandırması 'nı kullanabilirsiniz.
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Bileşik kaynaklardan yapılandırma oluşturma
 
-Azure portalındaki bileşik kaynaklardan yapılmış bir yapılandırma atamadan önce yapılandırmayı oluşturmanız gerekir. Kompozisyon, **Yapılandırmalar** veya **Derlenmiş yapılandırmalar** sekmesinde yken Durum Yapılandırması (DSC) sayfasında **Yapılandırma** yapılandırmasını kullanır.
+Azure portal bileşik kaynaklardan yapılan bir yapılandırmayı atamadan önce yapılandırmayı oluşturmanız gerekir. Birleşim, **yapılandırmalar** ya da **derlenmiş yapılandırmalar** SEKMESINDEN durum yapılandırması (DSC) sayfasında **oluşturma yapılandırması** ' nı kullanır.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Solda, Tüm **kaynakları** ve ardından Otomasyon hesabınızın adını tıklatın.
-1. Otomasyon hesap sayfasında, **Yapılandırma Yönetimi**altında **Durum yapılandırmasını (DSC)** seçin.
-1. Durum yapılandırması (DSC) sayfasında, **Yapılandırmalar** veya **Derlenmiş yapılandırmalar** sekmesini tıklatın ve ardından sayfanın üst kısmındaki menüde **yapılandırmayı oluştur'u** tıklatın.
-1. Temel **Bilgiler** adımında, yeni yapılandırma adını (gerekli) girin ve yeni yapılandırmanıza eklemek istediğiniz her bileşik kaynağın satırında herhangi bir yere tıklayın, ardından **İleri'yi** tıklatın veya **Kaynak kodu** adımını tıklatın. Aşağıdaki adımlar için kaynakları `PSExecutionPolicy` `RenameAndDomainJoin` seçtik ve birleştirdik.
-   ![Yapılandırma oluşturma sayfasının temel adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
-1. **Kaynak kodu** adımı, seçili bileşik kaynakların oluşturulan yapılandırmasının nasıl göründüğünü gösterir. Tüm parametrelerin birleştirilmesini ve bunların bileşik kaynağa nasıl aktarıldıklarını görebilirsiniz. Yeni kaynak kodu gözden geçirmeyi bitirdiğinizde, **İleri'yi** tıklatın veya **Parametreler** adımını tıklatın.
-   ![Yapılandırma sayfasının kaynak kodu adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
-1. **Parametreler** adımında, değerler sağlanabilmesi için her bileşik kaynağın parametresi açığa çekilir. Bir parametrenin açıklaması varsa, parametre alanının yanında görüntülenir. Bir parametre türdeyse, `PSCredential` açılır bırakma, geçerli Otomasyon hesabındaki Kimlik **Bilgileri** nesnelerinin bir listesini sağlar. A **+ Kimlik bilgisi** seçeneği ekle seçeneği de mevcuttur. Gerekli tüm parametreler sağlandıktan sonra **Kaydet'i tıklatın ve derle'i tıklatın.**
-   ![Yapılandırma sayfasının parametre adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
+1. Sol tarafta **tüm kaynaklar** ' a ve ardından Otomasyon hesabınızın adına tıklayın.
+1. Otomasyon hesabı sayfasında, **yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** öğesini seçin.
+1. Durum Yapılandırması (DSC) sayfasında, **yapılandırmalar** veya **derlenen yapılandırmalar** sekmesine tıklayın ve ardından sayfanın üst kısmındaki menüde **yapılandırma oluştur** ' a tıklayın.
+1. **Temel bilgiler** adımında yeni yapılandırma adını (gerekli) belirtin ve yeni yapılandırmanıza eklemek istediğiniz her bileşik kaynağın satırındaki herhangi bir yere tıklayın ve ardından **İleri** ' ye tıklayın veya **kaynak kodu** adımına tıklayın. Aşağıdaki adımlar için ve `PSExecutionPolicy` `RenameAndDomainJoin` bileşik kaynaklar seçtik.
+   ![Yapılandırma oluşturma sayfasının temel kavramlar adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
+1. **Kaynak kodu** adımı, seçili bileşik kaynakların oluşturulan yapılandırmasının nasıl göründüğünü gösterir. Tüm parametrelerin birleştirilmesini ve bunların bileşik kaynağa nasıl geçtiğini görebilirsiniz. Yeni kaynak kodu gözden geçirmeyi tamamladığınızda, **İleri** ' ye tıklayın veya **Parametreler** adımına tıklayın.
+   ![Yapılandırma oluşturma sayfasının kaynak kodu adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
+1. **Parametreler** adımında, her bileşik kaynağın parametresi, değerlerin sağlanabilmesi için sunulur. Bir parametrenin açıklaması varsa, parametre alanının yanında görüntülenir. Bir parametre `PSCredential` türü ise, açılan liste geçerli Otomasyon hesabındaki **kimlik bilgisi** nesnelerinin bir listesini sağlar. Bir **+ kimlik bilgisi ekle** seçeneği de mevcuttur. Tüm gerekli parametreler sağlandıktan sonra **Kaydet ve derle**' ye tıklayın.
+   ![Yapılandırma oluşturma sayfasının parametreler adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Yeni yapılandırma kaydedildikten sonra derleme için gönderilir. Derleme işinin durumu, içe aktarılan yapılandırmalar gibi görüntülenebilir. Daha fazla bilgi için [bkz.](automation-dsc-getting-started.md#viewing-a-compilation-job)
+Yeni yapılandırma kaydedildikten sonra, derleme için gönderilir. Derleme işinin durumu, içeri aktarılan tüm yapılandırmalar gibi görüntülenebilir. Daha fazla bilgi için bkz. [derleme Işini görüntüleme](automation-dsc-getting-started.md#viewing-a-compilation-job).
 
-Derleme başarıyla tamamlandığında, yeni yapılandırma **Derlenen yapılandırmalar** sekmesinde görünür. Daha sonra farklı bir [düğüm yapılandırmasına düğüm atama](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)adımlarını kullanarak yapılandırmayı yönetilen bir düğüme atayabilirsiniz.
+Derleme başarıyla tamamlandığında, yeni yapılandırma **derlenen yapılandırmalar** sekmesinde görünür. Daha sonra, [bir düğümü farklı bir düğüm yapılandırmasına yeniden atama](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)bölümündeki adımları kullanarak bir yönetilen düğüme yapılandırmayı atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Başlamak için Azure [Otomasyon Durumu Yapılandırması'na başlarken](automation-dsc-getting-started.md)bkz.
-- Düğümlere nasıl bindirilir öğrenince Azure [Otomasyon Durumu Yapılandırması tarafından yönetilen Yerleşik makinelere](automation-dsc-onboarding.md)bakın.
-- DSC yapılandırmalarını hedef düğümlerine atayabilmeniz için derleme hakkında bilgi edinmek için [bkz.](automation-dsc-compile.md)
-- PowerShell cmdlet başvurusu için Azure [Otomasyon Durumu Yapılandırma cmdlets'e](/powershell/module/azurerm.automation/#automation)bakın.
-- Fiyatlandırma bilgileri için Azure [Otomasyon Durumu Yapılandırma fiyatlandırması'na](https://azure.microsoft.com/pricing/details/automation/)bakın.
-- Sürekli dağıtım ardışık bir şekilde Azure Otomasyon Durumu Yapılandırmasını kullanma örneğini görmek için [bkz.](automation-dsc-cd-chocolatey.md)
+- Başlamak için bkz. [Azure Otomasyonu durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md)başlama.
+- Düğümlerin nasıl ekleneceğini öğrenmek için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makineleri ekleme](automation-dsc-onboarding.md).
+- Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md).
+- PowerShell cmdlet başvurusu için bkz. [Azure Otomasyonu durum yapılandırması cmdlet 'leri](/powershell/module/azurerm.automation/#automation).
+- Fiyatlandırma bilgileri için bkz. [Azure Otomasyonu durum yapılandırması fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
+- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Azure Otomasyonu durum yapılandırması ve Chocolatey kullanarak sürekli dağıtım](automation-dsc-cd-chocolatey.md).

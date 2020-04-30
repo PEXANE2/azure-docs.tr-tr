@@ -1,22 +1,22 @@
 ---
 title: Parametre dosyası oluşturma
-description: Azure Kaynak Yöneticisi şablonunun dağıtımı sırasında değerleri aktarmak için parametre dosyası oluşturma
+description: Azure Resource Manager şablonunun dağıtımı sırasında değerleri geçirmek için parametre dosyası oluşturma
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682888"
 ---
-# <a name="create-resource-manager-parameter-file"></a>Kaynak Yöneticisi parametre dosyası oluşturma
+# <a name="create-resource-manager-parameter-file"></a>Kaynak Yöneticisi parametre dosyası oluştur
 
-Komut dosyanızdaki satır değerleri olarak parametreleri geçirmek yerine, parametre değerlerini içeren bir JSON dosyasını kullanmayı daha kolay bulabilirsiniz. Bu makalede, parametre dosyasının nasıl oluşturulacak gösterilmektedir.
+Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre değerlerini içeren bir JSON dosyası kullanmayı daha kolay bulabilirsiniz. Bu makalede parametre dosyasının nasıl oluşturulacağı gösterilmektedir.
 
 ## <a name="parameter-file"></a>Parametre dosyası
 
-Parametre dosyası aşağıdaki biçime sahiptir:
+Parametre dosyası aşağıdaki biçimdedir:
 
 ```json
 {
@@ -33,9 +33,9 @@ Parametre dosyası aşağıdaki biçime sahiptir:
 }
 ```
 
-Parametre değerlerinin parametre dosyasında düz metin olarak depolandık. Bu yaklaşım, bir kaynak için SKU belirtmek gibi hassas olmayan değerler için çalışır. Parolalar gibi hassas değerler için çalışmaz. Parametre olarak hassas bir değer geçirmeniz gerekiyorsa, değeri anahtar kasasında depolayın ve parametre dosyanızdaki anahtar kasasına başvurun. Hassas değer dağıtım sırasında güvenli bir şekilde alınır.
+Parametre değerlerinin parametre dosyasında düz metin olarak depolandığını unutmayın. Bu yaklaşım, bir kaynak için SKU belirtme gibi hassas olmayan değerler için geçerlidir. Parolalar gibi hassas değerler için çalışmaz. Hassas bir değeri parametre olarak geçirmeniz gerekiyorsa, değeri bir anahtar kasasında depolayın ve parametre dosyanızdaki anahtar kasasına başvurun. Hassas değer dağıtım sırasında güvenli bir şekilde alınır.
 
-Aşağıdaki parametre dosyası düz bir metin değeri ve anahtar kasasında depolanan bir değer içerir.
+Aşağıdaki parametre dosyası bir düz metin değeri ve bir anahtar kasasında depolanan bir değer içerir.
 
 ```json
 {
@@ -57,11 +57,11 @@ Aşağıdaki parametre dosyası düz bir metin değeri ve anahtar kasasında dep
 }
 ```
 
-Önemli bir kasadaki değerleri kullanma hakkında daha fazla bilgi için dağıtım [sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasası'nı kullanın'a](key-vault-parameter.md)bakın.
+Anahtar kasasından değerleri kullanma hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](key-vault-parameter.md).
 
-## <a name="define-parameter-values"></a>Parametre değerlerini tanımlama
+## <a name="define-parameter-values"></a>Parametre değerlerini tanımla
 
-Parametre değerlerini nasıl tanımlayabileceğinizi anlamak için, dağıttığınız şablonu açın. Şablonun parametreler bölümüne bakın. Aşağıdaki örnekte, şablondaki parametreler gösterilmektedir.
+Parametre değerlerinin nasıl tanımlanacağını anlamak için, dağıttığınız şablonu açın. Şablonun parametreler bölümüne bakın. Aşağıdaki örnek, bir şablondan parametreleri gösterir.
 
 ```json
 "parameters": {
@@ -82,7 +82,7 @@ Parametre değerlerini nasıl tanımlayabileceğinizi anlamak için, dağıttı�
 }
 ```
 
-Dikkat çeken ilk ayrıntı her parametrenin adıdır. Parametre dosyanızdaki değerler adlarıyla eşleşmelidir.
+Bildirimin ilk ayrıntısı her parametrenin adıdır. Parametre dosyanızdaki değerlerin adlarıyla eşleşmesi gerekir.
 
 ```json
 {
@@ -97,7 +97,7 @@ Dikkat çeken ilk ayrıntı her parametrenin adıdır. Parametre dosyanızdaki d
 }
 ```
 
-Parametrenin türüne dikkat edin. Parametre dosyanızdaki değerler aynı türe sahip olmalıdır. Bu şablon için her iki parametreyi de dizeleri olarak sağlayabilirsiniz.
+Parametrenin türüne dikkat edin. Parametre dosyanızdaki değerler aynı türde olmalıdır. Bu şablon için, her iki parametreyi de dizeler olarak sağlayabilirsiniz.
 
 ```json
 {
@@ -114,7 +114,7 @@ Parametrenin türüne dikkat edin. Parametre dosyanızdaki değerler aynı türe
 }
 ```
 
-Ardından, varsayılan bir değer arayın. Bir parametrenin varsayılan değeri varsa, bir değer sağlayabilirsiniz, ancak bunu yapmak zorunda değilsiniz.
+Ardından, varsayılan bir değer arayın. Bir parametre varsayılan değere sahipse, bir değer sağlayabilirsiniz ancak bunu yapmanız gerekmez.
 
 ```json
 {
@@ -131,7 +131,7 @@ Ardından, varsayılan bir değer arayın. Bir parametrenin varsayılan değeri 
 }
 ```
 
-Son olarak, izin verilen değerlere ve maksimum uzunluk gibi kısıtlamalara bakın. Parametre için sağlayabileceğiniz değerler aralığını söylerler.
+Son olarak, izin verilen değerlere ve en fazla uzunluk gibi kısıtlamalara göz atın. Bu, size parametresi için sağlayabilmeniz için değer aralığı hakkında bilgi verir.
 
 ```json
 {
@@ -150,7 +150,7 @@ Son olarak, izin verilen değerlere ve maksimum uzunluk gibi kısıtlamalara bak
 
 ## <a name="parameter-type-formats"></a>Parametre türü biçimleri
 
-Aşağıdaki örnek, farklı parametre türlerinin biçimlerini gösterir.
+Aşağıdaki örnek farklı parametre türlerinin biçimlerini gösterir.
 
 ```json
 {
@@ -184,23 +184,23 @@ Aşağıdaki örnek, farklı parametre türlerinin biçimlerini gösterir.
 
 ## <a name="file-name"></a>Dosya adı
 
-Parametre dosyasını adlandırmak için genel kural şablon adına **.parametreler** eklemektir. Örneğin, şablonunuz **azuredeploy.json**olarak adlandırılmışsa, parametre dosyanız **azuredeploy.parameters.json**olarak adlandırılır. Bu adlandırma kuralı, şablon ve parametreler arasındaki bağlantıyı görmenize yardımcı olur.
+Parametre dosyasını adlandırmak için genel kural, şablon adına **. parametreler** eklemektir. Örneğin, şablonunuz **azuredeploy. JSON**olarak adlandırılmışsa, parametre dosyanız **azuredeploy. Parameters. JSON**olarak adlandırılır. Bu adlandırma kuralı, şablon ve parametreler arasındaki bağlantıyı görmenizi sağlar.
 
-Farklı ortamlara dağıtmak için birden fazla parametre dosyası oluşturun. Parametre dosyasını adlandırırken, dosyanın kullanımını tanımlamak için bir yol ekleyin. Örneğin, **azuredeploy.parameters-dev.json** ve **azuredeploy.parameters-prod.json** adresini kullanın
+Farklı ortamlara dağıtmak için, birden fazla parametre dosyası oluşturun. Parametre dosyasını adlandırırken, kullanımını tanımlamak için bir yol ekleyin. Örneğin, **azuredeploy. Parameters-dev. JSON** ve **azuredeploy. Parameters-prod. JSON** kullanın
 
 
 ## <a name="parameter-precedence"></a>Parametre önceliği
 
-Aynı dağıtım işleminde satır içinde parametreleri ve yerel parametre dosyasını kullanabilirsiniz. Örneğin, yerel parametre dosyasında bazı değerleri belirtebilir ve dağıtım sırasında satır içi başka değerler ekleyebilirsiniz. Hem yerel parametre dosyasında hem de satır satırda bir parametre için değerler sağlarsanız, satır satır değeri önce gelir.
+Aynı dağıtım işleminde satır içi parametreleri ve yerel bir parametre dosyasını kullanabilirsiniz. Örneğin, yerel parametre dosyasında bazı değerler belirtebilir ve dağıtım sırasında satır içi diğer değerleri ekleyebilirsiniz. Hem yerel parametre dosyasında hem de satır içi bir parametre için değerler sağlarsanız, satır içi değer önceliklidir.
 
-Ancak, harici bir parametre dosyası kullandığınızda, satır veya yerel bir dosyadan diğer değerleri geçiremezsiniz. Tüm satır parametreleri yoksayılır. Dış dosyadaki tüm parametre değerlerini sağlayın.
+Ancak, bir dış parametre dosyası kullandığınızda, diğer değerleri satır içi veya yerel bir dosyadan geçiremezsiniz. Tüm satır içi parametreler yok sayılır. Dış dosyadaki tüm parametre değerlerini belirtin.
 
 ## <a name="parameter-name-conflicts"></a>Parametre adı çakışmaları
 
-Şablonunuz PowerShell komutundaki parametrelerden biriyle aynı ada sahip bir parametre içeriyorsa, PowerShell şablonunuzdaki parametreyi **FromTemplate**düzeltiyle birlikte sunar. Örneğin, şablonunuzda **ResourceGroupName** adlı bir [parametre, Yeni-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet'teki **ResourceGroupName** parametresi ile çakışıyor. **KaynakGroupNameFromTemplate**için bir değer sağlamanız istenir. Dağıtım komutları için kullanılmayan parametre adlarını kullanarak bu karışıklığı önleyebilirsiniz.
+Şablonunuz PowerShell komutundaki parametrelerden biriyle aynı ada sahip bir parametre içeriyorsa, PowerShell, şablondaki parametreyi sonek **FromTemplate**ile gösterir. Örneğin, şablonunuzda **resourcegroupname** adlı bir parametre [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. **Resourcegroupnamefromtemplate**için bir değer sağlamanız istenir. Dağıtım komutları için kullanılmayan parametre adlarını kullanarak bu karışıklık kullanmaktan kaçınabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Şablonunuzdaparametrelerin nasıl tanımlandığını anlamak için [Azure Kaynak Yöneticisi şablonlarında parametrelere](template-parameters.md)bakın.
-- Önemli bir kasadaki değerleri kullanma hakkında daha fazla bilgi için dağıtım [sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasası'nı kullanın'a](key-vault-parameter.md)bakın.
-- Parametreler hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi şablonlarında Parametreler'e](template-parameters.md)bakın.
+- Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarındaki parametreler](template-parameters.md).
+- Anahtar kasasından değerleri kullanma hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](key-vault-parameter.md).
+- Parametreler hakkında daha fazla bilgi için [Azure Resource Manager şablonlarındaki parametreler](template-parameters.md)bölümüne bakın.

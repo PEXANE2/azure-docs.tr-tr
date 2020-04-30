@@ -1,6 +1,6 @@
 ---
-title: Bir Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleyin ve kurtarın | Microsoft Dokümanlar
-description: Azure ortamınızda bir Oracle Database 12c veritabanını nasıl yedekleyip kurtarılamayı öğrenin.
+title: Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve kurtarma | Microsoft Docs
+description: Azure ortamınızda Oracle Database 12c veritabanını nasıl yedekleyeceğinizi ve kurtaracağınızı öğrenin.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: BorisB2015
@@ -15,40 +15,40 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687013"
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleyin ve kurtarın
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle Database 12c veritabanını yedekleme ve kurtarma
 
-Azure kaynaklarını komut isteminde oluşturmak ve yönetmek veya komut dosyalarını kullanmak için Azure CLI'yi kullanabilirsiniz. Bu makalede, Bir Azure Marketi galerisi görüntüsünden bir Oracle Database 12c veritabanı dağıtmak için Azure CLI komut dosyalarını kullanıyoruz.
+Azure CLı kullanarak bir komut isteminde Azure kaynaklarını oluşturabilir ve yönetebilir ya da betikleri kullanabilirsiniz. Bu makalede Azure CLı betiklerini kullanarak bir Azure Marketi Galeri görüntüsünden Oracle Database 12c veritabanı dağıtma.
 
-Başlamadan önce Azure CLI'nin yüklü olduğundan emin olun. Daha fazla bilgi için [Azure CLI yükleme kılavuzuna](https://docs.microsoft.com/cli/azure/install-azure-cli)bakın.
+Başlamadan önce, Azure CLı 'nin yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure CLI yükleme kılavuzu](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama
 
-### <a name="step-1-prerequisites"></a>Adım 1: Ön koşullar
+### <a name="step-1-prerequisites"></a>1. Adım: Önkoşullar
 
-*   Yedekleme ve kurtarma işlemini gerçekleştirmek için öncelikle Oracle Database 12c'nin yüklü bir örneğine sahip bir Linux VM oluşturmanız gerekir. VM oluşturmak için kullandığınız Market görüntüsünün adı *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.
+*   Yedekleme ve kurtarma işlemini gerçekleştirmek için, önce yüklü bir Oracle Database 12 c örneğine sahip bir Linux sanal makinesi oluşturmanız gerekir. VM oluşturmak için kullandığınız Market görüntüsü *Oracle: Oracle-Database-Ee: 12.1.0.2: latest*olarak adlandırılır.
 
-    Oracle veritabanı oluşturmayı öğrenmek için [Oracle veritabanını hızlı başlatma oluşturma](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)bilgisini edinin.
+    Oracle veritabanı oluşturmayı öğrenmek için bkz. [Oracle create database hızlı](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)başlangıcı.
 
 
-### <a name="step-2-connect-to-the-vm"></a>Adım 2: VM'ye bağlanın
+### <a name="step-2-connect-to-the-vm"></a>2. Adım: VM 'ye bağlanma
 
-*   VM ile Güvenli Kabuk (SSH) oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini ve ana bilgisayar ad `publicIpAddress` birleşimini VM'nizin değeriyle değiştirin.
+*   VM ile Secure Shell (SSH) oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini ve ana bilgisayar adı birleşimini, sanal makinenizin `publicIpAddress` değeriyle değiştirin.
 
     ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>Adım 3: Veritabanını hazırlama
+### <a name="step-3-prepare-the-database"></a>3. Adım: veritabanını hazırlama
 
-1.  Bu adım, *myVM*adlı bir VM üzerinde çalışan bir Oracle örneğinin (cdb1) olduğunu varsayar.
+1.  Bu adım, *myvm*ADLı bir VM üzerinde çalışan bir Oracle örneğine (cdb1) sahip olduğunuzu varsayar.
 
-    *Oracle* superuser kökünü çalıştırın ve dinleyiciyi çalıştırın:
+    *Oracle* Süper Kullanıcı kökünü çalıştırın ve dinleyiciyi başlatın:
 
     ```bash
     $ sudo su - oracle
@@ -78,7 +78,7 @@ Başlamadan önce Azure CLI'nin yüklü olduğundan emin olun. Daha fazla bilgi 
     The command completed successfully
     ```
 
-2.  (İsteğe bağlı) Veritabanının arşiv günlüğü modunda olduğundan emin olun:
+2.  Seçim Veritabanının arşiv günlüğü modunda olduğundan emin olun:
 
     ```bash
     $ sqlplus / as sysdba
@@ -95,7 +95,7 @@ Başlamadan önce Azure CLI'nin yüklü olduğundan emin olun. Daha fazla bilgi 
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
 
-3.  (İsteğe bağlı) Commit test etmek için bir tablo oluşturun:
+3.  Seçim Yürütmeyi test etmek için bir tablo oluşturun:
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
@@ -117,7 +117,7 @@ Başlamadan önce Azure CLI'nin yüklü olduğundan emin olun. Daha fazla bilgi 
     Commit complete.
     ```
 
-4.  Yedekleme dosyası nın konumunu ve boyutunu doğrulayın veya değiştirin:
+4.  Yedekleme dosyasının konumunu ve boyutunu doğrulayın veya değiştirin:
 
     ```bash
     $ sqlplus / as sysdba
@@ -128,20 +128,20 @@ Başlamadan önce Azure CLI'nin yüklü olduğundan emin olun. Daha fazla bilgi 
     db_recovery_file_dest_size           big integer 4560M
     ```
 
-5. Veritabanını yedeklemek için Oracle Recovery Manager'ı (RMAN) kullanın:
+5. Veritabanını yedeklemek için Oracle kurtarma Yöneticisi 'ni (RMAN) kullanın:
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Adım 4: Linux VM'leri için uygulama tutarlı yedekleme
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>4. Adım: Linux VM 'Ler için uygulamayla tutarlı yedekleme
 
-Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anlık görüntüsünden önce ve sonra yürütmek için komut dosyaları oluşturabilir ve seçebilirsiniz (anlık görüntü öncesi ve anlık görüntü sonrası).
+Uygulamayla tutarlı yedeklemeler Azure Backup yeni bir özelliktir. VM anlık görüntüsünden önce ve sonra yürütülecek betikler oluşturup seçebilirsiniz (anlık görüntü öncesi ve anlık görüntü sonrası).
 
 1. JSON dosyasını indirin.
 
-    Karşıdan yükleme VMSnapshotScriptPluginConfig.json . https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig Dosya içeriği aşağıdakilere benzer:
+    VMSnapshotScriptPluginConfig. json ' dan https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigindirin. Dosya içerikleri aşağıdakine benzer şekilde görünür:
 
     ```output
     {
@@ -158,7 +158,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     }
     ```
 
-2. VM'de /etc/azure klasörünü oluşturun:
+2. Sanal makinede makinelerdeki/etc/Azure klasörünü oluşturun:
 
     ```bash
     $ sudo su -
@@ -168,11 +168,11 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
 
 3. JSON dosyasını kopyalayın.
 
-    VMSnapshotScriptPluginConfig.json'u /etc/azure klasörüne kopyalayın.
+    VMSnapshotScriptPluginConfig. json dosyasını makinelerdeki/etc/Azure klasörüne kopyalayın.
 
-4. JSON dosyasını edin.
+4. JSON dosyasını düzenleyin.
 
-    VMSnapshotScriptPluginConfig.json dosyasını ve `PreScriptLocation` `PostScriptlocation` parametreleri içerecek şekilde edin. Örneğin:
+    `PreScriptLocation` Ve `PostScriptlocation` parametrelerini dahil etmek için VMSnapshotScriptPluginConfig. json dosyasını düzenleyin. Örneğin:
 
     ```output
     {
@@ -189,11 +189,11 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     }
     ```
 
-5. Anlık görüntü öncesi ve anlık görüntü sonrası komut dosyası dosyalarını oluşturun.
+5. Anlık görüntü öncesi ve anlık görüntü sonrası betik dosyalarını oluşturun.
 
-    Aşağıda, "soğuk yedekleme" (kapatma ve yeniden başlatma ile çevrimdışı yedekleme) için anlık görüntü öncesi ve anlık görüntü sonrası komut dosyalarının bir örneği verilmiştir:
+    Aşağıda, "soğuk yedekleme" (kapalı ve yeniden başlatma ile çevrimdışı yedekleme) için anlık görüntü öncesi ve anlık görüntü sonrası betiklerine bir örnek verilmiştir:
 
-    /etc/azure/pre_script.sh için:
+    /Etc/Azure/pre_script. sh:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -202,7 +202,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
     ```
 
-    /etc/azure/post_script.sh için:
+    /Etc/Azure/post_script. sh:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -211,7 +211,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    "Sıcak yedekleme" (çevrimiçi yedekleme) için anlık görüntü öncesi ve anlık görüntü sonrası komut dosyalarının bir örneği aşağıda verilmiştir:
+    "Sık erişimli yedekleme" (çevrimiçi yedekleme) için anlık görüntü öncesi ve anlık görüntü sonrası betiklerine bir örnek aşağıda verilmiştir:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -220,7 +220,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    /etc/azure/post_script.sh için:
+    /Etc/Azure/post_script. sh:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -229,7 +229,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    /etc/azure/pre_script.sql için, gereksinimlerinize göre dosyanın içeriğini değiştirin:
+    /Etc/Azure/pre_script. SQL için dosya içeriğini gereksinimlerinize göre değiştirin:
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -239,7 +239,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     alter system archive log stop;
     ```
 
-    /etc/azure/post_script.sql için, gereksinimlerinize göre dosyanın içeriğini değiştirin:
+    /Etc/Azure/post_script. SQL için dosya içeriğini gereksinimlerinize göre değiştirin:
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -248,7 +248,7 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     alter system archive log start;
     ```
 
-6. Dosya izinlerini değiştirme:
+6. Dosya izinlerini değiştir:
 
     ```bash
     # chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
@@ -256,75 +256,75 @@ Uygulama tutarlı yedeklemeleri Azure Yedekleme'de yeni bir özelliktir. VM anl�
     # chmod 700 /etc/azure/post_script.sh
     ```
 
-7. Komut dosyalarını test edin.
+7. Betikleri test edin.
 
-    Komut dosyalarını sınamak için önce kök olarak oturum açın. Ardından, hata olmadığından emin olun:
+    Betikleri test etmek için, önce kök olarak oturum açın. Ardından hata olmadığından emin olun:
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-Daha fazla bilgi için [Linux VM'leri için Uygulama tutarlı yedeklemesi'ne](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)bakın.
+Daha fazla bilgi için bkz. [Linux VM 'ler Için uygulamayla tutarlı yedekleme](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Adım 5: VM'yi yedeklemek için Azure Kurtarma Hizmetleri kasalarını kullanın
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>5. Adım: VM 'yi yedeklemek için Azure kurtarma hizmetleri kasalarını kullanma
 
-1.  Azure portalında Kurtarma **Hizmetleri kasalarını**arayın.
+1.  Azure portal, **Kurtarma Hizmetleri kasalarını**arayın.
 
     ![Kurtarma Hizmetleri kasaları sayfası](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  Kurtarma **Hizmetleri kasaları** bıçak, yeni bir kasa eklemek için, **Ekle'yi**tıklatın.
+2.  **Kurtarma Hizmetleri kasaları** dikey penceresinde, yeni bir kasa eklemek için **Ekle**' ye tıklayın.
 
-    ![Kurtarma Hizmetleri kasaları sayfa eklemek](./media/oracle-backup-recovery/recovery_service_02.png)
+    ![Kurtarma Hizmetleri kasaları ekleme sayfası](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  Devam etmek için **myVault'u**tıklatın.
+3.  Devam etmek için, **Mykasa**' ya tıklayın.
 
     ![Kurtarma Hizmetleri kasaları ayrıntı sayfası](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  **myVault** bıçağında **Yedekleme'yi**tıklatın.
+4.  **Mykasa** dikey penceresinde **Yedekle**' ye tıklayın.
 
-    ![Kurtarma Hizmetleri vaults yedekleme sayfası](./media/oracle-backup-recovery/recovery_service_04.png)
+    ![Kurtarma Hizmetleri kasaları yedekleme sayfası](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  Yedekleme **Hedefi** bıçağında Azure **ve** Sanal **makinenin**varsayılan değerlerini kullanın. **Tamam**'a tıklayın.
+5.  **Yedekleme hedefi** dikey penceresinde, varsayılan **Azure** ve **sanal makine**değerlerini kullanın. **Tamam**'a tıklayın.
 
     ![Kurtarma Hizmetleri kasaları ayrıntı sayfası](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  **Yedekleme ilkesi**için **DefaultPolicy'yi**kullanın veya **Yeni İlke Oluştur'u**seçin. **Tamam**'a tıklayın.
+6.  **Yedekleme ilkesi**Için **DefaultPolicy**kullanın veya **Yeni ilke oluştur**' u seçin. **Tamam**'a tıklayın.
 
-    ![Kurtarma Hizmetleri vaults yedekleme ilkesi ayrıntı sayfası](./media/oracle-backup-recovery/recovery_service_06.png)
+    ![Kurtarma Hizmetleri kasaları yedekleme ilkesi ayrıntı sayfası](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  Sanal **makineler** seç bıçağında **myVM1** onay kutusunu seçin ve ardından **Tamam'ı**tıklatın. **Yedeklemeyi Etkinleştir** düğmesini tıklatın.
+7.  **Sanal makineler Seç** dikey penceresinde **myVM1** onay kutusunu işaretleyin ve ardından **Tamam**' a tıklayın. **Yedeklemeyi etkinleştir** düğmesine tıklayın.
 
-    ![Kurtarma Hizmetleri öğeleri yedek ayrıntı sayfasına tonozlar](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![Kurtarma Hizmetleri kasaları öğeleri yedekleme ayrıntısı sayfasına](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > **Yedeklemeyi Etkinleştir'i**tıklattıktan sonra, yedekleme işlemi zamanlanan süre dolana kadar başlamaz. Hemen yedekleme ayarlamak için bir sonraki adımı tamamlayın.
+    > **Yedeklemeyi etkinleştir**' e tıkladıktan sonra, yedekleme işlemi zamanlanan sürenin süresi dolana kadar başlatılmaz. Anında yedekleme ayarlamak için bir sonraki adımı izleyin.
 
-8.  **myVault - Backup items** blade'de, **BACKUP ITEM COUNT**altında, yedek madde sayısını seçin.
+8.  **Mykasa-yedekleme öğeleri** dikey penceresinde, **yedekleme öğesi sayısı**altında, yedekleme öğesi sayısını seçin.
 
-    ![Kurtarma Hizmetleri myVault detay sayfasını tonozlar](./media/oracle-backup-recovery/recovery_service_08.png)
+    ![Kurtarma Hizmetleri kasaları Mykasa ayrıntısı sayfası](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Yedek **Öğeler (Azure Sanal Makine)** bıçağında, sayfanın sağ tarafında, elips (**...**) düğmesini tıklatın ve sonra **şimdi Yedek'i**tıklatın.
+9.  **Yedekleme öğeleri (Azure sanal makine)** dikey penceresinde, sayfanın sağ tarafındaki üç nokta (**...**) düğmesine ve ardından **Şimdi Yedekle**' ye tıklayın.
 
-    ![Kurtarma Hizmetleri vaults Yedekleme şimdi komut](./media/oracle-backup-recovery/recovery_service_09.png)
+    ![Kurtarma Hizmetleri kasaları Şimdi Yedekle komutu](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. **Yedekleme** düğmesini tıklatın. Yedekleme işleminin tamamlanmasını bekleyin. Ardından, [Adım 6'ya gidin: Veritabanı dosyalarını kaldırın.](#step-6-remove-the-database-files)
+10. **Yedekle** düğmesine tıklayın. Yedekleme işleminin bitmesini bekleyin. Ardından, 6. [Adım: veritabanı dosyalarını kaldırma](#step-6-remove-the-database-files)sayfasına gidin.
 
-    Yedekleme işinin durumunu görüntülemek için **İşler'i**tıklatın.
+    Yedekleme işinin durumunu görüntülemek için **işler**' e tıklayın.
 
     ![Kurtarma Hizmetleri kasaları iş sayfası](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    Yedekleme işinin durumu aşağıdaki resimde görünür:
+    Yedekleme işinin durumu aşağıdaki görüntüde görünür:
 
-    ![Kurtarma Hizmetleri, durumla birlikte iş sayfasını kasaya](./media/oracle-backup-recovery/recovery_service_11.png)
+    ![Kurtarma Hizmetleri Kasası iş sayfası durumu](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. Uygulama tutarlı yedekleme için, günlük dosyasındaki hataları giderin. Günlük dosyası /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0 adresinde bulunur.
+11. Uygulamayla tutarlı bir yedekleme için günlük dosyasındaki hataları çözün. Günlük dosyası/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0. adresinde bulunur
 
-### <a name="step-6-remove-the-database-files"></a>Adım 6: Veritabanı dosyalarını kaldırma 
-Bu makalenin ilerleyen saatlerinde, kurtarma işlemini nasıl sınadığınızı öğreneceksiniz. Kurtarma işlemini sınamak için önce veritabanı dosyalarını kaldırmanız gerekir.
+### <a name="step-6-remove-the-database-files"></a>6. Adım: veritabanı dosyalarını kaldırma 
+Bu makalenin ilerleyen kısımlarında, kurtarma sürecini test etme hakkında bilgi edineceksiniz. Kurtarma işlemini test etmeden önce, veritabanı dosyalarını kaldırmanız gerekir.
 
-1.  Tablo alanı ve yedekleme dosyalarını kaldırın:
+1.  Tablo alanını ve yedekleme dosyalarını kaldır:
 
     ```bash
     $ sudo su - oracle
@@ -334,7 +334,7 @@ Bu makalenin ilerleyen saatlerinde, kurtarma işlemini nasıl sınadığınızı
     $ rm -rf *
     ```
     
-2.  (İsteğe bağlı) Oracle örneğini kapatın:
+2.  Seçim Oracle örneğini kapat:
 
     ```bash
     $ sqlplus / as sysdba
@@ -342,37 +342,37 @@ Bu makalenin ilerleyen saatlerinde, kurtarma işlemini nasıl sınadığınızı
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Kurtarma Hizmetleri kasalarından silinen dosyaları geri yükleme
-Silinen dosyaları geri yüklemek için aşağıdaki adımları tamamlayın:
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Silinen dosyaları kurtarma hizmetleri kasalarından geri yükleme
+Silinen dosyaları geri yüklemek için aşağıdaki adımları izleyin:
 
-1. Azure portalında *myVault* Kurtarma Hizmetleri kasaları öğesini arayın. Genel **Bakış** bıçağında, **Yedekleme öğelerinin**altında, öğe sayısını seçin.
+1. Azure portal, *Mykasa* kurtarma hizmetleri kasaları öğesini arayın. **Genel bakış** dikey penceresinde, **yedekleme öğeleri**altında, öğe sayısını seçin.
 
-    ![Kurtarma Hizmetleri myVault yedekleme öğeleritonolar](./media/oracle-backup-recovery/recovery_service_12.png)
+    ![Kurtarma Hizmetleri kasaları Mykasa yedekleme öğeleri](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. **BACKUP ITEM COUNT**altında, öğe sayısını seçin.
+2. **Yedekleme Öğesı sayısı**altında öğe sayısını seçin.
 
-    ![Kurtarma Hizmetleri kasaları Azure Virtual Machine yedek madde sayısı](./media/oracle-backup-recovery/recovery_service_13.png)
+    ![Kurtarma Hizmetleri kasaları Azure sanal makine yedekleme öğesi sayısı](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. **myvm1** bıçağında **Dosya Kurtarma (Önizleme) seçeneğini**tıklatın.
+3. **Myvm1** dikey penceresinde **dosya kurtarma (Önizleme)** seçeneğine tıklayın.
 
-    ![Kurtarma Hizmetleri kasaları dosya kurtarma sayfasının ekran görüntüsü](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Kurtarma Hizmetleri Kasası dosya kurtarma sayfasının ekran görüntüsü](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. Dosya **Kurtarma (Önizleme)** bölmesine, **Script'i İndir'i**tıklatın. Ardından, karşıdan yükleme (.sh) dosyasını istemci bilgisayardaki bir klasöre kaydedin.
+4. **Dosya kurtarma (Önizleme)** bölmesinde **betiği indir**' e tıklayın. Ardından, download (. sh) dosyasını istemci bilgisayardaki bir klasöre kaydedin.
 
-    ![Komut dosyası dosyasını indirseçenekleri kaydeder](./media/oracle-backup-recovery/recovery_service_15.png)
+    ![Betik dosyası kaydetme seçeneklerini indir](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. .sh dosyasını VM'ye kopyalayın.
+5. . Sh dosyasını VM 'ye kopyalayın.
 
-    Aşağıdaki örnek, dosyayı VM'ye taşımak için güvenli bir kopya (scp) komutunu nasıl kullanacağınızı gösterir. Ayrıca içindekileri panoya kopyalayabilir ve içeriği VM'de ayarlanmış yeni bir dosyaya yapıştırabilirsiniz.
+    Aşağıdaki örnek, dosyayı VM 'ye taşımak için güvenli kopya (SCP) komutunu nasıl kullanacağınızı gösterir. Ayrıca içeriği panoya kopyalayabilir ve ardından içeriği VM üzerinde ayarlanan yeni bir dosyaya yapıştırabilirsiniz.
 
     > [!IMPORTANT]
-    > Aşağıdaki örnekte, IP adresi ve klasör değerlerini güncelleştirdiğinden emin olun. Değerler, dosyanın kaydedildiği klasöre eşlenmelidir.
+    > Aşağıdaki örnekte, IP adresi ve klasör değerlerini güncelleştirdiğinizden emin olun. Değerlerin, dosyanın kaydedildiği klasöre eşlenmesi gerekir.
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
 
-6. Dosyayı değiştirin, böylece köke ait olur.
+6. Dosyayı, köke ait olacak şekilde değiştirin.
 
     Aşağıdaki örnekte, dosyayı köke ait olacak şekilde değiştirin. Ardından, izinleri değiştirin.
 
@@ -384,7 +384,7 @@ Silinen dosyaları geri yüklemek için aşağıdaki adımları tamamlayın:
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
 
-    Aşağıdaki örnek, önceki komut dosyasını çalıştırdıktan sonra görmeniz gerekenleri gösterir. Devam etmek istendiğinde **Y**girin.
+    Aşağıdaki örnek, önceki betiği çalıştırdıktan sonra neleri görmeniz gerektiğini gösterir. Devam etmek isteyip istemediğiniz sorulduğunda **Y**girin.
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -416,13 +416,13 @@ Silinen dosyaları geri yüklemek için aşağıdaki adımları tamamlayın:
     Please enter 'q/Q' to exit...
     ```
 
-7. Monte edilen birimlere erişim onaylanır.
+7. Bağlanan birimlere erişim onaylanır.
 
-    Çıkmak için **q**girin ve sonra monte edilen birimleri arayın. Eklenen birimlerin listesini oluşturmak için komut istemine **df -k**girin.
+    Çıkmak için, **q**girin ve ardından bağlı birimleri arayın. Eklenen birimlerin bir listesini oluşturmak için, komut isteminde **df-k**yazın.
 
-    ![df -k komutu](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![Df-k komutu](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. Eksik dosyaları klasörlere kopyalamak için aşağıdaki komut dosyasını kullanın:
+8. Eksik dosyaları klasörlere geri kopyalamak için aşağıdaki betiği kullanın:
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -435,7 +435,7 @@ Silinen dosyaları geri yüklemek için aşağıdaki adımları tamamlayın:
     # chown oracle:oinstall *.dbf
     ```
 
-9. Aşağıdaki komut dosyasında, veritabanını kurtarmak için RMAN'ı kullanın:
+9. Aşağıdaki betikte, veritabanını kurtarmak için RMAN kullanın:
 
     ```bash
     # sudo su - oracle
@@ -449,91 +449,91 @@ Silinen dosyaları geri yüklemek için aşağıdaki adımları tamamlayın:
 
 10. Diski çıkarın.
 
-    Azure portalında, **Dosya Kurtarma (Önizleme)** bıçak üzerinde, **Diskleri Aşma'yı**tıklatın.
+    Azure portal, **dosya kurtarma (Önizleme)** dikey penceresinde **diskleri**çıkar ' a tıklayın.
 
-    ![Unmount diskler komutu](./media/oracle-backup-recovery/recovery_service_17.png)
+    ![Diskleri çıkar komutu](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-the-entire-vm"></a>Tüm VM'yi geri yükleme
+## <a name="restore-the-entire-vm"></a>Tüm VM 'yi geri yükleme
 
-Silinen dosyaları Kurtarma Hizmetleri kasalarından geri yüklemek yerine, tüm VM'yi geri yükleyebilirsiniz.
+Silinen dosyaları kurtarma hizmetleri kasalarından geri yüklemek yerine, sanal makinenin tamamını geri yükleyebilirsiniz.
 
-### <a name="step-1-delete-myvm"></a>Adım 1: myVM silme
+### <a name="step-1-delete-myvm"></a>1. Adım: myVM 'Yi silme
 
-*   Azure portalında **myVM1** kasasına gidin ve sonra **Sil'i**seçin.
+*   Azure portal, **myVM1** kasasına gidin ve **Sil**' i seçin.
 
-    ![Vault silme komutu](./media/oracle-backup-recovery/recover_vm_01.png)
+    ![Kasa silme komutu](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>Adım 2: VM'yi kurtarma
+### <a name="step-2-recover-the-vm"></a>2. Adım: VM 'yi kurtarma
 
-1.  Kurtarma **Hizmetleri kasalarına**gidin ve sonra **myVault'u**seçin.
+1.  **Kurtarma Hizmetleri kasaları**' na gidin ve ardından **mykasa**' yı seçin.
 
-    ![myVault girişi](./media/oracle-backup-recovery/recover_vm_02.png)
+    ![Mykasa girişi](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  Genel **Bakış** bıçağında, **Yedekleme öğelerinin**altında, öğe sayısını seçin.
+2.  **Genel bakış** dikey penceresinde, **yedekleme öğeleri**altında, öğe sayısını seçin.
 
-    ![myVault yedekleme öğeleri](./media/oracle-backup-recovery/recover_vm_03.png)
+    ![Mykasa yedekleme öğeleri](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  Yedekleme **Öğeleri (Azure Sanal Makine)** bıçağında **myvm1'i**seçin.
+3.  **Yedekleme öğeleri (Azure sanal makine)** dikey penceresinde **myvm1**' yi seçin.
 
-    ![Kurtarma VM sayfası](./media/oracle-backup-recovery/recover_vm_04.png)
+    ![Kurtarma VM 'si sayfası](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  **Myvm1** bıçağında elips (**...**) düğmesini tıklatın ve ardından **VM'yi geri yükle'yi**tıklatın.
+4.  **Myvm1** dikey penceresinde üç nokta (**...**) düğmesine ve ardından **VM 'yi geri yükle**' ye tıklayın.
 
     ![VM komutunu geri yükle](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  Geri **Yükleme noktası** nı seç'te, geri yüklemek istediğiniz öğeyi seçin ve sonra **Tamam'ı**tıklatın.
+5.  **Geri yükleme noktası seç** dikey penceresinde, geri yüklemek istediğiniz öğeyi seçin ve ardından **Tamam**' a tıklayın.
 
     ![Geri yükleme noktasını seçin](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    Uygulama tutarlı yedeklemeyi etkinleştirdiyseniz, dikey mavi bir çubuk görüntülenir.
+    Uygulamayla tutarlı yedeklemeyi etkinleştirdiyseniz dikey mavi bir çubuk görüntülenir.
 
-6.  **Yapılandırmayı Geri** Yükle'de, sanal makine adını seçin, kaynak grubunu seçin ve ardından **Tamam'ı**tıklatın.
+6.  **Yapılandırma geri yükleme** dikey penceresinde, sanal makine adını seçin, kaynak grubunu seçin ve ardından **Tamam**' a tıklayın.
 
-    ![Yapılandırma değerlerini geri yükleme](./media/oracle-backup-recovery/recover_vm_07.png)
+    ![Yapılandırma değerlerini geri yükle](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  VM'yi geri yüklemek için **Geri Yükle** düğmesini tıklatın.
+7.  VM 'yi geri yüklemek için **geri yükle** düğmesine tıklayın.
 
-8.  Geri yükleme işleminin durumunu görüntülemek için **İşler'i**tıklatın ve ardından **Yedek İşler'i**tıklatın.
+8.  Geri yükleme işleminin durumunu görüntülemek için **işler**' e ve ardından **yedekleme işleri**' ne tıklayın.
 
-    ![Yedekleme işleri durum komutu](./media/oracle-backup-recovery/recover_vm_08.png)
+    ![Yedekleme işleri durumu komutu](./media/oracle-backup-recovery/recover_vm_08.png)
 
-    Aşağıdaki şekilde geri yükleme işleminin durumunu gösterir:
+    Aşağıdaki şekilde geri yükleme işleminin durumu gösterilmektedir:
 
     ![Geri yükleme işleminin durumu](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>Adım 3: Genel IP adresini ayarlama
-VM geri yüklendikten sonra, genel IP adresini ayarlayın.
+### <a name="step-3-set-the-public-ip-address"></a>3. Adım: genel IP adresini ayarlama
+VM geri yüklendikten sonra genel IP adresini ayarlayın.
 
-1.  Arama kutusuna **genel IP adresini**girin.
+1.  Arama kutusuna **genel IP adresi**girin.
 
     ![Genel IP adresleri listesi](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Ortak **IP adresleri** çubuğunda **Ekle'yi**tıklatın. Ortak **IP adresi oluşturma** bıçağında, **Ad**için ortak IP adını seçin. **Kaynak grubu** olarak **Var olanı kullan**’ı seçin. Ardından **Oluştur'u**tıklatın.
+2.  **Genel IP adresleri** dikey penceresinde **Ekle**' ye tıklayın. **Genel IP adresi oluştur** dikey penceresinde, **ad**için genel IP adını seçin. **Kaynak grubu** olarak **Var olanı kullan**’ı seçin. Sonra **Oluştur**' a tıklayın.
 
-    ![IP adresi oluşturma](./media/oracle-backup-recovery/create_ip_01.png)
+    ![IP adresi oluştur](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  Ortak IP adresini VM'nin ağ arabirimiyle ilişkilendirmek için **myVMip'i**arayın ve seçin. Ardından, **Ilişkilendir'i**tıklatın.
+3.  Genel IP adresini VM 'nin ağ arabirimiyle ilişkilendirmek için, **Myvmıp**öğesini arayın ve seçin. Ardından **ilişkilendir**' e tıklayın.
 
-    ![Ortak IP adresi](./media/oracle-backup-recovery/create_ip_02.png)
+    ![IP adresini ilişkilendir](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  **Kaynak türü için**Ağ **arabirimi'ni**seçin. myVM örneği tarafından kullanılan ağ arabirimini seçin ve ardından **Tamam'ı**tıklatın.
+4.  **Kaynak türü**için **ağ arabirimi**' ni seçin. MyVM örneği tarafından kullanılan ağ arabirimini seçin ve ardından **Tamam**' a tıklayın.
 
-    ![Kaynak türü ve NIC değerlerini seçin](./media/oracle-backup-recovery/create_ip_03.png)
+    ![Kaynak türünü ve NIC değerlerini seçin](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  Portaldan taşınan myVM örneğini arayın ve açın. VM ile ilişkili IP adresi myVM Genel **Bakış** bıçağında görünür.
+5.  Portaldan alınan myVM örneğini arayın ve açın. VM ile ilişkili IP adresi, myVM **genel bakış** dikey penceresinde görünür.
 
     ![IP adresi değeri](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>Adım 4: VM'ye bağlanın
+### <a name="step-4-connect-to-the-vm"></a>4. Adım: VM 'ye bağlanma
 
-*   VM'ye bağlanmak için aşağıdaki komut dosyasını kullanın:
+*   SANAL makineye bağlanmak için aşağıdaki betiği kullanın:
 
     ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>Adım 5: Veritabanının erişilebilir olup olmadığını test edin
-*   Erişilebilirliği sınamak için aşağıdaki komut dosyasını kullanın:
+### <a name="step-5-test-whether-the-database-is-accessible"></a>5. Adım: veritabanının erişilebilir olup olmadığını test edin
+*   Erişilebilirliği test etmek için aşağıdaki betiği kullanın:
 
     ```bash
     $ sudo su - oracle
@@ -542,10 +542,10 @@ VM geri yüklendikten sonra, genel IP adresini ayarlayın.
     ```
 
     > [!IMPORTANT]
-    > Veritabanı **başlangıç** komutu veritabanını kurtarmak için bir hata oluşturursa, [bkz.](#step-6-optional-use-rman-to-recover-the-database)
+    > Veritabanı **Başlangıç** komutu bir hata oluşturursa veritabanını kurtarmak için bkz. [6. Adım: veritabanını kurtarmak Için rman kullanma](#step-6-optional-use-rman-to-recover-the-database).
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Adım 6: (İsteğe bağlı) Veritabanını kurtarmak için RMAN'ı kullanın
-*   Veritabanını kurtarmak için aşağıdaki komut dosyasını kullanın:
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>6. Adım: (Isteğe bağlı) veritabanını kurtarmak için RMAN kullanma
+*   Veritabanını kurtarmak için aşağıdaki betiği kullanın:
 
     ```bash
     # sudo su - oracle
@@ -557,11 +557,11 @@ VM geri yüklendikten sonra, genel IP adresini ayarlayın.
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-Azure Linux VM'deki Oracle Database 12c veritabanının yedeklemesi ve kurtarılması tamamlandı.
+Azure Linux VM 'de Oracle Database 12c veritabanının yedeklenmesi ve kurtarılması artık tamamlanmıştır.
 
 ## <a name="delete-the-vm"></a>VM’yi silin
 
-VM'ye artık ihtiyacınız olmadığında, kaynak grubunu, VM'yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
+VM 'ye artık ihtiyacınız kalmadığında, kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -569,9 +569,9 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Öğretici: Yüksek kullanılabilir VM'ler oluşturun](../../linux/create-cli-complete.md)
+[Öğretici: yüksek oranda kullanılabilir VM 'Ler oluşturma](../../linux/create-cli-complete.md)
 
-[VM dağıtım Azure CLI örneklerini keşfedin](../../linux/cli-samples.md)
+[VM dağıtımı Azure CLı örneklerini keşfet](../../linux/cli-samples.md)
 
 
 

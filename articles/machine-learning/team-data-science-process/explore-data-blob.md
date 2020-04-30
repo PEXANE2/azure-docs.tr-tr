@@ -1,6 +1,6 @@
 ---
-title: Pandalarla Azure blob depolamasındaki verileri keşfedin - Ekip Veri Bilimi Süreci
-description: Pandalar Python paketini kullanarak Azure blob konteynerinde depolanan verileri nasıl keşfedebilirsiniz?
+title: Pandas 'lar ile Azure Blob depolama 'daki verileri araştırma-ekip veri bilimi Işlemi
+description: Pandas Python paketini kullanarak Azure Blob kapsayıcısında depolanan verileri araştırma.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685945"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandalarla Azure blob depolamasındaki verileri keşfedin
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas ile Azure Blob depolamada verileri araştırma
 
-Bu makalede, [pandalar](https://pandas.pydata.org/) Python paketi kullanılarak Azure blob kapsayıcısında depolanan verilerin nasıl keşfedileni kapsar.
+Bu makalede, Azure Blob kapsayıcısında [Pandas](https://pandas.pydata.org/) Python paketi kullanılarak depolanan verilerin nasıl araştırabileceği ele alınmaktadır.
 
-Bu [görev, Ekip Veri Bilimi Sürecinde](overview.md)bir adımdır.
+Bu görev, [ekip veri bilimi işlemindeki](overview.md)bir adımdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu makalede, sahip olduğunuzu varsayar:
+Bu makalede sahip olduğunuz varsayılır:
 
-* Bir Azure depolama hesabı oluşturdu. Yönergelere ihtiyacınız [varsa,](../../storage/common/storage-account-create.md) bkz.
-* Verilerinizi bir Azure blob depolama hesabında depolayın. Yönergelere ihtiyacınız varsa, [bkz.](../../storage/common/storage-moving-data.md)
+* Bir Azure depolama hesabı oluşturuldu. Yönergelere ihtiyacınız varsa bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md)
+* Verileriniz bir Azure Blob depolama hesabında depolanıyor. Yönergelere ihtiyacınız varsa bkz. [Azure depolama 'ya ve Azure Storage 'a veri taşıma](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Verileri pandalara yükleme DataFrame
-Bir veri kümesini keşfetmek ve işlemek için, önce blob kaynağından yerel bir dosyaya indirilmesi gerekir ve bu dosya daha sonra pandadataframe'e yüklenebilir. Bu yordam için izlenir adımlar şunlardır:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Verileri bir Pandas DataFrame 'e yükleme
+Bir veri kümesini araştırmak ve işlemek için, önce blob kaynağından bir yerel dosyaya indirilmeli ve bu da bir Pandas DataFrame 'e yüklenebilirler. Bu yordamda izlenecek adımlar aşağıda verilmiştir:
 
-1. Blob hizmetini kullanarak aşağıdaki Python kod örneğiyle azure blob'undan verileri indirin. Aşağıdaki koddaki değişkeni belirli değerlerinizle değiştirin:
+1. Blob hizmetini kullanarak aşağıdaki Python kod örneğiyle Azure blobundan verileri indirin. Aşağıdaki koddaki değişkeni belirli değerlerinizle değiştirin:
 
     ```python
     from azure.storage.blob import BlockBlobService
@@ -54,25 +54,25 @@ Bir veri kümesini keşfetmek ve işlemek için, önce blob kaynağından yerel 
     print(("It takes %s seconds to download "+blobname) % (t2 - t1))
     ```
 
-1. İndirilen dosyadan verileri pandadataframe olarak okuyun.
+1. İndirilen dosyadaki verileri bir Pandas DataFrame 'e okuyun.
 
     ```python
     # LOCALFILE is the file path
     dataframe_blobdata = pd.read_csv(LOCALFILENAME)
     ```
 
-Artık verileri keşfetmeye ve bu veri setinde özellikler oluşturmaya hazırsınız.
+Artık verileri keşfetmeye ve bu veri kümesinde Özellik oluşturmaya hazırsınız.
 
-## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Pandalar kullanarak veri arama örnekleri
-Pandaları kullanarak verileri keşfetmenin birkaç yolu aşağıda verilmiştir:
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Pandas kullanarak veri araştırma örnekleri
+Aşağıda, Pandas kullanarak verileri keşfetmeye yönelik yöntemlere birkaç örnek verilmiştir:
 
-1. Satır **ve sütun sayısını** denetleme
+1. **Satır ve sütun sayısını** İnceleme
 
     ```python
     print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
     ```
 
-1. Aşağıdaki veri kümesindeki ilk veya son birkaç **satırı** **inceleyin:**
+1. Aşağıdaki veri kümesindeki ilk veya son birkaç **satırı** **inceleyin** :
 
     ```python
     dataframe_blobdata.head(10)
@@ -80,47 +80,47 @@ Pandaları kullanarak verileri keşfetmenin birkaç yolu aşağıda verilmiştir
     dataframe_blobdata.tail(10)
     ```
 
-1. Her sütunun aşağıdaki örnek kodu kullanarak içe aktarılyış edildiği **veri türünü** denetleyin
+1. Aşağıdaki örnek kodu kullanarak her bir sütunun içeri aktarıldığı **veri türünü** denetleyin
 
     ```python
     for col in dataframe_blobdata.columns:
         print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
     ```
 
-1. Veri kümesindeki **sütunların temel istatistiklerini** aşağıdaki gibi denetleyin
+1. Veri kümesindeki sütunların **temel istatistiklerini** aşağıda gösterildiği gibi denetleyin
 
     ```python
     dataframe_blobdata.describe()
     ```
 
-1. Her sütun değeri için giriş sayısına aşağıdaki gibi bakın
+1. Her bir sütun değeri için aşağıdaki gibi giriş sayısına bakın
 
     ```python
     dataframe_blobdata['<column_name>'].value_counts()
     ```
 
-1. Aşağıdaki örnek kodu kullanarak her sütundaki gerçek giriş sayısına karşılık **eksik değerleri sayma**
+1. Aşağıdaki örnek kodu kullanarak **eksik değerleri** ve her bir sütundaki gerçek girdi sayısını say
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
     print miss_num
     ```
 
-1. Verilerde belirli bir sütun için **eksik değerleriniz** varsa, bunları aşağıdaki gibi bırakabilirsiniz:
+1. Verilerdeki belirli bir sütun için **eksik değerler** varsa, bunları aşağıdaki gibi bırakabilirsiniz:
 
     ```python
     dataframe_blobdata_noNA = dataframe_blobdata.dropna()
     dataframe_blobdata_noNA.shape
     ```
 
-    Eksik değerleri değiştirmenin başka bir yolu mod işlevidir:
+    Eksik değerleri değiştirmek için başka bir yol da Mode işlevidir:
 
     ```python
     dataframe_blobdata_mode = dataframe_blobdata.fillna(
         {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
     ```
 
-1. Bir değişkenin dağılımını çizmek için değişken sayıda depo kutusu kullanarak bir **histogram** çizimi oluşturma
+1. Bir değişkenin dağılımını çizmek için değişken sayıda depo gözü kullanarak bir **histogram** çizimi oluşturma
 
     ```python
     dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -128,7 +128,7 @@ Pandaları kullanarak verileri keşfetmenin birkaç yolu aşağıda verilmiştir
     np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
     ```
 
-1. Bir dağılım çizimi kullanarak veya yerleşik korelasyon işlevini kullanarak değişkenler arasındaki **korelasyonlara** bakın
+1. Bir dağınık terçiz kullanarak veya yerleşik bağıntı işlevini kullanarak değişkenler arasında **bağıntılar** 'e bakın
 
     ```python
     # relationship between column_a and column_b using scatter plot

@@ -1,108 +1,108 @@
 ---
 title: Sorun giderme
-description: Azure Uzaktan İşleme için sorun giderme bilgileri
+description: Azure uzaktan Işleme ilgili sorun giderme bilgileri
 author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681849"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
-Bu sayfa, Azure Uzaktan İşleme'yi engelleyen yaygın sorunları ve bunları çözme yollarını listeler.
+Bu sayfada, Azure uzaktan Işleme ile müdahale eden genel sorunlar ve bunları çözme yolları listelenmektedir.
 
 ## <a name="client-cant-connect-to-server"></a>İstemci sunucuya bağlanamıyor
 
-Güvenlik duvarlarınızın (aygıtta, yönlendiricilerin içinde vb.) aşağıdaki bağlantı noktalarını engellemediğinden emin olun:
+Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıdaki bağlantı noktalarını engellemediğinden emin olun:
 
-* **50051 (TCP)** - ilk bağlantı için gerekli (HTTP el sıkışma)
-* **8266 (TCP+UDP)** - veri aktarımı için gerekli
-* **5000 (TCP)**, **5433 (TCP)**, **8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) için gerekli
+* **50051 (TCP)** -ilk bağlantı için GEREKLIDIR (http el sıkışması)
+* **8266 (TCP + UDP)** -veri aktarımı için gereklidir
+* **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** - [ArrInspector](tools/arr-inspector.md) için gereklidir
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Hata 'Bağlantısı Kesildi: VideoFormatNotAvailable'
+## <a name="error-disconnected-videoformatnotavailable"></a>' Bağlantısı kesildi: VideoFormatNotAvailable ' hatası
 
-GPU'nuzun donanım video çözmeyi desteklediğini kontrol edin. [Bkz. Geliştirme PC.](../overview/system-requirements.md#development-pc)
+GPU 'nun donanım video kodunu çözmeyi destekleyip desteklemediğini denetleyin. Bkz. [GELIŞTIRME bilgisayarı](../overview/system-requirements.md#development-pc).
 
-İki GPU'lu bir dizüstü bilgisayarüzerinde çalışıyorsanız, varsayılan olarak üzerinde çalıştığınız GPU'nun donanım video çözme işlevini sağlamaması mümkündür. Bu nedenle, uygulamanızı diğer GPU'yu kullanmaya zorlamaya çalışın. Bu genellikle GPU sürücü ayarlarında mümkündür.
+İki GPU içeren bir dizüstü bilgisayarda çalışıyorsanız, varsayılan olarak üzerinde çalıştırdığınız GPU, donanım video kod çözme işlevselliği sağlamaz. Bu durumda, uygulamanızı diğer GPU 'YU kullanmaya zorlamaya çalışın. Bu durum genellikle GPU sürücü ayarlarında mümkündür.
 
-## <a name="h265-codec-not-available"></a>H265 codec kullanılamıyor
+## <a name="h265-codec-not-available"></a>H265 codec bileşeni kullanılamıyor
 
-Sunucunun **codec'de bulunmayan** bir hataya bağlanmayı reddetmesinin iki nedeni vardır.
+Sunucunun bir **codec bileşeni kullanılamıyor** hatası ile bağlanmayı reddedebileceği iki neden vardır.
 
-**H265 codec yüklü değil:**
+**H265 codec bileşeni yüklü değil:**
 
-Öncelikle sistem gereksinimlerinin [Yazılım](../overview/system-requirements.md#software) bölümünde belirtildiği gibi **HEVC Video Uzantılarını** yüklediğinizden emin olun.
+İlk olarak, sistem gereksinimlerinin [yazılım](../overview/system-requirements.md#software) bölümünde belirtildiği gibi **HEVC video uzantılarını** yüklediğinizden emin olun.
 
-Hala sorunlarla karşılaşırsanız, grafik kartınızın H265'i desteklediğinden ve en son grafik sürücüsünün yüklü olduğundan emin olun. Satıcıya özel bilgiler için sistem gereksinimlerinin [Geliştirme PC](../overview/system-requirements.md#development-pc) bölümüne bakın.
+Hala sorun yaşıyorsanız, grafik kartınızın h265 desteklediğinden ve en son grafik sürücüsünün yüklü olduğundan emin olun. Satıcıya özgü bilgiler için sistem gereksinimlerinin [GELIŞTIRME bilgisayarı](../overview/system-requirements.md#development-pc) bölümüne bakın.
 
-**Codec yüklenir, ancak kullanılamaz:**
+**Codec bileşeni yüklendi, ancak kullanılamıyor:**
 
-Bu sorunun nedeni, DL'lerde yanlış bir güvenlik ayarıdır. H265 ile kodlanmış videoları izlemeye çalışırken bu sorun ortaya değildir. Codec'i yeniden yüklemek de sorunu çözmez. Bunun yerine, aşağıdaki adımları gerçekleştirin:
+Bu sorunun nedeni, dll 'lerde yanlış bir güvenlik ayarıdır. Bu sorun, h265 ile kodlanan videoları izlerken bildirim yapmaz. Codec bileşeninin yeniden yüklenmesi sorunu çözmez. Bunun yerine, aşağıdaki adımları uygulayın:
 
-1. Yönetici **haklarıyla** bir PowerShell açın ve çalıştırın
+1. **Yönetici haklarına sahip bir PowerShell** açın ve çalıştırın
 
     ```PowerShell
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    Bu komut codec, gibi bir şey çıktı `InstallLocation` gerekir:
+    Bu komut, codec bileşenini `InstallLocation` şöyle bir şekilde çıktı almalıdır:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
     ```
 
-1. Windows Gezgini'nde bu klasörü açma
-1. Bir **x86** ve bir **x64** alt klasörü olmalıdır. Klasörlerden birine sağ tıklayın ve **Özellikler'i** seçin
-    1. **Güvenlik** sekmesini seçin ve **Gelişmiş** ayarlar düğmesini tıklatın
-    1. **Sahibi** için **Değiştir'e** tıklayın
-    1. Metin alanına **Yöneticiler** yazın
-    1. **Adları Ve Tamam'ı** tıklatın **OK**
-1. Diğer klasör için yukarıdaki adımları yineleme
-1. Ayrıca, her iki klasör içinde her DLL dosyasında yukarıdaki adımları yineleyin. Toplamda dört DL olmalıdır.
+1. Bu klasörü Windows Gezgini 'nde aç
+1. **X86** ve **x64** alt klasörü olmalıdır. Klasörlerden birine sağ tıklayın ve **Özellikler** ' i seçin
+    1. **Güvenlik** sekmesini seçin ve **Gelişmiş** Ayarlar düğmesine tıklayın
+    1. **Sahip** için **Değiştir** 'e tıklayın
+    1. Metin alanına **yönetici** yazın
+    1. **Adları denetle** ve **Tamam 'a** tıklayın
+1. Diğer klasör için yukarıdaki adımları yineleyin
+1. Ayrıca, yukarıdaki adımları her iki klasörün içindeki her DLL dosyasında da yineleyin. Tamamen dört dll olmalıdır.
 
-Ayarların artık doğru olduğunu doğrulamak için, dört DL'nin her biri için bunu yapın:
+Ayarların artık doğru olduğunu doğrulamak için, bunu dört dll 'nin her biri için yapın:
 
-1. **Özellikler > Güvenlik >'ni Seçin**
-1. Tüm Grupların / **Kullanıcıların** listesini gözden geçirin ve her birinin **Okuma & Yürüt** sağ kümesine sahip olduğundan emin olun **(izin sütunundaki** onay işareti işaretlenmelidir)
+1. **Özellikleri seçin > güvenlik > Düzenle**
+1. Tüm **gruplar/kullanıcılar** listesini okuyun ve her birinin **Oku & Çalıştır** sağ ayarlanmış olduğundan emin olun ( **izin verme** sütunundaki onay işareti oluşturulmalıdır)
 
 ## <a name="low-video-quality"></a>Düşük video kalitesi
 
-Video kalitesi ağ kalitesi veya eksik H265 video codec tarafından tehlikeye olabilir.
+Video kalitesi ağ kalitesiyle veya eksik h265 video codec bileşeniyle karşı tehlikeye girebilir.
 
-* Ağ sorunlarını tanımlamak için gereken [adımlara](#unstable-holograms)bakın.
-* En son grafik sürücüsünü yüklemek için [sistem gereksinimlerine](../overview/system-requirements.md#development-pc) bakın.
+* [Ağ sorunlarını belirlemek](#unstable-holograms)için adımlara bakın.
+* En son grafik sürücüsünü yüklemek için [sistem gereksinimleri](../overview/system-requirements.md#development-pc) bölümüne bakın.
 
-## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC ile kaydedilen video canlı deneyimin kalitesini yansıtmaz
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC ile kaydedilen video, canlı deneyim kalitesini yansıtmaz
 
-Bir video Karışık Gerçeklik Yakalama [(MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)ile Hololens kaydedilebilir. Ancak ortaya çıkan video iki nedenden dolayı canlı deneyim daha kötü kaliteye sahiptir:
-* Video kare hızı 60 Hz yerine 30 Hz olarak kapatılır.
-* Video görüntüleri geç aşama [yeniden projeksiyon](../overview/features/late-stage-reprojection.md) işleme adımından geçmez, bu nedenle video daha doğranır gibi görünür.
+Bir video, [karma gerçeklik yakalama (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)aracılığıyla HoloLens 'te kaydedilebilir. Ancak, sonuçta elde edilen videonun iki nedenden dolayı canlı deneyiminden daha kötü bir kalite vardır:
+* Video kare hızı 60 Hz 'in aksine 30 Hz 'e göre belirlenir.
+* Video görüntüleri, [geç aşama yeniden projeksiyonu](../overview/features/late-stage-reprojection.md) işleme adımını etkilemez, bu nedenle video choppier gibi görünür.
 
-Her ikisi de kayıt tekniğinin doğal sınırlamalarıdır.
+Her ikisi de kayıt tekniğinin devralınmış kısıtlamalarıdır.
 
 ## <a name="black-screen-after-successful-model-loading"></a>Başarılı model yüklendikten sonra siyah ekran
 
-Render çalışma süresine bağlıysanız ve bir modeli başarıyla yüklediyseniz, ancak daha sonra yalnızca siyah bir ekran görüyorsanız, bunun birkaç farklı nedeni olabilir.
+İşleme çalışma zamanına bağlıysanız ve bir modeli başarıyla yüklediyseniz, ancak daha sonra yalnızca bir siyah ekran görürseniz, bu birkaç farklı neden olabilir.
 
 Daha ayrıntılı bir analiz yapmadan önce aşağıdaki şeyleri test etmenizi öneririz:
 
-* H265 codec yüklü mü? H264 codec bir geri dönüş olması gerekir rağmen, biz bu geri dönüş düzgün çalışmadı durumlarda gördük. En son grafik sürücüsünü yüklemek için [sistem gereksinimlerine](../overview/system-requirements.md#development-pc) bakın.
-* Birlik projesini kullanırken, Unity'yi kapatın, proje dizinindeki geçici *kitaplık* ve *obj* klasörlerini silin ve projeyi yeniden yükleyin/oluşturun. Bazı durumlarda önbelleğe alınan veriler, örneğin belirgin bir neden olmadan düzgün çalışmamasına neden oldu.
+* H265 codec bileşeni yüklendi mi? H264 codec bileşenine geri dönüş olması gerekse de, bu geri dönüş düzgün şekilde çalışmayan durumlar görülmüştür. En son grafik sürücüsünü yüklemek için [sistem gereksinimleri](../overview/system-requirements.md#development-pc) bölümüne bakın.
+* Unity projesi kullanırken Unity 'yi kapatın, proje dizinindeki geçici *kitaplığı* ve *obj* klasörlerini silin ve projeyi yeniden yükleyin/derleyin. Bazı durumlarda önbelleğe alınmış veriler, örnek olarak belirgin bir nedenle düzgün şekilde çalışmayabilir.
 
-Bu iki adım yardımcı olmadıysa, video karelerinin istemci tarafından alınıp alınmadığını öğrenmek gerekir. Bu, [sunucu tarafı performans sorguları](../overview/features/performance-queries.md) bölümünde açıklandığı gibi programlı olarak sorgulanabilir. Kaç `FrameStatistics struct` video çerçevesi alındığını gösteren bir üye vardır. Bu sayı 0'dan büyükse ve zaman içinde artıyorsa, istemci sunucudan gerçek video kareleri alır. Sonuç olarak istemci tarafında bir sorun olmalıdır.
+Bu iki adım yardımcı olduysa, video çerçevelerinin istemci tarafından alınıp alınmadığını öğrenmek gerekir. Bu, [sunucu tarafı performans sorguları](../overview/features/performance-queries.md) bölümünde açıklandığı gibi programlı bir şekilde sorgulanabilir. , `FrameStatistics struct` Kaç video karesinin alındığını gösteren bir üyeye sahiptir. Bu sayı 0 ' dan büyükse ve zaman içinde arttırıldığında, istemci sunucudan gerçek video çerçevelerini alır. Sonuç olarak, istemci tarafında bir sorun olması gerekir.
 
 ### <a name="common-client-side-issues"></a>Ortak istemci tarafı sorunları
 
-**Model görünümü frustum içinde değildir:**
+**Model Frustum görünümü içinde değil:**
 
-Birçok durumda, model doğru görüntülenir ama kamera frustum dışında yer alır. Ortak bir nedeni modeli kameranın uzak kırpma düzlemi tarafından kırpılmış böylece çok off-center pivot ile ihraç edilmiş olmasıdır. Modelin sınırlayıcı kutusunu programlı olarak sorgulamaya ve kutuyu unity ile bir satır kutusu olarak görselleştirmeye veya değerlerini hata ayıklama günlüğüne yazdırmaya yardımcı olur.
+Çoğu durumda, model doğru şekilde görüntülenir, ancak kameranın dışında bulunur. Yaygın bir nedenden dolayı modelin, kameranın en kırpma düzlemine göre kırpılması için, modelin en dışı bir özete aktarılmasının yaygın bir nedeni vardır. Modelin sınırlayıcı kutusunun programlı bir şekilde sorgulanmasına ve kutuyu bir satır kutusu olarak görselleştirmeye veya değerlerini hata ayıklama günlüğüne yazdırmaya yardımcı olur.
 
-Ayrıca dönüştürme işlemi dönüştürülmüş model ile birlikte bir [çıkış json dosyası](../how-tos/conversion/get-information.md) oluşturur. Model konumlandırma sorunlarını hata ayıklamak `boundingBox` [için, çıktıİstatistikleri bölümündeki](../how-tos/conversion/get-information.md#the-outputstatistics-section)girişe bakmaya değer:
+Dönüştürme işleminin yanı sıra, dönüştürülmüş modelle birlikte bir [çıktı JSON dosyası](../how-tos/conversion/get-information.md) da oluşturur. Model konumlandırma sorunlarını ayıklamak için, `boundingBox` [outputstatıstıcs bölümündeki](../how-tos/conversion/get-information.md#the-outputstatistics-section)girişe göz uydurulmaya değecektir:
 
 ```JSON
 {
@@ -125,31 +125,31 @@ Ayrıca dönüştürme işlemi dönüştürülmüş model ile birlikte bir [çı
 }
 ```
 
-Sınırlama kutusu metre olarak, 3B alanda bir `min` ve `max` pozisyon olarak tanımlanır. Yani 1000.0'lık bir koordinat, orijinden 1 kilometre uzakta olduğu anlamına gelir.
+Sınırlayıcı kutu, ölçüm olarak 3B alanında `min` bir `max` ve konumu olarak tanımlanır. Bu nedenle 1000,0 koordinatı, kaynağın kaynağın 1 kilometreden fazla olması anlamına gelir.
 
-Görünmez geometriye yol açan bu sınırlayıcı kutuda iki sorun olabilir:
-* **Kutu çok off-center olabilir,** bu yüzden nesne tamamen uzak düzlem kırpma nedeniyle kırpılır. Bu `boundingBox` durumda değerleri şu şekilde `min = [-2000, -5,-5], max = [-1990, 5,5]`görünür: , burada örnek olarak x ekseninde büyük bir ofset kullanarak. Bu tür bir sorunu gidermek `recenterToOrigin` [için, model dönüştürme yapılandırmasındaki](../how-tos/conversion/configure-model-conversion.md)seçeneği etkinleştirin.
-* **Kutu ortalanmış olabilir ama büyüklük siparişleri çok büyük olabilir.** Bu, kameramodelin merkezinde başlasa da geometrisinin her yöne kırpılmış olduğu anlamına gelir. Bu `boundingBox` durumda tipik değerler şu `min = [-1000,-1000,-1000], max = [1000,1000,1000]`şekilde görünür: . Bu tür bir sorunun nedeni genellikle birim ölçekli uyuşmazlıktır. Telafi etmek için, [dönüştürme sırasında ölçekleme değeri](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) belirtin veya kaynak modeli doğru birimlerle işaretleyin. Çalışma zamanında modeli yüklerken ölçekleme kök düğümüne de uygulanabilir.
+Bu sınırlama kutusuyla ilgili olarak görünmeyen geometriye yol açabilecek iki sorun olabilir:
+* **Kutu**, en çok orta basıyor olabilir, bu nedenle nesne, uzak düzlem kırpması nedeniyle tamamen kırpıldı. Bu `boundingBox` örnekte yer alan değerler şöyle görünür: `min = [-2000, -5,-5], max = [-1990, 5,5]`, burada örnek olarak x ekseninde büyük bir konum kullanılıyor. Bu tür bir sorunu çözmek için `recenterToOrigin` [model dönüştürme yapılandırmasındaki](../how-tos/conversion/configure-model-conversion.md)seçeneği etkinleştirin.
+* **Kutu ortalanmış, ancak çok büyük boyutlu siparişler olabilir**. Bu, kameranın modelin merkezinde başladığı anlamına gelir; bu, geometrisi her yönde kırpılır. Bu `boundingBox` örnekte tipik değerler şuna benzer: `min = [-1000,-1000,-1000], max = [1000,1000,1000]`. Bu tür bir sorunun nedeni genellikle bir birim ölçek uyuşmazlığıdır. Dengelemek için, [dönüştürme sırasında bir ölçekleme değeri](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) belirtin veya kaynak modeli doğru birimlerle işaretleyin. Ölçek, çalışma zamanında model yüklenirken kök düğümüne da uygulanabilir.
 
-**Unity render ardışık hattı render kancalarını içermez:**
+**Unity oluşturma işlem hattı işleme kancalarını içermez:**
 
-Azure Uzaktan İşleme, videoyla çerçeve kompozisyonu yapmak ve yeniden projeksiyon yapmak için Birliğe dönüştürme ardışık hattını bağlar. Bu kancaların var olduğunu doğrulamak *için, Çerçeve hata ayıklayıcı> Çözümleme >* menüsünü açın. Etkinleştirin ve ardışık hatlar `HolographicRemotingCallbackPass` için iki giriş olduğundan emin olun:
+Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu yapmak için Unity işleme ardışık düzenine takılır. Bu kancalarının mevcut olduğunu doğrulamak için, *> Analysis > Frame Debugger menü penceresini*açın. Bunu etkinleştirin ve ardışık düzende `HolographicRemotingCallbackPass` ' ın iki girişi olduğundan emin olun:
 
-![Birlik çerçeve hata ayıklama](./media/troubleshoot-unity-pipeline.png)
+![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-unity-pipeline.png)
 
-## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Uzaktan İşleme API'sini kullanarak birlik kodu derlemez
+## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Uzaktan Işleme API 'sini kullanan Unity kodu derlenmiyor
 
-Unity çözümünün *yapı türünü* **Hata**Ayıklama'ya çevirin. Unity düzenleyicisinde ARR test `UNITY_EDITOR` ederken tanım yalnızca 'Hata Ayıklama' yapılarında kullanılabilir. Bunun, 'Release' yapılarını tercih etmeniz gereken [dağıtılmış uygulamalar](../quickstarts/deploy-to-hololens.md)için kullanılan yapı türüyle ilgisi olmadığını unutmayın.
+Unity çözümünün *derleme türünü* **hata ayıklaması**için değiştirin. Unity düzenleyicisinde ARR testi yaparken, tanımlama `UNITY_EDITOR` yalnızca ' Debug ' yapılarında kullanılabilir. Bu, [dağıtılan uygulamalar](../quickstarts/deploy-to-hololens.md)için kullanılan yapı türü ile ilgili değildir ve burada ' Release ' derlemelerini tercih etmelisiniz.
 
-## <a name="unstable-holograms"></a>Kararsız Hologramlar
+## <a name="unstable-holograms"></a>Dengesiz Hologragram
 
-İşlenen nesnelerin kafa hareketleriyle birlikte hareket ediyor gibi görünmesi durumunda, *Geç Aşama Yeniden Projeksiyonu* (LSR) ile ilgili sorunlarla karşılaşabilirsiniz. Böyle bir duruma nasıl yaklaşılalabilmek için [geç aşama yeniden projeksiyonu](../overview/features/late-stage-reprojection.md) bölümüne bakın.
+İşlenen nesnelerin baş hareketlerle birlikte taşınması gibi görünse de, *geç aşama yeniden projeksiyonu* (LSR) ile ilgili sorunlarla karşılaşıyor olabilirsiniz. Böyle bir duruma yaklaşıma ilişkin yönergeler için, [geç aşama yeniden projeksiyonunun](../overview/features/late-stage-reprojection.md) bölümüne bakın.
 
-Kararsız hologramların (sallantı, çözgü, titreme veya atlama hologramları) bir diğer nedeni de zayıf ağ bağlantısı, özellikle yetersiz ağ bant genişliği veya çok yüksek gecikme durumu olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge `ARRServiceStats.VideoFramesReused`performans [istatistikleri](../overview/features/performance-queries.md) değeridir. Yeniden kullanılan kareler, yeni bir video çerçevesi bulunmadığından istemci tarafında eski bir video çerçevesinin yeniden kullanılması gereken durumları gösterir ( örneğin paket kaybı veya ağ gecikmesi farklılıkları nedeniyle). Sık `ARRServiceStats.VideoFramesReused` sık sıfırdan büyükse, bu bir ağ sorununu gösterir.
+Kararsız hologragram (Wobbling, warping, su ya da atlama hologramlar) için başka bir neden, ağ bağlantısı yetersizliğinde veya çok yüksek gecikme süresine sahip olabilir. Ağ bağlantınızın kalitesi için iyi bir gösterge, [performans istatistikleri](../overview/features/performance-queries.md) değeridir `ARRServiceStats.VideoFramesReused`. Yeniden kullanılan çerçeveler, yeni video çerçevesi kullanılabilir olmadığından (örneğin, paket kaybı nedeniyle veya ağ gecikmede Çeşitlemeler nedeniyle), eski video çerçevesinin istemci tarafında yeniden kullanılması gereken durumları gösterir. `ARRServiceStats.VideoFramesReused` Sıfırdan sık büyükse bu bir ağ sorununu gösterir.
 
-Başaçıkolmak için bir diğer değer değer . `ARRServiceStats.LatencyPoseToReceiveAvg` Sürekli olarak 100 ms'nin altında olmalıdır. Daha yüksek değerler görüyorsanız, bu çok uzaktaki bir veri merkezine bağlı olduğunuzu gösterir.
+Bakmak için başka bir değer de `ARRServiceStats.LatencyPoseToReceiveAvg`vardır. Sürekli olarak 100 ms 'nin altında olması gerekir. Daha yüksek değerler görürseniz, bu, çok uzakta olan bir veri merkezine bağlı olduğunu gösterir.
 
-Olası azaltıcı etkenlerin listesi [için ağ bağlantısı yönergelerine](../reference/network-requirements.md#guidelines-for-network-connectivity)bakın.
+Olası azaltmaları bir liste için bkz. [ağ bağlantısı yönergeleri](../reference/network-requirements.md#guidelines-for-network-connectivity).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

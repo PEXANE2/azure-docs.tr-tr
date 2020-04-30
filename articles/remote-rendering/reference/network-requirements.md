@@ -1,54 +1,54 @@
 ---
 title: Ağ gereksinimleri
-description: Optimum deneyim için ağ gereksinimleri ve en iyi ağ uygulamaları
+description: En iyi deneyim için ağ gereksinimleri ve en iyi ağ uygulamaları
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617889"
 ---
 # <a name="network-requirements"></a>Ağ gereksinimleri
 
-Azure veri merkezine kararlı, düşük gecikmeli ağ bağlantısı, Azure Uzaktan İşleme'de iyi bir kullanıcı deneyimi için çok önemlidir. Kötü ağ koşulları, bağlantıların düşmesine, kararsız, gergin veya 'atlama' hologramlarına ve sunucu tarafındaki sahne grafiğini güncellerken fark edilebilir gecikmeye neden olabilir.
+Azure uzaktan Işlemede iyi bir kullanıcı deneyimi için, Azure veri merkezine yönelik kararlı, düşük gecikmeli bir ağ bağlantısı kritik öneme sahiptir. Kötü ağ koşulları, bağlantı, dengesiz, jaray veya ' atlama ' holograflarını ve sunucu tarafı sahne grafiğini güncelleştirirken dikkat çekici gecikme oluşmasına neden olabilir.
 
 ## <a name="guidelines-for-network-connectivity"></a>Ağ bağlantısı için yönergeler
 
-Tam ağ gereksinimleri, uzak sahne grafiğindeki değişikliklerin sayısı ve sıklığı nın yanı sıra işlenen görünümün karmaşıklığı gibi özel kullanım durumunuza bağlıdır, ancak deneyiminizin mümkün olduğunca iyi olduğundan emin olmak için bir dizi yönerge vardır:
+Tam ağ gereksinimleri, uzaktan sahne grafiğinde yapılan değişikliklerin sayısı ve sıklığı ile işlenmiş görünümün karmaşıklığı gibi belirli bir kullanım örneğine bağlıdır, ancak deneyiminizin mümkün olduğunca iyi olduğundan emin olmak için çeşitli yönergeler vardır:
 
-* Ağda rakip trafik olmadığını varsayarak, internet bağlantınızın azure Uzaktan İşlem'in tek bir kullanıcı oturumu için en az **50 Mbps akış** aşağı ve **10 Mbps upstream'i** tutarlı bir şekilde desteklemesi gerekir. Daha iyi deneyimler için daha yüksek fiyatlar öneriyoruz. Aynı ağdaki daha fazla kullanıcıyla, bu gereksinimler buna bağlı olarak ölçeklendirilir.
-* **5-GHz Wi-Fi bandı** kullanarak genellikle 2.4-GHz Wi-Fi bandı daha iyi sonuçlar üretecek, her ikisi de çalışması gerekir rağmen.
-* Yakınlarda başka Wi-Fi ağları varsa, bu diğer ağlar tarafından kullanılan Wi-Fi kanallarını kullanmaktan kaçının. Wi-Fi ağınızın kullandığı kanalların rakip trafikten uzak olup olmadığını doğrulamak için [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gibi ağ tarama araçlarını kullanabilirsiniz.
-* **Wi-Fi tekrarlayıcıları** veya LAN-over-powerline iletme kullanmaktan kesinlikle kaçının.
-* Aynı Wi-Fi ağında, video veya oyun akışı gibi **bant genişliği yoğun trafikten kaçının.**
-* **İyi Wi-Fi sinyal gücüne** sahip olmak esastır. Mümkünse Wi-Fi erişim noktanıza yakın durun ve istemci aygıtınızla erişim noktaları arasındaki engelleri önleyebilirsiniz.
-* [Bölgeniz](regions.md)için her zaman **en yakın Azure veri merkezine** bağlandığınızdan emin olun. Veri merkezi ne kadar yakınsa, ağ gecikmesi de o kadar düşük olur ve bu da hologram kararlılığı üzerinde büyük bir etkiye sahiptir.
+* Internet bağlantınızın, ağda rekabet eden bir trafik olmadığı varsayılarak, Azure uzaktan oluşturma işleminin tek bir kullanıcı oturumunda en az **50 Mbps 'lik aşağı akış** ve **10 Mbps 'lik yukarı akış** desteği sağlaması gerekir. Daha iyi deneyimler için daha yüksek ücretler öneririz. Aynı ağda daha fazla kullanıcı varsa, bu gereksinimlerin ölçeği aynı şekilde ölçeklendirilir.
+* **5 GHz Wi-Fi bandı** kullanmak genellikle 2,4 GHz Wi-Fi bandından daha iyi sonuçlar üretir, ancak her ikisi de çalışır.
+* Yakında başka Wi-Fi ağları varsa, bu diğer ağlar tarafından kullanılan Wi-Fi kanallarını kullanmaktan kaçının. Wi-Fi ağınızın kullandığı kanalların, rekabet eden trafiğin ücretsizdir olup olmadığını doğrulamak için [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gibi ağ tarama araçlarını kullanabilirsiniz.
+* **Wi-Fi repeaters** veya ağ üzerinden-Powerline iletmeyi kullanmaktan kesinlikle kaçının.
+* Aynı Wi-Fi ağında video veya oyun akışı gibi **rekabet bant genişliği güçlü trafiğinden kaçının** .
+* **Iyi Wi-Fi sinyal gücüne** sahip olmak önemlidir. Mümkünse, Wi-Fi erişim noktalarınıza yakın kalın ve istemci cihazınız ile erişim noktaları arasında engelleri önleyin.
+* [Bölgeniz](regions.md)için her zaman **en yakın Azure veri merkezine** bağlandığınızdan emin olun. Veri merkezine yaklaşarak, hologram kararlılığı üzerinde büyük bir etkiye sahip olan ağ gecikmesi düşüktür.
 
 > [!NOTE]
-> Aşağı bant genişliği çoğunlukla sırayla renk ve derinlik bilgileri (her ikisi de 60 Hz, stereo) arasında bölünmüş olan video akışı tarafından tüketilir.
+> Aşağı akış bant genişliği çoğunlukla video akışı tarafından tüketilecektir. Bu, sırayla renk ve derinlik bilgileri (60 Hz, stereo) arasında bölünür.
 
 ## <a name="network-performance-tests"></a>Ağ performans testleri
 
-Ağ bağlantınızın kalitesinin Azure Uzaktan İşleme'yi çalıştırmak için yeterli olup olmadığını anlamak istiyorsanız, kullanabileceğiniz mevcut çevrimiçi araçlar vardır. Azure Uzaktan İşlem istemcisi uygulamanızı çalıştırmayı planladığınız aygıtla aynı Wi-Fi'a bağlı oldukça güçlü bir dizüstü bilgisayardan bu çevrimiçi araçları çalıştırmanızı şiddetle öneririz. Düşük güçlü uç nokta cihazlarında önemli farklılıklar gösterdiği kanıtlanan testlerin bir cep telefonu veya HoloLens2 üzerinde çalıştırılan sonuçları genellikle daha az yararlıdır. Dizüstü bilgisayarı yerleştirdiğiniz konum kabaca Azure Uzaktan İşlem istemcisi uygulamanızı çalıştıran aygıtı kullanmayı beklediğiniz yerde olmalıdır.
+Ağ bağlantınızın kalitesinin Azure uzaktan Işleme çalıştırmak için yeterli olup olmadığını anlamak istiyorsanız, kullanabileceğiniz mevcut çevrimiçi araçlar vardır. Azure uzaktan Işleme istemci uygulamanızı çalıştırmayı planladığınız cihazla, bu çevrimiçi araçların aynı Wi-Fi ' y e bağlı olan makul bir dizüstü bilgisayardan çalıştırılmasını önemle öneririz. Bir cep telefonunda veya HoloLens2 testlerin çalıştırılması sonucunda elde edilen sonuçlar, düşük güç destekli uç nokta cihazlarında önemli bir çeşitleme göstermek için kanıtlanmış bir şekilde daha az yararlıdır. Dizüstü bilgisayarı yerleştirdiğiniz konum kabaca, Azure uzaktan Işleme istemci uygulamanızı çalıştıran cihazı kullanmayı düşündüğünüz yerde kabaca olmalıdır.
 
-Ağ bağlantınızın hızlı bir şekilde sınanmasına yönelik birkaç basit adım şunlardır:
+Ağ bağlantınızın hızlı bir testi için birkaç basit adım aşağıda verilmiştir:
 
-1. **Ağ bağlantınızın genel gecikme sağlığı ve yukarı/alt bant width hakkında veri almak için www.speedtest.net gibi bir ağ test aracını çalıştırın.**
-Size en yakın sunucuseçin ve testi çalıştırın. Sunucu Azure Uzaktan İşleme'nin bağlayacağı Azure veri merkezi olmasa da, ortaya çıkan veriler internet bağlantınızın ve Wi-Fi'ınızın performansını anlamak için yine de yararlıdır.
-   * Azure Uzaktan İşleme için **minimum gereksinim:** Yaklaşık 40 Mbps aşağı akış ve 5 Mbps yukarı akış.
-   * Azure Uzaktan İşleme için **önerilir:** Yaklaşık 100 Mbps aşağı akış ve 10 Mbps yukarı akış.
-Testi birden çok kez çalıştırmanızı ve en kötü sonuçları almanızı öneririz.
-1. **Azure veri merkezlerine gecikmeyi ölçen www.azurespeed.com gibi bir araç kullanın.** Size en yakın Olan Azure Uzaktan İşleme tarafından desteklenen Azure veri merkezini seçin [(desteklenen bölgelere](regions.md)bakın) ve bir **gecikme testi**çalıştırın. Gördüğünüz sayılarda bir değişiklik varsa, sonuçları stabilize etmek için biraz zaman verin.
-   * Azure Uzaktan İşleme için **minimum gereksinim:** Gecikme sürekli olarak 100 ms'den az olmalıdır.
-   * Azure Uzaktan İşleme için **önerilir:** Gecikme sürekli olarak 70 ms'den az olmalıdır.
+1. **Ağ bağlantınızın genel gecikme süresi ve yukarı akış/aşağı akış bant genişliği hakkında veri almak için www.speedtest.net gibi bir ağ testi aracı çalıştırın.**
+Size en yakın sunucuyu seçin ve testi çalıştırın. Sunucu, Azure uzaktan Işlemenin bağlanacağı Azure veri merkezi olmayacak olsa da, sonuçta elde edilen veriler Internet bağlantınızın ve Wi-Fi 'nizin performansını anlamak için hala yararlıdır.
+   * Azure uzaktan Işleme için **En düşük gereksinim** : yaklaşık 40 Mbps aşağı akış ve 5 Mbps yukarı akış.
+   * Azure uzaktan Işleme için **önerilir** : yaklaşık 100 Mbps aşağı akış ve 10 Mbps yukarı akış.
+Testi birden çok kez çalıştırmayı ve en kötü sonuçları almayı öneririz.
+1. **Azure veri merkezlerine gecikme süresi ölçen www.azurespeed.com gibi bir araç kullanın**. Size en yakın Azure uzaktan Işleme tarafından desteklenen Azure veri merkezini seçin ( [desteklenen bölgelere](regions.md)bakın) ve bir **gecikme süresi testi**çalıştırın. Gördüğünüz sayılarda çeşitleme varsa, sonuçların sabitlemesini biraz zaman sunun.
+   * Azure uzaktan Işleme için **En düşük gereksinim** : gecikme süresi sürekli olarak 100 ms 'den az olmalıdır.
+   * Azure uzaktan Işleme için **önerilir** : gecikme süresi sürekli olarak 70 MS 'den az olmalıdır.
 
-Düşük gecikme cezası, Azure Uzaktan İşleme'nin ağımızda iyi çalışacağının garantisi olmasa da, genellikle bu testlerin başarılı bir şekilde geçtiği durumlarda iyi performans gösterdiğini gördük.
-Azure Uzaktan İşleme'yi çalıştırırken kararsız, gergin veya atlama hologramları gibi yapılarla karşılaşıyorsanız, [sorun giderme kılavuzuna](../resources/troubleshoot.md)bakın.
+Düşük gecikme süresi, Azure uzaktan Işlemenin ağınızda iyi çalışacağı garantisi olmadığından, genellikle bu testlerin başarıyla geçirildiği durumlarda iyi bir şekilde karşılaştık.
+Azure uzaktan Işleme çalıştırırken dengesiz, jtery veya atlama gibi yapıtlardan karşılaşdıysanız, [sorun giderme kılavuzuna](../resources/troubleshoot.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Quickstart: Unity ile bir model oluşturma](../quickstarts/render-model.md)
+* [Hızlı başlangıç: Unity ile model Işleme](../quickstarts/render-model.md)

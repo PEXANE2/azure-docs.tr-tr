@@ -1,7 +1,7 @@
 ---
-title: Özel ilkeler kullanarak Azure AD hesabıyla kaydolma ayarlama
+title: Özel ilkeler kullanarak bir Azure AD hesabı ile oturum açma ayarlama
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de özel ilkeler kullanarak azure Active Directory hesabıyla oturum açın.
+description: Özel ilkeler kullanarak Azure Active Directory B2C Azure Active Directory hesapla oturum açma ayarlayın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,48 +12,48 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678085"
 ---
-# <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeleri kullanarak Bir Azure Etkin Dizin hesabıyla kaydolma ayarlama
+# <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Azure Active Directory hesabı ile oturum açmayı ayarlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C 'de (Azure AD B2C) [özel ilkeler](custom-policy-overview.md) kullanarak bir Azure Etkin Dizin (Azure AD) kuruluşundan kullanıcılar için oturum açma yı nasıl etkinleştirebilirsiniz.
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak bir Azure Active Directory (Azure AD) kuruluştan kullanıcıların oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Active [Directory B2C'deki özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın.
+[Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
 
 [!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
-Oluşturduğunuz uygulama anahtarını Azure AD B2C kiracınızda depolamanız gerekir.
+Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız gerekir.
 
-1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüdeki **Dizin + abonelik filtresini** seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından Azure **AD B2C'yi**arayın ve seçin.
-1. **İlkeler**altında Kimlik **Deneyimi Çerçevesi'ni**seçin.
-1. **İlke tuşlarını** seçin ve sonra **Ekle'yi**seçin.
-1. **Seçenekler**için `Manual`, seçin.
-1. İlke anahtarı için bir **Ad** girin. Örneğin, `ContosoAppSecret`.  Önek `B2C_1A_` oluşturulduğunda anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML'deki başvurusu *B2C_1A_ContosoAppSecret.*
-1. **Gizli**olarak, daha önce kaydettiğiniz müşteri sırrıgirin.
-1. **Anahtar kullanımı**için `Signature`.
+1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin + abonelik filtresi** ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
+1. **Seçenekler**için öğesini seçin `Manual`.
+1. İlke anahtarı için bir **ad** girin. Örneğin, `ContosoAppSecret`.  Ön ek `B2C_1A_` , oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle AŞAĞıDAKI bölümdeki XML başvurusu *B2C_1A_ContosoAppSecret*.
+1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
+1. **Anahtar kullanımı**için öğesini seçin `Signature`.
 1. **Oluştur**’u seçin.
 
-## <a name="add-a-claims-provider"></a>Talep sağlayıcı ekleme
+## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
-Kullanıcıların Azure AD kullanarak oturum açmasını istiyorsanız, Azure AD B2C'nin bir bitiş noktası aracılığıyla iletişim kurabileceği bir talep sağlayıcısı olarak Azure AD'yi tanımlamanız gerekir. Bitiş noktası, azure AD B2C tarafından belirli bir kullanıcının kimliğinin doğrulanmış olduğunu doğrulamak için kullanılan bir talep kümesi sağlar.
+Kullanıcıların Azure AD 'yi kullanarak oturum açmasını istiyorsanız, Azure AD 'yi Azure AD B2C bir uç nokta aracılığıyla iletişim kurabildiği bir talep sağlayıcı olarak tanımlamanız gerekir. Uç noktası, belirli bir kullanıcının kimliği doğrulandığını doğrulamak için Azure AD B2C tarafından kullanılan bir talep kümesi sağlar.
 
-İlkinizin uzantı dosyasındaki **ClaimsProvider** öğesine Azure AD ekleyerek Azure AD'yi talep sağlayıcısı olarak tanımlayabilirsiniz.
+Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz.
 
-1. *TrustFrameworkExtensions.xml* dosyasını açın.
-2. İddia **Sağlayıcıları** öğesini bulun. Yoksa, kök öğesinin altına ekleyin.
-3. Aşağıdaki gibi yeni bir **ClaimsProvider** ekleyin:
+1. *TrustFrameworkExtensions. xml* dosyasını açın.
+2. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
+3. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
     ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
@@ -96,89 +96,89 @@ Kullanıcıların Azure AD kullanarak oturum açmasını istiyorsanız, Azure AD
     </ClaimsProvider>
     ```
 
-4. **ClaimsProvider** öğesi altında, Etki **Alanı** değerini diğer kimlik sağlayıcılarından ayırt etmek için kullanılabilecek benzersiz bir değerle güncelleştirin. Örneğin, `Contoso`. Bu etki alanı `.com` ayarının sonuna bir şey koyamazsınız.
-5. **ClaimsProvider** öğesi altında, **DisplayName** değerini talep sağlayıcıiçin uygun bir ada güncelleştirin. Bu değer şu anda kullanılmaz.
+4. **ClaimsProvider** öğesi altında, **etki alanı** değerini diğer kimlik sağlayıcılarından ayırt etmek için kullanılabilecek benzersiz bir değer olarak güncelleştirin. Örneğin, `Contoso`. Bu etki alanı ayarının `.com` sonuna bir yerleştirmezsiniz.
+5. **ClaimsProvider** öğesi altında, **DisplayName** için değeri, talep sağlayıcı için kolay bir ad olarak güncelleştirin. Bu değer şu anda kullanılmıyor.
 
-### <a name="update-the-technical-profile"></a>Teknik profili güncelleştirin
+### <a name="update-the-technical-profile"></a>Teknik profili güncelleştirme
 
-Azure AD bitiş noktasından bir belirteç almak için, Azure AD B2C'nin Azure AD ile iletişim kurmak için kullanması gereken protokolleri tanımlamanız gerekir. Bu, **ClaimsProvider'ın** **TechnicalProfile** öğesi içinde yapılır.
+Azure AD uç noktasından bir belirteç almak için Azure AD B2C Azure AD ile iletişim kurmak için kullanması gereken protokolleri tanımlamanız gerekir. Bu işlem, **ClaimsProvider**'ın **teknisyen** öğesi içinde yapılır.
 
-1. **Teknik Profil** öğesinin kimliğini güncelleştirin. Bu kimlik, örneğin `OIDC-Contoso`ilkeğin diğer bölümlerindeki bu teknik profili ifade etmek için kullanılır.
-1. **DisplayName**değerini güncelleştirin. Bu değer oturum açma ekranınızdaki oturum açma düğmesinde görüntülenir.
-1. Açıklama değerini **güncelleştirin.**
-1. Azure AD OpenID Connect protokolünü kullanır, bu **Protocol** nedenle `OpenIdConnect`Protokol değerinin .
-1. **METADATA'nın** değerini `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`Azure `tenant-name` AD kiracı adınız nerede olacak şekilde ayarlayın. Örneğin, `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
-1. Başvuru kaydından başvuru kimliğine **client_id** ayarlayın.
-1. **CryptographicKeys**altında, Daha önce oluşturduğunuz ilke anahtarının adına **StorageReferenceId** değerini güncelleştirin. Örneğin, `B2C_1A_ContosoAppSecret`.
+1. **Teknisyen** öğesinin kimliğini güncelleştirin. Bu KIMLIK, örneğin `OIDC-Contoso`, ilkenin diğer bölümlerinden bu teknik profile başvurmak için kullanılır.
+1. **DisplayName**için değeri güncelleştirin. Bu değer, oturum açma ekranınızdaki oturum açma düğmesinde görüntülenir.
+1. **Açıklama**değerini güncelleştirin.
+1. Azure AD, OpenID Connect protokolünü kullanır, bu nedenle **protokol** değerinin olduğundan `OpenIdConnect`emin olun.
+1. **Meta verilerin** değerini olarak `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`AYARLAYıN, burada `tenant-name` Azure AD kiracı adınız. Örneğin, `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
+1. Uygulama kaydından uygulama KIMLIĞINE **client_id** ayarlayın.
+1. **Cryptographickeys**altında, **Storagereferenceıd** değerini daha önce oluşturduğunuz ilke anahtarının adı olarak güncelleştirin. Örneğin, `B2C_1A_ContosoAppSecret`.
 
-### <a name="upload-the-extension-file-for-verification"></a>Doğrulama için uzantı dosyasını yükleme
+### <a name="upload-the-extension-file-for-verification"></a>Uzantı dosyasını doğrulama için karşıya yükle
 
-Azure AD B2C'nin Azure AD dizininizde nasıl iletişim kurabileceğinizi bilmesi için politikanızı yapılandırmış sınız. Şimdiye kadar herhangi bir sorun olmadığını doğrulamak için politikanızın uzantı dosyasını yüklemeyi deneyin.
+Şimdi, ilkenizi Azure AD dizininizle nasıl iletişim kuracağını öğrenmek için Azure AD B2C ilkenizi yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
 
-1. Azure AD B2C kiracınızdaki **Özel İlkeler** sayfasında **Yükle İlkesi'ni**seçin.
-1. **Varsa politikanın Üzerine Yaz'ı**etkinleştirin ve *ardından TrustFrameworkExtensions.xml* dosyasına göz atın ve seçin.
+1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
+1. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve ardından *TrustFrameworkExtensions. xml* dosyasına gidip seçin.
 1. **Karşıya Yükle**'ye tıklayın.
 
-## <a name="register-the-claims-provider"></a>Talep sağlayıcıyı kaydedin
+## <a name="register-the-claims-provider"></a>Talep sağlayıcısını Kaydet
 
-Bu noktada, kimlik sağlayıcı ayarlanmış, ancak henüz kaydolma/kaydolma sayfalarında n için kullanılamaz. Kullanılabilir hale getirmek için, varolan bir şablon kullanıcı yolculuğunun bir kopyasını oluşturun ve ardından Azure AD kimlik sağlayıcısına sahip olacak şekilde değiştirin:
+Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma sayfalarında henüz mevcut değildir. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından Azure AD kimlik sağlayıcısı 'nı da içerecek şekilde değiştirin:
 
-1. Başlangıç paketinden *TrustFrameworkBase.xml* dosyasını açın.
-1. **UserJourney** öğesinin tüm içeriğini bulun `Id="SignUpOrSignIn"`ve kopyalayın.
-1. *TrustFrameworkExtensions.xml'i* açın ve **UserJourneys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
-1. **UserJourneys** öğesinin alt öğesi olarak kopyaladığınız **UserJourney** öğesinin tüm içeriğini yapıştırın.
-1. Kullanıcı yolculuğunun kimliğini yeniden adlandırın. Örneğin, `SignUpSignInContoso`.
+1. *TrustFrameworkBase. xml* dosyasını başlangıç paketinden açın.
+1. Dahil `Id="SignUpOrSignIn"`olan **userelde ney** öğesinin tüm içeriğini bulup kopyalayın.
+1. *TrustFrameworkExtensions. xml* ' i açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
+1. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
+1. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInContoso`.
 
 ### <a name="display-the-button"></a>Düğmeyi görüntüleme
 
-**ClaimsProviderSelection** öğesi, kaydol/kaydol sayfasındaki bir kimlik sağlayıcı düğmesine benzer. Azure AD için bir **ClaimsProviderSelection** öğesi eklerseniz, bir kullanıcı sayfaya düştüğünde yeni bir düğme belirar.
+**Claimsproviderselection** öğesi, kaydolma/oturum açma sayfasındaki bir kimlik sağlayıcısı düğmesine benzer. Azure AD için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
-1. *TrustFrameworkExtensions.xml'de*oluşturduğunuz kullanıcı yolculuğunda yer `Order="1"` alan **OrchestrationStep** öğesini bulun.
-1. **ClaimsProviderselections**altında, aşağıdaki öğeyi ekleyin. **TargetClaimsExchangeId** değerini uygun bir değere ayarlayın, örneğin: `ContosoExchange`
+1. *TrustFrameworkExtensions. xml*dosyasında oluşturduğunuz Kullanıcı yolculuğuna `Order="1"` dahil olan **orchestrationstep** öğesini bulun.
+1. **Claimsproviderseçimleri**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `ContosoExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>Düğmeyi eyleme bağlama
+### <a name="link-the-button-to-an-action"></a>Düğmeyi bir eyleme bağlama
 
-Artık bir düğmeniz olduğuna göre, düğmeyi bir eyleme bağlamanız gerekir. Bu durumda, eylem Azure AD B2C'nin bir belirteç almak için Azure AD ile iletişim kurmasıdır. Azure AD talep sağlayıcınızın teknik profilini bağlayarak düğmeyi bir eyleme bağla:
+Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda Azure AD B2C eylem, Azure AD ile iletişim kurmak için bir belirteç almak üzere kullanılır. Azure AD talep sağlayıcınızla ilgili teknik profili bağlayarak düğmeyi bir eyleme bağlayın:
 
-1. Kullanıcı yolculuğunda yer `Order="2"` alan **OrchestrationStep'i** bulun.
-1. **TargetClaimsExchangeId**için kullandığınız **id** için aynı değeri kullandığınızdan emin olmak için aşağıdaki **ClaimsExchange** öğesini ekleyin:
+1. Kullanıcı yolculuğu `Order="2"` ' nda yer alan **orchestrationstep** ' i bulun.
+1. **Targetclaimsexchangeıd**Için kullandığınız **ID** için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    **TechnicalProfileReferenceId'in** değerini daha önce oluşturduğunuz teknik profilin **kimliğine** güncelleştirin. Örneğin, `OIDC-Contoso`.
+    **TechnicalProfileReferenceId** değerini daha önce oluşturduğunuz teknik profilin **kimliğiyle** güncelleştirin. Örneğin, `OIDC-Contoso`.
 
-1. *TrustFrameworkExtensions.xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
+1. *TrustFrameworkExtensions. xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C uygulaması oluşturma
 
-Azure AD B2C ile iletişim, B2C kiracınıza kaydettiğiniz bir uygulama aracılığıyla gerçekleşir. Bu bölümde, daha önce yapmadıysanız bir test uygulaması oluşturmak için tamamlayabileceğiniz isteğe bağlı adımlar listeleniz.
+Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygulama aracılığıyla oluşur. Bu bölümde, daha önce yapmadıysanız bir test uygulaması oluşturmak için tamamlayabildiğiniz isteğe bağlı adımlar listelenmektedir.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
-## <a name="update-and-test-the-relying-party-file"></a>Güvenilen parti dosyasını güncelleştirme ve test etme
+## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 
-Oluşturduğunuz kullanıcı yolculuğunu başlatan güvenen taraf (RP) dosyasını güncelleştirin.
+Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Çalışma dizininizde *SignUpOrSignIn.xml'in* bir kopyasını yapın ve yeniden adlandırın. Örneğin, *SignUpSignInContoso.xml*olarak yeniden adlandırın.
-1. Yeni dosyayı açın ve **TrustFrameworkPolicy** için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInContoso`.
-1. İlke için URI ile **PublicPolicyUri** değerini güncelleştirin. Örneğin, `http://contoso.com/B2C_1A_signup_signin_contoso`.
-1. Daha önce oluşturduğunuz kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde **DefaultUserJourney'deki** **ReferenceId** özniteliğinin değerini güncelleştirin. Örneğin, *SignUpSignInContoso*.
-1. Değişikliklerinizi kaydedin ve dosyayı yükleyin.
-1. **Özel ilkeler**altında, listedeki yeni ilkeyi seçin.
-1. **Uygulama** açılır ayininde, daha önce oluşturduğunuz Azure AD B2C uygulamasını seçin. Örneğin, *testapp1*.
-1. Çalıştır **şimdi bitiş noktasını** kopyalayın ve özel bir tarayıcı penceresinde açın( örneğin, Google Chrome'daki Gizli Mod veya Microsoft Edge'deki Bir Özel Pencere. Özel bir tarayıcı penceresinde açmak, şu anda önbelleğe alınmış Azure AD kimlik bilgilerini kullanmayarak tüm kullanıcı yolculuğunu test etmenizi sağlar.
-1. Örneğin, *Contoso Employee*, Azure AD oturum açma düğmesini seçin ve ardından Azure AD kuruluş kiracınızda bir kullanıcının kimlik bilgilerini girin. Başvuruyu yetkilendirmeniz ve ardından profiliniz için bilgi girmeniz istenir.
+1. Çalışma dizininizde *Signuporsignın. xml* ' in bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, bunu *Signupsignıncontoso. xml*olarak yeniden adlandırın.
+1. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInContoso`.
+1. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin, `http://contoso.com/B2C_1A_signup_signin_contoso`.
+1. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, daha önce oluşturduğunuz Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin. Örneğin, *Signupsignıncontoso*.
+1. Değişikliklerinizi kaydedin ve dosyayı karşıya yükleyin.
+1. **Özel ilkeler**altında, listeden yeni ilkeyi seçin.
+1. **Uygulama Seç** açılan penceresinde, daha önce oluşturduğunuz Azure AD B2C uygulamayı seçin. Örneğin, *testapp1*.
+1. **Şimdi Çalıştır uç noktasını** kopyalayın ve özel bir tarayıcı penceresinde açın. Örneğin, Google Chrome 'Da veya Microsoft Edge 'de bir InPrivate penceresinde. Özel bir tarayıcı penceresinde açmak, şu anda önbelleğe alınmış Azure AD kimlik bilgilerini kullanarak tüm Kullanıcı yolculuğunu test etmenize olanak tanır.
+1. Azure AD oturum açma düğmesini (örneğin, *contoso çalışanı*) seçin ve ardından Azure AD kuruluş kiracınızdaki bir kullanıcının kimlik bilgilerini girin. Uygulamayı yetkilendirmeniz ve sonra profilinizin bilgilerini girmeniz istenir.
 
-Oturum açma işlemi başarılı olursa, tarayıcınız Azure `https://jwt.ms`AD B2C tarafından döndürülen belirteç içeriğini görüntüleyen 'e yönlendirilir.
+Oturum açma işlemi başarılı olursa, tarayıcınız öğesine `https://jwt.ms`yönlendirilir ve bu, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel ilkelerle çalışırken, bir ilkenin geliştirilmesi sırasında sorun giderildiğinde bazen ek bilgilere ihtiyacınız olabilir.
+Özel ilkelerle çalışırken, bazen bir ilke geliştirme sırasında sorun giderirken ek bilgilere ihtiyaç duyabilirsiniz.
 
-Sorunları tanılamaya yardımcı olmak için, ilkeyi geçici olarak "geliştirici moduna" koyabilir ve Azure Uygulama Öngörüleri ile günlükler toplayabilirsiniz. Azure Active [Directory B2C:Günlükleri Toplama](troubleshoot-with-application-insights.md)'da nasıl olduğunu öğrenin.
+Sorunları tanılamaya yardımcı olmak için ilkeyi geçici olarak "geliştirici moduna" koyabilirsiniz ve Azure Application Insights ile Günlükler toplayabilirsiniz. [Azure Active Directory B2C: günlükleri toplama](troubleshoot-with-application-insights.md)hakkında bilgi edinin.

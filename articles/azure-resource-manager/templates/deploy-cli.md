@@ -1,74 +1,74 @@
 ---
-title: Azure CLI ve şablonuyla kaynakları dağıtma
-description: Kaynakları Azure'a dağıtmak için Azure Kaynak Yöneticisi'ni ve Azure CLI'yi kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
+title: Azure CLı ve şablonuyla kaynak dağıtma
+description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685696"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLI ile kaynakları dağıtma
+# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
-Bu makalede, kaynaklarınızı Azure'a dağıtmak için Azure Kaynak Yöneticisi (ARM) şablonlarıyla Azure CLI'nin nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, [şablon dağıtımına genel bakış](overview.md)bölümüne bakın.
+Bu makalede, Azure CLı 'yı Azure Resource Manager (ARM) şablonlarıyla kullanarak kaynaklarınızı Azure 'a nasıl dağıtabileceğiniz açıklanır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md).
 
-Azure CLI sürüm 2.2.0'da dağıtım komutları değiştirildi. Bu makaledeki örnekler, Azure CLI sürüm 2.2.0 veya sonrası gerektirir.
+Azure CLı sürüm 2.2.0 'de dağıtım komutları değişmiştir. Bu makaledeki örneklerde Azure CLı sürüm 2.2.0 veya üzeri gerekir.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Azure CLI yüklü [değilseniz, Bulut Kabuğu'nu](#deploy-template-from-cloud-shell)kullanabilirsiniz.
+Azure CLı yüklü değilse, [Cloud Shell](#deploy-template-from-cloud-shell)kullanabilirsiniz.
 
 ## <a name="deployment-scope"></a>Dağıtım kapsamı
 
-Dağıtımınızı bir kaynak grubuna, abonelike, yönetim grubuna veya kiracıya hedefleyebilirsiniz. Çoğu durumda, bir kaynak grubuna dağıtım hedefleceksiniz. İlkeleri ve rol ödevlerini daha geniş bir kapsamda uygulamak için abonelik, yönetim grubu veya kiracı dağıtımlarını kullanın. Bir aboneye dağıtılırken, bir kaynak grubu oluşturabilir ve ona kaynak dağıtabilirsiniz.
+Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya hedefleyebilirsiniz. Çoğu durumda, dağıtımı bir kaynak grubuna hedefleyebilirsiniz. Daha büyük bir kapsamda ilke ve rol atamaları uygulamak için abonelik, yönetim grubu veya kiracı dağıtımlarını kullanın. Bir aboneliğe dağıtırken, bir kaynak grubu oluşturabilir ve kaynakları buna dağıtabilirsiniz.
 
 Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
 
-Bir kaynak **grubuna**dağıtmak için az [dağıtım grubu oluşturma](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create)kullanın:
+Bir **kaynak grubuna**dağıtmak için [az Deployment Group Create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create)kullanın:
 
 ```azurecli-interactive
 az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-Bir **aboneğe**dağıtmak için, [az dağıtım alt oluşturma](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)kullanın:
+Bir **aboneliğe**dağıtmak için [az Deployment Sub Create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)kullanın:
 
 ```azurecli-interactive
 az deployment sub create --location <location> --template-file <path-to-template>
 ```
 
-Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için [bkz.](deploy-to-subscription.md)
+Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-Bir yönetim **grubuna**dağıtmak için, [az dağıtım mg oluşturmak](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)kullanın:
+Bir **yönetim grubuna**dağıtmak için [az Deployment mg Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)şunu kullanın:
 
 ```azurecli-interactive
 az deployment mg create --location <location> --template-file <path-to-template>
 ```
 
-Yönetim grubu düzeyindeki dağıtımlar hakkında daha fazla bilgi için [bkz.](deploy-to-management-group.md)
+Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
 
-**Kiracıya**dağıtmak için az [dağıtım kiracı oluşturmak](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)kullanın:
+Bir **kiracıya**dağıtmak için [az Deployment Tenant Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)kullanın:
 
 ```azurecli-interactive
 az deployment tenant create --location <location> --template-file <path-to-template>
 ```
 
-Kiracı düzeyindeki dağıtımlar hakkında daha fazla bilgi için [bkz.](deploy-to-tenant.md)
+Kiracı düzeyinde dağıtımlar hakkında daha fazla bilgi için bkz. [kiracı düzeyinde kaynak oluşturma](deploy-to-tenant.md).
 
-Bu makaledeki örneklerkaynak grubu dağıtımlarını kullanır.
+Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
-## <a name="deploy-local-template"></a>Yerel şablonu dağıtma
+## <a name="deploy-local-template"></a>Yerel şablon dağıt
 
-Kaynakları Azure'a dağıtırken şunları yapacaksınız:
+Azure 'a kaynak dağıttığınızda şunları yapabilirsiniz:
 
 1. Azure hesabınızda oturum açma
-2. Dağıtılan kaynaklar için kapsayıcı olarak hizmet veren bir kaynak grubu oluşturun. Kaynak grubunun adı yalnızca alfasayısal karakterler, dönemler, alt çizerler, tireler ve parantez içerebilir. 90 karaktere kadar olabilir. Bir dönemde bitmez.
-3. Oluşturulacak kaynakları tanımlayan şablonu kaynak grubuna dağıtma
+2. Dağıtılan kaynaklar için kapsayıcı görevi gören bir kaynak grubu oluşturun. Kaynak grubunun adı yalnızca alfasayısal karakterler, noktalar, alt çizgiler, kısa çizgiler ve parantezler içerebilir. En fazla 90 karakter olabilir. Nokta ile bitemez.
+3. Oluşturulacak kaynakları tanımlayan şablonu kaynak grubuna dağıtın
 
-Şablon, dağıtımı özelleştirmenize olanak tanıyan parametreler içerebilir. Örneğin, belirli bir ortama (dev, test ve üretim gibi) uygun değerler sağlayabilirsiniz. Örnek şablon, depolama hesabı SKU için bir parametre tanımlar.
+Bir şablon, dağıtımı özelleştirmenizi sağlayan parametreler içerebilir. Örneğin, belirli bir ortam için uyarlanmış değerler (geliştirme, test ve üretim gibi) sağlayabilirsiniz. Örnek şablon, depolama hesabı SKU 'SU için bir parametre tanımlar.
 
-Aşağıdaki örnek bir kaynak grubu oluşturur ve yerel makinenizden bir şablon dağıtır:
+Aşağıdaki örnek, bir kaynak grubu oluşturur ve yerel makinenizden bir şablon dağıtır:
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -79,7 +79,7 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Dağıtımın tamamlanması birkaç dakika sürebilir. Bittiğinde, sonucu içeren bir ileti görürsünüz:
+Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonucu içeren bir ileti görürsünüz:
 
 ```output
 "provisioningState": "Succeeded",
@@ -87,9 +87,9 @@ Dağıtımın tamamlanması birkaç dakika sürebilir. Bittiğinde, sonucu içer
 
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
 
-ARM şablonlarını yerel makinenizde depolamak yerine, bunları harici bir konumda saklamayı tercih edebilirsiniz. Şablonları kaynak denetim deposunda (GitHub gibi) depolayabilirsiniz. Veya, kuruluşunuzdaki paylaşılan erişim için bunları bir Azure depolama hesabında saklayabilirsiniz.
+ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. Ya da, bunları kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz.
 
-Harici bir şablon dağıtmak için **şablon-uri** parametresini kullanın. Örnek şablonu GitHub'dan dağıtmak için uri'yi örnekte kullanın.
+Dış şablon dağıtmak için, **şablon-URI** parametresini kullanın. Örnek şablonu GitHub 'dan dağıtmak için örnekteki URI 'yi kullanın.
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
@@ -100,11 +100,11 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Önceki örnek, şablonunuz hassas verileri içermemelidir, çünkü çoğu senaryo için çalışır şablon için kamuya açık bir URI gerektirir. Hassas verileri (yönetici parolası gibi) belirtmeniz gerekiyorsa, bu değeri güvenli bir parametre olarak geçirin. Ancak, şablonunuzun herkese açık olmasını istemiyorsanız, şablonu özel bir depolama kapsayıcısında depolayarak şablonu koruyabilirsiniz. Paylaşılan erişim imzası (SAS) belirteci gerektiren bir şablonu dağıtma hakkında bilgi [için](secure-template-with-sas-token.md)bkz.
+Önceki örnekte, şablon için genel olarak erişilebilir bir URI gerekir ve bu, şablonunuz önemli verileri içermemelidir. Gizli veriler (yönetici parolası gibi) belirtmeniz gerekiyorsa, bu değeri güvenli bir parametre olarak geçirin. Ancak, şablonunuzun herkese açık bir şekilde erişilebilir olmasını istemiyorsanız, bunu özel bir depolama kapsayıcısında depolayarak koruyabilirsiniz. Paylaşılan erişim imzası (SAS) belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).
 
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../../includes/resource-manager-cloud-shell-deploy.md)]
 
-Bulut Kabuğu'nda aşağıdaki komutları kullanın:
+Cloud Shell aşağıdaki komutları kullanın:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "South Central US"
@@ -115,11 +115,11 @@ az deployment group create --resource-group examplegroup \
 
 ## <a name="parameters"></a>Parametreler
 
-Parametre değerlerini geçmek için satır içinde parametreler ilerler veya parametre dosyasını kullanabilirsiniz.
+Parametre değerlerini geçirmek için satır içi parametreleri ya da bir parametre dosyasını kullanabilirsiniz.
 
-### <a name="inline-parameters"></a>Satır dışı parametreler
+### <a name="inline-parameters"></a>Satır içi parametreler
 
-Satır dışı parametreleri geçirmek için, 'deki `parameters`değerleri sağlayın Örneğin, bir dize ve diziyi şablona geçirmek için Bir Bash kabuğudur, kullanın:
+Satır içi parametreleri geçirmek için içindeki `parameters`değerleri sağlayın. Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
 
 ```azurecli-interactive
 az deployment group create \
@@ -128,9 +128,9 @@ az deployment group create \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-Windows Komut Komut Komut Ustem (CMD) veya PowerShell ile Azure CLI `exampleArray="['value1','value2']"`kullanıyorsanız, diziyi biçiminde geçirin: .
+Windows komut Istemi (CMD) veya PowerShell ile Azure CLı kullanıyorsanız, diziyi şu biçimde geçirin: `exampleArray="['value1','value2']"`.
 
-Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır satırlı parametre olarak sağlayabilirsiniz.
+Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır içi bir parametre olarak sağlayabilirsiniz.
 
 ```azurecli-interactive
 az deployment group create \
@@ -139,9 +139,9 @@ az deployment group create \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
-Yapılandırma değerleri sağlamanız gerektiğinde dosyadan parametre değeri almak yararlıdır. Örneğin, [bir Linux sanal makinesi için bulut-init değerleri](../../virtual-machines/linux/using-cloud-init.md)sağlayabilirsiniz.
+Bir dosyadan parametre değeri alma, yapılandırma değerleri sağlamanız gerektiğinde faydalıdır. Örneğin, [bir Linux sanal makinesi için Cloud-init değerleri](../../virtual-machines/linux/using-cloud-init.md)sağlayabilirsiniz.
 
-ArrayContent.json biçimi:
+ArrayContent. JSON biçimi:
 
 ```json
 [
@@ -152,11 +152,11 @@ ArrayContent.json biçimi:
 
 ### <a name="parameter-files"></a>Parametre dosyaları
 
-Komut dosyanızdaki satır değerleri olarak parametreleri geçirmek yerine, parametre değerlerini içeren bir JSON dosyasını kullanmayı daha kolay bulabilirsiniz. Parametre dosyası yerel bir dosya olmalıdır. Dış parametre dosyaları Azure CLI ile desteklenmez.
+Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre değerlerini içeren bir JSON dosyası kullanmayı daha kolay bulabilirsiniz. Parametre dosyası yerel bir dosya olmalıdır. Dış parametre dosyaları Azure CLı ile desteklenmez.
 
-Parametre dosyası hakkında daha fazla bilgi için [kaynak yöneticisi parametre dosyası oluştur'a](parameter-files.md)bakın.
+Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
 
-Yerel bir parametre dosyasını `@` geçmek için storage.parameters.json adlı yerel bir dosya belirtmek için kullanın.
+Yerel bir parametre dosyasını geçirmek için, depolama `@` . Parameters. JSON adlı yerel bir dosya belirtmek için öğesini kullanın.
 
 ```azurecli-interactive
 az deployment group create \
@@ -166,9 +166,9 @@ az deployment group create \
   --parameters @storage.parameters.json
 ```
 
-## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işleme
+## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işle
 
-Sürüm 2.3.0 veya daha büyük olan Azure CLI'yi kullanarak çok satırlı `--handle-extended-json-format` dizeleri veya açıklamaları olan bir şablon dağıtmak için anahtarı kullanmanız gerekir.  Örneğin:
+Azure CLı 'yi sürüm 2.3.0 veya daha eski bir sürümle kullanarak çok satırlı dizeler veya yorumlarla bir şablon dağıtmak için `--handle-extended-json-format` anahtarını kullanmanız gerekir.  Örneğin:
 
 ```json
 {
@@ -188,9 +188,9 @@ Sürüm 2.3.0 veya daha büyük olan Azure CLI'yi kullanarak çok satırlı `--h
   ],
 ```
 
-## <a name="test-a-template-deployment"></a>Şablon dağıtımını test edin
+## <a name="test-a-template-deployment"></a>Şablon dağıtımını test etme
 
-Şablonunuzu ve parametre değerlerinizi gerçekten kaynak dağıtmadan sınamak için [az dağıtım grubu doğrulamayı](/cli/azure/group/deployment)kullanın.
+Şablon ve parametre değerlerinizi hiçbir kaynağı gerçekten dağıtmadan test etmek için [az Deployment Group Validate](/cli/azure/group/deployment)kullanın.
 
 ```azurecli-interactive
 az deployment group validate \
@@ -199,7 +199,7 @@ az deployment group validate \
   --parameters @storage.parameters.json
 ```
 
-Hata algılanmazsa, komut test dağıtımı yla ilgili bilgileri döndürür. Özellikle, **hata** değerinin null olduğunu unutmayın.
+Herhangi bir hata algılanmazsa, komut test dağıtımı hakkında bilgi döndürür. Özellikle, **hata** değerinin null olduğuna dikkat edin.
 
 ```output
 {
@@ -208,7 +208,7 @@ Hata algılanmazsa, komut test dağıtımı yla ilgili bilgileri döndürür. Ö
       ...
 ```
 
-Bir hata algılanırsa, komut bir hata iletisi döndürür. Örneğin, depolama hesabı SKU için yanlış bir değer geçen, aşağıdaki hatayı döndürür:
+Bir hata algılanırsa, komut bir hata mesajı döndürür. Örneğin, depolama hesabı SKU 'SU için yanlış bir değer geçirilerek aşağıdaki hata döndürülür:
 
 ```output
 {
@@ -224,7 +224,7 @@ Bir hata algılanırsa, komut bir hata iletisi döndürür. Örneğin, depolama 
 }
 ```
 
-Şablonunuzda sözdizimi hatası varsa, komut şablonu ayrışdıramayacağını belirten bir hata döndürür. İleti, ayrıştma hatasının satır numarasını ve konumunu gösterir.
+Şablonunuzda bir sözdizimi hatası varsa, komut, şablonu ayrıştıramadığını belirten bir hata döndürür. İleti, ayrıştırma hatasının satır numarasını ve konumunu gösterir.
 
 ```output
 {
@@ -241,9 +241,9 @@ Bir hata algılanırsa, komut bir hata iletisi döndürür. Örneğin, depolama 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir hata aldığınızda başarılı bir dağıtıma geri dönmek [için, başarılı dağıtımhatasında Rollback'i](rollback-on-error.md)görün.
-- Kaynak grubunda bulunan ancak şablonda tanımlanmayan kaynakların nasıl işleyeceğini belirtmek için Azure [Kaynak Yöneticisi dağıtım modlarına](deployment-modes.md)bakın.
-- Şablonunuzdaparametrelerin nasıl tanımlandığını anlamak için [bkz.](template-syntax.md)
-- Sık kullanılan dağıtım hatalarını çözme yle ilgili ipuçları için, [Azure Kaynak Yöneticisi ile sık karşılaşılan Azure dağıtım hatalarını giderme](common-deployment-errors.md)sorununa bakın.
-- SAS belirteci gerektiren bir şablonu dağıtma hakkında bilgi [için](secure-template-with-sas-token.md)bkz.
-- Hizmetinizi birden fazla bölgeye güvenli bir şekilde kullanıma sunmak için [Azure Dağıtım Yöneticisi'ne](deployment-manager-overview.md)bakın.
+- Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
+- Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
+- Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+- Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](common-deployment-errors.md).
+- SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).
+- Hizmetinizi birden fazla bölgeye güvenle kullanıma almak için bkz. [Azure dağıtım Yöneticisi](deployment-manager-overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure Anahtar Kasası Sertifikaları Hakkında - Azure Anahtar Kasası
+title: Azure Key Vault sertifikaları hakkında-Azure Key Vault
 description: Azure Key Vault REST arabirimine ve sertifikalarına genel bakış.
 services: key-vault
 author: msmbaldwin
@@ -11,176 +11,176 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685904"
 ---
-# <a name="about-azure-key-vault-certificates"></a>Azure Anahtar Kasası sertifikaları hakkında
+# <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
-Key Vault sertifikaları desteği, x509 sertifikalarınızın ve aşağıdaki davranışların yönetimini sağlar:  
+Key Vault sertifikaları, x509 sertifikalarınızın ve aşağıdaki davranışların yönetimi için destek sağlar:  
 
--   Sertifika sahibinin Anahtar Kasa oluşturma işlemi veya varolan bir sertifikanın içe aktarımı yoluyla sertifika oluşturmasına olanak tanır. Hem kendi imzalı hem de Sertifika Yetkilisi tarafından oluşturulan sertifikaları içerir.
--   Key Vault sertifikası sahibinin, x509 sertifikalarının özel anahtar malzemesiyle etkileşimi olmadan güvenli depolama ve yönetimini uygulamasına olanak tanır.  
--   Sertifika sahibinin, anahtarın kullanım ömrünü yönetmesi için Key Vault'u yönlendiren bir ilke oluşturmasına olanak tanır.  
--   Sertifika sahiplerinin, sertifikanın sona ermesi ve yenilenmesi yle ilgili yaşam döngüsü olayları hakkında bildirim için iletişim bilgilerini sağlamasına olanak tanır.  
--   Seçilen ihraççılar ile otomatik yenilemeyi destekler - Key Vault ortağı X509 sertifika sağlayıcıları / sertifika yetkilileri.
+-   Bir sertifika sahibinin Key Vault oluşturma işlemiyle veya var olan bir sertifikayı içeri aktarmasından sertifika oluşturmasına izin verir. Hem otomatik olarak imzalanan hem de sertifika yetkilisi tarafından oluşturulan sertifikaları içerir.
+-   Bir Key Vault sertifika sahibinin, özel anahtar malzemesiyle etkileşime girmeden x509 sertifikalarının güvenli depolanmasını ve yönetimini uygulamasına olanak tanır.  
+-   Bir sertifika sahibinin, bir sertifikanın yaşam döngüsünü yönetmesi için Key Vault yönlendiren bir ilke oluşturmasına izin verir.  
+-   Sertifika sahiplerinin, sertifika süresinin dolma ve yenilemenin yaşam döngüsü olayları hakkında bildirim için iletişim bilgilerini sağlamasına izin verir.  
+-   Seçili verenler ile otomatik yenilemeyi destekler-Key Vault iş ortağı x509 sertifika sağlayıcıları/sertifika yetkilileri.
 
 >[!Note]
->Ortak olmayan sağlayıcılar/otoriteler de izin verilir, ancak otomatik yenileme özelliğini desteklemez.
+>İş ortağı olmayan sağlayıcılara/yetkililere da izin verilir, ancak otomatik yenileme özelliğini desteklemez.
 
-## <a name="composition-of-a-certificate"></a>Sertifikanın Bileşimi
+## <a name="composition-of-a-certificate"></a>Sertifika oluşturma
 
-Key Vault sertifikası oluşturulduğunda, adreslenebilir bir anahtar ve gizli de aynı ada sahip oluşturulur. Key Vault tuşu anahtar işlemlerine izin verir ve Key Vault sırrı sertifika değerinin gizli olarak alınmasını sağlar. Anahtar Kasa sertifikası da ortak x509 sertifika meta verileri içerir.  
+Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebilir anahtar ve gizli dizi da oluşturulur. Key Vault anahtarı, anahtar işlemlerine izin verir ve Key Vault gizli dizi, sertifika değerinin gizli olarak alınmasına izin verir. Bir Key Vault sertifikası ortak x509 sertifika meta verilerini de içerir.  
 
-Sertifikaların tanımlayıcısı ve sürümü anahtarlara ve sırlara benzer. Key Vault sertifika sürümüyle oluşturulan adreslenebilir anahtar ve gizli bir sürümü Key Vault sertifika yanıtında kullanılabilir.
+Sertifikaların tanımlayıcısı ve sürümü anahtarlar ve gizli dizilerle benzerdir. Adreslenebilir bir anahtarın ve bir parolanın Key Vault sertifikası sürümüyle oluşturulmuş bir gizli sürümü Key Vault sertifika yanıtında bulunabilir.
  
 ![Sertifikalar karmaşık nesnelerdir](../media/azure-key-vault.png)
 
-## <a name="exportable-or-non-exportable-key"></a>Dışa aktarılabilir veya dışa aktarılabilen anahtar
+## <a name="exportable-or-non-exportable-key"></a>Dışarı aktarılabilir veya dışarı aktarılabilir olmayan anahtar
 
-Bir Key Vault sertifikası oluşturulduğunda, pfx veya PEM formatında özel anahtarla adreslenebilir gizli den alınabilir. Sertifikayı oluşturmak için kullanılan ilke, anahtarın dışa aktarılabilir olduğunu belirtmelidir. İlke dışa aktarılamaz diyorsa, özel anahtar gizli olarak alındığı zaman değerin bir parçası değildir.  
+Bir Key Vault sertifikası oluşturulduğunda, bu, özel anahtarla birlikte adreslenebilir gizli kümesinden PFX veya ped biçiminde alınabilir. Sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu göstermelidir. İlke dışa aktarılabilir olduğunu gösteriyorsa, özel anahtar, gizli dizi olarak alındığında değerin bir parçası değildir.  
 
-Adreslenebilir anahtar, dışa aktarılamayan KV sertifikaları ile daha alakalı hale gelir. Adreslenebilir KV anahtarının işlemleri, KV Sertifikası oluşturmak için kullanılan KV sertifika ilkesinin *anahtar kullanım* alanından eşlenir.  
+Adreslenebilir anahtar, dışarı aktarılabilir KV sertifikalarıyla daha da alakalı olur. Adreslenebilir kV anahtarının işlemleri, KV sertifikasını oluşturmak için kullanılan kV sertifika ilkesinin *KeyUsage uzantısında* alanından eşleştirilir.  
 
-İki tür anahtar desteklenir : *RSA* veya *rsa HSM* sertifikaları ile. Yalnızca RSA ile ihraç edilebilir, RSA HSM tarafından desteklenmez.  
+İki tür anahtar, sertifikalarla birlikte desteklenir – *RSA* veya *RSA HSM* . Dışarı aktarılabilir yalnızca RSA ile kullanılabilir, RSA HSM tarafından desteklenmez.  
 
-## <a name="certificate-attributes-and-tags"></a>Sertifika Öznitelikleri ve Etiketleri
+## <a name="certificate-attributes-and-tags"></a>Sertifika öznitelikleri ve Etiketler
 
-Adreslenebilir bir anahtar ve adreslenebilir bir sır olan sertifika meta verilerine ek olarak, Anahtar Kasa sertifikası da öznitelikleri ve etiketleri içerir.  
+Bir Key Vault sertifikası, sertifika meta verilerine, adreslenebilir bir anahtara ve adreslenebilir gizliliğe ek olarak öznitelikler ve Etiketler de içerir.  
 
 ### <a name="attributes"></a>Öznitelikler
 
-Sertifika öznitelikleri, KV sertifikası oluşturulduğunda oluşturulan adreslenebilir anahtar ve gizli özniteliklere yansıtılır.  
+Sertifika öznitelikleri, bir adreslenebilir anahtar ve KV sertifikası oluşturulduğunda oluşturulan gizli anahtar özniteliklerine yansıtılır.  
 
-Anahtar Kasa sertifikası aşağıdaki özelliklere sahiptir:  
+Bir Key Vault sertifikası aşağıdaki özniteliklere sahiptir:  
 
--   *etkin*: boolean, isteğe bağlı, varsayılan **doğrudur**. Sertifika verilerinin bir anahtar olarak gizli veya çalışabilir olarak alınıp alınamadığını belirtmek için belirtilebilir. Ayrıca *nbf* ve *exp*arasında bir işlem gerçekleştiğinde *nbf* ve *exp* ile birlikte kullanılır ve yalnızca etkin olarak doğru ayarlandığında izin verilir. *nbf* ve *exp* penceresi dışındaki işlemlere otomatik olarak izin verilmez.  
+-   *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. , Sertifika verilerinin anahtar olarak gizli veya çalıştırılabilir olarak alınıp alınamayacağını göstermek için belirtilebilir. Ayrıca *, NBF ve* *Exp*arasında bir işlem gerçekleştiğinde, *NBF* ve *Exp* ile birlikte de kullanılır ve yalnızca etkin değeri true olarak ayarlandıysa izin verilir. *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
 
-Yanıtta yer alan salt okunur öznitelikler vardır:
+Yanıtta bulunan ek salt okuma öznitelikleri vardır:
 
--   *created*: IntDate: sertifikanın bu sürümünün ne zaman oluşturulduğunu gösterir.  
--   *güncel :* IntDate: sertifikanın bu sürümünün ne zaman güncelleştirildiolduğunu gösterir.  
--   *exp*: IntDate: x509 sertifikasının son kullanma tarihi değerini içerir.  
--   *nbf*: IntDate: x509 sertifikasının tarihini içerir.  
+-   *oluşturma*: intdate: sertifikanın bu sürümünün ne zaman oluşturulduğunu gösterir.  
+-   *güncelleştirildi*: intdate: sertifikanın bu sürümünün ne zaman güncelleştirildiğini gösterir.  
+-   *Exp*: intdate: x509 sertifikasının süre sonu tarihinin değerini içerir.  
+-   *NBF*: intdate: x509 sertifikası tarihinin değerini içerir.  
 
 > [!Note] 
-> Key Vault sertifikasının süresi dolduğunda, adreslenebilir anahtar dır ve gizli olarak çalışılamaz hale gelir.  
+> Bir Key Vault sertifikasının süresi dolarsa, adreslenebilir anahtar ve gizli dizi çalışamaz duruma gelir.  
 
 ### <a name="tags"></a>Etiketler
 
- Anahtar ve sırlardaki etiketlere benzer anahtar değer çiftleri sözlüğü belirtilmiş.  
+ İstemci, anahtarlar ve gizli dizileri içindeki etiketlere benzer şekilde anahtar değer çiftlerinin belirtilen sözlüğünü belirtti.  
 
  > [!Note]
-> Etiketler, *liste* varsa veya bu nesne türüne (anahtarlar, sırlar veya sertifikalar) izin *alıyorsa,* arayan tarafından okunabilir.
+> Bu nesne türü (anahtarlar, gizlilikler veya sertifikalar) için *liste* veya *Al* izni varsa, Etiketler bir çağıran tarafından okunabilir.
 
 ## <a name="certificate-policy"></a>Sertifika ilkesi
 
-Sertifika ilkesi, Key Vault sertifikasının yaşam döngüsünün nasıl oluşturulup yönetilene ilişkin bilgiler içerir. Anahtar kasasına özel anahtarlı bir sertifika alındığında, x509 sertifikası okunarak varsayılan bir ilke oluşturulur.  
+Sertifika ilkesi, bir Key Vault sertifikasının yaşam döngüsünü oluşturma ve yönetme hakkında bilgiler içerir. Özel anahtara sahip bir sertifika anahtar kasasına aktarıldığında, x509 sertifikası okunarak varsayılan bir ilke oluşturulur.  
 
-Anahtar Kasa sertifikası sıfırdan oluşturulduğunda, bir ilke sağlanmalıdır. İlke, bu Key Vault sertifika sürümünün veya bir sonraki Key Vault sertifikası sürümünün nasıl oluşturulacak olduğunu belirtir. Bir ilke oluşturulduktan sonra, gelecekteki sürümler için art arda oluşturma işlemleri için gerekli değildir. Key Vault sertifikasının tüm sürümleri için yalnızca bir ilke örneği vardır.  
+Sıfırdan bir Key Vault sertifikası oluşturulduğunda, bir ilkenin sağlanması gerekir. İlke, bu Key Vault sertifikası sürümünün veya sonraki Key Vault sertifika sürümünün nasıl oluşturulacağını belirtir. Bir ilke kurulduktan sonra, gelecekteki sürümler için art arda oluşturma işlemlerinde bu gerekli değildir. Bir Key Vault sertifikasının tüm sürümleri için bir ilkenin yalnızca bir örneği bulunur.  
 
-Yüksek düzeyde, sertifika ilkesi aşağıdaki bilgileri içerir:  
+Yüksek düzeyde, bir sertifika ilkesi aşağıdaki bilgileri içerir:  
 
--   X509 sertifika özellikleri: Özne adı, özne alternatif adları ve x509 sertifika isteği oluşturmak için kullanılan diğer özellikleri içerir.  
--   Anahtar Özellikleri: anahtar türü, anahtar uzunluğu, dışa aktarılabilir ve anahtar alanlarını yeniden kullanma içerir. Bu alanlar, anahtar oluşturma konusunda anahtar kasasına talimat verir.  
--   Gizli özellikler: sertifikayı gizli olarak almak için gizli değeri oluşturmak için adreslenebilir gizli içerik türü gibi gizli özellikler içerir.  
--   Ömür Boyu Eylemler: KV Sertifikası için ömür boyu eylemleri içerir. Her yaşam boyu eylem şunları içerir:  
+-   X509 sertifika özellikleri: bir x509 sertifika isteği oluşturmak için kullanılan konu adını, konu diğer adlarını ve diğer özellikleri Içerir.  
+-   Anahtar özellikleri: anahtar türü, anahtar uzunluğu, dışarı aktarılabilir ve anahtar alanlarını yeniden kullanır. Bu alanlar anahtar kasasının nasıl oluşturulacağını gösteren anahtar kasasına yönlendirir.  
+-   Gizli özellikler: sertifikayı gizli olarak almak için, gizli değeri oluşturmak üzere adreslenebilir gizli dizi içerik türü gibi gizli özellikler içerir.  
+-   Ömür Işlemleri: KV sertifikası için ömür eylemleri içerir. Her ömür eylemi şunları içerir:  
 
-     - Tetikleyici: son kullanma tarihinden veya ömür boyu yayılma yüzdesinden önceki gün üzerinden  
+     - Tetikleyici: süre sonu veya yaşam süresi yüzdesi olarak belirtilen günler üzerinden belirtildi  
 
-     - Eylem: eylem türünü belirtme – *emailContacts* veya *autoRenew*  
+     - Eylem: eylem türü belirtme – *Emailcontacts* veya *autoRenew*  
 
--   İhraççı: X509 sertifikası vermek için kullanılacak sertifikayı veren kuruluş la ilgili parametreler.  
--   İlke Öznitelikleri: ilke ile ilişkili öznitelikleri içerir  
+-   Veren: x509 sertifikaları vermek için kullanılacak sertifika verenle ilgili parametreler.  
+-   İlke öznitelikleri: ilkeyle ilişkili öznitelikleri içerir  
 
-### <a name="x509-to-key-vault-usage-mapping"></a>X509 için Key Vault kullanım eşleme
+### <a name="x509-to-key-vault-usage-mapping"></a>Key Vault kullanım eşlemesine x509
 
-Aşağıdaki tablo, X509 anahtar kullanım ilkesinin Anahtar Kasa sertifikası oluşturmanın bir parçası olarak oluşturulan bir anahtarın etkili anahtar işlemleriiçin eşlenemasını temsil eder.
+Aşağıdaki tablo, x509 anahtar kullanımı ilkesinin Key Vault sertifikası oluşturma kapsamında oluşturulan bir anahtarın etkin anahtar işlemlerine eşlenmesini temsil eder.
 
-|**X509 Anahtar Kullanım bayrakları**|**Anahtar Vault anahtar ops**|**Varsayılan davranış**|
+|**X509 anahtar kullanım bayrakları**|**Key Vault anahtar Ops**|**Varsayılan davranış**|
 |----------|--------|--------|
-|DataEncipherment|şifrelemek, şifresini çözmek| Yok |
-|Deşifre Sadece|Şifre -sini çöz| Yok  |
-|Dijital İmza|imzalamak, doğrulamak| Sertifika oluşturma zamanında kullanım belirtimi olmadan Anahtar Kasa varsayılan | 
-|EncipherOnly|şifrele| Yok |
-|KeyCertSign|imzalamak, doğrulamak|Yok|
-|KeyEncipherment|wrapKey, unwrapKey| Sertifika oluşturma zamanında kullanım belirtimi olmadan Anahtar Kasa varsayılan | 
-|Inkar|imzalamak, doğrulamak| Yok |
-|crlsign|imzalamak, doğrulamak| Yok |
+|Veri şifreleme|şifreleme, şifre çözme| Yok |
+|Yalnızca çözülemez|çözülemiyor| Yok  |
+|DigitalSignature|imzala, Doğrula| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
+|Yalnızca şifreleme|şifrele| Yok |
+|KeyCertSign|imzala, Doğrula|Yok|
+|KeyEncipherment|wrapKey, unwrapKey| Sertifika oluşturma sırasında kullanım belirtimi olmadan varsayılan Key Vault | 
+|Kabullenme|imzala, Doğrula| Yok |
+|crlsign|imzala, Doğrula| Yok |
 
-## <a name="certificate-issuer"></a>Sertifika Veren
+## <a name="certificate-issuer"></a>Sertifikayı veren
 
-Anahtar Kasa sertifikası nesnesi, x509 sertifikaları sipariş etmek için seçili bir sertifika veren sağlayıcıyla iletişim kurmak için kullanılan bir yapılandırma tutar.  
+Key Vault bir sertifika nesnesi, x509 sertifikalarını sıralamak için seçilen bir sertifika veren sağlayıcısıyla iletişim kurmak için kullanılan bir yapılandırma barındırır.  
 
--   TLS/SSL sertifikaları için aşağıdaki sertifika veren sağlayıcılara sahip Key Vault ortakları
+-   TLS/SSL sertifikaları için aşağıdaki sertifika veren sağlayıcılarıyla iş ortakları Key Vault
 
 |**Sağlayıcı Adı**|**Konumlar**|
 |----------|--------|
-|DigiCert|Genel bulut ve Azure Genel'deki tüm önemli kasa hizmet konumlarında desteklenir|
-|Globalsign|Genel bulut ve Azure Genel'deki tüm önemli kasa hizmet konumlarında desteklenir|
+|DigiCert|Genel bulut ve Azure Kamu 'daki tüm anahtar kasası hizmeti konumlarında desteklenir|
+|GlobalSign|Genel bulut ve Azure Kamu 'daki tüm anahtar kasası hizmeti konumlarında desteklenir|
 
-Sertifika veren bir anahtar kasasında oluşturulamadan önce, ön koşul adım 1 ve 2'yi izleyerek başarılı bir şekilde gerçekleştirilmelidir.  
+Bir sertifika verenin bir Key Vault oluşturulabilmesi için, önkoşul 1 ve 2 ' nin aşağıdaki adımlardan başarıyla gerçekleştirilmesi gerekir.  
 
-1. Sertifika Yetkilisi (CA) Sağlayıcılarına Dahili  
+1. Sertifika yetkilisi (CA) sağlayıcılarına ekleme  
 
-    -   Bir kuruluş yöneticisi kendi şirketinde olmalıdır (ör. Contoso) en az bir CA sağlayıcısı ile.  
+    -   Kuruluş yöneticisinin şirketlerinin şirket içinde olması gerekir (örn. Contoso) en az bir CA sağlayıcısıyla.  
 
-2. Yönetici, TLS/SSL sertifikalarını kaydetmek (ve yenilemek) için Key Vault için istekte leyici kimlik bilgilerini oluşturur  
+2. Yönetici, TLS/SSL sertifikalarını kaydetmek (ve yenilemek) için Key Vault isteyenin kimlik bilgilerini oluşturur  
 
-    -   Anahtar kasasında sağlayıcının bir veren nesnesini oluşturmak için kullanılacak yapılandırmayı sağlar  
+    -   Anahtar kasasında sağlayıcının veren nesnesini oluşturmak için kullanılacak yapılandırmayı sağlar  
 
-Sertifikalar portalından İhraççı nesneleri oluşturma hakkında daha fazla bilgi [için, Anahtar Kasa Sertifikaları bloguna](https://aka.ms/kvcertsblog) bakın  
+Sertifika portalından veren nesneleri oluşturma hakkında daha fazla bilgi için [Key Vault sertifikaları bloguna](https://aka.ms/kvcertsblog) bakın  
 
-Key Vault, farklı veren sağlayıcı yapılandırmasına sahip birden çok veren nesnenin oluşturulmasına olanak tanır. İhraççı nesneoluşturulduktan sonra, adı bir veya birden çok sertifika ilkelerinde başvurulabilir. İhraççı nesnesine başvurmak, sertifika oluşturma ve yenileme sırasında CA sağlayıcısından x509 sertifikası nı talep ederken, Anahtar Kasası'na veren nesnede belirtildiği şekilde yapılandırmayı kullanmasını bildirir.  
+Key Vault, farklı veren sağlayıcı yapılandırmasına sahip birden çok veren nesne oluşturulmasına izin verir. Bir veren nesnesi oluşturulduktan sonra, adının bir veya birden çok sertifika ilkesiyle başvurusu yapılabilir. Veren nesnesine başvurmak, sertifika oluşturma ve yenileme sırasında CA sağlayıcısından x509 sertifikası istenirken sertifikayı veren nesnesinde belirtilen yapılandırmayı kullanmak Key Vault söyler.  
 
-İhraççı nesneler kasada oluşturulur ve sadece aynı kasada KV sertifikaları ile kullanılabilir.  
+Verenin nesneleri kasada oluşturulur ve yalnızca aynı kasadaki KV sertifikalarıyla birlikte kullanılabilir.  
 
 ## <a name="certificate-contacts"></a>Sertifika kişileri
 
-Sertifika kişileri, sertifika ömrü boyunca olan olaylar tarafından tetiklenen bildirimleri göndermek için kişi bilgilerini içerir. Kişi bilgileri, anahtar kasasındaki tüm sertifikalar tarafından paylaşılır. Anahtar kasasındaki herhangi bir sertifika için bir olay için belirtilen tüm kişilere bildirim gönderilir.  
+Sertifika kişileri, sertifika ömrü olayları tarafından tetiklenen bildirimleri göndermek için iletişim bilgilerini içerir. Kişi bilgileri, anahtar kasasındaki tüm sertifikalar tarafından paylaşılır. Anahtar kasasındaki tüm sertifikalar için bir olay için belirtilen tüm kişilere bir bildirim gönderilir.  
 
-Bir sertifikanın ilkesi otomatik yenileme olarak ayarlanmışsa, aşağıdaki olaylar hakkında bir bildirim gönderilir.  
+Bir sertifikanın ilkesi otomatik olarak yenilemeye ayarlandıysa, aşağıdaki olaylara bir bildirim gönderilir.  
 
 - Sertifika yenilemeden önce
-- Sertifika yenilemeden sonra, sertifikanın başarıyla yenilenip yenilenmedigini veya bir hata olup olmadığını belirterek, sertifikanın el ile yenilenmesini gerektirir.  
+- Sertifika yenileme sonrasında, sertifikanın başarıyla yenilendiğini veya bir hata olup olmadığını ve sertifikanın el ile yenilenmesini gerektirme.  
 
-  El ile yenilenecek şekilde ayarlanmış bir sertifika ilkesi (yalnızca e-posta), sertifikayı yenileme zamanı geldiğinde bir bildirim gönderilir.  
+  El ile yenilenmek üzere ayarlanmış bir sertifika ilkesi (yalnızca e-posta) olduğunda, sertifikayı yenileme zamanı olduğunda bir bildirim gönderilir.  
 
-## <a name="certificate-access-control"></a>Sertifika Erişim Kontrolü
+## <a name="certificate-access-control"></a>Sertifika Access Control
 
- Sertifikalar için erişim denetimi Key Vault tarafından yönetilir ve bu sertifikaları içeren Key Vault tarafından sağlanır. Sertifikalar için erişim denetimi ilkesi, aynı Anahtar Kasası'ndaki anahtarlar ve sırlar için erişim denetimi ilkelerinden farklıdır. Kullanıcılar, senaryoya uygun segmentasyon ve sertifikaların yönetimini korumak için sertifika tutmak için bir veya daha fazla kasa oluşturabilir.  
+ Sertifikalar için erişim denetimi Key Vault tarafından yönetilir ve bu sertifikaları içeren Key Vault tarafından sağlanır. Sertifikalar için erişim denetimi ilkesi, aynı Key Vault anahtarlar ve gizli diziler için erişim denetimi ilkelerinden farklıdır. Kullanıcılar, senaryoya uygun bir veya daha fazla kasa oluşturarak sertifikaların uygun segmentlerini ve yönetimini korumanıza olanak sağlayabilir.  
 
- Aşağıdaki izinler, temel başına olarak, önemli bir kasadaki denetim girişine erişim sırlarda kullanılabilir ve gizli bir nesnede izin verilen işlemleri yakından yansıtmaktadır:  
+ Aşağıdaki izinler, bir anahtar kasasındaki gizli dizi erişim denetimi girişinde, her bir sorumlu temelinde kullanılabilir ve gizli bir nesne üzerinde izin verilen işlemleri yakından yansıtır:  
 
-- Sertifika yönetimi işlemleri için izinler
-  - *get*: Geçerli sertifika sürümünü veya sertifikanın herhangi bir sürümünü alın 
-  - *liste*: Geçerli sertifikaları veya sertifika sürümlerini listele  
-  - *update*: Sertifikayı güncelleştir
-  - *create*: Key Vault sertifikası oluşturma
-  - *import*: Anahtar Kasa sertifikasına sertifika malzemesi alma
-  - *delete*: Sertifikayı, ilkesini ve tüm sürümlerini silme  
-  - *recover*: Silinen bir sertifikayı kurtarma
-  - *yedekleme*: Bir sertifikayı anahtar kasasında yedekleme
-  - *geri yükleme*: Yedeklenmiş bir sertifikayı anahtar kasasına geri yükleme
-  - *kişileri yönetme*: Anahtar Kasa sertifikası ilgili kişileri yönetme  
-  - *yönetenler*: Key Vault sertifika yetkililerini/ihraççılarını yönetin
-  - *getissuers*: Sertifika yetkilileri / verenler alın
-  - *listissuers*: Sertifika nın yetkili lerini/verenleri listele  
-  - *setissuers*: Key Vault sertifikasının yetkilileri/verenleri oluşturma veya güncelleme  
-  - *deleteissuers*: Key Vault sertifikasının yetkili makamlarını/verenlerini silme  
+- Sertifika yönetimi işlemlerine yönelik izinler
+  - *Get*: geçerli sertifika sürümünü veya bir sertifika sürümünü alın 
+  - *liste*: geçerli sertifikaları veya bir sertifikanın sürümlerini listeleyin  
+  - *güncelleştirme*: bir sertifikayı güncelleştirme
+  - *oluşturma*: Key Vault sertifikası oluşturma
+  - *içeri aktarma*: sertifika malzemesini bir Key Vault sertifikasına aktarma
+  - *Sil*: bir sertifikayı, ilkesini ve tüm sürümlerini silme  
+  - *kurtar*: silinen bir sertifikayı kurtar
+  - *yedekleme*: bir sertifikayı anahtar kasasında yedekleme
+  - *geri yükleme*: yedeklenen sertifikayı bir anahtar kasasına geri yükleme
+  - *managecontacts*: Key Vault sertifikası kişilerini yönetme  
+  - *manageverenler*: Key Vault sertifika yetkililerini/verenler yönetme
+  - *getısers*: bir sertifikanın yetkililerini/verenler al
+  - *listissuers*: bir sertifikanın yetkililerini/verenler listeleyin  
+  - *setısers*: Key Vault sertifikanın yetkililerini/verenler oluşturma veya güncelleştirme  
+  - *deleteverenler*: Key Vault sertifikasının yetkililerini/verenler silme  
  
 - Ayrıcalıklı işlemler için izinler
-  - *temizleme*: Silinmiş bir sertifikayı temizleme (kalıcı olarak silme)
+  - *Temizle*: silinen bir sertifikayı temizle (kalıcı olarak sil)
 
-Daha fazla bilgi [için, Key Vault REST API başvurusundaki Sertifika işlemlerine](/rest/api/keyvault)bakın. İzinlerin oluşturulması hakkında daha fazla bilgi için [Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy) [bkz.](/rest/api/keyvault/vaults/createorupdate)
+Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Anahtar Kasası Hakkında](../general/overview.md)
-- [Anahtarlar, sırlar ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
+- [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Anahtarlar hakkında](../keys/about-keys.md)
 - [Gizli diziler hakkında](../secrets/about-secrets.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)
+- [Geliştirici Kılavuzu Key Vault](../general/developers-guide.md)

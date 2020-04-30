@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Nitro Productivity Suite ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Nitro Productivity Suite arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Nitro üretkenlik paketiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve nitro üretkenlik paketi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,169 +16,169 @@ ms.date: 04/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ca675e43f4d20898d9f97c175da71f8d5c59e4f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81676915"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Öğretici: Nitro Productivity Suite ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Öğretici: Nitro üretkenlik paketiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, Nitro Productivity Suite'i Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Nitro Productivity Suite'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Nitro üretkenlik paketini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Nitro üretkenlik paketini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Nitro Productivity Suite erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Nitro Productivity Suite'te otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portalı.
+* Azure AD 'de Nitro üretkenlik paketine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Nitro üretkenlik Suite 'te otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için gerekli olanlar:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Bir Nitro Verimlilik Suite [Enterprise abonelik.](https://www.gonitro.com/pricing)
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Bir nitro üretkenlik paketi [Kurumsal aboneliği](https://www.gonitro.com/pricing).
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Nitro Productivity **Suite, SP** ve **IDP** tarafından başlatılan SSO'ya destek veriyor.
-* Nitro Productivity **Suite, Just In Time** kullanıcı sağlamayı destekler.
-* Nitro Productivity Suite'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin sızma ve sızma larını gerçek zamanlı olarak koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi koşullu erişimden genişler. Daha fazla bilgi için bkz. [Microsoft Bulut Uygulama Güvenliği ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* Nitro üretkenlik Suite, **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler.
+* Nitro üretkenlik paketi **, tam zamanında** Kullanıcı sağlamayı destekler.
+* Nitro üretkenlik paketini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="add-nitro-productivity-suite-from-the-gallery"></a>Galeriden Nitro Productivity Suite ekleyin
+## <a name="add-nitro-productivity-suite-from-the-gallery"></a>Galeriden Nitro üretkenlik paketini ekleme
 
-Nitro Productivity Suite'in Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Nitro Productivity Suite eklemeniz gerekir.
+Nitro üretkenlik Suite 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden Nitro üretkenlik paketini, yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabı veya kişisel bir Microsoft hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Sol bölmede Azure **Etkin Dizini'ni**seçin.
-1. Kurumsal **Uygulamalar'a**gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni bir uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Nitro Productivity Suite** yazın.
-1. Sonuçlardan **Nitro Productivity Suite'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol bölmede **Azure Active Directory**' yi seçin.
+1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Nitro üretkenlik Suite** yazın.
+1. Sonuçlardan **Nitro üretkenlik paketi** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-nitro-productivity-suite"></a>Nitro Productivity Suite için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-nitro-productivity-suite"></a>Nitro üretkenlik paketi için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Nitro Productivity Suite ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Nitro Productivity Suite'teki ilgili kullanıcı arasında bağlantılı bir ilişki kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Nitro üretkenlik PAKETIYLE Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Nitro üretkenlik Suite içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
-Azure AD SSO'yu Nitro Productivity Suite ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Nitro üretkenlik paketiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)
-    1. Azure AD oturum açma'yı B.Simon ile test etmek için [bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için [Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)
-1. [Nitro Productivity Suite SSO'yu](#configure-nitro-productivity-suite-sso) uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için yapılandırın.
-    1. Kullanıcının Azure AD gösterimine bağlı Nitro Productivity Suite'te B.Simon'ın bir örneğine sahip olmak için [bir Nitro Productivity Suite test kullanıcısı oluşturun.](#create-a-nitro-productivity-suite-test-user)
-1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için [SSO'yu test](#test-sso) edin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
+    1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
+    1. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için [Nitro üretkenlik PAKETI SSO 'Yu yapılandırın](#configure-nitro-productivity-suite-sso) .
+    1. Kullanıcının Azure AD gösterimine bağlı olarak Nitro üretkenlik Suite 'te B. Simon 'a karşılık gelen bir [Nitro üretkenlik paketi test kullanıcısı oluşturun](#create-a-nitro-productivity-suite-test-user) .
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için [test SSO 'su](#test-sso) .
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Nitro Productivity Suite** uygulama tümleştirme sayfasında **Yönet** bölümünü bulun. **Tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML İmza Sertifikası** bölümünde **Sertifika (Base64)** bulun. Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. [Azure Portal](https://portal.azure.com/), **Nitro üretkenlik paketi** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Imzalama sertifikası** bölümünde, **sertifika (base64)** bulun. Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![İndirme bağlantısı vurgulanmış SAML İmzalama Sertifikası bölümünün ekran görüntüsü](common/certificatebase64.png)
+    ![Indirme bağlantısı vurgulanmış şekilde SAML Imzalama sertifikası bölümünün ekran görüntüsü](common/certificatebase64.png)
     
-1. Nitro **Productivity Suite'i Ayarla** bölümünde, **Giriş URL'sinin**yanındaki kopya simgesini seçin.
+1. **Nitro üretkenlik paketini ayarla** bölümünde, **oturum açma URL 'sinin**yanındaki Kopyala simgesini seçin.
     
-    ![URL'ler ve kopyalama simgeleri vurgulanmış Nitro Productivity Suite bölümünün ekran görüntüsü](common/copy-configuration-urls.png)
+    ![URL 'Ler ve kopya simgeleri vurgulanmış şekilde, Nitro üretkenlik Suite 'i ayarlama ekranının ekran görüntüsü](common/copy-configuration-urls.png)
     
-1. Kurumsal **Ayarlar** sayfasındaki [Nitro Admin portalında](https://admin.gonitro.com/) **Tek Oturum Açma** bölümünü bulun. **Kurulum SAML SSO'u**seçin.
+1. [Nitro yönetim portalındaki](https://admin.gonitro.com/) **Kurumsal ayarlar** sayfasında, **Çoklu oturum açma** bölümünü bulun. **SAML SSO kurulumunu ayarla**' yı seçin.
 
-    a. **Giriş URL'sini** önceki adımdan **URL'ye** kaydedin.
+    a. Önceki adımdan **oturum açma** URL 'Sini, **oturum açma URL 'si** alanına yapıştırın.
     
-    b. **X509 İmzalama Sertifikası** alanında önceki adımdan **Sertifikayı (Base64)** yükleyin.
+    b. **Sertifikayı (base64)** **x509 imza sertifikası** alanındaki önceki adımdan yükleyin.
     
     c. **Gönder**’i seçin.
     
-    d. **Tek Oturum Aç'ı Etkinleştir'i**seçin.
+    d. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
 
-1. [Azure portalına](https://portal.azure.com/)geri dön. **SAML sayfasıyla Tek Oturum** Açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için kalem simgesini seçin.
+1. [Azure Portal](https://portal.azure.com/)dönün. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
-   ![Saml sayfası yla Tek Oturum Açma'nın ekran görüntüsü, kalem simgesi vurgulanmış](common/edit-urls.png)
+   ![Kalem simgesi vurgulanmış şekilde, SAML ile çoklu oturum açmayı ayarlama ekran görüntüsü](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, uygulamayı **IDP** başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. Tanımlayıcı **metin** kutusunda, [Nitro Admin portalından](https://admin.gonitro.com/) **SAML Entity ID** alanını kopyalayıp yapıştırın. Aşağıdaki desen olmalıdır:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
+    a. **Tanımlayıcı** metin kutusunda, [Nitro yönetim PORTALıNDAN](https://admin.gonitro.com/) **SAML varlık kimliği** alanını kopyalayıp yapıştırın. Aşağıdaki düzende olmalıdır:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
 
-    b. **Yanıtla URL** metin kutusunda, [Nitro Admin portalından](https://admin.gonitro.com/) **ACS URL** alanını kopyalayıp yapıştırın. Aşağıdaki desen olmalıdır:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
+    b. **Yanıt URL 'si** metin kutusunda, [Nitro yönetim portalından](https://admin.gonitro.com/) **ACS URL 'si** alanını kopyalayıp yapıştırın. Aşağıdaki düzende olmalıdır:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
-1. **Ek URL'ler ayarla'yı**seçin ve uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı gerçekleştirin:
+1. **Ek URL 'Ler ayarla**' yı seçin ve uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna URL'yi yazın:`https://sso.gonitro.com/login`
+    **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:`https://sso.gonitro.com/login`
 
 1. **Kaydet**’i seçin.
 
-1. Nitro Productivity Suite uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren, SAML iddialarının belirli bir biçimde olmasını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. Nitro üretkenlik paketi uygulaması, SAML onayları 'nin belirli bir biçimde olmasını bekler, bu da SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![Varsayılan özniteliklerin ekran görüntüsü](common/default-attributes.png)
 
-1. Önceki özniteliklere ek olarak, Nitro Productivity Suite uygulaması SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler önceden doldurulmuş, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Önceki özniteliklere ek olarak, Nitro üretkenlik Suite uygulaması, SAML yanıtına birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
     
     | Adı  |  Kaynak özniteliği|
     | ---------------| --------------- |
-    | çalışanNumarası |  user.objectid |
+    | employeeNumber |  User. ObjectID |
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure Portal sol bölmeden,**Kullanıcılar** >  **Azure Active Directory** > **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından parolayı aşağı yazın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu işaretleyin ve parolayı aşağı yazın.
    1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Nitro Productivity Suite'e erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlarsınız.
+Bu bölümde, Nitro üretkenlik paketine erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar** > **Tüm uygulamaları**seçin.
-1. Uygulama listesinde **Nitro Productivity Suite'i**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Nitro üretkenlik paketi**' ni seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   ![Kullanıcılar ve gruplar vurgulanırken Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
+   ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin. Ardından, **Atama Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
+1. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kullanıcı ekle ile Kullanıcılar ve gruplar sayfasının ekran görüntüsü](common/add-assign-user.png)
+    ![Kullanıcılar ve gruplar sayfasının ekran görüntüsü, Kullanıcı Ekle vurgulanmış olarak](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinden **B.Simon'ı** seçin. Ardından ekranın alt kısmında **Seç'i** seçin.
-1. SAML iddiasında, **Rolü Seç** iletişim kutusunda herhangi bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ardından ekranın alt kısmında **Seç'i** seçin.
-1. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, Kullanıcı listesinden **B. Simon** öğesini seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
+1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
+1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
-## <a name="configure-nitro-productivity-suite-sso"></a>Nitro Productivity Suite SSO'da yapılandırın
+## <a name="configure-nitro-productivity-suite-sso"></a>Nitro üretkenlik paketi SSO 'SU yapılandırma
 
-Nitro Productivity Suite tarafında tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Base64)** ve azure portalından uygun kopyalanmış URL'leri [Nitro Productivity Suite destek ekibine](https://www.gonitro.com/support)gönderin. Destek ekibi, SAML SSO bağlantısının her iki tarafta da düzgün şekilde ayarlanınmasını sağlar.
+Nitro üretkenlik Suite tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış url 'Leri Azure Portal [Nitro üretkenlik paketi destek ekibine](https://www.gonitro.com/support)gönderin. Destek ekibi, SAML SSO bağlantısının her iki tarafında da düzgün şekilde ayarlanmış olmasını sağlar.
 
-### <a name="create-a-nitro-productivity-suite-test-user"></a>Nitro Productivity Suite test kullanıcısı oluşturma
+### <a name="create-a-nitro-productivity-suite-test-user"></a>NIRO üretkenlik paketi test kullanıcısı oluşturma
 
-Nitro Productivity Suite, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. İşlem yapmak için ek bir işlem yoktur. Bir kullanıcı Nitro Productivity Suite'te zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Nitro üretkenlik paketi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Yapmanız gereken başka bir eylem yoktur. Bir kullanıcı zaten Nitro üretkenlik paketinde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panel'i kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim paneli ' ni kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Panel'deki Nitro Productivity Suite döşemesini seçtiğinizde, Otomatik olarak SSO'yu kurduğunuz Nitro Productivity Suite'te oturum açmış olursunuz. Daha fazla bilgi [için, Windows Portalım portalından Oturum Aç ve uygulamaları başlat'](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)a bakın.
+Erişim paneli 'nde Nitro üretkenlik paketi kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Nitro üretkenlik paketinde otomatik olarak oturum açtınız demektir. Daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Nitro Productivity Suite'i deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Nitro üretkenlik paketini deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Nitro Productivity Suite'i gelişmiş görünürlük ve kontrollerle koruyun](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle Nitro üretkenlik paketini koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede dönüşümü seçme
-description: Azure Veri Fabrikası haritalama veri akışı Dönüştürme'yi seçin
+title: Eşleme veri akışında dönüştürmeyi seçin
+description: Azure Data Factory eşleme veri akışı dönüşümü seçme
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/18/2020
 ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686489"
 ---
-# <a name="select-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede dönüşümü seçme
+# <a name="select-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi seçin
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Sütunları yeniden adlandırmak, bırakmak veya yeniden sıralamak için select dönüşümünü kullanın. Bu dönüştürme satır verilerini değiştirmez, ancak hangi sütunların aşağı yayıltıldığı seçilir. 
+Sütunları yeniden adlandırmak, bırakmak veya yeniden sıralamak için seçme dönüşümünü kullanın. Bu dönüşüm satır verilerini değiştirmez, ancak hangi sütunların aşağı akış olarak dağıtılacağını seçer. 
 
-Belirli bir dönüştürmede, kullanıcılar sabit eşlemeler belirtebilir, kural tabanlı eşleme yapmak için desenleri kullanabilir veya otomatik eşlemesini etkinleştirebilir. Sabit ve kural tabanlı eşlemeler her ikisi de aynı seçim dönüşümü içinde kullanılabilir. Bir sütun tanımlı eşlemelerden biriyle eşleşmiyorsa, sütun bırakılır.
+Bir SELECT dönüşümünde, kullanıcılar sabit eşlemeler belirtebilir, kural tabanlı eşleme yapmak için desenleri kullanabilir veya otomatik eşlemeyi etkinleştirebilir. Hem sabit hem de kural tabanlı eşlemeler aynı seçim dönüştürmesi içinde kullanılabilir. Bir sütun, tanımlı eşlemelerden biriyle eşleşmezse, bırakılır.
 
 ## <a name="fixed-mapping"></a>Sabit eşleme
 
-Projeksiyonunuzda tanımlanan 50'den az sütun varsa, tanımlanan tüm sütunlar varsayılan olarak sabit bir eşleme yle olur. Sabit bir eşleme tanımlı, gelen sütun alır ve tam bir ad eşler.
+Projeksiyonda tanımlanmış 50 ' den az sütun varsa, tüm tanımlı sütunlar varsayılan olarak sabit bir eşlemeye sahip olur. Sabit eşleme tanımlı, gelen sütununu alır ve tam bir adı eşleştirir.
 
 ![Sabit eşleme](media/data-flow/fixedmapping.png "Sabit eşleme")
 
 > [!NOTE]
-> Sürüklenen bir sütunu sabit bir eşleçle eşlenemez veya yeniden adlandıramazsınız
+> Sabit eşleme kullanarak bir düzeltebilecekler sütununu eşleyemezsiniz veya yeniden adlandıramazsınız
 
 ### <a name="mapping-hierarchical-columns"></a>Hiyerarşik sütunları eşleme
 
-Sabit eşlemeler, hiyerarşik bir sütunun alt sütununun üst düzey bir sütunla eşlenebilmek için kullanılabilir. Tanımlı bir hiyerarşiniz varsa, bir alt sütun seçmek için sütun açılır dosyasını kullanın. Select dönüşümü, alt sütunun değeri ve veri türünü içeren yeni bir sütun oluşturur.
+Sabit eşlemeler, hiyerarşik bir sütunun alt sütununu en üst düzey bir sütuna eşlemek için kullanılabilir. Tanımlı bir hiyerarşiniz varsa, sütun açılan listesini kullanarak bir alt sütun seçin. Seçim dönüşümü, alt sütunun değeri ve veri türü ile yeni bir sütun oluşturur.
 
-![hiyerarşik haritalama](media/data-flow/select-hierarchy.png "hiyerarşik haritalama")
+![hiyerarşik eşleme](media/data-flow/select-hierarchy.png "hiyerarşik eşleme")
 
 ## <a name="rule-based-mapping"></a>Kural tabanlı eşleme
 
-Aynı anda çok sayıda sütunun eşlemi yapmak veya sürüklenen sütunları akış aşağı aktarmak istiyorsanız, sütun desenlerini kullanarak eşlemelerinizi tanımlamak için kural tabanlı eşleme kullanın. , `name`, `type` `stream`ve `position` sütunlara göre eşleştirin. Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimine sahip olabilirsiniz. Varsayılan olarak, 50'den fazla sütuna sahip tüm projeksiyonlar, her sütunda eşleşen ve giriş adı olan kural tabanlı bir eşleme için varsayılan olarak. 
+Birden çok sütunu aynı anda eşlemek veya düzeltebilecekler sütunları aşağı akış olarak geçirmek istiyorsanız, sütun düzenlerini kullanarak eşlemelerinizi tanımlamak için kural tabanlı eşleme kullanın. ,,, Ve `name` `position` sütunlarını `type`temel `stream`alarak eşleştirin. Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. Varsayılan olarak, 50 'den büyük sütunları olan tüm projeksiyonlar varsayılan olarak, her sütunda eşleşen ve giriş yapan adı izleyen kural tabanlı bir eşleme olur. 
 
-Kural tabanlı eşleme eklemek için **eşleme ekle'yi** tıklatın ve **Kural tabanlı eşlemi**seçin.
+Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
 
-![kural tabanlı haritalama](media/data-flow/rule2.png "Kural tabanlı eşleme")
+![kural tabanlı eşleme](media/data-flow/rule2.png "Kural tabanlı eşleme")
 
-Her kural tabanlı eşleme iki giriş gerektirir: eşlenen her sütunla eşleşecek koşul ve ne adlandırılabilmek. Her iki değer de [ifade oluşturucu](concepts-data-flow-expression-builder.md)aracılığıyla giriş yapılır. Sol ifade kutusuna boolean maç durumunuzu girin. Sağ ifade kutusunda, eşleşen sütunun eşleneceğini belirtin.
+Her kural tabanlı eşleme için iki giriş gerekir: ile eşleşmesi gereken durum ve her eşlenmiş sütunun adı. Her iki değer de [ifade Oluşturucusu](concepts-data-flow-expression-builder.md)aracılığıyla yapılır. Sol ifade kutusunda, Boolean eşleşme koşulunuz girin. Sağ ifade kutusunda, eşleşen sütunun ne eşleştirileceği belirtin.
 
-![kural tabanlı haritalama](media/data-flow/rule-based-mapping.png "Kural tabanlı eşleme")
+![kural tabanlı eşleme](media/data-flow/rule-based-mapping.png "Kural tabanlı eşleme")
 
-Eşleşen `$$` bir sütunun giriş adına başvurmak için sözdizimini kullanın. Yukarıdaki resmi örnek olarak kullanarak, bir kullanıcının adları altı karakterden kısa olan tüm dize sütunlarında eşleşmek istediğini söyleyin. Gelen bir sütun adlandırılmışsa, `test`ifade `$$ + '_short'` sütunu `test_short`yeniden adlandıracaktır. Var olan tek eşleme buysa, koşulu karşılamayan tüm sütunlar çıktı edilen verilerden bırakılır.
+Eşleşen `$$` bir sütunun giriş adına başvurmak için söz dizimini kullanın. Yukarıdaki görüntünün bir örnek olarak kullanılması, bir kullanıcının adı altı karakterden kısa olan tüm dize sütunlarında eşleştirmek istediğini varsayalım. Gelen bir sütun adlandırıldıysa `test`, ifadesi `$$ + '_short'` sütunu `test_short`yeniden adlandırır. Var olan tek eşleme varsa, koşulu karşılamayan tüm sütunlar, outputfrom verilerinden bırakılır.
 
-Desenler, sürüklenen ve tanımlanan sütunlar ile eşleşir. Hangi tanımlanmış sütunların bir kuralla eşlenerek eşlendirileni görmek için kuralın yanındaki gözlük simgesini tıklatın. Veri önizlemesini kullanarak çıktınızı doğrulayın.
+Desenler hem düzeltebilecekler hem de tanımlı sütunlarla eşleşir. Hangi tanımlı sütunların bir kuralla eşlendiğini görmek için kuralın yanındaki göz gözlük simgesine tıklayın. Veri önizlemeyi kullanarak çıktlarınızı doğrulayın.
 
-### <a name="regex-mapping"></a>Regex haritalama
+### <a name="regex-mapping"></a>Regex eşleme
 
-Aşağı köşeli ayraç simgesini tıklattığınızda, bir regex eşleme koşulu belirtebilirsiniz. Regex eşleme koşulu, belirtilen regex koşuluyla eşleşen tüm sütun adlarıyla eşleşir. Bu standart kural tabanlı eşlemeler ile birlikte kullanılabilir.
+Aşağı köşeli çift ayraç simgesine tıklarsanız, bir Regex-Mapping koşulu belirtebilirsiniz. Bir Regex eşleme koşulu, belirtilen Regex koşuluyla eşleşen tüm sütun adlarıyla eşleşir. Bu, standart kural tabanlı eşlemelerle birlikte kullanılabilir.
 
-![kural tabanlı haritalama](media/data-flow/regex-matching.png "Kural tabanlı eşleme")
+![kural tabanlı eşleme](media/data-flow/regex-matching.png "Kural tabanlı eşleme")
 
-Yukarıdaki örnek, regex `(r)` deseni veya küçük harf r içeren herhangi bir sütun adı ile eşleşir. Standart kural tabanlı eşleme benzer şekilde, eşleşen tüm sütunlar sözdizimi kullanılarak `$$` sağdaki koşula göre değiştirilir.
+Yukarıdaki örnek, Regex düzeniyle `(r)` veya küçük harf içeren bir sütun adı ile eşleşir. Standart kural tabanlı eşlemeye benzer şekilde, eşleşen tüm sütunlar, sözdizimi kullanılarak `$$` sağdaki koşul tarafından değiştirilir.
 
-Sütun adınızda birden çok regex eşleşmesi varsa, `$n` 'n' hangi eşleşmeyi ifade eden yeri kullanarak belirli eşleşmelere başvurabilirsiniz. Örneğin, '$2' bir sütun adı içindeki ikinci eşleşmeyi ifade eder.
+Sütun adınızla birden çok Regex eşleşmesi varsa, ' n ' öğesine karşılık gelen eşleşme ' ı kullanarak `$n` belirli eşleşmelere başvurabilirsiniz. Örneğin, ' $2 ', bir sütun adı içindeki ikinci eşleşmeyi ifade eder.
 
 ### <a name="rule-based-hierarchies"></a>Kural tabanlı hiyerarşiler
 
-Tanımlı projeksiyonunuzun bir hiyerarşisi varsa, hiyerarşialt sütunlarını eşlemek için kural tabanlı eşleme yi kullanabilirsiniz. Eşlendirme yapmak istediğiniz alt sütunları eşleyen eşleşen bir koşul ve karmaşık sütun belirtin. Eşleşen her alt sütun, sağtarafta belirtilen 'Ad olarak' kuralı kullanılarak çıktılanır.
+Tanımlı projeksiyonda bir hiyerarşisi varsa, hiyerarşiler alt sütunlarını eşlemek için kural tabanlı eşleme kullanabilirsiniz. Eşleşen bir koşul ve alt sütunlarını eşlemek istediğiniz karmaşık sütunu belirtin. Sağ tarafta belirtilen ' ad As ' kuralı kullanılarak eşleşen her alt sütun silinir.
 
-![kural tabanlı haritalama](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
+![kural tabanlı eşleme](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
 
-Yukarıdaki örnek karmaşık sütunun `a`tüm alt sütunlarında eşleşir. `a`iki alt `b` sütun `c`içerir ve . Çıkış şeması iki sütun `b` içerecektir `c` ve 'Ad as' `$$`koşulu olarak.
+Yukarıdaki örnek, karmaşık sütunun `a`tüm alt sütunlarında eşleşir. `a`iki alt sütun `b` ve `c`içerir. Çıkış şeması iki sütun `b` içerir ve `c` ' ad As ' koşulu olur. `$$`
 
-### <a name="parameterization"></a>Parameterization
+### <a name="parameterization"></a>Parametreleştirme
 
-Kural tabanlı eşlemi kullanarak sütun adlarını parametreleştirebilirsiniz. Gelen sütun ```name``` adlarını bir parametreyle eşleştirmek için anahtar kelimeyi kullanın. Örneğin, bir veri akışı parametreniz ```mycolumn```varsa, ```mycolumn```'ye eşit olan herhangi bir sütun adıyla eşleşen bir kural oluşturabilirsiniz. Eşleşen sütunu 'iş anahtarı' gibi sabit kodlanmış bir dizeyle yeniden adlandırabilir ve açıkça başvurulayabilirsiniz. Bu örnekte, eşleşen ```name == $mycolumn``` koşul ve ad koşulu 'iş anahtarı'. 
+Kural tabanlı eşlemeyi kullanarak sütun adlarını parametreleştirebilirsiniz. Gelen sütun adlarını ```name``` bir parametreye göre eşleştirmek için anahtar sözcüğünü kullanın. Örneğin, bir veri akışı parametresi ```mycolumn```varsa, şuna eşit olan herhangi bir sütun adıyla eşleşen bir kural oluşturabilirsiniz. ```mycolumn``` Eşleşen sütununu ' iş anahtarı ' gibi sabit kodlanmış bir dize olarak yeniden adlandırabilir ve açıkça başvurabilirsiniz. Bu örnekte, eşleşen koşul ```name == $mycolumn``` ve ad koşulu ' iş anahtarı ' olur. 
 
-## <a name="auto-mapping"></a>Otomatik haritalama
+## <a name="auto-mapping"></a>Otomatik eşleme
 
-Bir seçim dönüşümü eklerken, Otomatik eşleme kaydırıcısı değiştirilerek **Otomatik eşleme** etkinleştirilebilir. Otomatik eşleme yle, select dönüşümü yinelenenler hariç tüm gelen sütunları girişleriyle aynı ada eşler. Bu, sürüklenen sütunları içerir, bu da çıktı verilerinin şemanızda tanımlanmamış sütunlar içerebileceği anlamına gelir. Sürüklenen sütunlar hakkında daha fazla bilgi için [şema kaymasına](concepts-data-flow-schema-drift.md)bakın.
+Bir seçme dönüşümü **eklenirken otomatik eşleme** kaydırıcı, otomatik eşleme kaydırıcısının geçerek etkinleştirilebilir. Otomatik eşleme ile, select dönüşümü, içerdikleri tüm gelen sütunları, içerdikleri aynı ada sahip olarak eşleştirir. Bu, düzeltebilecekler sütunları içerir. Bu, çıktı verilerinde şemada tanımlı olmayan sütunlar içerebilen anlamına gelir. Düzeltebilecekler sütunları hakkında daha fazla bilgi için bkz. [Schema DRFT](concepts-data-flow-schema-drift.md).
 
-![Otomatik haritalama](media/data-flow/automap.png "Otomatik haritalama")
+![Otomatik eşleme](media/data-flow/automap.png "Otomatik eşleme")
 
-Otomatik eşleme açıkken, select dönüşümü atlama yinelenen ayarlarını onurlandırır ve varolan sütunlar için yeni bir diğer ad sağlar. Diğer ad, aynı akışta ve kendi kendine birleştirme senaryolarında birden çok birleştirme veya arama yaparken yararlıdır. 
+Üzerinde otomatik eşleme ile, select dönüşümü yineleme ayarlarını atla ' yı kabul eder ve var olan sütunlar için yeni bir diğer ad sağlar. Diğer ad, aynı akışta ve kendi kendine birleştirme senaryolarında birden çok birleştirme veya arama yaparken faydalıdır. 
 
 ## <a name="duplicate-columns"></a>Yinelenen sütunlar
 
-Varsayılan olarak, select dönüşümü hem giriş hem de çıktı projeksiyonundaki yinelenen sütunları düşürür. Yinelenen giriş sütunları genellikle birleştirme ve arama dönüşümlerinden gelir ve sütun adlarının birleşimin her iki tarafında çoğaltılır. İki farklı giriş sütununu aynı ada eşlerseniz yinelenen çıktı sütunları oluşabilir. Onay kutusunu değiştirerek yinelenen sütunları bırakıp bırakmayacağınız veya aktarıp aktarmayacağınızı seçin.
+Varsayılan olarak, select dönüşümü hem giriş hem de çıkış projeksiyonundaki yinelenen sütunları bırakır. Yinelenen giriş sütunları genellikle, birleştirmenin her tarafında sütun adlarının çoğaltılacağı JOIN ve Lookup dönüşümlerinden gelir. İki farklı giriş sütununu aynı ada eşledikten sonra yinelenen çıkış sütunları oluşabilir. Onay kutusunu değiştirerek yinelenen sütunlarda bırakma veya geçiş yapılıp yapılmayacağını seçin.
 
-![Yinelenenleri Atla](media/data-flow/select-skip-dup.png "Yinelenenleri Atla")
+![Yinelenenleri atla](media/data-flow/select-skip-dup.png "Yinelenenleri atla")
 
-## <a name="ordering-of-columns"></a>Sütun ların sıralanması
+## <a name="ordering-of-columns"></a>Sütunların sıralaması
 
-Eşleme sırası çıktı sütunlarının sırasını belirler. Bir giriş sütunu birden çok kez eşlenirse, yalnızca ilk eşleme onurlanır. Yinelenen sütun düşmesi için ilk eşleşme tutulur.
+Eşleşmelerin sırası, çıkış sütunlarının sırasını belirler. Bir giriş sütunu birden çok kez eşlenmişse, yalnızca ilk eşleme kabul edilir. Yinelenen bir sütun bırakma için, ilk eşleşme tutulacak.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -112,9 +112,9 @@ Eşleme sırası çıktı sütunlarının sırasını belirler. Bir giriş sütu
 
 ### <a name="example"></a>Örnek
 
-Aşağıda, seçili bir eşleme ve veri akışı komut dosyasına bir örnek verilmiştir:
+Aşağıda, bir seçme eşlemesinin ve veri akışı betiğinin bir örneği verilmiştir:
 
-![Komut dosyası örneğini seçin](media/data-flow/select-script-example.png "Komut dosyası örneğini seçin")
+![Betik örneğini seçin](media/data-flow/select-script-example.png "Betik örneğini seçin")
 
 ```
 DerivedColumn1 select(mapColumn(
@@ -130,4 +130,4 @@ DerivedColumn1 select(mapColumn(
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Sütunları yeniden adlandırmak, yeniden sıralamak ve diğer ad sütunları seçmek için Seç'i kullandıktan sonra, verilerinizi bir veri deposuna çekmek için [Lavabo dönüşümünü](data-flow-sink.md) kullanın.
+* Yeniden adlandırma, yeniden sıralama ve diğer ad Sütunlarını Seç ' i kullandıktan sonra, verileri bir veri deposuna eklemek için [Havuz dönüştürmeyi](data-flow-sink.md) kullanın.

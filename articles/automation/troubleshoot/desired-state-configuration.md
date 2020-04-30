@@ -1,6 +1,6 @@
 ---
-title: Sorun Giderme Azure Otomasyon Durumu Yapılandırması (DSC)
-description: Bu makalede, Sorun Giderme Azure Otomasyon Durumu Yapılandırması (DSC) hakkında bilgi sağlar.
+title: Azure Otomasyonu durum yapılandırması (DSC) sorunlarını giderme
+description: Bu makale, Azure Otomasyonu durum yapılandırması (DSC) sorunlarını giderme hakkında bilgi sağlar.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -10,54 +10,54 @@ ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 4c045e110e21ed201278dcd84f38cb4a376ae8db
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679315"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration-dsc"></a>Azure Otomasyon Durumu Yapılandırması (DSC) ile ilgili sorun giderme sorunları
+# <a name="troubleshoot-issues-with-azure-automation-state-configuration-dsc"></a>Azure Otomasyonu durum yapılandırması (DSC) sorunlarını giderme
 
-Bu makalede, Azure Otomasyon Durumu Yapılandırması'nda (DSC) yapılandırmaları derlerken veya dağıtırken ortaya çıkan sorun giderme sorunları hakkında bilgi verilmektedir.
+Bu makalede, Azure Otomasyonu durum yapılandırması 'nda (DSC) yapılandırmaları derlerken veya dağıttığınızda ortaya çıkan sorunları gidermeye yönelik bilgiler sağlanmaktadır.
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](../automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="diagnosing-an-issue"></a>Bir sorunu tanılama
 
-Yapılandırma için bir derleme veya dağıtım hatası aldığınızda, sorunu tanılamanıza yardımcı olacak birkaç adım aşağıda verebilirsiniz.
+Yapılandırma için bir derleme veya dağıtım hatası aldığınızda, sorunu tanılamanıza yardımcı olacak birkaç adım aşağıda verilmiştir.
 
-### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. Yapılandırmanızın yerel makinede başarılı bir şekilde derlediğinden emin olun
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. yapılandırmanızın yerel makinede başarıyla derlendiğinden emin olun
 
-Azure Otomasyon Durumu Yapılandırması (DSC), PowerShell İstenen Durum Yapılandırması (DSC) üzerine kuruludur. [PowerShell DSC Dokümanları'nda](https://docs.microsoft.com/powershell/scripting/overview)DSC dili ve sözdizimi için belgeleri bulabilirsiniz.
+Azure Otomasyonu durum yapılandırması (DSC), PowerShell Istenen durum yapılandırması (DSC) üzerine kurulmuştur. DSC dilinin ve sözdiziminin belgelerini [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)' da bulabilirsiniz.
 
-Yerel makinenizde bir DSC yapılandırması derleyerek, örneğin sık karşılaşılan hataları keşfedebilir ve çözümleyebilirsiniz:
+Yerel makinenizde bir DSC yapılandırması derleyerek, şu gibi yaygın hataları bulabilir ve çözebilirsiniz:
 
    - Eksik modüller
    - Sözdizimi hataları
    - Mantık hataları
 
-### <a name="2-view-dsc-logs-on-your-node"></a>2. Düğümünüzdeki DSC günlüklerini görüntüleyin
+### <a name="2-view-dsc-logs-on-your-node"></a>2. düğümünüz için DSC günlüklerini görüntüleyin
 
-Yapılandırmanız başarılı bir şekilde derlenmişse, ancak bir düğüme uygulandığında başarısız olursa, DSC günlüklerinde ayrıntılı bilgileri bulabilirsiniz. Bu günlükleri nerede bulacağınız hakkında bilgi için [DSC Olay Günlükleri nerede](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)dir.
+Yapılandırmanız başarıyla derlenir, ancak bir düğüme uygulandığında başarısız olursa DSC günlüklerinde ayrıntılı bilgileri bulabilirsiniz. Bu günlüklerin nerede bulunacağı hakkında daha fazla bilgi için bkz. [WHERE DSC olay günlükleri](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) modülü, DSC günlüklerinden ayrıntılı bilgileri ayrıştmanıza yardımcı olabilir. Desteğe başvurursanız, sorununuzu tanılamak için bu günlükleri gerektirirler.
+[Xdscdiagnostics](https://github.com/PowerShell/xDscDiagnostics) modülü DSC günlüklerinden ayrıntılı bilgileri Ayrıştırmada size yardımcı olabilir. Desteğe başvurursanız, bu günlüklere sorununuzu tanımaları gerekir.
 
-Modülü, kararlı `xDscDiagnostics` [sürüm modülünde](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)bulunan yönergeleri kullanarak yerel makinenize yükleyebilirsiniz.
+`xDscDiagnostics` [Kalıcı sürüm modülünü yüklerken](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)bulunan yönergeleri kullanarak modülü yerel makinenize yükleyebilirsiniz.
 
-`xDscDiagnostics` Modülü Azure makinenize yüklemek için [Invoke-AzVMRunCommand'ı](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)kullanın. [Windows VM'nizde PowerShell komut dosyalarında](../../virtual-machines/windows/run-command.md)bulunan adımları Run Komutu ile izleyerek Azure portalındaki **Çalıştır komutseçeneğini** de kullanabilirsiniz.
+`xDscDiagnostics` Modülü Azure makinenize yüklemek için [Invoke-azvmruncommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)komutunu kullanın. [WINDOWS sanal makinenizde Çalıştır komutuyla PowerShell betikleri çalıştırma](../../virtual-machines/windows/run-command.md)bölümünde bulunan adımları Izleyerek Azure Portal **Çalıştır komutunu** da kullanabilirsiniz.
 
-**xDscDiagnostics**kullanma hakkında bilgi için bkz: [DSC günlüklerini analiz etmek için xDscDiagnostics'i kullanma.](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs) Ayrıca bakınız [xDscDiagnostics Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+**Xdscdiagnostics**kullanımı hakkında bilgi için bkz. [DSC günlüklerini çözümlemek Için xdscdiagnostics kullanma](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Ayrıca bkz. [Xdscdiagnostics cmdlet 'leri](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
-### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Düğümlerin ve Otomasyon çalışma alanının gerekli modüllere sahip olduğundan emin olun
+### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. düğümlerin ve Otomasyon çalışma alanının gerekli modüller içerdiğinden emin olun
 
-DSC düğüme yüklenen modüllere bağlıdır. Azure Otomasyon Durumu Yapılandırması'nı kullanırken, [İçe Aktarma Modülleri'ndeki](../shared-resources/modules.md#importing-modules)adımları kullanarak gerekli modülleri Otomasyon hesabınıza aktarın. Yapılandırmalar, modüllerin belirli sürümlerine de bağımlılık sağlayabilir. Daha fazla bilgi için [Sorun Giderme modüllerine](shared-resources.md#modules)bakın.
+DSC, düğümde yüklü olan modüllere bağlıdır. Azure Otomasyonu durum yapılandırması kullanılırken, [Içeri aktarma modüllerindeki](../shared-resources/modules.md#importing-modules)adımları kullanarak gerekli modülleri Otomasyon hesabınıza aktarın. Yapılandırmaların belirli modül sürümlerine de bağımlılığı olabilir. Daha fazla bilgi için bkz. [Modül sorunlarını giderme](shared-resources.md#modules).
 
-## <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>Senaryo: Özel karakterleriçeren bir yapılandırma portaldan silinemez
+## <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>Senaryo: özel karakterler içeren bir yapılandırma portaldan silinemiyor
 
 ### <a name="issue"></a>Sorun
 
-Portaldan bir DSC yapılandırmasını silmeye çalışırken aşağıdaki hatayı görürsünüz:
+Portaldan bir DSC yapılandırmasını silmeye çalışırken şu hatayı görürsünüz:
 
 ```error
 An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
@@ -69,13 +69,13 @@ Bu hata, çözülmesi planlanan geçici bir sorundur.
 
 ### <a name="resolution"></a>Çözüm
 
-Yapılandırmayı silmek için cmdlet olanhttps://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 [Remove-AzAutomationDscConfiguration]'ı kullanın.
+Yapılandırmayı silmek için [Remove-AzAutomationDscConfiguration]https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 (cmdlet 'ini kullanın.
 
-### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>Senaryo: Dsc Aracısını kaydettiremedi
+### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>Senaryo: DSC aracısının kaydı yapılamadı
 
 ### <a name="issue"></a>Sorun
 
-[Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) veya başka bir DSC cmdlet olduğunda, hata alırsınız:
+[Set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) veya başka bir DSC cmdlet 'i olduğunda şu hatayı alırsınız:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -90,17 +90,17 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata normalde bir güvenlik duvarı, makinenin proxy sunucusunun arkasında olması veya diğer ağ hatalarından kaynaklanır.
+Bu hata, normalde bir güvenlik duvarının, bir proxy sunucusunun arkasında olduğu makinenin veya diğer ağ hatalarının oluşmasına neden olur.
 
 ### <a name="resolution"></a>Çözüm
 
-Makinenizin DSC için uygun uç noktalara erişebilene sahip olduğunu doğrulayın ve yeniden deneyin. Gerekli bağlantı noktaları ve adreslerin listesi için [ağ planlamasına](../automation-dsc-overview.md#network-planning) bakın
+Makinenizin DSC için uygun uç noktalara erişimi olduğunu doğrulayın ve yeniden deneyin. Gereken bağlantı noktaları ve adreslerin listesi için bkz. [ağ planlama](../automation-dsc-overview.md#network-planning)
 
-## <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>Senaryo: Durum raporları iade yanıt kodu Yetkisiz
+## <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>Senaryo: durum raporları yanıt kodunu yetkisiz döndürür
 
 ### <a name="issue"></a>Sorun
 
-Azure Otomasyon Durumu Yapılandırması'na düğüm kaydederken aşağıdaki hata iletilerinden birini alırsınız:
+Azure Otomasyonu durum yapılandırması ile bir düğüm kaydederken, aşağıdaki hata iletilerinden birini alırsınız:
 
 ```error
 The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
@@ -112,29 +112,29 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, kötü veya süresi dolmuş bir sertifikadan kaynaklanır. Bkz. [Sertifika nın süresi nin dolması ve yeniden kaydedilmesi.](../automation-dsc-onboarding.md#re-registering-a-node)
+Bu sorun, hatalı veya geçerliliği olumsuz bir sertifika nedeniyle oluşur. Bkz. [sertifika süre sonu ve yapılabilir](../automation-dsc-onboarding.md#re-registering-a-node).
 
-Bu sorun, ***.azure-automation.net**erişime izin vermeyen bir proxy yapılandırması da neden olabilir. Daha fazla bilgi için [bkz.](../automation-dsc-overview.md#network-planning) 
+Bu sorun, ***. Azure-Automation.net**erişimine izin verilmeyen bir ara sunucu yapılandırması nedeniyle de oluşabilir. Daha fazla bilgi için bkz. [özel ağların yapılandırması](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Çözüm
 
-Başarısız DSC düğümlerini yeniden kaydetmek için aşağıdaki adımları kullanın.
+Hatalı DSC düğümünü yeniden kaydetmek için aşağıdaki adımları kullanın.
 
-Adım 1 - Düğümün kaydını silin.
+1. adım-düğümün kaydını silin.
 
-1. Azure portalında, **Ev** -> **Otomasyon hesapları** (> (Otomasyon hesabınız) -> Durum **yapılandırmasına (DSC)** gidin.
-2. **Düğümleri**seçin ve sorun olan düğüme tıklayın.
-3. Düğümün kaydını çıkarmak için **Kaydı Nı Kınık'ı** tıklatın.
+1. Azure Portal, **ana** -> **Otomasyon hesapları** -> (Otomasyon hesabınız)-> **Durum Yapılandırması (DSC)** bölümüne gidin.
+2. **Düğümleri**seçin ve sorun yaşayan düğüme tıklayın.
+3. Düğümün kaydını silmek için **kayıt Sil** ' e tıklayın.
 
-Adım 2 - Düğümden DSC uzantısını kaldırın.
+2. adım-DSC uzantısını düğümden kaldırın.
 
-1. Azure portalında, **Ana Sayfa** -> **Sanal Makine** -> (başarısız düğüm) -> **Uzantıları'na**gidin.
-2. **Microsoft.Powershell.DSC,** PowerShell DSC uzantısını seçin.
-3. Uzantıyı kaldırmak için **Kaldır'ı** tıklatın.
+1. Azure Portal, **ana** -> **sanal makine** -> (başarısız olan düğüm)-> **uzantılarına**gidin.
+2. PowerShell DSC Uzantısı olan **Microsoft. PowerShell. DSC**' yi seçin.
+3. Uzantıyı kaldırmak için **Kaldır** ' a tıklayın.
 
-Adım 3 - Düğümden tüm bozuk veya süresi dolmuş sertifikaları kaldırın.
+3. adım-düğümdeki tüm hatalı veya geçerliliği olmayan sertifikaları kaldırın.
 
-Yükseltilmiş powershell isteminden gelen başarısız düğümde şu komutları çalıştırın:
+Yükseltilmiş bir PowerShell isteminde başarısız olan düğümde şu komutları çalıştırın:
 
 ```powershell
 $certs = @()
@@ -152,19 +152,19 @@ If (($certs.Count) -gt 0)
 }
 ```
 
-Adım 4 - Başarısız düğümü yeniden kaydedin.
+4. adım-hatalı düğümü yeniden kaydedin.
 
-1. Azure **portalında, Ev** -> **Otomasyon hesapları** (> (Otomasyon hesabınız) -> **Durum yapılandırmasına (DSC)** gidin
-2. **Düğümleri**seçin.
+1. Azure Portal, **Home** -> **Automation hesapları** -> (Otomasyon hesabınız)-> **Durum Yapılandırması (DSC)** seçeneğine gidin
+2. **Düğüm**seçin.
 3. **Ekle**'ye tıklayın.
-4. Başarısız düğümü seçin.
-5. **Bağlan'ı** tıklatın ve istediğiniz seçenekleri seçin.
+4. Hatalı düğümü seçin.
+5. **Bağlan** ' a tıklayın ve istediğiniz seçenekleri belirleyin.
 
-## <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>Senaryo: Düğüm "Bulunamadı" hatasıyla başarısız durumda
+## <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>Senaryo: düğüm, "bulunamadı" hatası ile başarısız durumda
 
 ### <a name="issue"></a>Sorun
 
-Düğüm, Başarısız durumu olan ve hatayı içeren bir rapora sahiptir:
+Düğüm, başarısız durumuna sahip bir rapora sahip ve şu hatayı içerir:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -172,21 +172,21 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata genellikle düğüm bir yapılandırma adı atandığında oluşur, örneğin, **ABC**, düğüm yapılandırması yerine (MOF dosyası) adı, örneğin, **ABC. WebServer**.
+Bu hata genellikle düğüm bir yapılandırma adına atandığında oluşur. Örneğin, bir düğüm yapılandırma (MOF dosyası) adı yerine **ABC**, örneğin, **ABC. Web sunucusu**.
 
 ### <a name="resolution"></a>Çözüm
 
-* Düğümü yapılandırma adı yla değil, düğüm yapılandırma adıyla atadığınızdan emin olun.
-* Azure portalını kullanarak veya PowerShell cmdlet kullanarak düğüm yapılandırması atayabilirsiniz.
+* Düğümü yapılandırma adı değil düğüm yapılandırma adı ile atadığınızdan emin olun.
+* Azure portal veya PowerShell cmdlet 'i kullanarak bir düğüme düğüm yapılandırması atayabilirsiniz.
 
-  * Azure **portalında, Ev** -> **Otomasyon hesapları** (Otomasyon hesabınız) > -> **Durum yapılandırmasına (DSC)** gidin, ardından bir düğüm seçin ve **düğüm yapılandırmasını ata'yı**tıklatın.
-  * [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet kullanın.
+  * Azure Portal, **Home** -> **Automation hesapları** -> (Otomasyon hesabınız)-> **Durum Yapılandırması (DSC)**' ne gidin, ardından bir düğüm seçin ve **düğüm yapılandırması ata**' yı tıklatın.
+  * [Set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) cmdlet 'ini kullanın.
 
-## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Senaryo: Yapılandırma derlendiğinde düğüm yapılandırmaları (MOF dosyaları) üretildi
+## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Senaryo: bir yapılandırma derlendiğinde hiçbir düğüm yapılandırması (MOF dosyası) üretilmedi
 
 ### <a name="issue"></a>Sorun
 
-DSC derleme işiniz hata yla askıya alınır:
+DSC derleme işiniz şu hatayla askıya alınır:
 
 ```error
 Compilation completed successfully, but no node configuration **.mof** files were generated.
@@ -194,20 +194,20 @@ Compilation completed successfully, but no node configuration **.mof** files wer
 
 ### <a name="cause"></a>Nedeni
 
-DSC yapılandırmasında anahtar kelimeyi `Node` izleyen ifade `$null`değerlendirdiğinde, düğüm yapılandırmaları üretilir.
+DSC yapılandırmasındaki `Node` anahtar sözcüğü izleyen ifade olarak `$null`değerlendirilirse, hiçbir düğüm yapılandırması üretilmez.
 
 ### <a name="resolution"></a>Çözüm
 
 Sorunu gidermek için aşağıdaki çözümlerden birini kullanın:
 
-* Yapılandırma tanımındaki anahtar kelimenin `Node` yanındaki ifadenin Null olarak değerlendirilmediğinden emin olun.
-* Yapılandırmayı derlerken [ConfigurationData'dan](../automation-dsc-compile.md) geçiyorsanız, yapılandırma verilerinden beklediği değerleri geçtiğinizden emin olun.
+* Yapılandırma tanımındaki `Node` anahtar sözcüğünün yanındaki ifadenin null olarak değerlendirilmediğinden emin olun.
+* Yapılandırmayı derlerken [configurationData](../automation-dsc-compile.md) geçiriyorsanız, yapılandırmanın yapılandırma verilerinden beklediği değerleri geçirdiğinizden emin olun.
 
-### <a name="scenario-the-dsc-node-report-becomes-stuck-in-the-in-progress-state"></a><a name="dsc-in-progress"></a>Senaryo: DSC düğüm raporu Devam Durumunda takılıp kalır
+### <a name="scenario-the-dsc-node-report-becomes-stuck-in-the-in-progress-state"></a><a name="dsc-in-progress"></a>Senaryo: DSC düğüm raporu sürüyor durumunda takılmış olur
 
 ### <a name="issue"></a>Sorun
 
-DSC aracı çıktıları:
+DSC Aracısı çıkışları:
 
 ```error
 No instance found with given property values
@@ -215,17 +215,17 @@ No instance found with given property values
 
 ### <a name="cause"></a>Nedeni
 
-Windows Yönetim Çerçevesi (WMF) sürümünüzü yükselttiniz ve Windows Yönetim Araçları'nı (WMI) bozdunuz.
+Windows Management Framework (WMF) sürümünüzü yükselttiniz ve bozulmuş Windows Yönetim Araçları (WMI) var.
 
 ### <a name="resolution"></a>Çözüm
 
-[DSC bilinen sorunları ve sınırlamaları](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)yönergeleri izleyin.
+[DSC bilinen sorunları ve sınırlamaları](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)bölümündeki yönergeleri izleyin.
 
-## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>Senaryo: DSC yapılandırmasında kimlik bilgisi kullanılamıyor
+## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>Senaryo: DSC yapılandırmasında kimlik bilgileri kullanılamıyor
 
 ### <a name="issue"></a>Sorun
 
-DSC derleme işiniz hata yla askıya alındı:
+DSC derleme işiniz şu hatayla askıya alındı:
 
 ```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
@@ -233,17 +233,17 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 ### <a name="cause"></a>Nedeni
 
-Bir yapılandırmada bir kimlik bilgisi kullandınız, ancak her `ConfigurationData` düğüm `PSDscAllowPlainTextPassword` yapılandırması için doğru ayarlamak için uygun sağlamadın.
+Yapılandırmada bir kimlik bilgisi kullandınız, ancak her düğüm yapılandırması için doğru `ConfigurationData` olarak ayarlanacak `PSDscAllowPlainTextPassword` doğru olarak sağlamadık.
 
 ### <a name="resolution"></a>Çözüm
 
-Yapılandırmada belirtilen her `ConfigurationData` düğüm `PSDscAllowPlainTextPassword` yapılandırması için doğru ayarlamak için uygun geçmek emin olun. Bkz. [Azure Otomasyon Durumu Yapılandırmasında DSC yapılandırmalarını derleme.](../automation-dsc-compile.md)
+Yapılandırmada belirtilen her düğüm yapılandırması için doğru `ConfigurationData` olarak ayarlanması `PSDscAllowPlainTextPassword` için doğru şekilde geçiş yaptığınızdan emin olun. Bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-dsc-extension"></a><a name="failure-processing-extension"></a>Senaryo: DSC uzantısından binerken "Hata işleme uzantısı" hatası
+## <a name="scenario-failure-processing-extension-error-when-onboarding-from-dsc-extension"></a><a name="failure-processing-extension"></a>Senaryo: DSC uzantısından ekleme sırasında "uzantı işleme hatası" hatası
 
 ### <a name="issue"></a>Sorun
 
-Bir DSC uzantısı kullanılarak uçağa binerken, hatayı içeren bir hata oluşur:
+Bir DSC Uzantısı kullanarak ekleme yaparken, şu hatayı içeren bir hata oluşur:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -251,18 +251,18 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata genellikle düğüm hizmette olmayan bir düğüm yapılandırma adı atandığında oluşur.
+Bu hata genellikle, düğüme hizmette olmayan bir düğüm yapılandırma adı atandığında oluşur.
 
 ### <a name="resolution"></a>Çözüm
 
-* Düğüme, hizmetteki ada tam olarak uyan bir adla atadığınızdan emin olun.
-* Düğüm onboarding ama bir düğüm yapılandırma atamaz sonuçlanır düğüm yapılandırma adı içermemeyi seçebilirsiniz.
+* Düğümü, hizmette adıyla tam olarak eşleşen bir adla atadığınızdan emin olun.
+* Düğüm yapılandırma adını eklemeyi tercih edebilirsiniz; Bu, düğümü ekleme, ancak düğüm yapılandırması atamakla sonuçlanır.
 
-## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-using-powershell"></a><a name="cross-subscription"></a>Senaryo: PowerShell kullanarak düğüm kaydederken "Bir veya daha fazla hata oluştu" hatası
+## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-using-powershell"></a><a name="cross-subscription"></a>Senaryo: PowerShell kullanarak bir düğüm kaydedilirken "bir veya daha fazla hata oluştu" hatası
 
 ### <a name="issue"></a>Sorun
 
-[Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) veya [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)kullanarak bir düğüm kaydederken aşağıdaki hatayı alırsınız:
+[Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) veya [register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)kullanarak bir düğüm kaydederken şu hatayı alırsınız:
 
 ```error
 One or more errors occurred.
@@ -270,20 +270,20 @@ One or more errors occurred.
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, Bir düğümü Otomasyon hesabı tarafından kullanılan abonelikten ayrı bir aboneye kaydetmeye çalıştığınızda oluşur.
+Bu hata, Otomasyon hesabı tarafından kullanılan bir düğümü ayrı bir abonelikte kaydetmeye çalıştığınızda oluşur.
 
 ### <a name="resolution"></a>Çözüm
 
-Çapraz abonelik düğümini ayrı bir bulut veya şirket içinde tanımlanmış gibi ele adedi. Bu onboarding seçeneklerinden birini kullanarak düğümü kaydedin:
+Abonelikler arası düğümü ayrı bir bulut veya şirket içi için tanımlanmış gibi değerlendirin. Şu ekleme seçeneklerinden birini kullanarak düğümü kaydedin:
 
-* Windows - [Fiziksel/sanal Windows makineleri şirket içinde veya Azure/AWS dışındaki bir bulutta.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)
-* Linux - [Fiziksel/sanal Linux makineleri şirket içinde veya Azure dışındaki bir bulutta.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)
+* Windows- [Şirket içinde veya Azure/AWS dışındaki bir bulutta bulunan Windows-fiziksel/sanal Windows makineleri](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
+* Linux- [Şirket içi veya Azure dışındaki bir bulutta Linux-fiziksel/sanal Linux makineleri](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
 
-## <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Senaryo: Hata iletisi - "Sağlama Başarısız"
+## <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Senaryo: hata iletisi-"sağlama başarısız oldu"
 
 ### <a name="issue"></a>Sorun
 
-Bir düğüm kaydederken, hatayı görürsünüz:
+Bir düğüm kaydederken şu hatayı görürsünüz:
 
 ```error
 Provisioning has failed
@@ -291,17 +291,17 @@ Provisioning has failed
 
 ### <a name="cause"></a>Nedeni
 
-Bu ileti, düğüm ve Azure arasında bağlantı yla ilgili bir sorun olduğunda oluşur.
+Bu ileti, düğüm ile Azure arasında bağlantı sorunu olduğunda oluşur.
 
 ### <a name="resolution"></a>Çözüm
 
-Düğümünüzün sanal özel ağda mı (VPN) olduğunu veya Azure'a bağlanan başka sorunları olup olmadığını belirleyin. [Çözümlere binerken Sorun Giderme hatalarına](onboarding.md)bakın.
+Düğümünüz bir sanal özel ağ (VPN) içinde olup olmadığını veya Azure 'a bağlanan başka sorunlar olup olmadığını belirleme. Bkz. [çözüm ekleme sırasında hata giderme hataları](onboarding.md).
 
-## <a name="scenario-failure-with-a-general-error-when-applying-a-configuration-in-linux"></a><a name="failure-linux-temp-noexec"></a>Senaryo: Linux'ta yapılandırma uygularken genel bir hata ile hata
+## <a name="scenario-failure-with-a-general-error-when-applying-a-configuration-in-linux"></a><a name="failure-linux-temp-noexec"></a>Senaryo: Linux 'ta bir yapılandırma uygulanırken genel hata ile başarısız oldu
 
 ### <a name="issue"></a>Sorun
 
-Linux'ta bir yapılandırma uygularken, hatayı içeren bir hata oluşur:
+Linux 'ta bir yapılandırma uygularken, şu hatayı içeren bir hata oluşur:
 
 ```error
 This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
@@ -309,44 +309,44 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="cause"></a>Nedeni
 
-**/tmp** konumu `noexec`ayarlanmışsa, DSC'nin geçerli sürümü yapılandırmaları uygulamazsa.
+**/Tmp** konumu olarak `noexec`ayarlandıysa, geçerli DSC sürümü yapılandırmaların uygulanamadır.
 
 ### <a name="resolution"></a>Çözüm
 
-`noexec` **Seçeneği /tmp** konumundan kaldırın.
+`noexec` Seçeneği **/tmp** konumundan kaldırın.
 
-## <a name="scenario-node-configuration-names-that-overlap-can-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>Senaryo: Çakışan düğüm yapılandırma adları kötü sürüm neden olabilir
+## <a name="scenario-node-configuration-names-that-overlap-can-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>Senaryo: çakışan düğüm yapılandırma adları bozuk bir yayına neden olabilir
 
 ### <a name="issue"></a>Sorun
 
-Birden çok düğüm yapılandırması oluşturmak için tek bir yapılandırma komut dosyası kullandığınızda ve bazı düğüm yapılandırma adları diğer adların alt kümeleri olduğunda, derleme hizmeti yanlış yapılandırma atayarak sona erebilir. Bu sorun yalnızca düğüm başına yapılandırma verileri içeren yapılandırmalar oluşturmak için tek bir komut dosyası kullanılırken ve yalnızca dize başında ad çakışması oluştuğunda oluşur. Bir örnek, cmdlets kullanılarak karma olarak geçirilen düğüm verilerine dayalı yapılandırmalar oluşturmak için kullanılan tek bir yapılandırma komut dosyasıdır ve düğüm verileri **sunucu** ve **1server**adlı sunucuları içerir.
+Birden çok düğüm yapılandırması oluşturmak için tek bir yapılandırma betiği kullandığınızda ve bazı düğüm yapılandırma adları diğer adlara ait alt kümeler olduğunda, derleme hizmeti yanlış yapılandırma atanmasına son verebilir. Bu sorun yalnızca, düğüm başına yapılandırma verileri olan yapılandırmalar oluşturmak için tek bir komut dosyası kullanılırken ve yalnızca ad çakışması dizenin başlangıcında oluştuğunda oluşur. Cmdlet 'ler kullanılarak bir karma tablosu olarak geçirilen düğüm verilerine göre yapılandırmalar oluşturmak için kullanılan tek bir yapılandırma betiğiyle, düğüm verilerinde **Server** ve **1server**adlı sunucular de bulunur.
 
 ### <a name="cause"></a>Nedeni
 
-Bu derleme hizmeti ile bilinen bir sorundur.
+Bu, derleme hizmeti ile ilgili bilinen bir sorundur.
 
 ### <a name="resolution"></a>Çözüm
 
-En iyi geçici çözüm, yerel olarak veya bir CI/CD ardışık alt yapıda derlemek ve düğüm yapılandırmaMOF dosyalarını doğrudan hizmete yüklemektir. Hizmetteki derleme bir gereksinimse, sonraki en iyi geçici çözüm, adlarda çakışma olmaması için derleme işlerini bölmektir.
+En iyi geçici çözüm, yerel olarak veya bir CI/CD işlem hattının derlenmesi ve düğüm yapılandırması MOF dosyalarını doğrudan hizmete yüklemeniz. Hizmette derleme bir gereksinimle karşılaşırsanız, bir sonraki en iyi geçici çözüm, derlemede çakışma olmaması için derleme işlerini böltürüdir.
 
-## <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>Senaryo: DSC yapılandırma yüklemeağ geçidi zaman hatası
+## <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>Senaryo: DSC yapılandırması karşıya yüklemesi sırasında ağ geçidi zaman aşımı hatası
 
 #### <a name="issue"></a>Sorun
 
-Bir DSC yapılandırması yüklerken bir `GatewayTimeout` hata alırsınız. 
+DSC yapılandırmasını karşıya `GatewayTimeout` yüklerken bir hata alıyorsunuz. 
 
 ### <a name="cause"></a>Nedeni
 
-Derlemesi uzun zaman alan DSC yapılandırmaları bu hataya neden olabilir.
+Derlenmesi uzun süren DSC yapılandırmalarının bu hataya neden olması olabilir.
 
 ### <a name="resolution"></a>Çözüm
 
-Herhangi bir [Alma-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) araması için parametreyi `ModuleName` açıkça ekleyerek DSC yapılandırmalarınızı daha hızlı ayrıştırabilirsiniz.
+Tüm `ModuleName` [Import-dscresource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) ÇAĞRıLARıNıN parametresini açıkça ekleyerek DSC yapılandırlarınızın daha hızlı ayrıştırmasını sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemiyorsanız, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
 
-* [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
-* [@AzureSupport](https://twitter.com/azuresupport)Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
-* Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
+* Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
+* Azure Community [@AzureSupport](https://twitter.com/azuresupport)'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

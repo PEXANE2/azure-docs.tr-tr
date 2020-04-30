@@ -1,134 +1,134 @@
 ---
-title: Linux VM'ler için DNS Ad çözümleme seçenekleri
-description: Azure IaaS'deki Linux sanal makineleri için, sağlanan DNS hizmetleri, karma harici DNS ve Bring Own DNS sunucunuzu içeren Ad Çözümü senaryoları.
+title: Linux VM 'Ler için DNS ad çözümleme seçenekleri
+description: Azure IaaS içindeki Linux sanal makineleri için, sunulan DNS hizmetleri, karma dış DNS ve kendi DNS sunucunuzu getir gibi ad çözümleme senaryoları.
 author: RicksterCDN
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641721"
 ---
-# <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure'daki Linux sanal makineleri için DNS Ad Çözümleme seçenekleri
-Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuziçin uygun olanı seçmenize yardımcı olur.
+# <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 'da Linux sanal makineleri için DNS ad çözümleme seçenekleri
+Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure 'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümlemesi çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuza uygun olanı seçmenize yardımcı olmalıdır.
 
-* [Azure'un sağladığı ad çözünürlüğü](#name-resolution-that-azure-provides)
-* [Kendi DNS sunucunuzu kullanarak ad çözünürlüğü](#name-resolution-using-your-own-dns-server)
+* [Azure 'un sağladığı ad çözümlemesi](#name-resolution-that-azure-provides)
+* [Kendi DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-using-your-own-dns-server)
 
-Kullandığınız ad çözümleme türü, sanal makinelerinizin ve rol örneklerinizin birbiriyle nasıl iletişim kurması gerektiğine bağlıdır.
+Kullandığınız ad çözümlemesi türü, sanal makinelerinizin ve rol örneklerinizin birbirleriyle nasıl iletişim kurması gerektiği konusunda farklılık gösterir.
 
-Aşağıdaki tablosenaryoları ve karşılık gelen ad çözümçözümlerini göstermektedir:
+Aşağıdaki tabloda senaryolar ve ilgili ad çözümleme çözümleri gösterilmektedir:
 
-| **Senaryo** | **Çözüm** | **Soneki** |
+| **Senaryo** | **Çözümden** | **Önekini** |
 | --- | --- | --- |
-| Aynı sanal ağdaki rol örnekleri veya sanal makineler arasındaki ad çözümlemesi |Azure'un sağladığı ad çözünürlüğü |hostname veya tam nitelikli alan adı (FQDN) |
-| Farklı sanal ağlardaki rol örnekleri veya sanal makineler arasındaki ad çözümlemesi |Azure (DNS proxy) tarafından çözümiçin sanal ağlar arasında sorguları iletir müşteri tarafından yönetilen DNS sunucuları. [Kendi DNS sunucunuzu kullanarak Ad çözünürlüğüne](#name-resolution-using-your-own-dns-server)bakın. |Yalnızca FQDN |
-| Azure'daki rol örneklerinden veya sanal makinelerden şirket içi bilgisayarların ve hizmet adlarının çözümü |Müşteri tarafından yönetilen DNS sunucuları (örneğin, şirket içi etki alanı denetleyicisi, yerel salt okunur etki alanı denetleyicisi veya bölge aktarımları kullanılarak senkronize edilmiş bir DNS ikincil). [Kendi DNS sunucunuzu kullanarak Ad çözünürlüğüne](#name-resolution-using-your-own-dns-server)bakın. |Yalnızca FQDN |
-| Azure ana bilgisayar adlarının şirket içi bilgisayarlardan çözümü |Sorguları ilgili sanal ağdaki müşteri tarafından yönetilen bir DNS proxy sunucusuna iletin. Proxy sunucusu sorguları çözüm için Azure'a ileter. [Kendi DNS sunucunuzu kullanarak Ad çözünürlüğüne](#name-resolution-using-your-own-dns-server)bakın. |Yalnızca FQDN |
-| İç IP'ler için ters DNS |[Kendi DNS sunucunuzu kullanarak ad çözünürlüğü](#name-resolution-using-your-own-dns-server) |yok |
+| Aynı sanal ağdaki rol örnekleri veya sanal makineler arasında ad çözümlemesi |Azure 'un sağladığı ad çözümlemesi |Ana bilgisayar adı veya tam etki alanı adı (FQDN) |
+| Farklı sanal ağlardaki rol örnekleri veya sanal makineler arasında ad çözümlemesi |Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten, müşteri tarafından yönetilen DNS sunucuları (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-using-your-own-dns-server). |Yalnızca FQDN |
+| Şirket içi bilgisayarların ve hizmet adlarının Azure 'daki rol örneklerinden veya sanal makinelerden çözümlenmesi |Müşteri tarafından yönetilen DNS sunucuları (örneğin, şirket içi etki alanı denetleyicisi, yerel salt okuma etki alanı denetleyicisi veya bölge aktarımları kullanılarak eşitlenen bir DNS ikincil). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-using-your-own-dns-server). |Yalnızca FQDN |
+| Şirket içi bilgisayarlardan Azure ana bilgisayar adlarının çözümlenmesi |Sorguları karşılık gelen sanal ağdaki müşteri tarafından yönetilen bir DNS proxy sunucusuna iletin. Proxy sunucusu, çözümleme için sorguları Azure 'a iletir. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-using-your-own-dns-server). |Yalnızca FQDN |
+| İç IP 'Ler için ters DNS |[Kendi DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-using-your-own-dns-server) |yok |
 
-## <a name="name-resolution-that-azure-provides"></a>Azure'un sağladığı ad çözünürlüğü
-Azure, herkese açık DNS adlarının çözünürlüğünün yanı sıra, sanal makineler ve aynı sanal ağdaki rol örnekleri için dahili ad çözünürlüğü sağlar. Azure Kaynak Yöneticisi'ni temel alan sanal ağlarda, DNS soneki sanal ağ da tutarlıdır; FQDN gerekli değildir. DNS adları hem ağ arabirim kartlarına (NIC' ler) hem de sanal makinelere atanabilir. Azure'un sağladığı ad çözümlemesi herhangi bir yapılandırma gerektirmese de, önceki tabloda görüldüğü gibi tüm dağıtım senaryoları için uygun bir seçim değildir.
+## <a name="name-resolution-that-azure-provides"></a>Azure 'un sağladığı ad çözümlemesi
+Azure, genel DNS adlarını çözümlemesiyle birlikte, sanal makineler ve aynı sanal ağdaki rol örnekleri için iç ad çözümlemesi sağlar. Azure Resource Manager temel alan sanal ağlarda, DNS son eki sanal ağ genelinde tutarlıdır; FQDN gerekli değil. DNS adları, hem ağ arabirim kartlarına (NIC 'ler) hem de sanal makinelere atanabilir. Azure 'un sağladığı ad çözümlemesi herhangi bir yapılandırma gerektirse de, yukarıdaki tabloda görüldüğü gibi tüm dağıtım senaryolarında uygun seçim değildir.
 
-### <a name="features-and-considerations"></a>Özellikler ve dikkat edilecek hususlar
-**Özellik:**
+### <a name="features-and-considerations"></a>Özellikler ve önemli noktalar
+**Özelliklerinde**
 
-* Azure'un sağladığı ad çözümlemesi için yapılandırma gerekmez.
-* Azure'un sağladığı ad çözümleme hizmeti son derece kullanılabilir. Kendi DNS sunucularınızın kümelerini oluşturmanız ve yönetmeniz gerekmez.
-* Azure'un sağladığı ad çözümleme hizmeti, hem şirket içi hem de Azure ana bilgisayar adlarını çözmek için kendi DNS sunucularınızla birlikte kullanılabilir.
-* FQDN'ye gerek kalmadan sanal ağlardaki sanal makineler arasında ad çözümlemesi sağlanır.
-* Otomatik oluşturulan adlarla çalışmak yerine dağıtımlarınızı en iyi açıklayan ana bilgisayar adlarını kullanabilirsiniz.
+* Azure 'un sağladığı ad çözümlemesini kullanmak için yapılandırma gerekmez.
+* Azure 'un sağladığı ad çözümleme hizmeti yüksek oranda kullanılabilir. Kendi DNS sunucularınızın kümelerini oluşturmanız ve yönetmeniz gerekmez.
+* Azure 'un sağladığı ad çözümleme hizmeti, hem şirket içi hem de Azure ana bilgisayar adlarını çözümlemek için kendi DNS sunucularınızla birlikte kullanılabilir.
+* Ad çözümlemesi, sanal ağlardaki sanal makineler arasında FQDN olması gerekmeden sağlanır.
+* Otomatik olarak oluşturulan adlarla çalışmak yerine, dağıtımlarınızı en iyi şekilde tanımlayan ana bilgisayar adlarını kullanabilirsiniz.
 
-**Husus -lar:**
+**Konuları**
 
-* Azure'un oluşturduğu DNS soneki değiştirilemez.
+* Azure tarafından oluşturulan DNS son eki değiştirilemez.
 * Kendi kayıtlarınızı el ile kaydedemezsiniz.
 * WINS ve NetBIOS desteklenmez.
-* Ana bilgisayar adları DNS uyumlu olmalıdır.
-    Adlar yalnızca 0-9, a-z ve '-' kullanmalıdır ve '-' ile başlayamaz veya bitiremez. Bkz. RFC 3696 Bölüm 2.
-* DNS sorgu trafiği her sanal makine için daraltılır. Azaltma çoğu uygulamayı etkilememelidir.  İstek azaltma gözlenirse, istemci tarafı önbelleğe alma nın etkin olduğundan emin olun.  Daha fazla bilgi için [azure'un sağladığı ad çözümlemesi için en iyi şekilde alma](#getting-the-most-from-name-resolution-that-azure-provides)'ya bakın.
+* Ana bilgisayar adları DNS ile uyumlu olmalıdır.
+    Adlar yalnızca 0-9, a-z ve '-' karakterlerini kullanmalıdır ve '-' ile başlayamaz veya bitemez. Bkz. RFC 3696 Bölüm 2.
+* DNS sorgu trafiği her bir sanal makine için kısıtlanıyor. Azaltma birçok uygulamanın etkilenmemelidir.  İstek azaltma gözlemlenip, istemci tarafı önbelleğinin etkinleştirildiğinden emin olun.  Daha fazla bilgi için bkz. [Azure 'un sağladığı ad çözümünden en iyi şekilde yararlanmak](#getting-the-most-from-name-resolution-that-azure-provides).
 
-### <a name="getting-the-most-from-name-resolution-that-azure-provides"></a>Azure'un sağladığı ad çözümlemesi en iyi şekilde elde
+### <a name="getting-the-most-from-name-resolution-that-azure-provides"></a>Azure 'un sağladığı ad çözümünden en iyi şekilde yararlanmak
 **İstemci tarafı önbelleğe alma:**
 
-Bazı DNS sorguları ağ üzerinden gönderilmez. İstemci tarafı önbelleğe alma, yinelenen DNS sorgularını yerel bir önbellekten çözerek gecikme süresini azaltmaya ve ağ tutarsızlıklarına karşı dayanıklılığı artırmaya yardımcı olur. DNS kayıtları, önbelleğin kayıt tazeliğini etkilemeden kaydı mümkün olduğunca uzun süre saklamasını sağlayan bir Zaman-To-Live (TTL) içerir. Sonuç olarak, istemci tarafı önbelleğe alma çoğu durum için uygundur.
+Bazı DNS sorguları ağ üzerinden gönderilmez. İstemci tarafı önbelleğe alma, yinelenen DNS sorgularını yerel bir önbellekten çözümleyerek gecikme süresini azaltmaya ve ağ tutarsızlıklarından esnekliği iyileştirilmesine yardımcı olur. DNS kayıtları, kayıt yeniliği etkilemeden önbelleğin mümkün olduğunca uzun süre depolanmasını sağlayan yaşam süresi (TTL) içerir. Sonuç olarak, çoğu durum için istemci tarafı önbelleğe alma uygundur.
 
-Bazı Linux dağıtımları varsayılan olarak önbelleğe alma içermez. Zaten yerel bir önbellek olup olmadığını kontrol ettikten sonra her Linux sanal makinesine bir önbellek eklemenizi öneririz.
+Bazı Linux dağıtımları önbelleğe alma işlemini varsayılan olarak içermez. Zaten yerel bir önbellek olup olmadığını kontrol ettikten sonra her Linux sanal makinesine bir önbellek eklemenizi öneririz.
 
-Dnsmasq gibi birkaç farklı DNS önbelleğe alma paketi mevcuttur. Burada en yaygın dağılımları dnsmasq yüklemek için adımlar şunlardır:
+Dnsmasq gibi çeşitli farklı DNS önbelleğe alma paketleri kullanılabilir. Aşağıda, en yaygın dağıtımlardan dnsmasq 'yi yüklemek için gereken adımlar verilmiştir:
 
 **Ubuntu (resolvconf kullanır)**
-  * dnsmasq paketini ("sudo apt-get install dnsmasq") yükleyin.
+  * Dnsmasq paketini ("sudo apt-get Install dnsmasq") yükler.
 
 **SUSE (netconf kullanır)**:
-1. dnsmasq paketini ("sudo zypper install dnsmasq") yükleyin.
-2. Dnsmasq hizmetini etkinleştirin ("systemctl etkinleştirdin dnsmasq.service").
-3. Dnsmasq hizmetini başlatın ("systemctl başlangıç dnsmasq.service").
-4. "/etc/sysconfig/network/config" adlı şeyi edin ve NETCONFIG_DNS_FORWARDER="" ile "dnsmasq" olarak değiştirin.
-5. Önbelleği yerel DNS çözümleyicisi olarak ayarlamak için resolv.conf 'ı ("netconfig update") güncelleştirin.
+1. Dnsmasq paketini ("sudo zypper Install dnsmasq") yükler.
+2. Dnsmasq hizmetini etkinleştirin ("systemctl Enable dnsmasq. Service").
+3. Dnsmasq hizmetini ("systemctl start dnsmasq. Service") başlatın.
+4. "/Etc/sysconfig/Network/config" öğesini düzenleyin ve NETCONFIG_DNS_FORWARDER = "" değerini "dnsmasq" olarak değiştirin.
+5. Yerel DNS Çözümleyicisi olarak önbelleği ayarlamak için resolv. conf ("netconfig Update") güncelleştirmesini güncelleştirin.
 
-**Rogue Wave Software tarafından CentOS (eski OpenLogic; NetworkManager kullanır)**
-1. Dnsmasq paketini ("sudo yum install dnsmasq") yükleyin.
-2. Dnsmasq hizmetini etkinleştirin ("systemctl etkinleştirdin dnsmasq.service").
-3. Dnsmasq hizmetini başlatın ("systemctl başlangıç dnsmasq.service").
-4. "Prepend etki alanı adı-sunucuları 127.0.0.1;" için "/etc/dhclient-eth0.conf" ekleyin.
-5. Önbelleği yerel DNS çözümleyicisi olarak ayarlamak için ağ hizmetini yeniden başlatma ("hizmet ağı yeniden başlatma")
+**Standart dışı bir dalga yazılımıyla CentOS (eski adıyla OpenLogic; NetworkManager kullanır)**
+1. Dnsmasq paketini ("sudo yıum Install dnsmasq") yükler.
+2. Dnsmasq hizmetini etkinleştirin ("systemctl Enable dnsmasq. Service").
+3. Dnsmasq hizmetini ("systemctl start dnsmasq. Service") başlatın.
+4. "Prepfrom etki alanı-adı-Servers 127.0.0.1;" öğesini "/etc/dhclient-ET0.conf" olarak ekleyin.
+5. Önbelleği yerel DNS Çözümleyicisi olarak ayarlamak için ağ hizmetini ("hizmet ağı yeniden başlatma") yeniden başlatın
 
 > [!NOTE]
-> : 'dnsmasq' paketi Linux için kullanılabilen birçok DNS önbelleklerinden yalnızca biridir. Kullanmadan önce, gereksinimlerinize uygunluğunu ve başka bir önbelleğin yüklenmediğini kontrol edin.
+> : ' Dnsmasq ' paketi yalnızca Linux için kullanılabilen çok sayıda DNS Önbelleklerinden biridir. Kullanmadan önce, gereksinimlerinize uygunluğunu ve başka bir önbelleğin yüklenmediğini denetleyin.
 >
 >
 
 **İstemci tarafı yeniden denemeleri**
 
-DNS öncelikle bir UDP protokolüdür. UDP protokolü ileti teslimini garanti etmediğinden, DNS protokolü yeniden deneme mantığını kendisi işler. Her DNS istemcisi (işletim sistemi) oluşturucunun tercihine bağlı olarak farklı yeniden deneme mantığı gösterebilir:
+DNS birincil olarak bir UDP protokolüdür. UDP Protokolü ileti teslimini garanti edemediğinden, DNS protokolünün kendisi yeniden deneme mantığını işler. Her DNS istemcisi (işletim sistemi), oluşturucunun tercihine bağlı olarak farklı bir yeniden deneme mantığı sergiler:
 
-* Windows işletim sistemleri bir saniye sonra yeniden deneyin ve sonra tekrar başka bir iki, dört ve başka bir dört saniye sonra.
-* Varsayılan Linux kurulumu beş saniye sonra yeniden çalışır.  Bunu, bir saniyelik aralıklarla beş kez yeniden denemek için değiştirmelisiniz.  
+* Windows işletim sistemleri bir saniye sonra yeniden dener ve sonra iki, dört ve dört saniyelik bir kez daha sonra yeniden dener.
+* Varsayılan Linux Kurulumu beş saniye sonra yeniden dener.  Tek saniyelik aralıklarla beş kez yeniden denemek için bunu değiştirmelisiniz.  
 
-Bir Linux sanal makinesindeki geçerli ayarları kontrol etmek için , 'cat /etc/resolv.conf', ve örneğin 'seçenekler' satırına bakın:
+Bir Linux sanal makinesindeki (' cat/etc/resolv.exe ') geçerli ayarları denetlemek ve "Seçenekler" satırına bakmak için:
 
     options timeout:1 attempts:5
 
-resolv.conf dosyası otomatik olarak oluşturulur ve düzenlenmemelidir. 'Seçenekler' satırını ekleyen belirli adımlar dağılıma göre değişir:
+Resolv. conf dosyası otomatik olarak oluşturulur ve düzenlenmemelidir. ' Seçenekler ' satırını ekleyen belirli adımlar dağıtıma göre farklılık gösterir:
 
 **Ubuntu** (resolvconf kullanır)
-1. Seçenekler satırını '/etc/resolvconf/resolv.conf.d/head'e ekleyin.
-2. Güncellemek için 'resolvconf -u' çalıştırın.
+1. Seçenekler satırını '/etc/resolvconf/resolv.exe ' öğesine ekleyin.
+2. Güncelleştirmek için ' resolvconf-u ' öğesini çalıştırın.
 
 **SUSE** (netconf kullanır)
-1. '/etc/sysconfig/network/config' parametresine NETCONFIG_DNS_RESOLVER_OPTIONS="" parametresine 'zaman aşınması:1 deneme:5' ekleyin.
-2. Güncelleştirmek için 'netconfig güncelleştirmesini' çalıştırın.
+1. '/Etc/sysconfig/Network/config ' içindeki NETCONFIG_DNS_RESOLVER_OPTIONS = "" parametresine ' timeout: 1 deneme: 5 ' ekleyin.
+2. Güncelleştirmek için ' netconfig Update ' komutunu çalıştırın.
 
-**Rogue Wave Software tarafından CentOS (eski OpenLogic)** (NetworkManager kullanır)
-1. 'RES_OPTIONS="zaman aşıntIsı:1 deneme:5"' '/etc/sysconfig/network'e ekleyin.
-2. Güncelleştirmek için 'servis ağı yeniden başlat' çalıştırın.
+**Standart dışı bir Wave Software (eski adıyla OpenLogic) CentOS** (NetworkManager kullanır)
+1. ' RES_OPTIONS = "timeout: 1 deneme: 5" ' öğesini '/Etc/sysconfig/Network ' öğesine ekleyin.
+2. Güncelleştirmek için ' hizmet ağı yeniden başlatma ' Çalıştır.
 
-## <a name="name-resolution-using-your-own-dns-server"></a>Kendi DNS sunucunuzu kullanarak ad çözünürlüğü
-Ad çözümleme gereksinimleriniz Azure'un sağladığı özelliklerin ötesine geçebilir. Örneğin, sanal ağlar arasında DNS çözünürlüğü gerekebilir. Bu senaryoyu kapsayacak şekilde kendi DNS sunucularınızı kullanabilirsiniz.  
+## <a name="name-resolution-using-your-own-dns-server"></a>Kendi DNS sunucunuzu kullanarak ad çözümlemesi
+Ad çözümleme gereksinimleriniz, Azure 'un sağladığı özelliklerin ötesine geçebilir. Örneğin, sanal ağlar arasında DNS çözümlemesi yapmanız gerekebilir. Bu senaryoyu ele almak için kendi DNS sunucularınızı kullanabilirsiniz.  
 
-Sanal ağdaki DNS sunucuları, aynı sanal ağdaki ana bilgisayar adlarını çözmek için Azure'un özyinelemeli çözümleyicilerine DNS sorgularını iletebilir. Örneğin, Azure'da çalışan bir DNS sunucusu, kendi DNS bölge dosyaları için DNS sorgularına yanıt verebilir ve diğer tüm sorguları Azure'a iletebilir. Bu işlev, sanal makinelerin hem bölge dosyalarınızdaki girişlerinizi hem de Azure'un sağladığı ana bilgisayar adlarını (iletme aracı aracılığıyla) görmesini sağlar. Azure'un özyinelemeli çözümleyicilerine erişim sanal IP 168.63.129.16 üzerinden sağlanır.
+Bir sanal ağ içindeki DNS sunucuları, aynı sanal ağdaki ana bilgisayar adlarını çözümlemek için DNS sorgularını Azure 'un özyinelemeli çözümleyicilerine iletebilir. Örneğin, Azure 'da çalışan bir DNS sunucusu kendi DNS bölge dosyaları için DNS sorgularına yanıt verebilir ve diğer tüm sorguları Azure 'a iletebilir. Bu işlevsellik, sanal makinelerin hem bölge dosyalarınızda hem de Azure tarafından sağlanan ana bilgisayar adları (iletici aracılığıyla) görmesini sağlar. Azure 'un özyinelemeli çözümleyicilerine erişim, sanal IP 168.63.129.16 aracılığıyla sağlanır.
 
-DNS iletme, sanal ağlar arasında DNS çözünürlüğü sağlar ve şirket içi makinelerinizin Azure'un sağladığı ana bilgisayar adlarını çözmesini sağlar. Sanal makinenin ana bilgisayar adını çözümlemek için, DNS sunucu sanal makinesinin aynı sanal ağda bulunması ve ana bilgisayar sorgusunu Azure'a iletecek şekilde yapılandırılması gerekir. DNS soneki her sanal ağda farklı olduğundan, DNS sorgularını çözüm için doğru sanal ağa göndermek için koşullu iletme kurallarını kullanabilirsiniz. Aşağıdaki resimde, bu yöntemi kullanarak sanal ağlar arasında DNS çözünürlüğü yapan iki sanal ağ ve şirket içi ağ gösterilmektedir:
+DNS iletimi, sanal ağlar arasında DNS çözümlemesini de sağlar ve şirket içi makinelerinizin Azure 'un sağladığı ana bilgisayarları çözümlemesini sağlar. Bir sanal makinenin ana bilgisayar adını çözümlemek için, DNS sunucusu sanal makinesi aynı sanal ağda bulunmalı ve ana bilgisayar adı sorgularını Azure 'a iletecek şekilde yapılandırılmalıdır. DNS son eki her bir sanal ağda farklı olduğundan, çözümleme için doğru sanal ağa DNS sorguları göndermek üzere koşullu iletme kurallarını kullanabilirsiniz. Aşağıdaki görüntüde, bu yöntemi kullanarak sanal ağlar arasında DNS çözümlemesi yapan iki sanal ağ ve şirket içi ağ gösterilmektedir:
 
-![Sanal ağlar arasında DNS çözünürlüğü](./media/azure-dns/inter-vnet-dns.png)
+![Sanal ağlar arasındaki DNS çözümlemesi](./media/azure-dns/inter-vnet-dns.png)
 
-Azure'un sağladığı ad çözümlemesi kullandığınızda, her sanal makineye DHCP kullanılarak dahili DNS soneki sağlanır. Kendi ad çözümlemesi çözümünüzü kullandığınızda, sonek diğer DNS mimarilerine engel olduğundan bu sonek sanal makinelere sağlanmaz. FQDN ile makinelere başvurmak veya sanal makinelerinizdeki sonekyapılandırmak için PowerShell veya API'yi kullanarak soneki belirleyebilirsiniz:
+Azure 'un sağladığı ad çözümlemesini kullandığınızda, iç DNS son eki, her bir sanal makineye DHCP kullanılarak sağlanır. Kendi ad çözümleme çözümünüzü kullandığınızda, bu sonek sanal makinelere sağlanmaz çünkü son ek diğer DNS mimarilerini kesintiye uğratır. Makinelere FQDN ile başvurmak veya sanal makinelerinizde son eki yapılandırmak için, soneki belirtmek üzere PowerShell 'i veya API 'yi kullanabilirsiniz:
 
-* Azure Kaynak Yöneticisi tarafından yönetilen sanal ağlar için [sonek, ağ arabirimi kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı üzerinden kullanılabilir. Nic'in `azure network public-ip show <resource group> <pip name>` FQDN'sini içeren genel IP'nizin ayrıntılarını görüntülemek için komutu da çalıştırabilirsiniz.
+* Azure Resource Manager tarafından yönetilen sanal ağlar için, sonek [ağ arabirim kartı](https://msdn.microsoft.com/library/azure/mt163668.aspx) kaynağı aracılığıyla kullanılabilir. Ayrıca, NIC 'in FQDN `azure network public-ip show <resource group> <pip name>` 'sini IÇEREN genel IP 'nizin ayrıntılarını göstermek için komutunu da çalıştırabilirsiniz.
 
-Sorguları Azure'a iletmek gereksinimlerinize uygun değilse, kendi DNS çözümünüzü sağlamanız gerekir.  DNS çözümünüzün şu anlama olması gerekir:
+Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS çözümünüzü sağlamanız gerekir.  DNS çözümünüzün şunları yapması gerekir:
 
-* Örneğin [DDNS](../../virtual-network/virtual-networks-name-resolution-ddns.md)üzerinden uygun ana bilgisayar adı çözünürlüğü sağlayın. DDNS kullanıyorsanız, DNS kayıt atma devre dışı kalmanız gerekebilir. Azure'un DHCP kiralamaları çok uzundur ve atma işlemi DNS kayıtlarını zamanından önce kaldırabilir.
-* Dış etki alanı adlarının çözülmesine izin vermek için uygun özyinelemeli çözüm sağlayın.
-* Hizmet sunduğu istemcilerden (Bağlantı noktası 53'teki TCP ve UDP) erişilebilir olun ve Internet'e erişebilirsiniz.
-* Harici aracıların oluşturduğu tehditleri azaltmak için Internet'ten erişime karşı güvence altına alın.
+* Örneğin, [DDNS](../../virtual-network/virtual-networks-name-resolution-ddns.md)aracılığıyla uygun konak adı çözümlemesini sağlayın. DDNS kullanırsanız, DNS kaydı atmayı devre dışı bırakmanız gerekebilir. Azure 'un DHCP kiraları çok uzun ve atma, DNS kayıtlarını erken kaldırabilir.
+* Dış etki alanı adlarının çözümlenmesine izin vermek için uygun özyinelemeli çözüm sağlayın.
+* Hizmet verdiği ve Internet 'e erişebilen istemcilerden erişilebilir (53 numaralı bağlantı noktası üzerinden TCP ve UDP).
+* Dış aracılardan kaynaklanan tehditleri azaltmak için Internet 'ten erişime karşı güvenli hale getirilmesi.
 
 > [!NOTE]
-> En iyi performans için, Azure DNS sunucularında sanal makineler kullandığınızda, IPv6'yı devre dışı bırakıp her DNS sunucusu sanal makinesine [Örnek Düzeyinde Genel IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) atayın.  
+> En iyi performans için, Azure DNS sunucularında sanal makineler kullandığınızda IPv6 'Yı devre dışı bırakın ve her DNS sunucusu sanal makinesine [örnek düzeyi genel IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) atayın.  
 >
 >

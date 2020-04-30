@@ -1,6 +1,6 @@
 ---
-title: Azure AD Etki Alanı Hizmetleri için yönetim kavramları | Microsoft Dokümanlar
-description: Azure Active Directory Etki Alanı Hizmetleri yönetilen etki alanının nasıl yönetilenve kullanıcı hesaplarının ve parolaların davranışı hakkında bilgi edinin
+title: Azure AD Domain Services için yönetim kavramları | Microsoft Docs
+description: Azure Active Directory Domain Services yönetilen bir etki alanını ve Kullanıcı hesaplarının ve parolaların davranışını yönetme hakkında bilgi edinin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,102 +11,102 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: ba281ffb30801e0ae10cab10ceb95c0a3bffde2d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640016"
 ---
-# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Etki Alanı Hizmetlerinde kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
+# <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
 
-Azure Active Directory Etki Alanı Hizmetleri (AD DS) yönetilen bir etki alanı oluşturup çalıştırdığınızda, geleneksel şirket içi AD DS ortamıyla karşılaştırıldığında davranış ta bazı farklılıklar vardır. Azure AD DS'de aynı yönetim araçlarını kendi kendini yöneten bir etki alanı olarak kullanırsınız, ancak etki alanı denetleyicilerine (DC) doğrudan erişemezsiniz. Ayrıca, kullanıcı hesabı oluşturmanın kaynağına bağlı olarak parola ilkeleri ve parola kalıpları için davranış farklılıkları da vardır.
+Azure Active Directory Domain Services (AD DS) yönetilen bir etki alanı oluşturup çalıştırdığınızda, bazı durumlarda geleneksel bir şirket içi AD DS ortamıyla karşılaştırıldığında bazı farklılıklar vardır. Azure AD DS 'de otomatik olarak yönetilen bir etki alanı olarak aynı yönetim araçlarını kullanırsınız, ancak etki alanı denetleyicilerine (DC) doğrudan erişemezsiniz. Ayrıca, Kullanıcı hesabı oluşturma kaynağına bağlı olarak parola ilkeleri ve parola karmalarının davranışında bazı farklılıklar da vardır.
 
-Bu kavramsal makalede, Azure AD DS yönetilen etki alanının nasıl yönetilen şekli ve kullanıcı hesaplarının oluşturulma şekillerine bağlı olarak farklı davranışları ayrıntılı olarak açıklanmaktadır.
+Bu kavramsal makalede, bir Azure AD DS yönetilen etki alanını ve bunların oluşturulma şekline bağlı olarak Kullanıcı hesaplarının farklı davranışlarını yönetme hakkında bilgi yer alır.
 
 ## <a name="domain-management"></a>Etki alanı yönetimi
 
-Azure AD DS'de, kullanıcılar ve gruplar, kimlik bilgileri ve ilkeler gibi tüm kaynakları içeren etki alanı denetleyicileri (DC'ler) yönetilen hizmetin bir parçasıdır. Artıklık için, Azure AD DS yönetilen etki alanının bir parçası olarak iki DC oluşturulur. Yönetim görevlerini gerçekleştirmek için bu DC'lerde oturum açamazsınız. Bunun yerine, Azure AD DS yönetilen etki alanına katılan bir yönetim VM'si oluşturun ve ardından normal AD DS yönetim araçlarınızı yükleyin. Örneğin, DNS veya Grup İlkesi nesneleri gibi Active Directory Administrative Center veya Microsoft Management Console (MMC) snap-ins'i kullanabilirsiniz.
+Azure AD DS 'de, kullanıcılar ve gruplar, kimlik bilgileri ve ilkeler gibi tüm kaynakları içeren etki alanı denetleyicileri (DC 'Ler), yönetilen hizmetin bir parçasıdır. Yedeklilik için, Azure AD DS yönetilen bir etki alanının parçası olarak iki DC oluşturulur. Yönetim görevlerini gerçekleştirmek için bu DC 'lerde oturum açamazsınız. Bunun yerine, Azure AD DS yönetilen etki alanına katılmış bir yönetim sanal makinesi oluşturun ve ardından düzenli AD DS yönetim araçlarınızı yükleyebilirsiniz. Örneğin, DNS veya grup ilkesi nesneleri gibi Active Directory Yönetim Merkezi veya Microsoft Yönetim Konsolu (MMC) ek bileşenlerini kullanabilirsiniz.
 
 ## <a name="user-account-creation"></a>Kullanıcı hesabı oluşturma
 
-Kullanıcı hesapları Azure AD DS'de birden çok şekilde oluşturulabilir. Çoğu kullanıcı hesabı Azure AD'den eşitlenir ve şirket içi AD DS ortamından senkronize edilmiş kullanıcı hesabı da içerebilir. Ayrıca doğrudan Azure AD DS'de el ile hesap oluşturabilirsiniz. İlk parola eşitleme veya parola ilkesi gibi bazı özellikler, kullanıcı hesaplarının nasıl ve nerede oluşturulduğuna bağlı olarak farklı şekilde davranılır.
+Kullanıcı hesapları, Azure AD DS 'de birden çok şekilde oluşturulabilir. Çoğu kullanıcı hesabı Azure AD 'den eşitlenir ve bu da şirket içi AD DS ortamından eşitlenen Kullanıcı hesabını da içerebilir. Ayrıca, hesapları doğrudan Azure AD DS 'da da el ile oluşturabilirsiniz. İlk parola eşitleme veya parola ilkesi gibi bazı özellikler, Kullanıcı hesaplarının nasıl ve nerede oluşturulduğuna bağlı olarak farklı davranır.
 
-* Kullanıcı hesabı Azure AD'den senkronize edilebilir. Buna, doğrudan Azure AD'de oluşturulan yalnızca bulutkullanıcı hesapları ve Azure AD Connect'i kullanarak şirket içi AD DS ortamından senkronize edilen karma kullanıcı hesapları dahildir.
-    * Azure AD DS'deki kullanıcı hesaplarının çoğu, Azure AD'nin eşitleme işlemi yle oluşturulur.
-* Kullanıcı hesabı, Azure AD DS yönetilen bir etki alanında el ile oluşturulabilir ve Azure AD'de bulunmaz.
-    * Yalnızca Azure AD DS'de çalışan uygulamalar için hizmet hesapları oluşturmanız gerekiyorsa, bunları yönetilen etki alanında el ile oluşturabilirsiniz. Eşitleme Azure AD'den bir yol olduğundan, Azure AD DS'de oluşturulan kullanıcı hesapları Azure AD ile eşitlenmez.
+* Kullanıcı hesabı Azure AD 'den eşitlenebilir. Bu, doğrudan Azure AD 'de oluşturulan bulut Kullanıcı hesaplarını ve Azure AD Connect kullanarak şirket içi AD DS ortamından eşitlenen karma Kullanıcı hesaplarını içerir.
+    * Azure AD DS 'daki Kullanıcı hesaplarının çoğu Azure AD 'den eşitleme işlemi aracılığıyla oluşturulur.
+* Kullanıcı hesabı Azure AD DS yönetilen bir etki alanında el ile oluşturulabilir ve Azure AD 'de mevcut değildir.
+    * Yalnızca Azure AD DS çalışan uygulamalar için hizmet hesapları oluşturmanız gerekiyorsa, bunları yönetilen etki alanında el ile oluşturabilirsiniz. Eşitleme Azure AD 'den bir yol olduğu için Azure AD DS 'da oluşturulan kullanıcı hesapları Azure AD 'ye geri aktarılmaz.
 
 ## <a name="password-policy"></a>Parola ilkesi
 
-Azure AD DS, hesap kilitleme, maksimum parola yaşı ve parola karmaşıklığı gibi nesnelerin ayarlarını tanımlayan varsayılan bir parola ilkesi içerir. Hesap kilitleme ilkesi gibi ayarlar, kullanıcının önceki bölümde belirtildiği gibi nasıl oluşturulduğuna bakılmaksızın Azure AD DS'deki tüm kullanıcılar için geçerlidir. Minimum parola uzunluğu ve parola karmaşıklığı gibi birkaç ayar yalnızca doğrudan Azure AD DS'de oluşturulan kullanıcılar için geçerlidir.
+Azure AD DS, hesap kilitleme, en fazla parola yaşı ve parola karmaşıklığı gibi şeyler için ayarları tanımlayan bir varsayılan parola ilkesi içerir. Hesap kilitleme ilkesi gibi ayarlar, kullanıcının önceki bölümde özetlendiği şekilde nasıl oluşturulduğuna bakılmaksızın Azure AD DS 'deki tüm kullanıcılara uygulanır. Minimum parola uzunluğu ve parola karmaşıklığı gibi bazı ayarlar, yalnızca doğrudan Azure AD DS oluşturulan kullanıcılara uygulanır.
 
-Azure AD DS'deki varsayılan ilkeyi geçersiz kılmak için kendi özel parola ilkelerinizi oluşturabilirsiniz. Bu özel ilkeler daha sonra gerektiğinde belirli kullanıcı gruplarına uygulanabilir.
+Azure AD DS 'de varsayılan ilkeyi geçersiz kılmak için kendi özel parola ilkelerinizi oluşturabilirsiniz. Bu özel ilkeler, gerektiğinde belirli kullanıcı gruplarına uygulanabilir.
 
-Parola ilkelerinin kullanıcı oluşturma kaynağına bağlı olarak nasıl uygulandığı konusundaki farklar hakkında daha fazla bilgi için, [yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri][password-policy]bölümüne bakın.
+Parola ilkelerinin Kullanıcı oluşturma kaynağına göre uygulanma farkları hakkında daha fazla bilgi için, bkz. [yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri][password-policy].
 
-## <a name="password-hashes"></a>Parola hashes
+## <a name="password-hashes"></a>Parola karmaları
 
-Azure AD DS, yönetilen etki alanında kullanıcıların kimliğini doğrulamak için NT LAN Yöneticisi (NTLM) ve Kerberos kimlik doğrulaması için uygun bir biçimde parola hashes'e ihtiyaç duyar. Azure AD, kiracınız için Azure AD DS'yi etkinleştirene kadar NTLM veya Kerberos kimlik doğrulaması için gerekli biçimde parola açıkları oluşturmaz veya depolamaz. Azure AD, güvenlik nedeniyle parola kimlik bilgilerini açık metin biçiminde de depolamaz. Bu nedenle, Azure AD bu NTLM veya Kerberos parola hatalarını kullanıcıların varolan kimlik bilgilerini temel alarak otomatik olarak oluşturamaz.
+Yönetilen etki alanındaki kullanıcıların kimliğini doğrulamak için Azure AD DS 'nin, NT LAN Manager (NTLM) ve Kerberos kimlik doğrulaması için uygun bir biçimde parola karmaları olması gerekir. Azure AD, kiracınız için Azure AD DS etkinleştirene kadar NTLM veya Kerberos kimlik doğrulaması için gereken biçimde parola karmaları oluşturmaz veya depolamaz. Azure AD, güvenlik nedenleriyle şifresiz metin biçiminde hiçbir parola kimlik bilgisi depolamaz. Bu nedenle, Azure AD kullanıcıların mevcut kimlik bilgilerini temel alarak bu NTLM veya Kerberos parola karmalarını otomatik olarak üretemiyor.
 
-Yalnızca bulutkullanıcıları hesapları için kullanıcıların Azure AD DS'yi kullanabilmeleri için parolalarını değiştirmeleri gerekir. Bu parola değiştirme işlemi, Kerberos ve NTLM kimlik doğrulamasının parola işlenmelerinin Azure AD'de oluşturulmasına ve depolanmasına neden olur. Parola değiştirilene kadar hesap Azure AD'den Azure AD DS'ye eşitlenmez.
+Yalnızca bulut Kullanıcı hesapları için, kullanıcıların Azure AD DS kullanabilmesi için parolalarını değiştirmesi gerekir. Bu parola değiştirme işlemi, Kerberos ve NTLM kimlik doğrulamasının parola karmalarının Azure AD 'de oluşturulmasına ve depolanmasına neden olur. Hesap, parola değiştirilene kadar Azure AD 'den Azure AD DS eşitlenmemiş.
 
-Azure AD Connect'i kullanarak şirket içi AD DS ortamından senkronize edilen kullanıcılar için [parola açıklarının eşitlenmesine olanak tanır.][hybrid-phs]
+Azure AD Connect kullanarak şirket içi AD DS ortamından eşitlenen kullanıcılar için [parola karmalarının eşitlenmesini etkinleştirin][hybrid-phs].
 
 > [!IMPORTANT]
-> Azure AD Connect, eski parola bağlantı larını yalnızca Azure AD kiracınız için Azure AD DS'yi etkinleştirdiğinizde eşitler. Eski parola açıkları, şirket içi bir AD DS ortamını Azure AD ile eşitlemek için yalnızca Azure AD Connect kullanıyorsanız kullanılmaz.
+> Azure AD Connect yalnızca Azure AD kiracınız için Azure AD DS etkinleştirdiğinizde eski parola karmalarını eşitler. Yalnızca Azure AD ile şirket içi AD DS ortamını eşleştirmek için Azure AD Connect kullanıyorsanız eski parola karmaları kullanılmaz.
 >
-> Eski uygulamalarınız NTLM kimlik doğrulaması veya LDAP basit bağlamaları kullanmıyorsa, Azure AD DS için NTLM şifre karma eşitlemesi devre dışı bırakmanızı öneririz. Daha fazla bilgi için zayıf [şifreleme paketlerini ve NTLM kimlik bilgisi karma senkronizasyonunu devre dışı sayıl.][secure-domain]
+> Eski uygulamalarınız NTLM kimlik doğrulaması veya LDAP basit bağlamalar kullanmıyorsanız, Azure AD DS için NTLM parola karma eşitlemesini devre dışı bırakmanızı öneririz. Daha fazla bilgi için bkz. [zayıf şifre paketlerini ve NTLM kimlik bilgisi karma eşitlemesini devre dışı bırakma][secure-domain].
 
-Uygun şekilde yapılandırıldıktan sonra, kullanılabilir parola varoşları Azure AD DS yönetilen etki alanında depolanır. Azure AD DS yönetilen etki alanını silerseniz, bu noktada depolanan parola varoşları da silinir. Azure AD'de senkronize edilmiş kimlik bilgisi bilgileri daha sonra bir Azure AD DS yönetilen etki alanı oluşturursanız yeniden kullanılamaz - parola karma eşitlemeyi yeniden yapılandırmanız gerekir. Daha önce etki alanına katılan VM'ler veya kullanıcılar hemen kimlik doğrulaması yapamaz - Azure AD'nin parola hatalarını oluşturması ve yeni Azure AD DS yönetilen etki alanında depolaması gerekir. Daha fazla bilgi için Azure [AD DS ve Azure AD Connect için Parola karma eşitleme işlemine][azure-ad-password-sync]bakın.
+Uygun şekilde yapılandırıldıktan sonra, kullanılabilir parola karmaları Azure AD DS yönetilen etki alanında depolanır. Azure AD DS yönetilen etki alanını silerseniz, o noktada depolanan tüm parola karmaları da silinir. Azure AD 'deki eşitlenmiş kimlik bilgileri, daha sonra Azure AD DS yönetilen bir etki alanı oluşturursanız yeniden kullanılamaz. parola karmalarını yeniden depolamak için Parola karması eşitlemesini yeniden yapılandırmanız gerekir. Daha önce etki alanına katılmış VM 'Ler veya kullanıcılar, parola karmalarını yeni Azure AD DS yönetilen etki alanında oluşturmak ve depolamak için Azure AD ihtiyaçlarına hemen kimlik doğrulaması yapamaz. Daha fazla bilgi için bkz. [Azure AD DS Için Parola karması eşitleme işlemi ve Azure AD Connect][azure-ad-password-sync].
 
 > [!IMPORTANT]
-> Azure AD Connect yalnızca şirket içi AD DS ortamlarıyla senkronizasyon için yüklenmeli ve yapılandırılmalıdır. Azure AD Connect'i Azure AD DS yönetilen bir etki alanına yüklemek için desteklenmez.
+> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
 
 ## <a name="forests-and-trusts"></a>Ormanlar ve güvenler
 
-*Orman,* Active Directory Domain Services (AD DS) tarafından bir veya daha fazla *etki alanını*gruplandırmak için kullanılan mantıksal bir yapıdır. Etki alanları daha sonra nesneleri kullanıcı veya gruplar için depolar ve kimlik doğrulama hizmetleri sağlar.
+*Orman* , bir veya daha fazla *etki alanını*gruplamak için Active Directory Domain Services (AD DS) tarafından kullanılan mantıksal bir yapıdır. Etki alanları daha sonra Kullanıcı veya grup için nesneleri depolar ve kimlik doğrulama hizmetleri sağlar.
 
-Azure AD DS'de orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle birleşme ve satın almalardan sonra, her biri birden çok etki alanı içeren birden çok şirket içi ormanla karşılaşabilirsiniz.
+Azure AD DS, orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle Birleşmeler ve alımlar sonrasında, her biri birden çok etki alanı içeren birden çok şirket içi ormana sahip olabilirsiniz.
 
-Varsayılan olarak, bir Azure AD DS yönetilen etki alanı *kullanıcı* ormanı olarak oluşturulur. Bu tür orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılan bir VM'de oturum açma gibi Azure AD DS yönetilen etki alanına karşı doğrudan kimlik doğrulaması yapabilir. Parola kalıpları eşitlenediğinde ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemleri kullanmadığında kullanıcı ormanı çalışır.
+Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi Azure AD DS yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
 
-Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS'lerinden tek yönlü orman *güveni* üzerinden kimlik doğrulaması sağlar. Bu yaklaşımla, kullanıcı nesneleri ve parola kalıpları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS'de bulunur. Bu yaklaşım, işletmelerin Azure'da LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı kaynakları ve uygulama platformlarını barındırmasına olanak tanır, ancak kimlik doğrulama sorunları veya endişeleri kaldırılır. Azure AD DS kaynak ormanları şu anda önizlemede.
+Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
 
-Azure AD DS'deki orman türleri hakkında daha fazla [How do forest trusts work in Azure AD DS?][concepts-trust] bilgi için [bkz.][concepts-forest]
+Azure AD DS orman türleri hakkında daha fazla bilgi için bkz. [kaynak ormanları nelerdir?][concepts-forest] ve [orman güvenleri Azure AD DS nasıl çalışır?][concepts-trust]
 
-## <a name="azure-ad-ds-skus"></a>Azure AD DS SKUs
+## <a name="azure-ad-ds-skus"></a>Azure AD DS SKU 'Ları
 
-Azure AD DS'de kullanılabilir performans ve özellikler SKU'ya dayanır. Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe SKU'ları değiştirebilirsiniz. Aşağıdaki tabloda kullanılabilir SNU'lar ve aralarındaki farklar özetlenmektedir:
+Azure AD DS 'de, kullanılabilir performans ve Özellikler SKU 'YU temel alır. Yönetilen etki alanını oluştururken bir SKU seçersiniz ve yönetilen etki alanı dağıtıldıktan sonra iş gereksinimleriniz değiştikçe SKU 'Ları değiştirebilirsiniz. Aşağıdaki tabloda kullanılabilir SKU 'Lar ve aralarındaki farklar özetlenmektedir:
 
-| SKU adı   | Maksimum nesne sayısı | Yedekleme sıklığı | En fazla giden orman güvensayısı |
+| SKU adı   | En fazla nesne sayısı | Yedekleme sıklığı | En fazla giden orman güveni sayısı |
 |------------|----------------------|------------------|----|
 | Standart   | Sınırsız            | Her 7 günde bir     | 0  |
-| Enterprise | Sınırsız            | Her 3 günde bir     | 5  |
+| Enterprise | Sınırsız            | 3 günde bir     | 5  |
 | Premium    | Sınırsız            | Günlük            | 10 |
 
-Bu Azure AD DS SK'larından önce, Azure AD DS yönetilen etki alanındaki nesne (kullanıcı ve bilgisayar hesapları) sayısına dayalı bir faturalandırma modeli kullanılmıştır. Yönetilen etki alanında nesnelerin sayısına göre artık değişken fiyatlandırma yoktur.
+Bu Azure AD DS SKU 'larından önce, Azure AD DS yönetilen etki alanındaki nesne sayısına (Kullanıcı ve bilgisayar hesapları) göre bir faturalandırma modeli kullanılmıştır. Yönetilen etki alanındaki nesne sayısına bağlı olarak artık değişken fiyatlandırma yoktur.
 
-Daha fazla bilgi için [Azure AD DS fiyatlandırma sayfasına][pricing]bakın.
+Daha fazla bilgi için bkz. [Azure AD DS fiyatlandırma sayfası][pricing].
 
 ### <a name="managed-domain-performance"></a>Yönetilen etki alanı performansı
 
-Etki alanı performansı, bir uygulama için kimlik doğrulamanın nasıl uygulandığına bağlı olarak değişir. Ek bilgi işlem kaynakları sorgu yanıt süresini iyileştirmeye ve eşitleme işlemlerinde harcanan zamanı azaltmaya yardımcı olabilir. SKU düzeyi arttıkça, yönetilen etki alanı için kullanılabilir işlem kaynakları artar. Uygulamalarınızın performansını izleyin ve gerekli kaynakları planlayın.
+Etki alanı performansı, bir uygulama için kimlik doğrulamanın nasıl uygulandığına göre farklılık gösterir. Ek işlem kaynakları sorgu yanıt süresinin artırılmasına ve eşitleme işlemlerinde harcanan süreyi azaltmanıza yardımcı olabilir. SKU düzeyi arttıkça, yönetilen etki alanı için kullanılabilir işlem kaynakları artar. Uygulamalarınızın performansını izleyin ve gerekli kaynakları planlayın.
 
-İşletmeniz veya uygulamanız değişiklik gerektiriyorsa ve Azure AD DS yönetilen etki alanınız için ek bilgi işlem gücüne ihtiyacınız varsa, farklı bir SKU'ya geçebilirsiniz.
+İşiniz veya uygulamanız için değişiklik yaptıysanız ve Azure AD DS yönetilen etki alanınız için ek işlem gücü gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
 
 ### <a name="backup-frequency"></a>Yedekleme sıklığı
 
-Yedekleme sıklığı, yönetilen etki alanının anlık görüntüsünün ne sıklıkta alındığını belirler. Yedeklemeler, Azure platformu tarafından yönetilen otomatik bir işlemdir. Yönetilen etki alanınızla ilgili bir sorun durumunda, Azure desteği yedeklemeden geri almanıza yardımcı olabilir. Eşitleme yalnızca Azure AD'den tek bir şekilde *oluştuğundan,* Azure AD DS yönetilen etki alanındaki sorunlar Azure AD veya şirket içi AD DS ortamlarını ve işlevselliğini etkilemez.
+Yedekleme sıklığı, yönetilen etki alanının bir anlık görüntüsünün ne sıklıkta alınacağını belirler. Yedeklemeler, Azure platformu tarafından yönetilen otomatikleştirilmiş bir işlemdir. Yönetilen etki alanı ile ilgili bir sorun olması durumunda Azure desteği, yedekten geri yükleme konusunda size yardımcı olabilir. Eşitleme yalnızca Azure AD *'den* tek yönlü olduğundan, Azure AD DS yönetilen bir etki alanındaki tüm sorunlar Azure AD 'yi veya şirket içi AD DS ortamları ve işlevleri etkilemez.
 
-SKU düzeyi arttıkça, bu yedekleme anlık görüntü sıklığı artar. Yönetilen etki alanınız için gerekli yedekleme sıklığını belirlemek için iş gereksinimlerinizi ve kurtarma noktası hedefinizi (RPO) gözden geçirin. İşletmeniz veya uygulama gereksinimleriniz değişirse ve daha sık yedeklemeye ihtiyacınız varsa, farklı bir SKU'ya geçebilirsiniz.
+SKU düzeyi arttıkça, bu yedekleme anlık görüntülerinin sıklığı artar. Yönetilen etki alanınız için gereken yedekleme sıklığını öğrenmek üzere iş gereksinimlerinizi ve kurtarma noktası hedefini (RPO) gözden geçirin. İşiniz veya uygulama gereksinimleriniz değiştikçe ve daha sık yedeklemeler gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
 
 ### <a name="outbound-forests"></a>Giden ormanlar
 
-Önceki bölümde, Azure AD DS yönetilen bir etki alanından şirket içi AD DS ortamına (şu anda önizlemede) tek yönlü giden orman güvenleri ayrıntılı olarak açıklanmaktadır. SKU, Azure AD DS yönetilen bir etki alanı için oluşturabileceğiniz maksimum orman güvensayısını belirler. Gerçekte kaç güvene ihtiyacınız olduğunu belirlemek için işletmenizi ve uygulama gereksinimlerinizi gözden geçirin ve uygun Azure AD DS SKU'yu seçin. Yine, iş gereksinimleriniz değişirse ve ek orman güvenleri oluşturmanız gerekiyorsa, farklı bir SKU'ya geçebilirsiniz.
+Önceki bölümde, tek yönlü giden bir orman Azure AD DS yönetilen bir etki alanından şirket içi AD DS ortamına (Şu anda önizlemede) güvenir. SKU, Azure AD DS yönetilen bir etki alanı için oluşturabileceğiniz en fazla orman güveni sayısını belirler. İhtiyacınız olan güvenin sayısını öğrenmek için iş ve uygulama gereksinimlerinizi gözden geçirin ve uygun Azure AD DS SKU 'sunu seçin. Yine, iş gereksinimleriniz değiştiğinde ve ek orman güvenleri oluşturmanız gerekiyorsa, farklı bir SKU 'ya geçiş yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için [Azure AD DS yönetilen bir etki alanı oluşturun.][create-instance]
+Başlamak için [Azure AD DS yönetilen bir etki alanı oluşturun][create-instance].
 
 <!-- INTERNAL LINKS -->
 [password-policy]: password-policy.md

@@ -1,7 +1,7 @@
 ---
-title: Python'da eğitim çalıştırmayı başlatın, izleyin ve iptal edin
+title: Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 titleSuffix: Azure Machine Learning
-description: Makine öğrenimi denemelerinizi nasıl başlatacak, durumunu ayarlamayı, etiketlemeyi ve düzenleyeceklerinizi öğrenin.
+description: Nasıl başlayacağınızı, denemeleri durumunu ayarlamayı ve makinenizin öğrendiklerinizi düzenlemenizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,47 +12,47 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.openlocfilehash: cdc739c7464b3deb87faaaabfd8d657ae8c28678
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617763"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python'da eğitim çalıştırmayı başlatın, izleyin ve iptal edin
+# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-[Python için Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), Machine Learning [CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning stüdyosu,](https://ml.azure.com) eğitim ve deneme için koşularınızı izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
+[Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning CLI](reference-azure-machine-learning-cli.md)ve [Azure Machine Learning Studio](https://ml.azure.com) , eğitim ve deneme için çalıştırmalarını izlemek, düzenlemek ve yönetmek için çeşitli yöntemler sağlar.
 
-Bu makalede, aşağıdaki görevlerin örnekleri gösterilmektedir:
+Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 
-* Çalıştırma performansını izleyin.
-* Çalıştırmaları iptal edin veya başarısız edin.
-* Çocuk çalıştırmaları oluşturun.
-* Etiketle ve koşa.
+* Çalışma performansını izleme.
+* İptal veya başarısız çalıştırmalar.
+* Alt çalıştırmalar oluşturun.
+* Etiket ve bulma çalıştırmaları.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki öğelere ihtiyacınız olacak:
+Aşağıdaki öğeler gerekir:
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* [Azure Makine Öğrenimi çalışma alanı.](how-to-manage-workspace.md)
+* [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
-* Python için Azure Machine Learning SDK (sürüm 1.0.21 veya sonrası). SDK'nın en son sürümünü yüklemek veya güncelleştirmek için [SDK'yı yükleyin veya güncelleştirin' e](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)bakın.
+* Python için Azure Machine Learning SDK (sürüm 1.0.21 veya üzeri). SDK 'nın en son sürümünü yüklemek veya güncelleştirmek için bkz. [SDK 'Yı yüklemek veya güncelleştirmek](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-    Azure Machine Learning SDK sürümünüzü kontrol etmek için aşağıdaki kodu kullanın:
+    Azure Machine Learning SDK sürümünüzü denetlemek için aşağıdaki kodu kullanın:
 
     ```python
     print(azureml.core.VERSION)
     ```
 
-* Azure Machine Learning için [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ve [CLI uzantısı.](reference-azure-machine-learning-cli.md)
+* Azure Machine Learning için [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ve [CLI uzantısı](reference-azure-machine-learning-cli.md).
 
-## <a name="start-a-run-and-its-logging-process"></a>Çalıştırmayı ve günlüğe kaydetme işlemini başlatın
+## <a name="start-a-run-and-its-logging-process"></a>Çalıştırma ve günlük işlemini başlatma
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-[Azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden [Çalışma Alanı,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) [Deneme,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [Çalıştır](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını içe aktararak denemenizi ayarlayın.
+[Çalışma alanını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) [, denemeyi,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [çalıştırmayı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden içeri aktararak denemenizin kurulumunu yapın.
 
 ```python
 import azureml.core
@@ -63,18 +63,18 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-Yöntemle bir çalıştırma ve [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) günlüğe kaydetme işlemini başlatın.
+Bir çalıştırma ve günlük oluşturma işlemini [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) yöntemiyle başlatın.
 
 ```python
 notebook_run = exp.start_logging()
 notebook_run.log(name="message", value="Hello from run!")
 ```
 
-### <a name="using-the-cli"></a>CLI'yi kullanma
+### <a name="using-the-cli"></a>CLı 'yi kullanma
 
 Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
 
-1. Bir kabuk veya komut isteminden Azure aboneliğinize kimlik doğrulamak için Azure CLI'yi kullanın:
+1. Bir kabuk veya komut isteminden Azure aboneliğinizde kimlik doğrulaması yapmak için Azure CLı 'yı kullanın:
 
     ```azurecli-interactive
     az login
@@ -82,65 +82,65 @@ Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
     
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-1. Çalışma komut dosyanızı içeren klasöre bir çalışma alanı yapılandırması takın. Azure `myworkspace` Makine Öğrenimi çalışma alanınızla değiştirin. Çalışma `myresourcegroup` alanınızı içeren Azure kaynak grubuyla değiştirin:
+1. Eğitim betiğinizi içeren klasöre bir çalışma alanı yapılandırması ekleyin. Azure Machine Learning `myworkspace` çalışma alanınız ile değiştirin. Çalışma `myresourcegroup` alanınızı içeren Azure Kaynak grubuyla değiştirin:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Bu komut, `.azureml` örnek runconfig ve conda ortamı dosyaları içeren bir alt dizin oluşturur. Ayrıca, Azure `config.json` Machine Learning çalışma alanınızla iletişim kurmak için kullanılan bir dosya da içerir.
+    Bu komut, örnek `.azureml` runconfig ve Conda ortam dosyalarını içeren bir alt dizin oluşturur. Ayrıca, Azure Machine Learning çalışma `config.json` alanınız ile iletişim kurmak için kullanılan bir dosya içerir.
 
-    Daha fazla bilgi için [az ml klasöre iliştirin.](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)
+    Daha fazla bilgi için bkz. [az ml Folder Attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
-2. Çalıştırmayı başlatmak için aşağıdaki komutu kullanın. Bu komutu kullanırken, -c parametresi karşı \*runconfig dosyasının adını (dosya sisteminize bakıyorsanız .runconfig'den önceki metin) belirtin.
+2. Çalıştırmayı başlatmak için aşağıdaki komutu kullanın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını (dosya sisteminize bakıyorsanız \*. runconfig öğesinden önceki metin) belirtin.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > Komut, `az ml folder attach` iki `.azureml` örnek runconfig dosyaları içeren bir alt dizin oluşturdu.
+    > `az ml folder attach` Komut, iki örnek `.azureml` runconfig dosyası içeren bir alt dizin oluşturdu.
     >
-    > Programlı bir çalıştır yapılandırma nesnesi oluşturan bir Python komut dosyası varsa, [runconfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) kullanarak runconfig dosyası olarak kaydedebilirsiniz.
+    > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
     >
-    > Daha fazla örnek runconfig [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)dosyaları için bkz.
+    > Daha fazla örnek runconfig dosyası için bkz [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml)..
 
-    Daha fazla bilgi için az [ml run submit-script'e](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)bakın.
+    Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning stüdyosukullanma
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
 
-Tasarımcıda (önizleme) bir denetim hattı yayımı göndermeye başlamak için aşağıdaki adımları kullanın:
+Tasarımcı 'da (Önizleme) bir işlem hattı çalıştırması başlatmak için aşağıdaki adımları kullanın:
 
-1. Ardışık hattınız için varsayılan bir işlem hedefi ayarlayın.
+1. İşlem hatlarınız için varsayılan bir işlem hedefi ayarlayın.
 
-1. Boru hattı tuvalinin üst kısmında **Çalıştır'ı** seçin.
+1. İşlem hattı tuvalinin en üstünde **Çalıştır** ' ı seçin.
 
-1. Boru hattı çalışanlarınızı gruplandırmak için bir Deneme seçin.
+1. İşlem hattı çalıştırmalarını gruplamak için bir deneme seçin.
 
-## <a name="monitor-the-status-of-a-run"></a>Çalıştırmanın durumunu izleme
+## <a name="monitor-the-status-of-a-run"></a>Bir çalıştırmanın durumunu izleme
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-[`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) Yöntemle bir çalıştırmanın durumunu alın.
+[`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) Yöntemi ile bir çalıştırmanın durumunu alır.
 
 ```python
 print(notebook_run.get_status())
 ```
 
-Çalışma kimliğini, yürütme süresini ve çalışmayla ilgili ek [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) ayrıntıları almak için yöntemi kullanın.
+Çalıştırma KIMLIĞINI, yürütme süresini ve çalıştırma hakkında ek ayrıntıları almak için [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) yöntemini kullanın.
 
 ```python
 print(notebook_run.get_details())
 ```
 
-Çalışmanız başarıyla tamamlandığında, [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) tamamlanmış olarak işaretlemek için yöntemi kullanın.
+Çalıştırma başarıyla tamamlandığında, [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) yöntemini kullanarak tamamlandı olarak işaretleyin.
 
 ```python
 notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Python'un `with...as` tasarım deseni kullanırsanız, çalışma kapsam dışında olduğunda çalışma otomatik olarak tamamlanmış olarak işaretlenir. Çalıştırmayı tamamlanmış olarak el ile işaretlemeniz gerekmez.
+Python 'un `with...as` tasarım modelini kullanıyorsanız, çalıştırma kapsam dışında olduğunda çalıştırma otomatik olarak tamamlandı olarak işaretlenir. Çalıştırmanın tamamlandı olarak el ile işaretlenmesi gerekmez.
 
 ```python
 with exp.start_logging() as notebook_run:
@@ -150,51 +150,51 @@ with exp.start_logging() as notebook_run:
 print(notebook_run.get_status())
 ```
 
-### <a name="using-the-cli"></a>CLI'yi kullanma
+### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-1. Denemeniz için çalışan listesini görüntülemek için aşağıdaki komutu kullanın. Denemenizin adı ile değiştirin: `experiment`
+1. Denemenizin çalışma listesini görüntülemek için aşağıdaki komutu kullanın. Denemenizin adıyla değiştirin `experiment` :
 
     ```azurecli-interactive
     az ml run list --experiment-name experiment
     ```
 
-    Bu komut, bu denemenin çalıştırmaları hakkındaki bilgileri listeleyen bir JSON belgesini döndürür.
+    Bu komut, bu deneme için çalıştırmalar hakkındaki bilgileri listeleyen bir JSON belgesi döndürür.
 
-    Daha fazla bilgi için [az ml deney listesine](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)bakın.
+    Daha fazla bilgi için bkz. [az ml deneme listesi](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
 
-2. Belirli bir çalışmadaki bilgileri görüntülemek için aşağıdaki komutu kullanın. Çalıştırmanın kimliğiyle değiştirin: `runid`
+2. Belirli bir çalıştırma hakkındaki bilgileri görüntülemek için aşağıdaki komutu kullanın. Çalıştırmanın `runid` kimliğiyle değiştirin:
 
     ```azurecli-interactive
     az ml run show -r runid
     ```
 
-    Bu komut, çalışma yla ilgili bilgileri listeleyen bir JSON belgesini döndürür.
+    Bu komut, çalıştırma hakkındaki bilgileri listeleyen bir JSON belgesi döndürür.
 
-    Daha fazla bilgi için [az ml run show'a](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)bakın.
+    Daha fazla bilgi için bkz. [az ml Run Show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning stüdyosukullanma
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
 
-Stüdyodaki denemeniz için etkin çalışan sayısını görüntülemek için.
+Studio 'da denemenizin etkin çalıştırmaların sayısını görüntülemek için.
 
-1. **Denemeler** bölümüne gidin... 
+1. **Denemeleri** bölümüne gidin. 
 
 1. Bir deneme seçin.
 
-    Deneme sayfasında, etkin işlem hedeflerinin sayısını ve her çalıştırmanın süresini görebilirsiniz. 
+    Deneme sayfasında, etkin işlem hedeflerinin sayısını ve her çalıştırma için süreyi görebilirsiniz. 
 
 1. Belirli bir çalıştırma numarası seçin.
 
-1. **Günlükler** sekmesinde, ardışık hat lar çalıştırın için tanılama ve hata günlüklerini bulabilirsiniz.
+1. **Günlükler** sekmesinde, işlem hattı çalıştırınızla ilgili tanılama ve hata günlüklerini bulabilirsiniz.
 
 
-## <a name="cancel-or-fail-runs"></a>Çalıştırmaları iptal etme veya başarısız
+## <a name="cancel-or-fail-runs"></a>İptal veya başarısız çalıştırmalar
 
-Bir hata fark ederseniz veya çalışmanızın tamamlanması çok uzun sürüyorsa, çalıştırmayı iptal edebilirsiniz.
+Bir hata fark ederseniz veya çalıştırmanın tamamlanmasının çok uzun sürmesi durumunda, çalıştırmayı iptal edebilirsiniz.
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-SDK'yı kullanarak bir çalıştırmayı [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) iptal etmek için aşağıdaki yöntemi kullanın:
+SDK 'Yı kullanarak bir çalıştırmayı iptal etmek için [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) yöntemini kullanın:
 
 ```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -205,7 +205,7 @@ local_script_run.cancel()
 print(local_script_run.get_status())
 ```
 
-Çalıştırmanız bitiyorsa, ancak bir hata içeriyorsa (örneğin, yanlış eğitim [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) komut dosyası kullanıldı), başarısız olarak işaretlemek için yöntemi kullanabilirsiniz.
+Çalıştırmanız bittiğinde, ancak bir hata içeriyorsa (örneğin, yanlış eğitim betiği kullanılmışsa), [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) yöntemi başarısız olarak işaretlemek için kullanabilirsiniz.
 
 ```python
 local_script_run = exp.submit(run_config)
@@ -213,35 +213,35 @@ local_script_run.fail()
 print(local_script_run.get_status())
 ```
 
-### <a name="using-the-cli"></a>CLI'yi kullanma
+### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-CLI kullanarak bir çalıştırmayı iptal etmek için aşağıdaki komutu kullanın. Çalıştırmanın kimliğiyle değiştirin `runid`
+CLı kullanarak bir çalıştırmayı iptal etmek için aşağıdaki komutu kullanın. Çalıştırmanın `runid` kimliğiyle değiştirin
 
 ```azurecli-interactive
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Daha fazla bilgi için az [ml çalıştır ın iptaline](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)bakın.
+Daha fazla bilgi için bkz. [az ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning stüdyosukullanma
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
 
-Aşağıdaki adımları kullanarak stüdyodaki bir çalıştırmayı iptal etmek için:
+Aşağıdaki adımları kullanarak Studio 'daki bir çalıştırmayı iptal etmek için:
 
-1. **Denemeler** veya **Boru Hatları** bölümünde çalışan ardışık bölüme gidin. 
+1. **Denemeleri** veya **ardışık** düzen bölümünde çalışan işlem hattına gidin. 
 
-1. İptal etmek istediğiniz ardışık hatlar hattı çalıştırma numarasını seçin.
+1. İptal etmek istediğiniz işlem hattı çalıştırma numarasını seçin.
 
-1. Araç çubuğunda **İptal** et'i seçin
+1. Araç çubuğunda **iptal** ' i seçin.
 
 
-## <a name="create-child-runs"></a>Alt çalıştırmalar oluşturma
+## <a name="create-child-runs"></a>Alt çalıştırmalar oluştur
 
-Farklı hiperparametre ayarı yinelemeleri gibi ilgili çalıştırmaları gruplandırmak için alt çalıştırmalar oluşturun.
+Farklı hiper parametre ayarlama yinelemeleri gibi ilgili çalıştırmaları gruplamak için alt çalıştırmalar oluşturun.
 
 > [!NOTE]
 > Alt çalıştırmalar yalnızca SDK kullanılarak oluşturulabilir.
 
-Bu kod örneği, yöntem kullanılarak gönderilen bir çalıştırın içinden beş alt çalışandan oluşan bir toplu iş oluşturmak için `hello_with_children.py` komut dosyasını [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) kullanır:
+Bu kod örneği, `hello_with_children.py` [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) yöntemi kullanılarak gönderilen çalışma içinden beş alt çalıştırılan bir toplu iş oluşturmak için betiğini kullanır:
 
 ```python
 !more hello_with_children.py
@@ -258,20 +258,20 @@ with exp.start_logging() as parent_run:
 ```
 
 > [!NOTE]
-> Kapsam dışına çıktıkça, alt çalıştırmalar otomatik olarak tamamlanmış olarak işaretlenir.
+> Kapsam dışına ilerlediği için alt çalıştırmalar otomatik olarak tamamlandı olarak işaretlenir.
 
-Birçok alt çalışan verimli oluşturmak [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) için yöntemi kullanın. Her oluşturma bir ağ çağrısıyla sonuçlandığı için, bir dizi çalıştırma oluşturmak, bunları tek tek oluşturmaktan daha verimlidir.
+Çok sayıda alt çalışma oluşturmak için [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) yöntemini kullanın. Her oluşturma bir ağ çağrısıyla sonuçlandığından, bir toplu iş oluşturmak, bunlardan birini oluşturmaktan daha etkilidir.
 
-### <a name="submit-child-runs"></a>Çocuk çalıştırmaları gönderme
+### <a name="submit-child-runs"></a>Alt çalıştırmaları gönder
 
-Alt çalıştırmalar bir üst çalıştırmadan da gönderilebilir. Bu, üst ve alt çalışır hiyerarşileri oluşturmanıza olanak sağlar. 
+Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. 
 
-Çocuğunuzun çalışır ana çalıştırmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmaları kullanırken üst öğe için daha az güçlü, CPU tabanlı bir yapılandırma kullanabilirsiniz. Başka bir ortak arzu her çocuk farklı argümanlar ve veri geçmektir. Bir alt çalıştırmayı özelleştirmek `RunConfiguration` için, bir `ScriptRunConfig` nesneyi çocuğun oluşturucusuna geçirin. Üst `ScriptRunConfig` nesnenin komut dosyasının bir parçası olacak bu kod örneği:
+Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Bir alt çalışmayı özelleştirmek için, bir `RunConfiguration` nesneyi çocuk `ScriptRunConfig` oluşturucusuna geçirin. Bu kod örneği, üst `ScriptRunConfig` nesnenin betiğinin bir parçası olacaktır:
 
-- Adlandırılmış `RunConfiguration` bir bilgi işlem kaynağı alma oluşturur`"gpu-compute"`
-- Çocuklara `ScriptRunConfig` aktarılacak farklı bağımsız değişken değerlerini yineler nesneler
-- Özel bilgi işlem kaynağını ve bağımsız değişkenini kullanarak yeni bir alt çalışma oluşturur ve gönderir
-- Tüm çocuk tamamlanana kadar engeller
+- Adlandırılmış bir `RunConfiguration` işlem kaynağı alma işlemi oluşturur`"gpu-compute"`
+- Alt `ScriptRunConfig` nesnelere geçirilecek farklı bağımsız değişken değerlerini yineler
+- Özel işlem kaynağını ve bağımsız değişkenini kullanarak yeni bir alt çalışma oluşturur ve gönderir
+- Tüm alt çalışma tamamlanana kadar bloklar
 
 ```python
 # parent.py
@@ -298,9 +298,9 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Aynı yapılandırmaları, bağımsız değişkenleri ve girişleri verimli bir şekilde [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) birçok alt çalışır oluşturmak için yöntemi kullanın. Her oluşturma bir ağ çağrısıyla sonuçlandığı için, bir dizi çalıştırma oluşturmak, bunları tek tek oluşturmaktan daha verimlidir.
+Aynı yapılandırmalarda, bağımsız değişkenlerle ve girişlerle çok sayıda alt çalışma oluşturmak için [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) yöntemini kullanın. Her oluşturma bir ağ çağrısıyla sonuçlandığından, bir toplu iş oluşturmak, bunlardan birini oluşturmaktan daha etkilidir.
 
-Bir alt çalışma içinde, üst çalışan kimliği görüntüleyebilirsiniz:
+Bir alt çalıştırma içinde, üst çalıştırma KIMLIĞINI görüntüleyebilirsiniz:
 
 ```python
 ## In child run script
@@ -310,28 +310,28 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Alt çalıştırmaları sorgula
 
-Belirli bir ebeveynin alt çalışanlarını [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) sorgulamak için yöntemi kullanın. Bağımsız ``recursive = True`` değişken, iç içe olan bir çocuk ve torun ağacını sorgulamanızı sağlar.
+Belirli bir üst öğenin alt çalıştırmalarını sorgulamak için [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) yöntemini kullanın. Bağımsız ``recursive = True`` değişkeni, iç içe geçmiş alt öğe ve alt alt ağacı sorgulamanızı sağlar.
 
 ```python
 print(parent_run.get_children())
 ```
 
-## <a name="tag-and-find-runs"></a>Etiketler ve çalışır bul
+## <a name="tag-and-find-runs"></a>Etiket ve bulma çalıştırmaları
 
-Azure Machine Learning'de, önemli bilgiler için çalışanlarınızı düzenlemeye ve sorgulamaya yardımcı olmak için özellikleri ve etiketleri kullanabilirsiniz.
+Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı düzenlemeye ve sorgulamaya yardımcı olması için özellikleri ve etiketleri kullanabilirsiniz.
 
 ### <a name="add-properties-and-tags"></a>Özellikler ve etiketler ekleme
 
 #### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
-Çalıştırmalarınıza aranabilir meta veriler eklemek [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) için yöntemi kullanın. Örneğin, aşağıdaki kod çalışma `"author"` özelliğiekler:
+Çalışmalarınızın aranabilir meta verilerini eklemek için [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) yöntemini kullanın. Örneğin, aşağıdaki kod, çalıştırmaya `"author"` özelliği ekler:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Özellikler değişmezolduğundan, denetim amaçları için kalıcı bir kayıt oluştururlar. Yukarıdaki kodda `"azureml-user"` `"author"` özellik değeri olarak zaten eklediğimiz için aşağıdaki kod örneği bir hataya neden olabilir:
+Özellikler sabittir, bu nedenle denetim amaçlarıyla kalıcı bir kayıt oluşturur. Aşağıdaki kod örneği, önceki kodda `"azureml-user"` `"author"` Özellik değeri olarak zaten eklendiğimiz için bir hatayla sonuçlanır:
 
 ```Python
 try:
@@ -340,7 +340,7 @@ except Exception as e:
     print(e)
 ```
 
-Özellikleriaksine, etiketleri mutable vardır. Denemenizin tüketicileri için aranabilir ve anlamlı [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) bilgiler eklemek için yöntemi kullanın.
+Özelliklerden farklı olarak Etiketler değişebilir. Denemenizin tüketicilere yönelik aranabilir ve anlamlı bilgiler eklemek için [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) yöntemini kullanın.
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -350,29 +350,29 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-Ayrıca basit dize etiketleri ekleyebilirsiniz. Bu etiketler etiket sözlüğünde anahtar olarak göründüğünde, `None`'nin bir değeri vardır.
+Basit dize etiketleri de ekleyebilirsiniz. Bu Etiketler etiket sözlüğünde anahtar olarak görüntülendiğinde, bir değeri vardır `None`.
 
 ```Python
 local_script_run.tag("worth another look")
 print(local_script_run.get_tags())
 ```
 
-#### <a name="using-the-cli"></a>CLI'yi kullanma
+#### <a name="using-the-cli"></a>CLı 'yi kullanma
 
 > [!NOTE]
-> CLI'yi kullanarak yalnızca etiket ekleyebilir veya güncelleyebilirsiniz.
+> CLı 'yi kullanarak yalnızca etiketleri ekleyebilir veya güncelleştirebilirsiniz.
 
-Etiket eklemek veya güncelleştirmek için aşağıdaki komutu kullanın:
+Bir etiketi eklemek veya güncelleştirmek için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml run update -r runid --add-tag quality='fantastic run'
 ```
 
-Daha fazla bilgi için [az ml run güncellemesine](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)bakın.
+Daha fazla bilgi için bkz. [az ml Run Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
 
-### <a name="query-properties-and-tags"></a>Sorgu özellikleri ve etiketleri
+### <a name="query-properties-and-tags"></a>Sorgu özellikleri ve Etiketler
 
-Belirli özellikler ve etiketlerle eşleşen bir çalıştırma listesini döndürmek için deneme içinde çalışır sorgulayabilirsiniz.
+Belirli özellikler ve etiketlerle eşleşen çalıştırmaların bir listesini döndürmek için bir deneydeki çalıştırmaları sorgulayabilirsiniz.
 
 #### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
@@ -381,9 +381,9 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantasti
 list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
 ```
 
-#### <a name="using-the-cli"></a>CLI'yi kullanma
+#### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-Azure CLI, özellikleri ve etiketleri temel alan çalıştırmaları filtrelemek için kullanılabilen [JMESPath](http://jmespath.org) sorgularını destekler. Azure CLI ile bir JMESPath sorgusu kullanmak `--query` için, parametre ile belirtin. Aşağıdaki örnekler, özellikleri ve etiketleri kullanarak temel sorguları gösterir:
+Azure CLı, özellikleri ve etiketleri temel alarak çalıştırmaları filtrelemek için kullanılabilen [Jmespath](http://jmespath.org) sorgularını destekler. Azure CLı ile JMESPath sorgusu kullanmak için, `--query` parametresini parametresiyle belirtin. Aşağıdaki örneklerde Özellikler ve Etiketler kullanılarak temel sorgular gösterilmektedir:
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'
@@ -394,23 +394,23 @@ az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'wort
 az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
 ```
 
-Azure CLI sonuçlarını sorgulama hakkında daha fazla bilgi için Bkz. [Azure CLI sorgula komut çıktısı.](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)
+Azure CLı sonuçlarını sorgulama hakkında daha fazla bilgi için bkz. [Azure CLI komut çıkışını sorgulama](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
 
-### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning stüdyosukullanma
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma
 
-1. **Boru Hatları** bölümüne gidin.
+1. İşlem **hatları** bölümüne gidin.
 
-1. Etiketleri, açıklamaları, deneme adlarını ve gönderen inadını kullanarak ardışık hatları filtrelemek için arama çubuğunu kullanın.
+1. Etiketleri, açıklamaları, deneme adlarını ve gönderenin adını kullanarak işlem hatlarını filtrelemek için arama çubuğunu kullanın.
 
-## <a name="example-notebooks"></a>Örnek defterler
+## <a name="example-notebooks"></a>Örnek Not defterleri
 
-Aşağıdaki not defterleri bu makaledeki kavramları gösterir:
+Aşağıdaki Not defterleri bu makaledeki kavramları göstermektedir:
 
-* Günlük API'leri hakkında daha fazla bilgi edinmek için [günlük API not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb)bakın.
+* Günlüğe kaydetme API 'Leri hakkında daha fazla bilgi edinmek için bkz. [günlük API Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb).
 
-* Azure Machine Learning SDK ile çalıştırmaları yönetme hakkında daha fazla bilgi için [yönetici çalışır not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)bakın.
+* Azure Machine Learning SDK ile çalıştırmaları yönetme hakkında daha fazla bilgi için bkz. [Manage çalıştırmaları Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Denemelerinizin ölçümlerini nasıl günlüğe kaydedebilirsiniz öğrenmek [için, eğitim çalıştırmaları sırasında Günlük ölçümlerine](how-to-track-experiments.md)bakın.
-* Azure Machine Learning'deki kaynakları ve günlükleri nasıl izleyeceğinizi öğrenmek için [bkz.](monitor-azure-machine-learning.md)
+* Denemeleri için ölçümleri günlüğe kaydetme hakkında bilgi edinmek için bkz. [eğitim çalıştırmaları sırasında günlük ölçümleri](how-to-track-experiments.md).
+* Kaynak ve günlüklerin Azure Machine Learning nasıl izleneceğini öğrenmek için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).

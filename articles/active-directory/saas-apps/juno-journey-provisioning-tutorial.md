@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Juno Journey'yi yapılandırın | Microsoft Dokümanlar"
-description: Azure AD'den Juno Journey'e kullanıcı hesaplarını otomatik olarak nasıl sağlayıp geçici olarak sağdan çıkarılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Juno yolculuğu yapılandırma | Microsoft Docs'
+description: Azure AD 'den Juno yolculuğa yönelik kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,149 +16,149 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 08de07a52d1e43dea91e6684d33027d8bcad61fc
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641855"
 ---
-# <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Juno Journey'yi yapılandırın
+# <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Juno yolculuğu yapılandırma
 
-Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için hem Juno Journey hem de Azure Etkin Dizin (Azure AD) işlemlerinde gerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure AD Sağlama hizmetini kullanarak kullanıcıları ve grupları Otomatik olarak [Juno Journey'e](https://www.junojourney.com/) karşı hükümler ve hükümlerden arındırma sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Juno yolculukta hem de Azure Active Directory (Azure AD) gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve grupları otomatik olarak sağlar ve bir [yolculuğa](https://www.junojourney.com/) sahip olun. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Juno Journey'de kullanıcı oluşturun
-> * Artık erişim gerektirmeyen kullanıcıları Juno Journey'de kaldırma
-> * Kullanıcı özniteliklerini Azure AD ve Juno Journey arasında senkronize tutma
-> * Juno Journey için [tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/juno-journey-tutorial) açma (önerilir)
+> * Juno yolculukta Kullanıcı oluşturma
+> * Artık erişim gerektirmeyen Juno yolculukta kullanıcıları kaldırın
+> * Kullanıcı özniteliklerinin Azure AD ile Juno yolculuğu arasında eşitlenmiş olmasını sağlama
+> * Juno yolculukta [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/juno-journey-tutorial) (önerilir)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
-*  Bir [Juno Journey kiracı](https://www.junojourney.com/getstartedwithjuno).
-*  Yönetici izinleri ile Juno Journey bir kullanıcı hesabı.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+*  Bir [Juno yolculuğu kiracısı](https://www.junojourney.com/getstartedwithjuno).
+*  Yönetim izinlerine sahip yolculukta bir kullanıcı hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
-1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
-3. Azure AD [ve Juno Journey arasında hangi](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)verilerin eşlenemeye devam edin. 
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Azure AD Ile Juno yolculuğu arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı destekleyecek Şekilde Juno Journey'yi yapılandırın
+## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Juno yolculuğu yapılandırma
 
-1. **Gizli Belirteç** ve **Kiracı URL için** support@the-juno.comJuno Journey destek ekibi ile irtibata geçin. Bu değer, Azure portalındaki Juno Journey uygulamanızın Sağlama sekmesine sırasıyla **Gizli Belirteç** ve **Kiracı URL** alanlarına girilir. 
+1. **Gizli belirteç** ve **kiracı URL 'si** Için, adresindeki support@the-juno.comJuno yolculuğu destek ekibine başvurun. Bu değer, Azure portal Juno yolculuğu uygulamanızın sağlama sekmesinde sırasıyla **gizli belirteç** ve **kiracı URL 'si** alanlarına girilir. 
 
-## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Juno Journey ekleme
+## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Juno yolculuğu ekleme
 
-Juno Journey'de sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden Juno Journey'yi ekleyin. Daha önce SSO için Juno Journey kurulumu varsa, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
+Azure AD uygulama galerisinden Juno yolculuğu ekleyerek Juno yolculuğa yönelik sağlamayı yönetmeye başlayın. Daha önce SSO için Juno yolculuğu ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları Juno Journey'e atarken Varsayılan **Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
+* Juno yolculuğa Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-juno-journey"></a>5. Adım. Otomatik kullanıcı sağlamayı Juno Journey'ye yapılandırma 
+## <a name="step-5-configure-automatic-user-provisioning-to-juno-journey"></a>5. Adım. Juno yolculuğa otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
-### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Azure AD'de Juno Journey için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Azure AD 'de Juno yolculuğu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Juno Journey'yi**seçin.
+2. Uygulamalar listesinde, **Juno yolculuğu**' nı seçin.
 
-    ![Uygulamalar listesindeki Juno Journey bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Juno yolculuğu bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü ne si bölümünde, daha önce **kiracı URL'sinde**alınan kiracı URL değerini girdin. Gizli Belirteç'te daha önce alınan gizli belirteç değerini **girdi.** Azure AD'nin Juno Journey'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Juno Journey hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde **, kiracı URL 'si içinde daha**önce alınan kiracı URL 'si değerini girin. Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin Juno yolculuğuna bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Juno yolculuğu hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Sağlama](./media/juno-journey-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/juno-journey-provisioning-tutorial/provisioning.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Juno Journey'e Senkronize Et'i**seçin.
+8. **Eşlemeler** Bölümü ' nün altında, **Kullanıcı Azure Active Directory eş yolculuğa git**' i seçin.
 
-9. Azure AD'den Juno Journey'e eşitlenen kullanıcı özniteliklerini **Öznitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Juno Journey'deki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Juno Journey API'sinin bu özniteliğe göre kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den Juno yolculuğuna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Juno yolculuğu içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Juno 'ın yolculuğu API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
    |Değişken|Tür|
    |---|---|
    |userName|Dize|
-   |externalId|Dize|
+   |externalID|Dize|
    |displayName|Dize|
    |başlık|Dize|
-   |Etkin|Boole|
-   |tercihDil|Dize|
-   |e-postalar[yazın eq "iş"].value|Dize|
-   |adresleri[yazın eq "iş"].ülke|Dize|
-   |adresleri[yazın eq "iş"].region|Dize|
-   |adresleri[yazın eq "iş"].yerellik|Dize|
-   |adresleri[yazın eq "iş"].postalCode|Dize|
-   |adresleri[yazın eq "iş"].biçimlendirilmiş|Dize|
-   |adresleri[yazın eq "iş"].streetAddress|Dize|
-   |name.givenName|Dize|
-   |name.familyName|Dize|
-   |name.middleName|Dize|
-   |name.formatlı|Dize|
-   |phoneNumbers[eq yazın "faks"].value|Dize|
-   |phoneNumbers[eq yazın "mobil"].value|Dize|
-   |phoneNumbers[yazın eq "iş"].value|Dize|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Dize|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|Dize|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|Dize|
-   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|Dize|
-   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Dize|
-   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|Dize|
+   |bkz|Boole|
+   |preferredLanguage|Dize|
+   |e-postalar [tür EQ "iş"]. değer|Dize|
+   |adresler [tür EQ "iş"]. ülke|Dize|
+   |adresler [tür EQ "iş"]. bölge|Dize|
+   |adresler [tür EQ "iş"]. konum|Dize|
+   |adresler [tür EQ "iş"]. PostaKodu|Dize|
+   |adresler [tür EQ "iş"]. biçimlendirildi|Dize|
+   |adresler [tür EQ "Work"]. streetAddress|Dize|
+   |ad.|Dize|
+   |Name. familyName|Dize|
+   |Name. middleName|Dize|
+   |ad. biçimlendirildi|Dize|
+   |phoneNumbers [tür EQ "Faks"]. değer|Dize|
+   |phoneNumbers [tür EQ "mobil"]. değer|Dize|
+   |phoneNumbers [tür EQ "iş"]. değer|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: costCenter|Dize|
+   urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
+   urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Dize|
+   urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Organization|Dize|
 
 
-10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-11. Juno Journey için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde Sağlama Durumunu **Ayarı** olarak değiştirin. **Settings**
+11. Juno yolculuğu için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Juno Journey'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Juno yolculuğa sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-* Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
-* Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
-* Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+* Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+* Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

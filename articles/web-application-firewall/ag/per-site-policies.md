@@ -1,7 +1,7 @@
 ---
-title: PowerShell kullanarak site başına WAF ilkelerini yapılandırın
+title: PowerShell kullanarak site başına WAF ilkelerini yapılandırma
 titleSuffix: Azure Web Application Firewall
-description: Azure PowerShell'i kullanarak bir uygulama ağ geçidinde site başına Web Uygulaması Güvenlik Duvarı ilkelerini nasıl yapılandırıştırmayı öğrenin.
+description: Azure PowerShell kullanarak bir uygulama ağ geçidinde site başına Web uygulaması güvenlik duvarı ilkelerini yapılandırmayı öğrenin.
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
@@ -9,19 +9,19 @@ ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682491"
 ---
-# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell'i kullanarak site başına WAF ilkelerini yapılandırın
+# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell kullanarak site başına WAF ilkelerini yapılandırma
 
-Web Uygulama Güvenlik Duvarı (WAF) ayarları WAF ilkelerinde bulunur ve WAF yapılandırmanızı değiştirmek için WAF ilkesini değiştirirsiniz.
+Web uygulaması güvenlik duvarı (WAF) ayarları WAF ilkelerinde bulunur ve WAF yapılandırmanızı değiştirmek için WAF ilkesini değiştirirsiniz.
 
-Uygulama Ağ Geçidinizle ilişkilendirildiğinde, ilkeler ve tüm ayarlar genel olarak yansıtılır. Yani, WAF arkasında beş site varsa, tüm beş site aynı WAF Politikası tarafından korunmaktadır. Her site için aynı güvenlik ayarlarına ihtiyacınız varsa bu harika. Ancak, siteye özgü WAF yapılandırmasına izin vermek için tek tek dinleyicilere WAF ilkeleri de uygulayabilirsiniz.
+Application Gateway ile ilişkilendirildiğinde, ilkeler ve tüm ayarlar küresel olarak yansıtılır. Bu nedenle, WAF 'nizin arkasında beş siteniz varsa, beş sitenin tamamı aynı WAF Ilkesi tarafından korunur. Her site için aynı güvenlik ayarlarına ihtiyacınız varsa bu harika olur. Ancak, siteye özgü WAF yapılandırmasına izin vermek için, tek tek dinleyicilerine WAF ilkeleri de uygulayabilirsiniz.
 
-Bir dinleyiciye WAF ilkeleri uygulayarak, her siteyi etkileyen değişiklikler olmadan tek tek siteler için WAF ayarlarını yapılandırabilirsiniz. En özel politika emsal teşkil eder. Genel bir ilke ve site başına bir ilke (dinleyiciyle ilişkili bir WAF ilkesi) varsa, site başına politika, o dinleyici için genel WAF ilkesini geçersiz kılar. Kendi politikaları olmayan diğer dinleyiciler sadece küresel WAF politikasından etkilenecektir.
+Bir dinleyiciye WAF ilkeleri uygulayarak, her siteyi etkileyen değişiklikler olmadan tek tek siteler için WAF ayarlarını yapılandırabilirsiniz. En özel ilke bu şekilde etkili. Genel bir ilke ve site başına ilke (bir dinleyiciyle ilişkili bir WAF ilkesi) varsa, site başına ilke, bu dinleyicinin genel WAF ilkesini geçersiz kılar. Kendi ilkeleri olmayan diğer dinleyiciler yalnızca genel WAF ilkesinden etkilenir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -29,24 +29,24 @@ Bu makalede şunları öğreneceksiniz:
 > * Ağı ayarlama
 > * WAF ilkesi oluşturma
 > * WAF etkinken bir uygulama ağ geçidi oluşturma
-> * WAF ilkesini genel olarak, site başına ve URI başına uygulayın
+> * WAF ilkesini genel, site başına ve URI başına uygulama
 > * Sanal makine ölçek kümesi oluşturma
 > * Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 > * Uygulama ağ geçidini test etme
 
 ![Web uygulaması güvenlik duvarı örneği](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell modülü sürümü 1.0.0 veya daha sonra gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, Azure `Login-AzAccount` ile bağlantı oluşturmak için de çalışmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bir bağlantı oluşturmak için öğesini `Login-AzAccount` de çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [Yeni-AzResourceGroup'u](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure kaynak grubu oluşturun.  
+Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure Kaynak grubu oluşturun.  
 
 ```azurepowershell-interactive
 $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -54,7 +54,7 @@ $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma 
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak *myBackendSubnet* ve *myAGSubnet* adlı alt net yapılandırmaları oluşturun. Subnet yapılandırmaları ile [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak *myVNet* adlı sanal ağı oluşturun. Ve son olarak, [Yeni-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak *myAGPublicIPAddress* adlı genel IP adresi oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak *mybackendsubnet* ve *myagsubnet* adlı alt ağ yapılandırmalarını oluşturun. Alt ağ yapılandırmalarına sahip [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak *myvnet* adlı sanal ağı oluşturun. Son olarak, [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak *Myagpublicıpaddress* adlı genel IP adresini oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -82,7 +82,7 @@ $pip = New-AzPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Bu bölümde, uygulama ağ geçidini destekleyen kaynaklar oluşturursunuz ve sonunda onu ve WAF'ı oluşturursunuz. Şu kaynakları oluşturacaksınız:
+Bu bölümde, uygulama ağ geçidini destekleyen kaynaklar oluşturup son olarak onu ve bir WAF oluşturun. Şu kaynakları oluşturacaksınız:
 
 - *IP yapılandırmaları ve ön uç bağlantı noktası* - Daha önce oluşturduğunuz alt ağı uygulama ağ geçidi ile ilişkilendirir ve ona erişmek için kullanılacak bir bağlantı noktası atar.
 - *Varsayılan havuz* - Tüm uygulama ağ geçitlerinde en az bir sunucu arka uç havuzu olmalıdır.
@@ -90,7 +90,7 @@ Bu bölümde, uygulama ağ geçidini destekleyen kaynaklar oluşturursunuz ve so
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP yapılandırmaları ve ön uç bağlantı noktası oluşturma
 
-Daha önce oluşturduğunuz *myAGSubnet'i* [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)kullanarak uygulama ağ geçidine ilişkilendirin. *MyAGPublicIPAddress'i* [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak uygulama ağ geçidine atayın.
+[Yeni-Azapplicationgatewayıp](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)'leri kullanarak daha önce oluşturduğunuz *Myagsubnet* 'i uygulama ağ geçidine ilişkilendirin. [New-Azapplicationgatewayfrontendıpconfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak Application Gateway 'e *Myagpublicıpaddress* atayın.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -118,7 +118,7 @@ $frontendport8080 = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>Arka uç havuzu ve ayarları oluşturma
 
-[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak uygulama ağ geçidi için *appGatewayBackendPool* adlı arka uç havuzu oluşturun. [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak arka uç adres havuzları için ayarları yapılandırın.
+[New-Azapplicationgatewaybackendirddresspool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak Application Gateway Için *Appgatewaybackendpool* adlı arka uç havuzunu oluşturun. [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak arka uç adres havuzlarının ayarlarını yapılandırın.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -132,11 +132,11 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
   -RequestTimeout 120
 ```
 
-### <a name="create-two-waf-policies"></a>İki WAF ilkeleri oluşturma
+### <a name="create-two-waf-policies"></a>İki WAF ilkesi oluşturma
 
-Biri genel ve bir site başına olmak üzere iki WAF ilkesi oluşturun ve özel kurallar ekleyin. 
+İki WAF ilkesi, bir genel ve bir site için bir tane oluşturun ve özel kurallar ekleyin. 
 
-Site başına ilke, dosya yükleme sınırını 5 MB ile sınırlar. Diğer her şey aynı.
+Site başına ilkesi, karşıya dosya yükleme sınırını 5 MB olarak kısıtlar. Diğer her şey aynıdır.
 
 ```azurepowershell-interactive
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
@@ -194,7 +194,7 @@ $wafPolicySite = New-AzApplicationGatewayFirewallPolicy `
 
 Uygulama ağ geçidinin trafiği arka uç havuzlarına uygun şekilde yönlendirmesi için bir dinleyici gereklidir. Bu örnekte, kök URL’deki trafiği dinleyen temel bir dinleyici oluşturacaksınız. 
 
-Daha önce oluşturduğunuz ön uç yapılandırması ve önuç bağlantı noktası ile [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) kullanarak *mydefaultListener* adlı bir dinleyici oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *kural1* adlı temel bir kural oluşturun.
+[New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) ' i önceden oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla kullanarak *mydefaultlistener* adlı bir dinleyici oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *rule1* adlı temel bir kural oluşturun.
 
 ```azurepowershell-interactive
 $globalListener = New-AzApplicationGatewayHttpListener `
@@ -227,7 +227,7 @@ $frontendRuleSite = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway-with-the-waf"></a>WAF ile uygulama ağ geçidi oluşturma
 
-Şimdi gerekli destekleyici kaynakları oluşturduğunuzda, [Yeni-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak uygulama ağ geçidi için parametreleri belirtin. [Yeni-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy)kullanarak Güvenlik Duvarı İlkesi belirtin. Ve sonra [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak *myAppGateway* adlı uygulama ağ geçidi oluşturun.
+Artık gerekli destekleyici kaynakları oluşturduğunuza göre, [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak uygulama ağ geçidi için parametreleri belirtin. [New-AzApplicationGatewayFirewallPolicy](/powershell/module/az.network/new-azapplicationgatewayfirewallpolicy)kullanarak güvenlik duvarı ilkesini belirtin. Ardından [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak *myappgateway* adlı uygulama ağ geçidini oluşturun.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -250,9 +250,9 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>URI başına bir ilke uygulayın
+### <a name="apply-a-per-uri-policy"></a>URI başına ilke uygulama
 
-URI başına bir ilke uygulamak için yeni bir ilke oluşturmanız ve yol kuralı config'ine uygulamanız yeterlidir. 
+URI başına ilke uygulamak için yeni bir ilke oluşturmanız ve bunu yol kuralı yapılandırmasına uygulamanız yeterlidir. 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -368,11 +368,11 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 
-Bu makalede, uygulama ağ geçidi algılama ve önleme amacıyla verileri depolamak için bir depolama hesabı kullanır. Verileri kaydetmek için Azure Monitor günlüklerini veya Etkinlik Hub'Larını da kullanabilirsiniz.
+Bu makalede, uygulama ağ geçidi, algılama ve önleme amaçlarıyla verileri depolamak için bir depolama hesabı kullanır. Ayrıca Azure Izleyici günlüklerini veya Olay Hub 'ını kullanarak verileri kaydedebilirsiniz.
 
 ### <a name="create-the-storage-account"></a>Depolama hesabı oluşturma
 
-[Yeni-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)kullanarak *myagstore1* adlı bir depolama hesabı oluşturun.
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)kullanarak *myagstore1* adlı bir depolama hesabı oluşturun.
 
 ```azurepowershell-interactive
 $storageAccount = New-AzStorageAccount `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [Get-AzPublicIPAddress'i](/powershell/module/az.network/get-azpublicipaddress) kullanabilirsiniz. Daha sonra bu IP adresini kıvrık (aşağıda gösterilen 1.1.1.1'i değiştirin). 
+Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Daha sonra bu IP adresini kullanarak (aşağıda gösterilen 1.1.1.1 değiştirin) karşılaştırın. 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -437,7 +437,7 @@ curl 1.1.1.1/URIAllow?1=1
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, Kaynak grubunu, uygulama ağ geçidini ve ilgili tüm kaynakları [Kaldır-AzResourceGroup'u](/powershell/module/az.resources/remove-azresourcegroup)kullanarak kaldırın.
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak kaynak grubunu, uygulama ağ geçidini ve ilgili tüm kaynakları kaldırın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

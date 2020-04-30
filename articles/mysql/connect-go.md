@@ -1,5 +1,5 @@
 ---
-title: MySQL için Go - Azure Veritabanı'nı kullanarak bağlan
+title: Go kullanarak bağlanma-MySQL için Azure veritabanı
 description: Bu hızlı başlangıçta, MySQL için Azure Veritabanı'na bağlanmak ve buradan veri sorgulamak için kullanabileceğiniz birkaç Go kod örneği sağlanmıştır.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81681867"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için Go dilini kullanma
@@ -78,7 +78,7 @@ Bilgisayarınıza [Go](https://golang.org/doc/install) ve [go-sql-driver for MyS
 ## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
-1. [Azure portalına](https://portal.azure.com/)giriş yapın.
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
 2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.

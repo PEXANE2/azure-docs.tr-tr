@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - Çevirmen Metin API
+title: Dil desteği-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Çevirmen Metin API'si, Nöral Makine Çevirisi (NMT) kullanarak metin çevirisi için aşağıdaki dilleri destekler.
+description: Translator Metin Çevirisi API'si, sinir makine çevirisi (NMT) kullanarak metin çevirisi için aşağıdaki dilleri destekler.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,44 +11,44 @@ ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81684839"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Çevirmen Metin API'si için dil ve bölge desteği
+# <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Metin Çevirisi API'si için dil ve bölge desteği
 
-Çevirmen Metin API metin çevirisi için aşağıdaki dilleri destekler. Nöral Makine Çevirisi (NMT) yüksek kaliteli Yapay Bilgisayar destekli makine çevirileri için yeni bir standarttır ve bir sinir sistemi kullanılabilir olduğunda Çevirmen Metin API V3 kullanarak varsayılan olarak kullanılabilir.
+Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri destekler. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda Translator Metin Çevirisi API'si v3 kullanılarak varsayılan olarak kullanılabilir.
 
 [Makine çevirisinin nasıl çalıştığı hakkında daha fazla bilgi edinin](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Çeviri
 
-**V2 Çevirmen API**
+**V2 Translator API 'SI**
 
 > [!NOTE]
-> V2 30 Nisan 2018 tarihinde amortismana kaldırıldı. Yalnızca V3'te kullanılabilen yeni işlevlerden yararlanmak için lütfen uygulamalarınızı V3'e geçirin.
+> V2, 30 Nisan 2018 tarihinde kullanımdan kaldırılmıştır. Yalnızca v3 'de bulunan yeni işlevsellikten yararlanmak için uygulamalarınızı v3 'e geçirin.
 
-* Sadece istatistiksel: Bu dil için sinir sistemi bulunmamaktadır.
-* Nöral kullanılabilir: Bir sinir sistemi mevcuttur. Sinir sistemine `category=generalnn` erişmek için parametreyi kullanın.
-* Nöral varsayılan: Nöral varsayılan çeviri sistemidir. Microsoft Translator `category=smt` Hub ile kullanılmak üzere istatistik sistemine erişmek için parametreyi kullanın.
-* Sadece nöral çeviri mevcuttur.
+* Yalnızca istatistiksel: Bu dil için kullanılabilir sinir sistemi yok.
+* Sinir kullanılabilir: bir sinir sistemi kullanılabilir. Sinir sistemine erişmek `category=generalnn` için parametresini kullanın.
+* Sinir varsayılan: sinir, varsayılan çeviri sistemidir. Microsoft Translator hub `category=smt` 'ı ile kullanmak üzere istatistiksel sisteme erişmek için parametresini kullanın.
+* Yalnızca sinir: yalnızca sinir çeviri kullanılabilir.
 
-**V3 Çevirmen API** V3 Translator API varsayılan olarak nöraldir ve istatistiksel sistemler yalnızca sinirsel sistem olmadığında kullanılabilir.
+**V3 Translator API 'si** V3 Translator API 'SI varsayılan olarak sinir ve istatistiksel sistemler yalnızca sinir sistemi yoksa kullanılabilir.
 
 > [!NOTE]
-> Şu anda, nöral dillerin bir alt kümesi Özel Çevirmen mevcuttur ve biz yavaş yavaş ek olanları ekliyoruz. [Şu anda Özel Çevirmen'de kullanılabilen dilleri görüntüleyin.](#customization)
+> Şu anda, sinir dillerinin bir alt kümesi özel çevirmende bulunabilir ve bunlar yavaş yavaş bir şekilde ekliyoruz. [Özel çevirmende mevcut olan dilleri görüntüleyin](#customization).
 
-|Dil|  Dil kodu|  V3 API|
+|Dil|  Dil kodu|  V3 APı 'SI|
 |:-----|:-----:|:-----|
 |Afrikaner| `af`|   Sinir|
 |Arapça|    `ar`    |   Sinir|
 |Bangla|    `bn`    |   Sinir|
 |Boşnakça (Latin)|   `bs`    |   Sinir|
 |Bulgarca| `bg`    |   Sinir|
-|Kanton (Geleneksel)|   `yue`|  Istatistiksel|
-|Katalanca|   `ca`    |   Istatistiksel|
+|Cantonetıcı (Geleneksel)|   `yue`|  Ki|
+|Katalanca|   `ca`    |   Ki|
 |Basitleştirilmiş Çince|    `zh-Hans`|Sinir|
 |Geleneksel Çince|   `zh-Hant`       |Sinir|
 |Hırvatça|  `hr`    |Sinir|
@@ -57,34 +57,34 @@ ms.locfileid: "81684839"
 |Felemenkçe| `nl`|   Sinir|
 |İngilizce|   `en`    |   Sinir|
 |Estonya Dili|  `et`    |   Sinir|
-|Fiji|    `fj`    |   Istatistiksel|
-|Filipino|  `fil`   |   Istatistiksel|
+|Fiji Adaları dili|    `fj`    |   Ki|
+|Filipino|  `fil`   |   Ki|
 |Fince|   `fi`    |   Sinir|
 |Fransızca|    `fr`    |   Sinir|
 |Almanca|    `de`    |   Sinir|
 |Yunanca| `el`    |   Sinir|
 |Gucerat dili|  `gu`    |   Sinir|
-|Haiti Creole|    `ht`        |Istatistiksel|
+|Haian Creole|    `ht`        |Ki|
 |İbranice |`he`   |Sinir
 |Hintçe| `hi`    |   Sinir|
-|Hmong Daw| `mww`   |   Istatistiksel|
+|Hmong DAW| `mww`   |   Ki|
 |Macarca| `hu`    |   Sinir|
 |İzlandaca| `is`    |   Sinir|
-|Endonezce|    `id`    |   Istatistiksel|
+|Endonezce|    `id`    |   Ki|
 |İrlandaca | `ga`| Sinir
 |İtalyanca|   `it`    |   Sinir|
 |Japonca|  `ja`    |   Sinir|
 |Kannada dili|`kn`| Sinir
-|Kiswahili| `sw`    |   Istatistiksel|
-|Klingon|   `tlh`   |   Istatistiksel|
-|Klingon (plqaD)|   `tlh-Qaak`  |   Istatistiksel|
+|Svahili dili| `sw`    |   Ki|
+|Klingon|   `tlh`   |   Ki|
+|Klingon (plqaD)|   `tlh-Qaak`  |   Ki|
 |Korece |`ko`   |   Sinir|
 |Letonca|   `lv`    |   Sinir|
 |Litvanca|    `lt`    |   Sinir|
-|Malagasy|  `mg`    |   Istatistiksel|
-|Malayca| `ms`        |Istatistiksel|
+|Malgaşça|  `mg`    |   Ki|
+|Malayca| `ms`        |Ki|
 |Malayalam dili| `ml` | Sinir
-|Maltaca|   `mt`    |   Istatistiksel|
+|Maltaca|   `mt`    |   Ki|
 |Maori dili| `mi`  | Sinir|
 |Marathi| `mr`  | Sinir|
 |Norveççe| `nb`    |   Sinir|
@@ -93,61 +93,61 @@ ms.locfileid: "81684839"
 |Portekizce (Brezilya)|   `pt-br` |   Sinir|
 |Portekizce (Portekiz)| `pt-pt` | Sinir
 |Pencap dili|`pa`|Sinir
-|Queretaro Otomi|   `otq`   |   Istatistiksel|
+|Queretaro Otomi|   `otq`   |   Ki|
 |Rumence|  `ro`    |   Sinir|
 |Rusça|   `ru`    |   Sinir|
-|Samoaca|    `sm`    |   Istatistiksel|
-|Sırpça (Kiril)|    `sr-Cyrl`|  Istatistiksel|
-|Sırpça (Latin)|   `sr-Latn`       |Istatistiksel|
+|Samoan|    `sm`    |   Ki|
+|Sırpça (Kiril)|    `sr-Cyrl`|  Ki|
+|Sırpça (Latin)|   `sr-Latn`       |Ki|
 |Slovakça|    `sk`    |   Sinir|
 |Slovence| `sl`    |   Sinir|
 |İspanyolca|   `es`    |   Sinir|
 |İsveççe|   `sv`    |Sinir|
-|Tahiti|  `ty`    |Istatistiksel|
+|Tahiti dili|  `ty`    |Ki|
 |Tamil dili| `ta`    |   Sinir|
 |Telugu dili|    `te`    |   Sinir|
 |Tayca|  `th`    |   Sinir|
-|Tongan|    `to`    |   Istatistiksel|
+|Tonga dili|    `to`    |   Ki|
 |Türkçe|   `tr`        |Sinir|
 |Ukraynaca| `uk`    |   Sinir|
-|Urduca|  `ur`    |   Istatistiksel|
+|Urduca|  `ur`    |   Ki|
 |Vietnamca|    `vi`    |   Sinir|
 |Galce| `cy`    |   Sinir|
-|Yucatec Maya|  `yua`   |   Istatistiksel|
+|Yucatec Maya|  `yua`   |   Ki|
 
 > [!NOTE]
-> Dil `pt` kodu varsayılan `pt-br`olarak , Portekizce (Brazil) olarak tanımlanır.
+> Dil kodu `pt` varsayılan olarak `pt-br`, Portekizce (Brezilya) olur.
 
-## <a name="transliteration"></a>Çevirisi
+## <a name="transliteration"></a>Alfabeye çevirme
 
-Transliterate yöntemi aşağıdaki dilleri destekler. "To/From"da "<->", dilin listelenen komut dosyalarından herhangi birinden veya herhangi birinden çevrilebileceğini belirtir. "-->" dilin yalnızca bir komut dosyasından diğerine çevrilebileceğini gösterir.
+Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dilin listelenen betiklerden veya bunlardan herhangi birine dönüştürülmüş olduğunu gösterir. "-->", dilin yalnızca bir betikten diğerine dönüştürülmüş olduğunu gösterir.
 
 | Dil    | Dil kodu | Komut Dosyası | Hedef/Kaynak | Komut Dosyası|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arapça | `ar` | Arapça`Arab` | <--> | Latin`Latn` |
-|Bangla  | `bn` | Bengali`Beng` | <--> | Latin`Latn` |
-| Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Latin`Latn` |
+| Arapça | `ar` | Arapça`Arab` | <--> | Tin`Latn` |
+|Bangla  | `bn` | Bengali`Beng` | <--> | Tin`Latn` |
+| Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Tin`Latn` |
 | Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Geleneksel Çince`Hant`|
-| seçenekleri yerine | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Latin`Latn` |
+| seçenekleri yerine | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Tin`Latn` |
 | seçenekleri yerine | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Basitleştirilmiş Çince`Hans` |
-| Gucerat dili | `gu`  | Gucerat dili`Gujr` | --> | Latin`Latn` |
-| İbranice | `he` | İbranice`Hebr` | <--> | Latin`Latn` |
-| Hintçe | `hi` | Devanagari`Deva` | <--> | Latin`Latn` |
-| Japonca | `ja` | Japonca`Jpan` | <--> | Latin`Latn` |
-| Kannada dili | `kn` | Kannada dili`Knda` | --> | Latin`Latn` |
-| Malayalam dili | `ml` | Malayalam dili`Mlym` | --> | Latin`Latn` |
-| Marathi | `mr` | Devanagari`Deva` | --> | Latin`Latn` |
-| Oriya | `or` | Oriya`Orya` | <--> | Latin`Latn` |
-| Pencap dili | `pa` | Gurmukhi`Guru`  | <--> | Latin`Latn`  |
-| Sırpça (Kiril) | `sr-Cyrl` | Kiril`Cyrl`  | --> | Latin`Latn` |
-| Sırpça (Latin) | `sr-Latn` | Latin`Latn` | --> | Kiril`Cyrl`|
-| Tamil dili | `ta` | Tamil dili`Taml` | --> | Latin`Latn` |
-| Telugu dili | `te` | Telugu dili`Telu` | --> | Latin`Latn` |
-| Tayca | `th` | Tay dili`Thai` | --> | Latin`Latn` |
+| Gucerat dili | `gu`  | Gucerat dili`Gujr` | --> | Tin`Latn` |
+| İbranice | `he` | İbranice`Hebr` | <--> | Tin`Latn` |
+| Hintçe | `hi` | Devanagari`Deva` | <--> | Tin`Latn` |
+| Japonca | `ja` | Japonca`Jpan` | <--> | Tin`Latn` |
+| Kannada dili | `kn` | Kannada dili`Knda` | --> | Tin`Latn` |
+| Malayalam dili | `ml` | Malayalam dili`Mlym` | --> | Tin`Latn` |
+| Marathi | `mr` | Devanagari`Deva` | --> | Tin`Latn` |
+| Oriya | `or` | Oriya`Orya` | <--> | Tin`Latn` |
+| Pencap dili | `pa` | Gurmukhi`Guru`  | <--> | Tin`Latn`  |
+| Sırpça (Kiril) | `sr-Cyrl` | V`Cyrl`  | --> | Tin`Latn` |
+| Sırpça (Latin) | `sr-Latn` | Tin`Latn` | --> | V`Cyrl`|
+| Tamil dili | `ta` | Tamil dili`Taml` | --> | Tin`Latn` |
+| Telugu dili | `te` | Telugu dili`Telu` | --> | Tin`Latn` |
+| Tayca | `th` | Tay dili`Thai` | --> | Tin`Latn` |
 
 ## <a name="dictionary"></a>Sözlük
 
-Sözlük, Arama ve Örnekler yöntemlerini kullanarak aşağıdaki dilleri İngilizce'ye veya İngilizce'den destekler.
+Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingilizce 'ye kadar aşağıdaki dilleri destekler.
 
 | Dil    | Dil kodu |
 |:----------- |:-------------:|
@@ -167,16 +167,16 @@ Sözlük, Arama ve Örnekler yöntemlerini kullanarak aşağıdaki dilleri İngi
 | Fransızca      | `fr`          |
 | Almanca      | `de`          |
 | Yunanca      | `el`          |
-| Haiti Creole      | `ht`          |
+| Haian Creole      | `ht`          |
 | İbranice      | `he`          |
 | Hintçe      | `hi`          |
-| Hmong Daw      | `mww`          |
+| Hmong DAW      | `mww`          |
 | Macarca      | `hu`          |
 | İzlandaca    | `is`  |
 | Endonezce      | `id`          |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
-| Kiswahili      | `sw`          |
+| Svahili dili      | `sw`          |
 | Klingon      | `tlh`          |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
@@ -204,18 +204,18 @@ Sözlük, Arama ve Örnekler yöntemlerini kullanarak aşağıdaki dilleri İngi
 
 ## <a name="detect"></a>Algılama
 
-Çevirmen Metin API' si çeviri ve çeviri için kullanılabilen tüm dilleri algılar.
+Translator Metin Çevirisi API'si, çeviri ve alfabede kullanılabilen tüm dilleri algılar.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Çevirmen Metin API dil listesine programlı olarak erişin
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>Translator Metin Çevirisi API'si dil listesine programlı olarak erişin
 
-Diller yöntemini kullanarak Çevirmen Metin API v3.0 için desteklenen dillerin listesini alabilirsiniz. Listeyi özelliğe, dil koduna ve İngilizce'deki dil adına veya desteklenen diğer dillere göre görüntüleyebilirsiniz. Yeni diller kullanıma sunuldukça bu liste Microsoft Translator hizmeti tarafından otomatik olarak güncelleştirilir.
+Diller metodunu kullanarak Translator Metin Çevirisi API'si v 3.0 için desteklenen dillerin bir listesini alabilirsiniz. Liste özelliği, dil kodu ve dil adı ile Ingilizce veya desteklenen başka bir dilde görünüm görüntüleyebilirsiniz. Yeni diller kullanılabilir hale getirildiğinden bu liste Microsoft Translator hizmeti tarafından otomatik olarak güncelleştirilir.
 
-[Dilleri çalışma başvuru belgelerini görüntüle](reference/v3-0-languages.md)
+[Dilleri görüntüle işlem başvurusu belgeleri](reference/v3-0-languages.md)
 
 ## <a name="customization"></a>Özelleştirme
 
-[Custom Translator](https://aka.ms/CustomTranslator)kullanarak İngilizce'ye veya İngilizce'den özelleştirme için aşağıdaki diller kullanılabilir.
+Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanılarak Ingilizce veya İngilizce arasında özelleştirme için kullanılabilir.
 
 | Dil    | Dil kodu |
 |:----------- |:-------------:|
@@ -243,11 +243,11 @@ Diller yöntemini kullanarak Çevirmen Metin API v3.0 için desteklenen dillerin
 | İrlandaca | `ga`  |
 | İtalyanca      | `it`          |
 | Japonca      | `ja`          |
-| Kiswahili|    `sw`    |
+| Svahili dili|    `sw`    |
 | Korece      | `ko`          |
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |
-| Malagasy| `mg`    |
+| Malgaşça| `mg`    |
 | Maori dili| `mi`  |
 | Norveççe      | `nb`          |
 | Farsça      | `fa`          |
@@ -255,7 +255,7 @@ Diller yöntemini kullanarak Çevirmen Metin API v3.0 için desteklenen dillerin
 | Portekizce (Brezilya) | `pt-br` |
 | Rumence      | `ro`          |
 | Rusça      | `ru`          |
-| Samoaca|   `sm`    |
+| Samoan|   `sm`    |
 | Sırpça (Latin)      | `sr-Latn`          |
 | Slovakça     | `sk`          |
 | Slovence      | `sl`          |
@@ -267,8 +267,8 @@ Diller yöntemini kullanarak Çevirmen Metin API v3.0 için desteklenen dillerin
 | Vietnamca      | `vi`          |
 | Galce | `cy` |
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator web sitesindeki listeye erişin
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web sitesindeki listeye erişin
 
-Dillere hızlı bir bakış için, Microsoft Translator web sitesi Çevirmen Metin ve Konuşma API'leri tarafından desteklenen tüm dilleri gösterir. Bu liste, dil kodları gibi geliştiriciye özgü bilgileri içermez.
+Microsoft Translator Web sitesinde, dillere hızlı bir bakış için Translator Metin Çevirisi ve konuşma API 'Leri tarafından desteklenen tüm diller gösterilmektedir. Bu liste, dil kodları gibi geliştiriciye özgü bilgiler içermez.
 
-[Diller listesine bakın](https://www.microsoft.com/translator/languages.aspx)
+[Dillerin listesine bakın](https://www.microsoft.com/translator/languages.aspx)
