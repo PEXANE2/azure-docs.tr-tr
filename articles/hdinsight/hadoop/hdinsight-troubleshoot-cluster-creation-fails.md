@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight ile küme oluşturma hatalarını giderme
-description: Azure HDInsight için Apache küme oluşturma sorunlarını nasıl gidereceğinizi öğrenin.
+title: Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
+description: Azure HDInsight için Apache kümesi oluşturma sorunlarını giderme hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
 ms.openlocfilehash: 3af7515995a305f41fb9b9f85deb9107de51c622
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453498"
 ---
-# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarını giderme
+# <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
-Küme oluşturma hataları için en yaygın kök nedenleri şunlardır:
+Aşağıdaki sorunlar, küme oluşturma hatalarının en yaygın temel nedenlerdir:
 
 - İzin sorunları
 - Kaynak ilkesi kısıtlamaları
@@ -29,11 +29,11 @@ Küme oluşturma hataları için en yaygın kök nedenleri şunlardır:
 
 ## <a name="permissions-issues"></a>İzin sorunları
 
-Azure Veri Gölü Depolama Gen2 kullanıyorsanız ve `AmbariClusterCreationFailedErrorCode`hatayı:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::alıyorsanız: " ", Azure portalını açın, Depolama hesabınıza gidin ve Access Control (IAM) altında, **Depolama Blob Veri Katılımcısı** veya **Depolama Blob Veri Sahibi** rolünün abonelik için atanan Kullanıcıya erişim **atadığından** emin olun. Ayrıntılı yönergeler için [Data Lake Storage 2. Nesil hesabında yönetilen kimlik için izinleri ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) konusuna bakın.
+Azure Data Lake Storage 2. kullanıyorsanız ve şu hatayı `AmbariClusterCreationFailedErrorCode`alırsanız: ":::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::", Azure Portal açın, depolama hesabınıza gidin ve Access Control (IAM) altında, **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** rolünün, abonelik için **Kullanıcı tarafından atanan yönetilen kimliğe** erişimi atandığından emin olun. Ayrıntılı yönergeler için [Data Lake Storage 2. Nesil hesabında yönetilen kimlik için izinleri ayarlama](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) konusuna bakın.
 
-Azure Veri Gölü Depolama Gen1 kullanıyorsanız, kurulum ve yapılandırma [yönergelerine buradan](../hdinsight-hadoop-use-data-lake-store.md)bakın. Veri Gölü Depolama Gen1 HBase kümeleri için desteklenmez ve HDInsight sürüm 4.0'da desteklenmez.
+Azure Data Lake Storage 1. kullanıyorsanız, kurulum ve [yapılandırma yönergeleri bölümüne](../hdinsight-hadoop-use-data-lake-store.md)bakın. Data Lake Storage 1., HBase kümelerinde desteklenmez ve HDInsight sürüm 4,0 ' de desteklenmez.
 
-Azure Depolama'yı kullanıyorsanız, küme oluşturma sırasında depolama hesabı adının geçerli olduğundan emin olun.
+Azure Storage kullanıyorsanız, küme oluşturma sırasında depolama hesabı adının geçerli olduğundan emin olun.
 
 ## <a name="resource-policy-restrictions"></a>Kaynak ilkesi kısıtlamaları
 
@@ -41,40 +41,40 @@ Abonelik tabanlı Azure ilkeleri, genel IP adreslerinin oluşturulmasını redde
 
 Genel olarak, aşağıdaki ilkeler küme oluşturmayı etkileyebilir:
 
-* Abonelik içinde IP Adresi & Yük bakiyelerinin oluşturulmasını engelleyen ilkeler.
-* Depolama hesabıoluşturulmasını engelleyen ilke.
-* Ağ kaynaklarının silinmesini önleyen ilke (IP Adresi /Yük Dengeleyicileri).
+* Abonelik içindeki yük dengeleyiciler & IP adresi oluşturulmasını engellemeye yönelik ilkeler.
+* Depolama hesabı oluşturulmasını önleyecek ilke.
+* Ağ kaynaklarının silinmesini önleyecek ilke (IP adresi/yük dengeleyiciler).
 
 ## <a name="firewalls"></a>Güvenlik Duvarları
 
-Sanal ağınızdaki veya depolama hesabınızdaki güvenlik duvarları, HDInsight yönetimi IP adresleriyle iletişimi reddedebilir.
+Sanal ağ veya depolama hesabınızdaki güvenlik duvarları, HDInsight yönetim IP adresleriyle iletişimi reddedebilir.
 
 Aşağıdaki tablodaki IP adreslerinden gelen trafiğe izin verin.
 
 | Kaynak IP adresi | Hedef | Yön |
 |---|---|---|
-| 168.61.49.99 | *:443 | Gelen |
-| 23.99.5.239 | *:443 | Gelen |
-| 168.61.48.131 | *:443 | Gelen |
-| 138.91.141.162 | *:443 | Gelen |
+| 168.61.49.99 | *: 443 | Gelen |
+| 23.99.5.239 | *: 443 | Gelen |
+| 168.61.48.131 | *: 443 | Gelen |
+| 138.91.141.162 | *: 443 | Gelen |
 
-Ayrıca, kümenin oluşturulduğu bölgeye özgü IP adreslerini de ekleyin. Her Azure bölgesiiçin adreslerin listesi için [HDInsight yönetim IP adreslerine](../hdinsight-management-ip-addresses.md) bakın.
+Ayrıca, kümenin oluşturulduğu bölgeye özgü IP adreslerini de ekleyin. Her bir Azure bölgesinin adres listesi için bkz. [HDInsight YÖNETIMI IP adresleri](../hdinsight-management-ip-addresses.md) .
 
-Ekspres bir rota veya kendi özel DNS sunucunuz kullanıyorsanız, [birden çok ağı birbirine bağlayan Azure HDInsight için sanal ağ planı'na](../hdinsight-plan-virtual-network-deployment.md#multinet)bakın.
+Bir Express Route veya kendi özel DNS sunucunuz kullanıyorsanız bkz. [Azure HDInsight için bir sanal ağ planlayın-birden çok ağı bağlama](../hdinsight-plan-virtual-network-deployment.md#multinet).
 
 ## <a name="resources-locks"></a>Kaynak kilitleri  
 
-[Sanal ağınızda ve kaynak grubunuzda kilit](../../azure-resource-manager/management/lock-resources.md)olmadığından emin olun. Kaynak grubu kilitlenirse kümeler oluşturulamaz veya silinemez. 
+[Sanal ağınızda ve kaynak grubunuzda kilit](../../azure-resource-manager/management/lock-resources.md)olmadığından emin olun. Kaynak grubu kilitliyse kümeler oluşturulamaz veya silinemez. 
 
 ## <a name="unsupported-component-versions"></a>Desteklenmeyen bileşen sürümleri
 
-Çözümünüzde Azure [HDInsight'ın desteklenen](../hdinsight-component-versioning.md) bir sürümünü ve [tüm Apache Hadoop bileşenlerini](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) kullandığınızdan emin olun.  
+Çözümünüzde [desteklenen bir Azure HDInsight sürümü](../hdinsight-component-versioning.md) ve [Apache Hadoop bileşenleri](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) kullandığınızdan emin olun.  
 
 ## <a name="storage-account-name-restrictions"></a>Depolama hesabı adı kısıtlamaları
 
-Depolama hesabı adları 24 karakterden fazla olamaz ve özel bir karakter içeremez. Bu kısıtlamalar depolama hesabındaki varsayılan kapsayıcı adı için de geçerlidir.
+Depolama hesabı adları 24 karakterden uzun olamaz ve özel bir karakter içeremez. Bu kısıtlamalar depolama hesabındaki varsayılan kapsayıcı adı için de geçerlidir.
 
-Küme oluşturma için diğer adlandırma kısıtlamaları da geçerlidir. Daha fazla bilgi için [Küme adı kısıtlamalarına](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)bakın.
+Diğer adlandırma kısıtlamaları da küme oluşturma için geçerlidir. Daha fazla bilgi için bkz. [küme adı kısıtlamaları](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name).
 
 ## <a name="service-outages"></a>Hizmet kesintileri
 
@@ -83,6 +83,6 @@ Olası kesintiler veya hizmet sorunları için [Azure durumunu](https://status.a
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Sanal Ağını kullanarak Azure HDInsight kapsamını genişletme](../hdinsight-plan-virtual-network-deployment.md)
-* [Azure HDInsight kümeleriyle Azure Veri Gölü Depolama Gen2'yi kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
+* [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Azure HDInsight kümeleri ile Azure Depolama'yı kullanma](../hdinsight-hadoop-use-blob-storage.md)
 * [Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
