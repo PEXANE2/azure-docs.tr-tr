@@ -1,6 +1,6 @@
 ---
-title: Azure'da Linux VM için Uzak Masaüstü'nü Kullanma
-description: Grafik araçları kullanarak Azure'daki bir Linux VM'ye bağlanmak için Uzak Masaüstü'nü (xrdp) nasıl yükleyip yapılandırılamayı öğrenin
+title: Azure 'da bir Linux VM 'ye uzak masaüstü 'Nü kullanma
+description: Grafik araçlarını kullanarak Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü (xrdp) yüklemeyi ve yapılandırmayı öğrenin
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,130 +14,130 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605196"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure'daki bir Linux VM'ye bağlanmak için Uzak Masaüstü'nü yükleme ve yapılandırma
-Azure'daki Linux sanal makineleri (VM'ler) genellikle komut satırından güvenli bir kabuk (SSH) bağlantısı kullanılarak yönetilir. Linux'ta yeni olduğunda veya hızlı sorun giderme senaryoları için uzak masaüstünün kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux VM'niz için bir masaüstü ortamının[(xfce)](https://www.xfce.org)ve uzak masaüstünün[(xrdp)](http://xrdp.org)nasıl yüklenir ve yapılandırılabildiğini ayrıntıları.
+# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
+Azure 'daki Linux sanal makineleri (VM 'Ler), genellikle güvenli bir kabuk (SSH) bağlantısı kullanılarak komut satırından yönetilir. Linux 'ta yeni veya hızlı sorun giderme senaryolarında, uzak masaüstü kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux sanal ağınız için masaüstü ortamının ([Xfce](https://www.xfce.org)) ve uzak masaüstü 'nün ([xrdp](http://xrdp.org)) nasıl yükleneceği ve yapılandırılacağı açıklanır.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu makale, Azure'da varolan bir Ubuntu 18.04 LTS VM gerektirir. VM oluşturmanız gerekiyorsa, aşağıdaki yöntemlerden birini kullanın:
+Bu makalede, Azure 'da mevcut bir Ubuntu 18,04 LTS sanal makinesi gereklidir. Bir VM oluşturmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:
 
 - [Azure CLI](quick-create-cli.md)
-- [Azure portalı](quick-create-portal.md)
+- [Azure Portal](quick-create-portal.md)
 
 
-## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux VM'nize bir masaüstü ortamı yükleme
-Azure'daki çoğu Linux VM'de varsayılan olarak yüklü bir masaüstü ortamı yoktur. Linux VM'leri genellikle masaüstü ortamı yerine SSH bağlantıları kullanılarak yönetilir. Linux'ta seçebileceğiniz çeşitli masaüstü ortamları vardır. Masaüstü ortamı seçtiğinize bağlı olarak, 1 ila 2 GB disk alanı tüketebilir ve gerekli tüm paketleri yüklemek ve yapılandırmak 5 ila 10 dakika sürebilir.
+## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux sanal makinenize masaüstü ortamı yükler
+Azure 'daki Linux VM 'lerinin çoğunda varsayılan olarak bir masaüstü ortamı yüklü değildir. Linux VM 'Ler, masaüstü ortamı yerine genellikle SSH bağlantıları kullanılarak yönetilir. Linux 'ta seçebileceğiniz çeşitli masaüstü ortamları vardır. Masaüstü ortamınız seçiminize bağlı olarak, bir ila 2 GB disk alanı tüketebilir ve gerekli tüm paketleri yüklemek ve yapılandırmak için 5 ila 10 dakika sürebilir.
 
-Aşağıdaki örnek, hafif [xfce4](https://www.xfce.org/) masaüstü ortamını bir Ubuntu 18.04 LTS VM'ye yükler. Diğer dağıtımlar için komutlar biraz `yum` değişir (Red Hat Enterprise Linux'u yüklemek ve uygun `selinux` kuralları yapılandırmak veya örneğin SUSE'yi yüklemek için kullanmak). `zypper`
+Aşağıdaki örnek, bir Ubuntu 18,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir `yum` (örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` KURALLARı yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
 
-İlk olarak, SSH VM için. Aşağıdaki örnek, *azureuser*kullanıcı adı ile *myvm.westus.cloudapp.azure.com* adlı VM bağlanır. Kendi değerlerinizi kullanın:
+İlk olarak, sanal makinenize SSH. Aşağıdaki örnek, *azureuser*Kullanıcı adı ile *myvm.westus.cloudapp.Azure.com* adlı sanal makineye bağlanır. Kendi değerlerinizi kullanın:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Windows kullanıyorsanız ve SSH kullanma hakkında daha fazla bilgiye ihtiyacınız varsa, [Windows ile SSH tuşlarının nasıl kullanılacağına](ssh-from-windows.md)bakın.
+Windows kullanıyorsanız ve SSH kullanma hakkında daha fazla bilgiye ihtiyacınız varsa bkz. [Windows Ile SSH anahtarlarını kullanma](ssh-from-windows.md).
 
-Sonra, aşağıdaki gibi `apt` kullanarak xfce yükleyin:
+Ardından, aşağıdaki gibi kullanarak `apt` Xfce 'yi yazın:
 
 ```bash
 sudo apt-get update
 sudo apt-get -y install xfce4
 ```
 
-## <a name="install-and-configure-a-remote-desktop-server"></a>Uzak bir masaüstü sunucusu yükleme ve yapılandırma
-Artık yüklü bir masaüstü ortamınız olduğuna göre, gelen bağlantıları dinlemek için uzak bir masaüstü hizmetini yapılandırın. [xrdp,](http://xrdp.org) çoğu Linux dağıtımında bulunan ve xfce ile iyi çalışan bir açık kaynak uzak masaüstü protokolü (RDP) sunucusudur. Ubuntu VM'nize xrdp'yi aşağıdaki şekilde yükleyin:
+## <a name="install-and-configure-a-remote-desktop-server"></a>Uzak masaüstü sunucusunu yükleyip yapılandırma
+Artık yüklü bir masaüstü ortamınız olduğuna göre, gelen bağlantıları dinlemek için bir uzak masaüstü hizmeti yapılandırın. [xrdp](http://xrdp.org) , çoğu Linux dağılımından kullanılabilen açık kaynaklı Uzak Masaüstü Protokolü (RDP) sunucusudur ve Xfce ile iyi çalışmaktadır. Aşağıdaki şekilde Ubuntu sanal makinenize xrdp 'yi yüklersiniz:
 
 ```bash
 sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 
-Xrdp'ye oturumunuza başladığınızda hangi masaüstü ortamını kullanacağınızı söyleyin. Xrdp'yi masaüstü ortamınız olarak kullanmak üzere yapılandırın:
+Oturumunuzu başlattığınızda xrdp 'ye hangi masaüstü ortamının kullanılacağını söyleyin. Xrdp 'yi masaüstü ortamınız olarak şu şekilde kullanacak şekilde yapılandırın:
 
 ```bash
 echo xfce4-session >~/.xsession
 ```
 
-Değişikliklerin aşağıdaki gibi etkili olması için xrdp hizmetini yeniden başlatın:
+Değişikliklerin etkili olması için xrdp hizmetini yeniden başlatın:
 
 ```bash
 sudo service xrdp restart
 ```
 
 
-## <a name="set-a-local-user-account-password"></a>Yerel kullanıcı hesabı parolası ayarlama
-VM'nizi oluşturduğunuzda kullanıcı hesabınız için bir parola oluşturduysanız, bu adımı atlayın. Yalnızca SSH anahtar kimlik doğrulamasını kullanıyorsanız ve yerel hesap parolası seti yoksa, VM'nizde oturum açmak için xrdp'yi kullanmadan önce bir parola belirtin. xrdp kimlik doğrulama için SSH anahtarlarını kabul edemez. Aşağıdaki örnekte, *azureuser*kullanıcı için bir parola belirtir:
+## <a name="set-a-local-user-account-password"></a>Yerel Kullanıcı hesabı parolası ayarlama
+VM 'nizi oluştururken Kullanıcı hesabınız için bir parola oluşturduysanız, bu adımı atlayın. Yalnızca SSH anahtarı kimlik doğrulaması kullanıyorsanız ve yerel hesap parolası ayarlanmamışsa, sanal makinenizde oturum açmak için xrdp kullanmadan önce bir parola belirtin. xrdp, kimlik doğrulaması için SSH anahtarlarını kabul edemez. Aşağıdaki örnek, *azureuser*Kullanıcı hesabı için bir parola belirtir:
 
 ```bash
 sudo passwd azureuser
 ```
 
 > [!NOTE]
-> Parola belirtme, şu anda parola girişine izin vermek için SSHD yapılandırmanızı güncelleştirmez. Güvenlik açısından bakıldığında, anahtar tabanlı kimlik doğrulaması kullanarak VM'nize bir SSH tüneli ile bağlanmak ve ardından xrdp'ye bağlanmak isteyebilirsiniz. Bu nedenle, uzak masaüstü trafiğine izin vermek için ağ güvenliği grubu kuralı nı oluşturma yla ilgili aşağıdaki adımı atlayın.
+> Bir parola belirtilmesi, SSHD yapılandırmanızı, şu anda yoksa parola oturumlarını açmaya izin verecek şekilde güncelleştirmez. Bir güvenlik perspektifinden, anahtar tabanlı kimlik doğrulaması kullanarak bir SSH tüneli ile sanal makinenize bağlanmak ve ardından xrdp 'ye bağlanmak isteyebilirsiniz. Bu durumda, uzak masaüstü trafiğine izin vermek için bir ağ güvenlik grubu kuralı oluşturma konusunda aşağıdaki adımı atlayın.
 
 
-## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Uzak Masaüstü trafiği için Ağ Güvenlik Grubu kuralı oluşturma
-Uzak Masaüstü trafiğinin Linux VM'nize ulaşmasına izin vermek için, 3389 bağlantı noktasındaki TCP'nin VM'nize erişmesine olanak tanıyan bir ağ güvenliği grubu kuralının oluşturulması gerekir. Ağ güvenliği grubu kuralları hakkında daha fazla bilgi için ağ [güvenlik grubu nedir?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) [Ağ güvenliği grubu kuralı nı oluşturmak için Azure portalını da kullanabilirsiniz.](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Uzak Masaüstü trafiği için bir ağ güvenlik grubu kuralı oluşturma
+Uzak Masaüstü trafiğinin Linux VM 'nize erişmesine izin vermek için, 3389 numaralı bağlantı noktasında sanal makinenize ulaşmasını sağlayan bir ağ güvenlik grubu kuralı oluşturulması gerekir. Ağ güvenlik grubu kuralları hakkında daha fazla bilgi için bkz. [ağ güvenlik grubu nedir?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ayrıca [, bir ağ güvenlik grubu kuralı oluşturmak için Azure Portal de kullanabilirsiniz](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Aşağıdaki örnek, *3389*portundaki [az vm açık bağlantı noktası](/cli/azure/vm#az-vm-open-port) ile bir ağ güvenlik grubu kuralı oluşturur. SSH oturumundan VM'nize değil, Azure CLI'den aşağıdaki ağ güvenlik grubu kuralını açın:
+Aşağıdaki örnek, *3389*numaralı bağlantı noktasında [az VM Open-Port](/cli/azure/vm#az-vm-open-port) ile bir ağ güvenlik grubu kuralı oluşturur. Sanal makinenize SSH oturumundan değil, Azure CLı 'dan aşağıdaki ağ güvenlik grubu kuralını açın:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
-## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux VM'nizi Uzak Masaüstü istemcisiyle bağlayın
-Yerel uzak masaüstü istemcinizi açın ve Linux VM'nizin IP adresine veya DNS adına bağlanın. VM'nize kullanıcı hesabının kullanıcı adını ve parolasını aşağıdaki şekilde girin:
+## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux VM 'nizi uzak masaüstü istemcisiyle bağlama
+Yerel Uzak Masaüstü istemcinizi açın ve Linux sanal makinenizin IP adresine veya DNS adına bağlanın. VM 'nizin Kullanıcı hesabı için Kullanıcı adını ve parolayı şu şekilde girin:
 
-![Uzak Masaüstü istemcinizi kullanarak xrdp'ye bağlanın](./media/use-remote-desktop/remote-desktop-client.png)
+![Uzak Masaüstü istemcinizi kullanarak xrdp 'ye bağlanma](./media/use-remote-desktop/remote-desktop-client.png)
 
-Kimlik doğrulaması yaptıktan sonra, xfce masaüstü ortamı yüklenir ve aşağıdaki örneğe benzer:
+Kimlik doğrulamasından sonra, Xfce masaüstü ortamı yüklenir ve aşağıdaki örneğe benzer şekilde görünür:
 
-![xrdp ile xfce masaüstü ortamı](./media/use-remote-desktop/xfce-desktop-environment.png)
+![xrdp aracılığıyla Xfce masaüstü ortamı](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-Yerel RDP istemciniz ağ düzeyinde kimlik doğrulaması (NLA) kullanıyorsa, bu bağlantı ayarını devre dışı bırakmanız gerekebilir. XRDP şu anda NLA'yı desteklemiyor. [Ayrıca FreeRDP](https://www.freerdp.com)gibi NLA'yı destekleyen alternatif RDP çözümlerine de bakabilirsiniz.
+Yerel RDP istemciniz ağ düzeyinde kimlik doğrulaması (NLA) kullanıyorsa, bu bağlantı ayarını devre dışı bırakmanız gerekebilir. XRDP Şu anda NLA 'yı desteklemiyor. Ayrıca, [FreeRDP](https://www.freerdp.com)gibi nla 'yı destekleyen alternatif RDP çözümlerine bakabilirsiniz.
 
 
 ## <a name="troubleshoot"></a>Sorun giderme
-Uzak Bir Masaüstü istemcisi kullanarak Linux VM'nize bağlanamıyorsanız, VM'nizin RDP bağlantılarını aşağıdaki gibi dinlediğini doğrulamak için Linux VM'nizi kullanın: `netstat`
+Linux VM 'nize bir uzak masaüstü istemcisi kullanarak bağlanamıyorsanız, sanal makinenizin RDP bağlantılarını dinlediğini doğrulamak için Linux sanal makinenizde aşağıdaki gibi kullanın `netstat` :
 
 ```bash
 sudo netstat -plnt | grep rdp
 ```
 
-Aşağıdaki örnekte, Beklendiği gibi TCP bağlantı noktası 3389'da VM dinleme si gösterilmektedir:
+Aşağıdaki örnek, TCP bağlantı noktası 3389 ' de beklendiği gibi dinleme yapan VM 'yi gösterir:
 
 ```bash
 tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesman
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-*Xrdp-sesman* hizmeti dinlemiyorsa, Ubuntu VM'de hizmeti aşağıdaki gibi yeniden başlatın:
+*Xrdp-sesman* hizmeti dinlemediğinde, Ubuntu VM 'de hizmeti aşağıdaki şekilde yeniden başlatın:
 
 ```bash
 sudo service xrdp restart
 ```
 
-Hizmetin neden yanıt verilemeyeceğini gösteren göstergeler için Ubuntu VM'nizdeki */var/log* oturumunu gözden geçirin. Ayrıca herhangi bir hata görüntülemek için uzak bir masaüstü bağlantı girişimi sırasında syslog izleyebilirsiniz:
+Hizmetin yanıt vermemesine neden olabilecek göstergeler için Ubuntu VM 'nizde */var/log* içindeki günlükleri gözden geçirin. Ayrıca, bir Uzak Masaüstü bağlantısı sırasında hataları görüntüleme denemesi sırasında Syslog 'yi izleyebilirsiniz:
 
 ```bash
 tail -f /var/log/syslog
 ```
 
-Red Hat Enterprise Linux ve SUSE gibi diğer Linux dağıtımlarının, hizmetleri yeniden başlatmanın ve gözden geçirilebilecek alternatif günlük dosya konumları için farklı yolları olabilir.
+Red Hat Enterprise Linux ve SUSE gibi diğer Linux dağıtımlarındaki hizmetleri yeniden başlatmak için farklı yollar ve gözden geçirmek için alternatif günlük dosyası konumları olabilir.
 
-Uzak masaüstü istemcinizde herhangi bir yanıt almazsanız ve sistem günlüğünde herhangi bir olay görmezseniz, bu davranış uzak masaüstü trafiğinin VM'ye erişemeyeceğini gösterir. 3389 bağlantı noktasında TCP'ye izin verme kuralınız olduğundan emin olmak için ağ güvenlik grubu kurallarınızı gözden geçirin. Daha fazla bilgi için [Sorun Giderme uygulaması bağlantısı sorunlarına](../windows/troubleshoot-app-connection.md)bakın.
+Uzak Masaüstü istemcinizdeki herhangi bir yanıt almazsanız ve sistem günlüğünde herhangi bir olay görmüyorsanız, bu davranış uzak masaüstü trafiğinin sanal makineye ulaşamayacağını gösterir. 3389 numaralı bağlantı noktasında TCP 'ye izin veren bir kuralınız olduğundan emin olmak için ağ güvenlik grubu kurallarınızı gözden geçirin. Daha fazla bilgi için bkz. [uygulama bağlantı sorunlarını giderme](../windows/troubleshoot-app-connection.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Linux VM'lerle SSH tuşları oluşturma ve kullanma hakkında daha fazla bilgi için [Azure'daki Linux VM'leri için SSH anahtarları oluşturma 'na](mac-create-ssh-keys.md)bakın.
+Linux VM 'Leri ile SSH anahtarları oluşturma ve kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da Linux VM 'ler IÇIN SSH anahtarları oluşturma](mac-create-ssh-keys.md).
 
-Windows'dan SSH kullanma hakkında daha fazla bilgi için [Windows ile SSH tuşlarının nasıl kullanılacağına](ssh-from-windows.md)bakın.
+Windows 'dan SSH kullanma hakkında bilgi için bkz. [Windows Ile SSH anahtarlarını kullanma](ssh-from-windows.md).
 

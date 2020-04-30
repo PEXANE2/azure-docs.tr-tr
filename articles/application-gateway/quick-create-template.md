@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlatma: Kaynak Yöneticisi şablonu kullanarak doğrudan web trafiği'
+title: 'Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak doğrudan web trafiği'
 titleSuffix: Azure Application Gateway
-description: Web trafiğini arka uç havuzundaki sanal makinelere yönlendiren bir Azure Uygulama Ağ Geçidi oluşturmak için Kaynak Yöneticisi şablonunun nasıl kullanılacağını öğrenin.
+description: Bir arka uç havuzundaki sanal makinelere Web trafiğini yönlendiren bir Azure Application Gateway oluşturmak için Kaynak Yöneticisi şablonunu nasıl kullanacağınızı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,75 +10,75 @@ ms.date: 03/23/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604894"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği - Kaynak Yöneticisi şablonu
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Hızlı başlangıç: Azure Application Gateway-Kaynak Yöneticisi şablonuyla doğrudan web trafiği
 
-Bu hızlı başlangıçta, Azure Uygulama Ağ Geçidi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız. Daha sonra doğru çalıştığından emin olmak için uygulama ağ geçidini sınarsınız.
+Bu hızlı başlangıçta bir Azure Application Gateway oluşturmak için Kaynak Yöneticisi şablonu kullanırsınız. Ardından, doğru çalıştığından emin olmak için uygulama ağ geçidini test edersiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Bu hızlı başlatmayı Azure [portalı](quick-create-portal.md), [Azure PowerShell](quick-create-powershell.md)veya [Azure CLI'yi](quick-create-cli.md)kullanarak da tamamlayabilirsiniz.
+Bu hızlı başlangıcı [Azure Portal](quick-create-portal.md), [Azure POWERSHELL](quick-create-powershell.md)veya [Azure CLI](quick-create-cli.md)kullanarak da tamamlayabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Basitlik adına, bu şablon, genel bir ön uç IP'si, uygulama ağ geçidinde tek bir siteyi barındıracak temel bir dinleyici, temel bir istek yönlendirme kuralı ve arka uç havuzunda iki sanal makine içeren basit bir kurulum oluşturur.
+Kolaylık sağlaması için bu şablon, genel ön uç IP 'si olan basit bir kurulum ve uygulama ağ geçidinde tek bir siteyi barındırmak için temel bir dinleyici, temel bir istek yönlendirme kuralı ve arka uç havuzundaki iki sanal makine oluşturur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
-Şablonda birden çok Azure kaynağı tanımlanır:
+Şablonda birden çok Azure kaynağı tanımlanmış:
 
-- [**Microsoft.Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses) : uygulama ağ geçidi için bir ve sanal makineler için iki.
-- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : iki sanal makine
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : sanal makineler için iki
-- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS ve web sayfalarını yapılandırmak için
+- [**Microsoft. Network/applicationgateway 'ler**](/azure/templates/microsoft.network/applicationgateways)
+- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses) : uygulama ağ geçidi için bir tane ve sanal makineler için iki.
+- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. COMPUTE/virtualmachines**](/azure/templates/microsoft.compute/virtualmachines) : iki sanal makine
+- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : sanal makineler için iki
+- [**Microsoft. COMPUTE/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS ve Web sayfalarını yapılandırmak için
 
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Kaynak Yöneticisi şablonu Azure'a dağıtın:
+Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
-1. Azure'da oturum açmak ve şablonu açmak için **Azure'a Dağıt'ı** seçin. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
+1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon, IIS çalıştıran arka uç havuzunda bir uygulama ağ geçidi, ağ altyapısı ve iki sanal makine oluşturur.
 
    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
-2. Kaynak grubunuzu seçin veya oluşturun, sanal makine yöneticisi kullanıcı adını ve parolasını yazın.
-3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** seçin ve ardından Satın **Alma'yı**seçin. Dağıtımın tamamlanması 20 dakika veya daha uzun sürebilir.
+2. Kaynak grubunuzu seçin veya oluşturun, sanal makine yöneticisinin Kullanıcı adını ve parolasını yazın.
+3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin ve ardından **satın al**' ı seçin. Dağıtımın tamamlanması 20 dakika veya daha uzun sürebilir.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Uygulama ağ geçidini oluşturmak için IIS gerekmese de, Azure'un uygulama ağ geçidini başarıyla oluşturmuş olup olmadığını doğrulamak için yüklenir. Uygulama ağ geçidini test etmek için IIS'yi kullanın:
+Uygulama ağ geçidi oluşturmak için IIS gerekli olmasa da, Azure 'ın uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak üzere yüklenir. Uygulama ağ geçidini test etmek için IIS kullanın:
 
-1. **Genel Bakış** sayfasında uygulama ağ geçidinin genel IP adresini bulun. ![Kayıt uygulama ağ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) geçidi ortak IP adresi Veya, **Tüm kaynakları**seçebilir, arama kutusuna *myAGPublicIPAddress* girin ve sonra arama sonuçlarında seçin. Azure, **Genel Bakış** sayfasında genel IP adresini görüntüler.
-2. Herkese açık IP adresini kopyalayın ve bu IP adresine göz atmak için tarayıcınızın adres çubuğuna yapıştırın.
-3. Yanıtı kontrol edin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uçla başarılı bir şekilde bağlanabileceğini doğrular.
+1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![Uygulama ağ GEÇIDI genel IP adresini](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) kaydedin veya **tüm kaynaklar**' ı seçip Arama kutusuna *myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
+2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
+3. Yanıtı denetleyin. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanıp bağlanabileceğini doğrular.
 
    ![Uygulama ağ geçidini test etme](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-   Tarayıcıyı birden çok kez yenileyin ve hem myVM1 hem de myVM2 bağlantılarını görmeniz gerekir.
+   Tarayıcıyı birden çok kez yenileyin ve hem myVM1 hem de myVM2 bağlantıları görmeniz gerekir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Uygulama ağ geçidinde oluşturduğunuz kaynaklara artık ihtiyacınız olmadığında kaynak grubunu silin. Bu, uygulama ağ geçidini ve ilgili tüm kaynakları kaldırır.
+Uygulama ağ geçidiyle oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu silin. Bu, uygulama ağ geçidini ve tüm ilgili kaynakları kaldırır.
 
-Kaynak grubunu silmek için `Remove-AzResourceGroup` cmdlet'i arayın:
+Kaynak grubunu silmek için `Remove-AzResourceGroup` cmdlet 'ini çağırın:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group name>

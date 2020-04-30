@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Birden çok genel IP adresiyle bir Azure Güvenlik Duvarı oluşturma - Kaynak Yöneticisi şablonu'
-description: Birden çok genel IP adresine sahip bir Azure Güvenlik Duvarı oluşturmak için Kaynak Yöneticisi şablonu nasıl kullanacağınızı öğrenin.
+title: 'Hızlı başlangıç: birden çok genel IP adresi ile Azure Güvenlik Duvarı oluşturma-Kaynak Yöneticisi şablonu'
+description: Birden çok genel IP adresi olan bir Azure Güvenlik duvarı oluşturmak için Kaynak Yöneticisi şablonunu nasıl kullanacağınızı öğrenin.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,76 +8,76 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: 3d58173d239e7a9249b588ff038ea46cfedb27a3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81605201"
 ---
-# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Hızlı başlangıç: Birden çok genel IP adresiyle bir Azure Güvenlik Duvarı oluşturma - Kaynak Yöneticisi şablonu
+# <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Hızlı başlangıç: birden çok genel IP adresi ile Azure Güvenlik Duvarı oluşturma-Kaynak Yöneticisi şablonu
 
-Bu hızlı başlatmada, birden çok genel IP adresine sahip bir Azure Güvenlik Duvarı dağıtmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
+Bu hızlı başlangıçta, birden çok genel IP adresi ile bir Azure Güvenlik Duvarı dağıtmak için bir Kaynak Yöneticisi şablonu kullanırsınız.
 
-Dağıtılan güvenlik duvarı, iki Windows Server 2019 sanal makinesine RDP bağlantısı sağlayan NAT kural toplama kurallarına sahiptir.
+Dağıtılan güvenlik duvarında, iki Windows Server 2019 sanal makinesine RDP bağlantılarına izin veren NAT kural koleksiyonu kuralları vardır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Birden çok genel IP adresine sahip Azure Güvenlik Duvarı hakkında daha fazla bilgi [için](deploy-multi-public-ip-powershell.md)bkz.
+Birden çok genel IP adresiyle Azure Güvenlik Duvarı hakkında daha fazla bilgi için, bkz. [Azure PowerShell kullanarak birden çok genel IP adresi Ile Azure Güvenlik Duvarı dağıtma](deploy-multi-public-ip-powershell.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall"></a>Azure Güvenlik Duvarı Oluşturma
+## <a name="create-an-azure-firewall"></a>Azure Güvenlik Duvarı oluşturma
 
-Bu şablon, Azure Güvenlik Duvarı'nı desteklemek için gerekli kaynakların yanı sıra iki genel IP adresine sahip bir Azure Güvenlik Duvarı oluşturur.
+Bu şablon, Azure Güvenlik duvarını desteklemek için gerekli kaynaklarla birlikte iki genel IP adresi ile bir Azure Güvenlik duvarı oluşturur.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
-Şablonda birden çok Azure kaynağı tanımlanır:
+Şablonda birden çok Azure kaynağı tanımlanmış:
 
-- [**Microsoft.Network/publicIPAdresleri**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Storage/storageHesapları**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
+- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
+- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Kaynak Yöneticisi şablonu Azure'a dağıtın:
+Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
-1. Azure'da oturum açmak ve şablonu açmak için **Azure'a Dağıt'ı** seçin. Şablon bir Azure Güvenlik Duvarı, ağ altyapısı ve iki sanal makine oluşturur.
+1. Azure 'da oturum açmak için **Azure 'A dağıt** ' ı seçin ve şablonu açın. Şablon bir Azure Güvenlik Duvarı, ağ altyapısı ve iki sanal makine oluşturur.
 
    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffw-docs-qs%2Fazuredeploy.json)
 
-2. Portalda, birden **çok IP ortak adresi olan bir Azure Güvenlik Duvarı Oluştur'da** aşağıdaki değerleri yazın veya seçin:
-   - Abonelik: Mevcut aboneliklerden seçim 
-   - Kaynak grubu: Varolan kaynak gruplarından seçin veya **yeni oluştur'u**seçin ve **Tamam'ı**seçin.
-   - Konum: Konum seçin
-   - Yönetici Kullanıcı Adı: Yönetici kullanıcı hesabı için kullanıcı adı yazın 
-   - Yönetici Şifresi: Yönetici parolası veya anahtar yazın
+2. Portalda, **birden çok IP ortak adresi olan bir Azure Güvenlik duvarı oluşturun** sayfasında, aşağıdaki değerleri yazın veya seçin:
+   - Abonelik: mevcut abonelikler arasından seçim yapın 
+   - Kaynak grubu: mevcut kaynak gruplarından seçim yapın veya **Yeni oluştur**' u seçin ve **Tamam**' ı seçin.
+   - Konum: bir konum seçin
+   - Yönetici Kullanıcı adı: yönetici kullanıcı hesabı için Kullanıcı adı yazın 
+   - Yönetici parolası: yönetici parolasını veya anahtarını yazın
 
-3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** seçin ve ardından Satın **Alma'yı**seçin. Dağıtımın tamamlanması 10 dakika veya daha uzun sürebilir.
+3. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin ve ardından **satın al**' ı seçin. Dağıtımın tamamlanması 10 dakika veya daha uzun sürebilir.
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Azure portalında dağıtılan kaynakları gözden geçirin. Güvenlik duvarı genel IP adreslerine dikkat edin.  
+Azure portal dağıtılan kaynakları gözden geçirin. Güvenlik Duvarı genel IP adreslerini aklınızda edin.  
 
-Güvenlik duvarı genel IP adreslerine bağlanmak için Uzak Masaüstü Bağlantısı'nı kullanın. Başarılı bağlantılar, arka uç sunucularına bağlantı sağlayan güvenlik duvarı NAT kurallarını gösterir.
+Güvenlik Duvarı genel IP adreslerine bağlanmak için Uzak Masaüstü Bağlantısı kullanın. Başarılı bağlantılar, arka uç sunucularıyla bağlantıya izin veren güvenlik duvarı NAT kurallarını gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Güvenlik duvarıyla oluşturduğunuz kaynaklara artık ihtiyacınız olmadığında kaynak grubunu silin. Bu, güvenlik duvarını ve ilgili tüm kaynakları kaldırır.
+Güvenlik duvarıyla oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu silin. Bu, güvenlik duvarını ve tüm ilgili kaynakları kaldırır.
 
-Kaynak grubunu silmek için `Remove-AzResourceGroup` cmdlet'i arayın:
+Kaynak grubunu silmek için `Remove-AzResourceGroup` cmdlet 'ini çağırın:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"
@@ -86,4 +86,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure portalını kullanarak Azure Güvenlik Duvarını karma ağda dağıtma ve yapılandırma](tutorial-hybrid-portal.md)
+> [Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma](tutorial-hybrid-portal.md)

@@ -1,67 +1,67 @@
 ---
-title: Azure Otomasyon Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleyin
-description: Bu makalede, güncelleştirme dağıtımları için güncelleştirme değerlendirmelerinin nasıl görüntülenilen açıklanmaktadır.
+title: Azure Otomasyonu Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
+description: Bu makalede, güncelleştirme dağıtımları için güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617390"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Otomasyon Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleyin
+# <a name="view-azure-automation-update-management-update-assessments"></a>Azure Otomasyonu Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
 
-Azure Otomasyon hesabınızda, makinelerinizin durumunu görüntülemek için **Yönetim'i Güncelleştir'i** seçin.
+Azure Otomasyonu hesabınızda, makinelerinizin durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin.
 
-Bu görünüm, makineleriniz, eksik güncelleştirmeleriniz, güncelleştirme dağıtımlarınız ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi sağlar. **UYUMLULUK** sütununda, makinenin en son ne zaman değerlendirildiğini görebilirsiniz. UPDATE **AGENT READINESS** sütununda, güncelleştirme aracısının durumunu görebilirsiniz. Bir sorun varsa, sorunu düzeltmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
+Bu görünüm, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi sağlar. **Uyumluluk** sütununda, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu görebilirsiniz. Bir sorun varsa, sorunu düzeltmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
 
-Makine, güncelleştirme veya dağıtım la ilgili bilgileri döndüren bir günlük araması çalıştırmak için listedeki ilgili öğeyi seçin. Günlük Arama bölmesi, seçilen öğe için bir sorguyla açılır.
+Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük araması çalıştırmak için, listeden karşılık gelen öğeyi seçin. Günlük araması bölmesi, seçilen öğe için bir sorgu ile açılır.
 
-![Yönetim varsayılan görünümünü güncelleştir](media/automation-update-management/update-management-view.png)
+![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
 
-## <a name="view-missing-updates"></a>Eksik güncelleştirmeleri görüntüleme
+## <a name="view-missing-updates"></a>Eksik güncelleştirmeleri görüntüle
 
-Makinelerinizde eksik olan güncelleştirmelerin listesini görüntülemek için **Eksik güncelleştirmeleri** seçin. Her güncelleştirme listelenir ve seçilebilir. Güncelleştirme gerektiren makine sayısı, işletim sistemi ayrıntıları ve daha fazla bilgi için bir bağlantı hakkında bilgiler gösterilir. Günlük Arama bölmesi de güncelleştirmeler hakkında daha fazla ayrıntı gösterir.
+Makinelerinizde bulunmayan güncelleştirmelerin listesini görüntülemek için **eksik güncelleştirmeler** ' i seçin. Her güncelleştirme listelenir ve seçilebilir. Güncelleştirme, işletim sistemi ayrıntıları ve daha fazla bilgi için bir bağlantının gerekli olduğu makine sayısı hakkında bilgi gösterilir. Günlük araması bölmesinde güncelleştirmeler hakkında daha fazla ayrıntı de gösterilmektedir.
 
-![Eksik Güncellemeler](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
+![Eksik güncelleştirmeler](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
 ## <a name="update-classifications"></a>Update classifications
 
-Aşağıdaki tablolar, Güncelleştirme Yönetimi'nde desteklenen güncelleştirme sınıflandırmalarını ve her sınıflandırma için bir tanımları listelenebilmektedir.
+Aşağıdaki tablolarda, Güncelleştirme Yönetimi içinde desteklenen güncelleştirme sınıflandırmaları, her sınıflandırma için bir tanım ile listelenmektedir.
 
 ### <a name="windows"></a>Windows
 
 |Sınıflandırma  |Açıklama  |
 |---------|---------|
-|Kritik güncelleştirmeler     | Güvenlikle ilgili kritik, güvenlikle ilgili olmayan hataları ele alacak belirli sorunlar için güncelleştirmeler.        |
+|Kritik güncelleştirmeler     | Kritik, güvenlikle ilgili olmayan hataları ele alan belirli sorunlara yönelik güncelleştirmeler.        |
 |Güvenlik güncelleştirmeleri     | Ürüne özgü, güvenlikle ilgili sorunlar için güncelleştirmeler.        |
-|Güncelleştirme paketleri     | Kolay dağıtım için birlikte paketlenmiş düzeltme kümeleri.        |
+|Güncelleştirme paketleri     | Kolay dağıtım için bir arada paketlenmiş düzeltme kümeleri.        |
 |Özellik paketleri     | Ürün sürümü dışında dağıtılan yeni ürün özellikleri.        |
 |Hizmet paketleri     | Bir uygulamaya uygulanan düzeltme kümeleri.        |
-|Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına güncelleştirmeler.        |
-|Araçlar     | Bir veya daha fazla görevin tamamlanmasına yardımcı olan yardımcı programlar veya özellikler.        |
-|Güncelleştirmeler     | Şu anda yüklenen uygulamalarveya dosyalar güncelleştirmeleri.        |
+|Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına yönelik güncelleştirmeler.        |
+|Araçlar     | Bir veya daha fazla görevi tamamlamaya yardımcı olan yardımcı programlar veya Özellikler.        |
+|Güncelleştirmeler     | Şu anda yüklü olan uygulama veya dosyalar için güncelleştirmeler.        |
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 
 |Sınıflandırma  |Açıklama  |
 |---------|---------|
 |Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri     | Belirli bir sorun veya ürüne özgü, güvenlikle ilgili bir sorun için güncelleştirmeler.         |
-|Diğer güncelleştirmeler     | Doğada kritik olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
+|Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
 
-Linux için, Update Management değerlendirme verilerini görüntülerken buluttaki kritik güncelleştirmeleri ve güvenlik güncelleştirmelerini ayırt edebilir. (Bu parçalılık, buluttaki veri zenginleştirme nedeniyle mümkündür.) Düzeltme için Güncelleştirme Yönetimi, makinede bulunan sınıflandırma verilerine dayanır. Diğer dağıtımların aksine, CentOS ürünün RTM sürümlerinde bu bilgilere sahip değildir. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılan CentOS makineleriniz varsa, Güncelleştirme Yönetimi sınıflandırmalara göre yama yapabilir:
+Linux için Güncelleştirme Yönetimi, değerlendirme verilerini görüntülerken buluttaki kritik güncelleştirmeleri ve güvenlik güncelleştirmelerini ayırt edebilir. (Bulutta veri zenginleştirme nedeniyle bu ayrıntı düzeyi mümkündür.) Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS ürünün RTM sürümlerinde bu bilgiler bulunmamaktadır. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, sınıflandırmalara göre Güncelleştirme Yönetimi düzeltme eki uygulanabilir:
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Şu anda CentOS'ta yerel sınıflandırma verilerinin kullanılabilirliğini etkinleştirmek için desteklenen bir yöntem yok. Şu anda, bu işlevselliği kendi başlarına etkinleştiren müşterilere yalnızca en iyi çaba desteği sağlanır.
+Şu anda yerel sınıflandırmanın etkinleştirilmesi için desteklenen bir yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu işlevselliği kendi kendilerine etkinleştirmiş olan müşterilere yalnızca en iyi çaba desteği sağlanır.
 
-Red Hat Enterprise sürüm 6'daki güncellemeleri sınıflandırmak için yum-security eklentisini yüklemeniz gerekir. Red Hat Enterprise Linux 7, eklenti zaten yum kendisi bir parçasıdır, bir şey yüklemek için gerek yoktur. Daha fazla bilgi için aşağıdaki Red Hat [bilgi makalesine](https://access.redhat.com/solutions/10021)bakın.
+Red Hat Enterprise sürüm 6 ' da güncelleştirmeleri sınıflandırmak için, yıum-güvenlik eklentisini yüklemeniz gerekir. Red Hat Enterprise Linux 7 ' de, eklenti zaten bir yalnızca bir parçası olduğundan, herhangi bir şey yüklemeye gerek yoktur. Daha fazla bilgi için aşağıdaki Red hat [Bilgi Bankası makalesine](https://access.redhat.com/solutions/10021)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Herhangi bir güncelleştirme değerlendirmesini görüntüledikten sonra, [Azure VM'leriniz için güncelleştirmeleri ve yamaları yönet](automation-tutorial-update-management.md)adımlarını izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.
+Güncelleştirme değerlendirmelerini güncelleştirdikten sonra, [Azure sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)adımlarını izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.

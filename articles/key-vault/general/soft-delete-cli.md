@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault - CLI ile yumuşak silme nasıl kullanılır
-description: CLI kod parçacıkları ile yumuşak silme örneği kullanma
+title: Azure Key Vault-CLı ile geçici silme kullanma
+description: CLı kod alıntılarını kullanarak geçici silme örneği örnekleri
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,117 +10,117 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81616598"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault geçici silmeyi CLI ile kullanma
 
-Azure Key Vault'un yumuşak silme özelliği silinmiş kasaların ve kasa nesnelerinin kurtarılmasına olanak tanır. Özellikle, yumuşak silme adresleri aşağıdaki senaryoları:
+Azure Key Vault geçici silme özelliği, silinen kasaların ve kasa nesnelerinin kurtarılmasına olanak tanır. Özellikle, geçici silme aşağıdaki senaryolara yöneliktir:
 
-- Anahtar kasasının geri kazanılabilir silinmesi için destek
-- Anahtar kasa nesnelerinin kurtarılabilir silinmesi için destek; anahtarlar, sırlar ve sertifikalar
+- Bir anahtar kasasının kurtarılabilir silme desteği
+- Anahtar Kasası nesnelerinin kurtarılabilir silme desteği; Anahtarlar, gizlilikler ve, sertifikalar
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure CLI - Ortamınız için bu kuruluma sahip değilseniz, [Azure CLI'yi kullanarak Anahtar Kasası Yönet'e](manage-with-cli2.md)bakın).
+- Azure CLı-ortamınız için bu kuruluma sahip değilseniz bkz. [Azure CLI kullanarak Key Vault yönetme](manage-with-cli2.md)).
 
-CLI için Key Vault özel referans bilgileri için [Azure CLI Key Vault başvurusuna](https://docs.microsoft.com/cli/azure/keyvault)bakın.
+CLı için Key Vault özel başvuru bilgileri için bkz. [Azure clı Key Vault başvurusu](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Key Vault işlemleri, rol tabanlı erişim denetimi (RBAC) izinleri ile aşağıdaki gibi ayrı ayrı yönetilir:
+Key Vault işlemler, rol tabanlı erişim denetimi (RBAC) izinleri aracılığıyla aşağıdaki şekilde ayrı yönetilir:
 
 | İşlem | Açıklama | Kullanıcı izni |
 |:--|:--|:--|
-|Liste|Listeler silinen anahtar kasaları.|Microsoft.KeyVault/deletedVaults/read|
-|Kurtar|Silinmiş bir anahtar kasası geri yüklenir.|Microsoft.KeyVault/vaults/write|
-|Temizle|Silinen bir anahtar kasasını ve tüm içeriğini kalıcı olarak kaldırır.|Microsoft.KeyVault/locations/deletedVaults/tasfiye/action|
+|Liste|Silinen anahtar kasalarını listeler.|Microsoft. Keykasası/Silinleults/okuma|
+|Kurtar|Silinen bir anahtar kasasını geri yükler.|Microsoft. Keykasası/Vaults/yazma|
+|Temizle|Silinen bir anahtar kasasını ve tüm içeriğini kalıcı olarak kaldırır.|Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|
 
-İzinler ve erişim denetimi hakkında daha fazla bilgi [için, anahtar kasanızı güvenli](secure-your-key-vault.md)olarak görün)
+İzinler ve erişim denetimi hakkında daha fazla bilgi için bkz. [anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)).
 
-## <a name="enabling-soft-delete"></a>Yumuşak silmeyi etkinleştirme
+## <a name="enabling-soft-delete"></a>Geçici silme etkinleştiriliyor
 
-Silinmiş bir anahtar kasasının veya anahtar kasasında depolanan nesnelerin kurtarılmasına izin vermek için "yumuşak silme"yi etkinleştirirsiniz.
+Silinen bir anahtar kasasının kurtarılmasına veya bir anahtar kasasında depolanan nesnelere izin vermek için "geçici silme" özelliğini etkinleştirirsiniz.
 
 > [!IMPORTANT]
-> Anahtar kasasında 'yumuşak silme'yi etkinleştirmek geri dönüşü olmayan bir eylemdir. Yumuşak silme özelliği "true" olarak ayarlandıktan sonra değiştirilemez veya kaldırılamaz.  
+> Anahtar kasasında ' Soft-DELETE ' özelliğinin etkinleştirilmesi geri alınamaz bir eylemdir. Soft-Delete özelliği "true" olarak ayarlandıktan sonra değiştirilemez veya kaldırılamaz.  
 
-### <a name="existing-key-vault"></a>Mevcut anahtar kasası
+### <a name="existing-key-vault"></a>Mevcut Anahtar Kasası
 
-ContosoVault adlı varolan bir anahtar kasası için aşağıdaki gibi yumuşak silmeyi etkinleştirin. 
+Contosokasası adlı mevcut bir Anahtar Kasası için aşağıdaki gibi geçici silme özelliğini etkinleştirin. 
 
 ```azurecli
 az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
-### <a name="new-key-vault"></a>Yeni anahtar kasası
+### <a name="new-key-vault"></a>Yeni Anahtar Kasası
 
-Yeni bir anahtar kasası için yumuşak silmeyi etkinleştirme, oluşturma komutuna soft-delete enable flag ekleyerek oluşturma zamanında yapılır.
+Yeni bir Anahtar Kasası için geçici silme özelliğinin etkinleştirilmesi, oluşturma Komutunuz için geçici silme etkin bayrağını ekleyerek oluşturma sırasında yapılır.
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
 ```
 
-### <a name="verify-soft-delete-enablement"></a>Yumuşak silme etkinleştirmesini doğrula
+### <a name="verify-soft-delete-enablement"></a>Geçici silme etkinleştirmeyi doğrula
 
-Anahtar kasasının yumuşak silme etkin olduğunu doğrulamak için *gösteri* komutunu çalıştırın ve 'Etkin Leştirilmiş Yumuşak Silme'yi arayın. Öznitelik:
+Bir anahtar kasasının geçici silme özelliğinin etkin olduğunu doğrulamak için *göster* komutunu çalıştırın ve ' geçici silme etkin? ' öğesini arayın. özniteliğe
 
 ```azurecli
 az keyvault show --name ContosoVault
 ```
 
-## <a name="deleting-a-soft-delete-protected-key-vault"></a>Yumuşak silme korumalı anahtar kasası silme
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>Geçici silme korumalı anahtar kasasını silme
 
-Bir anahtar kasasını silme komutu, yumuşak silme nin etkin olup olmadığına bağlı olarak davranışta değişir.
+Yazılım, geçici silme özelliğinin etkin olup olmadığına bağlı olarak davranışındaki bir Anahtar Kasası değişikliğini silme komutu.
 
 > [!IMPORTANT]
->Yumuşak silme etkin olmayan bir anahtar kasası için aşağıdaki komutu çalıştırarsanız, kurtarma için hiçbir seçenek olmadan bu anahtar kasasını ve tüm içeriğini kalıcı olarak silersiniz!
+>Geçici silme etkin olmayan bir Anahtar Kasası için aşağıdaki komutu çalıştırırsanız, bu anahtar kasasını ve tüm içeriğini kurtarma seçeneği olmadan kalıcı olarak silersiniz!
 
 ```azurecli
 az keyvault delete --name ContosoVault
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>Yumuşak silme anahtar tonlarınızı nasıl korur?
+### <a name="how-soft-delete-protects-your-key-vaults"></a>Yumuşak silme, anahtar kasalarınızı korur
 
-Yumuşak silme etkin:
+Geçici silme etkin:
 
-- Silinen anahtar kasası kaynak grubundan kaldırılır ve oluşturulduğu konumla ilişkili ayrılmış bir ad alanına yerleştirilir. 
-- Anahtarlar, sırlar ve sertifikalar gibi silinen nesnelere, içeren anahtar kasaları silinmiş durumda olduğu sürece erişilemez. 
-- Silinmiş bir anahtar kasasının DNS adı ayrılmıştır ve aynı ada sahip yeni bir anahtar kasasının oluşturulması engellenir.  
+- Silinen bir Anahtar Kasası, kaynak grubundan kaldırılır ve oluşturulduğu konumla ilişkili ayrılmış bir ad alanına yerleştirilir. 
+- Anahtarlar, gizli diziler ve sertifikalar gibi silinen nesneler, kapsayan Anahtar Kasası silinen durumunda olduğu sürece erişilemez olur. 
+- Silinen bir Anahtar Kasası için DNS adı ayrılmıştır ve aynı ada sahip yeni bir anahtar kasasının oluşturulmasını önler.  
 
-Aboneliğinizle ilişkili silinmiş durum anahtar kasalarını aşağıdaki komutu kullanarak görüntüleyebilirsiniz:
+Aşağıdaki komutu kullanarak, aboneliğinizle ilişkili silinmiş durum anahtarı kasalarını görüntüleyebilirsiniz:
 
 ```azurecli
 az keyvault list-deleted
 ```
-- *Kimlik,* kurtarma veya temizleme yaparken kaynağı tanımlamak için kullanılabilir. 
-- *Kaynak kimliği,* bu kasanın özgün kaynak kimliğidir. Bu anahtar kasası artık silinmiş durumda olduğundan, bu kaynak kimliğiyle kaynak bulunmamaktadır. 
-- *Zamanlanmış Temizleme Tarihi,* herhangi bir işlem yapılmazsa kasanın kalıcı olarak silineceği tarihtir. *Zamanlanan Temizleme Tarihini*hesaplamak için kullanılan varsayılan bekletme süresi 90 gündür.
+- *Kimliği* , kurtarılırken veya temizlenirken kaynağı tanımlamak için kullanılabilir. 
+- *Kaynak kimliği* , bu kasanın ORIJINAL kaynak kimliğidir. Bu Anahtar Kasası artık silinmiş durumda olduğundan, bu kaynak KIMLIĞINE sahip bir kaynak yok. 
+- *Zamanlanan Temizleme tarihi* , hiçbir işlem yapılmaz kasanın kalıcı olarak silinme tarihidir. *Zamanlanan Temizleme tarihini*hesaplamak için kullanılan varsayılan saklama süresi 90 gündür.
 
-## <a name="recovering-a-key-vault"></a>Anahtar kasası kurtarma
+## <a name="recovering-a-key-vault"></a>Anahtar kasasını kurtarma
 
-Anahtar kasasını kurtarmak için anahtar kasa adını, kaynak grubunu ve konumu belirtirsiniz. Kurtarma işlemi için ihtiyacınız olduğu gibi, silinen anahtar kasasının konumunu ve kaynak grubunu not edin.
+Bir anahtar kasasını kurtarmak için Anahtar Kasası adı, kaynak grubu ve konum belirtirsiniz. Kurtarma işlemi için ihtiyaç duyduğunuz şekilde, silinen anahtar kasasının konumunu ve kaynak grubunu aklınızda bulabilirsiniz.
 
 ```azurecli
 az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
-Anahtar kasası kurtarıldığında, anahtar kasasının orijinal kaynak kimliğiyle birlikte yeni bir kaynak oluşturulur. Özgün kaynak grubu kaldırılırsa, kurtarma yı denemeden önce aynı adla oluşturulması gerekir.
+Bir Anahtar Kasası kurtarılırken, anahtar kasasının orijinal kaynak KIMLIĞIYLE yeni bir kaynak oluşturulur. Özgün kaynak grubu kaldırılırsa, kurtarma denenmeye başlamadan önce bir ad aynı adla oluşturulmalıdır.
 
-## <a name="deleting-and-purging-key-vault-objects"></a>Anahtar kasa nesnelerini silme ve temizleme
+## <a name="deleting-and-purging-key-vault-objects"></a>Anahtar Kasası nesnelerini silme ve Temizleme
 
-Aşağıdaki komut , 'ContosoFirstKey' tuşunu, 'ContosoVault' adlı ve yumuşak silme özelliğine sahip olan anahtar kasasında siler:
+Aşağıdaki komut, "Contosokasası" adlı bir anahtar kasasında (geçici silme özelliği etkin olan) ' ContosoFirstKey ' anahtarını silecek:
 
 ```azurecli
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Anahtar kasanız yumuşak silme için etkinleştirildiğinde, silinmiş anahtarları açıkça listelediğiniz veya aldığınız da dışında silinmiş gibi görünen bir anahtar görüntülenir. Silinen durumdaki bir anahtardaki işlemlerin çoğu, silinmiş bir anahtarı listelemek, kurtarmak veya temizlemek dışında başarısız olur. 
+Anahtar kasanız, geçici silme için etkin durumdayken silinen bir anahtar hala silinmiş gibi görünür, ancak silinen anahtarları açıkça listeleseniz veya aldığınızda. Silinen bir anahtarın listelenmesi, kurtarılması veya temizlenmesi hariç olmak üzere, bir anahtar üzerindeki çoğu işlem başarısız olur. 
 
-Örneğin, silinen anahtarları bir anahtar kasasında listelemek için aşağıdaki komutu kullanın:
+Örneğin, bir anahtar kasasındaki silinen anahtarları listelemek istemek için aşağıdaki komutu kullanın:
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
@@ -128,116 +128,116 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 ### <a name="transition-state"></a>Geçiş durumu 
 
-Yumuşak silme etkinleştirilmiş bir anahtar kasasında bir anahtarı sildiğinizde, geçişin tamamlanması birkaç saniye sürebilir. Bu geçiş sırasında, anahtarın etkin durumda veya silinen durumda olmadığı görünebilir. 
+Geçici silme etkinken anahtar kasasındaki bir anahtarı sildiğinizde, geçişin tamamlanması birkaç saniye sürebilir. Bu geçiş sırasında, anahtar etkin durumda değil veya silinmiş durumda olabilir. 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>Anahtar kasa nesneleri ile yumuşak silme kullanma
+### <a name="using-soft-delete-with-key-vault-objects"></a>Anahtar Kasası nesneleriyle geçici silme kullanma
 
-Anahtar kasaları gibi, silinmiş bir anahtar, gizli veya sertifika, siz geri almadığınız veya temizlemediğiniz sürece 90 güne kadar silinmiş durumda kalır.
+Anahtar kasaları, silinen bir anahtar, gizli dizi ya da sertifika gibi, kurtarmadığınız veya temizolmadığınız sürece 90 güne kadar, silinen durumda kalır.
 
 #### <a name="keys"></a>Anahtarlar
 
-Yumuşak silinmiş bir anahtarı kurtarmak için:
+Geçici olarak silinen bir anahtarı kurtarmak için:
 
 ```azurecli
 az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Yumuşak silinmiş bir anahtarı kalıcı olarak silmek (temizleme olarak da bilinir) için:
+Kalıcı olarak silinen bir anahtarı (Temizleme olarak da bilinir) kalıcı olarak silmek için:
 
 > [!IMPORTANT]
-> Bir anahtarı temizlemek kalıcı olarak siler ve kurtarılamaz! 
+> Bir anahtarı temizlemek onu kalıcı olarak siler ve kurtarılamaz! 
 
 ```azurecli
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-**Kurtarma** ve **temizleme** eylemlerinin, önemli bir kasa erişim ilkesinde ilişkili kendi izinleri vardır. Bir kullanıcı veya hizmet sorumlusunun **kurtarma** veya **temizleme** eylemini gerçekleştirebilmesi için, bu anahtar veya gizli için ilgili izine sahip olması gerekir. Varsayılan olarak, **'tüm'** kısayolu tüm izinleri vermek için kullanıldığında, temizleme anahtar kasasının erişim ilkesine eklenmez. Özellikle **tasfiye** izni vermelisiniz. 
+**Kurtarma** ve **Temizleme** eylemlerinin bir Anahtar Kasası erişim ilkesiyle ilişkili kendi izinleri vardır. Bir kullanıcı veya hizmet sorumlusunun bir **Kurtarma** veya **Temizleme** eylemi yürütebilmesi için bu anahtar veya gizli dizi için ilgili izinlere sahip olmaları gerekir. Varsayılan olarak, tüm izinleri vermek için ' tümü ' kısayolu kullanıldığında, bir anahtar kasasının erişim ilkesine **Temizleme** eklenmez. Özellikle **Temizleme** izni vermelisiniz. 
 
-#### <a name="set-a-key-vault-access-policy"></a>Önemli bir kasa erişim ilkesi ayarlama
+#### <a name="set-a-key-vault-access-policy"></a>Anahtar Kasası erişim ilkesi ayarlama
 
-Aşağıdaki komut, user@contoso.com *ContosoVault'ta* **tasfiye**dahil olmak üzere anahtarlar üzerinde çeşitli işlemler kullanma izni verir:
+Aşağıdaki komut, user@contoso.com *contosokasasındaki* anahtarlar üzerinde **Temizleme**dahil birkaç işlemi kullanma izni verir:
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
 ```
 
 >[!NOTE] 
-> Yumuşak silme özelliği etkinleştirilmiş varolan bir anahtar kasanız varsa, **kurtarma** ve **temizleme** izinleri olmayabilir.
+> Yalnızca geçici silme özelliği etkinleştirilmiş olan bir anahtar kasanıza sahipseniz, **Kurtarma** ve **Temizleme** izinleriniz olmayabilir.
 
 #### <a name="secrets"></a>Gizli Diziler
 
-Anahtarlar gibi, sırlar da kendi komutlarıyla yönetilir:
+Anahtarlar gibi gizli dizileri kendi komutlarıyla yönetilir:
 
-- SQLPassword adlı bir sırrı silme: 
+- SQLPassword adlı bir gizli dizi silin: 
   ```azurecli
   az keyvault secret delete --vault-name ContosoVault -name SQLPassword
   ```
 
-- Silinen tüm sırları anahtar kasasında listele: 
+- Bir anahtar kasasındaki tüm silinen gizli dizileri listeleyin: 
   ```azurecli
   az keyvault secret list-deleted --vault-name ContosoVault
   ```
 
-- Silinen durumda bir sırrı kurtarın: 
+- Silinen durumda gizli dizi kurtarma: 
   ```azurecli
   az keyvault secret recover --name SQLPassword --vault-name ContosoVault
   ```
 
-- Silinmiş durumda bir sırrı temizleme: 
+- Silinen durumda gizli dizi temizle: 
 
   > [!IMPORTANT]
-  > Bir sırrı temizlemek kalıcı olarak siler ve kurtarılamaz! 
+  > Gizli dizi Temizleme bunu kalıcı olarak siler ve kurtarılamaz! 
 
   ```azurecli
   az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
   ```
 
-## <a name="purging-a-soft-delete-protected-key-vault"></a>Yumuşak silme korumalı anahtar kasası temizleme
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Geçici silme korumalı anahtar kasasını Temizleme
 
 > [!IMPORTANT]
-> Bir anahtar kasa veya içerdiği nesnelerden biri tasfiye, kalıcı olarak siler, bu da kurtarılabilir olmayacak anlamına gelir!
+> Bir anahtar kasasını veya kapsanan nesnelerinden birini temizlemek, kalıcı olarak silinecek, aksi, kurtarılabilir olmayacaktır!
 
-Temizleme işlevi, daha önce yumuşak silinmiş bir anahtar tonoz nesnesini veya tüm anahtar kasasını kalıcı olarak silmek için kullanılır. Önceki bölümde gösterildiği gibi, yumuşak silme özelliği etkin olan anahtar kasasında depolanan nesneler birden çok durumdan geçebilir:
+Temizleme işlevi, daha önce geçici olarak silinmiş olan bir Anahtar Kasası nesnesini veya tüm anahtar kasasını kalıcı olarak silmek için kullanılır. Önceki bölümde gösterildiği gibi, yumuşak silme özelliği etkinken bir anahtar kasasında depolanan nesneler birden fazla duruma geçebilir:
 
-- **Active**: silinmeden önce.
-- **Yumuşak Silinmiş**: silindikten sonra, listelenebilir ve etkin duruma geri kurtarılabilir.
-- **Kalıcı Olarak Silinmiş**: tasfiyeden sonra, kurtarılamaz.
+- **Etkin**: silinmeden önce.
+- **Geçici**silme: silinmeden sonra, listelenmiş ve etkin duruma geri kurtarılabiliyor.
+- **Kalıcı olarak silindi**: temizleme sonrasında kurtarılamaz, kurtarılamaz.
 
-Aynı şey anahtar kasa için de geçerli. Yumuşak silinmiş bir anahtar kasasını ve içeriğini kalıcı olarak silmek için, anahtar kasasının kendisini temizlemeniz gerekir.
+Aynı değer, Anahtar Kasası için de geçerlidir. Geçici olarak silinen bir anahtar kasasını ve içeriğini kalıcı olarak silmek için anahtar kasasının kendisini temizlemeniz gerekir.
 
-### <a name="purging-a-key-vault"></a>Anahtar kasanın temizlenmesi
+### <a name="purging-a-key-vault"></a>Anahtar kasasını Temizleme
 
-Anahtar kasası temizlendiğinde, anahtarlar, sırlar ve sertifikalar da dahil olmak üzere tüm içeriği kalıcı olarak silinir. Yumuşak silinmiş bir anahtar kasasını `az keyvault purge` temizlemek için komutu kullanın. Aboneliğinizin silinen anahtar kasalarının konumunu komutu `az keyvault list-deleted`kullanarak bulabilirsiniz.
+Bir Anahtar Kasası temizlendiğinde, anahtarlar, gizlilikler ve Sertifikalar dahil olmak üzere tüm içerikleri kalıcı olarak silinir. Geçici olarak silinen bir anahtar kasasını temizlemek için `az keyvault purge` komutunu kullanın. Aboneliğinizi Silinen anahtar kasalarınızın konumunu komutunu `az keyvault list-deleted`kullanarak bulabilirsiniz.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
 ```
 
 ### <a name="purge-permissions-required"></a>Temizleme izinleri gerekli
-- Silinen bir anahtar kasasını temizlemek için, kullanıcının *Microsoft.KeyVault/locations/deletedVaults/tasfiye/action* işlemi için RBAC iznine ihtiyacı vardır. 
-- Silinmiş bir anahtar kasasını listelemek için, kullanıcının *Microsoft.KeyVault/deletedVaults/read* işlemi için RBAC iznine ihtiyacı vardır. 
-- Varsayılan olarak, yalnızca bir abonelik yöneticisi bu izinlere sahiptir. 
+- Silinen bir anahtar kasasını temizlemek için, kullanıcının *Microsoft. Keykasası/konumlar/deletedVaults/Temizleme/eylem* IŞLEMI için RBAC iznine sahip olması gerekir. 
+- Silinen bir anahtar kasasını listelemek için, kullanıcının *Microsoft. Keykasası/deletedVaults/Read* IŞLEMI için RBAC iznine sahip olması gerekir. 
+- Varsayılan olarak, yalnızca bir abonelik Yöneticisi bu izinlere sahiptir. 
 
 ### <a name="scheduled-purge"></a>Zamanlanmış temizleme
 
-Silinen anahtar kasa nesnelerinin listelenmesi, Key Vault tarafından ne zaman temizleneceklerini de gösterir. *Zamanlanmış Temizleme Tarihi,* hiçbir işlem yapılmazsa, anahtar kasa nesnesi kalıcı olarak ne zaman silineceğini gösterir. Varsayılan olarak, silinmiş bir anahtar kasa nesnesinin bekletme süresi 90 gündür.
+Silinen Anahtar Kasası nesnelerinin listelenmesi Ayrıca Key Vault tarafından temizlenmek üzere zamanlandığında de gösterilir. *Zamanlanan Temizleme tarihi* , hiçbir işlem yapılmaz bir Anahtar Kasası nesnesinin kalıcı olarak silineceğini gösterir. Varsayılan olarak, silinen bir Anahtar Kasası nesnesi için bekletme süresi 90 gündür.
 
 >[!IMPORTANT]
->*Zamanlanmış Temizleme Tarihi* alanı tarafından tetiklenen temizlenmiş kasa nesnesi kalıcı olarak silinir. Kurtarılamaz!
+>*Zamanlanan Temizleme tarihi* alanı tarafından tetiklenen temizlenen bir kasa nesnesi kalıcı olarak silinir. Kurtarılamaz!
 
-## <a name="enabling-purge-protection"></a>Temizleme Korumasını Etkinleştirme
+## <a name="enabling-purge-protection"></a>Temizleme korumasını etkinleştirme
 
-Temizleme koruması açık olduğunda, silinmiş durumdaki bir kasa veya nesne, 90 günlük saklama süresi geçene kadar temizlenemez. Bu tür kasa veya nesne hala kurtarılabilir. Bu özellik, saklama süresi geçene kadar bir kasanın veya nesnenin kalıcı olarak silinmeyeceğine dair ek güvence verir.
+Temizleme koruması açık olduğunda, 90 günlük bekletme süresi geçene kadar bir kasa veya silinmiş durumdaki bir nesne kaldırılamaz. Bu kasa veya nesne yine de kurtarılabilir. Bu özellik, bir kasasının veya bir nesnenin Bekletme dönemi geçene kadar hiçbir zaman kalıcı olarak silinebileceğini güvence altına almanızı sağlar.
 
-Yalnızca yumuşak silme de etkinse temizleme korumasını etkinleştirebilirsiniz. 
+Temizleme korumasını yalnızca geçici silme de etkinse etkinleştirebilirsiniz. 
 
-Kasa oluştururken hem yumuşak silme hem de temizleme korumasını açmak için [az keyvault oluşturma](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın:
+Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın:
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
-Varolan bir kasaya temizleme koruması eklemek için (zaten yumuşak silme etkinleştirilmiş), [az keyvault güncelleştirme](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) komutunu kullanın:
+Mevcut bir kasaya Temizleme koruması eklemek için (zaten geçici silme etkindir), [az keykasası Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) komutunu kullanın:
 
 ```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -245,6 +245,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>Diğer kaynaklar
 
-- Key Vault'un yumuşak silme özelliğine genel bakış için [Azure Key Vault yumuşak silme genel görünümüne](overview-soft-delete.md)bakın).
-- Azure Anahtar Kasası kullanımına genel bir bakış [için](overview.md)bkz.
+- Key Vault geçici silme özelliğine genel bakış için, bkz. [Azure Key Vault geçici silme genel bakış](overview-soft-delete.md)).
+- Azure Key Vault kullanımı için genel bir bakış için bkz. [Azure Key Vault nedir?](overview.md)).
 

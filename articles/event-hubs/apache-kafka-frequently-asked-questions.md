@@ -1,6 +1,6 @@
 ---
-title: Sık sorulan sorular - Apache Kafka için Azure Etkinlik Hub'ları
-description: Bu makalede, farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketicilerin ve üreticilerin Azure Etkinlik Hub'larını kullanırken etkinlik alışverişi nasıl yapabildiği gösterilmektedir.
+title: Sık Sorulan Sorular-Apache Kafka için Azure Event Hubs
+description: Bu makalede, Azure Event Hubs kullanılırken farklı protokoller (AMQP, Apache Kafka ve HTTPS) kullanan tüketiciler ve üreticileri olayları nasıl değiş tokuş edebilir gösterilmektedir.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,42 +13,42 @@ ms.workload: na
 ms.date: 04/01/2020
 ms.author: shvija
 ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606749"
 ---
-# <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Sık sorulan sorular - Apache Kafka için Etkinlik Hub'ları 
-Bu makalede, Apache Kafka için Olay Hub'larına geçiş le ilgili sık sorulan bazı soruların yanıtları verilmektedir.
+# <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Sık Sorulan Sorular-Apache Kafka için Event Hubs 
+Bu makalede, Apache Kafka için Event Hubs geçiş hakkında sık sorulan soruların bazılarına yanıtlar verilmektedir.
 
-## <a name="do-you-run-apache-kafka"></a>Apaçi Kafka'yı yönetiyor musun?
+## <a name="do-you-run-apache-kafka"></a>Apache Kafka çalışıyor musunuz?
 
-Hayır.  Olay Hubları altyapısına karşı Kafka API operasyonlarını yürütüyoruz.  Apache Kafka ve Event Hubs AMQP işlevleri (yani, üretmek, almak, yönetim, vb.) arasında sıkı bir korelasyon olduğundan, Kafka PaaS alanına Event Hub'larının bilinen güvenilirliğini getirebiliyoruz.
+Hayır.  Event Hubs altyapısına karşı Kafka API işlemlerini yürütüyoruz.  Apache Kafka ve Event Hubs AMQP işlevselliği (yani, üret, al, yönetim vb.) arasında sıkı bir bağıntı olduğundan, Event Hubs bilinen güvenilirliğini Kafka PaaS alanına getirebildik.
 
-## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>Olay Hubs tüketici grubu vs Kafka tüketici grubu
-Event Hub tüketici grubu ile Etkinlik Hub'larında Kafka tüketici grubu arasındaki fark nedir? Etkinlik Hub'ları üzerindeki Kafka tüketici grupları standart Event Hub'ları tüketici gruplarından tamamen farklıdır.
+## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>Event Hubs Tüketici grubu vs. Kafka Tüketici grubu
+Event Hubs üzerinde bir olay hub 'ı Tüketici grubu ve Kafka Tüketici grubu arasındaki fark nedir? Event Hubs üzerindeki Kafka tüketici grupları standart Event Hubs tüketici gruplarından tamamen farklıdır.
 
-**Olay Hub'ları tüketici grupları**
+**Event Hubs tüketici grupları**
 
-- Portal, SDK veya Azure Kaynak Yöneticisi şablonları aracılığıyla oluşturma, alma, güncelleştirme ve silme (CRUD) işlemleriyle yönetilirler. Olay Hub'ları tüketici grupları otomatik olarak oluşturulamıyor.
-- Bunlar, bir olay merkezinin çocuk varlıklarıdır. Bu, aynı tüketici grubu adının ayrı varlıklar olmaları nedeniyle aynı ad alanında olay hub'ları arasında yeniden kullanılabildiği anlamına gelir.
-- Uzaklıkları depolamak için kullanılmaz. Düzenlenmiş AMQP tüketimi, örneğin Azure Depolama gibi harici ofset depolama kullanılarak yapılır.
+- Portal, SDK veya Azure Resource Manager şablonları aracılığıyla oluşturma, alma, güncelleştirme ve silme (CRUD) işlemleri ile yönetilir. Event Hubs tüketici grupları oto oluşturulamıyor.
+- Bunlar bir olay hub 'ının alt varlıklarıdır. Aynı Tüketici grubu adının aynı ad alanındaki Olay Hub 'ları arasında ayrı olarak yeniden kullanılabilmesi anlamına gelir, çünkü bunlar ayrı varlıklardır.
+- Bu kişiler, uzaklıkları depolamak için kullanılmaz. Genişletilmiş AMQP tüketimi, dış konum depolama (örneğin, Azure depolama) kullanılarak yapılır.
 
 **Kafka tüketici grupları**
 
-- Otomatik olarak oluşturulurlar.  Kafka grupları Kafka tüketici grubu API'leri üzerinden yönetilebilir.
-- Uzaklıkları Olay Hub'ları hizmetinde depolayabilirler.
-- Bunlar, etkin bir ofset anahtar değeri deposunda anahtar olarak kullanılır. Benzersiz bir çift `group.id` `topic-partition`ve , bir ofset için Azure Depolama (3x çoğaltma) saklıyoruz. Event Hubs kullanıcıları Kafka uzaklıklarını depolamaktan ek depolama maliyeti ne tabidir. Uzaklıklar Kafka tüketici grubu API'leri aracılığıyla kullanılabilir, ancak ofset depolama *hesapları* Doğrudan görünür veya Event Hub kullanıcıları için manevra yapamaz.  
-- İsim alanını kaplarlar. Birden çok konuda birden fazla uygulama için aynı Kafka grup adının kullanılması, tüm uygulamaların ve Kafka istemcilerinin yalnızca tek bir uygulamanın yeniden dengelenmesi gerektiğinde yeniden dengelenmesi anlamına gelir.  Grup adlarınızı akıllıca seçin.
-- Event Hub'ların tüketici gruplarından tamamen farklıdırlar. '$Default' kullanmanız anın ne de Kafka müşterilerinin AMQP iş yüklerini engellemesi konusunda endişelenmenize gerek yoktur. **don't**
-- Azure portalında görüntülenebilirler. Tüketici grubu bilgilerine Kafka API'leri üzerinden ulaşılabilir.
+- Bunlar, oto olarak oluşturulur.  Kafka grupları Kafka Tüketici grubu API 'Leri aracılığıyla yönetilebilir.
+- Event Hubs hizmetinde uzaklıkları depolayabilirler.
+- Bunlar, etkili bir şekilde bir konum anahtar-değer deposu olan anahtarlar olarak kullanılırlar. Ve `group.id` `topic-partition`' nin benzersiz bir çifti için Azure Storage 'da (3x çoğaltma) bir fark depoluyoruz. Event Hubs kullanıcılar, Kafka farklarını depolamadan daha fazla depolama maliyeti vermez. Uzaklıklar Kafka Tüketici grubu API 'Leri aracılığıyla yapılır, ancak uzaklık depolama *hesapları* doğrudan görünür değildir veya Olay Hub 'ı kullanıcıları için kullanılabilir değildir.  
+- Bir ad alanı yayırlar. Birden çok konuda birden çok uygulama için aynı Kafka grubu adının kullanılması, yalnızca tek bir uygulamanın yeniden dengelenmesi gerektiğinde tüm uygulamaların ve Kafka istemcilerinin yeniden dengeleneceği anlamına gelir.  Grup adlarınızı akıllıca seçin.
+- Event Hubs tüketici gruplarından tamamen farklıdır. ' $Default ' **kullanmanız gerekmez veya** AMQP iş yüklerine engel olan Kafka istemcileri hakkında endişelenmeniz gerekmez.
+- Azure portal görüntülenemez. Tüketici grubu bilgilerine Kafka API 'Leri aracılığıyla erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kafka için Etkinlik Hub'ları ve Etkinlik Hub'ları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
+Kafka için Event Hubs ve Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
 
-- [Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzu](apache-kafka-developer-guide.md)
-- [Etkinlik Hub'ları için Apache Kafka geçiş kılavuzu](apache-kafka-migration-guide.md)
-- [Etkinlik Hub'ları için Apache Kafka sorun giderme kılavuzu](apache-kafka-troubleshooting-guide.md)
-- [Önerilen yapılandırmalar](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md)
+- [Event Hubs için Apache Kafka geçiş kılavuzu](apache-kafka-migration-guide.md)
+- [Event Hubs için sorun giderme kılavuzu Apache Kafka](apache-kafka-troubleshooting-guide.md)
+- [Önerilen yapılandırma](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
 

@@ -1,7 +1,7 @@
 ---
-title: Tutorial - Blob depolama ile çok kullanılabilir bir uygulama oluşturun
+title: Öğretici-BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 titleSuffix: Azure Storage
-description: Uygulama verilerinizi yüksek oranda kullanılabilir hale getirmek için okuma erişimi coğrafi yedekli depolama alanını kullanın.
+description: Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak uygulama verilerinizi yüksek oranda kullanılabilir hale getirin.
 services: storage
 author: tamram
 ms.service: storage
@@ -12,21 +12,21 @@ ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81606019"
 ---
-# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: Blob depolama ile son derece kullanılabilir bir uygulama oluşturun
+# <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu oyunda, uygulama verilerinizi Azure'da nasıl yüksek oranda kullanılabilir hale getirebilirsiniz.
+Bu öğretici, bir dizinin birinci bölümüdür. Burada, uygulama verilerinizi Azure 'da yüksek oranda kullanılabilir hale getirme hakkında bilgi edineceksiniz.
 
-Bu öğreticiyi tamamladığınızda, [okuma erişimi coğrafi yedekli](../common/storage-redundancy.md) (RA-GRS) depolama hesabından bir blob yükleyen ve alan bir konsol uygulamanız olacaktır.
+Bu öğreticiyi tamamladığınızda, [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy.md) (RA-GRS) depolama hesabından bir blobu yükleyen ve alan bir konsol uygulamasına sahip olursunuz.
 
-RA-GRS, hareketleri birincil bölgeden ikincil bir bölgeye kopyalayarak çalışır. Bu çoğaltma işlemi, ikincil bölgedeki verilerin nihai olarak tutarlı olmasını sağlar. Uygulama, hangi uç noktaya bağlanışla bağlanış, hatalar ve kurtarmalar simüle edildikçe uç noktalar arasında otomatik olarak geçiş yapmak için [Devre Kesici](/azure/architecture/patterns/circuit-breaker) deseni kullanır.
+RA-GRS, işlemleri birincil bir bölgeden ikincil bir bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, ikincil bölgedeki verilerin nihai olarak tutarlı olmasını sağlar. Uygulama, hangi uç noktanın bağlanacağı için [devre kesici](/azure/architecture/patterns/circuit-breaker) modelini kullanır, otomatik olarak başarısızlık ve kurtarmalar arasında geçiş noktaları arasında geçiş yapılır.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -41,18 +41,18 @@ Bu öğreticiyi tamamlamak için:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-* **Azure geliştirme** iş yüküyle Visual [Studio 2019'u](https://www.visualstudio.com/downloads/) yükleyin.
+* **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' ü yükler.
 
   ![Azure geliştirme (Web ve Bulut altında)](media/storage-create-geo-redundant-storage/workloads.png)
 
 # <a name="python"></a>[Python](#tab/python)
 
-* [Python'u](https://www.python.org/downloads/) Yükle
-* [Python için Azure Depolama SDK'sını](https://github.com/Azure/azure-storage-python) indirin ve yükleyin
+* [Python](https://www.python.org/downloads/) 'ı yükler
+* [Python Için Azure depolama SDK 'sını](https://github.com/Azure/azure-storage-python) indirme ve yükleme
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* [Node.js](https://nodejs.org)yükleyin.
+* [Node. js](https://nodejs.org)' i yükler.
 
 ---
 
@@ -62,13 +62,13 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Depolama hesabı, Azure Depolama veri nesnelerinizin depolanması ve erişimi için benzersiz bir ad alanı sağlar.
+Depolama hesabı, Azure Storage veri nesnelerinizi depolamak ve erişmek için benzersiz bir ad alanı sağlar.
 
 Okuma erişimli coğrafi olarak yedekli depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** düğmesini seçin.
-2. **Yeni** sayfadan **Depolama'yı** seçin.
-3. **Depolama**hesabı seçin **- blob, dosya, tablo, Özellikli** altında kuyruk .
+2. **Yeni** sayfadan **depolama** ' yı seçin.
+3. **Depolama hesabı-blob, dosya, tablo,** **öne çıkan**kuyruk ' ı seçin.
 4. Aşağıdaki bilgileri kullanarak depolama hesabı formunu alttaki resimde gösterildiği gibi doldurun ve **Oluştur**’u seçin:
 
    | Ayar       | Önerilen değer | Açıklama |
@@ -79,7 +79,7 @@ Okuma erişimli coğrafi olarak yedekli depolama hesabı oluşturmak için aşa�
    | **Performans** | Standart | Standart, örnek senaryo için yeterli olacaktır. |
    | **Çoğaltma**| Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS) | Örneğin çalışması için bunun seçilmesi gereklidir. |
    |**Abonelik** | aboneliğiniz |Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
-   |**Kaynak Grubu** | myResourceGroup |Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
+   |**Kaynak** | myResourceGroup |Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    |**Konum** | Doğu ABD | Konum seçin. |
 
 ![depolama hesabı oluşturma](media/storage-create-geo-redundant-storage/createragrsstracct.png)
@@ -104,7 +104,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-[Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyanın zip'ini açın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje temel bir Düğüm.js uygulaması içerir.
+[Örnek projeyi indirin](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) ve dosyayı ayıklayın. Geliştirme ortamına uygulamanın bir kopyasını indirmek için [git](https://git-scm.com/) de kullanılabilir. Örnek proje, temel bir Node. js uygulaması içerir.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
@@ -118,7 +118,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 Bu uygulamada, depolama hesabınız için bağlantı dizesi sağlamanız gerekir. Bu bağlantı dizesini uygulamayı çalıştıran yerel makine üzerindeki bir ortam değişkeninde depolayabilirsiniz. Ortam değişkenini oluşturmak için İşletim Sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
 
-Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Birincil veya ikincil anahtardaki **bağlantı dizesini** kopyalayın. Bağlantı dizenizi \<\> gerçek bağlantı dizenizle değiştirerek işletim sisteminizi temel alan aşağıdaki komutlardan birini çalıştırın. Bu komut, yerel makinede bir ortam değişkeni kaydeder. Windows'da, kullandığınız **Komut İstemi** veya kabuğunu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
+Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. Birincil veya ikincil anahtardaki **bağlantı dizesini** kopyalayın. İşletim sisteminize bağlı olarak aşağıdaki komutlardan birini çalıştırın ve yourconnectionstring \<\> öğesini gerçek bağlantı dizeniz ile değiştirin. Bu komut, yerel makinede bir ortam değişkeni kaydeder. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
 
 ### <a name="linux"></a>Linux
 
@@ -134,9 +134,9 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 # <a name="python"></a>[Python](#tab/python)
 
-Uygulamada, depolama hesabı kimlik bilgilerinizi sağlamanız gerekir. Bu bilgileri uygulamayı çalıştıran yerel makinede ortam değişkenlerinde depolayabilirsiniz. Ortam değişkenlerini oluşturmak için İşletim Sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
+Uygulamada, depolama hesabı kimlik bilgilerinizi sağlamanız gerekir. Bu bilgileri, uygulamayı çalıştıran yerel makinedeki ortam değişkenlerine kaydedebilirsiniz. Ortam değişkenlerini oluşturmak için Işletim sisteminize bağlı olarak aşağıdaki örneklerden birini izleyin.
 
-Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. **Depo hesap adını** ve **Anahtar** değerlerini aşağıdaki komutlara yapıştırarak hesap\> \<adınızı ve\> hesap anahtar yer \<tutucularınızı değiştirin. Bu komut, ortam değişkenlerini yerel makineye kaydeder. Windows'da, kullandığınız **Komut İstemi** veya kabuğunu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
+Azure portalında depolama hesabınıza gidin. Depolama hesabınızdaki **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin. **Depolama hesabı adını** ve **anahtar** değerlerini aşağıdaki \<komutlara yapıştırarak youraccountname\> ve \<accountkey\> yer tutucularını değiştirin. Bu komut, ortam değişkenlerini yerel makineye kaydeder. Windows 'da, kullanmakta olduğunuz **komut istemi** veya kabuğu yeniden yükleyene kadar ortam değişkeni kullanılamaz.
 
 ### <a name="linux"></a>Linux
 
@@ -154,16 +154,16 @@ setx accountkey "<youraccountkey>"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Bu örneği çalıştırmak `.env.example` için, depolama hesabı kimlik bilgilerinizi dosyaya eklemeniz ve sonra da ''ya `.env`yeniden adlandırmanız gerekir.
+Bu örneği çalıştırmak için, depolama hesabı kimlik bilgilerinizi `.env.example` dosyaya eklemeniz ve sonra olarak `.env`yeniden adlandırmanız gerekir.
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
 AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 ```
 
-Bu bilgileri, depolama hesabınızda gezinerek ve **Ayarlar** bölümünde **Erişim tuşlarını** seçerek Azure portalında bulabilirsiniz.
+Bu bilgileri, depolama hesabınıza giderek ve **Ayarlar** bölümünde **erişim anahtarları** ' nı seçerek Azure Portal bulabilirsiniz.
 
-Gerekli bağımlılıkları yükleyin. Bunu yapmak için bir komut istemi açın, örnek `npm install`klasöre gidin ve sonra girin.
+Gerekli bağımlılıkları yükler. Bunu yapmak için bir komut istemi açın, örnek klasöre gidin ve girin `npm install`.
 
 ---
 
@@ -171,17 +171,17 @@ Gerekli bağımlılıkları yükleyin. Bunu yapmak için bir komut istemi açın
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Visual Studio'da, uygulamayı hata ayıklamaya başlamak için **F5** tuşuna basın veya **Başlat'ı** seçin. Visual studio, yapılandırılırsa eksik NuGet paketlerini otomatik olarak geri yükler, daha fazla bilgi edinmek için [paket geri yükleme ve yeniden yükleme paketlerini](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) ziyaret edin.
+Visual Studio 'da **F5** tuşuna basın veya uygulamada hata ayıklamaya başlamak için **Başlat** ' ı seçin. Visual Studio, yapılandırıldıysa eksik NuGet paketlerini otomatik olarak geri yükler, daha fazla bilgi edinmek için [paketleri yükleme ve yeniden yükleme paketini geri yükleyin](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) .
 
-Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, resmin ikincil RA-GRS uç noktasında çoğaltıldığını denetler. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**ile temsil edilir. **P** birincil bitiş noktasını, **S'nin** ise ikincil bitiş noktasını temsil ettiği yer.
+Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, resmin ikincil RA-GRS uç noktasında çoğaltıldığını denetler. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
-Örnek kodda, [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak depolama hesabından bir resim indirmek için `Program.cs` dosyasındaki `RunCircuitBreakerAsync` görevi kullanılmaktadır. İndirmeden önce bir [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) tanımlanır. İşlem bağlamı, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
+Örnek kodda, [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) yöntemini kullanarak depolama hesabından bir resim indirmek için `Program.cs` dosyasındaki `RunCircuitBreakerAsync` görevi kullanılmaktadır. İndirilmesinden önce, bir [OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) tanımlanmıştır. İşlem bağlamı, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitbreaker.py** dizinine gidip `python circuitbreaker.py` komutunu girin. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, resmin ikincil RA-GRS uç noktasında çoğaltıldığını denetler. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**ile temsil edilir. **P** birincil bitiş noktasını, **S'nin** ise ikincil bitiş noktasını temsil ettiği yer.
+Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitbreaker.py** dizinine gidip `python circuitbreaker.py` komutunu girin. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, resmin ikincil RA-GRS uç noktasında çoğaltıldığını denetler. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -189,13 +189,13 @@ Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitb
 
 Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine ayarlıdır. Yeniden deneme işlevi, isteklerin yeniden denenip denenmeyeceğini belirler ve isteği yeniden denemeden önce kaç saniye bekleneceğini belirtir. Birincile yapılan istek başarısız olursa aynı isteğin ikincile yeniden denenmesini istiyorsanız **retry\_to\_secondary** değerini true olarak ayarlayın. Örnek uygulamada depolama nesnesinin `retry_callback` işlevinde özel bir yeniden deneme ilkesi tanımlanmıştır.
 
-İndirmeden önce, Hizmet nesnesi [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) ve [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) işlevi tanımlanır. Bu işlevler, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
+İndirilmadan önce, Service Object [retry_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) ve [response_callback](https://docs.microsoft.com/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) işlevi tanımlanmıştır. Bu işlevler, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve sonra girin. `node index.js`
+Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve girin `node index.js`.
 
-Örnek Blob depolama hesabınızda bir kapsayıcı oluşturur, **HelloWorld.png'yi** kapsayıcıya yükler, ardından kapsayıcının ve resmin ikincil bölgeye çoğaltılıp çoğaltılmadığını tekrar tekrar denetler. Çoğaltmadan sonra, d **veya** **Q** (ardından ENTER) girmek veya çıkmak ister. Çıktınız aşağıdaki örneğe benzer olmalıdır:
+Örnek, BLOB depolama hesabınızda bir kapsayıcı oluşturur, bu kapsayıcıya **HelloWorld. png** yükler ve sonra kapsayıcının ve görüntünün ikincil bölgeye çoğaltılıp çoğaltılmadığını sürekli olarak denetler. Çoğaltma sonrasında, indirmek veya çıkmak için **D** veya **Q** (sonra ENTER ile) girmenizi ister. Çıktın aşağıdaki örneğe benzer şekilde görünmesi gerekir:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -318,7 +318,7 @@ def response_callback(response):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Node.js V10 SDK ile geri arama işleyicileri gereksizdir. Bunun yerine, örnek yeniden deneme seçenekleri ve ikincil bir bitiş noktası ile yapılandırılan bir ardışık yapılandırır. Bu, birincil ardışık işlem deverinize ulaşamazsa uygulamanın otomatik olarak ikincil ardışık ardışık boru hattına geçmesini sağlar.
+Node. js Ile v10 arasındaki SDK ile geri çağırma işleyicileri gereksizdir. Bunun yerine, örnek, yeniden deneme seçenekleriyle yapılandırılmış bir işlem hattı ve ikincil bir uç nokta oluşturur. Bu, birincil işlem hattı aracılığıyla verilerinize ulaşamazsa uygulamanın otomatik olarak ikincil işlem hattına geçiş yapmasına olanak tanır.
 
 ```javascript
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
@@ -343,9 +343,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin birinci bölümünde, RA-GRS depolama hesapları ile yüksek kullanılabilir bir uygulama yapma hakkında öğrendim.
+Serinin birinci bölümünde, RA-GRS depolama hesaplarıyla bir uygulamayı yüksek oranda kullanılabilir hale getirme hakkında bilgi edindiniz.
 
 Bir hata simülasyonu yapıp uygulamanızı ikincil RA-GRS uç noktasını kullanmaya zorlamayı öğrenmek için serinin ikinci bölümüne geçin.
 
 > [!div class="nextstepaction"]
-> [Birincil bölgeden okumada bir hata simüle](storage-simulate-failure-ragrs-account-app.md)
+> [Birincil bölgeden okurken hata benzetimi yap](storage-simulate-failure-ragrs-account-app.md)

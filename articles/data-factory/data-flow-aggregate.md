@@ -1,6 +1,6 @@
 ---
-title: Veri akışını haritalamada toplu dönüşüm
-description: Haritalama veri akışı Toplu dönüştürme ile Azure Veri Fabrikası'nda ölçekte veri toplama yı öğrenin.
+title: Eşleme veri akışında toplama dönüştürmesi
+description: Veri akışı toplama dönüştürmesiyle Azure Data Factory verileri ölçekte nasıl toplayacağınızı öğrenin.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606526"
 ---
-# <a name="aggregate-transformation-in-mapping-data-flow"></a>Veri akışını haritalamada toplu dönüşüm
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Toplu dönüştürme, veri akışlarınızdaki sütun toplamalarını tanımlar. İfade Oluşturucusu'nu kullanarak, varolan veya hesaplanan sütunlara göre gruplanan SUM, MIN, MAX ve COUNT gibi farklı türde toplamaları tanımlayabilirsiniz.
+Toplam dönüşümü, veri akışlarınızdan sütunların toplamalarının tanımlar. Ifade oluşturucuyu kullanarak, var olan veya hesaplanan sütunlara göre gruplanmış SUM, MIN, MAX ve COUNT gibi farklı toplamalar türlerini tanımlayabilirsiniz.
 
 ## <a name="group-by"></a>Gruplandırma ölçütü:
 
-Varolan bir sütun seçin veya toplama nız için grup olarak kullanmak üzere yeni bir işlem sütunu oluşturun. Varolan bir sütunu kullanmak için açılır dosyadan seçin. Yeni bir hesaplanmış sütun oluşturmak için, yan tümcenin üzerine gidin ve **Hesaplanan sütunu**tıklatın. Bu [veri akışı ifade oluşturucu](concepts-data-flow-expression-builder.md)açar. Hesaplanan sütununuzu oluşturduktan sonra, alan olarak **Ad'ın** altındaki çıktı sütun adını girin. Yan tümceye göre ek bir grup eklemek isterseniz, varolan bir yan tümcenin üzerine tıklayın ve artı simgesini tıklatın.
+Toplama için bir Group by yan tümcesi olarak kullanılacak yeni bir hesaplanmış sütun oluşturun veya var olan bir sütunu seçin. Varolan bir sütunu kullanmak için açılan listeden seçin. Yeni bir hesaplanan sütun oluşturmak için, yan tümcesinin üzerine gelin ve **hesaplanan sütun**' a tıklayın. Bu, [veri akışı ifade Oluşturucusu](concepts-data-flow-expression-builder.md)'nu açar. Hesaplanan sütununuzu oluşturduktan sonra **ad** alanının altındaki çıkış sütunu adını girin. Ek bir Group by yan tümcesi eklemek istiyorsanız, var olan bir yan tümcenin üzerine gelin ve artı simgesine tıklayın.
 
-![Ayarlara göre toplu dönüşüm grubu](media/data-flow/agg.png "Ayarlara göre toplu dönüşüm grubu")
+![Ayarlara göre toplama dönüştürme grubu](media/data-flow/agg.png "Ayarlara göre toplama dönüştürme grubu")
 
-Bir grup yan tümcesi bir Toplu dönüştürme isteğe bağlıdır.
+Toplama dönüşümünde Group by yan tümcesi isteğe bağlıdır.
 
-## <a name="aggregate-column"></a>Toplam sütun 
+## <a name="aggregate-column"></a>Toplama sütunu 
 
-Toplama ifadeleri oluşturmak için **Toplamlar** sekmesine gidin. Varolan bir sütunun üzerine toplama içeren bir sütunun üzerine yazabilir veya yeni bir ada sahip yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicinin yanındaki sağ kutuya girilir. İfadeyi yeniden yapmak için, ifade oluşturucuyu açmak için metin kutusunu tıklatın. Ek toplamalar eklemek için, varolan bir ifadenin üzerine gidip yeni bir toplama sütunu veya [sütun deseni](concepts-data-flow-column-pattern.md)oluşturmak için artı simgesini tıklatın.
+Toplama ifadeleri oluşturmak için **Toplamlar** sekmesine gidin. Bir toplama ile var olan bir sütunun üzerine yazabilir ya da yeni bir adla yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicisinin yanındaki sağ kutuya girilir. İfadeyi düzenlemek için, metin kutusuna tıklayarak ifade oluşturucuyu açın. Ek toplamalar eklemek için mevcut bir ifadenin üzerine gelin ve artı simgesine tıklayarak yeni bir toplama sütunu veya [sütun stili](concepts-data-flow-column-pattern.md)oluşturun.
 
 Her toplama ifadesi en az bir toplama işlevi içermelidir.
 
-![Toplam dönüşüm toplamı ayarları](media/data-flow/agg2.png "Toplam dönüşüm toplamı ayarları")
+![Toplu dönüştürme toplama ayarları](media/data-flow/agg2.png "Toplu dönüştürme toplama ayarları")
 
 
 > [!NOTE]
-> Hata Ayıklama modunda, ifade oluşturucu toplu işlevleri olan veri önizlemeleri üretemez. Toplu dönüşümler için veri önizlemelerini görüntülemek için ifade oluşturucuyu kapatın ve 'Veri Önizlemesi' sekmesi aracılığıyla verileri görüntüleyin.
+> Hata ayıklama modunda, ifade Oluşturucusu toplama işlevleriyle veri önizlemeleri üretemiyor. Toplama dönüştürmelerinin veri önizlemelerini görüntülemek için, ifade oluşturucuyu kapatın ve verileri ' veri önizleme ' sekmesi aracılığıyla görüntüleyin.
 
-## <a name="reconnect-rows-and-columns"></a>Satırları ve sütunları yeniden bağlama
+## <a name="reconnect-rows-and-columns"></a>Satırları ve sütunları yeniden bağla
 
-Toplu dönüşümler, SQL toplu seçme sorgularına benzer. Yan tümce veya toplu işlevlere göre grubunuza dahil olmayan sütunlar, toplu dönüşümün çıktısına akmaz. Birleştirilmiş çıktınıza diğer sütunları eklemek istiyorsanız, aşağıdaki yöntemlerden birini yapın:
+Toplam dönüşümler SQL toplama seçme sorgularıyla benzerdir. Group by yan tümcesine veya toplama işlevlerine dahil olmayan sütunlar, toplu dönüşümünüzün çıkışına kadar akmaz. Toplanan çıkışındaki diğer sütunları eklemek istiyorsanız aşağıdaki yöntemlerden birini yapın:
 
-* Bu ek sütun `last()` gibi `first()` bir toplu işlev kullanın.
-* [Kendi kendine birleştirme deseni](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)kullanarak sütunları çıktı akışınıza yeniden birleştirin.
+* Bu ek sütunu eklemek için `last()` veya `first()` gibi bir toplama işlevi kullanın.
+* [Kendi kendine JOIN modelini](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)kullanarak sütunları çıkış akışla yeniden katın.
 
 ## <a name="removing-duplicate-rows"></a>Yinelenen satırları kaldırma
 
-Toplu dönüştürmenin yaygın kullanımı, kaynak verilerdeki yinelenen girişleri kaldırmak veya tanımlamaktır. Bu işlem çoğaltma olarak bilinir. Anahtarlara göre bir grup kümesine bağlı olarak, hangi yinelenen satırı tutacağınızı belirlemek için seçtiğiniz buluşsal bir buluşsal kullanın. Yaygın buluşsal olanlar `first()` `last()`, `max()`, `min()`, ve . Sütunlara göre grup dışında her sütuna kuralı uygulamak için [sütun desenlerini](concepts-data-flow-column-pattern.md) kullanın.
+Toplama dönüşümünün ortak kullanımı, kaynak verilerde yinelenen girdileri kaldırıyor veya tanımlıyor. Bu işlem yinelenenleri kaldırma olarak bilinir. Anahtarlar tarafından bir grup grubuna göre, hangi yinelenen satırın tutulacağını belirlemek için seçtiğiniz bir buluşsal yöntemi kullanın. Ortak buluşsal yöntemler `first()`, `last()` `max()`, ve `min()`. Gruplandırma sütunları hariç her sütuna kuralı uygulamak için [sütun desenleri](concepts-data-flow-column-pattern.md) kullanın.
 
 ![Yinelenenleri kaldırma](media/data-flow/agg-dedupe.png "Yinelenenleri kaldırma")
 
-Yukarıdaki örnekte, `ProductID` sütunlar ve `Name` gruplandırma için kullanılmaktadır. İki satır, bu iki sütun için aynı değerlere sahipse, bunlar yinelenenler olarak kabul edilir. Bu toplu dönüştürmede, eşleşen ilk satırın değerleri tutulur ve diğerleri bırakılır. Sütun deseni sözdizimini kullanarak, adları `ProductID` `Name` varolan sütun adlarına eşlenen ve ilk eşleşen satırların değeri verilen tüm sütunlar. Çıkış şeması giriş şeması ile aynıdır.
+Yukarıdaki örnekte, sütunlarında `ProductID` ve `Name` gruplandırmada kullanılır. İki satır bu iki sütun için aynı değere sahip ise, bunlar yinelenen olarak kabul edilir. Bu toplama dönüşümünde, eşleşen ilk satırın değerleri saklanır ve diğerleri bırakılır. Sütun deseninin sözdizimini kullanarak, adları olmayan `ProductID` ve `Name` var olan sütun adlarına eşlenmiş ve ilk eşleşen satırların değeri verilen tüm sütunlar. Çıktı şeması, giriş şeması ile aynıdır.
 
-Veri doğrulama senaryoları için `count()` işlev, kaç yinelenen olduğunu saymak için kullanılabilir.
+Veri doğrulama senaryolarında, `count()` işlevi kaç tane yineleme olduğunu saymak için kullanılabilir.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -81,15 +81,15 @@ Veri doğrulama senaryoları için `count()` işlev, kaç yinelenen olduğunu sa
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akışı `MoviesYear` alır ve satırları `year`sütuna göre grupla. Dönüştürme, sütun `Rating`ortalamasına `avgrating` göre değerlendiren bir toplu sütun oluşturur. Bu toplu dönüştürme `AvgComedyRatingsByYear`adı .
+Aşağıdaki örnek, gelen bir akışı `MoviesYear` alır ve satırları sütuna `year`göre gruplandırır. Dönüştürme, sütun `Rating`ortalamasını değerlendiren bir `avgrating` toplama sütunu oluşturur. Bu toplama dönüştürmesi olarak adlandırılmıştır `AvgComedyRatingsByYear`.
 
-Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
-![Örneğe göre gruplandırma](media/data-flow/agg-script1.png "Örneğe göre gruplandırma")
+![Örneğe göre Gruplandır](media/data-flow/agg-script1.png "Örneğe göre Gruplandır")
 
-![Toplu örnek](media/data-flow/agg-script2.png "Toplu örnek")
+![Birleşik örnek](media/data-flow/agg-script2.png "Birleşik örnek")
 
-Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır.
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında bulunur.
 
 ```
 MoviesYear aggregate(
@@ -98,9 +98,9 @@ MoviesYear aggregate(
             ) ~> AvgComedyRatingByYear
 ```
 
-![Toplam veri akışı komut dosyası](media/data-flow/aggdfs1.png "Toplam veri akışı komut dosyası")
+![Veri akışı betiği topla](media/data-flow/aggdfs1.png "Veri akışı betiği topla")
 
-```MoviesYear```: Türemiş Sütun tanımlayan ```AvgComedyRatingByYear```yıl ve başlık sütunları : Yıla ```avgrating```göre gruplanan komedilerin ortalama derecelendirmesi için toplu dönüştürme : Toplanan değeri tutmak için oluşturulan yeni sütunun adı
+```MoviesYear```: Yıl ve Başlık sütunlarını ```AvgComedyRatingByYear```tanımlayan türetilmiş sütun: yıla ```avgrating```göre gruplanmış ortalama Comedies derecelendirmesi için toplam dönüşüm: toplanan değeri tutmak için oluşturulan yeni sütunun adı
 
 ```
 MoviesYear aggregate(groupBy(year),
@@ -109,4 +109,4 @@ MoviesYear aggregate(groupBy(year),
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Pencere dönüşümlerini](data-flow-window.md) kullanarak pencere tabanlı toplamayı tanımlama
+* Pencere [dönüşümünü](data-flow-window.md) kullanarak pencere tabanlı toplamayı tanımlama
