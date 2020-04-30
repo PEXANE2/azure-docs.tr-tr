@@ -1,21 +1,21 @@
 ---
-title: Azure'da Hizmet Kumaşı'nda bir .NET uygulaması oluşturma
+title: Azure 'da Service Fabric bir .NET uygulaması oluşturma
 description: Bu öğreticide, ASP.NET Core ön ucuyla ve durum bilgisi olan bir güvenilir hizmet arka ucuyla uygulama oluşturmayı ve uygulamayı kümeye dağıtmayı öğrenirsiniz.
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75465465"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Öğretici: ASP.NET Core Web API'si ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma ve dağıtma
 
-Bu öğretici, bir dizinin birinci bölümüdür.  Verileri depolamak için ASP.NET Core Web API'si ön ucu ve durum bilgisi olan bir arka uç hizmetiyle Azure Service Fabric uygulaması oluşturmayı öğreneceksiniz. Bitirdiğinizde, oylama sonuçlarını kümedeki durum bilgisi içeren arka uç hizmetine kaydeden bir ASP.NET Core web ön ucuna sahip oylama uygulaması sağlanır. Oylama uygulamasını el ile oluşturmak istemiyorsanız, tamamlanan [uygulamanın kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ve [oylama örneği uygulamasında niçin ilerleyebilirsiniz.](#walkthrough_anchor)  İsterseniz, bu öğreticiye ait bir [video kılavuzu](https://channel9.msdn.com/Events/Connect/2017/E100) da izleyebilirsiniz.
+Bu öğretici, bir dizinin birinci bölümüdür.  Verileri depolamak için ASP.NET Core Web API'si ön ucu ve durum bilgisi olan bir arka uç hizmetiyle Azure Service Fabric uygulaması oluşturmayı öğreneceksiniz. Bitirdiğinizde, oylama sonuçlarını kümedeki durum bilgisi içeren arka uç hizmetine kaydeden bir ASP.NET Core web ön ucuna sahip oylama uygulaması sağlanır. Oylama uygulamasını el ile oluşturmak istemiyorsanız, tamamlanmış uygulamanın [kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) ve [Oylama örnek uygulamasında gezinmek](#walkthrough_anchor)için ilerleyebilirsiniz.  İsterseniz, bu öğreticiye ait bir [video kılavuzu](https://channel9.msdn.com/Events/Connect/2017/E100) da izleyebilirsiniz.
 
-![AngularJS+ASP.NET API Ön Uç, Servis Kumaşı'nda stateful backend hizmetine bağlanma](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![AngularJS + ASP. NET API ön ucu, Service Fabric üzerinde durum bilgisi olan bir arka uç hizmetine bağlanma](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 Serinin birinci bölümünde şunları öğrenirsiniz:
 
@@ -28,7 +28,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > * .NET Service Fabric uygulaması oluşturma
 > * [Uygulamayı uzak kümeye dağıtma](service-fabric-tutorial-deploy-app-to-party-cluster.md)
-> * [ASP.NET Core ön uç hizmetine BIR HTTPS bitiş noktası ekleme](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
+> * [ASP.NET Core ön uç hizmetine HTTPS uç noktası ekleme](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [Azure Pipelines kullanarak CI/CD yapılandırma](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -36,8 +36,8 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Visual Studio 2019](https://www.visualstudio.com/) sürümünü 15.5 veya sonraki sürümlerle **Azure geliştirme** ve ASP.NET ve **web geliştirme** iş yükleriyle yükleyin.
-* [Servis Kumaşı SDK'yı yükleyin](service-fabric-get-started.md)
+* **Azure geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/) sürüm 15,5 veya üstünü yükledikten sonra.
+* [Service Fabric SDK 'sını yükler](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API'si hizmetini güvenilir bir hizmet olarak oluşturma
 
@@ -45,7 +45,7 @@ Başlangıçta, ASP.NET Core kullanarak oylama uygulamasının web ön ucunu olu
 
 1. Visual Studio'yu **yönetici** olarak başlatın.
 
-2. **Dosya**->**Yeni**->**Projesi**ile bir proje oluşturun.
+2. **Dosya**->**Yeni**->**Proje**' ye sahip bir proje oluşturun.
 
 3. **Yeni Proje** iletişim kutusunda **Bulut > Service Fabric Uygulaması**'nı seçin.
 
@@ -349,7 +349,7 @@ Bu öğreticide, güvenilir koleksiyonda sayaç değerini depolayan bir hizmet o
 
 ### <a name="add-the-votedatacontrollercs-file"></a>VoteDataController.cs dosyasını ekleme
 
-**VotingData** projesinde, **Denetleyiciler** klasörüne sağ tıklayın, ardından **Ekle->Yeni öğe->Sınıfı'nı**seçin. Dosyayı **VoteDataController.cs** adlandırın ve **Ekle'yi**tıklatın. Dosyanın içeriğini aşağıdakilerle değiştirin, sonra değişikliklerinizi kaydedin.
+**Votingdata** projesinde, **Controllers** klasörüne sağ tıklayın ve ardından **Add->New Item->Class**' ı seçin. Dosyayı **VoteDataController.cs** olarak adlandırın ve **Ekle**' ye tıklayın. Dosyanın içeriğini aşağıdakilerle değiştirin, sonra değişikliklerinizi kaydedin.
 
 ```csharp
 namespace VotingData.Controllers
@@ -441,7 +441,7 @@ Bu sonraki adımda, iki hizmeti bağlayın ve ön uç Web uygulamasının arka u
 
 Service Fabric, güvenilir hizmetlerle iletişiminize eksiksiz bir esneklik getirir. Tek bir uygulamanın içinde, TCP üzerinden erişilebilen hizmetleriniz olabilir. Diğer hizmetlere HTTP REST API üzerinden erişilebilir ve yine web yuvaları üzerinden erişilebilen başka hizmetler olabilir. Sağlanan seçeneklerin arka planı ve mevcut alışverişler için, bkz. [Hizmetlerle iletişim kurma](service-fabric-connect-and-communicate-with-services.md).
 
-Bu öğreticide, VotingWeb ön uç web hizmetinin arka uç VotingData hizmetiyle iletişim kurabilmesi için [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) ve [Service Fabric ters proxy’sini](service-fabric-reverseproxy.md) kullanın. Ters proxy varsayılan olarak 19081 numaralı bağlantı noktasını kullanacak şekilde yapılandırılmıştır ve bu öğreticide düzgün çalışacaktır. Ters proxy bağlantı noktası, kümeyi ayarlamak için kullanılan Azure Kaynak Yöneticisi şablonunda ayarlanır. Hangi bağlantı noktasının kullanıldığını bulmak için **Microsoft.ServiceFabric/clusters** kaynağındaki küme şablonuna bakın: 
+Bu öğreticide, VotingWeb ön uç web hizmetinin arka uç VotingData hizmetiyle iletişim kurabilmesi için [ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) ve [Service Fabric ters proxy’sini](service-fabric-reverseproxy.md) kullanın. Ters proxy varsayılan olarak 19081 numaralı bağlantı noktasını kullanacak şekilde yapılandırılmıştır ve bu öğreticide düzgün çalışacaktır. Ters proxy bağlantı noktası, kümeyi kurmak için kullanılan Azure Resource Manager şablonunda ayarlanır. Hangi bağlantı noktasının kullanıldığını bulmak için **Microsoft.ServiceFabric/clusters** kaynağındaki küme şablonuna bakın: 
 
 ```json
 "nodeTypes": [
@@ -454,9 +454,9 @@ Bu öğreticide, VotingWeb ön uç web hizmetinin arka uç VotingData hizmetiyle
           }
         ],
 ```
-Yerel geliştirme kümenizde kullanılan ters proxy bağlantı noktasını bulmak için, yerel Hizmet Kumaşı küme bildiriminde **HttpApplicationGatewayEndpoint** öğesini görüntüleyin:
-1. Bir tarayıcı penceresi açın ve\/Hizmet Kumaş Explorer aracını açmak için http: /localhost:19080 adresine gidin.
-2. **Küme -> Manifestosu'nü**seçin.
+Yerel geliştirme Kümenizde kullanılan ters proxy bağlantı noktasını bulmak için yerel Service Fabric kümesi bildiriminde **HttpApplicationGatewayEndpoint** öğesini görüntüleyin:
+1. Bir tarayıcı penceresi açın ve Service Fabric Explorer aracını açmak için\/http:/localhost: 19080 adresine gidin.
+2. **Cluster-> bildirimi**' ni seçin.
 3. HttpApplicationGatewayEndpoint öğesinin bağlantı noktasını not edin. Varsayılan olarak 19081 olmalıdır. 19081 değilse VotesController.cs dosyasındaki kodun aşağıdaki bölümünde GetProxyAddress metodunun bağlantı noktasını değiştirmeniz gerekir.
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
@@ -601,9 +601,9 @@ Visual Studio'da uygulamada hata ayıklaması yaparken yerel bir Service Fabric 
 
 Kodda neler olduğuna bakmak için aşağıdaki adımları tamamlayın:
 
-1. **VoteWeb\VotesController.cs** dosyasını açın ve web API'nın **Put** yönteminde (satır 72) bir kesme noktası ayarlayın.
+1. **Votingweb\votescontroller.cs** dosyasını açın ve Web API 'sinin **PUT** yönteminde (satır 72) bir kesme noktası ayarlayın.
 
-2. **VotingData\VoteDataController.cs** dosyasını açın ve bu web API'nın **Put** yönteminde (satır 54) bir kesme noktası ayarlayın.
+2. **Votingdata\votedatacontroller.cs** dosyasını açın ve bu Web API 'sinin **PUT** yönteminde (satır 54) bir kesme noktası ayarlayın.
 
 3. Uygulamayı hata ayıklama modunda çalıştırmak için **F5** tuşuna basın.
 
@@ -615,10 +615,10 @@ Kodda neler olduğuna bakmak için aşağıdaki adımları tamamlayın:
       ![Oy Ön Uç Hizmeti Ekleme](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
    2. İlk olarak, arka uç hizmeti için ReverseProxy'nin URL'sini oluşturun **(1)**.
-   3. Sonra Ters Proxy **(2)** için HTTP PUT İstek gönderin.
+   3. Ardından HTTP PUT Isteğini Smarproxy 'ye **(2)** gönderin.
    4. Son olarak, yanıtı arka uç hizmetinden istemciye döndürün **(3)**.
 
-5. Devam etmek için **F5** tuşuna basın.
+5. Devam etmek için **F5** 'e basın.
    1. Şimdi arka uç hizmetindeki kesme noktasındasınız.
 
       ![Oy Arka Uç Hizmeti Ekleme](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
@@ -626,7 +626,7 @@ Kodda neler olduğuna bakmak için aşağıdaki adımları tamamlayın:
    2. Yöntemin ilk satırında **(1)**`counts` adlı güvenilir sözlüğü almak veya eklemek için `StateManager` kullanın.
    3. Güvenilir bir sözcükteki değerlerle tüm etkileşimler bir işlem gerektirir; bu using deyimi **(2)** o işlemi oluşturur.
    4. İşlemde, oylama seçeneği için uygun anahtarın değerini güncelleştirin ve işlemi yürütün **(3)**. Commit yöntemi döndüğünde, sözlükteki veriler güncelleştirilir ve kümedeki diğer düğümlere çoğaltılır. Artık veriler güvenli bir şekilde kümede depolanır ve arka uç hizmeti verilerin kullanılabilir olduğu diğer düğümlere yük devretebilir.
-6. Devam etmek için **F5** tuşuna basın.
+6. Devam etmek için **F5** 'e basın.
 
 Hata ayıklama oturumunu durdurmak için **Shift+F5** tuşlarına basın.
 

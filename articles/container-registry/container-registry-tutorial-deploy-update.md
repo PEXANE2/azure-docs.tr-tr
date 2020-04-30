@@ -1,17 +1,17 @@
 ---
-title: Öğretici - Coğrafi çoğaltılan kayıt defterine güncelleştirmeyi itme
-description: Güncelleştirilmiş bir Docker görüntüsünü coğrafi olarak çoğaltılmış Azure konteyner kayıt defterinize taşıyın ve değişiklikleri birden çok bölgede çalışan web uygulamalarına otomatik olarak dağıtılmış olarak görün. Üç bölümden oluşan bir serinin üçüncü bölümü.
+title: Öğretici-güncelleştirme, coğrafi olarak çoğaltılan kayıt defterine gönderim
+description: Coğrafi olarak çoğaltılan Azure Container Registry 'nize güncelleştirilmiş bir Docker görüntüsü gönderin, daha sonra birden çok bölgede çalışan Web uygulamalarına otomatik olarak dağıtılan değişikliklere bakın. Üç bölümden oluşan bir serinin üçüncü bölümü.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74454698"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Öğretici: Güncelleştirilmiş bir kapsayıcı görüntüsünü bölgesel web uygulaması dağıtımları için coğrafi olarak çoğaltılmış bir kapsayıcı kayıt defterine itin
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Öğretici: bölgesel Web uygulaması dağıtımları için coğrafi olarak çoğaltılan bir kapsayıcı kayıt defterine güncelleştirilmiş bir kapsayıcı görüntüsü gönderme
 
 Bu, üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür. [Önceki öğreticide](container-registry-tutorial-deploy-app.md) coğrafi çoğaltma, iki farklı bölgesel Web Uygulaması dağıtımı için yapılandırılmıştır. Bu öğreticide ilk olarak uygulamayı değiştirir, ardından yeni bir kapsayıcı görüntüsü derler ve bunu coğrafi olarak çoğaltılmış kayıt defterinize gönderirsiniz. Son olarak, her iki Web Uygulaması örneğinde, Azure Container Registry web kancaları tarafından otomatik olarak dağıtılan değişikliği görüntülersiniz.
 

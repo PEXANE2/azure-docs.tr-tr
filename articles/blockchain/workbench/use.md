@@ -1,87 +1,87 @@
 ---
-title: Azure Blockchain Workbench'teki uygulamaları kullanma
-description: Azure Blockchain Workbench Preview'da uygulama sözleşmelerinin nasıl kullanılacağı hakkında öğretici.
+title: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
+description: Azure blok zinciri çalışma ekranı önizlemesinde uygulama sözleşmelerini kullanma hakkında öğretici.
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74324053"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Öğretici: Azure Blockchain Workbench'teki uygulamaları kullanma
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
 
-Blockchain Workbench'i sözleşmeler oluşturmak ve eylemlerde bulunmak için kullanabilirsiniz. Durum ve işlem geçmişi gibi sözleşme ayrıntılarını da görüntüleyebilirsiniz.
+Blokları oluşturmak ve sözleşme işlemleri yapmak için blok zinciri çalışma ekranı ' nı kullanabilirsiniz. Ayrıca, durum ve işlem geçmişi gibi sözleşme ayrıntılarını da görüntüleyebilirsiniz.
 
 Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Yeni bir sözleşme oluşturma
-> * Sözleşme yle ilgili işlem
+> * Yeni sözleşme oluştur
+> * Bir sözleşmede eylem gerçekleştirin
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Blockchain Çalışma Tezgahı dağıtımı. Daha fazla bilgi için, dağıtımla ilgili ayrıntılar için [Azure Blockchain Workbench dağıtımına](deploy.md) bakın
-* Blockchain Workbench'te dağıtılan blockchain uygulaması. Bkz. [Azure Blockchain Workbench'te blockchain uygulaması oluşturma](create-app.md)
+* Blok zinciri çalışma ekranı dağıtımı. Daha fazla bilgi için bkz. dağıtım ayrıntıları için [Azure blok zinciri çalışma ekranı dağıtımı](deploy.md)
+* Blok zinciri çalışma ekranı 'nda dağıtılan bir blok zinciri uygulaması. Bkz. [Azure blok zinciri üzerinde blok zinciri uygulaması oluşturma çalışma ekranı](create-app.md)
 
-Tarayıcınızda [Blockchain Çalışma Tezgahı'nı açın.](deploy.md#blockchain-workbench-web-url)
+Tarayıcınızda [blok zinciri çalışma ekranı](deploy.md#blockchain-workbench-web-url) ' nı açın.
 
 ![Blockchain Workbench](./media/use/workbench.png)
 
-Blockchain Çalışma Tezgahı'nın bir üyesi olarak oturum açmanız gerekiyor. Listelenen herhangi bir uygulama yoksa, Blockchain Workbench üyesi siniz, ancak herhangi bir uygulamanın üyesi değil. Blockchain Workbench yöneticisi uygulamalara üye atayabilir.
+Blok zinciri çalışma ekranının bir üyesi olarak oturum açmanız gerekir. Listelenen bir uygulama yoksa, blok zinciri çalışma ekranı 'nın bir üyesi olursunuz, ancak herhangi bir uygulamanın üyesi değildir. Blok zinciri çalışma ekranı Yöneticisi uygulamalara üye atayabilir.
 
-## <a name="create-new-contract"></a>Yeni sözleşme oluşturma
+## <a name="create-new-contract"></a>Yeni sözleşme oluştur
 
-Yeni bir sözleşme oluşturmak için, sözleşme **başlatıcısı**olarak belirtilen bir üye olmanız gerekir. Sözleşmenin uygulama rollerini ve başlatıcılarını tanımlayan bilgiler için [yapılandırmaya genel bakıştaki iş akışlarına](configuration.md#workflows)bakın. Uygulama rollerine üye atama hakkında bilgi için, [uygulamaya üye ekleme'ye](manage-users.md#add-member-to-application)bakın.
+Yeni bir sözleşme oluşturmak için, sözleşme **başlatıcısı**olarak belirtilen bir üye olmanız gerekir. Sözleşmeye yönelik uygulama rollerini ve başlatıcılarını tanımlama hakkında bilgi için bkz. [yapılandırmaya genel bakış](configuration.md#workflows). Uygulama rollerine üye atama hakkında daha fazla bilgi için bkz. [uygulamaya üye ekleme](manage-users.md#add-member-to-application).
 
-1. Blockchain Çalışma Tezgahı uygulama bölümünde, oluşturmak istediğiniz sözleşmeyi içeren uygulama döşemesini seçin. Etkin sözleşmelerin listesi görüntülenir.
+1. Blok zinciri çalışma ekranı uygulaması bölümünde, oluşturmak istediğiniz sözleşmeyi içeren uygulama kutucuğunu seçin. Etkin sözleşmelerin bir listesi görüntülenir.
 
-2. Yeni bir sözleşme oluşturmak için **Yeni sözleşme'yi**seçin.
+2. Yeni sözleşme oluşturmak için **yeni sözleşme**' yi seçin.
 
     ![Yeni sözleşme düğmesi](./media/use/contract-list.png)
 
-3. **Yeni sözleşme** bölmesi görüntülenir. İlk parametre değerlerini belirtin. **Oluştur'u**seçin.
+3. **Yeni sözleşme** bölmesi görüntülenir. İlk parametre değerlerini belirtin. **Oluştur**’u seçin.
 
     ![Yeni sözleşme bölmesi](./media/use/new-contract.png)
 
-    Yeni oluşturulan sözleşme, diğer etkin sözleşmeler ile listede görüntülenir.
+    Yeni oluşturulan sözleşme, diğer etkin sözleşmelerin bulunduğu listede görüntülenir.
 
     ![Etkin sözleşmeler listesi](./media/use/active-contracts.png)
 
-## <a name="take-action-on-contract"></a>Sözleşme yle ilgili işlem
+## <a name="take-action-on-contract"></a>Sözleşme üzerinde işlem yap
 
-Sözleşmenin içinde olduğu duruma bağlı olarak, üyeler sözleşmenin bir sonraki durumuna geçiş için işlem yapabilir. Eylemler, [bir durum](configuration.md#states)içindeki [geçişler](configuration.md#transitions) olarak tanımlanır. Geçiş için izin verilen bir uygulama veya örnek rolüne ait üyeler harekete geçebilir. 
+Sözleşmenin bulunduğu duruma bağlı olarak, Üyeler sözleşmenin bir sonraki durumuna geçiş yapmak için işlemler gerçekleştirebilir. Eylemler bir [durum](configuration.md#states)içinde [geçiş](configuration.md#transitions) olarak tanımlanır. Geçişe izin verilen bir uygulamaya ait Üyeler veya örnek rolü bu eylemi gerçekleştirebilir. 
 
-1. Blockchain Çalışma Tezgahı uygulama bölümünde, eylemi yapmak için sözleşmeyi içeren uygulama döşemesini seçin.
-2. Listedeki sözleşmeyi seçin. Sözleşmeyle ilgili ayrıntılar farklı bölümlerde görüntülenir. 
+1. Blok zinciri çalışma ekranı uygulaması bölümünde, eylemi gerçekleştirmek için sözleşmeyi içeren uygulama kutucuğunu seçin.
+2. Listeden sözleşmeyi seçin. Sözleşmeyle ilgili ayrıntılar farklı bölümlerde görüntülenir. 
 
     ![Sözleşme ayrıntıları](./media/use/contract-details.png)
 
     | Section  | Açıklama  |
     |---------|---------|
-    | Durum | Sözleşme aşamalarındaki mevcut ilerlemeyi listeler |
+    | Durum | Sözleşme aşamaları dahilinde geçerli ilerlemeyi listeler |
     | Ayrıntılar | Sözleşmenin geçerli değerleri |
-    | Eylem | Son eylem le ilgili ayrıntılar |
+    | Eylem | Son eylemle ilgili ayrıntılar |
     | Etkinlik | Sözleşmenin işlem geçmişi |
     
-3. **Eylem** **bölümünde, Eylem'i seç'** i seçin.
+3. **Eylem** bölümünde **eylem al**' ı seçin.
 
-4. Sözleşmenin geçerli durumuyla ilgili ayrıntılar bir bölmede görüntülenir. Açılır yolda yapmak istediğiniz eylemi seçin. 
+4. Sözleşmenin geçerli durumuyla ilgili ayrıntılar bir bölmede görüntülenir. Açılan kutuda almak istediğiniz eylemi seçin. 
 
     ![Eylem seçin](./media/use/choose-action.png)
 
-5. Eylemi başlatmak için **eyleme** geç'i seçin.
-6. Eylem için parametreler gerekiyorsa, eylem için değerleri belirtin.
+5. Eylemi başlatmak için **eylem al** ' ı seçin.
+6. Eylem için parametreler gerekliyse, eylem için değerleri belirtin.
 
-    ![Harekete geçin](./media/use/take-action.png)
+    ![İşlem yapın](./media/use/take-action.png)
 
-7. Eylemi yürütmek için **eylem** eve alın'ı seçin.
+7. Eylemi yürütmek için **eylem al** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench uygulama sürümü](version-app.md)
+> [Azure blok zinciri uygulama sürümü oluşturma](version-app.md)

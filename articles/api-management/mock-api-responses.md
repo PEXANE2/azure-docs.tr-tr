@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70067936"
 ---
 # <a name="mock-api-responses"></a>Sahne API yanıtları
@@ -27,7 +27,7 @@ Arka uç API'leri bir APIM API’sine aktarılabilir veya el ile oluşturulup y�
 + İlk olarak API cephesi tasarlanıp arka uç uygulaması daha sonra geldiğinde. Veya arka uç paralel olarak geliştirildiğinde.
 + Arka uç geçici olarak çalışır durumda olmadığında veya ölçeklenemediğinde.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Test API’si oluşturma 
@@ -54,7 +54,7 @@ Bu bölümdeki adımlar arka uç olmadan boş bir API oluşturmayı gösterir. A
 3. Listeden **Boş API**’yi seçin.
 4. **Görünen ad** için "*Test API*" yazın.
 5. **Ürünler** için "*Sınırsız*" yazın.
-6. **Oluştur'u**seçin.
+6. **Oluştur**’u seçin.
 
 ## <a name="add-an-operation-to-the-test-api"></a>Test API’sine işlem ekleme
 
@@ -79,7 +79,7 @@ Bu bölümdeki adımlar arka uç olmadan boş bir API oluşturmayı gösterir. A
 6. Sağ taraftaki **Gösterimler** başlığının altında **+ Gösterim ekle**’yi seçin.
 7. Arama kutusuna "*application/json*" yazın ve **application/json** içerik türünü seçin.
 8. **Örnek** metin kutusuna `{ "sampleField" : "test" }` girin.
-9. **Oluştur'u**seçin.
+9. **Oluştur**’u seçin.
 
 ## <a name="enable-response-mocking"></a>Sahte yanıt vermeyi etkinleştirme
 
@@ -97,7 +97,7 @@ Bu bölümdeki adımlar arka uç olmadan boş bir API oluşturmayı gösterir. A
 
     ![Sahte yanıt vermeyi etkinleştirme](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
 ## <a name="test-the-mocked-api"></a>Sahte API’yi test etme
 

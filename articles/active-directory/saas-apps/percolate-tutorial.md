@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Percolate ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Bu eğitimde, Azure Active Directory ve Percolate arasında tek oturum açma yı nasıl yapılandıracağınız öğrenilir.
+title: 'Öğretici: Percogeç ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Bu öğreticide, Azure Active Directory ve Percogeç arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğreneceksiniz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,217 +16,217 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67094608"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Öğretici: Percolate ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Öğretici: Percogeç ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Percolate'ı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Bu öğreticide, Percogeç Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
 
-Bu tümleştirme şu avantajları sağlar:
+Bu tümleştirme bu avantajları sağlar:
 
-* Percolate'a kimlerin erişebileceğini denetlemek için Azure AD'yi kullanabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Percolate'da (tek oturum açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portalı.
+* Azure AD 'yi, Percogeç 'e kimlerin erişebileceğini denetlemek için kullanabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Percogeç (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek [için Azure Active Directory'deki uygulamalarda tek](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)oturum açma'ya bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Percolate ile yapılandırmak için şunları yapmanız gerekir:
+Azure AD tümleştirmesini Percogeç olarak yapılandırmak için şunları yapmanız gerekir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız [yoksa, ücretsiz](https://azure.microsoft.com/free/)bir hesap alabilirsiniz.
-* Tek oturum açma özelliği etkin olan bir Percolate aboneliği.
+* Bir Azure AD aboneliği. Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma özelliği etkin olan bir Percogeç aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD oturum açma işlemlerini bir test ortamında yapılandıracak ve sınayacaksınız.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edeceksiniz.
 
-* Percolate, SP tarafından başlatılan ve IdP tarafından başlatılan SSO'ları destekler.
+* Percogeç, SP tarafından başlatılan ve IDP tarafından başlatılan SSO 'yu destekler.
 
-## <a name="add-percolate-from-the-gallery"></a>Galeriden Percolate ekle
+## <a name="add-percolate-from-the-gallery"></a>Galeriden Percogeç ekleme
 
-Percolate'ın Azure AD'ye entegrasyonunu yapılandırmak için, percolate'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Percogeç 'in Azure AD 'ye tümleştirmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Percogeç eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com), sol bölmede, **Azure Etkin Dizini'ni**seçin:
+1. [Azure Portal](https://portal.azure.com)sol bölmede **Azure Active Directory**' i seçin:
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara** > git**Tüm uygulamalar:**
+2. **Kurumsal uygulamalar** > **tüm uygulamalar**' a gidin:
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Uygulama eklemek için pencerenin üst kısmında **Yeni uygulama'yı** seçin:
+3. Bir uygulama eklemek için pencerenin üst kısmındaki **Yeni uygulama** ' yı seçin:
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **Percolate**girin. Arama sonuçlarında **Percolate'ı** seçin ve ardından **Ekle'yi**seçin.
+4. Arama kutusuna **Percogeç**' i girin. Arama sonuçlarında **Percogeç** ' i seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Britta Simon adlı bir test kullanıcısı kullanarak Azure AD'nin Percolate ile tek oturum açma işlemini yapılandıracak ve sınayacaksınız.
-Tek oturum açmayı etkinleştirmek için, Bir Azure REKLAM kullanıcısı ile Percolate'daki ilgili kullanıcı arasında bir ilişki kurmanız gerekir.
+Bu bölümde, Britta Simon adlı bir test kullanıcısını kullanarak Azure AD çoklu oturum açmayı, Percogeç ile yapılandırıp test edeceksiniz.
+Çoklu oturum açmayı etkinleştirmek için, bir Azure AD kullanıcısı ile karşılık gelen kullanıcı arasında bir ilişki kurmanız gerekir.
 
-Azure AD oturumlarını Percolate ile yapılandırmak ve test etmek için şu adımları tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı, Percogeç ile yapılandırmak ve test etmek için şu adımları gerçekleştirmeniz gerekir:
 
-1. Azure AD oturumunu, kullanıcılarınız için özelliği etkinleştirmek için **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafında **[Percolate tek oturum](#configure-percolate-single-sign-on)** açArak yapılandırın.
-3. Azure AD tek oturum açma'yı test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Azure AD test kullanıcısını, kullanıcı için Azure AD oturum açmayı etkinleştirmek için **[atayın.](#assign-the-azure-ad-test-user)**
-5. Kullanıcının Azure AD gösterimine bağlı **[bir Percolate test kullanıcısı oluşturun.](#create-a-percolate-test-user)**
-6. Yapılandırmanın çalıştığını doğrulamak için **[tek oturum](#test-single-sign-on)** açma yı test edin.
+1. Kullanıcılarınıza yönelik özelliği etkinleştirmek için **[Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on)** .
+2. Uygulama tarafında **[Percogeç çoklu oturum açmayı yapılandırın](#configure-percolate-single-sign-on)** .
+3. Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+4. Kullanıcı için Azure AD çoklu oturum açma özelliğini etkinleştirmek için **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı **[bir Percogeç test kullanıcısı oluşturun](#create-a-percolate-test-user)** .
+6. Yapılandırmanın çalıştığını doğrulamak için **[Çoklu oturum açmayı test](#test-single-sign-on)** edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açmayı etkinleştireceksiniz.
 
-Azure AD oturumaçmayı Percolate ile yapılandırmak için şu adımları izleyin:
+Azure AD çoklu oturum açmayı Percogeç olarak yapılandırmak için şu adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **Percolate** uygulama tümleştirme sayfasında **Tek oturum açma**seçeneğini belirleyin:
+1. [Azure Portal](https://portal.azure.com/), **percogeç** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin:
 
-    ![Tek oturum açma'yı seçin](common/select-sso.png)
+    ![Çoklu oturum açma seçin](common/select-sso.png)
 
-2. Tek **oturum** açma yöntemi iletişim kutusunu seç'te, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin:
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin:
 
-    ![Tek bir oturum açma yöntemi seçin](common/select-saml-option.png)
+    ![Çoklu oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. **SAML** ile Tek Oturum Açma'da, **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini seçin:
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** iletişim kutusunda, uygulamayı IdP tarafından başlatılan modda yapılandırmak için herhangi bir işlem yapmanız gerekmez. Uygulama zaten Azure ile entegre edilmiştir.
+4. **Temel SAML yapılandırması** iletişim kutusunda, uygulamayı IDP tarafından başlatılan modda yapılandırmak için herhangi bir işlem yapmanız gerekmez. Uygulama zaten Azure ile tümleştirildi.
 
-    ![Percolate Domain ve URL'ler tek oturum açma bilgileri](common/preintegrated.png)
+    ![Percogeç etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
 
-5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız, **ek URL'ler** ayarla'yı seçin ve **URL'de Oturum Aç** kutusuna girin: **https://percolate.com/app/login**
+5. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve **oturum açma URL 'si** kutusuna şunu girin **https://percolate.com/app/login**:
 
-   ![Percolate Domain ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
-6. **SAML** ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde, Uygulama Federasyonu **Metaveri Url'sini**kopyalamak için **Kopyala** simgesini seçin. Bu URL'yi kaydedin.
+   ![Percogeç etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için **Kopyala** simgesini seçin. Bu URL 'YI kaydedin.
 
-    ![Uygulama Federasyonu Meta veri URL'sini kopyalama](common/copy-metadataurl.png)
+    ![Uygulama Federasyon meta veri URL 'sini Kopyala](common/copy-metadataurl.png)
 
-7. **Percolate'ı Ayarla** bölümünde, gereksinimlerinize göre uygun URL'leri kopyalayın.
+7. **En geç ayarla** bölümünde, gereksinimlerinize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    1. **Giriş URL'si**.
+    1. **Oturum açma URL 'si**.
 
-    1. **Azure AD Tanımlayıcısı**.
+    1. **Azure AD tanımlayıcısı**.
 
-    1. **Çıkış URL'si**.
+    1. **Oturum kapatma URL 'si**.
 
-### <a name="configure-percolate-single-sign-on"></a>Percolate tek oturum açma yı yapılandır
+### <a name="configure-percolate-single-sign-on"></a>Percogeç çoklu oturum açmayı yapılandırma
 
-1. Yeni bir web tarayıcısı penceresinde, percolate'da yönetici olarak oturum açın.
+1. Yeni bir Web tarayıcısı penceresinde yönetici olarak Percogeç ' e oturum açın.
 
-2. Ana sayfanın sol tarafında **Ayarlar'ı**seçin:
+2. Giriş sayfasının sol tarafında **Ayarlar**' ı seçin:
     
     ![Ayarlar'ı seçin](./media/percolate-tutorial/configure01.png)
 
-3. Sol bölmede, **Organizasyon**altında **SSO'yu** seçin:
+3. Sol bölmede, **kuruluş**altında **SSO** ' yı seçin:
 
-    ![Organizasyon altında SSO'u seçin](./media/percolate-tutorial/configure02.png)
+    ![Kuruluş altında SSO seçin](./media/percolate-tutorial/configure02.png)
 
-    1. Giriş **URL** kutusuna Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın.
+    1. **Oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    1. Varlık **Kimliği** kutusuna, Azure portalından kopyaladığınız **Azure AD Tanımlayıcı** değerini yapıştırın.
+    1. **VARLıK kimliği** kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
-    1. Not Defteri'nde, Azure portalından indirdiğiniz base-64 kodlu sertifikayı açın. İçeriğini kopyalayın ve **x509 sertifikalar** kutusuna yapıştırın.
+    1. Not defteri 'nde, Azure portal indirdiğiniz Base-64 kodlu sertifikayı açın. İçeriğini kopyalayıp **x509 sertifikaları** kutusuna yapıştırın.
 
-    1. **E-posta öznitelik** **kutusuna, e-posta adresini**girin.
+    1. **E-posta özniteliği** kutusuna **emaadresi**girin.
 
-    1. **Kimlik sağlayıcı meta data URL** kutusu isteğe bağlı bir alandır. Azure portalından bir **Uygulama Federasyonu Meta veri url'sini** kopyaladıysanız, bu kutuya yapıştırabilirsiniz.
+    1. **Kimlik sağlayıcısı meta veri URL 'si** kutusu isteğe bağlı bir alandır. Azure portal bir **uygulama Federasyon meta veri URL 'si** kopyaladıysanız, bu kutuya yapıştırabilirsiniz.
 
-    1. **AuthNRequests imzalanmalı mı?** **No**
+    1. **AuthNRequests imzalı olmalıdır mi?** listesinde **Hayır**' ı seçin.
 
-    1. **SSO otomatik sağlama** yı etkinleştir listesinde **No'yu**seçin.
+    1. **SSO otomatik sağlamayı etkinleştir** listesinde **Hayır**' ı seçin.
 
-    1. **Kaydet'i**seçin.
+    1. **Kaydet**’i seçin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni** seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin:
+1. Azure portal sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin:
 
     ![Tüm kullanıcılar'ı seçin](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** seçin:
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin:
 
-    ![Yeni kullanıcıyı seçin](common/new-user.png)
+    ![Yeni Kullanıcı Seç](common/new-user.png)
 
-3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
+3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları uygulayın.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** **kutusuna BrittaSimon**girin.
+    1. **Ad** kutusuna **Brittasıon**yazın.
   
-    1. Kullanıcı **adı** kutusuna, **\<şirketinizin alan\< BrittaSimon@> girin. uzantısı>**. (Örneğin, BrittaSimon@contoso.com.)
+    1. **Kullanıcı adı** kutusuna **BrittaSimon@\<\< yourcompanydomain> yazın. Uzantı>**. (Örneğin, BrittaSimon@contoso.com.)
 
-    1. **Parolayı Göster'i**seçin ve ardından **Parola** kutusundaki değeri yazın.
+    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 
-    1. **Oluştur'u**seçin.
+    1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Percolate'a erişimini sağlayarak Azure AD oturumunu tek oturum açma işlemini kullanmasını sağlayacaksınız.
+Bu bölümde, Percogeç 'e erişimi vererek Azure AD çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal uygulamaları**seçin, **Tüm uygulamaları**seçin ve ardından **Percolate'ı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **percogeç**' i seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Percolate'ı**seçin.
+2. Uygulamalar listesinde, **Percogeç**' i seçin.
 
-    ![Başvuru listesi](common/all-applications.png)
+    ![Uygulama listesi](common/all-applications.png)
 
-3. Sol **bölmede, Kullanıcıları ve grupları**seçin:
+3. Sol bölmede **Kullanıcılar ve gruplar**' ı seçin:
 
     ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle'yi**seçin ve ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı ve gruplar'ı seçin](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** iletişim kutusunda kullanıcılar listesinden **Britta Simon** ' ı seçin ve ardından ekranın altındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında, **Rolü Seç** iletişim kutusunda bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML assertion 'da bir rol değeri bekleliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
+7. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
-### <a name="create-a-percolate-test-user"></a>Percolate test kullanıcısı oluşturma
+### <a name="create-a-percolate-test-user"></a>Bir Percogeç test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının Percolate'da oturum açmasını sağlamak için bunları Percolate'a eklemeniz gerekir. Bunları el ile eklemeniz gerekir.
+Azure AD kullanıcılarının, Percogeç oturum açmasını sağlamak için bunları Percogeç 'e eklemeniz gerekir. Bunları el ile eklemeniz gerekir.
 
-Bir kullanıcı hesabı oluşturmak için şu adımları izleyin:
+Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
-1. Percolate'da yönetici olarak oturum açın.
+1. Yönetici olarak Percogeç 'de oturum açın.
 
-2. Sol bölmede, **Kuruluş**altındaki **Kullanıcıları** seçin. **Yeni kullanıcılar**seçin:
+2. Sol bölmede, **kuruluş**altındaki **Kullanıcılar** ' ı seçin. **Yeni kullanıcıları**seçin:
 
-    ![Yeni kullanıcılar seçin](./media/percolate-tutorial/configure03.png)
+    ![Yeni Kullanıcı Seç](./media/percolate-tutorial/configure03.png)
 
-3. Kullanıcı **Oluştur** sayfasında aşağıdaki adımları izleyin.
+3. **Kullanıcı oluştur** sayfasında, aşağıdaki adımları uygulayın.
 
-    ![Kullanıcılar sayfası oluşturma](./media/percolate-tutorial/configure04.png)
+    ![Kullanıcı Oluştur sayfası](./media/percolate-tutorial/configure04.png)
 
     1. **E-posta** kutusuna kullanıcının e-posta adresini girin. Örneğin, brittasimon@contoso.com.
 
-    1. Tam **ad** kutusuna kullanıcının adını girin. Örneğin, **Brittasimon.**
+    1. **Tam ad** kutusuna kullanıcının adını girin. Örneğin, **Brittasıon**.
 
-    1. **Kullanıcıları Oluştur'u**seçin.
+    1. **Kullanıcı oluştur**' u seçin.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Artık Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı test etmeniz gerekir.
+Şimdi, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test etmeniz gerekir.
 
-Erişim Paneli'ndeki Percolate karo'yu seçtiğinizde, SSO'yu kurduğunuz Percolate örneğinde otomatik olarak oturum açmalısınız. Daha fazla bilgi için [Access'e bakın ve Uygulamalarım portalındaki uygulamaları kullanın.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Erişim panelinde Percogeç kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Percogeç örneğinde otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulamalara erişme ve bunları kullanma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -234,4 +234,4 @@ Erişim Paneli'ndeki Percolate karo'yu seçtiğinizde, SSO'yu kurduğunuz Percol
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

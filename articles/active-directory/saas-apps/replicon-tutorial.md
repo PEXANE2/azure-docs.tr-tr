@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Replicon ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Replicon arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: Replicon ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Replıon arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,186 +17,186 @@ ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27615b0c76b5c23bbc79788431b0e909b8bf22a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67092761"
 ---
-# <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Öğretici: Replicon'u Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Replicon tümleştirme
 
-Bu eğitimde, Replicon'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Replicon'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile Replicon tümleştirme hakkında bilgi edineceksiniz. Replicon 'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de Replicon erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Replicon'da otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, Replıon 'a erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açabilmesi için etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü alabilirsiniz.
-* Replicon tek oturum açma (SSO) aboneliği ni sağladı.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü edinebilirsiniz.
+* Replicon çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Replicon, **SP** tarafından başlatılan SSO'yu destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Replicon, **SP** tarafından başlatılan SSO 'yu destekler.
 
 ## <a name="adding-replicon-from-the-gallery"></a>Galeriden Replicon ekleme
 
-Replicon'un Azure AD'ye entegrasyonunu yapılandırmak için galeriden Yönetilen SaaS uygulamaları listenize Replicon eklemeniz gerekir.
+Replicon 'un Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Replicto ' ı eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Replicon** yazın.
-1. Sonuçlar panelinden **Replicon'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Replicon** yazın.
+1. Sonuçlar panelinden **Replicon** ' u seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'yu **B.Simon**adlı bir test kullanıcısı kullanarak Replicon ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure AD kullanıcısı ile Replicon'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Replicon ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Replılicon bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Replicon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu Replicon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. **[Replicon SSO'yu yapılandırın](#configure-replicon-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Replicon test kullanıcıoluşturun](#create-replicon-test-user)** - Kullanıcının Azure AD gösterimi ile bağlantılı Replicon B.Simon bir meslektaşı olması.
-6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Replıon SSO 'Yu yapılandırın](#configure-replicon-sso)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+5. Kullanıcı için Azure AD gösterimine bağlı olan, Replıon 'da B. Simon 'a sahip olmak için, **[test kullanıcısı oluşturun](#create-replicon-test-user)** .
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Replicon** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/) **, uygulama tümleştirme** tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sayfasında, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    1. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
+    1. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
 
-    1. **Tanımlayıcı** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://global.replicon.com/!/saml2/<client name>`
+    1. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://global.replicon.com/!/saml2/<client name>`
 
-    1. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://global.replicon.com/!/saml2/<client name>/sso/post`
+    1. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://global.replicon.com/!/saml2/<client name>/sso/post`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [Replicon Client destek ekibine](https://www.replicon.com/customerzone/contact-support) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [istemci desteği ekibine](https://www.replicon.com/customerzone/contact-support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Ayarları yeniden yapmak için **SAML İmza Sertifikası** için edit/kalem simgesini tıklatın.
+1. Ayarları düzenlemek için **SAML Imzalama sertifikası** için Düzenle/kalem simgesine tıklayın.
 
-    ![İmza Algoritması](common/signing-algorithm.png)
+    ![İmzalama algoritması](common/signing-algorithm.png)
 
-    1. **İmzalama Seçeneği**olarak **SIGN SAML iddiasını** seçin.
+    1. **Imza seçeneği**olarak **SAML onaylama imzasını imzala** ' yı seçin.
 
-    1. **İmza Algoritması**olarak **SHA-256'yı** seçin.
+    1. **Imzalama algoritması**olarak **SHA-256** ' ı seçin.
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federation **Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
    ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-replicon-sso"></a>Replicon SSO'yu yapılandır
+### <a name="configure-replicon-sso"></a>Replılicon SSO 'yu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, Replicon şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, şirket içinde bir yönetici olarak oturum açın.
 
-2. SAML 2.0'ı yapılandırmak için aşağıdaki adımları gerçekleştirin:
+2. SAML 2,0 'yi yapılandırmak için aşağıdaki adımları uygulayın:
 
-    ![SAML kimlik doğrulamasını etkinleştirme](./media/replicon-tutorial/ic777805.png "SAML kimlik doğrulamasını etkinleştirme")
+    ![SAML kimlik doğrulamasını etkinleştir](./media/replicon-tutorial/ic777805.png "SAML kimlik doğrulamasını etkinleştir")
 
-    a. **EnableSAML Authentication2** iletişim kutusunu görüntülemek için, şirket anahtarınızdan sonra aşağıdakileri URL'nize ekleyebilir:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. **Enablesaml Authentication2** iletişim kutusunu göstermek için, aşağıdaki URL 'nize şirketinizin anahtarınızı ekleyin:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Aşağıdaki tam URL şema gösterir:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Aşağıda, URL 'nin tamamının şeması gösterilmektedir:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-   b. **+** **v20Configuration** bölümünü genişletmek için tıklatın.
+   b. V20Configuration bölümünü **+** genişletmek için öğesine **v20Configuration** tıklayın.
 
-   c. **+** **metaDataConfiguration** bölümünü genişletmek için tıklatın.
+   c. **+** **Metadataconfiguration** bölümünü genişletmek için öğesine tıklayın.
 
-   d. xmlSignatureAlgorithm için **SHA256'yı** seçin
+   d. XmlSignatureAlgorithm için **SHA256** seçin
 
-   e. Kimlik sağlayıcınız meta data XML dosyanızı seçmek için **Dosyayı Seçin'i**tıklatın ve **Gönder'i**tıklatın.
+   e. **Dosya Seç**' e tıklayarak kimlik sağlayıcısı meta veri XML dosyanızı seçin ve **Gönder**' e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Replicon'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Replicon 'a erişim vererek B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Replicon'u**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Replicon**' u seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-replicon-test-user"></a>Replicon test kullanıcısı oluşturma
+### <a name="create-replicon-test-user"></a>Test kullanıcısı oluşturma
 
-Bu bölümün amacı Replicon B.Simon adlı bir kullanıcı oluşturmaktır.
+Bu bölümün amacı, Replicon 'da B. Simon adlı bir Kullanıcı oluşturmaktır.
 
-**Kullanım kılavuzunu el ile oluşturmanız gerekiyorsa, aşağıdaki adımları gerçekleştirin:**
+**Kullanıcı el ile oluşturmanız gerekiyorsa aşağıdaki adımları gerçekleştirin:**
 
-1. Bir web tarayıcısı penceresinde, Yönetici olarak Replicon şirket sitenizde oturum açın.
+1. Bir Web tarayıcısı penceresinde, şirket içinde bir yönetici olarak oturum açın.
 
-2. ** \> Yönetim Kullanıcıları'na**gidin.
+2. **Yönetim \> kullanıcıları**' na gidin.
 
     ![Kullanıcılar](./media/replicon-tutorial/ic777806.png "Kullanıcılar")
 
-3. **+Kullanıcı Ekle'yi**tıklatın.
+3. **+ Kullanıcı Ekle**' ye tıklayın.
 
     ![Kullanıcı Ekle](./media/replicon-tutorial/ic777807.png "Kullanıcı Ekleme")
 
-4. Kullanıcı **Profili** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Kullanıcı profili** bölümünde aşağıdaki adımları uygulayın:
 
     ![Kullanıcı profili](./media/replicon-tutorial/ic777808.png "Kullanıcı profili")
 
-    a. Giriş **Adı** metin kutusuna, aşağıdaki gibi `B.Simon@contoso.com`sağlamak istediğiniz Azure AD kullanıcısının Azure AD e-posta adresini yazın.
+    a. **Oturum açma adı** metin kutusuna, sağlamak ISTEDIĞINIZ Azure AD KULLANıCıSıNıN Azure ad e-posta adresini yazın `B.Simon@contoso.com`.
 
     > [!NOTE]
-    > Oturum Açma Adı'nın Azure AD'deki kullanıcının e-posta adresiyle eşleşmesi gerekiyor
+    > Oturum açma adının, Azure AD 'de kullanıcının e-posta adresiyle eşleşmesi gerekir
 
-    b. **Kimlik Doğrulama Türü**olarak **SSO'yı**seçin.
+    b. **Kimlik doğrulama türü**olarak **SSO**' yı seçin.
 
-    c. Kimlik Doğrulama Kimliğini Oturum Açma Adı (Kullanıcının Azure AD e-posta adresi) ile aynı değere ayarlama
+    c. Kimlik doğrulama KIMLIĞINI oturum açma adı ile aynı değere ayarla (kullanıcının Azure AD e-posta adresi)
 
-    d. **Bölüm** metin kutusuna, kullanıcının bölümünü yazın.
+    d. **Bölüm** metin kutusuna kullanıcının departmanını yazın.
 
-    e. **Çalışan Türü**olarak, **Yönetici'yi**seçin.
+    e. **Çalışan türü**olarak **yönetici**' yi seçin.
 
-    f. **Kullanıcı Profilini Kaydet'i**tıklatın.
+    f. **Kullanıcı profilini kaydet**' e tıklayın.
 
 > [!NOTE]
-> Azure AD kullanıcı hesaplarını sağlamak için Replicon tarafından sağlanan diğer Replicon kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
+> Azure AD Kullanıcı hesapları sağlamak için, Replıon tarafından sunulan başka bir Replicon Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Erişim Paneli'ndeki Replicon karosu seçtiğinizde, SSO'yu kurduğunuz Replicon'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Replicon kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Replıon 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

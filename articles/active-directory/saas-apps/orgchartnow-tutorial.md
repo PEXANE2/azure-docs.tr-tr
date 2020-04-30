@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: OrgChart Now ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve OrgChart Now arasında tek oturum açma yı nasıl yapılandıracağız öğrenin.
+title: 'Öğretici: artık kuruluş şemasına tümleştirin Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve kuruluş şeması arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,226 +16,226 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67095442"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Öğretici: OrgChart Now ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Öğretici: artık kuruluş şemasına tümleştirme Azure Active Directory
 
-Bu öğreticide, OrgChart Now'u Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-OrgChart Now'u Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile kuruluş şemasını nasıl tümleştirileceğini öğreneceksiniz.
+Artık kuruluş şemasını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* OrgChart Now erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla OrgChart Now'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, artık kuruluş şemasına erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla artık kuruluş şemasına (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini OrgChart Now ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini artık kuruluş şemasına göre yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* OrgChart Şimdi tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Kuruluş şeması artık çoklu oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* OrgChart Şimdi **SP** ve **IDP** başlatılan SSO destekler
+* Kuruluş şeması artık **SP** ve **IDP** tarafından başlatılan SSO 'yu destekliyor
 
-## <a name="adding-orgchart-now-from-the-gallery"></a>Galeriden OrgChart Şimdi Ekleme
+## <a name="adding-orgchart-now-from-the-gallery"></a>Galeri 'den şimdi kuruluş şeması ekleme
 
-OrgChart Now'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden OrgChart Now'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Kuruluş şemasının tümleştirmesini şimdi Azure AD ile yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize şimdi bir kuruluş şeması eklemeniz gerekir.
 
-**Galeriden OrgChart Now eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeri 'den şimdi bir kuruluş şeması eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **OrgChart Now**yazın, sonuç panelinden **OrgChart Now'u** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Şimdi kuruluş şeması**yazın, sonuç panelinden **kuruluş şeması** ' nı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![OrgChart Şimdi sonuç listesinde](common/search-new-app.png)
+     ![Artık sonuçlar listesinde kuruluş şeması](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD oturum açma işlemini OrgChart Now ile yapılandırıp test esiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile OrgChart Now'daki ilgili kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açma 'yı artık **Britta Simon**adlı bir test kullanıcısına bağlı olarak, kuruluş şemasına yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili kullanıcının kuruluş şemasına ait bağlantı ilişkisinin artık kurulması gerekir.
 
-Azure AD oturumaçmayı OrgChart Now ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı kuruluş şemasına göre yapılandırmak ve test etmek için şu yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[OrgChart Now Single Sign-On](#configure-orgchart-now-single-sign-on)** 'u yapıla - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[OrgChart Now test kullanıcısını oluşturun](#create-orgchart-now-test-user)** - Kullanıcının Azure AD gösterimine bağlı olan OrgChart Now'da Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[kuruluş şemasını şimdi çoklu oturum açma yapılandırması](#configure-orgchart-now-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. **[Kuruluş şeması oluşturma artık](#create-orgchart-now-test-user)** kullanıcının Azure AD gösterimine bağlı olan, artık kuruluş şemasına yönelik Britta Simon 'ın bir karşılığı olacak şekilde test edin.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini OrgChart Now ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı şimdi kuruluş şemasına göre yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **OrgChart Now** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **kuruluş şeması artık** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** bölümünde, **Uygulamayı IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    ![OrgChart Şimdi Etki Alanı ve URL'ler tek oturum açma bilgileri](common/idp-identifier.png)
+    ![Kuruluş şeması artık etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-identifier.png)
 
     **Tanımlayıcı** metin kutusuna bir URL yazın:`https://sso2.orgchartnow.com`
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     ![image](common/both-preintegrated-signon.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>`Daha sonra öğreticide açıklanan **OrgChart Now'u ayarla** bölümünden kopyalanan **Azure AD** Tanımlayıcısı'dır.
+    > `<YourEntityID>`**Azure AD tanımlayıcısı** , daha sonra öğretici ' de açıklanacak olan **kuruluş şemasına şimdi ayarla** bölümünde kopyalanır.
 
-6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-7. **OrgChart Now'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+7. **Kuruluş şemasını şimdi ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-orgchart-now-single-sign-on"></a>OrgChart'ı Şimdi Tek Oturum Aç'ı Yapılandır
+### <a name="configure-orgchart-now-single-sign-on"></a>Kuruluş şemasını şimdi çoklu oturum açmayı Yapılandır
 
-**OrgChart Now** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [OrgChart Now destek ekibine](mailto:ocnsupport@officeworksoftware.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Artık kuruluş şemasına** yönelik çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'sini ve Azure Portal ' den uygun kopyalanmış URL 'leri [Şimdi kuruluş şemasına](mailto:ocnsupport@officeworksoftware.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı türünde**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın OrgChart Now'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, artık kuruluş şemasına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **OrgChart Now'ı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **kuruluş şeması**' nı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **OrgChart Now'ı**seçin.
+2. Uygulamalar listesinde, **Şimdi kuruluş şeması**' nı seçin.
 
-    ![Uygulamalar listesindeki OrgChart Now bağlantısı](common/all-applications.png)
+    ![Artık kuruluş şeması uygulamalar listesinde bağlantı kuruyor](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-orgchart-now-test-user"></a>OrgChart Şimdi test kullanıcı oluşturun
+### <a name="create-orgchart-now-test-user"></a>Kullanıcı şemasını şimdi test et
 
-Azure AD kullanıcılarının OrgChart Now'da oturum açabilmeleri için, Bunların OrgChart Now'da sağlanması gerekir. 
+Azure AD kullanıcılarının şu anda kuruluş şemasına oturum açmasını sağlamak için, artık kuruluş şemasına sağlanması gerekir. 
 
-1. OrgChart Şimdi varsayılan olarak etkin olan tam zamanında sağlamayı destekler. Henüz yoksa OrgChart Now'a erişme girişimi sırasında yeni bir kullanıcı oluşturulur. Tam zamanında kullanıcı sağlama özelliği, yalnızca sso isteği tanınmış bir IDP'den geldiğinde ve SAML iddiasındaki e-posta kullanıcı listesinde bulunmuyorsa **salt okunur** kullanıcı oluşturur. Bu otomatik sağlama özelliği için OrgChart Now'da **Genel** başlıklı bir erişim grubu oluşturmanız gerekir. Bir erişim grubu oluşturmak için lütfen aşağıdaki adımları izleyin:
+1. Kuruluş şeması artık, varsayılan olarak etkinleştirilen tam zamanında sağlamayı desteklemektedir. Henüz yoksa, bir kuruluş şemasına erişme denemesi sırasında yeni bir Kullanıcı oluşturulur. Just-In-Time Kullanıcı sağlama özelliği, bir SSO isteği tanınan bir ıDP 'den geldiğinde ve SAML onaylama 'daki e-posta Kullanıcı listesinde bulunamadığında yalnızca **salt okunurdur** bir kullanıcı oluşturur. Bu otomatik sağlama özelliği için, artık kuruluş şeması 'nda **genel** başlıklı bir erişim grubu oluşturmanız gerekir. Lütfen bir erişim grubu oluşturmak için aşağıdaki adımları izleyin:
 
-    a. UI'nin sağ üst köşesindeki **vitesi** tıklattıktan sonra **Grupları Yönet** seçeneğine gidin.
+    a. Kullanıcı arabiriminin sağ üst köşesindeki **dişli** ' a tıkladıktan sonra **grupları yönet** seçeneğine gidin.
 
-    ![OrgChart Şimdi gruplar](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
+    ![Artık kuruluş şeması grupları](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. **Ekle** simgesini seçin ve **Genel** grubu adlandırdıktan sonra **Tamam'ı**tıklatın. 
+    b. **Ekle** simgesini seçin ve grubu **genel** olarak adlandırın ve ardından **Tamam**' a tıklayın. 
 
-    ![OrgChart Şimdi eklemek](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
+    ![Artık kuruluş şemasını ekleyin](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
-    c. Genel veya salt okunur kullanıcıların erişebilmelerini istediğiniz klasör(ler)i seçin:
+    c. Genel veya salt okuma kullanıcılarının erişebileceği klasörü (ler) i seçin:
 
-    ![OrgChart Şimdi klasörleri](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
+    ![Artık kuruluş şeması klasörleri](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. Klasörleri yalnızca Yönetici kullanıcılarının değiştirebileceği şekilde **kilitleyin.** Sonra **Tamam tuşuna**basın.
+    d. Klasörleri **kilitleyerek** yalnızca yönetici kullanıcıların bunları değiştirebilmesini sağlayın. Ardından **Tamam**' a basın.
 
-    ![OrgChart Şimdi kilit](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
+    ![Kuruluş şeması şimdi kilitle](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. **Yönetici** kullanıcıları oluşturmak ve kullanıcıları **okumak/yazmak** için, SSO aracılığıyla ayrıcalık düzeylerine erişmek için el ile bir kullanıcı oluşturmanız gerekir. Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
+2. **Yönetici** kullanıcılar oluşturmak ve kullanıcıları **okumak/yazmak** için, SSO aracılığıyla ayrıcalık düzeyine erişebilmek için bir kullanıcıyı el ile oluşturmanız gerekir. Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
 
-    a. Güvenlik Yöneticisi olarak OrgChart Now'da oturum açın.
+    a. Şimdi bir güvenlik yöneticisi olarak kuruluş şemasına oturum açın.
 
-    b.  Sağ üst köşedeki **Ayarlar'a** tıklayın ve ardından **Kullanıcıları Yönet'e**gidin.
+    b.  Sağ üst köşedeki **Ayarlar** ' a tıklayın ve ardından **Kullanıcıları Yönet**' e gidin.
 
-    ![OrgChart Şimdi ayarları](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
+    ![Artık kuruluş şeması ayarları](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
-    c. **Ekle'ye** tıklayın ve aşağıdaki adımları gerçekleştirin:
+    c. **Ekle** ' ye tıklayın ve aşağıdaki adımları uygulayın:
 
-    ![OrgChart Şimdi yönetmek](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
+    ![Kuruluş şeması artık yönetme](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * Kullanıcı **Kimliği** metin kutusuna, **Brittasimon\@contoso.com**gibi Kullanıcı Kimliği girin.
+    * **Kullanıcı kimliği** metin kutusunda, **brittasıon\@contoso.com**gibi kullanıcı kimliğini girin.
 
-    * **E-posta Adresi** metin kutusuna **\@brittasimon contoso.com**gibi kullanıcının e-postasını girin.
+    * **E-posta adresi** metin kutusuna, **brittasıon\@contoso.com**gibi kullanıcının e-postasını girin.
 
-    * **Ekle**’ye tıklayın.
+    * **Ekle**'ye tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki OrgChart Now döşemesini tıklattığınızda, SSO'yu kurduğunuz OrgChart Now'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde şimdi kuruluş şeması kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız kuruluş şemasına otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

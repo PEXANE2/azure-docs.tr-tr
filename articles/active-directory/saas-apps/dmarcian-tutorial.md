@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Dmarcian ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve dmarcian arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: dmarcian tümleştirmesi Azure Active Directory Microsoft Docs'
+description: Azure Active Directory ile dmarcıa arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,73 +17,73 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68823704"
 ---
-# <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Öğretici: Dmarcian'ı Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Öğretici: dmarcıa 'yu Azure Active Directory tümleştirme
 
-Bu eğitimde, dmarcian'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Dmarcian'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, dmarcıa 'yı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Dmarcıa 'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Dmarcian erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de dmarcıa 'ya erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla dmarcıa 'ya otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* dmarcian tek oturum açma (SSO) aboneliği ni etkinleştirildi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* dmarcian çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* dmarcian **SP ve IDP** SSO başlatılan destekler
+* **dmarcıa, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-dmarcian-from-the-gallery"></a>Galeriden dmarcian ekleme
+## <a name="adding-dmarcian-from-the-gallery"></a>Galeriden dmarcıa ekleme
 
-Dmarcian'ın Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize dmarcian eklemeniz gerekir.
+Dmarcıa 'nın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden dmarcıa 'yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **dmarcian** yazın.
-1. Sonuç panelinden **dmarcian'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **dmarcıa** yazın.
+1. Sonuçlar panelinden **dmarcıa** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'yu **B.Simon**adlı bir test kullanıcısı kullanarak dmarcian ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile dmarcian'daki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak dmarcıa Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, dmarcıa 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu dmarcian ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Dmarcıa ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. **[Dmarcian SSO'yu yapılandırın](#configure-dmarcian-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
-3. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Dmarcian test kullanıcıoluşturun](#create-dmarcian-test-user)** - kullanıcının Azure AD gösterimi ile bağlantılı dmarcian B.Simon bir meslektaşı olması.
-6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+2. **[Dmarcıa SSO](#configure-dmarcian-sso)** 'yu, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için yapılandırın.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+5. Dmarcıa **[test kullanıcısı oluşturun](#create-dmarcian-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan dmarcıa 'da B. Simon 'ın bir karşılığı olacak.
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **dmarcian** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **dmarcıa** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** sı bölümünde, Uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     | -- |
@@ -91,7 +91,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |--|
@@ -99,9 +99,9 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
     | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
     | |
     |--|
@@ -110,118 +110,118 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
      
     > [!NOTE] 
-    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek Tanımlayıcı, Yanıt URL'si ve Oturum Açma URL'si ile güncelleştireceksiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleşceksiniz.
 
-4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-dmarcian-sso"></a>Dmarcian SSO'yu yapılandırın
+### <a name="configure-dmarcian-sso"></a>Dmarcia SSO 'yu yapılandırma
 
-1. dmarcian içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı**yükleyin'e tıklayarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. Dmarcıa içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya uzantısı ekledikten sonra, **Kurulum dmarcian** tıklayın dmarcian uygulamasına yönlendirecektir. Oradan, dmarcian oturum için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-6 adımlarını otomatikleştirecektir.
+2. Tarayıcıya uzantı ekledikten sonra, **dmarcıa** ' ya tıklayarak, sizi dmarcıa uygulamasına yönlendirirsiniz. Buradan, dmarcıa 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Dmarcian'ı el ile kurmak istiyorsanız, yeni bir web tarayıcıpenceresi açın ve dmarcian şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Dmarcıa 'yı el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve dmarcıa şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sağ üst köşedeki **Profil'e** tıklayın ve **Tercihler'e**gidin.
+4. Sağ üst köşedeki **profil** ' e tıklayın ve **Tercihler**' e gidin.
 
     ![Tercihler](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
-5. Aşağı kaydırın ve **Tek Oturum Açma** bölümüne tıklayın, ardından **Yapıla'ya**tıklayın.
+5. Aşağı kaydırın ve **Çoklu oturum** açma bölümüne tıkladıktan sonra **Yapılandır**' a tıklayın.
 
     ![Tek](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
-6. **SAML Tek Oturum Açma** sayfasında **Etkin Olarak Durum'u** ayarlayın ve aşağıdaki adımları gerçekleştirin: **Enabled**
+6. **SAML çoklu oturum açma** sayfasında, **durumu** **etkin** olarak ayarlayın ve aşağıdaki adımları gerçekleştirin:
 
-    ![Kimlik doğrulama](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![Kimlik doğrulaması](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * **Kimlik Sağlayıcınıza dmarcian ekle** bölümünün altında, örneğiniz için Tüketici Hizmeti **URL'sini** kopyalamak için **COPY'yi** tıklatın ve Azure portalındaki **Temel SAML Yapılandırması bölümünde** **yanıtURL** metin kutusuna yapıştırın.
+    * **Kimlik sağlayıcınızda dmarcıa ekleyin** bölümünde **Kopyala** ' ya tıklayarak örneğiniz için **onaylama tüketici hizmeti URL 'SINI** kopyalayın ve Azure Portal **temel SAML yapılandırması bölümündeki** **yanıt URL 'si** metin kutusuna yapıştırın.
 
-    * **Kimlik Sağlayıcınıza dmarcian ekle'nin** altında, örneğiniz için **Varlık Kimliğini** kopyalamak için **KOPYALA'yı** tıklatın ve Azure portalındaki Temel **SAML Yapılandırması bölümündeki** **Tanımlayıcı** metin kutusuna yapıştırın.
+    * **Kimlik sağlayıcınıza dmarcıa ekleyin** bölümünde **Kopyala** ' ya tıklayarak örneğinizin **varlık KIMLIĞINI** kopyalayın ve Azure Portal **temel SAML yapılandırması bölümünde** **tanımlayıcı** metin kutusuna yapıştırın.
 
-    * **Kimlik Doğrulamayı Ayarlama** bölümünde, Kimlik Sağlayıcısı **Metadata** textbox'ta Azure portalından kopyaladığınız **Uygulama Federasyonu Metaveri Url'sini**yapıştırın.
+    * **Kimlik doğrulamasını ayarla** bölümünde, **kimlik sağlayıcısı meta verileri** metin kutusuna, Azure Portal kopyaladığınız **uygulama Federasyon meta verileri URL**'sini yapıştırın.
 
-    * **Kimlik Doğrulamayı Ayarlama** bölümünde, **Öznitelik İfadeleri** textbox yapıştırın url`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * **Kimlik doğrulamasını ayarla** bölümünde, **öznitelik deyimleri** metin kutusuna URL 'yi yapıştırın`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    * **Giriş URL'sini Ayarla** bölümünde, örneğiniz için **Giriş URL'sini** kopyalayın ve Azure portalındaki **Temel SAML Yapılandırma bölümünde** Oturum Aç **URL** textbox'a yapıştırın.
+    * **Oturum açma URL 'Sini ayarla** bölümünde, örneğiniz Için **oturum açma** url 'Sini KOPYALAYıN ve Azure Portal **temel SAML yapılandırması bölümünde** **oturum açma URL 'si** metin kutusuna yapıştırın.
 
         > [!Note]
-        > **Giriş URL'sini** kuruluşunuza göre değiştirebilirsiniz.
+        > **Oturum açma URL 'sini** kuruluşunuza göre değiştirebilirsiniz.
 
-    * **Kaydet**'e tıklayın.
+    * **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın dmarcian erişimi vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, dmarcıa 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde, **dmarcian**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **dmarcıa**' yı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-dmarcian-test-user"></a>Dmarcian test kullanıcısı oluşturma
+### <a name="create-dmarcian-test-user"></a>Dmarcıa test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının dmarcian'da oturum açabilmeleri için, dmarcian'a dahil edilmeleri gerekir. Dmarcian olarak, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının dmarcıa 'da oturum açmasını sağlamak için, dmarcıa 'ya sağlanması gerekir. Dmarcıa 'da, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Dmarcian'da Güvenlik Yöneticisi olarak oturum açın.
+1. Dmarcıa 'da güvenlik yöneticisi olarak oturum açın.
 
-2. Sağ üst köşedeki **Profil'e** tıklayın ve **Kullanıcıları Yönet'e**gidin.
+2. Sağ üst köşedeki **profile** tıklayın ve **Kullanıcıları Yönet**' e gidin.
 
     ![Kullanıcı](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
-3. **SSO Kullanıcıları** bölümünün sağ tarafında Yeni **Kullanıcı Ekle**bölümüne tıklayın.
+3. **SSO kullanıcıları** bölümünün sağ tarafında **Yeni Kullanıcı Ekle**' ye tıklayın.
 
-    ![Ekle kullanıcısı](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![Kullanıcı Ekle](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
-4. Yeni **Kullanıcı Ekle** açılır pencerede aşağıdaki adımları gerçekleştirin:
+4. **Yeni Kullanıcı Ekle** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![Yeni kullanıcı](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![Yeni Kullanıcı](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. Yeni **Kullanıcı E-posta** textbox, **\@brittasimon contoso.com**gibi kullanıcının e-posta girin.
+    a. **Yeni Kullanıcı e-posta** metin kutusunda, kullanıcının e-postasını, **brittasıon\@contoso.com**gibi girin.
 
-    b. Kullanıcıya yönetici hakları vermek istiyorsanız, **Kullanıcı Yı Yönetici Yap'ı**seçin.
+    b. Kullanıcıya yönetici hakları vermek istiyorsanız, **kullanıcıyı yönetici yap**' ı seçin.
 
     c. **Kullanıcı Ekle**'ye tıklayın.
 
-### <a name="test-sso"></a>Test SSO 
+### <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki dmarcian karo'yu tıklattığınızda, Otomatik olarak SSO'yu kurduğunuz dmarcian'da oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde dmarcia kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız dmarcıa 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

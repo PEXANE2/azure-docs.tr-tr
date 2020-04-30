@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Resolution GmbH tarafından Bitbucket için SAML SSO ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve SamL SSO arasında Bitbucket için gmbH çözünürlüğüne göre tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: "Öğretici: çözüm GmbH göre Bitbucket için SAML SSO 'SU ile tümleştirme Azure Active Directory | Microsoft Docs"
+description: GmbH ile Bitbucket için SAML SSO ve Azure Active Directory arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,149 +17,149 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57ae83aee563d4893f767331fff2289a4595cc60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73157652"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Öğretici: Resolution GmbH ile Bitbucket için SAML SSO ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Öğretici: çözüm GmbH göre Bitbucket için SAML SSO ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Bitbucket için SAML SSO'nun GmbH çözünürlüğüne göre Azure Active Directory (Azure AD) ile nasıl entegre ediliş ediliş ini öğrenirsiniz.
-Çözüm GmbH ile Bitbucket için SAML SSO'yu Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile çözümleme GmbH ile Bitbucket için SAML SSO 'SU tümleştirmeyi öğreneceksiniz.
+Azure AD ile, GmbH tarafından sağlanan Bitbucket için SAML SSO 'SU ile tümleştirme, aşağıdaki avantajları sağlar:
 
-* Bitbucket için SAML SSO erişimi olan Azure AD'de GmbH çözünürlüğü ile kontrol edebilirsiniz.
-* Kullanıcılarınızın, Azure REKLAM hesaplarıyla GmbH (Tek Oturum Açma) çözünürlüğü yle Bitbucket için SAML SSO'da otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, GmbH göre Bitbucket için SAML SSO 'ya erişimi olan bir denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla çözünürlüklü GmbH (çoklu oturum açma) ile Bitbucket için SAML SSO 'ya otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Bitbucket için SAML SSO ile GmbH çözünürlüğüne göre yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+GmbH tarafından Bitbucket için SAML SSO 'SU ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Çözünürlük GmbH tek oturum açma özellikli abonelik ile Bitbucket için SAML SSO
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Çözünürlükte GmbH çoklu oturum açma özellikli aboneliğe göre Bitbucket için SAML SSO 'SU
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Karar GmbH tarafından Bitbucket için SAML SSO **SP destekler ve IDP** SSO başlatılan
-* Çözünürlüğe göre Bitbucket için SAML SSO GmbH **Just In Time** kullanıcı sağlama destekler
+* Resolution GmbH tarafından Bitbucket için SAML SSO **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Resolution GmbH tarafından desteklenen Bitbucket için SAML SSO **, tam zamanında** Kullanıcı sağlamayı destekler
 
 
-## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Galeriden Çözünürlüğe GmbH ile Bitbucket için SAML SSO ekleme
+## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>Galeriden çözüm GmbH göre Bitbucket için SAML SSO 'SU ekleniyor
 
-Bitbucket için SAML SSO'nun Entegrasyonunu, GmbH'nin Azure AD'ye göre tümleştirilmesi için, Galeriden Çözüm GmbH ile BitBucket için SAML SSO'yu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+GmbH ile Bitbucket için SAML SSO 'yu Azure AD 'ye tümleştirme özelliğini yapılandırmak için, Galeriden, yönetim SaaS uygulamaları listenize çözünürlüklü Bitbucket için SAML SSO 'SU ' nu çözüm GmbH ile eklemeniz gerekir.
 
-**Galeriden Çözünürlüğe Göre Bitbucket için SAML SSO eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Resolution GmbH tarafından Bitbucket için SAML SSO 'SU eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Karar GmbH tarafından Bitbucket için SAML SSO**yazın, sonuç panelinden **Çözünürlük GmbH tarafından Bitbucket için SAML SSO** seçin sonra uygulama eklemek için **ekle** düğmesini tıklatın.
+4. Arama kutusuna, **GmbH göre Bitbucket Için SAML SSO**yazın; sonuç panelinde, **çözünürlükte GmbH ile Bitbucket için SAML SSO** 'yu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde çözünürlük GmbH tarafından Bitbucket için SAML SSO](common/search-new-app.png)
+     ![Sonuç listesinde çözüm GmbH göre Bitbucket için SAML SSO 'SU](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak, Azure AD'nin Bitbucket için SAML SSO ile tek oturum açma işlemini GmbH çözünürlüğüne göre yapılandırıp test emzebilirsiniz.
-Tek oturum açma nın işe yaraması için, Bir Azure AD kullanıcısı ile Bitbucket için SAML SSO'daki ilgili kullanıcı arasında GmbH çözünürlüğüne göre bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, GmbH tarafından verilen Bitbucket için SAML SSO 'Su Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve GmbH ile Bitbucket için SAML SSO 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD oturumaçmayı Bitbucket için SAML SSO ile GmbH çözünürlüğüne göre yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+GmbH tarafından Bitbucket için SAML SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak **[için Parça Kova için SAML SSO'yu GmbH Tek Oturum Açma çözünürlüğüne göre yapılandırın](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** .
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Resolution GmbH test kullanıcısı tarafından Bitbucket için SAML SSO oluşturun](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** - kullanıcının Azure AD temsiline bağlı olan GmbH çözünürlüğü ile SAML SSO'da Britta Simon'ın bir örneğine sahip olun.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Çözümleme GmbH Ile Bitbucket IÇIN SAML SSO 'Yu yapılandırın](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. User 'ın Azure AD gösterimine bağlı olan, Resolution GmbH 'e göre Bitbucket için SAML SSO 'SU ' nde bir Britta Simon 'ın bir karşılığı olması için, **[GmbH test kullanıcısına göre Bitbucket IÇIN SAML SSO 'Su oluşturun](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturumaçmayı Bitbucket için SAML SSO ile GmbH çözünürlüğüne göre yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı, bit demeti için SAML SSO 'yu çözüm GmbH göre yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Çözünürlük GmbH uygulama tümleştirme sayfası **ile Bitbucket için SAML SSO'daki** [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **GmbH ile Bitbucket için SAML SSO** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
-    ![Çözünürlük GmbH Etki Alanı ve URL'ler tek oturum açma bilgileri ile Bitbucket için SAML SSO](common/idp-intiated.png)
+    ![Çözünürlükte GmbH etki alanı ve URL 'Ler çoklu oturum açma bilgileri tarafından Bitbucket için SAML SSO 'SU](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
-    c. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+    c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Çözünürlük GmbH Etki Alanı ve URL'ler tek oturum açma bilgileri ile Bitbucket için SAML SSO](common/metadata-upload-additional-signon.png)
+    ![Çözünürlükte GmbH etki alanı ve URL 'Ler çoklu oturum açma bilgileri tarafından Bitbucket için SAML SSO 'SU](common/metadata-upload-additional-signon.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak [için Resolution GmbH Client destek ekibi tarafından Bitbucket için SAML SSO](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support) ile iletişime geçin. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için, [Resolution GmbH istemci desteği ekibine göre Bitbucket Için SAML SSO 'su ile](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>Parça kova için SAML SSO'nun GmbH Tek Oturum Açma çözünürlüğüne göre yapılandırın
+### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>Çözünürlükte GmbH çoklu oturum açma ile Bitbucket için SAML SSO 'yu yapılandırma
 
-1. Çözüm GmbH şirket sitesi tarafından Bitbucket için SAML SSO'nuza yönetici olarak oturum açın.
+1. Yönetici olarak çözüm GmbH Şirket sitesine göre Bitbucket için SAML SSO 'ünüz üzerinde oturum açın.
 
-2. Ana araç çubuğunun sağ tarafında **Ayarlar'ı**tıklatın.
+2. Ana araç çubuğunun sağ tarafında, **Ayarlar**' a tıklayın.
 
-3. HESAPLAR bölümüne gidin, Menü çubuğundaki **SAML SingleSignOn'a** tıklayın.
+3. HESAPLAR bölümüne gidin ve menü çubuğunda **SAML SingleSignOn** öğesine tıklayın.
 
-    ![The Samlsingle](./media/bitbucket-tutorial/tutorial_bitbucket_samlsingle.png)
+    ![Samlsingle](./media/bitbucket-tutorial/tutorial_bitbucket_samlsingle.png)
 
-4. **SAML SIngleSignOn Eklenti Yapılandırma sayfasında,** **idp ekle'yi**tıklatın. 
+4. **SAML SIngleSignOn eklenti yapılandırması sayfasında** **IDP Ekle**' ye tıklayın. 
 
-    ![idp Ekle](./media/bitbucket-tutorial/tutorial_bitbucket_addidp.png)
+    ![IDP ekleme](./media/bitbucket-tutorial/tutorial_bitbucket_addidp.png)
 
-5. **SAML Kimlik Sağlayıcı Sayfanızı Seçin'de** aşağıdaki adımları gerçekleştirin:
+5. **SAML kimlik sağlayıcınızı seçin** sayfasında aşağıdaki adımları uygulayın:
 
     ![Kimlik sağlayıcısı](./media/bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
-    a. AZURE AD olarak **Idp Türü'nü** seçin. **AZURE AD**
+    a. **IDP türünü** **Azure AD**olarak seçin.
 
-    b. **Ad** metin kutusuna, adı yazın.
+    b. **Ad** metin kutusuna adı yazın.
 
     c. **Açıklama** metin kutusuna açıklamayı yazın.
 
-    d. **İleri**'ye tıklayın.
+    d. **İleri**’ye tıklayın.
 
-6. Kimlik **sağlayıcı yapılandırma sayfasında** **İleri'yi**tıklatın.
+6. **Kimlik sağlayıcısı yapılandırma sayfasında** **İleri**' ye tıklayın.
 
-    ![Kimlik config](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
+    ![Kimlik yapılandırması](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
 
-7.  **SamL Idp Meta Veri** Sayfasını İçe Aktar'da, Azure portalından indirdiğiniz **METADATA XML** dosyasını yüklemek için **Dosyayı Yükle'yi** tıklatın.
+7.  Azure portal 'den indirdiğiniz **meta VERI XML** dosyasını karşıya yüklemek Için **SAML IDP meta verilerini Içeri aktar** sayfasında **Dosya Yükle** ' ye tıklayın.
 
-    ![Idpmeta data](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
+    ![Idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
     
-8. **İleri**'ye tıklayın.
+8. **İleri**’ye tıklayın.
 
 9. **Ayarları kaydet**’e tıklayın.
 
@@ -167,70 +167,70 @@ Azure AD oturumaçmayı Bitbucket için SAML SSO ile GmbH çözünürlüğüne g
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın, GmbH çözünürlüğü yle Bitbucket için SAML SSO'ya erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, çözünürlükte GmbH tarafından Bitbucket için SAML SSO 'SU erişimi vererek Azure çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 
-1. Azure portalında, **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **GmbH çözünürlüğüne göre Bitbucket için SAML SSO'yu**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **çözüm GmbH göre Bitbucket için SAML SSO**' yı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar **listesinde, Karar GmbH tarafından Bitbucket için SAML SSO**yazın ve seçin.
+2. Uygulamalar listesinde, **çözüm GmbH göre Bitbucket Için SAML SSO**'yu yazın ve seçin.
 
-    ![Uygulamalar listesinde çözünürlük GmbH bağlantısı ile Bitbucket için SAML SSO](common/all-applications.png)
+    ![Uygulamalar listesinde, çözünürlükte GmbH bağlantısı tarafından Bitbucket için SAML SSO 'SU](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Resolution GmbH test kullanıcısı tarafından Bitbucket için SAML SSO oluşturun
+### <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>Resolution GmbH test kullanıcısına göre Bitbucket için SAML SSO oluşturma
 
-Bu bölümün amacı, Çözüm GmbH tarafından Bitbucket için SAML SSO Britta Simon adlı bir kullanıcı oluşturmaktır. Resolution GmbH tarafından Bitbucket için SAML SSO tam zamanında sağlanması destekler ve aynı zamanda kullanıcılar el ile oluşturulabilir, sizin gereksiniminize göre [çözünürlük GmbH Müşteri destek ekibi tarafından Bitbucket için SAML SSO](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) başvurun.
+Bu bölümün amacı, GmbH tarafından verilen Bitbucket için SAML SSO 'da Britta Simon adlı bir Kullanıcı oluşturmaktır. Resolution GmbH tarafından desteklenen Bitbucket için SAML SSO, tam zamanında sağlamayı destekler ve ayrıca kullanıcılar el ile oluşturulabilir, gereksiniminize göre, BT [GmbH istemci desteği ekibine göre Bitbucket Için SAML SSO 'su](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support) ile iletişim kurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki GmbH çözünürlükteki GmbH döşemesi ile Bitbucket için SAML SSO'yu tıklattığınızda, SSO'yu kurduğunuz GmbH çözünürlüğü ile Otomatik olarak Bitbucket için SAML SSO'ya oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde,-Resolution GmbH for the Bitbucket için SAML SSO 'su ' ne tıkladığınızda, SSO 'yu ayarladığınız çözünürlükte GmbH göre Bitbucket için SAML SSO 'SU için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
