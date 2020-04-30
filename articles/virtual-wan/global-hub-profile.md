@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual WAN global veya hub tabanlı VPN profillerini indirin | Microsoft Dokümanlar
-description: Sanal WAN otomatik ölçeklenebilir daldan şubeye bağlantı, kullanılabilir bölgeler ve iş ortakları hakkında bilgi edinin.
+title: Azure sanal WAN genel veya hub tabanlı VPN profillerini indirin | Microsoft Docs
+description: Sanal WAN otomatik ölçeklenebilir dalı-dal bağlantısı, kullanılabilir bölgeler ve iş ortakları hakkında bilgi edinin.
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 4/20/2020
 ms.author: alzam
 ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733178"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Kullanıcı VPN istemcileri için genel veya hub tabanlı bir profil indirin
 
-Azure Virtual WAN uzak kullanıcılar için iki tür bağlantı sunar: Genel ve Hub tabanlı. Bir profil hakkında bilgi edinmek ve indirmek için aşağıdaki bölümleri kullanın. 
+Azure sanal WAN, uzak kullanıcılar için iki bağlantı türü sunar: genel ve hub tabanlı. Bir profili öğrenmek ve indirmek için aşağıdaki bölümleri kullanın. 
 
 > [!IMPORTANT]
-> RADIUS kimlik doğrulaması yalnızca Hub tabanlı profili destekler.
+> RADIUS kimlik doğrulaması yalnızca hub tabanlı profili destekler.
 
 ## <a name="global-profile"></a>Genel profil
 
-Profil, tüm etkin Kullanıcı VPN hub'larını içeren bir yük dengeleyicisini işaret eder. Kullanıcı, kullanıcının coğrafi konumuna en yakın hub'a yönlendirilir. Bu tür bir bağlantı, kullanıcılar sık sık farklı konumlara seyahat ettiğinde yararlıdır. **Genel** profili indirmek için:
+Profil, tüm etkin kullanıcı VPN hub 'larını içeren bir yük dengeleyiciyi işaret eder. Kullanıcı, kullanıcının coğrafi konumuna en yakın hub 'a yönlendirilir. Bu tür bir bağlantı, kullanıcılar farklı konumlara sık seyahat ederken faydalıdır. **Genel** profili indirmek için:
 
 1. Sanal WAN'a gidin.
-2. **Kullanıcı VPN yapılandırmasını**tıklatın.
+2. **Kullanıcı VPN yapılandırması**' na tıklayın.
 3. Profili indirmek istediğiniz yapılandırmayı vurgulayın.
-4. **Tıklayın Sanal WAN kullanıcı VPN profili indirin.**
+4. **Sanal WAN Kullanıcı VPN profilini indir**' e tıklayın.
 
    ![Genel profil](./media/global-hub-profile/global1.png)
 
 ## <a name="hub-based-profile"></a>Hub tabanlı profil
 
-Profil tek bir hub'ı işaret. Kullanıcı yalnızca bu profili kullanarak belirli bir hub'a bağlanabilir. **Hub tabanlı** profili indirmek için:
+Profil, tek bir hub 'a işaret eder. Kullanıcı yalnızca bu profili kullanarak belirli bir hub 'a bağlanabilir. **Hub tabanlı** profili indirmek için:
 
 1. Sanal WAN'a gidin.
-2. Genel Bakış sayfasında **Hub'ı** tıklatın.
+2. Genel Bakış sayfasında **Merkez** ' e tıklayın.
 
     ![Hub profili 1](./media/global-hub-profile/hub1.png)
-3. **Kullanıcı VPN'ini tıklatın (Siteye işaret edin)**.
-4. **Sanal Hub Kullanıcı VPN profilini indir'e**tıklayın.
+3. **Kullanıcı VPN (siteye işaret)** seçeneğine tıklayın.
+4. **Sanal hub Kullanıcı VPN profilini indir**' e tıklayın.
 
    ![Hub profili 2](./media/global-hub-profile/hub2.png)
-5. **EAPTLS'yi kontrol edin.**
-6. **Profili Oluştur ve İndir'i**tıklatın.
+5. **EAPTLS**'yi denetleyin.
+6. **Profil oluştur ve indir**' e tıklayın.
 
    ![Hub profili 3](./media/global-hub-profile/download.png)
 

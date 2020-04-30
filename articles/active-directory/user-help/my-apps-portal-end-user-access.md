@@ -1,6 +1,6 @@
 ---
-title: Uygulamalarım portalındaki uygulamaları & kullanma - Azure AD
-description: Uygulamalarım portalını nasıl bulacağınızı ve kuruluşunuzun bulut tabanlı uygulamalarına nasıl eriştinizini öğrenin.
+title: Uygulamalar portalındaki uygulamaları bulma & kullanma-Azure AD
+description: Uygulamalarım portalını bulmayı ve sonra kuruluşunuzun bulut tabanlı uygulamalarına nasıl erişebileceğinizi öğrenin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,185 +13,185 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869719"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Uygulamalarım portalından oturum açın ve uygulamaları başlatın
 
-Web tabanlı **Uygulamalarım** portalındaki iş veya okul hesabınızı şu şekilde kullanabilirsiniz:
+Web tabanlı **My Apps** portalından iş veya okul hesabınızı kullanarak şunları yapabilirsiniz:
 
 - Kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyin ve başlatın
-- Profil ve hesap bilgilerinizi güncelleme
-- **Grup** bilgilerinizi görün
-- Uygulamalarınız ve gruplarınız için **erişim incelemeleri** gerçekleştirin
+- Profilinizi ve hesap bilgilerinizi güncelleştirin
+- **Grup** bilgilerinizi görüntüleyin
+- Uygulamalarınız ve gruplarınız için **erişim gözden geçirmeleri** gerçekleştirin
 
-**Uygulamalarım** portalına erişiminiz yoksa, izin almak için Yardım Masanıza başvurun.
+**Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masanızla iletişime geçin.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Bu içerik Uygulamalarım kullanıcıları için tasarlanmıştır. Yöneticiyseniz, [Uygulama Yönetimi Dokümantasyonu'nda](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızı nasıl ayarlayıp yönetebileceğiniz hakkında daha fazla bilgi bulabilirsiniz.
+> Bu içerik, Uygulamalarım kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="supported-browsers"></a>Desteklenen tarayıcılar
 
-**Uygulamalarım** portalına aşağıdaki web tarayıcılarından herhangi birinden ulaşabilirsiniz:
+Aşağıdaki Web tarayıcılarının herhangi birinden **uygulamalar** portalına ulaşabilirsiniz:
 
 - Google Chrome
 
-- Mozilla Firefox, sürüm 26.0 veya sonrası
+- Mozilla Firefox, sürüm 26,0 veya üzeri
 
 - Microsoft Edge
 
 - Internet Explorer, sürüm 11 (sınırlı destek)
 
-## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Uygulamalarım Güvenli Oturum Açma Uzantısını İndirin ve yükleyin
+## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Uygulamalarım güvenli oturum açma uzantısını indirin ve yükleyin
 
-Sizden istenirse Uygulamalarım Güvenli Oturum Açma Uzantısı'nı indirin ve yükleyin. Bu uzantı, kuruluşunuzun tek bir oturum açma işlemi kullanmanızı gerektiren bulut uygulamalarından herhangi birini başlatmanıza yardımcı olur. Kuruluşunuz sizi zaten tek oturum açma için ayarladıysa, uzantı otomatik olarak yüklenir ve bu bölümü atlayabilirsiniz.
+İstenirse uygulamalarım güvenli oturum açma uzantısını indirip yükleyin. Bu uzantı, kuruluşunuzda çoklu oturum açma işlemi kullanmanızı gerektiren bulut uygulamalarından herhangi birini başlatmanıza yardımcı olur. Kuruluşunuz zaten çoklu oturum açma için ayarlandıysa, uzantı otomatik olarak yüklenir ve bu bölümü atlayabilirsiniz.
 
-Bu uzantı size yardımcı olur:
+Bu uzantı şunları yapmanıza yardımcı olur:
 
 - Oturum açma sayfasından doğrudan uygulamalarda oturum açın.
 
 - **Hızlı arama** özelliğini kullanarak tüm uygulamaları başlatın.
 
-- **Son Kullanılanlar** bölümünde kullandığınız son uygulamaları görün.
+- Son **kullanılan** bölümde kullandığınız son uygulamalara bakın.
 
-- [Application Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)ile uzaktan kumanda ederken dahili şirket URL'lerini kullanın.
+- [Uygulama proxy 'si](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)ile uzak sırada Iç şirket URL 'lerini kullanın.
 
 ### <a name="to-download-and-install-the-extension"></a>Uzantıyı indirmek ve yüklemek için
 
-Kullandığınız tarayıcıya bağlı olarak uzantıyı indirin ve yükleyin:
+Uzantıyı, kullanmakta olduğunuz tarayıcıya göre indirin ve yükleyin:
 
-- **Google Chrome.** Chrome Web Mağazası'ndan [Uygulamalarım Güvenli Oturum Açma Uzantısı](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) özelliğine gidin ve ardından **Chrome'a Ekle'yi**seçin.
+- **Google Chrome.** Chrome Web mağazasından, [uygulamalarım güvenli oturum açma uzantısı](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) özelliğine gidin ve ardından **Chrome 'a Ekle**' yi seçin.
 
-- **Mozilla Firefox** Firefox **Eklentileri** sayfasından, [Uygulamalarım Güvenli Oturum Açma Uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/) özelliğine gidin ve ardından **Firefox'a Ekle'yi**seçin.
+- **Mozilla Firefox** **Firefox eklentileri** sayfasından [uygulamalarım güvenli oturum açma uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/) özelliğine gidin ve ardından **Firefox 'a Ekle**' yi seçin.
 
-- **Microsoft Edge** Microsoft Mağazası'ndan, [Uygulamalarım Güvenli Oturum Açma Uzantısı](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) özelliğine gidin ve ardından Microsoft Edge eski tarayıcısının uzantısını almak için **Al'ı** seçin.  
-Yeni Microsoft Edge tarayıcısını (Edge on Chromium) kullanıyorsanız, [microsoft edge Addons Store'dan](https://microsoftedge.microsoft.com/addons/category/EdgeExtensionsEditorsPick)extenion alabilirsiniz.
+- **Microsoft Edge** Microsoft Store, [uygulamalarım güvenli oturum açma uzantısı](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) özelliğine gidin ve ardından Microsoft Edge eski tarayıcı uzantısını almak için **Al** ' ı seçin.  
+Yeni Microsoft Edge tarayıcısını kullanıyorsanız (Kmıum üzerinde Edge), [Microsoft Edge eklentisi mağazasından](https://microsoftedge.microsoft.com/addons/category/EdgeExtensionsEditorsPick)uzantısı edinebilirsiniz.
 
-**Adres** çubuğunuzun sağına oturum açmanızı ve uzantıyı özelleştirmenizi sağlayan bir simge eklenir.
+**Adres** çubuğunuzun sağına bir simge eklenir, bu da oturum açıp uzantıyı özelleştirmenize olanak tanır.
 
-## <a name="to-change-your-my-apps-portal-using-the-extension"></a>Uzantıyı kullanarak Uygulamalarım portalınızı değiştirmek için
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>Uzantıyı kullanarak My Apps portalınızı değiştirme
 
-**Son Kullanılan** bölümde kaç uygulamanın görüntüleneceğini seçebilir ve kuruluşunuzun dahili URL'lerinin yeniden yönlendirmesine izin verip vermemeye karar verebilirsiniz.
+**Son kullanılan** bölümde kaç uygulama görüntüleneceğini seçebilir ve kuruluşunuzun Iç URL 'lerinin yeniden yönlendirmesine izin verip vermeyeceğine karar verebilirsiniz.
 
-1. **Adres** çubuğunuzun sağındaki yeni **Uygulamalarım Güvenli Oturum Açma Uzantısı** simgesini ![](media/my-apps-portal/my-apps-portal-extension-icon.png) seçin ve ardından başlamak için Oturum **Aç'ı**seçin.
+1. **Adres** çubuğunuzun sağ tarafındaki yeni **uygulamalarım güvenli oturum açma uzantısı** simgesi ![uzantısını](media/my-apps-portal/my-apps-portal-extension-icon.png) seçin ve ardından oturum aç ' ı seçerek **kullanmaya başlayın**.
 
-2. **Ayarlar** simgesi Ayarlar ![simgesini](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)sağ tıklatın ve ardından **Ayarlar'ı**seçin.
+2. **Ayarlar** simgesi ![ayarları simgesine](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)sağ tıklayın ve ardından **Ayarlar**' ı seçin.
 
-3. **Ayarlar** kutusunda, portalda görmek istediğiniz en son uygulamaların sayısını ve kuruluşunuzun dahili URL'lerinin uzaktan kullanabilmeniz için yeniden yönlendirmesine izin verip vermemeyi seçin.
+3. **Ayarlar** kutusunda, portalda görmek istediğiniz son uygulama sayısını ve kuruluşunuzun Iç URL 'lerinin uzaktan kullanabilmeniz için yeniden yönlendirmesine izin verip vermeyeceğinizi seçin.
 
-    ![Kullanılabilir özelleştirmeleri gösteren uzantının Ayarlar sayfası](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
+    ![Uzantının, kullanılabilir özelleştirmeleri gösteren ayarlar sayfası](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
-## <a name="access-and-use-the-my-apps-portal-by-device"></a>Uygulamalarım portalına cihazla erişin ve kullanın
+## <a name="access-and-use-the-my-apps-portal-by-device"></a>Cihaza göre uygulamalar portalına erişme ve bunları kullanma
 
-Bilgisayarınızdaki Uygulamalarım portalına, Intune tarafından yönetilen bir tarayıcıdan veya bir iOS veya Android mobil cihazdan erişebilir ve bunları kullanabilirsiniz.
+Bilgisayarınızda, Intune tarafından yönetilen bir tarayıcıdan veya bir iOS veya Android mobil cihazınızdan, My Apps portalına erişebilir ve bunları kullanabilirsiniz.
 
 ![Uygulamalarım portalındaki uygulamalar sayfası](media/my-apps-portal/my-apps-portal-apps-page.png)
 
-### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Bilgisayarınızdaki Uygulamalarım portalına erişin ve bunları kullanın
+### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Bilgisayarınızdaki My Apps portalına erişin ve bunları kullanın
 
-Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve kullanma izniniz varsa, bu uygulamalara **Uygulamalarım** portalı ndan ulaşabilirsiniz.
+Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma izniniz varsa, bu uygulamalara, **uygulamalar** portalından ulaşabilirsiniz.
 
-1. Bilgisayarınızdaki iş veya okul hesabınızda oturum açın.
+1. Bilgisayarınızda iş veya okul hesabınızda oturum açın.
 
-2. Desteklenen bir web tarayıcısında, sizi https://myapps.microsoft.comözelleştirilmiş bir sayfaya `https://myapps.microsoft.com/contoso.com`yönlendirirlerse, kuruluşunuz tarafından sağlanan bağlantıyı açıp,
+2. Desteklenen bir Web tarayıcısında açın ve adresine gidin https://myapps.microsoft.comya da gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın. `https://myapps.microsoft.com/contoso.com`
 
-    **Uygulamalar** sayfası, kuruluşunuz tarafından sahip olunan ve kullanabileceğiniz tüm bulut tabanlı uygulamaları gösterir.
+    Kuruluşunuzun sahip olduğu, kuruluşunuzun sahip olduğu tüm bulut tabanlı uygulamaları gösteren **uygulamalar** sayfası açılır.
 
-3. **Uygulamalar** sayfasından, kullanmaya başlamak istediğiniz uygulamayı seçin.
+3. **Uygulamalar** sayfasında, kullanmaya başlamak istediğiniz uygulamayı seçin.
 
-    Uygulama için yeni bir sayfa açılır, burada oturum açabilir (gerekirse) veya uygulamayı kullanmaya başlayabilirsiniz.
+    Uygulama için yeni bir sayfa açılır; burada (gerekirse) oturum açabilir veya uygulamayı kullanmaya başlayabilirsiniz.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Intune tarafından yönetilen bir tarayıcıda Uygulamalarım portalına erişin ve bunları kullanın
+### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Intune ile yönetilen bir tarayıcıda, My Apps portalına erişin ve bunları kullanın
 
-kuruluşunuzun uygulamalarını iOS ve Android cihazlarınızda Bir Intune Yönetilen Tarayıcıdan görüntüleyin ve kullanın.
+İOS ve Android cihazlarınızdaki bir Intune Managed Browser kuruluşunuzun uygulamalarını görüntüleyin ve kullanın.
 
-1. Mobil cihazınızda, Apple App Store ve Google Play Store'dan Intune Yönetilen Tarayıcı uygulamasını indirin ve yükleyin.
+1. Mobil cihazınızda Intune Managed Browser uygulamasını Apple App Store 'dan ve Google Play Store indirin ve yükleyin.
 
-2. Intune Yönetilen Tarayıcı uygulamasını açın, https://myapps.microsoft.comsizi özelleştirilmiş bir sayfaya yönlendirirlerse kuruluşunuz tarafından sağlanan https://myapps.microsoft.com/contoso.combağlantıyı kullanın.
+2. Intune Managed Browser uygulamasını açın, ' e https://myapps.microsoft.comgidin veya kuruluşunuz tarafından sunulan bağlantıyı, gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kullanın. https://myapps.microsoft.com/contoso.com
 
-    **Uygulamalar** sayfası, kuruluşunuz tarafından sahip olunan ve kullanabileceğiniz tüm bulut tabanlı uygulamaları gösterir.
+    Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
-3. **Uygulamalar** sayfasından, kullanmaya başlamak istediğiniz uygulamayı seçin.
+3. **Uygulamalar** sayfasında, kullanmaya başlamak istediğiniz uygulamayı seçin.
 
-    Uygulama için yeni bir sayfa açılır, burada oturum açabilir (gerekirse) veya uygulamayı kullanmaya başlayabilirsiniz.
+    Uygulama için yeni bir sayfa açılır; burada (gerekirse) oturum açabilir veya uygulamayı kullanmaya başlayabilirsiniz.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>IOS aygıtında Uygulamalarım portalına erişin ve bunları kullanın
+### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>İOS cihazında My Apps portalına erişme ve bunları kullanma
 
-iOS sürüm 7 veya sonraki sürümde çalışan bir iPhone veya iPad aygıtından **Uygulamalarım** portalını görüntüleyin ve kullanın. Kuruluşunuzun uygulamalarına erişmek için iOS aygıtlarınızda [Uygulamalarım mobil uygulamasını](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) da yükleyebilirsiniz.
+İOS sürüm 7 veya üzerini çalıştıran bir iPhone veya iPad cihazından **My Apps** portalını görüntüleyin ve kullanın. İOS cihazlarınızdaki Kuruluşunuzun uygulamalarına erişmek için [My Apps Mobil uygulamasını](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) da yükleyebilirsiniz.
 
-1. Mobil cihazınızda Safari gibi bir web tarayıcısı uygulaması başlatın.
+1. Mobil cihazınızda Safari gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. Sizi https://myapps.microsoft.comözelleştirilmiş bir sayfaya yönlendirirlerse, kuruluşunuz tarafından sağlanan bağlantıyı https://myapps.microsoft.com/contoso.comkullanın veya gidin.
+2. https://myapps.microsoft.com' A gidin veya sizin gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın https://myapps.microsoft.com/contoso.com.
 
-    **Uygulamalar** sayfası, kuruluşunuz tarafından sahip olunan ve kullanabileceğiniz tüm bulut tabanlı uygulamaları gösterir.
+    Kuruluşunuzun sahip olduğu, kuruluşunuzun sahip olduğu tüm bulut tabanlı uygulamaları gösteren **uygulamalar** sayfası açılır.
 
-3. **Uygulamalar** sayfasından, kullanmaya başlamak istediğiniz uygulamayı seçin.
+3. **Uygulamalar** sayfasında, kullanmaya başlamak istediğiniz uygulamayı seçin.
 
-    Uygulama için yeni bir sayfa açılır, burada oturum açabilir (gerekirse) veya uygulamayı kullanmaya başlayabilirsiniz.
+    Uygulama için yeni bir sayfa açılır; burada (gerekirse) oturum açabilir veya uygulamayı kullanmaya başlayabilirsiniz.
 
-### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Android cihazda Uygulamalarım portalına erişin ve bunları kullanın
+### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Android cihazında My Apps portalına erişme ve bunları kullanma
 
-**Uygulamalarım** portalını bir Android cihazda görüntüleyin ve kullanın.
+Android cihazında **My Apps** portalını görüntüleyin ve kullanın.
 
-1. Mobil cihazınızda, Google Chrome gibi bir web tarayıcısı uygulaması başlatın.
+1. Mobil cihazınızda, Google Chrome gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. Sizi https://myapps.microsoft.comözelleştirilmiş bir sayfaya yönlendirirlerse, kuruluşunuz tarafından sağlanan bağlantıyı https://myapps.microsoft.com/contoso.comkullanın veya gidin.
+2. https://myapps.microsoft.com' A gidin veya sizin gibi özelleştirilmiş bir sayfaya yönlendirdiklerinde kuruluşunuz tarafından sunulan bağlantıyı kullanın https://myapps.microsoft.com/contoso.com.
 
-    **Uygulamalar** sayfası, kuruluşunuz tarafından sahip olunan ve kullanabileceğiniz tüm bulut tabanlı uygulamaları gösterir.
+    Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
-3. **Uygulamalar** sayfasından, kullanmaya başlamak istediğiniz uygulamayı seçin.
+3. **Uygulamalar** sayfasında, kullanmaya başlamak istediğiniz uygulamayı seçin.
 
-    Uygulama için yeni bir sayfa açılır, burada oturum açabilir (gerekirse) veya uygulamayı kullanmaya başlayabilirsiniz.
+    Uygulama için yeni bir sayfa açılır; burada (gerekirse) oturum açabilir veya uygulamayı kullanmaya başlayabilirsiniz.
 
 ## <a name="add-a-new-app-to-the-my-apps-portal"></a>Uygulamalarım portalına yeni bir uygulama ekleme
 
-Yöneticiniz size izin verdiyse, **Uygulamalar** sayfasına yeni bir uygulama ekleyebilirsiniz.
+Yöneticiniz size izin verdiyse, **uygulamalar** sayfasına yeni bir uygulama ekleyebilirsiniz.
 
-1. **Uygulamalar** sayfasından aşağıdakilerden birini yapın:
-    - Özgün Uygulamalarım deneyimindeyseniz, gösterildiği gibi **Uygulama Ekle'yi** seçin.
+1. **Uygulamalar** sayfasında, aşağıdakilerden birini yapın:
+    - İlk uygulamalarım deneyimimizde, gösterildiği gibi **Uygulama Ekle** ' yi seçin.
 
-      ![Uygulamalarım portalında uygulama sayfası ekleme](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+      ![Uygulamalar ekleme sayfası, My Apps portalında](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    - Güncelleştirilmiş Uygulamalarım deneyimindeyseniz, **self servis uygulamaları ekle'yi**seçin.
+    - Güncelleştirilmiş uygulamalarım deneyiminden karşılaşıyorsanız **self servis uygulamaları Ekle**' yi seçin.
 
-       ![myapplications.microsoft.com'daki Uygulamalarım portalında uygulamalar sayfası ekleme](media/my-apps-portal/my-apps-portal-add-app-link.png)
+       ![Uygulamalar Ekle sayfasında, myapplications.microsoft.com adresindeki uygulamalar portalı](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-2. Sağlanan listeden eklemek istediğiniz uygulamayı seçin ve sonra **Ekle'yi**seçin.
+2. Belirtilen listeden eklemek istediğiniz uygulamayı seçin ve ardından **Ekle**' yi seçin.
 
-3. Uygulama, **Uygulamalar** sayfasındaki listeye eklenir.
+3. Uygulama, **uygulamalar** sayfasındaki listeye eklenir.
 
-    Bazı uygulamalar eklenmeden önce yönetici onayı gerektirebilir. Bu durumda, uygulama yönetici onaylayana kadar **Uygulamalar** sayfasına eklenmez.
+    Bazı uygulamaların eklenebilmesi için önce yönetici onayı gerekebilir. Bu durumda, yönetici tarafından onaylayana kadar uygulama **uygulamalar** sayfasına eklenmez.
 
 ## <a name="start-a-cloud-based-app"></a>Bulut tabanlı bir uygulama başlatma
 
-Kullanılabilir bulut tabanlı uygulamalardan herhangi birini **Uygulamalarım** portalından başlatabilirsiniz. Yalnızca kullanma izniniz olan uygulamaları görürsünüz.
+Mevcut bulut tabanlı uygulamalardan herhangi birini **uygulamalarım** portalından başlatabilirsiniz. Yalnızca kullanma izninizin olduğu uygulamaları görürsünüz.
 
-- **Uygulamalar** sayfasından, kullanmaya başlamak istediğiniz uygulamayı seçin.
+- **Uygulamalar** sayfasında, kullanmaya başlamak istediğiniz uygulamayı seçin.
 
-    Uygulama için yeni bir sayfa açılır, burada oturum açabilir (gerekirse) veya uygulamayı kullanmaya başlayabilirsiniz.
+    Uygulama için yeni bir sayfa açılır; burada (gerekirse) oturum açabilir veya uygulamayı kullanmaya başlayabilirsiniz.
 
 ## <a name="activities-in-the-my-apps-portal"></a>Uygulamalarım portalındaki etkinlikler
 
-**Uygulamalarım** portalına geçtikten sonra şunları yapabilirsiniz:
+**Uygulamalarım** portalına geldiğinizde şunları yapabilirsiniz:
 
-- Uygulamalarınızı kuruluşunuz tarafından oluşturulan ve sağlanan çeşitli kategorilerde düzenleyin. Daha fazla bilgi [için, Uygulamalarım portalındaki Access ve kullanım koleksiyonlarına](my-applications-portal-workspaces.md)bakın.
+- Uygulamalarınızı, kuruluşunuz tarafından oluşturulan ve sunulan çeşitli kategorilerde düzenleyin. Daha fazla bilgi için bkz. [My Apps Portalındaki koleksiyonlara erişin ve bunları kullanın](my-applications-portal-workspaces.md).
 
-- Uygulamalara verilen izinleri gözden geçirin, güncelleyin veya iptal edin. Daha fazla bilgi için, [Uygulamalarım portalında uygulama izinlerini edin veya iptal edin.](my-applications-portal-permissions-saved-accounts.md)
+- Uygulamalara verilen izinleri gözden geçirin, güncelleştirin veya iptal edin. Daha fazla bilgi için bkz. [uygulamalarım portalındaki uygulama Izinlerini düzenleme veya iptal etme](my-applications-portal-permissions-saved-accounts.md).
 
 >[!Note]
->Kullanılabilir koleksiyon veya kategori görmüyorsanız, yöneticinizin herhangi bir koleksiyon ayarlamadığı veya sizinle paylaşmadığı anlamına gelir. Paylaşılan koleksiyonları görmek için ek yardım veya izinler için kuruluşunuzun Yardım Masası'na başvurun.
+>Herhangi bir koleksiyon veya kategori görmüyorsanız, yöneticinizin sizinle hiç bir şekilde ayarlanmamış veya paylaşmadığı anlamına gelir. Paylaşılan koleksiyonları görmek için ek yardım veya izinler için kuruluşunuzun yardım masasına başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Uygulamalar** sayfasına geçtikten sonra şunları yapabilirsiniz:
+**Uygulamalar** sayfasına geldiğinizde şunları yapabilirsiniz:
 
 - [Profil bilgilerinizi değiştirme](my-apps-portal-end-user-update-profile.md)
 
-- [Gruplarla ilgili bilgilerinizi görüntüleme ve güncelleme](my-apps-portal-end-user-groups.md)
+- [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleştirin](my-apps-portal-end-user-groups.md)
 
 - [Kendi erişim gözden geçirmelerinizi gerçekleştirme](my-apps-portal-end-user-access-reviews.md)

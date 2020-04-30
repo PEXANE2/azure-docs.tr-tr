@@ -1,47 +1,47 @@
 ---
-title: PowerShell ile ithalat ve ihracat planları
-description: Kod olarak plan tanımlarınızla nasıl çalışacağınızı öğrenin. Dışa aktarma ve alma komutlarını kullanarak bunları paylaşın, kaynak denetimi ve yönetme.
+title: PowerShell ile şemaları içeri ve dışarı aktarma
+description: Şema tanımlarınız kodu olarak nasıl çalışacağınızı öğrenin. Dışarı aktarma ve içeri aktarma komutlarını kullanarak bunları paylaşabilirsiniz, kaynak denetimi yapın ve yönetin.
 ms.date: 09/03/2019
 ms.topic: how-to
 ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686830"
 ---
-# <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell ile plan tanımlarını alma ve ihraç etme
+# <a name="import-and-export-blueprint-definitions-with-powershell"></a>Şema tanımlarını PowerShell ile içeri ve dışarı aktarma
 
-Azure Planları, Azure portalı üzerinden tam olarak yönetilebilir. Kuruluşlar Azure Planlarını kullanırken ilerledikçe, plan tanımlarını yönetilen kod olarak düşünmeye başlamalıdır. Bu kavram genellikle Kod (IaC) olarak Altyapı olarak adlandırılır. Plan tanımlarınızı kod olarak ele almanız, Azure portalının sunduğunun ötesinde ek avantajlar sunar. Bu avantajlar şunlardır:
+Azure şemaları, Azure portal aracılığıyla tam olarak yönetilebilir. Kuruluşlar Azure şemaları kullanımıyla geliştikçe, şema tanımlarını yönetilen kod olarak düşünmeye başlamalıdır. Bu kavram genellikle kod olarak altyapı (IAC) olarak adlandırılır. Şema tanımlarınızın kod olarak davranılması, Azure portal sunduğu avantajlardan daha fazla avantaj sunar. Bu avantajlar şunlardır:
 
-- Plan tanımlarını paylaşma
-- Plan tanımlarınızı yedekleme
-- Farklı kiracılarda veya aboneliklerde plan tanımlarını yeniden kullanma
-- Plan tanımlarını kaynak denetimine yerleştirme
-  - Test ortamlarında plan tanımlarının otomatik test edilmesi
-  - Sürekli entegrasyon ve sürekli dağıtım (CI/CD) boru hatlarının desteklenmesi
+- Şema tanımlarını paylaşma
+- Şema tanımlarınızı yedekleme
+- Farklı kiracılarda veya aboneliklerde şema tanımlarını yeniden kullanma
+- Şema tanımlarını kaynak denetimine yerleştirme
+  - Test ortamlarında şema tanımlarının otomatik testi
+  - Sürekli tümleştirme ve sürekli dağıtım (CI/CD) işlem hatları desteği
 
-Nedenleriniz ne olursa olsun, plan tanımlarınızı kod olarak yönetmenin yararları vardır. Bu makalede, [Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modülündeki komutların `Import-AzBlueprintWithArtifact` ve `Export-AzBlueprintWithArtifact` komutların nasıl kullanılacağı gösterilmektedir.
+Nedenleriniz ne olursa olsun, şema tanımlarınızı kod olarak yönetme avantajlara sahiptir. Bu makalede, `Import-AzBlueprintWithArtifact` [az. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modülündeki `Export-AzBlueprintWithArtifact` ve komutlarının nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, Azure Planları'nın ılımlı çalışma bilgisi varsayar. Henüz yapmadıysanız, aşağıdaki makaleler üzerinde çalışın:
+Bu makalede, Azure şemaları hakkında orta düzeyde çalışma bilgisi varsayılmaktadır. Henüz yapmadıysanız, aşağıdaki makalelerle çalışın:
 
-- [Portalda bir plan oluşturma](../create-blueprint-portal.md)
-- Dağıtım [aşamaları](../concepts/deployment-stages.md) ve [plan yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin
-- PowerShell ile plan tanımları ve atamaları [oluşturma](../create-blueprint-powershell.md) ve [yönetme](./manage-assignments-ps.md)
+- [Portalda bir şema oluşturma](../create-blueprint-portal.md)
+- [Dağıtım aşamaları](../concepts/deployment-stages.md) ve [şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin
+- PowerShell ile şema tanımlarını ve atamalarını [oluşturma](../create-blueprint-powershell.md) ve [yönetme](./manage-assignments-ps.md)
 
-Henüz yüklenmemişse, PowerShell Galerisi'nden **Az.Blueprint** modüllerini yüklemek ve doğrulamak için [Az.Blueprint modülekle modülündeki](./manage-assignments-ps.md#add-the-azblueprint-module) yönergeleri izleyin.
+Zaten yüklü değilse, PowerShell Galerisi **az** . Blueprint modülünü yüklemek ve doğrulamak için [az. Blueprint modülünü ekleme](./manage-assignments-ps.md#add-the-azblueprint-module) bölümündeki yönergeleri izleyin.
 
-## <a name="folder-structure-of-a-blueprint-definition"></a>Plan tanımının klasör yapısı
+## <a name="folder-structure-of-a-blueprint-definition"></a>Şema tanımının klasör yapısı
 
-Planları dışa aktarma ve alma öncesine bakmadan önce, plan tanımını oluşturan dosyaların nasıl yapılandırıldığına bakalım. Plan tanımı kendi klasöründe depolanmalıdır.
+Şemaları dışarı ve içeri aktarmaya geçmeden önce, şema tanımını oluşturan dosyaların nasıl yapılandırıldığını inceleyelim. Şema tanımının kendi klasöründe depolanması gerekir.
 
 > [!IMPORTANT]
-> Cmdlet'in Ad parametresine değer aktarılamazsa, plan tanımının depolanan klasörünün adı kullanılır. **Name** `Import-AzBlueprintWithArtifact`
+> Cmdlet 'in name parametresine hiçbir değer geçirilmemişse, şema tanımının depolandığı klasörün adı kullanılır. **Name** `Import-AzBlueprintWithArtifact`
 
-Adlandırılması `blueprint.json`gereken plan tanımının yanı sıra, plan tanımının oluşturduğu yapılar dır. Her yapı, '. `artifacts`
-Klasörlerde JSON dosyaları olarak plan tanımınızın yapısı aşağıdaki gibi görünmelidir:
+Adlandırılmış `blueprint.json`olması gereken şema tanımı ile birlikte, şema tanımının meydana gelen yapıtlardır. Her yapıt adlı `artifacts`alt klasörde olmalıdır.
+Birlikte yerleştirin, şema tanımınızın yapısı klasörlerde JSON dosyaları olarak aşağıdaki gibi görünmelidir:
 
 ```text
 .
@@ -56,20 +56,20 @@ Klasörlerde JSON dosyaları olarak plan tanımınızın yapısı aşağıdaki g
 
 ```
 
-## <a name="export-your-blueprint-definition"></a>Plan tanımınızı dışa aktarma
+## <a name="export-your-blueprint-definition"></a>Şema tanımınızı dışarı aktarma
 
-Plan tanımınızı dışa aktarma adımları basittir. Plan tanımının dışa aktarılması, kaynak denetimine paylaşmak, yedeklemek veya yerleştirmek için yararlı olabilir.
+Şema tanımınızı dışa aktarma adımları basittir. Şema tanımını dışarı aktarmak, paylaşım, yedekleme veya kaynak denetimine yerleştirme için yararlı olabilir.
 
-- **Plan** [gerekli]
-  - Plan tanımını belirtir
+- **Blueprint** [gerekli]
+  - Şema tanımını belirtir
   - Başvuru `Get-AzBlueprint` nesnesini almak için kullanın
 - **OutputPath** [gerekli]
-  - Plan tanımı JSON dosyaları kaydetmek için yol belirtir
-  - Çıktı dosyaları, plan tanımının adını içeren bir alt klasörde
+  - Şema tanımı JSON dosyalarının kaydedileceği yolu belirtir
+  - Çıktı dosyaları, şema tanımının adını taşıyan bir alt klasördeyse
 - **Sürüm** (isteğe bağlı)
-  - **Blueprint** başvuru nesnesi birden fazla sürüme başvurular içeriyorsa, sürümü çıktıolarak belirtir.
+  - **Blueprint** başvuru nesnesi birden fazla sürüme başvurular içeriyorsa, çıktının sürümünü belirtir.
 
-1. Aşağıdaki şekilde `{subId}`temsil edilen abonelikten dışa aktarmak için plan tanımına bir referans alın:
+1. Şu şekilde `{subId}`gösterilen abonelikten dışarı aktarmak için şema tanımına bir başvuru alın:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -78,31 +78,31 @@ Plan tanımınızı dışa aktarma adımları basittir. Plan tanımının dışa
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. Belirtilen `Export-AzBlueprintWithArtifact` plan tanımını dışa aktarmak için cmdlet kullanın:
+1. Belirtilen şema tanımını dışarı aktarmak için `Export-AzBlueprintWithArtifact` cmdlet 'ini kullanın:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
    ```
 
-## <a name="import-your-blueprint-definition"></a>Plan tanımınızı alma
+## <a name="import-your-blueprint-definition"></a>Şema tanımınızı içeri aktarma
 
-[Dışa aktarılan](#export-your-blueprint-definition) bir plan tanımına sahip olduktan veya [gerekli klasör yapısında](#folder-structure-of-a-blueprint-definition)el ile oluşturulmuş bir plan tanımına sahip olduktan sonra, bu plan tanımını farklı bir yönetim grubuna veya aboneye aktarabilirsiniz.
+[Dışarı aktarılan bir şema tanımınız](#export-your-blueprint-definition) veya [gerekli klasör yapısında](#folder-structure-of-a-blueprint-definition)el ile oluşturulmuş bir şema Definition olduktan sonra, bu şema tanımını farklı bir yönetim grubuna veya aboneliğine aktarabilirsiniz.
 
-Yerleşik plan tanımları örnekleri için [Azure Blueprint GitHub repo'ya](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)bakın.
+Yerleşik şema tanımlarının örnekleri için bkz. [GitHub deposu Azure Blueprint](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins).
 
 - **Ad** [gerekli]
-  - Yeni plan tanımının adını belirtir
-- **InputPath** [gerekli]
-  - Plan tanımını oluşturmak için yolu belirtir
-  - [Gerekli klasör yapısıyla](#folder-structure-of-a-blueprint-definition) eşleşmeli
+  - Yeni şema tanımının adını belirtir
+- **Inputpath** [gerekli]
+  - Şema tanımının oluşturulacağı yolu belirtir
+  - [Gerekli klasör yapısıyla](#folder-structure-of-a-blueprint-definition) eşleşmesi gerekir
 - **ManagementGroupId** (isteğe bağlı)
-  - Geçerli bağlam varsayılan değilse plan tanımı kaydetmek için yönetim grubu kimliği
-  - **ManagementGroupId** veya **SubscriptionId** belirtilmelidir
-- **SubscriptionId** (isteğe bağlı)
-  - Plan tanımını geçerli bağlam varsayılanına kaydetmek için abonelik kimliği
-  - **ManagementGroupId** veya **SubscriptionId** belirtilmelidir
+  - Geçerli bağlam varsayılanı değilse, şema tanımını kaydetmek için yönetim grubu kimliği
+  - **ManagementGroupId** veya **SubscriptionID** belirtilmelidir
+- **Abonelik kimliği** (isteğe bağlı)
+  - Geçerli bağlam varsayılanı değilse, şema tanımının kaydedileceği abonelik kimliği
+  - **ManagementGroupId** veya **SubscriptionID** belirtilmelidir
 
-1. Belirtilen `Import-AzBlueprintWithArtifact` plan tanımını almak için cmdlet kullanın:
+1. Belirtilen şema tanımını içeri aktarmak için `Import-AzBlueprintWithArtifact` cmdlet 'ini kullanın:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -110,14 +110,14 @@ Yerleşik plan tanımları örnekleri için [Azure Blueprint GitHub repo'ya](htt
    Import-AzBlueprintWithArtifact -Name 'MyBlueprint' -ManagementGroupId 'DevMG' -InputPath 'C:\Blueprints\MyBlueprint'
    ```
 
-Plan tanımı alındıktan sonra [PowerShell ile atayın.](./manage-assignments-ps.md#create-blueprint-assignments)
+Şema tanımı içeri aktarıldıktan sonra, [PowerShell ile atayın](./manage-assignments-ps.md#create-blueprint-assignments).
 
-Gelişmiş plan tanımları oluşturma hakkında bilgi için aşağıdaki makalelere bakın:
+Gelişmiş şema tanımları oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Statik ve dinamik parametreleri](../concepts/parameters.md)kullanın.
-- [Plan sıralama sırasını](../concepts/sequencing-order.md)özelleştirin.
-- Blueprint kaynak [kilitleme](../concepts/resource-locking.md)ile dağıtımları koruyun.
-- [Planları Kod Olarak Yönetin.](https://github.com/Azure/azure-blueprints/blob/master/README.md)
+- [Şema sıralama düzenini](../concepts/sequencing-order.md)özelleştirin.
+- [Şema kaynak kilitleme](../concepts/resource-locking.md)ile dağıtımları koruyun.
+- [Şemaları kod olarak yönetin](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Windows VM'ler için resim galerisiyle Azure Image Builder'ı kullanma (önizleme)
-description: Azure Image Builder ve Azure PowerShell'i kullanarak Azure Paylaşılan Galeri resim sürümleri oluşturun.
+title: Windows VM 'Leri için bir görüntü Galerisi ile Azure Image Builder kullanma (Önizleme)
+description: Azure Image Builder ve Azure PowerShell kullanarak Azure Paylaşılan Galeri görüntüsü sürümlerini oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 01/14/2020
@@ -8,30 +8,30 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.openlocfilehash: 48eff11facf0f1432534d61f003f61e6755caf33
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869513"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: Windows görüntüsü oluşturun ve Paylaşılan Resim Galerisi'ne dağıtın 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Windows görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
-Bu makale, [Paylaşılan Resim Galerisi'nde](shared-image-galleries.md)bir resim sürümü oluşturmak ve ardından resmi genel olarak dağıtmak için Azure Image Builder ve Azure PowerShell'i nasıl kullanabileceğinizi göstermek içindir. Bunu [Azure CLI'yi](../linux/image-builder-gallery.md)kullanarak da yapabilirsiniz.
+Bu makale, Azure görüntü Oluşturucu 'Yu nasıl kullanabileceğinizi ve Azure PowerShell [paylaşılan bir görüntü galerisinde](shared-image-galleries.md)görüntü sürümü oluşturmayı ve sonra görüntüyü küresel olarak dağıtmayı gösterir. Bunu [Azure CLI](../linux/image-builder-gallery.md)kullanarak da yapabilirsiniz.
 
-Görüntüyü yapılandırmak için bir .json şablonu kullanıyor olacağız. Kullandığımız .json dosyası burada: [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Şablonun yerel bir sürümünü indirip düzenleyeceğiz, bu nedenle bu makale yerel PowerShell oturumu kullanılarak yazılmıştır.
+Görüntüyü yapılandırmak için bir. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şu şekildedir: [Armtemplatewinsig. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Şablonun yerel bir sürümünü indirip düzenlemenizi sağlayacak ve bu makalede yerel PowerShell oturumu kullanılarak yazılmıştır.
 
-Görüntüyü Paylaşılan Resim Galerisi'ne dağıtmak için şablon, `distribute` şablonun bölümü için değer olarak [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) kullanır.
+Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, şablon `distribute` bölümünün değeri olarak [Parçalama](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) .
 
-Azure Image Builder görüntüyü genelleştirmek için sysprep'i otomatik olarak çalıştırıyor, bu genel bir sysprep komutudur ve gerekirse [geçersiz kılınabilir.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) 
+Azure görüntü Oluşturucu görüntüyü genelleştirmek için otomatik olarak Sysprep çalıştırır, bu, gerekirse [geçersiz kılabileceğiniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) genel bir Sysprep komutu. 
 
-Özelleştirmeleri kaç kez katmana aldığınıza dikkat edin. Sysprep komutunu tek bir Windows görüntüsünde 8 defaya kadar çalıştırabilirsiniz. Sysprep'i 8 kez çalıştırdıktan sonra Windows resminizi yeniden oluşturmanız gerekir. Daha fazla bilgi için, [Sysprep'i kaç kez çalıştırabileceğinize ilişkin Sınırlar'a](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)bakın. 
+Özelleştirmelerin kaç kez özelleştirmeler olduğunu unutmayın. Sysprep komutunu tek bir Windows görüntüsünde en fazla 8 kez çalıştırabilirsiniz. Sysprep 8 kez çalıştırıldıktan sonra, Windows görüntünüzü yeniden oluşturmanız gerekir. Daha fazla bilgi için bkz. [Sysprep 'i kaç kez çalıştıracağınızı gösteren sınırlamalar](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep). 
 
 > [!IMPORTANT]
-> Azure Image Builder şu anda genel önizlemede.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-features"></a>Özellikleri kaydedin
-Önizleme sırasında Azure Image Builder'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
+## <a name="register-the-features"></a>Özellikleri kaydetme
+Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
 
 ```powershell
 Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
@@ -43,9 +43,9 @@ Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderN
 Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
 ```
 
-Bir `RegistrationState` sonraki `Registered` adıma geçmeden önce kadar bekleyin.
+`RegistrationState` Sonraki adıma geçmeden `Registered` önce bekleyin.
 
-Sağlayıcı kayıtlarınızı kontrol edin. Her biri `Registered`döner emin olun.
+Sağlayıcı kayıtlarınızı denetleyin. Her birinin döndürüldüğünden `Registered`emin olun.
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages | Format-table -Property ResourceTypes,RegistrationState
@@ -54,7 +54,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Compute | Format-table -Prop
 Get-AzResourceProvider -ProviderNamespace Microsoft.KeyVault | Format-table -Property ResourceTypes,RegistrationState
 ```
 
-Geri dönmezlerse, `Registered`sağlayıcıları kaydetmek için aşağıdakileri kullanın:
+Döndürmezse `Registered`, sağlayıcıları kaydetmek için aşağıdakileri kullanın:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.VirtualMachineImages
@@ -65,7 +65,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 ## <a name="create-variables"></a>Değişken oluşturma
 
-Bazı bilgileri tekrar tekrar kullanarak bu bilgileri depolamak için bazı değişkenler oluşturacağız. Değişkenlerin değerlerini, örneğin `username` ve `vmpassword`kendi bilgilerinizle değiştirin.
+Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız. `username` Ve `vmpassword`gibi değişkenlerin değerlerini kendi bilgileriniz ile değiştirin.
 
 ```powershell
 # Get existing context
@@ -95,7 +95,7 @@ $runOutputName="winclientR01"
 
 ## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
-Bir kaynak grubu oluşturun ve Azure Image Builder'a bu kaynak grubunda kaynak oluşturma izni verin.
+Kaynak grubu oluşturun ve bu kaynak grubunda kaynak oluşturmak için Azure Image Builder 'a izin verin.
 
 ```powershell
 New-AzResourceGroup `
@@ -109,11 +109,11 @@ New-AzRoleAssignment `
 
 
 
-## <a name="create-the-shared-image-gallery"></a>Paylaşılan Resim Galerisini Oluşturma
+## <a name="create-the-shared-image-gallery"></a>Paylaşılan görüntü galerisini oluşturma
 
-Paylaşılan bir resim galerisiyle Image Builder'ı kullanmak için varolan bir resim galerisine ve resim tanımına sahip olmanız gerekir. Image Builder sizin için resim galerisi ve resim tanımı oluşturmaz.
+Görüntü Oluşturucuyu paylaşılan bir görüntü Galerisi ile birlikte kullanmak için, var olan bir görüntü Galerisi ve görüntü tanımınız olması gerekir. Görüntü Oluşturucu, sizin için görüntü Galerisi ve görüntü tanımı oluşturmaz.
 
-Zaten kullanmak için bir galeri ve resim tanımı yoksa, bunları oluşturarak başlayın. İlk olarak, bir resim galerisi oluşturun.
+Kullanmak üzere bir galeri ve görüntü tanımınız yoksa, bunları oluşturarak başlayın. İlk olarak, bir görüntü galerisi oluşturun.
 
 ```powershell
 # Image gallery name
@@ -146,9 +146,9 @@ New-AzGalleryImageDefinition `
 
 
 
-## <a name="download-and-configure-the-template"></a>Şablonu indirin ve yapılandırın
+## <a name="download-and-configure-the-template"></a>Şablonu indirme ve yapılandırma
 
-.json şablonunu indirin ve değişkenlerinizle yapılandırın.
+. JSON şablonunu indirin ve değişkenleriniz ile yapılandırın.
 
 ```powershell
 
@@ -177,9 +177,9 @@ Invoke-WebRequest `
 ```
 
 
-## <a name="create-the-image-version"></a>Resim sürümünü oluşturma
+## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
 
-Şablonunuz hizmete gönderilmelidir, bu komut dosyaları gibi bağımlı yapıları karşıdan yükleyecek ve bunları *IT_* önceden belirlenmiş evreleme Kaynak Grubunda depolayacak.
+Şablonunuz hizmete gönderilmesi gerekir, bu komut dosyaları gibi bağımlı yapıtları indirir ve bunları hazırlama kaynak grubunda depolar, *IT_* ön ekine sahip olur.
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -190,7 +190,7 @@ New-AzResourceGroupDeployment `
    -svclocation $location
 ```
 
-Görüntüyü oluşturmak için şablona 'Çalıştır' diye çağırmanız gerekir.
+Şablonu oluşturmak için şablonda ' Run ' komutunu çağırmanız gerekir.
 
 ```powershell
 Invoke-AzResourceAction `
@@ -201,16 +201,16 @@ Invoke-AzResourceAction `
    -Action Run
 ```
 
-Görüntüyü oluşturma ve her iki bölgeye çoğaltmak biraz zaman alabilir. VM oluşturmaya geçmeden önce bu bölümün bitmesini bekleyin.
+Görüntünün oluşturulması ve her iki bölgeye çoğaltılmasının biraz zaman alabilir. VM oluşturma işlemine geçmeden önce Bu bölüm bitene kadar bekleyin.
 
-Görüntü oluşturma durumunu otomatikleştirmek için seçenekler hakkında bilgi için GitHub'daki bu şablon için [Readme'a](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) bakın.
+Görüntü oluşturma durumunun otomatikleştirilmesine yönelik seçenekler hakkında bilgi için GitHub 'da bu şablonun [Benioku dosyasına](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/readme.md#get-status-of-the-image-build-and-query) bakın.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Azure Image Builder tarafından oluşturulan resim sürümünden bir VM oluşturun.
+Azure Image Builder tarafından oluşturulan görüntü sürümünden bir VM oluşturun.
 
-Oluşturduğunuz resim sürümünü alın.
+Oluşturduğunuz görüntü sürümünü alın.
 ```powershell
 $imageVersion = Get-AzGalleryImageVersion `
    -ResourceGroupName $imageResourceGroup `
@@ -218,7 +218,7 @@ $imageVersion = Get-AzGalleryImageVersion `
    -GalleryImageDefinitionName $imageDefName
 ```
 
-Görüntünün çoğaltıldığı ikinci bölgede VM'yi oluşturun.
+Görüntünün çoğaltılan ikinci bölgede sanal makineyi oluşturun.
 
 ```powershell
 $vmResourceGroup = "myResourceGroup"
@@ -255,30 +255,30 @@ New-AzVM -ResourceGroupName $vmResourceGroup -Location $replRegion2 -VM $vmConfi
 ```
 
 ## <a name="verify-the-customization"></a>Özelleştirmeyi doğrulama
-VM'yi oluştururken belirlediğiniz kullanıcı adı ve parolayı kullanarak VM'ye Uzak Masaüstü bağlantısı oluşturun. VM'nin içinde cmd istemi ni açın ve yazın:
+VM 'yi oluştururken ayarladığınız Kullanıcı adını ve parolayı kullanarak VM 'ye bir Uzak Masaüstü bağlantısı oluşturun. VM 'nin içinde bir komut istemi açın ve şunu yazın:
 
 ```console
 dir c:\
 ```
 
-Görüntü özelleştirme sırasında oluşturulan `buildActions` bir dizin görmeniz gerekir.
+Görüntü özelleştirmesi sırasında oluşturulmuş adlı `buildActions` bir dizin görmeniz gerekir.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Şimdi aynı görüntünün yeni bir sürümünü oluşturmak için resim sürümünü yeniden özelleştirmeyi denemek istiyorsanız, **bu adımı atlayın** ve [başka bir resim sürümü oluşturmak için Azure Image Builder'ı kullanın' a](image-builder-gallery-update-image-version.md)gidin.
+Artık aynı görüntünün yeni bir sürümünü oluşturmak için görüntü sürümünü yeniden özelleştirmeyi denemek istiyorsanız, **Bu adımı atlayın** ve [başka bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı kullanma](image-builder-gallery-update-image-version.md)sayfasına gidin.
 
 
-Bu, oluşturulan tüm diğer kaynak dosyalarıyla birlikte oluşturulan görüntüyü siler. Kaynakları silmeden önce bu dağıtımı bitirdiğinden emin olun.
+Bu işlem, oluşturulan görüntüyü ve diğer tüm kaynak dosyalarını siler. Kaynakları silmeden önce bu dağıtımla bitdiğinizden emin olun.
 
-Önce kaynak grubu şablonu silin, aksi takdirde AIB tarafından kullanılan evreleme kaynak grubu *(IT_)* temizlenmez.
+İlk olarak kaynak grubu şablonunu silin, aksi takdirde AıB tarafından kullanılan hazırlama kaynak grubu (*IT_*) temizlenmeyecektir.
 
-Resim şablonunun ResourceID'sini alın. 
+Görüntü şablonunun RESOURCEID 'sini alın. 
 
 ```powerShell
 $resTemplateId = Get-AzResource -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2019-05-01-preview"
 ```
 
-Resim şablonu silin.
+Görüntü şablonunu silin.
 
 ```powerShell
 Remove-AzResource -ResourceId $resTemplateId.ResourceId -Force
@@ -292,4 +292,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Oluşturduğunuz resim sürümünü nasıl güncelleştirdiğinizi öğrenmek [için başka bir resim sürümü oluşturmak için Azure Image Builder'ı kullanın'a](image-builder-gallery-update-image-version.md)bakın.
+Oluşturduğunuz görüntü sürümünü güncelleştirme hakkında bilgi edinmek için bkz. [Azure Image Builder 'ı kullanarak başka bir görüntü sürümü oluşturma](image-builder-gallery-update-image-version.md).

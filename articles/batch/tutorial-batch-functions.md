@@ -7,17 +7,17 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
 ms.openlocfilehash: 01c3ab167239affa4d7ae94f5649d60072c3c270
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82117174"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Öğretici: Azure Işlevleri 'ni kullanarak bir Batch işi tetikleyin
 
 Bu öğreticide, Azure Işlevleri 'ni kullanarak bir toplu işi nasıl tetikleyeceğinizi öğreneceksiniz. Azure Storage blob kapsayıcısına eklenen belgelere, Azure Batch aracılığıyla bunlara uygulanan optik karakter tanıma (OCR) ile bir örnek adım adım inceleyeceğiz. OCR işlemesini kolaylaştırmak için, blob kapsayıcısına her dosya eklendiğinde bir Batch OCR işi çalıştıran bir Azure işlevi yapılandıracağız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Bir Azure Batch hesabı ve bağlı bir Azure Depolama hesabı. Hesap oluşturma ve bağlama hakkında daha fazla bilgi için bkz. [Batch hesabı oluşturma](quick-create-portal.md#create-a-batch-account) .
@@ -41,13 +41,13 @@ Bu bölümde, OCR görevlerini çalıştıracak toplu iş havuzunu ve toplu işi
     1. İşletim sistemi olarak **Ubuntu 18,04-LTS** ' yi seçin.
     1. Sanal `Standard_f2s_v2` makine boyutu olarak seçin.
     1. Başlangıç görevini etkinleştirin ve komutunu `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`ekleyin. Kullanıcı kimliğini **görev varsayılan kullanıcısı (yönetici)** olarak ayarladığınızdan emin olun. Bu, ile `sudo`komutları dahil etmek için başlangıç görevlerine izin verir.
-    1. **Tamam ' ı**seçin.
+    1. **Tamam**’ı seçin.
 ### <a name="create-a-job"></a>Bir iş oluşturma
 
 1. Sol taraftaki çubukta **işler** ' i seçerek havuzda iş oluşturun, sonra arama formunun üzerindeki **Ekle** düğmesine basın. 
     1. Bir KIMLIK ve görünen ad seçin. Bu örnek `ocr-job` için kullanacağız.
     1. Havuzu `ocr-pool`veya havuzunuz için seçtiğiniz herhangi bir adı ayarlayın.
-    1. **Tamam ' ı**seçin.
+    1. **Tamam**’ı seçin.
 
 
 ## <a name="create-blob-containers"></a>Blob kapsayıcıları oluşturma

@@ -1,6 +1,6 @@
 ---
-title: Sorun Giderme Azure IoT Hub hatası 403004 DeviceMaximumQueueDepthExceeded
-description: Hata 403004 DeviceMaximumQueueDepthExceeded nasıl düzeltilir anlayın
+title: Azure IoT Hub sorun giderme hatası 403004 Devicemaximumqueuedepthaşıldı
+description: 403004 Devicemaximumqueuedepthaşıldı hatasını nasıl düzelteceğinizi anlayın
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -12,30 +12,30 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5cc8bae0f0245f5c4b45ca0cd446582b04788c21
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758759"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
-Bu **makalede, 403004 DeviceMaximumQueueDepthExceeded** hatalarının nedenleri ve çözümleri açıklanmaktadır.
+Bu makalede, **403004 Devicemaximumqueuedepthaşıldı** hatalarının nedenleri ve çözümleri açıklanmaktadır.
 
 ## <a name="symptoms"></a>Belirtiler
 
-Buluttan cihaza ileti göndermeye çalışırken, istek **403004** veya **DeviceMaximumQueueDepthExceeded**hatasıyla başarısız olur.
+Buluttan cihaza ileti gönderilmeye çalışırken, istek **403004** veya **Devicemaximumqueuedepthaşıldı**hatasıyla başarısız olur.
 
 ## <a name="cause"></a>Nedeni
 
-Bunun altında yatan neden, aygıt için sıraya giren ileti sayısının [sıra sınırını (50)](./iot-hub-devguide-quotas-throttling.md#other-limits)aşmasıdır.
+Temel neden, cihaz için sıraya alınan ileti sayısının [sıra sınırını (50)](./iot-hub-devguide-quotas-throttling.md#other-limits)aşmaktadır.
 
-Bu sınıra girmenizin en olası nedeni, iletiyi almak için HTTPS kullanıyor olmasıdır `ReceiveAsync`ve bu da ioT Hub'ın isteği azaltmasına neden olan sürekli yoklamalara yol açar.
+Bu sınırın üzerinde çalışmakta olduğunuz en olası nedeni, iletiyi almak için HTTPS 'yi kullanırken, sürekli yoklamaya `ReceiveAsync`yol açar ve bu da isteği azaltmayı IoT Hub.
 
 ## <a name="solution"></a>Çözüm
 
-HTTPS ile buluttan aygıta iletiler için desteklenen desen, iletileri seyrek olarak kontrol eden aralıklı olarak bağlanan aygıtlardır (her 25 dakikadan az). Sıra sınırına girme olasılığını azaltmak için, buluttan cihaza iletiler için AMQP veya MQTT'ye geçin.
+HTTPS ile buluttan cihaza iletiler için desteklenen model, iletileri seyrek olarak denetleyen (25 dakikada bir daha az) zaman zaman bağlı cihazlardır. Kuyruk sınırına çalışma olasılığını azaltmak için, buluttan cihaza iletiler için AMQP veya MQTT ' ye geçin.
 
-Alternatif olarak, sıraya alınan iletileri hızla tamamlamak, reddetmek veya terk etmek, yaşama süresini kısaltmak veya daha az ileti göndermeyi düşünmek için aygıt yan mantığını geliştirin. Bkz. [C2D iletisi yaşam süresi](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live).
+Alternatif olarak, sıraya alınan iletileri hızla tamamlamayı, reddetmesini veya iptal etmeyi, canlı kalma süresini kısaltmaya veya daha az ileti göndermeyi deneyin. Bkz. [C2D iletisi yaşam süresi](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live).
 
-Son olarak, sınıra ulaşılmadan önce bekleyen iletileri düzenli aralıklarla temizlemek için [Temizleme Sırası API'sını](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) kullanmayı düşünün.
+Son olarak, sınıra ulaşılmadan önce bekleyen iletileri düzenli aralıklarla temizlemek için [Temizleme kuyruğu API](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) 'sini kullanmayı düşünün.

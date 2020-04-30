@@ -1,6 +1,6 @@
 ---
-title: Azure Image Builder ile Windows VM oluşturma (önizleme)
-description: Azure Image Builder ile bir Windows VM oluşturun.
+title: Azure Image Builder ile Windows VM oluşturma (Önizleme)
+description: Azure görüntü Oluşturucu ile bir Windows sanal makinesi oluşturun.
 author: cynthn
 ms.author: cynthn
 ms.date: 07/31/2019
@@ -8,33 +8,33 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869503"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Windows VM oluşturma
 
-Bu makale, Azure VM Image Builder'ı kullanarak nasıl özelleştirilmiş bir Windows görüntüsü oluşturabileceğinizi göstermek içindir. Bu makaledeki örnek, görüntüyü özelleştirmek için [özelleştiriciler](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) kullanır:
-- PowerShell (ScriptUri) - indirin ve bir [PowerShell komut dosyası](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)çalıştırın.
-- Windows Yeniden Başlat - VM'yi yeniden başlatır.
-- PowerShell (satır içi) - belirli bir komut çalıştırın. Bu örnekte, VM'de bir dizin `mkdir c:\\buildActions`oluşturur.
-- Dosya - GitHub'daki bir dosyayı VM'ye kopyalayın. Bu örnek, [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) VM'de `c:\buildArtifacts\index.html` index.md kopyalar.
+Bu makale, Azure VM görüntü Oluşturucusu 'nu kullanarak özelleştirilmiş bir Windows görüntüsünü nasıl oluşturabileceğiniz hakkında sizi gösterir. Bu makaledeki örnek, görüntüyü özelleştirmek için [özelleştiriciler](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) kullanır:
+- PowerShell (ScriptUri)- [PowerShell betiğini](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)indirip çalıştırın.
+- Windows yeniden başlatma-VM 'yi yeniden başlatır.
+- PowerShell (satır içi)-belirli bir komut çalıştırın. Bu örnekte, kullanarak `mkdir c:\\buildActions`VM üzerinde bir dizin oluşturur.
+- Dosya-GitHub 'dan sanal makineye dosya kopyalama. Bu örnek, [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) `c:\buildArtifacts\index.html` öğesini sanal makineye kopyalar.
 
-Ayrıca bir `buildTimeoutInMinutes`. Varsayılan değer 240 dakikadır ve daha uzun çalışan yapılara izin vermek için yapı süresini artırabilirsiniz.
+Ayrıca, bir `buildTimeoutInMinutes`de belirtebilirsiniz. Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
 
-Görüntüyü yapılandırmak için bir örnek .json şablonu kullanıyor olacağız. Kullandığımız .json dosyası burada: [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [Helloımagetemplatewin. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
-> Azure Image Builder şu anda genel önizlemede.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-## <a name="register-the-features"></a>Özellikleri kaydedin
+## <a name="register-the-features"></a>Özellikleri kaydetme
 
-Önizleme sırasında Azure Image Builder'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
+Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -46,7 +46,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-Kaydınızı kontrol edin.
+Kaydınızı denetleyin.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -54,7 +54,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Kayıtlı demiyorlarsa, aşağıdakileri çalıştırın:
+Kayıtlı değilse, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -62,9 +62,9 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="set-variables"></a>Değişkenleri ayarlama
+## <a name="set-variables"></a>Değişkenleri ayarla
 
-Bazı bilgileri tekrar tekrar kullanarak bu bilgileri depolamak için bazı değişkenler oluşturacağız.
+Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız.
 
 
 ```azurecli-interactive
@@ -80,24 +80,24 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Abonelik kimliğiniz için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`elde edebilirsiniz.
+Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`edinebilirsiniz.
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-Bu kaynak grubu, görüntü yapılandırma şablonu artmasını ve görüntüyü depolamak için kullanılır.
+Bu kaynak grubu, görüntü yapılandırma şablonu yapıtı ve görüntüsünü depolamak için kullanılır.
 
 
 ```azurecli-interactive
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarlama
+## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarla
 
-Kaynak grubundaki görüntüyü oluşturmak için Görüntü Oluşturucuya 'katkıda bulunan' izni verin. Bu olmadan, görüntü oluşturma başarısız olur. 
+Görüntü Oluşturucu ' katkıda bulunan ' iznini kaynak grubunda oluşturmak için izin verin. Bu olmadan, görüntü derlemesi başarısız olur. 
 
-Değer, `--assignee` Image Builder hizmetinin uygulama kayıt kimliğidir. 
+`--assignee` Değer, görüntü Oluşturucu hizmeti için uygulama kayıt kimliğidir. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -107,9 +107,9 @@ az role assignment create \
 ```
 
 
-## <a name="download-the-image-configuration-template-example"></a>Resim yapılandırma şablonu örneğini indirin
+## <a name="download-the-image-configuration-template-example"></a>Görüntü yapılandırma şablonu örneğini indirin
 
-Denemeniz için parametreli bir görüntü yapılandırma şablonu oluşturuldu. .json örneğini indirin ve daha önce ayarladığınız değişkenlerle yapılandırın.
+Denemeniz için parametreli bir görüntü yapılandırma şablonu oluşturuldu. Örnek. json dosyasını indirin ve daha önce ayarladığınız değişkenlerle yapılandırın.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
@@ -122,19 +122,19 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
 
 ```
 
-Bu örneği, terminalde bir metin düzenleyicisi kullanarak `vi`değiştirebilirsiniz.
+Bu örneği terminalde, gibi `vi`bir metin düzenleyicisi kullanarak değiştirebilirsiniz.
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> Kaynak görüntü için, her zaman bir sürüm `latest` [belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir, kullanamazsınız.
-> Resmin dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, izinlerin kaynak grubunda [ayarlanmasını](#set-permissions-on-the-resource-group) sağlamalısınız.
+> Kaynak görüntüde her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir `latest`.
+> Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, izinleri kaynak grubunda [ayarlamanız](#set-permissions-on-the-resource-group) gerekir.
  
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Görüntü yapılandırmasını VM Image Builder hizmetine gönderme
+Görüntü yapılandırmasını VM görüntü Oluşturucu hizmetine gönderme
 
 ```azurecli-interactive
 az resource create \
@@ -145,16 +145,16 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Tamamlandığında, bu konsola bir başarı iletisi geri `Image Builder Configuration Template` döndürür ve bir . `$imageResourceGroup` 'Gizli türleri göster'i etkinleştirirseniz, bu kaynağı Azure portalındaki kaynak grubunda görebilirsiniz.
+Bu işlem tamamlandığında, bir başarı iletisini konsola geri döndürür ve içinde bir `Image Builder Configuration Template` oluşturur. `$imageResourceGroup` ' Gizli türleri göster ' i etkinleştirirseniz, bu kaynağı Azure portal kaynak grubunda görebilirsiniz.
 
-Arka planda, Image Builder aboneliğinizde bir hazırlama kaynak grubu da oluşturur. Bu kaynak grubu görüntü oluşturmak için kullanılır. Bu biçimde olacaktır:`IT_<DestinationResourceGroup>_<TemplateName>`
+Arka planda, görüntü Oluşturucu aynı zamanda aboneliğinizde bir hazırlama kaynak grubu oluşturur. Bu kaynak grubu, görüntü derlemesi için kullanılır. Bu biçimde olacaktır:`IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
-> Evreleme kaynak grubunu doğrudan silmemelisiniz. Önce resim şablonu artifakı silin, bu evreleme kaynak grubunun silinmesine neden olur.
+> Hazırlama kaynak grubunu doğrudan silmemelidir. Önce görüntü şablonu yapıtını silin, bu, hazırlama kaynak grubunun silinmesine neden olur.
 
-Hizmet, görüntü yapılandırma şablonu gönderimi sırasında bir hata bildiriyorsa:
+Hizmet, görüntü yapılandırma şablonu gönderimi sırasında bir hata bildirirse:
 -  Bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) adımlarını gözden geçirin. 
-- Gönderiyi yeniden denemeden önce aşağıdaki parçacığı kullanarak şablonu silmeniz gerekir.
+- Gönderimi yeniden denemeden önce aşağıdaki kod parçacığını kullanarak şablonu silmeniz gerekir.
 
 ```azurecli-interactive
 az resource delete \
@@ -163,8 +163,8 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-## <a name="start-the-image-build"></a>Görüntü oluşturmayı başlatın
-Az kaynak çağırma [eylemi](/cli/azure/resource#az-resource-invoke-action)kullanarak görüntü oluşturma işlemini başlatın.
+## <a name="start-the-image-build"></a>Görüntü derlemesini Başlat
+[Az Resource Invoke-Action](/cli/azure/resource#az-resource-invoke-action)komutunu kullanarak görüntü oluşturma işlemini başlatın.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -174,14 +174,14 @@ az resource invoke-action \
      --action Run 
 ```
 
-Yapı tamamlanana kadar bekleyin. Bu işlem yaklaşık 15 dakika sürebilir.
+Yapı tamamlanana kadar bekleyin. Bu, yaklaşık 15 dakika sürebilir.
 
-Herhangi bir hatayla karşılaşırsanız, lütfen bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) adımlarını gözden geçirin.
+Herhangi bir hatayla karşılaşırsanız lütfen bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) adımlarını gözden geçirin.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Oluşturduğunuz görüntüyü kullanarak VM'yi oluşturun. Parola `aibuser` * \<>* VM'deki parolanızla değiştirin.
+Oluşturduğunuz görüntüyü kullanarak VM 'yi oluşturun. * \<Parola>* , `aibuser` VM üzerindeki için kendi parolanızla değiştirin.
 
 ```azurecli-interactive
 az vm create \
@@ -195,21 +195,21 @@ az vm create \
 
 ## <a name="verify-the-customization"></a>Özelleştirmeyi doğrulama
 
-VM'yi oluştururken belirlediğiniz kullanıcı adı ve parolayı kullanarak VM'ye Uzak Masaüstü bağlantısı oluşturun. VM'nin içinde cmd istemi ni açın ve yazın:
+VM 'yi oluştururken ayarladığınız Kullanıcı adını ve parolayı kullanarak VM 'ye bir Uzak Masaüstü bağlantısı oluşturun. VM 'nin içinde bir komut istemi açın ve şunu yazın:
 
 ```console
 dir c:\
 ```
 
-Görüntü özelleştirme sırasında oluşturulan bu iki dizingörmeniz gerekir:
-- buildActions
-- buildArtifacts
+Görüntü özelleştirmesi sırasında oluşturulan bu iki dizini görmeniz gerekir:
+- Builkactions
+- Buildartifdavranır
 
 ## <a name="clean-up"></a>Temizleme
 
-İşi bittiğinde, kaynakları silin.
+İşiniz bittiğinde, kaynakları silin.
 
-### <a name="delete-the-image-builder-template"></a>Resim oluşturucu şablonu silme
+### <a name="delete-the-image-builder-template"></a>Görüntü Oluşturucu şablonunu silme
 
 ```azurecli-interactive
 az resource delete \
@@ -218,7 +218,7 @@ az resource delete \
     -n helloImageTemplateWin01
 ```
 
-### <a name="delete-the-image-resource-group"></a>Resim kaynak grubunu silme
+### <a name="delete-the-image-resource-group"></a>Görüntü kaynak grubunu sil
 
 ```azurecli-interactive
 az group delete -n $imageResourceGroup
@@ -227,4 +227,4 @@ az group delete -n $imageResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan .json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için [Bkz. Resim oluşturucu şablonu başvurusu.](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Bu makalede kullanılan. json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için bkz. [Görüntü Oluşturucu şablonu başvurusu](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

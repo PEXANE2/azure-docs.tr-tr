@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82117276"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
@@ -37,7 +37,7 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI kullanma](#azure-cli)
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
