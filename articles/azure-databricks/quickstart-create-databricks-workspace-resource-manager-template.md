@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlatma - Azure Kaynak yöneticisiyle Azure Databricks çalışma alanı oluşturma
-description: Bu hızlı başlangıç, Azure Veri Tuğlaları çalışma alanı oluşturmak, ardından bir Apache Spark kümesi oluşturmak ve bir Spark işi çalıştırmak için Azure Kaynak Yöneticisi şablonuna nasıl kullanılacağını gösterir.
+title: Hızlı başlangıç-Azure Resource Manager ile Azure Databricks çalışma alanı oluşturma
+description: Bu hızlı başlangıçta, bir Azure Databricks çalışma alanı oluşturmak, ardından bir Apache Spark kümesi oluşturmak ve bir Spark işi çalıştırmak için Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/23/2020
 ms.openlocfilehash: d3c3c55a4ce3ee25db01128dcf50bb8763c5829b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604639"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Hızlı Başlangıç: Azure Resource Manager şablonunu kullanarak Azure Databricks’te Spark işini çalıştırma
 
-Bu hızlı başlatmada, Apache Spark kümesine sahip bir Azure Veri Tuğlaları çalışma alanı oluşturmak için bir Azure Kaynak Yöneticisi şablonu kullanırsınız. Kümede bir iş çalıştırır ve demografiye dayalı ücretsiz/ücretli kullanımdan gerçek zamanlı raporlar oluşturmak için özel grafikler kullanırsınız.
+Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalışma alanı oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. Küme üzerinde bir işi çalıştırır ve demografik tabanlı ücretsiz/ücretli kullanımdan gerçek zamanlı raporlar oluşturmak için özel grafikleri kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
 [Azure Portal](https://portal.azure.com) oturum açın.
 
 > [!Note]
-> Bu öğretici **Azure Ücretsiz Deneme Aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz bir hesabınız varsa, profilinize gidin ve aboneliğinizi istediğiniz **kadar öde**olarak değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama sınırını kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki VCPU'lar için kota artışı [isteyin.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına ücretsiz Premium Azure Databricks DBUs'a 14 gün süreyle erişim sağlamak için **Deneme (Premium - 14 Gün Ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
@@ -43,7 +43,7 @@ Bu bölümde, Azure Resource Manager şablonunu kullanarak bir Azure Databricks 
 
 2. Azure Databricks çalışma alanınızı oluşturmak için gerekli değerleri sağlayın
 
-   ![Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Tuğlaları çalışma alanı oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Tuğlaları çalışma alanı oluşturma")
+   ![Azure Resource Manager şablonu kullanarak Azure Databricks çalışma alanı oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Azure Resource Manager şablonu kullanarak Azure Databricks çalışma alanı oluşturma")
 
    Aşağıdaki değerleri sağlayın:
 
@@ -59,9 +59,9 @@ Bu bölümde, Azure Resource Manager şablonunu kullanarak bir Azure Databricks 
 
 4. Çalışma alanının oluşturulması birkaç dakika sürer. Çalışma alanı oluşturma sırasında portal sağ tarafta **Azure Databricks için dağıtım gönderiliyor** kutucuğunu gösterir. Kutucuğu görmek için panonuzu sağa kaydırmanız gerekebilir. Ayrıca, ekranın üst kısmında gösterilen bir ilerleme çubuğu vardır. İlerleme durumu için her iki alanı da izleyebilirsiniz.
 
-   ![Databricks dağıtım döşemesi](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks dağıtım döşemesi")
+   ![Databricks dağıtım kutucuğu](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks dağıtım kutucuğu")
 
-   Çalışma alanı dağıtımı başarısız olduğunda, çalışma alanı yine de başarısız durumda oluşturulur. Başarısız çalışma alanını silin ve dağıtım hatalarını çözen yeni bir çalışma alanı oluşturun. Başarısız çalışma alanını sildiğinizde, yönetilen kaynak grubu ve başarıyla dağıtılan kaynaklar da silinir.
+   Bir çalışma alanı dağıtımı başarısız olduğunda, çalışma alanı hala hatalı durumda oluşturulur. Başarısız çalışma alanını silin ve dağıtım hatalarını çözen yeni bir çalışma alanı oluşturun. Başarısız çalışma alanını sildiğinizde, yönetilen kaynak grubu ve başarıyla dağıtılan tüm kaynaklar da silinir.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks’te Spark kümesi oluşturma
 
@@ -69,17 +69,17 @@ Bu bölümde, Azure Resource Manager şablonunu kullanarak bir Azure Databricks 
 
 2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme**’ye tıklayın.
 
-   ![Azure'da Veri Tuğlaları](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Azure'da Veri Tuğlaları")
+   ![Azure 'da databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-on-azure.png "Azure 'da databricks")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-   ![Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma")
+   ![Azure 'da Databricks Spark kümesi oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
 
    Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
    * Bu makale için **4.0** çalışma zamanıyla bir küme oluşturun.
-   * Dakikalar süren inaktivite onay kutusunun **ardından \_ \_ Sonlandırma'yı seçtiğinizden** emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Süre **etkinlik süresi dolduktan \_ \_ sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
    **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -90,25 +90,25 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 Bu bölüme başlamadan önce aşağıdaki önkoşulları tamamlamanız gerekir:
 
 * [Azure Blob depolama hesabı oluşturma](../storage/common/storage-account-create.md).
-* [GitHub'dan](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)örnek bir JSON dosyası indirin.
+* [GitHub 'dan](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)örnek bir JSON dosyası indirin.
 * Örnek JSON dosyasını, oluşturduğunuz Azure Blob depolama hesabına yükleyin. Dosyaları karşıya yüklemek için [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md)’ni kullanabilirsiniz.
 
 Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob depolama hesabındaki verileri okuyacak şekilde yapılandırmak ve sonra veriler üzerinde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerçekleştirin.
 
 1. Sol bölmedeki **Çalışma Alanı**'na tıklayın. **Çalışma Alanı** açılır listesinden **Oluştur**’a ve sonra **Not Defteri**’ne tıklayın.
 
-   ![Databricks'te not defteri oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Databricks'te not defteri oluşturma")
+   ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
 2. **Not Defteri Oluşturma** iletişim kutusuna bir ad girin, dil olarak **Scala**’yı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-   ![Databricks'te not defteri oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Databricks'te not defteri oluşturma")
+   ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
-   **Oluştur'u**tıklatın.
+   **Oluştur**' a tıklayın.
 
 3. Bu adımda Azure Depolama hesabını Databricks Spark kümesiyle ilişkilendirin. Bu ilişkilendirmeyi gerçekleştirmenin iki yolu vardır. Azure Depolama hesabını Databricks Dosya Sistemine (DBFS) bağlayabilir veya Azure Depolama hesabına doğrudan oluşturduğunuz uygulamadan erişebilirsiniz.
 
    > [!IMPORTANT]
-   >Bu makalede, **DBFS ile depolama monte**etmek için yaklaşım kullanır. Bu yaklaşım, bağlı deponun küme dosya sistemiyle ilişkilendirilmesini sağlar. Bu sayede kümeye erişen tüm uygulamalar ilişkilendirilmiş depolamayı da kullanabilir. Doğrudan erişim yaklaşımı, erişimi yapılandırdığınız uygulamayla kısıtlıdır.
+   >Bu makale, **depolamayı DBFS ile bağlama**yaklaşımını kullanır. Bu yaklaşım, bağlı deponun küme dosya sistemiyle ilişkilendirilmesini sağlar. Bu sayede kümeye erişen tüm uygulamalar ilişkilendirilmiş depolamayı da kullanabilir. Doğrudan erişim yaklaşımı, erişimi yapılandırdığınız uygulamayla kısıtlıdır.
    >
    > Bağlama yaklaşımını kullanmak için bu makalede seçtiğiniz Databricks çalışma zamanı sürüm **4.0** ile bir Spark kümesi oluşturmanız gerekir.
 
@@ -125,7 +125,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
 
           spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-     Depolama hesabı erişim anahtarlarını nasıl alınız hakkında bilgi için [bkz.](../storage/common/storage-account-keys-manage.md)
+     Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md).
 
    > [!NOTE]
    > Azure Data Lake Store’u Azure Databricks üzerine bir Spark kümesi ile de kullanabilirsiniz. Yönergeler için bkz. [Data Lake Store’u Azure Databricks ile Kullanma](/azure/databricks/data/data-sources/azure/azure-datalake-gen2).
@@ -157,15 +157,15 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
 
    ![Örnek JSON verileri](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "Örnek JSON verileri")
 
-   Diğer ayrıntıların yanı sıra, örnek veriler bir radyo kanalının hedef kitlesinin cinsiyetini (sütun adı, **cinsiyet)** ve aboneliklerinin ücretsiz veya ücretli olup olmadığını (sütun adı, **düzey)** yakalar.
+   Diğer ayrıntıların yanı sıra, örnek veriler bir radyo kanalının (sütun adı, **cinsiyet**) hedef kitlesinin cinsiyetini ve aboneliğin ücretsiz mi yoksa ücretli mi (sütun adı, **düzey**) olduğunu yakalar.
 
 7. Bu durumda, bu verilerin her bir cinsiyet, ücretsiz hesaba sahip kullanıcı sayısı ve ücretli hesabı olan abone sayısı için gösterilecek görsel bir açıklamasını oluşturursunuz. Tablo çıktısının alt kısmında bulunan **Çubuk grafik** simgesine ve sonra **Çizim Seçenekleri**’ne tıklayın.
 
-   ![Çubuk grafiği oluşturma](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Çubuk grafiği oluşturma")
+   ![Çubuk grafik oluştur](./media/quickstart-create-databricks-workspace-resource-manager-template/create-plots-databricks-notebook.png "Çubuk grafik oluştur")
 
 8. **Çizimi Özelleştir** menüsünde, değerleri ekran görüntüsünde gösterilen şekilde sürükleyip bırakın.
 
-   ![Çubuk grafiği özelleştir](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Çubuk grafiği özelleştir")
+   ![Çubuk grafiği Özelleştir](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Çubuk grafiği Özelleştir")
 
    * **Anahtarlar**’ı **cinsiyet** olarak ayarlayın.
    * **Seri gruplandırmalar**’ı **düzey** olarak ayarlayın.
@@ -176,7 +176,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
 
 9. Çıktı aşağıdaki ekran görüntüsünde gösterildiği gibi görsel açıklamayı gösterir:
 
-   ![Çubuk grafiği özelleştir](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Çubuk grafiği özelleştir")
+   ![Çubuk grafiği Özelleştir](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Çubuk grafiği Özelleştir")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -184,11 +184,11 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Kümeyi oluştururken **etkinlik dakikalarından \_ \_ sonra Sonlandırma** onay kutusunu seçmeniz koşuluyla, kümeyi el ile sonlandırmazsanız otomatik olarak durur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluşturma sırasında **işlem yapılmadan dakika \_ \_ sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Databricks’te bir Spark kümesi oluşturdunuz ve Azure depolama alanındaki verileri kullanarak bir Spark işi çalıştırdınız. Diğer veri kaynaklarından Azure Databricks’e verileri aktarma hakkında bilgi almak için [Spark veri kaynakları](/azure/databricks/data/data-sources/index) bölümüne de bakabilirsiniz. [Özel VNET adresi ile Azure Databricks çalışma alanı oluşturmak](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address) için Resource Manager şablonuna da bakabilirsiniz. JSON sözdizimi ve özelliklerinin şablonda kullanabilmek için [Microsoft.Databricks/çalışma alanları](/azure/templates/microsoft.databricks/workspaces) şablonu başvurusuna bakın.
+Bu makalede, Azure Databricks’te bir Spark kümesi oluşturdunuz ve Azure depolama alanındaki verileri kullanarak bir Spark işi çalıştırdınız. Diğer veri kaynaklarından Azure Databricks’e verileri aktarma hakkında bilgi almak için [Spark veri kaynakları](/azure/databricks/data/data-sources/index) bölümüne de bakabilirsiniz. [Özel VNET adresi ile Azure Databricks çalışma alanı oluşturmak](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address) için Resource Manager şablonuna da bakabilirsiniz. Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. Databricks/Workspaces](/azure/templates/microsoft.databricks/workspaces) şablon başvurusu.
 
 Azure Databricks kullanılarak bir ETL işleminin (verileri ayıklama, dönüştürme ve yükleme) nasıl gerçekleştirileceğini öğrenmek için sonraki makaleye ilerleyin.
 

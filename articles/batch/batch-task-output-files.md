@@ -4,12 +4,12 @@ description: Batch görevi ve iş çıktısı verilerini Azure depolama 'ya kal�
 ms.topic: article
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fbbf75defcfe976e59d38ae76341e71feee9f53
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116477"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234290"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch hizmeti API 'SI ile Azure depolama 'ya görev verilerini kalıcı hale getirme
 
@@ -26,7 +26,7 @@ Azure Batch, görev çıkışını kalıcı hale getirmek için birden çok yol 
 - Görevin çalıştığı uygulamayı değiştirmeden istemci uygulamanızın içinden görev çıkışını kalıcı hale getirmek için kod yazmak istiyorsunuz.
 - Sanal makine yapılandırmasıyla oluşturulan havuzlardaki toplu Iş görevlerinden ve iş Yöneticisi görevlerinin çıkışını kalıcı hale getirmek istiyorsunuz.
 - Çıktıyı bir Azure depolama kapsayıcısına rastgele bir adla kalıcı hale getirmek istiyorsunuz.
-- [Toplu Iş dosyası kuralları standardına](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)göre adlı bir Azure depolama kapsayıcısına çıktıyı kalıcı hale getirmek istiyorsunuz. 
+- [Toplu Iş dosyası kuralları standardına](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)göre adlı bir Azure depolama kapsayıcısına çıktıyı kalıcı hale getirmek istiyorsunuz. 
 
 Senaryolarınız yukarıda listelenenlerden farklıysa, farklı bir yaklaşım düşünmeniz gerekebilir. Örneğin, Batch hizmeti API 'SI Şu anda, görev çalışırken Azure Storage 'a akış çıktısı desteklememektedir. Çıktıyı akışa almak için, .NET için kullanılabilen batch dosya kuralları kitaplığını kullanmayı düşünün. Diğer diller için kendi çözümünüzü uygulamanız gerekir. Kalıcı görev çıktısına yönelik diğer seçenekler hakkında daha fazla bilgi için bkz. [Azure Storage 'da iş ve görev çıkışını kalıcı hale](batch-task-output.md)getirme.
 
@@ -155,7 +155,7 @@ Her dosya yükleme işleminde toplu Işlem, `fileuploadout.txt` işlem düğüm�
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Batch hizmeti API 'sini Batch dosyası kuralları standardı ile kullanma
 
-Görev çıktısını Batch hizmeti API 'SI ile kalıcı hale uyguladığınızda, hedef kapsayıcınızı ve bloblarınızı dilediğiniz şekilde adı verebilirsiniz. [Toplu Iş dosya kuralları standardına](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)göre bunları da seçebilirsiniz. Dosya kuralları standardı, belirli bir çıkış dosyası için Azure Storage 'daki Hedef kapsayıcının ve Blobun adlarını iş ve görevin adlarına göre belirler. Çıktı dosyalarını adlandırmak için dosya kuralları standardını kullanırsanız, çıkış dosyalarınız [Azure Portal](https://portal.azure.com)görüntülenmek üzere kullanılabilir.
+Görev çıktısını Batch hizmeti API 'SI ile kalıcı hale uyguladığınızda, hedef kapsayıcınızı ve bloblarınızı dilediğiniz şekilde adı verebilirsiniz. [Toplu Iş dosya kuralları standardına](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)göre bunları da seçebilirsiniz. Dosya kuralları standardı, belirli bir çıkış dosyası için Azure Storage 'daki Hedef kapsayıcının ve Blobun adlarını iş ve görevin adlarına göre belirler. Çıktı dosyalarını adlandırmak için dosya kuralları standardını kullanırsanız, çıkış dosyalarınız [Azure Portal](https://portal.azure.com)görüntülenmek üzere kullanılabilir.
 
 C# dilinde geliştiriyorsanız, [.net Için toplu Işlem dosya kuralları kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files)'nda yerleşik olarak bulunan yöntemleri kullanabilirsiniz. Bu kitaplık sizin için uygun şekilde adlandırılmış kapsayıcılar ve BLOB yolları oluşturur. Örneğin, iş adına göre kapsayıcının doğru adını almak için API 'YI çağırabilirsiniz:
 

@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede dönüşüme katılma
-description: Azure Veri Fabrikası eşleme veri akışında birleştirme dönüşümlerini kullanarak iki veri kaynağından gelen verileri birleştirme
+title: Eşleme veri akışında dönüştürmeyi Birleştir
+description: Azure Data Factory eşleme veri akışındaki birleştirme dönüşümünü kullanarak iki veri kaynağından verileri birleştirme
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,78 +8,80 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 5c388dd2b3e4f40fbf2ed75cf3f1b8ab31aee394
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606415"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233439"
 ---
-# <a name="join-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede dönüşüme katılma
+# <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Eşleme veri akışında iki kaynakveya akıştan gelen verileri birleştirmek için birleştirme dönüşümlerini kullanın. Çıktı akışı, birleştirme koşuluna göre eşleşen her iki kaynaktan tüm sütunları içerir. 
+İki kaynaktan veya bir eşleme veri akışındaki akışlardan verileri birleştirmek için JOIN dönüşümünü kullanın. Çıkış akışı, her iki kaynaktan da bir JOIN koşuluna göre eşleşen tüm sütunları içerecektir. 
 
-## <a name="join-types"></a>Birleştirme türleri
+## <a name="join-types"></a>JOIN türleri
 
-Veri akışlarını eşleme şu anda beş farklı birleştirme türünü destekler.
+Eşleme veri akışları Şu anda beş farklı JOIN türünü desteklemektedir.
 
-### <a name="inner-join"></a>İç Birleştirme
+### <a name="inner-join"></a>İç birleşim
 
-İç birleştirme yalnızca her iki tabloda eşleşen değerlere sahip çıktı satırları.
+İç birleşim yalnızca her iki tabloda eşleşen değerleri olan satırları çıktı.
 
-### <a name="left-outer"></a>Sol Dış
+### <a name="left-outer"></a>Sol dış
 
-Sol dış birleştirme, sol akıştaki tüm satırları döndürür ve sağ akıştaki kayıtları eşleştirir. Sol akıştaki bir satır eşleşme yoksa, sağ akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleştirme ve sol akıştan eşleşmeyen satırlarla döndürülen satırlar olacaktır.
-
-> [!NOTE]
-> Veri akışları tarafından kullanılan Spark motoru, birleştirme koşullarınızdaki olası kartezyen ürünler nedeniyle zaman zaman başarısız olur. Bu durumda, özel bir çapraz join'e geçebilir ve birleştirme koşulunuzu el ile girebilirsiniz. Yürütme altyapısı ilişkinin her iki tarafındaki tüm satırları hesaplamak ve sonra satırları filtrelemek gerekebilir gibi bu veri akışları daha yavaş performansa neden olabilir.
-
-### <a name="right-outer"></a>Sağ Dış
-
-Sağ dış birleştirme, sağ akıştaki tüm satırları döndürür ve sol akıştaki kayıtları eşleştirir. Sağ akıştaki bir satır eşleşme yoksa, sol akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleştirme ve sağ akıştan eşleşmeyen satırlarla döndürülen satırlar olacaktır.
-
-### <a name="full-outer"></a>Tam Dış
-
-Tam dış birleştirme, eşleşmeyan sütunlar için NULL değerleriyle her iki taraftan tüm sütun ve satırları çıkar.
-
-### <a name="custom-cross-join"></a>Özel çapraz birleştirme
-
-Çapraz birleştirme, bir koşula dayalı olarak iki akışın çapraz ürün çıktıları. Eşitlik olmayan bir koşul kullanıyorsanız, çapraz birleştirme koşulunuz olarak özel bir ifade belirtin. Çıktı akışı, birleştirme koşulunu karşılayan tüm satırlar olacaktır.
-
-Bu birleştirme türünü, equi olmayan birleştirmeler ```OR``` ve koşullar için kullanabilirsiniz.
-
-Tam kartezyen bir ürün açıkça üretmek istiyorsanız, birleştirmeden önce iki bağımsız akıştan önce Türemiş Sütun dönüşümünün üzerinde eşleşecek sentetik bir anahtar oluşturmak için kullanın. Örneğin, türemiş sütunda adı verilen ```SyntheticKey``` her akışta ```1```yeni bir sütun oluşturun ve ''ye eşit olarak ayarlayın. Daha ```a.SyntheticKey == b.SyntheticKey``` sonra özel birleştirme ifadesiniz olarak kullanın.
+Sol dış birleşim, sol akıştaki tüm satırları ve doğru akıştan eşleşen kayıtları döndürür. Sol akıştaki bir satırda eşleşme yoksa, doğru akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleşim ile döndürülen satırlar ve sol akıştaki eşleşmeyen satırlar olacaktır.
 
 > [!NOTE]
-> Özel çapraz birleştirme de sol ve sağ ilişkinizin her iki yanından en az bir sütun eklediğinden emin olun. Çapraz birleştirmeleri her iki taraftan sütunlar yerine statik değerlerle yürütmek, tüm veri kümesinin tam taranmasıile sonuçlanır ve veri akışınız kötü performans gösterir.
+> Veri akışları tarafından kullanılan Spark altyapısı, bazı durumlarda, JOIN koşullarınızda olası Kartezyen ürünler nedeniyle başarısız olur. Bu durumda, özel bir çapraz birleşime geçebilir ve JOIN koşulunuz el ile girebilirsiniz. Bu durum, yürütme altyapısının ilişkinin her iki tarafından tüm satırları hesaplaması ve sonra satırları filtrelemeniz gerekeceğinden, veri akışlarınızda daha yavaş performans oluşmasına neden olabilir.
+
+### <a name="right-outer"></a>Sağ dış
+
+Sağ dış birleşim, sol akıştaki doğru akıştaki ve eşleşen kayıtlardan tüm satırları döndürür. Doğru akıştaki bir satırda eşleşme yoksa, sol akıştaki çıkış sütunları NULL olarak ayarlanır. Çıktı, bir iç birleşim ile döndürülen satırlar ve doğru akıştan eşleşmeyen satırlar olacaktır.
+
+### <a name="full-outer"></a>Tam dış
+
+Tam dış birleşim, eşleşmeyen sütunlarda NULL değerler ile her iki taraftan da tüm sütunları ve satırları çıktı.
+
+### <a name="custom-cross-join"></a>Özel çapraz ekleme
+
+Çapraz birle, iki akışın çapraz çarpımını bir koşula göre çıktı. Eşitlik olmayan bir koşul kullanıyorsanız, çapraz ekleme koşulunuz olarak bir özel ifade belirtin. Çıkış akışı, JOIN koşulunu karşılayan tüm satırlar olacaktır.
+
+Bu birleştirme türünü, eşlenmemiş birleşimler ve ```OR``` koşullar için kullanabilirsiniz.
+
+Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapay bir anahtar oluşturmak için, birleştirmenin önüne iki bağımsız akışın her birinde türetilmiş sütun dönüşümünü kullanın. Örneğin, adlı ```SyntheticKey``` her akıştaki türetilmiş sütunda yeni bir sütun oluşturun ve eşit olarak ```1```ayarlayın. Ardından özel ```a.SyntheticKey == b.SyntheticKey``` JOIN ifadeniz olarak kullanın.
+
+> [!NOTE]
+> Özel bir çapraz birleşimde sol ve sağ İlişkinizdeki her bir taraftan en az bir sütun eklediğinizden emin olun. Her bir taraftaki sütunlar yerine statik değerlerle çapraz birleştirmeleri yürütmek, veri akışlarınızın düzgün bir şekilde gerçekleştirmesini sağlamak için tüm veri kümesinin tam taramasına neden olur.
 
 ## <a name="configuration"></a>Yapılandırma
 
-1. **Sağ akış** açılır düşüşünde hangi veri akışına katılacağınızı seçin.
-1. Birleştirme **türünü** seçin
-1. Birleştirme koşulu için hangi anahtar sütunları eşleştirmek istediğinizi seçin. Varsayılan olarak, veri akışı her akışta bir sütun arasında eşitlik arar. Hesaplanmış bir değer üzerinden karşılaştırmayapmak için sütun açılır sütunun üzerine gidin ve **Hesaplanan sütunu**seçin.
+1. **Sağ Akış** açılan menüsünde hangi veri akışını katdığınızı seçin.
+1. **JOIN türünü** seçin
+1. JOIN Koşulunuz için hangi anahtar sütunlarını eşlemek istediğinizi seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
 
-![Dönüşüme Katılın](media/data-flow/join.png "Birleştir")
+![Dönüşümü Birleştir](media/data-flow/join.png "Birleştir")
 
-## <a name="optimizing-join-performance"></a>Katılım performansını optimize etme
+## <a name="optimizing-join-performance"></a>JOIN performansını iyileştirme
 
-SSIS gibi araçlarda birleştirme işleminin aksine, birleştirme dönüşümü zorunlu bir birleştirme işlemi değildir. Birleştirme anahtarları sıralama gerektirmez. Birleştirme işlemi, Spark'taki en iyi birleştirme işlemine göre gerçekleşir, yayın veya harita tarafı birleştirme.
+SSIS gibi araçlarla birleştirme birleştirmesinin aksine, JOIN dönüşümü zorunlu bir birleştirme birleştirme işlemi değildir. JOIN anahtarları sıralama gerektirmez. JOIN işlemi, Spark içindeki en iyi JOIN işlemine bağlı olarak, yayın veya harita tarafı birleşimi üzerinden gerçekleşir.
 
-![Dönüşüm ekime katılma](media/data-flow/joinoptimize.png "Optimizasyon'a katılın")
+![Dönüştürme iyileştirmelerine Birleştir](media/data-flow/joinoptimize.png "Birleştirmeyi En Iyi duruma getirme")
 
-Veri akışlarından biri veya her ikisi alt düğüm belleğine uyuyorsa, en iyi duruma getirme sekmesinde **Yayın'ı** etkinleştirerek performansınızı daha da optimize edin. Ayrıca, iş çalışan başına belleğe daha iyi sığabilmesi için verilerinizi birleştirme işleminde yeniden bölümleyebilirsiniz.
+Birleşimler, aramalar ve mevcut dönüşümde, bir veya her iki veri akışı çalışan düğümü belleğine sığması halinde **yayını**etkinleştirerek performansı iyileştirebilirsiniz. Spark altyapısı, varsayılan olarak bir kenar yayınlanıp yayınlanmayacağını otomatik olarak karar verir. Hangi tarafın yayınlanmak üzere el ile seçmek için, **sabit**' i seçin.
 
-## <a name="self-join"></a>Kendi Kendine Birleşin
+Birleşimlerinizin zaman aşımı hatalarıyla çalışmadığı **durumlar dışında yayınlamayı** devre dışı bırakmanız önerilmez.
 
-Bir veri akışını kendisiyle birleştirmek için, belirli bir dönüşüme sahip varolan bir akış takma adı. Dönüşümün yanındaki artı simgesine tıklayarak ve **Yeni şube**seçerek yeni bir dal oluşturun. Özgün akış adatakma adıyla bir seçim dönüşümü ekleyin. Birleştirme dönüşümü ekleyin ve **sol akış** olarak özgün akışı ve **Sağ akış**olarak seç dönüşüm seçin.
+## <a name="self-join"></a>Kendi kendine Birleştir
 
-![Kendi kendine birleştirme](media/data-flow/selfjoin.png "Kendi kendine birleştirme")
+Bir veri akışını kendisiyle birleştirmek için, bir seçme dönüşümü olan mevcut bir akışa diğer ad ekleyin. Bir dönüşümün yanındaki artı simgesine tıklayıp **yeni dal**' ı seçerek yeni bir dal oluşturun. Özgün akışa diğer ad için bir seçme dönüşümü ekleyin. Bir JOIN dönüşümü ekleyin ve **sol** akış olarak orijinal akışı ve seçme dönüşümünü **doğru akış**olarak seçin.
 
-## <a name="testing-join-conditions"></a>Test birleştirme koşulları
+![Kendi kendine Birleştir](media/data-flow/selfjoin.png "Kendi kendine Birleştir")
 
-Hata ayıklama modunda veri önizlemesi ile birleştirme dönüşümlerini sınarken, bilinen küçük bir veri kümesi kullanın. Büyük bir veri kümesinden satırları örnekleme yaparken, sınama için hangi satırların ve anahtarların okunacağını tahmin edemezsiniz. Sonuç belirleyici değildir, yani birleştirme koşullarınız eşleşmeleri döndürmeyebilir.
+## <a name="testing-join-conditions"></a>Test ekleme koşulları
+
+Hata ayıklama modundaki veri önizlemesiyle JOIN dönüştürmelerinin test edilirken, küçük bir bilinen veri kümesi kullanın. Büyük bir veri kümesinden satırlar örneklenirken, hangi satırların ve anahtarların test için okunacağını tahmin edemeyecektir. Sonuç belirleyici değildir, yani JOIN koşullarınızın herhangi bir eşleşme döndürmeyebilir.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
@@ -90,19 +92,19 @@ Hata ayıklama modunda veri önizlemesi ile birleştirme dönüşümlerini sına
     join(
         <conditionalExpression>,
         joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
-        broadcast: { 'none' | 'left' | 'right' | 'both' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <joinTransformationName>
 ```
 
-### <a name="inner-join-example"></a>İç birleştirme örneği
+### <a name="inner-join-example"></a>İç birleşim örneği
 
-Aşağıdaki örnek, sol akışı `JoinMatchedData` ve sağ `TripData` akışı `TripFare`alan bir birleştirme dönüşümüdür.  Birleştirme `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` `hack_license`koşulu, her akıştaki , `medallion`, `vendor_id`ve `pickup_datetime` sütunlar eşleşiyorsa doğru döndüren ifadedir. `joinType` Olan. `'inner'` Yalnızca sol akışta yayını etkinleştiriyoruz, `broadcast` bu `'left'`yüzden değeri var.
+Aşağıdaki örnek, sol akış `JoinMatchedData` `TripData` ve sağ Akış `TripFare`alan adlı bir JOIN dönüştürmedir.  JOIN `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` koşulu, her akıştaki `hack_license`, `medallion`, `vendor_id`, ve `pickup_datetime` sütunlarının eşleşmesi durumunda true döndüren ifadedir. `joinType` . `'inner'` Yayını yalnızca sol akışta etkinleştiriyoruz, bu yüzden `broadcast` değer `'left'`vardır.
 
-Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
-![Örnekle katılın](media/data-flow/join-script1.png "Örnekle katılın")
+![JOIN örneği](media/data-flow/join-script1.png "JOIN örneği")
 
-Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
 
 ```
 TripData, TripFare
@@ -116,15 +118,15 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="custom-cross-join-example"></a>Özel çapraz birleştirme örneği
+### <a name="custom-cross-join-example"></a>Özel çapraz ekleme örneği
 
-Aşağıdaki örnek, sol akışı `JoiningColumns` ve sağ `LeftStream` akışı `RightStream`alan bir birleştirme dönüşümüdür. Bu dönüştürme iki akış alır ve sütun sütundan `leftstreamcolumn` `rightstreamcolumn`daha büyük olan tüm satırları birleştirir. `joinType` Olan. `cross` Yayın etkin `broadcast` değil `'none'`değeri vardır.
+Aşağıdaki örnek, sol akış `JoiningColumns` `LeftStream` ve sağ Akış `RightStream`alan adlı bir JOIN dönüştürmedir. Bu dönüşüm iki akış alır ve sütunun `leftstreamcolumn` sütundan `rightstreamcolumn`büyük olduğu tüm satırları birleştirir. `joinType` . `cross` Yayın etkin `broadcast` değil değeri `'none'`.
 
-Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
-![Örnekle katılın](media/data-flow/join-script2.png "Örnekle katılın")
+![JOIN örneği](media/data-flow/join-script2.png "JOIN örneği")
 
-Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
 
 ```
 LeftStream, RightStream
@@ -137,4 +139,4 @@ LeftStream, RightStream
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verileri birleştirdikten sonra, [türetilmiş](data-flow-derived-column.md) bir sütun oluşturun ve verilerinizi bir hedef veri deposuna [batırın.](data-flow-sink.md)
+Verileri katıldıktan sonra, türetilmiş bir [sütun](data-flow-derived-column.md) oluşturun ve verilerinizi bir hedef veri deposuna [havuzın](data-flow-sink.md) .

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/23/2020
-ms.openlocfilehash: 8380cfcbf267b117108d46794153bd5a61b8ec6a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116239"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232896"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
 
@@ -21,7 +21,7 @@ ms.locfileid: "82116239"
 
 [Azure Portal](https://portal.azure.com)kullanarak, Azure hdınsight 'ta [Apache Hadoop](https://hadoop.apache.org/) kümelerini yönetebilirsiniz. Diğer araçları kullanarak HDInsight 'ta Hadoop kümelerini yönetme hakkında bilgi için yukarıdaki sekme seçiciyi kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -196,13 +196,13 @@ An HDInsight küme iki kullanıcı hesabına sahip olabilir. HDInsight kümesi K
 1. **Ayarlar**altında **SSH + küme oturumu açma** ' yı seçin.
 2. **Kimlik bilgilerini Sıfırla**' yı seçin.
 3. Metin kutularına yeni parolayı girin ve onaylayın.
-4. **Tamam ' ı**seçin.
+4. **Tamam**’ı seçin.
 
 Parola, kümedeki tüm düğümlerde değiştirilir.
 
-### <a name="change-the-ssh-user-password"></a>SSH kullanıcı parolasını değiştirme
+### <a name="change-the-ssh-user-password-or-public-key"></a>SSH kullanıcı parolasını veya ortak anahtarı değiştirme
 
-1. Bir metin düzenleyicisi kullanarak, aşağıdaki metni **ChangePassword.sh**adlı bir dosya olarak kaydedin.
+1. Bir metin düzenleyicisi kullanarak, aşağıdaki metni **changecredentials.sh**adlı bir dosya olarak kaydedin.
 
     > [!IMPORTANT]  
     > Bitiş satırı olarak LF kullanan bir düzenleyici kullanmanız gerekir. Düzenleyici CRLF kullanıyorsa, komut dosyası çalışmaz.
@@ -222,13 +222,13 @@ Parola, kümedeki tüm düğümlerde değiştirilir.
    | Alan | Değer |
    | --- | --- |
    | Betik türü | Açılan listeden **özel** ' i seçin.|
-   | Adı |"SSH parolasını değiştir" |
-   | Bash betiği URI 'SI |Changepassword.sh dosyasının URI 'SI |
+   | Adı |"SSH kimlik bilgilerini değiştirme" |
+   | Bash betiği URI 'SI |Changecredentials.sh dosyasının URI 'SI |
    | Düğüm türleri: (Head, Worker, Nimbus, gözetmen veya Zookeeper.) |✓ listelenen tüm düğüm türleri için |
    | Parametreler |SSH kullanıcı adını ve ardından yeni parolayı girin. Kullanıcı adı ve parola arasında bir boşluk olmalıdır. SSH parolalarında şu karakterler desteklenmez: "' '/\ <% ~ | $ &
    | Bu betik eylemini kalıcı yap... |Bu alanı işaretlenmemiş olarak bırakın. |
 
-6. Betiği uygulamak için **Oluştur** ' u seçin. Betik tamamlandıktan sonra, yeni parolayla SSH kullanarak kümeye bağlanabilirsiniz.
+6. Betiği uygulamak için **Oluştur** ' u seçin. Betik tamamlandıktan sonra, yeni kimlik bilgileriyle SSH kullanarak kümeye bağlanabilirsiniz.
 
 ## <a name="find-the-subscription-id"></a>Abonelik KIMLIĞINI bulun
 

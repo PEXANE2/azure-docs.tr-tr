@@ -1,6 +1,6 @@
 ---
-title: Veri akışını eşlemede filtre dönüşümü
-description: Azure Veri Fabrikası eşleme veri akışında filtre dönüşümlerini kullanarak satırları filtreleyin
+title: Eşleme veri akışında filtre dönüşümü
+description: Azure Data Factory eşleme veri akışındaki filtre dönüşümünü kullanarak satırları filtreleme
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606434"
 ---
-# <a name="filter-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede filtre dönüşümü
+# <a name="filter-transformation-in-mapping-data-flow"></a>Eşleme veri akışında filtre dönüşümü
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Filtre dönüşümleri, bir koşula göre satır filtreleme sağlar. Çıktı akışı, filtreleme koşuluyla eşleşen tüm satırları içerir. Filtre dönüştürme, SQL'deki WHERE yan tümcesine benzer.
+Filtre dönüştürmeleri bir koşula göre satır filtrelemesine izin verir. Çıkış akışı, filtreleme durumuyla eşleşen tüm satırları içerir. Filtre dönüşümü SQL 'deki WHERE yan tümcesine benzerdir.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Filtre koşulu için bir ifade girmek için veri akışı ifadesi oluşturucuyu kullanın. İfade oluşturucuyu açmak için mavi kutuya tıklayın. Filtre koşulu tip boolean olmalıdır. İfade oluşturma hakkında daha fazla bilgi için [ifade oluşturucu](concepts-data-flow-expression-builder.md) belgelerine bakın.
+Filtre koşulu için bir ifade girmek üzere veri akışı ifade oluşturucusunu kullanın. İfade oluşturucuyu açmak için mavi kutuya tıklayın. Filtre koşulu Boolean türünde olmalıdır. Bir ifade oluşturma hakkında daha fazla bilgi için bkz. [Expression Builder](concepts-data-flow-expression-builder.md) belgeleri.
 
 ![Filtre dönüşümü](media/data-flow/filter1.png "Filtre dönüşümü")
 
@@ -40,13 +40,13 @@ Filtre koşulu için bir ifade girmek için veri akışı ifadesi oluşturucuyu 
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, gelen akışı `FilterBefore1960` `CleanData`alan bir filtre dönüştürme. Filtre koşulu ifadedir. `year <= 1960`
+Aşağıdaki örnek, gelen Stream `FilterBefore1960` `CleanData`'e ait adlı bir filtre dönüştürmesinin yer aldığı bir filtredir. Filtre koşulu ifadedir `year <= 1960`.
 
-Veri Fabrikası UX,bu dönüşüm aşağıdaki resim gibi görünür:
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
 ![Filtre dönüşümü](media/data-flow/filter1.png "Filtre dönüşümü")
 
-Bu dönüşüm için veri akışı komut dosyası aşağıdaki snippet bulunmaktadır:
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
 
 ```
 CleanData
@@ -58,4 +58,4 @@ CleanData
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Seç ile dönüştürme yle sütunları [filtreleyin](data-flow-select.md)
+Sütunları [seçim dönüşümüne](data-flow-select.md) göre filtrele

@@ -1,6 +1,6 @@
 ---
-title: Quickstart - çalışma alanı oluşturma
-description: Bu kılavuzdaki adımları izleyerek bir Azure Synapse Analytics çalışma alanı oluşturun.
+title: Hızlı başlangıç-çalışma alanı oluşturma
+description: Bu kılavuzdaki adımları izleyerek bir Azure SYNAPSE Analytics çalışma alanı oluşturun.
 services: synapse-analytics
 author: malvenko
 ms.service: synapse-analytics
@@ -10,76 +10,76 @@ ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81676738"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Hızlı başlangıç: Azure Synapse Analytics çalışma alanı oluşturma (önizleme)
+# <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Hızlı başlangıç: Azure SYNAPSE Analytics çalışma alanı oluşturma (Önizleme)
 
-Bu hızlı başlangıç, Azure portalını kullanarak bir Azure Synapse çalışma alanı oluşturma adımlarını açıklar.
+Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma adımları açıklanmaktadır.
 
-Azure aboneliğiniz yoksa, başlamadan [önce ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Azure Veri Gölü Depolama Gen2 depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/) oturum açın
+[Azure Portal](https://portal.azure.com/) oturum açın
 
-## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Azure portalını kullanarak Bir Azure Synapse çalışma alanı oluşturma
+## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma
 
-1. Microsoft Azure arama bölmesinde **Synapse çalışma alanını** girin ve ardından bu hizmeti seçin.
-![Azure Synapse çalışma alanlarının yazılmış olduğu](media/quickstart-create-synapse-workspace/workspace-search.png)Azure portal arama çubuğu.
-2. **Synapse çalışma alanları** sayfasında **+ Ekle'yi**tıklatın.
-![Yeni Azure Synapse çalışma alanı oluşturma komutu vurgulanır. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
-3. **Azure Synapse çalışma alanı** formunu aşağıdaki bilgilerle doldurun:
+1. Microsoft Azure Arama bölmesinde, **SYNAPSE Workspace** girin ve ardından bu hizmeti seçin.
+![İçinde yazılan Azure SYNAPSE çalışma alanları ile arama çubuğu Azure portal](media/quickstart-create-synapse-workspace/workspace-search.png)..
+2. **SYNAPSE çalışma alanları** sayfasında **+ Ekle**' ye tıklayın.
+![Yeni Azure SYNAPSE çalışma alanı vurgulanmış olan komut. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
+3. **Azure SYNAPSE çalışma alanı** formunu aşağıdaki bilgilerle doldurun:
 
     | Ayar | Önerilen değer | Açıklama |
     | :------ | :-------------- | :---------- |
     | **Abonelik** | *Aboneliğiniz* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
     | **Kaynak grubu** | *Herhangi bir kaynak grubu* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
-    | **Çalışma alanı adı** | mysampleworkspace | Bağlantı uç noktaları için de kullanılacak çalışma alanının adını belirtir.|
+    | **Çalışma alanı adı** | mysampleworkspace | Bağlantı uç noktaları için de kullanılacak olan çalışma alanının adını belirtir.|
     | **Bölge** | Doğu ABD 2 | Çalışma alanının konumunu belirtir.|
-    | **Data Lake Storage Gen2** | Hesabı:`storage account name` </br> Dosya sistemi:`root file system to use` | Birincil depolama olarak kullanmak üzere ADLS Gen2 depolama hesap adını ve kullanılacak dosya sistemini belirtir.|
+    | **Data Lake Storage Gen2** | Hesabı`storage account name` </br> Dosya sistemi:`root file system to use` | Birincil depolama ve kullanılacak dosya sistemi olarak kullanılacak ADLS 2. depolama hesabı adını belirtir.|
     ||||
 
-    ![Çalışma alanı sağlama akışı - Temeller sekmesi.](media/quickstart-create-synapse-workspace/create-workspace-03.png).
+    ![Çalışma alanı sağlama akışı-temel kavramlar sekmesi.](media/quickstart-create-synapse-workspace/create-workspace-03.png).
 
-    Depolama hesabı aşağıdakilerden seçilebilir:
-    - Aboneliğinizde bulunan ADLS Gen2 hesaplarının listesi
-    - Hesap adını kullanarak el ile girilen
+    Depolama hesabı şu kaynaktan seçilebilir:
+    - Aboneliğinizde kullanılabilen ADLS 2. hesaplarının listesi
+    - Hesap adı kullanılarak elle girilen
 
     > [!IMPORTANT]
-    > Azure Synapse çalışma alanının seçili ADLS Gen2 hesabına okuma ve yazma yapabilmesi gerekir. Ayrıca, birincil depolama hesabı olarak bağladığınız herhangi bir depolama hesabı için, depolama hesabının oluşturulmasında **hiyerarşik ad alanını** etkinleştirmiş olmalısınız.
+    > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Ayrıca, birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için depolama hesabı oluşturma sırasında **hiyerarşik ad alanını** etkinleştirmiş olmanız gerekir.
     >
-    > ADLS Gen2 seçim alanlarının altında, çalışma alanının yönetilen kimliğinin, tam erişim sağlayan seçili Data Lake Storage Gen2 dosya sisteminde **Storaqe Blob Data Contributor** rolüne atanacağını belirten bir not vardır.
+    > ADLS 2. seçim alanlarının altında, çalışma alanının yönetilen kimliğinin seçili Data Lake Storage 2. dosya sisteminde tam erişim sağlayan **Storaqe blob veri katılımcısı** rolüne atandığını belirten bir göz vardır.
 
-4. (İsteğe bağlı) Güvenlik + **ağ varsayılanlarından** herhangi birini değiştirin:
-5. (İsteğe bağlı) **Etiketler** sekmesine etiket ekleyin.
-6. **Özet** sekmesi, çalışma alanının başarıyla oluşturulabilmesini sağlamak için gerekli doğrulamaları çalıştırılır. Doğrulama başarılı olduktan sonra, **Create** ![Çalışma Alanı sağlama akışını oluştur](media/quickstart-create-synapse-workspace/create-workspace-05.png)- onay sekmesine basın.
-7. Kaynak sağlama işlemi başarıyla tamamlandığında, Synapse çalışma alanları listesinde oluşturulan çalışma alanı için bir giriş görürsünüz. ![Yeni sağlanan çalışma alanını gösteren Synapse çalışma alanlarının listesi.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
+4. Seçim **Güvenlik + ağ Varsayılanları** sekmesinden herhangi birini değiştirin:
+5. Seçim **Etiketler** sekmesine Etiketler ekleyin.
+6. **Özet** sekmesi, çalışma alanının başarıyla oluşturulduğundan emin olmak için gerekli doğrulamaları çalıştırır. Doğrulama başarılı olduktan sonra **,** ![çalışma alanı sağlama akışı-onay sekmesine basın.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
+7. Kaynak sağlama işlemi başarıyla tamamlandıktan sonra, SYNAPSE çalışma alanları listesinde oluşturulan çalışma alanı için bir giriş görürsünüz. ![Yeni sağlanan çalışma alanını gösteren SYNAPSE çalışma alanlarının listesi.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure Synapse çalışma alanını silmek için aşağıdaki adımları izleyin.
+Azure SYNAPSE çalışma alanını silmek için aşağıdaki adımları izleyin.
 > [!WARNING]
-> Azure Synapse çalışma alanının silinmesi, analiz altyapılarını ve içerdiği SQL havuzlarının ve çalışma alanı meta verilerinin veritabanında depolanan verileri kaldırır. Artık SQL uç noktalarına bağlanmak mümkün olmayacaktır, Apache Spark uç noktaları. Tüm kod yapıları silinir (sorgular, not defterleri, iş tanımları ve ardışık çizgiler).
+> Azure SYNAPSE çalışma alanını silmek, bulunan SQL havuzlarının ve çalışma alanı meta verilerinin veritabanında depolanan analiz altyapılarını ve verileri kaldırır. Artık uç noktaları Apache Spark SQL uç noktalarına bağlanmak mümkün olmayacaktır. Tüm kod yapıtları silinecek (sorgular, Not defterleri, iş tanımları ve işlem hatları).
 >
-> Çalışma alanını silerken, çalışma alanına bağlı Veri Gölü Deposu Gen2'deki verileri **etkilemez.**
+> Çalışma alanını silmek, çalışma alanına bağlı Data Lake Store Gen2 **verileri etkilemez.**
 
-Azure Synapse çalışma alanını silmek istiyorsanız, aşağıdaki adımları tamamlayın:
+Azure SYNAPSE çalışma alanını silmek istiyorsanız aşağıdaki adımları izleyin:
 
-1. Silmek için Azure Synapse çalışma alanına gidin.
-1. Komut çubuğundaki **sil** tuşuna basın.
- ![Azure Synapse çalışma alanına genel bakış - silme komutu vurgulanır.](media/quickstart-create-synapse-workspace/create-workspace-10.png)
-1. Silme işlemini onaylayın ve **Sil** düğmesine basın.
- ![Azure Synapse çalışma alanına genel bakış - çalışma alanı onay iletişim kutusunu silin.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
-1. İşlem başarıyla tamamlandığında, Azure Synapse çalışma alanı artık çalışma alanları listesinde listelenmez.
+1. Silmek için Azure SYNAPSE çalışma alanına gidin.
+1. Komut çubuğunda **Sil** ' e basın.
+ ![Azure SYNAPSE Workspace genel bakış-Sil komutu vurgulanmış.](media/quickstart-create-synapse-workspace/create-workspace-10.png)
+1. Silmeyi onaylayın ve **Sil** düğmesine basın.
+ ![Azure SYNAPSE çalışma alanına genel bakış-çalışma alanı onay iletişim kutusunu silin.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
+1. İşlem başarıyla tamamlandığında, Azure SYNAPSE çalışma alanı artık çalışma alanları listesinde listelenmeyecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, [verilerinizi](quickstart-create-sql-pool.md) çözümlemeye ve keşfetmeye başlamak için SQL havuzları oluşturabilir veya [Apache Spark havuzları oluşturabilirsiniz.](quickstart-create-apache-spark-pool.md)
+Daha sonra, verilerinizi analiz etmeye ve keşfetmeye başlamak için [SQL havuzları oluşturabilir](quickstart-create-sql-pool.md) veya [Apache Spark havuzları oluşturabilirsiniz](quickstart-create-apache-spark-pool.md) .

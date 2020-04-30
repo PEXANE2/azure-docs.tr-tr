@@ -4,14 +4,14 @@ description: App Service Linux uygulamalarınızın, uzak API 'lere erişim de d
 keywords: app service, azure app service, authN, authZ, güvenli, güvenlik, çok katmanlı, azure active directory, azure ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d63c143ddbc702f7f3983a9ae5d6d5f2822d9fdc
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "74688936"
+ms.locfileid: "82560357"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Öğretici: Linux üzerinde Azure App Service’te kullanıcıların kimliğini doğrulama ve kullanıcıları uçtan uca yetkilendirme
 
@@ -46,8 +46,8 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 Bu öğreticiyi tamamlamak için:
 
-* [Git 'ı yükler](https://git-scm.com/).
-* [.NET Core'u yükleme](https://www.microsoft.com/net/core/).
+* <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'sını yükler</a>
 
 ## <a name="create-local-net-core-app"></a>Yerel .NET Core uygulaması oluşturma
 
@@ -75,15 +75,22 @@ ASP.NET Core’u dilediğiniz zaman durdurmak için, terminalde `Ctrl+C` tuşlar
 
 Bu adımda projeyi iki App Service uygulamasına dağıtacaksınız. Bunlardan biri ön uç uygulama, diğeri ise arka uç uygulamadır.
 
+### <a name="configure-a-deployment-user"></a>Dağıtım kullanıcısı yapılandırma
+
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
+
 ### <a name="create-azure-resources"></a>Azure kaynakları oluşturma
 
 Cloud Shell’de iki web uygulaması oluşturmak için aşağıdaki komutları çalıştırın. _ \<Ön uç uygulama adı>_ ve _ \<arka uç uygulama adı>_ iki genel benzersiz uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9`ve `-`). Her komut hakkında daha fazla bilgi için bkz. [Linux üzerinde Azure App Service .NET Core uygulaması oluşturma](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
-az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku B1 --is-linux
-az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --runtime "dotnetcore|2.0" --deployment-local-git --query deploymentLocalGitUrl
-az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <back-end-app-name> --runtime "dotnetcore|2.0" --deployment-local-git --query deploymentLocalGitUrl
+az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku FREE --is-linux
+az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git --query deploymentLocalGitUrl
+az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <back-end-app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git --query deploymentLocalGitUrl
+# Currently the following commands are required to set the .NET Core version properly
+az webapp config set --resource-group myAuthResourceGroup --name <front-end-app-name> --linux-fx-version "DOTNETCORE|3.1"
+az webapp config set --resource-group myAuthResourceGroup --name <back-end-app-name> --linux-fx-version "DOTNETCORE|3.1"
 ```
 
 > [!NOTE]
@@ -135,47 +142,47 @@ private static readonly HttpClient _client = new HttpClient();
 private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
 ```
 
-`GetAll()` yöntemini bulun ve küme ayraçlarının içindeki kodu şununla değiştirin:
+İle `[HttpGet]` donatılmış yöntemi bulun ve küme ayraçları içindeki kodu ile değiştirin:
 
 ```cs
-var data = _client.GetStringAsync($"{_remoteUrl}/api/Todo").Result;
+var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo");
 return JsonConvert.DeserializeObject<List<TodoItem>>(data);
 ```
 
 İlk satır, arka uç API uygulamasına bir `GET /api/Todo` çağrısı yapar.
 
-Sonra, `GetById(long id)` yöntemini bulun ve küme ayraçlarının içindeki kodu şununla değiştirin:
+Sonra, ile `[HttpGet("{id}")]` donatılmış yöntemi bulun ve küme ayraçları içindeki kodu ile değiştirin:
 
 ```cs
-var data = _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}").Result;
+var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}");
 return Content(data, "application/json");
 ```
 
 İlk satır, arka uç API uygulamasına bir `GET /api/Todo/{id}` çağrısı yapar.
 
-Sonra, `Create([FromBody] TodoItem item)` yöntemini bulun ve küme ayraçlarının içindeki kodu şununla değiştirin:
+Sonra, ile `[HttpPost]` donatılmış yöntemi bulun ve küme ayraçları içindeki kodu ile değiştirin:
 
 ```cs
-var response = _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", item).Result;
-var data = response.Content.ReadAsStringAsync().Result;
+var response = await _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", todoItem);
+var data = await response.Content.ReadAsStringAsync();
 return Content(data, "application/json");
 ```
 
 İlk satır, arka uç API uygulamasına bir `POST /api/Todo` çağrısı yapar.
 
-Sonra, `Update(long id, [FromBody] TodoItem item)` yöntemini bulun ve küme ayraçlarının içindeki kodu şununla değiştirin:
+Sonra, ile `[HttpPut("{id}")]` donatılmış yöntemi bulun ve küme ayraçları içindeki kodu ile değiştirin:
 
 ```cs
-var res = _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", item).Result;
+var res = await _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", todoItem);
 return new NoContentResult();
 ```
 
 İlk satır, arka uç API uygulamasına bir `PUT /api/Todo/{id}` çağrısı yapar.
 
-Sonra, `Delete(long id)` yöntemini bulun ve küme ayraçlarının içindeki kodu şununla değiştirin:
+Sonra, ile `[HttpDelete("{id}")]` donatılmış yöntemi bulun ve küme ayraçları içindeki kodu ile değiştirin:
 
 ```cs
-var res = _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}").Result;
+var res = await _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}");
 return new NoContentResult();
 ```
 
@@ -205,25 +212,27 @@ Azure Active Directory’yi kimlik sağlayıcısı olarak kullanacaksınız. Dah
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Arka uç uygulaması için kimlik doğrulama ve yetkilendirmeyi etkinleştirme
 
-[Azure Portal](https://portal.azure.com), sol taraftaki menüden tıklayarak arka uç uygulamanızın yönetim sayfasını açın: **kaynak grupları** > **myauthresourcegroup** > **_\<Back-end-app-name>_**.
+[Azure Portal](https://portal.azure.com) menüsünde, **kaynak grupları** ' nı seçin veya herhangi bir sayfadan *kaynak gruplarını* arayıp seçin.
+
+**Kaynak grupları**' nda, kaynak grubunuzu bulun ve seçin. **Genel bakış**bölümünde arka uç uygulamanızın yönetim sayfasını seçin.
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
-Arka uç uygulamanızın soldaki menüsünde **Kimlik doğrulaması / Yetkilendirme** öğesine tıklayın, sonra da **Açık**’a tıklayarak App Service Kimlik Doğrulamasını etkinleştirin.
+Arka uç uygulamanızın sol menüsünde **kimlik doğrulama/yetkilendirme**' yi seçin ve ardından **Açık**' a tıklayarak App Service kimlik doğrulamasını etkinleştirin.
 
 **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem** menüsünde **Azure Active Directory ile oturum aç**’ı seçin.
 
-**Kimlik Doğrulama Sağlayıcıları** altında **Azure Active Directory**’ye tıklayın. 
+**Kimlik doğrulama sağlayıcıları**altında **Azure Active Directory**' yi seçin.
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/tutorial-auth-aad/configure-auth-back-end.png)
 
-**Hızlı**’ya tıklayın, ardından yeni bir AD uygulaması oluşturmak için varsayılan ayarları kabul edip **Tamam**’a tıklayın.
+**Hızlı**' i seçin, ardından yenı bir ad uygulaması oluşturmak için varsayılan ayarları kabul edin ve **Tamam**' ı seçin.
 
-**Kimlik Doğrulaması / Yetkilendirme** sayfasında **Kaydet**’e tıklayın. 
+**Kimlik doğrulama/yetkilendirme** sayfasında **Kaydet**' i seçin. 
 
-`Successfully saved the Auth Settings for <back-end-app-name> App` iletisini içeren bildirimi gördüğünüzde sayfayı yenileyin.
+İletiyle `Successfully saved the Auth Settings for <back-end-app-name> App`ilgili bildirimi gördüğünüzde portal sayfasını yenileyin.
 
-Yeniden **Azure Active Directory** ' ne ve ardından **Azure AD uygulaması**' e tıklayın.
+Yeniden **Azure Active Directory** seçin ve **Azure AD uygulaması**seçin.
 
 Azure AD uygulamasının **ISTEMCI kimliğini** bir not defteri 'ne kopyalayın. Bu değer daha sonra gerekli olacaktır.
 
@@ -233,7 +242,7 @@ Azure AD uygulamasının **ISTEMCI kimliğini** bir not defteri 'ne kopyalayın.
 
 Ön uç uygulaması için de aynı adımları izleyin, ancak son adımı atlayın. Ön uç uygulaması için istemci KIMLIĞI gerekmez.
 
-İsterseniz `http://<front-end-app-name>.azurewebsites.net` sayfasına gidin. Şimdi güvenli oturum açma sayfasına yönlendirilmeniz gerekir. Oturum açtıktan sonra hala yapmanız gereken üç işlem olduğu için, arka uç uygulamasından verilere erişemezsiniz:
+İsterseniz `http://<front-end-app-name>.azurewebsites.net` sayfasına gidin. Şimdi güvenli oturum açma sayfasına yönlendirilmeniz gerekir. Oturum açtıktan sonra, arka uç uygulamasının artık ön uç uygulamadan Azure Active Directory oturum açmasını gerektirdiğinden, arka uç uygulamasından *verilere erişemezsiniz*. Üç şey yapmanız gerekir:
 
 - Arka uca ön uç erişimi verme
 - App Service’i kullanılabilir bir belirteç döndürecek şekilde yapılandırma
@@ -246,11 +255,13 @@ Azure AD uygulamasının **ISTEMCI kimliğini** bir not defteri 'ne kopyalayın.
 
 Her iki uygulamanızda da kimlik doğrulaması ve yetkilendirmeyi etkinleştirdikten sonra uygulamaların her biri bir AD uygulaması tarafından desteklenir. Bu adımda, ön uç uygulamasına kullanıcı adına arka uca erişme izni vereceksiniz. (Teknik açıdan, ön ucun _AD uygulamasına_ arka ucun _AD uygulaması_ için erişim izinleri vereceksiniz.)
 
-Portalın sol menüsünde, **Azure Active Directory** > **uygulama kayıtları** > **sahip uygulamalar** > **\<ön uç uygulama adı>**  >  **API izinleri**' ni seçin.
+[Azure Portal](https://portal.azure.com) menüsünde **Azure Active Directory** ' i seçin veya herhangi bir sayfadan *Azure Active Directory* ' i arayıp seçin.
+
+**Uygulama kayıtları** > **sahip olan uygulamalar** > **Bu dizindeki tüm uygulamaları görüntüle '** yi seçin. Ön uç uygulamanızın adını seçin ve ardından **API izinleri**' ni seçin.
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/tutorial-auth-aad/add-api-access-front-end.png)
 
-**İzin Ekle**' yi seçin ve ardından **API 'leri** > **\<arka uç-uygulaması-adı>** seçin.
+**İzin Ekle**' yi seçin ve ardından, Kuruluşum,**\<arka uç-uygulama-adı>** >  **kullanan API 'leri**seçin.
 
 Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinleri** ve **User_impersonation**seçin ve ardından **izin Ekle**' yi seçin.
 
@@ -260,11 +271,13 @@ Arka uç uygulaması için **API Izinleri iste** sayfasında, **temsilci izinler
 
 Ön uç uygulama artık, oturum açmış kullanıcı olarak arka uç uygulamasına erişmek için gerekli izinlere sahiptir. Bu adımda, App Service kimlik doğrulaması ve yetkilendirmesini, arka uca erişmeniz için kullanılabilir bir erişim belirteci verecek şekilde yapılandıracaksınız. Bu adımda, arka uç [uygulaması için kimlik doğrulama ve yetkilendirmeyi etkinleştirme](#enable-authentication-and-authorization-for-back-end-app)' den kopyaladığınız arka ucun istemci kimliği gereklidir.
 
-[Azure Kaynak Gezgini](https://resources.azure.com)’nde oturum açın. Sayfanın üst kısmındaki **Oku/Yaz**’a tıklayarak Azure kaynaklarınızın düzenlenmesini etkinleştirin.
+Ön uç uygulamanızın sol menüsünde, **geliştirme araçları**altında **Kaynak Gezgini** ' ni seçin ve ardından **Git**' i seçin.
+
+[Azure Kaynak Gezgini](https://resources.azure.com) artık kaynak ağacında seçili olan ön uç uygulamanız ile açılır. Sayfanın üst kısmındaki **Oku/Yaz**’a tıklayarak Azure kaynaklarınızın düzenlenmesini etkinleştirin.
 
 ![Azure App Service'te çalışan ASP.NET Core API'si](./media/tutorial-auth-aad/resources-enable-write.png)
 
-Sol tarayıcıda,**_\<abonelik aboneliğiniz>_** >  > **providers** > **sites** >   >  **config** >  >   >  **ResourceGroups** > **myauthresourcegroup**sağlayıcılar**Microsoft. Web**siteleri**_\<ön uç uygulama adı>_** config**authsettings öğesine tıklayın**' **e tıklayın.**
+Sol tarayıcıda, **config** > **authsettings öğesine tıklayın**öğesine gidin.
 
 **authsettings** görünümünde **Düzenle**’ye tıklayın. Kopyaladığınız `additionalLoginParams` istemci kimliğini kullanarak aşağıdaki JSON dizesine ayarlayın. 
 
@@ -302,7 +315,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-Bu kod, standart `Authorization: Bearer <access-token>` HTTP üst bilgisini tüm uzak API çağrılarına ekler. ASP.NET Core MVC istek yürütme işlem hattında `OnActionExecuting`, ilgili eylem yönteminden (`GetAll()` gibi) hemen önce yürütülür; bu nedenle giden API çağrınız artık erişim belirtecini sunar.
+Bu kod, standart `Authorization: Bearer <access-token>` HTTP üst bilgisini tüm uzak API çağrılarına ekler. ASP.NET Core MVC istek yürütme işlem hattında, `OnActionExecuting` ilgili eylem yapılmadan hemen önce yürütülür, böylece giden API çağrınızda her biri erişim belirtecini gösterir.
 
 Yaptığınız tüm değişiklikleri kaydedin. Yerel terminal penceresinde, ön uç uygulamasında yaptığınız değişiklikleri aşağıdaki Git komutları ile dağıtın:
 
@@ -325,15 +338,15 @@ Bu adımda, ön uç Angular.js uygulamasını arka uç API’sine yönlendirecek
 Sunucu kodu istek üst bilgilerine erişebilse de, istemci kodu aynı erişim belirteçlerini almak için `GET /.auth/me` erişimine sahiptir (bkz. [Uygulama kodunda belirteçleri alma](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#retrieve-tokens-in-app-code)).
 
 > [!TIP]
-> Bu bölümde güvenli HTTP çağrılarını göstermek için standart HTTP yöntemleri kullanılır. Ancak, Angular.js uygulama desenini kolaylaştırmaya yardımcı olmak üzere [JavaScript için Active Directory Authentication Library (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-js) kullanabilirsiniz.
+> Bu bölümde güvenli HTTP çağrılarını göstermek için standart HTTP yöntemleri kullanılır. Ancak, angular. js uygulama modelini basitleştirmeye yardımcı olması için [JavaScript Için Microsoft kimlik doğrulama kitaplığı](https://github.com/AzureAD/microsoft-authentication-library-for-js) ' nı kullanabilirsiniz.
 >
 
 ### <a name="configure-cors"></a>CORS Yapılandırma
 
-Cloud Shell, [`az resource update`](/cli/azure/resource#az-resource-update) komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin. _Arka uç uygulama adı>ve ön uç uygulama adı>yer tutucularını değiştirin. \<_ _ \<_
+Cloud Shell, [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin. _Arka uç uygulama adı>ve ön uç uygulama adı>yer tutucularını değiştirin. \<_ _ \<_
 
 ```azurecli-interactive
-az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back-end-app-name> --set properties.cors.allowedOrigins="['https://<front-end-app-name>.azurewebsites.net']" --api-version 2015-06-01
+az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'
 ```
 
 Bu adım, kimlik doğrulama ve yetkilendirme ile ilgili değildir. Ancak, tarayıcınızın Angular.js uygulamanızdan etki alanları arası API çağrılarına izin vermesi için gereklidir. Daha fazla bilgi için bkz. [CORS işlevselliği ekleme](../app-service-web-tutorial-rest-api.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#add-cors-functionality).
@@ -342,7 +355,7 @@ Bu adım, kimlik doğrulama ve yetkilendirme ile ilgili değildir. Ancak, taray�
 
 Yerel depoda _wwwroot/index.html_ dosyasını açın.
 
-51. satırda, `apiEndpoint` değişkenini arka uç uygulamanızın URL'sine (`https://<back-end-app-name>.azurewebsites.net`) ayarlayın. _ \<Arka uç uygulaması adı>_ , App Service uygulamanızın adıyla değiştirin.
+Satır 51 ' de, `apiEndpoint` değişkeni arka uç uygulamanızın https URL 'si (`https://<back-end-app-name>.azurewebsites.net`) olarak ayarlayın. _ \<Arka uç uygulaması adı>_ , App Service uygulamanızın adıyla değiştirin.
 
 Yerel depoda _wwwroot/app/scripts/todoListSvc.js_ dosyasını açıp tüm API çağrılarının başına `apiEndpoint` ekinin getirildiğini görün. Angular.js uygulamanız artık arka uç API'lerini çağırır. 
 
@@ -384,7 +397,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Yeni değişiklik, `/.auth/me` çağrısını yapıp erişim belirtecini ayarlayan `revolve` eşlemesini ekler. `todoListCtrl` denetleyicisinin örneğini oluşturmadan önce erişim belirtecine sahip olduğunuzdan emin olur. Bu şekilde, denetleyicinin yaptığı tüm API çağrıları belirteci içerir.
+Yeni değişiklik, `/.auth/me` çağrısını yapıp erişim belirtecini ayarlayan `resolve` eşlemesini ekler. `todoListCtrl` denetleyicisinin örneğini oluşturmadan önce erişim belirtecine sahip olduğunuzdan emin olur. Bu şekilde, denetleyicinin yaptığı tüm API çağrıları belirteci içerir.
 
 ### <a name="deploy-updates-and-test"></a>Güncelleştirmeleri dağıtma ve test etme
 

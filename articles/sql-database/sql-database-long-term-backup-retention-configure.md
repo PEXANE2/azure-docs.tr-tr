@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1fedf889fa8d39a926067eb227b895d4fe1e3c39
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380930"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509355"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 
 Azure SQL veritabanı 'nda, veritabanı yedeklerini 10 yıla kadar ayrı Azure Blob depolama kapsayıcılarında otomatik olarak saklamak için [uzun süreli yedek saklama](sql-database-long-term-retention.md) IlkesI (LTR) ile tek veya havuza alınmış bir veritabanı yapılandırabilirsiniz. Daha sonra Azure portal veya PowerShell kullanarak bu yedeklemeleri kullanarak bir veritabanını kurtarabilirsiniz.
 
 > [!IMPORTANT]
-> [Azure SQL veritabanı yönetilen örneği](sql-database-managed-instance.md) Şu anda uzun süreli yedekleme bekletmesini desteklememektedir.
+> Azure SQL veritabanı yönetilen örneği için bkz. [yönetilen örnek Için LTR desteği](sql-database-long-term-retention.md#managed-instance-support).
 
 ## <a name="using-azure-portal"></a>Azure portalını kullanma
 

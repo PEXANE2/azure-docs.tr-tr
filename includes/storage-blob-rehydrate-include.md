@@ -11,18 +11,18 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: fc5f4d2c10cac23600025a72fedf7fe2cec5a34e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684066"
 ---
-Arşiv depolama birimindeki verileri okumak için katmanı önce sık erişimli veya seyrek erişimli blob katmanı olarak değiştirmeniz gerekir. Bu süreç rehidrasyon olarak bilinir ve tamamlanması saatler sürebilir. Optimum rehidrasyon performansı için büyük lekeler öneririz. Birkaç küçük blobu aynı anda yeniden doldurmak süreyi uzatabilir. Şu anda iki rehydrate öncelikleri vardır, Yüksek ve Standart, bir [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) veya [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi isteğe bağlı *x-ms-rehydrate öncelikli* özelliği üzerinden ayarlanabilir.
+Arşiv depolama birimindeki verileri okumak için katmanı önce sık erişimli veya seyrek erişimli blob katmanı olarak değiştirmeniz gerekir. Bu işleme yeniden doldurma denir ve tamamlanması saat sürebilir. En iyi yeniden doldurma performansı için büyük blob boyutları öneririz. Birkaç küçük blobu aynı anda yeniden doldurmak süreyi uzatabilir. Şu anda iki adet yeniden doldurma önceliği vardır, yüksek ve standart. Bu, bir [BLOB katmanı kümesi](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) veya [BLOB kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işleminde isteğe bağlı *x-MS-rehite-Priority* özelliği aracılığıyla ayarlanabilir.
 
-* **Standart öncelik**: Rehidrasyon isteği alındığı sırada işlenir ve 15 saat kadar sürebilir.
-* **Yüksek öncelik**: Rehidrasyon isteği standart isteklere göre öncelikli olacak ve 1 saatten az bir sürede bitirilebilir. Yüksek öncelik, blob boyutuna ve mevcut talebe bağlı olarak 1 saatten uzun sürebilir. Yüksek öncelikli isteklerin Standart öncelikli isteklere göre önceliklendirilmesi garanti edilir.
+* **Standart öncelik**: yeniden doldurma isteği alındığı sırada işlenir ve 15 saate kadar sürebilir.
+* **Yüksek öncelik**: yeniden doldurma isteğine standart istekler üzerinden öncelik alınacaktır ve 1 saat altında bitecektir. En yüksek öncelik, blob boyutuna ve geçerli talebe bağlı olarak 1 saatten uzun sürebilir. Yüksek öncelikli isteklerin standart öncelik istekleri üzerinden öncelikli olması garanti edilir.
 
 > [!NOTE]
-> Standart öncelik arşiv için varsayılan rehidrasyon seçeneğidir. Yüksek öncelik standart öncelikli rehidrasyon daha fazla mal olacak ve genellikle acil veri restorasyon durumlarda kullanılmak üzere ayrılmıştır daha hızlı bir seçenektir.
+> Standart öncelik Arşiv için varsayılan yeniden hidratıon seçeneğidir. Yüksek öncelikli, standart öncelikten daha fazla yeniden doldurma maliyeti sağlayacak ve genellikle acil durum veri geri yükleme durumlarında kullanılmak üzere ayrılmış olan daha hızlı bir seçenektir.
 
-Bir rehidrasyon isteği başlatıldıktan sonra iptal edilemez. Rehidrasyon işlemi sırasında, *x-ms-erişim katmanı* blob özelliği rehidrasyon online bir katmana tamamlanana kadar arşiv olarak göstermeye devam edecektir. Rehidrasyon durumunu ve ilerlemesini doğrulamak için, *x-ms-arşiv durumunu* ve *x-ms-rehidrat öncelikli* blob özelliklerini kontrol etmek için [Get Blob Properties'i](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties) arayabilirsiniz. Arşiv durumu, rehidrat hedef katmanına bağlı olarak "rehydrate-bekleyen-sıcak" veya "rehydrate-bekleyen-to-cool" okuyabilirsiniz. Rehidrat önceliği "Yüksek" veya "Standart" hızını gösterir. Tamamlandıktan sonra, arşiv durumu ve rehydrate öncelik özellikleri kaldırılır ve erişim katmanı blob özelliği seçilen sıcak veya serin katmanı yansıtacak şekilde güncellenir.
+Yeniden doldurma isteği başlatıldıktan sonra iptal edilemez. Yeniden doldurma işlemi sırasında, *x-MS-Access-Tier* blob özelliği çevrimiçi bir katmana yeniden doldurma tamamlanana kadar arşiv olarak gösterilmeye devam edecektir. Yeniden doldurma durumunu ve ilerlemesini onaylamak için, [BLOB özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties) ' ı çağırıp *x-MS-Archive-Status* ve *x-MS-rehibulunan öncelikli* blob özelliklerini kontrol edebilirsiniz. Arşiv durumu, yeniden doldurma hedef katmanına bağlı olarak "rehion-to-Hot" veya "rehion-with-soğuk" olarak okunabilir. Yeniden doldurma önceliği, "yüksek" veya "standart" hızını gösterecektir. Tamamlandıktan sonra, arşiv durumu ve yeniden doldurma önceliği özellikleri kaldırılır ve erişim katmanı blobu özelliği seçili sık veya seyrek katmanı yansıtacak şekilde güncelleştirilir.

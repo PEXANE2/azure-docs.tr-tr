@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335981"
+ms.locfileid: "82233491"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management SSS
 Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını alın.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="contact-us"></a>Bizimle iletişim kurun
-* [Microsoft Azure API Management ekipte soru sorabilirsiniz.](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 * [Bir özellik önizlemede olduğunda ne anlama geliyor?](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -48,15 +45,8 @@ Azure API Management için sık sorulan soruların, desenlerin ve en iyi yöntem
 * [API Management hizmetini bir abonelikten diğerine taşıyabilir miyim?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [API 'mi içeri aktarma konusunda kısıtlamalar veya bilinen sorunlar var mı?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Microsoft Azure API Management ekipte soru sorabilirsiniz.
-Aşağıdaki seçeneklerden birini kullanarak bizimle iletişim sağlayabilirsiniz:
-
-* Sorularınızı [API Management MSDN forumumuza](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt)gönderin.
-* <mailto:apimgmt@microsoft.com> adresine e-posta gönderin.
-* [Azure geri bildirim forumuna](https://feedback.azure.com/forums/248703-api-management)bir özellik isteği gönderin.
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Bir özellik önizlemede olduğunda ne anlama geliyor?
-Bir özellik önizlemede olduğunda, özelliğin sizin için nasıl çalıştığı konusunda etkin bir şekilde geri bildirimde bulunduğumuz anlamına gelir. Önizlemedeki bir özellik işlevsel olarak tamamlanmıştır, ancak müşteri geri bildirimlerine yanıt olarak bir değişiklik yapacağız olasıdır. Üretim ortamınızda önizlemede olan bir özelliğe bağlı memenizi öneririz. Önizleme özellikleriyle ilgili geri bildiriminiz varsa, lütfen [Microsoft Azure API Management takımına nasıl soru sorabilirim? konusundaki](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)iletişim seçeneklerinden birini öğrenmek için lütfen bize bildirin.
+Bir özellik önizlemede olduğunda, özelliğin sizin için nasıl çalıştığı konusunda etkin bir şekilde geri bildirimde bulunduğumuz anlamına gelir. Önizlemedeki bir özellik işlevsel olarak tamamlanmıştır, ancak müşteri geri bildirimlerine yanıt olarak bir değişiklik yapacağız olasıdır. Üretim ortamınızda önizlemede olan bir özelliğe bağlı memenizi öneririz.
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ağ geçidi ile arka uç hizmetleri arasındaki bağlantının güvenliğini nasıl sağlayabilirim?
 API Management ağ geçidi ile arka uç hizmetleriniz arasındaki bağlantıyı güvenli hale getirmek için çeşitli seçenekleriniz vardır. Şunları yapabilirsiniz:

@@ -9,41 +9,41 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e06b5261ca6923e158c818d236a30cf6ebff189b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680918"
 ---
-Bu bölümde, Doğrudan bakışlandırma için aşağıdaki değişiklik işlemleri nasıl gerçekleştirilir açıklanmaktadır.
+Bu bölümde, doğrudan eşleme için aşağıdaki değişiklik işlemlerinin nasıl gerçekleştirileceği açıklanmaktadır.
 
-### <a name="add-exchange-peering-connections"></a>Exchange eşleme bağlantıları ekleme
+### <a name="add-exchange-peering-connections"></a>Exchange eşleme bağlantıları Ekle
 
-1. + **Bağlantı Ekle** düğmesini seçin ve yeni bir karşıla bağlantı yapınız.
+1. **+ Bağlantı ekle** düğmesini seçin ve yeni bir eşleme bağlantısı yapılandırın.
     > [!div class="mx-imgBorder"]
-    > ![Kaynak görünümünü görüntüleme](../media/setup-exchange-modify-addconnection.png)
-1. **Exchange peering Connection** formunu doldurun ve **Kaydet'i**seçin. Bir eşleme bağlantısı yapılandırma konusunda yardım için, "Doğrudan bir bakış oluşturma ve sağlama" bölümündeki adımları gözden geçirin.
+    > ![Eşleme kaynağı görünümü](../media/setup-exchange-modify-addconnection.png)
+1. **Exchange eşleme bağlantısı** formunu doldurun ve **Kaydet**' i seçin. Eşleme bağlantısı yapılandırmaya yönelik yardım için "doğrudan eşleme oluşturma ve sağlama" bölümündeki adımları gözden geçirin.
     > [!div class="mx-imgBorder"]
-    > ![Exchange Peering Connection formu](../media/setup-exchange-modify-savenewconnection.png)
+    > ![Exchange eşleme bağlantı formu](../media/setup-exchange-modify-savenewconnection.png)
 
-### <a name="remove-exchange-peering-connections"></a>Exchange eşleme bağlantılarını kaldırma
+### <a name="remove-exchange-peering-connections"></a>Exchange eşleme bağlantılarını kaldır
 
-1. Silmek istediğiniz bir eşleme bağlantısı seçin ve sonra **...**  >  **Bağlantıyı sil.**
+1. Silmek istediğiniz eşleme bağlantısını seçin ve ardından **..** . seçeneğini belirleyin.  >  **Bağlantıyı silin**.
     > [!div class="mx-imgBorder"]
-    > ![Bağlantı düğmesini sil](../media/setup-exchange-modify-deleteconnection.png)
-1. Sil'i Sil kutusunu **onayla** kutusuna kaynak kimliğini girin ve **Sil'i**seçin.
+    > ![Bağlantıyı Sil düğmesi](../media/setup-exchange-modify-deleteconnection.png)
+1. **Onaylama silme** kutusuna kaynak kimliğini girin ve **Sil**' i seçin.
     > [!div class="mx-imgBorder"]
-    > ![Onayı silme](../media/setup-exchange-modify-deleteconnectionconfirm.png)
+    > ![Silme onayı](../media/setup-exchange-modify-deleteconnectionconfirm.png)
 
-### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4 veya IPv6 oturumu ekleme
+### <a name="add-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılara IPv4 veya IPv6 oturumu ekleme
 
-1. Değiştirmek istediğiniz bir eşleme bağlantısı seçin ve sonra **...**  >  **Bağlantıyı edin.**
+1. Değiştirmek istediğiniz eşleme bağlantısını seçin ve ardından **..** . seçeneğini belirleyin.  >  **Bağlantıyı Düzenle**.
     > [!div class="mx-imgBorder"]
-    > ![Bağlantıyı ede düğmesini edin](../media/setup-exchange-modify-editconnection.png)
-1. **IPv4 adresi** veya **IPv6 adres** bilgilerini ekleyin ve **Kaydet'i**seçin.
+    > ![Bağlantıyı Düzenle düğmesi](../media/setup-exchange-modify-editconnection.png)
+1. **IPv4 adresi** veya **IPv6 adresi** bilgileri ekleyin ve **Kaydet**' i seçin.
     > [!div class="mx-imgBorder"]
-    > ![Eşleme bağlantısı modifikasyonları](../media/setup-exchange-modify-editconnectionsettings.png)
+    > ![Eşleme bağlantısı değişiklikleri](../media/setup-exchange-modify-editconnectionsettings.png)
 
-### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılarda Bir IPv4 veya IPv6 oturumunu kaldırma
+### <a name="remove-an-ipv4-or-ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4 veya IPv6 oturumu kaldırma
 
-Varolan bir bağlantıdan bir IPv4 veya IPv6 oturumunun kaldırılması şu anda portalda desteklenmez. Daha fazla bilgi için [Microsoft'a başvurun.](mailto:peeringexperience@microsoft.com)
+Mevcut bir bağlantıdan IPv4 veya IPv6 oturumunun kaldırılması Şu anda portalda desteklenmiyor. Daha fazla bilgi için [Microsoft eşlemesi](mailto:peeringexperience@microsoft.com)'ne başvurun.

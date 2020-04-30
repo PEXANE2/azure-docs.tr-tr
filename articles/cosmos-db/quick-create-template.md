@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Azure Kaynak Yöneticisi şablonu kullanarak bir Azure Cosmos DB ve kapsayıcı oluşturun
-description: Azure Kaynak Yöneticisi şablonu kullanarak Azure Cosmos veritabanının ve kapsayıcının nasıl yapılacağını gösteren hızlı başlangıç
+title: Hızlı başlangıç-Azure Resource Manager şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
+description: Azure Resource Manager şablonu kullanarak bir Azure Cosmos veritabanının ve kapsayıcısının nasıl yapılacağını gösteren hızlı başlangıç
 author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
@@ -9,23 +9,23 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81605459"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Hızlı başlatma: Azure Kaynak Yöneticisi şablonu kullanarak bir Azure Cosmos DB ve kapsayıcı oluşturun
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak Azure Cosmos DB ve kapsayıcı oluşturma
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızla oluşturmak ve sorgulamak için Azure Cosmos DB'yi kullanabilirsiniz. Bu hızlı başlangıç, bir Azure Cosmos veritabanı ve bu veritabanı içinde bir kapsayıcı oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanır. Verileri daha sonra bu kapsayıcıda depolayabilirsiniz.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Anahtar/değer veritabanlarını, belge veritabanlarını ve grafik veritabanlarını hızlıca oluşturmak ve sorgulamak için Azure Cosmos DB kullanabilirsiniz. Bu hızlı başlangıç, bir Azure Cosmos veritabanı ve bu veritabanı içindeki bir kapsayıcı oluşturmak için bir Kaynak Yöneticisi şablonu dağıtma işlemine odaklanmaktadır. Daha sonra bu kapsayıcıdaki verileri saklayabilirsiniz.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
+Bir Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,55 +33,55 @@ Azure aboneliği veya ücretsiz Azure Cosmos DB deneme hesabı
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
 
-Şablonda üç Azure kaynağı tanımlanır:
+Şablonda üç Azure kaynağı tanımlanmıştır:
 
-* [Microsoft.DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): Bir Azure Cosmos hesabı oluşturun.
+* [Microsoft. DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): bir Azure Cosmos hesabı oluşturun.
 
-* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): Azure Cosmos veritabanı oluşturun.
+* [Microsoft. DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): bir Azure Cosmos veritabanı oluşturma.
 
-* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): Bir Azure Cosmos kapsayıcısı oluşturun.
+* [Microsoft. DocumentDB/databaseAccounts/sqlDatabases/kapsayıcılar](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): bir Azure Cosmos kapsayıcısı oluşturun.
 
-Daha fazla Azure Cosmos DB şablon örnekleri [quickstart şablon galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)bulunabilir.
+Daha fazla Azure Cosmos DB Şablon örneği [hızlı başlangıç şablonu galerisinde](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)bulunabilir.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Cosmos hesabı, bir veritabanı ve bir kapsayıcı oluşturur.
+1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın. Şablon bir Azure Cosmos hesabı, veritabanı ve bir kapsayıcı oluşturur.
 
    [![Azure’a dağıtma](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-   ![Kaynak Yöneticisi şablonu, Azure Cosmos DB entegrasyonu, portalı dağıtma](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   ![Kaynak Yöneticisi şablonu, Azure Cosmos DB tümleştirme, Portal dağıtma](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
 
-    Belirtilmediği sürece, Azure Cosmos kaynaklarını oluşturmak için varsayılan değerleri kullanın.
+    Belirtilmediği takdirde, Azure Cosmos kaynaklarını oluşturmak için varsayılan değerleri kullanın.
 
     * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Yeni Oluştur'u**seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam'ı**tıklatın.
+    * **Kaynak grubu**: **Yeni oluştur**' u seçin, kaynak grubu için benzersiz bir ad girin ve ardından **Tamam**' a tıklayın.
     * **Konum**: Bir konum seçin.  Örneğin, **Orta ABD**.
-    * **Hesap Adı**: Azure Cosmos hesabının adını girin. Dünya çapında benzersiz olmalı.
-    * **Konum**: Azure Cosmos hesabınızı oluşturmak istediğiniz bir konum girin. Azure Cosmos hesabı kaynak grubuyla aynı konumda olabilir.
-    * **Birincil Bölge**: Azure Cosmos hesabının birincil yineleme bölgesi.
-    * **İkincil bölge**: Azure Cosmos hesabının ikincil yineleme bölgesi.
-    * **Veritabanı Adı**: Azure Cosmos veritabanının adı.
-    * **Konteyner Adı**: Azure Cosmos kapsayıcısının adı.
-    * **Elde Edilen Kaynak**: Konteynerin iş mesuliyni, minimum iş bedeli 400 RU/s'dir.
+    * **Hesap adı**: Azure Cosmos hesabı için bir ad girin. Bu, genel olarak benzersiz olmalıdır.
+    * **Konum**: Azure Cosmos hesabınızı oluşturmak istediğiniz konumu girin. Azure Cosmos hesabı, kaynak grubuyla aynı konumda olabilir.
+    * **Birincil bölge**: Azure Cosmos hesabının birincil çoğaltma bölgesi.
+    * **İkincil bölge**: Azure Cosmos hesabı için ikincil çoğaltma bölgesi.
+    * **Veritabanı adı**: Azure Cosmos veritabanının adı.
+    * **Kapsayıcı adı**: Azure Cosmos kapsayıcısının adı.
+    * **Aktarım hızı**: kapsayıcı için aktarım hızı, en düşük aktarım hızı DEĞERI 400 ru/sn 'dir.
     * **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: Seçin.
 
 3. **Satın al**'ı seçin. Azure Cosmos hesabı başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
-   ![Kaynak Yöneticisi şablonu, Cosmos DB entegrasyonu, portal bildirimi dağıtma](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   ![Kaynak Yöneticisi şablonu, Cosmos DB tümleştirme, Portal dağıtma bildirimi](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-Azure portalı şablonu dağıtmak için kullanılır. Azure portalına ek olarak, Azure PowerShell, Azure CLI ve REST API'yi de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için [şablonları dağıt'a](../azure-resource-manager/templates/deploy-powershell.md)bakın.
+Azure portal, şablonu dağıtmak için kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="validate-the-deployment"></a>Dağıtımı doğrulama
 
-Azure Cosmos hesabını, veritabanını ve kapsayıcıyı denetlemek için Azure portalını kullanabilir veya oluşturulan sırrı listelemek için aşağıdaki Azure CLI veya Azure PowerShell komut dosyasını kullanabilirsiniz.
+Azure Cosmos hesabını, veritabanını ve kapsayıcısını denetlemek için Azure portal kullanabilir ya da oluşturulan gizli anahtarı listelemek için aşağıdaki Azure CLı veya Azure PowerShell betiğini kullanabilirsiniz.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -106,7 +106,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Sonraki ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmak isteyebilirsiniz.
-Artık gerekmediğinde, Azure Cosmos hesabını ve ilgili kaynakları silen kaynak grubunu silin. Azure CLI veya Azure Powershell kullanarak kaynak grubunu silmek için:
+Artık gerekli değilse, Azure Cosmos hesabını ve ilgili kaynakları silen kaynak grubunu silin. Azure CLı veya Azure PowerShell kullanarak kaynak grubunu silmek için:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -129,8 +129,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Kaynak Yöneticisi şablonu kullanarak bir Azure Cosmos hesabı, veritabanı ve kapsayıcı oluşturdunuz ve dağıtımı doğruladınız. Azure Cosmos DB ve Azure Kaynak Yöneticisi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kullanarak bir Azure Cosmos hesabı, veritabanı ve kapsayıcı oluşturdunuz ve dağıtımı doğruladı. Azure Cosmos DB ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
 
-- Azure [Cosmos DB'ye Genel Bakış](introduction.md)
-- [Azure Kaynak Yöneticisi](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
-- Diğer [Azure Cosmos DB Kaynak Yöneticisi şablonlarını](resource-manager-samples.md) alın
+- [Azure Cosmos DB genel bakışını](introduction.md) okuyun
+- [Azure Resource Manager](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin
+- Diğer [Azure Cosmos DB kaynak yöneticisi şablonlarını](resource-manager-samples.md) al

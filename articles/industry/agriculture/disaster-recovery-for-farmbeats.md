@@ -1,66 +1,66 @@
 ---
-title: FarmBeats için felaket kurtarma
-description: Bu makalede, veri kurtarma verilerinizi kaybetmeye karşı nasıl korur açıklanmaktadır.
+title: Farmtts için olağanüstü durum kurtarma
+description: Bu makalede, veri kurtarmanın verilerinizi kaybetmekten nasıl koruduğu açıklanmaktadır.
 author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
 ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683904"
 ---
-# <a name="disaster-recovery-for-farmbeats"></a>FarmBeats için felaket kurtarma
+# <a name="disaster-recovery-for-farmbeats"></a>Farmtts için olağanüstü durum kurtarma
 
-Veri kurtarma, Azure bölgesinin çökmesi gibi bir durumda verilerinizi kaybetmenizi sağlar. Böyle bir durumda, başarısız olmaya başlayabilir ve FarmBeats dağıtımınızda depolanan verileri kurtarabilirsiniz.
+Veri kurtarma, Azure bölgesini daraltma gibi bir olaydaki verilerinizi kaybetmenize karşı korur. Böyle bir olayda, yük devretmeyi başlatabilir ve Farmtts dağıtımınızda depolanan verileri kurtarabilirsiniz.
 
-Veri kurtarma, Azure FarmBeats'te varsayılan bir özellik değildir. Verileri Azure eşleştirilmiş bir bölgede depolamak için FarmBeats tarafından kullanılan gerekli Azure kaynaklarını yapılandırarak bu özelliği el ile yapılandırabilirsiniz. Kurtarmayı etkinleştirmek için Etkin – Pasif yaklaşımını kullanın.
+Veri kurtarma, Azure Farmtempts 'de varsayılan bir özellik değildir. Bu özelliği, verileri bir Azure eşlenmiş bölgesinde depolamak üzere Farmtts tarafından kullanılan gerekli Azure kaynaklarını yapılandırarak el ile yapılandırabilirsiniz. Kurtarmayı etkinleştirmek için etkin – Pasif yaklaşım kullanın.
 
-Aşağıdaki bölümler, Azure FarmBeats'te veri kurtarmayı nasıl yapılandırabileceğiniz hakkında bilgi sağlar:
+Aşağıdaki bölümlerde Azure Farmtts 'de veri kurtarmayı nasıl yapılandırabileceğiniz hakkında bilgi sağlanmaktadır:
 
-- [Veri artıklığını etkinleştirme](#enable-data-redundancy)
-- [Çevrimiçi yedeklemeden hizmeti geri yükleme](#restore-service-from-online-backup)
+- [Veri artıklığını etkinleştir](#enable-data-redundancy)
+- [Hizmeti çevrimiçi yedekten geri yükleme](#restore-service-from-online-backup)
 
 
-## <a name="enable-data-redundancy"></a>Veri artıklığını etkinleştirme
+## <a name="enable-data-redundancy"></a>Veri artıklığını etkinleştir
 
-FarmBeats, verileri **Azure depolama**, **Cosmos DB** ve **Time Series Insights**olan üç Azure birinci taraf hizmetinde depolar. Bu hizmetler için eşleştirilmiş bir Azure bölgesine veri artıklığını etkinleştirmek için aşağıdaki adımları kullanın:
+Farm, verileri **Azure depolama**, **Cosmos DB** ve **Time Series Insights**olmak üzere üç Azure birinci taraf hizmeti halinde depolar. Bu hizmetler için eşleştirilmiş bir Azure bölgesine veri yedekliliği etkinleştirmek üzere aşağıdaki adımları kullanın:
 
-1.  **Azure Depolama** - FarmBeats dağıtımınızdaki her depolama hesabı için veri artıklığını etkinleştirmek için bu kılavuzu izleyin.
-2.  **Azure Cosmos DB** - FarmBeats dağıtımınız için Cosmos DB hesabı için veri artıklığını etkinleştirmek için bu kılavuzu izleyin.
-3.  **Azure Zaman Serisi Öngörüleri (TSI) - TSI** şu anda veri artıklığı sunmuyor. Time Series Insights verilerini kurtarmak için sensör/hava durumu ortağınıza gidin ve verileri FarmBeats dağıtımına yeniden itin.
+1.  **Azure depolama** -bu yönergeleri Izleyerek, Farmtts dağıtımınızdaki her bir depolama hesabı için veri yedekliliği etkinleştirin.
+2.  **Azure Cosmos DB** -bu kılavuzu, Farmtts dağıtımınızın Cosmos DB hesabı için veri yedekliliği etkinleştirmek üzere izleyin.
+3.  **Azure Time Series Insights (TSİ)** -TSI Şu anda veri artıklığı sunmaz. Time Series Insights verileri kurtarmak için sensör/Hava durumu iş ortağınıza gidin ve verileri Farmto dağıtımına yeniden gönderin.
 
-## <a name="restore-service-from-online-backup"></a>Çevrimiçi yedeklemeden hizmeti geri yükleme
+## <a name="restore-service-from-online-backup"></a>Hizmeti çevrimiçi yedekten geri yükleme
 
-FarmBeats dağıtımınız için yukarıda belirtilen veri depolarının her biri için depolanan failover'ı başlatabilir ve depolanan verileri kurtarabilirsiniz. Azure depolama ve Cosmos DB verilerini kurtardıktan sonra, Azure eşleştirilmiş bölgede başka bir FarmBeats dağıtımı oluşturun ve ardından yeni dağıtımı, geri yüklenen veri depolarından (örneğin Azure Depolama ve Cosmos DB) aşağıdaki adımları kullanarak verileri kullanacak şekilde yapılandırın:
+Yük devretmeyi başlatabilir ve depolanan verileri kurtarabilirsiniz, bu, yukarıda belirtilen verilerin her biri, Farmtts dağıtımınız için depolar. Azure depolama ve Cosmos DB yönelik verileri kurtardıktan sonra, Azure eşlenmiş bölgesinde başka bir Farmtts dağıtımı oluşturun ve ardından yeni dağıtımı, aşağıdaki adımları kullanarak geri yüklenen veri depolarından (yani Azure depolama ve Cosmos DB) veri kullanacak şekilde yapılandırın:
 
 1. [Cosmos DB’yi yapılandırma](#configure-cosmos-db)
-2. [Depolama Hesabını Yapılandırma](#configure-storage-account)
+2. [Depolama hesabını yapılandırma](#configure-storage-account)
 
 
 ### <a name="configure-cosmos-db"></a>Cosmos DB’yi yapılandırma
 
-Geri yüklenen Cosmos DB'nin erişim anahtarını kopyalayın ve yeni FarmBeats Datahub Key Vault'u güncelleyin.
+Geri yüklenen Cosmos DB erişim anahtarını kopyalayın ve yeni Farmrets veri hub 'ını Key Vault güncelleştirin.
 
 
   ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
-> Geri yüklenen Cosmos DB'nin URL'sini kopyalayın ve yeni FarmBeats Datahub App Service Configuration'da güncelleyin. Artık yeni FarmBeats dağıtımında Cosmos DB hesabını silebilirsiniz.
+> Geri yüklenen Cosmos DB URL 'sini kopyalayın ve yeni Farmrets Datahub App Service yapılandırmasında güncelleştirin. Artık yeni Farmtts dağıtımında Cosmos DB hesabını silebilirsiniz.
 
   ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/configuration.png)
 
-### <a name="configure-storage-account"></a>Depolama Hesabını Yapılandırma
+### <a name="configure-storage-account"></a>Depolama hesabını yapılandırma
 
-Geri yüklenen depolama hesabının erişim anahtarını kopyalayın ve yeni FarmBeats Datahub Key Vault'ta güncelleyin.
+Geri yüklenen depolama hesabının erişim anahtarını kopyalayın ve yeni Farmrets veri hub 'ında Key Vault güncelleştirin.
 
 ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
-> Yeni FarmBeats Toplu VM config dosyasında Depolama Hesabı adını güncelleştirin.
+> Yeni Farmtts Batch VM yapılandırma dosyasında depolama hesabı adını güncelleştirdiğinizden emin olun.
 
 ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/batch-prep-files.png)
 
-Benzer şekilde, Hızlandırıcı depolama hesabınız için veri kurtarmayı etkinleştirdiyseniz, yeni FarmBeats örneğinde hızlandırıcı Depolama Hesabı erişim anahtarını ve adını güncelleştirmek için 2 adımını izleyin.
+Benzer şekilde, Hızlandırıcı depolama hesabınız için veri kurtarmayı etkinleştirdiyseniz, yeni Farmtts örneğinde Hızlandırıcı depolama hesabı erişim anahtarı ve adını güncelleştirmek için adım 2 ' yi izleyin.

@@ -1,21 +1,21 @@
 ---
-title: Windows sanal masaüstü için Azure Multi-Factor Authentication 'ı ayarlama-Azure
-description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication 'ı ayarlama.
+title: Windows sanal masaüstü için Azure Multi-Factor Authentication ayarlama-Azure
+description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure Multi-Factor Authentication ayarlama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 069d2a153e307ed94032ce1d980f26521969fc56
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998467"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508352"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication’ı ayarlama
+# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Multi-Factor Authentication 'yi etkinleştirme
 
 Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü yerel makineli tümleştirmeyle ilgili mükemmel bir seçenektir. Ancak, Windows sanal masaüstü hesabınızı Windows Istemcisi olarak yapılandırdığınızda, kendinizi ve kullanıcılarınızın güvenliğini sağlamak için uygulamanız gereken bazı ölçüler vardır.
 
@@ -27,71 +27,34 @@ Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda 
 
 Başlamak için yapmanız gerekenler şunlardır:
 
-- Tüm kullanıcılarınıza aşağıdaki lisanslardan birini atayın:
-  - Microsoft 365 E3 veya E5
-  - Azure Active Directory Premium P1 veya P2
-  - Enterprise Mobility + Security E3 veya E5
+- Kullanıcılara Azure Active Directory Premium P1 veya P2 içeren bir lisans atayın.
 - Kullanıcılarınız Grup üyeleri olarak atanmış bir Azure Active Directory grubu.
 - Tüm kullanıcılarınız için Azure MFA 'yı etkinleştirin. Bunun nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [bir kullanıcı için iki adımlı doğrulama gerektirme](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
->[!NOTE]
->Aşağıdaki ayar [Windows Sanal Masaüstü Web istemcisi](https://rdweb.wvd.microsoft.com/webclient/index.html)için de geçerlidir.
+> [!NOTE]
+> Aşağıdaki ayar [Windows Sanal Masaüstü Web istemcisi](https://rdweb.wvd.microsoft.com/webclient/index.html)için de geçerlidir.
 
-## <a name="opt-in-to-the-conditional-access-policy"></a>Koşullu erişim ilkesini kabul etme
+## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-1. **Azure Active Directory**açın.
+Bu bölümde, Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesinin nasıl oluşturulacağı gösterilir.
 
-2. **Tüm uygulamalar** sekmesine gidin. "Uygulama türü" açılan menüsünde **Kurumsal uygulamalar**' ı seçin ve ardından **Windows sanal masaüstü istemcisi**' ni arayın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
+1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
+1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
+   1. **Ekle**' nin altında, **Kullanıcılar ve gruplar** > **Kullanıcılar ve gruplar** ' ı seçin > Önkoşullar aşamasında oluşturulan grubu seçin.
+   1. **Done** (Bitti) öğesini seçin.
+1. **Bulut uygulamaları veya eylemler** > **altında,** **Uygulama Seç**' i seçin.
+   1. **Windows sanal masaüstü** ve **Windows sanal masaüstü istemcisi** **' ni seçin ve ardından** **Tamam**' ı seçin.
+   ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise-selected.png)
+1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
+1. **Erişim denetimleri** > **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından öğesini **seçin**.
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
 
-    ![Tüm uygulamalar sekmesinin ekran görüntüsü. Kullanıcı arama çubuğuna "Windows sanal masaüstü istemcisi" girdi ve uygulama arama sonuçlarında gösteriliyor.](media/all-applications-search.png)
+## <a name="next-steps"></a>Sonraki adımlar
 
-3. **Koşullu erişim**' i seçin.
+- [Koşullu erişim ilkeleri hakkında daha fazla bilgi edinin](../active-directory/conditional-access/concept-conditional-access-policies.md)
 
-    ![Kullanıcının fare imlecini koşullu erişim sekmesinin üzerine imlediği bir ekran görüntüsü.](media/conditional-access-location.png)
-
-4. **+ Yeni ilke**' yi seçin.
-
-   ![Koşullu erişim sayfasının ekran görüntüsü. Kullanıcı, fare imlecini yeni ilke düğmesinin üzerine getirildiğinde.](media/new-policy-button.png)
-
-5. **Kural**için bir **ad** girin, ardından önkoşullarda oluşturduğunuz **grubun** adını **seçin** .
-
-6. **Seç**' i seçin ve **bitti**' yi seçin.
-
-7. Ardından, **bulut uygulamalarını veya eylemlerini**açın.
-
-8. **Seç** panelinde **Windows sanal masaüstü** kurumsal uygulamasını seçin.
-
-    ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Kullanıcı, yanındaki onay işaretini seçerek Windows sanal masaüstü uygulamasını seçti. Seçilen uygulama kırmızı renkle vurgulanır.](media/cloud-apps-select.png)
-    
-    >[!NOTE]
-    >Aşağıdaki görüntüde gösterildiği gibi, ekranın sol tarafında seçilen Windows sanal masaüstü Istemci uygulamasını da görmeniz gerekir. İlkenin çalışması için hem Windows sanal masaüstü hem de Windows sanal masaüstü Istemcisi kurumsal uygulamalarının olması gerekir.
-    >
-    > ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise-selected.png)
-
-9. **Seç** ' i seçin
-
-10. Sonra, açık **ver** 
-
-11. **Multi-Factor Authentication gerektir**' i seçin, sonra **Seçili denetimlerden birini gerektir**' i seçin.
-   
-    ![Izin sayfasının ekran görüntüsü. "Multi-Factor Authentication gerektir" seçilidir.](media/grant-page.png)
-
-    >[!NOTE]
-    >Kuruluşunuzda MDM 'ye kayıtlı cihazlar varsa ve MFA isteğini göstermesini istemiyorsanız, **cihazın uyumlu olarak Işaretlenmesini gerektir**' i de seçebilirsiniz.
-
-12. **Oturum**seçin.
-
-13. **Oturum açma sıklığını** **etkin**olarak ayarlayın, ardından değerini **1 saat**olarak değiştirin.
-
-    ![Oturum sayfasının ekran görüntüsü. Oturum menüsü, oturum açma sıklığı açılan menüsünün "1" ve "saat" olarak değiştirildiğini gösterir.](media/sign-in-frequency.png)
-   
-    >[!NOTE]
-    >Windows sanal masaüstü ortamınızdaki etkin oturumlar, ilkeyi değiştirirken çalışmaya devam edecektir. Bununla birlikte, bağlantısını keserseniz veya oturumu kapatırsanız, kimlik bilgilerinizi 60 dakika sonra yeniden sağlamanız gerekir. Ayarları değiştirirken, zaman aşımı süresini istediğiniz kadar genişletebilirsiniz (kuruluşunuzun güvenlik ilkesiyle aynı olduğu sürece).
-    >
-    >Varsayılan ayar, 90 günlük bir sıralı penceredir ve bu, istemcinin, makinenizde 90 gün veya daha uzun bir süre boyunca devre dışı kaldıktan sonra bir kaynağa erişmeyi denediğinde kullanıcılardan yeniden oturum açmasını isteytikleri anlamına gelir.
-
-14. İlkeyi etkinleştirin.
-
-15. İlkeyi onaylamak için **Oluştur** ' u seçin.
-
-Bitirdiniz! İzin verilenler listenizin istendiği gibi çalıştığından emin olmak için ilkeyi test etme ücretsizdir.
+- [Kullanıcı oturum açma sıklığı hakkında daha fazla bilgi edinin](../active-directory/conditional-access/howto-conditional-access-session-lifetime.md#user-sign-in-frequency)

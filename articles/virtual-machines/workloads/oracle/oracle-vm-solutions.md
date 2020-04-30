@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makinelerde Oracle çözümleri | Microsoft Dokümanlar
-description: Desteklenen yapılandırmalar ve Microsoft Azure'daki Oracle sanal makine görüntülerinin sınırlamaları hakkında bilgi edinin.
+title: Azure sanal makinelerinde Oracle çözümleri | Microsoft Docs
+description: Microsoft Azure 'de Oracle sanal makine görüntülerinin desteklenen yapılandırma ve sınırlamaları hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
 author: BorisB2015
@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: borisb
 ms.openlocfilehash: 0cee7c25960d567c75a14d8ad9ef95b3e7221862
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683427"
 ---
-# <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM görüntüleri ve bunların Microsoft Azure'da dağıtımı
+# <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı
 
-Bu makale, Oracle tarafından Azure Marketi'nde yayınlanan sanal makine resimlerine dayalı Oracle çözümleri hakkındaki bilgileri kapsar. Oracle Cloud Infrastructure ile çapraz bulut uygulama çözümleriyle ilgileniyorsanız, [Microsoft Azure ve Oracle Cloud Infrastructure'ı entegre eden Oracle uygulama çözümlerine](oracle-oci-overview.md)bakın.
+Bu makalede, Azure Marketi 'nde Oracle tarafından yayımlanan sanal makine görüntülerini temel alan Oracle çözümleri hakkında bilgiler yer almaktadır. Oracle bulut altyapısıyla platformlar arası uygulama çözümleri hakkında bilgi edinmek istiyorsanız, bkz. [Microsoft Azure ve Oracle bulut altyapısını tümleştirme Oracle uygulama çözümleri](oracle-oci-overview.md).
 
-Şu anda kullanılabilen görüntülerin listesini almak için aşağıdaki komutu çalıştırın:
+Şu anda kullanılabilir görüntülerin listesini almak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az vm image list --publisher oracle -o table --all
 ```
 
-Mayıs 2019 itibariyle aşağıdaki resimler mevcuttur:
+Mayıs 2019 itibariyle aşağıdaki görüntüler kullanılabilir:
 
 ```bash
 Offer                   Publisher    Sku                     Urn                                                          Version
@@ -53,93 +53,93 @@ Oracle-Linux            Oracle       7.6                     Oracle:Oracle-Linux
 Oracle-WebLogic-Server  Oracle       Oracle-WebLogic-Server  Oracle:Oracle-WebLogic-Server:Oracle-WebLogic-Server:12.1.2  12.1.2
 ```
 
-Bu görüntüler "Kendi Lisansınızı Getir" olarak kabul edilir ve bu nedenle yalnızca bir VM çalıştırılmasından kaynaklanan işlem, depolama ve ağ maliyetleri için ücretlendirilirsiniz.  Oracle yazılımlarını kullanmak için uygun lisansa sahip olduğunuz ve Oracle ile geçerli bir destek anlaşmanız olduğu varsayılır. Oracle, şirket içi azure'a lisans hareketliliğini garanti etmiştir. Lisans hareketliliği yle ilgili ayrıntılar için yayınlanan [Oracle ve Microsoft](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html) notuna bakın. 
+Bu görüntüler "kendi lisansını getir" olarak değerlendirilir ve yalnızca bir VM çalıştırılarak oluşan işlem, depolama ve ağ maliyetleri için ücretlendirilirsiniz.  Oracle yazılımını kullanmaya doğru lisanslandığınızı ve Oracle ile geçerli bir destek sözleşmeniz olduğunu kabul edersiniz. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. Lisans Taşınabilirliği hakkındaki ayrıntılar için bkz. yayımlanmış [Oracle ve Microsoft](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html) Note. 
 
-Bireyler ayrıca, çözümlerini Azure'da sıfırdan oluşturdukları özel bir görüntüye dayandırmayı veya kendi tesislerindeki ortamlarından özel bir resim yüklemeyi de seçebilirler.
+Bireyler, çözümlerini Azure 'da sıfırdan oluşturdukları özel bir görüntüye dayandırın ve şirket içi ortamlarından özel bir görüntüyü karşıya yükleyebilir.
 
-## <a name="oracle-database-vm-images"></a>Oracle veritabanı VM görüntüleri
-Oracle, Oracle Linux'u temel alan sanal makine görüntülerinde Oracle Database 12.1 ve daha yüksek Standart ve Kurumsal sürümlerini Azure'da çalıştırmayı destekler.  Azure'daki Oracle Veritabanı'nın üretim iş yüklerinde en iyi performansı elde etmek için, VM görüntüsünü düzgün boyutlandırın ve Premium SSD veya Ultra SSD Yönetilen Diskler'i kullandığınızdan emin olun. Oracle tarafından yayınlanan VM görüntüsünü kullanarak Azure'da oracle veritabanını hızlı bir şekilde nasıl çalışır hale getirebilirsiniz, [Oracle Database Quickstart walkthrough'u deneyin.](oracle-database-quick-create.md)
+## <a name="oracle-database-vm-images"></a>Oracle Database VM görüntüleri
+Oracle, Oracle Linux tabanlı sanal makine görüntülerinde Azure 'da Oracle Database 12,1 ve daha yüksek standart ve Enterprise sürümlerini çalıştırmayı destekler.  Azure 'da Oracle Database üretim iş yükleri için en iyi performans için, VM görüntüsünü düzgün bir şekilde boyutlandırdığınızdan ve Premium SSD veya Ultra SSD yönetilen diskleri kullandığınızdan emin olun. Oracle yayımlanmış VM görüntüsünü kullanarak Azure 'da bir Oracle Database çalışmaya ve çalıştırmaya hızlı bir şekilde nasıl yararlandığınıza ilişkin yönergeler için [Oracle Database hızlı başlangıç kılavuzunu deneyin](oracle-database-quick-create.md).
 
 ### <a name="attached-disk-configuration-options"></a>Ekli disk yapılandırma seçenekleri
 
-Ekli diskler Azure Blob depolama hizmetine güvenir. Her standart disk, saniyede yaklaşık 500 giriş/çıkış işlemi (IOPS) teorik olarak maksimum kapasiteye sahiptir. Premium disk teklifimiz yüksek performanslı veritabanı iş yükleri için tercih edilir ve disk başına 5000 IOps'a kadar ulaşabilirsiniz. Performans gereksinimlerinizi karşılıyorsa tek bir disk kullanabilirsiniz. Ancak, birden çok bağlı disk kullanıyorsanız, veritabanı verilerini bunlara yayıyorsanız ve ardından Oracle Automatic Storage Management (ASM) kullanıyorsanız etkili IOPS performansını artırabilirsiniz. Daha fazla Oracle ASM özel bilgi için [Oracle Otomatik Depolama genel bakış](https://www.oracle.com/technetwork/database/index-100339.html) bakın. Oracle ASM'nin Linux Azure VM'ye nasıl yüklenir ve [Installing and Configuring Oracle Automated Storage Management](configure-oracle-asm.md) yapılandırılır, bkz.
+Eklenen diskler, Azure Blob depolama hizmetini kullanır. Her standart disk, saniyede en fazla 500 giriş/çıkış işlemi (ıOPS) özelliğine sahiptir. Premium disk teklifimiz, yüksek performanslı veritabanı iş yükleri için tercih edilir ve disk başına 5000 IOPS 'yi alabilir. Performans ihtiyaçlarınızı karşılıyorsa tek bir disk kullanabilirsiniz. Ancak, birden çok bağlı disk kullanırsanız, veritabanı verilerini bunlar arasında yaydıysanız ve sonra Oracle otomatik depolama yönetimi (ASM) kullanıyorsanız, etkin ıOPS performansını artırabilirsiniz. Oracle ASM 'e özgü daha fazla bilgi için bkz. [Oracle otomatik depolamaya genel bakış](https://www.oracle.com/technetwork/database/index-100339.html) . Linux Azure VM 'de Oracle ASM 'yi yükleme ve yapılandırma hakkında bir örnek için bkz. [Oracle otomatik depolama yönetimi öğreticisini yükleme ve yapılandırma](configure-oracle-asm.md) .
 
 ### <a name="shared-storage-configuration-options"></a>Paylaşılan depolama yapılandırma seçenekleri
 
-Azure NetApp Files, buluttaki veritabanları gibi yüksek performanslı iş yüklerini çalıştırmanın temel gereksinimlerini karşılayacak şekilde tasarlanmıştır ve şunları sağlar;
-- Oracle iş yüklerini VM yerel NFS istemcisi veya Oracle dNFS üzerinden çalıştırmak için Azure yerel paylaşılan NFS depolama hizmeti
-- IOPS taleplerinin gerçek dünya yelpazesini yansıtan ölçeklenebilir performans katmanları
-- Düşük gecikme gecikmesi
-- Yüksek kullanılabilirlik, yüksek dayanıklılık ve ölçekte yönetilebilirlik, genellikle görev kritik kurumsal iş yükleri tarafından talep (SAP ve Oracle gibi)
-- En agresif RTO ve RPO SLA'ları elde etmek için hızlı ve verimli yedekleme ve kurtarma
+Azure NetApp Files, bulutta veritabanları gibi yüksek performanslı iş yüklerini çalıştırmanın temel gereksinimlerini karşılayacak şekilde tasarlanmıştır ve şunları sağlar;
+- VM yerel NFS istemcisi veya Oracle dNFS aracılığıyla Oracle iş yüklerini çalıştırmak için Azure yerel paylaşılan NFS depolama hizmeti
+- Gerçek dünyada ıOPS taleplerini yansıtan ölçeklenebilir performans katmanları
+- Düşük gecikme süresi
+- Genellikle görev açısından kritik kurumsal iş yükleri (SAP ve Oracle gibi) tarafından talep edilen yüksek düzeyde kullanılabilirlik, yüksek dayanıklılık ve yönetilebilirlik
+- En agresif RTO ve RPO SLA 'lara ulaşmak için hızlı ve verimli yedekleme ve kurtarma
 
-Azure NetApp Dosyaları, Azure veri merkezi ortamında çalışan tüm flash sistemler e-® Azure Yerel hizmeti olarak NetApp® ONTAP'ı temel aldığı için bu özellikler mümkündür. Sonuç, diğer Azure depolama seçenekleri gibi sağlanabilir ve tüketilebilen ideal bir veritabanı depolama teknolojisidir. Azure NetApp Files NFS ciltlerinin nasıl dağıtılanve erişilenhakkında daha fazla bilgi için [Azure NetApp Dosyaları belgelerine](https://docs.microsoft.com/azure/azure-netapp-files/) bakın. Azure [NetApp Dosyaları'nda](https://www.netapp.com/us/media/tr-4780.pdf) Oracle veritabanını işletmek için en iyi uygulama önerileri için Azure NetApp Dosyalarını Kullanarak Azure Dağıtım En İyi Uygulama Kılavuzu'nda Oracle'a bakın.
-
-
-## <a name="licensing-oracle-database--software-on-azure"></a>Azure'da Oracle Veritabanı & yazılımı lisanslama
-Microsoft Azure, Oracle Veritabanı'nı çalıştırmak için yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanlarını lisanslarken geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilen Hyper-Threading Teknolojisine sahip VM'ler kullanırken, hiperiş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPUs'u bir Oracle İşlemci lisansına eşdeğer olarak sayın. İlke ayrıntılarını [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulabilirsiniz.
-Oracle veritabanları genellikle daha yüksek bellek ve IO gerektirir. Bu nedenle, [bellek optimize edilmiş VM'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) bu iş yükleri için önerilir. İş yüklerinizi daha da optimize etmek için, yüksek bellek, depolama ve G/Ç bant genişliği gerektiren ancak yüksek çekirdek sayısı gerektirmeyen Oracle Veritabanı iş yükleri için [Kısıtlı Çekirdek vCPUs'ları](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) önerilir.
-
-Oracle yazılımlarını ve iş yüklerini şirket içinden Microsoft Azure'a geçirdiğinizde, Oracle Azure [SSS'de](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) belirtildiği gibi lisans mobilitesi sağlar
+Azure NetApp Files, Azure yerel hizmeti olarak Azure veri merkezi ortamında çalışan tüm Flash sistemlerine®® ONTAP 'ı temel aldığı için bu yetenekler olasıdır. Sonuç olarak, diğer Azure depolama seçenekleri gibi sağlanabilen ve tüketilen ideal bir veritabanı depolama teknolojisidir. Azure NetApp Files NFS birimlerine dağıtım ve erişme hakkında daha fazla bilgi için bkz. [Azure NetApp Files belgeleri](https://docs.microsoft.com/azure/azure-netapp-files/) . Azure NetApp Files bir Oracle veritabanı çalıştırmak için en iyi yöntem önerileri için [Azure NetApp Files kullanarak Oracle 'ın Azure dağıtımı En Iyi Yöntem Kılavuzu '](https://www.netapp.com/us/media/tr-4780.pdf) na bakın.
 
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Gerçek Uygulama Kümesi (Oracle RAC)
-Oracle Real Application Cluster (Oracle RAC), şirket içi çok düğümlü küme yapılandırmasında tek bir düğümün arızasını azaltmak için tasarlanmıştır. Bu, hiper ölçekli genel bulut ortamlarına özgü olmayan iki şirket içi teknolojiye dayanır: ağ çok dökümlü ve paylaşılan disk. Veritabanı çözümünüz Azure'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü taraf yazılıma ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için [FlashGrid SkyCluster sayfasına](https://www.flashgrid.io/oracle-rac-in-azure/)bakın.
+## <a name="licensing-oracle-database--software-on-azure"></a>Azure 'da & Yazılım Oracle Database lisanslama
+Microsoft Azure, Oracle Database çalıştırmaya yönelik yetkili bir bulut ortamıdır. Oracle Core Factor tablosu, bulutta Oracle veritabanları lisanslandığınızda geçerli değildir. Bunun yerine, Enterprise Edition veritabanları için etkinleştirilmiş hiper Iş parçacığı teknolojisine sahip VM 'Leri kullanırken, hiper iş parçacığı etkinse (ilke belgesinde belirtildiği gibi) iki vCPU 'yu bir Oracle Işlemci lisansına eşdeğer olarak Sayın. İlke ayrıntıları [burada](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)bulunabilir.
+Oracle veritabanları genellikle daha yüksek bellek ve GÇ gerektirir. Bu nedenle, bu iş yükleri için [bellek Için Iyileştirilmiş VM 'ler](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) önerilir. İş yüklerinizi daha iyi bir şekilde iyileştirmek için, [kısıtlı çekirdek vCPU 'lar](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) yüksek bellek, depolama ve g/ç bant genişliği gerektiren, yüksek çekirdek sayısı olmayan Oracle Database iş yükleri için önerilir.
+
+Oracle yazılımı ve iş yüklerini Şirket içinden Microsoft Azure 'e geçirirken Oracle, [Azure 'Da Oracle](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 'da belirtildiği gibi lisans taşınabilirliği sağlar
+
+
+## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle gerçek uygulama kümesi (Oracle RAC)
+Oracle gerçek uygulama kümesi (Oracle RAC), şirket içi çok düğümlü küme yapılandırmasındaki tek bir düğümün başarısızlığını azaltmak için tasarlanmıştır. Hiper ölçekli genel bulut ortamlarında yerel olmayan iki şirket içi teknolojiyi kullanır: ağ çoklu yayın ve paylaşılan disk. Veritabanı Çözümünüz Azure 'da Oracle RAC gerektiriyorsa, bu teknolojileri etkinleştirmek için üçüncü = parti yazılımına ihtiyacınız vardır. Oracle RAC hakkında daha fazla bilgi için bkz. [Flashgrid ufuk kümesi sayfası](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma konuları
-Azure'da Oracle veritabanlarını kullanırken, herhangi bir kapalı kalma süresini önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümlerini uygulamaktan siz sorumlusunuz. 
+Azure 'da Oracle veritabanları kullanırken, herhangi bir kesinti yaşanmasını önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümü uygulamaktan siz sorumlusunuz. 
 
-Oracle Database Enterprise Edition için yüksek kullanılabilirlik ve olağanüstü durum kurtarma (Oracle RAC güvenmeden) Iki ayrı sanal makinelerde iki veritabanları ile [Veri Koruma, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)veya Oracle [GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)kullanarak Azure'da elde edilebilir. Her iki sanal makine de özel kalıcı IP adresi üzerinden birbirlerine erişebildiklerinden emin olmak için aynı [sanal ağda](https://azure.microsoft.com/documentation/services/virtual-network/) olmalıdır.  Ayrıca, sanal makineleri Azure'un ayrı hata etki adlarına yerleştirmesine ve etki alanlarını yükseltmesine olanak sağlamak için aynı kullanılabilirlik kümesine yerleştirmenizi öneririz. Coğrafi artıklığa sahip olmak istiyorsanız, iki veritabanlarını iki farklı bölge arasında çoğaltmak ve iki örneği VPN Ağ Geçidi ile bağlayacak şekilde ayarlayın.
+Oracle Database Enterprise Edition için yüksek kullanılabilirlik ve olağanüstü durum kurtarma (Oracle RAC 'ye bağlı olmadan), iki ayrı sanal makinede iki veritabanı bulunan [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html)veya [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)kullanılarak Azure 'da elde edilebilir. Her iki sanal makine da, özel kalıcı IP adresi üzerinden bunlara erişebildiklerinden emin olmak için aynı [sanal ağ](https://azure.microsoft.com/documentation/services/virtual-network/) içinde olmalıdır.  Ayrıca, Azure 'un onları ayrı hata etki alanlarına ve yükseltme etki alanlarına yerleştirmesini sağlamak için sanal makineleri aynı Kullanılabilirlik kümesine yerleştirmenizi öneririz. Coğrafi yedeklilik olmasını, iki farklı bölge arasında çoğaltmak üzere iki veritabanını ayarlama ve iki örneği bir VPN Gateway bağlama.
 
-[Azure'da Oracle Data Guard uygula](configure-oracle-dataguard.md) öğreticisi, Azure'daki temel kurulum yordamını size iletebilir.  
+[Azure 'Da Oracle Data Guard 'ı uygulama](configure-oracle-dataguard.md) öğreticisinde, Azure 'da temel kurulum yordamında size adım adım yol gösterilir.  
 
-Oracle Data Guard ile, bir sanal makinede birincil veritabanı, başka bir sanal makinede ikincil (bekleme) veritabanı ve aralarında tek yönlü çoğaltma ile yüksek kullanılabilirlik sağlanabilir. Sonuç veritabanının kopyasına erişim okunur. Oracle GoldenGate ile, iki veritabanları arasında çift yönlü çoğaltma yapılandırabilirsiniz. Bu araçları kullanarak veritabanlarınız için yüksek kullanılabilirlik çözümlerini nasıl kurabilirsiniz öğrenmek için Oracle web sitesindeki [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) ve [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) belgelerine bakın. Veritabanının kopyasına okuma yazma erişimine ihtiyacınız varsa, [Oracle Active Data Guard'ı](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)kullanabilirsiniz.
+Oracle Data Guard ile yüksek kullanılabilirlik, bir sanal makinedeki birincil veritabanıyla, başka bir sanal makinedeki ikincil (bekleme) bir veritabanında ve aralarında tek yönlü bir çoğaltmanın ayarlanmasıyla elde edilebilir. Sonuç, veritabanının kopyasına okuma erişimdir. Oracle GoldenGate ile iki veritabanı arasında çift yönlü çoğaltmayı yapılandırabilirsiniz. Bu araçları kullanarak veritabanınız için yüksek kullanılabilirliğe sahip bir çözüm ayarlamayı öğrenmek için Oracle Web sitesindeki [Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) ve [GoldenGate](https://docs.oracle.com/goldengate/1212/gg-winux/index.html) belgeleri bölümüne bakın. Veritabanının kopyasına okuma/yazma erişimi gerekiyorsa, [Oracle Active Data Guard](https://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html)' ı kullanabilirsiniz.
 
-Oracle [GoldenGate'i Azure'da Uygulama](configure-oracle-golden-gate.md) öğreticisi, Azure'daki temel kurulum yordamını size iletebilir.
+[Azure 'Da Oracle GoldenGate uygulayan](configure-oracle-golden-gate.md) öğretici, Azure 'daki temel kurulum yordamında size yol gösterir.
 
-Azure'da bir HA ve DR çözümünüzün tasarlanmasına ek olarak, veritabanınızı geri yüklemek için bir yedekleme stratejiniz olmalıdır. Öğretici [Yedekleme ve bir Oracle Veritabanı kurtarmak](oracle-backup-recovery.md) tutarlı bir yedekleme kurmak için temel yordam ı size iletir.
+Bir HA ve DR çözümünün Azure 'da tasarlanmış olmasının yanı sıra, veritabanınızı geri yüklemek için bir yedekleme stratejisine sahip olmanız gerekir. Öğretici [yedekleme ve kurtarma Oracle Database](oracle-backup-recovery.md) , tutarlı bir yedekleme oluşturmaya yönelik temel yordamda size rehberlik eder.
 
 
-## <a name="support-for-jd-edwards"></a>JD Edwards desteği
-Oracle Destek notu [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)göre, JD Edwards EnterpriseOne sürümleri 9.2 ve üzeri `Minimum Technical Requirements` kendi özel (MTR) karşılayan **herhangi bir genel bulut sunan** desteklenir.  İşletim sistemi ve yazılım uygulaması uyumluluğu için MTR belirtimlerini karşılayan özel görüntüler oluşturmanız gerekir. 
+## <a name="support-for-jd-edwards"></a>JD edi desteği
+Oracle Destek notunun [belge kimliği 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4)' ne göre, JD edi EnterpriseOne sürüm 9,2 ve üzeri, belirli `Minimum Technical Requirements` (MTR) karşılayan **tüm genel bulut tekliflerinde** desteklenir.  İşletim sistemi ve yazılım uygulama uyumluluğu için MTR belirtimlerini karşılayan özel görüntüler oluşturmanız gerekir. 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server sanal makine görüntüleri
 
-* **Kümeleme yalnızca Enterprise Edition'da desteklenir.** WebLogic kümeleme'yi yalnızca Oracle WebLogic Server'ın Enterprise Edition'ını kullanırken kullanma lisansınız vardır. Oracle WebLogic Server Standard Edition ile kümeleme kullanmayın.
-* **UDP multicast desteklenmez.** Azure, UDP tek döküm'ü destekler, ancak çok amaçlı veya yayını desteklemez. Oracle WebLogic Server, Azure UDP tek döküm özelliklerine güvenebilir. UDP unicast'e dayanan en iyi sonuçlar için, WebLogic küme boyutunun sabit tutulmasını veya en fazla 10 yönetilen sunucuyla tutulmasını öneririz.
-* **Oracle WebLogic Server, ortak ve özel bağlantı noktalarının T3 erişimi için aynı olmasını bekler (örneğin, Enterprise JavaBeans kullanırken).** Bir hizmet katmanı (EJB) uygulamasının Iki veya daha fazla VM'den oluşan bir Oracle WebLogic Server kümesinde, *SLWLS*adlı sanal bir ağda çalıştığı çok katmanlı bir senaryo düşünün. İstemci katmanı, hizmet katmanında EJB'yi çağırmaya çalışan basit bir Java programı çalıştıran, aynı sanal ağda farklı bir alt ağda dır. Hizmet katmanını yüklemek gerektiğinden, Oracle WebLogic Server kümesindeki sanal makineler için ortak yük dengeli bir uç noktası oluşturulması gerekir. Belirttiğiniz özel bağlantı noktası ortak bağlantı noktasından farklıysa (örneğin, 7006:7008), aşağıdaki gibi bir hata oluşur:
+* **Kümeleme yalnızca Enterprise Edition 'da desteklenir.** Yalnızca Oracle WebLogic Server Enterprise sürümü kullanılırken WebLogic kümeleme kullanma lisansına sahip olursunuz. Oracle WebLogic Server Standard sürümüyle kümeleme kullanmayın.
+* **UDP çok noktaya yayını desteklenmez.** Azure, çok noktaya yayın veya yayın olmadan UDP tek noktaya yayını destekler. Oracle WebLogic Server, Azure UDP tek noktaya yayın özelliklerine güveniyor. UDP tek noktaya yayın için en iyi sonuçlar için, WebLogic Cluster boyutunun statik tutulmasını veya 10 ' dan fazla yönetilen sunucu olmadan tutulmasını öneririz.
+* **Oracle WebLogic Server, T3 erişimi için genel ve özel bağlantı noktalarının aynı olmasını bekler (örneğin, kurumsal Javabeller kullanılırken).** Bir hizmet katmanı (EJB) uygulamasının, *Slwls*adlı bir sanal ağda iki veya daha fazla VM 'den oluşan bir Oracle WebLogic Server kümesinde çalıştığı çok katmanlı bir senaryoyu göz önünde bulundurun. İstemci katmanı, hizmet katmanında EJB çağrısına çalışan basit bir Java programı çalıştıran aynı sanal ağdaki farklı bir alt ağda bulunur. Hizmet katmanının yük dengelenmesi gerektiğinden, Oracle WebLogic Server kümesindeki sanal makineler için ortak yük dengeli bir uç noktanın oluşturulması gerekir. Belirttiğiniz özel bağlantı noktası genel bağlantı noktasından farklıysa (örneğin, 7006:7008), aşağıdaki gibi bir hata oluşur:
 
        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
        Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-   Bunun nedeni, herhangi bir uzaktan T3 erişimi için, Oracle WebLogic Server yük dengeleyici bağlantı noktası ve WebLogic yönetilen sunucu bağlantı noktası aynı olmasını bekliyor olmasıdır. Önceki durumda, istemci bağlantı noktası 7006 (yük dengeleyici bağlantı noktası) erişiyor ve yönetilen sunucu 7008 (özel bağlantı noktası) dinliyor. Bu kısıtlama sadece T3 erişimi için geçerlidir, HTTP için geçerli değildir.
+   Bunun nedeni, tüm uzak T3 erişimidir, Oracle WebLogic Server yük dengeleyici bağlantı noktasını ve WebLogic Managed Server bağlantı noktasının aynı olmasını bekler. Önceki durumda, istemci bağlantı noktası 7006 ' a (yük dengeleyici bağlantı noktası) ve yönetilen sunucu ise 7008 (özel bağlantı noktası) üzerinde dinleme yapıyor. Bu kısıtlama yalnızca, HTTP değil, T3 erişimi için geçerlidir.
 
-   Bu sorunu önlemek için aşağıdaki geçici çözümlerden birini kullanın:
+   Bu sorundan kaçınmak için aşağıdaki geçici çözümlerden birini kullanın:
 
-  * T3 erişimine adanmış yük dengeli uç noktaları için aynı özel ve ortak bağlantı noktası numaralarını kullanın.
-  * Oracle WebLogic Server'ı başlatırken aşağıdaki JVM parametresini ekleyin:
+  * T3 erişimine adanmış yük dengeli uç noktalar için aynı özel ve genel bağlantı noktası numaralarını kullanın.
+  * Oracle WebLogic Server 'ı başlatırken aşağıdaki JVM parametresini ekleyin:
 
     ```
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-İlgili bilgiler için bk. **madde 860340.1'** e <https://support.oracle.com>bakınız.
+İlgili bilgiler için, bkz <https://support.oracle.com>. KB makalesi **860340,1** .
 
-* **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Oracle WebLogic Server'da dinamik bir küme kullanmak ve azure'da tek bir genel yük dengeli bitiş noktası aracılığıyla ortaya çıkarmak istediğinizi varsayalım. Bu, yönetilen sunucuların her biri için sabit bir bağlantı noktası numarası kullandığınız (bir aralıktan dinamik olarak atanmamış) ve yöneticinin izlediği makinelerden daha fazla yönetilen sunucu başlatmadığınız sürece yapılabilir. Diğer bir süre, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden daha fazla Oracle WebLogic Sunucusunun başlatılmasıyla sonuçlanırsa (diğer bir deyişle, birden çok Oracle WebLogic Server örneğinin aynı sanal makineyi paylaştığı yer), Oracle WebLogic Sunucularının bu örneklerinden birden fazlasının belirli bir bağlantı noktası numarasına bağlanması mümkün değildir. Sanal makinedeki diğerleri başarısız oluyor.
+* **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Oracle WebLogic Server 'da dinamik bir küme kullanmak istediğinizi ve Azure 'da tek ve genel yük dengeli bir uç nokta ile kullanıma sunduğunuzu varsayalım. Bu işlem, yönetilen sunucuların her biri için (bir aralıktan dinamik olarak atanmayan) sabit bir bağlantı noktası numarası kullandığınız ve yöneticinin izlemediği makinelerden daha fazla yönetilen sunucu başlatmadığı sürece yapılabilir. Diğer bir deyişle, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden (birden çok Oracle WebLogic Server örneği aynı sanal makineyi paylaştıkları) daha fazla Oracle WebLogic Servers 'ın başlatılmasına neden olursa, belirli bir bağlantı noktası numarasına bağlamak için bu Oracle WebLogic Servers örneklerinden birden fazla olması mümkün değildir. Bu sanal makinedeki diğerleri başarısız olur.
 
-   Yönetici sunucuyu yönetilen sunucularına benzersiz bağlantı noktası numaralarını otomatik olarak atayacağı şekilde yapılandırırsanız, Azure bu yapılandırma için gerekli olduğu gibi tek bir ortak bağlantı noktasından birden çok özel bağlantı noktasına eşlemeyi desteklemediği için yük dengelemesi mümkün değildir.
-* **Sanal bir makinede Oracle WebLogic Server birden fazla örneği.** Dağıtımınızın gereksinimlerine bağlı olarak, sanal makine yeterince büyükse, aynı sanal makinede birden çok Oracle WebLogic Server örneği çalıştırmayı düşünebilirsiniz. Örneğin, iki çekirdek içeren orta ölçekli bir sanal makinede, Oracle WebLogic Server'ın iki örneğini çalıştırmayı seçebilirsiniz. Ancak, oracle WebLogic Server'ın birden çok örneğini çalıştıran tek bir sanal makine kullandıysanız, mimarinize tek puan hata yapmaktan kaçınmanızı öneririz. En az iki sanal makine kullanarak daha iyi bir yaklaşım olabilir ve her sanal makine daha sonra Oracle WebLogic Server birden fazla örnekleri çalıştırabilir. Oracle WebLogic Server'ın her örneği hala aynı kümenin bir parçası olabilir. Ancak, Azure yük dengeleyicisi yük dengeli sunucuların benzersiz sanal makineler arasında dağıtılmasını gerektirdiğinden, şu anda aynı sanal makine içinde bu tür Oracle WebLogic Server dağıtımları tarafından ortaya çıkarılan uç noktaları yüklemek için Azure'u kullanmak mümkün değildir.
+   Yönetim sunucusunu, yönetilen sunucularına otomatik olarak benzersiz bağlantı noktası numaraları atanacak şekilde yapılandırırsanız, Azure tek bir genel bağlantı noktasından birden çok özel bağlantı noktasına eşlemeyi desteklemediğinden, bu yapılandırma için gerekli olduğu gibi yük dengeleme mümkün değildir.
+* **Bir sanal makinedeki birden çok Oracle WebLogic Server örneği.** Dağıtımınızın gereksinimlerine bağlı olarak, sanal makine yeterince büyükse Oracle WebLogic Server 'ın birden fazla örneğini aynı sanal makinede çalıştırmayı düşünebilirsiniz. Örneğin, iki çekirdek içeren orta büyüklükte bir sanal makinede, iki çekirdekli Oracle WebLogic Server örneğini çalıştırmayı seçebilirsiniz. Ancak, yalnızca birden çok Oracle WebLogic Server örneğini çalıştıran tek bir sanal makine kullandıysanız, mimarinize tek hata noktaları getirmekten kaçınmanızı öneririz. En az iki sanal makine kullanmak daha iyi bir yaklaşım olabilir ve her bir sanal makine daha sonra Oracle WebLogic Server 'ın birden fazla örneğini çalıştırabilir. Oracle WebLogic Server 'ın her örneği aynı kümenin bir parçası olmaya devam edebilir. Ancak, Azure yük dengeleyici, yük dengeli sunucuların benzersiz sanal makineler arasında dağıtılmasını gerektirdiğinden, bu tür bir Oracle WebLogic Server dağıtımı tarafından sunulan uç noktaların yükünü dengelemek için Azure 'u kullanmak mümkün değildir.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK sanal makine görüntüleri
-* **JDK 6 ve 7 son güncellemeler.** Azure, Java'nın en son genel, desteklenen sürümünü (şu anda Java 8) kullanmanızı öneririz, ancak JDK 6 ve 7 görüntülerini de kullanılabilir hale getirir. Bu, JDK 8'e yükseltilmeye henüz hazır olmayan eski uygulamalar için tasarlanmıştır. Önceki JDK görüntülerine yönelik güncelleştirmeler artık genel kullanıma sunulmamış olsa da, Oracle ile microsoft ortaklığı göz önüne alındığında, Azure tarafından sağlanan JDK 6 ve 7 görüntüleri, normalde Oracle tarafından yalnızca oracle'ın desteklenen belirli bir grup müşterisine sunulan daha yeni bir genel olmayan güncelleştirme içerecek şekilde tasarlanmıştır. JDK görüntülerinin yeni sürümleri, JDK 6 ve 7'nin güncellenmiş sürümleriyle zaman içinde kullanıma sunulacaktır.
+* **JDK 6 ve en son 7 güncelleştirme.** Java 'nın en son ortak ve desteklenen sürümü (Şu anda Java 8) kullanmanızı öneririz. Azure, JDK 6 ve 7 görüntülerini da kullanılabilir hale getirir. Bu, henüz JDK 8 ' e yükseltilmeye hazırlanma eski uygulamalar için tasarlanmıştır. Önceki JDK görüntülerine yönelik güncelleştirmeler genel kullanıma sunulmayabilir, ancak Oracle ile Microsoft iş ortaklığı verildiğinde, Azure tarafından sağlanan JDK 6 ve 7 görüntüleri, genellikle Oracle tarafından desteklenen ve yalnızca bir Oracle tarafından desteklenen müşterilerin sunduğu daha yeni bir ortak olmayan güncelleştirme içerir. JDK görüntülerinin yeni sürümleri, güncelleştirilmiş JDK 6 ve 7 sürümleri ile zaman içinde kullanıma sunulacaktır.
 
-   JDK 6 ve 7 görüntülerinde bulunan JDK ve bunlardan türetilen sanal makineler ve görüntüler yalnızca Azure'da kullanılabilir.
-* **64 bit JDK.** Oracle WebLogic Server sanal makine görüntüleri ve Azure tarafından sağlanan Oracle JDK sanal makine görüntüleri hem Windows Server hem de JDK'nın 64 bit sürümlerini içerir.
+   JDK 6 ve 7 görüntülerinde kullanılabilen JDK ve bunlardan türetilmiş sanal makineler ve görüntüler yalnızca Azure 'da kullanılabilir.
+* **64 bit JDK.** Oracle WebLogic Server sanal makine görüntüleri ve Azure tarafından sunulan Oracle JDK sanal makine görüntüleri, hem Windows Server hem de JDK 'nin 64 bitlik sürümlerini içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Microsoft Azure'daki sanal makine resimlerine dayalı güncel Oracle çözümlerine genel bir bakış alabilirsiniz. Bir sonraki adımınız ilk Oracle veritabanınızı Azure'a dağıtmaktır.
+Artık Microsoft Azure içindeki sanal makine görüntülerini temel alan geçerli Oracle çözümlerine genel bir bakış sunulmaktadır. Sonraki adımınız, ilk Oracle veritabanınızı Azure 'da dağıtmaktır.
 
 > [!div class="nextstepaction"]
-> [Azure'da oracle veritabanı oluşturma](oracle-database-quick-create.md)
+> [Azure 'da Oracle veritabanı oluşturma](oracle-database-quick-create.md)

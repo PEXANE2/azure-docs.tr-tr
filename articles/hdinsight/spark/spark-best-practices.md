@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight 'ta en iyi uygulamaları Apache Spark
-description: Azure HDInsight 'ta Apache Spark kullanmaya yönelik en iyi yöntemleri öğrenin.
+title: Azure HDInsight 'ta Apache Spark yönergeleri
+description: Azure HDInsight 'ta Apache Spark kullanmaya yönelik yönergeleri öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/28/2020
+ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71106131"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509423"
 ---
-# <a name="apache-spark-best-practices"></a>En iyi Apache Spark uygulamalar
+# <a name="apache-spark-guidelines"></a>Apache Spark yönergeleri
 
-Bu makalede, Azure HDInsight üzerinde Apache Spark kullanmaya yönelik çeşitli en iyi yöntemler sunulmaktadır.
+Bu makalede, Azure HDInsight üzerinde Apache Spark kullanmaya yönelik çeşitli yönergeler sunulmaktadır.
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>Nasıl yaparım? Spark işleri mi çalışıyor yoksa gönder?
 
@@ -28,6 +28,10 @@ Bu makalede, Azure HDInsight üzerinde Apache Spark kullanmaya yönelik çeşitl
 | IntelliJ | [Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma](./apache-spark-create-standalone-application.md) |
 | Zeppelin not defterleri | [Azure HDInsight'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](./apache-spark-zeppelin-notebook.md) |
 | Livy ile uzak iş gönderimi | [HDInsight Spark kümesine uzak işleri göndermek için Apache Spark REST API’sini kullanma](./apache-spark-livy-rest-interface.md) |
+|[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie, Hadoop işlerini yöneten bir iş akışı ve düzenleme sistemidir.|
+|[Apache Livy](./apache-spark-livy-rest-interface.md)|Etkileşimli Spark kabukları çalıştırmak veya Spark üzerinde çalıştırılacak toplu işleri göndermek için Livy 'ı kullanabilirsiniz.|
+|[Apache Spark için Azure Data Factory](/../data-factory/transform-data-using-spark.md)|Bir Data Factory işlem hattındaki Spark etkinliği kendi kendinize veya [isteğe bağlı HDInsight kümesinde bir Spark programını yürütür.|
+|[Apache Hive için Azure Data Factory](/../data-factory/transform-data-using-hadoop-hive.md)|Bir Data Factory işlem hattının HDInsight Hive etkinliği, kendi kendinize veya isteğe bağlı HDInsight kümenizde Hive sorguları yürütür.|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Spark işlerini izleme ve hata ayıklama Nasıl yaparım??
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87179c79489bf781619b70b19ca8982f2e38dff
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663139"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509491"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Azure 'da çözüm izleme için envanter ve veri toplama ayrıntıları
-[İzleme çözümleri](solutions.md) , belirli bir uygulama veya hizmetin işlemine ek Öngörüler sağlamak için Azure 'daki hizmetlerden yararlanır. İzleme çözümleri genellikle günlük verilerini toplar ve toplanan verileri çözümlemek için sorgular ve görünümler sağlar. Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar.
+[İzleme çözümleri](solutions.md) , belirli bir uygulama veya hizmetin çalışması hakkında bilgi edinmek için Azure 'da Hizmetleri kullanır. İzleme çözümleri genellikle günlük verilerini toplar ve toplanan verileri çözümlemek için sorgular ve görünümler sağlar. Azure Izleyici 'ye, kullandığınız tüm uygulama ve hizmetler için izleme çözümleri ekleyebilirsiniz. Bunlar genellikle ücretsiz olarak kullanılabilir ancak kullanım ücretlerini çağırabilecek veri toplar.
 
-Bu makale, Microsoft 'tan sunulan ve ayrıntılı belgelerinin bağlantılarıyla birlikte bulunan çok sayıda [çözümlerin](solutions.md) bir listesini içerir.  Ayrıca, Azure Izleyici 'de veri toplama yöntemi ve sıklığı hakkında bilgi de sağlar.  Bu makaledeki bilgileri kullanarak, kullanılabilir farklı çözümleri tanımlayabilir ve farklı izleme çözümlerine yönelik veri akışını ve bağlantı gereksinimlerini anlayabilirsiniz.
+Bu makale, Microsoft 'un ayrıntılı belgelerinin bağlantılarıyla birlikte bulunan [izleme çözümlerinin](solutions.md) bir listesini içerir.  Ayrıca, Azure Izleyici 'de veri toplama yöntemi ve sıklığı hakkında bilgi de sağlar.  Bu makaledeki bilgileri kullanarak, kullanılabilir farklı çözümleri tanımlayabilir ve farklı izleme çözümlerine yönelik veri akışını ve bağlantı gereksinimlerini anlayabilirsiniz.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -26,16 +26,16 @@ Aşağıdaki tabloda, Microsoft tarafından sunulan Azure 'daki [izleme çözüm
 
 Sütunların açıklamaları aşağıdaki gibidir:
 
-- **Microsoft Monitoring Agent** -Windows ve Linux 'TA, SCOM 'den yönetim ve Izleme çözümlerini Azure 'dan çalıştırmak için kullanılan aracı. Bu yapılandırmada, aracı bir Operations Manager yönetim grubuna bağlı kalmadan doğrudan Azure Izleyici 'ye bağlanır. 
+- Microsoft **Monitoring Agent** -Windows ve Linux 'Ta, Microsoft System Center-OPERATIONS Manager (OM) ve Azure tarafından izlenen çözümlerin yönetim paketini çalıştırmak için kullanılan aracı. Bu yapılandırmada, aracı bir Operations Manager yönetim grubuna bağlı kalmadan doğrudan Azure Izleyici 'ye bağlanır. 
 - **Operations Manager** -Microsoft Monitoring Agent ile aynı aracı. Bu yapılandırmada, Azure Izleyici 'ye bağlı [bir Operations Manager yönetim grubuna bağlanır](../platform/om-agents.md) . 
 -  **Azure depolama** -çözüm, Azure Storage hesabından veri toplar. 
 - **Operations Manager gerekli mi?** -İzleme çözümü tarafından veri toplama için bağlı bir Operations Manager yönetim grubu gerekir. 
-- **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** -aracı [bir SCOM yönetim grubuna bağlıysa](../platform/om-agents.md), veriler yönetim sunucusundan Azure izleyici 'ye gönderilir. Bu durumda, aracının Azure Izleyici 'ye doğrudan bağlanması gerekmez. Bu kutu seçili değilse, aracı bir SCOM yönetim grubuna bağlı olsa bile, veriler aracıdan doğrudan Azure Izleyicisine gönderilir. [Log Analytics ağ geçidi](../platform/gateway.md)aracılığıyla Azure izleyici ile iletişim kurabilmesi gerekecektir.
+- **Yönetim grubu aracılığıyla gönderilen Operations Manager aracı verileri** -aracı [bir Om yönetim grubuna bağlıysa](../platform/om-agents.md), veriler yönetim sunucusundan Azure izleyici 'ye gönderilir. Bu durumda, aracının Azure Izleyici 'ye doğrudan bağlanması gerekmez. Bu kutu seçili değilse, aracı bir OM yönetim grubuna bağlı olsa bile, veriler aracıdan doğrudan Azure Izleyicisine gönderilir. [Log Analytics ağ geçidi](../platform/gateway.md)aracılığıyla Azure izleyici ile iletişim kurabilmesi gerekecektir.
 - **Toplama sıklığı** -verilerin izleme çözümü tarafından toplandığı sıklığı belirtir. 
 
 
 
-| **İzleme çözümü** | **Platform** | **Microsoft İzleme Aracısı** | **Operations Manager aracısı** | **Azure depolama** | **Operations Manager gerekli mi?** | **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** | **Toplama sıklığı** |
+| **İzleme çözümü** | **Platform** | **Microsoft İzleme Aracısı** | **Operations Manager aracısı** | **Azure Storage** | **Operations Manager gerekli mi?** | **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** | **Toplama sıklığı** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Etkinlik günlüğü Analizi](../platform/activity-log-collect.md) | Azure | | | | | | bildirimde |
 | [AD Değerlendirmesi](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 gün |
@@ -48,25 +48,25 @@ Sütunların açıklamaları aşağıdaki gibidir:
 | [Application Insights Bağlayıcısı (kullanım dışı)](../platform/app-insights-connector.md) | Azure | | | |  |  | bildirimde |
 | [Otomasyon Karma Çalışanı](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | yok |
 | [Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | bildirimde |
-| **İzleme çözümü** | **Platform** | **Microsoft İzleme Aracısı** | **Operations Manager aracısı** | **Azure depolama** | **Operations Manager gerekli mi?** | **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** | **Toplama sıklığı** |
+| **İzleme çözümü** | **Platform** | **Microsoft İzleme Aracısı** | **Operations Manager aracısı** | **Azure Storage** | **Operations Manager gerekli mi?** | **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** | **Toplama sıklığı** |
 | [Azure Ağ Güvenlik Grubu Analizi (kullanım dışı)](azure-networking-analytics.md) | Azure |  |  |  |  |  | bildirimde |
 | [Azure SQL Analytics (Önizleme)](azure-sql.md) | Windows | | | | | | 1 dakika |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | bildirimde |
 | [Kapasite ve Performans (Önizleme)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |varış noktasında |
-| [Değişiklik İzleme](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[olmadığına](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Değişiklik İzleme](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[olmadığına](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Değişiklik İzleme](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[olmadığına](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
+| [Değişiklik İzleme](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[olmadığına](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
 | [Kapsayıcılar](containers.md) | Windows ve Linux | &#8226; | &#8226; |  |  |  | 3 dakika |
 | [Key Vault Analytics](azure-key-vault.md) |Windows | | | | | |bildirimde |
 | [Kötü Amaçlı Yazılım Değerlendirmesi](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |hourly |
 | [Ağ Performansı İzleyicisi](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Her 5 saniyede TCP el sıkışmaları, 3 dakikada bir gönderilen veriler |
 | [Office 365 Analytics (Önizleme)](solution-office-365.md) |Windows | | | | | |bildirimde |
-| **İzleme çözümü** | **Platform** | **Microsoft İzleme Aracısı** | **Operations Manager aracısı** | **Azure depolama** | **Operations Manager gerekli mi?** | **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** | **Toplama sıklığı** |
+| **İzleme çözümü** | **Platform** | **Microsoft İzleme Aracısı** | **Operations Manager aracısı** | **Azure Storage** | **Operations Manager gerekli mi?** | **Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager** | **Toplama sıklığı** |
 | [Service Fabric Analizi](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 dakika |
 | [Hizmet Eşlemesi](service-map.md) | Windows ve Linux | &#8226; | &#8226; |  |  |  | 15 saniye |
 | [SQL Değerlendirmesi](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 gün |
 | [Surçok yönlü hub](surface-hubs.md) |Windows |&#8226; | | | | |varış noktasında |
 | [System Center Operations Manager Değerlendirmesi (Önizleme)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | yedi gün |
-| [Güncelleştirme Yönetimi](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |bir güncelleştirme yüklendikten sonra günde en az 2 kez ve 15 dakika |
+| [Güncelleştirme Yönetimi](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |bir güncelleştirme yüklendikten sonra günde en az iki kez ve 15 dakika |
 | [Yükseltme Hazırlığı](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 gün |
 | [VMware İzleme (kullanım dışı)](vmware.md) | Linux | &#8226; |  |  |  |  | 3 dakika |
 | [Wire Data 2.0 (Önizleme)](wire-data.md) |Windows (2012 R2/8,1 veya üzeri) |&#8226; |&#8226; | | | | 1 dakika |
