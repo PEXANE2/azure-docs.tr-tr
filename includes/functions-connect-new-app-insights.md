@@ -9,29 +9,29 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 266cd52117f36b282fdd4bc8615a15e451cc203f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132639"
 ---
-İşlevler, [Azure portalındaki]bir işlev uygulamasına Uygulama Öngörüleri tümleştirmesini eklemeyi kolaylaştırır.
+İşlevler, [Azure Portal]bir işlev uygulamasına Application Insights tümleştirme eklemeyi kolaylaştırır.
 
-1. [PortalAzure]Portalı'nda, `Function Apps` sayfanın üst kısmındaki arama çubuğunu yazın, işlev uygulamanızı seçin ve ardından **Uygulama Öngörüleri'ni** seçin pencerenin üst kısmında yapılandırılan banner değildir.[Azure Portal] Bu banner'ı görmüyorsanız, uygulamanız zaten Uygulama Öngörüleri etkinleştirilmiştir.
+1. [Portal][Azure portalında], sayfanın üst kısmındaki `Function Apps` arama çubuğuna yazın, işlev uygulamanızı seçin ve ardından pencerenin üst kısmındaki **Application Insights yapılandırılmamış** başlık ' ı seçin. Bu başlığı görmüyorsanız, uygulamanız zaten Application Insights etkinleştirilmiştir.
 
-    ![Portaldan Uygulama Öngörülerini Etkinleştir](media/functions-connect-new-app-insights/enable-application-insights.png)
+    ![Portaldan Application Insights etkinleştirme](media/functions-connect-new-app-insights/enable-application-insights.png)
 
-1. Resmin altındaki tabloda belirtilen ayarları kullanarak bir Uygulama Öngörüleri kaynağı oluşturun.
+1. Görüntünün altındaki tabloda belirtilen ayarları kullanarak bir Application Insights kaynağı oluşturun.
 
    ![Application Insights kaynağı oluşturma](media/functions-connect-new-app-insights/ai-general.png)
 
     | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Adı** | Benzersiz uygulama adı | Aboneliğinizde benzersiz olması gereken işlev uygulamanızla aynı adı kullanmak en kolayıdır. | 
-    | **Konum** | Batı Avrupa | Mümkünse, işlev uygulamanızla aynı [bölgeyi](https://azure.microsoft.com/regions/) veya o bölgeye yakın olan bölgeyi kullanın. |
+    | **Adı** | Benzersiz uygulama adı | Kendi aboneliğinizde benzersiz olması gereken işlev uygulamanız ile aynı adı kullanmak en kolay yoldur. | 
+    | **Konum** | Batı Avrupa | Mümkünse, işlev uygulamanız ile aynı [bölgeyi](https://azure.microsoft.com/regions/) veya bu bölgeye yakın olanı kullanın. |
 
-1. **Tamam'ı**seçin. Application Insights kaynağı, işlev uygulamanızla aynı kaynak grubunda ve abonelikte oluşturulur. Kaynak oluşturulduktan sonra Uygulama Öngörüleri penceresini kapatın.
+1. **Tamam**’ı seçin. Application Insights kaynak, işlev uygulamanız ile aynı kaynak grubunda ve abonelikte oluşturulur. Kaynak oluşturulduktan sonra Application Insights penceresini kapatın.
 
-1. İşlev uygulamanızda Uygulama **ayarlarını**seçin ve ardından **Uygulama ayarlarına**gidin. Azure'da çalışan `APPINSIGHTS_INSTRUMENTATIONKEY`işlev uygulamanız için Application Insights entegrasyonu adlı bir ayar görürseniz etkinleştirilir.
+1. İşlev uygulamanıza geri dönün, **uygulama ayarları**' nı seçin ve ardından **uygulama ayarları**' na kaydırın. Adlı `APPINSIGHTS_INSTRUMENTATIONKEY`bir ayar görürseniz, Azure 'da çalışan işlev uygulamanız için Application Insights tümleştirme etkinleştirilir.
 
-[Azure Portalı]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

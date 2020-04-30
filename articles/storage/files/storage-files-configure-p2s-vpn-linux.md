@@ -1,6 +1,6 @@
 ---
-title: Azure Dosyaları ile kullanılmak üzere Linux'ta Bir Noktadan Siteye (P2S) VPN yapılandırın | Microsoft Dokümanlar
-description: Azure Dosyaları ile kullanılmak üzere Linux'ta Bir Sayfa-To-Site (P2S) VPN nasıl yapılandırılabilen
+title: Linux üzerinde Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma | Microsoft Docs
+description: Linux 'ta Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,30 +8,30 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061058"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Azure Dosyaları ile kullanılmak üzere Linux'ta Bir Noktadan Siteye (P2S) VPN yapılandırın
-445 bağlantı noktasını açmadan Azure dosya paylaşımlarınızı SMB üzerinden SMB'ye monte etmek için Bir Yerden Kullanıma (P2S) VPN bağlantısını kullanabilirsiniz. Bir Noktadan Siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure Dosyaları ile Bir P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınıza bağlanması gereken çok sayıda istemciniz varsa, her istemci için Site'den Siteye (S2S) VPN bağlantısı yerine kullanabilirsiniz. Daha fazla bilgi için Bkz. [Azure Dosyaları ile kullanılmak üzere Siteden Siteye VPN Yapılandır'](storage-files-configure-s2s-vpn.md)a bakın.
+# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Linux üzerinde Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma
+Azure dosya paylaşımlarınızı, 445 numaralı bağlantı noktasını açmadan Azure dışından SMB 'ye bağlamak için Noktadan siteye (P2S) VPN bağlantısı kullanabilirsiniz. Noktadan siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınızın bağlanması gereken çok sayıda istemciniz varsa, her istemci için Noktadan siteye bağlantı yerine siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırma](storage-files-configure-s2s-vpn.md).
 
-Azure Dosyaları için kullanılabilir ağ seçeneklerinin tam olarak tartışılması için makaleye devam etmeden önce [Azure Dosyaları ağ genel görünümünü](storage-files-networking-overview.md) okumanızı öneririz.
+Azure dosyaları için kullanılabilir ağ seçenekleri hakkında ayrıntılı bir tartışmaya devam etmeden önce [Azure dosyaları ağ genel bakış ' ı](storage-files-networking-overview.md) okumanızı kesinlikle öneririz.
 
-Makalede, Azure dosya paylaşımlarını doğrudan şirket içinde monte etmek için Linux'ta Bir Siteye Nokta VPN'i yapılandırma adımları ayrıntılı olarak anlatılıyor. Azure Dosya Eşitleme trafiğini VPN üzerinden yönlendirmek istiyorsanız, lütfen [Azure Dosya Eşitleme proxy'sini ve güvenlik duvarı ayarlarını yapılandırmaya](storage-sync-files-firewall-and-proxy.md)bakın.
+Makalesinde, Linux üzerinde Noktadan siteye VPN yapılandırma adımları ayrıntılı olarak Azure dosya paylaşımlarını doğrudan şirket içinde bağlayacaksınız. VPN üzerinden Azure Dosya Eşitleme trafiği yönlendirmek istiyorsanız lütfen bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
-- Azure CLI'nin en son sürümü. Azure CLI'yi nasıl yükleyin hakkında daha fazla bilgi için Azure [PowerShell CLI'yi yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli) ve işletim sisteminizi seçin. Azure PowerShell modüllerini Linux'ta kullanmayı tercih ederseniz, aşağıdaki talimatlar Azure CLI için sunulabilir.
+- Azure CLı 'nın en son sürümü. Azure CLı 'nın nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure POWERSHELL CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli) ve işletim sisteminizi seçmek. Linux üzerinde Azure PowerShell modülünü kullanmayı tercih ederseniz, Azure CLı için aşağıdaki yönergeler sunulmaktadır.
 
-- Şirket içinde monte etmek istediğiniz bir Azure dosya paylaşımı. Azure dosya paylaşımları, birden çok dosya paylaşımının yanı sıra blob kapsayıcıları veya kuyruklar gibi diğer depolama kaynaklarını dağıtabileceğiniz paylaşılan bir depolama havuzunun yanı sıra yönetim yapıları olan depolama hesaplarında dağıtılır. Azure dosya paylaşımı oluştur'da Azure dosya paylaşımlarını ve depolama hesaplarını nasıl dağıtabileceğiniz hakkında daha fazla bilgi [edinebilirsiniz.](storage-how-to-create-file-share.md)
+- Şirket içinde bağlamak istediğiniz bir Azure dosya paylaşımıdır. Azure dosya paylaşımları, birden çok dosya paylaşımı dağıtabileceğiniz ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarına ek olarak, bir paylaşılan depolama havuzunu temsil eden yönetim yapıları içindeki depolama hesaplarında dağıtılır. Azure dosya paylaşımları ve depolama hesaplarını [Azure dosya paylaşımı oluşturma](storage-how-to-create-file-share.md)bölümünde dağıtma hakkında daha fazla bilgi edinebilirsiniz.
 
-- Şirket içinde monte etmek istediğiniz Azure dosya paylaşımını içeren depolama hesabı için özel bir bitiş noktası. Özel bir bitiş noktası oluşturma hakkında daha fazla bilgi edinmek için Azure [Dosyaları ağ uç noktalarını yapılandırma](storage-files-networking-endpoints.md?tabs=azure-cli)konusuna bakın. 
+- Şirket içinde bağlamak istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabı için özel bir uç nokta. Özel uç nokta oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları ağ uç noktalarını yapılandırma](storage-files-networking-endpoints.md?tabs=azure-cli). 
 
-## <a name="install-required-software"></a>Gerekli yazılımı yükleme
-Azure sanal ağ ağ geçidi, IPsec ve OpenVPN dahil olmak üzere çeşitli VPN protokollerini kullanarak VPN bağlantıları sağlayabilir. Bu kılavuz, IPsec'in nasıl kullanılacağını gösterir ve Linux'ta destek sağlamak için strongSwan paketini kullanır. 
+## <a name="install-required-software"></a>Gerekli yazılımları yükler
+Azure sanal ağ geçidi, IPSec ve OpenVPN gibi çeşitli VPN protokollerini kullanarak VPN bağlantıları sağlayabilir. Bu kılavuzda, IPSec 'in nasıl kullanılacağı ve Linux üzerinde destek sağlamak için Strongswa paketinin nasıl kullanıldığı gösterilmektedir. 
 
-> Ubuntu 18.10 ile doğrulandı.
+> Ubuntu 18,10 ile doğrulandı.
 
 ```bash
 sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
@@ -40,11 +40,11 @@ installDir="/etc/"
 ```
 
 ### <a name="deploy-a-virtual-network"></a>Sanal ağ dağıtma 
-Azure dosya paylaşımınıza ve diğer Azure kaynaklarına şirket içi bir Giriş VPN üzerinden erişmek için bir sanal ağ veya VNet oluşturmanız gerekir. Otomatik olarak oluşturacağınız P2S VPN bağlantısı, şirket içi Linux makineniz ile bu Azure sanal ağı arasında bir köprüdür.
+Azure dosya paylaşımınıza ve diğer Azure kaynaklarına Noktadan siteye VPN aracılığıyla Şirket içinden erişmek için bir sanal ağ veya VNet oluşturmanız gerekir. Otomatik olarak oluşturacağınız P2S VPN bağlantısı, şirket içi Linux makineniz ile bu Azure sanal ağı arasında bir köprüdir.
 
-Aşağıdaki komut dosyası, biri depolama hesabınızın hizmet bitiş noktası, diğeri depolama hesabınızın özel oluşturmadan şirket içinde depolama hesabına erişmek için gereken özel bitiş noktası için olmak üzere üç alt ağa sahip bir Azure sanal ağı oluşturur. değişebilecek depolama hesabının genel IP'si ve VPN hizmetini sağlayan sanal ağ ağ ağ geçidiniz için yönlendirme. 
+Aşağıdaki betik, üç alt ağı olan bir Azure sanal ağı oluşturacak: bir depolama hesabınızın özel uç noktası için bir tane, bir depolama hesabının özel uç noktası için, bir tane, değişebilir depolama hesabının genel IP 'si için özel yönlendirme oluşturmadan ve VPN hizmetini sağlayan sanal ağ geçidiniz için özel yönlendirme oluşturmadan şirket içi depolama hesabına erişmek için gereklidir. 
 
-Çevreniz `<region>`için `<resource-group>`uygun `<desired-vnet-name>` değerleri değiştirmeyi ve değiştirmeyi unutmayın.
+, Ve `<desired-vnet-name>` değerlerini `<region>`, `<resource-group>`ortamınız için uygun değerlerle değiştirmeyi unutmayın.
 
 ```bash
 region="<region>"
@@ -81,8 +81,8 @@ gatewaySubnet=$(az network vnet subnet create \
     --query "id" | tr -d '"')
 ```
 
-## <a name="create-certificates-for-vpn-authentication"></a>VPN kimlik doğrulaması için sertifikalar oluşturma
-Şirket içi Linux makinelerinizden gelen VPN bağlantılarının sanal ağınıza erişmek için kimlik doğrulaması yapabilmesi için iki sertifika oluşturmanız gerekir: sanal makine ağ geçidine sağlanacak bir kök sertifika ve müşteri sertifikası kök sertifikası ile imzalanır. Aşağıdaki komut dosyası gerekli sertifikaları oluşturur.
+## <a name="create-certificates-for-vpn-authentication"></a>VPN kimlik doğrulaması için sertifika oluşturma
+Şirket içi Linux makinelerinizin sanal ağınıza erişmesi için kimlik doğrulamasından geçmek üzere, iki sertifika oluşturmanız gerekir: sanal makine ağ geçidine sağlanacak bir kök sertifika ve kök sertifikayla imzalanacak bir istemci sertifikası. Aşağıdaki betik gerekli sertifikaları oluşturur.
 
 ```bash
 rootCertName="P2SRootCert"
@@ -111,13 +111,13 @@ sudo ipsec pki --pub --in "clientKey.pem" | \
 openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pem -export -out "client.p12" -password "pass:$password"
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Sanal ağ ağ geçidini dağıtma
-Azure sanal ağ ağ ağ geçidi, şirket içi Linux makinelerinizin bağlanacağı hizmettir. Bu hizmeti dağıtmak iki temel bileşen gerektirir: müşterilerinizin dünyanın neresinde olurlarsa olsunlar için ağ geçidini tanımlayacak genel bir IP ve daha önce oluşturduğunuz ve müşterilerinizin kimliğini doğrulamak için kullanılacak bir kök sertifika.
+## <a name="deploy-virtual-network-gateway"></a>Sanal ağ geçidini dağıtma
+Azure sanal ağ geçidi, şirket içi Linux makinelerinizin bağlanacağı hizmettir. Bu hizmeti dağıtmak için iki temel bileşen gerekir: dünyanın her yerinden ve daha önce oluşturduğunuz bir kök sertifikaya ve istemcilerinizin kimliğini doğrulamak için kullanılacak bir kök sertifikaya sahip olan, istemcileriniz için ağ geçidini tanımlayacak genel bir IP.
 
-Bu kaynaklar `<desired-vpn-name-here>` için istediğiniz adla değiştirmeyi unutmayın.
+Bu kaynaklar için `<desired-vpn-name-here>` istediğiniz adla değiştirmeyi unutmayın.
 
 > [!Note]  
-> Azure sanal ağ ağ ağ geçidini dağıtmak 45 dakika kadar sürebilir. Bu kaynak dağıtılırken, bu bash komut dosyası dağıtımının tamamlanmasını engeller. Bu beklenen bir durumdur.
+> Azure sanal ağ geçidi dağıtımı en fazla 45 dakika sürebilir. Bu kaynak dağıtılırken, bu Bash betik betiği dağıtımın tamamlanmasını engelleyecek. Bu beklenen bir durumdur.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -152,7 +152,7 @@ az network vnet-gateway root-cert create \
 ```
 
 ## <a name="configure-the-vpn-client"></a>VPN istemcisini yapılandırma
-Azure sanal ağ ağ geçidi, şirket içi Linux makinenizde VPN bağlantısını başlatması gereken yapılandırma dosyalarını içeren indirilebilir bir paket oluşturur. Aşağıdaki komut dosyası, oluşturduğunuz sertifikaları doğru noktaya yerleştirilecek `ipsec.conf` ve dosyayı indirilebilir paketteki yapılandırma dosyasından doğru değerlerle yapılandıracaktır.
+Azure sanal ağ geçidi, şirket içi Linux makinenizde VPN bağlantısını başlatmak için gereken yapılandırma dosyaları içeren indirilebilir bir paket oluşturur. Aşağıdaki betik, oluşturduğunuz sertifikaları doğru bir yere yerleştirir ve `ipsec.conf` dosyayı indirilebilir paketteki yapılandırma dosyasından doğru değerlerle yapılandıracaktır.
 
 ```bash
 vpnClient=$(az network vnet-gateway vpn-client generate \
@@ -190,8 +190,8 @@ sudo ipsec restart
 sudo ipsec up $virtualNetworkName 
 ```
 
-## <a name="mount-azure-file-share"></a>Azure dosya paylaşımını başlat
-Artık Sayfadan Siteye VPN'inizi ayarladığınızda, Azure dosya paylaşımınızı monte edebilirsiniz. Aşağıdaki örnek, payı ısrarsız olarak monte edecektir. Kalıcı olarak monte etmek için [bkz.](storage-how-to-use-files-linux.md) 
+## <a name="mount-azure-file-share"></a>Azure dosya paylaşımından bağlama
+Noktadan siteye VPN 'yi ayarladığınıza göre, Azure dosya paylaşımınızı bağlayabilirsiniz. Aşağıdaki örnek, paylaşımdan kalıcı olmayan şekilde bağlayacaktır. Kalıcı olarak bağlamak için bkz. [Linux Ile Azure dosya paylaşma kullanma](storage-how-to-use-files-linux.md). 
 
 ```bash
 fileShareName="myshare"
@@ -209,6 +209,6 @@ sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,pa
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure Dosyaları ağına genel bakış](storage-files-networking-overview.md)
-- [Azure Dosyaları ile kullanılmak üzere Windows'da Bir Noktaya Sayfa (P2S) VPN'i yapılandırma](storage-files-configure-p2s-vpn-windows.md)
-- [Azure Dosyaları ile kullanılmak üzere Siteden Siteye (S2S) VPN yapılandırın](storage-files-configure-s2s-vpn.md)
+- [Azure dosyaları ağlarına genel bakış](storage-files-networking-overview.md)
+- [Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma](storage-files-configure-p2s-vpn-windows.md)
+- [Azure dosyaları ile kullanmak için siteden siteye (S2S) VPN yapılandırma](storage-files-configure-s2s-vpn.md)

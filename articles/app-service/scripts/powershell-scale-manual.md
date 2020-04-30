@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell: Bir web uygulamasını el ile ölçeklendirin'
-description: Uygulama Hizmeti'nin dağıtımını ve yönetimini otomatikleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamayı el ile nasıl ölçeklendireceklerini gösterir.
+title: 'PowerShell: bir Web uygulamasını el ile ölçeklendirme'
+description: App Service dağıtımı ve yönetimini otomatik hale getirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulamanın nasıl el ile Ölçeklendirilecek olduğunu gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
@@ -9,17 +9,17 @@ ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: cb0af65f938baf24b2af574b21e09e099b70ba85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80060291"
 ---
-# <a name="scale-a-web-app-manually-using-powershell"></a>PowerShell'i kullanarak bir web uygulamasını el ile ölçeklendirin
+# <a name="scale-a-web-app-manually-using-powershell"></a>PowerShell kullanarak bir Web uygulamasını el ile ölçeklendirme
 
 Bu senaryoda bir kaynak grubu, app service planı ve web uygulaması oluşturmayı öğreneceksiniz. Daha sonra App Service Planını tek bir örnekten birden fazla örneğe ölçeklendireceksiniz.
 
-Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount`
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/overview)bulunan yönergeyi kullanarak Azure PowerShell yükleyip Azure ile bağlantı oluşturmak için öğesini çalıştırın `Connect-AzAccount` .
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -42,8 +42,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [Yeni-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
-| [Yeni-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service planı oluşturur. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Bir web uygulaması oluşturur. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Web uygulamasının yapılandırmasını değiştirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

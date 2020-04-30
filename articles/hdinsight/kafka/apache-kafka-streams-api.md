@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Apache Kafka Akışları API’sini kullanma - Azure HDInsight '
-description: Öğretici - HDInsight'ta Kafka ile Apache Kafka Streams API'yi nasıl kullanacağınızı öğrenin. Bu API, Kafka’daki konular arasında akış işleme gerçekleştirmenize olanak sağlar.
+description: Öğretici-Apache Kafka Streams API 'sini HDInsight üzerinde Kafka ile nasıl kullanacağınızı öğrenin. Bu API, Kafka’daki konular arasında akış işleme gerçekleştirmenize olanak sağlar.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,23 +9,23 @@ ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
 ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80064489"
 ---
-# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Öğretici: Azure HDInsight'ta Apache Kafka akışları API'yi kullanın
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Kafka akışları API 'SI kullanma
 
-Apache Kafka Streams API'yi kullanan bir uygulamayı nasıl oluşturup HDInsight'ta Kafka ile nasıl çalıştıracağınız hakkında bilgi edinin.
+Apache Kafka Streams API 'sini kullanan bir uygulama oluşturmayı ve HDInsight üzerinde Kafka ile çalıştırmayı öğrenin.
 
 Bu öğreticide kullanılan uygulama, akışa alma sözcük sayısıdır. Bir Kafka konusundan metin verilerini okur, tek tek sözcükleri ayıklar ve sonra sözcüğü ve sayıyı başka bir Kafka konusunda depolar.
 
-Kafka akarsu işleme genellikle Apache Spark veya Apache Storm kullanılarak yapılır. Kafka sürüm 1.1.0 (HDInsight 3.5 ve 3.6) Kafka Streams API tanıttı. Bu API, girdi ve çıktı konuları arasında veri akışlarını dönüştürmenize olanak sağlar. Bazı durumlarda bu, bir Spark veya Storm akış çözümü oluşturulmasına alternatif olabilir.
+Kafka Stream işleme genellikle Apache Spark veya Apache Storm kullanılarak yapılır. Kafka Version 1.1.0 (HDInsight 3,5 ve 3,6 ' de) Kafka Streams API 'sini kullanıma sunmuştur. Bu API, girdi ve çıktı konuları arasında veri akışlarını dönüştürmenize olanak sağlar. Bazı durumlarda bu, bir Spark veya Storm akış çözümü oluşturulmasına alternatif olabilir.
 
 Kafka Akışları hakkında daha fazla bilgi için, Apache.org adresindeki [Akışların Tanıtımı](https://kafka.apache.org/10/documentation/streams/) belgelerine bakın.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kodu anlama
@@ -35,19 +35,19 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight 3.6 kümesi üzerinde bir Kafka. HDInsight kümesinde Kafka nasıl oluşturulacağını öğrenmek için [HDInsight belgesinde Apache Kafka ile Başlat'a](apache-kafka-get-started.md) bakın.
+* HDInsight 3.6 kümesi üzerinde bir Kafka. HDInsight kümesinde Kafka oluşturma hakkında bilgi edinmek için bkz. [HDInsight 'ta Apache Kafka kullanmaya başlama](apache-kafka-get-started.md) belgesi.
 
-* [Apache Kafka Tüketici ve Üretici API](apache-kafka-producer-consumer-api.md) belgesindeki adımları tamamlayın. Bu belgede yer alan adımlarda, bu öğreticide oluşturulan örnek uygulama ve konular kullanılmaktadır.
+* [Apache Kafka tüketicisi ve ÜRETICISI API](apache-kafka-producer-consumer-api.md) belgesindeki adımları uygulayın. Bu belgede yer alan adımlarda, bu öğreticide oluşturulan örnek uygulama ve konular kullanılmaktadır.
 
-* [Java Geliştirici Kiti (JDK) sürüm 8](https://aka.ms/azure-jdks) veya OpenJDK gibi eşdeğeri.
+* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks) veya OpenJDK gibi bir eşdeğer.
 
-* [Apache Maven](https://maven.apache.org/download.cgi) düzgün Apache göre [yüklü.](https://maven.apache.org/install.html)  Maven Java projeleri için bir proje inşa sistemidir.
+* Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
-* Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Kodu anlama
 
-Örnek [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)uygulama, `Streaming` alt dizinde yer alır. Uygulama iki dosyadan oluşur:
+Örnek uygulama, [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) `Streaming` dizininde konumunda bulunur. Uygulama iki dosyadan oluşur:
 
 * `pom.xml`: Bu dosya, proje bağımlılıklarını, Java sürümünü ve paketleme yöntemlerini tanımlar.
 * `Stream.java`: Bu dosya, akış mantığını uygular.
@@ -72,7 +72,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 * Eklentiler: Maven eklentileri çeşitli özellikler sağlar. Bu projede aşağıdaki eklentiler kullanılır:
 
     * `maven-compiler-plugin`: Proje tarafından kullanılan Java sürümünü 8 olarak ayarlamak için kullanılır. HDInsight 3.6 için Java 8 gerekir.
-    * `maven-shade-plugin`: Bu uygulamayı ve herhangi bir bağımlılıkiçeren bir uber kavanozu oluşturmak için kullanılır. Ayrıca, ana sınıfı belirtmenize gerek kalmadan Jar dosyasını doğrudan çalıştırabilmeniz için uygulamanın giriş noktasını ayarlamak için de kullanılır.
+    * `maven-shade-plugin`: Bu uygulamayı ve tüm bağımlılıkları içeren bir Uber jar oluşturmak için kullanılır. Ayrıca, ana sınıfı belirtmek zorunda kalmadan jar dosyasını doğrudan çalıştırabilmeniz için uygulamanın giriş noktasını ayarlamak için de kullanılır.
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -131,7 +131,7 @@ public class Stream
 
 Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için aşağıdaki adımları kullanın:
 
-1. Geçerli dizininizi `hdinsight-kafka-java-get-started-master\Streaming` dizinin konumuna ayarlayın ve ardından bir kavanoz paketi oluşturmak için aşağıdaki komutu kullanın:
+1. Geçerli dizininizi `hdinsight-kafka-java-get-started-master\Streaming` dizinin konumuna ayarlayın ve ardından aşağıdaki komutu kullanarak bir jar paketi oluşturun:
 
     ```cmd
     mvn clean package
@@ -139,13 +139,13 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
 
     Bu komut, `target/kafka-streaming-1.0-SNAPSHOT.jar` konumunda paketi oluşturur.
 
-2. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `clustername` değerini kümenizin adıyla değiştirin. Dosyayı `kafka-streaming-1.0-SNAPSHOT.jar` HDInsight kümenize kopyalamak için aşağıdaki komutu kullanın. İstendiğinde, SSH kullanıcı hesabının parolasını girin.
+2. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `clustername` değerini kümenizin adıyla değiştirin. `kafka-streaming-1.0-SNAPSHOT.jar` Dosyayı HDInsight kümenize kopyalamak için aşağıdaki komutu kullanın. İstendiğinde, SSH kullanıcı hesabının parolasını girin.
 
     ```cmd
     scp ./target/kafka-streaming-1.0-SNAPSHOT.jar sshuser@clustername-ssh.azurehdinsight.net:kafka-streaming.jar
     ```
 
-## <a name="create-apache-kafka-topics"></a>Apaçi Kafka konularını oluşturun
+## <a name="create-apache-kafka-topics"></a>Apache Kafka konuları oluşturma
 
 1. `sshuser` değerini, kümenizin SSH kullanıcısı ile, `CLUSTERNAME` değerini kümenizin adıyla değiştirin. Aşağıdaki komutu girerek kümeye bir SSH bağlantısı açın. İstendiğinde, SSH kullanıcı hesabının parolasını girin.
 
@@ -153,28 +153,28 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Bir komut satırı JSON işlemci [jq](https://stedolan.github.io/jq/)yükleyin. Açık SSH bağlantısından, yüklemek `jq`için aşağıdaki komutu girin:
+2. Komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/)'yi yükler. Açık SSH bağlantısından yüklemek `jq`için aşağıdaki komutu girin:
 
     ```bash
     sudo apt -y install jq
     ```
 
-3. Parola değişkenini ayarlayın. Küme `PASSWORD` giriş parolası ile değiştirin ve ardından komutu girin:
+3. Parola değişkenini ayarlayın. Küme `PASSWORD` oturum açma parolasıyla değiştirin, ardından şu komutu girin:
 
     ```bash
     export password='PASSWORD'
     ```
 
-4. Doğru örneklenmiş küme adını ayıklayın. Küme adının gerçek gövdesi, kümenin nasıl oluşturulduğuna bağlı olarak beklediğiniz den farklı olabilir. Bu komut, gerçek kasayı alır ve sonra bir değişkende saklar. Aşağıdaki komutu girin:
+4. Doğru şekilde oluşturulmuş küme adını ayıklayın. Kümenin nasıl oluşturulduğuna bağlı olarak, küme adının gerçek büyük küçük harfleri beklediğinizden farklı olabilir. Bu komut gerçek büyük küçük harf elde eder ve bir değişkende depolar. Aşağıdaki komutu girin:
 
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
 
     > [!Note]  
-    > Bu işlemi kümenin dışından yapıyorsanız, küme adını depolamak için farklı bir yordam vardır. Azure portalından küçük harfli küme adını alın. Ardından, küme adını `<clustername>` aşağıdaki komutta değiştirin `export clusterName='<clustername>'`ve çalıştırın: .  
+    > Bu işlemi küme dışından yapıyorsanız, küme adını depolamak için farklı bir yordam vardır. Azure portal küme adını küçük harf olarak alın. Ardından, aşağıdaki komutta için `<clustername>` küme adını değiştirin ve yürütün:. `export clusterName='<clustername>'`  
 
-5. Kafka broker ev sahipleri ve Apache Zookeeper ev sahibi almak için aşağıdaki komutları kullanın. İstendiğinde, küme oturum açma (yönetici) hesabı için parolayı girin.
+5. Kafka Broker konakları ve Apache Zookeeper Konakları almak için aşağıdaki komutları kullanın. İstendiğinde, küme oturum açma (yönetici) hesabı için parolayı girin.
 
     ```bash
     export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
@@ -183,7 +183,7 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
     ```
 
     > [!Note]  
-    > Bu komutlar Ambari erişimi gerektirir. Kümeniz bir NSG'nin arkasındaysa, bu komutları Ambari'ye erişebilen bir makineden çalıştırın.
+    > Bu komutlar, ambarı erişimi gerektirir. Kümeniz bir NSG 'nin arkasındaysa, bu komutları ambarı erişebilen bir makineden çalıştırın.
 
 6. Akış işlemi tarafından kullanılan konular oluşturmak için aşağıdaki komutları kullanın:
 
@@ -214,7 +214,7 @@ Projeyi derlemek ve HDInsight kümesi üzerinde Kafka’nıza dağıtmak için a
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    Apache log4j hakkında bir uyarı alabilirsiniz. Bunu yoksayabilirsiniz.
+    Apache Log4J hakkında bir uyarı alabilirsiniz. Bunu yoksayabilirsiniz.
 
 2. `test` konusuna kayıtlar göndermek için aşağıdaki komutu kullanarak üretici uygulamasını başlatın:
 
@@ -270,7 +270,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, HDInsight'ta Kafka ile Apache Kafka Streams API'yi nasıl kullanacağınızı öğrendiniz. Kafka ile çalışma hakkında daha fazla bilgi edinmek için aşağıdakileri kullanın.
+Bu belgede, HDInsight üzerinde Kafka ile Apache Kafka Streams API 'sini kullanmayı öğrendiniz. Kafka ile çalışma hakkında daha fazla bilgi edinmek için aşağıdakileri kullanın.
 
 > [!div class="nextstepaction"]
 > [Apache Kafka günlüklerini çözümleme](apache-kafka-log-analytics-operations-management.md)

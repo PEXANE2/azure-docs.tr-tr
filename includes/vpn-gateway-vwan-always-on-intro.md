@@ -9,20 +9,20 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80116896"
 ---
-Windows 10 VPN istemcisinin yeni bir özelliği, Always On, vpn bağlantısını korumak için yeteneğidir. Her Zaman Açık'ta, etkin VPN profili otomatik olarak bağlanabilir ve kullanıcı oturum açma, ağ durumu değişikliği veya aygıt ekranı etkin gibi tetikleyicilere bağlı olarak bağlı kalabilir.
+Windows 10 VPN istemcisinin yeni bir özelliği olan her zaman açık, bir VPN bağlantısını sürdürme olanağıdır. Her zaman açık olduğunda, etkin VPN profili otomatik olarak bağlanabilir ve Kullanıcı oturum açma, ağ durumu değişikliği veya cihaz ekranı etkin gibi tetikleyicilere göre bağlı kalır.
 
-Windows 10 Always On ile ağ geçitlerini kullanarak Azure'a sürekli kullanıcı tünelleri ve aygıt tünelleri oluşturabilirsiniz. Bu makale, her zaman VPN kullanıcı tünelini yapılandırmanıza yardımcı olur.
+Azure 'a kalıcı Kullanıcı tüneli ve cihaz tünelleri sağlamak için Windows 10 her zaman açık olan ağ geçitleri kullanabilirsiniz. Bu makale, her zaman açık VPN Kullanıcı tüneli yapılandırmanıza yardımcı olur.
 
-Her zaman VPN bağlantıları iki tür tüneliçerir:
+Her zaman VPN bağlantılarında iki tür tünelden biri vardır:
 
-* **Aygıt tüneli**: Kullanıcılar aygıtta oturum açmadan önce belirtilen VPN sunucularına bağlanır. Oturum açma öncesi bağlantı senaryoları ve aygıt yönetimi bir aygıt tüneli kullanır.
+* **Cihaz tüneli**: kullanıcılar cihazda oturum açmadan önce belirtilen VPN sunucularına bağlanır. Oturum açma öncesi bağlantı senaryoları ve cihaz yönetimi bir cihaz tüneli kullanır.
 
-* **Kullanıcı tüneli**: Yalnızca kullanıcılar cihazda oturum açtıktan sonra bağlanır. Kullanıcı tünellerini kullanarak, VPN sunucuları aracılığıyla kuruluş kaynaklarına erişebilirsiniz.
+* **Kullanıcı tüneli**: yalnızca kullanıcılar cihazda oturum açtıktan sonra bağlanır. Kullanıcı tünellerini kullanarak, VPN sunucuları üzerinden kuruluş kaynaklarına erişebilirsiniz.
 
-Aygıt tünelleri ve kullanıcı tünelleri VPN profillerinden bağımsız olarak çalışır. Bunlar aynı anda bağlanabilir ve uygun şekilde farklı kimlik doğrulama yöntemlerini ve diğer VPN yapılandırma ayarlarını kullanabilirler.
+Cihaz tünelleri ve Kullanıcı tünelleri, VPN profillerinin bağımsız olarak çalışır. Bunlar aynı anda birbirine bağlanabilir ve uygun şekilde farklı kimlik doğrulama yöntemleri ve diğer VPN yapılandırma ayarlarını kullanabilirler.

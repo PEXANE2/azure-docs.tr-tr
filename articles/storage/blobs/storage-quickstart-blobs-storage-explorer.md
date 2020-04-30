@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Azure Depolama Gezgini ile bir leke oluşturma
+title: Hızlı başlangıç-Azure Depolama Gezgini blob oluşturma
 titleSuffix: Azure Storage
-description: Bu hızlı başlangıçta, bir kapsayıcı ve bir blob oluşturmak için Azure Depolama Gezgini'ni kullanmayı, blob'u yerel bilgisayarınıza indirmeyi ve kapsayıcıdaki tüm lekeleri nasıl görüntülediğinizi öğrenirsiniz.
+description: Bu hızlı başlangıçta, bir kapsayıcı ve BLOB oluşturmak, blobu yerel bilgisayarınıza indirmek ve kapsayıcıdaki tüm Blobları görüntülemek için Azure Depolama Gezgini kullanmayı öğreneceksiniz.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
 ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061366"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Quickstart: Bir blob oluşturmak için Azure Depolama Gezgini'ni kullanma
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Hızlı başlangıç: blob oluşturmak için Azure Depolama Gezgini kullanma
 
-Bu hızlı başlangıçta, bir kapsayıcı ve bir leke oluşturmak için [Azure Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/) nasıl kullanacağınızı öğrenirsiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobları görüntülemeyi öğreneceksiniz. Ayrıca bir blobun anlık görüntüsünü oluşturma, kapsayıcı erişim ilkelerini yönetme ve paylaşılan erişim imzası oluşturma hakkında bilgi edineceksiniz.
+Bu hızlı başlangıçta, bir kapsayıcı ve BLOB oluşturmak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanmayı öğreneceksiniz. Ardından, blob’u yerel bilgisayarınıza indirmeyi ve bir kapsayıcıdaki tüm blobları görüntülemeyi öğreneceksiniz. Ayrıca bir blobun anlık görüntüsünü oluşturma, kapsayıcı erişim ilkelerini yönetme ve paylaşılan erişim imzası oluşturma hakkında bilgi edineceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,11 +32,11 @@ Uygulamayı ilk kez başlattığınızda **Microsoft Azure Depolama Gezgini - Ba
 
 |Görev|Amaç|
 |---|---|
-|Azure Hesabı ekleme | Kimliğinizi Azure'a yönlendirmek için sizi kuruluşunuzun oturum açma sayfasına yönlendirir. |
+|Azure Hesabı ekleme | Sizi Azure 'da kimlik doğrulaması yapmak için kuruluşunuzun oturum açma sayfasına yönlendirir. |
 |Bağlantı dizesi veya paylaşılan erişim imzası URI'si kullanma | SAS belirteci veya paylaşılan bağlantı dizesiyle doğrudan bir kapsayıcıya veya depolama hesabına erişmek için kullanılabilir. |
 |Depolama hesabı adını ve anahtarını kullanma| Azure depolama alanına bağlanmak için depolama hesabı adını ve anahtarını kullanın.|
 
-**Azure Hesabı Ekle'yi** seçin ve **Oturum Aç'ı tıklatın...** Azure hesabınızda oturum açma nız için ekrandaki istemleri izleyin.
+**Azure hesabı ekle** ' yi seçin ve **oturum aç**' a tıklayın... Azure hesabınızda oturum açmak için ekrandaki istemleri izleyin.
 
 ![Microsoft Azure Depolama Gezgini - Bağlan penceresi](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -48,7 +48,7 @@ Bağlantı kurulduğunda Azure Depolama Gezgini yüklenir ve **Gezgin** sekmesi 
 
 Bloblar her zaman bir kapsayıcıya yüklenir. Bu, blob gruplarını bilgisayarınızdaki dosyaları klasörler halinde düzenlediğiniz gibi düzenleyebilmenizi sağlar.
 
-Kapsayıcı oluşturmak için önceki adımda oluşturduğunuz depolama hesabını genişletin. **Blob Kapsayıcıları**'nı ve ardından **Blob Kapsayıcısı Oluştur**'u seçin. Blob kapsayıcınızın adını girin. Blob [kapsayıcılarını](storage-quickstart-blobs-dotnet.md#create-a-container) adlandırma yla ilgili kurallar ve kısıtlamalar listesi için kapsayıcı oluştur bölümüne bakın. Girişleri tamamladığınızda blob kapsayıcısını oluşturmak için **Enter**'a basın. Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabının **Blob Kapsayıcıları** klasörü altında gösterilir.
+Kapsayıcı oluşturmak için önceki adımda oluşturduğunuz depolama hesabını genişletin. **Blob Kapsayıcıları**'nı ve ardından **Blob Kapsayıcısı Oluştur**'u seçin. Blob kapsayıcınızın adını girin. Blob kapsayıcıları adlandırmayla ilgili kural ve kısıtlamaların listesi için [kapsayıcı oluşturma](storage-quickstart-blobs-dotnet.md#create-a-container) bölümüne bakın. Girişleri tamamladığınızda blob kapsayıcısını oluşturmak için **Enter**'a basın. Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabının **Blob Kapsayıcıları** klasörü altında gösterilir.
 
 ## <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
@@ -84,13 +84,13 @@ Azure Depolama Gezgini, bloblarınızın [anlık görüntülerini](storage-blob-
 
 ## <a name="manage-access-policies"></a>Erişim ilkelerini yönetme
 
-Depolama Gezgini, kullanıcı arabiriminde kapsayıcılar için erişim ilkelerini yönetme imkanı sunar. Hizmet düzeyi ve hesap düzeyi olmak üzere iki güvenlik erişim ilkesi (SAS) türü vardır. Hesap düzeyi SAS, depolama hesabını hedefler ve birden fazla hizmete ve kaynağa uygulanabilir. Hizmet düzeyi SAS, belirli bir hizmet altındaki kaynak için tanımlanır. Hizmet düzeyi SAS oluşturmak için herhangi bir kapsayıcıya sağ tıklayın ve **Erişim İlkelerini Yönet'i seçin...**. Hesap düzeyi SAS oluşturmak için depolama hesabına sağ tıklayın.
+Depolama Gezgini, kullanıcı arabiriminde kapsayıcılar için erişim ilkelerini yönetme imkanı sunar. Hizmet düzeyi ve hesap düzeyi olmak üzere iki güvenlik erişim ilkesi (SAS) türü vardır. Hesap düzeyi SAS, depolama hesabını hedefler ve birden fazla hizmete ve kaynağa uygulanabilir. Hizmet düzeyi SAS, belirli bir hizmet altındaki kaynak için tanımlanır. Hizmet düzeyi SAS oluşturmak için herhangi bir kapsayıcıya sağ tıklayın ve **erişim Ilkelerini Yönet...** seçeneğini belirleyin. Hesap düzeyi SAS oluşturmak için depolama hesabına sağ tıklayın.
 
 Yeni bir erişim ilkesi eklemek ve ilkenin izinlerini tanımlamak için **Ekle**'yi seçin. İşlemi tamamladığınızda erişim ilkesini kaydetmek için **Kaydet**'i seçin. Bu ilkeyi Paylaşılan Erişim İmzası yapılandırma sırasında kullanabilirsiniz.
 
 ## <a name="work-with-shared-access-signatures"></a>Paylaşılan Erişim İmzaları ile çalışma
 
-Paylaşılan Erişim İmzaları (SAS) Depolama Gezgini'nden alınabilir. Bir depolama hesabına, kapsayıcıya veya blob'a sağ tıklayın ve **Paylaşılan Erişim İmzası Al'ı seçin...**. Başlangıç ve son kullanma saatini ve SAS URL'si için izinleri seçin ve **Oluştur'u**seçin. Sonraki ekranda sorgu dizesini içeren tam URL'nin yanı sıra sorgu dizesinin kendisi sağlanır ve bu değerler kopyalanabilir.
+Paylaşılan Erişim İmzaları (SAS) Depolama Gezgini'nden alınabilir. Depolama hesabı, kapsayıcı veya blobu sağ tıklatın ve **paylaşılan erişim Imzası al...** seçeneğini belirleyin. Başlangıç ve sona erme saati ' ni ve SAS URL 'SI için izinleri seçin ve **Oluştur**' u seçin. Sonraki ekranda sorgu dizesini içeren tam URL'nin yanı sıra sorgu dizesinin kendisi sağlanır ve bu değerler kopyalanabilir.
 
 ![Microsoft Azure Depolama Gezgini - kapsayıcı içindeki blobları listeleme](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 

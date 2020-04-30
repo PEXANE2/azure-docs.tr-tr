@@ -1,7 +1,7 @@
 ---
 title: Kimlik doğrulamasını ayarlama
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning'de çeşitli kaynaklar ve iş akışları için kimlik doğrulaması nasıl ayarlayıp yapılandırıştırmayı öğrenin. Geliştirme veya sınama amacıyla basit Kullanıcı Arabirimi tabanlı auth'tan tam Azure Active Directory hizmeti asıl kimlik doğrulamasına kadar hizmet içinde kimlik doğrulamayı yapılandırmanın ve kullanmanın birden çok yolu vardır.
+description: Azure Machine Learning çeşitli kaynaklar ve iş akışları için kimlik doğrulamasını ayarlamayı ve yapılandırmayı öğrenin. Hizmet içinde kimlik doğrulamasını yapılandırmanın ve kullanmanın birden çok yolu vardır; geliştirme veya test amaçları için basit UI tabanlı kimlik doğrulamasından, tam Azure Active Directory hizmet sorumlusu kimlik doğrulamasına kadar birçok yol vardır.
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -11,44 +11,44 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283543"
 ---
-# <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulaması ayarlama
+# <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning'de çeşitli kaynaklar ve iş akışları için kimlik doğrulaması nasıl ayarlayıp yapılandırıştırabileceğinizi öğreneceksiniz. Geliştirme veya sınama amacıyla basit Kullanıcı Arabirimi tabanlı auth'tan tam Azure Active Directory hizmeti asıl kimlik doğrulaması arasında değişen hizmete kimlik doğrulamanın birden çok yolu vardır. Bu makalede, web hizmeti kimlik doğrulamasının nasıl çalıştığı ve Azure Machine Learning REST API'de kimlik doğrulama nın nasıl olduğu arasındaki farklar da açıklanmaktadır.
+Bu makalede, Azure Machine Learning çeşitli kaynaklar ve iş akışları için kimlik doğrulaması ayarlamayı ve yapılandırmayı öğreneceksiniz. Hizmette kimlik doğrulamanın birden çok yolu vardır ve geliştirme veya test amacıyla basit kullanıcı arabirimi tabanlı kimlik doğrulamasının tam Azure Active Directory hizmet sorumlusu kimlik doğrulamasına kadar çeşitli yolları vardır. Bu makalede ayrıca, Web hizmeti kimlik doğrulamasının nasıl çalıştığı ve Azure Machine Learning REST API nasıl doğrulanacağı açıklanır.
 
-Bu nasıl yapılacağını gösterir aşağıdaki görevleri nasıl yapacağınızı gösterir:
+Bu nasıl yapılır, aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
-* Sınama/geliştirme için etkileşimli Kullanıcı Arabirimi kimlik doğrulaması kullanma
-* Hizmet temel kimlik doğrulaması ayarlama
-* Çalışma alanınıza kimlik doğrulama
-* Azure Machine Learning REST API için OAuth2.0 taşıyıcı tipi belirteçleri alın
+* Test/geliştirme için etkileşimli UI kimlik doğrulamasını kullanma
+* Hizmet sorumlusu kimlik doğrulamasını ayarlama
+* Çalışma alanınızda kimlik doğrulaması
+* Azure Machine Learning REST API için OAuth 2.0 taşıyıcı türü belirteçleri alın
 * Web hizmeti kimlik doğrulamasını anlama
 
-Azure Machine Learning'deki güvenlik ve kimlik doğrulamaya genel bir bakış için [kavram makalesine](concept-enterprise-security.md) bakın.
+Azure Machine Learning içinde güvenlik ve kimlik doğrulamasına genel bir bakış için bkz. [kavram makalesi](concept-enterprise-security.md) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure [Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
-* [Geliştirme ortamınızı](how-to-configure-environment.md) Azure Machine Learning SDK'yı yükecek şekilde yapılandırın veya SDK yüklü olan [bir Azure Machine Learning Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance) kullanın.
+* [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
+* Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure MACHINE LEARNING Not defteri VM](concept-azure-machine-learning-architecture.md#compute-instance) 'si kullanın.
 
 ## <a name="interactive-authentication"></a>Etkileşimli kimlik doğrulaması
 
-Bu hizmetiçin belgelerdeki çoğu örnek, test ve gösterim için basit bir yöntem olarak Jupyter dizüstü bilgisayarlarda etkileşimli kimlik doğrulamakullanır. Bu, ne inşa ettiğinizi test etmek için hafif bir yoldur. Otomatik olarak bir UI tabanlı kimlik doğrulama akışı ile sizi isteyecek iki işlev çağrısı vardır.
+Bu hizmetin belgelerindeki çoğu örnek, test ve gösterim için basit bir yöntem olarak jupi not defterlerinde etkileşimli kimlik doğrulaması kullanır. Bu, ne oluşturmakta olduğunuzu test etmenin hafif bir yoludur. Otomatik olarak Kullanıcı arabirimi tabanlı kimlik doğrulama akışı isteyen iki işlev çağrısı vardır.
 
-İşlevin `from_config()` çağrılması istemi ni verecektir.
+`from_config()` İşlevi çağırmak, istem olarak verilecek.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-İşlev, `from_config()` çalışma alanı bağlantı bilgilerinizi içeren bir JSON dosyası arar. Ayrıca, etkileşimli kimlik doğrulaması için `Workspace` de istenecek olan oluşturucuyu kullanarak bağlantı ayrıntılarını açıkça belirtebilirsiniz. Her iki arama da eşdeğerdir.
+İşlevi `from_config()` , çalışma alanı bağlantı bilgilerinizi IÇEREN bir JSON dosyası arar. Ayrıca, `Workspace` oluşturucuyu kullanarak bağlantı ayrıntılarını açıkça belirtebilirsiniz ve bu da etkileşimli kimlik doğrulaması için istemde bulunabilir. Her iki çağrı de eşdeğerdir.
 
 ```python
 ws = Workspace(subscription_id="your-sub-id",
@@ -57,37 +57,37 @@ ws = Workspace(subscription_id="your-sub-id",
               )
 ```
 
-Birden çok kiracıya erişiminiz varsa, sınıfı içe aktarmanız ve hangi kiracıyı hedeflediğinizi açıkça tanımlamanız gerekebilir. Oluşturucuyu aramak `InteractiveLoginAuthentication` da yukarıdaki aramalara benzer şekilde oturum açmanızı ister.
+Birden çok kiracıya erişiminiz varsa, sınıfı içeri aktarmanız ve hedeflediğiniz kiracıyı açıkça tanımlamanız gerekebilir. Oluşturucusunun `InteractiveLoginAuthentication` çağrılması, yukarıdaki çağrılara benzer bir oturum açma bilgileri de ister.
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
 interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 ```
 
-İnteraktif kimlik doğrulama, test ve öğrenme için yararlı olsa da, otomatik veya başsız iş akışları oluşturmanıza yardımcı olmaz. Hizmet temel kimlik doğrulaması ayarlama SDK kullanan otomatik işlemler için en iyi yaklaşımdır.
+Test ve öğrenme için faydalı olsa da, etkileşimli kimlik doğrulaması otomatikleştirilmiş veya gözetimsiz iş akışları oluşturmanıza yardımcı olmaz. Hizmet sorumlusu kimlik doğrulamasını ayarlama, SDK 'Yı kullanan otomatikleştirilmiş işlemlere yönelik en iyi yaklaşımdır.
 
-## <a name="set-up-service-principal-authentication"></a>Hizmet temel kimlik doğrulaması ayarlama
+## <a name="set-up-service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulamasını ayarlama
 
-Bu işlem, otomatik iş akışlarında Azure Machine Learning Python SDK'ya kimlik doğrulamanızı sağlayan belirli bir kullanıcı oturumunu etkinleştirmek için gereklidir. Hizmet ana kimlik doğrulaması da [REST API için kimlik doğrulama](#azure-machine-learning-rest-api-auth)sağlar.
+Bu işlem, belirli bir Kullanıcı oturum açma işleminden ayrılmış kimlik doğrulamanın etkinleştirilmesi için gereklidir. Bu, otomatik iş akışlarında Azure Machine Learning Python SDK ' da kimlik doğrulaması yapmanıza olanak sağlar. Hizmet sorumlusu kimlik doğrulaması ayrıca [REST API kimlik](#azure-machine-learning-rest-api-auth)doğrulaması yapmanıza izin verir.
 
-Hizmet temel kimlik doğrulaması ayarlamak için önce Azure Active Directory'de bir uygulama kaydı oluşturur ve ardından UYGULAMAnize ML çalışma alanınıza rol tabanlı erişim verirsiniz. Bu kurulumu tamamlamanın en kolay yolu Azure portalındaki [Azure Bulut Kabuğu'ndan](https://azure.microsoft.com/features/cloud-shell/) geçer. Portala giriş yaptıktan sonra, `>_` kabuğu açmak için adınızın yanındaki sayfanın sağ üst kısmındaki simgeyi tıklatın.
+Hizmet sorumlusu kimlik doğrulamasını ayarlamak için öncelikle Azure Active Directory ' de bir uygulama kaydı oluşturun ve ardından ML çalışma alanınıza uygulamanızın rol tabanlı erişimini verirsiniz. Bu kurulumu tamamlamaya en kolay yolu, Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) . Portalda oturum açtıktan sonra, kabuğu açmak için adınızın `>_` yanındaki sayfanın sağ üst kısmındaki simgeye tıklayın.
 
-Azure hesabınızda bulut kabuğunu daha önce kullanmadıysanız, yazılmış dosyaları depolamak için bir depolama hesabı kaynağı oluşturmanız gerekir. Genel olarak bu depolama hesabı ihmal edilebilir bir aylık maliyete tabi olacaktır. Ayrıca, daha önce aşağıdaki komutla kullanmadıysanız makine öğrenimi uzantısını yükleyin.
+Cloud Shell 'i Azure hesabınızda kullanmadıysanız, yazılan dosyaları depolamak için bir depolama hesabı kaynağı oluşturmanız gerekir. Genel olarak bu depolama hesabı, daha az bir aylık maliyet doğuracaktır. Ayrıca, daha önce aşağıdaki komutla kullanmadıysanız Machine Learning uzantısını da yükleyebilirsiniz.
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
 ```
 
 > [!NOTE]
-> Aşağıdaki adımları gerçekleştirmek için abonelikte yönetici olmalısınız.
+> Aşağıdaki adımları gerçekleştirmek için abonelikte yönetici olmanız gerekir.
 
-Ardından, hizmet ilkesini oluşturmak için aşağıdaki komutu çalıştırın. Bir isim ver, bu durumda **ml-auth**.
+Ardından, hizmet sorumlusunu oluşturmak için aşağıdaki komutu çalıştırın. Bu örnekte **ml-auth**adına bir ad verin.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --sdk-auth --name ml-auth
 ```
 
-Çıktı aşağıdakine benzer bir JSON olacaktır. Bu makaledeki `clientId` `clientSecret`diğer `tenantId` adımlar için ihtiyacınız olacağı için , , ve alanları dikkate alın.
+Çıktı aşağıdakine benzer bir JSON olacaktır. `clientId`, `clientSecret`, Ve `tenantId` alanlarını, bu makaledeki diğer adımlar için ihtiyaç duyduğunuz gibi bir yere göz atın.
 
 ```json
 {
@@ -104,13 +104,13 @@ az ad sp create-for-rbac --sdk-auth --name ml-auth
 }
 ```
 
-Ardından, `clientId` `--id` parametreye giriş olarak yukarıdan gelen değeri kullanarak, yeni oluşturduğunuz hizmet ilkesiyle ilgili ayrıntıları almak için aşağıdaki komutu çalıştırın.
+Daha sonra, yeni oluşturduğunuz hizmet sorumlusu hakkındaki ayrıntıları, `clientId` `--id` parametrenin girişi olarak yukarıdaki değeri kullanarak almak için aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az ad sp show --id your-client-id
 ```
 
-Aşağıda komuttan JSON çıkışıbasitleştirilmiş bir örneği dir. Bir sonraki `objectId` adım için değerine ihtiyacınız olacağından, alana dikkat edin.
+Aşağıda, komuttan gelen JSON çıktısının basitleştirilmiş bir örneği verilmiştir. Bir sonraki adım için `objectId` değerine ihtiyacınız olacak şekilde, alanı buraya göz atın.
 
 ```json
 {
@@ -125,17 +125,17 @@ Aşağıda komuttan JSON çıkışıbasitleştirilmiş bir örneği dir. Bir son
 }
 ```
 
-Ardından, makine öğrenimi çalışma alanınıza hizmet temel erişimiatamak için aşağıdaki komutu kullanın. Çalışma alanı adınızı ve kaynak grup adı `-w` ve `-g` parametreler için sırasıyla gerekir. Parametre `--user` için önceki `objectId` adımdaki değeri kullanın. `--role` Parametre, hizmet sorumlusunun erişim rolünü ayarlamanızı sağlar ve genel olarak **sahibinizi** veya **katkıda bulunanı**kullanırsınız. Her ikisi de bilgi işlem kümeleri ve veri depoları gibi varolan kaynaklara yazma erişimine sahiptir, ancak bu kaynakları yalnızca **sahibi** sağlayabilir. 
+Ardından, Service Principal erişiminizi Machine Learning çalışma alanınıza atamak için aşağıdaki komutu kullanın. , `-w` Ve `-g` parametreleri için çalışma alanınızın adı ve kaynak grubu adı gerekir. `--user` Parametresi için, önceki adımdaki `objectId` değeri kullanın. `--role` Parametresi, hizmet sorumlusu için erişim rolünü ayarlamanıza olanak sağlar ve genel olarak, **sahibi** veya **katkıda**bulunanı kullanacaksınız. Her ikisinin de, işlem kümeleri ve veri depoları gibi mevcut kaynaklara yazma erişimi vardır, ancak bu kaynakları yalnızca **sahibi** sağlayabilir. 
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
 ```
 
-Bu çağrı herhangi bir çıktı üretmez, ancak artık çalışma alanınız için hizmet temel kimlik doğrulaması ayarlanmıştır.
+Bu çağrı hiçbir çıkış üretmez, ancak artık çalışma alanınız için hizmet sorumlusu kimlik doğrulaması ayarlamış olursunuz.
 
-## <a name="authenticate-to-your-workspace"></a>Çalışma alanınızda kimlik doğrulaması
+## <a name="authenticate-to-your-workspace"></a>Çalışma alanınızda kimlik doğrulama
 
-Artık hizmet ana tr'niz etkinleştirildiğinden, kullanıcı olarak fiziksel olarak oturum açmadan SDK'daki çalışma alanınıza kimlik doğrulayabilirsiniz. Sınıf `ServicePrincipalAuthentication` oluşturucuyu kullanın ve önceki adımlardan aldığınız değerleri parametre olarak kullanın. Parametre `tenant_id` haritaları `tenantId` yukarıdan, `service_principal_id` haritalar `clientId`için `service_principal_password` , `clientSecret`ve haritalar .
+Hizmet sorumlusu kimlik doğrulaması etkinleştirildikten sonra, bir kullanıcı olarak fiziksel olarak oturum açmadan SDK 'da çalışma alanınızda kimlik doğrulaması yapabilirsiniz. `ServicePrincipalAuthentication` Sınıf oluşturucusunu kullanın ve önceki adımlardan aldığınız değerleri parametreler olarak kullanın. `tenant_id` `tenantId` Parametresi, yukarıdakiyle eşlenir `service_principal_id` , ile eşlenir `clientId`ve `service_principal_password` ile eşlenir. `clientSecret`
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -145,7 +145,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-Değişken `sp` şimdi doğrudan SDK'da kullandığınız bir kimlik doğrulama nesnesini tutar. Genel olarak, aşağıdaki kodda gösterildiği gibi, yukarıda kullanılan kimlikleri/sırları ortam değişkenlerinde saklamak iyi bir fikirdir.
+`sp` Değişken artık doğrudan SDK 'da kullandığınız bir kimlik doğrulama nesnesini barındırır. Genel olarak, aşağıdaki kodda gösterildiği gibi, yukarıda kullanılan kimlikleri/gizli dizileri ortam değişkenlerinde depolamak iyi bir fikirdir.
 
 ```python
 import os 
@@ -155,7 +155,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
 ```
 
-Python'da çalışan ve öncelikle SDK'yı kullanan otomatik iş akışları için, bu nesneyi çoğu durumda kimlik doğrulamanız için olduğu gibi kullanabilirsiniz. Aşağıdaki kod, az önce oluşturduğunuz auth nesnesini kullanarak çalışma alanınıza doğrulanır.
+Python 'da çalışan ve SDK 'Yı ilk olarak kullanan otomatik iş akışları için bu nesneyi, kimlik doğrulamalarınız için çoğu durumda olduğu gibi kullanabilirsiniz. Aşağıdaki kod, yeni oluşturduğunuz auth nesnesini kullanarak çalışma alanınıza yönelik kimlik doğrular.
 
 ```python
 from azureml.core import Workspace
@@ -166,16 +166,16 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API auth
+## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API kimlik doğrulaması
 
-Yukarıdaki adımlarda oluşturulan hizmet ilkesi, Azure Machine Learning [REST API'nın](https://docs.microsoft.com/rest/api/azureml/)kimliğini doğrulamak için de kullanılabilir. Otomatik iş akışlarında başsız kimlik doğrulaması için hizmetten hizmete çağrılara izin veren Azure Active Directory [istemci kimlik bilgilerini](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)kullanırsınız. Örnekler Hem Python hem de Node.js'de [ADAL kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) ile uygulanır, ancak OpenID Connect 1.0'ı destekleyen açık kaynak kitaplığını da kullanabilirsiniz. 
+Yukarıdaki adımlarda oluşturulan hizmet sorumlusu, Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)kimlik doğrulaması için de kullanılabilir. Otomatik iş akışlarında gözetimsiz kimlik doğrulaması için hizmetten hizmete çağrılara izin veren Azure Active Directory [istemci kimlik bilgileri verme akışı](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)' nı kullanırsınız. Örnekler hem Python hem de Node. js ' de [adal kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) ile uygulanır, ancak OpenID Connect 1,0 'yi destekleyen herhangi bir açık kaynak kitaplığı da kullanabilirsiniz. 
 
 > [!NOTE]
-> MSAL.js, ADAL'dan daha yeni bir kitaplıktır, ancak öncelikle belirli bir kullanıcıya bağlı etkileşimli/Kullanıcı Arabirimi kimlik doğrulaması için tasarlanmış bir istemci tarafı kitaplığı olduğundan, MSAL.js ile istemci kimlik bilgilerini kullanarak hizmete hizmet kimlik doğrulaması yapamazsınız. REST API ile otomatik iş akışları oluşturmak için aşağıda gösterildiği gibi ADAL kullanmanızı öneririz.
+> MSAL. js, ADAL 'den daha yeni bir kitaplıktır, ancak özellikle belirli bir kullanıcıya bağlı etkileşimli/UI kimlik doğrulaması için tasarlanan bir istemci tarafı kitaplığı olduğundan, MSAL. js ile istemci kimlik bilgilerini kullanarak hizmetten hizmete kimlik doğrulaması yapılamaz. REST API ile otomatikleştirilmiş iş akışları oluşturmak için aşağıda gösterildiği gibi ADAL kullanmanızı öneririz.
 
 ### <a name="nodejs"></a>Node.js
 
-Node.js kullanarak auth belirteci oluşturmak için aşağıdaki adımları kullanın. Çevrenizde çalıştırın. `npm install adal-node` Ardından, yukarıdaki `tenantId` `clientId`adımlarda `clientSecret` oluşturduğunuz hizmet sorumlusu ve aşağıdaki komut dosyasındaki eşleşen değişkenler için değerler olarak ,' ınızı kullanın.
+Node. js kullanarak bir kimlik doğrulama belirteci oluşturmak için aşağıdaki adımları kullanın. Ortamınızda öğesini çalıştırın `npm install adal-node`. Daha sonra, ve `tenantId` `clientSecret` Yukarıdaki `clientId`adımlarda oluşturduğunuz hizmet sorumlusunun aşağıdaki betikteki eşleşen değişkenlerin değerleri olarak değerini kullanın.
 
 ```javascript
 const adal = require('adal-node').AuthenticationContext;
@@ -203,7 +203,7 @@ context.acquireTokenWithClientCredentials(
 );
 ```
 
-Değişken, `tokenResponse` son kullanma süresi gibi belirteç ve ilişkili meta verileri içeren bir nesnedir. Belirteçler 1 saat için geçerlidir ve yeni bir belirteç almak için aynı aramayı yeniden çalıştırarak yenilenebilir. Aşağıda örnek bir yanıt veremistir.
+Değişkeni `tokenResponse` , belirteci ve sona erme saati gibi ilişkili meta verileri içeren bir nesnedir. Belirteçler 1 saat için geçerlidir ve yeni bir belirteç almak için aynı çağrı çalıştırılarak yenilenebilir. Aşağıda örnek bir yanıt verilmiştir.
 
 ```javascript
 { 
@@ -218,11 +218,11 @@ Değişken, `tokenResponse` son kullanma süresi gibi belirteç ve ilişkili met
 }
 ```
 
-Auth `accessToken` belirteci getirmek için özelliği kullanın. BELIRTeçle ilgili örnekler için [REST API belgelerine](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) bakın.
+Kimlik doğrulama `accessToken` belirtecini getirmek için özelliğini kullanın. API çağrıları yapmak için belirteci kullanma hakkında örnekler için [REST API belgelerine](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) bakın.
 
 ### <a name="python"></a>Python 
 
-Python kullanarak auth belirteci oluşturmak için aşağıdaki adımları kullanın. Çevrenizde çalıştırın. `pip install adal` Ardından, yukarıdaki `tenantId` `clientId`adımlarda `clientSecret` oluşturduğunuz hizmet sorumlusu ve aşağıdaki komut dosyasındaki uygun değişkenler için değer olarak , ve hizmet sorumlusundan kullanın.
+Python kullanarak bir kimlik doğrulama belirteci oluşturmak için aşağıdaki adımları kullanın. Ortamınızda öğesini çalıştırın `pip install adal`. Daha sonra, ve `tenantId` `clientSecret` Yukarıdaki `clientId`adımlarda oluşturduğunuz hizmet sorumlusunun, aşağıdaki komut dosyasında uygun değişkenlerin değerleri olarak değerlerini kullanın.
 
 ```python
 from adal import AuthenticationContext
@@ -238,7 +238,7 @@ token_response = auth_context.acquire_token_with_client_credentials("https://man
 print(token_response)
 ```
 
-Değişken, `token_response` son kullanma süresi gibi belirteç ve ilişkili meta verileri içeren bir sözlüktür. Belirteçler 1 saat için geçerlidir ve yeni bir belirteç almak için aynı aramayı yeniden çalıştırarak yenilenebilir. Aşağıda örnek bir yanıt veremistir.
+Değişken `token_response` , belirteci ve sona erme saati gibi ilişkili meta verileri içeren bir sözlüktür. Belirteçler 1 saat için geçerlidir ve yeni bir belirteç almak için aynı çağrı çalıştırılarak yenilenebilir. Aşağıda örnek bir yanıt verilmiştir.
 
 ```python
 {
@@ -253,13 +253,13 @@ Değişken, `token_response` son kullanma süresi gibi belirteç ve ilişkili me
 }
 ```
 
-Auth belirteci getirmek için kullanın. `token_response["accessToken"]` BELIRTeçle ilgili örnekler için [REST API belgelerine](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) bakın.
+Kimlik `token_response["accessToken"]` doğrulama belirtecini getirmek için kullanın. API çağrıları yapmak için belirteci kullanma hakkında örnekler için [REST API belgelerine](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) bakın.
 
 ## <a name="web-service-authentication"></a>Web hizmeti kimlik doğrulaması
 
-Azure Machine Learning'deki Web hizmetleri, yukarıda açıklanandan farklı bir kimlik doğrulama deseni kullanır. Dağıtılan web hizmetlerine kimlik doğrulamanın en kolay yolu, yenilenmesi gerekmeyen statik taşıyıcı türü kimlik doğrulama anahtarları oluşturan **anahtar tabanlı kimlik doğrulamasını**kullanmaktır. Yalnızca dağıtılan bir web hizmetine kimlik doğrulamanız gerekiyorsa, yukarıda gösterildiği gibi hizmet ilkesi kimlik doğrulaması ayarlamanız gerekmez.
+Azure Machine Learning Web Hizmetleri, yukarıda açıklanenden farklı bir kimlik doğrulama modelini kullanır. Dağıtılan Web Hizmetleri için kimlik doğrulamanın en kolay yolu, yenilenmesi gerekmeyen statik taşıyıcı türü kimlik doğrulama anahtarları üreten **anahtar tabanlı kimlik doğrulaması**kullanmaktır. Yalnızca dağıtılan bir Web hizmetinde kimlik doğrulaması yapmanız gerekiyorsa, yukarıda gösterildiği gibi hizmet ilkesi kimlik doğrulamasını ayarlamanız gerekmez.
 
-Azure Kubernetes Hizmeti'nde dağıtılan web hizmetleri varsayılan olarak anahtar tabanlı auth *özelliğine sahiptir.* Azure Kapsayıcı Örnekleri dağıtılan hizmetler varsayılan olarak anahtar tabanlı auth devre dışı `auth_enabled=True` *bırakılmış,* ancak ACI web hizmetini oluştururken ayarlayarak bunu etkinleştirebilirsiniz. Aşağıda, anahtar tabanlı auth etkinleştirilmiş bir ACI dağıtım yapılandırması oluşturma örneği verilmiştir.
+Azure Kubernetes hizmetinde dağıtılan Web Hizmetleri, varsayılan olarak anahtar tabanlı kimlik doğrulama *etkindir* . Azure Container Instances dağıtılan hizmetlerde anahtar tabanlı kimlik doğrulaması varsayılan olarak *devre dışıdır* , ancak aci Web hizmeti oluştururken ayarı `auth_enabled=True`yaparak etkinleştirebilirsiniz. Aşağıda anahtar tabanlı kimlik doğrulaması etkinleştirilmiş bir acı dağıtım yapılandırması oluşturma örneği verilmiştir.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -269,7 +269,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enabled=True)
 ```
 
-Ardından, sınıfı kullanarak dağıtımda özel ACI yapılandırmasını `Model` kullanabilirsiniz.
+Daha sonra, `Model` sınıfını kullanarak dağıtımda özel aci yapılandırmasını kullanabilirsiniz.
 
 ```python
 from azureml.core.model import Model, InferenceConfig
@@ -285,7 +285,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Auth tuşlarını almak `aci_service.get_keys()`için. Bir anahtarı yeniden oluşturmak `regen_key()` için, işlevi kullanın ve **Birincil** veya **İkincil'den geçirin.**
+Kimlik doğrulama anahtarlarını getirmek için kullanın `aci_service.get_keys()`. Bir anahtarı yeniden oluşturmak için, `regen_key()` işlevini kullanın ve **birincil** ya da **İkincil**olarak geçirin.
 
 ```python
 aci_service.regen_key("Primary")
@@ -293,18 +293,18 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-Web hizmetleri, belirteç tabanlı kimlik doğrulamayı da destekler, ancak yalnızca Azure Kubernetes Hizmeti dağıtımları için. Kimlik doğrulaması hakkında ek bilgi için web hizmetlerinin [nasıl tüketilmesi](how-to-consume-web-service.md) gerektiğini görün.
+Web Hizmetleri ayrıca belirteç tabanlı kimlik doğrulamasını destekler, ancak yalnızca Azure Kubernetes hizmet dağıtımları için geçerlidir. Kimlik doğrulama hakkında daha fazla bilgi için bkz. Web hizmetlerini [kullanma](how-to-consume-web-service.md) .
 
-### <a name="token-based-web-service-authentication"></a>Belirteç tabanlı web hizmeti kimlik doğrulaması
+### <a name="token-based-web-service-authentication"></a>Belirteç tabanlı Web hizmeti kimlik doğrulaması
 
-Bir web hizmeti için belirteç kimlik doğrulaması etkinleştirdiğinizde, kullanıcılara erişmek için web hizmetine bir Azure Machine Learning JSON Web Belirteci sunmalıdır. Belirteç belirli bir zaman diliminden sonra sona erer ve arama yapmaya devam etmek için yenilenmesi gerekir.
+Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, kullanıcılar, Web hizmetine erişmek için bir Azure Machine Learning JSON Web Token sunmalıdır. Belirtecin, belirtilen bir zaman çerçevesinde sonra süresi dolar ve çağrı yapmaya devam etmek için yenilenmesi gerekir.
 
-* Azure Kubernetes Hizmetine dağıtırken belirteç kimlik doğrulaması **varsayılan olarak devre dışı bırakılır.**
-* Azure Kapsayıcı Örnekleri'ne dağıttığınızda belirteç kimlik doğrulaması **desteklenmez.**
+* Belirteç kimlik doğrulaması, Azure Kubernetes hizmetine dağıtırken **Varsayılan olarak devre dışıdır** .
+* Azure Container Instances ' a dağıtırken belirteç kimlik doğrulaması **desteklenmez** .
 
-Belirteç kimlik doğrulamasını `token_auth_enabled` denetlemek için, dağıtım oluştururken veya güncellerken parametreyi kullanın.
+Belirteç kimlik doğrulamasını denetlemek için, bir `token_auth_enabled` dağıtımı oluştururken veya güncelleştirdiğinizde parametresini kullanın.
 
-Belirteç kimlik doğrulaması etkinse, bir JSON Web Belirteci (JWT) almak için `get_token` yöntemi kullanabilirsiniz ve bu belirteç son kullanma süresi:
+Belirteç kimlik doğrulaması etkinleştirilirse, bir JSON Web Token (JWT) `get_token` almak için yöntemini ve bu belirtecin sona erme süresini kullanabilirsiniz:
 
 ```python
 token, refresh_by = service.get_token()
@@ -312,15 +312,15 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Belirteç `refresh_by` saatinden sonra yeni bir belirteç talep etmeniz gerekir. Python SDK dışındaki belirteçleri yenilemeniz gerekiyorsa, daha önce tartışıldığı gibi `service.get_token()` aramayı düzenli aralıklarla yapmak için REST API'yi hizmet temel kimlik doğrulaması ile kullanmak tır.
+> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir. Belirteçleri Python SDK 'sının dışında yenilemeniz gerekiyorsa, bir seçenek, daha önce anlatıldığı gibi, `service.get_token()` çağrıyı düzenli olarak yapmak için hizmet sorumlusu kimlik doğrulamasıyla REST API kullanmaktır.
 >
-> Azure Makine Öğrenimi çalışma alanınızı Azure Kubernetes Hizmet kümenizle aynı bölgede oluşturmanızı şiddetle öneririz. 
+> Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı önemle öneririz. 
 >
-> Web hizmeti, bir belirteçle kimlik doğrulaması yapmak için Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir arama yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgede olsa bile web hizmetiniz için bir belirteç getiremezsiniz. Sonuç olarak, çalışma alanınız bölgeniz yeniden kullanılabilir olana kadar Azure AD Kimlik Doğrulaması kullanılamıyor. 
+> Bir belirteçle kimlik doğrulaması yapmak için Web hizmeti, Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir çağrı yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgede olsa bile, Web hizmetiniz için bir belirteç getirimeyeceksiniz. Sonuç olarak, çalışma alanınızın bölgesi yeniden kullanılabilir olana kadar Azure AD kimlik doğrulaması kullanılamaz. 
 >
-> Ayrıca, kümenizin bölgesi yle çalışma alanınızın bölgesi arasındaki mesafe ne kadar büyükse, bir belirteci getirmesi o kadar uzun sürer.
+> Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe arttıkça bir belirteç getirmek için o kadar sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir görüntü sınıflandırma modeli eğitin ve dağıtın.](tutorial-train-models-with-aml.md)
-* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini tüketin.](how-to-consume-web-service.md)
+* [Görüntü sınıflandırma modelini eğitme ve dağıtma](tutorial-train-models-with-aml.md).
+* [Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli](how-to-consume-web-service.md)kullanın.
