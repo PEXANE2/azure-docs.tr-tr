@@ -1,6 +1,6 @@
 ---
-title: 'QuickStart: Statik bir HTML web uygulaması oluşturun'
-description: İlk HTML Hello World'ünüzü birkaç dakika içinde Azure Uygulama Hizmetine dağıtın. Uygulama Hizmeti'ne dağıtmanın birçok yollarından biri olan Git'i kullanarak dağıtAbilirsiniz.
+title: 'Hızlı başlangıç: statik HTML Web uygulaması oluşturma'
+description: İlk HTML Merhaba Dünya Azure App Service dakikalar içinde dağıtın. App Service dağıtmak için birçok yol olan git kullanarak dağıtın.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
@@ -8,15 +8,15 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82086088"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure'da statik bir HTML web uygulaması oluşturma
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu hızlı başlangıç, temel bir HTML+CSS sitesini Azure Uygulama Hizmetine nasıl dağıtılanın gösterir. Bu hızlı başlangıcı [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) ile yerel olarak da çalıştırabilirsiniz.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu hızlı başlangıçta, Azure App Service için temel bir HTML + CSS sitesinin nasıl dağıtılacağı gösterilmektedir. Bu hızlı başlangıcı [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) ile yerel olarak da çalıştırabilirsiniz.
 
 ![Örnek uygulamanın giriş sayfası](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -42,7 +42,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-Örnek kodu içeren dizine geçin ve `az webapp up` komutunu çalıştırın. Aşağıdaki komutta <app_name> kısmını benzersiz uygulama adıyla değiştirin. Statik içerik bayrakla `--html` gösterilir.
+Örnek kodu içeren dizine geçin ve `az webapp up` komutunu çalıştırın. Aşağıdaki komutta <app_name> kısmını benzersiz uygulama adıyla değiştirin. Statik içerik `--html` bayrağıyla belirtilir.
 
 ```bash
 cd html-docs-hello-world
@@ -80,7 +80,7 @@ Bu komutun çalıştırılması birkaç dakika sürebilir. Çalıştırıldığ�
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
-Bir tarayıcıda, uygulama URL'sine gidin: `http://<app_name>.azurewebsites.net`.
+Bir tarayıcıda uygulama URL 'sine gidin: `http://<app_name>.azurewebsites.net`.
 
 Sayfa bir Azure App Service web uygulaması çalıştırıyor.
 
@@ -106,13 +106,13 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan ta
 
 ![Güncelleştirilen örnek uygulama giriş sayfası](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetme
+## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetin
 
-Oluşturduğunuz web uygulamasını yönetmek için [Azure portalında](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve seçin. 
+Oluşturduğunuz Web uygulamasını yönetmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin. 
 
-![Azure portalında Uygulama Hizmetleri'ni seçin](./media/app-service-web-get-started-html/portal0.png)
+![Azure portal uygulama hizmetleri 'ni seçin](./media/app-service-web-get-started-html/portal0.png)
 
-Uygulama **Hizmetleri** sayfasında Azure uygulamanızın adını seçin.
+**Uygulama hizmetleri** sayfasında, Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-html/portal1.png)
 

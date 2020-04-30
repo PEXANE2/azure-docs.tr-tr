@@ -1,62 +1,62 @@
 ---
 title: Mantıksal uygulama şablonları dağıtma
-description: Azure Mantık Uygulamaları için oluşturulan Azure Kaynak Yöneticisi şablonlarını nasıl dağıtılayın öğrenin
+description: Azure Logic Apps için oluşturulan Azure Resource Manager şablonlarını dağıtmayı öğrenin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
 ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086445"
 ---
-# <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Mantık Uygulamaları için Azure Kaynak Yöneticisi şablonlarını dağıtma
+# <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonları dağıtma
 
-Mantık uygulamanız için bir Azure Kaynak Yöneticisi şablonu oluşturduktan sonra şablonunuzu şu şekilde dağıtabilirsiniz:
+Mantıksal uygulamanız için bir Azure Resource Manager şablonu oluşturduktan sonra, şablonunuzu şu yollarla dağıtabilirsiniz:
 
 * [Azure portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
-* [Azure Kaynak Yöneticisi REST API](../azure-resource-manager/templates/deploy-rest.md)
+* [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
 
-## <a name="deploy-through-azure-portal"></a>Azure portalı üzerinden dağıtma
+## <a name="deploy-through-azure-portal"></a>Azure portal üzerinden dağıtma
 
-Bir mantıksal uygulama şablonunu Azure'a otomatik olarak dağıtmak için, sizi Azure portalına kaydeden ve mantık uygulamanız hakkında bilgi almak için sizi teşvik eden aşağıdaki **Azure'a Dağıt** düğmesini seçebilirsiniz. Daha sonra mantık uygulaması şablonu veya parametreleri için gerekli değişiklikleri yapabilirsiniz.
+Mantıksal uygulama şablonunu Azure 'a otomatik olarak dağıtmak için, aşağıdaki **Azure 'A dağıt** düğmesini seçebilirsiniz ve bu, Azure Portal oturumunuzu açar ve mantıksal uygulamanız hakkında bilgi ister. Daha sonra mantıksal uygulama şablonunda veya parametrelerde gerekli değişiklikleri yapabilirsiniz.
 
 [![Azure’a dağıtma](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-Örneğin, Azure portalında oturum açtıktan sonra aşağıdaki bilgiler istenir:
+Örneğin, Azure portal oturum açtıktan sonra aşağıdaki bilgiler istenir:
 
 * Azure abonelik adı
 * Kullanmak istediğiniz kaynak grubu
-* Mantık uygulaması konumu
+* Mantıksal uygulama konumu
 * Mantıksal uygulamanızın adı
-* Bir test URI
-* Belirtilen hüküm ve koşulların kabulü
+* Test URI 'SI
+* Belirtilen hüküm ve koşulları kabul etme
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Genel Bakış: Azure Kaynak Yöneticisi şablonları ile mantık uygulamaları için dağıtımı otomatikleştirin](logic-apps-azure-resource-manager-templates-overview.md)
-* [Azure Kaynak Yöneticisi şablonları ve Azure portalı ile kaynakları dağıtma](../azure-resource-manager/templates/deploy-portal.md)
+* [Genel Bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](logic-apps-azure-resource-manager-templates-overview.md)
+* [Kaynakları Azure Resource Manager şablonlarıyla ve Azure portal dağıtma](../azure-resource-manager/templates/deploy-portal.md)
 
 <a name="visual-studio"></a>
 
 ## <a name="deploy-with-visual-studio"></a>Visual Studio ile dağıtma
 
-Visual Studio'yı kullanarak oluşturduğunuz bir Azure Kaynak Grubu projesinden bir mantık uygulaması şablonu dağıtmak [için, mantık uygulamanızı Azure'a el ile dağıtmak için](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure) aşağıdaki adımları izleyin.
+Visual Studio kullanarak oluşturduğunuz bir Azure Kaynak grubu projesinden bir Logic App şablonu dağıtmak için, [mantıksal uygulamanızı Azure 'a el ile dağıtmak üzere aşağıdaki adımları](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure) izleyin.
 
 <a name="powershell"></a>
 
 ## <a name="deploy-with-azure-powershell"></a>Azure PowerShell ile dağıtma
 
-Belirli bir *Azure kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
+Belirli bir *Azure Kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -71,7 +71,7 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
 
-Belirli bir *Azure kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
+Belirli bir *Azure Kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
 
 ```azurecli
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -86,45 +86,45 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="deploy-with-azure-devops"></a>Azure DevOps ile dağıtma
 
-Mantıksal uygulama şablonlarını dağıtmak ve ortamları yönetmek için takımlar genellikle [Azure DevOps'lerde](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services) [Azure Ardışık Hatları](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) gibi bir araç kullanır. Azure Ardışık Hatları, herhangi bir yapı veya sürüm ardışık hattına ekleyebileceğiniz bir [Azure Kaynak Grubu Dağıtım görevi](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) sağlar. Sürüm ardışık hattını dağıtma ve oluşturma yetkisi için bir Azure Etkin Dizin (AD) [hizmet ilkesine](../active-directory/develop/app-objects-and-service-principals.md)de ihtiyacınız vardır. [Azure Pipelines ile hizmet ilkelerini kullanma](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)hakkında daha fazla bilgi edinin.
+Mantıksal uygulama şablonları dağıtmak ve ortamları yönetmek için, ekipler genellikle [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services)'da [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) gibi bir araç kullanır. Azure Pipelines, herhangi bir derleme veya yayın ardışık düzenine ekleyebileceğiniz bir [Azure Kaynak grubu dağıtım görevi](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) sağlar. Yayın işlem hattını dağıtma ve oluşturma yetkilendirmesi için Azure Active Directory (AD) [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)da gerekir. [Azure Pipelines ile hizmet sorumlularını kullanma](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)hakkında daha fazla bilgi edinin.
 
-Azure Kaynak Akşonları ile Azure Kaynak Yöneticisi şablonları için sürekli tümleştirme ve sürekli dağıtım (CI/CD) hakkında daha fazla bilgi için aşağıdaki konulara ve örneklere bakın:
+Azure Pipelines olan Azure Resource Manager şablonlar için sürekli tümleştirme ve sürekli dağıtım (CI/CD) hakkında daha fazla bilgi için şu konulara ve örneklere bakın:
 
-* [Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştir](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
-* [Öğretici: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli entegrasyonu](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
-* [Örnek: Azure Mantıksal Uygulamaları'ndan Azure Servis Veri Mes'üne bağlanın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtın](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Örnek: Azure Mantıksal Uygulamaları'ndan Azure Depolama hesaplarına bağlanın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Örnek: Azure Mantıksal Uygulamaları için bir işlev uygulaması eylemi ayarlayın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Örnek: Azure Mantıksal Uygulamaları'ndan bir tümleştirme hesabına bağlanın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [Örnek: Azure Mantıksal Uygulamalarını kullanarak Azure Ardışık Hatlar'ı düzenleme](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştirme](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
+* [Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
+* [Örnek: Azure DevOps 'da Azure Logic Apps Azure Service Bus kuyruklara bağlanma ve Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps 'den Azure Storage hesaplarına bağlanma ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps için bir işlev uygulama eylemi ayarlama ve Azure DevOps 'da Azure Pipelines ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps 'ten bir tümleştirme hesabına bağlanın ve Azure DevOps 'da Azure Pipelines ile dağıtın](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Örnek: Azure Logic Apps kullanarak Azure Pipelines düzenleme](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
-Azure Ardışık Hatlar'ı kullanmak için genel üst düzey adımlar şunlardır:
+Azure Pipelines kullanmaya yönelik genel üst düzey adımlar aşağıda verilmiştir:
 
-1. Azure Ardışık Hatlar'da boş bir ardışık hat lar oluşturun.
+1. Azure Pipelines ' de boş bir işlem hattı oluşturun.
 
-1. El ile veya yapı işleminin bir parçası olarak oluşturduğunuz mantık uygulaması şablonu ve şablon parametreleri dosyaları gibi ardışık iş tonu için ihtiyacınız olan kaynakları seçin.
+1. İşlem hattı için ihtiyaç duyduğunuz kaynakları, örneğin, el ile veya yapı sürecinin bir parçası olarak oluşturduğunuz mantıksal uygulama şablonu ve şablon parametreleri dosyaları gibi seçin.
 
-1. Aracı işiniçin Azure Kaynak **Grubu Dağıtımı** görevini bulun ve ekleyin.
+1. Aracı işiniz için, **Azure Kaynak grubu dağıtım** görevini bulun ve ekleyin.
 
-   !["Azure Kaynak Grubu Dağıtımı" görevi ekleme](./media/logic-apps-deploy-azure-resource-manager-templates/add-azure-resource-group-deployment-task.png)
+   !["Azure Kaynak grubu dağıtımı" görevi Ekle](./media/logic-apps-deploy-azure-resource-manager-templates/add-azure-resource-group-deployment-task.png)
 
-1. Bir hizmet [ilkesi](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)ile yapılandırın.
+1. [Hizmet sorumlusu](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure)ile yapılandırma.
 
-1. Mantık uygulaması şablonunuza ve şablon parametreleri dosyalarınıza referanslar ekleyin.
+1. Mantıksal uygulama şablonunuz ve şablon parametreleri dosyalarınıza başvurular ekleyin.
 
-1. Gerektiğinde başka bir ortam, otomatik test veya onaylayıcılar için sürüm sürecinde adımlar oluşturmaya devam edin.
+1. Gerektiğinde başka herhangi bir ortam, otomatik test veya onaylayan için yayın işlemindeki adımları oluşturmaya devam edin.
 
 <a name="authorize-oauth-connections"></a>
 
-## <a name="authorize-oauth-connections"></a>OAuth bağlantılarını yetkilendirme
+## <a name="authorize-oauth-connections"></a>OAuth bağlantılarını yetkilendir
 
-Dağıtımdan sonra, mantık uygulamanız geçerli parametrelerle uçtan uca çalışır. Ancak, [kimlik bilgilerinizin doğruluğunu doğrulamak](../active-directory/develop/authentication-scenarios.md)için geçerli erişim belirteçleri oluşturmak için herhangi bir OAuth bağlantısına yine de yetki vermelisiniz. OAuth bağlantılarını yetkilendirmenin yolları şunlardır:
+Dağıtımdan sonra mantıksal uygulamanız geçerli parametrelerle uçtan uca çalışacak. Ancak, [kimlik bilgilerinizi doğrulamak](../active-directory/develop/authentication-scenarios.md)için geçerli erişim belirteçleri oluşturmak üzere herhangi bir OAuth bağlantısını yetkilendirmelisiniz. OAuth bağlantıları yetkilendirebileceğiniz yollar şunlardır:
 
-* Otomatik dağıtımlar için, her OAuth bağlantısı için onay sağlayan bir komut dosyası kullanabilirsiniz. Burada [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projegitHub bir örnek komut dosyası' s.
+* Otomatikleştirilmiş dağıtımlar için, her OAuth bağlantısı için onay sağlayan bir komut dosyası kullanabilirsiniz. Aşağıda, [Logicappconnectionauth](https://github.com/logicappsio/LogicAppConnectionAuth) projesinde GitHub 'da örnek bir betik verilmiştir.
 
-* OAuth bağlantılarını el ile yetkilendirmek için mantık uygulamanızı Azure portalında veya Visual Studio'da Logic App Designer'da açın. Tasarımcıda, gerekli bağlantıları onayla.
+* OAuth bağlantılarını el ile yetkilendirmek için, mantıksal uygulama tasarımcısında Azure portal veya Visual Studio 'da mantıksal uygulamanızı açın. Tasarımcıda gerekli tüm bağlantıları yetkilendirin.
 
-Bağlantıları yetkilendirmek yerine bir Azure Active Directory (Azure AD) [hizmet ilkesi](../active-directory/develop/app-objects-and-service-principals.md) kullanıyorsanız, mantık [uygulama şablonunuzda hizmet temel parametrelerini nasıl belirtdiğinizi](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)öğrenin.
+Bağlantıları yetkilendirmek için bir Azure Active Directory (Azure AD) [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md) kullanıyorsanız, [mantıksal uygulama şablonunuzda hizmet sorumlusu parametrelerini belirtmeyi](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

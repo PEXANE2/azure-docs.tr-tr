@@ -1,6 +1,6 @@
 ---
-title: Gerçek zamanlı toplu taşıma verileri isteyin | Microsoft Azure Haritaları
-description: Microsoft Azure Haritalar Mobilite Hizmeti'ni kullanarak gerçek zamanlı toplu taşıma verileri isteyin.
+title: Gerçek zamanlı genel geçiş verileri iste | Microsoft Azure haritaları
+description: Microsoft Azure haritaları Mobility hizmetini kullanarak gerçek zamanlı genel aktarım verileri isteyin.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
@@ -10,43 +10,43 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4743fbe84f5d41b4659e13d96868d2f64a473e4b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086086"
 ---
-# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Haritalar Mobilite Hizmeti'ni kullanarak gerçek zamanlı toplu taşıma verileri isteyin
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmetini kullanarak gerçek zamanlı genel aktarım verileri isteyin
 
-Bu makalede, gerçek zamanlı toplu taşıma verileri istemek için Azure Haritalar [Mobilite Hizmeti'ni](https://aka.ms/AzureMapsMobilityService) nasıl kullanacağınızı gösterilmektedir.
+Bu makalede, Azure Maps [Mobility hizmetini](https://aka.ms/AzureMapsMobilityService) kullanarak gerçek zamanlı genel aktarım verileri isteme hakkında yönergeler verilmektedir.
 
-Bu makalede, belirli bir durakta gelen tüm hatlar için bir sonraki gerçek zamanlı varışları nasıl isteyeceğinizi öğreneceksiniz
+Bu makalede, belirli bir dura ulaşan tüm satırlar için sonraki gerçek zamanlı varışları isteme hakkında bilgi edineceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure Haritalar toplu taşıma API'lerine herhangi bir arama yapmak için öncelikle bir Azure Haritalar hesabınız ve abonelik anahtarınız olması gerekir. Daha fazla bilgi için, Azure Haritalar hesabı oluşturmak için [hesap oluştur'daki](quick-demo-map-app.md#create-an-account-with-azure-maps) yönergeleri izleyin. Hesabınızın birincil anahtarını almak için [birincil anahtarı al](quick-demo-map-app.md#get-the-primary-key-for-your-account) adımlarını izleyin. Azure Haritalar'da kimlik doğrulama hakkında daha fazla bilgi için Azure [Haritalar'da kimlik doğrulamayı yönet'e](./how-to-manage-authentication.md)bakın.
+Azure Maps ortak Aktarma API 'Lerine herhangi bir çağrı yapmak için önce bir Azure Maps hesabına ve bir abonelik anahtarına sahip olmanız gerekir. Daha fazla bilgi için, [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesabı oluşturun. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
-Bu makalede, REST aramaları oluşturmak için [Postacı uygulamasını](https://www.getpostman.com/apps) kullanır. Tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
+Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanır. Tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>Bir durak için gerçek zamanlı varış talep
+## <a name="request-real-time-arrivals-for-a-stop"></a>Durdurma için gerçek zamanlı varış süresi iste
 
-Belirli bir toplu taşıma durağının gerçek zamanlı varış verilerini istemek için, Azure Haritalar [Mobilite Hizmetinin](https://aka.ms/AzureMapsMobilityService) [Gerçek Zamanlı Gelen Yolcu API'sine](https://aka.ms/AzureMapsMobilityRealTimeArrivals) talepte bulunmanız gerekir. Talebi tamamlamak için **metroID** ve **stopID'ye** ihtiyacınız olacak. Bu parametreleri nasıl talep edebilirsiniz hakkında daha fazla bilgi edinmek için [toplu taşıma rotalarını](https://aka.ms/AMapsHowToGuidePublicTransitRouting)nasıl talep edebilirsiniz kılavuzumuza bakın.
+Belirli bir genel yoldaki gerçek zamanlı varış verileri istemek için, Azure Maps [Mobility hizmetinin](https://aka.ms/AzureMapsMobilityService) [gerçek zamanlı varış API](https://aka.ms/AzureMapsMobilityRealTimeArrivals) 'sine istek yapmanız gerekir. İsteği tamamlayabilmeniz için **metroID** ve **stopid** gerekir. Bu parametreleri isteme hakkında daha fazla bilgi edinmek için bkz. [genel geçiş rotaları isteme](https://aka.ms/AMapsHowToGuidePublicTransitRouting)Kılavuzu.
 
-"Seattle-Tacoma-Bellevue, WA" alanının metro kimliği olan metro kimliğimiz olarak "522"yi kullanalım. "522---2060603" stop id olarak kullanın, bu otobüs durağı "Ne 24 St & 162 Ave Ne, Bellevue WA" yer almaktadır. Sonraki beş gerçek zamanlı varış verisini istemek için, bu duraktaki tüm canlı varışlar için aşağıdaki adımları tamamlayın:
+"Seattle – Tacoma – Bellevue, WA" alanı için Metro kimliği olan "522" öğesini Metro KIMLIĞINIZLE kullanalım. Durma KIMLIĞI olarak "522---2060603" kullanın, bu veri yolu durağı "ne 24 th St & 162. Ave, Bellevue WA" olur. Sonraki beş gerçek zamanlı varış verilerini istemek için, bu durdurmakta olan tüm sonraki canlı varış için aşağıdaki adımları izleyin:
 
-1. Postacı uygulamasını açın ve istekleri depolamak için bir koleksiyon oluşturalım. Postacı uygulamasının üst kısmında **Yeni'yi**seçin. Yeni **Oluştur** penceresinde **Koleksiyon'u**seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
+1. Postman uygulamasını açın ve istekleri depolamak için bir koleksiyon oluşturalım. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
 
-2. İstek oluşturmak için Yeniden **Yeni'yi** seçin. Yeni **Oluştur** penceresinde **İstek'i**seçin. İstek için bir **İstek adı** girin. İsteğin kaydedildiği konum olarak önceki adımda oluşturduğunuz koleksiyonu seçin. Ardından **Kaydet**’i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Ardından **Kaydet**’i seçin.
 
-    ![Postacı'da istek oluşturma](./media/how-to-request-transit-data/postman-new.png)
+    ![Postman 'da istek oluşturma](./media/how-to-request-transit-data/postman-new.png)
 
-3. Oluşturucu sekmesinde **HTTP'yi AL** yöntemini seçin ve GET isteği oluşturmak için aşağıdaki URL'yi girin. Azure `{subscription-key}`Haritalar birincil anahtarınızla değiştirin.
+3. Oluşturucu sekmesinde http **Al** metodunu seçin ve bir get isteği oluşturmak için aşağıdaki URL 'yi girin. Azure `{subscription-key}`haritalar birincil anahtarınızla değiştirin.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. Başarılı bir istekten sonra aşağıdaki yanıtı alırsınız.  'scheduleType' parametresinin tahmini varış süresinin gerçek zamanlı veya statik verilere mi dayandığını tanımladığına dikkat edin.
+4. Başarılı bir istekten sonra aşağıdaki yanıtı alırsınız.  ' ScheduleType ' parametresinin tahmini varış zamanının gerçek zamanlı veya statik verilere dayanıp dayandırmadığını tanımladığından emin olun.
 
     ```JSON
     {
@@ -113,12 +113,12 @@ Belirli bir toplu taşıma durağının gerçek zamanlı varış verilerini iste
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mobilite Hizmetini kullanarak transit verilerini nasıl isteyeceğizi öğrenin:
+Mobility hizmetini kullanarak geçiş verileri isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Aktarım verileri nasıl istenir?](how-to-request-transit-data.md)
+> [Geçiş verileri isteme](how-to-request-transit-data.md)
 
-Azure Haritalar Mobilite Hizmeti API belgelerini keşfedin:
+Azure Maps Mobility hizmeti API 'SI belgelerini inceleyin:
 
 > [!div class="nextstepaction"]
-> [Mobilite Hizmeti API belgeleri](https://aka.ms/AzureMapsMobilityService)
+> [Mobility hizmeti API 'SI belgeleri](https://aka.ms/AzureMapsMobilityService)

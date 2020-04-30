@@ -1,80 +1,80 @@
 ---
 title: Şablonlara genel bakış
-description: Kaynakların dağıtımı için Azure Kaynak Yöneticisi şablonlarını kullanarak avantajları açıklar.
+description: Kaynak dağıtımı için Azure Resource Manager şablonları kullanma avantajlarını açıklar.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086343"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
-Buluta taşınmasıyla, birçok ekip çevik geliştirme yöntemlerini benimsedi. Bu takımlar hızlı bir şekilde yinelerler. Çözümlerini sürekli olarak buluta dağıtmaları ve altyapılarının güvenilir bir durumda olduğunu bilmeleri gerekir. Altyapı yinelemeli sürecin bir parçası haline geldikçe, operasyonlar ve geliştirme arasındaki bölünme ortadan kalkmıştır. Ekiplerin altyapıyı ve uygulama kodunu birleşik bir işlem le yönetmesi gerekir.
+Buluta geçiş sayesinde, birçok ekip çevik geliştirme yöntemlerini benimsemiştir. Bu takımlar hızla yineleyebilir. Çözümlerini buluta sürekli olarak dağıtmaları ve altyapısının güvenilir bir durumda olduğunu bilmeniz gerekir. Altyapı yinelemeli işlemin bir parçası haline geldiği için, işlemler ve geliştirme arasındaki bölme kayboldu. Ekiplerin, Birleşik bir işlem aracılığıyla altyapıyı ve uygulama kodunu yönetmesi gerekir.
 
-Bu zorlukları aşmak için dağıtımları otomatikleştirebilir ve altyapı uygulamalarını kod olarak kullanabilirsiniz. Kodolarak, dağıtılması gereken altyapıyı tanımlarsınız. Altyapı kodu projenizin bir parçası olur. Uygulama kodu gibi, altyapı kodunu bir kaynak deposunda saklar ve sürüm haline etersiniz. Ekibinizdeki herhangi biri kodu çalıştırabilir ve benzer ortamları dağıtabilir.
+Bu güçlükleri karşılamak için dağıtımları otomatik hale getirebilir ve kod olarak altyapı uygulamasını kullanabilirsiniz. Kodda, dağıtılması gereken altyapıyı tanımlarsınız. Altyapı kodu projenizin bir parçası haline gelir. Uygulama kodu gibi, altyapı kodunu bir kaynak deposunda depolar ve sürümü. Takımınızda herhangi biri kodu çalıştırabilir ve benzer ortamları dağıtabilir.
 
-Azure çözümleriniz için altyapıyı kod olarak uygulamak için Azure Kaynak Yöneticisi (ARM) şablonlarını kullanın. Şablon, projenizin altyapısını ve yapılandırmasını tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Şablon, oluşturmak için programlama komutları sırasını yazmak zorunda kalmadan dağıtmak istediğinizi belirtmenize olanak tanıyan bildirimsel sözdizimini kullanır. Şablonda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
+Altyapıyı Azure çözümleriniz için kod olarak uygulamak üzere Azure Resource Manager (ARM) şablonları kullanın. Şablon, projeniz için altyapıyı ve yapılandırmayı tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Şablon bildirim temelli sözdizimini kullanır, bu, oluşturmak için programlama komutlarının dizisini yazmak zorunda kalmadan ne dağıtmayı istediğinizi belirtmenize olanak tanır. Şablonda, dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
 
-## <a name="why-choose-arm-templates"></a>Neden ARM şablonlarını seçmelisiniz?
+## <a name="why-choose-arm-templates"></a>ARM şablonlarını neden seçmelisiniz?
 
-ARM şablonlarını ve diğer altyapılardan birini kod hizmeti olarak kullanmak arasında karar vermeye çalışıyorsanız, şablonları kullanmanın aşağıdaki avantajlarını göz önünde bulundurun:
+ARM şablonlarını kullanma ve kod hizmetleri olarak diğer altyapılardan biri arasında seçim yapmaya çalışıyorsanız, şablonları kullanmanın aşağıdaki avantajlarını göz önünde bulundurun:
 
-* **Bildirimsel sözdizimi**: ARM şablonları, tüm Azure altyapısını bildirimsel olarak oluşturmanıza ve dağıtmanıza olanak tanır. Örneğin, yalnızca sanal makineleri değil, ağ altyapısını, depolama sistemlerini ve gereksinim duyabileceğiniz diğer kaynakları da dağıtabilirsiniz.
+* **Bildirime dayalı sözdizimi**: ARM şablonları, tüm Azure altyapısını bildirimli olarak oluşturmanıza ve dağıtmanıza olanak tanır. Örneğin, yalnızca sanal makineler, aynı zamanda ağ altyapısı, depolama sistemleri ve ihtiyacınız olabilecek diğer kaynaklar için dağıtım yapabilirsiniz.
 
-* **Tekrarlanabilir sonuçlar**: Altyapınızı geliştirme yaşam döngüsü boyunca sürekli olarak dağıtın ve kaynaklarınızın tutarlı bir şekilde dağıtıldıklarından emin olun. Şablonlar idempotenttir, bu da aynı şablonu birçok kez dağıtabileceğiniz ve aynı kaynak türlerini aynı durumda alabileceğiniz anlamına gelir. Güncelleştirmeleri temsil edecek çok sayıda ayrı şablon geliştirmek yerine, istenen durumu temsil eden bir şablon geliştirebilirsiniz.
+* **Tekrarlanabilir sonuçlar**: altyapınızı geliştirme yaşam döngüsü boyunca sürekli olarak dağıtın ve kaynaklarınızın tutarlı bir şekilde dağıtılmasını sağlayabilirsiniz. Şablonlar, aynı şablonu birçok kez dağıtabileceğiniz ve aynı durumda aynı kaynak türlerini alabileceği anlamına gelen ıdempotent. Güncelleştirmeleri temsil etmek için çok sayıda ayrı şablon geliştirmek yerine istenen durumu temsil eden bir şablon geliştirebilirsiniz.
 
-* **Orkestrasyon**: Operasyon siparişinin karmaşıklığı hakkında endişelenmenize gerek yok. Kaynak Yöneticisi, birbirine bağlı kaynakların dağıtımını doğru sırada oluşturulabilmeleri için yönetir. Mümkün olduğunda Kaynak Yöneticisi, dağıtımlarınızın seri dağıtımlardan daha hızlı bitmesine izin için kaynakları paralel olarak dağıtır. Şablonu birden çok zorunlu komut yerine tek bir komut la dağıtMış sınız.
+* **Orchestration**: sıralama işlemlerinin karmaşıklıkları hakkında endişelenmeniz gerekmez. Kaynak Yöneticisi, birbirine bağlı kaynakların dağıtımını doğru sırada oluşturulacak şekilde düzenler. Mümkün olduğunda, dağıtımlarınızın seri dağıtımlardan daha hızlı tamamlanabilmesi için Kaynak Yöneticisi Kaynakları paralel olarak dağıtır. Şablonu, birden çok zorunlu komut yerine bir komut aracılığıyla dağıtırsınız.
 
-   ![Şablon dağıtım karşılaştırması](./media/overview/template-processing.png)
+   ![Şablon dağıtımı karşılaştırma](./media/overview/template-processing.png)
 
-* **Modüler dosyalar**: Şablonlarınızı daha küçük, yeniden kullanılabilir bileşenlere ayırabilir ve dağıtım zamanında birbirine bağlayabilirsiniz. Ayrıca, bir şablonu başka bir şablonun içine sokabilirsiniz.
+* **Modüler dosyalar**: şablonlarınızı daha küçük, yeniden kullanılabilir bileşenlere bölebilir ve dağıtım zamanında birbirine bağlayabilirsiniz. Ayrıca, bir şablonu başka bir şablon içinde iç içe geçirebilirsiniz.
 
-* **Herhangi bir Azure kaynağı oluşturma**: Yeni Azure hizmetlerini ve özelliklerini şablonlarda hemen kullanabilirsiniz. Bir kaynak sağlayıcısı yeni kaynaklar sunar tanıtmaz, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Yeni hizmetleri kullanmadan önce araçların veya modüllerin güncellenmesi için beklemeniz gerekmez.
+* **Herhangi bir Azure kaynağı oluşturun**: şablonlarda yeni Azure hizmetlerini ve özelliklerini hemen kullanabilirsiniz. Kaynak sağlayıcısı yeni kaynakları kullanıma sunarak, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Yeni hizmetleri kullanmadan önce araçların veya modüllerin güncelleştirilmesini beklemeniz gerekmez.
 
-* **Genişletilebilirlik**: [Dağıtım komut dosyalarıyla](deployment-script-template.md)şablonlarınıza PowerShell veya Bash komut dosyaları ekleyebilirsiniz. Dağıtım komut dosyaları, dağıtım sırasında kaynakları ayarlama yeteneğinizi genişletir. Komut dosyası şablona eklenebilir veya harici bir kaynakta depolanabilir ve şablonda başvurulabilir. Dağıtım komut dosyaları, uçlardan uca ortam kurulumunuzu tek bir ARM şablonunda tamamlama olanağı sağlar.
+* **Genişletilebilirlik**: [dağıtım betikleri](deployment-script-template.md)ile şablonlarınıza PowerShell veya bash betikleri ekleyebilirsiniz. Dağıtım betikleri, dağıtım sırasında kaynakları ayarlama yeteneğinizi genişletmenizi sağlar. Bir betik, şablona dahil edilebilir veya bir dış kaynakta depolanabilir ve şablonda başvurulur. Dağıtım betikleri, uçtan uca ortam kurulumunuzu tek bir ARM şablonunda tamamlamanıza olanak sağlar.
 
-* **Test**: Şablonunuzun ARM şablon araç kiti (arm-ttk) ile test ederek önerilen yönergelere uyduğundan emin olabilirsiniz. Bu test [kiti, GitHub'dan](https://github.com/Azure/arm-ttk)indirebileceğiniz bir PowerShell komut dosyasıdır. Araç kiti, şablon dilini kullanarak uzmanlık geliştirmenizi kolaylaştırır.
+* **Test etme**: Bu şablonu ARM şablon aracı seti (ARM-TTK) ile test ederek, şablonunuzun önerilen kurallara uyduğundan emin olabilirsiniz. Bu test kiti, [GitHub](https://github.com/Azure/arm-ttk)'dan indirebileceğiniz bir PowerShell betiğine sahiptir. Araç seti, şablon dilini kullanarak uzmanlık geliştirmenizi kolaylaştırır.
 
-* **Önizleme değişiklikleri**: Şablonu dağıtmadan önce değişikliklerin önizlemesini almak için ["eğer" işlemini](template-deploy-what-if.md) kullanabilirsiniz. What-if ile, hangi kaynakların oluşturulacağını, güncelleştirildiğini veya silineceğini ve değişecek kaynak özelliklerini görürsünüz. What-if işlemi ortamınızın geçerli durumunu denetler ve durumu yönetme gereksinimini ortadan kaldırır.
+* **Değişiklikleri Önizle**: şablonu dağıtmadan önce değişikliklerin önizlemesini almak için [ne yapılır işlemini](template-deploy-what-if.md) kullanabilirsiniz. Hangi kaynakların oluşturulacağını, güncelleştirileceğini veya silineceğini ve değiştirecek kaynak özelliklerini görürsünüz. Durum işlemi ortamınızın geçerli durumunu denetler ve durumu yönetme ihtiyacını ortadan kaldırır.
 
-* **Yerleşik doğrulama**: Şablonunuz yalnızca doğrulamayı geçtikten sonra dağıtılır. Kaynak Yöneticisi, dağıtımın başarılı olacağından emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınızın yarı mamul durumda durma olasılığı daha düşüktür.
+* **Yerleşik doğrulama**: şablonunuz yalnızca doğrulama işlemi yapıldıktan sonra dağıtılır. Kaynak Yöneticisi dağıtımın başarılı olduğundan emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınız, yarı tamamlanmış bir durumda durmak daha az olabilir.
 
-* **İzlenen dağıtımlar**: Azure portalında dağıtım geçmişini inceleyebilir ve şablon dağıtımı hakkında bilgi alabilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı portalı üzerinden izlenmez.
+* **İzlenen dağıtımlar**: Azure Portal dağıtım geçmişini gözden geçirebilir ve şablon dağıtımı hakkında bilgi alabilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve tüm çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı Portal üzerinden izlenmez.
 
    ![Dağıtım geçmişi](./media/overview/deployment-history.png)
 
-* **Kod Olarak İlke**: [Azure İlkesi,](../../governance/policy/overview.md) yönetimi otomatikleştirmek için kod çerçevesi olarak bir ilkedir. Azure ilkeleri kullanıyorsanız, şablonlar aracılığıyla dağıtıldığında uyumlu olmayan kaynaklarda ilke düzeltme yapılır.
+* **Kod olarak ilke**: [Azure ilkesi](../../governance/policy/overview.md) , idare otomatikleştiren kod çerçevesi olarak bir ilkedir. Azure ilkeleri kullanıyorsanız, ilke düzeltme, şablonlar aracılığıyla dağıtıldığında uyumlu olmayan kaynaklar üzerinde yapılır.
 
-* **Dağıtım Planları**: Mevzuat ve uyumluluk standartlarını karşılamak için Microsoft tarafından sağlanan [Planlardan](../../governance/blueprints/overview.md) yararlanabilirsiniz. Bu planlar, çeşitli mimariler için önceden oluşturulmuş şablonlar içerir.
+* **Dağıtım planları**: Microsoft tarafından, mevzuat ve uyumluluk standartlarını karşılamak [için sunulan planların](../../governance/blueprints/overview.md) avantajlarından yararlanabilirsiniz. Bu planlar, çeşitli mimarilere yönelik önceden oluşturulmuş şablonlar içerir.
 
-* **CI/CD tümleştirmesi**: Şablonları, hızlı ve güvenilir uygulama ve altyapı güncelleştirmeleri için sürüm ardışık alanlarınızı otomatikleştirebilen sürekli tümleştirme ve sürekli dağıtım (CI/CD) araçlarınıza entegre edebilirsiniz. Azure DevOps ve Kaynak Yöneticisi şablon görevi kullanarak, ARM şablon projeleri sürekli oluşturmak ve dağıtmak için Azure Ardışık Hatları'nı kullanabilirsiniz. Daha fazla bilgi edinmek için, iş dizileri ve Öğretici [ile VS projesine](add-template-to-azure-pipelines.md) [bakın: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli tümleştirilmesi.](./deployment-tutorial-pipeline.md)
+* **CI/CD tümleştirmesi**: şablonları, sürekli tümleştirme ve sürekli DAĞıTıM (CI/CD) araçlarınızla tümleştirebilir. Bu, hızlı ve güvenilir uygulama ve altyapı güncelleştirmelerine yönelik yayın işlem hatlarınızı otomatikleştirebilirler. Azure DevOps ve Kaynak Yöneticisi şablon görevi kullanarak, ARM şablon projelerini sürekli olarak derlemek ve dağıtmak için Azure Pipelines kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. işlem hatları ve öğretici [Ile vs projesi](add-template-to-azure-pipelines.md) [: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi](./deployment-tutorial-pipeline.md).
 
-* **Dışa aktarılabilir kod**: Kaynak grubunun geçerli durumunu dışa aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek varolan bir kaynak grubu için şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
+* **Dışarı aktarılabilir kod**: kaynak grubunun geçerli durumunu dışarı aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek mevcut kaynak grubu için bir şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
 
-* **Yazma araçları**: Visual Studio [Code](use-vs-code-to-create-template.md) ve şablon araç uzantısı ile şablonyazabilirsiniz. Intellisense, sözdizimi vurgulama, satır içi yardım ve diğer birçok dil işlevleri olsun. Visual Studio koduna ek olarak [Visual Studio'yı](create-visual-studio-deployment-project.md)da kullanabilirsiniz.
+* **Yazma araçları**: şablonları [Visual Studio Code](use-vs-code-to-create-template.md) ve şablon aracı uzantısıyla yazabilirsiniz. IntelliSense, sözdizimi vurgulama, çevrimiçi Yardım ve diğer birçok dil işlevini edinirsiniz. Visual Studio Code ' a ek olarak, [Visual Studio 'yu](create-visual-studio-deployment-project.md)da kullanabilirsiniz.
 
 ## <a name="template-file"></a>Şablon dosyası
 
-Şablonunuzda JSON'un özelliklerini genişleten [şablon ifadeleri](template-expressions.md) yazabilirsiniz. Bu ifadeler Kaynak Yöneticisi tarafından sağlanan [işlevleri](template-functions.md) kullanır.
+Şablonunuzda, JSON özelliklerini genişleten [şablon ifadeleri](template-expressions.md) yazabilirsiniz. Bu ifadeler Kaynak Yöneticisi tarafından sunulan [işlevleri](template-functions.md) kullanır.
 
-Şablonaşağıdaki bölümlere sahiptir:
+Şablon aşağıdaki bölümlere sahiptir:
 
-* [Parametreler](template-parameters.md) - Dağıtım sırasında aynı şablonun farklı ortamlarda kullanılmasına izin veren değerler sağlayın.
+* [Parametreler](template-parameters.md) -dağıtım sırasında, aynı şablonun farklı ortamlarla kullanılmasına izin veren değerler sağlar.
 
-* [Değişkenler](template-variables.md) - Şablonlarınızda yeniden kullanılan değerleri tanımlayın. Parametre değerlerinden oluşturulabilirler.
+* [Değişkenler](template-variables.md) -şablonlarınız için yeniden kullanılan değerleri tanımlayın. Parametre değerlerinden oluşturulabilirler.
 
-* [Kullanıcı tanımlı işlevler](template-user-defined-functions.md) - Şablonunuzu basitleştiren özelleştirilmiş işlevler oluşturun.
+* [Kullanıcı tanımlı işlevler](template-user-defined-functions.md) -şablonunuzu basitleştiren özelleştirilmiş işlevler oluşturun.
 
-* [Kaynaklar](template-syntax.md#resources) - Dağıtılacak kaynakları belirtin.
+* [Kaynaklar](template-syntax.md#resources) -dağıtılacak kaynakları belirtin.
 
-* [Çıktılar](template-outputs.md) - Dağıtılan kaynaklardan gelen değerleri döndürün.
+* [Çıktılar](template-outputs.md) -dağıtılan kaynaklardan değer döndürür.
 
-## <a name="template-deployment-process"></a>Şablon dağıtım işlemi
+## <a name="template-deployment-process"></a>Şablon dağıtımı işlemi
 
-Bir şablon dağıttığınızda, Kaynak Yöneticisi şablonu REST API işlemlerine dönüştürür. Örneğin, Resource Manager aşağıdaki kaynak tanımına sahip bir şablonu aldığında:
+Bir şablonu dağıtırken Kaynak Yöneticisi şablonu REST API işlemlerine dönüştürür. Örneğin, Resource Manager aşağıdaki kaynak tanımına sahip bir şablonu aldığında:
 
 ```json
 "resources": [
@@ -126,6 +126,6 @@ Katmanlarınızın farklı yaşam döngülerine sahip olacağını düşünüyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablon oluşturma sürecinde size yol gösteren adım adım bir öğretici için [Bkz. Öğretici: İlk ARM şablonunuzu oluşturun ve dağıtın.](template-tutorial-create-first-template.md)
-* Şablon dosyalarındaki özellikler hakkında bilgi için [bkz.](template-syntax.md)
-* Şablonları dışa aktarma hakkında bilgi edinmek için [Bkz. Quickstart: Azure portalını kullanarak ARM şablonları oluşturun ve dağıtın.](quickstart-create-templates-use-the-portal.md)
+* Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için bkz. [öğretici: Ilk ARM şablonunuzu oluşturma ve dağıtma](template-tutorial-create-first-template.md).
+* Şablon dosyalarındaki özellikler hakkında daha fazla bilgi için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablonları dışarı aktarma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak ARM şablonları oluşturma ve dağıtma](quickstart-create-templates-use-the-portal.md).

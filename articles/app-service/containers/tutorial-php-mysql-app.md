@@ -1,24 +1,24 @@
 ---
 title: 'Öğretici: MySQL ile Linux PHP uygulaması'
-description: Azure'daki bir MySQL veritabanıyla bağlantı kurarak Azure Uygulama Hizmeti'nde çalışan bir Linux Node.js uygulamasını nasıl elde edebilirsiniz öğrenin. Laravel bu öğreticide kullanılır.
+description: Azure 'daki bir MySQL veritabanına bağlantı ile Azure App Service çalışan Linux Node. js uygulamasını nasıl alabileceğinizi öğrenin. Bu öğreticide laralevel kullanılır.
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: cf4550bae1433f1e751555cd35f8a1ba78747295
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085850"
 ---
-# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Linux'ta Azure Uygulama Hizmeti'nde PHP ve MySQL uygulaması oluşturun
+# <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir PHP ve MySQL uygulaması derleme
 
 > [!NOTE]
-> Bu makalede bir uygulamanın Linux üzerinde App Service'e dağıtımı yapılır. _Windows'da_Uygulama Hizmeti'ne dağıtmak için [azure'da php ve MySQL uygulaması oluşturma 'na](../app-service-web-tutorial-php-mysql.md)bakın.
+> Bu makalede bir uygulamanın Linux üzerinde App Service'e dağıtımı yapılır. _Windows_üzerinde App Service dağıtmak için bkz. [Azure 'Da php ve MySQL uygulaması oluşturma](../app-service-web-tutorial-php-mysql.md).
 >
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu öğretici, bir PHP uygulamasının nasıl oluşturulup mysql veritabanına nasıl bağlanılabildiğini gösterir. İşiniz bittiğinde, Linux üzerinde App Service’te çalışan bir [Laravel](https://laravel.com/) uygulamasına sahip olacaksınız.
+[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu öğreticide, PHP uygulamasının nasıl oluşturulacağı ve MySQL veritabanına nasıl bağlanacağı gösterilmektedir. İşiniz bittiğinde, Linux üzerinde App Service’te çalışan bir [Laravel](https://laravel.com/) uygulamasına sahip olacaksınız.
 
 ![Azure App Service’te çalışan PHP uygulaması](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -99,7 +99,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>MySQL bağlantısını yapılandırma
 
-Depo kökünde *.env* adlı bir dosya oluşturun. Aşağıdaki değişkenleri *.env* dosyasına kopyalayın. _ &lt;root_password>_ yer tutucuyu MySQL kök kullanıcının parolasıyla değiştirin.
+Depo kökünde *.env* adlı bir dosya oluşturun. Aşağıdaki değişkenleri *.env* dosyasına kopyalayın. Root_password>yer tutucusunu MySQL kök kullanıcısının parolasıyla değiştirin. _ &lt;_
 
 ```txt
 APP_ENV=local
@@ -153,9 +153,9 @@ Bu adımda, [MySQL için Azure Veritabanı](/azure/mysql) içinde bir MySQL veri
 
 ### <a name="create-a-mysql-server"></a>MySQL sunucusu oluşturma
 
-MySQL için Azure Veritabanı'nda [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) komutla bir sunucu oluşturun.
+[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) Komutunu kullanarak MySQL Için Azure veritabanı 'nda bir sunucu oluşturun.
 
-Aşağıdaki komutta, * \<mysql-server adı>* yer tutucusu için benzersiz bir sunucu adı, * \<yönetici kullanıcı>* için bir kullanıcı adı ve * \<yönetici-parola>* yer tutucuiçin bir parola değiştirin. Sunucu adı, MySQL uç noktasının (`https://<mysql-server-name>.mysql.database.azure.com`) bir parçası olarak kullanıldığından, adın Azure’daki tüm sunucularda benzersiz olması gerekir. MySQL DB SKU'nun seçilmesi yle ilgili ayrıntılar için lütfen [MySQL sunucusu için bir Azure Veritabanı Oluştur'a](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)bakın.
+Aşağıdaki komutta, * \<MySQL-Server-Name>* yer tutucusu, * \<Yönetici-Kullanıcı>* Kullanıcı adı ve * \<yönetici parolası>* yer tutucusu için bir parola yerine benzersiz bir sunucu adı koyun. Sunucu adı, MySQL uç noktasının (`https://<mysql-server-name>.mysql.database.azure.com`) bir parçası olarak kullanıldığından, adın Azure’daki tüm sunucularda benzersiz olması gerekir. MySQL DB SKU 'SU seçme hakkında daha fazla bilgi için lütfen bkz. [MySQL Için Azure veritabanı sunucusu oluşturma](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1
@@ -178,7 +178,7 @@ MySQL sunucusu oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgil
 
 ### <a name="configure-server-firewall"></a>Sunucu güvenlik duvarını yapılandırma
 
-MySQL sunucunuz için komutu kullanarak istemci bağlantılarına [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) izin vermek için bir güvenlik duvarı kuralı oluşturun. Hem başlangıç hem bitiş IP’si 0.0.0.0 olarak ayarlandığında, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. 
+[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) Komutunu kullanarak MySQL sunucunuzun istemci bağlantılarına izin vermek için bir güvenlik duvarı kuralı oluşturun. Hem başlangıç hem bitiş IP’si 0.0.0.0 olarak ayarlandığında, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -188,7 +188,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > [Yalnızca uygulamanızın kullandığı giden IP adreslerini kullanarak](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips) güvenlik duvarı kurallarınızda daha da kısıtlayıcı olabilirsiniz.
 >
 
-Bulut Kabuğu'nda, * \<ip adresinizi>* [yerel IPv4 IP adresinizle](https://www.whatsmyip.org/)değiştirerek yerel bilgisayarınızdan erişime izin vermek için komutu yeniden çalıştırın.
+Cloud Shell, * \<IP adresi>* [yerel IPv4 IP adresinizle](https://www.whatsmyip.org/)değiştirerek yerel bilgisayarınızdan erişime izin vermek için komutu yeniden çalıştırın.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -196,7 +196,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql-ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Üretim MySQL sunucusuna yerel olarak bağlanma
 
-Terminal penceresinde, Azure’da MySQL sunucusuna bağlanın. _ &lt;Yönetici-kullanıcı>_ ve _ &lt;mysql-server-name>_ için daha önce belirttiğiniz değeri kullanın. Parola sorulduğunda, Azure’da veritabanı oluştururken belirttiğiniz parolayı kullanın.
+Terminal penceresinde, Azure’da MySQL sunucusuna bağlanın. Daha önce _ &lt;Yönetici-Kullanıcı>_ ve _ &lt;MySQL-sunucu-adı>_ için belirttiğiniz değeri kullanın. Parola sorulduğunda, Azure’da veritabanı oluştururken belirttiğiniz parolayı kullanın.
 
 ```bash
 mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
@@ -233,7 +233,7 @@ Bu adımda, PHP uygulamasını MySQL için Azure Veritabanı içinde oluşturdu�
 
 ### <a name="configure-the-database-connection"></a>Veritabanı bağlantısını yapılandırma
 
-Depo kökünde bir _.env.production_ dosyası oluşturun ve içine aşağıdaki değişkenleri kopyalayın. Yer _ &lt;tutucumysql-server-name>_ değiştirin.
+Depo kökünde bir _.env.production_ dosyası oluşturun ve içine aşağıdaki değişkenleri kopyalayın. _ &lt;MySQL-Server-Name>_ yer tutucusunu değiştirin.
 
 ```txt
 APP_ENV=production
@@ -254,9 +254,9 @@ Değişiklikleri kaydedin.
 > MySQL bağlantı bilgilerinizin güvenliğini sağlamak için bu dosya zaten Git deposunun dışında bırakılmıştır (Depo kökünde _.gitignore_ dosyasına bakın). Daha sonra, App Service’teki ortam değişkenlerini, MySQL için Azure Veritabanı içinde veritabanınıza bağlanmak üzere nasıl yapılandıracağınızı öğreneceksiniz. Ortam değişkenlerini kullandığınızda App Service içinde *.env* dosyası gerekli değildir.
 >
 
-### <a name="configure-tlsssl-certificate"></a>TLS/SSL sertifikasını yapılandırma
+### <a name="configure-tlsssl-certificate"></a>TLS/SSL sertifikası yapılandırma
 
-Varsayılan olarak, MySQL için Azure Veritabanı istemcilerden TLS bağlantılarını zorlar. Azure’da MySQL veritabanınıza bağlanmak üzere MySQL için Azure Veritabanı tarafından sağlanan [_.pem_ sertifikasını kullanmanız gerekir](../../mysql/howto-configure-ssl.md).
+Varsayılan olarak, MySQL için Azure veritabanı istemcilerden gelen TLS bağlantılarını uygular. Azure’da MySQL veritabanınıza bağlanmak üzere MySQL için Azure Veritabanı tarafından sağlanan [_.pem_ sertifikasını kullanmanız gerekir](../../mysql/howto-configure-ssl.md).
 
 _config/database.php_ dosyasını açın ve aşağıdaki kodda gösterildiği gibi _sslmode_ ile _options_ parametrelerini `connections.mysql` içine ekleyin.
 
@@ -317,7 +317,7 @@ Bu adımda, MySQL’e bağlı PHP uygulamasını Azure App Service'e dağıtırs
 
 Laravel uygulaması _/public_ dizininde başlar. App Service için varsayılan PHP Docker görüntüsü, Apache kullanır ve Laravel için `DocumentRoot` öğesini özelleştirmenize izin vermez. Bununla birlikte, `.htaccess` kullanarak tüm istekleri kök dizin yerine _/public_ dizinini işaret edecek şekilde yeniden yazabilirsiniz. Depo köküne bu amaçla bir `.htaccess` zaten eklenmiştir. Bununla, Laravel uygulamanız dağıtılmaya hazırdır.
 
-Daha fazla bilgi için [bkz.](configure-language-php.md#change-site-root)
+Daha fazla bilgi için bkz. [site kökünü değiştirme](configure-language-php.md#change-site-root).
 
 ### <a name="configure-a-deployment-user"></a>Dağıtım kullanıcısı yapılandırma
 
@@ -335,13 +335,13 @@ Daha fazla bilgi için [bkz.](configure-language-php.md#change-site-root)
 
 App Service'te, [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanıp ortam değişkenlerini _uygulama ayarları_ olarak belirlersiniz.
 
-Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. Yer tutucular _ &lt;>_ ve _ &lt;mysql-server-name>' _i değiştirin.
+Aşağıdaki komut `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` ve `DB_PASSWORD` uygulama ayarlarını yapılandırır. _ &lt;AppName>_ ve _ &lt;MySQL-Server-Name>_ yer tutucularını değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql-server-name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-[Uygulama ayarlarına erişmek](configure-language-php.md#access-environment-variables)için PHP [getenv](https://php.net/manual/en/function.getenv.php) yöntemini kullanabilirsiniz. Laravel kodu PHP `getenv`üzerinde bir [env](https://laravel.com/docs/5.4/helpers#method-env) sarıcı kullanır. Örneğin, _config/database.php_ içindeki MySQL yapılandırması aşağıdaki kod gibi görünür:
+[Uygulama ayarlarına erişmek](configure-language-php.md#access-environment-variables)için php [getenv](https://php.net/manual/en/function.getenv.php) yöntemini kullanabilirsiniz. Laralevel kodu, PHP `getenv`üzerinde bir [env](https://laravel.com/docs/5.4/helpers#method-env) sarmalayıcısı kullanır. Örneğin, _config/database.php_ içindeki MySQL yapılandırması aşağıdaki kod gibi görünür:
 
 ```php
 'mysql' => [
@@ -364,13 +364,13 @@ Uygulama anahtarını _.env_ dosyasına kaydetmeden yeni bir uygulama anahtarı 
 php artisan key:generate --show
 ```
 
-Komutu kullanarak Uygulama Hizmeti uygulamasındaki [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) uygulama anahtarını ayarlayın. Yer tutucular _ &lt;>_ ve _ &lt;çıktılarofphpartisankey appname değiştirin:>oluşturun. _
+[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Komutunu kullanarak App Service uygulamasındaki uygulama anahtarını ayarlayın. _ &lt;AppName>_ ve _ &lt;outputofphpartisankey: Generate>_ yer tutucuları değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"`Dağıtılan uygulama hatalarla karşılaştığında Laravel'e hata ayıklama bilgilerini döndürmesini söyler. Bir üretim uygulaması çalıştırırken daha güvenli olan `false` seçeneğine ayarlayın.
+`APP_DEBUG="true"`, dağıtılmış uygulama hata ile karşılaştığında hata ayıklama bilgilerini döndürmesini söyler. Bir üretim uygulaması çalıştırırken daha güvenli olan `false` seçeneğine ayarlayın.
 
 ### <a name="push-to-azure-from-git"></a>Git üzerinden Azure'a gönderme
 
@@ -413,7 +413,7 @@ remote: Running deployment command...
 > You can use this approach to add any step to your Git-based deployment to App Service. For more information, see [Run Composer](configure-language-php.md#run-composer). -->
 > 
 
-### <a name="browse-to-the-azure-app"></a>Azure uygulamasına göz atın
+### <a name="browse-to-the-azure-app"></a>Azure uygulamasına gidin
 
 `http://<app-name>.azurewebsites.net` listesine göz atın ve listeye birkaç görev ekleyin.
 
@@ -557,7 +557,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Tamamlandığında `git push` Azure uygulamasına gidin ve yeni işlevselliği test edin.
+`git push` Tamamlandıktan sonra Azure uygulamasına gidin ve yeni işlevleri test edin.
 
 ![Azure’da yayımlanan model ve veritabanı değişiklikleri](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -569,13 +569,13 @@ Herhangi bir görevi eklediyseniz veritabanında tutulur. Veri şemasında yapı
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-Oluşturduğunuz uygulamayı yönetmek için [Azure portalına](https://portal.azure.com) gidin.
+Oluşturduğunuz uygulamayı yönetmek için [Azure Portal](https://portal.azure.com) gidin.
 
-Sol menüden **Uygulama Hizmetleri'ni**ve ardından Azure uygulamanızın adını tıklatın.
+Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/tutorial-php-mysql-app/access-portal.png)
 
-Uygulamanızın Genel Bakış sayfasını görürsünüz. Buradan durdurma, başlatma, yeniden başlatma, göz atma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
+Uygulamanızın genel bakış sayfasını görürsünüz. Buradan durdurma, başlatma, yeniden başlatma, göz atma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
 
 Soldaki menü, uygulamanızı yapılandırmaya yönelik sayfalar sağlar.
 
@@ -597,12 +597,12 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Azure’daki tanılama günlüklerinin akışını sağlama
 > * Uygulamayı Azure portalında yönetme
 
-Özel bir DNS adının uygulamanızla nasıl eşleştinolduğunu öğrenmek için bir sonraki öğreticiye ilerleyin.
+Özel bir DNS adını uygulamanıza nasıl eşleyeceğinizi öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uygulamanıza özel DNS adını haritalandırın](../app-service-web-tutorial-custom-domain.md)
+> [Öğretici: özel DNS adını uygulamanıza eşleyin](../app-service-web-tutorial-custom-domain.md)
 
-Veya diğer kaynaklara göz atın:
+Ya da diğer kaynaklara göz atın:
 
 > [!div class="nextstepaction"]
 > [PHP uygulamasını yapılandırma](configure-language-php.md)

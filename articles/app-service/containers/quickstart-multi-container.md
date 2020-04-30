@@ -1,25 +1,25 @@
 ---
-title: 'Quickstart: Çoklu kapsayıcı uygulaması oluşturma'
-description: İlk çok kapsayıcılı uygulamanızı dağıtarak Azure Uygulama Hizmeti'ndeki çok kapsayıcılı uygulamalarla başlayın.
-keywords: azure uygulama hizmeti, web uygulaması, linux, docker, beste, multicontainer, multi-container, konteynerler için web uygulaması, birden fazla konteyner, konteyner, wordpress, mysql için azure db, konteyner ile üretim veritabanı
+title: 'Hızlı başlangıç: çok kapsayıcılı bir uygulama oluşturma'
+description: İlk çok Kapsayıcılı uygulamanızı dağıtarak Azure App Service çok Kapsayıcılı uygulamalarla çalışmaya başlayın.
+keywords: Azure App Service, Web uygulaması, Linux, Docker, Compose, çok Kapsayıcılı, çok Kapsayıcılı, kapsayıcılar için Web App, birden çok kapsayıcı, kapsayıcı, WordPress, MySQL için Azure DB, kapsayıcılarla üretim veritabanı
 author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: ab8e416e460546dcf758c83aa8b357139c6dbefb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085884"
 ---
-# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırması kullanarak çok kapsayıcılı (önizleme) uygulama oluşturma
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırma kullanarak çok Kapsayıcılı (Önizleme) uygulama oluşturma
 
 > [!NOTE]
-> Çoklu kapsayıcı önizlemede.
+> Çok Kapsayıcılı önizleme aşamasındadır.
 
-[Kapsayıcılar için Web App](app-service-linux-intro.md), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu hızlı başlangıç, Docker Compose yapılandırmasını kullanarak [Bulut Kabuğundaki](https://docs.microsoft.com/azure/cloud-shell/overview) Kapsayıcılar için Web Uygulamasına çok kapsayıcılı bir uygulamanın (önizleme) nasıl dağıtılanın caiz olduğunu gösterir.
+[Kapsayıcılar için Web App](app-service-linux-intro.md), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu hızlı başlangıçta, bir Docker Compose yapılandırması kullanılarak [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) kapsayıcılar için Web App için çok kapsayıcılı bir uygulamanın (Önizleme) nasıl dağıtılacağı gösterilmektedir.
 
 Bu hızlı başlangıcı Cloud Shell'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 veya üzeri) ile yerel olarak da çalıştırabilirsiniz. 
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-Bulut Kabuğu'nda, komutu [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) olan bir kaynak grubu oluşturun. Aşağıdaki örnek *Orta Güney ABD* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur. **Standart** katmanda Linux üzerinde App Service için desteklenen tüm konumları görüntülemek için [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) komutunu çalıştırın.
+Cloud Shell, [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek *Orta Güney ABD* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur. **Standart** katmanda Linux üzerinde App Service için desteklenen tüm konumları görüntülemek için [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) komutunu çalıştırın.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ Komut tamamlandığında, bir JSON çıkışı size kaynak grubu özelliklerini 
 
 ## <a name="create-an-azure-app-service-plan"></a>Azure App Service planı oluşturma
 
-Bulut Kabuğu'nda, kaynak grubunda [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutla birlikte bir Uygulama Hizmeti planı oluşturun.
+Cloud Shell, [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutuyla kaynak grubunda bir App Service planı oluşturun.
 
 Aşağıdaki örnek, **Standart** fiyatlandırma katmanı (`--sku S1`) ve bir Linux kapsayıcısı (`--is-linux`) içinde `myAppServicePlan` adlı bir App Service planı oluşturur.
 
@@ -98,9 +98,9 @@ App Service planı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bi
 ## <a name="create-a-docker-compose-app"></a>Docker Compose uygulaması oluşturma
 
 > [!NOTE]
-> Azure Uygulama Hizmetleri'ndeki Docker Compose şu anda 4.000 karakter sınırına sahiptir.
+> Azure App Services üzerinde Docker Compose Şu anda 4.000 karakter sınırlaması vardır.
 
-Cloud Shell terminalinde [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutunu kullanarak `myAppServicePlan` App Service planında çok kapsayıcılı bir [web uygulaması](app-service-linux-intro.md) oluşturun. _ \<app_name>'ı_ benzersiz bir uygulama adı ile değiştirmeyi `a-z`unutmayın `0-9`(geçerli karakterler , , ve `-`).
+Cloud Shell terminalinde [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) komutunu kullanarak `myAppServicePlan` App Service planında çok kapsayıcılı bir [web uygulaması](app-service-linux-intro.md) oluşturun. _ \<App_name>_ benzersiz bir uygulama adıyla değiştirmeyi unutmayın (geçerli karakterler `a-z`, `0-9`ve `-`).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -129,17 +129,17 @@ Dağıtılan uygulamaya göz atmak için (`http://<app_name>.azurewebsites.net`)
 
 ![Kapsayıcılar için Web App üzerinde örnek çok kapsayıcılı uygulama][1]
 
-**Tebrikler,** Kapsayıcılar için Web Uygulaması'nda çok kapsayıcılı bir uygulama oluşturdunuz.
+**Tebrikler**, kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Multi-konteyner WordPress uygulaması](tutorial-multi-container-app.md)
+> [Öğretici: çok Kapsayıcılı WordPress uygulaması](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
-> [Özel bir kapsayıcıyı yapılandırma](configure-custom-container.md)
+> [Özel kapsayıcı yapılandırma](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

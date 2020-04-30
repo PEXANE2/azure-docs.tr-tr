@@ -1,7 +1,7 @@
 ---
-title: Özel Varlık Arama bilişsel arama becerisi
+title: Özel varlık arama bilişsel arama yeteneği
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama bilişsel arama ardışık ardışık bir metinden farklı özel varlıklar ayıklayın. Bu beceri şu anda genel önizlemede.
+description: Azure Bilişsel Arama bilişsel arama ardışık düzeninde bulunan metinden farklı özel varlıkları ayıklayın. Bu yetenek Şu anda genel önizlemededir.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,69 +9,69 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085748"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel Varlık Arama bilişsel beceri (Önizleme)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
 
 > [!IMPORTANT] 
-> Bu beceri şu anda genel önizlemede. Önizleme işlevi hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın. Şu anda portal veya .NET SDK desteği yok.
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
 
-**Özel Varlık Arama** becerisi, özel, kullanıcı tarafından tanımlanan sözcük ve tümcecikler listesinden metin arar. Bu listeyi kullanarak, tüm belgeleri eşleşen varlıklarla etiketler. Beceri aynı zamanda benzer ama oldukça kesin olmayan eşleşmeleri bulmak için uygulanabilir bulanık eşleştirme bir dereceyi destekler.  
+**Özel varlık arama** becerisi, özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler.  
 
-Bu beceri Bilişsel Hizmetler API'sine bağlı değildir ve önizleme süresi boyunca ücretsiz olarak kullanılabilir. Yine de günlük zenginleştirme sınırını geçersiz kılmak için [bir Bilişsel Hizmetler kaynağı eklemeniz](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)gerekir. Günlük sınır, Azure Bilişsel Arama aracılığıyla erişildiğinde Bilişsel Hizmetlere ücretsiz erişim için geçerlidir.
+Bu yetenek bilişsel hizmetler API 'siyle bağlantılı değildir ve önizleme dönemi boyunca ücretsiz olarak kullanılabilir. Ancak günlük zenginleştirme limitini geçersiz kılmak için yine de bilişsel [Hizmetler kaynağı iliştirmelisiniz](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services). Günlük sınır, Azure Bilişsel Arama üzerinden erişildiğinde bilişsel hizmetlere ücretsiz erişim için geçerlidir.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.CustomEntityLookupSkill 
+Microsoft. yetenekler. Text. CustomEntityLookupSkill 
 
 ## <a name="data-limits"></a>Veri sınırları
-+ Desteklenen maksimum giriş kaydı boyutu 256 MB'dır. Verilerinizi özel varlık arama becerisine göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanmayı düşünün.
-+ Desteklenen maksimum varlıklar tanım tablosu, *varlıklarDefinitionUri* parametresi kullanılarak sağlanırsa 10 MB'dır. 
-+ Varlıklar satır satırda tanımlanırsa, *inlineNtitiesDefinition* parametresi kullanılarak, desteklenen maksimum boyut 10 KB'dir.
++ Desteklenen en büyük giriş kaydı boyutu 256 MB 'tır. Verileri özel varlık arama beceriye göndermeden önce bölmeniz gerekirse, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
++ *Entitiesdefinitionuri* parametresi kullanılarak sağlandıysa, desteklenen en yüksek varlık tanımı tablosu 10 MB 'tır. 
++ Varlıklar satır içi tanımlanmışsa *ınlineentitiesdefinition* parametresi kullanılarak, desteklenen en büyük boyut 10 KB 'tır.
 
-## <a name="skill-parameters"></a>Beceri parametreleri
+## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| varlıklarDefinitionUri    | Eşleşecek tüm hedef metni içeren bir JSON veya CSV dosyasına giden yol. Bu varlık tanımı bir dizinleyici çalışmasının başında okunur; bu dosyanın orta vadede herhangi bir güncelleştirme sonraki çalıştırmaları kadar gerçekleştirilmeyecek. Bu config HTTPS üzerinden erişilebilir olmalıdır. Beklenen CSV veya JSON şeması için aşağıdaki [Özel Varlık Tanımı](#custom-entity-definition-format) Biçimi"ne bakın.|
-|inlineEntitiesDefinition | Satır Satırlı JSON varlık tanımları. Bu parametre varsa varlıklarDefinitionUri parametre yerini. En fazla 10 KB yapılandırma satır içinde sağlanabilir. Beklenen JSON şeması için aşağıdaki [Özel Varlık Tanımı'na](#custom-entity-definition-format) bakın. |
-|defaultLanguageCode |    (İsteğe bağlı) Giriş metnini belirteçleştirmek ve demi yapmak için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan İngilizce (`en`). Bir languagecode-countrycode biçimini geçerseniz, biçimin yalnızca languagecode bölümü kullanılır.  |
+| entitiesDefinitionUri    | Eşleştirilecek tüm hedef metinleri içeren bir JSON veya CSV dosyasının yolu. Bu varlık tanımı, Dizin Oluşturucu çalıştırmasının başlangıcında okundu. Bu dosya için her türlü güncelleştirme, sonraki Çalışmayana kadar gerçekleştirilmeyecek. Bu yapılandırmaya HTTPS üzerinden erişilebilir olması gerekir. Beklenen CSV veya JSON şeması için aşağıda " [özel varlık tanımı](#custom-entity-definition-format) biçimi" başlığına bakın.|
+|ınlineentitiesdefinition | Satır içi JSON varlık tanımları. Bu parametre, varsa entitiesDefinitionUri parametresinin yerini alır. En fazla 10 KB 'lik yapılandırma satır içi olarak sağlanmayabilir. Beklenen JSON şeması için aşağıdaki [özel varlık tanımına](#custom-entity-definition-format) bakın. |
+|defaultLanguageCode |    Seçim Giriş metnini simgeleştirme ve ayırma için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer English (`en`) ' dir. LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.  |
 
 
-## <a name="skill-inputs"></a>Beceri girdileri
+## <a name="skill-inputs"></a>Beceri girişleri
 
 | Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
-| metin          | Çözümlemek için metin.          |
+| metin          | Çözümlenecek metin.          |
 | languageCode    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
 
 
-## <a name="skill-outputs"></a>Beceri çıktıları
+## <a name="skill-outputs"></a>Yetenek çıkışları
 
 
-| Çıktı adı      | Açıklama                   |
+| Çıkış adı      | Açıklama                   |
 |---------------|-------------------------------|
-| Varlık | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir dizi nesne. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *isim*: Tanımlanan üst düzey varlık. Varlık "normalleştirilmiş" formu temsil eder. </li> <li> *id*: Kullanıcı tarafından "Özel Varlık Tanımı Biçimi"nde tanımlanan varlık için benzersiz bir tanımlayıcıdır.</li> <li> *açıklaması*: Kullanıcı tarafından "Özel Varlık Tanımı Biçimi"nde tanımlanan varlık açıklaması. </li> <li> *türü:* Kullanıcı tarafından "Özel Varlık Tanımı Biçimi"nde tanımlanan varlık türü.</li> <li> *alt türü:* "Özel Varlık Tanımı Biçimi"nde kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: Kaynak metinde o varlığın eşleşmelerinin her birini açıklayan koleksiyon. Her maç aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: Kaynak belgedeki ham metin eşleşir. </li> <li> *ofset*: Metnin bulunduğu yer. </li> <li> *uzunluk*: Eşleşen metnin uzunluğu. </li> <li> *matchDistance*: Bu eşleşmeden farklı karakter sayısı özgün varlık adından veya diğer addan dı.  </li> </ul> </ul>
+| varlıklar | Bulunan eşleşmeler ve ilgili meta veriler hakkında bilgi içeren bir nesne dizisi. Tanımlanan varlıkların her biri aşağıdaki alanları içerebilir:  <ul> <li> *ad*: tanımlanan en üst düzey varlık. Varlık "normalleştirilmiş" formunu temsil eder. </li> <li> *ID*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık için benzersiz bir tanımlayıcı.</li> <li> *Açıklama*: "özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık açıklaması. </li> <li> *şunu yazın:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık türü.</li> <li> *alt tür:* "Özel varlık tanımı biçiminde" Kullanıcı tarafından tanımlanan varlık alt türü.</li>  <li> *eşleşmeler*: kaynak metindeki bu varlık için eşleşmelerin her birini tanımlayan koleksiyon. Her eşleşme aşağıdaki üyelere sahip olacaktır: </li> <ul> <li> *metin*: ham metin, kaynak belgeden eşleşir. </li> <li> *konum*: eşleşmenin metinde bulunduğu konum. </li> <li> *uzunluk*: eşleşen metnin uzunluğu. </li> <li> *eşleşme uzaklığı*: Bu eşleşmenin farklı karakter sayısı, özgün varlık adından veya diğer addan farklıdır.  </li> </ul> </ul>
   |
 
-## <a name="custom-entity-definition-format"></a>Özel Varlık Tanım Biçimi
+## <a name="custom-entity-definition-format"></a>Özel varlık tanımı biçimi
 
-Özel Varlık Arama becerisine özel varlıkların listesini sağlamanın 3 farklı yolu vardır. Listeyi bir ' de sağlayabilirsiniz. CSV dosyası, bir . JSON dosyası veya beceri tanımının bir parçası olarak satır içinde tanım olarak.  
+Özel varlık arama beceriye özel varlıkların listesini sağlamanın 3 farklı yolu vardır. Listeyi ' de sağlayabilirsiniz. CSV dosyası, a. Yetenek tanımının bir parçası olarak JSON dosyası veya satır içi tanım.  
 
-Tanım dosyası bir . CSV veya . JSON dosyası, dosyanın yolunu *varlıklarDefinitionUri* parametrenin bir parçası olarak sağlanmalıdır. Bu durumda, dosya her dizinleyici çalıştırın başında bir kez indirilir. Dizinleyici nin çalışması amaçlandığı sürece dosyaya erişilebilir olmalıdır. Ayrıca, dosya UTF-8 kodlanmış olmalıdır.
+Tanım dosyası bir. CSV veya. JSON dosyası, dosyanın yolunun *Entitıesdefinitionuri* parametresinin bir parçası olarak sağlanması gerekir. Bu durumda, dosya her bir dizin oluşturucunun başlangıcında bir kez indirilir. Dizin oluşturucunun çalıştırılması amaçlanan sürece dosyanın erişilebilir olması gerekir. Ayrıca, dosyanın UTF-8 ile kodlanmış olması gerekir.
 
-Tanım satır satır olarak sağlanıyorsa, *inlineNtitiesDefinition* beceri parametresi içeriği olarak satır içinde sağlanmalıdır. 
+Tanım satır içi olarak sağlanmışsa, *ınlineentitiesdefinition* yetenek parametresinin içeriği olarak satır içi olarak sağlanmalıdır. 
 
-### <a name="csv-format"></a>CSV formatı
+### <a name="csv-format"></a>CSV biçimi
 
-Virgülden Ayrılmış Değer (CSV) dosyasında, dosyanın yolunu sağlayarak ve *varlıklarDefinitionUri* beceri parametresinde ayarlayarak, arayacağınız özel varlıkların tanımını sağlayabilirsiniz. Yol bir https konumunda olmalıdır. Tanım dosyası 10 MB boyutuna kadar olabilir.
+Bir virgülle ayrılmış değer (CSV) dosyasında aranacak özel varlıkların tanımını, dosyanın yolunu sağlayarak ve *Entitiesdefinitionuri* yetenek parametresinde ayarlayarak sağlayabilirsiniz. Yol, https konumunda olmalıdır. Tanım dosyası boyutu en fazla 10 MB olabilir.
 
-CSV formatı basittir. Her satır, aşağıda gösterildiği gibi benzersiz bir varlığı temsil eder:
+CSV biçimi basittir. Her satır, aşağıda gösterildiği gibi benzersiz bir varlığı temsil eder:
 
 ```
 Bill Gates, BillG, William H. Gates
@@ -79,15 +79,15 @@ Microsoft, MSFT
 Satya Nadella 
 ```
 
-Bu durumda, bulunan varlıklar olarak döndürülebilecek üç varlık vardır (Bill Gates, Satya Nadella, Microsoft), ancak satırdaki terimlerden herhangi biri (diğer adlar) metinde eşleşirse bunlar tanımlanır. Örneğin, "William H. Gates" dizesi bir belgede bulunursa, "Bill Gates" varlığı için bir eşleşme döndürülür.
+Bu durumda, varlık (Bill Gates, Satya Nadella, Microsoft) olarak döndürülebilecek üç varlık bulunur, ancak satırdaki koşullardan herhangi biri (diğer ad) metinde eşleşirse tanımlanırlar. Örneğin, "William H. Gates" dizesi bir belgede bulunursa, "Bill Gates" varlığı için bir eşleşme döndürülür.
 
 ### <a name="json-format"></a>JSON biçimi
 
-Bir JSON dosyasında da aramak için özel varlıkların tanımını sağlayabilirsiniz. JSON biçimi, dönem başına eşleşen kuralları tanımlamanıza olanak sağladığından size biraz daha fazla esneklik sağlar. Örneğin, her dönem için bulanık eşleşen mesafeyi (Damerau-Levenshtein mesafesi) veya eşleştirmenin büyük/küçük harf duyarlı olup olmaması gerektiğini belirtebilirsiniz. 
+Bir JSON dosyasında aranacak özel varlıkların tanımını da sağlayabilirsiniz. JSON biçimi, her terim için eşleşen kuralları tanımlamanızı sağlayan bir bit daha esneklik sağlar. Örneğin, her dönem için belirsiz eşleşen mesafeyi (Davmerau-Pavenshtein uzaklığı) veya eşleştirmesinin büyük/küçük harfe duyarlı olup olmayacağını belirtebilirsiniz. 
 
- CSV dosyalarında olduğu gibi, JSON dosyasına giden yolu sağlamanız ve *varlıklarıDefinitionUri* beceri parametresi olarak ayarlamanız gerekir. Yol bir https konumunda olmalıdır. Tanım dosyası 10 MB boyutuna kadar olabilir.
+ CSV dosyalarında olduğu gibi, JSON dosyasının yolunu sağlamanız ve *Entitiesdefinitionuri* yetenek parametresinde ayarlamanız gerekir. Yol, https konumunda olmalıdır. Tanım dosyası boyutu en fazla 10 MB olabilir.
 
-En temel JSON özel varlık listesi tanımı eşleşecek varlıkların listesi olabilir:
+En temel JSON özel varlık listesi tanımı, eşleştirilecek varlıkların bir listesi olabilir:
 
 ```json
 [ 
@@ -103,7 +103,7 @@ En temel JSON özel varlık listesi tanımı eşleşecek varlıkların listesi o
 ]
 ```
 
-JSON tanımının daha karmaşık bir örneği isteğe bağlı olarak her varlığın kimliğini, açıklamasını, türünü ve alt türünü ve diğer *diğer diğer adları*sağlayabilir. Bir takma ad terimi eşleşirse, varlık da döndürülür:
+JSON tanımının daha karmaşık bir örneği, isteğe bağlı olarak her bir varlığın kimliğini, açıklamasını, türünü ve alt türünü ve diğer *diğer adları*sağlayabilir. Bir diğer ad terimi eşleşirse, varlık de döndürülür:
 
 ```json
 [ 
@@ -141,36 +141,36 @@ JSON tanımının daha karmaşık bir örneği isteğe bağlı olarak her varlı
 ] 
 ```
 
-Aşağıdaki tablolar, varlıkları eşleşecek şekilde tanımlarken ayarlayabileceğiniz farklı yapılandırma parametrelerini daha ayrıntılı olarak açıklayınız:
+Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabileceğiniz farklı yapılandırma parametreleri daha ayrıntılı olarak açıklanır:
 
 |  Alan adı  |        Açıklama  |
 |--------------|----------------------|
-| ad | Üst düzey varlık tanımlayıcısı. Beceri çıkışındaki eşleşmeler bu ada göre gruplandırılır ve bulunan metnin "normalleştirilmiş" biçimini temsil etmelidir.  |
-| açıklama  | (İsteğe bağlı) Bu alan, eşleşen metin(ler) hakkında özel meta veriler için bir geçiş olarak kullanılabilir. Bu alanın değeri, beceri çıktısında kendi varlığının her eşleşmesi ile görünür. |
-| type | (İsteğe bağlı) Bu alan, eşleşen metin(ler) hakkında özel meta veriler için bir geçiş olarak kullanılabilir. Bu alanın değeri, beceri çıktısında kendi varlığının her eşleşmesi ile görünür. |
-| Alt | (İsteğe bağlı) Bu alan, eşleşen metin(ler) hakkında özel meta veriler için bir geçiş olarak kullanılabilir. Bu alanın değeri, beceri çıktısında kendi varlığının her eşleşmesi ile görünür. |
-| id | (İsteğe bağlı) Bu alan, eşleşen metin(ler) hakkında özel meta veriler için bir geçiş olarak kullanılabilir. Bu alanın değeri, beceri çıktısında kendi varlığının her eşleşmesi ile görünür. |
-| Casesensitive | (İsteğe bağlı) Varsayılan olarak false. Boolean değeri, varlık adı ile karşılaştırmaların karakter kasasına duyarlı olup olmadığını belirtir. Örnek durumda duyarsız maçlar "Microsoft" olabilir: microsoft, microSoft, MICROSOFT |
-| bulanıkEditDistance | (İsteğe bağlı) Varsayılan olarak 0'a kadar. Maksimum değeri 5. Yine de varlık adı ile eşleşecek farklı karakter kabul edilebilir sayıda gösterir. Herhangi bir eşleşme için mümkün olan en küçük bulanıklık döndürülür.  Örneğin, edit mesafesi 3 olarak ayarlanmışsa, "Windows 10" yine de "Windows", "Windows10" ve "windows 7" ile eşleşir. <br/> Durum hassasiyeti yanlış olarak ayarlandığında, durum farklılıkları fuzziness toleransdoğru sayılmaz, ama aksi takdirde yok. |
-| defaultCaseSensitive | (İsteğe bağlı) Bu varlık için varsayılan servis talebi duyarlılık değerini değiştirir. Tüm diğer adlar için duyarlı değerlerin varsayılan değerini değiştirmek için kullanılır. |
-| varsayılanFuzzyEditDistance | (İsteğe bağlı) Bu varlık için varsayılan bulanık edit uzaklık değerini değiştirir. Tüm diğer adların varsayılan değerini değiştirmek için kullanılabilir bulanıkEditDistance değerleri. |
-| Takma | (İsteğe bağlı) Kök varlık adı ile alternatif yazımları veya eşanlamlıları belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
+| ad | En üst düzey varlık tanımlayıcısı. Yetenek çıkışındaki eşleşmeler bu ada göre gruplandırılır ve bulunan metnin "normalleştirilmiş" biçimini temsil etmelidir.  |
+| açıklama  | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| type | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| SubType | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| id | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
+| caseSensitive | Seçim Varsayılan değer false şeklindedir. Varlık adıyla karşılaştırmaların karakter büyük küçük harfe duyarlı olup olmadığını belirten Boole değeri. "Microsoft" örnek büyük/küçük harf duyarsız eşleşmeleri: Microsoft, microSoft, MICROSOFT |
+| Belirsizlik Zyeditdistance | Seçim Varsayılan değer 0 ' dır. En büyük 5 değeri. Varlık adıyla bir eşleşme oluşturulmasına neden olacak kabul edilebilir sayıda sabit karakter belirtir. Verilen herhangi bir eşleşme için mümkün olan en küçük belirsizlik döndürülür.  Örneğin, düzenleme uzaklığı 3 olarak ayarlandıysa, "Windows 10" yine "Windows", "Windows10" ve "Windows 7" ile eşleşir. <br/> Büyük/küçük harf duyarlılığı yanlış olarak ayarlandığında, büyük/küçük harf farkları belirsizlik toleransına doğru sayılmaz, aksi takdirde bunu yapın. |
+| defaultCaseSensitive | Seçim Bu varlık için varsayılan büyük/küçük harf duyarlılığı değerini değiştirir. Tüm diğer ad caseSensitive değerlerinin varsayılan değerini değiştirmek için kullanılır. |
+| defaultFuzzyEditDistance | Seçim Bu varlık için varsayılan benzer düzenleme uzaklığı değerini değiştirir. Tüm diğer adların belirsizlik değerlerini varsayılan değerini değiştirmek için kullanılabilir. |
+| deyim | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
 
 | Diğer ad özellikleri | Açıklama |
 |------------------|-------------|
-| metin  | Bazı hedef varlık adının alternatif yazım veya gösterimi.  |
-| Casesensitive | (İsteğe bağlı) Yukarıdaki kök varlık "caseSensitive" parametresi ile aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
-| bulanıkEditDistance | (İsteğe bağlı) Yukarıdaki kök varlık "bulanıkEditDistance" parametresi ile aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
+| metin  | Bir hedef varlık adının alternatif yazımı veya temsili.  |
+| caseSensitive | Seçim Yukarıdaki kök varlık "caseSensitive" parametresiyle aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
+| Belirsizlik Zyeditdistance | Seçim Yukarıdaki "belirsizlik Zyeditdistance" parametresi ile aynı şekilde davranır, ancak yalnızca bu bir diğer ad için geçerlidir. |
 
 
-### <a name="inline-format"></a>Satır biçiminde
+### <a name="inline-format"></a>Satır içi biçim
 
-Bazı durumlarda, satır satırlarını doğrudan beceri tanımına eşleştirmek için özel varlıkların listesini sağlamak daha uygun olabilir. Bu durumda, yukarıda açıklanana benzer bir JSON biçimi kullanabilirsiniz, ancak beceri tanımında çizgilidir.
-Yalnızca 10 KB boyutundan (seri boyutu) daha küçük yapılandırmalar satır içinde tanımlanabilir. 
+Bazı durumlarda, özel varlıkların listesini doğrudan yetenek tanımına uyacak şekilde sağlamak daha uygun olabilir. Bu durumda, yukarıda açıklanan şekilde benzer bir JSON biçimi kullanabilirsiniz, ancak bu, yetenek tanımında satır içine alınabilir.
+Yalnızca boyutu 10 KB 'tan (serileştirilmiş boyut) daha az olan konfigürasyonlar satır içi olarak tanımlanabilir. 
 
-##    <a name="sample-definition"></a>Örnek tanımı
+##    <a name="sample-definition"></a>Örnek tanım
 
-Satır altı biçimi kullanan örnek bir beceri tanımı aşağıda gösterilmiştir:
+Satır içi biçim kullanan örnek bir yetenek tanımı aşağıda gösterilmiştir:
 
 ```json
   {
@@ -208,7 +208,7 @@ Satır altı biçimi kullanan örnek bir beceri tanımı aşağıda gösterilmi�
     ]
   }
 ```
-Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar verirseniz, varlıklarDefinitionUri biçimini kullanarak örnek bir beceri tanımı aşağıda gösterilmiştir:
+Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar verirseniz, entitiesDefinitionUri biçimini kullanan örnek bir yetenek tanımı aşağıda gösterilmiştir:
 
 ```json
   {
@@ -298,12 +298,12 @@ Alternatif olarak, varlıklar tanım dosyasına bir işaretçi sağlamaya karar 
 
 ## <a name="errors-and-warnings"></a>Hatalar ve uyarılar
 
-### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Uyarı: Diğer yinelenen eşleşmeleri atlayarak maçlar için maksimum kapasiteye ulaşıldı.
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Uyarı: eşleşmeler için maksimum kapasiteye ulaşıldı, daha fazla yinelenen eşleşme atlanıyor.
 
-Algılanan eşleşme sayısı izin verilen maksimumdan büyükse, bu uyarı yayımlanır. Bu durumda, yinelenen eşleşmeleri dahil etmeyi durduracağız. Bu sizin için kabul edilemezse, lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) gönderin, böylece size kişisel kullanım durumunuzda yardımcı olabiliriz.
+Bu uyarı, algılanan eşleşme sayısı izin verilen en fazla değerden fazlaysa, bu uyarı yayınlanacaktır. Bu durumda, yinelenen eşleşmeler dahil olmak üzere duracağız. Bu sizin için kabul edilemez, lütfen tek bir kullanım örneği için size yardımcı olabilmemiz için bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) yapın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
-+ [Varlık Tanıma becerisi (tanınmış varlıkları aramak için)](cognitive-search-skill-entity-recognition.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Varlık tanıma becerisi (tanınmış varlıkları aramak için)](cognitive-search-skill-entity-recognition.md)

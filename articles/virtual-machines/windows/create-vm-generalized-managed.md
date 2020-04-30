@@ -1,6 +1,6 @@
 ---
-title: Azure'da yönetilen bir resimden VM oluşturma
-description: Azure PowerShell'i veya portalı kullanarak genelleştirilmiş yönetilen bir görüntüden bir Windows sanal makinesi oluşturun.
+title: Azure 'da yönetilen görüntüden VM oluşturma
+description: Azure PowerShell veya Portal kullanarak genelleştirilmiş bir yönetilen görüntüden Windows sanal makinesi oluşturun.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -8,39 +8,39 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086326"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Yönetilen bir görüntüden VM oluşturma
 
-Azure portalını veya PowerShell'i kullanarak Azure yönetilen bir VM görüntüden birden çok sanal makine (VM) oluşturabilirsiniz. Yönetilen bir VM görüntüsü, işletim sistemi ve veri diskleri de dahil olmak üzere bir VM oluşturmak için gereken bilgileri içerir. Hem işletim sistemi diskleri hem de herhangi bir veri diski de dahil olmak üzere görüntüyü oluşturan sanal sabit diskler (VHD'ler) yönetilen diskler olarak depolanır. 
+Azure portal veya PowerShell 'i kullanarak Azure yönetilen bir VM görüntüsünden birden çok sanal makine (VM) oluşturabilirsiniz. Yönetilen bir VM görüntüsü, işletim sistemi ve veri diskleri dahil olmak üzere VM oluşturmak için gereken bilgileri içerir. Görüntüyü oluşturan sanal sabit diskler (VHD), hem işletim sistemi diskleri hem de tüm veri diskleri dahil, yönetilen diskler olarak depolanır. 
 
-Yeni bir VM oluşturmadan önce, kaynak görüntü olarak kullanmak ve görüntüye erişimi olması gereken herhangi bir kullanıcıya görüntü üzerinde okuma erişimi vermek için [yönetilen bir VM görüntüsü oluşturmanız](capture-image-resource.md) gerekir. 
+Yeni bir VM oluşturmadan önce, kaynak görüntü olarak kullanmak için [yönetilen BIR VM görüntüsü oluşturmanız](capture-image-resource.md) ve görüntüde erişimi olması gereken herhangi bir kullanıcıya görüntü üzerinde okuma erişimi vermeniz gerekir. 
 
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 
-1. Yönetilen bir görüntü bulmak için [Azure portalına](https://portal.azure.com) gidin. **Resimleri**arayın ve seçin.
-3. Listeden kullanmak istediğiniz resmi seçin. Resim **Genel Bakış** sayfası açılır.
-4. Menüden **VM Oluştur'u** seçin.
-5. Sanal makine bilgilerini girin. Buraya girilen kullanıcı adı ve şifre sanal makineye giriş yapmak için kullanılacaktır. Tamamlandığında **Tamam'ı**seçin. Varolan bir kaynak grubunda yeni VM oluşturabilir veya VM'yi depolamak için yeni bir kaynak grubu oluşturmak için **yeni oluştur'u** seçebilirsiniz.
-6. VM için bir boyut seçin. Daha fazla boyut görmek için **Tümünü Görüntüle'yi** seçin veya **Desteklenen disk türü** filtresini değiştirin. 
-7. **Ayarlar**altında, gerektiği gibi değişiklikler yapın ve **Tamam'ı**seçin. 
-8. Özet sayfasında, resim adınızı **Özel resim**olarak listelemelisiniz. Sanal makine dağıtımını başlatmak için **Tamam'ı** seçin.
+1. Yönetilen bir görüntü bulmak için [Azure Portal](https://portal.azure.com) gidin. **Görüntüleri**arayın ve seçin.
+3. Listeden kullanmak istediğiniz görüntüyü seçin. Görüntüye **genel bakış** sayfası açılır.
+4. Menüden **VM oluştur** ' u seçin.
+5. Sanal makine bilgilerini girin. Buraya girilen Kullanıcı adı ve parola, sanal makinede oturum açmak için kullanılacaktır. Tamamlandığında **Tamam**' ı seçin. Yeni VM 'yi mevcut bir kaynak grubunda oluşturabilir veya yeni **Oluştur** ' u seçerek VM 'yi depolayacak yeni bir kaynak grubu oluşturabilirsiniz.
+6. VM için bir boyut seçin. Daha fazla boyut görmek için **Tümünü görüntüle** ' yi seçin veya **Desteklenen disk türü** filtresini değiştirin. 
+7. **Ayarlar**' ın altında, gerekli değişiklikleri yapın ve **Tamam**' ı seçin. 
+8. Özet sayfasında, görüntü adınızın **özel bir görüntü**olarak listelendiğini görmeniz gerekir. Sanal makine dağıtımını başlatmak için **Tamam ' ı** seçin.
 
 
 ## <a name="use-powershell"></a>PowerShell kullanma
 
-PowerShell'i, [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet için basitleştirilmiş parametre kümesini kullanarak görüntüden VM oluşturmak için kullanabilirsiniz. Görüntünün VM'yi oluşturacağınız kaynak grubunda olması gerekir.
+[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'i için Basitleştirilmiş parametre kümesini kullanarak BIR görüntüden VM oluşturmak için PowerShell 'i kullanabilirsiniz. Görüntünün, VM 'yi oluşturacağınız kaynak grubunda olması gerekir.
 
  
 
-[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) için basitleştirilmiş parametre kümesi, yalnızca görüntüden bir VM oluşturmak için bir ad, kaynak grubu ve görüntü adı sağlamanızı gerektirir. New-AzVm, **-Ad** parametresinin değerini otomatik olarak oluşturduğu tüm kaynakların adı olarak kullanır. Bu örnekte, kaynakların her biri için daha ayrıntılı adlar sağlarız, ancak cmdlet'in bunları otomatik olarak oluşturmasına izin veriyoruz. Ayrıca, sanal ağ gibi kaynakları önceden oluşturabilir ve kaynak adını cmdlet'e geçirebilirsiniz. New-AzVm, varolan kaynakları kendi adlarıyla bulabilirse kullanır.
+[New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) için ayarlanan Basitleştirilmiş parametre yalnızca BIR görüntüden VM oluşturmak için bir ad, kaynak grubu ve görüntü adı sağlamanızı gerektirir. New-AzVm, otomatik olarak oluşturduğu tüm kaynakların adı olarak **-Name** parametresinin değerini kullanacaktır. Bu örnekte, her bir kaynak için daha ayrıntılı adlar sağlıyoruz, ancak cmdlet 'in onları otomatik olarak oluşturmasına izin veririz. Ayrıca, daha önce sanal ağ gibi kaynaklar oluşturabilir ve kaynak adını cmdlet 'e geçirebilirsiniz. Yeni-AzVm, adları adlarıyla bulabilmeleri durumunda mevcut kaynakları kullanacaktır.
 
-Aşağıdaki örnek, *myImage*adlı resimden *myVMFromImage*adlı bir VM oluşturur. *myResourceGroup* 
+Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda, *MyImage*adlı görüntüden *myvmfromımage*adlı bir VM oluşturur. 
 
 
 ```azurepowershell-interactive
@@ -59,5 +59,5 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure PowerShell modülü yle Windows VM'leri oluşturun ve yönetin](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Azure PowerShell modülü ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

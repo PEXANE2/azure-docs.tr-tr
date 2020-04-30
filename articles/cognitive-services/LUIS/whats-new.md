@@ -4,10 +4,10 @@ description: Bu makale, Azure bilişsel hizmetler Language Understanding API hak
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82097736"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri

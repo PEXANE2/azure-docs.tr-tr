@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d036733c023417af3ef038bb9abc278ec91e665c
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508964"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82114283"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu’nda modülleri yönetme
 
@@ -21,9 +21,8 @@ Azure Otomasyonu, DSC yapılandırmalarında runbook 'larda ve DSC kaynaklarınd
 
 * [Azure PowerShell az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell Azurerd. Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
+* Windows `Orchestrator.AssetManagement.Cmdlets` için Log Analytics Aracısı iç modülü
 * Diğer PowerShell modülleri
-* İç `Orchestrator.AssetManagement.Cmdlets` modül
-* Python 2 modülleri
 * Oluşturduğunuz özel modüller 
 
 Bir Otomasyon hesabı oluşturduğunuzda, Azure Otomasyonu bazı modülleri varsayılan olarak içeri aktarır. Bkz. [varsayılan modüller](#default-modules).
@@ -97,13 +96,9 @@ Aşağıdaki tabloda `Orchestrator.AssetManagement.Cmdlets` modül tarafından d
 
 Azure Otomasyonu kaynaklarını bir runbook bağlamı dışında işlemek için az veya Azurerk cmdlet 'leri kullanmanızı öneririz. 
 
-## <a name="orchestratorassetmanagementcmdlets-module"></a>Orchestrator. AssetManagement. cmdlet modülü
+## <a name="module-supporting-get-automationpscredential"></a>Get-AutomationPSCredential destekleyen modül
 
-Azure Otomasyonu, varsayılan olarak `Orchestrator.AssetManagement.Cmdlets` yüklenen Windows için Log Analytics aracısına yönelik iç modülü destekler. Bu `Get-AutomationPSCredential` modüldeki cmdlet genellikle runbook 'larda, kimlik bilgileriyle çalışan çoğu PowerShell cmdlet `PSCredential` 'leri tarafından beklenen bir nesneyi almak için kullanılır. Azure Automation 'da kimlik bilgileri kullanımı hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](credentials.md).
-
-## <a name="python-modules"></a>Python modülleri
-
-Azure Otomasyonu 'nda Python 2 runbook 'ları oluşturabilirsiniz. Python modülü bilgileri için bkz. [Azure Otomasyonu 'Nda Python 2 paketlerini yönetme](../python-packages.md).
+`Get-AutomationPSCredential` Cmdlet, modülün `Orchestrator.AssetManagement.Cmdlets`bir parçasıdır. Bu cmdlet, kimlik `PSCredential` bilgileriyle çalışan çoğu PowerShell cmdlet 'leri tarafından beklenen bir nesne döndürür. Azure Automation 'da kimlik bilgileri kullanımı hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'Da kimlik bilgisi varlıkları](credentials.md).
 
 ## <a name="migrating-to-az-modules"></a>Az modüllere geçme
 
@@ -122,7 +117,7 @@ Az modülünün Otomasyon hesabınıza aktarılması, modülün runbook 'ların 
 * Bir runbook bir modülden bir cmdlet istediğinde
 * Bir runbook, modülü [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 'i ile açıkça içeri aktardığında
 * Bir runbook başka bir bağımlı modülü içeri aktardığında
-
+    
 #### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>Modül geçişten önce runbook 'larınız ve DSC yapılandırmalarının test edilmesi
 
 Az modüllere geçirmeden önce, tüm runbook 'ları ve DSC yapılandırmalarının ayrı bir Otomasyon hesabında dikkatli bir şekilde test ettiğinizden emin olun. 

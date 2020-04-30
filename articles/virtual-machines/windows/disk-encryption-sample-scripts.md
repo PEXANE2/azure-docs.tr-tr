@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Şifrelemesi örnek betikleri
-description: Bu makale, Windows VM'leri için Microsoft Azure Disk Şifreleme'nin ekidir.
+description: Bu makalede, Windows VM 'Leri için Microsoft Azure disk şifrelemesi eki bulunur.
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -9,72 +9,72 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085714"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
 
-Bu makalede, önceden şifrelenmiş VHD'ler ve diğer görevleri hazırlamak için örnek komut dosyaları sağlar.
+Bu makalede önceden şifrelenen VHD 'ler ve diğer görevler için örnek betikler sağlanmaktadır.
 
  
 
-## <a name="list-vms-and-secrets"></a>VM'leri ve sırları listele
+## <a name="list-vms-and-secrets"></a>VM 'Leri ve gizli dizileri listeleyin
 
-Aboneliğinizdeki tüm şifreli VM'leri listeleyin:
+Aboneliğinizdeki tüm şifreli VM 'Leri listeleyin:
 
 ```azurepowershell-interactive
 $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
 $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
 Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
 ```
-Anahtar kasasında VM şifrelemek için kullanılan tüm disk şifreleme sırlarını listeleyin:
+Bir anahtar kasasındaki VM 'Leri şifrelemek için kullanılan tüm disk şifreleme gizli dizilerini listeleyin:
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
 ```
 
-## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>Azure Disk Şifreleme komut dosyaları önkoşullarını
-Azure Disk Şifreleme için ön koşulları zaten biliyorsanız, [Azure Disk Şifreleme ön koşullarını powershell komut dosyası](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )nda kullanabilirsiniz. Bu PowerShell komut dosyasını kullanma örneği için [VM Quickstart'ı şifrele'ye](disk-encryption-powershell-quickstart.md)bakın. Varolan bir kaynak grubundaki varolan VM'lerin tüm disklerini şifrelemek için, satır 211'den başlayarak, komut dosyasının bir bölümünden açıklamaları kaldırabilirsiniz. 
+## <a name="the-azure-disk-encryption-prerequisites-scripts"></a>Azure disk şifrelemesi önkoşul betikleri
+Azure disk şifrelemesi önkoşullarını zaten biliyorsanız, [Azure disk şifrelemesi önkoşulları PowerShell betiğini](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )kullanabilirsiniz. Bu PowerShell betiğini kullanmayla ilgili bir örnek için bkz. [VM 'Yi şifreleme hızlı başlangıç](disk-encryption-powershell-quickstart.md). Mevcut bir kaynak grubundaki mevcut VM 'Ler için tüm diskleri şifrelemek üzere, 211. satırdan başlayarak betiğin bir bölümünden açıklamaları kaldırabilirsiniz. 
 
-Aşağıdaki tablo, PowerShell komut dosyasında hangi parametrelerin kullanılabileceğini gösterir: 
+Aşağıdaki tabloda, PowerShell komut dosyasında hangi parametrelerin kullanılabileceği gösterilmektedir: 
 
-|Parametre|Açıklama|Zorunlu?|
+|Parametre|Açıklama|Girilmesi?|
 |------|------|------|
-|$resourceGroupName| KeyVault'un ait olduğu kaynak grubunun adı.  Yoksa, bu ada sahip yeni bir kaynak grubu oluşturulur.| True|
-|$keyVaultName|Şifreleme anahtarlarının yerleştirilmeye alındığı KeyVault'un adı. Yoksa bu ada sahip yeni bir kasa oluşturulur.| True|
-|$location|KeyVault'un konumu. Şifrelenecek KeyVault ve VM'lerin aynı konumda olduğundan emin olun. `Get-AzLocation` komutu ile bir konum listesi alın.|True|
+|$resourceGroupName| Anahtar kasasının ait olduğu kaynak grubunun adı.  Mevcut değilse, bu ada sahip yeni bir kaynak grubu oluşturulur.| True|
+|$keyVaultName|Şifreleme anahtarlarının yerleştirileceği anahtar kasasının adı. Bu ada sahip yeni bir kasa, mevcut değilse oluşturulur.| True|
+|$location|Anahtar kasasının konumu. Şifrelenecek anahtar kasası ve VM 'Lerin aynı konumda olduğundan emin olun. `Get-AzLocation` komutu ile bir konum listesi alın.|True|
 |$subscriptionId|Kullanılacak Azure aboneliğinin tanımlayıcısı.  Abonelik Kimliğinizi `Get-AzSubscription` komutu ile alabilirsiniz.|True|
-|$aadAppName|KeyVault'a sır yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. Bu uygulama zaten varsa, aadClientSecret parametresini komut dosyasına geçirin.|False|
-|$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci sırrı.|False|
-|$keyEncryptionKeyName|KeyVault'ta isteğe bağlı anahtar şifreleme anahtarının adı. Yoksa, bu ada sahip yeni bir anahtar oluşturulur.|False|
+|$aadAppName|Anahtar kasasına gizli diziler yazmak için kullanılacak Azure AD uygulamasının adı. Bu ada sahip bir uygulama yoksa yeni bir uygulama oluşturulur. Bu uygulama zaten varsa, aadClientSecret parametresini betiğe geçirin.|False|
+|$aadClientSecret|Daha önce oluşturulan Azure AD uygulamasının istemci gizli anahtarı.|False|
+|$keyEncryptionKeyName|Anahtar Kasası 'nda isteğe bağlı anahtar şifreleme anahtarının adı. Bu ada sahip yeni bir anahtar, yoksa oluşturulur.|False|
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD uygulaması olmadan VM'leri şifreleme veya çözme
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Azure AD uygulaması olmadan VM 'Leri şifreleme veya şifrelerini çözme
 
-- [Varolan veya çalışan bir Windows VM'de disk şifrelemesini etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
-- [Çalışan windows vm'de şifrelemeyi devre dışı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
+- [Mevcut veya çalışan bir Windows VM 'de disk şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)  
+- [Çalışan bir Windows VM 'de şifrelemeyi devre dışı bırakma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) 
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Azure AD uygulamasıyla VM'leri şifreleme veya şifresini çözme (önceki sürüm) 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>VM 'Leri bir Azure AD uygulamasıyla şifreleme veya şifrelerini çözme (önceki sürüm) 
  
-- [Varolan veya çalışan bir Windows VM'de disk şifrelemesini etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
-- [Çalışan windows vm'de şifrelemeyi devre dışı](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
-- [Önceden şifrelenmiş vhd/depolama blob'undan yeni bir şifreli yönetilen disk oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
-    - Önceden şifrelenmiş vhd ve ilgili şifreleme ayarları sağlanan yeni bir şifreli yönetilen disk oluşturur
+- [Mevcut veya çalışan bir Windows VM 'de disk şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)    
+- [Çalışan bir Windows VM 'de şifrelemeyi devre dışı bırakma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) 
+- [Önceden şifrelenen bir VHD/depolama blobundan yeni bir şifrelenmiş yönetilen disk oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+    - Önceden şifrelenen bir VHD ve buna karşılık gelen şifreleme ayarları sağlanmış olan yeni bir şifrelenmiş yönetilen disk oluşturur
 
 ## <a name="prepare-a-pre-encrypted-windows-vhd"></a>Önceden şifrelenmiş bir Windows VHD hazırlama
-Aşağıdaki bölümler, Azure IaaS'da şifreli VHD olarak dağıtım için önceden şifrelenmiş bir Windows VHD hazırlamak için gereklidir. Azure Site Kurtarma veya Azure'da yeni bir Windows VM (VHD) hazırlamak ve önyüklemek için bilgileri kullanın. Bir VHD'yi nasıl hazırlayacağıve yükleyebildiğini zedebilirsiniz, [genelleştirilmiş bir VHD yükle'ye bakın ve Azure'da yeni VM'ler oluşturmak için kullanın.](upload-generalized-managed.md)
+Aşağıdaki bölümler, Azure IaaS 'de şifrelenmiş bir VHD olarak dağıtıma önceden şifrelenmiş bir Windows VHD 'si hazırlamak için gereklidir. Azure Site Recovery veya Azure 'da yeni bir Windows VM (VHD) hazırlamak ve önyüklemek için bu bilgileri kullanın. Bir VHD 'yi hazırlama ve karşıya yükleme hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni VM 'ler oluşturmak için kullanma](upload-generalized-managed.md).
 
-### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>İşletim sistemi koruması için TPM olmayanlara izin verecek grup ilkesini güncelleştirme
-**Yerel Bilgisayar İlkesi** > **Bilgisayar Yapılandırma** > **Sıtkı Yönetim Şablonları** > **Windows Bileşenleri**altında bulacağınız **BitLocker Sürücü Şifrelemesi**ayarını yapılandırın. İşletim **Sistemi Sürücüleri** > için bu ayarı değiştirin Aşağıdaki şekilde gösterildiği gibi,**uyumlu bir TPM olmadan BitLocker allow**başlangıç > ek kimlik**doğrulaması gerektirir:**
+### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Grup ilkesini, işletim sistemi koruması için TPM olmayan bir şekilde güncelleştirme
+**Yerel bilgisayar ilkesi** > **bilgisayar yapılandırması** > **Yönetim Şablonları** > **Windows bileşenleri**altında bulacağınız BitLocker Grup İlkesi ayarını **BitLocker Sürücü Şifrelemesi**yapılandırın. Bu ayarı **işletim sistemi sürücüleri** > olarak değiştirin, > başlangıçta aşağıdaki şekilde gösterildiği gibi,**uyumlu bir TPM olmadan BitLocker**'a**ek kimlik doğrulaması gerektir**:
 
 ![Azure’da Microsoft Kötü Amaçlı Yazılımdan Koruma](../media/disk-encryption/disk-encryption-fig8.png)
 
-### <a name="install-bitlocker-feature-components"></a>BitLocker özellik bileşenlerini yükleyin
-Windows Server 2012 ve sonrası için aşağıdaki komutu kullanın:
+### <a name="install-bitlocker-feature-components"></a>BitLocker özellik bileşenlerini yükler
+Windows Server 2012 ve üzeri için aşağıdaki komutu kullanın:
 
     dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
 
@@ -82,28 +82,28 @@ Windows Server 2008 R2 için aşağıdaki komutu kullanın:
 
     ServerManagerCmd -install BitLockers
 
-### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Kullanarak BitLocker için işletim sistemi hacmini hazırlayın`bdehdcfg`
-İşletim sistemi bölümlerini sıkıştırmak ve makineyi BitLocker için hazırlamak için gerekirse [bdehdcfg'yi](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) çalıştırın:
+### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Kullanarak BitLocker için işletim sistemi birimini hazırlama`bdehdcfg`
+İşletim sistemi bölümünü sıkıştırmak ve makineyi BitLocker 'a hazırlamak için gerekirse [BdeHdCfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) ' yi yürütün:
 
     bdehdcfg -target c: shrink -quiet 
 
-### <a name="protect-the-os-volume-by-using-bitlocker"></a>BitLocker kullanarak işletim sistemi hacmini koruyun
-Harici [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) bir anahtar koruyucusu kullanarak önyükleme hacminde şifrelemeyi etkinleştirmek için komutu kullanın. Ayrıca harici anahtarı (.bek dosyası) harici sürücüye veya ses düzeyine yerleştirin. Şifreleme, bir sonraki yeniden başlatmadan sonra sistem/önyükleme biriminde etkinleştirilir.
+### <a name="protect-the-os-volume-by-using-bitlocker"></a>BitLocker 'ı kullanarak işletim sistemi birimini koruma
+Bir dış [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) anahtar koruyucusu kullanarak önyükleme biriminde şifrelemeyi etkinleştirmek için komutunu kullanın. Dış anahtarı (. bek dosyası) dış sürücüye veya birime da yerleştirin. Şifreleme, bir sonraki yeniden başlatmanın ardından sistem/önyükleme biriminde etkinleştirilir.
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
 
 > [!NOTE]
-> BitLocker kullanarak harici anahtarı almak için ayrı bir veri/kaynak VHD ile VM'yi hazırlayın.
+> BitLocker 'ı kullanarak dış anahtarı almak için VM 'yi ayrı bir veri/kaynak VHD ile hazırlayın.
 
-## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Şifreli VHD'yi Azure depolama hesabına yükleme
-DM-Crypt şifrelemesi etkinleştirildikten sonra, yerel şifreli VHD'nin depolama hesabınıza yüklenmesi gerekir.
+## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Şifrelenmiş VHD 'YI bir Azure depolama hesabına yükleme
+DM-Crypt şifrelemesi etkinleştirildikten sonra, yerel şifreli VHD 'nin depolama hesabınıza yüklenmesi gerekir.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Önceden şifrelenmiş VM'nin sırrını anahtar kasanıza yükleyin
-Daha önce elde ettiğiniz disk şifreleme sırrı, anahtar kasanıza bir sır olarak yüklenmelidir.  Bu, sınırları yükleyecek hesaba süreyle gizli izin ve paket anahtar izni verilmesini gerektirir.
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>Önceden şifrelenen VM 'nin parolasını anahtar kasanıza yükleme
+Daha önce edindiğiniz disk şifrelemesi gizli anahtarı, anahtar kasanıza gizli bir parola olarak yüklenmelidir.  Bu, gizli dizi kümesini ve wrapkey iznini, gizli dizileri yükleyecek hesaba vermeyi gerektirir.
 
 ```powershell 
 # Typically, account Id is the user principal name (in user@domain.com format)
@@ -121,8 +121,8 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
 
 ```
 
-### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>KEK ile şifrelenmemiş disk şifreleme sırrı
-Anahtarı kasanızda gizli kurmak için [Set-AzKeyVaultSecret'ı](/powershell/module/az.keyvault/set-azkeyvaultsecret)kullanın. Parola base64 dizesi olarak kodlanır ve anahtar kasasına yüklenir. Ayrıca, anahtar kasasında sırrı oluştururken aşağıdaki etiketlerin ayarlandığınızdan emin olun.
+### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>Disk şifreleme parolası bir KEK ile şifrelenmedi
+Anahtar kasasında gizli dizi ayarlamak için [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)kullanın. Parola Base64 dizesi olarak kodlanır ve sonra anahtar kasasına yüklenir. Ayrıca, anahtar kasasında gizli dizi oluşturduğunuzda aşağıdaki etiketlerin ayarlandığından emin olun.
 
 ```powershell
 
@@ -139,10 +139,10 @@ Anahtarı kasanızda gizli kurmak için [Set-AzKeyVaultSecret'ı](/powershell/mo
 ```
 
 
-`$secretUrl` [KEK kullanmadan OS diskini takmak](#without-using-a-kek)için bir sonraki adımı kullanın.
+`$secretUrl` [Kek kullanmadan işletim sistemi diski eklemek](#without-using-a-kek)için bir sonraki adımda kullanın.
 
-### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>KEK ile şifrelenmiş disk şifreleme sırrı
-Gizli yi anahtar kasasına yüklemeden önce, isteğe bağlı olarak bir anahtar şifreleme anahtarı kullanarak şifreleyebilirsiniz. Önce anahtarı şifreleme anahtarını kullanarak sırrı şifrelemek için kaydırma [API'sini](https://msdn.microsoft.com/library/azure/dn878066.aspx) kullanın. Bu kaydırma işleminin çıktısı, [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet'i kullanarak gizli olarak yükleyebileceğiniz base64 URL kodlu bir dizedir.
+### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Disk şifrelemesi gizli anahtarı bir KEK ile şifrelendi
+Gizli anahtarı anahtar kasasına yüklemeden önce, anahtar şifreleme anahtarını kullanarak isteğe bağlı olarak şifreleyebilirsiniz. Anahtar şifreleme anahtarını kullanarak parolayı ilk kez şifrelemek için wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 'sini kullanın. Bu Wrap işleminin çıktısı Base64 URL kodlamalı bir dizedir ve [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 'ini kullanarak bir gizli dizi olarak karşıya yükleyebilirsiniz.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -232,12 +232,12 @@ Gizli yi anahtar kasasına yüklemeden önce, isteğe bağlı olarak bir anahtar
     $secretUrl = $response.id
 ```
 
-Kek `$KeyEncryptionKey` `$secretUrl` [kullanarak işletim sistemi diskini takmak](#using-a-kek)için bir sonraki adımı kullanın.
+`$KeyEncryptionKey` [Kek kullanarak işletim sistemi diskini eklemek](#using-a-kek)için bir sonraki adımda ve `$secretUrl` kullanın.
 
-##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>İşletim sistemi diski eklediğinizde gizli bir URL belirtin
+##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Bir işletim sistemi diski iliştirmeye çalıştığınızda gizli bir URL belirtin
 
 ###  <a name="without-using-a-kek"></a>KEK kullanmadan
-İşletim sistemi diskini takarken, `$secretUrl`.'yi geçmeniz gerekir. URL, "KEK ile şifrelenmemiş disk şifreleme sırrı" bölümünde oluşturuldu.
+İşletim sistemi diskini iliştirirken geçirmeniz `$secretUrl`gerekir. URL, "bir KEK ile şifrelenmemiş disk şifrelemesi" bölümünde oluşturulmuştur.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `
@@ -250,7 +250,7 @@ Kek `$KeyEncryptionKey` `$secretUrl` [kullanarak işletim sistemi diskini takmak
             -DiskEncryptionKeyUrl $SecretUrl
 ```
 ### <a name="using-a-kek"></a>KEK kullanma
-İşletim sistemi diskini taktığınız zaman, geçirin `$KeyEncryptionKey` ve. `$secretUrl` URL, "KEK ile şifrelenmiş disk şifreleme sırrı" bölümünde oluşturuldu.
+İşletim sistemi diskini iliştirmeniz durumunda, ve `$KeyEncryptionKey` `$secretUrl`geçirin. URL, "bir KEK ile şifrelenen disk şifreleme gizli dizisi" bölümünde oluşturulmuştur.
 ```powershell
     Set-AzVMOSDisk `
             -VM $VirtualMachine `

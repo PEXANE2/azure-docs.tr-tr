@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099606"
 ---
 # <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
@@ -29,7 +29,7 @@ Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda si
 
 ![Olay yaşam döngüsünü gösteren diyagram](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örnekte, bir [kullanılabilirlik kümesinde bir Windows sanal makinesi](tutorial-availability-sets.md)oluşturmanız gerekecektir. Zamanlanan Olaylar, kullanılabilirlik kümesi, bulut hizmeti, sanal makine ölçek kümesi veya tek başına VM 'lerdeki sanal makinelerin hiçbirini etkileyebilecek değişiklikler hakkında bildirimler sağlar. Kullanılabilirlik kümesindeki diğer tüm VM 'lerin olaylarını almak için, toplayıcı olarak görev yapacak VM 'lerden birinde zamanlanan olayları yoklayan bir [hizmet](https://github.com/microsoft/AzureScheduledEventsService) çalıştıracağız.    
 
