@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131003"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR hizmeti için kaynak günlükleri
@@ -27,7 +27,7 @@ Kaynak günlüklerini etkinleştirmek için, günlük verilerinizi depolamak üz
 
 Azure SignalR hizmeti için kaynak günlüklerini görüntüleyebilirsiniz. Bu Günlükler, Azure SignalR hizmet örneğiniz için daha zengin bir bağlantı görünümü sağlar. Kaynak günlükleri her bağlantı hakkında ayrıntılı bilgi sağlar. Örneğin, temel bilgiler (Kullanıcı KIMLIĞI, bağlantı KIMLIĞI ve aktarım türü vb.) ve bağlantının olay bilgileri (Connect, bağlantıyı kes ve iptal olayı vb.). Kaynak günlükleri, sorun tanımlama, bağlantı izleme ve analiz için kullanılabilir.
 
-### <a name="enable-resource-logs"></a>Kaynak günlüklerini etkinleştir
+### <a name="enable-resource-logs"></a>Kaynak günlüklerini etkinleştirme
 
 Kaynak günlükleri varsayılan olarak devre dışıdır. Kaynak günlüklerini etkinleştirmek için şu adımları izleyin:
 

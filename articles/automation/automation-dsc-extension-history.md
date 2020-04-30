@@ -2,7 +2,7 @@
 description: Azure 'da Istenen durum yapılandırması (DSC) uzantısı için sürüm geçmişi hakkında bilgi edinin.
 ms.date: 06/21/2018
 keywords: DSC, PowerShell, Azure, uzantı
-title: Azure DSC uzantı sürümü geçmişi
+title: Azure DSC uzantısı sürüm geçmişi
 author: mgoedtel
 ms.author: magoedte
 services: automation
@@ -10,10 +10,10 @@ ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82120710"
 ---
 # <a name="azure-desired-state-configuration-extension-version-history"></a>Azure Istenen durum yapılandırması uzantısı sürümü geçmişi

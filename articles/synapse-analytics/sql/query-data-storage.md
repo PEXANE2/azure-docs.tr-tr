@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82116256"
 ---
 # <a name="overview-query-data-in-storage"></a>Genel Bakış: depolamada verileri sorgulama
@@ -24,7 +24,7 @@ Bu bölümde, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kayna�
 - Parquet
 - JSON
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Sorgu vermek için gereken araçlar:
 

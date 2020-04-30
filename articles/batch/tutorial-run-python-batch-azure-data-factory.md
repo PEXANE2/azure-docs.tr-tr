@@ -8,10 +8,10 @@ ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
 ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82117072"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Öğretici: Azure Batch kullanarak Azure Data Factory Python betikleri çalıştırma
@@ -30,7 +30,7 @@ Aşağıdaki örnek, bir BLOB depolama kapsayıcısından CSV girişi alan bir P
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel test için yüklü bir [Python](https://www.python.org/downloads/) dağıtımı.
 * [Azure](https://pypi.org/project/azure/) `pip` paketi.
@@ -57,7 +57,7 @@ Bu bölümde, Azure Data Factory Işlem hattının kullanacağı toplu Iş havuz
     1. **Veri bilimi**altında, işletim sistemi olarak **dsvm Windows** ' u seçin.
     1. Sanal `Standard_f2s_v2` makine boyutu olarak seçin.
     1. Başlangıç görevini etkinleştirin ve komutunu `cmd /c "pip install pandas"`ekleyin. Kullanıcı kimliği varsayılan **Havuz kullanıcısı**olarak kalabilir.
-    1. **Tamam ' ı**seçin.
+    1. **Tamam**’ı seçin.
 
 ## <a name="create-blob-containers"></a>Blob kapsayıcıları oluşturma
 

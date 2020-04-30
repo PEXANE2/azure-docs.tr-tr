@@ -4,10 +4,10 @@ description: Visual Studio'yu ve Service Fabric'teki hata ayıklama kapsayıcıl
 ms.topic: tutorial
 ms.date: 07/08/2019
 ms.openlocfilehash: 08bbab2d92e9631f75c46be2e3f822532b62718a
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82136667"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Öğretici: Azure Service Fabric’e Windows kapsayıcısındaki bir .NET uygulamasını dağıtma

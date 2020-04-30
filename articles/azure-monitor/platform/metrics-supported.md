@@ -8,10 +8,10 @@ ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
 ms.openlocfilehash: f2e3c03ba599128cc4552f64637ebd63efcb4578
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128459"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
@@ -1262,7 +1262,7 @@ Diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir. Az
 |istek/sayı|Sunucu istekleri|Sayı|Sayı|Tamamlanan HTTP isteği sayısı.|istek/performanceBucket, istek/resultCode, işlem/yapay, Cloud/Roleınstance, istek/başarı, bulut/roleName|
 |istek/başarısız|Başarısız istekler|Sayı|Sayı|Başarısız olarak işaretlenen HTTP isteklerinin sayısı. Çoğu durumda bunlar >= 400 yanıt koduna sahip isteklerdir ve 401 ' e eşit değildir.|istek/performanceBucket, istek/resultCode, istek/başarı, işlem/yapay, Cloud/Roleınstance, Cloud/roleName|
 |istek/hız|Sunucu isteği hızı|Sayaçpersaniye|Ortalama|Saniye başına sunucu isteği oranı|istek/performanceBucket, istek/resultCode, işlem/yapay, Cloud/Roleınstance, istek/başarı, bulut/roleName|
-|özel durumlar/say|Özel durumlar|Sayı|Sayı|Tüm yakalanamayan özel durumların Birleşik sayısı.|bulut/rol adı, bulut/Roleınstance, istemci/tür|
+|özel durumlar/say|Özel Durumlar|Sayı|Sayı|Tüm yakalanamayan özel durumların Birleşik sayısı.|bulut/rol adı, bulut/Roleınstance, istemci/tür|
 |özel durumlar/tarayıcı|Tarayıcı özel durumları|Sayı|Sayı|Tarayıcıda oluşturulan yakalanamayan özel durumların sayısı.|istemci/isServer, bulut/roleName|
 |özel durumlar/sunucu|Sunucu özel durumları|Sayı|Sayı|Sunucu uygulamasında oluşturulan yakalanamayan özel durum sayısı.|istemci/isServer, bulut/roleName, Cloud/Roleınstance|
 |izlemeler/say|İzlemeler|Sayı|Sayı|İzleme belgesi sayısı|izleme/severityLevel, işlem/yapay, Cloud/roleName, Cloud/Roleınstance|
@@ -1590,9 +1590,9 @@ Diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir. Az
 |ResponseStatus|Yanıt durumu|Sayı|Toplam|Application Gateway tarafından döndürülen http yanıt durumu|HttpStatusGroup|
 |CurrentConnections|Geçerli bağlantılar|Sayı|Toplam|Application Gateway ile kurulan geçerli bağlantı sayısı|Hiçbiri|
 |NewConnectionsPerSecond|Saniyedeki yeni bağlantı sayısı|Sayaçpersaniye|Ortalama|Saniye başına yeni bağlantı Application Gateway ile oluşturuldu|Hiçbiri|
-|Cpukullanımı|CPU kullanımı|Yüzde|Ortalama|Application Gateway geçerli CPU kullanımı|Hiçbiri|
+|Cpukullanımı|CPU Kullanımı|Yüzde|Ortalama|Application Gateway geçerli CPU kullanımı|Hiçbiri|
 |CapacityUnits|Geçerli kapasite birimleri|Sayı|Ortalama|Tüketilen Kapasite birimleri|Hiçbiri|
-|Fixedbillablecapacitybirimleri|Sabit faturalanabilir Kapasite birimleri|Sayı|Ortalama|Ücretlendirilebilecek minimum kapasite birimleri|Hiçbiri|
+|Fixedbillablecapacitybirimleri|Sabit Faturalanabilir Kapasite Birimleri|Sayı|Ortalama|Ücretlendirilebilecek minimum kapasite birimleri|Hiçbiri|
 |Estimatedbilledcapacitybirimleri|Tahmini faturalandırılan Kapasite birimleri|Sayı|Ortalama|Ücretlendirilebilecek tahmini Kapasite birimleri|Hiçbiri|
 |ComputeUnits|Geçerli Işlem birimleri|Sayı|Ortalama|Tüketilen işlem birimleri|Hiçbiri|
 |BackendResponseStatus|Arka uç yanıt durumu|Sayı|Toplam|Arka uç üyeleri tarafından oluşturulan HTTP yanıt kodlarının sayısı. Bu, Application Gateway tarafından oluşturulan yanıt kodlarını içermez.|BackendServer, BackendPool, BackendHttpSetting, HttpStatusGroup|

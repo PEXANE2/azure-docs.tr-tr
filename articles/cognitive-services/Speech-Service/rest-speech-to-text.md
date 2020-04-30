@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
 ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82131291"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
@@ -52,10 +52,10 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 | Parametre | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `language` | Tanınmakta olan konuşulan dili tanımlar. [Desteklenen diller](language-support.md#speech-to-text)bölümüne bakın. | Gerekli |
-| `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed`. Basit sonuçlar, `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, güvenirlik değerleri ve dört farklı gösterimle birden çok sonuç içerir. Varsayılan ayar `simple` değeridir. | İsteğe bağlı |
-| `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked`, küfür ile bir bütün küfür kaldıran, ya `removed` `raw`da sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe bağlı |
-| `pronunciationScoreParams` | Tanınma sonuçlarında telaffuz puanlarını göstermek için parametreleri belirtir; doğruluk, akıcı, tamamlanma, vb. göstergeler ile konuşma girişi için telaffuz kalitesini değerlendirir. Bu parametre, birden çok ayrıntılı parametre içeren Base64 kodlamalı JSON 'dir. Bu parametrenin nasıl oluşturulacağı için [telaffuz değerlendirmesi parametrelerine](#pronunciation-assessment-parameters) bakın. | İsteğe bağlı |
-| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın. `cid` | İsteğe bağlı |
+| `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed`. Basit sonuçlar, `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, güvenirlik değerleri ve dört farklı gösterimle birden çok sonuç içerir. Varsayılan ayar `simple` değeridir. | İsteğe Bağlı |
+| `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked`, küfür ile bir bütün küfür kaldıran, ya `removed` `raw`da sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe Bağlı |
+| `pronunciationScoreParams` | Tanınma sonuçlarında telaffuz puanlarını göstermek için parametreleri belirtir; doğruluk, akıcı, tamamlanma, vb. göstergeler ile konuşma girişi için telaffuz kalitesini değerlendirir. Bu parametre, birden çok ayrıntılı parametre içeren Base64 kodlamalı JSON 'dir. Bu parametrenin nasıl oluşturulacağı için [telaffuz değerlendirmesi parametrelerine](#pronunciation-assessment-parameters) bakın. | İsteğe Bağlı |
+| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın. `cid` | İsteğe Bağlı |
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
@@ -66,7 +66,7 @@ Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgil
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya `Authorization` da gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer`. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya `Ocp-Apim-Subscription-Key` da gerekli. |
 | `Content-type` | Belirtilen ses verilerinin biçimini ve codec 'ini açıklar. Kabul edilen değerler `audio/wav; codecs=audio/pcm; samplerate=16000` şunlardır `audio/ogg; codecs=opus`. | Gerekli |
-| `Transfer-Encoding` | Tek bir dosya yerine, öbekli ses verilerinin gönderileceğini belirtir. Yalnızca ses verilerini parçalama durumunda bu üstbilgiyi kullanın. | İsteğe bağlı |
+| `Transfer-Encoding` | Tek bir dosya yerine, öbekli ses verilerinin gönderileceğini belirtir. Yalnızca ses verilerini parçalama durumunda bu üstbilgiyi kullanın. | İsteğe Bağlı |
 | `Expect` | Öbekli aktarım kullanılıyorsa, gönderin `Expect: 100-continue`. Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses verileri gönderiyorsanız gereklidir. |
 | `Accept` | Sağlanmışsa, olmalıdır `application/json`. Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. Her zaman dahil `Accept`etmek iyi bir uygulamadır. | İsteğe bağlı, ancak önerilir. |
 
@@ -89,11 +89,11 @@ Bu tabloda, telaffuz değerlendirmesi için gerekli ve isteğe bağlı parametre
 | Parametre | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | ReferenceText | Telaffuz tarafından değerlendirilecek metin. | Gerekli |
-| GradingSystem | Puan ayarlaması için nokta sistemi. Kabul edilen değerler `FivePoint` şunlardır `HundredMark`. Varsayılan ayar `FivePoint` değeridir. | İsteğe bağlı |
-| Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler `Phoneme`, tam metin ve sözcük düzeyindeki `Word` `FullText`puanı gösteren ve tam metin düzeyinde puan gösteren, Word ve Fonem düzeyindeki puanı gösteren kabul edilir. Varsayılan ayar `Phoneme` değeridir. | İsteğe bağlı |
-| Boyut | Çıkış ölçütünü tanımlar. Kabul edilen değerler `Basic`yalnızca doğruluk puanı ' nı gösterir, daha `Comprehensive` fazla boyutlara ilişkin puanları gösterir (örneğin, tam metin düzeyinde, akıcı puan ve tamamlayıcı puanı, sözcük düzeyinde hata türü). Farklı puan boyutlarının tanımlarını ve sözcük hata türlerini görmek için [yanıt parametrelerini](#response-parameters) denetleyin. Varsayılan ayar `Basic` değeridir. | İsteğe bağlı |
-| EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True`. Varsayılan ayar `False` değeridir. | İsteğe bağlı |
-| ScenarioId | Özelleştirilmiş bir nokta sistemini gösteren bir GUID. | İsteğe bağlı |
+| GradingSystem | Puan ayarlaması için nokta sistemi. Kabul edilen değerler `FivePoint` şunlardır `HundredMark`. Varsayılan ayar `FivePoint` değeridir. | İsteğe Bağlı |
+| Ayrıntı düzeyi | Değerlendirme ayrıntı düzeyi. Kabul edilen değerler `Phoneme`, tam metin ve sözcük düzeyindeki `Word` `FullText`puanı gösteren ve tam metin düzeyinde puan gösteren, Word ve Fonem düzeyindeki puanı gösteren kabul edilir. Varsayılan ayar `Phoneme` değeridir. | İsteğe Bağlı |
+| Boyut | Çıkış ölçütünü tanımlar. Kabul edilen değerler `Basic`yalnızca doğruluk puanı ' nı gösterir, daha `Comprehensive` fazla boyutlara ilişkin puanları gösterir (örneğin, tam metin düzeyinde, akıcı puan ve tamamlayıcı puanı, sözcük düzeyinde hata türü). Farklı puan boyutlarının tanımlarını ve sözcük hata türlerini görmek için [yanıt parametrelerini](#response-parameters) denetleyin. Varsayılan ayar `Basic` değeridir. | İsteğe Bağlı |
+| EnableMiscue | Hatalı işaret hesaplamasını etkinleştirilir. Bu etkinken, bulunan sözcükler başvuru metniyle karşılaştırılır ve karşılaştırmaya göre atlama/ekleme ile işaretlenir. Kabul edilen değerler `False` şunlardır `True`. Varsayılan ayar `False` değeridir. | İsteğe Bağlı |
+| ScenarioId | Özelleştirilmiş bir nokta sistemini gösteren bir GUID. | İsteğe Bağlı |
 
 Aşağıda, telaffuz değerlendirmesi parametrelerini içeren bir JSON örneği verilmiştir:
 

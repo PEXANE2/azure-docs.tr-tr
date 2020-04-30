@@ -1,5 +1,5 @@
 ---
-title: Azure Media Player gösterileri
+title: Azure Media Player tanıtımları
 description: Bu sayfa Azure Media Player tanıtımları için bağlantıların bir listesini içerir.
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,13 +7,13 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/24/2020
 ms.openlocfilehash: 584748b23f526e6f03b543b8298927e3f202f743
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82139309"
 ---
-# <a name="azure-media-player-demos"></a>Azure Media Player gösterileri
+# <a name="azure-media-player-demos"></a>Azure Media Player tanıtımları
 
 Azure Media Player gösterileri için bağlantıların listesi aşağıda verilmiştir. GitHub 'dan tüm [Azure Media Player örneklerini](https://github.com/Azure-Samples/azure-media-player-samples) indirebilirsiniz.
 
@@ -42,7 +42,7 @@ Ses izleri menüsünün varsayılan kaplamaya nasıl görüntüleneceğini göst
 | Tuşlarının | [Tir](https://amp.azure.net/libs/amp/latest/samples/dynamic_hotKeys.html) | [Se](https://amp.azure.net/libs/amp/latest/samples/videotag_hotKeys.html) | Bu örnek, Player 'da hangi kısayol tuşlarının etkin olduğunu nasıl yapılandıracağınızı gösterir |
 | Olaylar, günlüğe kaydetme ve tanılama |
 | Olayları kaydetme | [Tir](https://amp.azure.net/libs/amp/latest/samples/dynamic_registerEvents.html) | Yok | Olay dinleyicileri ile kayıttan yürütme. |
-| Günlüğe kaydetme | [Tir](https://amp.azure.net/libs/amp/latest/samples/dynamic_logging.html) | [Se](https://amp.azure.net/libs/amp/latest/samples/videotag_logging.html) | Konsola ayrıntılı günlük kaydı açılıyor. |
+| Günlüğe Kaydetme | [Tir](https://amp.azure.net/libs/amp/latest/samples/dynamic_logging.html) | [Se](https://amp.azure.net/libs/amp/latest/samples/videotag_logging.html) | Konsola ayrıntılı günlük kaydı açılıyor. |
 | Tanılama | [Tir](https://amp.azure.net/libs/amp/latest/samples/dynamic_diagnostics.html) | Yok | Tanılama verileri alınıyor. Bu örnek yalnızca bazı Techs üzerinde kullanılabilir. |
 | AES |
 | AES belirteç yok | [Tir](https://amp.azure.net/libs/amp/latest/samples/dynamic_aes_notoken.html) | [Se](https://amp.azure.net/libs/amp/latest/samples/videotag_aes_notoken.html) | Belirteç içermeyen AES içeriğini kayıttan yürütme. |

@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 8ff958b7bab7be3124452c1206baf64d0f8ccb7a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142516"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimleri için IP adresi ekleme, değiştirme veya kaldırma
@@ -151,7 +151,7 @@ Sanal makinenin işletim sistemi içindeki bir ağ arabiriminin IP adresini el i
 
 Bir sanal makinenin aynı veya bağlı sanal ağlardaki diğer kaynaklarla iletişim kurmasına imkan tanıma ek olarak, bir özel IP adresi de bir sanal makinenin Internet 'e giden iletişim kurmasına olanak tanır. Giden bağlantılar, Azure tarafından öngörülemeyen bir genel IP adresine çevrilmiş kaynak ağ adresidir. Azure giden Internet bağlantısı hakkında daha fazla bilgi edinmek için, [Azure giden Internet bağlantısı](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun. Internet 'ten gelen bir sanal makinenin özel IP adresi ile iletişim kuramayamezsiniz. Giden bağlantılarınız tahmin edilebilir bir genel IP adresi gerektiriyorsa, genel IP adresi kaynağını bir ağ arabirimiyle ilişkilendirin.
 
-### <a name="public"></a>Genel
+### <a name="public"></a>Ortak
 
 Bir genel IP adresi kaynağı aracılığıyla atanan genel IP adresleri, bir sanal makineye Internet üzerinden gelen bağlantıyı etkinleştirir. Internet 'e giden bağlantılar, öngörülebilir bir IP adresi kullanır. Ayrıntılar için bkz. [Azure 'da giden bağlantıları anlama](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Bir IP yapılandırmasına genel bir IP adresi atayabilir, ancak bunu yapmanız gerekmez. Bir genel IP adresi kaynağını ilişkilendirerek bir sanal makineye genel IP adresi atamadıysanız, sanal makine yine de Internet ile giden iletişim kurabilir. Bu durumda, özel IP adresi Azure tarafından öngörülemeyen bir genel IP adresine çevrilmiş kaynak ağ adresidir. Genel IP adresi kaynakları hakkında daha fazla bilgi için bkz. [genel IP adresi kaynağı](virtual-network-public-ip-address.md).
 
