@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673161"
 ---
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
-*Yerel İşlevProj* klasöründen yerel Azure İşlevleri çalışma zamanı ana bilgisayarını başlatarak işlevinizi çalıştırın:
+Yerel Azure Işlevleri çalışma zamanı konağını *Localfunctionproj* klasöründen başlatarak işlevinizi çalıştırın:
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-javascript,programming-language-python"
 ```
@@ -35,7 +35,7 @@ mvn azure-functions:run
 ```
 ::: zone-end
 
-Çıktının sonuna doğru aşağıdaki satırlar görünmelidir: 
+Çıktının sonuna doğru, aşağıdaki satırlar görünmelidir: 
 
 <pre>
 ...
@@ -51,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> HttpExample aşağıda gösterildiği gibi görünmüyorsa, büyük olasılıkla ana bilgisayarı projenin kök klasörünün dışından başlattınız. Bu durumda, ana bilgisayarı durdurmak, projenin kök klasörüne gitmek ve önceki komutu yeniden çalıştırmak için **Ctrl**+**C'yi** kullanın.
+> HttpExample aşağıda gösterildiği gibi görünmezse, büyük olasılıkla ana bilgisayarı projenin kök klasörü dışından başlatmış olursunuz. Bu durumda, Konağı durdurmak için **CTRL**+**C** 'yi kullanın, projenin kök klasörüne gidin ve önceki komutu yeniden çalıştırın.
 
-İşlevinizin `HttpExample` URL'sini bu çıktıdan bir tarayıcıya `?name=<your-name>`kopyalayın ve `http://localhost:7071/api/HttpExample?name=Functions`sorgu dizesini ekleyin ve tam URL'yi .' yi . Tarayıcı gibi `Hello Functions`bir mesaj görüntülemeli:
+İşlevinizin `HttpExample` URL 'sini bu çıktıdan tarayıcıya kopyalayın ve sorgu dizesini `?name=<your-name>`ekleyerek tam URL 'yi yapın. `http://localhost:7071/api/HttpExample?name=Functions` Tarayıcı şöyle `Hello Functions`bir ileti görüntülemelidir:
 
-![Tarayıcıda yerel olarak çalışan işlevin sonucu](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
+![İşlevin sonuçları tarayıcıda yerel olarak çalıştırıldı](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-Projenizi başlattığınız terminal, istekte bulunurken günlük çıktısını da gösterir.
+Projenizi başlattığınız Terminal Ayrıca, istek yaptığınız sürece günlük çıktısını gösterir.
 
-Hazır olduğunuzda **Ctrl**+**C** kullanın ve `y` işlevleri niçin ana bilgisayara durdurmayı seçin.
+Hazırsanız, **CTRL**+**C** 'yi kullanın ve işlevler ana bilgisayarını `y` durdurmayı seçin.

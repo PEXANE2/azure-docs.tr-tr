@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makine ölçeği ne genel bakış ayarlar
+title: Azure sanal makine ölçek kümelerine genel bakış
 description: Azure sanal makine ölçek kümeleri ve uygulamalarınızın otomatik olarak nasıl ölçeklendirildiği hakkında bilgi edinin
 author: mimckitt
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272551"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri nedir?
@@ -27,7 +27,7 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
 - **Birden çok sanal makine oluşturma ve yönetme kolaylığı**
     - Uygulamanızı çalıştıran birçok sanal makineniz olduğunda, ortamınızda tutarlı bir yapılandırmanın tutulması önemlidir. Uygulamanızın güvenilir performansı için, sanal makine boyutu, disk yapılandırması ve uygulama yüklemeleri, tüm sanal makineler arasında eşleşmelidir.
     - Ölçek kümeleri ile tüm sanal makine örnekleri, aynı temel işletim sistemi görüntüsü ve yapılandırmasından oluşturulur. Bu yaklaşım, ek yapılandırma görevi veya ağ yönetimi olmadan yüzlerce sanal makineyi kolayca yönetmenize olanak sağlar.
-    - Ölçek kümeleri, temel katman-4 trafik dağıtımı için [Azure yük dengeleyicisinin](../load-balancer/load-balancer-overview.md) kullanımını ve daha gelişmiş katman-7 trafik dağıtımı ve TLS sonlandırma için [Azure Uygulama Ağ Geçidi'ni](../application-gateway/application-gateway-introduction.md) destekler.
+    - Ölçek Kümeleri, temel katman 4 trafik dağıtımı için [Azure Yük dengeleyicinin](../load-balancer/load-balancer-overview.md) kullanımını ve daha fazla gelişmiş katman 7 trafik DAĞıTıMı ve TLS sonlandırma için [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) kullanımını destekler.
 
 - **Yüksek kullanılabilirlik ve uygulama dayanıklılığı sağlar**
     - Ölçek kümeleri, uygulamanızın birden çok örneğini çalıştırmak için kullanılır. Bu sanal makine örneklerinden birinde sorun varsa müşteriler minimum kesintiyle diğer sanal makine örneğinden biri üzerinden uygulamanıza erişmeye devam eder.
@@ -38,8 +38,8 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
     - Bir yandan otomatik ölçeklendirme, talep düşükken uygulamanızı çalıştıran gereksiz sanal makine örneği sayısını en aza indirirken, diğer yandan da talep arttıkça müşteriler kabul edilebilir performans düzeyi elde etmeye devam eder ve otomatik olarak ek sanal makine örnekleri eklenir. Bu yetenek gerektiğinde maliyetlerin düşürülmesine ve etkili şekilde Azure kaynakları oluşturulmasına yardımcı olur.
 
 - **Büyük ölçekte çalışma**
-    - Ölçek kümeleri, 1000 adede kadar sanal makine örneğini destekler. Kendi özel VM resimlerinizi oluşturup yüklerseniz, sınır 600 VM örneğidir.
-    - Üretim iş yükleriyle en iyi performansı elde etmek için [Azure Yönetilen Diskler'i](../virtual-machines/windows/managed-disks-overview.md)kullanın.
+    - Ölçek kümeleri, 1000 adede kadar sanal makine örneğini destekler. Kendi özel VM görüntülerinizi oluşturur ve karşıya yüklerseniz, sınır 600 sanal makine örnekleridir.
+    - Üretim iş yükleri ile en iyi performansı elde etmek için [Azure yönetilen diskleri](../virtual-machines/windows/managed-disks-overview.md)kullanın.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Sanal makineler ile ölçek kümeleri arasındaki farklar
@@ -56,9 +56,9 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
 
 ## <a name="how-to-monitor-your-scale-sets"></a>Ölçek kümelerinizi izleme
 
-Basit bir onboarding işlemi olan ve ölçek setinizdeki VM'lerden önemli CPU, bellek, disk ve ağ performans sayaçlarının koleksiyonunu otomatikleştiren [VM'ler için Azure Monitörünü](../azure-monitor/insights/vminsights-overview.md)kullanın. Ayrıca, ölçek kümelerinizin kullanılabilirliğine ve performansına odaklanmanıza yardımcı olan ek izleme özellikleri ve önceden tanımlanmış görselleştirmeler de içerir.
+Basit bir ekleme işlemine sahip [VM'ler için Azure izleyici](../azure-monitor/insights/vminsights-overview.md)kullanın ve ölçek kümesindeki VM 'LERDEN önemli CPU, bellek, disk ve ağ performans sayaçları koleksiyonunu otomatikleştirin. Ayrıca, ölçek kümelerinizin kullanılabilirliği ve performansına odaklanmaya yardımcı olan ek izleme özellikleri ve önceden tanımlanmış görselleştirmeler de içerir.
 
-Sayfa görünümleri, uygulama istekleri ve özel durumlar da dahil olmak üzere uygulamanız hakkında ayrıntılı bilgi toplamak için Application Insights ile [sanal makine ölçeği ayar uygulamanızın](../azure-monitor/app/azure-vm-vmss-apps.md) izlenmesini etkinleştirin. Kullanıcı trafiğini simüle etmek için [kullanılabilirlik testini](../azure-monitor/app/monitor-web-app-availability.md) yapılandırarak uygulamanızın kullanılabilirliğini daha da doğrulayın.
+Sayfa görünümleri, uygulama istekleri ve özel durumlar dahil olmak üzere uygulamanız hakkında ayrıntılı bilgi toplamak için Application Insights ile [sanal makine ölçek kümesi uygulamanız](../azure-monitor/app/azure-vm-vmss-apps.md) için izlemeyi etkinleştirin. Kullanıcı trafiğinin benzetimini yapmak için bir [Kullanılabilirlik testi](../azure-monitor/app/monitor-web-app-availability.md) yapılandırarak uygulamanızın kullanılabilirliğini daha da doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Başlamak için, Azure portalında ilk sanal makine ölçek kümenizi oluşturun.

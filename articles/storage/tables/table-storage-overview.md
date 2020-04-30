@@ -10,10 +10,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "62129798"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Azure’da Tablo depolamaya giriş
@@ -34,6 +34,6 @@ Web uygulamaları için kullanıcı verileri, adres defterleri, cihaz bilgileri 
 
 * Kullanılabilir API’ler ile ilgili eksiksiz bilgiler için Tablo hizmeti başvuru belgelerini görüntüleyin:
 
-    * [.NET başvurusu için Depolama İstemci Kitaplığı](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [.NET için depolama Istemci kitaplığı başvurusu](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
     * [REST API başvurusu](https://msdn.microsoft.com/library/azure/dd179355)

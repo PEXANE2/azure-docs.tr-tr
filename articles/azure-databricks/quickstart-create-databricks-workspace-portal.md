@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Azure portalLarını kullanarak Azure Databricks'te Bir Kıvılcım işi çalıştırma
-description: Bu hızlı başlangıç, Bir Azure Databricks çalışma alanı, bir Apache Spark kümesi oluşturmak ve bir Spark işini çalıştırmak için Azure portalının nasıl kullanılacağını gösterir.
+title: Hızlı başlangıç-Azure portal kullanarak Azure Databricks Spark işi çalıştırma
+description: Bu hızlı başlangıçta Azure portal kullanarak Azure Databricks çalışma alanı, Apache Spark kümesi oluşturma ve Spark işi çalıştırma işlemi gösterilmektedir.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 03/23/2020
 ms.custom: mvc
 ms.openlocfilehash: d6af521238a034bc22612335119f08284b87eb4b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80132700"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Databricks üzerinde bir Spark işi çalıştırma
 
-Bu hızlı başlangıçta, Bir Apache Spark kümesiyle bir Azure Databricks çalışma alanı oluşturmak için Azure portalını kullanırsınız. Kümede bir iş çalıştırır ve Boston güvenlik verilerinden gerçek zamanlı raporlar oluşturmak için özel grafikler kullanırsınız.
+Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalışma alanı oluşturmak için Azure portal kullanırsınız. Bir işi kümede çalıştırır ve Boston güvenliği verilerinden gerçek zamanlı raporlar oluşturmak için özel grafikleri kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com)oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 > [!Note]
-> Bu öğretici **Azure Ücretsiz Deneme Aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz bir hesabınız varsa, profilinize gidin ve aboneliğinizi istediğiniz **kadar öde**olarak değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama sınırını kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki VCPU'lar için kota artışı [isteyin.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına ücretsiz Premium Azure Databricks DBUs'a 14 gün süreyle erişim sağlamak için **Deneme (Premium - 14 Gün Ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure portalında, **bir kaynak** > Oluştur**Analytics** > **Azure Databricks'i**seçin.
+1. Azure Portal, **kaynak** > **Analizi** > oluştur**Azure Databricks**' u seçin.
 
-    ![Azure portalında veri tuğlaları](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure portalında veri tuğlaları")
+    ![Azure portal databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure portal databricks")
 
 2. **Azure Databricks Hizmeti** bölümünde, Databricks çalışma alanı oluşturmak için değerler sağlayın.
 
@@ -53,13 +53,13 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/management/overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
-    |**Fiyatlandırma Katmanı**     |  **Standart,** **Premium**veya **Deneme**arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Fiyatlandırma Katmanı**     |  **Standart**, **Premium**veya **deneme**arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-3. **Gözden Geçir + Oluştur'u**seçin ve ardından **Oluşturun.** Çalışma alanının oluşturulması birkaç dakika sürer. Çalışma alanı oluşturma sırasında, **Bildirimler'de**dağıtım durumunu görüntüleyebilirsiniz. Bu işlem tamamlandıktan sonra, kullanıcı hesabınız çalışma alanına otomatik olarak yönetici kullanıcı olarak eklenir.
+3. **Gözden geçir + oluştur**' u ve ardından **Oluştur**' u seçin. Çalışma alanının oluşturulması birkaç dakika sürer. Çalışma alanı oluşturma sırasında, **Bildirimler**' de dağıtım durumunu görüntüleyebilirsiniz. Bu işlem tamamlandıktan sonra Kullanıcı hesabınız, çalışma alanına yönetici kullanıcı olarak otomatik olarak eklenir.
 
-    ![Databricks dağıtım döşemesi](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks dağıtım döşemesi")
+    ![Databricks dağıtım kutucuğu](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks dağıtım kutucuğu")
 
-    Çalışma alanı dağıtımı başarısız olduğunda, çalışma alanı yine de başarısız durumda oluşturulur. Başarısız çalışma alanını silin ve dağıtım hatalarını çözen yeni bir çalışma alanı oluşturun. Başarısız çalışma alanını sildiğinizde, yönetilen kaynak grubu ve başarıyla dağıtılan kaynaklar da silinir.
+    Bir çalışma alanı dağıtımı başarısız olduğunda, çalışma alanı hala hatalı durumda oluşturulur. Başarısız çalışma alanını silin ve dağıtım hatalarını çözen yeni bir çalışma alanı oluşturun. Başarısız çalışma alanını sildiğinizde, yönetilen kaynak grubu ve başarıyla dağıtılan tüm kaynaklar da silinir.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks’te Spark kümesi oluşturma
 
@@ -68,19 +68,19 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 1. Azure portalında, oluşturduğunuz Databricks çalışma alanına gidin ve sonra **Çalışma Alanını Başlat**’a tıklayın.
 
-2. Azure Databricks portalına yönlendirilirsiniz. Portaldan Yeni **Küme'yi**tıklatın.
+2. Azure Databricks portalına yönlendirilirsiniz. Portalda **Yeni küme**' ya tıklayın.
 
-    ![Azure'da Veri Tuğlaları](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure'da Veri Tuğlaları")
+    ![Azure 'da databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure 'da databricks")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure'da Veri Tuğlaları Kıvılcım kümesi Oluşturma")
+    ![Azure 'da Databricks Spark kümesi oluşturma](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
 
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makale için, **5,3** çalışma süresine sahip bir küme oluşturun.
-   * Dakikalar süren inaktivite onay kutusunun **ardından \_ \_ Sonlandırma'yı seçtiğinizden** emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
+   * Bu makalede, **5,3** çalışma zamanına sahip bir küme oluşturun.
+   * Süre **etkinlik süresi dolduktan \_ \_ sonra Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
     
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -88,21 +88,21 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL işi çalıştırma
 
-Databricks'te bir not defteri oluşturmak, not defterini Azure Açık Veri Kümelerinden gelen verileri okuyacak şekilde yapılandırmak ve ardından veriler üzerinde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerçekleştirin.
+Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri kümelerinden verileri okuyacak şekilde yapılandırmak ve sonra veriler üzerinde bir Spark SQL işi çalıştırmak için aşağıdaki görevleri gerçekleştirin.
 
-1. Sol bölmede Azure **Veri Tuğlaları'nı**seçin. Ortak **Görevler'den** **Yeni Not Defteri'ni**seçin.
+1. Sol bölmede **Azure Databricks**' yi seçin. **Ortak görevlerden** **Yeni Not defteri**' ni seçin.
 
-    ![Databricks'te not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Databricks'te not defteri oluşturma")
+    ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
-2. Not **Defteri Oluştur** iletişim kutusunda bir ad girin, dil olarak **Python'u** seçin ve daha önce oluşturduğunuz Kıvılcım kümesini seçin.
+2. **Not Defteri Oluştur** iletişim kutusuna bir ad girin, dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks'te not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Databricks'te not defteri oluşturma")
+    ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur'u**seçin.
+    **Oluştur**’u seçin.
 
-3. Bu adımda, [Azure Açık Veri Kümelerinden](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)Boston Güvenlik Verileri içeren bir Spark DataFrame oluşturun ve verileri sorgulamak için SQL'i kullanın.
+3. Bu adımda, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)Boston Güvenlik verileriyle bir Spark dataframe oluşturun ve verileri sorgulamak için SQL kullanın.
 
-   Aşağıdaki komut Azure depolama erişim bilgilerini ayarlar. Bu PySpark kodunu ilk hücreye yapıştırın ve kodu çalıştırmak için **Shift+Enter'ı** kullanın.
+   Aşağıdaki komut, Azure depolama erişim bilgilerini ayarlar. Bu PySpark kodunu ilk hücreye yapıştırın ve kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın.
 
    ```python
    blob_account_name = "azureopendatastorage"
@@ -111,7 +111,7 @@ Databricks'te bir not defteri oluşturmak, not defterini Azure Açık Veri Küme
    blob_sas_token = r"?st=2019-02-26T02%3A34%3A32Z&se=2119-02-27T02%3A34%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=XlJVWA7fMXCSxCKqJm8psMOh0W4h7cSYO28coRqF2fs%3D"
    ```
 
-   Aşağıdaki komut, Spark'ın Blob depolamadan uzaktan okumasını sağlar. Bu PySpark kodunu bir sonraki hücreye yapıştırın ve kodu çalıştırmak için **Shift+Enter'u** kullanın.
+   Aşağıdaki komut Spark 'ın blob depolamadan uzaktan okunmasını sağlar. Bu PySpark kodunu bir sonraki hücreye yapıştırın ve kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın.
 
    ```python
    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
@@ -119,7 +119,7 @@ Databricks'te bir not defteri oluşturmak, not defterini Azure Açık Veri Küme
    print('Remote blob path: ' + wasbs_path)
    ```
 
-   Aşağıdaki komut bir DataFrame oluşturur. Bu PySpark kodunu bir sonraki hücreye yapıştırın ve kodu çalıştırmak için **Shift+Enter'u** kullanın.
+   Aşağıdaki komut bir DataFrame oluşturur. Bu PySpark kodunu bir sonraki hücreye yapıştırın ve kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın.
 
    ```python
    df = spark.read.parquet(wasbs_path)
@@ -127,7 +127,7 @@ Databricks'te bir not defteri oluşturmak, not defterini Azure Açık Veri Küme
    df.createOrReplaceTempView('source')
    ```
 
-4. Bir SQL deyimi çalıştırın **kaynak**olarak adlandırılan geçici görünümden en üst 10 veri satırları döndürün. Bu PySpark kodunu bir sonraki hücreye yapıştırın ve kodu çalıştırmak için **Shift+Enter'u** kullanın.
+4. Bir SQL ifadesini çalıştırmak, **kaynak**adlı geçici görünümden ilk 10 veri satırı döndürür. Bu PySpark kodunu bir sonraki hücreye yapıştırın ve kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın.
 
    ```python
    print('Displaying top 10 rows: ')
@@ -138,18 +138,18 @@ Databricks'te bir not defteri oluşturmak, not defterini Azure Açık Veri Küme
 
     ![Örnek veriler](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Örnek JSON verileri")
 
-6. Artık, diğer kaynaklar yerine Citizens Connect App ve City Worker App kullanarak kaç güvenlik olayı rapor edildigini göstermek için bu verilerin görsel bir temsilini oluşturursunuz. Tablo çıktısının altından Çubuk **grafik** simgesini seçin ve ardından **Çizim Seçenekleri'ni**tıklatın.
+6. Artık bu verilerin görsel bir gösterimini oluşturarak, diğer kaynaklar yerine vatandaşları Connect app ve City çalışan uygulaması kullanılarak kaç tane güvenlik olayının raporlanacağı gösterilir. Tablo çıkışının alt kısmından **çubuk grafik** simgesini seçin ve ardından **Çizim seçenekleri**' ne tıklayın.
 
-    ![Çubuk grafiği oluşturma](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Çubuk grafiği oluşturma")
+    ![Çubuk grafik oluştur](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Çubuk grafik oluştur")
 
 8. **Çizimi Özelleştir** menüsünde, değerleri ekran görüntüsünde gösterilen şekilde sürükleyip bırakın.
 
-    ![Pasta grafiğini özelleştirme](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Çubuk grafiği özelleştir")
+    ![Pasta grafiğini özelleştirme](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Çubuk grafiği Özelleştir")
 
    * **Anahtarları** **kaynağa**ayarlayın.
-   * **Değerleri** **<\id>** ayarlayın.
+   * **Değerleri** **\ıd>< **olarak ayarlayın.
    * **Toplama**’yı **SAYI** olarak ayarlayın.
-   * **Ekran türünü** **Pasta grafiğine**ayarlayın.
+   * **Görüntü türünü** **pasta grafik**olarak ayarlayın.
 
      **Uygula**’ya tıklayın.
 
@@ -159,11 +159,11 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Kümeyi oluştururken **etkinlik dakikalarından \_ \_ sonra Sonlandırma** onay kutusunu seçmeniz koşuluyla, kümeyi el ile sonlandırmazsanız otomatik olarak durur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluşturma sırasında **işlem yapılmadan dakika \_ \_ sonra Sonlandır** onay kutusunu seçtiğiniz takdirde otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Veri Tuğlaları'nda bir Kıvılcım kümesi oluşturdunuz ve Azure Açık Veri Kümelerinden gelen verileri kullanarak bir Spark işi çalıştırdın. Diğer veri kaynaklarından Azure Databricks’e verileri aktarma hakkında bilgi almak için [Spark veri kaynakları](/azure/databricks/data/data-sources/index) bölümüne de bakabilirsiniz. Azure Databricks kullanılarak bir ETL işleminin (verileri ayıklama, dönüştürme ve yükleme) nasıl gerçekleştirileceğini öğrenmek için sonraki makaleye ilerleyin.
+Bu makalede, Azure Databricks 'de bir Spark kümesi oluşturdunuz ve Azure açık veri kümelerinden verileri kullanarak bir Spark işi çalıştırdınız. Diğer veri kaynaklarından Azure Databricks’e verileri aktarma hakkında bilgi almak için [Spark veri kaynakları](/azure/databricks/data/data-sources/index) bölümüne de bakabilirsiniz. Azure Databricks kullanılarak bir ETL işleminin (verileri ayıklama, dönüştürme ve yükleme) nasıl gerçekleştirileceğini öğrenmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
 >[Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](databricks-extract-load-sql-data-warehouse.md)

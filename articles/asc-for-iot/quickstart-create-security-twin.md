@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Bir güvenlik modülü ikiz oluşturma'
-description: Bu hızlı başlangıçta, IoT için Azure Güvenlik Merkezi ile kullanılmak üzere IoT modülü için bir Azure Güvenlik Merkezi oluşturmayı öğrenin.
+title: 'Hızlı başlangıç: güvenlik modülü ikizi oluşturma'
+description: Bu hızlı başlangıçta, IoT için Azure Güvenlik Merkezi ile kullanmak üzere IoT modülü ikizi için bir Azure Güvenlik Merkezi oluşturmayı öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,67 +16,67 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310873"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Quickstart: Azureiotsecurity modülü ikizi oluşturma
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Hızlı başlangıç: azureiotsecurity modülü oluşturma ikizi
 
-Bu hızlı başlatma, yeni aygıtlar için tek tek _azureiotsecurity_ modülü ikizleri veya bir IoT Hub'daki tüm aygıtlar için toplu oluşturma modülü ikizleri oluşturmanın nasıl açıkladığını açıklar.
+Bu hızlı başlangıçta, yeni cihazlar için tek tek _azureiotsecurity_ Module TWINS oluşturma veya bir IoT Hub tüm cihazlar için toplu işlem modülü oluşturma işlemleri açıklanmaktadır.
 
-## <a name="understanding-azureiotsecurity-module-twins"></a>Azureiotsecurity modülü ikizleri anlama
+## <a name="understanding-azureiotsecurity-module-twins"></a>Azureiotsecurity Module TWINS 'i anlama
 
-Azure'da yerleşik IoT çözümleri için aygıt ikizleri hem cihaz yönetiminde hem de proses otomasyonunda önemli bir rol oynar.
+Azure 'da oluşturulan IoT çözümleri için, cihaz ikis, hem cihaz yönetimi hem de süreç otomasyonu 'nda anahtar rol oynar.
 
-Azure Güvenlik Merkezi IoT, mevcut IoT aygıt yönetim platformunuzla tam entegrasyon sunarak cihaz güvenlik durumunuzu yönetmenize ve mevcut aygıt kontrol özelliklerinden yararlanmanıza olanak tanır.
-IoT tümleştirmesi için Azure Güvenlik Merkezi, IoT Hub çift mekanizmasından yararlanılarak sağlanır.
+IoT için Azure Güvenlik Merkezi, mevcut IoT cihaz yönetimi Platformunuzla tam tümleştirme sunarak, cihaz güvenlik durumunuzu yönetmenize ve mevcut cihaz denetimi yeteneklerini kullanmanıza olanak sağlar.
+IoT tümleştirmesi için Azure Güvenlik Merkezi, IoT Hub ikizi mekanizması kullanılarak elde edilir.
 
-Azure IoT Hub'daki modül ikizleri genel konsepti hakkında daha fazla bilgi edinmek için [IoT Hub modülü ikizleri](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) bölümüne bakın.
+Azure IoT Hub modül TWINS 'in genel kavramı hakkında daha fazla bilgi edinmek için bkz. [IoT Hub Module TWINS](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) .
 
-Azure Güvenlik Merkezi IoT modülü ikiz mekanizmasını kullanır ve her aygıtınız için _azureiotsecurity_ adlı bir güvenlik modülü ikizi tutar.
+IoT için Azure Güvenlik Merkezi, Module ikizi mekanizmasını kullanır ve cihazlarınızın her biri için _azureiotsecurity_ adlı bir güvenlik modülünü ikizi.
 
-Güvenlik modülü ikizi, aygıtlarınızın her biri için aygıt güvenliğiyle ilgili tüm bilgileri tutar.
+İkizi güvenlik modülü, cihazlarınızın her biri için cihaz güvenliğiyle ilgili tüm bilgileri tutar.
 
-IoT özellikleri için Azure Güvenlik Merkezi'nden tam olarak yararlanmak için, bu güvenlik modüllerini hizmetteki her cihaz için oluşturmanız, yapılandırmanız ve kullanmanız gerekir.
+IoT özellikleri için Azure Güvenlik Merkezi ' ni tam olarak kullanabilmek için, bu güvenlik modülü sayısını hizmette her cihaz için oluşturmanız, yapılandırmanız ve kullanmanız gerekir.
 
-## <a name="create-azureiotsecurity-module-twin"></a>Azureiotsecurity modülü ikiz oluşturma
+## <a name="create-azureiotsecurity-module-twin"></a>Azureiotsecurity modülü oluşturma ikizi
 
-_azureiotsecurity_ modülü ikizler iki şekilde oluşturulabilir:
+_azureiotsecurity_ Module TWINS iki şekilde oluşturulabilir:
 
-1. [Modül toplu komut dosyası](https://aka.ms/iot-security-github-create-module) - varsayılan yapılandırmayı kullanarak modül ikizi olmayan yeni aygıtlar veya aygıtlar için otomatik olarak modül ikizi oluşturur.
-1. Her modülü her cihaz için belirli yapılandırmalarla ayrı ayrı elle düzenleme.
+1. [Modül Batch betiği](https://aka.ms/iot-security-github-create-module) -varsayılan yapılandırmayı kullanarak bir modül ikizi olmadan yeni cihazlar veya cihazlar için otomatik olarak modül ikizi oluşturur.
+1. Her modül için her bir cihaz için belirli yapılandırmalara sahip her modülü ikizi el ile düzenleyin.
 
 >[!NOTE]
-> Toplu iş yöntemini kullanmak, varolan azureiotsecurity modülü ikizlerinin üzerine yazmaz. Toplu iş yöntemini kullanmak SADECE, güvenlik modülü ikizi olmayan aygıtlar için yeni modül ikizleri oluşturur.
+> Batch yönteminin kullanılması, var olan azureiotsecurity Module TWINS 'in üzerine yazmaz. Batch yönteminin kullanılması, yalnızca bir güvenlik modülü ikizi olmayan cihazlar için yeni modül TWINS 'i oluşturur.
 
-Varolan bir modül ikizinin yapılandırmasını nasıl değiştireceğinizi veya değiştireceğinizi öğrenmek için [aracı yapılandırmasına](how-to-agent-configuration.md) bakın.
+Var olan bir modülün ikizi yapılandırmasını değiştirme veya değiştirme hakkında bilgi edinmek için [Aracı yapılandırması](how-to-agent-configuration.md) bölümüne bakın.
 
-Bir aygıt için el ile yeni bir _azureiotsecurity_ modülü ikizi oluşturmak için aşağıdaki yönergeleri kullanın:
+Bir cihaz için el ile yeni bir _azureiotsecurity_ Module ikizi oluşturmak için aşağıdaki yönergeleri kullanın:
 
-1. IoT Hub'ınızda, bir güvenlik modülü oluşturmak istediğiniz aygıtı bulun ve seçin.
-1. Cihazınıza tıklayın ve ardından **modül kimliği ekle'ye**tıklayın.
-1. Modül **Kimlik Adı** alanına **azureiotsecurity**girin.
+1. IoT Hub, için güvenlik modülü ikizi oluşturmak istediğiniz cihazı bulun ve seçin.
+1. Cihazınıza ve ardından **modül kimliği Ekle**' ye tıklayın.
+1. **Modül kimliği adı** alanına **azureiotsecurity**girin.
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın.
 
-## <a name="verify-creation-of-a-module-twin"></a>Modül ikizi oluşturmayı doğrulayın
+## <a name="verify-creation-of-a-module-twin"></a>Modül ikizi oluşturmayı doğrulama
 
-Belirli bir aygıt için bir güvenlik modülü ikizi olup olmadığını doğrulamak için:
+Belirli bir cihaz için bir güvenlik modülü ikizi varolup olmadığını doğrulamak için:
 
-1. Azure IoT Hub'ınızda, **Explorers** menüsünden **IoT aygıtlarını** seçin.
-1. Aygıt kimliğini girin veya **Sorgu aygıtı alanına** bir seçenek seçin ve Sorgu **aygıtlarını**tıklatın.
-    ![Sorgu cihazları](./media/quickstart/verify-security-module-twin.png)
-1. Aygıtı seçin veya Aygıt ayrıntıları sayfasını açmak için aygıtı çift tıklatın.
-1. Modül **kimlikleri** menüsünü seçin ve aygıtla ilişkili modül kimlikleri listesinde **azureiotsecurity** modülünün varlığını doğrulayın.
-    ![Bir aygıtla ilişkili modüller](./media/quickstart/verify-security-module-twin-3.png)
+1. Azure IoT Hub, **araştırıcılar** menüsünden **IoT cihazları** ' nı seçin.
+1. Cihaz KIMLIĞINI girin veya **sorgu cihazı alanında** bir seçenek belirleyin ve **sorgu cihazları**' na tıklayın.
+    ![Cihazları sorgula](./media/quickstart/verify-security-module-twin.png)
+1. Cihazı seçin veya çift tıklayarak cihaz ayrıntıları sayfasını açın.
+1. **Modül kimlikleri** menüsünü seçin ve cihazla ilişkili modül kimlikleri listesinde **azureiotsecurity** modülünün varlığını onaylayın.
+    ![Bir cihazla ilişkili modüller](./media/quickstart/verify-security-module-twin-3.png)
 
-IoT modülü ikizleri için Azure Güvenlik Merkezi'nin özelliklerini özelleştirme hakkında daha fazla bilgi edinmek için [Temsilci yapılandırmasına](how-to-agent-configuration.md)bakın.
+IoT modülü TWINS için Azure Güvenlik Merkezi 'nin özelliklerini özelleştirme hakkında daha fazla bilgi edinmek için bkz. [Aracı yapılandırması](how-to-agent-configuration.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel uyarıları yapılandırmayı öğrenmek için bir sonraki makaleye geçin...
+Özel uyarıların nasıl yapılandırılacağını öğrenmek için sonraki makaleye ilerleyin...
 
 > [!div class="nextstepaction"]
 > [Özel uyarıları yapılandırma](quickstart-create-custom-alerts.md)

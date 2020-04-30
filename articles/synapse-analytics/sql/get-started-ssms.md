@@ -1,6 +1,6 @@
 ---
-title: 'SSMS: Bağlan ve Synapse SQL sorgulayın'
-description: Azure Synapse Analytics'te Synapse SQL'e bağlanmak ve bunları sorgulamak için SQL Server Management Studio'yı (SSMS) kullanın.
+title: 'SSMS: Connect ve Query SYNAPSE SQL'
+description: Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgulamak için SQL Server Management Studio (SSMS) kullanın.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,71 +10,71 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 704da86fd1d816dbf5d6cd9cf67dfee53fce2622
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423743"
 ---
-# <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile Synapse SQL'e bağlanın
+# <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
-[SQL Server Management Studio'ya (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) Azure Synapse Analytics'e bağlanmak ve sql isteğe bağlı (önizleme) veya SQL havuzu kaynakları aracılığıyla Synapse SQL'e bağlanmak ve bunları sorgulamak için sql server management studio'u (SSMS) kullanabilirsiniz. 
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak Azure SYNAPSE ANALYTICS 'te SQL isteğe bağlı (Önizleme) veya SQL havuzu kaynakları aracılığıyla SYNAPSE SQL 'e bağlanabilir ve bunları sorgulayabilirsiniz. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (önizleme)
+### <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (Önizleme)
 
-SSMS, 18.5 sürümünde bağlanmak ve sorgulama gibi sınırlı özelliklerle kısmen desteklenir. [Azure Veri Stüdyosu](/sql/azure-data-studio/download-azure-data-studio) tamamen desteklenir.
+SSMS, sürüm 18,5 ' den başlayarak, bağlanma ve sorgulama gibi sınırlı özelliklerle kısmen desteklenir. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) tam olarak desteklenir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce aşağıdaki ön koşullara sahip olduğunuzdan emin olun:  
+Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* SQL havuzu için varolan bir veri ambarı gerekir. Bir tane oluşturmak için [bkz.](../quickstart-create-sql-pool.md) İsteğe bağlı SQL için, oluşturma zamanında çalışma alanınızda zaten bir tane sağlanmış durumdadır. 
-* Tam nitelikli SQL Server adı. Bunu bulmak için Bkz. [Synapse SQL'e Bağlan.](connect-overview.md)
+* SQL havuzu için mevcut bir veri ambarına ihtiyacınız vardır. Bir tane oluşturmak için bkz. [SQL havuzu oluşturma](../quickstart-create-sql-pool.md). İsteğe bağlı SQL için, oluşturma sırasında çalışma alanınızda bir tane zaten sağlanmış olur. 
+* Tam nitelikli SQL Server adı. Bunu bulmak için bkz. [SYNAPSE SQL 'e bağlanma](connect-overview.md).
 
 ## <a name="connect"></a>Bağlan
 
 ### <a name="sql-pool"></a>SQL havuzu
 
-SQL havuzukullanarak Synapse SQL'e bağlanmak için aşağıdaki adımları izleyin: 
+SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin: 
 
-1. SQL Server Management Studio 'yı (SSMS) açın. 
-1. **Sunucuya Bağlan** iletişim kutusunda, alanları doldurun ve sonra **Bağlan'ı**seçin: 
+1. SQL Server Management Studio (SSMS) açın. 
+1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan**' ı seçin. 
   
     ![Sunucuya bağlanma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Sunucu adı**: Daha önce tanımlanan **sunucu adını** girin.
-   * **Kimlik Doğrulama**: **SQL Server Authentication** veya Active **Directory Integrated Authentication**gibi bir kimlik doğrulama türü seçin.
-   * **Kullanıcı Adı** ve **Şifre**: Yukarıda SQL Server Kimlik Doğrulaması seçiliyse kullanıcı adınızı ve şifrenizi girin.
+   * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
+   * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması**gibi bir kimlik doğrulama türü seçin.
+   * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
 
-1. **Object Explorer'da**Azure SQL Sunucunuzu genişletin. Örnek AdventureWorksDW veritabanı gibi sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Tabloları görmek için veritabanını genişletebilirsiniz:
+1. Azure SQL Server **Nesne Gezgini**' ni genişletin. Sunucu ile ilişkili veritabanlarını (örneğin, örnek AdventureWorksDW veritabanı) görüntüleyebilirsiniz. Tabloları görmek için veritabanını genişletebilirsiniz:
    
     ![AdventureWorksDW'yi araştırma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>İsteğe bağlı SQL (önizleme)
+### <a name="sql-on-demand-preview"></a>İsteğe bağlı SQL (Önizleme)
 
-İsteğe bağlı SQL kullanarak Synapse SQL'e bağlanmak için aşağıdaki adımları izleyin: 
+İsteğe bağlı SQL kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin: 
 
-1. SQL Server Management Studio 'yı (SSMS) açın.
-1. **Sunucuya Bağlan** iletişim kutusunda, alanları doldurun ve sonra **Bağlan'ı**seçin: 
+1. SQL Server Management Studio (SSMS) açın.
+1. **Sunucuya Bağlan** iletişim kutusunda alanları doldurup **Bağlan**' ı seçin. 
    
     ![Sunucuya bağlanma](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Sunucu adı**: Daha önce tanımlanan **sunucu adını** girin.
-   * **Kimlik Doğrulama**: **SQL Server Authentication** veya Active **Directory Integrated Authentication**gibi bir kimlik doğrulama türü seçin:
-   * **Kullanıcı Adı** ve **Şifre**: Yukarıda SQL Server Kimlik Doğrulaması seçiliyse kullanıcı adınızı ve şifrenizi girin.
+   * **Sunucu adı**: daha önce tanımlanan **sunucu adını** girin.
+   * **Kimlik doğrulaması**: **SQL Server kimlik doğrulaması** veya **Active Directory tümleşik kimlik doğrulaması**gibi bir kimlik doğrulama türü seçin:
+   * **Kullanıcı adı** ve **parola**: yukarıda SQL Server kimlik doğrulaması seçildiyse, Kullanıcı adınızı ve parolanızı girin.
    * **Bağlan**'a tıklayın.
 
-4. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki içeriği görmek için *demoyu* genişletin.
+4. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki içeriği görmek için *demo* ' i genişletin.
    
     ![AdventureWorksDW'yi araştırma](./media/get-started-ssms/explore-tables.png)
 
@@ -83,7 +83,7 @@ SQL havuzukullanarak Synapse SQL'e bağlanmak için aşağıdaki adımları izle
 
 ### <a name="sql-pool"></a>SQL havuzu
 
-Artık bir veritabanı bağlantısı kurulduğuna göre, verileri sorgulayabilirsiniz.
+Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
 2. **Yeni Sorgu**'yu seçin. Yeni bir sorgu penceresi açılır.
@@ -94,7 +94,7 @@ Artık bir veritabanı bağlantısı kurulduğuna göre, verileri sorgulayabilir
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için `Execute` aşağıdaki kısayolu tıklatın `F5`veya kullanın: .
+4. Sorguyu çalıştırın. Bunu yapmak için aşağıdaki kısayola `Execute` tıklayın veya kullanın: `F5`.
    
     ![Sorgu çalıştırma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Sorgu sonuçlarına bakın. Bu örnekte FactInternetSales tablosunda 60398 satır var.
@@ -103,7 +103,7 @@ Artık bir veritabanı bağlantısı kurulduğuna göre, verileri sorgulayabilir
 
 ### <a name="sql-on-demand"></a>İsteğe bağlı SQL
 
-Artık bir veritabanı bağlantısı kurduğunuza göre, verileri sorgulayabilirsiniz.
+Bir veritabanı bağlantısı kurdığınıza göre, verileri sorgulayabilirsiniz.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
 2. **Yeni Sorgu**'yu seçin. Yeni bir sorgu penceresi açılır.
@@ -114,15 +114,15 @@ Artık bir veritabanı bağlantısı kurduğunuza göre, verileri sorgulayabilir
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için `Execute` aşağıdaki kısayolu tıklatın `F5`veya kullanın: .
+4. Sorguyu çalıştırın. Bunu yapmak için aşağıdaki kısayola `Execute` tıklayın veya kullanın: `F5`.
    
     ![Sorgu çalıştırma](./media/get-started-ssms/execute-query.png)
-5. Sorgu sonuçlarına bakın. Bu örnekte, usPopulationView görünümü 3664512 satır vardır.
+5. Sorgu sonuçlarına bakın. Bu örnekte, usPopulationView görünümü 3664512 satıra sahiptir.
    
     ![Sorgu sonuçları](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık bağlanıp sorgulayabildiğinize göre, [Power BI ile verileri görselleştirmeyi](get-started-power-bi-professional.md)deneyin.
+Artık bağlanıp sorgulama yaptığınızda, [Power BI verileri görselleştirmeyi](get-started-power-bi-professional.md)deneyin.
 
-Azure Active Directory kimlik doğrulaması için ortamınızı yapılandırmak için Bkz. Kimlik Doğrulama ile [Synapse SQL.](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Ortamınızı Azure Active Directory kimlik doğrulaması için yapılandırmak üzere bkz. [SYNAPSE SQL 'de kimlik](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)doğrulama.
 

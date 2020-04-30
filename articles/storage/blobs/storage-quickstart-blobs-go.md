@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726450"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Hızlı Başlangıç: Go kullanarak blobları yükleme, indirme ve listeleme
@@ -22,17 +22,17 @@ Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok blobla
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Aşağıdaki ek ön koşulların yüklü olduğundan emin olun:
+Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
  
-* [1.8 veya üzeri git](https://golang.org/dl/)
-* [Azure Depolama Blob SDK go için](https://github.com/azure/azure-storage-blob-go/), aşağıdaki komutu kullanarak:
+* [Git 1,8 veya üzeri](https://golang.org/dl/)
+* Aşağıdaki komutu kullanarak [Go IÇIN SDK Azure Depolama Blobu](https://github.com/azure/azure-storage-blob-go/):
 
     ```
     go get -u github.com/Azure/azure-storage-blob-go/azblob
     ``` 
 
     > [!NOTE]
-    > SDK ile çalışırken `Azure` büyük/küçük harf le ilgili alma sorunlarını önlemek için URL'den büyük harfle yararlandığınızdan emin olun. Ayrıca, `Azure` ithalat ekstrelerinizde de büyük harfle yararlanın.
+    > SDK ile çalışırken, büyük `Azure` /küçük harfe ilgili içeri aktarma sorunlarından KAÇıNMAK için URL 'de büyük harfle aldığınızdan emin olun. Ayrıca içeri `Azure` aktarma deyimlerinizi de büyük harfle yapın.
     
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 Bu [hızlı başlangıçta](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) kullanılan örnek uygulama, temel bir Go uygulamasıdır.  
@@ -98,9 +98,9 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 ### <a name="create-containerurl-and-bloburl-objects"></a>ContainerURL ve BlobURL nesnelerini oluşturma
 İlk yapılacak olan, Blob depolamaya erişmek ve Blob depolamayı yönetmek için kullanılan ContainerURL ve BlobURL nesnelerine başvuru oluşturmaktır. Bu nesneler, REST API'lerini göndermek için Create, Upload ve Download gibi alt düzey API'ler sunar.
 
-* Kimlik bilgilerinizi depolamak için [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) struct'u kullanın. 
+* Kimlik bilgilerinizi depolamak için [**Sharedkeycredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) yapısını kullanın. 
 
-* Kimlik bilgilerini ve seçenekleri kullanarak bir [**Ardışık Hatlar**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline) Oluşturma. İşlem hattı yeniden deneme ilkeleri, günlük ve HTTP yanıtı iş yüklerini seri durumdan çıkarma gibi daha birçok öğeyi belirtir.  
+* Kimlik bilgilerini ve seçenekleri kullanarak bir işlem [**hattı**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline) oluşturun. İşlem hattı yeniden deneme ilkeleri, günlük ve HTTP yanıtı iş yüklerini seri durumdan çıkarma gibi daha birçok öğeyi belirtir.  
 
 * Kapsayıcı (Create) ve bloblar (Upload ve Download) üzerinde işlemleri çalıştırmak için yeni [**ContainerURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#ContainerURL)'yi ve yeni [**BlobURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobURL) nesnesini başlatın.
 
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Blobu indirme
 
-BlobURL'de alt düzey **Download** işlevini kullanarak blobları indirin. Bu bir **DownloadResponse** struct’ı döndürür. Verileri okumak üzere bir **RetryReader** akışı almak için struct’ta **Body** işlevi çalıştırın. Bir bağlantı okurken başarısız olursa, bağlantıyı yeniden kurmak ve okumaya devam etmek için ek isteklerde bulunacaktır. MaxRetryRequests’i 0 (varsayılan) olarak ayarlanmış bir RetryReaderOption belirtildiğinde orijinal yanıt gövdesi döndürülür ve hiçbir yeniden deneme gerçekleştirilmez. Alternatif olarak kodunuzu basitleştirmek için yüksek düzeyli API’ler olarak **DownloadBlobToBuffer** veya **DownloadBlobToFile**’ı kullanın.
+BlobURL'de alt düzey **Download** işlevini kullanarak blobları indirin. Bu bir **DownloadResponse** struct’ı döndürür. Verileri okumak üzere bir **RetryReader** akışı almak için struct’ta **Body** işlevi çalıştırın. Okurken bir bağlantı başarısız olursa, bir bağlantıyı yeniden kurmak ve okumaya devam etmek için ek istekler yapılır. MaxRetryRequests’i 0 (varsayılan) olarak ayarlanmış bir RetryReaderOption belirtildiğinde orijinal yanıt gövdesi döndürülür ve hiçbir yeniden deneme gerçekleştirilmez. Alternatif olarak kodunuzu basitleştirmek için yüksek düzeyli API’ler olarak **DownloadBlobToBuffer** veya **DownloadBlobToFile**’ı kullanın.
 
 Aşağıdaki kod, **Download** işlevini kullanarak blobu indirir. Blobun içeriği arabelleğe yazılır ve konsolda gösterilir.
 

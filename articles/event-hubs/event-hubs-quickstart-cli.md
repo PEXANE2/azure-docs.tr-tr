@@ -1,5 +1,5 @@
 ---
-title: Azure CLI - Azure Etkinlik Hub'larını kullanarak etkinlik merkezi oluşturma | Microsoft Dokümanlar
+title: Azure CLı kullanarak bir olay hub 'ı oluşturma-Azure Event Hubs | Microsoft Docs
 description: Bu hızlı başlangıçta Azure CLI'yi kullanarak olay hub'ı oluşturma ve ardından Java kullanarak olayları gönderip alma adımları anlatılmaktadır.
 services: event-hubs
 author: spelluru
@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77162642"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Hızlı başlangıç: Azure CLI'yi kullanarak olay hub'ı oluşturma
@@ -24,7 +24,7 @@ Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan
 Bu hızlı başlangıçta Azure CLI’yi kullanarak olay hub'ı oluşturacaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu hızlı başlangıcı tamamlamak bir Azure aboneliğinizin olması gerekir. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.][]
+Bu hızlı başlangıcı tamamlamak bir Azure aboneliğinizin olması gerekir. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun][] .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -74,17 +74,17 @@ Tebrikler! Azure CLI’yi kullanarak bir Event Hubs ad alanı ve bu ad alanını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşturdunuz. Bir etkinlik merkezinden etkinlik almak için (veya) etkinlik göndermek için adım adım talimatlar **için, Gönder'e** bakın ve etkinlik eğitimlerini alın: 
+Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşturdunuz. Olay Hub 'ından olay alma (veya) olayları gönderme hakkında adım adım yönergeler için, bkz. **olayları gönderme ve alma** öğreticileri: 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-java-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)
 
-[ücretsiz bir hesap oluşturmak]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Ücretsiz hesap oluşturun]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

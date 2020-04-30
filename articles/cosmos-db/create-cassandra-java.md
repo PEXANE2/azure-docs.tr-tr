@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Cassandra API ile bir Java uygulaması oluşturun
+title: Azure Cosmos DB Cassandra API bir Java uygulaması oluşturma
 description: Bu hızlı başlangıçta Azure portalı ve Java ile profil uygulaması oluşturmak için Azure Cosmos DB Cassandra API’sinin nasıl kullanılacağı gösterilmektedir
 ms.service: cosmos-db
 author: SnehaGunda
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 124bbcedceffca318367799441f66e330bc41fef
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80811322"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Hızlı başlangıç: Azure Cosmos DB Cassandra API verilerini yönetmek için bir Java uygulaması oluşturun
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Hızlı başlangıç: Azure Cosmos DB Cassandra API verileri yönetmek için bir Java uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -25,14 +25,14 @@ ms.locfileid: "80811322"
 > * [Python](create-cassandra-python.md)
 >  
 
-Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturursunuz ve Bir Cassandra veritabanı ve kapsayıcı oluşturmak için GitHub'dan klonlanmış bir Cassandra Java uygulaması kullanırsınız. Azure Cosmos DB, belge, tablo, anahtar değeri ve grafik veritabanlarını küresel dağıtım ve yatay ölçek özelliklerine sahip hızlı bir şekilde oluşturmanıza ve sorgulamanıza olanak tanıyan çok modelli bir veritabanı hizmetidir.
+Bu hızlı başlangıçta, bir Azure Cosmos DB Cassandra API hesabı oluşturur ve GitHub 'dan kopyalanmış bir Cassandra Java uygulaması kullanarak Cassandra veritabanı ve kapsayıcısı oluşturursunuz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Veya Azure aboneliği olmadan [Azure Cosmos DB'yi ücretsiz olarak deneyin.](https://azure.microsoft.com/try/cosmosdb/)
-- [Java Geliştirme Kiti (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Ortam `JAVA_HOME` değişkeninizi JDK'nın yüklü olduğu klasöre yönlendirin.
-- [Bir Maven ikili arşiv](https://maven.apache.org/download.cgi). Ubuntu'da, `apt-get install maven` Maven'i yüklemek için koş.
-- [Git.](https://www.git-scm.com/downloads) Ubuntu'da `sudo apt-get install git` Git'i yüklemek için koş.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Ortam değişkeninizi `JAVA_HOME` JDK 'nin yüklü olduğu klasöre işaret edin.
+- [Maven ikili Arşivi](https://maven.apache.org/download.cgi). Ubuntu 'da, Maven 'yi yüklemek için komutunu çalıştırın `apt-get install maven` .
+- [Git](https://www.git-scm.com/downloads). Ubuntu 'da git 'i `sudo apt-get install git` yüklemek için komutunu çalıştırın.
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -64,9 +64,9 @@ Bir belge veritabanı oluşturmadan önce Azure Cosmos DB ile bir Cassandra hesa
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. Bu parçacıklar *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* dosyasından alınmıştır.  
+Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturduğunu öğrenmek istiyorsanız aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. Bu kod parçacıklarının tümü *src/Main/Java/com/Azure/cosmosdb/Cassandra/Util/CassandraUtils. Java* dosyasından alınmıştır.  
 
-* Cassandra ana bilgisayar, bağlantı noktası, kullanıcı adı, parola ve TLS/SSL seçenekleri ayarlanır. Bağlantı dizesi bilgileri Azure portalındaki bağlantı dizesi sayfasından gelir.
+* Cassandra Konağı, bağlantı noktası, Kullanıcı adı, parola ve TLS/SSL seçenekleri ayarlanır. Bağlantı dizesi bilgileri Azure portalındaki bağlantı dizesi sayfasından gelir.
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -78,7 +78,7 @@ Bu adım isteğe bağlıdır. Kodun veritabanı kaynaklarını nasıl oluşturdu
     return cluster.connect();
     ```
 
-Aşağıdaki parçacıklar *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* dosyasından dır.
+Aşağıdaki kod parçacıkları *src/Main/Java/com/Azure/cosmosdb/Cassandra/depo/UserRepository. Java* dosyasından alınır.
 
 * Yeni bir anahtar alanı oluşturun.
 
@@ -142,37 +142,37 @@ Aşağıdaki parçacıklar *src/main/java/com/azure/cosmosdb/cassandra/repositor
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin. Bağlantı dizesi ayrıntıları, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portalındaki](https://portal.azure.com/)Azure Cosmos DB hesabınızda **Bağlantı Dizesini**seçin. 
+1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **bağlantı dizesi**' ni seçin. 
 
     ![Azure portalı, Bağlantı Dizesi sayfasından kullanıcı adını görüntüleme ve kopyalama](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
 
 2. En üstteki USERNAME değerini kopyalamak için ekranın sağ tarafındaki ![Kopyala düğmesini](./media/create-cassandra-java/copy-button-azure-portal.png) kullanın.
 
-3. *C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources* klasöründen *config.properties* dosyasını açın. 
+3. *C:\git-samples\azure-cosmosdb-Cassandra-Java-getting-started\java-examples\src\main\resources* klasöründeki *config. Properties* dosyasını açın. 
 
 3. Portaldan CONTACT POINT değerini 2. satırdaki `<Cassandra endpoint host>` üzerine yapıştırın.
 
-    *Config.properties* satır 2 şimdi benzer görünmelidir 
+    *Config. Properties 2.* satırı şuna benzer görünmelidir 
 
     `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
-3. Portala geri dön ve USERNAME değerini kopyalayın. Portaldan USERNAME değerini 4. satırdaki `<cassandra endpoint username>` üzerine yapıştırın.
+3. Portala geri dönün ve Kullanıcı adı değerini kopyalayın. Portaldan USERNAME değerini 4. satırdaki `<cassandra endpoint username>` üzerine yapıştırın.
 
-    *Config.properties'in 4.* 
+    *Config. Properties 3.* satırı şuna benzer görünmelidir 
 
     `cassandra_username=cosmos-db-quickstart`
 
-4. Portala geri dön ve PAROLA değerini kopyala. Portaldan PASSWORD değerini 5. satırdaki `<cassandra endpoint password>` üzerine yapıştırın.
+4. Portala geri dönün ve parola değerini kopyalayın. Portaldan PASSWORD değerini 5. satırdaki `<cassandra endpoint password>` üzerine yapıştırın.
 
-    *Config.properties* Satır 5 şimdi benzer görünmelidir 
+    *Config. Properties* 'in 5. satırı şuna benzer görünmelidir 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. Satır 6'da, belirli bir TLS/SSL sertifikası kullanmak `<SSL key store file location>` istiyorsanız, TLS/SSL sertifikasının konumuyla değiştirin. Bir değer sağlanmamışsa, <JAVA_HOME>/jre/lib/security/cacerts konumuna yüklenen JDK sertifikası kullanılır. 
+5. 6. satırda, belirli bir TLS/SSL sertifikası kullanmak istiyorsanız, bunu TLS/SSL sertifikasının `<SSL key store file location>` konumuyla değiştirin. Bir değer sağlanmamışsa, <JAVA_HOME>/jre/lib/security/cacerts konumuna yüklenen JDK sertifikası kullanılır. 
 
-6. Belirli bir TLS/SSL sertifikasını kullanmak için 6 satırını değiştirdiyseniz, söz konusu sertifikanın parolasını kullanmak için satır 7'yi güncelleyin. 
+6. 5. satırı belirli bir TLS/SSL sertifikası kullanacak şekilde değiştirdiyseniz, bu sertifikanın parolasını kullanmak için 7. satırı güncelleştirin. 
 
-7. *config.properties* dosyasını kaydedin.
+7. *Config. Properties* dosyasını kaydedin.
 
 ## <a name="run-the-java-app"></a>Java uygulamasını çalıştırma
 
@@ -196,11 +196,11 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     Terminal penceresinde anahtar alanı ve tablonun oluşturulduğuna yönelik bildirimler gösterilir. Daha sonra tablodaki tüm kullanıcıları seçip döndürür ve çıktıyı gösterir, ardından kimliğe göre bir satır seçip değeri gösterir.  
 
-    Programın yürütülmesini durdurmak ve konsol penceresini kapatmak için Ctrl+C tuşuna basın.
+    Programın yürütülmesini durdurmak için CTRL + C tuşlarına basın ve konsol penceresini kapatın.
 
 4. Azure portalında bu yeni verileri sorgulamak, değiştirmek ve birlikte çalışmak için **Veri Gezgini**'ni açın. 
 
-    ![Verileri Data Explorer'da görüntüleme - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    ![Veri Gezgini Azure Cosmos DB verileri görüntüleme](./media/create-cassandra-java/view-data-explorer-java-app.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 
@@ -212,7 +212,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Cassandra API ile azure cosmos DB hesabı oluşturmayı ve Cassandra veritabanı ve kapsayıcı oluşturan bir Cassandra Java uygulamasını çalıştırmayı öğrendiniz. Artık Azure Cosmos DB hesabınıza ek veri aktarabilirsiniz. 
+Bu hızlı başlangıçta, Cassandra API sahip bir Azure Cosmos DB hesabı oluşturmayı ve Cassandra veritabanı ve kapsayıcısı oluşturan Cassandra Java uygulamasını çalıştırmayı öğrendiniz. Artık Azure Cosmos DB hesabınıza daha fazla veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Cassandra verilerini Azure Cosmos DB’ye aktarma](cassandra-import-data.md)

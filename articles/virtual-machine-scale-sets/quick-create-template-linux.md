@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Azure Kaynak Yöneticisi şablonuyla bir Linux sanal makine ölçeği kümesi oluşturun
+title: Hızlı başlangıç-Azure Resource Manager şablonuyla Linux sanal makine ölçek kümesi oluşturma
 description: Örnek uygulama dağıtan ve otomatik ölçeklendirme kurallarını yöneten bir Azure Resource Manager şablonuyla hızlıca bir Linux sanal makine ölçek kümesi oluşturmayı öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,19 +9,19 @@ ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
 ms.author: jushiman
 ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010469"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Hızlı başlatma: Azure Kaynak Yöneticisi şablonuyla bir Linux sanal makine ölçeği kümesi oluşturun
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonuyla Linux sanal makine ölçek kümesi oluşturma
 
 Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendirilen sanal makine kümesi dağıtmanızı ve yönetmenizi sağlar. Ölçek kümesi içindeki sanal makine sayısını el ile ölçeklendirebilir veya CPU, bellek talebi ya da ağ trafiği gibi kaynak kullanımını temel alan otomatik ölçeklendirme kuralları tanımlayabilirsiniz. Azure Load Balancer daha sonra ölçek kümesindeki sanal makine örneklerine trafiği dağıtır. Bu hızlı başlangıçta, Azure Resource Manager şablonu ile bir sanal makine ölçek kümesi oluşturur ve örnek uygulama dağıtırsınız.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,23 +31,23 @@ Yok.
 
 Azure Resource Manager şablonları, ilgili kaynak gruplarını dağıtmanızı sağlar. Tek bir şablonda sanal makine ölçek kümesi oluşturabilir, uygulamaları yükleyebilir ve otomatik ölçeklendirme kurallarını yapılandırabilirsiniz. Değişkenleri ve parametreleri kullanarak bu şablonu var olan ölçek kümelerini güncelleştirme veya yenilerini oluşturma amacıyla tekrar kullanabilirsiniz. Şablonları Azure portalı, Azure CLI veya Azure PowerShell aracılığıyla ya da sürekli tümleştirme/sürekli teslim (CI/CD) işlem hatlarından dağıtabilirsiniz.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/).
 
 :::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
 
-Bu kaynaklar şablonda tanımlanır:
+Bu kaynaklar şablonda tanımlanmıştır:
 
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Network/publicIPAdresleri**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
+- [**Microsoft. Insights/oto Scalesettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
 #### <a name="define-a-scale-set"></a>Ölçek kümesi tanımlama
 
-Vurgulanan bölüm ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümesi oluşturmak için gerekli kaynakları tanımlamanız gerekir. Sanal makine ölçek kümesi kaynak türünün ana bölümleri şunlardır:
+Vurgulanan bölüm, ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümesi oluşturmak için gerekli kaynakları tanımlamanız gerekir. Sanal makine ölçek kümesi kaynak türünün ana bölümleri şunlardır:
 
 | Özellik                     | Özellik açıklaması                                  | Örnek şablon değeri                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -62,7 +62,7 @@ Vurgulanan bölüm ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümes
 | osProfile.adminUsername      | Her bir VM örneği için kullanıcı adı                        | azureuser                                 |
 | osProfile.adminPassword      | Her bir VM örneği için parola                        | P@ssw0rd!                                 |
 
-Ölçek kümesi şablonu özelleştirmek için VM boyutunu veya başlangıç kapasitesini değiştirebilirsiniz. Başka bir seçenek farklı bir platform veya özel bir görüntü kullanmaktır.
+Ölçek kümesi şablonunu özelleştirmek için VM boyutunu veya başlangıç kapasitesini değiştirebilirsiniz. Başka bir seçenek de farklı bir platform veya özel görüntü kullanmaktır.
 
 #### <a name="add-a-sample-application"></a>Örnek uygulama ekleme
 
@@ -74,17 +74,17 @@ Vurgulanan bölüm ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümes
 - Yapılandırma veya yükleme betiklerinin konumu
 - VM örneklerinde yürütülecek komutlar
 
-Şablon, [Şişe,](https://bottlepy.org/docs/dev/)Bir Python web çerçevesi ve basit bir HTTP sunucusu yüklemek için Özel Komut Dosyası Uzantısı kullanır.
+Şablon, [şişe](https://bottlepy.org/docs/dev/), Python Web çerçevesi ve basıt bir http sunucusu yüklemek Için özel betik uzantısını kullanır.
 
-İki komut dosyası **fileUris** - *installserver.sh*tanımlanır ve *workserver.py*. Bu dosyalar GitHub'dan indirilir, ardından `bash installserver.sh` uygulamayı yüklemek ve yapılandırmak için *ToExecute komutu* çalışır.
+**Fileuris** - *installserver.sh*ve *workserver.py*içinde iki komut dosyası tanımlanmıştır. Bu dosyalar GitHub 'dan indirilir, sonra da uygulamayı yüklemek ve yapılandırmak `bash installserver.sh` Için *komutoexecute* çalıştırmaları.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Aşağıdaki **Azure'a Dağıt** düğmesini seçerek şablonu dağıtabilirsiniz. Bu düğme Azure portalını açar, şablonun tamamını yükler ve ölçek kümesi adı, örnek sayısı ve yönetici kimlik bilgileri gibi birkaç parametreyi sorar.
+Aşağıdaki **Azure 'A dağıt** düğmesini seçerek şablonu dağıtabilirsiniz. Bu düğme Azure portalını açar, şablonun tamamını yükler ve ölçek kümesi adı, örnek sayısı ve yönetici kimlik bilgileri gibi birkaç parametreyi sorar.
 
-[![Şablonu Azure'a dağıtma](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
+[![Şablonu Azure 'a dağıtma](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-Azure CLI'yi kullanarak bir Kaynak Yöneticisi şablonu da dağıtabilirsiniz:
+Ayrıca, Azure CLı kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz:
 
 ```azurecli-interactive
 # Create a resource group
@@ -108,7 +108,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Yük bakiyesi genel IP adresini http biçimindeki bir web tarayıcısına *\/girin: /publicIpAddress:9000/do_work*. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
+*\/Http:/publicıpaddress: 9000/do_work*biçiminde bir Web TARAYıCıSıNA yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
 
 ![NGINX varsayılan web sayfası](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

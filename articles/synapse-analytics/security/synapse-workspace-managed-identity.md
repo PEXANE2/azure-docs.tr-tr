@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse çalışma alanında yönetilen kimlik
-description: Azure Synapse çalışma alanında yönetilen kimliği açıklayan bir makale
+title: Azure SYNAPSE çalışma alanında yönetilen kimlik
+description: Azure SYNAPSE çalışma alanında yönetilen kimliği açıklayan bir makale
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
@@ -8,53 +8,53 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: ee0e6249acf3fbbab369d42ae691a5a826df1ee8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425122"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse çalışma alanı yönetilen kimlik (önizleme)
+# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure SYNAPSE çalışma alanı yönetilen kimliği (Önizleme)
 
-Bu makalede, Azure Synapse çalışma alanında yönetilen kimlik hakkında bilgi edineceksiniz.
+Bu makalede, Azure SYNAPSE çalışma alanında yönetilen kimlik hakkında bilgi edineceksiniz.
 
 ## <a name="managed-identities"></a>Yönetilen kimlikler
 
-Azure kaynakları için yönetilen kimlik, Azure Etkin Dizini'nin bir özelliğidir. Bu özellik, Azure hizmetlerine Azure AD üzerinde otomatik olarak yönetilen bir kimlik sağlar. Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmetin kimliğini doğrulamak için Yönetilen Kimlik özelliğini kullanabilirsiniz.
+Azure kaynakları için yönetilen kimlik Azure Active Directory bir özelliktir. Bu özellik, Azure hizmetlerine Azure AD üzerinde otomatik olarak yönetilen bir kimlik sağlar. Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için yönetilen kimlik özelliğini kullanabilirsiniz.
 
-Azure kaynakları için yönetilen kimlikler, eskiden Yönetilen Hizmet Kimliği (MSI) olarak bilinen hizmetin yeni adıdır. Daha fazla bilgi edinmek için [Yönetilen Kimlikler'e](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) bakın.
+Azure kaynakları için Yönetilen kimlikler, daha önce Yönetilen Hizmet Kimliği (MSI) olarak bilinen hizmetin yeni adıdır. Daha fazla bilgi için bkz. [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-## <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse çalışma alanı yönetilen kimlik
+## <a name="azure-synapse-workspace-managed-identity"></a>Azure SYNAPSE çalışma alanı yönetilen kimliği
 
-Çalışma alanını oluştururken Azure Synapse çalışma alanınız için sistem tarafından atanmış yönetilen bir kimlik oluşturulur.
+Çalışma alanını oluştururken, Azure SYNAPSE çalışma alanınız için sistem tarafından atanan bir yönetilen kimlik oluşturulur.
 
 >[!NOTE]
->Bu çalışma alanı yönetilen kimlik, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
+>Bu çalışma alanı yönetilen kimliği, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
 
-Azure Synapse, ardışık hatları düzenlemek için yönetilen kimliği kullanır. Yönetilen kimlik yaşam döngüsü doğrudan Azure Synapse çalışma alanına bağlıdır. Azure Synapse çalışma alanını silerseniz, yönetilen kimlik de temizlenir.
+Azure SYNAPSE, işlem hatlarını düzenlemek için yönetilen kimliği kullanır. Yönetilen kimlik yaşam döngüsü doğrudan Azure SYNAPSE çalışma alanına bağlıdır. Azure SYNAPSE çalışma alanını silerseniz yönetilen kimlik de temizlenir.
 
-Çalışma alanı yönetilen kimlik, ardışık işlemler gerçekleştirmek için izinlere ihtiyaç duyar. İzin verirken yönetilen kimliği bulmak için nesne kimliğini veya Azure Synapse çalışma alanı adınızı kullanabilirsiniz.
+Çalışma alanı yönetilen kimliği, işlem hatlarında işlemler gerçekleştirmek için izinlere ihtiyaç duyuyor. İzinleri verirken yönetilen kimliği bulmak için nesne KIMLIĞINI veya Azure SYNAPSE çalışma alanı adınızı kullanabilirsiniz.
 
-## <a name="retrieve-managed-identity-in-azure-portal"></a>Azure portalında yönetilen kimliği alma
+## <a name="retrieve-managed-identity-in-azure-portal"></a>Azure portal yönetilen kimliği al
 
-Yönetilen kimliği Azure portalından alabilirsiniz. Azure portalında Azure Synapse çalışma alanınızı açın ve sol gezintiden **Genel Bakış'ı** seçin. Yönetilen kimliğin nesne kimliği ana ekranda görüntülenir.
+Yönetilen kimliği Azure portal elde edebilirsiniz. Azure SYNAPSE çalışma alanınızı Azure portal açın ve sol gezinmede **genel bakış** ' ı seçin. Yönetilen kimliğin nesne KIMLIĞI, ana ekranda görüntülenir.
 
-![Yönetilen kimlik nesnesi kimliği](./media/synapse-workspace-managed-identity/workspace-managed-identity-1.png)
+![Yönetilen kimlik nesnesi KIMLIĞI](./media/synapse-workspace-managed-identity/workspace-managed-identity-1.png)
 
-Azure Synapse Studio'dan yönetilen kimlik doğrulamasını destekleyen bağlantılı bir hizmet oluşturduğunuzda, yönetilen kimlik bilgileri de gösterilecek.
+Yönetilen kimlik bilgilerini Azure SYNAPSE Studio 'dan yönetilen kimlik doğrulamasını destekleyen bir bağlı hizmet oluşturduğunuzda, yönetilen kimlik bilgileri de görüntülenir.
 
-**Azure Synapse Studio'yu** başlatın ve sol gezintiden **Yönet** sekmesini seçin. Ardından **Bağlantılı hizmetleri** seçin ve yeni bir bağlantılı hizmet oluşturmak için **+ Yeni** seçeneğini seçin.
+**Azure SYNAPSE Studio 'yu** başlatın ve sol gezinti bölmesinde **Yönet** sekmesini seçin. Ardından **bağlı hizmetler** ' i seçin ve yeni bir bağlı hizmet oluşturmak Için **+ Yeni** seçeneğini belirleyin.
 
-![Bağlantılı hizmet oluşturma 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
+![Bağlı hizmet oluşturma 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-Yeni **bağlantılı hizmet** penceresinde *Azure Veri Gölü Depolama Gen2*yazın. Aşağıdaki listeden **Azure Veri Gölü Depolama Gen2** kaynak türünü seçin ve Devam **et'i**seçin.
+**Yeni bağlı hizmet** penceresinde *Azure Data Lake Storage 2.* yazın. Aşağıdaki listeden **Azure Data Lake Storage 2.** kaynak türünü seçin ve **devam**' ı seçin.
 
-![Bağlantılı hizmet oluşturma 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
+![Bağlı hizmet oluşturma 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-Sonraki pencerede, Kimlik Doğrulama yöntemi için **Yönetilen** **Kimlik'i**seçin. Yönetilen kimliğin **Adı** ve Nesne **Kimliği'ni**görürsünüz.
+Sonraki pencerede, **kimlik doğrulama yöntemi**Için **yönetilen kimlik** ' i seçin. Yönetilen kimliğin **adını** ve **nesne kimliğini**görürsünüz.
 
-![Bağlantılı hizmet oluşturma 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
+![Bağlı hizmet oluşturma 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Synapse çalışma alanı yönetilen kimliğine izin verme](./how-to-grant-workspace-managed-identity-permissions.md)
+[Azure SYNAPSE çalışma alanı yönetilen kimliği için izinler veriliyor](./how-to-grant-workspace-managed-identity-permissions.md)

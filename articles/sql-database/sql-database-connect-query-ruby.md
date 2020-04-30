@@ -1,5 +1,5 @@
 ---
-title: Sorgu yapmak için Ruby'yi kullanma
+title: Sorgulamak için Ruby kullanma
 description: Bu konu başlığı altında, Ruby kullanarak Azure SQL Veritabanına bağlanan ve Transact-SQL deyimleriyle veritabanını sorgulayan bir program oluşturma işlemi gösterilir.
 services: sql-database
 ms.service: sql-database
@@ -12,59 +12,59 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 4bef55b049ee542efdb9d72d13fa196c989c75ec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73826919"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Ruby kullanarak Azure SQL veritabanı sorgulama
 
-Bu hızlı başlangıç, Bir Azure SQL veritabanına bağlanmak ve Transact-SQL deyimleri ile verileri sorgulamak için [Ruby'nin](https://www.ruby-lang.org) nasıl kullanılacağını gösterir.
+Bu hızlı başlangıçta, [Ruby](https://www.ruby-lang.org) kullanarak Azure SQL veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
+Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
-- Bir Azure SQL veritabanı. Azure SQL Veritabanı'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Oluştur| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyinde IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [VM'den bağlantı](sql-database-managed-instance-configure-vm.md)|
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
   |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Adventure Works quickstart başına yüklenen|[Geniş Dünya İthalatçıları Geri Yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub'dan](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) [BACPAC](sql-database-import.md) dosyasından Adventure Works'ü geri yükleme veya alma|
+  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
   |||
 
   > [!IMPORTANT]
-  > Bu makaledeki komut dosyaları Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnekle, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya Geniş Dünya İthalatçılar veritabanını kullanmak için bu makaledeki komut dosyalarını değiştirmeniz gerekir.
+  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
   
-- İşletim sisteminiz için ruby ve ilgili yazılımlar:
+- İşletim sisteminiz için Ruby ve ilgili yazılımlar:
   
-  - **MacOS**: Homebrew, rbenv ve yakut yapımı, Ruby, FreeTDS ve TinyTDS'i yükleyin. [MacOS'ta SQL Server'ı kullanarak Ruby uygulamaları oluşturma'daki](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)1.2, 1.3, 1.4, 1.5 ve 2.1 adımlarını görün.
+  - **MacOS**: homebrew, rbenv ve Ruby-Build, Ruby, FreeTDS ve TinyTDS 'i yükler. [MacOS 'ta SQL Server kullanarak Ruby uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)1,2, 1,3, 1,4, 1,5 ve 2,1 adımlarına bakın.
   
-  - **Ubuntu**: Ruby, rbenv ve ruby-build, Ruby, FreeTDS ve TinyTDS için ön koşulları yükleyin. [Ubuntu'da SQL Server'ı kullanarak Ruby uygulamaları oluşturma'daki](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)1.2, 1.3, 1.4, 1.5 ve 2.1 adımlarını görün.
+  - **Ubuntu**: Ruby, rbenv ve Ruby-Build, Ruby, FreeTDS ve TinyTDS için önkoşulları yükler. [Ubuntu üzerinde SQL Server kullanarak Ruby uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)1,2, 1,3, 1,4, 1,5 ve 2,1 adımlarına bakın.
   
-  - **Windows**: Ruby, Ruby Devkit ve TinyTDS'yi yükleyin. Bkz. [Ruby geliştirme için geliştirme ortamını yapılandırın.](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)
+  - **Windows**: Ruby, Ruby devkit ve TinyTDS 'i yükler. Bkz. [Ruby geliştirmesi için geliştirme ortamını yapılandırma](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
-## <a name="get-sql-server-connection-information"></a>SQL sunucu bağlantı bilgilerini alın
+## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Gelecek yordamlar için tam nitelikli sunucu adı veya ana bilgisayar adı, veritabanı adı ve giriş bilgilerine ihtiyacınız vardır.
+Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **SQL veritabanlarına** veya **SQL yönetilen örnekler** sayfasına gidin.
+2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
-3. Genel **Bakış** sayfasında, tek bir veritabanı için **Sunucu adının** yanındaki tam nitelikli sunucu adını veya yönetilen bir örnek için **Host'un** yanındaki tam nitelikli sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine tıklayın ve **Kopyasimgesini** seçin. 
+3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin. 
 
 ## <a name="create-code-to-query-your-sql-database"></a>SQL veritabanınızı sorgulamak için kod oluşturma
 
-1. Bir metin veya kod düzenleyicisinde *sqltest.rb*adında yeni bir dosya oluşturun.
+1. Bir metin veya kod düzenleyicisinde *SQLtest. RB*adlı yeni bir dosya oluşturun.
    
-1. Aşağıdaki kodu ekleyin. Azure SQL veritabanınızdaki değerleri `<server>`, `<database>` `<username>`, `<password>`, ve .
+1. Aşağıdaki kodu ekleyin. , `<server>`, Ve `<database>` `<username>` `<password>`için Azure SQL veritabanınızdaki değerleri değiştirin.
    
    >[!IMPORTANT]
    >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 
@@ -97,10 +97,10 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. G
    ruby sqltest.rb
    ```
    
-1. Veritabanınızdaki en iyi 20 Kategori/Ürün satırının döndürüldünüzü doğrulayın. 
+1. Veritabanınızdaki ilk 20 kategori/ürün satırı döndürüldüğünden emin olun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [İlk Azure SQL veritabanınızı tasarleyin.](sql-database-design-first-database.md)
-- [TinyTDS için GitHub deposu.](https://github.com/rails-sqlserver/tiny_tds)
-- [Sorunları bildirin veya TinyTDS hakkında sorular sorun.](https://github.com/rails-sqlserver/tiny_tds/issues)
-- [SQL Server için Ruby sürücüsü.](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
+- [Ilk Azure SQL veritabanınızı tasarlayın](sql-database-design-first-database.md).
+- [TinyTDS Için GitHub deposu](https://github.com/rails-sqlserver/tiny_tds).
+- [Sorunları bildirin veya TinyTDS hakkında sorular sorun](https://github.com/rails-sqlserver/tiny_tds/issues).
+- [SQL Server Için Ruby sürücüsü](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).

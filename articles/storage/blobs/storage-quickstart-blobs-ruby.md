@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726362"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Hızlı Başlangıç: Ruby kullanarak blobları yükleme, indirme ve listeleme
@@ -22,10 +22,10 @@ Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok blobla
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Aşağıdaki ek ön koşulların yüklü olduğundan emin olun:
+Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* [Ruby için Azure Depolama kitaplığı](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage), rubygem paketini kullanarak: 
+* Rubygeı paketini kullanarak [Ruby Için Azure depolama kitaplığı](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage): 
 
     ```
     gem install azure-storage-blob
@@ -113,7 +113,7 @@ blob_client.set_container_acl(container_name, "container")
 
 Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok blobları en sık kullanılan bloblardır ve bu hızlı başlangıçta bu bloblar kullanılmıştır.  
 
-Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Daha sonra **create\_block\_blob()** yöntemini kullanarak dosyayı belirtilen yola yükleyebilirsiniz. 
+Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola **Create\_Block\_blob ()** yöntemini kullanarak yükleyebilirsiniz. 
 
 Örnek kod, karşıya yükleme ve indirme için kullanılacak yerel bir dosya oluşturur, karşıya yüklenecek dosyayı **file\_path\_to\_file** olarak ve blob adını **local\_file\_name** olarak depolar. Aşağıdaki örnek, dosyayı **quickstartblobs** adlı kapsayıcınıza yükler.
 
@@ -135,11 +135,11 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-Blok blob içeriğinin kısmi bir güncelleştirme gerçekleştirmek **için,\_blok\_listesi() oluştur** yöntemini kullanın. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Sayfa blobları öncelikli olarak IaaS VM'leri desteklemek için kullanılan VHD dosyalarında kullanılır. Ekleme blobları, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetme için kullanılır. Ekleme blobu tek bir yazar modelinde kullanılabilir. Blob depolamada depolanan nesnelerin çoğu blok blobudur.
+Bir blok Blobun içeriğinin kısmi bir güncelleştirmesini gerçekleştirmek için, **Create\_Block\_List ()** yöntemini kullanın. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Sayfa blobları öncelikli olarak IaaS VM'leri desteklemek için kullanılan VHD dosyalarında kullanılır. Ekleme blobları, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetme için kullanılır. Ekleme blobu tek bir yazar modelinde kullanılabilir. Blob depolamada depolanan nesnelerin çoğu blok blobudur.
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-**Liste\_blobs()** yöntemini kullanarak kapsayıcıdaki dosyaların listesini alabilirsiniz. Aşağıdaki kod blob listesini alır, ardından bu bloblarda döngü yapar ve kapsayıcıda bulunan blobların adlarını gösterir.  
+Blobdaki dosyaların listesini, **\_Listele ()** yöntemini kullanarak alabilirsiniz. Aşağıdaki kod blob listesini alır, ardından bu bloblarda döngü yapar ve kapsayıcıda bulunan blobların adlarını gösterir.  
 
 ```ruby
 # List the blobs in the container
@@ -169,7 +169,7 @@ File.open(full_path_to_file2,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu hızlı başlatmada yüklenen lekelere artık ihtiyacınız yoksa, **sil\_kapsayıcı()** yöntemini kullanarak tüm kapsayıcıyı silebilirsiniz. Oluşturulan dosyalara artık gerek yoksa, dosyaları silmek için **delete\_blob()** yöntemini kullanırsınız.
+Bu hızlı başlangıçta karşıya yüklenen bloblara artık ihtiyacınız yoksa, **Delete\_Container ()** yöntemini kullanarak kapsayıcının tamamını silebilirsiniz. Oluşturulan dosyalara artık ihtiyaç duyulmuyorsa, dosyaları silmek için **Delete\_blob ()** yöntemini kullanırsınız.
 
 ```ruby
 # Clean up resources. This includes the container and the temp files

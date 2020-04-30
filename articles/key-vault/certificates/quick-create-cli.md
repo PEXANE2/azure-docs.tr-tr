@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Azure Key Vault'tan bir sertifika ayarlayın ve alın"
-description: Azure CLI kullanarak Azure Key Vault'tan sertifikanın nasıl ayarlanıp alınsüreceğini gösteren hızlı başlangıç
+title: 'Hızlı başlangıç: Azure Key Vault bir sertifikayı ayarlama ve alma'
+description: Azure CLı kullanarak Azure Key Vault bir sertifikanın nasıl ayarlanacağını ve alınacağını gösteren hızlı başlangıç
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -12,30 +12,30 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d8107d26405423da6bb5d85ab79b83edce95d179
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423729"
 ---
-# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Hızlı başlatma: Azure CLI kullanarak Azure Key Vault'tan bir sertifika ayarlayın ve alın
+# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
-Bu hızlı başlangıçta, Azure CLI ile Azure Anahtar Kasası'nda önemli bir kasa oluşturursunuz. Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [Genel Bakış'ı](../general/overview.md)inceleyebilirsiniz. Azure CLI, komut veya betikler kullanarak Azure kaynakları oluşturup yönetmek için kullanılır. Bunu tamamladıktan sonra, bir sertifika saklarsınız.
+Bu hızlı başlangıçta Azure CLı ile Azure Key Vault bir Anahtar Kasası oluşturacaksınız. Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [genel bakışı](../general/overview.md)gözden geçirebilirsiniz. Azure CLI, komut veya betikler kullanarak Azure kaynakları oluşturup yönetmek için kullanılır. Bunu tamamladıktan sonra bir sertifika depolayacaksınız.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-CLI'yi kullanarak Azure'da oturum açabilmek için şunları yazabilirsiniz:
+CLı kullanarak Azure 'da oturum açmak için şunu yazabilirsiniz:
 
 ```azurecli
 az login
 ```
 
-CLI üzerinden giriş seçenekleri hakkında daha fazla bilgi için [Azure CLI ile oturum açma'ya](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) bir göz atın
+CLı aracılığıyla oturum açma seçenekleri hakkında daha fazla bilgi için [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) bölümüne göz atın
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -50,7 +50,7 @@ az group create --name "ContosoResourceGroup" --location eastus
 Daha sonra, önceki adımda oluşturulan kaynak grubunda bir Key Vault oluşturacaksınız. Bazı bilgileri sağlamanız gerekir:
 
 - Bu hızlı başlangıç için **Contoso-vault2** kullanılır. Testinizde benzersiz bir ad sağlamanız gerekir.
-- Kaynak grubu adı **ContosoResourceGroup**.
+- Kaynak grubu adı **Contosoresourcegroup**.
 - **Doğu ABD** konumu.
 
 ```azurecli
@@ -64,17 +64,17 @@ Bu cmdlet’in çıktısı, yeni oluşturulan Key Vault’un özelliklerini gös
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında herhangi bir işlemi gerçekleştirmeye yetkili olan tek hesaptır.
 
-## <a name="add-a-certificate-to-key-vault"></a>Key Vault'a sertifika ekleme
+## <a name="add-a-certificate-to-key-vault"></a>Key Vault bir sertifika ekleyin
 
-Kasaya sertifika eklemek için birkaç ek adım atmanız yeterlidir. Bu sertifika bir uygulama tarafından kullanılabilir. 
+Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu sertifika bir uygulama tarafından kullanılabilir. 
 
-**ExampleCertificate** adlı varsayılan ilke ile kendi imzalı bir sertifika oluşturmak için aşağıdaki komutları yazın:
+**Örnek sertifika** adlı varsayılan ilkeyle otomatik olarak imzalanan bir sertifika oluşturmak için aşağıdaki komutları yazın:
 
 ```azurecli
 az keyvault certificate create --vault-name "Contoso-Vault2" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
 ```
 
-Artık Azure Key Vault'a eklediğiniz bu sertifikaya URI'sini kullanarak başvuruda bulunabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** sürümü almak için kullanın. 
+Artık Azure Key Vault ' a eklediğiniz sertifikaya, URI 'sini kullanarak başvurabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** sürümü almak için kullanın. 
 
 Daha önce depolanan sertifikayı görüntülemek için:
 
@@ -83,7 +83,7 @@ Daha önce depolanan sertifikayı görüntülemek için:
 az keyvault certificate show --name "ExampleCertificate" --vault-name "Contoso-Vault2"
 ```
 
-Şimdi, bir Anahtar Kasası oluşturdunuz, bir sertifika depoladınız ve geri aldınız.
+Şimdi bir Key Vault oluşturdunuz, bir sertifikayı depolamıştır ve geri almıştır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -96,8 +96,8 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz ve içinde bir sertifika depolağı nız oldu. Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta bir Key Vault oluşturup içinde bir sertifika depoladığınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- Azure [Anahtar Kasasına Genel Bakış](../general/overview.md)
-- [Azure CLI az keyvault komutları](/cli/azure/keyvault?view=azure-cli-latest) için başvuruya bakın
-- Azure Key Vault en iyi uygulamalarını gözden [geçirin](../general/best-practices.md)
+- [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- Azure CLı için başvuruya bakın [az keykasa komutları](/cli/azure/keyvault?view=azure-cli-latest)
+- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

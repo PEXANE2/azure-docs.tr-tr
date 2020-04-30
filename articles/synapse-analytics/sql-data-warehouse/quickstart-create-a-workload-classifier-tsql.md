@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: İş yükü sınıflandırıcısı oluşturma - T-SQL'
-description: Yüksek öneme sahip bir iş yükü sınıflandırıcıoluşturmak için T-SQL'i kullanın.
+title: 'Hızlı başlangıç: iş yükü Sınıflandırıcısı oluşturma-T-SQL'
+description: T-SQL ' y i kullanarak yüksek öneme sahip bir iş yükü Sınıflandırıcısı oluşturun.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80633742"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Quickstart: T-SQL kullanarak iş yükü sınıflandırıcısı oluşturma
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak iş yükü Sınıflandırıcısı oluşturma
 
-Bu hızlı başlangıçta, kuruluşunuzun CEO'su için büyük önem taşıyan bir iş yükü sınıflandırıcısı hızla oluşturursunuz. Bu iş yükü sınıflandırıcısı, CEO sorgularının kuyrukta daha az öneme sahip diğer sorgulardan önce olmasını sağlar.
+Bu hızlı başlangıçta, kuruluşunuzun CEO 'SU için yüksek önem derecesine sahip bir iş yükü sınıflandırıcısını hızlı bir şekilde oluşturacaksınız. Bu iş yükü Sınıflandırıcısı, CEO sorgularının, sıradaki daha düşük öneme sahip diğer sorgulara göre öncelikli olması için izin verir.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Azure Synapse Analytics'te Synapse SQL havuzu örneği oluşturmak, faturalandırılabilir yeni bir hizmete neden olabilir.  Daha fazla bilgi için Azure [Synapse Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)bölümüne bakın.
+> Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlatma, zaten bir SQL Veri Ambarı'nız olduğunu ve CONTROL DATABASE izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, zaten bir SQL veri ambarınızın olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="create-login-for-theceo"></a>TheCEO için giriş oluşturma
+## <a name="create-login-for-theceo"></a>TheCEO için oturum açma oluştur
 
-'TheCEO' için CREATE `master` [LOGIN'i](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak veritabanında bir SQL Server kimlik doğrulama girişi oluşturun.
+' TheCEO ' için `master` [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Kullanıcı oluştur
 
-mySampleDataWarehouse'da "TheCEO" [kullanıcısını oluşturun](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+"TheCEO" adlı Kullanıcı, mySampleDataWarehouse içinde [Oluştur](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -61,9 +61,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>İş yükü sınıflandırıcısı oluşturma
+## <a name="create-a-workload-classifier"></a>İş yükü Sınıflandırıcısı oluşturma
 
-"TheCEO" için büyük öneme sahip bir [iş yükü sınıflandırıcısı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturun.
+Yüksek öneme sahip "TheCEO" için bir [iş yükü Sınıflandırıcısı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturun.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -73,7 +73,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
       ,IMPORTANCE = HIGH);
 ```
 
-## <a name="view-existing-classifiers"></a>Varolan sınıflandırıcıları görüntüleme
+## <a name="view-existing-classifiers"></a>Mevcut sınıflandırıcıları görüntüleme
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers
@@ -87,27 +87,27 @@ DROP USER [TheCEO]
 ;
 ```
 
-Veri ambarı birimleri ve veri ambarınızda depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlemi duraklatarak, yalnızca veri depolama için ücretlendirilirsiniz. Verilerle çalışmaya hazır olduğunuzda, bilgi işlem yapmaya devam edin.
+- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
 - Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
 
-Kaynakları temizlemek için aşağıdaki adımları izleyin.
+Kaynakları temizlemek için bu adımları izleyin.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın , veri ambarınızda seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, veri Ambarınızda öğesini seçin.
 
     ![Kaynakları temizleme](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlemi duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşleme devam etmek için **Başlat'ı**seçin.
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
 
-3. Bilgi işlem veya depolama için ücretlendirilmemek için veri ambarını kaldırmak için **Sil'i**seçin.
+3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' i seçin.
 
-4. Oluşturduğunuz SQL sunucusunu kaldırmak için önceki resimde **mynewserver-20180430.database.windows.net'yi** seçin ve sonra **Sil'i**seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
+4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
 
-5. Kaynak grubunu kaldırmak için **myResourceGroup'u**seçin ve ardından **kaynak grubunu sil'i**seçin.
+5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Şimdi bir iş yükü sınıflandırıcı oluşturduk. Nasıl performans gösterdiğini görmek için CEO olarak birkaç sorgu çalıştırın. Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.
-- Synapse SQL iş yükü yönetimi hakkında daha [Workload Classification](sql-data-warehouse-workload-classification.md)fazla bilgi için [bkz.](sql-data-warehouse-workload-importance.md)
-- [İş Yükü Önemini Yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve İş Yükü Yönetimini Nasıl [Yönetecek ve İzleyecek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)makalelere bakın.
+- Artık bir iş yükü Sınıflandırıcısı oluşturdunuz. Nasıl çalıştığını görmek için birkaç sorguyu TheCEO olarak çalıştırın. Sorguları ve atanan önemi görüntülemek için bkz. [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+- SYNAPSE SQL iş yükü yönetimi hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md) ve [iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).
+- [Iş yükü önemini yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve [Iş yükü yönetimini yönetmek ve izlemek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)için nasıl yapılır makalelerine bakın.

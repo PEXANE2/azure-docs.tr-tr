@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 223544f7ceddce6bc2071d561da1cff1c0d4b53b
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80420147"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
@@ -75,7 +75,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 
 * Belirteç  
 * Toplama işlevleri
-  * min, max, avg, saymak
+  * Min, Max, AVG, Count
 * Blob dönüşüm işlevleri 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -96,21 +96,21 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 
 ## <a name="cassandra-api-limits"></a>Cassandra API limitleri
 
-Azure Cosmos DB Cassandra API'sinin bir tabloda depolanan verilerin boyutuna dair herhangi bir sınırlaması yoktur. Yüzlerce terabayt veya Petabaytlarca verinin depolanabilmesinin yanı sıra bölüm anahtarı sınırları da kabul edilir. Benzer şekilde, her varlık veya satır eşdeğeri sütun sayısı üzerinde herhangi bir sınırlama yoktur. Ancak, varlığın toplam boyutu 2 MB'ı geçmemelidir. Bölüm başına veri anahtarı, diğer tüm API'lerde olduğu gibi 20 GB'ı geçemez.
+Azure Cosmos DB Cassandra API'sinin bir tabloda depolanan verilerin boyutuna dair herhangi bir sınırlaması yoktur. Yüzlerce terabayt veya Petabaytlarca verinin depolanabilmesinin yanı sıra bölüm anahtarı sınırları da kabul edilir. Benzer şekilde, her varlık veya satır eşdeğeri sütun sayısıyla ilgili herhangi bir sınıra sahip değildir. Ancak, varlığın toplam boyutu 2 MB 'ı aşmamalıdır. Bölüm anahtarı başına veri, diğer tüm API 'lerde olduğu gibi 20 GB 'yi aşamaz.
 
 ## <a name="tools"></a>Araçlar 
 
 Azure Cosmos DB Cassandra API'si bir yönetilen hizmet platformudur. Kümeyi yönetmek için Atık Toplayıcı, Java Sanal Makinesi (JVM) ve düğüm aracı gibi yönetim ek yükü veya yardımcı programları gerekmez. İkili CQLv4 uyumluluğunu kullanan cqlsh gibi araçları destekler. 
 
-* Azure portalının veri gezgini, ölçümleri, günlük tanılama, PowerShell ve CLI hesabı yönetmek için desteklenen diğer mekanizmalardır.
+* Azure portal veri Gezgini, ölçümler, günlük tanılama, PowerShell ve CLı, hesabı yönetmek için desteklenen diğer mekanizmalarda bulunur.
 
 ## <a name="cql-shell"></a>CQL Kabuğu  
 
-CQLSH komut satırı yardımcı programı Apache Cassandra 3.1.1 ile birlikte gelir ve bazı ortam değişkenlerini ayarlayarak kutunun dışında çalışır.
+CENSH komut satırı yardımcı programı Apache Cassandra 3.1.1 ile birlikte gelir ve bazı ortam değişkenlerini ayarlayarak kullanıma hazır değildir.
 
-**Windows:**
+**Pencerelerin**
 
-Windows kullanıyorsanız, [Linux için Windows dosya sistemini](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)etkinleştirmenizi öneririz. Daha sonra aşağıdaki linux komutlarını takip edebilirsiniz.
+Windows kullanıyorsanız, [Linux Için Windows FileSystem](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)'ı etkinleştirmenizi öneririz. Daha sonra aşağıdaki Linux komutlarını izleyebilirsiniz.
 
 **Unix/Linux/Mac:**
 
@@ -143,10 +143,10 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutlarını destekler.
 
-* CREATE KEYSPACE (Bu komutun çoğaltma ayarları yoksayılır)
+* ANAHTAR alanı oluştur (Bu komutun çoğaltma ayarları yoksayılır)
 * CREATE TABLE 
-* CREATE INDEX (dizin adı belirtmeden ve henüz desteklenmeyen tam dondurulmuş dizinler)
-* FILTRELEME IZIN VER
+* DIZIN oluşturma (Dizin adı belirtmeden ve tam dondurulmuş dizinler henüz desteklenmiyor)
+* FILTRELEMEYE IZIN VER
 * ALTER TABLE 
 * USE 
 * INSERT 
@@ -155,7 +155,7 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 * BATCH- Yalnızca günlüğe kaydedilmemiş komutlar desteklenir 
 * DELETE
 
-CQL v4 uyumlu SDK aracılığıyla gerçekleştirilen tüm CRUD işlemleri, tüketilen hata ve istek birimleri hakkında ek bilgi verecektir. DELETE ve UPDATE komutları, sağlanan iş bölümünün en verimli şekilde kullanılmasını sağlamak için kaynak yönetimi göz önünde bulundurularak ele alınmalıdır.
+CQL v4 uyumlu SDK aracılığıyla yürütülen tüm CRUD işlemleri, hata ve tüketilen istek birimleri hakkında ek bilgiler döndürür. Sağlanan aktarım hızını en verimli şekilde kullanmasını sağlamak için, DELETE ve UPDATE komutları dikkate alınması gereken kaynak yönetimi ile birlikte işlenmelidir.
 
 * Not: gc_grace_seconds değeri belirtilmişse sıfır olmalıdır.
 
@@ -173,18 +173,18 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Tutarlılık eşleme 
 
-Azure Cosmos DB Cassandra API'si okuma işlemleri için tutarlılık sunar.  Tutarlılık eşleme [burada](consistency-levels-across-apis.md#cassandra-mapping)ayrıntılı .
+Azure Cosmos DB Cassandra API'si okuma işlemleri için tutarlılık sunar.  Tutarlılık eşlemesi [burada](consistency-levels-across-apis.md#cassandra-mapping)ayrıntılı olarak verilmiştir.
 
 ## <a name="permission-and-role-management"></a>İzin ve rol yönetimi
 
-Azure Cosmos DB, [Azure portalı](https://portal.azure.com)üzerinden elde edilebilen anahtarları sağlama, döndürme, ölçümleri görüntüleme ve okuma-yazma ve salt okunur parolaları/anahtarları için rol tabanlı erişim denetimini (RBAC) destekler. Azure Cosmos DB, CRUD etkinlikleri için rolleri desteklemez.
+Azure Cosmos DB, sağlama, anahtar döndürme, ölçümleri görüntüleme ve [Azure Portal](https://portal.azure.com)aracılığıyla elde edilebilir salt okuma ve salt okuma parolaları/anahtarları için rol tabanlı erişim denetimi 'NI (RBAC) destekler. Azure Cosmos DB CRUD etkinlikleri için rolleri desteklemez.
 
-## <a name="keyspace-and-table-options"></a>Anahtar Alanı ve Tablo seçenekleri
+## <a name="keyspace-and-table-options"></a>Keyspace ve tablo seçenekleri
 
-"Anahtar Alanı Oluştur" komutundaki bölge adı, sınıf, replication_factor ve veri merkezi seçenekleri şu anda yoksayılır. Sistem, bölgeleri eklemek için azure cosmos DB'nin [küresel dağıtım](global-dist-under-the-hood.md) çoğaltma yöntemini kullanır. Verilerin bölgeler arası varlığına ihtiyacınız varsa, daha fazla bilgi edinmek için powershell, CLI veya portal ile hesap düzeyinde etkinleştirebilirsiniz, bölgeler makalesinin [nasıl ekleyeceğinizi](how-to-manage-database-account.md#addremove-regions-from-your-database-account) görün. Azure Cosmos DB her yazmanın dayanıklı olmasını sağladığından Durable_writes devre dışı tutulamaz. Azure Cosmos DB, her bölgede verileri dört yinelemeden oluşan yineleme kümesi nde çoğaltır ve bu çoğaltma kümesi [yapılandırması](global-dist-under-the-hood.md) değiştirilemez.
+"Keyspace oluşturma" komutunda bölge adı, sınıf, replication_factor ve veri merkezi seçenekleri şu anda yok sayılır. Sistem, bölgeleri eklemek için temel Azure Cosmos DB [genel dağıtım](global-dist-under-the-hood.md) çoğaltma yöntemini kullanır. Bölgeler arası veri varlığına ihtiyacınız varsa, daha fazla bilgi edinmek için PowerShell, CLı veya Portal ile hesap düzeyinde etkinleştirebilir, daha fazla bilgi edinmek için bkz. [bölge ekleme](how-to-manage-database-account.md#addremove-regions-from-your-database-account) makalesi. Azure Cosmos DB her yazmanın dayanıklı olmasını sağladığından Durable_writes devre dışı bırakılamaz. Her bölgede, Azure Cosmos DB, verileri dört yinelemeden oluşan çoğaltma kümesi genelinde çoğaltır ve bu çoğaltma kümesi [yapılandırması](global-dist-under-the-hood.md) değiştirilemez.
  
-Tablo oluşturulurken, sıfıra ayarlanılması gereken gc_grace_seconds hariç tüm seçenekler yoksayılır.
-Keyspace ve tablo 400 RU / s minimum değeri ile "cosmosdb_provisioned_throughput" adlı ekstra bir seçenek var. Keyspace iş girişi, birden çok tablo arasında iş paylaşımına olanak tanır ve tüm tablolar sağlanan iş bürünme den yararlanmıyorken senaryolar için yararlıdır. Alter Table komutu, bölgeler arasında sağlanan iş akışının değiştirilmesine olanak tanır. 
+Tablo oluşturulurken tüm seçenekler yok sayılır, gc_grace_seconds hariç, sıfıra ayarlanmalıdır.
+Anahtar alanı ve tablo, en az 400 RU/sn değeri olan "cosmosdb_provisioned_throughput" adlı ek bir seçeneğe sahiptir. Anahtar alanı verimlilik, birden çok tablo arasında üretilen iş aktarımına izin verir ve tüm tablolar sağlanan aktarım hızını kullanmadan senaryolar için yararlıdır. Alter table komutu bölgeler genelinde sağlanan aktarım hızını değiştirmeye izin verir. 
 
 ```
 CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  
@@ -198,7 +198,7 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>Cassandra bağlantı yeniden deneme ilkesi kullanımı
 
-Azure Cosmos DB, kaynak yönetimli bir sistemdir. Bu, işlemler tarafından tüketilen istek birimlerine bağlı olarak belirli bir saniyede belirli sayıda işlem yapabileceğiniz anlamına gelir. Bir uygulama belirli bir saniyede bu sınırı aşarsa, istekler oran sınırlıdır ve özel durumlar atılır. Azure Cosmos DB'deki Cassandra API, bu özel durumları Cassandra yerel protokolündeki aşırı yüklenen hatalara çevirir. Uygulamanızın, durum oranı sınırlaması durumunda istekleri engellenebilmesini ve yeniden deneyebilmesini sağlamak [için, kıvılcım](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) ve [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) uzantıları sağlanır. Azure Cosmos DB'de Cassandra API'ye erişmek için başka SDK'lar kullanıyorsanız, bu özel durumları yeniden denemek için bir bağlantı ilkesi oluşturun.
+Azure Cosmos DB, kaynak tarafından yönetilen bir sistemdir. Bu, işlemler tarafından tüketilen istek birimlerine göre belirli bir saniye içinde belirli sayıda işlem yapabileceğiniz anlamına gelir. Bir uygulama belirli bir saniye içindeki sınırı aşarsa, istekler hız sınırlı olur ve özel durumlar oluşturulur. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür. Uygulamanızın durum oranı kısıtlamalarındaki istekleri ele geçirebilir ve yeniden denediğinden emin olmak için [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) ve [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) uzantıları sağlanır. Azure Cosmos DB Cassandra API erişmek için diğer SDK 'lar kullanıyorsanız, bu özel durumlar üzerinde yeniden denemek için bir bağlantı ilkesi oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

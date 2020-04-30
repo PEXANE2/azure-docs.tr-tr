@@ -1,5 +1,5 @@
 ---
-title: Azure Veri Fabrikasını kullanarak Blob Depolama'daki verileri kopyalama
+title: Azure Data Factory kullanarak blob depolamada veri kopyalama
 description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
 services: data-factory
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
 ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419349"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Quickstart: PowerShell'i kullanarak bir Azure veri fabrikası oluşturma
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Veri Fabrikası oluşturma
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-powershell.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu hızlı başlangıç, PowerShell kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz ardışık işlem, verileri azure blob depolamasında bir klasörden başka bir klasöre **kopyalar.** Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
+Bu hızlı başlangıç, PowerShell kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri bir Azure Blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar** . Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
 
 > [!NOTE]
 > Bu makale, Data Factory hizmetine ayrıntılı giriş bilgileri sağlamaz. Azure Data Factory hizmetine giriş bilgileri için bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -39,7 +39,7 @@ Bu hızlı başlangıç, PowerShell kullanarak bir Azure veri fabrikası oluştu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell'in nasıl yüklenir ve yapılandırılabilen](/powershell/azure/install-Az-ps)yönergeleri izleyerek en son Azure PowerShell modüllerini yükleyin.
+[Azure PowerShell nasıl yükleneceği ve yapılandırılacağı](/powershell/azure/install-Az-ps)konusundaki yönergeleri izleyerek en son Azure PowerShell modüllerini yükler.
 
 #### <a name="log-in-to-powershell"></a>PowerShell’de oturum açın
 
@@ -90,7 +90,7 @@ Bu hızlı başlangıç, PowerShell kullanarak bir Azure veri fabrikası oluştu
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Veri fabrikasını oluşturmak için, $ResGrp değişkenindeki Konum ve ResourceGroupName özelliğini kullanarak aşağıdaki **Set-AzDataFactoryV2** cmdlet'i çalıştırın:
+4. Veri Fabrikası oluşturmak için, $ResGrp değişkeninden location ve ResourceGroupName özelliğini kullanarak aşağıdaki **set-AzDataFactoryV2** cmdlet 'ini çalıştırın:
 
     ```powershell
     $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
@@ -115,8 +115,8 @@ Aşağıdaki noktalara dikkat edin:
 Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturun. Bu hızlı başlangıçta hem kaynak hem de havuz deposu olarak kullanılan bir Azure Depolama bağlı hizmeti oluşturursunuz. Bağlı hizmetler, Data Factory hizmetinin bunlara bağlanmak için çalışma zamanında kullandığı bağlantı bilgilerini içerir.
 
 >[!TIP]
->Bu hızlı başlangıçta, veri deponuzun kimlik doğrulama türü olarak *Hesap anahtarını* kullanırsınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *Gerekirse SAS URI,**Servis Sorumlusu* ve *Yönetilen Kimlik.* Ayrıntılar için [bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) ilgili bölümlere bakın.
->Veri depolarının sırlarını güvenli bir şekilde depolamak için Azure Anahtar Kasası kullanılması da önerilir. Ayrıntılı resimler için [bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
+>Bu hızlı başlangıçta, *hesap anahtarını* veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *SAS URI 'Si*,*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) ilgili bölümlere bakın.
+>Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın.
 
 1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki içeriğe sahip **AzureStorageLinkedService.json** adlı bir JSON dosyası oluşturun: (Henüz yoksa ADFv2QuickStartPSH adlı bir klasör oluşturun.).
 
@@ -144,7 +144,7 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Bağlı hizmeti oluşturmak için **Set-AzDataFactoryV2LinkedService** cmdlet'i çalıştırın: **AzureStorageLinkedService**.
+3. Bağlı hizmeti oluşturmak için **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın: **AzureStorageLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -163,10 +163,10 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
-Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset**. Bu veri kümeleri **ikili**tiptir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur.
+Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset**. Bu veri kümeleri **binary**türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur.
 Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını (**adftutorial**), klasörü (**input**) ve dosyayı (**emp.txt**) belirtirsiniz.
 Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını (**adftutorial**), klasörü (**output**) ve dosyayı belirtirsiniz. 
-1. **C:\ADFv2QuickStartPSH** klasöründe Aşağıdaki içeriği içeren **InputDataset.json** adlı bir JSON dosyası oluşturun:
+1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki Içeriğe sahip **ınputdataset. JSON** adlı bir JSON dosyası oluşturun:
 
     ```json
     {
@@ -190,7 +190,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
     }
     ```
 
-2. Veri kümesini oluşturmak için: **InputDataset**, **Set-AzDataFactoryV2Dataset** cmdlet çalıştırın.
+2. **Inputdataset**veri kümesini oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -208,7 +208,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Çıkış veri kümesini oluşturmak için adımları yineleyin. **C:\ADFv2QuickStartPSH** klasöründe **OutputDataset.json** adlı bir JSON dosyası oluşturun ve aşağıdaki içeriği içeren:
+3. Çıkış veri kümesini oluşturmak için adımları yineleyin. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki Içeriğe sahip **outputdataset. JSON** adlı bir JSON dosyası oluşturun:
 
     ```json
     {
@@ -231,7 +231,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
     }
     ```
 
-4. **OutDataset**oluşturmak için **Set-AzDataFactoryV2Dataset** cmdlet çalıştırın.
+4. **Outdataset**'i oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -250,7 +250,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
     ```
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-Bu yordamda, giriş ve çıktı veri kümelerini kullanan bir kopyalama etkinliği içeren bir ardışık işlem kümesi oluşturursunuz. Kopyalama etkinliği, giriş veri kümesi ayarlarında belirttiğiniz dosyadaki verileri çıkış veri kümesi ayarlarında belirttiğiniz dosyaya kopyalar.  
+Bu yordamda, giriş ve çıkış veri kümelerini kullanan bir kopyalama etkinliğine sahip bir işlem hattı oluşturacaksınız. Kopyalama etkinliği, giriş veri kümesi ayarlarında belirttiğiniz dosyadaki verileri çıkış veri kümesi ayarlarında belirttiğiniz dosyaya kopyalar.  
 
 1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki içeriğe sahip **Adfv2QuickStartPipeline.json** adlı bir JSON dosyası oluşturun:
 
@@ -306,7 +306,7 @@ Bu yordamda, giriş ve çıktı veri kümelerini kullanan bir kopyalama etkinli�
     }
     ```
 
-2. Boru hattı oluşturmak için: **Adfv2QuickStartPipeline**, **Set-AzDataFactoryV2Pipeline** cmdlet çalıştırın.
+2. İşlem hattını oluşturmak için: **Adfv2QuickStartPipeline**, **set-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `
@@ -318,9 +318,9 @@ Bu yordamda, giriş ve çıktı veri kümelerini kullanan bir kopyalama etkinli�
 
 ## <a name="create-a-pipeline-run"></a>İşlem hattı çalıştırması oluşturma
 
-Bu adımda, bir ardışık işlem hattı çalıştırın.
+Bu adımda bir işlem hattı çalıştırması oluşturursunuz.
 
-Bir boru hattı çalışması oluşturmak için **Invoke-AzDataFactoryV2Pipeline** cmdlet çalıştırın. Cmdlet, gelecekte izlemek üzere işlem hattı çalıştırma kimliğini döndürür.
+Bir işlem hattı çalıştırması oluşturmak için **Invoke-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın. Cmdlet, gelecekte izlemek üzere işlem hattı çalıştırma kimliğini döndürür.
 
   ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline `

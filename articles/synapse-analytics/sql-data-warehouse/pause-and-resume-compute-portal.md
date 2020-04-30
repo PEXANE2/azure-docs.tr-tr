@@ -1,6 +1,6 @@
 ---
-title: Azure portalı üzerinden Synapse SQL havuzunda hesaplamayı duraklatma ve devam ettirme
-description: Maliyetlerden tasarruf etmek için SQL havuzu için hesaplamayı duraklatmak için Azure portalını kullanın. Veri ambarını kullanmaya hazır olduğunuzda bilgi işlem devam edin.
+title: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
+description: Maliyetleri kaydetmek üzere SQL havuzu için işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,90 +12,90 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 55e3d5bf4fb63c35d484e4a764c7eeb2e2484fcf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80350967"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Quickstart: Azure portalı üzerinden Synapse SQL havuzunda hesaplamayı duraklatma ve devam ettirme
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 
-Synapse SQL havuzu (veri ambarı) bilgi işlem kaynaklarını duraklatmak ve devam ettirmek için Azure portalını kullanabilirsiniz. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+SYNAPSE SQL Havuzu (veri ambarı) işlem kaynaklarını duraklatmak ve devam etmek için Azure portal kullanabilirsiniz. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-**mySampleDataWarehouse**adlı bir SQL havuzu oluşturmak için [Oluştur ve Bağla - portalı](create-data-warehouse-portal.md) kullanın. 
+**Mysampledatawarehouse**ADLı bir SQL havuzu oluşturmak için [Create and Connect-Portal](create-data-warehouse-portal.md) ' i kullanın. 
 
-## <a name="pause-compute"></a>İşlemi duraklatma
+## <a name="pause-compute"></a>İşlem Duraklat
 
-Maliyetleri azaltmak için, kaynakları isteğe bağlı olarak duraklatabilir ve yeniden başlatabilirsiniz. Örneğin, veritabanını gece ve hafta sonları kullanmayacaksanız, bu saatlerde veritabanını duraklatabilir ve gün içinde devam ettirebilirsiniz. 
+Maliyetleri azaltmak için, talep üzerine işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Örneğin, gece ve hafta sonları sırasında veritabanını kullanmıyorsanız, bu zamanlarda duraklatıp gün içinde devam edebilirsiniz. 
 >[!NOTE]
->Veritabanı duraklatılmışken kaynak hesaplama için ücretlendirilmezsiniz. Ancak, depolama için ücretlendirilmeye devam eceksiniz. 
+>Veritabanı duraklatıldığında işlem kaynakları için ücretlendirilmezsiniz. Ancak, depolama alanı için ücretlendirilmeye devam edersiniz. 
 
-SQL havuzuduraklatmak için aşağıdaki adımları izleyin:
+Bir SQL havuzunu duraklatmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-2. Azure portalının sol navigasyon sayfasında **Azure Synapse Analytics'i (eski adıyla SQL DW)** tıklatın.
-2. SQL havuzunu açmak için **Azure Synapse Analytics (eski adıyla SQL DW)** sayfasından **mySampleDataWarehouse'u** seçin. 
-3. **mySampleDataWarehouse** sayfasında, bildirim **durumu** **Çevrimiçi'** dir.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. Azure portal sol gezinti sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
+2. SQL havuzunu açmak için **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. 
+3. **Mysampledatawarehouse** sayfasında, **durumu** **çevrimiçi**olarak görürsünüz.
 
-    ![Çevrimiçi işlem yapın](././media/pause-and-resume-compute-portal/compute-online.png)
+    ![Çevrimiçi işlem](././media/pause-and-resume-compute-portal/compute-online.png)
 
-4. SQL havuzunu duraklatmak için **Duraklat** düğmesini tıklatın. 
-5. Devam etmek isteyip istemediğiniz sorulan bir onay sorusu görüntülenir. **Evet'i**tıklatın.
-6. Birkaç dakika bekleyin ve **ardından Durumun** **Duraklatanolduğunu**fark edin.
+4. SQL havuzunu duraklatmak için **Duraklat** düğmesine tıklayın. 
+5. Devam etmek isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**' e tıklayın.
+6. Birkaç dakika bekleyin ve sonra **durumun** **duraklatıldığına**dikkat edin.
 
     ![Duraklatılıyor](./media/pause-and-resume-compute-portal/pausing.png)
 
-7. Duraklatma işlemi tamamlandığında, durum **Duraklatılır** ve seçenek düğmesi **Devam edilir.**
-8. SQL havuzunun işlem kaynakları artık çevrimdışı. Hizmete devam edene kadar işlem için ücretlendirilmezsiniz.
+7. Duraklatma işlemi tamamlandığında durum **duraklatılır** ve seçenek düğmesi **devam**edilir.
+8. SQL havuzunun işlem kaynakları artık çevrimdışı. Hizmeti sürdürülene kadar işlem için ücretlendirilmezsiniz.
 
     ![Çevrimdışı işlem](././media/pause-and-resume-compute-portal/compute-offline.png)
 
 
-## <a name="resume-compute"></a>Özgeçmiş hesaplama
+## <a name="resume-compute"></a>İşlem işlemine geri dön
 
-SQL havuzuna devam etmek için aşağıdaki adımları izleyin.
+SQL havuzunu yeniden başlatmak için aşağıdaki adımları izleyin.
 
-1. Azure portalının sol sayfasında **Azure Synapse Analytics'i (eski adıyla SQL DW)** tıklatın.
-2. SQL havuz sayfasını açmak için **Azure Synapse Analytics (eski adıyla SQL DW)** sayfasından **mySampleDataWarehouse'u** seçin. 
-3. **mySampleDataWarehouse** sayfasında, bildirim **Durumu** **Duraklatıldı.**
+1. Azure portal sol sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
+2. SQL havuzu sayfasını açmak için **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. 
+3. **Mysampledatawarehouse** sayfasında **durum** **duraklatıldı**' ya dikkat edin.
 
     ![Çevrimdışı işlem](././media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. SQL havuzuna devam etmek için **Devam edin'i**tıklatın. 
-5. Başlamak isteyip istemediğiniz bir onay sorusu görüntülenir. **Evet'i**tıklatın.
-6. **Durumun** **Devam**Ettiğini Fark Edin.
+4. SQL havuzunu yeniden başlatmak için, geri ' **ye tıklayın.** 
+5. Başlatmak isteyip istemediğinizi soran bir onay sorusu görüntülenir. **Evet**' e tıklayın.
+6. **Durumun** **sürdürüldiğine**dikkat edin.
 
     ![Sürdürülüyor](./media/pause-and-resume-compute-portal/resuming.png)
 
-7. SQL havuzu tekrar çevrimiçi olduğunda, durum **Çevrimiçi** ve seçenek düğmesi **Duraklatma'** dır.
-8. SQL havuzu için işlem kaynakları artık çevrimiçi ve hizmeti kullanabilirsiniz. İşlem ücretleri devam etti.
+7. SQL havuzu yeniden çevrimiçi olduğunda durum **çevrimiçi** olur ve seçenek düğmesi **duraklatılır**.
+8. SQL havuzu için işlem kaynakları artık çevrimiçi ve hizmeti kullanabilirsiniz. İşlem ücretleri sürdürüldü.
 
-    ![Çevrimiçi işlem yapın](././media/pause-and-resume-compute-portal/compute-online.png)
+    ![Çevrimiçi işlem](././media/pause-and-resume-compute-portal/compute-online.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veri ambarı birimleri ve SQL havuzunuzda depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır. 
+Veri ambarı birimleri ve SQL havuzunuzdaki depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır. 
 
-- Verileri depolamada tutmak istiyorsanız, bilgi işlem'i duraklatın.
+- Verileri depolama alanında tutmak istiyorsanız, işlem ' i duraklatın.
 - Gelecekteki ücretleri kaldırmak istiyorsanız, SQL havuzunu silebilirsiniz. 
 
 Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve SQL havuzuna tıklayın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve SQL havuzunuza tıklayın.
 
     ![Kaynakları temizleme](./media/pause-and-resume-compute-portal/clean-up-resources.png)
 
 1. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. 
 
-2. İşlem veya depolama için ücretlendirilmemek için SQL havuzunu kaldırmak için **Sil'i**tıklatın.
+2. İşlem veya depolama için ücretlendirilmemek üzere SQL havuzunu kaldırmak için **Sil**' e tıklayın.
 
-3. Oluşturduğunuz SQL sunucusunu kaldırmak için **sqlpoolservername.database.windows.net**ve **sil'i**tıklatın.  
+3. Oluşturduğunuz SQL Server 'ı kaldırmak için **sqlpoolservername.Database.Windows.net**ve ardından **Sil**' e tıklayın.  
 
    > [!CAUTION]
    > Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
@@ -105,5 +105,5 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi DURAKladınız ve SQL havuzunuz için işlem devam ettirin. [VERILERI SQL havuzuna](load-data-from-azure-blob-storage-using-polybase.md)nasıl yükleyin hakkında daha fazla bilgi edinmek için sonraki makaleye devam edin. Bilgi işlem yeteneklerini yönetme hakkında daha fazla bilgi için, [bilgi işlem genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesini yönet'e bakın. 
+Artık SQL havuzunuz için işlemi duraklattı ve sürdürdü. [SQL Pool 'a veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)hakkında daha fazla bilgi edinmek için sonraki makaleye geçin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi. 
 

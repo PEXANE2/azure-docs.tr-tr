@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: d3d33c87dc1adf65a53b71cc4c833e7f4a191670
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67188611"
 ---
 ## <a name="what-are-service-bus-queues"></a>Service Bus kuyrukları nelerdir?
-Service Bus kuyrukları **aracılı mesajlaşma** iletişim modelini destekler. Kuyruklar kullanıldığında, dağıtılmış uygulamanın bileşenleri birbirleriyle doğrudan iletişim kurmazlar; bunun yerine bir aracı gibi davranan bir kuyruk aracılığıyla iletileri değiş tokuş eder (aracı). İleti üreticisi (gönderen) iletiyi kuyruğa aktarır ve ardından işleme devam eder. Zaman uyumsuz olarak, ileti tüketicisi (alıcı) iletiyi kuyruktan alır ve bunu işler. Üreticinin işleme devam etmesi ve daha fazla ileti göndermesi için tüketiciden yanıt beklemesi gerekmez. Kuyruklar, bir veya daha fazla rakip tüketiciye **First In, First Out (FIFO)** ileti teslimi sunar. Bu da, genellikle iletilerin kuyruğa eklendiği bir düzende alıcılar tarafından alınıp işleneceği ve her iletinin tek bir ileti tüketicisi tarafından alınıp işleneceği anlamına gelir.
+Service Bus kuyrukları **aracılı mesajlaşma** iletişim modelini destekler. Kuyruklar kullanıldığında, dağıtılmış uygulamanın bileşenleri birbirleriyle doğrudan iletişim kurmazlar; bunun yerine bir aracı gibi davranan bir kuyruk aracılığıyla iletileri değiş tokuş eder (aracı). İleti üreticisi (gönderen) iletiyi kuyruğa aktarır ve ardından işleme devam eder. Zaman uyumsuz olarak, ileti tüketicisi (alıcı) iletiyi kuyruktan alır ve bunu işler. Üreticinin işleme devam etmesi ve daha fazla ileti göndermesi için tüketiciden yanıt beklemesi gerekmez. Kuyruklar, bir veya daha fazla rakip tüketiciye **ilk olarak, Ilk çıkar (FIFO)** ileti teslimi sunar. Bu da, genellikle iletilerin kuyruğa eklendiği bir düzende alıcılar tarafından alınıp işleneceği ve her iletinin tek bir ileti tüketicisi tarafından alınıp işleneceği anlamına gelir.
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 

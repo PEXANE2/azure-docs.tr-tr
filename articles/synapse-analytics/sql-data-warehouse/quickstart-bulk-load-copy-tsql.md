@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Tek bir T-SQL deyimi kullanarak toplu yük verileri'
-description: COPY deyimini kullanarak toplu yük verileri
+title: 'Hızlı başlangıç: tek bir T-SQL ifadesini kullanarak verileri toplu yükleme'
+description: COPY ifadesini kullanarak verileri toplu yükleme
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,33 +12,33 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: d39b3085a802ca0ff745ab1f63f4a8fba966ea48
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81115012"
 ---
-# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Quickstart: COPY deyimini kullanarak toplu yük verileri
+# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Hızlı başlangıç: COPY ifadesini kullanarak verileri toplu yükleme
 
-Bu hızlı başlatmada, yüksek işlem li veri alımı için basit ve esnek [COPY deyimini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanarak verileri SQL havuzunuza toplu yüklersiniz. COPY deyimi, aşağıdakilere işlevsellik sağlayarak verileri sorunsuz ve esnek bir şekilde yüklemenize olanak sağladığından önerilen yükleme yardımcı programıdır:
+Bu hızlı başlangıçta, yüksek aktarım hızı veri alımı için basit ve esnek [kopyalama ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanarak SQL havuzunuza verileri toplu olarak yükleyebilirsiniz. KOPYALAMA deyimleri, aşağıdakileri yapmak için işlevler sağlayarak, verileri sorunsuzca ve esnek bir şekilde yüklemeyi sağlayan önerilen yükleme yardımcı programıdır:
 
-- Veri ambarında sıkı KONTROL izinlerine gerek kalmadan daha düşük ayrıcalıklı kullanıcıların yüklemesine izin ver
-- Ek veritabanı nesneleri oluşturmak zorunda kalmadan yalnızca tek bir T-SQL deyiminden yararlanın
-- Share Access İmzalarını (SAS) kullanarak depolama hesabı anahtarlarını ortaya çıkarmadan daha hassas bir izin modeline sahip olun
-- ERRORFILE konumu için farklı bir depolama hesabı belirtin (REJECTED_ROW_LOCATION)
-- Her hedef sütun için varsayılan değerleri özelleştirme ve belirli hedef sütunlara yüklenmesi için kaynak veri alanlarını belirtin
-- CSV dosyaları için özel bir satır sonlandırıcı belirtin
+- Veri ambarında kesin DENETIM izinlerine gerek duymadan daha düşük ayrıcalıklı kullanıcıların yüklenmesine izin ver
+- Ek veritabanı nesneleri oluşturmak zorunda kalmadan yalnızca tek bir T-SQL ifadesiyle yararlanın
+- Erişim Imzalarını paylaşma (SAS) kullanarak depolama hesabı anahtarlarını kullanıma açmadan daha hassas bir izin modelinden yararlanın
+- ERRORFILE konumu (REJECTED_ROW_LOCATION) için farklı bir depolama hesabı belirtin
+- Her bir hedef sütun için varsayılan değerleri özelleştirin ve belirli hedef sütunlara yüklenecek kaynak veri alanlarını belirtin
+- CSV dosyaları için özel bir satır Sonlandırıcı belirtin
 - CSV dosyaları için kaçış dizesi, alan ve satır sınırlayıcıları
-- CSV dosyaları için SQL Server Date biçimleriden yararlanın
-- Depolama konumu yolunda joker karakterler ve birden çok dosya belirtin
+- CSV dosyaları için SQL Server Tarih biçimlerinden yararlanın
+- Depolama konumu yolunda joker karakter ve birden çok dosya belirtin
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlatma zaten bir SQL havuzu var varsayar. Bir SQL havuzu oluşturulmamışsa, [Oluştur ve Bağla - portal](create-data-warehouse-portal.md) quickstart'ını kullanın.
+Bu hızlı başlangıç, zaten bir SQL havuzunuz olduğunu varsayar. Bir SQL havuzu oluşturulmadıysa, [oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) hızlı başlangıcı ' nı kullanın.
 
 ## <a name="create-the-target-table"></a>Hedef tabloyu oluşturma
 
-Bu örnekte, New York taksi veri setinden veri yükleniyor olacağız. Trip adında bir masa yükleyeceğiz. Tablooluşturmak için aşağıdakileri çalıştırın:
+Bu örnekte, New York TAXI veri kümesinden veri yükleyeceğiz. Tek bir yıl içinde alınan TAXI 'yi temsil eden seyahat adlı bir tablo yükleyeceğiz. Tabloyu oluşturmak için aşağıdakileri çalıştırın:
 
 ```sql
 CREATE TABLE [dbo].[Trip]
@@ -74,9 +74,9 @@ WITH
 );
 ```
 
-## <a name="run-the-copy-statement"></a>COPY deyimini çalıştırma
+## <a name="run-the-copy-statement"></a>COPY ifadesini Çalıştır
 
-Azure blob depolama hesabından gelen verileri Trip tablosuna yükleyecek aşağıdaki COPY deyimini çalıştırın.
+Azure Blob depolama hesabından seyahat tablosuna veri yükleyecek aşağıdaki kopyalama ifadesini çalıştırın.
 
 ```sql
 COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'
@@ -88,7 +88,7 @@ WITH (
 
 ## <a name="monitor-the-load"></a>Yükü izleme
 
-Aşağıdaki sorguyu düzenli aralıklarla çalıştırarak yükünüzün ilerleme kaydedip oluşturmadığını kontrol edin:
+Yükün düzenli olarak aşağıdaki sorguyu çalıştırarak ilerleme yapıp yapmadığını denetleyin:
 
 ```sql
 SELECT  r.[request_id]                           
@@ -110,5 +110,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Veri yükleme yle ilgili en iyi uygulamalar [için, Veri Yükleme için En İyi Uygulamalar'a](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)bakın.
-- Veri yükleriniz için kaynakları nasıl yöneteceksiniz hakkında bilgi için İş [yükü yalıtımı'na](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)bakın. 
+- Veri yükleme konusunda en iyi uygulamalar için bkz. [veri yükleme Için En Iyi uygulamalar](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
+- Veri yüklerinizin kaynaklarını yönetme hakkında daha fazla bilgi için bkz. [Iş yükü yalıtımı](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 

@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics paylaşılan meta veri modeli
-description: Azure Synapse Analytics, farklı çalışma alanı hesaplama lı motorlarının Veritabanlarını ve tabloları Spark havuzları (önizleme), SQL isteğe bağlı altyapısı (önizleme) ve SQL havuzları arasında paylaşmasına olanak tanır.
+title: Azure SYNAPSE Analytics paylaşılan meta veri modeli
+description: Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Spark havuzları (Önizleme), SQL isteğe bağlı altyapısı (Önizleme) ve SQL havuzları arasında veritabanları ve tablolar paylaşmasına izin verir.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,56 +10,56 @@ ms.date: 04/15/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3b26d516080961a482a3ba67f314e98ece4c9f24
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424121"
 ---
-# <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics paylaşılan meta verileri
+# <a name="azure-synapse-analytics-shared-metadata"></a>Azure SYNAPSE Analytics paylaşılan meta verileri
 
-Azure Synapse Analytics, farklı çalışma alanı hesaplama lı motorlarının Veritabanlarını ve tabloları Spark havuzları (önizleme), SQL isteğe bağlı altyapısı (önizleme) ve SQL havuzları arasında paylaşmasına olanak tanır.
+Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Spark havuzları (Önizleme), SQL isteğe bağlı altyapısı (Önizleme) ve SQL havuzları arasında veritabanları ve tablolar paylaşmasına izin verir.
 
 [!INCLUDE [preview](../includes/note-preview.md)]
 
 
 
-Paylaşım sözde modern veri ambarı deseni destekler ve çalışma alanı SQL motorları veritabanları ve Tablolar Spark ile oluşturulan erişim sağlar. Ayrıca, SQL motorlarının diğer motorlarla paylaşılmayan kendi nesnelerini oluşturmasına da olanak tanır.
+Paylaşım, bu şekilde adlandırılan modern veri ambarı modelini destekler ve çalışma alanı SQL altyapılarını Spark ile oluşturulan veritabanlarına ve tablolara erişim sağlar. Ayrıca, SQL altyapılarının diğer altyapılarla paylaşılmayan kendi nesnelerini oluşturmalarına de olanak tanır.
 
 ## <a name="support-the-modern-data-warehouse"></a>Modern veri ambarını destekleme
 
-Paylaşılan meta veri modeli, modern veri ambarı deseni aşağıdaki şekilde destekler:
+Paylaşılan meta veri modeli, modern veri ambarı modelini aşağıdaki şekilde destekler:
 
-1. Veri gölünden elde edilen veriler, hazırlanan verileri muhtemelen çeşitli veritabanlarında bulunan (muhtemelen bölümlenmiş) Parke destekli tablolarda saklayarak Spark ile verimli bir şekilde hazırlanır ve yapılandırılır.
+1. Veri Gölü veriler, çok sayıda veritabanında bulunan (büyük olasılıkla bölümlenmiş) Parquet tarafından desteklenen tablolar depolanarak Spark ile birlikte hazırlanır ve verimli bir şekilde yapılandırılmıştır.
 
-2. Spark veritabanları oluşturdu ve tüm tabloları Azure Synapse çalışma alanı Spark havuzu örneklerinden herhangi birinde görünür hale gelir ve Spark işlerinden herhangi birinden kullanılabilir. Çalışma alanındaki tüm Spark havuzları aynı temel katalog meta deposunu paylaştığından, bu özellik [izinlere](#security-model-at-a-glance) tabidir.
+2. Spark tarafından oluşturulan veritabanları ve tüm tabloları Azure SYNAPSE çalışma alanı Spark havuz örneklerinde görünür hale gelir ve Spark işlerinin herhangi birinden kullanılabilir. Çalışma alanındaki tüm Spark havuzlarında aynı temel katalog meta deposunu paylaştığından, bu özellik [izinlere](#security-model-at-a-glance) tabidir.
 
-3. Spark veritabanları oluşturdu ve parke destekli tabloları çalışma alanı SQL on-demand altyapısında görünür hale gelir. [Veritabanları](database.md) SQL isteğe bağlı meta verilerde otomatik olarak oluşturulur ve bir Spark işi tarafından oluşturulan [hem harici hem de yönetilen tablolar,](table.md) ilgili veritabanının `dbo` şemasındaki SQL isteğe bağlı meta verilerdeki dış tablolar olarak erişilebilir hale getirilir. <!--For more details, see [ADD LINK].-->
+3. Spark tarafından oluşturulan veritabanları ve kendi Parquet tarafından desteklenen tabloları, çalışma alanı SQL isteğe bağlı altyapısında görünür hale gelir. [Veritabanları](database.md) , SQL isteğe bağlı meta verilerde otomatik olarak oluşturulur ve bir Spark işi tarafından oluşturulan [dış ve yönetilen tablolar](table.md) , KARŞıLıK gelen veritabanının `dbo` şemasında SQL isteğe bağlı meta verilerde dış tablo olarak erişilebilir hale getirilir. <!--For more details, see [ADD LINK].-->
 
-4. Çalışma alanında meta veri eşitlemesi etkinleştirilmiş SQL havuzu örnekleri varsa <!--[ADD LINK]--> veya meta veri eşitlemesi etkinleştirilmiş yeni bir SQL havuzu örneği oluşturulursa, Spark oluşturulan veritabanları ve parke destekli tabloları [Azure Synapse Analytics paylaşılan veritabanında](database.md)açıklandığı gibi SQL havuz veritabanına otomatik olarak eşlenir.
+4. Çalışma alanında meta veri eşitlemesi etkinleştirilmiş SQL havuzu örnekleri varsa <!--[ADD LINK]--> ya da meta veri eşitlemesi etkinken yeni bir SQL havuzu örneği oluşturulduysa, Spark tarafından oluşturulan veritabanları ve kendi Parquet destekli tabloları, [Azure SYNAPSE Analytics paylaşılan veritabanı](database.md)'nda AÇıKLANDıĞı gibi SQL havuzu veritabanına otomatik olarak eşlenir.
 
 <!--[INSERT PICTURE]-->
 
 <!--__Figure 1 -__ Supporting the Modern Data Warehouse Pattern with shared metadata-->
 
-Nesne eşitlemesi eşsenkronize oluşur. Nesneler, SQL bağlamında görünene kadar birkaç saniye lik hafif bir gecikmeye sahip olurlar. Göründüklerinde sorgulanabilirler, ancak bunlara erişimi olan SQL motorları tarafından güncelleştirilemez veya değiştirilemez.
+Nesne eşitleme zaman uyumsuz olarak gerçekleştirilir. Nesneler, SQL bağlamında görünene kadar birkaç saniyelik bir gecikme olur. Bu olduklarında, bunlara erişimi olan SQL altyapılarını sorgulanabilir, ancak güncelleştirilemez veya değiştirilmez.
 
-## <a name="which-metadata-objects-are-shared"></a>Hangi meta veri nesneleri paylaşılır
+## <a name="which-metadata-objects-are-shared"></a>Paylaşılan meta veri nesneleri
 
-Spark veritabanları, dış tablolar, yönetilen tablolar ve görünümler oluşturmanıza olanak tanır. Spark görünümleri tanımlayıcı Spark SQL deyimini işlemek için bir Kıvılcım altyapısı gerektirdiğinden ve bir SQL altyapısı tarafından işlenemediğinden, yalnızca veritabanları ve Parke depolama biçimini kullanan bunların içerdiği harici ve yönetilen tablolar çalışma alanı SQL motorları ile paylaşılır. Kıvılcım görünümleri yalnızca Spark havuzu örnekleri arasında paylaşılır.
+Spark veritabanları, dış tablolar, yönetilen tablolar ve görünümler oluşturmanıza olanak sağlar. Spark görünümleri tanımlayan Spark SQL ifadesini işlemek için bir Spark altyapısı gerektirdiğinden ve bir SQL altyapısı tarafından işlenemediği için, yalnızca veritabanları ve Parquet depolama biçimini kullanan dış ve yönetilen tabloları çalışma alanı SQL altyapılarıyla paylaşılır. Spark görünümleri yalnızca Spark havuz örnekleri arasında paylaşılır.
 
 ## <a name="security-model-at-a-glance"></a>Bir bakışta güvenlik modeli
 
-Spark veritabanları ve tabloları, SQL motorlarındaki senkronize gösterimleriyle birlikte, temel depolama düzeyinde güvenlidir. Tablo, sorgu gönderenin kullanma hakkına sahip olduğu altyapılardan herhangi biri tarafından sorgulandığında, sorgu gönderenin güvenlik ilkesi temel dosyalara geçirilir. İzinler dosya sistemi düzeyinde denetlenir.
+Spark veritabanları ve tabloları, SQL altyapılarındaki eşitlenmiş temsillerinin yanı sıra, temel alınan depolama düzeyinde güvenli hale getirilir. Tablo, sorgu gönderenin kullanım hakkına sahip olduğu altyapılardan herhangi biri tarafından sorgulandığında, sorgu gönderenin güvenlik sorumlusu, temel alınan dosyalara geçirilir. İzinler dosya sistemi düzeyinde denetlenir.
 
-Daha fazla bilgi için Azure [Synapse Analytics paylaşılan veritabanına](database.md)bakın.
+Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics paylaşılan veritabanı](database.md).
 
-## <a name="change-maintenance"></a>Bakımı değiştir
+## <a name="change-maintenance"></a>Değişiklik Bakımı
 
-Bir meta veri nesnesi Spark ile silinir veya değiştirilirse, değişiklikler alınır ve SQL isteğe bağlı motora ve nesneleri eşitleyen SQL havuzlarına yayılır. Senkronizasyon asynchronous ve değişiklikler kısa bir gecikmeden sonra SQL motorlarında yansıtılır.
+Bir meta veri nesnesi silinir veya Spark ile değiştirilirse, değişiklikler alınır ve SQL isteğe bağlı altyapıya, nesneleri eşitlenmiş SQL havuzlarıyla dağıtılır. Eşitleme zaman uyumsuzdur ve değişiklikler, kısa bir gecikmeden sonra SQL altyapısına yansıtılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Synapse Analytics'in paylaşılan meta veri veritabanları hakkında daha fazla bilgi edinin](database.md)
-- [Azure Synapse Analytics'in paylaşılan meta veri Tabloları hakkında daha fazla bilgi edinin](table.md)
+- [Azure SYNAPSE Analytics ' paylaşılan meta veri veritabanları hakkında daha fazla bilgi edinin](database.md)
+- [Azure SYNAPSE Analytics ' paylaşılan meta veri tabloları hakkında daha fazla bilgi edinin](table.md)
 

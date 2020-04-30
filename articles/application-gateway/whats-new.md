@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi'ndeki yenilikler
-description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, amortismana uygun işlevler ve yaklaşan değişiklikler gibi Azure Uygulama Ağ Geçidi'nde yenilikleri öğrenin.
+title: Azure Application Gateway yenilikleri
+description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, kullanım dışı işlevler ve yaklaşan değişiklikler gibi Azure Application Gateway yenilikleri hakkında bilgi edinin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,39 +8,39 @@ ms.topic: overview
 ms.date: 03/24/2020
 ms.author: victorh
 ms.openlocfilehash: 70014b5ab37a07e01eaa2db3d729b7d8af520842
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81311770"
 ---
-# <a name="whats-new-in-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi'ndeki yenilikler nelerdir?
+# <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway 'daki yenilikler nelerdir?
 
-Azure Application Gateway sürekli olarak güncelleştirilir. En son gelişmelerden haberdar olmak için bu makalede, aşağıdakiler hakkında bilgi verilmektedir:
+Azure Application Gateway, sürekli olarak güncelleştirilir. En son gelişmelerden haberdar olmak için bu makalede hakkında bilgi verilmektedir:
 
-- En son sürümler
+- En son yayınlar
 - Bilinen sorunlar
 - Hata düzeltmeleri
 - Kullanım dışı işlevsellik
 
 ## <a name="new-features"></a>Yeni özellikler
 
-|Özellik  |Açıklama  |Eklenen tarih  |
+|Özellik  |Açıklama  |Eklenme tarihi  |
 |---------|---------|---------|
-| V2'de Kullanıcı Tanımlı Rotalar (UDR) (Önizleme) |Kullanıcı tanımlı yollar artık Application Gateway v2 SK'lerde bazı senaryolarda desteklenir. Daha fazla bilgi için Bkz. [Uygulama Ağ Geçidi yapılandırmagenel bakışı.](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet) |Mart 2020 |
-|Yakınlık çerez değişiklikleri |Çerez tabanlı yakınlık etkinleştirildiğinde, Application Gateway, varolan ApplicationGatewayAffinity çerezine ek olarak *ApplicationGatewayAffinityCORS* adlı başka bir özdeş çerez enjekte eder. *ApplicationGatewayAffinityCORS'un* iki özniteliği daha eklendi (*SameSite=None; Güvenli)* böylece yapışkan oturumları çapraz kökenli istekler için bile korunur. Daha fazla bilgi için [Uygulama Ağ Geçidi Çerezi tabanlı yakınlık](configuration-overview.md#cookie-based-affinity) temeline bakın. |Şubat 2020 |
-|Sonda geliştirmeleri |Application Gateway v2 SKU'daki özel sonda geliştirmeleri ile, [sonda yapılandırmasını](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)basitleştirdik, [isteğe bağlı arka uç sağlık testlerini](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) kolaylaştırdık ve arka uç sağlık sorunlarını gidermenize yardımcı olacak [daha fazla tanısal bilgi](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) ekledik.  |Ekim 2019 |
-|Daha fazla ölçüm |Uygulama Ağ Geçidi v2 SKU: [Zamanlama ile ilgili ölçümler,](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics)Arka uç yanıt durumu, Alınan Baytlar, Baytlar gönderildi, İstemci TLS protokolü ve Geçerli bilgi işlem birimlerinizi izlemenize yardımcı olmak için aşağıdaki yeni ölçümleri ekledik. [Uygulama Ağ Geçidi V2 SKU tarafından desteklenen Ölçümlere](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku)bakın. |Ağustos 2019 |
-|WAF özel kuralları |Uygulama Ağ Geçidi WAF_v2 artık özel kurallar oluşturmayı destekler. Bkz. [Uygulama Ağ Geçidi özel kuralları.](custom-waf-rules-overview.md) |Haziran 2019 |
-|Otomatik ölçekleme, bölge artıklığı, statik VIP desteği GA |Otomatik ölçekleme, bölge artıklığını destekleyen v2 SKU için genel kullanılabilirlik, performansı artırır, statik VIP'ler, Key Vault, Header yeniden yazın. Bkz. [Uygulama Ağ Geçidi otomatikleştirme belgeleri.](application-gateway-autoscaling-zone-redundant.md) |Nisan 2019 |
-|Anahtar Vault entegrasyonu |Uygulama Ağ Geçidi artık HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault (genel önizleme) ile tümleştirmeyi destekler. [Key Vault sertifikaları ile TLS sonlandırma bakın.](key-vault-certs.md) |Nisan 2019 |
-|Üstbilgi CRUD/Rewrites     |Şimdi HTTP üstbilgi yeniden yazabilirsiniz. Bkz. Öğretici: Bir uygulama ağ geçidi oluşturun ve daha fazla bilgi için [HTTP üstbilgilerini yeniden yazın.](tutorial-http-header-rewrite-powershell.md)|Aralık 2018|
-|WAF yapılandırma ve dışlama listesi     |WAF'ınızı yapılandırmanıza ve yanlış pozitif leri azaltmanıza yardımcı olacak daha fazla seçenek ekledik. Daha fazla bilgi için [Bkz. Web uygulaması güvenlik duvarı isteği boyut sınırları ve dışlama listeleri.](application-gateway-waf-configuration.md)|Aralık 2018|
-|Otomatik ölçekleme, bölge artıklığı, statik VIP desteği      |v2 SKU ile Otomatik Ölçekleme, geliştirilmiş performans ve daha fazlası gibi birçok iyileştirme vardır. Azure [Uygulama Ağ Geçidi nedir?](overview.md)|Eylül 2018|
-|Bağlantı boşaltma     |Bağlantı boşaltma, üyeleri arka uç havuzlarınızdan zarif bir şekilde kaldırmanızı sağlar. Daha fazla bilgi için [bkz.](features.md#connection-draining)|Eylül 2018|
-|Özel hata sayfaları     |Özel hata sayfaları ile, web sitelerinizin geri kalanının biçimi içinde bir hata sayfası oluşturabilirsiniz. Bunu etkinleştirmek için [bkz.](custom-error.md)|Eylül 2018|
-|Metrik Geliştirmeleri     |Gelişmiş ölçümlerle Uygulama Ağ Geçidinizin durumunu daha iyi görebilirsiniz. Uygulama Ağ Geçidi'nizdeki ölçümleri etkinleştirmek [için, Uygulama Ağ Geçidi için arka uç durumu, tanılama günlükleri ve ölçümlere](application-gateway-diagnostics.md)bakın.|Haziran 2018|
+| V2 'de Kullanıcı tanımlı yollar (UDR) (Önizleme) |Kullanıcı tanımlı yollar artık Application Gateway v2 SKU 'Larında bazı senaryolarda desteklenmektedir. Daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet). |Mart 2020 |
+|Benzeşim tanımlama bilgisi değişiklikleri |Tanımlama bilgisi tabanlı benzeşim etkinleştirildiğinde, mevcut Applicationgatewaybenzeşim tanımlama bilgisine ek olarak *Applicationgatewayaffinitycors* adlı başka bir özdeş tanımlama bilgisini Application Gateway çıkartır. *Applicationgatewayaffinitycors* öğesine eklenmiş iki özniteliğe sahiptir (*SameSite = None; Güvenli*), geçici oturumlar için de yapışkan oturumların korunmasını sağlamak üzere. Daha fazla bilgi için bkz. [Application Gateway tanımlama bilgisi tabanlı benzeşim](configuration-overview.md#cookie-based-affinity) . |Şubat 2020 |
+|Araştırma geliştirmeleri |Application Gateway v2 SKU 'sunda özel araştırma geliştirmeleriyle, [araştırma yapılandırması](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku)basitleştik ve [isteğe bağlı arka uç durumu testlerini](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) kolaylaştırdık ve arka uç sistem durumu sorunlarını gidermenize yardımcı olmak için [daha fazla tanılama bilgisi](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) ekledik.  |Ekim 2019 |
+|Daha fazla ölçüm |Application Gateway v2 SKU 'nuzu izlemenize yardımcı olması için aşağıdaki yeni ölçümleri ekledik: [zamanlamala ilgili ölçümler](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics), arka uç yanıt durumu, alınan bayt, gönderilen bayt, istemci TLS protokolü ve geçerli işlem birimleri. Bkz. [Application Gateway v2 SKU 'su tarafından desteklenen ölçümler](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |Ağustos 2019 |
+|WAF özel kuralları |Application Gateway WAF_v2 artık özel kurallar oluşturmayı destekliyor. Bkz. [Application Gateway özel kurallar](custom-waf-rules-overview.md). |Haziran 2019 |
+|Otomatik ölçeklendirme, bölge artıklığı, statik VIP desteği GA |Otomatik ölçeklendirmeyi, bölge yedekliliği, performansı, statik VIP 'leri, Key Vault, üst bilgi yeniden yazmayı destekleyen v2 SKU 'SU için genel kullanılabilirlik. Bkz. [Application Gateway otomatik ölçeklendirme belgeleri](application-gateway-autoscaling-zone-redundant.md). |Nisan 2019 |
+|Key Vault tümleştirme |Application Gateway artık HTTPS etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault (genel önizlemede) tümleştirmeyi desteklemektedir. [Key Vault sertifikalarla TLS sonlandırmasını](key-vault-certs.md)inceleyin. |Nisan 2019 |
+|Üst bilgi CRUD/yeniden yazar     |Artık HTTP üstbilgilerini yeniden yazabilirsiniz. Daha fazla bilgi için bkz. [öğretici: uygulama ağ geçidi oluşturma ve HTTP üstbilgilerini yeniden yazma](tutorial-http-header-rewrite-powershell.md) .|Aralık 2018|
+|WAF yapılandırma ve dışlama listesi     |WAF 'nizi yapılandırmanıza ve hatalı pozitif sonuçları azaltmanıza yardımcı olacak daha fazla seçenek ekledik. Daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri](application-gateway-waf-configuration.md).|Aralık 2018|
+|Otomatik ölçeklendirme, bölge artıklığı, statik VIP desteği      |V2 SKU 'SU sayesinde, otomatik ölçeklendirme, gelişmiş performans ve daha fazlası gibi birçok geliştirme vardır. Daha fazla bilgi için bkz. [Azure Application Gateway nedir?](overview.md) .|Eylül 2018|
+|Bağlantı boşaltma     |Bağlantı boşaltma, arka uç havuzlarınızdaki üyeleri sorunsuz bir şekilde kaldırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Bağlantı boşaltma](features.md#connection-draining).|Eylül 2018|
+|Özel hata sayfaları     |Özel hata sayfaları ile, Web sitelerinizin geri kalanının biçimi içinde bir hata sayfası oluşturabilirsiniz. Bunu etkinleştirmek için, bkz. [Application Gateway özel hata sayfaları oluşturma](custom-error.md).|Eylül 2018|
+|Ölçüm geliştirmeleri     |Gelişmiş ölçümlerle Application Gateway durumunu daha iyi bir şekilde görüntüleyebilirsiniz. Application Gateway ölçümleri etkinleştirmek için, [Application Gateway Için arka uç sistem durumu, tanılama günlükleri ve ölçümler](application-gateway-diagnostics.md)bölümüne bakın.|Haziran 2018|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Uygulama Ağ Geçidi hakkında daha fazla bilgi için [bkz.](overview.md)
+Azure Application Gateway hakkında daha fazla bilgi için bkz. [azure Application Gateway nedir?](overview.md)

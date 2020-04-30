@@ -1,6 +1,6 @@
 ---
-title: Sorgu sonuçlarını depolama alanına depolama
-description: Bu makalede, isteğe bağlı SQL (önizleme) kullanarak sorgu sonuçlarını depolama alanına nasıl depoladığınızı öğreneceksiniz.
+title: Sorgu sonuçlarını depolama alanında saklama
+description: Bu makalede, sorgu sonuçlarının SQL isteğe bağlı (Önizleme) kullanarak depolamaya nasıl depolanacağını öğreneceksiniz.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -10,29 +10,29 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 462185feb2b9cbebd17ce9cba54c2b23deea6c75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425150"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics'i kullanarak SQL isteğe bağlı (önizleme) kullanarak sorgu sonuçlarını depolama alanına depolama yada
+# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) kullanarak sorgu sonuçlarını depolamaya depolayın
 
-Bu makalede, SQL İsteğe Bağlı (önizleme) kullanarak sorgu sonuçlarını depolama alanına nasıl depoladığınızı öğreneceksiniz.
+Bu makalede, istek üzerine SQL (Önizleme) kullanarak sorgu sonuçlarını depolamaya nasıl depolayacağınızı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-İlk adım aşağıdaki makaleleri gözden geçirmek ve ön koşulları yerine getirdiğinizden emin olmaktır:
+İlk adımınız aşağıdaki makaleleri gözden geçirdiğinizden ve önkoşulları karşıladığınızdan emin olmanızı sağlar:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
 - [Ön koşullar](query-data-storage.md#prerequisites)
 
-## <a name="create-external-table-as-select"></a>Seçili olarak harici tablo oluşturma
+## <a name="create-external-table-as-select"></a>Dış tabloyu seç olarak oluştur
 
-Sorgu sonuçlarını depolama alanına depolamak için SELECT (CETAS) deyimi olarak CREATE EXTERNAL TABLE'ı kullanabilirsiniz.
+Sorgu sonuçlarını depolamaya depolamak için CREATE EXTERNAL TABLE AS SELECT (CETAS) ifadesini kullanabilirsiniz.
 
 > [!NOTE]
-> Oluşturduğunuz veritabanını kullanmak üzere sorgudaki ilk satırı(yani[mydbname] değiştirin. Bir veritabanı oluşturmadıysanız, lütfen [Ilk kez kurulum](query-data-storage.md#first-time-setup)okuyun.
+> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. Bir veritabanı oluşturmadıysanız, lütfen [ilk kez kurulum 'u](query-data-storage.md#first-time-setup)okuyun.
 
 ```sql
 USE [mydbname];
@@ -69,12 +69,12 @@ FROM
 
 ```
 
-## <a name="use-a-external-table-created"></a>Oluşturulan harici bir tablo kullanma
+## <a name="use-a-external-table-created"></a>Oluşturulan bir dış tablo kullan
 
-CETAS aracılığıyla oluşturulan harici tabloyu normal bir dış tablo gibi kullanabilirsiniz.
+Normal bir dış tablo gibi CETAS aracılığıyla oluşturulan dış tabloyu kullanabilirsiniz.
 
 > [!NOTE]
-> Oluşturduğunuz veritabanını kullanmak üzere sorgudaki ilk satırı(yani[mydbname] değiştirin. Bir veritabanı oluşturmadıysanız, lütfen [Ilk kez kurulum](query-data-storage.md#first-time-setup)okuyun.
+> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. Bir veritabanı oluşturmadıysanız, lütfen [ilk kez kurulum 'u](query-data-storage.md#first-time-setup)okuyun.
 
 ```sql
 USE [mydbname];
@@ -91,4 +91,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Farklı dosya türlerinin nasıl sorgulanır hakkında bilgi için, [Sorgu tek CSV dosyasına](query-single-csv-file.md)bakın, [Sorgu Parke dosyaları](query-parquet-files.md)ve Sorgu [JSON dosyaları](query-json-files.md) makaleleri.
+Farklı dosya türlerini sorgulama hakkında daha fazla bilgi için, [tek BIR CSV dosyasına sorgulama](query-single-csv-file.md), [Parquet dosyalarını](query-parquet-files.md)sorgulama ve [JSON dosyaları sorgulama](query-json-files.md) makalelerini inceleyin.

@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Azure şablonuyla Windows sanal makine ölçeği seti oluşturma
+title: Hızlı başlangıç-Azure şablonuyla Windows sanal makine ölçek kümesi oluşturma
 description: Örnek uygulama dağıtan ve otomatik ölçeklendirme kurallarını yöneten bir Azure Resource Manager şablonuyla hızlıca bir Windows sanal makine ölçek kümesi oluşturmayı öğrenin
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
 ms.author: jushiman
 ms.openlocfilehash: 030479a02b33a92c3917ba112d99c9bcef4f7f32
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010452"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Hızlı Başlangıç: Azure şablonuyla Windows sanal makine ölçek kümesi oluşturma
@@ -21,7 +21,7 @@ Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendiri
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -29,25 +29,25 @@ Yok.
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
 
-Azure Resource Manager şablonları, ilgili kaynak gruplarını dağıtmanızı sağlar. Tek bir şablonda sanal makine ölçek kümesi oluşturabilir, uygulamaları yükleyebilir ve otomatik ölçeklendirme kurallarını yapılandırabilirsiniz. Değişkenleri ve parametreleri kullanarak bu şablonu var olan ölçek kümelerini güncelleştirme veya yenilerini oluşturma amacıyla tekrar kullanabilirsiniz. Şablonları Azure portalı, Azure CLI, Azure PowerShell veya sürekli tümleştirme / sürekli teslim (CI/CD) ardışık hatlar aracılığıyla dağıtabilirsiniz.
+Azure Resource Manager şablonları, ilgili kaynak gruplarını dağıtmanızı sağlar. Tek bir şablonda sanal makine ölçek kümesi oluşturabilir, uygulamaları yükleyebilir ve otomatik ölçeklendirme kurallarını yapılandırabilirsiniz. Değişkenleri ve parametreleri kullanarak bu şablonu var olan ölçek kümelerini güncelleştirme veya yenilerini oluşturma amacıyla tekrar kullanabilirsiniz. Azure portal, Azure CLı, Azure PowerShell veya sürekli tümleştirme/sürekli teslim (CI/CD) işlem hatları aracılığıyla şablon dağıtabilirsiniz.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirme
+### <a name="review-the-template"></a>Şablonu gözden geçirin
 
-Bu hızlı başlatmada kullanılan şablon [Azure Quickstart şablonlarındandır.](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/)
+Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/).
 
 :::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json" range="1-397" highlight="236-325":::
 
-Bu kaynaklar bu şablonlarda tanımlanır:
+Bu kaynaklar şu şablonlarda tanımlanmıştır:
 
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Network/publicIPAdresleri**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
+- [**Microsoft. Insights/oto Scalesettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
 #### <a name="define-a-scale-set"></a>Ölçek kümesi tanımlama
 
-Vurgulanan bölüm ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümesi oluşturmak için gerekli kaynakları tanımlamanız gerekir. Sanal makine ölçek kümesi kaynak türünün ana bölümleri şunlardır:
+Vurgulanan bölüm, ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümesi oluşturmak için gerekli kaynakları tanımlamanız gerekir. Sanal makine ölçek kümesi kaynak türünün ana bölümleri şunlardır:
 
 | Özellik                     | Özellik açıklaması                                  | Örnek şablon değeri                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -62,7 +62,7 @@ Vurgulanan bölüm ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümes
 | osProfile.adminUsername      | Her bir VM örneği için kullanıcı adı                        | azureuser                                 |
 | osProfile.adminPassword      | Her bir VM örneği için parola                        | P@ssw0rd!                                 |
 
-Ölçek kümesi şablonu özelleştirmek için VM boyutunu veya başlangıç kapasitesini değiştirebilirsiniz. Başka bir seçenek farklı bir platform veya özel bir görüntü kullanmaktır.
+Ölçek kümesi şablonunu özelleştirmek için VM boyutunu veya başlangıç kapasitesini değiştirebilirsiniz. Başka bir seçenek de farklı bir platform veya özel görüntü kullanmaktır.
 
 #### <a name="add-a-sample-application"></a>Örnek uygulama ekleme
 
@@ -74,17 +74,17 @@ Vurgulanan bölüm ölçek kümesi kaynak tanımıdır. Şablonla ölçek kümes
 - Yapılandırma veya yükleme betiklerinin konumu
 - VM örneklerinde yürütülecek komutlar
 
-Şablon, IIS'de çalışan bir ASP.NET MVC uygulamasını yüklemek için PowerShell DSC uzantısını kullanır.
+Şablon, IIS 'de çalışan bir ASP.NET MVC uygulamasını yüklemek için PowerShell DSC uzantısını kullanır.
 
 *url* ile tanımlandığı üzere GitHub'dan bir yükleme betiği indirilir. Uzantı ardından *function* ve *Script* ile tanımlandığı üzere *IISInstall.ps1* betiğinden *InstallIIS* komutunu çalıştırır. ASP.NET uygulaması da *WebDeployPackagePath* ile tanımlandığı üzere GitHub'dan indirilen bir Web Dağıtımı paketine sahiptir:
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-**Azure'a Dağıt** düğmesini seçerek şablonu dağıtabilirsiniz. Bu düğme Azure portalını açar, şablonun tamamını yükler ve ölçek kümesi adı, örnek sayısı ve yönetici kimlik bilgileri gibi birkaç parametreyi sorar.
+Şablonu **Azure 'A dağıt** düğmesini seçerek dağıtabilirsiniz. Bu düğme Azure portalını açar, şablonun tamamını yükler ve ölçek kümesi adı, örnek sayısı ve yönetici kimlik bilgileri gibi birkaç parametreyi sorar.
 
-[![Şablonu Azure'a dağıtma](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
+[![Şablonu Azure 'a dağıtma](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-Azure PowerShell'i kullanarak bir Kaynak Yöneticisi şablonu da dağıtabilirsiniz:
+Ayrıca, Azure PowerShell kullanarak bir Kaynak Yöneticisi şablonu dağıtabilirsiniz:
 
 ```azurepowershell-interactive
 # Create a resource group
@@ -106,19 +106,19 @@ VM örnekleri için ölçek kümesi adı ve yönetici kimlik bilgileri istemleri
 
 ## <a name="test-the-deployment"></a>Dağıtımı test etme
 
-Ölçek kümenizi çalışır halde görmek için bir web tarayıcısında örnek web uygulamasına erişin. [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) ile yük bakiyecinizin genel IP adresini aşağıdaki gibi edinin:
+Ölçek kümenizi çalışır halde görmek için bir web tarayıcısında örnek web uygulamasına erişin. [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) ile yük dengeleyicinizin genel IP adresini aşağıdaki şekilde edinin:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Yük bakiyesi genel IP adresini http biçimindeki bir web tarayıcısına *girin:\//publicIpAddress/MyApp*. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
+*Http:\//Publicıpaddress/MyApp*biçiminde bir Web TARAYıCıSıNA yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
 
 ![Çalışan IIS sitesi](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu, ölçek kümesini kaldırmak için [Kaldır-AzKaynak Grubu'nu](/powershell/module/az.resources/remove-azresourcegroup) kullanabilirsiniz. `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) öğesini kullanarak kaynak grubunu, ölçek kümesini kaldırabilirsiniz. `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

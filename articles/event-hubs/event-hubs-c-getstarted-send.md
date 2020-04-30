@@ -1,6 +1,6 @@
 ---
-title: "Hızlı başlangıç: C - Azure Etkinlik Hub'larını kullanarak etkinlik gönderme"
-description: "Hızlı başlangıç: Bu makalede, Azure Etkinlik Hub'larına olay gönderen bir C uygulaması oluşturmak için bir iz yol sağlar."
+title: 'Hızlı başlangıç: C-Azure Event Hubs kullanarak olay gönderme'
+description: 'Hızlı başlangıç: Bu makale, Azure Event Hubs olayları gönderen bir C uygulaması oluşturmaya yönelik bir yol sağlar.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -16,42 +16,42 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720667"
 ---
-# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Hızlı başlangıç: C kullanarak etkinlikleri Azure Etkinlik Hub'larına gönderme
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Hızlı başlangıç: C kullanarak Azure Event Hubs olayları gönderme
 
 ## <a name="introduction"></a>Giriş
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
 
-Bu öğretici, C'deki bir konsol uygulamasını kullanarak olayları bir olay merkezine nasıl gönderilen açıklar. 
+Bu öğreticide, C 'deki bir konsol uygulaması kullanılarak Olay Hub 'ına olayların nasıl gönderileceği açıklanmaktadır. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* C geliştirme ortamı. Bu öğretici, Ubuntu 14.04 ile Azure Linux VM'deki gcc yığınını varsayar.
+* C geliştirme ortamı. Bu öğreticide, Ubuntu 14,04 ile bir Azure Linux sanal makinesinde GCC yığını varsayılmaktadır.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
-* **Olay Hub'ları ad alanı ve olay hub'ı oluşturun.** Etkinlik Hub'larının ad alanını oluşturmak ve uygulamanızın etkinlik merkeziyle iletişim kurmak için ihtiyaç duyduğu yönetim kimlik bilgilerini elde etmek için [Azure portalını](https://portal.azure.com) kullanın. Ad alanı ve olay hub'ı oluşturmak için [bu makaledeki](event-hubs-create.md)yordamı izleyin. Makaledeki yönergeleri izleyerek olay hub'ı için erişim anahtarının değerini alın: [Bağlantı dizesini alın.](event-hubs-get-connection-string.md#get-connection-string-from-the-portal) Bu öğreticide daha sonra yazdığınız koddaki erişim anahtarını kullanırsınız. Varsayılan anahtar adı: **RootManageSharedAccessKey**.
+* **Event Hubs bir ad alanı ve bir olay hub 'ı oluşturun**. Event Hubs türünde bir ad alanı oluşturmak ve uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini almak için [Azure Portal](https://portal.azure.com) kullanın. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. Makaledeki yönergeleri izleyerek Olay Hub 'ı için erişim anahtarı değerini alın: [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Bu öğreticide daha sonra yazdığınız kodda erişim anahtarını kullanın. Varsayılan anahtar adı: **RootManageSharedAccessKey**.
 
-## <a name="write-code-to-send-messages-to-event-hubs"></a>Olay Hub'larına ileti göndermek için kod yazma
-Bu bölümde, etkinlik merkezinize olay göndermek için bir C uygulaması nasıl yazılanın gösterilmektedir. Kod, [Apache Qpid projesindeki](https://qpid.apache.org/)Proton AMQP kitaplığını kullanır. Bu, [bu örnekte](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)gösterildiği gibi Servis Veri Servisi sıralarını ve C'den AMQP içeren konuları kullanmaya benzer. Daha fazla bilgi için [Qpid Proton belgelerine](https://qpid.apache.org/proton/index.html)bakın.
+## <a name="write-code-to-send-messages-to-event-hubs"></a>Event Hubs ileti göndermek için kod yazma
+Bu bölümde, Olay Hub 'ınıza olayları göndermek için bir C uygulamasının nasıl yazılacağı gösterilmektedir. Kod, [Apache Qpid projesinden](https://qpid.apache.org/)proton AMQP kitaplığını kullanır. Bu [örnek, bu örnekte](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)gösterildiği gibi C 'den AMQP ile Service Bus kuyrukları ve konuları kullanmakla benzerdir. Daha fazla bilgi için bkz. [Qpid proton belgeleri](https://qpid.apache.org/proton/index.html).
 
-1. [Qpid AMQP Messenger sayfasından,](https://qpid.apache.org/proton/messenger.html)ortamınıza bağlı olarak Qpid Proton'u yüklemek için talimatları izleyin.
-2. Proton kitaplığını derlemek için aşağıdaki paketleri yükleyin:
+1. [QPID AMQP Messenger sayfasından](https://qpid.apache.org/proton/messenger.html)ortamınıza bağlı olarak Qpid proton 'yi yüklemek için yönergeleri izleyin.
+2. Proton kitaplığını derlemek için aşağıdaki paketleri yüklemelisiniz:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. [Qpid Proton kitaplığını](https://qpid.apache.org/proton/index.html)indirin ve ayıklayın, örneğin:
+3. [Qpid proton kitaplığını](https://qpid.apache.org/proton/index.html)indirip ayıklayın, örneğin:
    
     ```shell
     wget https://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
-4. Yapı dizini oluşturun, derleve ve yükleyin:
+4. Derleme dizini oluşturun, derleyin ve yükler:
    
     ```shell
     cd qpid-proton-0.7
@@ -60,7 +60,7 @@ Bu bölümde, etkinlik merkezinize olay göndermek için bir C uygulaması nası
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. Çalışma dizininizde, aşağıdaki kodu içeren **gönderen.c** adlı yeni bir dosya oluşturun. SAS anahtar/ad, olay merkezi adı ve ad alanı değerlerini değiştirmeyi unutmayın. Ayrıca, daha önce oluşturulan **SendRule** için anahtarın URL kodlanmış bir sürümünü de değiştirmelisiniz. [URL'yi burada](https://www.w3schools.com/tags/ref_urlencode.asp)kodlayabilirsiniz.
+5. İş dizininizde, aşağıdaki kodla **Sender. c** adlı yeni bir dosya oluşturun. SAS anahtarınız/adınız, Olay Hub 'ınızın adı ve ad alanınız için değerleri değiştirmeyi unutmayın. Ayrıca, daha önce oluşturulan **Sendrule** IÇIN anahtarın URL kodlu bir sürümünü de yerine kullanmalısınız. [Burada](https://www.w3schools.com/tags/ref_urlencode.asp)URL 'yi kodlayabilirsiniz.
    
     ```c
     #include "proton/message.h"
@@ -141,16 +141,16 @@ Bu bölümde, etkinlik merkezinize olay göndermek için bir C uygulaması nası
         return 0;
     }
     ```
-6. **GCC**varsayarak, dosyayı derlemek:
+6. Dosyayı Derle, **GCC**varsayılıyor:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > Bu kod, iletileri mümkün olan en kısa sürede dışarı zorlamak için giden 1 penceresini kullanır. Uygulamanızın iş bilgililiği artırmak için toplu iletileri toplu olarak denemeniz önerilir. Qpid Proton kitaplığını bu ve diğer ortamlarda ve bağlamaların sağlandığı platformlardan (şu anda Perl, PHP, Python ve Ruby) nasıl kullanılacağı hakkında bilgi almak için [Qpid AMQP Messenger sayfasına](https://qpid.apache.org/proton/messenger.html) bakın.
+    > Bu kod, iletileri mümkün olan en kısa sürede zorlamak için 1 giden bir pencere kullanır. Uygulamanızın aktarım hızını artırmak için Batch iletilerini denemesini öneririz. Bu ve diğer ortamlarda Qpid proton kitaplığını kullanma ve bağlamaların sağlandığı platformlar (Şu anda Perl, PHP, Python ve Ruby) hakkında bilgi edinmek için [QPID AMQP Messenger sayfasına](https://qpid.apache.org/proton/messenger.html) bakın.
 
-Olay merkezine ileti göndermek için uygulamayı çalıştırın. 
+Olay Hub 'ına ileti göndermek için uygulamayı çalıştırın. 
 
 Tebrikler! Bir olay hub'ına ileti gönderdiniz.
 
@@ -158,7 +158,7 @@ Tebrikler! Bir olay hub'ına ileti gönderdiniz.
 Aşağıdaki makaleleri okuyun:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Azure Etkinlik Hub'larında özellikler ve terminoloji.](event-hubs-features.md)
+- [Azure Event Hubs Özellikler ve terminoloji](event-hubs-features.md).
 
 
 <!-- Images. -->

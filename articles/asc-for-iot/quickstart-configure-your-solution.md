@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Çözümünüzü yapılandırın'
-description: Bu hızlı başlangıçta, IoT için Azure Güvenlik Merkezi'ni kullanarak uçtan uca IoT çözümünüzü nasıl yapılandırıştırığınızdan öğrenin.
+title: 'Hızlı başlangıç: çözümünüzü yapılandırma'
+description: Bu hızlı başlangıçta IoT için Azure Güvenlik Merkezi 'ni kullanarak uçtan uca IoT çözümünüzü nasıl yapılandıracağınızı öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,46 +16,46 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310851"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Quickstart: IoT çözümünüzü yapılandırın
+# <a name="quickstart-configure-your-iot-solution"></a>Hızlı başlangıç: IoT çözümünüzü yapılandırma
 
-Bu makalede, IoT güvenlik çözümünüzün ilk yapılandırmasının Azure Güvenlik Merkezi'ni kullanarak nasıl gerçekleştirilebildiğini açıklanmıştır.
+Bu makalede IoT için Azure Güvenlik Merkezi 'ni kullanarak IoT güvenlik çözümünüzün ilk yapılandırmasını gerçekleştirme hakkında bir açıklama sunulmaktadır.
 
 ## <a name="azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi
 
-Azure Güvenlik Merkezi ioT için Azure tabanlı IoT çözümleri için uçuça kapsamlı güvenlik sağlar.
+IoT için Azure Güvenlik Merkezi, Azure tabanlı IoT çözümleri için kapsamlı uçtan uca güvenlik sağlar.
 
-Azure Güvenlik Merkezi ioT ile tüm IoT çözümünüzü tek bir panoda izleyebilir ve Azure'daki tüm IoT aygıtlarınızı, IoT platformlarınızı ve arka uç kaynaklarınızı yüzebilirsiniz.
+IoT için Azure Güvenlik Merkezi ile, Azure 'daki tüm IoT cihazlarınızı, IoT platformlarını ve arka uç kaynaklarını tek bir panoda izleyebilirsiniz.
 
-IoT Hub'ınızda etkinleştirildikten sonra, IoT için Azure Güvenlik Merkezi, IoT Hub'ınıza bağlı ve IoT çözümünizle ilişkili diğer Azure hizmetlerini otomatik olarak tanımlar.
+IoT Hub etkinleştirildikten sonra IoT için Azure Güvenlik Merkezi, IoT Hub ve IoT çözümünüz ile ilişkili diğer Azure hizmetlerini otomatik olarak tanımlar.
 
-Otomatik ilişki algılamaya ek olarak, IoT çözümünüzün bir parçası olarak etiketlemek için hangi diğer Azure kaynak gruplarını seçip seçebilirsiniz.
+Otomatik ilişki algılamayı buna ek olarak, IoT çözümünüzün bir parçası olarak hangi diğer Azure kaynak gruplarının etiketleyebileceği de seçim yapabilirsiniz.
 
-Seçimleriniz tüm abonelikleri, kaynak gruplarını veya tek kaynakları eklemenize olanak sağlar.
+Seçimleriniz, tüm abonelikleri, kaynak grupları veya tek kaynakları eklemenize olanak tanır.
 
-Tüm kaynak ilişkilerini tanımladıktan sonra, Azure Güvenlik Merkezi ioT için, bu kaynaklar için güvenlik önerileri ve uyarıları sağlamak için Azure Güvenlik Merkezi'nden yararlanır.
+Tüm kaynak ilişkilerini tanımladıktan sonra IoT için Azure Güvenlik Merkezi, bu kaynaklara yönelik güvenlik önerileri ve uyarılar sağlamak için Azure Güvenlik Merkezi 'Nden yararlanır.
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>IoT çözümünüze Azure kaynakları ekleme
 
-IoT çözümünüze yeni bir kaynak eklemek için aşağıdakileri yapın:
+IoT çözümünüze yeni kaynak eklemek için aşağıdakileri yapın:
 
-1. Azure portalında **IoT Hub'ınızı** açın.
-1. Sol menüde **Güvenlik** altından **Kaynakları** seçin ve açın.
-1. **Edit'i** seçin ve IoT çözümünüze ait kaynak gruplarını seçin.
-1. **Ekle**’ye tıklayın.
+1. **IoT Hub** Azure Portal açın.
+1. Sol taraftaki menüden **güvenlik** altında **kaynakları** seçin ve açın.
+1. **Düzenle** ' yi seçin ve IoT çözümünüze ait kaynak gruplarını seçin.
+1. **Ekle**'ye tıklayın.
 
 Tebrikler! IoT çözümünüze yeni bir kaynak grubu eklediniz.
 
-Azure Güvenlik Merkezi IoT artık yeni eklenen kaynak gruplarınızı izler ve IoT çözümünüzün bir parçası olarak ilgili güvenlik önerilerini ve uyarılarını yüzeyler.
+IoT için Azure Güvenlik Merkezi artık yeni eklenen kaynak gruplarınızı izler ve IoT çözümünüzün bir parçası olarak ilgili güvenlik önerilerini ve uyarılarını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Güvenlik modülleri oluşturmayı öğrenmek için bir sonraki makaleye ilerleyin...
 
 > [!div class="nextstepaction"]
-> [Güvenlik modülleri oluşturma](quickstart-create-security-twin.md)
+> [Güvenlik modülleri oluştur](quickstart-create-security-twin.md)

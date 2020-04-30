@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81260470"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure’da içerik teslim ağı nedir?
@@ -38,7 +38,7 @@ Geçerli CDN düğümü konumlarının listesi için bkz. [Azure CDN POP konumla
 ## <a name="how-it-works"></a>Nasıl çalışır?
 ![CDN'ye Genel Bakış](./media/cdn-overview/cdn-overview.png)
 
-1. Bir kullanıcı (Alice), _ &lt;son nokta adı&gt;_.azureedge.net gibi özel bir etki alanı adı olan bir URL kullanarak bir dosyayı (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
+1. Kullanıcı (Gamze), _ &lt;uç nokta adı&gt;_. azureedge.NET gibi özel bir etki alanı adına sahip bir URL kullanarak bir dosya (varlık olarak da adlandırılır) ister. Bu ad, bir uç nokta konak adı veya özel bir etki alanı olabilir. DNS, genellikle coğrafi olarak kullanıcıya en yakın bulunma noktası olan en iyi performansa sahip bulunma noktası konumuna isteği yönlendirir.
     
 2. Bulunma noktasındaki uç sunucuların önbelleğinde dosya mevcut değilse bulunma noktası, kaynak sunucudan dosyayı ister. Kaynak sunucu; bir Azure Web App, Azure Bulut Hizmeti, Azure Depolama hesabı veya genel olarak erişilebilen herhangi bir web sunucusu olabilir.
    
@@ -64,7 +64,7 @@ CDN aboneliği sınırları hakkında daha fazla bilgi için bkz. [CDN sınırla
 ## <a name="azure-cdn-features"></a>Azure CDN özellikleri
 Azure CDN aşağıdaki temel özellikleri sunar:
 
-- [Dinamik alan ivmesi](cdn-dynamic-site-acceleration.md)
+- [Dinamik site hızlandırma](cdn-dynamic-site-acceleration.md)
 - [CDN önbelleğe alma kuralları](cdn-caching-rules.md)
 - [HTTPS özel etki alanı desteği](cdn-custom-ssl.md)
 - [Azure tanılama günlükleri](cdn-azure-diagnostic-logs.md)

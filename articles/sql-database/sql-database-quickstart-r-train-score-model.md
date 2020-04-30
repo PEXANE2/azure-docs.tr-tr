@@ -1,7 +1,7 @@
 ---
-title: R'de tahmine dayalı bir model oluşturma ve eğitme
+title: R 'de tahmine dayalı bir model oluşturma ve eğitme
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme) kullanarak R'de basit bir tahmin modeli oluşturun ve ardından yeni veriler kullanarak bir sonucu tahmin edin.
+description: Azure SQL veritabanı Machine Learning Services (Önizleme) kullanarak R 'de basit bir tahmine dayalı model oluşturun ve ardından yeni verileri kullanarak bir sonuç tahmin edin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,48 +15,48 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3c88bdf141e7784837a89c8104574d97c93296dc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460163"
 ---
-# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model oluşturma ve bunları eğitme (önizleme)
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Hızlı başlangıç: Azure SQL veritabanı Machine Learning Services (Önizleme) ile R 'de tahmine dayalı bir model oluşturma ve eğitme
 
-Bu hızlı başlangıçta, R kullanarak tahmine dayalı bir model oluşturur ve eğitirsiniz, modeli veritabanınızdaki bir tabloya kaydedin, ardından Azure SQL Veritabanında Machine Learning Services (R ile) kullanarak yeni verilerden gelen değerleri tahmin etmek için modeli kullanırsınız.
+Bu hızlı başlangıçta, R kullanarak tahmine dayalı bir model oluşturup eğitebilirsiniz, modeli veritabanınızdaki bir tabloya kaydedin, ardından Azure SQL veritabanı 'nda Machine Learning Services (R ile) kullanarak yeni verilerden değerleri tahmin etmek için modeli kullanın.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Sunucu düzeyinde güvenlik [duvarı kuralına](sql-database-server-level-firewall-rule.md) sahip bir [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Sunucu düzeyinde güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md) olan BIR [Azure SQL veritabanı](sql-database-single-database-get-started.md)
+- R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) .
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-Bu örnek, R ile birlikte verilen **araç** veri setini kullanarak bir arabanın durma mesafesini tahmin etmek için basit bir regresyon modeli kullanır.
+Bu örnek, R 'ye dahil olan **araba veri kümesini** kullanarak bir arabasının durdurma uzaklığını tahmin etmek için basit bir regresyon modeli kullanır.
 
 > [!TIP]
-> Yüklü veri kümelerinin listesini almak için R çalışma süresine, R `library(help="datasets")` komut isteminden yazın.
+> Birçok veri kümesi R çalışma zamanına dahildir, yüklü veri kümelerinin listesini almak için R komut isteminden yazın `library(help="datasets")` .
 
 ## <a name="create-and-train-a-predictive-model"></a>Tahmine dayalı bir model oluşturma ve eğitme
 
-Araç veri kümesindeki **araç** hız verileri iki sütun içerir, hem sayısal: **dist** ve **hız.** Veriler, farklı hızlarda birden çok durdurma gözlemi içerir. Bu verilerden, araç hızı ile bir otomobili durdurmak için gereken mesafe arasındaki ilişkiyi açıklayan doğrusal bir regresyon modeli oluşturursunuz.
+**Araba veri kümesindeki otomobil** hızı verileri, hem **sayısal: hem de** **hızlı**bir şekilde iki sütun içerir. Veriler, farklı hızlarda birden çok durdurma gözlemlerini içerir. Bu verilerden, araba hızı arasındaki ilişkiyi ve bir arabayı durdurmak için gereken mesafeyi açıklayan bir doğrusal regresyon modeli oluşturacaksınız.
 
 Doğrusal modelin gereksinimleri oldukça basittir:
-- Bağımlı değişken *hızı* ile bağımsız değişken *uzaklığı*arasındaki ilişkiyi açıklayan bir formül tanımlayın.
+- Bağımlı değişken *hızı* ve bağımsız değişken *uzaklığı*arasındaki ilişkiyi açıklayan bir formül tanımlayın.
 - Modelin eğitilmesi için kullanılacak giriş verilerini sağlayın.
 
 > [!TIP]
-> Doğrusal modellerde bir tazelemeye ihtiyacınız varsa, rxLinMod: [Fitting Lineer Modelleri](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) kullanarak bir modele uyum sürecini açıklayan bu öğreticiyi deneyin
+> Doğrusal modeller üzerinde bir yenileyici gerekiyorsa, rxLinMod: bir modeli, [Doğrusal modellerle sığdırma](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) kullanarak bir modele sığdırma işlemini açıklayan bu öğreticiyi deneyin
 
-Aşağıdaki adımlarda eğitim verilerini ayarlarsınız, bir regresyon modeli oluşturursunuz, eğitim verilerini kullanarak çalışırsınız ve modeli BIR SQL tablosuna kaydedebilirsiniz.
+Aşağıdaki adımlarda eğitim verilerini ayarlayacaksınız, regresyon modeli oluşturacak, eğitim verilerini kullanarak eğtireceğiz ve ardından modeli bir SQL tablosuna kaydetmelisiniz.
 
-1. **SQL Server Management Studio'nuzu** açın ve SQL veritabanınıza bağlanın.
+1. **SQL Server Management Studio** açın ve SQL veritabanınıza bağlanın.
 
-   Bağlanmak için yardıma ihtiyacınız varsa, [Azure SQL veritabanını bağlamak ve sorgulamak için Hızlı Başlangıç: SQL Server Management Studio'yı kullanın.](sql-database-connect-query-ssms.md)
+   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md).
 
-1. Eğitim verilerini kaydetmek için **CarSpeed** tablosunu oluşturun.
+1. Eğitim verilerini kaydetmek için **Carspeed** tablosunu oluşturun.
 
     ```sql
     CREATE TABLE dbo.CarSpeed (
@@ -76,9 +76,9 @@ Aşağıdaki adımlarda eğitim verilerini ayarlarsınız, bir regresyon modeli 
     GO
     ```
 
-1. `rxLinMod`Kullanarak bir regresyon modeli oluşturun. 
+1. Kullanarak `rxLinMod`regresyon modeli oluşturun. 
 
-   Modeli oluşturmak için Formülü R kodunun içindeki olarak tanımlarsınız ve ardından eğitim verileri **CarSpeed'i** giriş parametresi olarak geçirirsiniz.
+   Modeli oluşturmak için, R kodunun içindeki formülü tanımlar ve ardından eğitim verileri **Carspeed** ' i giriş parametresi olarak geçirin.
 
     ```sql
     DROP PROCEDURE IF EXISTS generate_linear_model;
@@ -102,9 +102,9 @@ Aşağıdaki adımlarda eğitim verilerini ayarlarsınız, bir regresyon modeli 
 
      rxLinMod için ilk bağımsız değişken, mesafeyi hıza bağımlı olan bir değer olarak tanımlayan *formula* parametresidir. Giriş verileri SQL sorgusu tarafından doldurulan `CarsData` değişkeninde depolanır.
 
-1. Modeli daha sonra tahmin için kullanabilmeniz için depoladığınız bir tablo oluşturun. 
+1. Daha sonra tahmin için kullanabilmeniz için modeli depoladığınız bir tablo oluşturun. 
 
-   Bir model oluşturan bir R paketinin çıktısı genellikle ikili bir **nesnedir,** bu nedenle tablonun **VARBINARY(max)** türünde bir sütunu olmalıdır.
+   Model oluşturan bir R paketinin çıkışı genellikle **ikili bir nesnedir**, bu nedenle tabloda **VARBINARY (max)** türünde bir sütun olmalıdır.
 
     ```sql
     CREATE TABLE dbo.stopping_distance_models (
@@ -113,7 +113,7 @@ Aşağıdaki adımlarda eğitim verilerini ayarlarsınız, bir regresyon modeli 
         );
     ```
 
-1. Şimdi depolanan yordamı arayın, modeli oluşturun ve bir tabloya kaydedin.
+1. Şimdi saklı yordamı çağırın, modeli oluşturun ve bir tabloya kaydedin.
 
    ```sql
    INSERT INTO dbo.stopping_distance_models (model)
@@ -126,7 +126,7 @@ Aşağıdaki adımlarda eğitim verilerini ayarlarsınız, bir regresyon modeli 
    Violation of PRIMARY KEY constraint...Cannot insert duplicate key in object bo.stopping_distance_models
    ```
 
-   Bu hatayı önlemek için bir seçenek her yeni model için adını güncelleştirmektir. Örneğin adı daha açıklayıcı bir değer olarak değiştirebilir ve model türü, oluşturduğunuz tarih gibi bilgileri ekleyebilirsiniz.
+   Bu hatadan kaçınmak için bir seçenek, her yeni modelin adını güncelleştirmaktır. Örneğin adı daha açıklayıcı bir değer olarak değiştirebilir ve model türü, oluşturduğunuz tarih gibi bilgileri ekleyebilirsiniz.
 
    ```sql
    UPDATE dbo.stopping_distance_models
@@ -134,11 +134,11 @@ Aşağıdaki adımlarda eğitim verilerini ayarlarsınız, bir regresyon modeli 
    WHERE model_name = 'default model'
    ```
 
-## <a name="view-the-table-of-coefficients"></a>Katsayılar tablosunu görüntüleme
+## <a name="view-the-table-of-coefficients"></a>Katsayıların tablosunu görüntüleme
 
 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamından döndürülen R çıkışı genellikle tek bir veri çerçevesiyle sınırlıdır. Ancak veri çerçevesine ek olarak skaler değer gibi diğer türlerdeki çıkışları da döndürebilirsiniz.
 
-Örneğin, bir model eğitmek istediğinizi ancak modeldeki katsayılar tablosunu hemen görüntülemek istediğinizi varsayalım. Bunu yapmak için, ana sonuç kümesi olarak katsayılar tablosunu oluşturur ve bir SQL değişkeninde eğitilen modeli çıktınız. Değişkeni arayarak modeli hemen yeniden kullanabilir veya modeli burada gösterildiği gibi bir tabloya kaydedebilirsiniz.
+Örneğin, bir modeli eğitebilmeniz, ancak modeldeki katsayıların tablosunu hemen görüntülemek istediğinizi varsayalım. Bunu yapmak için, katsayıların bir kısmını ana sonuç kümesi olarak oluşturur ve eğitilen modeli bir SQL değişkeninde çıktı olarak alırsınız. Değişkeni çağırarak modeli hemen yeniden kullanabilirsiniz ya da modeli burada gösterildiği gibi bir tabloya kaydedebilirsiniz.
 
 ```sql
 DECLARE @model VARBINARY(max)
@@ -171,11 +171,11 @@ VALUES (
 
 ![Ek çıktıya sahip eğitilen model](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>Eğitilmiş modeli kullanarak yeni veriler elde edin
+## <a name="score-new-data-using-the-trained-model"></a>Eğitilen modeli kullanarak yeni verileri puan edin
 
-*Puanlama,* veri biliminde, eğitilmiş bir modele beslenen yeni verilere dayalı öngörüler, olasılıklar veya diğer değerler oluşturmak anlamına gelmek için kullanılan bir terimdir. Önceki bölümde oluşturduğunuz modeli, yeni verilere karşı tahmin puanları elde etmek için kullanırsınız.
+*Puanlama* , veri bilimi ' nde, öngörülere, olasılıklara veya eğitilen bir modele yapılan yeni verileri temel alan diğer değerleri oluşturmak için kullanılan bir terimdir. Önceki bölümde oluşturduğunuz modeli kullanarak yeni verilere yönelik tahmine dayalı puan elde edersiniz.
 
-Özgün eğitim verilerindeki en yüksek hızın saatte 25 mil olduğunu fark ettiniz mi? Bunun nedeni özgün verilerin 1920'de yapılan bir deneyden alınmış olmasıdır! Merak edebilirsiniz, 1920'lerden kalma bir otomobilin durması ne kadar sürerdi? Bu soruyu yanıtlamak için, modelinize bazı yeni hız değerleri sağlayabilirsiniz.
+Özgün eğitim verilerindeki en yüksek hızın saatte 25 mil olduğunu fark ettiniz mi? Bunun nedeni özgün verilerin 1920'de yapılan bir deneyden alınmış olmasıdır! 60 mph veya 100 mph olarak hızlı bir şekilde çalışmaya başlasa da, 1920s 'den nasıl bir otomobil gönderileceğini merak ediyor olabilirsiniz. Bu soruyu yanıtlamak için modelinize bazı yeni hız değerleri sağlayabilirsiniz.
 
 1. Yeni hız verileri içeren bir tablo oluşturun.
 
@@ -196,19 +196,19 @@ VALUES (
         , (100)
    ```
 
-2. Bu yeni hız değerlerinden durma mesafelerini tahmin edin.
+2. Bu yeni hız değerlerinden uzaklığı durdurmayı tahmin edin.
 
-   Modeliniz **RevoScaleR** paketinin bir parçası olarak sağlanan **rxLinMod** algoritmasını temel aldığından, genel R `predict` işlevi yerine [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) işlevini çağırırsınız.
+   Modeliniz **, geri alma paketinin bir** parçası olarak sunulan **Rxlinmod** algoritmasını temel aldığı için, genel R `predict` işlevi yerine [rxınpredıal](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) işlevini çağırın.
 
    Bu örnek komut dosyası:
-   - Tablodan tek bir model almak için SELECT deyimi kullanır
-   - Giriş parametresi olarak geçer
+   - Tablodan tek bir model almak için SELECT ifadesini kullanır
+   - Bunu bir giriş parametresi olarak geçirir
    - Modeldeki `unserialize` işlevi çağırır
-   - İşlev, `rxPredict` modele uygun bağımsız değişkenlerle uygular
+   - Uygun bağımsız `rxPredict` değişkenlerle işlevi modele uygular
    - Yeni giriş verilerini sağlar
 
    > [!TIP]
-   > Gerçek zamanlı puanlama için RevoScaleR tarafından sağlanan [Serileştirme işlevlerine](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) bakın.
+   > Gerçek zamanlı Puanlama için bkz. Iptal eden tarafından sunulan [serileştirme işlevleri](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) .
 
    ```sql
     DECLARE @speedmodel VARBINARY(max) = (
@@ -240,15 +240,15 @@ VALUES (
    ![Durdurma mesafesini tahmin etmek için sonuç kümesi](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
-> Bu örnek komut `str` dosyasında, R'den döndürülen verilerin şemasını denetlemek için sınama aşamasında işlev eklenir. İfadeyi daha sonra kaldırabilirsiniz.
+> Bu örnek betikte,, `str` R 'den döndürülen verilerin şemasını denetlemek için test aşamasında işlev eklenir. Deyimden daha sonra kaldırabilirsiniz.
 >
-> R betiğinde kullanılan sütun adlarının, saklı yordam çıkışına geçirilenlerle aynı olması şart değildir. Burada WITH RESULTS yan tümcesi bazı yeni sütun adlarını tanımlar.
+> R betiğinde kullanılan sütun adlarının, saklı yordam çıkışına geçirilenlerle aynı olması şart değildir. Burada WıTH RESULTS yan tümcesi bazı yeni sütun adlarını tanımlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri hakkında daha fazla bilgi için (önizleme), aşağıdaki makalelere bakın.
+R (Önizleme) ile Azure SQL veritabanı Machine Learning Services hakkında daha fazla bilgi için aşağıdaki makalelere bakın.
 
-- [R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme)](sql-database-machine-learning-services-overview.md)
-- [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde basit R komut dosyaları oluşturun ve çalıştırın (önizleme)](sql-database-quickstart-r-create-script.md)
-- [Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)](sql-database-machine-learning-services-functions.md)
-- [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)](sql-database-machine-learning-services-data-issues.md)
+- [R ile Azure SQL veritabanı Machine Learning Services (Önizleme)](sql-database-machine-learning-services-overview.md)
+- [Azure SQL veritabanı 'nda basit R betikleri oluşturma ve çalıştırma Machine Learning Services (Önizleme)](sql-database-quickstart-r-create-script.md)
+- [Machine Learning Services kullanarak Azure SQL veritabanı 'nda gelişmiş R işlevleri yazma (Önizleme)](sql-database-machine-learning-services-functions.md)
+- [Azure SQL veritabanı 'nda R ve SQL verileriyle çalışma Machine Learning Services (Önizleme)](sql-database-machine-learning-services-data-issues.md)

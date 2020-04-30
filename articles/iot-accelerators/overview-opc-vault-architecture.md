@@ -1,6 +1,6 @@
 ---
-title: OPC Vault mimarisi - Azure | Microsoft Dokümanlar
-description: OPC Vault sertifika yönetimi hizmet mimarisi
+title: OPC kasa mimarisi-Azure | Microsoft Docs
+description: OPC Kasası sertifika yönetimi hizmeti mimarisi
 author: mregen
 ms.author: mregen
 ms.date: 08/16/2019
@@ -9,81 +9,81 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71200152"
 ---
-# <a name="opc-vault-architecture"></a>OPC Vault mimarisi
+# <a name="opc-vault-architecture"></a>OPC Kasası mimarisi
 
-Bu makalede, OPC Vault microservice ve OPC Vault IoT Edge modülü hakkında genel bir bakış sunulmaktadır.
+Bu makale OPC Kasası mikro hizmeti ve OPC Kasası IoT Edge modülüyle ilgili bir genel bakış sunar.
 
-OPC UA uygulamaları, uygulama düzeyi güvenliği sağlamak için uygulama örnek sertifikalarını kullanır. Uygulama sertifikalarının ortak ve özel anahtar çiftini sağladığı asimetrik şifreleme kullanılarak güvenli bir bağlantı kurulur. Sertifikalar kendi imzası olabilir veya Sertifika Yetkilisi (CA) tarafından imzalanabilir.
+OPC UA uygulamaları uygulama düzeyi güvenliği sağlamak için uygulama örneği sertifikaları kullanır. Güvenli bir bağlantı, asimetrik şifreleme kullanılarak oluşturulur ve bu uygulama sertifikaları ortak ve özel anahtar çiftini sağlar. Sertifikalar otomatik olarak imzalanabilir veya bir sertifika yetkilisi (CA) tarafından imzalanabilir.
 
-OPC UA uygulaması, güvendiği uygulamaları temsil eden güvenilir sertifikaların bir listesine sahiptir. Bu sertifikalar kendi kendine imzalanabilir veya bir CA tarafından imzalanabilir veya Root-CA veya Sub-CA'nın kendileri olabilir. Güvenilen bir sertifika daha büyük bir sertifika zincirinin parçasıysa, uygulama güven listesindeki sertifikaya zincirleyen tüm sertifikalara güvenir. Bu, tam sertifika zinciri doğrulanabildiği sürece geçerlidir.
+OPC UA uygulaması, güvendiği uygulamaları temsil eden güvenilir sertifikaların bir listesini içerir. Bu sertifikalar, bir CA tarafından otomatik olarak imzalanmış veya imzalanabilir ya da bir kök CA ya da bir alt CA olabilir. Güvenilir bir sertifika daha büyük bir Sertifika zincirinin parçasıysa, uygulama, güven listesindeki sertifikaya zincirleme yapan tüm sertifikalara güvenir. Tam sertifika zinciri doğrulanabilir olduğu sürece bu değer doğrudur.
 
-Kendi imzalı sertifikalara güvenmekle CA sertifikasına güvenmek arasındaki en büyük fark, güveni dağıtmak ve korumak için gereken yükleme çabasıdır. Ayrıca, şirkete özgü bir CA'yı barındırmak için ek çaba da vardır. 
+Otomatik olarak imzalanan sertifikalara güvenen ve CA sertifikasına güvenen önemli fark, güven dağıtmak ve korumak için gereken yükleme çabasıdır. Ayrıca, şirkete özgü bir CA barındırmak için de ek çaba vardır. 
 
-Tek bir istemci uygulaması olan birden çok sunucu için kendi imzalı sertifikalar için güven dağıtmak için, istemci uygulama güven listesine tüm sunucu uygulama sertifikaları yüklemeniz gerekir. Ayrıca, istemci uygulama sertifikasını tüm sunucu uygulaması güven listelerine yüklemeniz gerekir. Bu yönetim çabası oldukça büyük bir yüktür ve sertifika yaşam sürelerini göz önünde bulundurmanız ve sertifikaları yenilemeniz gerektiğinde bile artar.
+Tek bir istemci uygulaması ile birden çok sunucuya yönelik otomatik olarak imzalanan sertifikalara güven dağıtmak için, tüm sunucu uygulama sertifikalarını istemci uygulama güven listesine yüklemelisiniz. Ayrıca, istemci uygulama sertifikasını tüm sunucu uygulaması güven listelerine yüklemelisiniz. Bu yönetim çabasının oldukça bir yükü vardır ve sertifika ömrünü göz önünde bulundurmanız ve sertifikaları yenilemeniz gerektiğinde de artar.
 
-Şirkete özgü bir CA kullanımı, birden çok sunucu ve istemciyle güven yönetimini büyük ölçüde basitleştirebilir. Bu durumda, yönetici kullanılan her istemci ve sunucu için bir kez CA imzalı uygulama örneği sertifikası oluşturur. Buna ek olarak, CA Sertifikası tüm sunucularda ve istemcilerde, her uygulama güven listesinde yüklenir. Bu yaklaşımla, yalnızca süresi dolmuş sertifikaların yenilenmeli ve etkilenen uygulamalar için değiştirilmesi gerekir.
+Şirkete özgü CA kullanımı, birden çok sunucu ve istemcilerle güvenin yönetimini büyük ölçüde basitleştirebilir. Bu durumda, yönetici, kullanılan her istemci ve sunucu için bir kez CA imzalı uygulama örneği sertifikası oluşturur. Ayrıca, CA sertifikası tüm sunucu ve istemcilerde her uygulama güven listesine yüklenir. Bu yaklaşımda, etkilenen uygulamalar için yalnızca süre dolma yapılan sertifikaların yenilenmesi ve değiştirilmeleri gerekir.
 
-Azure Endüstriyel IoT OPC Sertifika Yönetimi hizmeti, OPC UA uygulamaları için şirkete özgü bir CA yönetmenize yardımcı olur. Bu hizmet OPC Vault microservice dayanmaktadır. OPC Vault, şirkete özgü bir CA'yı güvenli bir bulutta barındırmak için bir mikro hizmet sağlar. Bu çözüm, Azure Active Directory (Azure AD), Donanım Güvenlik Modülleri (HSM'ler ile Azure Anahtar Kasası), Azure Cosmos DB ve isteğe bağlı olarak Uygulama Deposu olarak IoT Hub tarafından güvence altına alınmış hizmetlertarafından desteklenen hizmetlerle birlikte yedeklenir.
+Azure endüstriyel IoT OPC UA sertifika yönetimi hizmeti, OPC UA uygulamaları için şirkete özgü bir CA 'yı yönetmenize yardımcı olur. Bu hizmet OPC Kasası mikro hizmetini temel alır. OPC Kasası, güvenli bir bulutta şirkete özgü bir CA barındırmak için bir mikro hizmet sağlar. Bu çözüm, Azure Active Directory (Azure AD) tarafından desteklenen hizmetler tarafından desteklenir Azure Key Vault, donanım güvenlik modülleri (HSM 'ler), Azure Cosmos DB ve isteğe bağlı olarak bir uygulama deposu olarak IoT Hub.
 
-OPC Vault microservice, Azure Key Vault'ta imzalama hakkı olan güvenlik yöneticilerinin ve onaylayanların istekleri onayladığı veya reddettiği rol tabanlı iş akışını desteklemek üzere tasarlanmıştır.
+OPC Kasası mikro hizmeti, güvenlik yöneticileri ve onaylayanlara, istekleri onaylama veya reddetme Azure Key Vault oturum açma haklarını içeren rol tabanlı iş akışını destekleyecek şekilde tasarlanmıştır.
 
-Mevcut OPC UA çözümleriyle uyumluluk için hizmetler, OPC Vault mikroservis destekli kenar modülü desteğini içerir. Bu, sertifikaları ve güven listelerini belirtimibölüm 12'ye göre dağıtmak için **OPC UA Global Discovery Server ve Sertifika Yönetimi** arabirimini uygular. 
+Mevcut OPC UA çözümleriyle uyumluluk için, hizmetler bir OPC Kasası mikro hizmeti destekli Edge modülü desteği içerir. Bu, **OPC UA genel keşif sunucusunu ve sertifika yönetimi** arabirimini, belirtiminin 12. bölümüne göre sertifikaları ve güven listelerini dağıtmak için uygular. 
 
 
 ## <a name="architecture"></a>Mimari
 
-Mimari, fabrika ağı için bir OPC Vault IoT Edge modülü ve iş akışını kontrol etmek için bir web örneği UX ile OPC Vault microservice'e dayanmaktadır:
+Mimari, fabrika ağı için OPC Kasası IoT Edge modülü ve iş akışını denetlemek için bir Web örneği UX ile OPC Kasası mikro hizmetini temel alır:
 
-![OPC Vault mimarisinin diyagramı](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC Kasası mimarisinin diyagramı](media/overview-opc-vault-architecture/opc-vault.png)
 
-## <a name="opc-vault-microservice"></a>OPC Vault microservice
+## <a name="opc-vault-microservice"></a>OPC Kasası mikro hizmeti
 
-OPC Vault microservice, OPC UA uygulamaları için şirkete özgü bir CA'yı dağıtmak ve yönetmek için iş akışını uygulamak için aşağıdaki arabirimlerden oluşur.
+OPC Kasası mikro hizmeti, OPC UA uygulamalarına yönelik şirkete özgü bir CA 'yı dağıtmak ve yönetmek üzere iş akışını uygulamak için aşağıdaki arabirimlerden oluşur.
 
 ### <a name="application"></a>Uygulama 
-- OPC UA uygulaması bir sunucu veya istemci veya her ikisi de olabilir. OPC Vault bu durumda bir uygulama kayıt yetkilisi olarak hizmet vermektedir. 
-- Uygulamaları kaydetmek, güncelleştirmek ve kayıt dışı etmek için temel işlemlere ek olarak, arama ifadeleri olan uygulamaları bulmak ve sorgulamak için arayüzler de vardır. 
-- Sertifika istekleri, bir isteği işlemek ve OPC UA'ya özgü tüm uzantıları içeren imzalı bir sertifika vermek için geçerli bir uygulamaya başvurmalıdır. 
-- Uygulama hizmeti Azure Cosmos DB'deki bir veritabanı tarafından yedeklenir.
+- OPC UA uygulaması, bir sunucu veya istemci ya da her ikisi olabilir. OPC Kasası, bu durumda bir uygulama kayıt yetkilisi olarak hizmet verir. 
+- Uygulamaları kaydetmek, güncelleştirmek ve silmek için temel işlemlere ek olarak, arama ifadelerine sahip uygulamaları bulmak ve sorgulamak için de arabirimler vardır. 
+- Bir isteği işlemek ve OPC UA 'ya özgü uzantılara sahip imzalı bir sertifika vermek için sertifika isteklerinin geçerli bir uygulamaya başvurması gerekir. 
+- Uygulama hizmeti Azure Cosmos DB bir veritabanı tarafından desteklenir.
 
 ### <a name="certificate-group"></a>Sertifika grubu
-- Sertifika grubu, sertifikaları imzalamak için özel anahtar da dahil olmak üzere kök CA veya alt CA sertifikası depolayan bir varlıktır. 
-- RSA anahtar uzunluğu, SHA-2 karma uzunluğu ve kullanım ömürleri hem Veren CA hem de imzalı uygulama sertifikaları için yapılandırılabilir. 
-- CA sertifikalarını FIPS 140-2 Düzey 2 HSM ile desteklenen Azure Key Vault'ta saklarsınız. İmzalama, Azure AD tarafından güvenli bir Key Vault işlemi yle yapıldığından, özel anahtar hiçbir zaman güvenli depolama dan ayrılmaz. 
-- CA sertifikalarını zaman içinde yenileyebilir ve Key Vault geçmişi nedeniyle güvenli depolama da kalmasını sağlayabilirsiniz. 
-- Her CA sertifikasının iptal listesi de key vault'ta gizli olarak saklanır. Bir başvuru kayıt dışı olduğunda, başvuru sertifikası bir yönetici tarafından Sertifika İptal Listesi'nde (CRL) de iptal edilir.
-- Tek sertifikaların yanı sıra toplu sertifikaları da iptal edebilirsiniz.
+- Sertifika grubu, sertifikaları imzalamak için özel anahtar dahil olmak üzere kök CA veya alt CA sertifikası depolayan bir varlıktır. 
+- RSA anahtar uzunluğu, SHA-2 karma uzunluğu ve yaşam süreleri hem veren CA hem de imzalı uygulama sertifikaları için yapılandırılabilir. 
+- CA sertifikalarını FIPS 140-2 düzey 2 HSM ile desteklenen Azure Key Vault ' de depoladığınızda. İmzalama, Azure AD tarafından güvenliği sağlanmış bir Key Vault işlemi tarafından yapıldığından, özel anahtar hiçbir şekilde güvenli depolamayı terk etmez. 
+- CA sertifikalarını zaman içinde yenileyebilir ve Key Vault geçmişi nedeniyle güvenli depolamada kalabilirler. 
+- Her CA sertifikası için iptal listesi, gizli olarak Key Vault da depolanır. Bir uygulamanın kaydı silindiğinde, uygulama sertifikası da bir yönetici tarafından sertifika Iptal listesinde (CRL) iptal edilir.
+- Tek sertifikaların yanı sıra toplu sertifikaları iptal edebilirsiniz.
 
 ### <a name="certificate-request"></a>Sertifika isteği
-Sertifika isteği, Bir OPC UA uygulaması için bir Sertifika İmzaLama İsteği (CSR) kullanarak yeni bir anahtar çifti veya imzalı sertifika oluşturmak için iş akışını uygular. 
-- İstek, özne veya KSS gibi eşlik eden bilgilerin bulunduğu bir veritabanında ve OPC UA uygulamasına bir başvuruyla depolanır. 
-- Hizmetteki iş mantığı, uygulama veritabanında depolanan bilgilere karşı isteği doğrular. Örneğin, veritabanındaki Uri uygulaması, CSR'deki Uri uygulamasıyla eşleşmelidir.
-- İmzalama haklarına sahip bir güvenlik yöneticisi (diğer bir süre Önce Onaylayan rolü) isteği onaylar veya reddeder. İstek onaylanırsa, yeni bir anahtar çifti veya imzalı sertifika (veya her ikisi) oluşturulur. Yeni özel anahtar Key Vault'ta güvenli bir şekilde depolanır ve yeni imzalı ortak sertifika sertifika isteği veritabanında depolanır.
-- İstekli, onaylanana veya iptal edilene kadar istek durumunu yoklayabilir. İstek onaylanırsa, özel anahtar ve sertifika OPC UA uygulamasının sertifika deposuna indirilebilir ve yüklenebilir.
-- İstekçi artık gereksiz bilgileri istek veritabanından silme isteğini kabul edebilir. 
+Bir sertifika isteği, OPC UA uygulaması için bir sertifika Imzalama Isteği (CSR) kullanarak yeni bir anahtar çifti veya imzalı bir sertifika oluşturmak üzere iş akışını uygular. 
+- İstek, konu veya CSR gibi bilgileri içeren bir veritabanında depolanır ve OPC UA uygulamasına bir başvurudur. 
+- Hizmette iş mantığı, isteği uygulama veritabanında depolanan bilgilere karşı doğrular. Örneğin, veritabanındaki uygulama URI 'Si CSR içindeki uygulama URI 'Siyle eşleşmelidir.
+- İmzalama hakları olan bir güvenlik Yöneticisi (yani onaylayan rolü) isteği onaylar veya reddeder. İstek onaylanırsa, yeni bir anahtar çifti veya imzalı bir sertifika (veya her ikisi de) oluşturulur. Yeni özel anahtar Key Vault güvenli bir şekilde depolanır ve yeni imzalanmış ortak sertifika, sertifika isteği veritabanında depolanır.
+- İstek sahibi onaylanana veya iptal edilene kadar istek durumunu yoklayabilirler. İstek onaylanmışsa, özel anahtar ve sertifika, OPC UA uygulamasının sertifika deposuna indirilip yüklenebilir.
+- İstek sahibi artık istek veritabanından gereksiz bilgileri silme isteğini kabul edebilir. 
 
-İmzalı bir sertifikanın ömrü boyunca, bir uygulama silinebilir veya bir anahtar tehlikeye atılabilir. Böyle bir durumda, bir CA yöneticisi şunları yapabilir:
-- Uygulamanın bekleyen tüm ve onaylı sertifika isteklerini de silen bir uygulamayı silin. 
-- Yalnızca bir anahtar yenilenirse veya ele geçirilirse, yalnızca tek bir sertifika isteğini silin.
+İmzalı bir sertifikanın kullanım ömrü boyunca, bir uygulama silinebilir veya bir anahtar tehlikeye çıkabilir. Böyle bir durumda, CA yöneticisi şunları yapabilir:
+- Uygulamanın bekleyen ve onaylanmış tüm sertifika isteklerini de silen bir uygulamayı silin. 
+- Yalnızca bir anahtar yenilenirse veya güvenliği tehlikeye atılırsa yalnızca tek bir sertifika isteğini silin.
 
-Şimdi gizliliği ihlal edilen onaylı ve kabul edilen sertifika istekleri silinmiş olarak işaretlenir.
+Artık tehlikede onaylanan ve kabul edilen sertifika istekleri silindi olarak işaretlenir.
 
-Bir yönetici, Veren CA CRL'yi düzenli olarak yenileyebilir. Yenileme sırasında, silinen tüm sertifika istekleri iptal edilir ve sertifika seri numaraları CRL iptal listesine eklenir. İptal edilen sertifika istekleri iptal edilmiş olarak işaretlenir. Acil durumlarda, tek sertifika istekleri de iptal edilebilir.
+Bir yönetici, veren CA CRL 'YI düzenli olarak yenileyebilir. Yenileme sırasında, tüm silinen sertifika istekleri iptal edilir ve sertifika seri numaraları CRL iptal listesine eklenir. İptal edilen sertifika istekleri iptal edildi olarak işaretlenir. Acil olaylarda, tek sertifika istekleri de iptal edilebilir.
 
-Son olarak, güncelleştirilmiş CRL'ler katılımcı OPC UA istemcilerine ve sunucularına dağıtılabilir.
+Son olarak, güncelleştirilmiş CRL 'Ler katılan OPC UA istemcilerine ve sunucularına dağıtım için kullanılabilir.
 
-## <a name="opc-vault-iot-edge-module"></a>OPC Vault IoT Edge modülü
-Bir fabrika ağı Global Discovery Server'ı desteklemek için, OPC Vault modüllerini kenarda dağıtabilirsiniz. Yerel bir .NET Core uygulaması olarak çalıştırın veya Docker kapsayıcısında çalıştırın. Geçerli OPC UA .NET Standart yığınındaki Auth2 kimlik doğrulama desteğinin eksikliği nedeniyle, OPC Vault kenar modülünün işlevselliğinin Reader rolüyle sınırlı olduğunu unutmayın. OPC UA GDS standart arabirimi kullanılarak bir kullanıcı kenar modülünden mikrohizmete taklit edilemez.
+## <a name="opc-vault-iot-edge-module"></a>OPC Kasası IoT Edge modülü
+Bir fabrika ağı küresel bulma sunucusunu desteklemek için OPC Kasası modülünü kenarda dağıtabilirsiniz. Bunu yerel bir .NET Core uygulaması olarak çalıştırın veya bir Docker kapsayıcısında başlatın. Geçerli OPC UA .NET Standard yığınında auth2 kimlik doğrulama desteğinin bulunmaması nedeniyle OPC Kasası Edge modülünün işlevselliği bir okuyucu rolüyle sınırlıdır. OPC UA GDS standart arabirimini kullanarak, bir kullanıcının Edge modülünden mikro hizmete özellikleri alınamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık OPC Vault mimarisini öğrendiğiniz için şunları yapabilirsiniz:
+Artık OPC Kasası mimarisini öğrendiğinize göre şunları yapabilirsiniz:
 
 > [!div class="nextstepaction"]
-> [OPC Vault'u oluşturun ve dağıtın](howto-opc-vault-deploy.md)
+> [OPC Kasası oluşturma ve dağıtma](howto-opc-vault-deploy.md)

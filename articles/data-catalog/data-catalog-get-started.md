@@ -1,50 +1,50 @@
 ---
 title: Azure Veri Kataloğu oluşturma
-description: Bu hızlı başlangıç, Azure portalını kullanarak Bir Azure Veri Kataloğu'nun nasıl oluşturulurolduğunu açıklar.
+description: Bu hızlı başlangıçta Azure portal kullanarak bir Azure Veri Kataloğu oluşturmayı açıklanmaktadır.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68976871"
 ---
-# <a name="quickstart-create-an-azure-data-catalog"></a>Hızlı Başlangıç: Azure Veri Kataloğu Oluşturma
+# <a name="quickstart-create-an-azure-data-catalog"></a>Hızlı başlangıç: Azure Veri Kataloğu oluşturma
 
 Azure Veri Kataloğu kurumsal veri varlıkları için bir kayıt sistemi ve bulma sistemi olarak görev yapan tam yönetilen bir bulut hizmetidir. Ayrıntılı bir genel bakış için bkz. [Azure Veri Kataloğu nedir](overview.md).
 
-Bu hızlı başlangıç, bir Azure Veri Kataloğu oluşturmaya başlamanıza yardımcı olur.
+Bu hızlı başlangıç, Azure Veri Kataloğu oluşturmaya başlamanıza yardımcı olur.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunları yapmanız gerekir:
 
-* Microsoft [Azure](https://azure.microsoft.com/) aboneliği.
-* Kendi Azure Etkin [Dizin kiracınız](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)olması gerekir.
+* [Microsoft Azure](https://azure.microsoft.com/) aboneliği.
+* Kendi [Azure Active Directory kiracınız](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)olması gerekir.
 
-Veri Kataloğu'nu ayarlamak için bir Azure aboneliğinin sahibi veya ortağı olmalısınız.
+Veri Kataloğu 'Nu ayarlamak için bir Azure aboneliğinin sahibi veya ortak sahibi olmanız gerekir.
 
-## <a name="create-a-data-catalog"></a>Veri kataloğu oluşturma
+## <a name="create-a-data-catalog"></a>Veri Kataloğu oluşturma
 
-Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri kataloğu hazırlayabilirsiniz. Bu nedenle, bu Azure Etkin Dizin etki alanına ait bir Azure aboneliğinin sahibi veya ortağı zaten bir katalog oluşturmuşsa, birden çok Azure aboneliğiniz olsa bile yeniden katalog oluşturamazsınız. Azure Active Directory etki alanınızda bir kullanıcı tarafından veri kataloğu oluşturulup oluşturulmadığını test etmek için [Azure Veri Kataloğu giriş sayfasına](http://azuredatacatalog.com) gidin ve kataloğu görüp görmediğinizi doğrulayın. Sizin için katalog zaten oluşturulmuşsa aşağıdaki yordamı atlayın ve sonraki bölümüne gidin.
+Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri kataloğu hazırlayabilirsiniz. Bu nedenle, bu Azure Active Directory etki alanına ait olan bir Azure aboneliğinin sahibi veya ortak sahibi zaten bir katalog oluşturduysanız, birden fazla Azure aboneliğiniz olsa bile bir katalog oluşturamazsınız. Azure Active Directory etki alanınızda bir kullanıcı tarafından veri kataloğu oluşturulup oluşturulmadığını test etmek için [Azure Veri Kataloğu giriş sayfasına](http://azuredatacatalog.com) gidin ve kataloğu görüp görmediğinizi doğrulayın. Sizin için katalog zaten oluşturulmuşsa aşağıdaki yordamı atlayın ve sonraki bölümüne gidin.
 
-1. [Azure portalına](https://portal.azure.com) > gidin**Kaynak oluşturun** ve **Veri Kataloğu'nu**seçin.
+1. **Kaynak oluşturmak** [Azure Portal](https://portal.azure.com) > gidin ve **Veri Kataloğu**' nu seçin.
 
-    ![Azure Veri Kataloğu oluşturma düğmesi](media/data-catalog-get-started/data-catalog-create.png)
+    ![Azure Veri Kataloğu oluştur düğmesi](media/data-catalog-get-started/data-catalog-create.png)
 
-2. Veri kataloğu için bir **ad,** kullanmak istediğiniz **abonelik,** kataloğun **konumunu** ve **fiyatlandırma katmanını**belirtin. Ardından **Oluştur**’u seçin.
+2. Veri Kataloğu, kullanmak istediğiniz **abonelik** , Katalog **konumu** ve **fiyatlandırma katmanı**için bir **ad** belirtin. Ardından **Oluştur**’u seçin.
 
 3. [Azure Veri Kataloğu giriş sayfasına](http://azuredatacatalog.com) gidin ve **Verileri Yayımla**’ya tıklayın.
 
    ![Azure Veri Kataloğu--Verileri Yayımla düğmesi](media/data-catalog-get-started/data-catalog-publish-data.png)
 
-   Ayrıca **Başlat'ı**seçerek [Veri Kataloğu hizmet sayfasından Veri Kataloğu](https://azure.microsoft.com/services/data-catalog) ana sayfasına da ulaşabilirsiniz.
+   Ayrıca, [Veri Kataloğu hizmeti sayfasında](https://azure.microsoft.com/services/data-catalog) , **Başlarken**' i seçerek Veri Kataloğu giriş sayfasına da ulaşabilirsiniz.
 
    ![Azure Veri Kataloğu--pazarlama giriş sayfası](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
 
@@ -52,31 +52,31 @@ Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri 
 
     ![Azure Veri Kataloğu--veri kataloğu hazırlama](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
 
-5. **Fiyatlandırmayı** genişletin ve Azure Veri Kataloğu **sürümünüzü** (Ücretsiz veya Standart) doğrulayın.
+5. **Fiyatlandırma** ' yı genişletin ve Azure Veri Kataloğu **sürümünüzü** doğrulayın (ücretsiz veya standart).
 
     ![Azure Veri Kataloğu--sürüm seçme](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
 
-6. Fiyatlandırma katmanınız olarak *Standart* sürümü seçerseniz, **Güvenlik Gruplarını** genişletebilir ve Active Directory güvenlik gruplarının Veri Kataloğu'na erişmesini ve faturalandırmanın otomatik olarak ayarlanmasını onaylamasını sağlayabilirsiniz.
+6. Fiyatlandırma katmanınız olarak *Standard* Edition ' ı seçerseniz, **güvenlik grupları** ' nı genişletebilir ve veri kataloğuna erişmek ve Otomatik faturalandırma ayarlamasını etkinleştirmek için Active Directory güvenlik grupları için yetkilendirme sağlayabilirsiniz.
 
-    ![Azure Veri Kataloğu Güvenlik Grupları](media/data-catalog-get-started/data-catalog-standard-security-groups.png)
+    ![Azure Veri Kataloğu güvenlik grupları](media/data-catalog-get-started/data-catalog-standard-security-groups.png)
 
-7. **Katalog Kullanıcıları** seçeneğini genişletin ve **Ekle**’ye tıklayarak veri kataloğu için kullanıcı ekleyin. Bu gruba otomatik olarak eklenirsiniz.
+7. **Katalog Kullanıcıları** seçeneğini genişletin ve **Ekle**’ye tıklayarak veri kataloğu için kullanıcı ekleyin. Bu gruba otomatik olarak eklendiniz.
 
     ![Azure Veri Kataloğu--kullanıcılar](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
 
-8. Fiyatlandırma katmanınız olarak *Standart* sürümü seçerseniz, **Sözlük Yöneticileri'ni** genişletebilir ve sözlük yöneticisi kullanıcıları eklemek için **Ekle'yi** tıklatabilirsiniz. Bu gruba otomatik olarak eklenirsiniz.
+8. Fiyatlandırma katmanınız olarak *Standart* sürüm ' ü seçerseniz, sözlük **yöneticileri** ' ni genişletebilir ve **Ekle** ' ye tıklayarak sözlük yönetici kullanıcıları ekleyebilirsiniz. Bu gruba otomatik olarak eklendiniz.
 
-    ![Azure Veri Kataloğu Sözlük Yöneticileri](media/data-catalog-get-started/data-catalog-standard-glossary-admin.png)
+    ![Azure Veri Kataloğu sözlük yöneticileri](media/data-catalog-get-started/data-catalog-standard-glossary-admin.png)
 
-9. **Katalog Yöneticileri** seçeneğini genişletin ve **Ekle**’ye tıklayarak veri kataloğu için başka yöneticiler ekleyin. Bu gruba otomatik olarak eklenirsiniz.
+9. **Katalog Yöneticileri** seçeneğini genişletin ve **Ekle**’ye tıklayarak veri kataloğu için başka yöneticiler ekleyin. Bu gruba otomatik olarak eklendiniz.
 
     ![Azure Veri Kataloğu--yöneticiler](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
 
-10. **Portal Başlığını** genişletin ve portal başlığında görüntülenecek ek metin ekleyin.
+10. **Portal başlığı** ' nı genişletin ve Portal başlığında görüntülenecek ek metni ekleyin.
 
-    ![Azure Veri Kataloğu-Portal Başlığı](media/data-catalog-get-started/data-catalog-portal-title.png)
+    ![Azure Veri Kataloğu-portal başlığı](media/data-catalog-get-started/data-catalog-portal-title.png)
 
-11. **Ayarlar** sayfasını tamamladıktan sonra **Yayımla** sayfasına gidin.
+11. **Ayarlar** sayfasını tamamladıktan sonra, **Yayımla** sayfasına gidin.
 
     ![Azure Veri Kataloğu--oluşturuldu](media/data-catalog-get-started/data-catalog-created.png)
 
@@ -84,9 +84,9 @@ Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri 
 
 1. Web tarayıcısının ayrı bir sekmesinde veya ayrı bir web tarayıcısı penceresinde [Azure portalına](https://portal.azure.com) gidin ve önceki adımda veri kataloğunu oluşturmak için kullandığınız hesabın aynısıyla oturum açın.
 
-2. **Tüm hizmetleri** seçin ve ardından **Veri Kataloğu'nu**tıklatın.
+2. **Tüm hizmetler** ' i seçin ve ardından **Veri Kataloğu**' na tıklayın.
 
-    ![Azure Veri Kataloğu--Azure'a göz atın](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)
+    ![Azure Veri Kataloğu--Azure 'a](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)
 
     Oluşturduğunuz veri kataloğunu görürsünüz.
 
@@ -102,7 +102,7 @@ Bir kuruluş (Azure Active Directory etki alanı) için yalnızca bir tane veri 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, kuruluşunuz için bir Azure Veri Kataloğu oluşturmayı öğrendiniz. Artık veri kaynaklarını veri kataloğunuza kaydedebilirsiniz.
+Bu hızlı başlangıçta, kuruluşunuz için bir Azure Veri Kataloğu oluşturmayı öğrendiniz. Artık veri kataloğunuza veri kaynaklarını kaydedebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Veri Kataloğu'nda veri kaynaklarını kaydetme](data-catalog-how-to-register.md)
+> [Azure Veri Kataloğu 'nda veri kaynaklarını kaydetme](data-catalog-how-to-register.md)

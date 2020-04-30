@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central'da sürekli hasta izleme mimarisi | Microsoft Dokümanlar
+title: Azure IoT Central sürekli hasta izleme mimarisi | Microsoft Docs
 description: Sürekli hasta izleme çözüm mimarisi hakkında bilgi edinin.
 author: philmea
 ms.author: philmea
@@ -9,44 +9,44 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 92eb4157abb55b7056952d1fb064c7c7d7500335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021705"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Sürekli hasta izleme mimarisi
 
 
 
-Sürekli hasta izleme çözümleri, sağlanan uygulama şablonu kullanılarak ve aşağıda kılavuz olarak özetlenen mimari kullanılarak oluşturulabilir.
+Sürekli hasta izleme çözümleri, sunulan uygulama şablonu ve kılavuz olarak aşağıda özetlenen mimari kullanılarak oluşturulabilir.
 
 >[!div class="mx-imgBorder"] 
->![CPM Mimarisi](media/cpm-architecture.png)
+>![CPM mimarisi](media/cpm-architecture.png)
 
-1. Bluetooth Düşük Enerji (BLE) kullanarak iletişim kuran tıbbi cihazlar
-1. BLE verilerini alan ve IoT Central'a gönderen cep telefonu ağ geçidi
-1. FHIR için Azure API'sine hasta sağlığı verilerinin sürekli veri aktarım&reg;
-1. Birlikte çalışabilir verilere dayalı makine öğrenimi
-1. FHIR verileri üzerine inşa edilen bakım ekibi panosu
+1. Bluetooth düşük enerji (BLE) kullanarak iletişim kuran tıbbi cihazlar
+1. Mobil telefon ağ geçidi, verileri alan ve IoT Central gönderme
+1. Azure API 'sine FHıR için sürekli veri aktarma&reg;
+1. Birlikte çalışabilen verileri temel alan makine öğrenimi
+1. FHıR verileri üzerinde oluşturulmuş ekip panosu
 
 ## <a name="details"></a>Ayrıntılar
-Bu bölümde, mimari diyagramın her bölümü daha ayrıntılı olarak özetlenmiştir.
+Bu bölümde, mimari diyagramın her bir bölümü daha ayrıntılı olarak özetlenmektedir.
 
-### <a name="ble-medical-devices"></a>BLE tıbbi cihazlar
-Sağlık IoT alanında kullanılan birçok tıbbi giyilebilir Bluetooth Düşük Enerji cihazlardır. Bulutla doğrudan konuşamıyorlar ve bir ağ geçidinden geçmeleri gerekecek. Bu mimari, bu ağ geçidi olarak bir cep telefonu uygulaması kullanma önerir.
+### <a name="ble-medical-devices"></a>BLEME cihazları
+Sağlık IoT alanında kullanılan birçok tıp wearables, Bluetooth düşük enerji cihazlarıdır. Doğrudan buluta konuşamazlar ve bir ağ geçidine geçiş yapması gerekecektir. Bu mimaride, bu ağ geçidi olarak bir mobil telefon uygulaması kullanılması önerilir.
 
 ### <a name="mobile-phone-gateway"></a>Cep telefonu ağ geçidi
-Cep telefonu uygulamasının birincil işlevi, tıbbi cihazlardaki BLE verilerini alıp Azure IoT Central'a iletmektir. Ayrıca, uygulama bir cihaz kurulumu ve sağlama akışı ile hastalara rehberlik yardımcı olabilir ve onları kişisel sağlık verilerinin bir görünüm görmek yardımcı olur. Diğer çözümler, aynı iletişim akışını sağlamak için bir hastane odası içinde yse tablet ağ geçidi veya statik ağ geçidi kullanabilir.
+Cep telefonu uygulamasının birincil işlevi, tıbbi cihazlardan verileri almak ve Azure IoT Central ile iletişim kurmak için kullanılır. Ayrıca, uygulama, bir cihaz kurulumu ve sağlama akışından hastalara rehberlik etmenize yardımcı olabilir ve kişisel sistem durumu verilerinin bir görünümünü görebilirler. Aynı iletişim akışına ulaşmak için bir hastanoda içindeyse, diğer çözümler bir tablet ağ geçidini veya statik ağ geçidini kullanabilir.
 
-### <a name="export-to-azure-api-for-fhirreg"></a>FHIR için Azure API'sine dışa aktarma&reg;
-Azure IoT Central HIPAA uyumludur&reg; ve HITRUST sertifikalıdır, ancak hasta sağlığıyla ilgili verileri FHIR için Azure API'sine de göndermek isteyebilirsiniz. [FHIR için Azure API,](../../healthcare-apis/overview.md) klinik sağlık verileri için, sağlık verilerinizle yeni etkileşim sistemleri oluşturmanıza olanak tanıyan, tam olarak yönetilen, standartlara dayalı, uyumlu bir API'dir. Bulutta yönetilen bir Hizmet Olarak Platform (PaaS) teklifiyle desteklenen FHIR API'leri aracılığıyla hızlı veri alışverişine olanak tanır. IoT Central'ın Sürekli Veri Verme işlevini kullanarak, FHIR için Azure API'sine veri gönderebilirsiniz.
+### <a name="export-to-azure-api-for-fhirreg"></a>FHıR için Azure API 'ye dışarı aktarma&reg;
+Azure IoT Central HIPAA uyumludur ve HITRUST&reg; sertifikalıdır, ancak sistem durumu ile ilgili verileri fhır IÇIN Azure API 'sine göndermek isteyebilirsiniz. [FHıR Için Azure API](../../healthcare-apis/overview.md) 'si, sistem durumu verilerinize yönelik yeni bir katılım sistemi oluşturmanıza olanak sağlayan, klinik sağlık verilerine yönelik tam olarak yönetilen, standartlara dayalı ve uyumlu bir API 'dir. Bulut ortamında yönetilen bir hizmet olarak platform (PaaS) tarafından desteklenen FHıR API 'Leri aracılığıyla verilerin hızlı bir şekilde değiş tokuşuna izin vermez. IoT Central sürekli veri dışa aktarma işlevini kullanarak FHIR için Azure API 'sine veri gönderebilirsiniz.
 
 ### <a name="machine-learning"></a>Makine öğrenimi
-Verilerinizi bir araya getirip FHIR formatına çevirdikten sonra, öngörüleri zenginleştirebilen ve bakım ekibiniz için daha akıllı karar verme olanağı sağlayan makine öğrenimi modelleri oluşturabilirsiniz. Makine öğrenimi modelleri oluşturmak, eğitmek ve dağıtmak için kullanılabilecek farklı hizmet türleri vardır. Azure'un makine öğrenimi tekliflerinin nasıl kullanılacağı hakkında daha fazla bilgiyi [makine öğrenimi belgelerimizde](../../machine-learning/index.yml)bulabilirsiniz.
+Verilerinizi toplayarak ve FHıR biçimine çevirerek, öngörüleri zenginleştirmek ve bakım ekibiniz için daha akıllı karar verme olanağı sağlayan makine öğrenimi modelleri oluşturabilirsiniz. Makine öğrenimi modellerini derlemek, eğitebilmek ve dağıtmak için kullanılabilecek farklı türlerde hizmetler vardır. Azure 'un makine öğrenimi tekliflerini kullanma hakkında daha fazla bilgi için [makine öğrenimi belgelerimizde](../../machine-learning/index.yml)bulabilirsiniz.
 
 ### <a name="provider-dashboard"></a>Sağlayıcı panosu
-FHIR için Azure API'sinde bulunan veriler, hasta öngörüleri panosu oluşturmak için kullanılabilir veya bakım ekiplerinin hasta durumunu görselleştirmelerine yardımcı olmak için doğrudan bir EMR'ye entegre edilebilir. Bakım ekipleri bu gösterge tablosundan yardıma ihtiyacı olan hastalarla ilgilenmek ve erken uyarı belirtilerini tespit etmek için kullanabilirler. Power BI gerçek zamanlı sağlayıcı panosunu nasıl oluşturizleyeceğimizi öğrenmek için nasıl [yapılacağını zedelekılavuzumuzu takip edin.](howto-health-data-triage.md)
+FHıR için Azure API 'sinde bulunan veriler bir hasta içgörüler panosu oluşturmak için veya ekiplerin hasta durumunu görselleştirmesine yardımcı olmak için doğrudan bir EMR ile tümleştirilebilecek şekilde kullanılabilir. Ekipler bu panoyu, yardım ve daha erken uyarı işaretlerini belirlemek için bu panoyu kullanabilir. Power BI gerçek zamanlı bir sağlayıcı panosu oluşturmayı öğrenmek için [nasıl yapılır kılavuzumuzu](howto-health-data-triage.md)izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Sürekli hasta izleme uygulama şablonu nasıl dağıtılayizleyeceğini öğrenin](tutorial-continuous-patient-monitoring.md)
+* [Sürekli hasta izleme uygulaması şablonunu dağıtmayı öğrenin](tutorial-continuous-patient-monitoring.md)

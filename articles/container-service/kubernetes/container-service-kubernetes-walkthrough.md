@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Quickstart - Linux için Azure Kubernetes kümesi
+title: Kullanım DıŞı Hızlı başlangıç-Linux için Azure Kubernetes kümesi
 description: Azure CLI ile Azure Container Service'de Linux kapsayıcıları için Kubernetes kümesi oluşturmayı hızlı bir şekilde öğrenin.
 author: iainfoulds
 ms.service: container-service
@@ -8,20 +8,20 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: cfd0f8a9a3180b14b4da9dc61e252054fe06628c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78274184"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(AmortismanA Uğradı) Linux kapları için Kubernetes kümesini dağıtın
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>Kullanım DıŞı Linux kapsayıcıları için Kubernetes kümesi dağıtma
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu hızlı başlangıç için [Bkz. Quickstart: Bir Azure Kubernetes Hizmeti (AKS) kümesini dağıtın.](../../aks/kubernetes-walkthrough.md)
+> Azure Kubernetes hizmetini kullanan bu hızlı başlangıçta güncelleştirilmiş sürümü için bkz. [hızlı başlangıç: Azure Kubernetes hizmeti (AKS) kümesi dağıtma](../../aks/kubernetes-walkthrough.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-Bu hızlı başlangıçta, Azure CLI kullanılarak bir Kubernetes kümesi dağıtılır. Ardından web ön ucu ve bir Redis örneğinden oluşan çok kapsayıcılı bir uygulama dağıtılıp küme üzerinde çalıştırılır. Tamamlandığında, uygulamaya İnternet üzerinden erişilebilir. 
+Bu hızlı başlangıçta, Azure CLı kullanılarak bir Kubernetes kümesi dağıtılır. Ardından web ön ucu ve bir Redis örneğinden oluşan çok kapsayıcılı bir uygulama dağıtılıp küme üzerinde çalıştırılır. Tamamlandığında, uygulamaya İnternet üzerinden erişilebilir. 
 
 Bu belgede kullanılan örnek uygulama Python’da yazılmıştır. Kavramlar ve burada ayrıntıları verilen adımlar herhangi bir kapsayıcı görüntüsünü Kubernetes kümesine dağıtmak için kullanılabilir. Kod, Dockerfile ve bu projeyle ilgili önceden oluşturulmuş Kubernetes bildirim dosyaları [GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git)’da vardır.
 
@@ -29,7 +29,7 @@ Bu belgede kullanılan örnek uygulama Python’da yazılmıştır. Kavramlar ve
 
 Bu hızlı başlangıçta temel Kubernetes kavramlarını bildiğiniz varsayılmıştır. Kubernetes hakkında ayrıntılı bilgi için bkz. [Kubernetes belgeleri]( https://kubernetes.io/docs/home/).
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -186,7 +186,7 @@ service "azure-vote-front" created
 
 Uygulama çalıştırıldığında, uygulama ön ucunu İnternet üzerinden kullanıma sunan bir [Kubernetes hizmeti](https://kubernetes.io/docs/concepts/services-networking/service/) oluşturulur. Bu işlemin tamamlanması birkaç dakika sürebilir. 
 
-İlerlemeyi izlemek için, bağımsız değişkenle birlikte `--watch` [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) komutunu kullanın.
+İlerlemeyi izlemek için, [kubectl Get Service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
 
 ```console
 kubectl get service azure-vote-front --watch

@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL (önizleme)
-description: Azure Synapse Analytics'te isteğe bağlı Synapse SQL hakkında bilgi edinin.
+title: İsteğe bağlı SQL (Önizleme)
+description: Azure SYNAPSE Analytics 'te SYNAPSE SQL isteğe bağlı hakkında bilgi edinin.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,138 +9,138 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424912"
 ---
-# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) 
+# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) 
 
-Her Azure Synapse Analytics çalışma alanı (önizleme), göldeki verileri sorgulamak için kullanabileceğiniz isteğe bağlı (önizleme) uç noktalarıyla birlikte gelir.
+Her Azure SYNAPSE Analytics çalışma alanı (Önizleme), Gölü verileri sorgulamak için kullanabileceğiniz, SQL isteğe bağlı (Önizleme) uç noktalarıyla gelir.
 
-SQL isteğe bağlı, veri gölünüzdeki veriler üzerinde bir sorgu hizmetidir. Verilerinize aşağıdaki işlevler aracılığıyla erişmenizi sağlar:
+İsteğe bağlı SQL, Data Lake 'inizdeki veriler üzerinde bir sorgu hizmetidir. Verilerinize aşağıdaki işlevleri kullanarak erişmenizi sağlar:
  
-- Verileri özel bir depoya kopyalamaya veya yüklemeye gerek kalmadan verileri yerinde sorgulamak için tanıdık bir T-SQL sözdizimi. 
-- En popüler sürücüler de dahil olmak üzere çok çeşitli iş zekası ve geçici sorgulama araçları sunan T-SQL arabirimi üzerinden entegre bağlantı. 
+- Verileri özelleştirilmiş bir depoya kopyalama veya yüklemeye gerek kalmadan verileri sorgulamak için tanıdık bir T-SQL söz dizimi. 
+- En popüler sürücüler dahil olmak üzere çok çeşitli iş zekası ve geçici sorgulama araçları sunan T-SQL arabirimi aracılığıyla tümleşik bağlantı. 
 
-İsteğe bağlı SQL, büyük ölçekli veri ve işlem için oluşturulmuş dağıtılmış bir veri işleme sistemidir. İsteğe bağlı OLARAK SQL isteğe bağlı olarak Büyük Verilerinizi saniyesaniye analiz etmenizi sağlar. Yerleşik sorgu yürütme hatası toleransı sayesinde, sistem büyük veri kümelerini içeren uzun süren sorgular için bile yüksek güvenilirlik ve başarı oranları sağlar.
+İsteğe bağlı SQL, büyük ölçekli veri ve işlem için oluşturulmuş bir dağıtılmış veri işleme sistemidir. SQL isteğe bağlı olarak, büyük verilerinizi iş yüküne bağlı olarak birkaç dakika içinde analiz etmenizi sağlar. Yerleşik sorgu yürütme hata toleransı sayesinde sistem, büyük veri kümeleri içeren uzun süreli sorgularda bile yüksek güvenilirlik ve başarı oranları sağlar.
 
-Sql on-demand sunucusuzdur, bu nedenle kurulum veya kümeleri korumak için hiçbir altyapı yoktur. Bu hizmet için varsayılan bir bitiş noktası her Azure Synapse çalışma alanında sağlanır, böylece çalışma alanı oluşturulur oluşturulmaz verileri sorgulamaya başlayabilirsiniz. Ayrılmış kaynaklar için herhangi bir ücret yoktur, yalnızca çalıştırdığınız sorgular tarafından taranan veriler için ücretlendirilirsiniz, bu nedenle bu model gerçek bir kullanım başına ödeme modelidir.  
+İsteğe bağlı SQL Server sunucusuz, bu nedenle, bakım yapmak için kurulum veya kümelerin bir altyapısı yoktur. Bu hizmet için varsayılan bir uç nokta her Azure SYNAPSE çalışma alanı içinde sağlanır, bu sayede çalışma alanı oluşturulduktan hemen sonra verileri sorgulamaya başlayabilirsiniz. Ayrılan kaynaklar için ücret alınmaz, yalnızca çalıştırdığınız sorgular tarafından Taranan veriler için ücretlendirilirsiniz, bu nedenle bu modelin kullanım başına doğru bir ödeme modeli olması gerekir.  
 
-Veri hazırlama, temizleme veya zenginleştirme için veri ardışık alanınızda Spark kullanıyorsanız, işlemde oluşturduğunuz [Spark tablolarını](develop-storage-files-spark-tables.md) doğrudan isteğe bağlı SQL'den sorgulayabilirsiniz. SQL isteğe bağlı bitiş noktanızı yönetilen [çalışma alanı VNet'inize](../security/synapse-workspace-managed-vnet.md)getirmek için [Özel Bağlantı'yı](../security/how-to-connect-to-workspace-with-private-links.md) kullanın.  
+Veri işlem hattınızda Spark kullanıyorsanız, veri hazırlama, temizlik veya zenginleştirme için, işlemde oluşturduğunuz [Spark tablolarının tümünü](develop-storage-files-spark-tables.md) doğrudan SQL isteğe bağlı olarak sorgulayabilirsiniz. SQL isteğe bağlı uç noktanızı [yönetilen çalışma alanı sanal](../security/synapse-workspace-managed-vnet.md)ağınıza taşımak Için [özel bağlantıyı](../security/how-to-connect-to-workspace-with-private-links.md) kullanın.  
 
-## <a name="who-is-sql-on-demand-for"></a>Sql isteğe bağlı olarak kimler
+## <a name="who-is-sql-on-demand-for"></a>İçin SQL isteğe bağlı kim
 
-Veri gölündeki verileri keşfetmeniz, ondan öngörüler elde etmeniz veya mevcut veri dönüştürme ardışık alanınızın optimizasyonu yapmanız gerekiyorsa, isteğe bağlı SQL'i kullanarak yararlanabilirsiniz. Aşağıdaki senaryolar için uygundur:
+Veri Gölü verileri araştırmanıza, bundan Öngörüler elde etmeniz veya mevcut veri dönüştürme işlem hattınızı iyileştirmeniz gerekiyorsa, SQL 'i isteğe bağlı olarak kullanmaya yarar sağlayabilirsiniz. Aşağıdaki senaryolar için uygundur:
 
-- Temel keşif ve keşif - Veri gölünüzdeki çeşitli biçimlerde (Parke, CSV, JSON) veriler hakkında hızlı bir şekilde neden olun, böylece ondan nasıl içgörü elde edebileceğinizi planlayabilirsiniz.
-- Mantıksal veri ambarı – Verilerinizin her zaman güncel bir şekilde görüntülemesine olanak tanıyan, verilerinizin taşınması ve dönüştürülmesi olmadan ham veya birbirinden farklı verilerin üstüne ilişkisel bir soyutlama sağlayın.
-- Veri dönüşümü - T-SQL kullanarak göldeki verileri dönüştürmenin basit, ölçeklenebilir ve performant yolu, böylece BI ve diğer araçlara aktarılabilir veya ilişkisel veri deposuna yüklenebilir (Synapse SQL veritabanları, Azure SQL Veritabanı, vb.).
+- Temel bulma ve araştırmayla ilgili veri Gölü biçimlerdeki veriler hakkında hızlı bir neden (Parquet, CSV, JSON), bu sayede öngörüleri nasıl ayıklayabileceğinizi planlayabileceksiniz.
+- Mantıksal veri ambarı: verilerin üzerine konumlandırmadan ve dönüştürmeden verileri her zaman güncel görüntülemeye izin vererek ham veya farklı verilerin üzerinde ilişkisel bir soyutlama sağlar.
+- Veri dönüştürme-T-SQL ' y i kullanarak Gölü verileri dönüştürmenin basit, ölçeklenebilir ve performanslı yolu, bı ve diğer araçlara geçirilebilir veya bir ilişkisel veri deposuna (SYNAPSE SQL veritabanları, Azure SQL veritabanı vb.) yüklenebilir.
 
-Farklı profesyonel roller, isteğe bağlı SQL'den yararlanabilir:
+Farklı profesyonel roller, isteğe bağlı SQL 'den faydalanabilir:
 
-- Veri Mühendisleri bu hizmeti kullanarak gölü keşfedebilir, verileri dönüştürebilir ve hazırlayabilir ve veri dönüşüm boru hatlarını basitleştirebilir. Daha fazla bilgi için bu öğreticiyi kontrol [edin.](tutorial-data-analyst.md)
-- Data Scientists, OPENROWSET ve otomatik şema çıkarımı gibi özellikler sayesinde göldeki verilerin içeriği ve yapısı hakkında hızlı bir şekilde muhakeme edebilirler.
-- Veri Analistleri, tanıdık T-SQL dilini veya isteğe bağlı SQL'e bağlanabilen en sevdikleri araçları kullanarak Veri Bilimcileri veya Veri Mühendisleri tarafından oluşturulan [verileri ve Kıvılcım tablolarını keşfedebilir.](develop-storage-files-spark-tables.md)
-- BI Uzmanları, göl ve Spark [tablolarındaki verilerin üzerine güç bi raporları](tutorial-connect-power-bi-desktop.md) oluşturabilir.
+- Veri mühendisleri gölü keşfedebilir, bu hizmeti kullanarak verileri dönüştürebilir ve hazırlayabilir ve veri dönüştürme işlem hatlarını basitleştirir. Daha fazla bilgi için bu [öğreticiye](tutorial-data-analyst.md)bakın.
+- Veri bilimcileri, OPENROWSET ve otomatik Şema çıkarımı gibi özellikler sayesinde Gölü verilerin içerikleri ve yapısı hakkında hızlı bir neden olabilir.
+- Veri analistleri, tanıdık T-SQL dili veya en sevdiğiniz araçları kullanarak veri bilimcileri veya veri mühendisleri tarafından oluşturulan [veri ve Spark tablolarını](develop-storage-files-spark-tables.md) , Isteğe bağlı SQL 'e bağlanabilecek şekilde keşfedebilir.
+- Bı uzmanları, Gölü ve Spark tablolarındaki verilerin üzerine hızlı [bir şekilde Power BI raporlar oluşturabilir](tutorial-connect-power-bi-desktop.md) .
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Kullanmaya başlamak için ne yapmam gerekiyor?
+## <a name="what-do-i-need-to-do-to-start-using-it"></a>Kullanmaya başlamak için ne yapmam gerekir?
 
-Her Azure Synapse çalışma alanında SQL isteğe bağlı bitiş noktası sağlanır. Bir çalışma alanı oluşturabilir ve aşina olduğunuz araçları kullanarak verileri anında sorgulamaya başlayabilirsiniz.
+SQL isteğe bağlı uç noktası her Azure SYNAPSE çalışma alanı içinde sağlanır. Bir çalışma alanı oluşturabilir ve tanıdığınız araçları kullanarak verileri anında sorgulamaya başlayabilirsiniz.
 
 ## <a name="client-tools"></a>İstemci araçları
 
-İsteğe bağlı SQL, varolan SQL geçici sorgulama ve iş zekası araçlarının veri gölüne girmesini sağlar. Tanıdık T-SQL sözdizimi sağladığından, TDS bağlantısı SQL teklifleri oluşturabilen herhangi bir araç [Synapse SQL'e isteğe bağlı olarak bağlanabilir ve sorgulayabilir.](connect-overview.md) Azure Veri Stüdyosu'na bağlanabilir ve birkaç dakika içinde öngörüler elde etmek için geçici sorgular çalıştırabilir veya Power BI'ye bağlanabilirsiniz.
+SQL isteğe bağlı, mevcut SQL geçici sorgulama ve iş zekası araçlarının Veri Gölü içine dokunmasına olanak sağlar. Tanıdık T-SQL söz dizimini sağladığından, TDS bağlantısı SQL teklifleri oluşturmaya yönelik herhangi bir araç, isteğe bağlı [SYNAPSE SQL 'e bağlanabilir ve sorgu](connect-overview.md) oluşturabilir. Azure Data Studio ile bağlanabilir, geçici sorgular çalıştırabilir veya birkaç dakika içinde Öngörüler elde etmek için Power BI ile bağlanabilirsiniz.
 
-## <a name="is-full-t-sql-supported"></a>Tam T-SQL desteklendi mi?
+## <a name="is-full-t-sql-supported"></a>Tam T-SQL destekleniyor mu?
 
-SQL isteğe bağlı olarak, yarı yapılandırılmış ve yapılandırılmamış verileri sorgulama konusundaki deneyimleri karşılamak için bazı yönlerden biraz geliştirilmiş/genişletilmiş T-SQL sorgu yüzey alanı sunar. Ayrıca, T-SQL dilinin bazı yönleri, isteğe bağlı SQL tasarımı nedeniyle desteklenmez, örnek olarak, DML işlevselliği şu anda desteklenmez.
+SQL isteğe bağlı, yarı yapılandırılmış ve yapılandırılmamış verileri sorgulama konusunda deneyimlere uyum sağlamak için bazı yönlerde biraz gelişmiş/genişletilmiş olan T-SQL sorgulama yüzey alanı sunar. Ayrıca, SQL isteğe bağlı SQL 'in tasarımı nedeniyle, örnek olarak DML işlevselliği Şu anda desteklenmediğinden T-SQL dilinin bazı yönleri desteklenmez.
 
 - İş yükü tanıdık kavramlar kullanılarak düzenlenebilir:
-- Veritabanları - SQL on-demand endpoint birden çok veritabanı olabilir.
-- Şemalar - Bir veritabanı içinde şema adı verilen bir veya çok sayıda nesne sahiplik grubu olabilir.
+- Veritabanları-isteğe bağlı SQL uç noktası birden çok veritabanına sahip olabilir.
+- Şemalar-bir veritabanı Içinde, şemalar adlı bir veya daha fazla nesne sahiplik grubu olabilir.
 - Görünümler
 - Dış kaynaklar – veri kaynakları, dosya biçimleri ve tablolar
 
-Güvenlik şu şekilde zorlanabilir:
+Şu kullanılarak güvenlik zorlanabilir:
 
 - Oturum açma bilgileri ve kullanıcılar
 - Depolama hesaplarına erişimi denetlemek için kimlik bilgileri
-- Nesne düzeyi başına izinleri verme, reddetme ve iptal etme
+- Nesne düzeyinde verme, reddetme ve iptal etme izinleri
 - Azure Active Directory tümleştirmesi
 
 Desteklenen T-SQL:
 
-- SQL fonksiyonlarının çoğunluğu da dahil olmak üzere tam [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzey alanı desteklenir
-- ÇETAŞ - SELECT OLARAK Dış TABLO OLUŞTUR
-- Yalnızca görünümler ve güvenlikle ilgili DDL ifadeleri
+- Tam [seçme](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzeyı alanı SQL işlevlerinin çoğunluğu dahil desteklenir
+- CETAS-DıŞ TABLOYU SEÇ OLARAK OLUŞTUR
+- Yalnızca görünümler ve güvenlikle ilgili DDL deyimleri
 
-İsteğe bağlı SQL'de yerel depolama alanı yoktur, yalnızca meta veri nesneleri veritabanlarında depolanır. Bu nedenle, Aşağıdaki kavramlarla ilgili T-SQL desteklenmez:
+İsteğe bağlı SQL 'de yerel depolama alanı yoktur, veritabanlarında yalnızca meta veri nesneleri depolanır. Bu nedenle, aşağıdaki kavramlarla ilgili T-SQL desteklenmez:
 
 - Tablolar
 - Tetikleyiciler
-- Somutlaştırılmış görünümler
-- Görünümler ve güvenlikle ilgili olanlar dışındaki DDL ifadeleri
+- Gerçekleştirilmiş görünümler
+- Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
 ### <a name="extensions"></a>Uzantıları
 
-Sql, veri gölündeki dosyalarda bulunan verilerin yerinde sorgulanması için sorunsuz bir deneyim sağlamak için, isteğe bağlı olarak aşağıdaki yetenekleri ekleyerek varolan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
+Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı, aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
 
-[Birden çok dosya veya klasörü sorgula](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[Birden çok dosyayı veya klasörü sorgulama](develop-storage-files-overview.md#query-multiple-files-or-folders)
 
-[PARKE dosya formatı](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET dosya biçimi](develop-storage-files-overview.md#parquet-file-format)
 
-[Sınırlı metinle çalışmak için ek seçenekler (alan sonlandırıcısı, satır sonlandırıcısı, kaçış char)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[Sınırlandırılmış metinle çalışmak için ek seçenekler (alan Sonlandırıcı, satır Sonlandırıcı, kaçış karakteri)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
 
-[Sütunların seçilen bir alt kümesini okuma](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Seçili sütunların bir alt kümesini okuyun](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
 
 [Şema çıkarımı](develop-storage-files-overview.md#schema-inference)
 
-[dosya adı fonksiyonu](develop-storage-files-overview.md#filename-function)
+[filename işlevi](develop-storage-files-overview.md#filename-function)
 
-[filepath fonksiyonu](develop-storage-files-overview.md#filepath-function)
+[FilePath işlevi](develop-storage-files-overview.md#filepath-function)
 
-[Karmaşık türleri ve iç içe veya yinelenen veri yapıları ile çalışma](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Güvenlik
 
-İsteğe bağlı SQL, verilerinize erişimi güvence altına almak için mekanizmalar sunar.
+Verilerinize güvenli bir şekilde erişmek için SQL isteğe bağlı, mekanizmalar sunmaktadır.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory tümleştirmesi ve çok faktörlü kimlik doğrulaması
 
-İsteğe bağlı SQL, [Azure Active Directory tümleştirmesi](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)ile veritabanı kullanıcısının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak yönetmenize olanak tanır. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Etkin Dizin (Azure AD), tek bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamayı](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) destekler.
+İsteğe bağlı SQL, veritabanı kullanıcısı ve diğer Microsoft hizmetlerinin kimliklerini [Azure Active Directory tümleştirmeyle](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)merkezi olarak yönetmenize olanak sağlar. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory (Azure AD), çoklu bir oturum açma işlemini desteklerken veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) destekler.
 
 #### <a name="authentication"></a>Kimlik Doğrulaması
 
-İsteğe bağlı SQL kimlik doğrulaması, kullanıcıların bitiş noktasına bağlanırken kimliklerini nasıl kanıtladığını ifade eder. İki tür kimlik doğrulama desteklenir:
+İsteğe bağlı SQL kimlik doğrulaması, kullanıcıların uç noktaya bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. İki tür kimlik doğrulaması desteklenir:
 
-- **SQL Kimlik Doğrulama**
+- **SQL kimlik doğrulaması**
 
-  Bu kimlik doğrulama yöntemi bir kullanıcı adı ve parola kullanır.
+  Bu kimlik doğrulama yöntemi bir Kullanıcı adı ve parola kullanır.
 
-- **Azure Etkin Dizin Kimlik Doğrulaması**:
+- **Azure Active Directory kimlik doğrulaması**:
 
-  Bu kimlik doğrulama yöntemi, Azure Etkin Dizini tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için çok faktörlü kimlik doğrulama etkinleştirilebilir. [Mümkün olduğunda](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)Etkin Dizin kimlik doğrulaması (tümleşik güvenlik) kullanın.
+  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için Multi-Factor Authentication etkinleştirilebilir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
 
 #### <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirme, kullanıcının isteğe bağlı bir SQL veritabanı içinde neler yapabileceğini ifade eder ve kullanıcı hesabınızın veritabanı rol üyelikleri ve nesne düzeyindeizinler tarafından denetlenir.
+Yetkilendirme, bir kullanıcının bir SQL isteğe bağlı veritabanı içinde neler yapabileceğini belirtir ve Kullanıcı hesabınızın veritabanı rolü üyelikleri ve nesne düzeyi izinleri tarafından kontrol edilir.
 
-SQL Kimlik Doğrulaması kullanılırsa, SQL kullanıcısı yalnızca isteğe bağlı OLARAK SQL'de bulunur ve izinler isteğe bağlı OLARAK SQL'deki nesnelere yöneliktir. Diğer hizmetlerdeki (Azure Depolama gibi) değerli nesnelere erişim, yalnızca isteğe bağlı SQL kapsamında olduğundan doğrudan SQL kullanıcısına verilemez. SQL kullanıcısının dosyalara erişmek için [desteklenen yetkilendirme türlerinden](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) birini kullanması gerekir.
+SQL kimlik doğrulaması kullanılırsa, SQL kullanıcısı yalnızca isteğe bağlı SQL 'de bulunur ve izinler SQL isteğe bağlı olarak kapsamlandırılır. Diğer hizmetlerde (Azure depolama gibi) güvenli kılınabilir nesnelere erişim, yalnızca SQL isteğe bağlı SQL kapsamında bulunduğundan SQL kullanıcısına doğrudan verilemez. SQL kullanıcısının dosyalara erişmek için [Desteklenen yetkilendirme türlerinden](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) birini kullanması gerekir.
 
-Azure AD kimlik doğrulaması kullanılırsa, kullanıcı isteğe bağlı OLARAK SQL'de oturum açabilir ve Azure Depolama gibi diğer hizmetlerde oturum açabilir ve Azure AD kullanıcısına izin verebilir.
+Azure AD kimlik doğrulaması kullanılırsa, bir Kullanıcı Azure depolama gibi isteğe bağlı SQL ve diğer hizmetlerde oturum açabilir ve Azure AD kullanıcısına izin verebilir.
 
 ### <a name="access-to-storage-accounts"></a>Depolama hesaplarına erişim
 
-Sql isteğe bağlı hizmetine giriş yapan bir kullanıcının Azure Depolama'daki dosyalara erişme ve sorgu yetkisi ne kadar yetkilendirilebilir. İsteğe bağlı SQL aşağıdaki yetkilendirme türlerini destekler:
+İsteğe bağlı SQL hizmetinde oturum açan bir Kullanıcı, Azure depolama 'daki dosyalara erişme ve bunları sorgulama yetkisine sahip olmalıdır. İsteğe bağlı SQL aşağıdaki yetkilendirme türlerini destekler:
 
-- **Paylaşılan erişim imzası (SAS),** depolama hesabındaki kaynaklara temsilci erişimi sağlar. SAS ile, müşterilere hesap anahtarlarını paylaşmadan depolama hesabındaki kaynaklara erişim izni verebilirsiniz. SAS, SAS'a sahip istemcilere sağladığınız erişim türü üzerinde ayrıntılı denetim sağlar: geçerlilik aralığı, verilen izinler, kabul edilebilir IP adresi aralığı, kabul edilebilir protokol (https/http).
+- **Paylaşılan erişim imzası (SAS)** , depolama hesabındaki kaynaklara temsilci erişimi sağlar. SAS ile, istemcilere, hesap anahtarlarını paylaşmadan depolama hesabındaki kaynaklara erişim izni verebilirsiniz. SAS: geçerlilik aralığı, izin verilen izinler, kabul edilebilir IP adresi aralığı, kabul edilebilir protokol (https/http) olan istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim elde etmenizi sağlar.
 
-- **Kullanıcı Kimliği** ("geçiş" olarak da bilinir), sql'e isteğe bağlı olarak giriş yapan Azure AD kullanıcısının kimliğinin verilere erişimi yetkilendirmek için kullanıldığı bir yetkilendirme türüdür. Verilere erişmeden önce Azure Depolama yöneticisinin verilere erişmek için Azure AD kullanıcısına izin vermesi gerekir. Bu yetkilendirme türü, isteğe bağlı OLARAK SQL'e giriş yapan Azure AD kullanıcısını kullanır, bu nedenle SQL kullanıcı türleri için desteklenmez.
+- **Kullanıcı kimliği** ("doğrudan geçiş" olarak da bilinir), Isteğe bağlı SQL 'de oturum açan Azure AD kullanıcısının kimliğinin verilere erişim yetkisi vermek için kullanıldığı bir yetkilendirme türüdür. Verilere erişmeden önce Azure depolama yöneticisinin verilere erişmek için Azure AD kullanıcısına izin vermesi gerekir. Bu yetkilendirme türü, isteğe bağlı SQL 'de oturum açan Azure AD kullanıcısını kullanır, bu nedenle SQL kullanıcı türleri için desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uç nokta bağlantısı ve sorgu dosyaları hakkında ek bilgiler aşağıdaki makalelerde bulunabilir: 
-- [Bitiş noktanıza bağlanın](connect-overview.md)
-- [Dosyalarınızı sorgula](develop-storage-files-overview.md)
+Uç nokta bağlantısı ve dosya sorgulama hakkında ek bilgiler aşağıdaki makalelerde bulunabilir: 
+- [Uç noktanıza bağlanma](connect-overview.md)
+- [Dosyalarınızı sorgulama](develop-storage-files-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Özel uyarılar oluşturma'
-description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi için özel aygıt uyarılarını anlayın, oluşturun ve atayın.
+title: 'Hızlı başlangıç: özel uyarılar oluşturma'
+description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi için özel cihaz uyarılarını anlayın, oluşturun ve atayın.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,29 +16,29 @@ ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
 ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310842"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Quickstart: Özel uyarılar oluşturma
+# <a name="quickstart-create-custom-alerts"></a>Hızlı başlangıç: özel uyarılar oluşturma
 
-Özel güvenlik gruplarını ve uyarıları kullanarak, IoT çözümünüzde daha iyi güvenlik sağlamak için uçtan uca güvenlik bilgilerinden ve kategorik aygıt bilgilerinden tam olarak yararlanır.
+Özel güvenlik grupları ve uyarılar kullanarak, IoT çözümünüz genelinde daha iyi güvenlik sağlamak için uçtan uca güvenlik bilgilerinin ve kategorik cihaz bilgilerinin tam avantajlarından yararlanır.
 
-## <a name="why-use-custom-alerts"></a>Neden özel uyarılar kullanıyorsun?
+## <a name="why-use-custom-alerts"></a>Özel uyarılar neden kullanılmalıdır?
 
-IoT cihazlarınızı en iyi siz biliyorsunuz.
+IoT cihazlarınızı en iyi şekilde anlarsınız.
 
-Beklenen aygıt davranışLarını tam olarak anlayan müşteriler için, Azure Güvenlik Merkezi IoT için bu anlayışı bir aygıt davranış ilkesine dönüştürmenize ve beklenen normal davranıştan sapma konusunda uyarıda beklemenize olanak tanır.
+Beklenen cihaz davranışlarını tam olarak anlayan müşteriler için IoT için Azure Güvenlik Merkezi, bu anlalamayı, beklenen, normal davranıştaki herhangi bir sapmayla ilgili bir cihaz davranışı ilkesi ve uyarısına çevirmenizi sağlar.
 
 ## <a name="security-groups"></a>Güvenlik grupları
 
-Güvenlik grupları, mantıksal aygıt gruplarını tanımlamanızı ve güvenlik durumlarını merkezi bir şekilde yönetmenize olanak tanır.
+Güvenlik grupları, mantıksal cihaz gruplarını tanımlamanızı ve güvenlik durumlarını merkezi bir şekilde yönetmenizi sağlar.
 
-Bu gruplar, belirli donanıma sahip aygıtları, belirli bir konumda dağıtılan aygıtları veya özel gereksinimlerinize uygun başka bir grubu temsil edebilir.
+Bu gruplar belirli donanımlar olan cihazları, belirli bir konumda dağıtılan cihazları veya özel gereksinimlerinize uygun diğer grupları temsil edebilir.
 
-Güvenlik grupları **SecurityGroup**adlı bir aygıt çift etiket özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub'daki her IoT çözümcünün **varsayılan**adlı bir güvenlik grubu bulunuyor. Bir aygıtın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
+Güvenlik grupları, **SecurityGroup**adlı bir Device ikizi Tag özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub her bir IoT çözümünün **varsayılan**adlı bir güvenlik grubu vardır. Bir cihazın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
 
 Örneğin:
 
@@ -63,25 +63,25 @@ Güvenlik grupları **SecurityGroup**adlı bir aygıt çift etiket özelliği ta
   },
 ```
 
-Aygıtlarınızı mantıksal kategorilere gruplandırmak için güvenlik gruplarını kullanın. Grupları oluşturduktan sonra, en etkili uçtan uca IoT güvenlik çözümü için onları seçtiğiniz özel uyarılara atayın.
+Cihazlarınızı mantıksal kategoriler halinde gruplandırmak için güvenlik gruplarını kullanın. Grupları oluşturduktan sonra, en etkili uçtan uca IoT güvenlik çözümü için bunları tercih ettiğiniz özel uyarılara atayın.
 
 ## <a name="customize-an-alert"></a>Bir uyarıyı özelleştirme
 
-1. IoT Hub'ınızı açın.
-1. **Güvenlik** bölümünde **Özel uyarıları** tıklatın.
-1. Özelleştirmeyi uygulamak istediğiniz bir güvenlik grubu seçin.
-1. **Özel uyarı ekle'yi**tıklatın.
-1. Açılır listeden özel bir uyarı seçin.
-1. Gerekli özellikleri edin, **Tamam'ı**tıklatın.
-1. **KAYDET'i**tıklattığınızdan emin olun. Yeni uyarıyı kaydetmeden, IoT Hub'ı bir sonraki kapattığınızda uyarı silinir.
+1. IoT Hub açın.
+1. **Güvenlik** bölümünde **özel uyarılar** ' a tıklayın.
+1. Özelleştirmeyi uygulamak istediğiniz güvenlik grubunu seçin.
+1. **Özel uyarı Ekle**' ye tıklayın.
+1. Açılan listeden özel bir uyarı seçin.
+1. Gerekli özellikleri düzenleyin, **Tamam**' a tıklayın.
+1. **Kaydet**' e tıkladığınızdan emin olun. Yeni uyarının kaydedilmeksizin, IoT Hub bir sonraki kapatıyorsunuz uyarı silinir.
 
-## <a name="alerts-available-for-customization"></a>Özelleştirme için kullanılabilir uyarılar
+## <a name="alerts-available-for-customization"></a>Özelleştirmeler için kullanılabilir uyarılar
 
-Azure Güvenlik Merkezi IoT, özel gereksinimlerinize göre özelleştirilebilen çok sayıda uyarı sunar. Uyarı nın önem derecesi, veri kaynağı, açıklama ve önerilen düzeltme adımlarımız için [özelleştirilebilir uyarı tablosunu](concept-customizable-security-alerts.md) gözden geçirin.
+IoT için Azure Güvenlik Merkezi, özel gereksinimlerinize göre özelleştirilebilen çok sayıda uyarı sunmaktadır. Uyarı önem derecesi, veri kaynağı, açıklama ve her uyarının alındığı zaman ve önerdiğimiz düzeltme adımlarımızın [özelleştirilebilir uyarı tablosunu](concept-customizable-security-alerts.md) gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir güvenlik aracısını nasıl dağıtılayın öğrenmek için bir sonraki makaleye ilerleyin...
+Bir güvenlik aracısının nasıl dağıtılacağını öğrenmek için bir sonraki makaleye ilerleyin...
 
 > [!div class="nextstepaction"]
-> [Bir güvenlik aracısı dağıtma](how-to-deploy-agent.md)
+> [Güvenlik aracısı dağıtma](how-to-deploy-agent.md)

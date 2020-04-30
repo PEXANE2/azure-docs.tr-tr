@@ -1,32 +1,32 @@
 ---
-title: Kotlin ve Maven ile Azure'da ilk işlevinizi oluşturun
-description: Kotlin ve Maven ile Azure'da HTTP tetiklenen bir işlev oluşturun ve yayımlayın.
+title: Kotlin ve Maven ile Azure 'da ilk işlevinizi oluşturma
+description: Kotlin ve Maven ile Azure 'da HTTP ile tetiklenen bir işlev oluşturun ve yayımlayın.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80674107"
 ---
-# <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Quickstart: Kotlin ve Maven ile ilk işlevinizi oluşturun
+# <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
-Bu makale, Azure İşlevleri için bir Kotlin işlev projesi oluşturmak ve yayımlamak için Maven komut satırı aracını kullanarak size yol gösterir. Tüm adımları tamamladığınızda işleviniz Azure'da [Tüketim Planı](functions-scale.md#consumption-plan)'nda çalışmaya başlar ve HTTP isteği kullanılarak tetiklenebilir.
+Bu makale, Azure Işlevleri 'ne bir Kotlin işlev projesi derlemek ve yayımlamak için Maven komut satırı aracını kullanarak size rehberlik eder. Tüm adımları tamamladığınızda işleviniz Azure'da [Tüketim Planı](functions-scale.md#consumption-plan)'nda çalışmaya başlar ve HTTP isteği kullanılarak tetiklenebilir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Kotlin kullanarak işlevler geliştirmek için aşağıdakileri yüklemiş olmalısınız:
+Kotlin kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), sürüm 8
 - [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Azure İşlevler Çekirdek Araçları](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
+- [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.6.666 veya üzeri
 
 > [!IMPORTANT]
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
@@ -35,7 +35,7 @@ Kotlin kullanarak işlevler geliştirmek için aşağıdakileri yüklemiş olmal
 
 İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın.
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
@@ -43,7 +43,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Komutu çalıştırmayla ilgili sorunlar yaşıyorsanız, hangi `maven-archetype-plugin` sürümün kullanıldığına bir göz atın. Komutu dosyası olmayan `.pom` boş bir dizinde çalıştırdığınıziçin, Maven'inizi eski bir sürümden yükselttiyseniz eski sürümün `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` eklentisini kullanmaya çalışıyor olabilir. Bu durumda, dizini `maven-archetype-plugin` silmeyi ve komutu yeniden çalıştırmayı deneyin.
+> Komutu çalıştırmaya ilişkin sorunlarla karşılaşıyorsanız, hangi `maven-archetype-plugin` sürümün kullanıldığını göz atın. Komutunu dosyası olmayan `.pom` boş bir dizinde çalıştırdığınız Için, Maven 'nizi eski bir sürümden yükselttiyseniz eski sürümünün `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` bir eklentisini kullanmaya çalışıyor olabilir. Bu durumda, `maven-archetype-plugin` dizini silmeyi ve komutu yeniden çalıştırmayı deneyin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
@@ -60,9 +60,9 @@ mvn archetype:generate ^
 ```
 ---
 
-Maven, projeyi oluşturmayı bitirmek için gereken değerleri sizden sorar. _groupId_, _artifactId_ ve _version_ değerleri için [Maven adlandırma kuralları](https://maven.apache.org/guides/mini/guide-naming-conventions.html) başvurusuna bakın. _appName_ değerinin Azure genelinde benzersiz olması gerektiğinden, Maven bir varsayılan olarak daha önce girilen _artifactId_’yi temel alarak bir uygulama adı oluşturur. _packageName_ değeri, oluşturulan işlev kodu için Kotlin paketini belirler.
+Maven, projeyi oluşturmayı tamamlaması için gereken değerleri ister. _groupId_, _artifactId_ ve _version_ değerleri için [Maven adlandırma kuralları](https://maven.apache.org/guides/mini/guide-naming-conventions.html) başvurusuna bakın. _appName_ değerinin Azure genelinde benzersiz olması gerektiğinden, Maven bir varsayılan olarak daha önce girilen _artifactId_’yi temel alarak bir uygulama adı oluşturur. _PackageName_ değeri, oluşturulan işlev kodu Için Kotlin paketini belirler.
 
-Aşağıdaki `com.fabrikam.functions` ve `fabrikam-functions` tanımlayıcıları, örnek olarak ve bu hızlı başlangıcın ilerleyen kısımlarındaki adımların okunmasını kolaylaştırmak için kullanılır. Bu adımda Maven'e kendi değerlerinizi sağlamanız için cesaretlendirildiniz.
+Aşağıdaki `com.fabrikam.functions` ve `fabrikam-functions` tanımlayıcıları, örnek olarak ve bu hızlı başlangıcın ilerleyen kısımlarındaki adımların okunmasını kolaylaştırmak için kullanılır. Bu adımda, Maven 'e kendi değerlerinizi sağlamanız önerilir.
 
 <pre>
 [INFO] Parameter: groupId, Value: com.fabrikam.function
@@ -157,7 +157,7 @@ Hello LocalFunction!
 
 ## <a name="deploy-the-function-to-azure"></a>İşlevi Azure’a dağıtma
 
-Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. Devam etmeden önce [Azure CLI ile oturum açın.](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgilerini kullanır. Devam etmeden önce [Azure CLI Ile oturum açın](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
 
 ```azurecli
 az login
@@ -166,7 +166,7 @@ az login
 `azure-functions:deploy` Maven hedefini kullanarak kodunuzu yeni bir İşlev uygulamasına dağıtın.
 
 > [!NOTE]
-> İşlev uygulamanızı dağıtmak için Visual Studio Code'u kullandığınızda, ücretsiz olmayan bir abonelik seçmeyi unutmayın veya bir hata alırsınız. Aboneliğinizi IDE'nin sol tarafında izleyebilirsiniz.
+> Işlev uygulamanızı dağıtmak için Visual Studio Code kullandığınızda, ücretsiz olmayan bir abonelik seçin ya da bir hata alırsınız. Aboneliğinizi IDE 'nin sol tarafında izleyebilirsiniz.
 
 ```
 mvn azure-functions:deploy
@@ -185,7 +185,7 @@ Dağıtım tamamlandığında, Azure işlev uygulamanıza erişmek için kullana
 Azure’da çalışan işlev uygulamasını `cURL` kullanarak test edin. Önceki adımdan kendi işlev uygulamanız için dağıtılan URL ile eşleşmek üzere aşağıdaki örnekten URL’yi değiştirmeniz gerekir.
 
 > [!NOTE]
-> **Erişim haklarını** `Anonymous`' ya ayarladığınızdan emin olun `Function`Varsayılan düzeyini seçtiğinizde, işlev bitiş noktanıza erişmek için isteklerde [işlev anahtarını](functions-bindings-http-webhook-trigger.md#authorization-keys) sunmanız gerekir.
+> **Erişim haklarını** ' a ayarladığınızdan emin olun `Anonymous`. Varsayılan düzeyini seçtiğinizde `Function`, işlev uç noktanıza erişmek için isteklerde [işlev anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) sunmak gerekir.
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
@@ -228,17 +228,17 @@ Hi, AzureFunctionsTest
 </pre>
 
 
-## <a name="reference-bindings"></a>Referans bağlamaları
+## <a name="reference-bindings"></a>Başvuru bağlamaları
 
-HTTP tetikleyicisi ve Zamanlayıcı [tetikleyicisi dışındaki Işlevler tetikleyicileri ve bağlamalarla](functions-triggers-bindings.md) çalışmak için bağlama uzantıları yüklemeniz gerekir. Bu makale tarafından gerekli olmasa da, diğer bağlama türleri ile çalışırken uzantıları etkinleştirmeyi nasıl yapacağınızı bilmeniz gerekir.
+HTTP tetikleyicisi ve Zamanlayıcı tetikleyicisi dışındaki [işlev Tetikleyicileri ve bağlamalarla](functions-triggers-bindings.md) çalışmak için bağlama uzantıları yüklemeniz gerekir. Bu makalede gerekli olmasa da, diğer bağlama türleriyle çalışırken uzantıların nasıl etkinleştirileceğini bilmeniz gerekir.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Basit bir HTTP tetikleyicisine sahip bir Kotlin işlev uygulaması oluşturdunuz ve Azure İşlevleri'ne dağıttınız.
+Basit bir HTTP tetikleyicisiyle bir Kotlin işlev uygulaması oluşturdunuz ve bunu Azure Işlevlerine dağıttınız.
 
-- Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için [Java Fonksiyonları geliştirici kılavuzunu](functions-reference-java.md) inceleyin.
+- Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için [Java işlevleri Geliştirici Kılavuzu ' nu](functions-reference-java.md) gözden geçirin.
 - `azure-functions:add` Maven hedefini kullanarak projenize farklı tetikleyicilere sahip ek işlevler ekleyin.
 - [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) ve [Eclipse](functions-create-maven-eclipse.md) ile yerel olarak işlev yazın ve işlevlerde hata ayıklayın. 
 - Visual Studio Code ile Azure’da dağıtılan işlevlerde hata ayıklayın. Yönergeler için [sunucusuz Java uygulamaları](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) belgelerine bakın.

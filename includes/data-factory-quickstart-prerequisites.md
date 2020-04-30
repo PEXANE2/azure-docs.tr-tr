@@ -9,19 +9,19 @@ ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78164322"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="azure-subscription"></a>Azure aboneliği
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ### <a name="azure-roles"></a>Azure rolleri
-Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, *katkıda bulunan*, *sahip* veya *yönetici* rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır. Abonelikteki izinleri görüntülemek için [Azure portalına](https://portal.azure.com)gidin , sağ üst köşedeki kullanıcı adınızı seçin, daha fazla seçenek için "**...**" simgesini seçin ve ardından **İzinlerim'i**seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin.
+Data Factory örnekleri oluşturmak için, Azure’da oturum açarken kullandığınız kullanıcı hesabı, *katkıda bulunan*, *sahip* veya *yönetici* rollerinin üyesi ya da bir Azure aboneliğinin yöneticisi olmalıdır. Abonelikte sahip olduğunuz izinleri görüntülemek için [Azure Portal](https://portal.azure.com)gidin, sağ üst köşedeki Kullanıcı adınızı seçin, daha fazla seçenek için "**...**" simgesini seçin ve sonra **izinlerim**' i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin.
 
 Data Factory için veri kümeleri, bağlı hizmetler, işlem hatları, tetikleyiciler ve tümleştirme çalışma zamanları gibi alt kaynaklar oluşturup yönetmek için aşağıdaki gereksinimlerin karşılanması gerekir:
 
@@ -36,49 +36,49 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 - [Azure Data Factory için roller ve izinler](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure Depolama hesabınızın
-Bu hızlı başlangıçta hem *kaynak* hem de *hedef* veri depoları olarak genel amaçlı bir Azure Depolama hesabı (özellikle Blob depolama alanı) kullanırsınız. Genel amaçlı bir Azure Depolama hesabınız yoksa, oluşturmak için [bir depolama hesabı oluşturma'ya](../articles/storage/common/storage-account-create.md) bakın. 
+Bu hızlı başlangıçta, genel amaçlı bir Azure Depolama hesabını (özel olarak BLOB depolama) hem *kaynak* hem de *hedef* veri deposu olarak kullanırsınız. Genel amaçlı bir Azure depolama hesabınız yoksa, bir [depolama hesabı](../articles/storage/common/storage-account-create.md) oluşturmak için bkz. hesap oluşturma. 
 
-#### <a name="get-the-storage-account-name"></a>Depolama hesabı adını alma
-Bu hızlı başlangıç için Azure Depolama hesabınızın adını almanız gerekir. Aşağıdaki yordam, depolama hesabınızın adını almak için adımlar sağlar: 
+#### <a name="get-the-storage-account-name"></a>Depolama hesabı adını al
+Bu hızlı başlangıç için Azure depolama hesabınızın adına ihtiyacınız olacak. Aşağıdaki yordam, depolama hesabınızın adını almak için gereken adımları sağlar: 
 
-1. Bir web tarayıcısında Azure [portalına](https://portal.azure.com) gidin ve Azure kullanıcı adınızı ve parolanızı kullanarak oturum açın.
-2. Azure portalı menüsünden **Tüm hizmetler'i**seçin ve ardından **Depolama** > **Alanı hesaplarını**seçin. Ayrıca herhangi bir sayfadan *Depolama hesaplarını* arayabilir ve seçebilirsiniz.
-3. Depolama **hesapları** sayfasında, depolama hesabınıza filtre uygulayın (gerekirse) ve ardından depolama hesabınızı seçin. 
+1. Bir Web tarayıcısında [Azure Portal](https://portal.azure.com) gidin ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+2. Azure Portal menüsünde **tüm hizmetler**' i ve ardından **depolama** > **depolama hesapları**' nı seçin. Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
+3. **Depolama hesapları** sayfasında, depolama hesabınız için filtre uygulayın (gerekirse) ve ardından depolama hesabınızı seçin. 
 
-Ayrıca herhangi bir sayfadan *Depolama hesaplarını* arayabilir ve seçebilirsiniz.
+Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
 
 #### <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
 Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsayıcısı oluşturursunuz.
 
-1. Depolama hesabı sayfasından **Genel Bakış** > **Kapsayıcıları'nı**seçin.
-2. Kapsayıcılar sayfasının araç * \<çubuğunu>*  -  **Containers** Hesap adında **Kapsayıcı'yı**seçin.
-3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. **Kapsayıcılar**>Hesap  - adı, kapsayıcılar listesine **adftutorial** içerecek şekilde güncelleştirilir. * \< *
+1. Depolama hesabı sayfasında **genel bakış** > **kapsayıcıları**' nı seçin.
+2.  -  * \<Hesap adı>* **kapsayıcılar** sayfasının araç çubuğunda **kapsayıcı**' yı seçin.
+3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. Hesap adı> -  **kapsayıcılar** sayfası, kapsayıcılar listesinde **adföğreticisi** içerecek şekilde güncelleştirilir. * \< *
 
    ![Kapsayıcılar listesi](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
-#### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için giriş klasörü ve dosya ekleme
-Bu bölümde, oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur sunuz ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan **önce, Not Defteri**gibi bir metin düzenleyicisi açın ve aşağıdaki içeriği içeren **emp.txt** adlı bir dosya oluşturun:
+#### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için bir giriş klasörü ve dosyası ekleyin
+Bu bölümde, yeni oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki **içerikle birlikte bir** dosya Düzenleyicisi oluşturun:
 
 ```emp.txt
 John, Doe
 Jane, Doe
 ```
 
-Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten yoksa, oluşturun.) Ardından Azure portalına dönün ve aşağıdaki adımları izleyin:
+Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut değilse, oluşturun.) Sonra Azure portal geri dönüp şu adımları izleyin:
 
-1. Kaldığınız * \<Kapsayıcılar *  -  **>** Hesap adı sayfasında, güncelleştirilmiş kapsayıcılar listesinden **adftutorial'i** seçin.
+1. Kaldığınız yerden * \<hesap adı>*  -  **kapsayıcılar** sayfasında, güncelleştirilmiş kapsayıcı listesinden **adföğreticisi** ' ni seçin.
 
-   1. Pencereyi kapattıysanız veya başka bir sayfaya gittiyseniz, [Azure portalında](https://portal.azure.com) yeniden oturum açın.
-   1. Azure portalı menüsünden **Tüm hizmetler'i**seçin ve ardından **Depolama** > **Alanı hesaplarını**seçin. Ayrıca herhangi bir sayfadan *Depolama hesaplarını* arayabilir ve seçebilirsiniz.
-   1. Depolama hesabınızı seçin ve ardından **Kapsayıcılar** > **adftutorial'i**seçin.
+   1. Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın.
+   1. Azure Portal menüsünde **tüm hizmetler**' i ve ardından **depolama** > **depolama hesapları**' nı seçin. Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
+   1. Depolama hesabınızı seçin ve ardından **kapsayıcılar** > **adföğreticisi**' ni seçin.
 
-2. **adftutorial** kapsayıcı sayfasının araç çubuğunda **Yükle'yi**seçin.
-3. Yükleme **blob** sayfasında, **Dosyalar** kutusunu seçin ve ardından **emp.txt** dosyasına göz atın ve seçin.
-4. **Gelişmiş** başlığı genişletin. Sayfa şimdi gösterildiği gibi görüntüler:
+2. **Adföğreticisi** kapsayıcı sayfasının araç çubuğunda **karşıya yükle**' yi seçin.
+3. **Blobu karşıya yükle** sayfasında, **dosyalar** kutusunu seçin ve ardından, ve sonra da **. txt** dosyasını seçin.
+4. **Gelişmiş** başlık ' ı genişletin. Sayfa artık gösterildiği gibi görüntülenir:
 
    ![Gelişmiş bağlantı seçeneğini belirleme](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
-5. **Klasöre Yükle kutusuna** **giriş girin.**
+5. **Klasöre yükle** kutusuna **giriş**' i girin.
 6. Ardından **Yükle** düğmesini seçin. Listede **emp.txt** dosyasını ve karşıya yükleme durumunu görmeniz gerekir.
-7. **Upload blob** sayfasını kapatmak için **Kapat** simgesini **(X)** seçin.
+7. **BLOB yükle** sayfasını kapatmak için **Kapat** simgesini (bir **X**) seçin.
 
-**adftutorial** kapsayıcı sayfasını açık tutun. Bu hızlı başlangıcın sonundaki çıktıyı doğrulamak için bu sayfayı kullanırsınız.
+**Adföğreticisi** kapsayıcı sayfasını açık tutun. Bu hızlı başlangıcın sonundaki çıktıyı doğrulamak için bu sayfayı kullanırsınız.

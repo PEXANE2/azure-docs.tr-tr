@@ -8,76 +8,76 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77016519"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central ile kamu çözümleri oluşturma
 
 
 
-Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmaya başlayın. **Su kalitesi izleme,** **su tüketimi izleme**ve bağlı **atık yönetimi**ile hemen başlayın.
+Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmaya başlayın. **Su kalitesinde izleme**, **su tüketimi izleme**ve **bağlı çöp yönetimiyle**hemen başlayın.
 
-## <a name="what-is-water-quality-monitoring-application-template"></a>Su Kalitesi İzleme uygulama şablonu nedir?   
+## <a name="what-is-water-quality-monitoring-application-template"></a>Su kalitesi Izleme uygulama şablonu nedir?   
 
-Geleneksel su kalitesi izleme manuel örnekleme teknikleri ve zaman alıcı ve pahalı saha laboratuvar analizi, dayanır. Su kalitesinin gerçek zamanlı olarak uzaktan izlenmesiyle, vatandaşlar etkilenmeden su kalitesi sorunları yönetilebilir. Ayrıca, gelişmiş analitik, su hizmetleri ve çevre ajansları ile potansiyel su kalitesi konularında erken uyarılar üzerinde hareket edebilir ve önceden su arıtma planı.  
+Geleneksel su kalitesi izleme, zaman alan ve maliyetli olan, el ile örnekleme tekniklerini ve alan Laboratuvarı analizini kullanır. Su kalitesini gerçek zamanlı olarak uzaktan izleyerek, vatandaşları etkilenmeden önce su kalitesi sorunları yönetilebilir. Üstelik, gelişmiş analiz, su yardımcı programları ve çevre kurumları sayesinde olası su kalitesi sorunları hakkında erken uyarılar üzerinde işlem yapabilir ve su kullanımını önceden planlayabilirsiniz.  
 
-Su Kalitesi İzleme uygulaması, IoT çözüm geliştirmenizi başlatmanıza ve akıllı şehirlerdeki su kalitesini dijital olarak izlemenize olanak sağlayan bir IoT Central uygulama şablonudur. 
+Su kalitesi Izleme uygulaması, IoT çözüm geliştirmeye başlamanıza ve akıllı şehirlerde su kalitesini dijital olarak izlemeye yönelik su yardımcı programlarını etkinleştirmenize yardımcı olan bir IoT Central App şablonudur. 
 
-![Su Kalitesi İzleme Uygulaması şablonu](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
+![Su kalitesi Izleme uygulama şablonu](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
 
 Uygulama şablonu aşağıdakilerden oluşur:
-* Örnek operatör panoları
-* Örnek su kalitesi monitör cihaz şablonları
-* Simüle su kalitesi monitör cihazları
+* Örnek işleç panoları
+* Örnek su kalitesi izleyici cihaz şablonları
+* Sanal su kalitesi izleyici cihazları
 * Önceden yapılandırılmış kurallar ve işler
-* Beyaz etiketleme kullanarak markalama 
+* Beyaz etiketleme kullanarak marka 
 
-Su Kalitesi [İzleme uygulama öğretici](./tutorial-water-quality-monitoring.md)ile başlayın.
-
-
-## <a name="what-is-water-consumption-monitoring-application-template"></a>Su Tüketimi İzleme uygulama şablonu nedir? 
-
-Geleneksel su tüketimi takibi, sayaç sahalarında su tüketim sayaçlarını elle okuyan su operatörlerine dayanır. Giderek daha fazla şehir, geleneksel sayaçları, tüketimin uzaktan izlenmesini ve su akışını kontrol etmek için uzaktan kontrol valflerini sağlayan gelişmiş akıllı sayaçlarla değiştiriyor. Vatandaşa gönderilen dijital geri bildirim mesajı ile birleşen su tüketimi izleme, farkındalığı artırabilir ve su tüketimini azaltabilir. 
+[Su kalitesi izleme uygulaması öğreticisini](./tutorial-water-quality-monitoring.md)kullanmaya başlayın.
 
 
-Su Tüketimi İzleme uygulaması, su hizmetleri ve şehirlerin tüketimi azaltmak için su akışını uzaktan izlemesini ve kontrol etmesini sağlamak için IoT çözüm geliştirmenizi başlatmanıza yardımcı olan bir IoT Central uygulaması şablonudur. 
+## <a name="what-is-water-consumption-monitoring-application-template"></a>Su tüketim Izleme uygulama şablonu nedir? 
 
-  ![Su Tüketimi İzleme Uygulaması şablonu](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
+Geleneksel su tüketim izlemesi, su sitelerindeki su kullanım ölçümlerini el ile okurken su operatörlerine dayanır. Daha fazla şehir, kullanımı uzaktan izlemeyi ve su akışını denetlemek üzere vanaları uzaktan denetlemeyi sağlayan gelişmiş akıllı ölçümler ile geleneksel ölçümleri değiştiriyor. Vatandaşlık ile dijital geri bildirim iletisi ile bağlanmış su tüketimi izleme, tanımayı artırabilir ve su tüketimini azaltabilir. 
 
-Su Tüketimi İzleme uygulaması şablonu önceden yapılandırılmış aşağıdakilerden oluşur:
-* Örnek operatör panoları
-* Örnek su kalitesi monitör cihaz şablonları
-* Simüle su kalitesi monitör cihazları
+
+Su tüketim Izleme uygulaması, su yardımcı programlarını ve şehirlerinizi uzaktan izleyip, tüketimi azaltmak üzere su akışını uzaktan izleyip denetlemenize yardımcı olan bir IoT Central App şablonudur. 
+
+  ![Su tüketim Izleme uygulaması şablonu](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
+
+Su tüketim Izleme uygulama şablonu önceden yapılandırılmış olarak oluşur:
+* Örnek işleç panoları
+* Örnek su kalitesi izleyici cihaz şablonları
+* Sanal su kalitesi izleyici cihazları
 * Önceden yapılandırılmış kurallar ve işler
-* Beyaz etiketleme kullanarak markalama 
+* Beyaz etiketleme kullanarak marka 
 
- Su Tüketimi [İzleme uygulama öğretici](./tutorial-water-consumption-monitoring.md)ile başlayın.
+ [Su tüketim izleme uygulaması öğreticisini](./tutorial-water-consumption-monitoring.md)kullanmaya başlayın.
 
-## <a name="what-is-connected-waste-management-application-template"></a>Bağlı Atık Yönetimi uygulama şablonu nedir? 
+## <a name="what-is-connected-waste-management-application-template"></a>Bağlı çöp yönetimi uygulama şablonu nedir? 
 
-Bağlı Atık Yönetimi uygulaması, akıllı şehirlerin verimli atık toplamayı en üst düzeye çıkarmak için uzaktan izlemelerini sağlamak için IoT çözüm geliştirmenizi başlatmanıza yardımcı olan bir IoT Central uygulama şablonudur. 
+Bağlı çöp yönetimi uygulaması, akıllı şehirlerinizi, verimli bir atık toplamayı en üst düzeye çıkarmak üzere uzaktan izlemeye olanak tanımak üzere IoT çözüm geliştirmeye başlamanıza yardımcı olacak bir IoT Central uygulama şablonudur. 
 
-![Bağlı Atık Yönetimi Uygulaması şablonu](media/overview-iotcentral-government/connectedwastemanagement-dashboard.png) 
+![Bağlı çöp yönetimi uygulama şablonu](media/overview-iotcentral-government/connectedwastemanagement-dashboard.png) 
 
 
-Bağlı Atık Yönetimi uygulaması şablonu önceden yapılandırılmış aşağıdakilerden oluşur:
-* Örnek operatör panoları
-* Örnek bağlı atık kutusu cihaz şablonları
-* Simüle bağlı atık kutusu cihazları
+Bağlı çöp yönetimi uygulama şablonu önceden yapılandırılmış olarak oluşur:
+* Örnek işleç panoları
+* Örnek bağlı çöp kutusu cihaz şablonları
+* Benzetimli bağlı Atık sepeti cihazları
 * Önceden yapılandırılmış kurallar ve işler
-* Beyaz etiketleme kullanarak markalama 
+* Beyaz etiketleme kullanarak marka 
 
-Bağlı Atık [Yönetimi uygulama öğretici](./tutorial-connected-waste-management.md)ile başlayın.
+[Bağlı çöp yönetimi uygulaması öğreticisini](./tutorial-connected-waste-management.md)kullanmaya başlayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ücretsiz [uygulama oluşturmak](https://apps.azureiotcentral.com/build/government) için IoT Central'daki Devlet uygulama şablonlarından herhangi birini deneyin
-* Su [Kalitesi İzleme kavramları](./concepts-waterqualitymonitoring-architecture.md) hakkında bilgi edinin
-* Su [Tüketimi İzleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md) hakkında bilgi edinin
-* Bağlantılı [Atık Yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md) hakkında bilgi edinin  
-* IoT Central hakkında bilgi edinin, [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
+* Ücretsiz [uygulama oluşturma](https://apps.azureiotcentral.com/build/government) Için IoT Central kamu uygulaması şablonlarından birini deneyin
+* [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md) hakkında bilgi edinin
+* [Su tüketim izleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md) hakkında bilgi edinin
+* [Bağlı çöp yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md) hakkında bilgi edinin  
+* IoT Central hakkında bilgi edinin, bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
  

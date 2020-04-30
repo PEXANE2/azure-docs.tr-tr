@@ -1,5 +1,5 @@
 ---
-title: REST API'yi kullanarak Bir Azure veri fabrikası oluşturma
+title: REST API kullanarak bir Azure Data Factory oluşturma
 description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
 services: data-factory
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
 ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419111"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Quickstart: REST API'sini kullanarak bir Azure veri fabrikası ve ardışık kaynak oluşturma
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Hızlı başlangıç: REST API kullanarak bir Azure Data Factory ve işlem hattı oluşturma
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-rest-api.md)
 
@@ -32,17 +32,17 @@ Azure Data Factory, bulutta veri hareketi ve veri dönüştürmeyi düzenleyip o
 
 Bu hızlı başlangıç, REST API kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasındaki işlem hattı, verileri Azure blob depolama alanındaki bir konumdan başka bir konuma kopyalar.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure aboneliği.** Bir aboneliğiniz yoksa, bir [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) hesabı oluşturabilirsiniz.
-* **Azure Depolama hesabı.** Blob depolama alanını **kaynak** ve **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
+* **Azure aboneliği**. Bir aboneliğiniz yoksa, bir [ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/) hesabı oluşturabilirsiniz.
+* **Azure depolama hesabı**. Blob depolama alanını **kaynak** ve **havuz** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
 * Blob Depolama içinde bir **blob kapsayıcısı** oluşturun, kapsayıcıda bir giriş **klasörü** oluşturun ve bazı dosyaları klasöre yükleyin. [Azure Depolama gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçları kullanarak Azure Blob depolama hesabına bağlanabilir, bir blob kapsayıcısı oluşturabilir, giriş dosyasını karşıya yükleyebilir ve çıktı dosyasını doğrulayabilirsiniz.
-* **Azure PowerShell'i**yükleyin. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin. Bu hızlı başlangıçta RES API çağrılarını çağırmak için PowerShell kullanılır.
-* **Azure Active Directory’de**[bu yönergeyi](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) izleyerek bir uygulama oluşturun. Daha sonraki adımlarda kullandığınız aşağıdaki değerlere dikkat edin: **uygulama kimliği,** **istemci Sırları**ve **kiracı kimliği.** Uygulamayı "**Katkıda Bulunan**" rolüne atayın.
+* **Azure PowerShell**'i yükler. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin. Bu hızlı başlangıçta RES API çağrılarını çağırmak için PowerShell kullanılır.
+* **Azure Active Directory’de**[bu yönergeyi](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) izleyerek bir uygulama oluşturun. Sonraki adımlarda kullandığınız aşağıdaki değerleri unutmayın: **uygulama kimliği**, **clientgizlilikler**ve **Kiracı kimliği**. Uygulamayı "**Katkıda Bulunan**" rolüne atayın.
 
 ## <a name="set-global-variables"></a>Genel değişkenleri ayarlama
 
@@ -192,9 +192,9 @@ $response | ConvertTo-Json
 ```
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
-Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, iki veri kümesi oluşturursunuz: InputDataset ve OutputDataset. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını (adftutorial), klasörü (input) ve dosyayı (emp.txt) belirtirsiniz. Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını (adftutorial), klasörü (output) ve dosyayı belirtirsiniz.
+Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, iki veri kümesi oluşturursunuz: ınputdataset ve OutputDataset. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını (adftutorial), klasörü (input) ve dosyayı (emp.txt) belirtirsiniz. Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını (adftutorial), klasörü (output) ve dosyayı belirtirsiniz.
 
-**InputDataset Oluştur**
+**Inputdataset oluşturma**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
@@ -248,7 +248,7 @@ $response | ConvertTo-Json
     "etag":"07011c57-0000-0100-0000-5d6e14b40000"
 }
 ```
-**ÇıktıVeri Seti Oluştur**
+**OutputDataset oluşturma**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
@@ -493,7 +493,7 @@ $runId = $response.runId
     ```
 ## <a name="verify-the-output"></a>Çıktıyı doğrulama
 
-Dosyanın bir ardışık hat çalışması oluştururken belirttiğiniz gibi "inputPath"ten "outputPath"e kopyalanamasını denetlemek için Azure Depolama gezginini kullanın.
+Dosyanın bir işlem hattı çalıştırması oluştururken belirttiğiniz şekilde "ınputpath" kaynağından "outputPath" öğesine kopyalandığını denetlemek için Azure Depolama Gezgini 'ni kullanın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Hızlı başlangıç bölümünde oluşturduğunuz kaynakları iki şekilde temizleyebilirsiniz. Kaynak grubundaki tüm kaynakları içeren [Azure kaynak grubunu](../azure-resource-manager/management/overview.md) silebilirsiniz. Diğer kaynakları korumak istiyorsanız yalnızca bu öğreticide oluşturduğunuz veri kaynağını silin.

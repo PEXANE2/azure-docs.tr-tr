@@ -1,6 +1,6 @@
 ---
-title: Azure Dosyaları ile kullanılmak üzere Windows'da Bir Noktaya Sayfa (P2S) VPN'i yapılandırma | Microsoft Dokümanlar
-description: Azure Dosyaları ile kullanılmak üzere Windows'da Bir Sayfa-To-Site (P2S) VPN yapılandırma
+title: Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma | Microsoft Docs
+description: Azure dosyaları ile kullanılmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,32 +8,32 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81273486"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Azure Dosyaları ile kullanılmak üzere Windows'da Bir Noktaya Sayfa (P2S) VPN'i yapılandırma
-445 bağlantı noktasını açmadan Azure dosya paylaşımlarınızı SMB üzerinden SMB'ye monte etmek için Bir Yerden Kullanıma (P2S) VPN bağlantısını kullanabilirsiniz. Bir Noktadan Siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure Dosyaları ile Bir P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınıza bağlanması gereken çok sayıda istemciniz varsa, her istemci için Site'den Siteye (S2S) VPN bağlantısı yerine kullanabilirsiniz. Daha fazla bilgi için Bkz. [Azure Dosyaları ile kullanılmak üzere Siteden Siteye VPN Yapılandır'](storage-files-configure-s2s-vpn.md)a bakın.
+# <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Azure dosyaları ile kullanmak üzere Windows üzerinde Noktadan siteye (P2S) VPN yapılandırma
+Azure dosya paylaşımlarınızı, 445 numaralı bağlantı noktasını açmadan Azure dışından SMB 'ye bağlamak için Noktadan siteye (P2S) VPN bağlantısı kullanabilirsiniz. Noktadan siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure dosyaları ile P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınızın bağlanması gereken çok sayıda istemciniz varsa, her istemci için Noktadan siteye bağlantı yerine siteden siteye (S2S) VPN bağlantısı kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure dosyaları ile kullanmak Için siteden sıteye VPN yapılandırma](storage-files-configure-s2s-vpn.md).
 
-Azure Dosyaları için kullanılabilir ağ seçeneklerinin tam olarak tartışılması için makaleye devam etmeden önce doğrudan Azure dosyası paylaşımı erişimi için Ağ la ilgili [hususları](storage-files-networking-overview.md) okumanızı öneririz.
+Azure dosyaları için kullanılabilir ağ seçenekleri hakkında ayrıntılı bir tartışmaya devam etmeden önce, bu nasıl yapılır makalesine geçmeden önce [doğrudan Azure dosya paylaşımının erişimine yönelik ağ konularını](storage-files-networking-overview.md) okumanızı öneririz.
 
-Makalede, Windows'ta (Windows istemcisi ve Windows Server) Bir Noktaya Sayfa VPN'i doğrudan şirket içinde Azure dosya paylaşımlarına monte etmek üzere yapılandırma adımları ayrıntılı olarak açıklanmaktadır. Azure Dosya Eşitleme trafiğini VPN üzerinden yönlendirmek istiyorsanız, lütfen [Azure Dosya Eşitleme proxy'sini ve güvenlik duvarı ayarlarını yapılandırmaya](storage-sync-files-firewall-and-proxy.md)bakın.
+Makalede, Windows 'da (Windows istemcisi ve Windows Server) Noktadan siteye VPN 'yi yapılandırmaya yönelik adımlar, Azure dosya paylaşımlarını doğrudan şirket içine bağlamak için ayrıntılı olarak açıklanır. VPN üzerinden Azure Dosya Eşitleme trafiği yönlendirmek istiyorsanız lütfen bkz. [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
-- Azure PowerShell modülünün en son sürümü. Azure PowerShell'i nasıl yükleyin hakkında daha fazla bilgi için Azure [PowerShell modülünü yükleyin](https://docs.microsoft.com/powershell/azure/install-az-ps) ve işletim sisteminizi seçin. Windows'da Azure CLI'yi kullanmayı tercih ederseniz, aşağıdaki yönergeler Azure PowerShell için sunulabilir.
+- Azure PowerShell modülünün en son sürümü. Azure PowerShell nasıl yükleneceğine ilişkin daha fazla bilgi için, bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps) ve işletim sisteminizi seçmek. Windows 'da Azure CLı 'yı kullanmayı tercih ediyorsanız, aşağıdaki yönergeler Azure PowerShell için sunulmuştur.
 
-- Şirket içinde monte etmek istediğiniz bir Azure dosya paylaşımı. Azure dosya paylaşımları, birden çok dosya paylaşımının yanı sıra blob kapsayıcıları veya kuyruklar gibi diğer depolama kaynaklarını dağıtabileceğiniz paylaşılan bir depolama havuzunun yanı sıra yönetim yapıları olan depolama hesaplarında dağıtılır. Azure dosya paylaşımı oluştur'da Azure dosya paylaşımlarını ve depolama hesaplarını nasıl dağıtabileceğiniz hakkında daha fazla bilgi [edinebilirsiniz.](storage-how-to-create-file-share.md)
+- Şirket içinde bağlamak istediğiniz bir Azure dosya paylaşımıdır. Azure dosya paylaşımları, birden çok dosya paylaşımı dağıtabileceğiniz ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarına ek olarak, bir paylaşılan depolama havuzunu temsil eden yönetim yapıları içindeki depolama hesaplarında dağıtılır. Azure dosya paylaşımları ve depolama hesaplarını [Azure dosya paylaşımı oluşturma](storage-how-to-create-file-share.md)bölümünde dağıtma hakkında daha fazla bilgi edinebilirsiniz.
 
-- Şirket içinde monte etmek istediğiniz Azure dosya paylaşımını içeren depolama hesabı için özel bir bitiş noktası. Özel bir bitiş noktası oluşturma hakkında daha fazla bilgi edinmek için Azure [Dosyaları ağ uç noktalarını yapılandırma](storage-files-networking-endpoints.md?tabs=azure-powershell)konusuna bakın. 
+- Şirket içinde bağlamak istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabı için özel bir uç nokta. Özel uç nokta oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları ağ uç noktalarını yapılandırma](storage-files-networking-endpoints.md?tabs=azure-powershell). 
 
 ## <a name="deploy-a-virtual-network"></a>Sanal ağ dağıtma
-Azure dosya paylaşımınıza ve diğer Azure kaynaklarına şirket içi bir Giriş VPN üzerinden erişmek için bir sanal ağ veya VNet oluşturmanız gerekir. Otomatik olarak oluşturacağınız P2S VPN bağlantısı, şirket içi Windows makineniz ile bu Azure sanal ağı arasında bir köprüdür.
+Azure dosya paylaşımınıza ve diğer Azure kaynaklarına Noktadan siteye VPN aracılığıyla Şirket içinden erişmek için bir sanal ağ veya VNet oluşturmanız gerekir. Otomatik olarak oluşturacağınız P2S VPN bağlantısı, şirket içi Windows makineniz ve bu Azure sanal ağı arasında bir köprüdir.
 
-Aşağıdaki PowerShell, üç alt ağa sahip bir Azure sanal ağı oluşturur: biri depolama hesabınızın hizmet bitiş noktası, biri depolama hesabınızın özel bitiş noktası için, bu ağ hesabının genel IP'si için özel yönlendirme oluşturmadan şirket içinde erişmek için gereklidir ve diğeri de VPN hizmetini sağlayan sanal ağ ağ geçidiniz için. 
+Aşağıdaki PowerShell üç alt ağı olan bir Azure sanal ağı oluşturacak: bir depolama hesabınızın özel uç noktası için bir tane olmak üzere, bir depolama hesabının özel uç noktası için, bir tane, değişebilir depolama hesabının genel IP 'si için özel yönlendirme oluşturmadan ve VPN hizmetini sağlayan sanal ağ geçidiniz için bir tane olmak üzere, şirket içi depolama hesabına erişmek için gereklidir. 
 
-Çevreniz `<region>`için `<resource-group>`uygun `<desired-vnet-name>` değerleri değiştirmeyi ve değiştirmeyi unutmayın.
+, Ve `<desired-vnet-name>` değerlerini `<region>`, `<resource-group>`ortamınız için uygun değerlerle değiştirmeyi unutmayın.
 
 ```PowerShell
 $region = "<region>"
@@ -78,8 +78,8 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
     Where-Object { $_.Name -eq "GatewaySubnet" }
 ```
 
-## <a name="create-root-certificate-for-vpn-authentication"></a>VPN kimlik doğrulaması için kök sertifika oluşturma
-Şirket içi Windows makinelerinizden gelen VPN bağlantılarının sanal ağınıza erişmek için kimlik doğrulaması yapabilmesi için iki sertifika oluşturmanız gerekir: sanal makine ağ geçidine sağlanacak bir kök sertifika ve kök sertifikasıyla imzalanacak bir istemci sertifikası. Aşağıdaki PowerShell kök sertifikasını oluşturur; istemci sertifikası, Azure sanal ağ ağ ağ geçidiağdan gelen bilgilerle oluşturulduktan sonra oluşturulur. 
+## <a name="create-root-certificate-for-vpn-authentication"></a>VPN kimlik doğrulaması için kök sertifika oluştur
+Şirket içi Windows makinelerinizin sanal ağınıza erişim için kimlik doğrulamasından geçen VPN bağlantılarının doğrulanması için, iki sertifika oluşturmanız gerekir: sanal makine ağ geçidine sağlanacak bir kök sertifika ve kök sertifikayla imzalanacak bir istemci sertifikası. Aşağıdaki PowerShell kök sertifikayı oluşturur; istemci sertifikası, ağ geçidinden alınan bilgilerle Azure sanal ağ geçidi oluşturulduktan sonra oluşturulur. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -125,13 +125,13 @@ foreach($line in $rawRootCertificate) {
 }
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Sanal ağ ağ geçidini dağıtma
-Azure sanal ağ ağ ağ geçidi, şirket içi Windows makinelerinizin bağlanacak hizmetidir. Bu hizmeti dağıtmak iki temel bileşen gerektirir: müşterilerinizin dünyanın neresinde olurlarsa olsunlar için ağ geçidini tanımlayacak genel bir IP ve daha önce oluşturduğunuz ve müşterilerinizin kimliğini doğrulamak için kullanılacak bir kök sertifika.
+## <a name="deploy-virtual-network-gateway"></a>Sanal ağ geçidini dağıtma
+Azure sanal ağ geçidi, şirket içi Windows makinelerinizin bağlanacağı hizmettir. Bu hizmeti dağıtmak için iki temel bileşen gerekir: dünyanın her yerinden ve daha önce oluşturduğunuz bir kök sertifikaya ve istemcilerinizin kimliğini doğrulamak için kullanılacak olan ağ geçidini tanımlayacak genel bir IP.
 
-Bu kaynaklar `<desired-vpn-name-here>` için istediğiniz adla değiştirmeyi unutmayın.
+Bu kaynaklar için `<desired-vpn-name-here>` istediğiniz adla değiştirmeyi unutmayın.
 
 > [!Note]  
-> Azure sanal ağ ağ ağ geçidini dağıtmak 45 dakika kadar sürebilir. Bu kaynak dağıtılırken, bu PowerShell komut dosyası dağıtımın tamamlanmasını engeller. Bu beklenen bir durumdur.
+> Azure sanal ağ geçidi dağıtımı en fazla 45 dakika sürebilir. Bu kaynak dağıtılırken, bu PowerShell betiği dağıtımın tamamlanmasını engelleyecek. Bu beklenen bir durumdur.
 
 ```PowerShell
 $vpnName = "<desired-vpn-name-here>" 
@@ -166,8 +166,8 @@ $vpn = New-AzVirtualNetworkGateway `
     -VpnClientRootCertificates $azRootCertificate
 ```
 
-## <a name="create-client-certificate"></a>İstemci sertifikası oluşturma
-İstemci sertifikası, sanal ağ ağ geçidinin URI'si ile oluşturulur. Bu sertifika, daha önce oluşturduğunuz kök sertifikası ile imzalanır.
+## <a name="create-client-certificate"></a>İstemci sertifikası oluştur
+İstemci sertifikası, sanal ağ geçidinin URI 'siyle oluşturulur. Bu sertifika, daha önce oluşturduğunuz kök sertifika ile imzalanmıştır.
 
 ```PowerShell
 $clientcertpassword = "1234"
@@ -212,9 +212,9 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>VPN istemcisini yapılandırma
-Azure sanal ağ ağ ağ geçidi, şirket içi Windows makinenizde VPN bağlantısını başlatması gereken yapılandırma dosyalarını içeren indirilebilir bir paket oluşturur. VPN bağlantısını Windows 10/Windows Server 2016+'nın [Her Zaman VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) özelliğini kullanarak yapılandıracağız. Bu paket, istenirse eski Windows VPN istemcisini yapılandıracak yürütülebilir paketler de içerir. Bu kılavuzda, eski Windows VPN istemcisi yerine Her Zaman VPN istemcisi kullanır, çünkü son kullanıcıların makinelerine yönetici izni olmadan Azure VPN'den bağlanmalarına/bağlantılarını kesmelerine izin verir. 
+Azure sanal ağ geçidi, şirket içi Windows makinenizde VPN bağlantısını başlatmak için gereken yapılandırma dosyaları içeren indirilebilir bir paket oluşturur. VPN bağlantısını, Windows 10/Windows Server 2016 + [' nın Always on VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) özelliğini kullanarak yapılandıracağız. Bu paket, istenirse, eski Windows VPN istemcisini yapılandıracak yürütülebilir paketleri de içerir. Bu kılavuz, her zaman VPN istemcisi, son kullanıcıların makine üzerinde yönetici izinlerine sahip olmadan Azure VPN 'ye bağlanmasına/bağlantıyı kesmeye izin verdiği için, eski Windows VPN istemcisi yerine her zaman VPN 'Yi kullanır. 
 
-Aşağıdaki komut dosyası sanal ağ ağ ağ geçidine karşı kimlik doğrulama için gerekli istemci sertifikasını yükler, vpn paketini karşıdan yükler ve yükler. Değiştirmeyi `<computer1>` ve `<computer2>` istediğiniz bilgisayarları değiştirmeyi unutmayın. `$sessions` Diziye daha fazla PowerShell oturumu ekleyerek bu komut dosyasını istediğiniz kadar makinede çalıştırabilirsiniz. Kullanım hesabınız bu makinelerin her birinde yönetici olmalıdır. Bu makinelerden biri komut dosyasını çalıştırdığınız yerel makineyse, komut dosyasını yükseltilmiş bir PowerShell oturumundan çalıştırmanız gerekir. 
+Aşağıdaki betik, sanal ağ geçidine yönelik kimlik doğrulaması için gereken istemci sertifikasını yükler, indir ve VPN paketini yükler. Ve ' `<computer2>` nin `<computer1>` istenen bilgisayarlarla değiştirilmesini unutmayın. Bu betiği, `$sessions` diziye daha fazla PowerShell oturumu ekleyerek istediğiniz sayıda makine üzerinde çalıştırabilirsiniz. Kullanım hesabınız, bu makinelerin her birinde bir yönetici olmalıdır. Bu makinelerden biri içinden betiği çalıştırdığınız yerel makinedir, betiği yükseltilmiş bir PowerShell oturumundan çalıştırmanız gerekir. 
 
 ```PowerShell
 $sessions = [System.Management.Automation.Runspaces.PSSession[]]@()
@@ -291,8 +291,8 @@ foreach ($session in $sessions) {
 Remove-Item -Path $vpnTemp -Recurse
 ```
 
-## <a name="mount-azure-file-share"></a>Azure dosya paylaşımını başlat
-Artık Sayfadan Siteye VPN'inizi kurduğunuza göre, Azure dosya paylaşımını PowerShell üzerinden kurduğunuz bilgisayarlara monte etmek için kullanabilirsiniz. Aşağıdaki örnek, payı monte edecek, payın aslında monte olduğunu kanıtlamak için payın kök dizinini listeleyecek ve paylaşımın söküleceğini listeleyecek. Ne yazık ki, PowerShell remoting üzerinde ısrarla pay monte etmek mümkün değildir. Kalıcı olarak monte etmek için bkz. [Windows ile Azure dosya paylaşımı kullan.](storage-how-to-use-files-windows.md) 
+## <a name="mount-azure-file-share"></a>Azure dosya paylaşımından bağlama
+Noktadan siteye VPN 'yi ayarladığınıza göre, PowerShell aracılığıyla kurulum yaptığınız bilgisayarlara Azure dosya paylaşımından bağlamak için kullanabilirsiniz. Aşağıdaki örnek, paylaşımını bağlayacaktır, paylaşımın gerçekten bağlandığını kanıtlamak için paylaşımın kök dizinini listeler ve paylaşımın bağlantısını çıkarın. Ne yazık ki, PowerShell uzaktan iletişim üzerinden paylaşımın kalıcı olarak bağlanması mümkün değildir. Kalıcı olarak bağlamak için bkz. [Windows Ile Azure dosya paylaşma kullanma](storage-how-to-use-files-windows.md). 
 
 ```PowerShell
 $myShareToMount = "<file-share>"
@@ -337,6 +337,6 @@ Invoke-Command `
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Doğrudan Azure dosya paylaşımı erişimi için ağ la ilgili hususlar](storage-files-networking-overview.md)
-- [Azure Dosyaları ile kullanılmak üzere Linux'ta Bir Noktadan Siteye (P2S) VPN yapılandırın](storage-files-configure-p2s-vpn-linux.md)
-- [Azure Dosyaları ile kullanılmak üzere Siteden Siteye (S2S) VPN yapılandırın](storage-files-configure-s2s-vpn.md)
+- [Doğrudan Azure dosya paylaşma erişimi için ağ oluşturma konuları](storage-files-networking-overview.md)
+- [Linux üzerinde Azure dosyaları ile kullanım için Noktadan siteye (P2S) VPN yapılandırma](storage-files-configure-p2s-vpn-linux.md)
+- [Azure dosyaları ile kullanmak için siteden siteye (S2S) VPN yapılandırma](storage-files-configure-s2s-vpn.md)

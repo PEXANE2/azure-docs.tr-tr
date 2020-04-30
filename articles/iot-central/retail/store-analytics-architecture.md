@@ -1,6 +1,6 @@
 ---
-title: Mağaza Analitiği Mimarisi
-description: IoT Central'da Checkout uygulama şablonu kullanarak mağaza içi analiz uygulaması oluşturmayı öğrenin
+title: Depolama Analizi mimarisi
+description: IoT Central 'de kullanıma alma uygulama şablonunu kullanarak bir mağaza içi analiz uygulaması derlemeyi öğrenin
 author: avneets
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,49 +10,49 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80999015"
 ---
-# <a name="in-store-analytics-architecture"></a>Mağaza içi analitik mimarisi
+# <a name="in-store-analytics-architecture"></a>Mağaza içi analiz mimarisi
 
 
 
-Mağaza içi analiz çözümleri, perakende mağaza ortamındaki çeşitli koşulları izlemenize olanak sağlar. Bu çözümler, IoT Central'daki uygulama şablonlarından biri ve aşağıdaki mimari kullanılarak kılavuz olarak oluşturulabilir.
+Mağaza içi analiz çözümleri, perakende mağaza ortamındaki çeşitli koşulları izlemenizi sağlar. Bu çözümler IoT Central içindeki uygulama şablonlarından biri ve kılavuz olarak aşağıdaki mimaride kullanılarak oluşturulabilir.
 
 
-![Azure IoT Merkezi Mağaza Analitiği](./media/architecture/store-analytics-architecture-frame.png)
+![Azure IoT Central Mağazası Analizi](./media/architecture/store-analytics-architecture-frame.png)
 
-- Bir ağ geçidi aygıtına telemetri verileri gönderen IoT sensörleri kümesi
-- IoT Central'a telemetri ve toplu kavrayış gönderen ağ geçidi cihazları
-- Manipülasyon için istenilen Azure hizmetine sürekli veri aktarımı
-- Veriler istenilen biçimde yapılandırılabilir ve bir depolama hizmetine gönderilebilir
-- İş uygulamaları verileri sorgulayabilir ve perakende işlemlerine güç veren öngörüler oluşturabilir
+- Bir ağ geçidi cihazına telemetri verileri gönderen IoT sensörleri kümesi
+- IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
+- İşleme için istenen Azure hizmetine sürekli veri aktarma
+- Veriler istenen biçimde yapılandırılabilir ve bir depolama hizmetine gönderilebilir
+- İş uygulamaları, verileri sorgulayabilir ve Power Retail işlemleri ile ilgili öngörüler oluşturabilir
  
-Genellikle mağaza içi analiz çözümünde rol oynayan önemli bileşenlere bir göz atalım.
+Genellikle mağaza Analizi çözümünde bir bölümü oynatacak anahtar bileşenlere göz atalım.
 
-## <a name="condition-monitoring-sensors"></a>Durum izleme sensörleri
+## <a name="condition-monitoring-sensors"></a>Koşul izleme algılayıcılar
 
-IoT çözümü, bir perakende mağaza ortamından anlamlı sinyaller yakalayan bir dizi sensörle başlar. Yukarıdaki mimari diyagramın en solundaki farklı sensörler tarafından yansıtılır.
+IoT çözümü, perakende mağaza ortamının içinden anlamlı sinyalleri yakalayan bir algılayıcı kümesiyle başlar. Yukarıdaki mimari diyagramının en solundaki farklı algılayıcı türleri tarafından yansıtılır.
 
-## <a name="gateway-devices"></a>Ağ geçidi aygıtları
+## <a name="gateway-devices"></a>Ağ Geçidi cihazları
 
-Birçok IoT sensörü ham sinyalleri doğrudan buluta veya yakınlarında bulunan bir ağ geçidi cihazına besleyebilir. Ağ geçidi aygıtı, bir IoT Merkezi uygulamasına özet öngörüler göndermeden önce kenarda veri toplama gerçekleştirir. Ağ geçidi cihazları, gerektiğinde komuta ve kontrol işlemlerini sensör aygıtlarına aktarmakla da yükümlüdür. 
+Birçok IoT algılayıcı, ham sinyalleri doğrudan buluta veya neredeyse bulunan bir ağ geçidi cihazına akışa alabilir. Ağ geçidi cihazı, bir IoT Central uygulamasına Özet Öngörüler göndermeden önce, uç sırada veri toplama işlemini gerçekleştirir. Ağ Geçidi cihazları, uygun olduğunda, algılayıcı cihazlarına geçiş komutu ve denetim işlemlerini de sorumludur. 
 
-## <a name="iot-central-application"></a>IoT Merkezi uygulaması
+## <a name="iot-central-application"></a>IoT Central uygulaması
 
-Azure IoT Merkezi uygulaması, perakende mağaza ortamındaki farklı IoT sensörleri ve ağ geçidi aygıtlarından gelen verileri alır ve bir dizi anlamlı öngörü oluşturur.
+Azure IoT Central uygulaması, perakende mağaza ortamındaki farklı IoT algılayıcılarının yanı sıra ağ geçidi cihazlarından verileri alır ve anlamlı Öngörüler kümesi oluşturur.
 
-Azure IoT Central, mağaza operatörüne altyapı aygıtlarını uzaktan izlemelerini ve yönetmelerini sağlayan özel bir deneyim de sunar.
+Azure IoT Central Ayrıca, altyapı cihazlarını uzaktan izleyip yönetebilmesini sağlayan mağaza işlecine özel bir deneyim sağlar.
 
-## <a name="data-transform"></a>Veri dönüşümü
-Bir çözümdeki Azure IoT Merkezi uygulaması, veri işleme gerçekleştirebilen ve bu öngörüleri bir iş uygulamasına çıkarmadan önce zenginleştirebilen bir dizi Azure PaaS (Hizmet Olarak Platform) hizmetine ham veya toplu öngörüler dışa aktaracak şekilde yapılandırılabilir. 
+## <a name="data-transform"></a>Veri dönüştürme
+Bir çözüm içindeki Azure IoT Central uygulaması, ham veya toplu öngörüleri veri işleme gerçekleştirebilen ve bu öngörüleri bir iş uygulamasına göre daha zengin bir şekilde zenginleştiren bir dizi Azure PaaS (hizmet platformu) hizmetine aktarmak üzere yapılandırılabilir. 
 
-## <a name="business-application"></a>İş başvurusu
-IoT verileri, perakende ortamında dağıtılan farklı türdeki iş uygulamalarına güç sağlamak için kullanılabilir. Bir perakende mağaza yöneticisi veya personel, iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı eylemlerde bulunmak için bu uygulamaları kullanabilir. Perakende ekibiniz için gerçek zamanlı bir Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app.md)izleyin.
+## <a name="business-application"></a>İş uygulaması
+IoT verileri, perakende ortamında dağıtılan farklı türlerde iş uygulamalarının gücünü desteklemek için kullanılabilir. Bir perakende mağaza yöneticisi veya personel üyesi, bu uygulamaları iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı işlemler yapmak için kullanabilir. Perakende ekibiniz için gerçek zamanlı Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app.md)izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Mağaza İçi Analitik Ödeme](https://aka.ms/checkouttemplate) ve Mağaza [İçi Analitik Durum İzleme](https://aka.ms/conditiontemplate) uygulama şablonları ile başlayın. 
-* Mağaza İçi Analitik uygulama şablonlarından birini kullanarak bir çözüm oluşturmakonusunda size yol gösteren [sondan uca öğreticiye](https://aka.ms/storeanalytics-tutorial) bir göz atın.
+* [Mağaza Içi analiz kullanıma alma](https://aka.ms/checkouttemplate) ve [Mağaza Içi analiz koşulu izleme](https://aka.ms/conditiontemplate) uygulama şablonlarını kullanmaya başlayın. 
+* Store Analytics Uygulama şablonlarından birini kullanarak bir çözüm oluşturma konusunda size yol gösteren [uçtan uca öğreticiye](https://aka.ms/storeanalytics-tutorial) göz atın.

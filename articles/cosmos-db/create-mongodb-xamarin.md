@@ -1,6 +1,6 @@
 ---
-title: MongoDB için .NET ve Azure Cosmos DB'nin API'si ile bir Xamarin uygulaması oluşturun
-description: Azure Cosmos DB'nin MongoDB api'sine bağlanmak ve sorgulamak için kullanabileceğiniz bir Xamarin kodu örneği sunar
+title: .NET ve Azure Cosmos DB MongoDB API 'SI ile bir Xamarin uygulaması oluşturun
+description: MongoDB için Azure Cosmos DB API 'sine bağlanmak ve sorgulamak için kullanabileceğiniz bir Xamarin kodu örneği sunar
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
 ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79481696"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>QuickStart: .NET SDK ve Azure Cosmos DB'nin MongoDB için API'si ile bir Xamarin.Forms uygulaması oluşturun
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB MongoDB için API 'SI ile bir Xamarin. Forms uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -28,13 +28,13 @@ ms.locfileid: "79481696"
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz.
 
-Bu hızlı başlangıç, Azure portalını kullanarak [Azure Cosmos DB'nin MongoDB,](mongodb-introduction.md)belge veritabanı ve toplama için API'si ile yapılandırılan bir Cosmos hesabının nasıl oluşturulca sürüleceklerini gösterir. Daha sonra [MongoDB .NET sürücüsünü](https://docs.mongodb.com/ecosystem/drivers/csharp/)kullanarak bir todo uygulaması Xamarin.Forms uygulaması oluşturacaksınız.
+Bu hızlı başlangıçta, Azure portal kullanılarak MongoDB, belge veritabanı ve koleksiyon [için Azure Cosmos DB API 'si ile yapılandırılan Cosmos hesabının](mongodb-introduction.md)nasıl oluşturulacağı gösterilmektedir. Daha sonra [MongoDB .net sürücüsünü](https://docs.mongodb.com/ecosystem/drivers/csharp/)kullanarak bir ToDo uygulaması Xamarin. Forms uygulaması oluşturacaksınız.
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>Örnek uygulamayı çalıştırmak için önkoşullar
 
 Örneği çalıştırmak için [Visual Studio](https://www.visualstudio.com/downloads/) veya [Mac için Visual Studio](https://visualstudio.microsoft.com/vs/mac/) ve geçerli bir Azure CosmosDB hesabı olması gerekir.
 
-Visual Studio'nuz yoksa, kurulumla yüklü .NET iş **yüküyle Mobil geliştirme ile** Visual Studio [2019 Community Edition'ı](https://www.visualstudio.com/downloads/) indirin.
+Visual Studio henüz yoksa, [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) 'ı kurulum ile birlikte yüklenen .NET iş yüküne **sahip mobil geliştirmeyle** indirin.
 
 Mac'te çalışmayı tercih ediyorsanız [Mac için Visual Studio](https://visualstudio.microsoft.com/vs/mac/)'yu indirin ve kurulumu çalıştırın.
 
@@ -50,13 +50,13 @@ Bu makalede açıklanan örnek, MongoDB.Driver 2.6.1 sürümü ile uyumludur.
 
 ## <a name="clone-the-sample-app"></a>Örnek uygulamayı kopyalama
 
-İlk olarak, örnek uygulamayı GitHub'dan indirin. Bu, MongoDB’nin belge depolama modeliyle bir yapılacak işler uygulamasını uygular.
+İlk olarak, GitHub 'dan örnek uygulamayı indirin. Bu, MongoDB’nin belge depolama modeliyle bir yapılacak işler uygulamasını uygular.
 
 
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-1. Windows'da bir komut istemi açın veya Mac'te terminali açın, git örnekleri adlı yeni bir klasör oluşturun ve ardından pencereyi kapatın.
+1. Windows 'ta, bir komut istemi açın veya Mac 'te terminali açın, git-Samples adlı yeni bir klasör oluşturun ve ardından pencereyi kapatın.
 
     ```batch
     md "C:\git-samples"
@@ -84,7 +84,7 @@ Git kullanmak istemiyorsanız [projeyi ZIP dosyası olarak da indirebilirsiniz](
 
 Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz.
 
-Aşağıdaki parçacıklar `MongoService` sınıftan alınır ve aşağıdaki yol bulunur: src/TaskList.Core/Services/MongoService.cs.
+Aşağıdaki kod parçacıkları, şu yolda bulunan `MongoService` sınıfından alınır: src/tasklist. Core/Services/MongoService. cs.
 
 * Mongo İstemcisini başlatın.
     ```cs
@@ -142,7 +142,7 @@ Aşağıdaki parçacıklar `MongoService` sınıftan alınır ve aşağıdaki yo
     }
     ```
 
-* Koleksiyondaki bir görevi güncelleştirin.
+* Bir koleksiyondaki görevi güncelleştirin.
     ```cs
     public async Task UpdateTask(MyTask task)
     {
@@ -150,7 +150,7 @@ Aşağıdaki parçacıklar `MongoService` sınıftan alınır ve aşağıdaki yo
     }
     ```
 
-* Bir görevi koleksiyondan silin.
+* Bir koleksiyondan bir görevi silin.
     ```cs
     public async Task DeleteTask(MyTask task)
     {
@@ -170,10 +170,10 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 3. Portaldan **birincil bağlantı dizesi** değerinizi kopyalayın (kopyala düğmesini kullanarak) ve **APIKeys.cs** dosyanızdaki **ConnectionString** alanının değeri olarak kullanın.
 
-4. Bağlantı `&replicaSet=globaldb` dizesinden kaldırın. Bu değeri sorgu dizesinden kaldırmazsanız çalışma zamanı hatası alırsınız.
+4. Bağlantı `&replicaSet=globaldb` dizesinden kaldır. Bu değeri sorgu dizesinden kaldırdıysanız bir çalışma zamanı hatası alırsınız.
 
 > [!IMPORTANT]
-> Çalışma zamanı `&replicaSet=globaldb` hatasını önlemek için bağlantı dizesinin sorgu dizesinden anahtar/değer çiftini kaldırmanız gerekir.
+> Çalışma zamanı hatasından kaçınmak `&replicaSet=globaldb` için, anahtar/değer çiftini bağlantı dizesinin sorgu dizesinden kaldırmanız gerekir.
 
 Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz.
 
@@ -207,4 +207,4 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı ve MongoDB API’sini kullanarak bir Xamarin.Forms uygulamasını çalıştırmayı öğrendiniz. Şimdi Cosmos DB hesabınıza ek veri aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB'nin MongoDB için API'si ile yapılandırılan Azure Cosmos DB'ye veri alma](mongodb-migrate.md)
+> [MongoDB için Azure Cosmos DB API 'siyle yapılandırılan Azure Cosmos DB verileri içeri aktarın](mongodb-migrate.md)

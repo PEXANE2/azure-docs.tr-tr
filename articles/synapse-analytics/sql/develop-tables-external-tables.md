@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL ile harici tabloları kullanma
-description: Synapse SQL ile veri dosyalarını okuma veya yazma
+title: SYNAPSE SQL ile dış tabloları kullanma
+description: SYNAPSE SQL ile veri dosyalarını okuma veya yazma
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -10,43 +10,43 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4d13d15fe950c89687acfca355d4ed183756536a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423981"
 ---
-# <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL ile harici tabloları kullanma
+# <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
-Harici bir tablo Hadoop, Azure Depolama blob veya Azure Veri Gölü Depolama bulunan verileri işaret ediyor. Dış tablolar, dosyalardaki verileri okumak veya Azure Depolama'daki dosyalara veri yazmak için kullanılır. Synapse SQL ile, SQL havuzuna veya isteğe bağlı SQL'e (önizleme) veri okumak ve yazmak için harici tabloları kullanabilirsiniz.
+Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan verilere işaret eder. Dış tablolar, dosyalardaki verileri okumak veya Azure Storage 'daki dosyalara veri yazmak için kullanılır. SYNAPSE SQL ile, dış tabloları SQL havuzuna veya isteğe bağlı SQL 'e (Önizleme) veri okumak ve yazmak için kullanabilirsiniz.
 
-## <a name="external-tables-in-sql-pool"></a>SQL havuzunda dış tablolar
+## <a name="external-tables-in-sql-pool"></a>SQL havuzundaki dış tablolar
 
-SQL havuzunda, harici bir tablo kullanabilirsiniz:
+SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
 
-- Azure Blob Depolama ve Azure Veri Gölü Gen2'yi Transact-SQL deyimleriyle sorgula.
-- Azure Blob Depolama ve Azure Veri Gölü Depolama'dan verileri SQL havuzuna aktarın ve depolayın.
+- Azure Blob depolama ve Azure Data Lake Gen2 Transact-SQL deyimleriyle sorgulayın.
+- Azure Blob depolamadan ve Azure Data Lake Storage verileri SQL Pool 'a aktarın ve depolayın.
 
-CREATE TABLE AS [SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) deyimi ile birlikte kullanıldığında, harici bir tablodan seçim, verileri SQL havuzu içindeki bir tabloya aktarın. [COPY deyimine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ek olarak, dış tablolar veri yüklemek için yararlıdır. Yükleme eğitimi için Azure [Blob Depolama'dan veri yüklemek için PolyBase'i kullanın'a](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)bakın.
+[Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ek olarak, dış tablolar veri yüklemek için faydalıdır. Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="external-tables-in-sql-on-demand-preview"></a>İsteğe bağlı SQL'deki dış tablolar (önizleme)
+## <a name="external-tables-in-sql-on-demand-preview"></a>İsteğe bağlı SQL 'de dış tablolar (Önizleme)
 
-İsteğe bağlı SQL için harici bir tablo kullanırsınız:
+İsteğe bağlı SQL için bir dış tablo kullanacaksınız:
 
-- Verileri Azure Blob Depolama veya Azure Veri Gölü Depolama'da Transact-SQL deyimleriyle sorgula
-- SQL isteğe bağlı sorgu sonuçlarını [CETAS](develop-tables-cetas.md)kullanarak Azure Blob Depolama veya Azure Veri Gölü Depolama'daki dosyalara saklayın.
+- Azure Blob depolamada veya Azure Data Lake Storage Transact-SQL deyimleriyle veri sorgulama
+- Azure Blob depolamada veya [Cetas](develop-tables-cetas.md)kullanarak Azure Data Lake Storage SQL isteğe bağlı sorgu sonuçlarını depolayın.
 
-Aşağıdaki adımlarla ISTEĞe bağlı SQL kullanarak harici tablolar oluşturabilirsiniz:
+Aşağıdaki adımlar aracılığıyla, SQL 'i isteğe bağlı olarak kullanarak dış tablolar oluşturabilirsiniz:
 
-1. DıŞ VERI KAYNAĞı OLUŞTURMA
+1. DıŞ VERI KAYNAĞı OLUŞTUR
 2. CREATE EXTERNAL FILE FORMAT
-3. DıŞ TABLO OLUŞTURMA
+3. DıŞ TABLO OLUŞTUR
 
-## <a name="create-external-data-source"></a>DıŞ VERI KAYNAĞı OLUŞTURMA
+## <a name="create-external-data-source"></a>DıŞ VERI KAYNAĞı OLUŞTUR
 
-Depolama hesaplarına bağlanmak için dış veri kaynakları kullanılır. Tam belgeler [burada](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)özetlenmiştir.
+Dış veri kaynakları, depolama hesaplarına bağlanmak için kullanılır. Tüm belgeler [burada](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)özetlenmiştir.
 
-## <a name="syntax-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE için sözdizimi
+## <a name="syntax-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma söz dizimi
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -55,21 +55,21 @@ WITH
 [;]
 ```
 
-## <a name="arguments-for-create-external-data-source"></a>Dış VERİ KAYNAĞI OLUŞTURMA Bağımsız Değişkenleri
+## <a name="arguments-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma için bağımsız değişkenler
 
-data_source_name -Veri kaynağı için kullanıcı tanımlı adı belirtir. Ad veritabanı içinde benzersiz olmalıdır.
+data_source_name-veri kaynağı için Kullanıcı tanımlı adı belirtir. Ad, veritabanı içinde benzersiz olmalıdır.
 
-LOCATION `'<prefix>://<path>'` = - Dış veri kaynağına bağlantı protokolü ve yol sağlar. Yol, bir kapsayıcı şeklinde `'<prefix>://<path>/container'`ve bir klasör şeklinde `'<prefix>://<path>/container/folder'`içerebilir.
+LOCATION = `'<prefix>://<path>'` -dış veri kaynağının bağlantı protokolünü ve yolunu sağlar. Yol `'<prefix>://<path>/container'`, biçiminde bir kapsayıcı ve biçiminde bir klasör içerebilir `'<prefix>://<path>/container/folder'`.
 
-| Dış Veri Kaynağı        | Konum öneki | Konum yolu                                         |
+| Dış veri kaynağı        | Konum ön eki | Konum yolu                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Depolama          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
-| Azure Veri Gölü Deposu Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
-| Azure Veri Gölü Deposu Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+| Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
+| Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
-## <a name="example-for-create-external-data-source"></a>CREATE external DATA SOURCE için örnek
+## <a name="example-for-create-external-data-source"></a>Dış VERI kaynağı oluşturma örneği
 
-Aşağıdaki örnek, Azure Veri Gölü Gen2 için New York veri kümesini gösteren bir dış veri kaynağı oluşturur:
+Aşağıdaki örnek, New York veri kümesine işaret eden Azure Data Lake Gen2 için bir dış veri kaynağı oluşturur:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
@@ -83,11 +83,11 @@ WITH
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Azure Blob Depolama veya Azure Veri Gölü Depolama'da depolanan dış verileri tanımlayan harici bir dosya biçimi nesnesi oluşturur. Harici dosya biçimi oluşturmak, harici bir tablo oluşturmak için bir ön koşuldur. Tüm belgeler [burada.](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+Azure Blob depolamada veya Azure Data Lake Storage depolanan dış verileri tanımlayan bir dış dosya biçim nesnesi oluşturur. Dış dosya biçimi oluşturmak, dış tablo oluşturmak için bir önkoşuldur. Tüm belgeler [burada](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)verilmiştir.
 
-Harici bir dosya biçimi oluşturarak, dış tablo tarafından başvurulan verilerin gerçek düzenini belirtirsiniz.
+Bir dış dosya biçimi oluşturarak, bir dış tablo tarafından başvurulan verilerin gerçek yerleşimini belirtirsiniz.
 
-## <a name="syntax-for-create-external-file-format"></a>DıŞ DOSYA BIÇIMI OLUŞTURMA için sözdizimi
+## <a name="syntax-for-create-external-file-format"></a>Dış dosya BIÇIMI oluşturma söz dizimi
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -116,55 +116,55 @@ WITH (
 }
 ```
 
-## <a name="arguments-for-create-external-file-format"></a>Dış DOSYA BIÇIMI OLUŞTURMA bağımsız değişkenleri
+## <a name="arguments-for-create-external-file-format"></a>Dış dosya BIÇIMI oluşturma için bağımsız değişkenler
 
-file_format_name- Dış dosya biçimi için bir ad belirtir.
+file_format_name-dış dosya biçimi için bir ad belirtir.
 
-FORMAT_TYPE = [ PARKE | DELIMITEDTEXT]- Dış verilerin biçimini belirtir.
+FORMAT_TYPE = [PARQUET | DELIMITEDTEXT]-dış verilerin biçimini belirtir.
 
-- PARKE - Parke formatı belirtir.
-- DELIMITEDTEXT - Alan sonlandırıcıları olarak da adlandırılan sütun sınırlayıcıları içeren bir metin biçimi belirtir.
+- PARQUET-bir Parquet biçimi belirtir.
+- DELIMITEDTEXT-alan sonlandırıcılar olarak da adlandırılan sütun sınırlayıcılarıyla bir metin biçimi belirtir.
 
-FIELD_TERMINATOR = *field_terminator* - Yalnızca sınırlı metin dosyaları için geçerlidir. Alan sonlandırıcısı, metin sınırlandırılabilen dosyadaki her alanın (sütunun) sonunu işaretleyen bir veya daha fazla karakter belirtir. Varsayılan olarak boru karakteridir (3|)).
-
-Örnekler:
-
-- FIELD_TERMINATOR = '|'
-- FIELD_TERMINATOR = '
-- FIELD_TERMINATOR =
-
-STRING_DELIMITER = *string_delimiter* - Metin sınırlandırılatan dosyadaki tür dizesinin verileri için alan sonlandırıcısını belirtir. Dize sınırlayıcı uzunluğu bir veya daha fazla karakter ve tek tırnak ile kapalıdır. Varsayılan boş dize ("") olur.
+FIELD_TERMINATOR = *field_terminator* -yalnızca sınırlandırılmış metin dosyaları için geçerlidir. Alan Sonlandırıcı, metin ile ayrılmış dosyadaki her bir alanın (sütun) sonunu işaretleyen bir veya daha fazla karakter belirtir. Varsayılan, kanal karakteridir (ꞌ | ꞌ).
 
 Örnekler:
 
-- STRING_DELIMITER = '"'
-- STRING_DELIMITER = '*'
-- STRING_DELIMITER =
+- FIELD_TERMINATOR = ' | '
+- FIELD_TERMINATOR = ' '
+- FIELD_TERMINATOR = ꞌ \ t ꞌ
 
-FIRST_ROW = *First_row_int* - Önce okunan ve tüm dosyalara uygulanan satır numarasını belirtir. Değeri ikiye ayarlamak, veriler yüklendiğinde her dosyadaki ilk satırın (üstbilgi satırı) atlanmasına neden olur. Satır sonlandırıcıların (/r/n, /r, /n) varlığına göre atlanır.
+STRING_DELIMITER = *string_delimiter* -metin ile ayrılmış dosyada dize türündeki veriler için alan Sonlandırıcı belirler. Dize sınırlayıcısı bir veya daha fazla karakter uzunluğunda ve tek tırnak içine alınmış. Varsayılan değer boş dizedir ("").
 
-USE_TYPE_DEFAULT = { DOĞRU | **YANLIŞ** } - Metin dosyasından veri alırken sınırlı metin dosyalarındaki eksik değerlerin nasıl işleyeceğini belirtir.
+Örnekler:
 
-TRUE - Metin dosyasından veri alıyorsanız, dış tablo tanımında ilgili sütun için varsayılan değerin veri türünü kullanarak her eksik değeri depolayın. Örneğin, eksik bir değeri şu şekilde değiştirin:
+- STRING_DELIMITER = ' "'
+- STRING_DELIMITER = ' * '
+- STRING_DELIMITER = ꞌ, ꞌ
 
-- Sütun sayısal sütun olarak tanımlanırsa 0. Ondalık sütunlar desteklenmez ve hataya neden olur.
-- Sütun bir dize sütunuise dizeyi ("") boşalır.
-- 1900-01-01 sütun bir tarih sütunu ise.
+FIRST_ROW = *First_row_int* -ilk okunan ve tüm dosyalar için geçerli olan satır numarasını belirtir. Değerin iki olarak ayarlanması, veriler yüklendiğinde her dosyada (başlık satırı) ilk satırın atlanmasına neden olur. Satır Sonlandırıcıların varlığına (/r/n,/r,/n) göre satırlar atlanır.
 
-FALSE - Eksik tüm değerleri NULL olarak saklayın. Sınırlandırılmış metin dosyasında NULL sözcüğü kullanılarak depolanan tüm NULL değerleri 'NULL' dizesi olarak alınır.
+USE_TYPE_DEFAULT = {TRUE | **False** } -Metin dosyasından verileri alırken sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.
 
-Kodlama = {'UTF8' | 'UTF16'} - SQL isteğe bağlı olarak UTF8 ve UTF16 kodlanmış sınırlandırılmış metin dosyalarını okuyabilir.
+DOĞRU-metin dosyasından veri alıyorsanız, dış tablo tanımındaki karşılık gelen sütun için varsayılan değerin veri türünü kullanarak eksik her değeri saklayın. Örneğin, eksik bir değeri ile değiştirin:
 
-DATA_COMPRESSION = *data_compression_method* - Bu bağımsız değişken, dış veri için veri sıkıştırma yöntemini belirtir. Dış tablolardan okurken, yok sayılır. Sadece [CETAS](develop-tables-cetas.md)kullanarak dış tablolara yazarken kullanılır.
+- sütun sayısal bir sütun olarak tanımlanmışsa 0. Ondalık sütunlar desteklenmez ve hataya neden olur.
+- Sütun bir dize sütuneyse boş dize ("").
+- sütun bir tarih sütunudur, 1900-01-01.
 
-PARKE dosya biçimi türü aşağıdaki sıkıştırma yöntemlerini destekler:
+FALSE-tüm eksik değerleri NULL olarak depola. Sınırlandırılmış metin dosyasında NULL sözcüğü kullanılarak depolanan NULL değerler ' NULL ' dizesi olarak içeri aktarılır.
 
-- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'
+Kodlama = {' UTF8 ' | ' UTF16 '}-isteğe bağlı SQL, UTF8 ve UTF16 kodlamalı sınırlandırılmış metin dosyalarını okuyabilir.
 
-## <a name="example-for-create-external-file-format"></a>DıŞ DOSYA BIÇIMI OLUŞTURMA örneği
+DATA_COMPRESSION = *data_compression_method* -bu bağımsız değişken dış veriler için veri sıkıştırma yöntemini belirtir. Dış tablolardan okurken yok sayılır. Yalnızca [Cetas](develop-tables-cetas.md)kullanılarak dış tablolara yazılırken kullanılır.
 
-Aşağıdaki örnek, nüfus sayımı dosyaları için harici bir dosya biçimi oluşturur:
+PARQUET dosya biçimi türü aşağıdaki sıkıştırma yöntemlerini destekler:
+
+- DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. GzipCodec '
+- DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. SnappyCodec '
+
+## <a name="example-for-create-external-file-format"></a>Dış dosya BIÇIMI oluşturma örneği
+
+Aşağıdaki örnek, görselleştirmenizdeki dosyaları için bir dış dosya biçimi oluşturur:
 
 ```sql
 CREATE EXTERNAL FILE FORMAT census_file_format
@@ -175,11 +175,11 @@ WITH
 )
 ```
 
-## <a name="create-external-table"></a>DıŞ TABLO OLUŞTURMA
+## <a name="create-external-table"></a>DıŞ TABLO OLUŞTUR
 
-CREATE EXTERNAL TABLE komutu, Azure Blob Depolama veya Azure Veri Gölü Depolama'da depolanan verilere erişmek için Synapse SQL için harici bir tablo oluşturur. 
+DıŞ tablo oluştur komutu, Azure Blob depolamada veya Azure Data Lake Storage depolanan verilere erişmek üzere SYNAPSE SQL için bir dış tablo oluşturur. 
 
-## <a name="syntax-for-create-external-table"></a>CREATE EXTERNAL TABLE için sözdizimi
+## <a name="syntax-for-create-external-table"></a>DıŞ tablo oluştur söz dizimi
 
 ```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
@@ -196,45 +196,45 @@ column_name <data_type>
     [ COLLATE collation_name ]
 ```
 
-## <a name="arguments-create-external-table"></a>Bağımsız Değişkenler CREATE EXTERNAL TABLE
+## <a name="arguments-create-external-table"></a>Bağımsız değişkenler dış tablo oluşturma
 
-*{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
+*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
 
-Oluşturmak için tablonun bir ila üç bölümlü adı. Harici bir tablo için, SQL isteğe bağlı olarak yalnızca tablo meta verilerini depolar. Hiçbir gerçek veri SQL'de isteğe bağlı olarak taşınamaz veya depolanır.
+Oluşturulacak tablonun üç bölümden oluşan bir adı. Dış tablo için, isteğe bağlı SQL yalnızca tablo meta verilerini depolar. İsteğe bağlı SQL 'de hiçbir gerçek veri taşınmaz veya depolanmaz.
 
-<column_definition>, ... *n* ]
+<column_definition>,... *n* ]
 
-CREATE EXTERNAL TABLE sütun adını, veri türünü, nullability ve harmanlama yapılandırma yeteneğini destekler. Varsayılan KıSıTLAMAyı dış tablolarda kullanamazsınız.
+DıŞ tablo oluşturma, sütun adı, veri türü, null olabilme ve harmanlama yapılandırma yeteneğini destekler. Dış tablolarda varsayılan kısıtlamayı kullanamazsınız.
 
 >[!IMPORTANT]
 >Veri türleri ve sütun sayısı da içinde olmak üzere sütun tanımlarının dış dosyalardaki verilerle eşleşmesi gerekir. Bir uyuşmazlık varsa, gerçek veriler sorgulanırken dosya satırları reddedilir.
 
-Parke dosyalarından okurken, yalnızca okumak istediğiniz sütunları belirtebilir ve geri kalanını atlayabilirsiniz.
+Parquet dosyalarından okurken yalnızca okumak istediğiniz sütunları belirtebilir ve geri kalanını atlayabilirsiniz.
 
-YER = '*folder_or_filepath*'
+KONUM = '*folder_or_filepath*'
 
-Azure Blob Depolama'daki gerçek veriler için klasörü veya dosya yolunu ve dosya adını belirtir. Konum kök klasöründen başlar. Kök klasör, dış veri kaynağında belirtilen veri konumudur.
+Azure Blob depolamada gerçek verilerin klasörünü veya dosya yolunu ve dosya adını belirtir. Konum kök klasörden başlar. Kök klasör, dış veri kaynağında belirtilen veri konumudur.
 
-Konum klasörü belirtirseniz, harici tablodan bir SQL isteğe bağlı sorgu seçilir ve klasörden dosyaları alırsınız.
+Bir klasör konumu belirtirseniz, SQL isteğe bağlı bir sorgu dış tablodan seçim yapılır ve klasörden dosyaları alır.
 
 > [!NOTE]
-> Hadoop ve PolyBase'in aksine, SQL isteğe bağlı alt klasörleri döndürmez. Dosya adının altı çizili (_) veya bir dönemle (.) başladığı dosyaları döndürür.
+> Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
-Bu örnekte, sql isteğe bağlı bir sorgu olan LOCATION='/webdata/', mydata.txt ve _hidden.txt'ten satırdöndürecekse. Mydata2.txt ve mydata3.txt'yi döndürmez çünkü bir alt klasörde bulunurlar.
+Bu örnekte, LOCATION = '/Webdata/' ise, bir SQL isteğe bağlı sorgusu, mydata. txt ve _hidden. txt ' den satırları döndürür. Bir alt klasörde bulunduğundan mydata2. txt ve mydata3. txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name* - Dış verilerin konumunu içeren dış veri kaynağının adını belirtir. Harici bir veri kaynağı oluşturmak için [DıŞ VERI KAYNAĞı OLUŞTUR'u](#create-external-data-source)kullanın.
+DATA_SOURCE = *external_data_source_name* -dış verilerin konumunu içeren dış veri kaynağının adını belirtir. Dış veri kaynağı oluşturmak için [dış VERI kaynağı oluştur](#create-external-data-source)' u kullanın.
 
-FILE_FORMAT = *external_file_format_name* - Dış veriler için dosya türünü ve sıkıştırma yöntemini depolayan dış dosya biçimi nesnesinin adını belirtir. Harici bir dosya biçimi oluşturmak [için, CREATE EXTERNAL FILE FORMAT'ı](#create-external-file-format)kullanın.
+FILE_FORMAT = *external_file_format_name* -dış veriler için dosya türünü ve sıkıştırma yöntemini depolayan harici dosya biçim nesnesinin adını belirtir. Dış dosya biçimi oluşturmak için [dış dosya biçimi oluştur](#create-external-file-format)' u kullanın.
 
-## <a name="permissions-create-external-table"></a>İzinLER CREATE EXTERNAL TABLO
+## <a name="permissions-create-external-table"></a>İzinler dış tablo oluşturma
 
-Harici bir tablodan seçim yapmak için, liste li ve okuma izinleri içeren uygun kimlik bilgilerine ihtiyacınız vardır.
+Dış tablodan seçmek için, liste ve okuma izinleriyle doğru kimlik bilgilerine sahip olmanız gerekir.
 
-## <a name="example-create-external-table"></a>Örnek DıŞ TABLO OLUŞTUR
+## <a name="example-create-external-table"></a>Örnek dış tablo oluşturma
 
-Aşağıdaki örnek harici bir tablo oluşturur. İlk satırı döndürür:
+Aşağıdaki örnek bir dış tablo oluşturur. İlk satırı döndürür:
 
 ```sql
 CREATE EXTERNAL TABLE census_external_table
@@ -258,39 +258,39 @@ GO
 SELECT TOP 1 * FROM census_external_table
 ```
 
-## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Azure Veri Gölü'ndeki bir dosyadan harici tablolar oluşturma ve sorgulama
+## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Azure Data Lake bir dosyadan dış tablolar oluşturun ve sorgulayın
 
-Veri Gölü arama yeteneklerini kullanarak artık dosyaya basit bir sağ tıklama yla SQL havuzu nu veya isteğe bağlı SQL tablosunu kullanarak harici bir tablo oluşturabilir ve sorgulayabilirsiniz.
+Data Lake keşif yeteneklerini kullanarak artık, SQL havuzunu veya isteğe bağlı SQL 'i kullanarak bir dış tablo oluşturabilir ve sorgu üzerinde basit bir sağ tıklamayla sorgulama yapabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- ADLS Gen2 Hesabına en azından Depolama Blob Veri Katılımcısı ARM Access rolüyle çalışma alanına erişebilmelisiniz
+- ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı ARM erişim rolüyle çalışma alanına erişiminizin olması gerekir
 
-- SQL havuzunda veya SQL OD'de harici tablolar oluşturmak ve [sorgulamak için](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) en azından izinlere sahip olmalısınız
+- SQL havuzunda veya SQL OD üzerinde dış tablo oluşturmak ve sorgulamak için en azından [izinleriniz](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) olmalıdır
 
-- ADLS Gen2 Hesabı ile ilişkili bağlantılı **hizmetin dosyaya erişimi olmalıdır.** Örneğin, bağlı hizmet kimlik doğrulama mekanizması Yönetilen Kimlik ise, çalışma alanı yönetilen kimlik depolama hesabında en az Depolama blob okuyucu izni olmalıdır
+- ADLS 2. hesabıyla ilişkili bağlı hizmetin **dosyaya erişimi olması gerekir**. Örneğin, bağlantılı hizmet kimlik doğrulama mekanizması yönetilen kimlik ise, çalışma alanı yönetilen kimliği, depolama hesabında en az Depolama Blobu okuyucusu iznine sahip olmalıdır
 
 Veri panelinden, dış tabloyu oluşturmak istediğiniz dosyayı seçin:
 > [!div class="mx-imgBorder"]
->![dış table1](./media/develop-tables-external-tables/external-table-1.png)
+>![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Bir iletişim penceresi açılır. İsteğe bağlı SQL havuzunu veya SQL'i seçin, tabloya bir ad verin ve açık komut dosyası seçin:
+Bir iletişim kutusu penceresi açılır. SQL havuzu veya isteğe bağlı SQL ' i seçin, tabloya bir ad verin ve betiği aç ' ı seçin:
 
 > [!div class="mx-imgBorder"]
->![dıştable2](./media/develop-tables-external-tables/external-table-2.png)
+>![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-SQL Script dosyadan şema inferring otomatik olarak oluşturulur:
+SQL betiği dosyadaki şemayı göstermek için otomatik olarak oluşturulur:
 > [!div class="mx-imgBorder"]
->![dıştable3](./media/develop-tables-external-tables/external-table-3.png)
+>![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 
-Betiği çalıştırın. Komut dosyası otomatik olarak Top 100 Seç *.:
+Betiği çalıştırın. Betik otomatik olarak bir SELECT Top 100 * çalıştırır.:
 > [!div class="mx-imgBorder"]
->![dış table4](./media/develop-tables-external-tables/external-table-4.png)
+>![externaltable4](./media/develop-tables-external-tables/external-table-4.png)
 
-Dış tablo şimdi oluşturuldu, bu dış tablonun içeriğinin gelecekteki keşfi için kullanıcı doğrudan Veri bölmesinden sorgulayabilir:
+Dış tablo artık oluşturulmuştur; bu dış tablonun içeriğini daha sonra araştırması için Kullanıcı doğrudan veri bölmesinden sorgulayabilir:
 > [!div class="mx-imgBorder"]
->![dıştable5](./media/develop-tables-external-tables/external-table-5.png)
+>![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorgu sonuçlarını Azure Depolama'daki harici bir tabloya nasıl kaydedebilirsiniz için [CETAS](develop-tables-cetas.md) makalesini kontrol edin. Veya [Spark tablolarını](develop-storage-files-spark-tables.md)sorgulamaya başlayabilirsiniz.
+Sorgu sonuçlarının Azure Storage 'da bir dış tabloya nasıl kaydedileceği için [Cetas](develop-tables-cetas.md) makalesini denetleyin. Ya da [Spark tablolarını](develop-storage-files-spark-tables.md)sorgulamaya başlayabilirsiniz.

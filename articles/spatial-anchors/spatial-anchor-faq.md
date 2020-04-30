@@ -1,6 +1,6 @@
 ---
 title: Sık sorulan sorular
-description: Azure Uzamsal Çapalar hizmeti hakkında SSS'ler.
+description: Azure uzamsal bağlayıcı hizmeti hakkında SSS.
 author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,120 +9,120 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76844896"
 ---
-# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Uzamsal Çapalar hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
-Azure Uzamsal Çapalar, HoloLens, iOS ve Android cihazlarda çok kullanıcılı, mekansal olarak farkında karma gerçeklik deneyimleri sağlayan yönetilen bir bulut hizmeti ve geliştirici platformudur.
+Azure uzamsal bağlantıları, HoloLens, iOS ve Android cihazlarda çok kullanıcılı, istenmeyen, dağınık karma gerçeklik deneyimlerini sağlayan, yönetilen bir bulut hizmeti ve geliştirici platformudur.
 
-Daha fazla bilgi için Azure [Uzamsal Bağlantılarına genel bakış](overview.md)bilgisine bakın.
+Daha fazla bilgi için bkz. [Azure uzamsal Tutturucuların genel bakış](overview.md).
 
-## <a name="azure-spatial-anchors-product-faqs"></a>Azure Uzamsal Çapalar Ürün SSS'leri
+## <a name="azure-spatial-anchors-product-faqs"></a>Azure uzamsal çıpası ürün SSS
 
-**S: Azure Uzamsal Çapalar hangi aygıtları destekler?**
+**S: Azure uzamsal bağlantıları hangi cihazları destekler?**
 
-**A:** Azure Uzamsal Çapalar, geliştiricilerin HoloLens'te, ARKit destekli iOS cihazlarda ve ARCore destekli Android cihazlarda uygulama oluşturmasına olanak tanır; iOS ve Android için bu hem telefonları hem de tabletleri içerir.
+Y **:** Azure uzamsal bağlantıları, geliştiricilerin ARKit desteği olan iOS cihazlarında ve ARCore desteğiyle Android cihazlarda uygulama oluşturmalarına olanak sağlar; iOS ve Android için bu, hem telefonları hem de tabletleri içerir.
 
-**S: Azure Uzamsal Çapaları kullanmak için buluta bağlanmam gerekiyor mu?**
+**S: Azure uzamsal bağlayıcılarını kullanmak için buluta bağlı mıyım?**
 
-**A:** Azure Uzamsal Bağlantılar şu anda internete bir ağ bağlantısı gerektirir. [Biz geribildirim sitemizde](https://feedback.azure.com/forums/919252-azure-spatial-anchors)yorumlarınızı bekliyoruz.
+Y **:** Azure uzamsal Tutturucuların Şu anda internet 'e bir ağ bağlantısı olması gerekir. [Geri bildirim sitemiz](https://feedback.azure.com/forums/919252-azure-spatial-anchors)hakkındaki yorumlarınızı inceledik.
 
-**S: Azure Uzamsal Bağlantı noktaları için bağlantı gereksinimleri nelerdir?**
+**S: Azure uzamsal Tutturucuların bağlantı gereksinimleri nelerdir?**
 
-**A:** Azure Uzamsal Çapalar Wi-Fi ve mobil geniş bant bağlantılarıyla çalışır.
+Y **:** Azure uzamsal bağlantıları Wi-Fi ve mobil geniş bant bağlantılarıyla birlikte kullanılabilir.
 
-**S: Azure Uzamsal Çapalar çapaları ne kadar doğru bulabilir?**
+**S: Azure uzamsal bağlantıları bağlantıları ne kadar doğru bulabilir?**
 
-**A:** Birçok faktör çapa bulma doğruluğunu etkiler - aydınlatma koşulları, ortamdaki nesneler, ve hatta çapa yerleştirilir yüzey. Doğruluğun ihtiyaçlarınızı karşılayıp karşılamadığını belirlemek için, bunları kullanmayı planladığınız yeri temsil eden ortamlardaki çapaları deneyin. Doğruluğun ihtiyaçlarınızı karşıladığı ortamlarla karşılaşırsanız, [Azure Uzamsal Bağlantılarında Günlüğe Kaydetme ve tanılama'ya](./concepts/logging-diagnostics.md)bakın.
+Y **:** Birçok etken, bağlama koşullarını, ortamdaki nesneleri, hatta bağlayıcının yerleştirildiği yüzeyi bulmaya yönelik doğruluğu etkiler. Doğruluğun gereksinimlerinizi karşılayıp karşılamadığını öğrenmek için, bu bağlantıları kullanmayı planladığınız ortamlar temsilcisinden deneyin. Doğruluğunun gereksinimlerinizi karşılamadığı ortamlarda karşılaşırsanız bkz. [Azure uzamsal bağlayıcılarda günlüğe kaydetme ve tanılama](./concepts/logging-diagnostics.md).
 
-**S: Çapa oluşturmak ve bulmak ne kadar sürer?**
+**S: bağlantıları oluşturma ve bulma ne kadar sürer?**
 
-**A:** Bağlantı noktası oluşturmak ve bulmak için gereken süre, ağ bağlantısı, aygıtın işlenmesi ve yükü ve belirli ortam gibi birçok etkene bağlıdır. Üretim, perakende ve oyun dahil olmak üzere birçok sektörde uygulama yapan müşterilerimiz, hizmetin senaryoları için harika bir kullanıcı deneyimi sağladığını belirterek sahibiz.
+Y **:** Bağlantı oluşturma ve bulma için gereken süre birçok etkene bağlıdır--ağ bağlantısı, cihazın işleme ve yükleme ve belirli ortam. BT, perakende ve oyun gibi birçok sektörde, hizmetin senaryoları için harika bir kullanıcı deneyimine izin vermediğini belirten uygulamalar oluşturuyor.
 
 ## <a name="privacy-faq"></a>Gizlilik SSS
 
-**S: Uygulamam bir yere Uzamsal Çapa yerleştirdiğinde tüm uygulamaların bu bağlantıya erişimi var mıdır?**
+**S: Uygulamam bir uzamsal bağlayıcı yerleştirdiğinden tüm uygulamaların bu konuma erişimi vardır mi?**
 
-**A:** Çapalar Azure hesabı tarafından yalıtılır. Yalnızca hesabınıza erişim izni verdiğiniz uygulamalar, hesap içindeki çapalara erişebilir.
+Y **:** Çıpaları Azure hesabı tarafından yalıtılmıştır. Yalnızca hesabınıza erişim izni verdiğiniz uygulamalar, hesap içindeki Tutturuculara erişebilecektir.
 
-**S: Azure Uzamsal Çapalar kullanırken bir ortam la ilgili hangi bilgiler aktarılır ve hizmette depolanır? Ortam resimleri iletilen ve depolanan mı?**
+**S: Azure uzamsal bağlayıcıları kullanılırken bir ortamla ilgili hangi bilgiler iletilir ve hizmete depolanır? Aktarılan ve depolanan ortamın resimleri mı var?**
 
-**C**: Çapa oluştururken veya konumlandırılırken, ortam resimleri aygıtta türemiş bir biçimde işlenir. Bu türetilmiş biçim hizmete aktarılır ve depolanır.
+Y **: bağlantıları**oluştururken veya bulmada, ortamın resimleri, cihazda türetilmiş bir biçimde işlenir. Bu türetilmiş biçim öğesine iletilir ve hizmete depolanır.
 
-Saydamlık sağlamak için, aşağıda bir ortamın görüntüsü ve türetilmiş seyrek nokta bulutu yer almaktadır. Nokta bulutu, hizmete iletilen ve depolanan ortamın geometrik temsilini gösterir. Seyrek nokta bulutundaki her nokta için, o noktanın görsel özelliklerinin bir karmasını iletir ve saklarız. Karma, herhangi bir piksel verisinden türetilir, ancak içermemektedir.
+Saydamlığın sağlanması için bir ortamın görüntüsü ve türetilmiş seyrek nokta bulutu aşağıda verilmiştir. Nokta bulutu, hizmet üzerinde aktarılan ve depolanan ortamın geometrik temsilini gösterir. Seyrek nokta bulutundaki her bir nokta için, bu noktanın görsel özelliklerinin karmasını ilettik ve depolarız. Karma, herhangi bir piksel verisini içermez, ancak içermez.
 
-Azure Uzamsal Çapalar, [Azure Hizmet Sözleşmesi Koşullarına](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)ve Microsoft Gizlilik [Bildirimi'ne](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409)bağlıdır.
+Azure uzamsal bağlantıları, [Azure hizmet sözleşmesi koşullarına](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)ve [Microsoft gizlilik bildirimine](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409)uyar.
 
-![Bir ortam ve türetilmiş seyrek](./media/sparse-point-cloud.png)
-nokta bulutu*Şekil 1: Bir ortam ve türetilmiş seyrek nokta bulutu*
+![Bir ortam ve onun türetilmiş seyrek nokta bulutu](./media/sparse-point-cloud.png)
+*Şekil 1: bir ortam ve onun türetilmiş seyrek nokta bulutu*
 
 
-**S: Microsoft'a tanılama bilgilerini göndermemin bir yolu var mı?**
+**S: Microsoft 'a tanılama bilgilerini gönderemem için bir yol var mı?**
 
-**A**: Evet. Azure Uzamsal Bağlantılar, geliştiricilerin Azure Uzamsal ÇapaAPI üzerinden tercih etmeyi seçebileceği bir tanılama moduna sahiptir. Bu, örneğin, bağlantı larını tahmin edilebileceği gibi oluşturamadığınız ve bulamadığınız bir ortamla karşılaşırsanız yararlıdır. Hata ayıklamamıza yardımcı olan bilgileri içeren bir tanılama raporu gönderebilir misiniz diye sorabiliriz. Daha fazla bilgi için Azure [Uzamsal Bağlantılarında Günlüğe Kaydetme ve tanılama'](./concepts/logging-diagnostics.md)ya bakın.
+Y **: Evet**. Azure uzamsal bağlayıcılarının, geliştiricilerin Azure uzamsal bağlayıcı API 'SI aracılığıyla kabul etmek için seçim yapabileceğiniz bir tanılama modu vardır. Bu, örneğin, oluşturma ve bağlayıcıları tahmin edilemeyecek şekilde tespit edilebileceği bir ortamla karşılaşırsanız yararlı olur. Hata ayıklamamıza yardımcı olan bilgiler içeren bir tanılama raporu gönderebildiğinize sorabilirsiniz. Daha fazla bilgi için bkz. [Azure uzamsal bağlayıcılarda günlüğe kaydetme ve tanılama](./concepts/logging-diagnostics.md).
 
-## <a name="availability-and-pricing-faqs"></a>Kullanılabilirlik ve Fiyatlandırma SSS'leri
+## <a name="availability-and-pricing-faqs"></a>Kullanılabilirlik ve fiyatlandırma SSS
 
-**S: Bir SLA sağlıyor musunuz?**
+**S: bir SLA sağlayın mi?**
 
-**A:** Azure hizmetleri için standart olduğu gibi, kullanılabilirlik %99,9'dan daha büyük bir kullanılabilirlik hedefliyoruz. Azure Uzamsal Bağlantı Çapaları'nın şu anda Önizleme'de olduğunu ve bu nedenle [Önizleme Ek Koşulları'nın](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) geçerli olduğunu unutmayın.
+Y **:** Azure hizmetleri için standart olduğu gibi,% 99,9 ' den büyük bir kullanılabilirliği hedefliyoruz. Azure uzamsal Çıpaların Şu anda önizleme aşamasında olduğunu ve [Önizleme ek koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'nın geçerli olduğunu unutmayın.
 
-**S: Uygulama mağazalarında Azure Uzamsal Çapalar kullanarak uygulamalarımı yayımlayabilir miyim? Kritik görev üretim senaryoları için Azure Uzamsal Çapaları kullanabilir miyim?**
+**S: uygulamalarımı Azure uzamsal bağlayıcılarını uygulama mağazalarına kullanarak yayımlayabilirim miyim? Görev açısından kritik üretim senaryolarında Azure uzamsal bağlayıcılarını kullanabilir miyim?**
 
-**A:** Azure Uzamsal Çapalar şu anda Önizleme'de ve bu süre zarfında sizi uygulamalar geliştirmeye, ürün hakkında [geri bildirim de meye](https://feedback.azure.com/forums/919252-azure-spatial-anchors) ve üretim dağıtımlarınız için plan yapmaya davet ediyoruz.
+Y **:** Azure uzamsal çıpası Şu anda önizleme aşamasındadır ve bu süre boyunca uygulama geliştirmeye, ürünle ilgili [geri bildirim sağlamanıza](https://feedback.azure.com/forums/919252-azure-spatial-anchors) ve üretim dağıtımlarınızı planlamaya davet ediyoruz.
 
-Genel Kullanılabilirlik (GA) tarihleri yakında duyurulacaktır.
+Genel kullanılabilirlik (GA) tarihleri yakında duyurulacak.
 
-**S: Herhangi bir azaltma limitinvar mı?**
+**S: herhangi bir azaltma sınırlarınız var mı?**
 
-**C**: Evet, azaltma limitimiz var.  Tipik uygulama geliştirme ve test için bunları vuracağınız beklemiyoruz. Üretim dağıtımları için, müşterilerimizin yüksek ölçekli gereksinimlerini desteklemeye hazırız. Görüşmek için [bize ulaşın.](mailto:azuremrs@microsoft.com) Önizleme'nin bu aşamasında, katmanlama ve fiyatlandırma yapımızı henüz yayınlamadık, ancak bunu yakında yapmayı bekliyoruz.
+Y **: Evet**, azaltma sınırımız var.  Bunlara, tipik uygulama geliştirme ve test için ulaşacağız. Üretim dağıtımları için, müşterilerimizin yüksek ölçekli gereksinimlerini desteklemeye hazırız. Tartışmak için [bizimle Iletişim kurun](mailto:azuremrs@microsoft.com) . Bu önizleme aşamasında, katmanlama ve fiyatlandırma yapınızı henüz yayımladık, ancak bu işlemi yakında yapacağız.
 
-**S: Azure Uzamsal Çapalar hangi bölgelerde kullanılabilir?**
+**S: Azure uzamsal çıpası hangi bölgelerde kullanılabilir?**
 
-**A:** Bugün Azure Doğu ABD 2 bölgesinde bir Azure Uzamsal Çapa hesabı oluşturabilirsiniz. Bunun anlamı, bu hizmete güç sağlayan hem hesaplama hem de depolama nın bu bölgede olduğudur. Bununla ilgili olarak, müşterilerinizin nerede bulunduğuna ilişkin herhangi bir kısıtlama yoktur. Gelecekte, hizmetin bölgesel kullanılabilirliğini tüm birincil Azure bölgelerine genişleteceğiz.
+Y **:** Azure Doğu ABD 2 bölgesinde bugün bir Azure uzamsal bağlayıcı hesabı oluşturabilirsiniz. Bunun anlamı, bu hizmeti destekleyen işlem ve depolama alanının bu bölgede olduğunu gösterir. Bu şekilde, istemcilerinizin bulunduğu yerde bir kısıtlama yoktur. Gelecekte, hizmetin bölgesel kullanılabilirliğini tüm birincil Azure bölgelerine genişleteceğiz.
 
-**S: Azure Uzamsal Çapalar için ücret lendirin mi? Hiç suçlayacak mısın?**
+**S: Azure uzamsal Tutturucuların ücretlendirmi? Ücret ödemeniz gerekecek mi?**
 
-**A:** [Fiyatlandırma sayfamızda](https://azure.microsoft.com/pricing/details/spatial-anchors/)Önizleme sırasında fiyatlandırma ile ilgili ayrıntıları bulabilirsiniz.
+Y **:** Fiyatlandırma [sayfamız](https://azure.microsoft.com/pricing/details/spatial-anchors/)sırasında, önizleme sırasında fiyatlandırma hakkındaki ayrıntıları bulabilirsiniz.
 
 ## <a name="technical-faqs"></a>Teknik SSS
 
-**S: Azure Uzamsal Çapalar nasıl çalışır?**
+**S: Azure uzamsal çıpası nasıl çalışır?**
 
-**A:** Azure Uzamsal Çapalar karışık gerçeklik / artırılmış gerçeklik izleyicilerine bağlıdır. Bu izleyiciler çevreyi kameralarla algılar ve uzayda hareket ederken cihazı 6-0 00 000 serbestlik (6DoF) içinde izlerler.
+Y **:** Azure uzamsal bağlantıları, karma gerçeklik/genişletilmiş gerçeklik izleyicileri 'ne bağlıdır. Bu izleyiciler, ortamı kameralardan çevrelenir ve alana hareket ederken cihazı 6-serbestlik (6DoF) olarak izler.
 
-Bir yapı taşı olarak 6DoF izci göz önüne alındığında, Azure Uzamsal Çapalar gerçek ortamınızda belirli ilgi noktalarını "çapa" noktaları olarak belirlemenize olanak tanır. Örneğin, içeriği gerçek dünyada belirli bir yerde işlemek için bir çapa kullanabilirsiniz.
+Yapı bloğu olarak bir 6DoF izleyici verildiğinde, Azure uzamsal bağlantıları gerçek ortamınızda "bağlayıcı" noktaları olarak belirli noktaları tanımlamanızı sağlar. Örneğin, gerçek dünyada belirli bir yerde içerik işlemek için bir tutturucu kullanabilirsiniz.
 
-Bir bağlantı oluşturduğunuzda, istemci SDK bu noktanın çevresindeki ortam bilgilerini yakalar ve hizmete iletir. Başka bir aygıt aynı alanda çapa ararsa, benzer veriler hizmete iletir. Bu veriler, daha önce depolanan ortam verileriyle eşleşir. Bağlantının aygıta göre konumu daha sonra uygulamada kullanılmak üzere geri gönderilir.
+Bir tutturucu oluşturduğunuzda, istemci SDK 'Sı bu noktanın etrafında ortam bilgilerini yakalar ve hizmete iletir. Diğer bir cihaz aynı alanda yer alan bir bağlantı için görünüyorsa, benzer veriler hizmete iletir. Bu veriler, daha önce depolanan ortam verileriyle eşleştirilir. Cihaza göre bağlayıcının konumu daha sonra uygulamada kullanılmak üzere geri gönderilir.
 
-**S: Azure Uzamsal Çapalar iOS ve Android'de ARKit ve ARCore ile nasıl entegre olur?**
+**S: Azure uzamsal bağlantıları iOS ve Android 'de ARKit ve ARCore ile nasıl tümleştirilir?**
 
-**A:** Azure Uzamsal Çapalar, ARKit ve ARCore'un yerel izleme özelliklerinden yararlanır. Buna ek olarak, iOS ve Android için SDK'larımız, yönetilen bir bulut hizmetinde bağlantı larını sürdürmek ve uygulamalarınızın yalnızca hizmete bağlanarak bu çapaları yeniden bulmasına olanak sağlamak gibi özellikler sunar.
+Y **:** Azure uzamsal bağlantıları, ARKit ve ARCore 'un yerel izleme yeteneklerini kullanır. Ayrıca, iOS ve Android için SDK 'larımız, yönetilen bir bulut hizmetindeki kalıcı Çıpaları gibi yetenekler sunar ve uygulamalarınızın yalnızca hizmete bağlanarak bu bağlantıları tekrar bulmasını sağlar.
 
-**S: Azure Uzamsal Çapalar HoloLens ile nasıl entegre olur?**
+**S: Azure uzamsal bağlantıları HoloLens ile nasıl tümleştirilir?**
 
-**A:** Azure Uzamsal Çapalar, HoloLens'in yerel izleme özelliklerinden yararlanır. HoloLens'te uygulama oluşturmak için bir Azure Uzamsal Çapa SDK sda sda sediyoruz. SDK yerli HoloLens yetenekleri ile entegre ve ek yetenekleri sağlar. Bu özellikler arasında uygulama geliştiricilerin yönetilen bir bulut hizmetinde bağlantılarını devam etmesine izin vermek ve uygulamalarınızın hizmete bağlanarak bu çapaları yeniden bulmasına izin vermek yer alır.
+Y **:** Azure uzamsal bağlantıları, HoloLens 'in yerel izleme yeteneklerini kullanır. HoloLens 'te uygulama oluşturmaya yönelik bir Azure uzamsal bağlayıcı SDK 'Sı sunuyoruz. SDK, yerel HoloLens özellikleri ile tümleşir ve ek yetenekler sağlar. Bu yetenekler, uygulama geliştiricilerinin bağlantıları yönetilen bir bulut hizmetinde kalıcı hale getirebilmesine ve uygulamalarınızın hizmete bağlanarak bu bağlantıları yeniden bulmasını sağlar.
 
-**S: Azure Uzamsal Çapalar hangi platformları ve dilleri destekler?**
+**S: Azure uzamsal bağlantıları hangi platformları ve dilleri destekler?**
 
-**A:** Geliştiriciler, aygıtları için tanıdık araçlar ve çerçeveler kullanarak Azure Uzamsal Bağlantı Larını kullanarak uygulamalar oluşturabilir:
+Y **:** Geliştiriciler, cihazları için tanıdık araçları ve çerçeveleri kullanarak Azure uzamsal bağlayıcılarıyla uygulama oluşturabilir:
 
-- HoloLens, iOS ve Android genelinde birlik
-- Xamarin üzerinde iOS ve Android
-- iOS'ta Swift veya Objective-C
-- Android'de Java veya Android NDK
-- HoloLens'te C++/WinRT
+- HoloLens, iOS ve Android genelinde Unity
+- İOS ve Android 'de Xamarin
+- İOS üzerinde Swift veya amaç-C
+- Android üzerinde Java veya Android NDK
+- HoloLens üzerinde C++/Wınrt
 
-[Burada geliştirme](index.yml)ile başlayın.
+[Geliştirmeye buradan](index.yml)başlayın.
 
-**S: Unreal ile çalışır mı?**
+**S: gerçek zamanlı değil mi çalışıyor?**
 
-**A:** Unreal için destek gelecekte dikkate alınacaktır.
+Y **:** Unreal desteği gelecekte kabul edilecek.
 
-**S: Azure Uzamsal Çapalar hangi bağlantı noktalarını ve protokollerini kullanır?**
+**S: Azure uzamsal bağlantıları hangi bağlantı noktaları ve protokoller kullanır?**
 
-**A:** Azure Uzamsal Çapalar, tcp bağlantı noktası 443 üzerinden şifreli bir protokol kullanarak iletişim kurar. Kimlik doğrulaması için, 443 bağlantı noktası üzerinden HTTPS kullanarak iletişim sağlayan [Azure Etkin Dizini'ni](https://docs.microsoft.com/azure/active-directory/)kullanır.
+Y **:** Azure uzamsal bağlantıları, TCP bağlantı noktası 443 üzerinden şifrelenmiş bir protokol kullanarak iletişim kurar. Kimlik doğrulaması için, 443 bağlantı noktası üzerinden HTTPS kullanarak iletişim kuran [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)kullanır.

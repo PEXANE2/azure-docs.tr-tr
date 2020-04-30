@@ -1,6 +1,6 @@
 ---
-title: Sorgulamak için .NET Core'u kullanın
-description: Bu konu, Bir Azure SQL Veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturmak için .NET Core'u nasıl kullanacağınızı gösterir.
+title: Sorgulamak için .NET Core kullanın
+description: Bu konu başlığı altında, .NET Core kullanarak Azure SQL veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,74 +12,74 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
 ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73827101"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: .NET Core (C#) kullanarak Azure SQL veritabanı sorgulama
 
-Bu hızlı başlatmada, bir Azure SQL veritabanına bağlanmak için [.NET Core](https://www.microsoft.com/net/) ve C# kodunu kullanırsınız. Daha sonra verileri sorgulamak için bir Transact-SQL deyimi çalıştırırsınız.
+Bu hızlı başlangıçta, bir Azure SQL veritabanına bağlanmak için [.NET Core](https://www.microsoft.com/net/) ve C# Code 'u kullanacaksınız. Daha sonra verileri sorgulamak için bir Transact-SQL ifadesini çalıştıracaksınız.
 
 > [!TIP]
-> Aşağıdaki Microsoft Learn modülü, [Azure SQL Veritabanı'nı sorgulayan bir ASP.NET uygulamanın nasıl geliştirilip yapılandırılabildiğini](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/) ücretsiz olarak öğrenmenize yardımcı olur
+> Aşağıdaki Microsoft Learn modülü, [bir Azure SQL veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/) hakkında bilgi edinmenize yardımcı olur
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici için şunları yapmanız gerekir:
+Bu öğretici için şunlar gerekir:
 
-- Bir Azure SQL veritabanı. Azure SQL Veritabanı'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
+- Bir Azure SQL veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
   || Tek veritabanı | Yönetilen örnek |
   |:--- |:--- |:---|
-  | Oluşturma| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Oluştur| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [Powershell](scripts/sql-database-create-and-configure-database-powershell.md) | [Powershell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Yapılandırma | [Sunucu düzeyinde IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [VM'den bağlantı](sql-database-managed-instance-configure-vm.md)|
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](sql-database-server-level-firewall-rule.md)| [Bir VM 'den bağlantı](sql-database-managed-instance-configure-vm.md)|
   |||[Siteden bağlantı](sql-database-managed-instance-configure-p2s.md)
-  |Veri yükleme|Adventure Works quickstart başına yüklenen|[Geniş Dünya İthalatçıları Geri Yükleme](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub'dan](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) [BACPAC](sql-database-import.md) dosyasından Adventure Works'ü geri yükleme veya alma|
+  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan [bacpac](sql-database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içe aktarma|
   |||
 
   > [!IMPORTANT]
-  > Bu makaledeki komut dosyaları Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnekle, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya Geniş Dünya İthalatçılar veritabanını kullanmak için bu makaledeki komut dosyalarını değiştirmeniz gerekir.
+  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. Yönetilen bir örnek ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
 
-- [.NET Core işletim sisteminiz için](https://www.microsoft.com/net/core) yüklü.
+- [İşletim sisteminiz için .NET Core](https://www.microsoft.com/net/core) yüklendi.
 
 > [!NOTE]
-> Bu hızlı başlatma *mySampleDatabase* veritabanını kullanır. Farklı bir veritabanı kullanmak istiyorsanız, veritabanı başvurularını değiştirmeniz ve `SELECT` C# kodundaki sorguyu değiştirmeniz gerekir.
+> Bu hızlı başlangıç, *Mysampledatabase* veritabanını kullanır. Farklı bir veritabanı kullanmak istiyorsanız, veritabanı başvurularını değiştirmeniz ve C# kodundaki `SELECT` sorguyu değiştirmeniz gerekecektir.
 
-## <a name="get-sql-server-connection-information"></a>SQL sunucu bağlantı bilgilerini alın
+## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Gelecek yordamlar için tam nitelikli sunucu adı veya ana bilgisayar adı, veritabanı adı ve giriş bilgilerine ihtiyacınız vardır.
+Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **SQL veritabanlarına** veya **SQL yönetilen örnekler** sayfasına gidin.
+2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
-3. Genel **Bakış** sayfasında, tek bir veritabanı için **Sunucu adının** yanındaki tam nitelikli sunucu adını veya yönetilen bir örnek için **Host'un** yanındaki tam nitelikli sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine tıklayın ve **Kopyasimgesini** seçin.
+3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
 
-## <a name="get-adonet-connection-information-optional"></a>bağlantı bilgilerini ADO.NET (isteğe bağlı) alın
+## <a name="get-adonet-connection-information-optional"></a>ADO.NET bağlantı bilgilerini al (isteğe bağlı)
 
-1. **mySampleDatabase** sayfasına gidin ve **Ayarlar**altında **Bağlantı dizeleri'ni**seçin.
+1. **Mysampledatabase** sayfasına gidin ve **Ayarlar**altında **bağlantı dizeleri**' ni seçin.
 
 2. Tam **ADO.NET** bağlantı dizesini gözden geçirin.
 
     ![ADO.NET bağlantı dizesi](./media/sql-database-connect-query-dotnet/adonet-connection-string2.png)
 
-3. Kullanmak istiyorsanız **ADO.NET** bağlantı dizesini kopyalayın.
+3. Kullanmak istiyorsanız **ADO.net** bağlantı dizesini kopyalayın.
   
-## <a name="create-a-new-net-core-project"></a>Yeni bir .NET Core projesi oluşturma
+## <a name="create-a-new-net-core-project"></a>Yeni bir .NET Core projesi oluştur
 
 1. Komut istemini açın ve **sqltest** adlı bir klasör oluşturun. Bu klasöre gidin ve bu komutu çalıştırın.
 
     ```cmd
     dotnet new console
     ```
-    Bu komut, bir XML yapılandırma dosyası**Program.cs****(sqltest.csproj)** ve gerekli ikili dosyalar dahil olmak üzere yeni uygulama proje dosyaları oluşturur.
+    Bu komut, bir ilk C# kod dosyası (**program.cs**), bir XML yapılandırma dosyası (**SQLtest. csproj**) ve gerekli ikili dosyalar dahil olmak üzere yeni uygulama proje dosyaları oluşturur.
 
-2. Metin düzenleyicisinde **sqltest.csproj'u** açın ve etiketler arasında `<Project>` aşağıdaki XML'yi yapıştırın. Bu XML `System.Data.SqlClient` bağımlılık olarak ekler.
+2. Bir metin düzenleyicisinde **SQLtest. csproj** dosyasını açın ve aşağıdaki XML 'i `<Project>` Etiketler arasına yapıştırın. Bu XML bir `System.Data.SqlClient` bağımlılık olarak ekler.
 
     ```xml
     <ItemGroup>
@@ -89,12 +89,12 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. G
 
 ## <a name="insert-code-to-query-sql-database"></a>SQL veritabanını sorgulamak için kod girme
 
-1. Metin düzenleyicisinde, **Program.cs**açın.
+1. Bir metin düzenleyicisinde **program.cs**öğesini açın.
 
-2. İçeriği aşağıdaki kodla değiştirin ve sunucunuz, veritabanınız, kullanıcı adınız ve parolanız için uygun değerleri ekleyin.
+2. İçeriği aşağıdaki kodla değiştirin ve sunucunuz, veritabanınız, Kullanıcı adınız ve parolanız için uygun değerleri ekleyin.
 
 > [!NOTE]
-> ADO.NET bağlantı dizesini kullanmak için, koddaki 4 satırı sunucu, veritabanı, kullanıcı adı ve parolayı aşağıdaki satırla değiştirin. Dizede, kullanıcı adınızı ve parolanızı ayarlayın.
+> Bir ADO.NET bağlantı dizesi kullanmak için, sunucu, veritabanı, Kullanıcı adı ve parolayı aşağıdaki satırla değiştirmek üzere koddaki 4 satırı değiştirin. Dizesinde, Kullanıcı adınızı ve parolanızı ayarlayın.
 >
 >    `builder.ConnectionString="<your_ado_net_connection_string>";`
 
@@ -156,14 +156,14 @@ namespace sqltest
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-1. İsteyiş sırasında, aşağıdaki komutları çalıştırın.
+1. Komut isteminde aşağıdaki komutları çalıştırın.
 
    ```cmd
    dotnet restore
    dotnet run
    ```
 
-2. En iyi 20 satırın döndürüldünden doğrulayın.
+2. İlk 20 satırın döndürüldüğünden emin olun.
 
    ```text
    Query data example:
@@ -192,11 +192,11 @@ namespace sqltest
 
    Done. Press enter.
    ```
-3. Uygulama penceresini kapatmak için **Enter'u** seçin.
+3. Uygulama penceresini kapatmak için **ENTER** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Komut satırını kullanarak Windows/Linus/macOS’ta .NET Core ile çalışmaya başlama](/dotnet/core/tutorials/using-with-xplat-cli).
-- [.NET Framework ve Visual Studio'yu kullanarak bir Azure SQL veritabanına nasıl bağlanıp sorgulandığınızı](sql-database-connect-query-dotnet-visual-studio.md)öğrenin.  
-- [SSMS'i kullanarak ilk Azure SQL veritabanınızı](sql-database-design-first-database.md) nasıl tasarlayıp [Azure SQL veritabanı tasarlayıp C# ve ADO.NET'ye nasıl bağlanıştınız](sql-database-design-first-database-csharp.md)öğrenin.
+- [.NET Framework ve Visual Studio kullanarak bir Azure SQL veritabanını bağlamayı ve sorgulamayı](sql-database-connect-query-dotnet-visual-studio.md)öğrenin.  
+- [SSMS kullanarak Ilk Azure SQL veritabanınızı tasarlamayı](sql-database-design-first-database.md) veya [bir Azure SQL veritabanı tasarlama ve C# ve ADO.NET ile bağlanma](sql-database-design-first-database-csharp.md)hakkında bilgi edinin.
 - .NET hakkında daha fazla bilgi edinmek için [.NET belgelerine](https://docs.microsoft.com/dotnet/) bakın.

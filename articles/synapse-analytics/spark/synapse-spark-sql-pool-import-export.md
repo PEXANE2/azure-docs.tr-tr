@@ -1,6 +1,6 @@
 ---
-title: Spark havuzları (önizleme) ve SQL havuzları arasında veri alma ve dışa aktarma
-description: Bu makalede, SQL havuzları ve Kıvılcım havuzları arasında ileri ve geri veri taşımak için özel bağlayıcı nasıl kullanılacağı hakkında bilgi sağlar (önizleme).
+title: Spark havuzları (Önizleme) ve SQL havuzları arasında verileri içeri ve dışarı aktarma
+description: Bu makalede, SQL havuzları ve Spark havuzları (Önizleme) arasında verileri geri ve geriye taşımak için özel bağlayıcının nasıl kullanılacağına ilişkin bilgiler sağlanmaktadır.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,35 +10,35 @@ ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
 ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424296"
 ---
 # <a name="introduction"></a>Giriş
 
-Spark SQL Analytics Bağlayıcısı, Azure Sinaps'taki Spark havuzu (önizleme) ve SQL havuzları arasındaki verileri verimli bir şekilde aktarmak için tasarlanmıştır. Spark SQL Analytics Bağlayıcısı yalnızca SQL havuzlarında çalışır, SQL on-Demand ile çalışmaz.
+Spark SQL Analytics Bağlayıcısı, Azure SYNAPSE 'te Spark Havuzu (Önizleme) ve SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Spark SQL Analytics Bağlayıcısı yalnızca SQL havuzlarında çalışır, Isteğe bağlı SQL ile çalışmaz.
 
-## <a name="design"></a>Tasarım
+## <a name="design"></a>Tasarlama
 
-Spark havuzları ve SQL havuzları arasında veri aktarımı JDBC kullanılarak yapılabilir. Ancak, Spark ve SQL havuzları gibi iki dağıtılmış sistemler göz önüne alındığında, JDBC seri veri aktarımı ile bir darboğaz olma eğilimindedir.
+Spark havuzları ve SQL havuzları arasında veri aktarımı, JDBC kullanılarak yapılabilir. Bununla birlikte, Spark ve SQL havuzları gibi iki Dağıtılmış Sistem, JDBC, seri veri aktarımı ile ilgili bir performans sorunu olduğunu eğilimi gösterir.
 
-SQL Analytics Connector'a spark havuzları Apache Spark için bir veri kaynağı uygulamasıdır. Spark kümesi ve SQL Analytics örneği arasındaki verileri verimli bir şekilde aktarmak için SQL havuzlarında Azure Veri Gölü Depolama Gen 2 ve SQL havuzlarında Polybase kullanır.
+Spark havuzları SQL Analytics Connector, Apache Spark için bir veri kaynağı uygulamasıdır. Spark kümesi ve SQL Analytics örneği arasında verileri verimli bir şekilde aktarmak için SQL havuzlarındaki Azure Data Lake Storage Gen 2 ve PolyBase 'i kullanır.
 
-![Konektör Mimarisi](./media/synapse-spark-sqlpool-import-export/arch1.png)
+![Bağlayıcı mimarisi](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
-## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kimlik doğrulama
+## <a name="authentication-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kimlik doğrulaması
 
-Sistemler arasındaki kimlik doğrulama, Azure Synapse Analytics'te sorunsuz bir şekilde gerçekleştirilir. Depolama hesabına veya veri ambarı sunucusuna erişirken kullanılmak üzere güvenlik belirteçleri elde etmek için Azure Etkin Dizin'e bağlanan bir Belirteç Hizmeti vardır. Bu nedenle, AAD-Auth depolama hesabında ve veri ambarı sunucusunda yapılandırıldığı sürece kimlik bilgileri oluşturmaya veya bağlayıcı API'de belirtmeye gerek yoktur. Değilse, SQL Auth belirtilebilir. [Kullanım](#usage) bölümünde daha fazla ayrıntı bulabilirsiniz.
+Sistemler arasında kimlik doğrulaması, Azure SYNAPSE Analytics 'te sorunsuz hale getirilir. Depolama hesabına veya veri ambarı sunucusuna erişirken kullanılacak güvenlik belirteçlerini almak için Azure Active Directory ile bağlanan bir belirteç hizmeti vardır. Bu nedenle, depolama hesabında ve veri ambarı sunucusunda AAD kimlik doğrulaması yapılandırıldığı sürece kimlik bilgileri oluşturmanız veya bunları bağlayıcı API 'de belirtmeniz gerekmez. Aksi takdirde, SQL kimlik doğrulaması belirlenebilir. [Kullanım](#usage) bölümünde daha fazla ayrıntı bulun.
 
 ## <a name="constraints"></a>Kısıtlamalar
 
-- Bu konektör sadece Scala'da çalışır.
+- Bu bağlayıcı yalnızca Scala 'da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Veri aktarmak istediğiniz veritabanı/SQL havuzunda **db_exporter** rolü var.
+- Veri aktarmak istediğiniz veritabanında/SQL havuzunda **db_exporter** rolün olması gerekir.
 
 Kullanıcı oluşturmak için veritabanına bağlanın ve aşağıdaki örnekleri izleyin:
 
@@ -47,7 +47,7 @@ CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-Bir rol atamak için:
+Rol atamak için:
 
 ```Sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
@@ -55,33 +55,33 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 ## <a name="usage"></a>Kullanım
 
-İthalat ekstrelerinin sağlanması gerekmez, not defteri deneyimi için önceden içe aktarılır.
+İçeri aktarma deyimlerinin sağlanması gerekmez, bunlar Not defteri deneyimi için önceden içeri aktarılır.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Çalışma alanına bağlı Mantıksal Sunucu'daki (DW Örneği) bir SQL havuzuna veya bu havuzdan veri aktarma
+### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Çalışma alanıyla eklenen mantıksal sunucudaki (DW örneği) bir SQL havuzundan veri aktarma
 
 > [!NOTE]
-> **Not defteri deneyiminde gerek olmayan içeri almalar**
+> **Not defteri deneyiminde içeri aktarmalar gerekmez**
 
 ```Scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
-#### <a name="read-api"></a>API'yi okuyun
+#### <a name="read-api"></a>API 'YI oku
 
 ```Scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
-Yukarıdaki API, SQL havuzunda hem İç (Yönetilen) hem de Harici Tablolar için çalışacaktır.
+Yukarıdaki API, hem Iç (yönetilen) hem de SQL havuzundaki dış tablolar için çalışacaktır.
 
-#### <a name="write-api"></a>API Yaz
+#### <a name="write-api"></a>Yazma API 'SI
 
 ```Scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-TableType'ın Constants.INTERNAL veya Constants olabileceği yer.EXTERNAL
+Burada TableType sabit olabilir. Iç veya sabitler. EXTERNAL
 
 ```Scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
@@ -90,17 +90,17 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 Depolama ve SQL Server kimlik doğrulaması yapılır
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Çalışma alanı dışında mantıksal bir sunucuda bir SQL havuzuna veya veritabanına veri aktarılıyorsanız
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Çalışma alanı dışındaki bir mantıksal sunucudaki bir SQL havuzuna veya veritabanına veri aktardıysanız
 
 > [!NOTE]
-> Not defteri deneyiminde gerek olmayan içeri almalar
+> Not defteri deneyiminde içeri aktarmalar gerekmez
 
 ```Scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
-#### <a name="read-api"></a>API'yi okuyun
+#### <a name="read-api"></a>API 'YI oku
 
 ```Scala
 val df = spark.read.
@@ -108,7 +108,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
-#### <a name="write-api"></a>API Yaz
+#### <a name="write-api"></a>Yazma API 'SI
 
 ```Scala
 df.write.
@@ -116,11 +116,11 @@ option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>AAD yerine SQL Auth kullanma
+### <a name="using-sql-auth-instead-of-aad"></a>AAD yerine SQL auth kullanma
 
-#### <a name="read-api"></a>API'yi okuyun
+#### <a name="read-api"></a>API 'YI oku
 
-Şu anda bağlayıcı, çalışma alanının dışında bir SQL havuzuna belirteç tabanlı auth'u desteklemez. SQL Auth kullanmanız gerekir.
+Şu anda bağlayıcı, çalışma alanının dışında olan bir SQL havuzuna belirteç tabanlı kimlik doğrulamasını desteklemiyor. SQL kimlik doğrulaması kullanmanız gerekir.
 
 ```Scala
 val df = spark.read.
@@ -130,7 +130,7 @@ option(Constants.PASSWORD, [SQLServer Login Password]).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
-#### <a name="write-api"></a>API Yaz
+#### <a name="write-api"></a>Yazma API 'SI
 
 ```Scala
 df.write.
@@ -140,20 +140,20 @@ option(Constants.PASSWORD, [SQLServer Login Password]).
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-### <a name="using-the-pyspark-connector"></a>PySpark konektörünü kullanma
+### <a name="using-the-pyspark-connector"></a>PySpark bağlayıcısını kullanma
 
 > [!NOTE]
-> Bu örnek, yalnızca göz önünde bulundurulan not defteri deneyimi ile verilir.
+> Bu örnek yalnızca akılda tutulan Not defteri deneyimiyle verilmiştir.
 
-DW'ye yazmak istediğiniz bir veri çerçeveniz "pyspark_df" olduğunu varsayalım.
+DW içine yazmak istediğiniz bir "pyspark_df" veri çerçevesine sahip olduğunu varsayalım.
 
-PySpark'taki veri çerçevesini kullanarak geçici tablo oluşturma
+PySpark içinde dataframe kullanarak geçici tablo oluşturma
 
 ```Python
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-Sihirli kullanarak PySpark dizüstü bir Scala hücre çalıştırın
+Mıknatıc kullanarak PySpark not defterinde bir Scala hücresi çalıştırma
 
 ```Scala
 %%spark
@@ -161,9 +161,9 @@ val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
-Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesi halinde sorgulamak için PySpark'taki Spark SQL'i kullanın.
+Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesinde sorgulamak için PySpark içinde Spark SQL kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [SQL havuzu oluşturma]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [Azure Synapse Analytics çalışma alanı için yeni bir Apache Spark havuzu oluşturun](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [Azure SYNAPSE Analytics çalışma alanı için yeni bir Apache Spark havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 

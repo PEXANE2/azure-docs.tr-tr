@@ -1,5 +1,5 @@
 ---
-title: Quickstart:Ortak Yük Dengeleyicisi Oluşturma - Azure CLI
+title: 'Hızlı başlangıç: genel Load Balancer oluşturma-Azure CLı'
 titleSuffix: Azure Load Balancer
 description: Bu hızlı başlangıçta, Azure CLI kullanarak genel bir yük dengeleyicinin nasıl oluşturulacağı gösterilmektedir
 services: load-balancer
@@ -18,15 +18,15 @@ ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79477774"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak bakiye VM'lerini yüklemek için standart yük dengeleyicisi oluşturun
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için Standart Load Balancer oluşturma
 
-Bu hızlı başlangıç, herkese açık bir Yük Dengeleyicisi oluşturmanızı gösterir. Yük dengeleyiciyi test etmek için, Ubuntu server çalıştıran iki sanal makine (VM) dağıtın ve iki sanal makine arasında bir web uygulamasının yük dengelemesini yapın.
+Bu hızlı başlangıçta, genel Load Balancer oluşturma gösterilmektedir. Yük dengeleyiciyi test etmek için, Ubuntu server çalıştıran iki sanal makine (VM) dağıtın ve iki sanal makine arasında bir web uygulamasının yük dengelemesini yapın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -46,24 +46,24 @@ Aşağıdaki örnek *eastus* konumunda *myResourceGroupSLB* adlı bir kaynak gru
 
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. *myResourceGroupSLB'de* *myPublicIP* adlı standart bölge gereksiz Genel IP adresi oluşturmak için [az network public-ip oluşturmayı](https://docs.microsoft.com/cli/azure/network/public-ip) kullanın.
+Web uygulamanıza İnternet’ten erişmek için yük dengeleyicinin genel IP adresi gereklidir. *Myresourcegroupslb*Içinde *Mypublicıp* adlı standart bölge yedekli genel IP adresi oluşturmak için [az Network public-ip Create](https://docs.microsoft.com/cli/azure/network/public-ip) komutunu kullanın.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
 
-Bölge 1'de bir zonal Public IP adresi oluşturmak için kullanın:
+Bölge 1 ' de genel bir IP adresi oluşturmak için şunu kullanın:
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-Temel `-SKU Basic` Genel IP oluşturmak için kullanın. Temel Genel IP'ler **Standart** yük dengeleyicisi ile uyumlu değildir. Microsoft, üretim iş yükleri için **Standart'ı** kullanmanızı önerir.
+Temel `-SKU Basic` genel IP oluşturmak için kullanın. Temel genel IP 'Ler **Standart** yük dengeleyici ile uyumlu değildir. Microsoft, üretim iş yükleri için **Standart** kullanılmasını önerir.
 
 > [!IMPORTANT]
-> Bu hızlı başlatmanın geri kalanı, yukarıdaki SKU seçim işlemi sırasında **Standart** SKU'nun seçildiğini varsayar.
+> Bu hızlı başlangıçtaki geri kalanı, yukarıdaki SKU seçim sürecinde **Standart** SKU 'nun seçili olduğunu varsayar.
 
-## <a name="create-azure-load-balancer"></a>Azure Yük bakiyesi oluşturma
+## <a name="create-azure-load-balancer"></a>Azure yük dengeleyici oluşturma
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
   - Yük dengeleyicideki gelen ağ trafiğini alan bir ön uç IP havuzu.
@@ -73,7 +73,7 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 
 ### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
-Önceki adımda oluşturduğunuz **myPublicIP** genel IP adresiyle ilişkilendirilmiş **myBackEndPool** adlı bir arka uç havuzunu ve **myFrontEnd** adlı bir ön uç havuzunu içeren **myLoadBalancer** adlı [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) ile genel bir Azure Load Balancer oluşturun. Temel `--sku basic` Genel IP oluşturmak için kullanın. Microsoft, üretim iş yükleri için Standart SKU önerir.
+Önceki adımda oluşturduğunuz **myPublicIP** genel IP adresiyle ilişkilendirilmiş **myBackEndPool** adlı bir arka uç havuzunu ve **myFrontEnd** adlı bir ön uç havuzunu içeren **myLoadBalancer** adlı [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) ile genel bir Azure Load Balancer oluşturun. Temel `--sku basic` genel IP oluşturmak için kullanın. Microsoft, üretim iş yükleri için standart SKU 'YU önerir.
 
 ```azurecli-interactive
   az network lb create \
@@ -86,7 +86,7 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 ```
 
 > [!IMPORTANT]
-> Bu hızlı başlatmanın geri kalanı, yukarıdaki SKU seçim işlemi sırasında **Standart** SKU'nun seçildiğini varsayar.
+> Bu hızlı başlangıçtaki geri kalanı, yukarıdaki SKU seçim sürecinde **Standart** SKU 'nun seçili olduğunu varsayar.
 
 ### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
 
@@ -202,9 +202,9 @@ Standart Yük Dengeleyici için, arka uç adresindeki sanal makinelerin bir Ağ 
 
 Bu örnekte, yük dengeleyici için arka uç sunucular olarak kullanılacak üç sanal makine oluşturacaksınız. Yük dengeleyicinin başarıyla oluşturulduğunu doğrulamak için sanal makinelere NGINX de yükleyin.
 
-Temel Genel IP'ye sahip bir Temel Yük Dengeleyicisi oluşturuyorsanız, sanal makinelerinizi eklemek için bir Kullanılabilirlik Kümesi oluşturmanız gerekir ([az vm availabilityset create.](/cli/azure/network/nic) Standart Yük Dengeleyicileri bu ek adımı gerektirmez. Microsoft, Standard'ı kullanmanızı önerir.
+Temel bir genel IP ile temel bir Load Balancer oluşturuyorsanız, sanal makinelerinizi ' ye eklemek için[az VM AVAILABILITY bilityset Create](/cli/azure/network/nic) komutunu kullanarak bir kullanılabilirlik kümesi oluşturmanız gerekir. Standart yük dengeleyiciler için bu ek adım gerekmez. Microsoft, standart kullanılmasını önerir.
 
-### <a name="create-three-virtual-machines"></a>Üç sanal makine oluşturun
+### <a name="create-three-virtual-machines"></a>Üç sanal makine oluşturma
 
 cloud-init yapılandırma dosyasını kullanarak NGINX’i yükleyin ve Linux sanal makinesinde 'Merhaba Dünya' Node.js uygulaması çalıştırın. Geçerli kabuğunuzda cloud-init.txt adlı bir dosya oluşturup aşağıdaki yapılandırmayı kopyalayıp kabuğa yapıştırın. Başta birinci satır olmak üzere cloud-init dosyasının tamamını doğru bir şekilde kopyaladığınızdan emin olun:
 
@@ -311,6 +311,6 @@ Artık gerekli değilse, [az group delete](/cli/azure/group#az-group-delete) kom
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, bir Standart Yük Dengeleyicisi oluşturdunuz, ona VM'ler iliştirdin, Yük Dengeleyicitrafik kuralını, sistem sondasını yapılandırdın ve ardından Yük Dengeleyicisini test ettiniz. Azure Yük Bakiyesi hakkında daha fazla bilgi edinmek için [Azure Yük Bakiyesi öğreticilerine](tutorial-load-balancer-standard-public-zone-redundant-portal.md)devam edin.
+Bu hızlı başlangıçta, bir Standart Load Balancer oluşturdunuz, bu sanal makineye bağlı VM 'Ler Load Balancer trafik kuralını ve sistem durumu araştırmasını yapılandırdınız ve ardından Load Balancer test edilmiştir. Azure Load Balancer hakkında daha fazla bilgi edinmek için [öğreticilere Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)devam edin.
 
-[Yük Dengeleyicisi ve Kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.
+[Load Balancer ve kullanılabilirlik bölgeleri](load-balancer-standard-availability-zones.md)hakkında daha fazla bilgi edinin.

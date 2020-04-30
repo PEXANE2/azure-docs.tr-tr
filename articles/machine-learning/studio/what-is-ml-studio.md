@@ -1,7 +1,7 @@
 ---
 title: ML Studio nedir (klasik)
 titleSuffix: Azure
-description: Azure Machine Learning Studio (klasik), kullanıma hazır algoritma ve modülkitaplığından modelleri hızlı bir şekilde oluşturmak için bir sürükle ve bırak aracıdır.
+description: Azure Machine Learning Studio (klasik), bir dizi algoritmaların ve modüllerden kullanıma hazırlama kitaplığından hızlı bir şekilde model oluşturmaya yönelik bir sürükle ve bırak aracıdır.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -12,40 +12,40 @@ ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
 ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80371961"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Machine Learning Studio (klasik) nedir?
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Microsoft Azure Machine Learning Studio (klasik), verilerinizde tahmine dayalı analitik çözümleri oluşturmak, sınamak ve dağıtmak için kullanabileceğiniz ortak, sürükle ve bırak aracıdır. Azure Machine Learning Studio (klasik), özel uygulamalar veya Excel gibi BI araçları tarafından kolayca tüketilebilen web hizmetleri olarak modeller yayınlar.
+Microsoft Azure Machine Learning Studio (klasik), verilerinizde tahmine dayalı analiz çözümleri oluşturmak, test etmek ve dağıtmak için kullanabileceğiniz işbirliğine dayalı, sürükle ve bırak aracıdır. Azure Machine Learning Studio (klasik) modelleri, Excel gibi özel uygulamalar veya BI araçları tarafından kolayca tüketilen Web Hizmetleri olarak yayımlar.
 
-Machine Learning Studio (klasik), veri bilimi, tahmine dayalı analitik, bulut kaynakları ve verilerinizin buluştuğu yerdir.
+Machine Learning Studio (klasik) veri bilimi, tahmine dayalı analiz, bulut kaynakları ve verilerinizin karşılabileceği yerdir.
 
-## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Machine Learning Studio (klasik) interaktif çalışma alanı
+## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Machine Learning Studio (klasik) etkileşimli çalışma alanı
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Tahmine dayalı bir analiz modeli geliştirmek için genellikle bir veya daha fazla kaynaktan gelen verileri kullanır, bu verileri çeşitli veri işleme ve istatistiksel işlevler aracılığıyla dönüştürür ve analiz eder ve bir dizi sonuç oluşturursunuz. Bir modelin bu şekilde geliştirilmesi yinelemeli bir işlemdir. Çeşitli işlevleri ve bunların parametrelerini değiştirirken, eğitilmiş ve verimli bir model elde ettiğinizi düşüneceğiniz ana kadar sonuçlarınız yakınsanır.
+Tahmine dayalı bir analiz modeli geliştirmek için genellikle bir veya daha fazla kaynaktaki verileri kullanır, çeşitli veri işleme ve istatistiksel işlevler aracılığıyla bu verileri dönüştürür ve analiz eder ve bir sonuç kümesi oluşturur. Bir modelin bu şekilde geliştirilmesi yinelemeli bir işlemdir. Çeşitli işlevleri ve bunların parametrelerini değiştirirken, eğitilmiş ve verimli bir model elde ettiğinizi düşüneceğiniz ana kadar sonuçlarınız yakınsanır.
 
-Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modeli nde kolayca oluşturmanız, test edilebindirmeniz ve yinelemeniz için etkileşimli, görsel bir çalışma alanı sağlar. ***Veri kümelerini*** ve analiz ***modüllerini*** etkileşimli bir tuvale sürükleyip atarsınız ve bunları machine learning studio 'da (klasik) çalıştırdığınız bir ***deney***oluşturmak için birbirine bağlarsınız. Model tasarımınızı yinelemek için, denemeyi düzenleyin, isterseniz bir kopyasını kaydedin ve yeniden çalıştırın. Hazır olduğunuzda, ***eğitim denemenizi*** bir ***tahmine dayalı denemeye*** dönüştürebilir ve ardından modelinize başkaları tarafından erişilebilmesi için bunu bir ***web hizmeti*** olarak yayımlayabilirsiniz.
+Azure Machine Learning Studio (klasik), tahmine dayalı bir analiz modelini kolayca oluşturmak, test etmek ve yinelemek için size etkileşimli ve görsel bir çalışma alanı sağlar. ***Veri kümelerini*** ve analiz ***modüllerini*** etkileşimli bir tuvale sürükleyip bırakın ve Machine Learning Studio (klasik) ' de çalıştırdığınız bir ***deneme***oluşturmak için bunları birbirine bağlayarak. Model tasarımınızı yinelemek için, denemeyi düzenleyin, isterseniz bir kopyasını kaydedin ve yeniden çalıştırın. Hazır olduğunuzda, ***eğitim denemenizi*** bir ***tahmine dayalı denemeye*** dönüştürebilir ve ardından modelinize başkaları tarafından erişilebilmesi için bunu bir ***web hizmeti*** olarak yayımlayabilirsiniz.
 
-Tahmine dayalı analiz modelinizi oluşturmak için veri kümelerini ve modülleri görsel olarak bağlamak için programlama gerekmez.
+Programlama gerekmez, tahmine dayalı analiz modelinizi oluşturmak için veri kümelerini ve modülleri görsel olarak bağlayın.
 
-![Azure Machine Learning Studio (klasik) diyagramı: Denemeler oluşturun, birçok kaynak için veri okuyun, puanlı veriler yazın, modeller yazın.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Azure Machine Learning Studio (klasik) diyagram: denemeleri oluşturma, çok sayıda kaynak için veri okuma, puanlanmış veriler yazma, yazma modelleri.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Machine Learning Studio (klasik) genel bakış diyagramını indirin
-Microsoft **Azure Machine Learning Studio (klasik) Yetenekleri Genel Bakış** diyagramını indirin ve Machine Learning Studio'nun (klasik) yeteneklerini üst düzey bir şekilde görüntüleyin. Diyagramı yakınınızda tutmak için tabloid boyutunda (11 x 17 inç) yazdırabilirsiniz.
+**Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış** diyagramını indirin ve Machine Learning Studio (klasik) özelliklerine ilişkin üst düzey bir görünüm alın. Diyagramı yakınınızda tutmak için tabloid boyutunda (11 x 17 inç) yazdırabilirsiniz.
 
-**Diyagramı buradan indirin: [Microsoft Azure Machine Learning Studio (klasik) Yeteneklere Genel Bakış](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-![Microsoft Azure Machine Learning Studio (klasik) Yeteneklerine Genel Bakış](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
+**Diyagramı buraya indirin: [Microsoft Azure Machine Learning Studio (klasik) yeteneklere genel bakış](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+![Microsoft Azure Machine Learning Studio (klasik) özelliklerine genel bakış](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 
-## <a name="components-of-a-studio-classic--experiment"></a>Studio (klasik) deneyinbileşenleri
+## <a name="components-of-a-studio-classic--experiment"></a>Studio (klasik) deneme bileşenleri
 Bir deneme, tahmine dayalı bir modeli oluşturmak için birlikte bağladığınız analitik modüllere veri sağlayan veri kümelerinden oluşur. Geçerli bir deneme özellikle şu özelliklere sahiptir:
 
 * Denemenin en az bir veri kümesi ve bir modülü vardır
@@ -56,40 +56,40 @@ Bir deneme, tahmine dayalı bir modeli oluşturmak için birlikte bağladığın
 
 Bir denemeyi sıfırdan oluşturabilir veya var olan bir örnek denemeyi şablon olarak kullanabilirsiniz. Daha fazla bilgi için bkz. [Örnek denemeleri kopyalayarak yeni makine öğrenimi denemeleri oluşturma](sample-experiments.md).
 
-Deneme oluşturma örneği için bkz. [Azure Machine Learning Studio'da (klasik) basit bir deneme oluştur.](create-experiment.md)
+Deneme oluşturma örneği için bkz. [Azure Machine Learning Studio basit bir deneme oluşturma (klasik)](create-experiment.md).
 
-Tahmine dayalı bir analitik çözümü oluşturmanın daha eksiksiz bir çözümü için [bkz.](tutorial-part1-credit-risk.md)
+Tahmine dayalı analiz çözümü oluşturmaya yönelik daha kapsamlı bir anlatım için bkz. [Azure Machine Learning Studio (klasik) ile tahmine dayalı bir çözüm geliştirme](tutorial-part1-credit-risk.md).
 
 ### <a name="datasets"></a>Veri kümeleri
-Veri kümesi, modelleme işleminde kullanılabilmek için Machine Learning Studio'ya (klasik) yüklenen verilerdir. Denemeniz için Machine Learning Studio (klasik) ile bir dizi örnek veri kümesi dahildir ve ihtiyacınız olduğu şekilde daha fazla veri kümesi yükleyebilirsiniz. Dahil olan veri kümelerine aşağıda birkaç örnek verilmiştir:
+Veri kümesi, modelleme sürecinde kullanılabilmesi için Machine Learning Studio (klasik) karşıya yüklenmiş olan bir veri kümesidir. Deneme için Machine Learning Studio (klasik) bir dizi örnek veri kümesi bulunur ve ihtiyacınız olduğunda daha fazla veri kümesi yükleyebilirsiniz. Dahil olan veri kümelerine aşağıda birkaç örnek verilmiştir:
 
 * **Çeşitli otomobiller için MPG verileri** - Otomobiller için silindir, beygir gücü, vb. sayısına göre tanımlanan galon başına mil (MPG) değerleri.
 * **Meme kanseri verileri** - Meme kanseri tanılama verileri.
 * **Orman yangını verileri** - Kuzey doğu Portekiz'de orman yangını boyutları.
 
-Bir deneme oluştururken, tuvalin solunda bulunan veri kümeleri listesinden seçim yapabilirsiniz.
+Bir deneme oluştururken, tuvalin solunda kullanılabilen veri kümeleri listesinden seçim yapabilirsiniz.
 
-Machine Learning Studio'da [(klasik)](use-sample-datasets.md)yer alan örnek veri kümelerinin listesi için bkz.
+Machine Learning Studio (klasik) eklenen örnek veri kümelerinin bir listesi için bkz. [Azure Machine Learning Studio (klasik) örnek veri kümelerini kullanma](use-sample-datasets.md).
 
-### <a name="modules"></a>Modules
-Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Azure Machine Learning Studio (klasik), veri giriş işlevlerinden eğitim, puanlama ve doğrulama işlemlerine kadar çeşitli modüllere sahiptir. Dahil olan modüllere aşağıda birkaç örnek verilmiştir:
+### <a name="modules"></a>Modüller
+Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Azure Machine Learning Studio (klasik), veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar birçok modül içerir. Dahil olan modüllere aşağıda birkaç örnek verilmiştir:
 
 * [ARFF'ye Dönüştürme][convert-to-arff] - Seri hale getirilmiş .NET veri kümesini Öznitelik-İlişki Dosyası Biçimi'ne (ARFF) dönüştürür.
 * [Basit İstatistikleri Hesaplama][elementary-statistics] - Ortalama, standart sapma vb. basit istatistikleri hesaplar.
 * [Doğrusal Regresyon][linear-regression] - Çevrimiçi bir gradyan düşüşü tabanlı doğrusal regresyon modeli oluşturur.
 * [Model Puanlama][score-model] - Eğitilmiş bir sınıflandırma veya regresyon modelini puanlar.
 
-Bir deneme oluştururken, tuvalin solundaki modüller listesinden seçim yapabilirsiniz.
+Bir deneme oluştururken, tuvalin solunda bulunan modüllerin listesinden seçim yapabilirsiniz.
 
 Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki **Özellikler** bölmesinde görüntülenir  Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz.
 
-Mevcut büyük makine öğrenimi algoritmaları kitaplığında gezinmek için microsoft [Azure Machine Learning Studio (klasik) için algoritmaları nasıl seçeceğiniz bölümüne](algorithm-choice.md)bakın.
+Kullanılabilir makine öğrenimi algoritmalarının büyük kitaplığındaki bazı yardım için bkz. [Microsoft Azure Machine Learning Studio algoritmaları seçme (klasik)](algorithm-choice.md).
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Tahmine dayalı analiz web hizmetini dağıtma
-Tahmine dayalı analitik modeliniz hazır olduğunda, makine öğrenimi stüdyosundan (klasik) web hizmeti olarak dağıtabilirsiniz. Bu işlem hakkında daha fazla bilgi için [bkz.](deploy-a-machine-learning-web-service.md)
+Tahmine dayalı analiz modeliniz hazırlandıktan sonra, bunu bir Web hizmeti olarak Machine Learning Studio (klasik) ile dağıtabilirsiniz. Bu işlemle ilgili daha fazla bilgi için bkz. [Azure Machine Learning Web hizmeti dağıtma](deploy-a-machine-learning-web-service.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Öngörülü](create-experiment.md) analitik ve makine öğreniminin temellerini adım adım hızlı bir başlangıç yaparak ve [numuneler üzerine inşa](sample-experiments.md)ederek öğrenebilirsiniz.
+Tahmine dayalı analiz ve makine öğrenimine ilişkin temel bilgileri, [adım adım hızlı başlangıç](create-experiment.md) ve [örnek oluşturma](sample-experiments.md)aracılığıyla öğrenebilirsiniz.
 
 <!-- Module References -->
 [convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/

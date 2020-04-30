@@ -1,5 +1,5 @@
 ---
-title: Azure Quickstart - Azure portalını kullanarak etkinlik merkezi oluşturma
+title: Azure hızlı başlangıç-Azure portal kullanarak bir olay hub 'ı oluşturma
 description: Bu hızlı başlangıçta Azure portalı kullanarak Azure olay hub'ı oluşturmayı ve .NET Standard SDK kullanarak olay gönderip almayı öğreneceksiniz.
 services: event-hubs
 documentationcenter: ''
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 5e80ab6d5ed0076e03f5378cbe975b15d0a28f47
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240999"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak olay hub'ı oluşturma
@@ -25,15 +25,15 @@ Bu hızlı başlangıçta [Azure portalı](https://portal.azure.com) kullanarak 
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- Azure aboneliği. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
-- [Visual Studio 2019)](https://www.visualstudio.com/vs) veya daha sonra.
+- Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+- [Visual Studio 2019)](https://www.visualstudio.com/vs) veya sonraki bir sürümü.
 - [.NET Standard SDK'sı](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya üzeri.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynaklar bir kaynak grubuna dağıtılır ve buradan yönetilir. Kaynak grubu oluşturmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Soldaki menüden **Kaynak grupları**'na tıklayın. Daha sonra **Ekle**'ye tıklayın.
 
    ![Kaynak grupları - Ekle düğmesi](./media/event-hubs-quickstart-portal/resource-groups1.png)
@@ -41,36 +41,36 @@ Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynakl
 2. **Abonelik**için, kaynak grubunu oluşturmak istediğiniz Azure aboneliğinin adını seçin.
 3. **Kaynak grubu için**benzersiz bir ad yazın. Sistem, adın seçili Azure aboneliğinde var olup olmadığını kontrol eder.
 4. Kaynak grubu için bir **bölge** seçin.
-5. **Gözden Geçir + Oluştur'u**seçin.
+5. **Gözden geçir + oluştur**' u seçin.
 
    ![Kaynak grubu - oluştur](./media/event-hubs-quickstart-portal/resource-groups2.png)
-6. Gözden **Geçir + Oluştur** sayfasında **Oluştur'u**seçin. 
+6. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin. 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
 Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya daha fazla olay hub'ı oluşturduğunuz benzersiz bir kapsam kapsayıcısı sağlar. Portalı kullanarak kaynak grubunuzda bir ad alanı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 
 1. Azure portalda ekranın sol üst köşesindeki **Kaynak oluştur**'a tıklayın.
-2. Sol menüdeki **Tüm hizmetleri** seçin ve **Analytics** kategorisinde **Olay Hub'larının** yanındaki **yıldız ()`*`** seçeneğini belirleyin. Olay **Hub'larının** sol daki gezinme menüsünde **SıK Kullanılanlar'a** eklenmesini onaylayın. 
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve **analiz** kategorisinde **Event Hubs** ' ın yanındaki **yıldız (`*`)** seçeneğini belirleyin. **Event Hubs** sol gezinti menüsünde **Sık kullanılanlara** eklendiğini doğrulayın. 
     
-   ![Etkinlik Hub'larını ara](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
-3. Sol gezinti menüsünde **SıK Kullanılanlar** altında Olay **Hub'larını** seçin ve araç çubuğuna **Ekle'yi** seçin.
+   ![Event Hubs arayın](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
+3. Sol gezinti menüsünde **Sık Kullanılanlar** ' ın altında **Event Hubs** ' ı seçin ve araç çubuğunda **Ekle** ' yi seçin.
 
    ![Ekle düğmesi](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
-4. Ad **alanı oluştur** sayfasında aşağıdaki adımları izleyin:
+4. **Ad alanı oluştur** sayfasında, aşağıdaki adımları uygulayın:
     1. Ad alanı için bir **ad** girin. Adın kullanılabilirliği sistem tarafından hemen kontrol edilir.
-    2. Fiyatlandırma **katmanını** (Temel veya Standart) seçin.
-    3. Kafka **seçeneğini etkinleştirme** seçeneğinin otomatik olarak etkinleştirilen ekidir. Azure Etkinlik Hub'ları size Kafka bitiş noktası sağlar. Bu uç nokta, Olay Hub'larınızın ad alanının [Apache Kafka](https://kafka.apache.org/intro) ileti protokolünü ve API'lerini yerel olarak anlamasını sağlar. Bu özellik sayesinde, iletişim istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Kafka konularıyla olduğu gibi etkinlik merkezlerinizle de iletişim kurabilirsiniz. Etkinlik Hub'ları [Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) ve sonraki sürümlerini destekler.
+    2. **Fiyatlandırma katmanını** (temel veya standart) seçin.
+    3. **Enable Kafka** seçeneğinin otomatik olarak etkinleştirildiğini unutmayın. Azure Event Hubs, size bir Kafka uç noktası sağlar. Bu uç nokta, Event Hubs ad alanının [Apache Kafka](https://kafka.apache.org/intro) ileti protokolünü ve API 'leri yerel olarak anlamasına olanak sağlar. Bu özellik sayesinde, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Kafka konularda yaptığınız gibi Olay Hub 'lerinizle iletişim kurabilirsiniz. Event Hubs, [1,0 ve üzeri sürümleri Apache Kafka](https://kafka.apache.org/10/documentation.html) destekler.
     4. Ad alanını oluşturmak istediğiniz **aboneliği** seçin.
-    5. Varolan bir **kaynak grubu** seçin veya yeni bir kaynak grubu oluşturun. 
+    5. Var olan bir **kaynak grubunu** seçin veya yeni bir kaynak grubu oluşturun. 
     4. Ad alanı için bir **konum** seçin.
-    5. **Oluştur'u**seçin. Sistemin kaynakları tam olarak sağlaması için birkaç dakika beklemeniz gerekebilir.
+    5. **Oluştur**’u seçin. Sistemin kaynakları tam olarak sağlaması için birkaç dakika beklemeniz gerekebilir.
 
        ![Olay hub'ı ad alanı oluşturma](./media/event-hubs-quickstart-portal/create-event-hub1.png)
-5. Olay merkezi ad alanını görmek için **Olay Hub'ları** sayfasını yenileyin. Uyarılarda olay merkezi oluşturma durumunu denetleyebilirsiniz. 
+5. Olay Hub 'ı ad alanını görmek için **Event Hubs** sayfasını yenileyin. Uyarı içinde Olay Hub 'ı oluşturma durumunu denetleyebilirsiniz. 
 
     ![Olay hub'ı ad alanı oluşturma](./media/event-hubs-quickstart-portal/event-hubs-refresh.png)
-6. Ad alanını seçin. Portalda **Olay Hub'larınızın ad alanının** ana sayfasını görürsünüz. 
+6. Ad alanını seçin. Portalda **Event Hubs ad alanınız** için giriş sayfasını görürsünüz. 
 
    ![Ad alanı için ana sayfa](./media/event-hubs-quickstart-portal/namespace-home-page.png)
     
@@ -78,27 +78,27 @@ Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya da
 
 Ad alanında bir olay hub'ı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 
-1. Olay Hub'ları Ad Alanı sayfasında, sol menüde **Olay Hub'ları'nı** seçin.
+1. Event Hubs ad alanı sayfasında, soldaki menüden **Event Hubs** ' i seçin.
 1. Pencerenin en üstündeki **+ Olay Hub’ı** seçeneğine tıklayın.
    
     ![Olay Hub'ı Ekle - düğme](./media/event-hubs-quickstart-portal/create-event-hub4.png)
 1. Olay hub'ınız için bir ad yazın, ardından **Oluştur**’a tıklayın.
    
     ![Olay hub'ı oluşturma](./media/event-hubs-quickstart-portal/create-event-hub5.png)
-4. Uyarılarda olay merkezi oluşturma durumunu denetleyebilirsiniz. Olay hub'ı oluşturulduktan sonra, aşağıdaki resimde gösterildiği gibi olay hub'ları listesinde görürsünüz:
+4. Uyarı ' da Olay Hub 'ı oluşturma durumunu kontrol edebilirsiniz. Olay Hub 'ı oluşturulduktan sonra, aşağıdaki görüntüde gösterildiği gibi Olay Hub 'ları listesinde görürsünüz:
 
-    ![Olay merkezi oluşturuldu](./media/event-hubs-quickstart-portal/event-hub-created.png)
+    ![Olay Hub 'ı oluşturuldu](./media/event-hubs-quickstart-portal/event-hub-created.png)
 
 Tebrikler! Portalı kullanarak bir Event Hubs ad alanı ve bu ad alanının içinde bir olay hub'ı oluşturdunuz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşturdunuz. Bir etkinlik merkezinden etkinlik almak için (veya) etkinlik göndermek için adım adım talimatlar **için, Gönder'e** bakın ve etkinlik eğitimlerini alın: 
+Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşturdunuz. Olay Hub 'ından olay alma (veya) olayları gönderme hakkında adım adım yönergeler için, bkz. **olayları gönderme ve alma** öğreticileri: 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-java-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)

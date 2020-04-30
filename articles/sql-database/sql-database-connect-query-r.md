@@ -1,7 +1,7 @@
 ---
-title: Veritabanını sorgulamak için Machine Learning Services ile R'yi kullanma (önizleme)
+title: Veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Bu makalede, Azure SQL veritabanına bağlanmak ve Transact-SQL deyimlerini kullanarak sorgulamak için Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile bir R komut dosyasınasıl kullanılacağı nı gösterir.
+description: Bu makalede bir Azure SQL veritabanına bağlanmak ve Transact-SQL deyimleriyle sorgulamak için Azure SQL veritabanı ile R betiği kullanma Machine Learning Services gösterilmektedir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,49 +15,49 @@ manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81457000"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Quickstart: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R'yi kullanın (önizleme)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R kullanma (Önizleme)
 
-Bu hızlı başlatmada, Azure SQL veritabanına bağlanmak için Machine Learning Services ile R'yi ve verileri sorgulamak için T-SQL deyimlerini kullanırsınız.
+Bu hızlı başlangıçta, Azure SQL veritabanına bağlanmak ve T-SQL deyimlerini kullanarak verileri sorgulamak için Machine Learning Services ile R 'yi kullanırsınız.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir.
+- R özellikli [Machine Learning Services](sql-database-machine-learning-services-overview.md) .
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
-> Bu makaledeki komut dosyaları Adventure **Works** veritabanını kullanmak için yazılmıştır.
+> Bu makaledeki betikler, **Adventure Works** veritabanını kullanmak için yazılmıştır.
 
-R özellikli Machine Learning Services, veritabanı içi R komut dosyalarını yürütmek için kullanılan Azure SQL Veritabanı'nın bir özelliğidir. Daha fazla bilgi için [R Projesi'ne](https://www.r-project.org/)bakın.
+R ile Machine Learning Services, veritabanı içi R betiklerini yürütmek için kullanılan Azure SQL veritabanı 'nın bir özelliğidir. Daha fazla bilgi için bkz. [R Projesi](https://www.r-project.org/).
 
-## <a name="get-sql-server-connection-information"></a>SQL sunucu bağlantı bilgilerini alın
+## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
-Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Gelecek yordamlar için tam nitelikli sunucu adı veya ana bilgisayar adı, veritabanı adı ve giriş bilgilerine ihtiyacınız vardır.
+Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **SQL veritabanlarına** veya **SQL yönetilen örnekler** sayfasına gidin.
+2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
-3. Genel **Bakış** sayfasında, tek bir veritabanı için **Sunucu adının** yanındaki tam nitelikli sunucu adını veya yönetilen bir örnek için **Host'un** yanındaki tam nitelikli sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine tıklayın ve **Kopyasimgesini** seçin.
+3. **Genel bakış** sayfasında, tek bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya yönetilen örnek Için **ana bilgisayar ' ın** yanındaki tam sunucu adını gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
 
 ## <a name="create-code-to-query-your-sql-database"></a>SQL veritabanınızı sorgulamak için kod oluşturma
 
-1. **SQL Server Management Studio'nuzu** açın ve SQL veritabanınıza bağlanın.
+1. **SQL Server Management Studio** açın ve SQL veritabanınıza bağlanın.
 
-   Bağlanmak için yardıma ihtiyacınız varsa, [Azure SQL veritabanını bağlamak ve sorgulamak için Hızlı Başlangıç: SQL Server Management Studio'yı kullanın.](sql-database-connect-query-ssms.md)
+   Bağlantı için yardıma ihtiyacınız varsa bkz. [hızlı başlangıç: Azure SQL veritabanına bağlanmak ve sorgu sorgulamak için SQL Server Management Studio kullanma](sql-database-connect-query-ssms.md).
 
-1. Tüm R komut dosyasını [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) depolanan yordamına geçirin.
+1. Tüm R betiğini [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamına geçirin.
 
-   Komut dosyası bağımsız `@script` değişkenden geçirilir. Bağımsız değişkenin `@script` içindeki her şey geçerli Bir R kodu olmalıdır.
+   Betiği, `@script` bağımsız değişkeniyle geçirilir. `@script` Bağımsız değişkenin içindeki her şey geçerli bir R kodu olmalıdır.
    
    >[!IMPORTANT]
    >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 
@@ -70,17 +70,17 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. G
     ```
 
    > [!NOTE]
-   > Hata alırsanız Machine Learning Services (R ile) genel önizleme sürümü SQL veritabanınız için etkinleştirilmemiş olabilir. Yukarıdaki [Ön koşullara](#prerequisites) bakın.
+   > Hata alırsanız Machine Learning Services (R ile) genel önizleme sürümü SQL veritabanınız için etkinleştirilmemiş olabilir. Yukarıdaki [önkoşulları](#prerequisites) inceleyin.
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-1. Depolanan [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) yordamı çalıştırın.
+1. [Sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) saklı yordamını yürütün.
 
-1. En iyi 20 Kategori/Ürün satırının **İletiler** penceresinde döndürüldünden doğrulayın.
+1. **İletiler** penceresinde Ilk 20 kategori/ürün satırı döndürüldüğünden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [İlk Azure SQL veritabanınızı tasarlama](sql-database-design-first-database.md)
-- [Azure SQL Veritabanı Makine Öğrenme Hizmetleri (R ile)](sql-database-machine-learning-services-overview.md)
-- [Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde basit R komut dosyaları oluşturun ve çalıştırın (önizleme)](sql-database-quickstart-r-create-script.md)
-- [Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)](sql-database-machine-learning-services-functions.md)
+- [Azure SQL veritabanı Machine Learning Services (R ile)](sql-database-machine-learning-services-overview.md)
+- [Azure SQL veritabanı 'nda basit R betikleri oluşturma ve çalıştırma Machine Learning Services (Önizleme)](sql-database-quickstart-r-create-script.md)
+- [Machine Learning Services kullanarak Azure SQL veritabanı 'nda gelişmiş R işlevleri yazma (Önizleme)](sql-database-machine-learning-services-functions.md)

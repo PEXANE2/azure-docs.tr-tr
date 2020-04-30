@@ -1,6 +1,6 @@
 ---
-title: Azure CDN'deki Azure web uygulaması güvenlik duvarı nedir?
-description: Azure CDN hizmetindeki Azure web uygulaması güvenlik duvarının web uygulamalarınızı kötü amaçlı saldırılara karşı nasıl koruduğunun öğren.
+title: Azure CDN Azure Web uygulaması güvenlik duvarı nedir?
+description: Azure CDN hizmetindeki Azure Web uygulaması güvenlik duvarının Web uygulamalarınızı kötü amaçlı saldırılara karşı nasıl koruduğunu öğrenin.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,110 +8,110 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
 ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80754287"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure İçerik Dağıtım Ağında Azure Web Uygulaması Güvenlik Duvarı
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network Azure Web uygulaması güvenlik duvarı
 
-Microsoft'un Azure İçerik Dağıtım Ağı'ndaki (CDN) Azure Web Uygulaması Güvenlik Duvarı (WAF), web içeriğiniz için merkezi koruma sağlar. WAF, web hizmetlerinizi sık karşılaşılan açıklara ve güvenlik açıklarına karşı korur. Hizmetinizi kullanıcılarınız için yüksek oranda kullanılabilir tutar ve uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
+Microsoft 'un Azure Content Delivery Network (CDN) üzerinde Azure Web uygulaması güvenlik duvarı (WAF), Web içeriğiniz için merkezi koruma sağlar. WAF, Web hizmetlerinizi yaygın güvenlik açıklarından ve güvenlik açıklarına karşı Savunlar. Kullanıcılarınız için hizmetinizi yüksek oranda kullanılabilir tutar ve uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
 
 > [!IMPORTANT]
-> Microsoft'un Azure CDN'deki WAF'ı şu anda genel önizlemededir ve bir önizleme hizmeti düzeyi sözleşmesiyle sağlanır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Microsoft 'tan Azure CDN WAF Şu anda genel önizlemededir ve bir önizleme hizmet düzeyi sözleşmesi ile sunulmaktadır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure CDN'deki WAF, küresel ve merkezi bir çözümdür. Dünya çapındaki Azure ağ kenarı konumlarında dağıtılır. WAF, kötü amaçlı saldırıları kaynağınıza ulaşmadan önce saldırı kaynaklarına yakın durdurur. Performanstan ödün vermeden ölçekte küresel koruma elde elabilirsiniz. 
+Azure CDN WAF, genel ve merkezi bir çözümdür. Dünyanın dört bir yanındaki Azure ağ Edge konumlarında dağıtılır. WAF, kötü amaçlı saldırıları, kaynak kaynağınıza ulaşmadan önce saldırı kaynaklarına yakın şekilde engeller. Performans performansınızı etkilemeden genel koruma kazanın. 
 
-WAF ilkesi, aboneliğinizdeki herhangi bir CDN bitiş noktasına kolayca bağlanır. Yeni kurallar birkaç dakika içinde dağıtılabilir, böylece değişen tehdit kalıplarına hızlı bir şekilde yanıt verebilirsiniz.
+Bir WAF ilkesi, aboneliğinizdeki herhangi bir CDN uç noktasına kolayca bağlanır. Yeni kurallar dakikalar içinde dağıtılabilir ve bu sayede tehdit desenlerini değiştirmek için hızlıca yanıt verebilirsiniz.
 
-![Azure web uygulaması güvenlik duvarı](../media/cdn-overview/waf-cdn-overview.png)
+![Azure Web uygulaması güvenlik duvarı](../media/cdn-overview/waf-cdn-overview.png)
 
-## <a name="waf-policy-and-rules"></a>WAF politikası ve kuralları
+## <a name="waf-policy-and-rules"></a>WAF ilkesi ve kuralları
 
-Bir WAF ilkesini yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla CDN uç noktasıyla ilişkilendirebilirsiniz. WAF ilkesi iki tür güvenlik kuralından oluşur:
+Bir WAF ilkesi yapılandırabilir ve bu ilkeyi koruma için bir veya daha fazla CDN uç noktası ile ilişkilendirebilirsiniz. Bir WAF ilkesi, iki tür güvenlik kuralından oluşur:
 
 - oluşturabileceğiniz özel kurallar.
 
-- Azure yönetilen önceden yapılandırılmış kuralların bir koleksiyonu olan yönetilen kural kümeleri.
+- Azure tarafından yönetilen önceden yapılandırılmış kuralların bir koleksiyonu olan yönetilen kural kümeleri.
 
-Her ikisi de mevcut olduğunda, yönetilen bir kural kümesinde kuralları işlemeden önce özel kurallar işlenir. Bir kural bir eşleşme koşulu, bir öncelik ve bir eylem yapılır. Desteklenen eylem türleri şunlardır: *ALLOW*, *BLOCK*, *LOG*, ve *YÖNLENDIRME*. Yönetilen ve özel kuralları birleştirerek özel uygulama koruma gereksinimlerinizi karşılayan tamamen özelleştirilmiş bir ilke oluşturabilirsiniz.
+Her ikisi de varsa, yönetilen bir kural kümesindeki kuralları işlemeden önce özel kurallar işlenir. Bir kural eşleştirme koşulu, öncelik ve bir eylemden oluşur. Desteklenen eylem türleri şunlardır: *Izin ver*, *Engelle*, *log*ve *REDIRECT*. Yönetilen ve özel kuralları birleştirerek, belirli uygulama koruma gereksinimlerinizi karşılayan tam olarak özelleştirilmiş bir ilke oluşturabilirsiniz.
 
-İlke içindeki kurallar öncelikli sırada işlenir. Öncelik, işlemek için kuralların sırasını tanımlayan benzersiz bir sayıdır. Daha küçük sayılar daha yüksek bir önceliktir ve bu kurallar daha büyük bir değere sahip kurallardan önce değerlendirilir. Bir kural eşleştikten sonra, kuralda tanımlanan ilgili eylem isteğe uygulanır. Böyle bir eşleşme işlendikten sonra, daha düşük önceliklere sahip kurallar daha fazla işlenmez.
+İlke içindeki kurallar öncelik sırasına göre işlenir. Öncelik, işlenecek kuralların sırasını tanımlayan benzersiz bir sayıdır. Daha küçük sayılar daha yüksek önceliktir ve bu kurallar daha büyük bir değere sahip kurallardan önce değerlendirilir. Bir kural eşleştiğinde, kuralda tanımlanan ilgili eylem isteğe uygulanır. Bu tür bir eşleşme işlendiğinde, daha düşük öncelikler olan kurallar daha fazla işlenmez.
 
-Azure CDN'de barındırılan bir web uygulamasının aynı anda yalnızca bir WAF ilkesi olabilir. Ancak, onunla ilişkili herhangi bir WAF ilkeleri olmadan bir CDN bitiş noktası olabilir. Bir WAF ilkesi varsa, dünya çapında tutarlı güvenlik politikaları sağlamak için tüm kenar konumlarımızda çoğaltılır.
+Azure CDN barındırılan bir Web uygulamasının aynı anda kendisiyle ilişkili yalnızca bir WAF ilkesi olabilir. Ancak, kendisiyle ilişkilendirilmiş WAF ilkeleri olmadan bir CDN uç noktanız olabilir. Bir WAF ilkesi varsa, dünyanın tamamında tutarlı güvenlik ilkeleri sağlamak için tüm kenar konumlarımızla çoğaltılır.
 
 ## <a name="waf-modes"></a>WAF modları
 
 WAF ilkesi aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
 
-- *Algılama modu*: Algılama modunda çalıştırıldığında, WAF, isteği ve eşleşen WAF kuralını WAF günlüklerine izlemek ve günlükler dışında başka bir eylemde bulunmaz. Ön Kapı için günlük tanılama açabilirsiniz. Portalı kullandığınızda **Tanılama** bölümüne gidin.
+- *Algılama modu*: algılama modunda çalıştırıldığında WAF, izleyicileri dışında başka bir eylem almaz ve isteği ve eşleşen WAF KURALıNı WAF günlüklerine kaydeder. Ön kapı için günlüğü tanılamayı açabilirsiniz. Portalı kullandığınızda **Tanılama** bölümüne gidin.
 
-- *Önleme modu*: Önleme modunda, WAF bir istek bir kuralla eşleşirse belirtilen eylemi alır. Bir eşleşme bulunursa, daha düşük önceliğe sahip başka kural değerlendirilmez. Eşleşen istekler WAF günlüklerinde de günlüğe kaydedilir.
+- *Önleme modu*: önleme modunda, bir istek bir kuralla eşleşiyorsa, WAF belirtilen eylemi alır. Bir eşleşme bulunursa, daha düşük önceliğe sahip başka hiçbir kural değerlendirilmez. Tüm eşleşen istekler de WAF günlüklerine kaydedilir.
 
 ## <a name="waf-actions"></a>WAF eylemleri
 
-Bir istek bir kuralın koşullarına uyan aşağıdaki eylemlerden birini seçebilirsiniz:
+Bir istek bir kuralla eşleştiğinde, aşağıdaki eylemlerden birini seçebilirsiniz:
 
-- *İzin Ver*: İstek WAF'dan geçer ve arka uca iletilir. Daha düşük öncelik kuralları bu isteği engelleyebilir.
-- *Blok*: İstek engellenir ve WAF isteği arka uca iletmeden istemciye bir yanıt gönderir.
-- *Günlük*: İstek WAF günlüklerinde günlüğe kaydedilir ve WAF daha düşük öncelik kurallarını değerlendirmeye devam eder.
-- *Yönlendirme*: WAF isteği belirtilen URI'ye yönlendirir. Belirtilen URI bir ilke düzeyi ayarıdır. Yapılandırıldıktan sonra, *Yönlendirme* eylemiyle eşleşen tüm istekler bu URI'ye gönderilir.
+- *Izin ver*: Istek WAF üzerinden geçirilir ve arka uca iletilir. Daha düşük öncelikli kurallar, bu isteği engelleyebilir.
+- *Engelle*: istek engellendi ve WAF, isteği arka uca iletmeksizin istemciye bir yanıt gönderiyor.
+- *GNLK*: Istek WAF günlüklerinde günlüğe kaydedilir ve WAF, düşük öncelikli kuralları değerlendirmeye devam eder.
+- *Redirect*: WAF, ISTEğI belirtilen URI 'ye yeniden yönlendirir. Belirtilen URI bir ilke düzeyi ayarıdır. Yapılandırıldıktan sonra, *yeniden yönlendirme* eylemiyle eşleşen tüm ISTEKLER bu URI 'ye gönderilir.
 
 ## <a name="waf-rules"></a>WAF kuralları
 
-WAF ilkesi iki tür güvenlik kuralından oluşabilir:
+Bir WAF ilkesi iki tür güvenlik kuralı içerebilir:
 
-- *özel kurallar*: kendinizi oluşturduğunuz kurallar 
+- *özel kurallar*: kendi oluşturduğunuz kurallar 
 - *yönetilen kural kümeleri*: Azure yönetilen önceden yapılandırılmış kurallar kümesi
 
 ### <a name="custom-rules"></a>Özel kurallar
 
-Özel kurallar, eşmaç kuralları ve oran denetim kuralları olabilir.
+Özel kuralların eşleşme kuralları ve oran denetim kuralları olabilir.
 
-Aşağıdaki özel eşmatch kurallarını yapılandırabilirsiniz:
+Aşağıdaki özel eşleşme kurallarını yapılandırabilirsiniz:
 
-- *IP izin listesi ve blok listesi*: İstemci IP adresleri veya IP adresi aralıklarının listesini temel alınabilen web uygulamalarınız için erişimi kontrol edebilirsiniz. Hem IPv4 hem de IPv6 adres türleri desteklenir. Bu liste, kaynak IP'nin listedeki bir IP ile eşleştiği bu istekleri engelleyecek veya izin verecek şekilde yapılandırılabilir.
+- *IP izin listesi ve Engellenenler listesi*: istemci IP ADRESLERI veya IP adresi aralıkları listesine göre Web uygulamalarınıza erişimi denetleyebilirsiniz. Hem IPv4 hem de IPv6 adres türleri desteklenir. Bu liste, kaynak IP 'nin listedeki bir IP ile eşleştiği istekleri engelleyecek ya da bu isteklere izin verecek şekilde yapılandırılabilir.
 
-- *Coğrafi tabanlı erişim denetimi*: Web uygulamalarınız için erişimi, müşterinin IP adresiyle ilişkili ülke koduna göre denetleyebilirsiniz.
+- *Coğrafi tabanlı erişim denetimi*: Web uygulamalarınıza erişimi, BIR istemcinin IP adresiyle ilişkili olan ülke koduna göre denetleyebilirsiniz.
 
-- *HTTP parametrelere dayalı erişim denetimi*: HTTP/HTTPS istek parametrelerinde dize eşleşmelerine kurallar dayandırabilirsiniz.  Örneğin, sorgu dizeleri, POST rgs, İstek URI, İstek Üstbilgi ve İstek Gövdesi.
+- *Http parametreleri tabanlı erişim denetimi*: http/https istek parametrelerinde dize eşleştirmelerle ilgili kuralları temel alabilirsiniz.  Örneğin, sorgu dizeleri, POST bağımsız değişkenleri, Istek URI 'SI, istek üst bilgisi ve Istek gövdesi.
 
-- *İstek yöntemi tabanlı erişim denetimi*: İstek http istek yöntemine kuralları temel edirsiniz. Örneğin, GET, PUT veya HEAD.
+- *Yöntem tabanlı erişim denetimi iste*: KURALLARı isteğin HTTP istek yöntemine dayandırın. Örneğin, GET, PUT veya HEAD.
 
-- *Boyut kısıtlaması*: Kuralları sorgu dizesi, Uri veya istek gövdesi gibi bir isteğin belirli bölümlerinin uzunluklarına dayandırabilirsiniz.
+- *Boyut kısıtlaması*: bir isteğin, sorgu dizesi, URI veya istek gövdesi gibi belirli bölümlerinin uzunluklarıyla kuralları temel alabilirsiniz.
 
-Bir oran denetimi kuralı, herhangi bir istemci IP adresinden anormal derecede yüksek trafiği sınırlar.
+Bir hız denetim kuralı, herhangi bir istemci IP adresinden anormal yüksek trafiği sınırlar.
 
-- *Hız sınırlayıcı kurallar*: Bir dakikalık süre boyunca istemci IP adresinden izin verilen web isteklerinin sayısına bir eşik yapılandırabilirsiniz. Bu kural, istemci IP adresinden gelen tüm isteklere izin veren veya engelleyen IP listesi tabanlı izin verme/engelleme özel kuralından farklıdır. Oran sınırları, tanecikli hız kontrolü için HTTP(S) parametre eşleşmeleri gibi ek eşleşme koşullarıyla birleştirilebilir.
+- *Hız sınırlandırma kuralları*: bir dakikalık süre boyunca istemci IP adresinden izin verilen Web isteği sayısında bir eşik yapılandırabilirsiniz. Bu kural, bir istemci IP adresinden tüm istekleri izin veren veya engelleyen bir IP listesi tabanlı izin verme/engelleme özel kuralından farklıdır. Hız sınırları, ayrıntılı hız denetimi için HTTP (S) parametre eşleşmeleri gibi ek eşleşme koşullarıyla birleştirilebilir.
 
 ### <a name="azure-managed-rule-sets"></a>Azure tarafından yönetilen kural kümeleri
 
-Azure tarafından yönetilen kural kümeleri, ortak bir güvenlik tehditleri kümesine karşı koruma dağıtmanın kolay bir yolunu sağlar. Bu kural kümeleri Azure tarafından yönetildiği için, kurallar yeni saldırı imzalarına karşı korumak için gerektiği gibi güncelleştirilir. Azure yönetilen Varsayılan Kural Kümesi, aşağıdaki tehdit kategorilerine karşı kurallar içerir:
+Azure tarafından yönetilen kural kümeleri, yaygın bir güvenlik tehditleri kümesine karşı koruma dağıtmanın kolay bir yolunu sağlar. Bu RuleSets 'ler Azure tarafından yönetildiğinden, yeni saldırı imzalarından korunmak için kurallar gerektiği şekilde güncelleştirilir. Azure yönetilen varsayılan kural kümesi, aşağıdaki tehdit kategorilerine karşı kuralları içerir:
 
 - Siteler arası betik
 - Java saldırıları
 - Yerel dosya ekleme
-- PHP enjeksiyon atakları
-- Uzaktan komut yürütme
+- PHP ekleme saldırıları
+- Uzak komut yürütme
 - Uzak dosya ekleme
-- Oturum fiksasyonu
+- Oturum armatürü
 - SQL ekleme koruması
-- Protokol saldırganları
+- Protokol saldırganlar
 
-Kural kümesine yeni saldırı imzaları eklendiğinde Varsayılan Kural Kümesi'nin sürüm numarası artışlar.
-Varsayılan Kural Kümesi, WAF ilkelerinizde *Algılama* modunda varsayılan olarak etkinleştirilir. Uygulama gereksinimlerinizi karşılamak için Varsayılan Kural Kümesi'ndeki tek tek kuralları devre dışı bırakabilir veya etkinleştirebilirsiniz. Ayrıca kural başına belirli eylemleri (ALLOW/BLOCK/REDIRECT/LOG) da ayarlayabilirsiniz. Yönetilen Varsayılan Kural Kümesi için varsayılan eylem *Engelle.*
+Kural kümesine yeni saldırı imzaları eklendiğinde varsayılan kural kümesinin sürüm numarası artar.
+Varsayılan kural kümesi, WAF ilkelerinizin *algılama* modunda varsayılan olarak etkindir. Varsayılan kural kümesindeki kuralları uygulama gereksinimlerinizi karşılayacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz. Kural başına belirli eylemleri (ızın verme/engelleme/yeniden yönlendirme/günlük) da ayarlayabilirsiniz. Yönetilen varsayılan kural kümesi için varsayılan eylem *blok*' dır.
 
-Varsayılan Kural Kümesi'ndeki kurallar değerlendirilmeden önce özel kurallar her zaman uygulanır. Bir istek özel bir kuralla eşleşirse, ilgili kural eylemi uygulanır. İstek engellenir veya arka uca aktarılır. Varsayılan Kural Kümesi'ndeki başka özel kurallar veya kurallar işlenmez. Varsayılan Kural Kümesini WAF ilkelerinizden de kaldırabilirsiniz.
+Varsayılan kural kümesindeki kuralların değerlendirilmesinden önce özel kurallar her zaman uygulanır. Bir istek özel bir kuralla eşleşiyorsa, buna karşılık gelen kural eylemi uygulanır. İstek engellendi ya da arka uca geçirildi. Başka özel kurallar veya varsayılan kural kümesindeki kurallar işlenmez. Ayrıca, WAF ilkelerinizin varsayılan kural kümesini de kaldırabilirsiniz.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Azure portalı, REST API'leri, Azure Kaynak Yöneticisi şablonlarını ve Azure PowerShell'i kullanarak tüm WAF kural türlerini yapılandırabilir ve dağıtabilirsiniz.
+Azure portal, REST API 'Leri, Azure Resource Manager şablonları ve Azure PowerShell kullanarak tüm WAF kural türlerini yapılandırabilir ve dağıtabilirsiniz.
 
 ## <a name="monitoring"></a>İzleme
 
-CDN ile WAF izleme, uyarıları izlemek ve trafik eğilimlerini kolayca izlemek için Azure Monitor ile entegre edilmiştir.
+CDN ile WAF izleme, uyarıları izlemek ve trafik eğilimlerini kolayca izlemek için Azure Izleyici ile tümleşiktir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure portalını kullanarak Azure CDN ile BIR WAF ilkesi oluşturun](waf-cdn-create-portal.md)
+- [Öğretici: Azure portal kullanarak Azure CDN bir WAF ilkesi oluşturma](waf-cdn-create-portal.md)

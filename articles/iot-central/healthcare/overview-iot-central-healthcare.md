@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central ile sağlık çözümleri oluşturun | Microsoft Dokümanlar
-description: Azure IoT Central uygulama şablonlarını kullanarak sağlık hizmeti çözümü oluşturmayı öğrenin.
+title: Azure IoT Central ile sağlık çözümleri oluşturun | Microsoft Docs
+description: Azure IoT Central uygulama şablonlarını kullanarak sağlık çözümü oluşturmayı öğrenin.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -9,39 +9,39 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021500"
 ---
 # <a name="building-healthcare-solutions-with-azure-iot-central"></a>Azure IoT Central ile sağlık çözümleri oluşturma 
 
 
 
-Uygulama şablonlarını kullanarak Azure IoT Central ile sağlık çözümleri oluşturmayı öğrenin.
+Uygulama şablonları kullanarak Azure IoT Central ile sağlık çözümleri oluşturmayı öğrenin.
 
 ## <a name="what-is-continuous-patient-monitoring-template"></a>Sürekli hasta izleme şablonu nedir?
 
-Sağlık IoT alanında, Sürekli Hasta İzleme geri kabul riskini azaltmanın, kronik hastalıkların daha etkili bir şekilde yönetilmesinin ve hasta sonuçlarının iyileştirilmesinin en önemli itici kaynaklarından biridir. Sürekli Hasta İzleme iki ana kategoriye ayrılabilir:
+Sağlık IoT alanında sürekli hasta Izleme, readmissions riskini azaltma, zaman zaman daha etkili bir şekilde yönetim ve hasta sonuçlarını artırma önemli Etkinleştiricilerinde biridir. Sürekli hasta Izleme iki ana kategoriye ayrılabilir:
 
-1. **Hasta takibi**: Hastanede tıbbi giyilebilir cihazlar ve diğer cihazları kullanarak, bakım ekipleri hastayı günde birkaç kez kontrol etmesi için bir hemşire göndermek zorunda kalmadan hastanın hayati belirtilerini ve tıbbi durumlarını izleyebilir. Bakım ekipleri, hastanın bildirimler yoluyla kritik ilgiye ihtiyaç duyduğu anı anlayabilir ve zamanlarını etkin bir şekilde önceliklendirebilir.
-1. **Uzaktan hasta takibi**: Hastane dışındaki hastaları izlemek için tıbbi giyilebilir cihazlar ve hasta raporu sonuçları (PrO' lar) kullanılarak geri kabul riski azaltılabilir. Kronik hastalık hastalarından ve rehabilitasyon hastalarından elde edilen veriler, hastaların bakım planlarına bağlı kalmalarını ve hasta bozulması uyarılarının kritik hale gelmeden önce bakım ekiplerine su yüzüne çıkarılabilmesini sağlamak için toplanabilir.
+1. **Hasta izleme**: tıbbi wearables ve diğer cihazları barındırmastanda kullanarak, ekiplere bir günde birden çok kez göz atmak için bir Nurme göndermek zorunda kalmadan hasta öneme sahip belirtileri ve tıbbi koşulları izleyebilir. Ekipler, bir hastanın bildirimler aracılığıyla önemli bir dikkat gerektiren süreyi anlayabilmesi ve zaman süresini önceliklendirir.
+1. **Uzaktan hasta izleme**: tıbbi wearables ve hasta bildirilen sonuçları (profesyonelleri) kullanarak hastaların hostanın dışında izlemesini sağlamak için, readgörev riski düşürülemez. Hastalar ve rehabilitasyon hastaları 'nın verileri, hastaların planlara uygunluğunu sağlamak için toplanabilir ve hasta olma uyarıları, önemli olmaya başlamadan önce ekiplere yönelik olarak ortaya çıkmış olabilir.
 
-Bu uygulama şablonu, Sürekli Hasta İzleme'nin her iki kategorisi için çözümler oluşturmak için kullanılabilir. Avantajlara şunlar dahildir:
+Bu uygulama şablonu, her iki sürekli hasta Izleme kategorisi için çözümler oluşturmak üzere kullanılabilir. Avantajlara şunlar dahildir:
 
-* Farklı türde tıbbi giyilebilir leri IoT Central örneğine sorunsuz bir şekilde bağlayın.
-* Sağlıklı kalmalarını sağlamak için cihazları izleyin ve yönetin.
-* Uygun uyarıları tetiklemek için aygıt verileri etrafında özel kurallar oluşturun.
-* Uyumlu bir veri deposu olan FHIR için hasta sağlık verilerinizi Azure API'sine aktarın.
-* Toplanan öngörüleri varolan veya yeni iş uygulamalarına aktarın.
+* Farklı tıp wearables türlerini IoT Central örneğine sorunsuzca bağlayın.
+* Cihazların sağlıklı kalmasını sağlamak için cihazları izleyin ve yönetin.
+* Uygun uyarıları tetiklemek için cihaz verileri etrafında özel kurallar oluşturun.
+* Hasta sistem verilerinizi, uyumlu bir veri deposu olan FHıR için Azure API 'sine dışarı aktarın.
+* Toplu öngörüleri mevcut veya yeni iş uygulamalarına dışarı aktarın.
 
 >[!div class="mx-imgBorder"] 
->![CPM panosu](media/in-patient-dashboard.png)
+>![CPM-Pano](media/in-patient-dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sürekli Hasta izleme çözümü oluşturmaya başlamak için:
+Sürekli hasta izleme çözümü oluşturmaya başlamak için:
 
-* [Uygulama şablonu dağıtma](tutorial-continuous-patient-monitoring.md)
-* [Örnek mimariye bakın](concept-continuous-patient-monitoring-architecture.md)
+* [Uygulama şablonunu dağıtma](tutorial-continuous-patient-monitoring.md)
+* [Örnek bir mimariye bakın](concept-continuous-patient-monitoring-architecture.md)

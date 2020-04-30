@@ -1,6 +1,6 @@
 ---
-title: Azure Yığını sanal makineleri Azure Güvenlik Merkezi'ne
-description: Bu hızlı başlangıç, Azure Yığını sanal makinelerinde Azure Monitörü, Güncelleştirme ve Yapılandırma Yönetimi sanal makine uzantısını nasıl sağabileceğinizi gösterir.
+title: Azure Güvenlik Merkezi 'ne Azure Stack sanal makineler ekleme
+description: Bu hızlı başlangıçta Azure Izleyici, güncelleştirme ve yapılandırma yönetimi sanal makine uzantısının Azure Stack sanal makinelerde nasıl sağlanacağı gösterilmektedir.
 services: security-center
 documentationcenter: na
 author: pipposera
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
 ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73686517"
 ---
-# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Quickstart: Azure Stack sanal makinelerinizde Güvenlik Merkezi'ne
-Azure aboneliğinizde bulunduktan sonra, Azure Yığını pazaryerinden **Azure Monitörü, Güncelleme ve Yapılandırma Yönetimi** sanal makine uzantısını ekleyerek Azure Yığını'nda çalışan sanal makinelerinizi korumasını Güvenlik Merkezi'ne etkinleştirebilirsiniz.
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Hızlı başlangıç: Azure Stack sanal makinelerinizi Güvenlik Merkezi 'ne ekleme
+Azure aboneliğinizi ekledikten sonra, Azure Stack marketi 'nden **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısını ekleyerek Azure Stack çalıştıran sanal makinelerinizi korumak Için Güvenlik Merkezi 'ni etkinleştirebilirsiniz.
 
-Bu hızlı başlangıç, Azure Yığını'nda çalışan sanal bir makineye (Linux ve Windows her ikisi de desteklenir) **Azure Monitörü, Güncelleme ve Yapılandırma Yönetimi** sanal makine uzantısını nasıl ekleyeceğinizi gösterir.
+Bu hızlı başlangıçta, **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makinesi uzantısının bir sanal makinede (Linux ve Windows 'un her ikisi de desteklenir) Azure Stack nasıl ekleneceğini gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bu hızlı başlatmaya başlamadan önce Güvenlik Merkezi'nin Standart katmanında bir Azure aboneliğiniz olması gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi Standart katmanını 30 gün boyunca ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Bu hızlı başlangıcı başlatmadan önce güvenlik merkezi 'nin standart katmanında bir Azure aboneliğinizin olması gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi Standart katmanını, 30 gün boyunca ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="select-your-workspace-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde çalışma alanınızı seçin
+## <a name="select-your-workspace-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde çalışma alanınızı seçme
 
-1. [Azure portalında](https://azure.microsoft.com/features/azure-portal/)oturum açın.
-2. Microsoft **Azure** menüsünde **Güvenlik Merkezi'ni**seçin. **Güvenlik Merkezi - Genel Bakış** açılır. 
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açın.
+2. **Microsoft Azure** menüsünde **Güvenlik Merkezi**' ni seçin. **Güvenlik Merkezi - Genel Bakış** açılır. 
 
    ![Güvenlik Merkezi’ne genel bakış][2]
 
@@ -43,40 +43,40 @@ Bu hızlı başlatmaya başlamadan önce Güvenlik Merkezi'nin Standart katmanı
 
    ![Kullanmaya başlayın][3]
 
-5. **Yeni Azure dışı bilgisayarlar ekle** altında, **Yapılandır**’a tıklayın. Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya Azure Yığını VM'nin güvenlik verilerini bildirmesini istediğiniz başka bir çalışma alanını seçin.
+5. **Yeni Azure dışı bilgisayarlar ekle** altında, **Yapılandır**’a tıklayın. Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya Azure Stack VM 'nin güvenlik verilerini rapor etmek istediğiniz başka bir çalışma alanını seçin.
 
     ![Azure dışı bilgisayar ekleme](./media/quick-onboard-windows-computer/non-azure.png)
 
-   **Doğrudan Aracılı** bıçak, aracıyı yapılandırmada kullanmak üzere çalışma alanı kimliğinizin aracısını ve anahtarlarını indirmek için bir bağlantıyla açılır.
+   Aracı yapılandırma bölümünde kullanmak üzere çalışma alanı KIMLIĞINIZ için aracı ve anahtarları indirme bağlantısı ile **doğrudan aracı** dikey penceresi açılır.
 
    >[!NOTE]
-   > Aracıyı el ile indirmeniz gerekmez. Aracı aşağıdaki adımlarda VM uzantısı olarak yüklenir.
+   > Aracıyı el ile indirmeniz gerekmez. Aracı aşağıdaki adımlarda bir VM uzantısı olarak yüklenecektir.
 
 6. **Çalışma Alanı Kimliği**’nin sağ tarafında, kopyala simgesini seçin ve kimliği Not Defteri’ne yapıştırın.
 
 7. **Birincil Anahtar**’ın sağ tarafında, kopyala simgesini seçin ve anahtarı Not Defteri’ne yapıştırın.
 
-## <a name="add-the-virtual-machine-extension-to-your-existing-azure-stack-virtual-machines"></a>Mevcut Azure Yığını sanal makinelerinize sanal makine uzantısını ekleyin
-Azure Yığını'nda çalışan sanal makinelere **Azure Monitörü, Güncelleme ve Yapılandırma Yönetimi** sanal makine uzantısını eklemeniz gerekir.
+## <a name="add-the-virtual-machine-extension-to-your-existing-azure-stack-virtual-machines"></a>Sanal makine uzantısını mevcut Azure Stack sanal makinelerinize ekleyin
+Artık Azure Stack çalışan sanal makinelere **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** sanal makine uzantısını eklemeniz gerekir.
 
-1. Yeni bir tarayıcı sekmesinde Azure **Yığını** portalınızda oturum açın.
-2. **Sanal makineler** sayfasına gidin, Güvenlik Merkezi ile korumak istediğiniz sanal makineyi seçin. Azure Yığını'nda sanal bir makine oluşturma hakkında bilgi için [Windows sanal makineleri için bu hızlı başlatmaya](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) veya Linux sanal makineleri için bu hızlı [başlatmaya](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)bakın.
-3. **Uzantılar**'ı seçin. Bu sanal makineye yüklenen sanal makine uzantılarının listesi gösterilir.
-4. **Ekle** sekmesini tıklatın. **Yeni Kaynak** menü bıçağı açılır ve kullanılabilir sanal makine uzantılarının listesini gösterir. 
-5. Azure **Monitörü, Güncelleme ve Yapılandırma Yönetimi** uzantısını seçin ve **Oluştur'u**tıklatın. **Install uzantı** lı yapılandırma bıçağı açılır.
+1. Yeni bir tarayıcı sekmesinde **Azure Stack** portalda oturum açın.
+2. **Sanal makineler** sayfasına gidin, güvenlik merkezi ile korumak istediğiniz sanal makineyi seçin. Azure Stack sanal makine oluşturma hakkında daha fazla bilgi için, [Windows sanal makineler için bu hızlı başlangıç](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) veya [Linux sanal makineleri için bu hızlı başlangıç](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)bölümüne bakın.
+3. **Uzantılar**'ı seçin. Bu sanal makinede yüklü olan sanal makine uzantılarının listesi gösteriliyor.
+4. **Ekle** sekmesine tıklayın. **Yeni kaynak** menüsü dikey penceresi açılır ve kullanılabilir sanal makine uzantılarının listesini gösterir. 
+5. **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını seçin ve **Oluştur**' a tıklayın. **Uzantı** yapılandırma yapılandırma dikey penceresi açılır.
 
 >[!NOTE]
-> Pazar yerinizde listelenen **Azure Monitörü, Güncelleme ve Yapılandırma Yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek için lütfen Azure Stack operatörünüze ulaşın.
+> Market 'te listelenen **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** uzantısını görmüyorsanız, kullanılabilir hale getirmek için lütfen Azure Stack işletmenine ulaşın.
 
-6. Yükle **uzantılı** yapılandırma bıçağına, önceki yordamda Notepad'e kopyaladığınız **Çalışma Alanı Kimliği** ve Çalışma **Alanı Anahtarını (Birincil Anahtar)** yapıştırın.
-7. Gerekli yapılandırma ayarlarını sağlamayı bitirdiğinizde **Tamam'ı**tıklatın.
-8. Uzantı yüklemesi tamamlandıktan sonra, durumu **Prosucceeded Hükmünde**olarak gösterecektir. Sanal makinenin Güvenlik Merkezi portalında görünmesi bir saat kadar sürebilir.
+6. **Uzantı** yapılandırma yapılandırma dikey penceresinde, önceki yordamda not defteri ' ne kopyaladığınız **çalışma alanı kimliğini** ve **çalışma alanı anahtarını (birincil anahtar)** yapıştırın.
+7. Gerekli yapılandırma ayarlarını sağlamayı tamamladığınızda **Tamam**' a tıklayın.
+8. Uzantı yüklemesi tamamlandıktan sonra, durumu **sağlama başarılı**olarak görünür. Sanal makinenin güvenlik merkezi portalında görünmesi bir saate kadar sürebilir.
 
-Windows aracısını yükleme ve yapılandırma hakkında daha fazla bilgi için [Windows bilgisayarları bağlayın'a](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)bakın.
+Windows için aracı yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Windows bilgisayarlarını bağlama](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
-Aracı sorunlarının Linux sorun gidermesi için Azure [Log Analytics Linux Agent sorun giderme](../azure-monitor/platform/agent-linux-troubleshoot.md)bölümüne bakın.
+Aracı sorunlarını gidermek için bkz. [Azure Log Analytics Linux Aracısı sorunlarını giderme](../azure-monitor/platform/agent-linux-troubleshoot.md).
 
-Artık Azure VM’lerinizi ve Azure olmayan bilgisayarlarınızı tek bir yerde izleyebilirsiniz. Azure'daki Güvenlik Merkezi portalında, **Compute**altında, önerileriyle birlikte tüm VM'lere ve bilgisayarlara genel bir bakış alabilirsiniz. Güvenlik Merkezi ayrıca Güvenlik uyarıları bu bilgisayarlar için herhangi bir algılama yüzeyler.
+Artık Azure VM’lerinizi ve Azure olmayan bilgisayarlarınızı tek bir yerde izleyebilirsiniz. Azure 'daki Güvenlik Merkezi portalında, **işlem**altında tüm VM 'lere ve bilgisayarlara yönelik önerilerle ilgili bir genel bakış sunulmaktadır. Güvenlik Merkezi ayrıca güvenlik uyarılarında bu bilgisayarlar için herhangi bir algılamayı yüzeyler.
 
   ![Bilgi İşlem dikey penceresi][6]
 
@@ -84,20 +84,20 @@ Artık Azure VM’lerinizi ve Azure olmayan bilgisayarlarınızı tek bir yerde 
 
 ![simge1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Azure dışı bilgisayar 
 
-![simge2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM (Azure Yığını VM'leri bu grupta gösterilecek)
+![simge2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM (Azure Stack VM 'Ler bu grupta görünür)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Artık gerekmediğinde, Azure Yığını portalı üzerinden uzantıyı sanal makineden kaldırabilirsiniz.
+Artık gerekli değilse, Azure Stack portalı aracılığıyla sanal makineden uzantıyı kaldırabilirsiniz.
 
 Uzantıyı kaldırmak için:
 
-1. Azure **Yığın Portalı'nı**açın.
-2. Sanal **makineler** sayfasına gidin, uzantıyı kaldırmak istediğiniz sanal makineyi seçin.
-3. **Uzantıları**seçin, **Microsoft.EnterpriseCloud.Monitoring**uzantısını seçin.
-4. **Kaldır'a**tıklayın ve **Evet'i**tıklatarak seçimonaylayın.
+1. **Azure Stack portalını**açın.
+2. **Sanal makineler** sayfasına gidin, uzantıyı kaldırmak istediğiniz sanal makineyi seçin.
+3. **Uzantılar**' ı seçin, **Microsoft. Enterprisecloud. Monitoring**uzantısını seçin.
+4. **Kaldır**' a tıklayın ve **Evet**' e tıklayarak seçiminizi onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, Azure Yığını'nda çalışan sanal bir makinede Azure Monitör, Güncelleştirme ve Yapılandırma Yönetimi uzantısını siz de dahil edinmişsiniz. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
+Bu hızlı başlangıçta, Azure Stack çalıştıran bir sanal makinede Azure Izleyici, güncelleştirme ve yapılandırma yönetimi uzantısını sağladınız. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Öğretici: Güvenlik ilkelerini tanımlama ve değerlendirme](tutorial-security-policy.md)

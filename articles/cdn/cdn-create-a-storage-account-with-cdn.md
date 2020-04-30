@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Azure depolama hesabını Azure CDN ile tümleştirme
+title: Hızlı başlangıç-Azure CDN bir Azure Depolama hesabını tümleştirme
 description: Azure İçerik Teslim Ağı'nı (CDN) Azure Depolama'dan önbelleğe blob alarak yüksek bant genişlikli içerik sunmak için kullanmayı öğrenin.
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 35de327b4a6602bb5191157e3b3c4e56c9c091b5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254096"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Hızlı Başlangıç: Azure depolama hesabını Azure CDN ile tümleştirme
@@ -55,9 +55,9 @@ Bir depolama hesabı oluşturmak için Azure portal ve PowerShell dahil olmak ü
    
     Bu değer, aboneliğin blob, kuyruk veya tablo kaynağı adreslerine ulaşmak için kullanılan URI içindeki konak adı olur. Blob depolamadaki bir kapsayıcı kaynağının adresine ulaşmak için aşağıdaki biçimde bir URI kullanın:
    
-    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt; *
+    http://*&lt;storageacountlabel&gt;*. blob.Core.Windows.net/*&lt;myContainer&gt; *
 
-    * &lt;&gt; StorageAccountLabel'in* **Ad** kutusuna girdiğiniz değerle ifade ettiği yer.
+    Burada * &lt;storageaccountlabel&gt; * , **ad** kutusuna girdiğiniz değeri ifade eder.
    
     > [!IMPORTANT]    
     > URL etiketi, depolama hesabının URI'sinin alt etki alanını oluşturur ve Azure'da barındırılan tüm hizmetler arasında benzersiz olması gerekir.
@@ -80,7 +80,7 @@ Bir depolama hesabı oluşturmak için Azure portal ve PowerShell dahil olmak ü
     
 5. Oluşturulduktan sonra depolama hesabını panonuza kaydetmek için **Panoya sabitle**'yi seçin.
     
-6. **Oluştur'u**seçin. Depolama hesabını oluşturmayı tamamlamak birkaç dakika alabilir.
+6. **Oluştur**’u seçin. Depolama hesabını oluşturmayı tamamlamak birkaç dakika alabilir.
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Depolama hesabı için Azure CDN'yi etkinleştirme
 
@@ -96,12 +96,12 @@ Azure CDN'yi doğrudan depolama hesabınızdan depolama hesabınız için etkinl
 
     | Ayar  | Değer |
     | -------- | ----- |
-    | **CDN profili** | **Yeni Oluştur'u** seçin ve profil adınızı girin, örneğin *my-cdn-profile-123*. Bu adın küresel olarak benzersiz olması gerekir.  |
-    | **Fiyatlandırma katmanı** | Açılan listeden **Standart Verizon**’u seçin. |
-    | **CDN uç noktası adı** | Bitiş noktası ana adınızı, yani *benim-bitiş noktam-123'e*girin. Bu adın küresel olarak benzersiz olması gerekir. Bu ad, önbelleğe alınmış kaynaklarınızı etki alanı _ &lt;bitiş noktası adından&gt;_ azureedge.net olarak erişmek için kullanılır. |
+    | **CDN profili** | **Yeni oluştur** ' u seçin ve profil adınızı girin, örneğin, *My-CDN-profile-123*. Bu adın küresel olarak benzersiz olması gerekir.  |
+    | **Fiyatlandırma Katmanı** | Açılan listeden **Standart Verizon**’u seçin. |
+    | **CDN uç noktası adı** | Uç nokta ana bilgisayar adını girin (örneğin, *My-Endpoint-123*). Bu adın küresel olarak benzersiz olması gerekir. Bu ad, etki alanı _ &lt;uç noktası adı&gt;_. azureedge.net olan önbelleğe alınmış kaynaklarınıza erişmek için kullanılır. |
     | **Kaynak konak adı** | Yeni CDN uç noktası, kaynak sunucu için varsayılan olarak depolama hesabınızın konak adını kullanır. |
 
-3. **Oluştur'u**seçin. Uç nokta oluşturulduktan sonra uç nokta listesinde görünür.
+3. **Oluştur**’u seçin. Uç nokta oluşturulduktan sonra uç nokta listesinde görünür.
 
     ![Depolama yeni CDN uç noktası](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
@@ -117,7 +117,7 @@ CDN uç noktası yapılandırma sayfasını açmak için depolama hesabı **Azur
 ## <a name="access-cdn-content"></a>CDN içeriğine erişme
 CDN'de önbelleğe alınmış içeriğe erişmek için portalda verilen CDN URL'sini kullanın. Önbelleğe alınan bir blobun adresi aşağıdaki biçimdedir:
 
-http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
+http://<*EndpointName*\>. azureedge.net/<*mypubliccontainer*\>/<*blobname*\>
 
 > [!NOTE]
 > Bir depolama hesabına Azure CDN erişimini etkinleştirdikten sonra herkesin erişebildiği nesneler CDN POP önbelleğine almaya uygundur. CDN'de önbelleğe alınmış durumdaki bir nesneyi değiştirirseniz, Azure CDN, yaşam süresinin dolmasından sonra önbelleğe alınan içeriği yenileyene kadar yeni içerik kullanılamaz.

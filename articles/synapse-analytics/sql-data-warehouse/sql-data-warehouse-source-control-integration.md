@@ -1,6 +1,6 @@
 ---
 title: Kaynak Denetimi Tümleştirmesi
-description: Azure Repos (Git ve GitHub) kullanarak yerel kaynak denetimi tümleştirmesi ile SQL havuzu için kurumsal sınıf Veritabanı DevOps deneyimi.
+description: Azure Repos (git ve GitHub) kullanarak yerel kaynak denetimi tümleştirmesiyle SQL havuzu için kurumsal sınıf veritabanı DevOps deneyimi.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,74 +11,74 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81415093"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>SQL havuzu için Kaynak Denetim Entegrasyonu
+# <a name="source-control-integration-for-sql-pool"></a>SQL havuzu için kaynak denetimi tümleştirmesi
 
-Bu öğretici, SQL Server Data araçları (SSDT) veritabanı projenizi kaynak denetimiyle nasıl tümleştirilene özetler.  Kaynak denetimi tümleştirmesi, Azure Synapse Analytics'teki SQL havuz kaynağıyla sürekli tümleştirme ve dağıtım ardışık alan ınızın oluşturulmasının ilk adımıdır.
+Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak denetimiyle tümleştirme özetlenmektedir.  Kaynak denetimi tümleştirmesi, Azure SYNAPSE Analytics 'te SQL havuzu kaynağıyla sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ilk adımıdır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-- [Azure DevOps kuruluşuna](https://azure.microsoft.com/services/devops/) kaydolun
-- [Oluştur ve Bağla](create-data-warehouse-portal.md) öğreticisini gözden geçirin
-- [Visual Studio 2019'u Yükle](https://visualstudio.microsoft.com/vs/older-downloads/)
+- [Azure DevOps organizasyonu](https://azure.microsoft.com/services/devops/) için kaydolun
+- [Oluşturma ve bağlanma](create-data-warehouse-portal.md) öğreticisine gidin
+- [Visual Studio 2019 'yi yükler](https://visualstudio.microsoft.com/vs/older-downloads/)
 
-## <a name="set-up-and-connect-to-azure-devops"></a>Azure DevOps'leri ayarlama ve bu tür lere bağlanma
+## <a name="set-up-and-connect-to-azure-devops"></a>Azure DevOps 'ı ayarlama ve bu sunucuya bağlanma
 
-1. Azure DevOps Kuruluşunuzda, Bir Azure Repo deposu aracılığıyla SSDT veritabanı projenizi barındıracak bir proje oluşturun
+1. Azure DevOps kuruluşunuzda, bir Azure depo deposu aracılığıyla SSDT veritabanı projenizi barındıracak bir proje oluşturun
 
-   ![Proje Oluştur](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Proje Oluştur")
+   ![Proje oluştur](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Proje oluştur")
 
-2. Visual Studio'yu açın ve "Bağlantıları Yönet" seçeneğini seçerek 1.
+2. "Bağlantıları Yönet" i seçerek Visual Studio 'Yu açın ve adım 1 ' deki Azure DevOps kuruluşunuza ve projenize bağlanın
 
-   ![Bağlantıları Yönetme](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönetme")
+   ![Bağlantıları Yönet](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönet")
 
    ![Bağlan](./media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlan")
 
-3. Azure Repo deponuzu projenizden yerel makinenize klonlama
+3. Azure depoyu deponuzu projenizden yerel makinenize kopyalayın
 
-   ![Klon repo](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klon repo")
+   ![Depoyu Kopyala](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Depoyu Kopyala")
 
 ## <a name="create-and-connect-your-project"></a>Projenizi oluşturun ve bağlayın
 
-1. Visual Studio'da, **yerel klonlanmış deponuzda** hem dizin hem de yerel Git deposu içeren yeni bir SQL Server Veritabanı Projesi oluşturun
+1. Visual Studio 'da **Yerel kopyalanmış deponuzda** bir dizin ve yerel Git deposu ile yeni bir SQL Server veritabanı projesi oluşturun
 
-   ![Yeni proje oluşturma](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Yeni proje oluşturma")  
+   ![Yeni proje oluştur](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Yeni proje oluşturma")  
 
-2. Boş sqlprojenize sağ tıklayın ve veri ambarınızı veritabanı projesine aktarın
+2. Boş sqlprojenize sağ tıklayın ve veri Ambarınızı veritabanı projesine aktarın
 
-   ![İthalat Projesi](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "İthalat Projesi")  
+   ![Projeyi içeri aktar](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Projeyi içeri aktar")  
 
-3. Visual Studio'daki takım gezgininde, tüm değişikliklerinizi yerel Git deponuzda gerçekleştirin
+3. Visual Studio 'da Takım Gezgini 'nde, tüm değişikliklerinizi yerel git deponuza işleyin
 
    ![İşleme](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "İşleme")  
 
-4. Artık klonlanmış depoda yerel olarak işlenen değişikliklere sahip olduğunuzda, Değişikliklerinizi Azure DevOps projenizde Azure Repo deposunuzda eşitle ve itin.
+4. Kopyalanan depoda yerel olarak işlenen değişikliklere sahip olduğunuza göre, Azure DevOps projenizdeki Azure depo deponuzda yaptığınız değişiklikleri eşitleyin ve yeniden gönderin.
 
-   ![Eşitleme ve İtme - evreleme](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Senkronize ve itme - evreleme")
+   ![Eşitleme ve Itme hazırlama](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Eşitleme ve itme hazırlama")
 
-   ![Eşitleme ve İtme](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Senkronize etme ve itme")  
+   ![Eşitle ve Gönder](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Eşitle ve Gönder")  
 
 ## <a name="validation"></a>Doğrulama
 
-1. Visual Studio SQL Server Data Tools 'dan (SSDT) veritabanı projenizdeki bir tablo sütununu güncelleştirerek değişiklikleri Azure Repo'nuza doğrulayın
+1. Visual Studio SQL Server Veri Araçları (SSDT) veritabanı projenizdeki tablo sütununu güncelleştirerek Azure deponuzda yapılan değişiklikleri doğrulayın
 
-   ![Güncelleştirme sütunu doğrulama](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Güncelleştirme sütunu doğrulama")
+   ![Güncelleştirme sütununu doğrula](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Güncelleştirme sütununu doğrula")
 
-2. Yerel deponuzdaki değişikliği Azure Repo'nuza işlemeve itme
+2. Yerel deponuzdaki değişikliği Azure deponuza işleyin ve gönderin
 
    ![Değişiklikleri gönderme](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Değişiklikleri gönderme")
 
-3. Değişikliğin Azure Repo deponuzda itildiğini doğrulama
+3. Azure depo deponuzda değişikliğin yapıldığını doğrulayın
 
-   ![Doğrula](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Değişiklikleri doğrulama")
+   ![Doğrula](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Değişiklikleri doğrula")
 
-4. (**İsteğe bağlı**) Azure Repo deposunuzdaki ve yerel deponuzdaki nesne tanımlarının veri ambarınızı yansıttığından emin olmak için SSDT kullanarak Hedef Veri ambarınızdaki değişiklikleri karşılaştır'ı ve güncelleştirin
+4. (**Isteğe bağlı**) Azure depo deponuzdaki nesne tanımlarının ve yerel deponun veri Ambarınızı yansıttığından emin olmak için, SSDT kullanarak hedef veri ambarınızdaki değişiklikleri güncelleştirme, şema karşılaştırması kullanın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SQL havuzu için geliştirme](sql-data-warehouse-overview-develop.md)
+- [SQL havuzu için geliştirme geliştirme](sql-data-warehouse-overview-develop.md)

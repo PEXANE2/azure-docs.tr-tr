@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL'e bağlanın
-description: Synapse SQL'e bağlanın.
+title: SYNAPSE SQL 'e bağlanma
+description: SYNAPSE SQL 'e bağlanın.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,32 +10,32 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424611"
 ---
-# <a name="connect-to-synapse-sql"></a>Synapse SQL'e bağlanın
-Azure Synapse Analytics'teki Synapse SQL özelliğine bağlanın.
+# <a name="connect-to-synapse-sql"></a>SYNAPSE SQL 'e bağlanma
+Azure SYNAPSE Analytics 'te SYNAPSE SQL özelliğine bağlanın.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (önizleme)
+## <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (Önizleme)
 
-Tam olarak desteklenen araç Azure Data Studio 'dır (önizleme).
+Tam olarak desteklenen araç Azure Data Studio (Önizleme).
 
-SQL Server Management Studio kısmen sürüm 18.4'ten desteklenir. Bağlanma ve sorgulama gibi sınırlı özellikler vardır.
+SQL Server Management Studio sürüm 18,4 ' den kısmen desteklenir. Bağlanma ve sorgulama gibi sınırlı özellikler vardır.
 
 ## <a name="find-your-server-name"></a>Sunucu adınızı bulma
 
-Aşağıdaki örnekte SQL Pool için sunucu adı: showdemoweu.sql.azuresynapse.net.
-Aşağıdaki örnekte SQL on-demand için sunucu adı: showdemoweu-ondemand.sql.azuresynapse.net.
+Aşağıdaki örnekteki SQL havuzu için sunucu adı: showdemoweu.sql.azuresynapse.net.
+Aşağıdaki örnekteki SQL için isteğe bağlı sunucu adı: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Tam sunucu adını bulmak için:
 
-1. [Azure portalına](https://portal.azure.com)gidin.
-2. **Synapse çalışma alanlarını**tıklatın.
-3. Bağlanmak istediğiniz çalışma alanını tıklatın.
-4. Genel bakışa gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
+2. **SYNAPSE çalışma alanları**' na tıklayın.
+3. Bağlanmak istediğiniz çalışma alanına tıklayın.
+4. Genel Bakış ' a gidin.
 5. Tam sunucu adını bulun.
 
 ## <a name="sql-pool"></a>**SQL havuzu**
@@ -44,10 +44,10 @@ Tam sunucu adını bulmak için:
 
 ## <a name="sql-on-demand"></a>**İsteğe bağlı SQL**
 
-![Tam sunucu adı SQL on-demand](./media/connect-overview/server-connect-example-sqlod.png)
+![Tam sunucu adı isteğe bağlı SQL](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Desteklenen sürücüler ve bağlantı dizeleri
-Synapse SQL [ADO.NET,](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx) [ODBC,](https://msdn.microsoft.com/library/jj730314.aspx) [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC'yi](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)destekler. En son sürümü ve belgeleri bulmak için, önceki sürücülerden birini tıklatın. Azure portalından kullandığınız sürücü için bağlantı dizesini otomatik olarak oluşturmak için, önceki örnekteki **veritabanı bağlantı dizelerini göster'i** tıklatın. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
+SYNAPSE SQL [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)destekler. En son sürümü ve belgeleri bulmak için, önceki sürücülerden birine tıklayın. Azure portal kullandığınız sürücü için bağlantı dizesini otomatik olarak oluşturmak için, önceki örnekteki **veritabanı bağlantı dizelerini göster** ' e tıklayın. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
 
 > [!NOTE]
 > Bağlantınızın kısa süreli kesintiler sırasında devam etmesi için bağlantı zaman aşımını 300 saniyeye ayarlayın.
@@ -77,7 +77,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Bağlantı ayarları
-Synapse SQL bağlantı ve nesne oluşturma sırasında bazı ayarları standartlaştırır. Bu ayarlar geçersiz kılınamaz ve şunları içerir:
+SYNAPSE SQL, bağlantı ve nesne oluşturma sırasında bazı ayarları standartlaştırır. Bu ayarlar geçersiz kılınamaz ve şunları içerir:
 
 | Veritabanı Ayarı | Değer |
 |:--- |:--- |
@@ -88,7 +88,7 @@ Synapse SQL bağlantı ve nesne oluşturma sırasında bazı ayarları standartl
 
 ## <a name="recommendations"></a>Öneriler
 
-**İsteğe bağlı SQL** sorguları yürütmek için önerilen araçlar Azure Data [Studio](get-started-azure-data-studio.md) ve Azure Synapse Studio'dur.
+**SQL isteğe** bağlı sorguları yürütmek için önerilen Araçlar [Azure Data Studio](get-started-azure-data-studio.md) ve Azure SYNAPSE Studio.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Kimlik doğrulama seçenekleri hakkında daha fazla bilgi edinmek [için Synapse SQL'e kimlik doğrulama'ya](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)bakın.
+Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [SYNAPSE SQL kimlik doğrulaması](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

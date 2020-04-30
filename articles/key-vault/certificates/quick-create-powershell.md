@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Azure Key Vault'tan bir sertifika ayarlayın ve alın"
-description: Azure PowerShell kullanarak Azure Key Vault'tan sertifikanın nasıl ayarlanıp alınsüreceğini gösteren hızlı başlangıç
+title: 'Hızlı başlangıç: Azure Key Vault bir sertifikayı ayarlama ve alma'
+description: Azure PowerShell kullanarak Azure Key Vault bir sertifikanın nasıl ayarlanacağını ve alınacağını gösteren hızlı başlangıç
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -12,22 +12,22 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ecb9262a96d1c9857283de00224950d9bc7a583f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424716"
 ---
-# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Hızlı başlatma: Azure PowerShell'i kullanarak Azure Key Vault'tan sertifika ayarlayın ve alın
+# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
-Bu hızlı başlangıçta, Azure PowerShell ile Azure Key Vault'ta önemli bir kasa oluşturursunuz. Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [Genel Bakış'ı](../general/overview.md)inceleyebilirsiniz. Azure PowerShell, komutları veya komutları kullanarak Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bunu tamamladıktan sonra, bir sertifika saklarsınız.
+Bu hızlı başlangıçta, Azure PowerShell Azure Key Vault ' de bir Anahtar Kasası oluşturacaksınız. Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [genel bakışı](../general/overview.md)gözden geçirebilirsiniz. Azure PowerShell komutları veya betikleri kullanarak Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bunu tamamladıktan sonra bir sertifika depolayacaksınız.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici için Azure PowerShell modülü sürüm 1.0.0 veya sonrası gerekir. Sürümü `$PSVersionTable.PSVersion` bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üzerini gerektirir. Sürümü `$PSVersionTable.PSVersion` bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Login-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -35,7 +35,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 Ardından bir Key Vault oluşturacaksınız. Bu adımı uygularken bazı bilgiler gereklidir:
 
-Bu hızlı başlangıç boyunca Key Vault'umuz için "Contoso KeyVault2"yi kullansak da, benzersiz bir ad kullanmalısınız.
+Bu hızlı başlangıç boyunca Key Vault adı olarak "contoso KeyVault2" kullanıyoruz, ancak benzersiz bir ad kullanmanız gerekir.
 
 - **Kasa adı** Contoso-Vault2.
 - **Kaynak grubu adı** ContosoResourceGroup.
@@ -64,18 +64,18 @@ Kasa oluşturma sonrasında Azure hesabınız bu yeni kasa üzerinde herhangi bi
 
 ![Anahtar Kasası oluşturma komutu tamamlandıktan sonraki çıktı](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
-## <a name="add-a-certificate-to-key-vault"></a>Key Vault'a sertifika ekleme
+## <a name="add-a-certificate-to-key-vault"></a>Key Vault bir sertifika ekleyin
 
-Kasaya sertifika eklemek için birkaç ek adım atmanız yeterlidir. Bu sertifika bir uygulama tarafından kullanılabilir. 
+Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu sertifika bir uygulama tarafından kullanılabilir. 
 
-**ExampleCertificate** adlı ilke ile kendi imzalı bir sertifika oluşturmak için aşağıdaki komutları yazın:
+**Örnek sertifika** adlı ilkeyle otomatik olarak imzalanan bir sertifika oluşturmak için aşağıdaki komutları yazın:
 
 ```azurepowershell-interactive
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-Artık Azure Key Vault'a eklediğiniz bu sertifikaya URI'sini kullanarak başvuruda bulunabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** sürümü almak için kullanın. 
+Artık Azure Key Vault ' a eklediğiniz sertifikaya, URI 'sini kullanarak başvurabilirsiniz. Geçerli **https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** sürümü almak için kullanın. 
 
 Daha önce depolanan sertifikayı görüntülemek için:
 
@@ -83,12 +83,12 @@ Daha önce depolanan sertifikayı görüntülemek için:
 Get-AzKeyVaultCertificate -VaultName "Contoso-Vault2" -Name "ExampleCertificate"
 ```
 
-Şimdi, bir Anahtar Kasası oluşturdunuz, bir sertifika depoladınız ve geri aldınız.
+Şimdi bir Key Vault oluşturdunuz, bir sertifikayı depolamıştır ve geri almıştır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu koleksiyondaki diğer hızlı başlangıçlar ve öğreticiler bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmanız yararlı olabilir.
-Artık gerekmediğinde, kaynak grubunu ve ilgili tüm kaynakları kaldırmak için [Kaldır-AzKaynak Grubu](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanabilirsiniz. Kaynakları aşağıda gösterildiği gibi silebilirsiniz:
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz. Kaynakları aşağıda gösterildiği gibi silebilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ContosoResourceGroup
@@ -96,8 +96,8 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz ve içinde bir sertifika depolağı nız oldu. Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta bir Key Vault oluşturup içinde bir sertifika depoladığınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- Azure [Anahtar Kasasına Genel Bakış](../general/overview.md)
-- [Azure PowerShell Anahtar Kasası cmdlets](/powershell/module/az.keyvault/) için başvuruya bakın
-- Azure Key Vault en iyi uygulamalarını gözden [geçirin](../general/best-practices.md)
+- [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- [Azure PowerShell Key Vault cmdlet 'lerine](/powershell/module/az.keyvault/) yönelik başvuruya bakın
+- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

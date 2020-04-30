@@ -1,16 +1,16 @@
 ---
-title: Quickstart - Azure SignalR Service REST API
-description: Örnekleri takip eden Azure SignalR Hizmeti ile REST API'yi nasıl kullanacağınızı öğrenin. REST API belirtiminin ayrıntılarını bulun.
+title: Hızlı başlangıç-Azure SignalR hizmeti REST API
+description: REST API Azure SignalR hizmeti ile aşağıdaki örnekleri kullanarak nasıl kullanacağınızı öğrenin. REST API belirtiminin ayrıntılarını bulun.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80548122"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Hızlı Başlangıç: Konsol uygulamasından gerçek zamanlı iletiler yayımlama
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta C# dilinde bir komut satırı uygulamasından bağlı 
 
 Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
-* [.NET Çekirdek SDK](https://www.microsoft.com/net/download/core)
+* [.NET Core SDK](https://www.microsoft.com/net/download/core)
 * Tercih ettiğiniz bir metin veya kod düzenleyicisi.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -99,7 +99,7 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 ## <a name="usage"></a>Kullanım
 
-Sunucu başladıktan sonra, ileti göndermek için komutu kullanın:
+Sunucu başlatıldıktan sonra şu iletiyi göndermek için komutunu kullanın:
 
 ```
 send user <User Id>
@@ -130,14 +130,14 @@ API | `1.0-preview` | `1.0`
 --- | --- | ---
 [Tümüne yayınla](#broadcast) | **&#x2713;** | **&#x2713;**
 [Gruba yayınla](#broadcast-group) | **&#x2713;** | **&#x2713;**
-Bazı gruplara yayın | **&#x2713;** (Amortismana Uğradı) | `N / A`
-[Kullanıcıya gönderme](#send-user) | **&#x2713;** | **&#x2713;**
-Bazı kullanıcılara gönder | **&#x2713;** (Amortismana Uğradı) | `N / A`
+Bazı gruplara yayın | **&#x2713;** (kullanım dışı) | `N / A`
+[Kullanıcıya gönder](#send-user) | **&#x2713;** | **&#x2713;**
+Bazı kullanıcılara gönder | **&#x2713;** (kullanım dışı) | `N / A`
 [Gruba kullanıcı ekleme](#add-user-to-group) | `N / A` | **&#x2713;**
 [Gruptan kullanıcı kaldırma](#remove-user-from-group) | `N / A` | **&#x2713;**
-[Kullanıcı varlığını denetleme](#check-user-existence) | `N / A` | **&#x2713;**
-[Bir kullanıcıyı tüm gruplardan kaldırma](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
-[Bağlantıya gönderme](#send-connection) | `N / A` | **&#x2713;**
+[Kullanıcı varlığını denetle](#check-user-existence) | `N / A` | **&#x2713;**
+[Kullanıcıları tüm gruplardan kaldır](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Bir bağlantıya gönder](#send-connection) | `N / A` | **&#x2713;**
 [Gruba bağlantı ekleme](#add-connection-to-group) | `N / A` | **&#x2713;**
 [Bir gruptan bağlantı kaldırma](#remove-connection-from-group) | `N / A` | **&#x2713;**
 [İstemci bağlantısını kapatma](#close-connection) | `N / A` | **&#x2713;**
@@ -182,7 +182,7 @@ Sürüm | API HTTP Yöntemi | İstek URL'si
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
-### <a name="check-user-existence-in-a-group"></a>Bir gruptaki kullanıcı varlığını denetleme
+### <a name="check-user-existence-in-a-group"></a>Bir gruptaki Kullanıcı varlığını denetleme
 
 API Sürümü | API HTTP Yöntemi | İstek URL'si
 ---|---|---
@@ -195,14 +195,14 @@ Yanıt Durum Kodu | Açıklama
 `404` | Kullanıcı yok
 
 <a name="remove-user-from-all-groups"> </a>
-### <a name="remove-a-user-from-all-groups"></a>Bir kullanıcıyı tüm gruplardan kaldırma
+### <a name="remove-a-user-from-all-groups"></a>Kullanıcıları tüm gruplardan kaldır
 
 API Sürümü | API HTTP Yöntemi | İstek URL'si
 ---|---|---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
 
 <a name="send-connection"> </a>
-### <a name="send-message-to-a-connection"></a>Bağlantıya ileti gönderme
+### <a name="send-message-to-a-connection"></a>Bir bağlantıya ileti gönderin
 
 API Sürümü | API HTTP Yöntemi | İstek URL'si | İstek Gövdesi
 ---|---|---|---
@@ -241,14 +241,14 @@ API Sürümü | API HTTP Yöntemi | İstek URL'si
 
 Yanıt Durum Kodu | Açıklama
 ---|---
-`200` | Hizmet İyi
-`503` | Hizmet Kullanılamıyor
+`200` | Hizmet Iyi
+`503` | Hizmet kullanılamıyor
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, SignalR Hizmeti'nden istemcilere gerçek zamanlı mesaj yayınlamak için REST API'yi nasıl kullanacağınızı öğrendiniz. Ardından, REST API'nin üzerine inşa edilen SignalR Service bağlama ile Azure Işlevlerini nasıl geliştirip dağıtılayıp dağıtılanın hakkında daha fazla bilgi edinin.
+Bu hızlı başlangıçta, SignalR hizmetinden istemcilere gerçek zamanlı ileti yayınlamak için REST API kullanmayı öğrendiniz. Daha sonra, REST API üzerine inşa olan SignalR hizmeti bağlamasıyla Azure Işlevleri geliştirme ve dağıtma hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Azure SignalR Hizmeti bağlamalarını kullanarak Azure İşlevlerini Geliştirme](signalr-quickstart-azure-functions-csharp.md)
+> [Azure SignalR hizmeti bağlamalarını kullanarak Azure Işlevleri geliştirme](signalr-quickstart-azure-functions-csharp.md)

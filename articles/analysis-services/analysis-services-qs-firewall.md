@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Azure Analiz Hizmetleri sunucu güvenlik duvarLarını yapılandırma | Microsoft Dokümanlar
-description: Bu hızlı başlangıç, Azure portalını kullanarak bir Azure Çözümleme Hizmetleri sunucusu için bir güvenlik duvarı yapılandırmanıza yardımcı olur.
+title: Hızlı başlangıç-Azure Analysis Services sunucusu güvenlik duvarını yapılandırma | Microsoft Docs
+description: Bu hızlı başlangıç, Azure portal kullanarak bir Azure Analysis Services sunucusu için bir güvenlik duvarı yapılandırmanıza yardımcı olur.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79205150"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal
@@ -22,7 +22,7 @@ Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvar�
 
 - Aboneliğinizde bir Analysis Services sunucusu. Daha fazla bilgi edinmek için bkz. [Hızlı başlangıç: Sunucu oluşturma - Portal](analysis-services-create-server.md) veya [Hızlı başlangıç: Sunucu oluşturma - PowerShell](analysis-services-create-powershell.md)
 - İstemci bilgisayarlar için bir veya birden çok IP adresi aralığı (gerekiyorsa).
-- Power BI Premium'un veri alma (yenileme) ve paginated raporlar da dahil olmak üzere Azure Analiz Hizmetleri'ne bağlandığı bazı senaryolar, Power BI'den erişime izin ver etkinleştirildiğinde bile şu anda desteklenmez. Power BI Premium'dan Live Connect'i kullanmanın daha yaygın senaryosu desteklenir. Tüm Power BI Pro senaryoları desteklenir.
+- Power BI Premium, veri içeri aktarma (yenileme) ve sayfalandırılmış raporlar dahil olmak üzere Azure Analysis Services bağlandığı bazı senaryolar, Power BI erişimine Izin ver özelliğinin etkin olduğu durumlarda bile şu anda desteklenmemektedir. Power BI Premium 'den canlı bağlantı kullanmanın daha yaygın senaryosu desteklenir. Tüm Power BI Pro senaryolar desteklenir.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın 
@@ -32,10 +32,10 @@ Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvar�
 ## <a name="configure-a-firewall"></a>Güvenlik duvarını yapılandırma
 
 1. Genel Bakış sayfasını açmak için sunucunuza tıklayın. 
-2. **AYARLAR** > **Güvenlik Duvarı** > **Etkinleştir güvenlik duvarı**, **Üzerine**tıklayın .
+2. **Ayarlar** > **güvenlik duvarı** > güvenlik**duvarını etkinleştir**bölümünde **Açık**' a tıklayın.
 3. Power BI hizmetinden DirectQuery erişimine izin vermek için, **Power BI'dan erişime izin ver** alanında **Açık** seçeneğine tıklayın.  
-4. (İsteğe bağlı) Bir veya birden çok IP adresi aralığı belirtin. Her aralık için bir ad, başlangıç ve bitiş IP adresi girin. Güvenlik duvarı kural adı 128 karakterle sınırlı olmalıdır ve yalnızca büyük harfler karakterler, küçük karakterler, sayılar, alt puan ve tire içerebilir. Beyaz alanlara ve diğer özel karakterlere izin verilmez.
-5. **Kaydet**'e tıklayın.
+4. (İsteğe bağlı) Bir veya birden çok IP adresi aralığı belirtin. Her aralık için bir ad, başlangıç ve bitiş IP adresi girin. Güvenlik duvarı kuralı adı 128 karakterle sınırlı olmalıdır ve yalnızca büyük harf, küçük harf karakter, rakam, alt çizgi ve kısa çizgi karakterlerini içerebilir. Boşluk ve diğer özel karakterlere izin verilmez.
+5. **Kaydet**’e tıklayın.
 
      ![Güvenlik duvarı ayarları](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 

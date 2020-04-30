@@ -1,6 +1,6 @@
 ---
-title: CETAS in Synapse SQL
-description: Synapse SQL ile CETAS kullanma
+title: SYNAPSE SQL 'de CETAS
+description: SYNAPSE SQL ile CETAS kullanma
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424030"
 ---
-# <a name="cetas-with-synapse-sql"></a>Synapse SQL ile CETAS
+# <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
-Sql havuzunda veya isteğe bağlı SQL'de (önizleme), aşağıdaki görevleri tamamlamak için CREATE EXTERNAL TABLE AS SELECT (CETAS) seçeneğini kullanabilirsiniz:  
+SQL havuzunda veya isteğe bağlı SQL 'de (Önizleme), aşağıdaki görevleri gerçekleştirmek için CREATE EXTERNAL TABLE AS SELECT (CETAS) kullanabilirsiniz:  
 
-- Harici tablo oluşturma
-- Dışa aktarma, buna paralel olarak, bir Transact-SQL SELECT deyiminin sonuçlarını
+- Dış tablo oluşturma
+- Bir Transact-SQL SELECT ifadesinin sonuçlarını paralel olarak dışa aktarın
 
   - Hadoop
-  - Azure Depolama Blob
+  - Azure Depolama Blobu
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>CETAS SQL havuzunda
+## <a name="cetas-in-sql-pool"></a>SQL havuzunda CETAS 'lar
 
-SQL havuzu, CETAS kullanımı ve sözdizimi için SELECT makalesi [olarak CREATE EXTERNAL TABLE'ı](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işaretleyin. Ayrıca, SQL havuzunu kullanarak CTAS'da kılavuzluk için [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalesine bakın.
+SQL havuzu, CETAS kullanımı ve sözdizimi için [dış tablo oluştur 'U seçin](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalesini denetleyin. Ek olarak, SQL havuzunu kullanarak CTAS hakkında rehberlik için, [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) makalesine bakın.
 
-## <a name="cetas-in-sql-on-demand"></a>CETAS SQL on-demand
+## <a name="cetas-in-sql-on-demand"></a>İsteğe bağlı SQL 'de CETAS
 
-CETAS, isteğe bağlı SQL kaynağını kullanırken harici bir tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blob'una veya Azure Veri Gölü Depolama Gen2'ye aktarmak için kullanılır.
+SQL isteğe bağlı kaynağı kullanılırken, CETAS, dış tablo oluşturmak ve sorgu sonuçlarını Azure Depolama Blobu veya Azure Data Lake Storage 2. dışarı aktarmak için kullanılır.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -54,42 +54,42 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 ## <a name="arguments"></a>Bağımsız Değişkenler
 
-*[ [ *database_name* . [ *schema_name* ] . ] | *schema_name* . ] *table_name**
+*[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *table_name**
 
-Oluşturmak için tablonun bir ila üç bölümlü adı. Harici bir tablo için, SQL isteğe bağlı olarak yalnızca tablo meta verilerini depolar. Hiçbir gerçek veri SQL'de isteğe bağlı olarak taşınamaz veya depolanır.
+Oluşturulacak tablonun üç bölümden oluşan bir adı. Dış tablo için, isteğe bağlı SQL yalnızca tablo meta verilerini depolar. İsteğe bağlı SQL 'de hiçbir gerçek veri taşınmaz veya depolanmaz.
 
-YER = *'path_to_folder'*
+Konum = *' path_to_folder '*
 
-SELECT deyiminin sonuçlarının dış veri kaynağına nerede yazAcağını belirtir. Kök klasör, dış veri kaynağında belirtilen veri konumudur. KONUM bir klasörü işaret etmeli ve bir iz /. Örnek: aggregated_data/
+Dış veri kaynağında SELECT ifadesinin sonuçlarının nereye yazılacağını belirtir. Kök klasör, dış veri kaynağında belirtilen veri konumudur. KONUM bir klasöre işaret etmelidir ve sondaki/olmalıdır. Örnek: aggregated_data/
 
 DATA_SOURCE = *external_data_source_name*
 
-Dış verilerin depolandığı konumu içeren dış veri kaynağı nesnesinin adını belirtir. Harici bir veri kaynağı oluşturmak için [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](develop-tables-external-tables.md#create-external-data-source)kullanın.
+Dış verilerin depolanacağı konumu içeren dış veri kaynağı nesnesinin adını belirtir. Dış veri kaynağı oluşturmak için [dış VERI kaynağı oluşturma (Transact-SQL)](develop-tables-external-tables.md#create-external-data-source)kullanın.
 
 FILE_FORMAT = *external_file_format_name*
 
-Dış veri dosyasının biçimini içeren dış dosya biçimi nesnesinin adını belirtir. Harici dosya biçimi oluşturmak için [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)kullanın. Şu anda yalnızca FORMAT='PARKE' ile harici dosya biçimleri desteklenmektedir.
+Dış veri dosyası biçimini içeren harici dosya biçim nesnesinin adını belirtir. Dış dosya biçimi oluşturmak için [dış dosya biçimi oluşturma (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format)kullanın. Şu anda yalnızca FORMAT = ' PARQUET ' olan harici dosya biçimleri destekleniyor.
 
 *<common_table_expression>*
 
-Ortak tablo ifadesi (CTE) olarak bilinen geçici adlandırılmış sonuç kümesini belirtir. Daha fazla bilgi için [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
+Ortak tablo ifadesi (CTE) olarak bilinen geçici bir adlandırılmış sonuç kümesini belirtir. Daha fazla bilgi için bkz. [common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-<select_criteria> SEÇIN
+<select_criteria SEÇIN>
 
-Yeni tabloyu SELECT deyiminin sonuçlarıyla doldurur. *select_criteria,* yeni tabloya hangi verilerin kopyalanamasını belirleyen SELECT deyiminin gövdesidir. SELECT deyimleri hakkında bilgi için [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)'ye bakın.
+Yeni tabloyu bir SELECT deyimindeki sonuçlarla doldurur. *select_criteria* , yeni tabloya hangi verilerin KOPYALANACAĞıNı belirleyen SELECT ifadesinin gövdesidir. SELECT deyimleri hakkında daha fazla bilgi için bkz. [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="permissions"></a>İzinler
 
-Klasör içeriğini listelemek ve CETAS'ın çalışması için KONUM klasörüne yazma izniniz olması gerekir.
+CETAS 'ın çalışması için klasör içeriğini listeleme ve konum klasörüne yazma izinlerinizin olması gerekir.
 
 ## <a name="examples"></a>Örnekler
 
-Bu örnekler, yıllara göre toplanan toplam popülasyonu kaydetmek ve population_ds veri kaynağında bulunan aggregated_data klasörüne durumu kaydetmek için CETAS'ı kullanır.
+Bu örnekler, yıl ve eyalet tarafından toplanan toplam popülasyonu, population_ds veri kaynağında bulunan bir aggregated_data klasörüne kaydetmek için CETAS kullanır.
 
-Bu örnek, daha önce oluşturulan kimlik bilgisine, veri kaynağına ve dış dosya biçimine dayanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın. Sorgu sonuçlarını aynı veri kaynağında farklı bir klasöre kaydetmek için KONUM bağımsız değişkenini değiştirin. Sonuçları farklı bir depolama hesabına kaydetmek için, DATA_SOURCE bağımsız değişken için farklı bir veri kaynağı oluşturun ve kullanın.
+Bu örnek, daha önce oluşturulan kimlik bilgisini, veri kaynağını ve dış dosya biçimini kullanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın. Sorgu sonuçlarını aynı veri kaynağındaki farklı bir klasöre kaydetmek için konum bağımsız değişkenini değiştirin. Sonuçları farklı bir depolama hesabına kaydetmek için DATA_SOURCE bağımsız değişkeni için farklı bir veri kaynağı oluşturun ve kullanın.
 
 > [!NOTE]
-> İzleyen örnekler, herkese açık bir Azure Açık Veri depolama hesabı kullanır. Salt okunur. Bu sorguları yürütmek için, yazma izinleri olan veri kaynağını sağlamanız gerekir.
+> Aşağıdaki örnekler, genel bir Azure açık veri depolama hesabı kullanır. Salt okunurdur. Bu sorguları yürütmek için, yazma izinlerine sahip olduğunuz veri kaynağını sağlamanız gerekir.
 
 ```sql
 -- use CETAS to export select statement with OPENROWSET result to  storage
@@ -111,7 +111,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-Aşağıdaki örnekte CETAS'ın kaynağı olarak harici bir tablo kullanınız. Daha önce oluşturulan kimlik bilgisine, veri kaynağına, dış dosya biçimine ve dış tabloya dayanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın.
+Aşağıdaki örnek, CETAS kaynağı olarak bir dış tablo kullanır. Daha önce oluşturulan kimlik bilgisini, veri kaynağını, dış dosya biçimini ve dış tabloyu kullanır. [Dış tablolar](develop-tables-external-tables.md) belgesine bakın.
 
 ```sql
 -- use CETAS with select from external table
@@ -133,10 +133,10 @@ SELECT * FROM population_by_year_state
 
 ## <a name="supported-data-types"></a>Desteklenen veri türleri
 
-CETAS, aşağıdaki SQL veri türleri ile sonuç kümelerini depolamak için kullanılabilir:
+CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kullanılabilir:
 
 - ikili
-- Varbinary
+- ikili
 - char
 - varchar
 - date
@@ -145,24 +145,24 @@ CETAS, aşağıdaki SQL veri türleri ile sonuç kümelerini depolamak için kul
 - decimal
 - sayısal
 - float
-- gerçek
+- real
 - bigint
 - int
 - smallint
 - tinyint
 - bit
 
-LOB'lar CETAS ile kullanılamaz.
+LOB 'Lar CETAS ile kullanılamaz.
 
-Aşağıdaki veri türleri CETAS'ın SELECT bölümünde kullanılamaz:
+Aşağıdaki veri türleri, CETAS 'ın SEÇIM bölümünde kullanılamaz:
 
-- Nchar
+- nchar
 - nvarchar
 - datetime
-- Smalldatetime
-- Datetimeoffset
-- Para
-- Smallmoney
+- girişin
+- türünde
+- etmenize
+- küçük para
 - uniqueidentifier
 
 ## <a name="next-steps"></a>Sonraki adımlar

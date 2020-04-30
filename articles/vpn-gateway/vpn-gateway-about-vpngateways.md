@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Ağ Geçidi Hakkında
+title: Azure VPN Gateway hakkında
 description: Bir VPN ağ geçidinin ne olduğunu ve Azure sanal ağlarına bağlanmak için VPN ağ geçidini nasıl kullanacağınızı öğrenin. IPsec/IKE Siteden Siteye şirketler arası ve Sanal Ağlar arası çözümlerin yanı sıra Noktadan Siteye VPN dahil.
 services: vpn-gateway
 author: cherylmc
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241461"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN Ağ Geçidi nedir?
@@ -21,13 +21,13 @@ VPN ağ geçidi, genel İnternet üzerinden bir Azure sanal ağı ile şirket i�
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Sanal ağ geçidi nedir?
 
-Sanal ağ ağ geçidi, ağ *geçidi alt ağı*adı verilen belirli bir alt ağa dağıtılan iki veya daha fazla VM'den oluşur. Sanal ağ ağ geçidi VM'leri yönlendirme tabloları içerir ve belirli ağ geçidi hizmetlerini çalıştırın. Bu SANAL Ağ ağ ağ geçidi oluşturduğunuzda bu Sanal M'ler oluşturulur. Sanal ağ ağ geçidinin bir parçası olan VM'leri doğrudan yapılandıramazsınız.
+Sanal ağ geçidi, *ağ geçidi alt ağı*olarak adlandırılan, oluşturduğunuz belirli bir alt ağa dağıtılan iki veya daha fazla VM 'den oluşur. Sanal ağ geçidi VM 'Leri, yönlendirme tabloları içerir ve belirli ağ geçidi hizmetlerini çalıştırır. Bu VM 'Ler, sanal ağ geçidini oluşturduğunuzda oluşturulur. Sanal ağ geçidinin parçası olan VM 'Leri doğrudan yapılandıramazsınız.
 
-Sanal ağ ağ geçidi için yapılandırdığınız ayarlardan biri ağ geçidi türüdür. Ağ geçidi türü, sanal ağ ağ geçidinin nasıl kullanılacağını ve ağ geçidinin gerçekleştirdiği eylemleri belirtir. Ağ geçidi türü 'Vpn', oluşturulan sanal ağ ağ geçidinin türünün ExpressRoute ağ geçidi yerine bir 'VPN ağ geçidi' olduğunu belirtir. Bir sanal ağ iki sanal ağ ağ geçidine sahip olabilir; bir VPN ağ geçidi ve bir ExpressRoute ağ geçidi - [birlikte varolan](#coexisting) bağlantı yapılandırmalarında olduğu gibi. Daha fazla bilgi için [Ağ Geçidi türlerine](vpn-gateway-about-vpn-gateway-settings.md#gwtype)bakın.
+Bir sanal ağ geçidi için yapılandırdığınız bir ayar ağ geçidi türüdür. Ağ Geçidi türü, sanal ağ geçidinin nasıl kullanılacağını ve ağ geçidinin gerçekleştireceği eylemleri belirtir. ' VPN ' ağ geçidi türü, oluşturulan sanal ağ geçidi türünün bir ExpressRoute ağ geçidi yerine bir ' VPN Gateway ' olduğunu belirtir. Bir sanal ağda iki sanal ağ geçidi olabilir; tek bir VPN ağ geçidi ve bir ExpressRoute ağ geçidi, birlikte [var olan](#coexisting) bağlantı yapılandırmalarına sahip olan durumdur. Daha fazla bilgi için bkz. [ağ geçidi türleri](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
-VPN ağ geçitleri Azure Kullanılabilirlik Bölgelerinde dağıtılabilir. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur. bkz. [Azure Kullanılabilirlik Bölgelerinde ki bölge yedekli sanal ağ ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md)
+VPN ağ geçitleri Azure Kullanılabilirlik Alanları ' de dağıtılabilir. Bu seçenek, sanal ağ geçitlerine dayanıklılık, ölçeklenebilirlik ve daha yüksek kullanılabilirlik getirir. Ağ geçitlerini Azure Kullanılabilirlik Alanları içinde dağıtmak, bir bölge içindeki ağ geçitlerini fiziksel ve mantıksal olarak birbirinden ayırırken, Azure ile şirket içi ağ bağlantınızı alan düzeyindeki hatalardan korur. [Azure kullanılabilirlik alanları bölgede yedekli sanal ağ geçitleri hakkında](about-zone-redundant-vnet-gateways.md) bilgi
 
-Bir sanal ağ geçidinin oluşturulması 45 dakika sürebilir. Bir sanal ağ geçidi oluşturduğunuzda ağ geçidi VM’leri ağ geçidi alt ağına dağıtılır ve belirttiğiniz ayarlarla yapılandırılır. Bir VPN ağ geçidi oluşturduktan sonra bu VPN ağ geçidi ile başka bir VPN ağ geçidi arasında bir IPsec/IKE VPN tüneli bağlantısı (Sanal Ağlar arası) oluşturabilir veya VPN ağ geçidi ile bir şirket içi VPN cihazı (Siteden Siteye) arasında IPsec/IKE VPN tünel bağlantısı oluşturabilirsiniz. Ayrıca, sanal ağınıza konferans veya evden gibi uzak bir konumdan bağlanmanızı sağlayan bir Noktaya Bağlantı VPN bağlantısı (OpenVPN, IKEv2 veya SSTP üzerinden VPN) da oluşturabilirsiniz.
+Bir sanal ağ geçidinin oluşturulması 45 dakika sürebilir. Bir sanal ağ geçidi oluşturduğunuzda ağ geçidi VM’leri ağ geçidi alt ağına dağıtılır ve belirttiğiniz ayarlarla yapılandırılır. Bir VPN ağ geçidi oluşturduktan sonra bu VPN ağ geçidi ile başka bir VPN ağ geçidi arasında bir IPsec/IKE VPN tüneli bağlantısı (Sanal Ağlar arası) oluşturabilir veya VPN ağ geçidi ile bir şirket içi VPN cihazı (Siteden Siteye) arasında IPsec/IKE VPN tünel bağlantısı oluşturabilirsiniz. Ayrıca, sanal ağınıza bir konferans veya evden gibi uzak bir konumdan bağlanmanızı sağlayan bir noktadan siteye VPN bağlantısı (OpenVPN, Ikev2 veya SSTP üzerinden VPN) oluşturabilirsiniz.
 
 ## <a name="configuring-a-vpn-gateway"></a><a name="configuring"></a>VPN Gateway yapılandırma
 
@@ -55,8 +55,8 @@ Aşağıdaki tablo çözümünüz için en iyi bağlantı seçeneğine karar ver
 
 Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz ağ geçidi SKU’sunu belirtmelisiniz. İş yükü, aktarım hızı, özellik ve SLA türlerine bağlı olarak gereksinimlerinize uyan SKU’ları seçin.
 
-* Desteklenen özellikler, üretim ve geliştirme testi ve yapılandırma adımları da dahil olmak üzere ağ geçidi [SUS'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku) hakkında daha fazla bilgi için VPN Ağ Geçidi Ayarları - Ağ Geçidi SKUs makalesine bakın.
-* Eski SKU bilgileri için [bkz.](vpn-gateway-about-skus-legacy.md)
+* Desteklenen özellikler, üretim ve geliştirme-test ve yapılandırma adımları dahil ağ geçidi SKU 'Ları hakkında daha fazla bilgi için [VPN Gateway ayarları-ağ geçidi SKU 'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku) makalesine bakın.
+* Eski SKU bilgileri için bkz. [eski SKU 'lar Ile çalışma](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Tünele, bağlantıya ve performansa göre Ağ Geçidi SKU’ları
 
@@ -74,13 +74,13 @@ Gereksinimlerinize uygun bağlantı topolojisini seçmenize yardımcı olması i
 
 ## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a><a name="s2smulti"></a>Siteden Siteye ve Çok Siteli (IPsec/IKE VPN tüneli)
 
-### <a name="site-to-site"></a><a name="S2S"></a>Siteden Siteye
+### <a name="site-to-site"></a><a name="S2S"></a>Siteden siteye
 
-Siteden Siteye (S2S) VPN ağ geçidi bağlantısı, IPSec/IKE (IKEv1 veya IKEv2) VPN tüneli üzerinden kurulan bir bağlantıdır. S2S bağlantıları, şirket içi ve dışı yapılandırmalar ile birlikte karma yapılandırmalar için kullanılabilir. S2S bağlantısı, şirket içinde bulunan ve kendisine atanmış genel bir IP adresine sahip bir VPN aygıtı gerektirir. VPN cihazı seçme hakkında daha fazla bilgi için bkz. [VPN Gateway SSS - VPN cihazları](vpn-gateway-vpn-faq.md#s2s).
+Siteden Siteye (S2S) VPN ağ geçidi bağlantısı, IPSec/IKE (IKEv1 veya IKEv2) VPN tüneli üzerinden kurulan bir bağlantıdır. S2S bağlantıları, şirket içi ve dışı yapılandırmalar ile birlikte karma yapılandırmalar için kullanılabilir. Bir S2S bağlantısı, bir genel IP adresi atanmış Şirket içinde bulunan bir VPN cihazı gerektirir. VPN cihazı seçme hakkında daha fazla bilgi için bkz. [VPN Gateway SSS - VPN cihazları](vpn-gateway-vpn-faq.md#s2s).
 
 ![Azure VPN Gateway Siteden Siteye bağlantı örneği](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a><a name="Multi"></a>Çok Siteli
+### <a name="multi-site"></a><a name="Multi"></a>Çok siteli
 
 Bu türden bir bağlantı, Siteden Siteye bağlantının bir çeşididir. Sanal ağ geçidinizden genellikle birden fazla şirket içi siteye bağlanan birden fazla VPN bağlantısı oluşturursunuz. Birden fazla bağlantıyla çalışırken Yol Tabanlı VPN türü (klasik sanal ağlar ile çalışırken “dinamik ağ geçidi” adıyla kullanılır) kullanmanız gerekir. Her sanal ağın yalnızca bir VPN ağ geçidi olabileceğinden, ağ geçidi boyunca tüm bağlantılar mevcut bant genişliğini paylaşır. Bu bağlantı türü genellikle "çok siteli" bağlantı olarak adlandırılır.
 
@@ -132,9 +132,9 @@ ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağl
 
 ExpressRoute bağlantıları ortak İnternet üzerinden geçmemektedir. Bu, ExpressRoute bağlantılarına İnternet üzerindeki sıradan bağlantılara göre daha fazla güvenilirlik, yüksek hız, düşük gecikme ve normal bağlantılardan daha yüksek güvenlik sağlar.
 
-ExpressRoute bağlantısı, zorunlu yapılandırmasının bir parçası olarak sanal ağ geçidi kullanır. Bir ExpressRoute bağlantısında sanal ağ geçidi 'Vpn' yerine 'ExpressRoute' ile yapılandırılır. Bir ExpressRoute devresi üzerinden geçen trafik varsayılan olarak şifrelenmiş olmasa da, bir ExpressRoute devresi üzerinden şifrelenmiş trafik göndermenize olanak tanıyan bir çözüm oluşturmanız mümkündür. ExpressRoute hakkında daha fazla bilgi için [ExpressRoute teknik genel bakış](../expressroute/expressroute-introduction.md)ına bakın.
+ExpressRoute bağlantısı, zorunlu yapılandırmasının bir parçası olarak sanal ağ geçidi kullanır. Bir ExpressRoute bağlantısında sanal ağ geçidi 'Vpn' yerine 'ExpressRoute' ile yapılandırılır. Bir ExpressRoute devresi üzerinden geçen trafik varsayılan olarak şifrelenmiş olmasa da, bir ExpressRoute devresi üzerinden şifrelenmiş trafik göndermenize olanak tanıyan bir çözüm oluşturmanız mümkündür. ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute teknik genel bakış](../expressroute/expressroute-introduction.md).
 
-## <a name="site-to-site-and-expressroute-coexisting-connections"></a><a name="coexisting"></a>Siteden Siteye ve ExpressRoute birlikte varolan bağlantılar
+## <a name="site-to-site-and-expressroute-coexisting-connections"></a><a name="coexisting"></a>Siteden Siteye ve ExpressRoute eşzamanlı bağlantıları
 
 ExpressRoute, WAN bağlantınızdan (genel İnternet üzerinden değil) Azure dahil olmak üzere Microsoft Hizmetlerine doğrudan, özel olarak gerçekleştirilen bir bağlantıdır. Siteden Siteye VPN trafiği genel İnternet üzerinden şifrelenmiş olarak hareket eder. Aynı sanal ağ için Siteden Siteye VPN ve ExpressRoute bağlantıları yapılandırabiliyor olmanın çeşitli avantajları vardır.
 

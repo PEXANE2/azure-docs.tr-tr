@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Azure portalında Analiz Hizmetleri sunucusu oluşturun | Microsoft Dokümanlar
-description: Azure portalını kullanarak bir Azure Analiz Hizmetleri sunucusu örneğini nasıl hızlı bir şekilde oluşturabileceğinizi öğrenin.
+title: Hızlı başlangıç-Azure portal Analysis Services sunucu oluşturma | Microsoft Docs
+description: Azure portal kullanarak Azure Analysis Services sunucu örneğini hızlı bir şekilde oluşturmayı öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75442832"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Hızlı başlangıç: Sunucu oluşturma - Portal
@@ -30,13 +30,13 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
 
 ## <a name="create-a-server"></a>Sunucu oluşturma
 
-1. Tıklayın + Bir > kaynak**Analiz** > **Hizmetleri** **oluşturun.**
+1. **+ Kaynak** > **Analizi** > **Analysis Services**oluştur ' a tıklayın.
 
     ![Portal](./media/analysis-services-create-server/aas-create-server-portal.png)
 
 2. **Analysis Services** sayfasında gerekli alanları doldurduktan sonra **Oluştur**'a basın.
    
-   * **Sunucu adı**: Sunucuya başvurmak için kullanılacak benzersiz bir ad yazın. Sunucu adı küçük bir karakterle başlamalı ve 3 ila 128 küçük karakter ve sayı içermelidir. Beyaz alanlara ve özel karakterlere izin verilmez.
+   * **Sunucu adı**: Sunucuya başvurmak için kullanılacak benzersiz bir ad yazın. Sunucu adı küçük harfli bir karakterle başlamalı ve 3 ila 128 küçük harf ve sayı içermelidir. Boşluk ve özel karakterlere izin verilmez.
    * **Abonelik**: Bu sunucuyla ilişkilendirilecek aboneliği seçin.
    * **Kaynak grubu**: Yeni bir kaynak grubu oluşturun veya zaten var olan bir kaynak grubunu seçin. Kaynak grupları, bir Azure kaynağı koleksiyonunu yönetmenize yardımcı olmak üzere tasarlanmıştır. Daha fazla bilgi edinmek için bkz. [kaynak grupları](../azure-resource-manager/management/overview.md).
    * **Konum**: Sunucuyu barındıran Azure veri merkezi konumudur. En büyük kullanıcı tabanınıza en yakın konumu seçin.
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, portalı kullanarak Azure aboneliğinizde bir Analysi
    * **Yedekleme Depolama Alanı**: İsteğe bağlıdır. [Depolama hesabınız](../storage/common/storage-introduction.md) varsa model yedekleme veritabanı olarak varsayılan yapabilirsiniz. [Yedekleme ve geri yükleme](analysis-services-backup.md) ayarlarını daha sonra da yapabilirsiniz.
    * **Depo anahtarı süre sonu**: İsteğe bağlıdır. Depo anahtarı için süre sonu belirtin.
 
-Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle**'yi seçtiyseniz yeni sunucunuzu görmek için portalınıza gidin. Veya sunucunuzun hazır olup olmadığını görmek için **Tüm Hizmetler** > **Çözümleme Hizmetleri'ne** gidin. Sunucular 1200 ve daha yüksek uyumluluk düzeylerinde tabular modelleri destekler. Model uyumluluk düzeyi Visual Studio veya SSMS'te belirtilir.
+Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle**'yi seçtiyseniz yeni sunucunuzu görmek için portalınıza gidin. Ya da, sunucunuzun hazırlanın olup olmadığını görmek için **tüm hizmetler** > **Analysis Services** gidin. Sunucular, 1200 ve daha yüksek uyumluluk düzeylerinde tablo modellerini destekler. Model uyumluluk düzeyi, Visual Studio veya SSMS 'de belirtilmiştir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -58,6 +58,6 @@ Sunucunun oluşturulması genellikle bir dakikadan kısa sürer. **Portala Ekle*
 Bu hızlı başlangıçta Azure aboneliğinizde sunucu oluşturmayı öğrendiniz. Sunucuyu oluşturduğunuza göre bir sunucu güvenlik duvarı yapılandırarak (isteğe bağlı) güvenliğinin sağlanmasına yardımcı olacaksınız. Sunucunuza doğrudan portaldan örnek bir veri modeli de ekleyebilirsiniz. Örnek modelin olması, model veritabanı rollerini yapılandırma ve istemci bağlantılarını test etme işlemlerini öğrenme konusunda yardımcı olur. Daha fazla bilgi edinmek için, örnek model ekleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Quickstart: Sunucu güvenlik duvarLarını yapılandırma - Portal](analysis-services-qs-firewall.md)   
+> [Hızlı başlangıç: sunucu güvenlik duvarını yapılandırma-Portal](analysis-services-qs-firewall.md)   
 > [!div class="nextstepaction"]
 > [Öğretici: Sunucunuza örnek model ekleme](analysis-services-create-sample-model.md)

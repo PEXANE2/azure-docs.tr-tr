@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Grid Premium ve Temel katmanlar
-description: Bu makalede, Azure Olay Grid Premium ve Temel katmanları arasındaki fark ve her birinin ne zaman kullanılacağı açıklanmaktadır
+title: Azure Event Grid Premium ve temel katmanları
+description: Bu makalede Azure Event Grid Premium ve temel Katmanlar arasındaki farklar ve her birinin ne zaman kullanılacağı açıklanmaktadır.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,43 +8,43 @@ ms.topic: overview
 ms.date: 03/11/2020
 ms.author: babanisa
 ms.openlocfilehash: 7ae73337ccccc2b7d2402cfa2a54ae93552d2465
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79300721"
 ---
-# <a name="azure-event-grid-premium-and-basic-tiers"></a>Azure Olay Izgara premium ve temel katmanlar
-Azure Etkinlik Izgarası iki katmana sahiptir: **Premium** ve **Temel.** Temel katman tüketimi veya istediğiniz kadar öde fiyatlandırmasını kullanır. Olay odaklı programlama modelleri için Event Grid'i kullanmanız gereken tüm temel pub/alt araçları sağlar. Premium katman, işletmeyi hedefleyen güvenlik özellikleriyle bunu bir adım daha ileri ye götürür. Premium katman, özelliklerinin çoğu hala geliştirilmekte olan erken **önizlemededir.**
+# <a name="azure-event-grid-premium-and-basic-tiers"></a>Azure Event Grid Premium ve temel katmanları
+Azure Event Grid iki katmana sahiptir: **Premium** ve **Basic**. Temel katman, tüketim veya kullandıkça öde fiyatlandırmasını kullanır. Olay odaklı programlama modelleri için Event Grid kullanmanız gereken tüm temel yayın/alt araçları sağlar. Premium katmanı, bu adımı kuruluşa yönelik güvenlik özellikleriyle birlikte gerçekleştirir. Premium katman, bazı özelliklerinin çoğunu geliştirme aşamasında olan erken **önizlemededir** .
 
 ## <a name="overview"></a>Genel Bakış
-Olay Izgara'daki tüm özel konular ve etki alanları temel katmana veya premium katmana aittir. API `2020-04-01-preview` sürümünden başlayarak, bir konu veya etki alanı oluşturmanın bir parçası olarak istediğiniz katmanı seçebilirsiniz. Varsayılan değer temel katmandır. Eski API sürümleri kullanılarak oluşturulan konular ve etki alanları temel katmanda varsayılan dır. Konular ve etki alanlarınız için fiyatlandırma katmanını değiştirmek [için, konular ve etki alanları için katmanı nasıl güncelleştireceğinize](update-tier.md)bakın.
+Event Grid tüm özel konular ve etki alanları temel katmana veya Premium katmana aittir. `2020-04-01-preview` API sürümünden itibaren, konu veya etki alanı oluşturmanın bir parçası olarak istenen katmanı seçebilirsiniz. Varsayılan değer temel katmandır. Eski API sürümleri kullanılarak oluşturulan konular ve etki alanları temel katmanda varsayılan değer. Konu ve etki alanlarınızın fiyatlandırma katmanını değiştirmek için bkz. [konular ve etki alanları için katmanı güncelleştirme](update-tier.md).
 
-## <a name="capabilities-and-features"></a>Özellikler ve özellikler
+## <a name="capabilities-and-features"></a>Özellikler ve Özellikler
 
-Aşağıdaki tablokatmanlar arasındaki farklılıkları açıklar:
+Aşağıdaki tabloda Katmanlar arasındaki farklılıklar açıklanmaktadır:
 
 |       &nbsp;                                           | Temel           | Premium        |
 | ------------------------------------------------------ | --------------- | -------------- |
 | Giriş için IP güvenlik duvarı kuralları                          | Önizleme  | Önizleme |
-| Çıkış için servis etiketleri                                | Önizleme  | Önizleme |
-| Girişte özel uç nokta VNet tümleştirmesi          | Kullanılamaz   | Önizleme |
+| Çıkış için hizmet etiketleri                                | Önizleme  | Önizleme |
+| Giriş üzerinde özel uç nokta VNet tümleştirmesi          | Kullanılamaz   | Önizleme |
 
 ## <a name="availability"></a>Kullanılabilirlik
-İlk önizleme sırasında, özel bitiş noktası tümleştirmesi olan premium katman konuları ve etki alanları aşağıdaki bölgelerde kullanılabilir:
+İlk önizleme sırasında, Özel uç nokta tümleştirmesine sahip Premium katman konuları ve etki alanları aşağıdaki bölgelerde kullanılabilir:
 
 - Doğu ABD
 - Batı ABD 2
 - Orta Güney ABD
 
-## <a name="pricing-and-quotas"></a>Fiyatlandırma ve kotalar
-Temel katmanı kullanmanın fiyatlandırma ayrıntıları için [Olay Ağıfiyatlandırması](https://azure.microsoft.com/pricing/details/event-grid/) fiyatlandırması bölümüne bakın. Premium katman fiyatlandırması henüz duyurulmadı ve fiyatlandırma kullanılabilir olana kadar ücretsizdir.
+## <a name="pricing-and-quotas"></a>Fiyatlandırma ve Kotalar
+Temel katmanı kullanmanın fiyatlandırma ayrıntıları için bkz. [Event Grid fiyatlandırması](https://azure.microsoft.com/pricing/details/event-grid/) . Premium katman fiyatlandırması henüz duyurulmaz ve fiyatlandırma kullanılabilir olana kadar ücretsizdir.
 
-Konu ve etki alanı sayımı ve iş miktarı yla ilgili mevcut kotalar, premium katman fiyatlandırması duyurulana kadar hem premium hem de temel katman kaynakları için geçerlidir.
+Konu ve etki alanı sayısı ile mevcut kotalar ve verimlilik, Premium katman fiyatlandırması duyuruncaya kadar hem Premium hem de temel katman kaynakları için geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- Temel katmandan premium katmana yükseltmek için [fiyatlandırma katmanını güncelleştir](update-tier.md) makalesine bakın. 
-- Olay Izgara kaynağınız için IP güvenlik duvarını, yalnızca belirli bir IP Adresi kümesinden veya IP Adresi aralıklarından genel internet üzerinden erişimi kısıtlamak için yapılandırabilirsiniz. Adım adım yönergeler için [güvenlik duvarLarını yapılandır'a](configure-firewall.md)bakın.
-- Yalnızca seçili sanal ağlardan erişimi kısıtlamak için özel uç noktaları yapılandırabilirsiniz. Adım adım yönergeler için [bkz.](configure-private-endpoints.md)
+- Temel katmandan Premium katmana yükseltmek için bkz. [fiyatlandırma katmanını güncelleştirme](update-tier.md) makalesi. 
+- Genel internet üzerinden erişimi yalnızca belirli bir IP adresi veya IP adresi aralığı kümesinden kısıtlamak için, Event Grid kaynağınız için IP güvenlik duvarını yapılandırabilirsiniz. Adım adım yönergeler için bkz. [güvenlik duvarını yapılandırma](configure-firewall.md).
+- Yalnızca seçili sanal ağlardan erişimi kısıtlamak için özel uç noktaları yapılandırabilirsiniz. Adım adım yönergeler için bkz. [Özel uç noktaları yapılandırma](configure-private-endpoints.md).

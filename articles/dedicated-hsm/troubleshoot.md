@@ -1,6 +1,6 @@
 ---
-title: Ayrılmış HSM nedir? - Azure Özel HSM | Microsoft Dokümanlar
-description: Azure Özel HSM'ye genel bakış, Azure'da FIPS 140-2 Düzey 3 sertifikasını karşılayan önemli depolama özellikleri sağlar
+title: Ayrılmış HSM nedir? -Azure ayrılmış HSM | Microsoft Docs
+description: Azure adanmış HSM 'ye genel bakış, Azure 'da FIPS 140-2 düzey 3 sertifikasını karşılayan anahtar depolama olanakları sağlar
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -14,142 +14,142 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80337179"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
-Azure Özel HSM hizmetinin iki farklı yönü vardır. İlk olarak, HSM aygıtlarının temel ağ bileşenleriyle birlikte Azure'da kaydedilmesi ve dağıtımı. İkinci olarak, belirli bir iş yükü veya uygulama ile kullanıma/entegrasyona hazırlık ta olan HSM aygıtlarının yapılandırması. Thales Luna Network HSM aygıtları Azure'da doğrudan Thales'ten satın aldığınızla aynı olsa da, Azure'da bir kaynak olmaları bazı benzersiz hususlar oluşturur. Bu hususlar ve ortaya çıkan sorun giderme öngörüleri veya en iyi uygulamalar, yüksek görünürlük ve kritik bilgilere erişim sağlamak için burada belgelenmiştir. Hizmet kullanıma sunulduktan sonra, kesin bilgiler doğrudan Microsoft veya Thales'e destek istekleri aracılığıyla kullanılabilir. 
+Azure ayrılmış HSM hizmeti iki ayrı model içerir. İlk olarak, HSM cihazlarının Azure 'daki kayıt ve dağıtım, temel ağ bileşenleriyle birlikte. İkinci olarak, belirli bir iş yükü veya uygulamayla kullanım/tümleştirme hazırlığı için HSM cihazlarının yapılandırması. Thales Luna ağ HSM cihazları Azure 'da doğrudan Thales 'den satın alırken aynı olsa da, Azure 'da bir kaynak olması, bazı benzersiz hususlar oluşturur. Bu konular ve sonuçta ortaya çıkan sorun giderme öngörüleri veya en iyi yöntemleri, önemli bilgilere yüksek görünürlük ve erişim sağlamak için burada belgelenmiştir. Hizmet kullanımda olduktan sonra doğrudan Microsoft veya Thales 'e yönelik destek istekleri aracılığıyla tanımlayıcı bilgilere erişilebilir. 
 
 > [!NOTE]
-> Yeni dağıtılan bir HSM aygıtında herhangi bir yapılandırma gerçekleştirmeden önce, ilgili yamalar ile güncelleştirilmesi gerektiğini belirtmek gerekir. Belirli bir gerekli yama [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) Thales destek portalı olan bir yeniden başlatma askı sorunu giderilmesidir.
+> Yeni dağıtılan bir HSM cihazında herhangi bir yapılandırma gerçekleştirilmeden önce bu, ilgili düzeltme ekleriyle güncelleştirilmeleri gerektiğini not edilmelidir. Bir yeniden başlatma askıda kalma sorununu ele veren Thales destek portalında gerekli olan belirli bir düzeltme [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) .
 
-## <a name="hsm-registration"></a>HSM Kaydı
+## <a name="hsm-registration"></a>HSM kaydı
 
-Özel HSM, bulutta donanım kaynakları sunduğu ndan serbestçe kullanılamaz ve bu nedenle korunması gereken değerli bir kaynaktır. Bu nedenle kullanarak e-posta HSMrequest@microsoft.comyoluyla bir beyaz liste işlemi kullanın. 
+Adanmış HSM, bulutta donanım kaynakları sunarken kullanım için ücretsiz olarak kullanılamaz ve bu nedenle korunması gereken değerli bir kaynaktır. Bu nedenle, kullanarak HSMrequest@microsoft.come-posta aracılığıyla beyaz listeleme işlemi kullanıyoruz. 
 
-### <a name="getting-access-to-dedicated-hsm"></a>Özel HSM'ye erişim
+### <a name="getting-access-to-dedicated-hsm"></a>Adanmış HSM 'ye erişim sağlama
 
-Özel HSM'nin temel depolama gereksinimlerinize uyacağını düşünüyorsanız, erişim isteğinde bulunmak için e-posta gönder. HSMrequest@microsoft.com Uygulamanızı, istediğiniz bölgeleri ve aradığınız HSM'lerin hacmini anahat. Örneğin Bir Hesap Yöneticisi veya Bulut Çözüm Mimarı gibi bir Microsoft temsilcisiyle çalışıyorsanız, bunları herhangi bir isteğe ekleyin.
+Adanmış HSM 'nin anahtar depolama gereksinimlerinize uygun olduğunu düşünüyorsanız, erişim istemek için e HSMrequest@microsoft.com -posta gönderin. Uygulamanızı, HSMs istediğiniz bölgeleri ve aradığınız HSM hacmini ana hatlarıyla yapın. Örneğin, hesap yöneticisi veya bulut çözümü mimarı gibi bir Microsoft temsilcisiyle çalışıyorsanız, bunları herhangi bir isteğe dahil edin.
 
-## <a name="hsm-provisioning"></a>HSM Temini
+## <a name="hsm-provisioning"></a>HSM sağlama
 
-Azure'da bir HSM aygıtı nın sağlanması CLI veya PowerShell üzerinden yapılabilir. Hizmete kaydolurken, örnek bir ARM şablonu sağlanacaktır ve ilk özelleştirme için yardım verilecektir. 
+Azure 'da bir HSM cihazının sağlanması, CLı veya PowerShell aracılığıyla yapılabilir. Hizmet için kaydolurken, örnek bir ARM şablonu sağlanır ve ilk özelleştirme için yardım verilecek. 
 
-### <a name="hsm-deployment-failure-information"></a>HSM Dağıtım Hatası Bilgileri
+### <a name="hsm-deployment-failure-information"></a>HSM dağıtım hatası bilgileri
 
-Özel HSM dağıtım için CLI ve PowerShell'i destekler, böylece portal tabanlı hata bilgileri sınırlıdır ve ayrıntılı değildir. Kaynak Gezgini kullanılarak daha iyi bilgiler bulunabilir. Portal ana sayfasında bunun için bir simge vardır ve daha ayrıntılı hata bilgileri mevcuttur. Bu bilgiler, dağıtım sorunlarıyla ilgili bir destek isteği oluştururken yapıştırılırsa çok yardımcı olur.
+Adanmış HSM, dağıtım için CLı ve PowerShell 'i destekler, böylece portal tabanlı hata bilgileri sınırlıdır ve ayrıntılı değildir. Kaynak Gezgini kullanarak daha iyi bilgi bulabilirsiniz. Portal giriş sayfasında bu bir simge bulunur ve daha ayrıntılı hata bilgileri mevcuttur. Bu bilgiler, dağıtım sorunlarıyla ilgili bir destek isteği oluştururken içine yapıştırılmadıysanız bir Lota yardımcı olur.
 
-![Hata Bilgileri](./media/troubleshoot/failure-information.png)
+![Hata bilgileri](./media/troubleshoot/failure-information.png)
 
-### <a name="hsm-subnet-delegation"></a>HSM Subnet Delegasyonu
-Dağıtım hatalarının bir numaralı nedeni, HSM'lerin sağlandığı müşteri tanımlı alt ağı için uygun delegasyonu ayarlamayı unutmaktır. Bu delegasyonun ayarlanması VNet ve dağıtım için alt net ön koşullarının bir parçasıdır ve öğreticilerde daha fazla ayrıntı bulunabilir.
+### <a name="hsm-subnet-delegation"></a>HSM alt ağı temsili
+Dağıtım hatalarının bir nedeni, HSMs 'nin sağlanacağı müşteri tanımlı alt ağ için uygun temsilciyi ayarlamaya yöneliktir. Bu temsilcinin sanal ağın bir parçası ve dağıtım için alt ağ önkoşulları ve öğreticilerde daha fazla ayrıntı bulabilirsiniz.
 
-![Subnet Delegasyonu](./media/troubleshoot/subnet-delegation.png)
+![Alt ağ temsili](./media/troubleshoot/subnet-delegation.png)
 
-### <a name="hsm-deployment-race-condition"></a>HSM Dağıtım Yarış Durumu
+### <a name="hsm-deployment-race-condition"></a>HSM dağıtımı yarış durumu
 
-Dağıtım için sağlanan standart ARM şablonu HSM ve ExpressRoute ağ geçidi ile ilgili kaynaklara sahiptir. Ağ kaynakları başarılı HSM dağıtımı için bir bağımlılıktır ve zamanlama çok önemli olabilir.  Bazen, bağımlılık sorunlarıyla ilgili dağıtım hataları gördük ve dağıtımı yeniden çalıştırmak genellikle sorunu çözer. Değilse, kaynakları siler ve sonra yeniden dağıtmak genellikle başarılı olur. Bunu denedikten ve sorun bulmaya devam ettikten sonra, Azure portalında "Azure kurulumlarını yapılandıran sorunlar" sorununu seçerek bir destek isteği yükseltin.
+Dağıtımda sunulan standart ARM şablonunda HSM ve ExpressRoute ağ geçidi ile ilgili kaynaklar bulunur. Ağ kaynakları, başarılı bir HSM dağıtımına yönelik bir bağımlılıktır ve zamanlama önemli olabilir.  Bazen, bağımlılık sorunlarıyla ilgili dağıtım başarısızlıklarını gördük ve dağıtımı yeniden çalıştırmak genellikle sorunu çözer. Aksi takdirde, kaynakları silip yeniden dağıtım genellikle başarılı olur. Bunu yaptıktan ve sorun oluşmaya devam ettikten sonra, Azure portal "Azure kurulumunu yapılandırma sorunları" sorun türünü seçmek için bir destek isteği yükseltin.
 
-### <a name="hsm-deployment-using-terraform"></a>Terraform Kullanarak HSM Dağıtımı
+### <a name="hsm-deployment-using-terraform"></a>Terrayform kullanan HSM dağıtımı
 
-Birkaç müşteri, bu hizmete kaydolurken sağlanan ARM şablonları yerine Terraform'u otomasyon ortamı olarak kullanmaktadır. HSM'ler bu şekilde dağıtılamaz, ancak bağımlı ağ kaynakları dağıtılabilir. Terraform jut HSM dağıtım vardır minimal ARM şablonu için çağırmak için bir modül vardır.  Bu durumda, HSM'leri dağıtmadan önce gerekli ExpressRoute Ağ Geçidi gibi ağ kaynaklarının tam olarak dağıtıldığından emin olmak için dikkatli olunmalıdır. Aşağıdaki CLI komutu, tamamlanmış dağıtım için test etmek ve gerektiğinde tümleştirilebilmek için kullanılabilir. Belirli adlandırma için açı braketi yer tutucularını değiştirin. "ProvisioningState Başarılı" bir sonucu aramak gerekir
+Bazı müşteriler, bu hizmete kaydolurken sağlanan ARM şablonları yerine bir Otomasyon ortamı olarak Terkform kullanmıştı. HSMs bu şekilde dağıtılamaz, ancak bağımlı ağ kaynakları olabilir. Terkform, köşesinden 'in HSM dağıtımına sahip olduğu minimal bir ARM şablonuna çağrı yapmak için bir modüle sahiptir.  Bu durumda, gerekli ExpressRoute ağ geçidi gibi ağ kaynaklarının HSM 'leri dağıtılmadan önce tam olarak dağıtıldığından emin olmak için dikkatli olunması gerekir. Aşağıdaki CLı komutu, tamamlanmış dağıtımı test etmek ve gerektiğinde tümleşik hale eklemek için kullanılabilir. Özel adlandırmanın açılı ayraç yer tutucuları yerine koyun. "ProvisioningState başarılı oldu" sonucunu aramanız gerekir
 
 ```azurecli
 az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/providers/Microsoft.Network/virtualNetworkGateways/<myergateway>
 ```
 
-### <a name="deployment-failure-based-on-quota"></a>Kotaya dayalı dağıtım hatası
-Damga başına 2 HSM ve bölge başına 4 HSM'yi aşarsanız dağıtımlar başarısız olabilir. Bu durumu önlemek için, yeniden dağıtmadan önce kaynakları daha önce başarısız olan dağıtımlardan sildiğinizden emin olun. Kaynakları denetlemek için aşağıdaki "HSM'leri nasıl görürüm" öğesine bakın. Eğer öncelikle bir güvenlik olarak orada olan bu kotayı aşmanız HSMrequest@microsoft.com gerektiğini düşünüyorsanız, o zaman ayrıntıları ile e-posta lütfen.
+### <a name="deployment-failure-based-on-quota"></a>Kota temelinde dağıtım hatası
+Her bölge için 2 HSM/damga ve 4 HSM 'yi aşarsanız dağıtımlar başarısız olabilir. Bu durumdan kaçınmak için, yeniden dağıtım yapmadan önce başarısız olan dağıtımlardan kaynakları silmiş olduğunuzdan emin olun. Kaynakları denetlemek için aşağıdaki "Nasıl yaparım? See HSMs" öğesine bakın. Özellikle bir koruma gibi bu kotayı aşmanız gerektiğini düşünüyorsanız, lütfen ayrıntılara e-posta gönderin HSMrequest@microsoft.com .
 
 ### <a name="deployment-failure-based-on-capacity"></a>Kapasiteye dayalı dağıtım hatası
-Belirli bir damga veya bölge dolduğunda, yani neredeyse tüm ücretsiz HSM'ler sağlandığında, bu durum dağıtım hatalarına neden olabilir. Her damganın müşteriler için 11 HSM'si vardır, bu da bölge başına 22 hsm anlamına gelir. Ayrıca her pulda 3 yedek parça ve 1 test cihazı bulunmaktadır. Bir sınıra uymuş olabileceğinizi HSMrequest@microsoft.com düşünüyorsanız, belirli pulların dolum düzeyi hakkında bilgi için e-posta gönderin.
+Belirli bir damga veya bölge dolduğunda, diğer bir deyişle, neredeyse tüm ücretsiz HSM 'ler sağlandığında, bu dağıtım hatalarına neden olabilir. Her damga, müşteriler için kullanılabilir 11 HSMs 'ye sahiptir ve bu, bölge başına 22 anlamına gelir. Her bir damgada 3 yedek ve 1 test cihazı vardır. Sınır olduğunu düşünüyorsanız, belirli damgaların Fill düzeyi hakkında bilgi için HSMrequest@microsoft.com e-posta gönderin.
 
-###  <a name="how-do-i-see-hsms-when-provisioned"></a>Sağlandığında HSM'leri nasıl görebiliyorum?
-Özel HSM'nin beyaz listeye alınmış bir hizmet olması nedeniyle, Azure portalında "Gizli Tür" olarak kabul edilir. HSM kaynaklarını görmek için, aşağıda gösterildiği gibi "Gizli türleri göster" onay kutusunu denetlemeniz gerekir. NIC kaynağı her zaman HSM izler ve bağlanmak için SSH kullanmadan önce HSM IP adresini bulmak için iyi bir yerdir.
+###  <a name="how-do-i-see-hsms-when-provisioned"></a>Nasıl yaparım?, sağlanan HSM 'leri görmek mi istiyorsunuz?
+Adanmış HSM 'nin beyaz listeye eklenen bir hizmet olması nedeniyle, Azure portal bir "gizli tür" olarak kabul edilir. HSM kaynaklarını görmek için aşağıda gösterildiği gibi "gizli türleri göster" onay kutusunu denetlemeniz gerekir. NIC kaynağı her zaman HSM 'yi izler ve bağlanmak için SSH kullanılmadan önce HSM 'nin IP adresini bulmak için iyi bir yerdir.
 
-![Subnet Delegasyonu](./media/troubleshoot/hsm-provisioned.png)
+![Alt ağ temsili](./media/troubleshoot/hsm-provisioned.png)
 
-## <a name="networking-resources"></a>Ağ Kaynakları
+## <a name="networking-resources"></a>Ağ kaynakları
 
-Özel HSM dağıtımı ağ kaynaklarına ve bunun sonucunda dikkat edilmesi gereken bazı sınırlamalara bağımlıdır.
+Adanmış HSM dağıtımı, ağ kaynaklarına bir bağımlılığa ve farkında olmak üzere bazı bazı ilgili bazı sınırlamaları vardır.
 
-### <a name="provisioning-expressroute"></a>ExpressRoute Sağlama
+### <a name="provisioning-expressroute"></a>ExpressRoute sağlama
 
-Özel HSM, ExpressRoute Ağ Geçidi'ni, müşteri özel IP adres alanı ile Azure veri merkezindeki fiziksel HSM arasındaki iletişim için bir "tünel" olarak kullanır.  Vnet başına bir ağ geçidi kısıtlaması olduğu göz önüne alındığında, ExpressRoute üzerinden şirket içi kaynaklarına bağlantı gerektiren müşterilerin bu bağlantı için başka bir Vnet kullanması gerekir.  
+Adanmış HSM, ExpressRoute ağ geçidini, müşterinin özel IP adresi alanı ve bir Azure veri merkezinde fiziksel HSM arasındaki iletişim için "tünel" olarak kullanır.  VNET başına bir ağ geçidi kısıtlaması olduğunu düşündüğünde, ExpressRoute aracılığıyla şirket içi kaynaklarıyla bağlantı gerektiren müşterilerin o bağlantı için başka bir VNET kullanması gerekir.  
 
-### <a name="hsm-private-ip-address"></a>HSM Özel IP Adresi
+### <a name="hsm-private-ip-address"></a>HSM özel IP adresi
 
-Özel HSM için sağlanan örnek şablonlar, HSM IP'sinin otomatik olarak belirli bir alt ağ aralığından alınacağını varsayar. ARM şablonundaki "NetworkInterfaces" özniteliği aracılığıyla HSM için açık bir IP adresi belirtebilirsiniz. 
+Adanmış HSM için sağlanan örnek şablonlar, HSM IP 'nin belirli bir alt ağ aralığından otomatik olarak alınacağını varsayar. ARM şablonunda bir "NetworkInterfaces" özniteliği aracılığıyla HSM için açık bir IP adresi belirtebilirsiniz. 
 
-![Subnet Delegasyonu](./media/troubleshoot/private-ip-address.png)
+![Alt ağ temsili](./media/troubleshoot/private-ip-address.png)
 
-## <a name="hsm-initialization"></a>HSM Başlatma
+## <a name="hsm-initialization"></a>HSM başlatması
 
-Başlatma, kullanım için yeni bir HSM veya yeniden kullanmak için varolan bir HSM hazırlar. Nesneleri oluşturabilmek veya depolamak, istemcilerin bağlanmasına veya şifreleme işlemleri gerçekleştirmesine izin vermeden önce HSM'nin başlatılması nın tamamlanması gerekir.
+Başlatma, kullanım için yeni bir HSM veya yeniden kullanım için mevcut bir HSM hazırlar. Nesneleri oluşturabilmeniz veya depolayabilmeniz, istemcilerin bağlanmasına izin vermeniz veya şifreleme işlemleri gerçekleştirebilmesi için HSM 'nin başlatılması tamamlanmış olmalıdır.
 
-### <a name="lost-credentials"></a>Kayıp Kimlik Bilgileri
+### <a name="lost-credentials"></a>Kayıp kimlik bilgileri
 
-Shell yönetici parolasının kaybolması HSM anahtar materyalinin kaybolmasına neden olur. HSM'yi sıfırlamak için bir destek isteği yapılmalıdır.
-HSM'yi başlatmada, kimlik bilgilerini güvenli bir şekilde depolayın. Shell ve HSM kimlik bilgileri şirketinizin politikalarına uygun olarak tutulmalıdır.
+Kabuk Yöneticisi parolasının kaybolması, HSM anahtar malzemesinin kaybedilmesine neden olur. HSM 'yi sıfırlamak için bir destek isteği yapılmalıdır.
+HSM 'yi başlatırken, kimlik bilgilerini güvenli bir şekilde depolayın. Kabuğun ve HSM kimlik bilgilerinin, şirketinizin ilkelerine uygun şekilde tutulması gerekir.
 
-### <a name="failed-logins"></a>Başarısız Girişler
+### <a name="failed-logins"></a>Başarısız oturum açma işlemleri
 
-HSM'lere yanlış kimlik bilgileri sağlamak yıkıcı sonuçlardoğurabilir. HSM Rolleri için varsayılan davranışlar aşağıda veda eder.
+HSM 'lerde hatalı kimlik bilgilerinin sağlanması bozucu sonuçlara sahip olabilir. HSM rollerinin varsayılan davranışları aşağıda verilmiştir.
 
-| Rol | Eşik (# deneme) | Çok fazla kötü giriş denemesinin sonucu | Kurtarma |
+| Rol | Eşik (Deneb sayısı) | Çok sayıda hatalı oturum açma denemesi sonucu | Kurtarma |
 |--|--|--|--|
-| HSM SO | 3 |  HSM sıfırlanır (tüm HSM nesneleri kimlikleri ve tüm bölümler gitti)  |  HSM yeniden başlatılması gerekir. İçerikler yedekleme(ler)'den geri yüklenebilir. | 
-| Bölüm SO | 10 |  Bölüm sıfırlanır. |  Bölüm yeniden başlatılması gerekir. İçerikler yedeklemeden geri yüklenebilir. |  
-| Denetim | 10 | Kilitleme | 10 dakika sonra otomatik olarak kilidi açılır. |  
-| Kripto Subay | 10 (azaltılabilir) | HSM ilkesi 15: Enable SO sıfırlama bölümü PIN 1 (etkin) olarak ayarlanırsa, CO ve CU rolleri kilitlenir.<br>HSM ilkesi 15: Enable SO reset of partition PIN 0 (devre dışı) olarak ayarlanırsa, CO ve CU rolleri kalıcı olarak kilitlenir ve bölüm içeriğine artık erişilemez. Bu varsayılan ayardır. | CO rolü kilidi ve bölüm SO tarafından kimlik bilgisi sıfırlanır, kullanarak `role resetpw -name co`.<br>Bölüm yeniden başlatılması ve anahtar malzemenin yedek aygıttan geri yüklenmesi gerekir. |  
+| HSM | 3 |  HSM sıfır (tüm HSM nesne kimlikleri ve tüm bölümler kayboluyor)  |  HSM yeniden başlatılmalıdır. İçerikler, yedeklemeden geri yüklenebilir. | 
+| Bölüm | 10 |  Bölüm sıfırlama işlemi. |  Bölüm yeniden başlatılmalıdır. İçerik, yedekten geri yüklenebilir. |  
+| Denetim | 10 | Özelliğini | 10 dakika sonra otomatik olarak açıldı. |  
+| Şifre müdürü | 10 (azaltılabilir) | HSM ilkesi 15: Enable bölüm PIN 'inin sıfırlanması 1 (etkin) olarak ayarlandıysa, CO ve CU rolleri kilitlenir.<br>HSM ilkesi 15: Enable bölüm PIN 'inin sıfırlanması 0 (devre dışı) olarak ayarlandıysa, CO ve CU rolleri kalıcı olarak kilitlenir ve bölüm içerikleri artık erişilebilir değildir. Bu varsayılan ayardır. | ORTAK rolün kilidi açık olmalıdır ve bu nedenle bölüm tarafından kimlik bilgileri sıfırlanarak kullanılarak `role resetpw -name co`.<br>Bölüm yeniden başlatılmalıdır ve bir yedekleme aygıtından anahtar malzeme geri yüklendi. |  
 
-## <a name="hsm-configuration"></a>HSM Yapılandırması 
+## <a name="hsm-configuration"></a>HSM yapılandırması 
 
-Aşağıdaki öğeler, yapılandırma hatalarının yaygın olduğu veya çağrılmaya değer bir etkiye sahip olduğu durumlardır:
+Aşağıdaki öğeler, yapılandırma hatalarının yaygın olduğu veya çağırma açısından önemli bir etkiye sahip olduğu durumdur:
 
-### <a name="hsm-documentation-and-software"></a>HSM Dokümantasyon ve Yazılım
-Thales SafeNet Luna 7 HSM cihazlarıiçin yazılım ve dokümantasyon Microsoft tarafından kullanılamaz ve doğrudan Thales'ten indirilmelidir. Kayıt işlemi sırasında alınan Thales Müşteri Kimliği kullanılarak kayıt gereklidir. Cihazlar, Microsoft tarafından sağlanan, yazılım sürümü 7.2 ve firmware sürümü 7.0.3 var. Erken 2020 Thales belgeleri kamu yaptı ve [burada](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)bulunabilir.  
+### <a name="hsm-documentation-and-software"></a>HSM belgeleri ve yazılımı
+Thales SafeNet Luna 7 HSM cihazları için yazılım ve belgeler Microsoft 'tan edinilemez ve doğrudan Thales 'den indirilmelidir. Kayıt işlemi sırasında alınan Thales müşteri KIMLIĞI kullanılarak kayıt gereklidir. Microsoft tarafından sağlandığı şekilde cihazların yazılım sürümü 7,2 ve bellenim sürümü 7.0.3 vardır. 2020 Thales 'in başlarında belgeleri herkese açıktır ve [burada](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)bulunabilir.  
 
-### <a name="hsm-networking-configuration"></a>HSM Ağ Yapılandırması
+### <a name="hsm-networking-configuration"></a>HSM ağ yapılandırması
 
-HSM içindeki ağı yapılandırırken dikkatli olun.  HSM, ExpressRoute Ağ Geçidi üzerinden bir müşteri özel IP adres alanından doğrudan HSM'ye bağlantı kurar.  Bu iletişim kanalı yalnızca müşteri iletişimi içindir ve Microsoft'un erişimi yoktur. HSM, bu ağ yolunun etkiedilen bir şekilde yapılandırılması, HSM ile tüm iletişimin kaldırıldığı anlamına gelir.  Bu durumda, tek seçenek aygıtısıfırlamak için Azure portalı üzerinden bir Microsoft destek isteği yükseltmektir. Bu sıfırlama yordamı HSM'yi ilk durumuna geri ayarlar ve tüm yapılandırma ve anahtar malzeme kaybolur.  Yapılandırma yeniden oluşturulmalıdır ve aygıt HA grubuna katıldığında anahtar malzeme çoğaltılır alırsınız.  
+HSM içindeki ağı yapılandırırken dikkatli olun.  HSM 'nin, ExpressRoute ağ geçidi aracılığıyla bir müşterinin özel IP adresi alanından doğrudan HSM 'ye bağlantısı vardır.  Bu iletişim kanalı yalnızca müşteri iletişimine yöneliktir ve Microsoft hiç erişime sahip değildir. HSM bu ağ yolunun etkilenmesine benzer bir şekilde yapılandırılırsa, bu, HSM ile olan tüm iletişimin kaldırıldığı anlamına gelir.  Bu durumda tek seçenek, cihazın sıfırlanması için Azure portal aracılığıyla bir Microsoft destek isteği yükseltmektir. Bu sıfırlama yordamı, HSM 'yi ilk durumuna geri ayarlar ve tüm yapılandırma ve anahtar malzemeler kaybedilir.  Yapılandırma yeniden oluşturulmalıdır ve cihaz, HA grubuna katıldığında, anahtar malzemesini çoğaltacaktır.  
 
-### <a name="hsm-device-reboot"></a>HSM Cihazı yeniden başlatma
+### <a name="hsm-device-reboot"></a>HSM cihazının yeniden başlatılması
 
-Bazı yapılandırma değişiklikleri, HSM'nin güç döngüsüne dönüştürülmesini veya yeniden başlatılmasını gerektirir. Azure'daki HSM'nin Microsoft testi, bazı durumlarda yeniden başlatmanın askıda kalabileceğini belirlemiştir. Bunun anlamı, Azure portalında zor yeniden başlatma isteğinde bulunan bir destek isteğinin oluşturulması ve azure veri merkezinde el ile bir işlem olduğu düşünüldüğünde tamamlanmasının 48 saat kadar süreceğin dir.  Bu durumu önlemek için, Thales'ten gelen yeniden başlatma düzeltme ekini doğrudan dağıttığınızdan emin olun. Thales Luna Network HSM 7.2 Yeniden başlatma sorunu için önerilen bir yama için indirmelerde [KB0019789'a](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) bakın (Not: Indirmek için Thales destek portalına kaydolmanız gerekir).
+Bazı yapılandırma değişiklikleri, HSM 'nin güç ışığını veya yeniden başlatılmasını gerektirir. Azure 'da HSM 'nin Microsoft test edilmesi, bazı durumlarda yeniden başlatmanın asılı olduğunu belirledi. Bu, sabit yeniden başlatma isteğinde bulunan Azure portal bir destek isteğinin oluşturulması ve bir Azure veri merkezinde el ile gerçekleştirilen bir işlem olduğunu düşünmeye 48 saat kadar sürebilir.  Bu durumdan kaçınmak için, Thales 'ten doğrudan yeniden başlatma düzeltme ekini dağıttığınızdan emin olun. Yeniden başlatma askıda kalma sorunu için önerilen bir düzeltme eki için Thales Luna ağ HSM 7,2 Indirmelerinde [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) adresine bakın (örneğin, Indirmek Için Thales destek portalına kaydolmanız gerekir).
 
-### <a name="ntls-certificates-out-of-sync"></a>NTLS Sertifikaları eşitlenmemiş
-Bir istemci, sertifikanın süresi dolduğunda veya yapılandırma güncelleştirmeleri aracılığıyla üzerine yazıldığında HSM'ye bağlantı kaybedebilir. Sertifika değişimi istemci yapılandırması her HSM ile yeniden uygulanmalıdır.
-Örnek Geçersiz sertifika ile NTLS günlüğe kaydetme:
+### <a name="ntls-certificates-out-of-sync"></a>NTLS sertifikaları eşitlenmemiş
+Bir sertifikanın süresi dolarsa veya yapılandırma güncelleştirmeleriyle üzerine yazıldığında, istemci bir HSM bağlantısını kaybedebilir. Sertifika değişimi istemci yapılandırması her HSM ile yeniden uygulanmalıdır.
+Geçersiz sertifikayla oturum açan örnek:
 
-> NTLS[8508]: info : 0 : Gelen bağlantı isteği... : 192.168.50.50.2/59415 NTLS[8508]: SSLAccept'den gelen hata mesajı : hata:14094418:SSL rutinleri:ssl3_read_bytes:tlsv1 uyarısı bilinmiyor ca NTLS[8508]: SSL sırasında hata kabul edin ( RC_SSL_ERROR ) NTLS[8508]: info : 0xc0000711 : İstemci ile güvenli bir kanal kuramamak : 192.168.50.2/59415 : RC_SSL_FAILED_HANDSHAKE NTLS[8508]: info : 0 : NTLS İstemci "Bilinmeyen ana bilgisayar adı" Bağlantı : 192.168.50.2/59415
+> NTLS [8508]: bilgi: 0: gelen bağlantı isteği...: 192.168.50.2/59415 NTLS [8508]: SSLAccept hata iletisi: hata: 14094418: SSL yordamları: ssl3_read_bytes uyarı bilinmeyen CA NTLS [8508]: SSL kabul etme sırasında hata (RC_SSL_ERROR) NTLS [8508]: INFO: 0xc0000711: istemciyle güvenli kanal kurulamadı: 192.168.50.2/59415: RC_SSL_FAILED_HANDSHAKE NTLS [8508]: bilgi: 0: NTLS Istemci "bilinmeyen konak adı" bağlantı örneği kaldırıldı: 192.168.50.2/59415
 
-### <a name="failed-tcp-communication"></a>Başarısız TCP İletişimi
+### <a name="failed-tcp-communication"></a>Başarısız TCP Iletişimi
 
-Luna Client yüklemesinden HSM'ye iletişim için en az TCP bağlantı noktası 1792 gerekir. Ortamdaki ağ yapılandırmaları değiştikçe bunu göz önünde bulundurun.
+Luna Istemci yüklemesinden HSM 'ye iletişimin en düşük TCP bağlantı noktası 1792 ' de olması gerekir. Ortamda herhangi bir ağ yapılandırması değiştiği için bunu göz önünde bulundurun.
 
-### <a name="failed-ha-group-member-doesnt-recover"></a>Başarısız HA Grup Üyesi Kurtarılmıyor
+### <a name="failed-ha-group-member-doesnt-recover"></a>Başarısız HA grubu üyesi kurtarılamadı
 
-Başarısız bir HA Group üyesi kurtarılamazsa, hagroup kurtarma komutunu kullanarak Luna istemcisinden el ile kurtarılmalıdır.
-Otomatik kurtarmayı etkinleştirmek için bir HA grubu için yeniden deneme sayısını yapılandırmak gerekir. Varsayılan olarak bir HA grubu kurtarıldığında bir HA üyesini gruba kurtarmagirişiminde bulunmaz.
+Başarısız bir HA grubu üyesi kurtarılmazsa, hagroup Recover komutunu kullanarak Luna istemcisinden el ile kurtarılması gerekir.
+Otomatik kurtarmayı etkinleştirmek için bir HA grubu için yeniden deneme sayısı yapılandırmak gerekir. Varsayılan olarak, bir HA grubu, kurtarıldığında bir HA üyesini gruba kurtarmaya çalışır.
 
-### <a name="ha-group-doesnt-sync"></a>HA Grubu Eşitleme Yapmaz
+### <a name="ha-group-doesnt-sync"></a>HA grubu eşitlenmedi
 
-Üye bölümlerin aynı klonlama etki alanına sahip olmadığı durumlarda, ha eşitleme komutu aşağıdakileri görüntüler: Uyarı: Eşitleme başarısız olabilir.  Yuva 0 ve yuva 1'deki üyelerin özel anahtar klonlama için çakışan ayarları vardır.
-Doğru klonlama etki alanına sahip yeni bir bölüm HA grubuna eklenmeli ve ardından yanlış yapılandırılmış bölüm kaldırılmalıdır.
+Üye bölümlerinin aynı kopyalama etki alanına sahip olmadığı durumlarda, ha Synchronize komutu şunları görüntüler: Uyarı: Synchronize başarısız olabilir.  Yuva 0 ve yuva 1 ' deki Üyeler özel anahtar kopyalama için çakışan ayarlara sahiptir.
+Doğru kopyalama etki alanına sahip yeni bir bölüm, HA grubuna eklenmelidir, ardından yanlış yapılandırılmış bölüm kaldırılır.
 
-## <a name="hsm-deprovisioning"></a>HSM Deprovisioning 
+## <a name="hsm-deprovisioning"></a>HSM sağlamasını kaldırma 
 
-Yalnızca bir HSM ile tamamen tamamlandığında bu hükümden arındırılabilir ve ardından Microsoft bunu sıfırlayıp ücretsiz bir havuza döndürür. 
+Yalnızca bir HSM ile tam olarak bitmemişse, Microsoft bunu sıfırlar ve ücretsiz bir havuza geri döndürür. 
 
-### <a name="how-to-delete-an-hsm-resource"></a>HSM kaynağı nasıl silinir?
+### <a name="how-to-delete-an-hsm-resource"></a>Bir HSM kaynağını silme
 
-HSM için Azure kaynağı, HSM "sıfırlanmış" durumda olmadığı sürece silinemez.  Bu nedenle, kaynak olarak silmeye çalışmadan önce tüm anahtar malzeme silinmiş olmalıdır. Sıfırlamanın en hızlı yolu HSM yönetici parolasını yanlış 3 kez almaktır (not: bu, cihaz düzeyindeki yöneticiye değil, HSM yöneticisine başvurur). Luna kabuk sıfırlar `hsm -factoryreset` bir komut var ama sadece seri bağlantı noktasında konsol üzerinden yürütülebilir ve müşterilerin bu erişimi yok.
+HSM 'nin "sıfırlama" durumunda olmadığı durumlar için Azure kaynağı silinemez.  Bu nedenle, bir kaynak olarak silinmeye çalışılırken tüm anahtar materyalinin silinmesi gerekir. En hızlı sıfırlama yolu, HSM Yönetici parolasının yanlış 3 kez alınacağını (Not: Bu, Gereç düzeyi Yöneticisi değil, HSM yöneticisini ifade eder). Luna kabuğu, sıfırlama `hsm -factoryreset` komutuna sahiptir ancak yalnızca seri bağlantı noktasında konsol aracılığıyla yürütülebilir ve müşterilerin buna erişimi yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, HSM dağıtım yaşam döngüsü boyunca sorunlar olabilir veya sorun giderme veya dikkatli değerlendirme gerektiren alanlar hakkında bilgi verilmiştir. Umarım bu makale, gereksiz gecikmeleri ve hayal kırıklığını önlemenize yardımcı olur ve ilgili eklemeler veya değişiklikleriniz varsa, Microsoft ile bir destek isteği yükseltin ve bize bildirin. 
+Bu makale, HSM dağıtım yaşam döngüsü genelinde sorunlar yaşamış veya sorun giderme ya da dikkatli bir dikkat gerektiren alanlara Öngörüler sağlamıştır. Bu makalede, gereksiz gecikmelerin ve kaçınmanın önlenmesine ve ilgili eklemelere veya değişikliklere sahip olmanız durumunda Microsoft ile bir destek talebi oluşturup bize bilgi vermemize yardımcı olur. 

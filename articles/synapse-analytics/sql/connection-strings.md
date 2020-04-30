@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL için bağlantı dizeleri (önizleme)
-description: Synapse SQL için bağlantı dizeleri (önizleme)
+title: SYNAPSE SQL için bağlantı dizeleri (Önizleme)
+description: SYNAPSE SQL için bağlantı dizeleri (Önizleme)
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8c1f13449c8ee5152e4e5b48af87f41004e599dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424562"
 ---
-# <a name="connection-strings-for-synapse-sql-preview"></a>Synapse SQL için bağlantı dizeleri (önizleme)
+# <a name="connection-strings-for-synapse-sql-preview"></a>SYNAPSE SQL için bağlantı dizeleri (Önizleme)
 
-Synapse SQL 'e (önizleme) [ADO.NET,](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx) [ODBC,](https://msdn.microsoft.com/library/jj730314.aspx) [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)gibi birkaç farklı uygulama protokolü ile bağlanabilirsiniz. Aşağıda her protokol için bağlantı dizeleri bazı örnekler verilmiştir. 
+SYNAPSE SQL 'e (Önizleme), [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)gibi birçok farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir. 
 
-Bağlantı dizenizi oluşturmak için Azure portalını da kullanabilirsiniz.  Azure portalını kullanarak bağlantı dizenizi oluşturmak *için, Temel Bilgiler* altında *veritabanı bağlantı dizelerini göster'i*tıklatın.
+Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Azure portal kullanarak Bağlantı dizenizi derlemek için, veritabanı dikey pencerenize gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' e tıklayın.
 
 ## <a name="sample-adonet-connection-string"></a>Örnek ADO.NET bağlantı dizesi
 
@@ -47,12 +47,12 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Bağlantının kısa süreler kullanılamaz lık tan kurtulmasını sağlamak için bağlantı zaman süresini 300 saniyeye ayarlamayı düşünün.
+> Bağlantı zaman aşımı süresini 300 saniye olarak ayarlamayı göz önünde bulundurun.
 
 ## <a name="recommendations"></a>Öneriler
 
-**İsteğe bağlı SQL** sorguları yürütmek için önerilen araçlar Azure Data [Studio](get-started-azure-data-studio.md) ve Azure Synapse Studio'dur.
+**SQL isteğe** bağlı sorguları yürütmek için önerilen Araçlar [Azure Data Studio](get-started-azure-data-studio.md) ve Azure SYNAPSE Studio.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Analytics'inizi Visual Studio ve diğer uygulamalarla sorgulamaya başlamak için [Visual Studio ile Sorgula](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)bölümüne bakın.
+Visual Studio ve diğer uygulamalarla analizlerinizi sorgulamaya başlamak için bkz. [Visual Studio Ile sorgulama](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

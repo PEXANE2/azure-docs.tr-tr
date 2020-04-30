@@ -1,5 +1,5 @@
 ---
-title: .NET SDK'yı kullanarak Azure veri fabrikası oluşturma
+title: .NET SDK kullanarak Azure Veri Fabrikası oluşturma
 description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
 services: data-factory
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 7f0f18e523368e85d9cea0206e98bb7b1a0e6165
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419383"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Quickstart: .NET SDK kullanarak bir veri fabrikası ve ardışık kaynak oluşturma
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı başlangıç: .NET SDK kullanarak veri fabrikası ve işlem hattı oluşturma
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-dot-net.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu hızlı başlangıç, .NET SDK’sı kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz ardışık işlem, verileri azure blob depolamasında bir klasörden başka bir klasöre **kopyalar.** Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](tutorial-transform-data-spark-portal.md).
+Bu hızlı başlangıç, .NET SDK’sı kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri bir Azure Blob depolama alanındaki bir klasörden başka bir klasöre **kopyalar** . Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Bu makale, Data Factory hizmetine ayrıntılı giriş bilgileri sağlamaz. Azure Data Factory hizmetine giriş bilgileri için bkz. [Azure Data Factory'ye giriş](introduction.md).
@@ -37,7 +37,7 @@ Bu hızlı başlangıç, .NET SDK’sı kullanarak bir Azure veri fabrikası olu
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Bu makaledeki walkthrough Visual Studio 2019 kullanır. Visual Studio 2013, 2015 veya 2017 prosedürleri biraz farklıdır.
+Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2015 veya 2017 yordamları biraz farklı.
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK’sı
 
@@ -45,26 +45,26 @@ Bu makaledeki walkthrough Visual Studio 2019 kullanır. Visual Studio 2013, 2015
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory’de uygulama oluşturma
 
-Nasıl Kullanılır *bölümünden: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet ilkesi oluşturmak*için portalı kullanın, bu görevleri yapmak için yönergeleri izleyin:
+*Nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma*bölümündeki bölümden, bu görevleri yapmak için yönergeleri izleyin:
 
-1. [Azure Etkin Dizin uygulaması](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)oluştur'da, bu öğreticide oluşturduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
-2. [Oturum açma değerleri alın](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in), uygulama **kimliği** ve **kiracı kimliği**alın ve bu öğreticide daha sonra kullandığınız değerleri not alın. 
-3. [Sertifikalar ve sırlar,](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) **kimlik doğrulama anahtarı**almak ve daha sonra bu öğreticide kullandığınız bu değeri not.
-4. [Uygulamayı bir role atayın,](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **Katılımcı** rolüne atayın.
+1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
+2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
+3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)' da, **kimlik doğrulama anahtarını**alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
+4. Uygulamayı [bir role ata](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)bölümünde, uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **katkıda** bulunan rolüne atayın.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
-Ardından Visual Studio'da C# .NET konsol uygulaması oluşturun:
+Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
 
 1. **Visual Studio**’yu başlatın.
-2. Başlangıç penceresinde, yeni bir proje > **KonsolU Uygulaması (.NET Framework)** **oluştur'u**seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
-3. **Proje adına,** **ADFv2QuickStart**girin.
+2. Başlangıç penceresinde **Yeni proje** > **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
+3. **Proje adı**alanına **ADFv2QuickStart**girin.
 4. Projeyi oluşturmak için **Oluştur**'u seçin.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçları** > **nuget paket yöneticisi** > **paket yöneticisi konsolseçin.**
-2. Paket **Yöneticisi Konsol** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. Daha fazla bilgi için [Microsoft.Azure.Management.DataFactory nuget paketine](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)bakın.
+1. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin.
+2. **Paket Yöneticisi konsolu** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. Daha fazla bilgi için bkz. [Microsoft. Azure. Management. DataFactory NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -87,7 +87,7 @@ Ardından Visual Studio'da C# .NET konsol uygulaması oluşturun:
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Aşağıdaki kodu, değişkenleri ayarlayan **Main** yöntemine ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri depolama (Azure Depolama, Azure SQL Veritabanı ve daha fazlası) ve veri fabrikası tarafından kullanılan hesaplamalar (HDInsight ve diğerleri) başka bölgelerde olabilir.
+2. Aşağıdaki kodu, değişkenleri ayarlayan **Main** yöntemine ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı ve daha fazlası) ve işlemler (HDInsight ve diğerleri), diğer bölgelerde olabilir.
 
    ```csharp
    // Set variables
@@ -155,7 +155,7 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 Aşağıdaki kodu bir **Azure Depolama bağlı hizmeti** oluşturan **Main** yöntemine ekleyin.
 
-Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu Quickstart'ta, hem kopyalama kaynağı hem de lavabo deposu için yalnızca bir Azure Depolama bağlantılı hizmet oluşturmanız gerekir; örnekte "AzureStorageLinkedService" olarak adlandırılır.
+Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu hızlı başlangıçta yalnızca kopyalama kaynağı ve havuz deposu için bir Azure depolama bağlı hizmeti oluşturmanız gerekir; örnekteki "AzureStorageLinkedService" olarak adlandırılmıştır.
 
 ```csharp
 // Create an Azure Storage linked service
@@ -179,7 +179,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 Aşağıdaki kodu bir **Azure blob veri kümesi** oluşturan **Main** yöntemine ekleyin.
 
-Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, bu Blob veri kümesi önceki adımda oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Veri kümesi, değeri veri kümesini kullanan bir etkinlikte tanımlanmış bir parametre alır. Parametre, verilerin bulunduğu/depolandığı yeri gösteren "folderPath"i oluşturmak için kullanılır.
+Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, bu Blob veri kümesi önceki adımda oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Veri kümesi, değeri veri kümesini kullanan bir etkinlikte tanımlanmış bir parametre alır. Parametresi, verilerin bulunduğu/depolandığı yeri işaret eden "folderPath" oluşturmak için kullanılır.
 
 ```csharp
 // Create an Azure Blob dataset
@@ -208,7 +208,7 @@ Console.WriteLine(
 
 Aşağıdaki kodu **bir kopyalama etkinliği ile işlem hattı** oluşturan **Main** yöntemine ekleyin.
 
-Bu örnekte, bu ardışık işlem bir etkinlik içerir ve iki parametre alır: giriş blob yolu ve çıkış blob yolu. Bu parametrelerin değerleri, işlem hattı tetiklendiğinde/çalıştırıldığında ayarlanır. Kopyalama etkinliği, önceki adımda girdi ve çıktı olarak oluşturulmuş blob veri kümesini ifade eder. Veri kümesi bir girdi veri kümesi olarak kullanıldığında girdi yolu belirtilir. Ayrıca, veri kümesi bir çıktı veri kümesi olarak kullanıldığında çıktı yolu belirtilir. 
+Bu örnekte, bu işlem hattı bir etkinlik içerir ve iki parametre alır: giriş blob yolu ve çıkış blob yolu. Bu parametrelerin değerleri, işlem hattı tetiklendiğinde/çalıştırıldığında ayarlanır. Kopyalama etkinliği, önceki adımda girdi ve çıktı olarak oluşturulmuş blob veri kümesini ifade eder. Veri kümesi bir girdi veri kümesi olarak kullanıldığında girdi yolu belirtilir. Ayrıca, veri kümesi bir çıktı veri kümesi olarak kullanıldığında çıktı yolu belirtilir. 
 
 ```csharp
 // Create a pipeline with a copy activity
@@ -260,7 +260,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.Serialization
 
 Aşağıdaki kodu **bir işlem hattı çalıştırması tetikleyen****Main** yöntemine ekleyin.
 
-Bu kod ayrıca kaynak ve lavabo blob yollarının gerçek değerleri ile boru hattında belirtilen **inputPath** ve **outputPath** parametrelerinin değerlerini ayarlar.
+Bu kod ayrıca, işlem hattında belirtilen **inputPath** ve **OutputPath** parametrelerinin değerlerini kaynak ve havuz blob yollarının gerçek değerleriyle belirler.
 
 ```csharp
 // Create a pipeline run
@@ -296,7 +296,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    }
    ```
 
-2. Kopya etkinliği çalıştırayrıntılarını (örneğin, okunan veya yazılan verilerin boyutu) alan **Ana** yöntemine aşağıdaki kodu ekleyin.
+2. Aşağıdaki kodu, kopyalama etkinliği çalıştırma ayrıntılarını alan, okunan veya yazılan verilerin boyutu gibi **ana** yönteme ekleyin.
 
    ```csharp
    // Check the copy activity run details
@@ -318,7 +318,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Uygulamayı derleyip başlatın, ardından işlem hattı yürütmesini doğrulayın.
 
-Konsol; veri fabrikası, bağlı hizmet, veri kümeleri, işlem hattı ve işlem hattı çalıştırmasının ilerleme durumunu yazdırır. Daha sonra işlem hattı çalıştırma durumunu denetler. Kopyalama etkinliği, okuma/yazma verilerinin boyutuyla ayrıntıları çalıştırdığınızı görene kadar bekleyin. Daha sonra, değişkenlerde belirttiğiniz gibi "inputBlobPath"ten "outputBlobPath"e kopyalanAmasını kontrol etmek için [Azure Depolama gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçları kullanın.
+Konsol; veri fabrikası, bağlı hizmet, veri kümeleri, işlem hattı ve işlem hattı çalıştırmasının ilerleme durumunu yazdırır. Daha sonra işlem hattı çalıştırma durumunu denetler. Kopyalama etkinliği çalıştırma ayrıntılarını, okuma/yazma verilerinin boyutuyla görene kadar bekleyin. Ardından [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) gibi araçlar kullanarak, Blobların değişkenlerde belirttiğiniz şekilde "inputblobpath" yolundan "outputblobpath" öğesine kopyalanıp kopyalanmayacağını denetleyin.
 
 ### <a name="sample-output"></a>Örnek çıktı
 
@@ -430,15 +430,15 @@ Press any key to exit...
 
 ## <a name="verify-the-output"></a>Çıktıyı doğrulama
 
-Ardışık hatlar, **adftutorial** blob kapsayıcısındaki çıktı klasörünü otomatik olarak oluşturur. Daha sonra, giriş klasöründen çıkış klasörüne **emp.txt** dosyasını kopyalar. 
+İşlem hattı, çıkış klasörünü **adföğreticisi** blob kapsayıcısında otomatik olarak oluşturur. Daha sonra,. **txt** dosyasını giriş klasöründen çıkış klasörüne kopyalar. 
 
-1. Azure portalında, yukarıdaki blob kapsayıcısı bölümü için [giriş klasörü ve dosya ekle'de](#add-an-input-folder-and-file-for-the-blob-container) durduğunuz **adftutorial** kapsayıcı sayfasında çıktı klasörünü görmek için **Yenile'yi** seçin. 
-2. Klasör listesinde **çıktıyı**seçin.
+1. Azure portal, yukarıdaki [BLOB kapsayıcısı için bir giriş klasörü ve dosya ekleme](#add-an-input-folder-and-file-for-the-blob-container) bölümünde durduğunuza **adföğretici** kapsayıcı sayfasında, çıkış klasörünü görmek için **Yenile** ' yi seçin. 
+2. Klasör listesinde **Çıkış**' ı seçin.
 3. **emp.txt** dosyasının output klasörüne kopyalandığını onaylayın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veri fabrikasını programlı olarak silmek için programa aşağıdaki kod satırlarını ekleyin: 
+Veri fabrikasını programlı bir şekilde silmek için, aşağıdaki kod satırlarını programa ekleyin: 
 
 ```csharp
 Console.WriteLine("Deleting the data factory");

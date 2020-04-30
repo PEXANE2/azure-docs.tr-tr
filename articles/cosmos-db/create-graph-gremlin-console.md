@@ -1,5 +1,5 @@
 ---
-title: 'TinkerPop Gremlin Konsolu kullanarak Azure Cosmos DB Gremlin API ile sorgu: Öğretici'
+title: "Inkerpop Gremlin konsolunu kullanarak Azure Cosmos DB Gremlin API 'SI ile sorgulama: öğretici"
 description: Azure Cosmos DB Gremlin API’sini kullanarak köşe, kenar ve sorgu oluşturmaya yönelik Azure Cosmos DB hızlı başlangıcı.
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
 ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81450216"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı başlatma: Gremlin konsolu kullanarak bir Azure Cosmos DB grafik veritabanı oluşturma, sorgula ve geçiş
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı başlangıç: Gremlin konsolunu kullanarak Azure Cosmos DB Graph veritabanı oluşturma, sorgulama ve çapraz geçiş yapma
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -27,7 +27,7 @@ ms.locfileid: "81450216"
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
 
-Bu hızlı başlangıç, Azure portalını kullanarak bir Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve grafik (konteyner) nasıl oluşturulacağını ve ardından Gremlin API verileriyle çalışmak için [Apache TinkerPop'tan](https://tinkerpop.apache.org) [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) Konsolu'nu nasıl kullanacağımı gösterir. Bu öğreticide köşe ve kenarlar oluşturup sorgular, bir köşe özelliğini güncelleştirir, köşeleri sorgular, grafiğin çapraz geçişini yapar ve bir köşeyi bırakırsınız.
+Bu hızlı başlangıçta, Azure portal kullanarak bir Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve Graf (kapsayıcı) oluşturma ve ardından Gremlin API verileriyle çalışmak Için [Apache tinkerpop](https://tinkerpop.apache.org) 'Tan [Gremlin konsolunu](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) kullanma gösterilmektedir. Bu öğreticide köşe ve kenarlar oluşturup sorgular, bir köşe özelliğini güncelleştirir, köşeleri sorgular, grafiğin çapraz geçişini yapar ve bir köşeyi bırakırsınız.
 
 ![Apache Gremlin konsolunda Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıca yönelik bir Azure Cosmos DB hesabı oluşturmak için A
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklemeniz gerekir. **Önerilen sürüm v3.4.3** veya daha öncekisürümdür. (Windows'da Gremlin Console'u kullanmak için [Java Runtime'ı](https://www.oracle.com/technetwork/java/javase/overview/index.html)yüklemeniz gerekir).
+Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklemeniz gerekir. **Önerilen sürüm v 3.4.3** veya daha önceki bir sürüm. (Windows üzerinde Gremlin konsolunu kullanmak için [Java çalışma zamanı](https://www.oracle.com/technetwork/java/javase/overview/index.html)'nı yüklemeniz gerekir).
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -49,23 +49,23 @@ Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklem
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Uygulama hizmetinize bağlanın/Grafik
+## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Uygulama hizmetinize/grafiğinize bağlanma
 
 1. Gremlin Konsolu’nu başlatmadan önce `apache-tinkerpop-gremlin-console-3.2.5/conf` dizininde remote-secure.yaml yapılandırma dosyasını oluşturun veya değiştirin.
 2. *ana bilgisayar*, *bağlantı noktası*, *kullanıcı adı*, *parola*, *bağlantı havuzu* ve *serileştirici* değerlerini aşağıdaki tabloda tanımlanan şekilde girin:
 
     Ayar|Önerilen değer|Açıklama
     ---|---|---
-    hosts|[*hesap adı*. **gremlin**.cosmos.azure.com]|Aşağıdaki ekran görüntüsüne bakın. Bu, Azure portalının Genel Bakış sayfasındaki **Gremlin URI** değeridir, kare parantez içinde, iz :443/ kaldırılmıştır. Not: Gremlin sorgularını daha sonra yürütmeye çalışırken "Ana Bilgisayar zamanında yanıt vermedi" özel durumuyla sonuçlanacak [*hesap adı*.documents.azure.com] ile biten URI değerini **değil,** Gremlin değerini kullandığınızdan emin olun. 
+    hosts|[*Hesap-adı*. **Gremlin**. Cosmos.Azure.com]|Aşağıdaki ekran görüntüsüne bakın. Bu, köşeli ayraçlar içinde Azure portal Genel Bakış sayfasındaki **Gremlin URI** değeridir ve sonunda: 443/removed. Not: Gremlin değerlerini, daha sonra Gremlin sorgularını yürütmeye çalışırken, büyük olasılıkla "ana bilgisayar zamanında yanıt vermedi" özel durumuyla sonuçlanan URI 'yi **değil** , [*Account-Name*. Documents.Azure.com] ile biten URI 'yi kullanmayın. 
     port|443|443 olarak ayarlayın.
     kullanıcı adı|*Kullanıcı adınız*|`/dbs/<db>/colls/<coll>` formunun kaynağı; burada `<db>` veritabanı adınız ve `<coll>` koleksiyon adınızdır.
     password|*Birincil anahtarınız*| Aşağıdaki ikinci ekran görüntüsüne bakın. Bu sizin birincil anahtarınızdır, bu anahtarı Azure portalının Anahtarlar sayfasındaki Birincil Anahtar kutusunda bulabilirsiniz. Değeri kopyalamak için kutunun solundaki kopyala düğmesini kullanın.
     connectionPool|{enableSsl: true}|TLS için bağlantı havuzu ayarınız.
-    serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Bu değere ayarlayın ve değeri yapıştırırken tüm `\n` satır sonlarını silin.
+    serializer|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Bu değere ayarlayın ve değeri yapıştırırken tüm `\n` satır sonlarını silin.
 
     Hosts değeri için **Genel Bakış** sayfasından **Gremlin URI** değerini kopyalayın: ![Azure portalındaki Genel Bakış sayfasında bulunan Gremlin URI değerini görüntüleme ve kopyalama](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    Parola değeri **için, Temel anahtarı** **Keys** sayfasından kopyalayın: ![Azure portalı, Keys sayfasında birincil anahtarınızı görüntüleyin ve kopyalayın](./media/create-graph-gremlin-console/keys.png)
+    Parola değeri için, **anahtarlar** sayfasından ![ **birincil anahtarı** kopyalayın: Azure Portal, anahtarlar sayfasında birincil anahtarınızı görüntüleyin ve kopyalayın](./media/create-graph-gremlin-console/keys.png)
 
 Remote-secure.yaml dosyanız aşağıdaki gibi görünmelidir:
 
@@ -80,13 +80,13 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
 ```
 
-ana bilgisayar parametresinin değerini parantez içinde sarandan emin olun []. 
+Ana bilgisayar parametresinin değerini köşeli ayraç [] içinde sardığınızdan emin olun. 
 
 1. Terminalinizde [Gremlin Konsolunu](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/) başlatmak için `bin/gremlin.bat` veya `bin/gremlin.sh` çalıştırın.
 1. Terminalinizde uygulama hizmetinize bağlanmak için `:remote connect tinkerpop.server conf/remote-secure.yaml` çalıştırın.
 
     > [!TIP]
-    > `No appenders could be found for logger` hatasını alırsanız, remote-secure.yaml dosyasındaki seri hale getirici değerini 2. adımda açıklanan şekilde güncelleştirdiğinizden emin olun. Yapılandırmanız doğruysa, konsolun kullanımını etkilememesi gerektiğinden bu uyarı güvenle yoksayılabilir. 
+    > `No appenders could be found for logger` hatasını alırsanız, remote-secure.yaml dosyasındaki seri hale getirici değerini 2. adımda açıklanan şekilde güncelleştirdiğinizden emin olun. Yapılandırmanız doğruysa, bu uyarı, konsolunun kullanımını etkilememesi gerektiği için güvenle yok sayılabilir. 
 
 1. Ardından tüm konsol komutlarını uzak sunucuya yönlendirmek için `:remote console` komutunu çalıştırın.
 

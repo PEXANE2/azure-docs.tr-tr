@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlatma: VM ağ trafiği filtresi sorununu tanıla - Azure portalı'
+title: 'Hızlı başlangıç: bir VM ağı trafik filtresi sorununu tanılama-Azure portal'
 titleSuffix: Azure Network Watcher
 description: Bu hızlı başlangıçta, Azure Ağ İzleyicisi'nin IP akış doğrulama özelliği kullanılarak sanal makine ağ trafiği filtreleme sorununun nasıl tanılanacağını öğrenirsiniz.
 services: network-watcher
@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241601"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak sanal makine ağ trafiği filtreleme sorununu tanılama
 
 Bu hızlı başlangıçta bir sanal makine (VM) dağıtır ve sonra bir IP adresi ve URL ile iletişimleri ve bir IP adresinden gelen iletişimleri denetlersiniz. Bir iletişim hatasının nedenini ve bu hatayı nasıl çözeceğinizi belirlersiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -37,7 +37,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-a-vm"></a>VM oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
-2. **Bilgi İşlem'i**seçin ve ardından Windows **Server 2016 Datacenter'ı** veya **Ubuntu Server**sürümünü seçin.
+2. **İşlem**' ı seçin ve ardından **Windows Server 2016 Datacenter** veya **Ubuntu Server**sürümünü seçin.
 3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
     |Ayar|Değer|
@@ -47,7 +47,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
-    |Konum| **Doğu ABD'yi** seçin|
+    |Konum| **Doğu ABD** seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
 5. **Ayarlar** bölümünde tüm varsayılanları kabul edin ve **Tamam**’ı seçin.
@@ -85,7 +85,7 @@ Bir sanal makine oluşturduğunuzda Azure varsayılan olarak sanal makineye/sana
     | Yön         | Giden                                                                                          |
     | Yerel IP adresi  | 10.0.0.4                                                                                          |
     | Yerel bağlantı noktası      | 60000                                                                                                |
-    | Uzak IP adresi | 13.107.21.200 - <www.bing.com> adreslerinden biri.                                             |
+    | Uzak IP adresi | 13.107.21.200-<www.bing.com> adreslerinden biri.                                             |
     | Uzak bağlantı noktası       | 80                                                                                                |
 
     ![IP akışı doğrulama](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
