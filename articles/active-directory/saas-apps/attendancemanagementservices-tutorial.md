@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Katılım Yönetimi Hizmetleri ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve Katılım Yönetimi Hizmetleri arasında tek oturum açma yı nasıl yapılandırabileceğinizi öğrenin.
+title: 'Öğretici: Katılım yönetimi hizmetleriyle Azure Active Directory tümleştirme | Microsoft Docs'
+description: Azure Active Directory ve katılımcı yönetim hizmetleri arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,226 +17,226 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7143d0afce7a3644286703a9eba0da1ee45305f2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67106552"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Öğretici: Katılım Yönetimi Hizmetleri ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Öğretici: Katılım yönetimi hizmetleriyle Azure Active Directory tümleştirme
 
-Bu eğitimde, Katılım Yönetimi Hizmetlerini Azure Etkin Dizin (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Katılım Yönetimi Hizmetlerini Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, katılımcı yönetimi hizmetlerini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Katılımcı yönetimi hizmetlerini Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Katılım Yönetimi Hizmetlerine erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Katılım Yönetimi Hizmetleri'nde (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, katılımcı yönetimi hizmetlerine erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla katılım Yönetim Hizmetleri 'ne (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Katılım Yönetimi Hizmetleri ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Katılım yönetimi hizmetleriyle yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Katılım Yönetim Hizmetleri tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Katılım Yönetim Hizmetleri çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Katılım Yönetim Hizmetleri **SP** tarafından başlatılan SSO'ya destek veriyor
+* Katılım yönetimi hizmetleri **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-attendance-management-services-from-the-gallery"></a>Galeriden Katılım Yönetimi Hizmetleri Ekleme
+## <a name="adding-attendance-management-services-from-the-gallery"></a>Galeriden katılımcı yönetimi hizmetleri ekleme
 
-Katılım Yönetimi Hizmetlerinin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize Katılım Yönetimi Hizmetleri eklemeniz gerekir.
+Katılım yönetimi hizmetlerinin tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize katılım Yönetim Hizmetleri eklemeniz gerekir.
 
-**Galeriden Katılım Yönetimi Hizmetleri eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden katılımcı yönetimi hizmetleri eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Katılım Yönetimi Hizmetleri**yazın, sonuç panelinden Katılım Yönetimi **Hizmetleri'ni** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **katılım Yönetim Hizmetleri**yazın, sonuç panelinden **katılım Yönetim Hizmetleri** ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-    ![Sonuç listesinde Katılım Yönetim Hizmetleri](common/search-new-app.png)
+    ![Sonuçlar listesinde katılım Yönetim Hizmetleri](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Yapılandırır ve test esunarsınız.
-Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile Katılım Yönetimi Hizmetleri'ndeki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre katılımcı yönetimi hizmetleriyle yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve katılım Yönetim Hizmetleri 'ndeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Katılım Yönetimi Hizmetleri ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı, katılımcı yönetimi hizmetleriyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. **[Katılım Yönetimi Hizmetlerini Tek Oturum Açma](#configure-attendance-management-services-single-sign-on)** -uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Katılım Yönetimi Hizmetleri test kullanıcısını oluşturun](#create-attendance-management-services-test-user)** - Kullanıcının Azure REKLAM gösterimine bağlı Katılım Yönetimi Hizmetleri'nde Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Katılım Yönetim Hizmetleri çoklu oturum açma yapılandırma](#configure-attendance-management-services-single-sign-on)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı olan katılım yönetimi hizmetlerinde Britta Simon 'a sahip olmak için **[katılım Yönetim Hizmetleri test kullanıcısı oluşturun](#create-attendance-management-services-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Katılım Yönetimi Hizmetleri ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Katılım yönetimi hizmetleriyle yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **Katılım Yönetimi Hizmetleri** uygulama tümleştirme sayfasındaki Azure [portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **katılımcı yönetimi hizmetleri** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Katılım Yönetimi Hizmetleri Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Katılım Yönetim Hizmetleri etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://id.obc.jp/<tenant information >/`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://id.obc.jp/<tenant information >/`
 
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://id.obc.jp/<tenant information >/`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Katılım Yönetimi Hizmetleri Müşteri destek ekibine](https://www.obcnet.jp/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [katılım Yönetim Hizmetleri istemci destek ekibine](https://www.obcnet.jp/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. Katılım **Yönetimi Hizmetleri Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Katılımcı yönetimi hizmetleri ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-attendance-management-services-single-sign-on"></a>Katılım Yönetimi Hizmetlerini Yapılandır
+### <a name="configure-attendance-management-services-single-sign-on"></a>Katılımcı Yönetim Hizmetleri çoklu oturum açmayı yapılandırma
 
-1. Farklı bir tarayıcı penceresinde, Katılım Yönetimi Hizmetleri şirket sitenize yönetici olarak oturum açın.
+1. Farklı bir tarayıcı penceresinde, katılım Yönetim Hizmetleri şirket sitenizde yönetici olarak oturum açın.
 
-1. **Güvenlik yönetimi bölümü**altında **SAML kimlik doğrulaması** tıklayın.
+1. **Güvenlik Yönetimi bölümünde** **SAML kimlik doğrulaması** ' na tıklayın.
 
-    ![Katılım Yönetimi Hizmetleri Yapılandırması](./media/attendancemanagementservices-tutorial/user1.png)
+    ![Katılımcı Yönetimi Hizmetleri Yapılandırması](./media/attendancemanagementservices-tutorial/user1.png)
 
 1. Aşağıdaki adımları uygulayın:
 
-    ![Katılım Yönetimi Hizmetleri Yapılandırması](./media/attendancemanagementservices-tutorial/user2.png)
+    ![Katılımcı Yönetimi Hizmetleri Yapılandırması](./media/attendancemanagementservices-tutorial/user2.png)
 
-    a. **SAML kimlik doğrulamasını kullan'ı**seçin.
+    a. **SAML kimlik doğrulaması kullan**' ı seçin.
 
-    b. **Tanımlayıcı** metin kutusuna, Azure portalından kopyalamış olduğunuz **Azure AD Tanımlayıcı** değerinin değerini yapıştırın.
+    b. **Tanımlayıcı** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değeri değerini yapıştırın.
 
-    c. Kimlik **Doğrulama bitiş noktası URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL** değerinin değerini yapıştırın.
+    c. **Kimlik doğrulama uç noktası URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL** 'si değerini yapıştırın.
 
-    d. Azure AD'den indirdiğiniz sertifikayı yüklemek için dosya yı **seçin'i** tıklatın.
+    d. Azure AD 'den indirdiğiniz sertifikayı karşıya yüklemek için **Dosya Seç** ' e tıklayın.
 
-    e. **Parola kimlik doğrulamasını devre dışı bırakma'yı**seçin.
+    e. **Parola kimlik doğrulamasını devre dışı bırak**seçeneğini belirleyin.
 
-    f. **Kayıt'ı** tıklatın
+    f. **Kayıt** öğesine tıklayın
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı `brittasimon@yourcompanydomain.extension`türünde. Örneğin, BrittaSimon@contoso.com
+    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Katılım Yönetimi Hizmetlerine erişim sağlayarak Britta Simon'ın Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, katılımcı yönetimi hizmetlerine erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından Katılım **Yönetimi Hizmetleri'ni**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **katılımcı yönetimi hizmetleri**' ni seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Başvuru listesinde **Katılım Yönetim Hizmetleri'ni**seçin.
+2. Uygulamalar listesinde, **katılımcı yönetimi hizmetleri**' ni seçin.
 
-    ![Başvuru listesinde katılım yönetimi hizmetleri bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki katılım Yönetimi Hizmetleri bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-attendance-management-services-test-user"></a>Katılım Yönetimi Hizmetleri test kullanıcısı oluşturma
+### <a name="create-attendance-management-services-test-user"></a>Katılımcı Yönetim Hizmetleri test kullanıcısı oluştur
 
-Azure AD kullanıcılarının Katılım Yönetimi Hizmetlerinde oturum açmalarını sağlamak için Katılım Yönetimi Hizmetleri'nde bunların sağlanması gerekir. Katılım Yönetimi Hizmetleri söz konusu olduğunda, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının Katılım yönetimi hizmetlerinde oturum açmasını sağlamak için, katılımcı yönetim hizmetleri 'ne sağlanması gerekir. Katılımcı yönetimi hizmetleri söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Katılım Yönetim Hizmetleri şirket sitenizde yönetici olarak oturum açın.
+1. Katılımcı yönetimi hizmetleri şirket sitenizde yönetici olarak oturum açın.
 
-1. **Güvenlik yönetimi bölümünde**Kullanıcı **yönetimi'ne** tıklayın.
+1. **Güvenlik Yönetimi bölümünde** **Kullanıcı yönetimi** ' ne tıklayın.
 
     ![Çalışan Ekle](./media/attendancemanagementservices-tutorial/user5.png)
 
-1. **Yeni kurallar giriş'i**tıklatın.
+1. **Yeni kurallar oturum aç**' a tıklayın.
 
     ![Çalışan Ekle](./media/attendancemanagementservices-tutorial/user3.png)
 
-1. **OBCiD bilgi** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Obcıd bilgileri** bölümünde aşağıdaki adımları uygulayın:
 
     ![Çalışan Ekle](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. **OBCiD textbox'ta,** kullanıcının e-postasını şöyle `BrittaSimon\@contoso.com`yazın.
+    a. **Obcıd** metin kutusuna kullanıcının e-postasını yazın `BrittaSimon\@contoso.com`.
 
-    b. **Parola** metin kutusuna, kullanıcının parolasını yazın.
+    b. **Parola** metin kutusuna kullanıcının parolasını yazın.
 
-    c. **Kayıt'ı** tıklatın
+    c. **Kayıt** öğesine tıklayın
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Katılım Yönetimi Hizmetleri döşemesini tıklattığınızda, SSO'yu kurduğunuz Katılım Yönetimi Hizmetleri'nde otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde katılımcı yönetimi hizmetleri kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız katılım yönetimi hizmetlerinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

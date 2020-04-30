@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: ExpenseIn ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve ExpenseIn arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: "Öğretici: ' de Expenseile tümleştirme Azure Active Directory | Microsoft Docs"
+description: Azure Active Directory ve Expensearasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,182 +17,182 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67102853"
 ---
-# <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: ExpenseIn'i Azure Active Directory ile tümleştir
+# <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: Expensewith Azure Active Directory ile tümleştirin
 
-Bu eğitimde, ExpenseIn'i Azure Etkin Dizini (Azure AD) ile nasıl tümleştireceğinizi öğreneceksiniz. ExpenseIn'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, Azure Active Directory (Azure AD) ile Expense'in nasıl tümleştirileceğini öğreneceksiniz. Expensewith Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de ExpenseIn erişimi olan denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla ExpenseIn'de otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, ' de Expense'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla birlikte Expenseto 'da otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* ExpenseIn tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu oturum açma (SSO) özellikli abonelikte Expense.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. **ExpenseIn, SP ve IDP'nin** başlattığı SSO'yı destekler.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Expenseın, **SP ve ıDP** tarafından başlatılan SSO 'yu destekler.
 
-## <a name="adding-expensein-from-the-gallery"></a>Galeriden ExpenseIn Ekleme
+## <a name="adding-expensein-from-the-gallery"></a>Galeriden Expensefrom ekleme
 
-ExpenseIn'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize ExpenseIn eklemeniz gerekir.
+' Deki expense'in tümleştirmesini Azure AD olarak yapılandırmak için, galerideki Expenseın ' u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **GiderIn** yazın.
-1. Sonuç panelinden **ExpenseIn'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **expenseyazın** .
+1. Sonuçlar panelinden **expensefrom '** ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak ExpenseIn ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile ExpenseIn'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu expenseile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ' de Expenseiçindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu ExpenseIn ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu ' de Expensewith yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-2. Uygulama tarafındaki SSO ayarlarını yapılandırmak için **[ExpenseIn'i yapılandırın.](#configure-expensein)**
-3. Azure AD oturum açma'yı B.Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[HarcamaTest kullanıcısı](#create-expensein-test-user)** oluşturun, Kullanıcının Azure AD gösterimine bağlı ExpenseIn'de B.Simon'ın bir örneğine sahip olun.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
+2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[Expenseın ' i yapılandırın](#configure-expensein)** .
+3. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+4. Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
+5. Kullanıcının Azure AD gösterimine bağlı olan, ' de Expenseon 'da B. Simon 'a sahip olmak için, **[Test kullanıcısına Expensecreate](#create-expensein-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Gider Uygulama** tümleştirme sayfasında, **Yönet** bölümünü bulun ve Tek **oturum açma'yı**seçin.
-1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
-1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), uygulama tümleştirmesinde **Expenseın** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımı gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımı uygulayın:
 
-    **Url'yi Yanıtla** metin kutusuna URL'den herhangi birini yazın:
+    **Yanıt URL** 'si metın kutusuna URL 'den birini yazın:
 
     | |
     |--|
     | `https://app.expensein.com/samlcallback` |
     | `https://mobileapi.expensein.com/identity/samlcallback` |
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.expensein.com/saml`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.expensein.com/saml`
 
-1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak için kopyala düğmesini tıklatın ve **Sertifikayı (Base64)** indirip bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, Kopyala düğmesine tıklayarak **uygulama Federasyon meta verileri URL 'sini** kopyalayın ve sertifikayı indirmek Için **İndir** ' e tıklayın **(base64)** ve bilgisayarınıza kaydedin.
 
    ![Sertifika indirme bağlantısı](./media/expensein-tutorial/copy-metdataurl-certificate.png)
 
-1. **GiderI Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Expenseon ' u ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+   ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="configure-expensein"></a>Harcamayı Yapılandır
+### <a name="configure-expensein"></a>Expenseın yapılandırma
 
-1. ExpenseIn içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. ' De Expenseın içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya uzantı ekledikten sonra **Kurulum Giderin'e** tıklayın ve sizi ExpenseIn uygulamasına yönlendirecektir. Buradan, ExpenseIn'de oturum açmaları için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-5 adımlarını otomatikleştirecektir.
+2. Tarayıcıya Uzantı eklendikten sonra, ' **ın** ' a tıklayın. Buradan, adresinden Expenseın üzerinde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. ExpenseIn'i el ile kurmak istiyorsanız, yeni bir web tarayıcıpenceresi açın ve ExpenseIn şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Expenseas 'yi el ile ayarlamak istiyorsanız yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak şirket sitesinde Expenseoturumunuzu açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın üst kısmında **Admin'e** tıklayın ve **ardından Tek Oturum Aç'a** gidin ve **Sağlayıcı Ekle'yi**tıklatın.
+4. Sayfanın üst kısmındaki **yönetici** ' ye tıklayın, ardından **Çoklu oturum açma** ' ya gidin ve **Sağlayıcı Ekle**' ye tıklayın.
 
-     ![HarcamaYapılandırmada](./media/expenseIn-tutorial/config01.png)
+     ![Yapılandırmada Expense](./media/expenseIn-tutorial/config01.png)
 
-5. Yeni **Kimlik Sağlayıcısı** açılır pencerede aşağıdaki adımları gerçekleştirin:
+5. **Yeni kimlik sağlayıcısı** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![HarcamaYapılandırmada](./media/expenseIn-tutorial/config02.png)
+    ![Yapılandırmada Expense](./media/expenseIn-tutorial/config02.png)
 
-    a. Sağlayıcı **Adı** metin kutusuna, adı ex:Azure gibi yazın.
+    a. **Sağlayıcı adı** metin kutusuna, Ex: Azure gibi bir ad yazın.
 
-    b. **Sağlayıcı Intitated Sign-On'a İzin Ver**olarak **Evet'i** seçin.
+    b. **Sağlayıcı tarafından önceden oturum açma Izni ver '** i seçerek **Evet** ' i seçin.
 
-    c. Hedef **Url** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
+    c. **Hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    d. **Veren** metin kutusuna, Azure portalından kopyaladığınız **Azure AD Tanımlayıcısı'nın**değerini yapıştırın.
+    d. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
-    e. Sertifikayı (Base64) Not Defteri'nde açın, içeriğini kopyalayın ve **Sertifika** metin kutusuna yapıştırın.
+    e. Sertifika (base64) Not defteri 'nde açın, içeriğini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
 
-    f. **Oluştur'u**tıklatın.
+    f. **Oluştur**' a tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın ExpenseIn'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, ' de Expense'e erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **ExpenseIn'i**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Içinde expense'** i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-expensein-test-user"></a>Harcama OluşturmaTest kullanıcı
+### <a name="create-expensein-test-user"></a>Test kullanıcısına Expenseoluştur
 
-Azure AD kullanıcılarının ExpenseIn'de oturum açabilmeleri için ExpenseIn'de oturum açmaları gerekir. ExpenseIn'de, sağlama el ile bir görevdir.
+Azure AD kullanıcılarının ' de Expenseöğesinde oturum açmasını sağlamak için, ' de Expense'e sağlanması gerekir. Expenseın içinde, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Yönetici olarak ExpenseIn'de oturum açın.
+1. Bir yönetici olarak ' de Expenseöğesinde oturum açın.
 
-2. Sayfanın üst kısmında **Admin'e** tıklayın ve **ardından Kullanıcılar'a** gidin ve **Yeni Kullanıcı'yı**tıklatın.
+2. Sayfanın üst kısmındaki **yönetici** ' ye tıklayın, ardından **Kullanıcılar** ' a gidin ve **Yeni Kullanıcı**' ya tıklayın.
 
-     ![HarcamaYapılandırmada](./media/expenseIn-tutorial/config03.png)
+     ![Yapılandırmada Expense](./media/expenseIn-tutorial/config03.png)
 
-3. **Ayrıntılar** açılır pencerede aşağıdaki adımları gerçekleştirin:
+3. **Ayrıntılar** açılır penceresinde aşağıdaki adımları uygulayın:
 
-    ![HarcamaYapılandırmada](./media/expenseIn-tutorial/config04.png)
+    ![Yapılandırmada Expense](./media/expenseIn-tutorial/config04.png)
 
-    a. **Ad metin** kutusuna, **B**gibi kullanıcının ilk adını girin.
+    a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
 
-    c. **E-posta** metin kutusuna, gibi `B.Simon@contoso.com`kullanıcının e-posta girin.
+    c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com`.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Access Paneli'ndeki Gider Karosu'nu seçtiğinizde, SSO'yu kurduğunuz ExpenseIn'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Expenseın kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Expenseın ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

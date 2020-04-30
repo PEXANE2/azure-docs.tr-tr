@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Sauce Labs ile Azure Active Directory entegrasyonu - Mobil ve Web Testi | Microsoft Dokümanlar'
-description: Azure Active Directory ve Sos Laboratuvarları - Mobil ve Web Testi arasında tek oturum açma yı nasıl yapılandırıştırabilirsiniz öğrenin.
+title: 'Öğretici: Sauce Labs ile tümleştirme Azure Active Directory-mobil ve Web testi | Microsoft Docs'
+description: Azure Active Directory ve Sauce Labs ile mobil ve Web testi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,205 +16,205 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67091553"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Öğretici: Sauce Labs ile Azure Active Directory entegrasyonu - Mobil ve Web Testi
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Öğretici: Sauce Labs ile tümleştirme Azure Active Directory-mobil ve Web testi
 
-Bu eğitimde, Sos Laboratuvarları - Mobil ve Web Test'ini Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Sos Laboratuvarlarını Entegre Etme - Azure AD ile Mobil ve Web Testi aşağıdaki avantajları sağlar:
+Bu öğreticide, Sauce Labs-mobil ve Web testi Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Azure AD ile Sauce laboratuvarlarını tümleştirme-mobil ve Web testi aşağıdaki avantajları sağlar:
 
-* Sos Laboratuvarları - Mobil ve Web Testi'ne erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Sos Laboratuvarları - Mobil ve Web Testi (Tek Oturum Açma) ile otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, Sauce Labs 'e erişimi olan ve mobil ve Web testi 'nin denetimini yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Sauce Labs-mobil ve Web testi (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Sauce Labs - Mobil ve Web Testi ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Sauce Labs ile, mobil ve Web testi ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
-* Sauce Labs - Mobil ve Web Testi tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Sauce Labs-mobil ve Web testi çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Sos Labs - Mobil ve Web Testi **IDP** SSO başlatılan destekler
-* Sauce Labs - Mobil ve Web Testi **Just In Time** kullanıcı sağlama destekler
+* Sauce Labs-mobil ve Web testi **IDP** tarafından başlatılan SSO 'yu destekler
+* Sauce Labs-mobil ve Web testi, **tam zamanında** Kullanıcı sağlamasını destekler
 
-## <a name="adding-sauce-labs---mobile-and-web-testing-from-the-gallery"></a>Sos Labs ekleme - Mobil ve Web Testi galeriden
+## <a name="adding-sauce-labs---mobile-and-web-testing-from-the-gallery"></a>Galeri 'den Sauce Labs-mobil ve Web testi ekleme
 
-Sos Laboratuvarları - Mobil ve Web Testi'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Sos Laboratuvarları - Mobil ve Web Testi eklemeniz gerekir.
+Sauce Labs-mobil ve Web testi tümleştirmesini Azure AD 'ye göre yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize Sauce Labs-mobil ve Web testi eklemeniz gerekir.
 
-**Galeriden Sos Laboratuvarları - Mobil ve Web Testi eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Sauce Labs-mobil ve Web testi eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **Sauce Labs yazın - Mobil ve Web Testi**, sonuç panelinden **Sos Labs seçin - Mobil ve Web Testi** sonra uygulama eklemek için **ekle** düğmesini tıklatın.
+4. Arama kutusuna **Sauce Labs-mobil ve Web testi**yazın, sonuç panelinden **Sauce Labs-mobil ve Web testi** ' ni seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-    ![Sauce Labs - Mobil ve Web Test sonuçları listesinde](common/search-new-app.png)
+    ![Sauce Labs-sonuçlar listesinde mobil ve Web testi](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemini, **Britta Simon**adlı bir test kullanıcısına göre Sos Labs - Mobil ve Web Testi ile yapılandırıp test emzebilirsiniz.
-Tek oturum açma nın işe yaraması için, Bir Azure AD kullanıcısı ile Sos Labs - Mobil ve Web Testi'ndeki ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Sauce Labs-mobil ve Web testi ile yapılandırıp test edersiniz.
+Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilişkili kullanıcı arasındaki bir bağlantı ilişkisi ile Sauce Labs-mobil ve Web testi kurulması gerekir.
 
-Azure AD oturumlarını Sauce Labs - Mobile ve Web Test ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı Sauce Labs ile birlikte yapılandırmak ve test etmek için, mobil ve Web testi için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Sos Laboratuvarlarını - Mobil ve Web Testi Tek İşaret-On](#configure-sauce-labs---mobile-and-web-testing-single-sign-on)** - yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Sos Laboratuvarları Oluşturun - Mobil ve Web Test test kullanıcısı](#create-sauce-labs---mobile-and-web-testing-test-user)** - Sos Labs Britta Simon bir meslektaşı olması - Mobil ve Web Testi kullanıcının Azure AD gösterimi ile bağlantılıdır.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Sauce laboratuvarlarını yapılandırın-mobil ve Web testi çoklu oturum](#configure-sauce-labs---mobile-and-web-testing-single-sign-on)** açma ayarları, uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Sauce **[Labs-mobil ve Web testi test kullanıcısı oluşturma](#create-sauce-labs---mobile-and-web-testing-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Sauce laboratuvarlarında Britta Simon 'A ve mobil ve Web testine yönelik bir karşılığına sahip olmak için.
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Sos Labs - Mobil ve Web Testi ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açma 'yı Sauce Labs-mobil ve Web testi ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında](https://portal.azure.com/), **Sauce Labs - Mobil ve Web Testi** uygulama tümleştirme sayfasında Tek oturum **açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Sauce Labs-mobil ve Web testi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde, uygulama Azure ile önceden entegre edilmiş olduğundan, kullanıcının herhangi bir adım gerçekleştirmesi gerekmez.
+4. **Temel SAML yapılandırması** bölümünde, uygulama zaten Azure ile önceden tümleştirildiği için kullanıcının herhangi bir adım yapması gerekmez.
 
-    ![Sos Labs - Mobil ve Web Test Etki Alanı ve URL'ler tek oturum açma bilgileri](common/preintegrated.png)
+    ![Sauce Labs-mobil ve Web testi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/preintegrated.png)
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **Sos Laboratuvarları Kur - Mobil ve Web Testi** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. **Sauce Labs 'ı ayarlama-mobil ve Web testi** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-sauce-labs---mobile-and-web-testing-single-sign-on"></a>Yapılandırılan Sos Labs - Mobil ve Web Test Tek Sign-On
+### <a name="configure-sauce-labs---mobile-and-web-testing-single-sign-on"></a>Sauce Labs 'i yapılandırma-mobil ve Web testi çoklu oturum açma
 
-1. Farklı bir web tarayıcısı penceresinde, Yönetici olarak Sauce Labs - Mobile ve Web Testing şirket sitenizde oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, Sauce laboratuvarlarınızın ve mobil ve Web testi şirket sitenizde yönetici olarak oturum açın.
 
 2. **Kullanıcı simgesine** tıklayın ve **Takım Yönetimi** sekmesini seçin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
-3. Metin kutusuna **Etki Alanı adınızı** girin.
+3. Metin kutusuna **etki alanı adınızı** girin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
-4. **Yapılsekmesini tıklatın.**
+4. **Yapılandır** sekmesini tıklatın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
-5. Tek **İşaretI Yapve bölümünde** aşağıdaki adımları gerçekleştirin.
+5. **Çoklu oturum açmayı Yapılandır** bölümünde aşağıdaki adımları gerçekleştirin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
 
-    a. Azure AD'den **Gözat'ı** tıklatın ve indirilen meta veri dosyasını yükleyin.
+    a. **Araştır** ' a tıklayın ve indirilen meta veri dosyasını Azure AD 'den karşıya yükleyin.
 
-    b. **İZİn VER'İ SEÇİn** VERİn VERİn SAĞLAMA onay kutusunu seçin.
+    b. **Tam ZAMANıNDA sağlamayı Izin ver** onay kutusunu seçin.
 
-    c. **Kaydet**'e tıklayın.
+    c. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı türünde`brittasimon@yourcompanydomain.extension`  
+    b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Sauce Labs - Mobile ve Web Testing'e erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Sauce Labs 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından Sauce Labs - Mobile ve **Web Testing'i**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Sauce Labs-mobil ve Web testi**' ni seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Sauce Labs - Mobile ve Web Testing'i**seçin.
+2. Uygulamalar listesinde, **Sauce Labs-mobil ve Web testi**' ni seçin.
 
-    ![Sos Labs - Uygulamalar listesinde Mobil ve Web Test bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Sauce Labs-mobil ve Web testi bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-sauce-labs---mobile-and-web-testing-test-user"></a>Sos Labs oluşturun - Mobil ve Web Test test kullanıcısı
+### <a name="create-sauce-labs---mobile-and-web-testing-test-user"></a>Sauce Labs oluşturma-Mobil ve Web testi test kullanıcısı
 
-Bu bölümde, Britta Simon adlı bir kullanıcı Sauce Labs oluşturulur - Mobil ve Web Testi. Sauce Labs - Mobil ve Web Testi, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı Sauce Labs - Mobile ve Web Test'te zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Bu bölümde, Britta Simon adlı bir Kullanıcı, Sauce Labs-mobil ve Web testinde oluşturulur. Sauce Labs-mobil ve Web testi, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten Sauce Labs-mobil ve Web testinde yoksa, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 > [!Note]
-> Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Sauce Labs - Mobil ve Web Testi destek ekibiyle](mailto:support@saucelabs.com)iletişime geçin.
+> El ile bir kullanıcı oluşturmanız gerekiyorsa, [Sauce Labs-mobil ve Web testi destek ekibine](mailto:support@saucelabs.com)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Sos Laboratuvarları - Mobil ve Web Test döşemesini tıklattığınızda, SSO'yu kurduğunuz Sos Laboratuvarları - Mobil ve Web Testi'nde otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Sauce Labs-mobil ve Web testi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Sauce laboratuvarları-mobil ve Web testinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
