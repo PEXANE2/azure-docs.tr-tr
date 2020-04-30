@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
 ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82146519"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı ve yinelenen iş akışları oluşturma
@@ -151,7 +151,7 @@ Ardından, belirtilen bir zamanlamaya göre tetiklenen yinelenme [tetikleyicisin
 
 1. Eylemin içinde **yeni parametre Ekle listesini**açın ve eyleme eklemek için bu özellikleri seçin.
 
-   * **İyileştirme**
+   * **Getirileceğini**
    * **Mesafe birimi**
    * **Seyahat modu**
 
@@ -165,7 +165,7 @@ Ardından, belirtilen bir zamanlamaya göre tetiklenen yinelenme [tetikleyicisin
    |----------|----------|-------|-------------|
    | **Güzergah noktası 1** | Yes | <*başlangıç konumu*> | Rotanızın başlangıç noktası |
    | **Güzergah noktası 2** | Yes | <*Son konum*> | Rotanızın hedefi |
-   | **İyileştirme** | Hayır | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. "TimeWithTraffic" parametresini seçin. |
+   | **Getirileceğini** | Hayır | timeWithTraffic | Rotanızı iyileştirmeye yönelik bir parametre; örneğin, mesafe, mevcut trafik ile seyahat süresi vb. "TimeWithTraffic" parametresini seçin. |
    | **Mesafe birimi** | Hayır | <*tercih edin*> | Rotanız için mesafe birimi. Bu örnek birim olarak "mil" kullanır. |
    | **Seyahat modu** | Hayır | Sürüş | Rotanız için seyahat modu. "Itici" modunu seçin. |
    ||||

@@ -1,16 +1,16 @@
 ---
-title: Bir temsilciye erişimi kaldırma
+title: Temsilci erişimini kaldırma
 description: Azure tarafından atanan kaynak yönetimi için bir hizmet sağlayıcısına temsilci atanmış kaynaklara erişimi kaldırmayı öğrenin.
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: d0db809eb057f8b4bb48bdf9dd127f4d488f0406
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82149456"
 ---
-# <a name="remove-access-to-a-delegation"></a>Bir temsilciye erişimi kaldırma
+# <a name="remove-access-to-a-delegation"></a>Temsilci erişimini kaldırma
 
 Bir müşterinin aboneliği veya kaynak grubu, [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için bir hizmet sağlayıcısına temsilci seçildikten sonra, gerekirse temsilci kaldırılabilir. Bir yetkilendirme kaldırıldıktan sonra, hizmet sağlayıcı kiracısındaki kullanıcılara daha önce verilen erişim artık uygulanmaz.
 

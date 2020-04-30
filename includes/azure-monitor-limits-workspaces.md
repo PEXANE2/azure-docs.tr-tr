@@ -8,70 +8,70 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 97f265d76ac70891e9cefc0ef6651e439706ed23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 864b37c9e59786546ad2c29faf8457cfc3a21f6b
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334748"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82161158"
 ---
-**Veri toplama hacmi ve saklama** 
+**Veri toplama birimi ve bekletme** 
 
-| Katman | Günlük limit | Veri saklama | Açıklama |
+| Katman | Gün başına sınır | Veri saklama | Açıklama |
 |:---|:---|:---|:---|
-| Geçerli GB başına fiyatlandırma katmanı<br>(Nisan 2018'de tanıtıldı) | Sınır yok | 30 - 730 gün arası | Ek ücretler için 31 günden fazla veri saklama kullanılabilir. Azure Monitör fiyatlandırması hakkında daha fazla bilgi edinin. |
-| Eski Ücretsiz katmanlar<br>(Nisan 2016'da tanıtıldı) | 500 MB | 7 gün | Çalışma alanınız günlük 500 MB sınırına ulaştığında, veri alımı bir sonraki günün başında durur ve devam eder. Bir gün için UTC temel alınır. Azure Güvenlik Merkezi tarafından toplanan verilerin günlük 500 MB sınırına dahil olmadığını ve bu sınırın üzerinde toplanmaya devam edeceğini unutmayın.  |
-| GB başına eski Bağımsız katman<br>(Nisan 2016'da tanıtıldı) | Sınır yok | 30 ila 730 gün | Ek ücretler için 31 günden fazla veri saklama kullanılabilir. Azure Monitör fiyatlandırması hakkında daha fazla bilgi edinin. |
-| Düğüm Başına Eski (OMS)<br>(Nisan 2016'da tanıtıldı) | Sınır yok | 30 ila 730 gün | Ek ücretler için 31 günden fazla veri saklama kullanılabilir. Azure Monitör fiyatlandırması hakkında daha fazla bilgi edinin. |
-| Eski Standart katman | Sınır yok | 30 gün  | Bekletme ayarlanamıyor |
-| Eski Premium katmanı | Sınır yok | 365 gün  | Bekletme ayarlanamıyor |
+| Geçerli GB başına Fiyatlandırma Katmanı<br>(2018 Nisan 'da tanıtılan) | Sınır yok | 30-730 gün | 31 günden daha fazla veri saklama, ek ücretler için kullanılabilir. Azure Izleyici fiyatlandırması hakkında daha fazla bilgi edinin. |
+| Eski ücretsiz Katmanlar<br>(2016 Nisan 'da tanıtılan) | 500 MB | 7 gün | Çalışma alanınız günde 500 MB sınırına ulaştığında, veri alımı durduruluyor ve sonraki günün başlangıcında devam eder. Bir gün için UTC temel alınır. Azure Güvenlik Merkezi tarafından toplanan verilerin bu 500 MB/gün sınırına dahil edilmediğini ve bu sınırın üzerine toplanmaya devam edileceğini unutmayın.  |
+| GB katmanı başına eski tek başına<br>(2016 Nisan 'da tanıtılan) | Sınır yok | 30 ila 730 gün | 31 günden daha fazla veri saklama, ek ücretler için kullanılabilir. Azure Izleyici fiyatlandırması hakkında daha fazla bilgi edinin. |
+| Düğüm başına eski (OMS)<br>(2016 Nisan 'da tanıtılan) | Sınır yok | 30 ila 730 gün | 31 günden daha fazla veri saklama, ek ücretler için kullanılabilir. Azure Izleyici fiyatlandırması hakkında daha fazla bilgi edinin. |
+| Eski Standart katman | Sınır yok | 30 gün  | Saklama ayarlanamıyor |
+| Eski Premium katmanı | Sınır yok | 365 gün  | Saklama ayarlanamıyor |
 
 **Abonelik başına çalışma alanı sayısı.**
 
-| Fiyatlandırma katmanı    | Çalışma alanı sınırı | Yorumlar
+| Fiyatlandırma katmanı    | Çalışma alanı sınırı | Açıklamalar
 |:---|:---|:---|
-| Ücretsiz katmanı  | 10 | Bu sınır artırılamaz. |
-| Diğer tüm katmanlar | Sınır yok | Kaynak grubundaki kaynak sayısı ve abonelik başına kaynak grupları nın sayısı yla sınırlısınız. |
+| Ücretsiz katmanı  | 10 | Bu sınır arttırılamıyor. |
+| Diğer tüm katmanlar | Sınır yok | Bir kaynak grubu içindeki kaynak sayısıyla ve abonelik başına kaynak grubu sayısına göre sınırlandırılırsınız. |
 
-**Azure portalında**
+**Azure portal**
 
-| Kategori | Sınır | Yorumlar |
+| Kategori | Sınır | Açıklamalar |
 |:---|:---|:---|
-| Günlük sorgusu tarafından döndürülen maksimum kayıtlar | 10,000 | Sorgudaki sorgu kapsamı, zaman aralığı ve filtreleri kullanarak sonuçları azaltın. |
+| Günlük sorgusu tarafından döndürülen en fazla kayıt sayısı | 10,000 | Sorgu kapsamını, zaman aralığını ve sorgudaki filtreleri kullanarak sonuçları küçültün. |
 
 
-**Veri Toplayıcı API'si**
+**Veri Toplayıcı API 'SI**
 
-| Kategori | Sınır | Yorumlar |
+| Kategori | Sınır | Açıklamalar |
 |:---|:---|:---|
-| Tek bir gönderi için maksimum boyut | 30 MB | Daha büyük birimleri birden çok dire bölün. |
-| Alan değerleri için maksimum boyut  | 32 KB | 32 KB'den daha uzun alanlar kesilir. |
+| Tek gönderi için en büyük boyut | 30 MB | Daha büyük birimleri birden çok gönderime ayırın. |
+| Alan değerleri için en büyük boyut  | 32 KB | 32 KB'den daha uzun alanlar kesilir. |
 
 **Arama API’si**
 
-| Kategori | Sınır | Yorumlar |
+| Kategori | Sınır | Açıklamalar |
 |:---|:---|:---|
-| Tek bir sorguda döndürülen maksimum kayıtlar | 500.000 | |
-| Döndürülen verilerin maksimum boyutu | 64.000.000 bayt (~61 MiB)| |
-| Maksimum sorgu çalışma süresi | 10 dakika | Ayrıntılar için [Zaman Zaman Ları'na](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) bakın.  |
-| Maksimum istek oranı | AAD kullanıcı veya istemci IP adresi başına 30 saniyede 200 istek | Ayrıntılar için [Fiyat sınırlarına](https://dev.loganalytics.io/documentation/Using-the-API/Limits) bakın. |
+| Tek bir sorguda döndürülen en fazla kayıt sayısı | 500.000 | |
+| Döndürülen en fazla veri boyutu | 64.000.000 bayt (~ 61 MIB)| |
+| En fazla sorgu çalışma süresi | 10 dakika | Ayrıntılar için bkz. [zaman aşımları](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
+| En yüksek istek hızı | AAD kullanıcısı veya istemci IP adresi başına 30 saniye başına 200 istek | Ayrıntılar için [Hız sınırlarına](https://dev.loganalytics.io/documentation/Using-the-API/Limits) bakın. |
 
 **Genel çalışma alanı sınırları**
 
-| Kategori | Sınır | Yorumlar |
+| Kategori | Sınır | Açıklamalar |
 |:---|:---|:---|
-| Tablodaki maksimum sütunlar         | 500 | |
-| Sütun adı için maksimum karakterler | 500 | |
-| Veri dışarı aktarma | Şu anda kullanılamıyor | Verileri toplamak ve dışa aktarmak için Azure İşlevi veya Mantık Uygulaması'nı kullanın. | 
+| Tablodaki en fazla sütun         | 500 | |
+| Sütun adı için en fazla karakter | 500 | |
+| Veri dışarı aktarma | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
 
-**Veri alma hacmi oranı**
+**Veri alımı birim oranı**
 
 
-Azure Monitor, her ay terabaytlarce veri gönderen binlerce müşteriye artan bir hızla hizmet veren yüksek ölçekli bir veri hizmetidir. [Tanılama ayarlarını](../articles/azure-monitor/platform/diagnostic-settings.md) kullanarak Azure kaynaklarından gönderilen veriler için varsayılan alma hacmi oranı sınırı çalışma alanı başına yaklaşık **6 GB/dk'dır.** Bu, günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında değişebildiği için yaklaşık bir değerdir. Bu sınır aracılardan veya Veri Toplayıcı [API'sinden](../articles/azure-monitor/platform/data-collector-api.md)gönderilen veriler için geçerli değildir.
+Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. [Tanılama ayarları](../articles/azure-monitor/platform/diagnostic-settings.md) kullanılarak Azure kaynaklarından gönderilen veriler için varsayılan Alım birimi hız sınırı, çalışma alanı başına YAKLAŞıK **6 GB/dak** . Bu, gerçek boyutun günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında değişiklik gösterebileceğinden yaklaşık bir değerdir. Bu sınır, aracılardan veya [veri TOPLAYıCı API](../articles/azure-monitor/platform/data-collector-api.md)'sinden gönderilen verilere uygulanmaz.
 
-Verileri tek bir çalışma alanına daha yüksek bir hızda gönderirseniz, bazı veriler bırakılır ve eşik aşılması devam ederken çalışma alanınızdaki *Çalışma* tablosuna her 6 saatte bir olay gönderilir. Yutma hacminiz fiyat sınırını aşmaya devam ederse veya yakın bir zamanda bu sayıya ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınızda bir artış talep edebilirsiniz.
+Verileri daha yüksek bir fiyata tek bir çalışma alanına gönderirseniz, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım biriminiz, hız sınırını aşmaya devam ediyorsa veya bir süre önce bu sınıra ulaşmayı bekliyorsanız, bir e-posta göndererek LAIngestionRate@microsoft.com veya bir destek isteği açarak çalışma alanınıza bir artış isteğinde bulunabilir.
  
-Çalışma alanınızda böyle bir olaydan haberdar olmak için, sıfırdan daha fazla sonuç sayısına ilişkin uyarı mantığı tabanına sahip aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
+Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfırdan farklı sonuç sayısına sahip uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
 
 ``` Kusto
 Operation
@@ -81,4 +81,4 @@ Operation
 
 
 >[!NOTE]
->Log Analytics'i ne kadar süredir kullandığınıza bağlı olarak, eski fiyatlandırma katmanlarına erişiminiz olabilir. [Log Analytics eski fiyatlandırma katmanları](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)hakkında daha fazla bilgi edinin. 
+>Log Analytics kullanmaya ne kadar süre kullandığınıza bağlı olarak eski fiyatlandırma katmanlarına erişiminiz olabilir. [Eski Log Analytics fiyatlandırma katmanları](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)hakkında daha fazla bilgi edinin. 

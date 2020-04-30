@@ -7,13 +7,8 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1745868085a4ca573e2d6b5f78bea5f18b9e23c2
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
-ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82147710"
 ---
+
 # <a name="power-bi-app-offer"></a>Power BI Uygulaması teklifi
 
 >[!Important]
