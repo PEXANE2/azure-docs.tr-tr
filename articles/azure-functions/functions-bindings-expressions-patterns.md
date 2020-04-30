@@ -1,22 +1,22 @@
 ---
-title: Azure İşlevler ifadeleri ve desenleri bağlar
-description: Ortak desenlere dayalı farklı Azure İşlevleri bağlama ifadeleri oluşturmayı öğrenin.
+title: Azure Işlevleri bağlama ifadeleri ve desenleri
+description: Ortak desenleri temel alan farklı Azure Işlevleri bağlama ifadeleri oluşturmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277654"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure İşlevler bağlama ifade desenleri
+# <a name="azure-functions-binding-expression-patterns"></a>Azure Işlevleri bağlama ifadesi desenleri
 
-[Tetikleyicilerin ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlayıcı ifadelerdir.* *function.json* dosyasında ve işlev parametrelerinde ve kodda, çeşitli kaynaklardan gelen değerlere çözüm veren ifadeler kullanabilirsiniz.
+[Tetikleyiciler ve bağlamaların](./functions-triggers-bindings.md) en güçlü özelliklerinden biri *bağlama ifadeleri*. *Function. JSON* dosyasında ve işlev parametreleri ve kodunda, çeşitli kaynaklardaki değerlere çözüm veren ifadeleri kullanabilirsiniz.
 
-Çoğu ifade küme ayracı içine alınarak tanımlanır. Örneğin, bir sıra tetikleyici `{queueTrigger}` işlevinde, sıra iletisi metnine gider. Bir `path` blob çıkış bağlama özelliği `container/{queueTrigger}` ve işlev bir sıra iletisi `HelloWorld`tarafından `HelloWorld` tetiklenirse, adlı bir blob oluşturulur.
+Çoğu ifade küme ayracı içine alınarak tanımlanır. Örneğin, bir kuyruk tetikleyicisi işlevinde, `{queueTrigger}` kuyruk ileti metnine çözülür. Blob çıkış `path` bağlamasının özelliği ise `container/{queueTrigger}` ve işlev bir kuyruk iletisi `HelloWorld`tarafından tetikleniyorsa adlı `HelloWorld` bir blob oluşturulur.
 
 Bağlama ifadesi türleri
 
@@ -27,19 +27,19 @@ Bağlama ifadesi türleri
 * [Yeni GUID](#create-guids)
 * [Geçerli tarih ve saat](#current-time)
 
-## <a name="binding-expressions---app-settings"></a>Bağlama ifadeleri - uygulama ayarları
+## <a name="binding-expressions---app-settings"></a>Bağlama ifadeleri-uygulama ayarları
 
-En iyi yöntem olarak, sırlar ve bağlantı dizeleri yapılandırma dosyaları yerine uygulama ayarları kullanılarak yönetilmelidir. Bu, bu sırlara erişimi sınırlar ve *function.json* gibi dosyaları genel kaynak denetim depolarında depolamayı güvenli hale getirir.
+En iyi uygulama olarak, parolalar ve bağlantı dizeleri yapılandırma dosyaları yerine uygulama ayarları kullanılarak yönetilmelidir. Bu, bu gizli dizi erişimini kısıtlar ve Public kaynak denetimi depolarında *function. JSON* gibi dosyaları depolamayı güvenli hale getirir.
 
-Uygulama ayarları, ortama göre yapılandırmayı değiştirmek istediğinizde de yararlıdır. Örneğin, bir test ortamında, farklı bir sıra veya blob depolama kapsayıcısını izlemek isteyebilirsiniz.
+Ayrıca, ortama göre yapılandırmayı değiştirmek istediğinizde uygulama ayarları da faydalıdır. Örneğin, bir test ortamında, farklı bir kuyruğu veya blob depolama kapsayıcısını izlemek isteyebilirsiniz.
 
-Uygulama ayarı bağlayıcı ifadeler diğer bağlayıcı ifadelerden farklı olarak tanımlanır: kıvırcık ayraçlar yerine yüzde işaretlerine sarılır. Örneğin blob çıktı bağlama yolu `%Environment%/newblob.txt` ise `Environment` ve uygulama `Development`ayar değeri ise, `Development` kapsayıcıda bir blob oluşturulur.
+Uygulama ayarı bağlama ifadeleri, diğer bağlama ifadelerinden farklı şekilde tanımlanır: küme ayraçları yerine yüzde işaretlerine paketlenir. Örneğin, blob çıkış bağlama `%Environment%/newblob.txt` yolu ve `Environment` uygulama ayarı değeri ise `Development`, `Development` kapsayıcıda bir blob oluşturulur.
 
-Bir işlev yerel olarak çalıştığında, uygulama ayarlama değerleri *local.settings.json* dosyasından gelir.
+Bir işlev yerel olarak çalıştığında, uygulama ayarı değerleri *yerel. Settings. JSON* dosyasından gelir.
 
-Tetikleyicilerin `connection` ve bağlamaların özelliğinin özel bir durum olduğunu ve değerleri yüzde işaretleri olmadan uygulama ayarları olarak otomatik olarak çözdüğünü unutmayın. 
+Tetikleyiciler ve bağlamaların `connection` özelliğinin özel bir durum olduğunu ve değerleri yüzde işaretleri olmadan uygulama ayarları olarak otomatik olarak çözümleyeceğini unutmayın. 
 
-Aşağıdaki örnek, tetiklemek için sırayı tanımlamak `%input-queue-name%` için bir uygulama ayarı kullanan bir Azure Kuyruk Depolama tetikleyicisidir.
+Aşağıdaki örnek, üzerinde tetiklenecek sırayı tanımlamak için bir uygulama ayarı `%input-queue-name%` kullanan bir Azure kuyruk depolama tetikleyicisinin bir örneğidir.
 
 ```json
 {
@@ -69,9 +69,9 @@ public static void Run(
 
 ## <a name="trigger-file-name"></a>Tetikleyici dosya adı
 
-Blob `path` tetikleyicisi, diğer bağlamalarda ve işlev kodunda tetikleyici blob'un adına başvurmanızı sağlayan bir desen olabilir. Desen, hangi lekelerin işlev çağırmasını tetikleyebileceğini belirten filtreleme ölçütleri de içerebilir.
+Blob `path` tetikleyicisi için, diğer bağlamalarda ve işlev kodunda tetikleyici Blobun adına başvurmanızı sağlayan bir model olabilir. Bu düzende, bir işlev çağrısını tetikleyebilen Blobları belirten filtreleme ölçütleri de yer alabilir.
 
-Örneğin, aşağıdaki Blob tetikleme bağlama, `path` `sample-images/{filename}`desen , adlı `filename`bir bağlama ifadesi oluşturur:
+Örneğin, aşağıdaki blob tetikleyicisi bağlamasında `path` , bu, adlı `sample-images/{filename}` `filename`bir bağlama ifadesi oluşturan, olur:
 
 ```json
 {
@@ -86,7 +86,7 @@ Blob `path` tetikleyicisi, diğer bağlamalarda ve işlev kodunda tetikleyici bl
     ...
 ```
 
-İfade `filename` daha sonra oluşturulan blob adını belirtmek için bir çıktı bağlama kullanılabilir:
+Daha sonra `filename` ifade, oluşturulan Blobun adını belirtmek için bir çıkış bağlamasında kullanılabilir:
 
 ```json
     ...
@@ -101,7 +101,7 @@ Blob `path` tetikleyicisi, diğer bağlamalarda ve işlev kodunda tetikleyici bl
 }
 ```
 
-İşlev kodu, parametre adı `filename` olarak kullanarak aynı değere erişebilir:
+İşlev kodu, parametre adı olarak kullanılarak `filename` aynı değere erişebilir:
 
 ```csharp
 // C# example of binding to {filename}
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-Bağlayıcı ifadeler ve desenleri kullanma yeteneği sınıf kitaplıklarında öznitelikler için de geçerlidir. Aşağıdaki örnekte, öznitelik oluşturucu parametreleri `path` önceki *function.json* örnekleri ile aynı değerlerdir: 
+Bağlama ifadeleri ve desenleri kullanma özelliği, sınıf kitaplıkları içindeki öznitelikler için geçerlidir. Aşağıdaki örnekte, öznitelik Oluşturucu parametreleri önceki işlevle aynı `path` değerlerdir *. JSON* örnekleri: 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -131,7 +131,7 @@ public static void Run(
 
 ```
 
-Ayrıca, dosya adının bölümleri için ifadeler de oluşturabilirsiniz. Aşağıdaki örnekte, işlev yalnızca bir desenle eşleşen dosya adlarında tetiklenir:`anyname-anyfile.csv`
+Ayrıca dosya adının parçaları için ifadeler de oluşturabilirsiniz. Aşağıdaki örnekte, işlev yalnızca bir desenli eşleşen dosya adlarında tetiklenir:`anyname-anyfile.csv`
 
 ```json
 {
@@ -143,23 +143,23 @@ Ayrıca, dosya adının bölümleri için ifadeler de oluşturabilirsiniz. Aşa�
 }
 ```
 
-Blob yol dizesinde ifadelerin ve desenlerin nasıl kullanılacağı hakkında daha fazla bilgi için [Depolama blob bağlama başvurusuna](functions-bindings-storage-blob.md)bakın.
+Blob yol dizesinde ifadelerin ve desenlerin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [Depolama Blobu bağlama başvurusu](functions-bindings-storage-blob.md).
 
 ## <a name="trigger-metadata"></a>Tetikleyici meta verileri
 
-Bir tetikleyici tarafından sağlanan veri yüküne (bir işlevi tetikleyen sıra iletisinin içeriği gibi) ek meta veri değerleri sağlar. Bu değerler C# ve F# giriş parametreleri veya `context.bindings` JavaScript'teki nesnedeki özellikler olarak kullanılabilir. 
+Bir tetikleyici tarafından belirtilen veri yüküne ek olarak (bir işlevi tetikleyen kuyruk iletisinin içeriği gibi), birçok tetikleyici ek meta veri değerleri sağlar. Bu değerler, C# ve F # ' ta giriş parametresi olarak ve JavaScript 'teki `context.bindings` nesnedeki özellikler olarak kullanılabilir. 
 
-Örneğin, bir Azure Sıra depolama tetikleyicisi aşağıdaki özellikleri destekler:
+Örneğin, bir Azure kuyruk depolama tetikleyicisi aşağıdaki özellikleri destekler:
 
-* QueueTrigger - geçerli bir dize varsa ileti içeriğini tetikleme
+* QueueTrigger-geçerli bir dize olursa ileti içeriği tetikleniyor
 * DequeueCount
 * ExpirationTime
 * Kimlik
-* EklemeZamanı
+* Insertiontime
 * NextVisibleTime
 * PopReceipt
 
-Bu meta veri değerlerine *function.json* dosya özelliklerinde erişilebilir. Örneğin, bir sıra tetikleyicisi kullandığınızı ve sıra iletisinin okumak istediğiniz bir blob'un adını içerdiğini varsayalım. *function.json* dosyasında, aşağıdaki `queueTrigger` örnekte gösterildiği gibi, `path` blob özelliğimeta data özelliğini kullanabilirsiniz:
+Bu meta veri değerlerine *function. JSON* dosya özelliklerinden erişilebilir. Örneğin, bir kuyruk tetikleyicisi kullandığınızı ve kuyruk iletisinin, okumak istediğiniz bir Blobun adını içerdiğini varsayalım. *Function. JSON* dosyasında, aşağıdaki örnekte gösterildiği gibi BLOB `queueTrigger` `path` özelliğinde meta veri özelliğini kullanabilirsiniz:
 
 ```json
   "bindings": [
@@ -179,13 +179,13 @@ Bu meta veri değerlerine *function.json* dosya özelliklerinde erişilebilir. �
   ]
 ```
 
-Her tetikleyici için meta veri özelliklerinin ayrıntıları ilgili başvuru makalesinde açıklanmıştır. Örneğin, [bkz. sıra tetikleyici meta verileri.](functions-bindings-storage-queue-trigger.md#message-metadata) Belgeler, portalın **Tümleştir** sekmesinde, bağlama yapılandırma alanının altındaki **Belgeler** bölümünde de mevcuttur.  
+Her tetikleyicinin meta veri özelliklerinin ayrıntıları, ilgili başvuru makalesinde açıklanmıştır. Bir örnek için bkz. [kuyruk tetikleyicisi meta verileri](functions-bindings-storage-queue-trigger.md#message-metadata). Belgeler, portalın **tümleştirme** sekmesinde, bağlama yapılandırma alanının altındaki **Belgeler** bölümünde de bulunur.  
 
 ## <a name="json-payloads"></a>JSON yükleri
 
-Bir tetikleyici yükü JSON olduğunda, aynı işlevdeki ve işlev kodundaki diğer bağlamalar için yapılandırmadaki özelliklerine başvurabilirsiniz.
+Bir tetikleyici yükü JSON olduğunda, aynı işlevdeki ve işlev kodundaki diğer bağlamalar için yapılandırma içindeki özelliklerine başvurabilirsiniz.
 
-Aşağıdaki örnek, JSON'da bir blob adı alan bir webhook işlevi `{"BlobName":"HelloWorld.txt"}`için *function.json* dosyasını gösterir: . Blob giriş bağlama blob okur ve HTTP çıkış bağlama HTTP yanıtında blob içeriğini döndürür. Blob giriş bağlama özelliğidoğrudan atıfta bulunarak blob adını `BlobName` alır`"path": "strings/{BlobName}"`dikkat edin ( )
+Aşağıdaki örnek, JSON içinde bir blob adı alan bir Web kancası işlevi için *function. JSON* dosyasını gösterir: `{"BlobName":"HelloWorld.txt"}`. Blob giriş bağlaması blobu okur ve HTTP çıkış bağlaması, HTTP yanıtında blob içeriğini döndürür. Blob giriş bağlamasının, doğrudan `BlobName` özelliğe (`"path": "strings/{BlobName}"`) başvurarak blob adını aldığından emin olun.
 
 ```json
 {
@@ -212,7 +212,7 @@ Aşağıdaki örnek, JSON'da bir blob adı alan bir webhook işlevi `{"BlobName"
 }
 ```
 
-Bunun C# ve F# ile çalışabilmek için aşağıdaki örnekte olduğu gibi, alanları niçin deserialized olarak tanımlayan bir sınıfa ihtiyacınız vardır:
+Bunun C# ve F # dilinde çalışması için, aşağıdaki örnekte olduğu gibi, seri durumdan çıkarılacak alanları tanımlayan bir sınıfa ihtiyacınız vardır:
 
 ```csharp
 using System.Net;
@@ -237,7 +237,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-JavaScript'te JSON deserialization otomatik olarak gerçekleştirilir.
+JavaScript 'te JSON serisini kaldırma işlemi otomatik olarak gerçekleştirilir.
 
 ```javascript
 module.exports = function (context, info) {
@@ -257,7 +257,7 @@ module.exports = function (context, info) {
 
 ### <a name="dot-notation"></a>Nokta gösterimi
 
-JSON yükünüzdeki özelliklerden bazıları özelliklere sahip nesnelerse, nokta gösterimi kullanarak doğrudan bunlara başvurabilirsiniz. Örneğin, JSON'unuzun şu na benzediğini varsayalım:
+JSON yükündeki özelliklerden bazıları özellikleri olan nesnelerdir, doğrudan nokta gösterimini kullanarak bunlara başvurabilirsiniz. Örneğin, JSON 'larınızın şöyle göründüğünü varsayalım:
 
 ```json
 {
@@ -268,13 +268,13 @@ JSON yükünüzdeki özelliklerden bazıları özelliklere sahip nesnelerse, nok
 }
 ```
 
-Doğrudan `FileName` "" olarak `BlobName.FileName`başvurabilirsiniz. Bu JSON biçimiyle, yukarıdaki `path` örnekteki özelliğin nasıl görüneceği aşağıda verilmiştir:
+Uygulamasına `FileName` doğrudan başvurabilirsiniz `BlobName.FileName`. Bu JSON biçimiyle, yukarıdaki örnekteki `path` özelliğin şöyle görünebilecekleri aşağıda verilmiştir:
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
 ```
 
-C#'da iki sınıf gerekir:
+C# ' de iki sınıfa ihtiyacınız vardır:
 
 ```csharp
 public class BlobInfo
@@ -288,9 +288,9 @@ public class BlobName
 }
 ```
 
-## <a name="create-guids"></a>GUID'ler oluşturma
+## <a name="create-guids"></a>GUID 'Ler oluştur
 
-Bağlama `{rand-guid}` ifadesi bir GUID oluşturur. Bir `function.json` dosyada aşağıdaki blob yolu *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*gibi bir isim ile bir blob oluşturur.
+`{rand-guid}` Bağlama IFADESI bir GUID oluşturur. Bir `function.json` dosyadaki aşağıdaki blob yolu, *50710cb5-84b9-4d87-9d83-a03d6976a682. txt*gibi bir ada sahip bir blob oluşturur.
 
 ```json
 {
@@ -303,7 +303,7 @@ Bağlama `{rand-guid}` ifadesi bir GUID oluşturur. Bir `function.json` dosyada 
 
 ## <a name="current-time"></a>Geçerli saat
 
-Bağlayıcı ifade `DateTime` ' `DateTime.UtcNow`ye göre . Bir `function.json` dosyadaki aşağıdaki blob yolu *2018-02-16T17-59-55Z.txt*gibi bir adla bir blob oluşturur.
+Bağlama ifadesi `DateTime` olarak `DateTime.UtcNow`çözümlenir. Bir `function.json` dosyadaki aşağıdaki blob yolu, *2018-02-16T17-59 -55z. txt*gibi bir ada sahip bir blob oluşturur.
 
 ```json
 {
@@ -315,8 +315,8 @@ Bağlayıcı ifade `DateTime` ' `DateTime.UtcNow`ye göre . Bir `function.json` 
 ```
 ## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
 
-C# ve diğer .NET dillerinde, *function.json* ve özniteliklerdeki bildirimsel bağlamaların aksine zorunlu bağlama deseni kullanabilirsiniz. Zorunlu bağlama, bağlama parametrelerinin tasarım zamanı yerine çalışma zamanında hesaplanması gerektiğinde yararlıdır. Daha fazla bilgi için [C# geliştirici başvurusuna](functions-dotnet-class-library.md#binding-at-runtime) veya [C# komut dosyası geliştiricisi başvurusuna](functions-reference-csharp.md#binding-at-runtime)bakın.
+C# ve diğer .NET dillerinde, *function. JSON* ve Attributes içindeki bildirime dayalı bağlamaların aksine, kesinlik temelli bağlama modelini kullanabilirsiniz. Bağlama parametrelerinin tasarım zamanı yerine çalışma zamanında hesaplanması gerektiğinde, kesinlik temelli bağlama kullanışlıdır. Daha fazla bilgi edinmek için bkz. [C# Geliştirici başvurusu](functions-dotnet-class-library.md#binding-at-runtime) veya [c# betik geliştirici başvurusu](functions-reference-csharp.md#binding-at-runtime).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Azure İşlevi return değerini kullanma](./functions-bindings-return-value.md)
+> [Azure Işlevi dönüş değerini kullanma](./functions-bindings-return-value.md)

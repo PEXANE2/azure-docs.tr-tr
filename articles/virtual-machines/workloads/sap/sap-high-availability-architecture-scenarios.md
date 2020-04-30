@@ -1,6 +1,6 @@
 ---
-title: SAP NetWeaver için Azure VM HA mimarisi ve senaryoları | Microsoft Dokümanlar
-description: Azure Sanal Makinelerde SAP NetWeaver için yüksek kullanılabilirlik mimarisi ve senaryoları
+title: SAP NetWeaver için Azure VM HA mimarisi ve senaryoları | Microsoft Docs
+description: Azure sanal makinelerde SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,13 +17,13 @@ ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279916"
 ---
-# <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirlik mimarisi ve senaryoları
+# <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -147,7 +147,7 @@ ms.locfileid: "79279916"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID yüksek kullanılabilirlik yapılandırması)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP çoklu SID yüksek kullanılabilirlik yapılandırması)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -231,209 +231,209 @@ ms.locfileid: "79279916"
 
 ## <a name="terminology-definitions"></a>Terminoloji tanımları
 
-**Yüksek kullanılabilirlik**: *Aynı* veri merkezi içinde gereksiz, hataya dayanıklı veya başarısız korumalı bileşenler aracılığıyla BT hizmetlerinin iş sürekliliğini sağlayarak BT kesintilerini en aza indiren bir dizi teknolojiyi ifade eder. Bizim durumumuzda, veri merkezi tek bir Azure bölgesinde bulunur.
+**Yüksek kullanılabilirlik**: *aynı* veri merkezinde yer alan yedekli, hataya dayanıklı veya yük devretme korumalı bileşenler aracılığıyla BT Hizmetleri IÇIN iş sürekliliği sağlayarak BT kesintilerini en aza indirecek bir teknoloji kümesini ifade eder. Bu durumda, veri merkezi bir Azure bölgesi içinde bulunur.
 
-**Olağanüstü durum kurtarma**: Bt hizmetlerinin aksamasının ve geri kazanımlarının en aza indirilmesi anlamına gelir, ancak birbirinden yüzlerce mil uzakta olabilecek *çeşitli* veri merkezlerinde. Bizim durumumuzda, veri merkezleri aynı jeopolitik bölge içinde çeşitli Azure bölgelerinde veya müşteri olarak sizin tarafınızda kurulan konumlarda olabilir.
+**Olağanüstü durum kurtarma**: aynı zamanda, BT Hizmetleri kesintisini ve bunların kurtarmasının en aza indirmesine, ancak bir diğerinden yüzlerce mil olabilir. *various* Bu durumda, veri merkezleri aynı geopolitik bölgede veya bir müşteri olarak sizin tarafınızdan belirlenen konumlarda yer alan çeşitli Azure bölgelerinde yer alabilir.
 
 
-## <a name="overview-of-high-availability"></a>Yüksek kullanılabilirlik genel bakış
-Azure'daki SAP yüksek kullanılabilirliği üç türe ayrılabilir:
+## <a name="overview-of-high-availability"></a>Yüksek kullanılabilirliğe genel bakış
+Azure 'da SAP yüksek kullanılabilirlik üç tür için ayrılabilir:
 
-* **Azure altyapısı yüksek kullanılabilirlik:** 
+* **Azure altyapı yüksek kullanılabilirliği**: 
 
-    Örneğin, yüksek kullanılabilirlik, bilgi işlem (VM), ağ veya depolama ve SAP uygulamalarının kullanılabilirliğini artırmak için sağladığı yararları içerebilir.
+    Örneğin, yüksek kullanılabilirlik işlem (VM 'Ler), ağ veya depolama alanı ve SAP uygulamalarının kullanılabilirliğini arttırmaya yönelik avantajları içerebilir.
 
-* **SAP uygulamalarının *daha yüksek kullanılabilirliğini* elde etmek için Azure altyapısı VM yeniden başlatma kullanma:** 
+* **SAP uygulamalarında *daha yüksek kullanılabilirlik* elde etmek IÇIN Azure altyapı VM yeniden başlatması**kullanma: 
 
-    Linux'ta Windows Server Failover Clustering (WSFC) veya Pacemaker gibi işlevleri kullanmamaya karar verirseniz, Azure VM yeniden başlatma sı kullanılır. SAP sistemlerini Azure fiziksel sunucu altyapısının planlı ve planlanmamış kapalı kalma sürelerine ve genel olarak temel altında yatan Azure platformuna karşı korur.
+    Linux üzerinde Windows Server Yük Devretme Kümelemesi (WSFC) veya pacemaker gibi işlevleri kullanmamaya karar verirseniz, Azure VM yeniden başlatması kullanılır. Azure fiziksel sunucu altyapısının ve temel alınan Azure platformunun planlanmış ve planlanmamış kapalı kalma süresine karşı SAP sistemlerini korur.
 
-* **SAP uygulaması yüksek kullanılabilirlik**: 
+* **SAP uygulaması yüksek kullanılabilirliği**: 
 
-    Tam SAP sistemi yüksek kullanılabilirlik elde etmek için, tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
-    * Gereksiz SAP uygulama sunucuları.
-    * Benzersiz bileşenler. Sap ASCS/SCS örneği veya veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni örnek olabilir.
+    Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
+    * Yedekli SAP uygulama sunucuları.
+    * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
-Azure'daki SAP yüksek kullanılabilirliği, şirket içi fiziksel veya sanal ortamda SAP yüksek kullanılabilirliğinden farklıdır. [Microsoft Windows'daki VMware ve Hyper-V ile sanal ortamlarda sap NetWeaver yüksek kullanılabilirlik ve iş sürekliliği][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] aşağıdaki kağıt Windows'da sanallaştırılmış ortamlarda standart SAP yüksek kullanılabilirlik yapılandırmaları açıklar.
+Azure 'da SAP yüksek kullanılabilirlik, şirket içi fiziksel veya sanal ortamda SAP yüksek kullanılabilirliğinden farklıdır. [Microsoft Windows üzerinde VMware ve Hyper-V ' d e sanal ortamlarda yüksek kullanılabilirlik ve iş sürekliliği için aşağıdaki kağıda sahip SAP NetWeaver][sap-ha-bc-virtual-env-hyperv-vmware-white-paper] , Windows üzerinde sanallaştırılmış ortamlarda standart sap yüksek kullanılabilirliğe sahip yapılandırmalara sahiptir.
 
-Windows için olduğu gibi Linux için sapinst-integrated SAP yüksek kullanılabilirlik yapılandırması yoktur. Linux için SAP yüksek kullanılabilirliği hakkında bilgi için yüksek [kullanılabilirlik iş ortağı bilgilerine][sap-ha-partner-information]bakın.
+Windows için olduğu gibi Linux için sapinst ile tümleşik SAP yüksek kullanılabilirlik yapılandırması yoktur. Linux için şirket içi SAP yüksek kullanılabilirlik hakkında daha fazla bilgi için bkz. [yüksek kullanılabilirlik iş ortağı bilgileri][sap-ha-partner-information].
 
-## <a name="azure-infrastructure-high-availability"></a>Azure altyapısı yüksek kullanılabilirlik
+## <a name="azure-infrastructure-high-availability"></a>Azure altyapı yüksek kullanılabilirliği
 
 ### <a name="sla-for-single-instance-virtual-machines"></a>Tek örnekli sanal makineler için SLA
 
-Şu anda premium depolama ile% 99,9 tek VM SLA vardır. Tek bir VM'nin kullanılabilirliği hakkında bir fikir edinmek için, çeşitli kullanılabilir [Azure Hizmet Düzeyi Anlaşmalarının][azure-sla]ürünlerini oluşturabilirsiniz.
+Şu anda Premium Depolama ile% 99,9 oranında tek VM SLA 'Sı vardır. Tek bir VM 'nin kullanılabilirliğinin ne olabileceği hakkında fikir almak için, çeşitli kullanılabilir [Azure hizmet düzeyi sözleşmelerinin][azure-sla]ürününü oluşturabilirsiniz.
 
-Hesaplamanın temeli ayda 30 gün veya 43.200 dakikadır. Örneğin, %0,05'lik bir kapalı kalma süresi 21,6 dakikaya karşılık gelir. Her zamanki gibi, çeşitli hizmetlerin kullanılabilirliği aşağıdaki şekilde hesaplanır:
+Hesaplamanın temeli ayda 30 gün veya 43.200 dakikadır. Örneğin,% 0,05 kesinti süresi 21,6 dakikaya karşılık gelir. Her zamanki gibi çeşitli hizmetlerin kullanılabilirliği aşağıdaki şekilde hesaplanır:
 
-(Kullanılabilirlik Hizmeti #1/100) * (Kullanılabilirlik Hizmeti #2/100) * \*(Kullanılabilirlik Hizmeti #3/100) ...
+(Kullanılabilirlik hizmeti #1/100) * (kullanılabilirlik hizmeti #2/100) * (kullanılabilirlik hizmeti #3/100) \*...
 
-Örnek:
+Örneğin:
 
-(99.95/100) * (99.9/100) * (99.9/100) = 0.9975 veya genel durumu %99.75.
+(99,95/100) * (99,9/100) * (99,9/100) = 0,9975 veya genel olarak% 99,75 kullanılabilirliği.
 
-### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>Aynı kullanılabilirlik kümesinde birden çok sanal makine örneği
-Aynı *kullanılabilirlik kümesinde*dağıtılan iki veya daha fazla örneği olan tüm sanal makineler için, en az bir örneğine en az %99,95 oranında sanal makine bağlantısına sahip olacağınızı garanti ediyoruz.
+### <a name="multiple-instances-of-virtual-machines-in-the-same-availability-set"></a>Aynı Kullanılabilirlik kümesindeki birden fazla sanal makine örneği
+Aynı *kullanılabilirlik kümesinde*dağıtılan iki veya daha fazla örneğe sahip tüm sanal makinelerde, en az bir örneğe yönelik sanal makine bağlantınızın en az% 99,95 olacağını garanti ediyoruz.
 
-İki veya daha fazla Sanal Makine aynı kullanılabilirlik kümesinin parçası olduğunda, kullanılabilirlik kümesindeki her sanal makineye, temel Azure platformu tarafından bir *güncelleştirme etki alanı* ve bir hata etki *alanı* atanır.
+İki veya daha fazla VM aynı Kullanılabilirlik kümesinin parçası olduğunda, kullanılabilirlik kümesindeki her bir sanal makineye, temel alınan Azure platformu tarafından bir *güncelleştirme etki alanı* ve bir *hata etki alanı* atanır.
 
-* **Alan adlarını güncelleştirme,** azure altyapısının planlı bakımı sırasında birden çok VM'nin aynı anda yeniden başlatılmadığını garanti eder. Aynı anda yalnızca bir VM yeniden başlatılır.
+* **Güncelleştirme etki alanları** , bir Azure altyapısının planlı Bakımı sırasında birden çok VM 'nin aynı anda yeniden başlatılmasının garanti edilir. Tek seferde yalnızca bir VM yeniden başlatılır.
 
-* **Hata etki alanları,** VM'lerin ortak bir güç kaynağını ve ağ anahtarını paylaşmayan donanım bileşenlerine dağıtılmış olduğunu garanti eder. Sunucular, bir ağ anahtarı veya bir güç kaynağı planlanmamış bir kapalı kalma süresinden geçtiğinde, yalnızca bir VM etkilenir.
+* **Hata etki alanları** , VM 'lerin ortak bir güç kaynağı ve ağ anahtarı paylaşmayan donanım bileşenlerine dağıtılmasını güvence altına alır. Sunucular, ağ anahtarı veya güç kaynağı planlanmamış kapalı kalma süresi olmadığında yalnızca bir VM etkilenir.
 
-Daha fazla bilgi için bkz: [Azure'daki Windows sanal makinelerinin kullanılabilirliğini yönetin.][azure-virtual-machines-manage-availability]
+Daha fazla bilgi için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme][azure-virtual-machines-manage-availability].
 
-Yüksek kullanılabilirlik elde etmek için kullanılabilirlik kümesi kullanılır:
+Kullanılabilirlik kümesi, yüksek kullanılabilirlik sağlamak için kullanılır:
 
-* Gereksiz SAP uygulama sunucuları.  
-* SAP ASCS/SCS örneği veya DBMS gibi SPOF'ları koruyan iki veya daha fazla düğüme (örneğin VM) sahip kümeler.
+* Yedekli SAP uygulama sunucuları.  
+* SAP ASCS/SCS örneği veya bir DBMS gibi SPOFs 'ları koruyan iki veya daha fazla düğüm (VM) içeren kümeler.
 
 
 ### <a name="azure-availability-zones"></a>Azure Kullanılabilirlik Alanları
-Azure, farklı [Azure Bölgeleri'nde](https://azure.microsoft.com/global-infrastructure/regions/) [Azure Kullanılabilirlik Bölgeleri](https://docs.microsoft.com/azure/availability-zones/az-overview) kavramlarını kullanıma alma sürecindedir. Kullanılabilirlik Bölgelerinin sunulduğu Azure bölgelerinde, Azure bölgeleri güç kaynağı, soğutma ve ağ tedarikinde bağımsız olan birden çok veri merkezine sahiptir. Tek bir Azure bölgesinde farklı bölgeler sunmanın nedeni, uygulamaları sunulan iki veya üç Kullanılabilirlik Bölgesi'ne dağıtmanızı sağlamaktır. Güç kaynakları ve/veya ağındaki sorunların yalnızca bir Kullanılabilirlik Bölgesi altyapılarını etkileyeceğini varsayarsak, bir Azure bölgesindeki uygulama dağıtımınız hala tam olarak işlevseldir. Bir bölgede bazı VM'ler kaybolabileceğinden, sonunda kapasite de azalır. Ama diğer iki bölgede VM hala çalışır durumda. Teklif bölgeleri sunan Azure bölgeleri [Azure Kullanılabilirlik Bölgeleri'nde](https://docs.microsoft.com/azure/availability-zones/az-overview)listelenir.
+Azure, farklı [Azure bölgelerinin](https://azure.microsoft.com/global-infrastructure/regions/)tamamında [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview) kavramlarını kullanıma sunmaya yönelik bir işlemdir. Kullanılabilirlik Alanları sunulan Azure bölgelerinde, Azure bölgelerinin, güç kaynağı, soğutma ve ağ sağlama ile bağımsız birden çok veri merkezi vardır. Tek bir Azure bölgesi içinde farklı bölgeler sunma nedeni, sunulan iki veya üç Kullanılabilirlik Alanları üzerinde uygulama dağıtmanızı olanaklı hale maktır. Güç kaynaklarında ve/veya ağda yer alan sorunların yalnızca bir kullanılabilirlik alanı altyapısını etkileyeceğini varsayarsak, bir Azure bölgesindeki uygulama dağıtımınız hala tamamen işlevseldir. Bir bölgedeki bazı VM 'Ler kaybedildiğinden, sonunda bazı düşük kapasiteye sahip. Ancak, diğer iki bölgede bulunan VM 'Ler hala çalışır durumda kalır. Bölgeleri sunan Azure bölgeleri [Azure kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview)listelenmiştir.
 
-Kullanılabilirlik Bölgeleri'ni kullanarak göz önünde bulundurulması gereken bazı şeyler vardır. Hususlar gibi listesi:
+Kullanılabilirlik Alanları kullanarak göz önünde bulundurmanız gereken bazı noktalar vardır. Şöyle dikkat edilecek noktalar listesi:
 
-- Kullanılabilirlik Bölgesinde Azure Kullanılabilirlik Kümelerini dağıtamazsınız. VM için dağıtım çerçevesi olarak Kullanılabilirlik Bölgesi veya Kullanılabilirlik Kümesi'ni seçmeniz gerekir.
-- Windows Failover Cluster Services veya Linux Pacemaker'ı temel alan başarısız küme çözümleri oluşturmak için [Temel Yük Dengeleyicisini](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kullanamazsınız. Bunun yerine Azure [Standart Yük Dengeleyicisi SKU'yu](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) kullanmanız gerekir
-- Azure Kullanılabilirlik Bölgeleri, bir bölgedeki farklı bölgeler arasında belirli bir mesafe garantisi vermiyor
-- Farklı Azure bölgelerindeki farklı Azure Kullanılabilirlik Bölgeleri arasındaki ağ gecikmesi, Azure bölgesinden bölgeye farklı olabilir. Bir bölgeden etkin DBMS VM'ye ağ gecikmesi iş süreci etkisinden hala kabul edilebilir olduğundan, müşteri olarak farklı bölgeler arasında dağıtılan SAP uygulama katmanını makul bir şekilde çalıştırabileceğiniz durumlar olacaktır. Oysa bir bölgede etkin DBMS VM ile başka bir bölgede bir VM'deki SAP uygulama örneği arasındaki gecikmenin SAP iş süreçleri için çok müdahaleci ve kabul edilemez olabileceği müşteri senaryoları olacaktır. Sonuç olarak, gecikme süresi çok yüksekse uygulama için etkin/etkin mimari veya etkin/pasif mimari ile dağıtım mimarilerinin farklı olması gerekir.
-- [Azure yönetilen disklerin](https://azure.microsoft.com/services/managed-disks/) kullanılması, Azure Kullanılabilirlik Bölgelerine dağıtmak için zorunludur 
+- Azure kullanılabilirlik kümelerini bir kullanılabilirlik bölgesi içinde dağıtamazsınız. Bir VM için dağıtım çerçevesi olarak bir kullanılabilirlik alanı veya kullanılabilirlik kümesi seçmeniz gerekir.
+- Windows Yük devretme kümesi Hizmetleri veya Linux pacemaker tabanlı yük devretme kümesi çözümleri oluşturmak için [temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kullanamazsınız. Bunun yerine [Azure Standart Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 'sunu kullanmanız gerekir
+- Azure Kullanılabilirlik Alanları, bir bölgedeki farklı bölgeler arasında belirli bir mesafe garantisi vermez
+- Farklı Azure bölgelerinde bulunan farklı Azure Kullanılabilirlik Alanları arasındaki ağ gecikmesi Azure bölgesinden bölgeye farklı olabilir. Bir müşteri olarak, bir bölgeden etkin DBMS VM 'sine olan ağ gecikmesi hala bir iş süreci etkisinden kabul edilebilir olduğundan, müşteri olarak, farklı bölgelerde dağıtılan SAP uygulama katmanını makul bir şekilde çalıştırabileceği durumlar olacaktır. Bu durumda, bir bölgedeki etkin DBMS sanal makinesi ile başka bir bölgedeki bir VM 'deki SAP uygulama örneği arasındaki gecikme süresinin çok zorlenebileceği ve SAP iş işlemlerinde kabul edilemez olduğu durumlarda Müşteri senaryoları olacaktır. Sonuç olarak, gecikme çok yüksekse, dağıtım mimarilerinin uygulama veya etkin/Pasif mimari için etkin/etkin bir mimariyle farklı olması gerekir.
+- [Azure yönetilen diskleri](https://azure.microsoft.com/services/managed-disks/) kullanmak Azure kullanılabilirlik alanları dağıtmak için zorunludur 
 
 
-### <a name="planned-and-unplanned-maintenance-of-virtual-machines"></a>Sanal makinelerin planlı ve plansız bakımı
+### <a name="planned-and-unplanned-maintenance-of-virtual-machines"></a>Sanal makinelerin planlanmış ve planlanmamış Bakımı
 
-İki tür Azure platform olayı sanal makinelerinizin kullanılabilirliğini etkileyebilir:
+İki tür Azure platform olayı, sanal makinelerinizin kullanılabilirliğini etkileyebilir:
 
-* **Planlanan bakım** olayları, Microsoft tarafından temel Azure platformuna yapılan periyodik güncelleştirmelerdir. Güncelleştirmeler, sanal makinelerinizin çalıştırdığı platform altyapısının genel güvenilirliğini, performansını ve güvenliğini artırır.
+* **Planlı bakım** olayları, Microsoft tarafından temel alınan Azure platformunda yapılan düzenli güncelleştirmelerdir. Güncelleştirmeler, sanal makinelerinizin üzerinde çalıştığı platform altyapısının genel güvenilirlik, performans ve güvenliğini artırır.
 
-* Sanal makinenizin altında yatan donanım veya fiziksel altyapı bir şekilde başarısız olduğunda **planlanmamış bakım** olayları oluşur. Yerel ağ hataları, yerel disk hataları veya diğer raf düzeyi hataları içerebilir. Böyle bir hata algılandığında, Azure platformu sanal makinenizi otomatik olarak sanal makinenizi barındıran sağlıksız fiziksel sunucudan sağlıklı bir fiziksel sunucuya aktarır. Bu tür olaylar nadirdir, ancak sanal makinenizin yeniden başlatılmasına da neden olabilir.
+* **Planlanmamış bakım** olayları, sanal makinenizi temel alan donanım veya fiziksel altyapı bir şekilde başarısız olduğunda meydana gelir. Yerel ağ arızalarını, yerel disk başarısızlıklarını veya diğer raf düzeyi başarısızlıklarını içerebilir. Böyle bir hata algılandığında, Azure platformu sanal makinenizi sanal makinenizi barındıran sağlıksız fiziksel sunucudan sağlıklı fiziksel bir sunucuya otomatik olarak geçirir. Bu tür olaylar nadir bir durumdur, ancak sanal makinenizin yeniden başlatılmasına de neden olabilir.
 
-Daha fazla bilgi için bkz: [Azure'daki Windows sanal makinelerinin kullanılabilirliğini yönetin.][azure-virtual-machines-manage-availability]
+Daha fazla bilgi için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme][azure-virtual-machines-manage-availability].
 
-### <a name="azure-storage-redundancy"></a>Azure Depolama artıklığı
-Depolama hesabınızdaki veriler, geçici donanım hataları karşısında bile Azure Depolama SLA'sını karşılayacak dayanıklılık ve yüksek kullanılabilirlik sağlamak için her zaman çoğaltılır.
+### <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
+Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kullanılabilirlik sağlamak için her zaman çoğaltılır ve geçici donanım arızalarının yanında bile Azure Storage SLA 'sını ister.
 
-Azure Depolama varsayılan olarak verilerin üç görüntüsünü sakladığından, RAID 5 veya RAID 1'in birden çok Azure diskinde kullanılması gereksizdir.
+Azure depolama, varsayılan olarak verilerin üç görüntüsünü sakladığı için, RAID 5 veya RAID 1 ' in birden çok Azure diskinde kullanılması gereksizdir.
 
-Daha fazla bilgi için Azure [Depolama çoğaltma'ya][azure-storage-redundancy]bakın.
+Daha fazla bilgi için bkz. [Azure Storage çoğaltma][azure-storage-redundancy].
 
 ### <a name="azure-managed-disks"></a>Azure Yönetilen Diskleri
-Yönetilen Diskler, Azure depolama hesaplarında depolanan sanal sabit diskler (VHD'ler) yerine kullanılması önerilen Azure Kaynak Yöneticisi'nde bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makinenin Azure kullanılabilirlik kümesiyle otomatik olarak hizalanır. Sanal makinenizin ve üzerinde çalışan hizmetlerin kullanılabilirliğini artırırlar.
+Yönetilen diskler, Azure depolama hesaplarında depolanan sanal sabit diskler (VHD) yerine kullanılması önerilen Azure Resource Manager bir kaynak türüdür. Yönetilen diskler, bağlı oldukları sanal makine Azure kullanılabilirlik kümesiyle otomatik olarak hizalanır. Sanal makinenizin ve üzerinde çalışan hizmetlerin kullanılabilirliğini arttırır.
 
-Daha fazla bilgi için Azure [Yönetilen Diskler'e genel bakış][azure-storage-managed-disks-overview]bakın.
+Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış][azure-storage-managed-disks-overview].
 
-Sanal makinelerinizin dağıtımını ve yönetimini basitleştirdikleri için yönetilen diskleri kullanmanızı öneririz.
+Sanal makinelerinizin dağıtımını ve yönetimini basitleştiğinden yönetilen diskleri kullanmanızı öneririz.
 
 
 
-## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>SAP uygulamalarında *daha yüksek kullanılabilirlik* elde etmek için Azure altyapısından yüksek kullanılabilirlik kullanma
+## <a name="utilizing-azure-infrastructure-high-availability-to-achieve-higher-availability-of-sap-applications"></a>SAP uygulamalarının yüksek *oranda kullanılabilirliğini* elde etmek için Azure altyapı yüksek kullanılabilirliği kullanma
 
-WsFC veya Pacemaker gibi işlevleri Linux'ta kullanmamaya karar verirseniz (şu anda yalnızca SUSE Linux Enterprise Server [SLES] 12 ve sonrası için desteklenir), Azure VM yeniden başlatması kullanılır. SAP sistemlerini Azure fiziksel sunucu altyapısının planlı ve planlanmamış kapalı kalma sürelerine ve genel olarak temel altında yatan Azure platformuna karşı korur.
+Linux üzerinde WSFC veya Paceyapıcısı gibi işlevleri kullanmamaya karar verirseniz (Şu anda yalnızca SUSE Linux Enterprise Server [SLES] 12 ve üzeri için desteklenmektedir), Azure VM yeniden başlatması kullanılır. Azure fiziksel sunucu altyapısının ve temel alınan Azure platformunun planlanmış ve planlanmamış kapalı kalma süresine karşı SAP sistemlerini korur.
 
-Bu yaklaşım hakkında daha fazla bilgi için, [SAP sisteminin daha yüksek kullanılabilirliğini elde etmek için Azure altyapı VM yeniden başlat'ı kullanma][sap-higher-availability]bölümüne bakın.
+Bu yaklaşım hakkında daha fazla bilgi için bkz. [SAP sisteminin daha yüksek kullanılabilirlik elde etmek Için Azure ALTYAPı VM yeniden başlatma][sap-higher-availability]'yı kullanma.
 
-## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Azure IaaS'da SAP uygulamalarının yüksek kullanılabilirliği
+## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Azure IaaS 'de SAP uygulamalarının yüksek kullanılabilirliği
 
-Tam SAP sistemi yüksek kullanılabilirlik elde etmek için, tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örnek:
-  * Gereksiz SAP uygulama sunucuları.
-  * Benzersiz bileşenler. Sap ASCS/SCS örneği veya veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni örnek olabilir.
+Tam SAP sistem yüksek kullanılabilirlik elde etmek için tüm kritik SAP sistem bileşenlerini korumanız gerekir. Örneğin:
+  * Yedekli SAP uygulama sunucuları.
+  * Benzersiz bileşenler. Bir örnek, SAP ASCS/SCS örneği veya bir veritabanı yönetim sistemi (DBMS) gibi tek bir hata noktası (SPOF) bileşeni olabilir.
 
-Sonraki bölümlerde üç kritik SAP sistem bileşeni için de yüksek kullanılabilirlik nasıl elde edilecek tartışılır.
+Sonraki bölümlerde, üç kritik SAP sistem bileşeni için yüksek kullanılabilirlik elde etme konusu ele alınmaktadır.
 
 ### <a name="high-availability-architecture-for-sap-application-servers"></a>SAP uygulama sunucuları için yüksek kullanılabilirlik mimarisi
 
-> Bu bölüm aşağıdakiler için geçerlidir:
+> Bu bölüm için geçerlidir:
 >
 > ![Windows][Logo_Windows] Windows ve ![Linux][Logo_Linux] Linux
 >
 
-Genellikle SAP uygulama sunucusu ve iletişim örnekleri için belirli bir yüksek kullanılabilirlik çözümüne ihtiyacınız yoktur. Fazlalıkla yüksek kullanılabilirlik elde emiş siniz ve Azure sanal makinelerinin çeşitli örneklerinde birden çok iletişim örneğini yapılandırırsınız. Azure sanal makinelerinin iki örneğinde en az iki SAP uygulama örneği yüklenmeliydi.
+SAP uygulama sunucusu ve iletişim örnekleri için genellikle belirli bir yüksek kullanılabilirlik çözümüne ihtiyacınız yoktur. Yedeklilik ile yüksek kullanılabilirlik elde edersiniz ve çeşitli Azure sanal makine örneklerinde birden çok iletişim kutusu örneği yapılandırırsınız. İki Azure sanal makine örneğinde yüklü en az iki SAP uygulaması örneği olmalıdır.
 
-![Şekil 1: Yüksek kullanılabilirlik SAP uygulama sunucusu][sap-ha-guide-figure-2000]
+![Şekil 1: yüksek kullanılabilirliğe sahip SAP uygulama sunucusu][sap-ha-guide-figure-2000]
 
-_**Şekil 1:** Yüksek kullanılabilirlik SAP uygulama sunucusu_
+_**Şekil 1:** Yüksek kullanılabilirliğe sahip SAP uygulama sunucusu_
 
 SAP uygulama sunucusu örneklerini barındıran tüm sanal makineleri aynı Azure kullanılabilirlik kümesine yerleştirmeniz gerekir. Azure kullanılabilirlik kümesi şunları sağlar:
 
-* Tüm sanal makineler aynı güncelleştirme alanının bir parçasıdır.  
-    Güncelleştirme etki alanı, sanal makinelerin planlanan bakım kapalı kalma süresi sırasında aynı anda güncellenmemesini sağlar.
+* Tüm sanal makineler aynı güncelleştirme etki alanının bir parçasıdır.  
+    Güncelleştirme etki alanı, planlı bakım kapalı kalma süresi boyunca sanal makinelerin aynı anda güncelleştirilmesini sağlar.
 
-    Azure ölçeğindeki bir birimdeki farklı güncelleştirme ve hata etki alanları üzerinde oluşturulan temel işlevsellik, [güncelleştirme etki alanları][planning-guide-3.2.2] bölümünde zaten tanıtıldı.
+    Azure ölçek birimi içindeki farklı güncelleştirme ve hata etki alanları üzerinde oluşturulan temel işlevler, [etki alanları güncelleştirme][planning-guide-3.2.2] bölümünde zaten sunulmuştur.
 
 * Tüm sanal makineler aynı hata etki alanının bir parçasıdır.  
-    Hata etki alanı, tek bir hata noktasının tüm sanal makinelerin kullanılabilirliğini etkilememesi için sanal makinelerin dağıtılmasını sağlar.
+    Bir hata etki alanı, sanal makinelerin dağıtılmasını sağlar, böylece tek bir hata noktası tüm sanal makinelerin kullanılabilirliğini etkiler.
 
-Azure ölçeği birimi içinde ayarlanan bir Azure kullanılabilirliği kümesi tarafından kullanılabilecek güncelleştirme ve hata etki alanı sayısı sınırlıdır. Tek bir kullanılabilirlik kümesine VM eklemeye devam ederseniz, iki veya daha fazla VM sonunda aynı hata veya güncelleştirme etki alanı sona erer.
+Azure ölçek birimi içindeki bir Azure kullanılabilirlik kümesi tarafından kullanılabilen güncelleştirme ve hata etki alanlarının sayısı sınırlıdır. VM 'Leri tek bir kullanılabilirlik kümesine eklemeye devam ederseniz, iki veya daha fazla VM sonunda aynı hata veya güncelleştirme etki alanında sona bırakılır.
 
-Beş güncelleştirme etki alanımız olduğunu varsayarak, özel VM'lerine birkaç SAP uygulama sunucusu örneği dağıtırsanız, aşağıdaki resim ortaya çıkar. Kullanılabilirlik kümesindeki gerçek maksimum güncelleştirme ve hata etki alanı sayısı gelecekte değişebilir:
+Ayrılmış VM 'lerinde birkaç SAP uygulama sunucusu örneği dağıtırsanız, beş güncelleştirme etki alanı olduğunu varsayarsak, aşağıdaki resim ortaya çıktı. Bir kullanılabilirlik kümesindeki gerçek en fazla güncelleştirme ve hata etki alanı sayısı gelecekte değişebilir:
 
-![Şekil 2: Bir Azure kullanılabilirlik kümesindeki][planning-guide-figure-3000]
-SAP uygulama sunucularının yüksek kullanılabilirliği_**Şekil 2:** Bir Azure kullanılabilirlik kümesinde SAP uygulama sunucularının yüksek kullanılabilirliği_
+![Şekil 2: Azure kullanılabilirlik kümesi][planning-guide-figure-3000]
+'nde SAP uygulama sunucularının yüksek kullanılabilirliği_**Şekil 2:** bir Azure kullanılabilirlik kümesindeki SAP uygulama sunucularının yüksek kullanılabilirliği_
 
-Daha fazla bilgi için bkz: [Azure'daki Windows sanal makinelerinin kullanılabilirliğini yönetin.][azure-virtual-machines-manage-availability]
+Daha fazla bilgi için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme][azure-virtual-machines-manage-availability].
 
-Daha fazla bilgi için, SAP NetWeaver belgesi için Azure sanal makinelerin planlanması ve uygulanmasının [Azure kullanılabilirlik kümeleri][planning-guide-3.2.3] bölümüne bakın.
+Daha fazla bilgi için bkz. SAP NetWeaver için Azure sanal makineleri planlama ve uygulama için [Azure kullanılabilirlik kümeleri][planning-guide-3.2.3] bölümü.
 
-**Yalnızca yönetilmeyen diskler:** Azure depolama hesabı olası tek bir hata noktası olduğundan, en az iki sanal makinenin dağıtıldığı en az iki Azure depolama hesabına sahip olmak önemlidir. İdeal bir kurulumda, SAP iletişim örneği çalıştıran her sanal makinenin diskleri farklı bir depolama hesabında dağıtılır.
+**Yalnızca yönetilmeyen diskler:** Azure depolama hesabı olası bir tek hata noktası olduğundan, en az iki sanal makinenin dağıtıldığı en az iki Azure depolama hesabı olması önemlidir. İdeal bir kurulumda, SAP iletişim kutusu örneği çalıştıran her sanal makinenin diskleri farklı bir depolama hesabına dağıtılır.
 
 > [!IMPORTANT]
-> SAP yüksek kullanılabilirlik yüklemeleriniz için Azure yönetilen diskleri kullanmanızı şiddetle öneririz. Yönetilen diskler bağlı oldukları sanal makinenin kullanılabilirlik kümesiyle otomatik olarak hizalandığından, sanal makinenizin kullanılabilirliğini ve üzerinde çalışan hizmetleri artırır.  
+> SAP yüksek kullanılabilirlik yüklemelerinizde Azure yönetilen diskleri kullanmanızı önemle tavsiye ederiz. Yönetilen diskler, bağlı oldukları sanal makine kullanılabilirlik kümesiyle otomatik olarak hizalandığından, sanal makinenizin ve üzerinde çalışan hizmetlerin kullanılabilirliğini arttırır.  
 >
 
-### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows'daki BIR SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
+### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows üzerinde SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
 
 > ![Windows][Logo_Windows] Windows
 >
 
-SAP ASCS/SCS örneğini korumak için bir WSFC çözümü kullanabilirsiniz. Çözümün iki çeşidi vardır:
+SAP ASCS/SCS örneğini korumak için bir WSFC çözümünü kullanabilirsiniz. Çözüm iki çeşitte sahiptir:
 
-* **Kümelenmiş paylaşılan diskler kullanarak SAP ASCS/SCS örneğini kümeleyin**: Bu mimari hakkında daha fazla bilgi için, [paylaşılan bir küme kullanarak Windows failover kümesinde SAP ASCS/SCS örneğini kümeleme][sap-high-availability-guide-wsfc-shared-disk]bölümüne bakın.   
+* **Kümelenmiş paylaşılan diskler kullanarak SAP ascs/SCS örneğini kümeleyerek**: Bu mimari hakkında daha fazla bilgi için bkz. [Küme Paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ascs/SCS örneği][sap-high-availability-guide-wsfc-shared-disk]oluşturma.   
 
-* **Dosya paylaşımını kullanarak SAP ASCS/SCS örneğini kümeleyin**: Bu mimari hakkında daha fazla bilgi için [bkz.][sap-high-availability-guide-wsfc-file-share]
+* **SAP ascs/SCS örneğini dosya paylaşma kullanarak kümeleyerek**: Bu mimari hakkında daha fazla bilgi için, bkz. [dosya paylaşma kullanarak bir Windows Yük devretme kümesinde SAP ascs/SCS örneği kümesi][sap-high-availability-guide-wsfc-file-share].
 
-* **ANF SMB paylaşımını kullanarak SAP ASCS/SCS örneğini kümeleyin**: Bu mimari hakkında daha fazla bilgi için, [ANF SMB dosya paylaşımını kullanarak Windows failover kümesinde Bir SAP ASCS/SCS örneğine](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)bakın.
+* **ANF SMB paylaşımının KULLANıLDıĞı SAP ascs/SCS örneğini kümeleyerek**: Bu mimari hakkında daha fazla bilgi için, bkz. [ANF SMB dosya paylaşımının kullanıldığı bir Windows Yük devretme kümesindeki SAP ascs/SCS örneği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb).
 
-### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux'taki BIR SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
+### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 'ta SAP ASCS/SCS örneği için yüksek kullanılabilirlik mimarisi
 
 > ![Linux][Logo_Linux] Linux
 > 
-> SLES küme çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakkında daha fazla bilgi için, [SAP uygulamaları için SUSE Linux Enterprise Server'daki Azure VM'lerde SAP NetWeaver için yüksek kullanılabilirlik][sap-suse-ascs-ha]bilgisine bakın. Yüksek kullanılabilirLik gerektirmeyen SLES'teki alternatif HA mimarisi [için, SAP uygulamaları için Azure NetApp Dosyaları ile SUSE Linux Enterprise Server'da SAP NetWeaver için yüksek kullanılabilirlik kılavuzuna][sap-suse-ascs-ha-anf]bakın.
+> SLES küme çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakkında daha fazla bilgi için bkz. [SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'Lerinde yüksek kullanılabilirlik][sap-suse-ascs-ha]. Yüksek oranda kullanılabilir NFS gerektirmeyen SLES üzerinde alternatif HA mimarisi için, [SAP NetWeaver için Azure NetApp Files ile SuSE Linux Enterprise Server Için yüksek kullanılabilirlik Kılavuzu][sap-suse-ascs-ha-anf]' na bakın.
 
-Red Hat küme çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakkında daha fazla bilgi için [Red Hat Enterprise Linux'ta SAP NetWeaver için Azure Sanal Makineler yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+Red Hat kümesi çerçevesini kullanarak SAP ASCS/SCS örneğini kümeleme hakkında daha fazla bilgi için, bkz. [Azure sanal makineler IÇIN SAP NetWeaver için yüksek kullanılabilirlik Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
 
-### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>Kümelenmiş SAP ASCS/SCS örneği için SAP NetWeaver multi-SID yapılandırması
+### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>Kümelenmiş SAP yoks/SCS örneği için SAP NetWeaver çok SID yapılandırması
 
 > ![Windows][Logo_Windows] Windows
 > 
-> Multi-SID, dosya paylaşımı ve paylaşılan disk kullanılarak WSFC ile desteklenir.
+> Çoklu SID, dosya paylaşma ve paylaşılan disk kullanılarak WSFC ile desteklenir.
 > 
-> Windows'da çoklu SID yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz:
+> Windows 'daki çok düzeyli yüksek kullanılabilirliğe sahip mimari hakkında daha fazla bilgi için bkz.:
 
-* [SAP ASCS/SCS örneği windows server failover kümeleme ve dosya paylaşımı için çok SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-file-share]
+* [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve dosya paylaşma için çok SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-file-share]
 
-* [Sap ASCS/SCS örneği windows server failover kümeleme ve paylaşılan disk için çoklu SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+* [SAP ASCS/SCS örneği Windows Server Yük Devretme Kümelemesi ve paylaşılan disk için çok SID yüksek kullanılabilirlik][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
 > ![Linux][Logo_Linux] Linux
 > 
-> Multi-SID kümeleme, SAP ASCS/ERS için Linux Pacemaker kümelerinde, aynı kümedeki **beş** SAP SID ile sınırlı olarak desteklenir.
-> Linux'ta çoklu SID yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz:
+> Çoklu SID Kümelemesi, SAP Ass/ERS için Linux pacemaker kümelerinde desteklenir ve aynı kümede **beş** SAP SID ile sınırlıdır.
+> Linux 'ta çok düzeyli yüksek kullanılabilirlik mimarisi hakkında daha fazla bilgi için bkz.:
 
-* [SAP uygulamaları multi-SID kılavuzu için SLES'te Azure VM'lerde SAP NW için HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [SAP uygulamaları multi-SID kılavuzu için RHEL'de Azure VM'lerde SAP NW için HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [SLES for SAP için Azure VM 'lerde bir HA for SAP NW çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [RHEL for SAP için Azure VM 'lerinde SAP NW için HA, çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
-### <a name="high-availability-dbms-instance"></a>Yüksek kullanılabilirlik dbms örneği
+### <a name="high-availability-dbms-instance"></a>Yüksek kullanılabilirlik DBMS örneği
 
-DBMS aynı zamanda sap sisteminde tek bir temas noktasıdır. Yüksek kullanılabilirlik çözüm kullanarak onu korumak gerekir. Aşağıdaki şekilde, Windows Server Failover Clustering ve Azure dahili yük dengeleyicisi ile Azure'da yüksek kullanılabilirlik çözümünü sql server alwayson gösterir. SQL Server AlwaysOn, kendi DBMS çoğaltmasını kullanarak DBMS verilerini ve günlük dosyalarını çoğaltır. Bu durumda, tüm kurulumu basitleştiren küme paylaşılan diske ihtiyacınız yoktur.
+DBMS Ayrıca bir SAP sisteminde tek bir iletişim noktasıdır. Yüksek kullanılabilirlik çözümü kullanarak korumanız gerekir. Aşağıdaki şekilde, Windows Server Yük Devretme Kümelemesi ve Azure iç yük dengeleyici ile Azure 'da SQL Server AlwaysOn yüksek kullanılabilirlik çözümü gösterilmektedir. SQL Server AlwaysOn, DBMS verilerini ve günlük dosyalarını kendi DBMS çoğaltmasını kullanarak çoğaltır. Bu durumda, küme paylaşılan diskine ihtiyacınız yoktur, bu da kurulumun tamamını basitleştirir.
 
-![Şekil 3: SQL Server AlwaysOn ile yüksek kullanılabilirlik sap DBMS örneği][sap-ha-guide-figure-2003]
+![Şekil 3: SQL Server AlwaysOn ile yüksek kullanılabilirliğe sahip SAP DBMS örneği][sap-ha-guide-figure-2003]
 
-_**Şekil 3:** SQL Server AlwaysOn ile yüksek kullanılabilirlik sap DBMS örneği_
+_**Şekil 3:** SQL Server AlwaysOn ile yüksek kullanılabilirliğe sahip SAP DBMS örneği_
 
-Azure Kaynak Yöneticisi dağıtım modelini kullanarak Azure'da SQL Server DBMS kümeleme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure Resource Manager dağıtım modelini kullanarak Azure 'da kümeleme SQL Server DBMS hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Kaynak Yöneticisi'ni kullanarak Azure sanal makinelerdeki Bir AlwaysOn kullanılabilirlik grubunu el ile yapılandırın][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
+* [Kaynak Yöneticisi kullanarak Azure sanal makinelerinde el ile bir AlwaysOn kullanılabilirlik grubu yapılandırın][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
 
-* [Azure'daki AlwaysOn kullanılabilirlik grubu için Azure dahili yük dengeleyicisi yapılandırma][virtual-machines-windows-portal-sql-alwayson-int-listener]
+* [Azure 'da bir AlwaysOn kullanılabilirlik grubu için Azure iç yük dengeleyici yapılandırma][virtual-machines-windows-portal-sql-alwayson-int-listener]
 
-Azure Kaynak Yöneticisi dağıtım modelini kullanarak AZURE'da SAP HANA DBMS kümeleme hakkında daha fazla bilgi için, [Azure sanal makinelerde (VM) SAP HANA'nın yüksek kullanılabilirliği][sap-hana-ha]bölümüne bakın.
+Azure Resource Manager dağıtım modelini kullanarak Azure 'da kümeleme SAP HANA DBMS hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha].

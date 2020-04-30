@@ -1,7 +1,7 @@
 ---
-title: Portalda servis yönetimi
+title: Portalda hizmet yönetimi
 titleSuffix: Azure Cognitive Search
-description: Azure portalını kullanarak Microsoft Azure'da barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama hizmetini yönetin.
+description: Azure portal kullanarak Microsoft Azure barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama hizmetini yönetin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,114 +10,114 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282932"
 ---
-# <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portalında Azure Bilişsel Arama için hizmet yönetimi
+# <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 > [!div class="op_single_selector"]
-> * [Powershell](search-manage-powershell.md)
+> * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Bilişsel Arama, özel uygulamalarda zengin bir arama deneyimi oluşturmak için kullanılan tam olarak yönetilen bulut tabanlı bir arama hizmetidir. Bu makale, azure [portalında](https://portal.azure.com) zaten vermiş olduğunuz bir arama hizmeti için gerçekleştirebileceğiniz hizmet yönetimi görevlerini kapsar. Servis yönetimi, aşağıdaki görevle sınırlı olmak üzere, tasarım gereği hafiftir:
+Azure Bilişsel Arama, özel uygulamalara zengin arama deneyimi oluşturmak için kullanılan, tam olarak yönetilen, bulut tabanlı bir arama hizmetidir. Bu makalede, önceden sağladığınız bir arama hizmeti için [Azure Portal](https://portal.azure.com) gerçekleştirebileceğiniz hizmet yönetim görevleri ele alınmaktadır. Hizmet yönetimi, tasarım açısından hafif ve aşağıdaki görevlerle sınırlıdır:
 
 > [!div class="checklist"]
-> * Hizmetinizin okunması veya yazılması için kullanılan *api tuşlarına* erişimi yönetin.
-> * Bölümlerin ve yinelemelerin tahsisini değiştirerek hizmet kapasitesini ayarlayın.
-> * Hizmet katmanınızın maksimum sınırlarına göre kaynak kullanımını izleyin.
+> * Hizmetinize okuma veya yazma erişimi için kullanılan *api anahtarlarına* erişimi yönetin.
+> * Bölümleri ve çoğaltmaları ayırmayı değiştirerek hizmet kapasitesini ayarlayın.
+> * Hizmet katmanınızın en fazla sınırlarına göre kaynak kullanımını izleyin.
 
-*Yükseltmenin* yönetim görevi olarak listelenmediğini unutmayın. Hizmetler sağlandığında kaynaklar ayrıldıklarından, farklı bir katmana geçmek için yeni bir hizmet gereklidir. Ayrıntılar için [bkz.](search-create-service-portal.md)
+*Yükseltmenin* bir yönetim görevi olarak listelenmediğine dikkat edin. Hizmet sağlandığında kaynaklar ayrıldığından, farklı bir katmana taşımak yeni bir hizmet gerektirir. Ayrıntılar için bkz. [Azure bilişsel arama hizmeti oluşturma](search-create-service-portal.md).
 
-Sorgu hacmini ve diğer ölçümleri izleyebilir ve daha hızlı yanıt süreleri için hizmetinizi ayarlamak için bu öngörüleri kullanabilirsiniz. Daha fazla bilgi için bkz: [Monitör kullanımı ve sorgu ölçümleri](search-monitor-usage.md) ile Performans ve [optimizasyon.](search-performance-optimization.md)
+Sorgu hacmi ve diğer ölçümleri izleyebilir ve bu öngörüleri kullanarak hizmetinizi daha hızlı yanıt süreleri için ayarlayabilirsiniz. Daha fazla bilgi için bkz. [kullanımı ve sorgu ölçümlerini](search-monitor-usage.md) ve [performansı ve iyileştirmeyi](search-performance-optimization.md)izleme.
 
 <a id="admin-rights"></a>
 
 ## <a name="administrator-rights"></a>Yönetici hakları
-Hizmetin sağlanması veya hizmetin kaldırılması bir Azure abonelik yöneticisi veya yardımcı yöneticisi tarafından yapılabilir.
+Hizmetin kendisi için sağlanması veya kullanımdan kaldırılması, bir Azure abonelik Yöneticisi veya ortak yönetici tarafından yapılabilir.
 
-Bir hizmet içinde, hizmet URL'sine ve yönetici api anahtarına erişimi olan herkes hizmete okuma yazma erişimine sahiptir. Okuma-yazma erişimi, Api tuşları, dizinler, dizinler, veri kaynakları, zamanlamalar ve [RBAC tanımlı roller](search-security-rbac.md)aracılığıyla uygulanan rol atamaları da dahil olmak üzere sunucu nesnelerini ekleme, silme veya değiştirme olanağı sağlar.
+Hizmet içinde, hizmet URL 'sine ve yönetici API 'sine erişimi olan herkesin hizmete okuma yazma erişimi vardır. Okuma-yazma erişimi, [RBAC tarafından tanımlanan roller](search-security-rbac.md)aracılığıyla uygulanan API anahtarları, dizinler, Dizin oluşturucular, veri kaynakları, zamanlamalar ve rol atamaları dahil sunucu nesnelerini ekleme, silme veya değiştirme olanağı sağlar.
 
-Azure Bilişsel Arama ile tüm kullanıcı etkileşimi bu modlardan birine girer: hizmete okuma yazma erişimi (yönetici hakları) veya hizmete salt okunur erişim (sorgu hakları). Daha fazla bilgi için [bkz.](search-security-api-keys.md)
+Azure Bilişsel Arama ile tüm Kullanıcı etkileşimi şu modlardan birine denk gelir: hizmete okuma/yazma erişimi (yönetici hakları) veya hizmete salt okuma erişimi (sorgu hakları). Daha fazla bilgi için bkz. [API anahtarlarını yönetme](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
-## <a name="logging-and-system-information"></a>Günlük ve sistem bilgileri
-Azure Bilişsel Arama, portal veya programlı arabirimler aracılığıyla tek bir hizmete ait günlük dosyalarını ortaya çıkarmaz. Temel katmanda ve yukarıda, Microsoft tüm Azure Bilişsel Arama hizmetlerini hizmet düzeyi sözleşmeleri (SLA) başına %99,9 kullanılabilirlik için izler. Hizmet yavaşsa veya istek girdisi SLA eşiklerinin altına düşerse, destek ekipleri kendi lerinde bulunan günlük dosyalarını gözden geçirir ve sorunu giderir.
+## <a name="logging-and-system-information"></a>Günlüğe kaydetme ve sistem bilgileri
+Azure Bilişsel Arama, portal veya programlı arabirimler aracılığıyla tek bir hizmet için günlük dosyalarını sunmaz. Temel katmanda ve yukarıda, Microsoft, hizmet düzeyi sözleşmeleri (SLA) başına% 99,9 kullanılabilirlik için tüm Azure Bilişsel Arama hizmetlerini izler. Hizmet yavaşsa veya istek işleme SLA eşiklerinin altına düşerse, destek ekipleri, bu dosyaların kullanabildiği günlük dosyalarını gözden geçirir ve sorunu ele geçirebilir.
 
-Hizmetiniz hakkında genel bilgiler açısından, aşağıdaki yollarla bilgi edinebilirsiniz:
+Hizmetiniz hakkındaki genel bilgiler açısından aşağıdaki yollarla bilgi edinebilirsiniz:
 
-* Portalda, hizmet panosunda, bildirimler, özellikler ve durum iletileri aracılığıyla.
-* [Hizmet özelliklerini](https://docs.microsoft.com/rest/api/searchmanagement/services)veya dizin kaynağı kullanımında durum elde etmek için [PowerShell](search-manage-powershell.md) veya [Management REST API'yi](https://docs.microsoft.com/rest/api/searchmanagement/) kullanma.
+* Portalda, hizmet panosunda, bildirimler, Özellikler ve durum iletileri aracılığıyla.
+* [Hizmet özelliklerini almak](https://docs.microsoft.com/rest/api/searchmanagement/services)için [PowerShell](search-manage-powershell.md) veya [Yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/) kullanma veya dizin kaynağı kullanımında durum.
 
 
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>Kaynak kullanımını izleme
-Panoda, kaynak izleme hizmeti panosunda gösterilen bilgiler ve hizmeti sorgulayarak elde edebileceğiniz birkaç ölçümle sınırlıdır. Hizmet panosunda, Kullanım bölümünde, bölüm kaynak düzeylerinin uygulamanız için yeterli olup olmadığını hızlı bir şekilde belirleyebilirsiniz. Günlüğe kaydedilmiş olayları yakalamak ve sürdürmek istiyorsanız, Azure izleme gibi harici kaynaklar sağlayabilirsiniz. Daha fazla bilgi için [bkz.](search-monitor-usage.md)
+Panoda, kaynak izleme hizmet panosunda gösterilen bilgilerle ve hizmeti sorgulayarak elde ettiğiniz birkaç ölçümle sınırlıdır. Hizmet panosunda, kullanım bölümünde, Bölüm kaynak düzeylerinin uygulamanız için yeterli olup olmadığını hızlı bir şekilde belirleyebilirsiniz. Günlüğe kaydedilen olayları yakalamak ve sürdürmek istiyorsanız, Azure izleme gibi dış kaynakları sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure bilişsel arama izleme](search-monitor-usage.md).
 
-Arama hizmeti REST API'yi kullanarak, belgelerin ve dizinlerin programlı bir şekilde sayılabilir: 
+Arama hizmeti REST API kullanarak belgeler ve dizinlerde program aracılığıyla bir sayı alabilir: 
 
-* [Dizin İstatistiklerini Al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Belgeleri Say](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Belge sayısı](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Olağanüstü durum kurtarma ve hizmet kesintileri
 
-Verilerinizi kurtarabilsek de, Azure Bilişsel Arama küme veya veri merkezi düzeyinde bir kesinti olduğunda hizmetin anında başarısız olmasına izin vermez. Veri merkezinde bir küme başarısız olursa, işlem ekibi algılar ve hizmeti geri yüklemek için çalışır. Hizmet geri yüklemesi sırasında kesinti yle karşılaşırsınız, ancak [Hizmet Düzeyi Sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)uyarınca hizmet inmemasını telafi etmek için hizmet kredisi talep edebilirsiniz. 
+Verilerinizi, veri merkezi düzeyinde bir kesinti varsa Azure Bilişsel Arama, hizmetin anında yük devretmesini sağlamaz. Veri merkezinde bir küme başarısız olursa, işlemler ekibi, hizmeti algılar ve geri yükleme işlemini çalışır. Hizmet geri yükleme sırasında kapalı kalma süresi yaşarsınız, ancak [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)başına hizmet kullanım dışı kalması için hizmet kredileri isteyebilirsiniz. 
 
-Microsoft'un denetimi dışında yıkıcı hatalar olması durumunda sürekli hizmet gerekiyorsa, farklı bir bölgede [ek bir hizmet sağlayabilir](search-create-service-portal.md) ve dizinlerin tüm hizmetlerde tamamen gereksiz olduğundan emin olmak için bir coğrafi çoğaltma stratejisi uygulayabilirsiniz.
+Microsoft 'un denetimi dışındaki çok sayıda hata oluşması durumunda sürekli hizmet gerekliyse, farklı bir bölgede [ek bir hizmet](search-create-service-portal.md) sağlayabilir ve dizinlerin tüm hizmetlerde tamamen yedekli olmasını sağlamak için coğrafi çoğaltma stratejisi uygulayabilirsiniz.
 
-Dizinleri doldurmak ve yenilemek için [dizin işaretleyicileri](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağını kullanan coğrafi özgü dizinleyiciler aracılığıyla olağanüstü durum kurtarma işlemlerini işleyebilir. Her biri bir dizinleyici çalıştıran farklı bölgelerdeki iki hizmet, coğrafi artıklık elde etmek için aynı veri kaynağını dizine ekleyebilir. Coğrafi gereksiz olan veri kaynaklarından dizin alıyorsanız, Azure Bilişsel Arama dizinleyicilerinin yalnızca birincil yinelemelerden artımlı dizini (yeni, değiştirilmiş veya silinmiş belgelerden güncelleştirmeleri birleştirme) gerçekleştirebileceğini unutmayın. Bir başarısız olay, yeni birincil yineleme için dizinleyici yeniden noktaya emin olun. 
+Dizinleri doldurmak ve yenilemek için [Dizin oluşturucular](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağından yararlanan coğrafi olarak özel Dizin oluşturucular aracılığıyla olağanüstü durum kurtarmayı işleyebilir. Her biri Dizin Oluşturucu çalıştıran farklı bölgelerdeki iki hizmet, coğrafi yedeklilik sağlamak için aynı veri kaynağını dizinlede olabilir. Aynı zamanda coğrafi olarak yedekli veri kaynaklarından dizin oluşturuyorsanız, Azure Bilişsel Arama Dizin oluşturucuların birincil çoğaltmalardan yalnızca artımlı dizin oluşturma (yeni, değiştirilen veya silinen belgelerden güncelleştirmeleri birleştirme) gerçekleştirebildiğinizden haberdar olun. Bir yük devretme olayında, Dizin oluşturucuyu yeni birincil çoğaltmaya yeniden işaret ettiğinizden emin olun. 
 
-Dizin leyiciler kullanmazsanız, nesneleri ve verileri paralel olarak farklı arama hizmetlerine itmek için uygulama kodunuzu kullanırsınız. Daha fazla bilgi için [Azure Bilişsel Arama'da Performans ve optimizasyon adabına](search-performance-optimization.md)bakın.
+Dizin oluşturucular kullanmıyorsanız, nesneleri ve verileri farklı arama hizmetlerine paralel olarak göndermek için uygulama kodunuzu kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure bilişsel arama performans ve iyileştirme](search-performance-optimization.md).
 
 ## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
-Azure Bilişsel Arama birincil veri depolama çözümü olmadığından, self servis yedekleme ve geri yükleme için resmi bir mekanizma sağlamayız. Ancak, dizin tanımınızı ve anlık fotoğrafınızı bir dizi JSON dosyasına yedeklemek için bu [Azure Bilişsel Arama .NET örnek repo'daki](https://github.com/Azure-Samples/azure-search-dotnet-samples) **dizin yedekleme-geri yükleme** örnek kodunu kullanabilir ve gerekirse dizini geri yüklemek için bu dosyaları kullanabilirsiniz. Bu araç, dizinleri hizmet katmanları arasında da taşıyabilir.
+Azure Bilişsel Arama bir birincil veri depolama çözümü olmadığından, self servis yedekleme ve geri yükleme için biçimsel bir mekanizma sağlamayız. Bununla birlikte, Dizin tanımınızı ve anlık görüntüsünü bir dizi JSON dosyasına yedeklemek için bu [Azure bilişsel arama .NET örnek deposu](https://github.com/Azure-Samples/azure-search-dotnet-samples) ' nda **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilir ve gerekirse dizini geri yüklemek için bu dosyaları kullanabilirsiniz. Bu araç Ayrıca, dizinleri hizmet katmanları arasında taşıyabilir.
 
-Aksi takdirde, bir dizin oluşturmak ve doldurmak için kullanılan uygulama kodunuz, yanlışlıkla bir dizini silerseniz fiili geri yükleme seçeneğidir. Bir dizin oluşturmak için, onu siler (var olduğunu varsayarsak), hizmetteki dizini yeniden oluşturur ve birincil veri deponuzdan veri alarak yeniden yüklersiniz.
+Aksi halde, dizin oluşturmak ve doldurmak için kullanılan uygulama kodunuz, yanlışlıkla bir dizini silerseniz geri yükleme ve geri yükleme seçeneğidir. Bir dizini yeniden oluşturmak için (varsa) onu siler, hizmette dizini yeniden oluşturun ve birincil veri deponuzdan verileri alarak yeniden yükleyin.
 
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>Ölçek büyütme veya küçültme
-Her arama hizmeti en az bir yineleme ve bir bölümle başlar. Özel kaynaklar sağlayan bir [katmana](search-limits-quotas-capacity.md)kaydolduysanız, kaynak kullanımını ayarlamak için hizmet panosundaki **SCALE** döşemesini tıklatın.
+Her arama hizmeti en az bir çoğaltma ve bir bölüm ile başlar. [Adanmış kaynaklar sağlayan bir katmana](search-limits-quotas-capacity.md)kaydolduysanız, kaynak kullanımını ayarlamak için hizmet panosundaki **Ölçek** kutucuğuna tıklayın.
 
-Her iki kaynak üzerinden kapasite eklediğinizde, hizmet bunları otomatik olarak kullanır. Sizin tarafınızdan başka bir işlem gerekmez, ancak yeni kaynağın etkisi gerçekleşmeden önce hafif bir gecikme vardır. Ek kaynak sağlanması 15 dakika veya daha uzun sürebilir.
+Her iki kaynaktan da kapasite eklediğinizde, hizmet bunları otomatik olarak kullanır. Biraz başka eylem gerekmez, ancak yeni kaynağın etkisinden önce küçük bir gecikme olur. Ek kaynakların sağlanması 15 dakika veya daha uzun sürebilir.
 
  ![][10]
 
-### <a name="add-replicas"></a>Yineleme ekleme
-Yinelemeleri saniyede artırma (QPS) veya yüksek kullanılabilirlik elde yinelemeler ekleyerek yapılır. Her yinelemenin bir dizin kopyası vardır, bu nedenle bir yineleme daha eklemek hizmet sorgusu isteklerini işlemek için kullanılabilir bir dizine daha çevirir. Yüksek kullanılabilirlik için en az 3 yineleme gereklidir (ayrıntılar için [Kapasite Planlama'ya](search-capacity-planning.md) bakın).
+### <a name="add-replicas"></a>Çoğaltmalar ekleme
+Saniye başına sorgu (QPS) veya yüksek kullanılabilirlik elde etmek çoğaltmalar eklenerek yapılır. Her çoğaltma bir dizinin kopyasına sahiptir, bu nedenle bir çoğaltma eklemek, hizmet sorgu isteklerini işlemek için kullanılabilir bir dizin daha arar. Yüksek kullanılabilirlik için en az 3 çoğaltma gerekir (Ayrıntılar için [Kapasite planlaması](search-capacity-planning.md) konusuna bakın).
 
-Daha fazla yinelemeye sahip bir arama hizmeti, bakiye sorgu isteklerini daha fazla dizin sayısıüzerinden yükleyebilir. Sorgu hacmi düzeyi göz önüne alındığında, istek hizmet için dizin daha fazla kopya olduğunda sorgu iş hacmi daha hızlı olacaktır. Sorgu gecikmesi yaşıyorsanız, ek yinelemeler çevrimiçi olduktan sonra performans üzerinde olumlu bir etki bekleyebilirsiniz.
+Daha fazla çoğaltmaya sahip bir arama hizmeti, daha fazla sayıda dizin üzerinde sorgu isteklerinin yükünü dengeleyebilir. Sorgu hacmi düzeyi verildiğinde, isteğin hizmet için kullanılabilir dizinin daha fazla kopyası olduğunda sorgu üretimi daha hızlı olur. Sorgu gecikmesi yaşıyorsanız, ek çoğaltmalar çevrimiçi olduktan sonra performans üzerinde olumlu bir etkisi bekleyebilir.
 
-Yinelemeler ekledikçe sorgu çıktısı artsa da, hizmetinize yinelemeler eklediğinizde tam olarak iki veya üç katı değildir. Tüm arama uygulamaları, sorgu performansını engellenebilen dış etkenlere tabidir. Karmaşık sorgular ve ağ gecikmesi, sorgu yanıt süreleri varyasyonlarına katkıda bulunan iki etkendir.
+Yineleme eklerken sorgu işleme yukarı gidebilse de, hizmetinize çoğaltmalar eklerken tam olarak Double veya üçlü değildir. Tüm arama uygulamaları, sorgu performansını engelleyebilecek dış faktörlere tabidir. Karmaşık sorgular ve ağ gecikmesi, sorgu yanıt sürelerindeki çeşitlere katkıda bulunan iki etmendir.
 
-### <a name="add-partitions"></a>Bölüm ekleme
-Çoğu hizmet uygulaması, bölümler yerine daha fazla yineleme ye ihtiyaç duyar. Belge sayısının artırılmasının gerekli olduğu durumlarda, Standart hizmete kaydolduysanız bölümler ekleyebilirsiniz. Temel katman ek bölümler sağlamaz.
+### <a name="add-partitions"></a>Bölüm Ekle
+Çoğu hizmet uygulamasının bölümleri yerine daha fazla çoğaltma için yerleşik bir ihtiyacı vardır. Daha fazla belge sayısının gerekli olduğu durumlarda, standart hizmete kaydolduysanız bölüm ekleyebilirsiniz. Temel katman ek bölümler sağlamaz.
 
-Standart katmanda, bölümler 12'nin katları olarak eklenir (özellikle 1, 2, 3, 4, 6 veya 12). Bu bir parçalama objesi. Dizin, tümü 1 bölüm üzerinde depolanabilen veya eşit olarak 2, 3, 4, 6 veya 12 bölüme (bölüm başına bir parça) bölünebilen 12 parça halinde oluşturulur.
+Standart katmanda, bölümler 12 ' ye (özellikle, 1, 2, 3, 4, 6 veya 12) katlara eklenir. Bu bir parça yapıtı. Hepsi 1 bölümde depolanabilen veya eşit olarak 2, 3, 4, 6 veya 12 bölüme (bölüm başına bir parça) bölünebilen 12 parçalı bir dizin oluşturulur.
 
-### <a name="remove-replicas"></a>Yinelemeleri kaldırma
-Yüksek sorgu birimlerinin dönemleri sonra, arama sorgusu yükleri normale döndükten sonra (örneğin, tatil satışları bittikten sonra) yinelemeleri azaltmak için kaydırıcıyı kullanabilirsiniz. Sizin tarafınızdan başka adım aranmaz. Yineleme sayısını düşürmek, veri merkezindeki sanal makinelerden feragat eder. Sorgunuz ve veri alma işlemleriniz artık eskisinden daha az VM'de çalışacaktır. Minimum gereksinim bir yinelemedir.
+### <a name="remove-replicas"></a>Çoğaltmaları kaldır
+Yüksek sorgu birimleri dönemlerinden sonra, arama sorgusu yükleri normalleştirildikten sonra (örneğin, tatil satışları kapatıldıktan sonra) çoğaltmaları azaltmak için kaydırıcıyı kullanabilirsiniz. Sizin bölüminizdeki başka bir adım gerekli değildir. Çoğaltma sayısını azaltmak veri merkezindeki sanal makineleri yeniden oluşturur. Sorgunuz ve veri alma işlemleri artık daha az sayıda VM 'de çalışacak. En düşük gereksinim bir yinelemedir.
 
-### <a name="remove-partitions"></a>Bölümleri kaldırma
-Sizin tarafınızdan ekstra çaba gerektirmeyan yinelemeleri kaldırmanın aksine, azaltılabilecekden daha fazla depolama alanı kullanıyorsanız yapmanız gereken bazı işler olabilir. Örneğin, çözümünüz üç bölüm kullanıyorsa, yeni depolama alanı dizininizi barındırmak için gerekenden daha azsa, bir veya iki bölüme küçülme hata oluşturur. Tahmin edebileceğiniz gibi, seçimleriniz alanı boşaltmak veya geçerli yapılandırmayı korumak için ilişkili bir dizin içindeki dizinleri veya belgeleri silmektir.
+### <a name="remove-partitions"></a>Bölümleri kaldır
+İş üzerinde fazladan çaba gerektirmeyen çoğaltmaları kaldırmanın aksine, daha fazla depolama kullanıyorsanız daha fazla depolama kullanıyor olabilirsiniz. Örneğin, çözümünüz üç bölüm kullanıyorsa, yeni depolama alanı dizininizi barındırmak için gerekenden küçükse bir veya iki bölüme yeniden boyutlandırma bir hata oluşturur. Tahmin edebileceğiniz gibi seçenekleriniz, alanı boşaltmak için ilişkili bir dizin içindeki dizinleri veya belgeleri siler veya geçerli yapılandırmayı tutacağız.
 
-Belirli bölümlerde hangi dizin kırıklarının depolandığınızı söyleyen bir algılama yöntemi yoktur. Her bölüm yaklaşık 25 GB depolama alanı sağlar, bu nedenle depolama alanını sahip olduğunuz bölüm sayısına göre barındırılabilen bir boyuta düşürmeniz gerekir. Tek bir bölüme dönmek istiyorsanız, 12 parçanın tümüne sığması gerekir.
+Belirli bölümlerde hangi dizin parçaları depolandığını belirten bir algılama yöntemi yoktur. Her bölüm, depolama alanı üzerinde yaklaşık 25 GB sağlar, bu nedenle depolama alanını sahip olduğunuz bölüm sayısına göre daha fazla bir boyuta düşürmeniz gerekecektir. Bir bölüme geri dönmek istiyorsanız, tüm 12 parçaların sığması gerekir.
 
-Gelecekteki planlamaya yardımcı olmak için, gerçekte ne kadar kullandığınızı görmek için depolama alanını [(Dizini İstatistikleri Al'ı](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)kullanarak) denetlemek isteyebilirsiniz. 
+Gelecekteki planlamaya yardımcı olmak için, gerçekten ne kadar kullandığınızı görmek üzere depolamayı ( [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)' ı kullanarak) denetlemek isteyebilirsiniz. 
 
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hizmet yönetiminin arkasındaki kavramları anladıktan sonra, görevleri otomatikleştirmek için [PowerShell'i](search-manage-powershell.md) kullanmayı düşünün.
+Hizmet yönetiminin arkasındaki kavramları anladıktan sonra, görevleri otomatikleştirmek için [PowerShell](search-manage-powershell.md) 'i kullanmayı göz önünde bulundurun.
 
-Ayrıca performans ve [optimizasyon makalesini](search-performance-optimization.md)gözden geçirmenizi öneririz.
+Ayrıca [performans ve iyileştirme makalesinin](search-performance-optimization.md)gözden geçirilmesini öneririz.
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

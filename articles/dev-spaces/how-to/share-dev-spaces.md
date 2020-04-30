@@ -1,31 +1,31 @@
 ---
-title: Azure Dev Alanları nasıl paylaşılatır?
+title: Azure Dev Spaces paylaşma
 services: azure-dev-spaces
 ms.date: 05/11/2018
 ms.topic: conceptual
-description: Azure Kubernetes Hizmeti'ndeki dev alanı ekibinizdeki diğer kişilerle paylaşmak için Azure Geliştirme Alanlarını nasıl kullanacağınızı öğrenin
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s '
+description: Azure Kubernetes hizmetindeki bir geliştirme alanını takımınızda başkalarıyla paylaşmak için Azure Dev Spaces kullanmayı öğrenin
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 ms.openlocfilehash: 0fcb8be5107c7769af7e51dece9f190c8e7e22df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474416"
 ---
 # <a name="share-azure-dev-spaces"></a>Azure Dev Spaces'i paylaşma
 
-Azure Dev Spaces ile geliştirme alanınızı ekibinizdeki diğer kişilerle paylaşabilirsiniz. Her geliştirici başkalarını kırma korkusu olmadan kendi alanında çalışabilir. Ayrıca, tek bir alanda birlikte çalışmak, alay oluşturmak veya bağımlılıkları simüle etmek zorunda kalmadan kodu uçlardan uca sınamaya olanak tanır. Daha fazla bilgi için ekip geliştirme kılavuzu [hakkında bilgi](../team-development-nodejs.md) edinin.
+Azure Dev Spaces sayesinde, geliştirme alanınızı takımınızda başkalarıyla paylaşabilirsiniz. Her geliştirici, diğerlerinin parçalara bölünmesi gerekmeden kendi alanında çalışabilir. Ayrıca, tek bir alanda birlikte çalışmak, hareketleri oluşturmak veya bağımlılıklara benzetim yapmak zorunda kalmadan kodu uçtan uca test etmeyi olanaklı hale getirebilirsiniz. Daha fazla bilgi için bkz. [Takım geliştirme Kılavuzu hakkında bilgi edinin](../team-development-nodejs.md) .
 
 ## <a name="set-up-a-dev-space-for-multiple-developers"></a>Birden çok geliştirici için bir geliştirme alanı ayarlama
 
-1. Azure'da Dev Alanı oluşturun. [.NET Core ve VS Kodu](../get-started-netcore.md), [.NET Core ve Visual Studio](../get-started-netcore-visualstudio.md)veya [Düğüm.js ve VS Kodu'ni](../get-started-nodejs.md)seçin. Seçili Azure aboneliğine Sahip veya Katılımcı erişimine sahip olmanız gerekir.
-1. Her ekip üyesinin [Azure Dev Spaces denetleyicisine erişmek için uygun izinlere](../troubleshooting.md#incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis)sahip olduğundan emin olun. Örneğin, Azure Dev Alanı'nın kaynak **grubunu,** [Katılımcıya](/azure/active-directory/role-based-access-control-configure) her ekip üyesi için erişim hakkı verecek şekilde yapılandırabilirsiniz. Bu komutu çalıştırarak bir dev alanının kaynak grubunu denetleyebilirsiniz:`azds show-context`
-1. Ekip üyelerinden geliştirme alanının geliştirilmesi için **dev alanını seçmelerini** isteyin.
-   * **Komut satırı veya VS Kodu**: Erişebildiğiniz mevcut `azds space list`Azure Geliştirme Alanlarını görmek için: . Bir dev alanı `azds space select`seçmek için: .
-   * **Visual Studio IDE**: Visual Studio'da bir proje açın, başlatma ayarlarından **Azure Dev Spaces'i** seçin. Açılan iletişim kutusunda varolan bir kümeyi seçin.
+1. Azure 'da bir geliştirme alanı oluşturun. [.NET Core ve vs Code](../get-started-netcore.md), [.NET Core ve Visual Studio](../get-started-netcore-visualstudio.md)ya da [Node. js ve vs Code](../get-started-nodejs.md)seçin. Seçili Azure aboneliğine sahip veya katkıda bulunan erişimine sahip olmanız gerekir.
+1. Her bir takım üyesinin [Azure dev Spaces denetleyicisine erişmek için uygun izinlere](../troubleshooting.md#incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis)sahip olduğundan emin olun. Örneğin, Azure dev alanının **kaynak grubunu** her bir ekip üyesine [katkıda bulunan erişim verecek](/azure/active-directory/role-based-access-control-configure) şekilde yapılandırabilirsiniz. Şu komutu çalıştırarak bir geliştirme alanının kaynak grubunu kontrol edebilirsiniz:`azds show-context`
+1. Ekip üyelerinin, içinde geliştirme için **geliştirme alanını seçmesini** isteyin.
+   * **Komut satırı veya vs Code**: erişiminizin bulunduğu mevcut Azure dev Spaces görmek için: `azds space list`. Bir dev alanı seçmek için: `azds space select`.
+   * **Visual STUDIO IDE**: Visual Studio 'da bir proje açın, başlatma ayarları açılır listesinden **Azure dev Spaces** seçin. Açılan iletişim kutusunda, mevcut bir kümeyi seçin.
 
-     ![Visual Studio başlatma ayarları açılır](../media/get-started-netcore-visualstudio/LaunchSettings.png)
+     ![Visual Studio başlatma ayarları açılan ayarı](../media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için [ekip geliştirme hakkında bilgi](../team-development-nodejs.md) edinin.
+Daha fazla bilgi için bkz. [Takım geliştirme hakkında bilgi edinin](../team-development-nodejs.md) .

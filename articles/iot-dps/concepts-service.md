@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Aygıt Sağlama Hizmetinde hizmet kavramları | Microsoft Dokümanlar
-description: Aygıt Sağlama Hizmeti (DPS) ve IoT Hub ile aygıtlara özgü hizmet sağlama kavramlarını açıklar
+title: Azure IoT Hub cihaz sağlama hizmeti 'nde hizmet kavramları | Microsoft Docs
+description: Cihaz sağlama hizmeti (DPS) ve IoT Hub cihazları için özel hizmet sağlama kavramlarını açıklar
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -9,70 +9,70 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79285220"
 ---
-# <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Cihaz Sağlama Hizmeti kavramları
+# <a name="iot-hub-device-provisioning-service-concepts"></a>Cihaz sağlama hizmeti kavramlarını IoT Hub
 
-IoT Hub Aygıt Sağlama Hizmeti, ioT Hub için sıfır dokunmatik aygıt sağlama sağlamasını belirli bir IoT hub'ına yapılandırmak için kullandığınız bir yardımcı hizmettir. Aygıt Sağlama Hizmeti ile milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde [otomatik olarak sağlayabilirsiniz.](concepts-auto-provisioning.md)
+IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti ile milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde [Otomatik](concepts-auto-provisioning.md) olarak sağlayabilirsiniz.
 
-Aygıt sağlama iki bölümden biridir. İlk bölüm, aygıtı *kaydederek* aygıt ve IoT çözümü arasındaki ilk bağlantıyı kurmaktır. İkinci bölüm, çözümün özel gereksinimlerine göre aygıta uygun *yapılandırmayı* uygulamaktır. Her iki adım tamamlandıktan sonra, aygıt tam *olarak sağlanmıştır.* Cihaz Sağlama Hizmeti, bu adımların ikisini de otomatikleştirerek cihaz için sorunsuz bir sağlama deneyimi sağlar.
+Cihaz sağlama iki bölümden oluşan bir işlemdir. İlk bölüm, cihazı *kaydederek* cihaz ile IoT çözümü arasında ilk bağlantıyı kurmaya yönelik olur. İkinci bölüm, çözümün belirli gereksinimlerine bağlı olarak uygun *yapılandırmayı* cihaza uyguluyor. Her iki adım tamamlandıktan sonra cihaz tam olarak *sağlanmış*demektir. Cihaz Sağlama Hizmeti, bu adımların ikisini de otomatikleştirerek cihaz için sorunsuz bir sağlama deneyimi sağlar.
 
-Bu makalede, *hizmetin*yönetimi için en geçerli olan sağlama kavramlarına genel bir bakış sunulmaktadır. Bu makale, bir aygıtı dağıtıma hazır hale getirmek için [bulut kurulum adımında](about-iot-dps.md#cloud-setup-step) yer alan kişilikler için en çok alakalıdır.
+Bu makale, *hizmetin*yönetilmesi için en uygun sağlama kavramlarıyla ilgili genel bir bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamak için [bulut kurulumu adımından](about-iot-dps.md#cloud-setup-step) sorumlu olan personbuna uygundur.
 
-## <a name="service-operations-endpoint"></a>Servis işlemleri bitiş noktası
+## <a name="service-operations-endpoint"></a>Hizmet işlemleri uç noktası
 
-Hizmet işlemleri bitiş noktası, hizmet ayarlarını yönetmek ve kayıt listesini korumak için son noktadır. Bu bitiş noktası yalnızca hizmet yöneticisi tarafından kullanılır; cihazlar tarafından kullanılmaz.
+Hizmet işlemleri uç noktası, hizmet ayarlarını yönetmek ve kayıt listesini sürdürmek için uç noktasıdır. Bu uç nokta yalnızca hizmet yöneticisi tarafından kullanılır; cihazlar tarafından kullanılmaz.
 
-## <a name="device-provisioning-endpoint"></a>Aygıt sağlama bitiş noktası
+## <a name="device-provisioning-endpoint"></a>Cihaz sağlama uç noktası
 
-Aygıt sağlama bitiş noktası, tüm aygıtların otomatik sağlama için kullandığı tek uç noktadır. URL, tedarik zinciri senaryolarında yeni bağlantı bilgilerine sahip aygıtları yeniden flashlama gereksinimini ortadan kaldırmak için tüm sağlama hizmeti örnekleri için aynıdır. Kimlik kapsamı kiracı yalıtımı sağlar.
+Cihaz sağlama uç noktası, tüm cihazların otomatik sağlama için kullanacağı tek uç noktadır. Bu URL, sağlama zinciri senaryolarında yeni bağlantı bilgileriyle Flash cihazları yeniden yazma gereksinimini ortadan kaldırmak için tüm sağlama hizmeti örnekleri için aynıdır. KIMLIK kapsamı, kiracı yalıtımı sağlar.
 
-## <a name="linked-iot-hubs"></a>Bağlantılı IoT hub'ları
+## <a name="linked-iot-hubs"></a>Bağlantılı IoT Hub 'ları
 
-Aygıt Sağlama Hizmeti yalnızca aygıtları yalnızca ona bağlı olan IoT hub'larına sağlayabilir. Bir IoT hub'ını Aygıt Sağlama hizmetinin bir örneğine bağlamak, hizmete IoT hub'ının aygıt kayıt defterine okuma/yazma izinleri verir; bağlantı yla, Aygıt Sağlama hizmeti bir aygıt kimliği kaydedebilir ve aygıt ikizinde ilk yapılandırmayı ayarlayabilir. Bağlantılı IoT hub'ları herhangi bir Azure bölgesinde olabilir. Diğer abonelikteki hub'ları sağlama hizmetinize bağlayabilirsiniz.
+Cihaz sağlama hizmeti cihazları yalnızca onunla bağlantılı olan IoT Hub 'larına sağlayabilir. IoT Hub 'ı cihaz sağlama hizmeti örneğine bağlamak, IoT Hub 'ın cihaz kayıt defterine yönelik okuma/yazma izinleri verir; bağlantıyla birlikte cihaz sağlama hizmeti cihaz KIMLIĞINI kaydedebilir ve cihaz ikizi ilk yapılandırmasını ayarlayabilir. Bağlantılı IoT Hub 'ları herhangi bir Azure bölgesinde olabilir. Diğer aboneliklerdeki hub 'ları, sağlama hizmetinize bağlayabilirsiniz.
 
-## <a name="allocation-policy"></a>Tahsisat ilkesi
+## <a name="allocation-policy"></a>Ayırma ilkesi
 
-Aygıt Sağlama Hizmeti'nin aygıtları bir IoT hub'ına nasıl atadığını belirleyen hizmet düzeyi ayarı. Desteklenen üç ayırma ilkesi vardır:
+Cihaz sağlama hizmeti 'nin cihazları bir IoT Hub 'ına nasıl atayabileceğini belirleyen hizmet düzeyi ayarı. Desteklenen üç ayırma ilkesi vardır:
 
-* **Eşit ağırlıklı dağıtım**: bağlantılı IoT hub'larının aygıtlara eşit olarak sağlanması olasıdır. Varsayılan ayar. Yalnızca bir IoT hub'a aygıtları sağlıyorsanız bu ayarı değiştirmeyebilirsiniz.
+* **Eşit ağırlıklı dağıtım**: bağlantılı IoT Hub 'ları, cihazları kendisine temin etmek için büyük olasılıkla eşit değildir. Varsayılan ayar. Yalnızca bir IoT hub'a aygıtları sağlıyorsanız bu ayarı değiştirmeyebilirsiniz.
 
-* **En düşük gecikme gecikmesi**: aygıtlar, aygıta en düşük gecikme gecikmesi olan bir IoT hub'ına verilir. Birden çok bağlantılı IoT hub'ı aynı en düşük gecikmeyi sağlayacaksa, sağlama hizmeti aygıtları bu hub'larda
+* **En düşük gecikme süresi**: cihazlar cihaza en düşük gecikme süresine sahip bir IoT Hub 'ına sağlanır. Birden çok bağlı IoT Hub 'ı aynı en düşük gecikme süresini sağlayabilirseniz, sağlama hizmeti cihazları bu hub 'larda karma hale getirir
 
-* **Kayıt listesi üzerinden statik yapılandırma**: kayıt listesinde istenen IoT hub belirtimi hizmet düzeyi ayırma ilkesi üzerinde öncelik alır.
+* **Kayıt listesi aracılığıyla statik yapılandırma**: kayıt listesindeki istenen IoT Hub 'ının belirtimi, hizmet düzeyi ayırma ilkesine göre önceliklidir.
 
 ## <a name="enrollment"></a>Kayıt
 
-Kayıt, otomatik sağlama yoluyla kaydolabilecek aygıtların veya aygıt gruplarının kaydıdır. Kayıt kaydı, aygıt veya aygıt grubu hakkında aşağıdakiler de dahil olmak üzere bilgiler içerir:
-- cihaz tarafından kullanılan [attestation mekanizması](concepts-security.md#attestation-mechanism)
-- isteğe bağlı ilk istenilen yapılandırma
-- istenilen IoT hub
-- istenilen cihaz kimliği
+Kayıt, otomatik sağlama ile kaydedebileceği cihazların veya cihaz gruplarının kaydıdır. Kayıt kaydı, cihaz veya cihaz grubu hakkında aşağıdakiler de dahil olmak üzere bilgiler içerir:
+- cihaz tarafından kullanılan [kanıtlama mekanizması](concepts-security.md#attestation-mechanism)
+- isteğe bağlı ilk istenen yapılandırma
+- istenen IoT Hub 'ı
+- istenen cihaz KIMLIĞI
 
-Aygıt Sağlama Hizmeti tarafından desteklenen iki tür kayıt vardır:
+Cihaz sağlama hizmeti tarafından desteklenen iki tür kayıt vardır:
 
 ### <a name="enrollment-group"></a>Kayıt grubu
 
-Kayıt grubu, belirli bir attestation mekanizmasını paylaşan bir aygıt grubudur. Kayıt grupları hem X.509'u hem de simetrik desteği destekler. X.509 kayıt grubundaki tüm aygıtlar, aynı kök veya ara Sertifika Yetkilisi (CA) tarafından imzalanmış X.509 sertifikaları sunar. Simetrik anahtar kayıt grubundaki her aygıt, grup simetrik anahtarından türetilen SAS belirteçlerini sunar. Kayıt grubu adı ve sertifika adı alfasayısal, küçük ve tire içerebilir.
+Kayıt grubu, belirli bir kanıtlama mekanizmasını paylaşan bir cihaz grubudur. Kayıt grupları hem X. 509.440 hem de simetrik olarak desteklenir. X. 509.952 kayıt grubundaki tüm cihazlar aynı kök veya ara sertifika yetkilisi (CA) tarafından imzalanmış X. 509.440 sertifikalarını sunar. Simetrik anahtar kayıt grubundaki her bir cihaz, Grup simetrik anahtarından türetilmiş SAS belirteçleri sunar. Kayıt grubu adı ve sertifika adı alfasayısal, küçük harf olmalı ve kısa çizgi içerebilir.
 
 > [!TIP]
-> İstenilen ilk yapılandırmayı paylaşan çok sayıda aygıt veya aynı kiracıya giden aygıtlar için bir kayıt grubu kullanmanızı öneririz.
+> İstenen ilk yapılandırmayı paylaşan çok sayıda cihaz için veya hepsi aynı kiracıya giden cihazlar için bir kayıt grubu kullanmanızı öneririz.
 
 ### <a name="individual-enrollment"></a>Bireysel kayıt
 
-Tek bir kayıt, kaydolabilecek tek bir aygıtın girişidir. Tek tek kayıtlar, attestation mekanizmaları olarak X.509 yaprak sertifikaları veya SAS belirteçleri (fiziksel veya sanal TPM'den) kullanabilir. Tek bir kayıttaki kayıt kimliği alfasayısal, küçük ve tire içerebilir. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.
+Tek bir kayıt, kaydedebilen tek bir cihaz için giriştir. Bireysel kayıtlar, kanıtlama mekanizması olarak X. 509.440 yaprak sertifikalarını veya SAS belirteçlerini (fiziksel veya sanal TPM 'den) kullanabilir. Tek bir kayıt içindeki kayıt KIMLIĞI alfasayısal, küçük harf, ve kısa çizgi içerebilir. Bireysel kayıtlar için istenen IoT hub cihazı kimliği belirtilmiş olabilir.
 
 > [!TIP]
-> Benzersiz ilk yapılandırmalar gerektiren aygıtlar için veya yalnızca TPM attestation aracılığıyla SAS belirteçlerini kullanarak kimlik doğrulaması yapılabilen aygıtlar için tek tek kayıtları kullanmanızı öneririz.
+> Benzersiz ilk yapılandırma gerektiren cihazlarda veya yalnızca TPM kanıtlama aracılığıyla SAS belirteçlerini kullanarak kimlik doğrulayabilecek cihazlarda bireysel kayıtları kullanmanızı öneririz.
 
 ## <a name="registration"></a>Kayıt
 
-Kayıt, Aygıt Sağlama Hizmeti aracılığıyla bir IoT Hub'ına başarıyla kaydolan/sağlayan bir aygıtın kaydıdır. Kayıt kayıtları otomatik olarak oluşturulur; bunlar silinebilir, ancak güncelleştirilemez.
+Kayıt, cihaz sağlama hizmeti aracılığıyla bir IoT Hub başarıyla kaydolduğunu/sağlamayı sağlayan bir cihazın kaydıdır. Kayıt kayıtları otomatik olarak oluşturulur; Bunlar silinebilir, ancak güncelleştirilemez.
 
 ## <a name="operations"></a>İşlemler
 
-İşlemler, Aygıt Sağlama Hizmetinin faturalandırma birimidir. Bir işlem, hizmete yönelik bir talimatın başarıyla tamamlanmasıdır. İşlemler arasında cihaz kayıtları ve yeniden kayıtlar; işlemler, kayıt listesi girişleri ekleme ve kayıt listesi girişlerini güncelleştirme gibi hizmet tarafındaki değişiklikleri de içerir.
+İşlemler, cihaz sağlama hizmetinin fatura birimidir. Tek bir işlem, hizmete yönelik bir yönergenin başarıyla tamamlanmasıyla aynıdır. İşlemler cihaz kayıtları ve yeniden kayıtlar içerir; işlemler, kayıt listesi girişleri ekleme ve kayıt listesi girişlerini güncelleştirme gibi hizmet tarafı değişiklikleri de içerir.

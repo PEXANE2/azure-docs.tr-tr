@@ -1,6 +1,6 @@
 ---
-title: "Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight'ta Apache Hive"
-description: Bu hızlı başlangıçta, Apache Hive sorgularını çalıştırmak için Apache Zeppelin'in nasıl kullanılacağını öğrenirsiniz.
+title: "Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive"
+description: Bu hızlı başlangıçta, Apache Hive sorguları çalıştırmak için Apache Zeppelin kullanmayı öğreneceksiniz.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
 ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79367933"
 ---
-# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight'ta Apache Hive sorgularını yürütün
+# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Hızlı başlangıç: Apache Zeppelin ile Azure HDInsight 'ta Apache Hive sorguları yürütme
 
-Bu hızlı başlangıçta, Azure HDInsight'ta [Apache Hive](https://hive.apache.org/) sorgularını çalıştırmak için Apache Zeppelin'i nasıl kullanacağınızı öğrenirsiniz. HDInsight Interactive Query kümeleri, etkileşimli Hive sorgularını çalıştırmak için kullanabileceğiniz [Apache Zeppelin](https://zeppelin.apache.org/) dizüstü bilgisayarlarını içerir.
+Bu hızlı başlangıçta, Azure HDInsight 'ta [Apache Hive](https://hive.apache.org/) sorguları çalıştırmak Için Apache Zeppelin kullanmayı öğreneceksiniz. HDInsight etkileşimli sorgu kümeleri, etkileşimli Hive sorguları çalıştırmak için kullanabileceğiniz [Apache Zeppelin](https://zeppelin.apache.org/) not defterlerini içerir.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-HDInsight İnteraktif Sorgu kümesi. Bkz. HDInsight kümesi oluşturmak için [Küme Oluştur'a](../hadoop/apache-hadoop-linux-tutorial-get-started.md) bakın.  **Etkileşimli Sorgu** küme türünü seçtiğinizden emin olun.
+Etkileşimli sorgu kümesi An HDInsight. HDInsight kümesi oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .  **Etkileşimli sorgu** kümesi türünü seçtiğinizden emin olun.
 
-## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin Notu Oluşturma
+## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin notunun oluşturulması
 
-1. Aşağıdaki `CLUSTERNAME` URL'de `https://CLUSTERNAME.azurehdinsight.net/zeppelin`kümenizin adı ile değiştirin. Ardından URL'yi bir web tarayıcısı girin.
+1. Aşağıdaki `CLUSTERNAME` URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`'deki kümenizin adıyla değiştirin. Sonra URL 'YI bir Web tarayıcısına girin.
 
-2. Küme giriş kullanıcı adınızı ve şifrenizi girin. Zeppelin sayfasından yeni bir not oluşturabilir veya varolan notları açabilirsiniz. **HiveSample** bazı örnek Hive sorguları içerir.  
+2. Küme oturum açma kullanıcı adınızı ve parolanızı girin. Zeppelin sayfasından yeni bir not oluşturabilir veya var olan notları açabilirsiniz. **Hivesample** bazı örnek Hive sorguları içerir.  
 
-    ![HDInsight İnteraktif Sorgu zeplin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    ![HDInsight etkileşimli sorgu Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
 
-3. **Yeni not oluştur'u**seçin.
+3. **Yeni dekont oluştur**' u seçin.
 
-4. Yeni **not oluştur** iletişim kutusundan aşağıdaki değerleri yazın veya seçin:
+4. **Yeni nota oluştur** iletişim kutusunda aşağıdaki değerleri yazın veya seçin:
 
-    - Not Adı: Notun adını girin.
-    - Varsayılan yorumlayıcı: Açılan listeden **jdbc'yi** seçin.
+    - Note adı: nota bir ad girin.
+    - Varsayılan yorumlayıcı: açılan listeden **JDBC** ' ı seçin.
 
-5. **Not Oluştur'u**seçin.
+5. **Dekont oluştur**' u seçin.
 
-6. Kod bölümüne aşağıdaki Hive sorgusunu girin ve shift **+ Enter**tuşuna basın:
+6. Kod bölümüne aşağıdaki Hive sorgusunu girin ve ardından **SHIFT + enter**tuşlarına basın:
 
     ```hive
     %jdbc(hive)
     show tables
     ```
 
-    ![HDInsight İnteraktif Sorgu zeppelin sorgu çalışır](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    ![HDInsight etkileşimli sorgu Zeppelin çalıştırmaları sorgusu](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
 
-    İlk satırdaki **%jdbc(kovan)** deyimi not defterine Hive JDBC yorumlayıcısını kullanmasını söyler.
+    İlk satırdaki **% JDBC (Hive)** deyimleri, Not DEFTERINE Hive JDBC yorumlayıcı kullanmasını söyler.
 
-    Sorgu **kovan sampletable**denilen bir Kovan tablosu döndürecektir.
+    Sorgu **hivesampletable**adlı bir Hive tablosu döndürmelidir.
 
-    Aşağıdaki iki ek Hive sorguları size **kovan sampletable**karşı çalıştırabilirsiniz:
+    **Hivesampletable**'a karşı çalıştırabileceğiniz Iki ek Hive sorgusu aşağıda verilmiştir:
 
     ```hive
     %jdbc(hive)
@@ -68,11 +68,11 @@ HDInsight İnteraktif Sorgu kümesi. Bkz. HDInsight kümesi oluşturmak için [K
     limit ${total_count=10}
     ```
 
-    Geleneksel Hive ile karşılaştırıldığında, sorgu sonuçları nın daha hızlı geri gelmesi gerekir.
+    Geleneksel Hive ile karşılaştırıldığında sorgu sonuçlarının geri alınması daha hızlı olur.
 
 ### <a name="additional-examples"></a>Ek örnekler
 
-1. Bir tablo oluşturun. Aşağıdaki kodu Zeppelin Not Defteri'nde uygulayın:
+1. Tablo oluşturun. Zeppelin not defterinde aşağıdaki kodu yürütün:
 
     ```hql
     %jdbc(hive)
@@ -89,7 +89,7 @@ HDInsight İnteraktif Sorgu kümesi. Bkz. HDInsight kümesi oluşturmak için [K
     STORED AS TEXTFILE;
     ```
 
-1. Verileri yeni tabloya yükleyin. Aşağıdaki kodu Zeppelin Not Defteri'nde uygulayın:
+1. Yeni tabloya veri yükleyin. Zeppelin not defterinde aşağıdaki kodu yürütün:
 
     ```hql
     %jdbc(hive)
@@ -98,7 +98,7 @@ HDInsight İnteraktif Sorgu kümesi. Bkz. HDInsight kümesi oluşturmak için [K
     INTO TABLE log4jLogs;
     ```
 
-1. Tek bir kayıt ekleyin. Aşağıdaki kodu Zeppelin Not Defteri'nde uygulayın:
+1. Tek bir kayıt ekleyin. Zeppelin not defterinde aşağıdaki kodu yürütün:
 
     ```hql
     %jdbc(hive)
@@ -106,17 +106,17 @@ HDInsight İnteraktif Sorgu kümesi. Bkz. HDInsight kümesi oluşturmak için [K
     VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
     ```
 
-Ek sözdizimi için [Hive dil kılavuzunu](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) gözden geçirin.
+Ek sözdizimi için [Hive dilini el ile](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) inceleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Hızlı başlatmayı tamamladıktan sonra, kümeyi silmek isteyebilirsiniz. HDInsight ile verileriniz Azure Depolama'da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Kullanılmamış olsa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Küme ücretleri depolama ücretlerinden kat kat daha fazla olduğundan, kümeleri kullanılmadıklarında silmek ekonomik açıdan mantıklıdır.
+Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile Verileriniz Azure Storage 'da depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar.
 
-Bir kümeyi silmek için bkz: [Tarayıcınızı, PowerShell'i veya Azure CLI'yi kullanarak bir HDInsight kümesini sil.](../hdinsight-delete-cluster.md)
+Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'yı kullanarak HDInsight kümesini silme](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure HDInsight'ta Apache Hive sorgularını çalıştırmak için Apache Zeppelin'i kullanmayı öğrendiniz. Hive sorguları hakkında daha fazla bilgi edinmek için, bir sonraki makalede Visual Studio ile sorguları nasıl yürüteceğinizi gösterecektir.
+Bu hızlı başlangıçta, Azure HDInsight 'ta Apache Hive sorguları çalıştırmak için Apache Zeppelin kullanmayı öğrendiniz. Hive sorguları hakkında daha fazla bilgi edinmek için, sonraki makalede Visual Studio ile sorguların nasıl yürütüleceği gösterilmektedir.
 
 > [!div class="nextstepaction"]
-> [Visual Studio için Veri Gölü Araçlarını kullanarak Azure HDInsight'a bağlanın ve Apache Hive sorguları çalıştırın](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+> [Visual Studio Data Lake araçlarını kullanarak Azure HDInsight 'a bağlanma ve Apache Hive sorguları çalıştırma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)

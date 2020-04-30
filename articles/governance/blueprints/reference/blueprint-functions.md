@@ -1,46 +1,46 @@
 ---
-title: Azure Blueprints işlevleri
-description: Azure Blueprints tanımlarında ve atamalarında plan yapıtlarıyla kullanılabilir işlevleri açıklar.
+title: Azure şemaları işlevleri
+description: Azure şemaları tanımlarında ve atamalarında şema yapıtları ile kullanılabilecek işlevleri açıklar.
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280683"
 ---
-# <a name="functions-for-use-with-azure-blueprints"></a>Azure Planları ile kullanım için işlevler
+# <a name="functions-for-use-with-azure-blueprints"></a>Azure şemaları ile kullanım için işlevler
 
-Azure Blueprints, plan tanımını daha dinamik hale getiren işlevler sağlar. Bu işlevler plan tanımları ve plan yapıları ile kullanılmak üzere. Kaynak Yöneticisi Şablonu yapı, plan parametresi aracılığıyla dinamik bir değer elde etmeye ek olarak Kaynak Yöneticisi işlevlerinin tam kullanımını destekler.
+Azure şemaları, bir şema tanımını daha dinamik hale getiren işlevler sağlar. Bu işlevler, şema tanımları ve şema yapıtları ile kullanım içindir. Kaynak Yöneticisi Şablon yapıtı, bir şema parametresi aracılığıyla dinamik bir değer almaya ek olarak Kaynak Yöneticisi işlevlerinin tam kullanımını destekler.
 
 Aşağıdaki işlevler desteklenir:
 
-- [Yapı](#artifacts)
+- [Yapıt](#artifacts)
 - [Concat](#concat)
-- [Parametre](#parameters)
-- [resourceGroup](#resourcegroup)
+- [parametrelere](#parameters)
+- [Kaynak](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [Abonelik](#subscription)
+- [aboneliğiniz](#subscription)
 
-## <a name="artifacts"></a>Yapı
+## <a name="artifacts"></a>Yapıt
 
 `artifacts(artifactName)`
 
-Bu plan yapıları çıktıları ile doldurulan özellikleri bir nesne döndürür.
+Bu şema yapıtları çıkışları ile doldurulmuş özelliklerin bir nesnesini döndürür.
 
 > [!NOTE]
-> İşlev Kaynak `artifacts()` Yöneticisi Şablonu içinden kullanılamaz. İşlev yalnızca plan tanımıJSON'da veya Plan olarak kod olarak [Blueprints'in](https://github.com/Azure/azure-blueprints/blob/master/README.md)bir parçası olarak Azure PowerShell veya REST API ile planı yönetirken JSON yapıda kullanılabilir.
+> İşlev `artifacts()` , Kaynak Yöneticisi şablonunun içinden kullanılamaz. İşlev yalnızca şema tanımı JSON ' de veya şema tanımı Azure PowerShell ya da [kod olarak planlar](https://github.com/Azure/azure-blueprints/blob/master/README.md)' ın bir parçası olarak REST API şema YÖNETIMI sırasında JSON yapısı içinde kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| artifactName |Evet |string |Bir plan objesinin adı. |
+| artifactName |Yes |string |Şema yapıtı adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Çıktı özelliklerinin nesnesi. **Çıktı özellikleri** başvurulan plan artifakı türüne bağlıdır. Tüm türler biçimi izleyin:
+Çıkış özelliklerinin nesnesi. **Çıktılar** özellikleri, başvurulmakta olan şema yapıtı türüne bağlıdır. Tüm türler şu biçimdedir:
 
 ```json
 {
@@ -48,7 +48,7 @@ Bu plan yapıları çıktıları ile doldurulan özellikleri bir nesne döndür�
 }
 ```
 
-#### <a name="policy-assignment-artifact"></a>İlke atama artifakı
+#### <a name="policy-assignment-artifact"></a>İlke atama yapıtı
 
 ```json
 {
@@ -60,11 +60,11 @@ Bu plan yapıları çıktıları ile doldurulan özellikleri bir nesne döndür�
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Kaynak Yöneticisi şablonu yapı
+#### <a name="resource-manager-template-artifact"></a>Şablon yapıtı Kaynak Yöneticisi
 
-Döndürülen nesnenin **çıktı özellikleri** Kaynak Yöneticisi şablonu içinde tanımlanır ve dağıtım tarafından döndürülür.
+Döndürülen nesnenin **Çıkış** özellikleri kaynak yöneticisi şablonu içinde tanımlanır ve dağıtım tarafından döndürülür.
 
-#### <a name="role-assignment-artifact"></a>Rol atama artifakı
+#### <a name="role-assignment-artifact"></a>Rol atama yapıtı
 
 ```json
 {
@@ -78,7 +78,7 @@ Döndürülen nesnenin **çıktı özellikleri** Kaynak Yöneticisi şablonu iç
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek çıktı özelliğini içeren _kimlik myTemplate Artifact_ içeren bir Kaynak Yöneticisi şablonu yapı:
+Aşağıdaki örnek çıktı özelliğini içeren _Mytemplateyapıt_ kimlikli bir kaynak yöneticisi şablonu yapıtı:
 
 ```json
 {
@@ -104,37 +104,37 @@ Aşağıdaki örnek çıktı özelliğini içeren _kimlik myTemplate Artifact_ i
 }
 ```
 
-_myTemplateArtifact_ örneğinden veri alma nın bazı örnekleri şunlardır:
+_Mytemplateyapıt_ örneğinden veri almaya ilişkin bazı örnekler şunlardır:
 
 | İfadeler | Tür | Değer |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Dizi | \["birinci", "ikinci"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Dize | "ilk" |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | Dize | "dize değerim" |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | Nesne | { "myproperty": "benim değeri", "anotherProperty": true } |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Dize | "benim değerim" |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Dizi | \["First", "Second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Dize | adı |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | Dize | "dize değeri" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Nesne | {"MyProperty": "My value", "anotherProperty": true} |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Dize | "My value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
 
 `concat(string1, string2, string3, ...)`
 
-Birden çok dize değerlerini birleştirir ve sıkıştırılmış dizeyi döndürür.
+Birden çok dize değerini birleştirir ve birleştirilmiş dizeyi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| string1 |Evet |string |Biraraya gelen ilk değer. |
-| ek bağımsız değişkenler |Hayır |string |Concatenation için sıralı sırayla ek değerler |
+| dize1 |Yes |string |Birleştirme için ilk değer. |
+| ek bağımsız değişkenler |Hayır |string |Birleştirme için ek değerler sıralı sırada |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Bir dizi concatenated değerleri.
+Art arda eklenmiş değerlerin dizesi.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi, yalnızca dizeleri ile çalışması açısından Azure Kaynak Yöneticisi şablon işlevinden farklıdır.
+Azure Blueprint işlevi, Azure Resource Manager şablonu işlevinden farklıdır ve yalnızca dizelerle çalışır.
 
 ### <a name="example"></a>Örnek
 
@@ -144,25 +144,25 @@ Azure Blueprint işlevi, yalnızca dizeleri ile çalışması açısından Azure
 
 `parameters(parameterName)`
 
-Plan parametre değeri verir. Belirtilen parametre adı plan tanımında veya plan yapıtlarında tanımlanmalıdır.
+Bir şema parametre değeri döndürür. Belirtilen parametre adı, şema tanımında veya şema yapıtlarının içinde tanımlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| Parametername |Evet |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Belirtilen plan veya plan yapı parametresi değeri.
+Belirtilen şema veya şema yapıt parametresinin değeri.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi, yalnızca plan parametreleri ile çalışması açısından Azure Kaynak Yöneticisi şablon işlevinden farklıdır.
+Azure Blueprint işlevi, Azure Resource Manager şablonu işlevinden farklıdır ve yalnızca şema parametreleriyle çalışır.
 
 ### <a name="example"></a>Örnek
 
-Plan tanımında parametre _ilkelerini_ tanımlayın:
+Şema tanımında parametre _prenileri_ tanımlayın:
 
 ```json
 {
@@ -184,7 +184,7 @@ Plan tanımında parametre _ilkelerini_ tanımlayın:
 }
 ```
 
-Daha sonra bir plan artifakı için `parameters()` argüman olarak _principalIds_ kullanın:
+Ardından, bir şema yapıtı içinde için `parameters()` bağımsız değişken olarak _prenalid_ 'leri kullanın:
 
 ```json
 {
@@ -218,13 +218,13 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Azure Blueprint işlevi Azure Kaynak Yöneticisi şablon işlevinden farklıdır. İşlev, `resourceGroup()` abonelik düzeyi artifakı veya plan tanımında kullanılamaz. Yalnızca kaynak grubu yapılarının parçası olan plan yapılarında kullanılabilir.
+Azure Blueprint işlevi Azure Resource Manager şablonu işlevinden farklıdır. İşlev `resourceGroup()` , abonelik düzeyindeki yapıt veya şema tanımında kullanılamaz. Yalnızca bir kaynak grubu yapısının parçası olan şema yapıtları için kullanılabilir.
 
-İşlevin `resourceGroup()` yaygın kullanımı kaynak grubu yapı ile aynı konumda kaynak oluşturmaktır.
+`resourceGroup()` İşlevin yaygın kullanımı, kaynak grubu yapıtı ile aynı konumda kaynak oluşturmaktır.
 
 ### <a name="example"></a>Örnek
 
-Kaynak grubunun konumunu kullanmak için, plan tanımında veya atama sırasında başka bir yapının konumu olarak ayarlanmış, plan tanımınızda bir kaynak grubu yer tutucu nesnesi bildirin. Bu örnekte, _NetworkingPlaceholder_ kaynak grubu yer sahibinin adıdır.
+Kaynak grubunun konumunu kullanmak için, başka bir yapıtın konumu olarak, şema tanımında veya atama sırasında ayarlayın, şema tanımınızda bir kaynak grubu yer tutucu nesnesi bildirin. Bu örnekte _Networkingplaceholder_ , kaynak grubu yer tutucusunun adıdır.
 
 ```json
 {
@@ -240,7 +240,7 @@ Kaynak grubunun konumunu kullanmak için, plan tanımında veya atama sırasınd
 }
 ```
 
-`resourceGroup()` Ardından, kaynak grubu yer tutucu nesnesini hedefleyen bir plan yapı bağlamında işlevi kullanın. Bu örnekte, şablon yapı _NetworkingPlaceholder_ kaynak grubuna dağıtılır ve şablona _NetworkingPlaceholder_ kaynak grubu konumu ile dinamik olarak doldurulan parametre _kaynağı_ Sağlar. _NetworkingPlaceholder_ kaynak grubunun konumu, plan tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da, şablon yapı bir parametre olarak bu bilgileri sağlanır ve doğru konuma kaynakları dağıtmak için kullanır.
+Ardından, `resourceGroup()` bir kaynak grubu yer tutucu nesnesini hedefleyen bir şema yapıtı bağlamında işlevini kullanın. Bu örnekte, şablon yapıtı _Networkingplaceholder_ kaynak grubuna dağıtılır ve bu parametre _ResourceLocation_ ' ı dinamik olarak, bir şablon için _networkingplaceholder_ kaynak grubu konumuyla doldurulmuş olarak sunar. _Networkingplaceholder_ kaynak grubunun konumu, şema tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da şablon yapıtı, bu bilgileri parametre olarak sağlar ve kaynakları doğru konuma dağıtmak için kullanır.
 
 ```json
 {
@@ -265,13 +265,13 @@ Kaynak grubunun konumunu kullanmak için, plan tanımında veya atama sırasınd
 
 `resourceGroups(placeholderName)`
 
-Belirtilen kaynak grubu artifakını temsil eden bir nesne döndürür. Yapının bağlamını gerektiren bu işlevin aksine, `resourceGroup()`bu işlev, bu kaynak grubunun bağlamında olmadığında belirli bir kaynak grubu yer tutucunun özelliklerini almak için kullanılır.
+Belirtilen kaynak grubu yapıtını temsil eden bir nesne döndürür. Yapıt `resourceGroup()`bağlamını gerektiren aksine, bu işlev, kaynak grubunun bağlamında olmayan belirli bir kaynak grubu yer tutucusunun özelliklerini almak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| yer tutucuAdı |Evet |string |Döndürülecek kaynak grubu yapının yer tutucu adı. |
+| placeholderName |Yes |string |Döndürülecek kaynak grubu yapıtı için yer tutucu adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -286,7 +286,7 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="example"></a>Örnek
 
-Kaynak grubunun konumunu kullanmak için, plan tanımında veya atama sırasında başka bir yapının konumu olarak ayarlanmış, plan tanımınızda bir kaynak grubu yer tutucu nesnesi bildirin. Bu örnekte, _NetworkingPlaceholder_ kaynak grubu yer sahibinin adıdır.
+Kaynak grubunun konumunu kullanmak için, başka bir yapıtın konumu olarak, şema tanımında veya atama sırasında ayarlayın, şema tanımınızda bir kaynak grubu yer tutucu nesnesi bildirin. Bu örnekte _Networkingplaceholder_ , kaynak grubu yer tutucusunun adıdır.
 
 ```json
 {
@@ -302,7 +302,7 @@ Kaynak grubunun konumunu kullanmak için, plan tanımında veya atama sırasınd
 }
 ```
 
-Ardından, `resourceGroups()` kaynak grubu yer tutucu nesnesine başvuruda bulunulmak için herhangi bir plan yapının bağlamından işlevi kullanın. Bu örnekte, şablon yapı _NetworkingPlaceholder_ kaynak grubunun dışında dağıtılır ve şablona _NetworkingPlaceholder_ kaynak grubu konumuyla dinamik olarak doldurulan parametre _artefaktı_ sağlar. _NetworkingPlaceholder_ kaynak grubunun konumu, plan tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da, şablon yapı bir parametre olarak bu bilgileri sağlanır ve doğru konuma kaynakları dağıtmak için kullanır.
+Ardından, `resourceGroups()` kaynak grubu yer tutucu nesnesine bir başvuru almak için herhangi bir şema yapıtı bağlamından işlevini kullanın. Bu örnekte, şablon yapıtı _Networkingplaceholder_ kaynak grubunun dışında dağıtılır ve bir _artifactlocation_ parametresi ile _networkingplaceholder_ kaynak grubu konumu ile dinamik olarak doldurulmuş bir parametre sağlar. _Networkingplaceholder_ kaynak grubunun konumu, şema tanımında statik olarak tanımlanmış veya atama sırasında dinamik olarak tanımlanmış olabilir. Her iki durumda da şablon yapıtı, bu bilgileri parametre olarak sağlar ve kaynakları doğru konuma dağıtmak için kullanır.
 
 ```json
 {
@@ -327,7 +327,7 @@ Ardından, `resourceGroups()` kaynak grubu yer tutucu nesnesine başvuruda bulun
 
 `subscription()`
 
-Geçerli plan ataması için abonelik le ilgili ayrıntıları verir.
+Geçerli şema atamasının abonelik hakkındaki ayrıntıları döndürür.
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -344,7 +344,7 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ### <a name="example"></a>Örnek
 
-Şablon yapıya parametre `concat()` _kaynağı_ Adı olarak geçirilen bir adlandırma kuralı oluşturmak için aboneliğin görüntü adını ve işlevini kullanın.
+Şablon yapıtı için _resourceName_ parametresi olarak geçirilen `concat()` bir adlandırma kuralı oluşturmak için aboneliğin görünen adını ve işlevini kullanın.
 
 ```json
 {
@@ -367,9 +367,9 @@ Döndürülen nesne aşağıdaki biçimdedir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Plan yaşam döngüsü](../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- Varolan atamaları nasıl [güncelleştirini](../how-to/update-existing-assignments.md)öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

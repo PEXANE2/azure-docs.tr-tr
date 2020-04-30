@@ -1,216 +1,216 @@
 ---
-title: Azure Service Fabric olağanüstü kurtarma
-description: Azure Service Fabric, felaketlerle başa çıkabilmek için özellikler sunar. Bu makalede, oluşabilecek felaket türleri ve bunlarla nasıl başa çıkılabilmek açıklanmaktadır.
+title: Azure Service Fabric olağanüstü durum kurtarma
+description: Azure Service Fabric, olağanüstü kişilerle uğraşmak için yetenekler sunar. Bu makalede, oluşabilecek olağanüstü durum türleri ve bunlarla nasıl uğraşmanız açıklanmaktadır.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371656"
 ---
-# <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Hizmet Kumaşında olağanüstü durum kurtarma
-Yüksek kullanılabilirlik sağlamanın önemli bir parçası, hizmetlerin farklı türde hatalardan kurtulabilmesini sağlamaktır. Bu, özellikle planlanmamış ve denetiminiz dışında olan hatalar için önemlidir. 
+# <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric olağanüstü durum kurtarma
+Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm farklı türdeki hataların varlığını sürdürmesini sağlamaktır. Bu özellikle, planlanmamış ve denetiminizin dışından oluşan hatalarda önemlidir. 
 
-Bu makalede, doğru modellenmedi ve yönetilmezse felaket olabilecek bazı yaygın hata modları açıklanır. Ayrıca, bir felaket zaten olursa yapılacak hafifletmeleri ve yapılacak eylemleri de tartışır. Amaç, planlanmış veya başka bir şekilde hatalar oluştuğunda kesinti veya veri kaybı riskini sınırlamak veya ortadan kaldırmaktır.
+Bu makalede, doğru Modellenmemiş ve yönetilmiyorsa olağanüstü durumlar olabilecek bazı yaygın hata modları açıklanmaktadır. Ayrıca, bir olağanüstü durum yine de gerçekleşse de hafifletmede gerçekleştirilecek işlemler açıklanmaktadır. Amaç, gerçekleşen veya aksi takdirde meydana gelme durumunda kapalı kalma süresi veya veri kaybı riskini sınırlandırmaktır veya ortadan kaldırır.
 
-## <a name="avoiding-disaster"></a>Felaketten kaçınma
-Azure Hizmet Kumaşı'nın temel amacı, hem çevrenizi hem de hizmetlerinizi yaygın hata türlerinin felaket olmayacak şekilde modellemesine yardımcı olmaktır. 
+## <a name="avoiding-disaster"></a>Olağanüstü durumdan kaçınma
+Azure Service Fabric 'nin ana amacı, hem ortamınızı hem de hizmetlerinizi ortak hata türleri olağanüstü durumlar olmayan bir şekilde modeletmenize yardımcı olmaktır. 
 
-Genel olarak, iki tür büyük felaket/hata senaryosu vardır:
+Genel olarak, iki tür olağanüstü durum/başarısızlık senaryosu vardır:
 - Donanım ve yazılım hataları
-- Operasyonel hatalar
+- İşletimsel hatalar
 
 ### <a name="hardware-and-software-faults"></a>Donanım ve yazılım hataları
-Donanım ve yazılım hataları tahmin edilemez. Hatalardan kurtulmanın en kolay yolu, hizmetin daha fazla kopyasını donanım veya yazılım hata sınırları arasında çalıştırmaktır. 
+Donanım ve yazılım hataları tahmin edilemez. Arızaların en kolay yolu, hizmetin donanım veya yazılım hatası sınırları genelinde daha fazla kopyasını çalıştırıyor. 
 
-Örneğin, hizmetiniz yalnızca bir makinede çalışıyorsa, bu makinenin arızalanması bu hizmet için bir felakettir. Bu felaketi önlemenin en basit yolu, hizmetin birden çok makinede çalışmasını sağlamaktır. Bir makinenin arızalanmasının çalışan hizmeti aksatmadığından emin olmak için test de gereklidir. Kapasite planlaması, başka bir yerde değiştirme örneğinin oluşturulabilmesini ve kapasitedeki azalmanın kalan hizmetleri aşırı yüklememesini sağlar. 
+Örneğin, hizmetiniz yalnızca bir makine üzerinde çalışıyorsa, söz konusu hizmet için bu makinenin bir olağanüstü durum olması gerekir. Bu olağanüstü durumdan kaçınmanın basit yolu, hizmetin birden fazla makinede çalıştığından emin olmak. Test, bir makinenin başarısızlığının çalışan hizmeti kesintiye uğramasını sağlamak için de gereklidir. Kapasite planlaması, bir değiştirme örneğinin başka bir yerde oluşturulmasını ve kapasiteden azaltmanın kalan Hizmetleri aşırı yükmesini sağlar. 
 
-Aynı desen ne olursa olsun ne başarısızlığı önlemek için çalışıyoruz çalışır. Örneğin, bir SAN'ın başarısızlığından endişe ediyorsanız, birden çok SN'ye rastlarsınız. Bir sunucu rafının kaybolmasından endişe ediyorsanız, birden çok rafta çalışırsınız. Veri merkezlerinin kaybolmasından endişe ediyorsanız, hizmetiniz birden çok Azure bölgesinde, birden çok Azure Kullanılabilirlik Bölgesinde veya kendi veri merkezlerinizde çalışmalıdır. 
+Aynı model, arızasından kaçınmak için ne olursa olsun, işe yarar. Örneğin, bir SAN hatası hakkında endişeleriniz varsa, birden çok San arasında çalıştırırsınız. Bir sunucu rafı kaybı hakkında endişeleriniz varsa, birden çok rafta çalıştırılırsınız. Veri merkezlerinin kaybedilmesi konusunda endişeli varsa, hizmetiniz birden fazla Azure bölgesinde, birden çok Azure Kullanılabilirlik Alanları veya kendi veri merkezlerinizde çalışmalıdır. 
 
-Bir hizmet birden çok fiziksel örneğe (makineler, raflar, veri merkezleri, bölgeler) yayıldığında, yine de bazı eşzamanlı hata türlerine maruz kalırsınız. Ancak belirli bir türdeki tek ve hatta birden fazla hata (örneğin, tek bir sanal makine veya ağ bağlantısı nın arızalanması) otomatik olarak işlenir ve bu nedenle artık bir "felaket" değildir. 
+Bir hizmet birden çok fiziksel örneğe (makineler, raflar, veri merkezi, bölge) yayıldığınızda, yine de bazı eşzamanlı arızalara tabi olursunuz. Ancak, belirli bir türdeki (örneğin, tek bir sanal makine veya ağ bağlantısı başarısız) birden çok hata, otomatik olarak işlenir ve bu nedenle artık "olağanüstü durum" olmaz. 
 
-Service Fabric kümeyi genişletmek için mekanizmalar sağlar ve başarısız düğümleri ve hizmetleri geri getirerek işler. Service Fabric, planlanmamış hataların gerçek felaketlere dönüşmesini önlemek için hizmetlerinizin birçok örneğini çalıştırmaya da olanak tanır.
+Service Fabric, kümeyi genişletmeye yönelik mekanizmalar sağlar ve başarısız olan düğümleri ve hizmetleri geri getiren işler. Service Fabric Ayrıca, planlanmamış hataların gerçek felaketlere dönmesini engellemek için hizmetlerinizin birçok örneğinin çalıştırılmasına izin verir.
 
-Hataları yayılacak kadar büyük bir dağıtım çalıştırmanın mümkün olmamasının nedenleri olabilir. Örneğin, hata olasılığına göre ödemeye hazır olduğunuzdan daha fazla donanım kaynağı gerekebilir. Dağıtılmış uygulamalarla uğraşırken, coğrafi mesafeler arasında ek iletişim atlamaları veya durum çoğaltma maliyetleri kabul edilemez gecikmeye neden olabilir. Bu çizginin çizildiği her uygulama için farklıdır. 
+Dağıtım başarısızlıklar için yeterince büyük bir dağıtımı çalıştırmanın olası nedenleri olabilir. Örneğin, hata ihtimaline göre ödeme yapmayı amaçlamadan daha fazla donanım kaynağı alabilir. Dağıtılmış uygulamalarla ilgilenirken, coğrafi uzaklıklarda ek iletişim atlamaları veya durum çoğaltma maliyetleri kabul edilemez gecikmeye neden olabilir. Bu çizginin her bir uygulama için farklı çizilir. 
 
-Özellikle yazılım hataları için, hata ölçeklendirmeye çalıştığınız hizmette olabilir. Bu durumda, hata durumu tüm örnekler arasında ilişkili olduğundan, daha fazla kopya felaketi önlemez.
+Özellikle yazılım hatalarında hata, ölçeklendirmeye çalıştığınız hizmette olabilir. Bu durumda, hata koşulu tüm örneklerde bağıntılı olduğundan, çok sayıda kopya olağanüstü durum oluşmasını engellemez.
 
-### <a name="operational-faults"></a>Operasyonel hatalar
-Hizmetiniz birçok işten çıkarmayla dünya çapında yayılmış olsa bile, yine de felaket lerle karşılaşabilir. Örneğin, birisi yanlışlıkla hizmet için DNS adını yeniden yapılandırabilir veya tamamen silebilir. 
+### <a name="operational-faults"></a>İşletimsel hatalar
+Hizmetiniz birçok artıklıkları sahip dünya genelinde yayılsa bile, felaket olayları yaşamaya devam edebilir. Örneğin, birisi hizmetin DNS adını yanlışlıkla yeniden yapılandırabilir veya onu silebilir. 
 
-Örnek olarak, bir devlet Hizmeti Kumaş hizmeti vardı ve birisi yanlışlıkla bu hizmeti sildi varsayalım. Başka bir hafifletme olmadıkça, o hizmet ve sahip olduğu tüm devlet artık yok. Bu tür operasyonel felaketler ("oops"), düzenli planlanmamış hatalardan farklı azaltmalar ve kurtarma adımları gerektirir. 
+Örnek olarak, durum bilgisi olan bir Service Fabric hizmetiniz olduğunu ve birisi bu hizmeti yanlışlıkla silmiş olduğunu varsayalım. Başka bir risk azaltma, bu hizmet ve sahip olduğu tüm durumlar dışında. Bu tür işlemsel olağanüstü durumlar ("Yani"), düzenli plansız hatalardan farklı azaltmaları ve işlemler gerektirir. 
 
-Bu tür operasyonel hatalardan kaçınmanın en iyi yolu şunlardır:
-- Ortama operasyonel erişimi kısıtlayın.
-- Kesinlikle tehlikeli operasyonları denetle.
-- Otomasyon uyguluyor, manuel veya bant dışı değişiklikleri önleyin ve bunları yürürlüğe koymadan önce ortama karşı belirli değişiklikleri doğrulayın.
-- Yıkıcı operasyonların "yumuşak" olduğundan emin olun. Yumuşak işlemler hemen etkili olmaz veya bir zaman dilimi içinde geri alınabilir.
+Bu tür işletimsel hataların oluşmaması için en iyi yollar şunlardır:
+- Ortama işlemsel erişimi kısıtlayın.
+- Tehlikeli işlemleri kesinlikle denetleyin.
+- Otomasyon yapın, el ile veya bant dışı değişiklikleri önleyin ve ortama göre belirli değişiklikleri ortama göre doğrular.
+- Bozucu işlemlerin "Soft" olduğundan emin olun. Geçici işlemler hemen etkili olmaz veya bir zaman penceresi içinde geri alınamaz.
 
-Service Fabric, küme işlemleri için [rol tabanlı](service-fabric-cluster-security-roles.md) erişim denetimi sağlamak gibi operasyonel hataları önlemek için mekanizmalar sağlar. Ancak, bu operasyonel hataların çoğu organizasyonel çabalar ve diğer sistemler gerektirir. Service Fabric, en önemlisi [yedekleme ve devlet hizmetleri için geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md)olmak üzere operasyonel hatalardan kurtulma mekanizmaları sağlar.
+Service Fabric, küme işlemleri için [rol tabanlı](service-fabric-cluster-security-roles.md) erişim denetimi sağlama gibi işletimsel hataların önlenmesi için mekanizmalar sağlar. Ancak, bu işletimsel hataların çoğu kuruluş çalışmalarını ve diğer sistemleri gerektirir. Service Fabric, işlem hatalarının büyük bir şekilde [yedekleme ve durum bilgisi olan hizmetler için geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md)mekanizmaları sağlar.
 
-## <a name="managing-failures"></a>Hataları yönetme
-Service Fabric'in amacı hataların otomatik olarak yönetilmesidir. Ancak bazı hata türlerini işlemek için hizmetlerin ek kodu olması gerekir. Diğer hata türleri, _not_ güvenlik ve iş sürekliliği nedenleriyle otomatik olarak ele alınmamalıdır. 
+## <a name="managing-failures"></a>Sorunları yönetme
+Service Fabric amacı, hataların otomatik olarak yönetimi olur. Ancak bazı başarısızlık türlerini işlemek için hizmetlerin ek kodu olmalıdır. Diğer başarısızlık türleri, güvenlik ve iş sürekliliği nedenleriyle otomatik olarak _değinmemelidir._ 
 
-### <a name="handling-single-failures"></a>Tek hataları işleme
-Tek makineler her türlü nedenden dolayı başarısız olabilir. Bazen güç kaynakları ve ağ donanımı arızaları gibi donanım nedenolur. Diğer hatalar yazılımda vardır. Bunlar işletim sisteminin ve hizmetin kendisinin hatalarını içerir. Service Fabric, ağ sorunları nedeniyle makinenin diğer makinelerden izole edildiği durumlar da dahil olmak üzere bu tür hataları otomatik olarak algılar.
+### <a name="handling-single-failures"></a>Tek başarısızlık işleme
+Tek makineler, tüm nedenlerden dolayı başarısız olabilir. Bazen güç kaynakları ve ağ donanım arızaları gibi donanım nedenleridir. Diğer sorunlar yazılımda bulunur. Bunlar, işletim sistemi ve hizmetin arızalarını içerir. Service Fabric, ağ sorunları nedeniyle makinenin diğer makinelerden yalıtıldığı durumlar da dahil olmak üzere bu tür hataları otomatik olarak algılar.
 
-Hizmet türünden bağımsız olarak, kodun tek bir kopyası herhangi bir nedenle başarısız olursa, tek bir örnek çalıştırarak bu hizmet için kapalı kalma süresi ne olur. 
+Hizmetin türü ne olursa olsun, tek bir örnek çalıştırıldığında kodun tek bir kopyası herhangi bir nedenle başarısız olursa, bu hizmet için kapalı kalma süresi oluşur. 
 
-Tek bir hatayla başa çıkmak için yapabileceğiniz en basit şey, hizmetlerinizin varsayılan olarak birden fazla düğümüzerinde çalışmasını sağlamaktır. Devletsiz hizmetler için, `InstanceCount` bunun 1'den büyük olduğundan emin olun. Devlet hizmetleri için minimum öneri `TargetReplicaSetSize` şudur ve `MinReplicaSetSize` her ikisi de 3 olarak ayarlanır. Hizmet kodunuzu daha fazla kopya çalıştırmak, hizmetinizin herhangi bir tek arızayı otomatik olarak kaldırabilmesini sağlar. 
+Tek bir hatayı işlemek için, yapabileceğiniz en basit şey, hizmetlerinizin varsayılan olarak birden fazla düğüm üzerinde çalışmasını sağlamaktır. Durum bilgisi olmayan hizmetler için 1 ' `InstanceCount` den büyük olduğundan emin olun. Durum bilgisi olan hizmetler için en düşük öneri `TargetReplicaSetSize` `MinReplicaSetSize` , her ikisi de 3 olarak ayarlanmıştır. Hizmet kodunuzun daha fazla kopyasını çalıştırmak, hizmetinizin tek bir hatayı otomatik olarak işlemesini sağlar. 
 
-### <a name="handling-coordinated-failures"></a>Eşgüdümlü hataları işleme
-Kümedeki eşgüdümlü hatalar, planlanmış veya planlanmamış altyapı hatalarından ve değişikliklerden veya planlanmış yazılım değişikliklerinden kaynaklanabilir. Service Fabric, hata etki alanı olarak eşgüdümlü hatalar yaşayan altyapı *bölgelerini*modeller. Eşgüdümlü yazılım değişikliklerinin karşılaşacağı alanlar *yükseltme etki alanları*olarak modellenir. Hata etki alanları, yükseltme etki alanları ve küme topolojisi hakkında daha fazla bilgi için [bkz.](service-fabric-cluster-resource-manager-cluster-description.md)
+### <a name="handling-coordinated-failures"></a>Eşgüdümlü sorunları işleme
+Küme içindeki Eşgüdümlü hatalara, planlı veya planlanmamış altyapı hatalarından ve değişikliklerden veya planlı yazılım değişikliklerinden kaynaklanabilir. Service Fabric, *hata etki alanları*olarak Eşgüdümlü hatalarla karşılaşan altyapı bölgelerini modelleyin. Koordine edilen yazılım değişikliklerini deneyime yönelik alanlara *yükseltme etki alanları*olarak modellenir. Hata etki alanları, yükseltme etki alanları ve küme topolojisi hakkında daha fazla bilgi için bkz. [küme kaynak yöneticisi kullanarak Service Fabric kümesi tanımlama](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Varsayılan olarak, Service Fabric, hizmetlerinizin çalışması gereken yeri planlarken hataları ve yükseltme etki alanlarını dikkate alır. Varsayılan olarak, Service Fabric, hizmetlerinizin birkaç hata ve yükseltme etki alanlarında çalışmasını sağlamaya çalışır, böylece planlanmış veya planlanmamış değişiklikler olursa, hizmetlerinizin kullanılabilir durumda kalması durumunda. 
+Service Fabric, hizmetlerinizin nerede çalışacağını planlarken, hata ve yükseltme etki alanlarını varsayılan olarak değerlendirir. Service Fabric, varsayılan olarak, hizmetlerinizin birkaç hata ve yükseltme etki alanında çalıştığından emin olmaya çalışır, böylece planlanmış veya planlanmamış değişiklikler meydana geliyorsa, hizmetleriniz kullanılabilir kalır. 
 
-Örneğin, bir güç kaynağının arızalanmasının raftaki tüm makinelerin aynı anda arızalanmasına neden olduğunu varsayalım. Hizmetin birden çok kopyası çalışırken, hata etki alanı hatasındaki birçok makinenin kaybı, bir hizmet için tek bir hatanın başka bir örneğine dönüşür. Bu nedenle, hata ve yükseltme etki alanlarını yönetmek, hizmetlerinizin yüksek kullanılabilirliğini sağlamak için çok önemlidir. 
+Örneğin, bir güç kaynağı hatasının, bir rafa ait tüm makinelerin aynı anda başarısız olmasına neden olduğunu varsayalım. Hizmetin birden fazla kopyası çalışırken, hata etki alanı hatasında çok sayıda makinenin kaybolması, bir hizmet için tek bir başarısızlığın yalnızca başka bir örneğini döndürür. Bu, hizmetlerinizin yüksek kullanılabilirlik sağlamak için hata ve yükseltme etki alanlarının yönetilmesine neden önemlidir. 
 
-Azure'da Hizmet Kumaşı çalıştırırken, hata etki alanları ve yükseltme etki alanları otomatik olarak yönetilir. Diğer ortamlarda, olmayabilir. Kendi kümelerinizi şirket içinde oluşturuyorsanız, hata etki alanı düzeninizi doğru şekilde eşlediğinizden ve planladığınızdan emin olun.
+Azure 'da Service Fabric çalıştırırken, hata etki alanları ve yükseltme etki alanları otomatik olarak yönetilir. Diğer ortamlarda, bu olmayabilir. Şirket içinde kendi kümelerinizi oluşturuyorsanız, hata etki alanı düzeninizi doğru şekilde eşleştirdiğinizden ve planladığınızdan emin olun.
 
-Yükseltme etki alanları, yazılımın aynı anda yükseltilecek alanları modellemek için yararlıdır. Bu nedenle, yükseltme etki alanları da genellikle planlanan yükseltmeleri sırasında yazılımın aşağı alındığı sınırları tanımlar. Hem Service Fabric'in hem de hizmetlerinizin yükseltmeleri aynı modeli izler. Yuvarlanma yükseltmeleri, yükseltme etki alanları ve istenmeyen değişikliklerin kümeyi ve hizmetinizi etkilemesini önlemeye yardımcı olan Service Fabric sistem durumu modeli hakkında daha fazla bilgi için bkz:
+Yükseltme etki alanları, yazılımın aynı anda yükseltilebileceği modelleme alanları için faydalıdır. Bu nedenle, yükseltme etki alanları da genellikle planlanan yükseltmeler sırasında yazılımın kapatıldığı sınırları tanımlar. Hem Service Fabric hem de hizmetlerinizin yükseltmeleri aynı modeli izler. Sıralı yükseltmeler, yükseltme etki alanları ve istenmeyen değişikliklerin kümeyi ve hizmetinizi etkilemesini önlemeye yardımcı olan Service Fabric sistem durumu modeli hakkında daha fazla bilgi için, bkz.:
 
  - [Uygulama yükseltme](service-fabric-application-upgrade.md)
- - [Uygulama yükseltme eğitimi](service-fabric-application-upgrade-tutorial.md)
- - [Servis Kumaş sağlık modeli](service-fabric-health-introduction.md)
+ - [Uygulama yükseltme öğreticisi](service-fabric-application-upgrade-tutorial.md)
+ - [Service Fabric sistem durumu modeli](service-fabric-health-introduction.md)
 
-[Service Fabric Explorer'da](service-fabric-visualizing-your-cluster.md)sağlanan küme haritasını kullanarak kümenizin düzenini görselleştirebilirsiniz:
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)' de belirtilen küme eşlemesini kullanarak kümenizin yerleşimini görselleştirebilirsiniz:
 
 <center>
 
-![Hizmet Kumaş Explorer'da hata etki adlarına yayılan düğümler][sfx-cluster-map]
+![Service Fabric Explorer, düğüm hata etki alanları arasında yayılır][sfx-cluster-map]
 </center>
 
 > [!NOTE]
-> Hata alanlarını modelleme, yükseltmeleri yuvarlama, hizmet kodunuz ve durumun birçok örneğini çalıştırma, hizmetlerinizin hata ve yükseltme etki alanları arasında çalışmasını sağlamak için yerleşim kuralları ve yerleşik sistem durumu izleme, Service Fabric'in normal operasyonel sorunları ve arızaların felakete dönüşmesini sağlamak için sağladığı özelliklerden yalnızca *bazılarıdır.* 
+> Hizmetlerin hata ve yükseltme etki alanlarında çalıştığından emin olmak için hata, dağıtım, yükseltme, hizmet kodunuzun ve durumlarınızın birçok örneğini çalıştırma, yerleştirme kuralları ve yerleşik sistem durumu izleme alanları, normal işlem sorunlarını ve hatalarının olağanüstü duruma dönmesini sağlamak için Service Fabric sağladığı özelliklerden *bazılarıdır* . 
 >
 
-### <a name="handling-simultaneous-hardware-or-software-failures"></a>Eşzamanlı donanım veya yazılım hatalarını işleme
-Tek başarısızlıklardan bahsediyorduk. Gördüğünüz gibi, yalnızca kodun (ve durum) daha fazla kopyasını hata ve yükseltme etki alanları arasında çalışan tutarak hem devletsiz hem de devlet hizmetleri için işlemek kolaydır. 
+### <a name="handling-simultaneous-hardware-or-software-failures"></a>Eşzamanlı donanım veya yazılım başarısızlıklarını işleme
+Tek hatalardan bahsetik. Gördüğünüz gibi, hata ve yükseltme etki alanlarında çalışan kodun (ve durumun) daha fazla kopyasını tutarak hem durum bilgisi olmayan hem de durum bilgisi olan hizmetler için kolayca idare edilebilir. 
 
-Birden çok eşzamanlı rasgele hatalar da olabilir. Bunlar daha fazla kapalı kalma süresi veya gerçek bir felakete yol açma olasılığı vardır.
+Birden çok eşzamanlı rastgele başarısızlık da oluşabilir. Bunlar, kapalı kalma süresine veya gerçek bir olağanüstü duruma neden olabilir.
 
 
-#### <a name="stateless-services"></a>Devletsiz hizmetler
-Bir devletsiz hizmet için örnek sayısı, çalıştırılması gereken istenen örnek sayısını gösterir. Örneklerden herhangi biri (veya tümü) başarısız olduğunda, Service Fabric diğer düğümlerde otomatik olarak değiştirme örnekleri oluşturarak yanıt verir. Service Fabric, hizmet istenen örnek sayısına geri dönene kadar değiştirmeler oluşturmaya devam eder.
+#### <a name="stateless-services"></a>Durum bilgisi olmayan hizmetler
+Durum bilgisi olmayan bir hizmetin örnek sayısı, çalışması gereken birkaç örnek sayısını gösterir. Örneklerin herhangi biri (veya tümü) başarısız olduğunda, Service Fabric diğer düğümlerde otomatik olarak değiştirme örnekleri oluşturarak yanıt verir. Service Fabric, hizmet istenen örnek sayısına geri alınana kadar değişiklik oluşturmaya devam eder.
 
-Örneğin, devletsiz hizmetin -1 `InstanceCount` değeri olduğunu varsayalım. Bu değer, kümedeki her düğümüzerinde bir örneğin çalıştırılması gerektiği anlamına gelir. Bu örneklerden bazıları başarısız olursa, Hizmet Kumaşı hizmetin istenilen durumda olmadığını algılar ve eksik oldukları düğümlerde örnekler oluşturmaya çalışır.
+Örneğin, durum bilgisi olmayan hizmetin-1 `InstanceCount` değerine sahip olduğunu varsayalım. Bu değer, kümedeki her düğümde bir örnek çalıştırılması gereken anlamına gelir. Bu örneklerden bazıları başarısız olursa, Service Fabric hizmetin istenen durumunda olmadığını algılar ve örnekleri eksik oldukları düğümlerde oluşturmaya çalışır.
 
-#### <a name="stateful-services"></a>Devlet hizmetleri
-İki tür devlet hizmeti vardır:
-- Israrlı devlet ile stateful.
-- Kalıcı olmayan devlet ile stateful. (Durum bellekte depolanır.)
+#### <a name="stateful-services"></a>Durum bilgisi olan hizmetler
+İki tür durum bilgisi olan hizmetler vardır:
+- Kalıcı durumla durum bilgisi.
+- Kalıcı olmayan durumla durum bilgisi. (Durum bellekte depolanır.)
 
-Durumlu bir hizmetin başarısızlığından kurtarma, devlet hizmetinin türüne, hizmetin kaç yinelemeye sahip olduğu ve kaç yinelemenin başarısız olduğu bağlıdır.
+Durum bilgisi olan bir hizmetin hatasından kurtarma, durum bilgisi olan hizmetin türüne, hizmetin kaç çoğaltmasını olduğunu ve kaç yinelemenin başarısız olduğunu bağlıdır.
 
-Durumlu bir hizmette, gelen veriler yinelemeler (birincil ve etkin ikinciler) arasında çoğaltılır. Yinelemelerin çoğunluğu verileri alırsa, veriler *çoğunluk* taahhüt olarak kabul edilir. (Beş yineleme için, üç bir çoğunluk olacaktır.) Bu, herhangi bir noktada, en son verileri içeren çoğaltmaların en az bir sayı olacağı anlamına gelir. Yinelemeler başarısız olursa (örneğin beşte iki), kurtarıp kurtaramayacağımızı hesaplamak için çoğunluk değerini kullanabiliriz. (Kalan beş yinelemeden üçü hala ayakta olduğundan, en az bir yinelemenin tam veriye sahip olacağı garanti edilir.)
+Durum bilgisi olan bir hizmette, gelen veriler çoğaltmalar arasında çoğaltılır (birincil ve tüm etkin ikincil öğeler). Çoğaltmaların bir çoğunluğu verileri alıyorsa, veriler *çekirdek* olarak kabul edilir. (Beş çoğaltma için, üç bir çekirdek olacaktır.) Bu, herhangi bir noktada, en son verileri en az bir çoğaltma çekirdeği olacağı anlamına gelir. Çoğaltmalar başarısız olursa (beş ' dan fazla bilgi alırsanız), kurtaramadığımızda hesaplamak için çekirdek değerini kullanabiliriz. (En fazla beş çoğaltma hala devam ettiğinden, en az bir çoğaltmanın tüm verileri alacak olması garanti edilir.)
 
-Çoğaltma sayısı başarısız olduğunda, bölüm *çoğunluk kaybı* durumunda olarak ilan edilir. Bir bölümün beş yinelemesi olduğunu varsa, bu da en az üç bölümün tam veriye sahip olduğu anlamına gelir. Çoğaltmaların bir çoğunluk (beşüzerinden üç) başarısız olursa, Hizmet Kumaş kalan yinelemeler (iki beş) bölümü geri yüklemek için yeterli veri olup olmadığını belirleyemez. Service Fabric'in çoğunluk kaybını algıladığı durumlarda, varsayılan davranışı bölüme ek yazmaları önlemek, çoğunluk kaybını bildirmek ve bir çok yinelemenin geri yüklenmesini beklemektir.
+Kopyaların bir çekirdeği başarısız olduğunda, bölüm bir *çekirdek kaybı* durumunda olacak şekilde bildirilmiştir. Bir bölümde beş çoğaltma olduğunu varsayalım. Bu, en az üçünün tüm verilerin bulunduğu garantiden fazla garanti olduğu anlamına gelir. Bir çekirdek (beş/beş) çoğaltma başarısız olursa, Service Fabric kalan çoğaltmaların (beş çıkış) bölümü geri yüklemek için yeterli veri olup olmadığını belirleyemez. Service Fabric çekirdek kaybını algıladığı durumlarda, varsayılan davranışı bölüme ek yazma işlemlerini önlemektir, çekirdek kaybını bildirir ve çoğaltmaların bir çekirdeğin geri yüklenmesini bekler.
 
-Devlet hizmeti için bir felaketin meydana gelip gelmediğini belirlemek ve ardından yönetmek üç aşamadan oluşur:
+Durum bilgisi olan bir hizmet için olağanüstü durum olup olmadığını belirleme ve sonra üç aşamada yönetme:
 
-1. Çoğunluk kaybı olup olmadığını belirlemek.
+1. Çekirdek kaybı olup olmadığını belirleme.
    
-   Bir devlet hizmetinin yinelemelerinin çoğunluğu aynı anda düştüğünde çoğunluk kaybı beyan edilir.
-2. Çoğunluk kaybının kalıcı olup olmadığının belirlenmesi.
+   Durum bilgisi olan bir hizmetin çoğaltmalarının çoğunluğu aynı anda kapalıysa çekirdek kaybı bildirilmiştir.
+2. Çekirdek kaybının kalıcı olup olmadığını belirleme.
    
-   Çoğu zaman, hatalar geçicidir. İşlemler yeniden başlatılır, düğümler yeniden başlatılır, sanal makineler yeniden başlatılır ve ağ bölümleri iyileşir. Ancak bazen başarısızlıklar kalıcıdır. Hataların kalıcı olup olmaması, devlet hizmetinin durumunu devam ettirmesine veya yalnızca bellekte tutup tutmayacağına bağlıdır: 
+   Çoğu zaman, başarısızlıklar geçicidir. İşlem yeniden başlatıldı, düğümler yeniden başlatıldı, sanal makineler geri alınıyor ve ağ bölümleri de aynı. Bazen, sorunlar kalıcı olabilir. Hataların kalıcı olup olmadığı veya olmaması, durum bilgisi olan hizmetin durumunu veya yalnızca bellekte tutulmasını ister. 
    
-   - Kalıcı durumu olmayan hizmetler için, bir çoğunluk veya daha fazla yinelemenin başarısızlığı _hemen_ kalıcı çoğunluk kaybına neden olur. Service Fabric, kalıcı olmayan bir hizmette çoğunluk kaybını algıladığında, (potansiyel) veri kaybını beyan ederek hemen 3. Veri kaybına devam etmek mantıklıdır, çünkü Service Fabric kopyaların geri gelmesini beklemenin bir anlamı olmadığını bilir. İyileşseler bile, hizmetin kalıcı olmayan yapısı nedeniyle veriler kaybolur.
-   - Devlet kalıcı hizmetleri için, bir çoğunluk veya daha fazla yinelemenin başarısız olması, Service Fabric'in yinelemelerin geri gelmesini beklemesine ve yeterliliği geri getirmesine neden olur. Bu, hizmetin etkilenen bölümüne (veya "çoğaltma kümesine") _yapılan tüm yazılar_ için bir hizmet kesintisine neden olur. Ancak, okumalar yine de azaltılmış tutarlılık garantileri ile mümkün olabilir. Devam (potansiyel) bir veri kaybı olayı olduğundan ve diğer riskleri taşıdığından, Hizmet Kumaşı'nın çoğunluğun geri gelmesini beklediği varsayılan süre *sonsuzdur.* Bu, bir yönetici veri kaybını bildirmek için harekete geçmediği sürece Hizmet Kumaşı'nın bir sonraki adıma geçmeyeceğimanlamına gelir.
-3. Verilerin kaybolup kaybolmadığını belirleme ve yedeklemelerden geri alma.
+   - Kalıcı duruma sahip olmayan hizmetler için, çekirdek veya daha fazla çoğaltmalardan oluşan bir hata _hemen_ kalıcı çekirdek kaybına neden olur. Service Fabric, durum bilgisi olmayan kalıcı olmayan bir hizmette çekirdek kaybını algıladığında, anında (potansiyel) veri kaybı bildirerek 3. adıma geçer. Service Fabric çoğaltmaların geri dönmesi beklenmediğini bildiğinden, veri kaybına devam etmek anlamlı hale gelir. Kurtarıldıklarında bile, hizmetin kalıcı olmayan yapısı nedeniyle veriler kaybolur.
+   - Durum bilgisi olmayan kalıcı hizmetler için bir çekirdekte veya daha fazla çoğaltmalardan oluşan bir hata, çoğaltmaların geri dönüp çekirdeği geri yükleme işleminin beklemesini Service Fabric neden olur. Bu durum, hizmetin etkilenen bölüme (veya "çoğaltma kümesi") herhangi bir _yazma işlemleri_ için bir hizmet kesintisine neden olur. Ancak, daha düşük tutarlılık garantisi ile okuma yapılabilmeye devam edebilir. Service Fabric, çekirdeğin geri yüklenmesini bekleyeceği varsayılan süre *sonsuzdur*çünkü devam eden bir (potansiyel) veri kaybı olayı ve diğer riskleri taşır. Bu, bir yönetici veri kaybını bildirmek için işlem yapmadığınız takdirde Service Fabric sonraki adıma ilerleyemez.
+3. Verilerin kayıp olup olmadığını belirleme ve yedeklerden geri yükleme.
 
-   Çoğunluk kaybı beyan edilirse (otomatik olarak veya idari işlem yoluyla), Service Fabric ve hizmetler verilerin gerçekten kaybolup olmadığını belirlemeye geçer. Bu noktada, Service Fabric diğer kopyaların geri gelmeyeceklerini de bilir. Çoğunluğun kaybının kendi kendine çözülmesini beklemeyi bıraktığımız da alınan karar buydu. Hizmet için en iyi eylem genellikle dondurma küçlükve belirli idari müdahale beklemektir.
+   Çekirdek kaybı bildirilirse (otomatik olarak veya yönetim eylemi aracılığıyla), Service Fabric ve hizmetler, verilerin gerçekten kayıp olup olmadığını belirlemek için taşınır. Bu noktada, Service Fabric diğer çoğaltmaların geri geldiğini de biliyor. Bu, çekirdek kaybının kendisini çözümlemek için beklemeyi durdurduğumızda yapılan karardır. Hizmet için en iyi eylem, genellikle donabilir ve belirli yönetim müdahalesini bekler.
    
-   Service Fabric `OnDataLossAsync` yöntemi aradığında, bunun nedeni her zaman _şüpheli_ veri kaybıdır. Service Fabric, bu çağrının kalan _en iyi_ yinelemeye teslim edilmesini sağlar. Bu, en fazla ilerlemeyi sağlayan çoğaltmadır. 
+   Service Fabric `OnDataLossAsync` yöntemi çağırdığında, bu her zaman _şüpheli_ veri kaybı nedeniyle oluşur. Service Fabric, bu çağrının kalan _en iyi_ çoğaltmaya teslim edilmesini sağlar. Bu, en son ilerlemeyi yapan bir yinelemedir. 
    
-   Her zaman _şüpheli_ veri kaybı dediğimiz in nedeni, kalan yinelemenin çoğunluk kaybolduğunda birincil durumla aynı duruma sahip olması mümkündür. Ancak, karşılaştırmak için bu durum olmadan, Hizmet Kumaş veya operatörler için emin bilmek için iyi bir yol yoktur.     
+   Her zaman _şüpheli_ veri kaybını söyliyoruz, kalan çoğaltmanın çekirdek kaybedildiğinde birincil was ile aynı duruma sahip olma olasılığı vardır. Bununla birlikte, bu durum ile karşılaştırılabilmesi için, Service Fabric veya operatörlerin emin olup olmadığını bilmek için iyi bir yol yoktur.     
    
-   Peki yöntemin `OnDataLossAsync` tipik bir uygulama ne yapar?
-   1. Tetiklenen uygulama `OnDataLossAsync` günlükleri ve gerekli yönetim uyarılarını kapatır.
-   1. Genellikle, uygulama duraklar ve daha fazla karar ve el ile yapılacak eylemleri bekler. Bunun nedeni, yedeklemeler kullanılabilir olsa bile, hazırlanmaları gerekebileceğidir. 
+   Bu nedenle `OnDataLossAsync` yöntemin tipik bir uygulanması ne yapar?
+   1. Tetiklenen uygulama günlükleri ve `OnDataLossAsync` gerekli yönetim uyarılarını tetikledi.
+   1. Genellikle, uygulama duraklatılır ve daha fazla kararlar ve el ile gerçekleştirilen eylemler için bekler. Bunun nedeni, yedeklemeler kullanılabilir olsa bile bunların hazırlanmaları gerekebilir. 
    
-      Örneğin, iki farklı hizmet bilgileri koordine ederse, geri yükleme gerçekleştiğinde bu iki hizmetin önem verdiği bilgilerin tutarlı olduğundan emin olmak için bu yedeklemelerin değiştirilmesi gerekebilir. 
-   1. Genellikle başka bir telemetri veya hizmet egzoz var. Bu meta veriler diğer hizmetlerde veya günlüklerde bulunabilir. Bu bilgiler, birincil olarak alınan ve işlenen yedeklemede bulunmayan veya bu çoğaltmada çoğaltılan çağrıların olup olmadığını belirlemek için gerektiği gibi kullanılabilir. Bu çağrıların geri yükleme mümkün olabilmesi için yeniden oynan veya yedeklemeye eklenmesi gerekebilir.  
-   1. Uygulama, kalan yinelemenin durumunu kullanılabilir yedeklemelerde bulunan durumla karşılaştırır. Service Fabric güvenilir koleksiyonları kullanıyorsanız, bunu yapmak için [araçlar ve süreçler](service-fabric-reliable-services-backup-restore.md) vardır. Amaç, yineleme içindeki durumunun yeterli olup olmadığını görmek ve yedeklemenin ne eksik olabileceğini görmektir.
-   1. Karşılaştırma yapıldıktan ve geri yükleme tamamlandıktan sonra (gerekirse), herhangi bir durum değişikliği yapıldıysa hizmet kodu **doğru** döndürülmelidir. Yineleme, bunun eyaletin mevcut en iyi kopyası olduğunu belirlemişse ve hiçbir değişiklik yapmadıysa, kod **yanlış**döndürür. 
+      Örneğin, iki farklı hizmetin bilgileri koordine etmesidir, geri yükleme yapıldıktan sonra, bu iki hizmetin ilgilendiğinden emin olmak için bu yedeklemelerin değiştirilmesi gerekebilir. 
+   1. Genellikle başka bir telemetri veya hizmetten söz konusu olabilir. Bu meta veriler diğer hizmetlerde veya günlüklerde bulunabilir. Bu bilgiler, yedekte bulunmayan ve bu belirli çoğaltmaya çoğaltılan birincil konumda alınan ve işlenen herhangi bir çağrı olup olmadığını öğrenmek için gerektiği şekilde kullanılabilir. Geri yükleme mümkün olmadan önce bu çağrıların yeniden yürütülmesi veya yedeklemeye eklenmesi gerekebilir.  
+   1. Uygulama, kalan çoğaltmanın durumunu kullanılabilir yedeklemelerde bulunan ile karşılaştırır. Service Fabric güvenilir koleksiyonlar kullanıyorsanız, bu işlemi gerçekleştirmek için kullanabileceğiniz [Araçlar ve süreçler](service-fabric-reliable-services-backup-restore.md) vardır. Amaç, çoğaltmanın içindeki durumunun yeterli olup olmadığını ve yedeklemenin eksik olabileceğini görmenizi sağlamaktır.
+   1. Karşılaştırma yapıldıktan sonra ve geri yükleme tamamlandıktan sonra (gerekliyse), herhangi bir durum değişikliği yapılırsa hizmet kodu **true** döndürmelidir. Çoğaltma, durumun en iyi kullanılabilir kopyası olduğunu tespit ederseniz ve hiçbir değişiklik yapmamışsa, kod **false**döndürür. 
    
-      **True** değeri, kalan _diğer_ yinelemelerin artık bununla tutarsız olabileceğini gösterir. Bu kopyadan bırakılacak ve yeniden inşa edilecekler. **False** değeri, hiçbir durum değişikliği yapılmadığını gösterir, böylece diğer yinelemeler sahip olduklarını saklayabilir. 
+      **True** değeri, kalan _diğer_ çoğaltmaların artık bununla tutarsız olabileceğini gösterir. Bunlar bu çoğaltmadan bırakılır ve yeniden oluşturulur. **Yanlış** değeri, hiçbir durum değişikliği yapılmadığını gösterir, bu nedenle diğer çoğaltmalar onların neleri tutabileceklerini tutabilir. 
 
-Hizmet yazarlarının, hizmetler üretimde dağıtılmadan önce olası veri kaybı ve hata senaryoları uygulaması kritik öneme sahip. Veri kaybı olasılığına karşı korunmak için, devlet hizmetlerinizin durumunu düzenli aralıklarla coğrafi olarak yedekli bir mağazaya [yedeklemeniz](service-fabric-reliable-services-backup-restore.md) önemlidir. 
+Hizmet yazarlarının, hizmetler üretimde dağıtılmadan önce olası veri kaybını ve hata senaryolarını uygulaması önemli ölçüde önemlidir. Veri kaybı olasılığa karşı korunmak için, durum bilgisi olan hizmetlerinizin herhangi birinin [durumunu](service-fabric-reliable-services-backup-restore.md) coğrafi olarak yedekli bir mağazaya düzenli aralıklarla yedeklemeniz önemlidir. 
 
-Ayrıca, devleti geri yükleme yeteneğine sahip olduğundan da emin olmalısınız. Birçok farklı hizmetin yedekleri farklı zamanlarda alındığından, geri yüklemeden sonra hizmetlerinizin birbirini tutarlı bir şekilde gözden geçirdiğinden emin olmanız gerekir. 
+Ayrıca, durumu geri yükleme olanağına sahip olduğunuzdan emin olmanız gerekir. Birçok farklı hizmetin yedekleri farklı zamanlarda alındığından, bir geri yüklemeden sonra hizmetlerinizin tutarlı bir görünümü olduğundan emin olmanız gerekir. 
 
-Örneğin, bir hizmetin bir sayı oluşturup depoladığı ve sonra da depolayan başka bir hizmete gönderdiği bir durumu düşünün. Geri yüklemeden sonra, yedeklemesi bu işlemi içermedığından, ikinci hizmetin numarasının olduğunu ancak ilkinin olmadığını keşfedebilirsiniz.
+Örneğin, bir hizmetin bir sayı oluşturduğu ve depolandığı bir durum düşünün ve sonra da onu depolayan başka bir hizmete gönderir. Geri yükleme sonrasında ikinci hizmetin sayının olduğunu, ancak ilki bu işlemi içermediği için bu işlemin başarısız olduğunu fark edebilirsiniz.
 
-Kalan yinelemelerin bir veri kaybı senaryosunda devam etmek için yetersiz olduğunu ve telemetri veya egzozdan hizmet durumunu yeniden oluşturamadığınızı fark ederseniz, yedeklemelerinizin sıklığı mümkün olan en iyi kurtarma noktası hedefinizi (RPO) belirler. Service Fabric, kalıcı çoğunluk ve yedeklemeden geri yükleme gerektiren veri kaybı da dahil olmak üzere çeşitli hata senaryolarını sınamak için birçok araç sağlar. Bu senaryolar, Hata Analizi Hizmeti tarafından yönetilen Hizmet Kumaşı'ndaki sınanabilirlik araçlarının bir parçası olarak dahildir. Bu araçlar ve desenler hakkında daha fazla bilgi için, [Bkz. Hata Analizi Hizmetine Giriş.](service-fabric-testability-overview.md) 
+Kalan çoğaltmaların bir veri kaybı senaryosunda devam etmek için yetersiz olduğunu fark ederseniz ve hizmet durumunu telemetri veya tüketen yeniden oluşturamazsınız, yedeklemelerinizin sıklığı mümkün olan en iyi kurtarma noktası hedefini (RPO) belirler. Service Fabric, kalıcı çekirdek ve yedekten geri yükleme gerektiren veri kaybı dahil çeşitli hata senaryolarını test etmek için birçok araç sağlar. Bu senaryolar, hata analizi hizmeti tarafından yönetilen Service Fabric 'nin test edilebilirlik araçlarının bir parçası olarak dahil edilmiştir. Bu araçlar ve desenler hakkında daha fazla bilgi için bkz. [hata analiz hizmetine giriş](service-fabric-testability-overview.md). 
 
 > [!NOTE]
-> Sistem hizmetleri de çoğunluk kaybına uğrayabilir. Etkisi söz konusu hizmete özgüdür. Örneğin, adlandırma hizmetindeki çoğunluk kaybı ad çözümlemesi etkilerken, Failover Manager hizmetindeki çoğunluk kaybı yeni hizmet oluşturmayı ve başarısızları engeller. 
+> Sistem Hizmetleri, çekirdek kaybını da etkilenebilir. Etkisi, söz konusu hizmete özgüdür. Örneğin, adlandırma hizmetindeki çekirdek kaybı ad çözümlemesini etkiler, ancak Yük Devretme Yöneticisi hizmette çekirdek kaybı yeni hizmet oluşturma ve yük devretme işlemleri engeller. 
 > 
-> Service Fabric sistem hizmetleri, devlet yönetimi hizmetleriniz ile aynı modeli izler, ancak bunları çoğunluk kaybından ve olası veri kaybına taşımayı denemenizi önermiyoruz. Bunun yerine, durumunuzu hedefleyen bir çözüm bulmak için [destek aramanızı](service-fabric-support.md) öneririz. Genellikle aşağı kopyaları dönene kadar beklemek tercih edilir.
+> Service Fabric sistem hizmetleri, durum yönetimi için hizmetlerinizde aynı kalıbı izler, ancak bunları çekirdek kaybını ve olası veri kaybına taşımayı öneririz. Bunun yerine, durumunuza hedeflenmiş bir çözüm bulmak için [destek](service-fabric-support.md) bulmanıza önerilir. Genellikle aşağı çoğaltmalar döndürülene kadar beklemek tercih edilir.
 >
 
-#### <a name="troubleshooting-quorum-loss"></a>Sorun giderme çoğunluk kaybı
+#### <a name="troubleshooting-quorum-loss"></a>Çekirdek kaybı sorunlarını giderme
 
-Geçici bir hata nedeniyle yinelemeler aralıklı olarak kapanabilir. Service Fabric onları getirmek için çalışır gibi bir süre bekleyin. Yinelemeler beklenenden daha uzun bir süre boyunca kapatıldıysa, aşağıdaki sorun giderme eylemlerini izleyin:
-- Kopyalar çöküyor olabilir. Yineleme düzeyindeki sistem durumu raporlarını ve uygulama günlüklerinizi denetleyin. Kilitlenme dökümleri toplamak ve kurtarmak için gerekli eylemleri almak.
-- Çoğaltma işlemi yanıt vermemiş olabilir. Bunu doğrulamak için uygulama günlüklerinizi inceleyin. İşlem dökümlerini toplayın ve yanıt vermeyen işlemi durdurun. Service Fabric değiştirme işlemi oluşturur ve çoğaltmayı geri getirmeye çalışır.
-- Kopyaları barındıran düğümler aşağı olabilir. Düğümleri yukarı getirmek için altta yatan sanal makineyi yeniden başlatın.
+Yinelemeler geçici bir hata nedeniyle aralıklı olarak kalabilir. Service Fabric bir süre bekleyin. Çoğaltmalar beklenen süreden uzun süredir kapalıysa, şu sorun giderme eylemlerini izleyin:
+- Çoğaltmalar kilitlenen olabilir. Çoğaltma düzeyi sistem durumu raporlarını ve uygulama günlüklerinizi denetleyin. Kilitlenme dökümünü toplayın ve kurtarmak için gerekli işlemleri yapın.
+- Çoğaltma işlemi yanıt veremez duruma gelebilir. Bunu doğrulamak için uygulama günlüklerinizi inceleyin. İşlem dökümlerini toplayın ve ardından yanıt vermeyen işlemi durdurun. Service Fabric, bir değiştirme işlemi oluşturacak ve çoğaltmayı geri getirmeye çalışacaktır.
+- Çoğaltmaları barındıran düğümler çalışmıyor olabilir. Düğümleri taşımak için temeldeki sanal makineyi yeniden başlatın.
 
-Bazen, yinelemeleri kurtarmak mümkün olmayabilir. Örneğin, sürücüler başarısız oldu veya makineler fiziksel olarak yanıt vermiyor. Bu gibi durumlarda, Service Fabric çoğaltma kurtarma beklemek değil söylenmesi gerekir.
+Bazen, çoğaltmaları kurtarmak mümkün olmayabilir. Örneğin, sürücüler başarısız olmuş veya makineler fiziksel olarak yanıt vermiyor. Bu durumlarda, Service Fabric çoğaltma kurtarması beklenemedi.
 
-Hizmeti *not* çevrimiçi duruma getirmek için olası veri kaybı kabul edilemezse bu yöntemleri kullanmayın. Bu durumda, tüm çabalar fiziksel makineleri kurtarma doğru yapılmalıdır.
+Hizmeti çevrimiçi duruma getirmek için olası veri kaybı kabul edilemez ise bu *yöntemleri kullanmayın.* Bu durumda, fiziksel makineleri kurtarmaya yönelik tüm çabalar yapılmalıdır.
 
-Aşağıdaki eylemler veri kaybına neden olabilir. Onları takip etmeden önce kontrol edin.
+Aşağıdaki eylemler veri kaybına neden olabilir. İzlemeden önce denetleyin.
    
 > [!NOTE]
-> Belirli bölümlere karşı hedeflenen bir şekilde dışında bu yöntemleri kullanmak hiçbir zaman güvenli _değildir._ 
+> Belirli bölümlerde hedeflenen bir şekilde bu yöntemleri kullanmak _hiç_ güvenli değildir. 
 >
 
-- Veya `Repair-ServiceFabricPartition -PartitionId` `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API'yi kullanın. Bu API, bölümün kimliğinin çoğunluk kaybından çıkıp olası veri kaybına taşınmasını sağlar.
-- Kümeniz, hizmetlerin çoğunluk kaybı durumuna geçmesine neden olan sık sık hatalarla _karşılaşırsa_ve olası veri kaybı kabul edilebilirse, uygun bir [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Hizmet Kumaşı kurtarma `QuorumLossWaitDuration` gerçekleştirmeden önce sağlanan değeri (varsayılan sonsuzdur) bekler. Beklenmeyen veri kayıplarına neden olabileceğinden bu yöntemi *önermiyoruz.*
+- `Repair-ServiceFabricPartition -PartitionId` Veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'yi kullanın. Bu API, çekirdek kaybını ve olası veri kaybını taşımak için bölüm KIMLIĞININ belirtilmesine izin verir.
+- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, kurtarma gerçekleştirilmeden önce, `QuorumLossWaitDuration` girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric kümesinin kullanılabilirliği
-Genel olarak, Service Fabric kümesi tek bir hata noktası olmayan yüksek oranda dağıtılmış bir ortamdır. Herhangi bir düğümün arızası küme için kullanılabilirlik veya güvenilirlik sorunlarına neden olmaz, çünkü Service Fabric sistem hizmetleri daha önce sağlanan aynı yönergeleri izleyin. Diğer bir süre, varsayılan olarak üç veya daha fazla yinelemeyle ve tüm düğümlerde devletsiz çalışan sistem hizmetleriyle çalışırlar. 
+Genel olarak Service Fabric kümesi, tek hata noktası olmayan, yüksek oranda dağıtılmış bir ortamdır. Birincil olarak, Service Fabric sistem hizmetleri daha önce sunulan yönergeleri izlediğinden, herhangi bir düğüm, kümede kullanılabilirlik veya güvenilirlik sorunlarına yol açmaz. Diğer bir deyişle, her zaman varsayılan olarak üç veya daha fazla çoğaltma ve durum bilgisiz olmayan sistem hizmetleri tüm düğümlerde çalışır. 
 
-Altta yatan Service Fabric ağ ve hata algılama katmanları tamamen dağıtılır. Çoğu sistem hizmeti kümedeki meta verilerden yeniden oluşturulabilir veya durumlarını başka yerlerden nasıl yeniden eşitleeceğini bilir. Sistem hizmetleri daha önce açıklananlar gibi çoğunluk kaybı durumlarına girerse kümenin kullanılabilirliği tehlikeye girebilirsiniz. Bu gibi durumlarda, küme üzerinde belirli işlemleri gerçekleştiremeyebilirsiniz (yükseltme başlatma veya yeni hizmetler dağıtma gibi), ancak kümenin kendisi hala açık. 
+Temel Service Fabric ağ oluşturma ve hata algılama katmanları tamamen dağıtılır. Çoğu sistem hizmeti kümedeki meta verilerden yeniden oluşturulabilir veya durumlarını diğer yerlerden yeniden eşitleme yapabilir. Sistem Hizmetleri daha önce açıklananlar gibi çekirdek kaybı durumlarına geldiğinde kümenin kullanılabilirliği tehlikeye girebilir. Bu gibi durumlarda, küme üzerinde belirli işlemler gerçekleştiremeyebilirsiniz (yükseltme başlatma veya yeni hizmetleri dağıtma gibi), ancak kümenin kendisi hala çalışıyor olabilir. 
 
-Çalışan kümedeki hizmetler, sistem hizmetlerine yazma gerektirmedikçe bu koşullarda çalışmaya devam eder. Örneğin, Failover Manager çoğunluk kaybı durumunda, tüm hizmetler çalışmaya devam edecektir. Ancak başarısız olan tüm hizmetler otomatik olarak yeniden başlatılamaz, çünkü bu Failover Manager'ın katılımını gerektirir. 
+Çalışan bir kümedeki hizmetler, çalışmaya devam etmek için sistem hizmetlerine yazma gerektirmedikleri takdirde bu koşullarda çalışmaya devam edecektir. Örneğin, Yük Devretme Yöneticisi çekirdek kaybolduysa, tüm hizmetler çalışmaya devam edecektir. Ancak, Yük Devretme Yöneticisi katılımına ihtiyaç duyduğundan, başarısız olan tüm hizmetler otomatik olarak yeniden başlatılamaz. 
 
-### <a name="failures-of-a-datacenter-or-an-azure-region"></a>Veri merkezinin veya Azure bölgesinin hataları
-Nadir durumlarda, fiziksel bir veri merkezi güç veya ağ bağlantısı kaybından geçici olarak kullanılamaz hale gelebilir. Bu gibi durumlarda, hizmet kumaş kümeleriniz ve bu veri merkezi veya Azure bölgesindeki hizmetler kullanılamaz. Ancak, _verileriniz korunur._ 
+### <a name="failures-of-a-datacenter-or-an-azure-region"></a>Veri merkezi veya Azure bölgesi sorunları
+Nadir durumlarda, fiziksel bir veri merkezi güç veya ağ bağlantısı kaybından geçici olarak kullanılamaz hale gelebilir. Bu gibi durumlarda, bu veri merkezinde veya Azure bölgesindeki Service Fabric kümeleriniz ve hizmetleriniz kullanılamaz olur. Ancak _verileriniz korunur_. 
 
-Azure'da çalışan kümeler için, Azure durum [sayfasındaki][azure-status-dashboard]kesintilerle ilgili güncelleştirmeleri görüntüleyebilirsiniz. Fiziksel bir veri merkezinin kısmen veya tamamen yok edilmesi olasılığı oldukça düşük bir durumda, orada barındırılan Herhangi bir Hizmet Kumaşı kümeleri veya içlerindeki hizmetler kaybolabilir. Bu kayıp, veri merkezi veya bölge dışında yedeklenmemiş herhangi bir durumu içerir.
+Azure 'da çalışan kümeler için, [Azure durum sayfasında][azure-status-dashboard]kesintiler üzerinde güncelleştirmeleri görüntüleyebilirsiniz. Fiziksel bir veri merkezinin kısmen veya tamamen yok edildiği çok önemli olmayan bir olayda, orada barındırılan Service Fabric kümeleri veya bunların içindeki hizmetler kaybolabilir. Bu kayıp, bu veri merkezinin veya bölgenin dışında yedeklenen tüm durumları içerir.
 
-Tek bir veri merkezinin veya bölgenin kalıcı veya sürekli başarısızlığından kurtulmanın iki farklı stratejileri vardır: 
+Tek bir veri merkezinde veya bölgede kalıcı veya sürekli başarısızlığını yerine döndürme için iki farklı strateji vardır: 
 
-- Birden çok bu tür bölgelerde ayrı Hizmet Kumaş kümeleri çalıştırın ve bu ortamlar arasında başarısız olmak ve geri tepme için bazı mekanizmalar kullanın. Çoklu küme etkin/etkin veya etkin/pasif model bu tür ek yönetim ve işlem kodu gerektirir. Bu model, bir veri merkezinde veya bölgedeki hizmetlerden gelen yedeklemelerin koordinasyonunu da gerektirir, böylece bir veri merkezi başarısız olduğunda diğer veri merkezlerinde veya bölgelerde kullanılabilir olurlar. 
-- Birden çok veri merkezine veya bölgeye yayılan tek bir Hizmet Dokusu kümesi çalıştırın. Bu strateji için desteklenen minimum yapılandırma üç veri merkezi veya bölgedir. Önerilen bölge veya veri merkezi sayısı beştir. 
+- Birden çok bölgede ayrı Service Fabric kümelerini çalıştırın ve bu ortamlar arasında yük devretme ve yeniden çalışma için bazı mekanizmayı kullanın. Birden çok küme etkin/etkin ya da etkin/Pasif modelin bu sıralaması ek yönetim ve operasyon kodu gerektirir. Bu model aynı zamanda bir veri merkezinde veya bölgede hizmetlerden, bir hata olduğunda diğer veri merkezlerinde veya bölgelerde kullanılabilir olmaları için yedeklemelerin koordine edilmesini gerektirir. 
+- Birden çok veri merkezine veya bölgeye yayılan tek bir Service Fabric kümesi çalıştırın. Bu strateji için desteklenen en düşük yapılandırma üç veri merkezidir veya bölgedir. Önerilen bölge veya veri merkezi sayısı beş ' dir. 
   
-  Bu model daha karmaşık bir küme topolojisi gerektirir. Ancak, yararı, bir veri merkezi veya bölgenin başarısızlığı normal bir hata içine bir felaket dönüştürülür olmasıdır. Bu hatalar, tek bir bölge içindeki kümeler için çalışan mekanizmalar tarafından işlenebilir. Hata etki alanları, yükseltme etki alanları ve Hizmet Dokusu yerleşim kuralları, iş yüklerinin normal hataları tolere edecek şekilde dağıtılmasını sağlar. 
+  Bu model daha karmaşık bir küme topolojisi gerektirir. Ancak avantajı, bir veri merkezinde veya bölgede oluşan başarısızlığın bir olağanüstü durumdan normal bir hataya dönüştürülmesidir. Bu arızalar, tek bir bölgedeki kümeler için çalışan mekanizmalar tarafından işlenebilir. Hata etki alanları, yükseltme etki alanları ve Service Fabric yerleştirme kuralları, iş yüklerinin normal hatalara neden olacak şekilde dağıtılmasını güvence altına alırlar. 
   
-  Bu tür kümedeki hizmetlerin çalıştırılabilen ilkeler hakkında daha fazla bilgi [için, Hizmet Kumaşı hizmetleri için Yerleşim ilkelerine](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)bakın.
+  Bu tür kümede Hizmetleri çalıştırabilmek için ilkeler hakkında daha fazla bilgi için bkz. [Service Fabric Hizmetleri Için yerleştirme ilkeleri](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md).
 
-### <a name="random-failures-that-lead-to-cluster-failures"></a>Küme hatalarına yol açan rasgele hatalar
-Hizmet Kumaş tohum *düğümleri*kavramına sahiptir. Bunlar, alttaki kümenin kullanılabilirliğini koruyan düğümlerdir. 
+### <a name="random-failures-that-lead-to-cluster-failures"></a>Küme hatalarına neden olan rastgele sorunlar
+Service Fabric *çekirdek düğümleri*kavramıdır. Bunlar, temel alınan kümenin kullanılabilirliğini sürdürdüğüm olan düğümlerdir. 
 
-Tohum düğümleri, kümenin diğer düğümlerle kiralama lar kurarak ve belirli türde hatalar sırasında tiebreaker olarak hizmet vererek ayakta kalmasını sağlamaya yardımcı olur. Rasgele hatalar kümedeki tohum düğümlerinin çoğunluğunu kaldırırsa ve hızlı bir şekilde geri getirilmezse, kümeniz otomatik olarak kapanır. Küme daha sonra başarısız olur. 
+Çekirdek düğümleri, diğer düğümlerle Kiralama kurarak ve belirli başarısızlık türleri sırasında tiebreaklikler gören kümenin açık kalmasını sağlamaya yardımcı olur. Rastgele arızalar kümedeki çekirdek düğümlerin çoğunu kaldırlarsa ve hızlı bir şekilde geri getirilmezse kümeniz otomatik olarak kapanır. Küme daha sonra başarısız olur. 
 
-Azure'da, Service Fabric Kaynak Sağlayıcısı Service Fabric küme yapılandırmalarını yönetir. Varsayılan olarak, Kaynak Sağlayıcı *ana düğüm türü*için hata ve yükseltme etki alanları arasında tohum düğümleri dağıtır. Birincil düğüm türü Gümüş veya Altın dayanıklılık olarak işaretlenmişse, bir tohum düğümünüzü kaldırdığınızda (birincil düğüm türünü ölçeklendirerek veya el ile kaldırarak), küme birincil düğüm türünün kullanılabilir kapasitesinden başka bir tohum dışı düğümü tanıtmaya çalışır. Küme güvenilirlik düzeyiniz birincil düğüm türünüz için gerekenden daha az kullanılabilir kapasiteye sahipseniz, bu girişim başarısız olur.
+Azure 'da Service Fabric kaynak sağlayıcısı Service Fabric küme yapılandırmasını yönetir. Varsayılan olarak, kaynak sağlayıcısı çekirdek düğümlerini hata ve yükseltme etki alanlarına *birincil düğüm türü*boyunca dağıtır. Birincil düğüm türü gümüş veya altın dayanıklılık olarak işaretlenmişse, bir çekirdek düğümünü kaldırdığınızda (birincil düğüm türünde ölçeklendirerek veya el ile kaldırarak), küme, birincil düğüm türünün kullanılabilir kapasitesinden başka çekirdek olmayan bir düğümü yükseltmeye çalışır. Bu deneme, küme güvenilirlik düzeyinden daha az kullanılabilir kapasiteye sahipseniz, birincil düğüm türü için gerekli olduğundan başarısız olur.
 
-Hem bağımsız Hizmet Kumaş kümelerinde hem de Azure'da, birincil düğüm türü tohumları çalıştıran dır. Birincil düğüm türünü tanımlarken, Service Fabric, her sistem hizmetinin en fazla dokuz tohum düğümü ve yedi kopyasını oluşturarak sağlanan düğüm sayısından otomatik olarak yararlanır. Rasgele hatalar kümesi bu yinelemelerin çoğunluğunu aynı anda alırsa, sistem hizmetleri çoğunluk kaybına girer. Tohum düğümlerinin çoğunluğu kaybolursa, küme kısa bir süre sonra kapanır.
+Tek başına Service Fabric kümelerinde ve Azure 'da, birincil düğüm türü, Seeds 'yi çalıştıran bir ektir. Birincil düğüm türünü tanımlarken Service Fabric, en fazla dokuz temel düğüm ve her sistem hizmeti için yedi çoğaltma oluşturarak, belirtilen düğüm sayısından otomatik olarak yararlanır. Rastgele bir başarısızlık kümesi bu çoğaltmaların büyük bir bölümünü aynı anda alırsa, sistem hizmetleri çekirdek kaybına girer. Çekirdek düğümlerin çoğunluğu kaybolmuşsa, küme yakında kapatılacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Test edilebilirlik çerçevesini](service-fabric-testability-overview.md)kullanarak çeşitli hataları nasıl simüle edebilirsiniz öğrenin.
-- Diğer olağanüstü durum kurtarma ve yüksek kullanılabilirlik kaynaklarını okuyun. Microsoft bu konularda büyük miktarda kılavuz yayımlamıştır. Bu kaynaklardan bazıları diğer ürünlerde kullanılmak üzere belirli tekniklere atıfta bulunsa da, Hizmet Kumaşı bağlamında uygulayabileceğiniz birçok genel en iyi uygulama içerir:
+- [Test edilebilirlik çerçevesini](service-fabric-testability-overview.md)kullanarak çeşitli hataların benzetimini yapmayı öğrenin.
+- Diğer olağanüstü durum kurtarma ve yüksek kullanılabilirlik kaynaklarını okuyun. Microsoft bu konularda büyük miktarda kılavuz yayımlamıştır. Bu kaynakların bazıları diğer ürünlerde kullanılmak üzere belirli tekniklerin başvurmakla birlikte, Service Fabric bağlamına uygulayabileceğiniz birçok genel en iyi yöntem içerirler:
   - [Kullanılabilirlik denetim listesi](/azure/architecture/checklist/resiliency-per-service)
-  - [Olağanüstü durum kurtarma tatbikatı gerçekleştirme](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Olağanüstü durum kurtarma detayına gitme](../sql-database/sql-database-disaster-recovery-drills.md)
   - [Azure uygulamaları için olağanüstü durum kurtarma ve yüksek kullanılabilirlik][dr-ha-guide]
-- Service [Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
+- [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
 
 
 <!-- External links -->

@@ -1,21 +1,21 @@
 ---
 title: Redis için Azure Cache sunucu tarafı sorunlarını giderme
-description: Bellek basıncı, yüksek CPU, uzun çalışan komutlar veya bant genişliği sınırlamaları gibi Redis için Azure Önbelleği ile sunucu tarafındaki yaygın sorunları nasıl çözeceğinizi öğrenin.
+description: Bellek baskısı, yüksek CPU, uzun süre çalışan komutlar veya bant genişliği sınırlamaları gibi Reda için Azure önbelleğiyle ilgili genel sunucu tarafı sorunlarını çözmeyi öğrenin.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277940"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Redis için Azure Cache sunucu tarafı sorunlarını giderme
 
-Bu bölümde, Redis için bir Azure Önbelleği veya onu barındıran sanal makine(ler) koşulu nedeniyle oluşan sorun giderme sorunları açıklanmaktadır.
+Bu bölümde, redya ya da barındıran sanal makineler için Azure önbelleğindeki bir koşul nedeniyle oluşan sorun giderme sorunları ele alınmaktadır.
 
 - [Redis sunucusunda bellek baskısı](#memory-pressure-on-redis-server)
 - [Yüksek CPU kullanımı veya sunucu yükü](#high-cpu-usage-or-server-load)
@@ -23,60 +23,60 @@ Bu bölümde, Redis için bir Azure Önbelleği veya onu barındıran sanal maki
 - [Sunucu tarafı bant genişliği sınırlaması](#server-side-bandwidth-limitation)
 
 > [!NOTE]
-> Bu kılavuzdaki sorun giderme adımlarından bazıları Redis komutlarını çalıştırmak ve çeşitli performans ölçümlerini izlemek için yönergeler içerir. Daha fazla bilgi ve talimatlar için [Ek bilgi](#additional-information) bölümündeki makalelere bakın.
+> Bu kılavuzdaki sorun giderme adımlarından bazıları Redsıs komutları çalıştırma ve çeşitli performans ölçümlerini izleme yönergelerini içerir. Daha fazla bilgi ve yönergeler için [ek bilgi](#additional-information) bölümündeki makalelere bakın.
 >
 
 ## <a name="memory-pressure-on-redis-server"></a>Redis sunucusunda bellek baskısı
 
-Sunucu tarafındaki bellek baskısı, isteklerin işlenmesini geciktirebilecek her türlü performans sorununa yol açar. Bellek basıncı çarptığında, sistem verileri diske sayfalayabilir. Bu _sayfa hatası,_ sistemin önemli ölçüde yavaşlamasına neden olur. Bu bellek basıncının birkaç olası nedeni vardır:
+Sunucu tarafında bellek baskısı, isteklerin işlenmesini geciktirebileceği tüm performans sorunlarına yol açar. Bellek baskısı ne zaman olursa, sistem diske veri sayfası verebilir. Bu _sayfa hatalı_ , sistemin önemli ölçüde yavaşlamasına neden olur. Bu bellek basıncının birkaç olası nedeni vardır:
 
-- Önbellek, maksimum kapasitesine yakın verilerle doldurulur.
-- Redis yüksek hafıza parçalanması görüyor. Redis küçük nesneler için en iyi duruma geldiğinden, bu parçalanma ya da büyük nesnelerin depolanmasından kaynaklanır.
+- Önbellek, maksimum kapasitesinin yakınında verilerle doldurulmuştur.
+- Redsıs yüksek bellek parçalanması görüyor. Bu parçalanma çoğunlukla büyük nesneler depolanmasından kaynaklanır çünkü redin küçük nesneler için iyileştirildi.
 
-Redis, [INFO](https://redis.io/commands/info) komutu aracılığıyla bu sorunu belirlemenize yardımcı olabilecek iki durumu ortaya çıkarır: "used_memory" ve "used_memory_rss". Portalı kullanarak [bu ölçümleri görüntüleyebilirsiniz.](cache-how-to-monitor.md#view-metrics-with-azure-monitor)
+Redin, bu sorunu belirlemenize yardımcı olabilecek [Info](https://redis.io/commands/info) komutu aracılığıyla iki istatistik ortaya çıkarır: "used_memory" ve "used_memory_rss". Portalı kullanarak [bu ölçümleri görüntüleyebilirsiniz](cache-how-to-monitor.md#view-metrics-with-azure-monitor) .
 
-Bellek kullanımını sağlıklı tutmaya yardımcı olmak için yapabileceğiniz birkaç olası değişiklik vardır:
+Bellek kullanımını sağlıklı tutmaya yardımcı olmak için kullanabileceğiniz birkaç olası değişiklik vardır:
 
-- [Bir bellek ilkesini yapılandırın](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) ve anahtarlarınızın son kullanma saatlerini ayarlayın. Parçalanma nız varsa bu ilke yeterli olmayabilir.
-- Bellek parçalanmasını telafi edecek kadar büyük [bir maxmemory ayrılmış değeri yapılandırın.](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)
-- Büyük önbelleğe alınmış nesneleri daha küçük ilgili nesnelere ayırın.
-- Olası etkileri hakkında erken bildirimde kullanılmak üzere kullanılmış bellek gibi ölçümlerde [uyarılar oluşturun.](cache-how-to-monitor.md#alerts)
-- [Scale](cache-how-to-scale.md) Daha fazla bellek kapasitesiyle daha büyük bir önbellek boyutuna ölçeklendirin.
+- [Bir bellek Ilkesi yapılandırın](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) ve anahtarlarınızın süre sonu zamanlarını ayarlayın. Parçalandıysanız Bu ilke yeterli olmayabilir.
+- Bellek parçalanmasını dengelemek için yeterince büyük olan [MaxMemory ile ayrılmış bir değer yapılandırın](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) .
+- Büyük önbelleğe alınmış nesnelerinizi daha küçük ilgili nesnelere bölün.
+- Olası etkilerden erken haberdar olmak için kullanılan bellek gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
+- Daha fazla bellek kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
 ## <a name="high-cpu-usage-or-server-load"></a>Yüksek CPU kullanımı veya sunucu yükü
 
-Yüksek sunucu yükü veya CPU kullanımı, sunucunun istekleri zamanında işleyamayacağı anlamına gelir. Sunucu yanıt vermekte yavaş olabilir ve istek oranlarına ayak uyduramayabilir.
+Yüksek sunucu yükü veya CPU kullanımı, sunucunun istekleri zamanında işleyemediği anlamına gelir. Sunucunun yanıt vermesi yavaş olabilir ve istek ücretleri ile devam edemiyor.
 
-CPU veya sunucu yükü gibi [ölçümleri izleyin.](cache-how-to-monitor.md#view-metrics-with-azure-monitor) Zaman ekmelerine karşılık gelen CPU kullanımındaki ani artışlara dikkat edin.
+CPU veya sunucu yükü gibi [ölçümleri izleyin](cache-how-to-monitor.md#view-metrics-with-azure-monitor) . CPU kullanımında, zaman aşımları ile karşılık gelen ani artışlar izleyin.
 
 Yüksek sunucu yükünü azaltmak için yapabileceğiniz birkaç değişiklik vardır:
 
-- Aşağıda belirtilen [uzun süreli komutlar](#long-running-commands) veya yüksek bellek basıncı nedeniyle sayfa hatası gibi CPU ani artışlarına neyin neden olduğunu araştırın.
-- Olası etkileri hakkında erken bildirimde olmak üzere CPU veya sunucu yükü gibi ölçümlerde [uyarılar oluşturun.](cache-how-to-monitor.md#alerts)
-- [Scale](cache-how-to-scale.md) Daha fazla CPU kapasitesine sahip daha büyük bir önbellek boyutuna ölçeklendirin.
+- Yüksek bellek baskısı nedeniyle, aşağıda belirtilen [uzun süre çalışan komutlar](#long-running-commands) veya sayfa hatalı gibi CPU artışlarına neden olduğunu araştırın.
+- Olası etkilerden önce uyarılmak için CPU veya sunucu yükü gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
+- Daha fazla CPU kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
 ## <a name="long-running-commands"></a>Uzun süre çalışan komutlar
 
-Bazı Redis komutlarının yürütülmesi diğerlerinden daha pahalıdır. [Redis komutları belgeler](https://redis.io/commands) her komutun zaman karmaşıklığını gösterir. Redis komut işleme tek iş parçacığı olduğundan, çalıştırmak için zaman alan bir komut sonra gelen tüm diğer engeller. Performans etkilerini anlamak için Redis sunucunuza verdiğiniz komutları gözden geçirmelisiniz. Örneğin, [KEYS](https://redis.io/commands/keys) komutu genellikle bir O(N) işlemi olduğunu bilmeden kullanılır. CPU artışlarını azaltmak için [SCAN'ı](https://redis.io/commands/scan) kullanarak KEYS'ten kaçınabilirsiniz.
+Bazı redin komutlarının yürütülmesi diğerlerine göre daha pahalıdır. [Redsıs komutları belgeleri](https://redis.io/commands) , her komutun zaman karmaşıklığını gösterir. Redsıs komut işleme tek iş parçacıklı olduğundan, çalıştırılacak zaman alan bir komut bundan sonra gelen tüm diğerlerini engeller. Performans etkilerini anlamak için, Redsıs sunucunuza dağıttığınız komutları gözden geçirmeniz gerekir. Örneğin, [anahtarlar](https://redis.io/commands/keys) komutu genellikle bir O (N) işlemi olduğunu bilmeksizin kullanılır. CPU artışlarını azaltmak için [tarama](https://redis.io/commands/scan) kullanarak anahtarlardan kaçınabilirsiniz.
 
-[SLOWLOG](https://redis.io/commands/slowlog) komutunu kullanarak, sunucuya karşı yürütülen pahalı komutları ölçebilirsiniz.
+[Yavaşlatma log](https://redis.io/commands/slowlog) komutunu kullanarak, sunucuda yürütülen pahalı komutları ölçebilirsiniz.
 
 ## <a name="server-side-bandwidth-limitation"></a>Sunucu tarafı bant genişliği sınırlaması
 
-Farklı önbellek boyutları farklı ağ bant genişliği kapasitelerine sahiptir. Sunucu kullanılabilir bant genişliğini aşarsa, veriler istemciye bu kadar hızlı gönderilmez. Sunucu verileri istemciye yeterince hızlı itemediği için istemci istekleri zaman alabilir.
+Farklı önbellek boyutları farklı ağ bant genişliği kapasiteye sahiptir. Sunucu kullanılabilir bant genişliğini aşarsa, veriler istemciye hızlı bir şekilde gönderilmez. Sunucu istemciye verileri yeterince hızlı bir şekilde gönderemediğinden, istemci istekleri zaman aşımına uğrar.
 
-Sunucu tarafı bant genişliğinin ne kadar kullanıldığını görmek için "Önbellek Okuma" ve "Önbellek Yazma" ölçümleri kullanılabilir. Bu [ölçümleri](cache-how-to-monitor.md#view-metrics-with-azure-monitor) portalda görüntüleyebilirsiniz.
+"Önbellek okuma" ve "önbellek yazma" ölçümleri, sunucu tarafı bant genişliğinin ne kadar kullanıldığını görmek için kullanılabilir. [Bu ölçümleri portalda görüntüleyebilirsiniz](cache-how-to-monitor.md#view-metrics-with-azure-monitor) .
 
-Ağ bant genişliği kullanımının maksimum kapasiteye yakın olduğu durumları azaltmak için:
+Ağ bant genişliği kullanımının en yüksek kapasiteye yakın olduğu durumları azaltmak için:
 
-- Ağ talebini azaltmak için istemci çağrı davranışını değiştirin.
-- Olası etkileri hakkında erken bildirimde olmak üzere önbellek okuma veya önbellek yazma gibi ölçümler de [uyarılar oluşturun.](cache-how-to-monitor.md#alerts)
-- [Scale](cache-how-to-scale.md) Daha fazla ağ bant genişliği kapasitesine sahip daha büyük bir önbellek boyutuna ölçeklendirin.
+- Ağ talebini azaltmak için istemci çağrısı davranışını değiştirin.
+- Olası etkilerden önce bildirilmesi için önbellek okuma veya önbellek yazma gibi ölçümler üzerinde [uyarılar oluşturun](cache-how-to-monitor.md#alerts) .
+- Daha fazla ağ bant genişliği kapasitesine sahip daha büyük bir önbellek boyutuna [ölçeklendirin](cache-how-to-scale.md) .
 
 ## <a name="additional-information"></a>Ek bilgiler
 
 - [Redis için Azure Cache istemci tarafı sorunlarını giderme](cache-troubleshoot-client.md)
-- [Redis sunan ve boyutu için hangi Azure Önbelleğini kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Önbelleğimin performansını nasıl kıyaslayabilir ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Redis için Azure Önbelleği nasıl izlenir?](cache-how-to-monitor.md)
-- [Redis komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)
+- [Redne teklif teklifi ve boyutu için Azure önbelleği kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [Önbelleğim performansını nasıl kıyaslarım ve test edebilirim?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Redsıs için Azure önbelleğini izleme](cache-how-to-monitor.md)
+- [Redsıs komutlarını nasıl çalıştırabilirim?](cache-faq.md#how-can-i-run-redis-commands)
