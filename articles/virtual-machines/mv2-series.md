@@ -1,48 +1,48 @@
 ---
-title: Mv2 serisi - Azure Sanal Makineler
-description: Mv2 serisi VM'ler için teknik özellikler.
+title: Mv2-Series-Azure sanal makineleri
+description: Mv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: lahugh
-ms.openlocfilehash: 764dc93608ae3b8882b7048a722c6d3415cbc644
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7df8dd439008258ea1b4986054660fb0fb9070ce
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885795"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204194"
 ---
 # <a name="mv2-series"></a>Mv2 serisi
 
-Mv2 serisi, 2,5 GHz'lik tüm çekirdek taban frekansına ve 3,8 GHz maksimum turbo frekansına sahip, hiper dişli Intel® Xeon® Platinum 8180M 2.5GHz (Skylake) işlemciüzerinde çalışan yüksek iş çıkışlı, düşük gecikmelik li platforma sahiptir. Tüm Mv2 serisi sanal makine boyutları hem standart hem de premium kalıcı diskler kullanabilir. Mv2 serisi örnekler, ilişkisel veritabanı sunucuları, büyük önbellekler ve bellek içi analizler için ideal olan yüksek bellek-CPU oranıyla, büyük bellek içi veritabanlarını ve iş yüklerini desteklemek için benzersiz hesaplama performansı sağlayan bellek en iyi duruma getirilmiş VM boyutlarıdır.
+Mv2-Series, bir hiper iş parçacıklı Intel® Xeon® Platinum 81805 2.5 GHz (ufuk Gölü) işlemcisi üzerinde çalışan yüksek performans, 2,5 GHz ve en fazla Turbo frekansı 3,8 GHz ile çalışır. Tüm Mv2 serisi sanal makine boyutları, hem standart hem de Premium kalıcı diskler kullanabilir. Mv2 serisi örnekler, ilişkisel veritabanı sunucuları, büyük önbellekler ve bellek içi analiz için ideal olan yüksek bellek içi veritabanlarını ve iş yüklerini desteklemek üzere benzersiz işlem performansı sağlayan bellek için iyileştirilmiş VM boyutlarıdır.
 
-Mv2 serisi VM özelliği Intel® Hiper-Threading Teknolojisi
+Mv2 serisi VM 'nin özelliği, hiper Iş parçacığı teknolojisinin Intel®
 
-Premium Depolama: Desteklenen
+Premium Depolama: desteklenir
 
-Premium Depolama önbelleğe alma: Desteklenen
+Premium depolama önbelleği: desteklenir
 
-Canlı Geçiş: Desteklenmiyor
+Dinamik Geçiş: desteklenmiyor
 
-Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
-Yazma Hızlandırıcısı: [Desteklenen](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Yazma Hızlandırıcısı: [destekleniyor](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-|Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Max NIC ' ler / Beklenen ağ bant genişliği (Mbps) |
+|Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
+| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 / 16000 |
+| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 serisi VM yalnızca nesil 2'dir. Linux kullanıyorsanız, bir resmi nasıl bulup seçacağınız hakkında talimatlar için [Azure'daki 2 nesil VM'ler için Destek'e](./linux/generation-2.md) bakın. Windows kullanıyorsanız, bir resmi nasıl bulup seçacağınız hakkında talimatlar için [Azure'da nesil 2 VM'ler için Destek'e](./windows/generation-2.md) bakın. Dört farklı Mv2 serisi VM türü listesi için gerekli minimum işletim sistemi bültenleri:
+<sup>1</sup> Mv2 serisi VM 'ler yalnızca 2. nesil ve 2. nesil desteklenen görüntülerin bir alt kümesini destekler. Mv2-Series için desteklenen görüntülerin tam listesi için lütfen aşağıya bakın. Linux kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./linux/generation-2.md) . Windows kullanıyorsanız, bir görüntüyü bulma ve seçme hakkında yönergeler için bkz. [Azure 'da 2. nesil sanal makineler Için destek](./windows/generation-2.md) . 
 
-- Windows Server 2019 veya sonrası
-- SUSE Linux Enterprise Server 12 SP4 ve sonrası veya SUSE Linux Enterprise Server 15 SP1 ve sonrası
-- Red Hat Enterprise Linux 7.6, 7.7, 8.1 veya sonrası 
-- Oracle Enterprise Linux 7.7 veya sonrası
+- Windows Server 2019 veya üzeri
+- SUSE Linux Enterprise Server 12 SP4 ve üzeri ya da SUSE Linux Enterprise Server 15 SP1 ve üzeri
+- Red Hat Enterprise Linux 7,6, 7,7, 8,1 veya üzeri 
+- Oracle Enterprise Linux 7,7 veya üzeri
 
 
 
@@ -59,4 +59,4 @@ Yazma Hızlandırıcısı: [Desteklenen](https://docs.microsoft.com/azure/virtua
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

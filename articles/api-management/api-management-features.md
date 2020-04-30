@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi katmanlarının özellik tabanlı karşılaştırılması | Microsoft Dokümanlar
-description: Bu makalede, sundukları özelliklere göre API Yönetimi katmanları karşılaştırılır.
+title: Azure API Management katmanları için özellik tabanlı karşılaştırma | Microsoft Docs
+description: Bu makalede, sunduğu özelliklere göre API Management katmanları karşılaştırılır.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,39 +12,39 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 2e84138419986ef1033ab076b3745187812e91b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335896"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203177"
 ---
-# <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Yönetimi katmanlarının özellik tabanlı karşılaştırılması
+# <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management katmanlarının Özellik tabanlı karşılaştırması
 
-Her API Yönetimi [fiyatlandırma katmanı,](https://aka.ms/apimpricing) birim [başına](api-management-capacity.md)farklı bir özellik kümesi sunar. Aşağıdaki tablo, katmanların her birinde bulunan temel özellikleri özetleyin. Bazı özellikler farklı çalışabilir veya katmana bağlı olarak farklı özelliklere sahip olabilir. Bu gibi durumlarda, bu bireysel özellikleri açıklayan dokümantasyon makalelerinde farklılıklar belirtilir.
+Her API Management [fiyatlandırma katmanı](https://aka.ms/apimpricing) , ayrı bir özellik kümesi ve birim [kapasitesi](api-management-capacity.md)başına sunulur. Aşağıdaki tabloda, katmanların her birinde kullanılabilen temel özellikler özetlenmektedir. Bazı özellikler farklı çalışabilir veya katmana bağlı olarak farklı yeteneklere sahip olabilir. Bu gibi durumlarda, bu ayrı özellikleri açıklayan belge makalelerinde farklılıklar çağrılır.
 
 > [!IMPORTANT]
-> Geliştirici katmanının üretim dışı kullanım durumları ve değerlendirmeler için olduğunu lütfen unutmayın. SLA sunmuyor.
+> Geliştirici katmanının üretim dışı kullanım örnekleri ve değerlendirmeleri için olduğunu lütfen unutmayın. SLA sunmaz.
 
 | Özellik                                                                                      | Tüketim | Geliştirici | Temel | Standart | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
-| Azure AD<sup>tümleştirmesi 1</sup>                                                             | Hayır          | Evet       | Hayır    | Evet      | Evet     |
-| Sanal Ağ (VNet) desteği                                                               | Hayır          | Evet       | Hayır    | Hayır       | Evet     |
-| Çok bölgeli dağıtım                                                                      | Hayır          | Hayır        | Hayır    | Hayır       | Evet     |
-| Birden çok özel alan adı                                                                 | Hayır          | Hayır        | Hayır    | Hayır       | Evet     |
-| Geliştirici portalı<sup>2</sup>                                                                 | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| Dahili önbellek                                                                               | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| Yerleşik analitik                                                                           | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| [Kendi kendine barındırılan ağ geçidi](self-hosted-gateway-overview.md)<sup>3</sup>                           | Hayır          | Evet       | Hayır    | Hayır       | Evet     |
-| [TLS ayarları](api-management-howto-manage-protocols-ciphers.md)                             | Evet         | Evet       | Evet   | Evet      | Evet     |
-| [Dış önbellek](https://aka.ms/apimbyoc)                                                    | Evet         | Evet       | Evet   | Evet      | Evet     |
-| [İstemci sertifikası kimlik doğrulaması](api-management-howto-mutual-certificates-for-clients.md) | Evet         | Evet       | Evet   | Evet      | Evet     |
-| [Yedekleme ve geri yükleme](api-management-howto-disaster-recovery-backup-restore.md)               | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| [Git üzerinde Yönetim](api-management-configuration-repository-git.md)                        | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| Doğrudan yönetim API'si                                                                        | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| Azure Monitör günlükleri ve ölçümleri                                                               | Hayır          | Evet       | Evet   | Evet      | Evet     |
-| Statik IP                                                                                    | Hayır          | Evet       | Evet   | Evet      | Evet     |
+| Azure AD tümleştirmesi<sup>1</sup>                                                             | Hayır          | Yes       | Hayır    | Yes      | Yes     |
+| Sanal ağ (VNet) desteği                                                               | Hayır          | Yes       | Hayır    | Hayır       | Yes     |
+| Çok bölgeli dağıtım                                                                      | Hayır          | Hayır        | Hayır    | Hayır       | Yes     |
+| Birden çok özel etki alanı adı                                                                 | Hayır          | Hayır        | Hayır    | Hayır       | Yes     |
+| Geliştirici portalı<sup>2</sup>                                                                 | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| Yerleşik önbellek                                                                               | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| Yerleşik analiz                                                                           | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| [Şirket içinde barındırılan ağ geçidi](self-hosted-gateway-overview.md)<sup>3</sup>                           | Hayır          | Yes       | Hayır    | Hayır       | Yes     |
+| [TLS ayarları](api-management-howto-manage-protocols-ciphers.md)                             | Yes         | Yes       | Yes   | Yes      | Yes     |
+| [Dış önbellek](https://aka.ms/apimbyoc)                                                    | Yes         | Yes       | Yes   | Yes      | Yes     |
+| [İstemci sertifikası kimlik doğrulaması](api-management-howto-mutual-certificates-for-clients.md) | Yes         | Yes       | Yes   | Yes      | Yes     |
+| [Yedekleme ve geri yükleme](api-management-howto-disaster-recovery-backup-restore.md)               | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| [Git üzerinden yönetim](api-management-configuration-repository-git.md)                        | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| Doğrudan yönetim API 'SI                                                                        | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| Azure Izleyici günlükleri ve ölçümleri                                                               | Hayır          | Yes       | Yes   | Yes      | Yes     |
+| Statik IP                                                                                    | Hayır          | Yes       | Yes   | Yes      | Yes     |
 
-<sup>1</sup> Geliştirici portalında kullanıcı oturum açma için bir kimlik sağlayıcısı olarak Azure AD'nin (ve Azure AD B2C) kullanımını sağlar.<br/>
-<sup>2</sup> Kullanıcılar, gruplar, sorunlar, uygulamalar ve e-posta şablonları ve bildirimler gibi ilgili işlevler de dahil olmak üzere.<br/>
-<sup>3</sup> Tek bir ağ geçidi düğümü ile kendi kendine barındırılan ağ geçidi dağıtımı ile sınırlıdır.<br/>
+<sup>1</sup> Azure AD 'nin (ve Azure AD B2C) kullanımını, Geliştirici Portalında Kullanıcı oturum açması için bir kimlik sağlayıcısı olarak sunar.<br/>
+<sup>2</sup> Kullanıcı, gruplar, sorunlar, uygulamalar ve e-posta şablonları ve bildirimler gibi ilgili işlevler dahil.<br/>
+<sup>3</sup> geliştirici katmanında barındırılan ağ geçitlerinde tek ağ geçidi düğümüyle sınırlı.<br/>

@@ -8,28 +8,27 @@ manager: erikre
 editor: ''
 ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 2e8863eed774884a99de8643c9e497378368d166
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f8ca0caedd438c4ce707a044bc7fa7dd035e8983
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70072496"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203242"
 ---
-# <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Azure API Management'ta dış Azure Cache for Redis önbelleği kullanma
+# <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management dış Redsıs uyumlu bir önbellek kullanın
 
-Azure API Management, yerleşik önbelleğin kullanılmasıyla ilgili ek olarak, bir dış Azure önbelleğindeki yanıtları redin için önbelleğe almaya da olanak tanır.
+Azure API Management, yerleşik önbelleğin kullanılmasıyla ilgili ek olarak, dış Red, uyumlu bir önbellekte yanıtları önbelleğe almaya izin verir, örneğin Redsıs için Azure Cache.
 
-Dış önbelleğin kullanılması, yerleşik önbelleğin bazı sınırlamalarını aşmayı sağlar. Şunları yapmak istiyorsanız özellikle faydalıdır:
+Dış önbelleğin kullanılması, yerleşik önbelleğin bazı sınırlamalarını aşmayı sağlar:
 
 * API Management güncelleştirmeler sırasında önbelleğinizin düzenli aralıklarla silinmesini önleyin
 * Önbellek yapılandırmanız üzerinde daha fazla denetime sahip
 * API Management katmanından daha fazla veri önbelleğe almasına izin verir
 * API Management tüketim katmanıyla önbelleğe alma kullanın
+* [API Management kendi kendine barındırılan ağ geçitlerinde](self-hosted-gateway-overview.md) önbelleğe almayı etkinleştir
 
 Önbelleğe alma hakkında daha ayrıntılı bilgi için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) ve [Azure API Management'te özel önbelleğe alma](api-management-sample-cache-by-key.md).
 
@@ -53,6 +52,10 @@ Bu bölümde, Azure 'da redin için Azure önbelleğinin nasıl oluşturulacağ�
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
+## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"> </a> Redsıs önbelleğini Kubernetes 'e dağıtma
+
+Önbelleğe alma için, şirket içinde barındırılan ağ geçitleri özel olarak dış önbelleklere güvenir. Ön belleğe alma işleminin etkili bir şekilde barındırılması için ve bağımlı oldukları önbelleğin, arama ve depolama gecikmeleri en aza indirmek için birbirlerine yakın olması gerekir. Redsıs önbelleğinin aynı Kubernetes kümesine veya yakında ayrı bir kümeye dağıtılmasının en iyi seçenek vardır. Redsıs önbelleğinin bir Kubernetes kümesine nasıl dağıtılacağını öğrenmek için bu [bağlantıyı](https://github.com/kubernetes/examples/tree/master/guestbook) izleyin.
+
 ## <a name="add-an-external-cache"></a><a name="add-external-cache"> </a>Dış önbellek Ekle
 
 Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere aşağıdaki adımları izleyin.
@@ -60,7 +63,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 ![Kendi önbelleğinizi APıM 'e taşıyın](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> **Içinden kullanım** ayarı, API Management çok bölgesel bir yapılandırması durumunda yapılandırılan önbellek ile hangi API Management bölgesel dağıtımın iletişim kuracağını belirtir. **Varsayılan** olarak belirtilen önbellekler, bölgesel bir değere sahip önbellekler tarafından geçersiz kılınır.
+> Bu ayardan **kullanımı** , yapılandırılmış önbelleği kullanacak bir Azure bölgesi veya şirket içinde barındırılan ağ geçidi konumunu belirtir. **Varsayılan** olarak yapılandırılan önbellekler, belirli bir eşleşen bölge veya konum değeri olan önbellekler tarafından geçersiz kılınır.
 >
 > Örneğin, API Management Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde barındırılıyorsa ve iki önbellek yapılandırıldığında, biri **varsayılan** diğeri ve **Güneydoğu Asya**için bir tane yapılandırılmışsa, **Güneydoğu Asya** 'daki API Management kendi önbelleğini kullanır, ancak diğer iki bölge **varsayılan** önbellek girişini kullanır.
 
@@ -81,6 +84,16 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 4. **Önbellek örneği** açılan alanında **özel** ' i seçin.
 5. **Varsayılan** ' ı seçin veya istediğiniz bölgeyi açılan **menüden kullan** alanından belirtin.
 6. **Bağlantı dizesi** alanında redsıs bağlantı dizesi Için Azure önbelleğinizi sağlayın.
+7. **Kaydet**’e tıklayın.
+
+### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>Kendi kendine barındırılan bir ağ geçidine Redsıs önbelleği ekleme
+
+1. Azure portal API Management örneğinizi inceleyin.
+2. Sol taraftaki menüden **dış önbellek** sekmesini seçin.
+3. **+ Ekle** düğmesine tıklayın.
+4. **Önbellek örneği** açılan alanında **özel** ' i seçin.
+5. İstenen şirket içinde barındırılan ağ geçidi konumunu veya **varsayılan** , açılan **listeden kullan** alanından belirtin.
+6. **Bağlantı dizesi** alanında redsıs Cache Bağlantı dizenizi belirtin.
 7. **Kaydet**’e tıklayın.
 
 ## <a name="use-the-external-cache"></a>Dış önbelleği kullanma

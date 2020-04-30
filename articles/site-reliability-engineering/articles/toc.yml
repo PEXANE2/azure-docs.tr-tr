@@ -1,0 +1,7 @@
+- name: Site güvenilirlik mühendisliği belgeleri
+  href: ../index.yml
+- name: Sık Sorulan Sorular
+  expanded: true
+  items:
+    - name: SRE ve DevOps
+      href: devops.md

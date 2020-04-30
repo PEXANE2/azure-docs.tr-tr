@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75942819"
+ms.locfileid: "82204434"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -232,7 +232,7 @@ Premium Depolama disklerinin standart depolama disklerine kıyasla daha yüksek 
 
 ## <a name="disk-caching"></a>Disk önbelleği
 
-Azure Premium Depolamalarından yararlanan yüksek ölçekli VM 'Ler BlobCache adlı çok katmanlı bir önbelleğe alma teknolojisine sahiptir. BlobCache, önbelleğe alma için sanal makine RAM ve yerel SSD 'nin bir birleşimini kullanır. Bu önbellek, Premium Depolama kalıcı disklerinde ve VM yerel disklerinde kullanılabilir. Varsayılan olarak, bu önbellek ayarı, Premium depolamada barındırılan veri diskleri için işletim sistemi diskleri ve salt okunur için okuma/yazma olarak ayarlanır. Premium Depolama disklerinde etkinleştirilmiş disk önbelleği sayesinde, yüksek ölçekli VM 'Ler temel disk performansını aşan son derece yüksek performans düzeyine sahip olabilir.
+Azure Premium Depolamalarından yararlanan yüksek ölçekli VM 'Ler BlobCache adlı çok katmanlı bir önbelleğe alma teknolojisine sahiptir. BlobCache, önbelleğe alma için ana bilgisayar RAM ve yerel SSD 'nin bir birleşimini kullanır. Bu önbellek, Premium Depolama kalıcı disklerinde ve VM yerel disklerinde kullanılabilir. Varsayılan olarak, bu önbellek ayarı, Premium depolamada barındırılan veri diskleri için işletim sistemi diskleri ve salt okunur için okuma/yazma olarak ayarlanır. Premium Depolama disklerinde etkinleştirilmiş disk önbelleği sayesinde, yüksek ölçekli VM 'Ler temel disk performansını aşan son derece yüksek performans düzeyine sahip olabilir.
 
 > [!WARNING]
 > Disk önbelleği 4 TiB ve daha büyük diskler için desteklenmez. Sanal makinenize birden çok disk iliştirilmişse, 4 TiB 'den küçük olan her bir disk önbelleğe almayı destekleyecektir.

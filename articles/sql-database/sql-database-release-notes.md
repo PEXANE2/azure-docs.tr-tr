@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/28/2020
 ms.author: sstein
-ms.openlocfilehash: 27a62223970b0f697465ce9aa050f3fccbcae464
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106432"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201321"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -49,7 +49,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak sunucu düzeyinde oturumlar oluşturun. |
 | [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) | Tablolardaki değişiklikleri yönetilen örneklere, tek veritabanlarına veya SQL Server örneklerine yerleştirilmiş diğer veritabanlarına çoğaltın veya diğer yönetilen örneklerde veya SQL Server örneğinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma](replication-with-sql-database-managed-instance.md). |
 | Tehdit algılama |Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'nde tehdit algılamayı yapılandırma](sql-database-managed-instance-threat-detection.md).|
-| Uzun süreli yedek saklama | Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'nde uzun süreli yedek saklama 'Yi yapılandırma](sql-database-managed-instance-long-term-backup-retention-configure.md). | 
+| Uzun süreli yedek saklama | Daha fazla bilgi için, şu anda sınırlı genel önizleme aşamasında olan [Azure SQL veritabanı yönetilen örneği 'nde uzun süreli yedek saklama süresini yapılandırma](sql-database-managed-instance-long-term-backup-retention-configure.md)konusuna bakın. | 
 
 ---
 
@@ -69,7 +69,7 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
   - <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 ve SharePoint 2019 </a> ile <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> için destek
   - <a href="https://aka.ms/managed-instance-collation">Sunucu düzeyi harmanlama</a> ve tercih ettiğiniz <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">zaman dilimini</a> içeren örnekler oluşturun.
   - Yönetilen örnekler artık <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">yerleşik güvenlik duvarıyla</a>korunuyor.
-  - Örnekleri, [genel uç noktaları](sql-database-managed-instance-public-endpoint-configure.md)kullanacak şekilde yapılandırın, <a href="https://aka.ms/four-cores-sql-mi-update">5. nesil donanım oluşturma konusunda</a> daha iyi ağ performansı elde etmek için [proxy geçersiz kılma](sql-database-connectivity-architecture.md#connection-policy) bağlantısı yapın veya en son nokta geri yükleme için <a href="https://aka.ms/managed-instance-configurable-backup-retention">35 güne kadar yedekleme tutma işlemini yapılandırın</a> . Uzun süreli yedek saklama (10 yıla kadar) hala etkin değildir, bu nedenle <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">yalnızca kopya yedeklemeleri</a> alternatif olarak kullanabilirsiniz.
+  - Örnekleri, [genel uç noktaları](sql-database-managed-instance-public-endpoint-configure.md)kullanacak şekilde yapılandırın, <a href="https://aka.ms/four-cores-sql-mi-update">5. nesil donanım oluşturma konusunda</a> daha iyi ağ performansı elde etmek için [proxy geçersiz kılma](sql-database-connectivity-architecture.md#connection-policy) bağlantısı yapın veya en son nokta geri yükleme için <a href="https://aka.ms/managed-instance-configurable-backup-retention">35 güne kadar yedekleme tutma işlemini yapılandırın</a> . [Uzun süreli yedek saklama](sql-database-long-term-retention.md#managed-instance-support) (10 yıla kadar) Şu anda sınırlı genel önizleme aşamasındadır.  
   - Yeni işlevler, <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell kullanarak veritabanınızı başka bir veri merkezine coğrafi olarak geri yükleme</a>, [veritabanını yeniden adlandırma](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [sanal kümeyi silme](sql-database-managed-instance-delete-virtual-cluster.md)olanağı sağlar.
   - Yeni yerleşik [örnek katılımcısı rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) , güvenlik ilkelerine ve kurumsal standartlarla uyumluluğa sahip vergi (SOD) uyumluluğuna izin verebilir.
   - Yönetilen örnek, aşağıdaki Azure Kamu bölgelerinde (US Gov Teksas, US Gov Arizona) ve Çin Kuzey 2 ve Çin Doğu 2 ' de kullanılabilir. Ayrıca, şu ortak bölgelerde de mevcuttur: Avustralya Orta, Avustralya Orta 2, Brezilya Güney, Fransa Güney, BAE Orta, BAE Kuzey, Güney Afrika Kuzey, Güney Afrika Batı.
@@ -81,7 +81,7 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 |[Kaynak grubundaki izinler yönetilen örneğe uygulanmadı](#permissions-on-resource-group-not-applied-to-managed-instance)|Şub 2020|Geçici çözüm vardır||
 |[Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması](#limitation-of-manual-failover-via-portal-for-failover-groups)|Ocak 2020|Geçici çözüm vardır||
 |[SQL Aracısı rollerinin sysadmin olmayan oturumlar için açık yürütme izinlerine ihtiyacı vardır](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Geçici çözüm vardır||
-|[SQL Aracısı işleri, aracı işleminin yeniden başlatılmasına göre kesintiye uğrar](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Geçici çözüm yok|Mar 2020|
+|[SQL Aracısı işleri, aracı işleminin yeniden başlatılmasına göre kesintiye uğrar](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Çözümlendi|Mar 2020|
 |[SSDT 'de AAD oturum açmaları ve kullanıcılar desteklenmez](#aad-logins-and-users-are-not-supported-in-ssdt)|Kas 2019|Geçici çözüm yok||
 |[Bellek içi OLTP bellek sınırları uygulanmadı](#in-memory-oltp-memory-limits-are-not-applied)|Eki 2019|Geçici çözüm vardır||
 |[Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Eki 2019|Geçici çözüm vardır||
@@ -96,7 +96,7 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 |[Küçük veritabanı dosyalarıyla depolama alanını aşma](#exceeding-storage-space-with-small-database-files)||Geçici çözüm vardır||
 |[Veritabanı adları yerine gösterilen GUID değerleri](#guid-values-shown-instead-of-database-names)||Geçici çözüm vardır||
 |[Hata günlükleri kalıcı değil](#error-logs-arent-persisted)||Geçici çözüm yok||
-|[Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Geçici çözüm vardır|Mart 2020|
+|[Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Geçici çözüm vardır|Mar 2020|
 |[CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Geçici çözüm vardır||
 |Veritabanı tutarlılığı, Azure Blob depolamadan geri yükleme sonrasında DBCC CHECKDB kullanılarak doğrulanmadı.||Çözümlendi|Kas 2019|
 |Kaynak veritabanında bellek içi OLTP nesneleri varsa, İş Açısından Kritik katmanından Genel Amaçlı katmana geri yükleme işlemi başarılı olmaz.||Çözümlendi|Eki 2019|
@@ -133,7 +133,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL Aracısı işleri, aracı işleminin yeniden başlatılmasına göre kesintiye uğrar
 
-SQL Aracısı, her defasında iş her başlatıldığında yeni bir oturum oluşturur ve bellek tüketimini kademeli olarak artırır. Zamanlanan işlerin yürütülmesini engelleyecek iç bellek sınırına ulaşmaktan kaçınmak için, bellek tüketimi eşiğe ulaştığında Aracı işlemi yeniden başlatılır. Yeniden başlatma sırasında çalışan işlerin yürütülmesini kesintiye neden olabilir.
+**(Mart 2020 ' de çözümlendi)** SQL Aracısı, her defasında iş her başlatıldığında yeni bir oturum oluşturur ve bellek tüketimini kademeli olarak artırır. Zamanlanan işlerin yürütülmesini engelleyecek iç bellek sınırına ulaşmaktan kaçınmak için, bellek tüketimi eşiğe ulaştığında Aracı işlemi yeniden başlatılır. Yeniden başlatma sırasında çalışan işlerin yürütülmesini kesintiye neden olabilir.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Bellek içi OLTP bellek sınırları uygulanmadı
 

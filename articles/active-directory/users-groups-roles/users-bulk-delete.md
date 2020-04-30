@@ -1,11 +1,11 @@
 ---
-title: Azure Etkin Dizin portalındaki kullanıcıları toplu silme | Microsoft Dokümanlar
-description: Azure Etkin Dizini'ndeki Azure yönetici merkezinde kullanıcıları toplu olarak silme
+title: Azure Active Directory portalında kullanıcıları toplu silme | Microsoft Docs
+description: Azure Active Directory Azure Yönetim merkezinde toplu olarak kullanıcıları silme
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,52 +13,73 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb8b4f35dc5f02e59cced05a6bcfc235d42f996
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532840"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203376"
 ---
-# <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Etkin Dizini'ndeki kullanıcıları toplu silme
+# <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu silme
 
-Azure Etkin Dizin (Azure AD) portalını kullanarak, kullanıcıları toplu olarak silmek için virgülle ayrılmış değerler (CSV) dosyasını kullanarak çok sayıda üyeyi bir gruba kaldırabilirsiniz.
+Azure Active Directory (Azure AD) portalını kullanarak, kullanıcıları toplu olarak silmek için bir virgülle ayrılmış değerler (CSV) dosyası kullanarak çok sayıda üyeyi bir gruba kaldırabilirsiniz.
+
+## <a name="understand-the-csv-template"></a>CSV şablonunu anlama
+
+Azure AD kullanıcılarını toplu olarak başarıyla silmenizi sağlamak için CSV şablonunu indirin ve girin. İndirmediğiniz CSV şablonu şu örnekteki gibi görünebilir:
+
+![Her satır ve sütunun amacını ve değerlerini açıklayan karşıya yükleme ve çağrı aşımları için elektronik tablo](./media/users-bulk-delete/understand-template.png)
+
+### <a name="csv-template-structure"></a>CSV şablonu yapısı
+
+İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
+
+- **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
+- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `User name [userPrincipalName] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
+
+### <a name="additional-guidance"></a>Ek yönergeler
+
+- Karşıya yükleme şablonunun ilk iki satırı kaldırılmamalıdır veya değiştirilmemelidir veya karşıya yükleme işlenemiyor.
+- Önce gerekli sütunlar listelenir.
+- Şablona yeni sütun eklenmesini önermiyoruz. Eklediğiniz tüm ek sütunlar yoksayılır ve işlenmez.
+- CSV şablonunun en son sürümünü mümkün olduğunca sık indirmeniz önerilir.
 
 ## <a name="to-bulk-delete-users"></a>Kullanıcıları toplu olarak silmek için
 
-1. [Azure REKLAM kuruluşunuzda,](https://aad.portal.azure.com) kuruluşta Kullanıcı yöneticisi olan bir hesapla oturum açın.
-1. Azure AD'de, **Kullanıcılar** > **Toplu Silme'yi**seçin.
-1. Toplu **silme kullanıcı** sayfasında, kullanıcı özelliklerinden oluşan geçerli bir CSV dosyasını almak için **İndir'i** seçin.
+1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
+1. Azure AD 'de **Kullanıcılar** > **toplu silme**' yi seçin.
+1. Kullanıcı özelliklerinden oluşan geçerli bir CSV dosyası almak için, **Kullanıcı toplu silme** sayfasında **İndir** ' i seçin.
 
-   ![Silmek istediğiniz kullanıcıları listelediğiniz yerel bir CSV dosyasını seçin](./media/users-bulk-delete/bulk-delete.png)
+   ![Silmek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-delete/bulk-delete.png)
 
-1. CSV dosyasını açın ve silmek istediğiniz her kullanıcı için bir satır ekleyin. Gerekli tek değer **Kullanıcı ana adıdır.** Ardından dosyayı kaydedin.
+1. CSV dosyasını açın ve silmek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **Kullanıcı asıl adı**değeri gereklidir. Ardından dosyayı kaydedin.
 
-   ![CSV dosyası, silmek için kullanıcıların adlarını ve adlarını içerir](./media/users-bulk-delete/delete-csv-file.png)
+   ![CSV dosyası, silinecek kullanıcıların adlarını ve kimliklerini içerir](./media/users-bulk-delete/delete-csv-file.png)
 
-1. Toplu **silme kullanıcı** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçip gönder'i tıklattığınızda, CSV dosyasının doğrulaması başlar.
-1. Dosya içeriği doğrulandığında, **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
-1. Dosyanız doğrulamadan geçtiğinde, kullanıcıları silen Azure toplu işlemini başlatmak için **Gönder'i** seçin.
-1. Silme işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
+1. **Toplu Kullanıcı silme** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçip Gönder ' e tıkladığınızda, CSV dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. Dosyanız doğrulamayı geçtiğinde, kullanıcıları silen Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
+1. Silme işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
 
-Hatalar varsa, **Toplu işlem sonuçları** sayfasındaki sonuç dosyasını indirebilir ve görüntüleyebilirsiniz. Dosya, her hatanın nedenini içerir.
+Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
+Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
    [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
 
-Ardından, sildiğiniz kullanıcıların Azure portalında veya PowerShell'i kullanarak Azure REKLAM kuruluşunda bulununp var olmadığını denetleyebilirsiniz.
+Bundan sonra, sildiğiniz kullanıcıların Azure AD kuruluşunda Azure portal veya PowerShell kullanarak var olup olmadığını kontrol edebilirsiniz.
 
-## <a name="verify-deleted-users-in-the-azure-portal"></a>Azure portalında silinen kullanıcıları doğrulama
+## <a name="verify-deleted-users-in-the-azure-portal"></a>Azure portal silinen kullanıcıları doğrulama
 
-1. Kuruluşta Kullanıcı yöneticisi olan bir hesapla Azure portalında oturum açın.
-1. Gezinti bölmesinde Azure **Etkin Dizin'i**seçin.
+1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
+1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-1. **Göster'in**altında, **yalnızca Tüm kullanıcıları** seçin ve sildiğiniz kullanıcıların artık listede olmadığını doğrulayın.
+1. **Göster**altında yalnızca **tüm kullanıcılar** ' ı seçin ve sildiğiniz kullanıcıların artık listelenmediğini doğrulayın.
 
-### <a name="verify-deleted-users-with-powershell"></a>PowerShell ile silinen kullanıcıları doğrulama
+### <a name="verify-deleted-users-with-powershell"></a>Silinen kullanıcıları PowerShell ile doğrulama
 
 Şu komutu çalıştırın:
 
@@ -66,10 +87,10 @@ Ardından, sildiğiniz kullanıcıların Azure portalında veya PowerShell'i kul
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Sildiğiniz kullanıcıların artık listede olmadığını doğrulayın.
+Sildiğiniz kullanıcıların artık listelenmediğini doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Toplu ekleme kullanıcıları](users-bulk-add.md)
-- [Kullanıcı listesini indirin](users-bulk-download.md)
-- [Toplu geri yükleme kullanıcıları](users-bulk-restore.md)
+- [Toplu Kullanıcı ekleme](users-bulk-add.md)
+- [Kullanıcı listesini indir](users-bulk-download.md)
+- [Kullanıcıları toplu geri yükleme](users-bulk-restore.md)

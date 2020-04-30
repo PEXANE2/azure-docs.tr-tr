@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108494"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202834"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API Uygulamasını bir API olarak içeri aktarma
 
@@ -32,14 +32,14 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği oluşturun](get-started-create-service-instance.md)
-+ Aboneliğinizde bir API Uygulaması olduğundan emin olun. Daha fazla bilgi için Bkz. [Uygulama Hizmeti Dokümantasyonu](https://docs.microsoft.com/azure/app-service/)
++ Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
++ Aboneliğinizde bir API Uygulaması olduğundan emin olun. Daha fazla bilgi için bkz. [App Service belgeleri](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Arka uç API'sini içeri aktarma ve yayımlama
 
-1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
+1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
 2. **Yeni API ekleyin** listesinden **API Uygulaması**’nı seçin.
 
     ![API uygulaması](./media/import-api-app-as-api/api-app.png)
@@ -48,7 +48,7 @@ Bu makalede şunları öğreneceksiniz:
 
     APIM’in swagger bulmaması durumunda, API’yi bir “geçiş” API’si olarak sunar. 
 5. API URL'si soneki ekleyin. Son ek, bu APIM örneğinde özel olarak bu API’yi tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.
-6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda "*Sınırsız*" ürün kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+6. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*sınırsız*" ürün kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
     Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.
 
@@ -56,9 +56,10 @@ Bu makalede şunları öğreneceksiniz:
 
     * **Başlangıç**
     * **Sınırsız**   
-7. **Oluştur'u**seçin.
+7. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+8. **Oluştur**’u seçin.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portalında yeni API'yi test edin
+## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal yeni API 'YI test etme
 
 İşlemler doğrudan bir API’nin işlemlerini görüntülemek ve test etmek için kullanışlı bir yol sağlayan Azure portalından çağrılabilir.  
 

@@ -187,6 +187,8 @@
               href: container-registry-tasks-cross-registry-authentication.md
             - name: Anahtar kasası kullanarak dış kimlik doğrulaması
               href: container-registry-tasks-authentication-key-vault.md
+        - name: Resource Manager şablonu ile hızlı görev çalıştırma
+          href: container-registry-task-run-template.md
         - name: Buildpacks ile görüntü oluşturma (önizleme)
           href: container-registry-tasks-pack-build.md
         - name: Görev günlüklerini görüntüleme

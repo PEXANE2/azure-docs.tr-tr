@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190325"
+ms.locfileid: "82201644"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -458,11 +458,11 @@ Bu adımda, Workday ve Azure portal Active Directory ile bağlantı kuruyoruz.
 
    * **İşgünü parolası –** Workday tümleştirme sistem hesabının parolasını girin
 
-   * **Workday Web HIZMETLERI API URL 'si –** Kiracınız için Workday Web Hizmetleri uç noktasının URL 'sini girin. Bu değer şöyle görünmelidir: https://wd3-impl-services1.workday.com/ccx/service/contoso4, burada *contoso4* doğru kiracı adınızla değiştirilmiştir ve *WD3-Impl* doğru ortam dizesiyle değiştirilmiştir.
+   * **Workday Web HIZMETLERI API URL 'si –** Kiracınız için Workday Web Hizmetleri uç noktasının URL 'sini girin. Bu değer şöyle görünmelidir: `https://wd3-impl-services1.workday.com/ccx/service/contoso4`, burada *contoso4* doğru kiracı adınızla değiştirilmiştir ve *WD3-Impl* doğru ortam dizesiyle değiştirilmiştir.
 
      > [!NOTE]
      > Varsayılan olarak, uygulama, URL 'de sürüm bilgisi belirtilmemişse, Workday Web Services (WWS) v 21.1 kullanır. Belirli bir WWS API sürümünü kullanmak için lütfen URL biçimini kullanın:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Örnek: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > Örnek: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
      
      > [!NOTE]
      > Bir WWS API v 30.0 ve üstünü kullanıyorsanız, sağlama işini açmadan önce lütfen **öznitelik eşlemesi-> gelişmiş seçenekler** altında **XPath apı deyimlerini** güncelleştirin > yapılandırma ve [Workday öznitelik başvurusunu](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) [yönetme](#managing-your-configuration) bölümüne başvuran Workday için öznitelik listesini düzenleyin.  
@@ -621,11 +621,11 @@ Aşağıdaki bölümlerde, yalnızca bulutta bulunan dağıtımlar için Workday
 
    * **İşgünü parolası –** Workday tümleştirme sistem hesabının parolasını girin
 
-   * **Workday Web HIZMETLERI API URL 'si –** Kiracınız için Workday Web Hizmetleri uç noktasının URL 'sini girin. Bu değer şöyle görünmelidir: https://wd3-impl-services1.workday.com/ccx/service/contoso4, burada *contoso4* doğru kiracı adınızla değiştirilmiştir ve *WD3-Impl* doğru ortam dizesiyle değiştirilmiştir. Bu URL bilinmiyorsa, kullanılacak doğru URL 'YI öğrenmek için lütfen Workday Tümleştirme iş ortağınızdan veya destek temsilcisiyle çalışın.
+   * **Workday Web HIZMETLERI API URL 'si –** Kiracınız için Workday Web Hizmetleri uç noktasının URL 'sini girin. Bu değer şöyle görünmelidir: `https://wd3-impl-services1.workday.com/ccx/service/contoso4`, burada *contoso4* doğru kiracı adınızla değiştirilmiştir ve *WD3-Impl* doğru ortam dizesiyle değiştirilmiştir. Bu URL bilinmiyorsa, kullanılacak doğru URL 'YI öğrenmek için lütfen Workday Tümleştirme iş ortağınızdan veya destek temsilcisiyle çalışın.
 
      > [!NOTE]
      > Varsayılan olarak, URL 'de sürüm bilgisi belirtilmemişse, uygulama Workday Web Hizmetleri v 21.1 kullanır. Belirli bir Workday Web Hizmetleri API sürümünü kullanmak için lütfen URL biçimini kullanın:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Örnek: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > Örnek: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
 
 
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
@@ -723,7 +723,7 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
    * **Yönetici parolası –** Workday tümleştirme sistem hesabının parolasını girin
 
-   * **Kiracı URL 'si –** Kiracınız için Workday Web Hizmetleri uç noktasının URL 'sini girin. Bu değer şöyle görünmelidir: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources, burada *contoso4* doğru kiracı adınızla değiştirilmiştir ve *WD3-Impl* doğru ortam dizesiyle (gerekliyse) değiştirilmiştir.
+   * **Kiracı URL 'si –** Kiracınız için Workday Web Hizmetleri uç noktasının URL 'sini girin. Bu değer şöyle görünmelidir: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`, burada *contoso4* doğru kiracı adınızla değiştirilmiştir ve *WD3-Impl* doğru ortam dizesiyle (gerekliyse) değiştirilmiştir.
 
    * **Bildirim e-postası –** E-posta adresinizi girin ve "hata oluşursa e-posta gönder" onay kutusunu işaretleyin.
 

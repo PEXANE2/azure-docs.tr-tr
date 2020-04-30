@@ -1,6 +1,6 @@
 ---
 title: Sanal ağlar ile Azure API Management’ı kullanma
-description: Azure API Yönetimi'nde sanal ağa nasıl bağlantı kurabileceğinizi ve web hizmetlerine nasıl erişerek eriştin.
+description: Azure API Management 'de bir sanal ağa bağlantı ayarlamayı ve üzerinden Web hizmetlerine erişmeyi öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,22 +10,22 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: apimpm
-ms.openlocfilehash: 0ecb7ee7f5c7c0ebaa87eb6b32eee1926d9e294d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768963"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203225"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
-Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure Sanal Ağlar hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure Sanal Ağa Genel Bakış.](../virtual-network/virtual-networks-overview.md)
+Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
 
-Azure API Yönetimi sanal ağ (VNET) içinde dağıtılabilir, böylece ağ içindeki arka uç hizmetlerine erişebilir. Geliştirici portalı ve API ağ geçidi, Internet'ten veya yalnızca sanal ağ içinde erişilebilir olacak şekilde yapılandırılabilir.
+Azure API Management, sanal ağ (VNET) içinde dağıtılabilir ve bu sayede ağ içindeki arka uç hizmetlerine erişebilir. Geliştirici portalı ve API ağ geçidi, Internet 'ten ya da yalnızca sanal ağ içinden erişilebilir olacak şekilde yapılandırılabilir.
 
 > [!NOTE]
-> API alma belgesi URL'si, herkesin erişebileceği bir internet adresinde barındırılmalıdır.
+> API içeri aktarma belgesi URL 'SI, genel olarak erişilebilen bir internet adresinde barındırılmalıdır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,178 +33,180 @@ Azure API Yönetimi sanal ağ (VNET) içinde dağıtılabilir, böylece ağ içi
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmalısınız:
+Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız gerekir:
 
 + Etkin bir Azure aboneliği.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ Bir APIM örneği. Daha fazla bilgi için [bkz.](get-started-create-service-instance.md)
++ Bir APıM örneği. Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
-## <a name="enable-vnet-connection"></a><a name="enable-vpn"> </a>VNET bağlantısını etkinleştirme
+## <a name="enable-vnet-connection"></a><a name="enable-vpn"> </a>VNET bağlantısını etkinleştir
 
-### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Azure portalını kullanarak VNET bağlantısını etkinleştirme
+### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Azure portal kullanarak VNET bağlantısını etkinleştirme
 
-1. API yönetimi örneğini bulmak için [Azure portalına](https://portal.azure.com) gidin. **API Yönetimi hizmetlerini**arayın ve seçin.
+1. API Management örneğinizi bulmak için [Azure Portal](https://portal.azure.com) gidin. **API Management Hizmetleri**arayın ve seçin.
 
-2. API Yönetimi örneğini seçin.
+2. API Management örneğinizi seçin.
 
-3. **Sanal ağı**seçin.
-4. SANAL ağ içinde dağıtılacak API Yönetimi örneğini yapılandırın.
+3. **Sanal ağ**' ı seçin.
+4. API Management örneğini bir sanal ağın içine dağıtılacak şekilde yapılandırın.
 
-    ![API Yönetimi sanal ağ menüsü][api-management-using-vnet-menu]
-5. İstenilen erişim türünü seçin:
+    ![API Management sanal ağ menüsü][api-management-using-vnet-menu]
+5. İstenen erişim türünü seçin:
 
-    * **Kapalı**: Bu varsayılandır. API Yönetimi sanal bir ağa dağıtılanmaz.
+    * **Kapalı**: bu varsayılandır. API Management bir sanal ağa dağıtılmadı.
 
-    * **Harici**: API Yönetimi ağ geçidi ne de geliştirici portalına harici yük dengeleyicisi aracılığıyla genel internetten erişilebilir. Ağ geçidi sanal ağ içindeki kaynaklara erişebilir.
+    * **Harici**: API Management ağ geçidi ve geliştirici portalına bir dış yük dengeleyici aracılığıyla genel İnternet üzerinden erişilebilir. Ağ Geçidi, sanal ağ içindeki kaynaklara erişebilir.
 
         ![Ortak eşleme][api-management-vnet-public]
 
-    * **Dahili**: API Yönetimi ağ geçidine ve geliştirici portalına yalnızca sanal ağ içinden bir dahili yük dengeleyicisi aracılığıyla erişilebilir. Ağ geçidi sanal ağ içindeki kaynaklara erişebilir.
+    * **İç**: API Management ağ geçidi ve geliştirici portalına yalnızca iç yük dengeleyici aracılığıyla sanal ağ içinden erişilebilir. Ağ Geçidi, sanal ağ içindeki kaynaklara erişebilir.
 
         ![Özel eşleme][api-management-vnet-private]
 
-6. **Harici** veya **Dahili'yi**seçtiyseniz, API Yönetimi hizmetinizin sağlandığı tüm bölgelerin listesini görürsünüz. Bir **Konum**seçin ve ardından **Sanal ağ** ve **Subnet'ini**seçin. Sanal ağ listesi, yapılandırma yaptığınız bölgede ayarlanan Azure aboneliklerinizde bulunan hem klasik hem de Kaynak Yöneticisi sanal ağlarıyla doldurulur.
+6. **Dış** veya **iç**' yı seçtiyseniz, API Management hizmetinizin sağlandığı tüm bölgelerin bir listesini görürsünüz. Bir **konum**seçin ve ardından **sanal ağını** ve **alt ağını**seçin. Sanal ağ listesi, yapılandırdığınız bölgede ayarlanmış olan Azure aboneliklerinizde bulunan hem klasik hem de Kaynak Yöneticisi sanal ağlarla doldurulur.
 
     > [!IMPORTANT]
-    > Bir Kaynak Yöneticisi VNET'e Azure API Yönetimi örneğini dağıtırken, hizmetin Azure API Yönetimi örnekleri dışında başka kaynak içermeyen özel bir alt ağda olması gerekir. Azure API Yönetimi örneğini diğer kaynakları içeren kaynak yöneticisi VNET alt ağına dağıtma girişiminde bulunulması durumunda, dağıtım başarısız olur.
+    > Bir Azure API Management örneğini bir Kaynak Yöneticisi VNET 'e dağıttığınızda, hizmet Azure API Management örnekleri dışında başka hiçbir kaynak içermeyen bir ayrılmış alt ağda olmalıdır. Azure API Management örneğini diğer kaynakları içeren bir Kaynak Yöneticisi VNET alt ağına dağıtmaya yönelik bir girişim yapılırsa, dağıtım başarısız olur.
 
-    Ardından **Uygula**'yı seçin. API Yönetimi örneğinizin **Sanal ağ** sayfası yeni sanal ağınız ve alt ağ seçeneklerinizle güncelleştirilir.
+    Ardından **Uygula**'yı seçin. API Management örneğinizin **sanal ağ** sayfası, yeni sanal ağ ve alt ağ seçimlerinizle güncelleştirilir.
 
-    ![VPN'i seçin][api-management-setup-vpn-select]
+    ![VPN seçin][api-management-setup-vpn-select]
 
-7. Üstteki gezinti çubuğunda **Kaydet'i**ve ardından **ağ yapılandırmasını uygula'yı**seçin.
+7. Üst gezinti çubuğunda **Kaydet**' i ve ardından **ağ yapılandırması Uygula**' yı seçin.
 
 > [!NOTE]
-> API Yönetimi örneğinin VIP adresi, VNET her etkinleştirildiğinde veya devre dışı bırakıldığında değişecektir.
-> VIP adresi, API Yönetimi **Dıştan** **İçe**veya Tam tersi bir şekilde taşındığında da değişecektir.
+> API Management örneğinin VIP adresi, VNET 'in her etkin veya devre dışı bırakıldığı her seferinde değişecektir.
+> API Management **dış** sunucudan **iç**veya tam tersi yönde taşındığında VIP adresi de değişecektir.
 >
 
 > [!IMPORTANT]
-> API Yönetimi'ni bir VNET'ten kaldırırsanız veya dağıtılan ı değiştirirseniz, daha önce kullanılan VNET altı saate kadar kilitli kalabilir. Bu süre zarfında VNET'i silmek veya ona yeni bir kaynak dağıtmak mümkün olmayacaktır. Bu davranış api sürümü 2018-01-01 ve daha önceki kullanan istemciler için geçerlidir. Api sürümü 2019-01-01 ve daha sonra kullanan istemciler, ilişkili API Yönetimi hizmeti silinir silinmez VNET serbest bırakılır.
+> VNET 'ten API Management kaldırır veya içinde dağıtıldığı bir değişikliği değiştirirseniz, daha önce kullanılmış olan VNET, altı saate kadar kilitli kalabilir. Bu süre boyunca VNET 'i silmek veya yeni bir kaynak dağıtmak mümkün olmayacaktır. Bu davranış, API-sürüm 2018-01-01 ve öncesini kullanan istemciler için geçerlidir. API-sürüm 2019-01-01 ve üzeri kullanan istemciler, ilişkili API Management hizmeti silindikten hemen sonra sanal ağ serbest bırakılır.
 
-## <a name="enable-vnet-connection-using-powershell-cmdlets"></a><a name="enable-vnet-powershell"> </a>PowerShell cmdlets kullanarak VNET bağlantısını etkinleştirme
-PowerShell cmdlets'i kullanarak VNET bağlantısını da etkinleştirebilirsiniz.
+## <a name="enable-vnet-connection-using-powershell-cmdlets"></a><a name="enable-vnet-powershell"> </a>PowerShell cmdlet 'LERINI kullanarak VNET bağlantısını etkinleştirme
+Ayrıca, PowerShell cmdlet 'lerini kullanarak VNET bağlantısını etkinleştirebilirsiniz.
 
-* **VNET içinde bir API Yönetimi hizmeti oluşturun**: Bir VNET içinde Azure API Yönetimi hizmeti oluşturmak için cmdlet [New-AzApiManagement'ı](/powershell/module/az.apimanagement/new-azapimanagement) kullanın.
+* **VNET içinde API Management hizmeti oluşturma**: sanal ağ Içinde bir Azure API Management hizmeti oluşturmak için [New-Azapimana,](/powershell/module/az.apimanagement/new-azapimanagement) cmdlet 'ini kullanın.
 
-* **VNET içinde varolan bir API Yönetimi hizmetini dağıtın**: Varolan bir Azure API Yönetimi hizmetini Sanal Ağ'a taşımak için cmdlet [Update-AzApiManagementRegion'u](/powershell/module/az.apimanagement/update-azapimanagementregion) kullanın.
+* **Mevcut bir API Management HIZMETINI VNET Içinde dağıtma**: var olan bir Azure API Management hizmetini bir sanal ağ içinde taşımak için [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) cmdlet 'ini kullanın.
 
-## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"> </a>Sanal Ağ içinde barındırılan bir web hizmetine bağlanma
-API Yönetimi hizmetiniz VNET'e bağlandıktan sonra, arka uç hizmetlerine erişmek kamu hizmetlerine erişmekten farklı değildir. Yeni bir API oluştururken veya varolan bir api düzenlerken web hizmetinizin yerel IP adresini veya ana bilgisayar adını (VNET için bir DNS sunucusu yapılandırılmışsa) **Web hizmeti NIN URL** alanına yazmanız gerekir.
+## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"> </a>Sanal ağ içinde barındırılan bir Web hizmetine bağlanma
+API Management hizmetiniz VNET 'e bağlandıktan sonra, içindeki arka uç hizmetlerine erişmek, ortak hizmetlere erişmeden farklı değildir. Yeni bir API oluştururken veya var olan bir API 'yi düzenlediğinizde, Web hizmetinizin Web hizmeti **URL 'si** ALANıNA yerel IP adresini veya ana bilgisayar adını (VNet IÇIN bir DNS sunucusu yapılandırılmışsa) yazmanız yeterlidir.
 
-![VPN'den API ekleme][api-management-setup-vpn-add-api]
+![VPN 'den API ekleme][api-management-setup-vpn-add-api]
 
-## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"> </a>Ortak Ağ Yapılandırma Sorunları
-Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yaygın yanlış yapılandırma sorunlarının bir listesi vereyim.
+## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"> </a>Ortak ağ yapılandırma sorunları
+Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabilecek yaygın yanlış yapılandırma sorunlarının bir listesi verilmiştir.
 
-* **Özel DNS sunucu kurulumu**: API Yönetimi hizmeti birkaç Azure hizmetine bağlıdır. API Yönetimi, özel bir DNS sunucusuna sahip bir VNET'te barındırıldığında, bu Azure hizmetlerinin ana bilgisayar adlarını çözmesi gerekir. Lütfen özel DNS kurulumu ile ilgili [bu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) kılavuzu izleyin. Aşağıdaki bağlantı noktaları tablosuna ve başvuru için diğer ağ gereksinimlerine bakın.
+* **Özel DNS sunucusu kurulumu**: API Management hizmeti, birkaç Azure hizmetine bağlıdır. API Management, özel bir DNS sunucusu olan bir VNET 'te barındırılıyorsa, bu Azure hizmetlerinin ana bilgisayar adlarını çözmesi gerekir. Lütfen özel DNS kurulumu için [Bu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) yönergeleri izleyin. Başvuru için aşağıdaki bağlantı noktaları tablosuna ve diğer ağ gereksinimlerine bakın.
 
 > [!IMPORTANT]
-> VNET için özel bir DNS Server(lar) kullanmayı planlıyorsanız, içine bir API Yönetimi hizmeti dağıtmadan **önce** bu sunucuyu ayarlamanız gerekir. Aksi takdirde, [Ağ Yapılandırma İşlemini Çalıştırarak](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) DNS Server(ları) her değiştirinizde API Yönetimi hizmetini güncelleştirmeniz gerekir
+> VNET için özel bir DNS sunucusu kullanmayı planlıyorsanız, API Management bir hizmeti dağıtmaya **başlamadan önce** onu ayarlamanız gerekir. Aksi takdirde, [ağ yapılandırmasını Uygula işlemini](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) çalıştırarak DNS sunucusunu her değiştirişinizde API Management hizmetini güncelleştirmeniz gerekir
 
-* **API Yönetimi için gerekli bağlantı noktaları**: API Yönetimi'nin dağıtıldığı Subnet'e gelen ve giden trafik Ağ Güvenlik [Grubu][Network Security Group]kullanılarak denetlenebilir. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa, API Yönetimi düzgün çalışmayabilir ve erişilemez hale gelebilir. Bu bağlantı noktalarından birinin veya daha fazlasının engellenmesi, Bir VNET ile API Yönetimi kullanırken başka bir yaygın yanlış yapılandırma sorunudur.
+* **API Management için gereken bağlantı noktaları**: gelen ve giden trafik, API Management dağıtıldığı alt ağa [ağ güvenlik grubu][Network Security Group]kullanılarak denetlenebilir. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa API Management düzgün çalışmayabilir ve erişilemez hale gelebilir. Bu bağlantı noktalarından biri veya daha fazlası engelleniyorsa, VNET ile API Management kullanırken başka bir yaygın yanlış yapılandırma sorunu vardır.
 
-<a name="required-ports"> </a> Bir API Yönetimi hizmeti örneği bir VNET'te barındırıldığında, aşağıdaki tablodaki bağlantı noktaları kullanılır.
+<a name="required-ports"> </a> Bir API Management hizmet ÖRNEĞI bir sanal ağda barındırıldığı zaman, aşağıdaki tablodaki bağlantı noktaları kullanılır.
 
-| Kaynak / Hedef Bağlantı Noktası(lar) | Yön          | Ulaşım protokolü |   [Servis Etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak / Hedef   | Amaç\*( )                                                 | Sanal Ağ türü |
+| Kaynak/hedef bağlantı noktaları | Yön          | Aktarım Protokolü |   [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak/hedef   | Amaç (\*)                                                 | Sanal ağ türü |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| * / [80], 443                  | Gelen            | TCP                | İnternet / VIRTUAL_NETWORK            | API Yönetimine müşteri iletişimi                      | Dış             |
-| * / 3443                     | Gelen            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure portalı ve Powershell için yönetim bitiş noktası         | Dış & İç  |
-| * / 443                  | Giden           | TCP                | VIRTUAL_NETWORK / Depolama             | **Azure Depolamaya Bağımlılık**                             | Dış & İç  |
-| * / 443                  | Giden           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Etkin Dizini](api-management-howto-aad.md) (varsa)                   | Dış & İç  |
-| * / 1433                     | Giden           | TCP                | VIRTUAL_NETWORK / SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & İç  |
-| * / 5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK / EventHub            | [Olay Hub ilkesi](api-management-howto-log-event-hubs.md) ve izleme aracısı için Günlük Bağımlılık | Dış & İç  |
-| * / 445                      | Giden           | TCP                | VIRTUAL_NETWORK / Depolama             | [GIT](api-management-configuration-repository-git.md) için Azure Dosya Paylaşımına Bağımlılık                      | Dış & İç  |
-| * / 1886                     | Giden           | TCP                | VIRTUAL_NETWORK / AzureCloud            | Kaynak Durumu'na Sağlık durumunu yayınlamak için gerekli          | Dış & İç  |
-| * / 443                     | Giden           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | [Tanılama Günlükleri ve Ölçümleri](api-management-howto-use-azure-monitor.md) Yayımla                       | Dış & İç  |
-| * / 25                       | Giden           | TCP                | VIRTUAL_NETWORK / İnternet            | E-posta göndermek için SMTP Rölesine bağlanın                    | Dış & İç  |
-| * / 587                      | Giden           | TCP                | VIRTUAL_NETWORK / İnternet            | E-posta göndermek için SMTP Rölesine bağlanın                    | Dış & İç  |
-| * / 25028                    | Giden           | TCP                | VIRTUAL_NETWORK / İnternet            | E-posta göndermek için SMTP Rölesine bağlanın                    | Dış & İç  |
-| * / 6381 - 6383              | Gelen & Giden | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Makineler arasındaki [Oran Sınırı](api-management-access-restriction-policies.md#LimitCallRateByKey) ilkeleri için Redis Hizmetine erişin         | Dış & İç  |
-| * / *                        | Gelen            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure Altyapı Yük Dengeleyicisi                          | Dış & İç  |
+| */[80], 443                  | Gelen            | TCP                | ıNTERNET/VIRTUAL_NETWORK            | API Management istemci iletişimi                      | Dış             |
+| */3443                     | Gelen            | TCP                | Apimanaya/VIRTUAL_NETWORK       | Azure portal ve PowerShell için yönetim uç noktası         | Dış & Iç  |
+| */443                  | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | **Azure Storage bağımlılığı**                             | Dış & Iç  |
+| */443                  | Giden           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) (uygun olduğunda)                   | Dış & Iç  |
+| */1433                     | Giden           | TCP                | VIRTUAL_NETWORK/SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & Iç  |
+| */5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
+| */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
+| */1886                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Kaynak Durumu sistem durumu yayımlamak için gereklidir          | Dış & Iç  |
+| */443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md) yayımlama                       | Dış & Iç  |
+| */25                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
+| */587                      | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
+| */25028                    | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
+| */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [hız limiti](api-management-access-restriction-policies.md#LimitCallRateByKey) Ilkeleri için Redsıs hizmetine erişin         | Dış & Iç  |
+| * / *                        | Gelen            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure altyapı Load Balancer                          | Dış & Iç  |
 
 >[!IMPORTANT]
-> *API* Yönetimi hizmetinin başarıyla dağıtılabilmesi için Amacın **kalın** olduğu bağlantı noktaları gereklidir. Ancak diğer bağlantı noktalarının engellenmesi, çalışan hizmeti kullanma ve izleme yeteneğinde bozulmaya neden olur.
+> API Management hizmetin başarıyla dağıtılması için *Purpose* , amacının **kalın** olduğu bağlantı noktaları gereklidir. Diğer bağlantı noktalarını engellemek, çalışan hizmeti kullanma ve izleme yeteneğinin azalmasına neden olur.
 
-+ **TLS işlevselliği**: TLS/SSL sertifika zinciri oluşturma ve doğrulama yı etkinleştirmek için API Management hizmetinin ocsp.msocsp.com, mscrl.microsoft.com ve crl.microsoft.com giden ağ bağlantısına ihtiyacı vardır. API Yönetimi'ne yüklediğiniz herhangi bir sertifika CA köküne tam zincir içeriyorsa, bu bağımlılık gerekli değildir.
++ **TLS işlevselliği**: TLS/SSL sertifika zinciri oluşturma ve doğrulamayı etkinleştirmek için API Management hizmeti, ocsp.msocsp.com, mscrl.microsoft.com ve CRL.Microsoft.com giden ağ bağlantısı gerektirir. API Management karşıya yüklediğiniz herhangi bir sertifika, CA köküne tam zinciri içeriyorsa, bu bağımlılık gerekli değildir.
 
-+ **DNS Access : DNS**sunucuları ile iletişim için bağlantı noktası 53'te giden erişim gereklidir. VPN ağ geçidinin diğer ucunda özel bir DNS sunucusu varsa, DNS sunucusuna API Yönetimi barındırma alt ağlarından erişilebilmelidir.
++ **DNS erişimi**: bağlantı noktası 53 üzerinde giden ERIŞIM, DNS sunucularıyla iletişim için gereklidir. Bir VPN ağ geçidinin diğer ucunda özel bir DNS sunucusu varsa, DNS sunucusuna API Management barındıran alt ağdan erişilebilir olması gerekir.
 
-+ **Ölçümler ve Sistem Durumu İzleme**: Aşağıdaki etki alanları altında çözüme kavuşturulan Azure İzleme uç noktalarına giden ağ bağlantısı. Tabloda gösterildiği gibi, bu URL'ler Ağ Güvenlik Grupları ile kullanılmak üzere AzureMonitor hizmet etiketi altında gösterilir.
++ **Ölçümler ve sistem durumu izleme**: Azure izleme uç noktalarına giden ağ bağlantısı, aşağıdaki etki alanları altında çözümlenir. Tabloda gösterildiği gibi, bu URL 'Ler ağ güvenlik gruplarıyla kullanılmak üzere AzureMonitor Service etiketi altında temsil edilir.
 
-    | Azure Ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
+    | Azure ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**yeni**)</li><li>prod.warmpath.msftcloudes.com (**amortismana alınacak)**</li><li>shoebox2.metrics.microsoftmetrics.com (**yeni**)</li><li>shoebox2.metrics.nsatc.net (**amortismana alınacak)**</li><li>prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3.metrics.nsatc.net (**amortismana alınacak**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**amortismana alınacak)**</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net **(amortismana alınacak)**</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com `East US 2` nerede eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**yeni**)</li><li>shoebox2.metrics.nsatc.net (**amortismana alınacak)**</li><li>prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3.metrics.nsatc.net (**amortismana alınacak**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**yeni**)</li><li>shoebox2.metrics.nsatc.net (**amortismana alınacak)**</li><li>prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3.metrics.nsatc.net (**amortismana alınacak**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**Yeni**)</li><li>prod.warmpath.msftcloudes.com (**kullanım dışı**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com burada `East US 2` eastus2.Warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
-  > DNS bölgesi **.nsatc.net** ile **.microsoftmetrics.com'a** yukarıdaki kümelerin değişimi çoğunlukla bir DNS Değişikliğidir. Kümenin IP Adresi değişmez.
+  > DNS bölgesi **. nsatc.net** to **. microsoftmetrics.com** ile yukarıdaki kümelerin DEĞIŞIKLIĞI, genellikle bir DNS değişiklidir. Kümenin IP adresi değişmeyecektir.
 
-+ **Bölgesel Hizmet Etiketleri**: Depolama, SQL ve Olay Hub'larına giden bağlantıya izin veren NSG kuralları, bu etiketlerin API Yönetimi örneğini içeren bölgeye karşılık gelen bölgesel sürümlerini kullanabilir (örneğin, Storage.WestUS, Batı ABD bölgesinde bir API Yönetimi örneği için). Çok bölgeli dağıtımlarda, her bölgedeki NSG, o bölge ve birincil bölge için hizmet etiketlerine trafik izni vermelidir.
++ **Bölgesel hizmet etiketleri**: bir depolama, SQL ve Event Hubs hizmet etiketlerine giden bağlantıya izin veren NSG kuralları, API Management örneğini içeren bölgeye karşılık gelen etiketlerin bölgesel sürümlerini kullanabilir (örneğin, Batı ABD bölgesindeki bir API Management örneği için Storage. WestUS). Çok bölgeli dağıtımlarda, her bölgedeki NSG bu bölge ve birincil bölge için hizmet etiketlerine giden trafiğe izin verilmelidir.
 
-+ **SMTP Rölesi**: SMTP Rölesi için giden `smtpi-co1.msn.com` `smtpi-ch1.msn.com`ağ `smtpi-db3.msn.com` `smtpi-sin.msn.com` bağlantısı, ana bilgisayar altında çözülür , , ve`ies.global.microsoft.com`
++ **SMTP geçişi**: konak `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com` `smtpi-sin.msn.com` ve altında çözümlenen SMTP geçişi için giden ağ bağlantısı`ies.global.microsoft.com`
 
-+ **Geliştirici portalı CAPTCHA**: Geliştirici portalının CAPTCHA'sı için giden ağ `client.hip.live.com` bağlantısı, ana bilgisayarların altında çözülür ve `partner.hip.live.com`.
++ **Geliştirici PORTALı CAPTCHA**: Geliştirici portalının CAPTCHA için giden ağ bağlantısı, Konaklar `client.hip.live.com` ve `partner.hip.live.com`altında çözümleniyor.
 
-+ **Azure portalı Tanılama**: Sanal Ağ içinden API Yönetimi uzantısını kullanırken Azure portalından tanılama günlüklerinin akışını etkinleştirmek için, `dc.services.visualstudio.com` 443 no'lu bağlantı noktasına giden erişim gereklidir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorun giderme sorunlarına yardımcı olur.
++ **Tanılama Azure Portal**: Azure Portal bir sanal ağ içinden API Management uzantısı kullanılırken tanılama günlüklerinin akışını etkinleştirmek için, 443 numaralı bağlantı noktasına giden erişim `dc.services.visualstudio.com` gerekir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorunları gidermeye yardımcı olur.
 
-+ **Express Route veya Network Virtual Appliance kullanarak Şirket İçi Güvenlik Duvarı'na Zorla Tünel**: Ortak bir müşteri yapılandırması, API Yönetimi'nin devrettiği alt ağdaki tüm trafiği şirket içi bir güvenlik duvarından veya Ağ sanal cihazından akmaya zorlayan kendi varsayılan rotalarını (0.0.0.0/0) tanımlamaktır. Giden trafik şirket içinde engellenmiş olduğundan veya artık çeşitli Azure uç noktalarıyla çalışmayan tanınmaz bir adres kümesine NAT'd olduğundan, bu trafik akışı Azure API Yönetimi ile bağlantıyı her zaman kırar. Çözüm birkaç şey yapmanız gerektiğini:
++ **Azure Load Balancer**: hizmet etiketinin `AZURE_LOAD_BALANCER` gelen istek için izin verme, bu, arkasında yalnızca `Developer` bir işlem birimi dağıttiğimiz için SKU için bir gereksinim değildir. Ancak `Premium`, Load Balancer ' den gelen sistem durumu araştırmasının başarısız olması nedeniyle, [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) from, daha yüksek SKU 'ya ölçeklendirilirken kritik hale gelir.
 
-  * API Yönetimi hizmetinin dağıtıldığı alt ağda hizmet uç noktalarını etkinleştirin. Azure Sql, Azure Depolama, Azure EventHub ve Azure ServiceBus için [Hizmet Bitiş Noktalarının][ServiceEndpoints] etkinleştirilmesi gerekir. Uç noktaları doğrudan API Yönetimi'nin bu hizmetlere devredilen alt ağlarından etkinleştirmek, hizmet trafiği için en iyi yönlendirmeyi sağlayan Microsoft Azure omurga ağını kullanmalarına olanak tanır. Zorla tünellenmiş Api Yönetimi ile Hizmet Bitiş Noktaları kullanıyorsanız, yukarıdaki Azure hizmetleri trafiği tünele atılmaz. Diğer API Yönetimi hizmet bağımlılık trafiği tünele zorlanır ve kaybedilemez veya API Yönetimi hizmeti düzgün çalışmaz.
++ **Express Route veya ağ sanal gereci kullanarak tünel trafiğini şirket Içi güvenlik duvarında zorla**: ortak bir müşteri yapılandırması, API Management atanmış alt ağdan gelen tüm trafiği şirket içi bir güvenlik duvarı veya ağ sanal gereci üzerinden akışa zorlayan kendi varsayılan yolunu (0.0.0.0/0) tanımlamaktır. Giden trafik, şirket içi veya NAT 'ın, artık çeşitli Azure uç noktalarıyla çalışmayan tanınmayan bir adres kümesine engellediği için bu trafik akışı, Azure API Management ile bağlantıyı keser. Çözüm için birkaç şey yapmanız gerekir:
+
+  * API Management hizmetinin dağıtıldığı alt ağda hizmet uç noktalarını etkinleştirin. Azure SQL, Azure depolama, Azure EventHub ve Azure ServiceBus için [hizmet uç noktalarının][ServiceEndpoints] etkinleştirilmesi gerekir. Uç noktaların bu hizmetlere doğrudan API Management atanmış alt ağdan etkinleştirilmesi, hizmet trafiği için en iyi yönlendirmeyi sağlayan Microsoft Azure omurga ağını kullanmasına izin verir. Hizmet uç noktalarını zorlamalı bir tünel oluşturma API Yönetimi ile birlikte kullanıyorsanız, yukarıdaki Azure hizmetleri trafiğine Zorlamalı tünel sağlanmaz. Diğer API Management hizmet bağımlılığı trafiği Zorlamalı tünel yapılabilir ve kaybedilmez veya API Management hizmeti düzgün şekilde çalışmaz.
     
-  * Internet'ten API Yönetimi hizmetinizin yönetim bitiş noktasına kadar olan tüm kontrol uçağı trafiği, API Yönetimi tarafından barındırılan belirli bir Gelen IP'ler kümesi aracılığıyla yönlendirilir. Trafik zorla tünel kazıldığında, yanıtlar bu Gelen kaynak IP'lerine simetrik olarak eşlenmez. Sınırlamayı aşmak için, bu ana bilgisayar yollarının hedefini "Internet"e ayarlayarak trafiği Azure'a yönlendirmek için aşağıdaki kullanıcı tanımlı yolları[(ÜDR)][UDRs]eklememiz gerekir. Kontrol uçak trafiği için Gelen IP'ler kümesi Belgelenmiştir [Kontrol Uçağı IP Adresleri](#control-plane-ips)
+  * Internet 'ten gelen tüm denetim düzlemi trafiği, API Management hizmetinizin yönetim uç noktasına, API Management tarafından barındırılan belirli bir gelen IP kümesiyle yönlendirilir. Trafiğe Zorlamalı tünel yapıldığında yanıtlar, bu gelen kaynak IP 'lerine simetrik bir şekilde geri eşleşmeyecektir. Sınırlamanın üstesinden gelmek için, bu konak yollarının hedefini "Internet" olarak ayarlayarak aşağıdaki Kullanıcı tanımlı yolları ([udrs][UDRs]) Azure 'a geri ekleyebilmemiz gerekir. Denetim düzlemi trafiği için gelen IP 'lerin kümesi, [Denetim DÜZLEMI IP adresleri](#control-plane-ips) olarak belgelenmiştir
 
-  * Zorla tünele giren diğer API Yönetimi hizmet bağımlılıkları için, ana bilgisayar adını çözmenin ve bitiş noktasına ulaşmanın bir yolu olmalıdır. Bunlar arasında
-      - Ölçümler ve Sağlık İzleme
-      - Azure portalı Tanılama
-      - SMTP Röle
+  * Zorlamalı tünel sağlayan diğer API Management hizmet bağımlılıkları için, ana bilgisayar adını çözümlemek ve uç noktaya ulaşmak için bir yol olmalıdır. Bunlar şunlardır
+      - Ölçümler ve sistem durumu Izleme
+      - Azure portal tanılama
+      - SMTP geçişi
       - Geliştirici portalı CAPTCHA
 
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Sorun giderme
-* **İlk Kurulum**: API Yönetimi hizmetinin bir alt ağa ilk dağıtımı başarılı olmadığında, önce aynı alt ağa sanal bir makine dağıtması önerilir. Sanal makineye sonraki uzak masaüstü ve azure aboneliğinizde aşağıdaki her kaynaktan birine bağlantı olduğunu doğrulayın
-    * Azure Depolama blob
+* **Ilk kurulum**: API Management hizmetinin bir alt ağa ilk dağıtımı başarısız olduğunda, önce bir sanal makineyi aynı alt ağa dağıtmanız önerilir. Sanal makineye sonraki uzak masaüstü ve Azure aboneliğinizde aşağıdaki her bir kaynaktan birine bağlantı olduğunu doğrulama
+    * Azure Depolama Blobu
     * Azure SQL Veritabanı
-    * Azure Depolama Tablosu
+    * Azure depolama tablosu
 
   > [!IMPORTANT]
-  > Bağlantıyı doğruladıktan sonra, API Yönetimi'ni alt ağa dağıtmadan önce alt ağda dağıtılan tüm kaynakları kaldırdığınızdan emin olun.
+  > Bağlantıyı doğruladıktan sonra, alt ağa API Management dağıtılmadan önce alt ağda dağıtılan tüm kaynakları kaldırdığınızdan emin olun.
 
-* **Artımlı Güncelleştirmeler**: Ağınızda değişiklik yaparken, API Yönetimi hizmetinin bağlı olduğu kritik kaynaklardan herhangi birinde erişimini kaybetmediğini doğrulamak için [NetworkStatus API'ye](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)bakın. Bağlantı durumu her 15 dakikada bir güncelleştirilmelidir.
+* **Artımlı güncelleştirmeler**: ağınızda değişiklik yaparken, API Management hizmetinin bağlı olduğu kritik kaynaklara erişimi kaybetmediğinden emin olmak Için [networkstatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)'sine bakın. Bağlantı durumu 15 dakikada bir güncelleştirilir.
 
-* **Kaynak Gezinme Bağlantıları**: Kaynak Yöneticisi stili vnet alt ağına dağıtılırken, API Yönetimi bir kaynak gezinti bağlantısı oluşturarak alt ağı ayırır. Alt ağ zaten farklı bir sağlayıcıdan bir kaynak içeriyorsa, dağıtım **başarısız**olur. Benzer şekilde, bir API Yönetimi hizmetini farklı bir alt ağa taşıdığınızda veya sildiğinizde, bu kaynak gezinti bağlantısını kaldırırız.
+* **Kaynak Gezinti bağlantıları**: Kaynak Yöneticisi Style VNET alt ağına dağıtım yaparken, API Management bir kaynak gezinti bağlantısı oluşturarak alt ağı ayırır. Alt ağ, farklı bir sağlayıcıdan bir kaynağı zaten içeriyorsa, dağıtım **başarısız**olur. Benzer şekilde, bir API Management hizmetini farklı bir alt ağa taşıdığınızda veya sildiğinizde, bu kaynak gezinti bağlantısını kaldıracağız.
 
-## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> Alt Ağ Boyutu Gereksinimi
-Azure her alt ağda bazı IP adresleri ayırır ve bu adresler kullanılamaz. Alt ağların ilk ve son IP adresleri protokol uyumluluğu için ayrılmış ve Azure hizmetleri için kullanılan üç adres daha vardır. Daha fazla bilgi için, bu [alt ağlar içinde IP adresleri nin kullanılmasıyla ilgili herhangi bir kısıtlama var mı?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
+## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> Alt ağ boyutu gereksinimi
+Azure, bazı IP adreslerini her alt ağ içinde ayırır ve bu adresler kullanılamaz. Alt ağların ilk ve son IP adresleri protokol uyumu için ayrılmıştır ve Azure hizmetleri için kullanılan üç adres daha vardır. Daha fazla bilgi için bkz. [Bu alt AĞLARDAKI IP adreslerini kullanma konusunda herhangi bir kısıtlama var mı?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Azure VNET altyapısı tarafından kullanılan IP adreslerine ek olarak, alt netteki her Api Yönetimi örneği Premium SKU birimi başına iki IP adresi veya Geliştirici SKU için bir IP adresi kullanır. Her örnek, harici yük dengeleyicisi için ek bir IP adresi saklı tutar. Dahili sanal ağa dağıtılırken, dahili yük dengeleyicisi için ek bir IP adresi gerektirir.
+Azure VNET altyapısı tarafından kullanılan IP adreslerine ek olarak, alt ağdaki her API Yönetimi örneği, geliştirici SKU 'su için her bir Premium SKU veya bir IP adresi birimi başına iki IP adresi kullanır. Her örnek, dış yük dengeleyici için ek bir IP adresi ayırır. Iç sanal ağa dağıtım yaparken, iç yük dengeleyici için ek bir IP adresi gerektirir.
 
-API Yönetimi'nin dağıtılabildiği alt netin minimum boyutunun üzerindeki hesaplama /29'dur ve bu üç kullanılabilir IP adresi verir.
+Dört adet kullanılabilir IP adresi sağlayan API Management dağıtılabilecek olan alt ağın en düşük boyutunun üzerinde hesaplama verilme.
 
-API Yönetimi'nin her ek ölçek birimi için iki IP adresi daha gerekirse.
+Her ek ölçek birimi API Management için iki IP adresi gerekir.
 
 ## <a name="routing"></a><a name="routing"> </a> Yönlendirme
-+ Tüm hizmet bitiş noktalarına erişim sağlamak için yük dengeli genel IP adresi (VIP) ayrılmıştır.
-+ Vnet içindeki kaynaklara erişmek için bir alt ağ IP aralığından (DIP) bir IP adresi ve vnet dışındaki kaynaklara erişmek için ortak bir IP adresi (VIP) kullanılacaktır.
-+ Yük dengeli genel IP adresi, Azure portalındaki Genel Bakış/Essentials bıçak üzerinde bulunabilir.
++ Tüm hizmet uç noktalarına erişim sağlamak için, yük dengeli bir genel IP adresi (VIP) ayrılır.
++ VNET içindeki kaynaklara erişmek için bir alt ağ IP aralığından (DIP) bir IP adresi kullanılır ve VNET dışındaki kaynaklara erişmek için bir genel IP adresi (VIP) kullanılır.
++ Yük dengeli genel IP adresi, Azure portal genel bakış/Essentials dikey penceresinde bulunabilir.
 
 ## <a name="limitations"></a><a name="limitations"> </a>Sınırlamalar
-* API Yönetimi örnekleri içeren bir alt ağ başka Azure kaynak türleri içeremez.
-* Alt ağ ve API Yönetimi hizmeti aynı abonelikte olmalıdır.
-* API Yönetimi örneklerini içeren bir alt ağ abonelikler arasında taşınamaz.
-* İç sanal ağ modunda yapılandırılan çok bölgeli API Yönetimi dağıtımları için, kullanıcılar yönlendirmeye sahip oldukları için birden çok bölgede yük dengelemesini yönetmekten sorumludur.
-* Başka bir bölgedeki genel olarak görüntülenen VNET'teki bir kaynaktan İç moddaki API Yönetimi hizmetine bağlantı, platform sınırlaması nedeniyle çalışmaz. Daha fazla bilgi için bkz: [Tek bir sanal ağdaki Kaynaklar, bakan sanal ağdaki Azure dahili yük dengeleyicisiyle iletişim kuramıyor](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
+* API Management örnekleri içeren bir alt ağ başka hiçbir Azure Kaynak türünü içeremez.
+* Alt ağ ve API Management hizmeti aynı abonelikte olmalıdır.
+* API Management örnekleri içeren bir alt ağ abonelikler arasında taşınamaz.
+* Dahili sanal ağ modunda yapılandırılan çok bölgeli API Management dağıtımlarda, kullanıcılar, yönlendirmeye sahip oldukları gibi birden çok bölgede yük dengelemeyi yönetmekten sorumludur.
+* Başka bir bölgedeki genel olarak eşlenmiş VNET 'teki bir kaynağın Iç moddaki API Management hizmete bağlantısı, platform sınırlaması nedeniyle çalışmayacak. Daha fazla bilgi için bkz. [bir sanal ağdaki kaynaklar, eşlenen sanal ağdaki Azure iç yük dengeleyici ile iletişim](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) kuramıyor
 
-## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> Kontrol Düzlemi IP Adresleri
+## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> DENETIM düzlemi IP adresleri
 
-IP Adresleri **Azure Ortamı'na**bölünür. **Global** ile işaretlenmiş gelen isteklere izin verirken, **Bölgeye** özgü IP Adresi ile birlikte beyaz listeye alınmalıdır.
+IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin verilmesi durumunda **genel** Ile işaretlenen IP adresinin, **bölgeye** özgü IP adresiyle birlikte beyaz listelenmesi gerekir.
 
-| **Azure Ortamı**|   **Bölge**|  **IP adresi**|
+| **Azure ortamı**|   **Bölge**|  **IP adresi**|
 |-----------------|-------------------------|---------------|
-| Azure Genel| Güney Orta ABD (Küresel)| 104.214.19.224|
-| Azure Genel| Kuzey Orta ABD (Küresel)| 52.162.110.80|
+| Azure Genel| Orta Güney ABD (genel)| 104.214.19.224|
+| Azure Genel| Orta Kuzey ABD (genel)| 52.162.110.80|
 | Azure Genel| Orta Batı ABD| 52.253.135.58|
 | Azure Genel| Güney Kore - Orta| 40.82.157.167|
 | Azure Genel| Batı Birleşik Krallık| 51.137.136.0|
@@ -231,8 +233,8 @@ IP Adresleri **Azure Ortamı'na**bölünür. **Global** ile işaretlenmiş gelen
 | Azure Genel| Orta ABD| 13.86.102.66|
 | Azure Genel| Doğu Avustralya| 20.40.125.155|
 | Azure Genel| Batı ABD 2| 51.143.127.203|
-| Azure Genel| Doğu ABD 2 EUAP| 52.253.229.253|
-| Azure Genel| ORTA ABD EUAP| 52.253.159.160|
+| Azure Genel| EUAP Doğu ABD 2| 52.253.229.253|
+| Azure Genel| EUAP Orta ABD| 52.253.159.160|
 | Azure Genel| Orta Güney ABD| 20.188.77.119|
 | Azure Genel| Doğu ABD 2| 20.44.72.3|
 | Azure Genel| Kuzey Avrupa| 52.142.95.35|
@@ -240,33 +242,33 @@ IP Adresleri **Azure Ortamı'na**bölünür. **Global** ile işaretlenmiş gelen
 | Azure Genel| Güney Fransa| 20.39.80.2|
 | Azure Genel| İsviçre Batı| 51.107.96.8|
 | Azure Genel| Orta Avustralya 2| 20.39.99.81|
-| Azure Genel| BAE Merkez| 20.37.81.41|
+| Azure Genel| BAE Orta| 20.37.81.41|
 | Azure Genel| İsviçre Kuzey| 51.107.0.91|
 | Azure Genel| Güney Afrika Batı| 102.133.0.79|
-| Azure Genel| Almanya Batı Orta| 51.116.96.0|
+| Azure Genel| Almanya Orta Batı| 51.116.96.0|
 | Azure Genel| Almanya Kuzey| 51.116.0.0|
 | Azure Genel| Norveç Doğu| 51.120.2.185|
 | Azure Genel| Norveç Batı| 51.120.130.134|
-| Azure Çin 21Vianet| Çin Kuzey (Küresel)| 139.217.51.16|
-| Azure Çin 21Vianet| Çin Doğu (Küresel)| 139.217.171.176|
+| Azure Çin 21Vianet| Çin Kuzey (genel)| 139.217.51.16|
+| Azure Çin 21Vianet| Çin Doğu (genel)| 139.217.171.176|
 | Azure Çin 21Vianet| Kuzey Çin| 40.125.137.220|
 | Azure Çin 21Vianet| Doğu Çin| 40.126.120.30|
 | Azure Çin 21Vianet| Çin Kuzey 2| 40.73.41.178|
 | Azure Çin 21Vianet| Çin Doğu 2| 40.73.104.4|
-| Azure Kamu| USGov Virginia (Küresel)| 52.127.42.160|
-| Azure Kamu| USGov Texas (Küresel)| 52.127.34.192|
+| Azure Kamu| USGov Virginia (genel)| 52.127.42.160|
+| Azure Kamu| USGov Texas (genel)| 52.127.34.192|
 | Azure Kamu| USGov Virginia| 52.227.222.92|
 | Azure Kamu| USGov Iowa| 13.73.72.21|
 | Azure Kamu| USGov Arizona| 52.244.32.39|
 | Azure Kamu| USGov Texas| 52.243.154.118|
-| Azure Kamu| USDoD Merkez| 52.182.32.132|
+| Azure Kamu| USDoD orta| 52.182.32.132|
 | Azure Kamu| USDoD Doğu| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>İlgili içerik
-* [Vpn Ağ Geçidi'ni kullanarak sanal ağı arka uca bağlama](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
-* [Sanal Ağı farklı dağıtım modellerinden bağlama](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
-* [Azure API Yönetimi'ndeki çağrıları izlemek için API Denetçisi nasıl kullanılır?](api-management-howto-api-inspector.md)
-* [Sanal Ağ Sık Sorulan Sorular](../virtual-network/virtual-networks-faq.md)
+* [VPN ağ geçidi kullanarak bir sanal ağı arka uca bağlama](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [Farklı dağıtım modellerinden bir sanal ağ bağlama](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+* [Azure API Management çağrıları izlemek için API denetçisini kullanma](api-management-howto-api-inspector.md)
+* [Sanal ağ hakkında sık sorulan sorular](../virtual-network/virtual-networks-faq.md)
 * [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png

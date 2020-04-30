@@ -1,24 +1,24 @@
 ---
-title: Şablon sözdizimi ve ifadeler
-description: Azure Kaynak Yöneticisi şablonları için bildirimsel JSON sözdizimini açıklar.
+title: Şablon sözdizimi ve ifadeleri
+description: Azure Resource Manager şablonları için bildirim temelli JSON sözdizimini açıklar.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 172838fa24709eb60fbcb6a68277f44bbd42f01e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460118"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203837"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarında sözdizimi ve ifadeler
+# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler
 
-Şablonun temel sözdizimi JSON'dur. Ancak, şablon içinde kullanılabilir JSON değerlerini genişletmek için ifadeleri kullanabilirsiniz.  İfadeler köşeli ayraçla başlayıp biter: `[` ve `]`. İfadenin değeri, şablon dağıtıldığında değerlendirilir. İfade dize, tamsayı, boole, dizi veya nesne döndürebilir.
+Şablonun temel sözdizimi JSON ' dır. Ancak, şablon içinde kullanılabilir olan JSON değerlerini genişletmek için ifadeleri kullanabilirsiniz.  İfadeler köşeli ayraçla başlayıp biter: `[` ve `]`. İfadenin değeri, şablon dağıtıldığında değerlendirilir. İfade dize, tamsayı, boole, dizi veya nesne döndürebilir.
 
-Şablon ifadesi 24.576 karakteri geçemez.
+Şablon ifadesi 24.576 karakterden uzun olamaz.
 
 ## <a name="use-functions"></a>İşlev kullanma
 
-Azure Kaynak Yöneticisi, şablonda kullanabileceğiniz [işlevler](template-functions.md) sağlar. Aşağıdaki örnekte, bir parametrenin varsayılan değerinde bir işlev kullanan bir ifade gösterilmektedir:
+Azure Resource Manager, bir şablonda kullanabileceğiniz [işlevleri](template-functions.md) sağlar. Aşağıdaki örnek, bir parametresinin varsayılan değerinde bir işlevi kullanan bir ifade gösterir:
 
 ```json
 "parameters": {
@@ -29,41 +29,41 @@ Azure Kaynak Yöneticisi, şablonda kullanabileceğiniz [işlevler](template-fun
 },
 ```
 
-İfade içinde sözdizimi, `resourceGroup()` Kaynak Yöneticisi'nin şablon içinde kullanılmasını sağladığı işlevlerden birini çağırır. Bu durumda, [kaynak Grubu](template-functions-resource.md#resourcegroup) işlevidir. JavaScript'te olduğu gibi işlev çağrıları `functionName(arg1,arg2,arg3)`da . Sözdizimi, `.location` bu işlev tarafından döndürülen nesneden bir özellik alır.
+İfade içinde sözdizimi `resourceGroup()` , Kaynak Yöneticisi bir şablon içinde kullanmak için sağladığı işlevlerden birini çağırır. Bu durumda, [resourceGroup](template-functions-resource.md#resourcegroup) işlevi. JavaScript içinde olduğu gibi, işlev çağrıları olarak `functionName(arg1,arg2,arg3)`biçimlendirilir. Söz dizimi `.location` , bu işlev tarafından döndürülen nesneden bir özelliği alır.
 
-Şablon işlevleri ve parametreleri büyük/küçük harf duyarsızdır. Örneğin, Kaynak Yöneticisi **değişkenleri ('var1')** ve **DEĞIŞKENLER('VAR1')** olarak aynı şekilde çözer. Değerlendirilmesi, işlev açıkça durumda (toUpper veya toLower gibi) değiştirir sürece, işlev durumda korur. Belirli kaynak türlerinin, işlevlerin değerlendirilme sinden ayrı büyük/küçük harf gereksinimleri olabilir.
+Şablon işlevleri ve parametreleri büyük/küçük harfe duyarlıdır. Örneğin, Kaynak Yöneticisi **değişkenleri (' var1 ')** ve **DEĞIŞKENLERI (' var1 ')** aynı şekilde çözümler. Değerlendirildiğinde, işlev açıkça büyük/küçük harf (toUpper veya toLower gibi) değiştirmediği sürece işlev, büyük/küçük harf durumunu korur. Belirli kaynak türlerinde, işlevlerin nasıl değerlendirildiğinden ayrı olarak durum gereksinimleri olabilir.
 
-Bir işleviçin parametre olarak bir dize değeri geçmek için tek tırnak kullanın.
+Bir parametreye parametre olarak bir dize değeri geçirmek için tek tırnak kullanın.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-Çoğu işlev, kaynak grubuna, aboneye, yönetim grubuna veya kiracıya dağıtılmış olsun aynı şekilde çalışır. Aşağıdaki işlevlerin kapsamına dayalı kısıtlamaları vardır:
+Çoğu işlev aynı şekilde bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya dağıtılıp aynı şekilde çalışır. Aşağıdaki işlevlerde kapsama dayalı kısıtlamalar vardır:
 
-* [resourceGroup](template-functions-resource.md#resourcegroup) - yalnızca bir kaynak grubuna dağıtımlarda kullanılabilir.
-* [resourceId](template-functions-resource.md#resourceid) - herhangi bir kapsamda kullanılabilir, ancak geçerli parametreler ilerki kapsamına bağlı olarak değişir.
-* [abonelik](template-functions-resource.md#subscription) - yalnızca bir kaynak grubuna veya aboneye dağıtımlarda kullanılabilir.
+* [resourceGroup](template-functions-resource.md#resourcegroup) -yalnızca bir kaynak grubuna yapılan dağıtımlarda kullanılabilir.
+* [RESOURCEID](template-functions-resource.md#resourceid) -herhangi bir kapsamda kullanılabilir, ancak geçerli parametreler kapsama göre değişir.
+* [abonelik](template-functions-resource.md#subscription) -yalnızca bir kaynak grubuna veya aboneliğe yapılan dağıtımlarda kullanılabilir.
 
 ## <a name="escape-characters"></a>Kaçış karakterleri
 
-Bir sol parantez `[` ile başlayıp sağ bir parantez `]`ile bitirmek için, ancak bir ifade olarak yorumlanmış değil, `[[`ile dize başlatmak için ekstra bir parantez ekleyin . Örneğin, değişken:
+Değişmez bir dizenin bir sol köşeli ayraç `[` ile başlaması ve sağ parantez `]`ile bitmesi, ancak bir ifade olarak yorumlanmaması için, dizeyi ile `[[`başlatmak için fazladan bir köşeli ayraç ekleyin. Örneğin, değişkeni:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-`[test value]`Giderir.
+Olarak `[test value]`çözümlenir.
 
-Ancak, edebi dize bir parantez ile bitmiyorsa, ilk parantez kaçmayın. Örneğin, değişken:
+Ancak, değişmez dize bir köşeli ayraç ile bitmezse ilk köşeli ayracı atmayın. Örneğin, değişkeni:
 
 ```json
 "demoVar2": "[test] value"
 ```
 
-`[test] value`Giderir.
+Olarak `[test] value`çözümlenir.
 
-Şablona JSON nesnesi eklemek gibi bir ifadedeki çift tırnak tan kaçmak için ters eğik çizgiyi kullanın.
+Şablonda JSON nesnesi ekleme gibi bir ifadede çift tırnak işaretleri için ters eğik çizgi kullanın.
 
 ```json
 "tags": {
@@ -71,7 +71,7 @@ Ancak, edebi dize bir parantez ile bitmiyorsa, ilk parantez kaçmayın. Örneği
 },
 ```
 
-Parametre değerlerini geçerken, kaçış karakterlerinin kullanımı parametre değerinin belirtildiği yere bağlıdır. Şablonda varsayılan bir değer ayarlarsanız, fazladan sol ayraç gerekir.
+Parametre değerlerini geçirirken, kaçış karakterlerinin kullanılması parametre değerinin nerede belirtildiğinize bağlıdır. Şablonda varsayılan bir değer ayarlarsanız, fazladan sol köşeli ayraç gerekir.
 
 ```json
 {
@@ -93,21 +93,21 @@ Parametre değerlerini geçerken, kaçış karakterlerinin kullanımı parametre
 }
 ```
 
-Varsayılan değeri kullanırsanız, şablon `[test value]`döndürür.
+Varsayılan değeri kullanırsanız, şablon döndürür `[test value]`.
 
-Ancak, komut satırı üzerinden bir parametre değeri geçerseniz, karakterler tam anlamıyla yorumlanır. Önceki şablonu şu şekilde dağıtma:
+Ancak, komut satırı aracılığıyla bir parametre değeri geçirirseniz, karakterler tam olarak yorumlanır. Önceki şablonu ile dağıtma:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
 ```
 
-`[[test value]` döndürür. Bunun yerine, kullanın:
+`[[test value]` döndürür. Bunun yerine şunu kullanın:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-Parametre dosyasındaki değerleri aktarırken aynı biçimlendirme geçerlidir. Karakterler kelimenin tam anlamıyla yorumlanır. Önceki şablonla kullanıldığında, aşağıdaki parametre dosyası `[test value]`döndürür:
+Bir parametre dosyasından değerleri geçirirken aynı biçimlendirme geçerlidir. Karakterler tam olarak yorumlanır. Önceki şablonla birlikte kullanıldığında, aşağıdaki parametre dosyası şunu döndürür `[test value]`:
 
 ```json
 {
@@ -121,9 +121,9 @@ Parametre dosyasındaki değerleri aktarırken aynı biçimlendirme geçerlidir.
 }
 ```
 
-## <a name="null-values"></a>Null değerleri
+## <a name="null-values"></a>Null değerler
 
-Bir özelliği null'a ayarlamak için **null** veya **[json('null')]** kullanabilirsiniz. [Parametre](template-functions-array.md#json) olarak verdiğinizde `null` json işlevi boş bir nesne döndürür. Her iki durumda da, Kaynak Yöneticisi şablonları özellik yokmuş gibi davranır.
+Bir özelliği null olarak ayarlamak için **null** veya **[JSON (' null ')]** kullanabilirsiniz. [JSON işlevi](template-functions-object.md#json) , parametre olarak sağladığınızda `null` boş bir nesne döndürür. Her iki durumda da Kaynak Yöneticisi şablonlar, özelliği mevcut olmadığı gibi kabul eder.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Bir özelliği null'a ayarlamak için **null** veya **[json('null')]** kullanabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablon işlevlerinin tam listesi için [Azure Kaynak Yöneticisi şablon işlevlerine](template-functions.md)bakın.
-* Şablon dosyaları hakkında daha fazla bilgi için [bkz.](template-syntax.md)
+* Şablon işlevlerinin tam listesi için bkz. [Azure Resource Manager şablon işlevleri](template-functions.md).
+* Şablon dosyaları hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

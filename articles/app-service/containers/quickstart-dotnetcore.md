@@ -1,26 +1,26 @@
 ---
-title: 'Quickstart: Linux ASP.NET Core uygulaması çalıştırın'
-description: İlk ASP.NET Core uygulamanızı App Service'teki bir Linux konteynerine dağıtarak Azure Uygulama Hizmeti'ndeki Linux uygulamalarıyla başlayın.
+title: 'Hızlı başlangıç: Linux ASP.NET Core uygulaması çalıştırma'
+description: İlk ASP.NET Core uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
 keywords: azure app service, web uygulaması, dotnet, core, linux, oss
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 349aa4652ae9f52641b5865e48dcd4c113ca7f9d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 1eeb5bbd4b10ef660a50f40d6c1300b0ca214561
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086308"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206688"
 ---
-# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Linux'ta Uygulama Hizmeti'nde ASP.NET Core uygulaması oluşturun
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Linux üzerinde App Service ASP.NET Core uygulama oluşturma
 
 > [!NOTE]
-> Bu makalede bir uygulamanın Linux üzerinde App Service'e dağıtımı yapılır. _Windows'da_Uygulama Hizmeti'ne dağıtmak için [azure'da ASP.NET Core uygulaması oluşturma'ya](../app-service-web-get-started-dotnet.md)bakın.
+> Bu makalede bir uygulamanın Linux üzerinde App Service'e dağıtımı yapılır. _Windows_üzerinde App Service dağıtmak için bkz. [Azure 'Da ASP.NET Core uygulaması oluşturma](../app-service-web-get-started-dotnet.md).
 >
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta Linux üzerinde App Service’te [.NET Core](https://docs.microsoft.com/aspnet/core/) uygulaması oluşturma gösterilmektedir. Uygulamayı [Azure CLI'yi](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak oluşturursunuz ve .NET Core kodunu uygulamaya dağıtmak için Git'i kullanırsınız.
+[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta Linux üzerinde App Service’te [.NET Core](https://docs.microsoft.com/aspnet/core/) uygulaması oluşturma gösterilmektedir. Uygulamayı [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)kullanarak oluşturur ve .NET Core kodunu uygulamaya dağıtmak için git 'i kullanırsınız.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -28,12 +28,12 @@ Mac, Windows veya Linux makinesi kullanarak bu makaledeki adımları izleyebilir
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
 * <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core SDK 3.1'i yükleyin</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'sını yükler</a>
 
 ## <a name="create-the-app-locally"></a>Uygulamayı yerel olarak oluşturma
 
@@ -86,13 +86,13 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Yeni oluşturduğunuz uygulamaya göz atın. _ &lt;Uygulama adı>_ uygulama adınız ile değiştirin.
+Yeni oluşturduğunuz uygulamanıza gidin. _ &lt;App-name>_ değerini uygulamanızın adıyla değiştirin.
 
 ```bash
 https://<app-name>.azurewebsites.net
 ```
 
-Yeni uygulamanız şu şekilde görünmelidir:
+Yeni uygulamanızın şöyle görünmesi gerekir:
 
 ![Boş uygulama sayfası](media/quickstart-dotnetcore/dotnet-browse-created.png)
 
@@ -133,7 +133,7 @@ Web tarayıcınızı kullanarak, dağıtılan uygulamanın konumuna gidin.
 http://<app_name>.azurewebsites.net
 ```
 
-.NET Core örnek kodu, Linux'taki App Service'de yerleşik bir görüntüyle çalışıyor.
+.NET Core örnek kodu, yerleşik bir görüntüyle Linux üzerinde App Service çalışmaktadır.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -158,15 +158,15 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz at** adımında açılan tara
 
 ![Azure'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
-## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetme
+## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetin
 
-Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure portalına</a> gidin.
+Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin.
 
-Sol menüden **Uygulama Hizmetleri'ni**ve ardından Azure uygulamanızın adını tıklatın.
+Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/quickstart-dotnetcore/portal-app-service-list.png)
 
-Uygulamanızın Genel Bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. 
+Uygulamanızın genel bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. 
 
 ![Azure portalında App Service sayfası](media/quickstart-dotnetcore/portal-app-overview.png)
 
@@ -177,7 +177,7 @@ Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: SQL Veritabanı ile ASP.NET Core uygulaması](tutorial-dotnetcore-sqldb-app.md)
+> [Öğretici: SQL veritabanı ile uygulama ASP.NET Core](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Core uygulamasını yapılandırmaASP.NET](configure-language-dotnetcore.md)
+> [ASP.NET Core uygulamasını yapılandırma](configure-language-dotnetcore.md)

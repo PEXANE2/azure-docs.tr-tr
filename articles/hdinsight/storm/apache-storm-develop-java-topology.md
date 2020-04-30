@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083290"
+ms.locfileid: "82203888"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java 'da Apache Storm topolojisi oluşturma
 
-[Apache Storm](https://storm.apache.org/)için Java tabanlı topoloji oluşturmayı öğrenin. Burada, bir sözcük sayısı uygulaması uygulayan bir fırtınası topolojisi oluşturursunuz. Projeyi derlemek ve paketlemek için [Apache Maven](https://maven.apache.org/) 'yi kullanırsınız. Daha sonra, [Apache Storm Flox](https://storm.apache.org/releases/2.0.0/flux.html) çerçevesini kullanarak topolojiyi nasıl tanımlayacağınızı öğreneceksiniz.
+Apache Storm için Java tabanlı topoloji oluşturmayı öğrenin. Bir sözcük sayısı uygulaması uygulayan bir fırtınası topolojisi oluşturursunuz. Projeyi derlemek ve paketlemek için Apache Maven 'yi kullanırsınız. Daha sonra, Apache Storm Flox çerçevesini kullanarak topolojiyi nasıl tanımlayacağınızı öğreneceksiniz.
 
 Bu belgedeki adımları tamamladıktan sonra, HDInsight üzerinde Apache Storm için topolojiyi dağıtabilirsiniz.
 
@@ -197,7 +197,7 @@ Bu bölüm eklenti, kaynak ve diğer derleme yapılandırma seçeneklerini eklem
 
 * **Apache Maven derleyicisi eklentisi**
 
-    Diğer bir faydalı eklenti, derleme seçeneklerini değiştirmek için kullanılan [Apache Maven derleyicisi](https://maven.apache.org/plugins/maven-compiler-plugin/)eklentisidir. Maven 'nin uygulamanızın kaynağı ve hedefi için kullandığı Java sürümünü değiştirin.
+    Diğer bir faydalı eklenti, derleme seçeneklerini [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/)değiştirmek için kullanılan ' dır. Maven 'nin uygulamanızın kaynağı ve hedefi için kullandığı Java sürümünü değiştirin.
 
   * HDInsight __3,4 veya önceki sürümlerde__, kaynak ve hedef Java sürümünü __1,7__olarak ayarlayın.
 
@@ -239,13 +239,13 @@ Java tabanlı Apache Storm topolojisi, bir bağımlılık olarak yazmak (veya ba
 
 * **Spout**: dış kaynaklardaki verileri okur ve veri akışlarını topolojiye yayar.
 
-* **Cıvatalar**: spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme gerçekleştirir ve bir veya daha fazla akış yayar.
+* **Cıvatalar**: spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme yapar ve bir veya daha fazla akış yayar.
 
 * **Topoloji**: Spout ve cıvatların nasıl düzenlendiğini tanımlar ve topoloji için giriş noktası sağlar.
 
 ### <a name="create-the-spout"></a>Spout oluşturma
 
-Dış veri kaynaklarını ayarlamaya yönelik gereksinimleri azaltmak için aşağıdaki Spout rastgele cümleler yayar. Bu, [fırtınası-Starter örnekleri](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)ile birlikte sunulan bir Spout 'ın değiştirilmiş sürümüdür.  Bu topoloji yalnızca bir Spout kullanıyor olsa da, diğerleri farklı kaynaklardan alınan çeşitli akış verilerine topolojiye sahip olabilir.
+Dış veri kaynaklarını ayarlamaya yönelik gereksinimleri azaltmak için aşağıdaki Spout rastgele cümleler yayar. Bu, [fırtınası-Starter örnekleri](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)ile birlikte sunulan bir Spout 'ın değiştirilmiş sürümüdür.  Bu topoloji bir Spout kullanıyor olsa da, diğerlerinin farklı kaynaklardan gelen akış verilerinin topolojiye sahip olması gerekebilir`.`
 
 Yeni bir dosya `RandomSentenceSpout.java`oluşturmak ve açmak için aşağıdaki komutu girin:
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>Topolojiyi tanımlama
 
-Topoloji, biriktirmelerin ve cıvatları, verilerin bileşenler arasında nasıl akacağını tanımlayan bir grafikte birleştirir. Ayrıca, bir küme içindeki bileşenlerin örneklerini oluştururken, fırtınası tarafından kullanılan paralellik ipuçları da sağlar.
+Topoloji, kesintiler ve cıvatları bir grafikte birleştirir. Grafik, verilerin bileşenler arasında nasıl akacağını tanımlar. Ayrıca, bir küme içindeki bileşenlerin örneklerini oluştururken, fırtınası tarafından kullanılan paralellik ipuçları da sağlar.
 
 Aşağıdaki görüntü, bu topolojinin bileşen grafiğinin temel bir diyagramıdır.
 
@@ -613,15 +613,15 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Bu örnek günlük, ' ve ' kelimesinin 113 katı olduğunu gösterir. Spout sürekli aynı cümleleri yaydığı için, sayı topoloji çalıştığı sürece çalışmaya devam eder.
+Bu örnek günlük, ' ve ' kelimesinin 113 katı olduğunu gösterir. Bu sayı, topoloji çalıştığı sürece artmaya devam eder. Bu artış, Spout 'in sürekli olarak aynı cümleleri yayması nedeniyle oluşur.
 
 Sözcükler ve sayımlar arasında 5 saniyelik bir Aralık vardır. **WORDCOUNT** bileşeni yalnızca bir değer tanımlama grubu geldiğinde bilgileri göstermek üzere yapılandırılmıştır. Değer tanımlama gruplarının yalnızca beş saniyede bir teslim edildiğini ister.
 
 ## <a name="convert-the-topology-to-flux"></a>Topolojiyi Flox 'e Dönüştür
 
-[Flox](https://storm.apache.org/releases/2.0.0/flux.html) , 0.10.0 ve üzeri bir sürümü kullanarak, yapılandırmayı uygulamadan ayırmanızı sağlayan yeni bir çerçevedir. Bileşenleriniz hala Java 'da tanımlanmıştır, ancak topoloji bir YAML dosyası kullanılarak tanımlanır. Projeniz ile varsayılan bir topoloji tanımını paketleyebilir veya topolojiyi gönderirken tek başına bir dosya kullanabilirsiniz. Topolojiyi fırtınası 'ya gönderirken, YAML topolojisi tanımındaki değerleri doldurmak için ortam değişkenlerini veya yapılandırma dosyalarını kullanabilirsiniz.
+[Flox](https://storm.apache.org/releases/2.0.0/flux.html) , fırtınası 0.10.0 ve üzeri sürümlerde sunulan yeni bir çerçevedir. Flox, yapılandırmayı uygulamadan ayırmanızı sağlar. Bileşenleriniz hala Java 'da tanımlanmıştır, ancak topoloji bir YAML dosyası kullanılarak tanımlanır. Projeniz ile varsayılan bir topoloji tanımını paketleyebilir veya topolojiyi gönderirken tek başına bir dosya kullanabilirsiniz. Topolojiyi fırtınası 'ya gönderirken, YAML topolojisi tanım değerlerini doldurmak için ortam değişkenlerini veya yapılandırma dosyalarını kullanın.
 
-YAML dosyası, topoloji ve aralarında veri akışı için kullanılacak bileşenleri tanımlar. Jar dosyasının bir parçası olarak bir YAML dosyası ekleyebilirsiniz veya bir dış YAML dosyası kullanabilirsiniz.
+YAML dosyası, topoloji ve aralarında veri akışı için kullanılacak bileşenleri tanımlar. Jar dosyasının bir parçası olarak bir YAML dosyası ekleyebilirsiniz. Ya da bir dış YAML dosyası kullanabilirsiniz.
 
 Flox hakkında daha fazla bilgi için bkz. [Flox Frameworkhttps://storm.apache.org/releases/current/flux.html)(](https://storm.apache.org/releases/current/flux.html).
 
@@ -818,7 +818,7 @@ Bu ve akışkan x çerçevesinin diğer özellikleri hakkında daha fazla bilgi 
 
 ## <a name="trident"></a>Çatal
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) , fırtınası tarafından sunulan üst düzey bir soyutlamadır. Durum bilgisi olan işlemeyi destekler. Trident 'nin birincil avantajı, topolojiye giren her iletinin yalnızca bir kez işlendiğini garanti edebileceğinizin güvencesidir. Trident kullanılmadan, topolojiniz yalnızca iletilerin en az bir kez işlenmesini garanti edebilir. Ayrıca, cıvatları oluşturmak yerine kullanılabilecek yerleşik bileşenler gibi başka farklılıklar da vardır. Aslında, cıvatalar, filtreler, tahminler ve işlevler gibi daha az genel bileşenlerle değiştirilmiştir.
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) , fırtınası tarafından sunulan üst düzey bir soyutlamadır. Durum bilgisi olan işlemeyi destekler. Trident 'nin birincil avantajı, topolojiyi giren her iletinin yalnızca bir kez işleneceğini garanti etmektedir. Trident kullanılmadan, topolojiniz yalnızca iletilerin en az bir kez işlenmesini garanti edebilir. Ayrıca, cıvatları oluşturmak yerine kullanılabilecek yerleşik bileşenler gibi başka farklılıklar da vardır. Cıvatları, filtreler, tahminler ve işlevler gibi daha az genel bileşenlerle değiştirilmiştir.
 
 Trident uygulamaları Maven projeleri kullanılarak oluşturulabilir. Bu makalede daha önce sunulan temel adımların aynısını kullanırsınız; yalnızca kod farklıdır. Trident, Flox çerçevesiyle de (Şu anda) kullanılamaz.
 
@@ -830,6 +830,6 @@ Java kullanarak Apache Storm topolojisi oluşturmayı öğrendiniz. Şimdi şunl
 
 * [HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme](apache-storm-deploy-monitor-topology-linux.md)
 
-* [Visual Studio kullanarak HDInsight üzerinde Apache Storm için C# topolojileri geliştirme](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Python kullanarak topolojileri geliştirme](apache-storm-develop-python-topology.md)
 
 [HDInsight üzerinde Apache Storm Için örnek topolojilerini](apache-storm-example-topology.md)ziyaret ederek daha fazla örnek Apache Storm topolojiden ulaşabilirsiniz.

@@ -136,10 +136,10 @@
         - name: Kapsayıcı ve veritabanlarına aktarım hızı sağlama
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Sağlama işleme hızı - Otomatik Pilot modu
-          href: provision-throughput-autopilot.md
-        - name: Otomatik Pilot ile ilgili SSS
-          href: autopilot-faq.md
+        - name: Sağlama aktarım hızı - otomatik ölçeklendirme modu
+          href: provision-throughput-autoscale.md
+        - name: Otomatik ölçeklendirme hakkında SSS
+          href: autoscale-faq.md
     - name: SQL sorgusu
       items:
         - name: Başlarken
@@ -518,6 +518,7 @@
         - name: Toplam Sahip Olma Maliyeti (TCO)
           href: total-cost-ownership.md
         - name: Faturanızı anlama
+          displayName: free tier
           href: understand-your-bill.md
         - name: Sağlanan aktarım hızı maliyetini iyileştirme
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: Birden çok bölgenin maliyetini iyileştirme
           href: optimize-cost-regions.md
         - name: Geliştirme/test maliyetini iyileştirme
+          displayName: free tier
           href: optimize-dev-test.md
         - name: Ayrılmış kapasiteyle maliyeti iyileştirme
           href: cosmos-db-reserved-capacity.md

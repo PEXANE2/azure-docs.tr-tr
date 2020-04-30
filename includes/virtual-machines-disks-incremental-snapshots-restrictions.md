@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8e4c1c05b133f85b7473c3ce97c9f509ac8f7d37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39a013f5f4b587137366147ade77f0be1b353c4c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299215"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204470"
 ---
-- Şu anda artan anlık görüntüler abonelikler arasında taşınamaz.
-- Şu anda herhangi bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsünün SAS URI'lerini oluşturabilirsiniz.
-- Belirli bir disk in aboneliği dışında belirli bir disk için artımlı anlık görüntü oluşturamazsınız.
-- Her beş dakikada bir disk başına en fazla yedi artımlı anlık görüntü oluşturulabilir.
-- Tek bir disk için toplam 200 artımlı anlık görüntü oluşturulabilir.
+- Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
+- Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.
+- Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız.
+- Her beş dakikada bir disk başına en fazla yedi Artımlı anlık görüntü oluşturulabilir.
+- Tek bir disk için toplam 200 Artımlı anlık görüntü oluşturulabilir.
+- 4 TB 'lik sınırın üzerinde üst diskin boyutundaki değişiklikten önce ve sonra alınan anlık görüntüler arasındaki değişiklikleri alamaz. Yeniden boyutlandırma işleminden sonra oluşturulan anlık görüntünün tam kopyasını yeniden indirmeniz gerekir. Daha sonra, 4 TB 'lik sınırın üzerinde yeniden boyutlandırmayla oluşturulan anlık görüntüler arasındaki değişiklikleri alabilirsiniz. 

@@ -6,39 +6,42 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 01/10/2020
+ms.date: 04/14/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656197"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204618"
 ---
 | Kaynak | Sınır |
 | ---------------------------------------------------------------------- | -------------------------- |
-| Maksimum ölçek birimi sayısı | Bölge başına 10<sup>1</sup> |
-| Önbellek boyutu | Birim başına 5 GİB<sup>2</sup> |
-| Http yetkilisi başına eşzamanlı arka uç bağlantıları<sup>3</sup> | Birim<sup>4</sup> başına 2.048 |
-| Maksimum önbelleğe alınmış yanıt boyutu | 2 MiB |
-| Maksimum ilke belge boyutu | 256 KiB<sup>5</sup> |
-| Hizmet başına maksimum özel ağ geçidi etki alanı örneği<sup>6</sup> | 20 |
-| Hizmet örneği başına maksimum CA sertifikası sayısı | 10 |
-| Abonelik başına maksimum hizmet örneği sayısı<sup>7</sup> | 20 |
-| Hizmet başına maksimum abonelik sayısı örneği<sup>7</sup> | 500 |
-| Hizmet başına maksimum istemci sertifikası sayısı örneği<sup>7</sup> | 50 |
-| Hizmet başına maksimum API sayısı örneği<sup>7</sup> | 50 |
-| Hizmet başına maksimum API işlemi sayısı örneği<sup>7</sup> | 1000 |
-| Maksimum toplam istek süresi<sup>7</sup> | 30 saniye |
-| Maksimum arabelleğe alınan yük boyutu<sup>7</sup> | 2 MiB |
-| Maksimum istek URL boyutu<sup>8</sup> | 4096 bayt |
+| En fazla ölçek birimi sayısı | Bölge başına 10<sup>1</sup> |
+| Önbellek boyutu | Birim<sup>2</sup> başına 5 gib |
+| HTTP yetkilisi başına eşzamanlı arka uç bağlantıları<sup>3</sup> | <sup>4</sup> birim başına 2.048 |
+| Önbelleğe alınan en büyük yanıt boyutu | 2 MIB |
+| En fazla ilke belgesi boyutu | 256 KiB<sup>5</sup> |
+| Hizmet örneği başına en fazla özel ağ geçidi etki alanı<sup>6</sup> | 20 |
+| Hizmet örneği başına en fazla CA sertifikası sayısı<sup>7</sup> | 10 |
+| Abonelik başına en fazla hizmet örneği sayısı<sup>8</sup> | 20 |
+| Hizmet örneği başına en fazla abonelik sayısı<sup>8</sup> | 500 |
+| Hizmet örneği başına en fazla istemci sertifikası sayısı<sup>8</sup> | 50 |
+| Hizmet örneği başına en fazla API sayısı<sup>8</sup> | 50 |
+| Hizmet örneği başına en fazla API işlemi sayısı<sup>8</sup> | 1000 |
+| En fazla toplam istek süresi<sup>8</sup> | 30 saniye |
+| En fazla arabelleğe alınmış yük boyutu<sup>8</sup> | 2 MIB |
+| En yüksek istek URL 'SI boyutu<sup>9</sup> | 4096 bayt |
+| Şirket içinde barındırılan ağ geçitlerinin maksimum sayısı<sup>10</sup> | 25 |
 
-<sup>1.1.2</sup> Ölçeklendirme sınırları fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanlarını ve ölçeklendirme sınırlarını görmek için [API Yönetimi fiyatlandırmasına](https://azure.microsoft.com/pricing/details/api-management/)bakın.<br/>
-<sup>2.000</sup> Birim önbellek boyutu başına fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanlarını ve ölçeklendirme sınırlarını görmek için [API Yönetimi fiyatlandırmasına](https://azure.microsoft.com/pricing/details/api-management/)bakın.<br/>
-<sup>3.2.2</sup> Bağlantılar, arka uç tarafından açıkça kapatılmadığı sürece bir araya getirilir ve yeniden kullanılır.<br/>
-<sup>4.2.2</sup> Bu sınır, Temel, Standart ve Premium katmanların birimi başına dır. Geliştirici katmanı 1.024 ile sınırlıdır. Bu sınır Tüketim katmanı için geçerli değildir.<br/>
-<sup>5.000</sup> Bu sınır Temel, Standart ve Premium katmanlar için geçerlidir. Tüketim katmanında, ilke belge boyutu 16 KiB ile sınırlıdır.<br/>
-<sup>6.000</sup> Bu kaynak yalnızca Premium katmanında kullanılabilir.<br/>
-<sup>7.000</sup> Bu kaynak yalnızca Tüketim katmanı için geçerlidir.<br/>
-<sup>8.000</sup> Yalnızca Tüketim katmanı için geçerlidir. 2048'e kadar bayt uzun sorgu dizesi içerir.<br/>
+<sup>1</sup> Ölçek sınırları, fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanları ve ölçek limitleriyle ilgili ayrıntılar için bkz. [API Management fiyatlandırması](https://azure.microsoft.com/pricing/details/api-management/).<br/>
+<sup>2</sup> Birim başına önbellek boyutu fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanlarını ve ölçekleme sınırlarını görmek için bkz. [API Management fiyatlandırması](https://azure.microsoft.com/pricing/details/api-management/).<br/>
+<sup>3</sup> Bağlantılar havuza alınır ve arka uç tarafından açıkça kapanmadığı takdirde yeniden kullanılır.<br/>
+<sup>4</sup> Bu sınır, temel, standart ve Premium katmanların birimi başına olur. Geliştirici katmanı 1.024 ile sınırlıdır. Bu sınır, tüketim katmanına uygulanmaz.<br/>
+<sup>5</sup> Bu sınır, temel, standart ve Premium katmanları için geçerlidir. Tüketim katmanında, ilke belgesi boyutu 4 KiB ile sınırlıdır.<br/>
+<sup>6</sup> Yalnızca geliştirici ve Premium katmanlarında birden çok özel etki alanı desteklenir.<br/>
+<sup>7</sup> CA sertifikaları, tüketim katmanında desteklenmez.<br/>
+<sup>8</sup> Bu kaynak yalnızca tüketim katmanı için geçerlidir.<br/>
+<sup>9</sup> Yalnızca tüketim katmanı için geçerlidir. En fazla 2048 bayt uzunluğunda sorgu dizesi içerir.<br/>
+<sup>10</sup> Şirket içinde barındırılan ağ geçitleri yalnızca geliştirici ve Premium katmanlarda desteklenir. Sınır, [kendinden konak ağ geçidi kaynaklarının](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway)sayısı için geçerlidir. Bu sınırı artırmak için lütfen [desteğe](https://azure.microsoft.com/support/options/)başvurun. Şirket içinde barındırılan bir ağ geçidi kaynağıyla ilişkili düğümlerin (veya çoğaltmaların) sayısının Premium katmanda sınırsız olduğunu ve geliştirici katmanındaki tek bir düğümde bulunduğunu unutmayın.

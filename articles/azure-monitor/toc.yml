@@ -243,11 +243,13 @@
             - name: Tek başına - Tüm ortamlar
               items:
                 - name: Java (önizleme)
-                  href: app/java-in-process-agent.md
-                - name: Java JVM yapılandırması
-                  href: app/java-standalone-arguments.md
-                - name: Java yapılandırma seçenekleri
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: Genel Bakış
+                      href: app/java-in-process-agent.md
+                    - name: Yapılandırma seçenekleri
+                      href: app/java-standalone-config.md
+                    - name: JVM bağımsız değişkenleri kurulumu
+                      href: app/java-standalone-arguments.md
             - name: Şirket içi sunucular
               items:
                 - name: ASP.NET
@@ -690,8 +692,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Karma küme için etkinleştirme
                   href: insights/container-insights-hybrid-setup.md
-                - name: Azure Red Hat OpenShift için etkinleştirme
+                - name: Azure Red Hat OpenShift v3 için etkinleştirme
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: Azure Red Hat OpenShift v4 için etkinleştirme
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: Bölge eşlemeleri
                   href: insights/container-insights-region-mapping.md
             - name: Performansı izleme
@@ -724,10 +728,16 @@
               href: insights/container-insights-update-metrics.md
             - name: Sistem durumu izleme yapılandırması
               href: insights/container-insights-health-monitors-config.md
-            - name: AKS’yi izlemeyi devre dışı bırakma
-              href: insights/container-insights-optout.md
-            - name: Red Hat OpenShift’i izlemeyi devre dışı bırakma
-              href: insights/container-insights-optout-openshift.md
+            - name: İzlemeyi devre dışı bırakma
+              items:
+                - name: AKS’yi izlemeyi devre dışı bırakma
+                  href: insights/container-insights-optout.md
+                - name: Red Hat OpenShift v3’ü izlemeyi devre dışı bırakma
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: Red Hat OpenShift v4’ü izlemeyi devre dışı bırakma
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: Hibrit kümeyi izlemeyi devre dışı bırakma
+                  href: insights/container-insights-optout-hybrid.md
             - name: Sorun giderme
               href: insights/container-insights-troubleshoot.md
         - name: Docker ve Windows Kapsayıcıları’nı izleme

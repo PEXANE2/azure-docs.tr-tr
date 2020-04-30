@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072695"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203276"
 ---
 # <a name="add-an-api-manually"></a>El ile API ekleme
 
@@ -29,30 +29,20 @@ Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği oluşturun](get-started-create-service-instance.md)
+Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>Bir API oluşturma
 
-1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
+1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
 2. Soldaki menüden **+ API Ekle**'yi seçin.
-3. Listeden **Boş API**’yi seçin.
+3. Listeden **Boş API**’yi seçin.  
+    ![Boş API](media/add-api-manually/blank-api.png)  
+4. API için ayarları girin. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+5. **Oluştur**’u seçin.
 
-    ![Boş API](media/add-api-manually/blank-api.png)
-4. API için ayarları girin.
-
-    |**Adı**|**Değer**|**Açıklama**|
-    |---|---|---|
-    |**Görünen ad**|*Boş API*|Bu ad, Geliştirici portalında görüntülenir.|
-    |**Adı**|*boş-api*|API için benzersiz bir ad sağlar.|
-    |**Web Hizmeti URL’si** (isteğe bağlı)|*https://httpbin.org*| Bir API’nin sahte bir kopyasını oluşturmak istiyorsanız hiçbir şey girmeyebilirsiniz. <br/>Bu durumda, biz [https://httpbin.org](https://httpbin.org)girin. Bu bir kamu test hizmeti. <br/>Bir arka uçla otomatik olarak eşlenen bir API’yi içeri aktarmak istiyorsanız [ilgili konular](#related-topics) bölümündeki konulardan birine bakın.|
-    |**URL düzeni**|*HTTP'ler*|Bu durumda, arka ucun HTTP erişimi güvenli olmasa da arka uç için güvenli bir HTTPS APIM erişimi belirtiriz. <br/>Bu tür senaryolara (HTTPS’den HTTP’ye) is HTTPS sonlandırma denir. API’niz HTTPS kullanılmasa bile erişimin güvenli olduğunu bildiğiniz bir sanal ağın içindeyse bunu yapabilirsiniz. <br/>Bazı CPU döngülerinde tasarruf sağlamak için "HTTPS sonlandırma" kullanmak isteyebilirsiniz.|
-    |**URL son eki**|*hbin*| Son ek, bu APIM örneğinde özel olarak bu API’yi tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.|
-    |**Ürünler**|*Sınırsız*|API’yi bir ürünle ilişkilendirerek yayımlayın. API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.<br/><br/>Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. <br/>Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.<br/><br/> Varsayılan olarak, her bir API Management örneği iki örnek ürün ile birlikte gelir: **Başlangıç** ve **Sınırsız**.| 
-5. **Oluştur'u**seçin.
-
-Bu noktada, APIM üzerinde arka uç API’nizdeki işlemlerle eşleşen herhangi bir işlem yoktur. Arka uç aracılığıyla kullanıma sunulup APIM ile sunulmamış bir işleme çağrı yaparsanız **404** yanıtını alırsınız.
+Bu noktada, arka uç API 'nizin işlemlerine eşlenen API Management hiçbir işlem yok. Arka uçtan açığa çıkarılan ancak API Management aracılığıyla kullanıma sunulan bir işlem çağırırsanız, **404**alırsınız.
 
 >[!NOTE] 
 > Varsayılan olarak, bir API eklediğinizde bu API bir arka uç hizmetine bağlı olsa bile sizin tarafınızdan beyaz listeye eklenene kadar APIM tarafından herhangi bir işlem sunulmaz. Arka uç hizmetinizin bir işlemini beyaz listeye eklemek için arka uç işlemiyle eşlenen bir APIM işlemi oluşturun.
@@ -67,7 +57,7 @@ Bu bölümde, arka uçtaki "http://httpbin.org/get" işlemiyle eşlemek üzere n
 2. **+ İşlem Ekle**’ye tıklayın.
 3. **URL** bölümünde **GET** seçeneğini belirleyip kaynak bölümüne "*/get*" değerini girin.
 4. **Görünen ad** alanına "*FetchData*" değerini girin.
-5. **Kaydet'i**seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="test-an-operation"></a>İşlemleri test etme
 
@@ -89,7 +79,7 @@ Bu bölümde, nasıl parametre alan bir işlem ekleneceği gösterilir. Bu durum
 2. **+ İşlem Ekle**’ye tıklayın.
 3. **URL** bölümünde **GET** seçeneğini belirleyip kaynak bölümüne "*/status/{code}*" değerini girin. İsteğe bağlı olarak, bu parametre ile ilişkili bazı bilgiler sağlayabilirsiniz. Örneğin, **TYPE** alanına "*Number*" değerini, **VALUES** alanına "*200*" (varsayılan) değerini girin.
 4. **Görünen ad** alanına "GetStatus" değerini girin.
-5. **Kaydet'i**seçin.
+5. **Kaydet**’i seçin.
 
 ### <a name="test-the-operation"></a>İşlemi test etme 
 

@@ -1,52 +1,57 @@
 ---
-title: Öğretici - Azure Mantık Uygulamalarını tetiklemek için IoT Hub olaylarını kullanma
-description: Bu öğretici, Azure Olay Grid'inolay yönlendirme hizmetini nasıl kullanacağımı, IoT Hub etkinliklerini temel alan Azure Logic Apps eylemlerini gerçekleştirmek için otomatik işlemler oluşturmayı gösterir.
+title: Öğretici-tetiklenecek IoT Hub olaylarını kullanın Azure Logic Apps
+description: Bu öğreticide, IoT Hub olaylara göre Azure Logic Apps eylemleri gerçekleştirmek üzere otomatik işlemler oluşturmak için Azure Event Grid olay yönlendirme hizmetinin nasıl kullanılacağı gösterilmektedir.
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 889c5e68759a94682150ac88970b7123ad0fc412
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74706427"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201746"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Olay Izgara ve Mantık Uygulamalarını kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderin
 
 Azure Event Grid, aşağı akış iş uygulamalarınızda eylemler tetikleyerek IoT Hub'daki olaylara karşılık vermenize olanak tanır.
 
-Bu makale, IoT Hub ve Olay Grid kullanan bir örnek yapılandırma üzerinden yürür. Sonunda, IoT hub'ınıza her cihaz ekleninde bir bildirim e-postası göndermek üzere ayarlanmış bir Azure mantık uygulamanız vardır. 
+Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilmektedir. Son olarak, IoT Hub 'ınıza bir cihaz eklendiğinde bildirim e-postası gönderecek şekilde ayarlanmış bir Azure mantıksal uygulamanız vardır. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Logic Apps tarafından desteklenen Office 365 Outlook, Outlook.com veya Gmail gibi bir e-posta sağlayıcısından alınmış e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen Logic App bağlayıcılarının tam listesi için bkz. [Bağlayıcılara genel bakış](https://docs.microsoft.com/connectors/)
-* Etkin bir Azure hesabı. Hesabınız yoksa, [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/)
-* Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](../iot-hub/iot-hub-csharp-csharp-getstarted.md). 
+* Etkin bir Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
+
+* Office 365 Outlook, Outlook.com veya Gmail gibi Azure Logic Apps tarafından desteklenen herhangi bir e-posta sağlayıcısından bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen mantıksal uygulama bağlayıcılarının tüm listesi için bkz. [bağlayıcılara genel bakış](https://docs.microsoft.com/connectors/).
+
+  > [!IMPORTANT]
+  > Gmail kullanmadan önce bir G-Suite iş hesabınız olup olmadığını (özel etki alanı olan e-posta adresi) veya Gmail tüketicisi hesabını (veya @gmail.com @googlemail.comiçeren e-posta adresini) denetleyin. Yalnızca G-Suite iş hesapları, mantıksal uygulamalarda kısıtlama olmadan Gmail bağlayıcısını diğer bağlayıcılarla kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google onaylı hizmetlerle kullanabilir veya [kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](../iot-hub/iot-hub-csharp-csharp-getstarted.md).
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
-İlk olarak, bir mantık uygulaması oluşturun ve sanal makinenizin kaynak grubunu izleyen bir olay ızgara tetikleyicisi ekleyin. 
+İlk olarak, bir mantıksal uygulama oluşturun ve sanal makinenizin kaynak grubunu izleyen bir olay Kılavuzu tetikleyicisi ekleyin. 
 
 ### <a name="create-a-logic-app-resource"></a>Mantıksal uygulama kaynağı oluşturma
 
-1. Azure [portalında](https://portal.azure.com) **kaynak oluştur'u**seçin, ardından arama kutusuna "mantık uygulaması" yazın ve return'i seçin. Sonuçlardan **Mantık Uygulaması'nı** seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak oluştur**' u seçin, sonra arama kutusuna "Logic App" yazın ve geri dön ' ü seçin. Sonuçlardan **Logic App** ' i seçin.
 
    ![Mantıksal uygulama oluşturma](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
-1. Bir sonraki ekranda **Oluştur'u**seçin. 
+1. Sonraki ekranda **Oluştur**' u seçin. 
 
 1. Mantıksal uygulamanıza aboneliğiniz içinde benzersiz olan bir ad verin, ardından IoT Hub'ınızla aynı aboneliği, kaynak grubunu ve konumu seçin. 
 
-   ![Mantık uygulaması oluşturmak için alanlar](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
+   ![Mantıksal uygulama oluşturma alanları](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
-1. Kaynak oluşturulduktan sonra mantık uygulamanıza gidin. Bunu yapmak için **Kaynak gruplarını**seçin ve ardından bu öğretici için oluşturduğunuz kaynak grubunu seçin. Ardından kaynak listesindeki mantık uygulamasını bulun ve seçin. 
+1. Kaynak oluşturulduktan sonra mantıksal uygulamanıza gidin. Bunu yapmak için **kaynak grupları**' nı seçin ve ardından Bu öğretici için oluşturduğunuz kaynak grubunu seçin. Ardından mantıksal uygulamayı kaynak listesinden bulun ve seçin. 
 
-1. Logic Apps Designer'da **Şablonları**görmek için sayfa aşağı. Mantık **uygulamanızı** sıfırdan oluşturabilmeniz için Boş Mantık Uygulaması'nı seçin.
+1. Logic Apps tasarımcısında, **şablonları**görmek için sayfayı aşağı kaydırın. Mantıksal uygulamanızı sıfırdan oluşturabilmeniz için **boş mantıksal uygulama** ' yı seçin.
 
 ### <a name="select-a-trigger"></a>Tetikleyici seçme
 
@@ -116,7 +121,7 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
 
 Eylemler, tetikleyici mantıksal uygulama iş yükünü başlattıktan sonra gerçekleşen adımlardır. Bu öğreticide, e-posta sağlayıcınızdan bir e-posta bildirimi gönderme eylemi kullanılır. 
 
-1. **Yeni adım**'ı seçin. Bu, bir **eylem seçmek**için bir pencere açar.
+1. **Yeni adım**'ı seçin. Bu **işlem, bir eylemi seçmek**için bir pencere açar.
 
 1. **E-posta**'yı arayın.
 
@@ -132,9 +137,9 @@ Eylemler, tetikleyici mantıksal uygulama iş yükünü başlattıktan sonra ger
 
    * **Kime**: Bildirim e-postalarını alacak olan e-posta adresini girin. Bu öğreticide, test etmek için erişebileceğiniz bir e-posta hesabı kullanın. 
 
-   * **Konu**: Konu yla ilgili metni doldurun. Konu metin kutusunu tıklattığınızda, eklemek üzere dinamik içerik seçebilirsiniz. Örneğin, bu öğretici `IoT Hub alert: {event Type}`kullanır. Dinamik içeriği göremiyorsanız, **Dinamik İçerik Ekle** bağlantısını seçin - bu da içeriği niçin ve arayla salar.
+   * **Konu**: konunun metnini girin. Konu metin kutusuna tıkladığınızda, içerilecek dinamik içerik ' i seçebilirsiniz. Örneğin, bu öğretici kullanır `IoT Hub alert: {event Type}`. Dinamik içeriği göremiyorsanız, **dinamik Içerik Ekle** köprüsünü seçin--Bu, açıp kapatır.
 
-   * **Gövde**: E-postanızın metnini yazın. Olay verileri temelinde dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Dinamik içeriği göremiyorsanız, **Gövde** metin kutusunun altındaki **Dinamik İçerik Ekle** köprüünü seçin. Size istediğiniz alanları göstermiyorsa, önceki eylemdeki alanları eklemek için Dinamik içerik ekranında *daha fazlasını* tıklatın.
+   * **Gövde**: e-postanız için metin yazın. Olay verileri temelinde dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Dinamik içeriği göremiyorsanız **gövde** metin kutusu altında **dinamik içerik Ekle** köprüsünü seçin. İstediğiniz alanları göstermezse, önceki eylemden alanları dahil etmek için dinamik içerik ekranında *daha fazla* ' ya tıklayın.
 
    E-posta şablonunuz, aşağıdaki örneğe benzer görünebilir:
 
@@ -158,7 +163,7 @@ Logic Apps Tasarımcısı'ndan çıkmadan önce, mantıksal uygulamalarınızın
 
 Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapılandıracaksınız. 
 
-1. Azure portalında IoT Hub'ınıza gidin. Bunu **Kaynak gruplarını**seçerek, ardından bu öğretici için kaynak grubunu seçebilir ve ardından kaynaklar listesinden IoT hub'ınızı seçebilirsiniz.
+1. Azure portalında IoT Hub'ınıza gidin. Bunu, **kaynak grupları**' nı seçerek ve ardından Bu öğreticinin kaynak grubunu seçip kaynak listesinden IoT Hub 'ınızı seçerek yapabilirsiniz.
 
 2. **Olaylar**'ı seçin.
 
@@ -170,41 +175,41 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
 4. Olay aboneliğini aşağıdaki değerlerle oluşturun: 
 
-   * **Olay Abonelik Ayrıntıları**: Açıklayıcı bir ad sağlayın ve **Olay Izgara Şeması'nı**seçin.
+   * **Olay aboneliği ayrıntıları**: açıklayıcı bir ad belirtin ve **Event Grid şeması**' nı seçin.
 
-   * **Olay Türleri**: Olay **Türlerine**Filtre'de, **Oluşturulan Aygıt**dışındaki tüm seçeneklerin işaretlerini kaldırın.
+   * **Olay türleri**: **olay türlerine filtre uygulamak Için**, **cihaz oluşturma**dışında tüm seçimlerin işaretini kaldırın.
 
        ![abonelik olay türleri](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
 
-   * **Bitiş Noktası Ayrıntıları**: **Web Hook** olarak Bitiş Noktası Türü'nü seçin ve bir bitiş *noktası seçin* ve mantık uygulamanızdan kopyaladığınız URL'yi yapıştırın ve seçimi onaylayın.
+   * **Uç nokta ayrıntıları**: uç nokta türünü **Web kancası** olarak seçin ve *uç nokta seç* ' i SEÇIN ve mantıksal uygulamanızdan kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
 
      ![uç nokta URL'si seçme](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   Bittiğinde, bölme aşağıdaki örnek gibi görünmelidir: 
+   İşiniz bittiğinde, bölmesi aşağıdaki örnekteki gibi görünmelidir: 
 
     ![Örnek olay aboneliği formu](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. Olay aboneliğini buraya kaydedebilir ve IoT Hub'ınızda oluşturulan her cihaz için bildirimler alabilirsiniz. Ancak bu öğretici için, belirli aygıtlar için filtre lemek için isteğe bağlı alanları kullanalım. Bölmenin üst kısmında **filtreler'i** seçin.
+5. Olay aboneliğini buraya kaydedebilir ve IoT Hub'ınızda oluşturulan her cihaz için bildirimler alabilirsiniz. Bu öğreticide, belirli cihazları filtrelemek için isteğe bağlı alanları kullanalım. Bölmenin en üstündeki **filtreleri** seçin.
 
-6. **Yeni filtre ekle'yi**seçin. Alanları şu değerlerle doldurun:
+6. **Yeni Filtre Ekle**' yi seçin. Alanları şu değerlerle doldur:
 
-   * **Anahtar**: `Subject`Seçin .
+   * **Anahtar**: öğesini `Subject`seçin.
 
-   * **Operatör**: `String begins with`Seç .
+   * **İşleç**: Select `String begins with`.
 
-   * **Değer**: `devices/Building1_` Bina 1'deki aygıt olayları için filtreye girin.
+   * **Değer**: 1 `devices/Building1_` binasında cihaz olaylarını filtrelemek için girin.
   
-   Bu değerlerle başka bir filtre ekleyin:
+   Şu değerlere sahip başka bir filtre ekleyin:
 
-   * **Anahtar**: `Subject`Seçin .
+   * **Anahtar**: öğesini `Subject`seçin.
 
-   * **Operatör**: `String ends with`Seç .
+   * **İşleç**: Select `String ends with`.
 
-   * **Değer**: `_Temperature` Sıcaklıkla ilgili cihaz olayları için filtreye girin.
+   * **Değer**: sıcaklığa ilişkin cihaz olaylarını filtrelemek için girin `_Temperature` .
 
-   Olay aboneliğinizin **Filtreler** sekmesi artık bu resme benzer olmalıdır:
+   Olay aboneliğinizin **Filtreler** sekmesi şu resme benzer şekilde görünmelidir:
 
-   ![Olay aboneliğine filtre ekleme](./media/publish-iot-hub-events-to-logic-apps/event-subscription-filters.png)
+   ![Olay aboneliğine filtreler ekleniyor](./media/publish-iot-hub-events-to-logic-apps/event-subscription-filters.png)
 
 7. Olay aboneliğini kaydetmek için **Oluştur**'u seçin.
 
@@ -214,11 +219,11 @@ Olay bildirim e-postasını tetiklemek için yeni bir cihaz oluşturarak mantık
 
 1. IoT Hub'ınızda **IoT Cihazları**'nı seçin. 
 
-2. **Yeni'yi**seçin.
+2. **Yeni**' yi seçin.
 
 3. **Cihaz Kimliği** için `Building1_Floor1_Room1_Light` girin.
 
-4. **Kaydet'i**seçin. 
+4. **Kaydet**’i seçin. 
 
 5. Olay abonelik filtrelerini test etmek için farklı cihaz kimlikleri olan birden çok cihaz ekleyebilirsiniz. Şu örnekleri deneyin: 
 
@@ -227,7 +232,7 @@ Olay bildirim e-postasını tetiklemek için yeni bir cihaz oluşturarak mantık
    * Building2_Floor1_Room1_Temperature
    * Building2_Floor1_Room1_Light
 
-   Dört örnek eklediyseniz, IoT aygıtları listeniz aşağıdaki resim gibi görünmelidir:
+   Dört örneği eklediyseniz, IoT cihazları listenizin aşağıdaki görüntüde olduğu gibi görünmesi gerekir:
 
    ![IoT Hub cihaz listesi](./media/publish-iot-hub-events-to-logic-apps/iot-hub-device-list.png)
 
@@ -235,19 +240,19 @@ Olay bildirim e-postasını tetiklemek için yeni bir cihaz oluşturarak mantık
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-Azure portalı kullanmak yerine, IoT Hub adımlarını Azure CLI'yi kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, etkinlik aboneliği ve [bir IoT aygıtı](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity) [oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) için Azure CLI sayfalarına bakın.
+Azure portalı kullanmak yerine, IoT Hub adımlarını Azure CLI'yi kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)için Azure CLI sayfalarına bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide Azure aboneliğinize ücret uygulanmasına neden olan kaynaklar kullanılmıştır. Öğreticiyi denemeyi ve sonuçlarınızı test etmeyi bitirdiğinizde, tutmak istemediğiniz kaynakları devre dışı bırakıp silin. 
+Bu öğreticide Azure aboneliğinize ücret uygulanmasına neden olan kaynaklar kullanılmıştır. Öğreticiyi denemeyi ve sonuçlarınızı test etmeyi tamamladığınızda, saklamak istemediğiniz kaynakları devre dışı bırakın veya silin. 
 
 Bu öğreticide oluşturulan tüm kaynakları silmek için kaynak grubunu silin. 
 
-1. **Kaynak gruplarını**seçin ve ardından bu öğretici için oluşturduğunuz kaynak grubunu seçin.
+1. **Kaynak grupları**' nı seçin ve ardından Bu öğretici için oluşturduğunuz kaynak grubunu seçin.
 
-2. Kaynak grubu bölmesine kaynak **grubunu sil'i**seçin. Kaynak grubu adını girmeniz istenir ve ardından silebilirsiniz. Burada bulunan tüm kaynaklar da kaldırılır.
+2. Kaynak grubu bölmesinde **kaynak grubunu sil**' i seçin. Kaynak grubu adını girmeniz istenir ve ardından onu silebilirsiniz. İçinde bulunan tüm kaynaklar da kaldırılır.
 
-Tüm kaynakları kaldırmak istemiyorsanız, bunları tek tek yönetebilirsiniz. 
+Tüm kaynakları kaldırmak istemiyorsanız, onları tek tek yönetebilirsiniz. 
 
 Mantıksal uygulamanızda yapılan çalışmayı kaybetmek istemiyorsanız, bunu silmek yerine devre dışı bırakın. 
 

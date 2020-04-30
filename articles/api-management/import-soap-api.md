@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74107669"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202749"
 ---
 # <a name="import-soap-api"></a>SOAP API’sini içeri aktarma
 
-Bu makalede, bir SOAP API’sinin standart bir XML gösteriminin nasıl içeri aktarılacağı gösterilir. Makale, APIM API’sinin nasıl test edileceğini de göstermektedir.
+Bu makalede, bir SOAP API’sinin standart bir XML gösteriminin nasıl içeri aktarılacağı gösterilir. Makalede ayrıca API Management API 'sinin nasıl test yapılacağı gösterilmektedir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -32,13 +32,13 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği oluşturun](get-started-create-service-instance.md)
+Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Arka uç API'sini içeri aktarma ve yayımlama
 
-1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
+1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
 2. **Yeni API ekleyin** listesinden **WSDL**’yi seçin.
 
     ![SOAP API’si](./media/import-soap-api/wsdl-api.png)
@@ -49,18 +49,19 @@ Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği olu
 5. Sekme tuşuna basın.
 
     Şu alanlar, SOAP API’sinde bulunan bilgilerle doldurulur: Görünen ad, Ad, Açıklama.
-6. API URL'si soneki ekleyin. Son ek, bu APIM örneğinde özel olarak bu API’yi tanımlayan bir addır. Son ekin bu APIM örneğinde benzersiz olması gerekir.
-9. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda "*Sınırsız*" ürün kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
+6. API URL'si soneki ekleyin. Sonek, bu belirli API’yi bu API Management örneğinde tanımlayan bir addır. Bu API Management örneğinde benzersiz olmalıdır.
+7. API’yi bir ürünle ilişkilendirerek yayımlayın. Bu durumda, "*sınırsız*" ürün kullanılır.  API’nin yayımlanmasını ve geliştiricilerin kullanımına sunulmasını istiyorsanız API’yi bir ürüne ekleyin. Bunu API oluşturması sırasında yapabilir ya da daha sonra ayarlayabilirsiniz.
 
-    Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.
+    Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. API Management örneğini oluşturduysanız, zaten bir yöneticiyseniz, varsayılan olarak her ürüne abone olursunuz.
 
     Varsayılan olarak, her bir API Management örneği iki örnek ürün ile birlikte gelir:
 
     * **Başlangıç**
     * **Sınırsız**   
-10. **Oluştur'u**seçin.
+8. Diğer API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+9. **Oluştur**’u seçin.
 
-### <a name="test-the-new-api-in-the-administrative-portal"></a>Yönetim portalındaki yeni API'yi test edin
+### <a name="test-the-new-api-in-the-administrative-portal"></a>Yönetim portalında yeni API 'YI test etme
 
 İşlemler doğrudan bir API’nin işlemlerini görüntülemek ve test etmek için kullanışlı bir yol sağlayan yönetim portalından çağrılabilir.  
 
@@ -68,7 +69,7 @@ Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği olu
 2. **Test** sekmesine basın.
 3. Bir işlem seçin.
 
-    Sayfa, sorgu parametrelerinin ve üst bilgilerin alanlarını görüntüler. Bu API ile ilişkilendirilmiş ürünün abonelik anahtarı için, üst bilgilerden biri "Ocp-Apim-Subscription-Key" üst bilgisidir. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve anahtar otomatik olarak doldurulur. 
+    Sayfa, sorgu parametrelerinin ve üst bilgilerin alanlarını görüntüler. Bu API ile ilişkilendirilmiş ürünün abonelik anahtarı için, üst bilgilerden biri "Ocp-Apim-Subscription-Key" üst bilgisidir. API Management örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve anahtar otomatik olarak doldurulur. 
 1. **Gönder**’e basın.
 
     Arka uç, **200 OK** ve bazı verilerle yanıt verir.

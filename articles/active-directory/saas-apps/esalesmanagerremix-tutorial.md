@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "65406971"
+ms.locfileid: "82202405"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory E Sales Manager yeniden karması ile tümleştirin
 
@@ -158,7 +158,7 @@ Azure portal Azure AD 'de çoklu oturum açmayı etkinleştirin ve aşağıdakil
     
     b. **İşbirliği öğesi** bölümünde, açılan listede, **e-posta**' yı seçin.
 
-    c. **İşbirliği öğesi** kutusunda, daha önce kopyaladığınız talep değerini Azure Portal yapıştırın (yani, **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. **İşbirliği öğesi** kutusunda, daha önce kopyaladığınız talep değerini Azure Portal yapıştırın (yani, **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
 
     d. **Veren (VARLıK kimliği)** kutusunda, daha önce Azure Portal **E-Sales Manager 'ın etki alanı ve URL 'leri yeniden karması** bölümünden kopyaladığınız tanımlayıcı değeri yapıştırın.
 

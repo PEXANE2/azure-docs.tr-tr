@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442659"
+ms.locfileid: "82203157"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma
 
@@ -31,36 +31,23 @@ Yeni bir Azure API Management hizmeti başlangıçta tek bir Azure bölgesinde, 
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>Yeni bir bölgeye API Management hizmet örneği dağıtma
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>API Management hizmetini yeni bir bölgeye dağıtma
 
 > [!NOTE]
 > Henüz bir API Management hizmet örneği oluşturmadıysanız, bkz. [API Management hizmet örneği oluşturma][create an api management service instance].
 
-Azure portal, API Management hizmet örneğiniz için **ölçek ve fiyatlandırma** sayfasına gidin.
+1. Azure portal, API Management hizmetinize gidin ve menüdeki **konumlar** girdisine tıklayın.
+2. Üstteki çubukta **+ Ekle** ' ye tıklayın.
+3. Açılan listeden konumu seçin ve kaydırıcıyla birim sayısını ayarlayın.
+4. Onaylamak için **Ekle** düğmesine tıklayın.
+5. Tüm konumları yapılandırmadan bu işlemi tekrarlayın.
+6. Dağıtım işlemini başlatmak için üstteki çubukta **Kaydet** ' e tıklayın.
 
-![Ölçek sekmesi][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>API Management hizmet konumunu silme
 
-Yeni bir bölgeye dağıtım yapmak için araç çubuğundan **+ bölge Ekle** ' ye tıklayın.
-
-![Bölge Ekle][api-management-add-region]
-
-Açılır listeden konumu seçin ve kaydırıcıyla birim sayısını ayarlayın.
-
-![Birimleri belirt][api-management-select-location-units]
-
-Seçiminizi konumlar tablosuna yerleştirmek için **Ekle** ' ye tıklayın.
-
-Tüm konumları yapılandırılana kadar bu işlemi tekrarlayın ve dağıtım işlemini başlatmak için araç çubuğundan **Kaydet** ' e tıklayın.
-
-## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>Bir API Management hizmet örneğini bir konumdan silme
-
-Azure portal, API Management hizmet örneğiniz için **ölçek ve fiyatlandırma** sayfasına gidin.
-
-![Ölçek sekmesi][api-management-scale-service]
-
-Kaldırmak istediğiniz konum için, tablonun sağ ucundaki **...** düğmesini kullanarak bağlam menüsünü açın. **Sil** seçeneğini belirleyin.
-
-Silme işlemini onaylayın ve değişiklikleri uygulamak için **Kaydet** ' e tıklayın.
+1. Azure portal, API Management hizmetinize gidin ve menüdeki **konumlar** girdisine tıklayın.
+2. Kaldırmak istediğiniz konum için, tablonun sağ ucundaki **...** düğmesini kullanarak bağlam menüsünü açın. **Sil** seçeneğini belirleyin.
+3. Silme işlemini onaylayın ve değişiklikleri uygulamak için **Kaydet** ' e tıklayın.
 
 ## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>Bölgesel arka uç hIzmetlerIne yönelik API çağrılarını yönlendir
 
@@ -119,11 +106,6 @@ API Management, istekleri [En düşük gecikme süresine](../traffic-manager/tra
 1. [Traffic Manager API Management bölgesel durum uç noktalarını yapılandırın](../traffic-manager/traffic-manager-monitoring.md). Bölgesel durum uç noktaları `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, örneğin `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`URL örüntüsünün izler.
 1. Traffic Manager [yönlendirme yöntemini](../traffic-manager/traffic-manager-routing-methods.md) belirtin.
 
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 [create an api management service instance]: get-started-create-service-instance.md
 [get started with azure api management]: get-started-create-service-instance.md
 [deploy an api management service instance to a new region]: #add-region

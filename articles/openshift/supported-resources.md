@@ -1,38 +1,38 @@
 ---
-title: Azure Red Hat OpenShift için desteklenen kaynaklar
-description: Microsoft Azure Red Hat OpenShift tarafından hangi Azure bölgelerinin ve sanal makine boyutlarının desteklenerek desteklendirilmelerini anlayın.
+title: Azure Red Hat OpenShift 3,11 için desteklenen kaynaklar
+description: Microsoft Azure Red Hat OpenShift tarafından desteklenen Azure bölgelerini ve sanal makine boyutlarını anlayın.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243672"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203684"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift kaynakları
 
-Bu konu, Microsoft Azure Red Hat OpenShift hizmeti tarafından desteklenen Azure bölgelerini ve sanal makine boyutlarını listeler.
+Bu konu, Microsoft Azure Red Hat OpenShift 3,11 hizmeti tarafından desteklenen Azure bölgelerini ve sanal makine boyutlarını listeler.
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 
-Azure Kırmızı Şapka OpenShift kümelerini dağıtabileceğiniz bölgelerin geçerli bir listesi için [bölgeye göre kullanılabilen Ürünler'e](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bakın.
+Azure Red Hat OpenShift kümelerini dağıtabileceğiniz bölgelerin geçerli bir listesi için [bölgeye göre kullanılabilir ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) bakın.
 
 ## <a name="virtual-machine-sizes"></a>Sanal makine boyutları
 
-Azure Red Hat OpenShift kümenizdeki bilgi işlem düğümleri için belirtebileceğiniz desteklenen sanal makine boyutları aşağıda veda edilmiştir.
+Azure Red Hat OpenShift kümenizdeki işlem düğümleri için belirtebileceğiniz desteklenen sanal makine boyutları aşağıda verilmiştir.
 
 > [!Important]
-> Her VM'nin ekilebilen farklı sayıda sürücüsü vardır. Bu bellek veya CPU boyutu kadar hemen açık olmayabilir.
-> Tüm VM boyutları tüm bölgelerde kullanılamaz. API belirttiğiniz boyutu desteklese bile, boyut belirttiğiniz bölgede kullanılamıyorsa bir hata alabilirsiniz.
-> Daha fazla bilgi için [bölge başına desteklenen VM boyutlarının geçerli listesine](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) bakın.
+> Her VM 'nin iliştirilebilecek farklı sayıda sürücüsü vardır. Bu, bellek veya CPU boyutu kadar hemen açık olmayabilir.
+> Tüm bölgelerde tüm VM boyutları kullanılamaz. API belirttiğiniz boyutu desteklese de, boyut belirttiğiniz bölgede yoksa bir hata alabilirsiniz.
+> Daha fazla bilgi için bkz. [bölge başına desteklenen VM boyutlarının geçerli listesi](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
 
-## <a name="compute-node-sizes"></a>Hesap düğümü boyutları
+## <a name="compute-node-sizes"></a>İşlem düğüm boyutları
 
-Aşağıdaki işlem düğümü boyutları Azure Red Hat OpenShift REST API tarafından desteklenir:
+Aşağıdaki işlem düğümü boyutları Azure Red Hat Openshıft REST API tarafından desteklenir:
 
 |Boyut|Sanal işlemci|RAM|
 |-|-|-|
@@ -52,7 +52,7 @@ Aşağıdaki işlem düğümü boyutları Azure Red Hat OpenShift REST API taraf
 
 ## <a name="master-node-sizes"></a>Ana düğüm boyutları
 
-Aşağıdaki ana / altyapı düğümü boyutları Azure Red Hat OpenShift REST API tarafından desteklenir:
+Aşağıdaki ana/altyapı düğüm boyutları, Azure Red Hat Openshıft REST API tarafından desteklenir:
 
 |Boyut|Sanal işlemci|RAM|
 |-|-|-|
@@ -63,4 +63,4 @@ Aşağıdaki ana / altyapı düğümü boyutları Azure Red Hat OpenShift REST A
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [Kırmızı Şapka OpenShift küme](tutorial-create-cluster.md) oluşturma öğreticisini deneyin.
+[Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisini deneyin.

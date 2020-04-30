@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ca5ef9cebfddb002cd62a9fb0fbbfdf444e0e754
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: f397a3df7280b9277b2b7205368ef5788ed321aa
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085973"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206689"
 ---
-Uygulama Hizmeti planında bir web uygulaması oluşturun. [web app](../articles/app-service/containers/app-service-linux-intro.md) `myAppServicePlan` 
+App Service planında bir [Web uygulaması](../articles/app-service/containers/app-service-linux-intro.md) oluşturun. `myAppServicePlan` 
 
-Bulut Kabuğu'nda komutu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma süresi .NET `DOTNETCORE|LTS`Core 3.1 olarak ayarlanır. Desteklenen tüm çalışma sürelerini [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)görmek için çalıştırın. 
+Cloud Shell [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) komutunu kullanabilirsiniz. Aşağıdaki örnekte `<app-name>` kısmını genel olarak benzersiz bir uygulama adıyla değiştirin (geçerli karakterler `a-z`, `0-9` ve `-` şeklindedir). Çalışma zamanı, .NET Core `DOTNETCORE|LTS`3,1 olan olarak ayarlanır. Desteklenen tüm çalışma zamanlarını görmek için öğesini [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)çalıştırın. 
 
 ```azurecli-interactive
 # Bash
@@ -50,11 +50,11 @@ Bir Linux kapsayıcısında, Git dağıtımı etkin boş bir web uygulaması olu
 > Git uzak URL’si `deploymentLocalGitUrl` özelliği içinde `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` biçiminde gösterilir. Bu URL’ye daha sonra ihtiyacınız olacağı için URL’yi kaydedin.
 >
 
-Şu anda, .NET Core sürümünü düzgün yapılandırmak için aşağıdaki `<app-name>` ek komutu çalıştırmanız gerekir (önceki adımdakiyle değiştirin):
+Şu anda .NET Core sürümünü düzgün şekilde yapılandırmak için aşağıdaki ek komutu çalıştırmanız gerekir (önceki adımdan biriyle değiştirin `<app-name>` ):
 
 ```azurecli-interactive
 # Bash
-az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1.0"
+az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
 # PowerShell
-az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1.0"
+az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
 ```

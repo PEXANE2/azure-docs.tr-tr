@@ -1,31 +1,26 @@
 ---
-title: Kullanıcıları sağlamak ve uygulamanızı gereken verilerle zenginleştirmek için SCıM, Microsoft Graph ve Azure AD sağlama hizmeti 'ni kullanma | Microsoft Docs
+title: Verilerle kullanıcılar ve zenginleştirme uygulamalar sağlamak için SCıM, Microsoft Graph ve Azure AD kullanın
 description: Kullanıcı sağlamak ve uygulamanızı gereken verilerle zenginleştirmenin yanı sıra SCıM 'i ve Microsoft Graph kullanma.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/26/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181843"
+ms.locfileid: "82201695"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Kullanıcı sağlamak ve uygulamanızı gereken verilere göre zenginleştirmek için SCıM ve Microsoft Graph birlikte kullanma
 
-**Hedef kitle:** Bu belge, Azure AD ile tümleştirilecek uygulamalar oluşturmaya yönelik geliştiricilere yöneliktir. Yakınlaştırma, ServiceNow ve DropBox gibi Azure AD ile zaten tümleştirilmiş olan uygulamaları kullanmak isteyen diğerleri için, bu işlemi atlayabilir ve uygulamaya özgü [öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) inceleyebilir veya [sağlama hizmeti 'nin nasıl çalıştığını](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)inceleyebilirsiniz.
+**Hedef kitle:** Bu makale, Azure Active Directory (Azure AD) ile tümleştirilecek uygulamalar oluşturmaya yönelik geliştiricilere yöneliktir. Daha önce Azure AD ile tümleştirilmiş olan zoom, ServiceNow ve DropBox gibi uygulamaları kullanmak istiyorsanız, bu makaleyi atlayabilir ve uygulamaya özgü [öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) inceleyebilir veya [sağlama hizmeti 'nin nasıl çalıştığını](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)inceleyebilirsiniz.
 
 **Yaygın senaryolar**
 
@@ -46,7 +41,6 @@ Günümüzde, BT yöneticileri kullanıcı hesaplarını el ile oluşturarak vey
 **Öneri**: 
 * Müşterileriniz çeşitli IDPs kullanıyorsa ve her biriyle tümleşecek bir eşitleme altyapısı sürdürmek istemiyorsanız, SCıM uyumlu [/Users](https://aka.ms/scimreferencecode) uç noktasını destekler. Müşterileriniz, Azure AD sağlama hizmeti ile tümleştirme için bu uç noktayı kolayca kullanabilir ve erişmesi gerektiğinde otomatik olarak Kullanıcı hesapları oluşturabilir. Uç noktayı bir kez derleyebilir ve tüm IDPs ile uyumlu hale gelir. Bir kullanıcının SCıM kullanarak nasıl oluşturulacağı için aşağıdaki örnek isteği inceleyin.
 * Azure AD 'de Kullanıcı nesnesinde ve Microsoft 'un diğer verilerinde bulunan kullanıcı verilerine ihtiyacınız varsa, Kullanıcı sağlaması için bir SCıM uç noktası oluşturmayı ve verilerin geri kalanını almak için Microsoft Graph çağırmayı düşünün. 
-
 
 ```json
 POST /Users

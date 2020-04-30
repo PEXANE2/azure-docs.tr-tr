@@ -3,22 +3,98 @@ title: Şablon işlevleri-karşılaştırma
 description: Değerleri karşılaştırmak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192340"
+ms.locfileid: "82203786"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM şablonları için karşılaştırma işlevleri
 
 Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
+* [Coalesce](#coalesce)
 * [equals](#equals)
 * [büyüktür](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [daha az](#less)
 * [lessOrEquals](#lessorequals)
+
+## <a name="coalesce"></a>Coalesce
+
+`coalesce(arg1, arg2, arg3, ...)`
+
+Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler ve boş nesneler null değil.
+
+### <a name="parameters"></a>Parametreler
+
+| Parametre | Gerekli | Tür | Açıklama |
+|:--- |:--- |:--- |:--- |
+| arg1 |Yes |int, String, array veya Object |Null için sınanacak ilk değer. |
+| ek bağımsız değişkenler |Hayır |int, String, array veya Object |Null için sınanacak ek değerler. |
+
+### <a name="return-value"></a>Döndürülen değer
+
+Bir String, int, array veya Object olabilen, null olmayan ilk parametrelerin değeri. Tüm parametreler null ise null.
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) , farklı birleşim kullanımlarından gelen çıktıyı gösterir.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "null1": null,
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+        }
+    }
+}
+```
+
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
+
+| Adı | Tür | Değer |
+| ---- | ---- | ----- |
+| stringOutput | Dize | default |
+| ıntoutput | int | 1 |
+| objectOutput | Nesne | {"First": "varsayılan"} |
+| arrayOutput | Dizi | 1 |
+| Emptızput | Bool | True |
 
 ## <a name="equals"></a>equals
 

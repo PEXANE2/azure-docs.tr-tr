@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190665"
+ms.locfileid: "82204126"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight üzerinde iş akışı tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie'yi kullanma
 
@@ -644,67 +644,6 @@ Bir başlangıç, bitiş ve iş için yineleme sıklığını belirtmek için d�
 
     ![OOzie Web konsolu iş bilgileri sekmesi](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Sorun giderme
-
-Oozie Kullanıcı arabirimi ile Oozie günlüklerini görüntüleyebilirsiniz. Oozie Kullanıcı arabirimi, iş akışı tarafından başlatılan MapReduce görevlerine yönelik JobTracker günlüklerine bağlantılar da içerir. Sorun giderme deseninin olması gerekir:
-
-   1. İşi Oozie Web Kullanıcı arabiriminde görüntüleyin.
-
-   2. Belirli bir eylem için hata veya hata oluşursa, **hata iletisi** alanının hata hakkında daha fazla bilgi sağladığını görmek için eylemi seçin.
-
-   3. Varsa, eylem için JobTracker günlükleri gibi daha fazla ayrıntı görüntülemek için eylemden URL 'YI kullanın.
-
-Aşağıdakiler, içinde karşılaşabileceğiniz belirli hatalar ve bunları nasıl çözebileceğini aşağıda bulabilirsiniz.
-
-### <a name="ja009-cant-initialize-cluster"></a>JA009: küme başlatılamıyor
-
-**Belirtiler**: Iş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL**olarak gösterir. Eylemi seçmek şu hata iletisini görüntüler:
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**Neden**: **iş. xml** dosyasında kullanılan Azure Blob depolama adresleri depolama kapsayıcısı veya depolama hesabı adı içermiyor. BLOB depolama adresi biçimi olmalıdır `wasbs://containername@storageaccountname.blob.core.windows.net`.
-
-**Çözüm**: Işin kullandığı BLOB depolama adreslerini değiştirin.
-
-### <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie kullanıcının kimliğine bürünmesine &lt;izin verilmiyor&gt;
-
-**Belirtiler**: Iş durumu **askıya alındı**olarak değişir. İşin ayrıntıları `RunHiveScript` durumu **START_MANUAL**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**Neden**: geçerli Izin ayarları Oozie 'nin belirtilen kullanıcı hesabını taklit etmesine izin vermez.
-
-**Çözüm**: Oozie **`users`** gruptaki kullanıcıları taklit edebilir. Kullanıcı hesabının `groups USERNAME` üyesi olduğu grupları görmek için öğesini kullanın. Kullanıcı **`users`** grubun üyesi değilse, kullanıcıyı gruba eklemek için aşağıdaki komutu kullanın:
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> HDInsight 'ın Kullanıcı gruba eklendiğini tanıması birkaç dakika sürebilir.
-
-### <a name="launcher-error-sqoop"></a>Başlatıcı hatası (Sqoop)
-
-**Belirtiler**: Iş durumu **sonlandırıldı**olarak değişir. İşin ayrıntıları `RunSqoopExport` durumu **hata**olarak gösterir. Eylemi seçerseniz, aşağıdaki hata iletisini gösterir:
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**Neden**: Sqoop, veritabanına erişmek için gereken veritabanı sürücüsünü yükleyemiyor.
-
-**Çözüm**: bir Oozie Işinden Sqoop kullandığınızda, iş akışı. xml gibi diğer kaynaklarla veritabanı sürücüsünü dahil etmeniz gerekir. Ayrıca, Workflow. xml ' in `<sqoop>...</sqoop>` bölümündeki veritabanı sürücüsünü içeren arşive başvurun.
-
-Örneğin, bu belgedeki iş için aşağıdaki adımları kullanacaksınız:
-
-1. `mssql-jdbc-7.0.0.jre8.jar` Dosyayı **/Tutorials/useoozie** dizinine kopyalayın:
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. Aşağıdaki XML `workflow.xml` 'i Yukarıdaki `</sqoop>`yeni bir satıra eklemek için öğesini değiştirin:
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, bir Oozie iş akışını tanımlamanızı ve Oozie işinin nasıl çalıştırılacağını öğrendiniz. HDInsight ile çalışma hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
@@ -712,3 +651,4 @@ Bu makalede, bir Oozie iş akışını tanımlamanızı ve Oozie işinin nasıl 
 * [HDInsight 'ta Apache Hadoop işleri için veri yükleme](hdinsight-upload-data.md)
 * [HDInsight 'ta Apache Hadoop Apache Sqoop kullanma](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
 * [HDInsight üzerinde Apache Hadoop ile Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
+* [Apache Oozie sorunlarını giderme](./troubleshoot-oozie.md)

@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: c647564d685470d86b2aa54be5a86bb995d914bc
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159737"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202568"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Azure 'da bir Node. js uygulaması oluşturma
 
@@ -83,7 +83,7 @@ Sonra, uygulamanın çalıştığından emin olun. Terminalden, sunucuyu başlat
 npm start
 ```
 
-Şimdi tarayıcınızı açın ve [http://localhost:3000](http://localhost:3000)' a gidin. burada şöyle bir şey görmeniz gerekir:
+Şimdi tarayıcınızı açın ve `http://localhost:3000`' a gidin. burada şöyle bir şey görmeniz gerekir:
 
 ![Express uygulaması çalıştırılıyor](./media/quickstart-nodejs/express.png)
 

@@ -1,11 +1,11 @@
 ---
-title: Azure Etkin Dizin portalında silinen kullanıcıları toplu olarak geri yükleme | Microsoft Dokümanlar
-description: Azure Etkin Dizini'ndeki Azure AD yönetici merkezinde silinen kullanıcıları toplu olarak geri yükleme
+title: Azure Active Directory portalında silinen kullanıcıları toplu geri yükleme | Microsoft Docs
+description: Azure Active Directory 'de Azure AD Yönetim Merkezi 'nde toplu olarak silinen kullanıcıları geri yükleme
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,52 +13,73 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f75fe224491c2853f819a45db678e87849dc72d1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532738"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203325"
 ---
-# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Etkin Dizini'nde silinen kullanıcıları toplu olarak geri yükleme
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Active Directory silinen kullanıcıları toplu geri yükleme
 
-Azure Etkin Dizin (Azure AD), toplu kullanıcı oluşturma ve silme işlemlerini, misafirler için toplu daveti ve kullanıcı, grup ve grup üyelerinin indirme listelerini destekler.
+Azure Active Directory (Azure AD) toplu Kullanıcı geri yükleme işlemlerini destekler ve Kullanıcı, Grup ve grup üyelerinin listesini indirmeyi destekler.
 
-## <a name="to-bulk-restore-users"></a>Kullanıcıları toplu olarak geri yüklemek için
+## <a name="understand-the-csv-template"></a>CSV şablonunu anlama
 
-1. Azure AD kuruluşunuzdaki Kullanıcı yöneticisi bir hesapla [Azure REKLAM kuruluşunuzda oturum açın.](https://aad.portal.azure.com)
-1. Azure AD'de,**Silinen** **Kullanıcılar'ı** > seçin.
-1. **Silinen kullanıcılar** sayfasında, kullanıcıların özelliklerinin yüklenmesi için geçerli bir CSV dosyasını yüklemek için **Toplu geri yükleme'yi** seçin.
+Azure AD kullanıcılarını toplu olarak başarıyla geri yüklemenize yardımcı olması için CSV şablonunu indirin ve girin. İndirmediğiniz CSV şablonu şu örnekteki gibi görünebilir:
 
-   ![Silinen kullanıcılar sayfasındaki toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
+![Her satır ve sütunun amacını ve değerlerini açıklayan karşıya yükleme ve çağrı aşımları için elektronik tablo](./media/users-bulk-restore/understand-template.png)
 
-1. CSV dosyasını açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Gerekli tek değer **ObjectID'dir.** Ardından dosyayı kaydedin.
+### <a name="csv-template-structure"></a>CSV şablonu yapısı
 
-   ![Eklemek istediğiniz kullanıcıları listelediğiniz yerel bir CSV dosyasını seçin](./media/users-bulk-restore/upload-button.png)
+İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
-1. Toplu **geri yükleme** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçip **Gönder'i**tıklattığınızda, CSV dosyasının doğrulaması başlar.
-1. Dosya içeriği doğrulandığında, **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
-1. Dosyanız doğrulamadan geçtiğinde, kullanıcıları geri yükleyen Azure toplu işlemini başlatmak için **Gönder'i** seçin.
-1. Geri yükleme işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
+- **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
+- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Object ID [objectId] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
-Hatalar varsa, **Toplu işlem sonuçları** sayfasındaki sonuç dosyasını indirebilir ve görüntüleyebilirsiniz. Dosya, her hatanın nedenini içerir.
+### <a name="additional-guidance"></a>Ek yönergeler
+
+- Karşıya yükleme şablonunun ilk iki satırı kaldırılmamalıdır veya değiştirilmemelidir veya karşıya yükleme işlenemiyor.
+- Önce gerekli sütunlar listelenir.
+- Şablona yeni sütun eklenmesini önermiyoruz. Eklediğiniz tüm ek sütunlar yoksayılır ve işlenmez.
+- CSV şablonunun en son sürümünü mümkün olduğunca sık indirmeniz önerilir.
+
+## <a name="to-bulk-restore-users"></a>Kullanıcıları toplu geri yüklemek için
+
+1. Azure AD kuruluşunda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
+1. Azure AD 'de, silinen **Kullanıcılar** > **Deleted**' ı seçin.
+1. **Silinen kullanıcılar** sayfasında, kullanıcıların geri yüklenecek GEÇERLI bir CSV dosyasını karşıya yüklemek için **toplu geri yükleme** ' yi seçin.
+
+   ![Silinen kullanıcılar sayfasında toplu geri yükleme komutunu seçin](./media/users-bulk-restore/bulk-restore.png)
+
+1. CSV şablonunu açın ve geri yüklemek istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ObjectID**değeri gereklidir. Ardından dosyayı kaydedin.
+
+   ![İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-restore/upload-button.png)
+
+1. **Toplu geri yükleme** sayfasında, **CSV dosyanızı karşıya yükleyin**bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandığında, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. Dosyanız doğrulamayı geçtiğinde, kullanıcıları geri yükleyen Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
+1. Geri yükleme işlemi tamamlandığında toplu işlemin başarılı olduğunu belirten bir bildirim görürsünüz.
+
+Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
+Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
 [![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
-Ardından, geri yüklediğiniz kullanıcıların Azure portalında veya PowerShell'i kullanarak Azure REKLAM kuruluşunda bulununp var olmadığını denetleyebilirsiniz.
+Daha sonra, geri yüklediğiniz kullanıcıların Azure portal veya PowerShell kullanarak Azure AD kuruluşunda mevcut olup olmadığını kontrol edebilirsiniz.
 
-## <a name="view-restored-users-in-the-azure-portal"></a>Azure portalında geri yüklenen kullanıcıları görüntüleme
+## <a name="view-restored-users-in-the-azure-portal"></a>Azure portal geri yüklenen kullanıcıları görüntüleme
 
-1. Kuruluşta Kullanıcı yöneticisi olan bir hesapla [Azure AD yönetici merkezinde oturum açın.](https://aad.portal.azure.com)
-1. Gezinti bölmesinde Azure **Etkin Dizin'i**seçin.
+1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde oturum açın](https://aad.portal.azure.com) .
+1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-1. **Göster'in**altında, **Tüm kullanıcıları** seçin ve geri yüklediğiniz kullanıcıların listelenmiş olduğunu doğrulayın.
+1. **Göster**altında, **tüm kullanıcılar** ' ı seçin ve geri yüklediğiniz kullanıcıların listelendiğini doğrulayın.
 
-### <a name="view-users-with-powershell"></a>PowerShell ile kullanıcıları görüntüleyin
+### <a name="view-users-with-powershell"></a>PowerShell ile kullanıcıları görüntüleme
 
 Şu komutu çalıştırın:
 
@@ -66,10 +87,10 @@ Ardından, geri yüklediğiniz kullanıcıların Azure portalında veya PowerShe
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Geri yüklediğiniz kullanıcıların listelenmiş olduğunu görmeniz gerekir.
+Geri yüklediğiniz kullanıcıların listelendiğini görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Toplu içe aktarma kullanıcıları](users-bulk-add.md)
-- [Toplu silme kullanıcıları](users-bulk-delete.md)
-- [Kullanıcı listesini indirin](users-bulk-download.md)
+- [Kullanıcıları toplu içe aktarma](users-bulk-add.md)
+- [Kullanıcıları toplu silme](users-bulk-delete.md)
+- [Kullanıcı listesini indir](users-bulk-download.md)

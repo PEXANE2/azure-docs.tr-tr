@@ -4,19 +4,19 @@ description: Uygun sertifikalarla cihazlarınızı ayarlama ve gelecekteki kod g
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/24/2020
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191847"
+ms.locfileid: "82204211"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -174,12 +174,22 @@ Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümle
 
 Özel Azure kayıt defterinizde özel kod modülleri için kapsayıcı görüntülerinizi depolama hakkında bilgi sahibi olabilirsiniz, ancak edgeAgent ve edgHub Runtime modülleri gibi ortak kapsayıcı görüntülerini depolamak için de kullanabilirsiniz. Bu çalışma zamanı kapsayıcıları Microsoft Container Registry 'de (MCR) depolandığından çok sıkı güvenlik duvarı kısıtlamalarınız varsa bu durum gerekli olabilir.
 
-Kayıt defterinize yerleştirilecek Docker Pull komutuyla görüntüleri alın. IoT Edge çalışma zamanının her yeni sürümü ile görüntüleri güncelleştirmeniz gerekeceğini unutmayın.
+Özel Kayıt defterinize yerleştirilecek Docker Pull komutuyla görüntüleri alın. IoT Edge çalışma zamanının her yeni sürümü ile görüntüleri güncelleştirmeniz gerekeceğini unutmayın.
 
 | IoT Edge çalışma zamanı kapsayıcısı | Docker Pull komutu |
 | --- | --- |
 | [Azure IoT Edge Aracısı](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb 'ı](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+Ardından, edgeAgent ve edgeHub sistem modülleri için Deployment. Template. JSON dosyasındaki görüntü başvurularını güncelleştirdiğinizden emin olun. Her `mcr.microsoft.com` iki modül için kayıt defteri adınızla ve sunucu ile değiştirin.
+
+* edgeAgent:
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* EdgeHub
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>Ağ
 

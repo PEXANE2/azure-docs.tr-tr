@@ -1,11 +1,11 @@
 ---
-title: Azure Active Directory portalında toplu oluşturma kullanıcıları | Microsoft Dokümanlar
-description: Azure Etkin Dizin'deki Azure AD yönetici merkezinde kullanıcıları toplu olarak ekleme
+title: Azure Active Directory portalında toplu Kullanıcı oluşturma | Microsoft Docs
+description: Azure Active Directory 'de Azure AD Yönetim Merkezi 'nde toplu olarak Kullanıcı ekleme
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,56 +13,77 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532960"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203427"
 ---
-# <a name="bulk-create-users-in-azure-active-directory"></a>Azure Etkin Dizini'nde toplu oluşturma kullanıcıları
+# <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory Kullanıcıları toplu olarak oluşturma
 
-Azure Etkin Dizin (Azure AD), toplu kullanıcı oluşturma ve silme işlemlerini, misafirler için toplu daveti ve kullanıcı, grup ve grup üyelerinin indirme listelerini destekler.
+Azure Active Directory (Azure AD) toplu Kullanıcı oluşturma ve silme işlemlerini destekler ve kullanıcı listelerinin indirilmesini destekler. Azure AD portalından indirebileceğiniz, virgülle ayrılmış değerler (CSV) şablonunu doldurmanız yeterlidir.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Yönetim portalında toplu olarak kullanıcı oluşturmak için, Global yönetici veya Kullanıcı yöneticisi olarak oturum açmış olmanız gerekir.
+Yönetim Portalı 'nda kullanıcıları toplu olarak oluşturmak için, genel yönetici veya Kullanıcı Yöneticisi olarak oturum açmış olmanız gerekir.
 
-## <a name="to-create-users-in-bulk"></a>Toplu olarak kullanıcı oluşturmak için
+## <a name="understand-the-csv-template"></a>CSV şablonunu anlama
 
-1. [Azure REKLAM kuruluşunuzda,](https://aad.portal.azure.com) kuruluşta Kullanıcı yöneticisi olan bir hesapla oturum açın.
-1. Azure AD'de, **Kullanıcılar** > **Toplu oluşturma'yı**seçin.
-1. Toplu **oluşturma kullanıcı** sayfasında, kullanıcı özelliklerinden oluşan geçerli bir virgülle ayrılmış değerler (CSV) dosyasını almak için **İndir'i** seçin ve ardından oluşturmak istediğiniz kullanıcıları ekle ekleyin.
+Azure AD kullanıcılarını toplu olarak başarıyla oluşturmanıza yardımcı olması için toplu karşıya yükleme CSV şablonunu indirin ve girin. İndirmediğiniz CSV şablonu şu örnekteki gibi görünebilir:
 
-   ![Eklemek istediğiniz kullanıcıları listelediğiniz yerel bir CSV dosyasını seçin](./media/users-bulk-add/upload-button.png)
+![Her satır ve sütunun amacını ve değerlerini açıklayan karşıya yükleme ve çağrı aşımları için elektronik tablo](./media/users-bulk-add/create-template-example.png)
 
-1. CSV dosyasını açın ve oluşturmak istediğiniz her kullanıcı için bir satır ekleyin. Gerekli olan tek değerler **Ad,** **Kullanıcı ana adı,** **İlk parola** ve Blok oturum **açma (Evet/Hayır)**'dir. Ardından dosyayı kaydedin.
+### <a name="csv-template-structure"></a>CSV şablonu yapısı
 
-   ![CSV dosyası oluşturmak için kullanıcıların adlarını ve adlarını içerir](./media/users-bulk-add/add-csv-file.png)
+İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
 
-1. Toplu **oluşturma kullanıcı** sayfasında, CSV dosyanızı yükleyin altında, dosyaya göz atın. Dosyayı seçip **Gönder'i**tıklattığınızda, CSV dosyasının doğrulaması başlar.
-1. Dosya içeriği doğrulandıktan sonra **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
-1. Dosyanız doğrulamadan geçtiğinde, yeni kullanıcıları içeri alan Azure toplu işlemini başlatmak için **Gönder'i** seçin.
-1. Alma işlemi tamamlandığında, toplu işlem iş durumu bildirimi ni görürsünüz.
+- **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
+- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Name [displayName] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
 
-Hatalar varsa, **Toplu işlem sonuçları** sayfasındaki sonuç dosyasını indirebilir ve görüntüleyebilirsiniz. Dosya, her hatanın nedenini içerir.
+### <a name="additional-guidance"></a>Ek yönergeler
+
+- Karşıya yükleme şablonunun ilk iki satırı kaldırılmamalıdır veya değiştirilmemelidir veya karşıya yükleme işlenemiyor.
+- Önce gerekli sütunlar listelenir.
+- Şablona yeni sütun eklenmesini önermiyoruz. Eklediğiniz tüm ek sütunlar yoksayılır ve işlenmez.
+- CSV şablonunun en son sürümünü mümkün olduğunca sık indirmeniz önerilir.
+
+## <a name="to-create-users-in-bulk"></a>Toplu olarak Kullanıcı oluşturmak için
+
+1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
+1. Azure AD 'de **Kullanıcılar** > **toplu oluştur**' u seçin.
+1. **Toplu kullanıcı oluştur** sayfasında, kullanıcı özelliklerinin geçerli bir virgülle ayrılmış değerler (CSV) dosyasını almak için **İndir** ' i seçin ve sonra oluşturmak istediğiniz kullanıcı ekleme ' yi ekleyin.
+
+   ![İçinde eklemek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-add/upload-button.png)
+
+1. CSV dosyasını açın ve oluşturmak istediğiniz her kullanıcı için bir satır ekleyin. Yalnızca **ad**, **Kullanıcı asıl adı**, **ilk parola** ve **blok oturum açma (Evet/Hayır)** değerleri bulunur. Ardından dosyayı kaydedin.
+
+   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+
+1. **Toplu kullanıcı oluştur** SAYFASıNDA, CSV dosyanızı karşıya yükleyin bölümünde dosyaya gidin. Dosyayı seçip **Gönder**' e TıKLADıĞıNıZDA, CSV dosyasının doğrulanması başlar.
+1. Dosya içeriği doğrulandıktan sonra, **dosyanın başarıyla karşıya yüklendiğini**görürsünüz. Hatalar varsa, işi gönderebilmeniz için önce bunları çözmeniz gerekir.
+1. Dosyanız doğrulamayı geçtiğinde, yeni kullanıcıları içeri aktaran Azure toplu işlemini başlatmak için **Gönder** ' i seçin.
+1. İçeri aktarma işlemi tamamlandığında, toplu işlem iş durumunun bir bildirimini görürsünüz.
+
+Hatalar varsa, sonuçlar dosyasını **toplu işlem sonuçları** sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
+Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları** sayfasında görebilirsiniz.
 
    [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
-Ardından, oluşturduğunuz kullanıcıların Azure portalında veya PowerShell'i kullanarak Azure REKLAM kuruluşunda bulununp var olmadığını denetleyebilirsiniz.
+Daha sonra, oluşturduğunuz kullanıcıların Azure portal veya PowerShell kullanarak Azure AD kuruluşunda mevcut olup olmadığını kontrol edebilirsiniz.
 
-## <a name="verify-users-in-the-azure-portal"></a>Azure portalındaki kullanıcıları doğrulama
+## <a name="verify-users-in-the-azure-portal"></a>Azure portal kullanıcıları doğrulama
 
-1. Kuruluşta Kullanıcı yöneticisi olan bir hesapla [Azure AD yönetici merkezinde oturum açın.](https://aad.portal.azure.com)
-1. Gezinti bölmesinde Azure **Etkin Dizin'i**seçin.
+1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla [Azure AD Yönetim merkezinde oturum açın](https://aad.portal.azure.com) .
+1. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 1. **Yönet** bölümünde **Kullanıcılar**’ı seçin.
-1. **Göster'in**altında, **Tüm kullanıcıları** seçin ve oluşturduğunuz kullanıcıların listelenmiş olduğunu doğrulayın.
+1. **Göster**altında, **tüm kullanıcılar** ' ı seçin ve oluşturduğunuz kullanıcıların listelendiğini doğrulayın.
 
-### <a name="verify-users-with-powershell"></a>PowerShell ile kullanıcıları doğrulayın
+### <a name="verify-users-with-powershell"></a>Kullanıcıları PowerShell ile doğrulama
 
 Şu komutu çalıştırın:
 
@@ -70,14 +91,14 @@ Ardından, oluşturduğunuz kullanıcıların Azure portalında veya PowerShell'
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Oluşturduğunuz kullanıcıların listelenmiş olduğunu görmeniz gerekir.
+Oluşturduğunuz kullanıcıların listelendiğini görmeniz gerekir.
 
-## <a name="bulk-import-service-limits"></a>Toplu alma hizmet limitleri
+## <a name="bulk-import-service-limits"></a>Toplu içeri aktarma hizmeti sınırları
 
-Kullanıcıları oluşturmak için her toplu etkinlik bir saate kadar çalıştırılabilir. Bu, en az 50.000 kullanıcının toplu oluşturulmasını sağlar.
+Kullanıcıları oluşturmak için her toplu etkinlik, bir saate kadar çalıştırılabilir. Bu, en az 50.000 kullanıcının toplu oluşturulmasına izin verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Toplu silme kullanıcıları](users-bulk-delete.md)
-- [Kullanıcı listesini indirin](users-bulk-download.md)
-- [Toplu geri yükleme kullanıcıları](users-bulk-restore.md)
+- [Kullanıcıları toplu silme](users-bulk-delete.md)
+- [Kullanıcı listesini indir](users-bulk-download.md)
+- [Kullanıcıları toplu geri yükleme](users-bulk-restore.md)

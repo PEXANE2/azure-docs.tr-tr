@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05526a82ed5fc53a5c25e4c87cab1fa56a814645
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172598"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206757"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Öğretici: float ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -83,28 +83,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna aşağıdaki URL 'lerden birini yazın:
+    a. **Tanımlayıcı** metin kutusuna şu URL 'yi yazın: `https://app.float.com/sso/metadata`.
 
-    | |
-    |--|
-    | `https://app.float.com/sso/metadata`|
-    | `https://app.develop.float.com/sso/metadata`|
-
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
-
-    | |
-    |--|
-    | `https://<hostname>.float.com/sso/azuread`|
-    | `https://<hostname>.develop.float.com/sso/azuread`|
+    b. **Yanıt URL 'si** metin kutusuna, stili `https://<hostname>.float.com/sso/azuread`kullanarak bir URL yazın.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki desenlerden birini kullanarak bir URL yazın:
-
-    | |
-    |--|
-    | `https://<hostname>.float.com/login`|
-    | `https://<hostname>.develop.float.com/login`|
+    **Oturum açma URL 'si** metin kutusuna, modele `https://<hostname>.float.com/login`bir URL yazın.
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [float istemci desteği ekibine](mailto:support@float.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

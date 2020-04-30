@@ -10,21 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e4dee74eb0c50e8e12d3f9ff0dccdd83271ea65
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77468397"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202936"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI belirtimini içeri aktarma
 
 Bu makalede, https://conferenceapi.azurewebsites.net?format=json konumunda bulunan bir "OpenAPI belirtimi" arka uç API’sinin nasıl içeri aktarılacağı gösterilmektedir. Bu arka uç API’si, Microsoft tarafından sağlanır ve Azure’da barındırılır. Makale, APIM API’sinin nasıl test edileceğini de göstermektedir.
-
-> [!IMPORTANT]
-> OpenAPI içeri aktarma ile ilgili önemli bilgiler ve ipuçları için bu [belgeye](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/) bakın.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -35,47 +32,21 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Aşağıdaki hızlı başlatmayı tamamlayın: [Azure API Yönetimi örneği oluşturun](get-started-create-service-instance.md)
+Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Arka uç API'sini içeri aktarma ve yayımlama
 
-1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
+1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
 2. **Yeni API ekle** listesinden **OpenAPI belirtimi**’ni seçin.
 
-    ![OpenAPI belirtimi](./media/import-api-from-oas/oas-api.png)
-3. Uygun ayarları girin. Oluşturma sırasında tüm API değerlerini ayarlayabilirsiniz. Alternatif olarak, **Ayarlar** sekmesine giderek bunların bazılarını daha sonra ayarlayabilirsiniz. <br/> **Sekme** tuşuna basarsanız, alanların bazıları (veya tümü), belirtilen arka uç hizmetindeki bilgilerle doldurulur.
-
-    ![Bir API oluşturma](./media/api-management-get-started/create-api.png)
-
-    |Ayar|Değer|Açıklama|
-    |---|---|---|
-    |**OpenAPI Belirtimi**|https://conferenceapi.azurewebsites.net?format=json|API’yi uygulayan hizmete başvurur. API Management istekleri bu adrese iletir.|
-    |**Görünen ad**|*Tanıtım Konferansı API’si*|Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur. <br/>Bu ad, Geliştirici portalında görüntülenir.|
-    |**Adı**|*demo-conference-api*|API için benzersiz bir ad sağlar. <br/>Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur.|
-    |**Açıklama**|API için isteğe bağlı bir açıklama sağlayın.|Hizmet URL’sini girdikten sonra sekme tuşuna basarsanız APIM, json'da ne olduğuna bağlı olarak bu alanı doldurur.|
-    |**API URL’si soneki**|*conference*|Sonek, API yönetimi hizmetinin temel URL’sinin sonuna eklenir. API Management API'leri soneklerine bakarak ayırt eder; dolayısıyla belirli bir yayımcıdaki her API için sonekin benzersiz olması gerekir.|
-    |**URL düzeni**|*HTTPS*|API’ye erişmek için hangi protokollerin kullanılabileceğini belirler. |
-    |**Ürünler**|*Sınırsız*| API’yi bir ürünle ilişkilendirerek yayımlayın. İsteğe bağlı olarak bu yeni API’yi bir ürüne ekleyin, ürün adını yazın. Bu adım, API’yi birden fazla ürüne eklemek için birçok defa yinelenebilir.<br/>Ürünler bir veya daha fazla API arasındaki ilişkilendirmelerdir. Bir dizi API ekleyebilir ve geliştirici portalı aracılığıyla geliştiricilere sunabilirsiniz. Geliştiricilerin bir API’ye erişebilmesi için önce ürüne abone olması gerekir. Abone olduklarında, ilgili üründeki tüm API’ler için geçerli olan bir abonelik anahtarı edinirler. APIM örneğini siz oluşturduysanız zaten bir yöneticisinizdir ve varsayılan olarak tüm ürünlere abone olmuşsunuz demektir.<br/> Varsayılan olarak, her bir API Management örneği iki örnek ürün ile birlikte gelir: **Başlangıç** ve **Sınırsız**. |
-
-4. **Oluştur'u**seçin.
+    ![Openapı belirtimi](./media/import-api-from-oas/oas-api.png)
+3. API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+4. **Oluştur**’u seçin.
 
 > [!NOTE]
-> API alma sınırlamaları [başka bir makalede](api-management-api-import-restrictions.md)belgelenmiştir.
-
-## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portalında yeni API'yi test edin
-
-![API haritasını test etme](./media/api-management-get-started/01-import-first-api-01.png)
-
-İşlemler doğrudan bir API’nin işlemlerini görüntülemek ve test etmek için kullanışlı bir yol sağlayan Azure portalından çağrılabilir.
-
-1. Önceki adımda oluşturduğunuz API’yi seçin (**API’ler** sekmesinden).
-2. **Test** sekmesine basın.
-3. **GetSpeakers** seçeneğine tıklayın. Sayfa, sorgu parametreleri alanlarını ve üst bilgileri görüntüler, ancak bu durumda bir alan yok. Bu API ile ilişkilendirilmiş ürünün abonelik anahtarı için, üst bilgilerden biri "Ocp-Apim-Subscription-Key" üst bilgisidir. Anahtar otomatik olarak doldurulur.
-4. **Gönder**’e basın.
-
-    Arka uç, **200 OK** ve bazı verilerle yanıt verir.
+> API içeri aktarma sınırlamaları, [başka bir makalede](api-management-api-import-restrictions.md)belgelenmiştir.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

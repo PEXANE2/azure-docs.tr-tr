@@ -1,5 +1,5 @@
 ---
-title: API Yönetiminde Bir Azure İşlevi Uygulaması'nı API olarak alma
+title: Azure İşlev Uygulaması API Management API olarak içeri aktarma
 titleSuffix: Azure API Management
 description: Bu öğreticide, bir Azure İşlev Uygulamasını Azure API Management'a API olarak nasıl aktaracağınız gösterilmektedir.
 services: api-management
@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/28/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6f4626a8c42f3a50fa273c55099158750241bfee
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260964"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202935"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure İşlev Uygulamalarını Azure API Management'a API olarak aktarma
 
@@ -46,7 +46,7 @@ Bu makale, Azure İşlev Uygulamalarını Azure API Management'a API olarak akta
 
 Bir Azure İşlev Uygulamasından yeni API oluşturmak için aşağıdaki adımları uygulayın.
 
-1. **Azure API Management** hizmet örneğinizde soldaki menüden **API'ler** seçeneğini belirleyin.
+1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
 
 2. **Yeni API ekleyin** listesinde **İşlev Uygulaması**'nı seçin.
 
@@ -71,11 +71,8 @@ Bir Azure İşlev Uygulamasından yeni API oluşturmak için aşağıdaki adıml
     > [!NOTE]
     > Yalnızca HTTP tetikleyicisine dayalı ve yetkilendirme düzeyi *Anonim* veya *İşlev* olarak ayarlanmış olan İşlevleri içeri aktarabilirsiniz.
 
-7. **Tam** görünümüne geçiş yapın ve yeni API’nize **Ürün** atayın. Gerekirse, önceden doldurulmuş diğer alanları düzenleyin.
-
-    ![İşlev Uygulamasından ekleme](./media/import-function-app-as-api/add-06.png)
-
-8. **Oluştur'u**tıklatın.
+7. **Tam** görünümüne geçiş yapın ve yeni API’nize **Ürün** atayın. Gerekirse, oluşturma sırasında diğer alanları belirtin veya daha sonra **Ayarlar** sekmesine giderek yapılandırın. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#-import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
+8. **Oluştur**' a tıklayın.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure İşlev Uygulamalarını var olan API'lere ekleme
 
@@ -111,14 +108,14 @@ Azure İşlev Uygulamasını var olan bir API'ye eklemek için aşağıdaki adı
 
     ![İşlev Uygulamasından ekleme](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a><a name="authorization"></a>Yetkilendirme
+## <a name="authorization"></a><a name="authorization"></a>Yetkisi
 
 Bir Azure İşlev Uygulaması içeri aktarıldığında aşağıdakiler otomatik olarak oluşturulur:
 
-* İşlev Uygulaması'nın içinde apim-{ adı ile*Azure API Yönetimi hizmet örneği adı*},
-* Oluşturulan ana bilgisayar anahtarını içeren Azure*İşlevi Uygulaması örnek adı*}-key adı { ile Azure API Yönetimi örneği içinde adlandırılmış değer.
+* İşlev Uygulaması içindeki ana bilgisayar anahtarı apim-{*Azure API Management hizmet örneğiniz*adı},
+* Oluşturulan ana bilgisayar anahtarını içeren, Azure API Management örneği içindeki adlandırılmış değer {*azure işlev uygulaması örneğiniz*adı}-anahtar.
 
-4 Nisan 2019'dan sonra oluşturulan API'ler için ana bilgisayar anahtarı, API Management'tan İşlev Uygulamasına http isteklerinde bir üstbilgide geçirilir. Eski API'ler [sorgu parametresi](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)olarak ana bilgisayar anahtarını geçer. Bu davranış, İşlev `PATCH Backend` Uygulamasıile ilişkili *Backend* varlığındaki [REST API çağrısı](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) yla değiştirilebilir.
+4 Nisan 2019 ' den sonra oluşturulan API 'Ler için, ana bilgisayar anahtarı API Management olan HTTP isteklerinde bir başlıktaki İşlev Uygulaması geçirilir. Eski API 'Ler, ana bilgisayar anahtarını [bir sorgu parametresi](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)olarak iletir. Bu davranış, işlev uygulaması ilişkili `PATCH Backend` *arka uç* varlığındaki [REST API çağrısıyla](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) değiştirilebilir.
 
 > [!WARNING]
 > Azure İşlev Uygulaması ana bilgisayar anahtarının veya Azure API Management adlandırılmış değerinin kaldırılması veya değiştirilmesi, hizmetler arasındaki iletişimin kopmasına neden olur. Değerler otomatik olarak eşitlenmez.
@@ -143,7 +140,7 @@ Azure API Management örneğinize gidin ve soldaki menüden **Adlandırılmış 
 
 ![İşlev Uygulamasından ekleme](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Azure portalında yeni API'yi test edin
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Azure portal yeni API 'YI test etme
 
 İşlemleri doğrudan Azure portaldan çağırabilirsiniz. Azure portalı kullanarak bir API'nin işlemlerini kolayca görüntüleyebilir ve test edebilirsiniz.  
 

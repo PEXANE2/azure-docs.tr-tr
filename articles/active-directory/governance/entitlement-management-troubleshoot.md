@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128467"
+ms.locfileid: "82207253"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 
@@ -87,13 +87,19 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
     İstekte herhangi bir teslim hatası varsa, istek durumu **teslim** edilmemiş veya **kısmen teslim**edilir.
 
-    Herhangi bir teslim hatası varsa, isteğin ayrıntı bölmesinde teslim hatalarının sayısı olacaktır.
+    Herhangi bir teslim hatası varsa, isteğin ayrıntı bölmesinde teslim hatalarının sayısı görüntülenir.
 
 1. Tüm isteğin teslim hatalarını görmek için sayıma tıklayın.
 
 ### <a name="reprocess-a-request"></a>İsteği yeniden işleme
 
-Bir istek bir hatayla karşılaşırsa, yeniden denemek için isteği yeniden işleyebilirsiniz. Yalnızca **teslim durumu başarısız** veya **kısmen teslim** edildi olan bir isteği ve bir haftadan daha az tamamlanma tarihini yeniden işleyebilirsiniz.
+Bir erişim paketi yeniden işlem isteği tetiklendikten sonra bir hata karşılanıyorsa, sistem isteği yeniden işlerken beklemeniz gerekir. Sistem birkaç saat boyunca yeniden işlem gerçekleştirmeye çalışır, bu nedenle bu süre içinde yeniden işlemeye zorlarsınız. 
+
+Yalnızca **teslim durumu başarısız** veya **kısmen teslim** edildi olan bir isteği ve bir haftadan daha az tamamlanma tarihini yeniden işleyebilirsiniz.
+
+- Deneme süresi boyunca hata düzeltildiğinde, istek durumu **teslim**olarak değişir. İstek, kullanıcıdan ek eylem olmadan yeniden işlenecek.
+
+- Deneme süresi boyunca hata düzeltilmediyse, istek durumu **teslim başarısız** veya **kısmen teslim edilmiş**olabilir. Sonra **yeniden işle** düğmesini kullanabilirsiniz. İsteği yeniden işlemek için yedi gününüz olacak.
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 

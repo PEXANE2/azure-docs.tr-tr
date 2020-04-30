@@ -5,36 +5,40 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609817"
+ms.locfileid: "82204296"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Eski Java Service Fabric uygulamanızı Maven’dan Java kitaplıklarını alacak şekilde güncelleştirme
-Service Fabric Java ikili dosyalarını yakın zamanda Service Fabric Java SDK’dan Maven’a taşıdık. En son Service Fabric Java bağımlılıklarını almak için artık **mavencentral**’ı kullanabilirsiniz. Bu hızlı başlangıç, daha önce Service Fabric Java SDK ile kullanılacak şekilde Yeoman veya Eclipse kullanarak oluşturduğunuz mevcut Java uygulamalarını Maven tabanlı derlemeyle uyumlu olacak şekilde güncelleştirmenize yardımcı olur.
+Service Fabric Java ikilileri, Service Fabric Java SDK 'dan Maven barındırmaya taşınmıştır. **Mavencentral** kullanarak en son Java bağımlılıklarını Service Fabric getirebilirsiniz. Bu kılavuz, Maven tabanlı yapıyla uyumlu olacak şekilde Service Fabric Java SDK 'Sı için oluşturulan mevcut Java uygulamalarını güncelleştirmenize yardımcı olur.
 
 ## <a name="prerequisites"></a>Ön koşullar
-1. Önce mevcut Java SDK'sını kaldırmanız gerekir.
+
+1. İlk olarak, var olan Java SDK 'sını kaldırın.
 
    ```bash
    sudo dpkg -r servicefabricsdkjava
    ```
+
 2. [Burada](service-fabric-cli.md) belirtilen adımları izleyerek Service Fabric CLI'sını yükleyin.
 
-3. Service Fabric Java uygulamalarını oluşturmak ve çalışmak için JDK 1.8 ve Gradle’ın yüklü olduğundan emin olmanız gerekir. Henüz yüklü değilse, JDK 1.8 (openjdk-8-jdk) ve Gradle’ı yüklemek için aşağıdakini çalıştırabilirsiniz.
+3. Service Fabric Java uygulamalarını oluşturmak ve üzerinde çalışmak için JDK 1,8 ve Gradle yüklü olduğundan emin olun. Henüz yüklü değilse, JDK 1.8 (openjdk-8-jdk) ve Gradle’ı yüklemek için aşağıdakini çalıştırabilirsiniz.
 
    ```bash
    sudo apt-get install openjdk-8-jdk-headless
    sudo apt-get install gradle
    ```
+
 4. [Buradaki](service-fabric-application-lifecycle-sfctl.md) adımları takip ederek uygulamanızın yükleme ve kaldırma betiklerini yeni Service Fabric CLI’sını kullanacak şekilde güncelleştirin. Hızlı başlangıç [örneklerine](https://github.com/Azure-Samples/service-fabric-java-getting-started) bakabilirsiniz.
 
 >[!TIP]
 > Service Fabric Java SDK'sını kaldırdıktan sonra Yeoman çalışmaz. Service Fabric Yeoman Java şablon oluşturucusunu çalıştırmak için [burada](service-fabric-create-your-first-linux-application-with-java.md) belirtilen önkoşulları takip edin.
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven'da Service Fabric Java kitaplıkları
+
 Maven’da barındırılan Service Fabric Java kitaplıkları. Projelerinizin **mavenCentral**’daki Service Fabric Java kitaplıklarını kullanması için ``pom.xml`` veya ``build.gradle`` altına bağımlılıklar ekleyebilirsiniz.
 
 ### <a name="actors"></a>Aktörler
@@ -80,6 +84,7 @@ Uygulamanız için Service Fabric Durum Bilgisi Olmayan Hizmet desteği.
   ```
 
 ### <a name="others"></a>Diğer
+
 #### <a name="transport"></a>Aktarım
 
 Service Fabric Java uygulaması için Aktarım katmanı desteği. Aktarım katmanında özellikle programlamadığınız sürece bu bağımlılığı Güvenilir Aktör veya Hizmet uygulamalarınız için özellikle eklemeniz gerekmez.
@@ -122,11 +127,11 @@ Yerel Service Fabric çalışma zamanıyla iletişim kuran Service Fabric için 
   }
   ```
 
-
 ## <a name="migrating-service-fabric-stateless-service"></a>Microsoft Azure Service Fabric Durum Bilgisi Olmayan Hizmeti Geçirme
 
 Service Fabric bağımlılıkları Maven’dan alınan Service Fabric durum bilgisi olmayan Java hizmetinizi oluşturabilmek için hizmet içinden ``build.gradle`` dosyasını güncelleştirmeniz gerekir. Daha önce aşağıdaki gibiydi:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':Interface')
@@ -158,8 +163,10 @@ task copyDeps <<{
     }
 }
 ```
+
 Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
-```
+
+```gradle
 repositories {
         mavenCentral()
 }
@@ -211,11 +218,13 @@ task copyDeps <<{
     }
 }
 ```
+
 Genel olarak bir Service Fabric durum bilgisi olmayan Java hizmetinde betiğin nasıl olması gerektiği hakkında genel bir fikir edinmek için başlarken örneklerimizdeki herhangi bir örneğe bakabilirsiniz. EchoServer örneği için [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle) böyledir.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Service Fabric Aktör Hizmetini Geçirme
 
 Service Fabric bağımlılıkları Maven’dan alınan Service Fabric Aktör Java hizmetinizi oluşturabilmek için arabirim paketi içinde ve Hizmet paketinde ``build.gradle`` dosyasını güncelleştirmeniz gerekir. TestClient paketiniz varsa, bunu da güncelleştirmeniz gerekir. ``Myactor`` aktörünüz için güncelleştirmeniz gereken yerler şunlardır:
+
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
@@ -225,15 +234,18 @@ Service Fabric bağımlılıkları Maven’dan alınan Service Fabric Aktör Jav
 #### <a name="updating-build-script-for-the-interface-project"></a>Arabirim projesi için derleme betiğini güncelleştirme
 
 Daha önce aşağıdaki gibiydi:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
 }
 .
 .
 ```
+
 Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -266,7 +278,8 @@ compileJava.dependsOn(explodeDeps)
 #### <a name="updating-build-script-for-the-actor-project"></a>Aktör projesi için derleme betiğini güncelleştirme
 
 Daha önce aşağıdaki gibiydi:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':MyactorInterface')
@@ -304,8 +317,10 @@ task copyDeps<< {
     }
 }
 ```
+
 Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -365,7 +380,8 @@ task copyDeps<< {
 #### <a name="updating-build-script-for-the-test-client-project"></a>Test istemcisi projesi için derleme betiğini güncelleştirme
 
 Buradaki değişiklikler, önceki bölümde (aktör projesi) açıklanan değişikliklere benzerdir. Daha önce kullanılan Gradle betiği şöyleydi:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
       compile project(':MyactorInterface')
@@ -404,8 +420,10 @@ task copyDeps<< {
         }
 }
 ```
+
 Artık Maven’dan bağımlılıkları almak için **güncelleştirilmiş** ``build.gradle`` içinde ilgili bölümler aşağıdaki gibi olmalıdır:
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
