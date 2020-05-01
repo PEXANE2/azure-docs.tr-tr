@@ -1,6 +1,6 @@
 ---
-title: Azure klasik CLI komutları
-description: Azure komut satırı arabirimi (CLI) kaynakları yönetmekomutunu sağlar.
+title: Azure klasik CLı komutları
+description: Kaynakları yönetmek için Azure komut satırı arabirimi (CLı) komutları.
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,54 +9,54 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
 ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250887"
 ---
-# <a name="azure-classic-cli-commands"></a>Azure klasik CLI komutları 
+# <a name="azure-classic-cli-commands"></a>Azure klasik CLı komutları 
 
 [!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
-Bu konu başlığı altında Azure klasik CLI'nin nasıl yüklendiği açıklanır. Klasik CLI kullanımdan kaldırılmıştır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır. Diğer tüm dağıtımlar için [Azure CLI'yi](https://docs.microsoft.com/cli/azure/)kullanın.
+Bu konu başlığı altında Azure klasik CLI'nin nasıl yüklendiği açıklanır. Klasik CLI kullanımdan kaldırılmıştır ve yalnızca klasik dağıtım modeliyle kullanılmalıdır. Diğer tüm dağıtımlar için [Azure CLI](https://docs.microsoft.com/cli/azure/)'yi kullanın.
 
-Bu makalede, Azure kaynakları oluşturmak ve yönetmek için sık kullandığınız Azure klasik komut satırı arabirimi (CLI) komutları için sözdizimi ve seçenekler bulunur. Bu tam bir başvuru değildir ve CLI sürümünüz biraz farklı komutlar veya parametreler gösterebilir. 
+Bu makalede, Azure kaynakları oluşturmak ve yönetmek için sık kullandığınız Azure klasik komut satırı arabirimi (CLı) komutları için sözdizimi ve seçenekler sağlanmaktadır. Bu, tüm bir başvuru değildir ve CLı sürümünüz biraz farklı komutlar veya parametreler gösterebilir. 
 
-Başlamak için önce [Azure klasik CLI'sini yükleyin](../cli-install-nodejs.md) ve [Azure aboneliğinize bağlanın.](/cli/azure/authenticate-azure-cli)
+Başlamak için ilk olarak [Azure klasık CLI 'yı yükledikten](../cli-install-nodejs.md) sonra [Azure aboneliğinize bağlanın](/cli/azure/authenticate-azure-cli).
 
-Kaynak Yöneticisi modunda komut satırında geçerli komut sözdizimi ve seçenekleri için, belirli bir komut için yardım görüntülemek için yazın `azure help` veya, `azure help [command]`. Ayrıca, belirli Azure hizmetleri oluşturmak ve yönetmek için belgelerde CLI örneklerini de bulabilirsiniz.
+Kaynak Yöneticisi modundaki komut satırındaki geçerli komut sözdizimi ve seçenekleri için, belirli bir komut için `azure help` Yardımı göstermek üzere veya yazın `azure help [command]`. Ayrıca, belirli Azure hizmetlerini oluşturmak ve yönetmek için belgelerde CLı örnekleri de bulabilirsiniz.
 
-İsteğe bağlı parametreler kare ayraçlarda `[parameter]`gösterilir (örneğin,). Diğer tüm parametreler gereklidir.
+İsteğe bağlı parametreler köşeli ayraç içinde gösterilir (örneğin, `[parameter]`). Diğer tüm parametreler gereklidir.
 
-Burada belgelenen komutaya özgü isteğe bağlı parametrelere ek olarak, istek seçenekleri ve durum kodları gibi ayrıntılı çıktıyı görüntülemek için kullanılabilecek üç isteğe bağlı parametre vardır. `-v` Parametre ayrıntılı çıkış sağlar ve `-vv` parametre daha ayrıntılı ayrıntılı verbose çıkışı sağlar. Seçenek `--json` ham json formatında sonuç çıktıları.
+Burada belgelenen komuta özgü isteğe bağlı parametrelerin yanı sıra, istek seçenekleri ve durum kodları gibi ayrıntılı çıktıyı göstermek için kullanılabilecek üç isteğe bağlı parametre vardır. `-v` Parametresi ayrıntılı çıkış sağlar ve `-vv` parametresi daha ayrıntılı ayrıntılı çıkış sağlar. `--json` Seçeneği sonucunda ham JSON biçiminde çıkış yapılır.
 
 ## <a name="setting-the-resource-manager-mode"></a>Kaynak Yöneticisi modunu ayarlama
-Azure CLI Kaynak Yöneticisi modu komutlarını etkinleştirmek için aşağıdaki komutu kullanın.
+Azure CLı Kaynak Yöneticisi modu komutlarını etkinleştirmek için aşağıdaki komutu kullanın.
 
     azure config mode arm
 
 > [!NOTE]
-> CLI'nin Azure Kaynak Yöneticisi modu ve Azure Hizmet Yönetimi modu birbirini dışlar. Diğer bir deyişle, bir modda oluşturulan kaynaklar diğer moddan yönetilemez.
+> CLı Azure Resource Manager modu ve Azure hizmet yönetimi modu birbirini dışlıyor. Diğer bir deyişle, bir modda oluşturulan kaynaklar diğer moddan yönetilemez.
 >
 
 
 ## <a name="account-information"></a>Hesap bilgileri
-Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak için kullanılır.
+Azure abonelik bilgileriniz, araç tarafından hesabınıza bağlanmak için kullanılır.
 
-**Alınan abonelikleri listele**
+**İçeri aktarılan abonelikleri listeleyin**
 
     account list [options]
 
-**Abonelikle ilgili ayrıntıları göster**  
+**Bir abonelik hakkındaki ayrıntıları göster**  
 
     account show [options] [subscriptionNameOrId]
 
-**Geçerli aboneliği ayarlama**
+**Geçerli aboneliği ayarla**
 
     account set [options] <subscriptionNameOrId>
 
-**Aboneliği veya ortamı kaldırma veya depolanan tüm hesap ve ortam bilgilerini temizleme**  
+**Bir aboneliği veya ortamı kaldırın veya tüm depolanan hesabı ve ortam bilgilerini temizleyin**  
 
     account clear [options]
 
@@ -68,70 +68,70 @@ Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak içi
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="active-directory-objects"></a>Etkin Dizin nesneleri
-**Etkin dizin uygulamalarını görüntülemek için komutlar**
+## <a name="active-directory-objects"></a>Active Directory nesneleri
+**Active Directory uygulamalarını görüntüleme komutları**
 
     ad app create [options]
     ad app delete [options] <object-id>
 
-**Etkin dizin gruplarını görüntülemek için komutlar**
+**Active Directory gruplarını görüntüleme komutları**
 
     ad group list [options]
     ad group show [options]
 
-**Etkin bir dizin alt grubu veya üye bilgisi sağlama komutları**
+**Active Directory alt grup veya üye bilgilerini sağlamak için komutlar**
 
     ad group member list [options] [objectId]
 
-**Etkin dizin hizmet ilkelerini görüntülemek için komutlar**
+**Active Directory hizmet sorumlularını görüntüleme komutları**
 
     ad sp list [options]
     ad sp show [options]
     ad sp create [options] <application-id>
     ad sp delete [options] <object-id>
 
-**Etkin dizin kullanıcılarını görüntülemek için komutlar**
+**Active Directory kullanıcılarını görüntüleme komutları**
 
     ad user list [options]
     ad user show [options]
 
 ## <a name="availability-sets"></a>Kullanılabilirlik kümeleri
-**Kaynak grubu içinde kullanılabilirlik kümesi oluşturur**
+**Bir kaynak grubu içinde bir kullanılabilirlik kümesi oluşturur**
 
     availset create [options] <resource-group> <name> <location> [tags]
 
-**Kaynak grubundaki kullanılabilirlik kümelerini listeler**
+**Bir kaynak grubu içindeki kullanılabilirlik kümelerini listeler**
 
     availset list [options] <resource-group>
 
-**Kaynak grubu içinde bir kullanılabilirlik kümesi alır**
+**Bir kaynak grubu içindeki bir kullanılabilirlik kümesini alır**
 
     availset show [options] <resource-group> <name>
 
-**Kaynak grubu içinde ayarlanan bir kullanılabilirlik kümesini siler**
+**Bir kaynak grubu içindeki bir kullanılabilirlik kümesini siler**
 
     availset delete [options] <resource-group> <name>
 
 ## <a name="local-settings"></a>Yerel ayarlar
-**Azure CLI yapılandırma ayarlarını listele**
+**Azure CLı yapılandırma ayarlarını listeleme**
 
     config list [options]
 
-**Config ayarını silme**
+**Yapılandırma ayarını Sil**
 
     config delete [options] <name>
 
-**Config ayarını güncelleştirme**
+**Yapılandırma ayarını güncelleştirme**
 
     config set <name> <value>
 
-**Azure CLI çalışma modunu `arm` ya da`asm`**
+**Azure CLı çalışma modunu ya da `arm` olarak ayarlar`asm`**
 
     config mode [options] <modename>
 
 
 ## <a name="account-features"></a>Hesap özellikleri
-**Aboneliğiniz için kullanılabilen tüm özellikleri listele**
+**Aboneliğiniz için kullanılabilen tüm özellikleri listeleyin**
 
     feature list [options]
 
@@ -139,20 +139,20 @@ Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak içi
 
     feature show [options] <providerName> <featureName>
 
-**Kaynak sağlayıcısının önizleme özelliğini kaydeder**
+**Kaynak sağlayıcının Önizlemesi görüntülenen bir özelliğini kaydeder**
 
     feature register [options] <providerName> <featureName>
 
 ## <a name="resource-groups"></a>Kaynak grupları
-**Kaynak grubu oluşturur**
+**Bir kaynak grubu oluşturur**
 
     group create [options] <name> <location>
 
-**Etiketleri kaynak grubuna ayarlama**
+**Etiketleri bir kaynak grubuna ayarla**
 
     group set [options] <name> <tags>
 
-**Kaynak grubunu siler**
+**Bir kaynak grubunu siler**
 
     group delete [options] <name>
 
@@ -168,14 +168,14 @@ Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak içi
 
     group log show [options] [name]
 
-**Kaynak grubunda dağıtımınızı yönetme komutları**
+**Bir kaynak grubunda dağıtımınızı yönetmek için komutlar**
 
     group deployment create [options] [resource-group] [name]
     group deployment list [options] <resource-group> [state]
     group deployment show [options] <resource-group> [deployment-name]
     group deployment stop [options] <resource-group> [deployment-name]
 
-**Yerel veya galeri kaynak grubu şablonunuzu yönetme komutları**
+**Yerel veya Galeri kaynak grubu şablonunuzu yönetme komutları**
 
     group template list [options]
     group template show [options] <name>
@@ -183,14 +183,14 @@ Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak içi
     group template validate [options] <resource-group>
 
 ## <a name="hdinsight-clusters"></a>HDInsight kümeleri
-**Küme yapılandırma dosyası oluşturmak veya eklemek için komutlar**
+**Bir küme yapılandırma dosyası oluşturmak veya kümeye eklemek için komutlar**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
 
 
-Örnek: Küme oluştururken çalışacak bir komut dosyası eylemi içeren bir yapılandırma dosyası oluşturun.
+Örnek: bir küme oluştururken çalıştırılacak betik eylemi içeren bir yapılandırma dosyası oluşturun.
 
     hdinsight config create "C:\myFiles\configFile.config"
     hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
@@ -199,7 +199,7 @@ Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak içi
 
     hdinsight cluster create [options] <clusterName>
 
-Örnek: Linux kümesinde Fırtına Oluşturma
+Örnek: Linux kümesinde bir fırtınası oluşturma
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -207,7 +207,7 @@ Azure abonelik bilgileriniz, aracınız tarafından hesabınıza bağlanmak içi
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Örnek: Komut dosyası eylemi olan bir küme oluşturma
+Örnek: betik eylemi ile küme oluşturma
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
@@ -269,7 +269,7 @@ Parametre seçenekleri:
     For example, --tags tag1=value1;tag2
 
 
-**Bir kümeyi silme komutu**
+**Kümeyi silme komutu**
 
     hdinsight cluster delete [options] <clusterName>
 
@@ -277,11 +277,11 @@ Parametre seçenekleri:
 
     hdinsight cluster show [options] <clusterName>
 
-**Tüm kümeleri listeleme komutu (sağlandığı takdirde belirli bir kaynak grubunda)**
+**Tüm kümeleri listelemek için komut (sağlanmışsa belirli bir kaynak grubunda)**
 
     hdinsight cluster list [options]
 
-**Bir kümeyi yeniden boyutlandırma komutu**
+**Kümeyi yeniden boyutlandırma komutu**
 
     hdinsight cluster resize [options] <clusterName> <targetInstanceCount>
 
@@ -289,7 +289,7 @@ Parametre seçenekleri:
 
     hdinsight cluster enable-http-access [options] <clusterName> <userName> <password>
 
-**Bir küme için HTTP erişimini devre dışı etme komutu**
+**Bir küme için HTTP erişimini devre dışı bırakma komutu**
 
     hdinsight cluster disable-http-access [options] <clusterName>
 
@@ -297,25 +297,25 @@ Parametre seçenekleri:
 
     hdinsight cluster enable-rdp-access [options] <clusterName> <rdpUserName> <rdpPassword> <rdpExpiryDate>
 
-**Bir küme için HTTP erişimini devre dışı etme komutu**
+**Bir küme için HTTP erişimini devre dışı bırakma komutu**
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Öngörüler (olaylar, uyarı kuralları, otomatik ölçekayarları, ölçümler)
-**Abonelik, bağıntılıId, kaynak grubu, kaynak veya kaynak sağlayıcısı için işlem günlüklerini alma**
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Öngörüler (olaylar, uyarı kuralları, otomatik ölçeklendirme ayarları, ölçümler)
+**Abonelik, bir CorrelationId, bir kaynak grubu, kaynak veya kaynak sağlayıcısı için işlem günlüklerini alma**
 
     insights logs list [options]
 
 ## <a name="locations"></a>Konumlar 
-**Kullanılabilir konumları listele**
+**Kullanılabilir konumları listeleyin**
 
     location list [options]
 
 ## <a name="network-resources"></a>Ağ kaynakları
-**Sanal ağları yönetme komutları**
+**Sanal ağları yönetmeye yönelik komutlar**
 
     network vnet create [options] <resource-group> <name> <location>
-Sanal ağ oluşturur. Aşağıdaki örnekte, Batı ABD bölgesinde kaynak grubu myresourcegroup için newvnet adlı bir sanal ağ oluşturduk.
+Sanal ağ oluşturur. Aşağıdaki örnekte, Batı ABD bölgesinde myresourcegroup kaynak grubu için newvnet adlı bir sanal ağ oluşturacağız.
 
     azure network vnet create myresourcegroup newvnet "west us"
     info:    Executing command network vnet create
@@ -358,7 +358,7 @@ Parametre seçenekleri:
 
     network vnet set [options] <resource-group> <name>
 
-Kaynak grubu içindeki sanal ağ yapılandırması güncelleştirir.
+Bir kaynak grubu içindeki bir sanal ağ yapılandırmasını güncelleştirir.
 
     azure network vnet set myresourcegroup newvnet
 
@@ -406,7 +406,7 @@ Parametre seçenekleri:
 
     network vnet list [options] <resource-group>
 
-Komut, kaynak grubundaki tüm sanal ağları listeler.
+Komut, bir kaynak grubundaki tüm sanal ağları listeler.
 
     C:\>azure network vnet list myresourcegroup
 
@@ -431,7 +431,7 @@ Parametre seçenekleri:
 <BR>
 
     network vnet show [options] <resource-group> <name>
-Komut, kaynak grubundaki sanal ağ özelliklerini gösterir.
+Komut, bir kaynak grubundaki sanal ağ özelliklerini gösterir.
 
     azure network vnet show -g myresourcegroup -n newvnet
 
@@ -452,7 +452,7 @@ Komut, kaynak grubundaki sanal ağ özelliklerini gösterir.
 <BR>
 
     network vnet delete [options] <resource-group> <name>
-Komut sanal bir ağı kaldırır.
+Komut, bir sanal ağı kaldırır.
 
     azure network vnet delete myresourcegroup newvnetX
 
@@ -473,11 +473,11 @@ Parametre seçenekleri:
      -s, --subscription <subscription>      the subscription identifier
 
 
-**Sanal ağ alt ağlarını yönetme komutları**
+**Sanal ağ alt ağlarını yönetmeye yönelik komutlar**
 
     network vnet subnet create [options] <resource-group> <vnet-name> <name>
 
-Varolan bir sanal ağa başka bir alt ağ ekler.
+Var olan bir sanal ağa başka bir alt ağ ekler.
 
     azure network vnet subnet create -g myresourcegroup --vnet-name newvnet -n subnet --address-prefix 10.0.1.0/24
 
@@ -510,7 +510,7 @@ Parametre seçenekleri:
 
     network vnet subnet set [options] <resource-group> <vnet-name> <name>
 
-Kaynak grubu içinde belirli bir sanal ağ alt ağı ayarlar.
+Bir kaynak grubu içindeki belirli bir sanal ağ alt ağını ayarlar.
 
     C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -528,7 +528,7 @@ Kaynak grubu içinde belirli bir sanal ağ alt ağı ayarlar.
 
     network vnet subnet list [options] <resource-group> <vnet-name>
 
-Kaynak grubu içindeki belirli bir sanal ağ için tüm sanal ağ alt ağlarını listeler.
+Bir kaynak grubu içindeki belirli bir sanal ağın tüm sanal ağ alt ağlarını listeler.
 
     azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -571,7 +571,7 @@ Parametre seçenekleri:
 <BR>
 
     network vnet subnet delete [options] <resource-group> <vnet-name> <subnet-name>
-Bir alt ağı varolan bir sanal ağdan kaldırır.
+Var olan bir sanal ağdan alt ağ kaldırır.
 
     azure network vnet subnet delete -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -592,7 +592,7 @@ Parametre seçenekleri:
      -s, --subscription <subscription>      the subscription identifier
      -q, --quiet                            quiet mode, do not ask for delete confirmation
 
-**Yük dengeleyicilerini yönetme komutları**
+**Yük dengeleyiciler yönetmek için komutlar**
 
     network lb create [options] <resource-group> <name> <location>
 Yük dengeleyici kümesi oluşturur.
@@ -625,7 +625,7 @@ Parametre seçenekleri:
 <BR>
 
     network lb list [options] <resource-group>
-Listeler Kaynak grubu içindeki bakiye kaynaklarını yükleyin.
+Bir kaynak grubu içindeki yük dengeleyici kaynaklarını listeler.
 
     azure network lb list myresourcegroup
 
@@ -647,7 +647,7 @@ Parametre seçenekleri:
 
     network lb show [options] <resource-group> <name>
 
-Kaynak grubu içinde belirli bir yük dengeleyicisinin yük dengeleyici bilgilerini görüntüler
+Bir kaynak grubu içindeki belirli bir yük dengeleyicinin yük dengeleyici bilgilerini görüntüler
 
     azure network lb show myresourcegroup mylb -v
 
@@ -693,11 +693,11 @@ Parametre seçenekleri:
      -q, --quiet                            quiet mode, do not ask for delete confirmation
      -s, --subscription <subscription>      the subscription identifier
 
-**Yük dengeleyicisinin sondalarını yönetme komutları**
+**Yük dengeleyicinin araştırmalarını yönetmek için komutlar**
 
     network lb probe create [options] <resource-group> <lb-name> <name>
 
-Yük dengeleyicisindeki sistem durumu için sonda yapılandırmasını oluşturun. Bu komutu çalıştırmak için unutmayın, yük bakiyeciniz bir frontend-ip kaynağına ihtiyaç duyar (Yük bakiyesi için ip adresi atamak için "azure network frontend-ip" komutuna göz atın).
+Yük dengeleyicide sistem durumu için araştırma yapılandırmasını oluşturun. Bu komutu çalıştırmak için, yük dengeleyicinizin bir ön uç IP kaynağı (yük dengeleyiciye bir IP adresi atamak için "Azure ağı ön uç-IP") gerektirdiğini göz önünde bulundurun.
 
     azure network lb probe create -g myresourcegroup --lb-name mylb -n mylbprobe --protocol tcp --port 80 -i 300
 
@@ -725,7 +725,7 @@ Parametre seçenekleri:
 
     network lb probe set [options] <resource-group> <lb-name> <name>
 
-Varolan bir yük dengeleyici sondası için yeni değerlerle güncelleştirir.
+Mevcut yük dengeleyici araştırmasını yeni değerlerle güncelleştirir.
 
     azure network lb probe set -g myresourcegroup -l mylb -n mylbprobe -p mylbprobe1 -p TCP -o 443 -i 300
 
@@ -753,7 +753,7 @@ Parametre seçenekleri
 
     network lb probe list [options] <resource-group> <lb-name>
 
-Yük dengeleyici kümesi için sonda özelliklerini listeleyin.
+Yük dengeleyici kümesi için araştırma özelliklerini listeleyin.
 
     C:\>azure network lb probe list -g myresourcegroup -l mylb
 
@@ -775,7 +775,7 @@ Parametre seçenekleri:
 
 
     network lb probe delete [options] <resource-group> <lb-name> <name>
-Yük dengeleyicisi için oluşturulan prob kaldırır.
+Yük Dengeleyici için oluşturulan araştırmayı kaldırır.
 
     azure network lb probe delete -g myresourcegroup -l mylb -n mylbprobe
 
@@ -785,10 +785,10 @@ Yük dengeleyicisi için oluşturulan prob kaldırır.
     + Updating load balancer "mylb"
     info:    network lb probe delete command OK
 
-**Yük dengeleyicisinin frontend ip yapılandırmalarını yönetme komutları**
+**Yük dengeleyicinin ön uç IP yapılandırmasını yönetme komutları**
 
     network lb frontend-ip create [options] <resource-group> <lb-name> <name>
-Varolan bir yük dengeleyici kümesine ön uç IP yapılandırması oluşturur.
+Var olan bir yük dengeleyici kümesine ön uç IP yapılandırması oluşturur.
 
     azure network lb frontend-ip create -g myresourcegroup --lb-name mylb -n myfrontendip -o Dynamic -e subnet -m newvnet
 
@@ -816,7 +816,7 @@ Varolan bir yük dengeleyici kümesine ön uç IP yapılandırması oluşturur.
 
     network lb frontend-ip set [options] <resource-group> <lb-name> <name>
 
-Ön uç IP'sinin varolan yapılandırması güncellenir. Aşağıdaki komut, myfrontendip adlı mevcut bir yük dengeleyici frontend IP mypubip5 adlı bir kamu IP ekler.
+Ön uç IP 'nin varolan yapılandırmasını güncelleştirir. Aşağıdaki komut, myfrontendıp adlı mevcut yük dengeleyici ön uç IP 'si için mypubip5 adlı bir genel IP ekler.
 
     azure network lb frontend-ip set -g myresourcegroup --lb-name mylb -n myfrontendip -i mypubip5
 
@@ -866,7 +866,7 @@ Parametre seçenekleri:
 
     network lb frontend-ip list [options] <resource-group> <lb-name>
 
-Yük dengeleyicisi için yapılandırılan tüm ön uç IP kaynaklarını listeler.
+Yük Dengeleyici için yapılandırılmış tüm ön uç IP kaynaklarını listeler.
 
     azure network lb frontend-ip list -g myresourcegroup -l mylb
 
@@ -888,7 +888,7 @@ Parametre seçenekleri:
 <BR>
 
     network lb frontend-ip delete [options] <resource-group> <lb-name> <name>
-Yük bakiyesi ile ilişkili frontend IP nesnesini siler
+Yük dengeleyiciyle ilişkili ön uç IP nesnesini siler
 
     network lb frontend-ip delete -g myresourcegroup -l mylb -n myfrontendip
     info:    Executing command network lb frontend-ip delete
@@ -907,11 +907,11 @@ Parametre seçenekleri:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Yük bakiyesinin arka uç adres havuzlarını yönetme komutları**
+**Yük dengeleyicinin arka uç adres havuzlarını yönetmeye yönelik komutlar**
 
     network lb address-pool create [options] <resource-group> <lb-name> <name>
 
-Yük dengeleyicisi için bir arka uç adres havuzu oluşturun.
+Yük Dengeleyici için arka uç adres havuzu oluşturun.
 
     azure network lb address-pool create -g myresourcegroup --lb-name mylb -n myaddresspool
 
@@ -942,7 +942,7 @@ Parametre seçenekleri:
 
     network lb address-pool list [options] <resource-group> <lb-name>
 
-Belirli bir kaynak grubu için arka uç IP adresi havuzu aralığını listele
+Belirli bir kaynak grubu için arka uç IP adresi havuzu aralığını Listele
 
     azure network lb address-pool list -g myresourcegroup -l mylb
 
@@ -966,7 +966,7 @@ Parametre seçenekleri:
 
     network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
-Arka uç IP havuzu aralığı kaynağını yük dengeleyicisinden kaldırır.
+Arka uç IP havuzu Aralık kaynağını yük dengeleyiciden kaldırır.
 
     azure network lb address-pool delete -g myresourcegroup -l mylb -n mybackendpool
 
@@ -987,14 +987,14 @@ Parametre seçenekleri:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Yük dengeleyici kurallarını yönetme komutları**
+**Yük dengeleyici kurallarını yönetmek için komutlar**
 
     network lb rule create [options] <resource-group> <lb-name> <name>
 Yük dengeleyici kuralları oluşturun.
 
-Gelen ağ trafiğini almak için yük dengeleyicisi ve arka uç adresi havuzu aralığı için ön uç bitiş noktasını yapılandıran bir yük dengeleyici kuralı oluşturabilirsiniz. Ayarlar, ön uç IP uç noktası bağlantı noktalarını ve arka uç adresi havuzu aralığı için bağlantı noktalarını da içerir.
+Yük Dengeleyici için ön uç uç noktasını ve gelen ağ trafiğini almak için arka uç adres havuzu aralığını yapılandırarak bir yük dengeleyici kuralı oluşturabilirsiniz. Ayarlar ayrıca, arka uç adres havuzu aralığı için ön uç IP uç noktası ve bağlantı noktaları için bağlantı noktaları içerir.
 
-Aşağıdaki örnek, bir yük dengeleyici kuralının nasıl oluşturulup oluşturulabildiğini, ön uç uç noktasının port 80 TCP'yi dinlemesini ve arka uç adresi havuzu aralığı için 8080 bağlantı noktasına gönderilen yük dengeleme ağ trafiğini gösterir.
+Aşağıdaki örnekte, bir yük dengeleyici kuralı, ön uç uç noktası 80 numaralı bağlantı noktasını ve arka uç adres havuzu aralığı için 8080 numaralı bağlantı noktasına gönderilen Yük Dengeleme ağ trafiğini nasıl oluşturacağınız gösterilmektedir.
 
     azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
 
@@ -1022,7 +1022,7 @@ Aşağıdaki örnek, bir yük dengeleyici kuralının nasıl oluşturulup oluşt
 
     network lb rule set [options] <resource-group> <lb-name> <name>
 
-Belirli bir kaynak grubunda ayarlanan varolan yük dengeleyici kuralını güncelleştirir. Aşağıdaki örnekte, kural adını mylbrule'den mynewlbrule'e değiştirdik.
+Belirli bir kaynak grubunda var olan bir yük dengeleyici kuralını güncelleştirir. Aşağıdaki örnekte, kural adını mylbrule iken yenibrule olarak değiştirdik.
 
     azure network lb rule set -g myresourcegroup -l mylb -n mylbrule -r mynewlbrule -p tcp -f 80 -b 8080 -i 10 -t myfrontendip -o mybackendpool
 
@@ -1067,7 +1067,7 @@ Parametre seçenekleri:
 
     network lb rule list [options] <resource-group> <lb-name>
 
-Belirli bir kaynak grubundaki yük dengeleyicisi için yapılandırılan tüm yük dengeleyici kurallarını listeler.
+Belirli bir kaynak grubundaki yük dengeleyici için yapılandırılmış tüm yük dengeleyici kurallarını listeler.
 
     azure network lb rule list -g myresourcegroup -l mylb
 
@@ -1113,9 +1113,9 @@ Parametre seçenekleri:
 **Yük dengeleyici gelen NAT kurallarını yönetmek için komutlar**
 
     network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
-Yük dengeleyicisi için gelen NAT kuralını oluşturur.
+Yük Dengeleyici için bir gelen NAT kuralı oluşturur.
 
-Aşağıdaki örnekte, yük bakiyesi oluşturanın ağ trafiğini göndermek için kullandığı gelen dinleme bağlantı noktası ve giden bağlantı noktasıyla ön uç IP'sinden (daha önce "azure ağ frontend-ip" komutu kullanılarak tanımlanmış olan) bir NAT kuralı oluşturduk.
+Aşağıdaki örnekte, ön uç IP 'den bir NAT kuralı (daha önce "Azure ağ ön uç-IP" komutu kullanılarak), yük dengeleyicinin ağ trafiğini göndermek için kullandığı bir gelen dinleme bağlantı noktası ve giden bağlantı noktası ile oluşturulmuştur.
 
     azure network lb inbound-nat-rule create -g myresourcegroup -l mylb -n myinboundnat -p tcp -f 80 -b 8080 -i myfrontendip
 
@@ -1157,7 +1157,7 @@ Parametre seçenekleri:
 <BR>
 
     network lb inbound-nat-rule set [options] <resource-group> <lb-name> <name>
-Varolan bir gelen nat kuralını güncelleştirir. Aşağıdaki örnekte, gelen dinleme bağlantı noktasını 80'den 81'e değiştirdik.
+Var olan bir gelen NAT kuralını güncelleştirir. Aşağıdaki örnekte, 80 olan gelen dinleme bağlantı noktasını 81 olarak değiştirdik.
 
     azure network lb inbound-nat-rule set -g group-1 -l mylb -n myinboundnat -p tcp -f 81 -b 8080 -i myfrontendip
 
@@ -1200,7 +1200,7 @@ Parametre seçenekleri:
 
     network lb inbound-nat-rule list [options] <resource-group> <lb-name>
 
-Yük dengeleyicisi için gelen tüm nat kurallarını listeler.
+Yük Dengeleyici için tüm gelen NAT kurallarını listeler.
 
     azure network lb inbound-nat-rule list -g myresourcegroup -l mylb
 
@@ -1225,7 +1225,7 @@ Parametre seçenekleri:
 
     network lb inbound-nat-rule delete [options] <resource-group> <lb-name> <name>
 
-Belirli bir kaynak grubundaki yük dengeleyicisi için NAT kuralını siler.
+Belirli bir kaynak grubundaki yük dengeleyici için NAT kuralını siler.
 
     azure network lb inbound-nat-rule delete -g myresourcegroup -l mylb -n myinboundnat
 
@@ -1246,10 +1246,10 @@ Parametre seçenekleri:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Genel ip adreslerini yönetme komutları**
+**Genel IP adreslerini yönetmeye yönelik komutlar**
 
     network public-ip create [options] <resource-group> <name> <location>
-Genel ip kaynağı oluşturur. Ortak ip kaynağını oluşturacak ve bir etki alanı adı ile ilişkilendireceksiniz.
+Genel bir IP kaynağı oluşturur. Genel IP kaynağını oluşturacak ve bir etki alanı adıyla ilişkilendirecaksınız.
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create
@@ -1289,7 +1289,7 @@ Parametre seçenekleri:
 <br>
 
     network public-ip set [options] <resource-group> <name>
-Varolan bir genel ip kaynağının özelliklerini güncelleştirir. Aşağıdaki örnekte, genel IP adresini Dinamik'ten Statik'e değiştirdik.
+Mevcut bir genel IP kaynağının özelliklerini güncelleştirir. Aşağıdaki örnekte, genel IP adresini dinamik iken statik olarak değiştirdik.
 
     azure network public-ip set -g group-1 -n mytestpublicip1 -d azureclitest -a "Static"
     info:    Executing command network public-ip set
@@ -1330,7 +1330,7 @@ Parametre seçenekleri:
 <br>
 
     network public-ip list [options] <resource-group>
-Kaynak grubundaki tüm genel IP kaynaklarını listeler.
+Bir kaynak grubu içindeki tüm genel IP kaynaklarını listeler.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1355,7 +1355,7 @@ Parametre seçenekleri:
 
     network public-ip show [options] <resource-group> <name>
 
-Kaynak grubu içindeki ortak ip kaynağının ortak ip özelliklerini görüntüler.
+Bir kaynak grubu içindeki genel IP kaynağı için genel IP özelliklerini görüntüler.
 
     azure network public-ip show -g myresourcegroup -n mytestpublicip
 
@@ -1385,7 +1385,7 @@ Parametre seçenekleri:
 
     network public-ip delete [options] <resource-group> <name>
 
-Genel ip kaynağını siler.
+Genel IP kaynağını siler.
 
     azure network public-ip delete -g group-1 -n mypublicipname
     info:    Executing command network public-ip delete
@@ -1408,7 +1408,7 @@ Parametre seçenekleri:
 **Ağ arabirimlerini yönetmek için komutlar**
 
     network nic create [options] <resource-group> <name> <location>
-Yük dengeleyicileri için kullanılabilecek veya Sanal Makine ile ilişkilendirilebilen ağ arabirimi (NIC) adı verilen bir kaynak oluşturur.
+Yük dengeleyiciler için kullanılabilen veya bir sanal makineyle ilişkili ağ arabirimi (NIC) adlı bir kaynak oluşturur.
 
     azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
 
@@ -1476,7 +1476,7 @@ Parametre seçenekleri:
     network nsg show [options] <resource-group> <name>
     network nsg delete [options] <resource-group> <name>
 
-**Ağ güvenlik grubu kurallarını yönetme komutları**
+**Ağ güvenlik grubu kurallarını yönetmek için komutlar**
 
     network nsg rule create [options] <resource-group> <nsg-name> <name>
     network nsg rule set [options] <resource-group> <nsg-name> <name>
@@ -1484,7 +1484,7 @@ Parametre seçenekleri:
     network nsg rule show [options] <resource-group> <nsg-name> <name>
     network nsg rule delete [options] <resource-group> <nsg-name> <name>
 
-**Trafik yöneticisi profilini yönetme komutları**
+**Traffic Manager profilini yönetme komutları**
 
     network traffic-manager profile create [options] <resource-group> <name>
     network traffic-manager profile set [options] <resource-group> <name>
@@ -1493,39 +1493,39 @@ Parametre seçenekleri:
     network traffic-manager profile delete [options] <resource-group> <name>
     network traffic-manager profile is-dns-available [options] <resource-group> <relative-dns-name>
 
-**Trafik yöneticisi uç noktalarını yönetme komutları**
+**Traffic Manager uç noktalarını yönetmek için komutlar**
 
     network traffic-manager profile endpoint create [options] <resource-group> <profile-name> <name> <endpoint-location>
     network traffic-manager profile endpoint set [options] <resource-group> <profile-name> <name>
     network traffic-manager profile endpoint delete [options] <resource-group> <profile-name> <name>
 
-**Sanal ağ ağ geçitlerini yönetme komutları**
+**Sanal ağ geçitlerini yönetmek için komutlar**
 
     network gateway list [options] <resource-group>
 
 ## <a name="resource-provider-registrations"></a>Kaynak sağlayıcı kayıtları
-**Kaynak Yöneticisi'nde şu anda kayıtlı sağlayıcıları listelama**
+**Kaynak Yöneticisi kayıtlı olan sağlayıcıları listeleyin**
 
     provider list [options]
 
-**İstenen sağlayıcı ad alanı yla ilgili ayrıntıları göster**
+**İstenen sağlayıcı ad alanı hakkındaki ayrıntıları göster**
 
     provider show [options] <namespace>
 
-**Sağlayıcıyı aboneye kaydedin**
+**Sağlayıcıyı abonelikle Kaydet**
 
     provider register [options] <namespace>
 
-**Aboneyle birlikte sağlayıcıyı kayıt dışı**
+**Sağlayıcının aboneliğini iptal etme**
 
     provider unregister [options] <namespace>
 
 ## <a name="resources"></a>Kaynaklar
-**Kaynak grubunda kaynak oluşturur**
+**Kaynak grubunda bir kaynak oluşturur**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
 
-**Kaynak grubundaki bir kaynağı şablon veya parametre olmadan güncelleştirir**
+**Herhangi bir şablon veya parametre olmadan kaynak grubundaki bir kaynağı güncelleştirir**
 
     resource set [options] <resource-group> <name> <resource-type> <properties> <api-version>
 
@@ -1533,31 +1533,31 @@ Parametre seçenekleri:
 
     resource list [options] [resource-group]
 
-**Kaynak grubu veya abonelik içinde bir kaynak alır**
+**Kaynak grubu veya abonelik içindeki bir kaynağı alır**
 
     resource show [options] <resource-group> <name> <resource-type> <api-version>
 
-**Kaynak grubundaki kaynağı siler**
+**Kaynak grubundaki bir kaynağı siler**
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
 ## <a name="azure-roles"></a>Azure rolleri
-**Kullanılabilir tüm rol tanımlarını alın**
+**Tüm kullanılabilir rol tanımlarını al**
 
     role list [options]
 
-**Kullanılabilir bir rol tanımı alma**
+**Kullanılabilir bir rol tanımı al**
 
     role show [options] [name]
 
-**Rol atamanızı yönetme komutları**
+**Rol atamalarınızı yönetmek için komutlar**
 
     role assignment create [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
 ## <a name="storage-objects"></a>Depolama nesneleri
-**Depolama hesaplarınızı yönetme komutları**
+**Depolama hesaplarınızı yönetmek için komutlar**
 
     storage account list [options]
     storage account show [options] <name>
@@ -1570,11 +1570,11 @@ Parametre seçenekleri:
     storage account keys list [options] <name>
     storage account keys renew [options] <name>
 
-**Depolama bağlantı dizenizi gösterme komutları**
+**Depolama Bağlantı dizenizi gösterme komutları**
 
     storage account connectionstring show [options] <name>
 
-**Depolama kapsayıcılarınızı yönetme komutları**
+**Depolama Kapsayıcılarınızı yönetmek için komutlar**
 
     storage container list [options] [prefix]
     storage container show [options] [container]
@@ -1582,11 +1582,11 @@ Parametre seçenekleri:
     storage container delete [options] [container]
     storage container set [options] [container]
 
-**Depolama kapsayıcınızın paylaşılan erişim imzalarını yönetme komutları**
+**Depolama kapsayıcılarınızın paylaşılan erişim imzalarını yönetmek için komutlar**
 
     storage container sas create [options] [container] [permissions] [expiry]
 
-**Depolama kapsayıcınızın depolanan erişim ilkelerini yönetme komutları**
+**Depolama kapsayıcının saklı erişim ilkelerini yönetmek için komutlar**
 
     storage container policy create [options] [container] [name]
     storage container policy show [options] [container] [name]
@@ -1594,7 +1594,7 @@ Parametre seçenekleri:
     storage container policy set [options] [container] [name]
     storage container policy delete [options] [container] [name]
 
-**Depolama lekelerinizi yönetme komutları**
+**Depolama bloblarınızı yönetmek için komutlar**
 
     storage blob list [options] [container] [prefix]
     storage blob show [options] [container] [blob]
@@ -1602,24 +1602,24 @@ Parametre seçenekleri:
     storage blob upload [options] [file] [container] [blob]
     storage blob download [options] [container] [blob] [destination]
 
-**Blob kopyalama işlemlerinizi yönetmek için komutlar**
+**Blob kopyalama işlemlerinizi yönetme komutları**
 
     storage blob copy start [options] [sourceUri] [destContainer]
     storage blob copy show [options] [container] [blob]
     storage blob copy stop [options] [container] [blob] [copyid]
 
-**Depolama blob'unuzun paylaşılan erişim imzasını yönetme komutları**
+**Depolama Blobun paylaşılan erişim imzasını yönetme komutları**
 
     storage blob sas create [options] [container] [blob] [permissions] [expiry]
 
-**Depolama dosya paylaşımlarınızı yönetme komutları**
+**Depolama dosya paylaşımlarınızı yönetmek için komutlar**
 
     storage share create [options] [share]
     storage share show [options] [share]
     storage share delete [options] [share]
     storage share list [options] [prefix]
 
-**Depolama dosyalarınızı yönetme komutları**
+**Depolama dosyalarınızı yönetmek için komutlar**
 
     storage file list [options] [share] [path]
     storage file delete [options] [share] [path]
@@ -1631,18 +1631,18 @@ Parametre seçenekleri:
     storage directory create [options] [share] [path]
     storage directory delete [options] [share] [path]
 
-**Depolama kuyruklarınızı yönetme komutları**
+**Depolama kuyruklarını yönetmek için komutlar**
 
     storage queue create [options] [queue]
     storage queue list [options] [prefix]
     storage queue show [options] [queue]
     storage queue delete [options] [queue]
 
-**Depolama sıranızın paylaşılan erişim imzalarını yönetme komutları**
+**Depolama kuyruğunuzun paylaşılan erişim imzalarını yönetmek için komutlar**
 
     storage queue sas create [options] [queue] [permissions] [expiry]
 
-**Depolama sıranızın depolanan erişim ilkelerini yönetme komutları**
+**Depolama kuyruğunuzun saklı erişim ilkelerini yönetmek için komutlar**
 
     storage queue policy create [options] [queue] [name]
     storage queue policy show [options] [queue] [name]
@@ -1655,23 +1655,23 @@ Parametre seçenekleri:
     storage logging show [options]
     storage logging set [options]
 
-**Depolama metrik özelliklerinizi yönetme komutları**
+**Depolama ölçümleri özelliklerinizi yönetme komutları**
 
     storage metrics show [options]
     storage metrics set [options]
 
-**Depolama tablolarınızı yönetme komutları**
+**Depolama tablolarınızı yönetmek için komutlar**
 
     storage table create [options] [table]
     storage table list [options] [prefix]
     storage table show [options] [table]
     storage table delete [options] [table]
 
-**Depolama tablonuzun paylaşılan erişim imzalarını yönetme komutları**
+**Depolama tablonuzun paylaşılan erişim imzalarını yönetmek için komutlar**
 
     storage table sas create [options] [table] [permissions] [expiry]
 
-**Depolama tablonuzun depolanan erişim ilkelerini yönetme komutları**
+**Depolama tablonuzun saklı erişim ilkelerini yönetme komutları**
 
     storage table policy create [options] [table] [name]
     storage table policy show [options] [table] [name]
@@ -1684,15 +1684,15 @@ Parametre seçenekleri:
 
     tag create [options] <name> <value>
 
-**Etiketin tamamını veya etiket değerini kaldırma**
+**Tüm etiketi veya etiket değerini kaldır**
 
     tag delete [options] <name> <value>
 
-**Etiket bilgilerini listeler**
+**Etiket bilgisini listeler**
 
     tag list [options]
 
-**Etiket alma**
+**Etiket al**
 
     tag show [options] [name]
 
@@ -1701,20 +1701,20 @@ Parametre seçenekleri:
 
     vm create [options] <resource-group> <name> <location> <os-type>
 
-**Varsayılan kaynaklara sahip bir VM oluşturma**
+**Varsayılan kaynaklarla VM oluşturma**
 
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> CLI sürüm 0.10 ile başlayarak, bazı popüler Market görüntüleri `image-urn` için "UbuntuLTS" veya "Win2012R2Datacenter" gibi kısa bir takma ad verebilirsiniz. Seçenekler `azure help vm quick-create` için çalıştırın. Ayrıca, sürüm 0.10'dan `azure vm quick-create` başlayarak, seçili bölgede kullanılabilirse varsayılan olarak premium depolama alanını kullanır.
+> CLı sürüm 0,10 ' den başlayarak, bazı popüler Market görüntüleri `image-urn` Için "UbuntuLTS" veya "Win2012R2Datacenter" gibi bir kısa ad sağlayabilirsiniz. Seçenekler `azure help vm quick-create` için çalıştırın. Ayrıca, sürüm 0,10 ' den itibaren `azure vm quick-create` , seçili bölgede varsa, varsayılan olarak Premium depolama kullanır.
 > 
 > 
 
-**Bir hesaptaki sanal makineleri listele**
+**Bir hesap içindeki sanal makineleri listeleyin**
 
     vm list [options]
 
-**Kaynak grubu içinde bir sanal makine alma**
+**Bir kaynak grubu içinde bir sanal makine al**
 
     vm show [options] <resource-group> <name>
 
@@ -1722,62 +1722,62 @@ Parametre seçenekleri:
 
     vm delete [options] <resource-group> <name>
 
-**Kaynak grubu içindeki bir sanal makineyi kapatma**
+**Kaynak grubu içinde bir sanal makineyi kapatır**
 
     vm stop [options] <resource-group> <name>
 
-**Kaynak grubu içindeki bir sanal makineyi yeniden başlatma**
+**Kaynak grubundaki bir sanal makineyi yeniden başlatma**
 
     vm restart [options] <resource-group> <name>
 
-**Kaynak grubu içinde bir sanal makine başlatma**
+**Bir kaynak grubu içinde bir sanal makine başlatma**
 
     vm start [options] <resource-group> <name>
 
-**Kaynak grubu içindeki bir sanal makineyi kapatma ve bilgi işlem kaynaklarını serbest bırakma**
+**Bir kaynak grubundaki bir sanal makineyi kapatır ve işlem kaynaklarını serbest bırakır**
 
     vm deallocate [options] <resource-group> <name>
 
-**Kullanılabilir sanal makine boyutlarını listele**
+**Kullanılabilir sanal makine boyutlarını Listele**
 
     vm sizes [options]
 
-**VM'yi İşletim Sistemi Görüntüsü veya VM Görüntüsü olarak yakalayın**
+**VM 'yi işletim sistemi görüntüsü veya VM görüntüsü olarak yakalama**
 
     vm capture [options] <resource-group> <name> <vhd-name-prefix>
 
-**VM'nin durumunu Genelleştirilmiş olarak ayarlayın**
+**VM 'nin durumunu Genelleştirilmiş olarak ayarlayın**
 
     vm generalize [options] <resource-group> <name>
 
-**VM'nin örnek görünümünü alın**
+**VM 'nin örnek görünümünü al**
 
     vm get-instance-view [options] <resource-group> <name>
 
-**Sanal Makine'de Uzak Masaüstü Erişimi veya SSH ayarlarını sıfırlamanızı ve yönetici veya sudo yetkisine sahip hesabın parolasını sıfırlamanızı sağlar**
+**Bir sanal makinede uzak masaüstü erişimini veya SSH ayarlarını sıfırlamanıza ve yönetici veya sudo yetkisi olan hesabın parolasını sıfırlamanıza olanak tanır**
 
     vm reset-access [options] <resource-group> <name>
 
-**VM'yi yeni verilerle güncelleştirin**
+**VM 'yi yeni verilerle güncelleştirme**
 
     vm set [options] <resource-group> <name>
 
-**Sanal Makine veri disklerinizi yönetmek için komutlar**
+**Sanal makine veri disklerinizi yönetme komutları**
 
     vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]
     vm disk detach [options] <resource-group> <vm-name> <lun>
     vm disk attach [options] <resource-group> <vm-name> [vhd-url]
 
-**VM kaynak uzantılarını yönetme komutları**
+**VM kaynak uzantılarını yönetmek için komutlar**
 
     vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>
     vm extension get [options] <resource-group> <vm-name>
 
-**Docker Sanal Makinenizi yönetme komutları**
+**Docker sanal makinenizi yönetme komutları**
 
     vm docker create [options] <resource-group> <name> <location> <os-type>
 
-**VM görüntülerini yönetme komutları**
+**VM görüntülerini yönetmeye yönelik komutlar**
 
     vm image list-publishers [options] <location>
     vm image list-offers [options] <location> <publisher>

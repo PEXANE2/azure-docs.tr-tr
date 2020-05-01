@@ -1,5 +1,5 @@
 ---
-title: MongoDB için Azure Cosmos DB'nin API'si (Part1) ile Açısal bir uygulama oluşturun
+title: MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma (part1)
 description: Azure Cosmos DB üzerinde Angular ve Node ile MongoDB için kullandığınız aynı API'leri kullanarak bir MongoDB uygulaması oluşturma öğreticisi dizisinin 4. bölümü
 author: johnpapa
 ms.service: cosmos-db
@@ -11,21 +11,21 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75441163"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>MongoDB için Azure Cosmos DB'nin API'si ile Açısal bir uygulama oluşturun - Cosmos hesabı oluşturma
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Cosmos hesabı oluşturma
 
-Bu çok parçalı öğretici nasıl Express ve Angular ile Node.js yazılmış yeni bir uygulama oluşturmak ve daha sonra [Cosmos hesabı Cosmos DB's API MongoDB için yapılandırılan](mongodb-introduction.md)bağlanmak için nasıl gösterir.
+Bu çok parçalı öğreticide, Express ve angular ile Node. js ' de yazılmış yeni bir uygulama oluşturma ve ardından bunu [MongoDB için Cosmos DB API 'siyle yapılandırılmış Cosmos hesabınıza](mongodb-introduction.md)bağlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Öğreticinin 4. bölümünde [3. bölümdeki](tutorial-develop-mongodb-nodejs-part3.md) konular genişletilir ve aşağıdaki görevler yer alır:
 
 > [!div class="checklist"]
 > * Azure CLI kullanarak bir Azure kaynak grubu oluşturma
-> * Azure CLI'yi kullanarak bir Cosmos hesabı oluşturma
+> * Azure CLı kullanarak Cosmos hesabı oluşturma
 
 ## <a name="video-walkthrough"></a>Görüntülü kılavuz
 
@@ -48,7 +48,7 @@ Bu öğretici bölümünde Azure Cloud Shell’i (İnternet tarayıcınızda) ve
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB hesabı oluşturma
 
-[`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) Komutla bir Azure Cosmos DB hesabı oluşturun.
+[`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) Komutuyla bir Azure Cosmos DB hesabı oluşturun.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -60,7 +60,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 Komutun tamamlanması bir veya iki dakika kadar sürebilir. Tamamlandığında, terminal penceresi yeni veritabanı hakkındaki bilgileri görüntüler. 
 
 Azure Cosmos DB hesabı oluşturulduktan sonra:
-1. Yeni bir tarayıcı penceresi açın ve[https://portal.azure.com](https://portal.azure.com)
+1. Yeni bir tarayıcı penceresi açın ve şuraya gidin[https://portal.azure.com](https://portal.azure.com)
 1. Sol taraftaki çubukta Azure Cosmos DB logosuna ![Azure portalında Azure Cosmos DB simgesi](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) tıklayın. Sahip olduğunuz tüm Azure Cosmos DB’ler gösterilir.
 1. Yeni oluşturduğunuz Azure Cosmos DB hesabına tıklayın, **Genel bakış** sekmesini seçin ve veritabanın bulunduğu haritayı bulun. 
 
