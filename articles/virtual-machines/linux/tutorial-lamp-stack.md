@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure'da bir Linux sanal makinesinde LAMP'yi dağıtın
+title: Öğretici-Azure 'da Linux sanal makinesinde lamba dağıtma
 description: Bu öğreticide, Azure’daki bir Linux sanal makinesinde LAMP yığını yüklemeyi öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80154381"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesine bir LAMP web sunucusu yükleme
@@ -35,7 +35,7 @@ Bu makalede, Azure’daki bir Ubuntu sanal makinesine Apache web sunucusunun, My
 
 Bu kurulum, hızlı testler veya kavram kanıtı içindir. Üretim ortamına yönelik öneriler de dahil olmak üzere, LAMP yığını hakkında daha fazla bilgi için [Ubuntu belgelerine](https://help.ubuntu.com/community/ApacheMySQLPHP) bakın.
 
-Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
@@ -55,7 +55,7 @@ Paketleri ve diğer bağımlılıkları yüklemeniz istenir. Bu işlem, MySQL il
 ## <a name="verify-installation-and-configuration"></a>Yükleme ve yapılandırmayı doğrulama
 
 
-### <a name="verify-apache"></a>Apaçi'yi Doğrula
+### <a name="verify-apache"></a>Apache 'yi doğrula
 
 Aşağıdaki komutla Apache sürümünü denetleyin:
 ```bash
@@ -67,7 +67,7 @@ Apache yüklüyken ve sanal makinenizde 80 numaralı bağlantı noktası açıkk
 ![Apache varsayılan sayfası][3]
 
 
-### <a name="verify-and-secure-mysql"></a>MySQL'i doğrulayın ve güvenli hale
+### <a name="verify-and-secure-mysql"></a>MySQL 'i doğrulama ve güvenli hale getirme
 
 Aşağıdaki komutla MySQL sürümünü denetleyin (ana `V` parametresini not edin):
 
@@ -75,13 +75,13 @@ Aşağıdaki komutla MySQL sürümünü denetleyin (ana `V` parametresini not ed
 mysql -V
 ```
 
-Kök parola ayarlama da dahil olmak üzere MySQL'in `mysql_secure_installation` yüklenmesini güvence altına almaya yardımcı olmak için komut dosyasını çalıştırın. 
+Kök parola ayarlama da dahil olmak üzere MySQL yüklemesinin güvenliğinin sağlanmasına yardımcı olmak için `mysql_secure_installation` betiği çalıştırın. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-İsteğe bağlı olarak Parola Eklentisini Doğrula (önerilir) ayarlayabilirsiniz. Ardından, MySQL kök kullanıcısı için bir parola ayarlayın ve ortamınız için kalan güvenlik ayarlarını yapılandırın. Tüm sorulara "Y" (evet) yanıtı vermenizi öneririz.
+İsteğe bağlı olarak parolayı Doğrula eklentisini ayarlayabilirsiniz (önerilir). Ardından, MySQL kök kullanıcısı için bir parola ayarlayın ve ortamınız için kalan güvenlik ayarlarını yapılandırın. Tüm sorulara "Y" (Evet) yanıtını etmenizi öneririz.
 
 MySQL özelliklerini (MySQL veritabanı oluşturma, kullanıcı ekleme veya yapılandırma ayarlarını değiştirme) denemek istiyorsanız MySQL’de oturum açın. Bu öğreticiyi tamamlamak için bu adım gerekli değildir.
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 İşiniz bittiğinde, `\q` yazarak mysql isteminden çıkın.
 
-### <a name="verify-php"></a>PHP'yi doğrula
+### <a name="verify-php"></a>PHP 'yi doğrula
 
 Aşağıdaki komutla PHP sürümünü denetleyin:
 
@@ -122,10 +122,10 @@ Bu öğreticide, Azure’da bir LAMP sunucusu dağıttınız. Şunları öğrend
 > * Yükleme ve yapılandırmayı doğrulama
 > * LAMP sunucusuna WordPress yükleme
 
-TLS/SSL sertifikaları ile web sunucularının nasıl güvenli hale alınacağı nızı öğrenmek için bir sonraki öğreticiye ilerleyin.
+TLS/SSL sertifikalarıyla Web sunucularının güvenliğini sağlama hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [TLS ile güvenli web sunucusu](tutorial-secure-web-server.md)
+> [TLS ile güvenli Web sunucusu](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png
