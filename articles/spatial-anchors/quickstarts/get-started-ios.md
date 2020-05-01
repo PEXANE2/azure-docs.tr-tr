@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: bir iOS uygulaması oluşturma'
-description: Bu hızlı başlangıçta, Uzamsal Çapalar'ı kullanarak bir iOS uygulaması oluşturmayı öğrenirsiniz.
+title: 'Hızlı başlangıç: iOS uygulaması oluşturma'
+description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak bir iOS uygulaması oluşturmayı öğreneceksiniz.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,22 +9,22 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 6304077a26f5c0ecb91e1ec4936bd79b3d839d95
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79471226"
 ---
-# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Hızlı başlangıç: Azure Uzamsal Çapaları ile Swift veya Objective-C'de bir iOS uygulaması oluşturun
+# <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla, Swift veya amaç-C ' d a iOS uygulaması oluşturma
 
-Bu hızlı başlangıç, Swift veya Objective-C'de [Azure Uzamsal Çapaları](../overview.md) kullanarak bir iOS uygulamasının nasıl oluşturulacak olduğunu kapsar. Azure Uzamsal Çapalar, zaman içinde aygıtlar arasında konumlarını devam ettirmeye neden olan nesneleri kullanarak karışık gerçeklik deneyimleri oluşturmanıza olanak tanıyan bir çapraz platform geliştirici hizmetidir. İşi bittiğinde, uzamsal bir çapayı kaydedip geri çağırabilen bir ARKit iOS uygulamasına sahip olacaksınız.
+Bu hızlı başlangıçta, Swift veya amaç-C ' d e [Azure uzamsal bağlayıcılarını](../overview.md) kullanarak bir iOS uygulamasının nasıl oluşturulacağı ele alınmaktadır. Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli tutan nesneleri kullanarak karma gerçeklik deneyimleri oluşturmanıza olanak sağlayan bir platformlar arası geliştirici hizmetidir. İşiniz bittiğinde, bir uzamsal bağlayıcıyı kaydedip geri çekebilmeniz için bir ARKit iOS uygulamasına sahip olacaksınız.
 
 Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Uzamsal Çapalar hesabı oluşturma
-> * Uzamsal Çapalar hesap tanımlayıcısını ve hesap anahtarını yapılandırın
-> * iOS aygıtında dağıtma ve çalıştırma
+> * Uzamsal bağlayıcı hesabı oluşturma
+> * Uzamsal Tutturucuların hesap tanımlayıcısını ve hesap anahtarını yapılandırın
+> * İOS cihazında dağıtma ve çalıştırma
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,22 +32,22 @@ Bu hızlı başlangıç, Swift veya Objective-C'de [Azure Uzamsal Çapaları](..
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- Bir geliştirici <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> ve <a href="https://cocoapods.org" target="_blank">CocoaPods</a> en son sürümü yüklü macOS makine etkin.
-- Git HomeBrew üzerinden yüklü:
-  1. Terminalde tek bir satır olarak aşağıdaki `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`komutu girin: . 
+- En son <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> ve <a href="https://cocoapods.org" target="_blank">Cocoapods</a> sürümü yüklü olan MacOS makinesi özellikli bir geliştirici.
+- HomeBrew aracılığıyla Git yüklendi:
+  1. Terminalde aşağıdaki komutu tek bir satır olarak girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. 
   1. `brew install git` ve `brew install git-lfs` komutlarını çalıştırın.
-  1. Git config'inizi `git lfs install` (geçerli kullanıcı için) veya `git lfs install --system` (tüm sistem için) ile güncelleyin.
-- Bir geliştirici <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit uyumlu</a> iOS aygıtını etkinleştirdim.
+  1. Git yapılandırmasını (geçerli kullanıcı `git lfs install` için) veya `git lfs install --system` (tüm sistem için) ile güncelleştirin.
+- Bir geliştirici, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit uyumlu</a> bir iOS cihazını etkinleştirdi.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Örnek projeyi açma
+## <a name="open-the-sample-project"></a>Örnek projeyi açın
 
-Aşağıdaki eylemleri gerçekleştirmek için Terminal'i kullanın.
+Aşağıdaki eylemleri gerçekleştirmek için terminali kullanın.
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-CocoaPods kullanarak gerekli bölmeleri yükleyin:
+Cocoapods kullanarak gerekli Pod 'yi yükler:
 
 # <a name="swift"></a>[Swift](#tab/openproject-swift)
 
@@ -67,12 +67,12 @@ cd ./iOS/Objective-C/
 
 ---
 
-Proje `pod install --repo-update` için CocoaPods yüklemek için çalıştırın.
+Proje `pod install --repo-update` için Cocoapods yüklemek üzere çalıştırın.
 
-Şimdi Xcode'u `.xcworkspace` açın.
+Şimdi Xcode `.xcworkspace` 'da açın.
 
 > [!NOTE]
-> MacOS Catalina'ya (10.15) yükselttikten sonra CocoaPod sorunları yaşıyorsanız sorun giderme adımlarını [buradan](#cocoapods-issues-on-macos-catalina-1015) görebilirsiniz.
+> MacOS Catalina 'e yükselttikten sonra CocoaPod sorunları [yaşıyorsanız, sorun giderme adımlarına bakın](#cocoapods-issues-on-macos-catalina-1015) (10,15).
 
 # <a name="swift"></a>[Swift](#tab/openproject-swift)
 
@@ -88,48 +88,48 @@ open ./SampleObjC.xcworkspace
 
 ---
 
-## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcısı ve anahtarı yapılandırma
+## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
-Bir sonraki adım, uygulamanın hesap tanımlayıcınızı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Çapalar kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
+Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
 
 # <a name="swift"></a>[Swift](#tab/openproject-swift)
 
 `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift` dosyasını açın.
 
-`spatialAnchorsAccountKey` Alanı bulun ve `Set me` hesap anahtarıyla değiştirin.
+`spatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
 
-`spatialAnchorsAccountId` Alanı bulun ve `Set me` hesap tanımlayıcısıyla değiştirin.
+`spatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 `iOS/Objective-C/SampleObjC/BaseViewController.m` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve `Set me` hesap anahtarıyla değiştirin.
+`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve `Set me` hesap tanımlayıcısıyla değiştirin.
+`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
 
 ---
 
-## <a name="deploy-the-app-to-your-ios-device"></a>Uygulamayı iOS aygıtınıza dağıtma
+## <a name="deploy-the-app-to-your-ios-device"></a>Uygulamayı iOS cihazınıza dağıtma
 
-iOS aygıtını Mac'e bağlayın ve **etkin düzeni** iOS aygıtınıza ayarlayın.
+İOS cihazını Mac 'e bağlayın ve **etkin düzeni** iOS cihazınıza ayarlayın.
 
 ![Cihazı seçin](./media/get-started-ios/select-device.png)
 
-Yapı'yı seçin **ve ardından geçerli düzeni çalıştırın.**
+**Oluştur ' u seçin ve ardından geçerli düzeni çalıştırın**.
 
-![Dağıt Ve çalıştır](./media/get-started-ios/deploy-run.png)
+![Dağıt ve Çalıştır](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
-> Bir `library not found for -lPods-SampleObjC` hata görürseniz, büyük `.xcodeproj` olasılıkla dosyayı `.xcworkspace`' nın yerine açmışsınızdır. Açın `.xcworkspace` ve tekrar deneyin.
+> Bir `library not found for -lPods-SampleObjC` hata görürseniz, büyük olasılıkla `.xcodeproj` dosyası yerine dosyayı açtınız. `.xcworkspace` Öğesini açın `.xcworkspace` ve yeniden deneyin.
 
-Xcode'da, **Durdur'a**basarak uygulamayı durdurun.
+Xcode 'da **Durdur**' a basarak uygulamayı durdurun.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>macOS Catalina cocoaPods sorunları (10.15)
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>MacOS Catalina CocoaPods sorunlar (10,15)
 
-Yakın zamanda macOS Catalina 'ya (10.15) güncellediyseniz ve CocoaPods önceden yüklendiyse, CocoaPods bozuk durumda olabilir `.xcworkspace` ve bölmelerinizi ve proje dosyalarınızı düzgün bir şekilde yapılandıramayabilir. Bu sorunu gidermek için, aşağıdaki komutları çalıştırarak CocoaPods yeniden yüklemeniz gerekir:
+Yakın zamanda MacOS Catalina (10,15) olarak güncelleştirdiyseniz ve önceden Cocoapods yüklüyse, Cocoapods bozuk bir durumda olabilir ve pod ve `.xcworkspace` proje dosyalarınızı düzgün şekilde yapılandıramadı. Bu sorunu çözmek için aşağıdaki komutları çalıştırarak CocoaPods öğesini yeniden yüklemeniz gerekir:
 
 ```shell
 brew update
@@ -137,15 +137,15 @@ brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
 
-### <a name="app-crashes-when-deploying-to-ios-1031-from-a-personal-provisioning-profiledeveloper-account"></a>Kişisel sağlama profili/geliştirici hesabından iOS 10.3.1'e dağıtılırken uygulama çöküyor 
+### <a name="app-crashes-when-deploying-to-ios-1031-from-a-personal-provisioning-profiledeveloper-account"></a>Bir kişisel sağlama profili/geliştirici hesabından iOS 10.3.1 'a dağıtım yaparken uygulama kilitleniyor 
 
-iOS uygulamanızı iOS 10.3.1'de kişisel bir sağlama profilinden/geliştirici hesabından `Library not loaded: @rpath/ADAL...`dağıtıyorsanız, şu hatayı görebilirsiniz: . 
+İOS uygulamanızı bir kişisel sağlama profili/geliştirici hesabından iOS 10.3.1 üzerinde dağıtırsanız şu hatayı görebilirsiniz: `Library not loaded: @rpath/ADAL...`. 
 
-Sorunu gidermek için:
+Sorunu çözmek için:
 
-- Kişisel Takım profili olmayan bir sağlama profili (ücretli geliştirici hesabı) kullanın.
-- Uygulamanızı iOS 13.3 veya daha önce çalıştıran bir iOS aygıtına veya iOS 13.4 beta veya sürüm sürümünü çalıştıran bir aygıta dağıtın.
-- [Stack Overflow](https://stackoverflow.com/questions/60015309/running-ios-apps-causes-runtime-error-for-frameworks-code-signature-invalid)bu konu hakkında daha fazla bilgi edinin.
+- Kişisel bir ekip profili (ücretli geliştirici hesabı) olmayan bir sağlama profili kullanın.
+- Uygulamanızı iOS 13,3 veya önceki bir sürümü çalıştıran bir iOS cihazına veya iOS 13,4 Beta ya da yayın sürümünü çalıştıran bir iOS cihazına dağıtın.
+- Bu sorun hakkında daha fazla bilgi için [Stack Overflow](https://stackoverflow.com/questions/60015309/running-ios-apps-causes-runtime-error-for-frameworks-code-signature-invalid).
 
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
@@ -153,4 +153,4 @@ Sorunu gidermek için:
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uzamsal Bağlantı larını aygıtlar arasında paylaşın](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Öğretici: cihazlarda uzamsal bağlayıcıları paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)

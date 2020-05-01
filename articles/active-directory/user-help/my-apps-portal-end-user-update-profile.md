@@ -1,6 +1,6 @@
 ---
-title: Uygulamalarım portalındaki profil & hesap bilgilerini güncelleştir - Azure AD
-description: Parolanızı değiştirme, parola sıfırlamayı açma, güvenlik doğrulama yöntemlerinizi güncelleme, kuruluşunuzun kullanım koşullarını görüntüleme ve oturum açma dahil olmak üzere profilinizi ve iş veya okul hesap bilgilerinizi nasıl güncelleştireceğiz öğrenin iş veya okul hesabınızı kullanarak oturum açtığınız her yerde.
+title: Profil & hesap bilgilerini uygulamalarım portalından güncelleştirme-Azure AD
+description: Profilinizi değiştirme, parola sıfırlamayı açma, güvenlik doğrulama yöntemlerinizi güncelleştirme, kuruluşunuzun kullanım koşullarını görüntüleme ve iş ya da okul hesabınızı kullanarak oturum açtığınız her yerden oturum kapatma gibi iş veya okul hesabı bilgilerinizi güncelleştirmeyi öğrenin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,137 +13,137 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266344"
 ---
-# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profil ve hesap bilgilerinizi güncelleyin
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uygulamalarım portalındaki profilinizi ve hesap bilgilerinizi güncelleştirme
 
-Web tabanlı **Uygulamalarım** portalıile iş veya okul hesabınızı 
+Web tabanlı **uygulamalarım** portalından iş veya okul hesabınızı kullanarak şunları yapabilirsiniz 
 
 - Kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyin ve başlatın
-- Profil ve hesap bilgilerinizi güncelleştirin
-- **Grup** bilgilerinizi görün
-- Uygulamalarınız ve gruplarınız için **erişim incelemeleri** gerçekleştirin. 
+- Profilinizin ve hesap bilgilerinizin bazılarını güncelleştirin
+- **Grup** bilgilerinizi görüntüleyin
+- Uygulamalarınız ve gruplarınız için **erişim gözden geçirmeleri** gerçekleştirin. 
 
-**Uygulamalarım** portalına erişiminiz yoksa, izin almak için Yardım Masanıza başvurmanız gerekir.
+**Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Bu içerik **Uygulamalarım** kullanıcıları için tasarlanmıştır. Yöneticiyseniz, [Uygulama Yönetimi Dokümantasyonu'nda](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızı nasıl ayarlayıp yönetebileceğiniz hakkında daha fazla bilgi bulabilirsiniz.
+> Bu içerik, **uygulamalarım** kullanıcılarına yöneliktir. Yöneticiyseniz, [uygulama yönetimi belgelerinde](https://docs.microsoft.com/azure/active-directory/manage-apps)bulut tabanlı uygulamalarınızın nasıl ayarlanacağı ve yönetileceği hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="view-your-organization-related-profile-information"></a>Kuruluşla ilgili profil bilgilerinizi görüntüleme
+## <a name="view-your-organization-related-profile-information"></a>Kurumla ilgili profil bilgilerinizi görüntüleyin
 
-Kuruluşunuzun **Uygulamalarım** portalının **Profil** sayfanıza eklemeyi seçtiğine bağlı olarak, cihazlarınız ve etkinliğiniz ve ait olduğunuz ek kuruluşlarla birlikte iş ile ilgili özel ayrıntılarınızı görebilirsiniz.
+Kuruluşunuzun, **uygulamalarım** portalınızın **profil** sayfasına dahil etmek için seçtiği seçeneğe bağlı olarak, cihazlarınızla ve etkinliklerinize ve ait olduğunuz diğer kuruluşlara göre ilgili iş ile ilgili ayrıntıları görebilirsiniz.
 
 ### <a name="to-view-your-profile-information"></a>Profil bilgilerinizi görüntülemek için
 
-1. İş veya okul hesabınızda oturum açın, [ **Uygulamalarım** portalına gidin.](my-apps-portal-end-user-access.md)
+1. İş veya okul hesabınızda oturum açın, [ **My Apps** Portal](my-apps-portal-end-user-access.md)' a gidin.
 
-2. **Uygulamalar** sayfasından, profil resminizi sağ üst köşeden seçin, burada adınızı ve kuruluşunuzu belirtin ve ardından **Profil'i**seçin.
+2. **Uygulamalar** sayfasında, sağ üst köşedeki profil resminizi seçin, burada adınızı ve kuruluşunuzu yazıp **profil**' i seçin.
 
-    **Profil** sayfanız, profil bilgilerinizi gösterir.
+    Profil bilgilerinizi gösteren **profil** sayfası görüntülenir.
 
-    ![Mevcut tüm bilgileri gösteren profil sayfası](media/my-apps-portal/my-apps-portal-profile-page.png)
+    ![Tüm kullanılabilir bilgileri gösteren profil sayfası](media/my-apps-portal/my-apps-portal-profile-page.png)
 
-3. **Profil** sayfasından şunları yapabilirsiniz:
+3. **Profil** sayfasında şunları yapabilirsiniz:
 
-    - **Kuruluşla ilgili ayrıntıları gözden geçirin.** Fotoğrafınızı, adınızı, başlığınızı, ilişkili e-posta adreslerinizi ve ofis bilgilerinizi görüntüleyin. Bu bilgiler kuruluşunuz tarafından yönetilir ve değiştiremezsiniz. Bir hata görürseniz Yardım Masanıza başvurun.
+    - **Kuruluşunuzla ilgili ayrıntıları gözden geçirin.** Fotoğrafınızı, adınızı, başlığınızı, ilişkili e-posta adreslerini ve Office bilgilerini görüntüleyin. Bu bilgiler kuruluşunuz tarafından yönetiliyor ve bunu değiştiremeyeceksiniz. Bir hata görürseniz, yardım masasına başvurun.
 
-    - **Cihazlarınızı & etkinliğini inceleyin.** Her aygıtın kuruluşunuza tanıdık ve düzgün bir şekilde bağlı olduğundan emin olun. Bir aygıtı tanımıyorsanız, hesabınızla **ilişkilendirme** kaldırmak için aygıtı devre dışı bırakın'ı seçin. Bir aygıtı devre dışı bırakındıktan sonra, aygıt bu sayfadan kaldırılır.
+    - **Cihazlarınızı & etkinliklerinizi gözden geçirin**. Her cihazın tanıdık ve kuruluşunuza doğru şekilde bağlı olduğundan emin olun. Bir cihazı tanımıyorsanız hesabınız ile ilişkilendirmeyi kaldırmak için **cihazı devre dışı bırak** ' ı seçin. Bir cihazı devre dışı bıraktıktan sonra bu sayfadan kaldırılır.
 
-    - **Kuruluşlarınızı Gözden Geçirin.** Belirtilen kuruluşların her biriyle çalışmaya devam ettiğinizden emin olun. Artık bir kuruluşla çalışmıyorsanız, **kuruluştan ayrılmak için Oturum Aç'ı**seçmenizi öneririz. Kuruluştan ayrıldıktan sonra bu sayfadan kaldırılır.
+    - **Kuruluşları gözden geçirin.** Belirtilen kuruluşların her biriyle hala çalışmadığınızdan emin olun. Artık bir kuruluşla çalışmadıysanız, **kuruluştan çıkmak Için oturum aç**' ı seçmenizi önemle tavsiye ederiz. Kuruluştan ayrıldıktan sonra, bu sayfadan kaldırılır.
 
-## <a name="manage-your-work-or-school-account-information"></a>İş veya okul hesabı bilgilerinizi yönetme
+## <a name="manage-your-work-or-school-account-information"></a>İş veya okul hesabı bilgilerinizi yönetin
 
-**Uygulamalarım** portalının **Profil** sayfasından iş veya okul hesap bilgilerinizi güncelleyin ve yönetin. Bu sayfa şunları yapmak için size yardımcı olur:
+İş veya okul hesabınızın bilgilerini **uygulamalarım** portalının **profil** sayfasından güncelleştirin ve yönetin. Bu sayfa şunları yapmanıza yardımcı olur:
 
-- İş veya okul hesabı parolanızı değiştirin.
+- İş veya okul hesabınızın parolasını değiştirin.
 
-- Parola sıfırlamaözelliğini açın (yöneticiniz bu özelliği açtıysa).
+- Parola sıfırlamayı açın (yöneticiniz bu özelliği etkinleştirmışsa).
 
-- Ek güvenlik doğrulama bilgileri sağlayın.
+- Ek güvenlik doğrulama bilgilerini sağlayın.
 
 - Kuruluşunuzun kullanım koşullarını gözden geçirin.
 
-- Her yerden çıkış.
+- Her yerde oturumunuzu kapatın.
 
 ## <a name="change-your-password"></a>Parolanızı değiştirme
 
-Çalışma nızın veya okul hesabınızın parolasını değiştirmek istiyorsanız, **Profil** sayfasının **Hesap Yönet** alanından **parolayı değiştir'i** seçebilirsiniz.
+İş veya okul hesabınızın parolasını değiştirmek istiyorsanız, **profil** sayfasının **hesap yönetme** alanından **Parolayı Değiştir** ' i seçebilirsiniz.
 
 ### <a name="to-change-your-password"></a>Parolanızı değiştirmek için
 
-1. **Profil** sayfasının **Hesap Yönet** alanından **parolayı değiştir'i**seçin.
+1. **Profil** sayfasının **Hesabı Yönet** alanından **Parolayı Değiştir**' i seçin.
 
-2. **Parolayı Değiştir** sayfasında, Kullanıcı Kimliğinizin doğru olduğundan emin olun ve ardından eski parolanızı ve yeni parolanızı kutulara yazın.
+2. **Parolayı Değiştir** sayfasında, Kullanıcı kimliğinizin doğru olduğundan emin olun ve ardından eski parolanızı ve yeni parolanızı kutulara yazın.
 
-    ![Parola sayfasını değiştirme](media/my-apps-portal/my-apps-portal-change-password-page.png)
+    ![Parola değiştirme sayfası](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
 3. **Gönder**’i seçin.
 
-    Parolanız değiştirildi. İş veya okul hesabınızı kullanmak için daha önce oturum açtığınız uygulamalarda oturum açmanız gerekir.
+    Parolanız değiştirildi. İş veya okul hesabınızı kullanarak daha önce oturum açmış olduğunuz tüm uygulamalarda oturum açmanız gerekir.
 
 ## <a name="set-up-and-use-password-reset"></a>Parola sıfırlamayı ayarlama ve kullanma
 
-Parolanızı unuttuysanız, şirket desteğinizden hiç parola almadımsa veya hesabınız kilitlendiyse, kendi parolanızı sıfırlayabilirsiniz.
+Parolanızı unuttuysanız, şirketinizin destek 'ten hiç kimse yok veya hesabınızı kilitlediyseniz, kendi parolanızı sıfırlayabilirsiniz.
 
 >[!Important]
->Yöneticinizbu özelliği açmalı ve katılmak için kaydolmanız gerekir. Nasıl kaydolunur ve parolanızı nasıl sıfırlarsınız hakkında ayrıntılı bilgi için self [servis parola sıfırlama için kaydolun](active-directory-passwords-reset-register.md) ve iş veya okul [parolanızı sıfırlayınız.](active-directory-passwords-update-your-own-password.md)
+>Yöneticinizin bu özelliği açmış olması gerekir ve katılmak için kaydolmanız gerekir. Kaydolmak ve parolanızı sıfırlamak hakkında ayrıntılar için bkz. [self servis parola sıfırlama Için kaydolma](active-directory-passwords-reset-register.md) ve [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
 
-## <a name="change-your-security-verification-information"></a>Güvenlik doğrulama bilgilerinizi değiştirme
+## <a name="change-your-security-verification-information"></a>Güvenlik doğrulama bilgilerinizi değiştirin
 
-Kuruluşunuz iki faktörlü doğrulama kullanmanızı gerektiriyorsa, ek **güvenlik doğrulama** sayfasından ilişkili güvenlik bilgilerinizi ekleyebilir, güncelleyebilir ve silebilirsiniz.
+Kuruluşunuz iki öğeli doğrulama kullanmanızı gerektiriyorsa, **ek güvenlik doğrulama** sayfasından ilişkili güvenlik bilgilerinizi ekleyebilir, güncelleştirebilir ve silebilirsiniz.
 
-İki faktörlü doğrulama, hesabınıza veya kuruluşunuzun bilgilerine ulaşabilmek için parola ve PIN gibi iki doğrulama bilgisi kullanmanızı gerektirir. İki faktörlü doğrulama hakkında daha fazla bilgi için [bkz.](multi-factor-authentication-end-user-first-time.md)
+İki öğeli doğrulama, hesabınızı veya kuruluşunuzun bilgilerini alabilmeniz için parola ve PIN gibi iki doğrulama bilgisi parçasını kullanmanızı gerektirir. İki öğeli doğrulama hakkında daha fazla bilgi için bkz. [iki adımlı doğrulama için hesabımı ayarlama](multi-factor-authentication-end-user-first-time.md).
 
 ### <a name="to-change-your-security-information"></a>Güvenlik bilgilerinizi değiştirmek için
 
-1. **Profil** sayfasının **Hesap Yönet** alanından Ek **güvenlik doğrulaması'nı**seçin.
+1. **Profil** sayfasının **Hesabı Yönet** alanından **ek güvenlik doğrulaması**' nı seçin.
 
     ![Ek güvenlik doğrulama sayfası](media/my-apps-portal/my-apps-portal-additional-verification-page.png)
 
-2. Ek **güvenlik doğrulama** sayfasında aşağıdaki bilgileri ekleyebilir, değiştirebilir veya silebilirsiniz:
+2. **Ek güvenlik doğrulaması** sayfasında, aşağıdaki bilgileri ekleyebilir, değiştirebilir veya silebilirsiniz:
 
-    - **Varsayılan doğrulama seçeneği.** İki faktörlü doğrulama için kullanılacak varsayılan ikincil yöntemi seçin. Bu yöntem, kullanıcı adınızı ve parolanızı girdikten sonra iki faktörlü doğrulama gerektiğinde otomatik olarak kullanılır.
+    - **Varsayılan doğrulama seçeneği.** İki öğeli doğrulama için kullanılacak varsayılan ikincil yöntemi seçin. Bu yöntem, Kullanıcı adınızı ve parolanızı girdikten sonra iki öğeli doğrulamanın gerekli olduğu her zaman otomatik olarak kullanılır.
 
-    - **Doğrulama yöntemleri ni ekleyin, güncelleyin veya kaldırın.** Artık geçerli olmayan yeni yeni, güncelgüncelleştirme veya eski bilgileri silebilirsiniz.
+    - **Doğrulama yöntemlerini ekleyin, güncelleştirin veya kaldırın.** Yeni, varolanı güncelleştirebilir veya artık geçerli olmayan eski bilgileri silebilirsiniz.
 
-    - **Microsoft Authenticator uygulamasını ayarlayın.** Microsoft Authenticator uygulamasını doğrulama yönteminiz olarak çalışacak şekilde ayarlamayı seçebilirsiniz. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için [bkz.](user-help-auth-app-overview.md)
+    - **Microsoft Authenticator uygulamasını ayarlayın.** Microsoft Authenticator uygulamasını doğrulama yönteminiz olarak çalışacak şekilde ayarlamayı tercih edebilirsiniz. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md)
 
 3. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 
-## <a name="review-your-organizations-terms-of-use-statement"></a>Kuruluşunuzun kullanım koşulları bildirimini gözden geçirme
+## <a name="review-your-organizations-terms-of-use-statement"></a>Kuruluşunuzun kullanım koşulları ifadesini gözden geçirin
 
-Varsa, kuruluşunuzun kullanım koşullarını gözden geçirmeyi seçebilirsiniz.
+Varsa, kuruluşunuzun kullanım koşulları ifadesini gözden geçirmeyi seçebilirsiniz.
 
-1. **Profil** sayfasının **Hesap Yönet** alanından Kullanım Koşullarını **Gözden Geçir'i**seçin.
+1. **Profil** sayfasının **Hesabı Yönet** alanından, **kullanım koşullarını gözden geçir**' i seçin.
 
-2. Kuruluşunuzun kullanım koşullarını gözden geçirin ve kuruluşunuz için kullanım koşullarını okuduğunuzve anladığınızı doğrulamak için **Kabul** et'i seçin.
+2. Kuruluşunuzun kullanım koşullarını gözden geçirin ve kuruluşunuzun kullanım koşullarını okuduğunuzu ve anladığınızı onaylamak için **kabul et** ' i seçin.
 
-    ![Uygulamalarım portalından kullanım koşulları sayfası](media/my-apps-portal/my-apps-portal-tou-page.png)
+    ![Uygulamalarım portalından Kullanım koşulları sayfası](media/my-apps-portal/my-apps-portal-tou-page.png)
 
-    Kuruluşunuzun kullanım koşulları yoksa, **Profil** sayfasına dönmek için **Bitti'yi** seçebilirsiniz.
+    Kuruluşunuzun kullanım koşulları yoksa, **profil** sayfasına dönmek için **bitti** ' yi seçebilirsiniz.
 
-## <a name="sign-out-of-everywhere"></a>Her yerden çıkış
+## <a name="sign-out-of-everywhere"></a>Her yerde oturumunuzu kapat
 
-İş veya okul hesabınızı kullanmak için şu anda oturum açtığınız her yerden oturum unuzu imzalamayı seçebilirsiniz. Bu, tüm uygulamaları ve cihazları içerir.
+İş veya okul hesabınızı kullanarak oturum açmış olduğunuz her yerden oturumunuzu kapatabilirsiniz. Bu, tüm uygulamaları ve cihazları içerir.
 
-### <a name="to-sign-out-of-everywhere"></a>Her yerde oturum dan çıkmak için
+### <a name="to-sign-out-of-everywhere"></a>Her yerde oturumu kapatmak için
 
-1. **Profil** sayfasının **Yönet hesap** alanından her yerde **Oturum Aç'ı**seçin.
+1. **Profil** sayfasının **Hesabı Yönet** alanından **her yerde oturumu**Kapat ' ı seçin.
 
-2. Her **yerde Oturum Açma** onay kutusunda, tüm oturumlarınızı ve cihazlarınızı oturumdan çıkmak istediğinizi onaylamak için **Evet'i** seçin. Fikrinizi değiştirirseniz **Hayır'ı** seçin.
+2. **Her yerden oturum** kapat onay kutusunda, tüm oturumlarınızda ve cihazlarınızda oturumu kapatmak istediğinizi onaylamak için **Evet** ' i seçin. Fikrinizi değiştirirseniz **Hayır** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-**Güncellemelerinizi Profil** sayfasında tamamladıktan sonra şunları yapabilirsiniz:
+**Profil** sayfasında güncelleştirmelerinizi tamamladıktan sonra şunları yapabilirsiniz:
 
-- [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın.](my-apps-portal-end-user-access.md)
+- [Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın](my-apps-portal-end-user-access.md).
 
-- [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleyin.](my-apps-portal-end-user-groups.md)
+- [Gruplarla ilgili bilgilerinizi görüntüleyin ve güncelleştirin](my-apps-portal-end-user-groups.md).
 
-- [Kendi erişim değerlendirmelerinizi gerçekleştirin.](my-apps-portal-end-user-access-reviews.md)
+- [Kendi erişim incelemelerinizi gerçekleştirin](my-apps-portal-end-user-access-reviews.md).
