@@ -1,6 +1,6 @@
 ---
 title: 'Azure HDInsight: Java örnekleri'
-description: Java için HDInsight SDK'yı kullanarak sık kullanılan görevler için GitHub'da Java örneklerini bulun.
+description: Java için HDInsight SDK 'sını kullanarak ortak görevler için GitHub 'da Java örnekleri bulun.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
 ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74775372"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java örnekleri
 
 > [!div class="op_single_selector"]
 > * [Java Örnekleri](hdinsight-sdk-java-samples.md)
-> * [.NET Örnekleri](hdinsight-sdk-dotnet-samples.md)
+> * [.NET örnekleri](hdinsight-sdk-dotnet-samples.md)
 > * [Python Örnekleri](hdinsight-sdk-python-samples.md)
 <!-- * [Go Examples](hdinsight-sdk-dotnet-samples.md)-->
 
@@ -33,15 +33,15 @@ Bu makalede aşağıdakiler sunulmaktadır:
 
 [Java için Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Küme yönetimi - oluşturma
+## <a name="cluster-management---creation"></a>Küme yönetimi-oluşturma
 
 * [Kafka kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateKafkaClusterSample.java)
 * [Spark kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateSparkClusterSample.java)
-* [Azure Veri Gölü Depolama Gen2 ile Bir Kıvılcım kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
-* [Kurumsal Güvenlik Paketi (ESP) ile Bir Kıvılcım kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
+* [Azure Data Lake Storage 2. ile Spark kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
+* [Kurumsal Güvenlik Paketi (ESP) ile bir Spark kümesi oluşturma](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
 
-Bu örnekleri [hdinsight-java-sdk-örnekleri](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub deposunu klonlayarak Java için alabilirsiniz.
+[HDInsight-Java-SDK-Samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub deposunu kopyalayarak Java için bu örnekleri alabilirsiniz.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Bu ek SDK işlevselliği için kod parçacıkları [Java başvuru belgeleri için HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview)bulunabilir.
+Bu ek SDK işlevselliği için kod parçacıkları, [Java Için HDıNSIGHT SDK başvuru belgelerinde](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview)bulunabilir.

@@ -1,6 +1,6 @@
 ---
-title: Hizmet Veri Servisi kuyruğu oluşturmak için Azure portalını kullanın
-description: Bu hızlı başlangıçta, Azure portalını kullanarak Hizmet Veri Yolu kuyruğu oluşturmayı öğrenirsiniz. Ardından, sıraya ileti göndermek ve sıradan ileti almak için örnek bir istemci uygulaması kullanırsınız.
+title: Service Bus kuyruğu oluşturmak için Azure portal kullanma
+description: Bu hızlı başlangıçta, Azure portal kullanarak Service Bus kuyruğu oluşturmayı öğreneceksiniz. Daha sonra, kuyruğa ileti göndermek ve kuyruktan ileti almak için örnek bir istemci uygulaması kullanırsınız.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240649"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Hizmet Veri Servisi kuyruğu oluşturmak için Azure portalını kullanma
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Hızlı başlangıç: Service Bus kuyruğu oluşturmak için Azure portal kullanma
 Bu hızlı başlangıçta, mesajlaşma ad alanı ve o ad alanı içinde bir kuyruk oluşturmak ve söz konusu ad alanında yetkilendirme kimlik bilgilerini almak için [Azure portalı][Azure portal] kullanarak bir Service Bus kuyruğuna nasıl ileti gönderileceği ve Service Bus kuyruğundan nasıl ileti alınacağı açıklanmaktadır. Daha sonra yordam, [.NET Standard kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) kullanılarak bu kuyruktan nasıl ileti gönderilip alınacağını gösterir.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, mesajlaşma ad alanı ve o ad alanı içinde bir kuyr
 Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][] oluşturabilirsiniz.
-- [Visual Studio 2017 Güncelleştirme 3 (sürüm 15.3, 26730.01)](https://www.visualstudio.com/vs) veya sonraki sürümler. Bir sıraya ileti gönderen ve ileti alan bir örnek oluşturmak için Visual Studio'u kullanırsınız. Örnek PowerShell kullanarak oluşturduğunuz sırayı test etmektir. 
+- [Visual Studio 2017 Güncelleştirme 3 (sürüm 15.3, 26730.01)](https://www.visualstudio.com/vs) veya sonraki sürümler. Bir kuyruktan ileti gönderen ve iletiyi alan bir örnek oluşturmak için Visual Studio 'Yu kullanırsınız. Örnek, PowerShell kullanarak oluşturduğunuz kuyruğu test etmek için kullanılır. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -35,13 +35,13 @@ Bu öğreticiyi tamamlamak için şunları yüklediğinizden emin olun:
 ## <a name="send-and-receive-messages"></a>İleti alma ve gönderme
 
 > [!NOTE]
-> İleti göndermek ve almak için bu bölümde kullanılan örnek bir .NET örneğidir. Örneklerin diğer programlama dillerini kullanarak ileti göndermesi/alması için [Servis Veri Servisi örneklerine](service-bus-samples.md)bakın. 
+> Bu bölümde ileti göndermek ve almak için kullanılan örnek bir .NET örneğidir. Diğer programlama dillerini kullanarak ileti gönderme/alma örnekleri için bkz. [Service Bus örnekleri](service-bus-samples.md). 
 > 
-> Çeşitli programlama dillerini kullanarak ileti gönderme/alma yla ilgili adım adım talimatlar için aşağıdaki hızlı başlangıçlara bakın:
+> Çeşitli programlama dillerini kullanarak ileti gönderme/alma hakkında adım adım yönergeler için aşağıdaki hızlı çalışmaya bakın:
 > - [.NET](service-bus-dotnet-get-started-with-queues.md)
 > - [Java](service-bus-java-how-to-use-queues.md)
-> - [Azure/servis-veri-servis paketi kullanarak düğüm.js](service-bus-nodejs-how-to-use-queues-new-package.md)
-> - [Azure-sb paketini kullanarak düğüm.js](service-bus-nodejs-how-to-use-queues.md)
+> - [Azure/Service-Bus paketini kullanan Node. js](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Azure-SB paketini kullanan Node. js](service-bus-nodejs-how-to-use-queues.md)
 > - [PHP](service-bus-php-how-to-use-queues.md)
 > - [Python](service-bus-python-how-to-use-queues.md)
 > - [Ruby](service-bus-ruby-how-to-use-queues.md)
@@ -82,7 +82,7 @@ Bu bölümde, örnek kodun yaptıkları hakkında daha fazla ayrıntı bulunmakt
 
 ### <a name="get-connection-string-and-queue"></a>Bağlantı dizesini ve kuyruğu alma
 
-Bağlantı dizesi ve sıra `Main()` adı yönteme komut satırı bağımsız değişkenleri olarak geçirilir. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
+Bağlantı dizesi ve sıra adı `Main()` yöntemine komut satırı bağımsız değişkenleri olarak geçirilir. `Main()`, bu değerleri tutmak için iki dize değişkeni bildirir:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ static void Main(string[] args)
 
 ### <a name="message-loop"></a>İleti döngüsü
 
-MainAsync() yöntemi komut satırı bağımsız değişkenleri ile bir sıra istemcisi `RegisterOnMessageHandlerAndReceiveMessages()`oluşturur, adlı bir alıcı ileti işleyicisi çağırır ve ileti kümesi gönderir:
+MainAsync () yöntemi, komut satırı bağımsız değişkenleri olan bir kuyruk istemcisi oluşturur, adlı `RegisterOnMessageHandlerAndReceiveMessages()`bir alma iletisi işleyicisini çağırır ve ileti kümesini gönderir:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -209,17 +209,17 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 }
 ```
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. İleti göndermek ve almak için kod yazma hakkında daha fazla bilgi edinmek **için, İleti gönder ve iletileri al** bölümündeki öğreticilere devam edin. 
+Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. İleti göndermek ve almak için kod yazma hakkında daha fazla bilgi edinmek için **Ileti gönderme ve alma** bölümündeki öğreticilere devam edin. 
 
 > [!div class="nextstepaction"]
 > [İleti alma ve gönderme](service-bus-dotnet-get-started-with-queues.md)
 
 
-[ücretsiz bir hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Ücretsiz hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
