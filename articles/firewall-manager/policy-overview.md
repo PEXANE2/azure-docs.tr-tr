@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Duvarı Yöneticisi Önizleme ilkesine genel bakış
+title: Azure Güvenlik Duvarı Yöneticisi önizleme ilkesine genel bakış
 description: Azure Güvenlik Duvarı Yöneticisi ilkeleri hakkında bilgi edinin
 author: vhorne
 ms.service: firewall-manager
@@ -8,59 +8,59 @@ ms.topic: overview
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77445024"
 ---
-# <a name="azure-firewall-manager-preview-policy-overview"></a>Azure Güvenlik Duvarı Yöneticisi Önizleme ilkesine genel bakış
+# <a name="azure-firewall-manager-preview-policy-overview"></a>Azure Güvenlik Duvarı Yöneticisi önizleme ilkesine genel bakış
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Güvenlik duvarı ilkesi, Tehdit İstihbaratı ayarlarının yanı sıra NAT, ağ ve uygulama kuralı koleksiyonları da içeren bir Azure kaynağıdır. Güvenli Sanal Hub'larda ve Hub Sanal Ağlarda birden çok Azure Güvenlik Duvarı örneğinde kullanılabilen küresel bir kaynaktır. İlkeler bölgeler ve abonelikler arasında çalışır.
+Güvenlik duvarı ilkesi NAT, ağ ve uygulama kuralı koleksiyonlarının yanı sıra tehdit bilgileri ayarlarını içeren bir Azure kaynağıdır. Bu, güvenli sanal hub 'Larda ve hub sanal ağlarında bulunan birden çok Azure Güvenlik Duvarı örneği genelinde kullanılabilen küresel bir kaynaktır. İlkeler bölgeler ve abonelikler arasında çalışır.
 
 ![Azure Güvenlik Duvarı Yöneticisi ilkesi](media/policy-overview/policy-overview.png)
 
 ## <a name="policy-creation-and-association"></a>İlke oluşturma ve ilişkilendirme
 
-Bir ilke, Azure portalı, REST API, şablonlar, Azure PowerShell ve CLI dahil olmak üzere birden çok şekilde oluşturulabilir ve yönetilebilir.
+Bir ilke, Azure portal, REST API, şablonlar, Azure PowerShell ve CLı dahil olmak üzere birden çok şekilde oluşturulabilir ve yönetilebilir.
 
-İlkeler oluşturmak için portalı veya Azure PowerShell'i kullanarak varolan kuralları Azure Güvenlik Duvarı'ndan da geçirebilirsiniz. Daha fazla bilgi için Azure [Güvenlik Duvarı yapılandırmalarını Azure Güvenlik Duvarı ilkesine (önizleme) nasıl geçirebilirsiniz'](migrate-to-policy.md)e bakın. 
+Ayrıca, portala veya Azure PowerShell ilke oluşturmak için Portal kullanarak Azure güvenlik duvarından mevcut kuralları geçirebilirsiniz. Daha fazla bilgi için bkz. [Azure Güvenlik duvarı yapılandırmalarının Azure Güvenlik Duvarı Ilkesine nasıl geçirileceği (Önizleme)](migrate-to-policy.md). 
 
-İlkeler bir veya daha fazla sanal hub veya VNets ile ilişkilendirilebilir. Güvenlik duvarı hesabınızla ilişkili herhangi bir abonelikte ve herhangi bir bölgede olabilir.
+İlkeler, bir veya daha fazla sanal hub veya VNET ile ilişkilendirilebilir. Güvenlik Duvarı, hesabınızla ve herhangi bir bölgede ilişkili herhangi bir abonelikte olabilir.
 
 ## <a name="hierarchical-policies"></a>Hiyerarşik ilkeler
 
-Yeni ilkeler sıfırdan oluşturulabilir veya varolan ilkelerden devralınabilir. Devralma, DevOps'lerin kuruluş zorunlu temel ilkesinin üstünde yerel güvenlik duvarı ilkeleri oluşturmasına olanak tanır.
+Yeni ilkeler sıfırdan oluşturulabilir veya var olan ilkelerden devralınabilir. Devralma DevOps 'ın kuruluş uygulanan temel ilkesi üzerinde yerel güvenlik duvarı ilkeleri oluşturmasına izin verir.
 
-Boş olmayan üst ilkelerle oluşturulan ilkeler, tüm kural koleksiyonlarını üst ilkeden devralır. Bir üst ilkeden devralınan ağ kuralı koleksiyonları her zaman yeni bir ilkenin parçası olarak tanımlanan ağ kuralı koleksiyonlarının üzerinde öncelikverilir. Aynı mantık uygulama kuralı koleksiyonları için de geçerlidir. Ancak, ağ kuralı koleksiyonları her zaman devralma ne olursa olsun uygulama kuralı koleksiyonları önce işlenir.
+Boş olmayan üst ilkelerle oluşturulan ilkeler, tüm kural koleksiyonlarını üst ilkeden alırlar. Bir üst ilkeden devralınan ağ kuralı koleksiyonları, yeni bir ilkenin bir parçası olarak tanımlanan ağ kuralı koleksiyonlarının üzerine her zaman öncelik atanır. Aynı mantık, uygulama kuralı koleksiyonları için de geçerlidir. Bununla birlikte, devralma ne olursa olsun, ağ kuralı koleksiyonları her zaman uygulama kuralı koleksiyonlarından önce işlenir.
 
-Tehdit İstihbaratı modu da üst politikadan devralır. Bu davranışı geçersiz kılmak için tehdit İstihbarat modunuzu farklı bir değere ayarlayabilirsiniz, ancak kapatamazsınız. Sadece daha katı bir değerle geçersiz kılmak mümkündür. Örneğin, ana politikanız yalnızca **Uyarı olarak**ayarlanmışsa, bu yerel ilkeyi **Uyarı ve reddetmek**üzere yapılandırabilirsiniz.
+Tehdit bilgileri modu üst ilkeden de devralınır. Bu davranışı geçersiz kılmak için tehdit bilgileri modınızı farklı bir değere ayarlayabilirsiniz, ancak bunu devre dışı bırakabilirsiniz. Yalnızca daha sıkı bir değerle geçersiz kılmak mümkündür. Örneğin, ana ilkeniz **yalnızca uyarı**olarak ayarlandıysa, bu yerel ilkeyi **uyarı ve reddetme**için yapılandırabilirsiniz.
 
-NAT kural koleksiyonları, belirli bir güvenlik duvarına özgü olduğundan devralınmaz.
+NAT kuralı koleksiyonları, belirli bir güvenlik duvarına özgü olduklarından devralınmaz.
 
-Devralma ile, üst politikadaki tüm değişiklikler otomatik olarak ilişkili güvenlik duvarı alt ilkelerine uygulanır.
+Devralma ile, üst ilkede yapılan tüm değişiklikler otomatik olarak ilişkili güvenlik duvarı alt ilkelerine uygulanır.
 
-## <a name="traditional-rules-and-policies"></a>Geleneksel kurallar ve politikalar
+## <a name="traditional-rules-and-policies"></a>Geleneksel kurallar ve ilkeler
 
-Azure Güvenlik Duvarı hem geleneksel kuralları hem de ilkeleri destekler. Aşağıdaki tablo ilkeleri ve kuralları karşılaştırır:
+Azure Güvenlik Duvarı hem geleneksel kuralları hem de ilkeleri destekler. Aşağıdaki tabloda ilkeleri ve kuralları karşılaştırılmaktadır:
 
 
 |         |İlke  |Kurallar  |
 |---------|---------|---------|
-|Contains     |NAT, Ağ, Uygulama kuralları ve Tehdit İstihbaratı ayarları|NAT, Ağ ve Uygulama kuralları |
-|Korur     |Sanal hub'lar ve Sanal Ağlar|Yalnızca Sanal Ağlar|
-|Portal deneyimi     |Güvenlik Duvarı Yöneticisi'ni kullanarak merkezi yönetim|Bağımsız güvenlik duvarı deneyimi|
-|Birden çok güvenlik duvarı desteği     |Güvenlik Duvarı İlkesi, güvenlik duvarlarında kullanılabilecek ayrı bir kaynaktır|El ile verme ve alma kuralları veya üçüncü taraf yönetim çözümlerini kullanma |
-|Fiyatlandırma     |Güvenlik duvarı ilişkisine göre faturalandırılır. [Bkz. Fiyatlandırma](#pricing).|Ücretsiz|
-|Desteklenen dağıtım mekanizmaları     |Portal, REST API, şablonlar, Azure PowerShell ve CLI|Portal, REST API, şablonlar, PowerShell ve CLI. |
-|Sürüm Durumu     |Genel Önizleme|Genel Kullanılabilirlik|
+|Contains     |NAT, ağ, uygulama kuralları ve tehdit bilgileri ayarları|NAT, ağ ve uygulama kuralları |
+|Koru     |Sanal hub 'lar ve sanal ağlar|Yalnızca sanal ağlar|
+|Portal deneyimi     |Güvenlik Duvarı Yöneticisi kullanarak merkezi yönetim|Tek başına güvenlik duvarı deneyimi|
+|Birden çok güvenlik duvarı desteği     |Güvenlik Duvarı Ilkesi, güvenlik duvarları genelinde kullanılabilecek ayrı bir kaynaktır|Kuralları el ile dışarı ve içeri aktarma veya üçüncü taraf yönetim çözümlerini kullanma |
+|Fiyatlandırma     |Güvenlik Duvarı ilişkilendirmesine göre faturalandırılır. Bkz. [fiyatlandırma](#pricing).|Ücretsiz|
+|Desteklenen Dağıtım mekanizmaları     |Portal, REST API, şablonlar, Azure PowerShell ve CLı|Portal, REST API, şablonlar, PowerShell ve CLı. |
+|Yayın durumu     |Genel Önizleme|Genel kullanılabilirlik|
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-İlkeler, güvenlik duvarı ilişkilendirmelerine göre faturalandırılır. Sıfır veya bir güvenlik duvarı ilişkisi olan bir ilke ücretsizdir. Birden çok güvenlik duvarı ilişkilendirmeleri içeren bir ilke sabit bir oranda faturalandırılır. Daha fazla bilgi için Azure [Güvenlik Duvarı Yöneticisi Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/firewall-manager/)bakın.
+İlkeler, güvenlik duvarı ilişkilerine göre faturalandırılır. Sıfır veya bir güvenlik duvarı ilişkilendirmesine sahip bir ilke ücretsizdir. Birden çok güvenlik duvarı ilişkilendirmesi olan bir ilke sabit bir fiyat üzerinden faturalandırılır. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Yöneticisi fiyatlandırması](https://azure.microsoft.com/pricing/details/firewall-manager/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Güvenlik Duvarı'nı nasıl dağıtabileceğinizi öğrenmek için [Bkz.](secure-cloud-network.md)
+Azure Güvenlik duvarının nasıl dağıtılacağını öğrenmek için bkz. [öğretici: Azure Güvenlik Duvarı Yöneticisi önizleme ile bulut ağınızı güvenli hale getirme Azure Portal](secure-cloud-network.md).
