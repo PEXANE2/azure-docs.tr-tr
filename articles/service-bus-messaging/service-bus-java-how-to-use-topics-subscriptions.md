@@ -1,6 +1,6 @@
 ---
-title: Azure Hizmet Veri Servisi konularını ve aboneliklerini Java ile kullanma
-description: Bu hızlı başlangıçta, bir Azure Hizmet Veri Servisi konusuna ileti göndermek için Java kodu yazar sınız ve ardından aboneliklerden bu konuya ileti alırsınız.
+title: Java ile Azure Service Bus konuları ve abonelikleri kullanma
+description: Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -16,40 +16,40 @@ ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: a08a071466f4f10c1364cefdda7c9c136e1e1ef5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79137997"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Quickstart: Java ile Servis Veri Servisi konularını ve aboneliklerini kullanma
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Hızlı başlangıç: Java ile Service Bus konuları ve abonelikleri kullanma
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Bu hızlı başlangıçta, bir Azure Hizmet Veri Servisi konusuna ileti göndermek için Java kodu yazar sınız ve ardından aboneliklerden bu konuya ileti alırsınız. 
+Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Visual Studio [veya MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. Hızlı Başlangıç'taki adımları izleyin: Hizmet Veri Yolunda niçin [bir konu oluşturmak için Azure portalını kullanın ve](service-bus-quickstart-topics-subscriptions-portal.md) aşağıdaki görevleri yapmak için konuya abonelikler yapın:
-    1. Hizmet Veri Günü **ad alanı**oluşturun.
-    2. Bağlantı **dizesini**alın.
-    3. Ad alanında bir **konu** oluşturun.
-    4. Ad alanında konuya **üç abonelik** oluşturun.
-3. [Java için Azure SDK][Azure SDK for Java].
+1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
+2. Hızlı Başlangıç bölümündeki adımları uygulayın: Azure portal kullanarak aşağıdaki görevleri yapmak için [Service Bus konu başlığı ve konuya yönelik abonelikler oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :
+    1. Service Bus **ad alanı**oluşturun.
+    2. **Bağlantı dizesini**alın.
+    3. Ad alanında bir **Konu** oluşturun.
+    4. Ad alanındaki konuya **üç abonelik** oluşturun.
+3. [Java Için Azure SDK][Azure SDK for Java].
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı Servis Veri Aracı'nı kullanacak şekilde yapılandırın
-Bu örneği oluşturmadan önce [Azure SDK'yı Java için][Azure SDK for Java] yüklediğinizden emin olun. Eclipse kullanıyorsanız, Java için [Azure][Azure Toolkit for Eclipse] SDK'yı içeren Azure Araç Seti'ni Eclipse için yükleyebilirsiniz. Daha sonra projenize **Java için Microsoft Azure Kitaplıkları** ekleyebilirsiniz:
+## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
+Bu örneği oluşturmadan önce [Java Için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz:
 
-![Eclipse projenize Java için Microsoft Azure Kitaplıkları ekleyin](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
+![Çakışan Küreler projenize Java için Microsoft Azure kitaplıkları ekleyin](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
-Java Yapı Yolu'na aşağıdaki JAR'ları da eklemeniz gerekir:
+Ayrıca, aşağıdaki JARs öğesini Java derleme yoluna eklemeniz gerekir:
 
-- gson-2.6.2.jar
-- commons-cli-1.4.jar
-- proton-j-0.21.0.jar
+- gson-2.6.2 critical. jar
+- Commons-cli-1.4. jar
+- Proton-j-0.21.0. jar
 
-**Ana** yöntemi olan bir sınıf ekleyin ve `import` ardından Java dosyasının üst kısmında aşağıdaki ifadeleri ekleyin:
+**Main** yöntemine sahip bir sınıf ekleyin ve ardından Java dosyasının en üstüne aşağıdaki `import` deyimleri ekleyin:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -66,7 +66,7 @@ import org.apache.commons.cli.DefaultParser;
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
-**Bir TopicClient** nesnesi oluşturmak için **ana** yöntemi güncelleştirin ve Hizmet Veri Gönderisi konusuna eş kenaren örnek iletiler gönderen bir yardımcı yöntemi çağırın.
+Bir **Topicclient** nesnesi oluşturmak için **Main** yöntemini güncelleştirin ve Service Bus konusuna zaman uyumsuz olarak örnek iletileri gönderen bir yardımcı yöntemi çağırın.
 
 > [!NOTE] 
 > - `<NameOfServiceBusNamespace>` yerine Service Bus ad alanınızın adını yazdığınızdan emin olun. 
@@ -123,10 +123,10 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Bir konuda tutulan ileti lerin sayısında bir sınır yoktur, ancak bir konu tarafından tutulan iletilerin toplam boyutunda bir sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir.
+Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Bir konuda tutulan ileti sayısında bir sınır yoktur, ancak bir konu tarafından tutulan iletilerin toplam boyutu için bir sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir.
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Abonelikten ileti alma
-Üç abonelik için üç **Abonelikİsteci** nesnesi oluşturmak için **ana** yöntemi güncelleştirin ve Hizmet Veri Gönderi'nden eşzamanlı olarak ileti alan bir yardımcı yöntemi çağırın. Örnek kod, **BasicTopic** adında bir konu ve **Abonelik1,** **Abonelik2**ve **Abonelik3**adlı üç abonelik oluşturduğunuzu varsayar. Bunlar için farklı adlar kullandıysanız, kodu sınamadan önce güncelleştirin. 
+Üç abonelik için üç **Subscriptionclient** nesnesi oluşturmak üzere **Main** yöntemini güncelleştirin ve Service Bus konusunun iletileri zaman uyumsuz olarak alan bir yardımcı yöntemi çağırın. Örnek kod, **Basictopic** adlı bir konu ve **Subscription1**, **Subscription2**ve **Subscription3**adlı üç abonelik oluşturduğunuzu varsayar. Bunlar için farklı adlar kullandıysanız, kodu test etmeden önce güncelleştirin. 
 
 ```java
 public class MyServiceBusTopicClient {
@@ -456,10 +456,10 @@ Message sending: Id = 9
 ```
 
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için [Servis Veri Servisi kuyruklarına, konulara ve aboneliklere][Service Bus queues, topics, and subscriptions]bakın.
+Daha fazla bilgi için bkz. [Service Bus kuyruklar, konular ve abonelikler][Service Bus queues, topics, and subscriptions].
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse

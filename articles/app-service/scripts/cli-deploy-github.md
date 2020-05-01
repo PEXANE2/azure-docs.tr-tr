@@ -1,6 +1,6 @@
 ---
-title: "CLI: GitHub'dan bir uygulama dağıtma"
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, GitHub'dan bir uygulamanın nasıl dağıtılandığını gösterir.
+title: "CLı: GitHub 'dan uygulama dağıtma"
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, GitHub 'dan bir uygulamanın nasıl dağıtılacağını göstermektedir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 368a5d6810de5628ab98a7bef43cfceab750f95f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057834"
 ---
-# <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Azure CLI'yi kullanarak GitHub'dan dağıtım la birlikte bir Uygulama Hizmeti uygulaması oluşturun
+# <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Azure CLı kullanarak GitHub 'dan dağıtım ile bir App Service uygulaması oluşturma
 
-Bu örnek komut dosyası, ilgili kaynakları yla Birlikte App Service'de bir uygulama oluşturur. Ardından uygulama kodunuzu herkese açık bir GitHub deposundan (sürekli dağıtım olmadan) dağıtur. Sürekli dağıtıma sahip GitHub dağıtımı için [bkz.](cli-continuous-deployment-github.md)
+Bu örnek betik, App Service içinde ilgili kaynaklarla bir uygulama oluşturur. Daha sonra uygulama kodunuzu genel bir GitHub deposundan dağıtır (sürekli dağıtım olmadan). Sürekli dağıtımla GitHub dağıtımı için bkz. [GitHub 'dan sürekli dağıtım ile uygulama oluşturma](cli-continuous-deployment-github.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,8 +40,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Bir Uygulama Hizmeti uygulamasını Git veya Mercurial deposuyla ilişkilendirin. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Bir App Service uygulamasını bir git veya Mercurial deposu ile ilişkilendirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
