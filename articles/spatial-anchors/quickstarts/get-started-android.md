@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Android uygulaması oluşturma'
-description: Bu hızlı başlangıçta, Uzamsal Çapalar'ı kullanarak bir Android uygulaması oluşturmayı öğrenirsiniz.
+title: 'Hızlı başlangıç: Android uygulaması oluşturma'
+description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak bir Android uygulaması oluşturmayı öğreneceksiniz.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,22 +9,22 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376469"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Quickstart: Azure Uzamsal Çapalar ile bir Android uygulaması oluşturun
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Android uygulaması oluşturma
 
-Bu hızlı başlangıç, Java veya C++/NDK'da [Azure Uzamsal Çapaları](../overview.md) kullanarak bir Android uygulamasının nasıl oluşturulacağını kapsar. Azure Uzamsal Çapalar, zaman içinde aygıtlar arasında konumlarını devam ettirmeye neden olan nesneleri kullanarak karışık gerçeklik deneyimleri oluşturmanıza olanak tanıyan bir çapraz platform geliştirici hizmetidir. İşi bittiğinde, uzamsal bir çapayı kaydedip geri çağırabilen bir ARCore Android uygulamanız olur.
+Bu hızlı başlangıçta, Java veya C++ ' da [Azure uzamsal bağlayıcılarını](../overview.md) kullanarak bir Android uygulamasının nasıl oluşturulacağı ele alınmaktadır. Azure uzamsal bağlantıları, zaman içinde cihazlarda konumlarını sürekli tutan nesneleri kullanarak karma gerçeklik deneyimleri oluşturmanıza olanak sağlayan bir platformlar arası geliştirici hizmetidir. İşiniz bittiğinde, bir uzamsal bağlayıcıyı kaydedip geri çekebilmeniz için bir ARCore Android uygulamanız olacaktır.
 
 Şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Uzamsal Çapalar hesabı oluşturma
-> * Uzamsal Çapalar hesap tanımlayıcısını ve hesap anahtarını yapılandırın
-> * Android aygıtında dağıtma ve çalıştırma
+> * Uzamsal bağlayıcı hesabı oluşturma
+> * Uzamsal Tutturucuların hesap tanımlayıcısını ve hesap anahtarını yapılandırın
+> * Android cihazında dağıtma ve çalıştırma
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,29 +32,29 @@ Bu hızlı başlangıç, Java veya C++/NDK'da [Azure Uzamsal Çapaları](../over
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
-- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a>ile bir Windows veya macOS makinesi.
-  - Windows'da çalışıyorsanız, Windows <a href="https://git-scm.com/download/win" target="_blank">için Git</a> ve <a href="https://git-lfs.github.com/">Git LFS'ye</a>de ihtiyacınız vardır.
-  - macOS'ta çalışıyorsanız, Git'in HomeBrew üzerinden yüklenmesini sorun. Aşağıdaki komutu Terminalin tek bir `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`satırına girin: . Sonra, `brew install git` koş `brew install git-lfs`ve.
-  - NDK örneğini oluşturmak için, Android Studio'da NDK ve CMake 3.6 veya daha büyük SDK Araçlarını da yüklemeniz gerekir.
-- Bir <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore yetenekli</a> Android cihaz.
-  - Bilgisayarınızın Android cihazınızla iletişim kurması için ek aygıt sürücüleri gerekebilir. Ek bilgi ve talimatlar için [buraya](https://developer.android.com/studio/run/device.html) bakın.
-- Uygulamanız ARCore **1.11.0**hedef olmalıdır.
+- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>Içeren bir Windows veya MacOS makinesi.
+  - Windows üzerinde çalışıyorsa, Windows ve <a href="https://git-lfs.github.com/">GIT LFS</a> <a href="https://git-scm.com/download/win" target="_blank">için git</a> de gerekir.
+  - MacOS üzerinde çalışıyorsa, HomeBrew aracılığıyla Git ' i alın. Terminalin tek bir satırına şu komutu girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ardından, ve `brew install git` `brew install git-lfs`öğesini çalıştırın.
+  - NDK örneğini oluşturmak için, Android Studio ' de NDK ve CMake 3,6 veya daha büyük SDK Tools yüklemeniz gerekir.
+- <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">Geliştirici etkin</a> ve <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">korumalı</a> bir Android cihaz.
+  - Bilgisayarınızın Android cihazından iletişim kurması için ek cihaz sürücüleri gerekebilir. Ek bilgi ve yönergeler için [buraya](https://developer.android.com/studio/run/device.html) bakın.
+- Uygulamanızın ARCore **1.11.0**'ı hedeflemesi gerekir.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project"></a>Örnek projeyi açma
+## <a name="open-the-sample-project"></a>Örnek projeyi açın
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-# <a name="ndk"></a>[Ndk](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Buradan `arcore_c_api.h` [here](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) indirin ve `Android\NDK\libraries\include`yerleştirin .
+Buradan `arcore_c_api.h` indirin [here](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) ve içine `Android\NDK\libraries\include`yerleştirin.
 
-Yeni klonlanan deponun içinden, aşağıdaki komutu çalıştırarak alt modülleri başlatma:
+Yeni kopyalanan deponun içinden aşağıdaki komutu çalıştırarak alt modülleri başlatın:
 
 ```console
 git submodule update --init --recursive
@@ -66,55 +66,55 @@ Android Studio’yu açın.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-**Varolan bir Android Studio projesini** aç'ı `Android/Java/`seçin ve 'de bulunan projeyi seçin.
+**Mevcut bir Android Studio projesini aç** ' ı seçin ve konumunda `Android/Java/`bulunan projeyi seçin.
 
-# <a name="ndk"></a>[Ndk](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
-**Varolan bir Android Studio projesini** aç'ı `Android/NDK/`seçin ve 'de bulunan projeyi seçin.
+**Mevcut bir Android Studio projesini aç** ' ı seçin ve konumunda `Android/NDK/`bulunan projeyi seçin.
 
 ---
 
-## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcısı ve anahtarı yapılandırma
+## <a name="configure-account-identifier-and-key"></a>Hesap tanımlayıcıyı ve anahtarı yapılandırın
 
-Bir sonraki adım, uygulamanın hesap tanımlayıcınızı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Çapalar kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
+Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı kullanacak şekilde yapılandırmaktır. [Uzamsal Tutturucuların kaynağını ayarlarken](#create-a-spatial-anchors-resource)bunları bir metin düzenleyicisine kopyaladınız.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve `Set me` hesap anahtarıyla değiştirin.
+`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve `Set me` hesap tanımlayıcısıyla değiştirin.
+`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
 
-# <a name="ndk"></a>[Ndk](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve `Set me` hesap anahtarıyla değiştirin.
+`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve `Set me` hesap tanımlayıcısıyla değiştirin.
+`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
 
 ---
 
-## <a name="deploy-the-app-to-your-android-device"></a>Uygulamayı Android cihazınıza dağıtın
+## <a name="deploy-the-app-to-your-android-device"></a>Uygulamayı Android cihazınıza dağıtma
 
-Android aygıtında güç, oturum açın ve usb kablosu kullanarak pc'ye bağlayın.
+Android cihazda güç açın, oturum açın ve USB kablosu kullanarak BILGISAYARA bağlayın.
 
-Android Studio araç çubuğundan **Çalıştır'ı** seçin.
+Android Studio araç çubuğundan **Çalıştır** ' ı seçin.
 
 ![Android Studio Dağıt ve Çalıştır](./media/get-started-android/android-studio-deploy-run.png)
 
-**Dağıtım Hedefini Seç** iletişim kutusundaAndroid aygıtını seçin ve uygulamayı Android aygıtında çalıştırmak için **Tamam'ı** seçin.
+**Dağıtım hedefi seç** Iletişim kutusunda Android cihazını seçin ve uygulamayı Android cihazında çalıştırmak için **Tamam** ' ı seçin.
 
-Bir çapa yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
+Bir bağlayıcıyı yerleştirmek ve geri çağırmak için uygulamadaki yönergeleri izleyin.
 
-Android Studio araç çubuğundan **Durdur'u** seçerek uygulamayı durdurun.
+Android Studio araç çubuğundan **Durdur** ' i seçerek uygulamayı durdurun.
 
-![Android Studio Stop](./media/get-started-android/android-studio-stop.png)
+![Android Studio durdur](./media/get-started-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Öğretici: Uzamsal Bağlantı larını aygıtlar arasında paylaşın](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Öğretici: cihazlarda uzamsal bağlayıcıları paylaşma](../tutorials/tutorial-share-anchors-across-devices.md)
