@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dd971cec33fa9f840a48e597fb3bed9a7965895
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160026"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612852"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -98,9 +98,12 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |prod.warmpath.msftcloudes.com|443|Aracı trafiği|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
 |kms.core.windows.net|1688|Windows etkinleştirme|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
 
 >[!IMPORTANT]
 >Hizmet sorunlarını engellemek için çoğu durumda URL yerine hizmet etiketlerini kullanmanızı öneririz. Güvenilir bir Windows sanal masaüstü dağıtımı için bu URL 'Lerin engellemesini kaldırma işlemi gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
+>
+>Windows sanal masaüstü artık FQDN etiketini destekliyor.
 
 Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
 
@@ -193,7 +196,9 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başlamak için bir kiracı oluşturmanız gerekir. Kiracı oluşturma hakkında daha fazla bilgi edinmek için kiracı oluşturma öğreticisine devam edin.
+Windows sanal masaüstü Fall 2019 sürümünü kullanıyorsanız, [Windows sanal masaüstü 'nde kiracı oluşturma bölümünde](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)öğreticimize başlamanızı sağlayabilirsiniz.
+
+Windows sanal masaüstü Spring 2020 sürümünü kullanıyorsanız bunun yerine bir konak havuzu oluşturmanız gerekir. Kullanmaya başlamak için aşağıdaki Öğreticiye gidin.
 
 > [!div class="nextstepaction"]
-> [Windows Sanal Masaüstü'nde kiracı oluşturma](tenant-setup-azure-active-directory.md)
+> [Azure portal bir konak havuzu oluşturun](create-host-pools-azure-marketplace.md)
