@@ -9,17 +9,17 @@ ms.topic: sample
 ms.date: 02/08/2019
 ms.author: sngun
 ms.openlocfilehash: 8b133f0044bdf8f99fdee657177d561ef5bb406b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238485"
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API'si için Java örnekleri
 
 > [!div class="op_single_selector"]
-> * [.NET V2 SDK Örnekleri](sql-api-dotnet-samples.md)
-> * [.NET V3 SDK Örnekleri](sql-api-dotnet-v3sdk-samples.md)
+> * [.NET v2 SDK örnekleri](sql-api-dotnet-samples.md)
+> * [.NET v3 SDK örnekleri](sql-api-dotnet-v3sdk-samples.md)
 > * [Java Örnekleri](sql-api-java-samples.md)
 > * [Async Java Örnekleri](sql-api-async-java-samples.md)
 > * [Node.js Örnekleri](sql-api-nodejs-samples.md)
@@ -89,7 +89,7 @@ Komut satırından çalıştırmak için:
    > 
 
 ## <a name="database-examples"></a>Veritabanı örnekleri
-[DatabaseCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos veritabanları hakkında bilgi edinmek için [bkz.](databases-containers-items.md) 
+[DatabaseCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos veritabanları hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -98,7 +98,7 @@ Komut satırından çalıştırmak için:
 | [Veritabanını oluşturma ve sorgulama](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L96-L111) | [DocumentClient.queryDatabases](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.querydatabases) |
 
 ## <a name="collection-examples"></a>Koleksiyon örnekleri
-[CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos koleksiyonları hakkında bilgi edinmek için [veritabanları, kapsayıcılar ve öğelerkavramsal makaleyle çalışma](databases-containers-items.md) başlıklı makaleye bakın.
+[Collectioncrudsamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos koleksiyonları hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi.
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -107,7 +107,7 @@ Komut satırından çalıştırmak için:
 | [Koleksiyon silme](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L97-L99) | [DocumentClient.deleteCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletecollection) |
 
 ## <a name="document-examples"></a>Belge örnekleri
-[DocumentCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için [bkz.](databases-containers-items.md)
+[Documentcrudsamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos belgeleri hakkında bilgi edinmek için bkz. [veritabanları, kapsayıcılar ve öğelerle çalışma](databases-containers-items.md) kavramsal makalesi.
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -115,7 +115,7 @@ Komut satırından çalıştırmak için:
 | [Programlanabilir belge tanımıyla belge oluşturma](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java#L126-L147) | [Belge](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.document)<br>[Resource.setId](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resource.setid) |
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
-[CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'de dizin oluşturma hakkında bilgi edinmek için, [dizin oluşturma ilkeleri,](index-policy.md) [dizin oluşturma türleri](index-types.md)ve [dizine](index-paths.md) alma yolları kavramsal makalelerbakın. 
+[Collectioncrudsamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-types.md)ve [Dizin oluşturma yolları](index-paths.md) kavramsal makaleler. 
 
 | Görev | API başvurusu |
 | --- | --- |
@@ -124,13 +124,13 @@ Komut satırından çalıştırmak için:
 Dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB dizin oluşturma ilkeleri](index-policy.md).
 
 ## <a name="query-examples"></a>Sorgu örnekleri
-[DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'deki SQL sorgu başvurusu hakkında bilgi edinmek [için, SQL sorgu örnekleri](how-to-sql-query.md) kavramsal makaleye bakın. 
+[Documentquerysamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB SQL sorgu başvurusu hakkında bilgi edinmek için bkz. [SQL sorgu örnekleri](how-to-sql-query.md) kavramsal makalesi. 
 
 
 | Görev | API başvurusu |
 | --- | --- |
 | [Basit çapraz bölümlü belge sorgusu yapma](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L108-L129) | [DocumentClient.queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments)<br>[FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setenablecrosspartitionquery) |
-| [Order by sorgusu](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse\<T>.getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse.getqueryiterator) |
+| [Order by sorgusu](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse\<T>. Getqueryıterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse.getqueryiterator) |
 
 Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB içinde SQL sorgusu](how-to-sql-query.md).
 
@@ -139,11 +139,11 @@ Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB içinde SQL s
 
 | Görev | API başvurusu |
 | --- | --- |
-| [Koleksiyon oluşturma ve aktarım hızını ayarlama](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L76-L102) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection)<br>[İstekSeçenekleri.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.requestoptions.setofferthroughput) |
+| [Koleksiyon oluşturma ve aktarım hızını ayarlama](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L76-L102) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection)<br>[RequestOptions. Setofferüretilen Iş hacmi](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.requestoptions.setofferthroughput) |
 | [İlişkili teklifi bulmak için koleksiyonu okuma](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L108-L132) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.offer.getcontent)<br>[DocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.replaceoffer)<br>[DocumentClient.readCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readcollection)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.queryoffers) |
 
 ## <a name="partition-key-examples"></a>Bölüm anahtarı örnekleri
-[SinglePartitionCollectionDocumentCrudSample](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java) dosyası aşağıdaki görevlerin nasıl gerçekleştiriltiğine göre gösterilmektedir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'deki bölümleme ve bölümleme tuşları hakkında bilgi edinmek için [bkz.](partitioning-overview.md) 
+[Singlepartitioncollectiondocumentcrudsample](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB bölümleme ve bölüm anahtarları hakkında bilgi edinmek için bkz. [bölümlendirme](partitioning-overview.md) kavramsal makalesi. 
 
 
 | Görev | API başvurusu |
@@ -152,7 +152,7 @@ Sorgu yazma hakkında daha fazla bilgi için bkz. [Azure Cosmos DB içinde SQL s
 | [Tek bölüm koleksiyonu için aktarım hızını değiştirme](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java#L209-L223) | [DocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Saklı yordam örnekleri
-[StoredProcedureSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirilini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB'deki Sunucu tarafı programlama hakkında bilgi edinmek [için, Saklı yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md) kavramsal makalesine bakın. 
+[StoredProcedureSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB içindeki sunucu tarafı programlama hakkında bilgi edinmek için bkz. [saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevler](stored-procedures-triggers-udfs.md) kavramsal makalesi. 
 
 
 | Görev | API başvurusu |

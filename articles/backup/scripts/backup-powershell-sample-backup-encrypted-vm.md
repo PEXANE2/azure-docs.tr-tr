@@ -1,19 +1,19 @@
 ---
-title: PowerShell Script Örneği - Azure VM'yi yedekle
-description: Bu makalede, bir Azure sanal makinesini yedeklemek için Azure PowerShell Script örneğini nasıl kullanacağınızı öğrenin.
+title: PowerShell betiği örneği-Azure VM 'yi yedekleme
+description: Bu makalede, bir Azure sanal makinesini yedeklemek için Azure PowerShell betik örneğini nasıl kullanacağınızı öğrenin.
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc
 ms.openlocfilehash: ad4d290961bd39659283795f6a58ccb815b639b0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74171799"
 ---
-# <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>PowerShell ile şifreli azure sanal makinesini yedekleyin
+# <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>PowerShell ile şifrelenmiş bir Azure sanal makinesini yedekleme
 
-Bu komut dosyası, şifreli bir Azure sanal makinesi için coğrafi yedekli depolama alanına (GRS) sahip bir Kurtarma Hizmetleri kasası oluşturur. Varsayılan koruma ilkesi kasaya uygulanır. İlke, sanal makine için günlük bir yedekleme oluşturur ve her yedeklemeyi 30 gün boyunca saklar. Komut dosyası ayrıca sanal makine için ilk kurtarma noktasını tetikler ve bu kurtarma noktasını 365 gün boyunca korur.
+Bu betik, şifrelenmiş bir Azure sanal makinesi için coğrafi olarak yedekli depolama (GRS) içeren bir kurtarma hizmetleri Kasası oluşturur. Varsayılan koruma ilkesi kasaya uygulanır. İlke, sanal makine için günlük bir yedekleme oluşturur ve her yedeklemeyi 30 gün boyunca tutar. Betik Ayrıca, sanal makine için ilk kurtarma noktasını tetikler ve bu kurtarma noktasını 365 gün boyunca tutar.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -40,14 +40,14 @@ Bu betik, dağıtımı oluşturmak için aşağıdaki komutları kullanır. Tabl
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [Yeni-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Yedeklemeleri depolamak için kurtarma hizmetleri kasası oluşturur. |
-| [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | Kurtarma Hizmetleri kasasında yedek depolama özellikleri ayarlar. |
-| [Yeni-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Kurtarma Hizmetleri kasasında zamanlama ilkesi ve bekletme ilkesini kullanarak koruma ilkesi oluşturur. |
+| [New-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Yedeklemeleri depolamak için bir kurtarma hizmetleri Kasası oluşturur. |
+| [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | Kurtarma Hizmetleri kasasındaki yedekleme depolama özelliklerini ayarlar. |
+| [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Kurtarma Hizmetleri kasasındaki zamanlama ilkesini ve bekletme ilkesini kullanarak koruma ilkesi oluşturur. |
 | [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) | Key Vault üzerinde hizmet sorumlusuna şifreleme anahtarları için erişim verecek izinleri ayarlar. |
-| [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Belirtilen Yedekleme koruma ilkesine sahip bir öğe için yedekleme sağlar. |
-| [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Varolan bir Yedekleme koruma ilkesini değiştirir. |
-| [Yedekleme-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) | Yedekleme zamanlamasına bağlı olmayan korumalı bir Azure Yedekleme öğesi için yedekleme başlatır. |
-| [Bekle-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Azure Yedekleme işinin tamamlanmasını bekler. |
+| [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Belirtilen yedekleme koruma ilkesiyle bir öğe için yedeklemeyi mümkün. |
+| [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Mevcut bir yedekleme koruma ilkesini değiştirir. |
+| [Backup-Azrecoveryservicesbackupıtem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) | Yedekleme zamanlamaya bağlı olmayan korumalı Azure Backup bir öğe için bir yedekleme başlatır. |
+| [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Azure Backup işinin bitmesini bekler. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Kaynak grubunu ve grubun içerdiği tüm kaynakları kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

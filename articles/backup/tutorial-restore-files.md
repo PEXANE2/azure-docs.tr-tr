@@ -1,14 +1,14 @@
 ---
-title: Öğretici - Azure Yedekleme ile dosyaları VM'ye geri yükleme
+title: Öğretici-Azure Backup ile bir sanal makineye dosya geri yükleme
 description: Backup ve Recovery Services ile bir Azure sanal makinesinde nasıl dosya düzeyinde geri yüklemeler gerçekleştirileceğini öğrenin.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74171731"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure’da dosyaları sanal makineye geri yükleme
