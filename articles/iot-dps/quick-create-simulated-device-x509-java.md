@@ -1,6 +1,6 @@
 ---
 title: Java kullanarak sanal bir X. 509.952 cihazını Azure IoT Hub sağlama
-description: Azure Hızlı Başlangıcı - IoT Hub Cihazı Sağlama Hizmeti için Java cihaz SDK'sını kullanarak sanal bir X.509 cihazı oluşturma ve sağlama. Bu hızlı başlangıçta bireysel kayıtlar kullanılmaktadır.
+description: Azure hızlı başlangıç-IoT Hub cihaz sağlama hizmeti (DPS) için Java cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturun ve sağlayın. Bu hızlı başlangıç, bireysel kayıtları kullanır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,25 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: ec4c276b951e5cda43a4b224f25aac547cd26bec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 5122726cbda2145d190e3dbeb10a3c5b4ae65947
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229566"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82588465"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Hızlı başlangıç: IoT Hub cihaz sağlama hizmeti için Java cihaz SDK 'sını kullanarak sanal bir X. 509.952 cihazı oluşturma ve sağlama
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Bu adımlar, Windows işletim sistemi çalıştıran geliştirme makinenizde X.509 cihazının simülasyonunu yapmayı ve örnek kodlar kullanarak bu sanal cihazı Cihaz Sağlama Hizmeti ve IoT hub’ınızla bağlamayı gösterir. 
+Bu hızlı başlangıçta, bir Windows bilgisayarda sanal bir X. 509.952 aygıtı oluşturacaksınız. Cihaz sağlama hizmeti (DPS) ile tek bir kayıt kullanarak bu sanal cihazı IoT Hub 'ınıza bağlamak için cihaz örneği Java kodunu kullanırsınız.
 
-Otomatik sağlama işlemini bilmiyorsanız, [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md) gözden geçirdiğinizden emin olun. Ayrıca devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalıyla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. 
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
-- [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
-- [Bireysel kayıtlar](concepts-service.md#individual-enrollment): Tek bir cihazı kaydetmek için kullanılır.
-
-Bu makalede bireysel kayıtlar gösterilmektedir.
+- [Otomatik sağlama kavramlarını](concepts-auto-provisioning.md)gözden geçirme.
+- [Azure Portal Ile cihaz sağlama hizmeti IoT Hub ayarlama](./quick-setup-auto-provision.md)işlemi tamamlandı.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks).
+- [Maven](https://maven.apache.org/install.html).
+- [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-the-environment"></a>Ortamı hazırlama 
 
@@ -35,7 +37,7 @@ Bu makalede bireysel kayıtlar gösterilmektedir.
 
 2. [Maven](https://maven.apache.org/install.html)'ı indirip yükleyin.
 
-3. Makinenizde Git’in yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek [ araçlarının son sürümleri için ](https://git-scm.com/download/)Software Freedom Conservancy’nin Git istemci araçlarına`git` bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
+3. Makinenizde Git’in yüklü olduğundan ve komut penceresinden erişilebilir ortam değişkenlerine eklendiğinden emin olun. Yüklenecek `git` araçlarının son sürümleri için [Software Freedom Conservancy’nin Git istemci araçlarına](https://git-scm.com/download/) bakın. Bunlara yerel Git deponuzla etkileşim kurmak için kullanabileceğiniz bir komut satırı uygulaması olan **Git Bash** dahildir. 
 
 4. Bir komut istemi açın. Cihaz benzetim kod örneği için GitHub deposunu kopyalayın:
     
@@ -64,44 +66,50 @@ Bu bölümde, otomatik olarak imzalanan X.509 sertifikası kullanacaksınız. A�
 
 Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluşturmak için [Java için Azure IoT SDK'sından](https://github.com/Azure/azure-iot-sdk-java.git) örnek kodu kullanacaksınız.
 
+Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 
-1. Önceki adımlardan komut istemini kullanarak, `target` klasörüne gidin, daha sonra önceki adımda oluşturulan jar dosyasını yürütün.
+- [Kayıt grupları](concepts-service.md#enrollment-group): Birden fazla ilgili cihazı kaydetmek için kullanılır.
+- [Bireysel](concepts-service.md#individual-enrollment)kayıtlar: tek bir cihazı kaydetmek için kullanılır.
+
+Bu makalede, bireysel kayıtlar gösterilmektedir.
+
+1. Önceki adımlardan komut istemi ' ni kullanarak, `target` klasöre gidin ve ardından önceki adımda oluşturulan. jar dosyasını yürütün.
 
     ```cmd/sh
     cd target
     java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
     ```
 
-2. **Do you want to input common name** (Ortak ad girmek istiyor musunuz) istemi için _N_ girin. `Client Cert` çıktısının *-----BEGIN CERTIFICATE-----* satırından *-----END CERTIFICATE-----* satırına kadar olan bölümü panoya kopyalayın.
+2. _Do you want to input common name_ (Ortak ad girmek istiyor musunuz) istemi için **N** girin. `Client Cert` çıktısının *-----BEGIN CERTIFICATE-----* satırından *-----END CERTIFICATE-----* satırına kadar olan bölümü panoya kopyalayın.
 
    ![Bireysel sertifika oluşturucu](./media/java-quick-create-simulated-device-x509/individual.png)
 
 3. Windows makinenizde **_X509individual.pem_** adlı bir dosya oluşturun, dosyayı dilediğiniz düzenleyicide ve panonun içeriğini bu dosyaya kopyalayın. Dosyayı kaydedin ve düzenleyicinizi kapatın.
 
-4. Komut isteminde, **Do you want to input Verification Code** (Doğrulama Kodu girmek istiyor musunuz?) isteminde _N_ girin ve Hızlı Başlangıç’ın ilerleyen bölümlerinde kullanmak üzere program çıktısını açık tutun. Daha sonra, sonraki bölümde kullanmak için `Client Cert` ve `Client Cert Private Key` değerlerini kopyalayın.
+4. Komut isteminde, kimlik _doğrulama kodunu_ girmek ve program çıktısını hızlı başlangıçta başvuru için açık tutmak Istiyorsanız, **N** için yazın. Daha sonra, sonraki bölümde kullanmak için `Client Cert` ve `Client Cert Private Key` değerlerini kopyalayın.
 
-5. [Azure portalında](https://portal.azure.com) oturum açın, sol taraftaki menüden **Tüm kaynaklar** düğmesine tıklayın ve Cihaz Sağlama Hizmeti örneğinizi açın.
+5. [Azure Portal](https://portal.azure.com)oturum açın, sol taraftaki menüden **tüm kaynaklar** düğmesini seçin ve cihaz sağlama hizmeti örneğinizi açın.
 
-6. Cihaz Sağlama Hizmeti özet dikey penceresinde, **Kayıtları yönet**’i seçin. **Bireysel Kayıtlar** sekmesini seçin ve en üstteki **Bireysel kayıt ekle** düğmesine tıklayın. 
+6. Cihaz sağlama hizmeti menüsünden kayıtları **Yönet**' i seçin. **Bireysel** kayıtlar sekmesini seçin ve üst kısımdaki **tek kayıt Ekle** düğmesini seçin. 
 
-7. **Kayıt Ekle** panelinin altına aşağıdaki bilgileri girin:
-   - Kimlik onay **Mekanizması** olarak *X.509*'u seçin.
-   - *Birincil sertifika .pem veya .cer dosyası*'nın altında, önceki adımlarda oluşturulmuş *X509individual.pem* sertifika dosyasını seçmek için **Dosya seçin**’e tıklayın.  
+7. **Kayıt Ekle** panelinde, aşağıdaki bilgileri girin:
+   - Kimlik onay *Mekanizması* olarak **X.509**'u seçin.
+   - *Birincil sertifika. pek veya. cer dosyası*' nın altında, önceki adımlarda oluşturulmuş **X509individual. ped** sertifika dosyasını seçmek için *Dosya Seç* ' i seçin.  
    - İsteğe bağlı olarak, aşağıdaki bilgileri sağlayabilirsiniz:
      - Sağlama hizmetinizle bağlanacak IoT hub'ını seçin.
      - Benzersiz bir cihaz kimliği girin. Cihazınızı adlandırırken gizli veriler kullanmaktan kaçının. 
      - **Başlangıç cihaz ikizi durumu** alanını cihaz için istenen başlangıç yapılandırmasına göre güncelleştirin.
-     - Tamamlandığında **Kaydet** düğmesine tıklayın. 
+     - Tamamlandıktan sonra **Kaydet** düğmesine basın. 
 
-     [![Portalda X.509 kanıtı için tek kayıt ekleme](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+     [![Portalda X. 509.440 kanıtlama için bireysel kayıt ekleme](./media/java-quick-create-simulated-device-x509/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
-     Kayıt başarıyla tamamlandığında, X.509 cihazınız **Bireysel Kayıtlar** sekmesindeki *Kayıt Kimliği* sütununun altında *microsoftriotcore* olarak gösterilir. 
+     Kayıt başarıyla tamamlandığında, X.509 cihazınız *Bireysel Kayıtlar* sekmesindeki *Kayıt Kimliği* sütununun altında **microsoftriotcore** olarak gösterilir. 
 
 
 
 ## <a name="simulate-the-device"></a>Cihazı benzetme
 
-1. Cihaz Sağlama Hizmeti özet dikey penceresinde **Genel Bakış**'ı seçip _Kimlik Kapsamı_ ve _Sağlama Hizmeti Genel Uç Noktası_ değerlerini not edin.
+1. Cihaz sağlama hizmeti menüsünden **genel bakış** ' ı seçin ve _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_belirtin.
 
     ![Hizmet bilgileri](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -113,7 +121,7 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
 
 3. Kodunuzdaki sağlama hizmetini ve X.509 kimlik bilgilerini girin. Bu otomatik sağlama sırasında, cihaz kaydından önce simülasyon cihazını kanıtlamak için kullanılır:
 
-   - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` dosyasını düzenleyerek önceden not ettiğiniz _Kimlik Kapsamı_ ve _Sağlama Hizmeti Genel Uç Noktası_ değerlerini girin. Ayrıca önceki bölümde not ettiğiniz _Client Cert_ ve _Client Cert Private Key_ değerlerini de dahil edin.
+   - Daha önce belirtildiği `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`gibi, _kimlik kapsamınızı_ ve _sağlama hizmeti genel uç noktasını_ dahil etmek için dosyayı düzenleyin. Ayrıca önceki bölümde not ettiğiniz _Client Cert_ ve _Client Cert Private Key_ değerlerini de dahil edin.
 
       ```java
       private static final String idScope = "[Your ID scope here]";
@@ -140,7 +148,7 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
             "-----END PRIVATE KEY-----\n";
       ```
 
-4. Örneği derleyin. `target` klasörüne gidin ve oluşturulan jar dosyasını çalıştırın.
+4. Örneği derleyin. `target` Klasöre gidin ve oluşturulan. jar dosyasını yürütün.
 
     ```cmd/sh
     mvn clean install
@@ -148,27 +156,27 @@ Simülasyon cihazının tek kayıt girdisiyle kullanılacak sertifikayı oluştu
     java -jar ./provisioning-x509-sample-{version}-with-deps.jar
     ```
 
-5. Azure portalda, sağlama hizmetinize bağlı olan IoT hub'ına gidin ve **Device Explorer** dikey penceresini açın. X.509 sanal cihazının hub'a başarıyla sağlanması durumunda, cihaz kimliği **Device Explorer** dikey penceresinde *DURUM* değeri **etkinleştirildi** olarak gösterilir.  Dikey pencereyi, örnek cihaz uygulamasını çalıştırmadan önce açtıysanız en üstteki **Yenile** düğmesine tıklamanız gerekebilir. 
+5. Azure portalda, sağlama hizmetinize bağlı olan IoT hub'ına gidin ve **Device Explorer** dikey penceresini açın. X.509 sanal cihazının hub'a başarıyla sağlanması durumunda, cihaz kimliği **Device Explorer** dikey penceresinde *DURUM* değeri **etkinleştirildi** olarak gösterilir.  Örnek cihaz uygulamasını çalıştırmadan önce dikey pencereyi zaten açtıysanız, en üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/java-quick-create-simulated-device-x509/hubregistration.png) 
 
 > [!NOTE]
-> Cihazınız için *başlangıç cihaz ikizi durumu* ayarının kayıt girişindeki varsayılan değerini değiştirdiyseniz istenen ikili durumu hub'dan çekerek ona göre hareket edebilir. Daha fazla bilgi için bkz. [IoT Hub'ındaki cihaz ikizlerini kavrama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md).
+> Cihazınız için *başlangıç cihaz ikizi durumu* ayarının kayıt girişindeki varsayılan değerini değiştirdiyseniz istenen ikili durumu hub'dan çekerek ona göre hareket edebilir. Daha fazla bilgi için bkz. [IoT Hub cihaz TWINS 'ı anlama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md).
 >
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Cihaz istemci örneği üzerinde çalışmaya ve inceleme yapmaya devam etmeyi planlıyorsanız bu Hızlı Başlangıç’ta oluşturulan kaynakları silmeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç ile oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın:
+Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Devam etmeyi planlamıyorsanız, bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
 1. Makinenizde cihaz istemci örnek çıktı penceresini kapatın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından Cihaz Sağlama hizmetini seçin. Hizmetinizin kayıtları **yönetme** dikey penceresini açın ve sonra **bireysel** Kayıtlar sekmesine tıklayın. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' ni seçin ve üstteki **Sil** düğmesine tıklayın. 
-3. Azure portalında sol taraftaki menüden **Tüm kaynaklar**’ı ve ardından IoT hub’ınızı seçin. Hub'ınızın **IoT Cihazları** dikey penceresini açıp bu Hızlı Başlangıç adımlarını kullanarak kaydettiğiniz cihazın *CİHAZ KİMLİĞİ* değerini seçip en üstte bulunan **Sil** düğmesine tıklayın.
+2. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından cihaz sağlama hizmetinizi seçin. Hizmetinizin kayıtları **yönetme** dikey penceresini açın ve sonra **bireysel** kayıtlar sekmesini seçin. bu hızlı BAŞLANGıÇTA kaydettiğiniz cihazın *kayıt kimliği* ' nin yanındaki onay kutusunu işaretleyin ve bölmenin en üstündeki **Sil** düğmesine basın. 
+3. Azure portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından IoT Hub 'ınızı seçin. Hub 'ınız için **IoT cihazları** dikey penceresini açın, bu hızlı başlangıçta kaydettiğiniz CIHAZıN *cihaz kimliği* ' nin yanındaki onay kutusunu işaretleyin ve ardından bölmenin en üstündeki **Sil** düğmesine basın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu Hızlı Başlangıç’ta, Windows makinenizde bir sanal X.509 cihazı oluşturdunuz. Azure IoT Hub Cihazı Sağlama Hizmetinize kaydını yapılandırdınız, ardından cihazı IoT hub’ınıza otomatik olarak sağladınız. X.509 cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için X.509 cihazlarının programlı kaydının yer aldığı Hızlı Başlangıç adımlarına gidin. 
+Bu hızlı başlangıçta, Windows makinenizde sanal bir X. 509.952 cihazı oluşturdunuz. Azure IoT Hub Cihazı Sağlama Hizmetinize kaydını yapılandırdınız, ardından cihazı IoT hub’ınıza otomatik olarak sağladınız. X. 509.952 cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için, X. 509.440 cihazlarının programlı kaydı için hızlı başlangıç 'a geçin. 
 
 > [!div class="nextstepaction"]
-> [Azure Hızlı Başlangıcı - X.509 cihazlarını Azure IoT Hub Cihaz Sağlama Hizmeti'ne kaydetme](quick-enroll-device-x509-java.md)
+> [Azure hızlı başlangıç-X. 509.440 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydetme](quick-enroll-device-x509-java.md)

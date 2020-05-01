@@ -16,18 +16,19 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048425"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610998"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Galeriden bir OpenID uygulaması ekleme işlemi
 
-1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin. 
+1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png))
 
@@ -61,17 +62,17 @@ En temel oturum açma akışı aşağıdaki adımları içerir:
 
 ![OpenID Connect kullanarak kimlik doğrulama akışı](./media/openidoauth-tutorial/authenticationflow.png)
 
-### <a name="multitenant-application"></a>Çok kiracılı uygulama 
-Çok kiracılı bir uygulama, yalnızca bir kuruluş değil birçok kuruluşta kullanılmak üzere tasarlanmıştır. Bunlar, genellikle bağımsız bir yazılım satıcısı (ISV) tarafından yazılan hizmet olarak yazılım (SaaS) uygulamalardır. 
+### <a name="multitenant-application"></a>Çok kiracılı uygulama
+Çok kiracılı bir uygulama, yalnızca bir kuruluş değil birçok kuruluşta kullanılmak üzere tasarlanmıştır. Bunlar, genellikle bağımsız bir yazılım satıcısı (ISV) tarafından yazılan hizmet olarak yazılım (SaaS) uygulamalardır.
 
-Çok kiracılı uygulamaların kullanılabilecekleri her dizinde sağlanması gerekir. Bunları kaydetmek için Kullanıcı veya yönetici onayı gerekir. Bu onay işlemi, bir uygulama dizine kaydedildiğinde başlar ve Graph API veya belki başka bir Web API 'sine erişim izni verilir. Farklı bir kuruluştan bir kullanıcı veya yönetici uygulamayı kullanmak üzere kaydolduğunda, uygulamanın ihtiyacı olan izinleri görüntüleyen bir iletişim kutusu görüntülenir. 
+Çok kiracılı uygulamaların kullanılabilecekleri her dizinde sağlanması gerekir. Bunları kaydetmek için Kullanıcı veya yönetici onayı gerekir. Bu onay işlemi, bir uygulama dizine kaydedildiğinde başlar ve Graph API veya belki başka bir Web API 'sine erişim izni verilir. Farklı bir kuruluştan bir kullanıcı veya yönetici uygulamayı kullanmak üzere kaydolduğunda, uygulamanın ihtiyacı olan izinleri görüntüleyen bir iletişim kutusu görüntülenir.
 
 Kullanıcı veya yönetici daha sonra uygulamayı kabul edebilir. Onay, uygulamanın belirtilen verilere erişmesini sağlar ve son olarak uygulamayı dizine kaydeder.
 
 > [!NOTE]
 > Uygulamanızı birden çok dizindeki kullanıcılar için kullanılabilir hale getiriyorsanız, hangi kiracının bulunduğunu belirlemeniz için bir mekanizmaya ihtiyacınız vardır. Tek kiracılı bir uygulamanın, bir kullanıcı için kendi dizinine bakması gerekir. Çok kiracılı bir uygulamanın, Azure AD 'deki tüm dizinlerden belirli bir kullanıcıyı tanımlaması gerekir.
-> 
-> Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta `https://login.microsoftonline.com/common` , Azure AD 'deki tüm dizinlere yöneliktir. Kiracıya özgü bir uç nokta olabilir `https://login.microsoftonline.com/contoso.onmicrosoft.com`. 
+>
+> Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta `https://login.microsoftonline.com/common` , Azure AD 'deki tüm dizinlere yöneliktir. Kiracıya özgü bir uç nokta olabilir `https://login.microsoftonline.com/contoso.onmicrosoft.com`.
 >
 > Ortak uç nokta, uygulamanızı geliştirirken göz önünde bulundurmanız gereken önemli bir noktadır. Oturum açma, oturum kapatma ve belirteç doğrulama sırasında birden fazla kiracıyı işlemek için gerekli mantığa ihtiyacınız olacaktır.
 
@@ -80,9 +81,9 @@ Azure AD, varsayılan olarak çok kiracılı uygulamalar yükseltir. Bunlar kuru
 ## <a name="consent-framework"></a>Onay çerçevesi
 
 Azure AD onay çerçevesini, çok kiracılı web ve yerel istemci uygulamaları geliştirmek için kullanabilirsiniz. Bu uygulamalar, bir Azure AD kiracısından Kullanıcı hesaplarına, uygulamanın kaydedildiği bilgisayardan farklı olarak oturum açma izni verir. Ayrıca, şunlar gibi Web API 'Lerine erişim de gerekebilir:
-- Office 365 ' deki Azure AD, Intune ve hizmetlere erişmek için Microsoft Graph API 'SI. 
+- Office 365 ' deki Azure AD, Intune ve hizmetlere erişmek için Microsoft Graph API 'SI.
 - Diğer Microsoft Hizmetleri API 'Leri.
-- Kendi Web API 'leriniz. 
+- Kendi Web API 'leriniz.
 
 Çerçeve, bir kullanıcıyı veya bir yöneticiyi temel alarak, dizinde kaydedilmesini isteyen bir uygulamaya onay verir. Kayıt, dizin verilerine erişmeyi gerektirebilir. Onay verildikten sonra istemci uygulaması, Microsoft Graph API 'sini Kullanıcı adına çağırabilir ve gerekli bilgileri kullanabilir.
 
@@ -125,7 +126,7 @@ Aşağıdaki adımlarda, uygulama geliştiricisi ve Kullanıcı için onay deney
 
 3. Kullanıcının kimliği doğrulanmıyorsa, Azure AD/Yetkilendir uç noktası oturum açma için istemde bulunur.
 
-    ![Kimlik Doğrulaması](./media/openidoauth-tutorial/authentication.png)
+    ![Kimlik doğrulaması](./media/openidoauth-tutorial/authentication.png)
 
 4. Kullanıcı oturum açtıktan sonra, Azure AD kullanıcının bir onay sayfası gösterilmesi gerekip gerekmediğini belirler. Bu belirleme, kullanıcının (veya kuruluşun yöneticisinin) uygulama iznini zaten vermiş olup olmadığına bağlıdır.
 
@@ -146,7 +147,7 @@ Yönetici olarak, kiracınızdaki tüm kullanıcılar adına bir uygulamanın te
 
 Yalnızca uygulama izinleri her zaman kiracı yöneticisinin onayını gerektirir. Uygulamanız yalnızca uygulama izni isterse ve Kullanıcı uygulamada oturum açmaya çalışırsa bir hata iletisi görüntülenir. İleti, kullanıcının onay veremediği diyor.
 
-Uygulamanız yönetici onayı gerektiren izinler kullanıyorsa, yöneticinin eylemi başlatabileceği bir düğme veya bağlantı gibi bir hareketinizin olması gerekir. Uygulamanızın bu eylem için gönderdiği istek, olağan OAuth2/OpenID Connect yetkilendirme isteğidir. Bu istek *Prompt = admin_consent* sorgu dizesi parametresini içerir. 
+Uygulamanız yönetici onayı gerektiren izinler kullanıyorsa, yöneticinin eylemi başlatabileceği bir düğme veya bağlantı gibi bir hareketinizin olması gerekir. Uygulamanızın bu eylem için gönderdiği istek, olağan OAuth2/OpenID Connect yetkilendirme isteğidir. Bu istek *Prompt = admin_consent* sorgu dizesi parametresini içerir.
 
 Yönetici onaylı olduktan ve hizmet sorumlusu müşterinin kiracısında oluşturulduktan sonra, sonraki oturum açma istekleri *Prompt = admin_consent* parametresine gerek kalmaz. Yönetici İstenen izinlerin kabul edilebilir olduğunu karardığı için, kiracıya başka hiçbir Kullanıcı o noktadan sonra onay istenmez.
 

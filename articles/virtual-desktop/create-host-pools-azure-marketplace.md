@@ -1,162 +1,186 @@
 ---
-title: Windows sanal masaüstü konak havuzu Azure Marketi-Azure
-description: Azure Marketi 'ni kullanarak Windows sanal masaüstü konak havuzu oluşturma.
+title: Windows sanal masaüstü konak havuzu Azure portal-Azure
+description: Azure portal kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: def3ed840d2886aabfce1d1081c94298083fe6d6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238625"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611688"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
+# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
-Bu öğreticide, bir Microsoft Azure Market teklifi kullanarak Windows sanal masaüstü kiracısı içinde bir konak havuzu oluşturmayı öğreneceksiniz.
-
-Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
-
-Bu öğreticideki görevler şunları içerir:
-
-> [!div class="checklist"]
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)bakın.
 >
-> * Windows sanal masaüstü 'nde bir konak havuzu oluşturun.
-> * Bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturun.
-> * VM 'Leri Active Directory etki alanına katın.
-> * VM 'Leri Windows sanal masaüstü ile kaydedin.
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Konak havuzları, Windows sanal masaüstü ortamlarında bir veya daha fazla özdeş sanal makine (VM) koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
+
+Bu makale, Azure portal aracılığıyla bir Windows sanal masaüstü ortamı için bir konak havuzu oluşturmaya yönelik kurulum sürecinde size yol gösterecektir. Bu yöntem, Windows sanal masaüstünde bir konak havuzu oluşturmak, bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturmak, bu VM 'Leri Azure Active Directory (AD) etki alanına eklemek ve VM 'Leri Windows sanal masaüstü ile kaydettirmek için tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Sanal masaüstündeki kiracı. Önceki [öğreticide](tenant-setup-azure-active-directory.md) kiracı oluşturulur.
-* [Windows sanal masaüstü PowerShell modülü](/powershell/windows-virtual-desktop/overview/).
+Bir konak havuzu oluşturmak için aşağıdaki parametreleri girmeniz gerekir:
 
-Bu modülden sonra, hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+- VM görüntü adı
+- VM yapılandırması
+- Etki alanı ve ağ özellikleri
+- Windows sanal masaüstü konak Havuzu Özellikleri
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Ayrıca aşağıdaki işlemleri de bilmeniz gerekir:
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+- Kullanmak istediğiniz görüntünün kaynağı. Azure galerisinden mi veya özel bir görüntü mi?
+- Etki alanınıza katılarak kimlik bilgileri.
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+Azure Resource Manager şablonuyla bir Windows sanal masaüstü konak havuzu oluşturduğunuzda, Azure Galerisi 'nden, yönetilen bir görüntüden veya yönetilmeyen görüntüden bir sanal makine oluşturabilirsiniz. VM görüntülerini oluşturma hakkında daha fazla bilgi edinmek için bkz. Azure ['a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md) ve [Azure 'DA genelleştirilmiş bir VM 'Nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md).
 
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırın
+Henüz bir Azure aboneliğiniz yoksa, bu yönergeleri izleyerek önce [bir hesap oluşturmayı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) unutmayın.
 
-Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
+## <a name="begin-the-host-pool-setup-process"></a>Konak havuzu kurulum işlemini Başlat
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
-1. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
-1. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
+Yeni konak havuzunuzu oluşturmaya başlamak için:
 
-Bundan sonra, uygun sekmelerin bilgilerini girmek için sonraki bölümde yer alan yönergeleri izleyin.
+1. [https://portal.azure.com](https://portal.azure.com/) adresinden Azure portalında oturum açın.
 
-### <a name="basics"></a>Temel Bilgiler
+2. Arama çubuğuna **Windows sanal masaüstü 'nü** girin, ardından hizmetler altında **Windows sanal masaüstü** ' nü bulun ve seçin.
 
-**Temel kavramlar** sekmesi için şunları yapın:
+3. **Windows sanal masaüstüne** Genel Bakış sayfasında, **konak havuzu oluştur**' u seçin.
 
-1. Bir **Abonelik** seçin.
-1. **Kaynak grubu**Için **Yeni oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
-1. Bir **bölge**seçin.
-1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
-1. **Masaüstü türünü**seçin. **Kişisel**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
-1. Windows sanal masaüstü istemcilerinde oturum açabilen ve bir masaüstüne erişebilen kullanıcıları girin. Virgülle ayrılmış bir liste kullanın. Örneğin, atamak `user1@contoso.com` ve `user2@contoso.com` erişmek istiyorsanız, şunu girin*`user1@contoso.com,user2@contoso.com`*
-1. **Hizmet meta verileri konumu**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
+4. **Temel bilgiler** sekmesinde, proje ayrıntıları altında doğru aboneliği seçin.
 
-   >[!IMPORTANT]
-   >Saf Azure Active Directory Domain Services (Azure AD DS) ve Azure Active Directory (Azure AD) çözümü kullanıyorsanız, etki alanına ekleme ve kimlik bilgisi hatalarından kaçınmak için konak havuzunuzu Azure AD DS ile aynı bölgede dağıttığınızdan emin olun.
+5. Yeni bir kaynak grubu **oluşturmak için yeni oluştur** ' u seçin ya da açılan menüden var olan bir kaynak grubunu seçin.
 
-1. **İleri ' yi seçin: sanal makineleri yapılandırın**.
+6. Konak havuzunuz için benzersiz bir ad girin.
 
-### <a name="configure-virtual-machines"></a>Sanal makineleri yapılandırma
+7. Konum alanında, açılan menüden konak havuzunu oluşturmak istediğiniz bölgeyi seçin.
+   
+   Seçtiğiniz bölgelerle ilişkili Azure coğrafya, bu konak havuzunun ve ilgili nesnenin meta verilerinin depolanacağı yerdir. Hizmet meta verilerinin depolanmasını istediğiniz coğrafya içindeki bölgeleri seçtiğinizden emin olun.
 
-**Sanal makineleri Yapılandır** sekmesini için:
+     ![Konum alanını seçili Doğu ABD konumu ile gösteren Azure portal ekran görüntüsü. Alanın yanında, "meta veriler Doğu ABD depolanır." ifadesini görürsünüz.](media/portal-location-field.png)
 
-1. Varsayılanları kabul edin ya da sanal makinelerin sayısını ve boyutunu özelleştirin.
+8. Konak havuzu türü altında, ana bilgisayar havuzunuzun **Kişisel** mi yoksa **havuza alınmış**mı olacağını seçin.
+
+    - **Kişisel**' i seçerseniz, atama türü alanında **Otomatik** veya **doğrudan** ' yi seçin.
+
+      ![Atama türü alanı açılan menüsünün ekran görüntüsü. Kullanıcı otomatik olarak seçildi.](media/assignment-type-field.png)
+
+9. **Havuza alınmış**' ı seçerseniz, aşağıdaki bilgileri girin:
+
+     - **En fazla oturum sınırı**için, yük dengelenmesi istediğiniz en fazla kullanıcı sayısını tek bir oturum konağına girin.
+     - **Yük dengeleme algoritması**için, kullanım düzeninizi temel alarak, öncelikle, birinci veya derinlik seçeneklerinden birini belirleyin.
+
+       ![Atama türü alanının "havuza alınmış" seçiliyken bir ekran görüntüsü. Kullanıcı, Yük Dengeleme açılan menüsünde imlecini yukarı doğru üzerine alır.](media/pooled-assignment-type.png)
+
+10. **İleri ' yi seçin: VM ayrıntıları**.
+
+11. Zaten sanal makineler oluşturduysanız ve bunları yeni konak havuzuyla kullanmak istiyorsanız **Hayır**' ı seçin. Yeni sanal makineler oluşturmak ve bunları yeni konak havuzuna kaydetmek istiyorsanız **Evet**' i seçin.
+
+İlk parçayı tamamladığınıza göre, VM 'yi oluşturduğumuz kurulum sürecinin bir sonraki bölümüne geçeceğiz.
+
+## <a name="virtual-machine-details"></a>Sanal makine ayrıntıları
+
+İlk parçayı öğrendiğimiz için VM 'nizi ayarlamanız gerekir.
+
+Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
+
+1. Kaynak grubu altında, sanal makineleri oluşturmak istediğiniz kaynak grubunu seçin. Bu, konak havuzu için kullanılandan farklı bir kaynak grubu olabilir.
+
+2. Sanal makineleri oluşturmak istediğiniz **sanal makine bölgesini** seçin. Konak havuzu için seçtiğiniz bölgeden aynı veya farklı olabilir.
+
+3. Sonra, oluşturmak istediğiniz sanal makinenin boyutunu seçin. Varsayılan boyutu olduğu gibi tutabilirsiniz ya da boyutu değiştirmek için **boyutu Değiştir** ' i seçin. **Boyutu Değiştir**' i seçerseniz, görüntülenen pencerede, iş yükünüz için uygun olan sanal makine boyutunu seçin.
+
+4. VM sayısı ' nın altında, konak havuzunuz için oluşturmak istediğiniz VM sayısını sağlayın.
 
     >[!NOTE]
-    >Aradığınız belirli bir sanal makine boyutu, boyut seçicisinde görünmüyorsa, bunun nedeni, henüz Azure Market aracına eklendi. Bir boyut istemek için [Windows sanal masaüstü UserVoice forumundaki](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)bir istek oluşturun veya var olan bir isteği oylayın.
+    >Kurulum işlemi, konak havuzunuzu ayarlarken en fazla 400 VM oluşturabilir ve her bir VM kurulum işlemi kaynak grubunuzda dört nesne oluşturur. Oluşturma işlemi abonelik kotayı denetlemediğinden, girdiğiniz sanal makine sayısının Azure VM 'de ve kaynak grubunuz ve aboneliğiniz için API sınırları içinde olduğundan emin olun. Konak havuzunuzu oluşturmayı bitirdikten sonra daha fazla VM ekleyebilirsiniz.
 
-1. Sanal makinelerin adları için bir ön ek girin. Örneğin, *ön ek*girerseniz, sanal makineler **önek-0**, **ön ek-1**vb. olarak adlandırılır.
-1. **İleri ' yi seçin: sanal makine ayarları**.
+5. Bundan sonra, kurulum işleminin oluşturduğu sanal makineleri adlandırmak için bir **ad ön eki** sağlayın. Sonek 0 ' dan `-` başlayan sayılarla birlikte olacaktır.
 
-### <a name="virtual-machine-settings"></a>Sanal makine ayarları
+6. Sonra, sanal makineyi oluşturmak için kullanılması gereken görüntüyü seçin. **Galeri** veya **Depolama Blobu**seçeneklerinden birini belirleyebilirsiniz.
 
-**Sanal makine ayarları** sekmesi için:
+    - **Galeri**' yi seçerseniz, açılan menüden önerilen görüntülerden birini seçin:
 
-1. **Görüntü kaynağı**için kaynağı seçin ve nasıl bulacağınızı ve nasıl depolanacağını öğrenmek için uygun bilgileri girin. Seçenekleriniz BLOB depolama, yönetilen görüntü ve Galeri için farklılık gösterir.
+      - Windows 10 Enterprise çoklu oturum, sürüm 1909 + Office 365 ProPlus – Gen 1
+      - Windows 10 Enterprise multi-session, sürüm 1909 – Gen 1
+      - Windows Server 2019 Datacenter-Gen1
 
-   Yönetilen diskler kullanmayı tercih ederseniz, *. vhd* dosyasını içeren depolama hesabını seçin.
-1. Kullanıcı asıl adını ve parolasını girin. Bu hesap, sanal makinelere Active Directory etki alanına katılacak etki alanı hesabı olmalıdır. Bu aynı Kullanıcı adı ve parola, sanal makinelerde yerel bir hesap olarak oluşturulacaktır. Bu yerel hesapları daha sonra sıfırlayabilirsiniz.
+     İstediğiniz görüntüyü görmüyorsanız, galerinizdeki başka bir görüntüyü ya da Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntülere ve disklere gözatamazsınız**' ı seçin.
 
-   >[!NOTE]
-   > Sanal makinelerinizi bir Azure AD DS ortamına katılıyorsanız, etki alanına katılma Kullanıcı tarafından [AAD DC yöneticileri grubunun](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)bir üyesi olduğundan emin olun.
-   >
-   > Hesap Ayrıca Azure AD DS yönetilen etki alanının veya Azure AD kiracısının bir parçası olmalıdır. Azure AD kiracınızla ilişkilendirilen dış dizinlerden hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz.
+     ![Microsoft 'un gösterildiği resimlerin listesini içeren Market 'in ekran görüntüsü.](media/marketplace-images.png)
 
-1. Active Directory sunucusuyla bağlantısı olan **sanal ağı** seçin ve ardından sanal makineleri barındırmak için bir alt ağ seçin.
-1. **İleri ' yi seçin: Windows sanal masaüstü bilgileri**.
+     **Öğelerime** giderek, zaten karşıya yüklediğiniz özel bir görüntüyü seçebilirsiniz.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Windows sanal masaüstü kiracı bilgileri
+     ![Öğelerimin sekmesinin ekran görüntüsü.](media/my-items.png)
 
-**Windows sanal masaüstü kiracı bilgileri** sekmesi için:
+    - **Depolama Blobu**' nı seçerseniz, Hyper-V veya BIR Azure VM 'de kendi görüntü yapınızı kullanabilirsiniz. Tüm yapmanız gerekirse, bir URI olarak Depolama Blobu içindeki görüntünün konumunu girin.
 
-1. **Windows sanal masaüstü kiracı grubu adı**için kiracınızı içeren kiracı grubunun adını girin. Belirli bir kiracı grubu adı sağlanmadığınız sürece varsayılan olarak bırakın.
-1. **Windows sanal masaüstü kiracı adı**için, bu konak havuzunu oluşturacağınız kiracının adını girin.
-1. Windows sanal masaüstü kiracı RDS sahibi olarak kimlik doğrulaması yapmak için kullanmak istediğiniz kimlik bilgileri türünü belirtin. UPN veya hizmet sorumlusu ve bir parola girin.
+7. Sanal makinelerinizin ne tür işletim sistemi diskleri kullanmasını istediğinizi seçin: Standart SSD, Premium SSD veya Standart HDD.
 
-   [PowerShell öğreticisi ile hizmet sorumluları ve rol atamaları oluştur](./create-service-principal-role-powershell.md)' u tamamladıysanız **hizmet sorumlusu**' nı seçin.
+8. Ağ ve güvenlik altında, oluşturduğunuz sanal makineleri yerleştirmek istediğiniz sanal ağı ve alt ağı seçin. Sanal ağ içindeki sanal makineleri etki alanına katdığınızdan emin olmanız gerektiğinden, sanal ağın etki alanı denetleyicisine bağlanabildiğinden emin olun. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel IP daha güvenli olduğundan **Hayır**' ı seçmenizi öneririz.
 
-1. **Hizmet sorumlusu**Için, **Azure AD Kiracı kimliği**Için HIZMET sorumlusunu içeren Azure AD örneği için kiracı yönetici hesabını girin. Yalnızca parola kimlik bilgilerine sahip hizmet sorumluları desteklenir.
-1. **İleri ' yi seçin: gözden geçir + oluştur**.
+9. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş**veya **yok**.
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>Kurulumu tamamladıktan sonra sanal makineyi oluşturun
+    **Temel**seçeneğini belirlerseniz, herhangi bir gelen bağlantı noktasının açılmasını isteyip istemediğinizi seçmeniz gerekir. **Evet**' i seçerseniz, gelen bağlantılara izin vermek için standart bağlantı noktaları listesinden seçim yapın.
 
-**İnceleme ve oluşturma**bölümünde kurulum bilgilerini gözden geçirin. Bir değişiklik yapmanız gerekiyorsa, geri dönüp değişiklik yapın. Hazırsanız, konak havuzunuzu dağıtmak için **Oluştur** ' u seçin.
+    >[!NOTE]
+    >Daha fazla güvenlik için genel gelen bağlantı noktalarını açmemenizi öneririz.
 
-Bu işlem, kaç sanal makineye sahip olduğunuza bağlı olarak tamamlanması 30 dakika veya daha fazla sürebilir.
+    ![Bir açılan menüdeki kullanılabilir bağlantı noktalarının listesini gösteren güvenlik grubu sayfasının ekran görüntüsü.](media/available-ports.png)
+    
+    **Gelişmiş**' i seçerseniz, önceden yapılandırdığınız mevcut bir ağ güvenlik grubunu seçin.
 
->[!IMPORTANT]
-> Azure 'da Windows sanal masaüstü ortamınızı güvenli hale getirmeye yardımcı olmak için, sanal makinelerinizde gelen bağlantı noktası 3389 ' i açmanız önerilir. Windows sanal masaüstü, kullanıcıların konak havuzunun sanal makinelerine erişmesi için açık bir gelen bağlantı noktası 3389 gerektirmez.
->
-> Sorun giderme amacıyla bağlantı noktası 3389 ' i açmanız gerekiyorsa, tam zamanında erişim kullanmanızı öneririz. Daha fazla bilgi için bkz. [tam zamanında erişim ile yönetim bağlantı noktalarınızı güvenli hale getirme](../security-center/security-center-just-in-time.md).
+10. Bundan sonra, sanal makinelerin belirli bir etki alanına ve kuruluş birimine katılmasını isteyip istemediğinizi seçin. **Evet**' i seçerseniz, katılacak etki alanını belirtin. Ayrıca, sanal makinelerin bulunmasını istediğiniz belirli bir kuruluş birimini de ekleyebilirsiniz.
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Seçim Masaüstü uygulama grubuna ek kullanıcılar atama
+11. Yönetici hesabı ' nın altında, seçtiğiniz sanal ağın Active Directory Etki Alanı yöneticisinin kimlik bilgilerini girin.
 
-Azure Marketi havuzu oluşturmayı tamamladıktan sonra, Masaüstü uygulama grubuna daha fazla kullanıcı atayabilirsiniz. Daha fazla eklemek istemiyorsanız, bu bölümü atlayın.
+12. **Çalışma alanı**seçin.
 
-Kullanıcıları Masaüstü uygulama grubuna atamak için:
+Bununla birlikte, konak havuzunuzu ayarlamanın bir sonraki aşamasına başlamaya hazırız: uygulama grubunuzu bir çalışma alanına kaydetme.
 
-1. PowerShell penceresini açın.
+## <a name="workspace-information"></a>Çalışma alanı bilgileri
 
-1. Windows sanal masaüstü ortamında oturum açmak için aşağıdaki komutu çalıştırın:
+Konak Havuzu Kurulum işlemi varsayılan olarak bir masaüstü uygulama grubu oluşturur. Konak havuzunun istendiği gibi çalışması için, bu uygulama grubunu kullanıcılara veya Kullanıcı gruplarına yayımlamanız gerekir ve uygulama grubunu bir çalışma alanına kaydetmeniz gerekir. 
 
-   ```powershell
-   Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-   ```
+Masaüstü uygulama grubunu bir çalışma alanına kaydetmek için:
 
-1. Şu komutu kullanarak masaüstü uygulama grubuna kullanıcı ekleyin:
+1. **Evet**' i seçin.
 
-   ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-   ```
+   **Hayır**' ı seçerseniz, uygulama grubunu daha sonra kaydedebilirsiniz, ancak konak havuzunuzun düzgün şekilde çalışması için çalışma alanı kaydını hemen yapmanız önerilir.
 
-   Kullanıcının UPN 'si kullanıcının Azure AD 'deki kimliğiyle eşleşmelidir; Örneğin, *user1@contoso.com*. Birden çok kullanıcı eklemek istiyorsanız, her kullanıcı için komutunu çalıştırın.
+2. Sonra, yeni bir çalışma alanı oluşturmak mı yoksa mevcut çalışma alanlarından seçmek mi istediğinizi seçin. Yalnızca konak havuzuyla aynı konumda oluşturulan çalışma alanları, uygulama grubunu ' a kaydetmeye izin verilir.
 
-Masaüstü uygulama grubuna eklediğiniz kullanıcılar, desteklenen uzak masaüstü istemcileri ile Windows sanal masaüstü 'nde oturum açabilir ve oturum Masaüstü için bir kaynak görebilirler.
+3. İsteğe bağlı olarak **Etiketler**' i seçebilirsiniz.
 
-Desteklenen geçerli istemciler şunlardır:
+    Burada, yöneticilerinize daha kolay hale getirmek için nesneleri meta verilerle gruplandırabilmeniz için Etiketler ekleyebilirsiniz.
 
-* [Windows 7 ve Windows 10 için Uzak Masaüstü istemcisi](connect-windows-7-and-10.md)
-* [Windows Sanal Masaüstü Web istemcisi](connect-web.md)
+4. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin. 
+
+     >[!NOTE]
+     >İnceleme + doğrulama oluştur işlemi, parolanızın güvenlik standartlarını karşılayıp karşılamadığını veya mimarinizin doğru olup olmadığını kontrol etmez. bu nedenle, bunlardan herhangi biriyle ilgili sorunları denetlemeniz gerekir. 
+
+5. Her şeyin doğru göründüğünden emin olmak için dağıtımınız hakkındaki bilgileri gözden geçirin. İşiniz bittiğinde **Oluştur**’u seçin. Bu, aşağıdaki nesneleri oluşturan dağıtım işlemini başlatır:
+
+     - Yeni konak havuzunuz.
+     - Bir masaüstü uygulama grubu.
+     - Oluşturmayı seçerseniz çalışma alanı.
+     - Masaüstü uygulama grubunu kaydetmeyi seçerseniz, kayıt tamamlanacaktır
+     - Sanal makineler, etki alanına katılmış ve yeni konak havuzuna kayıtlı olan bunları oluşturmayı seçerseniz.
+     - Yapılandırmanızı temel alan bir Azure Kaynak Yönetimi şablonu için indirme bağlantısı.
+
+Bundan sonra işiniz tamamlandı!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir konak havuzu oluşturdunuz ve kullanıcılara masaüstüne erişim atadık. Konak havuzunuzu RemoteApp programları ile doldurabilirsiniz. Windows sanal masaüstündeki uygulamaları yönetme hakkında daha fazla bilgi edinmek için şu öğreticiye bakın:
+Artık konak havuzunuzu oluşturduğunuza göre, bunu RemoteApp programları ile doldurabilirsiniz. Windows sanal masaüstündeki uygulamaları yönetme hakkında daha fazla bilgi edinmek için sonraki öğreticimize gidin:
 
 > [!div class="nextstepaction"]
 > [Uygulama gruplarını yönetme öğreticisi](./manage-app-groups.md)

@@ -3,15 +3,15 @@ title: Bir TLS/SSL bağlaması ile özel bir DNS güvenliğini sağlama
 description: Sertifika ile bir TLS/SSL bağlaması oluşturarak özel etki alanınız için güvenli HTTPS erişimi. HTTPS veya TLS 1,2 ' i zorlayarak Web sitenizin güvenliğini geliştirebilirsiniz.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811755"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597904"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service 'de TLS/SSL bağlaması ile özel bir DNS adının güvenliğini sağlama
 
@@ -83,7 +83,7 @@ TLS **/SSL bağlama** ILETIŞIM kutusunda TLS bağlamasını yapılandırmanıza
 |-|-|
 | Özel etki alanı | İçin TLS/SSL bağlamasını eklemek için etki alanı adı. |
 | Özel sertifika parmak Izi | Bağlanacak sertifika. |
-| TLS/SSL türü | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** -çoklu SNI SSL bağlamaları eklenebilir. Bu seçenek, birden fazla TLS/SSL sertifikasının aynı IP adresindeki birden fazla etki alanının güvenliğini sağlar. En modern tarayıcıların (Internet Explorer, Chrome, Firefox ve Opera dahil) SNı desteği (daha fazla bilgi için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** -yalnızca bir IP SSL bağlama eklenebilir. Bu seçenek, yalnızca bir TLS/SSL sertifikasının ayrılmış bir genel IP adresinin güvenliğini sağlamasına izin verir. Bağlamayı yapılandırdıktan sonra, [IP SSL Için bir kaydı](#remap-a-record-for-ip-ssl)yeniden eşleme bölümündeki adımları uygulayın.<br/>IP SSL yalnızca üretimde veya yalıtılmış katmanlarda desteklenir. </li></ul> |
+| TLS/SSL türü | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** -çoklu SNI SSL bağlamaları eklenebilir. Bu seçenek, birden fazla TLS/SSL sertifikasının aynı IP adresindeki birden fazla etki alanının güvenliğini sağlar. En modern tarayıcıların (Internet Explorer, Chrome, Firefox ve Opera dahil) SNı desteği (daha fazla bilgi için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** -yalnızca bir IP SSL bağlama eklenebilir. Bu seçenek, yalnızca bir TLS/SSL sertifikasının ayrılmış bir genel IP adresinin güvenliğini sağlamasına izin verir. Bağlamayı yapılandırdıktan sonra [IP SSL kayıtları](#remap-records-for-ip-ssl)yeniden eşleme bölümündeki adımları uygulayın.<br/>IP SSL yalnızca **Standart** katmanda veya yukarıda desteklenir. </li></ul> |
 
 İşlem tamamlandıktan sonra, özel etki alanının TLS/SSL durumu **güvenli**olarak değiştirilir.
 
@@ -92,15 +92,17 @@ TLS **/SSL bağlama** ILETIŞIM kutusunda TLS bağlamasını yapılandırmanıza
 > [!NOTE]
 > **Özel etki alanlarında** **güvenli** bir durum, bir sertifikayla güvenli hale getirildiği anlamına gelir, App Service ancak örneğin, tarayıcının otomatik olarak imzalanıp imzalanmadığını veya dolduğunu (örneğin, tarayıcıların bir hata veya uyarı görüntülemesine da neden olabilir) kontrol etmez.
 
-## <a name="remap-a-record-for-ip-ssl"></a>IP SSL için A kaydını yeniden eşleme
+## <a name="remap-records-for-ip-ssl"></a>IP SSL için kayıtları yeniden eşleyin
 
 Uygulamanızda IP SSL kullanmıyorsanız, [özel etki alanınız Için test https](#test-https)'ye atlayın.
 
-Varsayılan olarak, uygulamanız paylaşılan bir genel IP adresi kullanır. Bir sertifikayı IP SSL bağladığınızda App Service, uygulamanız için yeni ve ayrılmış bir IP adresi oluşturur.
+Yapmanız gereken iki değişiklik olabilir:
 
-Bir kaydı uygulamanızla eşleştirdiyseniz, etki alanı kayıt defterinizi bu yeni, ayrılmış IP adresiyle güncelleştirin.
+- Varsayılan olarak, uygulamanız paylaşılan bir genel IP adresi kullanır. Bir sertifikayı IP SSL bağladığınızda App Service, uygulamanız için yeni ve ayrılmış bir IP adresi oluşturur. Bir kaydı uygulamanızla eşleştirdiyseniz, etki alanı kayıt defterinizi bu yeni, ayrılmış IP adresiyle güncelleştirin.
 
-Uygulamanızın **özel etki alanı** sayfası, yeni ve ayrılmış IP adresi ile güncelleştirilir. [Bu IP adresini kopyalayın](app-service-web-tutorial-custom-domain.md#info), ardından bu yeni IP adresine [A kaydını yeniden eşleyin](app-service-web-tutorial-custom-domain.md#map-an-a-record).
+    Uygulamanızın **özel etki alanı** sayfası, yeni ve ayrılmış IP adresi ile güncelleştirilir. [Bu IP adresini kopyalayın](app-service-web-tutorial-custom-domain.md#info), ardından bu yeni IP adresine [A kaydını yeniden eşleyin](app-service-web-tutorial-custom-domain.md#map-an-a-record).
+
+- ' A bir SNI SSL bağlamanız varsa, [herhangi bir CNAME eşlemesini](app-service-web-tutorial-custom-domain.md#map-a-cname-record) ( `sni` öneki ekleyin) `sni.<app-name>.azurewebsites.net` işaret etmek için yeniden eşleyin. `<app-name>.azurewebsites.net`
 
 ## <a name="test-https"></a>HTTPS’yi test etme
 

@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085765"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609791"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service ' de PostgreSQL ile Python (Docgo) Web uygulaması dağıtma
 
@@ -133,7 +133,7 @@ Komut tamamlandığında, ile `Ran Database Query:`olan çıktı satırlarını 
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> Postgres sunucunuzun konumunu belirtmek için, [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/regions/)biri `<location_name>` olan bağımsız değişkenini `--location <location-name>`de ekleyin. [`az account list-locations`](/cli/azure/account#az-account-list-locations) Komutu ile aboneliğiniz için kullanılabilir bölgeleri edinebilirsiniz.
+> `--location <location-name>`, [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/regions/)herhangi birine ayarlanabilir. [`az account list-locations`](/cli/azure/account#az-account-list-locations) Komutu ile aboneliğiniz için kullanılabilir bölgeleri edinebilirsiniz. Üretim uygulamaları için, veritabanınızı ve uygulamanızı aynı konuma koyun.
 
 ## <a name="deploy-the-app-service-app"></a>App Service uygulamasını dağıtma
 
@@ -149,7 +149,7 @@ Uygulama bu dizinden dağıtılacağından depo köküne (`djangoapp`) geri oldu
 Aşağıdaki örnekte gösterildiği gibi [`az webapp up`](/cli/azure/webapp#az-webapp-up) komutuyla bir App Service uygulaması oluşturun. * \<App-name>* değerini *benzersiz* bir adla değiştirin (sunucu uç noktası *https://\<app-name>. azurewebsites.net*). * \<App-name>* için izin verilen karakterler `A` - `Z`, `0` - `9`ve `-`' dir.
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ Dağıtım tamamlandıktan sonra, aşağıdaki gibi bir JSON çıkışı görür
 *App-Resource-Group>değerini kopyalayın. \< * Uygulamayı daha sonra yapılandırmak için gereklidir. 
 
 > [!TIP]
-> Daha sonra herhangi bir değişikliği dağıtmak ve tanılama günlüklerini hemen etkinleştirmek için aynı komutu kullanabilirsiniz:
+> İlgili ayarlar, deponuzdaki gizli bir *. Azure* dizinine kaydedilir. Herhangi bir değişikliği yeniden dağıtmak ve tanılama günlüklerini hemen etkinleştirmek için basit komutunu daha sonra kullanabilirsiniz:
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 Örnek kod artık dağıtıldı, ancak uygulama Azure 'daki Postgres veritabanına henüz bağlanmıyor. Bunu bir sonraki adımda yapacaksınız.
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 Değişiklikleri yeniden dağıtmak için depo kökünden aşağıdaki komutu çalıştırın:
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 App Service, uygulamanın mevcut olduğunu algılar ve yalnızca kodu dağıtır.

@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481424"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597731"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -47,10 +47,12 @@ Uygulama proxy 'Sini kullanmak için, Windows Server 2012 R2 veya üstünü çal
 Üretim ortamınızda yüksek kullanılabilirlik için birden fazla Windows Server olması önerilir. Bu öğretici için, bir Windows Server yeterlidir.
 
 > [!IMPORTANT]
-> Bağlayıcıyı Windows Server 2019 ' ye yüklüyorsanız HTTP2 sınırlaması vardır. Bağlayıcıyı bu sürümde kullanma geçici çözümü aşağıdaki kayıt defteri anahtarını ekleyip sunucuyu yeniden başlatmayı sağlar. Bu bir makine kayıt defteri geniş anahtarıdır. 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> Bağlayıcıyı Windows Server 2019 ' ye yüklüyorsanız, WinHttp bileşeninde HTTP2 protokol desteğini devre dışı bırakmanız gerekir. Bu, desteklenen işletim sistemlerinin önceki sürümlerinde varsayılan olarak devre dışıdır. Aşağıdaki kayıt defteri anahtarını eklemek ve sunucuyu yeniden başlatmak Windows Server 2019 ' de devre dışı bırakır. Bunun makine genelinde bir kayıt defteri anahtarı olduğunu unutmayın.
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>Bağlayıcı sunucusu için öneriler
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238870"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610692"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Şirket içi VMware VM’leri için Azure’da olağanüstü durum kurtarmayı ayarlama
 
@@ -65,11 +65,11 @@ Kaynak ortamınızda, bu şirket içi Site Recovery bileşenlerini barındırmak
 - **Ana hedef sunucu**: Ana hedef sunucu, Azure 'dan yeniden çalışma sırasında çoğaltma verilerini işler.
 
 
-Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket içi makinelerde birlikte yüklenir. Varsayılan olarak, VMware olağanüstü durum kurtarma için yapılandırma sunucusunu yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarladık. Bunu yapmak için, hazırlanan bir açık sanallaştırma uygulaması (OVA) şablonunu indirir ve VM 'yi oluşturmak için şablonu VMware 'ye içeri aktarabilirsiniz. 
+Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket içi makinelerde birlikte yüklenir. Varsayılan olarak, VMware olağanüstü durum kurtarma için yapılandırma sunucusunu yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarladık. Bunu yapmak için, hazırlanan bir açık sanallaştırma uygulaması (OVA) şablonunu indirir ve VM 'yi oluşturmak için şablonu VMware 'ye içeri aktarabilirsiniz.
 
 - Configuration Server 'ın en son sürümü portalda kullanılabilir. Doğrudan [Microsoft Indirme merkezi](https://aka.ms/asrconfigurationserver)' nden de indirebilirsiniz.
 - Bir sanal makine kurmak için bir OVA şablonu kullanmıyorsanız, yapılandırma sunucusunu el ile ayarlamak için [Bu yönergeleri](physical-manage-configuration-server.md) izleyin.
-- OVF şablonu ile sunulan lisans, 180 gün için geçerli bir değerlendirme lisanssıdır. VM üzerinde çalışan Windows 'un gerekli lisansla etkinleştirilmesi gerekir. 
+- OVF şablonu ile sunulan lisans, 180 gün için geçerli bir değerlendirme lisanssıdır. VM üzerinde çalışan Windows 'un gerekli lisansla etkinleştirilmesi gerekir.
 
 
 ### <a name="download-the-vm-template"></a>VM şablonunu indirme
@@ -77,7 +77,7 @@ Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket iç
 1. Kasada, **altyapı** > **kaynağı**hazırlama ' ya gidin.
 2. **Kaynağı hazırla** bölümünde **+Yapılandırma sunucusu**’nu seçin.
 3. **Sunucu Ekle** bölümünde **Sunucu türü**’nde **VMware için yapılandırma sunucusu**’nun görüntülenip görüntülenmediğini kontrol edin.
-4. Yapılandırma sunucusu için OVF şablonunu indirin.
+4. Yapılandırma sunucusu için OVA şablonunu indirin.
 
 
 
@@ -85,7 +85,7 @@ Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket iç
 
 
 1. VMWare vSphere İstemcisi ile VMware vCenter sunucusunda veya vSphere ESXi konağında oturum açın.
-2. **Dosya** menüsünde **OVF Şablonunu Dağıt** seçeneğini belirleyerek **OVF Şablonu Dağıtma Sihirbazı**’nı başlatın. 
+2. **Dosya** menüsünde **OVF Şablonunu Dağıt** seçeneğini belirleyerek **OVF Şablonu Dağıtma Sihirbazı**’nı başlatın.
 
      ![OVF şablonu](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 
 1. vSphere Client envanterinde VM’ye sağ tıklayın ve **Ayarları Düzenle**’yi seçin.
 2. **Donanım** bölümünde **Ekle** > **Ethernet Bağdaştırıcısı** seçeneğini belirleyin. Ardından **İleri**' yi seçin.
-3. Bir bağdaştırıcı türü ve ağ seçin. 
+3. Bir bağdaştırıcı türü ve ağ seçin.
 4. VM açıldığında sanal NIC’ye bağlanmak için **Açıldığında bağlan**’ı seçin. **İleri** > **son**' u seçin. Sonra **Tamam**’ı seçin.
 
 
-## <a name="register-the-configuration-server"></a>Yapılandırma sunucusunu kaydetme 
+## <a name="register-the-configuration-server"></a>Yapılandırma sunucusunu kaydetme
 
 Yapılandırma sunucusu kurulduktan sonra, bunu kasaya kaydedersiniz.
 
@@ -179,7 +179,7 @@ VM 'Ler için çoğaltmayı şu şekilde etkinleştirin:
 3. **Makine türü** bölümünde **Sanal Makineler**’i seçin.
 4. **vCenter/vSphere Hypervisor** bölümünde vSphere konağını veya konağı yöneten vCenter sunucusunu seçin.
 5. İşlem sunucusunu seçin (varsayılan olarak yapılandırma sunucusu VM’sine yüklenir). Sonra **Tamam**’ı seçin. Her işlem sunucusunun sistem durumu, önerilen sınırlara ve diğer parametrelere göre belirtilir. Sağlıklı bir işlem sunucusu seçin. [Kritik](vmware-physical-azure-monitor-process-server.md#process-server-alerts) bir işlem sunucusu seçilemez. Hataları [giderebilir ve çözümleyebilir](vmware-physical-azure-troubleshoot-process-server.md) **ya** da bir [genişleme işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlayabilirsiniz.
-6. **Hedef** bölümünde, yükü devredilen VM’leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Kaynak Yöneticisi dağıtım modelini kullanacağız. 
+6. **Hedef** bölümünde, yükü devredilen VM’leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Kaynak Yöneticisi dağıtım modelini kullanacağız.
 7. Yük devretme işleminden sonra oluşturulan Azure VM’lerin bağlandığı Azure ağını ve alt ağını seçin.
 8. Çoğaltmayı etkinleştirdiğiniz tüm VM’lere ağ ayarını uygulamak için **Seçili makineler için şimdi yapılandır**’ı seçin. Makineler için Azure ağını ayrı ayrı seçmek için **Daha sonra yapılandır**'ı seçin.
 9. Sanal **makineler** > ' de**sanal makineler**' i seçin, çoğaltmak istediğiniz her bir makineyi seçin. Yalnızca çoğaltmanın etkinleştirildiği makineleri seçebilirsiniz. Sonra **Tamam**’ı seçin. Belirli bir sanal makineyi görüntüleyemez/seçebiliyorsanız, sorunu çözme hakkında [daha fazla bilgi edinin](https://aka.ms/doc-plugin-VM-not-showing) .

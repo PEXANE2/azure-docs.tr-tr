@@ -8,14 +8,20 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b74b7f0b79ad4064d7133a19316d6aec6bd5ba3a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79365398"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611577"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Öğretici: hizmet güncelleştirmelerini doğrulamak için bir konak havuzu oluşturma
+
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Ana bilgisayar havuzlarını üretim ortamınıza dağıtılmadan önce, bir doğrulama ana bilgisayar havuzu oluşturmanızı kesinlikle öneririz. Güncelleştirmeler önce doğrulama ana bilgisayar havuzlarına uygulanır, böylece üretim ortamınıza göndermeden önce hizmet güncelleştirmelerini izlemenizi sağlar. Doğrulama ana bilgisayar havuzu olmadan, hata oluşturan değişiklikleri bulamamanıza neden olabilir ve bu da üretim ortamınızdaki kullanıcılar için kapalı kalma süresine yol açabilir.
 
@@ -26,53 +32,51 @@ Uygulamalarınızın en son güncelleştirmelerle çalışmasını sağlamak iç
 >[!NOTE]
 > Sonraki tüm güncelleştirmeleri test etmek için doğrulama ana bilgisayar havuzunu yerinde bırakmanız önerilir.
 
-Başlamadan önce, henüz yapmadıysanız [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/). Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+>[!IMPORTANT]
+>Windows sanal masaüstü Spring 2020 sürümü şu anda doğrulama ortamını etkinleştirme ve devre dışı bırakma konusunda sorun yaşıyor. Sorunu çöztiğimiz zaman bu makaleyi güncelleştireceğiz.
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+## <a name="prerequisites"></a>Ön koşullar
+
+Başlamadan önce, PowerShell modülünüzü ayarlamak ve Azure 'da oturum açmak için [Windows sanal masaüstü PowerShell modülünü ayarlama](powershell-module.md) bölümündeki yönergeleri izleyin.
 
 ## <a name="create-your-host-pool"></a>Konak havuzunuzu oluşturma
 
 Aşağıdaki makalelerdeki yönergeleri izleyerek bir konak havuzu oluşturabilirsiniz:
 - [Öğretici: Azure Marketi ile bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md)
-- [Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma](create-host-pools-arm-template.md)
 - [PowerShell ile ana bilgisayar havuzu oluşturma](create-host-pools-powershell.md)
 
 ## <a name="define-your-host-pool-as-a-validation-host-pool"></a>Konak havuzunuzu doğrulama ana bilgisayar havuzu olarak tanımlama
 
-Yeni konak havuzunu doğrulama konak havuzu olarak tanımlamak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın. Tekliflerdeki değerleri oturumunuzla ilgili değerlere göre değiştirin:
+Yeni konak havuzunu doğrulama konak havuzu olarak tanımlamak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın. Köşeli ayraçlar içindeki değerleri oturumunuzla ilgili değerlerle değiştirin:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool" -ValidationEnv $true
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -ValidationEnvironment:$true
 ```
 
-Doğrulama özelliğinin ayarlandığını onaylamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın. Tekliflerdeki değerleri oturumunuzla ilgili değerlerle değiştirin.
+Doğrulama özelliğinin ayarlandığını onaylamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın. Köşeli ayraçlar içindeki değerleri oturumunuzla ilgili değerlerle değiştirin.
 
 ```powershell
-Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | Format-List
 ```
 
 Cmdlet 'inin sonuçları şu çıkışa benzer görünmelidir:
 
-```
-    TenantName          : contoso 
-    TenantGroupName     : Default Tenant Group
-    HostPoolName        : contosoHostPool
+```powershell
+    HostPoolName        : hostpoolname
     FriendlyName        :
     Description         :
     Persistent          : False 
-    CustomRdpProperty    : use multimon:i:0;
+    CustomRdpProperty   : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
-    ValidationEnv       : True
-    Ring                :
+    ValidationEnvironment : True
 ```
 
 ## <a name="update-schedule"></a>Zamanlamayı Güncelleştir
 
 Hizmet güncelleştirmeleri ayda bir gerçekleşir. Önemli sorunlar varsa, kritik güncelleştirmeler daha sık bir hızda sağlanacaktır.
+
+Herhangi bir hizmet güncelleştirmesi varsa, ortamı doğrulamak için her gün en az küçük bir kullanıcı grubuna kaydolduğunuzdan emin olun. Hizmet güncelleştirmeleri hakkında bilgi sahibi olmak için [Techcommunity sitemizi](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true) düzenli olarak ziyaret etmenizi ve WVDUPdate ile tüm gönderileri izlemenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

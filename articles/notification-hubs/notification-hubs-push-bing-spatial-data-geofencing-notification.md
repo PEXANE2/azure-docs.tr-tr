@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 0abe443521b928dd087e23b5491635b02cd832e8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127198"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592035"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Öğretici: Notification Hubs ve Bing uzamsal veriler ile konum temelli anında iletme bildirimleri gönderme
 
@@ -217,7 +217,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 ## <a name="set-up-the-backend"></a>Arka ucu ayarlama
 
-1. [GitHub'dan .NET Arka Ucu Örneği](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)'ni indirin.
+1. [GitHub'dan .NET Arka Ucu Örneği](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)'ni indirin.
 2. İndirme işlemi tamamlandıktan sonra `NotifyUsers` klasörünü ve ardından Visual Studio’da `NotifyUsers.sln` dosyasını açın.
 3. `AppBackend` projesini **Başlangıç Projesi** olarak ayarlayın ve başlatın.
 

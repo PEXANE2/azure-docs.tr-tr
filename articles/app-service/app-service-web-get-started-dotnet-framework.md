@@ -5,12 +5,12 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 056c96807fed7d5acca85635440c8fe4d989c933
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81768900"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592409"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure’da ASP.NET Framework web uygulaması oluşturma
 
@@ -138,6 +138,8 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
    ![Azure portal App Service Genel Bakış](./media/app-service-web-get-started-dotnet-framework/web-app-general-framework-vs2019.png)
 
    Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
+
+[!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

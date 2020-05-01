@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77486109"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594648"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>V12 Java istemci kitaplıklarını kullanan Azure depolama örnekleri
 
@@ -23,7 +23,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 :::row:::
    :::column span="":::
@@ -209,23 +209,11 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
       [Dosya üzerinde erişim denetimleri al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
-:::row:::
-   :::column span="":::
-      [Data Lake dosya istemcisi kullanarak bir dosya oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
-   :::column-end:::
-   :::column span="":::
-      [Verileri bir dosyaya ekle](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="2":::
-      [Dosya indirme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L127)
-   :::column-end:::
-:::row-end:::
+
 
 ## <a name="azure-file-samples"></a>Azure dosya örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 :::row:::
    :::column span="2":::
@@ -338,7 +326,7 @@ Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara 
 
 ## <a name="queue-samples"></a>Kuyruk örnekleri
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 :::row:::
    :::column span="2":::

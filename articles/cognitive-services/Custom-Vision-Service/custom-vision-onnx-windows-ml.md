@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Windows ML ile ONNX modeli kullanma - Özel Görüntü İşleme Hizmeti'
+title: Windows ML ile ONNX modeli kullanma-Özel Görüntü İşleme Hizmeti
 titleSuffix: Azure Cognitive Services
 description: Azure Bilişsel Hizmetler’den dışarı aktarılan bir ONNX modelini kullanan Windows UWP uygulamasının nasıl oluşturulacağını öğrenin.
 services: cognitive-services
@@ -7,73 +7,56 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: tutorial
-ms.date: 04/14/2020
+ms.topic: conceptual
+ms.date: 04/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b59321bf04a8230342be706b88cd208c19d76ea
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404183"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594304"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Öğretici: Windows ML (önizleme) ile Özel Görüntü İşleme hizmetinden ONNX modeli kullanma
+# <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Windows ML ile Özel Görüntü İşleme bir ONNX modeli kullanma (Önizleme)
 
 Windows ML (önizleme) ile Özel Görüntü İşleme hizmetinden dışarı aktarılan bir ONNX modelinin nasıl kullanılacağını öğrenin.
 
-Bu belgedeki bilgiler, Windows ML ile Özel Görüntü İşleme Hizmeti’nden dışarı aktarılan bir ONNX dosyasının nasıl kullanılacağını göstermektedir. Örnek bir Windows UWP uygulaması sağlanmıştır. Örneğe, tanıyabilen bir eğitimli model eklenmiştir. Bu örnek ile kendi modelinizi nasıl kullanabileceğinize ilişkin adımlar da sağlanmıştır.
-
-> [!div class="checklist"]
-> * Örnek uygulama hakkında
-> * Örnek kodunu alma
-> * Örneği çalıştırma
-> * Kendi modelinizi kullanma
+Bu kılavuzda, Windows ML ile Özel Görüntü İşleme Hizmeti aktarılmış bir ONNX dosyasını nasıl kullanacağınızı öğreneceksiniz. Örnek UWP uygulamasını, eğitilen görüntü sınıflandırıcınızla kullanacaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Windows 10 sürüm 1809 veya üzeri
-
 * 17763 veya üzeri derleme Windows SDK
-
 * __Evrensel Windows Platformu geliştirmesi__ iş yükü etkinleştirilmiş Visual Studio 2017 15.7 veya sonraki bir sürüm.
-
-* Etkinleştirilmiş geliştirici modu. Daha fazla bilgi için [Geliştirme için cihazınızı etkinleştirme](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) belgesine bakın.
+* Bilgisayarınızda geliştirici modu etkin. Daha fazla bilgi için bkz. [cihazınızı geliştirme Için etkinleştirme](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
 
 ## <a name="about-the-example-app"></a>Örnek uygulama hakkında
 
-Uygulama, genel bir Windows UWP uygulamasıdır. Bilgisayarınızdan bir görüntü seçerek modele göndermenizi sağlar. Model tarafından döndürülen etiketler ve puanlar görüntünün yanında görüntülenir.
+Dahil edilen uygulama, genel bir Windows UWP uygulamasıdır. Bundan sonra yerel olarak depolanmış bir sınıflandırma modeliyle işlenen bilgisayarınızdan bir görüntü seçmenizi sağlar. Model tarafından döndürülen etiketler ve puanlar görüntünün yanında görüntülenir.
 
 ## <a name="get-the-example-code"></a>Örnek kodunu alma
 
-Örnek uygulama, adresinde [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample)bulunabilir.
+Örnek uygulama, GitHub 'da bulunan bilişsel [Hizmetler ONNX özel görüntü işleme örnek](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample) depositesinde bulunur. Bunu yerel makinenize kopyalayın ve Visual Studio 'da *SampleOnnxEvaluationApp. sln* ' i açın.
 
-## <a name="run-the-example"></a>Örneği çalıştırma
+## <a name="test-the-application"></a>Uygulamayı test etme
 
-1. Visual Studio’dan uygulamayı başlatmak için `F5` tuşunu kullanın. Geliştirici modunu etkinleştirmeniz istenebilir. Daha fazla bilgi için [Geliştirme için cihazınızı etkinleştirme](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) belgesine bakın.
-
-1. Uygulama başlatıldığında düğmeyi kullanarak puanlanacak bir görüntü seçin.
+1. Visual Studio’dan uygulamayı başlatmak için `F5` tuşunu kullanın. Geliştirici modunu etkinleştirmeniz istenebilir.
+1. Uygulama başlatıldığında düğmeyi kullanarak puanlanacak bir görüntü seçin. Varsayılan ONNX modeli, farklı tipte plankton sınıflandırmasına yönelik olarak tasarlanmıştır.
 
 ## <a name="use-your-own-model"></a>Kendi modelinizi kullanma
 
-Kendi modelinizi kullanmak için aşağıdaki adımları uygulayın:
+Kendi resim sınıflandırıcı modelinizi kullanmak için şu adımları izleyin:
 
-1. Özel Görüntü İşleme Hizmeti ile bir sınıflandırıcı [oluşturun ve eğitin](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier). Modeli dışarı aktarmak için **Genel (sıkıştırılmış)** gibi bir __sıkıştırılmış__ etki alanı seçin. Var olan bir sınıflandırıcıyı dışarı aktarmak için sağ üstteki dişli simgesini seçerek etki alanını sıkıştırın. __Ayarlar__ sayfasında sıkıştırılmış bir model seçin, projenizi kaydedin ve eğitin.  
-
-1. Performans sekmesine giderek [modelinizi dışarı aktarın](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) . bir Compact etki alanı ile eğitilen bir yineleme seçin, "dışarı aktar" düğmesi görünür. *Dışarı aktar*, *onnx*ve ardından *dışarı aktar*' ı seçin. Dosya hazır duruma geldikten sonra *İndir* düğmesini seçin.
-
-1. ONNX dosyasını projenizin __Varlıklar__ klasörüne bırakın. 
-
-1. Çözüm Gezgini'nde Varlıklar klasörüne sağ tıklayın ve __Var Olan Öğe Ekle__'yi seçin. ONNX dosyasını seçin.
-
-1. Çözüm Gezgini'nde Varlıklar klasöründen ONNX dosyasını seçin. Dosya için aşağıdaki özellikleri değiştirin:
-
-    * __Derleme eylemi__ -> __içeriği__
-    * __Copy to Output Directory__ -> __Daha yeniyse__ çıkış dizinine Kopyala
-
-1. `_onnxFileNames` değişkenini ONNX dosyasının adıyla değiştirin. Ayrıca `ClassLabel` değerini de modelde bulunan etiket sayısına göre değiştirin.
-
-1. Derleyin ve çalıştırın.
-
+1. Özel Görüntü İşleme Hizmeti ile bir sınıflandırıcı oluşturun ve eğitin. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [sınıflandırıcı oluşturma ve eğitme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier). **Genel (Compact)** gibi **Compact** etki alanlarından birini kullanın. 
+   * Farklı bir etki alanı kullanan mevcut bir sınıflandırıcınızı varsa, proje ayarlarında onu **düzenlemeye** dönüştürebilirsiniz. Ardından, devam etmeden önce projenizi yeniden eğitme.
+1. Modelinizi dışarı aktarın. Performans sekmesine geçin ve bir **Compact** etki alanı ile eğitilen bir yineleme seçin. Görüntülenen **dışarı aktar** düğmesini seçin. Sonra **Onnx**' i ve ardından **dışarı aktar**' ı seçin. Dosya hazır duruma geldikten sonra **İndir** düğmesini seçin. Dışarı aktarma seçenekleri hakkında daha fazla bilgi için bkz. [modelinizi dışarı aktarma](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model).
+1. İndirilen *. zip* dosyasını açın ve *modelden model. onnx* dosyasını ayıklayın. Bu dosya, sınıflandırıcı modelinizi içerir.
+1. Visual Studio 'daki Çözüm Gezgini **varlıklar** klasörüne sağ tıklayın ve __Varolan öğe Ekle__' yi seçin. ONNX dosyanızı seçin.
+1. Çözüm Gezgini, ONNX dosyasına sağ tıklayın ve **Özellikler**' i seçin. Dosya için aşağıdaki özellikleri değiştirin:
+   * __Derleme eylemi__ -> __içeriği__
+   * __Copy to Output Directory__ -> __Daha yeniyse__ çıkış dizinine Kopyala
+1. Sonra _MainPage.xaml.cs_ ' i açın ve değerini `_ourOnnxFileName` onnx dosyanızın adıyla değiştirin.
+1. Projeyi derlemek `F5` ve çalıştırmak için öğesini kullanın.
 1. Değerlendirilecek görüntüyü seçmek için düğmeye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -85,4 +68,4 @@ Başka dışarı aktarma yollarını keşfetmek ve Özel Görüntü İşleme mod
 * [Swift iOS uygulamasında dışarı aktarılan CoreML modelini kullanma](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Xamarin ile iOS uygulamasında dışarı aktarılan CoreML modelini kullanma](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-Windows ML ile ONNX modellerini kullanma hakkında daha fazla bilgi için [Windows ML ile uygulamanızda bir modeli tümleştirme](/windows/ai/windows-ml/integrate-model) belgesine bakın.
+Windows ML ile ONNX modellerini kullanma hakkında daha fazla bilgi için bkz. [WINDOWS ml ile bir modeli uygulamanıza tümleştirme](/windows/ai/windows-ml/integrate-model).

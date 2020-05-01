@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/22/2019
+ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: f7ca8fdaddab9757292939c4f7e658179d6e517c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 267c2fb72b38053429019746a573c740d812c38c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421796"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608395"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Konuşmayı metne dönüştürme (alt grafik: grafikler/speechToText)
 
@@ -40,3 +40,30 @@ ms.locfileid: "81421796"
 | `service.annotations` | Hizmet meta verileri için **konuşmaya metin** ek açıklamaları. Ek açıklamalar anahtar değer çiftleridir. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | [Yatay Pod otomatik Scaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) 'ın etkinleştirilip etkinleştirilmeyeceğini belirtir. `speech-to-text-autoscaler` Ise `true`, Kubernetes kümesinde dağıtılır. | `true` |
 | `service.podDisruption.enabled` | [Pod kesintisi bütçesinin](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) etkin olup olmadığı. `speech-to-text-poddisruptionbudget` Ise `true`, Kubernetes kümesinde dağıtılır. | `true` |
+
+#### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>Yaklaşım Analizi (alt grafik: grafikler/speechToText)
+
+Konuşmayı metin kapsayıcısının v 2.2.0 'den başlayarak, Metin Analizi API'si kullanarak yaklaşım analizi için aşağıdaki parametreler kullanılır.
+
+|Parametre|Açıklama|Değerler|Varsayılan|
+| --- | --- | --- | --- |
+|`textanalytics.enabled`| **Metin analizi** hizmetinin etkin olup olmadığı| doğru/yanlış| `false`|
+|`textanalytics.image.registry`| **Metin analizi** Docker görüntü kayıt defteri| geçerli Docker görüntü kayıt defteri| |
+|`textanalytics.image.repository`| **Metin analizi** Docker görüntü deposu| geçerli Docker görüntü deposu| |
+|`textanalytics.image.tag`| **Metin analizi** Docker resim etiketi| geçerli Docker resmi etiketi| |
+|`textanalytics.image.pullSecrets`| **Metin analizi** Docker görüntüsü çekme için görüntü gizli dizileri| geçerli gizli diziler adı| |
+|`textanalytics.image.pullByHash`| Karma olarak Docker görüntüsü çekiliyor olup olmadığını belirtir.  Varsa `yes`, `image.hash` bunun da olması gerekir. Varsa `no`, ' false ' olarak ayarlayın. `false` varsayılan değerdir.| doğru/yanlış| `false`|
+|`textanalytics.image.hash`| **Metin analizi** Docker görüntü karması. Yalnızca ile `image.pullByHash:true`kullanın.| geçerli Docker görüntü karması | |
+|`textanalytics.image.args.eula`| , Lisansı kabul ettiğinizi belirten, **metin analizi** kapsayıcısına göre gerekli bağımsız değişkenlerden biri. Bu seçeneğin değeri şu olmalıdır: `accept`.| `accept`kapsayıcısını kullanmak istiyorsanız | |
+|`textanalytics.image.args.billing`| Faturalama uç noktası URI 'sini belirten, **metin analizi** kapsayıcısına göre gerekli bağımsız değişkenlerden biri. Faturalandırma uç noktası URI değeri Azure portal konuşmaya Genel Bakış sayfasında kullanılabilir.|Geçerli faturalandırma uç noktası URI 'SI||
+|`textanalytics.image.args.apikey`| Fatura bilgilerini izlemek için kullanılan, **metin analizi** kapsayıcısına göre gerekli bağımsız değişkenlerden biri.| geçerli apikey||
+|`textanalytics.cpuRequest`| **Metin analizi** kapsayıcısı IÇIN istenen CPU| int| `3000m`|
+|`textanalytics.cpuLimit`| **Metin analizi** kapsayıcısı IÇIN sınırlı CPU| | `8000m`|
+|`textanalytics.memoryRequest`| **Metin analizi** kapsayıcısı için istenen bellek| | `3Gi`|
+|`textanalytics.memoryLimit`| **Metin analizi** kapsayıcısı için sınırlı bellek| | `8Gi`|
+|`textanalytics.service.sentimentURISuffix`| Yaklaşım Analizi URI soneki, tüm URI "`<service>`http://:`<port>`/`<sentimentURISuffix>`" biçimindedir. | | `text/analytics/v3.0-preview/sentiment`|
+|`textanalytics.service.type`| Kubernetes 'teki **metin analizi** hizmetinin türü. Bkz. [Kubernetes hizmet türleri](https://kubernetes.io/docs/concepts/services-networking/service/) | geçerli Kubernetes hizmet türü | `LoadBalancer` |
+|`textanalytics.service.port`| **Metin analizi** hizmetinin bağlantı noktası| int| `50085`|
+|`textanalytics.service.annotations`| Kullanıcılar **metin analizi** hizmeti meta verilerine eklenebilir. Örneğin:<br/> **açıklamaları**<br/>`   `**Some/annotation1: değer1**<br/>`  `**Some/annotation2: değer2** | her satır için bir adet ek açıklama| |
+|`textanalytics.serivce.autoScaler.enabled`| [Yatay Pod otomatik Scaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) etkinleştirilip etkinleştirilmediği. Etkinleştirilirse, `text-analytics-autoscaler` Kubernetes kümesinde dağıtılır | doğru/yanlış| `true`|
+|`textanalytics.service.podDisruption.enabled`| [Pod kesintisi bütçesinin](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) etkin olup olmadığı. Etkinleştirilirse, `text-analytics-poddisruptionbudget` Kubernetes kümesinde dağıtılır| doğru/yanlış| `true`|
