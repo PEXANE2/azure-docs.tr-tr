@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: PHP ile Gremlin API - Azure Cosmos DB'
+title: 'Hızlı başlangıç: PHP ile Gremlin API-Azure Cosmos DB'
 description: Bu hızlı başlangıçta Azure portalı ve PHP ile konsol uygulaması oluşturmak için Azure Cosmos DB Gremlin API’sinin nasıl kullanılacağı gösterilmektedir
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
 ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68736641"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Hızlı başlatma: PHP ve Azure portalını kullanarak Azure Cosmos DB'de grafik veritabanı oluşturma
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Hızlı başlangıç: PHP ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -194,7 +194,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
    ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. **Sonuç listesinde**, grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben'i** seçin ve Robin'e bağlı olduklarını fark edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
+2. **Sonuç listesinde**, grafiğe yeni kullanıcıların eklendiğini görürsünüz. **Ben** ' i seçin ve bir kez denendiğine dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
    ![Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -204,11 +204,11 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
 4. *Kişi* etiketi girin.
 
-5. Aşağıdaki özelliklerin her birini eklemek için **Özellik Ekle'yi** tıklatın. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca **kimlik** anahtarı gereklidir.
+5. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' ye tıklayın. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca **kimlik** anahtarı gereklidir.
 
     Anahtar | Değer | Notlar
     ----|----|----
-    **Kimliği** | ashley | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    **numarasını** | ashley | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     **cinsiyet** | kadın | 
     **teknoloji** | java | 
 
@@ -225,7 +225,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
     
     Anahtar | Değer | Notlar
     ----|----|----
-    **Kimliği** | rakesh | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
+    **numarasını** | rakesh | Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     **cinsiyet** | erkek | 
     **okul** | MIT | 
 
