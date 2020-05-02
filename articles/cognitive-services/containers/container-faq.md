@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876515"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690833"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 
@@ -76,7 +76,11 @@ Y **:** Ana sürüm değişiklikleri, API imzasında bir yeni değişiklik oldu�
 
 **S: bilişsel hizmetler kapsayıcılarını IoT cihazlarında nasıl çalıştırmalıyım?**
 
-Güvenilir bir internet bağlantınız yoksa veya bant genişliği maliyetlerine kaydetmek isteyip istemediğiniz. Ya da düşük gecikme süreli gereksinimleriniz varsa veya sitede çözümlenmesi gereken hassas verilerle uğraşıyorsanız, bilişsel [Hizmetler kapsayıcıları ile Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) , bulut ile tutarlılık sağlar.
+Y **:** Güvenilir bir internet bağlantınız yoksa veya bant genişliği maliyetlerine kaydetmek isteyip istemediğiniz. Ya da düşük gecikme süreli gereksinimleriniz varsa veya sitede çözümlenmesi gereken hassas verilerle uğraşıyorsanız, bilişsel [Hizmetler kapsayıcıları ile Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) , bulut ile tutarlılık sağlar.
+
+**S: Bu kapsayıcılar OpenShift ile uyumlu mı?** 
+
+OpenShift ile kapsayıcıları test etmedik, ancak bilişsel hizmetler kapsayıcıları Docker görüntülerini destekleyen herhangi bir platformda çalışmalıdır. OpenShift kullanıyorsanız, kapsayıcıları olarak `root-user`çalıştırmayı öneririz.
 
 **S: ürün geri bildirimi ve özellik önerileri sağlamak Nasıl yaparım? misiniz?**
 

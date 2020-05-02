@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 05/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443066"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691031"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi önizlemesi kullanarak sanal WAN 'nizin güvenliğini sağlama 
 
@@ -36,29 +36,34 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Hub ve bağlı bileşen mimarisi oluşturma
 
-İlk olarak, sunucularınızı yerleştirebileceğiniz bir bağlı ağ VNet oluşturun.
+İlk olarak, sunucularınızı yerleştirebileceğiniz bir bağlı bileşen sanal ağı oluşturun.
 
-### <a name="create-a-spoke-vnet-and-subnets"></a>Bir bağlı ağ sanal ağı ve alt ağları oluşturma
+### <a name="create-a-spoke-virtual-network-and-subnets"></a>Bağlı bileşen sanal ağı ve alt ağları oluşturma
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. **Ağ**altında **sanal ağ**' ı seçin.
-4. **Ad**Için **bağlı bileşen-01**yazın.
-5. **Adres alanı** için **10.0.0.0/16** yazın.
-6. **Abonelik** bölümünde aboneliğinizi seçin.
-7. **Kaynak grubu**için, **Yeni oluştur**' u seçin ve ad için **ILT-Manager** yazın ve **Tamam**' ı seçin.
-8. **Konum**Için **(US) Doğu ABD**seçin.
-9. **Alt ağ**altında, **ad** türü **iş yükü-sn**için.
-10. **Adres aralığı** için **10.0.1.0/24** yazın.
-11. Diğer varsayılan ayarları kabul edin ve **Oluştur**' u seçin.
+2. **Abonelik** bölümünde aboneliğinizi seçin.
+1. **Kaynak grubu**için, **Yeni oluştur**' u seçin ve ad için **ILT-Manager** yazın ve **Tamam**' ı seçin.
+2. **Ad**Için **bağlı bileşen-01**yazın.
+3. **Bölge**Için **(US) Doğu ABD**seçin.
+4. **İleri ' yi seçin: IP adresleri**.
+1. **Adres alanı**için varsayılan **10.0.0.0/16**' yı kabul edin.
+3. **Alt ağ adı**altında **varsayılan**' ı seçin.
+4. Alt ağ adını **Iş yükü-sn**olarak değiştirin.
+5. **Alt ağ adres aralığı**için **10.0.1.0/24**yazın.
+6. **Kaydet**' i seçin.
 
 Ardından, bir sıçrama sunucusu için bir alt ağ oluşturun.
 
-1. Azure Portal giriş sayfasında **kaynak grupları** > **İlt-Manager**' ı seçin.
-2. **Bağlı bileşen-01** sanal ağını seçin.
-3. **Alt ağlar** > **+ alt ağ**' ı seçin.
-4. **Ad**Için, **atsn**yazın.
-5. **Adres aralığı** için **10.0.2.0/24** yazın.
-6. **Tamam**’ı seçin.
+1. **Alt ağ ekle**' yi seçin.
+4. **Alt ağ adı**Için, **atsn**yazın.
+5. **Alt ağ adres aralığı**için **10.0.2.0/24**yazın.
+6. **Add (Ekle)** seçeneğini belirleyin.
+
+Şimdi sanal ağı oluşturun.
+
+1. **İncele ve oluştur**’u seçin.
+2. **Oluştur**’u seçin.
 
 ### <a name="create-the-secured-virtual-hub"></a>Güvenli sanal hub 'ı oluşturma
 
@@ -66,17 +71,18 @@ Güvenlik Duvarı Yöneticisi 'Ni kullanarak güvenli sanal hub 'ınızı oluşt
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. Arama kutusuna **güvenlik duvarı Yöneticisi** yazın ve **güvenlik duvarı Yöneticisi**' ni seçin.
-3. **Güvenlik duvarı Yöneticisi** sayfasında, **güvenli sanal hub oluştur**' u seçin.
-4. **Yeni güvenli sanal hub oluştur** sayfasında, aboneliğinizi ve **İlt-Manager** kaynak grubunu seçin.
-5. **Güvenli sanal hub adı**Için, **hub-01**yazın.
-6. **Konum**için **Doğu ABD**' yi seçin.
-7. **Hub adres alanı**için **10.1.0.0/16**yazın.
-8. Yeni vWAN adı için **vwan-01**yazın.
-9. **Güvenilen güvenlik Iş ortaklarını etkinleştirmek IÇIN VPN ağ geçidini dahil et** onay kutusunu işaretsiz bırakın.
-10. **İleri ' yi seçin: Azure Güvenlik Duvarı**.
-11. Varsayılan **Azure Güvenlik Duvarı** **etkin** ayarını kabul edin ve ardından **İleri: güvenilen güvenlik ortağı**' nı seçin.
-12. Varsayılan **güvenilir güvenlik Iş ortağı** **devre dışı** ayarını kabul edin ve ileri ' yi seçin **: gözden geçir + oluştur**.
-13. **Oluştur**’u seçin. Dağıtımı yaklaşık 30 dakika sürer.
+3. **Güvenlik duvarı Yöneticisi** sayfasında, **güvenli sanal hub 'ları görüntüle**' yi seçin.
+4. **Güvenlik duvarı Yöneticisi 'nde | Güvenli sanal hub 'lar** sayfasında, **yeni güvenli sanal hub oluştur**' u seçin.
+5. **Kaynak grubu**Için, **İlt-Manager**' ı seçin.
+7. **Bölge**için **Doğu ABD**' yi seçin.
+1. **Güvenli sanal hub adı**Için, **hub-01**yazın.
+2. **Hub adres alanı**için **10.1.0.0/16**yazın.
+3. Yeni vWAN adı için **vwan-01**yazın.
+4. **Güvenilen güvenlik Iş ortaklarını etkinleştirmek IÇIN VPN ağ geçidini dahil et** onay kutusunu işaretsiz bırakın.
+5. **İleri ' yi seçin: Azure Güvenlik Duvarı**.
+6. Varsayılan **Azure Güvenlik Duvarı** **etkin** ayarını kabul edin ve ardından **İleri: güvenilen güvenlik ortağı**' nı seçin.
+7. Varsayılan **güvenilir güvenlik Iş ortağı** **devre dışı** ayarını kabul edin ve ileri ' yi seçin **: gözden geçir + oluştur**.
+8. **Oluştur**’u seçin. Dağıtımı yaklaşık 30 dakika sürer.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>Hub ve bağlı bileşen VNET 'leri bağlama
 
@@ -87,15 +93,16 @@ Artık hub ve bağlı bileşen VNET 'leri de eşler.
 3. **Bağlantı ekle**' yi seçin.
 4. **Bağlantı adı**için **hub-kol**yazın.
 5. Hub **'lar**için **hub-01**' i seçin.
-6. **Sanal ağ**Için **bağlı bileşen-01**' i seçin.
-7. **Tamam**’ı seçin.
+6. **Kaynak grubu**Için, **İlt-Manager**' ı seçin.
+7. **Sanal ağ**Için **bağlı bileşen-01**' i seçin.
+8. **Tamam**’ı seçin.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Bir güvenlik duvarı ilkesi oluşturma ve merkezinizi güvenli hale getirme
 
 Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub üzerinde yönlendirmek için kural koleksiyonlarını tanımlar. Güvenlik Duvarı ilkenizi oluşturup merkezinizi güvenli hale getirin.
 
-1. Güvenlik Duvarı Yöneticisi 'nden **Azure Güvenlik Duvarı Ilkesi oluştur**' u seçin.
-2. Aboneliğinizi seçin ve ardından **FW-Manager** kaynak grubunu seçin.
+1. Güvenlik Duvarı Yöneticisi 'nden **Azure Güvenlik Duvarı Ilkelerini görüntüle**' yi seçin.
+2. **Azure Güvenlik Duvarı Ilkesi oluştur**' u seçin.
 3. **İlke ayrıntıları**' nın altında, **ad** türü **ilkesi-01** ve **bölge** için **Doğu ABD**seçin.
 4. **Sonraki: kurallar**' ı seçin.
 5. **Kurallar** sekmesinde **kural koleksiyonu Ekle**' yi seçin.
@@ -109,10 +116,11 @@ Bir güvenlik duvarı ilkesi, trafiği bir veya daha fazla güvenli sanal hub ü
 13. * * Hedef türünün **FQDN**olduğundan emin olun.
 14. **Hedef**için ** \*. Microsoft.com**yazın.
 15. **Add (Ekle)** seçeneğini belirleyin.
-16. **İleri ' yi seçin: güvenli sanal hub 'lar**.
-17. **Güvenli sanal hub 'lar** sekmesinde **hub-01**' i seçin.
-19. **İncele ve oluştur**’u seçin.
-20. **Oluştur**’u seçin.
+16. Ileri 'yi seçin **: hub**.
+17. **Hub 'lar** sekmesinde **sanal hub 'ları ilişkilendir**' i seçin.
+18. **Hub-01** ' i seçin ve ardından **Ekle**' yi seçin.
+1. **İncele ve oluştur**’u seçin.
+2. **Oluştur**’u seçin.
 
 Bu işlem yaklaşık beş dakika veya daha uzun sürebilir.
 
@@ -126,10 +134,9 @@ Artık ağ trafiğinin güvenlik duvarınızdan yönlendirildiğinden emin olman
 4. **Internet trafiği**, **sanal ağlardan gelen trafik**altında **Azure Güvenlik Duvarı aracılığıyla gönder**' i seçin.
 5. **Azure özel trafiği**, **sanal ağlara giden trafik**altında **Azure Güvenlik Duvarı aracılığıyla gönder**' i seçin.
 6. **IP adresi ön eklerini Düzenle**' yi seçin.
-7. **IP adresi öneki ekle**' yi seçin.
 8. Iş yükü alt ağının adresi olarak **10.0.1.0/24** yazın ve **Kaydet**' i seçin.
 9. **Ayarlar**altında **Bağlantılar**' ı seçin.
-10. **Hub-ışınsal** bağlantısı ' nı seçin ve ardından **güvenli internet trafiği** ' ni seçin ve ardından **Tamam**' ı seçin.
+10. **Hub-ışınsal** bağlantısı bağlantısının **Internet trafiğini** **güvenli**olarak gösterdiğini doğrulayın.
 
 
 ## <a name="test-your-firewall"></a>Güvenlik duvarınızı test etme
@@ -147,12 +154,11 @@ Güvenlik Duvarı kurallarınızı test etmek için, birkaç sunucu dağıtmanı
    |Kaynak grubu     |**FW-yönetici**|
    |Sanal makine adı     |**Geç-SRV**|
    |Bölge     |**ABD Doğu ABD)**|
-   |Yönetici Kullanıcı adı     |**azureuser**|
-   |Parola     |parolanızı yazın|
+   |Yönetici Kullanıcı adı     |Kullanıcı adı yazın|
+   |Parola     |parola yazın|
 
 4. **Gelen bağlantı noktası kuralları**altında, **Genel gelen bağlantı noktaları**Için **Seçili bağlantı noktalarına izin ver**' i seçin
 5. **Gelen bağlantı noktaları Seç**için **RDP (3389)** seçeneğini belirleyin.
-
 6. Diğer varsayılanları kabul edin ve **İleri ' yi seçin: diskler**.
 7. Disk varsayılanlarını kabul edin ve **İleri ' yi seçin: ağ**.
 8. Sanal ağ için **bağlı bileşen-01** ' in seçildiğinden ve alt AĞıN **geç sn**olduğundan emin olun.

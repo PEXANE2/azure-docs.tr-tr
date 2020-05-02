@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a9db42bcd69d9a24a454c02c9bb0e2d339cb4860
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185787"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692390"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional ile SYNAPSE SQL 'e bağlanma
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
-Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturuyoruz. Kimlik bilgileri, depolama alanındaki dosyalara erişmek için SQL isteğe bağlı hizmeti tarafından kullanılır.
+Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturuyoruz. Bu kimlik bilgisi, depolama alanındaki dosyalara erişmek için SQL isteğe bağlı hizmeti tarafından kullanılır.
 
 > [!NOTE]
-> Depolama hesabına erişim için kimlik bilgisi oluşturmanız gerekir. İsteğe bağlı SQL, farklı bölgelerdeki depolamaya erişebilse de depolama ve Azure SYNAPSE çalışma alanının aynı bölgede bulunması daha iyi performans deneyimi sağlar.
+> Depolama hesabı erişimi için kimlik bilgileri oluşturmanız gerekir. İsteğe bağlı SQL, farklı bölgelerdeki depolamaya erişebilse de depolama ve Azure SYNAPSE çalışma alanının aynı bölgede bulunması daha iyi bir performans deneyimi sağlar.
 
 **Census veri kapsayıcıları için kimlik bilgileri oluşturma hakkında kod parçacığı**, şunu çalıştırın:
 
@@ -93,6 +93,7 @@ GO
 ## <a name="creating-power-bi-desktop-report"></a>Power BI Masaüstü raporu oluşturuluyor
 
 Power BI Masaüstü uygulamasını açın ve **veri al** seçeneğini belirleyin.
+
 ![Power BI Masaüstü uygulamasını açın ve veri al ' ı seçin.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>1. adım-veri kaynağını seçme

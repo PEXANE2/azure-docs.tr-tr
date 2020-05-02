@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92d3f2381f2fdce123511caa2339d41b0641b077
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206757"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Öğretici: float ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -37,7 +37,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Çoklu oturum açma (SSO) etkin aboneliğini kaydır.
+* Bir float aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://app.float.com/join?)alabilirsiniz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     **Oturum açma URL 'si** metin kutusuna, modele `https://<hostname>.float.com/login`bir URL yazın.
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [float istemci desteği ekibine](mailto:support@float.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Float <hostname> ana bilgisayar adıyla değiştirin. Emin değilseniz [float istemci desteği ekibine](mailto:support@float.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. Kayan uygulama, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -143,11 +143,11 @@ Bu bölümde, float 'e erişim vererek Azure çoklu oturum açma özelliğini ku
 
 ## <a name="configure-float-sso"></a>Kayan SSO yapılandırma
 
-**Kayan noktalı** çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal kopya URL 'lerini [float destek ekibine](mailto:support@float.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Kayan nokta** tarafında çoklu oturum açmayı yapılandırmak Için, kayan ekip ayarları bölümünü ziyaret edin ve kimlik doğrulama modülünden Yapılandır ' ı seçin. Azure AD oturum açma URL 'sini SAML 2,0 Endpoint URL alanına yapıştırın, Azure AD Iletinin tanımlayıcısının 'yi kimlik sağlayıcısı veren URL alanına yapıştırın, indirilen **sertifikadaki (base64)** tam metni X. 509.440 sertifikası alanına yapıştırın ve kaydedin.
 
 ### <a name="create-float-test-user"></a>Kayan test kullanıcısı oluştur
 
-Bu bölümde, float 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kayan platformda kullanıcıları eklemek için [float destek ekibi](mailto:support@float.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, float 'de Britta Simon adlı bir kullanıcı oluşturun. Kullanıcıları kişiler bölümü veya takım ayarları Konuk bölümünden ekleyin ve bu kullanıcılara bir erişim hakkı verin. Çoklu oturum açma kullanmadan önce kullanıcılar oluşturulmalı ve daveti kabul etmelidir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

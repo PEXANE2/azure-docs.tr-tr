@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676683"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691887"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>SYNAPSE SQL 'de isteğe bağlı SQL (Önizleme) kaynaklarını kullanarak depolama dosyalarını sorgulama
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+En iyi performans için, [uygun gösterilen veri türlerinin](best-practices-sql-on-demand.md#check-inferred-data-types) kullanıldığından emin olun. 
+
 ### <a name="filename-function"></a>Filename işlevi
 
-Bu işlev, satırın kaynaklandığı dosya adını döndürür.
+Bu işlev, satırın kaynaklandığı dosya adını döndürür. 
 
 Belirli dosyaları sorgulamak için, [dosyaya özel dosyaları sorgula](query-specific-files.md#filename) makalesindeki dosya adı bölümünü okuyun.
+
+Dönüş veri türü nvarchar (1024). En iyi performans için dosya adı işlevinin sonucunu her zaman uygun veri türüne atayın. Karakter veri türü kullanırsanız, uygun uzunluğun kullanıldığından emin olun.
 
 ### <a name="filepath-function"></a>FilePath işlevi
 
@@ -137,6 +141,8 @@ Bu işlev, yolun tam yolunu veya bir parçasını döndürür:
 - Parametresi ile çağrıldığında, parametresinde belirtilen konumda joker karakterle eşleşen yolun bir bölümünü döndürür. Örneğin, parametre değeri 1 ilk joker karakterle eşleşen yolun bir bölümünü döndürür.
 
 Daha fazla bilgi için, [özel dosyaları sorgula](query-specific-files.md#filepath) makalesindeki FilePath bölümünü okuyun.
+
+Dönüş veri türü nvarchar (1024). En iyi performans için, her zaman FilePath işlevinin sonucunu uygun veri türüne atayın. Karakter veri türü kullanırsanız, uygun uzunluğun kullanıldığından emin olun.
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Karmaşık türlerle ve iç içe veya yinelenen veri yapıları ile çalışma
 

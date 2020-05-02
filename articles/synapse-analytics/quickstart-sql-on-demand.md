@@ -1,6 +1,6 @@
 ---
 title: İsteğe bağlı SQL (Önizleme) kullanma
-description: Bu hızlı başlangıçta, SQL isteğe bağlı (Önizleme) kullanarak çeşitli dosya türlerini nasıl sorgulayabileceğinizi göreceksiniz.
+description: Bu hızlı başlangıçta, SQL isteğe bağlı (Önizleme) kullanarak çeşitli dosya türlerini sorgulamak için ne kadar kolay olduğunu göreceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49918fc67a45419e5c7ca123642c48e689a1496
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113791"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692165"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Hızlı başlangıç: isteğe bağlı SQL kullanma
 
-SYNAPSE SQL isteğe bağlı (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarınızda SQL sorgularını çalıştırmanıza olanak tanıyan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, isteğe bağlı SQL kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz.
+SYNAPSE SQL isteğe bağlı (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, isteğe bağlı SQL kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz.
 
 Aşağıdaki dosya türleri desteklenir: JSON, CSV, Apache Parquet
 
@@ -26,7 +26,7 @@ Aşağıdaki dosya türleri desteklenir: JSON, CSV, Apache Parquet
 
 Sorgu vermek için bir SQL istemcisi seçin:
 
-- [Azure SYNAPSE Studio](quickstart-synapse-studio.md) , depolama alanındaki dosyalara GÖZATıP SQL sorgusu oluşturmayı kullanabileceğiniz bir web aracıdır.
+- [Azure SYNAPSE Studio](quickstart-synapse-studio.md) , depolama alanındaki dosyalara GÖZATıP SQL sorguları oluşturmayı kullanabileceğiniz bir web aracıdır.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) , isteğe bağlı veritabanınızda SQL sorguları ve Not defterleri çalıştırmanızı sağlayan bir istemci aracıdır.
 - [SQL Server Management Studio](sql/get-started-ssms.md) , isteğe bağlı veritabanınızda SQL sorguları çalıştırmanızı sağlayan bir istemci aracıdır.
 
@@ -48,12 +48,11 @@ Hızlı Başlangıç parametreleri:
 
 ### <a name="create-database"></a>Veritabanı oluşturma
 
-Tanıtım amacıyla kendi veritabanınızı oluşturun. Bu, görünümlerinizi oluşturduğunuz veritabanıdır. Bu makaledeki örnek sorgularda bu veritabanını kullanın.
+Tanıtım amacıyla kendi veritabanınızı oluşturun. Bu veritabanını, bu makaledeki görünümlerinizi ve örnek sorguları oluşturmak için kullanacaksınız.
 
 > [!NOTE]
 > Veritabanları, gerçek veriler için değil yalnızca görünüm meta verileri için kullanılır.
->
-> Daha sonra hızlı başlangıçta kullanmak üzere kullandığınız veritabanı adını yazın.
+>Daha sonra hızlı başlangıçta kullanmak üzere kullandığınız veritabanı adını yazın.
 
 Seçtiğiniz bir ada geçiş `mydbname` yapmak için aşağıdaki sorguyu kullanın:
 
@@ -66,13 +65,13 @@ CREATE DATABASE mydbname
 SQL 'i isteğe bağlı olarak kullanarak sorguları çalıştırmak için, depolama alanındaki dosyalara erişmek üzere kullanılacak SQL isteğe bağlı olarak kimlik bilgileri oluşturun.
 
 > [!NOTE]
-> Bu bölümdeki örnekleri başarılı bir şekilde çalıştırmak için SAS belirtecini kullanmanız gerekir.
+> Bu bölümdeki örneklerin başarıyla çalıştırılabilmesi için bir SAS belirteci kullanmanız gerekir.
 >
 > SAS belirteçlerini kullanmaya başlamak için, aşağıdaki [makalede](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)açıklanan UserIdentity öğesini bırakmalısınız.
 >
 > İsteğe bağlı SQL, varsayılan olarak her zaman AAD geçişli geçiş kullanır.
 
-Depolama erişim denetimini yönetme hakkında daha fazla bilgi için bu [bağlantıyı](sql/develop-storage-files-storage-access-control.md)inceleyin.
+Depolama erişim denetimini yönetme hakkında daha fazla bilgi için bkz.[isteğe bağlı SQL için depolama hesabı erişimini denetleme](sql/develop-storage-files-storage-access-control.md) .
 
 Bu bölümdeki örneklerde kullanılan kimlik bilgilerini oluşturmak için aşağıdaki kod parçacığını yürütün:
 
@@ -124,7 +123,7 @@ Daha fazla örnek için bkz. [CSV dosyasını sorgulama](sql/query-single-csv-fi
 Aşağıdaki örnek, Parquet dosyalarını sorgulamak için otomatik Şema çıkarımı özelliklerini gösterir. Şemayı belirtmeden, Eylül 2017 ' deki satır sayısını döndürür.
 
 > [!NOTE]
-> Parquet dosyalarını okurken yan tümce içinde `OPENROWSET WITH` sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı, Parquet dosyasındaki meta verileri kullanır ve sütunları ada göre bağlar.
+> Parquet dosyalarını okurken yan tümce içinde `OPENROWSET WITH` sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı, verileri Parquet dosyasında kullanır ve sütunları ada göre bağlar.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -135,7 +134,7 @@ FROM OPENROWSET
   ) AS nyc
 ```
 
-[Parquet dosyalarını sorgulama](sql/query-parquet-files.md)hakkında daha fazla bilgi edinin].
+[Parquet dosyalarını sorgulama](sql/query-parquet-files.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="querying-json-files"></a>JSON dosyaları sorgulanıyor
 
@@ -161,7 +160,7 @@ Dosyalar *JSON* kapsayıcısına, klasör *kitaplarına*depolanır ve aşağıda
 
 ### <a name="querying-json-files"></a>JSON dosyaları sorgulanıyor
 
-Aşağıdaki sorguda *, Cryptology 'de dayalı ve Istatistiksel Yöntemler başlığı altında, seçilen makalelere bir giriş*olan bir kitapta skaler değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nasıl kullanılacağı gösterilmektedir:
+Aşağıdaki sorgu, *Cryptology 'de dayalı ve Istatistiksel Yöntemler*başlığına sahip bir kitapta skalar değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanmayı gösterir, seçilen makalelere giriş:
 
 ```sql
 SELECT
@@ -183,11 +182,11 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> JSON dosyasının tamamını tek satır/sütun olarak okuyoruz. bu nedenle, dosya içinde bulmayı beklemediğimiz için FIELDSONLANDıRıCı, FIELDQUOTE ve ROWSONLANDıRıCı, 0x0B olarak ayarlanmıştır.
+> Tüm JSON dosyasını tek satır/sütun olarak okuyoruz. Bu nedenle, dosya içinde bulmayı beklemediğimiz için FIELDSONLANDıRıCı, FIELDQUOTE ve ROWSONLANDıRıCı, 0x0B olarak ayarlanmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi aşağıdaki hızlı başlangıç makaleleriyle çalışmaya hazırsınız:
+Şimdi aşağıdaki makalelerle devam etmeye hazırsınız:
 
 - [Tek CSV dosyasını sorgula](sql/query-single-csv-file.md)
 - [Sorgu klasörleri ve birden çok CSV dosyası](sql/query-folders-multiple-csv-files.md)
@@ -198,7 +197,4 @@ WHERE
 - [Görünümleri oluşturma ve kullanma](sql/create-use-views.md)
 - [Dış tablolar oluşturma ve kullanma](sql/create-use-external-tables.md)
 - [Sorgu sonucunu Azure depolama 'ya kalıcı yap](sql/create-external-table-as-select.md)
-
-Tek bir CSV dosyasının nasıl sorgulanalınacağını öğrenmek için sonraki makaleye ilerleyin.
-> [!div class="nextstepaction"]
-> [Tek CSV dosyasını sorgula](sql/query-single-csv-file.md)
+- [Tek CSV dosyasını sorgula](sql/query-single-csv-file.md)

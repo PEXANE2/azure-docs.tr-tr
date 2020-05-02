@@ -3,16 +3,16 @@ title: Azure Güvenlik kıyaslama şeması örnek denetimleri
 description: Azure Güvenlik kıyaslaması şeması örneği ile Azure Ilkesi arasındaki eşlemeyi denetleyin.
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538736"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691299"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Azure Güvenlik kıyaslaması şeması örneğinin denetim eşlemesi
 
-Aşağıdaki makalede Azure Güvenlik kıyaslaması, Azure Güvenlik kıyaslama denetimleri ile Azure Güvenlik kıyaslaması şeması örneği hakkında ayrıntılı bilgi verilmiştir. Denetimler hakkında daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview).
+Aşağıdaki makalede Azure Güvenlik kıyaslaması, Azure Güvenlik kıyaslama denetimleri ile Azure Güvenlik kıyaslaması şeması örneği hakkında ayrıntılı bilgi verilmiştir. Denetimler hakkında daha fazla bilgi için bkz. [Azure Güvenlik kıyaslaması](../../../../security/benchmarks/overview.md).
 
 Aşağıdaki eşlemeler **Azure Güvenlik kıyaslama** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenen denetimler bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[önizlemeyi\]bulun ve seçin: Azure Güvenlik kıyaslama önerilerini denetleyin ve belirli destekleyici VM uzantıları** yerleşik ilke girişim 'yı dağıtın.
 

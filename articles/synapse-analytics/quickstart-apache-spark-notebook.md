@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: f8525c883eb6b2c736e5fbf433464aa64ff42068
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae866c8be8d162213077e0488a19a556399384b2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101789"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692673"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -33,13 +33,13 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https:/portal.azure.com/) oturum açın
+[Azure Portal](https:/portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="create-a-notebook"></a>Not defteri oluşturma
 
-Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamdır. Not defteri, verilerinizle etkileşim kurmanıza, kodu markı ve metin ile birleştirerek basit görselleştirmeler gerçekleştirmenize olanak tanır.
+Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamdır. Not defteri verilerinizle etkileşim kurmanıza, kodu Marku, metinle birleştirmeye ve basit görselleştirmeler gerçekleştirmenize olanak tanır.
 
 1. Kullanmak istediğiniz Azure SYNAPSE çalışma alanının Azure portal görünümünde, **SYNAPSE Studio 'Yu Başlat**' ı seçin.
 2. SYNAPSE Studio başlatıldıktan sonra **Geliştir**' i seçin. Ardından, **Not defterleri** girişinin üzerine gelin. Üç nokta (**...**) simgesini seçin.
@@ -66,7 +66,7 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
 
    ![Veri çerçevesi nesnesi oluştur](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Spark işinden çıkış")
 
-10. Apache Spark havuz örneği zaten çalışmıyorsa, otomatik olarak başlatılır. Apache Spark havuz örneğinin durumunu çalıştırdığınız hücrenin altında ve ayrıca not defterinin altındaki durum panelinde görebilirsiniz. Havuzun boyutuna bağlı olarak, başlangıç 2-5 dakika sürer. Kod çalışmayı bitirdikten sonra hücrenin altındaki bilgiler, ne kadar süre çalıştırılacağını ve yürütülmesi gerektiğini gösterir. Çıkış hücresinde çıktıyı görürsünüz.
+10. Apache Spark havuz örneği zaten çalışmıyorsa, otomatik olarak başlatılır. Apache Spark havuz örneği durumunu çalıştırdığınız hücrenin altında ve ayrıca not defterinin altındaki durum panelinde görebilirsiniz. Havuzun boyutuna bağlı olarak, başlangıç 2-5 dakika sürer. Kod çalışmayı bitirdikten sonra hücrenin altındaki bilgiler, ne kadar süre çalıştırılacağını ve yürütülmesi gerektiğini gösterir. Çıkış hücresinde çıktıyı görürsünüz.
 
     ![Bir hücreyi yürütmeden çıkış](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Spark işinden çıkış")
 
@@ -89,7 +89,7 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL deyimleri çalıştırma
 
-SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en çok kullanılan dildir. Bilinen SQL söz dizimini kullanan Spark SQL, yapısal verileri işleyen bir Apache Spark uzantısı olarak çalışır.
+Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için en yaygın ve yaygın olarak kullanılan dildir. Bilinen SQL söz dizimini kullanan Spark SQL, yapısal verileri işleyen bir Apache Spark uzantısı olarak çalışır.
 
 1. Aşağıdaki kodu boş bir hücreye yapıştırın ve kodu çalıştırın. Komut, havuzdaki tabloları listeler.
 
@@ -109,11 +109,11 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en ço
 
     Kod, diğer bir deyişle, iş görünümünü gösteren veri sonuçlarını içeren iki çıkış hücresi üretir.
 
-    Varsayılan olarak, sonuçlar görünümü bir kılavuz gösterir, ancak görünümün altında, ızgara ve grafik görünümleri arasında geçiş yapmasına olanak tanıyan bir görünüm değiştirici vardır.
+    Varsayılan olarak, sonuçlar görünümü bir kılavuz gösterir. Ancak, görünümün altında ızgara ve grafik görünümleri arasında geçiş yapmasına olanak tanıyan bir görünüm değiştirici vardır.
 
     ![Azure SYNAPSE Spark 'da sorgu çıkışı](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Azure SYNAPSE Spark 'da sorgu çıkışı")
 
-3. **Görünüm** değiştiricisinde **grafik** ' i seçin.
+3. **Görünüm** değiştiricisinde **grafik**' i seçin.
 4. En sağdaki taraftaki **Görünüm seçenekleri** simgesini seçin.
 5. **Grafik türü** alanında "çubuk grafik" i seçin.
 6. X ekseni sütun alanında "durum" ı seçin.
@@ -133,7 +133,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en ço
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure SYNAPSE, verilerinizi Azure Data Lake Storage kaydeder. Bir Spark örneğinin kullanımda olmadığı bir şekilde kapatılmasını güvenle sağlayabilirsiniz. Bir Azure SYNAPSE Apache Spark havuzu, kullanımda olmadığında bile çalıştığı sürece ücretlendirilirsiniz. Havuzun ücretleri depolama ücretinden çok daha fazla olduğundan, Spark örneklerinin kullanımda olmadıkları sırada kapatılmasını sağlamak için ekonomik bir fikir verir.
+Azure SYNAPSE, verilerinizi Azure Data Lake Storage kaydeder. Bir Spark örneğinin kullanımda olmadığında kapanmasına güvenle izin verebilirsiniz. Bir Azure SYNAPSE Apache Spark havuzu, kullanımda olmadığında bile çalıştığı sürece ücretlendirilirsiniz. Havuzun ücretleri depolama ücretinden çok daha fazla. Bu nedenle, Spark örneklerinin kullanımda olmadıkları sırada kapatılmasını sağlamak için ekonomik bir fikir verir.
 
 Spark örneğinin kapatıldığından emin olmak için, bağlı olan tüm oturumları (Not defterleri) sonlandırın. Apache Spark havuzunda belirtilen **boşta kalma süresine** ulaşıldığında havuz kapanır. Not defteri 'nin altındaki durum çubuğundan **oturumu bitir** ' i de seçebilirsiniz.
 

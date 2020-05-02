@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68698985"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692435"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Bir depolama hesabı için aktarım hızı ve gecikme süresi ölçümlerini doğrulama
 
@@ -24,7 +24,7 @@ Serinin dördüncü kısmında öğrenecekleriniz:
 > * Azure portalındaki grafikleri yapılandırma
 > * Aktarım hızı ve gecikme süresi ölçümlerini doğrulama
 
-[Azure depolama ölçümleri](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), depolama hesabınızın performansına ve kullanılabilirliğine ilişkin birleşik bir görünüm sağlamak için Azure izleyiciyi kullanır.
+[Azure depolama ölçümleri](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), depolama hesabınızın performansına ve kullanılabilirliğine ilişkin birleşik bir görünüm sağlamak için Azure izleyiciyi kullanır.
 
 ## <a name="configure-metrics"></a>Ölçümleri yapılandırma
 
@@ -34,7 +34,7 @@ Depolama hesabınızdaki **AYARLAR** bölümünde **Ölçümler (önizleme)** se
 
 **ÖLÇÜM** bölümünden, aşağıdaki tabloda bulunan ölçümlerden birini seçin:
 
-Aşağıdaki ölçümler size uygulamanın gecikme süresi ve aktarım hızına dair bir fikir sunar. Portalda yapılandırdığınız ölçümler 1’er dakikalık ortalamalardır. Bir işlem bir dakikalık sürenin ortasında bittiyse, ortalama için o dakika verileri ikiye bölünür. Uygulamada, karşıya yükleme ve indirme işlemleri zamanlanmış ve size dosyaları karşıya yükleyip indirmenin gerçekte ne kadar sürdüğüne dair çıktı sağlanmıştır. Bu bilgiler, aktarım hızını tam olarak anlamak için portal ölçümleriyle birlikte kullanılabilir.
+Aşağıdaki ölçümler size uygulamanın gecikme süresi ve aktarım hızına dair bir fikir sunar. Portalda yapılandırdığınız ölçümler 1’er dakikalık ortalamalardır. Bir işlemin ortasında bitmesi, ortalama verilerin ortalama bir şekilde yarıya iner. Uygulamada, karşıya yükleme ve indirme işlemleri zamanlanmış ve size dosyaları karşıya yükleyip indirmenin gerçekte ne kadar sürdüğüne dair çıktı sağlanmıştır. Bu bilgiler, aktarım hızını tam olarak anlamak için portal ölçümleriyle birlikte kullanılabilir.
 
 |Ölçüm|Tanım|
 |---|---|
@@ -52,7 +52,7 @@ Grafiklere birden fazla ölçüm atanmış olabilir, ancak birden fazla ölçüm
 
 ## <a name="dimensions"></a>Boyutlar
 
-Grafikleri daha ayrıntılı incelemek ve daha ayrıntılı bilgi edinmek için [Boyutlar](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) kullanılır. Farklı ölçümlerin farklı boyutları vardır. Kullanılabilir tek boyut, **API adı** boyutudur. Bu boyut, her bir ayrı API çağrısı bazında grafiğin dökümünü oluşturur. Aşağıdaki ilk görüntü, bir depolama hesabı için toplam işlemlerin örnek bir grafiğini gösterir. İkinci görüntü, API adı boyutu seçilmiş şekilde aynı grafiği gösterir. Gördüğünüz gibi her bir işlem listelenerek API adı tarafından kaç tane çağrı yapıldığına ilişkin daha fazla ayrıntı sunar.
+Grafikleri daha ayrıntılı incelemek ve daha ayrıntılı bilgi edinmek için [Boyutlar](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) kullanılır. Farklı ölçümlerin farklı boyutları vardır. Kullanılabilir tek boyut, **API adı** boyutudur. Bu boyut, her bir ayrı API çağrısı bazında grafiğin dökümünü oluşturur. Aşağıdaki ilk görüntü, bir depolama hesabı için toplam işlemlerin örnek bir grafiğini gösterir. İkinci görüntü, API adı boyutu seçilmiş şekilde aynı grafiği gösterir. Gördüğünüz gibi her bir işlem listelenerek API adı tarafından kaç tane çağrı yapıldığına ilişkin daha fazla ayrıntı sunar.
 
 ![Depolama hesabı ölçümleri - boyut içermeyen işlemler](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

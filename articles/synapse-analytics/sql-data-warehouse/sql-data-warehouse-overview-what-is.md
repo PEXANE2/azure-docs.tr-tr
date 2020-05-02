@@ -10,14 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81416020"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690917"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) nedir?
+
+> [!NOTE] 
+> [Azure Synapse (çalışma alanları önizlemesi) erişimi isteyerek](https://aka.ms/synapsepreview)çalışma alanları, Spark, SQL isteğe bağlı SQL ve tümleşik SYNAPSE Studio deneyimi gibi en son Azure SYNAPSE özelliklerini deneyin. 
+>
+>[Azure Synapse (çalışma alanları Önizleme) belgelerini](../overview-what-is.md)inceleyin.
 
 Azure SYNAPSE, kurumsal veri depolama ve büyük veri analizlerini birlikte getiren bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar.
 
@@ -30,10 +35,7 @@ Azure SYNAPSE dört bileşene sahiptir:
 - SYNAPSE işlem hatları: karma veri tümleştirmesi (Önizleme)
 - Studio: birleştirilmiş kullanıcı deneyimi.  (Önizleme)
 
-> [!NOTE]
-> Azure SYNAPSE 'ın önizleme özelliklerine erişmek için [buradan](https://aka.ms/synapsepreview)erişim isteyin. Microsoft tüm istekleri önceliklendirme ve mümkün olan en kısa sürede yanıt verir.
->
-> [Azure SYNAPSE Preview belgelerini](../overview-what-is.md)görüntüleyin.
+
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure SYNAPSE 'de SYNAPSE SQL havuzu
 
