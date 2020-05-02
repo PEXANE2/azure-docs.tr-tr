@@ -14,17 +14,17 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240369"
 ---
 # <a name="about-api-management"></a>API Management hakkında
 
 API Management (APIM) mevcut arka uç hizmetleri için tutarlı ve modern API ağ geçitleri oluşturmanın bir yoludur.
 
-API Yönetimi, kuruluşların veri ve hizmetlerinin potansiyelini ortaya çıkarmak için api'leri harici, iş ortağı ve dahili geliştiricilere yayınlamasına yardımcı olur. Her yerdeki işletmeler, bir dijital platform olarak işlemlerini genişletmek, yeni kanallar oluşturmak, yeni müşteriler bulmak ve mevcut müşterilerle daha derin etkileşimi yürütmeyi amaçlar. API Management; geliştirici katılımı, iş öngörüleri, analizler, güvenlik ve koruma aracılığıyla başarılı bir API programı yürütmeye ilişkin temel uzmanlıklar sağlar. Azure API Management’i bir arka uç almak ve bunu temel alan tam özellikli bir API programını başlatmak için kullanabilirsiniz.
+API Management kuruluşların, veri ve hizmetlerinin potansiyelini açmak için API 'Leri dış, iş ortağı ve iç geliştiricilere yayımlamalarına yardımcı olur. Her yerdeki işletmeler, bir dijital platform olarak işlemlerini genişletmek, yeni kanallar oluşturmak, yeni müşteriler bulmak ve mevcut müşterilerle daha derin etkileşimi yürütmeyi amaçlar. API Management; geliştirici katılımı, iş öngörüleri, analizler, güvenlik ve koruma aracılığıyla başarılı bir API programı yürütmeye ilişkin temel uzmanlıklar sağlar. Azure API Management’i bir arka uç almak ve bunu temel alan tam özellikli bir API programını başlatmak için kullanabilirsiniz.
 
 Bu makale, APIM içeren yaygın senaryolara genel bakış sağlar.  Ayrıca, APIM sisteminin ana bileşenlerine de kısa bir genel bakış sağlar. Böylece makale, her bir bileşene daha ayrıntılı bir genel bakış sunmuş olur.
 
@@ -53,7 +53,7 @@ Sistem aşağıdaki bileşenlerden oluşur:
   * API’lerde kota veya dönüşüm gibi ilkeler ayarlama.
   * Analizlerden öngörüler edinme
   * Kullanıcıları yönetme.
-* **Geliştirici portalı,** geliştiriciler için aşağıdakileri yapabilecekleri ana web varlığı olarak hizmet vermektedir:
+* **Geliştirici Portalı** geliştiriciler için ana web varlığı görevi görür ve burada şunları yapabilir:
   
   * API belgelerini okuma.
   * Etkileşimli konsol üzerinden bir API’yi deneme.

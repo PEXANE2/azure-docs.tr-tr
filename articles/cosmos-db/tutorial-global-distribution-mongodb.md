@@ -1,6 +1,6 @@
 ---
-title: MongoDB için Azure Cosmos DB API ile küresel dağıtım ayarlama eğitimi
-description: Azure Cosmos DB'nin MongoDB için API'sini kullanarak küresel dağıtımı nasıl ayarlayamaize cereyiş yapılacağını öğrenin.
+title: MongoDB için Azure Cosmos DB API ile küresel dağıtım ayarlama öğreticisi
+description: MongoDB için Azure Cosmos DB API 'sini kullanarak genel dağıtımı ayarlamayı öğrenin.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,26 +9,26 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444677"
 ---
-# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'sını kullanarak genel dağıtılmış veritabanını ayarlama
+# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sini kullanarak genel dağıtılmış veritabanını ayarlama
 
-Bu makalede, azure portalını küresel dağıtılmış bir veritabanı kurmak ve MongoDB için Azure Cosmos DB'nin API'sini kullanarak ona bağlanmak için nasıl kullanacağımızı gösteriyoruz.
+Bu makalede, genel olarak dağıtılmış bir veritabanını kurmak ve MongoDB için Azure Cosmos DB API 'sini kullanarak bu sunucuya bağlanmak için Azure portal nasıl kullanacağınızı göstereceğiz.
 
 Bu makale aşağıdaki görevleri kapsar: 
 
 > [!div class="checklist"]
 > * Azure portalını kullanarak genel dağıtımı yapılandırma
-> * [MongoDB için Azure Cosmos DB'nin API'sini](mongodb-introduction.md) kullanarak küresel dağıtımı yapılandırın
+> * [MongoDB için Azure Cosmos DB API](mongodb-introduction.md) 'sini kullanarak genel dağıtımı yapılandırma
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="verifying-your-regional-setup"></a>Bölgesel kurulumunuzu doğrulama 
-MongoDB için Cosmos DB'nin API'si ile küresel yapılandırmanızı kontrol etmenin basit bir yolu, Mongo Shell'den *isMaster()* komutunu çalıştırmaktır.
+MongoDB için Cosmos DB API 'siyle genel yapılandırmanızı denetetmenin basit bir yolu, Mongo kabuğu 'ndan *IsMaster ()* komutunu kullanmaktır.
 
 Mongo Kabuğunuzdan:
 
@@ -62,9 +62,9 @@ Mongo Kabuğunuzdan:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region"></a>Tercih edilen bölgeye bağlanma 
+## <a name="connecting-to-a-preferred-region"></a>Tercih edilen bir bölgeye bağlanma 
 
-Azure Cosmos DB'nin MongoDB için API'si, koleksiyonunuzun genel olarak dağıtılmış bir veritabanı için okuma tercihini belirtmenize olanak tanır. Hem düşük gecikmeli okumalar hem de genel yüksek kullanılabilirlik için, koleksiyonunuzun okuma tercihini *en yakın* olarak ayarlamanızı öneririz. En yakın bölgeden okumak için *en yakın* okuma tercihi yapılandırılır.
+MongoDB için Azure Cosmos DB API 'SI, genel olarak dağıtılan bir veritabanı için koleksiyonunuzun okuma tercihini belirtmenize olanak sağlar. Hem düşük gecikmeli okumalar hem de genel yüksek kullanılabilirlik için, koleksiyonunuzun okuma tercihini *en yakın* olarak ayarlamanızı öneririz. En yakın bölgeden okumak için *en yakın* okuma tercihi yapılandırılır.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -94,9 +94,9 @@ Bu öğreticide aşağıdakileri yaptınız:
 
 > [!div class="checklist"]
 > * Azure portalını kullanarak genel dağıtımı yapılandırma
-> * MongoDB için Cosmos DB'nin API'sini kullanarak küresel dağıtımı yapılandırın
+> * MongoDB için Cosmos DB API 'sini kullanarak genel dağıtımı yapılandırma
 
 Artık Azure Cosmos DB yerel öykünücüsünü kullanarak yerel olarak geliştirme konusunda bilgi almak için sonraki öğreticiye geçebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB emülatörü ile yerel olarak geliştirin](local-emulator.md)
+> [Azure Cosmos DB öykünücüsü ile yerel olarak geliştirme](local-emulator.md)
