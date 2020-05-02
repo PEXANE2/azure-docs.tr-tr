@@ -697,6 +697,8 @@
               href: mongodb-feature-support-36.md
             - name: Kablo protokolü desteği (3.2)
               href: mongodb-feature-support.md
+            - name: SSS
+              href: mongodb-api-faq.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Geçiş öncesine yönelik kılavuz
@@ -763,6 +765,10 @@
           items:
             - name: 1 - Verileri sorgulama
               href: tutorial-query-graph.md
+        - name: Kavramlar
+          items:
+            - name: SSS
+              href: gremlin-api-faq.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Graf verileri modellemesi
@@ -844,6 +850,10 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
+        - name: Kavramlar
+          items:
+            - name: SSS
+              href: table-api-faq.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Tablo API’si ile uygulama oluşturma

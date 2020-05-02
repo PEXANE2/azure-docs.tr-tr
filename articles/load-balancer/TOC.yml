@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
-    - name: Bileşenler ve sınırlamalar
-      href: concepts-limitations.md
+    - name: Bileşenler
+      href: components.md
+    - name: Kavramlar
+      href: concepts.md
+    - name: Türler
+      href: types.md
     - name: Sistem durumunu izleme
       items:
         - name: Sistem durumu araştırmaları
@@ -133,6 +137,8 @@
       items:
         - name: Azure Load Balancer sorunlarını giderme
           href: load-balancer-troubleshoot.md
+        - name: Sık karşılaşılan dağıtım hatalarını giderme
+          href: load-balancer-common-deployment-errors.md
 - name: Başvuru
   items:
     - name: Kod örnekleri
