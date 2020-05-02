@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 87126d1beca97a905f0f3b09b565c12c37a4774d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203922"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628529"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -32,19 +32,11 @@ Gelişmiş güvenlik ve yönetim için Azure Red Hat OpenShift, Azure Active Dir
 
 ## <a name="cluster-and-node"></a>Küme ve düğüm
 
-Azure Red Hat OpenShift düğümleri Azure sanal makinelerinde çalışır. Depoları düğümlere ve pod’lara bağlayabilir, küme bileşenlerini yükseltebilir ve GPU’lar kullanabilirsiniz.
-
-## <a name="virtual-networks-and-ingress"></a>Sanal ağlar ve giriş
-
-Bir kümenin [sanal ağını mevcut bir sanal ağa bağlayabilirsiniz veya bir küme oluşturduğunuzda bir sanal ağ oluşturabilirsiniz](tutorial-create-cluster.md#create-a-virtual-network-containing-two-empty-subnets).
-
-## <a name="kubernetes-certification"></a>Kubernetes sertifikası
-
-Azure Red Hat OpenShift hizmeti, Kubernetes uyumlu olarak CNCF sertifikalı.
+Azure Red Hat OpenShift düğümleri Azure sanal makinelerinde çalışır. Depolama alanı düğümlerine ve yığınlara bağlanabilir ve küme bileşenlerini yükseltebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Red Hat OpenShift için önkoşulları öğrenin:
 
 > [!div class="nextstepaction"]
-> [Geliştirme ortamınızı kurma](howto-setup-environment.md)
+> [Geliştirme ortamınızı kurma](tutorial-create-cluster.md)

@@ -4,53 +4,42 @@ description: Komut satırından bir işlev oluşturmayı ve ardından yerel proj
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 5022ff7239a040a163d8d6a82864d0dee8e65f1e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610913"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626267"
 ---
-::: zone pivot="programming-language-csharp"  
-# <a name="quickstart-create-a-c-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir C# işlevi oluşturma
+# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
-Bu makalede, HTTP isteklerine yanıt veren C# sınıf kitaplığı tabanlı bir işlev oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+::: zone pivot="programming-language-csharp"  
+Bu makalede, HTTP isteklerine yanıt veren C# sınıf kitaplığı tabanlı bir işlev oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"
-# <a name="quickstart-create-a-javascript-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir JavaScript işlevi oluşturma
-
-Bu makalede, HTTP isteklerine yanıt veren bir JavaScript işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+Bu makalede, HTTP isteklerine yanıt veren bir JavaScript işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
 ::: zone-end
 ::: zone pivot="programming-language-typescript"
-# <a name="quickstart-create-a-typescript-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir TypeScript işlevi oluşturma
-
-Bu makalede, HTTP isteklerine yanıt veren bir TypeScript işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+Bu makalede, HTTP isteklerine yanıt veren bir TypeScript işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
-# <a name="quickstart-create-a-powershell-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir PowerShell işlevi oluşturma
-
-Bu makalede, HTTP isteklerine yanıt veren bir PowerShell işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+Bu makalede, HTTP isteklerine yanıt veren bir PowerShell işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
 ::: zone-end  
 ::: zone pivot="programming-language-python" 
-# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir Python işlevi oluşturma
-
-Bu makalede, HTTP isteklerine yanıt veren bir Python işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+Bu makalede, HTTP isteklerine yanıt veren bir Python işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
 ::: zone-end  
 ::: zone pivot="programming-language-java" 
-# <a name="quickstart-create-a-java-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlangıç: Azure 'da HTTP isteklerine yanıt veren bir Java işlevi oluşturma
-
-Bu makalede, HTTP isteklerine yanıt veren bir Java işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+Bu makalede, HTTP isteklerine yanıt veren bir Java işlevi oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. 
 ::: zone-end
 
-Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak test ettikten sonra, Azure Işlevlerinin sunucusuz ortamına dağıtırsınız. Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
+Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları veya daha kısa bir ücret doğurur.
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 Bu makalenin [Visual Studio Code tabanlı bir sürümü](functions-create-first-function-vs-code.md) de vardır.
 ::: zone-end  
-
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Maven, tercih edilmemiş geliştirme aracınız değilse, [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ fikir](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [vs Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
+> Maven, tercih edilmemiş geliştirme aracınız değilse, [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ fikir](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]

@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371611"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652731"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Sürüm notları: konuşma cihazları SDK 'Sı
 
 Aşağıdaki bölümlerde en son sürümlerde değişiklikler listelenmiştir.
+
+## <a name="speech-devices-sdk-1110"></a>Konuşma cihazları SDK 1.11.0:
+
+- [Urdaha ıyı DDK](http://www.urbetter.com/products_56/278.html)desteği.
+- [Ses Yardımcısı](https://aka.ms/sdsdk-speaker)örneğimizde kullanılan [GGEC konuşmacı](https://aka.ms/sdsdk-download-speaker) için ikili dosyalar yayınlandı.
+- Raspberry Pi ve benzer cihazlarda Linux [ARM32](https://aka.ms/sdsdk-download-linux-arm32) ve [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) için ikili dosyalar yayınlandı.
+- [Konuşma SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) bileşeni 1.11.0 sürümüne güncelleştirildi. Daha fazla bilgi için [sürüm notlarına](https://aka.ms/csspeech/whatsnew)bakın.
 
 ## <a name="speech-devices-sdk-190"></a>Konuşma cihazları SDK 1.9.0:
 

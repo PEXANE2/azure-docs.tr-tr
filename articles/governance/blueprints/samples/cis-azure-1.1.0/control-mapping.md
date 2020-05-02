@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure temel geçişleri kıyaslama şeması örnek denetimleri
 description: CIS, kıyaslama şeması örneğini Azure Ilkesine göre Microsoft Azure.
-ms.date: 11/04/2019
+ms.date: 05/01/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 735ab26e1f9432a87d5a0d927c64d44e680b0694
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656961"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688103"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
@@ -25,7 +25,7 @@ Eşlenmiş önerilerin birçoğu bir [Azure Policy](../../../policy/overview.md)
 Bu şema, çok faktörlü kimlik doğrulaması ayrıcalıklı Azure Active Directory hesaplarında etkin olmadığında izlemenize yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
 
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
-- MFA, aboneliğinizde yazma izinleri olan hesaplarda etkinleştirilmelidir
+- MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 
 ## <a name="12-ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>1,2 çok faktörlü kimlik doğrulamasının tüm ayrıcalıklı olmayan kullanıcılar için etkinleştirildiğinden emin olun
 
@@ -37,9 +37,9 @@ Bu şema, çok faktörlü kimlik doğrulamasının ayrıcalıklı olmayan Azure 
 
 Bu şema, kaldırılması gerekebilecek Konuk hesaplarını izlemenize yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
 
-- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 - Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 özel abonelik sahibi rollerinin oluşturulmadığından emin olun
 
@@ -51,7 +51,7 @@ Bu şema, kaldırılması gerekebilecek özel abonelik sahibi rollerini izlemeni
 
 Bu şema, Güvenlik Merkezi Standart katmanının etkin olmadığı ağları ve sanal makineleri izlemenize yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
- - Güvenlik Merkezi Standart fiyatlandırma katmanı seçilmelidir
+- Güvenlik Merkezi Standart fiyatlandırma katmanı seçilmelidir
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2,2 ' izleme aracısının otomatik sağlanması ' öğesinin ' on ' olarak ayarlandığından emin olun
 
@@ -87,20 +87,14 @@ Bu şema, sanal makine disklerinin şifrelenmesini sağlamanıza yardımcı olan
 
 Bu şema, Internet 'e yönelik sanal makineleri korumanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2,8 ASC varsayılan ilke ayarı "Web uygulaması güvenlik duvarını Izle" ayarının "devre dışı" olmadığından emin olun
-
-Bu şema, Web uygulamaları çalıştıran sanal makineleri korumanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
-
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
+- Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2,9 "sonraki nesil güvenlik duvarı 'Nı etkinleştir (NGFW) Izlemenin" "devre dışı" olarak, ASC varsayılan ilke ayarını sağlayın
 
 Bu şema, erişimi kısıtlayarak alt ağları ve sanal makineleri tehditlere karşı korumaya yardımcı olan [Azure ilke](../../../policy/overview.md) tanımları atar. Bu CIS tarafından başvurulan güvenlik merkezi ilkesi Microsoft Azure temelleri kıyaslama önerisi, iki yeni öneriyle değiştirilmiştir. Aşağıda başvurulan ilkeler yeni önerileri ele.
 
 - Alt ağlar bir ağ güvenlik grubuyla ilişkilendirilmelidir
-- Sanal makineler bir ağ güvenlik grubuyla ilişkilendirilmelidir
+- Internet 'e yönelik sanal makineler ağ güvenlik gruplarıyla korunmalıdır
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2,10 "Izleme güvenlik açığı değerlendirmesi" için ASC varsayılan ilke ayarının "devre dışı" olmadığından emin olun
 
@@ -128,7 +122,7 @@ Bu şema, sanal makinelerde Uyarlamalı uygulama denetimlerinin etkin olmasını
 
 Bu şema, SQL Server denetiminin etkinleştirildiğinden emin olmaya yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- SQL Server üzerinde denetim etkinleştirilmelidir
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2,15 "SQL şifrelemeyi Izleme" için ASC varsayılan ilke ayarının "devre dışı" olmadığından emin olun
 
@@ -182,7 +176,7 @@ Bu şema, güvenilen Microsoft hizmetlerinden erişim izni olmayan depolama hesa
 
 Bu şema, SQL Server denetiminin etkinleştirildiğinden emin olmaya yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar. 
 
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- SQL Server üzerinde denetim etkinleştirilmelidir
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4,2 SQL Server için ' denetim ' ilkesindeki ' AuditActionGroups ' işleminin düzgün şekilde ayarlandığından emin olun
 
@@ -200,8 +194,8 @@ Bu şema, SQL Server günlüklerinin en az 90 gün boyunca bekletildiğinden emi
 
 Bu şema, SQL sunucularında ve SQL yönetilen örneklerinde gelişmiş veri güvenliğinin etkinleştirildiğinden emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
+- Gelişmiş veri güvenliği, SQL yönetilen örneklerinizin üzerinde etkinleştirilmelidir
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 ' tehdit algılama türleri ' ' All ' olarak ayarlandığından emin olun
 
@@ -214,15 +208,15 @@ Bu şema, Gelişmiş tehdit korumasının SQL sunucularında ve SQL yönetilen �
 
 Bu şema, gelişmiş veri güvenliği bildirimlerinin düzgün şekilde etkinleştirildiğinden emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- SQL yönetilen örneği için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir
 - SQL Server için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir
+- SQL yönetilen örneği için gelişmiş veri güvenliği ayarları, güvenlik uyarılarını almak için bir e-posta adresi içermelidir
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4,7 ' e-posta hizmeti ve ortak yöneticiler ' ' in ' etkin ' olduğundan emin olun
 
 Bu şema, gelişmiş veri güvenliği bildirimlerinin düzgün şekilde etkinleştirildiğinden emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda yöneticilere ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir
 - SQL Server Gelişmiş veri güvenliği ayarları 'nda Yöneticiler ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir
+- SQL yönetilen örnek gelişmiş veri güvenliği ayarları 'nda yöneticilere ve abonelik sahiplerine e-posta bildirimleri etkinleştirilmelidir
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4,8 Azure Active Directory yöneticisinin yapılandırıldığından emin olun
 
@@ -240,8 +234,8 @@ Bu şema, SQL veritabanlarında saydam veri şifrelemesi etkinleştirildiğinden
 
 Bu şema, SQL Server 'lar için saydam veri şifrelenmiş koruyucunun ve SQL yönetilen örneklerin kendi anahtarınızla şifrelendiğinden emin olmanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
 
-- SQL yönetilen örnek TDE koruyucusu kendi anahtarınızla şifrelenmelidir
 - SQL Server TDE koruyucusu kendi anahtarınızla şifrelenmelidir
+- SQL yönetilen örnek TDE koruyucusu kendi anahtarınızla şifrelenmelidir
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4,11 MySQL veritabanı sunucusu için ' SSL bağlantısını zorla ' özelliğinin ' ENABLED ' olarak ayarlandığından emin olun
 
@@ -315,11 +309,83 @@ Bu şema, günlük profilinin düzgün şekilde yapılandırıldığından emin 
 
 - Azure Izleyici, tüm bölgelerdeki etkinlik günlüklerini toplamalıdır
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 etkinlik günlükleriyle kapsayıcıyı içeren depolama hesabının BYOK ile şifrelendiğinden emin olun (kendi anahtarınızı kullanın)
+
+Bu şema, etkinlik günlükleri içeren depolama hesaplarının bYok ile şifrelenmesini sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Etkinlik günlükleri içeren kapsayıcıyı içeren depolama hesabı BYOK ile şifrelenmelidir
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 Azure Anahtar Kasası günlüğü 'nün ' Enabled ' olduğundan emin olun
 
 Bu şema, Anahtar kasaları için tanılama günlüklerinin etkinleştirildiğinden emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
 - Key Vault tanılama günlükleri etkinleştirilmelidir
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 Ilke ataması oluşturmak için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli Ilke işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 ağ güvenlik grubu oluşturmak veya güncelleştirmek için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli yönetim işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 ağ güvenlik grubunu silmek için etkinlik günlüğü uyarısının var olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli yönetim işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 ağ güvenlik grubu kuralı oluşturmak veya güncelleştirmek için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli yönetim işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 ağ güvenlik grubu kuralını Sil kuralı için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli yönetim işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 oluşturma veya güncelleştirme güvenlik çözümü için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli güvenlik işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 güvenlik çözümünü silmek için etkinlik günlüğü uyarısının var olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli güvenlik işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 SQL Server güvenlik duvarı kuralı oluşturmak veya güncelleştirmek ya da silmek için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli yönetim işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 güncelleştirme Güvenlik Ilkesi için etkinlik günlüğü uyarısının mevcut olduğundan emin olun
+
+Bu şema, belirli etkinlik günlüğü uyarılarının mevcut olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Belirli güvenlik işlemleri için bir etkinlik günlüğü uyarısı bulunmalıdır
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6,1 RDP erişiminin internet 'ten kısıtlanmasını sağlayın
+
+Bu şema, RDP erişiminin kısıtlanmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Internet 'ten RDP erişimi engellenmelidir
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6,2 SSH erişiminin internet 'ten kısıtlanmasını sağlayın
+
+Bu şema, SSH erişiminin kısıtlanmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- Internet 'ten SSH erişimi engellenmelidir
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6,5 Ağ Izleyicisi 'nin ' Enabled ' olduğundan emin olun
 
@@ -349,7 +415,7 @@ Bu şema, eklenmemiş disklerin şifrelenmesini sağlamanıza yardımcı olan bi
 
 Bu şema, yalnızca onaylanan sanal makine uzantılarının yüklü olduğundan emin olmanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar. Bu ilke, tüm onaylanan sanal makine uzantılarını belirten bir parametre dizisi gerektirir. Bu ilke girişim tanımı, müşterilerin doğrulaması gereken önerilen varsayılanları içerir. 
 
- - Yalnızca onaylanan VM uzantıları yüklenmelidir
+- Yalnızca onaylanan VM uzantıları yüklenmelidir
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7,5 tüm sanal makineler için en son işletim sistemi düzeltme eklerinin uygulandığından emin olun
 
@@ -373,7 +439,15 @@ Bu şema, yanlışlıkla silme durumunda Anahtar Kasası nesnelerinin kurtarıla
 
 Bu şema, Kubernetes hizmet kümelerinde yönetilen izinler için rol tabanlı erişim denetimi kullanılmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar
 
-- \[Önizleme\]: Kubernetes hizmetlerinde rol tabanlı Access Control (RBAC) kullanılmalıdır
+- Rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9,1 App Service kimlik doğrulamasının Azure App Service ayarlandığından emin olun
+
+Bu şema, App Service uygulamalara yönelik isteklerin kimliklerinin doğrulanmasını sağlamanıza yardımcı olan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
+
+- API uygulamanızda kimlik doğrulaması etkinleştirilmelidir
+- Işlev uygulamanızda kimlik doğrulaması etkinleştirilmelidir
+- Web uygulamanızda kimlik doğrulaması etkinleştirilmelidir
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Web uygulamasının tüm HTTP trafiğini Azure App Service ' de HTTPS 'ye yönlendirdiğinden emin olun
 
@@ -434,7 +508,7 @@ Bu şema, Web uygulamalarının Python 'un en son sürümünü kullanmasını sa
 Bu şema, Web uygulamalarının en son Java sürümünü kullanmasını sağlamanıza yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atar.
 
 - API uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü ' nin en son sürümü olduğundan emin olun
-- "Java sürümü" nin, Funın uygulamasının bir parçası olarak kullanılıyorsa en son sürüm olduğundan emin olun
+- Işlev uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü ' nin en son sürümü olduğundan emin olun
 - Web uygulamasının bir parçası olarak kullanılıyorsa ' Java sürümü 'nin en son sürümü olduğundan emin olun
 
 ## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 Web uygulamasını çalıştırmak için kullanılıyorsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
@@ -444,7 +518,6 @@ Bu şema, Web uygulamalarının en son http sürümünü kullanmasını sağlama
 - API uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
 - Işlev uygulamasını çalıştırmak için kullanılmışsa ' HTTP Version ' nin en son sürümü olduğundan emin olun
 - Web uygulamasını çalıştırmak için kullanılıyorsa, ' HTTP Version ' ' ın en son sürümü olduğundan emin olun
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

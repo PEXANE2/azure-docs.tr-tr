@@ -3,24 +3,24 @@ title: Özel Bağlantı
 description: Özel uç nokta özelliğine genel bakış
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 4338c179fb8c0eebbb64ac5b33dc5dd8878d0794
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176728"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629006"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Azure SQL veritabanı ve veri ambarı için özel bağlantı
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için özel bağlantı
 
 Özel bağlantı, Azure 'daki çeşitli PaaS hizmetlerine **özel bir uç nokta**aracılığıyla bağlanmanızı sağlar. Özel bağlantı işlevselliğini destekleyen PaaS hizmetlerinin bir listesi için [özel bağlantı belgeleri](../private-link/index.yml) sayfasına gidin. Özel uç nokta, belirli bir [sanal](../virtual-network/virtual-networks-overview.md) ağ ve alt ağ içindeki özel bir IP adresidir. 
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için geçerlidir.*
+> Bu makale, Azure SQL Server ve Azure SQL Server 'da oluşturulan hem SQL veritabanı hem de Azure SYNAPSE Analytics veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e başvururken kullanılır. Bu makale, Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için geçerlidir.*
 
 ## <a name="data-exfiltration-prevention"></a>Veri kaybı önleme
 
@@ -28,7 +28,7 @@ Azure SQL veritabanı 'nda veri ayıklama, veritabanı yöneticisi gibi yetkili 
 
 Bir SQL veritabanına bağlanan bir Azure VM içinde SQL Server Management Studio (SSMS) çalıştıran bir kullanıcı içeren bir senaryo düşünün. Bu SQL veritabanı Batı ABD veri merkezinde. Aşağıdaki örnekte, ağ erişim denetimleri kullanılarak SQL veritabanı 'ndaki genel uç noktalarla erişimin nasıl sınırlandıralınacağını gösterilmektedir.
 
-1. Azure hizmetlerinin **kapalı**çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri](sql-database-networkaccess-overview.md).
+1. Azure hizmetlerinin **kapalı**çalışmasına izin ver ayarını yaparak, genel uç nokta aracılığıyla SQL veritabanı 'Na tüm Azure hizmet trafiğini devre dışı bırakın. Sunucu ve veritabanı düzeyinde güvenlik duvarı kurallarında IP adresine izin verilmediğinden emin olun. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri](sql-database-networkaccess-overview.md).
 1. Yalnızca VM 'nin özel IP adresini kullanarak SQL veritabanı 'na giden trafiğe izin verin. Daha fazla bilgi için [hizmet uç noktası](sql-database-vnet-service-endpoint-rule-overview.md) ve [VNET güvenlik duvarı kuralları](sql-database-firewall-configure.md)makalesine bakın.
 1. Azure VM 'de, [ağ güvenlik grupları (NSG 'ler)](../virtual-network/manage-network-security-group.md) ve hizmet etiketleri kullanarak giden bağlantı kapsamını aşağıda gösterildiği gibi daraltın
     - Hizmet etiketi = SQL için trafiğe izin veren bir NSG kuralı belirtin. WestUs-yalnızca Batı ABD SQL veritabanı 'na bağlantıya izin veriliyor
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 Sonuç bir IP adresinin yukarı olduğunu gösterir; Özel uç nokta için IP adresine karşılık gelen.
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) kullanarak bağlantıyı denetleme
 > [!NOTE]
 > İstemcilerinizin bağlantı dizelerinde sunucunun **tam etki alanı adını (FQDN)** kullanın. Doğrudan IP adresine yapılan oturum açma girişimleri başarısız olur. Özel uç nokta, bölgedeki SQL ağ geçidine giden trafiği yönlendirdiğinden ve oturum açma işleminin başarılı olması için FQDN 'nin belirtilmesi gerektiğinden, bu davranış tasarıma göre yapılır.
@@ -174,11 +173,9 @@ Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den bir SQL veritabanı b
 - [ExpressRoute devresi](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>PolyBase kullanarak Azure SQL veri ambarından Azure depolama 'ya bağlanma
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>PolyBase kullanarak Azure SYNAPSE Analytics 'ten Azure depolama 'ya bağlanma
 
-PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir VNet-alt ağ kümesine sınırlayıp, PolyBase 'den hesaba olan bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SQL veri ambarı ile hem PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için [burada](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
-
-
+PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir VNet-alt ağ kümesine sınırlayıp, PolyBase 'den hesaba olan bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için [burada](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
