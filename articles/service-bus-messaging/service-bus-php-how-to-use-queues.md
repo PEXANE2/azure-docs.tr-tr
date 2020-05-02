@@ -1,6 +1,6 @@
 ---
-title: PHP ile Azure Servis Veri Servisi kuyrukları nasıl kullanılır?
-description: Bu eğitimde, Hizmet Veri Yolu kuyruğuna ileti göndermek ve ileti almak için PHP uygulamaları oluşturmayı öğrenirsiniz.
+title: PHP ile Azure Service Bus kuyruklarını kullanma
+description: Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için PHP uygulamaları oluşturmayı öğreneceksiniz.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -15,49 +15,49 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760700"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Quickstart: PHP ile Servis Veri Servisi kuyrukları nasıl kullanılır?
+# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Hızlı başlangıç: PHP ile Service Bus kuyruklarını kullanma
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Bu eğitimde, Hizmet Veri Yolu kuyruğuna ileti göndermek ve ileti almak için PHP uygulamaları oluşturmayı öğrenirsiniz. 
+Bu öğreticide, Service Bus kuyruğuna ileti göndermek ve ileti almak için PHP uygulamaları oluşturmayı öğreneceksiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
-2. Üzerinde çalışmanız gereken bir sıra yoksa, kuyruk oluşturmak için Hizmet Veri Hizmetleri sırası makalesi [oluşturmak için Azure kullan portalındaki](service-bus-quickstart-portal.md) adımları izleyin.
-    1. Servis Veri Servisi **kuyruklarına**hızlı **bir genel bakış** okuyun. 
-    2. Hizmet Veri Günü **ad alanı**oluşturun. 
-    3. Bağlantı **dizesini**alın. 
+1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
+2. Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
+    1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
+    2. Service Bus **ad alanı**oluşturun. 
+    3. **Bağlantı dizesini**alın. 
 
         > [!NOTE]
-        > Bu öğreticide PHP kullanarak Hizmet Veri Servisi ad alanında bir **kuyruk** oluşturacaksınız. 
+        > Bu öğreticide PHP 'yi kullanarak Service Bus ad alanında bir **sıra** oluşturacaksınız. 
 3. [PHP için Azure SDK](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>PHP uygulaması oluşturma
-Azure Blob hizmetine erişen bir PHP uygulaması oluşturmanın tek şartı, kodunuzun içinden [PHP için Azure SDK'daki](https://github.com/Azure/azure-sdk-for-php) sınıfların başvurusudur. Uygulamanızı veya Notepad'i oluşturmak için herhangi bir geliştirme aracını kullanabilirsiniz.
+Azure Blob hizmetine erişen bir PHP uygulaması oluşturmaya yönelik tek gereksinim, kodunuzun içinden [php Için Azure SDK](https://github.com/Azure/azure-sdk-for-php) 'sindeki sınıfların başvuridir. Uygulamanızı veya Not defterini oluşturmak için herhangi bir geliştirme aracı kullanabilirsiniz.
 
 > [!NOTE]
-> PHP yüklemeniz in [OpenSSL uzantısı](https://php.net/openssl) da yüklü ve etkin olmalıdır.
+> PHP yüklemenizin Ayrıca [OpenSSL uzantısının](https://php.net/openssl) yüklü ve etkin olması gerekir.
 
-Bu kılavuzda, yerel olarak bir PHP uygulaması içinden veya bir Azure web rolü, çalışan rolü veya web sitesi içinde çalışan kodlardan çağrılabilen hizmet özelliklerini kullanırsınız.
+Bu kılavuzda, yerel olarak bir PHP uygulaması içinden veya bir Azure Web rolü, çalışan rolü veya Web sitesi içinde çalışan kodda çağrılabilen hizmet özelliklerini kullanacaksınız.
 
-## <a name="get-the-azure-client-libraries"></a>Azure istemci kitaplıklarını alın
+## <a name="get-the-azure-client-libraries"></a>Azure istemci kitaplıklarını al
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı Servis Veri Aracı'nı kullanacak şekilde yapılandırın
-Servis Veri Veri Mesi apilerini kullanmak için aşağıdakileri yapın:
+## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
+Service Bus kuyruğu API 'Lerini kullanmak için şunları yapın:
 
-1. [require_once][require_once] deyimini kullanarak autoloader dosyasına başvurun.
-2. Kullanabileceğiniz sınıflara başvurun.
+1. [Require_once][require_once] ifadesini kullanarak otomatik yükleyici dosyasına başvurun.
+2. Kullanabileceğiniz tüm sınıflara başvurun.
 
-Aşağıdaki örnek, otomatik yükleyici dosyasının nasıl `ServicesBuilder` dahil edilip sınıfa başvurulup başvurulmasını gösterir.
+Aşağıdaki örnek, otomatik yükleyici dosyasının nasıl ekleneceğini ve `ServicesBuilder` sınıfına nasıl başvurululacağını gösterir.
 
 > [!NOTE]
-> Bu örnek (ve bu makaledeki diğer örnekler), Php İstemci Kitaplıklarını Azure için Composer aracılığıyla yüklediğinizi varsayar. Kitaplıkları el ile veya ARMUT paketi olarak yüklediyseniz, **WindowsAzure.php** autoloader dosyasına başvurmanız gerekir.
+> Bu örnek (ve bu makaledeki diğer örnekler), Oluşturucu aracılığıyla Azure için PHP Istemci kitaplıklarını yüklediğinizi varsayar. Kitaplıkları el ile veya bir PEAR paketi olarak yüklediyseniz, **windowsazure. php** otomatik yükleyici dosyasına başvurmanız gerekir.
 > 
 > 
 
@@ -66,23 +66,23 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-Aşağıdaki `require_once` örneklerde, deyim her zaman gösterilir, ancak yalnızca örneğin yürütülmesi için gerekli sınıflara başvurulmaktadır.
+Aşağıdaki örneklerde, `require_once` ifade her zaman gösterilir, ancak yalnızca yürütülecek örnek için gereken sınıflara başvurulur.
 
-## <a name="set-up-a-service-bus-connection"></a>Servis Veri Servisi bağlantısı ayarlama
-Servis Veri Servisi istemcisini anında atabilmek için öncelikle bu biçimde geçerli bir bağlantı dizeniz olması gerekir:
+## <a name="set-up-a-service-bus-connection"></a>Service Bus bağlantısını ayarlama
+Service Bus istemcisinin örneğini oluşturmak için, önce bu biçimde geçerli bir bağlantı dizesine sahip olmanız gerekir:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Nerede `Endpoint` genellikle biçimidir. `[yourNamespace].servicebus.windows.net`
+Burada `Endpoint` genellikle biçimindedir `[yourNamespace].servicebus.windows.net`.
 
-Herhangi bir Azure hizmet istemcisi `ServicesBuilder` oluşturmak için sınıfı kullanmanız gerekir. Şunları yapabilirsiniz:
+Herhangi bir Azure hizmeti istemcisi oluşturmak için `ServicesBuilder` sınıfını kullanmanız gerekir. Şunları yapabilirsiniz:
 
 * Bağlantı dizesini doğrudan ona geçirin.
-* Bağlantı dizesi için birden çok harici kaynağı denetlemek için **CloudConfigurationManager'ı (CCM)** kullanın:
-  * Varsayılan olarak bir dış kaynak için destek ile birlikte gelir - çevresel değişkenler
-  * `ConnectionStringSource` Sınıfı genişleterek yeni kaynaklar ekleyebilirsiniz
+* Bağlantı dizesinin birden çok dış kaynağını denetlemek için **Cloudconfigurationmanager (CCM)** kullanın:
+  * Varsayılan olarak, bir dış kaynak-ortam değişkeni desteğiyle birlikte gelir
+  * `ConnectionStringSource` Sınıfını genişleterek yeni kaynaklar ekleyebilirsiniz
 
 Burada özetlenen örnekler için bağlantı dizesi doğrudan geçirilir.
 
@@ -97,9 +97,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Bir kuyruk oluşturma
-`ServiceBusRestProxy` Sınıf üzerinden Servis Veri Servisi kuyrukları için yönetim işlemleri gerçekleştirebilirsiniz. Bir `ServiceBusRestProxy` nesne, onu `ServicesBuilder::createServiceBusService` yönetmek için belirteç izinleri kapsülleyen uygun bir bağlantı dizesi ile fabrika yöntemi ile oluşturulur.
+`ServiceBusRestProxy` Sınıfı aracılığıyla Service Bus kuyrukları için yönetim işlemleri gerçekleştirebilirsiniz. Bir `ServiceBusRestProxy` nesne, kendisini yönetmek için `ServicesBuilder::createServiceBusService` belirteç izinlerini kapsülleyen uygun bir bağlantı dizesiyle, Factory yöntemi aracılığıyla oluşturulur.
 
-Aşağıdaki `ServiceBusRestProxy` örnek, bir `ServiceBusRestProxy->createQueue` `myqueue` `MySBNamespace` hizmet ad alanı içinde adlandırılmış bir sıra oluşturmak için a ve çağrının nasıl anında oluşturulup çağırılabildiğini gösterir:
+Aşağıdaki `ServiceBusRestProxy` örnek, bir `ServiceBusRestProxy->createQueue` `myqueue` `MySBNamespace` hizmet ad alanı içinde adlı bir sıra oluşturmak için bir ve çağrısının nasıl örneklendirilecek gösterilmektedir:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -128,12 +128,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Belirli bir `listQueues` ada `ServiceBusRestProxy` sahip bir kuyruğun ad alanı içinde zaten var olup olmadığını denetlemek için nesneler üzerinde yöntemi kullanabilirsiniz.
+> Bir ad alanı içinde `listQueues` belirtilen ada `ServiceBusRestProxy` sahip bir kuyruğun zaten var olup olmadığını denetlemek için nesneleri üzerinde yöntemini kullanabilirsiniz.
 > 
 > 
 
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
-Servis Veri Servisi kuyruğuna ileti göndermek için `ServiceBusRestProxy->sendQueueMessage` uygulamanız yöntemi çağırır. Aşağıdaki kod, hizmet ad alanı `myqueue` içinde daha önce `MySBNamespace` oluşturulan kuyruğa nasıl ileti gönderilen leri gösterir.
+Service Bus kuyruğuna ileti göndermek için uygulamanız `ServiceBusRestProxy->sendQueueMessage` yöntemini çağırır. Aşağıdaki kod, `myqueue` `MySBNamespace` hizmet ad alanı içinde önceden oluşturulan sıraya bir iletinin nasıl gönderileceğini gösterir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -163,19 +163,19 @@ catch(ServiceException $e){
 }
 ```
 
-Hizmet Veri Servisi kuyruklarına gönderilen (ve alınan) iletiler [BrokeredMessage][BrokeredMessage] sınıfının örnekleridir. [Aracılı İleti][BrokeredMessage] nesnelerinde, özel uygulamaya özgü özellikleri tutmak için kullanılan bir dizi standart yöntem ve özellik ve rasgele uygulama verileri kümesi vardır.
+Service Bus sıralara gönderilen (ve alınan) iletiler, [Brokeredmessage][BrokeredMessage] sınıfının örnekleridir. [Brokeredmessage][BrokeredMessage] nesneleri, uygulamaya özgü özel özellikleri ve rastgele uygulama verilerinin gövdesini tutmak için kullanılan standart yöntemler ve özellikler kümesine sahiptir.
 
-Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Kuyrukta tutulan ileti sayısına ilişkin bir sınır yoktur ancak kuyruk tarafından tutulan iletilerin toplam boyutu için uç sınır vardır. Sıra boyutundaki bu üst sınır 5 GB'dır.
+Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Kuyrukta tutulan ileti sayısına ilişkin bir sınır yoktur ancak kuyruk tarafından tutulan iletilerin toplam boyutu için uç sınır vardır. Sıra boyutu için bu üst sınır 5 GB 'dir.
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-Bir kuyruktan ileti almanın en iyi yolu `ServiceBusRestProxy->receiveQueueMessage` bir yöntem kullanmaktır. Mesajlar iki farklı modda alınabilir: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) ve [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). **PeekLock** varsayılan değerdir.
+Bir kuyruktan ileti almanın en iyi yolu bir `ServiceBusRestProxy->receiveQueueMessage` yöntemi kullanmaktır. İletiler iki farklı modda alınabilir: [*Receiveanddelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode) ve [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock). **PeekLock** varsayılan değerdir.
 
-[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modunu kullanırken, receive tek çekimlik bir işlemdir; diğer bir deyişle, Servis Veri Servisi kuyruktaki bir ileti için okuma isteği aldığında, iletinin tüketildiği şeklinde işaretler ve uygulamaya döndürür. [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu, en basit modeldir ve uygulamanın hata oluştuğunda bir iletinin işlenmemesine izin verebileceği senaryolarda en iyi şekilde çalışır. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Servis Veri Kurumu iletinin tüketildiği olarak işaretlenmiş olduğundan, uygulama yeniden başlatıldığında ve iletileri yeniden almaya başladığında, kilitlenmeden önce tüketilen iletiyi kaçırmış olur.
+[Receiveanddelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modunu kullanırken alma işlemi tek bir görüntü işlemidir; diğer bir deyişle, Service Bus kuyruktaki bir ileti için okuma isteği aldığında, iletiyi tüketildiği gibi işaretler ve uygulamaya döndürür. [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modu, en basit modeldir ve uygulamanın hata oluştuğunda bir iletinin işlenmemesine izin verebileceği senaryolarda en iyi şekilde çalışır. Bu durumu daha iyi anlamak için müşterinin bir alma isteği bildirdiğini ve bu isteğin işlenmeden çöktüğünü varsayın. Service Bus iletiyi tüketildiği gibi işaretlediği için, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenmeden önce tüketilen iletiyi kaçırmış olur.
 
-Varsayılan [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) modunda, ileti almak iki aşamalı bir işlem haline gelir ve bu da eksik iletileri tolere edemeyen uygulamaları desteklemeyi mümkün kılar. Servis Veri Mes'i bir istek aldığında, bir sonraki iletinin tüketilmesi gerektiğini bulur, diğer tüketicilerin bu isteği almasını önlemek için kilitler ve sonra uygulamaya döndürür. Uygulama iletiyi işlemeyi bitirdikten sonra (veya gelecekteki işlemler için güvenilir bir şekilde depoladıktan) `ServiceBusRestProxy->deleteMessage`alınan iletiyi . Servis Veri Servisi `deleteMessage` aramayı gördüğünde, iletinin tüketildiği olarak işaretlenecek ve sıradan kaldıracaktır.
+Varsayılan [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) modunda bir ileti almak iki aşamalı bir işlem haline gelir, bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında, kullanılacak sonraki iletiyi bulur, diğer tüketicilerin bunu almasını engellemek için onu kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), alınan iletiyi ' a geçirerek alma işleminin ikinci aşamasını tamamlar `ServiceBusRestProxy->deleteMessage`. Service Bus `deleteMessage` çağrıyı gördüğünde, iletiyi tüketildiği gibi işaretleyecek ve kuyruktan kaldıracak.
 
-Aşağıdaki örnek, [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) modunu (varsayılan mod) kullanarak bir iletiyi nasıl alacağıve işleyin.
+Aşağıdaki örnek, [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) Mode (varsayılan mod) kullanarak bir iletinin nasıl alınacağını ve işleyeceğini gösterir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -217,19 +217,19 @@ catch(ServiceException $e){
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunmayan iletileri giderme
 
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Alıcı uygulaması iletiyi nedense işleyemiyorsa, `unlockMessage` alınan iletideki yöntemi `deleteMessage` (yöntem yerine) çağırabilir. Bu, Servis Veri Servisi'nin sıra içindeki iletinin kilidini açmasına ve aynı alıcı uygulama veya başka bir tüketen uygulama tarafından yeniden alınmak üzere kullanılabilir hale getirmesine neden olur.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemeyeceği takdirde, alınan ileti üzerinde `unlockMessage` yöntemi çağırabilir ( `deleteMessage` yöntemi yerine). Bu, Service Bus kuyruktaki iletinin kilidini açmasına ve aynı uygulama ya da başka bir uygulama tarafından yeniden alınabilir olmasını sağlar.
 
-Sıra içinde kilitli bir iletiyle ilişkili bir zaman aşımı da vardır ve uygulama kilit süresi sona ermeden önce iletiyi işlemezse (örneğin, uygulama çöküyorsa), Servis Veri Servisi iletiyi otomatik olarak açar ve tekrar alınabilir.
+Ayrıca, kuyruk içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı vardır. uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse), Service Bus otomatik olarak iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale gelir.
 
-Uygulamanın iletiyi işledikten sonra ancak `deleteMessage` istek verilmeden önce çökmesi durumunda, ileti yeniden başlatıldığında uygulamaya yeniden teslim edilir. Bu genellikle *En Az Bir Kez* işleme denir; diğer bir deyişle, her ileti en az bir kez işlenir, ancak bazı durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işleme tolere edemiyorsa, yinelenen ileti teslimini işlemek için uygulamalara ek mantık eklenmesi önerilir. Bu genellikle teslim `getMessageId` girişimleri arasında sabit kalır ileti yöntemi kullanılarak elde edilir.
+İleti işlendikten sonra, ancak `deleteMessage` istek verilmeden önce uygulamanın çöktüğü durumunda ileti yeniden başlatıldığında uygulamaya yeniden gönderilir. Bu genellikle *en az bir kez* işleme olarak adlandırılır; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işleme tolerans vermezse, yinelenen ileti teslimini işlemek için uygulamalara ek mantık eklemek önerilir. Bu, genellikle ileti `getMessageId` yöntemi kullanılarak elde edilir ve bu da teslim girişimleri arasında sabit kalır.
 
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Servis Veri Servisi kuyruklarının temellerini öğrendiğiniz için, daha fazla bilgi için [Kuyruklar, konular ve aboneliklere][Queues, topics, and subscriptions] bakın.
+Service Bus kuyrukların temellerini öğrendiğinize göre, daha fazla bilgi için bkz. [Kuyruklar, konular ve abonelikler][Queues, topics, and subscriptions] .
 
-Daha fazla bilgi için [PHP Geliştirici Merkezi'ni](https://azure.microsoft.com/develop/php/)de ziyaret edin.
+Daha fazla bilgi için [php geliştirici merkezini](https://azure.microsoft.com/develop/php/)de ziyaret edin.
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
