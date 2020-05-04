@@ -214,6 +214,7 @@
             - name: Web sayfaları
               items:
                 - name: İstemci tarafı JavaScript
+                  displayname: 'SPA, Single Page Applications, React, JS, Angular'
                   href: app/javascript.md
                 - name: JavaScript için kaynak haritası
                   href: app/source-map-support.md
@@ -441,6 +442,11 @@
               href: app/custom-data-correlation.md
             - name: Bağlantı dizeleri
               href: app/sdk-connection-string.md
+            - name: Bağlantı dizeleri
+              href: app/sdk-connection-string.md
+            - name: GetMetric
+              displayname: 'get metric, custom metrics, metrics, TrackMetric'
+              href: app/get-metric.md
             - name: Özel konular
               items:
                 - name: Web uygulamalarını ve hizmetleri ayrıntılı tanılama

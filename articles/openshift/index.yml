@@ -10,12 +10,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: f35419d63375ae8fca5f9458505b96b6ddfd3890
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 178faad2aab2f2ef7658a32822899f1e5ca51bd9
+  ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80062285"
+  ms.lasthandoff: 05/01/2020
+  ms.locfileid: "82628138"
 landingContent:
 - title: About Azure Red Hat OpenShift Hakkında
   linkLists:
@@ -27,29 +27,25 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Azure Red Hat OpenShift kümesi oluşturma
+    - text: Azure Red Hat OpenShift 4 kümesi oluşturma
       url: tutorial-create-cluster.md
-    - text: Azure Red Hat OpenShift kümesini ölçeklendirme
-      url: tutorial-scale-cluster.md
-    - text: Azure Red Hat OpenShift kümesini silme
+    - text: Azure Red Hat OpenShift 4 kümesine bağlanma
+      url: tutorial-connect-cluster.md
+    - text: Azure Red Hat OpenShift 4 kümesini silme
       url: tutorial-delete-cluster.md
 - title: Ayarlama
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
-      url: howto-setup-environment.md
-    - text: Azure AD kiracısı oluşturma
-      url: howto-create-tenant.md
-    - text: Azure AD uygulama nesnesi veya kullanıcısı oluşturma
-      url: howto-aad-app-configuration.md
+    - text: Özel bir Azure Red Hat OpenShift 4 kümesi oluşturma
+      url: howto-create-private-cluster.md
+    - text: Azure Red Hat OpenShift 4 kümesi için DNS İletmeyi yapılandırma
+      url: dns-forwarding.md
 - title: Başvuru
   linkLists:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: /cli/azure/openshift
-    - text: REST API
-      url: /rest/api/openshift
+      url: /cli/azure/aro
     - text: Red Hat OpenShift belgeleri
-      url: https://docs.openshift.com/aro/welcome/index.html
+      url: https://docs.openshift.com/aro/4/welcome/index.html
