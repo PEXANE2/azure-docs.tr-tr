@@ -40,8 +40,6 @@
       href: components.md
     - name: Kavramlar
       href: concepts.md
-    - name: Türler
-      href: types.md
     - name: Sistem durumunu izleme
       items:
         - name: Sistem durumu araştırmaları
