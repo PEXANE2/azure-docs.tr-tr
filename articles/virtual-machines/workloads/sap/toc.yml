@@ -76,6 +76,8 @@
           href: ha-setup-with-stonith.md
         - name: Type II SKU'ları için İşletim Sistemi Yedeklemesi
           href: os-backup-type-ii-skus.md
+        - name: HANA Büyük Örnekleri için Kdump’ı etkinleştirme
+          href: hana-large-instance-enable-kdump.md
         - name: HANA Büyük Örnekleri için İşletim Sistemi Yükseltmesi
           href: os-upgrade-hana-large-instance.md
         - name: SUSE Linux için SMT sunucusunu ayarlama

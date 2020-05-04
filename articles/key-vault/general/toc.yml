@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault azaltma yönergeleri
       href: overview-throttling.md
+    - name: Azure Key Vault kullanılabilirliği ve yedekliliği
+      href: disaster-recovery-guidance.md
     - name: Azure Key Vault için sanal ağ hizmet uç noktaları - Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: Nasıl yapılır kılavuzları
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: PowerShell ile geçici silmeyi kullanma
           href: soft-delete-powershell.md
+    - name: Key Vault’u Taşıma
+      items:
+        - name: Key Vault’u Başka Bir Bölgeye Taşıma
+          href: keyvault-moveregion.md
     - name: Sorun giderme
       items:
         - name: Abonelik taşıma işlemi sonrasında anahtar kasası kiracı kimliğini değiştirme

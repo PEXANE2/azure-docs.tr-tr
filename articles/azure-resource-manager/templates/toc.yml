@@ -291,7 +291,7 @@
       items:
         - name: Tüm işlevler
           href: template-functions.md
-        - name: Dizi ve nesne işlevleri
+        - name: Dizi işlevleri
           href: template-functions-array.md
         - name: Karşılaştırma işlevleri
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: Sayısal işlevler
           href: template-functions-numeric.md
+        - name: Nesne işlevleri
+          href: template-functions-object.md
         - name: Kaynak işlevleri
           href: template-functions-resource.md
         - name: Dize işlevleri

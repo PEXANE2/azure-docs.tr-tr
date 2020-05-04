@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Azure DevOps Projeleri belgeleri
-summary: Azure DevOps Projeleri, mevcut kodunuzu ve Git deponuzu getirdiğiniz ya da Azure’da bir sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak üzere örnek uygulamalardan birini seçtiğiniz basitleştirilmiş bir deneyim sunar.
+title: Azure DevOps Starter belgeleri
+summary: Azure DevOps Starter, mevcut kodunuzu ve Git deponuzu getirdiğiniz ya da Azure’da bir sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak üzere örnek uygulamalardan birini seçtiğiniz basitleştirilmiş bir deneyim sunar.
 metadata:
-  title: Azure DevOps Projeleri belgeleri
+  title: Azure DevOps Starter belgeleri
   description: Azure’da bir sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattı oluşturmak için mevcut kodunuzu ve Git deponuzu getirin veya örnek bir uygulama seçin.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942473"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231484"
 landingContent:
-- title: Azure DevOps Projeleri hakkında
+- title: Azure DevOps Starter hakkında
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure DevOps Projeleri nedir?
+    - text: Azure DevOps Starter nedir?
       url: overview.md
   - linkListType: video
     links:
-    - text: DevOps Projeleri ile CI/CD oluşturma videosu (8:53)
+    - text: DevOps Starter ile CI/CD oluşturma videosu (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: CI/CD işlem hattı oluşturma
   linkLists:

@@ -155,11 +155,11 @@
           href: directory-assign-admin-roles.md
         - name: Rolleri görüntüleme ve atama
           href: directory-manage-roles-portal.md
-        - name: Özel rol
+        - name: Özel roller
           items:
-            - name: Özel rol
+            - name: Özel roller
               href: roles-custom-overview.md
-            - name: Özel rol oluştur
+            - name: Özel rol oluşturma
               href: roles-create-custom.md
             - name: Özel rol atamalarını görüntüleme
               href: roles-view-assignments.md

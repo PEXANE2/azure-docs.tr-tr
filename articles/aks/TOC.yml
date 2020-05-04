@@ -252,7 +252,7 @@
         - name: Kapsayıcı verilerini gerçek zamanlı olarak görüntüleme
           href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
-    - name: Windows Server kapsayıcılarını kullanma (önizleme)
+    - name: Windows Server kapsayıcılarını kullanma
       items:
         - name: AKS kümesi oluşturma
           href: windows-container-cli.md

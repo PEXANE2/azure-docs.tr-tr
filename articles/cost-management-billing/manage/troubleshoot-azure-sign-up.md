@@ -1,27 +1,31 @@
 ---
-title: Azure kaydı ile ilgili sorunları giderme
+title: Azure portalında veya Azure hesap merkezinde yeni bir hesap için kaydolduğunuzda oluşan sorunları giderme
 description: Microsoft Azure portalı hesap merkezinde yeni hesaba kaydolmaya çalışırken oluşan bir sorunu çözümleme.
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409466"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133177"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>Azure kaydı ile ilgili sorunları giderme
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portalında veya Azure hesap merkezinde yeni bir hesap için kaydolduğunuzda oluşan sorunları giderme
 
 Microsoft Azure portalında veya Azure hesap merkezinde yeni bir hesaba kaydolmaya çalıştığınızda bir sorunla karşılaşabilirsiniz. Sorunu gidermeden önce aşağıdakileri doğrulayın:
 
-- Azure hesap profiliniz için sağladığınız bilgilerin (iletişim e-posta adresi, sokak adresi ve telefon numarası gibi) doğru olduğunu.
+- Azure Hesap Profiliniz için sağladığınız bilgilerin (iletişim e-posta adresi, sokak adresi ve telefon numarası gibi) doğru olduğunu.
 - Kredi kartı bilgilerinin doğru olduğunu.
 - Önceden aynı bilgilere sahip bir Microsoft hesabınız olmadığını.
+
+> [!NOTE]
+> Zaten bir hesabınız varsa ve oturum açma sorunlarını gidermeye yönelik rehberlik arıyorsanız bkz. [Azure aboneliği oturum açma sorunlarını giderme](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
 
 ## <a name="resolutions"></a>Çözümler
 
@@ -39,7 +43,7 @@ Sorunu çözmek için şu adımları izleyin:
 
 4. Azure aboneliğine kaydolduğunuzda, kredi kartı kaydı ile ilişkili fatura adresinin, banka kayıtlarınızla aynı olduğundan emin olun.
 
-Hata iletisini almaya devam ederseniz, farklı bir tarayıcı kullanarak kaydolmayı deneyin.
+Hata iletisini almaya devam ederseniz farklı bir tarayıcı kullanarak kaydolmayı deneyin.
 
 ### <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>İlerleme çubuğu, *Kartla kimlik doğrulama* bölümüne takılı kalıyor.
 

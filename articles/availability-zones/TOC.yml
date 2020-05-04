@@ -8,10 +8,12 @@
   items:
     - name: Azure uygulamaları için yüksek kullanılabilirlik
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: Bölgeler ve Kullanılabilirlik Alanları
+      href: az-overview.md
     - name: Kullanılabilirlik Alanları Belgeleri
       items:
-        - name: Kullanılabilirlik Alanları nedir?
-          href: az-overview.md
+        - name: Kullanılabilirlik Alanlarını destekleyen bölgeler
+          href: az-region.md
         - name: Sanal makineler
           items:
             - name: CLI ile bir Kullanılabilirlik Alanında Linux VM oluşturma
@@ -63,7 +65,8 @@
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
         - name: Depolama
           items:
-            - name: Alanlar arası yedekli depolama
+            - name: |
+                Alanlar arası yedekli depolama
               href: ../storage/common/storage-redundancy-zrs.md
         - name: Event Hubs
           items:

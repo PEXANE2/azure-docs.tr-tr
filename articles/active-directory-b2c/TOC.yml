@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: Kullanıcı profili öznitelikleri
       href: user-profile-attributes.md
+    - name: SSO oturumları
+      href: session-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Uygulama tümleştirmesi
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: SAML kimlik sağlayıcısı
+                      href: saml-identity-provider-technical-profile.md
                     - name: SAML belirtecini veren
                       href: saml-issuer-technical-profile.md
                     - name: Kendi kendine onaylanma

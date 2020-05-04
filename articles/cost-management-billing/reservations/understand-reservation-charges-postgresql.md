@@ -1,20 +1,17 @@
 ---
-title: PostgreSQL için Azure Veritabanı Tek sunucuya rezervasyon indiriminin uygulanması
-description: PostgreSQL için Azure Veritabanı Tek sunucuya rezervasyon indiriminin uygulanması
+title: Rezervasyon indirimini anlama - PostgreSQL için Azure Veritabanı Tek sunucu
+description: PostgreSQL için Azure Veritabanı Tek sunucuya rezervasyon indiriminin nasıl uygulanacağını öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e01b35bc540045bc272484159380f8a11e5a6c48
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199305"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509406"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure Veritabanı Tek sunucuya rezervasyon indiriminin uygulanması
 
@@ -28,7 +25,7 @@ Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki ba�
 
 ## <a name="discount-applied-to-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure Veritabanı Tek sunucuya uygulanan indirim
 
-PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasite indirimi, PostgreSQL Tek sunucunuza saatlik olarak uygulanır. Satın aldığınız rezervasyon, çalışmakta olan PostgreSQL için Azure Veritabanı Tek sunucu tarafından gösterilen işlem kullanımı ile eşleştirilir. Saatin tamamı boyunca çalışmayan PostgreSQL Tek sunucuları olursa rezervasyon, rezervasyon öznitelikleriyle eşleşen diğer PostgreSQL için Azure Veritabanı Tek sunuculara otomatik olarak uygulanır. İndirim eşzamanlı olarak çalışan PostgreSQL için Azure Veritabanı Tek sunucularına uygulanabilir. Rezervasyon öznitelikleriyle eşleşen ve saatin tamamı boyunca çalışan bir PostgreSQL Tek sunucunuz yoksa, ilgili saat için rezervasyon indiriminden tam olarak yararlanmazsınız.
+PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasite indirimi, PostgreSQL Tek sunucunuza saatlik olarak uygulanır. Satın aldığınız rezervasyon, çalışmakta olan PostgreSQL için Azure Veritabanı Tek sunucu tarafından gösterilen işlem kullanımı ile eşleştirilir. Saatin tamamı boyunca çalışmayan PostgreSQL Tek sunucuları olursa rezervasyon, rezervasyon öznitelikleriyle eşleşen diğer PostgreSQL için Azure Veritabanı Tek sunuculara otomatik olarak uygulanır. İndirim eşzamanlı olarak çalışan PostgreSQL için Azure Veritabanı Tek sunucularına uygulanabilir. Rezervasyon öznitelikleriyle eşleşen ve tam bir saat boyunca çalışan bir PostgreSQL Tek sunucunuz yoksa, ilgili saat için rezervasyon indiriminden tam olarak yararlanmazsınız.
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak PostgreSQL için Azure Veritabanı Tek sunucu ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
@@ -44,5 +41,6 @@ Bu örneklerin geri kalan kısmında satın aldığınız PostgreSQL için Azure
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 
-## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
+## <a name="next-steps"></a>Sonraki adımlar
+
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

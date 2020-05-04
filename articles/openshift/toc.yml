@@ -6,57 +6,67 @@
       href: intro-openshift.md
 - name: Öğreticiler
   items:
-    - name: Azure Red Hat OpenShift kümesini oluşturma ve yönetme
-      items:
-        - name: 1 - Azure Red Hat OpenShift kümesi oluşturma
-          href: tutorial-create-cluster.md
-        - name: 2 - Azure Red Hat OpenShift kümesini ölçeklendirme
-          href: tutorial-scale-cluster.md
-        - name: 3 - Azure Red Hat OpenShift kümesini silme
-          href: tutorial-delete-cluster.md
-- name: Küme yönetimi
-  items:
-    - name: Azure Red Hat OpenShift kümesi yönetimi
-      items:
-        - name: 1 - Azure Red Hat OpenShift kümesi yönetici rolü
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2 - Güvenlik bağlamı kısıtlamalarını yönetme
-          href: cluster-administration-security-context-constraints.md
+    - name: 1 - Azure Red Hat OpenShift 4 kümesi oluşturma
+      href: tutorial-create-cluster.md
+    - name: 2 - Azure Red Hat OpenShift 4 kümesine bağlanma
+      href: tutorial-connect-cluster.md
+    - name: 3 - Azure Red Hat OpenShift 4 kümesini silme
+      href: tutorial-delete-cluster.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
-    - name: Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
-      href: howto-setup-environment.md
-      expanded: true
+    - name: Özel bir Azure Red Hat OpenShift 4 kümesi oluşturma
+      href: create-private-cluster.md
+    - name: Azure Red Hat OpenShift 4 kümesi için DNS iletmeyi yapılandırma
+      href: dns-forwarding.md
+    - name: Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma
       items:
-        - name: Azure AD kiracısı oluşturma
-          href: howto-create-tenant.md
-        - name: Azure AD uygulama nesnesi veya kullanıcısı oluşturma
-          href: howto-aad-app-configuration.md
-    - name: Azure Red Hat OpenShift 4.3 (önizleme)
+        - name: Azure Active Directory kimlik doğrulamasını yapılandırma (CLI)
+          href: configure-azure-ad-cli.md
+        - name: Azure Active Directory kimlik doğrulamasını yapılandırma (Portal)
+          href: configure-azure-ad-ui.md
+    - name: Azure Red Hat OpenShift 4 için izleme ve günlüğe kaydetme
       items:
-        - name: Azure Red Hat OpenShift 4.3 kümesi oluşturma
-          href: howto-using-azure-redhat-openshift.md
-        - name: Azure Red Hat OpenShift 4.3 için Azure İzleyici ayarlama
-          href: howto-azure-monitor-v4.md
-    - name: Azure Red Hat OpenShift kümesinde tek başına bir Prometheus dağıtma
-      href: howto-deploy-prometheus.md
-    - name: Azure Red Hat OpenShift kümesinde projeleri yönetme
-      href: howto-manage-projects.md
-    - name: Özel bir Azure Red Hat OpenShift kümesi oluşturma
-      href: howto-create-private-cluster.md
-    - name: İzleme ve günlüğe kaydetme
-      items:
-        - name: Kapsayıcılar için Azure İzleyici (önizleme)
+        - name: Azure Red Hat OpenShift 4’te kapsayıcılar için Azure İzleyici (önizleme)
           items:
-            - name: Kapsayıcılar için Azure İzleyici’yi yapılandırma
-              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
-              maintainContext: true
-            - name: Kapsayıcılar için Azure İzleyici’yi devre dışı bırakma
-              href: ../azure-monitor/insights/container-insights-optout-openshift.md
-              maintainContext: true
-    - name: Azure Red Hat OpenShift kümesinde ayrıcalıklı kapsayıcılar çalıştırma
-      href: howto-run-privileged-containers.md
+            - name: Azure Red Hat OpenShift 4’te kapsayıcılar için Azure İzleyici’yi yapılandırma (önizleme)
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici’yi devre dışı bırakma (önizleme)
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: Azure Red Hat OpenShift 3.11 için Azure Red Hat OpenShift geliştirme ortamınızı ayarlama
+          href: howto-setup-environment.md
+          expanded: true
+          items:
+            - name: Azure AD kiracısı oluşturma
+              href: howto-create-tenant.md
+            - name: Azure AD uygulama nesnesi veya kullanıcısı oluşturma
+              href: howto-aad-app-configuration.md
+        - name: Azure Red Hat OpenShift 3.11 kümesinde tek başına bir Prometheus dağıtma
+          href: howto-deploy-prometheus.md
+        - name: Azure Red Hat OpenShift 3.11 kümesinde projeleri yönetme
+          href: howto-manage-projects.md
+        - name: Özel bir Azure Red Hat OpenShift 3.11 kümesi oluşturma
+          href: howto-create-private-cluster.md
+        - name: Azure Red Hat OpenShift 3.11 için izleme ve günlüğe kaydetme
+          items:
+            - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici (önizleme)
+              items:
+                - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: Azure Red Hat OpenShift 3.11’de kapsayıcılar için Azure İzleyici’yi devre dışı bırakma
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: Azure Red Hat OpenShift 3.11’de ayrıcalıklı kapsayıcıları çalıştırma
+          href: howto-run-privileged-containers.md
+        - name: Azure Red Hat OpenShift 3.11’de küme yönetimi
+          items:
+            - name: 1 - Azure Red Hat OpenShift 3.11 kümesi yönetici rolü
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2 - Azure Red Hat OpenShift 3.11’de güvenlik bağlamı kısıtlamalarını yönetme
+              href: cluster-administration-security-context-constraints.md
 - name: Başvuru
   items:
     - name: Azure Red Hat OpenShift CLI
@@ -69,8 +79,10 @@
       href: openshift-faq.md
     - name: Sorun giderme
       href: troubleshoot.md
-    - name: Desteklenen kaynaklar
+    - name: Azure Red Hat OpenShift 3.11 için desteklenen kaynaklar
       href: supported-resources.md
+    - name: Azure Red Hat OpenShift 4.3 için desteklenen kaynaklar
+      href: support-policies-v4.md
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift belgeleri

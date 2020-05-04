@@ -262,9 +262,11 @@
       items:
         - name: Sonuçlar üzerinde çalışma
           href: search-pagination-page-layout.md
-        - name: İlgi düzeyini ayarlama (puanlama profilleri)
+        - name: İlgi puanlaması
+          href: index-similarity-and-scoring.md
+        - name: Puanlama modelleri
           href: index-add-scoring-profiles.md
-        - name: İlgi düzeyini ayarlama (benzerlik algoritması)
+        - name: Benzerlik algoritması
           href: index-ranking-similarity.md
     - name: Planlama
       items:

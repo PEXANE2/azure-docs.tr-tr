@@ -1,20 +1,17 @@
 ---
-title: MySQL için Azure Veritabanına rezervasyon indiriminin uygulanması
-description: MySQL için Azure Veritabanına rezervasyon indiriminin uygulanması
+title: Rezervasyon indirimini anlama - MySQL için Azure Veritabanı
+description: MySQL için Azure Veritabanı sunucularınıza rezervasyon indiriminin nasıl uygulanacağını öğrenin.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199322"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509440"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına rezervasyon indiriminin uygulanması
 
@@ -28,7 +25,7 @@ Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki ba�
 
 ## <a name="discount-applied-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanına uygulanan indirim
 
-MySQL için Azure Veritabanı ayrılmış kapasitesi indirimi, çalışan MySQL sunucularınıza saatlik olarak uygulanır. Satın aldığınız rezervasyon, çalışmakta olan MySQL için Azure Veritabanı sunucuları tarafından gösterilen işlem kullanımı ile eşleştirilir. Saatin tamamı boyunca çalışmayan MySQL sunucuları olursa rezervasyon, rezervasyon öznitelikleriyle eşleşen diğer MySQL için Azure Veritabanı sunucularına otomatik olarak uygulanır. İndirim eşzamanlı olarak çalışan MySQL için Azure Veritabanı sunucularına uygulanabilir. Rezervasyon öznitelikleriyle eşleşen ve saatin tamamı boyunca çalışan bir MySQL sunucunuz yoksa, ilgili saat için rezervasyon indiriminden tam olarak yararlanmazsınız.
+MySQL için Azure Veritabanı ayrılmış kapasitesi indirimi, çalışan MySQL sunucularınıza saatlik olarak uygulanır. Satın aldığınız rezervasyon, çalışmakta olan MySQL için Azure Veritabanı sunucuları tarafından gösterilen işlem kullanımı ile eşleştirilir. Saatin tamamı boyunca çalışmayan MySQL sunucuları olursa rezervasyon, rezervasyon öznitelikleriyle eşleşen diğer MySQL için Azure Veritabanı sunucularına otomatik olarak uygulanır. İndirim eşzamanlı olarak çalışan MySQL için Azure Veritabanı sunucularına uygulanabilir. Rezervasyon öznitelikleriyle eşleşen ve tam bir saat boyunca çalışan bir MySQL sunucunuz yoksa, ilgili saat için rezervasyon indiriminden tam olarak yararlanmazsınız.
 
 Aşağıdaki örneklerde, satın aldığınız çekirdek sayısına ve çalıştırılma zamanına bağlı olarak MySQL için Azure Veritabanı ayrılmış kapasite indiriminin nasıl uygulanacağı gösterilmektedir.
 
@@ -44,5 +41,6 @@ Bu örneklerin geri kalan kısmında satın aldığınız MySQL için Azure Veri
 
 Faturalama kullanım raporlarında Azure rezervasyonlarınızın uygulamasını anlamak ve görüntülemek için bkz. [Azure rezervasyon kullanımınızı anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 
-## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
+## <a name="next-steps"></a>Sonraki adımlar
+
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).

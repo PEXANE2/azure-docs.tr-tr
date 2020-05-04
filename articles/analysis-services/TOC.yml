@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: Desteklenen veri kaynakları
       href: analysis-services-datasource.md
+    - name: Ağ Bağlantısı ile ilgili SSS
+      href: analysis-services-network-faq.md
 - name: Nasıl yapılır
   items:
     - name: Sunucu
