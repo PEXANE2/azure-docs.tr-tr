@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 24f68ee1d2650a5f3e77b61fb30b5c0185cd82b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117157"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733082"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -193,7 +193,7 @@ Ardından örnek, `CreatePoolIfNotExistAsync` çağrısıyla Batch hesabında bi
 Düğüm sayısı ve VM boyutu, tanımlı sabitler kullanılarak ayarlanır. Batch, adanmış düğümleri ve [düşük öncelikli düğümleri](batch-low-pri-vms.md) destekler ve havuzlarınızda bunlardan birini ya da her ikisini birden kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir. Örnek, varsayılan olarak *Standard_A1_v2* boyutunda yalnızca 5 düşük öncelikli düğüm içeren bir havuz oluşturur.
 
 >[!Note]
->Düğüm kotalarınızı denetlediğinizden emin olun. Kota isteği oluşturma hakkında yönergeler için bkz. [Batch hizmeti kotaları ve limitleri](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) . "
+>Düğüm kotalarınızı denetlediğinizden emin olun. Kota isteği oluşturma hakkında yönergeler için bkz. [Batch hizmeti kotaları ve limitleri](batch-quota-limit.md#increase-a-quota) . "
 
 ffmpeg uygulaması, havuz yapılandırmasına bir [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) eklenerek işlem düğümlerine dağıtılır.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: RBAC ve Azure portal Azure kaynaklarına Kullanıcı erişimi verme '
-description: Bu öğreticide, Azure portal rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
+title: 'Öğretici: Azure portal Azure RBAC kullanarak Azure kaynaklarına Kullanıcı erişimi verme'
+description: Bu öğreticide, Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138086"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735853"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Öğretici: RBAC ve Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
-[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide, bir kaynak grubundaki sanal makineleri oluşturmak ve yönetmek için bir kullanıcı erişimi verirsiniz.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide, bir kaynak grubundaki sanal makineleri oluşturmak ve yönetmek için bir kullanıcı erişimi verirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -58,7 +58,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="grant-access"></a>Erişim verme
 
-RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir.
+Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun.
 
 1. **Kaynak grupları**listesinde, yeni **RBAC-kaynak grubu** kaynak grubu ' na tıklayın.
 
@@ -88,7 +88,7 @@ RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir.
 
 ## <a name="remove-access"></a>Erişimi kaldırma
 
-RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir.
+Azure RBAC 'de, erişimi kaldırmak için bir rol atamasını kaldırırsınız.
 
 1. Rol atamaları listesinde, sanal makine katılımcısı rolüne sahip kullanıcının yanına bir onay işareti ekleyin.
 
@@ -115,4 +115,4 @@ RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme](tutorial-role-assignments-user-powershell.md)
+> [Öğretici: Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme](tutorial-role-assignments-user-powershell.md)

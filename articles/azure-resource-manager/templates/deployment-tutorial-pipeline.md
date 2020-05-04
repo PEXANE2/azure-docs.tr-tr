@@ -4,12 +4,12 @@ description: Azure Resource Manager şablonlarını sürekli olarak derlemeyi, t
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084337"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731943"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
 
@@ -57,7 +57,7 @@ GitHub hesabınız yoksa bkz. [Önkoşullar](#prerequisites).
 
 1. Yeşil düğme olan **Yeni**' yi seçin.
 1. **Depo adı**alanına bir depo adı girin.  Örneğin, **Azurermpipeline-depo**. Herhangi bir **Azurermpipeline** öğesini proje adınızla değiştirmeyi unutmayın. Bu öğreticiden gezinmek için **genel** veya **özel** ' i seçebilirsiniz. Sonra **Depo oluştur**' u seçin.
-1. URL 'YI yazın. Depo URL 'si şu biçimdedir- ** https://github.com/[youraccountname]/[yourhavuzadı]**.
+1. URL 'YI yazın. Depo URL 'SI şu biçimdedir- **`https://github.com/[YourAccountName]/[YourRepositoryName]`**.
 
 Bu depo, *uzak depo*olarak adlandırılır. Aynı projenin geliştiricilerin her biri kendi *yerel deposunu*kopyalayabilir ve değişiklikleri uzak depoda birleştirebilirler.
 
@@ -104,7 +104,7 @@ Azuredeploy. JSON yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersiniz
     ```
 
     LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **ana** dal ana daldır.  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
-1. Bir tarayıcıdan GitHub deponuza gidin.  URL ** https://github.com/[youraccountname]/[yourgithubrepository]**. **Createwebapp** klasörünü ve klasör içinde üç dosyayı görürsünüz.
+1. Bir tarayıcıdan GitHub deponuza gidin.  URL **`https://github.com/[YourAccountName]/[YourGitHubRepository]`**. **Createwebapp** klasörünü ve klasör içinde üç dosyayı görürsünüz.
 1. Şablonu açmak için **Linkedstorageaccount. JSON** öğesini seçin.
 1. **Ham** düğmesini seçin. URL, **RAW.githubusercontent.com**ile başlatılır.
 1. URL’nin kopyasını oluşturun.  İşlem hattını öğreticide daha sonra yapılandırırken bu değeri sağlamanız gerekir.

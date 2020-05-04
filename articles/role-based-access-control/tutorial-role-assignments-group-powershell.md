@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: RBAC ve Azure PowerShell ile Azure kaynaklarına grup erişimi verme'
-description: Bu öğreticide rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme hakkında bilgi edinin.
+title: 'Öğretici: Azure PowerShell Azure RBAC kullanarak Azure kaynaklarına grup erişimi verme'
+description: Bu öğreticide Azure PowerShell ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure kaynaklarına grup erişimi verme hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138250"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735530"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme
 
-[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide bir gruba bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
+Azure [rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide bir gruba bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -44,7 +44,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 ## <a name="role-assignments"></a>Rol atamaları
 
-RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir. Rol ataması üç öğeden oluşur: güvenlik sorumlusu, rol tanımı ve kapsam. Bu öğreticide gerçekleştireceğiniz iki rol ataması aşağıda verilmiştir:
+Azure RBAC 'de, erişim izni vermek için bir rol ataması oluşturun. Rol ataması üç öğeden oluşur: güvenlik sorumlusu, rol tanımı ve kapsam. Bu öğreticide gerçekleştireceğiniz iki rol ataması aşağıda verilmiştir:
 
 | Güvenlik sorumlusu | Rol tanımı | Kapsam |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ Rol atamak için kullanıcı, grup veya hizmet sorumlu gerekir. Grubunuz yoksa b
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Grup oluşturma izniniz yoksa [öğreticiyi deneyebilirsiniz: bunun yerıne RBAC ve Azure PowerShell kullanarak bir kullanıcıya Azure kaynaklarına erişim Izni verin](tutorial-role-assignments-user-powershell.md) .
+Grup oluşturma izniniz yoksa [öğreticiyi deneyebilirsiniz: bunun yerine Azure PowerShell kullanarak bir kullanıcıya Azure kaynaklarına erişim Izni verin](tutorial-role-assignments-user-powershell.md) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -294,4 +294,4 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve gr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-powershell.md)
+> [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)

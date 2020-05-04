@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72035713"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Öğretici: NetDocuments ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -137,49 +137,48 @@ Bu bölümde, NetDocuments 'e erişim vererek Azure çoklu oturum açma özelli�
 
 1. Farklı bir Web tarayıcısı penceresinde, NetDocuments şirket sitenizde yönetici olarak oturum açın.
 
-2. **Yönetici**'ye gidin.
+2. Sağ üst köşede, adınızı>**yöneticinizle**seçin.
 
-3. **Kullanıcıları ve grupları Ekle ve Kaldır**' a tıklayın.
+3. **Güvenlik Merkezi**' ni seçin.
    
-    ![Depo](./media/netdocuments-tutorial/ic795047.png "Depo")
+    ![Depo](./media/netdocuments-tutorial/security-center.png "Güvenlik Merkezi")
 
-4. **Gelişmiş kimlik doğrulama seçeneklerini yapılandır**seçeneğine tıklayın.
+4. **Gelişmiş kimlik doğrulaması**' nı seçin.
     
-    ![Gelişmiş kimlik doğrulama seçeneklerini yapılandırma](./media/netdocuments-tutorial/ic795048.png "Gelişmiş kimlik doğrulama seçeneklerini yapılandırma")
+    ![Gelişmiş kimlik doğrulama seçeneklerini yapılandırma](./media/netdocuments-tutorial/advance-authentication.png "Gelişmiş kimlik doğrulama seçeneklerini yapılandırma")
 
-5. **Federal Kimlik** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+5.  **Federal Kimlik** sekmesinde aşağıdaki adımları gerçekleştirin:   
    
-    ![Federal Kimlik](./media/netdocuments-tutorial/ic795049.png "Federal Kimlik")
+    ![Federal Kimlik](./media/netdocuments-tutorial/federated-id.png "Federal Kimlik")
    
     a. **Federal Kimlik sunucu türü**olarak **Active Directory Federasyon Hizmetleri (AD FS)**' yi seçin.
-   
-    b. Azure portal 'ten indirdiğiniz indirilen meta veri dosyasını karşıya yüklemek için **Dosya Seç**' e tıklayın.
-   
-    c. **Tamam**'a tıklayın.
+    
+    b.  Azure portal ' den indirdiğiniz indirilen meta veri dosyasını karşıya yüklemek için **Dosya Seç**' i seçin.
+    
+    c.  **Kaydet**' i seçin.
 
 ### <a name="create-netdocuments-test-user"></a>NetDocuments test kullanıcısı oluştur
 
-Azure AD kullanıcılarının NetDocuments 'ta oturum açmasını sağlamak için bunların NetDocuments içinde sağlanması gerekir.  
-NetDocuments durumunda sağlama, el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının NetDocuments 'ta oturum açmasını sağlamak için bunların NetDocuments içinde sağlanması gerekir. NetDocuments durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
 1. **NetDocuments** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüden **yönetici**' ye tıklayın.
+2. Sağ üst köşede, adınızı>**yöneticinizle**seçin.
    
-    ![Yönetici](./media/netdocuments-tutorial/ic795051.png "Yönetici")
+    ![Yönetici](./media/netdocuments-tutorial/user-admin.png "Yönetici")
 
-3. **Kullanıcıları ve grupları Ekle ve Kaldır**' a tıklayın.
+3. **Kullanıcılar ve gruplar ' ı**seçin.
    
-    ![Depo](./media/netdocuments-tutorial/ic795047.png "Depo")
+    ![Depo](./media/netdocuments-tutorial/users-groups.png "Depo")
 
 4. **E-posta adresi** metin kutusuna, sağlamak istediğiniz geçerli bir Azure Active Directory hesabının e-posta adresini yazın ve ardından **Kullanıcı Ekle**' ye tıklayın.
    
-    ![E-posta adresi](./media/netdocuments-tutorial/ic795053.png "E-posta Adresi")
+    ![E-posta adresi](./media/netdocuments-tutorial/user-mail.png "E-posta Adresi")
    
-    >[!NOTE]
-    >Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamaya yönelik bir bağlantı içeren bir e-posta alır. Azure Active Directory Kullanıcı hesapları sağlamak için NetDocuments tarafından sunulan diğer tüm NetDocuments Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
+    > [!NOTE]
+    > Azure Active Directory hesap sahibi, hesabı etkin olmadan önce onaylamaya yönelik bir bağlantı içeren bir e-posta alır. Azure Active Directory Kullanıcı hesapları sağlamak için NetDocuments tarafından sunulan diğer tüm NetDocuments Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -196,4 +195,3 @@ Erişim panelinde NetDocuments kutucuğuna tıkladığınızda, SSO 'yu ayarlad�
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile NetDocuments kullanmayı deneyin](https://aad.portal.azure.com/)
-

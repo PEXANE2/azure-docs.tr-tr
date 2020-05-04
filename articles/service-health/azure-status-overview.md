@@ -3,12 +3,12 @@ title: Azure durumuna genel bakış | Microsoft Docs
 description: Azure hizmetlerinin sistem durumu hakkında genel bir görünüm
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898335"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732559"
 ---
 # <a name="azure-status-overview"></a>Azure durumuna genel bakış
 
@@ -24,9 +24,7 @@ Azure hizmetlerinin sistem durumu değiştiğinde Azure durum sayfası gerçek z
 
 ## <a name="azure-status-history"></a>Azure durum geçmişi
 
-Azure durum sayfasında her zaman en son sistem durumu bilgileri gösterilirken, [Azure durum geçmişi sayfasını](https://status.azure.com/status/history/)kullanarak eski olayları görüntüleyebilirsiniz.
-
-Kasım 2019 ' de yayınlanan olaylarla başlayarak, durum geçmişi sayfasında, geçmişteki bir temel neden, hafifletme ve sonraki adımlar dahil olmak üzere geçmişte 365 güne kadar olan olaylar gösterilir.
+Azure durum sayfasında her zaman en son sistem durumu bilgileri gösterilirken, [Azure durum geçmişi sayfasını](https://status.azure.com/status/history/)kullanarak eski olayları görüntüleyebilirsiniz. Geçmiş sayfası, 20 Kasım 2019 veya üzeri sürümlerde gerçekleşen olaylar için tüm RCAs 'yi içerir ve bu tarihten sonra, 5 yıllık bir RCA geçmişi sağlar. 20 Kasım 'dan önce RCAs, 2019 kullanılabilir değildir.
 
 ## <a name="rss-feed"></a>RSS Akışı
 

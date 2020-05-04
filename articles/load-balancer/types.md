@@ -1,6 +1,6 @@
 ---
-title: Azure Load Balancer türleri
-description: Azure Load Balancer türlerine genel bakış
+title: Azure Load Balancer SKU 'Ları
+description: Azure Load Balancer SKU 'Larına genel bakış
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -9,54 +9,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 31e2bf19967bb8870ee6ab75687bb3fcc37373f7
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629976"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734952"
 ---
-# <a name="azure-load-balancer-types"></a>Azure Load Balancer türleri
+# <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU 'Ları
 
-Azure Load Balancer iki türe ve iki SKU 'ya sahiptir.
+Azure Load Balancer iki türüler veya SKU 'su vardır.
 
-## <a name="public-load-balancer"></a><a name = "publicloadbalancer"></a>Ortak yük dengeleyici
-
-Ortak yük dengeleyici, gelen trafiğin genel IP ve bağlantı noktasını, sanal makinenin özel IP ve bağlantı noktasıyla eşleştirir. Yük dengeleyici trafiği VM 'den gelen yanıt trafiği için başka bir şekilde eşler. Yük Dengeleme kuralları uygulayarak, belirli trafik türlerini birden çok VM veya hizmet arasında dağıtabilirsiniz. Örneğin web isteği trafiğinin yükünü birden fazla web sunucusuna dağıtabilirsiniz.
-
->[!NOTE]
->Her kullanılabilirlik kümesi için yalnızca bir ortak yük dengeleyici ve bir iç yük dengeleyici uygulayabilirsiniz.
-
-Aşağıdaki şekilde, genel ve TCP bağlantı noktası 80 için üç VM arasında paylaşılan web trafiği için yük dengeli bir uç nokta gösterilmektedir. Bu üç VM, bir yük dengeleme kümesinde bulunur.
-
-![Ortak yük dengeleyici örneği](./media/load-balancer-overview/load-balancer.png)
-
-*Şekil: bir genel yük dengeleyici kullanarak Web trafiğini Dengeleme*
-
-Internet istemcileri, 80 numaralı TCP bağlantı noktasındaki bir Web uygulamasının genel IP adresine Web sayfası istekleri gönderir. Azure Load Balancer, istekleri yük dengeli küme içindeki üç sanal makineye dağıtır. Yük dengeleyici algoritmaları hakkında daha fazla bilgi için bkz. [yük dengeleyici kavramları](concepts.md).
-
-Azure Load Balancer, ağ trafiğini varsayılan olarak birden çok VM örneği arasında eşit olarak dağıtır. Oturum benzeşimini de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure Load Balancer Dağıtım modunu yapılandırma](load-balancer-distribution-mode.md).
-
-## <a name="internal-load-balancer"></a><a name = "internalloadbalancer"></a>İç yük dengeleyici
-
-İç yük dengeleyici, trafiği bir sanal ağ içindeki kaynaklara dağıtır. Azure, yük dengeli bir sanal ağın ön uç IP adreslerine erişimi kısıtlar. 
-
-Ön uç IP adresleri ve sanal ağlar hiçbir şekilde doğrudan bir internet uç noktasına gösterilmez. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır.
-
-İç yük dengeleyici, aşağıdaki yük dengeleme türlerini sunar:
-
-* **Bir sanal ağ içinde**: sanal ağdaki VM 'lerden, aynı sanal ağda bulunan bir VM kümesine yük dengeleme.
-* **Şirketler arası sanal ağ için**: şirket içi bilgisayarlardan aynı sanal ağdaki bir VM kümesine yük dengeleme.
-* **Çok katmanlı uygulamalar için**: arka uç katmanlarının internet 'e açık olmadığı internet 'e yönelik çok katmanlı uygulamalar için yük dengeleme. Arka uç katmanları, internet 'e yönelik katmandan trafik yük dengelemesi gerektirir. Sonraki şekle bakın.
-* **İş kolu uygulamaları için**: Ek yük dengeleyici donanım veya yazılım olmadan Azure'da barındırılan iş kolu uygulamaları için yük dengeleme. Bu senaryo, trafiği yük dengeli olan bilgisayar kümesinde bulunan şirket içi sunucuları içerir.
-
-![İç Load Balancer örneği](./media/load-balancer-overview/load-balancer.png)
-
-*Şekil: çok katmanlı uygulamaları hem genel hem de iç yük dengeleyiciyi kullanarak Dengeleme*
-
-## <a name="load-balancer-sku-comparison"></a><a name="skus"></a> Load Balancer SKU karşılaştırması
+## <a name="sku-comparison"></a><a name="skus"></a>SKU karşılaştırması
 
 Yük dengeleyici hem temel hem de standart SKU 'Ları destekler. Bu SKU 'Lar senaryo ölçeğinde, özelliklerde ve fiyatlandırmaya göre farklılık gösterir. Temel yük dengeleyici ile mümkün olan herhangi bir senaryo, standart yük dengeleyici ile oluşturulabilir.
 
@@ -66,7 +32,21 @@ Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. Daha 
 > Microsoft, standart yük dengeleyiciyi öneriyor.
 Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri yalnızca tek bir SKU'ya bağlanabilir, ikisine birden bağlanamaz. Yük dengeleyici ve genel IP adresi SKU 'SU ortak IP adresleriyle kullandığınızda aynı olmalıdır. Yük dengeleyici ve genel IP SKU 'Ları değişebilir değildir.
 
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
+| | Standart Load Balancer | Temel Load Balancer |
+| --- | --- | --- |
+| [Arka uç havuzu boyutu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | En fazla 1000 örneği destekler. | En fazla 300 örneği destekler. |
+| Arka uç havuzu uç noktaları | Tek bir sanal ağdaki herhangi bir sanal makine veya sanal makine ölçek kümesi. | Tek bir kullanılabilirlik kümesindeki veya sanal makine ölçek kümesindeki sanal makineler. |
+| [Sistem durumu araştırmaları](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Durum araştırma azaltma davranışı](./load-balancer-custom-probe-overview.md#probedown) | TCP bağlantıları bir örnek araştırması üzerinde __ve__ tüm yoklamalar üzerinde etkin kalır. | TCP bağlantıları bir örnek araştırmasına etkin kalır. Tüm yoklamalar kapatıldığında tüm TCP bağlantıları sonlandırılır. |
+| Kullanılabilirlik Alanları | Gelen ve giden trafik için bölge yedekli ve zikzak ön uçları. | Kullanılamaz |
+| Tanılama | [Azure Izleyici çok boyutlu ölçümleri](./load-balancer-standard-diagnostics.md) | [Azure İzleyici günlükleri](./load-balancer-monitor-log.md) |
+| HA bağlantı noktaları | [Iç Load Balancer için kullanılabilir](./load-balancer-ha-ports-overview.md) | Kullanılamaz |
+| Varsayılan olarak güvenli | Ağ güvenlik grubu tarafından izin verilmediği takdirde gelen akışlar için kapatıldı. Lütfen VNet 'ten iç yük dengeleyiciye iç trafiğe izin verildiğini unutmayın. | Varsayılan olarak açın. Ağ güvenlik grubu isteğe bağlı. |
+| Giden Kuralları | [Bildirim temelli giden NAT yapılandırması](./load-balancer-outbound-rules-overview.md) | Kullanılamaz |
+| Boşta durumunda TCP sıfırlaması | [Herhangi bir kuralda kullanılabilir](./load-balancer-tcp-reset.md) | Kullanılamaz |
+| [Birden çok ön uç](./load-balancer-multivip-overview.md) | Gelen ve [giden](./load-balancer-outbound-connections.md) | Yalnızca gelen |
+| Yönetim Işlemleri | Çoğu işlem 30 saniye < | 60-90 + saniye tipik |
+| SLA | [% 99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
 
 Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
 

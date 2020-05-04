@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399470"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732380"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: konuşma SDK 'sını kullanarak bot uygulamanızı etkinleştirin
 
@@ -178,7 +178,7 @@ Bazı kaynaklar oluşturduğunuza göre artık bir bot oluşturalım. Adın gös
 Sonraki adım, yankı bot 'ı Azure 'a dağıtmaktır. Bir bot dağıtmanın birkaç yolu vardır, ancak bu öğreticide doğrudan Visual Studio 'dan yayımlamaya odaklanacağız.
 
 > [!NOTE]
-> Alternatif olarak, [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) ve [dağıtım şablonlarını](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates)kullanarak bir bot dağıtabilirsiniz.
+> Alternatif olarak, [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) ve [dağıtım şablonlarını](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)kullanarak bir bot dağıtabilirsiniz.
 
 1. Visual Studio 'da, doğrudan hat konuşma kanalı ile kullanılmak üzere yapılandırılmış yankı botnu açın:
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 472e74f7c25404a2446109ae66867a43b07294c8
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80983016"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731789"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB Cassandra API hesabı oluşturma
 
@@ -92,21 +92,21 @@ Sıfırdan örnek oluşturmak için aşağıdaki adımları kullanın:
  
 2. `cassandra-demo` klasörünü bulun. Metin düzenleyicisi kullanarak, oluşturulmuş olan `pom.xml` dosyasını açın. 
 
-   [Pod. xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) dosyasında gösterildiği gibi, projeniz Için gereken Cassandra bağımlılıklarını ve yapı eklentilerini ekleyin.  
+   [Pod. xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) dosyasında gösterildiği gibi, projeniz Için gereken Cassandra bağımlılıklarını ve yapı eklentilerini ekleyin.  
 
 3. `cassandra-demo\src\main` klasörünün altında `resources` adlı yeni bir klasör oluşturun.  Resources klasörünün altına config.properties ve log4j.properties dosyalarını ekleyin:
 
-   - [Config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) dosyası Cassandra API hesabının bağlantı uç noktasını ve anahtar değerlerini depolar. 
+   - [Config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) dosyası Cassandra API hesabının bağlantı uç noktasını ve anahtar değerlerini depolar. 
    
-   - [Log4J. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) dosyası Cassandra API etkileşimde bulunmak için gereken günlük düzeyini tanımlar.  
+   - [Log4J. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) dosyası Cassandra API etkileşimde bulunmak için gereken günlük düzeyini tanımlar.  
 
 4. `src/main/java/com/azure/cosmosdb/cassandra/` Klasöre gidin. Cassandra klasörünün içinde `utils` adlı başka bir klasör oluşturun. Yeni klasörde Cassandra API hesabına bağlanmak için gereken yardımcı program sınıfları depolanır. 
 
-   Kümeyi oluşturmak ve Cassandra oturumlarını açıp kapatmak için [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) sınıfını ekleyin. Küme, Azure Cosmos DB Cassandra API hesabına bağlanır ve erişim için bir oturum döndürür. Config.properties dosyasından bağlantı dizesi bilgisini okumak için [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) sınıfını kullanın. 
+   Kümeyi oluşturmak ve Cassandra oturumlarını açıp kapatmak için [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) sınıfını ekleyin. Küme, Azure Cosmos DB Cassandra API hesabına bağlanır ve erişim için bir oturum döndürür. Config.properties dosyasından bağlantı dizesi bilgisini okumak için [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) sınıfını kullanın. 
 
 5. Java örneği Kullanıcı adı, Kullanıcı KIMLIĞI ve Kullanıcı şehri gibi Kullanıcı bilgileri içeren bir veritabanı oluşturur. Main işlevindeki kullanıcı ayrıntılarına erişmek için get ve set yöntemlerini tanımlamanız gerekir.
  
-   Get ve set yöntemleri ile `src/main/java/com/azure/cosmosdb/cassandra/` klasör altında bir [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) sınıfı oluşturun. 
+   Get ve set yöntemleri ile `src/main/java/com/azure/cosmosdb/cassandra/` klasör altında bir [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) sınıfı oluşturun. 
 
 ## <a name="add-a-database-and-a-table"></a>Veritabanı ve tablo ekleme  
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2020
+ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eba47dede77f6d8dd19bde99a94de3ff5900f99
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760070"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732810"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Öğretici: Azure AD çoklu oturum açma (SSO) ile NetSuite tümleştirme
 
@@ -91,14 +91,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
     ||
     |-|
-    | `https://<Account ID>.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    * Netsuite yapılandırma bölümünde ** < `Account ID` ** , Netsuite Yapılandırması altındaki 8. adımdaki Öğreticinin ilerleyen kısımlarında açıklanan değeri alacaksınız. Tam etki alanını (Bu durumda system.na0.netsuite.com gibi) bulacaksınız.
+    * Netsuite yapılandırma bölümünde ** < `Instance ID` ** , Netsuite Yapılandırması altındaki 8. adımdaki Öğreticinin ilerleyen kısımlarında açıklanan değeri alacaksınız. Tam etki alanını (Bu durumda system.na0.netsuite.com gibi) bulacaksınız.
 
         ![Çoklu oturum açmayı yapılandırma](./media/NetSuite-tutorial/domain-value.png)
 

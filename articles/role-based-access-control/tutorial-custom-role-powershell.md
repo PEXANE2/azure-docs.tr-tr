@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure PowerShell ile Azure kaynakları için özel bir rol oluşturma'
-description: Bu öğreticide Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturmaya başlayın.
+title: 'Öğretici: Azure PowerShell Azure RBAC ile Azure özel rolü oluşturma'
+description: Bu öğreticide Azure PowerShell ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure özel rolü oluşturmaya başlayın.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138274"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735598"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturma
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma
 
-[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu öğretici için Azure PowerShell'i kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemine ait her şeyi görüntülemesine olanak sağlar ve destek biletlerini de açabilir.
+[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi de oluşturabilirsiniz. Bu öğretici için Azure PowerShell'i kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemine ait her şeyi görüntülemesine olanak sağlar ve destek biletlerini de açabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -73,7 +73,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 1. **ReaderSupportRole.json** dosyasını bir düzenleyicide açın.
 
-    Aşağıdaki JSON çıktısı gösterilir. Farklı özellikler hakkında bilgi edinmek için bkz. [Özel roller](custom-roles.md).
+    Aşağıdaki JSON çıktısı gösterilir. Farklı özellikler hakkında daha fazla bilgi için bkz. [Azure özel rolleri](custom-roles.md).
 
     ```json
     {
@@ -277,4 +277,4 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure PowerShell kullanarak Azure kaynakları için özel roller oluşturma](custom-roles-powershell.md)
+> [Azure PowerShell kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-powershell.md)

@@ -11,18 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 532dc313a673d28ffe4fc66060d6dcb491ce866c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4a84c43b57ec4f632a2bfabb10d112e4975249bf
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691265"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733116"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer bileşenleri
 
-Azure Load Balancer, işlemi için birkaç temel bileşen içerir.  
-
-Bu bileşenler aboneliğinizde Azure portal, Azure CLı, Azure PowerShell veya şablonları aracılığıyla yapılandırılabilir.
+Azure Load Balancer, işlemi için birkaç temel bileşen içerir. Bu bileşenler aboneliğinizde Azure portal, Azure CLı, Azure PowerShell veya şablonları aracılığıyla yapılandırılabilir.
 
 ## <a name="frontend-ip-configurations"></a>Ön uç IP yapılandırması
 
@@ -32,6 +30,14 @@ Yük dengeleyicinin IP adresi. Bu, istemcilerle ilgili iletişim noktasıdır. B
 - **Özel IP adresi**
 
 IP adresi seçimi, oluşturulan yük dengeleyicinin **türünü** belirler. Özel IP adresi seçimi bir iç yük dengeleyici oluşturur. Genel IP adresi seçimi bir genel yük dengeleyici oluşturur.
+
+|  | Genel Load Balancer  | İç Yük Dengeleyici |
+| ---------- | ---------- | ---------- |
+| Ön uç IP yapılandırması| Genel IP adresi | Özel IP adresi|
+| Açıklama | Ortak yük dengeleyici, gelen trafiğin genel IP ve bağlantı noktasını, sanal makinenin özel IP ve bağlantı noktasıyla eşleştirir. Yük dengeleyici trafiği VM 'den gelen yanıt trafiği için başka bir şekilde eşler. Yük Dengeleme kuralları uygulayarak, belirli trafik türlerini birden çok VM veya hizmet arasında dağıtabilirsiniz. Örneğin web isteği trafiğinin yükünü birden fazla web sunucusuna dağıtabilirsiniz.| İç yük dengeleyici, trafiği bir sanal ağ içindeki kaynaklara dağıtır. Azure, yük dengeli bir sanal ağın ön uç IP adreslerine erişimi kısıtlar. Ön uç IP adresleri ve sanal ağlar hiçbir şekilde doğrudan bir internet uç noktasına gösterilmez. İç iş kolu uygulamaları Azure'da çalışır ve Azure'dan veya şirket içi kaynaklardan erişim sağlanır. |
+| Desteklenen SKU 'Lar | Temel, standart | Temel, standart |
+
+![Katmanlı yük dengeleyici örneği](./media/load-balancer-overview/load-balancer.png)
 
 ## <a name="backend-pool"></a>Arka uç havuzu
 

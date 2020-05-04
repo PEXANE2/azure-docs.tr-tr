@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-bir kullanıcının Azure kaynaklarına erişimi görüntüleme
-description: Bu hızlı başlangıçta, rol tabanlı erişim denetimi (RBAC) ve Azure portal kullanarak bir kullanıcının veya diğer güvenlik sorumlusunun Azure kaynaklarına erişimi nasıl görüntüleyebileceğinizi öğrenin.
+title: Hızlı başlangıç-bir kullanıcının Azure kaynaklarına erişimi görüntüleme-Azure RBAC
+description: Bu hızlı başlangıçta, Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak bir kullanıcının veya diğer güvenlik sorumlusunun Azure kaynaklarına erişimi nasıl görüntüleyebileceğinizi öğreneceksiniz.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74419611"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734170"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Hızlı başlangıç: bir kullanıcının Azure kaynaklarına erişimi görüntüleme
 
-Kullanıcı veya başka bir güvenlik sorumlusunun Azure kaynaklarına erişimini görüntülemek için [rol tabanlı erişim denetimi (RBAC)](overview.md) içindeki **ERIŞIM denetimi (IAM)** dikey penceresini kullanabilirsiniz. Ancak bazen tek bir kullanıcı veya başka bir güvenlik sorumlusu için erişimi hızlıca görüntülemeniz yeterlidir. Bunu yapmanın en kolay yolu Azure portal **erişimi denetle** özelliğini kullanmaktır.
+Bir kullanıcıya veya başka bir güvenlik sorumlusunun Azure kaynaklarına erişimi görüntülemek için [Azure rol tabanlı erişim denetimi 'nde (Azure RBAC)](overview.md) **ERIŞIM denetimi (IAM)** dikey penceresini kullanabilirsiniz. Ancak bazen tek bir kullanıcı veya başka bir güvenlik sorumlusu için erişimi hızlıca görüntülemeniz yeterlidir. Bunu yapmanın en kolay yolu Azure portal **erişimi denetle** özelliğini kullanmaktır.
 
 ## <a name="view-role-assignments"></a>Rol atamalarını görüntüle
 
@@ -54,4 +54,4 @@ Kullanıcı veya başka bir güvenlik sorumlusunun Azure kaynaklarına erişimin
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: RBAC ve Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](quickstart-assign-role-user-portal.md)
+> [Öğretici: Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](quickstart-assign-role-user-portal.md)
