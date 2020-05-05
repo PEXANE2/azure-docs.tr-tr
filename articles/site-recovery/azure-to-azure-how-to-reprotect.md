@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137527"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738074"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Azure VM 'lerinden birincil bölgeye yeniden koruma başarısız oldu
 
@@ -95,6 +95,10 @@ Aşağıdaki koşullar, ne kadar veri çoğaltılacağı belirlenir:
 |Kaynak bölgesinin 1 TB Premium diski olan 1 VM 'si vardır.<br/>Yalnızca 20 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 200 MBps aktarım hızı ile Premium ' dur.<br/>Yük devretme işleminden hemen sonra diskteki ilk veriler 15 GB idi. Yük devretmeden sonra 5 GB veri değişikliği vardı. Bu nedenle toplam doldurulmuş veri sayısı 20 GB 'dir| Yaklaşık süre: 30-45 dakika.<br/>Diskte doldurulmuş veriler disk boyutunun %10 ' dan az olduğundan, bir ilk çoğaltma işlemi yaptık.<br/>Aktarım hızı, üretilen işleme yaklaşık %16 veya 32MBps. Bu nedenle, 20 GB/32 MBps ve yaklaşık 11 dakika olan 20 GB değişiklikleri uygulamak için aktarım süresi.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika |
 
 VM birincil bölgeye geri çağrıldıktan sonra yeniden korunuyorsa (yani, VM birincil bölgeden DR bölgesine yeniden korunuyorsa), hedef VM ve ilişkili NIC 'ler silinir.
+
+VM, DR bölgesinden birincil bölgeye yeniden korunuyorsa, Erstwhile Birincil VM ve ilişkili NIC 'leri silmedik.
+
+VM birincil bölgeye geri çağrıldıktan sonra yeniden korunuyorsa (yani, VM birincil bölgeden DR bölgesine yeniden korunuyorsa), hedef VM ve ilişkili NIC 'ler silinir. 
 
 VM, DR bölgesinden birincil bölgeye yeniden korunuyorsa, Erstwhile Birincil VM ve ilişkili NIC 'leri silmedik.
 

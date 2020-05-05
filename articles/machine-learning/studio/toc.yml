@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: Yönetme
           href: manage-workspace.md
-        - name: Sorun giderme
-          href: troubleshooting-creating-ml-workspace.md
         - name: ARM kullanarak dağıtma
           href: deploy-with-resource-manager-template.md
     - name: Eğitim verilerini içeri aktarma
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: Sonuçları yorumlama
               href: interpret-model-results.md
-            - name: Hata ayıklama
-              href: debug-models.md
         - name: Modelleri yeniden eğitme
           items:
             - name: '"Yeni" web hizmetleri'
@@ -96,19 +92,12 @@
           items:
             - name: R kullanmaya başlama
               href: r-get-started.md
-            - name: R betiklerini yürütme
-              href: extend-your-experiment-with-r.md
             - name: Özel R modülleri yazma
               href: custom-r-modules.md
             - name: Python betiklerini yürütme
               href: execute-python-scripts.md
     - name: Algoritmayı seçme
-      items:
-        - name: Algoritma seçme
-          href: algorithm-choice.md
-        - name: Algoritma örnekleri
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: Modelleri dağıtma
       items:
         - name: Bir web hizmetini dağıtma
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: Excel eklentisi kullanma
           href: excel-add-in-for-web-services.md
-    - name: Uygulama alanları
-      items:
-        - name: Telekomünikasyon dalgalanması
-          href: azure-ml-customer-churn-scenario.md
-        - name: Yaklaşım analizi
-          href: text-analytics-module-tutorial.md
-        - name: Excel'den Studio'ya (klasik) analiz aktarma
-          href: use-case-excel-studio.md
     - name: Müşteri verilerini silme ve dışarı aktarma
       items:
         - name: Studio (klasik) verileri

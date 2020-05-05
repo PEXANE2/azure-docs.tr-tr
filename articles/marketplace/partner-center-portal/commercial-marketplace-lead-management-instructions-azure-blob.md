@@ -1,32 +1,36 @@
 ---
-title: Ticari Market programında Azure tablosu | Azure Marketi
-description: Azure Blob için lider yönetimini yapılandırma
+title: Azure Blob depolama ile lider Yönetimi-Microsoft ticari Market
+description: Azure Blob 'u kullanarak Microsoft AppSource ve Azure Marketi için müşteri adaylarını nasıl yapılandıracağınızı öğrenin
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285257"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792726"
 ---
-# <a name="lead-management-instructions-for-azure-blob"></a>Azure Blob için lider yönetimi yönergeleri
+# <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Azure Blob depolamayı kullanma
 
 >[!Caution]
->Market teklifinizin müşteri adaylarını işleme için Azure Blob seçeneği kullanım dışı bırakılmıştır. Şu anda Azure Blob için lider yönetimi yapılandırmasıyla yayımlanmış bir teklifiniz varsa müşteri adaylarını artık almıyorsunuz. Lütfen müşteri adayı yönetim yapılandırmanızı diğer lider yönetimi seçeneklerinden birine güncelleştirin. [Müşteri adayı yönetimi giriş sayfasında](./commercial-marketplace-get-customer-leads.md)diğer seçenekler hakkında bilgi edinin. "
+>Azure Blob depolama için ticari Market desteği kullanımdan kaldırılmıştır ve artık teklifinizden gelen müşteri adaylarını işleme seçeneği yoktur. Şu anda Azure Blob için yapılandırılmış lider yönetimi ile ticari bir market teklifiniz varsa müşteri adaylarını artık almayacaksınız. Lütfen müşteri adayı yönetim yapılandırmanızı diğer lider yönetimi seçeneklerinden birine güncelleştirin. [Müşteri adayı yönetimi giriş sayfasında](./commercial-marketplace-get-customer-leads.md)diğer seçenekler hakkında bilgi edinin. "
 
-Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource müşteri adaylarını almak üzere Iş Ortağı Merkezi 'nde açık bir şekilde desteklenmiyorsa, bu müşteri adaylarını işlemek için bir Azure Blob 'u kullanabilirsiniz. Sonra verileri dışarı aktarıp CRM sisteminize aktarabilirsiniz. Bu makaledeki yönergeler, Azure depolama hesabı oluşturma ve bu hesap altında bir Azure blobu oluşturma işlemi boyunca size kılavuzluk eder. Ayrıca, teklifiniz bir müşteri adayı aldığında e-posta bildirimi göndermek için Microsoft Flow kullanarak yeni bir akış oluşturabilirsiniz.
+ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Microsoft AppSource ve Azure Market 'te müşteri adaylarını almak üzere Iş Ortağı Merkezi 'nde açıkça desteklenmiyorsa Azure Blob depolamayı kullanabilirsiniz. Sonra verileri dışarı aktarıp CRM sisteminize aktarabilirsiniz. Bu makaledeki yönergeler, Azure depolama hesabı oluşturma ve bu hesap altında bir blob oluşturma işlemi boyunca size kılavuzluk eder. Ayrıca, teklifiniz bir müşteri adayı aldığında e-posta bildirimi göndermek için Power otomatikleştirir kullanarak yeni bir akış oluşturabilirsiniz.
 
+>[!NOTE]
+>Bu yönergelerde kullanılan güç otomatikleştirme Bağlayıcısı, Power otomatikleştirmek için ücretli bir abonelik gerektirir. Bu makaledeki yönergeleri izlemeden önce bunun için hesap yaptığınızdan emin olun.
 
-## <a name="how-to-configure-azure-blob"></a>Azure Blob 'u yapılandırma
+## <a name="configure-azure-blob-storage"></a>Azure Blob depolamayı yapılandırma
 
 1. Azure hesabınız yoksa [ücretsiz bir deneme hesabı oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
-1. Azure hesabınız etkin olduktan sonra [Azure Portal](https://portal.azure.com)oturum açın.
-1. Azure portal, aşağıdaki yordamı kullanarak bir depolama hesabı oluşturun.  
+
+2. Azure hesabınız etkin olduktan sonra [Azure Portal](https://portal.azure.com)oturum açın.
+
+3. Azure portal, aşağıdaki yordamı kullanarak bir depolama hesabı oluşturun.  
     1. Sol menü çubuğunda **+ kaynak oluştur** ' u seçin.  **Yeni** bölme (dikey pencere) sağa görüntülenecektir.
     2. **Yeni** bölmesinde **depolama** ' yı seçin.  **Öne çıkan** bir liste sağ tarafta görüntülenir.
     3. Hesap oluşturmaya başlamak için **Depolama hesabını** seçin.  [Depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)makalesindeki yönergeleri izleyin.
@@ -65,7 +69,7 @@ Müşteri Ilişkileri yönetimi (CRM) sisteminiz, Azure Marketi ve AppSource mü
 
     ![Yeni kapsayıcı](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-azure-blob"></a>Teklifinizi Azure Blob 'a müşteri adayları gönderecek şekilde yapılandırma
+## <a name="configure-your-offer-to-send-leads-to-azure-blob-storage"></a>Teklifinizi Azure Blob depolamaya göndermek için teklifinizi yapılandırma
 
 Yayımlama portalında teklifiniz için müşteri adayı yönetim bilgilerini yapılandırmaya hazırsanız, aşağıdaki adımları izleyin:
 
