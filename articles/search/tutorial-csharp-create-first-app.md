@@ -3,19 +3,19 @@ title: İlk uygulamanızı oluşturmak için C# öğreticisi
 titleSuffix: Azure Cognitive Search
 description: İlk C# arama uygulamanızı nasıl oluşturacağınızı öğrenin adım adım. Öğretici, GitHub 'da çalışan bir uygulamanın bağlantısını ve uygulamayı sıfırdan oluşturmak için tüm işlemleri sağlar. Azure Bilişsel Arama 'nin temel bileşenleri hakkında bilgi edinin.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121578"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780632"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# öğreticisi: ilk uygulamanızı oluşturma-Azure Bilişsel Arama
+# <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak ilk arama uygulamanızı oluşturma
 
 Azure Bilişsel Arama kullanarak bir dizinden arama sonuçlarını sorgulamak ve sunmak için bir Web arabirimi oluşturmayı öğrenin. Bu öğretici, bir arama sayfası oluşturmaya odaklanabilmeniz için mevcut, barındırılan bir dizinle başlar. Dizin, kurgusal otel verileri içeriyor. Temel bir sayfanız olduktan sonra, sayfalama, modeller ve bir tür ön deneyim dahil olmak üzere sonraki derslerde bunu geliştirebilirsiniz.
 
@@ -44,7 +44,7 @@ Bu bir çağrı Azure verilerinin bir aramasını başlatır ve sonuçları dön
 !["Havuz" aranıyor](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 

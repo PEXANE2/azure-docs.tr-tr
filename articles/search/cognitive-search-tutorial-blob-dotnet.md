@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure Blob 'ları üzerinde C# ve AI"
+title: Azure Blob 'larında AI kullanan C# öğreticisi
 titleSuffix: Azure Cognitive Search
 description: C# ve Azure Bilişsel Arama .NET SDK kullanarak blob depolamada içerik üzerinde metin ayıklama ve doğal dil işleme örneğini adım adım yapın.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51e1b24f9080d102dee234fa1ca6d460c400ba78
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851144"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780683"
 ---
-# <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Öğretici: Azure Bloblarından aranabilir içerik oluşturmak için C# ve AI kullanma
+# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
 Azure Blob depolamada yapılandırılmamış metin veya görüntü varsa, bir [AI zenginleştirme işlem hattı](cognitive-search-concept-intro.md) bilgileri ayıklayabilir ve tam metin araması veya bilgi araştırma senaryoları için faydalı yeni içerik oluşturabilir. Bu C# öğreticisinde, resimlerde optik karakter tanıma (OCR) uygulayın ve sorgularda, modellerinizde ve filtrelerde kullanabileceğiniz yeni alanlar oluşturmak için doğal dil işleme gerçekleştirin.
 
@@ -30,7 +30,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure depolama](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)

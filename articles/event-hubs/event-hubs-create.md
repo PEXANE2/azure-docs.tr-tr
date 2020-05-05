@@ -7,21 +7,21 @@ author: spelluru
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/11/2020
+ms.date: 05/04/2020
 ms.author: spelluru
-ms.openlocfilehash: 5e80ab6d5ed0076e03f5378cbe975b15d0a28f47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c678965048a6437deb8cbf39f38f12dc116d39ab
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240999"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743942"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak olay hub'ı oluşturma
 Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
 
 Bu hızlı başlangıçta [Azure portalı](https://portal.azure.com) kullanarak olay hub'ı oluşturacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -58,21 +58,27 @@ Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya da
 
    ![Ekle düğmesi](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. **Ad alanı oluştur** sayfasında, aşağıdaki adımları uygulayın:
-    1. Ad alanı için bir **ad** girin. Adın kullanılabilirliği sistem tarafından hemen kontrol edilir.
-    2. **Fiyatlandırma katmanını** (temel veya standart) seçin.
-    3. **Enable Kafka** seçeneğinin otomatik olarak etkinleştirildiğini unutmayın. Azure Event Hubs, size bir Kafka uç noktası sağlar. Bu uç nokta, Event Hubs ad alanının [Apache Kafka](https://kafka.apache.org/intro) ileti protokolünü ve API 'leri yerel olarak anlamasına olanak sağlar. Bu özellik sayesinde, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Kafka konularda yaptığınız gibi Olay Hub 'lerinizle iletişim kurabilirsiniz. Event Hubs, [1,0 ve üzeri sürümleri Apache Kafka](https://kafka.apache.org/10/documentation.html) destekler.
-    4. Ad alanını oluşturmak istediğiniz **aboneliği** seçin.
-    5. Var olan bir **kaynak grubunu** seçin veya yeni bir kaynak grubu oluşturun. 
-    4. Ad alanı için bir **konum** seçin.
-    5. **Oluştur**’u seçin. Sistemin kaynakları tam olarak sağlaması için birkaç dakika beklemeniz gerekebilir.
+    1. Ad alanını oluşturmak istediğiniz **aboneliği** seçin.
+    2. Önceki adımda oluşturduğunuz **kaynak grubunu** seçin. 
+    3. Ad alanı için bir **ad** girin. Adın kullanılabilirliği sistem tarafından hemen kontrol edilir.
+    4. Ad alanı için bir **konum** seçin.    
+    5. **Fiyatlandırma katmanını** (temel veya standart) seçin.  
+    6. **Verimlilik birimleri** ayarlarını olduğu gibi bırakın. İşleme birimleri hakkında bilgi edinmek için bkz. [Event Hubs ölçeklenebilirlik](event-hubs-scalability.md#throughput-units)  
+    5. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin.
 
        ![Olay hub'ı ad alanı oluşturma](./media/event-hubs-quickstart-portal/create-event-hub1.png)
-5. Olay Hub 'ı ad alanını görmek için **Event Hubs** sayfasını yenileyin. Uyarı içinde Olay Hub 'ı oluşturma durumunu denetleyebilirsiniz. 
+   6. **Gözden geçir + oluştur** sayfasında ayarları gözden geçirin ve **Oluştur**' u seçin. Dağıtımın tamamlanmasını bekleyin. 
 
-    ![Olay hub'ı ad alanı oluşturma](./media/event-hubs-quickstart-portal/event-hubs-refresh.png)
-6. Ad alanını seçin. Portalda **Event Hubs ad alanınız** için giriş sayfasını görürsünüz. 
+       ![İnceleme + sayfa oluştur](./media/event-hubs-quickstart-portal/review-create.png)
+   7. **Dağıtım** sayfasında, ad alanınız için sayfaya gitmek üzere **Kaynağa Git** ' i seçin. 
 
-   ![Ad alanı için ana sayfa](./media/event-hubs-quickstart-portal/namespace-home-page.png)
+      ![Dağıtım Tamam-kaynağa git](./media/event-hubs-quickstart-portal/deployment-complete.png)
+   8. Aşağıdaki örneğe benzer **Event Hubs ad alanı** sayfasını görtığınızdan emin olun: 
+
+       ![Ad alanı için ana sayfa](./media/event-hubs-quickstart-portal/namespace-home-page.png)       
+
+       > [!NOTE]
+       > Azure Event Hubs, size bir Kafka uç noktası sağlar. Bu uç nokta, Event Hubs ad alanının [Apache Kafka](https://kafka.apache.org/intro) ileti protokolünü ve API 'leri yerel olarak anlamasına olanak sağlar. Bu özellik sayesinde, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Kafka konularda yaptığınız gibi Olay Hub 'lerinizle iletişim kurabilirsiniz. Event Hubs, [1,0 ve üzeri sürümleri Apache Kafka](https://kafka.apache.org/10/documentation.html) destekler. Daha fazla bilgi için bkz. [Apache Kafka uygulamalardan Event Hubs kullanma](event-hubs-for-kafka-ecosystem-overview.md).
     
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
@@ -88,8 +94,6 @@ Ad alanında bir olay hub'ı oluşturmak için aşağıdaki eylemleri gerçekle�
 4. Uyarı ' da Olay Hub 'ı oluşturma durumunu kontrol edebilirsiniz. Olay Hub 'ı oluşturulduktan sonra, aşağıdaki görüntüde gösterildiği gibi Olay Hub 'ları listesinde görürsünüz:
 
     ![Olay Hub 'ı oluşturuldu](./media/event-hubs-quickstart-portal/event-hub-created.png)
-
-Tebrikler! Portalı kullanarak bir Event Hubs ad alanı ve bu ad alanının içinde bir olay hub'ı oluşturdunuz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

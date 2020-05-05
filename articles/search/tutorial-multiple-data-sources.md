@@ -1,5 +1,5 @@
 ---
-title: 'C# öğreticisi: birden çok veri kaynağını Dizin'
+title: C# öğreticisi birden çok Azure veri kaynağını dizinleyen
 titleSuffix: Azure Cognitive Search
 description: Çoklu veri kaynaklarından verileri Dizin oluşturucular kullanarak tek bir Azure Bilişsel Arama dizinine aktarmayı öğrenin. Bu öğretici ve örnek kod C# ' de bulunur.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 8e75d9de45c64813ac75de635371d2435fb9261f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78271476"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780530"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Öğretici: C 'de birden çok veri kaynağından veri dizini oluştur #
+# <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak birden çok veri kaynağından Dizin
 
 Azure Bilişsel Arama, birden çok veri kaynağından verileri içeri aktarabilir, çözümleyebilir ve tek bir birleştirme arama dizinine dizinedebilir. Bu, yapılandırılmış verilerin metin, HTML veya JSON belgeleri gibi diğer kaynaklardan daha az yapılandırılmış veya hatta düz metin verileriyle toplanmış olduğu durumları destekler.
 
@@ -32,7 +32,7 @@ Bu öğretici C# ve [.NET SDK](https://aka.ms/search-sdk)kullanır. Bu öğretic
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
 + [Azure depolama](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

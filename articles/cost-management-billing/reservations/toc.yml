@@ -36,6 +36,12 @@
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: SQL Veritabanı
           href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: PostgreSQL için Azure Veritabanı
+          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: MySQL için Azure Veritabanı
+          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: MariaDB için Azure Veritabanı
+          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Synapse Analytics
           href: prepay-sql-data-warehouse-charges.md
         - name: Sanal makineler

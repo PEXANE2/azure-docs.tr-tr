@@ -6,6 +6,10 @@
       href: overview-iot-central.md
     - name: Kullanıcı arabirimi turu
       href: overview-iot-central-tour.md
+    - name: Son güncelleştirmeler
+      items:
+        - name: Mart 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

@@ -1,21 +1,21 @@
 ---
 title: Arama sonuçları sayfalamaya yönelik C# öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Bu öğreticide arama sonuçlarının sayfalama gösterilmektedir. İlk, sonraki, önceki, son ve numaralandırılmış düğmelere göre disk belleğine sahip mevcut bir oteller projesi üzerinde oluşturulur. İkinci bir disk belleği sistemi, dikey bir kaydırma çubuğunu alt sınırına taşıyarak tetiklenen, sonsuz kaydırma kullanır.
+description: İlk, sonraki, önceki, son ve numaralandırılmış düğmeleri eklemek üzere mevcut bir oteller projesi üzerinde oluşturma, arama sonuçlarına sayfalandırma ve gezinti düğmeleri ekleyin. İkinci bir disk belleği sistemi, dikey bir kaydırma çubuğunu alt sınırına taşıyarak tetiklenen, sonsuz kaydırma kullanır.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121512"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780581"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# öğreticisi: arama sonuçları sayfalandırma-Azure Bilişsel Arama
+# <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarına sayfalama ekleme
 
 Sayfa numaralarına ve ikincinin sonsuz kaydırmasını temel alan iki farklı disk belleği sistemi uygulamayı öğrenin. Her iki sayfalama sistemi de yaygın olarak kullanılır ve sağ taraftaki seçim, sonuçlarla istediğiniz kullanıcı deneyimine bağlıdır. Bu öğretici, sayfalama sistemlerini [C# öğreticisinde oluşturulan projede oluşturur: ilk uygulamanızı oluşturma-Azure bilişsel arama](tutorial-csharp-create-first-app.md) öğreticisi.
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Uygulamanızı numaralandırılmış sayfalama ile genişletin
 > * Sınırsız kaydırma ile uygulamanızı genişletme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 

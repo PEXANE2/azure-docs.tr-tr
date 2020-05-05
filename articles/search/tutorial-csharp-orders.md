@@ -1,21 +1,21 @@
 ---
 title: Sonuçları sıralamada C# öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Bu öğreticide, arama sonuçlarının nasıl sipariş yapılacağı gösterilmektedir. Önceki bir oteller projesinde, birincil özelliğe göre sıralama, ikincil özellik ve yükseltme ölçütü eklemek için bir Puanlama profili içerir.
+description: Bu C# öğreticisi, arama sonuçlarının nasıl sipariş alınacağını gösterir. Önceki bir oteller projesi üzerinde oluşturulur, birincil özelliğe göre sıralar, ikincil özellik ve yükseltme ölçütü eklemek için bir Puanlama profili içerir.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121551"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780615"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# öğreticisi: sonuçları sıralama-Azure Bilişsel Arama
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarını sıralama
 
 Bu noktaya kadar öğretici serimize kadar, sonuçlar döndürülür ve varsayılan sırada görüntülenir. Bu, verilerin bulunduğu sıra veya bir sıralama parametresi belirtilmediğinde kullanılacak olan bir varsayılan _Puanlama profili_ olabilir. Bu öğreticide, sonuçları birincil bir özelliğe göre sipariş etme ve ardından aynı birincil özelliği olan sonuçlar için, bu seçimi ikincil bir özellikte sıralama bölümüne gidecağız. Sayısal değerlere göre sıralamaya alternatif olarak, son örnek özel bir Puanlama profiline göre nasıl sıralanın gösterir. Ayrıca _karmaşık türlerin_görüntüsüne daha ayrıntılı bir şekilde gidecağız.
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Sonuçları coğrafi noktadan bir uzaklığa göre filtrele
 > * Puanlama profili temelinde sonuçları sıralama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 

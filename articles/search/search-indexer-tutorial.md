@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: C 'de Azure SQL veritabanlarından veri dizini # "
+title: C# öğreticisi Azure SQL verilerini dizine alma
 titleSuffix: Azure Cognitive Search
 description: Bu C# öğreticisinde Azure SQL veritabanı 'na bağlanın, aranabilir verileri ayıklayın ve Azure Bilişsel Arama dizinine yükleyin.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78193977"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780768"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Öğretici: Azure Bilişsel Arama SQL veritabanlarındaki verileri indekslemek Için C# kullanın
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure SQL verilerinin dizinini oluştur
 
 Azure Bilişsel Arama 'te arama dizinine göndererek Azure SQL veritabanı 'ndan aranabilir verileri ayıklamak için bir [Dizin Oluşturucu](search-indexer-overview.md) yapılandırın. 
 
@@ -29,7 +29,7 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure SQL Veritabanı](https://azure.microsoft.com/services/sql-database/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)

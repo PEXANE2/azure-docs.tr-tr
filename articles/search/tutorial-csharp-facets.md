@@ -1,21 +1,21 @@
 ---
 title: Gezintiye yardımcı olmak için modelleri kullanma hakkında C# öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Bu öğretici, model gezintisi eklemek için "arama sonuçları sayfalandırma-Azure Bilişsel Arama" projesinde oluşturulur. Bir aramanın kolayca daraltabilmesini sağlamak için modellerinin nasıl kullanılabileceğini öğrenin.
+description: Çok yönlü gezinme eklemek için "sayfalama sonuçları" ndan devam edin. Bir aramanın kolayca daraltabilmesini sağlamak için modellerinin nasıl kullanılabileceğini öğrenin.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121574"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780598"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# öğreticisi: gezintiye yardımcı olması için modelleri kullanma-Azure Bilişsel Arama
+# <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak çok yönlü gezinti ekleme
 
 Kullanıcılara, aramasına odaklanmak için kullanılacak bir bağlantı kümesi sağlayarak gezinmeye yardımcı olması için modeller kullanılır. Modeller, verilerin öznitelikleridir (kategori gibi, örnek verilerimizde bulunan bir otelin belirli bir özelliği).
 
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Model özelliklerini _ıscetable_ olarak ayarlama
 > * Uygulamanıza model gezintisi ekleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 

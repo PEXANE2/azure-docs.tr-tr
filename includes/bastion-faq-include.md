@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57a764b62fcda333f042794e176c24c8e6cc5526
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80374002"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780325"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Hangi bölgeler kullanılabilir?
 
@@ -31,17 +31,19 @@ Azure savunma kullanarak bir VM 'ye bağlandığınızda, bağlandığınız Azu
 
 Azure portal Azure sanal makinenize RDP/SSH 'ye erişmek için bir RDP veya SSH istemcisine ihtiyacınız yoktur. Sanal makinenize doğrudan tarayıcıda RDP/SSH erişimi almanızı sağlamak için [Azure Portal](https://portal.azure.com) kullanın.
 
-### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure savunma, Azure 'da barındırılan VM 'lerde yönetim amacıyla bir RDS CAL gerektiriyor mu?
-Hayır, Azure 'da Windows Server VM 'lerine erişim yalnızca yönetim amacıyla kullanıldığında bir [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) gerektirmez.
+### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Azure sanal makinesinde çalışan bir aracıya ihtiyacım var mı?
+
+Tarayıcınıza veya Azure sanal makinenize bir aracı ya da herhangi bir yazılımı yüklemeniz gerekmez. Savunma hizmeti aracısız ve RDP/SSH için ek yazılım gerektirmez.
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Her bir Azure alımı kaç tane eş zamanlı RDP ve SSH oturumu destekler?
+
 Hem RDP hem de SSH, kullanım tabanlı bir protokoldür. Oturumların yüksek kullanımı, savunma konağının daha düşük toplam oturum sayısını desteklemeye neden olur. Aşağıdaki numaralar normal günlük iş akışlarını kabul eder.
 
 [!INCLUDE [limits](bastion-limits.md)]
 
-### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Azure sanal makinesinde çalışan bir aracıya ihtiyacım var mı?
+### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>RDP oturumunda hangi özellikler destekleniyor?
 
-Tarayıcınıza veya Azure sanal makinenize bir aracı ya da herhangi bir yazılımı yüklemeniz gerekmez. Savunma hizmeti aracısız ve RDP/SSH için ek yazılım gerektirmez.
+Şu anda yalnızca metin kopyalama/yapıştırma desteklenir. Dosya kopyalama gibi özellikler desteklenmez. Lütfen [Azure savunma geri bildirim sayfasındaki](https://feedback.azure.com/forums/217313-networking?category_id=367303)yeni özelliklerle ilgili görüşlerinizi paylaşmaktan çekinmeyin.
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Hangi tarayıcılar destekleniyor?
 
@@ -59,9 +61,8 @@ Bir bağlantı oluşturmak için aşağıdaki roller gereklidir:
 
 Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://aka.ms/BastionHostPricing).
 
-### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Savunma oturumu başlamadan önce "oturumunuzun süresi doldu" hata iletisini neden alıyorum?
-
-Bir oturum yalnızca Azure portal başlatılmalıdır. Azure portal oturum açın ve oturumunuzu yeniden başlatın. URL 'ye doğrudan başka bir tarayıcı oturumundan veya sekmesinden giderseniz, bu hata beklenmektedir. Oturumunuzun daha güvende olduğundan ve oturum yalnızca Azure portal aracılığıyla erişilebilmesini sağlamaya yardımcı olur.
+### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure savunma, Azure 'da barındırılan VM 'lerde yönetim amacıyla bir RDS CAL gerektiriyor mu?
+Hayır, Azure 'da Windows Server VM 'lerine erişim yalnızca yönetim amacıyla kullanıldığında bir [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) gerektirmez.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Uzak oturum sırasında hangi klavye düzenleri destekleniyor?
 
@@ -72,10 +73,10 @@ Azure savunma Şu anda VM 'nin içindeki en-US-QWERTY klavye yerleşimini destek
 Hayır. UDR, bir Azure savunma alt ağında desteklenmez.
 Aynı sanal ağda hem Azure savunma hem de Azure Güvenlik Duvarı/ağ sanal gereci (NVA) içeren senaryolarda, Azure savunma ve VM 'leriniz arasındaki iletişim özel olduğundan Azure savunma alt ağından Azure Güvenlik Duvarı 'na trafik zorlamaya gerek kalmaz. Daha fazla bilgi için bkz. [Azure Güvenlik duvarı arkasındaki sanal makinelere savunma Ile erişme](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
-### <a name="is-file-transfer-supported-with-azure-bastion-rdp-session"></a><a name="filetransfer"></a>Azure savunma RDP oturumunda dosya aktarımı destekleniyor mu?
+### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Savunma oturumu başlamadan önce "oturumunuzun süresi doldu" hata iletisini neden alıyorum?
 
-Yeni özellikler eklemek için çok çalıştık. Şu andan itibaren dosya aktarımı desteklenmez, ancak yol haritasında bir parçası. Lütfen [Azure savunma geri bildirim sayfasındaki](https://feedback.azure.com/forums/217313-networking?category_id=367303)yeni özelliklerle ilgili görüşlerinizi paylaşmaktan çekinmeyin.
+Bir oturum yalnızca Azure portal başlatılmalıdır. Azure portal oturum açın ve oturumunuzu yeniden başlatın. URL 'ye doğrudan başka bir tarayıcı oturumundan veya sekmesinden giderseniz, bu hata beklenmektedir. Oturumunuzun daha güvende olduğundan ve oturum yalnızca Azure portal aracılığıyla erişilebilmesini sağlamaya yardımcı olur.
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Dağıtım başarısızlıklarını Nasıl yaparım? mi?
 
-Tüm hata iletilerini gözden geçirin ve gerektiğinde [Azure portalında bir destek isteği yükseltin](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Dağıtım sorunları [, Azure abonelik sınırları, Kotalar ve kısıtlamalarından](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)kaynaklanabilir. Özellikle, müşteriler, Azure savunma dağıtımının başarısız olmasına neden olan abonelik başına izin verilen genel IP adresi sayısında bir sınır ile karşılaşabilir.
+Tüm hata iletilerini gözden geçirin ve [Azure Portal gerektiğinde bir destek talebi yükseltin](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Dağıtım sorunları [, Azure abonelik sınırları, Kotalar ve kısıtlamalarından](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)kaynaklanabilir. Özellikle, müşteriler, Azure savunma dağıtımının başarısız olmasına neden olan abonelik başına izin verilen genel IP adresi sayısında bir sınır ile karşılaşabilir.

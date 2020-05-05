@@ -1,21 +1,21 @@
 ---
-title: Otomatik tamamlama ve öneriler
+title: Otomatik tamamlama ve önerilerle ilgili C# öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Bu öğreticide, açılan liste kullanarak kullanıcılardan arama terimi girişini toplamanın bir yolu olarak otomatik tamamlama ve öneriler gösterilmektedir. Mevcut bir oteller projesi üzerinde oluşturur.
+description: Açılır liste kullanarak kullanıcılardan arama terimi girişini toplamak için otomatik tamamlama ve öneriler ekleyin. Bu öğretici, mevcut bir oteller projesi üzerinde oluşturulur.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641065"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780564"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# öğreticisi: otomatik tamamlama ve öneriler ekleme-Azure Bilişsel Arama
+# <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak otomatik tamamlama ve öneriler ekleme
 
 Kullanıcı bir arama kutusuna yazmaya başladığında otomatik tamamlamayı (typeahead sorguları ve önerilen belgeler) uygulamayı öğrenin. Bu öğreticide, oto tamamlanmış sorguları ve öneri sonuçlarını ayrı olarak ve sonra birlikte göstereceğiz. Bir kullanıcının kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmanız gerekebilir.
 
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Otomatik tamamlama Ekle
 > * Otomatik tamamlamayı ve önerileri birleştirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, bir serinin parçasıdır ve C# öğreticisinde oluşturulan sayfalama projesindeki derlemeler [: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md).
 
