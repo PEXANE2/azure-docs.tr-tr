@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 3a5fb354ab32dd560a94875dd84d891ce0b9d68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2d1600a688af09515b069a3161d724bb8882596a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82081753"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791179"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Windows sanal makinesi oluşturma ve şifreleme
 
@@ -34,8 +34,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. **Bölge**için, anahtar kasanızı oluştururken kullandığınız bölgeyi (örn. *Doğu ABD*) seçin.
 1. **Boyutun** *Standart D2s v3*olduğundan emin olun.
 1. **Yönetici hesabı**altında, **parola**' yı seçin. Bir Kullanıcı adı ve parola girin.
-    ![ResourceGroup oluşturma ekranı](../media/disk-encryption/portal-qs-windows-vm-creation.png)
-1. "Yönetim" sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, "Yeni oluştur" seçeneğini belirleyin, yeni hesabınıza bir ad verin ve "Tamam" ![ResourceGroup oluşturma ekranı ' nı seçin.](../media/disk-encryption/portal-qs-vm-creation-storage.png)
+
+    :::image type="content" source="../media/disk-encryption/portal-qs-windows-vm-creation.png" alt-text="ResourceGroup oluşturma ekranı":::
+
+    > [!WARNING]
+    > "Diskler" sekmesi **disk seçeneklerinde**bir "şifreleme türü" alanı sunar. Bu alan, Azure disk şifrelemesi için değil, [yönetilen diskler](managed-disks-overview.md) + CMK için şifreleme seçeneklerini belirtmek için kullanılır. 
+    >
+    > Karışıklığı önlemek için, bu öğreticiyi tamamlarken *diskler* sekmesini tamamen atlamanızı öneririz. 
+
+1. "Yönetim" sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, "Yeni oluştur" seçeneğini belirleyin, yeni hesabınıza bir ad verin ve "Tamam" ı seçin
+
+    :::image type="content" source="../media/disk-encryption/portal-qs-vm-creation-storage.png" alt-text="ResourceGroup oluşturma ekranı":::
+
 1. "Gözden geçir + oluştur" a tıklayın.
 1. **Sanal makine oluştur** sayfasında oluşturmak üzere olduğunuz VM'nin ayrıntılarını görüntüleyebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 
@@ -47,19 +57,19 @@ VM'nizin dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra
 1. Sol taraftaki kenar çubuğundan **diskler**' i seçin.
 1. Diskler ekranında **şifreleme**' yi seçin. 
 
-    ![diskler ve şifreleme seçimi](../media/disk-encryption/portal-qs-disks-to-encryption.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-disks-to-encryption.png" alt-text="diskler ve şifreleme seçimi":::
 
 1. Şifreleme ekranında, **şifrelemek Için diskler**altında **işletim sistemi ve veri diskleri**' ni seçin.
 1. **Şifreleme ayarları**altında, **şifreleme için bir anahtar kasası ve anahtar seçin**' i seçin.
 1. **Azure Key Vault anahtar seçin** ekranında **Yeni oluştur**' u seçin.
 
-    ![diskler ve şifreleme seçimi](../media/disk-encryption/portal-qs-keyvault-create.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="diskler ve şifreleme seçimi":::
 
 1. **Anahtar Kasası oluştur** ekranında, kaynak grubunun VM 'yi oluşturmak Için kullandığınız kaynakla aynı olduğundan emin olun.
 1. Anahtar kasanıza bir ad verin.  Azure genelindeki her Anahtar Kasası benzersiz bir ada sahip olmalıdır.
 1. **Erişim ilkeleri** sekmesinde, **birim şifrelemesi Için Azure disk şifrelemesi** kutusunu işaretleyin.
 
-    ![diskler ve şifreleme seçimi](../media/disk-encryption/portal-qs-keyvault-enable.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-enable.png" alt-text="diskler ve şifreleme seçimi":::
 
 1. **İncele ve oluştur**’u seçin.  
 1. Anahtar Kasası doğrulamadan geçtikten sonra **Oluştur**' u seçin. Bu, sizi **Azure Key Vault ekranından seçim tuşuna** geri döndürür.

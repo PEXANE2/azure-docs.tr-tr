@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258999"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791876"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -68,13 +68,13 @@ Düğüm özellikleri ve yerleştirme kısıtlamaları ile birlikte, aşağıdak
 1. PowerShell 'den, kaldırılacak `Disable-ServiceFabricNode` düğümü devre `RemoveNode` dışı bırakmak için amacını çalıştırın. En yüksek sayı olan düğüm türünü kaldırın. Örneğin, altı düğümlü bir kümeniz varsa, "MyNodeType_5" sanal makine örneğini kaldırın.
 2. Düğümün `Get-ServiceFabricNode` devre dışı öğesine geçirildiğinden emin olmak için ' i çalıştırın. Aksi takdirde, düğüm devre dışı olana kadar bekleyin. Bu işlem her düğüm için birkaç saat sürebilir. Düğüm devre dışı olana kadar devam etmeyin.
 3. VM sayısını bu düğüm türünde bir değer ile azaltın. En yüksek VM örneği artık kaldırılacak.
-4. Gerektiğinde 1 ile 3 arasındaki adımları yineleyin, ancak birincil düğüm türlerindeki örnek sayısını, güvenilirlik katmanının ne kadar düşük olduğuna kıyasla hiçbir şekilde ölçeklendirin. Önerilen örneklerin listesi için [Service Fabric kümesi kapasitesini planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) konusuna bakın.
+4. Gerektiğinde 1 ile 3 arasındaki adımları yineleyin, ancak birincil düğüm türlerindeki örnek sayısında güvenilirlik katmanının ne kadar düşük olduğuna ilişkin hiçbir şekilde ölçeklendirin. Önerilen örneklerin listesi için [Service Fabric kümesi kapasitesini planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) konusuna bakın.
 5. Tüm VM 'Ler kaybolduktan sonra ("aşağı" olarak temsil edilir) doku:/System/InfrastructureService/[Node Name] bir hata durumu gösterecektir. Daha sonra, düğüm türünü kaldırmak için küme kaynağını güncelleştirebilirsiniz. ARM şablon dağıtımını kullanabilir ya da [Azure Resource Manager](https://resources.azure.com)aracılığıyla küme kaynağını düzenleyebilirsiniz. Bu, hata durumunda olan Fabric:/System/InfrastructureService/[Node Type] hizmetini kaldıracak bir küme yükseltmesi başlatır.
  6. VMScaleSet 'yi isteğe bağlı olarak silerseniz, yine de düğümleri Service Fabric Explorer görünümünde "aşağı" olarak görürsünüz. Son adım, `Remove-ServiceFabricNodeState` komutu komutuyla temizleyelim.
 
 ## <a name="horizontal-scaling"></a>Yatay ölçekleme
 
-Yatay ölçeklendirmeyi [el ile](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down) veya [programlama yoluyla](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)yapabilirsiniz.
+Yatay ölçeklendirmeyi [el ile](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out) veya [programlama yoluyla](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)yapabilirsiniz.
 
 > [!NOTE]
 > Gümüş veya altın dayanıklılık içeren bir düğüm türünü ölçeklendirirken ölçeklendirme yavaş olur.
@@ -103,7 +103,7 @@ El ile ölçeklendirmek için, istenen [sanal makine ölçek kümesi](https://do
 
 ' De ölçekleme, ölçeklendirmeden daha fazla değerlendirme gerektirir. Örneğin:
 
-* Service Fabric sistem hizmetleri kümenizdeki birincil düğüm türünde çalışır. Güvenilirlik katmanının ne kadar örnek olduğuna göre daha az örneğe sahip olmanız için, bu düğüm türü için örnek sayısını hiç kapatmayın veya ölçeklendirin. 
+* Service Fabric sistem hizmetleri kümenizdeki birincil düğüm türünde çalışır. Güvenilirlik katmanının ne kadar örnek olduğuna göre daha az örneğe sahip olmanız için, bu düğüm türü için örnek sayısında hiçbir şekilde kapanmayın veya ölçeklendirin. 
 * Durum bilgisi olan bir hizmet için, kullanılabilirliği sürdürmek ve hizmetinizin durumunu korumak için her zaman bir kaç düğüm olması gerekir. En azından, bölüm veya hizmetin hedef çoğaltma kümesi sayısına eşit sayıda düğüm gerekir.
 
 El ile ölçeklendirmek için aşağıdaki adımları izleyin:
@@ -111,7 +111,7 @@ El ile ölçeklendirmek için aşağıdaki adımları izleyin:
 1. PowerShell 'den, kaldırılacak `Disable-ServiceFabricNode` düğümü devre `RemoveNode` dışı bırakmak için amacını çalıştırın. En yüksek sayı olan düğüm türünü kaldırın. Örneğin, altı düğümlü bir kümeniz varsa, "MyNodeType_5" sanal makine örneğini kaldırın.
 2. Düğümün `Get-ServiceFabricNode` devre dışı öğesine geçirildiğinden emin olmak için ' i çalıştırın. Aksi takdirde, düğüm devre dışı olana kadar bekleyin. Bu işlem her düğüm için birkaç saat sürebilir. Düğüm devre dışı olana kadar devam etmeyin.
 3. VM sayısını bu düğüm türünde bir değer ile azaltın. En yüksek VM örneği artık kaldırılacak.
-4. İstediğiniz kapasiteyi sağlamadan önce gerekirse 1 ile 3 arasındaki adımları yineleyin. Birincil düğüm türlerindeki örnek sayısını güvenilirlik katmanının ne kadar düşük olduğuna göre ölçeklendirmeyin. Önerilen örneklerin listesi için [Service Fabric kümesi kapasitesini planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) konusuna bakın.
+4. İstediğiniz kapasiteyi sağlamadan önce gerekirse 1 ile 3 arasındaki adımları yineleyin. Birincil düğüm türlerindeki örneklerin sayısını güvenilirlik katmanının ne kadar düşük olduğuna göre ölçeklendirmeyin. Önerilen örneklerin listesi için [Service Fabric kümesi kapasitesini planlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) konusuna bakın.
 
 El ile ölçeklendirmek için, istenen [sanal makine ölçek kümesi](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) kaynağının SKU özelliğindeki kapasiteyi güncelleştirin.
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Bir kümenin ölçeğini ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Şunları yapabilirsiniz:
+> Bir kümede ölçeklendirirseniz, kaldırılan düğümü/VM örneğini Service Fabric Explorer uygun olmayan bir durumda görürsünüz. Bu davranışın açıklaması için, [Service Fabric Explorer gözlemleyebileceğiniz davranışlar](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)bölümüne bakın. Şunları yapabilirsiniz:
 > * [Remove-ServiceFabricNodeState komutunu](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) uygun düğüm adıyla çağırın.
 > * [Service Fabric otomatik ölçeklendirme yardımcısı uygulamasını](https://github.com/Azure/service-fabric-autoscale-helper/) kümenize dağıtın. Bu uygulama, ölçeklenmiş düğümlerin Service Fabric Explorer temizlenmesini sağlar.
 

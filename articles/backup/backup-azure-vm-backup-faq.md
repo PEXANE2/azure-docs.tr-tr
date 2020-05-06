@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: a6746944e34b8bd2fbb115baaabece96ee93dd1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190104"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800660"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -176,6 +176,14 @@ VM, değiştirilen veya yeni ilkedeki zamanlama ve bekletme ayarları kullanıla
 4. Yedeklemeyi sürdürür.
 
 Taşıma işleminden önce oluşturulan kullanılabilir geri yükleme noktalarından VM 'yi geri yükleyebilirsiniz.
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>Bir VM 'yi farklı bir kaynak grubuna taşıdıktan sonra ne olur?
+
+Bir VM farklı bir kaynak grubuna taşındıktan sonra, Azure Backup oldukça yeni bir VM olur.
+
+VM 'yi yeni bir kaynak grubuna taşıdıktan sonra, VM 'yi aynı kasada veya farklı bir kasada yeniden koruyabilirsiniz. Azure Backup için yeni bir VM olduğundan, bunun için ayrı olarak faturalandırılırsınız.
+
+Eski VM 'nin geri yükleme noktaları gerekirse geri yükleme için kullanılabilir olacaktır. Bu yedekleme verilerine ihtiyacınız yoksa, eski VM 'nizi silme verileriyle korumayı durdurabilirsiniz.
 
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Aynı yedekleme ilkesiyle ilişkilendirilebilen VM sayısıyla ilgili bir sınır var mı?
 
