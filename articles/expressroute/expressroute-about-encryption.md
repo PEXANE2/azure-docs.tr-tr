@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461472"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838765"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute şifreleme
  
@@ -30,8 +30,8 @@ Evet. MACsec yapılandırması için, yalnızca önceden paylaşılan anahtar mo
 Hayır. MACsec yapılandırıldıysa ve bir anahtar uyumsuzluğu oluşursa, Microsoft bağlantısını kaybedersiniz. Diğer bir deyişle, şifrelenmemiş bir bağlantıya geri dönemeyecek ve verilerinizi kullanıma sunmayacağız. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>ExpressRoute Direct üzerinde MACsec 'i etkinleştirmek, ağ performansının düşmesine neden olacak mı?
 MACsec şifreleme ve şifre çözme, kullandığımız yönlendiricilerin donanımında oluşur. Bizim tarafımızda performans etkisi yoktur. Ancak, kullandığınız cihazların ağ satıcısına danışmanız ve MACsec 'in herhangi bir performansa sahip olup olmadığını görmeniz gerekir.
-### <a name="which-cipher-suites-are-supported-for-encryption"></a>şifreleme için hangi şifre paketleri destekleniyor?
-AES128 ve AES256 destekliyoruz.
+### <a name="which-cipher-suites-are-supported-for-encryption"></a>Şifreleme için hangi şifre paketleri destekleniyor?
+Yalnızca AES128 ve AES256 [genişletilmiş paket numaralandırma](https://1.ieee802.org/security/802-1aebw/) sürümünü destekliyoruz. Ayrıca, lütfen cihazınızdaki MACsec yapılandırmasındaki [güvenli kanal tanımlayıcısını (SCı)](https://en.wikipedia.org/wiki/IEEE_802.1AE) devre dışı bırakın. 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPSec ile uçtan uca şifreleme hakkında SSS
 IPSec bir [IETF standardıdır](https://tools.ietf.org/html/rfc6071). Internet Protokolü (IP) düzeyinde veya ağ katmanı 3 ' teki verileri şifreler. Azure 'da şirket içi ağınız ile sanal ağınız (VNET) arasında uçtan uca bir bağlantıyı şifrelemek için IPSec kullanabilirsiniz. Aşağıdaki diğer SSS bölümüne bakın.

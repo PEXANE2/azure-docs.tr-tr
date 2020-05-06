@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d14f31741147ebe497efbf47b077e41c31b36b7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff2a55d9eb7b5c0787c5327ea34338a7efb90da0
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82653284"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836589"
 ---
-|Adı |Açıklama |Efekt (ler) |Sürüm |GitHub |
+|Name |Açıklama |Efekt (ler) |Sürüm |GitHub |
 |---|---|---|---|---|
 |[Windows Defender Exploit Guard 'ın etkinleştirilmediği Windows VM 'lerini denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard, cihazları ve yayılmak için kötüye kullanımları kullanan kötü amaçlı yazılımlara karşı korunmaya yardımcı olur. Exploit Guard koruması, işletim sistemine veya bağımsız uygulamalara uygulanabilecek bir dizi azaltmada oluşur. Bu ilke için Windows uzantısı için Azure Ilkesi gerekir. Ayrıntılar için, adresini [https://aks.ms/gcpol](https://aks.ms/gcpol)ziyaret edin. |Auditınotexists, devre dışı |1.0.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
 |[Windows makinelerinde saat dilimini yapılandırın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Bu ilke, Windows sanal makinelerinde belirtilen saat dilimini ayarlamak için bir konuk yapılandırma ataması oluşturur. |deployIfNotExists |1.0.0-Önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |

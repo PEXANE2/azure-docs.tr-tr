@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 00f6810defe6242338bfa766192b2aa007454513
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f71cc165480b16e26dfe9ab8c35aee3bef5597cb
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190799"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837777"
 ---
-|Adı |Açıklama |İlkeler |Sürüm |
+|Name |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
 |[\[Önizleme\]: denetim gereksinimlerini desteklemek Için Kanada Federal pbmm denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Bu girişim, Kanada Federal PBMM denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen şu adresi ziyaret edin[https://aka.ms/canadafederalPBMM-blueprint](https://aka.ms/canadafederalPBMM-blueprint) |67 |2.0.0-Önizleme |
 |[\[Önizleme\]: denetim gereksinimlerini desteklemek Için Fedratin orta denetimlerini denetleme ve belirli VM uzantılarını dağıtma](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Bu girişim, Fedrad denetimlerinin bir alt kümesini ele alan denetim ve VM Uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için lütfen adresini [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint)ziyaret edin. |70 |2.0.0-Önizleme |

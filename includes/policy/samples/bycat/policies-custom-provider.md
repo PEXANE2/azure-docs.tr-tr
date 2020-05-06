@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 95824dafc2f22de8388d06b9cf00cc08d0f567ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ed20f104427596f99008a6b063df773eee0ecbe
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191273"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836996"
 ---
-|Adı |Açıklama |Efekt (ler) |Sürüm |GitHub |
+|Name |Açıklama |Efekt (ler) |Sürüm |GitHub |
 |---|---|---|---|---|
-|[Özel bir sağlayıcının ilişkilendirmelerini dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc15c281f-ea5c-44cd-90b8-fc3c14d13f0c) |Seçili kaynak türlerini belirtilen özel sağlayıcıya ilişkilendiren bir ilişki kaynağı dağıtır. Bu ilke dağıtımı, iç içe geçmiş kaynak türlerini desteklemez. |deployIfNotExists |1.0.0 |[Bağlantısının](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Custom%20Provider/AssociationForCustomProvider_Deploy.json) |
+|[Özel bir sağlayıcının ilişkilendirmelerini dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc15c281f-ea5c-44cd-90b8-fc3c14d13f0c) |Seçili kaynak türlerini belirtilen özel sağlayıcıya ilişkilendiren bir ilişki kaynağı dağıtır. Bu ilke dağıtımı, iç içe geçmiş kaynak türlerini desteklemez. |deployIfNotExists |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Custom%20Provider/AssociationForCustomProvider_Deploy.json) |

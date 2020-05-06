@@ -78,7 +78,7 @@
         - name: Bilinen Sorunlar - Oracle'dan PostgreSQL için Azure DB – Tek sunucuya çevrimiçi geçiş
           href: known-issues-oracle-azure-postgresql-online.md
         - name: 'Bilinen Sorunlar: MongoDB’den MongoDB için Azure Cosmos DB API’sine geçiş'
-          href: tutorial-mongodb-cosmos-db.md
+          href: known-issues-mongo-cosmos-db.md
         - name: Bilinen Sorunlar - Karma modu kullanma
           href: known-issues-dms-hybrid-mode.md
     - name: Videolar

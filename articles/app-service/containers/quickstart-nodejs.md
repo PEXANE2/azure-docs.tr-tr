@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52466bac083f78002a8208ba52ca7d1b951c4064
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202568"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801493"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Azure 'da bir Node. js uygulaması oluşturma
 
@@ -151,7 +151,7 @@ Bu bölümde, çalışan App Service uygulamasındaki günlüklerin nasıl gör�
 
 Uygulamayı **Azure App SERVICE** Explorer 'da bulun, uygulamaya sağ tıklayın ve **akış günlüklerini görüntüle**' yi seçin.
 
-İstendiğinde, günlüğü etkinleştirmeyi ve uygulamayı yeniden başlatmayı seçin. Uygulama yeniden başlatıldıktan sonra VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır.
+VS Code çıkış penceresi, günlük akışı bağlantısıyla açılır.
 
 ![Akış günlüklerini görüntüle](./media/quickstart-nodejs/view-logs.png)
 

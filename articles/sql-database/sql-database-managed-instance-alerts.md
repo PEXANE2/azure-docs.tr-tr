@@ -10,62 +10,143 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 04/02/2020
-ms.openlocfilehash: a332627d149a36ba5d5beb2626023e58a221f0d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0e7c4cde684f393fd98ada46393948c5a62efa2f
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80639204"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800866"
 ---
 # <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Azure SQL yönetilen örneği için Azure portal kullanarak uyarı oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, Azure SQL yönetilen örnek veritabanındaki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, örnek depolama boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
+Bu makalede, Azure SQL yönetilen örnek veritabanındaki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar size bir e-posta gönderebilir, bir Web kancası çağırabilir, Azure Işlevi yükleyebilir, runbook 'u bir dış ıSM uyumlu bilet sistemi çağırabilir, telefonda çağrı yapabilir veya bazı bir ölçüm (örneğin örnek depolama boyutu veya CPU kullanımı gibi) önceden tanımlanmış bir eşiğe ulaştığında bir kısa mesaj gönderebilirsiniz. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
 
 Azure hizmetleriniz, veya üzerindeki olaylar için izleme ölçümlerini temel alarak bir uyarı alabilirsiniz.
 
 * **Ölçüm değerleri** -belirtilen bir ölçümün değeri her iki yönde atadığınız bir eşiği aştığında, uyarı tetiklenir. Yani, hem koşul ilk karşılandığında hem de daha sonra bu koşul karşılanamadığında bu durum tetiklenir.
-* **Etkinlik günlüğü olayları** -bir uyarı *her* olay üzerinde veya yalnızca belirli bir sayıda olay meydana geldiğinde tetiklenebilir.
 
 Bir uyarıyı, tetiklendiğinde aşağıdakileri yapmak için yapılandırabilirsiniz:
 
 * Hizmet yöneticisine ve ortak yöneticilere e-posta bildirimleri gönderme
 * Belirttiğiniz ek e-postalara e-posta gönderin.
+* Sesli İstemiyle telefon numarası çağırma
+* Telefon numarasına kısa mesaj gönder
 * Web kancası çağırma
+* Azure Işlevini çağır
+* Azure runbook 'u çağırma
+* Dış anahtar kullanımı ile uyumlu bir sistem çağrısı yapın
 
-Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
+Aşağıdaki arabirimleri kullanarak uyarı kuralları hakkında bilgi yapılandırabilir ve bilgi edinebilirsiniz:
 
 * [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
-* [komut satırı arabirimi (CLı)](../azure-monitor/platform/alerts-classic-portal.md)
+* [Komut satırı arabirimi (CLı)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+
+## <a name="alerting-metrics-available-for-managed-instance"></a>Yönetilen örnek için kullanılabilir uyarı ölçümleri
+
+> [!IMPORTANT]
+> Uyarı ölçümleri yalnızca yönetilen örnek için kullanılabilir. Yönetilen örnekteki ayrı veritabanları için uyarı ölçümleri kullanılamıyor. Veritabanı tanılama telemetrisi, [tanılama günlükleri](sql-database-metrics-diag-logging.md#diagnostic-telemetry-for-export-for-azure-sql-database)biçimindeki diğer taraftan kullanılabilir. Tanılama günlüklerindeki uyarılar, yönetilen örnek için [günlük uyarısı betikleri](../azure-monitor/insights/azure-sql.md#creating-alerts-for-managed-instances) kullanılarak [SQL Analytics](../azure-monitor/insights/azure-sql.md) ürünü içinden ayarlanabilir.
+
+Aşağıdaki yönetilen örnek ölçümleri uyarı yapılandırması için kullanılabilir:
+
+| Ölçüm | Açıklama | Ölçü birimi \ olası değerler |
+| :--------- | --------------------- | ----------- |
+| Ortalama CPU yüzdesi | Seçilen dönemdeki CPU kullanımının ortalama yüzdesi. | 0-100 (yüzde) |
+| Okunan GÇ baytları | Seçilen dönemde GÇ baytları okundu. | Bayt |
+| Yazılan GÇ baytları | Seçilen dönemde yazılan GÇ baytları. | Bayt |
+| GÇ istek sayısı | Seçilen dönemdeki GÇ isteklerinin sayısı. | Sayısal |
+| Ayrılan depolama alanı | Geçerli en büyük değer. Yönetilen örnek için ayrılan depolama alanı. Kaynak ölçeklendirme işlemiyle değişiklikler. | MB (megabayt) |
+| Kullanılan depolama alanı | Seçili dönemde kullanılan depolama alanı. Veritabanlarına ve örneğe göre depolama tüketimine sahip değişiklikler. | MB (megabayt) |
+| Sanal çekirdek sayısı | Yönetilen örnek için sağlanan sanal çekirdekler. Kaynak ölçeklendirme işlemiyle değişiklikler. | 4-80 (sanal çekirdekler) |
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
 
-1. [Portalda](https://portal.azure.com/), izlemekte olduğunuz kaynağı bulun ve seçin.
-2. Izleme bölümünde **Uyarılar** ' ı seçin. Metin ve simge farklı kaynaklar için biraz farklılık gösterebilir.  
+1. Azure [portalında](https://portal.azure.com/), ızlemeyı ilgilendiğiniz SQL yönetilen örneği bulun ve seçin.
 
-   ![İzleme](media/sql-database-insights-alerts-portal/Alerts.png)
+2. Izleme bölümünde **ölçümler** menü öğesini seçin.
+
+   ![İzleme](media/sql-database-managed-instance-alerts/mi-alerting-menu-annotated.png)
   
-3. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** düğmesini seçin.
-   ![Kural Oluştur](media/sql-database-insights-alerts-portal/create-rule.png)
+3. Açılan menüde, uyarıyı ayarlamak istediğiniz ölçülerden birini seçin (kullanılan depolama alanı örnekte gösterilir).
 
-4. **Koşul** bölümünde **Ekle**' ye tıklayın.
-   ![Koşulu tanımla](media/sql-database-insights-alerts-portal/create-rule.png)
-5. **Sinyal mantığını Yapılandır** sayfasında bir sinyal seçin.
-   ![Sinyal Seç](media/sql-database-insights-alerts-portal/select-signal.png)
-6. **CPU yüzdesi**gibi bir sinyal seçtikten sonra **sinyal mantığını Yapılandır** sayfası görünür.
-   ![Sinyal mantığını yapılandırma](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
-7. Bu sayfada, bu eşik türü, işleç, toplama türü, eşik değeri, toplama ayrıntı düzeyi ve değerlendirme sıklığını yapılandırın. Sonra da **Bitti**’ye tıklayın.
-8. **Oluşturma kuralında**, var olan bir **Eylem grubunu** seçin veya yeni bir grup oluşturun. Bir eylem grubu, bir uyarı koşulu oluştuğunda gerçekleştirilecek eylemi tanımlamanızı sağlar.
-  ![Eylem grubunu tanımla](media/sql-database-insights-alerts-portal/action-group.png)
+4. Belirli bir dönemde ortalama, en düşük veya en fazla ulaşılan toplama süresi (Ort, Min veya Max) seçin. 
 
-9. Kural için bir ad tanımlayın, isteğe bağlı bir açıklama sağlayın, kural için bir önem düzeyi seçin, kural oluşturulduktan sonra kuralın etkinleştirilip etkinleştirilmeyeceğini seçin ve ardından ölçüm kuralı uyarısı oluşturmak için **kural uyarısı oluştur** ' a tıklayın.
+5. **Yeni uyarı kuralı** Seç
 
-10 dakika içinde, uyarı etkin ve daha önce açıklandığı gibi tetikler.
+6. Uyarı kuralı oluştur bölmesinde **koşul adı** ' na tıklayın (örnekte kullanılan depolama alanı gösterilir)
+
+   ![Koşulu tanımla](media/sql-database-managed-instance-alerts/mi-create-metrics-alert-smaller-annotated.png)
+
+7. Sinyal mantığını Yapılandır bölmesinde Işleç, toplama türü ve eşik değerini tanımlayın
+
+   * İşleç türü seçenekleri büyüktür, eşittir ve küçüktür (eşik değeri)
+   * Toplama türü seçenekleri min, Max veya Average (toplama ayrıntı düzeyi döneminde)
+   * Eşik değeri, işleç ve toplama ölçütlerine göre değerlendirilecek olan uyarı değeridir
+   
+   ![Configure_signal_logic](media/sql-database-managed-instance-alerts/mi-configure-signal-logic-annotated.png)
+   
+   Ekran görüntüsünde gösterilen örnekte, 1840876 MB değeri, 1,8 TB 'lik bir eşik değerini temsil eden kullanılır. Örnekteki işleç büyüktür olarak ayarlandığı için, yönetilen örnekteki depolama alanı tüketimi 1,8 TB 'tan fazlaysa uyarı oluşturulur. Depolama alanı ölçümlerinin eşik değerinin MB cinsinden ifade edilmesi gerektiğini unutmayın.
+
+8. Değerlendirme süresi toplama ayrıntı düzeyini dakikalar içinde ve değerlendirme sıklığıyla ayarlayın. Değerlendirme sıklığı, uyarı sisteminin, eşik koşulunun karşılanıp karşılanmadığını zaman içinde kontrol eder.
+
+9. Eylem grubunu seçin. Eylem grup bölmesi, varolan bir seçimi seçebileceğiniz veya yeni bir eylem oluşturabileceğiniz görünür. Bu eylem, bir uyarının tetiklenmesi (örneğin, e-posta gönderme, telefonda bir Web kancası, Azure işlevi veya Runbook yürütme) için gerçekleştirilecek olduğunu tanımlar.
+
+   ![Select_action_group](media/sql-database-managed-instance-alerts/mi-select-action-group-smaller-annotated.png)
+
+   * Yeni eylem grubu oluşturmak için **+ eylem grubu oluştur** ' u seçin.
+
+      ![Create_action_group_alerts](media/sql-database-managed-instance-alerts/mi-create-alert-action-group-smaller-annotated.png)
+   
+   * Nasıl uyarılmak istediğinizi tanımlayın: eylem grubu adı, kısa ad, eylem adı ve seçim eylem türü girin. Eylem türü e-posta, SMS mesajı, sesli çağrı veya belki de Web kancası, Azure işlevi, runbook 'un yürütülüp yürütülmeyeceğini veya uyumlu sisteminizde ıTSM bileti oluşturulup bildirilmeyeceğini tanımlar.
+
+      ![Define_how_to_be_alerted](media/sql-database-managed-instance-alerts/mi-add-alerts-action-group-annotated.png)
+
+10. Kayıtlarınızın uyarı kuralı ayrıntılarını doldurarak önem derecesi türünü seçin.
+
+      ![Rule_description](media/sql-database-managed-instance-alerts/mi-rule-details-complete-smaller-annotated.png)
+
+   * Uyarı kuralı **Oluştur** düğmesine tıklayarak uyarı kuralını oluşturma ' yı doldurun.
+
+Yeni uyarı kuralı birkaç dakika içinde etkin hale gelecek ve ayarlarınıza göre tetiklenecektir.
+
+## <a name="verifying-alerts"></a>Uyarıları doğrulama
+
+> [!NOTE]
+> Gürültülü uyarıları anlamak için, bkz. [eylem kurallarını kullanarak gizleme of Alerts](../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts).
+
+Bir uyarı kuralı ayarladıktan sonra, uyarı tetikleyicisinin ve sıklığının karşılandığını doğrulayın. Kullanılan depolama alanı üzerinde bir uyarı ayarlamak için bu sayfada gösterilen örnek için, uyarı seçeneğinizi e-posta ise, aşağıda gösterildiği gibi bir e-posta alabilirsiniz.
+
+   ![alert_example](media/sql-database-managed-instance-alerts/mi-email-alert-example-smaller-annotated.png)
+
+E-postada uyarı adı, eşiğin ayrıntıları ve uyarının neden tetiklendiğine ilişkin uyarı görüntülenir. Azure portal e-posta yoluyla alınan uyarıyı görüntülemek için **Azure Portal düğmesini göster '** i kullanabilirsiniz. 
+
+## <a name="view-suspend-activate-modify-and-delete-existing-alert-rules"></a>Mevcut uyarı kurallarını görüntüleme, askıya alma, etkinleştirme, değiştirme ve silme
+
+> [!NOTE]
+> Mevcut uyarıların Azure portal panosundan uyarılar menüsünden yönetilmesi gerekir. Mevcut uyarılar yönetilen örnek kaynağı dikey penceresinden değiştirilemez.
+
+Var olan uyarıları görüntülemek, askıya almak, etkinleştirmek, değiştirmek ve silmek için:
+
+1. Azure portal arama kullanarak uyarı arayın. Uyarılar ' a tıklayın.
+
+   ![find_alerts](media/sql-database-managed-instance-alerts/mi-manage-alerts-browse-smaller-annotated.png)
+
+   Alternatif olarak, yapılandırdıysanız, Azure gezinti çubuğundaki Uyarılar ' a de tıklayabilirsiniz.
+
+2. Uyarılar bölmesinde, uyarı kurallarını yönet ' i seçin.
+
+   ![modify_alerts](media/sql-database-managed-instance-alerts/mi-manage-alert-rules-smaller-annotated.png)
+
+   Var olan uyarıların listesi görünür. Yönetmek için, mevcut bir uyarı kuralı seçin. Mevcut etkin kurallar değiştirilebilir ve tercihinize göre ayarlanabilir. Etkin kurallar silinmeden da askıya alınabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Uyarılarda Web kancalarını yapılandırma](../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
+* Azure Izleyici uyarı sistemi hakkında bilgi edinin, bkz. [Microsoft Azure uyarılara genel bakış](../azure-monitor/platform/alerts-overview.md)
+* Ölçüm uyarıları hakkında daha fazla bilgi için bkz. [ölçüm uyarılarının Azure izleyici 'de nasıl çalıştığını anlama](../azure-monitor/platform/alerts-metric-overview.md)
+* Uyarılarda bir Web kancası yapılandırma hakkında bilgi edinin, bkz. [Klasik bir ölçüm uyarısı ile Web kancası çağırma](../azure-monitor/platform/alerts-webhooks.md)
+* PowerShell kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinin, bkz. [Eylem kuralları](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)
+* API kullanarak uyarıları yapılandırma ve yönetme hakkında bilgi edinmek için bkz. [Azure izleyici REST API başvurusu](https://docs.microsoft.com/rest/api/monitor/) 

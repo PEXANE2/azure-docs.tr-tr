@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460673"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800983"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -25,7 +25,7 @@ Azure Dosya Eşitleme aracısı aşağıdaki sürümleri destekler:
 
 | Ina | Aracı sürüm numarası | Sürüm tarihi | Durum |
 |----|----------------------|--------------|------------------|
-| İle v10 arasındaki Release- [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 9 Nisan 2020 | Uçuş aşamasında |
+| İle v10 arasındaki sürümü- [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9 Nisan 2020 | Uçuş aşamasında |
 | Aralık 2019 güncelleştirme paketi- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 Aralık 2019 | Destekleniyor |
 | V9 Release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 Aralık 2019 | Destekleniyor |
 | V8 Release- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8 Ekim 2019 | Destekleniyor |

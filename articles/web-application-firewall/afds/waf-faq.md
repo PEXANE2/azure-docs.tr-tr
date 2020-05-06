@@ -1,23 +1,23 @@
 ---
-title: Azure Web uygulaması güvenlik duvarı-sık sorulan sorular
+title: Azure ön kapı hizmeti 'nde Azure Web uygulaması güvenlik duvarı-sık sorulan sorular
 description: Bu makale, Azure ön kapısının Web uygulaması güvenlik duvarı hakkında sık sorulan soruların yanıtlarını sağlar
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314316"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837643"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
-Bu makalede, Azure Web uygulaması güvenlik duvarı (WAF) özellikleri ve işlevleri hakkında sık sorulan sorular yanıtlanmaktadır. 
+Bu makalede, Azure ön kapı hizmeti özellikleri ve işlevleri üzerinde Azure Web uygulaması güvenlik duvarı (WAF) hakkında sık sorulan sorular yanıtlanmaktadır. 
 
 ## <a name="what-is-azure-waf"></a>Azure WAF nedir?
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bf167df52e8ef54ab45de7b7b03efdaf83672a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628325"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837405"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -109,13 +109,13 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 
 |Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
-|*.microsoftonline.com|443|MS Online Services ile kimlik doğrulama|Hiçbiri|
-|*. events.data.microsoft.com|443|Telemetri hizmeti|Hiçbiri|
-|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Hiçbiri|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Hiçbiri|
-|login.windows.net|443|MS online hizmetlerinde oturum açın, Office 365|Hiçbiri|
-|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Hiçbiri|
-|*. digicert.com|443|Sertifika iptal denetimi|Hiçbiri|
+|*.microsoftonline.com|443|MS Online Services ile kimlik doğrulama|Yok|
+|*. events.data.microsoft.com|443|Telemetri hizmeti|Yok|
+|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Yok|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Yok|
+|login.windows.net|443|MS online hizmetlerinde oturum açın, Office 365|Yok|
+|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Yok|
+|*. digicert.com|443|Sertifika iptal denetimi|Yok|
 
 
 >[!NOTE]
@@ -183,16 +183,16 @@ Windows sanal masaüstü, x86 (32-bit), Windows 10 Enterprise N veya Windows 10 
 
 Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi, hangi işletim sistemi ve sürümü seçdiğinize bağlıdır: 
 
-|İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
-|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
-|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|El ile|
-|Windows Server 2019|Yes|Yes|Hayır|Hayır|Automatic|
-|Windows Server 2016|Yes|Yes|Yes|Yes|Automatic|
-|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Automatic|
+|İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|
+|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|
+|Windows Server 2016|Yes|Yes|Yes|Yes|
+|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -201,4 +201,4 @@ Windows sanal masaüstü Fall 2019 sürümünü kullanıyorsanız, [Windows sana
 Windows sanal masaüstü Spring 2020 sürümünü kullanıyorsanız bunun yerine bir konak havuzu oluşturmanız gerekir. Kullanmaya başlamak için aşağıdaki Öğreticiye gidin.
 
 > [!div class="nextstepaction"]
-> [Azure portal bir konak havuzu oluşturun](create-host-pools-azure-marketplace.md)
+> [Azure portalıyla yeni bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md)

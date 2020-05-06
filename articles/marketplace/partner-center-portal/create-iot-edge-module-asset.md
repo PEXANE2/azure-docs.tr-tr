@@ -7,21 +7,18 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730708"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856720"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge modülünüzü hazırlayın teknik varlıkları hazırlama
 
-> [!IMPORTANT]
-> IoT Edge modülü tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş ortağı merkezine taşıdık. Teklifleriniz geçirilene kadar, tekliflerinizi yönetmek için lütfen [IoT Edge modülünüzü hazırlama teknik bulut iş ortağı portalı varlıklarınızı hazırlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) bölümündeki yönergeleri izleyin.
-
 Bu makalede, Azure Marketi 'nde yayınlanmadan önce Nesnelerin İnterneti (IoT) Edge modülünün teknik varlıklarının karşılaması gereken gereksinimler açıklanmaktadır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 IoT Edge modülü, bir IoT Edge cihazında çalışan Docker ile uyumlu bir kapsayıcıdır.
 
@@ -110,8 +107,8 @@ IoT modülü SDK 'sını kullanan modüller, telemetri amaçları için benzersi
 
 ProductInfo 'yu bu tanımlayıcıya ayarlamak için IoT modülü SDK 'larında aşağıdaki yöntemlerden birini kullanın:
 
-- [, #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
-- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [,](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 

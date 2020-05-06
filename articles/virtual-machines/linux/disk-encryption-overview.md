@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7d8cf03342f51a7bc6584800cb9fff8d8238921e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459789"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801663"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi 
 
@@ -28,7 +28,7 @@ Azure Disk Şifrelemesi verilerinizi koruyarak kurumsal güvenlik ve uyumluluk t
 > - Bazı öneriler veri, ağ veya işlem kaynak kullanımını artırabilir, bu da ek lisans veya abonelik maliyetlerine neden olur. Desteklenen bölgelerde Azure 'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olması gerekir.
 > - 2. nesil VM 'Ler Azure disk şifrelemesini desteklemez. Ayrıntılar için bkz. [Azure 'da 2. nesil sanal makineler Için destek](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) .
 
-Linux için Azure disk şifrelemesi temellerini, [Azure CLI hızlı başlangıç Ile LINUX VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md) ile yalnızca birkaç dakika Içinde ve [Azure PowerShell hızlı BAŞLANGıCı Ile Linux VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)hakkında bilgi edinebilirsiniz.
+Linux için Azure disk şifrelemesi temellerini yalnızca birkaç dakika içinde [Azure CLI hızlı başlangıç Ile LINUX VM oluşturma ve şifreleme](disk-encryption-cli-quickstart.md) veya [Azure PowerShell hızlı başlangıç Ile Linux VM oluşturma ve şifreleme](disk-encryption-powershell-quickstart.md)hakkında bilgi edinebilirsiniz.
 
 ## <a name="supported-vms-and-operating-systems"></a>Desteklenen VM 'Ler ve işletim sistemleri
 
@@ -56,29 +56,36 @@ Azure disk şifrelemesi, [Azure tarafından onaylanan Linux dağıtımların](en
 
 Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemesini desteklemez; onaylama işlemleri için, yalnızca aşağıdaki dağıtımlar ve sürümler Azure disk şifrelemesini destekler:
 
-| Linux dağıtımı | Sürüm | Şifreleme için desteklenen birim türü|
-| --- | --- |--- |
-| Ubuntu | 18,04| İşletim sistemi ve veri diski |
-| Ubuntu | 16,04| İşletim sistemi ve veri diski |
-| Ubuntu | 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | İşletim sistemi ve veri diski |
-| RHEL | 7,7 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7,6 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7,5 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.4 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.3 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.2 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 6.8 | Veri diski (aşağıdaki nota bakın) |
-| RHEL | 6.7 | Veri diski (aşağıdaki nota bakın) |
-| CentOS | 7,7 | İşletim sistemi ve veri diski |
-| CentOS | 7,6 | İşletim sistemi ve veri diski |
-| CentOS | 7,5 | İşletim sistemi ve veri diski |
-| CentOS | 7.4 | İşletim sistemi ve veri diski |
-| CentOS | 7.3 | İşletim sistemi ve veri diski |
-| CentOS | 7.2 n | İşletim sistemi ve veri diski |
-| CentOS | 6.8 | Veri diski |
-| openSUSE | 42,3 | Veri diski |
-| SLES | 12-SP4 | Veri diski |
-| SLES | 12-SP3 | Veri diski |
+| Yayımcı | Sunduğu | SKU | URN | Şifreleme için desteklenen birim türü |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18,04-LTS | Kurallı: UbuntuServer: 18.04-LTS: latest | İşletim sistemi ve veri diski |
+| Canonical | Ubuntu 18.04 | 18,04-GÜNLÜK-LTS | Kurallı: UbuntuServer: 18.04-DAILY-LTS: latest | İşletim sistemi ve veri diski |
+| Canonical | Ubuntu 16.04 | 16,04-GÜNLÜK-LTS | Kurallı: UbuntuServer: 16.04-DAILY-LTS: latest | İşletim sistemi ve veri diski |
+| Canonical | Ubuntu 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kurallı: UbuntuServer: 14.04.5-LTS: latest | İşletim sistemi ve veri diski |
+| Canonical | Ubuntu 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | 14.04.5-GÜNLÜK-LTS | Kurallı: UbuntuServer: 14.04.5-DAILY-LTS: latest | İşletim sistemi ve veri diski |
+| RedHat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7.7: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7,7 | 7-HAM | RedHat: RHEL: 7-RAW: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7,7 | 7-LVM | RedHat: RHEL: 7-LVM: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7.6: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: en son | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7,3 | 7.3 | RedHat: RHEL: 7.3: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: latest | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: latest | Veri diski (aşağıdaki nota bakın) |
+| RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: latest | Veri diski (aşağıdaki nota bakın) |
+| OpenLogic | CentOS 7,7 | 7,7 | OpenLogic: CentOS: 7.7: latest | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7,7 | 7-LVM | OpenLogic: CentOS: 7-LVM: en son | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7,6 | 7,6 | OpenLogic: CentOS: 7.6: latest | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: en son | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7.4 | 7.4 | OpenLogic: CentOS: 7.4: latest | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7,3 | 7.3 | OpenLogic: CentOS: 7.3: en son | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7.2 n | 7.2 n | OpenLogic: CentOS: 7.2 n: en son | İşletim sistemi ve veri diski |
+| OpenLogic | CentOS 7,1 | 7.1 | OpenLogic: CentOS: 7.1: en son | Yalnızca veri diski |
+| OpenLogic | CentOS 7,0 | 7.0 | OpenLogic: CentOS: 7.0: en son | Yalnızca veri diski |
+| OpenLogic | CentOS 6,8 | 6.8 | OpenLogic: CentOS: 6.8: latest | Yalnızca veri diski |
+| SUSE | openSUSE 42,3 | 42,3 | SUSE: openSUSE-artık: 42.3: latest | Yalnızca veri diski |
+| SUSE | SLES önceliği 12-SP4 | 12-SP4 | SUSE: SLES: 12-SP4: en son | Yalnızca veri diski |
+| SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE: SLES-HPC: 12-SP3: en son | Yalnızca veri diski |
 
 > [!NOTE]
 > Yeni Azure disk şifrelemesi uygulama, RHEL7 Kullandıkça Öde görüntüleri için RHEL OS ve veri diski için desteklenir.  

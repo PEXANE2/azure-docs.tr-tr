@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 8acf04d26d0c69c426eb86f8a26a9f243c6f5ad2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136677"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836708"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -329,42 +329,6 @@ Birden çok etki alanı tabanlı (ana bilgisayar tabanlı) yönlendirme için ç
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>. Pfx dosya parolamda özel karakterler kullanabilir miyim?
 
 Hayır,. pfx dosya parolanda yalnızca alfasayısal karakterler kullanın.
-
-## <a name="configuration---web-application-firewall-waf"></a>Yapılandırma-Web uygulaması güvenlik duvarı (WAF)
-
-### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>WAF SKU 'SU standart SKU 'da bulunan tüm özellikleri sunuyor mu?
-
-Evet. WAF, standart SKU 'daki tüm özellikleri destekler.
-
-### <a name="how-do-i-monitor-waf"></a>Nasıl yaparım? İzleyicisi WAF mi?
-
-Tanılama günlük kaydı ile WAF 'yi izleyin. Daha fazla bilgi için bkz. [Application Gateway Için tanılama günlüğü ve ölçümleri](application-gateway-diagnostics.md).
-
-### <a name="does-detection-mode-block-traffic"></a>Algılama modu trafiği engelliyor mu?
-
-Hayır. Algılama modu yalnızca bir WAF kuralını tetikleyen trafiği günlüğe kaydeder.
-
-### <a name="can-i-customize-waf-rules"></a>WAF kurallarını özelleştirebilir miyim?
-
-Evet. Daha fazla bilgi için bkz. [WAF kural gruplarını ve kurallarını özelleştirme](application-gateway-customize-waf-rules-portal.md).
-
-### <a name="what-rules-are-currently-available-for-waf"></a>WAF için şu anda hangi kurallar kullanılabilir?
-
-WAF Şu anda sp_configure [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)ve [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31)' i desteklemektedir. Bu kurallar, Web uygulaması güvenlik projesini (OWASP) açan en yüksek 10 güvenlik açığına karşı temel güvenlik sağlar: 
-
-* SQL ekleme koruması
-* Siteler arası betik koruması
-* Komut ekleme, HTTP isteği, HTTP yanıtı bölme ve uzak dosya ekleme saldırısı gibi yaygın web saldırılarına karşı koruma
-* HTTP protokolü ihlallerine karşı koruma
-* Eksik konak kullanıcısı-aracısı ve kabul üst bilgileri gibi HTTP protokolü anormalliklerine karşı koruma
-* Robotlar, gezginler ve tarayıcıları önleme
-* Yaygın uygulama yapılandırmalarını algılama (yani, Apache, IIS vb.)
-
-Daha fazla bilgi için bkz. [OWASP Top-10 güvenlik açıkları](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
-
-### <a name="does-waf-support-ddos-protection"></a>WAF, DDoS korumasını destekliyor mu?
-
-Evet. DDoS korumasını, uygulama ağ geçidinin dağıtıldığı sanal ağ üzerinde etkinleştirebilirsiniz. Bu ayar, Azure DDoS Koruması hizmetinin Application Gateway sanal IP 'yi (VIP) de korumasını sağlar.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>AKS için yapılandırma girişi denetleyicisi
 

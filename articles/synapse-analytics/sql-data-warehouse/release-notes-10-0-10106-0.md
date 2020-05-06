@@ -5,19 +5,19 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 3/26/2020
+ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: a60591fb33c8f14a65b406073cf3194fca882d12
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509746"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837388"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -31,7 +31,7 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 
 
 > [!NOTE]
-> SELECT @@VERSION tarafından döndürülen ürün adı Microsoft Azure SQL veri ambarı 'Den Azure SYNAPSE Analytics 'e değişecektir. Değişiklik yapılmadan önce gelişmiş bildirim göndereceğiz. Bu değişiklik, uygulama kodundaki @@VERSION öğesini seçme sonucundan ürün adını ayrıştırlayan müşteriler için uygundur. Ürün remarkalaması nedeniyle uygulama kodu değişikliklerinden kaçınmak için lütfen şu komutları kullanarak veritabanı ürün adı ve sürümü için SERVERPROPERTY 'yi sorgulayın: XX sürüm numarasını döndürecek şekilde. X. XXXXX. X (ürün adı olmadan) şu komutu kullanın:
+> SELECT @@VERSION tarafından döndürülen ürün adı, Microsoft Azure SQL veri ambarı Microsoft Azure SYNAPSE Analytics 'e göre değişir. Değişiklik yapılmadan önce gelişmiş bildirim göndereceğiz. Bu değişiklik, uygulama kodundaki @@VERSION öğesini seçme sonucundan ürün adını ayrıştırlayan müşteriler için uygundur. Ürün remarkalaması nedeniyle uygulama kodu değişikliklerinden kaçınmak için lütfen şu komutları kullanarak veritabanı ürün adı ve sürümü için SERVERPROPERTY 'yi sorgulayın: XX sürüm numarasını döndürecek şekilde. X. XXXXX. X (ürün adı olmadan) şu komutu kullanın:
 >
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
@@ -48,13 +48,17 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
 |**Veritabanı uyumluluk düzeyi (Önizleme)**| Bu sürümde, kullanıcılar artık bir veritabanının uyumluluk düzeyini, SYNAPSE SQL altyapısının belirli bir sürümünün Transact-SQL dilini ve sorgu işleme davranışlarını almak için ayarlayabilir. Daha fazla bilgi için bkz. [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [alter database kapsamlıdır Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-|**Sp_describe_undeclared_parameters**| Kullanıcıların bir Transact-SQL toplu işindeki bildirilmemiş parametrelerle ilgili meta verileri görmesine izin verin. Daha fazla bilgi için bkz. [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**Sp_describe_undeclared_parameters**| Kullanıcıların bir Transact-SQL toplu işindeki bildirilmemiş parametrelerle ilgili meta verileri görmesine izin verin. Daha fazla bilgi için bkz. [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).| <br/><br/><br/>
+
+| Araç geliştirmeleri                                         | Ayrıntılar                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) -SQL Server veri araçları (SSDT)** | Bu sürüm SSDT için aşağıdaki geliştirmeleri içerir: </br> </br> -Veri bulma ve sınıflandırma<br/> -COPY ekstresi <br/> -Benzersiz kısıtlamalara sahip tablolar<br/> -Sıralı kümelenmiş bir columnstore dizini içeren tablolar<br/> <br/>Bu sürüm, SSDT için aşağıdaki düzeltmeleri içerir: </br></br>  -Dağıtım sütunu veri türünü değiştirirken, SSDT tarafından oluşturulan güncelleştirme betiği, tabloyu bırakıp yeniden oluşturmak yerine bir CTAS ve yeniden adlandırma işlemi gerçekleştirir. </br> |
 
 ## <a name="march-2020"></a>Mart 2020
 
 | Araç geliştirmeleri                                         | Ayrıntılar                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server veri araçları (SSDT)** | Bu sürüm, SSDT için aşağıdaki geliştirmeleri ve düzeltmeleri içerir: </br> </br> -Gerçekleştirilmiş bir görünüm (MV) tarafından başvurulan bir tabloyu değiştirmenin, MVs için desteklenmeyen alter View deyimlerinin oluşturulmasına neden olduğu bir sorun çözüldü<br/><br/> -Veritabanı veya projede satır düzeyi güvenlik nesneleri mevcut olduğunda şema karşılaştırma işleminin başarısız olmamasını sağlamak için bir değişiklik uygulandı. Satır düzeyi güvenlik nesneleri şu anda SSDT için desteklenmiyor.  <br/><br/> -SQL Server Nesne Gezgini zaman aşımı eşiği, veritabanında çok sayıda nesne listelenirken zaman aşımlarını önlemek için artırıldı<br/><br/> -En iyi duruma getirilmiş SQL Server Nesne Gezgini, kararsızlığı azaltmak ve Nesne Gezgini 'ni doldururken performansı artırmak için veritabanı nesnelerinin listesini alır |
+| **[Visual Studio 16,6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) -SQL Server veri araçları (SSDT)** | Bu sürüm, SSDT için aşağıdaki geliştirmeleri ve düzeltmeleri içerir: </br> </br> -Gerçekleştirilmiş bir görünüm (MV) tarafından başvurulan bir tabloyu değiştirmenin, MVs için desteklenmeyen alter View deyimlerinin oluşturulmasına neden olduğu bir sorun çözüldü<br/><br/> -Veritabanı veya projede satır düzeyi güvenlik nesneleri mevcut olduğunda şema karşılaştırma işleminin başarısız olmamasını sağlamak için bir değişiklik uygulandı. Satır düzeyi güvenlik nesneleri şu anda SSDT için desteklenmiyor.  <br/><br/> -SQL Server Nesne Gezgini zaman aşımı eşiği, veritabanında çok sayıda nesne listelenirken zaman aşımlarını önlemek için artırıldı<br/><br/> -En iyi duruma getirilmiş SQL Server Nesne Gezgini, kararsızlığı azaltmak ve Nesne Gezgini 'ni doldururken performansı artırmak için veritabanı nesnelerinin listesini alır |
 
 ## <a name="january-2020"></a>Ocak 2020
 

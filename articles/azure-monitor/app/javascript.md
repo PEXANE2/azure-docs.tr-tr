@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: daea761d027341eaf8f6c0d137f3049c45e82924
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276081"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836623"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -76,7 +76,7 @@ Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sis
     - İstek yapan kullanıcının KIMLIĞI (varsa)
     - İsteğin yapıldığı bağıntı bağlamı (varsa)
 - **Kullanıcı bilgileri** (örneğin, konum, ağ, IP)
-- **Cihaz bilgileri** (örneğin, tarayıcı, işletim sistemi, sürüm, dil, çözüm, model)
+- **Cihaz bilgileri** (örneğin, tarayıcı, işletim sistemi, sürüm, dil, model)
 - **Oturum bilgileri**
 
 ### <a name="telemetry-initializers"></a>Telemetri başlatıcıları
@@ -99,7 +99,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe `instrumentationKey`bağlıdır.
 
-| Adı | Varsayılan | Açıklama |
+| Name | Varsayılan | Açıklama |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
