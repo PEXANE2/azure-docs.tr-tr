@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271144"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731772"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Kullanım DıŞı Kubernetes 'te uygulama derlemek ve dağıtmak için Azure Container Service ve Azure Container Registry ile taslak kullanma
 
@@ -102,7 +102,7 @@ Artık bir kümeniz olduğuna göre, [az acs kubernetes get-credentials](/cli/az
 
 
 1. https://github.com/Azure/draft/releases ' De ortamınız için taslak indirin ve komutun KULLANıLABILMESI için yolunuza yükleyin.
-2. Ortamınızdaki Held 'yi indirin https://github.com/kubernetes/helm/releases ve [komutun kullanılabilmesi için yolunuza yükleyin](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+2. Ortamınızdaki Held 'yi indirin https://github.com/kubernetes/helm/releases ve [komutun kullanılabilmesi için yolunuza yükleyin](https://helm.sh/docs/intro/quickstart#install-helm).
 3. Draft’ı kayıt defterinizi kullanacak şekilde yapılandırın ve Draft’ın oluşturduğu her Helm grafiği için alt etki alanları oluşturun. Draft’ı yapılandırmak için şunlar gerekir:
    - Azure Container Registry adınız (bu örnekte `draftacsdemo` kullanılmıştır)
    - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` dosyasından kayıt defteri anahtarınız veya parolanız.
