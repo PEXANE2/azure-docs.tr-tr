@@ -1,34 +1,35 @@
-- name: Azure Güvenlik Karşılaştırmaları
+- name: Azure Güvenlik Karşılaştırması
   href: index.yml
 - name: Giriş
   href: introduction.md
 - name: Güvenlik Denetimleri
+  expanded: true
   items:
-    - name: Azure Güvenlik Denetimleri’ne genel bakış
+    - name: Azure güvenlik denetimlerine genel bakış
       href: overview.md
-    - name: Ağ Güvenliği
+    - name: Ağ güvenliği
       href: security-control-network-security.md
-    - name: Günlüğe Kaydetme ve İzleme
+    - name: Günlüğe kaydetme ve izleme
       href: security-control-logging-monitoring.md
-    - name: Kimlik ve Erişim Denetimi
+    - name: Kimlik ve erişim denetimi
       href: security-control-identity-access-control.md
-    - name: Veri Koruma
+    - name: Veri koruma
       href: security-control-data-protection.md
-    - name: Güvenlik Açığı Yönetimi
+    - name: Güvenlik açığı yönetimi
       href: security-control-vulnerability-management.md
-    - name: Envanter ve Varlık Yönetimi
+    - name: Envanter ve varlık yönetimi
       href: security-control-inventory-asset-management.md
-    - name: Güvenli Yapılandırma
+    - name: Güvenli yapılandırma
       href: security-control-secure-configuration.md
-    - name: Kötü Amaçlı Yazılımdan Koruma
+    - name: Kötü amaçlı yazılımdan koruma
       href: security-control-malware-defense.md
-    - name: Veri Kurtarma
+    - name: Veri kurtarma
       href: security-control-data-recovery.md
-    - name: Olay Yanıtı
+    - name: Olay yanıtı
       href: security-control-incident-response.md
-    - name: Sızma Testleri ve Red Team Alıştırmaları
+    - name: Sızma testleri ve red team alıştırmaları
       href: security-control-penetration-tests-red-team-exercises.md
-- name: Güvenlik Temelleri
+- name: Azure için güvenlik temelleri
   items:
     - name: Azure güvenlik temellerine genel bakış
       href: security-baselines-overview.md

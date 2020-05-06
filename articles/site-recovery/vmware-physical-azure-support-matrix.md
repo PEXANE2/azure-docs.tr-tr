@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma içi
 description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: eb78f6073d2bcb7289f13d5c994cff8c13f9a6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185804"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801799"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -128,7 +128,9 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.1
 
 **Yayınla** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Tüm hisse senedi SUSE 15 ve 15 çekirdekler desteklenir. </br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure
+SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir. </br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure
+
+
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux dosya sistemleri/Konuk depolama
 
@@ -183,34 +185,34 @@ Ayrılmış IP adresi | Yes
 IPv4 | Yes
 Kaynak IP adresini sakla | Yes
 Azure sanal ağ hizmet uç noktaları<br/> | Yes
-Hızlandırılmış ağ iletişimi | Hayır
+Hızlandırılmış ağ iletişimi | No
 
 ## <a name="storage"></a>Depolama
 **Bileşen** | **Destek**
 --- | ---
 Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
-Docker disk yapılandırması | Hayır
+Docker disk yapılandırması | No
 Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
 Ana bilgisayar SAN (Iscsı/FC) | Yes
 Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
 Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu VMDK | Yes
-Konuk/sunucu paylaşılan küme diski | Hayır
-Konuk/sunucu tarafından şifrelenen disk | Hayır
-Konuk/sunucu NFS | Hayır
+Konuk/sunucu paylaşılan küme diski | No
+Konuk/sunucu tarafından şifrelenen disk | No
+Konuk/sunucu NFS | No
 Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
-Konuk/sunucu SMB 3,0 | Hayır
+Konuk/sunucu SMB 3,0 | No
 Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
 Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
-4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
-4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | Hayır
+4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | No
+4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | No
 Şeritli disk >4 TB olan konuk/sunucu birimi | Yes
 Mantıksal birim yönetimi (LVM)| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
-Konuk/sunucu-depolama alanları | Hayır
-Konuk/sunucu Hot Add/Remove disk | Hayır
+Konuk/sunucu-depolama alanları | No
+Konuk/sunucu Hot Add/Remove disk | No
 Konuk/sunucu-diski hariç tut | Yes
-Konuk/sunucu çok yollu (MPIO) | Hayır
+Konuk/sunucu çok yollu (MPIO) | No
 Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört destekleniyordu.
 ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
 Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için desteklenir, Mobility Aracısı sürüm 9,30 ve sonraki sürümleri içeren SLES 12 SP4 ve RHEL 8,0<br/> -Secure UEFı önyükleme türü desteklenmez.
@@ -219,9 +221,9 @@ Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için d
 
 |**Çoğaltma türü**   |**Destek**  |
 |---------|---------|
-|Boşaltılan veri aktarımları (ODX)    |       Hayır  |
-|Çevrimdışı dengeli dağıtım        |   Hayır      |
-| Azure Data Box | Hayır
+|Boşaltılan veri aktarımları (ODX)    |       No  |
+|Çevrimdışı dengeli dağıtım        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -230,13 +232,13 @@ Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için d
 Yerel olarak yedekli depolama | Yes
 Coğrafi olarak yedekli depolama | Yes
 Okuma erişimli coğrafi olarak yedekli depolama | Yes
-Seyrek Erişimli Depolama | Hayır
-Sık erişimli depolama| Hayır
-Blok blobları | Hayır
+Seyrek Erişimli Depolama | No
+Sık erişimli depolama| No
+Blok blobları | No
 Bekleyen şifreleme (SSE)| Yes
 Bekleyen şifreleme (CMK)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
 Premium depolama | Yes
-İçeri/dışarı aktarma hizmeti | Hayır
+İçeri/dışarı aktarma hizmeti | No
 Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
 Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
 
@@ -245,7 +247,7 @@ Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katman
 **Özellik** | **Destek**
 --- | ---
 Kullanılabilirlik kümeleri | Yes
-Kullanılabilirlik alanları | Hayır
+Kullanılabilirlik alanları | No
 HUB | Yes
 Yönetilen diskler | Yes
 
@@ -301,10 +303,10 @@ VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 
 **Eylem** | **Destek**
 --- | ---
-Kasayı kaynak grupları arasında taşıma | Hayır
-Kasayı abonelik içinde ve abonelikler arasında taşıma | Hayır
-Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | Hayır
-Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | Hayır
+Kasayı kaynak grupları arasında taşıma | No
+Kasayı abonelik içinde ve abonelikler arasında taşıma | No
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | No
+Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | No
 
 
 ## <a name="obtain-latest-components"></a>En son bileşenleri edinin

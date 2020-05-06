@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 6e5b691a41ef283449f9eeeb90e9d01a91616146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/13/2020
+ms.openlocfilehash: 9a1493790969c4d34d7d41572dff6e15d16d2a19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275790"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735462"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Market ölçüm hizmeti API’leri - SSS
 
-Azure kullanıcısı ölçülen faturalandırma içeren bir SaaS hizmetine abone olduktan sonra, müşteri tarafından kullanılan her faturalandırma boyutu için tüketimi izleyebilirsiniz. Tüketim, müşteri tarafından seçilen dönem için ayarlanan dahil edilen miktarları aşarsa, hizmetiniz kullanım olaylarını Microsoft 'a yayacaktır.
+Bir Azure kullanıcısı ölçülen faturalandırma içeren bir SaaS hizmetine abone olduğunda, müşteri tarafından kullanılan her faturalandırma boyutu için tüketimi izleyebilirsiniz. Tüketim, müşteri tarafından seçilen dönem için ayarlanan dahil edilen miktarları aşarsa, hizmetiniz kullanım olaylarını Microsoft 'a yayacaktır.
 
 ## <a name="emit-usage-events"></a>Kullanım olaylarını yayma
 
@@ -35,7 +35,7 @@ Kullanım olaylarını yaymada API sözleşmesi hakkında bilgi için bkz. [SaaS
 
 En ideal olarak, kullanım olayı, son saat içinde gerçekleşen olaylar için saatte bir yayınlanır. Ancak gecikme beklenmektedir. İzin verilen en fazla gecikme 24 saattir, bu da kullanım olaylarının kabul edilmemesini sağlayacak.
 
-Örneğin, bir gün içinde kullanım olayı 1 PM 'de gerçekleşirse, bu olayla ilişkili kullanım olayını oluşturmak için bir sonraki gün 1 PM 'ye kadar olur. Bu, sistem yayma kullanımının bir süre içinde olduğu durumlarda, daha sonra kullanım gerçekleştiği zaman aralığı için kullanım olayını kurtarabilir ve daha sonra bir uygunluk kaybı olmadan gönderebilir.
+Örneğin, bir gün içinde kullanım olayı 1 PM 'de gerçekleşirse, bu olayla ilişkili kullanım olayını oluşturmak için bir sonraki gün 1 PM 'ye kadar olur. Sistem yayma kullanımı bir süre geçtikten sonra, bu durum, ön, uygunluk kaybı olmadan, kullanımın gerçekleştiği saat aralığı için kullanım olayını kurtarır ve gönderir.
 
 ### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>Aynı saat içinde birden fazla kullanım olayı gönderdiğinizde ne olur?
 
@@ -49,6 +49,12 @@ Bir SaaS aboneliği silindikten sonra Market platformuna yayılan kullanım olay
 
 Evet, `GET /saas/subscriptions` API 'yi çağırdığınızda tüm SaaS aboneliklerinin bir listesini içerir. Her bir SaaS aboneliğine yönelik yanıttaki durum alanı, aboneliğin etkin veya aboneliği kaldırma olduğunu yakalar. Liste abonelikleri çağrısı, zaman içinde en fazla 100 abonelik döndürür.
 
+### <a name="what-happens-if-the-marketplace-metering-service-has-an-outage"></a>Market ölçüm hizmeti bir kesinti yaşmışsa ne olur?
+
+ISV özel bir ölçüm gönderiyor ve bir hata alırsa, ISV bekleyip yeniden deneyin.
+
+Hata devam ederse, bu özel ölçümü bir sonraki saat (miktarı biriktir) olarak yeniden gönderin. Hata olmayan bir yanıt alınana kadar bu işleme devam edin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için bkz. [Market ölçüm hizmeti API 'leri](./marketplace-metering-service-apis.md) .
+- Daha fazla bilgi için bkz. [Market ölçüm hizmeti API 'leri](./marketplace-metering-service-apis.md).

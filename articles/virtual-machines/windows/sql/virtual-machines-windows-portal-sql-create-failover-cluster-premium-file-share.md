@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09dd4ea3cd039bcb91acc877e51fee7e40168ac3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303231"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612767"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneği yapılandırma
 
@@ -47,7 +47,7 @@ Ayrıca, bu teknolojilerin genel olarak anlaşılmasına de sahip olmanız gerek
 > [!IMPORTANT]
 > Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](virtual-machines-windows-sql-server-agent-extension.md) [basit yönetim moduyla](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, karşılık gelen VM 'Ler için **SQL sanal makine** kaynağını silin ve ardından bunları basıt modda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak **SQL sanal makine** kaynağını silerken, **doğru sanal makinenin yanındaki onay kutusunu temizleyin**. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı hafif yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'Leri için çalışmaz.
 
-Premium dosya paylaşımları, ıOPS 'yi ve birçok iş yükünün ihtiyaçlarını karşılayacak tüm kapasiteleri sağlar. GÇ yoğun iş yükleri için, yönetilen Premium disklere veya ultra disklere göre [SQL Server yük devretme kümesi örneklerini depolama alanları doğrudan ile](virtual-machines-windows-portal-sql-create-failover-cluster.md)düşünün.  
+Premium dosya paylaşımları, birçok iş yükünün ihtiyaçlarını karşılayacak ıOPS ve aktarım hızı kapasitesi sağlar. GÇ yoğun iş yükleri için, yönetilen Premium disklere veya ultra disklere göre [SQL Server yük devretme kümesi örneklerini depolama alanları doğrudan ile](virtual-machines-windows-portal-sql-create-failover-cluster.md)düşünün.  
 
 Ortamınızın ıOPS etkinliğini denetleyin ve bir dağıtıma veya geçişe başlamadan önce Premium dosya paylaşımlarının ihtiyacınız olan ıOPS 'yi sağlayabildiğini doğrulayın. SQL Server verileri, günlüğü ve Geçici VERITABANı dosyaları için gereken toplam ıOPS (disk aktarımı/saniye) ve üretilen iş (disk Baytları/saniye) izlemek için Windows performans Izleyicisi disk sayaçlarını kullanın.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 339b11664308962962c59b2e9386ff122681293a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116222"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801017"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -200,16 +200,21 @@ Ek önemli bilgiler için bkz. bilgi ve [SMS uyarı davranışını](../../azure
 
 Bir eylem grubunda sınırlı sayıda SMS eylemi olabilir.
 
-Azure portal eylem grubu Kullanıcı arabirimi ülke kodunuzu seçmenizi vermezse, ülkeniz için SMS desteklenmez. Desteklenen ülkeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir. Ülke kodunuz kullanılamıyorsa, ülkenizin [Kullanıcı sesine](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)eklenmesini oylayabilirsiniz.  
+> [!NOTE]
+> Azure portal eylem grubu Kullanıcı arabirimi ülke kodunuzu seçmenizi vermezse, ülkeniz için SMS desteklenmez.  Ülke kodunuz kullanılamıyorsa, ülkenizin [Kullanıcı sesine](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)eklenmesini oylayabilirsiniz. Bu sırada, geçici bir çözüm, eylem grubunuzun, ülkenizde desteğe sahip bir üçüncü taraf SMS sağlayıcısına Web kancasını çağırmasını sağlar.  
 
+Desteklenen ülkeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
   
 
 ### <a name="voice"></a>Ses
-Bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
+Daha önemli davranış için bkz. [hız sınırlandırma bilgileri](./../../azure-monitor/platform/alerts-rate-limiting.md) makalesi.
 
 Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
 
-Azure portal eylem grubu Kullanıcı arabirimi ülke kodunuzu seçme konusunda izin vermezse, ülkeniz için sesli çağrılar desteklenmez. Desteklenen ülkeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir. Ülke kodunuz kullanılamıyorsa, ülkenizin [Kullanıcı sesine](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)eklenmesini oylayabilirsiniz.  
+> [!NOTE]
+> Azure portal eylem grubu Kullanıcı arabirimi ülke kodunuzu seçme konusunda izin vermezse, ülkeniz için sesli çağrılar desteklenmez. Ülke kodunuz kullanılamıyorsa, ülkenizin [Kullanıcı sesine](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)eklenmesini oylayabilirsiniz.  Bu sırada, geçici bir çözüm, eylem grubunuzun, ülkenizde desteğe sahip bir üçüncü taraf sesli çağrı sağlayıcısına Web kancasını çağırmasını sağlar.  
+
+Desteklenen ülkeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
 
 ### <a name="webhook"></a>Web Kancası
 Web kancaları aşağıdaki kurallar kullanılarak yeniden denenir. Aşağıdaki HTTP durum kodları döndürüldüğünde Web kancası çağrısı en fazla 2 kez yeniden denenir: 408, 429, 503, 504 veya HTTP uç noktası yanıt vermez. İlk yeniden deneme 10 saniye sonra yapılır. İkinci yeniden deneme 100 saniye sonra gerçekleşir. İki hatadan sonra, herhangi bir eylem grubu 30 dakika için uç noktayı çağırmaz. 

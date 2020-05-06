@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537330"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801272"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 **Sınırlı** | **Bilgileri**
 --- | ---
-**Azure VM veri diskleri** | 16 sınırı <br> 16'dan fazla diski (en çok 32 disk) olan VM'lerin özel önizlemesine kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın
+**Azure VM veri diskleri** | 16 sınırı <br> 16 + diskle (32 diske kadar) VM 'lerin sınırlı önizlemesine kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
 **Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM yedekleme seçenekleri
@@ -152,9 +152,9 @@ Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlen
 | Yedekleme yönetimi türü | Destekleniyor                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
-| SQL/SAP HANA          | Hayır                                                           | Yok               |
-| 'Nın                    | Hayır                                                           | Yok               |
+| MARS Aracısı/şirket içi | No                                                           | Yok               |
+| SQL/SAP HANA          | No                                                           | Yok               |
+| 'Nın                    | No                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

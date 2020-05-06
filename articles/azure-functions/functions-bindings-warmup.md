@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77167321"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559997"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
@@ -240,7 +240,7 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `WarmupTrigger` özniteli�
 ## <a name="trigger---limits"></a>Tetikleme-sınırlar
 
 * Isınma tetikleyicisi yalnızca [Premium planda](./functions-premium-plan.md)çalışan uygulamalar tarafından kullanılabilir.
-* Isınma tetikleyicisi yalnızca ölçek artırma işlemleri sırasında, yeniden başlatmalar sırasında veya diğer ölçek olmayan başlatmalar sırasında çağrılır. Mantığınızın ısınma tetikleyicisini kullanmadan tüm gerekli bağımlılıkları yükleyebilmesi gerekir. Yavaş yükleme bunu elde etmek için iyi bir modeldir.
+* Isınma tetikleyicisi yalnızca genişleme işlemleri sırasında, yeniden başlatmalar sırasında veya diğer ölçek olmayan başlatmalar sırasında çağrılır. Mantığınızın ısınma tetikleyicisini kullanmadan tüm gerekli bağımlılıkları yükleyebilmesi gerekir. Yavaş yükleme bunu elde etmek için iyi bir modeldir.
 * Bir örnek zaten çalışıyor olduktan sonra ısınma tetikleyicisi çağrılamaz.
 * İşlev uygulaması başına yalnızca bir ısınma tetikleyici işlevi olabilir.
 

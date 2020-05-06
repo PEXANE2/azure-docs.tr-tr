@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203157"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790488"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma
 
 Azure API Management, API yayımcılarının herhangi bir sayıda desteklenen Azure bölgesinde tek bir Azure API Management hizmetini dağıtmasını sağlayan çok bölgeli dağıtımı destekler. Çok bölgeli özellik, coğrafi olarak dağıtılan API tüketicileri tarafından algılanan istek gecikmesini azaltmaya yardımcı olur ve bir bölgenin çevrimdışı olması durumunda hizmet kullanılabilirliğini geliştirir.
 
-Yeni bir Azure API Management hizmeti başlangıçta tek bir Azure bölgesinde, birincil bölgede yalnızca bir [birim][unit] içerir. Birincil veya Ikincil bölgelere ek bölgeler eklenebilir. API Management ağ geçidi bileşeni, seçilen her birincil ve Ikincil bölgeye dağıtılır. Gelen API istekleri, en yakın bölgeye otomatik olarak yönlendirilir. Bir bölge çevrimdışı kalırsa, API istekleri otomatik olarak, başarısız bölge sonraki en yakın ağ geçidine yönlendirilir.
+Yeni bir Azure API Management hizmeti başlangıçta tek bir Azure bölgesinde, birincil bölgede yalnızca bir [birim][unit] içerir. Birincil veya Ikincil bölgelere ek birimler eklenebilir. API Management ağ geçidi bileşeni, seçilen her birincil ve Ikincil bölgeye dağıtılır. Gelen API istekleri, en yakın bölgeye otomatik olarak yönlendirilir. Bir bölge çevrimdışı kalırsa, API istekleri otomatik olarak, başarısız bölge sonraki en yakın ağ geçidine yönlendirilir.
 
 > [!NOTE]
 > Yalnızca API Management ağ geçidi bileşeni tüm bölgelere dağıtılır. Hizmet Yönetimi bileşeni ve geliştirici portalı yalnızca birincil bölgede barındırılır. Bu nedenle, birincil bölge kesintisi durumunda, geliştirici portalına erişim ve yapılandırmayı değiştirebilme (ör. API ekleme, ilkeleri uygulama), birincil bölge yeniden çevrimiçi olana kadar zayıflatılabilir. Birincil bölge çevrimdışı iken kullanılabilir olan Ikincil bölgeler, API trafiği için kullanılabilen en son yapılandırmayı kullanmaya devam eder.

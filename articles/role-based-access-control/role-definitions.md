@@ -1,6 +1,6 @@
 ---
-title: Azure kaynakları için RBAC 'de rol tanımlarını anlama | Microsoft Docs
-description: Azure kaynaklarının ayrıntılı erişim yönetimi için rol tabanlı erişim denetimi (RBAC) içindeki rol tanımları hakkında bilgi edinin.
+title: Azure rol tanımlarını anlama-Azure RBAC
+description: Azure kaynakları için ayrıntılı erişim yönetimi için Azure rol tabanlı erişim denetimi 'nde (Azure RBAC) Azure rol tanımları hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641374"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735547"
 ---
-# <a name="understand-role-definitions-for-azure-resources"></a>Azure kaynakları için rol tanımlarını anlama
+# <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
 
-Bir rolün nasıl çalıştığını anlamaya çalışıyorsanız veya [Azure kaynakları için kendi özel rolünüzü](custom-roles.md)oluşturuyorsanız, rollerinin nasıl tanımlandığını anlamanız yararlı olur. Bu makalede, rol tanımlarının ayrıntıları açıklanmakta ve bazı örnekler sağlanmaktadır.
+Bir Azure rolünün nasıl çalıştığını anlamaya çalışıyorsanız veya kendi [Azure özel rolünüzü](custom-roles.md)oluşturuyorsanız, rollerinin nasıl tanımlandığını anlamanız yararlı olur. Bu makalede, rol tanımlarının ayrıntıları açıklanmakta ve bazı örnekler sağlanmaktadır.
 
 ## <a name="role-definition"></a>Rol tanımı
 
@@ -170,7 +170,7 @@ Bob 'un izinleri, `Actions` [Depolama Blobu veri katılımcısı](built-in-roles
 
 Depolama için yönetim ve veri düzlemi güvenliği hakkında daha fazla bilgi için bkz. [Azure depolama Güvenlik Kılavuzu](../storage/blobs/security-recommendations.md).
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>Veri işlemleri için RBAC kullanılarak hangi araçlar desteklenir?
+### <a name="what-tools-support-using-azure-roles-for-data-operations"></a>Veri işlemleri için Azure rollerini kullanarak hangi araçlar desteklenir?
 
 Veri işlemlerini görüntülemek ve bunlarla çalışmak için, araçların veya SDK 'ların doğru sürümlerine sahip olmanız gerekir:
 
@@ -245,10 +245,10 @@ Yerleşik roller kök kapsamına ( `AssignableScopes` `"/"`) ayarlı. Kök kapsa
 > | Yönetim grubu ve abonelik | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | Tüm kapsamlar (yalnızca yerleşik roller için geçerlidir) | `"/"` |
 
-Özel roller hakkında `AssignableScopes` daha fazla bilgi için bkz. [Azure kaynakları için özel roller](custom-roles.md).
+Özel roller hakkında `AssignableScopes` daha fazla bilgi için bkz. [Azure özel rolleri](custom-roles.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure kaynakları için yerleşik roller](built-in-roles.md)
-* [Azure kaynakları için özel roller](custom-roles.md)
+* [Azure yerleşik rolleri](built-in-roles.md)
+* [Azure özel rolleri](custom-roles.md)
 * [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
