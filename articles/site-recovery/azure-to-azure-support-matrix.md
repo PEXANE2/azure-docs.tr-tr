@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 73160a6bf416722021d76da21a32a1cd1ee04386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea0b6763f4438033a8a5a1a4044479fc00f8456c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111734"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864581"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -154,7 +154,8 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Tüm hisse senedi 
 
 **Yayınla** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Tüm hisse senedi SUSE 15 ve 15 çekirdekler desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure |
+SUSE Linux Enterprise Server 15 ve 15 SP1 | 9,32 | Varsayılan olarak, tüm [hisse senedi SUSE 15 ve 15 çekirdekler](https://www.suse.com/support/kb/doc/?id=000019587) desteklenir.</br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure |
+
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Çoğaltılan makineler-Linux dosya sistemi/Konuk depolama
 
@@ -178,6 +179,8 @@ Azure galeri görüntüleri-üçüncü taraf yayımlandı | Destekleniyor | VM d
 Site Recovery kullanılarak geçirilen VM 'Ler | Destekleniyor | Site Recovery kullanılarak Azure 'a bir VMware VM veya fiziksel makine geçirilirse, makinede çalışan Mobility hizmetinin eski sürümünü kaldırmanız ve makineyi başka bir Azure bölgesine çoğaltmadan önce yeniden başlatmanız gerekir.
 RBAC ilkeleri | Desteklenmiyor | VM 'lerde rol tabanlı erişim denetimi (RBAC) ilkeleri hedef bölgedeki yük devretme VM 'sine çoğaltılmaz.
 Uzantıları | Desteklenmiyor | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
+Yakınlık yerleştirme grupları | Desteklenmiyor | Bir yakınlık yerleşimi grubunda bulunan sanal makineler Site Recovery kullanılarak korunamaz.
+
 
 ## <a name="replicated-machines---disk-actions"></a>Çoğaltılan makineler-disk eylemleri
 

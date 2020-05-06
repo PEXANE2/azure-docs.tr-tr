@@ -5,24 +5,26 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: 5abe9344b0512433c48df50335cce5cf1e3e3547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289647"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863425"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Güvenlik Duvarı Uzaktan çalışma desteği
 
-Azure Güvenlik Duvarı, Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip, tam durum bilgisi olan bir hizmet olarak güvenlik duvarıdır. 
+Azure Güvenlik Duvarı, Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip, tam durum bilgisi olan bir hizmet olarak güvenlik duvarıdır.
 
-## <a name="firewall-rules"></a>Güvenlik duvarı kuralları
+## <a name="virtual-desktop-infrastructure-vdi-deployment-support"></a>Sanal Masaüstü Altyapısı (VDı) dağıtım desteği
 
-Azure Güvenlik Duvarı [DNAT kurallarını](rule-processing.md)kullanarak, sanal masaüstü ALTYAPıNıZıN (VDI) gelen RDP erişiminizi Azure sanal ağınıza güvenli hale getirmek Için Azure Güvenlik Duvarı 'nı kullanabilirsiniz. Windows sanal masaüstü (WVD), sanal ağınıza yönelik herhangi bir gelen erişimi açmanızı gerektirmez. Ancak, sanal ağınızda çalışan WVD sanal makineler için bir giden ağ bağlantısı kümesine izin vermeniz gerekir. Daha fazla bilgi için bkz. [Windows sanal masaüstü nedir?](../virtual-desktop/overview.md#requirements)
+Ana ilkelerden çalışma, çok sayıda BT kuruluşun kapasite, ağ, güvenlik ve idare için temel değişiklikleri ele vermesini gerektirir. Çalışanlar evden çalışırken şirket içi hizmetlerle ilişkili katmanlı güvenlik ilkeleri tarafından korunmaz. Azure 'daki sanal masaüstü altyapısı (VDı) dağıtımları, kuruluşların bu değişen ortama hızla yanıt vermesini sağlar. Ancak, bu VDı dağıtımlarından gelen/giden Internet erişimini korumak için bir yol gerekir. VDı dağıtımlarınızı korumak için Azure Güvenlik Duvarı [DNAT kurallarını](rule-processing.md) [tehdit zekası](threat-intel.md) tabanlı filtreleme yeteneklerini birlikte kullanabilirsiniz.
 
-Bu giden erişimi, Azure Güvenlik Duvarı uygulama kurallarını kullanarak yapılandırabilirsiniz. Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik duvarını Azure Portal kullanarak dağıtma ve yapılandırma](tutorial-firewall-deploy-portal.md).
+## <a name="azure-windows-virtual-desktop-support"></a>Azure Windows sanal masaüstü desteği
+
+Windows sanal masaüstü, Azure 'da çalışan kapsamlı bir masaüstü ve uygulama sanallaştırma hizmetidir. Basitleştirilmiş Yönetim, çoklu oturum Windows 10, Office 365 ProPlus için iyileştirmeler ve Uzak Masaüstü Hizmetleri (RDS) ortamları için destek sunan tek sanal masaüstü altyapısı (VDı). Windows Masaüstü ve uygulamalarınızı Azure 'da dakikalar içinde dağıtabilir ve ölçeklendirebilirsiniz ve yerleşik güvenlik ve uyumluluk özellikleri edinebilirsiniz. Windows sanal masaüstü, sanal ağınıza yönelik herhangi bir gelen erişimi açmanızı gerektirmez. Ancak, sanal ağınızda çalışan Windows Sanal Masaüstü sanal makineleri için bir giden ağ bağlantısı kümesine izin vermeniz gerekir. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](protect-windows-virtual-desktop.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

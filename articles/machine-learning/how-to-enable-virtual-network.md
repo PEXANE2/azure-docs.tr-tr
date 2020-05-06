@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e4f811d39c75742f11c52de5c178fbf4063000d
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188132"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864649"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -359,7 +359,7 @@ Sanal bir makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 Bir sanal ağdaki AKS 'leri çalışma alanınıza eklemek için aşağıdaki adımları kullanın:
 
 > [!IMPORTANT]
-> Aşağıdaki yordama başlamadan önce, [Azure Kubernetes Service (AKS) içindeki gelişmiş ağı yapılandırma (aks)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) ve kümenizin IP adreslemesini planlayın bölümündeki önkoşulları izleyin.
+> Aşağıdaki yordama başlamadan önce, [Azure Kubernetes Service (AKS) içindeki gelişmiş ağı yapılandırma (aks)](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites) ve kümenizin IP adreslemesini planlayın bölümündeki önkoşulları izleyin.
 >
 > AKS örneği ve Azure sanal ağı aynı bölgede olmalıdır. Bir sanal ağ içinde çalışma alanı tarafından kullanılan Azure depolama hesaplarını güvenli hale getirmek istiyorsanız, AKS örneğiyle aynı sanal ağda olmaları gerekir.
 
@@ -506,7 +506,7 @@ Azure Container Instances, bir model dağıtıldığında dinamik olarak oluştu
 
 
 
-## <a name="use-azure-firewall"></a>Azure Güvenlik duvarını kullanma
+## <a name="use-azure-firewall"></a>Azure Güvenlik Duvarı’nı kullanma
 
 Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi için bkz. [Azure Güvenlik duvarının arkasında Azure Machine Learning çalışma alanı kullanma](how-to-access-azureml-behind-firewall.md).
 
@@ -557,7 +557,7 @@ Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi içi
     
     Daha fazla bilgi için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) Yöntem başvurusuna bakın.
 
-1. Azure Machine Learning çalışma alanınız için özel bağlantı kullanıyorsanız ve çalışma alanınızın Azure Container Registry bir sanal ağa yerleştirirseniz, aşağıdaki Azure Resource Manager şablonunu da uygulamanız gerekir. Bu şablon, çalışma alanınızın özel bağlantı üzerinden ACR ile iletişim kurmasını sağlar.
+1. Aşağıdaki Azure Resource Manager şablonunu uygulamanız gerekir. Bu şablon, çalışma alanınızın ACR ile iletişim kurmasını sağlar.
 
     ```json
     {

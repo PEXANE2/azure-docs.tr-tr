@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313595"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792386"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
 
@@ -111,7 +111,7 @@ Simülasyon, aşağıdaki cihazları kaydeder:
 * Publisher. RIO. Corp. contoso
 * Publisher. Seattle. Corp. contoso
 
-[Azure CLI Için](https://github.com/Azure/azure-iot-cli-extension) [deviceexplorer 'ı](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) veya IoT uzantısı 'nı kullanarak, çözümünüzün kullandığı IoT Hub 'ına hangi cihazların kaydedildiğini kontrol edebilirsiniz. Cihaz Gezginini kullanmak için dağıtımınızdaki IoT Hub 'ı için bağlantı dizesine ihtiyacınız vardır. Azure CLı için IoT uzantısını kullanmak üzere IoT Hub adına ihtiyacınız vardır.
+[Azure CLI Için](https://github.com/Azure/azure-iot-cli-extension) [deviceexplorer 'ı](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) veya IoT uzantısı 'nı kullanarak, çözümünüzün kullandığı IoT Hub 'ına hangi cihazların kaydedildiğini kontrol edebilirsiniz. Cihaz Gezginini kullanmak için dağıtımınızdaki IoT Hub 'ı için bağlantı dizesine ihtiyacınız vardır. Azure CLı için IoT uzantısını kullanmak üzere IoT Hub adına ihtiyacınız vardır.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Simülasyon bileşenlerinden günlük verilerini nasıl alabilirim?
 
@@ -125,7 +125,7 @@ Alternatif olarak, SSH aracılığıyla VM 'de oturum açın ve çalışma zaman
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Simülasyonun buluta veri gönderip göndermesinin nasıl kontrol edebilirim?
 
-[Deviceexplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) veya [Azure IoT CLI uzantısı izleyici-olayları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, belirli cihazlardan IoT Hub gönderilen verileri inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT Hub 'ı için bağlantı dizesini bilmeniz gerekir. [Çözümünüz tarafından kullanılan IoT Hub 'ı bağlantı dizesini öğrenmek nasıl yaparım? bakın mi?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) veya [Azure IoT CLI uzantısı izleyici-olayları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, belirli cihazlardan IoT Hub gönderilen verileri inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT Hub 'ı için bağlantı dizesini bilmeniz gerekir. [Çözümünüz tarafından kullanılan IoT Hub 'ı bağlantı dizesini öğrenmek nasıl yaparım? bakın mi?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Yayımcı cihazlarından biri tarafından gönderilen verileri inceleyin:
 

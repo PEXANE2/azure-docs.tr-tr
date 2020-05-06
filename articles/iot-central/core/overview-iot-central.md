@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560962"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790890"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
-IoT Central, kurumsal düzeyde IoT çözümlerinin geliştirilmesine, yönetilmesine ve bakımının yükünü ve maliyetini azaltan bir IoT uygulama platformudur. IoT Central ile oluşturmayı seçtiğinizde, yalnızca karmaşık ve sürekli gelişen IoT altyapısını korumak ve güncelleştirmek yerine, işletmenizin IoT verileriyle dönüştürülmesi için zaman, para ve enerji tasarrufu sağlama fırsatı sunulmaktadır.
+IoT Central, kurumsal düzeyde IoT çözümlerinin geliştirilmesine, yönetilmesine ve bakımının yapılmasına yönelik maliyet ve yükü azaltan bir IoT uygulama platformudur. IoT Central ile oluşturmayı seçtiğinizde, yalnızca karmaşık ve sürekli gelişen IoT altyapısını korumak ve güncelleştirmek yerine, işletmenizin IoT verileriyle dönüştürülmesi için zaman, para ve enerji tasarrufu sağlama fırsatı sunulmaktadır.
 
 Web Kullanıcı arabirimi, cihaz koşullarını izlemenizi, kurallar oluşturmanızı ve milyonlarca cihazı ve bunların yaşam döngüsü boyunca verilerini yönetmenizi sağlar. Ayrıca, IoT Intelligence 'ı iş kolu uygulamalarına genişleterek cihaz öngörülerine göre hareket etmenizi sağlar.
 
@@ -29,19 +29,6 @@ Bu makalede IoT Central için özetlenmektedir:
 - Uygulamanızı yönetme.
 - IoT Central Azure IoT Edge özellikleri.
 - Azure IoT Edge çalışma zamanı ile desteklenen cihazlarınızı uygulamanıza bağlama.
-
-## <a name="known-issues"></a>Bilinen sorunlar
-
-- Sürekli veri dışa aktarma avro biçimini (uyumsuzluk) desteklemez.
-- GeoJSON Şu anda desteklenmiyor.
-- Harita kutucuğu Şu anda desteklenmiyor.
-- İşler karmaşık türleri desteklemez.
-- Dizi şeması türleri desteklenmez.
-- Yalnızca C cihaz SDK 'Sı ve Node. js cihaz ve hizmet SDK 'Ları desteklenir.
-- IoT Central Şu anda Birleşik Devletler, Avrupa, Asya Pasifik, Avustralya, Birleşik Krallık ve Japonya konumlarında sunulmaktadır.
-- Birleşik Krallık ve Japonya konumlarında **özel uygulama (eski)** uygulama şablonunu kullanamazsınız.
-- Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
-- [Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) için destek önizleme aşamasındadır ve yalnızca seçili bölgelerde desteklenir.
 
 ## <a name="personas"></a>Kişilikler
 
@@ -152,7 +139,7 @@ Yöneticiler [, Kullanıcı rolleri ve izinleriyle](howto-administer.md)uygulama
 
 Ölçekte çalışacak şekilde tasarlanan tüm IoT çözümleri ile cihaz yönetimine yönelik yapılandırılmış bir yaklaşım önemlidir. Cihazlarınızı buluta bağlamak yeterli değildir, cihazlarınızı bağlı ve sağlıklı tutmanız gerekir. Bir operatör, uygulama yaşam döngüsü boyunca cihazlarınızı yönetmek için aşağıdaki IoT Central yeteneklerini kullanabilir:
 
-### <a name="dashboards"></a>Panolar 
+### <a name="dashboards"></a>Panolar
 
 Yerleşik [panolar](./howto-set-up-template.md#generate-default-views) cihaz sistem durumunu ve telemetrisini izlemek için özelleştirilebilir bir kullanıcı arabirimi sağlar. [Uygulama şablonunda](howto-use-app-templates.md) önceden oluşturulmuş bir panoyla başlayın veya işleçlerinizin ihtiyaçlarına göre özel kendi panolarınızı oluşturun. Panoları uygulamanızdaki tüm kullanıcılarla paylaşabilir veya özel tutabilirsiniz.
 
@@ -193,6 +180,18 @@ Cihazlarınızdan Telemetriyi işlemek ve sonuçları depolamak için özel anal
 ## <a name="quotas"></a>Kotalar
 
 Her Azure aboneliğinin, IoT çözümünüzün kapsamını etkileyebilecek varsayılan kotaları vardır. Şu anda IoT Central bir abonelikte dağıtabileceğiniz uygulama sayısını 10 ' a kısıtlar. Bu sınırı artırmanız gerekiyorsa, [Microsoft desteği](https://azure.microsoft.com/support/options/)'ne başvurun.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+- Sürekli veri dışa aktarma avro biçimini (uyumsuzluk) desteklemez.
+- GeoJSON Şu anda desteklenmiyor.
+- Harita kutucuğu Şu anda desteklenmiyor.
+- Dizi şeması türleri desteklenmez.
+- Yalnızca C cihaz SDK 'Sı ve Node. js cihaz ve hizmet SDK 'Ları desteklenir.
+- IoT Central Şu anda Birleşik Devletler, Avrupa, Asya Pasifik, Avustralya, Birleşik Krallık ve Japonya konumlarında sunulmaktadır.
+- Birleşik Krallık ve Japonya konumlarında **özel uygulama (eski)** uygulama şablonunu kullanamazsınız.
+- Cihaz yetenek modelleri aynı dosyada satır içi tanımlanmış tüm arabirimlere sahip olmalıdır.
+- [Iot Tak ve kullan](../../iot-pnp/overview-iot-plug-and-play.md) için destek önizleme aşamasındadır ve yalnızca seçili bölgelerde desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
