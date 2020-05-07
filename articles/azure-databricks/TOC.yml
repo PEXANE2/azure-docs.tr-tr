@@ -1010,6 +1010,8 @@
         - name: Güvenliğe genel bakış
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Erişim denetimi
           items:
             - name: Erişim denetimine genel bakış

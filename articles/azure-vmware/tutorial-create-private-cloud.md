@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMWare çözümünü (AVS) kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: f6dab0dd56adae8b98137354896412e447931c69
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740146"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838815"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Öğretici: Azure 'da AVS özel bulutu dağıtma
 
@@ -22,11 +22,21 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * AVS özel bulutu oluşturma
 > * Özel bulutun dağıtıldığını doğrulayın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Özel bir bulut oluşturmak için uygun yönetici hakları ve izinleri.
 - [Öğretici: ağ denetim listesi](tutorial-network-checklist.md)' nde açıklandığı şekilde yapılandırılmış uygun ağa sahip olduğunuzdan emin olun.
+
+## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
+
+Azure VMWare çözümünü kullanabilmeniz için öncelikle kaynak sağlayıcısını kaydetmeniz gerekir. Aşağıdaki örnek, aboneliğiniz ile kaynak sağlayıcısını kaydeder.
+
+```azurecli-interactive
+az provider register -n Microsoft.VMwareVirtustream --subscription <your subscription ID>
+```
+
+Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -38,7 +48,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal **+ Yeni kaynak oluştur**' u seçin. **Market** metin kutusuna yazın `vmcp`ve listeden **vmcp-özel bulut** ' u seçin. **Vmcp-özel bulut** penceresinde **Oluştur** ' u seçin.
+Azure portal **+ Yeni kaynak oluştur**' u seçin. **Market** metin kutusu yazın `Azure VMware Solution`ve listeden **Azure VMware çözümü** ' nü seçin. **Azure VMware Çözüm** penceresinde **Oluştur** ' u seçin.
 
 **Temel bilgiler** sekmesinde, alanlar için değerler girin. Aşağıdaki tabloda özelliklerin ayrıntılı bir listesi gösterilmektedir.
 
@@ -70,14 +80,6 @@ Alternatif olarak, Azure 'da bir AVS özel bulutu oluşturmak için Azure CLı '
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
 Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz https://shell.azure.com/bash adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
-
-#### <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
-
-Azure VMWare çözümünü kullanabilmeniz için öncelikle kaynak sağlayıcısını kaydetmeniz gerekir. Aşağıdaki örnek, aboneliğiniz ile kaynak sağlayıcısını kaydeder.
-
-```azurecli-interactive
-az extension add --name vmware
-```
 
 #### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 

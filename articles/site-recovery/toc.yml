@@ -11,6 +11,9 @@
   items:
     - name: Bir Azure VM’sini başka bölgeye çoğaltma
       href: azure-to-azure-quickstart.md
+    - name: Kasa oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: Öğreticiler
   items:
     - name: Azure'a Azure VM olağanüstü durum kurtarma
@@ -165,8 +168,6 @@
               href: azure-to-azure-about-networking.md
             - name: Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
               href: azure-to-azure-customize-networking.md
-            - name: Mobility hizmeti ara sunucu ayarlarını yapılandırma
-              href: configure-mobility-service-proxy-settings.md
             - name: Yük devretme sonrasında ağ eşlemesini ayarlama ve IP adreslerini koruma
               href: azure-to-azure-network-mapping.md
             - name: Yük devretme sonrasında IP adreslerini korumaya yönelik örnekler
@@ -191,6 +192,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Azure'a geçişten sonra Azure VM'leri için olağanüstü durumdan kurtarmayı ayarlama
               href: azure-to-azure-replicate-after-migration.md
+            - name: Bölgeden Bölgeye olağanüstü durum kurtarmayı etkinleştirme
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Yönetme
           items:
             - name: Azure VM'leri için Mobility Hizmeti'ni güncelleştirme
@@ -241,7 +244,7 @@
               href: vmware-azure-set-up-replication.md
             - name: Mobility hizmetini dağıtma
               items:
-                - name: Mobility hizmeti yüklemesi hakkında
+                - name: Mobility hizmetine genel bakış ve yükleme
                   href: vmware-physical-mobility-service-overview.md
                 - name: Göndererek yükleme için hazırlanma
                   href: vmware-azure-install-mobility-service.md

@@ -33,6 +33,8 @@
   items:
     - name: Azure güvenlik temellerine genel bakış
       href: security-baselines-overview.md
+    - name: API Management güvenlik temeli
+      href: ../../api-management/security-baseline.md
     - name: Redis için Azure Cache güvenlik temeli
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Yedekleme güvenlik temeli
@@ -45,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Veri Gezgini güvenlik temeli
       href: /azure/data-explorer/security-baseline
+    - name: Databricks güvenlik temeli
+      href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs güvenlik temeli
       href: ../../event-hubs/security-baseline.md
+    - name: İşlevler güvenlik temeli
+      href: ../../azure-functions/security-baseline.md
     - name: HDInsight güvenlik temeli
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault güvenlik temeli

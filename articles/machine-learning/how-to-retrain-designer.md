@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810368"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837167"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,13 +32,7 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
-* Tasarımcı tarafından erişilebilen bir veri kümesi. Bu, aşağıdakilerden biri olabilir:
-   * Azure Machine Learning kayıtlı bir veri kümesi
-    
-     **veya**
-   * Azure Machine Learning veri deposunda depolanan bir veri dosyası.
-   
-Tasarımcı kullanarak veri erişimi hakkında daha fazla bilgi için bkz. [verileri tasarımcıya aktarma](how-to-designer-import-data.md).
+* Bu nasıl yapılır serisinin 1. bölümünü, [tasarımcıda verileri dönüştürür](how-to-designer-transform-data.md).
 
 Bu makalede ayrıca, tasarımcıda işlem hatları oluşturmak için temel bilgiye sahip olduğunuz varsayılır. Kılavuzlu bir giriş için [öğreticiyi](tutorial-designer-automobile-price-train-score.md)izleyin. 
 

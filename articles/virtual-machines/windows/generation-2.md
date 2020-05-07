@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 07bf03096cbe5ec8e0fe9619519fdddb91cde984
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231671"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838833"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
@@ -38,6 +38,7 @@ ms.locfileid: "82231671"
 * [HB serisi](../hb-series.md)
 * [HC serisi](../hc-series.md)
 * [LS-Serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) ve [Lsv2 serisi](../lsv2-series.md)
+* [M serisi](../m-series.md)
 * [Mv2-serisi](../mv2-series.md)<sup>1</sup>
 * [NCv2-Series](../ncv2-series.md) ve [NCv3 serisi](../ncv3-series.md)
 * [ND serisi](../nd-series.md)
