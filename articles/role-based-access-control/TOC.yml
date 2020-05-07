@@ -1,9 +1,9 @@
-- name: Azure kaynakları için RBAC belgeleri
+- name: Azure RBAC belgeleri
   href: index.yml
   items: null
 - name: Genel Bakış
   items:
-    - name: RBAC nedir?
+    - name: Azure RBAC nedir?
       href: overview.md
     - name: Farklı rolleri anlama
       href: rbac-and-directory-admin-roles.md
@@ -74,7 +74,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Özel roller oluşturma
+    - name: Özel roller oluşturma veya güncelleştirme
       items:
         - name: Genel Bakış
           href: custom-roles.md
@@ -100,7 +100,7 @@
       href: built-in-roles.md
     - name: Kaynak sağlayıcısı işlemleri
       href: resource-provider-operations.md
-    - name: RBAC sınırları
+    - name: Azure RBAC sınırları
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources

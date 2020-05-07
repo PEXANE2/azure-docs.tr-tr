@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200529"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791162"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -50,6 +50,7 @@ CSP iş ortağındaki diğer abonelikleri başka bir Azure teklifine taşımak i
 
 1. Hedef Azure aboneliklerini oluşturun.
 1. Kaynak ve hedef aboneliklerin aynı Azure Active Directory (Azure AD) kiracısında olduğundan emin olun. Azure AD kiracısı değiştirme hakkında daha fazla bilgi için bkz. [Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Dizin değişikliğinin CSP aboneliği olmadığını aklınızda bulundurun. Örneğin CSP’den kullandıkça öde aboneliğine aktarıyorsunuz. Kullandıkça öde aboneliğinin dizinini, dizinle eşleşecek şekilde değiştirmelisiniz.
 
     > [!IMPORTANT]
     >  - Bir aboneliği farklı bir dizin ile ilişkilendirdiğinizde [RBAC](../../role-based-access-control/role-assignments-portal.md) ile atanmış rollere sahip olan kullanıcılar erişimlerini kaybeder. Hizmet Yöneticisi ve Ortak Yöneticiler dahil olmak üzere klasik abonelik yöneticileri de erişimi kaybeder.

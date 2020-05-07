@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416634"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857674"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
 
@@ -67,7 +67,7 @@ Azure Data Factory Kullanıcı arabirimini kullanarak şirket içinde barındır
 1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
 
 1. Aşağıdaki sayfada, kendinden konak IR oluşturmak için şirket içinde **barındırılan** ' i seçin ve ardından **devam**' ı seçin.
-   ![Kendini barındıran IR oluşturma](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
+   ![Kendini barındıran IR oluşturma](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. IR 'niz için bir ad girin ve **Oluştur**' u seçin.
 
@@ -109,22 +109,22 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 
 | Özellik                                                    | Açıklama                                                  | Gerekli |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **Registernewnode** "`<AuthenticationKey>`"                     | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü belirtilen kimlik doğrulama anahtarıyla kaydedin. | Hayır       |
-| **Registernewnode** "`<AuthenticationKey>`" "`<NodeName>`"      | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü belirtilen kimlik doğrulama anahtarı ve düğüm adıyla kaydedin. | Hayır       |
-| **Enableremoteaccess** "`<port>`" ["`<thumbprint>`"]            | Yüksek kullanılabilirlik kümesi ayarlamak için geçerli düğümde uzaktan erişimi etkinleştirin. Ya da Azure Data Factory aracılığıyla doğrudan şirket içinde barındırılan IR 'ye karşı kimlik bilgileri ayarlamayı etkinleştirin. İkinci olarak, aynı ağdaki bir uzak makineden **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 'ini kullanarak bunu yapabilirsiniz. | Hayır       |
-| **Enableremoteaccessıncontainer** "`<port>`" ["`<thumbprint>`"] | Düğüm bir kapsayıcıda çalıştırıldığında geçerli düğüme uzaktan erişimi etkinleştirin. | Hayır       |
-| **DisableRemoteAccess**                                         | Geçerli düğüme uzaktan erişimi devre dışı bırakın. Çok düğümlü kurulum için uzaktan erişim gerekir. **Yeni-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 'i, uzaktan erişim devre dışı bırakıldığında bile hala çalışıyor. Bu davranış, cmdlet 'in şirket içinde barındırılan IR düğümüyle aynı makinede yürütüldüğü sürece doğrudur. | Hayır       |
-| **Anahtar** "`<AuthenticationKey>`"                                 | Önceki kimlik doğrulama anahtarının üzerine yazın veya güncelleştirin. Bu eyleme dikkat edin. Anahtar yeni bir tümleştirme çalışma zamanı ise, önceki şirket içinde barındırılan IR düğümünüz çevrimdışı duruma geçebilir. | Hayır       |
-| **Generatebackupfile** "`<filePath>`" "`<password>`"            | Geçerli düğüm için bir yedek dosya oluşturun. Yedekleme dosyası, düğüm anahtarını ve veri deposu kimlik bilgilerini içerir. | Hayır       |
-| **Importbackupfile** "`<filePath>`" "`<password>`"              | Düğümü bir yedekleme dosyasından geri yükleyin.                          | Hayır       |
-| **Yeniden Başlatma**                                                     | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini yeniden başlatın.   | Hayır       |
-| **Başlangıç**                                                       | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini başlatın.     | Hayır       |
-| **Durdur**                                                        | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini durdurun.        | Hayır       |
-| **StartUpgradeService**                                         | Şirket içinde barındırılan tümleştirme çalışma zamanı yükseltme hizmetini başlatın.       | Hayır       |
-| **StopUpgradeService**                                          | Şirket içinde barındırılan tümleştirme çalışma zamanı yükseltme hizmetini durdurun.        | Hayır       |
-| **Turnonotomatik güncelleştirme**                                            | Şirket içinde barındırılan tümleştirme çalışma zamanı otomatik güncelleştirmesini açın.        | Hayır       |
-| **TurnOffAutoUpdate**                                           | Şirket içinde barındırılan tümleştirme çalışma zamanı otomatik güncelleştirmesini devre dışı bırakın.       | Hayır       |
-| **Switchserviceaccount** "`<domain\user>`" ["`<password>`"]           | DIAHostService ' i yeni bir hesap olarak çalışacak şekilde ayarlayın. Sistem hesapları ve sanal hesaplar için "" boş parolasını kullanın. | Hayır       |
+| **Registernewnode** "`<AuthenticationKey>`"                     | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü belirtilen kimlik doğrulama anahtarıyla kaydedin. | No       |
+| **Registernewnode** "`<AuthenticationKey>`" "`<NodeName>`"      | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünü belirtilen kimlik doğrulama anahtarı ve düğüm adıyla kaydedin. | No       |
+| **Enableremoteaccess** "`<port>`" ["`<thumbprint>`"]            | Yüksek kullanılabilirlik kümesi ayarlamak için geçerli düğümde uzaktan erişimi etkinleştirin. Ya da Azure Data Factory aracılığıyla doğrudan şirket içinde barındırılan IR 'ye karşı kimlik bilgileri ayarlamayı etkinleştirin. İkinci olarak, aynı ağdaki bir uzak makineden **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 'ini kullanarak bunu yapabilirsiniz. | No       |
+| **Enableremoteaccessıncontainer** "`<port>`" ["`<thumbprint>`"] | Düğüm bir kapsayıcıda çalıştırıldığında geçerli düğüme uzaktan erişimi etkinleştirin. | No       |
+| **DisableRemoteAccess**                                         | Geçerli düğüme uzaktan erişimi devre dışı bırakın. Çok düğümlü kurulum için uzaktan erişim gerekir. **Yeni-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 'i, uzaktan erişim devre dışı bırakıldığında bile hala çalışıyor. Bu davranış, cmdlet 'in şirket içinde barındırılan IR düğümüyle aynı makinede yürütüldüğü sürece doğrudur. | No       |
+| **Anahtar** "`<AuthenticationKey>`"                                 | Önceki kimlik doğrulama anahtarının üzerine yazın veya güncelleştirin. Bu eyleme dikkat edin. Anahtar yeni bir tümleştirme çalışma zamanı ise, önceki şirket içinde barındırılan IR düğümünüz çevrimdışı duruma geçebilir. | No       |
+| **Generatebackupfile** "`<filePath>`" "`<password>`"            | Geçerli düğüm için bir yedek dosya oluşturun. Yedekleme dosyası, düğüm anahtarını ve veri deposu kimlik bilgilerini içerir. | No       |
+| **Importbackupfile** "`<filePath>`" "`<password>`"              | Düğümü bir yedekleme dosyasından geri yükleyin.                          | No       |
+| **Yeniden Başlatma**                                                     | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini yeniden başlatın.   | No       |
+| **Başlangıç**                                                       | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini başlatın.     | No       |
+| **Durdur**                                                        | Şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini durdurun.        | No       |
+| **StartUpgradeService**                                         | Şirket içinde barındırılan tümleştirme çalışma zamanı yükseltme hizmetini başlatın.       | No       |
+| **StopUpgradeService**                                          | Şirket içinde barındırılan tümleştirme çalışma zamanı yükseltme hizmetini durdurun.        | No       |
+| **Turnonotomatik güncelleştirme**                                            | Şirket içinde barındırılan tümleştirme çalışma zamanı otomatik güncelleştirmesini açın.        | No       |
+| **TurnOffAutoUpdate**                                           | Şirket içinde barındırılan tümleştirme çalışma zamanı otomatik güncelleştirmesini devre dışı bırakın.       | No       |
+| **Switchserviceaccount** "`<domain\user>`" ["`<password>`"]           | DIAHostService ' i yeni bir hesap olarak çalışacak şekilde ayarlayın. Sistem hesapları ve sanal hesaplar için "" boş parolasını kullanın. | No       |
 
 
 ## <a name="command-flow-and-data-flow"></a>Komut akışı ve veri akışı

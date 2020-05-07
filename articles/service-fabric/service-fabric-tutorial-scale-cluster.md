@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure 'da ve ' de bir Service Fabric kümesinin ö
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251806"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788867"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure'daki bir Service Fabric kümesini ölçeklendirme
 
@@ -84,7 +84,7 @@ En son dağıtım için kaynak grubundan [bir şablon ve parametreler dosyası d
 
 Bu nedenle, *nt1InstanceCount* değerini güncelleştirerek ikinci düğüm türündeki düğümlerin sayısını değiştirirsiniz.  Bir düğüm türünü 100 ' dan fazla düğüme ölçeklendiremezsiniz.  Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır. Durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 
-İçinde ölçeklendirme yapıyorsanız, düğüm kaldırma [dayanıklılığı düzeyi][durability] olan düğüm türü, [Bu düğümlerin durumunu el ile kaldırmanız](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)gerekir.  Gümüş ve altın dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır.
+İçinde ölçeklendirme yapıyorsanız, düğüm kaldırma [dayanıklılığı düzeyi][durability] olan düğüm türü, [Bu düğümlerin durumunu el ile kaldırmanız](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)gerekir.  Gümüş ve altın dayanıklılık katmanı için, bu adımlar platform tarafından otomatik olarak yapılır.
 
 ### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
 *Template. JSON* ve *Parameters. JSON* dosyalarındaki değişiklikleri kaydedin.  Güncelleştirilmiş şablonu dağıtmak için aşağıdaki komutu çalıştırın:

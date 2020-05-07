@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72299664"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857889"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
 
 Bu makalede, Azure Data Lake Storage 2. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 2. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 2. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 2., her bir dosya boyutunu en fazla 5 TB kadar destekler ve performans için sabit limitlerin çoğu kaldırılmıştır. Ancak, Data Lake Storage 2. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Azure Data Lake Storage 2., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri sunmaktadır. Bu erişim denetimleri var olan dosyalara ve dizinlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya dizinlere otomatik olarak uygulanabilecek varsayılan izinleri oluşturmak için de kullanılabilir. Data Lake Storage 2. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 2. Içindeki erişim denetiminde](storage-data-lake-storage-access-control.md)bulunmaktadır.
 
@@ -49,7 +49,7 @@ Data Lake Storage 2. veya herhangi bir bulut hizmeti ile bir sistemi mimarmaya �
 
 ### <a name="high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
-Yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR) bazen birlikte birleştirilebilir, ancak özellikle de verilere geldiklerinde, her birinin biraz farklı bir stratejisi vardır. Data Lake Storage 2., yerelleştirilmiş donanım hatalarıyla karşı koruma kapsamında 3x çoğaltmasını zaten işliyor. Ayrıca, ZRS veya GZRS (Önizleme) gibi diğer çoğaltma seçenekleri, GRS & RA-GRS, DR 'yi iyileştirirken HA 'yi geliştirir. Bir HA planı oluştururken, hizmet kesintisi durumunda iş yükünün, ayrı olarak çoğaltılan bir örneğe yerel olarak veya yeni bir bölgede geçiş yaparak en son verilere en kısa sürede erişmesi gerekir.
+Yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR) bazen birlikte birleştirilebilir, ancak özellikle de verilere geldiklerinde, her birinin biraz farklı bir stratejisi vardır. Data Lake Storage 2., yerelleştirilmiş donanım hatalarıyla karşı koruma kapsamında 3x çoğaltmasını zaten işliyor. Ayrıca, ZRS veya GZRS gibi diğer çoğaltma seçenekleri de, GRS & RA-GRS, DR 'yi geliştirir. Bir HA planı oluştururken, hizmet kesintisi durumunda iş yükünün, ayrı olarak çoğaltılan bir örneğe yerel olarak veya yeni bir bölgede geçiş yaparak en son verilere en kısa sürede erişmesi gerekir.
 
 Bir DR stratejisinde, bir bölgenin çok önemli bir hatasının olası bir olayına hazırlanmak için, GRS veya RA-GRS çoğaltmasını kullanarak verilerin farklı bir bölgeye çoğaltılması da önemlidir. Ayrıca, geri dönebileceğiniz düzenli anlık görüntüler oluşturmak isteyebileceğiniz veri bozulması gibi kenar durumları için gereksinimlerinizi de göz önünde bulundurmanız gerekir. Verilerin önem ve boyutuna bağlı olarak, 1-, 6 ve 24 saatlik dönemlerin Delta anlık görüntülerini, risk toleransları uyarınca göz önünde bulundurun.
 

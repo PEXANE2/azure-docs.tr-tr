@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/2/2020
+ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80619157"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857301"
 ---
 # <a name="translator-text-api-v30"></a>Translator Metin Çevirisi API'si v 3.0
 
@@ -147,7 +147,7 @@ Bir kimlik doğrulama belirteci 10 dakika için geçerlidir. Çevirmen API 'Leri
 
 ## <a name="virtual-network-support"></a>Sanal Ağ desteği
 
-Translator hizmeti artık sınırlı bölgelerde`WestUS2`(, `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP`, `global`) sanal ağ özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Translator hizmeti artık sınırlı bölgelerde`WestUS2`(, `EastUS`, `SouthCentralUS`, `WestUS`, `CentralUSEUAP`, `global`) sanal ağ özellikleri ile kullanılabilir. Sanal ağı etkinleştirmek için lütfen bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Bu özelliği etkinleştirdikten sonra, Translator API 'sini çağırmak için özel uç noktasını kullanmanız gerekir. Küresel çevirmen uç noktasını ("api.cognitive.microsofttranslator.com") kullanamazsınız ve bir erişim belirteciyle kimlik doğrulaması yapılamaz.
 

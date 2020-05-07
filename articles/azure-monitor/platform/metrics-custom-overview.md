@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici 'de özel ölçümler
+title: Azure Izleyici 'de özel ölçümler (Önizleme)
 description: Azure Izleyici 'de özel ölçümler ve bunların nasıl modellendiği hakkında bilgi edinin.
 author: ancav
 ms.author: ancav
@@ -7,17 +7,20 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4286910c926cd6bd3b21acfd145e4e69548319ce
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204313"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837320"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Azure Izleyici 'de özel ölçümler
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Izleyici 'de özel ölçümler (Önizleme)
 
-Azure 'da kaynak ve uygulama dağıtırken, performans ve sistem durumu hakkında Öngörüler kazanmak için telemetri toplamaya başlamak isteyeceksiniz. Azure bazı ölçümleri sizin için kullanıma hazır hale getirir. Bu ölçümler [Standart veya platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)olarak adlandırılır. Ancak, bunlar doğası ile sınırlıdır. Daha derin Öngörüler sağlamak için bazı özel performans göstergeleri veya işletmeye özgü ölçümler toplamak isteyebilirsiniz.
-Bu **özel** ölçümler, uygulama Telemetriniz, Azure kaynaklarınızda çalışan bir aracı, hatta dışarıdan bir izleme sistemi ve doğrudan Azure izleyici 'ye gönderilebilir. Azure Izleyici 'de yayımlandıktan sonra, Azure tarafından oluşturulan standart ölçümleri kullanarak Azure kaynaklarınızın ve uygulamalarınızın özel ölçümlerine gözatabilir, bunları sorgulayabilir ve uyarı verebilirsiniz.
+Azure 'da kaynak ve uygulama dağıtırken, performans ve sistem durumu hakkında Öngörüler kazanmak için telemetri toplamaya başlamak isteyeceksiniz. Azure bazı ölçümleri sizin için kullanıma hazır hale getirir. Bu ölçümler [Standart veya platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)olarak adlandırılır. Ancak, bunlar doğası ile sınırlıdır. 
+
+Daha derin Öngörüler sağlamak için bazı özel performans göstergeleri veya işletmeye özgü ölçümler toplamak isteyebilirsiniz. Bu **özel** ölçümler, uygulama Telemetriniz, Azure kaynaklarınızda çalışan bir aracı, hatta dışarıdan bir izleme sistemi ve doğrudan Azure izleyici 'ye gönderilebilir. Azure Izleyici 'de yayımlandıktan sonra, Azure tarafından oluşturulan standart ölçümleri kullanarak Azure kaynaklarınızın ve uygulamalarınızın özel ölçümlerine gözatabilir, bunları sorgulayabilir ve uyarı verebilirsiniz.
+
+Azure Izleyici özel ölçümleri genel önizlemede geçerli. 
 
 ## <a name="methods-to-send-custom-metrics"></a>Özel ölçümleri gönderme yöntemleri
 
@@ -27,19 +30,15 @@ Bu **özel** ölçümler, uygulama Telemetriniz, Azure kaynaklarınızda çalı�
 - Azure Izleme çıkış eklentisini kullanarak Azure Linux sanal makinenize etkileyen bir Azure [Data telegraf Aracısı](collect-custom-metrics-linux-telegraf.md) 'nı yükleyip ölçümleri gönderin.
 - Özel ölçümleri [doğrudan Azure izleyici REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)gönderin `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-## <a name="pricing-model"></a>Fiyatlandırma modeli
+## <a name="pricing-model-and-rentention"></a>Fiyatlandırma modeli ve randevu
 
-Azure Izleyici ölçüm deposuna standart ölçümleri (Platform ölçümleri) alma maliyeti yoktur. Azure Izleyici ölçüm deposuna alınan özel ölçümler, her bir özel ölçüm DataPoint için, boyutu 8 bayt olarak kabul edilir. Alınan tüm ölçümler 90 gün boyunca tutulur.
+Özel ölçümler ve ölçüm sorguları için faturalandırma özelliğinin ne zaman etkinleştirileceğini hakkında ayrıntılı bilgi edinmek için [Azure izleyici fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/monitor/) kontrol edin. Özel ölçümler ve ölçüm sorguları dahil olmak üzere tüm ölçümler için belirli fiyat ayrıntıları bu sayfada bulunabilir. Özet olarak, Azure Izleyici ölçüm deposuna standart ölçümleri (Platform ölçümleri) alma maliyeti yoktur, ancak genel kullanılabilirliği girerken özel ölçümler ücret alınmaz. Ölçüm API 'SI sorguları ınpb maliyetlerine sahiptir.
 
-Ölçüm sorguları, Standart API çağrılarının sayısına göre ücretlendirilir. Standart bir API çağrısı, 1.440 veri noktasını çözümleyen bir çağrıdır (1.440 Ayrıca, günde ölçüm başına depolanabilecek toplam veri noktası sayısıdır). Bir API çağrısı 1.440 'den fazla veri noktası analiz ediyorsa, birden çok standart API çağrısı olarak sayılır. Bir API çağrısı 1.440 'den daha az veri noktası analiz ediyorsa, bu en az bir API çağrısı olarak sayılır. Standart API çağrılarının sayısı her gün, günde çözümlenen toplam veri noktası sayısı 1.440 tarafından bölünür.
-
-Özel ölçümler ve ölçüm sorguları için belirli fiyat ayrıntılarına [Azure Monitor fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/monitor/)ulaşılabilir.
+Özel ölçümler, [Platform ölçümleriyle aynı süre](data-platform-metrics.md#retention-of-metrics)boyunca tutulur. 
 
 > [!NOTE]  
-> Azure Izleyici 'ye Application Insights SDK aracılığıyla gönderilen ölçümler, alınan günlük verileri olarak faturalandırılır ve yalnızca [özel ölçüm boyutları](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) için Application Insights özelliği etkinleştir ' in etkin olduğu durumlarda ek ölçüm ücretlerine tabi olur. Bölgenizdeki [Application Insights fiyatlandırma modeli](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) ve [fiyatları](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.
+> Azure Izleyici 'ye Application Insights SDK aracılığıyla gönderilen ölçümler, alınan günlük verileri olarak faturalandırılır. Bunlar yalnızca [özel ölçüm boyutlarında Application Insights özelliği etkinleştir ' in](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) seçili olması halinde ek ölçüm ücretlerine uygulanır. Bu onay kutusu, daha karmaşık bir uyarı sağlamak için özel ölçüm API 'sini kullanarak Azure Izleyici ölçümleri veritabanına veri gönderir.  Bölgenizdeki [Application Insights fiyatlandırma modeli](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) ve [fiyatları](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.
 
-> [!NOTE]  
-> Özel ölçümler ve ölçüm sorguları için faturalandırma özelliğinin ne zaman etkinleştirileceğini hakkında ayrıntılı bilgi edinmek için [Azure izleyici fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/monitor/) kontrol edin. 
 
 ## <a name="how-to-send-custom-metrics"></a>Özel ölçümleri gönderme
 
@@ -75,7 +74,7 @@ Azure Izleyici 'ye gönderilen her veri noktasının bir zaman damgasıyla işar
 ### <a name="namespace"></a>Ad Alanı
 Ad alanları, benzer ölçümleri birlikte sınıflandırmanız veya gruplandırmanız için bir yoldur. Ad alanlarını kullanarak, farklı Öngörüler veya performans göstergeleri toplayabilecek ölçüm grupları arasında yalıtım elde edebilirsiniz. Örneğin, uygulamanızı profilini oluşturan bellek kullanım ölçümlerini izleyen **contosomemoryölçümler** adlı bir ad alanı olabilir. **Contosoapptransaction** adlı başka bir ad alanı, uygulamanızdaki Kullanıcı işlemleri hakkında tüm ölçümleri izleyebilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 **Ad** , bildirilen ölçümün adıdır. Genellikle, ne ölçülerin tanımlanmasına yardımcı olmak için ad açıklayıcı bir yoldur. Bir örnek, belirli bir VM 'de kullanılan bellek baytlarının sayısını ölçen bir ölçümdür. **Kullanılmakta olan bellek baytları**gibi bir ölçüm adı olabilir.
 
 ### <a name="dimension-keys"></a>Boyut anahtarları
@@ -231,7 +230,7 @@ Etkin bir zaman serisi, son 12 saat içinde yayımlanmış ölçüm değerleri o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Farklı hizmetlerden özel ölçümler kullanın: 
- - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Sanal makineler](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Sanal makine ölçek kümesi](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure sanal makineleri (klasik)](collect-custom-metrics-guestos-vm-classic.md)
  - [Telegraf aracısını kullanan Linux sanal makinesi](collect-custom-metrics-linux-telegraf.md)

@@ -87,6 +87,9 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: NoSQL ile ilişkisel veritabanlarının karşılaştırması
@@ -136,7 +139,7 @@
         - name: Kapsayıcı ve veritabanlarına aktarım hızı sağlama
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Sağlama aktarım hızı - otomatik ölçeklendirme modu
+        - name: Sağlama aktarım hızı - otomatik ölçeklendirme
           href: provision-throughput-autoscale.md
         - name: Otomatik ölçeklendirme hakkında SSS
           href: autoscale-faq.md
@@ -913,6 +916,8 @@
           href: how-to-manage-consistency.md
         - name: Çakışma çözme ilkelerini yapılandırma
           href: how-to-manage-conflicts.md
+        - name: Oturum belirteci biçimini dönüştürme
+          href: how-to-convert-session-token.md
     - name: Sağlanan aktarım hızı
       items:
         - name: Kapsayıcıda aktarım hızı sağlama
@@ -1051,22 +1056,26 @@
       items:
         - name: İzleyici Cosmos DB
           href: monitor-cosmos-db.md
-        - name: Sunucu tarafı gecikme süresini izleme
-          href: monitor-server-side-latency.md
-        - name: İstek birimi kullanımını izleme
-          href: monitor-request-unit-usage.md
-        - name: Tanılama günlükleriyle izleme
-          href: cosmosdb-monitor-resource-logs.md
-        - name: Kontrol düzlemi günlüklerini denetleme
-          href: audit-control-plane-logs.md
-        - name: Cosmos için Azure İzleyici (önizleme)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure izleyici ölçümlerini kullanma
+          items:
+            - name: Cosmos için Azure İzleyici (önizleme)
+              href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Sunucu tarafı gecikme süresini izleme
+              href: monitor-server-side-latency.md
+            - name: İstek birimi kullanımını izleme
+              href: monitor-request-unit-usage.md
+        - name: Azure izleyici günlüklerini kullanma
+          items:
+            - name: Tanılama günlükleriyle izleme
+              href: cosmosdb-monitor-resource-logs.md
+            - name: Kontrol düzlemi günlüklerini denetleme
+              href: audit-control-plane-logs.md
         - name: Cosmos DB hesabından ölçümleri görüntüleme
           href: use-metrics.md
-        - name: Logic Apps ile uygulama günlüğü kaydı
-          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: İzleme verileri başvurusu
           href: monitor-cosmos-db-reference.md
+        - name: Logic Apps ile uygulama günlüğü kaydı
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Yerel olarak geliştirme
       items:
         - name: Öykünücüyü kullanma

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 67b703f0079e26d01330d52d170f99699480fad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196393"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857006"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -90,7 +90,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 Diğer Azure işlem kaynaklarıyla aynı şekilde AmlCompute, bir veya daha fazla [Kota (veya limit) yapılandırmasıyla](how-to-manage-quotas.md#azure-machine-learning-compute)gelir. Bu kota, VM ailesine göre (örneğin, Dv2 serisi, NCv3 serisi) ve her abonelik için bölgeye göre değişir. Abonelikler, sizin için küçük varsayılanlar ile başlar, ancak aboneliğinizde kullanılacak Amlcompute kaynaklarının miktarını denetlemek için bu ayarı kullanın. 
 
-Ayrıca, bir abonelik içindeki her çalışma alanı için, [VM ailesine göre çalışma alanı düzeyi kotasını](/how-to-manage-quotas.md#workspace-level-quota)yapılandırın. Bu, her bir çalışma alanının potansiyel olarak olası ve belirli VM ailelerini kısıtlayabileceği maliyetler üzerinde daha ayrıntılı denetime sahip olmasını sağlar. 
+Ayrıca, bir abonelik içindeki her çalışma alanı için, [VM ailesine göre çalışma alanı düzeyi kotasını](how-to-manage-quotas.md#workspace-level-quota)yapılandırın. Bu, her bir çalışma alanının potansiyel olarak olası ve belirli VM ailelerini kısıtlayabileceği maliyetler üzerinde daha ayrıntılı denetime sahip olmasını sağlar. 
 
 Çalışma alanı düzeyinde kotalar ayarlamak için [Azure Portal](https://portal.azure.com)başlatın.  Aboneliğinizdeki herhangi bir çalışma alanını seçin ve sol bölmedeki **kullanımlar + kotalar** ' ı seçin. Sonra kotaları görüntülemek için **kotaları Yapılandır** sekmesini seçin. Birden çok çalışma alanını etkileyen bir ayar olduğundan, bu kotayı ayarlamak için abonelik kapsamında ayrıcalıklarınız olması gerekir.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313765"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594143"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -91,7 +91,7 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
 
 - Arka uçlarınızın IP adresini, Azure ön kapısından gelen trafiği ve yalnızca Azure 'un altyapı hizmetlerini kabul edecek şekilde yapılandırın. Arka ucunuzu hızlandırma için aşağıdaki IP ayrıntılarına bakın:
  
-    - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya Ayrıca, [ağ güvenlik gruplarında](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) veya [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/service-tags)Ile *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
+    - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya [ağ güvenlik gruplarında](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
     - Hizmet etiketinde kapsanan ön kapıdaki **IPv6** arka uç IP alanı, Azure IP aralıkları json dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız şu anda şu şekilde sınırlıdır`2a01:111:2050::/44`
     - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) : `168.63.129.16` ve`169.254.169.254`
 

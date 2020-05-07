@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4ef0420eab8064343b54f2c0bf15a692b8bc038c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382805"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780649"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -73,7 +73,10 @@ Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon sat�
 - [Yazılım planları](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Depolama](../../storage/blobs/storage-blob-reserved-capacity.md)
 - [SQL Veritabanı](../../sql-database/sql-database-reserved-capacity.md)
-- [SQL Veri Ambarı](prepay-sql-data-warehouse-charges.md)
+- [PostgreSQL için Azure Veritabanı](../../postgresql/concept-reserved-pricing.md)
+- [MySQL için Azure Veritabanı](../../mysql/concept-reserved-pricing.md)
+- [MariaDB için Azure Veritabanı](../../mariadb/concept-reserved-pricing.md)
+- [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
 - [Sanal makineler](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma

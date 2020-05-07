@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC için Azure yerleşik rolleri
-description: Bu makalede, Azure rol tabanlı erişim denetimi (RBAC) için Azure yerleşik rolleri açıklanmaktadır. Eylemler, NotActions, DataActions ve NotDataActions öğelerini listeler.
+title: Azure yerleşik rolleri-Azure RBAC
+description: Bu makalede, Azure rol tabanlı erişim denetimi (Azure RBAC) için Azure yerleşik rolleri açıklanmaktadır. Eylemler, NotActions, DataActions ve NotDataActions öğelerini listeler.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 78e5c219d83198f3bf4c329c33018caad2b0cc62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194933"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838748"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
-[Azure rol tabanlı erişim denetimi (RBAC)](overview.md) , kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Rol atamaları, Azure kaynaklarına erişimi denetlemenize olanak sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Rol atamaları, Azure kaynaklarına erişimi denetlemenize olanak sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
 
-Bu makalede, Azure kaynakları için her zaman gelişen yerleşik roller listelenmektedir. En son rolleri almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) veya [az role Definition List](/cli/azure/role/definition#az-role-definition-list)komutunu kullanın. Azure Active Directory (Azure AD) için yönetici rolleri arıyorsanız, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
+Bu makalede, her zaman gelişen Azure yerleşik rolleri listelenir. En son rolleri almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) veya [az role Definition List](/cli/azure/role/definition#az-role-definition-list)komutunu kullanın. Azure Active Directory (Azure AD) için yönetici rolleri arıyorsanız, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
 
 ## <a name="all"></a>Tümü
 
-Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. Her rolün `Actions`, `NotActions` `DataActions`, ve `NotDataActions` listesini görmek için rol adını seçin. Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını öğrenmek için bkz. [Azure kaynakları için rol tanımlarını anlama](role-definitions.md).
+Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz KIMLIĞI verilmiştir. Her rolün `Actions`, `NotActions` `DataActions`, ve `NotDataActions` listesini görmek için rol adını seçin. Bu eylemlerin ne anlama geldiğini ve bunların yönetim ve veri düzlemleri için nasıl uygulandığını hakkında bilgi için bkz. [Azure rol tanımlarını anlama](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
@@ -81,7 +81,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Depolama kuyruğu veri Iletisi gönderici](#storage-queue-data-message-sender) | Bir Azure depolama kuyruğuna ileti ekleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [Depolama kuyruğu veri okuyucusu](#storage-queue-data-reader) | Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli bir veri işlemi için hangi eylemlerin gerekli olduğunu öğrenmek için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4F77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Azure haritalar veri okuyucu (Önizleme)](#azure-maps-data-reader-preview) | Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure haritalar veri okuyucu](#azure-maps-data-reader) | Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Katkıda bulunan Arama Hizmeti](#search-service-contributor) | Arama hizmetlerini yönetmenize izin verir, ancak bunlara erişim izni vermez. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Web planı Katılımcısı](#web-plan-contributor) | Web siteleri için Web planlarını yönetmenizi sağlar, ancak bunlara erişemez. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Web sitesi Katılımcısı](#website-contributor) | Web sitelerini yönetmenizi sağlar, ancak bunlara erişemez. | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -147,10 +147,10 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Azure Sentinel okuyucusu](#azure-sentinel-reader) | Azure Sentinel okuyucusu | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel Yanıtlayıcısı](#azure-sentinel-responder) | Azure Sentinel Yanıtlayıcısı | 3e150937-b8fe-4CFB-8069-0eaf05ecd056 |
 > | [Katkıda bulunan Key Vault](#key-vault-contributor) | Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Güvenlik Yöneticisi](#security-admin) | Güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Güvenlik Yöneticisi](#security-admin) | Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Güvenlik değerlendirmesi Katılımcısı](#security-assessment-contributor) | Değerlendirmelere Güvenlik Merkezi 'ne gönderim olanağı sağlar | 612c2aa1-CB24-443B-ac28-3ab7272de6f5 |
 > | [Güvenlik Yöneticisi (eski)](#security-manager-legacy) | Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Güvenlik okuyucusu](#security-reader) | Önerileri ve uyarıları görüntüleyebilir, güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Güvenlik okuyucusu](#security-reader) | Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs kullanıcısı](#devtest-labs-user) | Azure DevTest Labs sanal makinelerinizi bağlamanıza, başlatmanıza, yeniden başlatmanıza ve kapatımanıza olanak sağlar. | 76283e04-6283-4c54-8F91-bcf1374a3c64 |
 > | [Laboratuvar Oluşturucu](#lab-creator) | Azure Laboratuvar hesaplarınız kapsamında yönetilen Laboratuvarlarınızı oluşturmanıza, yönetmenize ve silmenize olanak sağlar. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
@@ -2543,7 +2543,7 @@ Azure depolama kuyruklarını ve sıra iletilerini okuyun ve listeleyin. Belirli
 ## <a name="web"></a>Web
 
 
-### <a name="azure-maps-data-reader-preview"></a>Azure haritalar veri okuyucu (Önizleme)
+### <a name="azure-maps-data-reader"></a>Azure haritalar veri okuyucu
 
 Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
 
@@ -2555,7 +2555,7 @@ Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
-> | Microsoft. Maps/hesaplar/veri/okuma | Haritalar hesabına veri okuma erişimi verir. |
+> | Microsoft. Maps/hesaplar/*/Read |  |
 > | **NotDataActions** |  |
 > | *yok* |  |
 
@@ -2572,12 +2572,12 @@ Azure haritalar hesabından ilgili harita okuma verilerine erişim izni verir.
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Maps/accounts/data/read"
+        "Microsoft.Maps/accounts/*/read"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Maps Data Reader (Preview)",
+  "roleName": "Azure Maps Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5710,7 +5710,7 @@ Anahtar kasalarını yönetmenize izin verir, ancak bunlara erişim sağlamaz.
 
 ### <a name="security-admin"></a>Güvenlik Yöneticisi
 
-Güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, güvenlik ilkelerini düzenleyebilir, uyarıları ve önerileri görüntüleyebilir, uyarıları ve önerileri kapatabilir.
+Güvenlik Merkezi için izinleri görüntüleyin ve güncelleştirin. Güvenlik okuyucu rolüyle aynı izinler ve ayrıca güvenlik ilkesini güncelleştirebilir ve uyarıları ve önerileri kapatabilir.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5868,7 +5868,7 @@ Bu eski bir roldür. Lütfen bunun yerine Güvenlik Yöneticisi 'ni kullanın.
 
 ### <a name="security-reader"></a>Güvenlik okuyucusu
 
-Önerileri ve uyarıları görüntüleyebilir, güvenlik ilkelerini görüntüleyebilir, güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz.
+Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güvenlik ilkesini ve güvenlik durumlarını görüntüleyebilir, ancak değişiklik yapamaz.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6217,6 +6217,9 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
 > | Microsoft. Insights/scheduledqueryrules/* |  |
 > | Microsoft. Insights/webtests/* | Öngörüler Web testleri oluşturma ve yönetme |
 > | Microsoft. Insights/çalışma kitapları/* |  |
+> | Microsoft. Insights/privateLinkScopes/* |  |
+> | Microsoft. Insights/Privatelinkscopeoperationdurumlarının/* |  |
+> | Microsoft. Operationalınsights/çalışma alanları/yazma | Mevcut çalışma alanından müşteri kimliğini sağlayarak yeni bir çalışma alanı veya mevcut bir çalışma alanına bağlantılar oluşturur. |
 > | Microsoft. Operationalınsights/Workspaces/ıntelligencepacks/* | Log Analytics çözüm paketlerini okuma/yazma/silme. |
 > | Microsoft. Operationalınsights/çalışma alanları/Savedaramalar/* | Log Analytics kayıtlı aramalarını okuma/yazma/silme. |
 > | Microsoft. Operationalınsights/çalışma alanları/arama/eylem | Arama sorgusu yürütür |
@@ -6263,6 +6266,9 @@ Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıc
         "Microsoft.Insights/scheduledqueryrules/*",
         "Microsoft.Insights/webtests/*",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/privateLinkScopes/*",
+        "Microsoft.Insights/privateLinkScopeOperationStatuses/*",
+        "Microsoft.OperationalInsights/workspaces/write",
         "Microsoft.OperationalInsights/workspaces/intelligencepacks/*",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationalInsights/workspaces/search/action",

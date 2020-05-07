@@ -426,6 +426,8 @@
               href: faq-voice-assistants.md
     - name: Özel Anahtar Sözcük
       items:
+        - name: Özel anahtar sözcüğe genel bakış
+          href: custom-keyword-overview.md
         - name: Özel anahtar sözcük adlandırma yönergeleri
           href: speech-devices-sdk-kws-guidelines.md
         - name: Özel anahtar sözcük belirleme
@@ -519,6 +521,10 @@
           href: speech-devices-sdk-roobo-v1.md
         - name: Roobo v2 ayrıntıları
           href: speech-devices-sdk-roobo-v2.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Mikrofon Dizisini yapılandırma
+          href: how-to-devices-microphone-array-configuration.md
     - name: Hızlı Başlangıç
       items:
         - name: Konuşma cihazları SDK’sını kullanma

@@ -140,6 +140,8 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Kavramlar
   items:
+    - name: Görüntüler
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Bölgeler
@@ -524,19 +526,64 @@
         - name: REST ile kullanım ölçümleri alma
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Görüntüleri Kullanma
+      displayName: 'SIG, AMI, image'
       items:
-        - name: Paylaşılan görüntüler
+        - name: Görüntüleri oluşturma ve paylaşma
           items:
-            - name: Genel Bakış
-              href: shared-image-galleries.md
             - name: PowerShell
-              href: shared-images.md
-            - name: Portal
-              href: shared-images-portal.md
+              items:
+                - name: Galeri oluşturma
+                  href: ../shared-images-powershell.md
+                - name: Görüntü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../image-version-vm-powershell.md
+                    - name: Yönetilen görüntüden geçiş yapma
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-powershell.md
+                - name: VM oluşturma
+                  items:
+                    - name: Genelleştirilmiş
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../update-image-resources-powershell.md
             - name: CLI
-              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Paylaşım için uygulama kaydı
-              href: share-images-across-tenants.md
+              items:
+                - name: Galeri oluşturma
+                  href: ../linux/shared-images.md
+                - name: Görüntü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../image-version-vm-cli.md
+                    - name: Yönetilen görüntüden geçiş yapma
+                      href: ../image-version-managed-image-cli.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-cli.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-cli.md
+                - name: VM oluşturma
+                  items:
+                    - name: Genelleştirilmiş
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../update-image-resources-cli.md
+            - name: Portal
+              items:
+                - name: 'Galeri, görüntü ve sanal makine oluşturma'
+                  href: shared-images-portal.md
+            - name: Resource Manager Şablonları
+              items:
+                - name: Paylaşılan Görüntü Galerisi Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Görüntü Sürümünden Sanal Makine Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Paylaşılan görüntü sorunlarını giderme
               href: troubleshooting-shared-images.md
         - name: Görüntü oluşturucu (önizleme)

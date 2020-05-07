@@ -69,6 +69,8 @@
       href: powershell-samples.md
 - name: Kavramlar
   items:
+    - name: Görüntüler
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Bölgeler
@@ -457,17 +459,64 @@
         - name: Günlük uyarıları oluşturma
           href: ../../azure-monitor/platform/alerts-log.md
     - name: Görüntüleri Kullanma
+      displayName: 'SIG, AMI, image'
       items:
-        - name: Paylaşılan görüntü galerileri
+        - name: Paylaşılan Görüntü Galerileri
           items:
-            - name: Genel Bakış
-              href: shared-image-galleries.md
             - name: CLI
-              href: shared-images.md
+              items:
+                - name: Galeri oluşturma
+                  href: ../shared-images-cli.md
+                - name: Görüntü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../image-version-vm-cli.md
+                    - name: Yönetilen görüntüden geçiş yapma
+                      href: ../image-version-managed-image-cli.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-cli.md
+                - name: VM oluşturma
+                  items:
+                    - name: Genelleştirilmiş
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../update-image-resources-cli.md
+                - name: Paylaşım için uygulama kaydı
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Galeri oluşturma
+                  href: ../shared-images-powershell.md
+                - name: Görüntü sürümü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../image-version-vm-powershell.md
+                    - name: Yönetilen görüntüden geçiş yapma
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-powershell.md
+                - name: VM oluşturma
+                  items:
+                    - name: Genelleştirilmiş
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../update-image-resources-powershell.md
             - name: Portal
-              href: shared-images-portal.md
-            - name: Paylaşım için uygulama kaydı
-              href: share-images-across-tenants.md
+              items:
+                - name: 'Galeri, görüntü ve sanal makine oluşturma'
+                  href: shared-images-portal.md
+            - name: Resource Manager Şablonları
+              items:
+                - name: Paylaşılan Görüntü Galerisi Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Görüntü Sürümünden Sanal Makine Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Paylaşılan görüntü sorunlarını giderme
               href: troubleshooting-shared-images.md
         - name: Görüntü oluşturucu (önizleme)
@@ -544,9 +593,9 @@
         - name: Terraform
           items:
             - name: Yükleme ve yapılandırma
-              href: ../../terraform/terraform-install-configure.md
+              href: /azure/developer/terraform/install-configure
             - name: Tam VM oluşturma
-              href: ../../terraform/terraform-create-complete-vm.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: Cloud-init
           items:
             - name: Cloud-init genel bakış
@@ -564,14 +613,14 @@
             - name: Mevcut VM’yi cloud-init için hazırlama
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: /azure/developer/jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: Jenkins sunucusu oluşturma
-              href: /azure/developer/jenkins/configure-on-linux-vm.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: VM aracılarıyla ölçeklendirme
-              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: Yapıtları Depolama alanında yayımlama
-              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: Jenkins güvenliğini sağlama
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Kapsayıcıları çalıştırma
@@ -653,6 +702,8 @@
           href: disks-shared-enable.md
         - name: Diske VHD yükleme - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: GPT bölümüyle işletim sistemi diskini yeniden boyutlandırma
+          href: resize-os-disk-gpt-partition.md
         - name: Bir diski yeniden boyutlandırma
           href: expand-disks.md
         - name: Diskleri yönetmek için Depolama Gezgini kullanma
