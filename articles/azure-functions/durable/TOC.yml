@@ -83,6 +83,8 @@
       href: durable-functions-http-api.md
     - name: .NET API’si
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
+    - name: Node.js API’si
+      href: /javascript/api/durable-functions/?view=azure-node-latest
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme
@@ -135,7 +137,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
       href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'
-    - name: Ürün geri bildirimi sağlayın
+    - name: Ürün geri bildirimi sağlama
       href: 'https://feedback.azure.com/forums/355860-azure-functions'
     - name: Dayanıklı İşlevler GitHub deposu
       href: 'https://github.com/Azure/azure-functions-durable-extension'

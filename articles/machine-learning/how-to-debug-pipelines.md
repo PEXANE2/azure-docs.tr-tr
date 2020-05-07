@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257228"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594668"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında hata ayıklama ve sorun giderme (Önizleme)
 
-Bu bölümde, tasarımcıda işlem hatlarında sorun giderme hakkında genel bakış sunulmaktadır.
-Tasarımcıda oluşturulan işlem hatları için, yazma sayfasında ya da işlem hattı çalıştırma ayrıntısı sayfasında **günlük dosyalarını** bulabilirsiniz.
+Bu bölümde, tasarımcıda işlem hatlarında sorun giderme hakkında genel bakış sunulmaktadır. Tasarımcıda oluşturulan işlem hatları için, **70_driver_log** dosyasını yazma sayfasında veya işlem hattı çalıştırma ayrıntısı sayfasında bulabilirsiniz.
 
-### <a name="access-logs-from-the-authoring-page"></a>Yazma sayfasındaki günlüklere erişin
+### <a name="get-logs-from-the-authoring-page"></a>Yazma sayfasından günlükleri al
 
-Bir işlem hattı çalıştırması gönderdiğinizde ve yazma sayfasında kaladığınızda, her modül için oluşturulan günlük dosyalarını bulabilirsiniz.
+Bir işlem hattı çalıştırması gönderdiğinizde ve yazma sayfasında kaladığınızda, her modül çalışmayı bitirdiğinde her modül için oluşturulan günlük dosyalarını bulabilirsiniz.
 
-1. Yazma tuvalindeki herhangi bir modülü seçin.
+1. Yazma tuvalinde çalışmayı tamamlamış bir modül seçin.
 1. Modülün sağ bölmesinde, **çıktılar + Günlükler** sekmesine gidin.
-1. Günlük dosyasını `70_driver_log.txt`seçin.
+1. Sağ bölmeyi genişletin ve dosyayı tarayıcıda görüntülemek için **70_driver_log. txt** ' yi seçin. Günlükleri yerel olarak da indirebilirsiniz.
 
-    ![Yazma sayfası modül günlükleri](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Tasarımcıda genişletilmiş çıkış bölmesi](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>İşlem hattı çalıştırmalarından günlüklere erişim
+### <a name="get-logs-from-pipeline-runs"></a>İşlem hattı çalıştırmalarından günlükleri al
 
-Ayrıca, işlem **hatları** veya **denemeleri** bölümlerindeki işlem hattı çalışma ayrıntısı sayfasında belirli çalıştırmaların günlük dosyalarını bulabilirsiniz.
+Ayrıca, Studio 'nun işlem **hatları** veya **denemeleri** bölümünde bulunan işlem hattı çalışma ayrıntısı sayfasında belirli çalıştırmalar için günlük dosyalarını bulabilirsiniz.
 
 1. Tasarımcıda oluşturulan bir işlem hattı çalıştırması seçin.
-    ![İşlem hattı çalıştırma sayfası](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. Önizleme bölmesinde herhangi bir modül seçin.
+
+    ![İşlem hattı çalıştırma sayfası](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. Önizleme bölmesinde bir modül seçin.
 1. Modülün sağ bölmesinde, **çıktılar + Günlükler** sekmesine gidin.
-1. Günlük dosyasını `70_driver_log.txt`seçin.
+1. Sağ bölmeyi genişleterek **70_driver_log. txt** dosyasını tarayıcıda görüntüleyin veya günlükleri yerel olarak indirmek için dosyayı seçin.
+
+> [!IMPORTANT]
+> İşlem hattı çalıştırma ayrıntıları sayfasından bir işlem hattını güncelleştirmek için, işlem hattı çalıştırmasını yeni bir işlem hattı taslağında **kopyalamanız** gerekir. İşlem hattı çalıştırması, işlem hattının anlık görüntüsüdür. Bir günlük dosyasına benzer ve değiştirilemez. 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights hata ayıklama ve sorun giderme
 OpenCensus Python kitaplığını bu şekilde kullanma hakkında daha fazla bilgi için şu kılavuza bakın: [Application Insights Machine Learning işlem hatlarında hata ayıklama ve sorun giderme](how-to-debug-pipelines-application-insights.md)
