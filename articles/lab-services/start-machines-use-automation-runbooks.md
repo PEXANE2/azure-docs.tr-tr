@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166303"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580578"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Otomasyonu runbook 'larını kullanarak bir laboratuvarda sanal makine başlatma
 DevTest Labs 'in [autostart](devtest-lab-set-lab-policy.md#set-autostart) özelliği, VM 'leri belirli bir zamanda otomatik olarak başlayacak şekilde yapılandırmanıza olanak tanır. Ancak, bu özellik makineleri belirli bir sırada başlatılacak şekilde desteklemez. Bu tür bir Otomasyon yararlı olacağı birçok senaryo vardır.  Bir senaryo, diğer VM 'lere erişim noktası olarak, diğer VM 'lerden önce, bir laboratuar içindeki bir sıçrama kutusu VM 'sinin ilk başlatılmalıdır.  Bu makalede, bir betiği yürüten PowerShell runbook 'u ile bir Azure Otomasyonu hesabının nasıl ayarlanacağı gösterilmektedir. Betiği, betiği değiştirmek zorunda kalmadan başlangıç sırasını denetlemenize olanak tanımak için laboratuvardaki VM 'lerde Etiketler kullanır.
@@ -133,7 +133,7 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Zamanlama Oluştur
-Bu betiğin günlük olarak yürütülmesi için Otomasyon hesabında [bir zamanlama oluşturun](../automation/shared-resources/schedules.md#creating-a-schedule) . Zamanlama oluşturulduktan sonra [runbook 'a bağlayın](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Bu betiğin günlük olarak yürütülmesi için Otomasyon hesabında [bir zamanlama oluşturun](../automation/shared-resources/schedules.md#create-a-schedule) . Zamanlama oluşturulduktan sonra [runbook 'a bağlayın](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook). 
 
 Birden çok laboratuvarı olan birden çok aboneliğin olduğu büyük ölçekli bir durumda, parametre bilgilerini farklı laboratuvarlara yönelik bir dosyada depolayın ve tek tek parametreler yerine dosyayı betiğe geçirin. Betiğin değiştirilmesi gerekir, ancak çekirdek yürütme aynı olacaktır. Bu örnek, PowerShell betiğini yürütmek için Azure Otomasyonu 'nu kullanırken, bir yapı/yayın işlem hattında görev kullanma gibi başka seçenekler de vardır.
 

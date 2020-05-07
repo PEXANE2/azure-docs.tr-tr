@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087379"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580672"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
 
@@ -42,13 +42,13 @@ Milyarlarca olayı hızla araştırıp çözümleyin ve verilerinizdeki gizli e�
 
 Çoğu müşteri, öngörü kazanmak için gereken en kısa süreyi, Time Series Insights ' ın en az bir özellik olduğunu kabul etmiş olursunuz:
 
-* Time Series Insights ön veri hazırlığı gerektirmez. 
-* Bu, Azure IoT Hub veya Azure Event Hubs örneklerinde birkaç dakika içinde bağlantı kurmak için hızlı bir şekilde çalışmaktadır. 
+* Time Series Insights ön veri hazırlığı gerektirmez.
+* Bu, Azure IoT Hub veya Azure Event Hubs örneklerinde birkaç dakika içinde bağlantı kurmak için hızlı bir şekilde çalışmaktadır.
 * Bağlandıktan sonra, milyarlarca olayı görselleştirme ve analiz edebilir ve verilerinizdeki gizli eğilimleri keşfedebilirsiniz.
 
 Time Series Insights sezgisel ve kullanımı basittir. Tek bir kod satırı yazmadan verilerinizle etkileşim kurabilirsiniz. Ayrıca, öğrenmeniz gereken yeni bir dil yoktur, ancak Time Series Insights, SQL 'e tanıdık olan gelişmiş kullanıcılar için ayrıntılı metin tabanlı bir sorgulama dili sağlar. Ayrıca, novıces için seçme ve tıklama araştırması sağlar.
 
-Müşteriler, varlık ile ilgili sorunları hızlı bir şekilde tanılamaya yönelik hızdan yararlanabilir. Bir IoT çözümünde hatanın kök nedenine ulaşmak için DevOps analizini gerçekleştirebilir. Bunlar ayrıca, veri bilimi girişimlerinin bir parçası olarak daha fazla araştırma için bayrak eklenecek alanlara da tanımlayabilir. 
+Müşteriler, varlık ile ilgili sorunları hızlı bir şekilde tanılamaya yönelik hızdan yararlanabilir. Bir IoT çözümünde hatanın kök nedenine ulaşmak için DevOps analizini gerçekleştirebilir. Bunlar ayrıca, veri bilimi girişimlerinin bir parçası olarak daha fazla araştırma için bayrak eklenecek alanlara da tanımlayabilir.
 
 Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel yol vardır:
 

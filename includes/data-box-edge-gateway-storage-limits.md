@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 94fe099984fae77c65658d7085a8540ff4f2448b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51fde73565c9c4cdb21e998b8d43d303ceef062e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67188827"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561373"
 ---
-Bu bölümde, Azure depolama hizmeti sınırları ve Azure dosyaları, Azure blok Blobları ve Azure sayfa Blobları için gerekli adlandırma kuralları Data Box Gateway/Data Box Edge hizmetine uygun olarak açıklanmaktadır. Depolama sınırlarını dikkatlice gözden geçirin ve tüm önerileri izleyin.
+Bu bölümde, Azure Stack Edge/Data Box Gateway hizmetine uygun olarak Azure Storage hizmeti için sınırlamalar ve Azure dosyaları, Azure blok Blobları ve Azure sayfa Blobları için gerekli adlandırma kuralları açıklanmaktadır. Depolama sınırlarını dikkatlice gözden geçirin ve tüm önerileri izleyin.
 
 Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcılar ve dosyaları için en iyi uygulamalar hakkında en son bilgiler için şuraya gidin:
 
@@ -20,4 +20,4 @@ Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcıl
 - [Blok Blobları ve Sayfa Blobu kuralları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Azure depolama hizmeti sınırlarını aşan veya Azure dosyaları/blob adlandırma kurallarına uymayan herhangi bir dosya veya dizin varsa, bu dosya veya dizinlerin Data Box Gateway/Data Box Edge hizmeti aracılığıyla Azure Storage 'a alınmaz.
+> Azure depolama hizmeti sınırlarını aşan veya Azure dosyaları/blob adlandırma kurallarına uymayan herhangi bir dosya veya dizin varsa, bu dosya veya dizinlerin Azure Stack Edge/Data Box Gateway hizmeti aracılığıyla Azure depolama 'ya alınmaz.

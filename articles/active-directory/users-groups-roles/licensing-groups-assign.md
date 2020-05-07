@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253071"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582717"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama
 
 Bu makalede, bir kullanıcı grubuna ürün lisansları atama ve Azure Active Directory (Azure AD) ' de doğru lisanslandığının doğrulanması anlatılmaktadır.
 
-Bu örnekte, kiracı **HR departmanı**adlı bir güvenlik grubu içerir. Bu grup, insan kaynakları bölümünün tüm üyelerini içerir (1.000 kullanıcının etrafında). Office 365 Kurumsal E3 lisanslarını tüm departmana atamak istiyorsunuz. Departman kullanmaya başlamaya hazırlanana kadar ürüne dahil olan Yammer Enterprise hizmeti geçici olarak devre dışı bırakılmalıdır. Ayrıca, Enterprise Mobility + Security lisanslarını aynı kullanıcı grubuna dağıtmak istersiniz.
+Bu örnekte, Azure AD organizasyonu, **HR departmanı**adlı bir güvenlik grubu içerir. Bu grup, insan kaynakları bölümünün tüm üyelerini içerir (1.000 kullanıcının etrafında). Office 365 Kurumsal E3 lisanslarını tüm departmana atamak istiyorsunuz. Departman kullanmaya başlamaya hazırlanana kadar ürüne dahil olan Yammer Enterprise hizmeti geçici olarak devre dışı bırakılmalıdır. Ayrıca, Enterprise Mobility + Security lisanslarını aynı kullanıcı grubuna dağıtmak istersiniz.
 
 > [!NOTE]
 > Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için önce yönetici kullanıcı üzerinde kullanım konumu özelliğini belirtmelidir.
@@ -37,7 +37,7 @@ Bu örnekte, kiracı **HR departmanı**adlı bir güvenlik grubu içerir. Bu gru
 
 1. [**Azure AD Yönetim merkezinde**](https://aad.portal.azure.com) bir lisans yönetici hesabıyla oturum açın. Lisansları yönetmek için hesabın Lisans Yöneticisi, Kullanıcı Yöneticisi veya genel yönetici olması gerekir.
 
-1. Kiracıdaki tüm lisanslanabilir ürünleri görebileceğiniz ve yönetebileceğiniz bir sayfa açmak için **lisanslar** ' ı seçin.
+1. Kuruluştaki tüm lisanslanabilir ürünleri görebileceğiniz ve yönetebileceğiniz bir sayfa açmak için **lisanslar** ' ı seçin.
 
 1. **Tüm ürünler**altında, ürün adlarını seçerek hem Office 365 Kurumsal E5 hem de Enterprise Mobility + Security E3 ' nı seçin. Atamayı başlatmak için sayfanın en üstünde bulunan **ata** ' yı seçin.
 

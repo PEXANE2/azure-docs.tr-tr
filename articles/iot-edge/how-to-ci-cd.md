@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131406"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561037"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge için sürekli tümleştirme ve sürekli dağıtım
 
@@ -100,6 +100,13 @@ Bu bölümde, yeni bir yapı işlem hattı oluşturacaksınız. Örnek IoT Edge 
    * **Varsayılan platform**: hedef IoT Edge cihazınıza göre modülleriniz için uygun platformu seçin.
    * **Çıkış değişkenleri**: çıkış değişkenleri, Deployment. JSON dosyanızın üretilebileceği dosya yolunu yapılandırmak için kullanabileceğiniz bir başvuru adı içerir. Başvuru adını **kenar**benzeri bir şeye ayarlayın.
 
+
+   Bu yapılandırmalarda, modül görüntüsünü adlandırmak ve etiketlemek için `module.json` dosyada tanımlanan görüntü deposu ve etiketi kullanılır. **Derleme modülü görüntüleri** , değişkenlerin `module.json` dosyada tanımladığınız tam değerle değiştirilmesini de sağlar. Visual Studio veya Visual Studio Code içinde, gerçek değeri bir `.env` dosyada belirtmektir. Azure Pipelines, işlem **hattı değişkenleri** sekmesinde değeri ayarlarsınız. **değişkenler** sekmesini seçin ve ad ve değeri aşağıdaki şekilde yapılandırın:
+
+    * **ACR_ADDRESS**: Azure Container Registry adresiniz. 
+
+    Projenizde başka değişkenlere sahipseniz, bu sekmede adı ve değeri belirtebilirsiniz. **derleme modülü görüntüleri** yalnızca `${VARIABLE}` biçimdeki değişkenleri tanır. `**/module.json` Dosyalarınızda bu biçimi kullandığınızdan emin olun.
+    
 7. Düzenlemek için ikinci **Azure IoT Edge** görevi seçin. Bu görev, tüm modül görüntülerini seçtiğiniz kapsayıcı kayıt defterine iter.
 
    * **Görünen ad**: eylem alanı değiştiğinde görünen ad otomatik olarak güncelleştirilir.
