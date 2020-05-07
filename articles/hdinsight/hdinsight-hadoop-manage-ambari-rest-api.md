@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/29/2020
+ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381391"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559951"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache ambarı 'nı kullanarak HDInsight kümelerini yönetme REST API
 
@@ -23,7 +23,7 @@ Apache ambarı REST API kullanarak Azure HDInsight 'ta Apache Hadoop kümelerini
 
 ## <a name="what-is-apache-ambari"></a>Apache ambarı nedir?
 
-[Apache ambarı](https://ambari.apache.org) , [REST API 'leri](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)tarafından desteklenen kullanımı kolay bir Web Kullanıcı arabirimi sağlayarak Hadoop kümelerinin yönetimini ve izlenmesini basitleştirir.  Ambarı, Linux tabanlı HDInsight kümeleri ile varsayılan olarak sağlanır.
+Apache ambarı, [REST API 'leri](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)tarafından desteklenen kullanımı kolay bir Web Kullanıcı arabirimi sağlayarak Hadoop kümelerinin yönetimini ve izlenmesini basitleştirir.  Ambarı, Linux tabanlı HDInsight kümeleri ile varsayılan olarak sağlanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,7 +33,7 @@ Apache ambarı REST API kullanarak Azure HDInsight 'ta Apache Hadoop kümelerini
 
 * bir komut satırı JSON işlemcisi olan JQ.  Bkz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)..
 
-* Windows PowerShell.  Ya da [Bash](https://www.gnu.org/software/bash/)'i de kullanabilirsiniz.
+* Windows PowerShell.  Ya da Bash 'i de kullanabilirsiniz.
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambarı REST API 'SI için temel Tekdüzen Kaynak tanımlayıcısı
 
