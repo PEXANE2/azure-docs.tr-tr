@@ -1,19 +1,19 @@
 ---
 title: Azure 'da ölçek kümesi oluşturmak için paylaşılan VM görüntülerini kullanma
 description: Azure 'da sanal makine ölçek kümelerini dağıtmak için kullanılacak paylaşılan VM görüntülerini oluşturmak üzere Azure PowerShell nasıl kullanacağınızı öğrenin.
-author: axayjo
-tags: azure-resource-manager
+author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.openlocfilehash: 5f4eca88614a98f0caf87d04847029328042edd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.subservice: imaging
+ms.topic: how-to
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368725"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792794"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Azure PowerShell ile sanal makine ölçek kümeleri için paylaşılan görüntüler oluşturun ve kullanın
 
@@ -23,18 +23,11 @@ Paylaşılan görüntü Galerisi, özel VM görüntülerinizi kuruluşunuzdaki d
 
 Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan en üst düzey bir kaynaktır. Görüntülerin sürümü oluşturulabilir ve her görüntü sürümünü farklı bir Azure bölgesi kümesine çoğaltmayı tercih edebilirsiniz. Galeri yalnızca yönetilen görüntülerle birlikte kullanılabilir. 
 
-Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. Bunları bu makalede kullanacağız veya oluşturacağız:
+Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. 
 
-| Kaynak | Açıklama|
-|----------|------------|
-| **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntüdür. Yönetilen görüntüler Genelleştirilmiş VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
-| **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
-| **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü dahili olarak kullanmaya yönelik gereksinimler hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, sürüm notları ve en düşük ve en yüksek bellek gereksinimleri olduğunu içerir. Bu, bir görüntü türünün tanımıdır. |
-| **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -47,114 +40,7 @@ Makale üzerinden çalışırken, kaynak grubu ve VM adlarını gerektiği yerde
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
-## <a name="create-a-scale-set-from-the-shared-image-version"></a>Paylaşılan görüntü sürümünden bir ölçek kümesi oluşturma
 
-[New-AzVmss](/powershell/module/az.compute/new-azvmss)ile bir sanal makine ölçek kümesi oluşturun. Aşağıdaki örnek, *Orta Güney ABD* veri merkezindeki yeni görüntü sürümünden bir ölçek kümesi oluşturur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi yönetici kimlik bilgilerinizi ayarlayın:
-
-
-```azurepowershell-interactive
-# Define variables
-$resourceGroupName = "myVMSSRG"
-$scaleSetName = "myScaleSet"
-$location = "South Central US"
-$cred = Get-Credential
-
-# Create a resource group
-New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
-
-# Create a netowrking pieces
-$subnet = New-AzVirtualNetworkSubnetConfig `
-  -Name "mySubnet" `
-  -AddressPrefix 10.0.0.0/24
-$vnet = New-AzVirtualNetwork `
-  -ResourceGroupName $resourceGroupName `
-  -Name "myVnet" `
-  -Location $location `
-  -AddressPrefix 10.0.0.0/16 `
-  -Subnet $subnet
-$publicIP = New-AzPublicIpAddress `
-  -ResourceGroupName $resourceGroupName `
-  -Location $location `
-  -AllocationMethod Static `
-  -Name "myPublicIP"
-$frontendIP = New-AzLoadBalancerFrontendIpConfig `
-  -Name "myFrontEndPool" `
-  -PublicIpAddress $publicIP
-$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
-$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
-  -Name "myRDPRule" `
-  -FrontendIpConfigurationId $frontendIP.Id `
-  -Protocol TCP `
-  -FrontendPortRangeStart 50001 `
-  -FrontendPortRangeEnd 50010 `
-  -BackendPort 3389
-# Create the load balancer and health probe
-$lb = New-AzLoadBalancer `
-  -ResourceGroupName $resourceGroupName `
-  -Name "myLoadBalancer" `
-  -Location $location `
-  -FrontendIpConfiguration $frontendIP `
-  -BackendAddressPool $backendPool `
-  -InboundNatPool $inboundNATPool
-Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
-  -LoadBalancer $lb `
-  -Protocol TCP `
-  -Port 80 `
-  -IntervalInSeconds 15 `
-  -ProbeCount 2
-Add-AzLoadBalancerRuleConfig `
-  -Name "myLoadBalancerRule" `
-  -LoadBalancer $lb `
-  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
-  -BackendAddressPool $lb.BackendAddressPools[0] `
-  -Protocol TCP `
-  -FrontendPort 80 `
-  -BackendPort 80 `
-  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
-Set-AzLoadBalancer -LoadBalancer $lb
-
-# Create IP address configurations
-$ipConfig = New-AzVmssIpConfig `
-  -Name "myIPConfig" `
-  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
-  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
-  -SubnetId $vnet.Subnets[0].Id
-
-# Create a configuration 
-$vmssConfig = New-AzVmssConfig `
-    -Location $location `
-    -SkuCapacity 2 `
-    -SkuName "Standard_DS2" `
-    -UpgradePolicyMode "Automatic"
-
-# Reference the image version
-Set-AzVmssStorageProfile $vmssConfig `
-  -OsDiskCreateOption "FromImage" `
-  -ImageReferenceId $imageVersion.Id
-
-# Complete the configuration
-Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername $cred.UserName `
-  -AdminPassword $cred.Password `
-  -ComputerNamePrefix "myVM"
-Add-AzVmssNetworkInterfaceConfiguration `
-  -VirtualMachineScaleSet $vmssConfig `
-  -Name "network-config" `
-  -Primary $true `
-  -IPConfiguration $ipConfig
-
-# Create the scale set 
-New-AzVmss `
-  -ResourceGroupName $resourceGroupName `
-  -Name $scaleSetName `
-  -VirtualMachineScaleSet $vmssConfig
-```
-
-Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer.
-
-[!INCLUDE [virtual-machines-common-gallery-list-ps](../../includes/virtual-machines-common-gallery-list-ps.md)]
-
-[!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

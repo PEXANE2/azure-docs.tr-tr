@@ -1,23 +1,17 @@
 ---
-title: Azure şablonlarını kullanarak HDInsight oluşturma Azure Data Lake Storage 1. | Microsoft Docs
-description: Azure Resource Manager şablonlarını kullanarak HDInsight kümelerini Azure Data Lake Storage 1. ile oluşturun ve kullanın
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: Şablon-Data Lake Storage 1. ile HDInsight kümesi
+description: Azure Resource Manager şablonları kullanarak Azure HDInsight kümelerini Azure Data Lake Storage 1. ile oluşturun ve kullanın.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66161381"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692041"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Data Lake Storage 1. bir HDInsight kümesi oluşturma
 > [!div class="op_single_selector"]
@@ -30,7 +24,7 @@ ms.locfileid: "66161381"
 
 **Ek depolama alanı olarak**Azure Data Lake Storage 1. Ile bir HDInsight kümesini yapılandırmak için Azure PowerShell nasıl kullanacağınızı öğrenin.
 
-Desteklenen küme türleri için Data Lake Storage 1. varsayılan depolama veya ek depolama hesabı olarak kullanılabilir. Data Lake Storage 1. ek depolama alanı olarak kullanıldığında, kümeler için varsayılan depolama hesabı yine de Azure Storage blob 'Ları (işb) olmaya devam eder ve küme ile ilgili dosyalar (örneğin Günlükler vb.) varsayılan depolama alanına yazılır, ancak işlemek istediğiniz veriler bir Data Lake Storage 1. hesabında depolanabilir. Ek depolama hesabı olarak Data Lake Storage 1. kullanmak, performansı veya kümeden depolama alanını okuma/yazma özelliğini etkilemez.
+Desteklenen küme türleri için Data Lake Storage 1. varsayılan depolama alanı veya ek depolama hesabı olarak kullanılabilir. Data Lake Storage 1. ek depolama alanı olarak kullanıldığında, kümeler için varsayılan depolama hesabı yine de Azure Storage blob 'Ları (işb) olmaya devam eder ve küme ile ilgili dosyalar (örneğin Günlükler vb.) varsayılan depolama alanına yazılır, ancak işlemek istediğiniz veriler bir Data Lake Storage 1. hesabında depolanabilir. Ek depolama hesabı olarak Data Lake Storage 1. kullanmak, performansı veya kümeden depolama alanını okuma/yazma özelliğini etkilemez.
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>HDInsight küme depolaması için Data Lake Storage 1. kullanma
 
@@ -40,7 +34,7 @@ HDInsight 'ı Data Lake Storage 1. ile kullanmayla ilgili bazı önemli noktalar
 
 * HDInsight sürümleri 3,2, 3,4, 3,5 ve 3,6 sürümleri için ek depolama alanı olarak Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma seçeneği.
 
-Bu makalede, ek depolama alanı olarak Data Lake Storage 1. bir Hadoop kümesi sunuyoruz. Data Lake Storage 1. varsayılan depolama alanı olarak bir Hadoop kümesi oluşturma hakkında yönergeler için bkz. [Azure portalını kullanarak Data Lake Storage 1. Ile HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md).
+Bu makalede, ek depolama alanı olarak Data Lake Storage 1. bir Hadoop kümesi sunuyoruz. Data Lake Storage 1. varsayılan depolama alanı olarak bir Hadoop kümesi oluşturma hakkında yönergeler için, bkz. [Azure Portal kullanarak Data Lake Storage 1. bir HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -48,7 +42,7 @@ Bu makalede, ek depolama alanı olarak Data Lake Storage 1. bir Hadoop kümesi s
 
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 veya üstü**. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
 * **Hizmet sorumlusu Azure Active Directory**. Bu öğreticideki adımlarda, Azure AD 'de hizmet sorumlusu oluşturma hakkında yönergeler sağlanmaktadır. Ancak, bir hizmet sorumlusu oluşturabilmeniz için bir Azure AD yöneticisi olmanız gerekir. Bir Azure AD yöneticisiyseniz, bu önkoşulu atlayıp öğreticiye devam edebilirsiniz.
 
@@ -88,7 +82,7 @@ Karşıya yüklediğiniz örnek verilerin HDInsight kümesinden erişilebilir ol
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage 1. kullanmak için HDInsight kümesinde test işleri çalıştırın
 Bir HDInsight kümesini yapılandırdıktan sonra, HDInsight kümesinin Data Lake Storage 1. erişebileceğini sınamak için test işlerini kümede çalıştırabilirsiniz. Bunu yapmak için, daha önce Data Lake Storage 1. hesabınıza yüklediğiniz örnek verileri kullanarak tablo oluşturan örnek bir Hive işi çalıştıracağız.
 
-Bu bölümde, bir HDInsight Linux kümesine SSH oluşturacak ve örnek Hive sorgusunu çalıştıracaksınız. Bir Windows istemcisi kullanıyorsanız, ' den [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)Indirilebilen **Putty**kullanmanız önerilir.
+Bu bölümde, bir HDInsight Linux kümesine SSH oluşturup örnek Hive sorgusunu çalıştırırsınız. Bir Windows istemcisi kullanıyorsanız, ' den [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)Indirilebilen **Putty**kullanmanız önerilir.
 
 PuTTY kullanma hakkında daha fazla bilgi için bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -124,7 +118,7 @@ PuTTY kullanma hakkında daha fazla bilgi için bkz. [Windows 'Da HDInsight 'Ta 
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Data Lake Storage 1., bu komutları kullanarak erişim
 HDInsight kümesini Data Lake Storage 1. kullanacak şekilde yapılandırdıktan sonra, mağazaya erişmek için,
 
-Bu bölümde, bir HDInsight Linux kümesi ile SSH oluşturacak ve bu işlem için bu komutu çalıştıracaksınız. Bir Windows istemcisi kullanıyorsanız, ' den [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)Indirilebilen **Putty**kullanmanız önerilir.
+Bu bölümde, bir HDInsight Linux kümesine SSH oluşturup, bu komutu çalıştırın. Bir Windows istemcisi kullanıyorsanız, ' den [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)Indirilebilen **Putty**kullanmanız önerilir.
 
 PuTTY kullanma hakkında daha fazla bilgi için bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

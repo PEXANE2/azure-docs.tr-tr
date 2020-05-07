@@ -23,10 +23,10 @@
       items:
         - name: Azure NetApp Files için performansla ilgili önemli noktalar
           href: azure-netapp-files-performance-considerations.md
-        - name: Azure NetApp Files için performans kıyaslamaları test sonuçları
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Azure NetApp Files için performans kıyaslamaları test önerileri
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Linux için performans karşılaştırmaları
+          href: performance-benchmarks-linux.md
         - name: SMB performansı hakkında SSS
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files için maliyet modeli
@@ -37,10 +37,12 @@
       items:
         - name: Azure NetApp Files kullanan çözüm mimarileri
           href: azure-netapp-files-solution-architectures.md
-        - name: Oracle Database ile Azure NetApp Files kullanmanın avantajları
-          href: solutions-benefits-azure-netapp-files-oracle-database.md
-        - name: Elektronik tasarım otomasyonu için Azure NetApp Files kullanmanın avantajları
-          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+        - name: Belirli çözümler
+          items:
+            - name: Oracle Database ile Azure NetApp Files kullanmanın avantajları
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: Elektronik tasarım otomasyonu için Azure NetApp Files kullanmanın avantajları
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: Azure NetApp Files hakkında SSS
       href: azure-netapp-files-faqs.md
 - name: Nasıl yapılır kılavuzları

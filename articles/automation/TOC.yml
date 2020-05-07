@@ -162,7 +162,7 @@
               href: troubleshoot/desired-state-configuration.md
             - name: Azure DSC uzantısı sürüm geçmişi
               href: automation-dsc-extension-history.md
-        - name: Değişiklik İzleme ve Stok
+        - name: Değişiklik izleme ve envanter
           items:
             - name: Genel Bakış
               href: change-tracking.md
@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: Otomasyon runbook’undan
                   href: automation-onboard-solutions.md
-            - name: İzlenen dosyaların içeriklerini görüntüleme
+            - name: Değişiklik izlemeyi ve envanteri yönetme
               href: change-tracking-file-contents.md
             - name: VM’lerden stok koleksiyonunu yönetme
               href: automation-vm-inventory.md
@@ -230,7 +230,7 @@
           href: updatemgmt-mecmintegration.md
         - name: Windows Update istemcisini yapılandırma
           href: automation-configure-windows-update.md
-        - name: Dinamik grupları kullanma
+        - name: Dinamik gruplar kullanma
           href: automation-update-management-groups.md
         - name: Güncelleştirme Yönetimi günlüklerini sorgulama
           href: automation-update-management-query-logs.md

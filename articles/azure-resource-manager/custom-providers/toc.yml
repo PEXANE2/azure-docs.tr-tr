@@ -21,6 +21,11 @@
       href: tutorial-custom-providers-create.md
     - name: Kaynakları genişletme
       href: tutorial-resource-onboarding.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: İlişkilendirmeler için Azure İlkesi
