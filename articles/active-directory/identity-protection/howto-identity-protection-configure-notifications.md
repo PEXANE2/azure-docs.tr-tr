@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120119"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853145"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Kimlik Koruması bildirimleri
 
@@ -50,12 +50,11 @@ Risk altındaki **Azure Portal** Kullanıcı e-postalarını **Azure Active Dire
 Haftalık Özet e-postası yeni risk algılamaları özetini içerir.  
 Şunları içerir:
 
-- Risk altındaki kullanıcılar
-- Şüpheli etkinlikler
-- Algılanan güvenlik açıkları
+- Yeni riskli kullanıcılar algılandı
+- Yeni riskli oturum açma işlemleri algılandı (gerçek zamanlı)
 - Kimlik koruması 'nda ilgili raporların bağlantıları
 
-![Haftalık Özet e-postası](./media/howto-identity-protection-configure-notifications/400.png)
+![Haftalık Özet e-postası](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 Varsayılan olarak, alıcılar tüm genel yöneticileri içerir. Genel Yöneticiler, diğer genel Yöneticiler, güvenlik yöneticileri, güvenlik okuyucularını da alıcı olarak ekleyebilir.
 

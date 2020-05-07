@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727118"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857413"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Azure Media Player için eklenti yazma #
 
@@ -87,7 +87,7 @@ Bir eklenti oluşturmaya yönelik daha fazla örnek için [galerimize](azure-med
 
 ### <a name="plugin-gallery"></a>Eklenti Galerisi ###
 
-[Eklenti galerisinde](http//:aka.ms/ampplugins) , topluluğun zaman çizgisi işaretçileri, yakınlaştırma, analiz ve daha fazlası gibi özellikler için zaten katkıda bulunduğu çeşitli eklentileri vardır. Sayfa, eklentiye ve bu eklentinin eylemde bulunduğu bir tanıtıma yönelik olarak nasıl ayarlanalınacağını ve talimatlarına erişim sağlar. Galerimize dahil etmeniz gereken güzel bir eklenti oluşturursanız, bunları kullanıma sunmamız için gönderebilirsiniz.
+[Eklenti galerisinde](https://aka.ms/ampplugins) , topluluğun zaman çizgisi işaretçileri, yakınlaştırma, analiz ve daha fazlası gibi özellikler için zaten katkıda bulunduğu çeşitli eklentileri vardır. Sayfa, eklentiye ve bu eklentinin eylemde bulunduğu bir tanıtıma yönelik olarak nasıl ayarlanalınacağını ve talimatlarına erişim sağlar. Galerimize dahil etmeniz gereken güzel bir eklenti oluşturursanız, bunları kullanıma sunmamız için gönderebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 

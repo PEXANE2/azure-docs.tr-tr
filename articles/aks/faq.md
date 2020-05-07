@@ -2,13 +2,13 @@
 title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/04/2020
+ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206621"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854250"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -18,21 +18,20 @@ Bu makalede, Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular ele a
 
 Kullanılabilir bölgelerin tüm listesi için bkz. [aks bölgeleri ve kullanılabilirliği][aks-regions].
 
-## <a name="does-aks-support-node-autoscaling"></a>AKS düğüm otomatik ölçeklendirmeyi destekliyor mu?
+## <a name="can-i-spread-an-aks-cluster-across-regions"></a>Bir AKS kümesini bölgeler arasında yayılabilir miyim?
 
-Evet, aracıdaki aracı düğümlerini otomatik olarak ölçeklendirme özelliği şu anda önizlemede kullanılabilir. Yönergeler için bkz. [AKS 'de uygulama taleplerini karşılamak için bir kümeyi otomatik olarak ölçeklendirme][aks-cluster-autoscaler] . AKS otomatik ölçeklendirme, [Kubernetes otomatik Scaler][auto-scaler]'ı temel alır.
+Hayır. AKS kümeleri bölgesel kaynaklardır ve bölgelere yayılamaz. Birden çok bölge içeren bir mimari oluşturma hakkında yönergeler için bkz. [iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar][bcdr-bestpractices] .
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>AKS 'i var olan sanal ağınızdan dağıtabilir miyim?
+## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Kullanılabilirlik alanları arasında bir AKS kümesini yayı yapabilir miyim?
 
-Evet, [Gelişmiş Ağ özelliğini][aks-advanced-networking]kullanarak bir aks kümesini mevcut bir sanal ağa dağıtabilirsiniz.
+Evet. Bir AKS kümesini, [bunları destekleyen bölgelerde][az-regions]bir veya daha fazla [kullanılabilirlik][availability-zones] alanında dağıtabilirsiniz.
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API sunucusuna kimlerin erişebileceğini sınırlayabilir miyim?
 
-Evet, [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][api-server-authorized-ip-ranges]kullanarak Kubernetes API sunucusuna erişimi sınırlayabilirsiniz.
+Evet. API sunucusuna erişimi kısıtlamak için iki seçenek vardır:
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API sunucusunu yalnızca sanal ağım içinde erişilebilir yapabilir miyim?
-
-Şu anda değil, ancak bu planlanmaktadır. İlerlemeyi [aks GitHub][private-clusters-github-issue]deposunda izleyebilirsiniz.
+- API sunucusu için genel bir uç nokta sürdürmek istiyorsanız ancak güvenilen bir IP aralığı kümesine erişimi kısıtlamak istiyorsanız, [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][api-server-authorized-ip-ranges] kullanın.
+- API sunucusunu *yalnızca* sanal ağınızın içinden erişilebilir olacak şekilde sınırlamak istiyorsanız [özel bir küme][private-clusters] kullanın.
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Tek bir kümede farklı VM boyutlarına sahip olabilir miyim?
 
@@ -118,7 +117,7 @@ Etiket: ```"admissions.enforcer/disabled": "true"``` veya ek açıklama:```"admi
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS ile tümleşik Azure Key Vault mı?
 
-AKS Şu anda Azure Key Vault ile yerel olarak tümleştirilmiştir. Ancak, [Kubernetes projesi için Azure Key Vault flexvolume][keyvault-flexvolume] , Kubernetes Pod 'den Key Vault gizli anahtarlara doğrudan tümleştirmeyi sağlar.
+AKS Şu anda Azure Key Vault ile yerel olarak tümleştirilmiştir. Ancak, [CSI Gizli dizileri için Azure Key Vault sağlayıcısı][csi-driver] , Kubernetes Pod 'den Key Vault gizli anahtarlara doğrudan tümleştirmeyi sağlar.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS üzerinde Windows Server kapsayıcıları çalıştırabilir miyim?
 
@@ -131,19 +130,6 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 Hizmet düzeyi sözleşmesinde (SLA), sağlayıcı, yayımlanan hizmet düzeyi karşılanmazsa müşteriyi hizmetin maliyeti olarak tarafımızca kuruluşlarımız kabul eder. AKS ücretsizdir, tarafımızca kuruluşlarımız için kullanılabilir maliyet yok, bu nedenle AKS 'in resmi SLA 'Sı yok. Ancak, AKS, Kubernetes API sunucusu için en az% 99,5 kullanılabilirlik düzeyini korumak üzere arar.
 
 Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) okuyun.
-
-## <a name="why-cant-i-set-maxpods-below-30"></a>Neden Maxpod 'yi 30 altında ayarlayamıyorum?
-
-AKS 'de, Azure CLı ve Azure Resource Manager `maxPods` şablonlarını kullanarak kümeyi oluştururken değeri ayarlayabilirsiniz. Ancak, hem Kubenet hem de Azure CNı, *en az bir değer* gerektirir (oluşturma sırasında doğrulama):
-
-| Ağ | Minimum | Maksimum |
-| -- | :--: | :--: |
-| Azure CNı | 30 | 250 |
-| Kubernetes kullanan | 30 | 110 |
-
-Aks yönetilen bir hizmet olduğundan, kümenin bir parçası olarak eklentiler ve pod 'leri dağıtıp yönettik. Geçmişte, kullanıcılar yönetilen yığınların çalışması için `maxPods` gereken değerden daha düşük bir değer tanımlayabilir (örneğin, 30). Aks şu formülü kullanarak en az sayıda Pod sayısını hesaplar: ((maxpods veya (maxpods * vm_count)) > yönetilen eklenti en düşük.
-
-Kullanıcılar en düşük `maxPods` doğrulamayı geçersiz kılamaz.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>AKS aracı düğümlerine Azure rezervasyon indirimleri uygulayabilir miyim?
 
@@ -181,7 +167,7 @@ En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) ha
 
 Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, Mount, bağlama vb. sağlayamıyor. 
+## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz. 
 
 Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) ve [aks güncelleştirme kimlik bilgileri](https://docs.microsoft.com/azure/aks/update-credentials).
 
@@ -219,12 +205,15 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 [availability-zones]: ./availability-zones.md
+[private-clusters]: ./private-clusters.md
+[bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
+[availability-zones]: ./availability-zones.md
+[az-regions]: ../availability-zones/az-region.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
-[hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
+[csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8904d584d453cb0945a11b08ad50688aeb1e1fc0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207335"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854754"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -44,11 +44,13 @@ Tüm fiyatlandırma katmanlarında veri hacmi, depolanmak üzere hazırlanan ver
 
 Ayrıca, [Azure Güvenlik Merkezi](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) ve [yapılandırma yönetimi](https://azure.microsoft.com/pricing/details/automation/) gibi bazı çözümlerin kendi fiyatlandırma modellerine sahip olduğunu unutmayın. 
 
-### <a name="dedicated-clusters"></a>Adanmış kümeler
+### <a name="log-analytics-clusters"></a>Log Analytics kümeleri
 
-Azure Izleyici günlük adanmış kümeler, [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)gibi gelişmiş senaryoları desteklemek için tek bir yönetilen Azure Veri Gezgini (ADX) kümesinde çalışma alanı koleksiyonlarıdır.  Adanmış kümeler yalnızca, Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında %25 oranında bir indirim ile 1000 GB/gün üzerinden başlayan bir kapasite ayırma fiyatlandırma modelini destekler. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Küme kapasitesi rezervasyonunun, ayırma düzeyi arttırılarak 31 günlük taahhüt süresi vardır. Taahhüt dönemi boyunca kapasite ayırma düzeyi düşürülemez, ancak herhangi bir zamanda artırılabilir. [Adanmış kümeler oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) ve [çalışma alanlarını onunla ilişkilendirme](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)hakkında daha fazla bilgi edinin.  
+Log Analytics kümeler, [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)gibi gelişmiş senaryoları desteklemek için tek bir yönetilen Azure Veri Gezgini kümesinde çalışma alanı koleksiyonlarıdır.  Log Analytics kümeler yalnızca, Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında %25 oranında bir indirim ile 1000 GB/gün üzerinden başlayan bir kapasite ayırma fiyatlandırma modelini destekler. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Küme kapasitesi rezervasyonunun, ayırma düzeyi arttırılarak 31 günlük taahhüt süresi vardır. Taahhüt dönemi boyunca kapasite ayırma düzeyi düşürülemez, ancak herhangi bir zamanda artırılabilir. [Log Analytics kümeleri oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) ve [çalışma alanlarını onunla ilişkilendirme](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)hakkında daha fazla bilgi edinin.  
 
-Alınan veriler için faturalandırma küme düzeyinde yapıldığından, bir kümeyle ilişkili çalışma alanlarının artık fiyatlandırma katmanı yoktur. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. Azure Güvenlik Merkezi 'ndeki düğüm başına ayırmaların, bu toplanmadan önce çalışma alanı düzeyinde uygulandığını unutmayın. Veri saklama, hala çalışma alanı düzeyinde faturalandırılır.  
+Küme kapasitesi ayırma düzeyi, altındaki `Capacity` `Sku`parametresi kullanılarak Azure Resource Manager ile program aracılığıyla aracılığıyla yapılandırılır. `Capacity` GB cinsinden belirtilir ve 100 GB/gün ARTıŞLARLA 1000 GB veya daha fazla değere sahip olabilir. [Burada](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)ayrıntılı olarak verilmiştir. Kümenizin 2000 GB/gün üzerinde bir ayırmaya ihtiyacı varsa bizimle iletişime geçin [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com).
+
+Alınan veriler için faturalandırma küme düzeyinde yapıldığından, bir kümeyle ilişkili çalışma alanlarının artık fiyatlandırma katmanı yoktur. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'ndeki düğüm başına ayırmaların, kümedeki tüm çalışma alanları genelinde toplanan verilerin toplanmasından önce çalışma alanı düzeyinde uygulandığını unutmayın. Veri saklama, hala çalışma alanı düzeyinde faturalandırılır. Küme faturalandırma, küme oluşturulduğunda, çalışma alanlarının kümeyle ilişkilendirilmediğine bakılmaksızın başlar. 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Ortamınızı yönetme maliyetlerini tahmin etme 
 
@@ -310,7 +312,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Bilgisayara göre veri hacmi
 
-`Usage` Veri türü, tamamlayıcı düzeyde bilgi içermez. Bilgisayar başına alınan verilerin **boyutunu** görmek için, boyutu bayt cinsinden sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
+`Usage` Veri türü, bilgisayar düzeyinde bilgi içermez. Bilgisayar başına alınan verilerin **boyutunu** görmek için, boyutu bayt cinsinden sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
 
 ```kusto
 union withsource = tt * 
@@ -467,7 +469,7 @@ union withsource = tt *
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
-| join (
+| join kind=leftouter (
     Heartbeat 
     | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
     | where Computer != ""

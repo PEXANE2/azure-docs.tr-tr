@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461727"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857166"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure 'da güvenli uygulamalar tasarlama
 Bu makalede, bulut için uygulama tasarlarken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamaları sırasında göz önünde bulundurmanız gereken güvenlik sorularıyla ve kavramların yanı sıra eğitim kaynakları da ele alınmıştır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -222,11 +222,11 @@ Yazılım geliştiricisi etki alanı yöneticisi haklarına ihtiyaç duyuyor mu?
 Uygulamanızın erişim desenlerinin tamamında [en az ayrıcalığı](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) zorladığından emin olun.
 
 > [!NOTE]
->  En az ayrıcalık kurallarının yazılıma ve yazılımı oluşturan kişilere uygulanması gerekir. Yazılım geliştiricileri, çok fazla erişim verilirse BT güvenliği için büyük bir risk oluşturabilir. Bir geliştirici için kötü amaçlı bir amaç varsa veya çok fazla erişim verilirse sonuçlar ciddi bir şekilde olabilir. En az ayrıcalık kurallarının geliştirme yaşam döngüsü boyunca geliştiricilere uygulanmasını öneririz.
+> En az ayrıcalık kurallarının yazılıma ve yazılımı oluşturan kişilere uygulanması gerekir. Yazılım geliştiricileri, çok fazla erişim verilirse BT güvenliği için büyük bir risk oluşturabilir. Bir geliştirici için kötü amaçlı bir amaç varsa veya çok fazla erişim verilirse sonuçlar ciddi bir şekilde olabilir. En az ayrıcalık kurallarının geliştirme yaşam döngüsü boyunca geliştiricilere uygulanmasını öneririz.
 
 #### <a name="implement-just-in-time-access"></a>Tam zamanında erişim uygulama
 
-Ayrıcalıkların etkilenme süresini daha da azaltmak için *tam zamanında* (JIT) erişimi uygulayın. [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) için kullanın:
+Ayrıcalıkların etkilenme süresini daha da azaltmak için *tam zamanında* (JIT) erişimi uygulayın. [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) için kullanın:
 
 - Kullanıcılara yalnızca JıT için gereken izinleri verin.
 - Ayrıcalıkların otomatik olarak iptal edildiğinden emin olmak için, kısa süreli bir süre için roller atayın.

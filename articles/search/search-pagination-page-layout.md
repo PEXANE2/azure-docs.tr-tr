@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641614"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801782"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
@@ -92,9 +92,15 @@ Başka bir seçenek de [özel bir Puanlama profili](index-add-scoring-profiles.m
 
 ## <a name="hit-highlighting"></a>İsabet vurgulama
 
-İsabet vurgulama, bir sonuçla eşleşen terime uygulanan metin biçimlendirmesine (kalın veya sarı vurgular gibi) başvurur, bu da eşleştirmeyi daha kolay hale getirir. [Sorgu isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)isabet vurgulama yönergeleri verilmiştir. Arama altyapısı, eşleşen terimi Etiketler ' `highlightPreTag` de, ve `highlightPostTag`kodunuz ise yanıtı işler (örneğin, kalın yazı tipi uygulama).
+İsabet vurgulama, bir sonuçla eşleşen terimlere uygulanan metin biçimlendirmesine (kalın veya sarı vurgular gibi) başvurur, bu da eşleştirmeyi daha kolay hale getirir. [Sorgu isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)isabet vurgulama yönergeleri verilmiştir. 
 
-Biçimlendirme, tüm terim sorgularına uygulanır. Aşağıdaki örnekte, açıklama alanı içindeki "Sandy", "kum", "kirekler", "plaj" terimleri vurgulama için etiketlendi. Benzer ve joker karakter arama gibi altyapıda sorgu genişletmeyi tetikleyen sorgular, isabet vurgulama için sınırlı desteğe sahiptir.
+İsabet vurgulamasını etkinleştirmek için, `highlight=[comma-delimited list of string fields]` vurgulamayı hangi alanların vurgulakullanacağınızı belirtmek için ekleyin. Vurgulama, bir açıklama alanı gibi daha uzun içerik alanları için yararlıdır, burada eşleşme hemen belirgin değildir. Yalnızca **arama için aranabilir** olan alan tanımları, isabet vurgulama için geçerlidir.
+
+Azure Bilişsel Arama, varsayılan olarak alan başına en fazla beş vurgu döndürür. Bu sayıyı alana ekleyerek bir kısa çizgi izleyen bir tamsayı ile ayarlayabilirsiniz. Örneğin, `highlight=Description-10` Açıklama alanında eşleşen içerik üzerinde en fazla 10 vurgu döndürür.
+
+Biçimlendirme, tüm terim sorgularına uygulanır. Biçimlendirme türü etiketlere `highlightPreTag` `highlightPostTag`göre belirlenir ve kodunuz yanıtı işler (örneğin, kalın yazı tipi veya sarı arka plan uygulama).
+
+Aşağıdaki örnekte, açıklama alanı içindeki "Sandy", "kum", "kirekler", "plaj" terimleri vurgulama için etiketlendi. Benzer ve joker karakter arama gibi altyapıda sorgu genişletmeyi tetikleyen sorgular, isabet vurgulama için sınırlı desteğe sahiptir.
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

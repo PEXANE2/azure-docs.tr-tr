@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f87f2de3747f55562d3f683e1738595624940dd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677420"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854641"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -200,7 +200,7 @@ Waagent için ayrıntılı günlük kaydı gerekiyorsa, şu adımları izleyin:
 
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM-aracı yapılandırma seçenekleri ayarlanmadı (Linux sanal makineleri için)
 
-Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Yapılandırma dosyası seçenekleri **uzantıları.** **yedekleme 'nin çalışması için,** etkinleştirme ve **sağlama.**
+Yapılandırma dosyası (/etc/waagent.exe) waagent 'un eylemlerini denetler. Yapılandırma dosyası seçenekleri **uzantıları. Enable** , **y** ve sağlama olarak ayarlanmalıdır **.** yedeklemenin çalışması için aracının **Auto** olarak ayarlanması gerekir.
 VM Aracısı yapılandırma dosyası seçeneklerinin tam listesi için bkz.<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Anlık görüntü durumu alınamaz veya bir anlık görüntü alınamaz

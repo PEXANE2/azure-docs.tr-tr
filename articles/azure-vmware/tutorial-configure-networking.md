@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da VMWare özel bulutunuz için ağı yapılandırma
 description: Özel bulutunuzu Azure 'da dağıtmak için gereken ağı oluşturmayı ve yapılandırmayı öğrenin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: e8278eb3ab5e99d330e34fd9739ed2bc49aa7f08
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740216"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837626"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Öğretici: Azure 'da VMWare özel bulutunuz için ağı yapılandırma
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://rc.portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -68,7 +68,7 @@ Kaynak grubunuzda, yeni bir kaynak eklemek için **+ Ekle** ' yi seçin.
 | **Abonelik** | Bu değer, kaynak grubunun ait olduğu abonelikle zaten doldurulmuştur. |
 | **Kaynak grubu** | Bu değer, geçerli kaynak grubu için zaten doldurulmuştur. Bu, önceki bir testte oluşturduğunuz kaynak grubu olmalıdır. |
 | **Adı** | Sanal ağ geçidi için benzersiz bir ad girin. |
-| **Bölge** | Sanal ağ geçidinin coğrafi konumunu seçin. |
+| **Geli** | Sanal ağ geçidinin coğrafi konumunu seçin. |
 | **Ağ geçidi türü** | **ExpressRoute**' ı seçin. |
 | **VPN türü** | **Rota tabanlı**' ı seçin. |
 | **ISTEYIN** | Varsayılan değeri bırakın: **Standart**. |

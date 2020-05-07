@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: daea761d027341eaf8f6c0d137f3049c45e82924
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: HT
+ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836623"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854971"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -145,7 +145,14 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol **değiştirmeyi işlemez.** Tek sayfalı uygulamanız için otomatik yönlendirme değişikliği izlemeyi etkinleştirmek için, kurulum yapılandırmanıza ekleyebilirsiniz `enableAutoRouteTracking: true` .
 
-Şu anda, bu SDK ile başlatabilmeniz için ayrı bir [tepki sağlayan eklenti](#react-extensions) sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)toplayacaktır.
+Şu anda, bu SDK ile başlatabilmeniz için ayrı bir yanıt verme [eklentisi](#react-extensions)sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından [özel telemetri](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)toplayacaktır.
+
+> [!NOTE]
+> Yalnızca `enableAutoRouteTracking: true` tepki verme **eklentisini kullanmıyorsanız kullanın** . Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
+
+## <a name="configuration-autotrackpagevisittime"></a>Yapılandırma: oto Trackpagevisittime
+
+Ayar `autoTrackPageVisitTime: true`olarak, bir kullanıcının her sayfada harcadığı zaman izlenir. Yeni bir sayfa görünümünde, *önceki* sayfada harcanan sürenin adlı `PageVisitTime` [özel ölçüm](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) olarak gönderildiği süre. Bu özel ölçüm, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "günlük tabanlı ölçüm" olarak görüntülenebilir.
 
 ## <a name="react-extensions"></a>Tepki verme uzantıları
 

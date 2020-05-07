@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f117f1518211680c4ea1f5ac51ecf0e44396a133
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768384"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856756"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Otomatik ayarlama için e-posta bildirimleri
 
@@ -69,7 +69,7 @@ Sonraki adımda, Azure Otomasyonu 'nda ayarlama önerilerini almak için PowerSh
 Yeni bir Azure Otomasyonu runbook 'u oluşturmak için aşağıdaki adımları izleyin:
 
 1. Önceki adımda oluşturduğunuz Azure Otomasyonu hesabına erişin.
-1. Otomasyon hesabı bölmesinde, PowerShell betiği ile yeni bir Azure Otomasyonu runbook 'u oluşturmak için sol taraftaki "**runbook 'lar**" menü öğesine tıklayın. Otomasyon Runbook 'ları oluşturma hakkında daha fazla bilgi için bkz. [yeni runbook oluşturma](../automation/manage-runbooks.md#creating-a-runbook).
+1. Otomasyon hesabı bölmesinde, PowerShell betiği ile yeni bir Azure Otomasyonu runbook 'u oluşturmak için sol taraftaki "**runbook 'lar**" menü öğesine tıklayın. Otomasyon Runbook 'ları oluşturma hakkında daha fazla bilgi için bkz. [yeni runbook oluşturma](../automation/manage-runbooks.md#create-a-runbook).
 1. Yeni bir runbook eklemek için "**+ runbook Ekle**" menü seçeneğine tıklayın ve ardından "**hızlı Oluştur – yeni runbook oluştur**" düğmesine tıklayın.
 1. Runbook bölmesinde, runbook 'unun adını yazın (Bu örneğin, "**Automatictunıngemaılautomation**" kullanılır), runbook 'un türünü **PowerShell** olarak seçin ve bu runbook 'un amacını betimleyen bir açıklama yazın.
 1. Yeni bir runbook oluşturmayı bitirmeden **Oluştur** düğmesine tıklayın.

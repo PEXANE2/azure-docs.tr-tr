@@ -10,12 +10,12 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414071"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858009"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime oluşturma ve yapılandırma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,10 +59,10 @@ Azure Data Factory Kullanıcı arabirimini kullanarak bir Azure IR oluşturmak i
 1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
 
 1. Aşağıdaki sayfada **Azure** ' u seçerek bir Azure IR oluşturun ve ardından **devam**' ı seçin.
-   ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-azure-ir.png)
+   ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
 1. Azure IR için bir ad girin ve **Oluştur**' u seçin.
-   ![Azure IR oluşturma](media/create-azure-integration-runtime/create-azure-ir.png)
+   ![Azure IR oluşturma](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Oluşturma işlemi tamamlandığında bir açılır bildirim görürsünüz. Tümleştirme çalışma **zamanları** sayfasında, listede yenı oluşturulan IR 'yi görtığınızdan emin olun.
 

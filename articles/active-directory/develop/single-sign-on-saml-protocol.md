@@ -13,12 +13,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80881291"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853784"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Çoklu oturum açma SAML Protokolü
 
@@ -153,12 +153,12 @@ Azure AD, `Subject` `AuthnRequest` öğelerin öğesini yoksayar.
 
 ### <a name="issuer"></a>Veren
 
-Azure AD, `Issuer` öğesini TenantIDGUID> `https://login.microsoftonline.com/<TenantIDGUID>/` 'ın \<Azure AD kiracısının Kiracı kimliği olduğu yere ayarlar.
+Azure AD, `Issuer` öğesini TenantIDGUID> `https://sts.windows.net/<TenantIDGUID>/` 'ın \<Azure AD kiracısının Kiracı kimliği olduğu yere ayarlar.
 
 Örneğin, veren öğesiyle bir yanıt aşağıdaki örneğe benzeyebilir:
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>Durum
@@ -191,7 +191,7 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
 Bu, Azure AD `https://sts.windows.net/<TenantIDGUID>/`kiracısının Kiracı kimliği olan \<TenantIDGUID> olarak ayarlanır.
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>İmza

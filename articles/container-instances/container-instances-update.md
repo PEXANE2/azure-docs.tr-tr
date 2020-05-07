@@ -3,12 +3,12 @@ title: Kapsayıcı grubunu Güncelleştir
 description: Azure Container Instances kapsayıcı gruplarınızdaki çalışan kapsayıcıları güncelleştirme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: d64590c553f4ae4ef462d4468fade68861db31c3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160111"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854454"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcıları güncelleştirme
 
@@ -28,7 +28,7 @@ Var olan bir kapsayıcı grubunu güncelleştirmek için:
 * Diğer özellikleri daha önce belirttiğiniz değerlerle ayarlayın. Bir özellik için değer ayarlamazsanız, varsayılan değerine döner.
 
 > [!TIP]
-> [YAML dosyası](/container-instances-container-groups.md#deployment) bir kapsayıcı grubunun dağıtım yapılandırmasını sürdürmenize yardımcı olur ve güncelleştirilmiş bir grubu dağıtmak için bir başlangıç noktası sağlar. Grubu oluşturmak için farklı bir yöntem kullandıysanız, [az Container Export][az-container-export]kullanarak yapılandırmayı YAML 'ye dışarı aktarabilirsiniz. 
+> [YAML dosyası](container-instances-container-groups.md#deployment) bir kapsayıcı grubunun dağıtım yapılandırmasını sürdürmenize yardımcı olur ve güncelleştirilmiş bir grubu dağıtmak için bir başlangıç noktası sağlar. Grubu oluşturmak için farklı bir yöntem kullandıysanız, [az Container Export][az-container-export]kullanarak yapılandırmayı YAML 'ye dışarı aktarabilirsiniz. 
 
 ### <a name="example"></a>Örnek
 

@@ -1,6 +1,6 @@
 ---
 title: Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü sorunlarını giderme
-description: Bu makale, sanal makine Başlat/Durdur çözümünün sorunlarını giderme hakkında bilgi sağlar.
+description: Bu makale, çalışma saatleri dışında sanal makineyi Başlat/Durdur çözümünde sorun giderme hakkında bilgi sağlar.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,25 +9,25 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 003c2c5a2c09957e7a3a4ac0a26b87a9ac43dace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 611e8441fab56114ca010d0b555c9ed156ae9d40
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679156"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855066"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü sorunlarını giderme
 
-Bu makalede, çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü ile çalışırken ortaya çıkan sorunları giderme hakkında bilgi sağlanır.
+Bu makalede, Azure Otomasyonu 'nda çalışma saatleri dışında sanal makineler çözümü ile çalışırken ortaya çıkan sorunları giderme hakkında bilgi sağlanır.
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Azure Otomasyonu hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="scenario-the-startstop-vms-during-off-hours-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Senaryo: kapalı saatlerin dışında VM 'Leri Başlat/Durdur çözümü düzgün bir şekilde dağıtılamazsa
 
 ### <a name="issue"></a>Sorun
 
-[Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü](../automation-solution-vm-management.md)dağıtılırken, aşağıdaki hatalardan birini alırsınız:
+[Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü](../automation-solution-vm-management.md)dağıttığınızda, aşağıdaki hatalardan birini alırsınız:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -61,50 +61,50 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 Dağıtımlar aşağıdaki nedenlerden biri nedeniyle başarısız olabilir:
 
-1. Seçilen bölgede aynı ada sahip bir Otomasyon hesabı zaten var.
-2. İlke, çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü dağıtımına izin vermez.
-3. `Microsoft.OperationsManagement`, `Microsoft.Insights`Veya `Microsoft.Automation` kaynak türü kayıtlı değil.
-4. Log Analytics çalışma alanınız kilitli.
-5. Azurerd modüllerinin güncel olmayan bir sürümüne veya saatler dışında VM 'Leri Başlat/Durdur çözümünde sahipsiniz.
+- Seçilen bölgede aynı ada sahip bir Otomasyon hesabı zaten var.
+- İlke, çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü dağıtımına izin vermez.
+- `Microsoft.OperationsManagement`, `Microsoft.Insights`Veya `Microsoft.Automation` kaynak türü kayıtlı değil.
+- Log Analytics çalışma alanınız kilitli.
+- Azurerd modüllerinin güncel olmayan bir sürümüne veya saatler dışında VM 'Leri Başlat/Durdur çözümünde sahipsiniz.
 
 ### <a name="resolution"></a>Çözüm
 
 Sorununuza yönelik olası çözümler için aşağıdaki düzeltmeleri gözden geçirin:
 
 * Otomasyon hesaplarının farklı kaynak gruplarında olsalar bile, bir Azure bölgesi içinde benzersiz olması gerekir. Hedef bölgede mevcut Otomasyon hesaplarınızı kontrol edin.
-* Mevcut bir ilke, çalışma saatleri dışında VM 'Leri başlatma/durdurma çözümünün dağıtılması için gereken bir kaynağı engeller. Azure portal ilke atamalarınız ' ne gidin ve bu kaynağın dağıtımına izin vermeyen bir ilke atamamı olup olmadığınızı denetleyin. Bu konuda daha fazla bilgi edinmek için bkz. [Requestdisallowedbypolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
+* Mevcut bir ilke, çalışma saatleri dışında VM 'Leri başlatma/durdurma çözümünün dağıtılması için gereken bir kaynağı engeller. Azure portal ilke atamalarınız ' ne gidin ve bu kaynağın dağıtımına izin vermeyen bir ilke atamamı olup olmadığınızı denetleyin. Daha fazla bilgi için bkz. [Requestdisallowedbypolicy hatası](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
 * VM 'Leri Başlat/Durdur çözümünü dağıtmak için aboneliğinizin aşağıdaki Azure Kaynak ad alanlarına kayıtlı olması gerekir:
 
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Sağlayıcıları kaydettirme sırasında hatalar hakkında daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](../../azure-resource-manager/templates/error-register-resource-provider.md) .
+   Sağlayıcıları kaydettiğinizde hatalar hakkında daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](../../azure-resource-manager/templates/error-register-resource-provider.md).
 * Log Analytics çalışma alanınızda bir kilit varsa, Azure portal çalışma alanınıza gidin ve kaynaktaki kilitleri kaldırın.
-* Yukarıdaki çözünürlükler sorununuzu çözmezse, Başlat/Durdur çözümünü yeniden dağıtmak için [çözümü güncelleştirme](../automation-solution-vm-management.md#update-the-solution) bölümündeki yönergeleri izleyin.
+* Bu çözümler sorununuzu çözmezse, çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümünü yeniden dağıtmak için [çözümü Güncelleştir](../automation-solution-vm-management.md#update-the-solution) bölümündeki yönergeleri izleyin.
 
 ## <a name="scenario-all-vms-fail-to-start-or-stop"></a><a name="all-vms-fail-to-startstop"></a>Senaryo: tüm VM 'Ler başlatılamadı veya durdurulamıyor
 
 ### <a name="issue"></a>Sorun
 
-Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümünü yapılandırdınız, ancak tüm VM 'Leri başlatmıyor veya durdurmayacak.
+Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümünü yapılandırdınız, ancak tüm VM 'Leri başlatamaz veya durdurmaz.
 
 ### <a name="cause"></a>Nedeni
 
 Bu hata, aşağıdakilerden biri nedeniyle oluşabilir:
 
-1. Bir zamanlama doğru yapılandırılmamış.
-2. Farklı Çalıştır hesabı doğru şekilde yapılandırılmamış olabilir.
-3. Bir runbook 'ta çalıştırma hataları olabilir.
-4. VM 'Ler dışarıda bırakılmış olabilir.
+- Bir zamanlama doğru yapılandırılmamış.
+- Farklı Çalıştır hesabı doğru şekilde yapılandırılmamış olabilir.
+- Bir runbook 'ta çalıştırma hataları olabilir.
+- VM 'Ler dışarıda bırakılmış olabilir.
 
 ### <a name="resolution"></a>Çözüm
 
 Sorununuza yönelik olası çözümler için aşağıdaki listeyi gözden geçirin:
 
-* Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü için bir zamanlamayı doğru şekilde yapılandırdığınızdan emin olun. Zamanlamayı yapılandırma hakkında bilgi edinmek için bkz. [zamanlamalar](../automation-schedules.md) makalesi.
+* Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü için bir zamanlamayı doğru şekilde yapılandırdığınızdan emin olun. Zamanlamayı yapılandırma hakkında bilgi edinmek için bkz. [zamanlamalar](../automation-schedules.md).
 
-* Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) denetleyin. Aşağıdaki runbook 'lardan birindeki işleri arayın:
+* Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) denetleyin. Aşağıdaki runbook 'lardan birindeki işleri arayın:
 
   * **AutoStop_CreateAlert_Child**
   * **AutoStop_CreateAlert_Parent**
@@ -116,9 +116,9 @@ Sorununuza yönelik olası çözümler için aşağıdaki listeyi gözden geçir
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* [Farklı Çalıştır hesabınızın](../manage-runas-account.md) başlatmaya çalıştığınız veya durdurduğunuz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları**altında **Farklı Çalıştır hesaplarını** seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
+* [Farklı Çalıştır hesabınızın](../manage-runas-account.md) başlatmaya çalıştığınız veya durdurduğunuz VM 'ler için uygun izinlere sahip olduğunu doğrulayın. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları**' nın altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
 
-* VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılamaz veya durdurulamaz. Dışlanan VM 'Ler, Çözümün dağıtıldığı `External_ExcludeVMNames` Otomasyon hesabındaki değişkende ayarlanır. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
+* VM 'Ler açıkça dışlandıklarında, sanal makineler başlatılmamış veya durdurulmuş olabilir. Dışlanan VM 'Ler, Çözümün dağıtıldığı `External_ExcludeVMNames` Otomasyon hesabındaki değişkende ayarlanır. Aşağıdaki örnek, bu değeri PowerShell ile nasıl sorgulayakullanabileceğinizi gösterir.
 
   ```powershell-interactive
   Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -134,16 +134,16 @@ Sorununuza yönelik olası çözümler için aşağıdaki listeyi gözden geçir
 
 Bu hata, aşağıdakilerden biri nedeniyle oluşabilir:
 
-1. Sıra senaryosunda, bir etiket eksik veya yanlış olabilir.
-2. VM dışlanıyor olabilir.
-3. Farklı Çalıştır hesabı VM 'de yeterli izinlere sahip olmayabilir.
-4. VM 'nin başlamasını veya durdurulmasını durduran bir sorun olabilir.
+- Sıra senaryosunda, bir etiket eksik veya yanlış olabilir.
+- VM dışlanıyor olabilir.
+- Farklı Çalıştır hesabı VM 'de yeterli izinlere sahip olmayabilir.
+- VM 'nin başlamasını veya durdurulmasını durduran bir sorun olabilir.
 
 ### <a name="resolution"></a>Çözüm
 
 Sorununuz için olası çözümleri veya aranacak konumları görmek için aşağıdaki listeyi gözden geçirin:
 
-* Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümünün [sıra senaryosunu](../automation-solution-vm-management.md) kullanırken, başlatmak veya durdurmak ISTEDIĞINIZ her VM 'nin doğru etikete sahip olduğundan emin olmanız gerekir. Başlatmak istediğiniz sanal makinelerin `sequencestart` etiketine ve durdurmak `sequencestop` istediğiniz VM 'lere sahip olduğundan emin olun. Her iki etiket de pozitif bir tamsayı değeri gerektirir. Etiketleri ve bunların değerlerini içeren tüm VM 'Leri aramak için aşağıdaki örneğe benzer bir sorgu kullanabilirsiniz.
+* Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümünün [sıra senaryosunu](../automation-solution-vm-management.md) kullandığınızda, başlatmak veya durdurmak ISTEDIĞINIZ her VM 'nin doğru etikete sahip olduğundan emin olmanız gerekir. Başlatmak istediğiniz sanal makinelerin `sequencestart` etiketine ve durdurmak `sequencestop` istediğiniz VM 'lere sahip olduğundan emin olun. Her iki etiket de pozitif bir tamsayı değeri gerektirir. Etiketleri ve bunların değerlerini içeren tüm VM 'Leri aramak için aşağıdaki örneğe benzer bir sorgu kullanabilirsiniz.
 
   ```powershell-interactive
   Get-AzResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -155,11 +155,9 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
   Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* VM 'Leri başlatmak ve durdurmak için, Otomasyon hesabının farklı çalıştır hesabı VM 'de uygun izinlere sahip olmalıdır. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
-
-* VM 'de başlatma veya ayırmayı kaldırma konusunda bir sorun varsa, sanal makinenin kendisi üzerinde bir sorun olabilir. Örneğin, VM kapanmaya çalışırken bir güncelleştirme uygulanır, bir hizmet askıda kalır ve daha fazlasını yapın. Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlüklerine** bakın. Ayrıca, olay günlüklerinde herhangi bir hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'niz hakkında sorun giderme hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde sorun giderme](../../virtual-machines/troubleshooting/index.yml)
-
-* Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin.
+* VM 'Leri başlatmak ve durdurmak için, Otomasyon hesabının farklı çalıştır hesabı VM 'de uygun izinlere sahip olmalıdır. Bir kaynaktaki izinleri nasıl denetleyeceğinizi öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları** altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
+* VM 'de başlatma veya ayırmayı kaldırma konusunda bir sorun varsa, sanal makinenin kendisi üzerinde bir sorun olabilir. Örnekler, sanal makine kapanmaya çalışırken uygulanan bir güncelleştirmedir, askıda olan bir hizmet ve daha fazlasını sağlar. Günlüklerde hata olup olmadığını görmek için VM kaynağına gidin ve **etkinlik günlükleri** ' ne bakın. Ayrıca, olay günlüklerinde herhangi bir hata olup olmadığını görmek için VM 'de oturum açma girişiminde bulunabilir. VM 'nizin sorunlarını giderme hakkında daha fazla bilgi edinmek için bkz. [Azure sanal makinelerinde sorun giderme](../../virtual-machines/troubleshooting/index.yml).
+* Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) denetleyin. Portalda Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin.
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Senaryo: özel runbook sunucum sanal makinelerimi başlatamıyor veya durdurabilir
 
@@ -169,15 +167,14 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
 
 ### <a name="cause"></a>Nedeni
 
-Hatanın pek çok nedeni olabilir. Azure portal Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin. Işler sayfasından, iş başarısızlıklarını görüntülemek için Runbook 'ınızdan işler ' i arayın.
+Hatanın pek çok nedeni olabilir. Azure portal Otomasyon hesabınıza gidin ve **Işlem Otomasyonu**altında **işler** ' i seçin. **İşler** sayfasından, iş başarısızlıklarını görüntülemek için Runbook 'ınızdan işler ' i arayın.
 
 ### <a name="resolution"></a>Çözüm
 
-Şunları yapmanız önerilir:
+Şunları yapmanızı öneririz:
 
 * Azure Otomasyonu 'nda VM 'Leri başlatmak ve durdurmak için [VM 'leri saatlerde Başlat/Durdur çözümünü](../automation-solution-vm-management.md) kullanın. Bu çözüm Microsoft tarafından yazılmıştır. 
-
-* Microsoft 'un özel runbook 'ları desteklemediğini unutmayın. [Runbook sorun gidermesinden](runbooks.md)özel runbook için bir çözüm bulabilirsiniz. Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) denetleyin. 
+* Microsoft 'un özel runbook 'ları desteklemediğini unutmayın. [Runbook sorun gidermesinden](runbooks.md)özel runbook için bir çözüm bulabilirsiniz. Herhangi bir hata bulmak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) denetleyin. 
 
 ## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Senaryo: VM 'Ler doğru sırada başlamıyor veya durdurulmayacak
 
@@ -191,12 +188,13 @@ Bu sorun, VM 'lerde hatalı etiketlemesinin oluşmasına neden olur.
 
 ### <a name="resolution"></a>Çözüm
 
-Çözümün doğru yapılandırıldığından emin olmak için aşağıdaki adımları uygulayın.
+Çözümün doğru yapılandırıldığından emin olmak için aşağıdaki adımları izleyin.
 
 1. Durumunuza bağlı olarak, tüm VM 'Lerin başlatılmış veya durdurulmuş `sequencestart` `sequencestop` olduğundan emin olun. Bu etiketlerin değeri olarak pozitif bir tamsayı olması gerekir. VM 'Ler, bu değere göre artan sırada işlenir.
-2. Başlatılacak veya durdurulacak VM 'Ler için kaynak gruplarının, durumunuza bağlı olarak `External_Start_ResourceGroupNames` veya `External_Stop_ResourceGroupNames` değişkenlerinde olduğundan emin olun.
-3. Değişikliklerinizi önizlemek için `WHATIF` parametresi true olarak `SequencedStartStop_Parent` ayarlanmış şekilde runbook 'u yürüterek yaptığınız değişiklikleri test edin.
-4. VM 'Leri sırayla başlatma ve durdurma çözümünü kullanma hakkında daha fazla bilgi için bkz. [sırasıyla VM 'Leri başlatma/durdurma](../automation-solution-vm-management.md).
+1. Başlatılacak veya durdurulacak VM 'Ler için kaynak gruplarının, durumunuza bağlı olarak `External_Start_ResourceGroupNames` veya `External_Stop_ResourceGroupNames` değişkenlerinde olduğundan emin olun.
+1. Değişikliklerinizi önizlemek için `WHATIF` parametresi true olarak `SequencedStartStop_Parent` ayarlanmış şekilde runbook 'u yürüterek yaptığınız değişiklikleri test edin.
+
+VM 'Leri sırayla başlatmak ve durdurmak için çözümü kullanma hakkında daha fazla bilgi için, bkz. [sırasıyla VM 'Leri başlatma/durdurma](../automation-solution-vm-management.md).
 
 ## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Senaryo: çalışma saatleri dışında VM 'Leri başlatma/durdurma işi 403 yasaklanmış hatasıyla başarısız oluyor
 
@@ -212,33 +210,33 @@ Bu sorun, yanlış yapılandırılmış veya zaman aşımına uğramamış farkl
 
 Farklı Çalıştır hesabınızın düzgün yapılandırıldığını doğrulamak için, Azure portal Otomasyon hesabınıza gidin ve **Hesap ayarları**altında **Farklı Çalıştır hesapları** ' nı seçin. Farklı Çalıştır hesabı yanlış yapılandırılmamışsa veya süre dolmuşsa, durum koşulu gösterir.
 
-Farklı Çalıştır hesabınız yanlış yapılandırılmış ise, farklı çalıştır hesabınızı silip yeniden oluşturmanız gerekir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](../manage-runas-account.md).
+Farklı Çalıştır hesabınız yanlış yapılandırılmış ise, farklı çalıştır hesabınızı silin ve yeniden oluşturun. Daha fazla bilgi için bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](../manage-runas-account.md).
 
-Farklı Çalıştır hesabınız için sertifikanın geçerliliği dolmuşsa, sertifikayı yenilemek için [otomatik olarak imzalanan sertifika yenileme](../manage-runas-account.md#cert-renewal) adımları bölümüne bakın.
+Farklı Çalıştır hesabınız için sertifikanın geçerliliği dolmuşsa, sertifikayı yenilemek için [otomatik olarak imzalanan sertifika yenileme](../manage-runas-account.md#cert-renewal) bölümündeki adımları izleyin.
 
-Eksik izinler varsa bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Bu değeri, Azure portal Otomasyon hesabınıza giderek, **Hesap ayarları**altında **Farklı Çalıştır hesaplarını** seçerek ve uygun farklı Çalıştır hesabına tıklayarak elde edebilirsiniz.
+Eksik izinler varsa bkz. [hızlı başlangıç: Azure Portal kullanarak bir kullanıcıya atanan rolleri görüntüleme](../../role-based-access-control/check-access.md). Farklı Çalıştır hesabı tarafından kullanılan hizmet sorumlusu için uygulama KIMLIĞINI sağlamanız gerekir. Azure portal Otomasyon hesabınıza giderek bu değeri alabilirsiniz. **Hesap ayarları**' nın altında **Farklı Çalıştır hesapları** ' nı seçin ve uygun farklı çalıştır hesabını seçin.
 
-## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>Senaryo: sorunum yukarıda listelenmiyor
+## <a name="scenario-my-problem-isnt-listed-here"></a><a name="other"></a>Senaryo: sorunum burada listelenmiyor
 
 ### <a name="issue"></a>Sorun
 
-Bu sayfada listelenmeyen saat dışı VM 'Leri Başlat/Durdur çözümünü kullanırken bir sorunla veya beklenmedik bir sonuçla karşılaşırsınız.
+Bu sayfada listelenmeyen saat dışı VM 'Leri Başlat/Durdur çözümünü kullandığınızda bir sorunla veya beklenmedik sonuca karşılaşabilirsiniz.
 
 ### <a name="cause"></a>Nedeni
 
 Birçok kez hatanın nedeni çözümün eski ve güncel olmayan bir sürümü kullanılıyor olabilir.
 
 > [!NOTE]
-> Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü, çözümü dağıtırken Otomasyon hesabınıza içeri aktarılan Azure modülleriyle test edilmiştir. Çözüm şu anda Azure modülünün daha yeni sürümleriyle çalışmıyor. Bu yalnızca, saatlerde VM 'Leri Başlat/Durdur çözümü çalıştırmak için kullandığınız Otomasyon hesabını etkiler. Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md) bölümünde açıklandığı gibi diğer otomasyon hesaplarınızda Azure modülünün daha yeni sürümlerini kullanmaya devam edebilirsiniz.
+> Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü, çözümü dağıtırken Otomasyon hesabınıza içeri aktarılan Azure modülleriyle test edilmiştir. Çözüm şu anda Azure modülünün daha yeni sürümleriyle çalışmıyor. Bu kısıtlama yalnızca saat dışı saatlerde VM 'Leri Başlat/Durdur çözümü çalıştırmak için kullandığınız Otomasyon hesabını etkiler. Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)bölümünde açıklandığı gibi diğer otomasyon hesaplarınızda Azure modülünün daha yeni sürümlerini kullanmaya devam edebilirsiniz.
 
 ### <a name="resolution"></a>Çözüm
 
-Birçok hatayı çözümlemek için, [saatler dışında VM 'Leri Başlat/Durdur çözümünü](../automation-solution-vm-management.md#update-the-solution)kaldırmanız ve güncelleştirmeniz önerilir. Ayrıca, herhangi bir hata aramak için [iş akışlarını](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) kontrol edebilirsiniz. 
+Birçok hatayı çözümlemek için, [çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümünü](../automation-solution-vm-management.md#update-the-solution)kaldırın ve güncelleştirin. Ayrıca, herhangi bir hata aramak için [iş akışlarını](../automation-runbook-execution.md#job-statuses) kontrol edebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport)'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, Azure Community 'yi yanıtlar, destek ve uzmanlar için bağlar.
+* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.
