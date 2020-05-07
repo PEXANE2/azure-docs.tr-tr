@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283897"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581370"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
 Bu genel kullanılabilirlik SSS, S4 2019 ' de yapılan değişiklikleri ve GA için hazırlandığımız şekilde 2020 ' i içerir.
@@ -44,7 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Vminsıghts çözümünü yüklediğimde çalışma alanım 'daki performans sayaçlarından ne yapmam gerekir?
 
-VM'ler için Azure İzleyici çalışma alanınızda kullanılan performans sayaçlarını etkinleştirme için önceki yöntem. Geçerli sürüm, bu verileri adlı `InsightsMetrics`bir tabloda depolar. Artık kullanmanız gerekmiyorsa, çalışma alanınızda bu performans onayını devre dışı bırakmayı tercih edebilirsiniz. 
+VM'ler için Azure İzleyici çalışma alanınızda kullanılan performans sayaçlarını etkinleştirme için önceki yöntem. Geçerli sürüm, bu verileri adlı `InsightsMetrics`bir tabloda depolar. Artık kullanmanız gerekmiyorsa, çalışma alanınızda bu performans sayaçlarını devre dışı bırakmayı tercih edebilirsiniz. 
 
 >[!NOTE]
 >`Perf` Tablodaki bu sayaçlara başvuran uyarı kurallarınız varsa, `InsightsMetrics` tabloda depolanan yeni verilere başvurmak için onları güncelleştirmeniz gerekir. Bu tabloya başvuran, kullanabileceğiniz günlük sorguları için belgelerimize bakın.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676437"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731994"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Birden fazla Azure sanal makinesi için güncelleştirmeleri yönetme
 
@@ -21,7 +21,7 @@ Windows ve Linux sanal makineleriniz için güncelleştirmeleri ve düzeltme ekl
 - Gerekli güncelleştirmeleri yüklemeyi zamanlama.
 - Güncelleştirmelerin Güncelleştirme Yönetimi etkinleştirildiği tüm sanal makinelere başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirin.
 
-Güncelleştirme Yönetimi sistem gereksinimleri hakkında bilgi edinmek için bkz. [güncelleştirme yönetimi istemci gereksinimleri](automation-update-management.md#clients).
+Güncelleştirme Yönetimi sistem gereksinimleri hakkında bilgi edinmek için bkz. [güncelleştirme yönetimi istemci gereksinimleri](automation-update-management.md#client-requirements).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 | Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
 | Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar. |
-| Azure Depolama hesabınızın |Hayır |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
+| Azure Storage hesabı |No |Azure depolama, sistem güncelleştirmeleriyle ilgili bilgiler içermez. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 

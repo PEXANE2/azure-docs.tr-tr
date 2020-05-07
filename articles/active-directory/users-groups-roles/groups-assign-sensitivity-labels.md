@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329741"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582942"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) içinde Office 365 gruplarına duyarlılık etiketleri atama
 
@@ -112,10 +112,10 @@ Bu özelliği etkinleştirdikten sonra, gruplar için "klasik" sınıflandırmal
 
 Duyarlılık etiketi seçeneği yalnızca aşağıdaki koşulların tümü karşılandığında gruplar için görüntülenir:
 
-1. Etiketler, bu kiracı için Microsoft 365 Uyumluluk Merkezi 'nde yayımlanır.
+1. Etiketler, bu Azure AD kuruluşu için Microsoft 365 Uyumluluk Merkezi 'nde yayımlanır.
 1. Özellik etkin, PowerShell 'de Enablemıplabels true olarak ayarlandı.
 1. Grup bir Office 365 grubudur.
-1. Kiracının etkin bir Azure Active Directory Premium P1 lisansı vardır.
+1. Kuruluşun etkin bir Azure Active Directory Premium P1 lisansı vardır.
 1. Geçerli oturum açan kullanıcının etiket atamak için yeterli ayrıcalıkları vardır. Kullanıcının bir genel yönetici, Grup Yöneticisi veya grup sahibi olması gerekir.
 
 Bir gruba etiket atamak için lütfen tüm koşulların karşılandığından emin olun.

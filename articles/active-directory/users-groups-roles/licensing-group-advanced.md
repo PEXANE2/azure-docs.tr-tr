@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266292"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582784"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory 'de lisanslamayı yönetmek için grupları kullanarak senaryolar, sınırlamalar ve bilinen sorunlar
 
@@ -100,7 +100,7 @@ Başlangıçta, kullanıcı lisansı yalnızca dört hizmet planını sağlayan 
 
 ## <a name="managing-new-services-added-to-products"></a>Ürünlere eklenen yeni hizmetleri yönetme
 
-Microsoft bir ürün lisans planına yeni bir hizmet eklediğinde, ürün lisansını atadığınız tüm gruplarda varsayılan olarak etkinleştirilir. Kiracınızdaki ürün değişiklikleriyle ilgili bildirimlere abone olan kullanıcılar, yaklaşan hizmet eklemeleri hakkında bilgilendirmeye devam eden e-postaları alacaktır.
+Microsoft bir ürün lisans planına yeni bir hizmet eklediğinde, ürün lisansını atadığınız tüm gruplarda varsayılan olarak etkinleştirilir. Kuruluşunuzdaki ürün değişiklikleriyle ilgili bildirimlere abone olan kullanıcılar, yaklaşan hizmet eklemeleri hakkında bilgilendirmeye devam eden e-postaları alacaktır.
 
 Yönetici olarak, her grupta yeni hizmeti devre dışı bırakmak gibi değişiklik ve eylem eylemini etkileyen tüm grupları gözden geçirebilirsiniz. Örneğin, yalnızca dağıtım için belirli hizmetleri hedefleyen gruplar oluşturduysanız, bu grupları yeniden ziyaret edebilir ve yeni eklenen hizmetlerin devre dışı bırakıldığından emin olabilirsiniz.
 
@@ -108,7 +108,7 @@ Bu işlemin nasıl görünebileceklerini aşağıda görebilirsiniz:
 
 1. İlk olarak, *Office 365 Enterprise E5* ürününü birkaç gruba atamış olursunuz. *O365 E5-Exchange* olarak adlandırılan gruplardan biri yalnızca üyeleri Için *Exchange Online (plan 2)* hizmetini etkinleştirmek üzere tasarlanmıştır.
 
-2. Microsoft 'un, E5 ürününün yeni bir hizmet *Microsoft Stream*uzatılmayacak bir bildirim aldınız. Hizmet kiracınızda kullanılabilir hale geldiğinde, şunları yapabilirsiniz:
+2. Microsoft 'un, E5 ürününün yeni bir hizmet *Microsoft Stream*uzatılmayacak bir bildirim aldınız. Hizmet kuruluşunuzda kullanılabilir olduğunda şunları yapabilirsiniz:
 
 3. [**Tüm ürünler dikey penceresinde Azure Active Directory > > lisanslar**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ' a gidin ve *Office 365 Kurumsal E5*' i seçin, sonra da bu ürüne sahip tüm grupların bir listesini görüntülemek için **lisanslı gruplar** ' ı seçin.
 
@@ -128,9 +128,9 @@ Bu işlemin nasıl görünebileceklerini aşağıda görebilirsiniz:
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Kimin devralınan ve doğrudan lisanslarına sahip olduğunu görmek için PowerShell 'i kullanın
 Kullanıcıların doğrudan atanmış veya gruptan devralınan bir lisansa sahip olup olmadığını denetlemek için bir PowerShell betiği kullanabilirsiniz.
 
-1. Kimlik doğrulaması `connect-msolservice` yapmak ve kiracınıza bağlanmak için cmdlet 'ini çalıştırın.
+1. Kimlik doğrulaması `connect-msolservice` yapmak ve kuruluşunuza bağlanmak için cmdlet 'ini çalıştırın.
 
-2. `Get-MsolAccountSku`Kiracıdaki tüm sağlanan Ürün lisanslarını saptamak için kullanılabilir.
+2. `Get-MsolAccountSku`Azure AD kuruluşunda sağlanan tüm Ürün lisanslarını bulmaya yönelik kullanılabilir.
 
    ![Get-Msolaccountsku cmdlet 'inin ekran görüntüsü](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

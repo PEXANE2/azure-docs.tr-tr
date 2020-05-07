@@ -1,6 +1,6 @@
 ---
 title: Multi-Factor Authentication’ı yapılandırma
-description: SQL veritabanı ve SQL veri ambarı için SSMS ile çok yönlü bir kimlik doğrulamasını nasıl kullanacağınızı öğrenin.
+description: SQL veritabanı ve Azure SYNAPSE Analytics için SSMS ile çok yönlü bir kimlik doğrulamasını nasıl kullanacağınızı öğrenin
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,42 +11,42 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 5d4d410f6fca566dab14e601972952b5996c331a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38d8eba5dd451c8e8709ce4d43aba107e5346bfc
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124881"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627373"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 
-Bu konu, Azure Active Directory Multi-Factor Authentication (MFA) SQL Server Management Studio ile nasıl kullanacağınızı gösterir. SSMS veya SqlPackage. exe, Azure [SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)'NA bağlanırken Azure AD MFA kullanılabilir. Azure SQL veritabanı Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
+Bu konu, Azure Active Directory Multi-Factor Authentication (MFA) SQL Server Management Studio ile nasıl kullanacağınızı gösterir. SSMS veya SqlPackage. exe ' yi Azure [SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)'e bağlarken Azure AD MFA kullanılabilir. Azure SQL veritabanı Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
 
 > [!NOTE]
-> Bu konu başlığı, Azure SQL sunucusunun yanı sıra Azure SQL sunucusu üzerinde oluşturulmuş olan SQL Veritabanı ve SQL Veri Ambarı veritabanları için de geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu konu, Azure SQL Server ve Azure SQL Server 'da oluşturulan hem SQL veritabanı hem de Azure SYNAPSE veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır.
 
 ## <a name="configuration-steps"></a>Yapılandırma adımları
 
 1. **Azure Active Directory yapılandırma** -daha fazla bilgi için bkz. [Azure AD dizininizi yönetme](https://msdn.microsoft.com/library/azure/hh967611.aspx), [Şirket içi kimliklerinizi Azure ACTIVE DIRECTORY ile tümleştirme](../active-directory/hybrid/whatis-hybrid-identity.md), [Azure AD 'ye kendi etki alanı adınızı ekleme](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure artık Windows Server ACTIVE DIRECTORY ile Federasyonu destekliyor](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)ve [Windows PowerShell kullanarak Azure AD 'yi yönetme](https://msdn.microsoft.com/library/azure/jj151815.aspx).
-2. **MFA 'Yı yapılandırma** -adım adım yönergeler için bkz. Azure [SQL veritabanı ve veri ambarı ile](sql-database-conditional-access.md) [Azure Multi-Factor Authentication nedir?](../active-directory/authentication/multi-factor-authentication.md), koşullu erişim (MFA). (Tam koşullu erişim bir Premium Azure Active Directory (Azure AD) gerektirir. Standart bir Azure AD ile sınırlı MFA kullanılabilir.)
-3. **SQL veritabanı veya SQL veri ambarı 'Nı Azure AD kimlik doğrulaması Için yapılandırma** -adım adım yönergeler için, bkz. [Azure Active Directory KIMLIK doğrulaması kullanarak SQL VERITABANı 'Na veya SQL Data Warehouse 'a bağlanma](sql-database-aad-authentication.md).
+2. **MFA 'Yı yapılandırma** -adım adım yönergeler için bkz. Azure [Multi-Factor Authentication nedir?](../active-directory/authentication/multi-factor-authentication.md), [koşullu erişim (MFA) ve Azure SQL veritabanı ve Azure SYNAPSE](sql-database-conditional-access.md). (Tam koşullu erişim bir Premium Azure Active Directory (Azure AD) gerektirir. Standart bir Azure AD ile sınırlı MFA kullanılabilir.)
+3. **Azure AD kimlik doğrulaması IÇIN SQL veritabanı veya Azure SYNAPSE yapılandırma** -adım adım yönergeler için bkz. [Azure Active Directory KIMLIK doğrulaması kullanarak SQL veritabanı 'Na veya Azure SYNAPSE 'ye bağlanma](sql-database-aad-authentication.md).
 4. **SSMS 'Yi indirme** -istemci bilgisayarda, [indirme SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)adresinden en son SSMS 'yi indirin. Bu konudaki tüm özellikler için en az 2017 Temmuz sürüm 17,2 kullanın.  
 
 ## <a name="connecting-by-using-universal-authentication-with-ssms"></a>SSMS ile evrensel kimlik doğrulaması kullanarak bağlanma
 
-Aşağıdaki adımlarda, en son SSMS kullanılarak SQL veritabanı veya SQL veri ambarı 'na nasıl bağlanayapılacağı gösterilmektedir.
+Aşağıdaki adımlarda, en son SSMS kullanılarak SQL Database veya SAzure SYNAPSE 'a nasıl bağlanayapılacağı gösterilmektedir.
 
 1. Evrensel kimlik doğrulaması kullanarak bağlanmak için, **sunucuya Bağlan** ILETIŞIM kutusunda **MFA desteğiyle Active Directory-Universal**' ı seçin. ( **Active Directory evrensel kimlik doğrulaması** ' nı görürseniz, en son SSMS sürümünde değilsiniz.)  
    ![1mfa-Universal-Connect][1]  
 2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu, biçimde `user_name@domain.com`doldurun.  
    ![1mfa-evrensel-Bağlan-Kullanıcı](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
-3. Konuk Kullanıcı olarak bağlanıyorsanız, SMS 18. x veya daha sonraki bir sürümü tarafından otomatik olarak tanıyacağından, Konuk kullanıcılar için AD etki alanı adını veya kiracı KIMLIĞI alanını doldurmanız artık gerekmez. Daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
+3. Konuk Kullanıcı olarak bağlanıyorsanız, SMS 18. x veya daha sonraki bir sürümü tarafından otomatik olarak tanıyacağından, Konuk kullanıcılar için AD etki alanı adını veya kiracı KIMLIĞI alanını doldurmanız artık gerekmez. Daha fazla bilgi için bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
    ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
    Ancak, SSMS 17. x veya daha eski bir sürümle Konuk Kullanıcı olarak bağlanıyorsanız, **Seçenekler**' e tıklamanız ve **bağlantı özelliği** iletişim kutusunda, **ad etkı alanı adını veya Kiracı kimliği** kutusunu doldurmanız gerekir.
    ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. SQL veritabanı ve SQL veri ambarı için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com), kutuyu denetlemeniz ve geçerli ad etki alanı adını ya da kiracı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
+4. SQL veritabanı ve Azure SYNAPSE için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com), kutuyu denetlemeniz ve geçerli ad etki alanı adını ya da kiracı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
 5. **Hesapta oturum açma** iletişim kutusu göründüğünde, Azure Active Directory kimliğinizin hesabını ve parolasını girin. Bir Kullanıcı Azure AD ile federe bir etki alanının parçasıysa parola gerekli değildir.  
    ![2mfa-oturum açma][2]  
 
@@ -65,7 +65,7 @@ Doğrulama tamamlandığında SSMS, genellikle geçerli kimlik bilgilerini ve g�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure SQL veritabanı Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı ve SQL veri ambarı Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).  
+- Azure SQL veritabanı Multi-Factor Authentication 'a genel bakış için bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).  
 - Veritabanınıza başkalarının erişmesine izin verme: [SQL veritabanı kimlik doğrulaması ve yetkilendirme: erişim verme](sql-database-manage-logins.md)  
 - Başkalarının güvenlik duvarından bağlanmasına emin olun: [Azure Portal kullanarak Azure SQL veritabanı sunucu düzeyi güvenlik duvarı kuralı yapılandırma](sql-database-configure-firewall-settings.md)  
 - MFA kimlik doğrulamasıyla **Active Directory Universal** KULLANıRKEN, adal Izleme [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)ile başlayarak kullanılabilir. Varsayılan olarak, **Azure hizmetleri**, **Azure Cloud**, **adal çıkış penceresi izleme düzeyi**altındaki **Araçlar**, **Seçenekler** menüsünü ve ardından **Görünüm** menüsünde **çıktıyı** etkinleştirerek, adal izlemeyi açabilirsiniz. İzlemeler **Azure Active Directory seçenek**belirlendiğinde çıkış penceresinde kullanılabilir.   

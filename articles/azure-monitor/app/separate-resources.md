@@ -2,13 +2,13 @@
 title: Azure Application Insights telemetri ayırma
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536786"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562160"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Geliştirme, test ve üretimden telemetri ayırma
 
@@ -20,13 +20,24 @@ Bir Web uygulamasının sonraki sürümünü geliştirirken, yeni sürümden ve 
 
 Web uygulamanız için Application Insights izlemeyi ayarlarken Microsoft Azure ' de bir Application Insights *kaynağı* oluşturursunuz. Uygulamanızdan toplanan Telemetriyi görmek ve analiz etmek için Azure portal bu kaynağı açarsınız. Kaynak bir *izleme anahtarı* (Ikey) ile tanımlanır. Uygulamanızı izlemek için Application Insights paketini yüklediğinizde, Telemetriyi nereye gönderileceğini bilmesi için izleme anahtarıyla yapılandırırsınız.
 
-Genellikle farklı senaryolarda ayrı kaynaklar veya tek bir paylaşılan kaynak kullanmayı tercih edersiniz:
+Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. Tek tek bileşenler aynı Application Insights kaynağına rapor alıyorsa, bu ölçümler Pano/Uyarı üzerinde anlamlı olmayabilir.
 
-* Farklı, bağımsız uygulamalar-her uygulama için ayrı bir kaynak ve Ikey kullanın.
-* Birden çok bileşen veya bir iş uygulaması rolü-tüm bileşen uygulamaları için [tek bir paylaşılan kaynak](../../azure-monitor/app/app-map.md) kullanın. Telemetri cloud_RoleName özelliğine göre filtrelenebilir veya kesimlenebilir.
-* Geliştirme, test ve yayın-' damga ' veya üretim aşamasında sistemin sürümleri için ayrı bir kaynak ve Ikey kullanın.
-* A | B testi-tek bir kaynak kullanın. Telemetrileri tanımlayan bir özelliği bir özellik eklemek için Telemetryınitializer oluşturun.
+### <a name="use-a-single-application-insights-resource"></a>Tek bir Application Insights kaynağı kullanma
 
+-   Birlikte dağıtılan uygulama bileşenleri için. Genellikle aynı DevOps/Ise kullanıcıları tarafından yönetilen tek bir ekip tarafından geliştirilmiştir.
+-   Bu, yanıt süreleri, panodaki hata oranları gibi ana performans göstergelerini (KPI 'Lar), varsayılan olarak tüm bunların tamamında (Ölçüm Gezgini deneyiminde rol adına göre segmentleyebilirsiniz) bir araya getirir.
+-   Rol tabanlı Access Control (RBAC) uygulama bileşenleri arasında farklı bir şekilde yönetmeye gerek yoktur.
+-   Bileşenler arasında farklı ölçüm uyarısı ölçütlerine gerek yoksa.
+-   Sürekli dışarı aktarmaları bileşenler arasında farklı şekilde yönetmeniz gerekmiyorsa.
+-   Faturalandırma/kotaları bileşenler arasında farklı şekilde yönetmeniz gerekmiyorsa.
+-   Bir API anahtarının tüm bileşenlerdeki verilere erişimi olması normaldir. Ve 10 API anahtarı tüm bunlar genelinde gereksinimler için yeterlidir.
+-   Tüm roller genelinde aynı akıllı algılama ve çalışma öğesi tümleştirme ayarlarına sahip olmak istiyorsanız.
+
+### <a name="other-things-to-keep-in-mind"></a>Göz önünde bulundurmanız gereken diğer şeyler
+
+-   Anlamlı değerlerin [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) özniteliğine ayarlandığından emin olmak için özel kod eklemeniz gerekebilir. Bu öznitelik için anlamlı değerler ayarlanmaksızın, Portal deneyimlerinden *hiçbiri* çalışmayacak.
+- Service Fabric uygulamalar ve klasik bulut hizmetleri için SDK otomatik olarak Azure rol ortamından okur ve bunları ayarlar. Diğer tüm uygulama türleri için büyük olasılıkla bunu açıkça ayarlamanız gerekecektir.
+-   Canlı ölçüm deneyimi, rol adına göre bölmeyi desteklemez.
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dinamik izleme anahtarı
 
@@ -47,7 +58,7 @@ Bir ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde anahtarı a
 Bu örnekte, farklı kaynaklar için ıkeys 'ler Web yapılandırma dosyasının farklı sürümlerine yerleştirilir. Yayın betiğinin bir parçası olarak yapabileceğiniz Web yapılandırma dosyasını değiştirme-hedef kaynağı takas eder.
 
 ### <a name="web-pages"></a>Web sayfaları
-Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç dikey penceresinden aldığınız betikte](../../azure-monitor/app/javascript.md)de kullanılır. Komut dosyasına tam olarak kodlamak yerine sunucu durumundan oluşturun. Örneğin, bir ASP.NET uygulamasında:
+Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç bölmesinden aldığınız betikte](../../azure-monitor/app/javascript.md)de kullanılır. Komut dosyasına tam olarak kodlamak yerine sunucu durumundan oluşturun. Örneğin, bir ASP.NET uygulamasında:
 
 *Razor 'de JavaScript*
 
@@ -63,26 +74,11 @@ Ikey, uygulamanızın Web sayfalarında [hızlı başlangıç dikey penceresinde
 
 
 ## <a name="create-additional-application-insights-resources"></a>Ek Application Insights kaynakları oluşturma
-Farklı uygulama bileşenlerine veya aynı bileşenin farklı damgalar (geliştirme ve test/üretim) için telemetri ayırmak üzere yeni bir Application Insights kaynağı oluşturmanız gerekir.
 
-[Portal.Azure.com](https://portal.azure.com)bir Application Insights kaynağı ekleyin:
-
-![Yeni, Application Insights öğesine tıklayın](./media/separate-resources/01-new.png)
-
-* **Uygulama türü** , genel bakış dikey penceresinde gördüklerinizi ve [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md)'nde kullanılabilen özellikleri etkiler. Uygulama türünü görmüyorsanız, Web sayfaları için Web türlerinden birini seçin.
-* **Kaynak grubu** , [Access Control](../../azure-monitor/app/resources-roles-access-control.md)gibi özellikleri yönetmeye kolaylık vardır. Geliştirme, test ve üretim için ayrı kaynak grupları kullanabilirsiniz.
-* **Abonelik** , Azure 'daki ödeme hesabıdır.
-* **Konum** , verilerinizi nerede tutacağız. Şu anda değiştirilemez. 
-* **Panoya Ekle** , Azure giriş sayfanıza kaynağınız için hızlı erişim kutucuğu koyar. 
-
-Kaynağı oluşturmak birkaç saniye sürer. İşiniz bittiğinde bir uyarı görürsünüz.
-
-(Bir kaynağı otomatik olarak oluşturmak için bir [PowerShell betiği](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) yazabilirsiniz.)
+Bir Application Insights kaynağı oluşturmak için [kaynak oluşturma kılavuzunu](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)izleyin.
 
 ### <a name="getting-the-instrumentation-key"></a>İzleme anahtarını alma
-İzleme anahtarı, oluşturduğunuz kaynağı tanımlar. 
-
-![Temel bileşenler ' e tıklayın, Izleme tuşuna tıklayın, CTRL + C](./media/separate-resources/02-props.png)
+İzleme anahtarı, oluşturduğunuz kaynağı tanımlar.
 
 Uygulamanızın veri göndereceği tüm kaynakların izleme anahtarlarına ihtiyacınız vardır.
 
@@ -90,8 +86,6 @@ Uygulamanızın veri göndereceği tüm kaynakların izleme anahtarlarına ihtiy
 Uygulamanızın yeni bir sürümünü yayımladığınızda, farklı yapılardan Telemetriyi ayırabilmek isteyeceksiniz.
 
 Uygulama sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve [Ölçüm Gezgini](../../azure-monitor/platform/metrics-charts.md) sonuçlarını filtreleyebilmeniz için ayarlayabilirsiniz.
-
-![Bir özellik üzerinde filtreleme](./media/separate-resources/050-filter.png)
 
 Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
@@ -146,7 +140,6 @@ Ancak, derleme sürüm numarasının Visual Studio 'daki geliştirici derlemesi 
 ### <a name="release-annotations"></a>Sürüm ek açıklamaları
 Azure DevOps kullanıyorsanız, yeni bir sürüm yayınlayışınızda grafiklerinize [ek açıklama işaretleyicisi](../../azure-monitor/app/annotations.md) ekleyebilirsiniz. Aşağıdaki görüntüde bu işaretin nasıl göründüğü gösterilmiştir.
 
-![Bir grafikteki örnek sürüm ek açıklamasının ekran görüntüsü](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Birden çok rol için paylaşılan kaynaklar](../../azure-monitor/app/app-map.md)

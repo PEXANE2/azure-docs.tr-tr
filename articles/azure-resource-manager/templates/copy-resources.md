@@ -2,13 +2,13 @@
 title: Birden çok kaynak örneğini dağıtma
 description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemini ve dizileri kullanın.
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153327"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583392"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
 
@@ -18,7 +18,7 @@ Ayrıca, [özellikleri](copy-properties.md), [değişkenleri](copy-variables.md)
 
 Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](conditional-resource-deployment.md).
 
-## <a name="resource-iteration"></a>Kaynak yinelemesi
+## <a name="syntax"></a>Sözdizimi
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -34,6 +34,23 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 **Name** özelliği, döngüsünü tanımlayan herhangi bir değerdir. **Count** özelliği, kaynak türü için istediğiniz yineleme sayısını belirtir.
 
 Kaynakların paralel veya sıralı olarak dağıtılıp dağıtılmadığını belirtmek için **Mode** ve **BatchSize** özelliklerini kullanın. Bu özellikler [seri veya paralel](#serial-or-parallel)olarak açıklanmaktadır.
+
+## <a name="copy-limits"></a>Sınırları Kopyala
+
+Sayım 800 ' i aşamaz.
+
+Sayı negatif bir sayı olamaz. Yeni bir Azure CLı, PowerShell veya REST API sürümü ile şablonu dağıtırsanız sıfır olabilir. Özellikle, şunu kullanmanız gerekir:
+
+* Azure PowerShell **2,6** veya üzeri
+* Azure CLı **2.0.74** veya üzeri
+* REST API sürüm **2019-05-10** veya üzeri
+* [Bağlı dağıtımlar](linked-templates.md) , dağıtım kaynak türü için apı sürüm **2019-05-10** veya üstünü kullanmalıdır
+
+PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
+
+Kopya ile [tamamlanmış mod dağıtımını](deployment-modes.md) kullanırken dikkatli olun. Tüm modu bir kaynak grubuna yeniden dağıtıyorsanız, kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen tüm kaynaklar silinir.
+
+## <a name="resource-iteration"></a>Kaynak yinelemesi
 
 Aşağıdaki örnek, **Storagecount** parametresinde belirtilen depolama hesabı sayısını oluşturur.
 
@@ -257,14 +274,6 @@ Aşağıdaki örnek, uygulamayı göstermektedir:
   ...
 }]
 ```
-
-## <a name="copy-limits"></a>Sınırları Kopyala
-
-Sayım 800 ' i aşamaz.
-
-Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
-
-Kopya ile [tamamlanmış mod dağıtımını](deployment-modes.md) kullanırken dikkatli olun. Tüm modu bir kaynak grubuna yeniden dağıtıyorsanız, kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen tüm kaynaklar silinir.
 
 ## <a name="example-templates"></a>Örnek Şablonlar
 

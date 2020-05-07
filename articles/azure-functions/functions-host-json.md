@@ -2,13 +2,13 @@
 title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758843"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690894"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Işlevleri 2. x ve üzeri için Host. JSON başvurusu 
 
@@ -24,6 +24,8 @@ ms.locfileid: "81758843"
 Diğer işlev uygulama yapılandırma seçenekleri, [uygulama ayarlarınızda](functions-app-settings.md) (dağıtılan uygulamalar için) veya [yerel. Settings. JSON](functions-run-local.md#local-settings-file) dosyanızda (yerel geliştirme için) yönetilir.
 
 Ana bilgisayar. json ' daki bağlamalarla ilgili yapılandırma işlevleri işlev uygulamasındaki her işleve eşit olarak uygulanır. 
+
+Ayrıca, uygulama ayarlarını kullanarak [ortam başına ayarları geçersiz kılabilir veya uygulayabilirsiniz](#override-hostjson-values) .
 
 ## <a name="sample-hostjson-file"></a>Örnek Host. JSON dosyası
 
@@ -386,6 +388,23 @@ Değişiklikler için izlenmesi gereken bir [paylaşılan kod dizinleri](functio
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>Host. JSON değerlerini geçersiz kıl
+
+Host. json dosyasının kendisini değiştirmeden belirli bir ortam için bir Host. JSON dosyasındaki belirli ayarları yapılandırmak veya değiştirmek istediğiniz örnekler olabilir.  Belirli bir konağı geçersiz kılabilirsiniz. JSON değerleri, bir uygulama ayarı olarak denk bir değer oluşturmaktır. Çalışma zamanı, biçimde `AzureFunctionsJobHost__path__to__setting`bir uygulama ayarı bulduğunda, JSON içinde konumunda `path.to.setting` bulunan eşdeğer Host. JSON ayarını geçersiz kılar. Bir uygulama ayarı olarak ifade edildiğinde, JSON hiyerarşisini göstermek`.`için kullanılan nokta () bir çift alt çizgi (`__`) ile değiştirilmiştir. 
+
+Örneğin, yerel olarak çalışırken Application Insight örneklemesi devre dışı bırakmak istediğinizi varsayalım. Application Insights devre dışı bırakmak için yerel Host. json dosyasını değiştirdiyseniz, bu değişiklik dağıtım sırasında üretim uygulamanıza gönderilir. Bunu yapmanın daha güvenli yolu, bunun yerine `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` `local.settings.json` dosyada olduğu gibi bir uygulama ayarı oluşturmaktır. Bunu, yayımlanmadığı aşağıdaki `local.settings.json` dosyada görebilirsiniz:
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 

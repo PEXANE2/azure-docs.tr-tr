@@ -3,12 +3,12 @@ title: Bir değişkenin birden çok örneğini tanımlama
 description: Bir değişken oluştururken birden çok kez yinelemek için Azure Resource Manager şablonda kopyalama işlemini kullanın.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153310"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583377"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM şablonlarında değişken yineleme
 
@@ -16,7 +16,7 @@ Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir değişken için bir
 
 Ayrıca, [kaynak, bir kaynaktaki Özellikler](copy-properties.md)ve [çıktılar](copy-outputs.md) [ile kopyalama](copy-resources.md)özelliğini de kullanabilirsiniz.
 
-## <a name="variable-iteration"></a>Değişken yineleme
+## <a name="syntax"></a>Sözdizimi
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -33,6 +33,21 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 **Name** özelliği, döngüsünü tanımlayan herhangi bir değerdir. **Count** özelliği, değişken için istediğiniz yineleme sayısını belirtir.
 
 **Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun. Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
+
+## <a name="copy-limits"></a>Sınırları Kopyala
+
+Sayım 800 ' i aşamaz.
+
+Sayı negatif bir sayı olamaz. Yeni bir Azure CLı, PowerShell veya REST API sürümü ile şablonu dağıtırsanız sıfır olabilir. Özellikle, şunu kullanmanız gerekir:
+
+* Azure PowerShell **2,6** veya üzeri
+* Azure CLı **2.0.74** veya üzeri
+* REST API sürüm **2019-05-10** veya üzeri
+* [Bağlı dağıtımlar](linked-templates.md) , dağıtım kaynak türü için apı sürüm **2019-05-10** veya üstünü kullanmalıdır
+
+PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
+
+## <a name="variable-iteration"></a>Değişken yineleme
 
 Aşağıdaki örnek dize değerleri dizisinin nasıl oluşturulacağını gösterir:
 
@@ -294,12 +309,6 @@ Sonraki örnekte, değişkenleri ile kopyalama kullanmanın farklı yolları gö
   }
 }
 ```
-
-## <a name="copy-limits"></a>Sınırları Kopyala
-
-Sayım 800 ' i aşamaz.
-
-Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
 
 ## <a name="example-templates"></a>Örnek Şablonlar
 

@@ -3,12 +3,12 @@ title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100065"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562092"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
@@ -25,6 +25,7 @@ Bu makalede, Azure Backup hizmetini kullanarak yedeklemeyi yapılandırırken ve
   >Bir depolama hesabındaki tüm dosya paylaşımları yalnızca bir kurtarma hizmetleri Kasası altında korunabilir. Depolama hesabınızın kaydedildiği kurtarma hizmetleri kasasını bulmak için [bu betiği](scripts/backup-powershell-script-find-recovery-services-vault.md) kullanabilirsiniz.
 
 - Dosya paylaşımının desteklenmeyen depolama hesaplarında bulunmadığından emin olun. Desteklenen depolama hesaplarını bulmak için [Azure dosya paylaşma yedeklemesi Için destek matrisine](azure-file-share-support-matrix.md) başvurabilirsiniz.
+- Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verme seçeneğinin etkin olduğundan emin olmak için depolama hesabının güvenlik duvarı ayarlarını kontrol edin.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Portal durumlarında hata oluştu, depolama hesaplarını bulma işlemi başarısız oldu
 

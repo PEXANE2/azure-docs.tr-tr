@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 059c43b24ddc9f319eac4f2783cfc203bed8c7f1
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188520"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900427"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak bir Amazon hesabı ile oturum açmayı ayarlama
 
@@ -29,17 +29,16 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](c
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - Zaten bir Amazon hesabınız yoksa, bir tane oluşturun [https://www.amazon.com/](https://www.amazon.com/).
 
-## <a name="register-the-application"></a>Uygulamayı kaydetme
+## <a name="create-an-app-in-the-amazon-developer-console"></a>Amazon geliştirici konsolunda uygulama oluşturma
 
-Kullanıcıların bir Amazon hesabından oturum açmasını etkinleştirmek için bir Amazon uygulaması oluşturmanız gerekir.
+Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını federal kimlik sağlayıcısı olarak kullanmak için, [Amazon Developer Services ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/).
 
-1. Amazon hesabı kimlik bilgilerinizle [Amazon Geliştirici Merkezi](https://login.amazon.com/) ' nde oturum açın.
-2. Daha önce yapmadıysanız, **Kaydol**' a tıklayın, geliştirici kayıt adımlarını izleyin ve ilkeyi kabul edin.
-3. **Yeni uygulama kaydet**' i seçin.
-4. Bir **ad**, **Açıklama**ve **Gizlilik bildirimi URL 'si**girin ve ardından **Kaydet**' e tıklayın. Gizlilik bildirimi, kullanıcılara gizlilik bilgileri sağlayan bir sayfasıdır.
-5. **Web ayarları** bölümünde, **istemci kimliği**değerlerini kopyalayın. İstemci parolasını almak için **gizli göster** ' i seçin ve sonra kopyalayın. Bir Amazon hesabını kiracınızda kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız vardır. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
-6. **Web ayarları** bölümünde **Düzenle**' yi seçin ve izin verilen **JavaScript kaynakları** ' na ve `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **izin verilen dönüş URL 'lerine**girin. `https://your-tenant-name.b2clogin.com` Kiracınızın adıyla değiştirin `your-tenant-name` . Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanın.
-7. **Kaydet**’e tıklayın.
+> [!NOTE]  
+> Aşağıdaki **8. adımdaki** URL 'leri kullanarak kiracınızın adıyla `your-tenant-name` değiştirin. Kiracı adınızı girerken, kiracı, Azure AD B2C büyük harfle tanımlansa bile, tüm küçük harfleri kullanın.
+> - **Izin verilen çıkış noktaları**için şunu girin`https://your-tenant-name.b2clogin.com` 
+> - **Izin verilen dönüş URL 'leri**için şunu girin`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 

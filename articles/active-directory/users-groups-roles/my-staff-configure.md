@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/01/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165883"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690684"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Personelim ile kullanıcılarınızı yönetme (Önizleme)
 
@@ -26,9 +26,28 @@ Personeliniz, bir mağaza yöneticisi veya bir ekip lideri gibi yetkili bir şek
 
 Kurumumu kuruluşunuz için yapılandırmadan önce bu belgenin yanı sıra bu özelliğin kullanıcılarınıza yönelik işlevselliğini ve etkisini anladığınızdan emin olmak için bu belgeleri ve [Kullanıcı belgelerini](../user-help/my-staff-team-manager.md) incelemenizi öneririz. Kullanıcıları yeni deneyimle eğitmeniz ve hazırlamak için Kullanıcı belgelerinden yararlanabilir ve başarılı bir dağıtım sağlanmasına yardımcı olabilirsiniz.
 
+Kullanıcılar için SMS tabanlı kimlik doğrulaması, Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
 ## <a name="how-my-staff-works"></a>Personeliniz nasıl işe yarar?
 
 Personeliniz, bir rol atamasının yönetim denetiminin kapsamını kısıtlamak için kullanılabilecek bir kaynak kapsayıcısı olan yönetim birimlerini (Avustralya) temel alır. Personelimde, bir mağaza veya departman gibi kuruluş kullanıcılarının bir alt kümesini tanımlamak için Avustralya kullanılır. Daha sonra, örneğin, kapsamı bir veya daha fazla au olan bir role ekip yöneticisi atanabilir. Aşağıdaki örnekte, kullanıcıya kimlik doğrulama yönetim rolü verildi ve üç Avustralya da rolün kapsamıdır. Yönetim birimleri hakkında daha fazla bilgi için bkz. [Azure Active Directory yönetim birimleri yönetimi](directory-administrative-units.md).
+
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
+
+* Etkin bir Azure aboneliği.
+
+  * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aboneliğinizle ilişkili bir Azure Active Directory kiracısı.
+
+  * Gerekirse, [bir Azure Active Directory kiracı oluşturun](../fundamentals/sign-up-organization.md) veya [bir Azure aboneliğini hesabınızla ilişkilendirin](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+* SMS tabanlı kimlik doğrulamasını etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
+* SMS mesajı kimlik doğrulama yöntemi ilkesinde etkin olan her bir kullanıcının, kullanmasa bile lisanslanması gerekir. Her etkin kullanıcı aşağıdaki Azure AD veya Microsoft 365 lisanslarından birine sahip olmalıdır:
+
+  * [Azure AD Premium P1 veya P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 (M365) F1 veya F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 veya E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) ya da [Microsoft 365 (M365) E3 veya E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>Personelimi etkinleştirme
 
@@ -47,7 +66,7 @@ Azure AD koşullu erişim ilkesini kullanarak personel portalından koruma sağl
 
 [Azure AD koşullu erişim ilkelerini](https://docs.microsoft.com/azure/active-directory/conditional-access/)kullanarak personelimi korumanızı kesinlikle öneririz. Personelinize koşullu erişim ilkesi uygulamak için, PowerShell kullanarak personel hizmeti sorumlusunu el ile oluşturmanız gerekir.
 
-### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>Personelinize koşullu erişim ilkesi uygulama
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Personelinize koşullu erişim ilkesi uygulama
 
 1. [Microsoft Graph Beta PowerShell cmdlet 'lerini](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)yükler.
 1. Aşağıdaki komutları çalıştırın:
@@ -62,13 +81,6 @@ Azure AD koşullu erişim ilkesini kullanarak personel portalından koruma sağl
 ## <a name="using-my-staff"></a>Personelimi kullanma
 
 Bir Kullanıcı personelime gittiğinde, yönetim izinlerinin bulunduğu [yönetim birimlerinin](directory-administrative-units.md) adları gösterilir. [Personelin kullanıcı belgelerinde](../user-help/my-staff-team-manager.md), yönetim birimlerine başvurmak için "konum" terimini kullanırız. Yöneticinin izinlerinin AU kapsamı yoksa, izinler kuruluş genelinde uygulanır. Personeliniz etkinleştirildikten sonra, etkin olan ve bir yönetim rolü atanmış olan kullanıcılar buna aracılığıyla [https://mystaff.microsoft.com](https://mystaff.microsoft.com)erişebilir. Bu otomatik olarak, bu AU 'daki kullanıcıları görüntülemek için bir AU seçebilir ve profillerini açmak için bir kullanıcı seçebilirsiniz.
-
-## <a name="licenses"></a>Lisanslar
-
-Personelimde etkin olan her Kullanıcı, personel portalını kullanmasa bile lisanslanmalıdır. Her etkin kullanıcı aşağıdaki Azure AD veya Microsoft 365 lisanslarından birine sahip olmalıdır:
-
-- Azure AD Premium P1 veya P2
-- Microsoft 365 F1 veya F3
 
 ## <a name="reset-a-users-password"></a>Kullanıcı parolasını sıfırlama
 

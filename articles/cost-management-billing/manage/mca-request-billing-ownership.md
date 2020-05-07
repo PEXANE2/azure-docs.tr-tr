@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200736"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692318"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Diğer hesaplardan Azure aboneliklerinin fatura sahipliğini alma
 
@@ -72,7 +72,7 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 
 ## <a name="check-the-transfer-request-status"></a>Aktarım isteğinin durumunu denetleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
@@ -177,7 +177,7 @@ Azure Market ürünleri, ilgili abonelikleriyle birlikte aktarılır.
 
 ### <a name="azure-reservations-transfer"></a>Azure rezervasyonları aktarımı
 
-Azure rezervasyonları abonelikle birlikte otomatik olarak taşınmaz. Rezervasyonları taşımak için [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Kurumsal Anlaşma (EA) aboneliklerini aktarıyorsanız, Azure Rezervasyonları aboneliklerle birlikte otomatik olarak taşınmaz. Rezervasyonları taşımak için [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="access-to-azure-services"></a>Azure hizmetlerine erişim
 

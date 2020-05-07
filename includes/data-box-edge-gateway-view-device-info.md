@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67188831"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561764"
 ---
 1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
 2. Cihazınızın bilgilerini `Get-HcsApplianceInfo` almak için kullanın.
@@ -49,7 +49,7 @@ ms.locfileid: "67188831"
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | Cihaz dağıtımı sırasında yerel Web Kullanıcı arabirimi aracılığıyla yapılandırılan cihazın kolay adı. Varsayılan kolay ad, cihaz seri numarasıdır.  |   |
     | SerialNumber                   | Cihaz seri numarası, fabrikada atanan benzersiz bir sayıdır.                                                                             |   |
-    | Model                          | Data Box Edge veya Data Box Gateway cihazınız için model. Model Data Box Gateway için sanal ve Data Box Edge için fiziksel bir değer.                   |   |
+    | Model                          | Azure Stack Edge veya Data Box Gateway cihazınız için model. Model, Data Box Gateway için Azure Stack Edge ve sanal için fiziksel bir modeldir.                   |   |
     | Daha önce yazılım sürümü        | Cihaz yazılımı sürümüne karşılık gelen kolay dize. Önizleme çalıştıran bir sistem için, kolay yazılım sürümü Data Box Edge 1902 olur. |   |
     | HcsVersion                     | Cihazınızda çalışan HCS yazılım sürümü. Örneğin, 1902 Data Box Edge karşılık gelen HCS yazılım sürümü 1.4.771.324 ' dir.            |   |
     | Localcapacityınmb              | Cihazın megabit 'daki toplam yerel kapasitesi.                                                                                                        |   |

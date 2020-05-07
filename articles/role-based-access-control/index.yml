@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure kaynakları için RBAC belgeleri
-summary: Rol tabanlı erişim denetimi (RBAC), Azure kaynaklarına yönelik ayrıntılı erişim yönetimi sağlayan bir sistemdir. RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz.
+title: Azure RBAC belgeleri
+summary: Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynaklarına yönelik ayrıntılı erişim yönetimi sağlayan bir sistemdir. Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz.
 metadata:
-  title: Azure kaynakları için rol tabanlı erişim denetimi (RBAC) belgeleri
-  description: Azure kaynaklarına erişebilen kişileri, bu kişilerin bu kaynaklarla yapabileceklerini ve erişebildikleri alanları yönetmek için rol tabanlı erişim denetimi (RBAC) hakkında bilgi edinin.
+  title: Azure RBAC belgeleri
+  description: Azure kaynaklarına erişebilen kişileri, bu kişilerin bu kaynaklarla yapabileceklerini ve erişebildikleri alanları yönetmek için Azure rol tabanlı erişim denetimi (Azure RBAC) hakkında bilgi edinin.
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70968305"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733490"
 landingContent:
-- title: Azure kaynakları için RBAC hakkında
+- title: Azure RBAC hakkında
   linkLists:
   - linkListType: overview
     links:
-    - text: RBAC nedir?
+    - text: Azure RBAC nedir?
       url: overview.md
     - text: Farklı rolleri anlama
       url: rbac-and-directory-admin-roles.md
@@ -45,7 +45,7 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: RBAC ile Azure kaynaklarınızın güvenliğini sağlayın
+    - text: Azure RBAC ile Azure kaynaklarınızın güvenliğini sağlayın
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
 - title: Erişimi yönetme
   linkLists:
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: Şablon
       url: role-assignments-template.md
-- title: Özel roller oluşturma
+- title: Özel roller oluşturma veya güncelleştirme
   linkLists:
   - linkListType: overview
     links:
     - text: Özel roller
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Özel rol oluşturma - Portal
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: Özel rol oluşturma - PowerShell

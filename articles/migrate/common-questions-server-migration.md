@@ -1,14 +1,14 @@
 ---
-title: Azure geçişi sunucu geçişi SSS
+title: Azure geçişi sunucu geçişi hakkında sık sorulan sorular
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146045"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744336"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -86,6 +86,10 @@ NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
 NetQosPolicy içinde kullanılacak AppNamePrefix değeri "GatewayWindowsService. exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
  
 New-NetQosPolicy-Name "Kısıtımizi"-AppPathNameMatchCondition "GatewayWindowsService. exe"-kısıtlar Lerateactionbitspersecond 1MB
+
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Zaten Azure 'a çoğaltılan VM 'Leri geçirebilir miyim? 
+
+VM 'Ler başka bir şekilde Azure 'a zaten çoğaltılmakta ise, bu makineleri Azure geçişi sunucu geçişine sahip VM olarak geçiremezsiniz. Geçici bir çözüm olarak, VM 'Leri fiziksel sunucu olarak kabul edebilir ve [Desteklenen fiziksel sunucu geçişine](migrate-support-matrix-physical-migration.md)uygun olarak geçirebilirsiniz.
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Makineleri fiziksel sunucu olarak ne zaman geçirebilirim?
 

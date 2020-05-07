@@ -4,12 +4,12 @@ description: Bu makalede, REST API kullanarak kasasının yapılandırmasını g
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252369"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744575"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API kullanarak Azure kurtarma hizmetleri Kasası yapılandırmasını güncelleştirme
 
@@ -21,7 +21,7 @@ Korunan bir öğenin yedeklerini silmek, izlenmesi gereken önemli bir işlemdir
 
 Ancak bu özelliğin gerekmediği senaryolar vardır. Azure kurtarma hizmetleri Kasası, içinde yedekleme öğeleri varsa, hatta geçici olarak silinenler silinemez. Bu, kasanın hemen silinmesi gerektiğinde bir sorun oluşturabilir. Örneğin: dağıtım işlemleri genellikle aynı iş akışındaki oluşturulan kaynakları temizler. Dağıtım bir kasa oluşturabilir, bir öğe için yedeklemeleri yapılandırabilir, test geri yükleme yapabilir ve sonra yedekleme öğelerini ve kasasını silmeye devam edebilir. Kasa silme işlemi başarısız olursa, tüm dağıtım başarısız olabilir. Geçici silme işleminin devre dışı bırakılması, hemen silmeyi güvence altına almanın tek yoludur.
 
-Bu nedenle, senaryoya bağlı olarak, müşterinin belirli bir kasa için geçici silme devre dışı bırakılıp başlatılmayacağını dikkatle seçmesi gerekir. Daha fazla bilgi için bkz. [geçici silme makalesi](backup-azure-security-feature-cloud.md#soft-delete).
+Bu nedenle, senaryoya bağlı olarak, müşterinin belirli bir kasa için geçici silme devre dışı bırakılıp başlatılmayacağını dikkatle seçmesi gerekir. Daha fazla bilgi için bkz. [geçici silme makalesi](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API kullanarak geçici silme durumunu getirme
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ' GET ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Adı  |Tür  |Açıklama  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 
@@ -83,7 +83,7 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır
 
 Daha fazla ayrıntı için [REST API belgelerine](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) bakın
 
-|Adı  |Gerekli  |Tür  |Açıklama  |
+|Name  |Gerekli  |Tür  |Açıklama  |
 |---------|---------|---------|---------|
 |Özelliği     |         |   Dize      |  İsteğe bağlı eTag       |
 |location     |  true       |Dize         |   Kaynak konumu      |
@@ -107,7 +107,7 @@ Aşağıdaki örnek, geçici silme durumunu ' Disabled ' olarak güncelleştirme
 
 ' PATCH ' işlemi için başarılı yanıt aşağıda gösterilmiştir:
 
-|Adı  |Tür  |Açıklama  |
+|Name  |Tür  |Açıklama  |
 |---------|---------|---------|
 |200 TAMAM     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | Tamam        |
 

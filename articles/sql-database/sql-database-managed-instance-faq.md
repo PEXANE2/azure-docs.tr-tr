@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364161"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598520"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -94,7 +94,13 @@ Yönetilen örneğinizin sağlandığı bölgede her iki donanım nesli de kulla
 
 Arka planda yeni bir yönetilen örnek sağlanacağı ve veritabanlarının sonunda hızlı bir yük devretmeyle, eski ve yeni örnek arasında otomatik olarak aktarılan, bu uzun süredir çalışan bir işlemdir. 
 
+**Aynı bölgede her iki donanım kuşnesi de desteklenmiyorsa ne olacak?**
+
 Aynı bölgede her iki donanım neslini de desteklenmiyorsa, donanım oluşturma işlemi değiştirilebilir, ancak el ile yapılması gerekir. Bu, istenen donanım oluşturma 'nın kullanılabildiği bölgede yeni bir örnek sağlamanızı ve eski ve yeni örnek arasında verileri el ile yedeklemeniz ve geri yüklemeniz gerekir.
+
+**Güncelleştirme işlemini gerçekleştirmek için yeterli IP adresi yoksa ne olacak?**
+
+Yönetilen örneğinizin sağlandığı alt ağda yeterli IP adresi yoksa, içinde yeni bir alt ağ ve yeni yönetilen örnek oluşturmanız gerekir. Ayrıca, daha fazla IP adresi ile yeni bir alt ağ oluşturulmasını önerdiğimiz için, gelecekteki güncelleştirme işlemleri benzer bir duruma engel olur (örneğin, sanal ağ boyutu için [VNET alt ağının boyutunu belirlemeyi](sql-database-managed-instance-determine-size-vnet-subnet.md)denetleyin. Yeni örnek sağlandıktan sonra, eski ve yeni örnek arasında verileri el ile yedekleyebilir veya geri yükleyebilir ya da çapraz örnek [zaman içinde geri yükleme](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell)gerçekleştirebilirsiniz. 
 
 
 ## <a name="tune-performance"></a>Performansı ayarlama

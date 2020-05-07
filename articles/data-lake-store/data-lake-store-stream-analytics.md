@@ -1,23 +1,17 @@
 ---
-title: Stream Analytics veri akışı Azure Data Lake Storage 1. | Microsoft Docs
-description: Azure Data Lake Storage 1. içine veri akışı için Azure Stream Analytics kullanma
-services: data-lake-store,stream-analytics
-documentationcenter: ''
+title: Stream Analytics Data Lake Storage 1.-Azure 'a veri akışı
+description: Verileri Azure Data Lake Storage 1. akışa almak için Azure Stream Analytics kullanın.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60194952"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690976"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Azure Data Lake Storage 1. Azure Depolama Blobu veri akışı
 Bu makalede, Azure Data Lake Storage 1. bir Azure Stream Analytics iş için çıktı olarak nasıl kullanacağınızı öğreneceksiniz. Bu makalede, verileri bir Azure depolama blobundan (giriş) okuyan ve verileri Data Lake Storage 1. (çıktı) yazan basit bir senaryo gösterilmektedir.
@@ -25,16 +19,16 @@ Bu makalede, Azure Data Lake Storage 1. bir Azure Stream Analytics iş için ç�
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure depolama hesabı**. Bu hesaptan bir blob kapsayıcısını, bir Stream Analytics işi için veri girmek üzere kullanacaksınız. Bu öğreticide, **storageforasa** adlı bir depolama hesabınız ve **storageforasacontainer**adlı hesap içinde bir kapsayıcı olduğunu varsayalım. Kapsayıcıyı oluşturduktan sonra bir örnek veri dosyası yükleyin. 
   
-* **Data Lake Storage 1. hesabı**. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)konusundaki yönergeleri izleyin. **Myadlsg1**adlı bir Data Lake Storage 1. hesabınız olduğunu varsayalım. 
+* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. **Myadlsg1**adlı bir Data Lake Storage 1. hesabınız olduğunu varsayalım. 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics İşi oluşturma
 Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluşturarak başlayın. Bu öğretici için kaynak bir Azure Blob kapsayıcısıdır ve hedef Data Lake Storage 1..
 
-1. [Azure Portal](https://portal.azure.com)'da oturum açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
 2. Sol bölmeden **Stream Analytics işleri**' ne ve ardından **Ekle**' ye tıklayın.
 

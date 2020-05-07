@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022690"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562432"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway için kullanım örnekleri
 
@@ -77,7 +77,7 @@ Bu toplu aktarım, ilk dengeli dağıtım aşamasını tamamlar.
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>Data Box Gateway ile devam eden akış
 
-Data Box Gateway ile ilgili devam eden adımları izleyin.
+Data Box Gateway ile ilgili devam eden adımları izleyin. 
 
 1. Data Box Gateway üzerinde bir bulut paylaşma oluşturun. Bu paylaşımın tüm verileri Azure depolama hesabına otomatik olarak yükler. Data Box Gateway kaynağınızın **Paylaşımlar** bölümüne gidin ve **+ Paylaşım Ekle**' ye tıklayın.
 

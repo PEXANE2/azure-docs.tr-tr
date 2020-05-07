@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048148"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582801"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
@@ -160,7 +160,7 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Tür: Boolean<li>Varsayılan: false | Konuk kullanıcının grupların sahibi olup olmayacağını gösteren Boolean. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Tür: Boolean<li>Varsayılan: true | Konuk kullanıcının Office 365 grupları içeriğine erişip erişemeyeceğini gösteren Boolean.  Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
 |  <ul><li>Guestusagekılavuz Linesurl 'Si<li>Türü: Dize<li>Varsayılan: "" | Konuk kullanım yönergelerine bir bağlantının URL 'si. |
-|  <ul><li>AllowToAddGuests<li>Tür: Boolean<li>Varsayılan: true | Bu dizine Konuk ekleme izni verilip verilmeyeceğini gösteren bir Boole değeri. <br>Bu ayar geçersiz kılınabilir ve *Enablemıplas* *true* olarak ayarlanmışsa ve bir konuk ilkesi gruba atanan duyarlılık etiketiyle ilişkilendirildiğinde salt okunurdur.<br>AllowToAddGuests ayarı kiracı düzeyinde false olarak ayarlandıysa, Grup düzeyindeki tüm AllowToAddGuests ayarı yok sayılır. Yalnızca birkaç grup için konuk erişimini etkinleştirmek istiyorsanız, AllowToAddGuests ' i kiracı düzeyinde true olarak ayarlamanız ve ardından belirli gruplar için seçmeli olarak devre dışı bırakmanız gerekir. |
+|  <ul><li>AllowToAddGuests<li>Tür: Boolean<li>Varsayılan: true | Bu dizine Konuk ekleme izni verilip verilmeyeceğini gösteren bir Boole değeri. <br>Bu ayar geçersiz kılınabilir ve *Enablemıplas* *true* olarak ayarlanmışsa ve bir konuk ilkesi gruba atanan duyarlılık etiketiyle ilişkilendirildiğinde salt okunurdur.<br>AllowToAddGuests ayarı kuruluş düzeyinde false olarak ayarlandıysa, Grup düzeyindeki tüm AllowToAddGuests ayarı yok sayılır. Yalnızca birkaç grup için konuk erişimini etkinleştirmek istiyorsanız, AllowToAddGuests öğesini kuruluş düzeyinde true olarak ayarlamanız ve ardından belirli gruplar için seçmeli olarak devre dışı bırakmanız gerekir. |
 |  <ul><li>ClassificationList<li>Türü: Dize<li>Varsayılan: "" | Office 365 gruplarına uygulanabilen geçerli sınıflandırma değerlerinin virgülle ayrılmış bir listesi. <br>Bu ayar, Enablemıplabels = = true olduğunda geçerli değildir.|
 |  <ul><li>Enablemıplas<li>Tür: Boolean<li>Varsayılan: "false" |Microsoft 365 Uyumluluk Merkezi 'nde yayınlanan duyarlılık etiketlerinin Office 365 gruplarına uygulanıp uygulanamayacağını belirten bayrak. Daha fazla bilgi için bkz. [Office 365 grupları Için duyarlılık etiketleri atama](groups-assign-sensitivity-labels.md). |
 

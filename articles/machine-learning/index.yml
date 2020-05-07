@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 04/22/2020
-  ms.openlocfilehash: 174c5b1164505900345e35ff58d2970bf119cc82
-  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b1df2d4420e25027a545b8a708cda31cf0ff152f
+  ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/23/2020
-  ms.locfileid: "82084218"
+  ms.lasthandoff: 05/01/2020
+  ms.locfileid: "82690939"
 landingContent:
 - title: Makine öğrenmesi ile çalışmaya başlama
   linkLists:
@@ -39,6 +39,8 @@ landingContent:
       url: concept-designer.md
     - text: Otomatik makine öğrenmesi nedir?
       url: concept-automated-ml.md
+    - text: Algoritma seçme
+      url: how-to-select-algorithms.md
   - linkListType: tutorial
     links:
     - text: 'AutoML: sınıflandırma modeli oluşturma'
@@ -65,6 +67,8 @@ landingContent:
     links:
     - text: Ortamınızı ayarlama
       url: how-to-configure-environment.md
+    - text: Derin öğrenme ile Makine Öğrenmesi karşılaştırması
+      url: concept-deep-learning-vs-machine-learning.md
     - text: Scikit-learn ile eğitme
       url: how-to-train-scikit-learn.md
     - text: TensorFlow ile eğitme

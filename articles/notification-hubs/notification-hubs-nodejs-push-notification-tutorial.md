@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71213199"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592018"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs ve Node. js ile anında iletme bildirimleri gönderme
 
@@ -133,7 +133,7 @@ Yukarıda açıklanan Android uygulamalarıyla aynı şekilde, `ApnsService` nes
 - **Yük** -iletinin JSON veya dize yükü.
 - **Geri arama** -geri çağırma işlevi.
 
-Yük biçimi hakkında daha fazla bilgi için, [yerel ve anında Iletme bildirimi Programlama Kılavuzu](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) belgesinin **bildirim yükü** bölümüne bakın.
+Yük biçimi hakkında daha fazla bilgi için, [Usernotifications kılavuzunun](https://developer.apple.com/documentation/usernotifications) **bildirim içeriği** bölümüne bakın.
 
 Aşağıdaki kod, `NotificationHubService` tüm istemcilere `ApnsService` bir uyarı iletisi göndermek için tarafından sunulan örneği kullanır:
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522419"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593548"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD) otomatik Kullanıcı sağlama, iş kuralların
 
 İşlevselliği daha iyi anlamak için, bkz. [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemlerini otomatik hale getirme Azure Active Directory](../app-provisioning/user-provisioning.md) .
 
-## <a name="learn"></a>Öğrenin
+## <a name="learn"></a>Learn
 
 Kullanıcı hazırlama, sürekli kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
@@ -51,7 +50,7 @@ Azure AD, Uygulama Galerisi menüsünde sağlanan şablonları kullanarak herhan
 
 Otomatik olarak sağlamak istediğiniz uygulamalar için uygun lisanslara sahip olmanız gerekir. Uygulamaya atanan kullanıcıların uygulama rolleri için uygun lisanslara sahip olup olmadığını uygulama sahipleriyle tartışın. Azure AD, rollere göre otomatik sağlamayı yönetirse, Azure AD 'de atanan roller uygulama lisanslarına göre hizalanmalıdır. Uygulamaya ait yanlış lisanslar, bir kullanıcının sağlanması/güncelleştirilmesi sırasında hatalara neden olabilir.
 
-### <a name="terms"></a>Koşullar
+### <a name="terms"></a>Terimler
 
 Bu makale aşağıdaki terimleri kullanır:
 
