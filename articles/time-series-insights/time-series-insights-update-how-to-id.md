@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083535"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838731"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Zaman serisi KIMLIĞI seçmek için en iyi uygulamalar
 
@@ -27,6 +27,7 @@ Uygun bir zaman serisi KIMLIĞINI seçmek kritik öneme sahiptir. Bir zaman seri
 
 > [!IMPORTANT]
 > Zaman serisi kimlikleri şunlardır:
+>
 > * *Büyük/küçük harfe duyarlı* bir özellik: harf ve karakter casler, aramalarda, karşılaştırmalar, güncelleştirmelerde ve bölümleme sırasında kullanılır.
 > * *Sabit* bir özellik: oluşturulduktan sonra değiştirilemez.
 
@@ -56,7 +57,7 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Örnek 2: bileşik bir anahtarla zaman serisi KIMLIĞI
 
-* Birden çok özelliği, varlıkların aynı yakıt kapsamında benzersiz olmasını gerektirir. 
+* Birden çok özelliği, varlıkların aynı yakıt kapsamında benzersiz olmasını gerektirir.
 * Her odada akıllı binalar ve sensörler dağıtımı sunuyoruz. Her odada, genellikle **Sensorıd**için aynı değerlere sahip olursunuz. Örnekler şunlardır **sensor1**, **Sensor2**ve **SENSOR3**.
 * Binasında, **Flrrm**özelliğindeki sitelerde zemin ve oda numaraları çakışıyor. Bu sayıların **1a**, **2B**ve **3A**gibi değerleri vardır.
 * **Redmond**, **Barselona**ve **Tokyo**gibi değerleri içeren bir özellik, **konum**vardır. Benzersizlik oluşturmak için aşağıdaki üç özelliği zaman serisi KIMLIK anahtarlarınız olarak belirlersiniz: **Sensorıd**, **flrrm**ve **Location**.
@@ -72,7 +73,7 @@ Aşağıdaki senaryolar, zaman serisi KIMLIĞINIZ olarak birden fazla anahtar ö
 }
 ```
 
-Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz: 
+Azure portal, ardından bileşik anahtarı aşağıdaki gibi girebilirsiniz:
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

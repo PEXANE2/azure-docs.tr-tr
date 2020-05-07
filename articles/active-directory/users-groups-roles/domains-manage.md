@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559242"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582960"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory özel etki alanı adlarını yönetme
 
@@ -41,7 +41,7 @@ Dizininiz oluşturulduğunda, ' contoso.onmicrosoft.com, ' gibi ilk etki alanı 
 
 Dizininiz için birincil etki alanı adını, federe olmayan doğrulanmış özel etki alanı olacak şekilde değiştirebilirsiniz. Dizininizin birincil etki alanını değiştirmek, mevcut kullanıcıların kullanıcı adını değiştirmez.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Azure AD kiracınıza özel etki alanı adları ekleme
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza özel etki alanı adları ekleme
 
 En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile Federasyon için yapılandırıyorsanız, her bir dizine en fazla 450 etki alanı adı ekleyebilirsiniz.
 
@@ -72,7 +72,7 @@ Kuruluşunuz artık bu etki alanı adını kullanmadıysanız veya başka bir Az
 Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
 
 * Office 365 etki alanı abonelik hizmetleri aracılığıyla bir etki alanı satın aldınız
-* Başka bir müşteri kiracısı adına bir iş ortağıysanız
+* Başka bir müşteri kuruluşu adına bir iş ortağıysanız
 
 **Forcedelete** işleminin bir parçası olarak aşağıdaki eylemler gerçekleştirilir:
 
