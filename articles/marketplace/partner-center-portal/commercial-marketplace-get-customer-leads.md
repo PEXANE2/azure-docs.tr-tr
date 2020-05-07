@@ -1,24 +1,24 @@
 ---
-title: Microsoft ticari Market teklifinizden müşteri adaylarını yapılandırma
-description: Müşteri adaylarını Microsoft ticari marketi 'nde yapılandırın.
+title: Microsoft ticari Market 'ten lider yönetimi
+description: Microsoft AppSource ve Azure Market teklifinizden müşteri adaylarını oluşturma ve alma hakkında bilgi edinin
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131084"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837337"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>Market teklifinizden müşteri adayları
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin müşteri adayları
 
-Müşteri adayları, Microsoft [Appsource](https://appsource.microsoft.com) ve [Azure Marketi](https://azuremarketplace.microsoft.com)'nden tekliflerinizi ilgilenen veya dağıtmakta olan müşteriler. Teklifiniz Market 'te yayımlandıktan sonra müşteri adaylarını alacaksınız. Bu makalede şunları açıklanmaktadır:
+Müşteri adayları, [Microsoft AppSource](https://appsource.microsoft.com) ve [Azure Marketi](https://azuremarketplace.microsoft.com)'nden tekliflerinizi ilgilenen veya dağıtmaktan müşteriler. Teklifiniz ticari Market 'e yayımlandıktan sonra müşteri adaylarını alabilirsiniz. Bu makalede aşağıdaki müşteri adayı yönetim kavramları açıklanmaktadır:
 
-* Market teklifinizin, iş fırsatlarını kaçırmadığınızdan emin olmak için müşteri adaylarını nasıl üretdirebileceği. 
+* Ticari Market teklifinizin, iş fırsatlarını kaçırmadığınızdan emin olmak için müşteri adaylarını nasıl üretdirebileceği. 
 * Müşteri ilişkileri yönetimi (CRM) sisteminizi teklifinize bağlamak, böylelikle müşteri adaylarını tek bir merkezi konumda yönetebilmenizi sağlar.
 * Size ulaşan müşterileri takip edebilmeniz için size gönderdiğimiz müşteri adayı verileri.
 
@@ -56,7 +56,7 @@ Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alan
 
 Olası değerler şunlardır:
 
-- **"INS"**: *yükleme*anlamına gelir. Bu eylem, bir müşteri ürününüzü satın aldığında Azure Market veya AppSource 'ta bulunur.
+- **"INS"**: *yükleme*anlamına gelir. Bu eylem, bir müşteri ürününüzü edindiğinde Azure Market veya AppSource 'ta yer alır.
 - **"Plt"**: *iş ortağının LED deneme sürümünü*temsil eder. Bu eylem, bir müşteri **benimle Iletişim kurma** seçeneğini seçtiğinde appsource 'ta bulunur.
 - **"DNC"**: *başvurmayın*için temsil eder. Bu eylem, uygulama sayfanızda çapraz listeye alınan bir iş ortağı ile iletişim kurulması istendiğinde AppSource 'ta yer alır. Bu müşterinin uygulamanızda çapraz listelenme bildirimini paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
 - **"Oluştur"**: Bu eylem yalnızca Azure Portal içindedir ve bir müşteri, teklifinizi kendi hesaplarına satın aldığında oluşturulur.
@@ -92,7 +92,7 @@ Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıda
 - **İzleme**: izlemeyi unutmayın. Tipik işlemin, 5-12 izleme çağrısı gerektirmesini bekler.
 - **Nurra**: daha yüksek bir kâr marjına yol açmak için müşteri adaylarına ulaşın.
 
-## <a name="leads-frequently-asked-questions"></a>Müşteri adayları hakkında sık sorulan sorular
+## <a name="common-questions-about-lead-management"></a>Müşteri adayı yönetimi hakkında sık sorulan sorular
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Lider hedefini ayarlama konusunda nereden yardım alabilirim?
 
@@ -133,7 +133,7 @@ Azure Blob depolama, artık bir lider hedefi olarak desteklenmediğinden teklifi
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ticari Market 'ten bir e-posta aldım, ancak neden CRM 'de müşteri adayını bulamıyorum?
 
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle, kişisel olarak tanımlanabilir bilgileri. edu etki alanından geçirmedik. [Iş Ortağı Merkezi Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)aracılığıyla bir destek bileti gönderebilirsiniz.
+Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle,. edu etki alanından kişisel bilgileri geçirmeiyoruz. [Iş Ortağı Merkezi Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)aracılığıyla bir destek bileti gönderebilirsiniz.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Müşteri adayı hedefi olarak bir Azure tablosu yapılandırdım. Müşteri adaylarını nasıl görüntüleyebilirim?
 
@@ -149,7 +149,7 @@ Web 'den müşteri adayı formunun seçim listesine göre zorunlu bir alan olup 
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Lider hedefimde bir sorun oluştu ve bazı müşteri adaylarını kaçırdım. E-postada bana gönderilebilirim?
 
-Kişisel olarak tanımlanabilir bilgi ilkeleri nedeniyle, sağlama bilgilerini güvenli olmayan e-posta ile paylaşamıyoruz.
+Kişisel bilgi ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı bilgilerini paylaşamıyoruz.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Müşteri adayı hedefi olarak bir Azure tablosu yapılandırdım. Ne kadar ücret alınacaktır?
 

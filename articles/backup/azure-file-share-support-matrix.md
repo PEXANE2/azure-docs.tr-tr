@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi için destek matrisi
 description: Azure dosya paylaşımları yedeklenirken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: b5bfae9454464bc8d11cef3bd346861e13822046
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207998"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838578"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi için destek matrisi
 
@@ -18,9 +18,9 @@ Azure dosya paylaşımlarını yedeklemek için [Azure Backup hizmetini](https:/
 
 Azure dosya paylaşımları için yedekleme aşağıdaki GEOS 'da kullanılabilir:
 
-| GA bölgeleri | Desteklenen bölgeler, ancak GA değil                                                      |
+| GA bölgeleri | Desteklenen bölgeler (Önizleme kapsamında) ancak henüz GA değil                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Avustralya Güney Doğu (Ao), Kanada Orta (CNC), Orta Batı ABD (WCUS), Batı ABD 2 (WUS 2), Hindistan Güney (INS), Orta Kuzey ABD (NCUS), Japonya Doğu (JPE), Brezilya Güney (BRS), Güney Doğu Asya (SEA), İsviçre Batı (SZW), BAE Orta (UAC), Norveç Doğu (NWE), Hindistan Batı (ıNW), Avustralya Orta (ACL)                                                  |Avustralya Doğu (AE), Kanada Doğu (CE), Doğu Asya (EA), Doğu ABD (EUS), Doğu ABD 2 (EUS2), Japonya Batı (JPW), Hindistan Orta (ıNC), Kore Orta (KRONC), Kore Güney (KRS), Kuzey Avrupa (NE), Orta Güney ABD (SKS), UK Güney (ÇW), UK Batı (am), Batı Avrupa (WUS), Batı ABD (UGA), US gov Arizona (UGT), US gov Teksas (SAVAV), US gov Virginia (SAN) BAE Kuzey (UA), Fransa Orta (FRC), Almanya Kuzey (GN), Almanya Orta Batı (GWC), Güney Afrika Batı (gördüğünüz), Norveç Batı (NWW), İsviçre Kuzey (SZN), Orta ABD (cu DÜZEYINDE KAPSANıR)           |
+| Avustralya Güney Doğu (Ao), Kanada Orta (CNC), Orta Batı ABD (WCUS), Batı ABD 2 (WUS 2), Hindistan Güney (INS), Orta Kuzey ABD (NCUS), Japonya Doğu (JPE), Brezilya Güney (BRS), Güney Doğu Asya (SEA), İsviçre Batı (SZW), BAE Orta (UAC), Norveç Doğu (NWE), Hindistan Batı (ıNW), Avustralya Orta (ACL), Kore orta (KRC), Japonya Batı (JPW), Güney Afrika Kuzey (SAN), UK Batı (UKW) , Kore Güney (KRS), Almanya Kuzey (GN), Norveç Batı (NWW), Güney Afrika Batı (gördüğünüz), İsviçre Kuzey (SZN), Almanya Orta Batı (GWC), BAE Kuzey (UA), Fransa Orta (FA), Hindistan Orta (ıNC), Kanada Doğu (CNE), Doğu Asya (EA), Avustralya Doğu (AE), Orta ABD (cu DÜZEYINDE KAPSANıR), Batı ABD (WUS)                                                  |  Doğu ABD (EUS), Doğu ABD 2 (EUS2), Kuzey Avrupa (NE), Orta Güney ABD (SCUS), UK Güney (UKS), Batı Avrupa (WE), US gov Arizona (UGA), US gov Teksas (UGT), US Gov Virginia (UGV)           |
 
 ## <a name="supported-storage-accounts"></a>Desteklenen depolama hesapları
 
