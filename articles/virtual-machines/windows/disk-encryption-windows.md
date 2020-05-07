@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: deb2860c8d027a0a258c4a962fe33d6f516e10dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085652"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790907"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
-Windows sanal makineleri (VM 'Ler) için Azure disk şifrelemesi, işletim sistemi diskinin ve veri diskinin tam disk şifrelemesini sağlamak için Windows BitLocker özelliğini kullanır. Ayrıca, VolumeType parametresi hepsi olduğunda, kısa ömürlü kaynak disk şifrelemesini sağlar.
+Windows sanal makineleri (VM 'Ler) için Azure disk şifrelemesi, işletim sistemi diskinin ve veri diskinin tam disk şifrelemesini sağlamak için Windows BitLocker özelliğini kullanır. Ayrıca, VolumeType parametresi hepsi olduğunda geçici diskin şifrelenmesini sağlar.
 
 Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault ile tümleşiktir](disk-encryption-key-vault.md) . Hizmete genel bakış için bkz. [Windows VM 'leri Için Azure disk şifrelemesi](disk-encryption-overview.md).
 

@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255036"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609298"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -324,7 +324,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | b2cDirectories | Yes | Hayır |
+> | b2cDirectories | Yes | No |
 > | b2ctenants | Hayır | Hayır |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
@@ -701,7 +701,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Rezervlik Işlemleri | Hayır | Hayır |
 > | Etiketler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
-> | Koşullar | Hayır | Hayır |
+> | Terimler | Hayır | Hayır |
 > | UsageDetails | Hayır | Hayır |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
@@ -825,7 +825,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | çalışma alanı | Yes | Hayır |
+> | çalışma alanı | Yes | No |
 > | çalışma alanları/dbWorkspaces | Hayır | Hayır |
 > | çalışma alanları/storageEncryption | Hayır | Hayır |
 > | çalışma alanları/Virtualnetworkpeerler | Hayır | Hayır |
@@ -847,11 +847,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | Veri fabrikaları | Yes | Hayır |
+> | Veri fabrikaları | Yes | No |
 > | DataFactory/diagnosticSettings | Hayır | Hayır |
 > | DataFactory/metricDefinitions | Hayır | Hayır |
 > | dataFactorySchema | Hayır | Hayır |
-> | larının | Yes | Hayır |
+> | larının | Yes | No |
 > | Fabrika/tümleştirme çalışma zamanları | Hayır | Hayır |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
@@ -1466,10 +1466,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Yes | Hayır |
+> | netAppAccounts | Yes | No |
 > | netAppAccounts/accountBackups | Hayır | Hayır |
-> | netAppAccounts/Capacityhavuzları | Yes | Hayır |
-> | netAppAccounts/Capacityhavuzları/birimleri | Yes | Hayır |
+> | netAppAccounts/Capacityhavuzları | Yes | No |
+> | netAppAccounts/Capacityhavuzları/birimleri | Yes | No |
 > | netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler | Hayır | Hayır |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -1481,8 +1481,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | applicationGatewayWebApplicationFirewallPolicies | Yes | Yes |
 > | applicationSecurityGroups | Yes | Yes |
 > | azureFirewallFqdnTags | Hayır | Hayır |
-> | azureFirewalls | Yes | Hayır |
-> | Savunma Konakları | Yes | Hayır |
+> | azureFirewalls | Yes | No |
+> | Savunma Konakları | Yes | No |
 > | bgpServiceCommunities | Hayır | Hayır |
 > | bağlantının | Yes | Yes |
 > | ddosCustomPolicies | Yes | Yes |
@@ -1508,7 +1508,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressRouteServiceProviders | Hayır | Hayır |
 > | firewallPolicies | Yes | Yes |
 > | frontkapıların | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Hayır |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | No |
 > | frontdoorWebApplicationFirewallPolicies | Evet, ancak sınırlı ( [aşağıdaki nota](#frontdoor)bakın) | Yes |
 > | getDnsResourceReference | Hayır | Hayır |
 > | ınternalnotify | Hayır | Hayır |
@@ -1520,10 +1520,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | networkProfiles | Yes | Yes |
 > | networkSecurityGroups | Yes | Yes |
 > | networkWatchers | Yes | Yes |
-> | networkWatchers/Connectionmonitörleri | Yes | Hayır |
+> | networkWatchers/Connectionmonitörleri | Yes | No |
 > | networkWatchers/flowLogs | Hayır | Hayır |
-> | networkWatchers/uzunluler | Yes | Hayır |
-> | networkWatchers/Pingkafesler | Yes | Hayır |
+> | networkWatchers/uzunluler | Yes | No |
+> | networkWatchers/Pingkafesler | Yes | No |
 > | p2sVpnGateways | Yes | Yes |
 > | privateDnsOperationStatuses | Hayır | Hayır |
 > | privateDnsZones | Yes | Yes |
@@ -1551,8 +1551,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Virtualhub 'Lar | Yes | Yes |
 > | virtualNetworkGateways | Yes | Yes |
 > | virtualNetworks | Yes | Yes |
+> | virtualNetworks/alt ağları | Hayır | Hayır |
 > | virtualNetworkTaps | Yes | Yes |
-> | Virtualwan | Yes | Hayır |
+> | Virtualwan | Yes | No |
 > | Vpngateway 'ler | Yes | Yes |
 > | vpnSites | Yes | Yes |
 > | webApplicationFirewallPolicies | Yes | Yes |
@@ -1575,8 +1576,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | öznitelikleri | Yes | Hayır |
-> | ad alanları/Notificationhub 'Lar | Yes | Hayır |
+> | öznitelikleri | Yes | No |
+> | ad alanları/Notificationhub 'Lar | Yes | No |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
@@ -1743,15 +1744,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | dağıtımlar | Yes | Hayır |
+> | dağıtımlar | Yes | No |
 > | dağıtımlar/işlemler | Hayır | Hayır |
 > | deploymentScripts | Yes | Yes |
 > | deploymentScripts/Günlükler | Hayır | Hayır |
 > | Köprü | Hayır | Hayır |
 > | notifyResourceJobs | Hayır | Hayır |
 > | sağlayıcılarla | Hayır | Hayır |
-> | resourceGroups | Yes | Hayır |
-> | Aboneliklerin | Yes | Hayır |
+> | resourceGroups | Yes | No |
+> | Aboneliklerin | Yes | No |
 > | Kira | Hayır | Hayır |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
@@ -2085,10 +2086,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
-> | lý | Yes | Hayır |
+> | lý | Yes | No |
 > | ortamlar/accessPolicies | Hayır | Hayır |
-> | ortamlar/EventSources | Yes | Hayır |
-> | ortamlar/Referencedataset 'ler | Yes | Hayır |
+> | ortamlar/EventSources | Yes | No |
+> | ortamlar/Referencedataset 'ler | Yes | No |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. Vmwarechoparlör basit
 

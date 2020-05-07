@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443612"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839122"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL veritabanı 'na Azure Stream Analytics çıkışı
 
@@ -24,7 +24,7 @@ Azure Stream Analytics içindeki SQL çıktısı, bir seçenek olarak paralel ya
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Bölümlendirmeyi devralma** – bu SQL çıkış yapılandırma seçeneği, önceki sorgu adımlarınızın veya girişinin bölümleme düzeninin devralınmasını mümkün. Bu etkinken, disk tabanlı bir tabloya yazma ve işiniz için [tamamen paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topolojiye sahip olmak için daha iyi işlem görmeniz beklenir. Bu bölümlendirme diğer birçok [çıktı](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)için zaten otomatik olarak yapılır. Bu seçenekle yapılan toplu eklemeler için tablo kilitleme (TABLOCK) de devre dışı bırakıldı.
+- **Bölümlendirmeyi devralma** – bu SQL çıkış yapılandırma seçeneği, önceki sorgu adımlarınızın veya girişinin bölümleme düzeninin devralınmasını mümkün. Bu etkinken, disk tabanlı bir tabloya yazma ve işiniz için [tamamen paralel](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topolojiye sahip olmak için daha iyi işlem görmeniz beklenir. Bu bölümlendirme diğer birçok [çıktı](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)için zaten otomatik olarak yapılır. Bu seçenekle yapılan toplu eklemeler için tablo kilitleme (TABLOCK) de devre dışı bırakıldı.
 
 > [!NOTE] 
 > 8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Bu üst sınır, tek bir kimlik sütunu ve bir kümelenmiş dizin içeren bir tabloda gözlemlendi. Bu durumda, çıkış yazıcılarının sayısını açıkça belirtmek için sorgunuzda 8 ' [e](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) kadar kullanmayı düşünün. Şemanıza ve Dizin seçimine bağlı olarak, gözlemlerinizin farklılık gösterebilir.

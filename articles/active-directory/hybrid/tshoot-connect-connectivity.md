@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049728"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610454"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD bağlantısı sorunlarını giderme
 Bu makalede, Azure AD Connect ile Azure AD arasındaki bağlantının nasıl çalıştığı ve bağlantı sorunlarını nasıl giderebileceğiniz açıklanır. Bu sorunlar büyük olasılıkla ara sunucu içeren bir ortamda görülebilir.
@@ -31,7 +32,7 @@ Azure AD Connect, kimlik doğrulaması için modern kimlik doğrulaması (ADAL k
 
 Bu makalede, Fabrikam 'ın proxy 'si aracılığıyla Azure AD 'ye nasıl bağlandığını göstereceğiz. Proxy sunucusu fabrikamproxy olarak adlandırılır ve 8080 numaralı bağlantı noktasını kullanıyor.
 
-Önce [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) dosyasının doğru yapılandırıldığından emin olmak istiyoruz.  
+Önce [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) dosyasının doğru yapılandırıldığından emin olmak istiyoruz.
 ![MachineConfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ Yükleme Sihirbazı iki farklı güvenlik bağlamı kullanıyor. **Azure AD 'ye 
 Aşağıdaki sorunlar, Yükleme sihirbazında karşılaştığınız en yaygın hatalardır.
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Yükleme Sihirbazı doğru yapılandırılmadı
-Sihirbazın proxy 'sine ulaşamadığınızda bu hata görüntülenir.  
+Sihirbazın proxy 'sine ulaşamadığınızda bu hata görüntülenir.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Bu hatayı görürseniz, [Machine. config](how-to-connect-install-prerequisites.md#connectivity) dosyasının doğru şekilde yapılandırıldığını doğrulayın.
 * Bu doğru görünüyorsa, sorunun sihirbazın dışında mevcut olup olmadığını görmek için [Proxy bağlantısını doğrulama](#verify-proxy-connectivity) bölümündeki adımları izleyin.
 
 ### <a name="a-microsoft-account-is-used"></a>Microsoft hesabı kullanılır
-**Okul veya kuruluş** hesabı yerine bir **Microsoft hesabı** kullanıyorsanız, genel bir hata görürsünüz.  
+**Okul veya kuruluş** hesabı yerine bir **Microsoft hesabı** kullanıyorsanız, genel bir hata görürsünüz.
 ![Bir Microsoft hesabı kullanılır](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>MFA uç noktasına ulaşılamıyor
-Bu hata, uç noktaya **https://secure.aadcdn.microsoftonline-p.com** ulaşılamadığından ve genel yöneticinizin MFA 'nın etkin olması halinde görünür.  
+Bu hata, uç noktaya **https://secure.aadcdn.microsoftonline-p.com** ulaşılamadığından ve genel yöneticinizin MFA 'nın etkin olması halinde görünür.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Bu hatayı görürseniz, uç nokta **Secure.aadcdn.microsoftonline-p.com** 'nin ara sunucuya eklendiğini doğrulayın.
 
 ### <a name="the-password-cannot-be-verified"></a>Parola doğrulanamıyor
-Yükleme Sihirbazı Azure AD 'ye bağlanmada başarılı olursa, ancak parolanın kendisi doğrulanamazsa şu hatayı görürsünüz:  
-![Hatalı parola.](./media/tshoot-connect-connectivity/badpassword.png)
+Yükleme Sihirbazı Azure AD 'ye bağlanmada başarılı olursa, ancak parolanın kendisi doğrulanamazsa şu hatayı görürsünüz: ![hatalı parola.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Parolanın geçici bir parola olması ve değiştirilmesi gerekiyor mu? Gerçekten doğru parola mi? ' Da `https://login.microsoftonline.com` (Azure AD Connect sunucusundan başka bir bilgisayarda) oturum açmayı deneyin ve hesabın kullanılabilir olduğunu doğrulayın.
 
@@ -186,7 +186,7 @@ Kimlik doğrulaması başarılı oldu, ancak Azure AD PowerShell 'de bir kimlik 
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Azure AD Genel yönetici rolü gerekli
-Kullanıcının kimliği başarıyla doğrulandı. Ancak kullanıcıya genel yönetici rolü atanmaz. Kullanıcıya [genel yönetici rolü atayabilirsiniz](../users-groups-roles/directory-assign-admin-roles.md) . 
+Kullanıcının kimliği başarıyla doğrulandı. Ancak kullanıcıya genel yönetici rolü atanmaz. Kullanıcıya [genel yönetici rolü atayabilirsiniz](../users-groups-roles/directory-assign-admin-roles.md) .
 
 <div id="privileged-identity-management">
 <!--
@@ -224,7 +224,7 @@ Yükleme sihirbazında beklenmeyen bir hata olarak gösteriliyor. **Okul veya ku
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Önceki sürümler için sorun giderme adımları.
 Yayın numarası 1.1.105.0 (2016 ' de yayımlanmıştır) ile başlayan yayınlar sayesinde, oturum açma Yardımcısı kullanımdan kaldırıldı. Bu bölüm ve yapılandırma artık gerekli değildir, ancak başvuru olarak tutulur.
 
-Çoklu oturum açma Yardımcısı 'nın çalışması için, WinHTTP 'nin yapılandırılması gerekir. Bu yapılandırma, [**netsh**](how-to-connect-install-prerequisites.md#connectivity)ile yapılabilir.  
+Çoklu oturum açma Yardımcısı 'nın çalışması için, WinHTTP 'nin yapılandırılması gerekir. Bu yapılandırma, [**netsh**](how-to-connect-install-prerequisites.md#connectivity)ile yapılabilir.
 ![komutlarına](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Oturum açma Yardımcısı doğru yapılandırılmadı

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133477"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598377"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı işlevler
 
@@ -47,6 +47,9 @@ Azure Stream Analytics, tüm işlev etkinleştirmeleri ve döndürülen sonuçla
 
 Tüm çalışma zamanı hataları önemli olarak değerlendirilir ve etkinlik ve kaynak günlükleri aracılığıyla ortaya çıkmış demektir. İşlevinizin tüm özel durumları ve hataları işlemesi ve sorgunuza geçerli bir sonuç döndürmesi önerilir. Bu, işinizin [başarısız durumuna](job-states.md)gitmesini engeller.  
 
+## <a name="exception-handling"></a>Özel durum işleme
+
+Veri işleme sırasında herhangi bir özel durum, Azure Stream Analytics veri tükettiği zaman çok zararlı bir hata olarak değerlendirilir. Kullanıcı tanımlı işlevlerin özel durumlar oluşturması ve işlemenin durdurulmasına neden olma olasılığı yüksektir. Bu sorundan kaçınmak için, kod yürütme sırasında özel durumları yakalamak Için JavaScript veya C# ' de bir *try-catch* bloğu kullanın. Yakalanan özel durumlar, sistem hatasına neden olmadan günlüğe kaydedilebilir ve işlenebilirler. İşlem altyapısına beklenmedik özel durumlar oluşturmamak için özel kodunuzu her zaman bir *try-catch* bloğunda kaydırabilmeniz önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -54,4 +57,3 @@ Tüm çalışma zamanı hataları önemli olarak değerlendirilir ve etkinlik ve
 * [JavaScript Kullanıcı tanımlı toplamaları Azure Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)
 * [Azure Stream Analytics işleri için .NET Standard Kullanıcı tanımlı işlevler geliştirme](stream-analytics-edge-csharp-udf-methods.md)
 * [Azure Stream Analytics Azure Machine Learning ile tümleştirin](machine-learning-udf.md)
-

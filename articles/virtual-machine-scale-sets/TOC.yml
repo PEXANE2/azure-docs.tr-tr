@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Azure Resource Manager
@@ -81,6 +84,8 @@
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Ölçek kümelerinde hata etki alanlarını yönetme
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: Görüntüler
+      href: shared-image-galleries.md
     - name: VM türleri ve boyutları
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -184,6 +189,51 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: Örnek kimlikleri anlama
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: Görüntüleri Kullanma
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Paylaşılan Görüntü Galerileri
+          items:
+            - name: PowerShell
+              items:
+                - name: Galeri oluşturma
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: Görüntü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: Yönetilen görüntüden geçiş yapma
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: Ölçek kümesi oluşturma
+                  items:
+                    - name: Özelleştirilmiş
+                      href: instance-specialized-image-version-powershell.md
+                    - name: Genelleştirilmiş
+                      href: instance-generalized-image-version-powershell.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: Galeri oluşturma
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: Görüntü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: Yönetilen görüntüden geçiş yapma
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: Ölçek kümesi oluşturma
+                  items:
+                    - name: Özelleştirilmiş
+                      href: instance-specialized-image-version-cli.md
+                    - name: Genelleştirilmiş
+                      href: instance-generalized-image-version-cli.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../virtual-machines/update-image-resources-cli.md
     - name: Şablon oluşturma
       items:
         - name: Ölçek kümesi şablonları hakkında bilgi edinme

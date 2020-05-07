@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) ' de bir küme için birden çok dü
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259094"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610930"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına ve işlemlerine bağlı olarak AKS kümenizin güncelleştirilmesi birkaç dakika sürebilir.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Düğüm havuzu için düğüm başına genel IP atama (Önizleme)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Düğüm havuzlarınız için düğüm başına genel IP atama (Önizleme)
 
 > [!WARNING]
-> Düğüm başına genel IP atama önizlemesi sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle *AKS 'de standart Load Balancer SKU 'su* ile kullanılamaz. Bu sınırlamanın sonucu olarak, Windows Agent havuzları bu önizleme özelliği ile desteklenmez. Önizleme aşamasında, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU* 'sunu kullanmanız gerekir.
+> Düğüm başına genel IP özelliğini kullanmak için 0.4.43 veya daha büyük CLı önizleme uzantısını yüklemelisiniz.
 
 AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak senaryolar, düğüm havuzundaki düğümlerin kendi adanmış genel IP adreslerini almasını gerektirebilir. Yaygın bir senaryo, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için ihtiyaç duyacağı oyun iş yükleri içindir. Bu senaryo, bir önizleme özelliği, düğüm genel IP (Önizleme) için kaydolarak AKS üzerinde elde edilebilir.
 
-Aşağıdaki Azure CLı komutunu vererek düğüm genel IP özelliğine kaydolun.
+En son aks-Preview uzantısını yüklemek ve güncelleştirmek için aşağıdaki Azure CLı komutlarını kullanın:
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+Aşağıdaki Azure CLı komutuyla düğüm genel IP özelliğine kaydolun:
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+Özelliğin kaydedilmesi birkaç dakika sürebilir.  Durumu aşağıdaki komutla kontrol edebilirsiniz:
 
-Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergeleri izleyerek bir Azure Resource Manager şablonu dağıtın ve, agentPoolProfiles `enableNodePublicIP` öğesine Boole özelliğini ekleyin. Değeri varsayılan olarak `true` olarak ayarlayın, belirtilmemiş olarak `false` ayarlanır. 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-Bu özellik yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
+Kayıt başarılı olduktan sonra yeni bir kaynak grubu oluşturun.
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+Yeni bir AKS kümesi oluşturun ve düğümleriniz için genel bir IP ekleyin. Düğüm havuzundaki düğümlerin her biri benzersiz bir genel IP alır. Bunu, sanal makine ölçek kümesi örneklerine bakarak doğrulayabilirsiniz.
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+Mevcut AKS kümelerinde Ayrıca yeni bir düğüm havuzu ekleyebilir ve düğümleriniz için genel bir IP ekleyebilirsiniz.
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> Önizleme süresince Azure Instance Metadata Service, Standart katman VM SKU 'SU için genel IP adreslerinin alınmasını desteklememektedir. Bu sınırlama nedeniyle, düğümlere atanan genel IP 'Leri göstermek için kubectl komutlarını kullanamazsınız. Ancak, IP 'Ler atanır ve hedeflenen şekilde çalışır. Düğümlerinizin genel IP 'Leri, sanal makine ölçek kümenizdeki örneklere eklenir.
+
+Düğümleriniz için genel IP 'Leri çeşitli yollarla bulabilirsiniz:
+
+* Azure CLı komutunu kullanın [az VMSS List-instance-public-IP][az-list-ips]
+* [PowerShell veya bash komutlarını][vmss-commands]kullanın. 
+* Ayrıca, sanal makine ölçek kümesindeki örnekleri görüntüleyerek Azure portal genel IP 'Leri görüntüleyebilirsiniz.
+
+> [!Important]
+> [Düğüm kaynak grubu][node-resource-group] , düğümleri ve bunların genel IP 'lerini içerir. Düğümlerinizin genel IP 'lerini bulmak için komutları yürütürken düğüm kaynak grubunu kullanın.
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -753,6 +796,12 @@ Kümeyi silmek için, AKS kaynak grubunu silmek için [az Group Delete][az-group
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+Ayrıca, düğüm havuzları için genel IP için oluşturduğunuz ek kümeyi silebilirsiniz.
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -795,3 +844,7 @@ Windows Server kapsayıcısı düğüm havuzlarını oluşturmak ve kullanmak i�
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips

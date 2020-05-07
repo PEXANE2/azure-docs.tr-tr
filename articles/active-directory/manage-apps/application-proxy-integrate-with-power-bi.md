@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77111581"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610097"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil’e uzaktan erişimi etkinleştirme
 
-Bu makalede, Power BI mobil uygulamanın Power BI Rapor Sunucusu (PBIRS) ve SQL Server Reporting Services (SSRS) 2016 ve üzeri bir sürüme bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu 'nin nasıl kullanılacağı açıklanır. Bu tümleştirme sayesinde, kurumsal ağdan uzakta olan kullanıcılar Power BI raporlarına Power BI mobil uygulamadan erişebilir ve Azure AD kimlik doğrulaması tarafından korunabilir. Bu koruma, koşullu erişim ve çok faktörlü kimlik doğrulaması gibi [güvenlik avantajlarını](application-proxy-security.md#security-benefits) içerir.  
+Bu makalede, Power BI mobil uygulamanın Power BI Rapor Sunucusu (PBIRS) ve SQL Server Reporting Services (SSRS) 2016 ve üzeri bir sürüme bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu 'nin nasıl kullanılacağı açıklanır. Bu tümleştirme sayesinde, kurumsal ağdan uzakta olan kullanıcılar Power BI raporlarına Power BI mobil uygulamadan erişebilir ve Azure AD kimlik doğrulaması tarafından korunabilir. Bu koruma, koşullu erişim ve çok faktörlü kimlik doğrulaması gibi [güvenlik avantajlarını](application-proxy-security.md#security-benefits) içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu 'nu etkinleştirmiş](application-proxy-add-on-premises-application.md)olduğunuz varsayılmaktadır.
 
-- Uygulama proxy 'Sini etkinleştirmek için bir Windows Server 'a bağlayıcı yüklenmesi ve bağlayıcının Azure AD hizmetleriyle iletişim kurabilmesi için [önkoşulları](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) tamamlaması gerekir.  
+- Uygulama proxy 'Sini etkinleştirmek için bir Windows Server 'a bağlayıcı yüklenmesi ve bağlayıcının Azure AD hizmetleriyle iletişim kurabilmesi için [önkoşulları](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) tamamlaması gerekir.
 - Power BI yayımlarken, aynı iç ve dış etki alanlarını kullanmanızı öneririz. Özel etki alanları hakkında daha fazla bilgi edinmek için bkz. [uygulama proxy 'sinde özel etki alanları Ile çalışma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
 - Bu tümleştirme, **Power BI mobil iOS ve Android** uygulaması için kullanılabilir.
 
@@ -68,7 +68,7 @@ KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Raporlama Hizmetleri uygulama
 KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adımları yineleyin:
 
 1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından **Active Directory Kullanıcıları ve bilgisayarları**' nı açın.
-2. Bağlayıcının üzerinde çalıştığı bilgisayarı bulun.  
+2. Bağlayıcının üzerinde çalıştığı bilgisayarı bulun.
 3. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
 4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
 5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
@@ -95,7 +95,7 @@ Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
    b. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
 
-   c. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın.  
+   c. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın.
 
    d. Bağlayıcının Kullanıcı adına kullanması için **yetkilendirilmiş oturum açma kimliğini** seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
@@ -105,7 +105,7 @@ Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>3. Adım: uygulama için yanıt URI 'sini değiştirme
 
-Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi için önce adım 2 ' de otomatik olarak oluşturulan uygulama kaydını yapılandırmanız gerekir. 
+Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi için önce adım 2 ' de otomatik olarak oluşturulan uygulama kaydını yapılandırmanız gerekir.
 
 1. Azure Active Directory **genel bakış** sayfasında **uygulama kayıtları**' i seçin.
 2. **Tüm uygulamalar** sekmesinin altında 2. adımda oluşturduğunuz uygulamayı arayın.
@@ -117,11 +117,11 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
-   
+
    Uygulamayı Power BI Mobil **Android**için yapılandırırken, genel istemci türünde aşağıdaki yeniden yönlendirme URI 'lerini ekleyin (mobil & Masaüstü):
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
-   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
@@ -144,7 +144,7 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 1. **Azure Active Directory** ve ardından **uygulama kayıtları**' na gidin.
 2. Yerel istemci Uygulamanızı kaydederken adım 3 ' te yapılandırılan uygulamayı seçin.
 3. Uygulamanın sayfasında, **API izinleri**' ni seçin.
-4. **Izin Ekle**' ye tıklayın. 
+4. **Izin Ekle**' ye tıklayın.
 5. **Kuruluşumun kullandığı API 'ler**altında "Microsoft Mobil uygulama yönetimi" ifadesini arayın ve seçin.
 6. Uygulamaya **Devicemanagementmanagedapps. ReadWrite** iznini ekleyin
 7. Uygulamaya izin erişimi vermek için **yönetici Izni ver** ' e tıklayın.

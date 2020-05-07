@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604999"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610828"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -20,6 +20,7 @@ Azure aboneliğinizdeki kaynakların yönetimini basitleştirmek için, abonelik
 
 Aşağıdaki kaynak türlerini abonelik düzeyinde dağıtabilirsiniz:
 
+* [Blueprint](/azure/templates/microsoft.blueprint/blueprints)
 * [bütçelerinin](/azure/templates/microsoft.consumption/budgets)
 * [dağıtımlar](/azure/templates/microsoft.resources/deployments) -kaynak gruplarına dağıtan iç içe şablonlar için.
 * [Eventabonelikleri](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -244,11 +245,11 @@ Aşağıdaki örnek, bir kaynak grubu oluşturur ve kaynak grubuna bir depolama 
 }
 ```
 
-## <a name="create-policies"></a>İlkeleri oluşturma
+## <a name="azure-policy"></a>Azure İlkesi
 
-### <a name="assign-policy"></a>İlke ata
+### <a name="assign-policy-definition"></a>İlke tanımı ata
 
-Aşağıdaki örnek, aboneliğe var olan bir ilke tanımını atar. İlke parametreleri alırsa, bunları bir nesne olarak sağlayın. İlke parametre almadıysanız varsayılan boş nesneyi kullanın.
+Aşağıdaki örnek, aboneliğe var olan bir ilke tanımını atar. İlke tanımı parametreleri alırsa, bunları bir nesne olarak sağlayın. İlke tanımı parametre almadıysanız varsayılan boş nesneyi kullanın.
 
 ```json
 {
@@ -285,7 +286,7 @@ Aşağıdaki örnek, aboneliğe var olan bir ilke tanımını atar. İlke parame
 Bu şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +313,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>İlke tanımlama ve atama
+### <a name="create-and-assign-policy-definitions"></a>İlke tanımları oluşturma ve atama
 
-Aynı şablonda bir ilke [tanımlayabilir](../../governance/policy/concepts/definition-structure.md) ve atayabilirsiniz.
+Aynı şablonda bir ilke tanımı [tanımlayabilir](../../governance/policy/concepts/definition-structure.md) ve atayabilirsiniz.
 
 ```json
 {
@@ -357,7 +358,7 @@ Aynı şablonda bir ilke [tanımlayabilir](../../governance/policy/concepts/defi
 }
 ```
 
-Aboneliğinizde ilke tanımı oluşturmak ve bunu aboneliğe uygulamak için aşağıdaki CLı komutunu kullanın:
+Aboneliğinizde ilke tanımı oluşturmak ve aboneliği aboneliğe atamak için aşağıdaki CLı komutunu kullanın:
 
 ```azurecli
 az deployment sub create \
@@ -373,6 +374,32 @@ New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
+```
+
+## <a name="azure-blueprints"></a>Azure Blueprints
+
+### <a name="create-blueprint-definition"></a>Şema tanımı oluştur
+
+Şablondan bir şema tanımı [oluşturabilirsiniz](../../governance/blueprints/tutorials/create-from-sample.md) .
+
+:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+Aboneliğinizde şema tanımını oluşturmak için aşağıdaki CLI komutunu kullanın:
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+Bu şablonu PowerShell ile dağıtmak için şunu kullanın:
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Şablon örnekleri

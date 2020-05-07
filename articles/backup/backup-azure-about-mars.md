@@ -4,12 +4,12 @@ description: MARS aracısının yedekleme senaryolarını nasıl desteklediğini
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673287"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611492"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı hakkında
 
@@ -39,19 +39,21 @@ MARS Aracısı aşağıdaki geri yükleme senaryolarını destekler:
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 
-1. Azure portal, bir [Kurtarma Hizmetleri Kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve yedekleme hedeflerinden dosyalar, klasörler ve sistem durumu ' nu seçin.
+1. Azure portal, bir [Kurtarma Hizmetleri Kasası](install-mars-agent.md#create-a-recovery-services-vault)oluşturun ve **yedekleme hedeflerinden**dosyalar, klasörler ve sistem durumu ' nu seçin.
 2. [Kurtarma Hizmetleri Kasası kimlik bilgilerini ve Aracı yükleyicisini](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) şirket içi bir makineye indirin.
 
-    Yedekleme seçeneğini belirleyip şirket içi makineyi korumak için dosyalar, klasörler ve sistem durumu ' nu seçin ve ardından MARS aracısını indirin.
-
-3. Altyapıyı hazırlama:
-
-    a. [Aracıyı yüklemek](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)için yükleyiciyi çalıştırın.
-
-    b. Makineyi kurtarma hizmetleri kasasına kaydetmek için, indirilen kasa kimlik bilgilerinizi kullanın.
-4. İstemcideki Aracı konsolundan [yedeklemeyi yapılandırın](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy). Korumaya başlamak için yedekleme verilerinizin bekletme ilkesini belirtin.
+3. [aracıyı yükleyip](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) indirilen kasa kimlik bilgilerini kullanarak makineyi kurtarma hizmetleri kasasına kaydedin.
+4. İstemcideki Aracı konsolundan, yedeklemeyi, ne zaman yedeklenmek gerektiğini, ne zaman yedeklemeniz gerektiğini (bekletme ilkesi) ve korumaya başlamak üzere [yapılandırın](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) .
 
 ![Azure Backup aracı diyagramı](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>Ek bilgiler
+
+- **Ilk yedekleme** (ilk yedekleme), yedekleme ayarlarınıza göre çalışır.  MARS Aracısı, yedekleme için seçilen birimlerin bir noktadan noktaya anlık görüntüsünü almak için VSS 'yi kullanır. Aracı, anlık görüntüyü yakalamak için yalnızca Windows sistem yazıcısı işlemini kullanır. Hiçbir uygulama VSS yazıcısını kullanmaz ve uygulamayla tutarlı anlık görüntüleri yakalamaz. VSS ile anlık görüntüyü aldıktan sonra, MARS Aracısı, yedeklemeyi yapılandırdığınız sırada belirttiğiniz önbellek klasöründe bir sanal sabit disk (VHD) oluşturur. Aracı Ayrıca her veri bloğu için sağlama toplamlarını depolar.
+
+- **Artımlı yedeklemeler** (sonraki yedeklemeler) belirttiğiniz zamanlamaya göre çalışır. Artımlı yedeklemeler sırasında, değiştirilen dosyalar tanımlanır ve yeni bir VHD oluşturulur. VHD sıkıştırılır ve şifrelenir ve ardından kasaya gönderilir. Artımlı yedekleme bittikten sonra, yeni VHD ilk çoğaltmadan sonra oluşturulan VHD ile birleştirilir. Bu birleştirilmiş VHD, devam eden yedekleme için kullanılmak üzere en son durumu sağlar.
+
+- MARS Aracısı, tüm birimi tarayarak dizin veya dosyalardaki değişiklikleri denetleyerek, USN (sıra numarası güncelleştirme) değişiklik günlüğünü veya **en iyi duruma getirilmiş modu** kullanarak yedekleme işini **iyileştirilmiş modda** çalıştırabilir. En iyi duruma getirilmiş mod, aracının birimdeki her dosyayı tarayabilmesi ve değiştirilen dosyaları tespit etmek için meta verilere göre karşılaştırılabilmesi nedeniyle daha yavaştır.  **İlk yedekleme** her zaman iyileştirilmemiş modda çalışacaktır. Önceki yedekleme başarısız olduysa, sonraki zamanlanmış yedekleme işi iyileştirilmemiş modda çalışacaktır.
 
 ### <a name="additional-scenarios"></a>İlave senaryolar
 

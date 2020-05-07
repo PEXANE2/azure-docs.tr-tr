@@ -3,12 +3,12 @@ title: Bir özelliğin birden çok örneğini tanımlama
 description: Bir kaynak üzerinde bir özellik oluştururken birden çok kez yinelemek için Azure Resource Manager şablonunda kopyalama işlemini kullanın.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81391331"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583399"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM şablonlarındaki Özellik yinelemesi
 
@@ -16,7 +16,7 @@ Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir özelliğin birden f
 
 Ayrıca [kaynakları](copy-resources.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)kullanarak kopyalamayı kullanabilirsiniz.
 
-## <a name="property-iteration"></a>Özellik yineleme
+## <a name="syntax"></a>Sözdizimi
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -35,6 +35,21 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 **Count** özelliği, özelliği için istediğiniz yineleme sayısını belirtir.
 
 **Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun.
+
+## <a name="copy-limits"></a>Sınırları Kopyala
+
+Sayım 800 ' i aşamaz.
+
+Sayı negatif bir sayı olamaz. Yeni bir Azure CLı, PowerShell veya REST API sürümü ile şablonu dağıtırsanız sıfır olabilir. Özellikle, şunu kullanmanız gerekir:
+
+* Azure PowerShell **2,6** veya üzeri
+* Azure CLı **2.0.74** veya üzeri
+* REST API sürüm **2019-05-10** veya üzeri
+* [Bağlı dağıtımlar](linked-templates.md) , dağıtım kaynak türü için apı sürüm **2019-05-10** veya üstünü kullanmalıdır
+
+PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
+
+## <a name="property-iteration"></a>Özellik yineleme
 
 Aşağıdaki örnek, bir sanal makinede dataDisks özelliğine nasıl uygulanacağını `copy` gösterir:
 
@@ -232,12 +247,6 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
   }
 }
 ```
-
-## <a name="copy-limits"></a>Sınırları Kopyala
-
-Sayım 800 ' i aşamaz.
-
-Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
 
 ## <a name="example-templates"></a>Örnek Şablonlar
 

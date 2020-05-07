@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332775"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900389"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -73,12 +73,12 @@ Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az `60`:; En fazla `1200`:; Varsayılan: `600`. |
-| Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
-| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
-| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
+| Codeexpirationınseconds | No | Süre sonuna kadar saniye cinsinden süre. En az `60`:; En fazla `1200`:; Varsayılan: `600`. |
+| Kod uzunluğu | No | Kodun uzunluğu. Varsayılan değer: `6`. |
+| CharacterSet | No | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
+| NumRetryAttempts | No | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
 | İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode`. |
-| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
+| ReuseSameCode | No | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="example"></a>Örnek
 
@@ -141,10 +141,11 @@ Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hat
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
-| UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
-| Usermessageifınvalidcode | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
-|UserMessageIfSessionConflict|Hayır| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
+| Usermessageifsessionffnotexist | No | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
+| UserMessageIfMaxRetryAttempted | No | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
+| Usermessageifınvalidcode | No | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
+| UserMessageIfVerificationFailedRetryAllowed | No | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti ve kullanıcının doğru kodu sağlamasına izin verilir.  |
+|UserMessageIfSessionConflict|No| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
 
 ### <a name="example"></a>Örnek
 

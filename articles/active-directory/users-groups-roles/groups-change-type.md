@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34451fcc4597f77464e5e9566613e21e9fecdbc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aff304b0866092badc515df7201fb4873acc298e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74027308"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582932"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory statik grup üyeliğini dinamik olarak değiştirme
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) Içinde, bir grubun üyeliğini statik (veya t
 
 ## <a name="change-the-membership-type-for-a-group"></a>Grubun üyelik türünü değiştirme
 
-1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , kiracınızda genel yönetici veya Kullanıcı Yöneticisi olan bir hesapla oturum açın.
+1. Azure AD [Yönetim merkezinde](https://aad.portal.azure.com) , genel yönetici veya Azure AD kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla oturum açın.
 2. **Grupları**seçin.
 3. **Tüm gruplar** listesinden, değiştirmek istediğiniz grubu açın.
 4. **Özellikler**’i seçin.

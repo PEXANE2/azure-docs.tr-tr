@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509083"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787184"
 ---
 # <a name="overview-of-change-tracking-and-inventory"></a>Değişiklik İzleme ve stoğa genel bakış
 
@@ -23,10 +23,15 @@ Bu makalede, Azure Otomasyonu 'nda Değişiklik İzleme ve envanter sunulmaktad�
 - Microsoft Hizmetleri
 - Linux Daemon 'ları
 
-Değişiklik İzleme ve envanter, verileri bulutta Azure Izleyici hizmetinden alır. Azure, izlenen sunuculardaki yüklü yazılım, Microsoft Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları değişikliklerini işlenmek üzere Azure Izleyici 'ye gönderir. Bulut hizmeti alınan verilere yönelik mantığı uygular, kaydeder ve kullanılabilir hale getirir. 
-
 > [!NOTE]
 > Azure Resource Manager özellik değişikliklerini izlemek için bkz. Azure Kaynak Grafiği [değişiklik geçmişi](../governance/resource-graph/how-to/get-resource-changes.md).
+
+Değişiklik İzleme ve envanter, verileri Azure Izleyici 'den alır. Log Analytics çalışma alanlarına bağlı sanal makineler, yüklü yazılım, Microsoft Hizmetleri, Windows kayıt defteri ve dosyaları ve izlenen sunuculardaki tüm Linux Daemon 'ları değişiklikleri hakkında veri toplamak için Log Analytics aracılarını kullanır. Veriler kullanılabilir olduğunda, aracılar işlenmek üzere Azure Izleyici 'ye gönderir. Azure Izleyici alınan verilere yönelik mantığı uygular, kaydeder ve kullanılabilir hale getirir. 
+
+Değişiklik İzleme ve envanter özelliği, Azure Otomasyonu 'ndaki değişiklik izleme ve envanter işlevsel alanlarının her ikisini de sunar. Her iki alan de aynı Log Analytics aracısını kullandığından, sanal makine ekleme işlemi, her iki işlevsel bölgede de aynıdır. 
+
+> [!NOTE]
+> Değişiklik İzleme ve envanter özelliğini kullanmak için, tüm VM 'lerinizi Otomasyon hesabının aynı abonelik ve bölgesine bulmanız gerekir.
 
 Değişiklik İzleme ve Inventory Şu anda aşağıdaki öğeleri desteklemiyor:
 
@@ -38,7 +43,7 @@ Değişiklik İzleme ve Inventory Şu anda aşağıdaki öğeleri desteklemiyor:
 Diğer sınırlamalar:
 
 * **En büyük dosya boyutu** sütunu ve değerleri geçerli uygulamada kullanılmıyor.
-* 30 dakikalık bir koleksiyon döngüsüne 2500 'den fazla dosya topladıysanız çözüm performansı düşebilir.
+* 30 dakikalık bir toplama döngüsüne 2500 'den fazla dosya topladıysanız değişiklik izleme ve stok performansı düşebilir.
 * Ağ trafiği yüksekse, değişiklik kayıtlarının görüntülenmesi altı saate kadar sürebilir.
 * Bir bilgisayar kapatılırken bir yapılandırmayı değiştirirseniz, bilgisayar önceki yapılandırmaya ait değişiklikleri gönderebilir.
 
@@ -49,33 +54,7 @@ Değişiklik İzleme ve envanter Şu anda aşağıdaki sorunları yaşıyor:
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Değişiklik İzleme ve envanter ve Azure Izleyici Log Analytics aracıları hem Windows hem de Linux işletim sistemlerinde desteklenir.
-
-### <a name="windows-operating-systems"></a>Windows işletim sistemleri
-
-Resmi olarak desteklenen Windows işletim sistemi sürümü Windows Server 2008 R2 veya üzeri bir sürümdür.
-
-### <a name="linux-operating-systems"></a>Linux işletim sistemleri
-
-Aşağıda ele alınan Linux dağıtımları, Linux için Log Analytics Aracısı için resmi olarak desteklenir. Ancak, Linux Aracısı listelenmeyen diğer dağıtımlar üzerinde de çalıştırılabilir. Aksi belirtilmediği takdirde, listelenen her ana sürüm için tüm küçük yayınlar desteklenir.
-
-#### <a name="64-bit-linux-operating-systems"></a>64-bit Linux işletim sistemleri
-
-* CentOS 6 ve 7
-* Amazon Linux 2017,09
-* Oracle Linux 6 ve 7
-* Red Hat Enterprise Linux Server 6 ve 7
-* Borçlu GNU/Linux 8 ve 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit-linux-operating-systems"></a>32-bit Linux işletim sistemleri
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Borçlu GNU/Linux 8 ve 9
-* Ubuntu Linux 14,04 LTS ve 16,04 LTS
+Değişiklik İzleme ve envanter, Log Analytics Aracısı gereksinimlerini karşılayan tüm işletim sistemlerinde desteklenir. Windows işletim sisteminin resmi olarak desteklenen sürümleri Windows Server 2008 SP1 veya üzeri ve Windows 7 SP1 veya sonraki bir sürümü. Bir dizi Linux işletim sistemi de desteklenir. Bkz. [Log Analytics aracısına genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -83,14 +62,14 @@ Değişiklik İzleme ve envanteri özellikle bir sonraki tabloda listelenen ağ 
 
 |Azure Genel  |Azure Kamu  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
+|*.azure-automation.net | *. azure-automation.us|
 
 ## <a name="change-tracking-and-inventory-user-interface"></a>Değişiklik İzleme ve envanter Kullanıcı arabirimi
 
-İzlenen bilgisayarların değişikliklerinin özetini görüntülemek için Azure portal Değişiklik İzleme ve envanterini kullanın. Bu özellik, Otomasyon hesabınızda **yapılandırma yönetimi** altında **değişiklik izleme** seçilerek kullanılabilir. 
+İzlenen bilgisayarların değişikliklerinin özetini görüntülemek için Azure portal Değişiklik İzleme ve envanterini kullanın. Otomasyon hesabınızda **yapılandırma yönetimi** altındaki **değişiklik izleme** veya **Stok** için VM ekle seçeneklerinden birini seçerek özelliği kullanabilirsiniz.  
 
 ![Değişiklik İzleme panosu](./media/change-tracking/change-tracking-dash01.png)
 
@@ -186,7 +165,7 @@ Aşağıdaki tabloda, Değişiklik İzleme ve envanter için makine başına izl
 |Hizmetler|250|
 |Daemon 'ları|250|
 
-Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ayda yaklaşık 40 MB 'dir. Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Sahip olduğunuz tam kullanımı görmek için ortamınızı izlemeniz önerilir.
+Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ortamınıza bağlı olarak ayda yaklaşık 40 MB 'dir. Log Analytics çalışma alanının kullanım ve tahmini maliyetler özelliğini kullanarak, kullanım grafiğinde Değişiklik İzleme ve envanterle alınan verileri görüntüleyebilirsiniz. Bu veri görünümünü, veri kullanımınızı değerlendirmek ve faturanızı nasıl etkilediğini öğrenmek için kullanabilirsiniz. Bkz. [kullanımınızı anlayın ve maliyetleri tahmin edin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).  
 
 ### <a name="microsoft-service-data"></a>Microsoft hizmet verileri
 

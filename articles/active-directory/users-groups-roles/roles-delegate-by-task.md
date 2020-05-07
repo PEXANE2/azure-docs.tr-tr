@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/03/2020
+ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89eeb276a7f096133083037e2a1c088cb6ad35f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232505"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779969"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory 'de yönetici görevine göre yönetici rolleri
 
@@ -76,9 +76,9 @@ Görev | En az ayrıcalıklı rol | Ek roller
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Geçiş kimlik doğrulaması | Genel Yönetici  | 
-Tüm yapılandırmaları Oku | Genel okuyucu | Genel Yönetici  |
-Kesintisiz çoklu oturum açma | Genel Yönetici  | 
+Geçiş kimlik doğrulaması | Karma kimlik yöneticisi  | 
+Tüm yapılandırmaları Oku | Genel okuyucu | Karma kimlik yöneticisi  |
+Kesintisiz çoklu oturum açma | Karma kimlik yöneticisi  | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -202,7 +202,7 @@ Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
 Oturum açma günlüklerini oku | Rapor okuyucu | Güvenlik okuyucusu, Güvenlik Yöneticisi
 
-## <a name="multi-factor-authentication"></a>Çok faktörlü kimlik doğrulaması
+## <a name="multi-factor-authentication"></a>Multi-factor authentication
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------

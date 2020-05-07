@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/23/2019
-ms.openlocfilehash: ba1e0eee5de65364d8e5e762195f7de98384c2a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eedc0c3044717360494b222c88d73b3c8999e94
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122601"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587867"
 ---
 | İşlem hedefi | Kullanıldığı yerler | GPU desteği | FPGA desteği | Açıklama |
 | ----- | ----- | ----- | ----- | ----- |
@@ -25,7 +25,7 @@ ms.locfileid: "76122601"
 | [Azure Machine Learning işlem kümeleri](../articles/machine-learning/how-to-use-parallel-run-step.md) | Önizle Toplu&nbsp;çıkarım | [Evet](../articles/machine-learning/how-to-use-parallel-run-step.md) (Machine Learning işlem hattı) | &nbsp;  | Batch Puanlama 'nı sunucusuz işlem üzerinde çalıştırın. Normal ve düşük öncelikli VM 'Leri destekler. |
 | [Azure İşlevleri](../articles/machine-learning/how-to-deploy-functions.md) | Önizle Gerçek zamanlı çıkarım | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | Önizle IoT&nbsp;modülü |  &nbsp; | &nbsp; | IoT cihazlarında ML modellerini dağıtın ve sunun. |
-| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IoT Edge aracılığıyla |  &nbsp; | Yes | IoT cihazlarında ML modellerini dağıtın ve sunun. |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | IoT Edge aracılığıyla |  &nbsp; | Yes | IoT cihazlarında ML modellerini dağıtın ve sunun. |
 
 > [!NOTE]
 > Yerel, Azure Machine Learning işlem örneği gibi işlem hedefleri ve Azure Machine Learning işlem kümeleri eğitim ve deneme için GPU 'YU desteklese de, __Web hizmeti olarak dağıtıldığında__ , yalnızca Azure Kubernetes hizmetinde desteklenir.

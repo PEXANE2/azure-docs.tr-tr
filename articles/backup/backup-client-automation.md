@@ -3,12 +3,12 @@ title: Windows Server 'ı Azure 'a yedeklemek için PowerShell 'i kullanma
 description: Bu makalede, PowerShell kullanarak Windows Server veya Windows istemcisinde Azure Backup ayarlama ve yedekleme ve kurtarmayı yönetme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 3b9bcf8e777244cec11383619d145e3a99ff46d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193029"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597986"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell kullanarak Windows Server/Windows İstemcisi için Azure’a yedekleme dağıtma ve yönetme
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 Azure Backup gönderilen yedekleme verileri verilerin gizliliğini korumak için şifrelenir. Şifreleme parolası, geri yükleme sırasında verilerin şifresini çözmek için "paroladır".
 
-Azure Portal **Kurtarma Hizmetleri Kasası** bölümünde **Ayarlar** > **Özellikler** > **güvenlik PIN** altında **Oluştur**' u seçerek bir güvenlik PIN 'i oluşturmanız gerekir. Ardından, bunu komutunda olduğu gibi `generatedPIN` kullanın:
+Azure Portal **Kurtarma Hizmetleri Kasası** bölümünde **Ayarlar** > **Özellikler** > **güvenlik PIN** altında **Oluştur**' u seçerek bir güvenlik PIN 'i oluşturmanız gerekir. 
+
+>[!NOTE]
+> Güvenlik PIN 'ı yalnızca Azure portal ile oluşturulabilir.
+
+Ardından, bunu komutunda olduğu gibi `generatedPIN` kullanın:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: d4b35458c76da82b33dfcb530cfdc71ee3da3bb6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d825dee469497cbb56a91c913ff3ac51963058b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604777"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855697"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Öğretici: Azure Otomasyonu runbook 'tan e-posta gönderme
 
@@ -150,7 +150,7 @@ Bu runbook, `AzureRunAsConnection` Azure Key Vault gizli anahtarı almak için A
 
 7. Runbook 'u kaydetmek ve yayımlamak için **Yayımla** ' yı seçin.
 
-Runbook 'un başarıyla yürütüldüğünü doğrulamak için, [runbook 'U test](manage-runbooks.md#testing-a-runbook) etme veya [runbook 'u başlatma](start-runbooks.md)bölümündeki adımları izleyebilirsiniz.
+Runbook 'un başarıyla yürütüldüğünü doğrulamak için, [runbook 'U test](manage-runbooks.md#test-a-runbook) etme veya [runbook 'u başlatma](start-runbooks.md)bölümündeki adımları izleyebilirsiniz.
 Test e-postanızı başlangıçta görmüyorsanız, **Önemsiz** ve **istenmeyen posta** klasörlerinizi denetleyin.
 
 ## <a name="clean-up"></a>Temizleme

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679505"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855348"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi-eski
 
@@ -60,7 +60,7 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
    * **Microsoft. Azure. Automation. SourceControl. Connection** değişkeni, aşağıda gösterildiği gibi bağlantı dizesinin değerlerini içerir.  
 
-     | **Parametre** | **Deeri** |
+     | **Parametre** | **Değer** |
      |:--- |:--- |
      | `Name`  |Microsoft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Dize |
@@ -68,7 +68,7 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
    * **Microsoft. Azure. Automation. SourceControl. OAuthToken**değişkeni, OAuthToken 'inizin güvenli şifreli değerini içerir.  
 
-     |**Parametre**            |**Deeri** |
+     |**Parametre**            |**Değer** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |
@@ -102,7 +102,7 @@ Runbook denetimi, Azure Otomasyonu 'ndaki bir runbook 'ta yaptığınız değiş
    > [!NOTE]
    > Kaynak denetimi runbook 'ları, görüntüleyemezsiniz veya düzenleyemezsiniz. Runbook listenizde gösterilmediğinden, işler listenizde gösterilen eşitleme işleri görürsünüz.
 
-5. Değiştirilen runbook 'un adı, iade edilen runbook için bir giriş parametresi olarak gönderilir. Depo eşitleme sayfasında runbook 'u genişleterek [iş ayrıntılarını görüntüleyebilirsiniz](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) .  
+5. Değiştirilen runbook 'un adı, iade edilen runbook için bir giriş parametresi olarak gönderilir. Depo eşitleme sayfasında runbook 'u genişleterek [iş ayrıntılarını görüntüleyebilirsiniz](automation-runbook-execution.md#job-statuses) .  
 
     ![Bir eşitleme işi için girişi gösteren pencere](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. Değişiklikleri görüntülemek için, iş tamamlandığında GitHub deponuzu yenileyin.  Bir COMMIT iletisi ile deponuzda bir kayıt olmalıdır: **Azure Otomasyonu 'Nda *Runbook adı* güncelleştirildi.**  

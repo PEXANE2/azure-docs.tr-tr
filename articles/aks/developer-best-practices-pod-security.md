@@ -1,18 +1,17 @@
 ---
-title: Pod güvenlik en iyi uygulamaları
-titleSuffix: Azure Kubernetes Service
+title: Geliştirici en iyi uygulamalar-Azure Kubernetes Hizmetleri 'nde (AKS) Pod güvenliği
 description: Azure Kubernetes Service 'te (aks) Pod 'nin güvenliğini sağlama hakkında geliştirici için en iyi uygulamaları öğrenin
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804393"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779085"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Pod güvenliği için en iyi uygulamalar
 
@@ -75,7 +74,7 @@ Uygulama kodunuzda açığa çıkarılan kimlik bilgileri riskini sınırlamak i
 Aşağıdaki [ilişkili AKS açık kaynak projeleri][aks-associated-projects] , dijital bir kasadan otomatik olarak kimlik doğrulama veya kimlik bilgileri ve anahtar istekleri yapmanızı sağlar:
 
 * Azure kaynakları için Yönetilen kimlikler ve
-* Azure Key Vault FlexVol sürücüsü
+* [Gizli anahtar deposu için Azure Key Vault sağlayıcısı CSı sürücüsü](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
 İlişkili AKS açık kaynak projeleri, Azure teknik desteği tarafından desteklenmez. Topluluğumuza geri bildirim ve hata toplamak için sağlanırlar. Bu projeler üretim kullanımı için önerilmez.
 
@@ -89,28 +88,28 @@ Yönetilen bir kimlikle, uygulama kodunuzun Azure depolama gibi bir hizmete eri�
 
 Pod kimlikleri hakkında daha fazla bilgi için bkz. [BIR AKS kümesini Pod tarafından yönetilen kimlikleri ve uygulamalarınızla birlikte kullanmak Için yapılandırma][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Esnek ses ile Azure Key Vault kullanma
+### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Gizli dizi ile Azure Key Vault kullanma CSı sürücüsü
 
-Yönetilen Pod kimlikleri, Azure hizmetleri 'ni desteklemeye yönelik kimlik doğrulaması yapmak için harika çalışır. Azure kaynakları için yönetilen kimlikleri olmayan kendi hizmetleriniz veya uygulamalarınız için kimlik bilgilerini veya anahtarları kullanarak kimlik doğrulaması yapmanız gerekir. Bu kimlik bilgilerini depolamak için bir dijital kasa kullanılabilir.
+Pod Identity projesi kullanılması, Azure hizmetlerini desteklemeye karşı kimlik doğrulaması yapılmasını mümkün değildir. Azure kaynakları için yönetilen kimlikleri olmayan kendi hizmetleriniz veya uygulamalarınız için kimlik bilgilerini veya anahtarları kullanarak kimlik doğrulaması yapabilirsiniz. Bu gizli dizi içeriklerini depolamak için bir dijital kasa kullanılabilir.
 
-Uygulamalar bir kimlik bilgisine ihtiyaç duyduklarında, dijital kasada iletişim kurar, en son kimlik bilgilerini alıp gerekli hizmete bağlanır. Azure Key Vault bu dijital kasa olabilir. Pod tarafından yönetilen kimlikleri kullanarak Azure Key Vault bir kimlik bilgisi almaya yönelik Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
+Uygulamalar bir kimlik bilgisine ihtiyaç duyduklarında, dijital kasada iletişim kurar, en son gizli içeriği alır ve ardından gerekli hizmete bağlanır. Azure Key Vault bu dijital kasa olabilir. Pod tarafından yönetilen kimlikleri kullanarak Azure Key Vault bir kimlik bilgisi almaya yönelik Basitleştirilmiş iş akışı aşağıdaki diyagramda gösterilmiştir:
 
-![Pod yönetilen kimliği kullanarak Key Vault kimlik bilgisini almak için Basitleştirilmiş iş akışı](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Pod yönetilen kimliği kullanarak Key Vault kimlik bilgisini almak için Basitleştirilmiş iş akışı](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-Key Vault ile kimlik bilgileri, depolama hesabı anahtarları veya sertifikalar gibi gizli dizileri depolar ve düzenli olarak döndürebilirsiniz. FlexVolume kullanarak bir AKS kümesiyle Azure Key Vault tümleştirebilirsiniz. FlexVolume sürücüsü, AKS kümesinin Key Vault 'ten yerel olarak kimlik bilgilerini almasına ve bunları yalnızca istenen pod için güvenli bir şekilde sağlamasına imkan tanır. Key Vault FlexVol sürücüsünü AKS düğümlerine dağıtmak için küme işleçle çalışın. Key Vault erişim istemek ve FlexVolume sürücüsü aracılığıyla ihtiyacınız olan kimlik bilgilerini almak için pod tarafından yönetilen bir kimlik kullanabilirsiniz.
+Key Vault ile kimlik bilgileri, depolama hesabı anahtarları veya sertifikalar gibi gizli dizileri depolar ve düzenli olarak döndürebilirsiniz. [Gizli dizi için Azure Key Vault sağlayıcısını](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)kullanarak bir aks kümesiyle Azure Key Vault tümleştirebilirsiniz. Gizli dizileri deposunun CSı sürücüsü, AKS kümesinin gizli içeriği Key Vault 'tan yerel olarak almasını ve yalnızca istekte bulunan Pod 'e güvenli bir şekilde sağlamasını sağlar. Gizli dizileri, AKS çalışan düğümlerine bağlamak için küme işleçle birlikte çalışın. Key Vault erişim istemek ve gizli dizi depolama CSı sürücüsü aracılığıyla gereken gizli içeriği almak için pod tarafından yönetilen bir kimlik kullanabilirsiniz.
 
-Esnek olarak Azure Key Vault, Linux Pod ve düğümlerinde çalışan uygulamalar ve hizmetlerle birlikte kullanılmak üzere tasarlanmıştır.
+Gizli dizileri içeren Azure Key Vault, bir Kubernetes sürümü 1,16 veya daha büyük olan Linux düğümleri ve düğüm 'lar için kullanılabilir. Windows düğümleri ve pod için 1,18 veya üzeri bir Kubernetes sürümü gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, ayırımlarınızın güvenliğini sağlama konusunda odaklanılmıştır. Bu alanlardan bazılarını uygulamak için aşağıdaki makalelere bakın:
 
 * [AKS ile Azure kaynakları için Yönetilen kimlikler kullanma][aad-pod-identity]
-* [Azure Key Vault AKS ile tümleştirme][aks-keyvault-flexvol]
+* [Azure Key Vault AKS ile tümleştirme][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects

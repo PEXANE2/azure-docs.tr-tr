@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670126"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591661"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularına genel bakış
 Günlük sorguları, [Azure Izleyici günlüklerinde](../platform/data-platform-logs.md)toplanan verilerin değerini tamamen kullanmanıza yardımcı olur. Güçlü bir sorgu dili, birden çok tablodan veri birleştirme, büyük veri kümelerini toplama ve en az kodla karmaşık işlemler gerçekleştirmenize olanak tanır. Neredeyse her soru yanıtlanarak, destekleyici veriler toplandıkça ve analiz, doğru sorgunun nasıl oluşturulacağını anlamış olabilir.
@@ -81,7 +81,7 @@ Log Analytics, günlük sorgularını yazmak ve bunların sonuçlarını etkile�
 Azure portal çeşitli yerlerden Log Analytics başlatabilirsiniz. Log Analytics için kullanılabilir olan verilerin kapsamı, nasıl başladiğinize göre belirlenir. Daha fazla ayrıntı için bkz. [sorgu kapsamı](scope.md) .
 
 - **Azure izleyici** menüsünde veya **Log Analytics çalışma alanları** menüsünden **Günlükler** ' i seçin.
-- Application Insights uygulamasının **genel bakış** sayfasından **analiz** ' ı seçin.
+- Bir Application Insights uygulamasının **genel bakış** sayfasında **Günlükler** ' i seçin.
 - Azure kaynağı menüsündeki **günlükleri** seçin.
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

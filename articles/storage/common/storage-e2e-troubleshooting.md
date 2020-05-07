@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76314768"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610981"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Depolama ölçümlerini ve günlüğe kaydetmeyi, AzCopy’yi ve İleti Çözümleyicisi’ni kullanarak uçtan uca sorun giderme
 
@@ -161,7 +161,7 @@ Microsoft Message Analyzer, sorun giderme ve tanılama senaryolarında protokol 
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Ileti Çözümleyicisi ve Azure depolama varlıklarını indirme ve yükleme
 
-1. [Ileti Çözümleyicisi](https://www.microsoft.com/download/details.aspx?id=44226) 'Ni Microsoft İndirme Merkezi ' nden indirin ve yükleyiciyi çalıştırın.
+1. [Ileti çözümleyici](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer)'yi indirin.
 2. Ileti Çözümleyicisi 'ni başlatın.
 3. **Araçlar** menüsünde, **varlık Yöneticisi**' ni seçin. **Varlık Yöneticisi** Iletişim kutusunda **indirmeler**' ı seçin ve ardından **Azure Storage**' a filtre uygulayın. Aşağıdaki resimde gösterildiği gibi Azure depolama varlıklarını görürsünüz.
 4. Azure depolama varlıklarını yüklemek için **Tüm görüntülenecek öğeleri eşitle** ' ye tıklayın. Kullanılabilir varlıklar şunları içerir:

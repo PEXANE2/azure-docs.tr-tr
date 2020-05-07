@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368569"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790924"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrayları 
 Bir Service Fabric kümesi dağıtımında, guardrayları yerinde konur, bu da geçersiz bir küme yapılandırması durumunda Azure Resource Manager dağıtımı başarısız olur. Aşağıdaki bölümler, yaygın küme yapılandırma sorunlarına ve bu sorunları azaltmak için gereken adımlara genel bir bakış sağlar. 
@@ -79,7 +79,7 @@ Service Fabric kümenin, kümenin birincil düğüm türünde çalışan sistem 
 Birincil düğüm türü, kümenizde belirtilen güvenilirlik için yeterli sanal makineye sahip olduğundan emin olun. Sanal makine ölçek kümesini, belirtilen güvenilirlik katmanı için en az sayıda düğüm altına getirecek şekilde bir sanal makineyi kaldıracaksınız.
 * Güvenilirlik katmanı doğru şekilde belirtilmişse, güvenilirlik katmanı için gereken birincil düğüm türünde yeterli düğüme sahip olduğunuzdan emin olun. 
 * Güvenilirlik katmanı yanlış ise, herhangi bir sanal makine ölçek kümesi işlemini başlatmadan önce güvenilirlik düzeyini düşürmek için Service Fabric kaynağında bir değişiklik başlatın ve bunun tamamlanmasını bekleyin.
-* Güvenilirlik katmanı bronz ise, kümenizi dikkatlice ölçeklendirmek için lütfen bu [adımları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) izleyin.
+* Güvenilirlik katmanı bronz ise, lütfen kümenizdeki ölçeği dikkatlice ölçeklendirmek için aşağıdaki [adımları](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * VM 'lerde veya Windows Server çalıştıran bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md)

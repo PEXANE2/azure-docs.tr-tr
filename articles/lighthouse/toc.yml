@@ -10,6 +10,9 @@
     - name: Dizin oluşturma
       displayName: 'template, sample'
       href: ./samples/index.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
 - name: Kavramlar
   items:
     - name: Azure tarafından atanan temsilcinin kaynak yönetimi
@@ -33,6 +36,9 @@
     - name: Kurumsal senaryolarda Azure Lighthouse
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Azure Lighthouse ve Azure yönetilen uygulamaları
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme

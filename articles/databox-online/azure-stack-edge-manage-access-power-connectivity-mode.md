@@ -1,23 +1,23 @@
 ---
-title: Cihaz erişimi, güç ve bağlantı modunu Azure Data Box Gateway
-description: Azure 'a veri aktarmaya yardımcı olan Azure Data Box Gateway cihaz için erişim, güç ve bağlantı modunun nasıl yönetileceğini açıklar
+title: Azure Stack Edge cihaz erişimi, güç ve bağlantı modu | Microsoft Docs
+description: Azure 'a veri aktarmaya yardımcı olan Azure Stack Edge cihazı için erişim, güç ve bağlantı modunun nasıl yönetileceğini açıklar
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: gateway
+ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
+ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
 ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561349"
+ms.locfileid: "82569621"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway için erişimi, güç ve bağlantı modunu yönetme
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Azure Stack Edge için erişimi, gücü ve bağlantı modunu yönetme
 
-Bu makalede, Azure Data Box Gateway erişim, güç ve bağlantı modunun nasıl yönetileceği açıklanır. Bu işlemler yerel Web Kullanıcı arabirimi veya Azure portal aracılığıyla gerçekleştirilir. 
+Bu makalede Azure Stack Edge için erişim, güç ve bağlantı modunun nasıl yönetileceği açıklanmaktadır. Bu işlemler yerel Web Kullanıcı arabirimi veya Azure portal aracılığıyla gerçekleştirilir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -26,9 +26,10 @@ Bu makalede şunları öğreneceksiniz:
 > * Bağlantı modunu Yönet
 > * Güç yönetimi
 
+
 ## <a name="manage-device-access"></a>Cihaz erişimini yönetme
 
-Data Box Gateway cihazınıza erişim, bir cihaz parolasının kullanımı ile denetlenir. Parolayı yerel Web Kullanıcı arabirimi aracılığıyla değiştirebilirsiniz. Ayrıca Azure portal cihaz parolasını sıfırlayabilirsiniz.
+Azure Stack Edge cihazınıza erişim, bir cihaz parolasının kullanımı ile denetlenir. Parolayı yerel Web Kullanıcı arabirimi aracılığıyla değiştirebilirsiniz. Ayrıca Azure portal cihaz parolasını sıfırlayabilirsiniz.
 
 ### <a name="change-device-password"></a>Cihaz parolasını değiştirme
 
@@ -37,9 +38,9 @@ Cihaz parolasını değiştirmek için yerel kullanıcı arabirimindeki adımlar
 1. Yerel Web Kullanıcı arabiriminde **bakım > parola değiştirme**' ye gidin.
 2. Geçerli parolayı ve ardından yeni parolayı girin. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. Yeni parolayı onaylayın.
 
-    ![Parolayı değiştir](media/data-box-gateway-manage-access-power-connectivity-mode/change-password-1.png)
+    ![Parolayı değiştir](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. **Parolayı Değiştir**' e tıklayın.
+3. **Parolayı Değiştir**' i seçin.
  
 ### <a name="reset-device-password"></a>Cihaz parolasını sıfırla
 
@@ -47,25 +48,25 @@ Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerekt
 
 1. Azure portal, **genel bakış > yönetici parolasını sıfırla**' ya gidin.
 
-    ![Parola sıfırlama](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Parola sıfırlama](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
- 
-2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**' ya tıklayın.
 
-    ![Parola sıfırlama](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**’yı seçin.
+
+    ![Parola sıfırlama](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Kaynak erişimini yönetme
 
-Azure Stack Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynağını oluşturmak için, bir kaynak grubu düzeyinde katkıda bulunan veya daha yüksek izinlere sahip olmanız gerekir. Ayrıca, kaydedilecek ilgili kaynak sağlayıcılarının da olması gerekir. Etkinleştirme anahtarı ve kimlik bilgilerini içeren tüm işlemler için Azure Active Directory Graph API izinleri de gereklidir. Bunlar aşağıdaki bölümlerde açıklanmıştır.
+Azure Stack Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynağını oluşturmak için, bir kaynak grubu düzeyinde katkıda bulunan veya daha yüksek izinlere sahip olmanız gerekir. Ayrıca, kaydedilecek ilgili kaynak sağlayıcılarının da olması gerekir. Etkinleştirme anahtarı ve kimlik bilgilerini içeren tüm işlemler için Microsoft Graph API 'SI izinleri de gereklidir. Bunlar aşağıdaki bölümlerde açıklanmıştır. 
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API izinlerini yönetme
 
-Azure Stack Edge cihazının etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren işlemler gerçekleştirirken, Microsoft Graph API 'sine yönelik izinlere ihtiyacınız vardır. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
+Azure Stack Edge cihazının etkinleştirme anahtarını oluştururken veya kimlik bilgileri gerektiren herhangi bir işlem gerçekleştirirken, Azure Active Directory Graph API izinlerinizin olması gerekir. Kimlik bilgileri gerektiren işlemler şunlar olabilir:
 
 -  İlişkili bir depolama hesabıyla bir paylaşma oluşturuluyor.
 -  Cihazdaki paylaşımlara erişebilen bir Kullanıcı oluşturma.
 
-Active Directory kiracısında yapabilmeniz için bir `User` erişiminizin olması gerekir. `Read all directory objects` Bir Konuk Kullanıcı, izinleri olmadığı için `Read all directory objects`bu kullanıcı olamaz. Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge cihazınızda bir paylaşımın oluşturulması gibi işlemler, bir kullanıcının oluşturulması başarısız olur.
+Active Directory kiracısında yapabilmeniz için bir `User` erişiminizin olması gerekir. `Read all directory objects` Bir Konuk Kullanıcı, izinleri olmadığı için `Read all directory objects`bu kullanıcı olamaz. Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge cihazınızda bir paylaşımın oluşturulması, Kullanıcı oluşturma, sınır hesaplama rolü yapılandırması, cihaz parolasının sıfırlanması gibi işlemler başarısız olur.
 
 API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -98,9 +99,11 @@ Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kaynak
 
 ## <a name="manage-connectivity-mode"></a>Bağlantı modunu Yönet
 
-Varsayılan normal moddan ayrı olarak, cihazınız kısmen bağlantısı kesik veya bağlantısı kesilmiş modda da çalıştırılabilir. Bu modların her biri aşağıda gösterildiği gibi açıklanmıştır:
+Varsayılan tam bağlı moddan ayrı olarak, cihazınız kısmen bağlı veya tamamen bağlantısı kesik modda da çalıştırılabilir. Bu modların her biri aşağıda gösterildiği gibi açıklanmıştır:
 
-- **Kısmen bağlantısı kesik** – bu modda, cihaz paylaşımlara veri indiremez, ancak Azure Portal aracılığıyla yönetilebilir.
+- **Tam bağlantı** -bu, cihazın işlem yaptığı normal varsayılan moddur. Verilerin hem bulut yüklemesi hem de indirilmesi bu modda etkindir. Cihazı yönetmek için Azure portal veya yerel Web Kullanıcı arabirimini kullanabilirsiniz.
+
+- **Kısmen bağlantısı kesik** – bu modda cihaz, hiçbir paylaşma verisini karşıya yükleyemiyor veya indiremez, ancak Azure Portal aracılığıyla yönetilebilir.
 
     Bu mod genellikle ölçülen uydu ağı kullanılırken kullanılır ve amaç ağ bant genişliği tüketimini en aza indirmektir. Cihaz izleme işlemleri için en az ağ tüketimi hala meydana gelebilir.
 
@@ -111,25 +114,24 @@ Varsayılan normal moddan ayrı olarak, cihazınız kısmen bağlantısı kesik 
 Cihaz modunu değiştirmek için şu adımları izleyin:
 
 1. Cihazınızın yerel Web Kullanıcı arabiriminde, **yapılandırma > bulut ayarları**' na gidin.
-2. **Bulutu karşıya yüklemeyi ve indirmeyi**devre dışı bırakın.
-3. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini**etkinleştirin.
+2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı**, **kısmen bağlı**ve **tamamen bağlantısı kesilen**' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini**etkinleştirin.
 
-    ![Bağlantı modu](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-1.png)
+    ![Bağlantı modu](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
-4. Cihazı bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini**devre dışı bırakın. Artık cihaz yalnızca yerel Web Kullanıcı arabirimi aracılığıyla yönetilebilir.
-
-    ![Bağlantı modu](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
-
 ## <a name="manage-power"></a>Güç yönetimi
 
-Yerel Web Kullanıcı arabirimini kullanarak sanal cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu eylem, herhangi bir veri bozulması olasılığını en aza indirir.
+Yerel Web Kullanıcı arabirimini kullanarak fiziksel cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Yeniden başlatmadan önce, verileri veri sunucusunda ve ardından cihazda çevrimdışı duruma getirin. Bu eylem, herhangi bir veri bozulması olasılığını en aza indirir.
 
 1. Yerel Web Kullanıcı arabiriminde **bakım > güç ayarları**' na gidin.
-2. Ne yapmak istediğinize bağlı olarak, **kapalı** veya **yeniden başlatma** ' ya tıklayın.
+2. Ne yapmak istediğinize bağlı olarak, **kapanıyor** ' u veya **Yeniden Başlat** ' ı seçin.
 
-    ![Güç ayarları](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
+    ![Güç ayarları](media/azure-stack-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. Onay istendiğinde, devam etmek için **Evet** ' e tıklayın.
+3. Onaylamanız istendiğinde, devam etmek için **Evet** ' i seçin.
 
 > [!NOTE]
-> Sanal cihazı kapatırsanız, cihazı hiper yönetici yönetimi aracılığıyla başlatmanız gerekecektir.
+> Fiziksel cihazı kapatırsanız, açmak için cihazda güç düğmesine gönderim yapmanız gerekir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Paylaşımları yönetmeyi](azure-stack-edge-manage-shares.md)öğrenin.

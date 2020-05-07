@@ -3,12 +3,12 @@ title: Azure geçişi ile şirket içi sunuculardaki uygulamaları, rolleri ve �
 description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9f5489b513cd1405e6b093d7537e4cbcead041
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79453591"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744626"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
@@ -30,17 +30,47 @@ Azure geçişi kullanarak uygulama bulma: Sunucu değerlendirmesi aracısız. Ma
 5. Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
 6. Uygulama bulma için [destek ve gereksinimleri doğrulayın](migrate-support-matrix-vmware.md#application-discovery) .
 
-## <a name="prepare-for-app-discovery"></a>Uygulama bulma için hazırlanma
 
-1. [Gereç dağıtımına hazırlanın](tutorial-prepare-vmware.md). Hazırlık, Gereç ayarlarını doğrulamayı ve gerecin vCenter Server erişmek için kullanacağı bir hesap ayarlamayı içerir.
-2. Uygulamaları, rolleri ve özellikleri öğrenmek istediğiniz makineler için yönetici izinlerine sahip bir kullanıcı hesabına (Windows ve Linux sunucuları için birer tane) sahip olduğunuzdan emin olun.
-3. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için bir OVA şablonunu indirip bir VMware VM 'si olarak oluşturmak üzere VMware 'ye içeri aktarabilirsiniz. Gereci yapılandırıp Azure geçişi ile kaydedersiniz.
-2. Gereci dağıtırken, sürekli bulmayı başlatmak için aşağıdakileri belirtirsiniz:
+
+## <a name="deploy-the-azure-migrate-appliance"></a>Azure geçişi gereci dağıtma
+
+1. Azure geçişi gerecini dağıtmaya yönelik gereksinimleri [gözden geçirin](migrate-appliance.md#appliance---vmware) .
+2. Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu bulutlarında](migrate-appliance.md#government-cloud-urls)erişmesi gereken Azure URL 'lerini gözden geçirin.
+3. Bulma ve değerlendirme sırasında gereç tarafından toplanan [verileri gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+4. Gereç [için bağlantı noktası](migrate-support-matrix-vmware.md#port-access) erişim gereksinimleri.
+5. Bulmayı başlatmak için [Azure geçişi gereci dağıtın](how-to-set-up-appliance-vmware.md) . Gereci dağıtmak için bir OVA şablonunu indirip bir VMware VM 'si olarak oluşturmak üzere VMware 'ye içeri aktarabilirsiniz. Gereci yapılandırıp Azure geçişi ile kaydedersiniz.
+6. Gereci dağıtırken, sürekli bulmayı başlatmak için aşağıdakileri belirtirsiniz:
     - Bağlanmak istediğiniz vCenter Server adı.
     - VCenter Server Bağlanılacak gereç için oluşturduğunuz kimlik bilgileri.
     - Windows/Linux VM 'lerine bağlanmak için gereç için oluşturduğunuz hesap kimlik bilgileri.
 
 Gereç dağıtıldıktan ve kimlik bilgilerini sağladıysanız, Gereç VM meta verilerinin ve performans verilerinin sürekli olarak keşfedilmesi ve uygulamaların, özelliklerin ve rollerin keşfedilmesi ile birlikte başlatılır.  Uygulama bulmanın süresi, sahip olduğunuz VM sayısına bağlıdır. Genellikle uygulama keşfi 500 VM 'Ler için bir saat sürer.
+
+## <a name="prepare-a-user-account"></a>Kullanıcı hesabı hazırlama
+
+Bulma için kullanılacak bir hesap oluşturun ve gereci ekleyin.
+
+### <a name="create-a-user-account-for-discovery"></a>Bulma için bir kullanıcı hesabı oluşturma
+
+Sunucu değerlendirmesinin, bulma için VM 'ye erişebilmesi için bir kullanıcı hesabı ayarlayın. Hesap gereksinimleri hakkında [bilgi edinin](migrate-support-matrix-vmware.md#application-discovery) .
+
+
+### <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
+
+Kullanıcı hesabını gereç öğesine ekleyin.
+
+1. Gereç Yönetimi uygulamasını açın. 
+2. **VCenter ayrıntıları sağla** paneline gidin.
+3. **VM 'lerde uygulama ve bağımlılıkları keşfet**bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
+3. **İşletim sistemini**seçin, hesap için bir kolay ad ve **Kullanıcı adı**/**parolasını** girin
+6. **Kaydet**’e tıklayın.
+7. **Kaydet ve bulmayı Başlat**' a tıklayın.
+
+    ![VM Kullanıcı hesabı ekle](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
+
+
+
+
 
 ## <a name="review-and-export-the-inventory"></a>Envanteri gözden geçirin ve dışa aktarın
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406984"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611339"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD kimlik doğrulaması ve yetkilendirme hatası kodları
 
@@ -72,9 +72,9 @@ Azure Active Directory (Azure AD) güvenlik belirteci hizmeti 'nden (STS) dönd�
 | `temporarily_unavailable` | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
 
 ## <a name="lookup-current-error-code-information"></a>Geçerli hata kodu bilgilerini ara
-Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, AADSTS hata açıklamalarını, `https://login.microsoftonline.com/error` düzeltmeleri ve önerilen bazı geçici çözümleri bulmak için sayfaya göz atın.  
+Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, AADSTS hata açıklamalarını, [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) düzeltmeleri ve önerilen bazı geçici çözümleri bulmak için sayfaya göz atın.  
 
-Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADSTS16000" hata kodunu aldıysanız, "16000" `https://login.microsoftonline.com/error` için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: `https://login.microsoftonline.com/error?code=16000`.
+Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADSTS16000" hata kodunu aldıysanız, "16000" [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) için bir arama yapın.  Ayrıca, URL 'ye hata kodu numarasını ekleyerek doğrudan belirli bir hataya da bağlanabilirsiniz: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS hata kodları
 
@@ -189,6 +189,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS65001 | Delegationsuz notexist-Kullanıcı veya yönetici, KIMLIĞI X olan uygulamayı kullanmaya Medi. bu kullanıcı ve kaynak için etkileşimli bir yetkilendirme isteği gönderin. |
 | AADSTS65004 | Userdeclinedonay-Kullanıcı uygulamaya erişim iznini reddetti. Kullanıcıdan oturum açmayı yeniden denemesini ve uygulamaya izin vermesini isteyin|
 | AADSTS65005 | Hatalı Configuredapplication-uygulama gerekli kaynak erişim listesi, kaynak tarafından bulunabilecek uygulamaları içermiyor veya istemci uygulaması, gerekli kaynak erişimi listesinde veya grafik hizmetinde belirtilmeyen bir istek ya da kaynak bulunamamıştır ve kaynak erişimi istedi. Uygulama SAML destekliyorsa, uygulamayı yanlış tanımlayıcıyla (varlık) yapılandırmış olabilirsiniz. Aşağıdaki bağlantıyı kullanarak SAML için listelenen çözümlemeyi deneyin:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS650052 | Uygulamanın, kuruluşunuzun `\"{organization}\"` abone olmadığı veya etkinleştirilmediği `(\"{name}\")` bir hizmete erişmesi gerekir. Hizmet aboneliklerinizin yapılandırmasını gözden geçirmek için BT yöneticinize başvurun. |
 | AADSTS67003 | Actornotvalidserviceıdentity |
 | AADSTS70000 | Invalidgrant-kimlik doğrulaması başarısız oldu. Yenileme belirteci geçerli değil. Hatanın nedeni aşağıdakilerden biri olabilir:<ul><li>Belirteç bağlama üst bilgisi boş</li><li>Belirteç bağlama karması eşleşmiyor</li></ul> |
 | AADSTS70001 | UnauthorizedClient-uygulama devre dışı bırakıldı. |
@@ -206,6 +207,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS75001 | BindingSerializationError-SAML ileti bağlama sırasında bir hata oluştu. |
 | AADSTS75003 | UnsupportedBindingError-uygulama desteklenmeyen bağlama ile ilgili bir hata döndürdü (SAML protokol yanıtı HTTP POST dışında bağlamalar aracılığıyla gönderilemez). |
 | AADSTS75005 | Saml2MessageInvalid-Azure AD, SSO için uygulama tarafından gönderilen SAML isteğini desteklemez. |
+| AADSTS7500514 | Desteklenen bir SAML yanıtı türü bulunamadı. Desteklenen yanıt türleri: ' Response ' (XML ad alanı ' urn: oassıs: ad: TC: SAML: 2.0: protokol ') veya ' assertion ' (XML ad alanı ' urn: oassıs: adlar: TC: SAML: 2.0: assertion '). Uygulama hatası-geliştirici bu hatayı işleymeyecektir.|
 | AADSTS75008 | RequestDeniedError-SAML isteğinde beklenmeyen bir hedef bulunduğundan, uygulamadan gelen istek reddedildi. |
 | AADSTS75011 | Nomatchedauthncontexınoutputclaim-hizmet ile kimliği doğrulanmış kullanıcı tarafından istenen kimlik doğrulama yöntemiyle eşleşmeyen kimlik doğrulama yöntemi. |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy-SAML2 kimlik doğrulama Isteğinde geçersiz Nameıdpolicy yok. |
@@ -311,6 +313,7 @@ Döndürülen hata kodunun sayısal bölümünde arama yapın.  Örneğin, "AADS
 | AADSTS700020 | Interactionrequired-erişim izni etkileşim gerektiriyor. |
 | AADSTS700022 | Invalidmultipleresourcesscope-giriş parametresi kapsamı için girilen değer, birden fazla kaynak içerdiğinden geçerli değil. |
 | AADSTS700023 | Invalidresourcelessscope-girilen parametre kapsamı için girilen değer, erişim belirteci isteğinde geçerli değildir. |
+| AADSTS7000215 | Geçersiz istemci parolası belirtildi. Geliştirici hatası-uygulama, gerekli veya doğru kimlik doğrulama parametreleri olmadan oturum açmaya çalışıyor.|
 | AADSTS7000222| Invalidclientsecretexpiredkeyssaðlanan-belirtilen istemci gizli anahtarı anahtarlarının geçerliliği dolmuştur. Uygulamanız için yeni anahtarlar oluşturmak üzere Azure portalını ziyaret edin veya ek güvenlik için sertifika kimlik bilgilerini kullanmayı düşünün:https://aka.ms/certCreds |
 | AADSTS700005 | Invalidgrantredeemagaınstyanlışlıkla Gtenant tarafından sağlanmış yetkilendirme kodu, diğer kiracılarda kullanılmak üzere tasarlanmıştır, bu nedenle reddedilir. OAuth2 yetkilendirme kodu, (/Common veya/{tenant-ID} için uygun olan) için alınan aynı kiracıya göre kullanılmalıdır |
 | AADSTS1000000 | UserNotBoundError-bağlama API 'SI, Azure AD kullanıcısının, henüz gerçekleşmemiş bir dış ıDP ile kimlik doğrulaması yapmasını gerektirir. |

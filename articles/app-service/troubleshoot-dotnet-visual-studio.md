@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280059"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891067"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -614,7 +614,7 @@ Visual Studio 'Nun bir App Service uygulaması tarafından oluşturulan günlük
 Azure App Service uygulamalarla ilgili sorun giderme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Uygulamaları izleme](web-sites-monitor.md)
-* [Visual Studio 2013 ile Azure App Service bellek sızıntılarını araştırma](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Yönetilen bellek sorunlarını analiz etmek için Visual Studio ile ilgili Microsoft ALM blog gönderisi özellikleri.
+* [Visual Studio 2013 ile Azure App Service bellek sızıntılarını araştırma](https://devblogs.microsoft.com/devops/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013/). Yönetilen bellek sorunlarını analiz etmek için Visual Studio ile ilgili Microsoft ALM blog gönderisi özellikleri.
 * [Bilmeniz gereken çevrimiçi araçları Azure App Service](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Amit Apple tarafından blog gönderisi.
 
 Belirli bir sorun giderme sorusu hakkında yardım için aşağıdaki forumlardan birinde bir iş parçacığı başlatın:
@@ -678,7 +678,7 @@ Web sunucusu günlüklerinin çözümlenmesi hakkında daha fazla bilgi için a�
   Web sunucusu günlüklerinde (*. log* dosyaları) veri görüntülemeye yönelik bir araç.
 * [LogParser kullanarak IIS performans sorunlarını veya uygulama hatalarını giderme](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Web sunucusu günlüklerini çözümlemek için kullanabileceğiniz, Günlük ayrıştırıcı aracına giriş.
-* [LogParser kullanarak Robert McMurray tarafından blog gönderileri](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [LogParser kullanarak Robert McMurray tarafından blog gönderileri](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [IIS 7,0, IIS 7,5 ve IIS 8,0 'deki HTTP durum kodu](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Başarısız istek izleme günlükleri çözümleniyor

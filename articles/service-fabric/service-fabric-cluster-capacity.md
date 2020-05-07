@@ -4,12 +4,12 @@ description: Service Fabric küme kapasitesi planlama konuları. Nodetypes, Işl
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f011dee94e135ba40f8d3c87240e905e4a2739ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258921"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793066"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 Herhangi bir üretim dağıtımı için kapsite planlaması önemli bir adımdır. Bu işlemin bir parçası olarak göz önünde bulundurmanız gereken öğelerden bazıları aşağıda verilmiştir.
@@ -104,7 +104,7 @@ Düzenli olmayan hizmetleri barındıran tüm düğüm türleri için gümüş v
 
 - Dayanıklılık düzeyi Gold veya gümüş etkin olan herhangi bir sanal makine ölçek kümesi için en az beş düğüm sayısını koruyun.
 - Dayanıklılık düzeyi gümüş veya altın sahip her sanal makine ölçek kümesi, Service Fabric kümesinde kendi düğüm türüne eşlenmelidir. Birden çok sanal makine ölçek kümesini tek bir düğüm türüyle eşlemek, Service Fabric kümesi ile Azure altyapısının düzgün çalışmasını engeller.
-- Rastgele VM örneklerini silmeyin, her zaman sanal makine ölçek kümesi ölçek azaltma özelliğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sanal makine örneğinde UD ve FD içinde yer aldığı bir dengesbakiyinin oluşturulmasına bir potansiyeline sahiptir. Bu dengesizliği, sistem hizmet örnekleri/hizmet çoğaltmaları arasında doğru şekilde yük dengelemesi yapabilme yeteneğini olumsuz etkileyebilir.
+- Rastgele VM örneklerini silmeyin, her zaman özelliğindeki sanal makine ölçek kümesi ölçeğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sanal makine örneğinde UD ve FD içinde yer aldığı bir dengesbakiyinin oluşturulmasına bir potansiyeline sahiptir. Bu dengesizliği, sistem hizmet örnekleri/hizmet çoğaltmaları arasında doğru şekilde yük dengelemesi yapabilme yeteneğini olumsuz etkileyebilir.
 - Otomatik ölçeklendirme kullanıyorsanız, içindeki ölçek (sanal makine örneklerinin kaldırılması) gibi kuralları tek seferde yalnızca bir düğüm olarak ayarlayın. Aynı anda birden fazla örneğin ölçeğini azaltma güvenli değildir.
 - Birincil düğüm türünde VM 'Leri silmek veya ayırmayı geri alıyorsa, güvenilirlik katmanının gerektirdiği ayrılmış VM 'lerin sayısını asla azaltmalısınız. Bu işlemler, bir ölçek kümesinde sonsuz veya altın bir dayanıklılık düzeyine kadar süresiz olarak engellenir.
 

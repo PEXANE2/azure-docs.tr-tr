@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585830"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743651"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -16,9 +16,9 @@ Verilerinizi korumak için uygulayabileceğiniz en önemli adımlardan biri, gü
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Kimlik ve Kullanıcı erişiminin yönetimi ve denetimi
 
-Azure Backup, [Azure rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanarak ayrıntılı erişimi yönetmenizi sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
+Kurtarma Hizmetleri kasaları tarafından kullanılan depolama hesapları yalıtılmış ve herhangi bir kötü amaçlı kullanıcı tarafından erişilemez. Erişime yalnızca geri yükleme gibi Azure Backup yönetim işlemleri aracılığıyla izin verilir. Azure Backup, [Azure rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)kullanarak ayrıntılı erişim aracılığıyla yönetilen işlemleri denetlemenize olanak sağlar. RBAC, takımınızın içindeki görevleri ayırt etmenize ve yalnızca işlerini yapmak için gereken kullanıcılara erişim miktarına izin vermenizi sağlar.
 
-Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç yerleşik rol sağlar:
+Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) sağlar:
 
 * Yedek katkıda bulunan-kurtarma hizmetleri kasasını silme ve başkalarına erişim verme dışında yedeklemeler oluşturmak ve yönetmek için
 * Yedekleme Işleci-katkıda bulunan her şey, yedeklemenin kaldırılması ve yedekleme ilkelerinin yönetilmesi dışında
@@ -47,13 +47,13 @@ Artık verilerinizi bir sanal ağ içindeki sunuculardan kurtarma hizmetleri kas
 
 Şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Azure 'da, Azure depolama ile kasa arasındaki yoldaki veriler HTTPS tarafından korunur. Bu veriler, Azure omurga ağında kalır.
 
-* Yedekleme verileri Microsoft tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Ayrıca, kurtarma hizmetleri kasasındaki yedeklenen yönetilen disk VM 'lerinizi, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) kullanarak şifreleyebilirsiniz. Bu şifrelemeyi etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
+* Yedekleme verileri Microsoft tarafından yönetilen anahtarlar kullanılarak otomatik olarak şifrelenir. Ayrıca, kurtarma hizmetleri kasasındaki yedeklenen yönetilen disk VM 'lerinizi, Azure Key Vault depolanan [müşteri tarafından yönetilen anahtarları](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) kullanarak şifreleyebilirsiniz. Bu şifrelemeyi etkinleştirmek için herhangi bir açık işlem yapmanız gerekmez. Bu, kurtarma hizmetleri kasanıza yedeklenen tüm iş yükleri için geçerlidir.
 
 * Azure Backup, işletim sistemi/veri disklerinin Azure disk şifrelemesi (ADE) ile şifrelenmiş olduğu Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini destekler. [Şifrelenmiş Azure VM 'leri ve Azure Backup hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>İstemeden silme işleminden yedekleme verilerinin korunması
 
-Azure Backup, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olmak için güvenlik özellikleri sağlar. Geçici silme sayesinde, Kullanıcı bir VM 'nin yedeklemesini silerse, yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün bekletmesi müşteriye hiçbir ücret vermez. [Geçici silme hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete).
+Azure Backup, silme işleminden sonra bile yedekleme verilerini korumaya yardımcı olmak için güvenlik özellikleri sağlar. Geçici silme sayesinde, Kullanıcı bir VM 'nin yedeklemesini silerse, yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verilerinin ek 14 gün bekletmesi müşteriye hiçbir ücret vermez. [Geçici silme hakkında daha fazla bilgi edinin](backup-azure-security-feature-cloud.md).
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Şüpheli etkinliğin izlenmesi ve uyarıları
 

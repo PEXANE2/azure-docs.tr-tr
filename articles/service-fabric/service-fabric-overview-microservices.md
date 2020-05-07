@@ -4,12 +4,12 @@ description: Mikro hizmet yaklaşımına sahip bulut uygulamalarının neden olu
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75750623"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792877"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Uygulamaları oluşturmak için neden mikro hizmetler yaklaşımı kullanılmalıdır
 
@@ -35,7 +35,7 @@ Bazen, bir kavram kanıtı olarak kapıdan bir şeyin alınması, itici faktörd
 
 Tek parçalı tasarım yaklaşımının avantajları vardır. Tek parçalı uygulamalar genellikle tasarım için daha basittir ve bu çağrılar genellikle işlemler arası iletişim (IPC) üzerinde olduğundan bileşenler arasındaki çağrılar daha hızlıdır. Ayrıca herkes tek bir ürünü sınar ve bu da insan kaynakları 'nın daha verimli bir şekilde kullanılmasını sağlar. Altkenar, katmanlı katmanlar arasında sıkı bir bağ olduğundan tek tek bileşenleri ölçeklendiremez. Düzeltmeler veya yükseltmeler yapmanız gerekiyorsa başkalarının testlerini bitirmesini beklemeniz gerekir. Çevik olması daha zordur.
 
-Mikro hizmetler bu yüzleri ele alarak önceki iş gereksinimleriyle daha yakından hizalanır. Ancak bunların avantajları ve yükümlüler de vardır. Mikro hizmetlerin avantajları, her birinin genellikle daha basit iş işlevlerini kapsüller, bu da bağımsız olarak ölçeklendirebilir veya azaltabilirsiniz, test, dağıtabilir ve yönetebilirsiniz. Mikro hizmetler yaklaşımının önemli bir avantajı, ekiplerin teknolojiden daha fazla iş senaryosu tarafından daha fazla çalıştırılmalarıdır. Daha küçük takımlar, bir müşteri senaryosuna dayalı bir mikro hizmet geliştirir ve kullanmak istedikleri teknolojileri kullanır.
+Mikro hizmetler bu yüzleri ele alarak önceki iş gereksinimleriyle daha yakından hizalanır. Ancak bunların avantajları ve yükümlüler de vardır. Mikro hizmetlerin avantajları, her birinin genellikle daha basit iş işlevlerini kapsüller, bu da bağımsız olarak, test, dağıtım ve yönetim özelliklerini birbirinden bağımsız olarak kapsar. Mikro hizmetler yaklaşımının önemli bir avantajı, ekiplerin teknolojiden daha fazla iş senaryosu tarafından daha fazla çalıştırılmalarıdır. Daha küçük takımlar, bir müşteri senaryosuna dayalı bir mikro hizmet geliştirir ve kullanmak istedikleri teknolojileri kullanır.
 
 Diğer bir deyişle, kuruluşun mikro hizmet uygulamalarını sürdürmek için teknik standartlaştırma gereksinimi yoktur. Hizmet sahibi olan bireysel ekipler, ekip uzmanlığına göre veya sorunu çözmek için en uygun olan özellikler temelinde ne kadar anlamlı olduğunu yapabilir. Uygulamada, belirli bir NoSQL Mağazası veya Web uygulaması çerçevesi gibi önerilen teknolojiler kümesi tercih edilir.
 

@@ -2,41 +2,46 @@
 title: Öğretici-Azure CLı ile bir ölçek kümesinde özel bir VM görüntüsü kullanma
 description: Azure CLI kullanarak, sanal makine ölçek kümesini dağıtmak için kullanabileceğiniz bir özel sanal makine görüntüsünün nasıl oluşturulacağını öğrenin
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80062710"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792879"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümeleri için özel görüntü oluşturma ve kullanma
 Ölçek kümesi oluşturduğunuzda, sanal makine örnekleri dağıtılırken kullanılacak bir görüntü belirtirsiniz. Sanal makine örnekleri dağıtıldıktan sonraki görev sayısını azaltmak için özel bir sanal makine görüntüsünü kullanabilirsiniz. Bu özel sanal makine görüntüsü, gerekli uygulama yüklemelerini veya yapılandırmalarını içerir. Ölçek kümesinde oluşturulan tüm sanal makine örnekleri, özel sanal makine görüntüsünü kullanır ve uygulama trafiğinizi sunmaya hazır olur. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Sanal makine oluşturma ve özelleştirme
-> * Sanal makinenin sağlamasını kaldırma ve sanal makineyi genelleştirme
-> * Özel bir sanal makine görüntüsü oluşturma
-> * Özel sanal makine görüntüsünü kullanan bir ölçek kümesini dağıtma
+> * Paylaşılan görüntü galerisi oluşturma
+> * Özel bir görüntü tanımı oluşturma
+> * Görüntü sürümü oluşturma
+> * Özelleştirilmiş görüntüden ölçek kümesi oluşturma
+> * Resim galerisini paylaşma
+
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.29 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.4.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
+## <a name="overview"></a>Genel bakış
+
+[Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamaları, uygulama yapılandırmalarını ve diğer işletim sistemi yapılandırmalarını önceden yükleme gibi yapılandırmaları önyüklemek için kullanılabilir. 
+
+Paylaşılan görüntü Galerisi, özel VM görüntülerinizi başkalarıyla paylaşmanıza olanak sağlar. Hangi görüntüleri paylaşmak istediğinizi, içinde hangi bölgelerin kullanılabilir olmasını istediğinizi ve bunları ile paylaşmak istediğinizi seçin. 
 
 ## <a name="create-and-configure-a-source-vm"></a>Kaynak sanal makine oluşturma ve yapılandırma
 
->[!NOTE]
-> Bu öğreticide, genelleştirilmiş bir sanal makine görüntüsü oluşturma ve kullanma işlemi gösterilmektedir. Özelleştirilmiş bir sanal makine görüntüsünden ölçek kümesi oluşturulması desteklenmez.
-
-İlk olarak, [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun ve sonra [az vm create](/cli/azure/vm) ile bir sanal makine oluşturun. Bu sanal makine daha sonra özel bir sanal makine görüntüsü için kaynak olarak kullanılır. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myVM* adlı bir sanal makine oluşturur:
+İlk olarak, [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun ve sonra [az vm create](/cli/azure/vm) ile bir sanal makine oluşturun. Bu VM daha sonra görüntü kaynağı olarak kullanılır. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myVM* adlı bir sanal makine oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -49,7 +54,10 @@ az vm create \
   --generate-ssh-keys
 ```
 
-[az vm create](/cli/azure/vm) komutunun çıktısında, sanal makinenizin genel IP adresi gösterilir. Aşağıdaki adımları uygulayarak sanal makinenizin genel IP adresinde SSH oturumu açın:
+> [!IMPORTANT]
+> VM 'nizin **kimliği** [az VM Create](/cli/azure/vm) komutunun çıktısında gösterilir. Bu öğreticinin ilerleyen kısımlarında kullanabilmek için bu nedenini bildirmeden Safe 'i kopyalayın.
+
+VM 'nizin genel IP adresi, [az VM Create](/cli/azure/vm) komutunun çıktısında de gösterilir. Aşağıdaki adımları uygulayarak sanal makinenizin genel IP adresinde SSH oturumu açın:
 
 ```console
 ssh azureuser@<publicIpAddress>
@@ -61,56 +69,96 @@ ssh azureuser@<publicIpAddress>
 sudo apt-get install -y nginx
 ```
 
-Sanal makinenizi özel görüntü olarak kullanılmaya hazırlamanın son adımı, sanal makinenizin sağlamasının kaldırılmasıdır. Bu adım, makineye özgü bilgileri sanal makineden kaldırır ve tek bir görüntüden birçok sanal makine dağıtılmasını mümkün kılar. Sanal makinenin sağlaması kaldırıldığında ana bilgisayar adı sıfırlanarak *localhost.localdomain* olur. SSH ana bilgisayar anahtarları, ad sunucusu yapılandırmaları, kök parolası ve önbelleğe alınan DHCP kiraları da ayrıca silinir.
+İşiniz bittiğinde, SSH bağlantısının bağlantısını `exit` kesmek için yazın.
 
-Sanal makinenin sağlamasını kaldırmak için Azure VM aracısını (*waagent*) kullanın. Azure VM aracısı her sanal makineye yüklenir ve Azure platformu ile iletişim kurmak için kullanılır. `-force` parametresi, aracıya makineye özgü bilgileri sıfırlamak için istemleri kabul etmesini bildirir.
+## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma 
 
-```bash
-sudo waagent -deprovision+user -force
-```
+Görüntü Galerisi, görüntü paylaşımını etkinleştirmek için kullanılan birincil kaynaktır. 
 
-Sanal makineyle olan SSH bağlantınızı kapatın:
+Galeri adı için izin verilen karakterler büyük veya küçük harflerden, rakamlardan, noktalardan ve noktalardan oluşur. Galeri adı tire içeremez.   Galeri adları, aboneliğiniz dahilinde benzersiz olmalıdır. 
 
-```bash
-exit
-```
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Kaynak sanal makineden özel bir sanal makine görüntüsü oluşturma
-Kaynak sanal makine şimdi Nginx web sunucusunun yüklenmesiyle birlikte özelleştirilir. Şimdi ölçek kümesi ile kullanılacak özel sanal makine görüntüsü oluşturalım.
-
-Bir görüntü oluşturmak için VM’nin serbest bırakılması gerekir. [az vm deallocate](/cli//azure/vm) komutunu kullanarak sanal makineyi serbest bırakın. Daha sonra, Azure platformunun sanal makinenin özel bir görüntüyle kullanılmaya hazır olduğunu bilmesi için [az vm generalize](/cli//azure/vm) komutunu kullanarak sanal makinenin durumunu genelleştirilmiş olarak ayarlayın. Yalnızca genelleştirilmiş bir sanal makineden görüntü oluşturabilirsiniz:
-
+[Az Sig Create](/cli/azure/sig#az-sig-create)kullanarak bir görüntü galerisi oluşturun. Aşağıdaki örnek, *Doğu ABD*Içinde *mygallerrg* adlı Galeri adlı bir kaynak grubu ve *MyGallery*adlı bir galeri oluşturur.
 
 ```azurecli-interactive
-az vm deallocate --resource-group myResourceGroup --name myVM
-az vm generalize --resource-group myResourceGroup --name myVM
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-Sanal makinenin serbest bırakılıp genelleştirilmesi birkaç dakika sürebilir.
+## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma
 
-Şimdi [az image create](/cli//azure/image) komutunu kullanarak sanal makinenin bir görüntüsünü oluşturun. Aşağıdaki örnek, sanal makinenizden *myImage* adlı bir görüntü oluşturur:
+Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar içinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. 
 
-> NOTUN Kaynak grubu ve sanal makine konumu farklıysa, görüntüyü oluşturmak için kullanılan kaynak VM 'nin `--location` konumunu bir yere eklemek için aşağıdaki komutlara parametresini ekleyebilirsiniz. 
+Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
 
-```azurecli-interactive
-az image create \
-  --resource-group myResourceGroup \
-  --name myImage \
-  --source myVM
+Görüntü tanımınızın doğru türde olduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak `--os-state generalized`genelleştirilmiş bir görüntü tanımı oluşturmanız gerekir. VM 'yi mevcut kullanıcı hesaplarını kaldırmadan kullanmak istiyorsanız, kullanarak `--os-state specialized`özel bir görüntü tanımı oluşturun.
+
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+
+Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
+
+Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [özelleştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows`. 
+
+```azurecli-interactive 
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
+> [!IMPORTANT]
+> Görüntü tanımınızın **kimliği** , komutun çıktısında gösterilir. Bu öğreticinin ilerleyen kısımlarında kullanabilmek için bu nedenini bildirmeden Safe 'i kopyalayın.
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Özel bir sanal makine görüntüsünden ölçek kümesi oluşturma
-[az vmss create](/cli/azure/vmss#az-vmss-create) komutunu kullanarak bir ölçek kümesi oluşturun. *UbuntuLTS* veya *CentOS* gibi bir platform görüntüsü yerine, özel sanal makine görüntünüzün adını belirtin. Aşağıdaki örnek, önceki adımda yer alan *myImage* adlı özel görüntüyü kullanan *myScaleSet* adlı bir ölçek kümesi oluşturur:
 
-```azurecli-interactive
+## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
+
+[Az Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create)kullanarak VM 'den bir görüntü sürümü oluşturun.  
+
+Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
+
+Bu örnekte, görüntüimizin sürümü *1.0.0* ' dir ve *Orta Güney ABD* bölgesinde 1 çoğaltma ve *Doğu ABD 2* bölgesinde 1 çoğaltma oluşturacağız. Çoğaltma bölgeleri, kaynak VM 'nin bulunduğu bölgeyi içermelidir.
+
+Bu örnekteki değerini `--managed-image` , ÖNCEKI adımda sanal makinenizin kimliğiyle değiştirin.
+
+```azurecli-interactive 
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "southcentralus=1" "eastus=1" \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+```
+
+> [!NOTE]
+> Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
+>
+> Görüntü sürümünü oluştururken ekleyerek `--storage-account-type  premium_lrs` `--storage-account-type  standard_zrs` görüntünüzü bir ekleme veya [bölge yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) ile Premium depolamada da saklayabilirsiniz.
+>
+
+
+
+
+## <a name="create-a-scale-set-from-the-image"></a>Görüntüden ölçek kümesi oluşturma
+Kullanarak [`az vmss create`](/cli/azure/vmss#az-vmss-create)özelleştirilmiş görüntüden bir ölçek kümesi oluşturun. 
+
+Görüntünün özelleşmiş bir görüntü olduğunu [`az vmss create`](/cli/azure/vmss#az-vmss-create) göstermek için--özelleşmiş parametresini kullanarak ölçek kümesi oluşturun. 
+
+Kullanılabilir görüntünün en son sürümünden ölçek `--image` kümesi örnekleri oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için `--image`görüntü sürümü kimliğini sağlayarak belirli bir sürümden ölçek kümesi örnekleri de oluşturabilirsiniz. 
+
+Daha önce oluşturduğumuz *Myımagedefinition* resminin en son sürümünü *myScaleSet* adlı bir ölçek kümesi oluşturun.
+
+```azurecli
+az group create --name myResourceGroup --location eastus
 az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --image myImage \
-  --admin-username azureuser \
-  --generate-ssh-keys
+   --resource-group myResourceGroup \
+   --name myScaleSet \
+   --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+   --specialized
 ```
 
 Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer.
@@ -146,6 +194,32 @@ Genel IP adresini bir web tarayıcınıza yazın. Aşağıdaki örnekte gösteri
 ![Özel sanal makine görüntüsünden çalıştırılan Nginx](media/tutorial-use-custom-image-cli/default-nginx-website.png)
 
 
+
+## <a name="share-the-gallery"></a>Galeriyi paylaşma
+
+Rol tabanlı Access Control (RBAC) kullanarak, abonelikler arasında görüntü paylaşabilirsiniz. Görüntüleri galeride, görüntü tanımında veya görüntü sürümünde paylaşabilirsiniz. Abonelikler arasında bile, görüntü sürümü üzerinde okuma izinlerine sahip olan tüm kullanıcılar, görüntü sürümünü kullanarak bir sanal makine dağıtacaktır.
+
+Galeri düzeyindeki diğer kullanıcılarla paylaşmanızı öneririz. Galerinizin nesne KIMLIĞINI almak için [az SIG Show](/cli/azure/sig#az-sig-show)' ı kullanın.
+
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
+```
+
+Nesne KIMLIĞINI bir e-posta adresi ile birlikte kullanın ve bir kullanıcıya paylaşılan görüntü galerisine erişim sağlamak için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create) ' u kullanın. Ve `<email-address>` `<gallery iD>` bilgilerini kendi bilgileriniz ile değiştirin.
+
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
+```
+
+RBAC kullanarak kaynakları paylaşma hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Ölçek kümenizi ve ek kaynaklarınızı kaldırmak için [az group delete](/cli/azure/group) komutunu kullanarak kaynak grubunu ve bu kaynak grubunun tüm kaynaklarını silin. `--no-wait` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür. `--yes` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar.
 
@@ -158,10 +232,11 @@ az group delete --name myResourceGroup --no-wait --yes
 Bu öğreticide, Azure CLI ile ölçek kümeleriniz için özel sanal makine görüntüsü oluşturma ve kullanma işleminin nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
-> * Sanal makine oluşturma ve özelleştirme
-> * Sanal makinenin sağlamasını kaldırma ve sanal makineyi genelleştirme
-> * Özel bir sanal makine görüntüsü oluşturma
-> * Özel sanal makine görüntüsünü kullanan bir ölçek kümesini dağıtma
+> * Paylaşılan görüntü galerisi oluşturma
+> * Özel bir görüntü tanımı oluşturma
+> * Görüntü sürümü oluşturma
+> * Özelleştirilmiş görüntüden ölçek kümesi oluşturma
+> * Resim galerisini paylaşma
 
 Uygulamaların ölçek kümenize nasıl dağıtılacağını öğrenmek için sonraki öğreticiye ilerleyin.
 

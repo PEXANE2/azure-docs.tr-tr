@@ -10,20 +10,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885761"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583253"
 ---
 # <a name="transport-layer-security-tls"></a>Aktarım Katmanı Güvenliği (TLS)
 
-Daha yüksek düzeyde güvenlik sağlamak için Notification Hubs, 1,0 Mayıs 2020 tarihinde TLS ve 1,1 desteğini devre dışı bırakacaktır (30 Nisan, 2020). Bu eski protokoller zayıf şifreleme sağlar ve BEAST ve POOıDLE saldırılarına karşı savunmasız kalır. Android sürüm 5 veya üzerini çalıştıran cihazlara dağıtılan uygulamalar veya iOS sürüm 5 ya da üzeri, bu işletim sistemleri TLS 1,2 ' i destekledikleri ve istemci ve sunucu, bağlantı kurulduğunda protokolün en yüksek desteklenen sürümü üzerinde anlaşacak şekilde bu değişiklikten etkilenmez.
+Daha yüksek düzeyde güvenlik sağlamak için Notification Hubs, 1,0 **aralık 2020 2020** tarihinde TLS ve 1,1 desteğini devre dışı bırakacak. Bu eski protokoller zayıf şifreleme sağlar ve BEAST ve POOıDLE saldırılarına karşı savunmasız kalır. Android sürüm 5 veya üzerini çalıştıran cihazlara dağıtılan uygulamalar veya iOS sürüm 5 ya da üzeri, bu işletim sistemleri TLS 1,2 ' i destekledikleri ve istemci ve sunucu, bağlantı kurulduğunda protokolün en yüksek desteklenen sürümü üzerinde anlaşacak şekilde bu değişiklikten etkilenmez.
 
 TLS 1,2 ' i destekleyen en uygun kitaplıkları ve TLS yığınlarını kullandıklarından emin olmak için Azure Notification Hubs kullanan tüm uygulamalarınızı incelemenizi öneririz.
 

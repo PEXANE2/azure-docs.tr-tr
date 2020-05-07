@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758900"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735003"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -829,7 +829,7 @@ Bir `ILogger` örnek tarafından oluşturulan her günlük ilişkili `Category` 
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Her kategoriyi bağımsız olarak belirli [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir şekilde filtreleyebilirsiniz. Örneğin, diğer her şey için yalnızca `Error` ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 
@@ -956,9 +956,9 @@ Sürüm 3 ' te. *x*, artık ana bilgisayar durdurulduğunda temizleme işlemini 
 
 #### <a name="version-2x"></a>Sürüm 2. *x*
 
-Sürüm 2 ' de. *x*, Web [`TelemetryClient`] işleri SDK 'sı için Application Insights sağlayıcısı tarafından dahili olarak oluşturulan x [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Application Insights uç noktası kullanılamaz veya gelen istekleri azaltdığı zaman, bu kanal [istekleri Web uygulamasının dosya sistemine kaydeder ve daha sonra resubmits](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Sürüm 2 ' de. *x*, Web [`TelemetryClient`] işleri SDK 'sı için Application Insights sağlayıcısı tarafından dahili olarak oluşturulan x [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll). Application Insights uç noktası kullanılamaz veya gelen istekleri azaltdığı zaman, bu kanal [istekleri Web uygulamasının dosya sistemine kaydeder ve daha sonra resubmits](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-, [`TelemetryClient`] Uygulayan `ITelemetryClientFactory`bir sınıf tarafından oluşturulur. Varsayılan olarak, bu ' dir [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+, [`TelemetryClient`] Uygulayan `ITelemetryClientFactory`bir sınıf tarafından oluşturulur. Varsayılan olarak, bu ' dir [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 
 Application Insights işlem hattının herhangi bir bölümünü değiştirmek istiyorsanız, kendinizinkini `ITelemetryClientFactory`sağlayabilirsiniz ve ana bilgisayar, oluşturmak için sınıfınızı kullanır. [`TelemetryClient`] Örneğin, bu kod bir özelliğini `DefaultTelemetryClientFactory` değiştirmek için geçersiz kılar `ServerTelemetryChannel`:
 

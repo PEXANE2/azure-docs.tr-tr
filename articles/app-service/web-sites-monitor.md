@@ -4,15 +4,15 @@ description: Azure portal kullanarak Azure App Service uygulamaları nasıl izle
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181231"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738108"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, mobil ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -49,7 +49,7 @@ Bir uygulama *CPU (Short)*, *CPU (gün)* veya *bant genişliği* kotasını aşa
 
 ![403 hata iletisi][http403]
 
-Uygulama belleği kotası aşılırsa, uygulama yeniden başlatılır.
+Uygulama belleği kotası aşılırsa, uygulama geçici olarak durdurulur.
 
 Dosya sistemi kotası aşılırsa, herhangi bir yazma işlemi başarısız olur. Yazma işlemi hatalarında günlüklere yazma işlemleri dahildir.
 
@@ -131,8 +131,7 @@ CPU kullanımını yansıtan iki ölçüm vardır:
 **CPU yüzdesi**: temel, standart ve Premium planlarında barındırılan uygulamalar için kullanışlıdır, çünkü bu kişiler dışarı ölçeklenebilirler. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Ölçüm ayrıntı düzeyi ve bekletme ilkesi
-
-Bir uygulama ve App Service planı için ölçümler, hizmet tarafından günlüğe kaydedilir ve toplanır. Ölçümler 90 gün boyunca tutulur.
+Bir uygulama ve App Service planı için ölçümler, hizmet tarafından günlüğe kaydedilir ve toplanır ve [Bu kurallara göre saklanır](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure portal kotaları ve ölçümleri izleme
 Bir uygulamayı etkileyen çeşitli kotalar ve ölçümlerin durumunu gözden geçirmek için [Azure Portal](https://portal.azure.com)gidin.

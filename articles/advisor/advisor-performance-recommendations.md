@@ -3,12 +3,12 @@ title: Azure Advisor ile Azure uygulamalarının performansını geliştirme
 description: Azure dağıtımlarınızın performansını iyileştirmek için Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443049"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787949"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor ile Azure uygulamalarının performansını geliştirme
 
@@ -28,6 +28,10 @@ Advisor, tüm Azure kaynaklarınız için önerilerin tutarlı, birleştirilmiş
 > Öneriler almak için, bir veritabanının kullanım haftası ile ilgili olması gerekir ve bu hafta içinde bazı tutarlı etkinlik olması gerekir. SQL Veritabanı Danışmanı, rastgele ek etkinlik için daha kolay olan tutarlı sorgu desenleri için daha kolay iyileştirebilirler.
 
 SQL Veritabanı Danışmanı hakkında daha fazla bilgi için bkz. [SQL veritabanı Danışmanı](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Daha iyi güvenilirlik ve performans için Depolama İstemci Kitaplığınızı en son sürümü yükseltme
+
+Depolama İstemci Kitaplığı/SDK'sının en son sürümü müşteriler tarafından bildirilen ve QA sürecimizde önceden belirlenen sorunların düzeltmelerini içerir. En son sürümde Azure Depolama'yı kullanma deneyiminizi genel olarak geliştirebilecek yeni özelliklere ek olarak, güvenilirlik ve performans iyileştirmesi de yapılmıştır. Danışman, eski bir sürümse, SDK 'nın en son sürümüne yükseltmeye yönelik öneriler ve adımlar sağlar. Öneriler, desteklenen diller-C++ ve .net içindir.
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Performansı ve güvenilirliği App Service geliştirme
 
@@ -73,6 +77,26 @@ Danışman, çoğaltılan tablo olmayan tabloları tanımlar, ancak dönüştür
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Maksimum abonelik sınırına vurmasını engellemek için depolama hesaplarınızı tasarlayın
 
 Bir Azure bölgesi, abonelik başına en fazla 250 depolama hesabını destekleyebilir. Sınıra ulaşıldığında, bu bölgede/abonelik birleşiminde daha fazla depolama hesabı oluşturmayacak. Danışman, aboneliklerinizi ve yüzey önerilerinizi, en yüksek sınıra ulaşılmaya yakın olan herhangi biri için daha az depolama hesabı tasarlamanızı denetlayacaktır.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>VNet ağ geçidi SKU 'sunun boyutunu, P2S kullanımı yüksek olacak şekilde artırmayı düşünün
+
+Her ağ geçidi SKU 'SU yalnızca belirtilen sayıda eşzamanlı P2S bağlantı sayısını destekleyebilir. Bağlantı sayınız ağ geçidi sınırınıza yakınsa, ek bağlantı girişimleri başarısız olabilir. Ağ geçidinizin boyutunu artırmak, daha fazla eşzamanlı P2S kullanıcısı destekkullanmanıza olanak tanır. Advisor, bunun için öneri ve işlemler sağlar.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>VNet ağ geçidi SKU 'sunun boyutunu yüksek CPU 'ya göre artırmayı düşünün
+
+Yüksek trafik yükü altında VPN Gateway, yüksek CPU nedeniyle paketleri bırakabilir. VPN 'niz ' de sürekli olarak çalıştığı için VPN Gateway SKU 'nuzu yükseltmeniz gerekir. VPN ağ geçidinizin boyutunu artırmak, bağlantıların yüksek CPU nedeniyle bırakılmadığından emin olur. Danışman, bu sorunu önceden gidermek için öneri önerisine sahiptir. 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Yükleme aktarım hızını, veri sıkıştırmayı ve sorgu performansını en üst düzeye çıkarmak için yüklerken toplu iş boyutunu artırın
+
+Danışman, veritabanınıza yüklerken toplu iş boyutunu artırarak yük performansını ve aktarım hızını artırabildiğini algılayabilir. COPY ifadesini kullanmayı düşünebilirsiniz. COPY ifadesini kullandıysanız, SQLBulkCopy API veya BCP gibi yükleme yardımcı programlarını kullanırken toplu iş boyutunu artırmayı düşünün. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur. Bu, yük aktarım hızı, veri sıkıştırma ve sorgu performansının artmasıyla sonuçlanır.
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Yükleme sırasında gecikme süresini en aza indirmek için depolama hesabını aynı bölgede birlikte bulun
+
+Danışman, SQL havuzunuzdaki farklı bir bölgeden yükleme yaptığınız tespit edebilir. Verileri yüklerken gecikme süresini en aza indirmek için SQL havuzunuzun bulunduğu bölge içindeki bir depolama hesabından yüklemeyi göz önünde bulundurmanız gerekir. Bu, gecikme süresini en aza indirmeye ve yük performansını artırmaya yardımcı olur.
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>Desteklenmeyen Kubernetes sürümü algılandı
+
+Danışman, desteklenmeyen bir Kubernetes sürümünün algılanıp algılanmadığını algılayabilir. Öneri, Kubernetes kümesinin desteklenen bir sürümle çalışmasını sağlamaya yardımcı olur.
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Azure MySQL, Azure PostgreSQL ve Azure MariaDB sunucularının performansını iyileştirin 
 

@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458294"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787150"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric kümesini programlı olarak ölçeklendirme 
 
-Azure 'da çalışan Service Fabric kümeleri, sanal makine ölçek kümelerinin üzerine kurulmuştur.  [Küme ölçeklendirme](./service-fabric-cluster-scale-up-down.md) , Service Fabric kümelerinin el ile veya otomatik ölçeklendirme kurallarıyla nasıl ölçeklendirileceğini açıklar. Bu makalede, daha gelişmiş bir senaryo olan akıcı Azure işlem SDK 'Sı kullanılarak kimlik bilgilerinin nasıl yönetileceği ve bir kümenin nasıl ölçekleneceği açıklanır. Genel bakış için [Azure ölçeklendirme işlemlerini koordine etmek için programlama yöntemlerini](service-fabric-cluster-scaling.md#programmatic-scaling)okuyun. 
+Azure 'da çalışan Service Fabric kümeleri, sanal makine ölçek kümelerinin üzerine kurulmuştur.  [Küme ölçeklendirme](./service-fabric-cluster-scale-in-out.md) , Service Fabric kümelerinin el ile veya otomatik ölçeklendirme kurallarıyla nasıl ölçeklendirileceğini açıklar. Bu makalede, daha gelişmiş bir senaryo olan akıcı Azure işlem SDK 'Sı kullanılarak kimlik bilgilerinin nasıl yönetileceği ve bir kümenin nasıl ölçekleneceği açıklanır. Genel bakış için [Azure ölçeklendirme işlemlerini koordine etmek için programlama yöntemlerini](service-fabric-cluster-scaling.md#programmatic-scaling)okuyun. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 Kendi otomatik ölçeklendirme mantığınızı uygulamaya başlamak için aşağıdaki kavramlar ve yararlı API 'Ler hakkında bilgi edinin:
 
-- [El ile veya otomatik ölçeklendirme kurallarıyla ölçekleme](./service-fabric-cluster-scale-up-down.md)
+- [El ile veya otomatik ölçeklendirme kurallarıyla ölçekleme](./service-fabric-cluster-scale-in-out.md)
 - [.Net Için akıcı Azure Yönetim kitaplıkları](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (bir Service Fabric kümesinin temel alınan sanal makine ölçek kümeleriyle etkileşim için yararlı)
 - [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (bir Service Fabric kümesi ve düğümleri ile etkileşim için yararlı)

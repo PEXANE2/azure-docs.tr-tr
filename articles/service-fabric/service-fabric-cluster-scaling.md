@@ -4,12 +4,12 @@ description: Azure Service Fabric kümelerini içinde veya dışarı ve yukarı 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258700"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793185"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric kümelerini ölçeklendirme
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Kümeler potansiyel binlerce düğüm içerebilir. Service Fabric kümesi oluşturduktan sonra, kümeyi yatay olarak ölçeklendirebilirsiniz (düğüm sayısını değiştirebilir) veya dikey (düğümlerin kaynaklarını değiştirebilirsiniz).  Küme üzerinde iş yükleri çalışırken bile kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklenirken uygulamalarınız da otomatik olarak ölçeklendirilir.
@@ -29,13 +29,13 @@ Bir Azure kümesini ölçeklendirirken aşağıdaki yönergeleri göz önünde b
 - durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman beş veya daha fazla düğüme sahip olmalıdır.
 - durum bilgisi olmayan üretim iş yükleri çalıştıran birincil düğüm türleri her zaman iki veya daha fazla düğüme sahip olmalıdır.
 - Altın veya gümüş herhangi bir düğüm [türü, her](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) zaman beş veya daha fazla düğüme sahip olmalıdır.
-- Bir düğüm türünden rastgele VM örnekleri/düğümleri kaldırmayın, her zaman sanal makine ölçek kümesi ölçek azaltma özelliğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sistemin doğru şekilde yük dengeleyebilme yeteneğini olumsuz etkileyebilir.
+- Bir düğüm türünden rastgele VM örnekleri/düğümleri kaldırmayın, her zaman özelliğindeki sanal makine ölçek kümesi ölçeğini kullanın. Rastgele sanal makine örneklerinin silinmesi, sistemin doğru şekilde yük dengeleyebilme yeteneğini olumsuz etkileyebilir.
 - Otomatik ölçeklendirme kuralları kullanıyorsanız, kuralları ölçeklendirmek için (sanal makine örneklerini kaldırma) tek seferde bir düğüm yapılır. Aynı anda birden fazla örneğin ölçeğini azaltma güvenli değildir.
 
-Kümenizdeki Service Fabric düğüm türleri arka uçta sanal makine ölçek kümelerinden yapıldığından, [Otomatik ölçeklendirme kuralları ayarlayabilir veya](service-fabric-cluster-scale-up-down.md) her düğüm türü/sanal makine ölçek kümesini el ile ölçeklendirdirebilirsiniz.
+Kümenizdeki Service Fabric düğüm türleri arka uçta sanal makine ölçek kümelerinden yapıldığından, [Otomatik ölçeklendirme kuralları ayarlayabilir veya](service-fabric-cluster-scale-in-out.md) her düğüm türü/sanal makine ölçek kümesini el ile ölçeklendirdirebilirsiniz.
 
 ### <a name="programmatic-scaling"></a>Programlı ölçekleme
-Birçok senaryoda, [bir kümeyi el ile veya otomatik ölçeklendirme kurallarıyla ölçeklendirmeniz iyi bir](service-fabric-cluster-scale-up-down.md) çözümdür. Ancak, daha gelişmiş senaryolar için, bu, doğru olmayabilir. Bu yaklaşımların olası dezavantajları şunlardır:
+Birçok senaryoda, [bir kümeyi el ile veya otomatik ölçeklendirme kurallarıyla ölçeklendirmeniz iyi bir](service-fabric-cluster-scale-in-out.md) çözümdür. Ancak, daha gelişmiş senaryolar için, bu, doğru olmayabilir. Bu yaklaşımların olası dezavantajları şunlardır:
 
 - El ile ölçekleme, oturum açmanızı ve açıkça ölçekleme işlemlerine istek yapmanızı gerektirir. Ölçeklendirme işlemleri sıklıkla veya öngörülemeyen zamanlarda gerekliyse, bu yaklaşım iyi bir çözüm olmayabilir.
 - Otomatik ölçeklendirme kuralları bir sanal makine ölçek kümesinden bir örneği kaldırdıklarında, düğüm türünün gümüş veya altın bir dayanıklılık düzeyi yoksa, ilgili Service Fabric kümesinden o düğümün bilgisini otomatik olarak kaldırmaz. Otomatik ölçeklendirme kuralları ölçek kümesi düzeyinde çalıştığından (Service Fabric düzeyi yerine), otomatik ölçeklendirme kuralları Service Fabric düğümleri düzgün şekilde kapatmadan kaldırabilir. Bu işlenmemiş düğüm kaldırma işlemi, ölçeklendirme işlemlerinden sonra ' hayalet ' Service Fabric düğüm durumunun arkasına bırakılır. Bir bireyin (veya bir hizmetin) Service Fabric kümesinde kaldırılan düğüm durumunu düzenli aralıklarla temizlemesi gerekir.
