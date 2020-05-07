@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c326a556530fd778c1178f11b79d2aba613b4c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e98f4a401a9fcab12bd7a276c47df67c7936b1d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136592"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853422"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach hakkında
 ExpressRoute, şirket içi ağlarınızın Microsoft Bulut 'e bağlanması için özel ve dayanıklı bir yoldur. Azure ve Office 365 gibi birçok Microsoft bulut hizmetine, özel veri merkezinizden veya şirket ağınızdan erişebilirsiniz. Örneğin, aynı şehirde bulunan bir ExpressRoute devresini içeren bir Expressvalley ve diğer şube ofisindeki bir ExpressRoute devresini içeren bir şube ofisiniz olabilir. Her iki şube ofisi ABD Batı ve UK Güney Azure kaynaklarıyla yüksek hızlı bağlantıya sahip olabilir. Ancak, şube ofislerde doğrudan veri alışverişi yapılamaz. Diğer bir deyişle 10.0.1.0/24, 10.0.3.0/24 ve 10.0.4.0/24 ' e veri gönderebilir, ancak 10.0.2.0/24 ' e kadar DEĞILDIR.
@@ -41,6 +41,7 @@ ExpressRoute Global Reach Şu anda aşağıdaki konumlarda desteklenir.
 * Güney Kore
 * Hollanda
 * Yeni Zelanda
+* Norveç
 * Singapur
 * İsviçre
 * Birleşik Krallık

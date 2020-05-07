@@ -1,5 +1,5 @@
 ---
-title: Video Indexer nedir?
+title: Azure Media Services Video Indexer nedir?
 titleSuffix: Azure Media Services
 description: Bu makale, Azure Media Services Video Indexer hizmetine genel bir bakış sunar.
 services: media-services
@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687108"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788862"
 ---
-# <a name="what-is-video-indexer"></a>Video Indexer nedir?
+# <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer nedir?
 
 Video Indexer (VI), Azure Media Services AI çözümüdür ve Azure bilişsel hizmetler markasının bir parçasıdır. Video Indexer, birden fazla kanala (ses, Vocal, görsel) göre makine öğrenimi modellerini kullanarak derin içgörüler (veri çözümleme veya kodlama becerileri gerektirmez) ayıklayabilme olanağı sağlar. Modelleri daha fazla özelleştirebilir ve eğitebilirsiniz. Hizmet derin arama imkanı sunar, işlem maliyetlerini azaltır, yeni para kullanımı fırsatlarını azaltır ve büyük video arşivleri üzerinde yeni kullanıcı deneyimleri oluşturur (düşük girişli engelleri olan).
 

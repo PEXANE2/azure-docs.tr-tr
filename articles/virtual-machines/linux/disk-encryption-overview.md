@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d8cf03342f51a7bc6584800cb9fff8d8238921e
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801663"
+ms.locfileid: "82838867"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi 
 
@@ -84,7 +84,7 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 | OpenLogic | CentOS 7,0 | 7.0 | OpenLogic: CentOS: 7.0: en son | Yalnızca veri diski |
 | OpenLogic | CentOS 6,8 | 6.8 | OpenLogic: CentOS: 6.8: latest | Yalnızca veri diski |
 | SUSE | openSUSE 42,3 | 42,3 | SUSE: openSUSE-artık: 42.3: latest | Yalnızca veri diski |
-| SUSE | SLES önceliği 12-SP4 | 12-SP4 | SUSE: SLES: 12-SP4: en son | Yalnızca veri diski |
+| SUSE | SLES 12-SP4 | 12-SP4 | SUSE: SLES: 12-SP4: en son | Yalnızca veri diski |
 | SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE: SLES-HPC: 12-SP3: en son | Yalnızca veri diski |
 
 > [!NOTE]

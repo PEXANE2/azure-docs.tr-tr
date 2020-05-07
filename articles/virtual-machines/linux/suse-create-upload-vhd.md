@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 032b49631c6adb30d4b25f8b82d35dab49ffd3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757679"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857326"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure'da SLES veya openSUSE sanal makinesi hazırlama
 
@@ -39,7 +39,7 @@ Kendi VHD 'nizi oluşturmaya alternatif olarak, SUSE 'ler, [vmdepot 'u keşfedin
 4. En son düzeltme ekleriyle sistemi güncelleştirin:
    
         # sudo zypper update
-5. SLES deposundan Azure Linux aracısını yükler:
+5. SLES deposundan Azure Linux aracısını (SLE11-Public-Cloud-Module) yükler:
    
         # sudo zypper install python-azure-agent
 6. Chkconfig dosyasında waagent 'ın "açık" olarak ayarlanmış olup olmadığını denetleyin ve değilse, otomatik başlatma için etkinleştirin:

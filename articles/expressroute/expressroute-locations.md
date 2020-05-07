@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/14/2020
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: b825ed513f530733d7552e32206c12422a956b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 63226089a0a87660f0796cdfef2b729070ca01e3
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766931"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837864"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -43,7 +43,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Geopolitik bölge** | **Azure bölgeleri** | **ExpressRoute konumları** |
 | --- | --- | --- |
 | **Australia Government** |Orta Avustralya, Orta Avustralya 2 |Kanberra, Kanberra2 |
-| **Avrupa** | Fransa Orta, Fransa Güney, Almanya Kuzey, Almanya Orta Batı, Kuzey Avrupa, Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Batı, UK Güney, Batı Avrupa |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Geneva, Londra, London2, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich |
+| **Avrupa** | Fransa Orta, Fransa Güney, Almanya Kuzey, Almanya Orta Batı, Kuzey Avrupa, Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Batı, UK Güney, Batı Avrupa |Amsterdam, Amsterdam2, Berlin, Copenhagen, Dublin, Frankfurt, Geneva, Londra, London2, Marseille, MILAN, Münih, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zurich |
 | **Kuzey Amerika** |Doğu ABD, Batı ABD, Doğu ABD 2, Batı ABD 2, Orta ABD, Orta Güney ABD, Orta Kuzey ABD, Orta Batı ABD, Orta Kanada, Doğu Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miamı, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toron, Vantaya ver |
 | **Noktası** | Doğu Asya, Güneydoğu Asya | Bangkok, Hong Kong, Hong Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Hindistan** | Hindistan Batı, Hindistan Orta, Hindistan Güney |Madras, Madras2, Bombay, Bombay2 |
@@ -94,6 +94,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **Çin Mobile Uluslararası** |Destekleniyor |Destekleniyor | Singapur |
 | **China Telecom Global** |Destekleniyor |Destekleniyor |Hong Kong |
 | **Çin tek noktaya yayın küresel** |Destekleniyor |Destekleniyor | Singapur2 |
+| **[Chunghwa telekomünikasyon](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Destekleniyor |Destekleniyor |Taipei |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Destekleniyor |Destekleniyor |Chicago, Dallas, Montreal, Tora, Vantaya ver, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Destekleniyor |Destekleniyor |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londra, London2, Newport, New York, Osaka, Paris, Silicon Valley, Silicon Valley2, Singapur2, Tokyo, Washington DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Destekleniyor |Destekleniyor |Chicago, Silikon Vadisi, Washington DC |
@@ -132,6 +133,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Destekleniyor |Destekleniyor |Melbourne, Perth, Sidney, Sydney2 |
 | **[NTT Iletişimleri](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Destekleniyor |Destekleniyor |Amsterdam, Hong Kong ÖIB, Londra, Los Angeles, Osaka, Singapur, Sidney, Tokyo, Washington DC |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Destekleniyor |Destekleniyor |Tokyo |
+| **[NTT küresel veri merkezleri EMEA](https://www.ntt.com/en/services/data-center.html)** |Destekleniyor |Destekleniyor |Berlin |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Destekleniyor |Destekleniyor |Osaka |
 | **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |Destekleniyor |Destekleniyor |Marsilya |
 | **[Optus](https://www.optus.com.au/enterprise/)** |Destekleniyor |Destekleniyor |Melbourne, Sidney |
@@ -188,7 +190,7 @@ Azure Ulusal bulutlar birbirinden ve küresel ticari Azure 'dan yalıtılmışt�
 | **Hizmet sağlayıcı** | **Microsoft Azure** | **Office 365** | **Konumlar** |
 | --- | --- | --- | --- |
 | **China Telecom** |Destekleniyor |Desteklenmiyor |Pekin, Beijing2, Shanghai, Shanghai2 |
-| **Çin Unicom** | Destekleniyor | Desteklenmiyor | Beijing2 |
+| **Çin Unicom** | Destekleniyor | Desteklenmiyor | Beijing2, Shanghai2 |
 | **[GDS](http://www.gds-services.com/en/about_2.html)** |Destekleniyor |Desteklenmiyor |Beijing2, Shanghai2 |
 
 Daha fazla öğrenmek için, bkz. [Çin’de ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/).
@@ -211,6 +213,7 @@ Bağlantı sağlayıcınız önceki bölümlerde listelenmemişse hala bağlant�
 * Yukarıdaki tabloda yer alan değişimlerin herhangi birine bağlı olup olmadığını görmek için bağlantı sağlayıcınıza başvurun. Değişim sağlayıcıları tarafından sunulan hizmetler hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kontrol edebilirsiniz. Birkaç bağlantı sağlayıcı Ethernet değişimlerine zaten bağlı.
   * [Cologix](https://www.cologix.com/)
   * [CoreSite](https://www.coresite.com/)
+  * [DE-CıX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange)
   * [Equinix Cloud Exchange](https://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
   * [Interxiyon](https://www.interxion.com/products/interconnection/cloud-connect/)
   * [IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)

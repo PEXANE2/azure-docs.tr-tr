@@ -3,12 +3,12 @@ title: Held grafiklerini depola
 description: Azure Container Registry içindeki depoları kullanarak Kubernetes uygulamalarınız için hele grafiklerini depolamayı öğrenin
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399385"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857616"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure Container Registry 'de Held grafikleri gönderme ve çekme
 
@@ -31,8 +31,8 @@ Her sürüme özel iş akışlarıyla Azure Container Registry, Held grafiklerin
 ### <a name="additional-information"></a>Ek bilgiler
 
 * Çoğu senaryoda, grafikleri OCı yapıtları olarak yönetmek için yerel `helm chart` komutlarla hele 3 iş akışını kullanmanızı öneririz.
-* Helm 3 istemcisiyle ve grafikleriyle, eski [az ACR Helm][az-acr-helm] Azure CLI komutlarını ve iş akışını kullanabilirsiniz. Ancak, gibi bazı komutlar Held 3 grafikleriyle uyumlu `az acr helm list` değildir.
-* Helm 3 itibariyle, [az ACR Helm][az-acr-helm] komutları genellikle Helm 2 istemcisiyle ve grafik biçimiyle uyumluluk için desteklenir. Bu komutların gelecekte geliştirilmesi planlanmamaktadır.
+* Helm 3 itibariyle [az ACR Helm][az-acr-helm] komutları, Helm 2 istemcisiyle uyumluluk için desteklenir. Bu komutların gelecekte geliştirilmesi planlanmamaktadır. Bkz. [ürün yol haritası](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga).
+* Held 2 grafikleri Azure portal kullanılarak görüntülenemez veya yönetilemez.
 
 ## <a name="use-the-helm-3-client"></a>Helb 3 istemcisini kullanma
 

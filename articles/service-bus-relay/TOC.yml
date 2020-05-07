@@ -8,11 +8,11 @@
   items:
     - name: Karma Bağlantılar
       items:
-        - name: İleti alma ve gönderme - .NET Web Yuvaları
+        - name: İleti alma ve gönderme - .NET WebSockets
           href: relay-hybrid-connections-dotnet-get-started.md
         - name: İleti alma ve gönderme - .NET HTTP
           href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-        - name: İleti alma ve gönderme - Node Web Yuvaları
+        - name: İleti alma ve gönderme - Node WebSockets
           href: relay-hybrid-connections-node-get-started.md
         - name: İleti alma ve gönderme - Node HTTP
           href: relay-hybrid-connections-http-requests-node-get-started.md
@@ -59,10 +59,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: Yönet
+    - name: Yönetme ve izleme
       items:
         - name: Azure İzleyici ile Azure Relay’i izleme
           href: relay-metrics-azure-monitor.md
+        - name: Tanılama günlükleri ayarlama
+          href: diagnostic-logs.md
 - name: Başvuru
   items:
     - name: .NET
@@ -71,7 +73,7 @@
           href: /dotnet/api/microsoft.azure.relay
         - name: Microsoft.ServiceBus
           href: /dotnet/api/Microsoft.ServiceBus
-    - name: Özel Durumlar
+    - name: Özel durumlar
       href: relay-exceptions.md
     - name: Bağlantı noktası ayarları
       href: relay-port-settings.md

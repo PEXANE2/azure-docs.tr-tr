@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255411"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853490"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Depolama hesabı oluşturma
 
@@ -152,8 +152,8 @@ Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluştu
 |Alanlar arası yedekli depolama (ZRS)     |Standard_ZRS         |
 |Coğrafi olarak yedekli depolama (GRS)     |Standard_GRS         |
 |Okuma erişimli coğrafi olarak yedekli depolama (GRS)     |Standard_RAGRS         |
-|Coğrafi bölge yedekli depolama (GZRS) (Önizleme)    |Standard_GZRS         |
-|Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) (Önizleme)    |Standard_RAGZRS         |
+|Coğrafi alanlar arası yedekli depolama (GZRS)    |Standard_GZRS         |
+|Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluştu
 |Alanlar arası yedekli depolama (ZRS)     |Standard_ZRS         |
 |Coğrafi olarak yedekli depolama (GRS)     |Standard_GRS         |
 |Okuma erişimli coğrafi olarak yedekli depolama (GRS)     |Standard_RAGRS         |
-|Coğrafi bölge yedekli depolama (GZRS) (Önizleme)    |Standard_GZRS         |
-|Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) (Önizleme)    |Standard_RAGZRS         |
+|Coğrafi alanlar arası yedekli depolama (GZRS)    |Standard_GZRS         |
+|Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Bir depolama hesabı oluşturmak üzere bir Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell veya Azure CLı kullanabilirsiniz. Bu nasıl yapılır makalesinde kullanılan şablon [Azure Resource Manager hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Betikleri çalıştırmak için, Azure Cloud Shell 'i açmak üzere **deneyin** ' i seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+Bir depolama hesabı oluşturmak üzere bir Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell veya Azure CLı kullanabilirsiniz. Bu nasıl yapılır makalesinde kullanılan şablon [Azure Resource Manager hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Betikleri çalıştırmak için **dene** ' yi seçerek Azure Cloud Shell açın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
