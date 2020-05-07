@@ -1,15 +1,15 @@
 ---
 title: 'Hızlı başlangıç: Azure Izleyici Application Insights Web sitelerini Izleme'
-description: Azure Izleyici Application Insights, kurulum istemcisi/tarayıcı tarafı Web sitesi izleme hızlı başlangıç yönergeleri sağlar
+description: Bu hızlı başlangıçta, Azure Izleyici Application Insights ile istemci/tarayıcı tarafı Web sitesi izlemeyi ayarlamayı öğrenin.
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 495c40ca8e383dd5a3cf3ba9e5bd42e2936ea015
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80132360"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801646"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Hızlı başlangıç: Azure Izleyici Application Insights Web sitenizi izlemeye başlayın
 
@@ -24,28 +24,26 @@ Azure İzleyici Application Insights ile web sitenizi kullanılabilirlik, perfor
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
-Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
+Application Insights, şirket içinde veya bulutta çalışan İnternet 'e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Application Insights **kaynak** > **yönetimi araçları** > **Application Insights**oluştur ' u seçin.
+1. Application Insights **kaynak** > **yönetimi araçları** > **Application Insights**oluştur ' u seçin.
 
    > [!NOTE]
-   >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) makalesini ziyaret ederek daha fazla bilgi edinebilirsiniz.
-
-   Bir yapılandırma kutusu görünür. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
+   >İlk kez bir Application Insights kaynağı oluşturuyorsanız, bkz. [Application Insights kaynağı oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+1. Yapılandırma kutusu göründüğünde, giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın:
 
     | Ayarlar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
    | **Kaynak grubu**     | myResourceGroup      | Application Insights verileri barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
-   | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
-
-3. **Oluştur**' a tıklayın.
+   | **Konum** | Doğu ABD | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
+1. **Oluştur**’u seçin.
 
 ## <a name="create-an-html-file"></a>HTML dosyası oluşturma
 
-1. Yerel bilgisayarınızda ``hello_world.html`` adlı bir dosya oluşturun. Bu örnekte dosya, C: sürücüsünün köküne eklenecek ve ``C:\hello_world.html`` yoluna sahip olacaktır.
-2. Aşağıdaki betiği ``hello_world.html`` dosyasına kopyalayın:
+1. Yerel bilgisayarınızda ``hello_world.html`` adlı bir dosya oluşturun. Bu örnek için, dosyayı C sürücüsünün kökünde oluşturun, böylece benzer ``C:\hello_world.html``şekilde görünür.
+1. Aşağıdaki betiği kopyalayıp içine ``hello_world.html``yapıştırın:
 
     ```html
     <!DOCTYPE html>
@@ -55,18 +53,18 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
     </head>
     <body>
     <h1>Azure Monitor Application Insights Hello World!</h1>
-    <p>You can use the Application Insights JavaScript SDK to perform client/browser-side monitoring of your website. To learn about more advanced JavaScript SDK configurations visit the <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md" title="API Reference">API reference</a>.</p>
+    <p>You can use the Application Insights JavaScript SDK to perform client/browser-side monitoring of your website. To learn about more advanced JavaScript SDK configurations, visit the <a href="https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md" title="API Reference">API reference</a>.</p>
     </body>
     </html>
     ```
 
 ## <a name="configure-application-insights-sdk"></a>SDK Application Insights yapılandırma
 
-1. **Genel bakış** > **temelleri** ' ni seçin > uygulamanızın **izleme anahtarını**kopyalayın.
+1. **Genel bakış** > **temel**bileşenleri ' ni seçin ve ardından uygulamanızın **izleme anahtarını**kopyalayın.
 
    ![Yeni Application Insights kaynağı formu](media/website-monitoring/instrumentation-key-001.png)
 
-2. Aşağıdaki betiği ``hello_world.html`` dosyanıza, ``</head>`` kapanış etiketinin öncesine ekleyin:
+1. Aşağıdaki betiği, kapatma ``hello_world.html`` ``</head>`` etiketinden önce dosyanıza ekleyin:
 
    ```javascript
    <script type="text/javascript">
@@ -78,15 +76,17 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
    </script>
    ```
 
-3. ``hello_world.html`` dosyasını düzenleyerek izleme anahtarınızı ekleyin.
+1. ``hello_world.html`` dosyasını düzenleyerek izleme anahtarınızı ekleyin.
 
-4. ``hello_world.html`` dosyasını yerel tarayıcı oturumunda açın. Bu eylem, tek bir PageView oluşturur. Tarayıcınızı yenileyerek birden fazla test sayfası görünümü oluşturabilirsiniz.
+1. ``hello_world.html`` dosyasını yerel tarayıcı oturumunda açın. Bu eylem tek sayfalı bir görünüm oluşturur. Birden çok test-sayfa görünümü oluşturmak için tarayıcınızı yenileyebilirsiniz.
 
-## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatın
+## <a name="monitor-your-website-in-the-azure-portal"></a>Web sitenizi Azure portal izleyin
 
-1. Artık çalışmakta olan uygulamanız hakkındaki ayrıntıları görüntülemek için Azure portal Application Insights **genel bakış** sayfasını yeniden açabilirsiniz. **Genel bakış** sayfası, izleme anahtarınızı aldığınız yerdir. Genel bakış sayfasındaki dört varsayılan grafik, sunucu tarafı uygulama verilerini kapsar. JavaScript SDK 'Sı ile istemci/tarayıcı tarafı etkileşimlerini seçtiğimiz için, sunucu tarafı SDK 'Sı yüklü olmadığı müddetçe bu belirli görünüm uygulanmaz.
+1. Çalışmakta olan uygulamanızın ayrıntılarını görüntülemek için Azure portal Application Insights **genel bakış** sayfasını yeniden açın. **Genel bakış** sayfası, izleme anahtarınızı aldığınız yerdir.
 
-2. ![Uygulama Haritası simgesi](media/website-monitoring/006.png) **Analiz** öğesine tıklayın.  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Analytics**'i açar. İstemci tarafı tarayıcı istekleriyle ilgili verileri görüntülemek için aşağıdaki sorguyu çalıştırın:
+   Genel bakış sayfasındaki dört varsayılan grafik, sunucu tarafı uygulama verilerini kapsar. JavaScript SDK 'Sı ile istemci/tarayıcı tarafı etkileşimlerini seçtiğimiz için, sunucu tarafı SDK 'Sı yüklü olmadığı müddetçe bu belirli görünüm uygulanmaz.
+
+1. **Analiz** ![uygulama Haritası simgesini](media/website-monitoring/006.png)seçin.  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Analytics**'i açar. İstemci tarafı tarayıcı istekleriyle ilgili verileri görüntülemek için aşağıdaki sorguyu çalıştırın:
 
     ```kusto
     // average pageView duration by name
@@ -105,29 +105,29 @@ Application Insights, şirket içinde veya bulutta çalışan İnternet’e bağ
 
    ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/website-monitoring/analytics-query.png)
 
-3. **Genel Bakış** sayfasına geri gidin. **Araştır** başlığındaki **Tarayıcı** girişine tıklayın ve **Performans**'ı seçin. Burada web sitenizle ilgili ölçümleri ve performans verilerini görebilirsiniz. Ayrıca, Web sitenizde hataların ve özel durumların çözümlenmesi için karşılık gelen bir görünüm de vardır. **Örnekler**'e tıklayarak işlem ayrıntılarına inebilirsiniz. Açılan sayfadan [uçtan uca işlem ayrıntıları](../../azure-monitor/app/transaction-diagnostics.md) deneyimine ulaşabilirsiniz.
+1. **Genel Bakış** sayfasına geri gidin. **Araştır** üst bilgisi altında **tarayıcı**' yı seçin ve ardından **performans**' ı seçin.  Web sitenizin performansıyla ilgili ölçümler görüntülenir. Web sitenizde hataların ve özel durumların çözümlenmesi için karşılık gelen bir görünüm vardır. [Uçtan uca işlem ayrıntılarına](../../azure-monitor/app/transaction-diagnostics.md)erişmek için **örnekler** seçebilirsiniz.
 
    ![Sunucu ölçüm grafiği](./media/website-monitoring/browser-performance.png)
 
-4. [Kullanıcı davranışı analiz araçlarını](../../azure-monitor/app/usage-overview.md) keşfetmeye başlamak için ana Application Insights menüsündeki **Kullanım** başlığından [**Kullanıcılar**](../../azure-monitor/app/usage-segmentation.md) girişini seçin. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir web sitesi için kullanıcı dağılımı şu şekilde görünebilir:
+1. Ana Application Insights menüsünde, **kullanım** üst bilgisi altında [**Kullanıcılar**](../../azure-monitor/app/usage-segmentation.md) ' ı seçerek [Kullanıcı davranışı analizi araçlarını](../../azure-monitor/app/usage-overview.md)keşfetmeye başlayabilirsiniz. Tek bir makineden test edildiğimiz için yalnızca bir kullanıcının verilerini görebiliriz. Canlı bir Web sitesi için kullanıcıların dağıtılması şöyle görünebilir:
 
      ![Kullanıcı grafiği](./media/website-monitoring/usage-users.png)
 
-5. Birden fazla sayfaya sahip olan daha karmaşık bir web sitesini izliyor olsaydık [**Kullanıcı Akışları**](../../azure-monitor/app/usage-flows.md) aracından da faydalanabilirdik. **Kullanıcı Akışları** aracıyla ziyaretçilerin web sitenizin farklı bölümlerinde gerçekleştirdiği işlemleri görebilirsiniz.
+1. Birden çok sayfa içeren daha karmaşık bir Web sitesi için, ziyaretçilerin web sitenizin çeşitli kısımlarını ele aldığı patika izlemek için [**Kullanıcı akışları**](../../azure-monitor/app/usage-flows.md) aracını kullanabilirsiniz.
 
    ![Kullanıcı Akışları görselleştirmesi](./media/website-monitoring/user-flows.png)
 
-Web sitelerini izlemek için kullanabileceğiniz daha gelişmiş yapılandırmalar hakkında bilgi edinmek için [JavaScript SDK API başvurusunu](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md) inceleyin.
+Web sitelerini izlemeye yönelik daha gelişmiş yapılandırma hakkında daha fazla bilgi edinmek için bkz. [JAVASCRIPT SDK API başvurusu](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Ek hızlı başlangıçlarla veya öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Aksi takdirde, devam etmeyi planlamıyorsanız, Azure portal bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
+Ek hızlı başlangıçlarla veya öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu hızlı başlangıçta oluşturulan kaynakları temizlemeyin. Aksi takdirde, Azure portal bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.
 
 > [!NOTE]
-> Var olan bir kaynak grubunu kullandıysanız aşağıdaki yönergeler çalışmaz ve yalnızca tek bir Application Insights kaynağını silmeniz gerekir. Bir kaynak grubunu her sildiğinizde, bu grubun üyesi olan tüm kaynaklar silinir.
+> Var olan bir kaynak grubunu kullandıysanız, aşağıdaki yönergeler çalışmaz. Bunun yerine, yalnızca bireysel Application Insights kaynağını silebilirsiniz. Bir kaynak grubunu sildiğinizde, bu grubun üyesi olan tüm kaynakların da silindiğini unutmayın.
 
-1. Azure portal sol menüsünde **kaynak grupları**' na tıklayın ve ardından **myresourcegroup** veya geçici kaynak grubunuzun adı ' na tıklayın.
-2. Kaynak grubu sayfanızda, **Sil**’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil**’e tıklayın.
+1. Azure portal sol menüsünde **kaynak grupları**' nı seçin ve ardından **myresourcegroup** ' ı veya geçici kaynak grubunuzun adını seçin.
+1. Kaynak grubu sayfanızda **Sil**' i seçin, metin kutusuna **myresourcegroup** yazın ve ardından **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

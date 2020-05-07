@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Visual Studio Code uzantısını kullanarak bir modeli eğitme ve dağıtma'
+title: 'Öğretici: eğitim & dağıtım modelleri: VS Code'
 titleSuffix: Azure Machine Learning
 description: TensorFlow ve Azure Machine Learning Visual Studio Code uzantısını kullanarak görüntü sınıflandırma modelini eğitme ve dağıtma hakkında bilgi edinin
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 04/13/2020
-ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b8b72e85f1d1660ee7d21afe3d34fde66f08ff8c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272823"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791842"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code uzantısını kullanarak görüntü sınıflandırması TensorFlow modelini eğitme ve dağıtma
 

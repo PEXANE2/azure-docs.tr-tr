@@ -4,6 +4,8 @@
   items:
     - name: Azure Load Balancer nedir?
       href: load-balancer-overview.md
+    - name: Sık sorulan sorular
+      href: load-balancer-faqs.md
 - name: Hızlı Başlangıç
   items:
     - name: Load Balancer oluşturma - Portal
@@ -40,6 +42,8 @@
       href: components.md
     - name: Kavramlar
       href: concepts.md
+    - name: SKU'lar
+      href: skus.md
     - name: Sistem durumunu izleme
       items:
         - name: Sistem durumu araştırmaları

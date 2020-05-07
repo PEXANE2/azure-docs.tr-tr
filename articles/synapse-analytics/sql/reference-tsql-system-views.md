@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96a2cce5d0e8abfd1f22b5fc64633eebc41aca39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f58c34a46f4eb1bffe4516f2a6f9f17a799fbfb3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431572"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786606"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>SYNAPSE SQL 'de desteklenen sistem görünümleri
 SYNAPSE SQL 'de desteklenen T-SQL deyimlerinin belgelerinin bağlantıları.
@@ -249,6 +249,6 @@ Aşağıdaki DMVs, SQL havuzu için geçerlidir, ancak **ana** veritabanına ba�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla başvuru bilgisi için bkz. [t-SQL deyimlerine SYNAPSE SQL](/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)ve [t-SQL DIL öğeleri SYNAPSE SQL](/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements).
+Daha fazla başvuru bilgisi için bkz. [t-SQL deyimlerine SYNAPSE SQL](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)ve [t-SQL DIL öğeleri SYNAPSE SQL](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements).
 
  
