@@ -3,12 +3,12 @@ title: Şablon ile hızlı görev Çalıştır
 description: Bir Azure Resource Manager şablonu kullanarak bir görüntü oluşturmak için bir ACR görevi çalıştırmasını sıraya al
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196536"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927777"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak ACR görevlerini çalıştırma
 
@@ -139,7 +139,7 @@ Tanıtım amacıyla, temel kayıt defteriniz olarak ayrı bir kapsayıcı kayıt
 
 ### <a name="create-new-dockerfile"></a>Yeni Dockerfile oluştur
 
-Temel görüntüyü taban Kayıt defterinizden çeken bir Dockerfile oluşturun. GitHub deposunun yerel çatalınızda aşağıdaki adımları gerçekleştirin, örneğin, https://github.com/myGitHubID/acr-build-helloworld-node.git*.
+Temel görüntüyü taban Kayıt defterinizden çeken bir Dockerfile oluşturun. GitHub deposunun yerel çatalınızda aşağıdaki adımları gerçekleştirin, örneğin, `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
 
 1. GitHub Kullanıcı arabiriminde **yeni dosya oluştur**' u seçin.
 1. Dosyanızı *Dockerfile-test* olarak adlandırın ve aşağıdaki içeriği yapıştırın. *Mybaseregbakanlığı*için kayıt defteri adınızı değiştirin.

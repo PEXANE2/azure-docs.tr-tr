@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f592a7f5a4af38988bcf433f0adc89d9be7579cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082018"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983474"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -130,11 +130,72 @@ Veri guardı, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korkle
 
 + Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [ `AutoMLConfig` sınıfı](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)için belirtme. 
 
+
+
+## <a name="ensemble-models"></a><a name="ensemble"></a>Ensesıme modelleri
+
+Otomatik makine öğrenimi, varsayılan olarak etkin olan ensebölümlü modellerini destekler. Enseletirme öğrenimi, tek modeller kullanmanın aksine birden çok modeli birleştirerek makine öğrenimi sonuçlarını ve tahmine dayalı performansı geliştirir. Ensebir yineleme, çalıştırmalarınızın son yinelemeleri olarak görünür. Otomatik makine öğrenimi, modelleri birleştirmek için hem oylama hem de yığınlama yöntemini kullanır:
+
+* **Oylama**: tahmini sınıf olasılıkların (Sınıflandırma görevleri için) veya tahmin edilen gerileme hedeflerinin ağırlıklı ortalaması temelinde tahmin eder (regresyon görevleri için).
+* **Yığınlama**: yığınlama heterojen modellerini birleştirir ve bireysel modellerdeki çıktıyı temel alarak bir meta modeli ister. Geçerli varsayılan meta modeller, Sınıflandırma görevleri için LogisticRegression ve gerileme/tahmin görevleri için Elaknet.
+
+Sıralanmış olarak kullanılacak modellerle birlikte hangi modellerin kullanılacağına karar vermek için sıralanmış ensebölümlü başlatma ile [Caruana ensebir seçim algoritması](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) kullanılır. Yüksek düzeyde, bu algoritma en iyi tek puanları içeren en fazla beş modelle ve bu modellerin kötü bir ilk olarak yeniden birleştirmek için en iyi puanın %5 ' inin içinde olduğunu doğrular. Ardından, her bir ensebir yineleme için, mevcut ensede yeni bir model eklenir ve elde edilen puan hesaplanır. Yeni bir model var olan ensebirlikte bulunan puanı iyileştirdiyse, yeni modeli dahil etmek için ensebirlikte bulunan olarak güncelleştirilir.
+
+Otomatik makine öğreniminde varsayılan enseletirme ayarlarını değiştirme için bkz. [nasıl yapılır](how-to-configure-auto-train.md#ensemble) .
+
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>Yerel ve uzaktan yönetilen ML işlem hedefleri ile ilgili yönergeler
+
+Otomatik ML için Web arabirimi her zaman uzak bir [işlem hedefi](concept-compute-target.md)kullanır.  Ancak, Python SDK 'yı kullandığınızda otomatik ML eğitimi için yerel bir işlem veya uzak bir işlem hedefi seçersiniz.
+
+* **Yerel işlem**: eğitim yerel dizüstü BILGISAYARıNıZDA veya VM ortamınızda gerçekleşir. 
+* **Uzaktan işlem**: eğitim Machine Learning işlem kümelerinde oluşur.  
+
+### <a name="choose-compute-target"></a>İşlem hedefini seçin
+İşlem hedefini seçerken şu faktörleri göz önünde bulundurun:
+
+ * **Yerel bir Işlem seçin**: senaryonuz küçük veriler ve kısa traıns (örneğin, alt çalışma başına birkaç dakika) kullanan ilk araştırmalar veya tanıtımlar hakkında ise, yerel bilgisayarınızdaki eğitim daha iyi bir seçim olabilir.  Kurulum süresi yoktur, altyapı kaynakları (bilgisayarınız veya VM) doğrudan kullanılabilir.
+ * **Bir uzak ml işlem kümesi**seçin: daha büyük veri kümeleriyle eğitim yapıyorsanız, daha uzun bir süre olması gereken modeller oluştururken, uzaktan işlem çok daha iyi uçtan uca zaman performansına sahiptir çünkü `AutoML` bu, kümenin düğümlerinde paralel hale getirmek. Uzaktan bir işlem sırasında, iç altyapının başlangıç zamanı, alt çalışma başına 1,5 dakika, ek olarak VM 'Ler henüz çalışır durumda değilse küme altyapısı için de ek dakika ekler.
+
+### <a name="pros-and-cons"></a>Profesyonelleri ve dezavantajları
+Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz önünde bulundurun.
+
+|  | Profesyonelleri (avantajlar)  |Dezavantajlara (Handicap)  |
+|---------|---------|---------|---------|
+|**Yerel işlem hedefi** |  <li> Ortam başlatma zamanı yok   | <li>  Özelliklerin alt kümesi<li>  Paralel hale getirmek çalışma yapılamıyor <li> Büyük veriler için daha kötüsü. <li>Eğitim sırasında veri akışı yok <li>  DNN tabanlı bir özellik yok <li> Yalnızca Python SDK |
+|**Uzak ML işlem kümeleri**|  <li> Tüm özellikler kümesi <li> Paralel hale getirmek alt çalıştırmaları <li>   Büyük veri desteği<li>  DNN tabanlı featurleştirme <li>  İsteğe bağlı işlem kümesi dinamik ölçeklenebilirliği <li> Kod yok deneyim (Web UI) Ayrıca kullanılabilir  |  <li> Küme düğümleri için başlangıç zamanı <li> Her alt çalıştırma için başlangıç saati    |
+
+### <a name="feature-availability"></a>Özellik kullanılabilirliği 
+
+ Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. Bu özelliklerden bazıları yalnızca bir kurumsal çalışma alanında kullanılabilir.
+
+| Özellik                                                    | Remote | Yerel | Gerektirmeyen <br>Kurumsal çalışma alanı |
+|------------------------------------------------------------|--------|-------|-------------------------------|
+| Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | ✓                             |
+| DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       | ✓                             |
+| Kullanıma hazır GPU desteği (eğitim ve çıkarım)        | ✓      |       | ✓                             |
+| Görüntü sınıflandırma ve etiketleme desteği                  | ✓      |       | ✓                             |
+| Tahmin için otomatik-ARıMA, Prophet ve Foreroı tcn modelleri | ✓      |       | ✓                             |
+| Paralel olarak birden çok çalıştırma/yineleme                       | ✓      |       | ✓                             |
+| Oto ml Studio Web deneyimi Kullanıcı arabiriminde yorumlenebilirliği olan modeller oluşturma      | ✓      |       | ✓                             |
+| Studio Web deneyimi Kullanıcı arabiriminde Özellik Mühendisliği özelleştirmesi                        | ✓      |       | ✓                              |
+| Azure ML hyperparameter ayarlaması                             | ✓      |       |                               |
+| Azure ML ardışık düzen iş akışı desteği                         | ✓      |       |                               |
+| Çalıştırmaya devam et                                             | ✓      |       |                               |
+| Tahmin etme                                                | ✓      | ✓     | ✓                             |
+| Not defterlerinde denemeleri oluşturma ve çalıştırma                    | ✓      | ✓     |                               |
+| Kullanıcı arabirimindeki deneyin bilgilerini ve ölçümlerini kaydetme ve görselleştirme | ✓      | ✓     |                               |
+| Veri, guardrayları                                            | ✓      | ✓     |                               |
+
+
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure Machine Learning otomatik ML
+
+Azure Machine Learning otomatikleştirilmiş ML ile çalışmaya yönelik iki deneyim sunar
+
+* Kod ile deneyimli müşteriler için [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+
+* Sınırlı/kod deneyimi müşterileri için Azure Machine Learning Studio[https://ml.azure.com](https://ml.azure.com/)  
+
 <a name="parity"></a>
-
-## <a name="the-studio-vs-sdk"></a>Studio vs SDK
-
-Python SDK ve Azure Machine Learning içindeki Studio aracılığıyla kullanılabilen üst düzey otomatik ML özellikleri arasındaki eşlik ve farklılıklar hakkında bilgi edinin. 
 
 ### <a name="experiment-settings"></a>Deneme ayarları 
 
@@ -181,17 +242,6 @@ Bu ayarlar, deneme çalışmalarınızı ve onun alt çalıştırmalarını ince
 |Guardrayal| ✓|✓|
 |& devam ettirmeyi Duraklat| ✓| |
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensesıme modelleri
-
-Otomatik makine öğrenimi, varsayılan olarak etkin olan ensebölümlü modellerini destekler. Enseletirme öğrenimi, tek modeller kullanmanın aksine birden çok modeli birleştirerek makine öğrenimi sonuçlarını ve tahmine dayalı performansı geliştirir. Ensebir yineleme, çalıştırmalarınızın son yinelemeleri olarak görünür. Otomatik makine öğrenimi, modelleri birleştirmek için hem oylama hem de yığınlama yöntemini kullanır:
-
-* **Oylama**: tahmini sınıf olasılıkların (Sınıflandırma görevleri için) veya tahmin edilen gerileme hedeflerinin ağırlıklı ortalaması temelinde tahmin eder (regresyon görevleri için).
-* **Yığınlama**: yığınlama heterojen modellerini birleştirir ve bireysel modellerdeki çıktıyı temel alarak bir meta modeli ister. Geçerli varsayılan meta modeller, Sınıflandırma görevleri için LogisticRegression ve gerileme/tahmin görevleri için Elaknet.
-
-Sıralanmış olarak kullanılacak modellerle birlikte hangi modellerin kullanılacağına karar vermek için sıralanmış ensebölümlü başlatma ile [Caruana ensebir seçim algoritması](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) kullanılır. Yüksek düzeyde, bu algoritma en iyi tek puanları içeren en fazla beş modelle ve bu modellerin kötü bir ilk olarak yeniden birleştirmek için en iyi puanın %5 ' inin içinde olduğunu doğrular. Ardından, her bir ensebir yineleme için, mevcut ensede yeni bir model eklenir ve elde edilen puan hesaplanır. Yeni bir model var olan ensebirlikte bulunan puanı iyileştirdiyse, yeni modeli dahil etmek için ensebirlikte bulunan olarak güncelleştirilir.
-
-Otomatik makine öğreniminde varsayılan enseletirme ayarlarını değiştirme için bkz. [nasıl yapılır](how-to-configure-auto-train.md#ensemble) .
-
 <a name="use-with-onnx"></a>
 
 ## <a name="automl--onnx"></a>Oto ml & ONNX
@@ -202,20 +252,19 @@ Azure Machine Learning, otomatik ML 'yi kullanarak bir Python modeli oluşturabi
 
 ONNX çalışma zamanı, C# ' yi de destekler, bu nedenle REST uç noktalarının tanıtılmasını gerektiren veya herhangi bir ağ gecikme süresi gerekmeden C# uygulamalarınızda otomatik olarak oluşturulan modeli kullanabilirsiniz. [Onnx çalışma zamanı C# API 'si ile ınmıonnx modeller](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)hakkında daha fazla bilgi edinin. 
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı öğrenme:
-
-+ [Öğreticiyi izleyin: Azure Machine Learning ile regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
 
 + Otomatik eğitim denemenize yönelik ayarları yapılandırın:
   + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-use-automated-ml-for-ml-models.md).
   + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
 
++ [Uzaktan işlem hedefini](how-to-auto-train-remote.md) nasıl kullanacağınızı öğrenin
+
++ [Öğreticiyi izleyin: Azure Machine Learning ile regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md) 
+
 + Zaman serisi verilerini kullanarak otomatik eğitme yapmayı öğrenin, [Bu adımları kullanın](how-to-auto-train-forecast.md).
 
 + [Otomatik makine öğrenimi için Jupyter Notebook örnekleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/) deneyin
-
 * Otomatikleştirilmiş ML, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) ve [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) gibi diğer Microsoft çözümlerinde de kullanılabilir

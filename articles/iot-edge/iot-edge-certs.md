@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733173"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982737"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge sertifikaları nasıl kullandığını anlayın
 
@@ -36,7 +36,7 @@ Sertifika yetkilisi veya kısaca ' CA ', dijital sertifikalar veren bir varlıkt
 
 ### <a name="root-ca-certificate"></a>Kök CA sertifikası
 
-Kök CA sertifikası, tüm işlemin güvenin köküdür. Üretim senaryolarında, bu CA sertifikası genellikle Baltimore, Verisign veya DigiCert gibi güvenilir bir ticari sertifika yetkilisinden satın alınır. IoT Edge cihazlarınıza bağlanan cihazlar üzerinde tamamen denetim sahibi olmanız gerekir. kurumsal düzeyde bir sertifika yetkilisi kullanmak mümkündür. Her iki durumda da, IoT Edge hub 'ından tüm sertifika zinciri kendisine kaydolur, böylece yaprak IoT cihazlarının kök sertifikaya güvenmesi gerekir. Kök CA sertifikasını Güvenilen kök sertifika yetkilisi deposunda saklayabilir ya da uygulama kodunuzda sertifika ayrıntılarını sağlayabilirsiniz.
+Kök CA sertifikası, tüm işlemin güvenin köküdür. Üretim senaryolarında, bu CA sertifikası genellikle Baltimore, Verisign veya DigiCert gibi güvenilir bir ticari sertifika yetkilisinden satın alınır. IoT Edge cihazlarınıza bağlanan cihazlar üzerinde tamamen denetim sahibi olmanız gerekir. kurumsal düzeyde bir sertifika yetkilisi kullanmak mümkündür. Her iki durumda da, IoT Edge hub 'ından tüm sertifika zinciri kendisine kaydolur, bu nedenle yaprak IoT cihazlarının kök sertifikaya güvenmesi gerekir. Kök CA sertifikasını Güvenilen kök sertifika yetkilisi deposunda saklayabilir ya da uygulama kodunuzda sertifika ayrıntılarını sağlayabilirsiniz.
 
 ### <a name="intermediate-certificates"></a>Ara sertifikalar
 

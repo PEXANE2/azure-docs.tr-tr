@@ -3,20 +3,20 @@ title: Yerel Azure depolama geliştirmesi için Azurite öykünücüsünü kulla
 description: Azurite açık kaynaklı öykünücü (Önizleme), Azure depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/31/2019
+ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76029933"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872600"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Yerel Azure depolama geliştirme ve test (Önizleme) için Azurite öykünücüsünü kullanın
 
-Azurite sürümü 3,2 açık kaynaklı öykünücü (Önizleme), Azure Blob ve kuyruk depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar. Uygulamanızın yerel olarak nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın. Öykünücü, Windows, Linux ve MacOS 'ta platformlar arası destek sağlar. Azurite v3, Azure Blob hizmeti tarafından uygulanan API 'Leri destekler.
+Azurite sürümü 3,2 açık kaynaklı öykünücü (Önizleme), Azure Blob ve kuyruk depolama uygulamalarınızı test etmek için ücretsiz bir yerel ortam sağlar. Uygulamanızın yerel olarak nasıl çalıştığı konusunda memnun olduğunuzda, bulutta bir Azure depolama hesabı kullanmaya geçiş yapın. Öykünücü, Windows, Linux ve macOS 'ta platformlar arası destek sağlar. Azurite v3, Azure Blob hizmeti tarafından uygulanan API 'Leri destekler.
 
 Azurite, gelecekteki depolama öykünücü platformudur. Azurite, [Azure depolama öykünücüsünün](storage-use-emulator.md)yerini almıştır. Azurite, Azure depolama API 'lerinin en son sürümlerini destekleyecek şekilde güncellenmeye devam edecektir.
 
@@ -33,45 +33,50 @@ Visual Studio Code içinde, **Uzantılar** bölmesini seçin ve **Uzantılar: ma
 
 ![Visual Studio Code uzantıları marketi](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-Alternatif olarak, tarayıcınızda [vs Code uzantısı pazarına](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) gidebilirsiniz. Visual Studio Code açmak için **Aç düğmesini seçin** ve doğrudan Azurite uzantısı sayfasına gidin.
+Ayrıca, tarayıcınızda [Visual Studio Code uzantısı pazarına](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) gidebilirsiniz. Visual Studio Code açmak için **Aç düğmesini seçin** ve doğrudan Azurite uzantısı sayfasına gidin.
 
-VS Code durum çubuğunda **[Azurite blob hizmeti]** veya **[Azurıite kuyruk hizmeti]** öğesine tıklayarak veya vs Code komut paletinde aşağıdaki komutları yayımlayarak, azurıon 'u hızlı bir şekilde başlatabilir veya kapatabilirsiniz. Komut paletini açmak için VS Code **F1** tuşuna basın.
+Visual Studio Code durum çubuğunda Azurite 'yi hızlıca başlatabilir veya kapatabilirsiniz. **[Azurite blob hizmeti]** veya **[Azurite kuyruğu hizmeti]** öğesine tıklayın.
 
-Uzantı aşağıdaki Visual Studio Code komutlarını destekler:
+Uzantı aşağıdaki Visual Studio Code komutlarını destekler. Komut paletini açmak için Visual Studio Code F1 tuşuna basın. 
 
-   * **Azurite: Başlat** -tüm Azurite hizmetlerini Başlat
-   * **Azurite:** tüm Azurite hizmetlerini kapat
-   * **Azurite:** tüm Azurite Hizmetleri kalıcılığı verilerini temizle
-   * **Azurite: blob hizmetini Başlat** -blob hizmetini Başlat
-   * **Azurite: blob hizmetini kapat** -blob hizmetini kapat
-   * **Azurite: Temizleme blobu hizmeti** -Temizleme blobu hizmeti
-   * **Azurite: kuyruk hizmetini Başlat** -kuyruk hizmetini Başlat
-   * **Azurite: kuyruk hizmetini kapat** -kuyruk hizmetini kapat
-   * **Azurite: Temizleme kuyruğu hizmeti** -Temizleme kuyruğu hizmeti
+   - **Azurite:** tüm Azurite Hizmetleri kalıcılığı verilerini temizle
+   - **Azurite: Temizleme blobu hizmeti** -Temizleme blobu hizmeti
+   - **Azurite: Temizleme kuyruğu hizmeti** -Temizleme kuyruğu hizmeti
+   - **Azurite:** tüm Azurite hizmetlerini kapat
+   - **Azurite: blob hizmetini kapat** -blob hizmetini kapat
+   - **Azurite: kuyruk hizmetini kapat** -kuyruk hizmetini kapat
+   - **Azurite: Başlat** -tüm Azurite hizmetlerini Başlat
+   - **Azurite: blob hizmetini Başlat** -blob hizmetini Başlat
+   - **Azurite: kuyruk hizmetini Başlat** -kuyruk hizmetini Başlat
 
-Visual Studio Code içinde Azurite yapılandırmak için Uzantılar bölmesini seçin. **Azurite**için **Yönet** (dişli) simgesini seçin. **Uzantı ayarlarını yapılandır**' ı seçin.
+Visual Studio Code içinde Azurite yapılandırmak için Uzantılar bölmesini seçin. **Azurite**için **Yönet** (dişli) simgesini seçin. **Uzantı ayarları**' nı seçin.
 
-![Azurite uzantı ayarlarını yapılandırma](media/storage-use-azurite/azurite-configure-extension-settings.png)
+![Azuri 'ler uzantı ayarlarını yapılandırır](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 Aşağıdaki ayarlar desteklenir:
 
-   * **Azurite: blob Konağı** -blob hizmeti dinleme uç noktası. Varsayılan ayar 127.0.0.1 ' dir.
-   * **Azurite: blob bağlantı** noktası-blob hizmeti dinleme bağlantı noktası. Varsayılan bağlantı noktası 10000 ' dir.
-   * **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false** şeklindedir.
-   * **Azurite: konum** -çalışma alanı konum yolu. Varsayılan değer Visual Studio Code çalışma klasörüdür.
-   * **Azurite: kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
-   * **Azurite: kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
-   * **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false** şeklindedir.
+   - **Azurite: blob Konağı** -blob hizmeti dinleme uç noktası. Varsayılan ayar 127.0.0.1 ' dir.
+   - **Azurite: blob bağlantı** noktası-blob hizmeti dinleme bağlantı noktası. Varsayılan bağlantı noktası 10000 ' dir.
+   - **Azurite:** https modunu etkinleştirmek için yerel olarak güvenilen bir ped veya PFX Sertifika dosya yolunun CERT yolu.
+   - **Azurite: hata** ayıklama-hata ayıklama günlüğünü Azurite kanalına çıkar. Varsayılan değer **false** şeklindedir.
+   - **Azurite:** **Azurite: CERT** bir ped dosyasına işaret ediyorsa, yerel olarak güvenilen bir PEI anahtar dosyasının anahtar yolu.
+   - **Azurite: konum** -çalışma alanı konum yolu. Varsayılan değer Visual Studio Code çalışma klasörüdür.
+   - **Azurite:** , desteklenmeyen üst bilgileri ve parametreleri yok sayan gevşek modunu etkinleştirin.
+   - **Azurite: OAuth** Isteğe bağlı OAuth düzeyi.
+   - **Azurite: PWD** -pfx dosyası parolası. **Azurite: CERT** bir PFX dosyasına işaret ediyorsa gereklidir.
+   - **Azurite: kuyruk Konağı** -dinleme uç noktası kuyruk hizmeti. Varsayılan ayar 127.0.0.1 ' dir.
+   - **Azurite: kuyruk bağlantı** noktası-dinleme bağlantı noktası kuyruk hizmeti. Varsayılan bağlantı noktası 10001 ' dir.
+   - **Azurite: sessiz** -sessiz mod, erişim günlüğünü devre dışı bırakır. Varsayılan değer **false** şeklindedir.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM kullanarak Azurite 'i yükleyip çalıştırma
 
-Bu yükleme yöntemi için [Node. js sürüm 8,0 veya daha yeni bir sürümün](https://nodejs.org) yüklü olması gerekir. **NPM** , her Node. js yüklemesinde bulunan paket yönetim aracıdır. Node. js ' yi yükledikten sonra, Azurite yüklemek için aşağıdaki **NPM** komutunu yürütün.
+Bu yükleme yöntemi için [Node. js sürüm 8,0 veya daha yeni bir sürümün](https://nodejs.org) yüklü olması gerekir. Düğüm Paket Yöneticisi (NPM), her Node. js yüklemesinde bulunan paket yönetim aracıdır. Node. js ' yi yükledikten sonra, Azurite yüklemek için aşağıdaki `npm` komutu yürütün.
 
 ```console
 npm install -g azurite
 ```
 
-Azurite yükledikten sonra, bkz. [komut satırından Azurıite çalıştırma](#run-azurite-from-a-command-line).
+Azurite yükledikten sonra, bkz. [komut satırından Azurite çalıştırma](#run-azurite-from-a-command-line).
 
 ## <a name="install-and-run-the-azurite-docker-image"></a>Azurite Docker görüntüsünü yükleyip çalıştırma
 
@@ -86,7 +91,8 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 Aşağıdaki komut Azurite Docker görüntüsünü çalıştırır. Parametresi `-p 10000:10000` , istekleri ana makinenin 10000 numaralı bağlantı noktasından Docker örneğine yeniden yönlendirir.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Çalışma alanı konumunu belirtin**:
@@ -94,33 +100,18 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 Aşağıdaki örnekte `-v c:/azurite:/data` parametresi, Azurite kalıcı veri konumu olarak *c:/Azurite* belirtir. Docker komutu çalıştırılmadan önce, *c:/Azurite*dizininin oluşturulması gerekir.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Yalnızca blob hizmetini Çalıştır**
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
-**Tüm Azurite parametrelerini ayarla**:
-
-Bu örnekte, komut satırı parametrelerinin tümünün nasıl ayarlanacağı gösterilmektedir. Aşağıdaki parametrelerin tümü tek bir komut satırına yerleştirilmelidir.
-
-```console
-docker run -p 8888:8888
-           -p 9999:9999
-           -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
-           -l /workspace
-           -d /workspace/debug.log
-           --blobPort 8888
-           --blobHost 0.0.0.0
-           --queuePort 9999
-           --queueHost 0.0.0.0
-```
-
-Başlangıç aşamasında Azurite yapılandırma hakkında daha fazla bilgi için bkz. [komut satırı seçenekleri](#command-line-options) .
+Başlangıç aşamasında Azurite yapılandırma hakkında daha fazla bilgi için bkz. [komut satırı seçenekleri](#command-line-options).
 
 ## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>GitHub deposundan Azurite kopyalama, derleme ve çalıştırma
 
@@ -143,32 +134,32 @@ Azurite yükledikten ve oluşturduktan sonra, bkz. [komut satırından Azurıite
 ## <a name="run-azurite-from-a-command-line"></a>Bir komut satırından Azurıite çalıştırma
 
 > [!NOTE]
-> Yalnızca Visual Studio Code uzantısını yüklediyseniz, Azurite komut satırından çalıştırılamaz. Bunun yerine VS Code komut paletini kullanın. Daha fazla bilgi için bkz. [Azurite Visual Studio Code uzantısını yükleyip çalıştırma](#install-and-run-the-azurite-visual-studio-code-extension).
+> Yalnızca Visual Studio Code uzantısını yüklediyseniz, Azurite komut satırından çalıştırılamaz. Bunun yerine Visual Studio Code komut paletini kullanın. Daha fazla bilgi için bkz. [Azurite Visual Studio Code uzantısını yükleyip çalıştırma](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Komut satırı ile hemen başlamak için, **c:\azurite**adlı bir dizin oluşturun ve aşağıdaki komutu vererek Azurite başlatın:
+Komut satırı ile hemen başlamak için, *c:\azurite*adlı bir dizin oluşturun, ardından aşağıdaki komutu vererek Azurite başlatın:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-Bu komut, Azurite 'ın tüm verileri belirli bir dizinde ( **c:\azurite**) depolamasını söyler. **--Location** seçeneği atlanırsa, geçerli çalışma dizinini kullanacaktır.
+Bu komut, Azurite 'ın tüm verileri belirli bir dizinde ( *c:\azurite*) depolamasını söyler. `--location` Seçenek atlanırsa, geçerli çalışma dizinini kullanacaktır.
 
 ## <a name="command-line-options"></a>Komut satırı seçenekleri
 
-Bu bölüm, Azurıite başlatılırken kullanılabilen komut satırı anahtarlarının ayrıntılarını yapar. Tüm komut satırı anahtarları isteğe bağlıdır.
+Bu bölüm, Azurıite başlatılırken kullanılabilen komut satırı anahtarlarının ayrıntılarını yapar.
+
+### <a name="help"></a>Yardım
+
+**Isteğe bağlı** - `-h` veya `--help` anahtarını kullanarak komut satırı yardımını alın.
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
-    [-d | --debug <log file path>] [-l | --location <workspace path>]
-    [--queueHost <IP address>] [--queuePort <port address>]
-    [-s | --silent] [-h | --help]
+azurite -h
+azurite --help
 ```
-
-- **D** , **--Debug**için bir kısayoldur,- **l** anahtarı **--konumu**kısayoludur,- **s** -- **Silent**kısayoludur ve **-h** , **--help**için bir kısayoldur.
 
 ### <a name="blob-listening-host"></a>Blob dinleme ana bilgisayarı
 
-**Isteğe bağlı** Varsayılan olarak, Azurite yerel sunucu olarak 127.0.0.1 'yi dinler. Adresi gereksinimlerinize göre ayarlamak için **--blobhost** anahtarını kullanın.
+**Isteğe bağlı** -varsayılan olarak, Azurite yerel sunucu olarak 127.0.0.1 'yi dinler. Adresi gereksinimlerinize `--blobHost` göre ayarlamak için anahtarını kullanın.
 
 İstekleri yalnızca yerel makinede kabul et:
 
@@ -187,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>Blob dinleme bağlantı noktası yapılandırması
 
-**Isteğe bağlı** Varsayılan olarak, Azurite bağlantı noktası 10000 üzerinde blob hizmetini dinler. İhtiyaç duyduğunuz dinleme bağlantı noktasını belirtmek için **--blobport** anahtarını kullanın.
+**Isteğe bağlı** -varsayılan olarak, Azurite bağlantı noktası 10000 üzerinde blob hizmeti dinleyecektir. Gerekli dinleme `--blobPort` bağlantı noktasını belirtmek için anahtarını kullanın.
 
 > [!NOTE]
 > Özelleştirilmiş bir bağlantı noktasını kullandıktan sonra, Azure depolama araçlarınızın veya SDK 'larındaki bağlantı dizesini veya ilgili yapılandırmayı güncelleştirmeniz gerekir.
@@ -208,7 +199,7 @@ Kullanımdaki bağlantı noktası Azurite başlatması sırasında görüntülen
 
 ### <a name="queue-listening-host"></a>Kuyruk dinleme Konağı
 
-**Isteğe bağlı** Varsayılan olarak, Azurite yerel sunucu olarak 127.0.0.1 'yi dinler. Adresi gereksinimlerinize göre ayarlamak için **--queuehost** anahtarını kullanın.
+**Isteğe bağlı** -varsayılan olarak, Azurite yerel sunucu olarak 127.0.0.1 'yi dinler. Adresi gereksinimlerinize `--queueHost` göre ayarlamak için anahtarını kullanın.
 
 İstekleri yalnızca yerel makinede kabul et:
 
@@ -227,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>Kuyruk dinleme bağlantı noktası yapılandırması
 
-**Isteğe bağlı** Varsayılan olarak, Azurite 10001 numaralı bağlantı noktasında Kuyruk hizmeti dinleyecektir. İhtiyaç duyduğunuz dinleme bağlantı noktasını belirtmek için **--QueuePort** anahtarını kullanın.
+**Isteğe bağlı** -varsayılan olarak Azurite, 10001 numaralı bağlantı noktasında kuyruk hizmeti dinleyecektir. Gerekli dinleme `--queuePort` bağlantı noktasını belirtmek için anahtarını kullanın.
 
 > [!NOTE]
 > Özelleştirilmiş bir bağlantı noktasını kullandıktan sonra, Azure depolama araçlarınızın veya SDK 'larındaki bağlantı dizesini veya ilgili yapılandırmayı güncelleştirmeniz gerekir.
@@ -248,79 +239,90 @@ Kullanımdaki bağlantı noktası Azurite başlatması sırasında görüntülen
 
 ### <a name="workspace-path"></a>Çalışma alanı yolu
 
-**Isteğe bağlı** Azurite, yürütme sırasında verileri yerel diske depolar. Çalışma alanı konumu olarak bir yol belirtmek için **--Location** anahtarını kullanın. Varsayılan olarak, geçerli işlem çalışma dizini kullanılacaktır.
-
-```console
-azurite --location c:\azurite
-```
+**Isteğe bağlı** -Azurite, yürütme sırasında verileri yerel diske depolar. Çalışma alanı `-l` konumu `--location` olarak bir yol belirtmek için veya anahtarını kullanın. Varsayılan olarak, geçerli işlem çalışma dizini kullanılacaktır. Küçük harfli ' l ' değerini aklınızda edin.
 
 ```console
 azurite -l c:\azurite
+azurite --location c:\azurite
 ```
 
 ### <a name="access-log"></a>Erişim günlüğü
 
-**Isteğe bağlı** Varsayılan olarak, erişim günlüğü konsol penceresinde görüntülenir. **--Sessiz** anahtarını kullanarak erişim günlüğü görüntüsünü devre dışı bırakın.
-
-```console
-azurite --silent
-```
+**Isteğe bağlı** -varsayılan olarak, erişim günlüğü konsol penceresinde görüntülenir. `-s` Veya `--silent` anahtarını kullanarak erişim günlüğü görüntüsünü devre dışı bırakın.
 
 ```console
 azurite -s
+azurite --silent
 ```
-
 ### <a name="debug-log"></a>Hata ayıklama günlüğü
 
-**Isteğe bağlı** Hata ayıklama günlüğü, her istek ve özel durum yığın izlemesi hakkında ayrıntılı bilgi içerir. **--Debug** anahtarına geçerli bir yerel dosya yolu sağlayarak hata ayıklama günlüğünü etkinleştirin.
-
-```console
-azurite --debug path/debug.log
-```
+**Isteğe bağlı** -hata ayıklama günlüğü, her istek ve özel durum yığın izlemesi hakkında ayrıntılı bilgi içerir. `-d` Veya `--debug` anahtarına geçerli bir yerel dosya yolu sağlayarak hata ayıklama günlüğünü etkinleştirin.
 
 ```console
 azurite -d path/debug.log
+azurite --debug path/debug.log
 ```
 
 ### <a name="loose-mode"></a>Gevşek mod
 
-**Isteğe bağlı** Varsayılan olarak, Azurite, desteklenmeyen istek üst bilgilerini ve parametrelerini engellemek için katı mod uygular. **--Gevşek** anahtar kullanarak katı modu devre dışı bırakın.
-
-```console
-azurite --loose
-```
-
-Büyük ' L ' kısayol anahtarını aklınızda edin:
+**Isteğe bağlı** -varsayılan olarak Azurite, desteklenmeyen istek üst bilgilerini ve parametrelerini engellemek için katı mod uygular. `-L` Veya `--loose` anahtarını kullanarak katı modu devre dışı bırakın. Sermaye ' L ' değerini aklınızda edin.
 
 ```console
 azurite -L
+azurite --loose
 ```
+### <a name="version"></a>Sürüm
+
+**Isteğe bağlı** - `-v` veya `--version` anahtarını kullanarak yüklü Azurite sürüm numarasını görüntüleyin.
+
+```console
+azurite -v
+azurite --version
+```
+
+### <a name="certificate-configuration-https"></a>Sertifika yapılandırması (HTTPS)
+
+**Isteğe bağlı** -varsayılan olarak, Azurite http protokolünü kullanır. Anahtara gizlilik Gelişmiş posta (. pek) veya [kişisel bilgi değişimi (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) sertifika dosyası için bir yol sağlayarak https modunu etkinleştirin. `--cert`
+
+`--cert` Bir ped dosyası için sağlandığında, buna karşılık gelen `--key` bir anahtar sağlamanız gerekir.
+
+```console
+azurite --cert path/server.pem --key path/key.pem
+```
+
+`--cert` , Bir PFX dosyası için sağlandığında, karşılık gelen `--pwd` bir anahtar sağlamanız gerekir.
+
+```console
+azurite --cert path/server.pfx --pwd pfxpassword
+```
+
+PEK ve PFX dosyaları oluşturma hakkında ayrıntılı bilgi için bkz. [https kurulumu](https://github.com/Azure/Azurite/blob/master/README.md#https-setup).
+
+### <a name="oauth-configuration"></a>OAuth yapılandırması
+
+**Isteğe bağlı** - `--oauth` anahtarı kullanarak Azurite için OAuth kimlik doğrulamasını etkinleştirin.
+
+```console
+azurite --oauth basic --cert path/server.pem --key path/key.pem
+```
+
+> [!NOTE]
+> OAuth bir HTTPS uç noktası gerektirir. Anahtarla birlikte `--cert` `--oauth` anahtar sağlayarak https 'nin etkinleştirildiğinden emin olun.
+
+Azurite, `basic` `--oauth` anahtarın parametresini belirterek temel kimlik doğrulamasını destekler. Azurite, gelen taşıyıcı belirtecini doğrulama, verenin, izleyici ve süre sonu denetleme gibi temel kimlik doğrulaması yapar. Azurite, belirteç imzasını veya izinleri denetlemez.
 
 ## <a name="authorization-for-tools-and-sdks"></a>Araçlar ve SDK 'lar için yetkilendirme
 
-Herhangi bir kimlik doğrulama stratejisi kullanarak Azure Storage SDK 'Ları veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi araçlardan Azurıite 'e bağlanın. Kimlik doğrulaması gereklidir. Azurite, paylaşılan anahtar ve paylaşılan erişim imzaları (SAS) ile yetkilendirmeyi destekler. Azurite ayrıca ortak kapsayıcılara anonim erişimi destekler.
+Herhangi bir kimlik doğrulama stratejisi kullanarak Azure Storage SDK 'Ları veya [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi araçlardan Azurıite 'e bağlanın. Kimlik doğrulaması gereklidir. Azurite, OAuth, paylaşılan anahtar ve paylaşılan erişim imzaları (SAS) ile yetkilendirmeyi destekler. Azurite ayrıca ortak kapsayıcılara anonim erişimi destekler.
+
+Azure SDK 'larını kullanıyorsanız, `--oauth basic and --cert --key/--pwd` seçeneklerle Azurite ' ı başlatın.
 
 ### <a name="well-known-storage-account-and-key"></a>İyi bilinen depolama hesabı ve anahtarı
 
-Aşağıdaki hesap adını ve anahtarını Azurite ile birlikte kullanabilirsiniz. Bu, eski Azure depolama öykünücüsü tarafından kullanılan iyi bilinen hesap ve anahtardır.
+Azurite, eski Azure depolama öykünücüsü tarafından kullanılan aynı tanınmış hesabı ve anahtarı kabul eder.
 
-* Hesap adı:`devstoreaccount1`
-* Hesap anahtarı:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
-
-> [!NOTE]
-> SharedKey kimlik doğrulamasına ek olarak, Azurite hesabı ve hizmet SAS kimlik doğrulamasını destekler. Anonim erişim, bir kapsayıcı genel erişime izin verecek şekilde ayarlandığında da kullanılabilir.
-
-### <a name="connection-string"></a>Bağlantı dizesi
-
-Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında *Usedevelopmentstorage = true*kısayoluna başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app. config* dosyasındaki bağlantı dizesine bir örnek aşağıda verilmiştir:
-
-```xml
-<appSettings>
-  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
-</appSettings>
-```
-
-Daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](storage-configure-connection-string.md).
+- Hesap adı:`devstoreaccount1`
+- Hesap anahtarı:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Özel depolama hesapları ve anahtarları
 
@@ -332,10 +334,18 @@ Azurite, `AZURITE_ACCOUNTS` ortam değişkenini aşağıdaki biçimde ayarlayara
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
-Ya da her biri 2 anahtarlı birden çok depolama hesabı kullanın:
+```bash
+export AZURITE_ACCOUNTS="account1:key1"
+```
+
+Ya da iki anahtar içeren birden çok depolama hesabı kullanın:
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+```bash
+export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
 Azurite, varsayılan olarak her dakikada ortam değişkeninden özel hesap adlarını ve anahtarlarını yeniler. Bu özellikle, hesap anahtarını dinamik olarak döndürebilir veya Azurite 'ı yeniden başlatmanıza gerek kalmadan yeni depolama hesapları ekleyebilirsiniz.
@@ -343,15 +353,159 @@ Azurite, varsayılan olarak her dakikada ortam değişkeninden özel hesap adlar
 > [!NOTE]
 > Özel depolama `devstoreaccount1` hesapları ayarladığınızda varsayılan depolama hesabı devre dışıdır.
 
-> [!NOTE]
-> Özel hesap adlarını ve anahtarlarını kullanırken bağlantı dizesini uygun şekilde güncelleştirin.
+### <a name="connection-strings"></a>Bağlantı dizeleri
 
-> [!NOTE]
-> Bir Linux `export` ortamında ortam değişkenlerini ayarlamak için anahtar sözcüğünü kullanın, Windows 'ta `set` kullanın.
+Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında *Usedevelopmentstorage = true*kısayoluna başvuran bir bağlantı dizesi yapılandırmaktır. Bir *app. config* dosyasındaki bağlantı dizesine bir örnek aşağıda verilmiştir:
 
-### <a name="storage-explorer"></a>Depolama Gezgini
+```xml
+<appSettings>
+  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
+</appSettings>
+```
 
-Azure Depolama Gezgini, **Hesap Ekle** simgesine tıklayarak Azurite öğesine bağlanın ve ardından **Yerel öykünücüyü Ekle** ' yi seçin ve **Bağlan**' a tıklayın.
+#### <a name="http-connection-strings"></a>HTTP bağlantı dizeleri
+
+Aşağıdaki bağlantı dizelerini Azure CLı 2,0 veya Depolama Gezgini gibi [Azure SDK](https://aka.ms/azsdk) 'larına veya araçlarına geçirebilirsiniz.
+
+Tam bağlantı dizesi:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+Yalnızca blob hizmetine bağlanmak için bağlantı dizesi:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
+
+Yalnızca kuyruk hizmetine bağlanmak için bağlantı dizesi:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+#### <a name="https-connection-strings"></a>HTTPS bağlantı dizeleri
+
+Tam HTTPS bağlantı dizesi:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Yalnızca blob hizmetini kullanmak için HTTPS bağlantı dizesi:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;`
+
+Yalnızca kuyruk hizmetini kullanmak için HTTPS bağlantı dizesi:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Otomatik olarak imzalanan `dotnet dev-certs` sertifikanızı oluşturmak için kullandıysanız, aşağıdaki bağlantı dizesini kullanın.
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
+
+[Özel depolama hesapları ve anahtarlar](#custom-storage-accounts-and-keys)kullanırken bağlantı dizesini güncelleştirin.
+
+Daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](storage-configure-connection-string.md).
+
+### <a name="azure-sdks"></a>Azure SDK’ları
+
+[Azure SDK](https://aka.ms/azsdk)'Leriyle Azurite kullanmak için OAUTH ve https seçeneklerini kullanın:
+
+```console
+azurite --oauth basic --cert certname.pem --key certname-key.pem
+```
+
+#### <a name="azure-blob-storage"></a>Azure Blob Depolama
+
+Daha sonra bir BlobContainerClient, BlobServiceClient veya BlobClient örneği oluşturabilirsiniz.
+
+```csharp
+// With container URL and DefaultAzureCredential
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new BlobContainerClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "container-name"
+  );
+
+// With account name and key
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+#### <a name="azure-queue-storage"></a>Azure Kuyruk Depolama
+
+Ayrıca bir QueueClient veya QueueServiceClient örneği oluşturabilirsiniz.
+
+```csharp
+// With queue URL and DefaultAzureCredential
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new QueueClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "queue-name"
+  );
+
+// With account name and key
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini
+
+Azurite içinde depolanan verileri görüntülemek için Depolama Gezgini kullanabilirsiniz.
+
+#### <a name="connect-to-azurite-using-http"></a>HTTP kullanarak Azurite 'a bağlanma
+
+Depolama Gezgini, aşağıdaki adımları izleyerek Azurite öğesine bağlanın:
+
+ 1. **Hesap Ekle** simgesini seçin
+ 1. **Yerel öykünücüye Ekle** seçeneğini belirleyin
+ 1. **İleri** Seç
+ 1. **İleri ' yi** yeniden seçin
+ 1. **Bağlan** 'ı seçin
+
+#### <a name="connect-to-azurite-using-https"></a>HTTPS kullanarak Azurite 'a bağlanma
+
+Varsayılan olarak Depolama Gezgini otomatik olarak imzalanan bir sertifika kullanan bir HTTPS uç noktası açmaz. HTTPS ile Azurite çalıştırıyorsanız, muhtemelen kendinden imzalı bir sertifika kullanıyorsunuz demektir. Depolama Gezgini **, SSL sertifikalarını** ->  **düzenleme** -> **sertifikaları içeri aktar** iletişim kutusunu kullanarak SSL sertifikalarını içeri aktarın.
+
+##### <a name="import-certificate-to-storage-explorer"></a>Sertifikayı Depolama Gezgini içeri aktar
+
+1. Yerel makinenizde sertifikayı bulun.
+1. Depolama Gezgini ' de,**SSL sertifikalarını** ->  **düzenleme** -> **sertifikaları içeri** aktarma ve sertifikanızı içeri aktarma bölümüne gidin.
+
+Bir sertifikayı içeri aktarmazsanız bir hata alırsınız:
+
+`unable to verify the first certificate` veya `self signed certificate in chain`
+
+##### <a name="add-azurite-via-https-connection-string"></a>HTTPS bağlantı dizesi aracılığıyla Azurite ekleme
+
+Depolama Gezgini için Azurite HTTPS eklemek üzere aşağıdaki adımları izleyin:
+
+1. **Gezgin 'ı değiştirmeyi** Seç
+1. **Ekli yerel &** seçin
+1. **Depolama hesapları** ' na sağ tıklayın ve **Azure depolama 'ya Bağlan**' ı seçin.
+1. **Bağlantı dizesi kullan** ' ı seçin
+1. **İleri**’yi seçin.
+1. **Görünen ad** alanına bir değer girin.
+1. Bu belgenin önceki bölümündeki [HTTPS bağlantı dizesini](#https-connection-strings) girin
+1. **İleri** Seç
+1. **Bağlan** 'ı seçin
+
+## <a name="workspace-structure"></a>Çalışma alanı yapısı
+
+Azurite başlatılırken çalışma alanı konumunda aşağıdaki dosyalar ve klasörler oluşturulabilir.
+
+- `__blobstorage__`-Azurite blob hizmeti kalıcı ikili verileri içeren dizin
+- `__queuestorage__`-Azurite kuyruğu hizmeti kalıcı ikili verileri içeren dizin
+- `__azurite_db_blob__.json`-Azurite blob hizmeti meta veri dosyası
+- `__azurite_db_blob_extent__.json`-Azurite blob hizmeti uzantısı meta veri dosyası
+- `__azurite_db_queue__.json`-Azurite kuyruğu hizmeti meta veri dosyası
+- `__azurite_db_queue_extent__.json`-Azurite kuyruk hizmeti uzantısı meta veri dosyası
+
+Azurıite 'yi temizlemek için dosya ve klasörleri silin ve öykünücüyü yeniden başlatın.
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>Azurite ve Azure depolama arasındaki farklılıklar
 
@@ -379,7 +533,7 @@ Aşağıdaki adres, Azurite içindeki bir bloba erişmek için kullanılabilir:
 
 ### <a name="scaling-and-performance"></a>Ölçeklendirme ve performans
 
-Azurite, ölçeklenebilir bir depolama hizmeti değildir ve çok sayıda eşzamanlı istemciyi desteklemez. Performans garantisi yoktur. Azurite, geliştirme ve test amaçları için tasarlanmıştır.
+Azurite, çok sayıda bağlı istemciyi desteklemez. Performans garantisi yoktur. Azurite, geliştirme ve test amaçları için tasarlanmıştır.
 
 ### <a name="error-handling"></a>Hata işleme
 
@@ -387,7 +541,7 @@ Azurite, Azure depolama hatası işleme mantığı ile hizalanır, ancak farklar
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite, Okuma Erişimli Coğrafi olarak yedekli çoğaltmayı (RA-GRS) destekler. Depolama kaynakları için, hesap adına **İkincil** ekleyerek ikincil konuma erişin. Örneğin, aşağıdaki adres, Azurıite içindeki salt okunurdur ikincil kullanarak bir bloba erişmek için kullanılabilir:
+Azurite, Okuma Erişimli Coğrafi olarak yedekli çoğaltmayı (RA-GRS) destekler. Depolama kaynakları için, hesap adına ekleyerek `-secondary` ikincil konuma erişin. Örneğin, aşağıdaki adres, Azurıite içindeki salt okunurdur ikincil kullanarak bir bloba erişmek için kullanılabilir:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
@@ -397,5 +551,5 @@ Azurite için katkı ve öneriler hoş geldiniz. Yaklaşan Özellikler ve hata d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Geliştirme ve test Için Azure depolama öykünücüsünü kullanarak](storage-use-emulator.md) , Azurite tarafından yenisiyle değiştirilen eski Azure depolama öykünücüsünü belgelerini kullanın.
-* [Azure depolama bağlantı dizelerini yapılandırma](storage-configure-connection-string.md) geçerli bir Azure depolama bağlantı dizesinin nasıl derleneceği açıklanmaktadır.
+- [Geliştirme ve test Için Azure depolama öykünücüsünü kullanarak](storage-use-emulator.md) , Azurite tarafından yenisiyle değiştirilen eski Azure depolama öykünücüsünü belgelerini kullanın.
+- [Azure depolama bağlantı dizelerini yapılandırma](storage-configure-connection-string.md) geçerli bir Azure depolama bağlantı dizesinin nasıl derleneceği açıklanmaktadır.

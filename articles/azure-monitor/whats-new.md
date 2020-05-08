@@ -5,16 +5,59 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 03/05/2020
-ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/06/2020
+ms.openlocfilehash: 8701acc6ac10dd9d31df99bb04dd030d156250e2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80802613"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871391"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="april-2020"></a>Nisan 2020
+
+### <a name="general"></a>Genel
+- [Azure izleyici müşteri tarafından yönetilen](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys.md) ve zaman uyumsuz işlemlerde anahtar eklendi bölümü
+- [Azure izleyici 'de Log Analytics çalışma alanlarını yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access.md) -özel Günlükler bölümlerinde güncelleştirildi.
+
+### <a name="alerts"></a>Uyarılar
+- [Azure izleyici uyarıları Için eylem kuralları](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) -eklenen video.
+- Azure tarafından eklenen videoda [uyarı ve bildirim Izlemeye genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview.md) .
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights 'de uygulama eşlemesi](https://docs.microsoft.com/azure/azure-monitor/app/app-map.md) -Java Aracısı için bulut rol adları yapılandırması eklendi.
+- [Azure Application Insights .net ARACıSı API başvurusu](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference.md) -birleştirilmiş API başvurusu.
+- App Insights ve Log Analytics API 'Leri, eylem grubu Web kancaları ve Azure ABD kamu için [Application Insights ve Log Analytics tarafından GÜNCELLEŞTIRILMIŞ IP adresleri tarafından kullanılan IP adresleri](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses.md) .
+- [Java uygulamalarını her yerde izleme](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config.md) -Yeni Makale
+- [Tüm ortamlarda Java uygulamalarını izleme](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent.md) -Yeni Makale
+- [Tüm ortamlarda çalışan Java uygulamalarını izleme](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments.md) -Yeni Makale
+- [Şirket içinde çalışan Java uygulamalarını izleme](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises.md) -Yeni Makale
+- [Visual Studio 'da Application Insights kaldırma](https://docs.microsoft.com/azure/azure-monitor/app/remove-application-insights.md) -Yeni Makale
+- [Azure Application Insights telemetri örnekleme](https://docs.microsoft.com/azure/azure-monitor/app/sampling) -Python 'da sabit hızlı örnekteki düzeltme.
+
+### <a name="containers"></a>Kapsayıcılar
+- [Azure Red Hat OpenShift v4. x ' i kapsayıcılar Için Azure izleyici Ile yapılandırma](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat4-setup) -Yeni Makale
+- [ServiceNow eşitleme sorunlarını el ile çözme](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow) -Yeni Makale
+- [Azure ve Red Hat OpenShift v4 kümenizi izlemeyi durdurma](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v4) -Yeni Makale
+- [Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v3) -Yeni Makale
+- [Karma Kubernetes kümenizi izlemeyi durdurma](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid) -Yeni Makale
+
+### <a name="insights"></a>Insights
+- [Anahtar Kasası (Önizleme) Için Azure izleyici Ile Azure anahtar](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) kasalarını izleyin-Yeni Makale
+
+### <a name="logs"></a>Günlükler
+- [Azure İzleyici hizmeti sınırları](https://docs.microsoft.com/azure/azure-monitor/service-limits) -Kullanıcı sorgu azaltma eklendi.
+- [Azure Izleyici günlükleri için kullanımı ve maliyetleri yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage) -günlük kümeleri için faturalama eklendi. Düğüm başına bir fiyatlandırma katmanına kadar olan müşterilere, GB başına veya kapasite Ayırma katmanına geçiş yapılıp yapılmayacağını belirleme olanağı tanımak için kusto sorgusu eklendi.
+
+### <a name="metrics"></a>Ölçümler
+- [Azure Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) ile eklenen toplama bölümünün gelişmiş özellikleri.
+
+### <a name="workbooks"></a>Çalışma Kitapları
+- [Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-automate) -çalışma kitabı şablonunu dağıtmak için Resource Manager şablonu eklendi.
+
+
 
 ## <a name="march-2020"></a>Mart 2020
 
