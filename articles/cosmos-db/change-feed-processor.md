@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB akış işlemcisi kitaplığını değiştirme
-description: Değişiklik akışını, değişiklik akışı işlemcisinin bileşenlerini okumak için Azure Cosmos DB değişiklik akışı işlemci kitaplığını kullanmayı öğrenin
-author: markjbrown
-ms.author: mjbrown
+title: Azure Cosmos DB'deki değişiklik akışı işlemcisi
+description: Değişiklik akışını, değişiklik akışı işlemcisinin bileşenlerini okumak için Azure Cosmos DB değişiklik akışı işlemcisini nasıl kullanacağınızı öğrenin
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 4/29/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273317"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594160"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
 Değişiklik akışı işlemcisi, [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)'nin bir parçasıdır. Değişiklik akışını okuma ve olay işlemeyi birden çok tüketiciye etkin bir şekilde dağıtma sürecini basitleştirir.
 
@@ -23,13 +23,13 @@ Değişiklik akışı işlemci kitaplığının ana avantajı, değişiklik akı
 
 ## <a name="components-of-the-change-feed-processor"></a>Değişiklik akışı işlemcisinin bileşenleri
 
-Değişiklik akışı işlemcisini uygulayan dört ana bileşen vardır: 
+Değişiklik akışı işlemcisini uygulayan dört ana bileşen vardır:
 
 1. **İzlenen kapsayıcı:** İzlenen kapsayıcı, değişiklik beslemenin oluşturulduğu verileri içerir. İzlenen kapsayıcıya yapılan tüm ekler ve güncelleştirmeler kapsayıcının değişiklik akışına yansıtılır.
 
-1. **Kira kapsayıcısı:** Kira kapsayıcısı, bir durum depolaması görevi görür ve değişiklik akışını birden fazla çalışan genelinde işlemeyi düzenler. Kira kapsayıcısı, izlenen kapsayıcı veya ayrı bir hesapta aynı hesapta depolanabilir. 
+1. **Kira kapsayıcısı:** Kira kapsayıcısı, bir durum depolaması görevi görür ve değişiklik akışını birden fazla çalışan genelinde işlemeyi düzenler. Kira kapsayıcısı, izlenen kapsayıcı veya ayrı bir hesapta aynı hesapta depolanabilir.
 
-1. **Ana bilgisayar:** Ana bilgisayar, değişiklikleri dinlemek için akış işlemcisini Değiştir ' i kullanan bir uygulama örneğidir. Aynı kira yapılandırmasına sahip birden çok örnek paralel olarak çalıştırılabilir, ancak her örnek farklı bir **örnek adına**sahip olmalıdır. 
+1. **Ana bilgisayar:** Ana bilgisayar, değişiklikleri dinlemek için akış işlemcisini Değiştir ' i kullanan bir uygulama örneğidir. Aynı kira yapılandırmasına sahip birden çok örnek paralel olarak çalıştırılabilir, ancak her örnek farklı bir **örnek adına**sahip olmalıdır.
 
 1. **Temsilci:** Temsilci, geliştirici tarafından değişiklik akışı işlemcisinin okuduğu her değişiklik kümesi için ne yapmak istediğinizi tanımlayan koddur. 
 
@@ -65,7 +65,11 @@ Bir konak örneğinin normal yaşam döngüsü şu şekilde olur:
 
 ## <a name="error-handling"></a>Hata işleme
 
-Değişiklik akışı işlemcisi, Kullanıcı kodu hatalarına karşı dayanıklı olur. Bu, temsilci uygulamanızın işlenmeyen bir özel durum (adım #4) varsa, belirli bir değişiklik kümesini işleyen iş parçacığının durdurulması ve yeni bir iş parçacığının oluşturulması anlamına gelir. Yeni iş parçacığı, kira deposunun Bu bölüm anahtarı değerleri aralığına sahip olduğu en son noktayı denetler ve bu durumda, temsilci üzerinde aynı toplu değişiklik kümesini etkin bir şekilde göndererek buradan yeniden başlatılır. Bu davranış, temsilci değişiklikleri doğru bir şekilde işleyene kadar devam eder ve değişiklik akışı işlemcisinin "en az bir kez" garantisi vardır çünkü temsilci kodu oluşturursa bu toplu işi yeniden dener.
+Değişiklik akışı işlemcisi, Kullanıcı kodu hatalarına karşı dayanıklı olur. Bu, temsilci uygulamanızın işlenmeyen bir özel durum (adım #4) varsa, belirli bir değişiklik kümesini işleyen iş parçacığının durdurulması ve yeni bir iş parçacığının oluşturulması anlamına gelir. Yeni iş parçacığı, kira deposunun Bu bölüm anahtarı değerleri aralığına sahip olduğu en son noktayı denetler ve bu durumda, temsilci üzerinde aynı toplu değişiklik kümesini etkin bir şekilde göndererek buradan yeniden başlatılır. Bu davranış, temsilci değişiklikleri doğru şekilde işleyene kadar devam eder ve değişiklik akışı işlemcisinin "en az bir kez" garantisi vardır çünkü temsilci kodu bir özel durum oluşturursa, bu toplu işi yeniden dener.
+
+Değişiklik akışı işlemcinizin "takılmış" olarak aynı değişiklik kümesini sürekli yeniden denemesini engellemek için, özel durum durumunda belgeleri, teslim edilemeyen bir ileti kuyruğuna yazmak üzere temsilci kodunuzda mantık eklemeniz gerekir. Bu tasarım, devam eden değişiklikleri işlemeye devam edebilirken işlenmemiş değişiklikleri izlemenize olanak sağlar. Atılacak mektup kuyruğu yalnızca başka bir Cosmos kapsayıcısı olabilir. Tam veri deposu, işlenmemiş değişikliklerin kalıcı hale gelen önemi yoktur.
+
+Ek olarak, değişiklik akışını okurken değişiklik akışı işlemci örneklerinizin ilerlemesini izlemek için [akış tahmin aracı](how-to-use-change-feed-estimator.md) ' ı da kullanabilirsiniz. Değişiklik akışı işlemcisinin "takılı" olarak aynı değişiklik kümesini sürekli yeniden denemesinin ne olduğunu izlemeye ek olarak, değişiklik akışı işlemcinizin CPU, bellek ve ağ bant genişliği gibi kullanılabilir kaynaklar nedeniyle gerisinde olup olmadığını da anlayabilirsiniz.
 
 ## <a name="dynamic-scaling"></a>Dinamik ölçeklendirme
 

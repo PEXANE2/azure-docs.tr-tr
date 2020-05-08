@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80395780"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731909"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-Log Analytics çalışma alanını silmek için ' Log Analytics katkıda bulunan ' izinlerine sahip olmanız gerekir.<br>
-Bir hata iletisi alırsanız '*Bu çalışma alanı adı zaten kullanımda*' bir çalışma alanı oluştururken şu şekilde olabilir:
+Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izinlerinizin olması gerekir.<br>
+Bir hata iletisi alırsanız, *Bu çalışma alanı adı zaten kullanımda* veya bir çalışma alanı oluştururken *çakışıyor* olabilir:
 * Çalışma alanı adı, kuruluşunuzdaki birisi veya diğer müşteri tarafından kullanılabilir değil.
-* Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve çalışma alanınızı hemen silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
+* Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
    1. Çalışma alanınızı [kurtarın](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) .
    2. Çalışma alanınızı [kalıcı olarak silin](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
    3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
-
 
 ## <a name="permanent-workspace-delete"></a>Kalıcı çalışma alanı silme
 Geçici silme yöntemi, aynı ayarlar ve çalışma alanı adıyla bir dağıtımı tekrarlamanız gereken geliştirme ve test gibi bazı senaryolara uygun olmayabilir. Bu gibi durumlarda, çalışma alanınızı kalıcı olarak silebilir ve geçici silme dönemini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.
@@ -96,12 +95,7 @@ WHERE ' eyJ0eXAiOiJKV1Qi... ' tam yetkilendirme belirtecini temsil eder.
 
 Çalışma alanının geçici silme işleminden önce ilişkilendirildiği abonelik ve kaynak grubu için katkıda bulunan izinleriniz varsa, verileri, yapılandırması ve bağlı aracıları da dahil olmak üzere geçici silme döneminde kurtarabilirsiniz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz ve kalıcı silme için atanmaz. Silinen çalışma alanlarının adları, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturulmaya çalışılırken kullanılamaz.  
 
-Aşağıdaki özellikler silinen çalışma alanı ayrıntılarıyla doldurulduğu sürece, bir çalışma alanını yeniden oluşturarak kurtarabilirsiniz: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) veya [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) .
-
-* Abonelik Kimliği
-* Kaynak grubu adı
-* Çalışma alanı adı
-* Bölge
+Çalışma alanınızı, silinen çalışma alanının ayrıntılarına sahip bir çalışma alanı oluşturarak kurtarabilirsiniz; bu, *ABONELIK kimliği*, *kaynak grubu adı*, *çalışma alanı adı* ve *bölge*içerir. Kaynak grubunuz da silinmişse ve yoksa, silme işleminden önce kullanılan aynı ada sahip bir kaynak grubu oluşturun ve ardından şu yöntemlerden birini kullanarak bir çalışma alanı oluşturun: [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace), [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) veya [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate).
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

@@ -35,6 +35,8 @@
           href: concept-conditional-access-grant.md
         - name: Oturum
           href: concept-conditional-access-session.md
+    - name: İçgörüler ve raporlama
+      href: howto-conditional-access-insights-reporting.md
     - name: Yalnızca rapor modu
       href: concept-conditional-access-report-only.md
     - name: Hizmet bağımlılıkları

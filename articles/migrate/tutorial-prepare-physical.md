@@ -4,12 +4,12 @@ description: Azure geçişi ile fiziksel sunucuların değerlendirilmesi/geçiri
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535290"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901421"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Fiziksel sunucuların değerlendirmesi ve Azure 'a geçirilmesi için hazırlanma
 
@@ -105,10 +105,9 @@ Sunucu geçişini kullanarak Azure 'u fiziksel sunucuları geçirmeye hazırlay�
 ### <a name="assign-azure-account-permissions"></a>Azure hesabı izinleri atama
 
 Sanal makine katılımcısı rolünü Azure hesabına atayın. Bu izinler şunları sağlar:
-
-    - Seçilen kaynak grubunda sanal makine oluşturma.
-    - Seçilen sanal ağda sanal makine oluşturma.
-    - Azure yönetilen diskine yazın. 
+  - Seçilen kaynak grubunda sanal makine oluşturma.
+  - Seçilen sanal ağda sanal makine oluşturma.
+  - Azure yönetilen diskine yazın. 
 
 ### <a name="create-an-azure-network"></a>Azure ağı oluşturma
 

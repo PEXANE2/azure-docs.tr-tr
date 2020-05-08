@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729131"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891386"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Eşleme veri akışında değişiklik satırı dönüşümü
 
@@ -24,6 +24,8 @@ Satırlarda INSERT, DELETE, Update ve upsert ilkeleri ayarlamak için alter Row 
 ![Satır ayarlarını değiştir](media/data-flow/alter-row1.png "Satır ayarlarını değiştir")
 
 Değişiklik satırı dönüşümleri, yalnızca veri akışınızda veritabanı veya CosmosDB havuzları üzerinde çalışır. Satırlara atadığınız eylemler (INSERT, Update, DELETE, upsert) hata ayıklama oturumlarında gerçekleşmeyecek. Veritabanı tablolarınızda alter Row ilkelerini uygulamak için bir işlem hattındaki veri akışı yürütme etkinliğini çalıştırın.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>Varsayılan bir satır ilkesi belirtin
 
@@ -54,6 +56,18 @@ Varsayılan davranış yalnızca eklemeleri izin veriçindir. Güncelleştirmele
 > Ekleme, güncelleştirme veya ön ekler, havuzdaki hedef tablonun şemasını değiştirmezse veri akışı başarısız olur. Veritabanınızdaki hedef şemayı değiştirmek için tabloyu Tablo eylemi olarak **yeniden oluştur** ' u seçin. Bu, yeni şema tanımıyla tablonuzu bırakıp yeniden oluşturacak.
 
 Havuz dönüştürmesi, hedef veritabanınızda benzersiz satır tanımlaması için tek bir anahtar veya bir dizi anahtar gerektirir. SQL havuzları için havuz ayarları sekmesindeki anahtarları ayarlayın. CosmosDB için, ayarlarda bölüm anahtarını ayarlayın ve ayrıca havuz eşinizdeki CosmosDB sistem alanını "ID" olarak ayarlayın. CosmosDB için, güncelleştirmeler, uplar ve silmeler için "ID" sistem sütununu eklemek zorunludur.
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Azure SQL veritabanı ve SYNAPSE ile birleştirir ve bunlarla birlikte
+
+ADF veri akışları, Azure SQL veritabanı ve SYNAPSE veritabanı havuzuna (veri ambarı) ait birleştirmeleri upsert seçeneğiyle destekler.
+
+Bununla birlikte, hedef veritabanı şemanızın anahtar sütunlarının kimlik özelliğini kullandığı senaryolara sahip olabilirsiniz. ADF, güncelleştirmeler ve yukarı serler için satır değerleriyle eşleştirmek üzere kullanacağınız anahtarları tanımlamanızı gerektirir. Ancak, hedef sütununda Identity özelliği ayarlanmış ise ve upsert ilkesi kullanıyorsanız, hedef veritabanı sütuna yazmanıza izin vermez.
+
+İki seçeneğiniz vardır:
+
+1. Havuz dönüştürme ön işleme SQL seçeneğini kullanın: ```SET IDENTITY_INSERT tbl_content ON```. Sonra, işlem sonrası SQL özelliği ile kapatın: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+2. Upsert kullanmak yerine, koşullu bölünmüş dönüşüm kullanarak, ekleme koşullarından güncelleştirme koşullarını ayırmak için mantığınızı değiştirin. Bu şekilde, güncelleştirme yolundaki eşlemeyi anahtar sütunu eşlemesini yoksayacak şekilde ayarlayabilirsiniz.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 

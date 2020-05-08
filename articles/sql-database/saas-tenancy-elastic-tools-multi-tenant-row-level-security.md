@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc08916967b4d64667065373cf2d0828a05069d0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398335"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890938"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Elastik veritabanı araçları ve satır düzeyi güvenliği olan çok kiracılı uygulamalar
 
@@ -341,7 +341,7 @@ GO
 ### <a name="maintenance"></a>Bakım
 
 - **Yeni parçalar ekleme**: yeni parçalar üzerinde RLS 'yi etkinleştirmek için T-SQL betiğini yürütün, aksi takdirde bu parçaların sorguları filtrelenmez.
-- **Yeni tablolar ekleniyor**: her yeni tablo oluşturulduğunda tüm parçalardan GÜVENLIK ilkesine FILTRE ve engelleme koşulu ekleyin. Aksi halde yeni tablodaki sorgular filtrelenmez. Bu ekleme, [Yeni oluşturulan tablolara (blog) otomatik olarak satır düzeyi güvenlik uygulama](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)bölümünde açıklandığı gıbı bir DDL tetikleyicisi kullanılarak otomatikleştirilebilir.
+- **Yeni tablolar ekleniyor**: her yeni tablo oluşturulduğunda tüm parçalardan GÜVENLIK ilkesine FILTRE ve engelleme koşulu ekleyin. Aksi halde yeni tablodaki sorgular filtrelenmez. Bu ekleme, [Yeni oluşturulan tablolara (blog) otomatik olarak satır düzeyi güvenlik uygulama](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393)bölümünde açıklandığı gıbı bir DDL tetikleyicisi kullanılarak otomatikleştirilebilir.
 
 ## <a name="summary"></a>Özet
 

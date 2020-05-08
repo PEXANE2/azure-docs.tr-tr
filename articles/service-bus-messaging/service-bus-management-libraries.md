@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756275"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901479"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus yönetim kitaplıkları
 
@@ -40,7 +40,7 @@ Service Bus yönetim kitaplıklarını kullanmaya başlamak için Azure Active D
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Bu öğreticiler size, yönetim kitaplıkları `AppId` tarafından kimlik doğrulaması için kullanılan `TenantId`bir ( `ClientSecret` istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için **sahip** izinleriniz olmalıdır.
+Bu öğreticiler size, yönetim kitaplıkları `AppId` tarafından kimlik doğrulaması için kullanılan `TenantId`bir ( `ClientSecret` istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) veya [**katkıda bulunan**](/azure/role-based-access-control/built-in-roles#contributor) izinlerinizin olması gerekir.
 
 ## <a name="programming-pattern"></a>Programlama stili
 

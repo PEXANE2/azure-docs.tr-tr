@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 214d97822bdb2efbe164c3526939ddbe78777e59
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418397"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890731"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanı 
 
@@ -128,6 +128,10 @@ IR Konumu arka uç işleminin konumunu tanımlar ve bu veri taşıma, etkinlik d
 
 ### <a name="azure-ir-location"></a>Azure IR konumu
 
+Azure IR belirli bir konum ayarlayabilirsiniz, bu durumda Etkinlik yürütme veya dağıtım söz konusu bölgede gerçekleşecektir.
+
+Otomatik Çözümle Azure IR kullanmayı seçerseniz, varsayılan değer olan
+
 - Kopyalama etkinliği için ADF, havuz veri deposunun konumunu otomatik olarak algılamaya yönelik en iyi çabayı yapar, sonra da varsa aynı bölgede veya aynı coğrafi bölgede bulunan en yakın bir şekilde IR kullanır; Havuz veri deposunun bölgesi algılanamaz ise, Data Factory bölgesindeki IR alternatif olarak kullanılır.
 
   Örneğin, fabrikanızın Doğu ABD ' de oluşturulduğunu, 
@@ -135,7 +139,8 @@ IR Konumu arka uç işleminin konumunu tanımlar ve bu veri taşıma, etkinlik d
   - Batı ABD ' de Azure Blob 'a veri kopyalama sırasında, ADF başarıyla blob 'un Batı ABD olduğunu tespit ederseniz kopyalama etkinliği Batı ABD ' de IR üzerinde yürütülür; bölge algılaması başarısız olursa, kopyalama etkinliği Doğu ABD IR üzerinde yürütülür.
   - Bölgenin algılanamayan verileri Salesforce 'a kopyaladığınızda, kopyalama etkinliği Doğu ABD IR üzerinde yürütülür.
 
-- Kopyalama etkinliği için, ADF, havuz ve kaynak veri deponuzu otomatik olarak algılamaya en iyi şekilde, aynı bölgede (varsa) veya aynı coğrafi bölgede en yakın konumun (varsa) veya veri fabrikası bölgesinin alternatif olarak kullanılması algılanamayan şekilde otomatik olarak algılanmasını sağlar.
+  >[!TIP] 
+  >Katı veri uyumluluğu gereksinimleriniz varsa ve verilerin belirli bir coğrafyadan ayrılmamasını sağlamak istiyorsanız, belirli bir bölgede açık bir şekilde Azure IR oluşturabilir ve ConnectVia özelliğini kullanarak Bağlı Hizmeti bu IR’ye yönlendirebilirsiniz. Örneğin Güney Birleşik Krallık’deki bir Blob’dan Güney Birleşik Krallık’deki bir SQL DW’ye veri kopyalamak, fakat verilerin Birleşik Krallık’tan ayrılmamasını sağlamak istiyorsanız Güney Birleşik Krallık’de bir Azure IR oluşturup her iki Bağlı Hizmet’i de bu IR’ye yönlendirin.
 
 - Arama/GetMetadata/silme etkinliği yürütmesi (ardışık düzen etkinlikleri olarak da bilinir), dönüştürme etkinliği dağıtma (dış etkinlik olarak da bilinir) ve yazma işlemleri (test bağlantısı, klasör listesi ve tablo listesi, Önizleme verileri) için ADF, Data Factory bölgesindeki IR 'yi kullanır.
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5aee3a19e33204da00483d0f4ee3f6ee97e8a07d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: b4d3be9fbacee82f36f1238c5d9b4598c95b5df2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856261"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888817"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -170,7 +170,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
     - Belirli izinlere sahip olan ve belirli bir zaman aralığı için geçerli olan belirteçler oluşturmak için paylaşılan erişim imzaları (SAS) kullanabilirsiniz. Örneğin, 10 dakikalık süre sonu olan belirli bir dosyaya salt okuma erişimi olan bir belirteç oluşturabilirsiniz. Belirteç geçerli olduğunda belirtece sahip olan herkes bu 10 dakika boyunca bu dosyaya salt okuma erişimi sağlar. Paylaşılan erişim imza anahtarları yalnızca REST API veya istemci kitaplıkları aracılığıyla desteklenir. Depolama hesabı anahtarlarını kullanarak Azure dosya paylaşımından SMB üzerinden bağlamanız gerekir.
 
-    - Azure Dosya Eşitleme tüm isteğe bağlı ACL 'Leri veya DACL 'Leri (Active Directory tabanlı veya yerel), eşitlediği tüm sunucu uç noktalarına korur ve çoğaltır. Windows Server Active Directory önceden kimlik doğrulaması yapabildiğinden, Active Directory tabanlı kimlik doğrulaması ve ACL desteği için tam destek alınana kadar Azure Dosya Eşitleme etkin bir durma-boşluk seçeneğidir.
+    - Azure Dosya Eşitleme tüm isteğe bağlı ACL 'Leri veya DACL 'Leri (Active Directory tabanlı veya yerel), eşitlediği tüm sunucu uç noktalarına korur ve çoğaltır. 
     
     Azure Storage hizmetlerinde desteklenen tüm protokollerin kapsamlı bir gösterimi için [Azure depolama 'ya erişimi yetkilendirme](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) konusuna başvurabilirsiniz. 
 

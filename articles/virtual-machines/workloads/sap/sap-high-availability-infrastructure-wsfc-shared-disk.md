@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279864"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594823"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama
 
@@ -177,9 +177,9 @@ Azure Resource Manager içindeki üç katmanlı şablonlar da yüksek kullanıla
 
 Burada, bu makalede anladığımız örnek senaryo için Azure Resource Manager şablonları edinebilirsiniz:
 
-* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure yönetilen diskleri kullanarak Azure Marketi görüntüsü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
-* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/)
 * [Yönetilen diskleri kullanarak özel görüntü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 Altyapıyı mimari Şablon 1 için hazırlamak için:
@@ -270,9 +270,9 @@ SAP mimari şablonu 2 için gerekli altyapı kaynaklarının dağıtımını bas
 
 Burada, bu dağıtım senaryosu için Azure Resource Manager şablonları edinebilirsiniz:
 
-* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/)  
 * [Yönetilen diskleri kullanarak Azure Marketi görüntüsü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/)
 * [Yönetilen diskleri kullanarak özel görüntü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
@@ -524,7 +524,7 @@ SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, ba
 1. Azure Portal ** \<SID\>-lb-ascs yük dengeleyici** > **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
-   * Adı
+   * Name
    * Bağlantı noktası
    * Arka uç bağlantı noktası
 

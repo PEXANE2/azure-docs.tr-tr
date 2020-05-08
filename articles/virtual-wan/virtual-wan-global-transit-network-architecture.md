@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113171"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786980"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -98,6 +98,9 @@ Bu modelde, ExpressRoute kullanılarak sanal WAN hub 'ına bağlanan her dal, sa
 Dallar, ExpressRoute devreleri ve/veya siteden siteye VPN bağlantıları kullanarak bir Azure sanal WAN hub 'ına bağlanabilir. Dalları dala en yakın bölgede bulunan sanal WAN hub 'ına bağlayabilirsiniz.
 
 Bu seçenek, kuruluşların şubelerle bağlantı kurmak için Azure omurgasına yararlanmasını sağlar. Ancak, bu özellik kullanılabilir olsa bile, dalları Azure sanal WAN üzerinden bağlama avantajlarına ve özel bir WAN kullanmaya yönelik avantajlardan yararlanabilirsiniz.  
+
+> [!NOTE]
+> Sanal WAN-sanal WAN 'da Dalla bağlantıyı devre dışı bırakmak, Dalla bağlantıyı devre dışı bırakacak şekilde yapılandırılabilir. Bu yapılandırma, VPN (S2S ve P2S) ve hızlı rota bağlantılı siteleri arasındaki yol yaymayı engeller. Bu yapılandırma, daldan VNET ve VNET 'ten VNET 'e yol yayma ve bağlantıyı etkilemeyecektir. Azure Portal 'ı kullanarak bu ayarı yapılandırmak için: sanal WAN yapılandırma menüsünde ayarla ' yı seçin: dal-devre dışı bırakıldı. 
 
 ### <a name="remote-user-to-vnet-c"></a>Uzak Kullanıcı-VNet (c)
 
