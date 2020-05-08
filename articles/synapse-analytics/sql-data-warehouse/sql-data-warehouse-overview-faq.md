@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416085"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791468"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) sık sorulan sorular
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416085"
 
 S. Azure Synapse nedir?
 
-A. Azure SYNAPSE, veri depolama ve büyük veri analizlerini birlikte getiren sınırsız bir analiz hizmetidir. Aynı zamanda sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü sunar. Azure SYNAPSE, bu iki çalışma LDS 'yi, anında ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve sunma konularında birleştirilmiş bir deneyimle birlikte sunar. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
+A. Azure SYNAPSE, veri depolama ve büyük veri analizlerini birlikte getiren bir analiz hizmetidir. Azure SYNAPSE, bı ve makine öğrenimi ihtiyaçları için veri alma, hazırlama, yönetme ve hizmeti sunma konularında birleştirilmiş bir deneyimle birlikte bu iki şeyi birleştirir. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir](sql-data-warehouse-overview-what-is.md).
 
 S. Azure SQL veri ambarı 'na ne oldu?
 
-A. Azure SYNAPSE, Azure SQL veri ambarı (SQL DW) gelişmiştir. Sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyiyle gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile üretimde çalıştırmaya devam edebilir ve önizleme aşamasında olan yeni yeteneklerden otomatik olarak yararlanabilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](sql-data-warehouse-overview-what-is.md).
+A. Azure SYNAPSE, Azure SQL veri ambarı (SQL DW) gelişmiştir. Sektörde önde gelen veri ambarını, yeni bir performans ve özellik düzeyiyle gerçekleştirdik. Mevcut veri ambarı iş yüklerinizi Azure SYNAPSE ile üretimde çalıştırmaya devam edebilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics nedir?](sql-data-warehouse-overview-what-is.md).
 
 S. SYNAPSE SQL havuzu nedir?
 
@@ -43,8 +43,7 @@ A. Azure SYNAPSE, TDE ve denetimi gibi verileri korumak için çeşitli çözüm
 
 S. Azure SYNAPSE 'in hangi yasal veya iş standartlarından uyumlu olduğunu nereden bulabilirim?
 
-A. SOC ve ISO gibi ürüne göre çeşitli uyumluluk teklifleri için [Microsoft Uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) sayfasını ziyaret edin.
-İlk olarak, uyumluluk başlığına göre öğesini seçin. Ardından, hangi hizmetlerin Azure SYNAPSE uyumlu olduğunu görmek için sayfanın sağ tarafındaki Microsoft 'un kapsam içi bulut Hizmetleri bölümünde Azure ' ı genişletin.
+A. SOC ve ISO gibi ürüne göre çeşitli uyumluluk teklifleri için [Microsoft Uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) sayfasını ziyaret edin. İlk olarak, uyumluluk başlığına göre öğesini seçin. Ardından, hangi hizmetlerin Azure SYNAPSE uyumlu olduğunu görmek için sayfanın sağ tarafındaki Microsoft 'un kapsam içi bulut Hizmetleri bölümünde Azure ' ı genişletin.
 
 S. Power BI bağlanabilir miyim?
 

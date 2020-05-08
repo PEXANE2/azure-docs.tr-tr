@@ -1,18 +1,18 @@
 ---
-title: Dynamics 365 müşteri katılımı için lider yönetimi | Azure Marketi
-description: Dynamics 365 müşteri katılımı için lider yönetimini yapılandırın.
+title: Dynamics 365 müşteri katılımı için lider Yönetimi-Microsoft ticari Market
+description: Microsoft AppSource ve Azure Marketi 'nden müşteri adaylarını yönetmek için Dynamics 365 müşteri katılımı ayarlamayı öğrenin.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131049"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791009"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 müşteri katılımı için lider yönetimini yapılandırma
 
@@ -23,12 +23,12 @@ Bu makalede, Dynamics 365 müşteri katılımı ayarlama (daha önce Dynamics CR
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki Kullanıcı izinleri gerekir. Şunları yapmanız gerekir:
+Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki Kullanıcı izinleri gereklidir:
 
-* Bir çözüm yükleyebilmek ve bu yönergeleri takip edebilmek için Dynamics 365 müşteri katılım Örneğinizde bir yönetici olun.
-* Ticari Market tekliflerden müşteri adaylarını göndermek için kullanılan müşteri adayı hizmeti için yeni bir hizmet hesabı oluşturmaya yönelik bir kiracı yöneticisi olun.
-* Office 365 Yönetici portalına erişimi vardır.
-* Azure portal erişimi vardır.
+* Dynamics 365 müşteri katılım Örneğinizde bir çözüm yükleyebilmeleri için yönetici hakları.
+* Müşteri adayı hizmeti için ticari Market tekliflerden müşteri adaylarını göndermek üzere kullanılan yeni bir hizmet hesabı oluşturmak için kiracı yöneticisi hakları.
+* Office 365 Yönetici portalına erişim.
+* Azure portal erişim.
 
 ## <a name="install-the-solution"></a>Çözümü yükler
 

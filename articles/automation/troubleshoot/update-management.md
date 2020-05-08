@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678931"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790839"
 ---
 # <a name="troubleshoot-issues-with-the-update-management-solution"></a>Güncelleştirme Yönetimi çözümüyle ilgili sorunları giderme
 
@@ -49,13 +49,13 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
 * İşletim sistemine bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun gidericiyi çalıştırın.
 
-* Güncelleştirme Yönetimi çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ planlamasına](../automation-hybrid-runbook-worker.md#network-planning) gidin.  
+* Güncelleştirme Yönetimi çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ yapılandırması](../automation-hybrid-runbook-worker.md#network-planning) ' na gidin.  
 
-* Log Analytics aracısının çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ planlamasına](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) gidin.
+* Log Analytics aracısının çalışması için hangi adreslere ve bağlantı noktalarına izin verileceğini öğrenmek için [ağ yapılandırması](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) ' na gidin.
 
 * Kapsam yapılandırma sorunlarını denetleyin. [Kapsam yapılandırması](../automation-onboard-solutions-from-automation-account.md#scope-configuration) , hangi makinelerin çözüm için yapılandırıldığını belirler. Makinenizin çalışma alanınızda gösterilmesi, ancak * * Güncelleştirme Yönetimi portalında olmaması durumunda, kapsam yapılandırmasını makineleri hedeflemek için ayarlamanız gerekir. Kapsam yapılandırması hakkında bilgi edinmek için bkz. [çalışma alanındaki makineler](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)ekleme.
 
-* [Karma runbook çalışanını silme](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)adımlarını izleyerek çalışan yapılandırmasını kaldırın. 
+* [Windows hibrit Runbook Worker 'ı kaldırma](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) veya [Linux hibrit Runbook Worker 'ı kaldırma](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)bölümündeki adımları izleyerek çalışan yapılandırmasını kaldırın. 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Senaryo: yenisiyle değiştirilen güncelleştirme Güncelleştirme Yönetimi eksik olarak belirtildi
 
@@ -448,7 +448,7 @@ Makine, Güncelleştirme Yönetimi için başka bir çalışma alanına zaten ek
 ### <a name="resolution"></a>Çözüm
 
 1. Makinenin doğru çalışma alanına rapor olduğundan emin olmak için, makineler bölümündeki adımları izleyin [güncelleştirme yönetimi altında portalda görünmez](#nologs) .
-2. [Karma runbook grubunu silerek](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)makinedeki yapıtları temizleyin ve sonra yeniden deneyin.
+2. [Karma runbook grubunu silerek](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)makinedeki yapıtları temizleyin ve sonra yeniden deneyin.
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Senaryo: makine hizmetle iletişim kuramıyor
 

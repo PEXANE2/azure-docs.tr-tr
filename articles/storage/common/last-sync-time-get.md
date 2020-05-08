@@ -1,27 +1,27 @@
 ---
 title: Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin
 titleSuffix: Azure Storage
-description: Coğrafi olarak çoğaltılan bir depolama hesabı için **son eşitleme zamanı** özelliğini nasıl denetleyeceğinizi öğrenin. **Son eşitleme zamanı** özelliği, birincil bölgeden yapılan tüm yazmamaların ikincil bölgeye başarıyla yazıldığı son zamanı gösterir.
+description: Coğrafi olarak çoğaltılan bir depolama hesabı için son eşitleme zamanı özelliğini nasıl denetleyeceğinizi öğrenin. Son eşitleme zamanı özelliği, birincil bölgeden yapılan tüm yazmamaların ikincil bölgeye başarıyla yazıldığı son zamanı gösterir.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/16/2019
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcadd55e87579b25f03176fa3227024863b90fb
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77165494"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858515"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin
 
 Bir depolama hesabı yapılandırdığınızda, verilerinizin birincil bölgeden yüzlerce mil olan ikincil bir bölgeye kopyalandığını belirtebilirsiniz. Coğrafi çoğaltma, doğal bir olağanüstü durum gibi birincil bölgede önemli bir kesinti olması durumunda verileriniz için dayanıklılık sağlar. İkincil bölgeye okuma erişimi de etkinleştirirseniz, birincil bölge kullanılamaz hale gelirse verileriniz okuma işlemleri için kullanılabilir kalır. Birincil bölge yanıt vermezse, uygulamanızı ikincil bölgeden okumak için sorunsuz bir şekilde çalışacak şekilde tasarlayabilirsiniz.
 
-Coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme), her ikisi de verilerinizi zaman uyumsuz olarak ikincil bir bölgeye çoğaltır. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin. Azure depolama tarafından sunulan yedekliliğe yönelik çeşitli seçenekler hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
+Coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS), her ikisi de verilerinizi bir ikincil bölgeye zaman uyumsuz olarak çoğaltır. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin. Azure depolama tarafından sunulan yedekliliğe yönelik çeşitli seçenekler hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
 Bu makalede, birincil ve ikincil bölgeler arasında herhangi bir tutarsızlığı değerlendirebilmeniz için depolama hesabınızın **son eşitleme zamanı** özelliğinin nasıl denetleneceği açıklanır.
 
@@ -37,10 +37,10 @@ Coğrafi çoğaltma zaman uyumsuz olduğundan, birincil bölgeye yazılan verile
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell ile depolama hesabının son eşitleme zamanını almak için, coğrafi çoğaltma istatistiklerini almayı destekleyen bir Azure depolama önizleme modülü yükler. Örneğin:
+PowerShell ile depolama hesabının son eşitleme zamanını almak için, coğrafi çoğaltma istatistiklerini almayı destekleyen az. Storage modülünün bir sürümünü yüklersiniz. Örneğin:
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
 ```
 
 Ardından depolama hesabının **Georeplicationstats. LastSyncTime** özelliğini denetleyin. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
@@ -70,4 +70,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure depolama artıklığı](storage-redundancy.md)
 - [Depolama hesabı için artıklık seçeneğini değiştirme](redundancy-migration.md)
-- [Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)
+- [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)

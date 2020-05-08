@@ -1,5 +1,5 @@
 ---
-title: Model eğitimi yöntemleri
+title: Yapı & eğitme modelleri
 titleSuffix: Azure Machine Learning
 description: Modeli Azure Machine Learning ile eğitebilmeniz için kullanabileceğiniz farklı yöntemler hakkında bilgi edinin. Estimators, Scikit-öğrenme, TensorFlow, keras, PyTorch ve Chainer gibi popüler çerçevelerle çalışmak için kolay bir yol sağlar. Machine Learning işlem hatları, katılımsız çalıştırmaları zamanlamayı, heterojen işlem ortamları kullanmayı ve iş akışınızın parçalarını yeniden kullanmayı kolaylaştırır. Ve çalıştırma yapılandırması, eğitim sürecinin üzerinde çalıştığı işlem hedefleri üzerinde ayrıntılı denetim sağlar.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129776"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792352"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 

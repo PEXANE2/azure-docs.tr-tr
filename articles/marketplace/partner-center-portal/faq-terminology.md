@@ -1,26 +1,24 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market analizi için sık sorulan sorular ve terminoloji
-description: Ticari Market Analytics hakkında sık sorulan soruların nasıl ele alınacağını öğrenin. Analiz terimleri için bir veri sözlüğü içerir.
+title: Ticari Market Analytics SSS & terminoloji-Iş Ortağı Merkezi
+description: Iş Ortağı Merkezi 'nde ticari Market analizi hakkında sık sorulan soruların yanıtlarını alın. Bu makale, analiz terimleri için bir veri sözlüğü içerir.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251835"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791485"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Ticari Market Analytics hakkında sık sorulan sorular ve terminoloji
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Ticari Market Analytics terminolojisi ve sık sorulan sorular
 
 Bu makalede, Iş Ortağı Merkezi 'nde analiz iletileri hakkında sıkça sorulan sorular ele alınmaktadır ve ayrıca analiz terminolojisi sözlüğü de sağlanmaktadır.
 
-## <a name="frequently-asked-questions"></a>Sık sorulan sorular
-
-Bu bölümde, Iş Ortağı Merkezi 'nde **henüz analiz yok** iletisi bulunmayan sorular hakkında sık sorulan sorulara yanıtlar verilmektedir.
+## <a name="common-questions"></a>Sık sorulan sorular
 
 **Iş Ortağı Merkezi 'nde Analytics verilerimi görüntüleyemiyorum. Bu sayfalara erişirken aşağıdaki iletiyi görüyorum. Bunun nedeni nedir?**
 

@@ -1,146 +1,197 @@
 ---
 title: Öğretici-Azure CLı ile özel VM görüntüleri oluşturma
 description: Bu öğreticide, Azure CLI kullanarak Azure’da özel sanal makine görüntüsü oluşturmayı öğrenirsiniz
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460061"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792182"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Öğretici: Azure CLI ile bir Azure VM'nin özel görüntüsünü oluşturma
 
 Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamaları, uygulama yapılandırmalarını ve diğer işletim sistemi yapılandırmalarını önceden yükleme gibi yapılandırmaları önyüklemek için kullanılabilir. Bu öğreticide, bir Azure sanal makinesine ait kendi özel görüntünüzü oluşturursunuz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * VM’lerin sağlamasını kaldırma ve VM’leri genelleştirme
-> * Özel görüntü oluşturma
-> * Özel görüntüden VM oluşturma
-> * Aboneliğinizdeki tüm görüntüleri listeleme
-> * Görüntü silme
+> * Paylaşılan Görüntü Galerisi Oluşturma
+> * Görüntü tanımı oluşturma
+> * Görüntü sürümü oluşturma
+> * Görüntüden VM oluşturma 
+> * Resim galerisini paylaşma
+
 
 Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.4.0 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+
+## <a name="overview"></a>Genel Bakış
+
+[Paylaşılan görüntü Galerisi](shared-image-galleries.md) , kuruluşunuz genelinde özel görüntü paylaşımını basitleştirir. Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, uygulamaları, uygulama yapılandırmalarını ve diğer işletim sistemi yapılandırmalarını önceden yükleme gibi yapılandırmaları önyüklemek için kullanılabilir. 
+
+Paylaşılan görüntü Galerisi, özel VM görüntülerinizi başkalarıyla paylaşmanıza olanak sağlar. Hangi görüntüleri paylaşmak istediğinizi, içinde hangi bölgelerin kullanılabilir olmasını istediğinizi ve bunları ile paylaşmak istediğinizi seçin. 
+
+Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir:
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdaki adımlarda, mevcut bir VM'yi alıp yeni VM örnekleri oluşturmak için kullanabileceğiniz yeniden kullanılabilir bir özel görüntüye dönüştürme işlemi ayrıntılı olarak açıklanmıştır.
 
-Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu [betik örneği](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) sizin için bir tane oluşturabilir. Bu öğreticide çalışırken, gerektiğinde kaynak grubu ve VM adlarını değiştirin.
+Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu öğreticide kullanmak üzere bir VM oluşturmak için [CLI hızlı](quick-create-cli.md) başlangıcını görebilirsiniz. Öğreticide çalışırken, kaynak adlarını gereken yerde değiştirin.
 
-## <a name="create-a-custom-image"></a>Özel görüntü oluşturma
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
-Sanal makinenin bir görüntüsünü oluşturmak için, kaynak VM’nin sağlamasını kaldırarak, kaynak VM’yi serbest bırakarak ve ardından genelleştirilmiş olarak işaretleyerek VM’yi hazırlamanız gerekir. VM hazırlandıktan sonra, görüntü oluşturabilirsiniz.
+Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-### <a name="deprovision-the-vm"></a>VM’nin sağlamasını kaldırma 
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-Sağlamayı kaldırma işlemi, makineye özgü bilgileri kaldırarak VM’yi genelleştirir. Bu genelleştirme, tek bir görüntüden birçok VM dağıtmayı mümkün kılar. Sağlamayı kaldırma sırasında, ana bilgisayar adı sıfırlanarak *localhost.localdomain* olur. SSH ana bilgisayar anahtarları, ad sunucusu yapılandırmaları, kök parolası ve önbelleğe alınan DHCP kiraları da ayrıca silinir.
+## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma 
 
-> [!WARNING]
-> VM 'nin genelleştirilmesi ve kaldırılması, kaynak VM 'nin kullanılamamasına neden olur ve yeniden başlatılamaz. 
+Görüntü Galerisi, görüntü paylaşımını etkinleştirmek için kullanılan birincil kaynaktır. 
 
-VM’nin sağlamasını kaldırmak için, Azure VM aracısını (waagent) kullanın. Azure VM aracısı, VM’de yüklüdür ve sağlamayı ve Azure Yapı Denetleyicisi ile etkileşimi yönetir. Daha fazla bilgi için bkz. [Azure Linux Aracısı kullanıcı kılavuzu](../extensions/agent-linux.md).
+Galeri adı için izin verilen karakterler büyük veya küçük harflerden, rakamlardan, noktalardan ve noktalardan oluşur. Galeri adı tire içeremez.   Galeri adları, aboneliğiniz dahilinde benzersiz olmalıdır. 
 
-SSH kullanarak VM'nize bağlanın ve VM’nin sağlamasını kaldırmak için komutu çalıştırın. `+user` bağımsız değişkeniyle, son sağlanan kullanıcı hesabı ve ilişkili tüm veriler de ayrıca silinir. Örnek IP adresini, sanal makinenizin genel IP adresi ile değiştirin.
+[Az Sig Create](/cli/azure/sig#az-sig-create)kullanarak bir görüntü galerisi oluşturun. Aşağıdaki örnek, *Doğu ABD*Içinde *mygallerrg* adlı Galeri adlı bir kaynak grubu ve *MyGallery*adlı bir galeri oluşturur.
 
-Sanal Makineye SSH uygulayın.
-```bash
-ssh azureuser@52.174.34.95
-```
-VM’nin sağlamasını kaldırın.
-
-```bash
-sudo waagent -deprovision+user -force
-```
-SSH oturumu kapatın.
-
-```bash
-exit
+```azurecli-interactive
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>VM’yi serbest bırakma ve genelleştirilmiş olarak işaretleme
+## <a name="get-infornation-about-the-vm"></a>VM hakkında daha fazla bilgi edinme
 
-Bir görüntü oluşturmak için VM’nin serbest bırakılması gerekir. [az vm deallocate](/cli//azure/vm) komutunu kullanarak VM’yi serbest bırakın. 
-   
+[Az VM List](/cli/azure/vm#az-vm-list)kullanılarak kullanılabilir olan VM 'lerin bir listesini görebilirsiniz. 
+
+```azurecli-interactive
+az vm list --output table
+```
+
+VM adını ve içindeki kaynak grubunu öğrendikten sonra [az VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view)kullanarak VM 'nin kimliğini alın. 
+
+```azurecli-interactive
+az vm get-instance-view -g MyResourceGroup -n MyVm --query id
+```
+
+VM 'nizin KIMLIĞINI daha sonra kullanmak üzere kopyalayın.
+
+## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma
+
+Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar içinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. 
+
+Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. 
+
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+
+Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun. 
+
+Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [özelleştirilmiş](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. 
+
 ```azurecli-interactive 
-az vm deallocate --resource-group myResourceGroup --name myVM
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
-Son olarak da, Azure platformunun VM’nin genelleştirilmiş olduğunu bilmesi için [az vm generalize](/cli//azure/vm) komutunu kullanarak VM’nin durumunu genelleştirilmiş olarak ayarlayın. Yalnızca genelleştirilmiş bir VM’den görüntü oluşturabilirsiniz.
-   
+Daha sonra kullanmak için çıktıdan görüntü tanımının KIMLIĞINI kopyalayın.
+
+## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
+
+[Az Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create)kullanarak VM 'den bir görüntü sürümü oluşturun.  
+
+Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
+
+Bu örnekte, görüntüimizin sürümü *1.0.0* , *Orta Batı ABD* bölgesinde 2 çoğaltma, *Orta Güney ABD* bölgesinde 1 çoğaltma ve bölgesel olarak yedekli depolama alanı kullanarak *Doğu ABD 2* bölgesindeki 1 çoğaltma oluşturacağız. Çoğaltma bölgeleri, kaynak VM 'nin bulunduğu bölgeyi içermelidir.
+
+Bu örnekteki değerini `--managed-image` , ÖNCEKI adımda sanal makinenizin kimliğiyle değiştirin.
+
 ```azurecli-interactive 
-az vm generalize --resource-group myResourceGroup --name myVM
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
+   --replica-count 2 \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
-### <a name="create-the-image"></a>Görüntü oluşturma
+> [!NOTE]
+> Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
+>
+> Görüntünüzü, görüntü sürümünü oluştururken ekleyerek bir ekleme `--storage-account-type  premium_lrs`veya bölgesel olarak [yedekli depolama alanı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) `--storage-account-type  standard_zrs` tarafından Premiun depolamada da saklayabilirsiniz.
+>
 
-Artık [az image create](/cli//azure/image) komutunu kullanarak VM’nin görüntüsünü oluşturabilirsiniz. Aşağıdaki örnek, *myVM* adlı bir VM’den *myImage* adlı bir görüntü oluşturur.
-   
-```azurecli-interactive 
-az image create \
-    --resource-group myResourceGroup \
-    --name myImage \
-    --source myVM
-```
  
-## <a name="create-vms-from-the-image"></a>Görüntüden VM oluşturma
+## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Artık bir görüntünüz olduğuna göre, [az vm create](/cli/azure/vm) komutunu kullanarak görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Aşağıdaki örnek, *myImage* adlı görüntüden *myVMfromImage* adlı bir VM oluşturur.
+Görüntünün özelleşmiş bir görüntü olduğunu göstermek için,--özelleşmiş parametresini kullanarak [az VM Create](/cli/azure/vm#az-vm-create) kullanarak VM oluşturun. 
 
-```azurecli-interactive 
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVMfromImage \
-    --image myImage \
-    --admin-username azureuser \
-    --generate-ssh-keys
+Kullanılabilir görüntünün en son sürümünden VM `--image` oluşturmak için görüntü tanımı kimliği ' ni kullanın. Ayrıca, için `--image`görüntü sürüm kimliği sağlayarak VM 'yi belirli bir sürümden da oluşturabilirsiniz. 
+
+Bu örnekte, *Myımagedefinition* görüntüsünün en son sürümünden bir VM oluşturacağız.
+
+```azurecli
+az group create --name myResourceGroup --location eastus
+az vm create --resource-group myResourceGroup \
+    --name myVM \
+    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+    --specialized
 ```
 
-Tek bir görüntüden 20 VM 'ye eş zamanlı dağıtım sayısını kısıtlamanızı öneririz. Aynı özel görüntüden 20 ' den fazla VM 'ye ait büyük ölçekli, eşzamanlı dağıtımlar planlarken, birden çok görüntü çoğaltmasıyla paylaşılan bir [görüntü Galerisi](shared-image-galleries.md) kullanmanız gerekir. 
+## <a name="share-the-gallery"></a>Galeriyi paylaşma
 
-## <a name="image-management"></a>Görüntü yönetimi 
+Rol tabanlı Access Control (RBAC) kullanarak, abonelikler arasında görüntü paylaşabilirsiniz. Galeri, görüntü tanımı veya görüntü sürümü gibi resim paylaşabilirsiniz. Abonelikler arasında bile, görüntü sürümü üzerinde okuma izinlerine sahip olan tüm kullanıcılar, görüntü sürümünü kullanarak bir sanal makine dağıtacaktır.
 
-Burada, ortak görüntü yönetimi görevleri ve Azure CLI kullanarak bunların nasıl tamamlanacağını gösteren bazı örnekler verilmiştir.
+Galeri düzeyindeki diğer kullanıcılarla paylaşmanızı öneririz. Galerinizin nesne KIMLIĞINI almak için [az SIG Show](/cli/azure/sig#az-sig-show)' ı kullanın.
 
-Tüm görüntüleri adlara göre tablo biçiminde listeleyin.
-
-```azurecli-interactive 
-az image list \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
 ```
 
-Görüntüyü silin. Bu örnek, *myResourceGroup* kaynak grubundan *myOldImage* adlı görüntüyü siler.
+Nesne KIMLIĞINI bir e-posta adresi ile birlikte kullanın ve bir kullanıcıya paylaşılan görüntü galerisine erişim sağlamak için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create) ' u kullanın. Ve `<email-address>` `<gallery iD>` bilgilerini kendi bilgileriniz ile değiştirin.
 
-```azurecli-interactive 
-az image delete \
-    --name myOldImage \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
 ```
+
+RBAC kullanarak kaynakları paylaşma hakkında daha fazla bilgi için bkz. [RBAC ve Azure CLI kullanarak erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+
+## <a name="azure-image-builder"></a>Azure Görüntü Oluşturucusu
+
+Azure Ayrıca, Packer, [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)üzerine inşa olan bir hizmet sunar. Özelleştirmeleri bir şablonda açıklamanız yeterlidir ve görüntü oluşturma işleme alınacaktır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, özel bir VM görüntüsü oluşturdunuz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * VM’lerin sağlamasını kaldırma ve VM’leri genelleştirme
-> * Özel görüntü oluşturma
-> * Özel görüntüden VM oluşturma
-> * Aboneliğinizdeki tüm görüntüleri listeleme
-> * Görüntü silme
+> * Paylaşılan Görüntü Galerisi Oluşturma
+> * Görüntü tanımı oluşturma
+> * Görüntü sürümü oluşturma
+> * Görüntüden VM oluşturma 
+> * Resim galerisini paylaşma
 
 Yüksek oranda kullanılabilir sanal makineler hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 

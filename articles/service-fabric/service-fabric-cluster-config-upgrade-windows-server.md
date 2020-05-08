@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610140"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790856"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Tek başına kümenin yapılandırmasını yükseltme 
 
@@ -75,7 +75,7 @@ Dört seçenek desteklenir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Bazı [Service Fabric kümesi ayarlarını](service-fabric-cluster-fabric-settings.md)özelleştirmeyi öğrenin.
-* [Kümenizin ölçeğini ve ölçeğini nasıl ölçeklendireceğinizi](service-fabric-cluster-scale-up-down.md)öğrenin.
+* [Kümenizin ölçeğini ve ölçeğini nasıl ölçeklendireceğinizi](service-fabric-cluster-scale-in-out.md)öğrenin.
 * [Uygulama yükseltmeleri](service-fabric-application-upgrade.md)hakkında bilgi edinin.
 
 <!--Image references-->

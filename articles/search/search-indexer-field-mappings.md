@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116273"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791927"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -28,7 +28,7 @@ Alan eşlemelerinin yararlı olduğu bazı durumlar:
 * Verilerinizi Base64 olarak kodlamanız veya kodu çözmelisiniz. Alan eşlemeleri, Base64 kodlaması ve kod çözme işlevleri dahil olmak üzere çeşitli **eşleme işlevlerini**destekler.
 
 > [!NOTE]
-> Dizin oluşturucularda alan eşlemeleri, veri alanlarını dizin alanlarıyla eşlemenin basit bir yoludur. bu sayede, hafif veri dönüştürme özelliği de vardır. Daha karmaşık veriler, dizini oluşturmak için kullanılan bir biçime yeniden şekillendirmek üzere ön işleme gerektirebilir. Göz önünde bulundurmanız gerekebilecek bir seçenek [Azure Data Factory](https://docs.microsoft.com/zure/data-factory/).
+> Dizin oluşturucularda alan eşlemeleri, veri alanlarını dizin alanlarıyla eşlemenin basit bir yoludur. bu sayede, hafif veri dönüştürme özelliği de vardır. Daha karmaşık veriler, dizini oluşturmak için kullanılan bir biçime yeniden şekillendirmek üzere ön işleme gerektirebilir. Göz önünde bulundurmanız gerekebilecek bir seçenek [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
 ## <a name="set-up-field-mappings"></a>Alan eşlemelerini ayarlama
 
@@ -188,7 +188,7 @@ Aşağıdaki tabloda, dizenin `00>00?00`farklı Base64 kodlamaları karşılaşt
 | Doldurma ile Base64 | `MDA+MDA/MDA=` | URL-güvenli karakterler kullanın ve doldurmayı kaldırın | Standart Base64 karakterlerini kullanın ve doldurma ekleyin |
 | Doldurma olmadan Base64 | `MDA+MDA/MDA` | URL kullanımı güvenli karakterler | Standart Base64 karakterlerini kullan |
 | URL-doldurma ile güvenli Base64 | `MDA-MDA_MDA=` | Doldurmayı kaldır | Doldurma Ekle |
-| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Hiçbiri | Hiçbiri |
+| URL-doldurma olmadan güvenli Base64 | `MDA-MDA_MDA` | Yok | Yok |
 
 <a name="extractTokenAtPositionFunction"></a>
 

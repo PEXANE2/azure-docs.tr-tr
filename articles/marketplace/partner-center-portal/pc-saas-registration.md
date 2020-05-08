@@ -1,23 +1,22 @@
 ---
-title: SaaS uygulaması kaydetme | Azure Marketi
-description: Azure portal kullanarak bir SaaS uygulamasının nasıl kaydedileceği açıklanmaktadır.
+title: SaaS uygulaması kaydetme-Azure Marketi
+description: SaaS uygulamasını kaydetmek ve Azure Active Directory bir güvenlik belirteci almak için Azure portal nasıl kullanacağınızı öğrenin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275722"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792964"
 ---
 # <a name="register-a-saas-application"></a>SaaS uygulaması kaydetme
 
 Bu makalede, Microsoft [Azure Portal](https://portal.azure.com/)kullanarak bir SaaS uygulamasının nasıl kaydedileceği açıklanmaktadır.  Başarılı bir kayıt sonrasında SaaS 'e yönelik API 'Lere erişmek için kullanabileceğiniz bir Azure Active Directory (Azure AD) güvenlik belirteci alacaksınız.  Azure AD hakkında daha fazla bilgi için bkz. [kimlik doğrulaması nedir?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
-
 
 ## <a name="service-to-service-authentication-flow"></a>Hizmetten hizmete kimlik doğrulama akışı
 
@@ -26,7 +25,6 @@ Aşağıdaki diyagramda, yeni bir müşterinin abonelik akışı ve bu API 'Ler 
 ![SaaS teklifi API akışı](./media/saas-offer-publish-api-flow-v1.png)
 
 Azure, SaaS hizmetinin son kullanıcılarına sunduğu kimlik doğrulaması üzerinde herhangi bir kısıtlama uygulamaz. Bununla birlikte, SaaS yerine getirme API 'Leri ile kimlik doğrulaması, genellikle SaaS uygulamasını Azure portal aracılığıyla kaydederek elde edilen bir Azure AD güvenlik belirteciyle gerçekleştirilir. 
-
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD ile güvenli bir uygulamayı kaydetme
 
@@ -55,7 +53,6 @@ Azure AD'nin özelliklerini kullanmak isteyen her uygulama önce bir Azure AD ki
 
 >[!Note]
 >Varsayılan olarak, yeni kaydedilen uygulama, yalnızca aynı Kiracıdaki kullanıcıların uygulamanızda oturum açmasını sağlamak üzere yapılandırılmıştır.
-
 
 ## <a name="using-the-azure-ad-security-token"></a>Azure AD güvenlik belirtecini kullanma
 
@@ -123,7 +120,6 @@ HTTP yöntemi
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

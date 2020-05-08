@@ -3,46 +3,45 @@ title: Azure Konuk işletim sistemine uygulanan güncelleştirmelerin listesi | 
 description: Konuk işletim sistemi yayınlarına uygulanan güncelleştirmelerin listesi
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/17/2020
-ms.author: raiye
-ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.author: yohaddad
+ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617688"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791570"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
 ## <a name="april-2020-guest-os"></a>Nisan 2020 Konuk işletim sistemi
 
->[!NOTE]
->Nisan Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Nisan Konuk işletim sisteminde aşağıdaki düzeltme ekleri bulunmaktadır. Bu liste değişikliğe tabidir.
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-04  |  [4550965]  |  Windows güvenliği  | 2,97 | 14 Nisan 2020 |
-|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2,97, 3,84, 4,77 | 14 Nisan 2020 |
-|  Rel 20-04  |  [4550971]  |  Windows güvenliği  | 3,84 | 14 Nisan 2020 |
-|  Rel 20-04  |  [4550970]  |  Windows güvenliği  | 4,77 | 14 Nisan 2020 |
-|  Rel 20-04  |  [4550929]  |  En son toplu güncelleştirme (LCU)  | 5,42 | 14 Nisan 2020 |
-|  Rel 20-04  |  [4549949]  |  En son toplu güncelleştirme (LCU)  | 6,18 | 14 Nisan 2020 |
-|  Rel 20-04  |  [4540688]  |  Aylık toplu  | 2,97 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4550735]  |  Hizmet yığını güncelleştirmesi  | 2,97 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4540726]  |  Hizmet yığını güncelleştirmesi  | 3,84 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4541510]  |  Aylık toplu  | 3,84 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4541509]  |  Aylık toplu  | 4,77 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4540725]  |  Hizmet yığını güncelleştirmesi  | 4,77 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4540723]  |  Hizmet yığını güncelleştirmesi  | 5,42 | 10 Mar, 2020 |
-|  Rel 20-04  |  [4539571]  |  Hizmet yığını güncelleştirmesi  | 6,18 | 10 Mar, 2020 |
+|  Rel 20-04   |  [4550965]  |  Windows güvenliği   |  [2,97]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4550971]  |  Windows güvenliği   |  [3,84]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4550970]  |  Windows güvenliği   |  [4,77]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4550929]  |  En son toplu güncelleştirme (LCU)   |  [5,42]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4549949]  |  En son toplu güncelleştirme (LCU)   |  [6,18]  |  14 Nisan 2020  |
+|  Rel 20-04   |  [4540688]  |  Aylık toplu   |  [2,97]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4550735]  |  Hizmet yığını güncelleştirmesi   |  [2,97]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4540726]  |  Hizmet yığını güncelleştirmesi   |  [3,84]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4541510]  |  Aylık toplu   |  [3,84]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4541509]  |  Aylık toplu   |  [4,77]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4540725]  |  Hizmet yığını güncelleştirmesi   |  [4,77]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4540723]  |  Hizmet yığını güncelleştirmesi   |  [5,42]  |  10 Mar, 2020  |
+|  Rel 20-04   |  [4539571]  |  Hizmet yığını güncelleştirmesi   |  [6,18]  |  10 Mar, 2020  |
+
 
 [4550965]: https://support.microsoft.com/kb/4550965
 [4550905]: https://support.microsoft.com/kb/4550905
@@ -58,6 +57,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
+[2,97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>Mart 2020 Konuk işletim sistemi

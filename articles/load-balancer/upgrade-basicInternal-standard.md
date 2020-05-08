@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770379"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858355"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekmez
-[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
+[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus).
 
 Bu makalede temel Standart Load Balancer Load Balancer Load Balancer aynı yapılandırmaya sahip bir Standart Load Balancer oluşturan bir PowerShell betiği tanıtılmıştır.
 
@@ -33,6 +33,17 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 * Betik yalnızca giden bağlantı gerekli olmadığında dahili Load Balancer yükseltmesini destekler. Bazı sanal makinelerinize [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) gerekiyorsa lütfen yönergeler için bu [sayfaya](upgrade-InternalBasic-To-PublicStandard.md) bakın. 
 * Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
 * Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Bunların boş olmadığından emin olun.
+
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>Ön uç IP yapılandırması için IP ayırma yöntemini statik olarak değiştir (zaten statikse bu adımı yoksayın)
+
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden temel Load Balancer seçin.
+
+2. **Ayarlar**' ın altında, **ön uç IP yapılandırması**' nı seçin ve ilk ön uç IP yapılandırmasını seçin. 
+
+3. **Atama**için **statik** ' i seçin
+
+4. Temel Load Balancer için tüm ön uç IP yapılandırmalarının 3. adımını tekrarlayın.
+
 
 ## <a name="download-the-script"></a>Betiği indir
 
@@ -74,7 +85,7 @@ Betiği çalıştırmak için:
    * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
 1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
-    **Örneğinde**
+    **Örnek**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"

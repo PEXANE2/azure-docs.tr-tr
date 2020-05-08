@@ -56,6 +56,8 @@
       href: use-key-vault-references-spring-boot.md
     - name: CI/CD işlem hattıyla tümleştirme
       href: integrate-ci-cd-pipeline.md
+    - name: Helm kullanarak Kubernetes dağıtımıyla tümleştirme
+      href: integrate-kubernetes-deployment-helm.md
 - name: Örnekler
   items:
     - name: Azure CLI

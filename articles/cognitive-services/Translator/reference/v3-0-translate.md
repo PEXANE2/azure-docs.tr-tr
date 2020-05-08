@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052406"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858549"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: çevir
 
@@ -454,6 +454,14 @@ Yanıt:
 
 ### <a name="obtain-alignment-information"></a>Hizalama bilgilerini al
 
+Hizalama, kaynağın her sözcüğü için aşağıdaki biçimin bir dize değeri olarak döndürülür. Her sözcük için bilgiler, Çince gibi boşlukla ayrılmış diller (betikler) gibi bir boşlukla ayrılır:
+
+[[Sourcetextstartındex]: [Sourceıdındex] – [TgtTextStartIndex]: [TgtTextEndIndex]] *
+
+Örnek Hizalama dizesi: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+
+Diğer bir deyişle, iki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Yöntemi bu durumda bir hata döndürmez.
+
 Hizalama bilgilerini almak için sorgu dizesinde `includeAlignment=true` öğesini belirtin.
 
 ```curl
@@ -483,9 +491,10 @@ Hizalama bilgilerini alma, prototipleme araştırması ve olası tümcecik eşle
 
 * HTML biçimindeki metin için hizalama kullanılamaz, örneğin textType = HTML
 * Hizalama yalnızca dil çiftlerinin bir alt kümesi için döndürülür:
-  - Ingilizce 'den başka bir dilde;
-  - Basitleştirilmiş Çince, geleneksel Çince ve Letonca Ingilizce dışındaki diğer dillerden Ingilizce;
+  - Geleneksel Çince, Cantonede (Geleneksel) veya Sırpça (Kiril) dışındaki herhangi bir dilde İngilizce 'den/Bu dillere.
   - Japonca 'dan Korece 'e veya Korece 'e kadar Japonca.
+  - Japonca 'dan Çince 'ye Basitleştirilmiş ve Basitleştirilmiş Çince 'den Japonca 'ya kadar. 
+  - Basitleştirilmiş Çince 'den geleneksel ve geleneksel Çince 'den Basitleştirilmiş 
 * Tümce bir çeviri ise hizalama almazsınız. "Bu bir sınamadır", "Seni seviyorum" ve diğer yüksek frekanslı cümleler örneği.
 * [Burada](../prevent-translation.md) açıklanan şekilde çeviriyi engellemek için yaklaşımlardan herhangi birini uyguladığınızda hizalama kullanılamaz
 
@@ -515,7 +524,7 @@ Yanıt:
 
 ### <a name="translate-with-dynamic-dictionary"></a>Dinamik sözlükle çevir
 
-Bir sözcüğe veya ifadeye uygulamak istediğiniz çeviriyi zaten biliyorsanız istek içinde biçimlendirme olarak sağlayabilirsiniz. Dinamik sözlük, yalnızca uygun adlar ve ürün adları gibi bileşik adlarla güvende olur.
+Bir sözcüğe veya ifadeye uygulamak istediğiniz çeviriyi zaten biliyorsanız istek içinde biçimlendirme olarak sağlayabilirsiniz. Dinamik sözlük yalnızca kişisel adlar ve ürün adları gibi doğru adlarla güvende olur.
 
 Sağlayacak biçimlendirme aşağıdaki sözdizimini kullanır.
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6dcda58652abe51d360748222263f30f337a2251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182744"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791774"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -138,9 +138,9 @@ Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarlar
 
 Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destekler. Hizmet, her yazma işlemi için en fazla bir ön tetikleyici ve bir tetikleme tetiklemeyi destekler. 
 
-## <a name="autoscale-mode-limits"></a>Otomatik ölçeklendirme modu sınırları
+## <a name="limits-for-autoscale-provisioned-throughput"></a>Otomatik ölçeklendirme sağlanan verimlilik için sınırlar
 
-Otomatik ölçeklendirme modundaki işleme ve depolama sınırları için [Otomatik ölçeklendirme](provision-throughput-autoscale.md#autoscale-limits) makalesine bakın.
+Otomatik ölçeklendirme ile işleme ve depolama sınırları için [Otomatik ölçeklendirme](provision-throughput-autoscale.md#autoscale-limits) makalesine bakın.
 
 ## <a name="sql-query-limits"></a>SQL sorgu sınırları
 

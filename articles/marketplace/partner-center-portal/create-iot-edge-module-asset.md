@@ -18,7 +18,7 @@ ms.locfileid: "82856720"
 
 Bu makalede, Azure Marketi 'nde yayınlanmadan önce Nesnelerin İnterneti (IoT) Edge modülünün teknik varlıklarının karşılaması gereken gereksinimler açıklanmaktadır.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 IoT Edge modülü, bir IoT Edge cihazında çalışan Docker ile uyumlu bir kapsayıcıdır.
 
@@ -107,7 +107,7 @@ IoT modülü SDK 'sını kullanan modüller, telemetri amaçları için benzersi
 
 ProductInfo 'yu bu tanımlayıcıya ayarlamak için IoT modülü SDK 'larında aşağıdaki yöntemlerden birini kullanın:
 
-- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [, #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
 - [,](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
