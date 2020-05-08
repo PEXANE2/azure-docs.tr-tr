@@ -1,6 +1,6 @@
 ---
 title: include dosyası
-description: endüstri taksonomisi için dosya dahil
+description: sektör sınıflandırması için dosya ekleme
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
 ms.author: dsindona
@@ -10,31 +10,31 @@ ms.topic: include
 ms.date: 09/20/2019
 ms.custom: include file
 ms.openlocfilehash: 19fac46fae2ae938c4ed00967171067ec9f67435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277264"
 ---
-İsteğe bağlı olarak her endüstrinin altında en fazla iki endüstri ve iki dikey seçebilirsiniz. Bu kategoriler, endüstri ve dikey lerin arama filtrelerinde kullanıldığında ve Storefront'da uygulandığında teklifinizi görüntülemek için kullanılır.  Teklifiniz belirli bir endüstriyi ve/veya dikeyi hedefliyorsa, teklifinizin teklif açıklamasında seçili sektörleri veya dikeyleri nasıl desteklediğini açıkladığınızdan emin olun.  Aksi takdirde, teklifiniz sektöre özel değilse, seçim yapmayın ve bu bölümü boş bırakın.
+İsteğe bağlı olarak her bir sektör altında en fazla iki sektör ve iki ifade seçebilirsiniz. Bu kategoriler, arama filtrelerinde sektör ve verticileri kullanıldığında ve storefront içinde uygulandığında teklifinizi görüntülemek için kullanılır.  Teklifiniz belirli bir sektör ve/veya dikey hedefleniyorsa, teklifinizin teklif açıklamasında seçili endüstrileri veya açıklamaları nasıl desteklediğini açıkladığınızdan emin olun.  Aksi takdirde, teklifiniz sektöre özgü değilse, bir seçim yapmayın ve bu bölümü boş bırakın.
 
 >[!NOTE]
->Biz teklif keşif deneyimini geliştirmek için yeni sanayi ve dikey tanıtmak için çalışırken, bazı sanayi veya dikey henüz Storefront görünür olmayabilir. (*) ile işaretlenmiş endüstriler ve dikeyler ileribir tarihte kullanıma sunulacaktır. Yayınlanan tüm teklifler anahtar kelime araması ile keşfedilebilir.
+>Teklif bulma deneyimini geliştirmek için yeni endüstriler ve tanıtımlarla karşılaşmak üzere çalışırken, bazı sektörlerin veya verticiler henüz storefront üzerinde görünmeyebilir. (*) İle işaretlenen sektörler ve verticileri, gelecekteki bir tarihte kullanılabilir. Tüm yayımlanan teklifler anahtar sözcük arama aracılığıyla bulunabilir.
 
-| **Endüstri**    | **Alt Sanayi**  | 
+| **Endüstri**    | **Alt sektör**  | 
 | :------------------- | :-------------------|
-| *Otomotiv     | *Otomotiv |
-| Tarım     | *Diğer - Segmentsiz |
-| Dağıtım    | *Toptan Satış <br> *Parsel & Paket Kargo |
-| Eğitim     | *Yüksek Öğrenim <br> *İlköğretim & Ortaöğretim / K-12 <br> *Kütüphaneler & Müzeler |
-| Finansal Hizmetler     | *Bankacılık & Sermaye Piyasaları <br> *Sigorta |
-| Devlet    | *Savunma & İstihbaratı (Ulusal ve Kamu Güvenliği olarak adlandırılır) <br> *Kamu Güvenliği & Adalet <br> *Sivil Hükümet |
-| Sağlık (Sağlık denir)   | *Sağlık Payörü <br> *Sağlık Kuruluşu <br> *İlaç |
-| Üretim & Kaynakları (eskiden Üretim olarak adlandırılır)   | *Kimyasal & Agrochemical <br> *Ayrık İmalat <br> *Enerji |
-| Perakende & Tüketim Malları (eskiden Perakende olarak adlandırılır)  | *Tüketim Malları <br> *Perakendeciler |
-| *Medya & İletişim (Medya ve Eğlence olarak adlandırılır)  | *Medya & Eğlence <br> *Telekomünikasyon |
-| Profesyonel Hizmetler  | *Yasal <br> *Ortak Profesyonel Hizmetler |
-| *Mimarlık & İnşaat (Mimarlık Mühendisliği olarak adlandırılır)  | *Diğer - Segmentsiz |
-| *Konaklama & Seyahat  | *Oteller & Eğlence <br> *Seyahat & Ulaşım <br> *Restoranlar & Gıda Hizmetleri |
-| *Diğer Kamu Sektörü Sektörleri  | *Ormancılık & Balıkçılık <br> *Kar amacı gütmeyen kuruluşlar |
-| *Emlak  | *Diğer - Segmentsiz |
+| * Oto     | * Oto |
+| Tarım     | * Diğer-kesimli |
+| Dağıtım    | * Toptan <br> * Paket & paket dağıtımı |
+| Eğitim     | * Daha yüksek eğitim <br> * Birincil & Ikincil Eğitim/K-12 <br> * Kitaplıklar & Museums |
+| Finansal Hizmetler     | * Bankacılık & sermaye piyasaları <br> * Sigorta |
+| Devlet    | * Savunma & zeka (Ulusal ve genel güvenlik olarak adlandırılabilmesi için kullanılır) <br> * Genel güvenlik & Let <br> * Cıvilian kamu |
+| Sağlık (sistem durumu olarak adlandırılabilecek şekilde kullanılır)   | * Sağlık payor <br> * Sistem durumu sağlayıcısı <br> * İlaç |
+| Üretim & kaynakları (üretim olarak adlandırılabilmesi için kullanılır)   | * Kimyasal & Agrokimyasal <br> * Ayrık üretim <br> * Enerji |
+| Perakende & tüketici malları (perakende olarak adlandırılabilmesi için kullanılır)  | * Tüketici malları <br> * Perakendeciler |
+| * Medya & Iletişimleri (medya ve eğlence olarak adlandırılabilmesi için kullanılır)  | * Media & eğlence <br> * Telekomünikasyon |
+| Profesyonel Hizmetler  | * Yasal <br> * İş ortağı profesyonel hizmetler |
+| * Mimari & oluşturma (mimari Mühendisliği olarak adlandırılabilmesi için kullanılır)  | * Diğer-kesimli |
+| * & Yolculuklama  | * Oteller & boş <br> * Seyahat & ulaşım <br> * Restoran hizmetleri & Restoranlar |
+| * Diğer kamu sektörü endüstrileri  | * Orman & balığa cılık <br> * Kar amacı |
+| * Emlak  | * Diğer-kesimli |

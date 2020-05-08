@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100218"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562228"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile ilgili bağlantı sorunlarını giderme-tek sunucu
 
@@ -49,6 +49,7 @@ Uygulama, PostgreSQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, 
 * Sunucu güvenlik duvarı yapılandırması: PostgreSQL için Azure veritabanı sunucu güvenlik duvarının, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
 * İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarlarındaki PostgreSQL gibi uygulama adlarının yanı sıra, izin verilmeyen sunucunun IP adreslerine ve bağlantı noktalarına izin verilmesi gerekir.
 * Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
+* Hata _sunucusunun IPv6 bağlantılarına izin verecek şekilde yapılandırılmadığını_görürseniz, temel katmanın VNET hizmet uç noktalarını desteklemediğini unutmayın. Temel sunucuya bağlanmaya çalışan alt ağdan Microsoft. SQL uç noktasını kaldırmanız gerekir.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 

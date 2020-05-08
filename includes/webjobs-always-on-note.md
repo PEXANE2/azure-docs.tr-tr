@@ -9,11 +9,11 @@ ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 82e5221daefaecb687ad9feb79305e546d4ec17e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68424171"
 ---
 > [!NOTE]
-> Bir web uygulaması 20 dakikalık hareketsizlikten sonra zaman alabilir. Yalnızca gerçek web uygulamasına gelen istekler zamanlayıcıyı sıfırlar. Uygulamanın yapılandırmasını Azure portalında görüntülemek veya gelişmiş araçlar`https://<app_name>.scm.azurewebsites.net`sitesine istekte bulunmak zamanlayıcıyı sıfırlamaz. Uygulamanız sürekli veya zamanlanmış (Timer tetikleyicisi) Web İşler'i çalıştırAcaksa, Web İşlerin güvenilir bir şekilde çalıştığından emin olmak için **Her Zaman Açık'ı** etkinleştirin. Bu özellik yalnızca Temel, Standart ve Premium [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)kullanılabilir.
+> Bir Web uygulaması 20 dakikadan sonra zaman aşımına uğrar. Yalnızca gerçek Web uygulamasına gönderilen istekler süreölçeri sıfırlar. Uygulamanın yapılandırmasını Azure portal veya gelişmiş araçlar sitesine (`https://<app_name>.scm.azurewebsites.net`) istek yapmayı görüntülemek, zamanlayıcıyı sıfırlayamaz. Uygulamanız sürekli veya zamanlanmış (Zamanlayıcı tetikleyicisi) Web Işleri çalıştırıyorsa, Web Işlerinin güvenilir bir şekilde çalışmasını sağlamak için **her zaman açık** ' ı etkinleştirin. Bu özellik yalnızca temel, standart ve Premium [fiyatlandırma katmanlarında](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)kullanılabilir.

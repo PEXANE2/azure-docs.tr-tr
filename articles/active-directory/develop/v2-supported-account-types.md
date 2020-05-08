@@ -12,48 +12,46 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535783"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583093"
 ---
 # <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Bu makalede, uygulamalarda desteklenen hesap türleri (bazen hedef kitleleri olarak adlandırılır) açıklanmaktadır.
+Bu makalede, Microsoft Identity platform uygulamalarında hangi hesap türlerinin (bazen *hedef kitleleri*olarak adlandırılır) desteklendiği açıklanmaktadır.
 
 <!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
-## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Microsoft Identity platform uygulamalarında desteklenen hesap türleri
+## <a name="account-types-in-the-public-cloud"></a>Genel buluttaki hesap türleri
 
 Microsoft Azure genel bulutta, çoğu uygulama türü kullanıcılara herhangi bir kitle ile oturum açabilir:
 
-- Iş kolu (LOB) uygulaması yazıyorsanız, kullanıcılar kendi kuruluşunuzda oturum açabilir. Böyle bir uygulama bazen **tek kiracı**olarak adlandırılır.
-- ISV iseniz, kullanıcıları oturum açan bir uygulama yazabilirsiniz:
+- İş kolu (LOB) uygulaması yazıyorsanız, kullanıcıların kendi kuruluşunuzda oturum açmasını sağlayabilirsiniz. Böyle bir uygulama bazen *tek kiracılı*olarak adlandırılır.
+- ISV iseniz, kullanıcılar oturumunu açan bir uygulama yazabilirsiniz:
 
-  - Herhangi bir kuruluşta. Böyle bir uygulama, **çok kiracılı** bir Web uygulaması olarak adlandırılır. Bazen kullanıcıların iş veya okul hesaplarıyla oturum açdığına ilişkin bilgi edineceksiniz.
-  - İş veya okul veya kişisel Microsoft hesabı.
-  - Yalnızca kişisel Microsoft hesabı.
-    > [!NOTE]
-    > Şu anda Microsoft Identity platformu, kişisel Microsoft hesaplarını yalnızca **iş veya okul veya Microsoft kişisel hesapları**için bir uygulama kaydederek destekler ve ardından uygulamayı oluştururken BIR Azure AD yetkilisi belirterek uygulamanın kodunda oturum açmasını kısıtlar `https://login.microsoftonline.com/consumers`.
+  - Herhangi bir kuruluşta. Böyle bir uygulamaya *çok kiracılı* bir Web uygulaması denir. Bazen kullanıcılara iş veya okul hesaplarıyla oturum açabileceksiniz.
+  - İş veya okul veya kişisel Microsoft hesaplarıyla.
+  - Yalnızca kişisel Microsoft hesaplarıyla.
+    
+- Bir işletmeden tüketici uygulaması yazıyorsanız, Azure Active Directory B2C (Azure AD B2C) kullanarak kullanıcıların sosyal kimliklerini kullanarak da oturum açabilirsiniz.
 
-- Bir işletmeyi tüketiciler uygulamasına yazıyorsanız, kullanıcılar Azure AD B2C kullanarak sosyal kimlikleri ile de oturum açabilirsiniz.
+## <a name="account-type-support-in-authentication-flows"></a>Kimlik doğrulama akışlarında hesap türü desteği
 
-## <a name="certain-authentication-flows-dont-support-all-the-account-types"></a>Bazı kimlik doğrulama akışları tüm hesap türlerini desteklemez
+Bazı hesap türleri belirli kimlik doğrulama akışlarıyla kullanılamaz. Örneğin, Masaüstü, UWP veya Daemon uygulamalarında:
 
-Bazı hesap türleri belirli kimlik doğrulama akışlarıyla kullanılamaz. Örneğin, masaüstünde, UWP uygulamalarında veya Daemon uygulamalarında:
+- Daemon uygulamaları yalnızca Azure AD kuruluşları ile kullanılabilir. Microsoft kişisel hesaplarını işlemek için Daemon uygulamalarını kullanmayı denemek mantıklı değildir. Yönetici onayı hiçbir şekilde verilmeyecektir.
+- Tümleşik Windows kimlik doğrulaması akışını yalnızca iş veya okul hesaplarıyla (kuruluşunuzda veya herhangi bir kuruluşta) kullanabilirsiniz. Tümleşik Windows kimlik doğrulaması etki alanı hesaplarıyla çalışarak, makinelerin etki alanına katılmış veya Azure AD 'ye katılmış olmasını gerektirir. Bu akış kişisel Microsoft hesapları için anlamlı değildir.
+- [Kaynak sahibi parola kimlik bilgileri verme](./v2-oauth-ropc.md) (Kullanıcı adı/parola) kişisel Microsoft hesaplarıyla kullanılamaz. Kişisel Microsoft hesapları, kullanıcının her oturum açma oturumunda kişisel kaynaklara erişmesini gerektirir. Bu davranış, etkileşimli olmayan akışlarla uyumlu değildir.
+- Cihaz kod akışı kişisel Microsoft hesaplarıyla çalışmaz.
 
-- Daemon uygulamaları yalnızca Azure Active Directory kuruluşlarıyla birlikte kullanılabilir. Microsoft kişisel hesaplarını işlemek için Daemon uygulamalarını kullanmaya çalışmak mantıklı değildir (yönetici onayı hiçbir şekilde verilmeyecektir).
-- Tümleşik Windows kimlik doğrulaması akışını yalnızca iş veya okul hesaplarıyla (kuruluşunuzda veya herhangi bir kuruluşta) kullanabilirsiniz. Aslında, tümleşik Windows kimlik doğrulaması etki alanı hesaplarıyla birlikte çalışarak makinelerin etki alanına katılmış veya Azure AD 'ye katılmış olmasını gerektirir. Bu akış kişisel Microsoft hesapları için anlamlı değildir.
-- [Kaynak sahibi parolası verme](./v2-oauth-ropc.md) (Kullanıcı adı/parola) kişisel Microsoft hesaplarıyla kullanılamaz. Gerçekten, kişisel Microsoft hesapları, kullanıcının her oturum açma oturumunda kişisel kaynaklara erişmesini gerektirir. Bu nedenle, bu davranış etkileşimli olmayan akışlarla uyumlu değildir.
-- Cihaz kod akışı henüz kişisel Microsoft hesaplarıyla çalışmıyor.
+## <a name="account-types-in-national-clouds"></a>Ulusal bulutlarda hesap türleri
 
-## <a name="supported-account-types-in-national-clouds"></a>Ulusal bulutlarda desteklenen hesap türleri
-
- Uygulamalar, kullanıcıların [Ulusal bulutlarda](authentication-national-cloud.md)da oturum açabilir. Ancak, Microsoft kişisel hesapları bu bulutlarda (Bu bulutların tanımına göre) desteklenmez. Bu nedenle, desteklenen hesap türlerinin bu bulutlara, kuruluşunuzda (tek bir kiracıya) veya herhangi bir kuruluşa (çok kiracılı uygulamalar) karşı azaltıldı.
+Uygulamalar, kullanıcıların [Ulusal bulutlarda](authentication-national-cloud.md)da oturum açabilir. Ancak, Microsoft kişisel hesapları bu bulutlarda desteklenmez. Bu nedenle, desteklenen hesap türlerinin bu bulutlara, kuruluşunuzda (tek bir kiracıya) veya herhangi bir kuruluşa (çok kiracılı uygulamalar) karşı azaltıldı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory 'de kiracı](./single-and-multi-tenant-apps.md) hakkında daha fazla bilgi edinin
-- [Ulusal bulutlar](./authentication-national-cloud.md) hakkında daha fazla bilgi edinin
+- [Azure Active Directory 'de kiracı](./single-and-multi-tenant-apps.md)hakkında daha fazla bilgi edinin.
+- [Ulusal bulutlar](./authentication-national-cloud.md)hakkında daha fazla bilgi edinin.

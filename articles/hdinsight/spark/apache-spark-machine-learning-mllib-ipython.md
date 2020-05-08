@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/16/2020
-ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531142"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559944"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Machine Learning uygulaması derlemek ve bir veri kümesini çözümlemek için Apache Spark MLlib kullanın
 
-Machine Learning uygulaması oluşturmak için [Mllib](https://spark.apache.org/mllib/) Apache Spark nasıl kullanacağınızı öğrenin. Uygulama, açık bir veri kümesinde tahmine dayalı analiz yapılır. Spark 'ın yerleşik makine öğrenimi kitaplıklarından Bu örnek Lojistik gerileme aracılığıyla *Sınıflandırmayı* kullanır.
+Machine Learning uygulaması oluşturmak için MLlib Apache Spark nasıl kullanacağınızı öğrenin. Uygulama, açık bir veri kümesinde tahmine dayalı analiz yapılır. Spark 'ın yerleşik makine öğrenimi kitaplıklarından Bu örnek Lojistik gerileme aracılığıyla *Sınıflandırmayı* kullanır.
 
 MLlib, makine öğrenimi görevleri için yararlı birçok yardımcı program sağlayan bir temel Spark kitaplığı, örneğin:
 
@@ -180,7 +180,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
 
     ![SQL sorgu çıktısı](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL sorgu çıktısı")
 
-3. Ayrıca, bir çizim oluşturmak için veri görselleştirmesini oluşturmak için kullanılan bir kitaplık olan [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib)' ı da kullanabilirsiniz. Çizimin yerel olarak kalıcı **Countresultsdf** dataframe 'den oluşturulması gerektiğinden, kod parçacığının `%%local` Magic ile başlaması gerekir. Bu eylem, kodun Jupyıter sunucusunda yerel olarak çalıştırılmasını sağlar.
+3. Ayrıca, bir çizim oluşturmak için veri görselleştirmesini oluşturmak için kullanılan bir kitaplık olan Matplotlib ' ı da kullanabilirsiniz. Çizimin yerel olarak kalıcı **Countresultsdf** dataframe 'den oluşturulması gerektiğinden, kod parçacığının `%%local` Magic ile başlaması gerekir. Bu eylem, kodun Jupyıter sunucusunda yerel olarak çalıştırılmasını sağlar.
 
     ```PySpark
     %%local
@@ -362,28 +362,5 @@ Uygulamayı çalıştırmayı bitirdikten sonra, kaynakları serbest bırakmak i
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
-
-### <a name="scenarios"></a>Senaryolar
-
-* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri analizi](apache-spark-use-bi-tools.md)
-* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma
-
-* [Scala kullanarak tek başına uygulama oluşturma](apache-spark-create-standalone-application.md)
-* [Apache Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
-
-* [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
-* [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Kaynakları yönetme
-
-* [Azure HDInsight’ta Apache Spark kümesi kaynaklarını yönetme](apache-spark-resource-manager.md)
-* [HDInsight’ta bir Apache Spark kümesinde çalışan işleri izleme ve hata ayıklama](apache-spark-job-debugging.md)
+* [Azure HDInsight ile derin öğrenme modeli Microsoft Cognitive Toolkit](apache-spark-microsoft-cognitive-toolkit.md)

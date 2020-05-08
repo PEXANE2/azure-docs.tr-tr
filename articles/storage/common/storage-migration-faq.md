@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668542"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858788"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Depolama geçişi hakkında sık sorulan sorular
 
@@ -284,7 +284,7 @@ Yedekli depolamaya erişmek için Okuma Erişimli Coğrafi olarak yedekli depola
 
 **Çoğaltılan depolama hesabı için (bölgesel olarak yedekli depolama, coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama gibi), ikincil bölgede depolanan verilere nasıl erişebilirim?**
 
--   Bölgesel olarak yedekli depolama veya coğrafi olarak yedekli depolama kullanıyorsanız, bu bölgeye bir yük devretme işlemi başlatmadığınız takdirde ikincil bölgedeki verilere erişemezsiniz. Yük devretme işlemi hakkında daha fazla bilgi için bkz. [Azure Storage 'Da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)](storage-disaster-recovery-guidance.md).
+-   Bölgesel olarak yedekli depolama veya coğrafi olarak yedekli depolama kullanıyorsanız, bu bölgeye bir yük devretme işlemi başlatmadığınız takdirde ikincil bölgedeki verilere erişemezsiniz. Yük devretme işlemi hakkında daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](storage-disaster-recovery-guidance.md).
 
 -   Okuma Erişimli Coğrafi olarak yedekli depolama kullanıyorsanız, verileri istediğiniz zaman ikincil bölgeden erişebilirsiniz. Aşağıdaki yöntemlerden birini kullanın:  
 

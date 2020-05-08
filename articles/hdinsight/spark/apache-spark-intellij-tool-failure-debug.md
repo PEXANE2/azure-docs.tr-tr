@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494597"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857425"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ Spark iş hata ayıklaması başarısız oldu (Önizleme)
 
-Bu makalede **Spark hata ayıklama** uygulamalarını çalıştırmak için [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) 'de HDInsight araçlarının nasıl kullanılacağına ilişkin adım adım yönergeler sunulmaktadır.
+Bu makalede **Spark hata ayıklama** uygulamalarını çalıştırmak için [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) 'de HDInsight araçlarının nasıl kullanılacağına ilişkin adım adım yönergeler sunulmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -26,7 +26,7 @@ Bu makalede **Spark hata ayıklama** uygulamalarını çalıştırmak için [Azu
   
 * IntelliJ fıkrı. Bu makalede [IntelliJ fikir Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)kullanılmaktadır.
   
-* Azure Toolkit for IntelliJ. Bkz. [Azure Toolkit for IntelliJ yükleme](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
+* Azure Toolkit for IntelliJ. Bkz. [Azure Toolkit for IntelliJ yükleme](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation).
 
 * HDInsight kümenize bağlanın. Bkz. [HDInsight kümenize bağlanma](apache-spark-intellij-tool-plugin.md).
 
