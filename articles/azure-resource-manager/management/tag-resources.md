@@ -2,13 +2,13 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255133"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864496"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -591,7 +591,9 @@ Etiketler için aşağıdaki sınırlamalar geçerlidir:
 * Etiket adları şu karakterleri içeremez `<`:, `>`, `%`, `&`, `\`,, `?``/`
 
    > [!NOTE]
-   > Şu anda Azure DNS bölgeler ve trafik yöneticisi hizmetleri de etikette boşluk kullanılmasına izin vermez.
+   > Şu anda Azure DNS bölgeleri ve Traffic Manager hizmetleri etiketinde boşluk kullanılmasına da izin vermez.
+   >
+   > Azure ön kapısının etiket adında kullanılması `#` desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

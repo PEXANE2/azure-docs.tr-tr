@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662493"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871252"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de SQL Server sistem durumu denetimi çözümü ile SQL ortamınızı iyileştirin
 
@@ -34,8 +34,8 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 ## <a name="prerequisites"></a>Ön koşullar
 
 * SQL sistem durumu denetimi çözümü, Microsoft Monitoring Agent (MMA) yüklü her bilgisayarda desteklenen bir .NET Framework 4.6.2 sürümü gerektirir.  MMA Aracısı System Center 2016-Operations Manager ve Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.  
-* Çözüm 2012, 2014 ve 2016 SQL Server sürümünü destekler.
-* Azure portal Azure Marketi 'nden SQL sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı.  Çözümü yüklemek için Azure aboneliğinde bir yönetici veya katkıda bulunan olması gerekir.
+* Çözüm, 2012, 2014, 2016, 2017 ve 2019 SQL Server sürümünü destekler.
+* Azure portal Azure Marketi 'nden SQL sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı. Çözümü yüklemek için Azure aboneliğinde bir yönetici veya katkıda bulunan olması gerekir.
 
   > [!NOTE]
   > Çözümü ekledikten sonra, danışmanlı Assessment. exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233931"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869920"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkelerini yönetme
 
@@ -371,7 +371,9 @@ Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğruda
 
 Özel bir dizin oluşturma ilkesiyle kapsayıcı oluşturmak için bkz. [PowerShell kullanarak özel dizin ilkesiyle kapsayıcı oluşturma](manage-with-powershell.md#create-container-custom-index)
 
-## <a name="use-the-net-sdk-v2"></a>.NET SDK v2 'yi kullanma
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a>.NET SDK 'sını kullanma
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 `DocumentCollection` [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 'nin nesnesi, ve ekleme veya `IndexingPolicy` kaldırma `IndexingMode` `IncludedPaths` , ve ' i `ExcludedPaths`değiştirmenize olanak tanıyan bir özellik sunar.
 
@@ -401,7 +403,7 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 'i kullanma
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 `ContainerProperties` [.NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 'deki nesne (kullanımı Ile ilgili [Bu hızlı başlangıç](create-sql-api-dotnet.md) ), ve ekleme veya `IndexingPolicy` kaldırma `IndexingMode` `IncludedPaths` , ve ' i `ExcludedPaths`değiştirmenize olanak tanıyan bir özellik sunar.
 
@@ -457,6 +459,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
 
@@ -610,7 +613,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk-v3"></a>Python SDK V3 'i kullanma
+## <a name="use-the-python-sdk"></a>Python SDK'yı kullanma
+
+# <a name="python-sdk-v3"></a>[Python SDK V3](#tab/pythonv3)
 
 [Python SDK V3](https://pypi.org/project/azure-cosmos/) (kullanımıyla Ilgili [Bu hızlı](create-sql-api-python.md) başlangıca bakın) kullanıldığında, kapsayıcı yapılandırması bir sözlük olarak yönetilir. Bu sözlükten, dizin oluşturma ilkesine ve tüm özniteliklerine erişmek mümkündür.
 
@@ -674,7 +679,7 @@ Kapsayıcıyı değişikliklerle güncelleştirme
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="use-the-python-sdk-v4"></a>Python SDK 'Sı v4 'yi kullanma
+# <a name="python-sdk-v4"></a>[Python SDK v4](#tab/pythonv4)
 
 [Python SDK v4](https://pypi.org/project/azure-cosmos/)kullanılırken, kapsayıcı yapılandırması bir sözlük olarak yönetilir. Bu sözlükten, dizin oluşturma ilkesine ve tüm özniteliklerine erişmek mümkündür.
 
@@ -739,6 +744,7 @@ Kapsayıcıyı değişikliklerle güncelleştirme
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

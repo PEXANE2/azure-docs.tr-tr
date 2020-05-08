@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878774"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926009"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure bilişsel hizmetler kapsayıcı görüntüsü etiketleri
 
@@ -106,6 +106,7 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri            | Notlar |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
 | `2.0.2-amd64-preview` |       |
@@ -131,6 +132,46 @@ Bu kapsayıcı görüntüsünün aşağıdaki etiketleri mevcuttur:
 | Resim etiketleri                  | Notlar                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | `en-US` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ar-ae-preview` | `ar-AE` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ar-eg-preview` | `ar-EG` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ar-kw-preview` | `ar-KW` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ar-qa-preview` | `ar-QA` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ar-sa-preview` | `ar-SA` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ca-es-preview` | `ca-ES` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-da-dk-preview` | `da-DK` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-de-de-preview` | `de-DE` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-en-au-preview` | `en-AU` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-en-ca-preview` | `en-CA` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-en-gb-preview` | `en-GB` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-en-in-preview` | `en-IN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-en-nz-preview` | `en-NZ` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-en-us-preview` | `en-US` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-es-es-preview` | `es-ES` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-es-mx-preview` | `es-MX` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-fi-fi-preview` | `fi-FI` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-fr-ca-preview` | `fr-CA` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-fr-fr-preview` | `fr-FR` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-gu-in-preview` | `gu-IN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-hi-in-preview` | `hi-IN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-it-it-preview` | `it-IT` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ja-jp-preview` | `ja-JP` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ko-kr-preview` | `ko-KR` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-mr-in-preview` | `mr-IN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-nb-no-preview` | `nb-NO` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-nl-nl-preview` | `nl-NL` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-pl-pl-preview` | `pl-PL` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-pt-br-preview` | `pt-BR` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-pt-pt-preview` | `pt-PT` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ru-ru-preview` | `ru-RU` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-sv-se-preview` | `sv-SE` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-ta-in-preview` | `ta-IN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-te-in-preview` | `te-IN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-th-th-preview` | `th-TH` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-tr-tr-preview` | `tr-TR` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-zh-cn-preview` | `zh-CN` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-zh-hk-preview` | `zh-HK` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.2.0-amd64-zh-tw-preview` | `zh-TW` Yerel ayara sahip kapsayıcı görüntüsü. |
+| `2.1.1-amd64-en-us-preview` | `en-US` Yerel ayara sahip kapsayıcı görüntüsü. |
 | `2.1.1-amd64-ar-ae-preview` | `ar-AE` Yerel ayara sahip kapsayıcı görüntüsü. |
 | `2.1.1-amd64-ar-eg-preview` | `ar-EG` Yerel ayara sahip kapsayıcı görüntüsü. |
 | `2.1.1-amd64-ar-kw-preview` | `ar-KW` Yerel ayara sahip kapsayıcı görüntüsü. |

@@ -2,7 +2,7 @@
 title: Microsoft Güvenlik kodu analiz görevlerini özelleştirme
 titleSuffix: Azure
 description: Bu makalede, Microsoft Güvenlik kodu analiz uzantısı 'ndaki görevlerin özelleştirilmesi açıklanmaktadır
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499998"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871874"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Derleme görevlerini yapılandırma ve özelleştirme
 
@@ -41,7 +41,7 @@ Windows Defender, imzaları indirmek ve yüklemek için Windows Update istemcisi
 
 Windows Update hatalar ve bunların hafifletme hakkında daha fazla bilgi için bkz. [bileşene göre Windows Update hata kodları](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) ve [Windows Update aracı hata kodları](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)hakkında TechNet makalesi.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [kötü amaçlı yazılımdan koruma YAML seçeneklerinizi](yaml-configuration.md#anti-malware-scanner-task) denetleyin
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için, [kötü amaçlı yazılımdan koruma YAML seçeneklerimizi](yaml-configuration.md#anti-malware-scanner-task) inceleyin
 
 ## <a name="binskim-task"></a>Binskım görevi
 
@@ -82,7 +82,7 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 
 BinSkim komut satırı bağımsız değişkenleri, KIMLIĞE göre kurallar veya çıkış kodları hakkında daha fazla bilgi için bkz. [Binskim Kullanıcı Kılavuzu](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [Binskım YAML seçeneklerinizi](yaml-configuration.md#binskim-task) denetleyin
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için, [Binskım YAML seçeneklerimizi](yaml-configuration.md#binskim-task) inceleyin
 
 ## <a name="credential-scanner-task"></a>Kimlik bilgisi tarayıcı görevi
 
@@ -91,7 +91,8 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 ![Kimlik bilgisi tarayıcısı derleme görevini yapılandırma](./media/security-tools/3-taskdetails.png)
 
 Mevcut seçenekler şunlardır:
-
+  - **Görünen ad**: Azure DevOps görevinin adı. Varsayılan değer, Çalıştır kimlik bilgisi tarayıcısı
+  - **Araç ana sürümü**: kullanılabilir değerler **credscan v2**, **credscan v1**içerir. Müşterilerin **Credscan v2** sürümünü kullanmasını öneririz.
   - **Çıktı biçimi**: mevcut değerler **TSV**, **CSV**, **Sarif**ve **PREfast**' i içerir.
   - **Araç sürümü**: **en son**' u seçmenizi öneririz.
   - **Tarama klasörü**: taranacak depo klasörü.
@@ -105,7 +106,7 @@ Mevcut seçenekler şunlardır:
   - **Denetim seçenekleri** > **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
   - **Sürüm**: Azure DevOps içindeki derleme görevi sürümü. Bu seçenek sıklıkla kullanılmaz.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [kimlik bilgisi tarayıcınızla emin olun YAML seçenekleri](yaml-configuration.md#credential-scanner-task)
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [kimlik bilgisi tarayıcımız YAML seçenekleri](yaml-configuration.md#credential-scanner-task) ' ne bakın
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft güvenlik riski algılama görevi
 
@@ -135,7 +136,7 @@ Bu görevi yapılandırma ayrıntıları aşağıdaki listede gösterilmektedir.
        - **Test sürücüsü yeniden adlandırılabilir**: test sürücüsü yürütülebilir dosyası yeniden adlandırılabilmeli ve yine de düzgün çalışabiliyorsanız bu onay kutusunu işaretleyin.
        - **Uygulamanın belirsizlik tek bir işletim sistemi işlemi olarak çalışır**: test sürücüsü tek bir işletim sistemi işlemi altında çalışıyorsa bu onay kutusunu işaretleyin. Test sürücüsü ek işlemler işliyorsa bunu temizleyin.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [Microsoft güvenlik riski ALGıLAMA YAML seçeneklerinizi](yaml-configuration.md#microsoft-security-risk-detection-task) denetleyin
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [Microsoft güvenlik riski algılama YAML seçeneklerimize](yaml-configuration.md#microsoft-security-risk-detection-task) bakın
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn Çözümleyicileri görevi
 
@@ -172,7 +173,7 @@ Roslyn Çözümleyicileri görevi için ek kaynaklar için Microsoft Docs buluna
 
 Bu derleme görevi tarafından yüklenen ve kullanılan çözümleyici paketini [Microsoft. CodeAnalysis. Fxcopçözümleyiciler](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)NuGet sayfasında bulabilirsiniz.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [Roslyn çözümleyiciler YAML seçeneklerimize](yaml-configuration.md#roslyn-analyzers-task) bakın
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [Roslyn çözümleyiciler YAML seçeneklerimizi](yaml-configuration.md#roslyn-analyzers-task) inceleyin
 
 ## <a name="tslint-task"></a>Tslınt görevi
 
@@ -181,7 +182,7 @@ TSLint hakkında daha fazla bilgi için [Tslint GitHub](https://github.com/palan
 >[!NOTE] 
 >Farkında olabileceğiniz gibi [Tslint GitHub deposu](https://github.com/palantir/tslint) giriş sayfası, 2019 ' de tslint 'in kullanım dışı olacağını söyler. Microsoft, [Eslint](https://github.com/eslint/eslint) 'i alternatif bir görev olarak araştırmakta.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [Tslınt YAML seçeneklerimizi](yaml-configuration.md#tslint-task) denetleyin
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [Tslınt YAML seçeneklerimizi](yaml-configuration.md#tslint-task) inceleyin
 
 ## <a name="publish-security-analysis-logs-task"></a>Güvenlik analizi günlüklerini Yayımla görevi
 
@@ -193,7 +194,7 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 - **Yapıt türü**: seçiminize bağlı olarak, Azure DevOps Server veya yapı aracısının erişebileceği paylaşılan bir dosya için günlükleri yayımlayabilirsiniz.
 - **Araçlar**: belirli araçların günlüklerini korumayı seçebilirsiniz veya tüm günlükleri korumak Için **tüm araçları** seçebilirsiniz.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [Yayımlama güvenlik günlüklerimize BAKıN YAML seçenekleri](yaml-configuration.md#publish-security-analysis-logs-task)
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için, [Yayımlama güvenlik günlüklerimize BAKıN YAML seçenekleri](yaml-configuration.md#publish-security-analysis-logs-task)
 
 ## <a name="security-report-task"></a>Güvenlik raporu görevi
 
@@ -206,7 +207,7 @@ Güvenlik raporu yapılandırmasının ayrıntıları aşağıdaki ekran görün
 - **Gelişmiş Seçenekler**: seçili araçlardan biri için günlük yoksa, bir uyarı veya hata günlüğü seçebilirsiniz. Bir hata günlüğünde, görev başarısız olur.
 - **Temel Günlükler klasörü**: günlüklerin bulunduğu temel Günlükler klasörünü özelleştirebilirsiniz. Ancak bu seçenek genellikle kullanılmaz.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [güvenlik raporumuzu gözden GEÇIRIN YAML seçenekleri](yaml-configuration.md#security-report-task)
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [güvenlik raporumuzu ve YAML seçeneklerinizi](yaml-configuration.md#security-report-task) denetleyin
 
 ## <a name="post-analysis-task"></a>Analiz sonrası görev
 
@@ -218,7 +219,7 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 - **Rapor**: isteğe bağlı olarak, derleme kesmesine neden olan sonuçları yazabilirsiniz. Sonuçlar, Azure DevOps konsol penceresine ve günlük dosyasına yazılır.
 - **Gelişmiş Seçenekler**: seçili araçlardan biri için günlük yoksa, bir uyarı veya hata günlüğü seçebilirsiniz. Bir hata günlüğünde, görev başarısız olur.
 
-Bu görev için YAML yapılandırması hakkında daha fazla bilgi için lütfen [posta analizimizin YAML seçeneklerini](yaml-configuration.md#post-analysis-task) denetleyin
+Bu görev için YAML yapılandırması hakkında daha fazla bilgi için, [gönderdiğimiz Analize BAKıN YAML seçenekleri](yaml-configuration.md#post-analysis-task)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

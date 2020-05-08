@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 04/13/2020
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603391"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926944"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu davet etme
 
@@ -29,6 +29,27 @@ ms.locfileid: "81603391"
 
 Azure Active Directory yoksa, başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+## <a name="understand-the-csv-template"></a>CSV şablonunu anlama
+
+Azure AD Konuk kullanıcılarını toplu olarak başarıyla davet etmenize yardımcı olması için toplu karşıya yükleme CSV şablonunu indirin ve girin. İndirmediğiniz CSV şablonu şu örnekteki gibi görünebilir:
+
+![Her satır ve sütunun amacını ve değerlerini açıklayan karşıya yükleme ve çağrı aşımları için elektronik tablo](media/tutorial-bulk-invite/understand-template.png)
+
+### <a name="csv-template-structure"></a>CSV şablonu yapısı
+
+İndirilen bir CSV şablonundaki satırlar aşağıdaki gibidir:
+
+- **Sürüm numarası**: sürüm numarasını içeren ilk satır, KARŞıYA yükleme CSV 'ye eklenmelidir.
+- **Sütun başlıkları**: sütun &lt;başlıklarının biçimi *öğe adı* &gt; [PropertyName] &lt; *gerekli veya boş*&gt;. Örneğin, `Email address to invite [inviteeEmail] Required`. Şablonun bazı eski sürümlerinde hafif Çeşitlemeler bulunabilir.
+- **Örnekler satırı**: şablona her sütun için kabul edilebilir değer örneklerinin bir satırını ekledik. Örnekler satırını kaldırmalı ve kendi girişlerinizin yerine değiştirmelisiniz.
+
+### <a name="additional-guidance"></a>Ek yönergeler
+
+- Karşıya yükleme şablonunun ilk iki satırı kaldırılmamalıdır veya değiştirilmemelidir veya karşıya yükleme işlenemiyor.
+- Önce gerekli sütunlar listelenir.
+- Şablona yeni sütun eklenmesini önermiyoruz. Eklediğiniz tüm ek sütunlar yoksayılır ve işlenmez.
+- CSV şablonunun en son sürümünü mümkün olduğunca sık indirmeniz önerilir.
+
 ## <a name="prerequisites"></a>Ön koşullar
 
 Davetleri gönderebileceğiniz iki veya daha fazla test e-posta hesabı olması gerekir. Hesaplar, kuruluşunuzun dışından olmalıdır. Gmail.com veya outlook.com adresleri gibi sosyal hesapları içeren herhangi bir hesap türü kullanabilirsiniz.
@@ -38,11 +59,11 @@ Davetleri gönderebileceğiniz iki veya daha fazla test e-posta hesabı olması 
 1. Kuruluşta Kullanıcı Yöneticisi olan bir hesapla Azure portal oturum açın.
 2. Gezinti bölmesinde **Azure Active Directory**' yi seçin.
 3. **Yönet**' in altında, **Kullanıcılar** > **toplu davet**' i seçin.
-4. **Kullanıcıları toplu davet et** sayfasında, davet özelliklerine sahip geçerli bir. csv dosyası almak için **İndir** ' i seçin.
+4. **Kullanıcıları toplu davet et** sayfasında, davet özelliklerine sahip geçerli bir. csv şablonu almak için **İndir** ' i seçin.
 
     ![Toplu davet indirme düğmesi](media/tutorial-bulk-invite/bulk-invite-button.png)
 
-5. . Csv dosyasını açın ve her Konuk Kullanıcı için bir satır ekleyin. Gerekli değerler şunlardır:
+5. . Csv şablonunu açın ve her Konuk Kullanıcı için bir satır ekleyin. Gerekli değerler şunlardır:
 
    * **Davet e-posta adresi** -davet alacak Kullanıcı
 

@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87f746108599928d3e1b4a022abc1b3a3779ef29
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583324"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853544"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -56,7 +56,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 
 Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
 
-- [VMware VM 'lerini değerlendirmek](/tutorial-assess-hyper-v.md)için ikinci öğreticiyi izlediyseniz, zaten bir Azure geçişi projesi ayarlamış ve şimdi bu aracı ekleyebilirim.
+- [VMware VM 'lerini değerlendirmek](tutorial-assess-hyper-v.md)için ikinci öğreticiyi izlediyseniz, zaten bir Azure geçişi projesi ayarlamış ve şimdi bu aracı ekleyebilirim.
 - İkinci öğreticiyi izlemeden, bir Azure geçişi projesi ayarlamak için[Bu yönergeleri izleyin](how-to-add-tool-first-time.md) . Projeyi oluştururken Azure geçişi: sunucu geçiş aracını eklersiniz.
 
 Ayarlanmış bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
@@ -201,7 +201,7 @@ Test geçişini aşağıdaki şekilde yapın:
     ![Geçişi temizleme](./media/tutorial-migrate-hyper-v/clean-up.png)
 
 
-## <a name="migrate-vms"></a>VM’leri geçirme
+## <a name="migrate-vms"></a>VM geçirme
 
 Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıktan sonra şirket içi makineleri geçirebilirsiniz.
 

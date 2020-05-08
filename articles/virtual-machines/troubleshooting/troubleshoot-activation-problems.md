@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605997"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858619"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows sanal makinesi etkinleştirme sorunlarını giderme
 
@@ -102,7 +102,7 @@ Azure VM etkinleştirme sorunları genellikle Windows VM uygun KMS istemci ayar�
   
     Ayrıca, 1688 bağlantı noktası ile KMS uç noktasına giden ağ trafiğinin VM 'deki güvenlik duvarı tarafından engellenmediğinden emin olun.
 
-5. [Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) 'ni kullanarak bir sonraki atlama türünün, söz konusu VM 'den hedef IP 23.102.135.246 (KMS.Core.Windows.NET için) veya bölgeniz için geçerli olan uygun KMS uç noktasının **IP 'si ile**bir sonraki atlama türünü kullanmayı doğrulayın.  Sonuç VirtualAppliance veya VirtualNetworkGateway ise, bu, büyük olasılıkla varsayılan bir yol olabilir.  Doğru eylem Kursu için ağ yöneticinize başvurun ve bunlarla çalışın.  Bu çözüm kuruluşunuzun ilkeleriyle tutarlıdır, bu [özel bir yol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) olabilir.
+5. [Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) 'ni kullanarak bir sonraki atlama türünün, söz konusu VM 'den hedef IP 23.102.135.246 (KMS.Core.Windows.NET için) veya bölgeniz için geçerli olan uygun KMS uç noktasının **IP 'si ile**bir sonraki atlama türünü kullanmayı doğrulayın.  Sonuç VirtualAppliance veya VirtualNetworkGateway ise, bu, büyük olasılıkla varsayılan bir yol olabilir.  Doğru eylem arasındaki kursu öğrenmek için ağ yöneticinize başvurun ve bunlarla çalışın.  Bu çözüm kuruluşunuzun ilkeleriyle tutarlıdır, bu [özel bir yol](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) olabilir.
 
 6. kms.core.windows.net bağlantısının başarılı olduğunu doğruladıktan sonra, yükseltilmiş Windows PowerShell isteminde aşağıdaki komutu çalıştırın. Bu komut, etkinleştirmeyi birden çok kez dener.
 

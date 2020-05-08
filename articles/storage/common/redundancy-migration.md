@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6376d858ae5113996bf7c93a8b3054797151c6b3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337086"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858674"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının nasıl çoğaltıldığını değiştirme
 
@@ -26,7 +26,7 @@ Azure Storage aşağıdaki çoğaltma türlerini sunar:
 - Yerel olarak yedekli depolama (LRS)
 - Alanlar arası yedekli depolama (ZRS)
 - Coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)
-- Coğrafi bölge yedekli depolama (GZRS) veya Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) (Önizleme)
+- Coğrafi bölge yedekli depolama (GZRS) veya Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)
 
 Bu seçeneklerin her birine genel bir bakış için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
@@ -46,7 +46,7 @@ Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullan�
 <sup>1</sup> bir kerelik çıkış ücreti doğurur.
 
 > [!CAUTION]
-> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) gerçekleştirdiyseniz, yeni birincil bölgede yerel olarak yedekli olacak şekilde yapılandırılır. Bu tür LRS hesapları için ZRS veya GZRS 'e dinamik geçiş desteklenmez. [El ile geçiş](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)gerçekleştirmeniz gerekir.
+> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](storage-disaster-recovery-guidance.md) gerçekleştirdiyseniz, hesap yük devretmeden sonra yeni birincil bölgede yerel olarak yedekli olur. Yük devretme işleminden kaynaklanan bir LRS hesabı için ZRS veya GZRS 'e dinamik geçiş desteklenmez. ZRS veya GZRS için [el ile geçiş](#perform-a-manual-migration-to-zrs) gerçekleştirmeniz gerekir.
 
 ## <a name="change-the-replication-setting"></a>Çoğaltma ayarını değiştir
 
@@ -195,4 +195,4 @@ GRS 'den LRS 'ye depolama hesabınızı geçirirseniz, ek bir maliyet yoktur, an
 
 - [Azure depolama artıklığı](storage-redundancy.md)
 - [Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin](last-sync-time-get.md)
-- [Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)
+- [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)

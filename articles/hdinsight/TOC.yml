@@ -155,8 +155,16 @@
           items:
             - name: Apache Ambari web kullanıcı arabirimini kullanarak kümeleri yönetme
               href: ./hdinsight-hadoop-manage-ambari.md
-            - name: Apache Ambari web kullanıcı arabirimiyle kümeleri iyileştirme
-              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: Apache Ambari ile iyileştirme
+              items:
+                - name: Kümeleri iyileştirme
+                  href: ./hdinsight-changing-configs-via-ambari.md
+                - name: Apache HBase’i iyileştirme
+                  href: ./optimize-hbase-ambari.md
+                - name: Apache Hive’ı iyileştirme
+                  href: ./optimize-hive-ambari.md
+                - name: Apache Pig’i iyileştirme
+                  href: ./optimize-pig-ambari.md
             - name: Apache Ambari REST API'sini kullanma
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: Küme silme
@@ -221,14 +229,18 @@
               href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: Küme performansını izleme
               href: ./hdinsight-key-scenarios-to-monitor.md
-            - name: Ambari ve Azure İzleyici günlükleriyle küme kullanılabilirliğini izleme
+            - name: Küme kullanılabilirliği - Apache Ambari
               href: ./hdinsight-cluster-availability.md
+            - name: Küme kullanılabilirliği - Azure İzleyici günlükleri
+              href: ./cluster-availability-monitor-logs.md
         - name: Sorun giderme
           items:
             - name: Betik eylemlerindeki sorunları giderme
               href: ./troubleshoot-script-action.md
             - name: Kaynak oluşturma hataları
               href: ./troubleshoot-resource-creation-fails.md
+            - name: Apache Oozie sorunlarını giderme
+              href: ./troubleshoot-oozie.md
     - name: Başvuru
       items:
         - name: Azure PowerShell
@@ -699,6 +711,8 @@
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
             - name: Apache HBase sorunlarını giderme
               href: ./hbase/apache-troubleshoot-hbase.md
+            - name: Apache HBase’i sorgulamak için REST API
+              href: ./hbase/troubleshoot-rest-api.md
 - name: Interactive Query
   items:
     - name: Genel Bakış
@@ -901,6 +915,8 @@
           href: ./transport-layer-security.md
         - name: HDInsight için sanal ağ planlama
           href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: Ağ trafiğini denetleme
+          href: ./control-network-traffic.md
         - name: NSG ve UDR’ler için gereken IP adresleri
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure güvenlik duvarına yönelik hizmet etiketleri
@@ -931,6 +947,8 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Giden trafiği kısıtlamak için güvenlik duvarı kullanma
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Ağ sanal gereci yapılandırma
+          href: ./network-virtual-appliance.md
         - name: Sorun giderme
           items:
             - name: ESP Kimlik doğrulaması sorunları

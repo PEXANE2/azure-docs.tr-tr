@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure temel kıyaslanmaları kıyaslama şeması örneği
 description: CI 'ler, şema yapıt parametresi ayrıntıları dahil olmak üzere kıyaslama şeması örneği olan CIS Microsoft Azure için adımları dağıtın.
-ms.date: 10/14/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f132ee47784eedf8d1ced7e0b67f957877d12ef
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74544517"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864479"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneğini dağıtma
 
@@ -93,8 +93,8 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Önizleme\]: CIS 1.1.0 temelleri ve belirli destekleyici VM uzantılarını dağıtmak Microsoft Azure, CIS 'yi denetleyin|İlke ataması|Ağ Izleyicisi 'nin etkinleştirilmesi gereken bölgelerin listesi|Bir bölge için noktalı virgülle ayrılmış bir liste. Bölgelerin tam bir listesini görmek için Get-AzLocation kullanın. Örn.: eastus; eastus2|
-|\[Önizleme\]: CIS 1.1.0 temelleri ve belirli destekleyici VM uzantılarını dağıtmak Microsoft Azure, CIS 'yi denetleyin|İlke ataması|Kullanım için onaylanan sanal makine uzantılarının listesi|Bir uzantı için noktalı virgülle ayrılmış bir liste. Sanal makine uzantılarının tam listesini görmek için Get-Azvmextensionımage komutunu kullanın. Örn.: AzureDiskEncryption; Iaasantimalware|
+|Microsoft Azure, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak için CIS 'yi denetleyin|İlke ataması|Ağ Izleyicisi 'nin etkinleştirilmesi gereken bölgelerin listesi|Bir bölge için noktalı virgülle ayrılmış bir liste. Bölgelerin tam bir listesini görmek için Get-AzLocation kullanın. Örn.: eastus; eastus2|
+|Microsoft Azure, kıyaslama 1.1.0 önerilerini ve belirli destekleyici VM uzantılarını dağıtmak için CIS 'yi denetleyin|İlke ataması|Kullanım için onaylanan sanal makine uzantılarının listesi|Bir uzantı için noktalı virgülle ayrılmış bir liste. Sanal makine uzantılarının tam listesini görmek için Get-Azvmextensionımage komutunu kullanın. Örn.: AzureDiskEncryption; Iaasantimalware|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

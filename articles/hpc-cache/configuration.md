@@ -4,14 +4,14 @@ description: MTU ve kök sıkıştırma gibi önbellek için ek ayarların nası
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195069"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871419"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Ek Azure HPC önbellek ayarlarını yapılandırma
 
@@ -42,13 +42,15 @@ Azure [VM 'leri Için TCP/IP performans ayarlamayı](../virtual-network/virtual-
 ## <a name="configure-root-squash"></a>Kök sıkıştırarak 'i yapılandırma
 <!-- linked from troubleshoot -->
 
-**Kök sıkıştırarak ayarını etkinleştir** ayarı, Azure HPC önbelleğinin kök erişimine nasıl izin verdiğini denetler. Kök sıkıştırarak, yetkisiz istemcilerden kök düzeyinde erişimi önlemeye yardımcı olur.
+Kök sıkıştırma ayarını **Etkinleştir** ayarı, Azure HPC önbelleğinin istemci makinelerdeki kök kullanıcıdan gelen istekleri nasıl ele aldığını denetler.
 
-Bu ayar, kullanıcıların, depolama hedefleri olarak kullanılan NAS sistemlerine yönelik gerekli ``no_root_squash`` ayar için telafi sağlayan önbellek düzeyinde kök erişimi denetlemesine olanak tanır. ( [NFS depolama hedefi önkoşulları](hpc-cache-prereqs.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
+Kök sıkıştırarak etkinleştirildiğinde, istemciden gelen kök kullanıcılar Azure HPC Cache aracılığıyla istek gönderdiklerinde "hiçbir zaman" kullanıcısına otomatik olarak eşlenir. Ayrıca, istemci isteklerinin Set-UID izin bitlerini kullanmasını önler.
+
+Kök sıkıştırarak devre dışıysa, istemci kök kullanıcısı (UID 0) isteği, kök olarak bir arka uç NFS depolama sistemine geçirilir. Bu yapılandırma uygunsuz dosya erişimine izin verebilir.
+
+Önbellek üzerinde kök sıkıştırma ayarlama, depolama hedefleri olarak kullanılan NAS sistemlerinde gerekli ``no_root_squash`` ayar için telafi sağlanmasına yardımcı olabilir. ( [NFS depolama hedefi önkoşulları](hpc-cache-prereqs.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
 
 Varsayılan ayar **Evet**' tir. (Nisan 2020 ' den önce oluşturulan önbellekler varsayılan ayar **No**olabilir.)
-
-Bu özellik etkinleştirildiğinde, istemci isteklerindeki Set-UID izin bitlerinin önbelleğe yönelik kullanımını da engeller.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB depolama hedeflerinin anlık görüntülerini görüntüleme
 

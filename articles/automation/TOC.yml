@@ -24,6 +24,11 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Python runbook'u oluşturma
       href: learn/automation-tutorial-runbook-textual-python2.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Otomasyon hesabı kimlik doğrulamasına genel bakış

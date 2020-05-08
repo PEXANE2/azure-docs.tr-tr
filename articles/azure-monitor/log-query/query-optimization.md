@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411424"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864258"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
 Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Özetle ve birleştirme için etkin toplama komutlarını ve dimbahsetmeleri kullanma
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Özetleme ve birleştirme bölümünde etkili toplama komutlarını ve boyutlarını kullanma
 
 [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)ve [AVG ()](/azure/kusto/query/avg-aggfunction) gibi bazı toplama komutlarının mantığı nedeniyle düşük CPU etkisi olsa da, diğerleri daha karmaşıktır ve verimli bir şekilde yürütülmesine izin veren buluşsal yöntemler ve tahminler içerir. Örneğin, [DCount ()](/azure/kusto/query/dcount-aggfunction) , her bir değeri gerçekten saymadan, büyük veri kümelerinin ayrı sayısına kapanış tahmini sağlamak Için HyperLogLog algoritmasını kullanır; yüzdebirlik işlevleri, en yakın derecelendirme yüzdebirlik algoritmasını kullanarak benzer bir şekilde yapılır. Birçok komut, etkilerini azaltmak için isteğe bağlı parametreler içerir. Örneğin, [makeset ()](/azure/kusto/query/makeset-aggfunction) IŞLEVININ, CPU ve belleği önemli ölçüde etkileyen en büyük küme boyutunu tanımlamak için isteğe bağlı bir parametresi vardır.
 

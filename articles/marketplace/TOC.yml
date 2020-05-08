@@ -17,7 +17,7 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: Ticari markette işlem yapma
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
-            - name: Özel Teklifler
+            - name: Özel teklifler
               href: ./private-offers.md
             - name: Standart Sözleşme
               href: ./standard-contract.md
@@ -26,13 +26,13 @@
         - name: Teklif türüne göre yayımlama kılavuzları
           href: ./publisher-guide-by-offer-type.md
           items:
-            - name: Virtual Machines
+            - name: Sanal makineler
               href: ./marketplace-virtual-machines.md
-            - name: 'Azure Uygulamaları: Çözüm şablonları'
+            - name: Azure uygulamaları çözüm şablonları
               href: ./marketplace-solution-templates.md
-            - name: 'Azure Uygulamaları: Yönetilen uygulamalar'
+            - name: Azure uygulamaları yönetilen uygulamalar
               href: ./marketplace-managed-apps.md
-            - name: SaaS Uygulamaları
+            - name: SaaS uygulamaları
               href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: Kapsayıcılar
               href: ./marketplace-containers.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: 'Office 365, Dynamics 365 ve Power BI'
               href: ./appsource-offer-publishing-guide.md
-            - name: Azure Active Directory kullanarak AppSource ve Market listesini etkinleştirme
+            - name: Azure AD ile kimlik doğrulaması teklifini etkinleştirme
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: Tümleşik çözümler
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: En iyi teklif listeleme deneyimleri
               href: ./gtm-offer-listing-best-practices.md
-            - name: Ürünü öne çıkarma
+            - name: Özellik alma
               href: ./gtm-how-to-get-featured.md
             - name: Market içerik doğrulaması
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: Ticari market desteği
           href: ./support-azure-marketplace.md
           items:
-            - name: Market hakkında SSS
+            - name: Ticari market hakkında SSS
               href: ./marketplace-faq-publisher-guide.md
             - name: Coğrafi kullanılabilirlik ve para birimleri
               href: ./marketplace-geo-availability-currencies.md
@@ -80,7 +80,7 @@
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: Geçiş hakkında SSS
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
-    - name: Portal Turu
+    - name: Portal turu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
         - name: Portal gezintisi
@@ -289,49 +289,9 @@
             - name: Yardım wiki'si
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: IoT Edge modülü teklifi
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: Ön koşullar
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: IoT Edge modülü teklifi oluşturma
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: Teklif Ayarları sekmesi
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: SKU'lar sekmesi
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Market sekmesi
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: Destek sekmesi
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: IOT Edge modülü teknik varlıklarını oluşturma
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: IoT Edge modülü teklifini yayımlama
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: Mevcut teklifi güncelleştirme
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI Uygulaması teklifi
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: Ön koşullar
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: Power BI Uygulaması teklifi oluşturma
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: Teklif Ayarları sekmesi
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: Teknik Bilgiler sekmesi
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: StoreFront Ayrıntıları sekmesi
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: Kişiler sekmesi
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: Power BI Uygulaması teknik varlıkları oluşturma
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: Power BI Uygulaması teklifini yayımlama
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: Mevcut teklifi güncelleştirme
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS uygulama teklifi
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Sanal makine teklifi
@@ -449,6 +409,8 @@
           items:
             - name: Azure uygulama teklifi oluşturma
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Azure uygulaması ölçülen faturalama
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: Gözden geçirme geri bildirimini işleme
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Ekleme için API
@@ -493,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge modül teklifleri
           items:
-            - name: IoT Edge modülü teknik varlıklarını hazırlama
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: IoT Edge modül teklifi oluşturma
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: IoT Edge modülü teknik varlıklarını hazırlama
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: Yönetilen Hizmet teklifleri
           items:
             - name: Yönetilen Hizmet teklifi oluşturma
@@ -515,11 +477,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: SaaS ölçülen faturalaması
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Market ölçüm hizmeti API’leri - SSS
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Market ölçüm hizmeti API’leri
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: SaaS gerçekleştirme API'leri
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +503,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Market ölçüm hizmeti
+          items:
+            - name: Kimlik doğrulaması stratejileri
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Market ölçüm hizmeti API’leri
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Market ölçüm hizmeti API’leri - SSS
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: Teklifinizin test sürüşünü yapın
           href: ./partner-center-portal/test-drive.md
         - name: Ortak satış seçeneği
@@ -589,11 +554,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: Ödeme hesabınızı ve vergi formlarınızı ayarlama
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: Faturalandırma ayrıntıları
-          href: ./partner-center-portal/billing-details.md
         - name: 'Ödeme eşikleri, yöntemleri ve zaman çerçeveleri'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Ödeme özeti
+        - name: Ödeme özetine genel bakış
+          href: ./partner-center-portal/payout-summary-overview.md
+        - name: Ödeme özetleri
           href: ./partner-center-portal/payout-summary.md
+        - name: Ödeme ilkesi ayrıntıları
+          href: ./partner-center-portal/payout-policy-details.md
         - name: Vergi ayrıntıları
           href: ./partner-center-portal/tax-details-paid-transactions.md
