@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcd5668fa2c6e1840eed13a9ee0cbd30d8d8a25a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296974"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983253"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Bir denemeye eğitim sırasında aşağıdaki ölçümler bir çalıştırmaya e
 |Listeler|Çalışmayacaktır<br>`run.log_list(name, value, description='')`<br><br>Örnek:<br>Run. log_list ("accuracies", [0,6, 0,7, 0,87]) | Verilen adla çalıştırılacak bir değer listesini günlüğe kaydedin.|
 |Satır|Çalışmayacaktır<br>`run.log_row(name, description=None, **kwargs)`<br>Örnek:<br>Run. log_row (X üzerinden "Y", x = 1, Y = 0,4) | *Log_row* kullanmak, kwarg 'ler içinde açıklandığı gibi birden çok sütunlu bir ölçü oluşturur. Her adlandırılmış parametre belirtilen değeri içeren bir sütun oluşturur.  *log_row* , rastgele bir tanımlama grubu günlüğe kaydetmek için bir kez veya bir döngüde bir bütün tablo oluşturmak için birden çok kez çağrılabilir.|
 |Tablo|Çalışmayacaktır<br>`run.log_table(name, value, description='')`<br><br>Örnek:<br>Run. log_table (X üzerinden "Y", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Bir sözlük nesnesini verilen ada sahip bir çalıştırmaya kaydedin. |
-|Görüntüler|Çalışmayacaktır<br>`run.log_image(name, path=None, plot=None)`<br><br>Örnek:<br>`run.log_image("ROC", plot=plt)` | Çalıştırma kaydına bir görüntü kaydedin. Bir görüntü dosyası veya bir Matplotlib çizimi çalıştırmak için log_image kullanın.  Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır.|
+|Görüntüler|Çalışmayacaktır<br>`run.log_image(name, path=None, plot=None)`<br><br>Örnek:<br>`run.log_image("ROC", plot=plt)` | Çalıştırma kaydına bir görüntü kaydedin. Günlüğe kaydetmek için log_image kullanın. PNG resim dosyası veya çalıştırılacak bir Matplotlib çizimi.  Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır.|
 |Bir çalıştırmayı etiketleme|Çalışmayacaktır<br>`run.tag(key, value=None)`<br><br>Örnek:<br>Run. Tag ("Selected", "Yes") | Çalıştırmayı bir dize anahtarıyla ve isteğe bağlı dize değeriyle etiketleyin.|
 |Dosya veya dizini karşıya yükle|Çalışmayacaktır<br>`run.upload_file(name, path_or_stream)`<br> <br> Örnek:<br>Run. upload_file ("best_model. pkl", "./model.exe") | Çalıştırma kaydına bir dosya yükleyin. , Belirtilen çıkış dizininde dosyayı otomatik olarak yakala, bu, çoğu çalıştırma türü için varsayılan olarak "./çıktılar" olarak belirlenmiştir.  Yalnızca ek dosyaların karşıya yüklenmesi gerektiğinde veya bir çıktı dizini belirtilmediğinde upload_file kullanın. Ada ekleme `outputs` önerdiğimiz için, çıktılar dizinine yüklenir. Bu çalıştırma kaydıyla ilişkili tüm dosyaları şu şekilde listeleyebilirsiniz.`run.get_file_names()`|
 

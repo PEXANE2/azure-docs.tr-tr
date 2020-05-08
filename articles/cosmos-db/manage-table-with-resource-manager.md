@@ -4,232 +4,57 @@ description: Azure Cosmos DB Tablo API'si oluşturmak ve yapılandırmak için A
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 86c7ba53c60a27e3d2557859189148785ae6d0f3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: d1675e6827f3684785d11ef6b081f166267a8283
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200828"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791196"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure Cosmos DB Tablo API'si kaynaklarını yönetme
 
-Bu makalede, Azure Resource Manager şablonları kullanarak Azure Cosmos DB hesaplarınızın, veritabanlarınızın ve kapsayıcılarınızın yönetimini otomatikleştirmek için farklı işlemlerin nasıl gerçekleştirileceği açıklanır. Bu makalede yalnızca Tablo API'si hesap örnekleri bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'si ile Azure Resource Manager şablonları kullanma.
+Bu makalede, Azure Cosmos DB hesaplarınızı, veritabanlarınızı ve Kapsayıcılarınızı dağıtmayı ve yönetmeyi kolaylaştırmak için Azure Resource Manager şablonlarını nasıl kullanacağınızı öğreneceksiniz.
 
-## <a name="create-azure-cosmos-account-and-table"></a>Azure Cosmos hesabı ve tablosu oluşturma<a id="create-resource"></a>
+Bu makalede yalnızca Tablo API'si hesap örnekleri bulunur, diğer API türü hesaplara yönelik örnekler bulunur. bkz. [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [SQL](manage-sql-with-resource-manager.md) makaleleri için Azure Cosmos DB API 'si ile Azure Resource Manager şablonları kullanma.
 
-Azure Resource Manager şablonu kullanarak Azure Cosmos DB kaynakları oluşturun. Bu şablon, 400 RU/sn aktarım hızı ile bir tablo içeren Tablo API'si için bir Azure Cosmos hesabı oluşturur. Şablonu kopyalayın ve aşağıda gösterildiği gibi dağıtın veya [Azure hızlı başlangıç Galerisi](https://azure.microsoft.com/resources/templates/101-cosmosdb-table/) ' ni ziyaret edin ve Azure Portal dağıtın. Ayrıca, şablonu yerel bilgisayarınıza indirebilir veya yeni bir şablon oluşturup `--template-file` parametresi ile yerel yolu belirtebilirsiniz.
+> [!IMPORTANT]
+>
+> * Hesap adları, tümü küçük harfle 44 karakter ile sınırlıdır.
+> * Verimlilik değerlerini değiştirmek için, şablonu güncelleştirilmiş RU/s ile yeniden dağıtın.
+> * Azure Cosmos hesabına konum eklediğinizde veya kaldırdığınızda, diğer özellikleri aynı anda değiştiremezsiniz. Bu işlemlerin ayrı olarak yapılması gerekir.
 
-> [!NOTE]
-> Hesap adları küçük ve 44 ya da daha az karakter olmalıdır.
-> RU/s 'yi güncelleştirmek için, şablonu güncelleştirilmiş işleme özelliği değerleriyle yeniden dağıtın.
+Aşağıdaki Azure Cosmos DB kaynaklarından herhangi birini oluşturmak için aşağıdaki örnek şablonu yeni bir JSON dosyasına kopyalayın. İsteğe bağlı olarak, farklı adlara ve değerlere sahip aynı kaynağın birden çok örneğini dağıttığınızda kullanmak üzere bir Parameters JSON dosyası oluşturabilirsiniz. [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), [Azure CLI](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) ve [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)dahil Azure Resource Manager şablonları dağıtmanın birçok yolu vardır.
 
-```json
-{
-"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-"contentVersion": "1.0.0.0",
-"parameters": {
-   "accountName": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-         "description": "Cosmos DB account name"
-      }
-   },
-   "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-         "description": "Location for the Cosmos DB account."
-      }
-   },
-   "primaryRegion":{
-      "type":"string",
-      "metadata": {
-         "description": "The primary replica region for the Cosmos DB account."
-      }
-   },
-   "secondaryRegion":{
-      "type":"string",
-      "metadata": {
-        "description": "The secondary replica region for the Cosmos DB account."
-     }
-   },
-   "defaultConsistencyLevel": {
-      "type": "string",
-      "defaultValue": "Session",
-      "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
-      "metadata": {
-         "description": "The default consistency level of the Cosmos DB account."
-      }
-   },
-   "maxStalenessPrefix": {
-      "type": "int",
-      "defaultValue": 100000,
-      "minValue": 10,
-      "maxValue": 1000000,
-      "metadata": {
-         "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
-      }
-   },
-   "maxIntervalInSeconds": {
-      "type": "int",
-      "defaultValue": 300,
-      "minValue": 5,
-      "maxValue": 86400,
-      "metadata": {
-         "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
-      }
-   },
-   "automaticFailover": {
-      "type": "bool",
-      "defaultValue": true,
-      "allowedValues": [ true, false ],
-      "metadata": {
-         "description": "Enable automatic failover for regions. Ignored when Multi-Master is enabled"
-      }
-   },
-   "tableName": {
-      "type": "string",
-      "metadata": {
-         "description": "The name for the table"
-      }
-   },
-   "throughput": {
-      "type": "int",
-      "defaultValue": 400,
-      "minValue": 400,
-      "maxValue": 1000000,
-      "metadata": {
-         "description": "The throughput for the table"
-      }
-   }
-},
-"variables": {
-   "accountName": "[toLower(parameters('accountName'))]",
-   "consistencyPolicy": {
-      "Eventual": {
-         "defaultConsistencyLevel": "Eventual"
-      },
-      "ConsistentPrefix": {
-         "defaultConsistencyLevel": "ConsistentPrefix"
-      },
-      "Session": {
-         "defaultConsistencyLevel": "Session"
-      },
-      "BoundedStaleness": {
-         "defaultConsistencyLevel": "BoundedStaleness",
-         "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
-         "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
-      },
-      "Strong": {
-         "defaultConsistencyLevel": "Strong"
-      }
-   },
-   "locations":
-   [
-      {
-         "locationName": "[parameters('primaryRegion')]",
-         "failoverPriority": 0,
-         "isZoneRedundant": false
-      },
-      {
-         "locationName": "[parameters('secondaryRegion')]",
-         "failoverPriority": 1,
-         "isZoneRedundant": false
-      }
-   ]
-},
-"resources": 
-[
-   {
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "name": "[variables('accountName')]",
-      "apiVersion": "2020-03-01",
-      "location": "[parameters('location')]",
-      "kind": "GlobalDocumentDB",
-      "properties": {
-         "capabilities": [{ "name": "EnableTable" }],
-         "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-         "locations": "[variables('locations')]",
-         "databaseAccountOfferType": "Standard",
-         "enableAutomaticFailover": "[parameters('automaticFailover')]"
-      }
-   },
-   {
-      "type": "Microsoft.DocumentDB/databaseAccounts/tables",
-      "name": "[concat(variables('accountName'), '/', parameters('tableName'))]",
-      "apiVersion": "2020-03-01",
-      "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
-      "properties":{
-         "resource":{
-            "id": "[parameters('tableName')]"
-         },
-         "options": { "throughput": "[parameters('throughput')]" }
-      }
-   }
-]
-}
-```
+> [!TIP]
+> Tablo API'si kullanırken paylaşılan aktarım hızını etkinleştirmek için Azure portal hesap düzeyinde aktarım hızını etkinleştirin.
 
-### <a name="deploy-via-powershell"></a>PowerShell aracılığıyla dağıtma
+<a id="create-autoscale"></a>
 
-PowerShell kullanarak Kaynak Yöneticisi şablonunu dağıtmak için betiği **kopyalayın** ve Azure Cloud Shell açmak için **dene** ' yi seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+## <a name="azure-cosmos-account-for-table-with-autoscale-throughput"></a>Otomatik ölçeklendirme üretilen iş tablosu için Azure Cosmos hesabı
 
-```azurepowershell-interactive
+Bu şablon, otomatik ölçeklendirme işleme içeren bir tabloyla Tablo API'si için bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. westus2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. westus2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. eastus2)"
-$tableName = Read-Host -Prompt "Enter the table name"
-$throughput = Read-Host -Prompt "Enter the throughput"
+[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table-autoscale%2Fazuredeploy.json)
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-table/azuredeploy.json" `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -tableName $tableName `
-    -throughput $throughput
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-table-autoscale/azuredeploy.json":::
 
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2020-03-01" --ResourceGroupName $resourceGroupName).name
-```
+<a id="create-manual"></a>
 
-Azure Cloud Shell yerine yerel olarak yüklü bir PowerShell sürümü kullanmayı seçerseniz, Azure PowerShell modülünü [yüklemelisiniz](/powershell/azure/install-az-ps) . Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın.
+## <a name="azure-cosmos-account-for-table-with-standard-manual-throughput"></a>Standart (el ile) aktarım hızı içeren tablo için Azure Cosmos hesabı
 
-### <a name="deploy-via-the-azure-cli"></a>Azure CLı aracılığıyla dağıtma
+Bu şablon, standart işleme sahip bir tabloyla Tablo API'si için bir Azure Cosmos hesabı oluşturur. Bu şablon, Azure hızlı başlangıç şablonları galerisinden tek tıklamayla dağıtım için de kullanılabilir.
 
-Azure CLı kullanarak Azure Resource Manager şablonunu dağıtmak için, betiği **kopyalayın** ve Azure Cloud Shell açmak için **dene** ' yi seçin. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin:
+[![Azure’a dağıtma](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-table%2Fazuredeploy.json)
 
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the table name: ' tableName
-read -p 'Enter the throughput: ' throughput
-
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-table/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion \
-     tableName=$tableName throughput=$throughput
-
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-Komut `az cosmosdb show` , yeni oluşturulan Azure Cosmos hesabını, sağlandıktan sonra gösterir. Cloud Shell kullanmak yerine Azure CLı 'nın yerel olarak yüklü bir sürümünü kullanmayı tercih ederseniz, bkz. [Azure CLI](/cli/azure/) makalesi.
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-table/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdaki ek kaynakları da inceleyebilirsiniz:
 
-- [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
-- [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Ortak Azure Resource Manager Dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Azure Resource Manager belgeleri](/azure/azure-resource-manager/)
+* [Azure Cosmos DB kaynak sağlayıcısı şeması](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [Ortak Azure Resource Manager Dağıtım hatalarını giderme](../azure-resource-manager/templates/common-deployment-errors.md)

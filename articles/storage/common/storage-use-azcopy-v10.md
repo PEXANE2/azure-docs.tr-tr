@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756017"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780887"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -84,7 +84,7 @@ Yalnızca dosyaları indirmek istiyorsanız, [Depolama Blobu veri okuyucusunun](
 
 Dosyaları karşıya yüklemek isterseniz, bu rollerden birinin güvenlik sorumlusuna atandığını doğrulayın:
 
-- [Depolama Blobu veri Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [Depolama Blobu veri Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 - [Depolama Blobu veri sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
@@ -273,8 +273,8 @@ Bağlantıyı almak için şu komutu çalıştırın:
 
 | İşletim sistemi  | Komut |
 |--------|-----------|
-| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
-| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+| **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
 > Linux için `tar` komutta `--strip-components=1` , sürüm adını içeren en üst düzey klasörü kaldırır ve bunun yerine ikili dosya doğrudan geçerli klasöre ayıklar. Bu, betiğin yalnızca `azcopy` `wget` URL 'yi güncelleştirerek yeni bir sürümüyle güncelleştirilmesini sağlar.

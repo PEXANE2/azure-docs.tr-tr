@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) gör�
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216561"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872120"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
@@ -42,7 +42,7 @@ Otomatik kaydırmayı askıya almak ve bölmenin davranışını denetlemek içi
 >Bir sorunu giderirken kısa bir süre boyunca yalnızca otomatik kaydırma askıya alıp duraklamasını öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir. 
 
 >[!IMPORTANT]
->Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Tarayıcınızı kapattığınızda veya uygulamadan çıktığınızda, oturum sırasında yakalanan tüm bilgiler silinir. Veriler yalnızca ölçüm özelliğinin beş dakikalık penceresinde görselleştirme için mevcut olmaya devam eder; beş dakikadan daha eski olan ölçümler de silinir. Canlı veriler (Önizleme), makul bellek kullanım limitlerinin (burada daha belirgin olması gerekir, makul mi olmalıdır). 
+>Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Tarayıcınızı kapattığınızda veya uygulamadan çıktığınızda, oturum sırasında yakalanan tüm bilgiler silinir. Veriler yalnızca ölçüm özelliğinin beş dakikalık penceresinde görselleştirme için mevcut olmaya devam eder; beş dakikadan daha eski olan ölçümler de silinir. Canlı veriler (Önizleme) arabellek sorguları, makul bellek kullanım sınırları içinde.
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 

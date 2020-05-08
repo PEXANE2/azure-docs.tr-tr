@@ -1,24 +1,24 @@
 ---
-title: Microsoft ticari Market müşteri adayı yönetimini bir Azure tablosu ile yapılandırma
-description: Microsoft AppSource ve Azure Marketi 'nden müşteri adaylarını yönetmek için bir Azure tablosu kullanmayı öğrenin.
+title: Azure Tablo depolama ile lider Yönetimi-Microsoft ticari Market
+description: Azure Tablo Depolamayı kullanarak Microsoft AppSource ve Azure Marketi için müşteri adaylarını yapılandırma hakkında bilgi edinin
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9814b03e348fc807c04364afbf027369f917670a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131137"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791026"
 ---
-# <a name="configure-lead-management-by-using-an-azure-table"></a>Azure tablosu kullanarak müşteri adayı yönetimini yapılandırma
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Tablo Depolamayı kullanarak ticari Market müşteri adaylarını yönetme
 
-Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Microsoft AppSource ve Azure Market 'te müşteri adaylarını almak üzere açıkça desteklenmiyorsa, bu müşteri adaylarını işlemek için bir Azure tablosu kullanabilirsiniz. Sonra verileri dışarı aktarıp CRM sisteminize aktarabilirsiniz. Bu makaledeki yönergeler, bu hesap altında bir Azure depolama hesabı ve bir Azure tablosu oluşturma sürecinde size yol gösterir. Ayrıca, teklifiniz bir müşteri adayı aldığında e-posta bildirimi göndermek için Power otomatikleştirmek ' nı kullanarak yeni bir akış oluşturabilirsiniz.
+Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Microsoft AppSource ve Azure Market müşteri adaylarını almak üzere açıkça desteklenmiyorsa, bu müşteri adaylarını işlemek için Azure Tablo depolamayı kullanabilirsiniz. Sonra verileri dışarı aktarıp CRM sisteminize aktarabilirsiniz. Bu makalede, bir Azure depolama hesabının ve bu hesap altında bir tablonun nasıl oluşturulacağı açıklanmaktadır. Ayrıca, teklifiniz bir müşteri adayı aldığında e-posta bildirimi göndermek için Power otomatikleştirmek ' nı kullanarak yeni bir akış oluşturabilirsiniz.
 
-## <a name="configure-an-azure-table"></a>Azure tablosu yapılandırma
+## <a name="configure-an-azure-storage-account"></a>Azure depolama hesabı yapılandırma
 
 1. Azure hesabınız yoksa [ücretsiz bir deneme hesabı oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
 1. Azure hesabınız etkin olduktan sonra [Azure Portal](https://portal.azure.com)oturum açın.
@@ -32,7 +32,11 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
         Depolama hesapları hakkında daha fazla bilgi için bkz. [Hızlı Başlangıç Öğreticisi](https://docs.microsoft.com/azure/storage/). Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Depolama Hesabınız sağlanana kadar bekleyin. Bu işlem genellikle birkaç dakika sürer. Ardından, **Tüm kaynaklarınızı göster**' i seçerek depolama hesabınıza Azure Portal **ana** sayfasından erişin. Ayrıca, Azure portal sol menü çubuğundan **tüm kaynaklar** ' ı da seçebilirsiniz.
+1. Depolama Hesabınız sağlanana kadar bekleyin. Bu işlem genellikle birkaç dakika sürer. 
+
+## <a name="create-a-table-in-your-storage-account"></a>Depolama hesabınızda bir tablo oluşturun
+
+1. Azure portal **ana** sayfasından, depolama hesabınıza erişmek için **Tüm kaynaklarınızı göster** ' i seçin. Ayrıca, Azure portal sol menü çubuğundan **tüm kaynaklar** ' ı da seçebilirsiniz.
 
     ![Azure depolama hesabınıza erişin](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -52,13 +56,13 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
     Depolama tablonuzdaki verileri görmek için [Azure Depolama Gezgini](https://archive.codeplex.com/?p=azurestorageexplorer) veya başka bir aracı kullanabilirsiniz. Azure tablosundaki verileri de dışarı aktarabilirsiniz. 
 
-## <a name="optional-use-power-automate-with-an-azure-table"></a>Seçim Azure tablosu ile Power otomatikleştirmesini kullanma 
+## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Seçim Lider bildirimleri almak için güç otomatikleştirmesini kullanma
 
-Azure tablosuna bir müşteri adayı her eklendiğinde bildirimleri otomatikleştirmek için [Güç otomatikleştirmesini](https://docs.microsoft.com/flow/) kullanabilirsiniz. Hesabınız yoksa [ücretsiz bir hesap için kaydolabilirsiniz](https://flow.microsoft.com/).
+Azure depolama tablonuza bir müşteri adayı her eklendiğinde bildirimleri otomatikleştirmek için [Güç otomatikleştirmesini](https://docs.microsoft.com/flow/) kullanabilirsiniz. Hesabınız yoksa [ücretsiz bir hesap için kaydolabilirsiniz](https://flow.microsoft.com/).
 
 ### <a name="lead-notification-example"></a>Müşteri adayı bildirimi örneği
 
-Bu örneği, bir Azure tablosuna yeni bir müşteri adayı eklendiğinde otomatik olarak bir e-posta bildirimi gönderen basit bir akış oluşturmak için kılavuz olarak kullanın. Bu örnek, tablo depolaması güncelleştirilirse her saat için müşteri adayı bilgilerini göndermek üzere bir yinelenme belirler.
+Örnek, Azure Tablo depolama alanına yeni bir müşteri adayı eklendiğinde otomatik olarak bir e-posta bildirimi gönderen bir akış oluşturur. Bu örnek, tablo depolaması güncelleştirilirse her saat için müşteri adayı bilgilerini göndermek üzere bir yinelenme belirler.
 
 1. Power otomatikleştir hesabınızda oturum açın.
 1. Sol taraftaki çubukta **Akışlarım**' ı seçin.
@@ -89,21 +93,21 @@ Bu örneği, bir Azure tablosuna yeni bir müşteri adayı eklendiğinde otomati
    >[!TIP] 
    >Her adımın doğru yapılandırıldığını doğrulamak için akışınızı dilediğiniz zaman kontrol edebilirsiniz. **Akışınızı denetlemek için akış menü** çubuğundan **Flow denetleyicisi** ' ni seçin.
 
-   Sonraki adımlarda, Azure tablonuza bağlanır ve yeni müşteri adaylarını işlemek için işleme mantığını ayarlarsınız.
+   Sonraki adımlarda, tablonuza bağlanır ve yeni müşteri adaylarını işlemek için işleme mantığını ayarlarsınız.
 
-1. 8. adımdan sonra **+ yeni adım**' ı seçin. Sonra **bir eylem seçin** penceresinde **varlıkları al** ' ı arayın.
+1. **+ Yeni adım**’ı seçin. Sonra **bir eylem seçin** penceresinde **varlıkları al** ' ı arayın.
 1. **Eylemler**altında **varlıkları al (Azure Tablo Depolama)** seçeneğini belirleyin.
 1. **Azure Tablo Depolaması** penceresinde, aşağıdaki kutulara bilgi sağlayın ve **Oluştur**' u seçin:
 
-    * **Bağlantı adı**: Bu akış ve Azure tablosu arasında oluşturduğunuz bağlantı için anlamlı bir ad sağlayın.
-    * **Depolama hesabı adı**: Azure tablonuz için depolama hesabının adını belirtin. Bu adı, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
-    * **Paylaşılan depolama anahtarı**: Azure tablonuz için mağaza hesabınızın anahtar değerini belirtin. Bu değeri, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
+    * **Bağlantı adı**: Bu akış ve tablo arasında oluşturduğunuz bağlantı için anlamlı bir ad sağlayın.
+    * **Depolama hesabı adı**: tablonuzun depolama hesabının adını belirtin. Bu adı, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
+    * **Paylaşılan depolama anahtarı**: tablonuz için Mağaza hesabınız için anahtar değerini sağlayın. Bu değeri, depolama hesabının **erişim anahtarları** sayfasında bulabilirsiniz.
 
       ![Azure Tablo depolama penceresi](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    **Oluştur**' u seçtikten sonra **varlıkları al** penceresi görüntülenir. Burada, **Gelişmiş seçenekleri göster**' i seçin ve aşağıdaki kutulara bilgi sağlayın:
 
-   * **Tablo**: Azure Tablo depolamanın adını seçin ("Azure tablosu yapılandırma" bölümünde yer alınan yönergelerin 6. adımında). Aşağıdaki görüntüde, bu örnek için "marketplaceliderleri" tablosu seçildiğinde istem gösterilmektedir.
+   * **Tablo**: tablonuzun adını seçin ( [tablo oluştur](#create-a-table-in-your-storage-account)' dan). Aşağıdaki görüntüde, bu örnek için "marketplaceliderleri" tablosu seçildiğinde istem gösterilmektedir.
 
      ![Varlıkları al penceresi](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -177,9 +181,18 @@ Hiçbir müşteri adayı e-posta bildirimi almıyorsanız, Azure tablosuna yeni 
 Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandırmaya hazırsanız, bu adımları izleyin.
 
 1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
+
 1. **Müşteri adayı yönetimi** bölümünde **Bağlan** ' ı seçin.
-1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **Azure tablosu** ' nu seçin. **Depolama hesabı bağlantı dizesi** kutusunda önceki adımları Izleyerek oluşturduğunuz Azure depolama hesabındaki bağlantı dizesini yapıştırın.
+     ![Müşteri adayı yönetimi](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+
+1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **Azure tablosu** ' nu seçin. 
+     ![Lider yönetimi, bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+
+1. **Depolama hesabı bağlantı dizesi** kutusunda önceki adımları Izleyerek oluşturduğunuz Azure depolama hesabındaki bağlantı dizesini yapıştırın.
+     ![Lider yönetimi, bağlantı ayrıntıları depolama hesabı](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+
 1. **İletişim e-postası**: şirketinizdeki kişiler için yeni bir müşteri adayı alındığında e-posta bildirimleri alması gereken e-postalar sağlayın. Birden çok e-postayı noktalı virgülle ayırarak sağlayabilirsiniz.
+
 1. **Tamam**’ı seçin.
 
 Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula** düğmesini seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
@@ -188,10 +201,3 @@ Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için
 >Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.
 
 Müşteri adayları oluşturulduğunda, Microsoft müşteri adaylarını Azure tablosuna gönderir. Bir akış yapılandırdıysanız, yapılandırdığınız e-posta adresine de bir e-posta gönderilir.
-
-![Müşteri adayı yönetimi](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
-
-![Lider yönetimi, bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
-
-![Lider yönetimi, bağlantı ayrıntıları depolama hesabı](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
-

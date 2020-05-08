@@ -1,5 +1,5 @@
 ---
-title: Veri alma seçenekleri
+title: Veri alımı & Otomasyonu
 titleSuffix: Azure Machine Learning
 description: Makine öğrenimi modellerinizi eğitmek için veri alma seçenekleri hakkında bilgi edinin.
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086891"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789870"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning veri alımı
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning iş akışları için veri alma seçenekleri
 
-Bu makalede, Azure Machine Learning ile kullanılabilen aşağıdaki veri alma seçeneklerinin avantajlarını ve dezavantajlarını öğrenirsiniz. 
+Bu makalede, Azure Machine Learning sunulan veri alma seçeneklerinin avantajlarını ve dezavantajlarını öğrenirsiniz. 
 
-1. [Azure Data Factory](#use-azure-data-factory) işlem hatları
-2. [Python SDK Azure Machine Learning](#use-the-python-sdk)
+Aşağıdakilerden birini seçin:
++ Verileri ayıklamak, yüklemek ve dönüştürmek için özel olarak oluşturulan işlem hatları [Azure Data Factory](#azure-data-factory)
+
++ Temel veri alma görevleri için özel kod çözümü sağlayan [Python SDK Azure Machine Learning](#azure-machine-learning-python-sdk).
+
++ her ikisinin birleşimi
 
 Veri alımı, yapılandırılmamış verilerin bir veya daha fazla kaynaktan ayıklanması ve ardından eğitim makine öğrenimi modelleri için hazırlandığı işlemdir. Ayrıca, özellikle el ile yapıldıysa ve birden çok kaynaktan büyük miktarda veriniz varsa, bu da yoğun zaman alabilir. Bu çabayı otomatik hale getirmek kaynakları boşaltır ve modellerinizin en son ve uygun verileri kullanmasını sağlar.
 
-Azure Data Factory (ADF), verileri ayıklamak, yüklemek ve dönüştürmek için özellikle oluşturulmuştur, ancak Python SDK, temel veri alma görevleri için özel bir kod çözümü geliştirmenizi sağlar. İhtiyaç duyduğunuz kadar tam değilse, gereksinimlerinize uyan genel veri alma iş akışını oluşturmak için ADF 'yi ve Python SDK 'sını birlikte kullanabilirsiniz. 
-
-## <a name="use-azure-data-factory"></a>Azure Data Factory'yi kullanma
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) veri alma işlem hatları için veri kaynağı izleme ve Tetikleyicileri için yerel destek sunar.  
 
@@ -55,7 +57,7 @@ Bu adımlar ve aşağıdaki diyagramda Azure Data Factory veri alımı iş akı�
     
 [Azure Data Factory](how-to-data-ingest-adf.md)Machine Learning için bir veri alma işlem hattı oluşturmayı öğrenin.
 
-## <a name="use-the-python-sdk"></a>Python SDK'yı kullanma 
+## <a name="azure-machine-learning-python-sdk"></a>Python SDK Azure Machine Learning 
 
 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)ile veri alma görevlerini Azure Machine Learning bir işlem [hattı](how-to-create-your-first-pipeline.md) adımına ekleyebilirsiniz.
 
@@ -73,5 +75,7 @@ Aşağıdaki diyagramda Azure Machine Learning işlem hattı iki adımdan oluşu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Factory](how-to-data-ingest-adf.md) Machine Learning için bir veri alma işlem hattı oluşturmayı öğrenin
-* [Azure Pipelines](how-to-cicd-data-ingestion.md)ile veri alma işlem hatlarınızın geliştirme yaşam döngüsünü otomatik hale getirmeyi ve yönetmeyi öğrenin.
+Bu nasıl yapılır makalelerini izleyin:
+* [Azure Data Factory bir veri alma işlem hattı oluşturun](how-to-data-ingest-adf.md)
+
+* [Azure Pipelines ile veri alma işlem hatlarını otomatikleştirin ve yönetin](how-to-cicd-data-ingestion.md).
