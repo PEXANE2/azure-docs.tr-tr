@@ -67,6 +67,9 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: Kavramlar
   items:
     - name: Görüntüler
@@ -702,8 +705,6 @@
           href: disks-shared-enable.md
         - name: Diske VHD yükleme - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
-        - name: GPT bölümüyle işletim sistemi diskini yeniden boyutlandırma
-          href: resize-os-disk-gpt-partition.md
         - name: Bir diski yeniden boyutlandırma
           href: expand-disks.md
         - name: Diskleri yönetmek için Depolama Gezgini kullanma

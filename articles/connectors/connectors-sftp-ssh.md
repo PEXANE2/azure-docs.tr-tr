@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393627"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927454"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -34,7 +34,7 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
 * SFTP- [öbek](../logic-apps/logic-apps-handle-large-messages.md) oluşturma 'Yı destekleyen SSH EYLEMLERI 1 GB 'a kadar dosya işleyebilir, ancak öbek desteklemeyen SFTP-ssh EYLEMLERI 50 MB 'a kadar olan dosyaları işleyebilir. Varsayılan öbek boyutu 15 MB olsa da, bu boyut, 5 MB 'den başlayarak dinamik olarak değişebilir ve ağ gecikmesi, sunucu yanıt süresi vb. gibi etkenlere bağlı olarak 50 MB 'lık en yüksek düzeyde arttırılır.
 
   > [!NOTE]
-  > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+  > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü, bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanmasını gerektirir.
 
   Bunun yerine kullanılacak [sabit bir öbek boyutu belirttiğinizde](#change-chunk-size) , bu Uyarlamalı davranışı geçersiz kılabilirsiniz. Bu boyut 5 MB ile 50 MB arasında değişebilir. Örneğin, 45 MB 'lık bir dosyanız olduğunu ve bu dosya boyutunu gecikme süresi olmadan destekleyebildiğini belirten bir ağ olduğunu varsayalım. Uyarlamalı öbek oluşturma, bir çağrı yerine birkaç çağrıya neden olur. Çağrı sayısını azaltmak için 50 MB 'lık öbek boyutunu ayarlamayı deneyebilirsiniz. Farklı bir senaryoda, mantıksal uygulamanız zaman aşımına uğradıysanız (örneğin, 15 MB 'lık öbekleri kullanırken) boyutu 5 MB ile azaltmayı deneyebilirsiniz.
 
@@ -42,7 +42,7 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
 
   | Eylem | Öbek oluşturma desteği | Öbek boyutu desteğini geçersiz kıl |
   |--------|------------------|-----------------------------|
-  | **Dosyayı Kopyala** | Hayır | Uygulanamaz |
+  | **Dosyayı Kopyala** | No | Uygulanamaz |
   | **Dosya oluştur** | Yes | Yes |
   | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
   | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
@@ -53,7 +53,7 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
   | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
   | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
-  | **Güncelleştirme dosyası** | Hayır | Uygulanamaz |
+  | **Güncelleştirme dosyası** | No | Uygulanamaz |
   ||||
 
 * SFTP-SSH Tetikleyicileri ileti parçalama desteği vermez. Dosya içeriği istenirken Tetikleyiciler yalnızca 15 MB veya daha küçük olan dosyaları seçer. 15 MB 'tan büyük dosyaları almak için, bunun yerine şu modele uyun:
@@ -248,7 +248,7 @@ Dosyanın taşınmasını önlemek veya bu işlemleri ertelerseniz, aşağıdaki
 Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/sftpwithssh/)bakın.
 
 > [!NOTE]
-> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+> [Tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü, bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanmasını gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

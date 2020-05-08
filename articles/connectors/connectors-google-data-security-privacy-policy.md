@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181948"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628717"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 'de Google bağlayıcıları için veri güvenliği ve gizlilik ilkeleri
 
@@ -34,7 +34,7 @@ Gmail bağlayıcısını kullanan Logic Apps varsa, potansiyel olarak etkilenen 
 
 Bu ilke altında, bir Gmail tüketici hesabı kullandığınızda Gmail bağlayıcısını yalnızca belirli Google onaylı hizmetlerle (değiştirilebilir) kullanabilirsiniz. Mühendislik takımlarımız, bu listeye daha fazla hizmet eklemek için Google ile çalışmaya devam eder. Şimdilik, Gmail tüketici hesabı kullandığınızda Gmail Bağlayıcısı ile aynı Logic App iş akışında kullanabileceğiniz Google onaylı Tetikleyiciler, Eylemler ve bağlayıcılar aşağıda verilmiştir:
 
-* Logic Apps yerleşik Tetikleyiciler ve eylemler: Batch, Control, veri Işlemleri, tarih saat, düz dosya, HTTP, sıvı, Istek, zamanlama, değişkenler ve XML
+* Logic Apps yerleşik Tetikleyiciler ve eylemler: Batch, Control, veri Işlemleri, tarih saat, düz dosya, sıvı, Istek, zamanlama, değişkenler ve XML
 
 * Google hizmetleri: Gmail, Google Takvim, Google Contacts, Google Drive, Google sayfaları ve Google görevleri
 
