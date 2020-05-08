@@ -1,28 +1,27 @@
 ---
 title: IP güvenlik duvarı kuralları
-description: Bir SQL veritabanı veya SQL veri ambarı güvenlik duvarı için sunucu düzeyi IP güvenlik duvarı kurallarını yapılandırın. Tek veya havuza alınmış bir veritabanı için erişimi yönetin ve veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırın.
+description: Bir SQL veritabanı veya Azure SYNAPSE Analytics güvenlik duvarı için sunucu düzeyi IP güvenlik duvarı kurallarını yapılandırın. Tek veya havuza alınmış bir veritabanı için erişimi yönetin ve veritabanı düzeyinde IP güvenlik duvarı kurallarını yapılandırın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606085"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629244"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SQL veri ambarı IP güvenlik duvarı kuralları
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics IP güvenlik duvarı kuralları
 
 > [!NOTE]
-> Bu makale, Azure SQL sunucuları ve Azure SQL veritabanı ve Azure SQL veri ambarı veritabanları için Azure SQL Server 'da geçerlidir. Basitlik için SQL *veritabanı* hem SQL veritabanı hem de SQL veri ambarı 'na başvurmak için kullanılır.
+> Bu makale, Azure SQL sunucuları için ve Azure SQL Server 'da hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics veritabanları için geçerlidir. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE 'a başvurmak için kullanılır.
 
 > [!IMPORTANT]
 > Bu *Makale,* *Azure SQL veritabanı yönetilen örneği*için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama](sql-database-managed-instance-connect-app.md).
@@ -30,7 +29,7 @@ ms.locfileid: "81606085"
 Örneğin, *te yapılandırılmış MySQLServer*adlı yeni bir Azure SQL Server oluşturduğunuzda, SQL veritabanı güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net*adresinden erişilebilen) tüm erişimi engeller.
 
 > [!IMPORTANT]
-> SQL veri ambarı yalnızca sunucu düzeyinde IP güvenlik duvarı kurallarını destekler. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez.
+> Azure SYNAPSE yalnızca sunucu düzeyinde IP güvenlik duvarı kurallarını destekler. Veritabanı düzeyinde IP güvenlik duvarı kurallarını desteklemez.
 
 ## <a name="how-the-firewall-works"></a>Güvenlik duvarının çalışma biçimi
 Aşağıdaki diyagramda gösterildiği gibi, internet 'ten ve Azure 'dan gelen bağlantı girişimleri, SQL Server veya SQL veritabanınıza erişmeden önce güvenlik duvarından geçmelidir.
@@ -253,7 +252,7 @@ SQL veritabanı hizmetine erişim, beklendiği gibi davranmıyorsa aşağıdaki 
 
 - **Oturum açma yetkisi yok veya yanlış parola kullanıldı:**
 
-  Bir oturumun SQL veritabanı sunucusunda izinleri yoksa veya parola yanlışsa, sunucu bağlantısı reddedilir. Bir güvenlik duvarı ayarı oluşturmak istemcilere yalnızca sunucunuza bağlanmayı denemeye yönelik bir *fırsat* sağlar. İstemci yine de gerekli güvenlik kimlik bilgilerini sağlamalıdır. Oturumları hazırlama hakkında daha fazla bilgi için bkz. [SQL veritabanı ve SQL veri ambarı 'na veritabanı erişimini denetleme ve verme](sql-database-manage-logins.md).
+  Bir oturumun SQL veritabanı sunucusunda izinleri yoksa veya parola yanlışsa, sunucu bağlantısı reddedilir. Bir güvenlik duvarı ayarı oluşturmak istemcilere yalnızca sunucunuza bağlanmayı denemeye yönelik bir *fırsat* sağlar. İstemci yine de gerekli güvenlik kimlik bilgilerini sağlamalıdır. Oturumları hazırlama hakkında daha fazla bilgi için bkz. [SQL veritabanı ve Azure SYNAPSE 'e veritabanı erişimini denetleme ve verme](sql-database-manage-logins.md).
 
 - **Dinamik IP adresi:**
 

@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: mimart
-ms.reviewer: arvinh
-ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.reviewer: arvinh, celested
+ms.openlocfilehash: 0b2c8e6bb71e00ccb6eda33ecb1b087d09ce5de7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201695"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626199"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Kullanıcı sağlamak ve uygulamanızı gereken verilere göre zenginleştirmek için SCıM ve Microsoft Graph birlikte kullanma
 
@@ -103,8 +103,8 @@ Uygulamam Microsoft ekiplerinde yerleşik olarak bulunur ve ileti verilerini kul
 Ekipler ve Outlook iletilerindeki değişiklikleri izleyebilmem ve bunlara gerçek zamanlı olarak yanıt vermek istiyorum. Uygulamama bu değişiklikleri nasıl gönderebilirim?
 
 **Öneri:** Microsoft Graph çeşitli kaynaklar için [değişiklik bildirimleri](https://docs.microsoft.com/graph/webhooks) ve [değişiklik izleme](https://docs.microsoft.com/graph/delta-query-overview) sağlar. Değişiklik bildirimlerinin aşağıdaki sınırlamalarını aklınızda edin:
-- Bir olay alıcısı bir olay olduğunu bildirir, ancak herhangi bir nedenden dolayı üzerinde işlem gerçekleştiremezse, olay kaybolabilir
-- Bir olay alıcısı bir olay olduğunu bildirir, ancak herhangi bir nedenden dolayı üzerinde işlem gerçekleştiremezse, olay kaybolabilir
+- Bir olay alıcısı bir olayı ortaya atırsa, ancak herhangi bir nedenden dolayı üzerinde davranmazsa, olay kaybolabilir.
+- Değişikliklerin alındığı sıranın kronolojik olması garanti edilmez.
 - Değişiklik bildirimleri yukarıdaki nedenlerden dolayı her zaman [kaynak verilerini](https://docs.microsoft.com/graph/webhooks-with-resource-data) içermez, geliştiriciler genellikle değişiklik bildirimlerini, eşitleme senaryolarında değişiklik izleme ile birlikte kullanır. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Senaryo 6: Azure AD 'de Kullanıcı ve grup sağlama

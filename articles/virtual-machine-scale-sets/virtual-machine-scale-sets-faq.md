@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870210"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611407"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -45,11 +45,13 @@ Bir VM görüntüsü oluşturup yakalayın, ardından bunu ölçek kümesi için
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Ölçek kümemin kapasitesini 20’den 15’e düşürürsem hangi VM’ler kaldırılır?
 
-Sanal makineler, ölçek kümesinden güncelleştirme etki alanları ve hata etki alanları arasında eşit olacak şekilde kaldırılır. En yüksek kimlik numarasına sahip VM’ler ilk önce kaldırılır.
+Varsayılan olarak, sanal makineler, kullanılabilirlik alanları genelinde (ölçek kümesi ZGen yapılandırmasında dağıtılmışsa) ve kullanılabilirliği en üst düzeye çıkarmak için hata etki alanları arasında eşit olarak ayarlanan ölçek kümesinden kaldırılır. En yüksek kimlik numarasına sahip VM’ler ilk önce kaldırılır.
+
+Ölçek kümesi için bir [Ölçek genişletme İlkesi](virtual-machine-scale-sets-scale-in-policy.md) belirterek sanal makine kaldırma sırasını değiştirebilirsiniz.
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Kapasiteyi 15’ten 18’e yükseltirsem ne olur?
 
-Kapasiteyi 18’e artırırsanız 3 yeni VM oluşturulur. Her defasında VM örnek kimliği önceki en yüksek değerden artırılır (örneğin 20, 21, 22). VM’ler hata etki alanlarında ve güncelleştirme etki alanlarında dengelenir.
+Kapasiteyi 18’e artırırsanız 3 yeni VM oluşturulur. Her defasında VM örnek kimliği önceki en yüksek değerden artırılır (örneğin 20, 21, 22). VM 'Ler hata etki alanları arasında dengelenir.
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Bir ölçek kümesinde birden fazla uzantı kullanırken bir yürütme sırası uygulamayı zorunlu kılabilir miyim?
 
@@ -223,7 +225,7 @@ Linux VM oluştururken düz metin olarak SSH ortak anahtarlarını sağlayabilir
 
 linuxConfiguration öğe adı | Gerekli | Tür | Açıklama
 --- | --- | --- | ---
-SSH | Hayır | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
+SSH | No | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
 yol | Yes | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
 keyData | Yes | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
 
@@ -335,13 +337,13 @@ Daha fazla bilgi için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com
 
 Evet. [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) ve [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)için Azure hızlı başlangıç şablonlarında bazı örnek MSI şablonlarına bakabilirsiniz.
 
-## <a name="deleting"></a>Silinmesinden 
+## <a name="deleting"></a>Silinmesinden
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Örnek silinirken, sanal makine ölçek kümesi örneklerine göre ayarlanan kilitler dikkate alınır mi?
 
-Azure portalında, tek bir örneği veya toplu silme özelliğini birden çok örnek seçerek silebilirsiniz. Bir kilidi olan tek bir örneği silmeye çalışırsanız kilit dikkate alınır ve örneği silemezsiniz demektir. Ancak, birden çok örneği toplu olarak seçerseniz ve bu örneklerden herhangi birinde bir kilit varsa, kilitler kullanılamaz ve seçilen örneklerin hepsi silinir. 
- 
-Azure CLı 'de yalnızca tek bir örneği silebilirsiniz. Bir kilidi olan tek bir örneği silmeye çalışırsanız kilit dikkate alınır ve bu örneği silemezsiniz. 
+Azure portalında, tek bir örneği veya toplu silme özelliğini birden çok örnek seçerek silebilirsiniz. Bir kilidi olan tek bir örneği silmeye çalışırsanız kilit dikkate alınır ve örneği silemezsiniz demektir. Ancak, birden çok örneği toplu olarak seçerseniz ve bu örneklerden herhangi birinde bir kilit varsa, kilitler kullanılamaz ve seçilen örneklerin hepsi silinir.
+
+Azure CLı 'de yalnızca tek bir örneği silebilirsiniz. Bir kilidi olan tek bir örneği silmeye çalışırsanız kilit dikkate alınır ve bu örneği silemezsiniz.
 
 ## <a name="extensions"></a>Uzantıları
 

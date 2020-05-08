@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408967"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626886"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Denetimi veri akışları nelerdir?
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Kuruluşların her gün büyümeye devam eden karmaşık verilerin doğru analizi için veri hazırlama ve denetimi yapması gerekir. Kuruluşların verileri çeşitli iş süreçlerinde kullanabilmesi ve değerin süresini azaltabilmesi için veri hazırlama gereklidir.
 
@@ -44,9 +44,9 @@ Herhangi bir şeyi kaldırmak ve hızlı analizler için bir şekle uymak üzere
 
 | Bağlayıcı | Veri biçimi | Kimlik doğrulaması türü |
 | -- | -- | --|
-| [Azure Blob depolama](connector-azure-blob-storage.md) | CSV, Parquet | Hesap anahtarı |
+| [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV, Parquet | Hesap anahtarı |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Hizmet Sorumlusu |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Hesap anahtarı, hizmet sorumlusu |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | CSV, Parquet | Hesap anahtarı, hizmet sorumlusu |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | - | SQL kimlik doğrulaması |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL kimlik doğrulaması |
 

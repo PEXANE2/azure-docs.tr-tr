@@ -10,24 +10,24 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 923fb90f7f0e8eefec650515ed2a3b9b75d2ae77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf8d461485cefd37b9508031f5cce7ae0a070ef5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617909"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653206"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault kullanmak için en iyi uygulamalar
 
 ## <a name="control-access-to-your-vault"></a>Kasanıza erişimi denetleme
 
-Azure Key Vault, şifreleme anahtarlarını ve sertifikalar, bağlantı dizeleri ve parolalar gibi gizli dizileri koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara izin vererek anahtar kasalarınıza güvenli bir şekilde erişmeniz gerekir. Bu [Makale](secure-your-key-vault.md)) Key Vault erişim modeline genel bir bakış sağlar. Kimlik doğrulama ve yetkilendirmeyi açıklar ve anahtar kasalarınıza erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
+Azure Key Vault, şifreleme anahtarlarını ve sertifikalar, bağlantı dizeleri ve parolalar gibi gizli dizileri koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamalara ve kullanıcılara izin vererek anahtar kasalarınıza güvenli bir şekilde erişmeniz gerekir. Bu [makalede](secure-your-key-vault.md) Key Vault erişim modeline genel bir bakış sunulmaktadır. Kimlik doğrulama ve yetkilendirmeyi açıklar ve anahtar kasalarınıza erişimin güvenliğini nasıl sağlayabileceğinizi açıklar.
 
 Kasanıza erişimi denetlerken öneriler aşağıdaki gibidir:
 1. Aboneliğiniz, kaynak grubunuz ve Anahtar kasaları (RBAC) için erişimi kilitleme
 2. Her kasa için erişim ilkeleri oluşturma
 3. Erişim vermek için en az ayrıcalık erişim sorumlusunu kullanın
-4. Güvenlik Duvarı ve [sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md)aç)
+4. Güvenlik Duvarı ve [sanal ağ hizmet uç noktalarını](overview-vnet-service-endpoints.md) aç
 
 ## <a name="use-separate-key-vault"></a>Ayrı Key Vault kullan
 
@@ -39,9 +39,9 @@ Bir kasadaki nesnelerin güncelleştirme/silme/silme işlemleri sırasında [kas
 
 ## <a name="turn-on-logging"></a>Günlüğü aç
 
-[Günlüğü aç](logging.md)) Kasa için. Ayrıca uyarıları ayarlayın.
+Kasanızın [günlüğünü açın](logging.md) . Ayrıca uyarıları ayarlayın.
 
 ## <a name="turn-on-recovery-options"></a>Kurtarma seçeneklerini aç
 
-1. [Geçici silme](overview-soft-delete.md)özelliğini açın).
+1. [Geçici silme](overview-soft-delete.md)özelliğini açın.
 2. Geçici silme etkin olduktan sonra bile gizli dizi/kasaların silinmesini zorlamak istiyorsanız Temizleme korumasını açın.
