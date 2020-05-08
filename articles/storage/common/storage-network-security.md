@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 6f0e7c514835227fafd439803107531fbc62285c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 911172bd6ef9c08419e74828657c8bdb2f8d1b30
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133842"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930650"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -356,7 +356,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
 > [!IMPORTANT]
 > [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet**olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 
 Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındaki bağlantılar için güvenli bir ortam oluşturmaya yardımcı olur. Ancak bazı uygulamalar, sanal ağ veya IP adresi kuralları aracılığıyla benzersiz olarak yalıtılmamış Azure hizmetlerine bağımlıdır. Ancak, tam uygulama işlevselliğini etkinleştirmek için bu hizmetler depolama alanına verilmelidir. Bu gibi durumlarda, bu hizmetlerin verilerinize, günlüklerine veya analizlerinize erişmesini sağlamak için ***güvenilir Microsoft hizmetlerine Izin ver...*** ayarını kullanabilirsiniz.
 
@@ -393,7 +393,7 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 | Azure Data Factory             | Microsoft. DataFactory/Factory        | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure Veri Paylaşımı               | Microsoft. DataShare/hesapları           | Veri paylaşımından depolama hesaplarına erişime izin verir. |
 | Azure Logic Apps               | Microsoft. Logic/iş akışları              | Mantıksal uygulamaların depolama hesaplarına erişmesini sağlar. [Daha fazla bilgi edinin](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
-| Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure Machine Learning Hizmeti | Microsoft.MachineLearningServices      | Yetkili Azure Machine Learning çalışma alanları BLOB depolama alanına deneme çıkış, model ve Günlükler yazar ve verileri okur. [Daha fazla bilgi edinin](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Veri Ambarı       | Microsoft.Sql                          | PolyBase kullanarak belirli SQL veritabanı örneklerinden verilerin içeri ve dışarı aktarılmasını sağlar. [Daha fazla bilgi edinin](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure Stream Analytics         | Microsoft. StreamAnalytics             | Akış işindeki verilerin blob depolamaya yazılmasına izin verir. Bu özellik şu anda önizleme sürümündedir. [Daha fazla bilgi edinin](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. SYNAPSE/çalışma alanları          | SYNAPSE Analytics 'ten Azure Storage 'daki verilere erişimi sağlar. |

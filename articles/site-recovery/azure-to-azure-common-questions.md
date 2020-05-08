@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
-ms.translationtype: HT
+ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738057"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983287"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -100,6 +100,10 @@ Hayır, Site Recovery Internet bağlantısı gerektirmez. Ancak, [Azure VM olağ
 Evet, uygulamayı çoğaltabilir ve olağanüstü durum kurtarma yapılandırmasını aynı şekilde ayrı bir kaynak grubunda tutabilirsiniz.
 
 Örneğin, uygulamanız ayrı bir kaynak grubunda her bir katmanın uygulamasına, veritabanına ve Web 'e sahipse, tüm katmanları korumak için [Çoğaltma Sihirbazı 'nı](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) üç kez seçmeniz gerekir. Site Recovery, bu üç katmanı üç farklı kaynak grubuna çoğaltacaktır.
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Depolama hesaplarını kaynak grupları arasında taşıyabilir miyim?
+
+Hayır, bu desteklenmeyen bir senaryodur. Ancak, depolama hesaplarını yanlışlıkla farklı bir kaynak grubuna taşırsanız ve özgün kaynak grubunu silerseniz, eski kaynak grubuyla aynı ada sahip yeni bir kaynak grubu oluşturabilir ve ardından Depolama hesabını bu kaynak grubuna taşıyabilirsiniz.
 
 ## <a name="replication-policy"></a>Çoğaltma ilkesi
 

@@ -32,6 +32,11 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3- Web uygulamasını güncelleştirme
               href: container-registry-tutorial-deploy-update.md
+    - name: Örnekler
+      items:
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
     - name: Kavramlar
       expanded: false
       items:
@@ -82,10 +87,12 @@
               href: container-registry-webhook.md
         - name: Güvenlik ve kimlik doğrulaması
           items:
-            - name: Sanal ağ ile erişimi sınırlandırma (önizleme)
-              href: container-registry-vnet.md
             - name: Azure Özel Bağlantı ile tümleştirme (önizleme)
               href: container-registry-private-link.md
+            - name: Sanal ağ ile erişimi sınırlandırma (önizleme)
+              href: container-registry-vnet.md
+            - name: Müşteri tarafından yönetilen anahtarla şifreleme
+              href: container-registry-customer-managed-keys.md
             - name: Güvenlik duvarının arkasından erişme
               href: container-registry-firewall-access-rules.md
             - name: Kimlik Doğrulaması
@@ -110,8 +117,6 @@
               href: container-registry-content-trust.md
             - name: Güvenlik Merkezi ile resim tarama
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-            - name: Kayıt defteri verilerini şifreleme (önizleme)
-              href: container-registry-customer-managed-keys.md
         - name: Kayıt defterleri ve diğer Azure hizmetleri
           expanded: false
           items:
@@ -189,8 +194,6 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Resource Manager şablonu ile hızlı görev çalıştırma
           href: container-registry-task-run-template.md
-        - name: Ayrılmış aracı havuzunda görev çalıştırma (önizleme)
-          href: container-registry-tasks-agent-pools.md
         - name: Buildpacks ile görüntü oluşturma (önizleme)
           href: container-registry-tasks-pack-build.md
         - name: Görev günlüklerini görüntüleme

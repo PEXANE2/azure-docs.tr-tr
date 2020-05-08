@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393100"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930582"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -119,7 +119,7 @@ Load Balancer temel, dış akışlar için [birden çok (genel) IP ön uçları]
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>Bağlantı noktası, SNAT (PAT)
 
-Ortak bir Load Balancer kaynağı VM örnekleriyle ilişkilendirildiğinde, her giden bağlantı kaynağı yeniden yazılır. Kaynak, sanal ağ özel IP adresi alanından yük dengeleyicinin ön uç genel IP adresine yeniden yazılır. Genel IP adresi alanında, akışın 5 demet (kaynak IP adresi, kaynak bağlantı noktası, IP Aktarım Protokolü, hedef IP adresi, hedef bağlantı noktası) benzersiz olmalıdır.  Bağlantı noktası, TCP veya UDP IP protokolleriyle birlikte kullanılabilir.
+Ortak bir Load Balancer kaynağı, adanmış genel IP adreslerine sahip olmayan VM örnekleriyle ilişkilendirildiğinde, her giden bağlantı kaynağı yeniden yazılır. Kaynak, sanal ağ özel IP adresi alanından yük dengeleyicinin ön uç genel IP adresine yeniden yazılır. Genel IP adresi alanında, akışın 5 demet (kaynak IP adresi, kaynak bağlantı noktası, IP Aktarım Protokolü, hedef IP adresi, hedef bağlantı noktası) benzersiz olmalıdır. Bağlantı noktası, TCP veya UDP IP protokolleriyle birlikte kullanılabilir.
 
 Çok sayıda akış tek bir genel IP adresinden kaynaklandığından, bu, özel kaynak IP adresini yeniden yazdıktan sonra bunu gerçekleştirmek için kısa ömürlü bağlantı noktaları (SNAT bağlantı noktaları) kullanılır. Geçici bağlantı noktası, SNAT bağlantı noktalarını UDP ve TCP 'ye karşı farklı şekilde ayırır.
 
@@ -147,7 +147,7 @@ Genellikle SNAT bağlantı noktası tükenmesi ' ne yol açabilecek koşulları 
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>Bağlantı noktası için geçici bağlantı noktası önayırması (PAT)
 
-Azure, bağlantı noktası geçici olarak ([Pat](#pat)) kullanılırken arka uç havuzunun boyutuna bağlı olarak kullanılabilir önceden ayrılmış SNAT bağlantı noktalarının sayısını belirlemede bir algoritma kullanır. SNAT bağlantı noktaları, belirli bir genel IP kaynak adresi için kullanılabilir kısa ömürlü bağlantı noktalarıdır.
+Azure, bağlantı noktası geçici olarak ([Pat](#pat)) kullanılırken arka uç havuzunun boyutuna bağlı olarak kullanılabilir önceden ayrılmış SNAT bağlantı noktalarının sayısını belirlemede bir algoritma kullanır. SNAT bağlantı noktaları, belirli bir genel IP kaynak adresi için kullanılabilir kısa ömürlü bağlantı noktalarıdır. Bir yük dengeleyiciyle ilişkili her genel IP adresi için, her IP Aktarım Protokolü için SNAT bağlantı noktaları olarak 64.000 bağlantı noktası bulunur.
 
 Aynı sayıda SNAT bağlantı noktası, sırasıyla UDP ve TCP için önceden ayrılır ve IP Aktarım Protokolü başına bağımsız olarak kullanılır.  Ancak, SNAT bağlantı noktası kullanımı, akışın UDP veya TCP olmasına bağlı olarak farklılık belirtir.
 
@@ -193,11 +193,14 @@ SNAT bağlantı noktaları ayırmaları, IP aktarım protokolüne özgüdür (TC
 Bu bölüm, SNAT tükenmesi azaltmaya ve Azure 'daki giden bağlantılarla meydana getirmenize yardımcı olmaya yöneliktir.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>SNAT (PAT) bağlantı noktası tükenmesi yönetimi
-[Pat](#pat) Için kullanılan [kısa ömürlü bağlantı noktaları](#preallocatedports) , genel IP [adresi olmayan tek BAŞıNA VM](#defaultsnat) 'de ve [genel IP adresi olmayan yük dengeli VM](#lb)'de açıklandığı gibi, tüketilmeyen bir kaynaktır. [Bu](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) Kılavuzu kullanarak, geçici bağlantı noktalarınız kullanımınızı izleyebilir ve geçerli ayırmanız ile karşılaştırabilir.
+[Pat](#pat) Için kullanılan [kısa ömürlü bağlantı noktaları](#preallocatedports) , genel IP [adresi olmayan tek BAŞıNA VM](#defaultsnat) 'de ve [genel IP adresi olmayan yük dengeli VM](#lb)'de açıklandığı gibi, tüketilmeyen bir kaynaktır. [Bu](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) Kılavuzu kullanarak, daha kısa ömürlü bağlantı noktaları kullanımınızı izleyebilir ve geçerli ayırınızla karşılaştırabilir.
 
 Aynı hedef IP adresine ve bağlantı noktasına giden çok sayıda giden TCP veya UDP bağlantısı başlattığdığınızı ve başarısız olmuş bağlantıları gözlemlebildiğinizi veya SNAT bağlantı noktalarını ( [Pat](#pat)tarafından kullanılan önceden ayrılan [kısa ömürlü bağlantı noktaları](#preallocatedports) ) tüketmenin bir şekilde önerdiğini biliyorsanız, çeşitli genel risk azaltma seçenekleriniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için nelerin kullanılabilir ve en iyisi olduğuna karar verin. Bir veya daha fazla bu senaryonun yönetilmesine yardımcı olabilir.
 
 Giden bağlantı davranışını anlamakta sorun yaşıyorsanız, IP yığın istatistiklerini (netstat) kullanabilirsiniz. Ya da paket yakalamaları kullanılarak bağlantı davranışlarını gözlemlemek faydalı olabilir. Bu paket yakalamalarını örneğinizin Konuk işletim sisteminde gerçekleştirebilir veya [paket yakalama Için Ağ İzleyicisi](../network-watcher/network-watcher-packet-capture-manage-portal.md)kullanabilirsiniz. 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>Sanal makine başına SNAT bağlantı noktalarını en üst düzeye çıkarmak için SNAT bağlantı noktalarını
+[Önceden ayrılan bağlantı noktalarında](#preallocatedports)tanımlandığı gibi, yük dengeleyici arka uçtaki sanal makine sayısına göre bağlantı noktalarını otomatik olarak ayırır. Bu, varsayılan olarak ölçeklenebilirlik sağlamak için yapılır. Arka uçta sahip olduğunuz en fazla VM sayısını biliyorsanız, her giden kuralda bunu yapılandırarak, SNAT bağlantı noktalarını el ile ayırabilirsiniz. Örneğin, en fazla 10 VM olacağını biliyorsanız, varsayılan 1.024 yerine VM başına 6.400 SNAT bağlantı noktası ayırabilirsiniz. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Bağlantıyı yeniden kullanmak için uygulamayı değiştirme 
 Uygulamanızdaki bağlantıları yeniden kullandığınızda, SNAT için kullanılan kısa ömürlü bağlantı noktaları için talebi azaltabilirsiniz. Bu, özellikle HTTP/1.1 gibi protokoller için geçerlidir; burada bağlantı yeniden kullanım varsayılandır. Ve taşıma olarak HTTP kullanan diğer protokoller (örneğin, REST) sırasıyla faydalanabilir. 

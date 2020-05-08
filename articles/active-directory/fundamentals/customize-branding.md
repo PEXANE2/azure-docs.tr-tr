@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049805"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982046"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleyin
 Azure Active Directory (Azure AD) oturum açma sayfalarınızda tutarlı bir görünüm sağlamak için kuruluşunuzun logosu ve özel renk düzenlerini kullanın. Kullanıcılar, kimlik sağlayıcınız olarak Azure AD kullanan Office 365 gibi, kuruluşunuzun Web tabanlı uygulamalarında oturum açtığında oturum açma sayfalarınız görüntülenir.
@@ -52,9 +52,9 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
 
         - **Dildir.** Dil, varsayılan olarak otomatik olarak ayarlanır ve değiştirilemez.
         
-        - **Oturum açma sayfası arka plan resmi.** Oturum açma sayfalarınızın arka planı olarak görüntülenecek bir. png veya. jpg görüntü dosyası seçin. 
+        - **Oturum açma sayfası arka plan resmi.** Oturum açma sayfalarınızın arka planı olarak görüntülenecek bir. png veya. jpg görüntü dosyası seçin. Görüntü tarayıcının merkezine bağlanır ve görüntülenebilir alanın boyutuna ölçeklendirecektir. Boyutu 1920x1080 pikselden daha büyük olan veya 300 KB 'tan fazla dosya boyutu olan bir görüntü seçemezsiniz.
         
-            Görüntü 1920x1080 pikselden daha büyük olamaz ve 300 KB 'tan az bir dosya boyutuna sahip olmalıdır.
+            Büyük bir konu odağı olmadan görüntülerin kullanılması önerilir, örneğin, ekranın ortasında donuk bir beyaz kutu görünür ve görüntülenen alanın boyutlarına bağlı olarak görüntünün herhangi bir parçasını kapsayabilir.
 
         - **Başlık logosu.** Kullanıcı bir Kullanıcı adı girdikten ve **uygulamalarım** portalı sayfasında, oturum açma sayfasında görünmesi için logonuzun bir. png veya. jpg sürümü seçin.
             
@@ -62,7 +62,7 @@ Kullanıcılarınızın www\.Office.com gibi sitelere gitmesi durumunda özel ma
 
         - **Kullanıcı adı ipucu.** Kullanıcı Kullanıcı adını unutduklarında görüntülenen ipucu metnini yazın. Bu metin, bağlantı veya kod olmadan Unicode olmalıdır ve 64 karakteri aşamaz. Konuklarınız uygulamanızda oturum açtığında, bu ipucunu eklememeyi öneririz.
 
-        - **Oturum açma sayfası metni.** Oturum açma sayfasının alt kısmında görüntülenen metni yazın. Bu metni, telefon numarası gibi ek bilgileri, yardım masasına veya yasal bir bildirime iletmek için kullanabilirsiniz. Bu metin Unicode olmalıdır ve 256 karakteri aşmamalıdır. Ayrıca, bağlantılar veya HTML etiketleri de dahil değildir.
+        - **Oturum açma sayfası metni.** Oturum açma sayfasının alt kısmında görüntülenen metni yazın. Bu metni, telefon numarası gibi ek bilgileri, yardım masasına veya yasal bir bildirime iletmek için kullanabilirsiniz. Bu metin Unicode olmalıdır ve 256 karakteri aşmamalıdır.
 
     - **Gelişmiş ayarlar**
             

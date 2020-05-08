@@ -3,13 +3,13 @@ title: Kavramlar-Azure Kubernetes hizmetlerinde güvenlik (AKS)
 description: Ana ve düğüm iletişimi, ağ ilkeleri ve Kubernetes gizli dizileri dahil olmak üzere Azure Kubernetes hizmeti 'nde (AKS) güvenlik hakkında bilgi edinin.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/08/2020
+ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206638"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981400"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar ve kümeler için güvenlik kavramları
 
@@ -27,7 +27,9 @@ Bu makalede, AKS 'deki uygulamalarınızın güvenliğini sağlayan temel kavram
 
 AKS 'de Kubernetes ana bileşenleri, Microsoft tarafından sunulan yönetilen hizmetin bir parçasıdır. Her bir AKS kümesi, API sunucusu, Zamanlayıcı vb. sağlamak için kendi tek kiracılı, adanmış Kubernetes ana öğesine sahiptir. Bu ana, Microsoft tarafından yönetilir ve korunur.
 
-Varsayılan olarak, Kubernetes API sunucusu genel bir IP adresi ve tam etki alanı adı (FQDN) kullanır. Kubernetes rol tabanlı erişim denetimlerini ve Azure Active Directory kullanarak API sunucusuna erişimi kontrol edebilirsiniz. Daha fazla bilgi için bkz. [AKS Ile Azure AD tümleştirmesi][aks-aad].
+Varsayılan olarak, Kubernetes API sunucusu genel bir IP adresi ve tam etki alanı adı (FQDN) kullanır. [Yetkılı IP aralıklarını][authorized-ip-ranges]kullanarak API sunucusu uç noktasına erişimi sınırlayabilirsiniz. Ayrıca, API sunucusu erişimini sanal ağınıza sınırlamak için tam bir [özel küme][private-clusters] da oluşturabilirsiniz.
+
+Kubernetes rol tabanlı erişim denetimlerini ve Azure Active Directory kullanarak API sunucusuna erişimi kontrol edebilirsiniz. Daha fazla bilgi için bkz. [AKS Ile Azure AD tümleştirmesi][aks-aad].
 
 ## <a name="node-security"></a>Düğüm güvenliği
 
@@ -65,6 +67,10 @@ Daha fazla bilgi için bkz. [AKS kümesini yükseltme][aks-upgrade-cluster].
 ### <a name="azure-network-security-groups"></a>Azure ağ güvenlik grupları
 
 Azure, sanal ağlardaki trafik akışını filtrelemek için ağ güvenlik grubu kurallarını kullanır. Bu kurallar, kaynaklara erişim izni verilen veya reddedilen kaynak ve hedef IP aralıklarını, bağlantı noktalarını ve protokolleri tanımlar. Kubernetes API sunucusuna TLS trafiğine izin vermek için varsayılan kurallar oluşturulur. Yük dengeleyiciler, bağlantı noktası eşleştirmeleri veya giriş rotaları ile hizmetler oluştururken, AKS, trafiği uygun şekilde akışa almak için ağ güvenlik grubunu otomatik olarak değiştirir.
+
+### <a name="kubernetes-network-policy"></a>Kubernetes ağ ilkesi
+
+Kümenizdeki düğüm arasındaki ağ trafiğini sınırlandırmak için AKS 'ler, [Kubernetes ağ ilkeleri][network-policy]için destek sunar. Ağ ilkeleriyle, ad alanları ve etiket seçicileri temelinde küme içindeki belirli ağ yollarına izin vermeyi veya reddetme seçeneğini belirleyebilirsiniz.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes Gizli Dizileri
 
@@ -104,3 +110,6 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

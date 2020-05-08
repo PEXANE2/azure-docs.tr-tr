@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393271"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928882"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Machine Learning
 
@@ -192,14 +192,14 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | BLOB depolama olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| Konu | dize | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Türü | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | dize | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| kimlik | dize | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | nesne | BLOB depolama olay verileri. |
+| dataVersion | dize | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
@@ -207,56 +207,56 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ModelName | string | Kayıtlı olan modelin adı. |
-| ModelVersion | string | Kaydedilen modelin sürümü. |
-| ModelTags | object | Kaydedilen modelin etiketleri. |
-| ModelProperties | object | Kaydedilen modelin özellikleri. |
+| ModelName | dize | Kayıtlı olan modelin adı. |
+| ModelVersion | dize | Kaydedilen modelin sürümü. |
+| ModelTags | nesne | Kaydedilen modelin etiketleri. |
+| ModelProperties | nesne | Kaydedilen modelin özellikleri. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. Modeldağıtıldı
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ServiceName | string | Dağıtılan hizmetin adı. |
-| ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
-  | Modelıds | string | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
-| ServiceTags | object | Dağıtılan hizmetin etiketleri. |
-| ServiceProperties | object | Dağıtılan hizmetin özellikleri. |
+| ServiceName | dize | Dağıtılan hizmetin adı. |
+| ServiceComputeType | dize | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
+  | Modelıds | dize | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
+| ServiceTags | nesne | Dağıtılan hizmetin etiketleri. |
+| ServiceProperties | nesne | Dağıtılan hizmetin özellikleri. |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
-| RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
-| RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
-| RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
-| RunProperties | object | Tamamlanan çalıştırmanın özellikleri. |
+| ExperimentId | dize | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
+| ExperimentName | dize | Çalıştırmanın ait olduğu denemenin adı. |
+| RunId | dize | Tamamlanan çalıştırmanın KIMLIĞI. |
+| RunType | dize | Tamamlanan çalıştırmanın çalıştırma türü. |
+| RunTags | nesne | Tamamlanan çalıştırmanın etiketleri. |
+| RunProperties | nesne | Tamamlanan çalıştırmanın özellikleri. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. Datasetdriftalgılandı
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| Datadriftıd | string | Olayı tetikleyen veri Drın izleyicisinin KIMLIĞI. |
-| DataDriftName | string | Olayı tetikleyen veri Drın izleyicisinin adı. |
-| RunId | string | Veri kayması algılanan çalıştırmanın KIMLIĞI. |
-| Basedatasetıd | string | Drift ' i algılamak için kullanılan temel veri kümesinin KIMLIĞI. |
-| Targetdatasetıd | string | Drift ' i algılamak için kullanılan hedef veri kümesinin KIMLIĞI. |
+| Datadriftıd | dize | Olayı tetikleyen veri Drın izleyicisinin KIMLIĞI. |
+| DataDriftName | dize | Olayı tetikleyen veri Drın izleyicisinin adı. |
+| RunId | dize | Veri kayması algılanan çalıştırmanın KIMLIĞI. |
+| Basedatasetıd | dize | Drift ' i algılamak için kullanılan temel veri kümesinin KIMLIĞI. |
+| Targetdatasetıd | dize | Drift ' i algılamak için kullanılan hedef veri kümesinin KIMLIĞI. |
 | Driftkatsayısı | double | Olayı tetikleyen katsayı sonucu. |
 | StartTime | datetime | Hedef veri kümesi zaman serisinin değişikliklerini algılamasına neden olan başlangıç saati.  |
 | EndTime | datetime | Hedef veri kümesi zaman serisinin değişikliklerini algılamasına neden olan bitiş saati. |
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
-| RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
-| RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
-| RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
-| RunProperties | object | Tamamlanan çalıştırmanın özellikleri. |
-| RunStatus | string | Çalıştırmanın durumu. |
+| ExperimentId | dize | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
+| ExperimentName | dize | Çalıştırmanın ait olduğu denemenin adı. |
+| RunId | dize | Tamamlanan çalıştırmanın KIMLIĞI. |
+| RunType | dize | Tamamlanan çalıştırmanın çalıştırma türü. |
+| RunTags | nesne | Tamamlanan çalıştırmanın etiketleri. |
+| RunProperties | nesne | Tamamlanan çalıştırmanın özellikleri. |
+| RunStatus | dize | Çalıştırmanın durumu. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 | Başlık | Açıklama |
@@ -267,5 +267,5 @@ Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
 
 * Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
 * Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md)
-* Azure Machine Learning Azure Event Grid kullanmaya giriş için bkz. [Azure Machine Learning olaylarını](/azure/machine-learning/service/concept-event-grid-integration) kullanma
-* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](/azure/machine-learning/service/how-to-use-event-grid)
+* Azure Machine Learning Azure Event Grid kullanmaya giriş için bkz. [Azure Machine Learning olaylarını](/azure/machine-learning/concept-event-grid-integration) kullanma
+* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](/azure/machine-learning/how-to-use-event-grid)

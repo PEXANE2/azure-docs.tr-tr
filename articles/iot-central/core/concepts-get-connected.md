@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872427"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930497"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
 
@@ -146,11 +146,11 @@ Akış, cihazların SAS belirteçlerini veya X. 509.440 sertifikalarını kullan
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Kayıt olmadan X. 509.440 sertifikalarını kullanan cihazları bağlama
 
-1. IoT Central uygulamanıza [bir kök veya ara X. 509.440 sertifikası ekleyin ve doğrulayın](#connect-devices-using-x509-certificates) . (#connect-cihazlar-kullanan-x509-Certificates)
+1. IoT Central uygulamanıza [bir kök veya ara X. 509.440 sertifikası ekleyin ve doğrulayın](#connect-devices-using-x509-certificates) .
 
 1. IoT Central uygulamanıza eklediğiniz kök veya ara sertifikayı kullanarak cihazlarınız için yaprak sertifikaları oluşturun. Yaprak sertifikalarda, `CNAME` büyük/küçük harf cihaz kimliklerini kullanın.
 
-1. OEM, her cihazı bir cihaz KIMLIĞI, oluşturulan bir sol X. 509.440 sertifikası ve uygulama **kimliği kapsam** değeri ile yanıp sönmez.
+1. OEM, cihaz KIMLIĞI, oluşturulan yaprak X. 509.440 sertifikası ve uygulama **kimliği kapsam** değeri olan her bir cihazı yanıp sönmez.
 
 1. Bir cihaza geçtiğinizde, ilk olarak IoT Central kayıt bilgilerini almak için DPS 'e bağlanır.
 

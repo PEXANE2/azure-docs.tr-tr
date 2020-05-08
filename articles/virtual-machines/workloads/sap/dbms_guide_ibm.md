@@ -2,12 +2,9 @@
 title: IBM DB2 Azure sanal makineleri SAP iş yükü için DBMS dağıtımı | Microsoft Docs
 description: SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
 manager: patfilot
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
@@ -15,14 +12,110 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 679e033418fba34eddddd21ddca66b1d9bb2fd48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4392fcee9b498a14841742e8313b9fa06dcc7983
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645897"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977932"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
+
+Microsoft Azure, Linux, UNIX ve Windows (LUW) için IBM DB2 üzerinde çalışan mevcut SAP uygulamanızı Azure sanal makinelerine geçirebilirsiniz. LUW için IBM DB2 üzerinde SAP ile yöneticiler ve geliştiriciler, şirket içinde kullanılabilen aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
+SAP Business Suite 'i LUW için IBM DB2 üzerinde çalıştırmaya ilişkin genel bilgiler, adresindeki <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>SAP Community Network 'TE (SCN) bulunabilir.
+
+Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleştirme için bkz. SAP Note [2233094]. 
+
+, Azure 'da sunulan SAP iş yükünde çeşitli makalelerdir.  [Azure 'Da SAP iş yüküne başlamanız önerilir-kullanmaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) başlayın ve ardından ilgilendiğiniz alanı seçin
+
+Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir:
+
+| Dekont numarası | Başlık |
+| --- | --- |
+| [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
+| [2015553] |Microsoft Azure SAP: destek önkoşulları |
+| [1999351] |SAP için gelişmiş Azure Izleme sorunlarını giderme |
+| [2178632] |Microsoft Azure üzerinde SAP için anahtar Izleme ölçümleri |
+| [1409604] |Windows 'da sanallaştırma: Gelişmiş Izleme |
+| [2191498] |Azure ile Linux üzerinde SAP: Gelişmiş Izleme |
+| [2233094] |DB6: Linux, UNIX ve Windows için IBM DB2 kullanarak Azure 'da SAP uygulamaları-ek bilgiler |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP lisans sorunları |
+| [1984787] |SUSE LINUX Enterprise Server 12: yükleme notları |
+| [2002167] |Red Hat Enterprise Linux 7. x: yükleme ve yükseltme |
+| [1597355] |Linux için takas boşluğu önerisi |
+
+Bir çekme isteği-bu belgeye okuma olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)yükünde diğer kılavuzlar hakkında belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. 
+
+
+## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Linux, UNIX ve Windows sürüm desteği için IBM DB2
+Microsoft Azure sanal makine Hizmetleri 'nde LUW için IBM DB2 SAP, DB2 sürüm 10,5 itibariyle desteklenir.
+
+Desteklenen SAP ürünleri ve Azure VM türleri hakkında daha fazla bilgi için bkz. SAP Note [1928533].
+
+## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için Linux, UNIX ve Windows yapılandırma yönergeleri için IBM DB2
+### <a name="storage-configuration"></a>Depolama Yapılandırması
+Tüm veritabanı dosyaları, doğrudan bağlı disklere bağlı olarak NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve Azure sayfa BLOB depolama (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya yönetilen diskler (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) temel alınarak hesaplanır. Aşağıdaki Azure Dosya Hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
+
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+
+Azure sayfa BLOB depolama veya yönetilen diskleri temel alan diskleri kullanarak, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için önemli noktalara](dbms_guide_general.md) yapılan DEYIMLER DB2 DBMS ile dağıtımlar için de geçerlidir.
+
+Daha önce belgenin genel bölümünde açıklandığı gibi, Azure diskleri için ıOPS aktarım hızına ilişkin kotalar mevcuttur. Tam kotalar kullanılan VM türüne bağlıdır. Kotaları olan VM türlerinin bir listesi [burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]bulunabilir.
+
+Disk başına geçerli ıOPS kotası yeterli olduğu sürece, tüm veritabanı dosyalarını tek bir bağlı diske depolamak mümkündür. Ancak her zaman veri dosyalarını ve işlem günlüğü dosyalarını farklı disklerde/VHD 'lerde ayırmanız gerekir.
+
+Performans konuları için SAP yükleme kılavuzlarındaki Bölüm ' veri güvenliği ve veritabanı dizinleri için performans konuları ' bölümüne da bakın.
+
+Alternatif olarak, Windows Storage havuzlarını (yalnızca Windows Server 2012 ve üzeri sürümlerde mevcuttur), birden çok disk üzerinde bir büyük mantıksal cihaz oluşturmak için [SAP iş yüküne yönelik Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md) açıklanmaktadır.
+
+<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
+
+Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini `-LogicalSectorSizeDefault`kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir. Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
+
+Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)okunabilir.
+
+### <a name="backuprestore"></a>Yedekleme/Geri Yükleme
+LUW için IBM DB2 yedekleme/geri yükleme işlevselliği, standart Windows Server Işletim sistemleri ve Hyper-V ile aynı şekilde desteklenir.
+
+Yerinde geçerli bir veritabanı yedekleme stratejiniz olduğundan emin olmanız gerekir. 
+
+Çıplak dağıtımlarda olduğu gibi, yedekleme/geri yükleme performansı, kaç birimin paralel okuyabileceğini ve bu birimlerin üretilen işinin ne kadar olabileceğini bağlıdır. Ayrıca, yedekleme sıkıştırması tarafından kullanılan CPU tüketimi, en fazla sekiz CPU iş parçacığına sahip VM 'lerde önemli bir rol oynatabilir. Bu nedenle, biri şunları varsayabilir:
+
+* Veritabanı cihazlarını depolamak için kullanılan disk sayısı daha az olduğunda, okuma sırasında genel üretilen iş miktarı küçüktür
+* VM 'deki CPU iş parçacıklarının sayısı ne kadar küçükse, yedek sıkıştırmasının etkisi daha ciddi olur
+* Yedeklemenin yazılacağı daha az hedef (dizili dizinler, diskler), aktarım hızı düşük
+
+Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak iki seçenek kullanılabilir/birleştirilebilir:
+
+* Bu şeritli birimde ıOPS verimini artırmak için birden çok disk üzerinde yedekleme hedef birimini şeritli hale getirmek
+* Yedeği yazmak için birden fazla hedef dizin kullanma
+
+>[!NOTE]
+>Windows üzerinde DB2, Windows VSS teknolojisini desteklemez. Sonuç olarak, DB2 DBMS 'nin dağıtıldığı VM 'Ler için Azure Backup hizmetinin uygulamayla tutarlı VM yedeklemesi yararlanılabilir olamaz.
+
+### <a name="high-availability-and-disaster-recovery"></a>Yüksek Kullanılabilirlik ve Olağanüstü Durum Kurtarma
+Microsoft Cluster Server (MSCS) desteklenmez.
+
+DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. HA yapılandırmasının sanal makinelerinde çalışma adı çözümlemesi varsa, Azure 'daki kurulum, şirket içinde gerçekleştirilen kurulumdan farklı değildir. Yalnızca IP çözümlemesi kullanılması önerilmez.
+
+Veritabanı disklerini depolayan depolama hesapları için coğrafi çoğaltma kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı belge konuları](dbms_guide_general.md). 
+
+### <a name="accelerated-networking"></a>Hızlandırılmış Ağ
+Windows üzerinde DB2 dağıtımları için, [Azure hızlandırılmış ağ iletişimi](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)belgesinde açıklandığı gibi hızlandırılmış ağ hizmeti 'nin Azure işlevselliği kullanılması önemle önerilir. Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı açısından dikkat edilmesi gereken](dbms_guide_general.md)öneriler de göz önünde bulundurun. 
+
+
+### <a name="specifics-for-linux-deployments"></a>Linux dağıtımları için Ayrıntılar
+Disk başına geçerli ıOPS kotası yeterli olduğu sürece, tüm veritabanı dosyalarını tek bir diskte depolamak mümkündür. Ancak her zaman veri dosyalarını ve işlem günlüğü dosyalarını farklı disklerde/VHD 'lerde ayırmanız gerekir.
+
+Alternatif olarak, tek bir Azure VHD 'nin ıOPS veya g/ç verimlilik yeterli değilse, birden çok disk üzerinde bir büyük mantıksal cihaz oluşturmak üzere [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı](dbms_guide_general.md) Için belge konuları bölümünde açıklandığı gibi LVM (mantıksal birim Yöneticisi) veya mdaddm 'yi kullanabilirsiniz.
+Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir.
+
+<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
+
+
+### <a name="other"></a>Diğer
+Azure kullanılabilirlik kümeleri veya SAP izleme gibi diğer tüm genel alanlarda, IBM veritabanıyla sanal makinelerin dağıtılması için [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) Için belge konuları bölümünde açıklandığı şekilde uygulanır.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -306,101 +399,3 @@ ms.locfileid: "75645897"
 [vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
-
-
-
-Microsoft Azure, Linux, UNIX ve Windows (LUW) için IBM DB2 üzerinde çalışan mevcut SAP uygulamanızı Azure sanal makinelerine geçirebilirsiniz. LUW için IBM DB2 üzerinde SAP ile yöneticiler ve geliştiriciler, şirket içinde kullanılabilen aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
-SAP Business Suite 'i LUW için IBM DB2 üzerinde çalıştırmaya ilişkin genel bilgiler, adresindeki <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>SAP Community Network 'TE (SCN) bulunabilir.
-
-Azure 'da LUW için DB2 üzerinde SAP hakkında daha fazla bilgi ve güncelleştirme için bkz. SAP Note [2233094]. 
-
-, Azure 'da sunulan SAP iş yükünde çeşitli makalelerdir.  [Azure 'Da SAP iş yüküne başlamanız önerilir-kullanmaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) başlayın ve ardından ilgilendiğiniz alanı seçin
-
-Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir:
-
-| Dekont numarası | Başlık |
-| --- | --- |
-| [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
-| [2015553] |Microsoft Azure SAP: destek önkoşulları |
-| [1999351] |SAP için gelişmiş Azure Izleme sorunlarını giderme |
-| [2178632] |Microsoft Azure üzerinde SAP için anahtar Izleme ölçümleri |
-| [1409604] |Windows 'da sanallaştırma: Gelişmiş Izleme |
-| [2191498] |Azure ile Linux üzerinde SAP: Gelişmiş Izleme |
-| [2233094] |DB6: Linux, UNIX ve Windows için IBM DB2 kullanarak Azure 'da SAP uygulamaları-ek bilgiler |
-| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP lisans sorunları |
-| [1984787] |SUSE LINUX Enterprise Server 12: yükleme notları |
-| [2002167] |Red Hat Enterprise Linux 7. x: yükleme ve yükseltme |
-| [1597355] |Linux için takas boşluğu önerisi |
-
-Bir çekme isteği-bu belgeye okuma olarak, [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) ve [Azure belgelerindeki SAP iş](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)yükünde diğer kılavuzlar hakkında belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. 
-
-
-## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Linux, UNIX ve Windows sürüm desteği için IBM DB2
-Microsoft Azure sanal makine Hizmetleri 'nde LUW için IBM DB2 SAP, DB2 sürüm 10,5 itibariyle desteklenir.
-
-Desteklenen SAP ürünleri ve Azure VM türleri hakkında daha fazla bilgi için bkz. SAP Note [1928533].
-
-## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM 'lerinde SAP yüklemeleri için Linux, UNIX ve Windows yapılandırma yönergeleri için IBM DB2
-### <a name="storage-configuration"></a>Depolama Yapılandırması
-Tüm veritabanı dosyaları, doğrudan bağlı disklere bağlı olarak NTFS dosya sisteminde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve Azure sayfa BLOB depolama (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) veya yönetilen diskler (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) temel alınarak hesaplanır. Aşağıdaki Azure Dosya Hizmetleri gibi her türlü ağ sürücüsü veya uzak paylaşım veritabanı dosyaları için **desteklenmez:** 
-
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
-
-Azure sayfa BLOB depolama veya yönetilen diskleri temel alan diskleri kullanarak, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı Için önemli noktalara](dbms_guide_general.md) yapılan DEYIMLER DB2 DBMS ile dağıtımlar için de geçerlidir.
-
-Daha önce belgenin genel bölümünde açıklandığı gibi, Azure diskleri için ıOPS aktarım hızına ilişkin kotalar mevcuttur. Tam kotalar kullanılan VM türüne bağlıdır. Kotaları olan VM türlerinin bir listesi [burada (Linux)][virtual-machines-sizes-linux] ve [burada (Windows)][virtual-machines-sizes-windows]bulunabilir.
-
-Disk başına geçerli ıOPS kotası yeterli olduğu sürece, tüm veritabanı dosyalarını tek bir bağlı diske depolamak mümkündür. Ancak her zaman veri dosyalarını ve işlem günlüğü dosyalarını farklı disklerde/VHD 'lerde ayırmanız gerekir.
-
-Performans konuları için SAP yükleme kılavuzlarındaki Bölüm ' veri güvenliği ve veritabanı dizinleri için performans konuları ' bölümüne da bakın.
-
-Alternatif olarak, Windows Storage havuzlarını (yalnızca Windows Server 2012 ve üzeri sürümlerde mevcuttur), birden çok disk üzerinde bir büyük mantıksal cihaz oluşturmak için [SAP iş yüküne yönelik Azure sanal MAKINELER DBMS dağıtımı ile Ilgili konular](dbms_guide_general.md) açıklanmaktadır.
-
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir. Windows Storage havuzlarını kullanırken, parametresini `-LogicalSectorSizeDefault`kullanarak komut satırı arabirimi aracılığıyla depolama havuzlarını el ile oluşturmanız gerekir. Daha fazla bilgi için bkz. <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
-
-Azure M serisi VM için, işlem günlüklerine yazma gecikmesi, Azure Yazma Hızlandırıcısı kullanılırken Azure Premium depolama performansına kıyasla faktörlerle azaltılabilir. Bu nedenle, DB2 işlem günlüklerinin birimini oluşturan VHD 'ler için Azure Yazma Hızlandırıcısı dağıtmanız gerekir. Ayrıntılar belge [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)okunabilir.
-
-### <a name="backuprestore"></a>Yedekleme/Geri Yükleme
-LUW için IBM DB2 yedekleme/geri yükleme işlevselliği, standart Windows Server Işletim sistemleri ve Hyper-V ile aynı şekilde desteklenir.
-
-Yerinde geçerli bir veritabanı yedekleme stratejiniz olduğundan emin olmanız gerekir. 
-
-Çıplak dağıtımlarda olduğu gibi, yedekleme/geri yükleme performansı, kaç birimin paralel okuyabileceğini ve bu birimlerin üretilen işinin ne kadar olabileceğini bağlıdır. Ayrıca, yedekleme sıkıştırması tarafından kullanılan CPU tüketimi, en fazla sekiz CPU iş parçacığına sahip VM 'lerde önemli bir rol oynatabilir. Bu nedenle, biri şunları varsayabilir:
-
-* Veritabanı cihazlarını depolamak için kullanılan disk sayısı daha az olduğunda, okuma sırasında genel üretilen iş miktarı küçüktür
-* VM 'deki CPU iş parçacıklarının sayısı ne kadar küçükse, yedek sıkıştırmasının etkisi daha ciddi olur
-* Yedeklemenin yazılacağı daha az hedef (dizili dizinler, diskler), aktarım hızı düşük
-
-Yazılacak hedef sayısını artırmak için, gereksinimlerinize bağlı olarak iki seçenek kullanılabilir/birleştirilebilir:
-
-* Bu şeritli birimde ıOPS verimini artırmak için birden çok disk üzerinde yedekleme hedef birimini şeritli hale getirmek
-* Yedeği yazmak için birden fazla hedef dizin kullanma
-
->[!NOTE]
->Windows üzerinde DB2, Windows VSS teknolojisini desteklemez. Sonuç olarak, DB2 DBMS 'nin dağıtıldığı VM 'Ler için Azure Backup hizmetinin uygulamayla tutarlı VM yedeklemesi yararlanılabilir olamaz.
-
-### <a name="high-availability-and-disaster-recovery"></a>Yüksek Kullanılabilirlik ve Olağanüstü Durum Kurtarma
-Microsoft Cluster Server (MSCS) desteklenmez.
-
-DB2 yüksek kullanılabilirliğe sahip olağanüstü durum kurtarma (HADR) desteklenir. HA yapılandırmasının sanal makinelerinde çalışma adı çözümlemesi varsa, Azure 'daki kurulum, şirket içinde gerçekleştirilen kurulumdan farklı değildir. Yalnızca IP çözümlemesi kullanılması önerilmez.
-
-Veritabanı disklerini depolayan depolama hesapları için coğrafi çoğaltma kullanmayın. Daha fazla bilgi için bkz. [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı belge konuları](dbms_guide_general.md). 
-
-### <a name="accelerated-networking"></a>Hızlandırılmış Ağ
-Windows üzerinde DB2 dağıtımları için, [Azure hızlandırılmış ağ iletişimi](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)belgesinde açıklandığı gibi hızlandırılmış ağ hizmeti 'nin Azure işlevselliği kullanılması önemle önerilir. Ayrıca, [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı açısından dikkat edilmesi gereken](dbms_guide_general.md)öneriler de göz önünde bulundurun. 
-
-
-### <a name="specifics-for-linux-deployments"></a>Linux dağıtımları için Ayrıntılar
-Disk başına geçerli ıOPS kotası yeterli olduğu sürece, tüm veritabanı dosyalarını tek bir diskte depolamak mümkündür. Ancak her zaman veri dosyalarını ve işlem günlüğü dosyalarını farklı disklerde/VHD 'lerde ayırmanız gerekir.
-
-Alternatif olarak, tek bir Azure VHD 'nin ıOPS veya g/ç verimlilik yeterli değilse, birden çok disk üzerinde bir büyük mantıksal cihaz oluşturmak üzere [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımı](dbms_guide_general.md) Için belge konuları bölümünde açıklandığı gibi LVM (mantıksal birim Yöneticisi) veya mdaddm 'yi kullanabilirsiniz.
-Sapveriniz ve saptmp dizinleriniz için DB2 depolama yollarını içeren diskler için, 512 KB boyutundaki bir fiziksel disk sektör boyutu belirtmeniz gerekir.
-
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-
-### <a name="other"></a>Diğer
-Azure kullanılabilirlik kümeleri veya SAP izleme gibi diğer tüm genel alanlarda, IBM veritabanıyla sanal makinelerin dağıtılması için [SAP iş yükü Için Azure sanal MAKINELERI DBMS dağıtımı](dbms_guide_general.md) Için belge konuları bölümünde açıklandığı şekilde uygulanır.

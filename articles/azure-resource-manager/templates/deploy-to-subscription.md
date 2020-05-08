@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 05/07/2020
+ms.openlocfilehash: a48bc2fd4efb383b42fd0889df079c9a6f700dda
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610828"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929069"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -35,6 +35,7 @@ Aşağıdaki kaynak türlerini abonelik düzeyinde dağıtabilirsiniz:
 * [Scopeasyleri](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [lerimi](/azure/templates/microsoft.resources/tags)
+* [çalışma alanı ayarları](/azure/templates/microsoft.security/workspacesettings)
 
 ### <a name="schema"></a>Şema
 
@@ -96,11 +97,11 @@ Abonelik düzeyindeki dağıtımlar için, Şablon işlevleri kullanılırken ba
 * Abonelik düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [Subscriptionresourceıd ()](template-functions-resource.md#subscriptionresourceid) işlevini kullanın.
 
   Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-  
+
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
-  
+
   Döndürülen kaynak KIMLIĞI şu biçimdedir:
 
   ```json

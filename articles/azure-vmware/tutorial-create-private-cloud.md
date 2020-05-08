@@ -3,12 +3,12 @@ title: Öğretici-Azure 'da vSphere kümesi dağıtma
 description: Azure VMWare çözümünü (AVS) kullanarak Azure 'da bir vSphere kümesi dağıtmayı öğrenin
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: a11928dd936c29b8be0816257a64deadacda4578
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838815"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928559"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Öğretici: Azure 'da AVS özel bulutu dağıtma
 
@@ -58,7 +58,7 @@ Azure portal **+ Yeni kaynak oluştur**' u seçin. **Market** metin kutusu yazı
 | **Kaynak grubu** | Özel bulut kaynaklarınızın kaynak grubu. |
 | **Konum** | **Doğu ABD**gibi bir konum seçin.|
 | **Kaynak adı** | AVS özel bulutunuzun adı. |
-| **ISTEYIN** | Uygun SKU 'yu seçin, kullanılabilir değerler şunlardır: |
+| **ISTEYIN** | İzleme SKU değerini seçin: AV36 |
 | **Bilgisayarlarınızı** | Bu, özel bulut kümesine eklenecek ana bilgisayar sayısıdır. Varsayılan değer 3 ' dir. Bu değer dağıtımdan sonra yükseltilebilir veya düşürülemez.  |
 | **vCenter yönetici parolası** | Bir bulut Yöneticisi parolası girin. |
 | **NSX-T Yöneticisi parolası** | NSX-T yönetici parolasını girin. |

@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248456"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980822"
 ---
 # <a name="createuidefinition-functions"></a>Createuıdefinition işlevleri
 Bu bölüm bir Createuıdefinition 'ın desteklenen tüm işlevlerine yönelik imzaları içerir.
 
-Bir işlevi kullanmak için, bildirimi köşeli ayraçla çevreleyin. Örneğin:
+Bir işlevi kullanmak için, çağrıyı köşeli ayraçla çevreleyin. Örneğin:
 
 ```json
 "[function()]"
@@ -431,7 +431,7 @@ Aşağıdaki örnek şunu döndürür `true`:
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>ve
+### <a name="and"></a>and
 Tüm `true` parametrelerin değerlendirmesi halinde döndürür `true`. Bu işlev, yalnızca Boole türünden iki veya daha fazla parametreyi destekler.
 
 Aşağıdaki örnek şunu döndürür `true`:
@@ -446,7 +446,7 @@ Aşağıdaki örnek şunu döndürür `false`:
 "[and(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="or"></a>or
+### <a name="or"></a>veya
 Parametrelerden `true` en az biri olarak `true`değerlendiriliyorsa, döndürür. Bu işlev, yalnızca Boole türünden iki veya daha fazla parametreyi destekler.
 
 Aşağıdaki örnek şunu döndürür `true`:
@@ -485,6 +485,45 @@ Ve `element1` `element2` tanımsız olduğunu varsayın. Aşağıdaki örnek şu
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
+Bu işlev özellikle, sayfa yüklendikten sonra Kullanıcı eylemi nedeniyle gerçekleşen isteğe bağlı çağrının bağlamında faydalıdır. Bir örnek, Kullanıcı arabirimindeki bir alana yerleştirilmiş olan kısıtlamaların, **Başlangıçta görünür olmayan** başka bir alanın şu anda seçili olan değerine bağlıdır. Bu durumda, Kullanıcı `coalesce()` alanla etkileşime geçtiğinde istenen etkiye sahip olsa da, işlevin sayfa yükleme sırasında sözdizimsel olarak geçerli olmasına izin vermek için kullanılabilir.
+
+Kullanıcının birkaç `DropDown`farklı veritabanı türünden seçmesine izin veren bunu göz önünde bulundurun:
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+Bu alanın geçerli seçilen değerindeki başka bir alanın eylemini yapmak için, burada gösterildiği gibi kullanın `coalesce()`:
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+Bu, `databaseType` başlangıçta görünür olmadığından ve bu nedenle bir değere sahip olmadığından gereklidir. Bu, tüm ifadenin doğru değerlendirilmesine neden olur.
+
 ## <a name="conversion-functions"></a>Dönüştürme işlevleri
 Bu işlevler, JSON veri türleri ve kodlamaları arasındaki değerleri dönüştürmek için kullanılabilir.
 
@@ -518,7 +557,7 @@ Aşağıdaki örnek şunu döndürür `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>dize
 Parametreyi bir dizeye dönüştürür. Bu işlev tüm JSON veri türlerinin parametrelerini destekler.
 
 Aşağıdaki örnek şunu döndürür `"1"`:

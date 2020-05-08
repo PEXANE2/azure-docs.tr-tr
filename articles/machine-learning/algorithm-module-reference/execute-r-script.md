@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684708"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983576"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> İşlem hatlarınız birden çok Execute R betik modülü içeriyorsa ve önceden yüklenmiş listesinde olmayan aynı paketlere ihtiyaç duyuyorsanız, lütfen paketleri sırasıyla her modüle yüklemeniz gerekir. 
 
 ## <a name="installing-r-packages"></a>R paketlerini yükleme
 Ek R paketleri yüklemek için `install.packages()` yöntemini kullanın. Paketler her bir **r betik** modülü için yüklenir ve diğer **yürütme r betik** modülleri arasında paylaşılmaz.
@@ -140,7 +142,7 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 1. **R betiği** metin kutusuna geçerli R betiği yazın veya yapıştırın.
 
     > [!NOTE]
-    > Lütfen betiğinizi yazarken çok dikkatli olun ve bildirilmeyen bir değişken veya içe aktarılmayan bir modül ya da işlev kullanma gibi bir sözdizimi hatası olmadığından emin olun. Ayrıca, bu belgenin sonundaki önceden yüklenmiş paket listesine ek zayıflamalar ödeyin. Listelenmeyen paketleri kullanmak için lütfen bunları betikte`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > Lütfen betiğinizi yazarken çok dikkatli olun ve bildirilmeyen değişkenler veya içe aktarılmayan modüller veya işlevler kullanma gibi sözdizimi hatası olmadığından emin olun. Ayrıca, bu belgenin sonundaki önceden yüklenmiş paket listesine daha fazla dikkat ödeyin. Listelenmeyen paketleri kullanmak için lütfen bunları betikte`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
     > X11 kitaplığı önceden yüklenmediği için, "Görünüm" gibi X11 kitaplığına bağımlı işlevler desteklenmez.

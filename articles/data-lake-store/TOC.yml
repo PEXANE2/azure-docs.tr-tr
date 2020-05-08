@@ -22,6 +22,11 @@
       href: data-lake-store-get-started-powershell.md
     - name: Azure CLI’yı kullanma
       href: data-lake-store-get-started-cli-2.0.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Nasıl yapılır
   items:
     - name: Verileri yükleme ve taşıma

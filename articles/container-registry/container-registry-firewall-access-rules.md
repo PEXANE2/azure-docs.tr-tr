@@ -1,36 +1,37 @@
 ---
 title: Güvenlik Duvarı erişim kuralları
-description: ("Beyaz listeye") REST API ve depolama uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırın.
+description: ("Beyaz listeye") REST API ve veri uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
-ms.date: 02/11/2020
-ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.openlocfilehash: b3560fe769a97c8d3a4e5a3580d42d7c0b3a3f08
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77168014"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978357"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
 Bu makalede, Azure Container Registry 'ye erişime izin vermek için güvenlik duvarınızdaki kuralların nasıl yapılandırılacağı açıklanır. Örneğin, bir güvenlik duvarı veya proxy sunucusu arkasındaki bir Azure IoT Edge cihazın bir kapsayıcı görüntüsünü çekmek için bir kapsayıcı kayıt defterine erişmesi gerekebilir. Ya da, bir şirket içi ağdaki kilitlenmiş bir sunucunun bir görüntüyü göndermek için erişmesi gerekebilir.
 
-Bunun yerine, bir kapsayıcı kayıt defterinde yalnızca bir Azure sanal ağı veya genel IP adres aralığından gelen ağ erişim kurallarını yapılandırmak istiyorsanız bkz. [bir Azure Container Registry 'ye erişimi bir sanal ağdan kısıtlama](container-registry-vnet.md).
+Bunun yerine yalnızca bir Azure sanal ağı içindeki bir kapsayıcı kayıt defterine gelen ağ erişimini yapılandırmak istiyorsanız bkz. Azure [Container kayıt defteri Için Azure özel bağlantısını yapılandırma](container-registry-private-link.md).
 
 ## <a name="about-registry-endpoints"></a>Kayıt defteri uç noktaları hakkında
 
-Bir Azure Container Registry 'ye görüntü veya diğer yapıtları çekmek veya göndermek için, Docker Daemon gibi bir istemcinin iki ayrı uç nokta ile HTTPS üzerinden etkileşimde bulunması gerekir.
+Bir Azure Container Registry 'ye görüntü veya diğer yapıtları çekmek veya göndermek için, Docker Daemon gibi bir istemcinin iki ayrı uç nokta ile HTTPS üzerinden etkileşimde bulunması gerekir. Bir güvenlik duvarının arkasındaki bir kayıt defterine erişen istemciler için, her iki uç nokta için de erişim kuralları yapılandırmanız gerekir.
 
-* **Kayıt defteri REST API uç noktası** -kimlik doğrulama ve kayıt defteri yönetim işlemleri kayıt defterinin ortak REST API uç noktası aracılığıyla işlenir. Bu uç nokta, kayıt defterinin oturum açma sunucusu adı veya ilişkili bir IP adresi aralığıdır. 
+* **Kayıt defteri REST API uç noktası** -kimlik doğrulama ve kayıt defteri yönetim işlemleri kayıt defterinin ortak REST API uç noktası aracılığıyla işlenir. Bu uç nokta, kayıt defterinin oturum açma sunucusu adıdır. Örnek: `myregistry.azurecr.io`
 
-* **Depolama uç noktası** -Azure, kapsayıcı görüntüleri ve diğer yapıtlar için verileri yönetmek üzere her kayıt defteri adına Azure Storage hesaplarında [BLOB depolamayı ayırır](container-registry-storage.md) . Bir istemci bir Azure Container Registry içindeki görüntü katmanlarına eriştiğinde, kayıt defteri tarafından sağlanmış bir depolama hesabı uç noktası kullanarak istek yapar.
+* **Depolama (veri) uç noktası** -Azure, kapsayıcı görüntüleri ve diğer yapıtlar için verileri yönetmek üzere her kayıt defteri adına Azure Storage hesaplarında [BLOB depolamayı ayırır](container-registry-storage.md) . Bir istemci bir Azure Container Registry içindeki görüntü katmanlarına eriştiğinde, kayıt defteri tarafından sağlanmış bir depolama hesabı uç noktası kullanarak istek yapar.
 
-Kayıt defteriniz coğrafi olarak [çoğaltılırsa](container-registry-geo-replication.md), bir istemcinin belirli bir bölgedeki veya birden çok ÇOĞALTıLAN bölgedeki REST ve depolama uç noktalarıyla etkileşimde olması gerekebilir.
+Kayıt defteriniz coğrafi olarak [çoğaltılırsa](container-registry-geo-replication.md), bir istemcinin belirli bir bölgedeki veya birden çok çoğaltılan bölgedeki veri uç noktasıyla etkileşmesi gerekebilir.
 
-## <a name="allow-access-to-rest-and-storage-domain-names"></a>REST ve depolama alanı adlarına erişime izin ver
+## <a name="allow-access-to-rest-and-data-endpoints"></a>REST ve veri uç noktalarına erişime izin ver
 
-* **REST uç noktası** -tam kayıt defteri oturum açma sunucu adına erişime izin ver, örneğin`myregistry.azurecr.io`
-* **Depolama (veri) uç noktası** -joker karakteri kullanarak tüm Azure Blob depolama hesaplarına erişime izin ver`*.blob.core.windows.net`
-
+* **REST uç noktası** -tam kayıt defteri oturum açma sunucusu adına `<registry-name>.azurecr.io`veya ilişkili bir IP adresi aralığına erişime izin ver
+* **Depolama (veri) uç noktası** -joker karakter `*.blob.core.windows.net`veya ilişkili bir IP adresi aralığı kullanılarak tüm Azure Blob depolama hesaplarına erişime izin verin.
+> [!NOTE]
+> Azure Container Registry, [özel veri uç noktaları](#enable-dedicated-data-endpoints-preview) (Önizleme) ile tanışın. böylece, kayıt defteri depolarınız için istemci güvenlik duvarı kurallarını sıkı bir şekilde oluşturabilirsiniz. İsteğe bağlı olarak, form `<registry-name>.<region>.data.azurecr.io`kullanılarak kayıt defterinin bulunduğu ya da çoğaltılan tüm bölgelerde veri uç noktalarını etkinleştirin.
 
 ## <a name="allow-access-by-ip-address-range"></a>IP adresi aralığına göre erişime izin ver
 
@@ -39,7 +40,7 @@ Kuruluşunuzun yalnızca belirli IP adreslerine veya adres aralıklarına erişi
 Erişime izin vermeniz gereken ACR REST uç nokta IP aralıklarını bulmak için JSON dosyasında **AzureContainerRegistry** aratın.
 
 > [!IMPORTANT]
-> Azure hizmetleri için IP adresi aralıkları değişebilir ve güncelleştirmeler haftalık olarak yayımlanır. JSON dosyasını düzenli olarak indirin ve erişim kurallarınızın gerekli güncelleştirmelerini yapın. Senaryonuz Azure Container Registry erişmek için bir Azure sanal ağındaki ağ güvenlik grubu kurallarını yapılandırmayı içeriyorsa, bunun yerine **AzureContainerRegistry** [Service etiketini](#allow-access-by-service-tag) kullanın.
+> Azure hizmetleri için IP adresi aralıkları değişebilir ve güncelleştirmeler haftalık olarak yayımlanır. JSON dosyasını düzenli olarak indirin ve erişim kurallarınızın gerekli güncelleştirmelerini yapın. Senaryonuz bir Azure sanal ağında ağ güvenlik grubu kurallarını yapılandırmayı içeriyorsa veya Azure Güvenlik Duvarı 'nı kullanıyorsanız, bunun yerine **AzureContainerRegistry** [Service etiketini](#allow-access-by-service-tag) kullanın.
 >
 
 ### <a name="rest-ip-addresses-for-all-regions"></a>Tüm bölgeler için REST IP adresleri
@@ -116,6 +117,45 @@ Bir Azure sanal ağında, sanal makine gibi bir kaynaktan bir kapsayıcı kayıt
 
 Örneğin, Azure Container Registry 'ye giden trafiğe izin vermek için hedef **AzureContainerRegistry** ile giden ağ güvenlik grubu kuralı oluşturun. Yalnızca belirli bir bölgedeki hizmet etiketine erişime izin vermek için, bölgeyi şu biçimde belirtin: **AzureContainerRegistry**. [*bölge adı*].
 
+## <a name="enable-dedicated-data-endpoints-preview"></a>Adanmış veri uç noktalarını etkinleştir (Önizleme)
+
+> [!WARNING]
+> Önceden var olan `*.blob.core.windows.net` uç noktalara istemci güvenlik duvarı erişimi yapılandırdıysanız, adanmış veri uç noktalarına geçiş, istemci bağlantısını etkiler ve çekme hatalarıyla başarısız olur. İstemcilerin tutarlı erişimi olduğundan emin olmak için, yeni veri uç noktası kurallarını istemci güvenlik duvarı kurallarına ekleyin. Tamamlandıktan sonra, Azure CLı veya diğer araçları kullanarak kayıt defterlerine yönelik adanmış veri uç noktalarını etkinleştirin.
+
+Adanmış veri uç noktaları, **Premium** kapsayıcı kayıt defteri hizmet katmanının isteğe bağlı bir özelliğidir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry katmanları](container-registry-skus.md). Azure CLı kullanarak veri uç noktalarını etkinleştirmek için Azure CLı sürüm 2.4.0 veya üstünü kullanın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+
+Aşağıdaki [az ACR Update][az-acr-update] komutu, kayıt defteri *myregistry*üzerinde adanmış veri uç noktalarını etkin bir şekilde sunar. Tanıtım amacıyla, kayıt defterinin iki bölgede çoğaltılacağı varsayılır:
+
+```azurecli
+az acr update --name myregistry --data-endpoint-enabled
+```
+
+Veri uç noktaları bölgesel bir model kullanır `<registry-name>.<region>.data.azurecr.io`. Veri uç noktalarını görüntülemek için [az ACR Show-endpoints][az-acr-show-endpoints] komutunu kullanın:
+
+```azurecli
+az acr show-endpoints --name myregistry
+```
+
+Çıktı:
+
+```
+{
+    "loginServer": "myregistry.azurecr.io",
+    "dataEndpoints": [
+        {
+            "region": "eastus",
+            "endpoint": "myregistry.eastus.data.azurecr.io",
+        },
+        {
+            "region": "westus",
+            "endpoint": "myregistry.westus.data.azurecr.io",
+        }
+    ]
+}
+```
+
+Kayıt defteriniz için adanmış veri uç noktalarını ayarladıktan sonra, veri uç noktaları için istemci güvenlik duvarı erişim kurallarını etkinleştirebilirsiniz. Tüm gerekli kayıt defteri bölgeleri için veri uç noktası erişim kurallarını etkinleştirin.
+
 ## <a name="configure-client-firewall-rules-for-mcr"></a>MCR için istemci güvenlik duvarı kurallarını yapılandırma
 
 Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğesine erişmeniz gerekiyorsa, [MCR istemci güvenlik duvarı kurallarını](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)Yapılandırma Kılavuzu ' na bakın. MCR, Windows Server görüntüleri gibi tüm Microsoft tarafından yayınlanan Docker görüntülerinin birincil kayıt defteridir.
@@ -126,6 +166,8 @@ Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğes
 
 * Azure sanal ağındaki [güvenlik grupları](/azure/virtual-network/security-overview) hakkında daha fazla bilgi edinin
 
+* Azure Container Registry için [adanmış veri uç noktaları](https://azure.microsoft.com/blog/azure-container-registry-mitigating-data-exfiltration-with-dedicated-data-endpoints/) hakkında daha fazla bilgi edinin
+
 
 
 <!-- IMAGES -->
@@ -133,4 +175,7 @@ Bir güvenlik duvarının arkasındaki Microsoft Container Registry (MCR) öğes
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
+
+[az-acr-update]: /cli/azure/acr#az-acr-update
+[az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313958"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929341"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight’ta dış meta veri depolarını kullanma
 
@@ -41,6 +41,8 @@ Varsayılan olarak HDInsight, her küme türüyle bir meta veri deposu oluşturu
 * Varsayılan meta veri deposu, beş DTU (veritabanı işlem birimi) sınırına sahip olan temel Azure SQL DB 'yi kullanır.
 Bu varsayılan meta veri deposu genellikle görece basit iş yükleri için kullanılır. Birden çok küme gerektirmeyen ve kümenin yaşam döngüsünün ötesinde meta verilerin korunması gerekmeyen iş yükleri.
 
+* Üretim iş yükleri için dış bir meta veri yüklemeye geçiş yapmanızı öneririz. Daha fazla bilgi için lütfen aşağıdaki bölüme bakın.
+
 ## <a name="custom-metastore"></a>Özel meta veri deposu
 
 HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
@@ -64,6 +66,8 @@ HDInsight, üretim kümeleri için önerilen özel meta tasmres 'i de destekler:
 HDInsight kümesi için özel bir Hive meta veri deposu ayarlamadan önce mevcut bir Azure SQL veritabanı oluşturun veya var olan bir Azure SQL veritabanı oluşturun.  Daha fazla bilgi için bkz. [hızlı başlangıç: Azure SQL DB 'de tek bir veritabanı oluşturma](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
 Küme oluştururken, HDInsight hizmetinin dış meta veri deposu 'na bağlanması ve kimlik bilgilerinizi doğrulaması gerekir. Azure hizmet ve kaynaklarının sunucuya erişmesine izin vermek için Azure SQL veritabanı güvenlik duvarı kurallarını yapılandırın. **Sunucu güvenlik duvarını ayarla**' yı seçerek Azure Portal bu seçeneği etkinleştirin. Ardından, **genel ağ erişimini reddetme**altında **Hayır** ' ı ve Azure SQL veritabanı sunucusu veya veritabanı için **Bu sunucuya Azure hizmetlerinin ve kaynaklarının erişmesine Izin ver** ' in altında **Evet** ' i seçin. Daha fazla bilgi için bkz. [IP güvenlik duvarı kuralları oluşturma ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+
+SQL depoları için özel uç noktalar desteklenmez.
 
 ![Sunucu güvenlik duvarı 'nı ayarla düğmesi](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -94,6 +98,8 @@ Kümenizi dilediğiniz zaman daha önce oluşturulmuş bir Azure SQL veritabanı
 * Birden çok küme arasında bir meta veri deposu paylaşırsanız, tüm kümelerin aynı HDInsight sürümü olduğundan emin olun. Farklı Hive sürümleri farklı meta veri deposu veritabanı şemaları kullanır. Örneğin, Hive 2,1 ve Hive 3,1 sürümlü kümeler arasında bir meta veri deposu paylaşamazsınız.
 
 * HDInsight 4,0 ' de Spark ve Hive, Mini SQL veya Hive tablolarına erişmek için bağımsız kataloglar kullanır. Spark kataloğunda Spark tarafından oluşturulan bir tablo. Hive tarafından oluşturulan bir tablo Hive kataloğunda yaşar. Bu davranış, Hive ve Spark paylaşılan ortak kataloğunun HDInsight 3,6 ' inden farklıdır. HDInsight 4,0 ' de Hive ve Spark tümleştirmesi Hive ambar Bağlayıcısı 'nı (HWC) kullanır. HWC, Spark ve Hive arasında bir köprü olarak çalışmaktadır. [Hive ambar Bağlayıcısı hakkında bilgi edinin](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+
+* 4,0 HDInsight 'ta, Hive ve Spark arasında meta veri deposunu paylaştırmak istiyorsanız, metassıst. Catalog. Default özelliğini Spark kümenizdeki Hive olarak değiştirerek bunu yapabilirsiniz. Bu özelliği, ambarı gelişmiş spark2-Hive-site-override ' da bulabilirsiniz. Yalnızca dış Hive tablolarında çalışan, iç/yönetilen Hive tablolarına veya ACID tablolarına sahipseniz, bu, meta veri paylaşımının paylaşımını anlamak önemlidir.  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie meta veri deposu
 

@@ -3,12 +3,12 @@ title: Azure Application Insights bağımlılık Izleme | Microsoft Docs
 description: Şirket içi veya Microsoft Azure Web uygulamanızdan gelen bağımlılık çağrılarını Application Insights ile izleyin.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731503"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980856"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights 'de bağımlılık Izleme 
 
@@ -92,14 +92,14 @@ SQL çağrıları için sunucu ve veritabanının adı her zaman toplanır ve to
 
 ASP.NET Core uygulamalar için, tam SQL sorgusunu almak için ek bir adım gerekmez.
 
-ASP.NET uygulamalar için, tam SQL sorgusu, izleme altyapısı gerektiren Byte Code Instrumentation yardımıyla toplanır. Aşağıda açıklandığı gibi platforma özgü ek adımlar gereklidir.
+ASP.NET uygulamaları için tam SQL sorgusu, izleme altyapısı gerektiren veya System. Data. SqlClient kitaplığı yerine [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanan bayt kodu izleme yardımıyla birlikte toplanır. Aşağıda açıklandığı gibi platforma özgü ek adımlar gereklidir.
 
 | Platform | Tam SQL sorgusu almak için gereken adımlar |
 | --- | --- |
 | Azure Web App |Web uygulaması denetim masasında [Application Insights dikey penceresini açın](../../azure-monitor/app/azure-web-apps.md) ve .net altında SQL komutlarını etkinleştirin |
-| IIS sunucusu (Azure VM, şirket içi vb.) | Durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını YÜKLEYIP](../../azure-monitor/app/status-monitor-v2-api-reference.md) IIS 'yi yeniden başlatın. |
+| IIS sunucusu (Azure VM, şirket içi vb.) | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın veya durum İzleyicisi PowerShell modülünü kullanarak [Izleme altyapısını yükleyip](../../azure-monitor/app/status-monitor-v2-api-reference.md) IIS 'yi yeniden başlatın. |
 | Azure Cloud Service | [StatusMonitor 'ı yüklemek için başlangıç görevi](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) ekleme <br> [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya [ASP.NET Core uygulamalarına](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönelik NuGet paketlerini yükleyerek uygulamanızın derleme zamanında eklendi to ApplicationInsights SDK 'sı olması gerekir |
-| IIS Express | Desteklenmiyor
+| IIS Express | [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet paketini kullanın
 
 Yukarıdaki durumlarda, izleme altyapısının doğru şekilde doğrulandığının doğru şekilde doğrulanması, toplanan `DependencyTelemetry` SDK sürümünün ' rddp ' olduğunu doğrulamakdır. ' rdddsd ' veya ' rddf ', bağımlılıkların DiagnosticSource veya EventSource Callbacks aracılığıyla toplanacağını ve bu nedenle tam SQL sorgusunun yakalanmayacağını gösterir.
 
@@ -191,6 +191,6 @@ Her Application Insights SDK gibi bağımlılık koleksiyonu modülü de açık 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Durumlar](../../azure-monitor/app/asp-net-exceptions.md)
+* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)
 * [Kullanıcı & sayfası verileri](../../azure-monitor/app/javascript.md)
 * [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)

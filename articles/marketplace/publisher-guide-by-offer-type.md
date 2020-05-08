@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872358"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982692"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -33,7 +33,7 @@ Azure Market teklif türleri aşağıdaki tabloda listelenmiştir.
 | [**Sanal makineler**](./marketplace-virtual-machines.md) | Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. |
 | [**Çözüm şablonları**](./marketplace-solution-templates.md) | Çözümünüz tek bir VM 'nin ötesinde ek dağıtım ve yapılandırma Otomasyonu gerektirdiğinde, çözüm şablonunu (Azure uygulaması olarak da bilinir) teklif türü kullanın. Çözüm şablonları, VM 'Ler dahil ancak bunlarla sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.  |
 | [**Yönetilen uygulamalar**](./marketplace-managed-apps.md) | Aşağıdaki koşullar gerektiğinde Azure uygulaması: yönetilen uygulama teklifi türünü kullanın: <br> <ul> <li> Bir VM veya tüm IaaS tabanlı bir çözümü kullanarak müşteriniz için abonelik tabanlı bir çözüm dağıtırsınız. </li> <li>Siz veya müşteriniz, çözümün bir iş ortağı tarafından yönetilmesini gerektirir. </li> <ul> |
-| [**SaaS uygulamaları**](./marketplace-saas-applications-technical-publishing-guide.md) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için SaaS uygulaması teklif türünü kullanın. |
+| [**SaaS uygulamaları**](./partner-center-portal/create-new-saas-offer.md) | Müşterinizin SaaS tabanlı, teknik çözümünüzü bir abonelik olarak satın almasını sağlamak için SaaS uygulaması teklif türünü kullanın. |
 | [**Kapsayıcı teklifleri**](./marketplace-containers.md) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda kapsayıcı teklif türünü kullanın. |
 | [**Azure IoT Edge modüller**](./iot-edge-module.md) | Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
 | [**Danışmanlık hizmetleri**](./consulting-services.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
