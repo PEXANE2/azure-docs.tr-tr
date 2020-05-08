@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722144"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890863"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>İleti teslimini izleme Event Grid 
 
@@ -27,18 +27,21 @@ Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid i
 
 Portal, olay iletilerinin teslim durumunun ölçümlerini görüntüler.
 
-Konular için ölçümler şunlardır:
+Konular için bazı ölçümler aşağıda verilmiştir:
 
 * **Yayımlama başarılı**: olay konuya başarıyla gönderildi ve 2xx yanıtıyla işlendi.
 * **Yayımlama başarısız oldu**: konuya gönderilen olay, ancak bir hata koduyla reddedildi.
 * **Eşleşmeyen**: olay, konuya başarıyla yayımlandı, ancak olay aboneliğiyle eşleşmedi. Olay bırakıldı.
 
-Abonelikler için ölçümler şunlardır:
+Abonelikler için bazı ölçümler aşağıda verilmiştir:
 
 * **Teslim başarılı**: etkinlik, aboneliğin uç noktasına başarıyla teslim edildi ve 2xx yanıtı aldı.
-* **Teslim başarısız oldu**: aboneliğin uç noktasına gönderilen olay, ancak 4xx veya 5xx yanıtı aldı.
+* **Teslim başarısız oldu**: hizmet teslim etmeye her seferinde ve olay işleyicisi başarılı 2xx Kodu döndürmezse, **teslim başarısız** sayacı artırılır. Aynı olayı birden çok kez teslim etmeye ve başarısız olursa, her başarısızlık için **teslim başarısız** sayacı artırılır.
 * **Vadesi geçen olaylar**: olay teslim edilmemiş ve tüm yeniden deneme girişimleri gönderildi. Olay bırakıldı.
 * **Eşleşen olaylar**: konudaki olay, olay aboneliği tarafından eşleşti.
+
+    > [!NOTE]
+    > Ölçümlerin tam listesi için bkz. [Azure Event Grid tarafından desteklenen ölçümler](metrics.md).
 
 ## <a name="event-subscription-status"></a>Olay aboneliği durumu
 
