@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: fca57f846b47435d23700c95c03e7246713a9b0c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 40ea1bfe65c963dbbe78c8aca8f5e9e96fd986cb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780139"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928899"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -442,7 +442,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     + Pandas desteği eklendi. Seriler ve Pandas. Sütun veri türünü saptamak için kategorik. Daha önce yalnızca desteklenen sayısal tuş takımı. ndarray
       + Kategorik dtype 'ı doğru şekilde işlemek için ilgili kod değişiklikleri eklendi.
     + Tahmin işlevi arabirimi geliştirildi: y_pred parametresi isteğe bağlı olarak yapıldı. -Docstrings geliştirilmiştir.
-  + **azureml-contrib-dataset**
+  + **azureml-contrib-veri kümesi**
     + Etiketlenmiş veri kümelerinin takılabileceği bir hata düzeltildi.
   + **azureml-core**
     + İçin `Environment.from_existing_conda_environment(name, conda_environment_name)`hata düzeltildi. Kullanıcı, Yerel ortamın tam çoğaltması olan bir ortam örneği oluşturabilir
@@ -468,7 +468,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
   + **azureml-automl-runtime**
     + Artık İkili Sınıflandırma görevleri için Ortalama skaler ölçümleri hesaplarken, oto 'nin her ikisi de doğru ve yanlış sınıfları hesaba götürecektir.
     + AzureML-oto ml-Core içindeki makine öğrenimi ve eğitim kodu, yeni bir AzureML-oto ml-Runtime paketine taşındı.
-  + **azureml-contrib-dataset**
+  + **azureml-contrib-veri kümesi**
     + Etiketli bir `to_pandas_dataframe` veri kümesinde, indirme seçeneğiyle çağrılırken, artık mevcut dosyaların üzerine yazılıp yazılmayacağını belirtebilirsiniz.
     + Çağrılırken `keep_columns` veya `drop_columns` bir timeseries, etiket veya resim sütunu atıldığı zaman, ilgili yetenekler veri kümesi için de bırakılır.
     + Nesne algılama görevi için pytorch yükleyicisindeki bir sorun düzeltildi.
@@ -584,7 +584,7 @@ Tüm belgeler için [paket Web sitesine](https://azure.github.io/azureml-sdk-for
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Event Grid ile tümleştirme Azure Machine Learning 
 
-Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azure portal veya Azure CLı aracılığıyla makine öğrenimi olaylarını yapılandırabilirsiniz. Kullanıcılar çalıştırma tamamlama, model kaydı, model dağıtımı ve veri DRI için olaylar oluşturabilir. Bu olaylar, tüketim için Event Grid tarafından desteklenen olay işleyicilerine yönlendirilebilir. Daha fazla bilgi için bkz. Machine Learning olay [şeması](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning), [Kavramlar](https://docs.microsoft.com/azure/machine-learning/concept-event-grid-integration) ve [öğretici](https://docs.microsoft.com/azure/machine-learning/how-to-use-event-grid) makaleleri.
+Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azure portal veya Azure CLı aracılığıyla makine öğrenimi olaylarını yapılandırabilirsiniz. Kullanıcılar çalıştırma tamamlama, model kaydı, model dağıtımı ve veri DRI için olaylar oluşturabilir. Bu olaylar, tüketim için Event Grid tarafından desteklenen olay işleyicilerine yönlendirilebilir. Daha fazla bilgi için bkz. Machine Learning olay [şeması](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning) ve [öğretici](how-to-use-event-grid.md) makaleleri.
 
 ## <a name="2019-10-31"></a>2019-10-31
 

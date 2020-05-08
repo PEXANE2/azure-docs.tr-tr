@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204452"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930157"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Yeni Başlayanlar için Veri Bilimi video 1: Veri bilimiyle ilgili 5 sorunun yanıtı
 En *Yeni başlayanlar Için veri bilimi* , popüler bir veri bilimcundan beş kısa videoda hızlı bir giriş yapın. Bu videolar temel olmakla birlikte, veri bilimi veya veri bilimcileri ile çalışmanız ile ilgileniyor olsanız da yararlıdır.
@@ -136,4 +136,4 @@ Yani bu, 5 soruda veri bilimi yanıt verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Machine Learning Studio (klasik) ile ilk veri bilimi denemesini deneyin](create-experiment.md)
-* [Microsoft Azure Machine Learning bir giriş alın](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Microsoft Azure Machine Learning bir giriş alın](/azure/machine-learning/overview-what-is-azure-ml)

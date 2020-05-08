@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399675"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929256"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -24,12 +24,12 @@ Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kuber
 
 Azure Machine Learning bir modeli dağıttığınızda, sistem bir dizi görevi gerçekleştirir.
 
-Model dağıtımı için önerilen ve en güncel yaklaşım, bir [ortam](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) nesnesini giriş parametresi olarak kullanan [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'sidir. Bu durumda hizmetimiz dağıtım aşaması sırasında sizin için bir temel Docker görüntüsü oluşturacak ve gerekli modelleri tek bir çağrıda bağlamamız gerekir. Temel dağıtım görevleri şunlardır:
+Model dağıtımı için önerilen ve en güncel yaklaşım, bir [ortam](how-to-use-environments.md) nesnesini giriş parametresi olarak kullanan [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'sidir. Bu durumda hizmetimiz dağıtım aşaması sırasında sizin için bir temel Docker görüntüsü oluşturacak ve gerekli modelleri tek bir çağrıda bağlamamız gerekir. Temel dağıtım görevleri şunlardır:
 
 1. Modeli çalışma alanı modeli kayıt defterine kaydedin.
 
 2. Çıkarım yapılandırmasını tanımla:
-    1. Ortam YAML dosyasında belirttiğiniz bağımlılıklara göre bir [ortam](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) nesnesi oluşturun veya temin ortamlarımızın birini kullanın.
+    1. Ortam YAML dosyasında belirttiğiniz bağımlılıklara göre bir [ortam](how-to-use-environments.md) nesnesi oluşturun veya temin ortamlarımızın birini kullanın.
     2. Ortama ve Puanlama betiğine göre bir çıkarım yapılandırması (ınenceconfig nesnesi) oluşturun.
 
 3. Modeli Azure Container Instance (ACI) hizmetine veya Azure Kubernetes Service 'e (AKS) dağıtın.
@@ -50,7 +50,7 @@ Model dağıtımı için önerilen ve en güncel yaklaşım, bir [ortam](https:/
 
 Herhangi bir sorunla karşılaşırsanız, ilk yapılacak şey, sorunu yalıtmak için dağıtım görevinin (önceki adı daha önce açıklanan) bireysel adımlara bölünmemaktır.
 
-[Model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'si aracılığıyla bir [ortam](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) nesnesi ile bir giriş parametresi olarak yeni/önerilen dağıtım yöntemi kullandığınızı varsayarak, kodunuz üç ana adıma ayrılabilir:
+[Model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 'si aracılığıyla bir [ortam](how-to-use-environments.md) nesnesi ile bir giriş parametresi olarak yeni/önerilen dağıtım yöntemi kullandığınızı varsayarak, kodunuz üç ana adıma ayrılabilir:
 
 1. Modeli kaydedin. Örnek kod aşağıda verilmiştir:
 

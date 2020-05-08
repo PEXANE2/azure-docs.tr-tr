@@ -1,6 +1,6 @@
 ---
-title: RBAC ve Azure portal dış kullanıcılar için rol atamaları ekleme veya kaldırma
-description: Azure rol tabanlı erişim denetimi (RBAC) kullanarak bir kuruluşa dış kullanıcılar için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
+title: Azure portal-Azure RBAC kullanarak dış kullanıcılar için Azure rol atamaları ekleme veya kaldırma
+description: Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak bir kuruluşa harici kullanıcılar için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245648"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735768"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak dış Konuk kullanıcıları için rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal kullanarak dış Konuk kullanıcılar için Azure rol atamaları ekleme veya kaldırma
 
-[Azure rol tabanlı erişim denetimi (RBAC)](overview.md) , büyük kuruluşlar için daha iyi güvenlik yönetimine olanak tanır, ortamınızda belirli kaynaklara erişmesi gereken, ancak tüm altyapıya da faturalandırma ile ilgili kapsamlar olması gereken, dış ortak, satıcı veya freelancers ile çalışan küçük ve orta ölçekli işletmeler için daha iyi güvenlik yönetimi sağlar. Dış Konuk kullanıcılarıyla işbirliği yapmak için [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) içindeki özellikleri kullanabilirsiniz ve yalnızca konuk kullanıcıların ortamınızda ihtiyaç duyduğu izinleri vermek için RBAC 'yi kullanabilirsiniz.
+[Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , büyük kuruluşlar için daha iyi güvenlik yönetimine olanak sağlar ve ortamınızda belirli kaynaklara erişmesi gereken, ancak tüm altyapıya ya da faturalandırma ile ilgili kapsamların olması gerekmeyen dış ortak, satıcı veya freelancers ile çalışan küçük ve orta ölçekli işletmeler için daha iyi güvenlik yönetimi sağlar. Dış Konuk kullanıcılarıyla işbirliği yapmak için [Azure ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) ' deki özellikleri kullanabilir ve yalnızca konuk kullanıcıların ortamınızda ihtiyaç duyduğu izinleri vermek IÇIN Azure RBAC 'yi kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -69,7 +69,7 @@ Davet işlemi hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B 
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Konuk Kullanıcı için rol ataması ekleme
 
-RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya bir rol ataması eklemek için, bir üye Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ile [aynı adımları](role-assignments-portal.md#add-a-role-assignment) izlüyordu. Bu adımları izleyerek, farklı kapsamlardaki Konuk Kullanıcı için rol ataması ekleyin.
+Azure RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya bir rol ataması eklemek için, bir üye Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ile [aynı adımları](role-assignments-portal.md#add-a-role-assignment) izlüyordu. Bu adımları izleyerek, farklı kapsamlardaki Konuk Kullanıcı için rol ataması ekleyin.
 
 1. Azure portalında **Tüm hizmetler**’e tıklayın.
 

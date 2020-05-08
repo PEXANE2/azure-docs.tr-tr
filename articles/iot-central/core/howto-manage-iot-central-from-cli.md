@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: df24a2dc6e9bd058a2f8b1355b8760653ed3128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e0beb9a35b7888787d018b5e3b9c4ceea7e1c9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365526"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744555"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLı 'dan IoT Central yönetme
 
@@ -42,7 +42,7 @@ az extension add --name azure-iot
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [az ıotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) komutunu kullanın. Örneğin:
+Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [az IoT Central App Create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -52,14 +52,14 @@ az group create --location "East US" \
 
 ```azurecli-interactive
 # Create an IoT Central application
-az iotcentral app create \
+az iot central app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku ST1 --template "iotc-pnp-preview@1.0.0" \
+  --sku ST1 --template "iotc-pnp-preview" \
   --display-name "My Custom Display Name"
 ```
 
-Bu komutlar öncelikle uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur. Aşağıdaki tabloda **az iotcentral App Create** komutuyla kullanılan parametreler açıklanmaktadır:
+Bu komutlar öncelikle uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur. Aşağıdaki tabloda, **az IoT Central App Create** komutuyla kullanılan parametreler açıklanmaktadır:
 
 | Parametre         | Açıklama |
 | ----------------- | ----------- |
@@ -75,24 +75,24 @@ Bu komutlar öncelikle uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluş
 
 ## <a name="view-your-applications"></a>Uygulamalarınızı görüntüleyin
 
-IoT Central uygulamalarınızı listelemek ve meta verileri görüntülemek için [az ıotcentral App List](/cli/azure/iotcentral/app#az-iotcentral-app-list) komutunu kullanın.
+IoT Central uygulamalarınızı listelemek ve meta verileri görüntülemek için [az IoT Central App List](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-list) komutunu kullanın.
 
 ## <a name="modify-an-application"></a>Bir uygulamayı değiştirme
 
-Bir IoT Central uygulamasının meta verilerini güncelleştirmek için [az ıotcentral App Update](/cli/azure/iotcentral/app#az-iotcentral-app-update) komutunu kullanın. Örneğin, uygulamanızın görünen adını değiştirmek için:
+Bir IoT Central uygulamasının meta verilerini güncelleştirmek için [az IoT Central App Update](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-update) komutunu kullanın. Örneğin, uygulamanızın görünen adını değiştirmek için:
 
 ```azurecli-interactive
-az iotcentral app update --name myiotcentralapp \
+az iot central app update --name myiotcentralapp \
   --resource-group MyIoTCentralResourceGroup \
   --set displayName="My new display name"
 ```
 
 ## <a name="remove-an-application"></a>Uygulamayı kaldırma
 
-Bir IoT Central uygulamasını silmek için [az ıotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) komutunu kullanın. Örneğin:
+Bir IoT Central uygulamasını silmek için [az IoT Central App Delete](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
-az iotcentral app delete --name myiotcentralapp \
+az iot central app delete --name myiotcentralapp \
   --resource-group MyIoTCentralResourceGroup
 ```
 

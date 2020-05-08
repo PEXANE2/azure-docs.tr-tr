@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 621aff0a6571714ad8dad587c2385e6081c2d0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181673"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734646"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -298,7 +298,7 @@ Filtre, OAuth 2,0 yetkilendirme kodu akışını işler ve kullanıcının kimli
 
 Yanıt geldiğinde, yetkilendirme kodunu içeren, MSAL Java kullanarak belirteci alır. Son olarak belirteç uç noktasından (yeniden yönlendirme URI 'sindeki) belirteci aldığında Kullanıcı oturum açmış olur.
 
-Ayrıntılar için bkz. `doFilter()` [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)içindeki yöntemi.
+Ayrıntılar için bkz. `doFilter()` [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)içindeki yöntemi.
 
 > [!NOTE]
 > Kodu `doFilter()` biraz farklı bir düzende yazılır, ancak akış tanımlanan bir sıradır.

@@ -1,30 +1,28 @@
 ---
-title: Azure Image Builder ile Linux VM oluşturma (Önizleme)
-description: Azure görüntü Oluşturucu ile bir Linux VM oluşturun.
+title: Linux VM 'Leri için bir görüntü Galerisi ile Azure Image Builder kullanma (Önizleme)
+description: Azure Image Builder ve paylaşılan görüntü Galerisi ile Linux VM görüntüleri oluşturun.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 05/05/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: b50b2a9bfca99e1868c083759cce26bb176789f4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.reviewer: danis
+ms.openlocfilehash: 9774d7765906d07c974ca19ce6a0f4807898c3a0
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792420"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928338"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Önizleme: Azure Image Builder ile Linux VM oluşturma
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Linux görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
-Bu makalede, Azure görüntü Oluşturucu ve Azure CLı kullanarak özelleştirilmiş bir Linux görüntüsünü nasıl oluşturabileceğiniz gösterilmektedir. Bu makaledeki örnek, görüntüyü özelleştirmek için üç farklı [özelleştiriciler](image-builder-json.md#properties-customize) kullanır:
+Bu makalede, [paylaşılan bir görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı ve Azure CLI 'yi nasıl kullanabileceğinizi ve görüntüyü küresel olarak nasıl dağıtabileceğiniz gösterilmektedir. Bunu [Azure PowerShell](../windows/image-builder-gallery.md)kullanarak da yapabilirsiniz.
 
-- Shell (ScriptUri)-bir [kabuk betiği](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)indirir ve çalıştırır.
-- Kabuk (satır içi)-belirli komutları çalıştırır. Bu örnekte, satır içi komutlar bir dizin oluşturma ve işletim sistemini güncelleştirme içerir.
-- Dosya-GitHub ' [dan bir dosyayı](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) VM 'deki bir dizine kopyalar.
 
-Ayrıca, bir `buildTimeoutInMinutes`de belirtebilirsiniz. Varsayılan değer 240 dakikadır ve bir derleme süresini daha uzun süre çalışan derlemeler için de artırabilirsiniz.
+Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [Helloımagetemplateforsıg. JSON](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-Görüntüyü yapılandırmak için bir Sample. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şu şekildedir: [Helloımagetemplatelinux. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
+Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, şablon `distribute` bölümünün değeri olarak [Parçalama](image-builder-json.md#distribute-sharedimage) .
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
@@ -47,7 +45,8 @@ Kaydınızı denetleyin.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -55,147 +54,172 @@ Kayıtlı değilse, aşağıdakileri çalıştırın:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="setup-example-variables"></a>Kurulum örnek değişkenleri
+## <a name="set-variables-and-permissions"></a>Değişkenleri ve izinleri ayarla 
 
 Bazı bilgi parçalarını sürekli olarak kullanacağız. bu nedenle, bu bilgileri depolamak için bazı değişkenler oluşturacağız.
 
+Önizleme için, görüntü Oluşturucu yalnızca kaynak yönetilen görüntüyle aynı kaynak grubunda özel görüntüler oluşturmayı destekleyecektir. Bu örnekteki kaynak grubu adını kaynak yönetilen yansımanız ile aynı kaynak grubu olacak şekilde güncelleştirin.
 
-```console
-# Resource group name - we are using myImageBuilderRG in this example
-imageResourceGroup=myImageBuilerRGLinux
+```azurecli-interactive
+# Resource group name - we are using ibLinuxGalleryRG in this example
+sigResourceGroup=ibLinuxGalleryRG
 # Datacenter location - we are using West US 2 in this example
-location=WestUS2
-# Name for the image - we are using myBuilderImage in this example
-imageName=myBuilderImage
-# Run output name
-runOutputName=aibLinux
+location=westus2
+# Additional region to replicate the image to - we are using East US in this example
+additionalregion=eastus
+# name of the shared image gallery - in this example we are using myGallery
+sigName=myIbGallery
+# name of the image definition to be created - in this example we are using myImageDef
+imageDefName=myIbImageDef
+# image distribution metadata reference name
+runOutputName=aibLinuxSIG
 ```
 
 Abonelik KIMLIĞINIZ için bir değişken oluşturun. Bunu kullanarak `az account show | grep id`edinebilirsiniz.
 
-```console
-subscriptionID=<Your subscription ID>
+```azurecli-interactive
+subscriptionID=<Subscription ID>
 ```
 
-## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturun.
-Bu, görüntü yapılandırma şablonu yapıtı ve görüntüsünü depolamak için kullanılır.
+Kaynak grubunu oluşturun.
 
 ```azurecli-interactive
-az group create -n $imageResourceGroup -l $location
+az group create -n $sigResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Kaynak grubunda izinleri ayarla
-Görüntü Oluşturucu ' katkıda bulunan ' iznini kaynak grubunda oluşturmak için izin verin. Doğru izinler olmadan görüntü oluşturma başarısız olur. 
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Kullanıcı tarafından atanan bir kimlik oluşturma ve kaynak grubunda izinleri ayarlama
+Image Builder, görüntüyü Azure Paylaşılan görüntü galerisine (SıG) eklemek için belirtilen [Kullanıcı kimliğini](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) kullanır. Bu örnekte, görüntüyü SıG 'a dağıtmayı gerçekleştirmeye yönelik ayrıntılı eylemlere sahip bir Azure rol tanımı oluşturacaksınız. Rol tanımı daha sonra kullanıcı kimliğine atanır.
 
-`--assignee` Değer, görüntü Oluşturucu hizmeti için uygulama kayıt kimliğidir. 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $sigResourceGroup -n $idenityName
 
-```azurecli-interactive
+# get identity id
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# this command will download a Azure Role Definition template, and update the template with the parameters specified earlier.
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 ```
 
-## <a name="download-the-template-example"></a>Şablon örneğini indirin
 
-Kullanmanız için parametreli bir örnek görüntü yapılandırma şablonu oluşturulmuştur. Sample. json dosyasını indirin ve daha önce ayarladığınız değişkenlerle yapılandırın.
+## <a name="create-an-image-definition-and-gallery"></a>Görüntü tanımı ve Galeri oluşturma
 
-```bash
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
+Görüntü Oluşturucuyu paylaşılan bir görüntü Galerisi ile birlikte kullanmak için, var olan bir görüntü Galerisi ve görüntü tanımınız olması gerekir. Görüntü Oluşturucu, sizin için görüntü Galerisi ve görüntü tanımı oluşturmaz.
 
-sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateLinux.json
-sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateLinux.json
-sed -i -e "s/<region>/$location/g" helloImageTemplateLinux.json
-sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
-sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
+Kullanmak üzere bir galeri ve görüntü tanımınız yoksa, bunları oluşturarak başlayın. İlk olarak, bir görüntü galerisi oluşturun.
+
+```azurecli-interactive
+az sig create \
+    -g $sigResourceGroup \
+    --gallery-name $sigName
 ```
 
-Bu örnek. JSON öğesini gerektiği şekilde değiştirebilirsiniz. Örneğin, değerini daha uzun süre çalışan derlemeler için `buildTimeoutInMinutes` izin verecek şekilde artırabilirsiniz. Dosyasını, gibi `vi`bir metin düzenleyicisi kullanarak Cloud Shell düzenleyebilirsiniz.
+Ardından, bir görüntü tanımı oluşturun.
 
-```bash
-vi helloImageTemplateLinux.json
+```azurecli-interactive
+az sig image-definition create \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --publisher myIbPublisher \
+   --offer myOffer \
+   --sku 18.04-LTS \
+   --os-type Linux
 ```
 
-> [!NOTE]
-> Kaynak görüntü için, her zaman [bir sürüm belirtmeniz](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)gerekir `latest`.
->
-> Görüntünün dağıtıldığı kaynak grubunu ekler veya değiştirirseniz, [izinlerin kaynak grubu için ayarlandığından](#set-permissions-on-the-resource-group)emin olmanız gerekir.
 
+## <a name="download-and-configure-the-json"></a>. JSON indirin ve yapılandırın
 
-## <a name="submit-the-image-configuration"></a>Görüntü yapılandırmasını gönderme
-Görüntü yapılandırmasını VM görüntü Oluşturucu hizmetine gönderme
+. JSON şablonunu indirin ve değişkenleriniz ile yapılandırın.
+
+```azurecli-interactive
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIG.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIG.json
+sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIG.json
+sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforSIG.json
+sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIG.json
+sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
+sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
+```
+
+## <a name="create-the-image-version"></a>Görüntü sürümü oluşturma
+
+Sonraki bölümde, galerideki görüntü sürümü oluşturulur. 
+
+Görüntü yapılandırmasını Azure görüntü Oluşturucu hizmetine gönderme.
 
 ```azurecli-interactive
 az resource create \
-    --resource-group $imageResourceGroup \
-    --properties @helloImageTemplateLinux.json \
+    --resource-group $sigResourceGroup \
+    --properties @helloImageTemplateforSIG.json \
     --is-full-object \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateforSIG01
 ```
-
-Başarılı bir şekilde tamamlanırsa, bir başarı iletisi döndürür ve $imageResourceGroup bir görüntü Oluşturucu yapılandırma şablonu yapıtı oluşturur. ' Gizli türleri göster ' i etkinleştirirseniz, portalda kaynak grubunu görebilirsiniz.
-
-Ayrıca, arka planda, görüntü Oluşturucu aboneliğinizde bir hazırlama kaynak grubu oluşturur. Image Builder, görüntü derlemesi için hazırlama kaynak grubunu kullanır. Kaynak grubunun adı şu biçimde olacaktır: `IT_<DestinationResourceGroup>_<TemplateName>`.
-
-> [!IMPORTANT]
-> Hazırlama kaynak grubunu doğrudan silmeyin. Görüntü şablonu yapıtı silerseniz, hazırlama kaynak grubunu otomatik olarak siler. Daha fazla bilgi için bu makalenin sonundaki [Temizleme](#clean-up) bölümüne bakın.
-
-Görüntü yapılandırma şablonu gönderimi sırasında hizmet bir hata bildirirse, [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) adımlarına bakın. Derlemeyi göndermeyi yeniden denemeden önce şablonu da silmeniz gerekir. Şablonu silmek için:
-
-```azurecli-interactive
-az resource delete \
-    --resource-group $imageResourceGroup \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
-```
-
-## <a name="start-the-image-build"></a>Görüntü derlemesini Başlat
 
 Görüntü derlemesini başlatın.
 
-
 ```azurecli-interactive
 az resource invoke-action \
-     --resource-group $imageResourceGroup \
+     --resource-group $sigResourceGroup \
      --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n helloImageTemplateLinux01 \
+     -n helloImageTemplateforSIG01 \
      --action Run 
 ```
 
-Derleme tamamlanana kadar bekleyin, bu örnekte 10-15 dakika sürebilir.
-
-Herhangi bir hatayla karşılaşırsanız lütfen bu [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) adımlarını gözden geçirin.
+Görüntünün oluşturulması ve her iki bölgeye çoğaltılmasının biraz zaman alabilir. VM oluşturma işlemine geçmeden önce Bu bölüm bitene kadar bekleyin.
 
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Oluşturduğunuz görüntüyü kullanarak VM 'yi oluşturun.
+Azure Image Builder tarafından oluşturulan görüntü sürümünden bir VM oluşturun.
 
 ```azurecli-interactive
 az vm create \
-  --resource-group $imageResourceGroup \
-  --name myVM \
-  --admin-username azureuser \
-  --image $imageName \
+  --resource-group $sigResourceGroup \
+  --name myAibGalleryVM \
+  --admin-username aibuser \
   --location $location \
+  --image "/subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/latest" \
   --generate-ssh-keys
 ```
 
-VM 'yi oluşturma çıktısından IP adresini alın ve VM 'ye SSH için kullanın.
+VM ile SSH bağlantısı kurun.
 
-```bash
-ssh azureuser@<pubIp>
+```azurecli-interactive
+ssh aibuser@<publicIpAddress>
 ```
 
-Görüntünün, SSH bağlantınız kurulduğu anda günün Iletisiyle özelleştirildiğini görmeniz gerekir!
+Görüntünün, SSH bağlantınız kurulduğu anda *günün iletisiyle* özelleştirildiğini görmeniz gerekir!
 
-```output
-
+```console
 *******************************************************
 **            This VM was built from the:            **
 **      !! AZURE VM IMAGE BUILDER Custom Image !!    **
@@ -203,38 +227,75 @@ Görüntünün, SSH bağlantınız kurulduğu anda günün Iletisiyle özelleşt
 *******************************************************
 ```
 
-SSH `exit` bağlantısını kapatmak için işiniz bittiğinde yazın.
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-## <a name="check-the-source"></a>Kaynağı denetleyin
+Artık aynı görüntünün yeni bir sürümünü oluşturmak için görüntü sürümünü yeniden özelleştirmeyi denemek istiyorsanız, sonraki adımları atlayın ve [başka bir görüntü sürümü oluşturmak Için Azure Image Builder 'ı kullanma](image-builder-gallery-update-image-version.md)bölümüne gidin.
 
-Görüntü Oluşturucu şablonunda, ' Özellikler ' içinde, kaynak görüntüyü, çalıştırılan özelleştirme betiğini ve nerede dağıtıldığını görürsünüz.
 
-```bash
-cat helloImageTemplateLinux.json
-```
+Bu işlem, oluşturulan görüntüyü ve diğer tüm kaynak dosyalarını siler. Kaynakları silmeden önce bu dağıtımla bitdiğinizden emin olun.
 
-Bu. JSON dosyası hakkında daha ayrıntılı bilgi için bkz. [Görüntü Oluşturucu şablonu başvurusu](image-builder-json.md)
-
-## <a name="clean-up"></a>Temizleme
-
-İşiniz bittiğinde, kaynakları silebilirsiniz.
+Görüntü Galerisi kaynaklarını silerken, bunları oluşturmak için kullanılan görüntü tanımını silebilmeniz için önce tüm görüntü sürümlerini silmeniz gerekir. Bir galeriyi silmek için, önce galerideki tüm görüntü tanımlarını silmiş olmanız gerekir.
 
 Görüntü Oluşturucu şablonunu silin.
 
 ```azurecli-interactive
 az resource delete \
-    --resource-group $imageResourceGroup \
+    --resource-group $sigResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateforSIG01
 ```
 
-Görüntü kaynak grubunu silin.
+İzin atamalarını, rolleri ve kimliği silme
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 
-```azurecli
-az group delete -n $imageResourceGroup
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
+Görüntü Oluşturucu tarafından oluşturulan görüntü sürümünü alın, bu her zaman ile `0.`başlar ve ardından görüntü sürümünü siler
+
+```azurecli-interactive
+sigDefImgVersion=$(az sig image-version list \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID --query [].'name' -o json | grep 0. | tr -d '"')
+az sig image-version delete \
+   -g $sigResourceGroup \
+   --gallery-image-version $sigDefImgVersion \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID
+```   
+
+
+Görüntü tanımını silin.
+
+```azurecli-interactive
+az sig image-definition delete \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID
+```
+
+Galeriyi silin.
+
+```azurecli-interactive
+az sig delete -r $sigName -g $sigResourceGroup
+```
+
+Kaynak grubunu silin.
+
+```azurecli-interactive
+az group delete -n $sigResourceGroup -y
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede kullanılan. json dosyasının bileşenleri hakkında daha fazla bilgi edinmek için bkz. [Görüntü Oluşturucu şablonu başvurusu](image-builder-json.md).
+[Azure Paylaşılan görüntü galerileri](shared-image-galleries.md)hakkında daha fazla bilgi edinin.

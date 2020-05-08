@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547883"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738057"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure 'dan Azure 'a olağanüstü durum kurtarma
 
@@ -194,10 +194,10 @@ Bir çoğaltma grubunda, 16 sanal makineyi birlikte çoğaltabilirsiniz.
 Çoklu VM tutarlılığı CPU yoğun olduğundan, bunun etkinleştirilmesi iş yükü performansını etkileyebilir. Çoklu VM tutarlılığı yalnızca makineler aynı iş yükünü çalıştırıyorsa ve birden çok makine arasında tutarlılık gerekiyorsa kullanın. Örneğin, bir uygulamada iki SQL Server örneğe ve iki Web sunucusuna sahipseniz, yalnızca SQL Server örnekleri için çoklu VM tutarlılığı olmalıdır.
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>Çoğaltma grubuna zaten çoğaltılan bir VM eklenebilir mi?
-
 Çoğaltmayı etkinleştirirken, yeni bir çoğaltma grubuna VM ekleyebilirsiniz. Ayrıca, çoğaltmayı etkinleştirirken var olan bir çoğaltma grubuna VM ekleyebilirsiniz. Ancak, yeni bir çoğaltma grubuna veya var olan bir çoğaltma grubuna zaten çoğaltılan bir VM ekleyemezsiniz.
-
+ 
 ## <a name="failover"></a>Yük devretme
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Azure VM 'Leri için hedef bölgede kapasite nasıl belirlenir?
 

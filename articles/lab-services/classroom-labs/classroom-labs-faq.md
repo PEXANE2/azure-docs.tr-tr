@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/01/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443508"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691810"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
@@ -57,6 +57,9 @@ Azure 'da veri merkezleri için genel IP adresi aralığı sağlayan [genel bulu
 ### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Laboratuvar Oluşturucusu olarak, yeni bir laboratuvar oluştururken sanal makine görüntüleri açılan menüsünde neden ek görüntü seçeneklerini etkinleştiremiyorum?
 
 Bir yönetici sizi laboratuvar hesabına laboratuvar Oluşturucu olarak eklediğinde, laboratuvarları oluşturma izinleri verilir. Ancak, etkinleştirilmiş sanal makine görüntülerinin listesi de dahil olmak üzere, laboratuvar hesabındaki herhangi bir ayarı düzenleme izniniz yok. Ek görüntüleri etkinleştirmek için laboratuvar hesabı yöneticinizle iletişime geçerek bunu sizin için yapın veya yöneticiden laboratuvar hesabına katkıda bulunan bir rol olarak eklemesini isteyin. Katkıda bulunan rolü, laboratuvar hesabındaki sanal makine görüntüsü listesini düzenleme izinleri verecektir.
+
+### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>Bir sanal makineye ek diskler ekleyebilir miyim?
+Hayır. sınıf laboratuvarında bir VM 'ye ek diskler eklemek mümkün değildir. 
 
 ## <a name="users"></a>Kullanıcılar
 

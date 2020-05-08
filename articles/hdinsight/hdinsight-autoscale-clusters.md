@@ -7,43 +7,30 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/07/2020
-ms.openlocfilehash: 7d741e2fc787c057ebfcdeceeab2ea096df3f9ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195222"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731982"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
-> [!Important]
-> Azure HDInsight otomatik ölçeklendirme özelliği, 6 Kasım 'da genel kullanıma sunulduktan sonra Spark ve Hadoop kümeleri için 2019, özelliğin önizleme sürümünde kullanılamaz. 7 Kasım 2019 ' den önce bir Spark kümesi oluşturduysanız ve kümenizdeki otomatik ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede otomatik ölçeklendirmeyi etkinleştirmek olur.
->
-> Etkileşimli sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, etkileşimli sorgu ve HBase kümelerinde kullanılabilir.
-
-Azure HDInsight 'ın küme otomatik ölçeklendirme özelliği, bir kümedeki çalışan düğümlerinin sayısını otomatik olarak ölçeklendirir ve kapatır. Kümedeki diğer düğüm türleri şu anda ölçeklendirilemez.  Yeni bir HDInsight kümesi oluşturulurken, en düşük ve en fazla çalışan düğümü sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, analiz yükünün kaynak gereksinimlerini izler ve çalışan düğümü sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
-
-## <a name="cluster-compatibility"></a>Küme uyumluluğu
-
-Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türlerini ve sürümlerini açıklamaktadır.
-
-| Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
-|---|---|---|---|---|---|---|---|
-| ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 3,6, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-| HDInsight 4,0, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
-
-\*HBase kümeleri, yük tabanlı değil yalnızca zamanlama tabanlı ölçeklendirme için yapılandırılabilir.
+Azure HDInsight 'ın ücretsiz otomatik ölçeklendirme özelliği, daha önce ayarlanan ölçütlere göre kümenizdeki çalışan düğümlerinin sayısını otomatik olarak artırabilir veya azaltabilir. Küme oluşturma sırasında en az ve en fazla düğüm sayısını ayarlarsınız, bir gün-saat zamanlaması veya belirli performans ölçümlerini kullanarak ölçekleme ölçütlerini oluşturun ve HDInsight platformu Rest 'i yapar.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-HDInsight kümeniz için yük tabanlı ölçeklendirmeyi veya zamanlama tabanlı ölçeklendirmeyi seçebilirsiniz. Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek için, kümenizdeki düğüm sayısını sizin ayarladığınız bir Aralık içinde değiştirir.
+Otomatik Ölçeklendirme özelliği, ölçeklendirme olaylarını tetiklemek için iki tür koşul kullanır: çeşitli küme performansı ölçümleri ( *Yük tabanlı ölçeklendirme*olarak adlandırılır) ve zaman tabanlı tetikleyiciler ( *zamanlama tabanlı ölçeklendirme*olarak adlandırılır). Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek için, kümenizdeki düğüm sayısını sizin ayarladığınız bir Aralık içinde değiştirir. Zamanlama tabanlı ölçeklendirme, belirli tarih ve saatlerle ilişkilendirdiğiniz işlemlere göre kümenizdeki düğüm sayısını değiştirir.
 
-Zamanlama tabanlı ölçeklendirme, belirli zamanlarda geçerli olan koşullara göre kümenizdeki düğüm sayısını değiştirir. Bu koşullar kümeyi istenen sayıda düğüme ölçeklendirebilir.
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>Yük tabanlı veya zamanlama tabanlı ölçeklendirmeyi seçme
 
-### <a name="metrics-monitoring"></a>Ölçüm izleme
+Bir ölçeklendirme türü seçerken aşağıdaki faktörleri göz önünde bulundurun:
+
+* Yük sapması: küme yükünün belirli saatlerde, belirli günlerde tutarlı bir düzende izlenmesi mi? Aksi takdirde, yük tabanlı zamanlama daha iyi bir seçenektir.
+* SLA gereksinimleri: otomatik ölçeklendirme ölçeği, tahmine dayalı yerine reaktif. Yükün ne zaman artmaya başladığı ve kümenin hedef boyutunda olması gereken süre arasında yeterli gecikme olur mu? Katı SLA gereksinimleri varsa ve yük sabit bir bilinen örüntü ise, ' zamanlama tabanlı ' daha iyi bir seçenektir.
+
+### <a name="cluster-metrics"></a>Küme ölçümleri
 
 Otomatik ölçeklendirme, kümeyi sürekli izler ve aşağıdaki ölçümleri toplar:
 
@@ -56,7 +43,7 @@ Otomatik ölçeklendirme, kümeyi sürekli izler ve aşağıdaki ölçümleri to
 |Düğüm başına kullanılan bellek|Çalışan düğümündeki yük. 10 GB belleğin kullanıldığı bir çalışan düğümü, 2 GB kullanılan bellekle çalışan bir çalışandan daha fazla yük altında kabul edilir.|
 |Düğüm başına uygulama ana sayısı|Çalışan düğümünde çalışan uygulama ana (Har) kapsayıcıları sayısı. İki har kapsayıcıyı barındıran bir çalışan düğümü, sıfır har kapsayıcıları barındıran bir çalışan düğümünden daha önemli kabul edilir.|
 
-Yukarıdaki ölçümler her 60 saniyede bir denetlenir. Otomatik ölçeklendirme, bu ölçümlere göre kararlar verir.
+Yukarıdaki ölçümler her 60 saniyede bir denetlenir. Bu ölçülerden herhangi birini kullanarak kümeniz için ölçeklendirme işlemleri ayarlayabilirsiniz.
 
 ### <a name="load-based-scale-conditions"></a>Yük tabanlı ölçek koşulları
 
@@ -70,6 +57,24 @@ Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek i
 Ölçek artırma için, otomatik ölçeklendirme gereken sayıda düğüm eklemek için bir ölçek isteği verir. Ölçek artırma, geçerli CPU ve bellek gereksinimlerini karşılamak için kaç yeni çalışan düğümünün gerekli olduğunu temel alır.
 
 Ölçek azaltma için, otomatik ölçeklendirme belirli sayıda düğümü kaldırma isteği verir. Ölçek azaltma, düğüm başına düşen saat kapsayıcısı sayısına bağlıdır. Ve geçerli CPU ve bellek gereksinimleri. Hizmet ayrıca hangi düğümlerin geçerli iş yürütmeye göre kaldırılması gerektiğini de algılar. Ölçeği azaltma işlemi, önce düğümleri yeniden komisyonlar ve sonra kümeden kaldırır.
+
+### <a name="cluster-compatibility"></a>Küme uyumluluğu
+
+> [!Important]
+> Azure HDInsight otomatik ölçeklendirme özelliği, 6 Kasım 'da genel kullanıma sunulduktan sonra Spark ve Hadoop kümeleri için 2019, özelliğin önizleme sürümünde kullanılamaz. 7 Kasım 2019 ' den önce bir Spark kümesi oluşturduysanız ve kümenizdeki otomatik ölçeklendirme özelliğini kullanmak istiyorsanız, önerilen yol yeni bir küme oluşturmak ve yeni kümede otomatik ölçeklendirmeyi etkinleştirmek olur.
+>
+> Etkileşimli sorgu (LLAP) ve HBase kümeleri için otomatik ölçeklendirme hala önizleme aşamasındadır. Otomatik ölçeklendirme yalnızca Spark, Hadoop, etkileşimli sorgu ve HBase kümelerinde kullanılabilir.
+
+Aşağıdaki tablo, otomatik ölçeklendirme özelliğiyle uyumlu küme türlerini ve sürümlerini açıklamaktadır.
+
+| Sürüm | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+|---|---|---|---|---|---|---|---|
+| ESP olmadan HDInsight 3,6 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| ESP olmadan HDInsight 4,0 | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 3,6, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+| HDInsight 4,0, ESP ile | Yes | Yes | Yes | Evet* | Hayır | Hayır | Hayır |
+
+\*HBase kümeleri, yük tabanlı değil yalnızca zamanlama tabanlı ölçeklendirme için yapılandırılabilir.
 
 ## <a name="get-started"></a>başlarken
 
@@ -205,32 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 Tüm yük parametrelerinin tam açıklaması için [Yük tabanlı otomatik ölçeklendirmeyi etkinleştirme](#load-based-autoscaling) konusundaki önceki bölüme bakın.
 
-## <a name="guidelines"></a>Yönergeler
-
-### <a name="choosing-load-based-or-schedule-based-scaling"></a>Yük tabanlı veya zamanlama tabanlı ölçeklendirmeyi seçme
-
-Hangi mod üzerinde seçim yapmaya karar vermeden önce aşağıdaki faktörleri göz önünde bulundurun:
-
-* Küme oluşturma sırasında otomatik ölçeklendirmeyi etkinleştirin.
-* Düğüm sayısı alt sınırı en az üç olmalıdır.
-* Yük sapması: küme yükü, belirli saatlerde, belirli günlerde tutarlı bir model izler. Aksi takdirde, yük tabanlı zamanlama daha iyi bir seçenektir.
-* SLA gereksinimleri: otomatik ölçeklendirme ölçeği, tahmine dayalı yerine reaktif. Yükün ne zaman artmaya başladığı ve kümenin hedef boyutunda olması gereken süre arasında yeterli gecikme olur mu? Katı SLA gereksinimleri varsa ve yük sabit bir bilinen örüntü ise, ' zamanlama tabanlı ' daha iyi bir seçenektir.
-
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Ölçek artırma veya azaltma işlemlerinin gecikme süresini göz önünde bulundurun
-
-Ölçeklendirme işleminin tamamlanması 10 ila 20 dakika sürebilir. Özelleştirilmiş bir zamanlama ayarlarken bu gecikmeyi planlayın. Örneğin, küme boyutunun 9:00 ' de 20 olması gerekiyorsa, ölçeklendirme işleminin 9:00 "ile tamamlanmasını sağlamak için zamanlama tetikleyicisini 8:30 olarak daha önceki bir zamana ayarlayın.
-
-### <a name="preparation-for-scaling-down"></a>Ölçeği azaltma hazırlığı
-
-Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, hedef boyutunu karşılamak için düğümlerin yetkisini alınır. Görevler bu düğümlerde çalışıyorsa, otomatik ölçeklendirme, görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydıralınacaktır. Bu nedenle, tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
-
-Çalışan işler devam edecektir. Bekleyen işler, daha az kullanılabilir çalışan düğümü ile zamanlamaya göre bekleyecektir.
-
-### <a name="minimum-cluster-size"></a>En düşük küme boyutu
-
-Kümenizi üçten az düğüme ölçeklendirmeyin. Kümenizin üçten az düğüme ölçeklendirilmesi, yetersiz dosya çoğaltma nedeniyle güvenli modda takılmasına neden olabilir.  Daha fazla bilgi için bkz. [güvenli modda takılme](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
-
-## <a name="monitoring"></a>İzleme
+## <a name="monitoring-autoscale-activities"></a>Otomatik ölçeklendirme etkinliklerini izleme
 
 ### <a name="cluster-status"></a>Küme durumu
 
@@ -257,6 +237,22 @@ Küme ölçümlerinin bir parçası olarak küme ölçeği artırma ve ölçeği
 **İzleme**altında **ölçümler** ' i seçin. Ardından **ölçüm** açılan kutusundan ölçüm ve **etkin çalışan sayısı** **Ekle** ' yi seçin. Zaman aralığını değiştirmek için sağ üstteki düğmeyi seçin.
 
 ![Çalışan düğümü zamanlama tabanlı otomatik ölçeklendirme ölçümünü etkinleştir](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+
+## <a name="other-considerations"></a>Diğer konular
+
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Ölçek artırma veya azaltma işlemlerinin gecikme süresini göz önünde bulundurun
+
+Ölçeklendirme işleminin tamamlanması 10 ila 20 dakika sürebilir. Özelleştirilmiş bir zamanlama ayarlarken bu gecikmeyi planlayın. Örneğin, küme boyutunun 9:00 ' de 20 olması gerekiyorsa, ölçeklendirme işleminin 9:00 "ile tamamlanmasını sağlamak için zamanlama tetikleyicisini 8:30 olarak daha önceki bir zamana ayarlayın.
+
+### <a name="preparation-for-scaling-down"></a>Ölçeği azaltma hazırlığı
+
+Küme ölçeklendirme işlemi sırasında, otomatik ölçeklendirme, hedef boyutunu karşılamak için düğümlerin yetkisini alınır. Görevler bu düğümlerde çalışıyorsa, otomatik ölçeklendirme, görevler tamamlanana kadar bekler. Her çalışan düğüm da bir rol görevi görüyor olduğundan, geçici veriler kalan düğümlere kaydıralınacaktır. Bu nedenle, tüm geçici verileri barındırmak için kalan düğümlerde yeterli alan olduğundan emin olun.
+
+Çalışan işler devam edecektir. Bekleyen işler, daha az kullanılabilir çalışan düğümü ile zamanlamaya göre bekleyecektir.
+
+### <a name="minimum-cluster-size"></a>En düşük küme boyutu
+
+Kümenizi üçten az düğüme ölçeklendirmeyin. Kümenizin üçten az düğüme ölçeklendirilmesi, yetersiz dosya çoğaltma nedeniyle güvenli modda takılmasına neden olabilir.  Daha fazla bilgi için bkz. [güvenli modda takılme](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
