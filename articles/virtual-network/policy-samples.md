@@ -1,33 +1,26 @@
 ---
-title: İlke şablonu örnekleri | Microsoft Docs
-description: Sanal ağ için Azure Ilke şablonu örnekleri.
-services: virtual-network
-documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-network
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: ''
+title: Azure sanal ağ için yerleşik ilke tanımları
+description: Azure sanal ağ için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
 ms.date: 05/05/2020
+ms.topic: sample
+author: KumudD
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 93d0138f336ffc7055daf9988658a6284af53188
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.service: virtual-network
+ms.custom: subject-policy-samples
+ms.openlocfilehash: 557e3658b73314660ffde134b6151f9d83b26824
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839139"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928525"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Sanal ağ için Azure Ilke örneği yerleşik bileşenleri
+# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-network"></a>Azure sanal ağ için Azure Ilkesi yerleşik ilke tanımları
 
-Aşağıdaki tabloda [Azure ilke](../governance/policy/overview.md) örnekleri bağlantıları yer almaktadır. Örnekler, [Azure İlkesi örnek deposunda](https://github.com/Azure/azure-policy) bulunur.
+Bu sayfa, Azure sanal ağ için [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-## <a name="network"></a>Ağ
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
+
+## <a name="azure-virtual-network"></a>Azure Sanal Ağ
 
 [!INCLUDE [azure-policy-samples-policies-network](../../includes/policy/samples/bycat/policies-network.md)]
 
@@ -38,3 +31,9 @@ Aşağıdaki tabloda [Azure ilke](../governance/policy/overview.md) örnekleri b
 ## <a name="general"></a>Genel
 
 [!INCLUDE [azure-policy-samples-policies-general](../../includes/policy/samples/bycat/policies-general.md)]
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Yerleşik ilkeleri görmek için [Azure İlkesi GitHub deposuna](https://github.com/Azure/azure-policy) gidin.
+- [Azure İlkesi tanımı yapısını](../governance/policy/concepts/definition-structure.md) gözden geçirin.
+- [İlkenin etkilerini anlama](../governance/policy/concepts/effects.md) konusunu gözden geçirin.

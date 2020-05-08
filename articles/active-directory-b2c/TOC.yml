@@ -226,7 +226,9 @@
         - name: Belirteçler ve oturum yönetimi
           items:
             - name: Belirteçleri özelleştirme
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: Oturum davranışını yapılandırma
+              href: session-behavior-custom-policy.md
         - name: Doğrudan geçiş harici IdP belirteci
           href: idp-pass-through-custom.md
         - name: Uyarlamalı deneyim

@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: e4d9003a6786af1218e4e1b85d1bd93b65f1abe5
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872032"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930327"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Örnek jupi Not defterleri açık veri kümeleriyle verilerin nasıl zenginleştiralınacağını gösterir 
 Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri kümelerinin nasıl yükleneceğini ve bunları zenginleştirmek için bunları nasıl kullanacağınızı gösterir. Teknikler, verileri işlemek için Apache Spark ve Pandas kullanımını içerir.
@@ -40,6 +40,6 @@ Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: otomatik makine öğrenimi ve açık bir veri kümesi ile gerileme modelleme](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
+* [Öğretici: otomatik makine öğrenimi ve açık bir veri kümesi ile gerileme modelleme](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Açık veri kümeleri için Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure Açık Veri Kümeleri kataloğu](https://azure.microsoft.com/services/open-datasets/catalog/)

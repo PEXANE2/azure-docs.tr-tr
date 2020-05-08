@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537687"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858573"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
@@ -26,8 +26,9 @@ Depolama hesabınızda büyük dosya paylaşımlarını etkinleştirdiğinizde, 
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölgesel olarak yedekli depolama (ZRS), büyük dosya paylaşımında etkinleştirilmiş hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanamazsınız.
-Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir. Bunu etkinleştirdikten sonra, hesabınızı GZRS, GRS veya RA-GRS ' e dönüştüremeyeceksiniz.
+Şimdilik, yalnızca yerel olarak yedekli depolama (LRS) veya bölgesel olarak yedekli depolama (ZRS), büyük dosya paylaşımında etkinleştirilmiş hesaplarda kullanabilirsiniz. Coğrafi bölge yedekli depolama (GZRS), coğrafi olarak yedekli depolama (GRS), Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanamazsınız.
+
+Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir işlemdir. Bu uygulamayı etkinleştirdikten sonra, hesabınızı GZRS, GRS, RA-GRS veya RA-GZRS ' e dönüştüremeyeceksiniz.
 
 ## <a name="create-a-new-storage-account"></a>Yeni depolama hesabı oluşturma
 
@@ -68,7 +69,7 @@ Hesapta büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz bir 
 Büyük dosya paylaşımları etkin olan bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. , `<yourStorageAccountName>` `<yourResourceGroup>`Ve `<yourDesiredRegion>` bilgilerinizi ile değiştirin.
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 Büyük dosya paylaşımları etkin olan bir depolama hesabı oluşturmak için aşağıdaki komutu kullanın. , `<yourStorageAccountName>` `<yourResourceGroup>`Ve `<yourDesiredRegion>` bilgilerinizi ile değiştirin.
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>Mevcut bir hesapta büyük dosya paylaşımlarını etkinleştir
 
-Ayrıca, mevcut hesaplarınızda büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşımlarını etkinleştirirseniz, GZRS, GRS veya RA-GRS ' e dönüştüremezsiniz. Bu depolama hesabında büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz.
+Ayrıca, mevcut hesaplarınızda büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşımlarını etkinleştirirseniz, GZRS, GRS, RA-GRS veya RA-GZRS 'e dönüştüremezsiniz. Bu depolama hesabında büyük dosya paylaşımlarının etkinleştirilmesi geri alınamaz.
 
 ### <a name="portal"></a>Portal
 

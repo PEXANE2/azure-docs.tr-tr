@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38c0d7d93d00d31a8efa508a635b471a73da0419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8a10f81cd9a73b9b77e68f15f7bc7c98d60ac0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123270"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891020"
 ---
 İş ortakları tarafından sunulan hizmetler hakkında daha fazla bilgi için bu bölümdeki bağlantıları kontrol edebilirsiniz. Dal cihazı ortağınız aşağıdaki bölümde listelenmiyorsa, dal cihaz sağlayıcınızın bizimle iletişim kurun. E-posta göndererek bizimle iletişim kurabilirler azurevirtualwan@microsoft.com.
 
@@ -29,6 +29,7 @@ ms.locfileid: "80123270"
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
 |[Gümüş yoğun]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect ve Microsoft Azure sanal WAN tümleştirme Kılavuzu](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
+|[Velocloud-VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Azure sanal WAN Velocloud dağıtım kılavuzu](https://kb.vmware.com/s/article/79000)|
 | [Ekler](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [Tersi SD 'yi yapılandırma-WAN ve Microsoft Azure vWAN (kayıtlı müşteriler için kullanılabilir)](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |
 
 *\*Doğrudan bağlantı kullanılamıyor. Destek için lütfen iş ortağı şirketine başvurun.*

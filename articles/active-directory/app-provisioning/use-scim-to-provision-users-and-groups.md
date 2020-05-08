@@ -2,28 +2,23 @@
 title: Azure AD 'den uygulamalara Kullanıcı hazırlama için bir SCıM uç noktası geliştirin
 description: Etki alanları arası kimlik yönetimi (SCıM) sistemi, otomatik Kullanıcı sağlamayı standartlaştırlar. Bir SCıM uç noktası geliştirmeyi, SCıM API 'nizi Azure Active Directory ile tümleştirmeyi ve bulut uygulamalarınıza kullanıcıları ve grupları sağlamayı otomatik hale getirmeye başlamasını öğrenin.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229927"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864292"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın (Azure AD)
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın
 
 Uygulama geliştiricisi olarak, uygulamanız ile Azure AD arasında kullanıcıları ve grupları otomatik olarak sağlamayı etkinleştirmek için etki alanları arası kimlik yönetimi (SCıM) Kullanıcı yönetimi API 'sini kullanabilirsiniz. Bu makalede, bir SCıM uç noktası oluşturma ve Azure AD sağlama hizmeti ile tümleştirme açıklanır. SCıM belirtimi, sağlama için ortak bir Kullanıcı şeması sağlar. SAML veya OpenID Connect gibi Federasyon standartlarıyla birlikte kullanıldığında, SCıM yöneticilere erişim yönetimi için uçtan uca standartlara dayalı bir çözüm sunar.
 
@@ -1200,8 +1195,8 @@ SCıM özelliği, kimlik doğrulama ve yetkilendirme için bir SCıM 'e özgü d
 [!NOTE] Azure AD sağlama yapılandırması özel uygulama kullanıcı arabiriminde belirteç alanını boş bırakmanız önerilmez. Oluşturulan belirteç öncelikle test amacıyla kullanılabilir.
 
 **OAuth yetkilendirme kodu verme akışı:** Sağlama hizmeti [yetkilendirme kodu vermeyi](https://tools.ietf.org/html/rfc6749#page-24)destekler. Uygulamanızı galeride yayımlama isteğinizi gönderdikten sonra, takımımız aşağıdaki bilgileri toplamak için sizinle birlikte çalışacaktır:
-*  Yetkilendirme URL 'SI: istemci tarafından, Kullanıcı Aracısı yeniden yönlendirme aracılığıyla kaynak sahibinden yetkilendirme elde etmek için bir URL. Kullanıcı, erişim yetkisi vermek için bu URL 'ye yeniden yönlendirilir. 
-*  Belirteç Exchange URL 'SI: bir erişim belirtecine, genellikle istemci kimlik doğrulamasıyla bir yetkilendirme izni vermek için istemcinin URL 'SI.
+*  Yetkilendirme URL 'SI: istemci tarafından, Kullanıcı Aracısı yeniden yönlendirme aracılığıyla kaynak sahibinden yetkilendirme elde etmek için bir URL. Kullanıcı, erişim yetkisi vermek için bu URL 'ye yeniden yönlendirilir. Bu URL 'nin şu anda kiracı başına yapılandırılamadığını unutmayın.
+*  Belirteç Exchange URL 'SI: bir erişim belirtecine, genellikle istemci kimlik doğrulamasıyla bir yetkilendirme izni vermek için istemcinin URL 'SI. Bu URL 'nin şu anda kiracı başına yapılandırılamadığını unutmayın.
 *  İstemci KIMLIĞI: yetkilendirme sunucusu, kayıtlı istemciye, istemci tarafından sunulan kayıt bilgilerini temsil eden benzersiz bir dize olan istemci tanımlayıcısını verir.  İstemci tanımlayıcısı gizli değil; Kaynak sahibine gösterilir ve yalnızca istemci kimlik doğrulaması **için kullanılmamalıdır.**  
 *  Gizli anahtar: istemci parolası, yetkilendirme sunucusu tarafından oluşturulan bir gizli dizi. Bu, yalnızca yetkilendirme sunucusu için bilinen benzersiz bir değer olmalıdır. 
 

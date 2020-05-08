@@ -4,14 +4,14 @@ description: Uzamsal verileri Azure Cosmos DB ile dizinle
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137912"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839223"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal verileri dizinle
 
@@ -28,11 +28,17 @@ Bir Nutshell 'de geometri, coğrafi olmayan koordinatlardan 2B düzlemin üzerin
 
 ## <a name="modifying-geospatial-data-type"></a>Jeo-uzamsal veri türünü değiştirme
 
-Kapsayıcıda Jeo-uzamsal verilerin `geospatialConfig` nasıl dizine alınacağını belirtir. Kapsayıcı başına bir tane `geospatialConfig` belirtmelisiniz: Coğrafya veya Geometry. Belirtilmemişse, varsayılan olarak Coğrafya `geospatialConfig` veri türü olur. `geospatialConfig`Öğesini değiştirdiğinizde, kapsayıcıdaki tüm mevcut Jeo uzamsal verilerin yeniden dizinlenir.
+Kapsayıcıda Jeo-uzamsal **yapılandırması** , uzamsal verilerin nasıl dizine alınacağını belirtir. Kapsayıcı başına bir **Jeo-uzamsal yapılandırma** belirtin: Coğrafya veya Geometry.
 
-> [!NOTE]
-> Azure Cosmos DB Şu anda .NET SDK içindeki geospatialConfig üzerinde yapılan değişiklikleri yalnızca 3,6 ve üzeri sürümlerde desteklemektedir.
->
+Azure portal **Coğrafya** ve **geometri** uzamsal türü arasında geçiş yapabilirsiniz. Geometri uzamsal türüne geçmeden önce [sınırlayıcı kutusuyla geçerli bir uzamsal geometri dizin oluşturma ilkesi](#geometry-data-indexing-examples) oluşturmanız önemlidir.
+
+Azure portal içinde **Veri Gezgini** **Jeo-uzamsal yapılandırması** nasıl ayarlanır:
+
+![Jeo-uzamsal yapılandırma ayarlanıyor](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+Ayrıca, `geospatialConfig` **Jeo-uzamsal yapılandırmayı**ayarlamak için .NET SDK 'sında de değişiklik yapabilirsiniz:
+
+Belirtilmemişse, varsayılan olarak Coğrafya `geospatialConfig` veri türü olur. `geospatialConfig`Öğesini değiştirdiğinizde, kapsayıcıdaki tüm mevcut Jeo uzamsal verilerin yeniden dizinlenir.
 
 İşte, Jeo-uzamsal veri türünü, `geometry` `geospatialConfig` özelliği ayarlanarak ve **sıçrama dingbox**ekleyerek olarak değiştirme örneği:
 
@@ -112,7 +118,7 @@ Sınırlayıcı kutu aşağıdaki özelliklerden oluşur:
 
 Geometrik veriler sonsuz olabilecek bir düzlemi kapladığı için sınırlayıcı bir kutu gereklidir. Ancak uzamsal dizinler, sınırlı bir alan gerektirir. **Coğrafya** veri türü Için, Dünya sınırı ve bir sınırlayıcı kutu ayarlamanız gerekmez.
 
-Verilerinizin tümünü (veya çoğunu) içeren bir sınırlayıcı kutu oluşturmalısınız. Yalnızca sınırlayıcı kutunun içindeki nesneler üzerinde hesaplanan işlemler, uzamsal dizin kullanabilir. Sorgu performansını olumsuz yönde etkilediği için sınırlayıcı kutuyu gerekenden önemli ölçüde daha büyük hale memelisiniz.
+Verilerinizin tümünü (veya çoğunu) içeren bir sınırlayıcı kutu oluşturun. Yalnızca sınırlayıcı kutunun içindeki nesneler üzerinde hesaplanan işlemler, uzamsal dizin kullanabilir. Sınırlayıcı kutuyu gerekenden büyük hale getirmek, sorgu performansını olumsuz yönde etkiler.
 
 **Geospatialconfig** ile `geometry` **geometri** verilerinin dizinini oluşturan örnek bir dizin oluşturma ilkesi aşağıda verilmiştir:
 

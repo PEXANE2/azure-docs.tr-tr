@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79078458"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872056"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Bu hatayı çözmek için, denemenizin dosyalarını bir veri deposunda depolay�
 Deneme&nbsp;açıklaması|Depolama sınırı çözümü
 ---|---
 2000 'den az dosya & veri deposu kullanamaz| Anlık görüntü boyutu sınırını geçersiz kıl <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Bu işlem, dosyaların sayısına ve boyutuna bağlı olarak birkaç dakika sürebilir.
-Belirli komut dosyası dizini kullanılmalıdır| Kaynak kodun `.amlignore` parçası olmayan denemenizin anlık görüntüsünden dosyaları dışlamak için bir dosya oluşturun. `.amlignore` Dosya adlarını dosyaya ekleyin ve eğitim betiğinizle aynı dizine yerleştirin. Dosya, bir `.gitignore` dosya ile aynı [söz dizimini ve desenleri](https://git-scm.com/docs/gitignore) kullanır. `.amlignore`
+Belirli komut dosyası dizini kullanılmalıdır| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 İşlem hattı|Her adım için farklı bir alt dizin kullanın
 Jupyter notebooks| Bir `.amlignore` dosya oluşturun veya not defterinizi yeni, boş bir alt dizine taşıyın ve kodunuzu yeniden çalıştırın.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 3976f4114df6222d34f19e2bb44fd05d53057321
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e56da52823de169ccb1fc28a0bd7f3ac7efacf49
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123283"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891018"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
@@ -40,7 +40,7 @@ Bazı bağlantı ortakları, otomasyonu, Azure sanal hub VNet ve VPN Gateway olu
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Şu iş ortakları, yakın gelecekte yer alan yol haritasında alınmıştır: 128 Technologies, Arista, Aruba HPE, Cisco Systems, F5 Networks, açık sistemler, Oracle SD-WAN, Keskinlink ve VMWare Velocloud.
+Şu iş ortakları, yakın gelecekte 128 teknoloji, Arista, Aruba HPE, Cisco sistemleri, F5 Networks, açık sistemler, Oracle SD-WAN ve keskin bağlantı için yol haritasında alınmıştır.
 
 ## <a name="locations"></a><a name="locations"></a>Konumlar
 

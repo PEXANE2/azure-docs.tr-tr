@@ -1,18 +1,18 @@
 ---
-title: Market ölçüm hizmeti API 'Leri-SSS | Azure Marketi
-description: Azure Marketi 'nde SaaS teklifinin kullanımını yayma.
+title: Ölçüm hizmeti API 'Leri SSS-Microsoft ticari Market
+description: Microsoft AppSource ve Azure Market 'te SaaS teklifleri için ölçüm hizmeti API 'Leri hakkında sık sorulan sorular.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 9a1493790969c4d34d7d41572dff6e15d16d2a19
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: eb27089777baaaa7a29e020318fbc7635792af2d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735462"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857905"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Market ölçüm hizmeti API’leri - SSS
 
