@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/30/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837405"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929834"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -67,8 +67,8 @@ Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle,
 
 |İşletim Sistemi|Gerekli lisans|
 |---|---|
-|Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F3, Iş<br>Windows E3, E5, a3, a5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, Iş<br>Windows E3, E5, a3, a5|
+|Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F3, Iş Premium<br>Windows E3, E5, a3, a5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, Iş Premium<br>Windows E3, E5, a3, a5|
 |Windows Server 2012 R2, 2016, 2019|Yazılım güvencesi içeren RDS Istemci erişim lisansı (CAL)|
 
 Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
@@ -101,9 +101,9 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
 
 >[!IMPORTANT]
->Hizmet sorunlarını engellemek için çoğu durumda URL yerine hizmet etiketlerini kullanmanızı öneririz. Güvenilir bir Windows sanal masaüstü dağıtımı için bu URL 'Lerin engellemesini kaldırma işlemi gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
->
 >Windows sanal masaüstü artık FQDN etiketini destekliyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](../firewall/protect-windows-virtual-desktop.md).
+>
+>Hizmet sorunlarını engellemek için URL 'Ler yerine FQDN etiketleri veya hizmet etiketleri kullanmanızı öneririz. Listelenen URL 'Ler ve Etiketler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir. Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler dahil değildir.
 
 Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
 
@@ -143,7 +143,7 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 
 * [Windows Masaüstü](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Mac OS](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (Önizleme)](connect-android.md)
 

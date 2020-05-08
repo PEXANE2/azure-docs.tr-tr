@@ -4,6 +4,11 @@
   items:
     - name: Resource Manager nedir?
       href: overview.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Abonelik ve hizmet sınırlamaları

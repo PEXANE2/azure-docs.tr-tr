@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: def3ed840d2886aabfce1d1081c94298083fe6d6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3195be3486aaafa91a22b6f6e9cb4fd5f4fe6de2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611688"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930004"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -40,6 +40,8 @@ Ayrıca aşağıdaki işlemleri de bilmeniz gerekir:
 
 - Kullanmak istediğiniz görüntünün kaynağı. Azure galerisinden mi veya özel bir görüntü mi?
 - Etki alanınıza katılarak kimlik bilgileri.
+
+Ayrıca, Microsoft. DesktopVirtualization kaynak sağlayıcısını kaydettiğinizden emin olun. Henüz yapmadıysanız, **abonelikler** ' e gidin, alanınızda aboneliğinin adını seçin ve ardından **Azure kaynak sağlayıcıları**' nı seçin.
 
 Azure Resource Manager şablonuyla bir Windows sanal masaüstü konak havuzu oluşturduğunuzda, Azure Galerisi 'nden, yönetilen bir görüntüden veya yönetilmeyen görüntüden bir sanal makine oluşturabilirsiniz. VM görüntülerini oluşturma hakkında daha fazla bilgi edinmek için bkz. Azure ['a yüklemek için bir WINDOWS VHD veya vhdx hazırlama](../virtual-machines/windows/prepare-for-upload-vhd-image.md) ve [Azure 'DA genelleştirilmiş bir VM 'Nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md).
 
