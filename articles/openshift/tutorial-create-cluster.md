@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509729"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858841"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Öğretici: Azure Red Hat OpenShift 4 kümesi oluşturma
 
@@ -66,11 +66,17 @@ aro                                1.0.0
 
 Red hat çekme gizli dizisi, kümenizin ek içerikle birlikte Red Hat kapsayıcısı kayıt defterlerine erişmesine olanak sağlar. Bu adım isteğe bağlıdır, ancak önerilir.
 
-Çekme https://cloud.redhat.com/openshift/install/azure/aro-provisioned *gizliliğini indirin*' a gidip ve sonra çekme gizli dizesini edinin.
+1. **[Red Hat Openshıft Küme Yöneticisi portalınıza gidin](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) ve oturum açın.**
 
-Red Hat hesabınızda oturum açmanız veya iş e-postanızı kullanarak yeni bir Red Hat hesabı oluşturmanız ve hüküm ve koşulları kabul etmeniz gerekir.
+   Red Hat hesabınızda oturum açmanız veya iş e-postanızı kullanarak yeni bir Red Hat hesabı oluşturmanız ve hüküm ve koşulları kabul etmeniz gerekir.
+
+2. **Çekme gizliliğini Indir ' e tıklayın.**
 
 Kaydedilen `pull-secret.txt` dosyayı güvenli bir yerde tutun-bu, her küme oluşturmada kullanılacaktır.
+
+`az aro create` Komutunu çalıştırırken, `--pull-secret @pull-secret.txt` parametresini kullanarak çekme gizli dizinizi başvurabilirsiniz. Dosyanızı depoladığınız dizinden yürütün `az aro create` `pull-secret.txt` Aksi takdirde, `@pull-secret.txt` ile `@<path-to-my-pull-secret-file>`değiştirin.
+
+Çekme sırlarınızı kopyalıyorsunuz veya başka betiklerin içine başvuruyorsa, çekme gizli anahtarı geçerli bir JSON dizesi olarak biçimlendirilmelidir.
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturun
 
@@ -174,7 +180,10 @@ Ardından, iki boş alt ağ içeren bir sanal ağ oluşturacaksınız.
 
 ## <a name="create-the-cluster"></a>Kümeyi oluşturma
 
-Bir küme oluşturmak için aşağıdaki komutu çalıştırın. İsteğe bağlı olarak, kümenizin Red Hat kapsayıcısı kayıt defterlerine ek içerikle birlikte erişmesine olanak tanıyan bir çekme gizli anahtarı geçirebilirsiniz. [Red Hat OpenShift kümesi Yöneticisi](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) ' ne gidip **çekme gizliliğini Kopyala**' ya tıklayarak çekme gizli dizinizi erişin.
+Bir küme oluşturmak için aşağıdaki komutu çalıştırın. İsteğe bağlı olarak, kümenizin Red Hat kapsayıcısı kayıt defterlerine ek içerikle birlikte erişmesine olanak tanıyan [Red hat çekme gizli anahtarını geçirebilirsiniz](#get-a-red-hat-pull-secret-optional) .
+
+>[!NOTE]
+> Komutları kopyalayıp yapıştırıyorsanız ve isteğe bağlı parametrelerden birini kullanıyorsanız, ilk diyez etiketlerini ve sondaki açıklama metnini silmeyi unutmayın. Ayrıca, sonundaki ters eğik çizgiyle komutun önceki satırındaki bağımsız değişkenini kapatın.
 
 ```azurecli-interactive
 az aro create \
@@ -184,10 +193,10 @@ az aro create \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
   # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
->[!NOTE]
-> Genellikle bir küme oluşturmak yaklaşık 35 dakika sürer.
+
+`az aro create` Komutu yürüttükten sonra, normalde bir küme oluşturmak yaklaşık 35 dakika sürer.
 
 >[!IMPORTANT]
 > Özel bir etki alanı belirtmeyi seçerseniz (örneğin, **foo.example.com**) OpenShift konsolu yerleşik etki alanı `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`yerine, gibi bir URL 'de kullanılabilir.

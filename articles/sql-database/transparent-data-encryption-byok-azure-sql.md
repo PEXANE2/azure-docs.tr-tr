@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: d72a1057c359127eb70f0a82fbf2637409535dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131175"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792046"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 
@@ -93,7 +93,7 @@ Denetçiler, günlük etkinleştirildiyse Anahtar Kasası AuditEvent günlükler
 
 ### <a name="recommendations-when-configuring-akv"></a>AKV yapılandırılırken öneriler
 
-- Sunucu, anahtar kasasındaki TDE koruyucuya eriştiğinde yüksek kullanılabilirlik sağlamak için, tek bir abonelikteki en fazla 500 Genel Amaçlı veya 200 İş Açısından Kritik veritabanlarını toplam bir anahtar kasası ile ilişkilendirin. Bu rakamlar deneyimi temel alır ve [Anahtar Kasası hizmeti sınırları](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)bölümünde belgelenmiştir. Buradaki amaç, sunucuda veritabanları olduğundan kasada çok sayıda anahtar işlem tetikleyeceği için sunucu yük devretmesinin ardından oluşan sorunları önlemektir.
+- Sunucu, anahtar kasasındaki TDE koruyucuya eriştiğinde yüksek kullanılabilirlik sağlamak için, tek bir abonelikteki en fazla 500 Genel Amaçlı veya 200 İş Açısından Kritik veritabanlarını toplam bir anahtar kasası ile ilişkilendirin. Bu rakamlar deneyimi temel alır ve [Anahtar Kasası hizmeti sınırları](https://docs.microsoft.com/azure/key-vault/general/service-limits)bölümünde belgelenmiştir. Buradaki amaç, sunucuda veritabanları olduğundan kasada çok sayıda anahtar işlem tetikleyeceği için sunucu yük devretmesinin ardından oluşan sorunları önlemektir.
 
 - Bu kritik kaynağı kimlerin silebilen ve yanlışlıkla veya yetkisiz silme işleminin önlenmesi için anahtar kasasında bir kaynak kilidi ayarlayın. [Kaynak kilitleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)hakkında daha fazla bilgi edinin.
 

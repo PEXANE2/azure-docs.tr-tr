@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025688"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582686"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -100,7 +100,7 @@ Bu sorunu çözmek için, Kullanıcı tarafından desteklenmeyen konumlardan lis
 
 ## <a name="duplicate-proxy-addresses"></a>Yinelenen proxy adresleri
 
-Exchange Online kullanıyorsanız, kiracınızdaki bazı kullanıcılar aynı ara sunucu adresi değeriyle yanlış yapılandırılmış olabilir. Grup tabanlı lisanslama böyle bir kullanıcıya lisans atamayı denediğinde, başarısız olur ve "proxy adresi zaten kullanılıyor" olarak gösterilir.
+Exchange Online kullanıyorsanız, kuruluşunuzdaki bazı kullanıcılar aynı ara sunucu adresi değeriyle yanlış yapılandırılmış olabilir. Grup tabanlı lisanslama böyle bir kullanıcıya lisans atamayı denediğinde, başarısız olur ve "proxy adresi zaten kullanılıyor" olarak gösterilir.
 
 > [!TIP]
 > Yinelenen bir proxy adresi olup olmadığını görmek için, Exchange Online 'da aşağıdaki PowerShell cmdlet 'ini yürütün:

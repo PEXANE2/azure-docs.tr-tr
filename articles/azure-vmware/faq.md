@@ -17,7 +17,7 @@ Azure VMware çözümü (AVS) hakkında sık sorulan sorular için yanıtlar.
 
 ## <a name="general"></a>Genel
 
-**Azure VMware çözümü (AVS) nedir?**
+**Azure VMware Çözümü (AVS) nedir?**
 
 Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. AVS, VMware 'nin yazılım tanımlı veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. AVS çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
 

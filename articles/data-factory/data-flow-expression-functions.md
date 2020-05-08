@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: d0669a89527cabd23b81a0948e8cf9962dcd1e9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232062"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580685"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri
 
@@ -26,10 +26,10 @@ Data Factory ' de, veri dönüşümlerini yapılandırmak için veri akışını
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Bir sayının mutlak değeri.
+Bir sayının mutlak değeri.  
 * ``abs(-20) -> 20``  
 * ``abs(10) -> 10``  
-___
+___   
 ### <code>acos</code>
 <code><b>acos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Kosinüs ters değerini hesaplar* ``acos(1) -> 0.0``  
@@ -116,7 +116,7 @@ Toplanan gruptaki ifadenin tüm değerlerini bir dizi olarak toplar. Bu işlem s
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-Bir akış için tüm çıkış sütunlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.
+Bir akış için tüm çıkış sütunlarını alır. İkinci bağımsız değişken olarak isteğe bağlı bir akış adı geçirebilirsiniz.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
 ___
@@ -156,8 +156,8 @@ Yalnızca 0 (256), 224, 256, 384, 512 değerlerinin yer aldığı bir bit uzunlu
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Bu işin çalışmaya başladığı geçerli tarihi alır. İsteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Yerel Saat dilimi varsayılan olarak kullanılır. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-* ``currentDate() == toDate('2250-12-31') -> false`` * ``currentDate('PST')  == toDate('2250-12-31') -> false``  
+Bu işin çalışmaya başladığı geçerli tarihi alır. İsteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Yerel Saat dilimi varsayılan olarak kullanılır. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``  
+* ``currentDate('PST')  == toDate('2250-12-31') -> false``  
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``  
 ___
 ### <code>currentTimestamp</code>
@@ -278,9 +278,11 @@ Bir koşula bağlı olarak bir değer veya diğerini uygular. Diğeri belirtilme
 ___
 ### <code>iifNull</code>
 <code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
-Değerin NULL olup olmadığını denetler ve diğerini döndürür. İlk null olmayan değeri bulana kadar tüm girişleri sınar* ``iifNull(10, 20) -> 10``  
+İlk parametrenin null olup olmadığını denetler. Null değilse, ilk parametre döndürülür. Null ise, ikinci parametre döndürülür. Üç parametre belirtilirse, (IsNull (değer1), değer2, value3) ve ilk değer null değilse üçüncü parametre döndürülür.  
+* ``iifNull(10, 20) -> 10``  
 * ``iifNull(null, 20, 40) -> 20``  
-* ``iifNull('bojjus', 'bo', 'dumbo') -> 'dumbo'``  
+* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
+* ``iifNull(null, 'data', 'factory') -> 'data'``  
 ___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -373,7 +375,7 @@ ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
 Bu, tam anlamıyla eşleşen bir dizedir. Özel durumlar aşağıdaki özel sembollerdir: _, girişte bir karakter ile eşleşir (şuna benzer. POSIX normal ifadelerinde)%, girişte sıfır veya daha fazla karakterle eşleşir (POSIX normal ifadelerinde. * ile benzerdir).
-Kaçış karakteri ' '. Bir kaçış karakteri özel bir sembolden veya başka bir kaçış karakteriyle önceyse, aşağıdaki karakter tam anlamıyla eşleştirilir. Başka bir karakter kaçış geçersizdir.
+Kaçış karakteri ' '. Bir kaçış karakteri özel bir sembolden veya başka bir kaçış karakteriyle önceyse, aşağıdaki karakter tam anlamıyla eşleştirilir. Başka bir karakter kaçış geçersizdir.  
 * ``like('icecream', 'ice%') -> true``  
 ___
 ### <code>locate</code>
@@ -504,7 +506,7 @@ Mantıksal VEYA operatörüdür. Aynı | |* ``or(true, false) -> true``
 ___
 ### <code>pMod</code>
 <code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Sayı çiftinin pozitif mod sayısı.
+Sayı çiftinin pozitif mod sayısı.  
 * ``pmod(-20, 8) -> 4``  
 ___
 ### <code>partitionId</code>
@@ -944,7 +946,7 @@ ___
 ##Pencere işlevleri aşağıdaki işlevler yalnızca pencere dönüşümlerine açık___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
-CumeDist işlevi, bir değerin bölüm içindeki tüm değerlere göre konumunu hesaplar. Sonuç, Bölüm sıralamasına göre geçerli satıra göre veya buna eşit olan satır sayısıdır ve pencere bölümündeki toplam satır sayısı ile ayrılır. Sıralamada bulunan tüm bağlama değerleri aynı konuma göre değerlendirilir.
+CumeDist işlevi, bir değerin bölüm içindeki tüm değerlere göre konumunu hesaplar. Sonuç, Bölüm sıralamasına göre geçerli satıra göre veya buna eşit olan satır sayısıdır ve pencere bölümündeki toplam satır sayısı ile ayrılır. Sıralamada bulunan tüm bağlama değerleri aynı konuma göre değerlendirilir.  
 * ``cumeDist()``  
 ___
 ### <code>denseRank</code>
@@ -963,7 +965,7 @@ Geçerli satırdan sonra değerlendirilen n satıra ilk parametre değerini alı
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-NTile işlevi, her pencere bölümünün satırlarını 1 ile en çok `n` `n`arasında olacak demetlere böler. Demet değerleri en fazla 1 farklı olacaktır. Bölümdeki satır sayısı demet sayısına eşit olarak bölünmezse, ilk sepete başlayarak, geri kalan değerler her demet için bir dağıtılır. NTile işlevi, terkutucukların, kubotların ve diğer yaygın Özet istatistiğin hesaplanması için yararlıdır. İşlev, başlatma sırasında iki değişkeni hesaplar: düzenli bir demet boyutunun boyutuna eklenmiş bir ek satır olacaktır. Her iki değişken de geçerli bölümün boyutunu temel alır. Hesaplama işlemi sırasında işlev geçerli satır numarasını, geçerli demet numarasını ve demet 'in değiştirileceği satır numarasını (bucketThreshold) izler. Geçerli satır numarası demet eşiğine ulaştığında, demet değeri bir artırılır ve eşik, demet boyutu (ve geçerli demet doldurulmuş ise bir ek) ile artırılır.
+NTile işlevi, her pencere bölümünün satırlarını 1 ile en çok `n` `n`arasında olacak demetlere böler. Demet değerleri en fazla 1 farklı olacaktır. Bölümdeki satır sayısı demet sayısına eşit olarak bölünmezse, ilk sepete başlayarak, geri kalan değerler her demet için bir dağıtılır. NTile işlevi, terkutucukların, kubotların ve diğer yaygın Özet istatistiğin hesaplanması için yararlıdır. İşlev, başlatma sırasında iki değişkeni hesaplar: düzenli bir demet boyutunun boyutuna eklenmiş bir ek satır olacaktır. Her iki değişken de geçerli bölümün boyutunu temel alır. Hesaplama işlemi sırasında işlev geçerli satır numarasını, geçerli demet numarasını ve demet 'in değiştirileceği satır numarasını (bucketThreshold) izler. Geçerli satır numarası demet eşiğine ulaştığında, demet değeri bir artırılır ve eşik, demet boyutu (ve geçerli demet doldurulmuş ise bir ek) ile artırılır.  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

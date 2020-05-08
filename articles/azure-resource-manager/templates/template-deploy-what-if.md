@@ -3,14 +3,14 @@ title: Şablon dağıtımı-if (Önizleme)
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: HT
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509593"
+ms.locfileid: "82581191"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
 
@@ -106,7 +106,7 @@ Bir şablonu dağıtımdan önce değişiklikleri önizlemek için dağıtım ko
 * `New-AzResourceGroupDeployment -Whatif`kaynak grubu dağıtımları için
 * `New-AzSubscriptionDeployment -Whatif`Abonelik `New-AzDeployment -Whatif` düzeyinde dağıtımlar için
 
-Ya da değişiklikleri önizlemek ve dağıtıma `-Confirm` devam etmek isteyip istemediğiniz sorulduğunda anahtar parametresini kullanabilirsiniz.
+Değişiklikleri önizlemek ve dağıtıma `-Confirm` devam etmek isteyip istemediğiniz sorulduğunda anahtar parametresini kullanabilirsiniz.
 
 * `New-AzResourceGroupDeployment -Confirm`kaynak grubu dağıtımları için
 * `New-AzSubscriptionDeployment -Confirm`Abonelik `New-AzDeployment -Confirm` düzeyinde dağıtımlar için
@@ -123,10 +123,10 @@ Bir şablonu dağıtımdan önce değişiklikleri önizlemek için dağıtım ko
 * `az deployment group what-if`kaynak grubu dağıtımları için
 * `az deployment sub what-if`abonelik düzeyinde dağıtımlar için
 
-Ya da, değişiklikleri önizlemek ve `--confirm-with-what-if` dağıtıma devam etmek isteyip istemediğiniz sorulursa parametresini kullanabilirsiniz.
+Değişiklikleri önizlemek ve dağıtıma `--confirm-with-what-if` devam etmek isteyip istemediğiniz sorulduğunda anahtarı `-c`(veya kısa biçimini) kullanabilirsiniz.
 
-* `az deployment group create --confirm-with-what-if`kaynak grubu dağıtımları için
-* `az deployment sub create --confirm-with-what-if`abonelik düzeyinde dağıtımlar için
+* `az deployment group create --confirm-with-what-if`veya `-c` kaynak grubu dağıtımları için
+* `az deployment sub create --confirm-with-what-if`Abonelik `-c` düzeyi dağıtımlar için veya
 
 Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Değişiklikler için programlı olarak inceleyebileceğiniz bir JSON nesnesi almak için şunu kullanın:
 
@@ -340,7 +340,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 [Dağıtım modunun](deployment-modes.md)kullanımını destekleyen durum işlemi. Tamamlanmış moda ayarlandığında şablonda olmayan kaynaklar silinir. Aşağıdaki örnek, tamamlanmış bir [kaynağı olmayan bir şablon dağıtmıştır](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
-Bir şablonu dağıtımdan önce değişiklikleri önizlemek için dağıtım komutuyla `-Confirm` anahtar parametresini kullanın. Değişiklikler beklediğiniz gibi olduğunda, dağıtımın tamamlanmasını istediğinizi onaylayın.
+Bir şablonu dağıtımdan önce değişiklikleri önizlemek için dağıtım komutuyla Onayla anahtarını onaylama parametresini kullanın. Değişiklikler beklediğiniz gibi olduğunda, dağıtımın tamamlanmasını istediğinizi kabul edin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

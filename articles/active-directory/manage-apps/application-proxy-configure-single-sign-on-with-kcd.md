@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253461"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583131"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma için Kerberos kısıtlanmış temsili
 
@@ -100,11 +100,13 @@ Active Directory yapılandırması, uygulama proxy bağlayıcısının ve uygula
 
 ## <a name="sso-for-non-windows-apps"></a>Windows dışı uygulamalar için SSO
 
-Azure AD, bulutta kullanıcının kimliğini doğruladığında Azure AD Uygulama Ara Sunucusu Kerberos temsili akışı başlar. İstek şirket içine ulaştığında Azure AD Uygulama Ara Sunucusu Bağlayıcısı, yerel Active Directory etkileşimde bulunarak Kullanıcı adına Kerberos bileti yayınlar. Bu işlem, Kerberos kısıtlanmış temsili (KCD) olarak adlandırılır. Sonraki aşamada, bu Kerberos bileti ile arka uç uygulamasına bir istek gönderilir. 
+Azure AD, bulutta kullanıcının kimliğini doğruladığında Azure AD Uygulama Ara Sunucusu Kerberos temsili akışı başlar. İstek şirket içine ulaştığında Azure AD Uygulama Ara Sunucusu Bağlayıcısı, yerel Active Directory etkileşimde bulunarak Kullanıcı adına Kerberos bileti yayınlar. Bu işlem, Kerberos kısıtlanmış temsili (KCD) olarak adlandırılır. 
 
-Bu tür isteklerin nasıl gönderileceğini tanımlayan birkaç protokol vardır. Windows olmayan çoğu sunucu SPNEGO ile anlaşma bekler. Bu protokol Azure AD Uygulama Ara Sunucusu desteklenir, ancak varsayılan olarak devre dışıdır. Sunucu SPNEGO veya standart KCD için yapılandırılabilir, ancak her ikisine birden uygulanamaz.
+Sonraki aşamada, bu Kerberos bileti ile arka uç uygulamasına bir istek gönderilir. 
 
-SPNEGO için bir bağlayıcı makine yapılandırırsanız, o bağlayıcı grubundaki diğer tüm bağlayıcıların de SPNEGO ile yapılandırıldığından emin olun. Standart KCD bekleyen uygulamalar, SPNEGO için yapılandırılmamış diğer bağlayıcılar aracılığıyla yönlendirilmelidir.
+Bu tür isteklerde Kerberos biletinin nasıl gönderileceğini tanımlayan çeşitli mekanizmalar vardır. Windows olmayan çoğu sunucu, SPNEGO belirteci biçiminde almayı bekler. Bu mekanizma Azure AD Uygulama Ara Sunucusu desteklenir, ancak varsayılan olarak devre dışıdır. Bir bağlayıcı SPNEGO veya standart Kerberos belirteci için yapılandırılabilir, ancak her ikisine birden uygulanamaz.
+
+SPNEGO için bir bağlayıcı makine yapılandırırsanız, o bağlayıcı grubundaki diğer tüm bağlayıcıların de SPNEGO ile yapılandırıldığından emin olun. Standart Kerberos belirtecinin beklediği uygulamalar, SPNEGO için yapılandırılmamış diğer bağlayıcılar üzerinden yönlendirilmelidir.
  
 
 SPNEGO 'i etkinleştirmek için:
