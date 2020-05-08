@@ -1,6 +1,6 @@
 ---
-title: REST API ile Azure kaynakları için özel roller oluşturun veya güncelleştirin
-description: REST API kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel rolleri listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
+title: REST API-Azure RBAC kullanarak Azure özel rolleri oluşturma veya güncelleştirme
+description: REST API ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure özel rollerini listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062182"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734102"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin
 
 > [!IMPORTANT]
 > ' Ye `AssignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, REST API kullanarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
+[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi de oluşturabilirsiniz. Bu makalede, REST API kullanarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
 
 ## <a name="list-custom-roles"></a>Özel rolleri listeleme
 
@@ -189,7 +189,7 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 1. `notActions` Özelliğinde, izin verilen `actions`öğesinden hariç tutulan işlemleri ekleyin.
 
-1. `roleName` Ve `description` özellikleri ' nde, benzersiz bir rol adı ve açıklama belirtin. Özellikler hakkında daha fazla bilgi için bkz. [özel roller](custom-roles.md).
+1. `roleName` Ve `description` özellikleri ' nde, benzersiz bir rol adı ve açıklama belirtin. Özellikler hakkında daha fazla bilgi için bkz. [Azure özel roller](custom-roles.md).
 
     Aşağıda bir istek gövdesi örneği gösterilmektedir:
 
@@ -340,6 +340,6 @@ Görünen adına göre özel bir rol hakkında bilgi almak için, [get REST API 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure kaynakları için özel roller](custom-roles.md)
-- [RBAC ve REST API kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-rest.md)
+- [Azure özel rolleri](custom-roles.md)
+- [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)

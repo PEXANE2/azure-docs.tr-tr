@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606001"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692625"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -165,9 +165,22 @@ SYNAPSE Studio, Kullanıcı rollerine göre farklı davranır. Bir kullanıcı u
 | Hub/bağlı hizmetleri yönetme | EVET | EVET | EVET |
 | Hub/Access Control yönetme (kullanıcıları SYNAPSE çalışma alanı rollerine atama) | EVET | NO | NO |
 | Hub/tümleştirme çalışma zamanlarını yönetme | EVET | EVET | EVET |
+| Izleyici hub 'ını kullanma | EVET | EVET | EVET |
+| Hub/Orchestration/işlem hattı çalıştırmalarını izleme  | EVET | NO | NO |
+| Hub/düzenleme/tetikleyici çalıştırmalarını izleme  | EVET | NO | NO |
+| Hub/Orchestration/Integration çalışma zamanlarını izleme  | EVET | EVET | EVET |
+| Merkez/etkinlik/Spark uygulamalarını izleme | EVET | EVET | NO  |
+| Merkezi/etkinlikleri/SQL isteklerini izleme | EVET | NO | EVET |
+| Merkezi/etkinlikleri/Spark havuzlarını izleme | EVET | EVET | NO  |
+| Hub/Tetikleyicileri izleme | EVET | NO | NO |
+| Hub/bağlı hizmetleri yönetme | EVET | EVET | EVET |
+| Hub/Access Control yönetme (kullanıcıları SYNAPSE çalışma alanı rollerine atama) | EVET | NO | NO |
+| Hub/tümleştirme çalışma zamanlarını yönetme | EVET | EVET | EVET |
+
 
 > [!NOTE]
-> [1] kapsayıcılardaki verilere erişim, ADLSGen2 [2] SQL OD tabloları ve Spark tabloları içindeki erişim denetimine göre verileri ADLSGen2 ' de depolar ve erişim için ADLSGen2 üzerinde uygun izinler gerekir.
+> [1] kapsayıcılardaki verilere erişim, ADLSGen2 içindeki erişim denetimine göre değişir. </br>
+> [2] SQL OD tabloları ve Spark tabloları, verilerini ADLSGen2 ' de depolar ve erişim, ADLSGen2 üzerinde uygun izinleri gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137671"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692459"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET ile blob özelliklerini ve meta verileri yönetme
 
@@ -24,6 +24,11 @@ Blob 'lar, içerdikleri verilere ek olarak sistem özelliklerini ve Kullanıcı 
 - **Sistem Özellikleri**: her BLOB depolama kaynağında sistem özellikleri bulunur. Bazıları okunabilir veya ayarlanabilir, diğerleri salt okunurdur. Kapakların altında bazı sistem özellikleri bazı standart HTTP üst bilgilerine karşılık gelir. .NET için Azure depolama istemci kitaplığı, bu özellikleri sizin için korur.
 
 - **Kullanıcı tanımlı meta veriler**: Kullanıcı tanımlı meta veriler, bir BLOB depolama kaynağı için belirlediğiniz bir veya daha fazla ad-değer çiftinden oluşur. Kaynak ile ek değerleri depolamak için meta verileri kullanabilirsiniz. Meta veri değerleri yalnızca kendi amacınıza yöneliktir ve kaynağın nasıl davranacağını etkilemez.
+
+> [!NOTE]
+> Blob dizin etiketleri Ayrıca, Kullanıcı tanımlı rastgele anahtar/değer özniteliklerini bir BLOB depolama kaynağıyla birlikte depolamanıza olanak sağlar. Meta verilere benzer olsa da, yalnızca blob dizin etiketleri otomatik olarak dizinlenir ve yerel blob hizmeti tarafından sorgulanabilir hale getirilir. Azure Search gibi ayrı bir hizmet kullanmadığınız sürece meta veriler yerel olarak dizinlenemez ve sorgulanamaz.
+>
+> Bu özellik hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 BLOB depolama kaynağı için meta verilerin ve özellik değerlerinin alınması, iki adımlı bir işlemdir. Bu değerleri okuyabilmeniz için önce `FetchAttributes` veya `FetchAttributesAsync` metodunu çağırarak açıkça almanız gerekir. Bu kuralın istisnası, `Exists` ve `ExistsAsync` yöntemlerinin, kapsamakta olan uygun `FetchAttributes` yöntemi çağırmasını sağlar. Bu yöntemlerden birini çağırdığınızda, ' ı da çağırmanız `FetchAttributes`gerekmez.
 

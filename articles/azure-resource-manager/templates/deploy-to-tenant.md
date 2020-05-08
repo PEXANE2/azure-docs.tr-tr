@@ -3,12 +3,12 @@ title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460271"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930072"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
@@ -19,6 +19,7 @@ Kuruluşunuz geliştikçe, Azure AD kiracınızda [ilkeler](../../governance/pol
 Aşağıdaki kaynak türlerini kiracı düzeyinde dağıtabilirsiniz:
 
 * [dağıtımlar](/azure/templates/microsoft.resources/deployments) -yönetim gruplarına veya aboneliklerine dağıtan iç içe şablonlar için.
+* Yönetim grupları
 * [Poliyasatamaları](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -103,13 +104,13 @@ Kiracı dağıtımları için, Şablon işlevleri kullanılırken bazı önemli 
 * Kiracı düzeyinde dağıtılan kaynakların kaynak KIMLIĞINI almak için [Tenantresourceıd ()](template-functions-resource.md#tenantresourceid) işlevini kullanın.
 
   Örneğin, bir ilke tanımının kaynak KIMLIĞINI almak için şunu kullanın:
-  
+
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
-  
+
   Döndürülen kaynak KIMLIĞI şu biçimdedir:
-  
+
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```

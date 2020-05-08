@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684723"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983610"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -150,6 +150,8 @@ Azure Machine Learning, Python 'un, veri işleme için birçok yaygın yardımc�
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> İşlem hatlarınız birden çok yürütme Python betik modülü içeriyorsa ve önceden yüklenmiş listesinde olmayan aynı paketlere ihtiyaç duyuyorsanız, lütfen paketleri sırasıyla her bir modüle yüklemeniz gerekir. 
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
 **Execute Python betiği** , [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)kullanılarak dosyaların yüklenmesini destekler.
@@ -218,7 +220,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 5. **Python betiği** metin kutusuna geçerli Python betiği yazın veya yapıştırın.
 
     > [!NOTE]
-    > Lütfen komut dosyanızı yazarken çok dikkatli olun ve bildirilmeyen bir nesne veya içeri aktarılmayan bir modül kullanma gibi bir sözdizimi hatası olmadığından emin olun. Ayrıca önceden yüklenmiş modül listesine ek zayıflamalar ödeyin. Listelenmemiş modülleri içeri aktarmak için, komut dosyasına karşılık gelen paketleri
+    > Lütfen komut dosyanızı yazarken çok dikkatli olun ve bildirilmeyen nesneler veya içeri aktarılmayan modüller kullanma gibi sözdizimi hatası olmadığından emin olun. Ayrıca önceden yüklenmiş modül listesine daha fazla dikkat ödeyin. Listelenmemiş modülleri içeri aktarmak için, komut dosyasına karşılık gelen paketleri
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428023"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983304"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Çalışma alanı yönetilen kimliğine izin ver (Önizleme)
 
-Bu makalede, Azure SYNAPSE çalışma alanındaki yönetilen kimliğe nasıl izin vereceğiniz öğretilir. İzinler, sırasıyla, çalışma alanındaki SQL havuzlarına ve ADLS Gen2 Storage hesabı Azure portal aracılığıyla erişime izin verir.
+Bu makalede, Azure SYNAPSE çalışma alanındaki yönetilen kimliğe nasıl izin vereceğiniz öğretilir. İzinler, sırasıyla, çalışma alanındaki SQL havuzlarının erişimine izin verir ve Azure portal aracılığıyla depolama hesabı ADLS 2..
 
 >[!NOTE]
 >Bu çalışma alanı yönetilen kimliği, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
@@ -29,25 +29,25 @@ Azure SYNAPSE çalışma alanınızı oluştururken **güvenlik + ağ** ' ı se�
 
 ![SQL havuzlarında DENETIM izni](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
-## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>ADLS Gen2 Storage hesabına yönetilen kimlik izinleri verme
+## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>ADLS 2. depolama hesabına yönetilen kimlik izinleri verme
 
-Bir Azure SYNAPSE çalışma alanı oluşturmak için ADLS Gen2 depolama hesabı gereklidir. Azure SYNAPSE çalışma alanında Spark havuzlarını başarıyla başlatmak için, Azure SYNAPSE Managed Identity, bu depolama hesabındaki *Depolama Blobu veri katılımcısı* rolüne ihtiyaç duyuyor. Azure 'daki işlem hattı düzenlemesi bu rolden da faydalanır.
+Azure SYNAPSE çalışma alanı oluşturmak için bir ADLS 2. depolama hesabı gereklidir. Azure SYNAPSE çalışma alanında Spark havuzlarını başarıyla başlatmak için, Azure SYNAPSE Managed Identity, bu depolama hesabındaki *Depolama Blobu veri katılımcısı* rolüne ihtiyaç duyuyor. Azure 'daki işlem hattı düzenlemesi bu rolden da faydalanır.
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>Çalışma alanı oluşturma sırasında yönetilen kimliğe izin verme
 
-Azure SYNAPSE, Azure portal kullanarak Azure SYNAPSE çalışma alanını oluşturduktan sonra, yönetilen kimliğe Depolama Blobu veri katılımcısı rolünü vermeye çalışacaktır. ADLS Gen2 Storage hesabı ayrıntılarını **temel bilgiler** sekmesinde sağlarsınız.
+Azure SYNAPSE, Azure portal kullanarak Azure SYNAPSE çalışma alanını oluşturduktan sonra, yönetilen kimliğe Depolama Blobu veri katılımcısı rolünü vermeye çalışacaktır. **Temel bilgiler** sekmesinde ADLS 2. depolama hesabı ayrıntılarını sağlarsınız.
 
 ![Çalışma alanı oluşturma akışındaki temel bilgiler sekmesi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-**Hesap adı** ve **dosya sistemi adı**' nda ADLS Gen2 Storage hesabını ve FileSystem ' ı seçin.
+**Hesap adı** ve **dosya sistemi adında**ADLS 2. depolama hesabı ve FileSystem ' ı seçin.
 
-![ADLS Gen2 depolama hesabı ayrıntıları sağlama](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
+![ADLS 2. depolama hesabı ayrıntıları sağlama](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-Çalışma alanı Oluşturucu da ADLS Gen2 Storage hesabının **sahibiyseniz** , Azure SYNAPSE, *Depolama Blobu veri katılımcısı* rolünü yönetilen kimliğe atayacaktır. Girdiğiniz depolama hesabı ayrıntılarının altında aşağıdaki iletiyi görürsünüz.
+Çalışma alanı oluşturan ADLS 2. depolama hesabının **sahibiyseniz** Azure SYNAPSE, *Depolama Blobu veri katılımcısı* rolünü yönetilen kimliğe atayacaktır. Girdiğiniz depolama hesabı ayrıntılarının altında aşağıdaki iletiyi görürsünüz.
 
 ![Başarılı Depolama Blobu veri katılımcısı ataması](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
-Çalışma alanı Oluşturucusu ADLS Gen2 Storage hesabının sahibi değilse, Azure SYNAPSE, *Depolama Blobu veri katılımcısı* rolünü yönetilen kimliğe atamaz. Depolama hesabı ayrıntılarının altında görünen ileti, çalışma alanı oluşturucuyu, *Depolama Blobu veri katılımcısı* rolünü yönetilen kimliğe vermek için yeterli izinlere sahip olmadıkları konusunda bilgilendirir.
+Çalışma alanı Oluşturucusu ADLS 2. depolama hesabının sahibi değilse, Azure SYNAPSE, *Depolama Blobu veri katılımcısı* rolünü yönetilen kimliğe atamaz. Depolama hesabı ayrıntılarının altında görünen ileti, çalışma alanı oluşturucuyu, *Depolama Blobu veri katılımcısı* rolünü yönetilen kimliğe vermek için yeterli izinlere sahip olmadıkları konusunda bilgilendirir.
 
 ![Başarısız Depolama Blobu veri katılımcısı ataması](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-4.png)
 
@@ -55,21 +55,21 @@ Azure SYNAPSE, Azure portal kullanarak Azure SYNAPSE çalışma alanını oluşt
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>Çalışma alanı oluşturulduktan sonra yönetilen kimliğe izin ver
 
-Çalışma alanı oluşturma sırasında, yönetilen kimliğe *Depolama Blobu veri katılımcısı* atamasını atamadıysanız, ADLS Gen2 Storage hesabının **sahibi** bu rolü kimliğe el ile atar. Aşağıdaki adımlar el ile atamayı gerçekleştirmenize yardımcı olur.
+Çalışma alanı oluşturma sırasında, yönetilen kimliğe *Depolama Blobu verilerini katkıda* bulunan ' i atamadıysanız, ADLS 2. depolama hesabının **sahibi** bu rolü kimliğe el ile atar. Aşağıdaki adımlar el ile atamayı gerçekleştirmenize yardımcı olur.
 
-#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>1. Adım: Azure portal ADLS Gen2 Storage hesabına gidin
+#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>1. Adım: ADLS 2. depolama hesabına gidin Azure portal
 
-Azure portal, ADLS Gen2 Storage hesabını açın ve sol gezinden **genel bakış** ' ı seçin. Yalnızca *Depolama Blobu veri katılımcısı* rolünü kapsayıcı veya dosya sistemi düzeyinde atamanız gerekir. **Kapsayıcıları**seçin.  
-![ADLS Gen2 depolama hesabına genel bakış](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
+Azure portal, ADLS 2. Depolama hesabını açın ve sol gezinden **genel bakış** ' ı seçin. Yalnızca *Depolama Blobu veri katılımcısı* rolünü kapsayıcı veya dosya sistemi düzeyinde atamanız gerekir. **Kapsayıcıları**seçin.  
+![ADLS 2. depolama hesabına genel bakış](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>2. Adım: kapsayıcıyı seçin
 
 Yönetilen kimliğin, çalışma alanı oluşturulduğunda sağlanmış olan kapsayıcıya (dosya sistemi) veri erişimi olmalıdır. Bu kapsayıcıyı veya dosya sistemini Azure portal bulabilirsiniz. Azure portal ' de Azure SYNAPSE çalışma alanını açın ve sol gezinmede **genel bakış** sekmesini seçin.
-![ADLS Gen2 depolama hesabı kapsayıcısı](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
+![ADLS 2. depolama hesabı kapsayıcısı](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
 
 
 Yönetilen kimliğe *Depolama Blobu veri katılımcısı* rolünü vermek için aynı kapsayıcı veya dosya sistemi ' ni seçin.
-![ADLS Gen2 depolama hesabı kapsayıcısı seçimi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![ADLS 2. depolama hesabı kapsayıcısı seçimi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>3. Adım: erişim denetimi 'ne gitme
 
@@ -114,7 +114,7 @@ Yönetilen kimliğin adı aynı zamanda çalışma alanı adıdır. **Select**' 
 ![Rol atamasını doğrula](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
 Yönetilen kimliğinizi, Depolama Blobu **veri katılımcısı rolü** ' nün altında listelenmiş olan *depolama blob verileri katkıda* bulunan rolüyle görmeniz gerekir. 
-![ADLS Gen2 depolama hesabı kapsayıcısı seçimi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
+![ADLS 2. depolama hesabı kapsayıcısı seçimi](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

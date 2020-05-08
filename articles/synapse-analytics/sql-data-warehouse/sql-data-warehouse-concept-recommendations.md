@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/05/2020
+ms.date: 04/30/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633676"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607766"
 ---
 # <a name="synapse-sql-recommendations"></a>SYNAPSE SQL önerileri
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Advisor aracılığıyla sunulan SYNAPSE SQL önerileri açı
 
 SQL Analytics veri ambarı iş yükünüzün performans için tutarlı bir şekilde iyileştirildiğinden emin olmak için öneriler sağlar. Öneriler, doğrudan [Azure Portal](https://aka.ms/Azureadvisor)içinde en iyi uygulamaları sunmak Için [Azure Danışmanı](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ile sıkı bir şekilde tümleşiktir. SQL Analytics, günlük temposunda etkin iş yükünüz için telemetri ve yüzey önerilerini toplar. Desteklenen öneri senaryoları, önerilen eylemlerin nasıl uygulanacağı ile birlikte aşağıda özetlenmiştir.
 
-Önerilerinizi bugün [kontrol](https://aka.ms/Azureadvisor) edebilirsiniz! Şu anda bu özellik yalnızca Gen2 veri ambarlarında geçerlidir.
+Önerilerinizi bugün [kontrol](https://aka.ms/Azureadvisor) edebilirsiniz! 
 
 ## <a name="data-skew"></a>Veri eğriltme
 
@@ -51,14 +51,22 @@ Bu önerilerin etkilenen tablolarının listesini görmek için aşağıdaki [T-
 
 Danışman, tablo erişim sıklığı, ortalama olarak döndürülen satırlar ve veri ambarı boyutunun ve etkinliğinin etrafındaki eşiklerini, yüksek kaliteli önerilerin oluşturulmasını sağlamak için sürekli olarak iş yükü tabanlı buluşsal yöntemler kullanır.
 
-Aşağıda, her bir çoğaltılan tablo önerisi için Azure portal bulabileceğiniz iş yükü tabanlı buluşsal yöntemler açıklanmaktadır:
+Aşağıdaki bölümde, her bir çoğaltılan tablo önerisi için Azure portal bulabileceğiniz iş yükü tabanlı buluşsal yöntemler açıklanmaktadır:
 
 - Ortalama tarama-son yedi gün içinde her tablo erişimi için tablodan döndürülen satırların ortalama yüzdesi
 - Sık okunan, güncelleştirme yok-tablonun, erişim etkinliğini gösterirken son yedi gün içinde güncelleştirilmemiş olduğunu belirtir
 - Okuma/güncelleştirme oranı-tablonun son yedi gün içinde güncelleştirildiği zamana göre ne sıklıkta erişildiğine ilişkin oran
-- Etkinlik-kullanımı, erişim etkinliğine göre ölçer. Bu, son yedi gün içinde veri ambarı genelinde ortalama tablo erişim etkinliğine göre tablo erişim etkinliğini karşılaştırır.
+- Etkinlik-kullanımı, erişim etkinliğine göre ölçer. Bu etkinlik, son yedi gün içinde veri ambarı genelinde ortalama tablo erişim etkinliğine göre tablo erişim etkinliğini karşılaştırır.
 
 Şu anda Danışman, en yüksek etkinliğin önceliğini belirleme kümelenmiş columnstore dizinleri ile aynı anda en fazla dört çoğaltılan tablo adayını gösterir.
 
 > [!IMPORTANT]
-> Çoğaltılan tablo önerisi, tam kanıt değildir ve hesaba veri taşıma işlemlerini almaz. Bunu bir buluşsal yöntem olarak eklemekle çalışıyoruz ancak bu arada, öneriyi uyguladıktan sonra iş yükünüzü her zaman doğrulamanız gerekir. İş yükünüzün çalışmasına neden olan çoğaltılmış tablo önerilerini buldıysanız lütfen iletişim kurun sqldwadvisor@service.microsoft.com . Çoğaltılan tablolar hakkında daha fazla bilgi edinmek için aşağıdaki [belgeleri](design-guidance-for-replicated-tables.md#what-is-a-replicated-table)ziyaret edin.
+> Çoğaltılan tablo önerisi, tam kanıt değildir ve hesaba veri taşıma işlemlerini almaz. Bunu bir buluşsal yöntem olarak eklemekle çalışıyoruz ancak bu arada, öneriyi uyguladıktan sonra iş yükünüzü her zaman doğrulamanız gerekir. Çoğaltılan tablolar hakkında daha fazla bilgi edinmek için aşağıdaki [belgeleri](design-guidance-for-replicated-tables.md#what-is-a-replicated-table)ziyaret edin.
+
+
+## <a name="adaptive-gen2-cache-utilization"></a>Uyarlamalı (Gen2) önbellek kullanımı
+Büyük bir çalışma kümesine sahipseniz, düşük bir önbellek isabet yüzdesi ve yüksek önbellek kullanımı yaşayabilirsiniz. Bu senaryoda, önbellek kapasitesini artırmak ve iş yükünüzü yeniden çalıştırmak için ölçeği ölçeklendirmelisiniz. Daha fazla bilgi için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache)ziyaret edin. 
+
+## <a name="tempdb-contention"></a>Tempdb çekişmesi
+
+Yüksek tempdb Çekişmesi olduğunda sorgu performansı düşebilir.  Tempdb çekişmesi, Kullanıcı tanımlı geçici tablolar aracılığıyla veya büyük miktarda veri hareketi olduğunda meydana gelebilir. Bu senaryoda, daha fazla tempdb ayırması için ölçeklendirebilir ve sorgularınızı daha fazla bellek sağlamak üzere [kaynak sınıflarını ve iş yükü yönetimini yapılandırabilirsiniz](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) . 

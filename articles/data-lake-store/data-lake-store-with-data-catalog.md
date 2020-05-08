@@ -1,23 +1,17 @@
 ---
-title: Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme | Microsoft Docs
-description: Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: Azure Veri Kataloğu ile Data Lake Storage 1. tümleştirme
+description: Verileri kuruluşunuzda bulunabilir hale getirmek için Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri nasıl kaydedeceğinizi öğrenin.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60196611"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692333"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
 Bu makalede, verileri veri kataloğu ile tümleştirerek bir kuruluşta bulunabilir hale getirmek için Azure Data Lake Storage 1. Azure Veri Kataloğu ile tümleştirmeyi öğreneceksiniz. Verileri kataloglandırma hakkında daha fazla bilgi için bkz. [Azure Veri Kataloğu](../data-catalog/data-catalog-what-is-data-catalog.md). Veri kataloğunu kullanabileceğiniz senaryoları anlamak için bkz. [Azure Veri Kataloğu genel senaryoları](../data-catalog/data-catalog-common-scenarios.md).
@@ -25,9 +19,9 @@ Bu makalede, verileri veri kataloğu ile tümleştirerek bir kuruluşta bulunabi
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * Data Lake Storage 1. için **Azure aboneliğinizi etkinleştirin** . Bkz. [yönergeler](data-lake-store-get-started-portal.md).
-* **Data Lake Storage 1. hesabı**. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)konusundaki yönergeleri izleyin. Bu öğretici için **datacatalogstore**adlı bir Data Lake Storage 1. hesabı oluşturun.
+* **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu öğretici için **datacatalogstore**adlı bir Data Lake Storage 1. hesabı oluşturun.
 
     Hesabı oluşturduktan sonra, ona bir örnek veri kümesi yükleyin. Bu öğreticide, [Azure Data Lake git deposundaki](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) **AmbulanceData** klasörünün altındaki tüm. csv dosyalarını karşıya yüklememize izin verin. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
 * **Azure Veri Kataloğu**. Kuruluşunuz için kuruluşunuz için oluşturulmuş bir Azure Veri Kataloğu zaten olmalıdır. Her kuruluş için yalnızca bir kataloğa izin verilir.
@@ -56,7 +50,7 @@ Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
     b. **Kullanılabilir nesneler** kutusu **AmbulanceData** klasörü altındaki dosya ve klasörleri listeler.
 
-    c. **Kaydedilecek nesneler** Box, Azure Veri Kataloğu 'nda kaydetmek istediğiniz dosya ve klasörleri listeler.
+    c. Kaydedilecek **nesneler** kutusu, Azure Veri Kataloğu 'nda kaydetmek istediğiniz dosya ve klasörleri listeler.
 
     ![Veri yapısını görüntüle](./media/data-lake-store-with-data-catalog/view-data-structure.png "Veri yapısını görüntüle")
 1. Bu öğreticide, dizindeki tüm dosyaları kaydetmeniz gerekir. Bu şekilde, tüm dosyaları **kaydedilecek nesneler** kutusuna taşımak için (![nesneleri taşı](./media/data-lake-store-with-data-catalog/move-objects.png "Nesneleri taşı")) düğmesine tıklayın.

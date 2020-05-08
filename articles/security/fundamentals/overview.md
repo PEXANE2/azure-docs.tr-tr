@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461693"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731713"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -266,9 +266,9 @@ Traffic Manager, farklı uygulama ihtiyaçlarına, uç nokta durumuna [izlemeye]
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) uygulamalarınıza yüksek düzeyde kullanılabilirlik ve ağ performansı sunar. Bu, gelen trafiği yük dengeli bir küme içinde tanımlanan sağlıklı hizmet örnekleri arasında dağıtan bir katman 4 (TCP, UDP) yük dengeleyicidir. Azure Load Balancer, şu şekilde yapılandırılabilir:
 
--   Sanal makinelere gelen Internet trafiğinin yükünü dengeleyin. Bu yapılandırma [Internet 'e yönelik yük dengeleme](../../load-balancer/concepts-limitations.md#publicloadbalancer)olarak bilinir.
+-   Sanal makinelere gelen Internet trafiğinin yükünü dengeleyin. Bu yapılandırma, [genel yük dengeleme](../../load-balancer/components.md#frontend-ip-configurations)olarak bilinir.
 
--   Bir sanal ağ içindeki sanal makineler arasında, bulut hizmetlerindeki sanal makineler arasında veya şirket içi bilgisayarlar ile şirketler arası bir sanal ağdaki sanal makineler arasında yük dengeleme trafiği. Bu yapılandırma, [İç Yük Dengeleme](../../load-balancer/concepts-limitations.md#internalloadbalancer)olarak bilinir.
+-   Bir sanal ağ içindeki sanal makineler arasında, bulut hizmetlerindeki sanal makineler arasında veya şirket içi bilgisayarlar ile şirketler arası bir sanal ağdaki sanal makineler arasında yük dengeleme trafiği. Bu yapılandırma, [İç Yük Dengeleme](../../load-balancer/components.md#frontend-ip-configurations)olarak bilinir.
 
 - Dış trafiği belirli bir sanal makineye ilet
 

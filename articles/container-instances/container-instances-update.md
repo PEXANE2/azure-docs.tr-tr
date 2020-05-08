@@ -3,16 +3,16 @@ title: Kapsayıcı grubunu Güncelleştir
 description: Azure Container Instances kapsayıcı gruplarınızdaki çalışan kapsayıcıları güncelleştirme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854454"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928729"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcıları güncelleştirme
 
-Kapsayıcı örneklerinizin normal işlemleri sırasında, bir [kapsayıcı grubundaki](container-instances-container-groups.md)çalışan kapsayıcıları güncelleştirmek için gerekli olduğunu fark edebilirsiniz. Örneğin, bir görüntü sürümü, DNS adı veya ortam değişkeni gibi bir özelliği güncelleştirmek ya da uygulaması kilitlenen bir kapsayıcıdaki bir özelliği yenilemek isteyebilirsiniz.
+Kapsayıcı örneklerinizin normal işlemleri sırasında, bir [kapsayıcı grubundaki](./container-instances-container-groups.md)çalışan kapsayıcıları güncelleştirmek için gerekli olduğunu fark edebilirsiniz. Örneğin, bir görüntü sürümü, DNS adı veya ortam değişkeni gibi bir özelliği güncelleştirmek ya da uygulaması kilitlenen bir kapsayıcıdaki bir özelliği yenilemek isteyebilirsiniz.
 
 Mevcut bir grubu en az bir Modified özelliği ile yeniden dağıtarak çalışan bir kapsayıcı grubundaki kapsayıcıları güncelleştirin. Bir kapsayıcı grubunu güncelleştirdiğinizde gruptaki tüm çalışan kapsayıcılar, genellikle aynı temel kapsayıcı ana bilgisayarında yerinde yeniden başlatılır.
 
@@ -28,7 +28,7 @@ Var olan bir kapsayıcı grubunu güncelleştirmek için:
 * Diğer özellikleri daha önce belirttiğiniz değerlerle ayarlayın. Bir özellik için değer ayarlamazsanız, varsayılan değerine döner.
 
 > [!TIP]
-> [YAML dosyası](container-instances-container-groups.md#deployment) bir kapsayıcı grubunun dağıtım yapılandırmasını sürdürmenize yardımcı olur ve güncelleştirilmiş bir grubu dağıtmak için bir başlangıç noktası sağlar. Grubu oluşturmak için farklı bir yöntem kullandıysanız, [az Container Export][az-container-export]kullanarak yapılandırmayı YAML 'ye dışarı aktarabilirsiniz. 
+> [YAML dosyası](./container-instances-container-groups.md#deployment) bir kapsayıcı grubunun dağıtım yapılandırmasını sürdürmenize yardımcı olur ve güncelleştirilmiş bir grubu dağıtmak için bir başlangıç noktası sağlar. Grubu oluşturmak için farklı bir yöntem kullandıysanız, [az Container Export][az-container-export]kullanarak yapılandırmayı YAML 'ye dışarı aktarabilirsiniz. 
 
 ### <a name="example"></a>Örnek
 
@@ -80,7 +80,7 @@ Bir kapsayıcı grubunu silip yeniden oluşturduğunuzda, "yeniden dağıtılır
 
 Bu makalede birkaç kez bahsedildiği **kapsayıcı grubu**. Azure Container Instances içindeki her kapsayıcı bir kapsayıcı grubuna dağıtılır ve kapsayıcı grupları birden fazla kapsayıcı içerebilir.
 
-[Azure Container Instances’taki kapsayıcı grupları](container-instances-container-groups.md)
+[Azure Container Instances’taki kapsayıcı grupları](./container-instances-container-groups.md)
 
 [Birden çok kapsayıcılı grup dağıtma](container-instances-multi-container-group.md)
 

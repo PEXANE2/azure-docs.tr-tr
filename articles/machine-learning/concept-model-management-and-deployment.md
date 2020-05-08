@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314304"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929766"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model yönetimi, dağıtım ve Azure Machine Learning ile izleme
 
@@ -153,7 +153,7 @@ Azure ML, meta verileri kullanarak tüm ML varlıklarınızın uçtan uca deneti
 - [Yorumlandırma](how-to-machine-learning-interpretability.md) , modellerinizi açıklamanıza, yasal uyumluluğu karşılamanıza ve belirli bir giriş için modellerin bir sonuca nasıl ulaştığını anlamanıza olanak tanır.
 - Azure ML çalışma geçmişi, bir modeli eğitebilmeniz için kullanılan kodun, verilerin ve hesaplanan bir anlık görüntü depolar.
 - Azure ML modeli kayıt defteri, modelinizle ilişkili tüm meta verileri yakalar (Bu, dağıtımları, dağıtımı sağlıklı ise, dağıtıldığı yerde).
-- [Azure Event Grid tümleştirme](concept-event-grid-integration.md) , ml yaşam döngüsünün olayları üzerinde işlem yapmanıza olanak sağlar. Örneğin, model kaydı, dağıtım, veri kayması ve eğitim (çalıştırma) olayları.
+- [Azure Ile tümleştirme](how-to-use-event-grid.md) , ml yaşam döngüsünün olayları üzerinde işlem yapmanıza olanak sağlar. Örneğin, model kaydı, dağıtım, veri kayması ve eğitim (çalıştırma) olayları.
 
 > [!TIP]
 > Modeller ve veri kümeleri hakkında bazı bilgiler otomatik olarak yakalanırken, __etiketleri__kullanarak ek bilgi ekleyebilirsiniz. Çalışma alanınızda kayıtlı modelleri ve veri kümelerini ararken Etiketleri filtre olarak kullanabilirsiniz.

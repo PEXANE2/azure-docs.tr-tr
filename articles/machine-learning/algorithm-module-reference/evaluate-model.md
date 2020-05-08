@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129842"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983372"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
@@ -34,9 +34,13 @@ Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir mo
 
 
 ## <a name="how-to-use-evaluate-model"></a>Modeli değerlendir kullanma
-1. [Puan modelinin puın](./score-model.md) **veri kümesi** çıkışını **modeli değerlendir**'in sol giriş bağlantı noktasına bağlayın. 
+1. [Puanlama modelinin](./score-model.md) **puanlanmış veri kümesi** çıkışını veya [veri](./assign-data-to-clusters.md) kümesi çıkışını, **modeli değerlendir**' in sol giriş bağlantı noktasına bağlayın. 
+  > [!NOTE] 
+  > Giriş veri kümesinin bir bölümünü seçmek için "veri kümesindeki sütunları seçme" gibi modüller kullanıyorsanız, lütfen AUC gibi ölçümleri hesaplamak için gerçek etiket sütununun (eğitiminde kullanılan), ' puanlanmış olasılıkların ' sütununun ve ' puanlanmış Etiketler ' sütununun mevcut olduğundan emin olun.
+  > Çok sınıflı sınıflandırma/gerileme için ölçümleri hesaplamak üzere gerçek etiket sütunu, ' puanlanmış Etiketler ' sütunu var.
+  > ' Atamalar ' sütunu, sütunlar ' DistancesToClusterCenter No. X ' (X, centroıd dizinidir, 0,..., centroıds-1), Kümelemeye yönelik ölçümleri hesaplamak için mevcuttur.
 
-2. Seçim İkinci model için [puan modelinin puın](./score-model.md) **veri kümesi** çıkışını, **modeli değerlendir**' in **sağ** girdisine bağlayın. Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilirsiniz. İki giriş algoritması aynı algoritma türünde olmalıdır. Ya da, farklı parametrelerle aynı veriler üzerinde bulunan iki farklı çalıştırmaların puanlarını karşılaştırabilirsiniz.
+2. Seçim [Puan modelinin puın](./score-model.md) veri **kümesi** çıkışını veya ikinci model için veri kümesi çıkışının, **modeli değerlendir**' in **doğru** giriş bağlantı noktasına bağlanmasını sağlar. Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilirsiniz. İki giriş algoritması aynı algoritma türünde olmalıdır. Ya da, farklı parametrelerle aynı veriler üzerinde bulunan iki farklı çalıştırmaların puanlarını karşılaştırabilirsiniz.
 
     > [!NOTE]
     > Algoritma türü ' Machine Learning algoritmaları ' altında ' Iki sınıf sınıflandırma ', ' çok sınıf sınıflandırması ', ' gerileme ', ' Kümeleme ' anlamına gelir. 

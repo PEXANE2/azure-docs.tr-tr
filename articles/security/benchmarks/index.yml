@@ -1,54 +1,54 @@
 ### YamlMime:Landing
-title: Azure güvenlik karşılaştırmaları belgeleri
+title: Azure Güvenlik Karşılaştırması belgeleri
 summary: En iyi yöntemlerimiz ve kılavuzlarımızla Azure’da bulut çözümünüzün güvenliğini sağlamayı öğrenin.
 metadata:
-  title: Azure güvenlik karşılaştırmaları
-  description: Azure Güvenlik Denetimleri Karşılaştırması, Azure'da uygulamalarınızın ve verilerinizin güvenliğini geliştirmeye yardımcı olacak öneriler içerir.
+  title: Azure Güvenlik Karşılaştırmaları
+  description: Azure Güvenlik Karşılaştırması, Azure’da uygulamalarınızın ve verilerinizin güvenliğini geliştirmeye yardımcı olacak öneriler içerir.
   services: security
   ms.service: security
   ms.subservice: fundamentals
-  ms.custom: security-baselines
+  ms.custom: security-benchmark
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: c2b36e098314af78ca3d6f28534c3d3e97697363
-  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/15/2020
-  ms.locfileid: "81393832"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82607767"
 landingContent:
 - title: Azure Güvenlik Karşılaştırması hakkında
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Güvenlik Karşılaştırması’na Giriş
+    - text: Azure Güvenlik Karşılaştırması’na giriş
       url: introduction.md
-    - text: Azure Güvenlik Denetimleri’ne genel bakış
+    - text: Azure güvenlik denetimlerine genel bakış
       url: overview.md
-- title: Güvenlik Denetimleri
+- title: Güvenlik denetimleri
   linkLists:
   - linkListType: overview
     links:
-    - text: Ağ Güvenliği
+    - text: Ağ güvenliği
       url: security-control-network-security.md
-    - text: Günlüğe Kaydetme ve İzleme
+    - text: Günlüğe kaydetme ve izleme
       url: security-control-logging-monitoring.md
-    - text: Kimlik ve Erişim Denetimi
+    - text: Kimlik ve erişim denetimi
       url: security-control-identity-access-control.md
-    - text: Veri Koruma
+    - text: Veri koruma
       url: security-control-data-protection.md
-    - text: Güvenlik Açığı Yönetimi
+    - text: Güvenlik açığı yönetimi
       url: security-control-vulnerability-management.md
     - text: Daha fazla göster
       url: security-control-inventory-asset-management.md
-- title: Azure Güvenliği ile İlgili Diğer Bilgiler
+- title: Azure Güvenliği ile ilgili diğer bilgiler
   linkLists:
   - linkListType: learn
     links:
-    - text: Azure Güvenliğinin Temelleri
+    - text: Azure güvenliğinin temelleri
       url: ../fundamentals/index.yml
     - text: Bulutta paylaşılan sorumluluk
       url: ../fundamentals/shared-responsibility.md

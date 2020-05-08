@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066998"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929052"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
 
@@ -58,7 +58,7 @@ Genel olarak ***b*** toplu iş boyutu için, b toplu iş boyutunda Web hizmeti g
 
 Ayrıca, Machine Learning Web hizmetinde ' maksimum eşzamanlı çağrılar ' yapılandırabilirsiniz. Bu parametreyi en büyük değere ayarlamanız önerilir (Şu anda 200).
 
-Bu ayar hakkında daha fazla bilgi için, [Machine Learning Web Hizmetleri Için ölçeklendirme makalesini](../machine-learning/studio/scaling-webservice.md)inceleyin.
+Bu ayar hakkında daha fazla bilgi için, [Machine Learning Web Hizmetleri Için ölçeklendirme makalesini](../machine-learning/studio/create-endpoint.md)inceleyin.
 
 ## <a name="example--sentiment-analysis"></a>Örnek: Yaklaşım Analizi
 Aşağıdaki örnek, [Stream Analytics Machine Learning tümleştirme öğreticisinde](stream-analytics-machine-learning-integration-tutorial.md)açıklandığı gibi, yaklaşım Analizi Machine Learning işleviyle Stream Analytics bir işi içerir.
