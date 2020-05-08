@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: b25d35ce467786c402c56c8a7d19a305381db94f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6b6e261b5cdfee00a9346338b6eb5d7e1f2a2a0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137799"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982114"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerinin sunucu tarafı şifrelemesi
 
@@ -79,7 +79,7 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için bkz. [Po
 - Müşteri tarafından yönetilen anahtarlarınızla ilgili tüm kaynakların (Azure Anahtar kasaları, disk şifreleme kümeleri, VM 'Ler, diskler ve anlık görüntüler) aynı abonelikte ve bölgede olması gerekir.
 - Müşteri tarafından yönetilen anahtarlarla şifrelenen diskler, anlık görüntüler ve görüntüler başka bir aboneliğe taşınamaz.
 - Disk şifreleme kümesini oluşturmak için Azure portal kullanırsanız, anlık görüntüleri şimdilik kullanamazsınız.
-- Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen yönetilen diskler, Azure disk şifrelemesi ile de şifrelenemez.
+- Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi kullanılarak şifrelenmiş yönetilen diskler ayrıca Azure disk şifrelemesi ile şifrelenemez ve tam tersi de geçerlidir
 
 ### <a name="powershell"></a>PowerShell
 

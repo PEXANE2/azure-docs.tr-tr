@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189626"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926196"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçleri yapılandırma
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [bir belirtecin yaş
 
 Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bir Kullanıcı akışı oluşturun](tutorial-create-user-flows.md) .
 
-## <a name="configure-token-lifetime"></a>Belirteç ömrünü yapılandırma
+## <a name="configure-jwt-token-lifetime"></a>JWT belirteci ömrünü yapılandırma
 
 Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz.
 
@@ -41,7 +41,7 @@ Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz
 
 8. **Kaydet**’e tıklayın.
 
-## <a name="configure-token-compatibility"></a>Belirteç uyumluluğunu yapılandırma
+## <a name="configure-jwt-token-compatibility"></a>JWT belirteci uyumluluğunu yapılandırma
 
 1. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
 2. Daha önce oluşturduğunuz kullanıcı akışını açın.

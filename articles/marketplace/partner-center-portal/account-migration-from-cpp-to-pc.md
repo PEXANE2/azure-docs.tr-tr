@@ -1,20 +1,20 @@
 ---
-title: Bulut İş Ortağı Portalı 'den Iş Ortağı Merkezi 'ne hesap geçişi-Azure için ticari Market
-description: Hesabınızı CPP 'ten Iş Ortağı Merkezi 'ne geçirme-Azure için ticari Market
+title: Bulut İş Ortağı Portalı hesaplarını Microsoft Commercial Market 'e geçirme
+description: Hesabınızı Azure için Microsoft Commercial Market 'teki Iş ortağı merkezine Bulut İş Ortağı Portalı geçirme hakkında bilgi edinin
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024430"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743526"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi
+# <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Hesabınızı Iş Ortağı Merkezi 'ne geçirme
 
 Mevcut bir Bulut İş Ortağı Portalı (CPP) hesabınız varsa, hesap ayarlarınızın Iş Ortağı Merkezi 'ne geçirilmesi gerekir.
 

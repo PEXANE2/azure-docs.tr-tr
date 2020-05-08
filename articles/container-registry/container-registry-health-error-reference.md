@@ -3,12 +3,12 @@ title: Sistem durumu denetimleri için hata başvurusu
 description: Azure Container Registry ' de az ACR Check-Health Diagnostic komutu çalıştırılarak bulunan sorunlara yönelik olası çözümler ve hata kodları
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289150"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978323"
 ---
 # <a name="health-check-error-reference"></a>Sistem durumu denetimi hata başvurusu
 
@@ -58,7 +58,7 @@ Bu hata, verilen kayıt defteri oturum açma sunucusu için DNS 'nin ping işlem
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle, kullanıcıların kayıt defterine erişemeyeceği anlamına gelir. Yapılandırılmış olan güvenlik duvarı kurallarını görmek için öğesini çalıştırın `az acr show --query networkRuleSet --name <registry>`.
+Bu hata, verilen kayıt defteri için zorluk bitiş noktasının 403 yasaklanmış bir HTTP durumuyla yanıt verdiğini gösterir. Bu hata, büyük olasılıkla bir sanal ağ yapılandırması nedeniyle veya kayıt defterinin genel uç noktasına erişime izin verilmediğinden, kullanıcıların kayıt defterine erişimi olmadığı anlamına gelir. Yapılandırılmış olan güvenlik duvarı kurallarını görmek için öğesini çalıştırın `az acr show --query networkRuleSet --name <registry>`.
 
 *Olası çözümler*: sanal ağ kurallarını kaldırın veya GEÇERLI istemci IP adresini izin verilenler listesine ekleyin.
 

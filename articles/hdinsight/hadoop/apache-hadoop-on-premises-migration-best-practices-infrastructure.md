@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d7d2a52f58162d288b1155f9724c7912e451f3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951522"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780105"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
 
@@ -167,7 +167,7 @@ Azure sanal ağını HDInsight ile kullanmak aşağıdaki senaryoları sunar:
 - HDInsight 'ı bir Azure sanal ağındaki veri depolarına bağlama.
 - Internet üzerinden genel kullanıma açık olmayan Hadoop hizmetlerine doğrudan erişme. Örneğin, Kafka API 'Leri veya HBase Java API 'SI.
 
-HDInsight, yeni veya mevcut bir Azure sanal ağına eklenebilir. HDInsight var olan bir sanal ağa eklenirse, mevcut ağ güvenlik gruplarının ve Kullanıcı tanımlı yolların, Azure veri merkezi 'nde [bırkaç IP adresine](../hdinsight-management-ip-addresses.md) sınırsız erişime izin verecek şekilde güncelleştirilmeleri gerekir. Ayrıca, HDInsight Hizmetleri tarafından kullanılan [bağlantı noktalarında](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)trafiği engellemediğinizden emin olun.
+HDInsight, yeni veya mevcut bir Azure sanal ağına eklenebilir. HDInsight var olan bir sanal ağa eklenirse, mevcut ağ güvenlik gruplarının ve Kullanıcı tanımlı yolların, Azure veri merkezi 'nde [bırkaç IP adresine](../hdinsight-management-ip-addresses.md) sınırsız erişime izin verecek şekilde güncelleştirilmeleri gerekir. Ayrıca, HDInsight Hizmetleri tarafından kullanılan [bağlantı noktalarında](../control-network-traffic.md#required-ports)trafiği engellemediğinizden emin olun.
 
 > [!Note]  
 > HDInsight Şu anda zorlamalı tüneli desteklemiyor. Zorlamalı tünel, gelen Internet trafiğini İnceleme ve günlüğe kaydetme amacıyla bir cihaza zorlayan bir alt ağ ayarıdır. HDInsight 'ı bir alt ağa yüklemeden önce zorlamalı tüneli kaldırın veya HDInsight için yeni bir alt ağ oluşturun. HDInsight, giden ağ bağlantısının kısıtlanması de desteklemez.

@@ -4,20 +4,20 @@ description: Görevin çalışmasını istediğiniz kullanıcı hesabını yapı
 ms.topic: article
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111751"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980295"
 ---
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
+
 > [!NOTE] 
 > Bu makalede ele alınan kullanıcı hesapları, güvenlik nedenleriyle Uzak Masaüstü Protokolü (RDP) veya Secure Shell (SSH) için kullanılan kullanıcı hesaplarından farklıdır. 
 >
 > Linux sanal makine yapılandırmasını SSH aracılığıyla çalıştıran bir düğüme bağlanmak için bkz. [Azure 'Da LINUX VM 'ye uzak masaüstü kullanma](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Windows çalıştıran düğümlere RDP aracılığıyla bağlanmak için bkz. [Windows Server VM 'ye bağlanma](../virtual-machines/windows/connect-logon.md).<br /><br />
 > RDP aracılığıyla bulut hizmeti yapılandırmasını çalıştıran bir düğüme bağlanmak için bkz. [Azure Cloud Services bir rol için Uzak Masaüstü bağlantısı etkinleştirme](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
-
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Batch 'de Kullanıcı hesapları altında görevleri çalıştırma
 
 Azure Batch bir görev her zaman bir kullanıcı hesabı altında çalışır. Varsayılan olarak, görevler yönetici izinleri olmadan standart Kullanıcı hesapları altında çalışır. Bu varsayılan kullanıcı hesabı ayarları genellikle yeterlidir. Ancak, belirli senaryolarda, bir görevin çalıştırılmasını istediğiniz kullanıcı hesabını yapılandırmak yararlı olur. Bu makalede Kullanıcı hesabı türleri ve bunları senaryonuz için nasıl yapılandırabileceğinizi ele alınmaktadır.
 

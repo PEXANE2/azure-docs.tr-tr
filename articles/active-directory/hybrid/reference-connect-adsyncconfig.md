@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60381204"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982012"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell Başvurusu
 Aşağıdaki belgeler Azure AD Connect eklenen ADSyncConfig. psm1 PowerShell modülü için başvuru bilgileri sağlar.
@@ -59,25 +59,24 @@ AD içinde SearchBase parametresinden başlayarak arar ve ACL devralım durumund
 ### <a name="examples"></a>ÖRNEKLER
 
 #### <a name="example-1"></a>ÖRNEK 1
+' Contoso ' etki alanında devre dışı devralma içeren nesneleri bul (varsayılan olarak yalnızca ' organizationalUnit ' nesnelerini döndürür)
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 ```
-
-Get-Adsyncobjectswithınheritancedisabled-SearchBase ' contoso '
 
 #### <a name="example-2"></a>ÖRNEK 2
+' Contoso ' etki alanında devralmayı devre dışı olan ' Kullanıcı ' nesnelerini bul
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
 ```
-
-Get-Adsyncobjectswithınheritancedisabled-SearchBase ' contoso '-ObjectClass ' user '
 
 #### <a name="example-3"></a>ÖRNEK 3
+Bir OU 'da devre dışı devralma içeren tüm nesne türlerini bulma
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-Adsyncobjectswithınheritancedisabled-SearchBase OU = AzureAD, DC = contoso, DC = com-ObjectClass ' * '
+
 
 ### <a name="parameters"></a>PARAMETRELER
 

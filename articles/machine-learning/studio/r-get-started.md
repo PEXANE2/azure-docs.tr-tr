@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209511"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982199"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 'de Azure Machine Learning Studio (klasik) kullanmaya başlama
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-Bu öğretici, R programlama dilini kullanarak Azure Machine Learning Studio (klasik) genişletmeye başlamanıza yardımcı olur. Studio (klasik) içinde R kodu oluşturmak, test etmek ve yürütmek için bu R programlama öğreticisini izleyin. Öğreticide çalışırken, Studio (klasik) dilinde R dilini kullanarak bir tahmin çözümü oluşturacaksınız.  
+Bu öğreticide, R kodu oluşturmak, test etmek ve yürütmek için ML Studio (klasik) kullanmayı öğreneceksiniz. Sonunda, tüm tahmin çözümünüz olacak.  
 
-Azure Machine Learning Studio (klasik) birçok güçlü makine öğrenimi ve veri işleme modülü içerir. Güçlü R dili, analiz Lingua frani CA 'sı olarak açıklanmaktadır. Bu, Intune 'da (klasik) analiz ve veri işleme, R kullanılarak genişletilebilir. Bu birleşim, R 'nin esneklik ve derin analizine sahip Studio 'nun (klasik) ölçeklenebilirlik ve dağıtımı kolaylığı sağlar.
+> [!div class="checklist"]
+> * Veri temizleme ve dönüştürme için kod oluşturun.
+> * Veri kümizdeki değişkenlerin bazıları arasındaki bağıntıları çözümleyin.
+> * MILK üretimi için mevsimsel bir zaman serisi tahmin modeli oluşturun.
 
-### <a name="forecasting-and-the-dataset"></a>Tahmin ve veri kümesi
 
-Tahmin, yaygın olarak kullanılan ve oldukça kullanışlı bir analitik yöntemdir. Ortak, dönemsel öğelerin satışlarından tahmine dayalı, makro ekonomik değişkenleri tahmin etmek için en iyi envanter düzeylerini belirleyen Aralık kullanır. Tahmin genellikle zaman serisi modelleriyle yapılır.
+Azure Machine Learning Studio (klasik) birçok güçlü makine öğrenimi ve veri işleme modülü içerir. R programlama diliyle birlikte bu birleşim, R 'nin esneklik ve derin analizine sahip Studio 'nun (klasik) bir ölçeklenebilirlik ve dağıtımı sağlar.
 
-Zaman serisi verileri, değerlerinin zaman dizinine sahip olduğu bir veri. Saat dizini normal, örneğin her ay veya her dakika ya da düzensiz olabilir. Zaman serisi modeli, zaman serisi verilerine göre belirlenir. R programlama dili, esnek bir çerçeve ve zaman serisi verileri için kapsamlı analiz içerir.
+Tahmin, yaygın olarak kullanılan ve oldukça kullanışlı bir analitik yöntemdir. Ortak, dönemsel öğelerin satışlarından tahmine dayalı, makro ekonomik değişkenleri tahmin etmek için en iyi envanter düzeylerini belirleyen Aralık kullanır. Tahmin genellikle zaman serisi modelleriyle yapılır. Zaman serisi verileri, değerlerinin zaman dizinine sahip olduğu bir veri. Saat dizini normal, örneğin her ay veya her dakika ya da düzensiz olabilir. Zaman serisi modeli, zaman serisi verilerine göre belirlenir. R programlama dili, esnek bir çerçeve ve zaman serisi verileri için kapsamlı analiz içerir.
 
-Bu kılavuzda, California süt üretimi ve fiyatlandırma verileriyle birlikte çalışıyoruz. Bu veriler, çeşitli süt ürünlerinin üretimi ile ilgili aylık bilgileri ve bir kıyaslama emtia, MILK FAT fiyatını içerir.
+## <a name="get-the-data"></a>Verileri alma
+
+Bu öğreticide, çeşitli süt ürünlerinin üretimi ve MILK FAT fiyatı, bir kıyaslama emtia ile ilgili aylık bilgiler içeren California süt üretim ve fiyatlandırma verilerini kullanırsınız.
 
 R betikleriyle birlikte bu makalede kullanılan veriler, [Machinelearningsamples-Notebook/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)adresinden indirilebilir. Dosyadaki `cadairydata.csv` veriler, ilk olarak, ' ın University of Wıconconsin ' den sunulan bilgilerden sentezlenmiş [https://dairymarkets.com](https://dairymarkets.com).
 
-### <a name="organization"></a>Kuruluş
 
-Azure Machine Learning Studio (klasik) ortamında analiz ve veri işleme R kodu oluşturma, test etme ve yürütme hakkında bilgi edinmek için çeşitli adımlarda ilerlebiliriz.  
-
-* İlk olarak, Azure Machine Learning Studio (klasik) ortamında R dilinin kullanımıyla ilgili temel bilgileri keşfedeceğiz.
-* Daha sonra, Azure Machine Learning Studio (klasik) ortamında veri, R kodu ve grafik için g/ç 'nin çeşitli yönlerini tartışmak için ilerliyoruz.
-* Daha sonra, veri temizleme ve dönüştürme için kod oluşturarak tahmin çözümümüzün ilk bölümünü oluşturacağız.
-* Verilerimizin hazırlandığı veri kümenizdeki değişkenlerin bazıları arasında bağıntılar analizini gerçekleştiririz.
-* Son olarak, MILI üretimi için mevsimsel bir zaman serisi tahmin modeli oluşturacağız.
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Machine Learning Studio 'de R diliyle etkileşim kurma (klasik)
 
@@ -143,7 +139,7 @@ Bu bölümde, [R betik modülünü yürütme][execute-r-script] ve dışarı akt
 
 Bu bölümün tam kodu, [Machinelearningsamples-Notebook/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)içinde bulunur.
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Machine Learning Studio verileri yükleme ve denetleme (klasik)
+### <a name="load-and-check-data"></a>Verileri yükleme ve denetleme 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Veri kümesini yükleme
 

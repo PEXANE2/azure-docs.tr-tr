@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769800"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983644"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Python 'da öngörülere & ML modellerini açıklamak için yorumlamalar paketini kullanın
 
@@ -85,7 +85,7 @@ Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makineniz
                                  classes=classes)
     ```
 
-    or
+    veya
 
     ```python
 
@@ -111,7 +111,7 @@ Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makineniz
                                classes=classes)
     ```
 
-    or
+    veya
 
     ```python
     from interpret.ext.blackbox import PFIExplainer
@@ -238,10 +238,10 @@ Aşağıdaki örnek, uzak çalıştırmalar için model yorumlenebilirliğini et
 * `ExplanationClient` Yorumlenebilirlik bağlamını karşıya yüklemek için uzak çalıştırmada öğesini kullanın.
 * Bağlamı daha sonra yerel bir ortamda indirin.
 
-1. Ve `azureml-interpret` `azureml-interpret-contrib` paketlerini yükler.
+1. Ve `azureml-interpret` `azureml-contrib-interpret` paketlerini yükler.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 1. Yerel bir Jupyter not defterinde eğitim betiği oluşturun. Örneğin, `train_explain.py`.
 

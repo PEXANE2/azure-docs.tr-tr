@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587184"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744758"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel izinleri
 
@@ -44,7 +44,7 @@ Azure Sentinel adanmış RBAC rollerinin yanı sıra Azure ve Log Analytics RBAC
 > Log Analytics roller, tüm Azure kaynaklarında okuma erişimi de verir, ancak yalnızca Log Analytics kaynaklarına yazma izinleri atar.
 
 
-Örneğin, **Azure Sentinel okuyucu** ve **Azure katılımcısı** ( **Azure Sentinel katılımcısı**değil) rolleri Ile atanan bir Kullanıcı, yalnızca **Sentinel okuyucu** izinleri olsa da verileri Azure Sentinel 'de düzenleyebilecektir. Bu nedenle, yalnızca Azure Sentinel 'de izin vermek istiyorsanız, başka bir kaynak için gerekli izin rollerini bozmayın, bu kullanıcının önceki izinlerini dikkatle kaldırmanız gerekir.
+Örneğin, **Azure Sentinel okuyucu** ve **Azure katılımcısı** ( **Azure Sentinel katılımcısı**değil) rolleri Ile atanan bir Kullanıcı, yalnızca **Sentinel okuyucu** izinleri olsa da verileri Azure Sentinel 'de düzenleyebilecektir. Bu nedenle, yalnızca Azure Sentinel 'de bir kullanıcıya izin vermek istiyorsanız, başka bir kaynak için gerekli herhangi bir izin rolünü bozmayın olduğundan emin olmak için bu kullanıcının önceki izinlerini dikkatle kaldırmanız gerekir.
 
 > [!NOTE]
 >- Azure Sentinel otomatik tehdit yanıtı için PlayBook 'ları kullanır. Playbooks Azure Logic Apps yararlanır ve ayrı bir Azure kaynağıdır. Güvenlik düzenleme, otomasyon ve yanıt (SOAR) işlemleri için Logic Apps kullanma seçeneğiyle güvenlik işlemleri ekibinizin belirli üyelerini atamak isteyebilirsiniz. PlayBook 'ları kullanmaya açık izin atamak için [Logic App katılımcısı](../role-based-access-control/built-in-roles.md#logic-app-contributor) rolünü veya [mantıksal uygulama işletmeni](../role-based-access-control/built-in-roles.md#logic-app-operator) rolünü kullanabilirsiniz.

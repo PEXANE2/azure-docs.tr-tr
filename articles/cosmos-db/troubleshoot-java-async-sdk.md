@@ -1,22 +1,35 @@
 ---
-title: Java zaman uyumsuz SDK Azure Cosmos DB tanılama ve sorun giderme
-description: Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme gibi özellikleri ve diğer üçüncü taraf araçları kullanın.
-author: moderakh
+title: Zaman uyumsuz Java SDK v2 Azure Cosmos DB tanılama ve sorun giderme
+description: Zaman uyumsuz Java SDK v2 'de Azure Cosmos DB sorunları tanımlamak, tanılamak ve sorunlarını gidermek için istemci tarafı günlüğe kaydetme ve diğer üçüncü taraf araçları gibi özellikleri kullanın.
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 04/30/2019
-ms.author: moderakh
+ms.date: 05/08/2020
+ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65519973"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982624"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API hesaplarıyla Java Async SDK’sını kullanırken karşılaşılan sorunları giderme
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>SQL API hesaplarıyla Azure Cosmos DB zaman uyumsuz Java SDK v2 kullandığınızda oluşan sorunları giderme
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Zaman uyumsuz Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için Azure Cosmos DB Java SDK v4 kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) kılavuzundaki yönergeleri izleyin. 
+>
+> Bu makalede yalnızca Azure Cosmos DB zaman uyumsuz Java SDK v2 için sorun giderme ele alınmaktadır. Daha fazla bilgi için bkz. Azure Cosmos DB zaman uyumsuz Java SDK v2 [sürüm notları](sql-api-sdk-async-java.md), [Maven deposu](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) ve [Performans ipuçları](performance-tips-async-java.md) .
+>
+
 Bu makalede, [Java zaman uyumsuz SDK](sql-api-sdk-async-java.md) 'Yı Azure Cosmos db SQL API hesaplarıyla kullandığınızda yaygın sorunlar, geçici çözümler, Tanılama adımları ve araçlar ele alınmaktadır.
 Java Async SDK’sı, Azure Cosmos DB SQL API’sine erişim için istemci tarafı mantıksal temsili sağlar. Bu makalede, sorunla karşılaştığınızda size yardımcı olacak araçlar ve yaklaşımlar açıklanır.
 
@@ -80,6 +93,9 @@ SDK, Azure Cosmos DB iletişim kurmak için [Netty](https://netty.io/) GÇ kitap
 Netty GÇ iş parçacıklarının yalnızca engelleyici olmayan Netty GÇ işleri için kullanılması amaçlanmıştır. SDK, netty GÇ iş parçacıklarından birindeki API çağırma sonucunu uygulamanın koduna döndürür. Uygulama, netty iş parçacığında sonuçları aldıktan sonra uzun süreli bir işlem gerçekleştiriyorsa, SDK 'nın iç GÇ işlerini gerçekleştirmek için yeterli GÇ iş parçacığı olmayabilir. Bu tür uygulamalar, düşük aktarım hızı, yüksek gecikme süresi ve `io.netty.handler.timeout.ReadTimeoutException` hatalara yol açabilir. Geçici çözüm, işlemin zaman aldığını bildiğiniz zaman iş parçacığını geçeceğdir.
 
 Örneğin, aşağıdaki kod parçacığına göz atın. Netty iş parçacığında birkaç milisaniyeye sahip olan uzun süreli işler gerçekleştirebilirsiniz. Bu durumda, sonunda GÇ işini işlemek için bir Netty GÇ iş parçacığı bulunmayan bir duruma ulaşabilirsiniz. Sonuç olarak, bir ReadTimeoutException hatası alırsınız.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +147,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   Geçici çözüm, zaman alan iş parçacığını değiştirmek için kullanılır. Uygulamanız için Scheduler 'ın tek bir örneğini tanımlayın.
-   ```java
+Geçici çözüm, zaman alan iş parçacığını değiştirmek için kullanılır. Uygulamanız için Scheduler 'ın tek bir örneğini tanımlayın.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   Zaman alan, örneğin, yoğun bir iş veya GÇ 'yi engelleme gibi iş yapmanız gerekebilir. Bu durumda, `customScheduler` `.observeOn(customScheduler)` API 'yi kullanarak iş parçacığını tarafından sağlanmış bir çalışana geçirin.
+```
+Zaman alan, örneğin, yoğun bir iş veya GÇ 'yi engelleme gibi iş yapmanız gerekebilir. Bu durumda, `customScheduler` `.observeOn(customScheduler)` API 'yi kullanarak iş parçacığını tarafından sağlanmış bir çalışana geçirin.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -169,7 +191,7 @@ Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()
 
 Yukarıdaki özel durum, daha eski bir RxJava lib sürümü (ör. 1.2.2) için bir bağımlılığının olduğunu önerir. SDK 'mız, RxJava 'ın önceki sürümlerinde kullanılamayan RxJava 1.3.8 kullanır. 
 
-Bu tür konuklara geçici çözüm olarak, RxJava-1.2.2 ' deki diğer bağımlılığın ne olduğunu ve RxJava-1.2.2 üzerinde geçişli bağımlılığı dışarıda bırakmayı ve CosmosDB SDK 'sının daha yeni sürümü getirmesine izin vermeyi belirlemektir.
+Bu tür sorunlar için geçici çözüm olarak, RxJava-1.2.2 ' deki diğer bağımlılığın ne olduğunu ve RxJava-1.2.2 üzerinde geçişli bağımlılığı dışarıda bırakmayı ve CosmosDB SDK 'sının daha yeni sürümü getirmesine izin vermeyi belirlemektir.
 
 RxJava-1.2.2 ' de hangi kitaplığın bu duruma getirdiğinin belirlemek için, projenizin pom. xml dosyasının yanında aşağıdaki komutu çalıştırın:
 ```bash

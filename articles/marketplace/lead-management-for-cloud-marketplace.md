@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160554"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789853"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Ticari Market için lider yönetimi
 
-
 Müşteriler her türlü iyi iş merkeziydi. Bugünün ürün alma dönüştürmesinin dönüşümünde, pazarlamacılar müşterilere doğrudan bağlanmaya ve bir ilişki oluşturmaya odaklanmalıdır. Yüksek kaliteli müşteri adaylarının oluşturulması, satış döngünüzde önemli bir araçtır. Teklifinizi [Iş Ortağı Merkezi](https://partner.microsoft.com/)' nde listeledikten sonra, müşteri iletişim bilgilerini bir müşterinin ilgilendiklerini belirledikten veya ürününüzü Market 'te dağıttığında hemen elde etmeniz için etkinleştirilen araçlar vardır. 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>Market 'teki müşteri adayları nelerdir?
 
 Müşteri adayları, ürünlerinizi Market 'ten ilgilenen veya dağıtmakta olan müşterilerden elde edilir. Ürününüzün Azure Market veya AppSource 'ta listelenip listelenmediğini, CRM 'nizden Iş Ortağı Merkezi 'ndeki listelerinize doğru bir şekilde ayarladıktan sonra müşterilerden müşteri adaylarını alabileceksiniz. 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>CRM sisteminizi Iş Ortağı Merkezi ile bağlama
 
@@ -48,7 +44,7 @@ Müşteri adayı hedefini doğru bir şekilde yapılandırdıktan ve teklifiniz 
 
 Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak ve size yeterli veri sağlamak için size yakın bir şekilde çalışmak istemeniz gerekir. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin Market müşteri adaylarıyla daha başarılı olmasını sağlamak için geri bildirim ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Iş Ortağı Merkezi 'nde yayımlama sırasında ortak lider yapılandırma hataları
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Iş Ortağı Merkezi 'nde yayımlama sırasında ortak lider yapılandırma hataları
 
 **Müşteri adayı Dynamics CRM 'ye kaydedilemedi. Dynamics CRM hesap ayarlarını kontrol edin. LastCRMError: Dynamics CRM 'de oturum açılamıyor, LastCRMException:** 
 
