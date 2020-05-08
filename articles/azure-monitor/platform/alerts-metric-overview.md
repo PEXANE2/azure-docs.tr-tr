@@ -4,12 +4,12 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397983"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855046"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -26,7 +26,7 @@ Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine ça
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: statik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. Desteklenen süre toplamaları en az, en fazla, ortalama, toplam, sayı): Ortalama
+- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#changing-aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -43,7 +43,7 @@ Aşağıdaki gibi basit bir dinamik eşikler ölçüm uyarısı kuralı oluştur
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: dinamik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. Desteklenen süre toplamaları en az, en fazla, ortalama, toplam, sayı): Ortalama
+- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#changing-aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -129,9 +129,9 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 | Hizmet | Genel Azure | Devlet | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler  | **Evet** | Hayır | Hayır |
-| SQL Server veritabanları | **Evet** | **Evet** | Hayır |
-| SQL Server elastik havuzlar | **Evet** | **Evet** | Hayır |
-| Veri kutusu uç cihazları | **Evet** | **Evet** | Hayır |
+| SQL Server veritabanları | **Evet** | **Evet** | No |
+| SQL Server elastik havuzlar | **Evet** | **Evet** | No |
+| Veri kutusu uç cihazları | **Evet** | **Evet** | No |
 
 Tek bir ölçüm uyarısı kuralına göre izlemenin kapsamını üç şekilde belirtebilirsiniz. Örneğin, sanal makineler ile kapsamı şu şekilde belirtebilirsiniz:  
 

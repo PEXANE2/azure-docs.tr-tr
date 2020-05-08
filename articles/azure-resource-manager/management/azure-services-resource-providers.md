@@ -3,12 +3,12 @@ title: Azure hizmetlerine göre kaynak sağlayıcıları
 description: Azure Resource Manager için tüm kaynak sağlayıcısı ad alanlarını listeler ve bu ad alanı için Azure hizmetini gösterir.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9bb8d91d141997a7dd466d247ddcb0bd364e1c80
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382504"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559861"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -51,7 +51,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. ClassicSubscription | Klasik dağıtım modeli |
 | Microsoft. Biliveservices | [Bilişsel hizmetler](/azure/cognitive-services/) |
 | Microsoft. Commerce | çekirdeğin |
-| Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Sanal makineler](/azure/virtual-machines/)<br />[Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/) |
 | Microsoft. tüketim | [Maliyet yönetimi](/azure/cost-management/) |
 | Microsoft. Containerınstance | [Container Instances](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Kayıt Defteri](/azure/container-registry/) |
@@ -61,12 +61,12 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Customerkasası | Microsoft Azure için Müşteri Kasası |
 | Microsoft. CustomProviders | [Azure Özel Sağlayıcılar](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
-| Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/data-box-edge-overview.md) |
+| Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Microsoft. Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft. DataCatalog | [Veri Kataloğu](/azure/data-catalog/) |
 | Microsoft. DataFactory | [Data Factory](/azure/data-factory/) |
 | Microsoft. DataLakeAnalytics | [Data Lake Analytics](/azure/data-lake-analytics/) |
-| Microsoft. DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) |
+| Microsoft. DataLakeStore | [Azure Data Lake Storage 2. Nesil](../../storage/blobs/data-lake-storage-introduction.md) |
 | Microsoft. DataMigration | [Azure Veritabanı Geçiş Hizmeti](/azure/dms/) |
 | Microsoft. DataShare | [Azure Veri Paylaşımı](/azure/data-share/) |
 | Microsoft. Dbformarıdb | [MariaDB için Azure Veritabanı](/azure/mariadb/) |

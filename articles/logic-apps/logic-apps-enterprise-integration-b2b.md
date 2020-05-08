@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 01b2bd464db51e255930fe83a3f4321687322275
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77151197"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792369"
 ---
-# <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack kullanarak B2B iletileri alma ve gönderme
+# <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack kullanarak B2B AS2 iletileri alma ve onaylama
 
 Ticari iş ortakları ve anlaşmaları tanımlayan bir tümleştirme hesabınız olduğunda, [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) [Azure Logic Apps](../logic-apps/logic-apps-overview.md) kullanarak ticari iş ortakları arasında ileti alışverişi yapan bir OTOMATIK iş kolu (B2B) iş akışı oluşturabilirsiniz. Azure Logic Apps, AS2, x12, EDIOLGU ve RosettaNet sektör standardı protokollerini destekleyen bağlayıcılarla birlikte kullanılabilir. Ayrıca, bu bağlayıcıları Logic Apps, örneğin Salesforce ve Office 365 Outlook gibi diğer [Bağlayıcılar](../connectors/apis-list.md)ile birleştirebilirsiniz.
 

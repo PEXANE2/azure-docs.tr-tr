@@ -1,6 +1,6 @@
 ---
 title: Azure Automation Güncelleştirme Yönetimi Windows Update Aracısı sorunlarını giderme
-description: Güncelleştirme Yönetimi çözümünü kullanarak Windows Update Aracısı ile ilgili sorun giderme ve sorunları çözme hakkında bilgi edinin.
+description: Güncelleştirme Yönetimi çözümünü kullanarak Windows Update Aracısı ile ilgili sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 25f3734a2a12ddf87862cc1d127f88f175225e07
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678981"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900299"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update Aracısı sorunlarını giderme
 
-Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
+Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, Azure makineler için sorun gidericinin Azure portal, [çevrimdışı senaryoda](#troubleshoot-offline)Azure dışı makinelerden nasıl çalıştırılacağı açıklanmaktadır.
 
 Bir makineye yönelik üç hazırlık durumu aşağıda verilmiştir:
 
-* Kullanıma hazırlanıyor-karma Runbook Worker dağıtıldı ve en son 1 saatten daha önce görüldü.
-* Bağlantısı kesik-karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
-* Yapılandırılmadı-karma Runbook Worker bulunamadı veya ekleme bitmedi.
+* Hazırlanıyor: karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* Bağlantısı kesik: karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* Yapılandırılmadı: karma Runbook Worker bulunamadı veya ekleme bitmedi.
 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
 
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi Başlat
 
-Azure makinelerinde, portalda **Güncelleştirme Aracısı hazırlığı** sütununda **sorun gider** bağlantısına tıkladığınızda Güncelleştirme Aracısı sorunlarını gider sayfası başlatılır. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermeye yönelik [çevrimdışı yönergelere](#troubleshoot-offline) bakın.
+Azure makinelerinde, portalda güncelleştirme **Aracısı hazırlığı** sütununda **sorun gider** bağlantısını seçerek **Güncelleştirme Aracısı sorunlarını giderme** sayfasını başlatabilirsiniz. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermeye yönelik [çevrimdışı yönergelere](#troubleshoot-offline) bakın.
 
-![Sanal makinelerin yönetim listesini güncelleştir](../media/update-agent-issues/vm-list.png)
+![Sanal makinelerin Güncelleştirme Yönetimi listesinin ekran görüntüsü](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > Karma Runbook Worker 'ın durumunu denetlemek için VM 'nin çalışıyor olması gerekir. VM çalışmıyorsa **VM 'Yi Başlat** düğmesi görüntülenir.
 
-Güncelleştirme Aracısı sorunlarını giderme sayfasında, sorun gidericiyi başlatmak için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+**Güncelleştirme Aracısı sorunlarını giderme** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, bağımlılıkları doğrulamak için makinede bir betiği çalıştırmak üzere [Run komutunu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
 
-![Güncelleştirme Aracısı sayfasında sorun giderme](../media/update-agent-issues/troubleshoot-page.png)
+![Güncelleştirme Aracısı sorunlarını giderme sayfasının ekran görüntüsü](../media/update-agent-issues/troubleshoot-page.png)
 
 Sonuçlar, varsa sayfada gösterilir. Denetimler bölümünde her bir denetimin içerdiği özellikler gösterilir.
 
-![Güncelleştirme Aracısı denetimlerinde sorun giderme](../media/update-agent-issues/update-agent-checks.png)
+![Güncelleştirme Aracısı denetimlerinin sorun giderme ekran görüntüsü](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Önkoşul denetimleri
 
@@ -54,7 +54,7 @@ Sonuçlar, varsa sayfada gösterilir. Denetimler bölümünde her bir denetimin 
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2012 ve üzeri |.NET Framework 4,6 veya üzeri gereklidir. ([.NET Framework indirin](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5,1 gereklidir.  ([Windows Management Framework 5,1 'Yi indirin](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 ve üzeri |.NET Framework 4,6 veya üzeri gereklidir. ([.NET Framework indirin](/dotnet/framework/install/guide-for-developers).)<br/> Windows PowerShell 5,1 gereklidir.  ([Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)' i indirin.)        |
 
 ### <a name="net-462"></a>.NET 4.6.2
 
@@ -62,11 +62,11 @@ Sonuçlar, varsa sayfada gösterilir. Denetimler bölümünde her bir denetimin 
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF Check, sistemin gerekli Windows Management Framework (WMF) sürümüne sahip olduğunu doğrular- [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
+WMF Check, sistemin gerekli Windows Management Framework (WMF) sürümüne sahip olduğunu doğrular: [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Bu denetim, iletişimlerinizi şifrelemek için TLS 1,2 kullanıp kullanmayacağınızı belirler. TLS 1,0 artık platform tarafından desteklenmiyor. İstemcilerin Güncelleştirme Yönetimi ile iletişim kurmak için TLS 1,2 kullanmasını öneririz.
+Bu denetim, iletişimlerinizi şifrelemek için TLS 1,2 kullanıp kullanmayacağınızı belirler. TLS 1,0 artık platform tarafından desteklenmiyor. Güncelleştirme Yönetimi ile iletişim kurmak için TLS 1,2 kullanın.
 
 ## <a name="connectivity-checks"></a>Bağlantı denetimleri
 
@@ -98,13 +98,13 @@ Bu olay hakkında daha fazla bilgi edinmek için bu olayla ilgili [sorun giderme
 
 ## <a name="access-permissions-checks"></a>Erişim izinleri denetimleri
 
-### <a name="machinekeys-folder-access"></a>MachineKeys klasörü erişimi
+### <a name="crypto-folder-access"></a>Şifre klasörü erişimi
 
 Şifreleme klasörü erişim denetimi, yerel sistem hesabının C:\programdata\microsoft\crypto\rsaa erişimi olup olmadığını belirler.
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
 
-Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. PowerShell Galerisi, [sorun giderme-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)komut dosyasına ulaşabilirsiniz. Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümü yüklemiş olmanız gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. PowerShell Galerisi şu betiği alın: [sorun giderme-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümünün yüklü olması gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 Bu Betiğin çıktısı aşağıdaki örneğe benzer şekilde görünür:
 
@@ -202,4 +202,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Karma runbook çalışanlarınız hakkında daha fazla sorunu gidermek için bkz. [karma runbook çalışanları sorunlarını giderme](hybrid-runbook-worker.md).
+[Karma runbook çalışanları sorunlarını giderme](hybrid-runbook-worker.md)

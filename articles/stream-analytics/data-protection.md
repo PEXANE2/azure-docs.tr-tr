@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299405"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857294"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -61,6 +61,9 @@ Stream Analytics tarafından kalıcı olması gereken tüm özel veriler depolam
 Kaynaklarınızın Stream Analytics iş tarafından kullanılan bağlantı ayrıntıları da depolanır. Tüm verilerinizi güvenli hale getirmek için depolama hesabınızı şifreleyin. 
 
 Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
+
+## <a name="known-issues"></a>Bilinen sorunlar
+Müşteri tarafından yönetilen anahtarı kullanan bir işin, herhangi bir giriş veya çıkış için kimlik doğrulaması yapmak üzere yönetilen kimlik kullanırken hatalara karşı çalıştığı bilinen bir sorun vardır. Bu sorun için bir düzelme üzerinde çalışılmakta ve yakında gelecekte sunulacak olacak. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

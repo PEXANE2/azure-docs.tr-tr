@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: HT
+ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509423"
+ms.locfileid: "82562347"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark yönergeleri
 
@@ -30,8 +30,8 @@ Bu makalede, Azure HDInsight üzerinde Apache Spark kullanmaya yönelik çeşitl
 | Livy ile uzak iş gönderimi | [HDInsight Spark kümesine uzak işleri göndermek için Apache Spark REST API’sini kullanma](./apache-spark-livy-rest-interface.md) |
 |[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie, Hadoop işlerini yöneten bir iş akışı ve düzenleme sistemidir.|
 |[Apache Livy](./apache-spark-livy-rest-interface.md)|Etkileşimli Spark kabukları çalıştırmak veya Spark üzerinde çalıştırılacak toplu işleri göndermek için Livy 'ı kullanabilirsiniz.|
-|[Apache Spark için Azure Data Factory](/../data-factory/transform-data-using-spark.md)|Bir Data Factory işlem hattındaki Spark etkinliği kendi kendinize veya [isteğe bağlı HDInsight kümesinde bir Spark programını yürütür.|
-|[Apache Hive için Azure Data Factory](/../data-factory/transform-data-using-hadoop-hive.md)|Bir Data Factory işlem hattının HDInsight Hive etkinliği, kendi kendinize veya isteğe bağlı HDInsight kümenizde Hive sorguları yürütür.|
+|[Apache Spark için Azure Data Factory](../../data-factory/transform-data-using-spark.md)|Bir Data Factory işlem hattındaki Spark etkinliği kendi kendinize veya [isteğe bağlı HDInsight kümesinde bir Spark programını yürütür.|
+|[Apache Hive için Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md)|Bir Data Factory işlem hattının HDInsight Hive etkinliği, kendi kendinize veya isteğe bağlı HDInsight kümenizde Hive sorguları yürütür.|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Spark işlerini izleme ve hata ayıklama Nasıl yaparım??
 
@@ -62,7 +62,7 @@ Bu makalede, Azure HDInsight üzerinde Apache Spark kullanmaya yönelik çeşitl
 
 | Seçenek | Belgeler |
 |---|---|
-| Data Lake Storage Gen2 | [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| Data Lake Storage Gen2 | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | Data Lake Storage Gen1 | [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight-hadoop-use-data-lake-store.md) |
 | Azure Blob Depolama | [Azure HDInsight kümeleri ile Azure Depolama'yı kullanma](../hdinsight-hadoop-use-blob-storage.md) |
 

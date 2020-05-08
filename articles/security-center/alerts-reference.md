@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b96547b841c26f12aff2db781ce55c49ef9cde4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081617"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790635"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları-bir başvuru kılavuzu
 
@@ -294,7 +294,7 @@ Uyarı tablolarının altında, bu uyarıların amaçlarını kategorilere ayır
 |**Bir Tor çıkış düğümünden depolama hesabına erişim**|Bu hesaba, Tor 'ın etkin çıkış düğümü olarak bilinen bir IP adresinden başarıyla erişildiğini belirtir (bir anonim proxy). Bu uyarının önem derecesi, kullanılan (varsa) kimlik doğrulaması türünü ve bu erişimin ilk olması durumunda olup olmadığını dikkate alır. Olası nedenler, Tor kullanarak depolama hesabınıza erişen bir saldırgan veya Tor kullanarak depolama hesabınıza erişen meşru bir kullanıcı olabilir.|Yoklama/yararlanma|Yüksek|
 |**Olağan dışı bir konumdan depolama hesabına erişim**|Azure depolama hesabına erişim modelinde bir değişiklik olduğunu gösterir. Bu hesaba, son etkinlikle karşılaştırıldığında, bilmediğiniz bir IP adresinden erişen bir IP adresi. Bir saldırgan hesaba erişim elde etti ya da yasal bir Kullanıcı yeni veya olağan dışı bir coğrafi konumdan bağlandı. İkinci bir örnek, yeni bir uygulama veya geliştiriciden uzaktan bakım örneğidir.|Yararlanan|Düşük|
 |**Bir depolama hesabına anonim erişim**|Bir depolama hesabına erişim modelinde değişiklik olduğunu gösterir. Örneğin, hesaba bu hesapta son erişim düzeniyle karşılaştırıldığında beklenmeyen bir şekilde (herhangi bir kimlik doğrulaması olmadan) erişilebilir. Olası bir neden, saldırganın blob depolamayı tutan bir kapsayıcıya genel okuma erişiminin yararlanmasıdır.|Yararlanan|Yüksek|
-|**Bir depolama hesabına yüklenen potansiyel kötü amaçlı yazılım**|Potansiyel kötü amaçlı yazılım içeren bir Blobun bir depolama hesabına yüklendiğini belirtir. Olası nedenler, meşru bir kullanıcı tarafından bir saldırgan veya kötü amaçlı bir Blobun yanlışlıkla karşıya yüklenmesi olabilir.|Yan yana|Yüksek|
+|**Bir depolama hesabına yüklenen potansiyel kötü amaçlı yazılım**|Potansiyel kötü amaçlı yazılım içeren bir Blobun bir depolama hesabına yüklendiğini belirtir. Bu uyarı, virüsler, Truva atı, casus yazılım ve fidye için karmaları içeren Microsoft Threat Intelligence 'ın gücünden yararlanan temel bir karma saygınlığı analizinden oluşur. Olası nedenler bir saldırgan tarafından kasıtlı bir kötü amaçlı yazılım yüklemesi veya yasal bir kullanıcı tarafından istenmeyen kötü amaçlı Blobun yanlışlıkla karşıya yüklenmesi olabilir. Microsoft 'un tehdit bilgileri hakkında daha fazla bilgi için Buradan yararlanın:https://go.microsoft.com/fwlink/?linkid=2128684 |Yan yana|Yüksek|
 |**Depolama hesabında olağan dışı erişim incelemesi**|Bir depolama hesabının erişim izinlerinin, bu hesaptaki en son etkinlikle karşılaştırıldığında olağan dışı bir şekilde incelenebileceğini belirtir. Olası bir neden, saldırganın gelecekteki bir saldırıya karşı keşif gerçekleştirmesinden dolayı gerçekleşir.|Koleksiyon|Orta|
 |**Depolama hesabından ayıklanan olağan dışı miktarda veri**|Bu depolama kapsayıcısındaki en son etkinliğe kıyasla alışılmadık büyük miktarda verilerin ayıklandığını gösterir. Olası bir neden, bir saldırganın blob depolamayı tutan bir kapsayıcıdan büyük miktarda veri ayıklamasıdır.|Sızdırma|Orta|
 |**Olağan dışı uygulama bir depolama hesabına erişti**|Olağan dışı bir uygulamanın bu depolama hesabına eriştiği anlamına gelir. Olası bir neden, bir saldırganın yeni bir uygulama kullanarak depolama hesabınıza eriştiği bir nedendir.|Yararlanan|Orta|

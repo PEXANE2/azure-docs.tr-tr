@@ -3,17 +3,26 @@ title: Azure geçişi 'nde değerlendirme/geçiş aracı ekleme
 description: Azure geçişi projesi oluşturmayı ve değerlendirme/geçiş aracının nasıl ekleneceğini açıklar.
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537738"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901176"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
 
 Bu makalede, bir [Azure geçiş](migrate-overview.md) projesine ilk kez nasıl değerlendirme veya geçiş aracı ekleneceği açıklanmaktadır.  
 Azure geçişi, şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve diğer araçlar ve bağımsız yazılım satıcısı (ISV) [tekliflerini](migrate-services-overview.md#isv-integration) sağlar. 
+
+## <a name="check-permissions-to-create-project"></a>Proje oluşturmak için izinleri denetle
+
+Henüz bir Azure geçişi projesi oluşturmadıysanız, doğru izinlere sahip olup olmadığınızı kontrol edin.
+
+1. Azure portal aboneliğini açın ve **erişim denetimi (IAM)** seçeneğini belirleyin.
+2. Erişimi denetle ' de ilgili hesabı bulun ve izinleri görüntülemek için tıklatın. Katkıda bulunan veya sahip izinlerinizin olması gerekir.
+    - Henüz ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi olursunuz.
+    - Abonelik sahibi değilseniz, rolü atamak için sahip ile çalışın.
 
 ## <a name="create-a-project-and-add-a-tool"></a>Proje oluşturma ve araç ekleme
 
@@ -66,4 +75,6 @@ Bazı durumlarda, ek Azure geçişi projeleri oluşturmanız gerekebilir. Örne�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek [değerlendirme](how-to-assess.md) ve [geçiş](how-to-migrate.md) araçları eklemeyi öğrenin. 
+- Azure geçişi ile çalışmaya başlama [: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool)veya [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool).
+- Bir ISV aracı veya Movere eklediyseniz, aracı Azure geçişi 'ne bağlamaya hazırlanma [adımlarını gözden geçirin](prepare-isv-movere.md) .
+- Ek [değerlendirme](how-to-assess.md) ve [geçiş](how-to-migrate.md) araçları eklemeyi öğrenin. 

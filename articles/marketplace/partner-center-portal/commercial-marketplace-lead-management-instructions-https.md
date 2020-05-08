@@ -1,25 +1,27 @@
 ---
-title: HTTPS ile Microsoft ticari Market lider yönetimi
-description: Bir HTTPS uç noktası için Microsoft ticari Market lider yönetimini yapılandırın.
+title: HTTPS uç noktası ile müşteri adayı Yönetimi-Microsoft ticari marketi
+description: Microsoft AppSource ve Azure Marketi 'nden gelen müşteri adaylarını yönetmek için güç otomatikleştirmesini ve bir HTTPS uç noktasını nasıl kullanacağınızı öğrenin.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133729"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790992"
 ---
-# <a name="configure-lead-management-by-using-an-https-endpoint"></a>Bir HTTPS uç noktası kullanarak müşteri adayı yönetimini yapılandırma
+# <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için bir HTTPS uç noktası kullanın
+
+Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Microsoft AppSource ve Azure Market müşteri adaylarını almak üzere açıkça desteklenmiyorsa, bu müşteri adaylarını işlemek için [Power otomatikleştirmede](https://powerapps.microsoft.com/automate-processes/) bir HTTPS uç noktası kullanabilirsiniz. Bir HTTPS uç noktası ile, ticari Market müşteri adayları bir e-posta bildirimi olarak gönderilebilir veya Power otomatikleştirmede desteklenen bir CRM sistemine yazılabilirler.
+
+Bu makalede, Iş Ortağı Merkezi 'nde müşteri adaylarını yapılandırmak için kullanacağınız HTTP POST URL 'sini oluşturmak üzere Power otomatikleştirmede nasıl yeni bir akış oluşturulacağı açıklanır. Ayrıca, akışınızı [Postman](https://www.getpostman.com/downloads/)ile test etme adımlarını da içerir.
 
 >[!NOTE]
->Bu yönergelerde kullanılan güç otomatikleştirme Bağlayıcısı, Power otomatikleştirmek için ücretli bir abonelik gerektirir. Bu makaledeki yönergeleri izlemeden önce bunun için hesap yaptığınızdan emin olun.
-
-Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Microsoft AppSource ve Azure Market müşteri adaylarını almak üzere açıkça desteklenmiyorsa, bu müşteri adaylarını işlemek için Power otomatikleştirmede bir HTTPS uç noktası kullanabilirsiniz. Bir HTTPS uç noktası ile, bu müşteri adayları bir e-posta bildirimi olarak gönderilebilir veya Power otomatikleştirmede desteklenen bir CRM sistemine yazılabilir. Bu makaledeki yönergeler, **sağlama yönetimi** > **https uç noktası URL 'si** alanı için yayımlama portalına gireceğiniz http post URL 'sini oluşturan Power otomatikleştirmesini kullanarak yeni bir akış oluşturmak için size yol gösterir. Ayrıca, çevrimiçi olarak kullanılabilen [Postman](https://www.getpostman.com/downloads/)adlı bir aracın yardımıyla akışınızı test etme yönergeleriyle ilgili yönergeler de mevcuttur.
+>Bu yönergelerde kullanılan güç otomatikleştirme Bağlayıcısı, Power otomatikleştirmek için ücretli bir abonelik gerektirir. Bu akışı yapılandırmadan önce bu hesabı seçtiğinizden emin olun.
 
 ## <a name="create-a-flow-by-using-power-automate"></a>Power otomatikleştir kullanarak akış oluşturma
 
@@ -27,22 +29,24 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
 1. Oturum açın ve menüden **Akışlarım** ' ı seçin.
 
-1. **Boş 'ten + otomatik**' i seçin.
+    ![Akışlarım oturum aç](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-    ![Akışlarım + otomatik--boş](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+1. **+ Yeni**altında, **boş 'tan + anında**' yı seçin.
 
-1. **Otomatik akış oluştur** penceresinde **Atla**' yı seçin. 
+    ![Akışlarım + otomatik--boş](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-    ![Otomatik akış penceresi atlama düğmesi oluştur](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+1. Akışınızı adlandırın ve ardından **bu akışın nasıl tetikleneceğini seçin**altında **bir http isteği alındığında**öğesini seçin.
 
-1. **Bağlayıcılar ve Tetikleyiciler ara** alanında istek bağlayıcısını bulmak için **istek** girin.
-1. **Tetikleyiciler**altında, **bir http isteği alındığında**öğesini seçin. 
+    ![Otomatik akış penceresi atlama düğmesi oluştur](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-    ![Tetikleyiciler menüsü](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+1. Açmak için Flow adımına tıklayın.
 
-1. **BIR http isteği alındığında** penceresinde, aşağıdaki JSON şemasını kopyalayıp **Istek gövdesi JSON şeması** metin kutusuna yapıştırın. Bu şema Microsoft tarafından müşteri adayı verilerinizi içerecek şekilde kullanılır.
+    ![Flow adımını Genişlet](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-    ![İstek gövdesi JSON şeması metin kutusu](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+1. **Istek GÖVDESI JSON şemasını**yapılandırmak için aşağıdaki yöntemlerden birini kullanın:
+
+    - JSON şemasını **Istek GÖVDESI JSON şeması** metin kutusuna kopyalayın.
+    - **Şema oluşturmak için örnek yük kullanma** öğesini seçin. **Örnek JSON yükü girin veya yapıştırın** metın kutusunda JSON örneğine yapıştırın. Şemayı oluşturmak için **bitti** ' yi seçin.
 
     **JSON şeması**
 
@@ -103,6 +107,26 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
     }
     ```
 
+    **JSON örneği**
+    
+    ```json
+    {
+      "UserDetails": {
+        "FirstName": "Some",
+        "LastName": "One",
+        "Email": "someone@contoso.com",
+        "Phone": "16175555555",
+        "Country": "USA",
+        "Company": "Contoso",
+        "Title": "Esquire"
+     },
+      "LeadSource": "AzureMarketplace",
+      "ActionCode": "INS",
+      "OfferTitle": "Test Microsoft",
+      "Description": "Test run through Power Automate"
+    }
+    ```
+
 >[!NOTE]
 >Yapılandırmanın bu noktasında, bir CRM sistemine bağlanmayı ya da bir e-posta bildirimi yapılandırmayı seçebilirsiniz. Seçiminizi temel alarak geri kalan yönergeleri izleyin.
 
@@ -157,7 +181,7 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
 ### <a name="testing"></a>Test Etme
 
-Çevrimiçi olarak indirilebilen [Postman](https://app.getpostman.com/app/download/win64)adlı bir araç kullanarak her şeyin beklendiği gibi çalıştığından test edebilirsiniz. Bu araç Windows için kullanılabilir. 
+Yapılandırmanızı [Postman](https://app.getpostman.com/app/download/win64)ile test edebilirsiniz. Çevrimiçi Postman indirmesi Windows için kullanılabilir. 
 
 1. Postman 'ı başlatın ve test aracınızı ayarlamak için **Yeni** > **istek** ' ı seçin. 
 
@@ -201,10 +225,18 @@ Müşteri ilişkileri yönetimi (CRM) sisteminiz Iş Ortağı Merkezi 'nde Micro
 
 Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandırmaya hazırsanız, bu adımları izleyin.
 
-1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
-1. **Müşteri adayı yönetimi** bölümünde **Bağlan** ' ı seçin.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
+
+1. Teklifinizi seçin ve **teklif kurulumu** sekmesine gidin.
+
+1. **Müşteri adayı yönetimi** bölümünde **Bağlan**' ı seçin. 
+    ![Lider yönetimi bağlantı düğmesi](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+
 1. **Bağlantı ayrıntıları** açılır penceresinde, **müşteri adayı hedefi**için **https uç noktası** ' nı seçin. Önceki adımları izleyerek oluşturduğunuz akıştan HTTP POST URL 'sini **https uç noktası URL 'si** alanına yapıştırın.
+    ![Bağlantı ayrıntıları Iletişim e-postası](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+
 1. **İletişim e-postası**altında, şirketinizdeki kişilerin yeni bir müşteri adayı alındığında e-posta bildirimleri alması gereken e-posta adreslerini girin. Birden çok e-postayı noktalı virgülle ayırarak sağlayabilirsiniz.
+
 1. **Tamam**’ı seçin.
 
 Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula** düğmesini seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
@@ -213,10 +245,3 @@ Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için
 >Teklif için müşteri adaylarını almadan önce teklifin geri kalanını yapılandırmayı ve bunu yayımlamanız gerekir.
 
 Müşteri adayları oluşturulduğunda, Microsoft bu akışı akışa gönderir. Müşteri adayları, yapılandırdığınız CRM sistemine veya e-posta adresine yönlendirilir.
-
-![Lider yönetimi bağlantı düğmesi](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
-
-![Bağlantı ayrıntıları müşteri adayı hedefi](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
-
-![Bağlantı ayrıntıları Iletişim e-postası](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
-

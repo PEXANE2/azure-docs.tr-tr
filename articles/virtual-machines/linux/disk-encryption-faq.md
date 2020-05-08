@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460146"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786997"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -21,7 +21,7 @@ Bu makalede, Linux sanal makineleri (VM 'Ler) için Azure disk şifrelemesi hakk
 
 ## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Linux VM 'Leri için Azure disk şifrelemesi nedir?
 
-Linux sanal makineleri için Azure disk şifrelemesi, Linux 'un dm-crypt özelliğini kullanarak işletim sistemi diski * ve veri disklerinin tam disk şifrelemesini sağlar. Ayrıca, [Encryptformatall özelliği](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)kullanılırken kısa ömürlü kaynak disk şifrelemesi de sağlar. İçerik, VM 'den depolama arka uca şifrelenmiş olarak akar. Bu nedenle, müşteri tarafından yönetilen bir anahtarla uçtan uca şifreleme sağlar.
+Linux sanal makineleri için Azure disk şifrelemesi, Linux 'un dm-crypt özelliğini kullanarak işletim sistemi diski * ve veri disklerinin tam disk şifrelemesini sağlar. Ayrıca, [Encryptformatall özelliği](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)kullanılırken geçici disk şifrelemesi de sağlar. İçerik, VM 'den depolama arka uca şifrelenmiş olarak akar. Bu nedenle, müşteri tarafından yönetilen bir anahtarla uçtan uca şifreleme sağlar.
  
 Bkz. [desteklenen VM 'ler ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
@@ -61,7 +61,7 @@ Depolama sunucu tarafı şifrelemesi, Azure depolama 'da Azure yönetilen diskle
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure disk şifrelemesi, müşteri tarafından yönetilen anahtarla depolama sunucusu tarafı şifrelemeden farklı ve her çözümü ne zaman kullanmalıyım?
 
-Azure disk şifrelemesi, işletim sistemi diski, veri diskleri ve müşteri tarafından yönetilen bir anahtarla kısa ömürlü kaynak diski için uçtan uca şifreleme sağlar.
+Azure disk şifrelemesi, müşteri tarafından yönetilen anahtar kullanarak işletim sistemi diski, veri diskleri ve geçici disk için uçtan uca şifreleme sağlar.
 - Gereksinimleriniz yukarıdaki ve uçtan uca şifrelemeyi şifrelemeyi içeriyorsa, Azure disk şifrelemesi ' ni kullanın. 
 - Gereksinimleriniz, müşteri tarafından yönetilen anahtarla yalnızca bekleyen verileri şifrelemeyi içeriyorsa, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](disk-encryption.md)kullanın. Müşteri tarafından yönetilen anahtarlarla hem Azure disk şifrelemesi hem de depolama sunucu tarafı şifrelemesi ile bir disk şifrelenemez. 
 - Linux oturumunuz [Azure disk şifrelemesi için desteklenen işletim sistemleri](disk-encryption-overview.md#supported-operating-systems) altında listelenmiyorsa veya [Windows için desteklenmeyen senaryolarda](disk-encryption-linux.md#unsupported-scenarios)adlı bir senaryo kullanıyorsanız, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](disk-encryption.md)göz önünde bulundurun.

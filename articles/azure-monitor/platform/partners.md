@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 33ab913c64b651db9e75d4791ecb631ed7e081a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298386"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854944"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -279,7 +279,7 @@ Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olar
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics belgeleri."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric tanıtımı."
-[circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
+[circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "Cloudmonitorx tanıtımı."
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Dataköpek belgeleri."

@@ -1,22 +1,22 @@
 ---
-title: SaaS karşılama API v2 | Azure Marketi
-description: Bu makalede, ilişkili karşılama v2 API 'Leri kullanılarak AppSource ve Azure Marketi üzerinde bir SaaS teklifinin nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
+title: Microsoft Commercial Market 'te SaaS API v2 v2
+description: Yönetim API 'si sürüm 2 ' i kullanarak Microsoft AppSource ve Azure Marketi 'nde SaaS teklifi oluşturmayı ve yönetmeyi öğrenin.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275773"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854197"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS gerçekleştirme API'leri, sürüm 2 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'te SaaS API sürüm 2
 
-Bu makalede, iş ortaklarının, SaaS uygulamalarını AppSource marketi ve Azure Marketi 'nde satmasını sağlayan API 'Ler ayrıntılı olarak anlatılmaktadır. Bu API 'Ler, AppSource ve Azure Marketi üzerinde transactable SaaS teklifleri için bir gereksinimdir.
+Bu makalede, iş ortaklarının, SaaS uygulamalarını Microsoft AppSource ve Azure Marketi 'nde satmasını sağlayan karşılama API 'Leri ayrıntılı olarak açıklanır. Bu API 'Ler, transactable SaaS teklifleri için gereklidir.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>SaaS Abonelik yaşam döngüsünü yönetme
 

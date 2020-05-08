@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 04a900c98311f4e7dcccbfca93ea41e212308759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882106"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900322"
 ---
 # <a name="single-page-application-move-to-production"></a>Tek sayfalı uygulama: üretime taşı
 
@@ -40,7 +40,7 @@ Kullanıcı oturumu açma ve MSAL. js kullanarak Microsoft Graph API 'sini çağ
 MSAL. js kullanarak kendi arka uç Web API 'niz için belirteçlerin nasıl alınacağını gösteren örnek:
 
 > [!div class="nextstepaction"]
-> [ASP.NET arka ucu olan SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+> [ASP.NET arka ucu olan SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
 Azure Active Directory B2C (Azure AD B2C) ile kaydedilmiş bir uygulamada kullanıcıları oturum açmak için MSAL. js ' nin nasıl kullanılacağını gösteren örnek:
 

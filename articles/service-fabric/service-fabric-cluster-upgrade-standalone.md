@@ -3,12 +3,12 @@ title: Azure Service Fabric tek başına kümesini yükseltme
 description: Azure Service Fabric tek başına kümesinin sürümünü veya yapılandırmasını yükseltme hakkında bilgi edinin.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451833"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790652"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric tek başına Kümeyi yükseltme ve güncelleştirme
 
@@ -38,7 +38,7 @@ Düzeltme Eki düzenleme uygulaması (POA), kapalı kalma süresi olmadan bir Se
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Service Fabric kümesi doku ayarlarından](service-fabric-cluster-fabric-settings.md) bazılarını özelleştirmeyi öğrenin
-* [Kümenizi ve dışarı ölçeklendirmeyi nasıl ölçeklentireceğinizi](service-fabric-cluster-scale-up-down.md) öğrenin
+* [Kümenizi ve dışarı ölçeklendirmeyi nasıl ölçeklentireceğinizi](service-fabric-cluster-scale-in-out.md) öğrenin
 * [Uygulama yükseltmeleri](service-fabric-application-upgrade.md) hakkında bilgi edinin
 
 <!--Image references-->
