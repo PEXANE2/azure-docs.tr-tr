@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76907779"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732011"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Çalışma durumunu izleyin, tetikleyici geçmişini gözden geçirin ve Azure Logic Apps uyarılarını ayarlayın
 
@@ -19,7 +19,8 @@ ms.locfileid: "76907779"
 
 Gerçek zamanlı olay izleme ve daha zengin hata ayıklama için, [Azure izleyici günlüklerini](../azure-monitor/overview.md)kullanarak mantıksal uygulamanız için tanılama günlüğü ayarlayın. Bu Azure hizmeti, kullanılabilirliğini ve performansını daha kolay koruyabilmeniz için bulutunuzu ve şirket içi ortamlarınızı izlemenize yardımcı olur. Daha sonra olayları tetikleme, olayları çalıştırma ve eylem olayları gibi olayları bulabilir ve görüntüleyebilirsiniz. Bu bilgileri [Azure izleyici günlüklerinde](../azure-monitor/platform/data-platform-logs.md)depolayarak, bu bilgileri bulmanıza ve çözümlemenize yardımcı olan [günlük sorguları](../azure-monitor/log-query/log-query-overview.md) oluşturabilirsiniz. Bu tanılama verilerini Azure depolama ve Azure Event Hubs gibi diğer Azure hizmetleriyle de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak mantıksal uygulamaları izleme](../logic-apps/monitor-logic-apps-log-analytics.md).
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> Logic Apps, bir [iç erişim uç noktası](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)kullanmak üzere oluşturulmuş bir [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) çalışıyorsa, Logic App 'in çalıştırma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın*içinden görüntüleyebilir ve erişebilirsiniz. Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya ıSE 'nin sanal ağına bağlı bir sanal ağ içinde (örneğin, eşleme veya bir sanal özel ağ) bulunabilir. Daha fazla bilgi için bkz. [Ise uç noktası erişimi](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
 
 <a name="review-runs-history"></a>
 

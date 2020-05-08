@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67454145"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691325"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Azure NetApp Files için performansla ilgili önemli noktalar
 
@@ -34,8 +34,6 @@ Okuma ve yazma karışımı, aktarım boyutu, rastgele veya sıralı desenler ve
 Sınamada gözlemlendiği maksimum empırik üretilen iş hacmi 4.500 MiB/sn 'dir.  Premium depolama katmanında 70,31 TiB 'nin bir birim kotası, bu performans düzeyine ulaşmak için yeterince yüksek bir aktarım hızı sınırı sağlar.  
 
 Birim kotası miktarlarını 70,31 TiB 'den daha fazla atamayı düşünüyorsanız ek verileri depolamak için bir birime ek kota atanabilir. Ancak, eklenen kota, gerçek aktarım hızına göre daha fazla artış elde etmez.  
-
-Daha fazla bilgi için bkz. [Azure NetApp Files performans değerlendirmeleri](azure-netapp-files-performance-benchmarks.md) .
 
 ## <a name="overprovisioning-the-volume-quota"></a>Birim kotasının aşırı sağlanması
 
@@ -64,4 +62,4 @@ Performans gereksinimleriniz geçici olarak geçicidir veya sabit bir süre içi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
-- [Azure NetApp Files için performans kıyaslamaları](azure-netapp-files-performance-benchmarks.md)
+- [Linux için performans karşılaştırmaları](performance-benchmarks-linux.md)
