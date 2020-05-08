@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: bfbe311d9768923eee8c1b0cc4f3b4ec1a7ad69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186314"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610709"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
 HDInsight kümeleri oluştururken birkaç farklı Azure depolama hizmeti arasında seçim yapabilirsiniz:
 
 * [Azure Storage](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen1.md)
-* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen2.md)
+* [Azure Data Lake Storage 2. Nesil](./overview-data-lake-storage-gen2.md)
+* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
 
 Bu makale, bu depolama türlerine ve bunların benzersiz özelliklerine genel bir bakış sağlar.
 
@@ -48,15 +48,15 @@ Birincil ve isteğe bağlı ikincil depolama için hizmet birleşimlerini kullan
 | HDInsight sürümü | Birincil depolama alanı | İkincil depolama | Destekleniyor |
 |---|---|---|---|
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen2 | Hayır |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen2 | No |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage Gen2 | Yes |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Hayır |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | No |
 | 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Yes |
 | 3,6 | Data Lake Storage Gen1 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Yes |
-| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Hayır |
-| 4.0 | Data Lake Storage Gen1 | Herhangi biri | Hayır |
-| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | Hayır |
+| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | No |
+| 4.0 | Data Lake Storage Gen1 | Herhangi biri | No |
+| 4.0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | No |
 
 * = Bu, bir veya birden çok Data Lake Storage 2. hesabı olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
 

@@ -1,0 +1,53 @@
+---
+title: Windows 7 sanal makineleri Windows sanal masaüstü-Azure
+description: Windows Sanal Masaüstü ortamındaki Windows 7 sanal makineleri (VM 'Ler) için sorunları çözme.
+services: virtual-desktop
+author: Heidilohr
+ms.service: virtual-desktop
+ms.topic: troubleshooting
+ms.date: 03/30/2020
+ms.author: helohr
+manager: lizross
+ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82615285"
+---
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
+
+>[!IMPORTANT]
+>Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen sonbahar 2019 sürümü için geçerlidir.
+
+Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+
+Windows sanal masaüstleri üzerinde Windows 7 aşağıdaki özellikleri desteklemez:
+
+- Sanallaştırılmış uygulamalar (RemoteApps)
+- Saat dilimi yönlendirmesi
+- Otomatik DPı ölçeklendirme
+
+Windows sanal masaüstü, Windows 7 için yalnızca tam masaüstlerini sanallaştırtırabilir.
+
+Otomatik DPı ölçeklendirme desteklenirken, uzak masaüstü istemcisinde simgeye sağ tıklayıp **Çözümleme**' yi seçerek sanal makinenizde çözümü el ile değiştirebilirsiniz.
+
+## <a name="error-cant-access-the-remote-desktop-user-group"></a>Hata: Uzak Masaüstü kullanıcı grubuna erişilemiyor
+
+Windows sanal masaüstü, uzak masaüstü kullanıcı grubunda sizi veya kullanıcılarınızın kimlik bilgilerini bulamazsa, aşağıdaki hata iletilerinden birini görebilirsiniz:
+
+- "Bu Kullanıcı, uzak masaüstü Kullanıcı grubunun bir üyesi değil"
+- "Uzak Masaüstü Hizmetleri aracılığıyla oturum açmak için izin verilmelidir"
+
+Bu hatayı onarmak için kullanıcıyı uzak masaüstü kullanıcı grubuna ekleyin:
+
+1. Azure portalı açın.
+2. Hata iletisini gördüğünüz sanal makineyi seçin.
+3. **Çalıştır komutunu**seçin.
+4. Aşağıdaki komutu, eklemek istediğiniz `<username>` kullanıcının adı ile değiştirilmiş şekilde çalıştırın:
+   
+   ```cmd
+   net localgroup "Remote Desktop Users" <username> /add
+   ```

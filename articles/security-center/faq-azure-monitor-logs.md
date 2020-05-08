@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436161"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612835"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Zaten Azure Izleyici günlüklerini kullanan müşteriler için SSS<a name="existingloganalyticscust"></a>
 
@@ -42,7 +42,7 @@ Güvenlik Merkezi, bir sanal makinenin oluşturduğunuz bir çalışma alanına 
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Ortammda çalışma alanım zaten var, bunları güvenlik verilerini toplamak için kullanabilir miyim?
 Bir VM 'de zaten bir Azure uzantısı olarak yüklü Log Analytics Aracısı varsa, güvenlik merkezi var olan bağlı çalışma alanını kullanır. Zaten mevcut değilse, bir güvenlik merkezi çözümü çalışma alanına yüklenir ve çözüm [hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md)aracılığıyla yalnızca ilgili sanal makinelere uygulanır.
 
-Güvenlik Merkezi, VM 'Lere Log Analytics aracısını yüklediğinde, Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını kullanır.
+Güvenlik Merkezi, VM 'Lere Log Analytics aracısını yüklediğinde, güvenlik merkezi mevcut bir çalışma alanına işaret yoksa Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını kullanır.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Çalışma alanlarım üzerinde zaten güvenlik çözümüdür. Faturalandırma etkileri nelerdir?
 Güvenlik & denetim çözümü, Azure VM 'Leri için Güvenlik Merkezi Standart katmanı özelliklerini etkinleştirmek üzere kullanılır. Güvenlik & denetim çözümü bir çalışma alanında zaten yüklüyse, güvenlik merkezi mevcut çözümü kullanır. Faturalandırma sırasında değişiklik yapılmaz.

@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380799"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612291"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -93,7 +93,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    1. Belirteç daha sonra uygulama Time Series Insights API 'sini çağırdığında `Authorization` üstbilgiye geçirilebilir.
 
-* Alternatif olarak, geliştiriciler MSAL kullanarak kimlik doğrulaması yapabilir. [Msal 'e geçme](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) hakkında bilgi edinin ve daha fazla bilgi edinmek için [C# kullanarak Azure Time Series Insights ortamı Için GA-Manage GA başvuru verilerini](time-series-insights-manage-reference-data-csharp.md) inceleyin. 
+* Alternatif olarak, geliştiriciler MSAL kullanarak kimlik doğrulaması yapabilir. [Msal 'e geçme](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) hakkında bilgi edinin ve daha fazla bilgi edinmek için [C# kullanarak Azure Time Series Insights ortamı Için GA-Manage GA başvuru verilerini](time-series-insights-manage-reference-data-csharp.md) inceleyin.
 
 ## <a name="common-headers-and-parameters"></a>Ortak üstbilgiler ve parametreler
 
@@ -104,7 +104,7 @@ Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-[TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, tercih ETTIĞINIZ bir rest Istemcisi kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir (Postman, JavaScript, C#). 
+[TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, tercih ETTIĞINIZ bir rest Istemcisi kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir (Postman, JavaScript, C#).
 
 > [!TIP]
 > [JavaScript istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) grafik ve grafiklerle birlikte kullanarak Time Series Insights API 'lerinde program aracılığıyla nasıl kimlik doğrulaması yapılacağını öğrenmek için barındırılan Azure TIME SERIES INSIGHTS [istemci SDK örnek görselleştirmesini](https://tsiclientsample.azurewebsites.net/) okuyun.
@@ -115,7 +115,7 @@ Gerekli istek üstbilgileri aşağıda açıklanmıştır.
 
 | Gerekli istek üst bilgisi | Açıklama |
 | --- | --- |
-| Yetkilendirme | Time Series Insights kimlik doğrulaması yapmak için, **Yetkilendirme** üst bilgisinde geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. | 
+| Yetkilendirme | Time Series Insights kimlik doğrulaması yapmak için, **Yetkilendirme** üst bilgisinde geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. |
 
 > [!IMPORTANT]
 > Belirtecin tam olarak `https://api.timeseries.azure.com/` kaynağa verilmesi gerekir (belirtecin "hedef kitle" olarak da bilinir).
