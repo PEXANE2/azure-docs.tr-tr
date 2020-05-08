@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium ağını
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476449"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980243"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde hiper muhasebe doku Consortium
 
@@ -42,7 +42,7 @@ Dağıtım üzerindeki şablon, aboneliğinizdeki çeşitli Azure kaynaklarını
   - **Fabrıc CA**: doku CA 'sını çalıştıran Pod.
 - **PostgreSQL**: Fabric CA kimliklerini sürdürmek Için PostgreSQL örneği dağıtıldı.
 
-- **Azure Anahtar Kasası**: yapı CA kimlik bilgilerini ve müşteri tarafından sağlanmış kök sertifikaları kaydetmek için bir Anahtar Kasası örneği dağıtılır. Bu, şablon dağıtımı yeniden denenme durumunda kullanılan bu, şablonun mekanizması idare ediyor.
+- **Azure Anahtar Kasası**: yapı CA kimlik bilgilerini ve müşteri tarafından sunulan kök sertifikaları kaydetmek için bir Anahtar Kasası örneği dağıtılır. Bu, şablonun mekanizması idare etmek için şablon dağıtımı yeniden denemesi durumunda kullanılır.
 - **Azure yönetilen disk**: Azure yönetilen disk, muhasebe ve eş düğüm dünya durumu veritabanı için kalıcı mağazaya yöneliktir.
 - **Genel IP**: küme ile arabirim oluşturma için dağıtılan aks KÜMESININ genel IP uç noktası.
 
@@ -54,7 +54,6 @@ Aşağıdaki adımları kullanarak hiper muhasebe doku blok zinciri ağını aya
 
 - [Sipariş/eş kuruluşu dağıtma](#deploy-the-ordererpeer-organization)
 - [Consortium oluşturma](#build-the-consortium)
-- [Yerel HLF işlemleri çalıştırma](#run-native-hlf-operations)
 
 ## <a name="deploy-the-ordererpeer-organization"></a>Sipariş/eş kuruluşu dağıtma
 
@@ -78,7 +77,7 @@ HLF ağ bileşenleri dağıtımına başlamak için [Azure Portal](https://porta
     ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Şu ayrıntıları girin:
-    - **Kuruluş adı**: çeşitli veri düzlemi işlemleri için gerekli olan doku kuruluşunun adı. Kuruluş adının dağıtım başına benzersiz olması gerekir. 
+    - **Kuruluş adı**: çeşitli veri düzlemi işlemleri için gerekli olan doku kuruluşunun adı. Kuruluş adının dağıtım başına benzersiz olması gerekir.
     - **Fabric ağ bileşeni**: ayarlamak Istediğiniz blok zinciri ağ bileşenine göre hizmet veya eş düğümleri sıralama seçeneğini belirleyin.
     - **Düğüm sayısı** -aşağıdakiler iki düğüm türüdür:
         - Hizmeti sıralama-ağ için hataya dayanıklılık sağlanacak düğüm sayısını seçin. Yalnızca 3, 5 ve 7 desteklenen orderer düğüm sayısıdır.
@@ -87,7 +86,7 @@ HLF ağ bileşenleri dağıtımına başlamak için [Azure Portal](https://porta
     - **Fabric Kullanıcı adı**: doku CA kimlik doğrulaması için kullanılan Kullanıcı adını girin.
     - **Fabrıc CA parolası**: doku CA kimlik doğrulaması için parolayı girin.
     - **Parolayı onaylayın**: doku CA parolasını onaylayın.
-    - **Sertifikalar**: doku CA 'sını başlatmak için kendi kök sertifikalarınızı kullanmak istiyorsanız doku CA 'sı için kök sertifikayı karşıya yükle seçeneğini belirleyin, aksi durumda varsayılan doku CA 'sı otomatik olarak imzalanan sertifikalar oluşturur.
+    - **Sertifikalar**: doku CA 'sını başlatmak için kendi kök sertifikalarınızı kullanmak Istiyorsanız, doku CA 'sı için kök sertifikayı karşıya yükle seçeneğini belirleyin. Aksi takdirde, varsayılan doku CA 'sı otomatik olarak imzalanan sertifikalar oluşturur.
     - **Kök sertifika**: doku CA 'sının başlatılması gereken kök sertifikayı (ortak anahtar) karşıya yükleyin. . Pek biçimindeki sertifikalar desteklenir, sertifikaların UTC saat diliminde geçerli olması gerekir.
     - **Kök sertifika özel anahtarı**: kök sertifikanın özel anahtarını karşıya yükleyin. Hem ortak hem de özel anahtar birleştirilmiş bir. ped sertifikanız varsa, bu sertifikayı da buraya yükleyin.
 
@@ -116,48 +115,82 @@ Dağıtım genellikle 10-12 dakika sürer, belirtilen AKS düğümlerinin boyutu
 
 ## <a name="build-the-consortium"></a>Consortium oluşturma
 
-Sıralama hizmetini ve eş düğümlerini dağıtan blok zinciri Konsorsiyumu gönderisini oluşturmak için aşağıdaki adımları sırayla gerçekleştirmeniz gerekir. Konsorsiyumu ayarlama, kanal oluşturma ve chaincode yükleme konusunda size yardımcı olan **ağ komut dosyanızı** (Byn.sh) oluşturun.
+Sıralama hizmetini ve eş düğümlerini dağıtan blok zinciri Konsorsiyumu gönderisini oluşturmak için aşağıdaki adımları sırayla gerçekleştirmeniz gerekir. Azure HLF betiği (azhlf), bu, Konsorsiyumu ayarlama, kanal oluşturma ve chaincode işlemleri yapmanıza yardımcı olur.
 
 > [!NOTE]
-> Sunulan ağ (BYN) komut dosyanızı oluşturma işlemi, demo/DevTest senaryoları için kesinlikle kullanılır. Üretim sınıfı kurulumu için yerel HLF API 'Lerini kullanmanızı öneririz.
+> Betikte bir güncelleştirme var, bu güncelleştirme Azure HLF betiğine daha fazla işlevsellik sağlamaktır. Eski betiğe başvurmak istiyorsanız [buraya bakın](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md). Bu betik, Azure Kubernetes hizmet şablonu sürüm 2.0.0 ve üzeri için hiper muhasebe dokuyla uyumludur. Dağıtımın sürümünü denetlemek için [sorun giderme](#troubleshoot)bölümündeki adımları izleyin.
 
-Byn betiğini çalıştırmaya yönelik tüm komutlar Azure Bash komut satırı arabirimi (CLı) aracılığıyla yürütülebilir. Azure Shell web sürümünde oturum açabilirsiniz ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) seçeneğinin sağ üst köşesinde bulunan seçeneğini Azure portal. Komut isteminde Bash CLı yazın.
+> [!NOTE]
+> Sağlanan Azure HLF (azhlf) betiği yalnızca demo/DevTest senaryolarıyla yardımcı olur. Bu betik tarafından oluşturulan kanal ve konsorsiyumun demo/DevTest senaryosunu basitleştirecek temel HLF ilkeleri vardır. Üretim Kurulumu için, yerel HLF API 'Lerini kullanarak, kuruluşunuzun uyumluluk ihtiyaçlarına uygun şekilde Channel/Consortium HLF ilkelerini güncelleştirmenizi öneririz.
+
+
+Azure HLF betiğini çalıştırmaya yönelik tüm komutlar Azure Bash komut satırı aracılığıyla yürütülebilir. Arabirim (CLı). Azure Shell web sürümünde oturum açabilirsiniz  ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) seçeneğinin sağ üst köşesinde bulunan seçeneğini Azure portal. Komut isteminde Bash CLı yazın.
 
 Daha fazla bilgi için bkz. [Azure kabuğu](https://docs.microsoft.com/azure/cloud-shell/overview) .
 
 ![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Byn.sh ve Fabric-admin. YAML dosyasını indirin.
+Aşağıdaki görüntüde, bir orderer organizasyonu ve eş kuruluş arasında konsorsiyumun derlenmesi için adım adım işlem gösterilmektedir. Bu adımları yürütmeye yönelik ayrıntılı komutlar aşağıdaki bölümlerde yakalanır.
+
+![Azure Kubernetes hizmet şablonunda hiper muhasebe dokusu](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
+
+İstemci uygulamasının ilk kurulumu için aşağıdaki komutları izleyin: 
+
+1.  [İstemci uygulama dosyalarını indirin](#download-client-application-files)
+2.  [Ortam değişkenlerini belirleme](#setup-environment-variables)
+3.  [Kuruluş bağlantısı profilini, yönetici kullanıcıyı ve MSP 'yi içeri aktarma](#import-organization-connection-profile-admin-user-identity-and-msp)
+
+İlk kurulumu tamamladıktan sonra, aşağıdaki işlemleri gerçekleştirmek için istemci uygulamasını kullanabilirsiniz:  
+
+- [Kanal yönetimi komutları](#channel-management-commands)
+- [Konsorsiyum yönetim komutları](#consortium-management-commands)
+- [Chaincode yönetim komutları](#chaincode-management-commands)
+
+### <a name="download-client-application-files"></a>İstemci uygulama dosyalarını indirin
+
+İlk kurulum, istemci uygulama dosyalarını indirdir. Gerekli tüm dosya ve paketleri indirmek için aşağıdaki komutu yürütün:
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
-```
-**Azure CLI bash kabuğu 'nda ortam değişkenlerinin aşağıdaki şekilde ayarlayın**:
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/azhlfToolSetup.sh | bash
+cd azhlfTool
+npm install
+npm run setup
 
-Kanal bilgilerini ve sipariş kuruluş bilgilerini ayarlama
+```
+Bu komutlar, Azure HLF istemci uygulaması kodunu genel GitHub deposundan, ardından tüm bağımlı NPM paketlerini yükleyerek kopyalayacaktır. Komutun başarılı bir şekilde yürütülmesi tamamlandıktan sonra, geçerli dizinde bir node_modules klasörü görebilirsiniz. Gerekli tüm paketler node_modules klasörüne yüklenir.
+
+
+### <a name="setup-environment-variables"></a>Ortam değişkenlerini belirleme
+
+> [!NOTE]
+> Tüm ortam değişkenleri Azure Kaynak adlandırma kuralını izler.
+
+
+**Orderer kuruluş istemcisi için ortam değişkenlerinin altına ayarla**
+
 
 ```bash
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
-ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
-ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
-ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
+ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
+ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
+ORDERER_ORG_NAME=<ordererOrgName>
+ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-Eş kuruluş bilgilerini ayarlama
+**Eş kuruluş istemcisi için aşağıdaki ortam değişkenlerini ayarlayın**
 
 ```bash
-PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
-PEER_AKS_NAME=<peerAKSClusterName>
-PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
-#Peer organization name is case-sensitive. Specify exactly the same name, which was provided while creating the Peer AKS Cluster.
-PEER_ORG_NAME=<peerOrganizationName>
+PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
+PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
+PEER_ORG_NAME=<peerOrgName>
+PEER_ADMIN_IDENTITY="admin.$PEER_ORG_NAME"
+CHANNEL_NAME=<channelName>
 ```
 
-Eş ve sipariş kuruluşları arasında çeşitli genel sertifikaları paylaşmak için bir Azure dosya paylaşımının oluşturulması.
+> [!NOTE]
+> Konsorsiyumdaki eş/çalışma sayısına bağlı olarak, eş komutlarını tekrarlamanız ve ortam değişkenini uygun şekilde ayarlamanız gerekebilir.
+
+**Azure Depolama hesabını ayarlamak için aşağıdaki ortam değişkenlerini ayarlayın**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -165,311 +198,223 @@ STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
 STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
+```
 
+Azure depolama hesabı oluşturma adımlarını izleyin. Zaten oluşturulmuş Azure depolama hesabınız varsa, bu adımları atlayın
+
+```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
+```
+
+Azure depolama hesabında bir dosya paylaşımının oluşturulması için aşağıdaki adımları izleyin. Zaten oluşturulmuş bir dosya paylaşımınız varsa, bu adımları atlayın
+
+```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
+```
+
+Azure dosya paylaşma bağlantı dizesi oluşturmak için aşağıdaki adımları izleyin
+
+```bash
+STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
-AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
-```
-**Kanal yönetimi komutları**
+AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
 
-Yeni bir kanal oluşturmak için orderer kuruluş AKS kümesine git ve sorun komutu
+```
+
+### <a name="import-organization-connection-profile-admin-user-identity-and-msp"></a>Kuruluş bağlantısı profilini, yönetici kullanıcı kimliğini ve MSP 'yi içeri aktar
+
+Kuruluşun bağlantı profilini, yönetici kullanıcı kimliğini ve MSP 'yi Azure Kubernetes kümesinden getirmek ve bu kimlikleri istemci uygulama yerel deposunda ("azhlfTool/depoları" dizininde) depolamak için komutların altına sorun.
+
+Orderer organizasyonu için:
 
 ```bash
-SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-./byn.sh createChannel "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
-**Konsorsiyum yönetim komutları**
-
-Bir kanala ve konsorsiyuma bir eşdüzey kuruluş eklemek için aşağıdaki komutları belirtilen sırada yürütün.
-
-1. Eş kuruluş AKS kümesine gidin ve üye hizmeti 'nin bir Azure dosya depolama alanına (MSP) sağlamasını yükleyin.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-2. Orderer kuruluş AKS kümesine gidin ve eş kuruluşu kanala ve konsorsiyuma ekleyin.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-    #add peer in consortium
-    ./byn.sh addPeerInConsortium "$PEER_ORG_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    #add peer in channel
-    ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-3. Eş kuruluşa geri dönün ve kanaldaki eş düğümlerine katılması için komutu verin.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-Benzer şekilde, kanala daha fazla eş kurum eklemek için, eş AKS ortam değişkenlerini gerekli eş kuruluşa göre güncelleştirin ve 1 ile 3 arasındaki adımları yürütün.
-
-**Chaincode yönetim komutları**
-
-Chaincode ile ilgili işlemi gerçekleştirmek için aşağıdaki komutu yürütün. Bu komutlar bir demo chaincode üzerinde tüm işlemleri gerçekleştirir. Bu demo chaincode, "a" ve "b" iki değişkenine sahiptir. Chaincode 'un örneklenmesi sırasında, "a" 1000 ile başlatılır ve "b" 2000 ile başlatılır. Chaincode 'un her çağrılışında, 10 birim "a" dan "b" öğesine aktarılır. Chaincode üzerinde sorgu işlemi, "a" değişkeninin dünya durumunu gösterir.
-
-Eş kuruluş AKS kümesinde yürütülen aşağıdaki komutları yürütün.
+Eş kuruluş için:
 
 ```bash
-# switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
-SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-```
-**Chaincode işlem komutları**
-
-```bash
-PEER_NODE_NAME="peer<peer#>"
-./byn.sh installDemoChaincode "$PEER_NODE_NAME"
-./byn.sh instantiateDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh invokeDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-## <a name="run-native-hlf-operations"></a>Yerel HLF işlemleri çalıştırma
-
-Müşterilerin AKS 'de HLF ağı üzerinde hiper muhasebe yerel komutları yürütmeye başlama hakkında yardım almak için. Örnek uygulama, HLF işlemlerini gerçekleştirmek için Fabric NodeJS SDK 'sını kullanan sağlanır. Komutlar yeni kullanıcı kimliği oluşturmak ve kendi chaincode uygulamanızı yüklemek için sağlanır.
-
-### <a name="before-you-begin"></a>Başlamadan önce
-
-Uygulamanın ilk kurulumu için aşağıdaki komutları izleyin:
-
-- Uygulama dosyalarını indirin
-- Bağlantı profili ve yönetici profili oluştur
-- Yönetici Kullanıcı kimliğini içeri aktar
-
-İlk kurulumu tamamladıktan sonra, aşağıdaki işlemleri gerçekleştirmek için SDK 'Yı kullanabilirsiniz:
-
-- Kullanıcı kimliği oluşturma
-- Chaincode işlemleri
-
-Yukarıda bahsedilen komutlar Azure Cloud Shell çalıştırılabilir.
-
-### <a name="download-application-files"></a>Uygulama dosyalarını indirin
-
-Uygulamayı çalıştırmaya yönelik ilk kurulum, tüm uygulama dosyalarını bir klasöre indirmenin bir klasörüdür.
-
-**Uygulama klasörü oluşturun ve klasöre girin**:
-
-```bash
-mkdir app
-cd app
-```
-Gerekli tüm dosya ve paketleri indirmek için aşağıdaki komutu yürütün:
-
-```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
-```
-Bu komutun tüm paketleri yüklemesi zaman alır. Komutun başarılı bir şekilde yürütülmesi tamamlandıktan sonra, geçerli dizinde `node_modules` bir klasör görebilirsiniz. Gerekli tüm paketler `node_modules` klasörüne yüklenir.
-
-### <a name="generate-connection-profile-and-admin-profile"></a>Bağlantı profili ve yönetici profili oluştur
-
-`app` Klasör içinde dizin oluşturma `profile`
-
-```bash
-cd app
-mkdir ./profile
-```
-Bu ortam değişkenlerini Azure Cloud Shell 'de ayarla
-
-```bash
-# Organization name whose connection profile is to be generated
-ORGNAME=<orgname>
-# Organization AKS cluster resource group
-AKS_RESOURCE_GROUP=<resourceGroup>
-```
-
-Kuruluşun bağlantı profilini ve yönetici profilini oluşturmak için aşağıdaki komutu yürütün
-
-```bash
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
-```
-
-Profil klasöründe, ad `profile` `<orgname>-ccp.json` ve `<orgname>-admin.json` sırasıyla, kuruluşun bağlantı profilini ve yöneticisini oluşturacaktır.
-
-Benzer şekilde, her bir sipariş ve eş kuruluş için bağlantı profili ve yönetici profili oluşturun.
-
-
-### <a name="import-admin-user-identity"></a>Yönetici Kullanıcı kimliğini içeri aktar
-
-Son adım, kuruluşun yönetici kullanıcı kimliğini cüzdan içinde içeri aktarırsınız.
-
-```bash
-npm run importAdmin -- -o <orgName>
-
-```
-Yukarıdaki komut, yönetici kullanıcı kimliğini cüzdan 'e aktarmak için ımportadmin. js ' i yürütür. Betik, yönetici profilinden `<orgname>-admin.json` yönetici kimliğini okur ve HLF işlemlerini yürütmek için onu cüzdan 'e aktarır.
-
-Betikler, kimlikleri depolamak için dosya sistemi cüzdan kullanır. Bağlantı profilindeki ". cüzdan" alanında belirtilen yola göre bir cüzdan oluşturur. Varsayılan olarak, ". cüzdan" alanı ile `<orgname>`başlatılır. Bu, kimlikleri depolamak için geçerli `<orgname>` dizinde oluşturulan adlı bir klasör anlamına gelir. Başka bir yolda cüzdan oluşturmak istiyorsanız, kayıt yönetici kullanıcısını ve diğer HLF işlemlerini çalıştırmadan önce bağlantı profilindeki ". cüzdan" alanını değiştirin.
-
-Benzer şekilde, her kuruluş için yönetici kullanıcı kimliğini içeri aktarın.
-
-Komutuna geçirilen bağımsız değişkenler hakkında daha fazla bilgi için komut yardımına bakın.
-
-```bash
-npm run importAdmin -- -h
-
-```
-
-### <a name="user-identity-generation"></a>Kullanıcı kimliği oluşturma
-
-HLF kuruluşunun yeni kullanıcı kimliklerini oluşturmak için aşağıdaki komutları belirtilen sırada yürütün.
+### <a name="channel-management-commands"></a>Kanal yönetimi komutları
 
 > [!NOTE]
-> Kullanıcı kimliği oluşturma adımlarıyla başlatmadan önce, uygulamanın ilk kurulumunun tamamlandığından emin olun.
+> Herhangi bir kanal işlemine başlamadan önce, istemci uygulamasının ilk kurulumunun tamamlandığından emin olun.  
 
-Azure Cloud Shell 'de ortam değişkenlerinin altına ayarla
+Aşağıdaki iki kanal yönetim komutu verilmiştir:
+
+1. [Kanal Oluştur komutu](#create-channel-command)
+2. [Çapa eşleri ayarlanıyor komutu](#setting-anchor-peers-command)
+
+
+#### <a name="create-channel-command"></a>Kanal Oluştur komutu
+
+Orderer kuruluş istemcisinden yeni bir kanal oluşturmak için komutunu verin. Bu komut, yalnızca içinde orderer organizasyonu olan bir kanal oluşturur.  
 
 ```bash
-# Organization name for which user identity is to be generated
-ORGNAME=<orgname>
-# Name of new user identity. Identity will be registered with the Fabric-CA using this name.
-USER_IDENTITY=<username>
-
+./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
-Yeni Kullanıcı Kaydet ve Kaydet
+#### <a name="setting-anchor-peers-command"></a>Çapa eşleri ayarlanıyor komutu
+Eş kuruluş istemcisinden, belirtilen kanalda eş kuruluşa ait bağlantı eşleri ayarlamak için aşağıdaki komutu verin.
 
-Yeni kullanıcıyı kaydetmek ve kaydetmek için, registerUser. js ' yi yürüten aşağıdaki komutu yürütün. Oluşturulan kullanıcı kimliğini cüzdan 'e kaydeder.
+>[!NOTE]
+> Bu komutu yürütmeden önce, eşler arası kuruluşun, konsorsiyum yönetim komutları kullanılarak kanala eklendiğinden emin olun.
 
 ```bash
-npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
-
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-> [!NOTE]
-> Yönetici Kullanıcı kimliği, Yeni Kullanıcı için Register komutunu vermek üzere kullanılır. Bu nedenle, bu komutu yürütmeden önce, kullanıcının cüzdan içinde yönetici kullanıcı kimliğinin olması zorunludur. Aksi takdirde, bu komut başarısız olur.
+`<anchorPeersList>`, bir çapa eşi olarak ayarlanacak eş düğümlerinin boşlukla ayrılmış bir listesidir. Örneğin,
 
-Komutta geçirilen bağımsız değişkenler hakkında daha fazla bilgi için komut yardımına bakın
+  - Yalnızca `<anchorPeersList>` peer1 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" olarak ayarlayın.
+  - Hem `<anchorPeersList>` peer1 hem de peer3 düğümünü bağlayıcı eşi olarak ayarlamak istiyorsanız "peer1" "peer3" olarak ayarlayın.
+
+### <a name="consortium-management-commands"></a>Konsorsiyum yönetim komutları
+
+>[!NOTE]
+> Herhangi bir konsorsiyum işlemini başlatmadan önce, istemci uygulamasının ilk kurulumunun tamamlandığından emin olun.  
+
+Bir kanala ve konsorsiyuma bir eş kuruluş eklemek için aşağıdaki komutları belirtilen sırada yürütün
+1.  Eş kuruluş istemcisinden, Azure depolama 'da eş kuruluş MSP 'yi karşıya yükleyin
+
+      ```bash
+      ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
+      ```
+2.  Orderer kuruluş istemcisinde, eşdüzey kuruluş MSP 'yi Azure Storage 'dan indirin ve ardından kanal/konsorsiyuma şirket içinde eşdüzey kuruluş eklemek için komutunu verin.
+
+      ```bash
+      ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ```
+
+3.  Orderer kuruluş istemcisinde, eş kuruluşun bu bağlantı profilini kullanarak sipariş düğümlerine bağlanabilmesi için Azure Storage 'da sipariş bağlantı profilini karşıya yükleyin
+
+      ```bash
+      ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ```
+
+4.  Eş kuruluş istemcisinden, Azure depolama 'dan orderer bağlantı profilini indirin ve ardından kanala eşdüzey düğümler eklemek için komut verin
+
+      ```bash
+      ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
+      ```
+
+Benzer şekilde, kanala daha fazla eş kurum eklemek için, eş ortam değişkenlerini gerekli eş kuruluşa göre güncelleştirin ve 1 ile 4 arasındaki adımları yürütün.
+
+
+### <a name="chaincode-management-commands"></a>Chaincode yönetim komutları
+
+>[!NOTE]
+> Herhangi bir chaincode işlemine başlamadan önce, istemci uygulamasının ilk kurulumunun tamamlandığından emin olun.  
+
+**Aşağıdaki chaincode 'a özgü ortam değişkenlerini ayarlayın**
 
 ```bash
-npm run registerUser -- -h
-
-```
-
-### <a name="chaincode-operations"></a>Chaincode işlemleri
-
-
-> [!NOTE]
-> Herhangi bir chaincode işlemine başlamadan önce, uygulamanın ilk kurulumunun tamamlandığından emin olun.
-
-Azure Cloud Shell 'de chaincode 'a özgü ortam değişkenlerinin altına ayarlayın:
-
-```bash
-# peer organization name where chaincode is to be installed
-ORGNAME=<orgName>
-USER_IDENTITY="admin.$ORGNAME"
-CC_NAME=<chaincodeName>
+# peer organization name where chaincode operation is to be performed
+ORGNAME=<PeerOrgName>
+USER_IDENTITY="admin.$ORGNAME"  
+# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+CC_NAME=<chaincodeName>  
+# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'
-# Default value is 'golang'
-CC_LANG=<chaincodeLanguage>
-# CC_PATH contains the path where your chaincode is place. In case of go chaincode, this path is relative to 'GOPATH'.
-# For example, if your chaincode is present at path '/opt/gopath/src/chaincode/chaincode.go'.
-# Then, set GOPATH to '/opt/gopath' and CC_PATH to 'chaincode'
-CC_PATH=<chaincodePath>
-# 'GOPATH' environment variable. This needs to be set in case of go chaincode only.
-export GOPATH=<goPath>
-# Channel on which chaincode is to be instantiated/invoked/queried
-CHANNEL=<channelName>
-
-````
-
-Aşağıdaki chaincode işlemleri gerçekleştirilebilir:
-
-- Chaincode 'u yükler
-- Chaincode örneği oluşturma
-- Chaincode çağırma
-- Sorgu chaincode
-
-### <a name="install-chaincode"></a>Chaincode 'u yükler
-
-Eş kuruluşa chaincode 'u yüklemek için aşağıdaki komutu yürütün.
-
-```bash
-npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
-
-```
-Bu işlem, `ORGNAME` ortam değişkeninde ayarlanan kuruluşun tüm eşdüzey düğümlerine chaincode yükler. Kanalınıza iki veya daha fazla eş kuruluş varsa ve bunların tümüne chaincode yüklemek istiyorsanız, her eş kuruluş için komutları ayrı olarak yürütün.
-
-Adımları izleyin:
-
-- Ayarla `ORGNAME` `<peerOrg1Name>` ve ver `installCC` komutu.
-- Ayarla `ORGNAME` `<peerOrg2Name>` ve ver `installCC` komutu.
-
-  Her eş kuruluş için yürütün.
-
-Komutuna geçirilen bağımsız değişkenler hakkında daha fazla bilgi için yardım 'a bakın.
-
-```bash
-npm run installCC -- -h
-
+# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'  
+# Default value is 'golang'  
+CC_LANG=<chaincodeLanguage>  
+# CC_PATH contains the path where your chaincode is place.
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+CC_PATH=<chaincodePath>  
+# Channel on which chaincode is to be instantiated/invoked/queried  
+CHANNEL_NAME=<channelName>  
 ```
 
-### <a name="instantiate-chaincode"></a>Chaincode örneği oluşturma
+Aşağıdaki chaincode işlemleri gerçekleştirilebilir:  
 
-Eşe chaincode örneğini oluşturmak için aşağıdaki komutu yürütün.
+- [Chaincode 'u yükler](#install-chaincode)  
+- [Chaincode örneği oluşturma](#instantiate-chaincode)  
+- [Chaincode çağırma](#invoke-chaincode)
+- [Sorgu chaincode](#query-chaincode)
+
+
+### <a name="install-chaincode"></a>Chaincode 'u yükler  
+
+Eş kuruluşa chaincode 'u yüklemek için aşağıdaki komutu yürütün.  
 
 ```bash
-npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
 
 ```
-Örnek oluşturma işlevi adı ve virgülle ayrılmış bağımsız değişkenlerin listesini sırasıyla `<instantiateFunc>` ve `<instantiateFuncArgs>` sırasıyla geçirin. Örneğin, [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)' da, `<instantiateFunc>` chaincode ' a `"Init"` ve `<instantiateFuncArgs>` boş dizeye `""`ayarlanmış olan chaincode örneğini oluşturmak için.
+ORGNAME ortam değişkeninde ayarlanan eşdüzey kuruluşun tüm eşdüzey düğümlerine chaincode yükler. Kanalınıza iki veya daha fazla eş kuruluş varsa ve bunların tümüne chaincode yüklemek istiyorsanız, her eş kuruluş için bu komutu ayrı olarak yürütün.  
+
+Adımları izleyin:  
+
+1.  `USER_IDENTITY` PeerOrg1 ve sorun `./azhlf chaincode install` komutuna göre ayarlayın `ORGNAME` .  
+2.  `USER_IDENTITY` PeerOrg2 ve sorun `./azhlf chaincode install` komutuna göre ayarlayın `ORGNAME` .  
+
+### <a name="instantiate-chaincode"></a>Chaincode örneği oluşturma  
+
+Eş istemci uygulamasından, kanaldaki chaincode 'u başlatmak için aşağıdaki komutu yürütün.  
+
+```bash
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+```
+Örnek oluşturma işlevi adı ve bağımsız değişken ayrılmış listesi ' ni `<instantiateFunc>` ve `<instantiateFuncArgs>` sırasıyla geçirin. Örneğin, chaincode_example02. go chaincode 'da, ' a `<instantiateFunc>` `init`ve `<instantiateFuncArgs>` "a" "2000" "b" "1000" olarak ayarlanmış chaincode 'u oluşturmak için.
 
 > [!NOTE]
-> Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün.
-> İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, chaincode, kanaldaki tüm eş kuruluşlardaki tüm eşdüzey düğümlerde oluşturulur.
+> Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün. İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, chaincode, kanaldaki tüm eş kuruluşlardaki tüm eşdüzey düğümlerde oluşturulur.  
 
-Komutta geçirilen bağımsız değişkenler hakkında daha fazla bilgi için komut yardımına bakın
+
+### <a name="invoke-chaincode"></a>Chaincode çağırma  
+
+Eş kuruluş istemcisinden, chaincode işlevini çağırmak için aşağıdaki komutu yürütün:  
 
 ```bash
-npm run instantiateCC -- -h
-
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-### <a name="invoke-chaincode"></a>Chaincode çağırma
+' In `<invokeFunction>` ve `<invokeFuncArgs>` sırasıyla bağımsız değişkenlerin çağırma işlev adını ve boşlukla ayrılmış listesini geçirin. Çağırma işlemini gerçekleştirmek için chaincode_example02. go chaincode örneğine devam edin, "a `<invokeFunction>` " `invoke` " `<invokeFuncArgs>` b" "10" olarak ayarlayın.  
 
-Chaincode işlevini çağırmak için aşağıdaki komutu yürütün:
+>[!NOTE]
+> Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün. İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, dünyanın durumu, kanaldaki tüm eş kuruluşların tüm eşdüzey düğümlerinde güncelleştirilir.  
+
+
+### <a name="query-chaincode"></a>Sorgu chaincode  
+
+Chaincode 'u sorgulamak için aşağıdaki komutu yürütün:  
 
 ```bash
-npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
-
+./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Çağırma işlevi adı ve bağımsız değişkenlerin virgülle ayrılmış listesi ' ni `<invokeFunction>` ve `<invokeFuncArgs>` sırasıyla geçirin. Fabcar chaincode örneğine devam ederek, `<invokeFunction>` ınitledger işlevini için `"initLedger"` ve `<invokeFuncArgs>` olarak `""`ayarlayın.
+Sorgu işlevi adı ve bağımsız değişken ayrılmış listesini içinde `<queryFunction>` ve `<queryFuncArgs>` sırasıyla geçirin. Yeniden chaincode_example02 `<queryFunction>` . Bu, "a" `query` ve `<queryArgs>` "a" olarak ayarlanan dünya durumundaki "a" değerini sorgulamak için.  
 
-> [!NOTE]
-> Kanalda herhangi bir eş kuruluştan bir kez komutunu yürütün.
-> İşlem düzenli olarak sipariş 'e gönderildikten sonra, sipariş bu işlemi kanaldaki tüm eş kuruluşlara dağıtır. Bu nedenle, dünyanın durumu, kanaldaki tüm eş kuruluşların tüm eşdüzey düğümlerinde güncelleştirilir.
+## <a name="troubleshoot"></a>Sorun giderme
 
-Komutta geçirilen bağımsız değişkenler hakkında daha fazla bilgi için komut yardımına bakın
+**Çalışan şablon sürümünü doğrulamak için**
+
+Şablon dağıtımınızın sürümünü bulmak için aşağıdaki komutları çalıştırın.
+
+Şablonun dağıtıldığı kaynak grubuna göre ortam değişkenlerini aşağıda ayarlayın.
 
 ```bash
-npm run invokeCC -- -h
 
+SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
+AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
+AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
+AKS_CLUSTER_NAME=<AKSClusterName>
 ```
-
-### <a name="query-chaincode"></a>Sorgu chaincode
-
-Chaincode 'u sorgulamak için aşağıdaki komutu yürütün:
-
+Şablon sürümünü yazdırmak için aşağıdaki komutu çalıştırın
 ```bash
-npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
-
-```
-
-Sorgu işlev adını ve bağımsız değişkenlerin virgülle ayrılmış listesini de `<queryFunction>` ve `<queryFuncArgs>` sırasıyla geçirin. Daha `"queryAllCars"` sonra, dünyanın her yerindeki tüm arabaların, `<queryArgs>` ve için `""`olarak ayarlandığı `fabcar` `<queryFunction>` bir şekilde chaincode 'u başvuru olarak alarak.
-
-Komutta geçirilen bağımsız değişkenler hakkında daha fazla bilgi için komut yardımına bakın
-
-```bash
-npm run queryCC -- -h
+SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
+kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```

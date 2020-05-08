@@ -3,12 +3,12 @@ title: Azure geçiş 'de Hyper-V değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile Hyper-V değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538180"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744594"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
@@ -54,7 +54,7 @@ Azure geçişi, bulma ve değerlendirme için [Azure geçişi](migrate-appliance
 
 - Hyper-V için [gereç gereksinimleri](migrate-appliance.md#appliance---hyper-v) hakkında bilgi edinin.
 - Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutlarında erişmesi gereken URL 'ler hakkında bilgi edinin.
-- Azure Kamu 'da, betiği kullanarak gereci dağıtmanız gerekir.
+- Azure Kamu 'da, [betiği kullanarak](deploy-appliance-script-government.md)gereci dağıtmanız gerekir.
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
