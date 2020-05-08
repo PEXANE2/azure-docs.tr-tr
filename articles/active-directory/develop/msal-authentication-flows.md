@@ -13,12 +13,12 @@ ms.date: 01/30/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050503"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883252"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
@@ -232,4 +232,4 @@ Bu, bazı durumlarda (DevOps senaryolarında) yararlı olsa da, kendi Kullanıc�
 
 ### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C özellikleri
 
-MSAL.NET ve Azure AD B2C kullanma hakkında daha fazla bilgi için bkz. [ROPC 'yi Azure AD B2C Ile kullanma (msal.net)](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c).
+MSAL.NET ve Azure AD B2C 'de ROPC kullanma hakkında daha fazla bilgi için bkz. [ROPC 'yi Azure AD B2C kullanma](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc).

@@ -12,12 +12,12 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112210"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981995"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -47,6 +47,17 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 >Eşitleme için Azure AD Connect etkinleştirdiyseniz, eski sürümlerden birini çalıştırırken yakında kullanım dışı bırakılıklar hakkında sizi uyaran sistem durumu bildirimlerini almaya hemen başlayacaksınız.
 >
 >Azure AD Connect en son sürüme nasıl yükselteceğiniz hakkında daha fazla bilgi edinmek için lütfen [Bu makaleye](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) bakın.
+
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>Yayın durumu
+05/07/2020: indirilmek üzere yayınlandı
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+- Seçilmeyen etki alanlarının sihirbaz kullanıcı arabiriminden yanlış bir şekilde seçildiği bir sorun düzeltildi.
+- ADSyncConfig PowerShell modülündeki bir sorun düzeltildi, burada set-ADSync * Permissions cmdlet 'lerinde kullanılan DSACLS komutunun çağrılması aşağıdaki hatalardan birine neden olur:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -105,6 +116,7 @@ Bu düzeltme derlemesi, Grup filtreleme özelliği etkinse ve kaynak bağlantıs
 - Hesap, kullanılmadan önce tüm hizmet Çoğaltmalarından yayılmadığından, Dizin uzantılarının veya PHS 'nin etkinleştirilmesinde Azure Active Directory eşitleme hesabının oluşturulmasına neden olan bir sorun düzeltildi. 
 - Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkıştırma yardımcı programında hata düzeltildi. 
 - Otomatik yükseltmede bir hata düzeltildi ve bu durum, Scheduler askıya alınma durumunda sunucuyu bıraktı. 
+- Etki alanı/OU filtreleme sayfasında, etki alanı ağacı, herhangi bir değişiklik yapılmadan yalnızca kısmen genişleerek bir etki alanının çalıştırma profillerini kaldıracak olan bir hata düzeltildi.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Yayın durumu
@@ -554,7 +566,7 @@ Azure AD Connect AD DS hesabı oluşturduğunda [AD DS hesabına kilit kilitleme
 *   KENDISINE özgü Ace 'Ler hariç belirli bir nesnedeki tüm Ace 'Leri kaldırın. Kendi kendine geldiğinde varsayılan izinleri değiştirmeden tutmak istiyoruz.
 *   Bu özel izinleri ata:
 
-Tür     | Adı                          | Erişim               | Uygulanan Öğe
+Tür     | Name                          | Erişim               | Uygulanan Öğe
 ---------|-------------------------------|----------------------|--------------|
 İzin Ver    | SİSTEM                        | Tam Denetim         | Bu nesne  |
 İzin Ver    | Enterprise Admins             | Tam Denetim         | Bu nesne  |
@@ -606,7 +618,7 @@ Durum: Ekim 27 2017
 >Bu derleme, Azure AD Connect otomatik yükseltme özelliği aracılığıyla müşteriler tarafından kullanılamaz.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6879]() sorunu düzeltildi
 * Azure AD Connect ve Azure AD Connect Health Aracısı arasında sürüm uyumluluğu sorunu düzeltildi (eşitleme için). Bu sorun, 1.1.647.0 sürümüne yerinde yükseltme Azure AD Connect, ancak şu anda sistem durumu Aracısı sürümü 3.0.127.0 olan müşterileri etkiler. Yükseltmeden sonra, sistem durumu Aracısı artık Azure AD Connect eşitleme hizmeti ile Azure AD Sistem Sağlığı Hizmeti arasında sistem durumu verileri gönderemez. Bu düzeltmeyle birlikte Azure AD Connect yerinde yükseltme sırasında durum Aracısı sürümü 3.0.129.0 yüklenir. Sistem Durumu Aracısı sürüm 3.0.129.0 Azure AD Connect sürüm 1.1.649.0 ile uyumluluk sorununa sahip değil.
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801731"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925958"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
@@ -132,11 +132,15 @@ Bir sanal ağ içinde bir iç Load Balancer yapılandırıldıysa ve katılımc�
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Neden: VM Ölçek kümesi tarafından başvurulan yük dengeleyici için bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemiyor.
 **Çözüm** Bağlantı noktasını değiştirmek için, VM Ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz.
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>Belirti: yük dengeleyicinin arka uç havuzundan VM 'Ler kaldırıldıktan sonra küçük trafik hala yük dengeleyiciye devam ediyor. 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>Neden: arka uç havuzundan kaldırılan VM 'Ler artık trafik almamalıdır. Küçük miktarda ağ trafiği, Azure 'daki depolama, DNS ve diğer işlevlerle ilgili olabilir. 
+Doğrulamak için bir ağ izlemesi gerçekleştirebilirsiniz. BLOB depolama hesaplarınız için kullanılan FQDN, her depolama hesabının özellikleri içinde listelenir.  Azure aboneliğinizdeki bir sanal makineden, bu depolama hesabına atanan Azure IP 'sini tespit etmek için bir Nslookup gerçekleştirebilirsiniz.
+
 ## <a name="additional-network-captures"></a>Ek ağ yakalamaları
 Bir destek durumu açmaya karar verirseniz daha hızlı bir çözüm için aşağıdaki bilgileri toplayın. Aşağıdaki testleri gerçekleştirmek için tek bir arka uç VM seçin:
 - Araştırma bağlantı noktası yanıtını test etmek için VNet içindeki arka uç VM 'lerinden birini kullanın (örnek: Psping 10.0.0.4:3389) ve sonuçları kaydedin. 
 - Bu ping testlerinde bir yanıt alınmıyorsa, PsPing komutunu çalıştırırken, arka uç VM 'sinde ve VNet test VM 'de eşzamanlı bir Netsh izlemesi çalıştırın ve ardından Netsh izlemesini durdurun. 
-  
+ 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yukarıdaki adımlar sorunu çözmezse, bir [destek bileti](https://azure.microsoft.com/support/options/)açın.

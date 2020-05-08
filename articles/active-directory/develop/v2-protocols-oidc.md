@@ -1,5 +1,6 @@
 ---
-title: OpenID Connect Protokolü-Microsoft Identity platform | Mavisi
+title: Microsoft Identity platform ve OpenID Connect Protocol | Mavisi
+titleSuffix: Microsoft identity platform
 description: OpenID Connect kimlik doğrulama protokolünün Microsoft Identity platform uygulamasını kullanarak Web uygulamaları oluşturun.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 88f647bbb72c92db194407b677e533a867261ce4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688222"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926502"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
 
-OpenID Connect, OAuth 2,0 üzerinde oluşturulmuş bir kimlik doğrulama protokolüdür ve bir kullanıcıyı bir Web uygulamasında güvenli bir şekilde oturum açmak için kullanabilirsiniz. OpenID Connect 'in Microsoft Identity platform uç noktasının uygulamasını kullandığınızda, Web tabanlı uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu makalede, bu dilden bağımsız olarak nasıl yapılacağı ve herhangi bir Microsoft açık kaynak kitaplığı kullanmadan HTTP iletileri gönderme ve alma işlemlerinin nasıl yapılacağı açıklanır.
+OpenID Connect (OıDC), bir kullanıcıyı bir Web uygulamasında güvenli bir şekilde oturum açmak için kullanabileceğiniz, OAuth 2,0 üzerinde oluşturulmuş bir kimlik doğrulama protokolüdür. OpenID Connect 'in Microsoft Identity platform uç noktasının uygulamasını kullandığınızda, Web tabanlı uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu makalede, bu dilden bağımsız olarak nasıl yapılacağı ve herhangi bir Microsoft açık kaynak kitaplığı kullanmadan HTTP iletileri gönderme ve alma işlemlerinin nasıl yapılacağı açıklanır.
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) , OAuth 2,0 *Yetkilendirme* protokolünü bir *kimlik doğrulama* protokolü olarak kullanılmak üzere genişletir. böylece, OAuth kullanarak çoklu oturum açma yapabilirsiniz. OpenID Connect, istemcinin kullanıcı kimliğini doğrulamasına izin veren bir güvenlik belirteci olan *kimlik belirteci*kavramını tanıtır. KIMLIK belirteci, kullanıcı hakkındaki temel profil bilgilerini de alır. OpenID Connect OAuth 2,0 ' i genişlettiğinden, uygulamalar bir [yetkilendirme sunucusu](active-directory-v2-protocols.md#the-basics)tarafından güvenliği sağlanmış olan kaynaklara erişmek için kullanılabilen *erişim belirteçlerini*güvenli bir şekilde alabilir. Microsoft Identity platform uç noktası Ayrıca, Azure AD 'ye kayıtlı üçüncü taraf uygulamaların, Web API 'Leri gibi güvenli kaynaklar için erişim belirteçleri vermesine olanak tanır. Erişim belirteçleri vermek üzere bir uygulama ayarlama hakkında daha fazla bilgi için bkz. [Microsoft Identity platform uç noktası ile uygulama kaydetme](quickstart-register-app.md). Sunucuda barındırılan ve bir tarayıcı aracılığıyla erişilebilen bir [Web uygulaması](v2-app-types.md#web-apps) oluşturuyorsanız OpenID Connect kullanmanız önerilir.
 

@@ -2,13 +2,13 @@
 title: Veri değişikliği-LUSıS
 description: Verilerin Language Understanding tahminlerden önce nasıl değiştirilebileceğinizi öğrenin (LUSıS)
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292073"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872257"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Söylenişi verilerini tahmine göre veya tahmin sırasında değiştirme
 LUO, tahmine göre veya tahmin sırasında zaman içinde değişiklik yapmak için yollar sağlar. Bunlar, [yazımı düzeltmeyi](luis-tutorial-bing-spellcheck.md)ve önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md)için saat dilimi sorunlarını düzeltmeyi içerir.
@@ -75,42 +75,27 @@ LUSıS 'de kullanılan Bing yazım denetimi API 'SI, yazım denetimi değişikli
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Önceden oluşturulmuş datetimeV2 varlığının saat dilimini değiştirme
 Bir LUSıS uygulaması önceden oluşturulmuş [datetimeV2](luis-reference-prebuilt-datetimev2.md) varlığını kullandığında, tahmin yanıtında bir tarih saat değeri döndürülebilir. İsteğin saat dilimi, döndürülecek doğru tarih/saati belirlemekte kullanılır. İstek bir bot 'tan veya başka bir merkezi uygulamadan geliyorsa, lusıs 'e geçmeden önce, LUSıS 'nin kullandığı saat dilimini düzeltin.
 
-### <a name="endpoint-querystring-parameter"></a>Endpoint QueryString parametresi
-Saat dilimi, kullanıcının saat dilimine `timezoneOffset` param kullanılarak [uç noktaya](https://go.microsoft.com/fwlink/?linkid=2092356) eklenerek düzeltilir. Değeri `timezoneOffset` , zaman değiştirmek için dakika cinsinden pozitif veya negatif bir sayı olmalıdır.
+### <a name="v3-prediction-api-to-alter-timezone"></a>Saat dilimini değiştirmek için v3 tahmin API 'SI
 
-|Param|Değer|
-|--|--|
-|`timezoneOffset`|dakika cinsinden pozitif veya negatif sayı|
+V3 'de, `datetimeReference` saat dilimi sapmasını belirler. [V3 tahminleri](luis-migration-api-v3.md#v3-post-body)hakkında daha fazla bilgi edinin.
 
-### <a name="daylight-savings-example"></a>Günışığından tasarruf örneği
-Gün ışığından yararlanma süresini ayarlamak için döndürülen önceden oluşturulmuş datetimeV2 gerekiyorsa, [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) sorgusu için dakika cinsinden bir `timezoneOffset` +/-değeri ile QueryString parametresini kullanmanız gerekir.
+### <a name="v2-prediction-api-to-alter-timezone"></a>Saat dilimini değiştirmek için v2 tahmin API 'SI
+Zaman dilimi, kullanıcının saat dilimine API sürümüne göre `timezoneOffset` parametresi kullanılarak uç noktaya eklenerek düzeltilir. Parametrenin değeri, zaman değiştirmek için dakika cinsinden pozitif veya negatif bir sayı olmalıdır.
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2 tahmin uç noktası isteği](#tab/V2)
+#### <a name="v2-prediction-daylight-savings-example"></a>V2 tahmini gün ışığından yararlanma örneği
+Gün ışığından yararlanma süresini ayarlamak için döndürülen önceden oluşturulmuş datetimeV2 gerekiyorsa, [uç nokta](https://go.microsoft.com/fwlink/?linkid=2092356) sorgusu için dakika cinsinden bir +/-değeri ile QueryString parametresini kullanmanız gerekir.
 
 60 dakika ekle:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 60 dakika kaldır:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v3-prediction-endpoint-request"></a>[V3 tahmin uç noktası isteği](#tab/V3)
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 tahmini C# kodu parametrenin doğru değerini belirler
 
-60 dakika ekle:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-60 dakika kaldır:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
-
-* * *
-
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# kodu, Timezonesapmasını doğru değerini belirler
-Aşağıdaki C# kodu, sistem saatine göre doğru `timezoneOffset` şekilde belirlenmesi Için [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) sınıfının [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metodunu kullanır:
+Aşağıdaki C# kodu, sistem saatine göre doğru fark değerini öğrenmek için [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) sınıfının [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metodunu kullanır:
 
 ```csharp
 // Get CST zone id
@@ -122,8 +107,8 @@ DateTime utcDatetime = DateTime.UtcNow;
 // Get Central Standard Time value of Now
 DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 
-// Find timezoneOffset
-int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
+// Find timezoneOffset/datetimeReference
+int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
