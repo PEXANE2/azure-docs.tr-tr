@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727222"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692253"
 ---
 # <a name="known-issues"></a>Bilinen Sorunlar #
 
@@ -46,9 +46,10 @@ Geçerli yayında aşağıdaki bilinen sorunlar var:
 
 - Canlı içeriğin DVR penceresinde, içerik tamamlandığında zaman çizelgesi alana ulaşılıncaya veya sununun sonuna ulaşana kadar büyümeye devam edecektir.
 - MSE 'nin etkin olduğu canlı sunularda bazı sorunlar vardır
-- Ses veya video olan varlıklar yalnızca AzureHtml5JS Tech aracılığıyla kayıttan yürütülmezler.
-  - Varlıkları ses veya video olmadan oynatmak isterseniz, [Azure Media Services Explorer aracını](https://aka.ms/amse) kullanarak boş ses veya video ekleyerek bunu yapabilirsiniz.
-    - Sessiz ses ekleme yönergeleri [burada](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) bulunabilir
+
+- Yalnızca ses olan varlıklar AzureHtml5JS Tech aracılığıyla kayıttan yürütülmeyecektir.
+  - Varlıkları ses olmadan oynatmak isterseniz, [Azure Media Services Explorer aracını](https://aka.ms/amse) kullanarak boş ses ekleyerek bunu yapabilirsiniz
+  - Sessiz ses ekleme yönergeleri [burada](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) bulunabilir
 
 ## <a name="flash"></a>In ##
 
@@ -91,7 +92,7 @@ Geçerli yayında aşağıdaki bilinen sorunlar var:
 ## <a name="apple"></a>Apple ##
 
 - Mac üzerinde Safari, genellikle "güç tasarrufu yapmak için eklentileri Durdur" ayarıyla birlikte varsayılan olarak güç tasarrufu modunu etkinleştirerek, Kullanıcı tarafından kullanım dışı olduğuna inandıklarında Flash ve Silverlight gibi eklentileri engeller. Bu blok, eklentinin var olan yalnızca yeteneklerini engellemez. Varsayılan techOrder verildiğinde, bu durum kayıttan oynatılmaya çalışıldığında sorunlara neden olabilir
-  - Hafifletme 1: video oynatıcı ' ön ve Merkez ' ise (bir 3000 x 3000 piksel sınırının içinde belgenin sol üst köşesinden başlayarak), yine de oynamalıdır.
+  - Hafifletme 1: video oynatıcı ' ön ve Merkez ' ise (bir 3000 x 3000 piksel sınırının içinde, belgenin sol üst köşesinden başlayarak), yine de oynamalıdır.
   - Risk azaltma 2: Safari için techOrder öğesini ["azureHtml5JS", "HTML5"] olacak şekilde değiştirin. Bu hafifletme, FlashSS Tech ' de kullanılabilen tüm özellikleri elde etmez.
 - Silverlight aracılığıyla PlayReady içeriği Safari 'de kayıttan yürütme sorunları yaşıyor olabilir.
 - AES ve kısıtlı belirteç içeriği iOS ve daha eski Android cihazları kullanılarak kayıttan yürütülmez.

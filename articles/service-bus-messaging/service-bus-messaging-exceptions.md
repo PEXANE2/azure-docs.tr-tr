@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80880797"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739356"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus mesajlaşma özel durumları
 Bu makalede, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -46,8 +46,6 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri ve gerçekle�
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Belirli bir sıra numarasına sahip bir ileti alma girişimi. Bu ileti bulunamadı. |İletinin zaten alınmadığından emin olun. İletinin kaldırılmış olup olmadığını görmek için sahipsiz sırayı kontrol edin. |Yeniden deneme yardım etmez. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |İstemci Service Bus bir bağlantı kuramıyor. |Sağlanan ana bilgisayar adının doğru olduğundan ve konağın erişilebilir olduğundan emin olun. |Yeniden dene, aralıklı bağlantı sorunları olup olmadığı konusunda yardımcı olabilir. |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |Hizmet şu anda isteği işleyemiyor. |İstemci bir süre bekleyip işlemi yeniden deneyin. |İstemci belirli bir aralıktan sonra yeniden deneyebilir. Yeniden deneme farklı bir özel durumla sonuçlanırsa, bu özel durumun yeniden deneme davranışını denetleyin. |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |İletiyle ilişkili kilit belirtecinin süresi doldu veya kilit belirteci bulunamadı. |İletiyi atın. |Yeniden deneme yardım etmez. |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |Bu oturumla ilişkili kilit kayboldu. |[Messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) nesnesini iptal edin. |Yeniden deneme yardım etmez. |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Aşağıdaki durumlarda oluşabilecek genel mesajlaşma özel durumu:<p>Farklı bir varlık türüne (örneğin, bir konu) ait olan bir ad veya yol kullanarak bir [Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient) oluşturmak için girişimde bulunuldu.</p><p>256 KB 'den büyük bir ileti göndermek için bir girişimde bulunuldu. </p>Sunucu veya hizmet, isteğin işlenmesi sırasında bir hatayla karşılaştı. Ayrıntılar için özel durum iletisine bakın. Genellikle geçici bir özel durumdur.</p><p>Varlık kısıtlandığından istek sonlandırıldı. Hata kodu: 50001, 50002, 50008. </p> | Kodu denetleyin ve ileti gövdesi için yalnızca serileştirilebilir nesnelerin kullanıldığından emin olun (veya özel bir seri hale getirici kullanın). <p>Özelliklerin desteklenen değer türleri için belgeleri denetleyin ve yalnızca desteklenen türleri kullanın.</p><p> [Isgeçici](/dotnet/api/microsoft.servicebus.messaging.messagingexception) özelliğini denetleyin. **Doğru**ise işlemi yeniden deneyebilirsiniz. </p>| Özel durum azaltmasından kaynaklanıyorsa, birkaç saniye bekleyip işlemi yeniden deneyin. Yeniden deneme davranışı tanımsızdır ve diğer senaryolarda yardımcı olmayabilir.|
 | [Messagingentityalreadyvartsexception](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Bu hizmet ad alanındaki başka bir varlık tarafından zaten kullanılan bir ada sahip bir varlık oluşturma girişimi. |Mevcut varlığı silin veya oluşturulacak varlık için farklı bir ad seçin. |Yeniden deneme yardım etmez. |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |Mesajlaşma varlığı izin verilen en büyük boyuta ulaştı veya bir ad alanına yönelik bağlantı sayısı üst sınırı aşıldı. |Varlıktan veya onun alt sıraları üzerinden ileti alarak varlıkta alan oluşturun. Bkz. [QuotaExceededException](#quotaexceededexception). |Yeniden deneme, iletilerin bu sırada kaldırılıp kaldırılmadığı konusunda yardımcı olabilir. |
@@ -102,6 +100,96 @@ Bu hatanın yaygın iki nedeni vardır: atılacak ileti sırası ve çalışır 
 
 ### <a name="queues-and-topics"></a>Kuyruklar ve konular
 Kuyruklar ve konular için, zaman aşımı, bağlantı dizesinin parçası olarak ya da [Servicebusconnectionstringbuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder)aracılığıyla [Messagingfactorysettings. OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) özelliğinde belirtilir. Hata iletisinin kendisi farklılık gösterebilir, ancak her zaman geçerli işlem için belirtilen zaman aşımı değerini içerir. 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>Nedeni
+
+**Messagelocklostexception** , [PeekLock](message-transfers-locks-settlement.md#peeklock) alma modu kullanılarak bir ileti alındığında ve istemci tarafından tutulan kilit hizmet tarafında sona erdiğinde oluşur.
+
+Bir iletideki kilit çeşitli nedenlerden dolayı sona ermeyebilir- 
+
+  * Kilit zamanlayıcının, istemci uygulaması tarafından yenilenmeden önce süresi doldu.
+  * İstemci uygulaması kilidi aldı, kalıcı bir depoya kaydetti ve sonra yeniden başlatıldı. Yeniden başlatıldıktan sonra istemci uygulaması, esnek iletilere bakarak bunları tamamlamayı denedi.
+
+### <a name="resolution"></a>Çözüm
+
+Bir **Messagelocklostexception**olayında, istemci uygulaması artık iletiyi işleyemez. İstemci uygulaması isteğe bağlı olarak analiz için özel durumu günlüğe kaydetmeyi göz önünde bulundurmayabilir, ancak istemcinin iletiyi *atmalıdır* .
+
+İleti üzerindeki kilidin süresi sona erdiğinden, kuyruğa (veya aboneliğe) geri döner ve alma işlemi çağıran bir sonraki istemci uygulaması tarafından işlenebilir.
+
+**Maxdeliverycount** aşılırsa Ileti, **DeadLetterQueue**öğesine taşınabilir.
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>Nedeni
+
+**Sessionlocklostexception** , bir oturum kabul edildiğinde ve istemci tarafından tutulan kilit hizmet tarafında sona erdiğinde oluşur.
+
+Bir oturumdaki kilit, çeşitli nedenlerle sona ermeyebilir- 
+
+  * Kilit zamanlayıcının, istemci uygulaması tarafından yenilenmeden önce süresi doldu.
+  * İstemci uygulaması kilidi aldı, kalıcı bir depoya kaydetti ve sonra yeniden başlatıldı. Yeniden başlatıldıktan sonra istemci uygulaması, esnek oturumlara bakıyordu ve bu oturumlardaki iletileri işlemeye çalışmış olur.
+
+### <a name="resolution"></a>Çözüm
+
+**Sessionlocklostexception**durumunda istemci uygulaması artık oturumdaki iletileri işlemez. İstemci uygulaması, analiz için özel durumu günlüğe kaydetmeyi göz önünde bulundurmayabilir, ancak istemcinin iletiyi *atmalıdır* .
+
+Oturumdaki kilit sona erdiğinden, kuyruğa (veya aboneliğe) geri döner ve oturumu kabul eden bir sonraki istemci uygulaması tarafından kilitlenebilir. Oturum kilidi, belirli bir zamanda tek bir istemci uygulaması tarafından tutulduğundan, sıralı işleme garanti edilir.
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>Nedeni
+
+Aşağıdaki durumlarda bir **SocketException** oluşturulur-
+   * Bir bağlantı girişimi başarısız olduğunda, ana bilgisayar belirtilen süreden sonra düzgün şekilde yanıt vermediğinden (TCP hata kodu 10060).
+   * Bağlı konak yanıt vermediği için bağlantı kurulamadı.
+   * İleti işlenirken bir hata oluştu veya zaman aşımı uzak ana bilgisayar tarafından aşıldı.
+   * Temel alınan ağ kaynak sorunu.
+
+### <a name="resolution"></a>Çözüm
+
+**SocketException** hataları, UYGULAMALARı barındıran VM 'nin adı `<mynamespace>.servicebus.windows.net` ilgili IP adresine dönüştüremeyeceğini gösterir. 
+
+Aşağıdaki komutun IP adresine eşlemede başarılı olup olmadığını denetleyin.
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+aşağıda gösterildiği gibi bir çıktı sağlaması gerekir
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+Yukarıdaki ad bir IP ve ad alanı diğer adı olarak **çözümlenmezse** , ağ yöneticisinin daha fazla araştırılacağını kontrol edin. Ad çözümlemesi, genellikle müşteri ağındaki bir DNS sunucusu aracılığıyla yapılır. DNS çözümlemesi Azure DNS tarafından yapılabiliyorsanız lütfen Azure desteğine başvurun.
+
+Ad çözümlemesi **beklendiği gibi çalışıyorsa**, Azure Service Bus bağlantılara bu adreste izin [verilip verilmeyeceğini denetleyin](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues)
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>Nedeni
+
+**Messagingexception** çeşitli nedenlerle oluşturulabilecek genel bir istisnadır. Bazı nedenlerden bazıları aşağıda listelenmiştir.
+
+   * Bir **Konu** veya **abonelik**üzerinde bir **queueclient** oluşturmak için bir girişimde bulunuldu.
+   * Gönderilen iletinin boyutu verilen katmanın sınırından daha büyük. Service Bus [kotaları ve limitleri](service-bus-quotas.md)hakkında daha fazla bilgi edinin.
+   * Belirli veri düzlemi isteği (gönderme, alma, tamamlanma, bırakma) azaltma nedeniyle sonlandırıldı.
+   * Hizmet yükseltmeleri ve yeniden başlatmaları nedeniyle oluşan geçici sorunlar.
+
+> [!NOTE]
+> Yukarıdaki özel durumlar listesi ayrıntılı değildir.
+
+### <a name="resolution"></a>Çözüm
+
+Çözümleme adımları, **Messagingexception** 'ın oluşturulmasına neden olan ne olduğuna bağlıdır.
+
+   * **Geçici sorunlar** Için ( ***ısgeçici*** 'in ***true***olarak ayarlandığı) veya **azaltma sorunları**için işlemi yeniden denemek sorunu çözebilir. SDK 'daki varsayılan yeniden deneme ilkesi bu için yararlanılabilir olabilir.
+   * Diğer sorunlar için, özel durum içindeki Ayrıntılar sorunu gösterir ve çözümleme adımları da aynı şekilde anlaşılamıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 .NET API başvurusu Service Bus için, bkz. [Azure .NET API başvurusu](/dotnet/api/overview/azure/service-bus).

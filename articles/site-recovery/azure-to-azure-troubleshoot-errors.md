@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390433"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738125"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-Azure VM çoğaltma hatalarında sorun giderme
 
@@ -172,8 +172,6 @@ SUSE Linux sembolik bağlantılar veya symbağlantıları kullandığından, bir
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>Giden URL 'Ler veya IP aralıkları (hata kodu 151037 veya 151072)
 
 Site Recovery çoğaltmanın çalışması için, VM 'den belirli URL 'lere giden bağlantı gerekir. VM 'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kuralları kullanıyorsa, bu sorunlardan birini görebilirsiniz. URL 'Ler aracılığıyla giden erişimi desteklemeye devam ediyoruz, ancak bir IP aralıkları listesinin kullanılması artık desteklenmiyor.
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>Sorun 1: Azure VM 'yi Site Recovery ile kaydetme başarısız oldu (151195)
 
 #### <a name="possible-causes"></a>Olası nedenler
 

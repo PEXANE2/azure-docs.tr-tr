@@ -4,16 +4,16 @@ description: Bu makale AzCopy Remove komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74033993"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780734"
 ---
 # <a name="azcopy-remove"></a>azcopy kaldırma
 
@@ -89,9 +89,13 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Seçenekler
 
-**--exclude-Path dizesi**      Bu yolları kaldırırken hariç tutun. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder; myFolder/subDirName/File. PDF.
+**--Delete-Snapshot** String varsayılan olarak, blob 'un anlık görüntüleri varsa silme işlemi başarısız olur. Kök blobu ve tüm anlık görüntülerini kaldırmak için ' include ' belirtin; Alternatif olarak yalnızca anlık görüntüleri kaldırmak için ' yalnızca ', kök blobu tut ' i belirtin.
+
+**--exclude-Path** dizesi kaldırılırken Bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder; myFolder/subDirName/File. PDF.
 
 **--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: *. jpg;*. PDF; exactName
+
+**--** -------salt-    Bir Azure dosyaları dosyası veya klasörü silinirken, mevcut nesnenin salt okunurdur özniteliği ayarlanmış olsa bile silme işlemini çalışmaya zorlayın
 
 **-h,--** kaldırma için yardım yardımı
 
@@ -111,6 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
 |--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+|--Güvenilen-Microsoft-sonekler dizesi   | Azure Active Directory oturum açma belirteçlerinin gönderilebileceği ek etki alanı soneklerini belirtir.  Varsayılan değer '*. Core.Windows.net;*' dir. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Burada listelenenler varsayılan olarak eklenir. Güvenlik için yalnızca Microsoft Azure etki alanlarını Buraya yerleştirmeniz gerekir. Birden çok girişi noktalı virgülle ayırın.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

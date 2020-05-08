@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760192"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629397"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure'da SSIS paketlerinden Windows kimlik doğrulaması ile veri depolarına ve dosya paylaşımlarına erişme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory (ADF) içinde Azure-SSIS Integration Runtime (IR) üzerinde çalışan SSIS paketlerinden SQL sunucuları, dosya paylaşımları, Azure dosyaları vb. gibi veri depolarına erişmek için Windows kimlik doğrulamasını kullanabilirsiniz. Veri depolarınız, Azure sanal makinelerinde (VM 'Ler) barındırılan veya yönetilen hizmet olarak Azure 'da çalışan şirket içi olabilir. Şirket içinde yer alıyorsa Azure-SSIS IR, şirket içi ağınıza bağlı bir sanal ağa (Microsoft Azure Sanal Ağ) katılmanız gerekir, bkz. [Azure-SSIS IR ekleme Microsoft Azure sanal ağ](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Azure-SSIS IR üzerinde çalışan SSIS paketlerindeki Windows kimlik doğrulaması ile veri depolarına erişmek için dört yöntem vardır:
 

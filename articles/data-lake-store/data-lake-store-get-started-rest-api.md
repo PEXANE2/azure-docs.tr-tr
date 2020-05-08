@@ -1,23 +1,17 @@
 ---
-title: 'REST API: Azure Data Lake Storage 1. üzerinde hesap yönetimi işlemleri | Microsoft Docs'
-description: Data Lake Storage 1. hesapta hesap yönetim işlemlerini gerçekleştirmek için Azure Data Lake Storage 1. ve WebileREST API kullanın
-services: data-lake-store
-documentationcenter: ''
+title: REST ile Azure Data Lake Storage 1. hesabını yönetme
+description: Bir Azure Data Lake Storage 1. hesabında hesap yönetim işlemleri gerçekleştirmek için WebileREST API kullanın.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60877121"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692086"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
@@ -30,7 +24,7 @@ ms.locfileid: "60877121"
 Bu makalede, REST API kullanarak Azure Data Lake Storage 1. hesap yönetim işlemlerini nasıl gerçekleştireceğinizi öğreneceksiniz. Hesap yönetimi işlemleri Data Lake Storage 1. hesap oluşturmayı, Data Lake Storage 1. hesabı silmeyi vb. içerir. REST API kullanarak Data Lake Storage 1. dosya sistemi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için bkz. [REST API kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **[kıvır](https://curl.haxx.se/)**. Bu makalede, bir Data Lake Storage 1. hesabına yönelik REST API çağrılarının nasıl yapılacağını göstermek için kıvrımlı kullanılır.
 

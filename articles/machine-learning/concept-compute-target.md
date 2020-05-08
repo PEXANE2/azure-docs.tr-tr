@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398173"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780122"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -64,11 +64,37 @@ Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin 
 Eğitim için Azure Machine Learning işlem kümelerini ve toplu iş ınuzyı (Önizleme) için kullanabilirsiniz.  Bu işlem kaynağıyla şunları yapabilirsiniz:
 
 * Tek veya çok düğümlü küme
-* Her çalıştırma gönderdiğinizde otomatik ölçekler 
+* Her çalıştırma gönderdiğinizde otomatik ölçeklendirme 
 * Otomatik küme yönetimi ve iş zamanlaması 
 * Hem CPU hem de GPU kaynakları için destek
 
+### <a name="supported-vm-series-and-sizes"></a>Desteklenen VM Serisi ve boyutları
 
+Azure Machine Learning yönetilen bir işlem kaynağı için bir düğüm boyutu seçtiğinizde, Azure 'da kullanılabilir olan VM boyutları arasından seçim yapabilirsiniz. Azure, farklı iş yükleri için Linux ve Windows için bir dizi boyut sunar. Farklı [VM türleri ve boyutları](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)hakkında daha fazla bilgi edinmek için buraya bakın.
+
+VM boyutu seçmenin bazı özel durumları ve sınırlamaları vardır:
+* Bazı VM serileri Azure Machine Learning desteklenmez.
+* Bazı VM dizileri kısıtlıdır. Kısıtlı bir seriyi kullanmak için desteğe başvurun ve seri için bir kota artışı isteyin. Desteğe başvurma hakkında daha fazla bilgi için bkz. [Azure destek seçenekleri](https://azure.microsoft.com/support/options/)
+
+Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için aşağıdaki tabloya bakın. 
+
+| **Desteklenen VM Serisi**  | **Kısıtlamalar** |
+|------------|------------|
+| D | Yok |
+| Dv2 | Yok |  
+| DSv2 | Yok |  
+| FSv2 | Yok |  
+| M | Onay gerekiyor |
+| NC | Yok |    
+| NCsv2 | Onay gerekiyor |
+| NCsv3 | Onay gerekiyor |  
+| Üstündeki | Onay gerekiyor |
+| NDv2 | Onay gerekiyor |
+| NV | Yok |
+| NVv3 | Onay gerekiyor | 
+
+
+Azure Machine Learning bu VM serisini desteklese de, tüm Azure bölgelerinde bulunmayabilir. Burada kullanılabilir VM serisine bakabilirsiniz: [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 ## <a name="unmanaged-compute"></a>Yönetilmeyen işlem
 

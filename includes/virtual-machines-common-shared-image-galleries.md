@@ -1,42 +1,41 @@
 ---
 title: include dosyası
 description: include dosyası
-services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80117082"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789054"
 ---
 Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
 - Görüntülerin yönetilen genel çoğaltması.
 - Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama.
 - Kullanılabilirlik Alanları destekleyen bölgelerde bölge yedekli depolama (ZRS) hesaplarıyla yüksek düzeyde kullanılabilir görüntüler. ZRS, ZGen hatalarıyla karşı daha iyi esnekliği sunar.
+- Premium depolama desteği (Premium_LRS).
 - RBAC kullanarak abonelikler arasında ve hatta Active Directory (AD) kiracılar arasında paylaşım.
 - Her bölgedeki görüntü çoğaltmalarıyla dağıtımlarınızı ölçeklendirin.
 
 Paylaşılan görüntü galerisini kullanarak, görüntülerinizi kuruluşunuzdaki farklı kullanıcılara, hizmet sorumlularına veya AD gruplarına paylaşabilirsiniz. Paylaşılan görüntüler, dağıtımlarınızın daha hızlı ölçeklendirilmesi için birden çok bölgeye çoğaltılabilir.
 
-Yönetilen görüntü, görüntüyü oluşturma yönteminize bağlı olarak tam VM 'nin (bağlı veri diskleri dahil) veya yalnızca işletim sistemi diskinin bir kopyasıdır. Görüntüden bir VM oluşturduğunuzda, yeni VM 'nin disklerini oluşturmak için görüntüdeki VHD 'lerin bir kopyası kullanılır. Yönetilen görüntü depolamada kalır ve yeni VM 'Ler oluşturmak için tekrar tekrar kullanılabilir.
+Görüntü, nasıl oluşturulduğuna bağlı olarak tam VM 'nin (tüm bağlı veri diskleri dahil) veya yalnızca işletim sistemi diskinin bir kopyasıdır. Görüntüden bir VM oluşturduğunuzda, yeni VM 'nin disklerini oluşturmak için görüntüdeki VHD 'lerin bir kopyası kullanılır. Görüntü depolamada kalır ve yeni VM 'Ler oluşturmak için tekrar tekrar kullanılabilir.
 
-Korumanız gereken çok sayıda yönetilen görüntünüz varsa ve bunları şirketiniz genelinde kullanılabilir hale getirmek istiyorsanız, paylaşılan bir görüntü galerisini bir depo olarak kullanarak görüntülerinizi paylaşmayı kolaylaştırır. 
+Korumanız gereken çok sayıda görüntünüz varsa ve bunları şirketiniz genelinde kullanılabilir hale getirmek istiyorsanız, depo olarak paylaşılan bir görüntü galerisi kullanabilirsiniz. 
 
 Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir:
 
 | Kaynak | Açıklama|
 |----------|------------|
-| **Yönetilen görüntü** | Tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntü. Yönetilen görüntüler [Genelleştirilmiş](#generalized-and-specialized-images) VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
-| **Anlık Görüntü** | Bir VHD 'nin **görüntü sürümü**oluşturmak için kullanılabilecek bir kopyası. Anlık görüntüler [özelleştirilmiş](#generalized-and-specialized-images) bir VM 'den alınabilir (Genelleştirilmiş olmayan bir şekilde) ve özel bir görüntü sürümü oluşturmak için tek başına veya veri disklerinin anlık görüntüleriyle birlikte kullanılır.
+| **Görüntü kaynağı** | Bu, bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılabilecek bir kaynaktır. Görüntü kaynağı, başka bir görüntü galerisinde [Genelleştirilmiş veya özelleştirilmiş](#generalized-and-specialized-images), yönetilen bir görüntü, anlık görüntü veya görüntü sürümü olan mevcut BIR Azure VM olabilir. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
-| **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü kuruluşunuzda kullanmaya yönelik gereksinimler hakkında bilgi taşır. Görüntünün Genelleştirilmiş veya özel, işletim sistemi, minimum ve maksimum bellek gereksinimleri ve sürüm notları gibi bilgileri ekleyebilirsiniz. Bu, bir görüntü türünün tanımıdır. |
+| **Görüntü tanımı** | Görüntü tanımları bir galeri içinde oluşturulur ve görüntü ve bu dosyayı dahili olarak kullanmaya yönelik gereksinimler hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, sürüm notları ve en düşük ve en yüksek bellek gereksinimleri olduğunu içerir. Bu, bir görüntü türünün tanımıdır. |
 | **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
 
 <br>
@@ -45,7 +44,7 @@ Paylaşılan görüntü Galerisi özelliği birden çok kaynak türüne sahiptir
 
 ## <a name="image-definitions"></a>Görüntü tanımları
 
-Görüntü tanımları bir görüntünün sürümleri için bir mantıksal gruplandırmadır. Görüntü tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri barındırır. Bir görüntü tanımı, belirli bir görüntü oluşturma ile ilgili tüm ayrıntılar için bir plan gibidir. Bir görüntü tanımından, ancak tanımdan oluşturulan görüntü sürümünden bir VM dağıtmazsınız.
+Görüntü tanımları bir görüntünün sürümleri için bir mantıksal gruplandırmadır. Görüntü tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntünün kullanımıyla ilgili diğer bilgilerin yer aldığı bilgileri barındırır. Bir görüntü tanımı, belirli bir görüntü oluşturma ile ilgili tüm ayrıntılar için bir plan gibidir. Bir görüntü tanımından, ancak tanımdan oluşturulan görüntü sürümlerinden bir VM dağıtmazsınız.
 
 Her görüntü tanımı için, kombinasyon- **Yayımcı**, **teklif** ve **SKU**'da kullanılan üç parametre vardır. Bunlar, belirli bir görüntü tanımını bulmak için kullanılır. Üç değerden birini veya ikisini birden paylaşan görüntü sürümlerine sahip olabilirsiniz.  Örneğin, aşağıda üç görüntü tanımı ve değerleri verilmiştir:
 
@@ -68,23 +67,18 @@ Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımın
 * Etiket-görüntü tanımınızı oluştururken Etiketler ekleyebilirsiniz. Etiketler hakkında daha fazla bilgi için bkz. [kaynakları düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md)
 * En düşük ve en yüksek vCPU ve bellek önerileri-görüntünüz vCPU ve bellek önerileri içeriyorsa, bu bilgileri görüntü tanımınıza ekleyebilirsiniz.
 * İzin verilmeyen disk türleri-sanal makinenizin depolama gereksinimleriyle ilgili bilgiler sağlayabilirsiniz. Örneğin, görüntü standart HDD disklerine uygun değilse, bunları izin vermeme listesine eklersiniz.
+* Hyper-V oluşturma-görüntünün bir gen 1 veya Gen 2 Hyper-V VHD 'sinden oluşturulup oluşturulmayacağını belirtebilirsiniz.
 
 ## <a name="generalized-and-specialized-images"></a>Genelleştirilmiş ve özelleştirilmiş görüntüler
 
 Paylaşılan görüntü Galerisi tarafından desteklenen iki işletim sistemi durumu vardır. Genellikle görüntüler, görüntüyü oluşturmak için kullanılan VM 'nin görüntü alınmadan önce Genelleştirilmiş olmasını gerektirir. Genelleştirme, VM 'den makine ve kullanıcıya özgü bilgileri kaldıran bir işlemdir. Windows için, Sysprep de kullanılır. Linux için [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` veya `-deprovision+user` Parameters kullanabilirsiniz.
 
-Özel VM 'Ler makineye özgü bilgileri ve hesapları kaldırma işlemi boyunca değil. Ayrıca, özelleştirilmiş görüntülerden oluşturulan VM 'Ler bunlarla `osProfile` ilişkili değildir. Bu, özelleştirilmiş görüntülerin bazı sınırlamalara sahip olacağı anlamına gelir.
+Özel VM 'Ler makineye özgü bilgileri ve hesapları kaldırma işlemi boyunca değil. Ayrıca, özelleştirilmiş görüntülerden oluşturulan VM 'Ler bunlarla `osProfile` ilişkili değildir. Bu, özelleştirilmiş görüntülerin bazı avantajlara ek olarak bazı sınırlamalara sahip olacağı anlamına gelir.
 
+- Özelleştirilmiş görüntülerden oluşturulan VM 'Ler ve ölçek kümeleri daha hızlı çalışıyor olabilir. İlk önyüklemede zaten olan bir kaynaktan oluşturulduğundan, bu görüntülerden oluşturulan VM 'Ler daha hızlı başlatılabilir.
 - VM 'de oturum açmak için kullanılabilecek hesaplar, bu VM 'den oluşturulan özelleştirilmiş görüntü kullanılarak oluşturulan herhangi bir VM 'de de kullanılabilir.
 - VM 'Ler, yansımanın alındığı VM 'nin **bilgisayar adına** sahip olur. Çakışmaları önlemek için bilgisayar adını değiştirmelisiniz.
 - `osProfile` , Kullanılarak `secrets`, bazı hassas bilgilerin VM 'ye geçirilmesi. Bu, Anahtar Kasası, WinRM ve ' de kullanılan `secrets` diğer işlevleri kullanarak soruna neden olabilir `osProfile`. Bazı durumlarda, bu sınırlamalara geçici çözüm bulmak için yönetilen hizmet kimliklerini (MSI) kullanabilirsiniz.
-
-> [!IMPORTANT]
-> Özel görüntüler şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Bilinen önizleme sınırlamaları** VM 'Ler yalnızca portal veya API kullanılarak özelleştirilmiş görüntülerden oluşturulabilir. , Önizleme için CLı veya PowerShell desteği yoktur.
-
 
 ## <a name="regional-support"></a>Bölgesel destek
 
@@ -113,6 +107,7 @@ Paylaşılan görüntü galerileri kullanarak kaynak dağıtmak için abonelik b
 - 100 paylaşılan görüntü galerileri, her bölge için abonelik başına
 - 1.000 görüntü tanımları, her bölge için abonelik başına
 - 10.000 görüntü sürümü, her bölge için abonelik başına
+- 10 görüntü sürümü çoğaltması, her bölge için abonelik başına
 - Görüntüye bağlı herhangi bir disk, boyutu 1 TB 'tan küçük veya ona eşit olmalıdır
 
 Daha fazla bilgi için bkz. geçerli kullanımınızı nasıl denetabileceğine ilişkin örnekler için [sınırlara karşı kaynak kullanımını denetleme](https://docs.microsoft.com/azure/networking/check-usage-against-limits) .
@@ -195,10 +190,10 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 
 Şablonlar kullanarak paylaşılan görüntü Galerisi kaynağı oluşturabilirsiniz. Çeşitli Azure hızlı başlangıç şablonları mevcuttur: 
 
-- [Paylaşılan görüntü galerisi oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Paylaşılan görüntü galerisinde görüntü tanımı oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Paylaşılan görüntü galerisinde görüntü sürümü oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Görüntü sürümünden VM oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Paylaşılan Görüntü Galerisi Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Görüntü Sürümünden Sanal Makine Oluşturma](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular 
 
@@ -217,31 +212,32 @@ Aşağıdaki SDK 'lar paylaşılan görüntü galerileri oluşturmayı destekler
 * [Paylaşılan görüntü galerisini kullanma ücretleri nelerdir?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Paylaşılan görüntü Galerisi ve görüntü tanımı ve görüntü sürümü oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Görüntü sürümünden paylaşılan VM veya sanal makine ölçek kümesi oluşturmak için hangi API sürümünü kullanmalıyım?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Paylaşılan görüntü Galerisi görüntülerini kullanmak için yönetilen görüntü kullanılarak oluşturulan sanal makine ölçek kümesini güncelleştirebilir miyim?]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Tüm paylaşılan görüntü Galerisi kaynaklarını abonelikler arasında nasıl listeleyebilirim?
 
 Azure portal erişiminiz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)açın.
-1. **Tüm kaynaklara**gidin.
+1. Sayfayı aşağı kaydırın ve **tüm kaynaklar**' ı seçin.
 1. Tüm kaynakları listelemek istediğiniz tüm abonelikleri seçin.
-1. **Özel Galeri**türündeki kaynakları arayın.
- 
-   Görüntü tanımlarını ve görüntü sürümlerini görmek için **gizli türleri göster**' i de seçmeniz gerekir.
- 
-   İzinleriniz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için Azure CLı 'de aşağıdaki komutu kullanın:
+1. **Paylaşılan görüntü Galerisi**türündeki kaynakları arayın.
+  
+İzinleriniz olan aboneliklerdeki tüm paylaşılan görüntü Galerisi kaynaklarını listelemek için Azure CLı 'de aşağıdaki komutu kullanın:
 
-   ```azurecli
+```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
-   ```
+```
+
+Daha fazla bilgi için bkz. [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) veya [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md)kullanarak **Galeri kaynaklarını yönetme** .
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Var olan görüntümi paylaşılan görüntü galerisine taşıyabilir miyim?
  
 Evet. Sahip olduğunuz görüntü türlerine göre 3 senaryo vardır.
 
- Senaryo 1: SıG ile aynı abonelikte yönetilen bir görüntünüz varsa, bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz.
+ Senaryo 1: yönetilen bir görüntünüz varsa, bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) veya [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md)kullanarak **yönetilen görüntüden görüntü sürümüne geçiş** .
 
- Senaryo 2: SıG ile aynı abonelikte yönetilmeyen bir görüntünüz varsa, bundan yönetilen bir görüntü oluşturabilir ve bundan sonra bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz. 
+ Senaryo 2: yönetilmeyen bir görüntünüz varsa, bundan yönetilen bir görüntü oluşturabilir ve bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz. 
 
  Senaryo 3: yerel dosya sisteminizde bir VHD 'niz varsa, VHD 'yi yönetilen bir görüntüye yüklemeniz gerekir, bundan sonra bir görüntü tanımı ve görüntü sürümü oluşturabilirsiniz.
 
@@ -250,11 +246,17 @@ Evet. Sahip olduğunuz görüntü türlerine göre 3 senaryo vardır.
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Özel bir diskten görüntü sürümü oluşturabilir miyim?
 
-Evet, görüntü olarak özelleştirilmiş diskler için destek önizleme aşamasındadır. Yalnızca Portal ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) veya [LINUX](../articles/virtual-machines/linux/shared-images-portal.md)) ve API 'yi kullanarak özelleştirilmiş görüntüden bir VM oluşturabilirsiniz. Önizleme için PowerShell desteği yok.
+Evet, görüntü olarak özelleştirilmiş diskler için destek önizleme aşamasındadır. Portal, PowerShell veya API kullanarak yalnızca özelleştirilmiş bir görüntüden VM oluşturabilirsiniz. 
+
+
+[Özelleştirilmiş bir sanal makinenin görüntüsünü oluşturmak Için PowerShell 'i](../articles/virtual-machines/image-version-vm-powershell.md)kullanın.
+
+[Windows](../articles/virtual-machines/linux/shared-images-portal.md) veya [Linux] (..) oluşturmak için portalını kullanın. /makalenles/Virtual-, ines/Linux/Shared-images-Portal.exe) görüntüsü. 
+
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Paylaşılan görüntü Galerisi kaynağını oluşturulduktan sonra farklı bir aboneliğe taşıyabilir miyim?
 
-Hayır, paylaşılan görüntü Galerisi kaynağını farklı bir aboneliğe taşıyamazsınız. Bununla birlikte, galerideki görüntü sürümlerini, gereken şekilde diğer bölgelere çoğaltabileceksiniz.
+Hayır, paylaşılan görüntü Galerisi kaynağını farklı bir aboneliğe taşıyamazsınız. Galerideki görüntü sürümlerini diğer bölgelere çoğaltabilir veya [Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md) veya [PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md)kullanarak başka bir galerinin görüntüsünü kopyalayabilirsiniz.
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Resim sürümlerimi Azure Çin 21Vianet veya Azure Almanya ya da Azure Kamu bulutu gibi bulutlar arasında çoğaltabilir miyim?
 
@@ -308,3 +310,7 @@ Paylaşılan görüntü galerileri, görüntü tanımları ve görüntü sürüm
 ### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Görüntü sürümünden paylaşılan VM veya sanal makine ölçek kümesi oluşturmak için hangi API sürümünü kullanmalıyım?
 
 Bir görüntü sürümü kullanan VM ve sanal makine ölçek kümesi dağıtımları için API sürüm 2018-04-01 veya üstünü kullanmanızı öneririz.
+
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Paylaşılan görüntü Galerisi görüntülerini kullanmak için yönetilen görüntü kullanılarak oluşturulan sanal makine ölçek kümesini güncelleştirebilir miyim?
+
+Evet, işletim sistemi türü, Hyper-V üretimi ve görüntüler arasında eşleşen veri diski düzeni olduğu sürece, yönetilen bir görüntüden bir paylaşılan görüntü Galerisi görüntüsüne ölçek kümesi görüntü başvurusunu güncelleştirebilirsiniz. 

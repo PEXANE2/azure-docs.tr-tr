@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) içinde özel çıkış yolu tanıml
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676499"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733507"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Küme çıkışı 'nı Kullanıcı tanımlı bir yol (Önizleme) ile özelleştirme
 
@@ -73,7 +73,7 @@ Varsayılan olarak, AKS kümelerinde dağıtılan ve ' ı kullanan `outboundType
 
 `userDefinedRouting` Ayarlanırsa, aks çıkış yollarını otomatik olarak yapılandırmaz. Aşağıdakilerin **Kullanıcı**tarafından yapılması beklenmektedir.
 
-Kümenin yapılandırılmış bir alt ağa sahip mevcut bir sanal ağa dağıtılması gerekir. Alt ağda giden bağlantı ile geçerli bir Kullanıcı tanımlı yol (UDR) bulunmalıdır.
+AKS kümesinin yapılandırılmış bir alt ağa sahip mevcut bir sanal ağa dağıtılması gerekir. Standart yük dengeleyici (SLB) mimarisi kullanılırken açık çıkış oluşturmanız gerekir. Bu, bir güvenlik duvarı, ağ geçidi, şirket içi veya çıkış isteklerinin standart yük dengeleyiciye veya belirli bir düğüme atanan bir genel IP tarafından yapılmasına izin vermek için bir gereç için çıkış istekleri gönderilmesini gerektirir.
 
 AKS kaynak sağlayıcısı standart yük dengeleyici (SLB) dağıtır. Yük dengeleyici hiçbir kuralla yapılandırılmamış ve [bir kural yerleştirilene kadar ücret](https://azure.microsoft.com/pricing/details/load-balancer/)ödemez. AKS, SLB ön ucu için otomatik olarak genel bir IP adresi **sağlamacaktır** . AKS, yük dengeleyici arka uç **havuzunu otomatik olarak** yapılandırmaz.
 

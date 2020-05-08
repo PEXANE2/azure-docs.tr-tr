@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 069d2a153e307ed94032ce1d980f26521969fc56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 2527071aa246b34c103c2a8732d735f459977a47
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508352"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629533"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Multi-Factor Authentication 'yi etkinleştirme
 
@@ -39,19 +39,21 @@ Başlamak için yapmanız gerekenler şunlardır:
 Bu bölümde, Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması gerektiren bir koşullu erişim ilkesinin nasıl oluşturulacağı gösterilir.
 
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
-1. **Yeni ilke**' yi seçin.
-1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
-   1. **Ekle**' nin altında, **Kullanıcılar ve gruplar** > **Kullanıcılar ve gruplar** ' ı seçin > Önkoşullar aşamasında oluşturulan grubu seçin.
-   1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** > **altında,** **Uygulama Seç**' i seçin.
-   1. **Windows sanal masaüstü** ve **Windows sanal masaüstü istemcisi** **' ni seçin ve ardından** **Tamam**' ı seçin.
-   ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise-selected.png)
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
-1. **Erişim denetimleri** > **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından öğesini **seçin**.
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
+2. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+3. **Yeni ilke**' yi seçin.
+4. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
+5. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
+   - **Ekle**' nin altında, **Kullanıcılar ve gruplar** > **Kullanıcılar ve gruplar** ' ı seçin > Önkoşullar aşamasında oluşturulan grubu seçin.
+   - **Done** (Bitti) öğesini seçin.
+6. **Bulut uygulamaları veya eylemler** > **altında,** **Uygulama Seç**' i seçin.
+   - **Windows sanal masaüstü**' nü seçin, sonra ve ardından **bitti**' yi **seçin**.
+   
+     ![Bulut uygulamaları veya eylemler sayfasının ekran görüntüsü. Windows sanal masaüstü ve Windows sanal masaüstü Istemci uygulamaları kırmızı renkle vurgulanır.](media/cloud-apps-enterprise.png)
+
+7. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
+8. **Erişim denetimleri** > **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri **1** ve birimi **saat**olarak ayarlayın ve ardından **Seç**' i seçin.
+9. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+10. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

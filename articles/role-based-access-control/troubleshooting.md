@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 6baa83037d51e850a9f3535be3cc365e7c35e0a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131446"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735581"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -57,7 +57,7 @@ $ras.Count
 
 - Özel rol oluşturma için adımlara ihtiyacınız varsa, [Azure Portal](custom-roles-portal.md) (Şu anda önizleme aşamasında), [Azure POWERSHELL](tutorial-custom-role-powershell.md)veya [Azure CLI](tutorial-custom-role-cli.md)kullanarak özel rol öğreticilerine bakın.
 - Mevcut bir özel rolü güncelleştireerişemiyorsanız, `Microsoft.Authorization/roleDefinition/write` [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator)gibi izne sahip bir rol atanmış kullanıcıyla oturum açmış olup olmadığınızı kontrol edin.
-- Özel bir rolü silemeyseniz ve "role başvuran mevcut rol atamaları var (kod: Roledefinitionhasas,)" hata iletisini alırsanız, hala özel rolü kullanan rol atamaları vardır. Bu rol atamalarını kaldırın ve özel rolü silmeyi tekrar deneyin.
+- Özel rolü silemiyor ve "Role başvuran mevcut rol atamaları var (kod: RoleDefinitionHasAssignments)" hata iletisiyle karşılaşıyorsanız, özel rolü kullanan rol atamaları mevcuttur. Bu rol atamalarını kaldırın ve özel rolü silmeyi tekrar deneyin.
 - Yeni bir özel rol oluşturmaya çalıştığınızda "Rol tanımı sınırı aşıldı. Başka rol tanımı oluşturulamaz (kod: Roledefinitionlimitexcelıo) "yeni bir özel rol oluşturmaya çalıştığınızda kullanılmayan tüm özel rolleri silin. Azure, bir dizinde en fazla **5000** özel rolü destekler. (Azure Almanya ve Azure Çin 21Vianet için sınır 2000 özel rollerdir.)
 - "İstemcinin '/Subscriptions/{SubscriptionID} ' kapsamındaki ' Microsoft. Authorization/roleDefinitions/Write ' eylemini gerçekleştirme izni var, ancak bağlantılı abonelik bulunamadı" özel bir rolü güncelleştirmeye çalıştığınızda, bir veya daha fazla [atanabilir kapsamın](role-definitions.md#assignablescopes) dizinde silinip silinmediğini denetleyin. Kapsam silinmişse, şu anda bir self servis çözüm olmadığı için destek bileti oluşturun.
 
@@ -76,20 +76,29 @@ $ras.Count
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Hizmet yöneticileri veya ortak yöneticilerle ilgili sorunlar
 
-- Hizmet Yöneticisi veya ortak yöneticilerle ilgili sorun yaşıyorsanız, bkz. [Azure abonelik yöneticileri](../cost-management-billing/manage/add-change-subscription-administrator.md) ve [Klasik abonelik yöneticisi rolleri, Azure ROLLERI ve Azure AD yönetici rolleri](rbac-and-directory-admin-roles.md)ekleme veya değiştirme.
+- Hizmet Yöneticisi veya ortak yöneticilerle ilgili sorun yaşıyorsanız, bkz. [Azure abonelik yöneticileri](../cost-management-billing/manage/add-change-subscription-administrator.md) ve [Klasik abonelik yöneticisi rolleri, Azure ROLLERI ve Azure AD rolleri](rbac-and-directory-admin-roles.md)ekleme veya değiştirme.
 
 ## <a name="access-denied-or-permission-errors"></a>Erişim engellendi veya izin hataları
 
-- "Nesne kimliği olan istemci, kapsam üzerinde eylem gerçekleştirme yetkisine sahip değil (kod: AuthorizationFailed)" hatası alırsanız, bir kaynak oluşturmaya çalıştığınızda, seçili kapsamdaki kaynak üzerinde yazma izni olan bir rol atanmış kullanıcıyla oturum açtığınızdan emin olun. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik rollerin izinlerinin yer aldığı liste için bkz. [Azure kaynakları için yerleşik roller](built-in-roles.md).
+- "Nesne kimliğine sahip istemcinin kapsam üzerinde işlemi gerçekleştirme yetkisi yok (kod: AuthorizationFailed)" izin hatasını kaynak oluşturmaya çalıştığınızda alıyorsanız, seçilen kapsamda kaynak için yazma iznine sahip bir rolün atanmış olduğu kullanıcı hesabıyla oturum açmış olduğunuzdan emin olun. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik her rolün izinlerinin listesi için bkz. [Azure yerleşik rolleri](built-in-roles.md).
 - "Destek talebi oluşturma izniniz yok" hatasını alırsanız bir destek bileti oluşturmayı veya güncelleştirmeyi denediğinizde şu anda oturum açmış olan bir kullanıcı ile oturum açtığınızdan emin olun, örneğin destek `Microsoft.Support/supportTickets/write` [isteği katılımcısı](built-in-roles.md#support-request-contributor)gibi bir rol atanmış olan
 
-## <a name="role-assignments-with-unknown-security-principal"></a>Bilinmeyen güvenlik sorumlusu olan rol atamaları
+## <a name="role-assignments-with-identity-not-found"></a>Kimliği olan rol atamaları bulunamadı
 
-Bir güvenlik sorumlusu (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) için bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, rol atamasının güvenlik sorumlusu türü **bilinmiyor**olarak listelenir. Aşağıdaki ekran görüntüsünde Azure portalında bir örnek gösterilir. Güvenlik sorumlusu adı, **kimlik silindi** olarak listelenir ve **kimlik artık yok**. 
+Azure portal için rol atamaları listesinde, güvenlik sorumlusu 'nın (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) **Bilinmeyen** bir tür ile **kimlik bulunamadığı** için listelendiğini fark edebilirsiniz.
 
 ![Web uygulaması kaynak grubu](./media/troubleshooting/unknown-security-principal.png)
 
-Bu rol atamasını Azure PowerShell kullanarak listelüyor, boş `DisplayName` ve bilinmeyen olarak bir `ObjectType` kümesi görürsünüz. Örneğin, [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) aşağıdakine benzer bir rol ataması döndürür:
+Kimlik iki nedenden dolayı bulunamamıştır:
+
+- Son zamanlarda bir rol ataması oluştururken Kullanıcı davet ettiniz
+- Rol ataması olan bir güvenlik sorumlusunu sildiniz
+
+Bir Kullanıcı bir rol ataması oluştururken yakın zamanda davet ediyorsanız, bu güvenlik sorumlusu bölge genelindeki çoğaltma işleminde hala olabilir. Bu durumda, birkaç dakika bekleyip rol atamaları listesini yenileyin.
+
+Ancak, bu güvenlik sorumlusu son davet edilen bir Kullanıcı değilse, silinen bir güvenlik sorumlusu olabilir. Bir güvenlik sorumlusuna bir rol atarsanız ve daha sonra rol atamasını kaldırmadan bu güvenlik sorumlusunu silerseniz, güvenlik sorumlusu **kimlik bulunamadı** ve **Bilinmeyen** bir tür olarak listelenir.
+
+Bu rol atamasını Azure PowerShell kullanarak listelüyor, boş `DisplayName` ve `ObjectType` **Bilinmeyen**olarak bir küme görebilirsiniz. Örneğin, [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) , aşağıdaki çıktıya benzer bir rol ataması döndürür:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -103,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüünüzde boş `principalName`görüntülenir. Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdakilere benzer bir rol ataması döndürür:
+Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız halinde boş `principalName`bir durum görebilirsiniz. Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdaki çıktıya benzer bir rol ataması döndürür:
 
 ```
 {
@@ -119,9 +128,9 @@ Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüünüzde boş 
 }
 ```
 
-Bu rol atamalarından ayrılmaları bir sorun değildir, ancak diğer rol atamalarına benzer adımları kullanarak bunları kaldırabilirsiniz. Rol atamalarını kaldırma hakkında daha fazla bilgi için bkz. [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)veya [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+Güvenlik sorumlusunun silindiği bu rol atamalarından ayrılmayan bir sorun değildir. İsterseniz, diğer rol atamalarına benzer adımları kullanarak bu rol atamalarını kaldırabilirsiniz. Rol atamalarını kaldırma hakkında daha fazla bilgi için bkz. [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)veya [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
-PowerShell 'de, rol atamalarını nesne KIMLIĞI ve rol tanımı adı kullanarak kaldırmaya çalışırsanız ve parametreleriniz ile eşleşen birden fazla rol ataması varsa, şu hata iletisini alırsınız: "belirtilen bilgiler bir rol atamasıyla eşlenmiyor". Aşağıda, hata iletisinin bir örneği gösterilmektedir:
+PowerShell 'de, rol atamalarını nesne KIMLIĞI ve rol tanımı adı kullanarak kaldırmaya çalışırsanız ve parametreleriniz ile eşleşen birden fazla rol ataması varsa, şu hata iletisini alırsınız: "belirtilen bilgiler bir rol atamasıyla eşlenmiyor". Aşağıdaki çıktıda hata iletisi örneği gösterilmektedir:
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -217,5 +226,5 @@ Bir okuyucu, **platform özellikleri** sekmesine tıklayabilir ve ardından **T�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuk kullanıcılar için sorun giderme](role-assignments-external-users.md#troubleshoot)
-- [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-portal.md)
-- [Azure kaynaklarında RBAC değişiklikleri için etkinlik günlüklerini görüntüleme](change-history-report.md)
+- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme](change-history-report.md)

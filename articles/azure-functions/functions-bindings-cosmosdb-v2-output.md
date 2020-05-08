@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277771"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735020"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Işlevleri için çıkış bağlamasını Azure Cosmos DB 2. x
 
@@ -527,7 +527,7 @@ Aşağıdaki örnek, bir ```OutputBinding<T>``` çıkış parametresi aracılı�
 
 # <a name="c"></a>[, #](#tab/csharp)
 
-[C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [cosmosdb](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) özniteliğini kullanın.
+[C# sınıf kitaplıklarında](functions-dotnet-class-library.md) [cosmosdb](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/dev/test/WebJobs.Extensions.CosmosDB.Tests) özniteliğini kullanın.
 
 Özniteliğin Oluşturucusu, veritabanı adını ve koleksiyon adını alır. Yapılandırabileceğiniz bu ayarlar ve diğer özellikler hakkında daha fazla bilgi için bkz. [çıkış-yapılandırma](#configuration). Bir yöntem imzasında `CosmosDB` bir öznitelik örneği aşağıda verilmiştir:
 

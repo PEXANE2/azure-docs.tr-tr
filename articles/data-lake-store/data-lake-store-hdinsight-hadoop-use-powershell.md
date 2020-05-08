@@ -1,23 +1,17 @@
 ---
-title: 'PowerShell: eklenti depolaması olarak Azure Data Lake Storage 1. Azure HDInsight kümesi | Microsoft Docs'
+title: PowerShell-Data Lake Storage 1.-eklenti depolama ile HDInsight-Azure
 description: Ek depolama alanı olarak Azure Data Lake Storage 1. bir HDInsight kümesini yapılandırmak için Azure PowerShell nasıl kullanacağınızı öğrenin.
-services: data-lake-store,hdinsight
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970136"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692058"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure Data Lake Storage 1. ile bir HDInsight kümesi oluşturmak için Azure PowerShell kullanma (ek depolama olarak)
 
@@ -56,7 +50,7 @@ HDInsight 'ı PowerShell kullanarak Data Lake Storage 1. çalışacak şekilde y
 
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 veya üstü**. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
 * **Windows SDK**. [Buradan](https://dev.windows.com/en-us/downloads) yükleyebilirsiniz. Bunu bir güvenlik sertifikası oluşturmak için kullanırsınız.
 * **Hizmet sorumlusu Azure Active Directory**. Bu öğreticideki adımlarda, Azure AD 'de hizmet sorumlusu oluşturma hakkında yönergeler sağlanmaktadır. Ancak, bir hizmet sorumlusu oluşturabilmeniz için bir Azure AD yöneticisi olmanız gerekir. Bir Azure AD yöneticisiyseniz, bu önkoşulu atlayıp öğreticiye devam edebilirsiniz.

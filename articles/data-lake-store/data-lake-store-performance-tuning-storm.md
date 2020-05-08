@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage 1. fırtınası performansı ayarlama yönergeleri | Microsoft Docs
-description: Azure Data Lake Storage 1. fırtınası performansı ayarlama yönergeleri
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage 1. ile performans ayarlama-fırtınası
+description: Azure Data Lake Storage 1. bir fırtınası kümesi için performans ayarlama yönergeleri hakkında bilgi edinin.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61436486"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691636"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. için performans ayarlama Kılavuzu
 
@@ -25,7 +19,7 @@ Azure fırtınası topolojisinin performansını ayarladığınızda göz önün
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md).
 * Data Lake Storage 1. hesabına erişimi olan **bir Azure HDInsight kümesi** . Bkz. [Data Lake Storage 1. HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
 * **Data Lake Storage 1. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
@@ -42,7 +36,7 @@ G/ç 'nin eşzamanlılık düzeyini Data Lake Storage 1. artırarak performansı
 
 Örneğin, 4 VM ve 4 çalışan işlem, 32 Spout yürütmesi ve 32 Spout görevi ve 256 sürgüler ve 512 cıvatların bulunduğu bir kümede aşağıdakileri göz önünde bulundurun:
 
-Çalışan düğümü olan her gözetmen, tek bir çalışan Java sanal makinesi (JVM) işlemine sahiptir. Bu JVM işlemi 4 Spout iş parçacığını ve 64 rulut iş parçacığını yönetir. Her iş parçacığı içinde görevler sırayla çalıştırılır. Yukarıdaki yapılandırmayla, her Spout iş parçacığının 1 görevi vardır ve her bir cıvacın iş parçacığının 2 görevi vardır.
+Çalışan düğümü olan her gözetmen, tek bir çalışan Java sanal makinesi (JVM) işlemine sahiptir. Bu JVM işlemi 4 Spout iş parçacığını ve 64 rulut iş parçacığını yönetir. Her iş parçacığı içinde görevler sırayla çalıştırılır. Yukarıdaki yapılandırmayla, her Spout iş parçacığının bir görevi vardır ve her bir rulo iş parçacığının iki görevi vardır.
 
 Bu durumda, dahil edilen çeşitli bileşenler ve sahip olduğunuz paralellik düzeyini nasıl etkilediği aşağıda verilmiştir:
 * İş göndermek ve yönetmek için baş düğüm (Nimbus ' de fırtınası olarak adlandırılır) kullanılır. Bu düğümlerin paralellik derecesi üzerinde hiçbir etkisi yoktur.
@@ -59,15 +53,15 @@ Data Lake Storage 1. ile çalışırken, aşağıdakileri yaparsanız en iyi per
 
 ### <a name="example-topology"></a>Örnek topoloji
 
-D13v2 Azure VM ile 8 çalışan düğüm kümeniz olduğunu varsayalım. Bu VM 8 çekirdeğe sahiptir, bu nedenle 8 çalışan düğümleri arasında toplam 64 çekirdeğe sahip olursunuz.
+D13v2 Azure VM 'si olan sekiz çalışan düğüm kümeniz olduğunu varsayalım. Bu sanal makinede sekiz çekirdek bulunur, bu nedenle sekiz çalışan düğümü arasında toplam 64 çekirdek vardır.
 
-Çekirdek başına 8 rulumu iş parçacığı yaptık. Verilen 64 çekirdek, bu, 512 toplam (iş parçacığı). Bu durumda, sanal makine başına tek bir JVM ile başlayacağız ve genellikle eşzamanlılık elde etmek için JVM içinde eşzamanlılık iş parçacığı kullanır. Bu, 8 çalışan görevlerine (Azure VM başına bir tane) ve 512 cıvatörlerine ihtiyaç duyduğumuz anlamına gelir. Bu yapılandırma verildiğinde, fırtınası çalışanları çalışan düğümleri arasında eşit olarak (gözetmen düğümleri olarak da bilinir) dağıtmayı dener ve her çalışan düğümü 1 JVM 'yi verir. Artık süper vizörlerin içinde, fırtınası, her gözetmen (yani, JVM) 8 iş parçacığını sunarak, yürüticileri, her bir gözetmen (yani, JVM) 8 iş parçacığı arasında eşit olarak
+Çekirdek başına sekiz rulumu iş parçacığı yaptık. Verilen 64 çekirdek, bu, 512 toplam (iş parçacığı). Bu durumda, sanal makine başına tek bir JVM ile başlayacağız ve genellikle eşzamanlılık elde etmek için JVM içinde eşzamanlılık iş parçacığı kullanır. Bu, sekiz çalışan görevi (Azure VM başına bir tane) ve 512 cıvatörler için gereken anlamına gelir. Bu yapılandırma verildiğinde, fırtınası çalışanları çalışan düğümleri arasında eşit olarak (gözetmen düğümleri olarak da bilinir) dağıtmayı dener ve her çalışan düğümüne bir JVM verir. Artık süper vizörlerin içinde, fırtınası, her gözetmen (yani JVM) sekiz iş parçacığını sunarak, yürüticileri, her bir gözetmen (yani JVM) arasında eşit olarak dağıtmaya çalışır.
 
 ## <a name="tune-additional-parameters"></a>Ek parametreleri ayarla
 Temel topolojiden sonra, parametrelerden herhangi birini ince ayar isteyip istemediğinizi göz önünde bulundurun:
 * **Çalışan düğümü başına JVM sayısı.** Bellekte barındırdığınızda büyük bir veri yapınız (örneğin, bir arama tablosu) varsa, her JVM ayrı bir kopya gerektirir. Alternatif olarak, daha az JVM varsa veri yapısını birçok iş parçacığı üzerinde kullanabilirsiniz. Cıvatanın g/ç için, JVM 'lerin sayısı bu JVM 'Ler genelinde eklenen iş parçacığı sayısı kadar farklılık yapmaz. Kolaylık olması açısından, çalışan başına bir JVM olması iyi bir fikirdir. Aradığınıza bağlı olarak veya ihtiyacınız olan uygulama işlemlerini, ancak bu numarayı değiştirmeniz gerekebilir.
 * **Spout yürüticileri sayısı.** Yukarıdaki örnek Data Lake Storage 1. yazmak için cıvatları kullandığından, spotların sayısı, doğrudan cıvatiye uygun değildir. Ancak, Spout 'daki işleme veya g/ç miktarına bağlı olarak en iyi performansı elde etmek iyi bir fikirdir. Cıvatları meşgul tutmaya yetecek kadar biriktirmeolduğunuzdan emin olun. Spotların çıkış ücretleri cıvatların verimlilik ile aynı olmalıdır. Gerçek yapılandırma Spout 'a bağlıdır.
-* **Görev sayısı.** Her bir sürgüsü tek bir iş parçacığı olarak çalışır. Her bir ek görev, ek eşzamanlılık sağlamaz. Yalnızca kullanım açısından, kayıt düzeni elde etmek için gereken tek zaman, rulonun yürütme süresinin büyük bir oranını alırsa. Daha fazla tanımlama grubunu daha büyük bir ekleme için, fiteleten bir onay göndermeden önce bu çok sayıda grubu gruplamak iyi bir fikirdir. Bu nedenle, çoğu durumda birden çok görev ek bir avantaj sağlamaz.
+* **Görev sayısı.** Her bir sürgüsü tek bir iş parçacığı olarak çalışır. Her bir ek görev, ek eşzamanlılık sağlamaz. Yalnızca kullanım açısından, kayıt düzeni elde etmek için gereken tek zaman, rulonun yürütme süresinin büyük bir oranını alırsa. Bir onay noktasından bildirim göndermeden önce çok sayıda tanımlama grubunu daha büyük bir ekleme halinde gruplamak iyi bir fikirdir. Bu nedenle, çoğu durumda birden çok görev ek bir avantaj sağlamaz.
 * **Yerel veya karıştırma gruplandırması.** Bu ayar etkinleştirildiğinde, diziler aynı çalışan işlemi içinde cıvatlara gönderilir. Bu işlem işlemler arası iletişimi ve ağ çağrılarını azaltır. Bu çoğu topolojilerde önerilir.
 
 Bu temel senaryo, iyi bir başlangıç noktasıdır. En iyi performansı elde etmek için yukarıdaki parametreleri ince ayar için kendi verilerinize test edin.
@@ -95,7 +89,7 @@ G/ç yoğunluklu topolojilerde, her bir soıt iş parçacığının kendi dosyas
 
 Bu durumda, Spout, cıvam tarafından açıkça onaylanana kadar bir kayıt düzeni üzerinde tutulur. Bir tanımlama grubu, cıvam tarafından okunmadıysa ancak henüz onaylanmadıysa, Spout Data Lake Storage 1. arka uca kalıcı olmayabilir. Bir tanımlama grubu onaylandıktan sonra Spout, cıvatanın sürekliliği olabilir ve sonra kaynak verileri okuma kaynağı olan herhangi bir kaynaktan silebilir.  
 
-Data Lake Storage 1. en iyi performansı elde etmek için, cıvam arabelleği 4 MB 'lık kayıt verisi olmalıdır. Sonra Data Lake Storage 1. arka uca bir 4 MB yazma olarak yazın. Veriler depoya başarıyla yazıldıktan sonra (hflush () çağırarak, bu, verileri Spout 'e geri kabul edebilir. Burada sağlanan örnek bir sürgüsü aşağıda verilmiştir. Ayrıca, hflush () çağrısı yapılmadan ve tanımlama grupları onaylanmadan önce daha fazla sayıda tanımlama kümesini tutmak da kabul edilebilir. Bununla birlikte, bu, Spout 'ın tutması gereken Uçuş ve bu nedenle JVM başına gereken bellek miktarını artıran başlık sayısını artırır.
+Data Lake Storage 1. en iyi performansı elde etmek için, cıvam arabelleği 4 MB 'lık kayıt verisi olmalıdır. Sonra Data Lake Storage 1. arka uca 4 MB yazma olarak yazın. Veriler depoya başarıyla yazıldıktan sonra (hflush () çağırarak, bu, verileri Spout 'e geri kabul edebilir. Burada sağlanan örnek bir sürgüsü aşağıda verilmiştir. Ayrıca, hflush () çağrısı yapılmadan ve tanımlama grupları onaylanmadan önce daha fazla sayıda tanımlama kümesini tutmak da kabul edilebilir. Bununla birlikte, bu, Spout 'ın tutması gereken Uçuş ve bu nedenle JVM başına gereken bellek miktarını artıran başlık sayısını artırır.
 
 > [!NOTE]
 > Uygulamalar, diğer performans dışı nedenlerle, başlıkları daha sık (4 MB 'tan az veri boyutunda) kabul etmek için bir gereksinime sahip olabilir. Ancak bu, depolama arka ucunun g/ç verimini etkileyebilir. Bu zorunluluğunu getirir 'in, cıvatanın g/ç performansına karşı dikkatli bir şekilde karşılaştırın.
@@ -104,14 +98,14 @@ Tanımlama gruplarının gelen hızı yüksek değilse, 4 MB arabelleğin doldur
 * Cıvatların sayısını azaltarak, doldurmanız gereken daha az arabellek vardır.
 * Her x temizlemesi veya her y milisaniyesi için bir hflush () tetiklendiği zaman tabanlı veya sayı tabanlı bir ilkeye sahip olmak ve şimdiye kadar toplanan başlıkların geri kabul edildiği.
 
-Bu durumda üretilen iş hacmi daha düşüktür, ancak yavaş bir olay oranı ile en fazla verimlilik, yine de en büyük amaç değildir. Bu azaltmaları, kayıt düzeni için gereken toplam süreyi, mağazaya akacak şekilde azaltmanıza yardımcı olur. Bu durum, düşük bir olay oranıyla bile gerçek zamanlı bir işlem hattı ister misiniz? Ayrıca, gelen kayıt tarifeniz düşükse, topoloji. Message. timeout_secs parametresini ayarlamanız gerektiğini unutmayın. bu nedenle, arabelleğe alınmış veya işlenen sırada tanımlama gruplarının zaman aşımına uğrar.
+Bu durumda üretilen iş hacmi daha düşüktür, ancak düşük bir olay oranıyla, en büyük verimlilik yine de en büyük amaç değildir. Bu azaltmaları, kayıt düzeni için gereken toplam süreyi, mağazaya akacak şekilde azaltmanıza yardımcı olur. Bu durum, düşük bir olay oranıyla bile gerçek zamanlı bir işlem hattı ister misiniz? Ayrıca, gelen kayıt tarifeniz düşükse, topoloji. Message. timeout_secs parametresini ayarlamanız gerektiğini unutmayın. bu nedenle, arabelleğe alınmış veya işlenen sırada tanımlama gruplarının zaman aşımına uğrar.
 
 ## <a name="monitor-your-topology-in-storm"></a>Topolojinizi fırtınası içinde izleyin  
 Topolojiniz çalışırken, bunu fırtınası Kullanıcı arabiriminde izleyebilirsiniz. Bakılacak ana parametreler şunlardır:
 
 * **Toplam işlem yürütme gecikmesi.** Bu, bir tanımlama grubunun Spout tarafından, cıvata işlenen ve onaylanan ortalama süredir.
 
-* **Toplam rulo işlem gecikmesi.** Bu, bir onay alana kadar, cıvata kayıt düzeni tarafından harcanan ortalama süredir.
+* **Toplam rulo işlem gecikmesi.** Bu, bir onay alana gelinceye kadar, bu kayıt düzeni tarafından harcanan ortalama süredir.
 
 * **Toplam cıvata yürütme gecikmesi.** Bu, Execute yöntemindeki cıvatın harcadığı ortalama süredir.
 

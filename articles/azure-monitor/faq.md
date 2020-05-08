@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637779"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732045"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -226,7 +226,7 @@ Kurumsal plan her bir gün için her bir Web sunucusu düğümünün telemetri g
 
 [Fiyatlandırma planını okuyun](https://azure.microsoft.com/pricing/details/application-insights/).
 
-### <a name="how-much-does-it-cost"></a>Bunun maliyeti nedir?
+### <a name="how-much-does-it-cost"></a>Fiyatı nedir?
 
 * Bir Application Insights kaynağındaki **kullanım ve tahmini maliyetler sayfasını** açın. Son kullanılan kullanım grafiği. İsterseniz bir veri hacmi üst sınırı belirleyebilirsiniz.
 * Tüm kaynaklarda [faturanızı görmek Için Azure faturalama dikey penceresini](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) açın.
@@ -254,6 +254,10 @@ Uygulama türüne uygun SDK için [sürüm notlarına](app/release-notes.md) bak
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?
 Çözüm Gezgini ' de sağ tıklayın ve `ApplicationInsights.config` **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
+
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Azure Resource Manager dağıtımlarım `providers('Microsoft.Insights', 'components').apiVersions[0]` içinde kullanabilir miyim?
+
+API sürümünü doldurmak için bu yöntemi kullanmanızı önermiyoruz. En yeni sürüm, son değişiklikleri içerebilen önizleme sürümlerini temsil edebilir. Daha yeni önizleme olmayan sürümlerden bile, API sürümleri mevcut şablonlarla her zaman geriye doğru uyumlu değildir veya bazı durumlarda API sürümü tüm abonelikler için kullanılamayabilir.
 
 ### <a name="what-is-status-monitor"></a>Durum İzleyicisi nedir?
 
@@ -412,7 +416,7 @@ Bu, Application Insights kaynağınızın barındırıldığı yere bağlı değ
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Application Insights portalına telemetri gönderebilir miyim?
 
-SDK 'larımızı kullanmanızı ve [SDK API](app/api-custom-events-metrics.md)'sini kullanmanızı öneririz. Çeşitli [platformlar](app/platforms.md)için SDK 'nın çeşitleri vardır. Bu SDK 'lar, arabelleğe alma, sıkıştırma, azaltma, yeniden deneme gibi işlemleri gerçekleştirir. Ancak, alma [şeması](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) ve [uç nokta Protokolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) geneldir.
+SDK 'larımızı kullanmanızı ve [SDK API](app/api-custom-events-metrics.md)'sini kullanmanızı öneririz. Çeşitli [platformlar](app/platforms.md)için SDK 'nın çeşitleri vardır. Bu SDK 'lar, arabelleğe alma, sıkıştırma, azaltma, yeniden deneme gibi işlemleri gerçekleştirir. Ancak, alma [şeması](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema) ve [uç nokta Protokolü](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) geneldir.
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Bir intranet Web sunucusunu izleyebilir miyim?
 

@@ -1,23 +1,17 @@
 ---
-title: Power BI kullanarak Azure Data Lake Storage 1. verileri analiz etme | Microsoft Docs
-description: Azure Data Lake Storage 1. depolanan verileri çözümlemek için Power BI kullanın
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage 1. verileri analiz etme Power BI
+description: Azure Data Lake Storage 1. depolanan verileri çözümlemek için Power BI kullanın.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65603201"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691667"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage 1. Power BI kullanarak verileri çözümleme
 Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görselleştirmek için Power BI Desktop kullanmayı öğreneceksiniz.
@@ -25,7 +19,7 @@ Bu makalede, Azure Data Lake Storage 1. depolanan verileri analiz etmek ve görs
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Data Lake Storage 1. hesabı**. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)yönergelerini izleyin. Bu makalede, **myadlsg1**adlı bir Data Lake Storage 1. hesabı oluşturmuş olduğunuz ve buna örnek bir veri dosyası (**Drivers. txt**) yüklediğiniz varsayılır. Bu örnek dosya [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)indirilebilir.
 * **Power BI Desktop**. Bunu [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=45331)' nden indirebilirsiniz. 
 

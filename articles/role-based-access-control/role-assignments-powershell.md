@@ -1,6 +1,6 @@
 ---
-title: RBAC ve Azure PowerShell rol atamaları ekleme veya kaldırma
-description: Azure rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
+title: Azure PowerShell-Azure RBAC kullanarak Azure rol atamaları ekleme veya kaldırma
+description: Azure PowerShell ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına erişim izni verme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283218"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735666"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC ve Azure PowerShell kullanarak rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Bu makalede, Azure PowerShell kullanarak rollerin nasıl atanacağı açıklanır.
 
@@ -67,7 +67,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 
 ## <a name="add-a-role-assignment"></a>Rol ataması ekleyin
 
-RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
+Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
 
 ### <a name="user-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki Kullanıcı
 
@@ -112,7 +112,7 @@ Rol adı yerine benzersiz rol KIMLIĞI kullanarak bir rol ataması eklemek için
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü ilaç *\@example.com* kullanıcısına *ilaç-Sales* kaynak grubu kapsamında atar. Benzersiz rol KIMLIĞINI almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) ' ı kullanabilir veya [Azure kaynakları için yerleşik roller](built-in-roles.md)' e bakabilirsiniz.
+Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü ilaç *\@example.com* kullanıcısına *ilaç-Sales* kaynak grubu kapsamında atar. Benzersiz rol KIMLIĞINI almak için [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) ' ı kullanabilir veya [Azure yerleşik rolleri](built-in-roles.md)' ne bakabilirsiniz.
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -205,7 +205,7 @@ CanDelegate        : False
 
 ## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
 
-RBAC 'de, erişimi kaldırmak için [Remove-Azroleatama](/powershell/module/az.resources/remove-azroleassignment)kullanarak bir rol atamasını kaldırırsınız.
+Azure RBAC 'de, erişimi kaldırmak için [Remove-Azroleatama](/powershell/module/az.resources/remove-azroleassignment)kullanarak bir rol atamasını kaldırırsınız.
 
 Aşağıdaki örnek, *ilaç-Sales* kaynak grubundaki *\@Alain example.com* kullanıcısının *sanal makine katılımcısı* rolü atamasını kaldırır:
 
@@ -225,11 +225,11 @@ Aşağıdaki örnek <role_name> rolünü yönetim grubu kapsamındaki <object_id
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-"Belirtilen bilgiler bir rol atamasıyla eşlenmiyor" hata iletisini alırsanız, `-Scope` veya `-ResourceGroupName` parametrelerini de belirttiğinizden emin olun. Daha fazla bilgi için bkz. [Azure kaynakları IÇIN RBAC sorunlarını giderme](troubleshooting.md#role-assignments-with-unknown-security-principal).
+"Belirtilen bilgiler bir rol atamasıyla eşlenmiyor" hata iletisini alırsanız, `-Scope` veya `-ResourceGroupName` parametrelerini de belirttiğinizden emin olun. Daha fazla bilgi için bkz. [Azure RBAC sorunlarını giderme](troubleshooting.md#role-assignments-with-identity-not-found).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve Azure PowerShell kullanarak rol atamalarını listeleme](role-assignments-list-powershell.md)
-- [Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme](tutorial-role-assignments-group-powershell.md)
-- [Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturma](tutorial-custom-role-powershell.md)
+- [Azure PowerShell kullanarak Azure rol atamalarını listeleme](role-assignments-list-powershell.md)
+- [Öğretici: Azure PowerShell kullanarak Azure kaynaklarına grup erişimi verme](tutorial-role-assignments-group-powershell.md)
+- [Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma](tutorial-custom-role-powershell.md)
 - [Azure PowerShell ile kaynakları yönetme](../azure-resource-manager/management/manage-resources-powershell.md)

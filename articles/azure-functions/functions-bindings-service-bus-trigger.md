@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273560"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690701"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Service Bus tetikleyicisi
 
-Service Bus kuyruğu veya konusunun iletilere yanıt vermek için Service Bus tetikleyicisini kullanın.
+Service Bus kuyruğu veya konusunun iletilere yanıt vermek için Service Bus tetikleyicisini kullanın. Uzantı sürümü 3.1.0 başlayarak, oturum etkin bir kuyruk veya konu üzerinde tetikleyebilirsiniz.
 
 Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](functions-bindings-service-bus-output.md).
 
@@ -222,7 +222,7 @@ Service Bus konuya bir ileti eklendiğinde Java işlevleri de tetiklenebilir. A�
   }
   ```
 
-  Aşağıdaki örnekte gösterildiği gibi `Connection` , kullanmak üzere Service Bus bağlantı dizesi içeren bir uygulama ayarının adını belirtmek için özelliğini ayarlayabilirsiniz:
+  `Connection` Özellik tanımlanmadığı için işlevler, Service Bus bağlantı dizesinin varsayılan adı olan adlı `AzureWebJobsServiceBus`bir uygulama ayarı arar. Ayrıca, aşağıdaki örnekte gösterildiği `Connection` gibi, kullanılacak Service Bus bağlantı dizesini içeren bir uygulama ayarının adını belirtmek için özelliğini de ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -354,21 +354,24 @@ Işlevler çalışma zamanı [PeekLock modunda](../service-bus-messaging/service
 
 ## <a name="message-metadata"></a>İleti meta verileri
 
-Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler, [Brokeredmessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sınıfının üyeleridir.
+Service Bus tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu özellikler [ileti](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) sınıfının üyeleridir.
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|Teslimatlar sayısı.|
-|`DeadLetterSource`|`string`|Atılacak mektup kaynağı.|
-|`ExpiresAtUtc`|`DateTime`|UTC olarak sona erme saati.|
-|`EnqueuedTimeUtc`|`DateTime`|UTC olarak sıraya alınan zaman.|
-|`MessageId`|`string`|Service Bus, etkinse yinelenen iletileri belirlemek için kullanabileceği kullanıcı tanımlı bir değer.|
 |`ContentType`|`string`|Uygulamaya özgü mantık için gönderen ve alıcı tarafından kullanılan bir içerik türü tanımlayıcısı.|
-|`ReplyTo`|`string`|Sıra adresini yanıtla.|
-|`SequenceNumber`|`Int64`|Service Bus tarafından bir iletiye atanan benzersiz sayı.|
-|`To`|`string`|Gönder adresi.|
-|`Label`|`string`|Uygulamaya özgü etiket.|
 |`CorrelationId`|`string`|Bağıntı KIMLIĞI.|
+|`DeadLetterSource`|`string`|Atılacak mektup kaynağı.|
+|`DeliveryCount`|`Int32`|Teslimatlar sayısı.|
+|`EnqueuedTimeUtc`|`DateTime`|UTC olarak sıraya alınan zaman.|
+|`ExpiresAtUtc`|`DateTime`|UTC olarak sona erme saati.|
+|`Label`|`string`|Uygulamaya özgü etiket.|
+|`MessageId`|`string`|Service Bus, etkinse yinelenen iletileri belirlemek için kullanabileceği kullanıcı tanımlı bir değer.|
+|`MessageReceiver`|`MessageReceiver`|İleti alıcısını Service Bus. İletiyi bırakmak, gerçekleştirmek veya yok etmek için kullanılabilir.|
+|`MessageSession`|`MessageSession`|Özellikle oturum etkin kuyruklar ve konular için bir ileti alıcısı.|
+|`ReplyTo`|`string`|Sıra adresini yanıtla.|
+|`SequenceNumber`|`long`|Service Bus tarafından bir iletiye atanan benzersiz sayı.|
+|`To`|`string`|Gönder adresi.|
+|`UserProperties`|`IDictionary<string, object>`|Gönderen tarafından ayarlanan özellikler.|
 
 Bu makalenin önceki kısımlarında bu özellikleri kullanan [kod örneklerine](#example) bakın.
 

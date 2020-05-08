@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell ile Azure kaynakları için özel roller oluşturma veya güncelleştirme
-description: Azure PowerShell kullanarak Azure kaynakları için rol tabanlı erişim denetimi (RBAC) ile özel rolleri listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
+title: Azure PowerShell-Azure RBAC kullanarak Azure özel rolleri oluşturma veya güncelleştirme
+description: Azure PowerShell ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c72e04ff7a08fecc2ef352a5879898c4c6d41c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062272"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734816"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynakları için özel roller oluşturma veya güncelleştirme
+# <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Azure PowerShell kullanarak Azure özel rolleri oluşturma veya güncelleştirme
 
 > [!IMPORTANT]
 > ' Ye `AssignableScopes` bir yönetim grubu eklemek Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure PowerShell kullanarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
+[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi de oluşturabilirsiniz. Bu makalede, Azure PowerShell kullanarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
 
-Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [öğretici: Azure kaynakları için Azure PowerShell kullanarak özel rol oluşturma](tutorial-custom-role-powershell.md).
+Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [öğretici: Azure PowerShell kullanarak Azure özel rolü oluşturma](tutorial-custom-role-powershell.md).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -401,6 +401,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturma](tutorial-custom-role-powershell.md)
-- [Azure kaynakları için özel roller](custom-roles.md)
+- [Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma](tutorial-custom-role-powershell.md)
+- [Azure özel rolleri](custom-roles.md)
 - [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

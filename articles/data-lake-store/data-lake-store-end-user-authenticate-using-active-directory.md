@@ -1,29 +1,25 @@
 ---
-title: 'Son Kullanıcı kimlik doğrulaması: Azure Active Directory ile Azure Data Lake Storage 1. | Microsoft Docs'
+title: Son Kullanıcı kimlik doğrulaması-Azure AD ile Data Lake Storage 1.
 description: Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.custom: has-adal-ref
+ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66234067"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688249"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
 > * [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [Hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-using-active-directory.md)
-> 
-> 
+>
+>
 
 Azure Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory kullanır. Data Lake Storage 1. veya Azure Data Lake Analytics ile çalışacak bir uygulama yazmadan önce, Azure Active Directory (Azure AD) ile uygulamanızın kimliğini nasıl doğrulayacağınıza karar vermelisiniz. Kullanılabilen iki ana seçenek şunlardır:
 
@@ -38,11 +34,11 @@ Bu makalede, **Son Kullanıcı kimlik doğrulaması için bir Azure AD yerel uyg
 * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * Abonelik KIMLIĞINIZ. Azure portal bunu alabilirsiniz. Örneğin, Data Lake Storage 1. hesabı dikey penceresinde kullanılabilir.
-  
+
     ![Abonelik KIMLIĞINI al](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Azure AD etki alanı adınız. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. Aşağıdaki ekran görüntüsünde, etki alanı adı **contoso.onmicrosoft.com**ve köşeli AYRAÇLAR içindeki GUID kiracı kimliğidir. 
-  
+* Azure AD etki alanı adınız. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. Aşağıdaki ekran görüntüsünde, etki alanı adı **contoso.onmicrosoft.com**ve köşeli AYRAÇLAR içindeki GUID kiracı kimliğidir.
+
     ![AAD etki alanını al](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 * Azure kiracı KIMLIĞINIZ. Kiracı KIMLIĞINI alma hakkında yönergeler için bkz. [KIRACı kimliğini alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
@@ -53,12 +49,12 @@ Bu kimlik doğrulama mekanizması, son kullanıcının Azure AD aracılığıyla
 Son Kullanıcı oturum açma işlemi, uygulamanıza erişim belirteci ve yenileme belirteci verilme sonucudur. Erişim belirteci Data Lake Storage 1. veya Data Lake Analytics yapılan her isteğe iliştirilir ve varsayılan olarak bir saat için geçerlidir. Yenileme belirteci yeni bir erişim belirteci almak için kullanılabilir ve varsayılan olarak en fazla iki hafta geçerlidir. Son Kullanıcı oturum açma için iki farklı yaklaşım kullanabilirsiniz.
 
 ### <a name="using-the-oauth-20-pop-up"></a>OAuth 2,0 açılır penceresini kullanma
-Uygulamanız, son kullanıcının kimlik bilgilerini girebileceği bir OAuth 2,0 yetkilendirme açılır penceresini tetikleyebilirler. Bu açılır pencere, gerekirse Azure AD Iki faktörlü kimlik doğrulaması (2FA) işlemi ile de çalışır. 
+Uygulamanız, son kullanıcının kimlik bilgilerini girebileceği bir OAuth 2,0 yetkilendirme açılır penceresini tetikleyebilirler. Bu açılır pencere, gerekirse Azure AD Iki faktörlü kimlik doğrulaması (2FA) işlemi ile de çalışır.
 
 > [!NOTE]
 > Bu yöntem, Python veya Java için Azure AD kimlik doğrulama kitaplığı 'nda (ADAL) henüz desteklenmiyor.
-> 
-> 
+>
+>
 
 ### <a name="directly-passing-in-user-credentials"></a>Kullanıcı kimlik bilgilerini doğrudan geçirme
 Uygulamanız Azure AD 'ye doğrudan Kullanıcı kimlik bilgilerini sağlayabilir. Bu yöntem yalnızca kuruluş KIMLIĞI Kullanıcı hesaplarıyla birlikte kullanılabilir; veya @outlook.com @live.com' de sonlanan hesaplar dahil olmak üzere kIşIsel/"canlı kimlik" Kullanıcı hesaplarıyla uyumlu değildir. Ayrıca, bu yöntem, Azure AD Iki öğeli kimlik doğrulaması (2FA) gerektiren kullanıcı hesaplarıyla uyumlu değildir.
@@ -106,7 +102,7 @@ Yeniden yönlendirme URI 'sini almak için aşağıdaki adımları uygulayın.
 3. **API erişimi ekle** dikey PENCERESINDE, **API Seç**' e tıklayın, **Azure Data Lake**' a ve ardından **Seç**' e tıklayın.
 
     ![istemci kimliği](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
- 
+
 4.  **API erişimi ekle** dikey penceresinde **izinleri seç**' e tıklayın, **Data Lake Store tam erişim**vermek Için onay kutusunu işaretleyin ve ardından **Seç**' e tıklayın.
 
     ![istemci kimliği](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
@@ -114,7 +110,7 @@ Yeniden yönlendirme URI 'sini almak için aşağıdaki adımları uygulayın.
     **Bitti**’ye tıklayın.
 
 5. **Windows Azure hizmet yönetim API'si** izin vermek için son iki adımı yineleyin.
-   
+
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, bir Azure AD yerel uygulaması oluşturdunuz ve .NET SDK, Java SDK, REST API vb. kullanarak yazdığınız istemci uygulamalarınızda ihtiyacınız olan bilgileri topladı. Artık Data Lake Storage 1. kimlik doğrulaması yapmak için Azure AD Web uygulamasının nasıl kullanılacağına ve ardından mağaza üzerinde başka işlemler gerçekleştirmeye yönelik aşağıdaki makalelere geçebilirsiniz.
 
@@ -122,4 +118,3 @@ Bu makalede, bir Azure AD yerel uygulaması oluşturdunuz ve .NET SDK, Java SDK,
 * [.NET SDK kullanarak Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-net-sdk.md)
 * [Python kullanarak Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-python.md)
 * [REST API kullanarak Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-rest-api.md)
-

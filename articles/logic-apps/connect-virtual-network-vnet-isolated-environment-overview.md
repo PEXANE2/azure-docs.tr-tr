@@ -3,15 +3,15 @@ title: Azure sanal ağlarına erişme
 description: Tümleştirme hizmeti ortamlarının (sesleri) yardım Logic Apps 'in Azure sanal ağlarına (VNet 'ler) erişme konusunda genel bakış
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 05/01/2020
+ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127256"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734934"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -111,16 +111,18 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 
 ## <a name="ise-endpoint-access"></a>ISE uç noktası erişimi
 
-ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Seçiminiz, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp alamayacağını belirler.
-
-Bu uç noktalar Ayrıca Logic Apps çalıştırma geçmişinizdeki girişlere ve çıkışlara erişme yöntemini de etkiler.
-
-* **İç**: işinizdeki Logic Apps çağrılarına izin veren özel uç noktalar, çalışma geçmişinde *yalnızca sanal ağınızın* içinden Logic Apps girişlerini ve çıktılarını görüntüleyebilir ve bunlara erişebilirsiniz
-
-* **Dış**: işinizdeki Logic Apps çağrılarına izin veren genel uç noktalar, *sanal ağınızın dışından*çalıştırma geçmişinde Logic Apps girişlerini ve çıktılarını görüntüleyebilir ve bunlara erişebilirsiniz. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Seçiminiz, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp alamayacağını belirler. Bu uç noktalar Ayrıca, Logic Apps 'in çalışma geçmişinden gelen girişlere ve çıkışlara erişmenin yolunu da etkiler.
 
 > [!IMPORTANT]
-> Erişim uç noktası seçeneği yalnızca ıSE oluşturma sırasında kullanılabilir ve daha sonra değiştirilemez.
+> Erişim uç noktasını yalnızca ıSE oluşturma sırasında seçebilir ve bu seçeneği daha sonra değiştiremezsiniz.
+
+* **İç**: özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın*içinden görüntüleyebilir ve bunlara erişebilirsiniz. Özel uç noktalar ve çalıştırma geçmişine erişmek istediğiniz bilgisayar arasında ağ bağlantısına sahip olduğunuzdan emin olun. Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya ıSE 'nin sanal ağına bağlı bir sanal ağ içinde (örneğin, eşleme veya bir sanal özel ağ) bulunabilir.
+
+* **Dış**: genel uç noktaları, *sanal ağınızın dışından*Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları görüntüleyebileceğiniz ve erişebileceğiniz, ortamınızda Logic Apps çağrılarına izin verir. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+
+ISE 'nizin iç veya dış erişim uç noktası kullanıp kullanmadığını belirlemek için, ıSE menüsünde, **Ayarlar**' ın altında **Özellikler**' i seçin ve **erişim uç noktası** özelliğini bulun:
+
+![ISE erişim uç noktası bul](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
 <a name="create-integration-account-environment"></a>
 

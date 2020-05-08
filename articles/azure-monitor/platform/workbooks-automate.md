@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658413"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731755"
 ---
 # <a name="programmatically-manage-workbooks"></a>Program aracılığıyla çalışma kitaplarını yönetme
 
-Kaynak sahipleri, Kaynak Yöneticisi şablonları aracılığıyla çalışma kitaplarını oluşturma ve yönetme seçeneğine sahiptir. 
+Kaynak sahipleri, Kaynak Yöneticisi şablonları aracılığıyla çalışma kitaplarını oluşturma ve yönetme seçeneğine sahiptir.
 
 Bu, aşağıdaki senaryolarda yararlı olabilir:
 * Kaynak dağıtımlarıyla birlikte kuruluş veya etki alanına özgü analiz raporları dağıtma. Örneğin, yeni uygulamalarınız veya sanal makineleriniz için kuruluş 'e özgü performans ve hata çalışma kitapları dağıtabilirsiniz.
@@ -26,7 +26,98 @@ Bu, aşağıdaki senaryolarda yararlı olabilir:
 
 Çalışma kitabı istenen alt/kaynak grubu içinde ve Kaynak Yöneticisi şablonlarında belirtilen içerikle oluşturulur.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Çalışma kitaplarını dağıtmak için Azure Resource Manager şablonu
+Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır:
+* [Çalışma kitabı şablonları](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [Çalışma kitabı örnekleri](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>Çalışma kitabı şablonu dağıtmak için Azure Resource Manager şablonu
+
+1. Programlı olarak dağıtmak istediğiniz bir çalışma kitabını açın.
+2. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
+3. Araç çubuğundaki _Advanced Editor_ _</>_ düğmesini kullanarak Gelişmiş Düzenleyici açın.
+4. _Galeri şablonu_ sekmesinde olduğunuzdan emin olun.
+
+    ![Galeri şablonu sekmesi](./media/workbooks-automate/gallery-template.png)
+1. Galeri şablonundaki JSON öğesini panoya kopyalayın.
+2. Aşağıda, Azure Izleyici çalışma kitabı galerisine bir çalışma kitabı şablonu dağıtan örnek bir Azure Resource Manager şablonu verilmiştir. Yerinde kopyaladığınız JSON 'yi yapıştırın `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`. Bir çalışma kitabı şablonu oluşturan bir başvuru Azure Resource Manager şablonu [burada](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)bulunabilir.
+
+    ```json
+          {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. `galleries` Nesnesinde `name` ve `category` anahtarlarını değerlerinizle birlikte girin. Sonraki bölümde [Parametreler](#parameters) hakkında daha fazla bilgi edinin.
+2. Bu Azure Resource Manager şablonunu [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), [komut satırı arabirimi](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)vb. kullanarak dağıtın.
+3. Azure portal açın ve Azure Resource Manager şablonunda seçilen çalışma kitabı galerisine gidin. Örnek şablonda Azure Izleyici çalışma kitabı galerisine gidin:
+    1. Azure portal açın ve Azure Izleyicisi ' ne gidin
+    2. İçindekiler `Workbooks` tablosundan aç
+    3. Şablonunuz kategorisi `Deployed Templates` altındaki galeride bulun (mor öğelerden biri olacaktır).
+
+### <a name="parameters"></a>Parametreler
+
+|Parametreler                |Açıklama                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | Azure Resource Manager çalışma kitabı şablon kaynağının adı.                                  |
+|`type`                    | Her zaman Microsoft. Insights/workbooktemplates                                                            |
+| `location`               | Çalışma kitabının oluşturulacağı Azure konumu.                                               |
+| `apiVersion`             | 2019-10-17 Önizleme                                                                                     |
+| `type`                   | Her zaman Microsoft. Insights/workbooktemplates                                                            |
+| `galleries`              | Bu çalışma kitabı şablonunu içinde göstermek için galeriler kümesi.                                                |
+| `gallery.name`           | Galerideki çalışma kitabı şablonunun kolay adı.                                             |
+| `gallery.category`       | Galerideki şablonun yerleştirileceği grup.                                                     |
+| `gallery.order`          | Galerideki bir kategori içinde şablonu gösterme sırasına karar veren bir sayı. Daha düşük sıralama önceliği daha yüksektir. |
+| `gallery.resourceType`   | Galeriye karşılık gelen kaynak türü. Bu genellikle kaynağa karşılık gelen kaynak türü dizedir (örneğin, Microsoft. operationalınsights/çalışma alanları). |
+|`gallery.type`            | Çalışma kitabı türü olarak bahsedildiğinde, bu, galeriyi bir kaynak türü içinde ayıran benzersiz bir anahtardır. Örneğin, Application Insights ve `workbook` `tsg` farklı çalışma kitabı galerilerine karşılık gelen türler vardır. |
+
+### <a name="galleries"></a>Galeriler
+
+| Galeri                                        | Kaynak türü                                      | Çalışma kitabı türü |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Azure Izleyici 'de çalışma kitapları                     | `Azure Monitor`                                    | `workbook`    |
+| Azure Izleyici 'de VM öngörüleri                   | `Azure Monitor`                                    | `vm-insights` |
+| Log Analytics çalışma alanındaki çalışma kitapları           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Application Insights çalışma kitapları              | `microsoft.insights/component`                     | `workbook`    |
+| Application Insights 'de sorun giderme kılavuzu | `microsoft.insights/component`                     | `tsg`         |
+| Application Insights kullanımı                  | `microsoft.insights/component`                     | `usage`       |
+| Kubernetes hizmetindeki çalışma kitapları                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| Kaynak gruplarındaki çalışma kitapları                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Azure Active Directory çalışma kitapları            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| Sanal makinelerde VM öngörüleri                | `microsoft.compute/virtualmachines`                | `insights`    |
+| Sanal makine ölçek kümelerinde VM öngörüleri                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Çalışma kitabı örneği dağıtmak için Azure Resource Manager şablonu
+
 1. Programlı olarak dağıtmak istediğiniz bir çalışma kitabını açın.
 2. _Düzenleme_ araç çubuğu öğesine tıklayarak çalışma kitabını düzenleme moduna geçirin.
 3. Araç çubuğundaki _Advanced Editor_ _</>_ düğmesini kullanarak Gelişmiş Düzenleyici açın.
@@ -124,4 +215,3 @@ Teknik bir nedenle, bu mekanizma Application Insights çalışma _kitapları_ ga
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yeni [Azure Izleyicisini depolama deneyimi için](../insights/storage-insights-overview.md)desteklemek üzere çalışma kitaplarının nasıl kullanıldığını keşfedebilirsiniz.
-

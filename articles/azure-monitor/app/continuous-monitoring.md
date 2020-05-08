@@ -2,13 +2,13 @@
 title: Azure Pipelines ve Azure Application Insights ile DevOps yayın işlem hattınızı sürekli izleme | Microsoft Docs
 description: Application Insights ile sürekli izlemeyi hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655404"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652761"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Yayın ardışık düzenine sürekli izleme ekleme
 
@@ -51,17 +51,19 @@ Kullanıma hazır, **sürekli izleme şablonuyla Azure App Service dağıtımı*
 
 Uyarı kuralı ayarlarını değiştirmek için:
 
-1. Yayın ardışık düzeni sayfasının sol bölmesinde **Application Insights uyarılarını Yapılandır**' ı seçin.
+Yayın ardışık düzeni sayfasının sol bölmesinde **Application Insights uyarılarını Yapılandır**' ı seçin.
 
-1. **Azure Izleyici uyarıları** bölmesinde **Uyarı kuralları**' nın yanındaki üç nokta **...** seçeneğini belirleyin.
-   
-1. **Uyarı kuralları** iletişim kutusunda, **kullanılabilirlik**gibi bir uyarı kuralının yanındaki açılan simgeyi seçin. 
-   
-1. **Eşiği** ve diğer ayarları gereksinimlerinize uyacak şekilde değiştirin.
-   
-   ![Uyarıyı Değiştir](media/continuous-monitoring/003.png)
-   
-1. **Tamam**' ı seçin ve ardından Azure DevOps penceresinde sağ üst üste **Kaydet** ' i seçin. Açıklayıcı bir açıklama girin ve ardından **Tamam**' ı seçin.
+Dört varsayılan uyarı kuralları bir satır Içi betik aracılığıyla oluşturulur:
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+Betiği değiştirebilir ve ek uyarı kuralları ekleyebilir, uyarı koşullarını değiştirebilir veya dağıtım amaçlarınız için anlamlı olmayan uyarı kurallarını kaldırabilirsiniz.
 
 ## <a name="add-deployment-conditions"></a>Dağıtım koşulları ekleme
 

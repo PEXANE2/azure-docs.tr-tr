@@ -9,28 +9,28 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16b92108bcb4e5185a1990b0ed8f1278bfe44921
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136694"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652826"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini yönetme
 
 Otomasyon kimlik bilgileri varlığı, Kullanıcı adı ve parola gibi güvenlik kimlik bilgilerini içeren bir nesne barındırır. Runbook 'lar ve DSC yapılandırması, kimlik doğrulaması için bir [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) nesnesini kabul eden cmdlet 'leri kullanır. Alternatif olarak, kimlik doğrulaması gerektiren bir uygulama veya hizmete sağlamak üzere `PSCredential` nesnenin Kullanıcı adını ve parolasını ayıklayabilirler. 
 
-> [!NOTE]
-> Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Bu anahtar Key Vault depolanır. Güvenli bir varlık depolamadan önce, anahtar Key Vault yüklenir ve ardından varlığı şifrelemek için kullanılır.
+>[!NOTE]
+>Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır. 
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="azure-powershell-az-cmdlets-used-for-credential-assets"></a>Azure PowerShell az cmdlet 'ler kimlik bilgisi varlıkları için kullanıldı
+## <a name="powershell-cmdlets-used-to-access-credentials"></a>Kimlik bilgilerine erişmek için kullanılan PowerShell cmdlet 'leri
 
-Azure PowerShell az modülünün bir parçası olarak, aşağıdaki tablodaki cmdlet 'ler Windows PowerShell ile otomasyon kimlik bilgisi varlıkları oluşturmak ve yönetmek için kullanılır. Bunlar, Automation runbook 'larda ve DSC yapılandırmalarında kullanılabilen [az. Automation modülüne](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)gönderilir. Bkz. [Azure Otomasyonu 'Nda az Module support](https://docs.microsoft.com/azure/automation/az-modules).
+Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon kimlik bilgilerini oluşturur ve yönetir. Bunlar [az modüllerin](modules.md#az-modules)bir parçası olarak sevk ederler.
 
 | Cmdlet | Açıklama |
 |:--- |:--- |
@@ -39,15 +39,15 @@ Azure PowerShell az modülünün bir parçası olarak, aşağıdaki tablodaki cm
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Otomasyon kimlik bilgisini kaldırır. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Mevcut bir Otomasyon kimlik bilgisinin özelliklerini ayarlar. |
 
-## <a name="activities-used-to-access-credentials"></a>Kimlik bilgilerine erişmek için kullanılan etkinlikler
+## <a name="other-cmdlets-used-to-access-credentials"></a>Kimlik bilgilerine erişmek için kullanılan diğer cmdlet 'ler
 
-Aşağıdaki tablodaki etkinlikler, grafik runbook 'larında ve DSC yapılandırmalarında kimlik bilgilerine erişmek için kullanılır. Etkinliklerin kullanımıyla ilgili örnekler için bkz. [Azure Otomasyonu 'Nda grafik yazma](../automation-graphical-authoring-intro.md#activities).
+Aşağıdaki tablodaki cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmalarında kimlik bilgilerine erişmek için kullanılır. 
 
-| Etkinlik | Açıklama |
+| Cmdlet | Açıklama |
 |:--- |:--- |
-| `Get-AutomationPSCredential` |Runbook veya `PSCredential` DSC yapılandırmasında kullanılacak bir nesne alır. Çoğu kez, ikincinin yalnızca kimlik bilgisi bilgilerini aldığı için `Get-AzAutomationCredential` cmdlet yerine bu etkinliği kullanmanız gerekir. Bu bilgiler normalde başka bir cmdlet 'e geçmek için yararlı değildir. |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Kullanıcı adı ve parola isteminde bir kimlik bilgisi alır. |
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Bir kimlik bilgisi varlığı oluşturur. |
+| `Get-AutomationPSCredential` |Runbook veya `PSCredential` DSC yapılandırmasında kullanılacak bir nesne alır. Çoğu kez, ikincinin yalnızca kimlik bilgisi bilgilerini aldığı için `Get-AzAutomationCredential` cmdlet yerine bu [iç cmdlet](modules.md#internal-cmdlets) 'i kullanmanız gerekir. Bu bilgiler normalde başka bir cmdlet 'e geçmek için yararlı değildir. |
+| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Kullanıcı adı ve parola isteminde bir kimlik bilgisi alır. Bu cmdlet, varsayılan Microsoft. PowerShell. Security modülünün bir parçasıdır. Bkz. [varsayılan modüller](modules.md#default-modules).|
+| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Bir kimlik bilgisi varlığı oluşturur. Bu cmdlet, varsayılan Azure modülünün bir parçasıdır. Bkz. [varsayılan modüller](modules.md#default-modules).|
 
 Kodunuzda nesneleri `PSCredential` almak için `Orchestrator.AssetManagement.Cmdlets` modülünü içeri aktarmanız gerekir. Daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
 
@@ -69,7 +69,7 @@ Aşağıdaki tablodaki işlev, bir Python 2 runbook 'unda kimlik bilgilerine eri
 > [!NOTE]
 > Varlık işlevlerine `automationassets` erişmek için Python runbook 'ınızın en üstündeki modülü içeri aktarın.
 
-## <a name="creating-a-new-credential-asset"></a>Yeni bir kimlik bilgisi varlığı oluşturma
+## <a name="create-a-new-credential-asset"></a>Yeni bir kimlik bilgisi varlığı oluştur
 
 Azure portal kullanarak veya Windows PowerShell kullanarak yeni bir kimlik bilgisi varlığı oluşturabilirsiniz.
 
@@ -100,12 +100,14 @@ $cred = New-Object –TypeName System.Management.Automation.PSCredential –Argu
 New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
 ```
 
-## <a name="using-a-powershell-credential"></a>PowerShell kimlik bilgisi kullanma
+## <a name="get-a-credential-asset"></a>Kimlik bilgisi varlığı al
 
-Bir runbook veya DSC yapılandırması, `Get-AutomationPSCredential` etkinliğin bulunduğu bir kimlik bilgisi varlığını alır. Bu etkinlik, kimlik `PSCredential` bilgisi gerektiren bir etkinlik veya cmdlet ile kullanabileceğiniz bir nesnesi alır. Ayrıca, tek tek kullanılacak kimlik bilgisi nesnesinin özelliklerini de alabilirsiniz. Nesnenin Kullanıcı adı ve güvenli parola özellikleri vardır. Alternatif olarak, bir parolanın güvenli olmayan bir sürümünü temsil eden bir [NetworkCredential](/dotnet/api/system.net.networkcredential) nesnesi almak Için [getnetworkcredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) yöntemini kullanabilirsiniz.
+Bir runbook veya DSC yapılandırması, iç `Get-AutomationPSCredential` cmdlet ile bir kimlik bilgisi varlığı alır. Bu cmdlet, kimlik `PSCredential` bilgisi gerektiren bir cmdlet ile kullanabileceğiniz bir nesnesi alır. Ayrıca, tek tek kullanılacak kimlik bilgisi nesnesinin özelliklerini de alabilirsiniz. Nesnenin Kullanıcı adı ve güvenli parola özellikleri vardır. 
 
 > [!NOTE]
-> `Get-AzAutomationCredential`, kimlik doğrulaması için `PSCredential` kullanılabilecek bir nesne almaz. Yalnızca kimlik bilgileri hakkında bilgi sağlar. Bir runbook 'ta kimlik bilgisi kullanmanız gerekiyorsa, bunu kullanarak `PSCredential` `Get-AutomationPSCredential`bir nesne olarak almanız gerekir.
+> Cmdlet `Get-AzAutomationCredential` 'i, kimlik doğrulaması için `PSCredential` kullanılabilecek bir nesne almaz. Yalnızca kimlik bilgileri hakkında bilgi sağlar. Bir runbook 'ta kimlik bilgisi kullanmanız gerekiyorsa, bunu kullanarak `PSCredential` `Get-AutomationPSCredential`bir nesne olarak almanız gerekir.
+
+Alternatif olarak, bir parolanın güvenli olmayan bir sürümünü temsil eden bir [NetworkCredential](/dotnet/api/system.net.networkcredential) nesnesi almak Için [getnetworkcredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) yöntemini kullanabilirsiniz.
 
 ### <a name="textual-runbook-example"></a>Metinsel runbook örneği
 
@@ -135,7 +137,7 @@ Connect-AzAccount -Credential $myPsCred
 
 ### <a name="graphical-runbook-example"></a>Grafik runbook örneği
 
-Grafik düzenleyicinin Kitaplık bölmesinde `Get-AutomationPSCredential` kimlik bilgisine sağ tıklayıp **tuvale Ekle**' yi seçerek bir grafik runbook 'una etkinlik ekleyebilirsiniz.
+Grafik düzenleyicinin Kitaplık bölmesinde kimlik bilgisine sağ tıklayıp `Get-AutomationPSCredential` **tuvale Ekle**' yi seçerek bir grafik runbook 'una iç cmdlet için bir etkinlik ekleyebilirsiniz.
 
 ![Tuvale kimlik bilgisi ekle](../media/credentials/credential-add-canvas.png)
 
@@ -143,11 +145,11 @@ Aşağıdaki görüntüde bir grafik runbook 'unda kimlik bilgisi kullanmanın b
 
 ![Tuvale kimlik bilgisi ekle](../media/credentials/get-credential.png)
 
-## <a name="using-credentials-in-a-dsc-configuration"></a>DSC yapılandırmasında kimlik bilgilerini kullanma
+## <a name="use-credentials-in-a-dsc-configuration"></a>DSC yapılandırmasında kimlik bilgilerini kullanma
 
 Azure Otomasyonu 'ndaki DSC yapılandırması, kullanarak `Get-AutomationPSCredential`kimlik bilgisi varlıkları ile çalışabileceği sürece, kimlik bilgisi varlıklarını parametreler aracılığıyla da geçirebilir. Daha fazla bilgi için bkz. [Azure Automation DSC yapılandırma derleme](../automation-dsc-compile.md#credential-assets).
 
-## <a name="using-credentials-in-python-2"></a>Python 2 ' de kimlik bilgilerini kullanma
+## <a name="use-credentials-in-a-python-2-runbook"></a>Python 2 runbook 'unda kimlik bilgilerini kullanma
 
 Aşağıdaki örnekte, Python 2 runbook 'larında kimlik bilgilerine erişme örneği gösterilmektedir.
 
@@ -164,8 +166,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Grafik yazmanın bağlantıları hakkında daha fazla bilgi edinmek için bkz. [grafik yazma Içindeki bağlantılar](../automation-graphical-authoring-intro.md#links-and-workflow).
-* Otomasyon için farklı kimlik doğrulama yöntemlerini anlamak için bkz. [Azure Otomasyonu güvenliği](../automation-security-overview.md).
-* Grafik runbook 'ları kullanmaya başlamak için bkz. [ilk grafik runbook 'Um](../automation-first-runbook-graphical.md).
-* PowerShell iş akışı runbook 'larını kullanmaya başlamak için bkz. [Ilk PowerShell iş akışı runbook 'Um](../automation-first-runbook-textual.md).
-* Python 2 runbook 'unu kullanmaya başlamak için bkz. [Ilk Python 2 runbook 'Um](../automation-first-runbook-textual-python2.md). 
+* Kimlik bilgilerine erişmek için kullanılan cmdlet 'ler hakkında daha fazla bilgi edinmek için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
+* Runbook 'lar hakkında genel bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
+* DSC yapılandırmalarının ayrıntıları için bkz. [durum yapılandırmasına genel bakış](../automation-dsc-overview.md).

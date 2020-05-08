@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: acc8ceaa96f6fddafdbf4aa74ab9e43a1a60714a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195681"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744038"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Yedekleme için Azure Güvenlik temeli
 
@@ -460,7 +460,7 @@ Microsoft, Azure Backup için temel altyapıyı yönetir ve müşteri verilerini
 
 **Rehberlik**: sunuculardan kurtarma hizmetleri kasasına yedekleme trafiği GÜVENLI bir https bağlantısı üzerinden aktarılır ve kasada depolandığında GELIŞMIŞ ŞIFRELEME standardı (AES) 256 kullanılarak şifrelenir.
 
-- [Azure Backup bekleyen şifrelemeyi anlayın](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [Azure Backup bekleyen şifrelemeyi anlayın](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -508,7 +508,7 @@ Azure Backup yedekleme yönetim işlemlerini denetlemek için üç yerleşik rol
 
 MARS aracısıyla yedekleme yaparken veya müşteri tarafından yönetilen bir anahtarla şifrelenen bir kurtarma hizmetleri Kasası kullandığınızda yalnızca şifreleme anahtarına erişebilirsiniz. Microsoft hiçbir şekilde kopya korumaz ve anahtara erişemez. Anahtar yanlış olursa Microsoft, yedekleme verilerini kurtaramaz.
 
-- [Azure Backup için bekleyen şifrelemeyi anlayın](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [Azure Backup için bekleyen şifrelemeyi anlayın](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
@@ -902,7 +902,7 @@ Müşteri tarafından yönetilen anahtarları Azure Key Vault içinde yedekleyin
 
 - [Azure 'da Anahtar Kasası anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Azure Backup şifrelemeyi anlama](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)
+- [Azure Backup şifrelemeyi anlama](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure Güvenlik Merkezi izleme**: uygulanamaz
 
