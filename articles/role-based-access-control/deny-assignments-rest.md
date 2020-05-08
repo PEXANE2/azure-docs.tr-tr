@@ -1,6 +1,6 @@
 ---
-title: REST API ile Azure kaynakları için atamaları reddetme listesi
-description: Azure kaynakları ve REST API için rol tabanlı erişim denetimi (RBAC) kullanarak kullanıcılara, gruplara ve uygulamalara yönelik reddetme atamalarını nasıl listeleyeceğinizi öğrenin.
+title: REST API-Azure RBAC kullanarak Azure reddetme atamalarını listeleme
+description: REST API ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar ve uygulamalar için Azure reddetme atamalarını nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063027"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733879"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>REST API kullanarak Azure kaynakları için atamaları reddetme listesi
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>REST API kullanarak Azure reddetme atamalarını listeleyin
 
-Bir rol ataması erişime izin verirse, [atamaları Reddet](deny-assignments.md) , kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede, REST API kullanarak reddedilen atamaları listeleme açıklanmaktadır.
+[Azure reddetme atamaları](deny-assignments.md) , bir rol ataması erişim izni veriyorsa bile kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede, REST API kullanarak reddedilen atamaları listeleme açıklanmaktadır.
 
 > [!NOTE]
-> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [atamaları reddetme](deny-assignments.md).
+> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [Azure atamaları reddetme](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
-- `Microsoft.Authorization/denyAssignments/read`[Azure kaynakları için en yerleşik rollerde](built-in-roles.md)bulunan izin.
+- `Microsoft.Authorization/denyAssignments/read`[Azure yerleşik rollerinin](built-in-roles.md)çoğunda bulunan izin.
 
 ## <a name="list-a-single-deny-assignment"></a>Tek bir reddetme ataması listeleyin
 
@@ -91,7 +91,7 @@ Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>Kök kapsamda (/) atamaları Reddet listesi
 
-1. [Azure Active Directory, genel yönetici için erişimi yükseltme](elevate-access-global-admin.md)bölümünde açıklandığı gibi erişiminizi yükseltin.
+1. [Tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](elevate-access-global-admin.md)' de açıklandığı gibi erişiminizi yükseltin.
 
 1. Aşağıdaki isteği kullanın:
 
@@ -111,6 +111,6 @@ Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure kaynakları için reddedilen atamaları anlama](deny-assignments.md)
-- [Azure Active Directory'de Genel Yönetici erişimini yükseltme](elevate-access-global-admin.md)
+- [Azure reddetme atamalarını anlama](deny-assignments.md)
+- [Tüm Azure aboneliklerini ve yönetim gruplarını yönetmek için erişimi yükseltme](elevate-access-global-admin.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)

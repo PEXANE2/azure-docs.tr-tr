@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431646"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611900"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -37,7 +37,7 @@ Bu pencere gösterildiği gibi görünür:
 | İşlev Istekleri      | Azure Machine Learning işlevine yapılan çağrıların sayısı (varsa). |
 | Giriş seri kaldırma hataları       | Seri durumdan çıkarılabilen giriş olaylarının sayısı.  |
 | Olay baytlarını gir      | Stream Analytics işi tarafından bayt cinsinden alınan veri miktarı. Bu, olayların giriş kaynağına gönderildiğini doğrulamak için kullanılabilir. |
-| Giriş olayları           | Giriş olaylarından Serisi kaldırılan kayıt sayısı. Bu sayı, hata serisini kaldırma ile sonuçlanan gelen olayları içermez. |
+| Giriş olayları           | Giriş olaylarından Serisi kaldırılan kayıt sayısı. Bu sayı, hata serisini kaldırma ile sonuçlanan gelen olayları içermez. Aynı olaylar, iç kurtarmalar ve kendinden birleşimler gibi senaryolarda birden çok kez Stream Analytics alınabilir. Bu nedenle, işinizin basit bir ' pass-through ' sorgusu varsa giriş olaylarının ve çıkış olayları ölçümlerinin eşleşmesi beklenmemelidir. |
 | Alınan giriş kaynakları       | İş tarafından alınan ileti sayısı. Olay Hub 'ı için, bir ileti tek bir EventData ' dır. Blob için, bir ileti tek bir Blobun olur. Giriş kaynaklarının seri durumundan önce sayıldığını lütfen unutmayın. Seri kaldırma hataları varsa, giriş kaynakları giriş olaylarından daha büyük olabilir. Aksi halde, her ileti birden çok olay içerebileceğinden, bu, giriş olayından daha az veya eşit olabilir. |
 | Geç giriş olayları      | Yapılandırılan geç gelme toleransı penceresinden daha sonra gelen olaylar. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md) hakkında daha fazla bilgi edinin. |
 | Sıra dışı olaylar    | Olay sıralama Ilkesine bağlı olarak, ayarlanmış bir zaman damgasına bırakılan veya verilen zaman damgası dışında alınan olay sayısı. Bu, sipariş dışı tolerans penceresi ayarının yapılandırmasından etkilenebilir. |

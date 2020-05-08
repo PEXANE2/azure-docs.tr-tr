@@ -1,33 +1,37 @@
 ---
-title: SAP başarılı etmenleri öznitelik başvurusu | Microsoft Docs
+title: SAP başarılı etmenleri öznitelik başvurusu
 description: Başarılı bir şekilde hangi özniteliklerin desteklendiğini
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522365"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593193"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP başarılı etmenleri öznitelik başvurusu
 
+Bu makalede şu bilgileri bulabilirsiniz:
+
+- [Desteklenen başarılı etken varlıkları ve öznitelikleri](#supported-successfactors-entities-and-attributes)
+- [Varsayılan öznitelik eşlemesi](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>Desteklenen başarılı etken varlıkları ve öznitelikleri
 
-Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından desteklenen başarılı etmen özniteliklerinin listesi verilmiştir: 
-* [Kullanıcı sağlamayı Active Directory için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [Azure AD Kullanıcı sağlama için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından desteklenen başarılı etmen özniteliklerinin listesi verilmiştir:
+
+- [Kullanıcı sağlamayı Active Directory için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [Azure AD Kullanıcı sağlama için başarılı etken](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | Başarılı etken varlığı                  | Başarılı etken özniteliği     | İşlem Türü |
 |----|----------------------------------------|------------------------------|----------------|
@@ -111,7 +115,6 @@ Aşağıdaki tabloda, aşağıdaki iki sağlama uygulaması tarafından destekle
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Okuma           |
 | 78 | EmpEmploymentTermination               | Latestsonlandırmatarihi        | Okuma           |
 
-
 ## <a name="default-attribute-mapping"></a>Varsayılan öznitelik eşlemesi
 
 Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure AD öznitelikleri arasında varsayılan öznitelik eşlemesi sağlanmaktadır. Azure AD sağlama uygulaması "eşleme" dikey penceresinde, yukarıdaki listeden öznitelikleri dahil etmek için bu varsayılan eşlemeyi değiştirebilirsiniz. 
@@ -138,4 +141,3 @@ Aşağıdaki tabloda, yukarıda listelenen başarılı Özellikler ve AD/Azure A
 | 18 | EmpJob\.konumu                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob\.konumu                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | activeEmploymentsCount = 0 ise, account\'ı devre dışı bırakın.                                           |
-

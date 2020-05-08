@@ -3,15 +3,15 @@ title: Azure Logic Apps tümleştirme hizmeti ortamlarını yönetme
 description: Azure Logic Apps için tümleştirme hizmeti ortamınızda (ıSE) ağ durumunu kontrol edin ve Logic Apps, bağlantılar, özel bağlayıcılar ve tümleştirme hesaplarını yönetin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284206"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598428"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınızı (ıSE) yönetme
 
@@ -54,6 +54,10 @@ ISE 'de olan Logic Apps 'i görüntüleyebilir ve yönetebilirsiniz.
    ![Mantıksal uygulamaları görüntüleme](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
 1. Artık ihtiyacınız olmayan Logic Apps 'i kaldırmak için bu Logic Apps ' i seçin ve **Sil**' i seçin. Silmek istediğinizi onaylamak için **Evet**' i seçin.
+
+> [!NOTE]
+> Bir alt mantıksal uygulamayı silip yeniden oluşturursanız, ana mantıksal uygulamayı yeniden kaydetmeniz gerekir. Yeniden oluşturulan alt uygulamanın farklı meta verileri olacak.
+> Üst mantıksal uygulamayı alt öğesini yeniden oluşturduktan sonra yeniden kaydetmezseniz, alt mantıksal uygulamaya yapılan çağrılarınız "yetkilendirilmemiş" hatası ile başarısız olur. Bu davranış, örneğin tümleştirme hesaplarında yapıtlar kullanan veya Azure işlevleri çağıran ana alt mantıksal uygulamalar için geçerlidir.
 
 <a name="find-api-connections"></a>
 

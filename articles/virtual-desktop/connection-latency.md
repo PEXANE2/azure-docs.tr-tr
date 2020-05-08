@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128185"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607410"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows sanal masaüstü 'nde Kullanıcı bağlantı gecikmesini belirleme
 
@@ -29,4 +29,4 @@ Windows sanal masaüstü, en yakın Windows sanal masaüstü hizmeti örneğini 
 
 - En iyi gecikme süresinin en iyi konumunu denetlemek için bkz. [Windows sanal masaüstü deneyimi Estimator Aracı](https://azure.microsoft.com/services/virtual-desktop/assessment/).
 - Fiyatlandırma planları için bkz. [Windows sanal masaüstü fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-desktop/).
-- Windows sanal masaüstü dağıtımınızı kullanmaya başlamak için [öğreticimize](tenant-setup-azure-active-directory.md)göz atın.
+- Windows sanal masaüstü dağıtımınızı kullanmaya başlamak için [öğreticimize](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)göz atın.

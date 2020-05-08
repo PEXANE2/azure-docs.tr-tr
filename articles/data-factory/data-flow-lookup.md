@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233406"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594330"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Eşleme veri akışında arama dönüşümü
 
@@ -33,7 +33,7 @@ Bir arama dönüştürmesi, bir sol dış birleşime benzer. Birincil akıştaki
 
 **Birden çok satırı eşleştir:** Etkinleştirilirse, birincil akışta birden fazla eşleşme içeren bir satır birden çok satır döndürür. Aksi takdirde, ' Match on ' koşuluna göre yalnızca tek bir satır döndürülür.
 
-**Eşleşme:** Yalnızca ' birden fazla satırı Eşleştir ' etkinse görünür. Herhangi bir satır, ilk eşleşme veya son eşleşme ile eşleşmeyeceğinizi seçin. En hızlı şekilde çalıştığı için herhangi bir satır önerilir. İlk satır veya son satır seçiliyse sıralama koşullarını belirtmeniz gerekir.
+**Eşleşme:** Yalnızca ' birden fazla satır Eşleştir ' seçilirse görünür. Herhangi bir satır, ilk eşleşme veya son eşleşme ile eşleşmeyeceğinizi seçin. En hızlı şekilde çalıştığı için herhangi bir satır önerilir. İlk satır veya son satır seçiliyse sıralama koşullarını belirtmeniz gerekir.
 
 **Arama koşulları:** Hangi sütunların eşleşeceğini seçin. Eşitlik koşulu karşılanıyorsa, satırlar eşleşme olarak kabul edilir. [Veri akışı ifade dilini](data-flow-expression-functions.md)kullanarak bir değer ayıklamak için üzerine gelin ve ' hesaplanan sütun ' seçeneğini belirleyin.
 

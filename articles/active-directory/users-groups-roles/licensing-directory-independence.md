@@ -1,7 +1,7 @@
 ---
 title: Birden çok kiracı etkileşiminin özellikleri-Azure AD | Microsoft Docs
-description: Azure Active Directory Kiracılarınızı tamamen bağımsız kuruluşlar olarak anlama
-services: active-tenant
+description: Azure Active Directory kuruluşlarınızın veri bağımsızlığını anlama
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878128"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582748"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Çoklu Azure Active Directory kuruluşların nasıl etkileşime gireceğini anlayın
 
-Azure Active Directory (Azure AD) ' de, her kiracı tamamen bağımsız bir kuruluştur: yönettiğiniz diğer Azure AD kuruluşlarından mantıksal olarak bağımsız olan bir eş. Kuruluşlar arasındaki bu bağımsızlık, kaynak bağımsızlığı, yönetim bağımsızlık ve eşitleme bağımsızlığı bulunur. Kuruluşlar arasında üst-alt ilişkisi yoktur.
+Azure Active Directory (Azure AD) ' de, her Azure AD kuruluşu tamamen bağımsızdır: yönettiğiniz diğer Azure AD kuruluşlarından mantıksal olarak bağımsız olan bir eş. Kuruluşlar arasındaki bu bağımsızlık, kaynak bağımsızlığı, yönetim bağımsızlık ve eşitleme bağımsızlığı bulunur. Kuruluşlar arasında üst-alt ilişkisi yoktur.
 
 ## <a name="resource-independence"></a>Kaynak bağımsızlık
 

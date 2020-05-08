@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182438"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786623"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -44,7 +44,7 @@ Aşağıda, HDInsight 'ı bir sanal ağa yüklemeye planlarken yanıtlamanız ge
 
 * Gelen veya giden trafiği HDInsight 'a kısıtlamak/yeniden yönlendirmek istiyor musunuz?
 
-    HDInsight, Azure veri merkezi 'nde belirli IP adresleriyle Kısıtlanmamış iletişime sahip olmalıdır. İstemci iletişimine yönelik güvenlik duvarları aracılığıyla izin verilmesi gereken birkaç bağlantı noktası da vardır. Daha fazla bilgi için [ağ trafiğini denetleme](#networktraffic) bölümüne bakın.
+    HDInsight, Azure veri merkezi 'nde belirli IP adresleriyle Kısıtlanmamış iletişime sahip olmalıdır. İstemci iletişimine yönelik güvenlik duvarları aracılığıyla izin verilmesi gereken birkaç bağlantı noktası da vardır. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>Mevcut bir sanal ağa HDInsight ekleme
 
@@ -201,57 +201,9 @@ Apache ambarı ve diğer Web sayfalarına sanal ağ üzerinden bağlanmak için 
 
 2. Bir hizmetin kullanılabilir olduğu düğüm ve bağlantı noktasını öğrenmek için bkz. [HDInsight 'Ta Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları](./hdinsight-hadoop-port-settings-for-services.md) .
 
-## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>Ağ trafiğini denetleme
-
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>HDInsight kümelerine gelen ve giden trafiği denetleme teknikleri
-
-Bir Azure sanal ağlarındaki ağ trafiği aşağıdaki yöntemler kullanılarak denetlenebilir:
-
-* **Ağ güvenlik grupları** (NSG) ağa gelen ve giden trafiği filtrelemenize izin verir. Daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/security-overview.md) belgesi.
-
-* **Ağ sanal** gereçleri (NVA), yalnızca giden trafikle birlikte kullanılabilir. NVA 'lar güvenlik duvarları ve yönlendiriciler gibi cihazların işlevlerini çoğaltın. Daha fazla bilgi için bkz. [ağ araçları](https://azure.microsoft.com/solutions/network-appliances) belgesi.
-
-Yönetilen bir hizmet olarak, HDInsight, VNET 'ten gelen ve giden trafik için HDInsight sistem durumu ve Yönetim Hizmetleri için sınırsız erişim gerektirir. NSG 'leri kullanırken, bu hizmetlerin HDInsight kümesiyle iletişim kurabildiğinden emin olmanız gerekir.
-
-![Azure özel VNET 'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
-
-### <a name="hdinsight-with-network-security-groups"></a>Ağ güvenlik gruplarıyla HDInsight
-
-Ağ trafiğini denetlemek için **ağ güvenlik grupları** kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki eylemleri gerçekleştirin:
-
-1. HDInsight için kullanmayı planladığınız Azure bölgesini belirler.
-
-2. Bölgeniz için HDInsight tarafından gereken hizmet etiketlerini belirler. Daha fazla bilgi için bkz. [Azure HDInsight Için ağ güvenlik grubu (NSG) hizmet etiketleri](hdinsight-service-tags.md).
-
-3. HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
-
-    * __Ağ güvenlik grupları__: ıp adreslerinden __443__ numaralı bağlantı noktasında __gelen__ trafiğe izin verin. Bu, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından ulaşmasını güvence altına alabilir.
-
-Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik gruplarına genel bakış](../virtual-network/security-overview.md).
-
-### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight kümelerinden giden trafiği denetleme
-
-HDInsight kümelerinden giden trafiği denetleme hakkında daha fazla bilgi için bkz. [Azure HDInsight kümeleri için giden ağ trafiği kısıtlamasını yapılandırma](hdinsight-restrict-outbound-traffic.md).
-
-#### <a name="forced-tunneling-to-on-premises"></a>Şirket içinde Zorlamalı tünel
-
-Zorlamalı tünel, bir alt ağdan gelen tüm trafiğin, şirket içi ağınız gibi belirli bir ağa veya konuma zorlanarak Kullanıcı tanımlı bir yönlendirme yapılandırmadır. HDInsight, __Şirket__ içi ağlarda trafiğin zorlamalı tünelini desteklemez.
-
-## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>Gerekli IP adresleri
-
-Trafiği denetlemek için ağ güvenlik grupları veya Kullanıcı tanımlı yollar kullanıyorsanız bkz. [HDInsight YÖNETIM IP adresleri](hdinsight-management-ip-addresses.md).
-
-## <a name="required-ports"></a><a id="hdinsight-ports"></a>Gerekli bağlantı noktaları
-
-Bir **güvenlik duvarı** kullanmayı ve kümeye belirli bağlantı noktalarında dışından erişmeyi planlıyorsanız senaryonuz için gereken bağlantı noktalarında trafiğe izin vermeniz gerekebilir. Varsayılan olarak, önceki bölümde açıklanan Azure Yönetim trafiğinin 443 numaralı bağlantı noktasında kümeye erişmesine izin verildiği sürece bağlantı noktalarının özel bir beyaz listesi gerekli değildir.
-
-Belirli hizmetlere yönelik bağlantı noktalarının listesi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından kullanılan bağlantı noktaları](hdinsight-hadoop-port-settings-for-services.md) .
-
-Sanal gereçler güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [Sanal Gereç senaryo](../virtual-network/virtual-network-scenario-udr-gw-nva.md) belgesi.
-
 ## <a name="load-balancing"></a>Yük dengeleme
 
-Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. Bu yük dengeleyicinin türü, belirli kısıtlamalara sahip olan [temel SKU düzeyinde](../load-balancer/concepts-limitations.md#skus)bulunur. Bu kısıtlamalardan biri, farklı bölgelerde iki sanal ağınız varsa temel yük dengeleyicilere bağlanamazsınız. Daha fazla bilgi için bkz. [sanal ağlar SSS: genel VNET eşlemesi üzerindeki kısıtlamalar](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. Bu yük dengeleyicinin türü, belirli kısıtlamalara sahip olan [temel SKU düzeyinde](../load-balancer/skus.md)bulunur. Bu kısıtlamalardan biri, farklı bölgelerde iki sanal ağınız varsa temel yük dengeleyicilere bağlanamazsınız. Daha fazla bilgi için bkz. [sanal ağlar SSS: genel VNET eşlemesi üzerindeki kısıtlamalar](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -260,3 +212,4 @@ Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. 
 * Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
 * Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
 * Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı rotalar ve IP iletimi](../virtual-network/virtual-networks-udr-overview.md).
+* Trafiği denetleme hakkında daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70309268"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594789"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure uygulamalarıyla Node.js Modüllerini kullanma
 Bu belge, Azure 'da barındırılan uygulamalarla Node. js modüllerini kullanma hakkında rehberlik sağlar. Uygulamanızın belirli bir modülün belirli bir sürümünü kullanmasını ve Azure ile yerel modüller kullanmasını sağlamaya yönelik rehberlik sağlar.
@@ -85,7 +85,7 @@ Uygulamanız üretime hazırsanız, sürüm gereksinimlerini kilitleyebilir ve *
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure ile Node. js modüllerini nasıl kullanacağınızı anladığınıza göre, Node. [js sürümünü belirtme](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [Node. js web uygulaması oluşturma ve dağıtma](app-service/app-service-web-get-started-nodejs.md)ve [Mac ve Linux için Azure komut satırı arabirimini kullanma](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)hakkında bilgi edinin.
+Azure ile Node. js modüllerini nasıl kullanacağınızı anladığınıza göre, Node. [js sürümünü belirtme](https://github.com/squillace/nodejs-microservice), [Node. js web uygulaması oluşturma ve dağıtma](app-service/app-service-web-get-started-nodejs.md)ve [Mac ve Linux için Azure komut satırı arabirimini kullanma](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)hakkında bilgi edinin.
 
 Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](/azure/javascript/).
 

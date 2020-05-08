@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/20/2020
+ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546349"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598479"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
 
@@ -28,10 +28,10 @@ Ayrıca, katkıda bulunan veya sahip 'in yönetim izinleri verilmeden gizli dizi
 
 | Rol                                  | Virüslü                                                                                       | Ileri git       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Okuyucu                                | -Gizli dizileri de içeren okuma erişimi                                                                   | -Gizli dizileri **hariç** okuma erişimi |           |   |   |
+| Okuyucu                                | -Gizli dizileri de içeren okuma erişimi.                                                                   | -Gizli dizileri **hariç** okuma erişimi |           |   |   |
 | HDInsight küme operatörü<br>(Yeni rol) | Yok                                                                                              | -Gizli dizileri dahil okuma/yazma erişimi         |   |   |
-| Katılımcı                           | -Gizli dizileri dahil okuma/yazma erişimi<br>-Tüm Azure kaynakları türlerini oluşturun ve yönetin.     | düzeltme sınıfı, |
-| Sahip                                 | -Gizlilikler dahil olmak üzere okuma/yazma erişimi<br>-Tüm kaynaklara tam erişim<br>-Başkalarına erişim yetkisi verme | düzeltme sınıfı, |
+| Katılımcı                           | -Parolalar da dahil olmak üzere okuma/yazma erişimi.<br>-Tüm Azure kaynakları türlerini oluşturun ve yönetin.<br>-Betik eylemlerini yürütün.     | düzeltme sınıfı, |
+| Sahip                                 | -Gizlilikler dahil olmak üzere okuma/yazma erişimi.<br>-Tüm kaynaklara tam erişim<br>-Başkalarına erişim yetkisi verin.<br>-Betik eylemlerini yürütün. | düzeltme sınıfı, |
 
 Bir kullanıcıya HDInsight kümesi operatörü rolü atamasını ekleme/yazma erişimi sağlamak üzere bir kullanıcıya ekleme hakkında daha fazla bilgi için, bkz. [bir kullanıcıya HDInsight küme işletmeni rol atamasını ekleme](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 

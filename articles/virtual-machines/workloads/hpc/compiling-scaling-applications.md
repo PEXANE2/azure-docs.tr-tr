@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67707833"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594806"
 ---
 # <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçeklendirme
 
@@ -37,7 +37,7 @@ Clang, bir C, C++ ve amaç-C derleyicisi, ön işleme, ayrıştırma, iyileştir
 
 ### <a name="flang"></a>FLANG
 
-FLANG derleyicisi, AOCC Suite 'e son eklenen bir ektir (2018 Nisan 'a eklenmiştir) ve şu anda geliştiricilerin indirmesi ve test etmek için önceden yayın sürümündedir. FORTRAN 2008 temelinde, AMD, FLANG 'nin GitHub sürümünü genişletiyor (https://github.com/flangcompiler/flang). FLANG derleyicisi, tüm Clang derleyici seçeneklerini ve ek sayıda FLANG özel derleyici seçeneğini destekler.
+FLANG derleyicisi, AOCC Suite 'e son eklenen bir ektir (2018 Nisan 'a eklenmiştir) ve şu anda geliştiricilerin indirmesi ve test etmek için önceden yayın sürümündedir. FORTRAN 2008 temelinde, AMD, FLANG 'nin GitHub sürümünü genişletiyor (https://github.com/flang-compiler/flang). FLANG derleyicisi, tüm Clang derleyici seçeneklerini ve ek sayıda FLANG özel derleyici seçeneğini destekler.
 
 ### <a name="dragonegg"></a>DragonEgg
 

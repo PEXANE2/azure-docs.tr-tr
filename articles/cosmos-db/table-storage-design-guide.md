@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcae1ed9064d38457ede73c675afb75ce4872fe6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246480"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611798"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Tablo depolama tablosu Tasarım Kılavuzu: ölçeklenebilir ve performank tabloları
 
@@ -208,7 +208,7 @@ Tablo depolama sorguları tasarlamak için bazı genel yönergeler aşağıda ve
 * İkinci en iyi *Aralık sorgusudur*. Birden fazla varlık `PartitionKey`döndürmek için bir `RowKey` değer aralığı üzerinde ve filtrelerini kullanır. `PartitionKey` Değer belirli bir bölümü tanımlar ve `RowKey` değerler bu bölümdeki varlıkların bir alt kümesini tanımlar. Örneğin: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
 * Üçüncü en iyi *bölüm taramasından*. Anahtar olmayan başka `PartitionKey`bir özellik üzerinde, ve filtrelerini kullanır ve birden fazla varlık döndürebilir. `PartitionKey` Değer belirli bir bölümü tanımlar ve özellik değerleri ilgili bölümdeki varlıkların bir alt kümesini seçer. Örneğin: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
 * *Tablo taraması* , herhangi bir eşleşen `PartitionKey`varlık için tablonuzu oluşturan tüm bölümleri aradığı için, ' yi içermez ve verimsiz olur. Filtrenizin ' i kullanıp kullanmadığını bakılmaksızın tablo taraması gerçekleştirir `RowKey`. Örneğin: `$filter=LastName eq 'Jones'`.  
-* Birden çok varlık döndüren Azure Tablo depolama sorguları bunları `PartitionKey` ve `RowKey` sırasını sıralar. İstemcideki varlıkları yeniden kullanmaktan kaçınmak için en yaygın sıralama düzenini tanımlayan bir `RowKey` seçin. Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)bakın.
+* Birden çok varlık döndüren Azure Tablo depolama sorguları bunları `PartitionKey` ve `RowKey` sırasını sıralar. İstemcideki varlıkları yeniden kullanmaktan kaçınmak için en yaygın sıralama düzenini tanımlayan bir `RowKey` seçin. Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](table-api-faq.md#table-api-vs-table-storage)bakın.
 
 Değerleri temel alan**or** `RowKey` bir filtre belirtmek için "or" kullanılması, Bölüm taramasıyla sonuçlanır ve Aralık sorgusu olarak değerlendirilmez. Bu nedenle, şu gibi filtreler kullanan sorgulardan kaçının: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`.  
 
@@ -250,7 +250,7 @@ Birçok tasarım, varlıkların birden çok ölçüte göre aramasını etkinle�
 Tablo Depolaması sorgu sonuçlarını, `PartitionKey` ve daha sonra öğesine göre artan sırada sıralanmış olarak döndürür `RowKey`.
 
 > [!NOTE]
-> Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)bakın.
+> Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](table-api-faq.md#table-api-vs-table-storage)bakın.
 
 Tablo depolamadaki anahtarlar dize değerleridir. Sayısal değerlerin doğru şekilde sıralanmasını sağlamak için, bunları sabit bir uzunluğa dönüştürmeniz ve bunları sıfırlarla birlikte yapmanız gerekir. Örneğin, olarak kullandığınız çalışan KIMLIĞI değeri bir tamsayı değeri `RowKey` ise, **123** çalışan kimliğini **00000123**olarak dönüştürmeniz gerekir. 
 
@@ -733,7 +733,7 @@ Bu düzen uygulanırken aşağıdaki düzenler ve yönergeler de yararlı olabil
 Ters Tarih *n* ve saat düzeninde sıralama yapan bir `RowKey` değer kullanarak bir bölüme en son eklenen n varlıklarını alın.  
 
 > [!NOTE]
-> Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Bu nedenle, bu model tablo depolaması için uygun olsa da Azure Cosmos DB için uygun değildir. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)bakın.
+> Azure Cosmos DB Azure Tablo API'si tarafından döndürülen sorgu sonuçları bölüm anahtarına veya satır anahtarına göre sıralanmaz. Bu nedenle, bu model tablo depolaması için uygun olsa da Azure Cosmos DB için uygun değildir. Özellik farklarının ayrıntılı bir listesi için, [Azure Cosmos DB ve Azure Tablo depolamadaki tablo API'si arasındaki farklara](table-api-faq.md#table-api-vs-table-storage)bakın.
 
 #### <a name="context-and-problem"></a>Bağlam ve sorun
 Yaygın bir gereksinim, en son oluşturulan varlıkları (örneğin, bir çalışan tarafından gönderilen en son gider taleplerini) alabilmelidir. Tablo sorguları bir kümeden `$top` ilk *n* varlığı döndürmek için bir sorgu işlemini destekler. Bir küme içindeki son *n* varlığı döndürmek için eşdeğer bir sorgu işlemi yoktur.  

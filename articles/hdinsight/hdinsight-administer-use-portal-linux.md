@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/23/2020
-ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232896"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598507"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
 
@@ -219,13 +219,19 @@ Parola, kümedeki tüm düğümlerde değiştirilir.
 4. **Betik eylemleri** sayfasında **Yeni Gönder**' i seçin.
 5. **Betik eylemini gönder** sayfasında, aşağıdaki bilgileri girin:
 
+> [!NOTE]
+> SSH parolaları aşağıdaki karakterleri içeremez:
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
    | Alan | Değer |
    | --- | --- |
    | Betik türü | Açılan listeden **özel** ' i seçin.|
-   | Adı |"SSH kimlik bilgilerini değiştirme" |
+   | Name |"SSH kimlik bilgilerini değiştirme" |
    | Bash betiği URI 'SI |Changecredentials.sh dosyasının URI 'SI |
    | Düğüm türleri: (Head, Worker, Nimbus, gözetmen veya Zookeeper.) |✓ listelenen tüm düğüm türleri için |
-   | Parametreler |SSH kullanıcı adını ve ardından yeni parolayı girin. Kullanıcı adı ve parola arasında bir boşluk olmalıdır. SSH parolalarında şu karakterler desteklenmez: "' '/\ <% ~ | $ &
+   | Parametreler |SSH kullanıcı adını ve ardından yeni parolayı girin. Kullanıcı adı ve parola arasında bir boşluk olmalıdır. |
    | Bu betik eylemini kalıcı yap... |Bu alanı işaretlenmemiş olarak bırakın. |
 
 6. Betiği uygulamak için **Oluştur** ' u seçin. Betik tamamlandıktan sonra, yeni kimlik bilgileriyle SSH kullanarak kümeye bağlanabilirsiniz.

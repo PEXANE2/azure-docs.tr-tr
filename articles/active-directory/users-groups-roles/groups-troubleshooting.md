@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74026554"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582724"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Sorun giderme ve grup sorunlarını çözme
 
@@ -43,7 +43,7 @@ PowerShell 'de yönetici olmayan kullanıcılar için Grup oluşturmayı devre d
    ```
 
 <br/>**PowerShell 'de dinamik bir grup oluşturmaya çalışırken izin verilen en fazla grup hatasını aldım**<br/>
-PowerShell 'de, _dinamik grup ilkelerinin izin verilen en fazla grup sayısına ulaşıldığını_belirten bir ileti alırsanız, bu, kiracınızdaki dinamik gruplar için en yüksek sınıra ulaştığınız anlamına gelir. Her kiracı için en fazla dinamik grup sayısı 5.000 ' dir.
+PowerShell 'de, _dinamik grup ilkelerinin izin verilen en fazla grup sayısına ulaşıldığını_belirten bir ileti alırsanız, bu, kuruluşunuzdaki dinamik gruplar için maksimum sınıra ulaştığınız anlamına gelir. Kuruluş başına en fazla dinamik grup sayısı 5.000 ' dir.
 
 Yeni dinamik gruplar oluşturmak için önce var olan bazı dinamik grupları silmeniz gerekir. Sınırı artırmanın bir yolu yoktur.
 
@@ -53,7 +53,7 @@ Yeni dinamik gruplar oluşturmak için önce var olan bazı dinamik grupları si
 1. Kuraldaki Kullanıcı veya cihaz özniteliklerinin değerlerini doğrulayın. Kuralı karşılayan kullanıcılar olduğundan emin olun. Cihazlar için, eşitlenen özniteliklerin beklenen değerleri içerdiğinden emin olmak için cihaz özelliklerini denetleyin.<br/>
 2. Tamamlanmamış olduğunu onaylamak için üyelik işleme durumunu kontrol edin. Grubun **genel bakış** sayfasında [Üyelik işleme durumunu](groups-create-rule.md#check-processing-status-for-a-rule) ve son güncelleştirilme tarihini kontrol edebilirsiniz.
 
-Her şey iyi görünüyorsa, lütfen grubun doldurulması için bir süre bekleyin. Kiracınızın boyutuna bağlı olarak, ilk seferinde veya kural değişikliğinden sonra grubun doldurulması 24 saat kadar sürebilir.
+Her şey iyi görünüyorsa, lütfen grubun doldurulması için bir süre bekleyin. Azure AD kuruluşunuzun boyutuna bağlı olarak, grubun ilk kez veya bir kural değişikliğinden sonra doldurulması 24 saate kadar sürebilir.
 
 **Bir kural yapılandırdım, ancak artık kuralın var olan üyeleri kaldırılıyor**<br/>Bu beklenen bir davranıştır. Bir kural etkinleştirildiğinde veya değiştirildiğinde grubun mevcut üyeleri kaldırılır. Kural değerlendirmesinden döndürülen kullanıcılar gruba üye olarak eklenir.
 

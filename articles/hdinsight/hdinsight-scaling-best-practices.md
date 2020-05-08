@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189373"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592069"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -74,27 +74,38 @@ Veri düğümlerinin sayısını değiştirmenin etkisi, HDInsight tarafından d
 
 * Apache Storm
 
-    Fırtınası çalışırken veri düğümlerini sorunsuzca ekleyebilir veya kaldırabilirsiniz. Ancak, ölçeklendirme işleminin başarılı bir şekilde tamamlandıktan sonra, topolojiyi yeniden dengelemeniz gerekir.
-
-    Yeniden dengeleme iki şekilde sağlanabilir:
+    Fırtınası çalışırken veri düğümlerini sorunsuzca ekleyebilir veya kaldırabilirsiniz. Ancak, ölçeklendirme işleminin başarılı bir şekilde tamamlandıktan sonra, topolojiyi yeniden dengelemeniz gerekir. Yeniden dengeleme, topolojinin kümedeki yeni düğüm sayısına göre yalnızca [paralellik ayarları](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) ayarlamasına olanak tanır. Çalışan topolojileri yeniden dengelemek için aşağıdaki seçeneklerden birini kullanın:
 
   * Fırtınası Web Kullanıcı arabirimi
+
+    Bir topolojiyi fırtınası Kullanıcı arabirimini kullanarak yeniden dengelemek için aşağıdaki adımları kullanın.
+
+    1. Web `https://CLUSTERNAME.azurehdinsight.net/stormui` tarayıcınızda açın, burada `CLUSTERNAME` , fırtınası kümenizin adıdır. İstenirse, kümeyi oluştururken belirttiğiniz HDInsight Küme Yöneticisi (yönetici) adını ve parolasını girin.
+
+    1. Yeniden dengelemek istediğiniz topolojiyi seçin, sonra yeniden **Dengeleme** düğmesini seçin. Yeniden dengeleme işlemi yapılmadan önce gecikme girin.
+
+        ![HDInsight fırtınası ölçeği yeniden dengeleme](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * Komut satırı arabirimi (CLı) aracı
 
-    Daha fazla bilgi için bkz. [Apache Storm belgeleri](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    Sunucuya bağlanın ve bir topolojiyi yeniden dengelemek için aşağıdaki komutu kullanın:
 
-    Fırtınası Web Kullanıcı arabirimi HDInsight kümesinde kullanılabilir:
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![HDInsight fırtınası ölçeği yeniden dengeleme](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    Ayrıca, ilk olarak topoloji tarafından sağlanmış paralellik ipuçlarını geçersiz kılmak için parametreler belirtebilirsiniz. Örneğin, aşağıdaki kod, `mytopology` topolojiyi 5 çalışan işlem, mavi-Spout bileşeni için 3 yürütme ve sarı-cıvata bileşeni için 10 yürütme sayısı olarak yeniden yapılandırır.
 
-    Aşağıda, fırtınası topolojisini yeniden dengelemek için örnek bir CLı komutu verilmiştir:
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    Ölçeklendirme işlemlerinden sonra bölüm çoğaltmalarını yeniden dengelemeniz gerekir. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Kafka verilerin yüksek kullanılabilirliği](./kafka/apache-kafka-high-availability.md) belgesi.
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Bir kümenin güvenle ölçeğini azaltma
 
@@ -252,3 +263,8 @@ Bir ölçeklendirme işlemi tamamlandıktan sonra bölge sunucuları birkaç dak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure HDInsight kümelerini otomatik ölçeklendirme](hdinsight-autoscale-clusters.md)
+
+HDInsight kümenizi ölçeklendirmeyle ilgili belirli bilgiler için, bkz.:
+
+* [HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Azure CLı kullanarak HDInsight 'ta Apache Hadoop kümelerini yönetme](hdinsight-administer-use-command-line.md#scale-clusters)

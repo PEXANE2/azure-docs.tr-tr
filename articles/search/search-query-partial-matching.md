@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262885"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592052"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (joker karakter, Regex, desenler)
 
@@ -24,7 +24,7 @@ Dizin beklenen biçimde şartlar içermiyorsa kısmi ve kalıp arama sorunlu ola
 Çözüm, gerekirse boşluklar ve özel karakterler de dahil olmak üzere tüm dizeleri koruyan bir çözümleyici çağırmak ve böylece kısmi hüküm ve desenlerle eşleşemez. Bozulmadan bir dize için ek alan oluşturma ve içerik koruma Çözümleyicisi kullanma, çözümün temelini oluşturur.
 
 > [!TIP]
-> Postman ve REST API 'Leri hakkında bilgi sahibi misiniz? Bu makalede açıklanan kısmi terimleri ve özel karakterleri sorgulamak için [sorgu örnekleri koleksiyonunu indirin](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) .
+> Postman ve REST API 'Leri hakkında bilgi sahibi misiniz? Bu makalede açıklanan kısmi terimleri ve özel karakterleri sorgulamak için [sorgu örnekleri koleksiyonunu indirin](https://github.com/Azure-Samples/azure-search-postman-samples/) .
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama kısmi arama nedir?
 

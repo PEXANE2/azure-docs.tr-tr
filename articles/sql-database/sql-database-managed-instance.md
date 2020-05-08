@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879080"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598547"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği nedir?
 
@@ -63,7 +63,7 @@ Yönetilen örneklerin temel özellikleri aşağıdaki tabloda gösterilmiştir:
 | Veritabanı başına veri dosyası (satır) sayısı | Birden çok |
 | Veritabanı başına günlük dosyası (günlük) sayısı | 1 |
 | VNet-Azure Resource Manager dağıtımı | Yes |
-| VNet-klasik dağıtım modeli | Hayır |
+| VNet-klasik dağıtım modeli | No |
 | Portal desteği | Yes|
 | Yerleşik tümleştirme hizmeti (SSIS) | No-SSIS [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) 'in bir parçasıdır |
 | Yerleşik analiz hizmeti (SSAS) | Hayır-SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -167,19 +167,31 @@ Aşağıdaki tabloda işlemler ve genel toplam süreler özetlenmektedir:
 
 \*\*\*12 saat geçerli yapılandırmadır, ancak gelecekte değişebilir, bu yüzden buna çok daha fazla bağımlılık yapmayın. Daha önce bir sanal kümeyi silmeniz gerekiyorsa (örneğin alt ağını serbest bırakmak için), bkz. bir [Azure SQL veritabanı yönetilen örneği silindikten sonra bir alt ağı silme](sql-database-managed-instance-delete-virtual-cluster.md).
 
-### <a name="instance-availability-during-management"></a>Yönetim sırasında örnek kullanılabilirliği
+### <a name="instance-availability-during-management-operations"></a>Yönetim işlemleri sırasında örnek kullanılabilirliği
 
-Yönetilen örnekler, dağıtım ve silme işlemleri sırasında istemci uygulamalar için kullanılamaz.
+Yönetilen örnek, dağıtım ve silme işlemleri sırasında istemci uygulamaları için kullanılamaz.
 
-Yönetilen örnekler, güncelleştirme işlemleri sırasında kullanılabilir, ancak genellikle 10 saniyeye kadar olan güncelleştirmelerin sonunda gerçekleşen yük devretmenin neden olduğu kısa bir kesinti vardır. Bunun özel durumu, Genel Amaçlı hizmet katmanındaki ayrılmış depolama alanının, yük devretme veya örnek kullanılabilirliğini etkilemediği bir güncelleştirmedir.
-
-> [!IMPORTANT]
-> Yük devretme süresi, uzun süre çalışan bir [Kurtarma süresi](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)nedeniyle veritabanlarında gerçekleşen işlemler büyük ölçüde farklılık gösterebilir. Bu nedenle, Azure SQL veritabanı yönetilen örneği 'nin işlem veya depolama alanını ölçeklendirmeniz veya hizmet katmanını uzun süre çalışan işlemler (veri alma, veri işleme işleri, dizin yeniden oluşturma vb.) ile aynı anda değiştirmeniz önerilmez. İşlemin sonunda gerçekleştirilecek veritabanı yük devretmesi, devam eden işlemleri iptal eder ve uzun süren kurtarma zamanına yol açabilir.
+Yönetilen örnek, güncelleştirmenin sonunda gerçekleşen yük devretmenin neden olduğu kısa bir kesinti dışında, güncelleştirme işlemleri sırasında kullanılabilir. Genellikle, uzun süreli işlemlerin kesintiye uğramasından, [hızlandırılmış veritabanı kurtarması](sql-database-accelerated-database-recovery.md)sayesinde 10 saniyeye kadar sürer.
 
 > [!TIP]
 > Genel Amaçlı hizmet katmanındaki ayrılmış depolama alanının güncelleştirilmesi yük devri veya örnek kullanılabilirliğini etkilemez.
 
-[Hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md) , Azure SQL veritabanı yönetilen örnekleri için şu anda kullanılamıyor. Bu özellik etkinleştirildikten sonra, uzun süre çalışan işlemler durumunda bile yük devretme süresinin çeşitliğini önemli ölçüde azaltır.
+> [!IMPORTANT]
+> Azure SQL veritabanı yönetilen örneği 'nin işlem veya depolama alanını ölçeklendirmeniz veya hizmet katmanını uzun süre çalışan işlemler (veri alma, veri işleme işleri, dizin yeniden oluşturma vb.) ile aynı anda değiştirmeniz önerilmez. İşlemin sonunda gerçekleştirilecek veritabanı yük devretmesi, devam eden tüm işlemleri iptal eder.
+
+
+### <a name="management-operations-cross-impact"></a>Yönetim işlemleri çapraz etki
+
+Yönetilen örnek yönetimi işlemleri, aynı sanal kümenin içine yerleştirilmiş örneklerin diğer yönetim işlemlerini etkileyebilir. Buna aşağıdakiler dahildir:
+
+- Bir sanal kümede **uzun süre çalışan geri yükleme işlemleri** , aynı alt ağdaki diğer örnek oluşturma veya ölçeklendirme işlemini beklemeye alır.<br/>**Örnek:** uzun süre çalışan geri yükleme işlemi varsa ve aynı alt ağda oluşturma veya ölçeklendirme isteği varsa, devam etmeden önce geri yükleme işleminin tamamlanmasını bekleneceği için bu isteğin tamamlanması daha uzun sürer.
+    
+- **Sonraki örnek oluşturma veya ölçeklendirme** işlemi, önceden başlatılan örnek oluşturma veya sanal küme yeniden boyutlandırmayı başlatan örnek ölçeği tarafından beklemeye konur.<br/>**Örnek:** aynı alt ağda aynı sanal küme altında birden fazla oluşturma ve/veya ölçek isteği varsa ve bunlardan biri sanal küme yeniden boyutlandırmayı başlatırsa, bu isteklerin devam etmeden önce yeniden boyutlandırmanın tamamlanmasını beklemek zorunda kaldıkları için, her bir sanal küme yeniden boyutlandırmasını bekleyecektir.
+
+- **5 dakikalık bir pencerede gönderilen oluşturma/ölçeklendirme işlemleri** toplu olarak oluşturulur ve paralel olarak yürütülür.<br/>**Örnek:** 5 dakikalık bir pencerede gönderilen tüm işlemler için yalnızca bir sanal küme yeniden boyutlandırma gerçekleştirilecek (ilk işlem isteğini yürütme işleminin ölçüünden ölçme). İlk diğeri gönderildikten sonra başka bir isteğin 5 dakikadan uzun bir süre gönderilmesi durumunda, yürütme başlamadan önce sanal küme yeniden boyutlandırmanın tamamlanmasını bekler.
+
+> [!IMPORTANT]
+> Devam eden başka bir işlem nedeniyle bekletilen yönetim işlemleri, devam eden koşullar karşılandıktan sonra otomatik olarak sürdürülecek. Geçici olarak duraklatılan yönetim işlemini sürdürmeniz için Kullanıcı eylemi gerekli değildir.
 
 ### <a name="canceling-management-operations"></a>Yönetim işlemlerini iptal etme
 
@@ -187,14 +199,14 @@ Aşağıdaki tablo belirli yönetim işlemlerini iptal etme ve genel toplam sür
 
 Kategori  |İşlem  |İptal edilebilir  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
-|Dağıtım |Örnek oluşturma |Hayır |  |
-|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
+|Dağıtım |Örnek oluşturma |No |  |
+|Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |No |  |
 |Güncelleştirme |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
 |Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
 |Güncelleştirme |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
 |Güncelleştirme |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır |
-|Sil |Örnek silme |Hayır |  |
-|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
+|Sil |Örnek silme |No |  |
+|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |No |  |
 
 Yönetim işlemini iptal etmek için genel bakış dikey penceresine gidin ve devam eden işlem bildirim kutusu ' na tıklayın. Sağ taraftan, devam eden bir ekran görüntülenir ve işlemi iptal etmek için düğme olacaktır. İlk tıkladıktan sonra yeniden tıklamalısınız ve işlemi iptal etmek istediğinizi onaylamanız istenir.
 

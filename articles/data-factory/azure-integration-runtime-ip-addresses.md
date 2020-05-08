@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: b0ba47ff28208bce1a6fa6ec300a261d788167de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3fae34d0bb1aaaa2471f1cc9fd55ef9b4b73dfd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415607"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594316"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP adresleri
 
@@ -25,7 +25,7 @@ ms.locfileid: "81415607"
 Azure Integration Runtime kullandığı IP adresleri, Azure tümleştirme çalışma zamanının bulunduğu bölgeye bağlıdır. *Tümü* Aynı bölgedeki Azure tümleştirme çalışma zamanları aynı IP adresi aralıklarını kullanır.
 
 > [!IMPORTANT]  
-> Veri akışları bu IP 'Leri Şu anda kullanmaz. 
+> Veri akışları sabit IP aralıklarının kullanılmasını desteklemez.
 >
 > Bu IP aralıklarını veri taşıma, işlem hattı ve dış etkinlik yürütmeleri için kullanabilirsiniz. Bu IP aralıkları, Azure tümleştirme çalışma zamanından gelen erişim için veri depoları/ağ güvenlik grubu (NSG)/güvenlik duvarları içindeki beyaz listeye yönelik olarak kullanılabilir. 
 

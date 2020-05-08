@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990914"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583090"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -95,6 +95,10 @@ Bağlayıcı sunucuları ve Web uygulaması hizmet hesabı aynı etki alanında 
 
 Bağlayıcı sunucuları ve Web uygulaması hizmet hesabı farklı etki alanlarındaysa, kaynak tabanlı temsili kullanılır. Temsili izinleri hedef Web sunucusunda ve Web uygulaması hizmeti hesabında yapılandırılır. Bu kısıtlı yetkilendirme yöntemi nispeten yenidir. Yöntemi, kaynak (Web hizmeti) sahibinin hangi makine ve hizmet hesaplarının temsil edebilir olduğunu denetlemesine izin vererek etki alanları arası temsilciyi destekleyen Windows Server 2012 ' de kullanıma sunulmuştur. Bu yapılandırmaya yardımcı olacak bir kullanıcı arabirimi yoktur, bu nedenle PowerShell kullanmanız gerekir.
 Daha fazla bilgi için bkz. [uygulama proxy 'si Ile Kerberos kısıtlanmış temsilciyi anlama](https://aka.ms/kcdpaper).
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM kimlik doğrulaması Azure AD Uygulama Ara Sunucusu ile çalışıyor mu?
+
+NTLM kimlik doğrulaması, ön kimlik doğrulama veya çoklu oturum açma yöntemi olarak kullanılamaz. NTLM kimlik doğrulaması yalnızca istemci ile yayınlanan web uygulaması arasında doğrudan anlaşılırken kullanılabilir. NTLM kimlik doğrulamasının kullanılması genellikle tarayıcıda bir oturum açma isteminin görünmesine neden olur.
 
 ## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 

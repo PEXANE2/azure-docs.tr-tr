@@ -4,14 +4,14 @@ description: Microsoft tarafından yönetilen varsayılan şifreleme anahtarlar�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195086"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597748"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 
@@ -20,11 +20,7 @@ Azure HPC Cache 'te verilerinizi şifrelemek için kullanılan anahtarların sah
 > [!NOTE]
 > Azure 'da depolanan tüm veriler, önbellek disklerinde de dahil olmak üzere varsayılan olarak Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Yalnızca verilerinizi şifrelemek için kullanılan anahtarları yönetmek istiyorsanız bu makaledeki adımları izlemeniz gerekir.
 
-Bu özellik yalnızca şu Azure bölgelerinde kullanılabilir:
-
-* Doğu ABD
-* Orta Güney ABD
-* Batı ABD 2
+Bu özellik yalnızca Azure HPC önbelleğinin kullanılabildiği bazı Azure bölgelerinde kullanılabilir. Ayrıntılar için [bölge kullanılabilirliği](hpc-cache-overview.md#region-availability) listesine bakın.
 
 Azure HPC Cache için müşteri tarafından yönetilen anahtar şifrelemeyi etkinleştirmek için üç adım vardır:
 
@@ -71,7 +67,7 @@ Anahtar Kasası erişim izinleri:
 Ayrıntılar için [Azure Key Vault belgelerini](../key-vault/key-vault-overview.md) okuyun.
 
 > [!NOTE]
-> Azure Key Vault aynı aboneliği kullanmalıdır ve Azure HPC önbelleğiyle aynı bölgede olmalıdır. Bu makalenin başlangıcında listelenen desteklenen bölgelerden birini kullanın.
+> Azure Key Vault aynı aboneliği kullanmalıdır ve Azure HPC önbelleğiyle aynı bölgede olmalıdır. Seçtiğiniz bölgenin [müşteri tarafından yönetilen anahtarlar özelliğini desteklediğinden](hpc-cache-overview.md#region-availability)emin olun.
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. bir önbelleği, müşteri tarafından yönetilen anahtarlar etkin olarak oluşturun
 

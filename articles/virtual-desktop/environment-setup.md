@@ -5,23 +5,25 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127907"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612396"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Sanal Masaüstü ortamı
 
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/environment-setup-2019.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Windows sanal masaüstü, kullanıcıların sanallaştırılmış masaüstlerine ve RemoteApps 'e kolay ve güvenli bir şekilde erişmesini sağlayan bir hizmettir. Bu konu, Windows sanal masaüstü ortamının genel yapısı hakkında biraz daha fazla bilgi sağlayacaktır.
-
-## <a name="tenants"></a>Kiracılar
-
-Windows sanal masaüstü kiracısı, Windows sanal masaüstü ortamınızı yönetmeye yönelik birincil arabirimdir. Her Windows sanal masaüstü kiracının, ortamda oturum açan kullanıcıları içeren Azure Active Directory ilişkilendirilmesi gerekir. Windows sanal masaüstü kiracısında, kullanıcılarınızın iş yüklerini çalıştırmak için konak havuzları oluşturmaya başlayabilirsiniz.
 
 ## <a name="host-pools"></a>Konak havuzları
 
@@ -45,12 +47,12 @@ Varsayılan olarak, bir masaüstü uygulama grubu ("Masaüstü uygulama grubu" a
 
 Kaynakları kullanıcılara yayımlamak için, bunları uygulama gruplarına atamanız gerekir. Uygulama gruplarına kullanıcı atarken şunları göz önünde bulundurun:
 
-- Bir kullanıcı aynı konak havuzundaki bir masaüstü uygulama grubuna ve RemoteApp uygulama grubuna atanamaz.
+- Bir kullanıcı aynı konak havuzundaki bir masaüstü uygulama grubuna ve RemoteApp uygulama grubuna atanabilir. Ancak, kullanıcılar her oturum için yalnızca bir uygulama grubu türü başlatabilir. Kullanıcılar tek bir oturumda aynı anda her iki tür uygulama grubunu da başlatamaz.
 - Bir kullanıcı aynı konak havuzu içindeki birden çok uygulama grubuna atanabilir ve akışları her iki uygulama grubunun birikmesi olacaktır.
 
-## <a name="tenant-groups"></a>Kiracı grupları
+## <a name="workspaces"></a>Çalışma Alanları
 
-Windows sanal masaüstü 'nde, Windows sanal masaüstü kiracısı, çoğu kurulum ve yapılandırmanın gerçekleştiği yerdir. Windows sanal masaüstü kiracısı konak havuzlarını, uygulama gruplarını ve uygulama grubu Kullanıcı atamalarını içerir. Ancak, özellikle bir bulut hizmeti sağlayıcısı (CSP) veya barındırma iş ortağıysanız, birden çok Windows sanal masaüstü kiracıyı aynı anda yönetmeniz gereken bazı durumlar olabilir. Bu durumlarda, müşterilerin Windows sanal masaüstü kiracılarının her birini yerleştirmek ve erişimi merkezi olarak yönetmek için özel bir Windows sanal masaüstü kiracı grubu kullanabilirsiniz. Ancak, yalnızca tek bir Windows sanal masaüstü kiracısı yönetiyorsanız, kiracı grubu kavramı uygulanmaz ve varsayılan kiracı grubunda bulunan kiracınızı çalıştırmaya ve yönetmeye devam edebilirsiniz.
+Çalışma alanı, Windows sanal Masaüstündeki uygulama gruplarının mantıksal gruplandırmasıdır. Her Windows sanal masaüstü uygulaması grubu, kullanıcıların bu kullanıcılara yayınlanan uzak uygulamaları ve masaüstlerini görmesini sağlamak için bir çalışma alanı ile ilişkilendirilmesi gerekir.  
 
 ## <a name="end-users"></a>Son kullanıcılar
 
@@ -60,9 +62,12 @@ Kullanıcıları uygulama gruplarına atadıktan sonra, Windows Sanal Masaüstü
 
 Temsilci erişimi hakkında daha fazla bilgi edinin ve [Windows sanal masaüstü 'Nde temsilci erişimi olan](delegated-access-virtual-desktop.md)kullanıcılara roller atama hakkında daha fazla bilgi edinin.
 
-Windows sanal masaüstü kiracınızı ayarlamayı öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md).
+Windows sanal masaüstü konak havuzunuzu ayarlamayı öğrenmek için bkz. [Azure Portal bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md).
 
 Windows sanal masaüstüne nasıl bağlanacağınızı öğrenmek için aşağıdaki makalelerden birine bakın:
 
-- [Windows 10 veya Windows 7'den bağlanma](connect-windows-7-and-10.md)
-- [Web tarayıcısından bağlanma](connect-web.md)
+- [Windows 10 veya Windows 7 ile bağlanma](connect-windows-7-and-10.md)
+- [Bir Web tarayıcısı ile bağlanma](connect-web.md)
+- [Android istemcisiyle bağlanma](connect-android.md)
+- [macOS istemcisiyle bağlanma](connect-macos.md)
+- [iOS istemcisiyle bağlanma](connect-ios.md)

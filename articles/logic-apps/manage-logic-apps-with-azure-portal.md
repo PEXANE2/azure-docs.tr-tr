@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415942"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598173"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portal Logic Apps 'i yönetme
 
@@ -60,7 +60,7 @@ Mantıksal uygulamanızı bulup açmak için şu adımları izleyin:
    * **Konum**
    * **Tür** 
    * **Abonelik adı**
-   * **Abonelik KIMLIĞI**
+   * **Abonelik Kimliği**
    * **Erişim uç noktası**
    * **Çalışma zamanı giden IP adresleri**
    * **Uç nokta IP adreslerine erişin**
@@ -145,6 +145,10 @@ Mantıksal uygulamanızı silmek, iş akışı örneklerinizi şu yollarla etkil
 * Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder. Bu çalıştırmaların sayısına bağlı olarak, bu işlem biraz zaman alabilir.
 
 * Logic Apps altyapısı yeni iş akışı örnekleri oluşturmaz veya çalıştırmaz.
+
+> [!NOTE]
+> Bir alt mantıksal uygulamayı silip yeniden oluşturursanız, ana mantıksal uygulamayı yeniden kaydetmeniz gerekir. Yeniden oluşturulan alt uygulamanın farklı meta verileri olacak.
+> Üst mantıksal uygulamayı alt öğesini yeniden oluşturduktan sonra yeniden kaydetmezseniz, alt mantıksal uygulamaya yapılan çağrılarınız "yetkilendirilmemiş" hatası ile başarısız olur. Bu davranış, örneğin tümleştirme hesaplarında yapıtlar kullanan veya Azure işlevleri çağıran ana alt mantıksal uygulamalar için geçerlidir.
 
 <a name="delete-single-logic-app"></a>
 

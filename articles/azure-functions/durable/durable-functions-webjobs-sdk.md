@@ -4,12 +4,12 @@ description: WebJobs SDK kullanarak Web Işlerinde çalıştırmak üzere Dayan�
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232733"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733422"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Web Işleri olarak Dayanıklı İşlevler çalıştırma
 
@@ -19,7 +19,7 @@ Dayanıklı İşlevler, varsayılan olarak, özellikleri barındırmak için Azu
 
 Web Işleri SDK 'sının 3. x sürümünde, ana bilgisayar uygulamasının bir uygulamasıdır `IHost`ve sürüm 2. x içinde `JobHost` nesnesini kullanırsınız.
 
-Zincirleme Dayanıklı İşlevler örneği bir WebJobs SDK 2. x sürümünde bulunabilir: [dayanıklı işlevler deposunu](https://github.com/azure/azure-functions-durable-extension/)indirip klonlayın ve *Samples\\\\webjobssdk zincirleme* klasörüne gidin.
+Zincirleme Dayanıklı İşlevler örneği bir WebJobs SDK 2. x sürümünde bulunabilir: [dayanıklı işlevler deposunu](https://github.com/azure/azure-functions-durable-extension/)indirip kopyalayıp klonlayın ve *v1* dalını kullanıma alın ve *Samples\\\\webjobssdk zincirleme* klasörüne gidin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -184,7 +184,7 @@ while (true)
 
 WebJob olarak çalışacak Dayanıklı İşlevler oluşturdunuz ve artık bunun, tek başına Azure Işlevleri olarak Dayanıklı İşlevler çalıştırmanın nasıl farklı olacağını anlamış oldunuz. Bu noktada, bir örnek içinde çalıştığını görmek faydalı olabilir.
 
-Bu bölüm, [örnek projenin](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)nasıl çalıştırılacağını gösteren bir genel bakış sunar. Bir WebJobs SDK projesini yerel olarak çalıştırmayı ve bir Azure WebJob 'a dağıtmayı açıklayan ayrıntılı yönergeler için bkz. [WebJobs SDK ile çalışmaya başlama](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
+Bu bölüm, [örnek projenin](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining)nasıl çalıştırılacağını gösteren bir genel bakış sunar. Bir WebJobs SDK projesini yerel olarak çalıştırmayı ve bir Azure WebJob 'a dağıtmayı açıklayan ayrıntılı yönergeler için bkz. [WebJobs SDK ile çalışmaya başlama](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Yerel olarak çalıştırma
 

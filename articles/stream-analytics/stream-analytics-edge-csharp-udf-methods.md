@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426308"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598156"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics işleri için .NET Standard Kullanıcı tanımlı işlevler geliştirme (Önizleme)
 
@@ -42,17 +42,29 @@ UDF 'Leri uygulamak için üç yol vardır:
 Herhangi bir UDF paketinin biçimi yolu `/UserCustomCode/CLR/*`vardır. Dinamik bağlantı kitaplıkları (dll 'Ler) ve kaynakları `/UserCustomCode/CLR/*` klasörü altına kopyalanır ve bu, Kullanıcı dll 'lerinin sistem ve Azure Stream Analytics dll 'lerden yalıtılmasına yardımcı olur. Bu paket yolu, bunları kullanmak için kullanılan yöntemden bağımsız olarak tüm işlevler için kullanılır.
 
 ## <a name="supported-types-and-mapping"></a>Desteklenen türler ve eşleme
+C# dilinde kullanılacak Azure Stream Analytics değerler için, bir ortamdan diğerine sıralanması gerekir. Bir UDF 'nin tüm giriş parametreleri için sıralama gerçekleşir. Her Azure Stream Analytics türü, aşağıdaki tabloda gösterilen C# dilinde karşılık gelen bir türe sahiptir:
 
-|**UDF türü (C#)**  |**Azure Stream Analytics türü**  |
+|**Azure Stream Analytics türü** |**C# türü** |
+|---------|---------|
+|bigint | long |
+|float | double |
+|nvarchar (max) | string |
+|datetime | DateTime |
+|Kayıt | Sözlük\<dizesi, nesne> |
+|Dizi | Dizi\<nesnesi> |
+
+Aynı durum, verilerin C# ' den Azure Stream Analytics, UDF 'nin çıkış değerinde meydana gelen olarak sıralanması gerektiğinde de geçerlidir. Aşağıdaki tabloda hangi türlerin desteklendiğini gösterilmektedir:
+
+|**C# türü**  |**Azure Stream Analytics türü**  |
 |---------|---------|
 |long  |  bigint   |
-|double  |  double   |
+|double  |  float   |
 |string  |  nvarchar (max)   |
-|tarih saat  |  tarih saat   |
-|struct   |  IRecord   |
-|object  |  IRecord   |
-|Dizi\<nesnesi>  |  IArray   |
-|sözlük<dize, nesne>  |  IRecord   |
+|DateTime  |  tarih saat   |
+|struct   |  Kayıt   |
+|object  |  Kayıt   |
+|Dizi\<nesnesi>  |  Dizi   |
+|Sözlük\<dizesi, nesne>  |  Kayıt   |
 
 ## <a name="codebehind"></a>CodeBehind
 Kullanıcı tanımlı işlevleri **Script. ASQL** codebehind içinde yazabilirsiniz. Visual Studio Araçları otomatik olarak CodeBehind dosyasını derleme dosyasına derler. Derlemeler bir zip dosyası olarak paketlenir ve işinizi Azure 'a gönderdiğinizde depolama hesabınıza yüklenir. [Stream Analytics Edge işleri öğreticisi Için C# UDF](stream-analytics-edge-csharp-udf.md) 'Yi izleyerek codebehind kullanarak c# UDF yazma hakkında bilgi edinebilirsiniz. 

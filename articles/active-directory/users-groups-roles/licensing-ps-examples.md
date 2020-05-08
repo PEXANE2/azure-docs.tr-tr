@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484868"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582680"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
@@ -29,7 +29,7 @@ Grup tabanlı lisanslama için tam işlevsellik [Azure Portal](https://portal.az
 > Cmdlet 'leri çalıştırmaya başlamadan önce `Connect-MsolService`  cmdlet 'ini çalıştırarak kuruluşunuza ilk kez bağlandığınızdan emin olun.
 
 > [!WARNING]
-> Bu kod, tanıtım amacıyla bir örnek olarak sağlanır. Bunu ortamınızda kullanmak istiyorsanız, önce küçük ölçekte veya ayrı bir test kiracısında test etmeyi düşünün. Ortamınızın belirli ihtiyaçlarını karşılamak için kodu ayarlamanız gerekebilir.
+> Bu kod, tanıtım amacıyla bir örnek olarak sağlanır. Bunu ortamınızda kullanmak istiyorsanız, önce küçük ölçekte veya ayrı bir test kuruluşunda test etmeyi düşünün. Ortamınızın belirli ihtiyaçlarını karşılamak için kodu ayarlamanız gerekebilir.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Bir gruba atanan Ürün lisanslarını görüntüleme
 
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Tüm Kiracıdaki lisans hataları olan tüm kullanıcıları al
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>Tüm kuruluşta Lisans hataları olan tüm kullanıcıları al
 
 Aşağıdaki betik, bir veya daha fazla gruptan lisans hataları olan tüm kullanıcıları almak için kullanılabilir. Komut dosyası her bir hata kaynağını açıkça tanımlamanızı sağlayan her bir lisans hatası için Kullanıcı başına bir satır yazdırır.
 
 > [!NOTE]
-> Bu betik, Kiracıdaki tüm kullanıcıları numaralandırır ve bu, büyük kiracılar için ideal olmayabilir.
+> Bu betik, kuruluştaki tüm kullanıcıları numaralandırır ve bu, büyük kuruluşlar için ideal olmayabilir.
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,10 +364,10 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Bu komut dosyası, kiracı 'daki her bir kullanıcı için bu işlevleri, bu örnekte, kiracımızda *contoso: EMS*kimliğiyle temsil edilen *Enterprise Mobility + Security*lisansıyla ilgilentireceğiz.
+Bu komut dosyası, bu işlevleri kuruluştaki her bir kullanıcı için yürütür. Bu örnekte, kuruluşumuzdaki *contoso: EMS*kimliği ile temsil edildiği *Enterprise Mobility + Security*için lisans ile ilgileniyoruz:
 
 ```powershell
-#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned

@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72244641"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607835"
 ---
-# <a name="security-frame-authentication--mitigations"></a>Güvenlik çerçevesi: kimlik doğrulaması | Karşı 
+# <a name="security-frame-authentication--mitigations"></a>Güvenlik çerçevesi: kimlik doğrulaması | Karşı
 
 | Ürün/hizmet | Makale |
 | --------------- | ------- |
@@ -44,8 +45,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -55,8 +56,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -66,8 +67,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -77,8 +78,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -88,8 +89,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -99,8 +100,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -110,8 +111,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web Uygulaması |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -121,8 +122,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Veritabanı |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | OnPrem |
 | **Öznitelikler**              | SQL sürümü-tümü |
 | **Başvurular**              | [SQL Server-bir kimlik doğrulama modu seçin](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -132,8 +133,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Veritabanı |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | SQL Azure |
 | **Öznitelikler**              | SQL sürümü-V12 |
 | **Başvurular**              | [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na bağlanma](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -143,8 +144,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Veritabanı |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [SQL Server parola ilkesi](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -154,8 +155,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Veritabanı | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Veritabanı |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Onpred, SQL Azure |
 | **Öznitelikler**              | SQL sürümü-MSSQL2012, SQL sürümü-V12 |
 | **Başvurular**              | [Kapsanan veritabanlarında En Iyi güvenlik uygulamaları](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -165,8 +166,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Event Hub | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure Event Hub |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Event Hubs kimlik doğrulaması ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -176,8 +177,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Güven sınırı | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Azure Güven sınırı |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Multi-Factor Authentication nedir?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -187,8 +188,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Service Fabric güven sınırı | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Service Fabric güven sınırı |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure  |
 | **Başvurular**              | [Service Fabric kümesi güvenlik senaryoları](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -198,8 +199,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Service Fabric güven sınırı | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Service Fabric güven sınırı |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure, ortam-tek başına |
 | **Başvurular**              | [İstemciden düğüme Sertifika güvenliği Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security) [istemci sertifikası kullanarak güvenli bir kümeye bağlanma](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -209,8 +210,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Service Fabric güven sınırı | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Service Fabric güven sınırı |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure |
 | **Başvurular**              | [Küme güvenliği senaryoları-güvenlik önerileri](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -220,8 +221,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Service Fabric güven sınırı | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Service Fabric güven sınırı |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ortam-Azure |
 | **Başvurular**              | [X. 509.440 sertifikaları ve Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -231,8 +232,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Kimlik Sunucusu | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Kimlik Sunucusu |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [IdentityServer3-büyük resim](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -242,8 +243,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Kimlik Sunucusu | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Kimlik Sunucusu |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Kimlik sunucusu dağıtımı-önbelleğe alma](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -253,8 +254,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Makine güven sınırı | 
-| **SDL aşaması**               | Dağıtım |  
+| **Bileşen**               | Makine güven sınırı |
+| **SDL aşaması**               | Dağıtım |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -264,8 +265,8 @@ ms.locfileid: "72244641"
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | WCF |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -304,8 +305,8 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MS
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | WCF |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | .NET Framework 3 |
 | **Öznitelikler**              | İstemci kimlik bilgisi türü-yok |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -320,8 +321,8 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MS
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | WCF | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | WCF |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel, .NET Framework 3 |
 | **Öznitelikler**              | İstemci kimlik bilgisi türü-yok |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -336,8 +337,8 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MS
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Web API | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Web API |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Web API 'si](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [dış kimlik doğrulama hizmetleri, ASP.NET Web API 'Si ile](https://www.asp.net/web-api/overview/security/external-authentication-services) kimlik doğrulaması ve yetkilendirme (C#) |
@@ -347,8 +348,8 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MS
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure AD | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure AD |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure AD Için kimlik doğrulama senaryoları](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory kod örnekleri](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/) [Azure Active Directory Geliştirici Kılavuzu](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -358,8 +359,8 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MS
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure AD | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure AD |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Web uygulamaları için Azure Active Directory Ile modern kimlik doğrulaması](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [REDSıS 'i adal belirteç önbelleği olarak kullanma](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -369,8 +370,8 @@ Aşağıdaki `<netMsmqBinding/>` WCF yapılandırma dosyasının öğesi, bir MS
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure AD | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure AD |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Web uygulamaları için Azure Active Directory ile modern kimlik doğrulama](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -430,8 +431,8 @@ Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygu
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure AD | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure AD |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -441,8 +442,8 @@ Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygu
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT alan ağ geçidi | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | IoT alan ağ geçidi |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -452,11 +453,11 @@ Bu yapılandırmanın verimliliğini test etmek için yerel OıDC korumalı uygu
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT bulut ağ geçidi | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | IoT bulut ağ geçidi |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel, C#, Node. JS,  |
 | **Öznitelikler**              | Yok, ağ geçidi seçimi-Azure IoT Hub |
-| **Başvurular**              | N/A, [.net Ile Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [IoT Hub ve Node JS ile ÇALıŞMAYA](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)başlama, [SAS ve sertifikalarla IoT 'yi güvenli hale getirme](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git deposu](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **Başvurular**              | N/A, [.net Ile Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [IoT Hub ve Node JS ile ÇALıŞMAYA](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)başlama, [SAS ve sertifikalarla IoT 'yi güvenli hale getirme](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git deposu](https://github.com/Azure/azure-iot-sdks/) |
 | **Adımlar** | <ul><li>**Genel:** Aktarım Katmanı Güvenliği (TLS) veya IPSec kullanarak cihazın kimliğini doğrulayın. Altyapı, tam asimetrik şifrelemeyi işleyemeyen cihazlarda önceden paylaşılan anahtar (PSK) kullanmayı desteklemelidir. Azure AD, OAuth özelliğinden yararlanın.</li><li>**C#:** Bir DeviceClient örneği oluştururken, Create yöntemi, IoT Hub ile iletişim kurmak için AMQP protokolünü kullanan bir DeviceClient örneği oluşturur. HTTPS protokolünü kullanmak için, Create yönteminin protokolü belirtmenize olanak tanıyan geçersiz kılmasını kullanın. HTTPS protokolünü kullanıyorsanız, `Microsoft.AspNet.WebApi.Client` `System.Net.Http.Formatting` ad alanını dahil etmek için projenize NuGet paketini de eklemeniz gerekir.</li></ul>|
 
 ### <a name="example"></a>Örnek
@@ -512,9 +513,9 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* SAS belirteci kullanarak bağlan: 
+* SAS belirteci kullanarak bağlan:
     ```javascript
-    Client.fromSharedAccessSignature(sas, Http); 
+    Client.fromSharedAccessSignature(sas, Http);
     ```
   #### <a name="certificates"></a>Sertifikalar
 * Sertifikayı ve anahtarı depolamak üzere bir. CERT ve. Key dosyası oluşturmak için OpenSSL gibi herhangi bir aracı kullanarak kendinden imzalı bir x509 sertifikası oluşturun
@@ -541,7 +542,7 @@ await deviceClient.SendEventAsync(message);
     var options = {
         key: fs.readFileSync('./key.pem', 'utf8'),
         cert: fs.readFileSync('./server.crt', 'utf8')
-    }; 
+    };
     // Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client //transport to use x509 when connecting to IoT Hub
     client.setOptions(options);
     //call fn to execute after the connection is set up
@@ -552,8 +553,8 @@ await deviceClient.SendEventAsync(message);
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT bulut ağ geçidi  | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | IoT bulut ağ geçidi  |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Ağ Geçidi seçimi-Azure IoT Hub |
 | **Başvurular**              | [Azure IoT Hub güvenlik belirteçleri](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -563,8 +564,8 @@ await deviceClient.SendEventAsync(message);
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure Storage |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType-blob |
 | **Başvurular**              | [Kapsayıcılar ve Bloblar için anonim okuma erişimini yönetme](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [paylaşılan erişim imzaları, 1. Bölüm: SAS modelini anlama](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -574,8 +575,8 @@ await deviceClient.SendEventAsync(message);
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Yapı |  
+| **Bileşen**               | Azure Storage |
+| **SDL aşaması**               | Yapı |
 | **İlgili teknolojiler** | Genel |
 | **Öznitelikler**              | Yok |
 | **Başvurular**              | [Paylaşılan erişim imzaları, 1. Bölüm: SAS modelini](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [paylaşılan erişim imzalarını ve Bölüm 2: BLOB depolama ile SAS oluşturma ve kullanma](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [paylaşılan erişim imzalarını ve depolanan erişim ilkelerini kullanarak hesabınızdaki nesnelere erişim yetkisi verme](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

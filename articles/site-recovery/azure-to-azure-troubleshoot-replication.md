@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667411"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901345"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da çoğaltma sorunlarını giderme
 
@@ -41,7 +41,7 @@ Olayı seçerseniz, tam disk bilgilerini görmeniz gerekir:
 
 Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar. Bu sınırlar, testlerimize dayalıdır, ancak olası tüm uygulama giriş çıkışı (g/ç) kombinasyonlarını kapsayamazlar. Gerçek sonuçlar, uygulamanızın G/Ç karışımına göre değişebilir.
 
-Göz önünde bulundurulması gereken iki sınır vardır: disk başına veri değişim ve sanal makine başına veri değişim. Bir örnek için aşağıdaki tablodaki Premium P20 diskine göz atalım. Tek bir VM için Site Recovery, en fazla beş disk ile disk başına 5 MB/sn 'lik değişim işleyebilir. Site Recovery VM başına toplam dalgalanmaya 25 MB/sn sınırı vardır.
+Göz önünde bulundurulması gereken iki sınır vardır: disk başına veri değişim ve sanal makine başına veri değişim. Bir örnek için aşağıdaki tablodaki Premium P20 diskine göz atalım. Tek bir VM için Site Recovery, en fazla beş disk ile disk başına 5 MB/sn 'lik değişim işleyebilir. Site Recovery, VM başına toplam karmaşıklık 54 MB/s sınırına sahiptir.
 
 **Çoğaltma depolama hedefi** | **Kaynak disk için Ortalama g/ç boyutu** |**Kaynak disk için Ortalama veri karmaşası** | **Kaynak veri diski için günlük toplam veri değişim sıklığı**
 ---|---|---|---

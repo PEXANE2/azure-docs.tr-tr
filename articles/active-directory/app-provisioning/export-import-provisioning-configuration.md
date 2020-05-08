@@ -1,50 +1,54 @@
 ---
-title: Sağlama yapılandırmanızı dışarı aktarın ve olağanüstü durum kurtarma için bilinen iyi duruma geri alın. | Microsoft Docs
+title: Sağlama yapılandırmasını dışarı aktarın ve olağanüstü durum kurtarma için bilinen iyi duruma geri alın
 description: Sağlama yapılandırmanızı dışarı aktarmayı ve olağanüstü durum kurtarma için bilinen iyi duruma geri almayı öğrenin.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.subservice: app-provisioning
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051307"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593769"
 ---
-# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Sağlama yapılandırmanızı dışarı aktarın ve bilinen iyi bir duruma geri alın
+# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Nasıl yapılır: sağlama yapılandırmasını dışarı aktarma ve bilinen iyi bir duruma geri alma
+
+Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+
+- Azure portal sağlama yapılandırmanızı dışarı ve içeri aktarma
+- Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı ve içeri aktarma
 
 ## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Azure portal sağlama yapılandırmanızı dışarı ve içeri aktarma
 
-### <a name="how-can-i-export-my-provisioning-configuration"></a>Sağlama yapılandırmanızla nasıl dışarı aktarabilirsiniz?
+### <a name="export-your-provisioning-configuration"></a>Sağlama yapılandırmanızı dışarı aktarma
+
 Yapılandırmanızı dışarı aktarmak için:
+
 1. [Azure Portal](https://portal.azure.com/)sol gezinti panelinde **Azure Active Directory**' i seçin.
-2. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar** ' ı seçin ve uygulamanızı seçin.
-3. Sol gezinti bölmesinde **sağlama**' yı seçin. Sağlama yapılandırma sayfasında, **öznitelik eşlemeleri**' ne tıklayın, ardından **Gelişmiş seçenekleri gösterin**ve son olarak **şemanızı gözden geçirin**. Bu işlem sizi şema düzenleyicisine götürür. 
-5. Şemayı indirmek için sayfanın en üstündeki komut çubuğunda İndir ' e tıklayın.
+1. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar** ' ı seçin ve uygulamanızı seçin.
+1. Sol gezinti bölmesinde **sağlama**' yı seçin. Sağlama yapılandırma sayfasında, **öznitelik eşlemeleri**' ne tıklayın, ardından **Gelişmiş seçenekleri gösterin**ve son olarak **şemanızı gözden geçirin**. Bu işlem sizi şema düzenleyicisine götürür.
+1. Şemayı indirmek için sayfanın en üstündeki komut çubuğunda İndir ' e tıklayın.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Olağanüstü durum kurtarma-bilinen iyi bir duruma geri alma
-Yapılandırmanızı dışa aktarma ve kaydetme, yapılandırmanızın önceki bir sürümüne geri dönme olanağı sağlar. Sağlama yapılandırmanızı dışa aktarıp daha sonra kullanmak üzere öznitelik eşlemelerinizde veya kapsam filtrelerinizde değişiklik yaptığınızda kaydetmeniz önerilir. Tüm yapmanız gereken, yukarıdaki adımlarda indirdiğiniz JSON dosyasını açın, JSON dosyasının tüm içeriğini kopyalayın, şema düzenleyicisinde JSON yükünün tüm içeriğini değiştirin ve kaydedin. Etkin bir sağlama çevrimi varsa, işlem tamamlanır ve sonraki döngüde güncelleştirilmiş şema kullanılır. Sonraki döngüde bir başlangıç döngüsünün olması gerekir. Bu, yeni yapılandırmaya göre her kullanıcı ve grubu yeniden değerlendirmelidir. Önceki bir yapılandırmaya geri döndüğünüzde aşağıdakileri göz önünde bulundurun:
-* Kullanıcılar, kapsam içinde olup olmadıklarını anlamak için yeniden değerlendirilir. Kapsam filtreleri değiştirildiyse, bir Kullanıcı kapsam içinde değilse, devre dışı bırakılacak. Çoğu durumda bu istenen davranış olsa da, bunu engellemek isteyebileceğiniz ve [kapsam silme işlevinin atlanmasını](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kullanabileceğiniz zamanlar vardır. 
-* Sağlama yapılandırmanızın değiştirilmesi hizmeti yeniden başlatır ve bir [Başlangıç döngüsünü](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)tetikler.
 
+Yapılandırmanızı dışa aktarma ve kaydetme, yapılandırmanızın önceki bir sürümüne geri dönme olanağı sağlar. Sağlama yapılandırmanızı dışa aktarıp daha sonra kullanmak üzere öznitelik eşlemelerinizde veya kapsam filtrelerinizde değişiklik yaptığınızda kaydetmeniz önerilir. Tüm yapmanız gereken, yukarıdaki adımlarda indirdiğiniz JSON dosyasını açın, JSON dosyasının tüm içeriğini kopyalayın, şema düzenleyicisinde JSON yükünün tüm içeriğini değiştirin ve kaydedin. Etkin bir sağlama çevrimi varsa, işlem tamamlanır ve sonraki döngüde güncelleştirilmiş şema kullanılır. Sonraki döngüde bir başlangıç döngüsünün olması gerekir. Bu, yeni yapılandırmaya göre her kullanıcı ve grubu yeniden değerlendirmelidir. Önceki bir yapılandırmaya geri döndüğünüzde aşağıdakileri göz önünde bulundurun:
+
+- Kullanıcılar, kapsam içinde olup olmadıklarını anlamak için yeniden değerlendirilir. Kapsam filtreleri değiştirildiyse, bir Kullanıcı kapsam içinde değilse, devre dışı bırakılacak. Çoğu durumda bu istenen davranış olsa da, bunu engellemek isteyebileceğiniz ve [kapsam silme işlevinin atlanmasını](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) kullanabileceğiniz zamanlar vardır. 
+- Sağlama yapılandırmanızın değiştirilmesi hizmeti yeniden başlatır ve bir [Başlangıç döngüsünü](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)tetikler.
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı ve içeri aktarma
-Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için Microsoft Graph API ve Microsoft Graph Gezginini kullanabilirsiniz. Sağlama yapılandırmanızın bir yedeğini oluşturmak için burada yakalanan adımları da kullanabilirsiniz. 
+
+Kullanıcı hazırlama öznitelik eşlemelerinizi ve şemanızı bir JSON dosyasına aktarmak ve yeniden Azure AD 'ye aktarmak için Microsoft Graph API ve Microsoft Graph Gezginini kullanabilirsiniz. Sağlama yapılandırmanızın bir yedeğini oluşturmak için burada yakalanan adımları da kullanabilirsiniz.
 
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
 
-1. [Azure Portal](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *Workday 'NIZI ad Kullanıcı sağlama uygulama* eşlemesine aktarmak istiyorsanız, uygulamanın Özellikler bölümüne gidin. 
+1. [Azure Portal](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *Workday 'NIZI ad Kullanıcı sağlama uygulama* eşlemesine aktarmak istiyorsanız, uygulamanın Özellikler bölümüne gidin.
 1. Sağlama uygulamanızın Özellikler bölümünde, *nesne kimliği* ALANıYLA ilişkili GUID değerini kopyalayın. Bu değer, uygulamanızın **Serviceprincipalıd** olarak da adlandırılır ve Microsoft Graph Explorer işlemlerinde kullanılacaktır.
 
    ![App Service ana iş günü KIMLIĞI](./media/export-import-provisioning-configuration/wd_export_01.png)
@@ -99,4 +103,4 @@ Microsoft Graph Gezgini 'nde, aşağıdaki PUT sorgusunu, [Serviceprincipalıd] 
 
    [![İstek üst bilgileri](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-Yeni şemayı içeri aktarmak için "Sorguyu Çalıştır" düğmesine tıklayın.
+Yeni şemayı içeri aktarmak için **Sorguyu Çalıştır** ' ı seçin.
