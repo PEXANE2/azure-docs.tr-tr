@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve Azure PowerShell kullanarak rol atamalarını listeleme
-description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak hangi kaynakların erişimi olduğunu nasıl belirleyebileceğinizi öğrenin.
+title: Azure PowerShell-Azure RBAC kullanarak Azure rol atamalarını listeleme
+description: Azure PowerShell ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin hangi kaynakların erişimi olduğunu belirlemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdf703ac29ce11749de70fa0ef5972ee284401b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931145"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735717"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC ve Azure PowerShell kullanarak rol atamalarını listeleme
+# <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell kullanarak Azure rol atamalarını listeleme
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, Azure PowerShell kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
@@ -152,7 +152,7 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>Yönetilen bir kimlik için rol atamalarını listeleyin
 
-1. Sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞINI alın. 
+1. Sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞINI alır. 
 
     Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞINI almak için [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)komutunu kullanabilirsiniz.
 
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve Azure PowerShell kullanarak rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)
+- [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)

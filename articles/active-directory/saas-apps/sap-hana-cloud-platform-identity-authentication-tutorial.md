@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92cba923bc197d82083973b3fac476ab93117ad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db852254d7f6ec9c0cb76151fa23e58e2d97bd2c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231382"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Öğretici: SAP bulut platformu kimlik doğrulaması ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -126,7 +126,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. SAP bulut platformu kimlik doğrulama uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
     | firstName | Kullanıcı. |
 
@@ -176,7 +176,7 @@ Bu bölümde, SAP bulut platformu kimlik doğrulama kimlik doğrulamasına eriş
 
 ## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>SAP bulut platformu kimlik doğrulama SSO 'yu yapılandırma
 
-1. Uygulamanız için yapılandırılmış SSO 'yu almak için SAP Cloud Platform kimlik doğrulaması yönetim konsoluna gidin. URL aşağıdaki düzene sahiptir: `https://<tenant-id>.accounts.ondemand.com/admin`. Ardından [Microsoft Azure AD Ile tümleştirmede](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/626b17331b4d4014b8790d3aea70b240.html)SAP Cloud Platform kimlik doğrulama hakkındaki belgeleri okuyun.
+1. Uygulamanız için yapılandırılmış SSO 'yu almak için SAP Cloud Platform kimlik doğrulaması yönetim konsoluna gidin. URL aşağıdaki düzene sahiptir: `https://<tenant-id>.accounts.ondemand.com/admin`. Ardından [Microsoft Azure AD Ile tümleştirmede](https://developers.sap.com/tutorials/cp-ias-azure-ad.html)SAP Cloud Platform kimlik doğrulama hakkındaki belgeleri okuyun.
 
 2. Azure portal **Kaydet** düğmesini seçin.
 
@@ -199,7 +199,7 @@ SAP Cloud Platform kimlik doğrulama kimlik doğrulaması, Kimlik Federasyonu se
 
 Kimlik Federasyonu seçeneği varsayılan olarak devre dışıdır. Kimlik Federasyonu etkinleştirilmişse, yalnızca SAP bulut platformu kimlik doğrulaması 'nda içeri aktarılan kullanıcılar uygulamaya erişebilir.
 
-SAP Cloud Platform kimlik doğrulaması ile kimlik Federasyonu etkinleştirme veya devre dışı bırakma hakkında daha fazla bilgi için bkz. SAP Cloud Platform [Identity Authentication Kullanıcı deposunda kimlik Federasyonu yapılandırma](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/c029bbbaefbf4350af15115396ba14e2.html)KONUSUNDAKI "sap Cloud Platform Identity Authentication Ile kimlik doğrulamasını etkinleştirme".
+SAP Cloud Platform kimlik doğrulaması ile kimlik Federasyonu etkinleştirme veya devre dışı bırakma hakkında daha fazla bilgi için bkz. SAP Cloud Platform [Identity Authentication Kullanıcı deposunda kimlik Federasyonu yapılandırma](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/c029bbbaefbf4350af15115396ba14e2.html)KONUSUNDAKI "sap Cloud Platform Identity Authentication Ile kimlik doğrulamasını etkinleştirme".
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

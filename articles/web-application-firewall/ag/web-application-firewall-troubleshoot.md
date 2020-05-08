@@ -7,18 +7,20 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131263"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983083"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme
 
 Web uygulaması güvenlik duvarınız (WAF) üzerinden geçmesi gereken istekler engelleniyorsa, yapabileceğiniz birkaç nokta vardır.
 
 İlk olarak, [WAF genel bakış](ag-overview.md) ve [WAF yapılandırma](application-gateway-waf-configuration.md) belgelerini okuduğunuzdan emin olun. Ayrıca, [WAF izlemesini](../../application-gateway/application-gateway-diagnostics.md) etkinleştirdiğinizden emin olun. bu makalelerde WAF işlevlerinin nasıl, WAF kural kümelerinin nasıl çalıştığı ve WAF günlüklerine nasıl erişebileceğiniz açıklanmıştır.
+
+OWASP RuleSets, kutudan çok katı olacak şekilde tasarlanmıştır ve WAF kullanılarak uygulamanın veya kuruluşun belirli ihtiyaçlarına uyacak şekilde ayarlanır. Tamamen normaldir ve aslında birçok durumda beklenen, özel kurallar oluşturmak, hatta sorun veya hatalı pozitif sonuçlar oluşturan kuralları devre dışı bırakmak. Site başına ve URI başına ilkeler, bu değişikliklerin yalnızca belirli siteleri/URI 'Leri etkilemesini sağlar, bu nedenle hiçbir değişiklik, aynı sorunlara çalıştırmayan diğer siteleri etkilememelidir. 
 
 ## <a name="understanding-waf-logs"></a>WAF günlüklerini anlama
 

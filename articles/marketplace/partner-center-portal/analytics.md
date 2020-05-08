@@ -1,20 +1,20 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market için analiz
-description: Satışları izlemek, performansı değerlendirmek ve Market tekliflerinizi iyileştirmek için analitik raporlara erişme konusuna genel bakış.
+title: Iş Ortağı Merkezi 'nde Microsoft ticari Marketi için analiz
+description: Microsoft Iş Ortağı Merkezi 'nde satışları izlemek, performansı değerlendirmek ve Market tekliflerinizi iyileştirmek için analitik raporlara nasıl erişebileceğinizi öğrenin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262290"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744901"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analitik raporlara erişin
 
 Satışları izlemek, performansı değerlendirmek ve Market 'teki tekliflerinizi iyileştirmek için Microsoft Iş Ortağı Merkezi 'ndeki analitik raporlara nasıl erişebileceğinizi öğrenin. İş ortağı olarak, Iş Ortağı Merkezi tarafından desteklenen veri görselleştirme ve Öngörüler grafiklerini kullanarak teklif listelerinizi izleyebilir ve satışlarınızı en üst düzeye çıkarmak için kullanabileceğiniz yolları bulabilirsiniz. Geliştirilmiş analiz araçları, performans sonuçları üzerinde işlem yapma ve müşterilerinizle ve satıcılarınızla daha iyi ilişkiler elde etme olanağı sağlar.
 

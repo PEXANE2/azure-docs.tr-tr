@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 1ab9aeac0bde21e229fdb57b7ad02d5d48471551
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b09b431e827bed4e416913c88d23ee1eddaf17c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645081"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629023"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid hatalarında sorun giderme
 Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerinin, açıklamalarının ve bu hataları aldığınızda gerçekleştirmeniz gereken önerilen eylemlerin bir listesini sağlar. 
@@ -30,6 +30,25 @@ Bu sorun giderme kılavuzu, Azure Event Grid hata kodlarının, hata iletilerini
 | HttpStatusCode. Conflict <br/>409 | Belirtilen ada sahip bir konu zaten var. Farklı bir konu adı seçin.   | Özel konu adı, doğru bir yayımlama işleminin sağlamak için tek bir Azure bölgesinde benzersiz olmalıdır. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Konu için farklı bir ad seçin. |
 | HttpStatusCode. Conflict <br/> 409 | Belirtilen etki alanı zaten var. Farklı bir etki alanı adı seçin. | Doğru bir yayımlama işlemi sağlamak için etki alanı adının tek bir Azure bölgesinde benzersiz olması gerekir. Aynı ad, farklı Azure bölgelerinde kullanılabilir. | Etki alanı için farklı bir ad seçin. |
 | HttpStatusCode. Conflict<br/>409 | Kota sınırına ulaşıldı. Bu limitlerin hakkında daha fazla bilgi için bkz. [Azure Event Grid sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits).  | Her Azure aboneliğinin kullanabileceği Azure Event Grid kaynak sayısı sınırlıdır. Bu kotanın bazıları veya tümü aşılmıştı ve daha fazla kaynak oluşturulamadı. |    Geçerli kaynak kullanımınızı denetleyin ve gerekmeyen kaynakları silin. Kotayı artırmanız gerekiyorsa, tam olarak [aeg@microsoft.com](mailto:aeg@microsoft.com) gereken kaynak sayısıyla bir e-posta gönderin. |
+
+## <a name="troubleshoot-event-subscription-validation"></a>Olay aboneliği doğrulama sorunlarını giderme
+
+Olay aboneliği oluşturma sırasında, gibi bir hata mesajı görüyorsanız `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation`, doğrulama el sıkışmasının bir hata olduğunu gösterir. Bu hatayı çözmek için aşağıdaki noktaları doğrulayın:
+
+- Postman veya kıvrık ya da benzer bir aracı kullanarak [örnek bir SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) istek gövdesi ile Web kancası URL 'niz IÇIN BIR http gönderisi yapın.
+- Web kancası, zaman uyumlu doğrulama el sıkışma mekanizması uygualıyorsa, yanıtın bir parçası olarak ValidationCode 'un döndürüldüğünden emin olun.
+- Web kancası, zaman uyumsuz doğrulama el sıkışma mekanizmasını uygulamadıysanız, HTTP POST 'un 200 doğru olduğunu doğrulayın.
+- Web kancası yanıt karşılığında 403 (yasak) döndürüyorsa, Web kancasının bir Azure Application Gateway veya Web uygulaması güvenlik duvarının arkasında olup olmadığını denetleyin. Bu durumda, bu güvenlik duvarı kurallarını devre dışı bırakıp bir HTTP POST işlemini yeniden gerçekleştirmeniz gerekir:
+
+  920300 (istekte bir Accept üst bilgisi eksik, bunu çözebiliriz)
+
+  942430 (kısıtlanan SQL karakter anomali algılama (args): özel karakter sayısı aşıldı (12))
+
+  920230 (birden çok URL kodlaması algılandı)
+
+  942130 (SQL ekleme saldırısı: SQL tautology algılandı.)
+
+  931130 (olası uzaktan dosya ekleme (RFı) saldırısı = kapalı etki alanı başvurusu/bağlantı)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

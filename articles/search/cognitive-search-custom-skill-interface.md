@@ -7,15 +7,17 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77500261"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891242"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzenine özel bir yetenek ekleme
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
 Azure Bilişsel Arama 'deki bir [zenginleştirme ardışık düzeni](cognitive-search-concept-intro.md) , yerleşik bilişsel yeteneklerin yanı sıra, kişisel [olarak](cognitive-search-predefined-skills.md) oluşturup işlem hattına eklediğiniz [özel becerileri](cognitive-search-custom-skill-web-api.md) de derlenebilir. Bu makalede, bir, bir AI zenginleştirme işlem hattına dahil edilmesini sağlayan bir arabirimi kullanıma sunan özel bir yetenek oluşturmayı öğrenin. 
 
@@ -39,6 +41,10 @@ URI 'nin güvenli (HTTPS) olduğundan emin olun.
 Şu anda, özel bir beceriyle etkileşimde bulunmak için tek mekanizma bir Web API arabirimi aracılığıyla yapılır. Web API 'sinin bu bölümde açıklanan gereksinimleri karşılaması gerekir.
 
 ### <a name="1--web-api-input-format"></a>1. Web API giriş biçimi
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 Web API 'sinin işlenecek bir kayıt dizisini kabul etmesi gerekir. Her kayıt, Web API 'nize girilen giriş olan bir "özellik paketi" içermelidir. 
 
@@ -158,6 +164,7 @@ Bir Web API 'SI oluşturduğunuzda, isteğin bir parçası olarak HTTP üst bilg
 
 Bu makalede, özel bir yeteneğin bir beceri ile tümleştirilmesi için gereken arabirim gereksinimleri ele alınmıştır. Özel yetenekler ve beceri kompozisyonu hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara tıklayın.
 
++ [Özel yetenekler hakkında videolarımızı izleyin](https://youtu.be/fHLCE-NZeb4)
 + [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)

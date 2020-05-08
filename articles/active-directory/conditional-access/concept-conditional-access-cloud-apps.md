@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457306"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778473"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu erişim: bulut uygulamaları veya eylemleri
 
@@ -71,7 +71,7 @@ Yöneticiler, Microsoft 'tan aşağıdaki bulut uygulamalarına koşullu erişim
 
 Office 365, Exchange, SharePoint ve Microsoft ekipleri gibi bulut tabanlı üretkenlik ve işbirliği hizmetleri sağlar. Office 365 Bulut Hizmetleri, sorunsuz ve işbirliğine dayalı deneyimler sağlamak için derin bir tümleştirilmiştir. Bu tümleştirme, Microsoft ekipleri gibi bazı uygulamaların SharePoint veya Exchange gibi diğer kullanıcılara bağımlılıkları olduğundan, ilke oluştururken karışıklıklara neden olabilir.
 
-Office 365 (Önizleme) uygulaması bu hizmetleri tek seferde hedeflemesini mümkün kılar. Ayrı bulut uygulamalarını hedeflemek yerine yeni Office 365 (Önizleme) uygulamasını kullanmanızı öneririz. Bu uygulama grubunun hedeflenmesi, tutarsız ilkeler ve bağımlılıklar nedeniyle ortaya çıkabilecek sorunlardan kaçınmaya yardımcı olur.
+Office 365 (Önizleme) uygulaması bu hizmetleri tek seferde hedeflemesini mümkün kılar. [Hizmet bağımlılıklarıyla](service-dependencies.md)ilgili sorunları önlemek için tek bulut uygulamalarını hedeflemek yerine yeni Office 365 (Önizleme) uygulamasını kullanmanızı öneririz. Bu uygulama grubunun hedeflenmesi, tutarsız ilkeler ve bağımlılıklar nedeniyle ortaya çıkabilecek sorunlardan kaçınmaya yardımcı olur.
 
 Yöneticiler, Office 365 (Önizleme) uygulamasını dahil etmek ve seçtikleri belirli uygulamaları hariç tutmak istiyorsanız belirli uygulamaları ilkeden dışlamalarını seçebilirler.
 

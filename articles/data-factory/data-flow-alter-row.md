@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
-ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891386"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982658"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Eşleme veri akışında değişiklik satırı dönüşümü
 
@@ -61,13 +61,15 @@ Havuz dönüştürmesi, hedef veritabanınızda benzersiz satır tanımlaması i
 
 ADF veri akışları, Azure SQL veritabanı ve SYNAPSE veritabanı havuzuna (veri ambarı) ait birleştirmeleri upsert seçeneğiyle destekler.
 
-Bununla birlikte, hedef veritabanı şemanızın anahtar sütunlarının kimlik özelliğini kullandığı senaryolara sahip olabilirsiniz. ADF, güncelleştirmeler ve yukarı serler için satır değerleriyle eşleştirmek üzere kullanacağınız anahtarları tanımlamanızı gerektirir. Ancak, hedef sütununda Identity özelliği ayarlanmış ise ve upsert ilkesi kullanıyorsanız, hedef veritabanı sütuna yazmanıza izin vermez.
+Bununla birlikte, hedef veritabanı şemanızın anahtar sütunlarının kimlik özelliğini kullandığı senaryolara sahip olabilirsiniz. ADF, güncelleştirmeler ve yukarı serler için satır değerleriyle eşleştirmek üzere kullanacağınız anahtarları tanımlamanızı gerektirir. Ancak, hedef sütununda Identity özelliği ayarlanmış ise ve upsert ilkesi kullanıyorsanız, hedef veritabanı sütuna yazmanıza izin vermez. Ayrıca, dağıtılmış bir tablonun dağıtım sütununa karşı daha fazla denemeye çalıştığınızda hatalarla karşılaşabilirsiniz.
 
-İki seçeneğiniz vardır:
+Bunu gidermenin yolları aşağıda verilmiştir:
 
-1. Havuz dönüştürme ön işleme SQL seçeneğini kullanın: ```SET IDENTITY_INSERT tbl_content ON```. Sonra, işlem sonrası SQL özelliği ile kapatın: ```SET IDENTITY_INSERT tbl_content OFF```.
+1. Havuz dönüştürme ayarlarına gidin ve "anahtar sütunları yazmayı atla" ayarını yapın. Bu, ADF 'nin eşleme için anahtar değer olarak seçtiğiniz sütunu yazmayacak şekilde bildirir.
 
-2. Upsert kullanmak yerine, koşullu bölünmüş dönüşüm kullanarak, ekleme koşullarından güncelleştirme koşullarını ayırmak için mantığınızı değiştirin. Bu şekilde, güncelleştirme yolundaki eşlemeyi anahtar sütunu eşlemesini yoksayacak şekilde ayarlayabilirsiniz.
+2. Bu anahtar sütun, kimlik sütunları için soruna neden olan sütun değilse, havuz dönüştürme ön işleme SQL seçeneğini kullanabilirsiniz: ```SET IDENTITY_INSERT tbl_content ON```. Sonra, işlem sonrası SQL özelliği ile kapatın: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+3. Hem kimlik durumu hem de dağıtım sütunu durumu için mantığınızı, koşullu bölünmüş dönüşüm kullanarak ayrı bir güncelleştirme koşulu ve ayrı bir ekleme koşulu kullanarak kullanabilirsiniz. Bu şekilde, güncelleştirme yolundaki eşlemeyi anahtar sütunu eşlemesini yoksayacak şekilde ayarlayabilirsiniz.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 

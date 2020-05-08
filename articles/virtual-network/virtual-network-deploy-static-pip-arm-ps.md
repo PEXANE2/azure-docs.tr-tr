@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 1d340aadc20110e6aa4bfb05b1cf794fd6a286b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7b1e7471f7850f71596317c7e2c38db367bfd3a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146185"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790125"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>PowerShell kullanarak statik bir genel IP adresi ile sanal makine oluşturma
 
@@ -47,7 +47,7 @@ Aşağıdaki adımları yerel bilgisayarınızdan veya Azure Cloud Shell kullana
      -AllocationMethod "Static"
    ```
 
-   Genel IP adresi standart bir SKU olmalıdır, [Genel BIR IP adresi oluşturmanız](virtual-network-public-ip-address.md#create-a-public-ip-address), [bir ağ arabirimi OLUŞTURMANıZ](virtual-network-network-interface.md#create-a-network-interface), [genel IP adresini ağ arabirimine atamanız](virtual-network-network-interface-addresses.md#add-ip-addresses)ve sonra ayrı adımlarda [ağ arabirimine sahip bir sanal makine oluşturmanız](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)gerekir. [Genel IP adresi SKU 'ları](virtual-network-ip-addresses-overview-arm.md#sku)hakkında daha fazla bilgi edinin. Sanal makine, genel bir Azure Load Balancer arka uç havuzuna eklenecektir, sanal makinenin genel IP adresi SKU 'su, yük dengeleyicinin genel IP adresi SKU 'SU ile aynı olmalıdır. Ayrıntılar için bkz. [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
+   Genel IP adresi standart bir SKU olmalıdır, [Genel BIR IP adresi oluşturmanız](virtual-network-public-ip-address.md#create-a-public-ip-address), [bir ağ arabirimi OLUŞTURMANıZ](virtual-network-network-interface.md#create-a-network-interface), [genel IP adresini ağ arabirimine atamanız](virtual-network-network-interface-addresses.md#add-ip-addresses)ve sonra ayrı adımlarda [ağ arabirimine sahip bir sanal makine oluşturmanız](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)gerekir. [Genel IP adresi SKU 'ları](virtual-network-ip-addresses-overview-arm.md#sku)hakkında daha fazla bilgi edinin. Sanal makine, genel bir Azure Load Balancer arka uç havuzuna eklenecektir, sanal makinenin genel IP adresi SKU 'su, yük dengeleyicinin genel IP adresi SKU 'SU ile aynı olmalıdır. Ayrıntılar için bkz. [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Atanan genel IP adresini görüntüleyin ve [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress)ile statik bir adres olarak oluşturulduğunu doğrulayın:
 

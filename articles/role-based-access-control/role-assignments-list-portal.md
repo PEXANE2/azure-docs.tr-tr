@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve Azure portal kullanarak rol atamalarını listeleyin
-description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve Azure portal kullanarak hangi kaynakların erişimi olduğunu nasıl belirleyebileceğinizi öğrenin.
+title: Azure portal-Azure RBAC kullanarak Azure rol atamalarını listeleme
+description: Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin hangi kaynakların erişimi olduğunu belirlemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062235"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983032"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC ve Azure portal kullanarak rol atamalarını listeleyin
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure rol atamalarını listeleyin
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, Azure portal kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
@@ -32,7 +32,9 @@ ms.locfileid: "80062235"
 
 Bir abonelikte bir kullanıcıya veya gruba atanan rolleri görmenin en kolay yolu **Azure kaynakları** bölmesini kullanmaktır.
 
-1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından **Kullanıcılar** veya **gruplar**' ı seçin.
+1. Azure portal, Azure portal menüsünden **tüm hizmetler** ' i seçin.
+
+1. **Azure Active Directory** ' yi seçin ve ardından **Kullanıcılar** veya **gruplar**' ı seçin.
 
 1. İçin rol atamalarını listelemek istediğiniz kullanıcıya veya gruba tıklayın.
 
@@ -138,5 +140,5 @@ En büyük sayıya yakınlarınız varsa ve daha fazla rol ataması eklemeye ça
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve Azure portal kullanarak rol atamaları ekleme veya kaldırma](role-assignments-portal.md)
-- [Azure kaynakları için RBAC sorunlarını giderme](troubleshooting.md)
+- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure RBAC sorunlarını giderme](troubleshooting.md)

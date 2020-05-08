@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5494b1a7590e87bac9f8ffeaeef8f1da791fd6e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060186"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791145"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Öğretici: Azure SQL Server VM kullanılabilirlik grubunu el ile yapılandırma
 
@@ -348,7 +348,7 @@ Bu noktada, iki SQL Server örneği üzerinde çoğaltmaları olan bir kullanıl
 
 Azure sanal makineler 'de, bir SQL Server kullanılabilirlik grubu yük dengeleyici gerektirir. Yük dengeleyici, kullanılabilirlik grubu dinleyicilerinin ve Windows Server yük devretme kümesinin IP adreslerini barındırır. Bu bölüm Azure portal yük dengeleyicinin nasıl oluşturulacağını özetler.
 
-Azure Load Balancer bir Standart Load Balancer ya da temel Load Balancer olabilir. Standart Load Balancer temel Load Balancer daha fazla özelliğe sahiptir. Kullanılabilirlik grubu için, bir kullanılabilirlik bölgesi (bir kullanılabilirlik kümesi yerine) kullanıyorsanız, Standart Load Balancer gereklidir. Yük dengeleyici türleri arasındaki fark hakkında daha fazla bilgi için bkz. [Load Balancer SKU karşılaştırması](../../../load-balancer/concepts-limitations.md#skus).
+Azure Load Balancer bir Standart Load Balancer ya da temel Load Balancer olabilir. Standart Load Balancer temel Load Balancer daha fazla özelliğe sahiptir. Kullanılabilirlik grubu için, bir kullanılabilirlik bölgesi (bir kullanılabilirlik kümesi yerine) kullanıyorsanız, Standart Load Balancer gereklidir. Yük dengeleyici SKU 'Ları arasındaki fark hakkındaki ayrıntılar için bkz. [Load Balancer SKU karşılaştırması](../../../load-balancer/skus.md).
 
 1. Azure portal, SQL sunucularınızın bulunduğu kaynak grubuna gidin ve **+ Ekle**' ye tıklayın.
 1. **Load Balancer**arayın. Microsoft tarafından yayınlanan yük dengeleyiciyi seçin.

@@ -2,43 +2,94 @@
 title: Yerleşik Dizin oluşturucular kullanarak büyük veri kümesini dizin oluşturma
 titleSuffix: Azure Cognitive Search
 description: Toplu iş modu, kaynak kaynağı oluşturma ve zamanlanan, paralel ve Dağıtılmış dizin oluşturma teknikleri aracılığıyla büyük veri dizinleme veya hesaplama açısından yoğun dizin oluşturma stratejileri.
-manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+manager: liamca
+author: dereklegenzoff
+ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190957"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925992"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Bilişsel Arama büyük veri kümelerini dizin oluşturma
+
+Azure Bilişsel Arama, verileri bir arama dizinine aktarmaya yönelik [iki temel yaklaşımı](search-what-is-data-import.md) *destekler: verilerinizi* dizine programlamayla gönderme veya desteklenen bir veri kaynağında [Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) işaret eden verileri *çekme* .
 
 Veri birimlerinin büyümesi veya işlenmesi değiştikçe, basit veya varsayılan dizin oluşturma stratejilerinin artık pratik olmadığını görebilirsiniz. Azure Bilişsel Arama için, bir veri yükleme isteğini nasıl yapılandıracağınıza, zamanlanmış ve dağıtılmış iş yükleri için kaynağa özel bir dizin oluşturucunun kullanılmasına kadar, daha büyük veri kümelerine sahip olmak için çeşitli yaklaşımlar vardır.
 
 Aynı teknikler de uzun süreli süreçler için de geçerlidir. Özellikle, [paralel dizin oluşturma](#parallel-indexing) bölümünde özetlenen adımlar, bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md)görüntü analizi veya doğal dil işleme gibi yoğun hesaplama gerektiren dizin oluşturma için yararlıdır.
 
-Aşağıdaki bölümlerde, büyük miktarlarda veri dizinlemeye yönelik üç teknik araştırılamaz.
+Aşağıdaki bölümlerde, hem anında iletme API 'SI hem de Dizin oluşturucular kullanarak büyük miktarlarda veri dizinlemeye yönelik teknikler araştırmaktadır.
 
-## <a name="option-1-pass-multiple-documents"></a>Seçenek 1: birden çok belge geçirme
+## <a name="push-api"></a>Anında iletme API 'SI
 
-Daha büyük bir veri kümesini dizinlemeye yönelik en basit mekanizmalardan biri, tek bir istekte birden fazla belge veya kayıt gönderkullanmaktır. Tüm yükün 16 MB altında olduğu sürece, bir istek toplu karşıya yükleme işleminde en fazla 1000 belge işleyebilir. Bu sınırlar, .NET SDK 'da [belge ekle REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) veya [Dizin yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) kullanıp kullanmayacağınızı uygular. Her iki API için de, her isteğin gövdesinde 1000 belge paketlemeyi yapmanız gerekir.
+Verileri bir dizine gönderdiğinizde, anında iletme API 'sinin dizin oluşturma hızlarını etkileyen bazı önemli noktalar vardır. Bu faktörler aşağıdaki bölümde özetlenmiştir. 
 
-Toplu dizin oluşturma, REST veya .NET kullanan tek istekler veya Dizin oluşturucular aracılığıyla uygulanır. Birkaç Dizin Oluşturucu farklı limitlerde çalışır. Özellikle, Azure Blob dizinlemesi, 10 belge üzerinde toplu iş boyutunu, büyük ortalama belge boyutunu tanımaya göre ayarlar. [Create Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)temel alan Dizin oluşturucular için, bu ayarı özelleştirmek `BatchSize` üzere bağımsız değişkenini, verilerinizin özellikleriyle daha iyi eşleşecek şekilde ayarlayabilirsiniz. 
+Bu makaledeki bilgilere ek olarak, daha fazla bilgi edinmek için [Dizin oluşturma hızını iyileştirme öğreticisindeki](tutorial-optimize-indexing-push-api.md) kod örneklerinden de yararlanabilirsiniz.
+
+### <a name="service-tier-and-number-of-partitionsreplicas"></a>Hizmet katmanı ve bölüm/çoğaltma sayısı
+
+Bölüm ekleme veya arama hizmetinizin katmanını artırma, her ikisi de dizin oluşturma hızlarını artırır.
+
+Ek çoğaltmalar eklemek, dizin oluşturma hızlarını da artırabilir, ancak garanti edilmez. Diğer yandan, ek çoğaltmalar, arama hizmetinizin işleyebileceği sorgu birimini arttırır. Çoğaltmalar Ayrıca [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)almak için bir anahtar bileşendir.
+
+Bölüm/çoğaltmalar eklemeden veya daha yüksek bir katmana yükseltmeden önce, parasal maliyeti ve ayırma süresini göz önünde bulundurun. Bölüm ekleme, dizin oluşturma hızını önemli ölçüde artırabilir, ancak bunları eklemek/kaldırmak 15 dakikadan birkaç saate kadar sürebilir. Daha fazla bilgi için bkz. [kapasiteyi ayarlama](search-capacity-planning.md)hakkındaki belgeler.
+
+### <a name="index-schema"></a>Dizin şeması
+
+Dizininizin şeması, veri dizinleme verilerinde önemli bir rol oynar. Alanlar ekleme ve bu alanlara ek özellikler ekleme ( *aranabilir*, çok *yönlü tablo*veya *filtrelenebilir*gibi) her ikisi de dizin oluşturma hızlarını azaltır.
+
+Genel olarak, yalnızca kullanmak istiyorsanız alanlara ek özellikler eklenmesini öneririz.
 
 > [!NOTE]
 > Belge boyutunu aşağı tutmak için, sorgulanabilir olmayan verileri bir dizine eklemekten kaçının. Görüntüler ve diğer ikili veriler doğrudan aranabilir değildir ve dizinde depolanmamalıdır. Sorgulanabilir olmayan verileri arama sonuçlarıyla bütünleştirmek için, kaynağa bir URL başvurusu depolayan aranabilir olmayan bir alan tanımlamalısınız.
 
-## <a name="option-2-add-resources"></a>2. seçenek: kaynak ekleme
+### <a name="batch-size"></a>Toplu İş Boyutu
 
-[Standart fiyatlandırma katmanlarından](search-sku-tier.md) birinde sağlanan hizmetler genellikle hem depolama hem de iş yükleri (sorgular ya da dizin oluşturma) için daha fazla kapasiteye sahiptir. Bu, [bölüm ve çoğaltmanın artması](search-capacity-planning.md) daha büyük veri kümelerini kapsayan bir açık çözümü saymaktadır. En iyi sonuçları elde etmek için, her iki kaynağa de ihtiyacınız vardır: depolama için bölümler ve veri alımı iş çoğaltmaları.
+Daha büyük bir veri kümesini dizinlemeye yönelik en basit mekanizmalardan biri, tek bir istekte birden fazla belge veya kayıt gönderkullanmaktır. Tüm yükün 16 MB altında olduğu sürece, bir istek toplu karşıya yükleme işleminde en fazla 1000 belge işleyebilir. Bu sınırlar, .NET SDK 'da [belge ekle REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) veya [Dizin yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) kullanıp kullanmayacağınızı uygular. Her iki API için de, her isteğin gövdesinde 1000 belge paketlemeyi yapmanız gerekir.
 
-Çoğaltmaları ve bölümleri artırmak, maliyetinizi artıran etkinliklerdir, ancak en fazla yük altında sürekli olarak dizin oluşturmadığınız sürece, dizin oluşturma işleminin süresi boyunca ölçek ekleyebilir ve ardından kaynak düzeylerini, dizin oluşturma tamamlandıktan sonra aşağı aşağı doğru ayarlayabilirsiniz.
+Belge dizini oluşturmak için toplu iş kullanımı, dizin oluşturma performansını önemli ölçüde iyileştirir. Verilerinizin en iyi toplu iş boyutunu belirlemek, dizin oluşturma hızlarını iyileştirmek için önemli bir bileşendir. En iyi toplu iş boyutunu etkileyen iki birincil etken şunlardır:
++ Dizininizin şeması
++ Verilerinizin boyutu
 
-## <a name="option-3-use-indexers"></a>Seçenek 3: Dizin oluşturucular kullanma
+En iyi toplu iş boyutu dizininize ve verilerinize bağlı olduğundan, senaryonuza en hızlı Dizin oluşturma hızlarındaki sonuçları belirlemek için farklı toplu iş boyutlarını test etmek en iyi yaklaşımdır. Bu [öğretici](tutorial-optimize-indexing-push-api.md) , .NET SDK kullanarak toplu iş boyutlarını test etmek için örnek kod sağlar. 
+
+### <a name="number-of-threadsworkers"></a>İş parçacığı/çalışan sayısı
+
+Azure Bilişsel Arama 'in dizin oluşturma hızlarından tam olarak yararlanmak için, çok sayıda iş parçacığını kullanarak toplu işlem dizini oluşturma isteklerini hizmete eşzamanlı olarak gönderebilirsiniz.  
+
+En iyi iş parçacığı sayısı şu şekilde belirlenir:
+
++ Arama hizmetinizin katmanı
++ Bölüm sayısı
++ Yığınlarınızın boyutu
++ Dizininizin şeması
+
+Senaryonuz için en iyi iş parçacığı sayısını öğrenmek için bu örneği değiştirebilir ve farklı iş parçacığı sayısı ile test edebilirsiniz. Bununla birlikte, eşzamanlı olarak çalışan birkaç iş parçacığı olduğu sürece, verimlilik kazanmalarının avantajlarından faydalanabilirsiniz. 
+
+> [!NOTE]
+> Arama hizmetinizin katmanını artırarak veya bölümleri artırdıkça eşzamanlı iş parçacıklarının sayısını da artırmanız gerekir.
+
+Arama hizmetine vurur istekleri artırdığınız için, isteğin tam olarak başarılı olmadığını belirten [http durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) ile karşılaşabilirsiniz. Dizin oluşturma sırasında iki ortak HTTP durum kodu şunlardır:
+
++ **503 Hizmet kullanılamıyor** -bu hata, sistem ağır yükün altında ve isteğiniz şu anda işlenemediği anlamına gelir.
++ **207 çok durum** -bu hata, bazı belgelerin başarılı olduğu, ancak en az bir başarısız olduğu anlamına gelir.
+
+### <a name="retry-strategy"></a>Yeniden deneme stratejisi 
+
+Bir hata oluşursa, istekler [üstel geri alma yeniden deneme stratejisi kullanılarak yeniden](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)denenmelidir.
+
+Azure Bilişsel Arama .NET SDK, 503s ve diğer başarısız istekleri otomatik olarak yeniden dener, ancak 20 7s 'yi yeniden denemek için kendi mantığınızı uygulamanız gerekir. Yeniden deneme stratejisi uygulamak için, [Polly](https://github.com/App-vNext/Polly) gibi açık kaynaklı araçlar da kullanılabilir.
+
+### <a name="network-data-transfer-speeds"></a>Ağ verileri aktarım hızları
+
+Ağ veri aktarım hızları, verileri dizinlerken sınırlayıcı bir faktör olabilir. Azure ortamınızdaki verileri dizinlemek, dizin oluşturmayı hızlandırmanın kolay bir yoludur.
+
+## <a name="indexers"></a>Dizin Oluşturucular
 
 [Dizin oluşturucular](search-indexer-overview.md) , aranabilir içerik Için desteklenen Azure veri kaynaklarını gezinmek üzere kullanılır. Özellikle büyük ölçekli dizin oluşturma için özel bir yöntem olmasa da, birkaç dizin oluşturucu özelliği özellikle daha büyük veri kümelerine göz sallarken yararlı olur:
 
@@ -48,6 +99,12 @@ Toplu dizin oluşturma, REST veya .NET kullanan tek istekler veya Dizin oluştur
 
 > [!NOTE]
 > Dizin oluşturucular veri kaynağına özgüdür, bu nedenle bir Dizin Oluşturucu yaklaşımı kullanmak yalnızca Azure 'daki seçili veri kaynakları için geçerlidir: [SQL veritabanı](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [BLOB depolama](search-howto-indexing-azure-blob-storage.md), [Tablo depolama](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+### <a name="batch-size"></a>Toplu İş Boyutu
+
+Push API 'sinde olduğu gibi, Dizin oluşturucular, toplu iş başına öğe sayısını yapılandırmanıza izin verir. [Create Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)temel alan Dizin oluşturucular için, bu ayarı özelleştirmek `batchSize` üzere bağımsız değişkenini, verilerinizin özellikleriyle daha iyi eşleşecek şekilde ayarlayabilirsiniz. 
+
+Varsayılan toplu işlem boyutları veri kaynağına özeldir. Azure SQL veritabanı ve Azure Cosmos DB varsayılan toplu iş boyutu 1000 ' dir. Buna karşılık, Azure Blob dizinlemesi, 10 belge üzerinde toplu iş boyutunu daha büyük ortalama belge boyutunu tanımaya göre ayarlar. 
 
 ### <a name="scheduled-indexing"></a>Zamanlanan dizin oluşturma
 

@@ -1,20 +1,20 @@
 ---
-title: Ticari Market 'te Azure uygulamaları için ekleme API 'SI
-description: Microsoft Iş Ortağı Merkezi 'nde ticari Market 'teki Azure uygulamaları için API önkoşulları.
+title: Microsoft Commercial Market 'te Azure uygulamalarını eklemek için iş ortağı merkezi gönderme API 'SI
+description: Microsoft Iş Ortağı Merkezi 'nde ticari Market 'teki Azure uygulamaları için Iş Ortağı Merkezi gönderme API 'sini kullanma önkoşullarını öğrenin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279768"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744887"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>Azure uygulamalarını Iş Ortağı Merkezi 'ne ekleme API 'SI
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>İş Ortağı Merkezi 'ne Azure uygulamaları eklemek için iş ortağı merkezi gönderme API 'SI
 
 Program aracılığıyla sorgulamak, teslimleri oluşturmak ve Azure tekliflerini yayımlamak için *Iş Ortağı Merkezi gönderme API* 'sini kullanın.  Bu API, hesabınız birçok teklifi yönetirse ve bu teklifler için gönderme işlemini otomatikleştirmek ve iyileştirmek istiyorsanız yararlıdır.
 
@@ -70,3 +70,8 @@ grant_type=client_credentials
 Bir Azure AD erişim belirteciniz olduktan sonra, Iş Ortağı Merkezi gönderme API 'sindeki yöntemleri çağırabilirsiniz. Gönderimler oluşturmak veya güncelleştirmek için genellikle Iş Ortağı Merkezi gönderme API 'sinde belirli bir sırada birden çok yöntemi çağırabilirsiniz. Her senaryo ve her yöntemin sözdizimi hakkında daha fazla bilgi için bkz. alma API 'SI Swagger.
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Azure VM oluşturma teknik varlığı](create-azure-container-technical-assets.md) oluşturma hakkında bilgi edinin
+* [Azure Container teklifi](create-azure-container-offer.md) oluşturmak için Hoe öğrenin

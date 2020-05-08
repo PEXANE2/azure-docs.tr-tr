@@ -1,0 +1,42 @@
+- name: Azure VMware Çözümü (AVS)
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure VMware Çözümü (AVS) hakkında
+      href: introduction.md
+- name: Öğreticiler
+  items:
+    - name: 1 - Ağ planlama
+      href: tutorial-network-checklist.md
+    - name: 2 - AVS özel bulutu oluşturma
+      href: tutorial-create-private-cloud.md
+    - name: 3 - Ağı yapılandırma
+      href: tutorial-configure-networking.md
+    - name: 4 - Özel buluta erişme
+      href: tutorial-access-private-cloud.md
+    - name: 5 - Özel bulutu ölçeklendirme
+      href: tutorial-scale-private-cloud.md
+- name: Kavramlar
+  items:
+    - name: Özel bulutlar ve kümeler
+      href: concepts-private-clouds-clusters.md
+    - name: Özel bulut ağı ve karşılıklı bağlantı
+      href: concepts-networking.md
+    - name: Özel bulutlarda depolama
+      href: concepts-storage.md
+    - name: Özel bulutlar için erişim ve kimlik
+      href: concepts-identity.md
+    - name: Özel bulut yükseltmeleri
+      href: concepts-upgrades.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: DHCP'yi yönetme
+      href: manage-dhcp.md
+    - name: Olağanüstü durum kurtarma
+      href: disaster-recovery.md
+- name: Başvuru
+  items: null
+- name: Kaynaklar
+  items:
+    - name: SSS
+      href: faq.md

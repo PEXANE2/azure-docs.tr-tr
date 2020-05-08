@@ -37,6 +37,11 @@
       href: tutorial-security-incident.md
     - name: Mevzuat uyumluluğunuzu artırma
       href: security-center-compliance-dashboard.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Güvenlik puanı
@@ -107,7 +112,7 @@
           href: custom-security-policies.md
         - name: Azure İlkesi REST API'siyle ilkeleri yönetme
           href: configure-security-policy-azure-policy.md
-    - name: Dinamik uyumluluk paketleri ekleme
+    - name: Uyumluluk panonuz için standartları seçme
       href: update-regulatory-compliance-packages.md
     - name: Bilgi koruma ilkesini özelleştirme
       href: security-center-info-protection-policy.md
