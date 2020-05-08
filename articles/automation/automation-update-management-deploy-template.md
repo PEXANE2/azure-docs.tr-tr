@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 45045cb1360658d394e5469d022ac03033d11aff
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165799"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872197"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Güncelleştirme Yönetimi çözümü ekleme
 
@@ -26,6 +26,9 @@ Kaynak grubunuzda Azure Otomasyonu Güncelleştirme Yönetimi çözümünü etki
 Şablon bir veya daha fazla Azure veya Azure dışı VM 'yi eklemeyi otomatik hale getirir.
 
 Aboneliğinizde desteklenen bir bölgede dağıtılmış bir Log Analytics çalışma alanı ve Otomasyon hesabı zaten varsa, bunlar bağlanmaz. Çalışma alanında Güncelleştirme Yönetimi çözümü zaten dağıtılmadı. Bu şablonu kullanmak bağlantıyı başarıyla oluşturur ve Güncelleştirme Yönetimi çözümünü dağıtır. 
+
+>[!NOTE]
+>Linux üzerinde Güncelleştirme Yönetimi bir parçası olarak **nxautomation** kullanıcısı eklendi yalnızca imzalı runbook 'ları yürütür.
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.

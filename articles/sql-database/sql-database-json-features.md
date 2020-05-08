@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 968da0154f5a2587531e7594956a069f11c110d2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687749"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890950"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL veritabanı 'nda JSON özellikleriyle çalışmaya başlama
 Azure SQL veritabanı, JavaScript Nesne Gösterimi [(JSON)](https://www.json.org/) biçiminde temsil edilen verileri ayrıştırabilmenizi ve sorgulamanızı ve ILIŞKISEL verilerinizi JSON metni olarak dışarı aktarmanızı sağlar. Azure SQL veritabanı 'nda aşağıdaki JSON senaryoları kullanılabilir:
@@ -192,5 +192,5 @@ JSON ile uygulamanıza nasıl tümleştirileceğini öğrenmek için şu kaynakl
 * [MSDN belgeleri](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9 videosu](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-JSON ile uygulamanıza tümleştirme hakkında çeşitli senaryolar hakkında daha fazla bilgi edinmek için bu [Channel 9 videosundaki](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) tanıtımlar bölümüne bakın veya [JSON blog gönderilerinde](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)kullanım durumuyla eşleşen bir senaryo bulun.
+JSON ile uygulamanıza tümleştirme hakkında çeşitli senaryolar hakkında daha fazla bilgi edinmek için bu [Channel 9 videosundaki](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) tanıtımlar bölümüne bakın veya [JSON blog gönderilerinde](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases)kullanım durumuyla eşleşen bir senaryo bulun.
 

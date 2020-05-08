@@ -3,12 +3,13 @@ title: Batch yönetimi çözümlerini doğrulamak için Azure Active Directory k
 description: Batch yönetimi .NET kitaplığını kullanan uygulamalardan kimlik doğrulaması yapmak için Azure Active Directory kullanarak araştırma yapın.
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114794"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608464"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Active Directory ile Batch yönetimi çözümlerini kimlik doğrulama
 
@@ -28,7 +29,7 @@ AccountManagement örnek uygulamasını kaydetmek için [uygulamaları Azure Act
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-Kayıt işlemini tamamladıktan sonra uygulamanız için listelenen uygulama KIMLIĞINI ve nesne (hizmet sorumlusu) KIMLIĞINI görürsünüz.  
+Kayıt işlemini tamamladıktan sonra uygulamanız için listelenen uygulama KIMLIĞINI ve nesne (hizmet sorumlusu) KIMLIĞINI görürsünüz.
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Azure portalında şu adımları izleyin:
     ![Uygulama adınızı arayın](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. **Ayarlar** dikey penceresini görüntüleyin. **API erişimi** bölümünde **gerekli izinler**' i seçin.
-4. Yeni bir gerekli izin eklemek için **Ekle** ' ye tıklayın. 
+4. Yeni bir gerekli izin eklemek için **Ekle** ' ye tıklayın.
 5. Adım 1 ' de **Windows Azure hizmet yönetim API'si**girin, sonuçlar listesinden API ' yi seçin ve **Seç** düğmesine tıklayın.
 6. 2. adımda, **Azure klasik dağıtım modeline kuruluş kullanıcıları olarak erişim**' ın yanındaki onay kutusunu Işaretleyin ve **Seç** düğmesine tıklayın.
 7. **Bitti** düğmesine tıklayın.
@@ -70,11 +71,11 @@ AccountManagement örnek uygulaması, bu uç noktaların sabitlerini tanımlar. 
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>Uygulama KIMLIĞINIZE başvurun 
+## <a name="reference-your-application-id"></a>Uygulama KIMLIĞINIZE başvurun
 
 İstemci uygulamanız, çalışma zamanında Azure AD 'ye erişmek için uygulama KIMLIĞINI (istemci KIMLIĞI olarak da anılır) kullanır. Uygulamanızı Azure portal kaydettikten sonra, kayıtlı uygulamanız için Azure AD tarafından sunulan uygulama KIMLIĞINI kullanmak üzere kodunuzu güncelleştirin. AccountManagement örnek uygulamasında, uygulama KIMLIĞINIZI Azure portal uygun sabitine kopyalayın:
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD kimlik doğrulaması belirteci alma
 
-AccountManagement örneğini Azure AD kiracısına kaydettikten ve örnek kaynak kodunu değerlerinizle güncelleştirdikten sonra, örnek Azure AD kullanarak kimlik doğrulamaya hazırlanmaya hazırdır. Örneği çalıştırdığınızda, ADAL bir kimlik doğrulama belirteci edinmeye çalışır. Bu adımda, sizden Microsoft kimlik bilgilerinizi ister: 
+AccountManagement örneğini Azure AD kiracısına kaydettikten ve örnek kaynak kodunu değerlerinizle güncelleştirdikten sonra, örnek Azure AD kullanarak kimlik doğrulamaya hazırlanmaya hazırdır. Örneği çalıştırdığınızda, ADAL bir kimlik doğrulama belirteci edinmeye çalışır. Bu adımda, sizden Microsoft kimlik bilgilerinizi ister:
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-Kimlik bilgilerinizi verdikten sonra örnek uygulama, Batch Yönetim hizmetine kimliği doğrulanmış istekler vermek için devam edebilir. 
+Kimlik bilgilerinizi verdikten sonra örnek uygulama, Batch Yönetim hizmetine kimliği doğrulanmış istekler vermek için devam edebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -117,7 +118,7 @@ Kimlik bilgilerinizi verdikten sonra örnek uygulama, Batch Yönetim hizmetine k
 
 Azure AD hakkında daha fazla bilgi edinmek için [Azure Active Directory belgelerine](https://docs.microsoft.com/azure/active-directory/)bakın. ADAL 'in nasıl kullanılacağını gösteren ayrıntılı örnekler, [Azure kod örnekleri](https://azure.microsoft.com/resources/samples/?service=active-directory) kitaplığı 'nda bulunabilir.
 
-Azure AD 'yi kullanarak Batch hizmeti uygulamalarının kimliğini doğrulamak için bkz. [Active Directory Ile Batch hizmeti çözümlerini kimlik doğrulama](batch-aad-auth.md). 
+Azure AD 'yi kullanarak Batch hizmeti uygulamalarının kimliğini doğrulamak için bkz. [Active Directory Ile Batch hizmeti çözümlerini kimlik doğrulama](batch-aad-auth.md).
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory nedir?"

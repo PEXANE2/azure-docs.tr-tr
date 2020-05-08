@@ -1,5 +1,5 @@
 ---
-title: Ticari Market 'te yeni bir yönetilen hizmet teklifi oluşturun
+title: Microsoft ticari Market 'te yönetilen hizmet teklifi oluşturma
 description: Iş Ortağı Merkezi 'nde ticari Market portalı 'nı kullanarak Azure Marketi 'nde listeleme için yeni bir yönetilen hizmet teklifi oluşturma.
 author: JnHs
 ms.author: jenhayes
@@ -8,56 +8,60 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147921"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871915"
 ---
-# <a name="create-a-new-managed-service-offer"></a>Yeni bir yönetilen hizmet teklifi oluşturun
+# <a name="create-a-managed-service-offer"></a>Yönetilen Hizmet teklifi oluşturma
 
-> [!IMPORTANT]
-> Yönetilen hizmet tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar Bulut İş Ortağı Portalı tekliflerinizi yönetmek için [Azure Market 'Te yönetilen hizmet sunma teklifi yayımlama](../../lighthouse/how-to/publish-managed-services-offers.md) bölümündeki yönergeleri izleyin.
+Yönetilen hizmet, [Azure açık kullanım](../../lighthouse/overview.md) senaryolarını etkinleştirmek için yardım sağlar. Bir müşteri yönetilen bir hizmet teklifini kabul ettiğinde, [Azure tarafından atanan kaynak yönetimine](../../lighthouse/concepts/azure-delegated-resource-management.md)yönelik kaynakları ekleyebilir. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
-Yönetilen hizmet, [Azure açık kullanım](../../lighthouse/overview.md) senaryolarını etkinleştirmek için yardım sağlar. Bir müşteri yönetilen bir hizmet teklifini kabul ettiğinde, [Azure tarafından atanan kaynak yönetimine](../../lighthouse/concepts/azure-delegated-resource-management.md)yönelik kaynakları ekleyebilir.
-
-Yönetilen hizmet tekliflerini oluşturmaya başlamak için, ilk olarak [bir Iş Ortağı Merkezi hesabı](./create-account.md) oluşturduğunuzdan ve **genel bakış** sayfası seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)seçtiğinizden emin olun. Yönetilen hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](https://partner.microsoft.com/membership/cloud-platform-competency) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir.
-
-![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
-
->[!Note]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
+Yönetilen hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](https://partner.microsoft.com/membership/cloud-platform-competency) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
-**+ Yeni teklif** düğmesini seçin ve ardından **yönetilen hizmet** menü öğesini seçin. **Yeni teklif** iletişim kutusu görüntülenir.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
+2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif** > **yönetilen hizmet**' i seçin.
 
-### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
+    ![Sol gezinti menüsünü gösterir.](./media/new-offer-managed-service.png)
 
-- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifinin URL adresindeki müşterilere görünür olacaktır. Bu KIMLIK yalnızca küçük harfli alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok), 50 karakterle sınırlı olur ve **Oluştur**'u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si olur `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+>[!NOTE]
+>Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
 
-- **Teklif diğer adı**: Iş Ortağı Merkezi içindeki teklifine başvurmak için kullanılan ad. Bu ad Market 'te kullanılmayacak ve teklif adından ve müşterilere gösterilecek diğer değerlerden farklı. Bu değer, **Oluştur**' u seçtikten sonra değiştirilemez.
+## <a name="new-offer"></a>Yeni teklif
 
-**TEKLIF kimliği** ve **teklif diğer adınızı**girdikten sonra **Oluştur**' u seçin. Daha sonra teklifinizin farklı bölümlerinin tümünde çalışabileceksiniz.
+Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir tanımlayıcıdır.
+
+* Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
+* Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
+
+Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
+
+* Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
+* **Oluştur**' u seçtikten sonra, teklif diğer adı değiştirilemez.
+
+Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ## <a name="offer-setup"></a>Teklif kurulumu
-
-**Teklif kurulum** sayfası, aşağıdaki bilgileri ister. Bu alanları tamamladıktan sonra **Kaydet** ' i seçtiğinizden emin olun.
 
 ## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-[Yönetilen hizmetler sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)göre, bir **müşteri adayı hedefinin** gerekli olduğunu unutmayın. Bu, müşterinin teklifinizi dağıttığı her seferinde CRM sisteminizde bir kayıt oluşturur.
+[Yönetilen hizmetler sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)göre, bir **müşteri adayı hedefi** gereklidir. Bu, müşterinin teklifinizi dağıttığı her seferinde CRM sisteminizde bir kayıt oluşturur.
 
 Daha fazla bilgi için bkz. [müşteri adayı yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md).
 
-Sonraki bölüme geçmeden önce sayfayı **kaydetmeyi** unutmayın.
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="properties"></a>Özellikler
 
-**Özellikler** sayfası, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar. Bu sayfayı tamamladıktan sonra **Kaydet** ' i seçin.
+Bu sayfa, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar.
 
 ### <a name="category"></a>Kategori
 
@@ -67,14 +71,16 @@ Teklifinizi uygun Market arama alanına yerleştirmek için kullanılacak en az 
 
 **Hüküm ve koşullar** alanında kendi yasal hüküm ve koşullarınızı belirtin. Ayrıca, hüküm ve koşullarınızın bulunabileceği URL 'YI de sağlayabilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
+
 ## <a name="offer-listing"></a>Teklif listesi
 
-**Teklif listesi** sayfası teklifiniz için Market ayrıntılarını (teklif adı, açıklama, görüntüler vb.) tanımlamanıza olanak sağlar.
+Bu sayfa teklifiniz için Market ayrıntılarını (teklif adı, açıklama ve görüntüler gibi) tanımlamanıza olanak sağlar.
 
 > [!NOTE]
-> Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
+> Teklif açıklaması (Açıklama, belgeler, ekran görüntüleri ve kullanım koşulları gibi) sunan teklif listesinin Ingilizce olması gerekmez, "Bu uygulama yalnızca [Ingilizce olmayan dilde] kullanılabilir". Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -100,23 +106,13 @@ Tanımlarınızı yazmak için bazı ipuçları:
 - Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
 - Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.
 
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, tanımlarınızı biçimlendirmek için zengin metin düzenleyicisini kullanın.
+Teklif açıklamanızı daha ilgi çekici hale getirmek için, biçimlendirme uygulamak için zengin metin düzenleyicisini kullanın.
 
-![Zengin metin düzenleyicisini kullanma](./media/text-editor2.png)
+![Zengin metin düzenleyicisini kullanma](./media/rich-text-editor.png)
 
-Zengin metin düzenleyicisini kullanmak için aşağıdaki yönergeleri kullanın:
-
-- İçeriğinizin biçimini değiştirmek için, biçimlendirmek istediğiniz metni vurgulayın ve aşağıda gösterildiği gibi bir metin stili seçin:
-
-     ![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png)
-
-- Metne bir madde işaretli veya numaralı liste eklemek için aşağıdaki seçenekleri kullanın:
-
-     ![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png)
-
-- Metne girintileme eklemek veya kaldırmak için aşağıdaki seçenekleri kullanın:
-
-     ![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png)
+| <center>Metin biçimini değiştir | <center>Madde işaretleri veya numaralandırma ekleme | <center>Metin girintisi ekleme veya kaldırma |
+| --- | --- | --- |
+| <center>![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png) |  <center>![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png) |  <center>![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png) |
 
 ### <a name="privacy-policy-link"></a>Gizlilik ilkesi bağlantısı
 
@@ -138,12 +134,19 @@ Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad,
 
 Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
->[!Note]
+>[!NOTE]
 >Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
 
 #### <a name="marketplace-logos"></a>Market logoları
 
-Dört logo boyutu gereklidir: **küçük (40x40)**, **Orta (90x90)**, **büyük (115x115)** ve **geniş (255x115)**. Logolarınız için şu yönergeleri izleyin:
+Teklifinizin logosunu dört piksel boyutunda sağlayın:
+
+- **Küçük** (40 x 40)
+- **Orta** (90 x 90)
+- **Büyük** (115 x 115)
+- **Geniş** (255 x 115)
+
+Logolarınız için şu yönergeleri izleyin:
 
 - Azure tasarımının basit bir renk paleti vardır. Logonuzdaki birincil ve ikincil renklerinin sayısını sınırlandırın.
 - Portalın tema renkleri siyah ve beyazdır. Bu renkleri logonuzun arka plan rengi olarak kullanmayın. Logonuzun portalda öne çıkmasını sağlayan bir renk kullanın. Basit birincil renkleri öneririz.
@@ -164,6 +167,8 @@ Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüs
 
 - [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
+
 ## <a name="preview"></a>Önizleme
 
 Teklifinizi daha geniş Market teklifiyle yayımlamadan önce, önce onu sınırlı bir önizleme hedef kitlesi için kullanılabilir hale getirmeniz gerekir. Bu, müşterilerinizin müşterilere hazır hale gelmeden önce Azure Marketi 'nde nasıl göründüğünü doğrulamanıza olanak sağlar. Microsoft destek ve mühendislik ekipleri, bu önizleme döneminde teklifinizi da görüntüleyebilecektir.
@@ -171,6 +176,8 @@ Teklifinizi daha geniş Market teklifiyle yayımlamadan önce, önce onu sınır
 Ön izleme **İzleyicisi** bölümüne Azure abonelik kimlikleri girerek önizleme kitleyi tanımlayabilirsiniz. En fazla 10 abonelik kimliğini el ile girebilir veya en fazla 100 abonelik kimliğiyle bir. csv dosyası yükleyebilirsiniz.
 
 Bu aboneliklerle ilişkili müşteriler, teklifi canlı olmadan önce Azure Marketi 'nde görüntüleyebilecektir. Teklifinizin önizlemesini yapabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun.
+
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
@@ -237,18 +244,20 @@ Her **Yetkilendirme**için aşağıdakileri sağlamanız gerekir. Daha sonra, da
 
 Planınız için tüm bölümleri tamamladıktan sonra, ek planlar oluşturmanız gerektiği kadar **+ Yeni plan oluştur** ' u seçebilirsiniz. İşiniz bittiğinde **Kaydet**'i seçin.
 
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
+
 ## <a name="publish"></a>Yayımlama
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 
-Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasına yönlendirilirsiniz.
+Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde bulunan **gözden geçir ve Yayımla** ' yı seçin.
 
 Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-  - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
-  - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
-  - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+  - **Başlatılmamış** -bölüm dokunulmamış ve tamamlanması gerekiyor.
+  - **Tamamlanmamış** -bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölüm (ler) e geri dönün ve güncelleştirin.
+  - **Tamamlandı** -bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
 - **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Teklifin önizleme sürümü gözden geçirmeniz ve onaylamanız için kullanılabilir olduğunda size bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık bir şekilde (veya özel bir teklif olarak özel hedef kitleye) yayımlama teklifi için **Go-Live** ' ı seçin.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037622"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872631"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,7 +82,7 @@ Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabilece�
 
 ![Modül özellikleri](./media/concept-designer/properties.png)
 
-Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](algorithm-module-reference/module-reference.md)
+Kullanılabilir makine öğrenimi algoritmalarının kitaplığı üzerinden gezinerek bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](algorithm-module-reference/module-reference.md). Algoritma seçme konusunda yardım için [Azure Machine Learning algoritması oluşturma sayfasına](algorithm-cheat-sheet.md)bakın.
 
 ## <a name="compute-resources"></a><a name="compute"></a>İşlem kaynakları
 
@@ -91,9 +91,10 @@ Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili baz
 | İşlem hedefi | Eğitim | Dağıtım |
 | ---- |:----:|:----:|
 | Azure Machine Learning işlem | ✓ | |
+| Azure Machine Learning işlem örneği | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio (klasik)](https://ml.azure.com)içinde çalışma alanınızda yönetirsiniz.
+İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda yönetirsiniz.
 
 ## <a name="deploy"></a>Dağıtma
 

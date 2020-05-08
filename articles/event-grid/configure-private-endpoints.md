@@ -7,20 +7,17 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 97f08bf0f89fdb65f0ffef7d18557f210e45a8d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101017"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890820"
 ---
-# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma (Önizleme)
+# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için özel uç noktaları yapılandırma
 [Özel uç noktaları](../private-link/private-endpoint-overview.md) kullanarak doğrudan sanal ağınızdan, genel İnternet üzerinden geçmeden [özel bir bağlantı](../private-link/private-link-overview.md) üzerinden konulara ve etki alanlarına olay girişi sağlayabilirsiniz. Özel uç nokta, konu veya etki alanınız için VNet adres alanından bir IP adresi kullanır. Daha fazla kavramsal bilgi için bkz. [ağ güvenliği](network-security.md).
 
 Bu makalede, konular veya etki alanları için özel uç noktaların nasıl yapılandırılacağı açıklanır.
-
-> [!IMPORTANT]
-> Özel uç noktalar özelliği, yalnızca Premium katmandaki konular ve etki alanları için kullanılabilir. Temel katmandan Premium katmana yükseltmek için bkz. [fiyatlandırma katmanını güncelleştirme](update-tier.md) makalesi. 
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma 
 Bu bölümde, bir konu veya etki alanı için özel bir uç nokta oluşturmak üzere Azure portal nasıl kullanılacağı gösterilmektedir.
@@ -76,7 +73,7 @@ Dört sağlama durumu vardır:
 
 | Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedilen | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
@@ -205,7 +202,7 @@ Aşağıdaki Azure kaynaklarını oluşturan örnek bir betik aşağıda verilmi
 - Kaynak grubu
 - Sanal ağ
 - Sanal ağdaki alt ağ
-- Azure Event Grid konu (Premium katman)
+- Azure Event Grid konusu
 - Konu için özel uç nokta
 
 > [!NOTE]
@@ -254,8 +251,7 @@ az network vnet subnet update \
 az eventgrid topic create \
     --resource-group $resourceGroupName \
     --name $topicName \
-    --location $location \
-    --sku "Premium" 
+    --location $location
 
 # verify that the topic was created.
 az eventgrid topic show \
@@ -369,7 +365,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 
 ```azurepowershell-interactive
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="premium"}; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
+$body = @{"location"="<LOCATION>"; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
 
 # create topic
 Invoke-RestMethod -Method 'Put'  `

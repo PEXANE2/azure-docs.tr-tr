@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC 'de Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak rol tanımlarını listeleyin | Microsoft Docs
-description: Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak Azure RBAC 'te yerleşik ve özel rolleri nasıl listeleyeceğinizi öğrenin.
+title: Azure rol tanımlarını listeleme-Azure RBAC
+description: Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak Azure yerleşik ve özel rolleri nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062997"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891266"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Azure RBAC 'de rol tanımlarını listeleyin
+# <a name="list-azure-role-definitions"></a>Azure rol tanımlarını listeleyin
 
-Rol tanımı, okuma, yazma ve silme gibi gerçekleştirilebileceği izinlerin bir koleksiyonudur. Genellikle bir rol olarak adlandırılır. [Azure rol tabanlı erişim denetimi (RBAC)](overview.md) , 120 [yerleşik rolüne](built-in-roles.md) sahiptir veya kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure kaynaklarına erişim izni vermek için kullanabileceğiniz yerleşik ve özel rollerin nasıl listeleneceğini açıklanmaktadır.
+Rol tanımı, okuma, yazma ve silme gibi gerçekleştirilebileceği izinlerin bir koleksiyonudur. Genellikle bir rol olarak adlandırılır. [Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , 120 [yerleşik rolüne](built-in-roles.md) sahiptir veya kendi özel rollerinizi oluşturabilirsiniz. Bu makalede, Azure kaynaklarına erişim izni vermek için kullanabileceğiniz yerleşik ve özel rollerin nasıl listeleneceğini açıklanmaktadır.
 
 Azure Active Directory için Yönetici rollerinin listesini görmek için, [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
 
@@ -344,6 +344,55 @@ Rol tanımlarını listelemek için, [rol tanımları-liste](/rest/api/authoriza
     > | `$filter=atScopeAndBelow()` | Belirtilen kapsam ve tüm alt kapsamlar için rol tanımlarını listeler. |
     > | `$filter=type+eq+'{type}'` | Belirtilen türdeki rol tanımlarını listeler. Rol türü `CustomRole` veya `BuiltInRole`olabilir. |
 
+Aşağıdaki istek, abonelik kapsamındaki özel rol tanımlarını listeler:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+Aşağıda çıktının bir örneği gösterilmektedir:
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>Rol tanımı listeleme
 
 Belirli bir rolün ayrıntılarını listelemek için [rol tanımlarını kullanın-Get](/rest/api/authorization/roledefinitions/get) veya [role Definitions-kimliğe göre Al](/rest/api/authorization/roledefinitions/getbyid) REST API.
@@ -372,9 +421,45 @@ Belirli bir rolün ayrıntılarını listelemek için [rol tanımlarını kullan
      
 1. *{Roledefinitionıd}* değerini rol tanımı tanımlayıcısı ile değiştirin.
 
+Aşağıdaki istek [okuyucu](built-in-roles.md#reader) rol tanımını listeler:
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+Aşağıda çıktının bir örneği gösterilmektedir:
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure kaynakları için yerleşik roller](built-in-roles.md)
-- [Azure kaynakları için özel roller](custom-roles.md)
-- [Azure RBAC ve Azure portal kullanarak rol atamalarını listeleyin](role-assignments-list-portal.md)
-- [Azure RBAC ve Azure portal kullanarak rol atamaları ekleme veya kaldırma](role-assignments-portal.md)
+- [Azure yerleşik rolleri](built-in-roles.md)
+- [Azure özel rolleri](custom-roles.md)
+- [Azure portal kullanarak Azure rol atamalarını listeleyin](role-assignments-list-portal.md)
+- [Azure portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md)

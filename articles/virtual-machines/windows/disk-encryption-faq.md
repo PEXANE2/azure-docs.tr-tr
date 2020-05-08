@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082603"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901277"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -21,7 +21,7 @@ Bu makalede, Windows VM 'Leri için Azure disk şifrelemesi hakkında sık sorul
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi nedir?
 
-Windows VM 'Leri için Azure disk şifrelemesi, işletim sistemi diski ve veri disklerinin tam disk şifrelemesini sağlamak için Windows BitLocker özelliğini kullanır. Ayrıca, [Volumetype parametresi hepsi](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk)olduğunda, kısa ömürlü kaynak disk şifrelemesini sağlar.  İçerik, VM 'den depolama arka uca şifrelenmiş olarak akar. Bu nedenle, müşteri tarafından yönetilen bir anahtarla uçtan uca şifreleme sağlar.
+Windows VM 'Leri için Azure disk şifrelemesi, işletim sistemi diski ve veri disklerinin tam disk şifrelemesini sağlamak için Windows BitLocker özelliğini kullanır. Ayrıca, [Volumetype parametresi hepsi](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk)olduğunda geçici diskin şifrelenmesini sağlar.  İçerik, VM 'den depolama arka uca şifrelenmiş olarak akar. Bu nedenle, müşteri tarafından yönetilen bir anahtarla uçtan uca şifreleme sağlar.
  
 Bkz. [desteklenen VM 'ler ve işletim sistemleri](disk-encryption-overview.md#supported-vms-and-operating-systems).
  
@@ -61,7 +61,7 @@ Depolama sunucu tarafı şifrelemesi, Azure depolama 'da Azure yönetilen diskle
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure disk şifrelemesi, müşteri tarafından yönetilen anahtarla depolama sunucusu tarafı şifrelemeden farklı ve her çözümü ne zaman kullanmalıyım?
 
-Azure disk şifrelemesi, işletim sistemi diski, veri diskleri ve müşteri tarafından yönetilen bir anahtarla kısa ömürlü kaynak diski için uçtan uca şifreleme sağlar.
+Azure disk şifrelemesi, işletim sistemi diski, veri diskleri ve müşterinin yönettiği bir anahtarla geçici disk için uçtan uca şifreleme sağlar.
 
 - Gereksinimleriniz yukarıdaki ve uçtan uca şifrelemeyi şifrelemeyi içeriyorsa, Azure disk şifrelemesi ' ni kullanın. 
 - Gereksinimleriniz, müşteri tarafından yönetilen anahtarla yalnızca bekleyen verileri şifrelemeyi içeriyorsa, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](disk-encryption.md)kullanın. Müşteri tarafından yönetilen anahtarlarla hem Azure disk şifrelemesi hem de depolama sunucu tarafı şifrelemesi ile bir disk şifrelenemez.
@@ -129,9 +129,6 @@ Azure disk şifrelemesi, Windows sürümüne bağlı olarak BitLocker 'daki şif
 \*Windows 2012 ve sonrasında yayıcı ile AES 256 bit desteklenmez.
 
 Windows işletim sistemi sürümünü öğrenmek için sanal makinenizde ' winver ' aracını çalıştırın.
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>EncryptFormatAll kullanıyorum ve tüm birim türlerini belirtirseniz, zaten Şifrelediğimiz veri sürücülerindeki verileri silecek mı?
-Hayır, Azure disk şifrelemesi kullanılarak önceden şifrelenmiş veri sürücülerinden veri silinmeyecektir. EncryptFormatAll 'ın işletim sistemi sürücüsünü yeniden şifrelemeine benzer şekilde, zaten şifrelenmiş veri sürücüsünü yeniden şifrelemez. 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Şifrelenmiş bir VM 'yi yedeklebilirim ve geri yükleyebilir miyim? 
 

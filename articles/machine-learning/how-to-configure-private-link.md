@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411194"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891360"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure özel bağlantısını yapılandırma (Önizleme)
 
@@ -118,7 +118,7 @@ Depolama hesabını sanal ağa yerleştirme hakkında daha fazla bilgi için bkz
 
 Çalışma alanınız tarafından kullanılan Azure Key Vault güvenli hale getirmek için, sanal ağın içine yerleştirebilir veya özel bağlantıyı etkinleştirebilirsiniz.
 
-Anahtar kasasını sanal ağa yerleştirme hakkında daha fazla bilgi için bkz. [çalışma alanınıza sahip bir Anahtar Kasası örneği kullanma](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace).
+Anahtar kasasını sanal ağa yerleştirme hakkında daha fazla bilgi için bkz. [çalışma alanınıza sahip bir Anahtar Kasası örneği kullanma](how-to-enable-virtual-network.md#key-vault-instance).
 
 Anahtar Kasası için özel bağlantıyı etkinleştirme hakkında daha fazla bilgi için bkz. [Azure özel bağlantısı ile Key Vault tümleştirme](/azure/key-vault/private-link-service).
 
@@ -131,7 +131,7 @@ Anahtar Kasası için özel bağlantıyı etkinleştirme hakkında daha fazla bi
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-Sanal ağ içinde Azure Container Registry güvenliğini sağlama hakkında bilgi için bkz. [Azure Container Registry kullanma](how-to-enable-virtual-network.md#use-azure-container-registry).
+Sanal ağ içinde Azure Container Registry güvenliğini sağlama hakkında bilgi için bkz. [Azure Container Registry kullanma](how-to-enable-virtual-network.md#azure-container-registry).
 
 > [!IMPORTANT]
 > Azure Machine Learning çalışma alanınız için özel bağlantı kullanıyorsanız ve çalışma alanınızın Azure Container Registry bir sanal ağa yerleştirirseniz, aşağıdaki Azure Resource Manager şablonunu da uygulamanız gerekir. Bu şablon, çalışma alanınızın özel bağlantı üzerinden ACR ile iletişim kurmasını sağlar.

@@ -1,32 +1,21 @@
 ---
 title: Azure geçişi 'ne geçiş araçları ekleme
 description: Azure geçişi 'ne geçiş araçları ekleme hakkında bilgi edinin.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185954"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901466"
 ---
 # <a name="add-migration-tools"></a>Geçiş araçları ekleme
 
 Bu makalede, [Azure](migrate-overview.md)geçişi 'nde geçiş araçlarının nasıl ekleneceği açıklanmaktadır.
 
-Azure geçişi, değerlendirme ve Azure 'a geçiş için bir araç merkezi sağlar. Bu, yerel araçları, diğer Azure hizmetleri tarafından sunulan araçları ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
-
-Bir geçiş aracı eklemek ve henüz bir Azure geçişi projesi ayarlamadıysanız, bu [makaleye](how-to-add-tool-first-time.md)uyun.
-
-
-
-## <a name="selecting-an-isv-tool"></a>ISV aracı seçme
-
-Geçiş için bir [ISV aracı](migrate-services-overview.md#isv-integration) seçerseniz, bir lisans alarak başlayabilir veya ücretsiz deneme için kayıt yaparak ISV ilkesine uygun olarak kaydolabilirsiniz. Her araçta Azure geçişi 'ne bağlanma seçeneği vardır. Aracı dağıtın ve araç çalışma alanını Azure geçişi ile bağlamak için araç yönergelerini ve belgeleri izleyin. 
+- Bir geçiş aracı eklemek ve henüz bir Azure geçişi projesi ayarlamadıysanız, bu [makaleye](how-to-add-tool-first-time.md)uyun.
+- Geçiş için bir ISV aracı eklediyseniz, araçla çalışmaya hazırlanmak için [adımları izleyin](prepare-isv-movere.md).
 
 ## <a name="select-a-migration-scenario"></a>Bir geçiş senaryosu seçin
 

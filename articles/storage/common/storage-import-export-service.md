@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282452"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872443"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Içeri/dışarı aktarma hizmeti nedir?
 
@@ -41,7 +41,7 @@ Ağ üzerinden veri yükleme veya indirme sırasında Azure Içeri/dışarı akt
 * **Waımportexport aracı**: Bu, aşağıdakileri yapan bir komut satırı aracıdır:
   * İçeri aktarma için gönderilen disk sürücülerinizi hazırlar.
   * Verilerinizin sürücüye kopyalanmasını kolaylaştırır.
-  * AES 128 bit BitLocker ile sürücüdeki verileri şifreler. BitLocker anahtarınızı korumak için bir dış anahtar koruyucu kullanabilirsiniz.
+  * AES 256 bit BitLocker ile sürücüdeki verileri şifreler. BitLocker anahtarınızı korumak için bir dış anahtar koruyucu kullanabilirsiniz.
   * İçeri aktarma oluşturma sırasında kullanılan sürücü günlüğü dosyalarını oluşturur.
   * Dışarı aktarma işleri için gereken sürücü sayısını belirlemenize yardımcı olur.
 
@@ -131,7 +131,7 @@ Azure Içeri/dışarı aktarma hizmeti, tüm Azure depolama hesaplarına veri ko
 
 ## <a name="security-considerations"></a>Güvenlik konuları
 
-Sürücüdeki veriler, AES 128-bit BitLocker Sürücü Şifrelemesi kullanılarak şifrelenir. Bu şifreleme, aktarım sırasında verilerinizi korur.
+Sürücüdeki veriler, AES 256-bit BitLocker Sürücü Şifrelemesi kullanılarak şifrelenir. Bu şifreleme, aktarım sırasında verilerinizi korur.
 
 İçeri aktarma işleri için, sürücüler iki şekilde şifrelenir.  
 

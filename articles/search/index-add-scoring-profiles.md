@@ -3,34 +3,29 @@ title: Puanlama profillerini kullanarak arama derecesini artırma
 titleSuffix: Azure Cognitive Search
 description: Puanlama profilleri ekleyerek Azure Bilişsel Arama sonuçları için arama derecelendirme puanlarını artırın.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231110"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890173"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine puanlama profilleri ekleme
 
 *Puanlama* , sıralı bir sonuç kümesindeki her öğe için bir arama puanı hesaplar. Bir arama sonuç kümesindeki her öğeye bir arama puanı atanır ve en yüksek düzeye en düşüğe göre sıralanır.
 
  Azure Bilişsel Arama, bir başlangıç Puanını hesaplamak için varsayılan Puanlama kullanır, ancak hesaplamayı bir *Puanlama profili*aracılığıyla özelleştirebilirsiniz. Puanlama profilleri, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Örneğin, gelir potansiyelini temel alarak öğeleri artırmak, daha yeni öğeleri yükseltmek ya da envanterdeki çok uzun olan öğeleri artırmak isteyebilirsiniz.  
+
+ Aşağıdaki video segmenti, Puanlama profillerinin Azure Bilişsel Arama nasıl çalıştığı konusunda hızlı bir şekilde iletir.
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>Puanlama profili tanımları
 
  Puanlama profili, Dizin tanımının ağırlıklı alanlar, işlevler ve parametrelerden oluşan bir parçasıdır.  
 

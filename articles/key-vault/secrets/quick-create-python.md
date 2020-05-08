@@ -7,12 +7,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: a4d758a67ee6a19473f1a53a790b89c0e120084d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 567399da505ce8dacfac73347c293000d2e85f8c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81424982"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928168"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault istemci kitaplığı
 
@@ -67,13 +67,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
+Bulut tabanlı bir Python uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimlikle; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. 
 
-Bulut tabanlı bir Python uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimlikle; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. Kolaylık sağlaması için, bu hızlı başlangıç bir Python konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimlik doğrulaması için hizmet sorumlusu ve erişim denetimi ilkesi kullanılması gerekir.
+Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur. Hizmet prensibi, "http://<My-Unique-Service-prensibi-Name>" biçiminde benzersiz bir ad gerektirir.
 
 Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
 ```
 
 Bu işlem, bir dizi anahtar/değer çifti döndürür. 

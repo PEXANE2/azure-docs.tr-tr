@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517ff16cd1cbf9bfe31404d3b1b3993a02d6dae9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770561"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871563"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory kullanarak SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme (Önizleme)
 
@@ -38,9 +38,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 * Aboneliğinizle ilişkili bir Azure Active Directory kiracısı.
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * SMS tabanlı kimlik doğrulamasını etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
-* SMS mesajı kimlik doğrulama yöntemi ilkesinde etkin olan her bir kullanıcının, kullanmasa bile lisanslanması gerekir. Her etkin kullanıcı aşağıdaki Azure AD veya Microsoft 365 lisanslarından birine sahip olmalıdır:
+* SMS mesajı kimlik doğrulama yöntemi ilkesinde etkin olan her bir kullanıcının, kullanmasa bile lisanslanması gerekir. Her etkin kullanıcı aşağıdaki Azure AD, Office 365 veya Microsoft 365 lisanslarından birine sahip olmalıdır:
     * [Azure AD Premium P1 veya P2][azuread-licensing]
-    * [Microsoft 365 (M365) F1 veya F3][m365-firstline-workers-licensing]
+    * [Microsoft 365 (M365) F1 veya F3][m365-firstline-workers-licensing] ya da [Office 365 F1][o365-f1] veya [F3][o365-f3]
     * [Enterprise Mobility + Security (EMS) E3 veya E5][ems-licensing] ya da [Microsoft 365 (M365) E3 veya E5][m365-licensing]
 
 ## <a name="limitations"></a>Sınırlamalar
@@ -164,3 +164,5 @@ Azure AD 'de Microsoft Authenticator App veya FIDO2 güvenlik anahtarları gibi 
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
 [ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
+[o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
+[o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab

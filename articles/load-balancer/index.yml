@@ -2,7 +2,7 @@
 title: Load Balancer belgeleri
 summary: Azure Load Balancer’ı nasıl kullanabileceğinizi öğrenin. Hızlı başlangıçlar, öğreticiler, örnekler ve diğer kaynaklarda nasıl yük dengeleyici dağıtabileceğinizin yanı sıra sanal makinelere ve bulut kaynaklarına yönelik ya da bunlardan gelen trafik ile şirket içi ve şirket dışı sanal ağlardaki trafiğin yükünü nasıl dengeleyebileceğiniz açıklanmıştır.
 metadata:
-  title: Yük Dengeleyici
+  title: Load Balancer
   description: Azure Load Balancer’ı nasıl kullanabileceğinizi öğrenin. Hızlı başlangıçlar, öğreticiler, örnekler ve diğer kaynaklarda nasıl yük dengeleyici dağıtabileceğinizin yanı sıra sanal makinelere ve bulut kaynaklarına yönelik ya da bunlardan gelen trafik ile şirket içi ve şirket dışı sanal ağlardaki trafiğin yükünü nasıl dengeleyebileceğiniz açıklanmıştır.
   services: load-balancer
   ms.service: load-balancer
@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 12/05/2019
-  ms.openlocfilehash: d215bbfb80d634780ebfb7e33129c19f241d12a7
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 527b6a1c14d544a713e8eb3ef0ac1d3eeb340e93
+  ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76263532"
+  ms.lasthandoff: 05/07/2020
+  ms.locfileid: "82883085"
 landingContent:
 - title: Load Balancer hakkında
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Yük Dengeleyici nedir?
       url: load-balancer-overview.md
+    - text: Load Balancer kavramları
+      url: concepts.md
+    - text: Load Balancer bileşenleri
+      url: components.md
 - title: başlarken
   linkLists:
   - linkListType: quickstart
@@ -80,6 +84,8 @@ landingContent:
       url: load-balancer-standard-diagnostics.md
     - text: Azure Load Balancer sorunlarını giderme
       url: load-balancer-troubleshoot.md
+    - text: Yaygın Azure Load Balancer hataları
+      url: load-balancer-common-deployment-errors.md
 - title: Başvuru
   linkLists:
   - linkListType: reference
@@ -88,3 +94,7 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+    - text: ARM şablonları
+      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: Sık sorulan Load Balancer soruları
+      url: load-balancer-faqs.md

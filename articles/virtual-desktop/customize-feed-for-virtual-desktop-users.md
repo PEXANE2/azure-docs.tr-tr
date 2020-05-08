@@ -8,22 +8,26 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128089"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612903"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
 
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 RemoteApp ve uzak masaüstü kaynaklarının kullanıcılarınız için tanınabilir bir şekilde görünmesi için akışı özelleştirebilirsiniz.
 
-İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü indirip içeri aktarın](/powershell/windows-virtual-desktop/overview/) . Bundan sonra hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın:
+## <a name="prerequisites"></a>Ön koşullar
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Bu makalede, Windows sanal masaüstü PowerShell modülünü zaten indirdiğiniz ve yüklediğiniz varsayılmaktadır. Yapmadıysanız, [PowerShell modülünü ayarlama](powershell-module.md)bölümündeki yönergeleri izleyin.
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>RemoteApp için görünen adı özelleştirme
 
@@ -32,16 +36,55 @@ Kolay adı ayarlayarak, yayımlanan bir RemoteApp için görünen adı değişti
 Bir uygulama grubu için yayımlanmış RemoteApps listesini almak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
-Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
-![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](media/get-rdsremoteapp.png)
 
-Bir RemoteApp 'e kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
+Bir RemoteApp 'e kolay bir ad atamak için, gerekli parametrelerle birlikte aşağıdaki cmdlet 'i çalıştırın:
 
 ```powershell
-Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
+Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](media/set-rdsremoteapp.png)
+
+Örneğin, aşağıdaki örnek cmdlet 'i kullanarak geçerli uygulamaları elde edelim.
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
+```
+
+Çıktı şöyle görünür:
+
+```powershell
+CommandLineArgument : 
+CommandLineSetting  : DoNotAllow 
+Description         : 
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+FriendlyName        : Microsoft Word 
+IconContent         : {0, 0, 1, 0…} 
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
+IconIndex           : 0 
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
+Name                : 0301RAG/Microsoft Word 
+ShowInPortal        : False 
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+```
+Kolay adı güncelleştirmek için şu cmdlet 'i çalıştırın:
+
+```powershell
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+```
+
+Kolay adı başarıyla güncelleştirdiklerini doğrulamak için şu cmdlet 'i çalıştırın:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+```
+
+Cmdlet 'i size şu çıktıyı vermelidir:
+
+```powershell
+FriendlyName        : WordUpdate
+```
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Uzak Masaüstü için görünen adı özelleştirme
 
@@ -50,20 +93,39 @@ Bir kolay ad ayarlayarak yayımlanmış bir uzak masaüstü için görünen adı
 Uzak Masaüstü kaynağını almak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
-Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
-![Name ve FriendlyName ile birlikte Get-RDSRemoteApp PowerShell cmdlet 'inin ekran görüntüsü.](media/get-rdsremotedesktop.png)
 
 Uzak Masaüstü kaynağına kolay bir ad atamak için aşağıdaki PowerShell cmdlet 'ini çalıştırın:
 
 ```powershell
-Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
+Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Set-RDSRemoteApp with Name ve New FriendlyName vurgulanmış PowerShell cmdlet 'inin ekran görüntüsü.](media/set-rdsremotedesktop.png)
+
+## <a name="customize-a-display-name-in-azure-portal"></a>Azure portal bir görünen adı özelleştirme
+
+Azure portal kullanarak, bir kolay ad ayarlayarak yayımlanmış bir uzak masaüstü için görünen adı değiştirebilirsiniz. 
+
+1. <https://portal.azure.com> adresinden Azure portalında oturum açın. 
+
+2. **Windows sanal masaüstü**araması yapın.
+
+3. Hizmetler altında **Windows sanal masaüstü**' nü seçin. 
+
+4. Windows sanal masaüstü sayfasında, ekranın sol tarafındaki **uygulama grupları** ' nı seçin ve ardından düzenlemek istediğiniz uygulama grubunun adını seçin. 
+
+5. Ekranın sol tarafındaki menüden **uygulamalar** ' ı seçin.
+
+6. Güncelleştirmek istediğiniz uygulamayı seçin ve ardından yeni bir **görünen ad**girin. 
+
+7. **Kaydet**’i seçin. Düzenlediğiniz uygulama artık güncelleştirilmiş adı görüntülemelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık kullanıcıların akışını özelleştirdiğinize göre, test etmek için bir Windows sanal masaüstü istemcisinde oturum açabilirsiniz. Bunu yapmak için, Windows sanal masaüstü nasıl yapılır-TOS ' a bağlanma konusuna geçin:
     
- * [Windows 10 veya Windows 7'den bağlanma](connect-windows-7-and-10.md)
- * [Web tarayıcısından bağlanma](connect-web.md) 
+ * [Windows 10 veya Windows 7 ile bağlanma](connect-windows-7-and-10.md)
+ * [Web istemcisiyle bağlanma](connect-web.md) 
+ * [Android istemcisiyle bağlanma](connect-android.md)
+ * [iOS istemcisiyle bağlanma](connect-ios.md)
+ * [macOS istemcisiyle bağlanma](connect-macos.md)

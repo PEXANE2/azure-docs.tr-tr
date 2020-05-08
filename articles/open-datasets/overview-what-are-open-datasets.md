@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/06/2020
+ms.openlocfilehash: aa7cbd9b213d35becd65d9335312c0468760d655
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73606168"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872049"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Azure açık veri kümeleri nedir ve bunları nasıl kullanabilirsiniz?
 
@@ -24,6 +24,8 @@ Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini 
 
 ## <a name="curated-prepared-datasets"></a>Seçkin, hazırlanan veri kümeleri
 Azure açık veri kümelerinde seçkin açık genel veri kümeleri, makine öğrenimi iş akışlarında tüketim için iyileştirilmiştir. 
+
+Kullanılabilir tüm veri kümelerini görmek için [Azure açık veri kümeleri kataloğuna](https://azure.microsoft.com/services/open-datasets/catalog/)gidin.
 
 Veri bilimcileri, genellikle gelişmiş analizler için verileri temizleme ve hazırlama zamanının çoğunu harcamaktadır. Açık veri kümeleri Azure bulutuna kopyalanır ve zamandan tasarruf etmek için önceden işlenir. Düzenli aralıklarla veriler, Ulusal Okyanus ve atmosfer yönetimine (NOAA) FTP bağlantısı gibi kaynaklardan alınır. Ardından, veriler yapılandırılmış bir biçimde ayrıştırılır ve ardından ZIP kodu veya en yakın hava durumu istasyonun konumu gibi özelliklerle uygun şekilde zenginleştirir.
 

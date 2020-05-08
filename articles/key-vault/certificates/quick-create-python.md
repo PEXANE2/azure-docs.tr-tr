@@ -7,12 +7,12 @@ ms.date: 3/30/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 726cd76916510f38c7c14cb29e64449fb8fd539f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bac2af112bbecd90ce3ba3aa63475071d6edb26
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424709"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901229"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault istemci kitaplığı
 
@@ -67,12 +67,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. Kolaylık sağlaması için bu hızlı başlangıç, bir .NET konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimlik doğrulaması için hizmet sorumlusu ve erişim denetimi ilkesi kullanılması gerekir.
+Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın.
+
+Kolaylık sağlaması için, bu hızlı başlangıç, bir hizmet sorumlusu ve bir erişim denetimi ilkesi kullanılmasını gerektiren bir masaüstü uygulaması oluşturur. Hizmet prensibi, "http://<My-Unique-Service-prensibi-Name>" biçiminde benzersiz bir ad gerektirir.
 
 Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
 ```
 
 Bu işlem, bir dizi anahtar/değer çifti döndürür. 

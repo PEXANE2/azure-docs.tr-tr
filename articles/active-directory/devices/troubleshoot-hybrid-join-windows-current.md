@@ -11,14 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331782"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611322"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme
 
 Bu makalenin içeriği, Windows 10 veya Windows Server 2016 çalıştıran cihazlar için geçerlidir.
 
@@ -30,13 +31,13 @@ Bu makalede, [karma Azure Active Directory katılmış cihazları](hybrid-azurea
 - [Ayarların kurumsal dolaşımı](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [İş İçin Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
 
-Bu belge olası sorunları çözmek için sorun giderme kılavuzu sağlar. 
+Bu belge olası sorunları çözmek için sorun giderme kılavuzu sağlar.
 
 Windows 10 ve Windows Server 2016 için hibrit Azure Active Directory JOIN, Windows 10 Kasım 2015 güncelleştirmesini ve üstünü destekler.
 
 ## <a name="troubleshoot-join-failures"></a>JOIN hatalarıyla ilgili sorunları giderme
 
-### <a name="step-1-retrieve-the-join-status"></a>1. Adım: JOIN durumunu alma 
+### <a name="step-1-retrieve-the-join-status"></a>1. Adım: JOIN durumunu alma
 
 **JOIN durumunu almak için:**
 
@@ -88,22 +89,22 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>2. Adım: JOIN durumunu değerlendirme 
+### <a name="step-2-evaluate-the-join-status"></a>2. Adım: JOIN durumunu değerlendirme
 
 Aşağıdaki alanları gözden geçirin ve beklenen değerlere sahip olduklarından emin olun:
 
-#### <a name="domainjoined--yes"></a>Domainkatılmış: Evet  
+#### <a name="domainjoined--yes"></a>Domainkatılmış: Evet
 
-Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gösterir. Değer **Hayır**ise, cihaz karma Azure AD katılımı gerçekleştiremez.  
+Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gösterir. Değer **Hayır**ise, cihaz karma Azure AD katılımı gerçekleştiremez.
 
-#### <a name="workplacejoined--no"></a>Iş Placekatılacak: Hayır  
+#### <a name="workplacejoined--no"></a>Iş Placekatılacak: Hayır
 
 Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış*olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet**ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 ' un yıldönümü güncelleştirme sürümü (1607) kullanılırken hesap yok sayılır.
 
-#### <a name="azureadjoined--yes"></a>Azureadkatıldı: Evet  
+#### <a name="azureadjoined--yes"></a>Azureadkatıldı: Evet
 
 Bu alan, cihazın katılıp katılmadığını gösterir. Cihaz bir Azure AD 'ye katılmış cihaz ya da karma Azure AD 'ye katılmış bir cihaz ise değer **Evet** olur.
-Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır. 
+Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır.
 
 Daha fazla sorun giderme için sonraki adımlara geçin.
 
@@ -155,7 +156,7 @@ Hatanın olası nedenleri:
    - AD ormanında, cihazın ait olduğu, Azure AD 'de doğrulanmış bir etki alanı adına işaret eden geçerli bir SCP nesnesi gerekir.
    - Ayrıntıları, [hizmet bağlantı noktası yapılandırma](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)bölümünde bulabilirsiniz.
 - Bulgu uç noktasından bağlama ve bulma meta verilerini getirme hatası.
-   - Cihazın, kayıt ve yetkilendirme uç noktalarını `https://enterpriseregistration.windows.net`BULMASı için sistem bağlamına erişebilmesi gerekir. 
+   - Cihazın, kayıt ve yetkilendirme uç noktalarını `https://enterpriseregistration.windows.net`BULMASı için sistem bağlamına erişebilmesi gerekir.
    - Şirket içi ortamda giden bir ara sunucu gerekiyorsa, BT Yöneticisi, cihazın bilgisayar hesabının giden ara sunucuya keşfedip sessizce kimlik doğrulaması yapabildiğinden emin olmalıdır.
 - Kullanıcı bölgesi uç noktasına bağlanılamadı ve bölge bulma işlemi gerçekleştirilemiyor. (Yalnızca Windows 10 sürüm 1809 ve üzeri)
    - Cihaz, doğrulanmış etki alanı için bölge `https://login.microsoftonline.com`bulma işlemini gerçekleştirmek ve etki alanı türünü (yönetilen/Federasyon) BELIRLEYEBILMEK için sistem bağlamına erişebilmelidir.
@@ -173,7 +174,7 @@ Hatanın olası nedenleri:
    - Neden: bulma Işlemi gerçekleştirilirken Işlem zaman aşımına uğradı.
    - Çözüm: SISTEM bağlamında `https://enterpriseregistration.windows.net` erişilebilir olduğundan emin olun. Daha fazla bilgi için [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites)bölümüne bakın.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Neden: genel bölge bulma hatası. STS 'den etki alanı türü (yönetilen/Federasyon) saptanamadı. 
+   - Neden: genel bölge bulma hatası. STS 'den etki alanı türü (yönetilen/Federasyon) saptanamadı.
    - Çözüm: daha fazla araştırmak için aşağıdaki alt hatayı bulun.
 
 **Ortak alt hata kodları:**
@@ -260,7 +261,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Neden: kimlik doğrulama protokolü WS-Trust değil.
-   - Çözüm: şirket içi kimlik sağlayıcısı WS-Trust ' i desteklemelidir 
+   - Çözüm: şirket içi kimlik sağlayıcısı WS-Trust ' i desteklemelidir
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Neden: şirket içi Federasyon Hizmeti bir XML yanıtı döndürmedi.
    - Çözüm: MEX uç noktasının geçerli bir XML döndürürken emin olun. Proxy 'nin müdahale olmadığından ve XML olmayan yanıtları döndürmediğinden emin olun.
@@ -278,7 +279,7 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
    - Çözüm: bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
    - Neden: daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS), sunucu tarafından gönderilen sertifika doğrulanamadı.
-   - Çözüm: istemci saati eğriliğini denetleyin. Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin. 
+   - Çözüm: istemci saati eğriliğini denetleyin. Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - Neden: bağlanma girişimi `https://login.microsoftonline.com` başarısız oldu.
    - Çözüm: ağ bağlantısını denetleyin `https://login.microsoftonline.com`.
@@ -293,11 +294,11 @@ Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için
    - Çözüm: Federasyon sunucusu ayarlarını kontrol edin. Kimlik doğrulama günlüklerinde sunucu hata kodunu arayın.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
    - Neden: belirteç uç noktasından erişim belirteci alınmaya çalışılırken bir hata alındı.
-   - Çözüm: ADAL günlüğünde temeldeki hataya bakın. 
+   - Çözüm: ADAL günlüğünde temeldeki hataya bakın.
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
    - Neden: genel ADAL hatası
    - Çözüm: kimlik doğrulama günlüklerinden alt hata kodunu veya sunucu hata kodunu bulun.
-    
+
 #### <a name="join-phase"></a>JOIN aşaması
 
 Hatanın nedenleri:
@@ -337,7 +338,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
    - Neden: hata kodu: "DirectoryError" ile DRS 'den bir hata yanıtı alındı
    - Çözüm: olası nedenler ve çözümler için sunucu hata koduna bakın.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Neden: hata kodu: "AuthenticationError" ve Erroralt kod "DeviceNotFound" DEĞIL, DRS 'den bir hata yanıtı alındı. 
+   - Neden: hata kodu: "AuthenticationError" ve Erroralt kod "DeviceNotFound" DEĞIL, DRS 'den bir hata yanıtı alındı.
    - Çözüm: olası nedenler ve çözümler için sunucu hata koduna bakın.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
    - Neden: hata kodu: "DirectoryError" ile DRS 'den bir hata yanıtı alındı
@@ -349,7 +350,7 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
    - Neden: TPM işlemi başarısız oldu veya geçersiz
    - Çözüm: muhtemelen kötü bir Sysprep görüntüsü nedeniyle. Sysprep görüntüsünün oluşturulduğu makinenin Azure AD 'ye katılmış, karma Azure AD 'ye katılmış veya Azure AD 'nin kayıtlı olduğundan emin olun.
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - Neden: Genel TPM hatası. 
+   - Neden: Genel TPM hatası.
    - Çözüm: Bu hatayla birlikte cihazlarda TPM 'YI devre dışı bırakın. Windows 10 sürüm 1809 ve üzeri, TPM başarısızlıklarını otomatik olarak algılar ve TPM 'YI kullanmadan karma Azure AD JOIN işlemini tamamlar.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
    - Neden: FIPS modundaki TPM şu anda desteklenmiyor.
@@ -386,28 +387,32 @@ Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay G
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. Adım: günlükleri ve iletişim Microsoft Desteği toplayın
 
-Ortak betikleri buradan alın: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+Auth. zip dosyasını şuradan indirin[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Bir yönetici komut istemi açın ve çalıştırın `start_ngc_tracing_public.cmd`.
-2. Sorunu yeniden oluşturmak için adımları uygulayın.
-3. Çalıştırarak günlük betiğini çalıştırmayı durdurun `stop_ngc_tracing_public.cmd`.
-4. ZIP ve analiz için altında `%SYSTEMDRIVE%\TraceDJPP\*` günlükleri gönder.
+1. Dosyaları sıkıştırmasını açın ve dahil edilen **Start-Auth. txt** ve **stop-Auth. txt** dosyalarını **Start-Auth. cmd** ve **stop-Auth. cmd**olarak yeniden adlandırın.
+1. Yükseltilmiş bir komut isteminden **Start-Auth. cmd**' yi çalıştırın.
+1. Sorun kullanıcısı ile başka bir oturuma geçiş yapmak için anahtar hesabını kullanın.
+1. Sorunu yeniden üretin.
+1. İzlemeyi çalıştıran yönetici oturumuna geri dönmek için anahtar hesabını kullanın.
+1. Yükseltilmiş bir komut isteminden **stop-Auth. cmd**' yi çalıştırın.
+1. ZIP ve klasör **kimlik doğrulama günlüklerini** komut dosyalarının yürütüldüğü klasörden gönderin.
 
 ## <a name="troubleshoot-post-join-issues"></a>Ekleme sonrası sorunlar hakkında sorun giderme
 
-### <a name="retrieve-the-join-status"></a>JOIN durumunu al 
+### <a name="retrieve-the-join-status"></a>JOIN durumunu al
 
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: YES ve AzureADPrt: YES
-  
-Bu alanlar, kullanıcının cihazda oturum açarken Azure AD 'ye başarıyla kimlik doğrulaması yapıp belirtmediğini belirtir. Değerler **Hayır**ise bunun nedeni şu olabilir:
+
+Bu alanlar, kullanıcının cihazda oturum açarken Azure AD 'ye başarıyla kimlik doğrulaması yapıp belirtmediğini belirtir.
+Değerler **Hayır**ise bunun nedeni şu olabilir:
 
 - Kayıt sırasında cihazla ilişkili TPM 'de hatalı depolama anahtarı (yükseltilmiş çalıştırılırken KeySignTest denetimini denetleyin).
 - Alternatif oturum açma KIMLIĞI
 - HTTP proxy bulunamadı
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-- Ayarlar-> hesaplar-Iş veya okul > erişin, karma Azure AD 'ye katılmış cihazlar, Mobil etkin noktalara veya dış WiFi ağlarına bağlıyken, biri Azure AD ve bir şirket içi AD için olmak üzere iki farklı hesap gösterebilir. Bu yalnızca bir kullanıcı arabirimi sorunudur ve işlevselliği etkilemez. 
- 
+- Ayarlar-> hesaplar-Iş veya okul > erişin, karma Azure AD 'ye katılmış cihazlar, Mobil etkin noktalara veya dış WiFi ağlarına bağlıyken, biri Azure AD ve bir şirket içi AD için olmak üzere iki farklı hesap gösterebilir. Bu yalnızca bir kullanıcı arabirimi sorunudur ve işlevselliği etkilemez.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Dsregcmd komutunu kullanarak cihazlarda sorun gidermeye](troubleshoot-device-dsregcmd.md) devam edin

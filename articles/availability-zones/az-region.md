@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: ba646fbb6f08dab712ee6184c7be3aef2a1dae45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 79b8ed6d2ccb167501c280feaede3361cb2a88f1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209555"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609621"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Azure 'da Kullanılabilirlik Alanları destekleyen bölgeler
 
@@ -47,7 +47,7 @@ Her bölgede kullanılabilir olan hizmetler, kullanılabilirlik için yaklaşan 
 | Azure Veri Gezgini                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |                |
 | SQL Veritabanı                    | &#10003;   | &#10003;     | &#10003;  | &#10003; (Önizleme) | &#10003;       | &#10003; (Önizleme)     | &#10003; | &#10003;    | &#10003;       | &#10003;       |&#10003;        |
 | Redis için Azure Önbelleği           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
-| Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |                |
+| Azure Cosmos DB      | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       | &#10003;    | &#10003; |  &#10003;   |     &#10003;       | &#10003;    | &#10003;    |
 | **Analiz**                       |            |              |           |           |                |              |          |             |            |                |                |
 | Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |                |
 | **Tümleştirme**                     |            |              |           |           |                |              |          |             |            |                |                |

@@ -46,6 +46,8 @@
           href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Service Bus Mesajlaşması
           href: ../../service-bus-messaging/service-bus-resource-manager-namespace-queue.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Site Recovery
+          href: ../../site-recovery/quickstart-create-vault-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: SQL Veritabanı
           href: ../../sql-database/sql-database-single-database-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Sanal makine ölçek kümeleri - Linux
@@ -247,6 +249,8 @@
       items:
         - name: İşlem hatları ile VS projesi
           href: add-template-to-azure-pipelines.md
+        - name: Dağıtım - GitHub Actions
+          href: deploy-github-actions.md
     - name: Şablonu dışarı aktarma
       href: export-template-portal.md
     - name: Dağıtım geçmişini görüntüleme

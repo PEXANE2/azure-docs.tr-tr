@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 008058e42dfeb84cb2812ac4e8378cb5a8b5913a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db6b8b2ff199b7b26d0c641ded31a5c1417468b9
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422602"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901271"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -60,10 +60,10 @@ Bir uygulama için objectID, ilişkili hizmet sorumlusuna karşılık gelir. Hiz
 
 Bir uygulama için ObjectID almanın iki yolu vardır.  Birincisi Azure Active Directory uygulamanızı kaydeder. Bunu yapmak için hızlı başlangıç ' daki adımları izleyerek [Microsoft Identity platformu ile uygulamayı kaydedin](../../active-directory/develop/quickstart-register-app.md). Kayıt tamamlandığında, ObjectID "uygulama (istemci) KIMLIĞI" olarak listelenecektir.
 
-İkincisi, bir Terminal penceresinde bir hizmet sorumlusu oluşturmaktır. Azure CLı ile [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın.
+İkincisi, bir Terminal penceresinde bir hizmet sorumlusu oluşturmaktır. Azure CLı ile, [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın ve "http://<My-Unique-Service-prensibi-Name>" biçimindeki-n bayrağına benzersiz bir hizmet asıl adı sağlayın.
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 ObjectID, çıktıda olarak `clientID`listelenecektir.
@@ -72,7 +72,7 @@ Azure PowerShell, [New-AzADServicePrincipal](/powershell/module/Az.Resources/New
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 ObjectID, çıkışta (değil `Id` `ApplicationId`) olarak listelenecektir.

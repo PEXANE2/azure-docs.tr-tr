@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114157"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872148"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
 
@@ -45,7 +45,7 @@ Değişiklik akışları kullanılırken aşağıdaki hata kodları ve iletileri
 
 Aşağıdaki örnek, koleksiyondaki tüm öğelerde değişiklik akışlarının nasıl alınacağını gösterir. Bu örnek, öğeleri yerleştirildiğinde, güncelleştirilirken veya değiştirildiğinde izlemek için bir imleç oluşturur. Değişiklik `$match` akışlarını almak `$project` için aşama, `fullDocument` aşama ve seçenek gereklidir. Değişiklik akışlarını kullanarak silme işlemleri için izleme şu anda desteklenmiyor. Geçici bir çözüm olarak, silinmekte olan öğelere bir yumuşak işaret ekleyebilirsiniz. Örneğin, "Deleted" adlı öğeye bir öznitelik ekleyebilirsiniz. Öğeyi silmek istediğinizde, ' Deleted ' olarak `true` ayarlayabilir ve öğe ÜZERINDE bir TTL ayarlayabilirsiniz. "Deleted" güncelleştirmesi bir güncelleştirme `true` olduğundan, bu değişiklik akış değişikliğini görünür hale görünecektir.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 var cursor = db.coll.watch(
@@ -61,8 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-
-### <a name="c"></a>C#:
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()

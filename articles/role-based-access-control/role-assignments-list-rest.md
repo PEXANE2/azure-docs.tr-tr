@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve REST API kullanarak rol atamalarını listeleyin
-description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve REST API kullanarak hangi kaynakların erişimi olduğunu nasıl belirleyebileceğinizi öğrenin.
+title: REST API-Azure RBAC kullanarak Azure rol atamalarını listeleme
+description: REST API ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin hangi kaynakların erişimi olduğunu belirlemeyi öğrenin.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,17 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50ef431559a38d30f7e1e76646e8930c70fc4ef9
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062148"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891328"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC ve REST API kullanarak rol atamalarını listeleyin
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamalarını listeleyin
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, REST API kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062148"
 
 ## <a name="list-role-assignments"></a>Rol atamalarını listeleme
 
-RBAC 'de, erişimi listelemek için rol atamalarını listeleyin. Rol atamalarını listelemek için, [rol atamaları-liste](/rest/api/authorization/roleassignments/list) REST API 'lerinden birini kullanın. Sonuçlarınızı iyileştirmek için bir kapsam ve isteğe bağlı bir filtre belirtirsiniz.
+Azure RBAC 'de, erişimi listelemek için rol atamalarını listeleyin. Rol atamalarını listelemek için, [rol atamaları-liste](/rest/api/authorization/roleassignments/list) REST API 'lerinden birini kullanın. Sonuçlarınızı iyileştirmek için bir kapsam ve isteğe bağlı bir filtre belirtirsiniz.
 
 1. Aşağıdaki istekle başlayın:
 
@@ -61,7 +61,36 @@ RBAC 'de, erişimi listelemek için rol atamalarını listeleyin. Rol atamaları
     > | `$filter=atScope()+and+assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu veya belirtilen kapsamda rol atamalarını listeler. |
     > | `$filter=principalId+eq+'{objectId}'` | Belirtilen kullanıcı, Grup veya hizmet sorumlusu için rol atamalarını listeler. |
 
+Aşağıdaki istek, abonelik kapsamındaki belirtilen kullanıcı için tüm rol atamalarını listeler:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()+and+assignedTo('{objectId1}')
+```
+
+Aşağıda çıktının bir örneği gösterilmektedir:
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+                "principalId": "{objectId1}",
+                "scope": "/subscriptions/{subscriptionId1}",
+                "createdOn": "2019-01-15T21:08:45.4904312Z",
+                "updatedOn": "2019-01-15T21:08:45.4904312Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+            "type": "Microsoft.Authorization/roleAssignments",
+            "name": "{roleAssignmentId1}"
+        }
+    ]
+}
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve REST API kullanarak rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
+- [REST API kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)

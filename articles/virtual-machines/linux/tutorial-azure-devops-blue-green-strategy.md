@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Azure Linux sanal makineleri için kanarya dağıtımlarını yapılandırma
-description: Bu öğreticide, mavi yeşil dağıtım stratejisini kullanarak bir Azure sanal makinesi grubunu güncelleştiren sürekli dağıtım (CD) işlem hattı ayarlamayı öğreneceksiniz.
+description: Bu öğreticide, sürekli dağıtım (CD) işlem hattı ayarlamayı öğreneceksiniz. Bu işlem hattı, mavi yeşil dağıtım stratejisini kullanarak bir Azure Linux sanal makinesi grubunu güncelleştirir.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,69 +12,81 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b1a57245434bb188ffaab56a8891b4b0ee27f044
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a98989ed48e515cafeca27ae492c83efca6002c4
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82120495"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871604"
 ---
-# <a name="tutorial---configure-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux Sanal Makineleri için mavi yeşil dağıtım stratejisini yapılandırma
+# <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için mavi yeşil dağıtım stratejisini yapılandırma
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Hizmet olarak altyapı (IaaS)-CI/CD 'yi yapılandırma
 
-## <a name="iaas---configure-cicd"></a>IaaS-CI/CD 'yi yapılandırma 
-Azure Pipelines, sanal makinelere dağıtımlar için tam ve tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure VM için bir sürekli teslim işlem hattını doğrudan Azure portal yapılandırabilirsiniz. Bu belge, çok makineli dağıtımlar için mavi-yeşil stratejiyi kullanan bir CI/CD işlem hattı ayarlama ile ilgili adımları içerir. Ayrıca, [Azure Portal ' den](https://aka.ms/AA7jlh8) kullanıma hazır olarak desteklenen, sıralı ve [kanarya](https://aka.ms/AA7jdrz)gibi diğer stratejilere de göz atabilirsiniz. 
+Azure Pipelines, sanal makinelere dağıtımlar için tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure portal bir Azure VM için sürekli teslim işlem hattı yapılandırabilirsiniz.
 
- 
- **Sanal makinelerde CI/CD 'yi yapılandırma**
+Bu makalede, çok makineli dağıtımlar için mavi yeşil stratejiyi kullanan bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure Portal Ayrıca, [yuvarlama](https://aka.ms/AA7jlh8) ve [kanarya](https://aka.ms/AA7jdrz)gibi diğer stratejileri de destekler.
 
-Sanal makineler, bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) hedef olarak eklenebilir ve çok makineli güncelleştirmeler için hedeflenebilir. Dağıtım grubundaki **dağıtım geçmişi** , dağıtıldıktan sonra, VM 'den işlem hattına ve sonra işlemeye izlenebilirlik sağlar. 
- 
-  
-**Mavi-yeşil dağıtımlar**: mavi yeşil bir dağıtım, aynı bekleme ortamına sahip olma süresini azaltır. Herhangi bir zamanda ortamlarından biri canlı olur. Yeni bir sürüm hazırlandıktan sonra, yeşil ortamda testin son aşamasını tamamlarsınız. Yazılım yeşil ortamda çalışmaya başladıktan sonra gelen tüm isteklerin yeşil ortama gitmesi için trafiği değiştirin; mavi ortam artık boşta olur.
-Sürekli teslim seçeneğini kullanarak Azure portal "**sanal makineleriniz**" için mavi-yeşil dağıtımları yapılandırabilirsiniz. 
+### <a name="configure-cicd-on-virtual-machines"></a>Sanal makinelerde CI/CD 'yi yapılandırma
 
-İşte adım adım yönergeler.
+Sanal makineleri bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)hedefler olarak ekleyebilirsiniz. Daha sonra bunları çok makineli güncelleştirmeler için hedefleyebilirsiniz. Makinelere dağıttıktan sonra, dağıtım **geçmişini** bir dağıtım grubu içinde görüntüleyin. Bu görünüm VM 'den işlem hattına ve sonra işlemeye izlemenizi sağlar.
 
-1. Azure portal oturum açın ve bir sanal makineye gidin 
-2. VM sol bölmesinde **sürekli teslim**' ya gidin. Ardından **Yapılandır**' a tıklayın. 
+### <a name="blue-green-deployments"></a>Mavi-yeşil dağıtımlar
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. Yapılandırma panelinde, mevcut bir hesabı seçmek veya bir hesap oluşturmak için **Azure DevOps organizasyonu** ' na tıklayın. Ardından, ardışık düzeni yapılandırmak istediğiniz projeyi seçin.  
+Mavi yeşil bir dağıtım, aynı bekleme ortamına sahip olan kapalı kalma süresini azaltır. Her seferinde yalnızca bir ortam canlı olur.
 
+Yeni bir sürüm hazırlandıktan sonra, yeşil ortamda testin son aşamasını doldurun. Yazılım yeşil ortamda çalıştıktan sonra, gelen tüm isteklerin yeşil ortama gitmesi için trafiği değiştirin. Mavi ortam boşta.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. Dağıtım grubu, fiziksel ortamları temsil eden bir dağıtım hedefi makineleri kümesidir; Örneğin, "dev", "test", "UAT" ve "üretim". Yeni bir dağıtım grubu oluşturabilir veya mevcut bir dağıtım grubunu seçebilirsiniz. 
-5. Sanal makineye dağıtılacak paketi yayımlayan derleme işlem hattını seçin. Yayımlanan paketin, paket kökünde bir dağıtım betiği _Deploy. ps1_ veya _Deploy.sh_ `deployscripts` olması gerektiğini unutmayın. Bu dağıtım betiği, çalışma zamanında Azure DevOps işlem hattı tarafından yürütülür.
-6. Tercih ettiğiniz dağıtım stratejisini seçin. **Mavi-yeşil**' i seçin.
-7. Mavi-yeşil dağıtımların parçası olacak VM 'lere "mavi" veya "yeşil" bir etiket ekleyin. VM bir bekleme rolü için ise, bunu "yeşil" olarak etiketlemelisiniz, aksi takdirde "mavi" olarak etiketleyin.
-![AzDevOps_bluegreen_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
+Sürekli teslim seçeneğini kullanarak, Azure portal sanal makinelerinize mavi yeşil dağıtımlar yapılandırabilirsiniz. Adım adım izlenecek yol:
 
-8. Sürekli teslim işlem hattını yapılandırmak için **Tamam** ' ı tıklatın. Artık sanal makineye dağıtmak için yapılandırılmış bir sürekli teslim işlem hattına sahipsiniz.
-![AzDevOps_bluegreen_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-pipeline.png)
+1. Azure portal oturum açın ve bir sanal makineye gidin.
+1. VM ayarlarının sol bölmesinde **sürekli teslim**' yı seçin. Ardından **Yapılandır**' ı seçin.
 
+   ![Yapılandır düğmesi ile sürekli teslim bölmesi](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
-9. İşlem hattı yapılandırmasını görmek için Azure DevOps 'daki yayın işlem hattını **Düzenle** ' ye tıklayın. İşlem hattı üç aşamadan oluşur. İlk aşama bir dağıtım grubu aşamasıdır ve _yeşil_ (bekleme) olarak etiketlenen VM 'lere dağıtılır. İkinci aşamada işlem hattı duraklatılır ve el ile müdahale çalışmasının çalışmayı sürdürmesini bekler. Bir Kullanıcı dağıtımın kararlı hale geldiğinde, trafiği artık _yeşil_ VM 'lere yönlendirebilir ve ardından VM 'lerde _mavi_ ve _yeşil_ etiketleri takas eden işlem hattı çalıştırmasını sürdürür. Bu, eski uygulama sürümü olan VM 'Lerin _yeşil_ olarak etiketlendiğinden ve sonraki işlem hattı çalıştırmasında ' de dağıtıldığından emin olmanızı sağlar.
-![AzDevOps_bluegreen_task](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
+1. Yapılandırma panelinde, mevcut bir hesabı seçmek veya yeni bir hesap oluşturmak için **Azure DevOps organizasyonu** ' nı seçin. Ardından, ardışık düzeni yapılandırmak istediğiniz projeyi seçin.  
 
+   ![Sürekli teslim paneli](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-10. Dağıtımı betiği Yürüt görevi varsayılan olarak, yayımlanan paketin kök dizinindeki `deployscripts` klasöründe _Deploy. ps1_ veya _Deploy.sh_ dağıtım betiğini yürütür. Seçili derleme ardışık düzeninin bunu paketin kök klasöründe yayımladığınızdan emin olun.
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. Dağıtım grubu, fiziksel ortamları temsil eden bir dağıtım hedefi makineleri kümesidir. Geliştirme, test, UAT ve üretim örneklere örnektir. Yeni bir dağıtım grubu oluşturabilir veya var olan bir dağıtım grubu seçebilirsiniz.
+1. Sanal makineye dağıtılacak paketi yayımlayan derleme işlem hattını seçin. Yayınlanan paketin, paketin kök klasöründeki deployscripts klasöründe Deploy. ps1 veya deploy.sh adlı bir dağıtım betiği olmalıdır. İşlem hattı bu dağıtım betiğini çalıştırır.
+1. **Dağıtım stratejisi**' nda **mavi-yeşil**' i seçin.
+1. Mavi-yeşil dağıtımların parçası olacak VM 'lere "mavi" veya "yeşil" bir etiket ekleyin. Bir VM bir bekleme rolü için ise, "yeşil" olarak etiketleyin. Aksi halde, "mavi" olarak etiketleyin.
 
+   ![Sürekli teslim paneli; dağıtım stratejisi değeri mavi-yeşil seçildi](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
 
+1. Sanal makineye dağıtılacak sürekli teslim işlem hattını yapılandırmak için **Tamam ' ı** seçin.
 
+   ![Mavi-yeşil işlem hattı](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-pipeline.png)
+
+1. Sanal makine için dağıtım ayrıntıları görüntülenir. Azure DevOps 'daki yayın ardışık düzenine gitmek için bağlantıyı seçebilirsiniz. Yayın ardışık düzeninde, işlem hattı yapılandırmasını görüntülemek için **Düzenle** ' yi seçin. İşlem hattı şu üç aşamaya sahiptir:
+
+   1. Bu aşama bir dağıtım grubu aşamasıdır. Uygulamalar, "yeşil" olarak etiketlenen bekleme sanal makinelerine dağıtılır.
+   1. Bu aşamada, işlem hattı duraklatılır ve el ile müdahale çalışmasının çalışmayı sürdürmesini bekler. Kullanıcılar, "yeşil" olarak etiketlenen VM 'lere dağıtım kararlılığını el ile yaptıktan sonra işlem hattı çalıştırmasını sürdürür.
+   1. Bu aşama, VM 'lerdeki "mavi" ve "yeşil" etiketleri değiştirir. Bu, eski uygulama sürümlerine sahip VM 'Lerin artık "yeşil" olarak etiketlenmesini sağlar. Sonraki işlem hattı çalıştırıldığında, uygulamalar bu VM 'lere dağıtılır.
+
+      ![Dağıt mavi-yeşil görevi için dağıtım grubu bölmesi](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
+
+1. Dağıtımı betiği Yürüt görevi varsayılan olarak Deploy. ps1 veya deploy.sh dağıtım betiğini çalıştırır. Betik, yayımlanan paketin kök klasöründe yer aldığı deployscripts klasöründedir. Seçili derleme işlem hattının dağıtımı paketin kök klasöründe yayınlayıp yayımlamadığını doğrulayın.
+
+   ![Deployscripts klasöründe deploy.sh gösteren yapılar bölmesi](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Diğer dağıtım stratejileri
-- [Sıralı dağıtım stratejisini yapılandırma](https://aka.ms/AA7jlh8)
-- [Canary dağıtım stratejisini yapılandırma](https://aka.ms/AA7jdrz)
 
-## <a name="azure-devops-project"></a>Azure DevOps projesi 
-Azure 'ı her zamankinden daha kolay bir şekilde kullanmaya başlayın.
- 
-DevOps Projeleri, uygulamanızı yalnızca üç adımda herhangi bir Azure hizmetinde çalıştırmaya başlayın: bir uygulama dili, çalışma zamanı ve bir Azure hizmeti seçin.
- 
-[Daha fazla bilgi edinin](https://azure.microsoft.com/features/devops-projects/ ).
- 
-## <a name="additional-resources"></a>Ek kaynaklar 
-- [DevOps projesini kullanarak Azure sanal makinelerine dağıtma](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+- [Sıralı dağıtım stratejisini yapılandırma](https://aka.ms/AA7jlh8)
+- [Kanarya dağıtım stratejisini yapılandırma](https://aka.ms/AA7jdrz)
+
+## <a name="azure-devops-projects"></a>Azure DevOps Projeleri
+
+Azure 'ı kolay bir şekilde kullanmaya başlayın. Azure DevOps Projeleri, aşağıdakileri yaparak uygulamanızı yalnızca üç adımda herhangi bir Azure hizmetinde çalıştırmaya başlayın:
+
+- Uygulama dili
+- Çalışma zamanı
+- Bir Azure hizmeti
+
+[Daha fazla bilgi edinin](https://azure.microsoft.com/features/devops-projects/).
+
+## <a name="additional-resources"></a>Ek kaynaklar
+
+- [Azure DevOps Projeleri kullanarak Azure sanal makinelerine dağıtma](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Azure sanal makine ölçek kümesine uygulamanızın sürekli dağıtımını uygulama](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

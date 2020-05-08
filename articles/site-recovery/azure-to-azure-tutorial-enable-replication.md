@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292476"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871501"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -170,8 +170,8 @@ Kaynak VM 'de Azure disk şifrelemesi (ADE) etkinse ayarları gözden geçirin.
    1. **Anahtar şifreleme anahtarı kasaları**: varsayılan olarak Site Recovery, hedef bölgede yeni bir Anahtar Kasası oluşturur. Ad bir `asr` sonekine sahiptir ve kaynak VM anahtar şifreleme anahtarlarını temel alır. Site Recovery tarafından oluşturulan Anahtar Kasası zaten varsa, yeniden kullanılır.
 1. **Özelleştir** ' i seçerek özel anahtar kasaları seçin.
 
-> [!NOTE]
-> Yalnızca Windows işletim sistemlerini çalıştıran ve [Azure AD uygulamasıyla şifreleme için etkinleştirilen](https://aka.ms/ade-aad-app) Azure vm 'leri Azure Site Recovery tarafından desteklenmektedir.
+>[!NOTE]
+> Site Recovery Şu anda Windows işletim sistemlerini çalıştıran VM 'Ler için Azure Active Directory (AAD) ile ve olmadan ADE 'yi desteklemektedir. Linux işletim sistemleri için yalnızca AAD olmadan ADE 'yi destekliyoruz. Ayrıca, ADE 1,1 çalıştıran makineler (AAD olmadan) için VM 'Lerin yönetilen diskleri kullanıyor olması gerekir. Yönetilmeyen disklere sahip VM 'Ler desteklenmez. ADE 0,1 ' den (AAD ile) 1,1 ' e geçiş yaparsanız, bir sanal makine için çoğaltmayı devre dışı bırakmanız ve ' i etkinleştirdikten 1,1 sonra çoğaltmayı etkinleştirmeniz gerekir.
 
 ### <a name="track-replication-status"></a>Çoğaltma durumunu izleme
 

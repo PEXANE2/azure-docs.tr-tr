@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: jgao
-ms.openlocfilehash: 99db4ec61a515301224691d7c2e4e3c905fee1c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188918"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872328"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
 Azure Kaynak şablonlarında Dağıtım betiklerini nasıl kullanacağınızı öğrenin. Adlı `Microsoft.Resources/deploymentScripts`yeni bir kaynak türü ile, kullanıcılar, şablon dağıtımlarında dağıtım betikleri yürütebilir ve yürütme sonuçlarını gözden geçirebilir. Bu betikler, aşağıdaki gibi özel adımları gerçekleştirmek için kullanılabilir:
 
 - bir dizine kullanıcı ekleme
-- uygulama kaydı oluşturma
 - veri düzlemi işlemlerini gerçekleştirme, örneğin Blobları veya çekirdek veritabanını kopyalama
 - lisans anahtarını arama ve doğrulama
 - otomatik olarak imzalanan sertifika oluşturma
@@ -37,14 +36,14 @@ Dağıtım betiğinin avantajları:
 Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılabildiği bölgelerde kullanılabilir.  Bkz. [Azure bölgelerindeki Azure Container Instances Için kaynak kullanılabilirliği](../../container-instances/container-instances-region-availability.md).
 
 > [!IMPORTANT]
-> Bir depolama hesabı ve bir kapsayıcı örneği olmak üzere iki dağıtım betiği kaynağı, betik yürütme ve sorun giderme için aynı kaynak grubunda oluşturulur. Bu kaynaklar genellikle dağıtım betiği yürütmesi bir terminal durumunda olduğunda betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [Temizleme dağıtım betiği kaynakları](#clean-up-deployment-script-resources).
+> Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Dağıtım betiği yürütmesi bir terminal durumunda olduğunda, otomatik olarak oluşturulan iki kaynak genellikle betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [Temizleme dağıtım betiği kaynakları](#clean-up-deployment-script-resources).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - **Hedef kaynak grubu için katkıda bulunan rolüne sahip bir kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. İşlemleri kaynak grubu dışında gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız kimliği abonelik düzeyine atayın.
 
   > [!NOTE]
-  > Dağıtım betik altyapısı arka planda bir depolama hesabı ve kapsayıcı örneği oluşturur.  Abonelik, Azure depolama hesabı (Microsoft. Storage) ve Azure Container Instance (Microsoft. Containerınstance) kaynak sağlayıcıları kaydolmadığında, katkıda bulunan rolüne sahip kullanıcı tarafından atanan yönetilen kimlik gereklidir.
+  > Betik hizmeti bir depolama hesabı (var olan bir depolama hesabı belirtmediğiniz müddetçe) ve arka planda bir kapsayıcı örneği oluşturur.  Abonelik, Azure depolama hesabı (Microsoft. Storage) ve Azure Container Instance (Microsoft. Containerınstance) kaynak sağlayıcıları kaydolmadığında, katkıda bulunan rolüne sahip kullanıcı tarafından atanan yönetilen kimlik gereklidir.
 
   Bir kimlik oluşturmak için, bkz. Azure portal kullanarak veya [Azure CLI kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)ya da [Azure PowerShell kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
 
@@ -101,6 +100,13 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 - **Kimlik**: dağıtım betiği hizmeti, komut dosyalarını yürütmek için Kullanıcı tarafından atanan bir yönetilen kimlik kullanır. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
 - **tür**: betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenmektedir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - **Forceupdatetag**: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. Parametrenin defaultValue 'ı olarak ayarlanması gereken newGuid () veya utcNow () işlevini kullanın. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
+- **Containersettings**: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  **Containergroupname** kapsayıcı grubu adını belirtmektir.  Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
+- **Storageaccountsettings**: mevcut bir depolama hesabını kullanmak için ayarları belirtin. Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-an-existing-storage-account).
 - **azpowershellversion**/**azclienversion**: kullanılacak modül sürümünü belirtin. Desteklenen PowerShell ve CLı sürümlerinin listesi için bkz. [Önkoşullar](#prerequisites).
 - **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
 - **EnvironmentVariables**: betiğe geçirilecek ortam değişkenlerini belirtin. Daha fazla bilgi için bkz. [dağıtım betikleri geliştirme](#develop-deployment-scripts).
@@ -241,7 +249,7 @@ Dağıtım betiği çıkışları AZ_SCRIPTS_OUTPUT_PATH konumuna kaydedilmelidi
 ### <a name="handle-non-terminating-errors"></a>Sonlandırma olmayan hataları işle
 
 Dağıtım betiğinizdeki [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Dağıtım betiği altyapısı değeri değiştirmez/değiştirmez.  $ErrorActionPreference için ayarladığınız değere rağmen dağıtım betiği, betik bir hatayla karşılaştığında kaynak sağlama durumunu *başarısız* olarak ayarlar.
+) değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Betik hizmeti değeri ayarladı/değiştirmez.  $ErrorActionPreference için ayarladığınız değere rağmen dağıtım betiği, betik bir hatayla karşılaştığında kaynak sağlama durumunu *başarısız* olarak ayarlar.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Güvenli dizeleri dağıtım betiğine geçir
 
@@ -249,7 +257,7 @@ Kapsayıcı örneklerinizin ortam değişkenlerini (EnvironmentVariable) ayarlam
 
 ## <a name="debug-deployment-scripts"></a>Hata ayıklama dağıtım betikleri
 
-Betik hizmeti, betik yürütme için bir [depolama hesabı](../../storage/common/storage-account-overview.md) ve bir [kapsayıcı örneği](../../container-instances/container-instances-overview.md) oluşturur. Her iki kaynak de kaynak adlarında **azscripts** sonekine sahiptir.
+Betik hizmeti bir [depolama hesabı](../../storage/common/storage-account-overview.md) (mevcut bir depolama hesabı belirtmediğiniz müddetçe) ve betik yürütme için bir [kapsayıcı örneği](../../container-instances/container-instances-overview.md) oluşturur. Bu kaynaklar betik hizmeti tarafından otomatik olarak oluşturulduysa, her iki kaynak de kaynak adlarında **azscripts** sonekine sahiptir.
 
 ![Kaynak Yöneticisi şablonu dağıtım betiği kaynak adları](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,22 +300,53 @@ Portalda deploymentScripts kaynağını görmek için **gizli türleri göster**
 
 ![Kaynak Yöneticisi şablonu dağıtım betiği, gizli türleri göster, Portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>Var olan bir depolama hesabını kullan
+
+Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Var olan bir depolama hesabını kullanma gereksinimleri:
+
+- Desteklenen depolama hesabı türleri şunlardır: genel amaçlı v2, genel amaçlı v1 ve dosya depolama hesapları. Yalnızca FileStorage, Premium SKU 'YU destekler. Daha fazla bilgi için bkz. [depolama hesabı türleri](../../storage/common/storage-account-overview.md).
+- Depolama hesabı güvenlik duvarı kuralları henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
+- Dağıtım betiğinin Kullanıcı tarafından atanan yönetilen kimliğinin, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinleri olmalıdır.
+
+Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğesinin `Microsoft.Resources/deploymentScripts`Özellik öğesine ekleyin:
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+- **storageAccountName**: depolama hesabının adını belirtin.
+- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. Anahtarı almak için [`listKeys()`](./template-functions-resource.md#listkeys) işlevini kullanabilirsiniz. Örneğin:
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
+
+Tüm `Microsoft.Resources/deploymentScripts` tanım örnekleri için bkz. [örnek şablonlar](#sample-templates) .
+
+Mevcut bir depolama hesabı kullanıldığında, betik hizmeti benzersiz bir ada sahip bir dosya paylaşma oluşturur. Betik hizmetinin dosya paylaşımının nasıl temizleyeceğini öğrenmek için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources) .
+
 ## <a name="clean-up-deployment-script-resources"></a>Dağıtım betiği kaynaklarını temizle
 
-Dağıtım betiği, dağıtım betikleri yürütmek ve hata ayıklama bilgilerini depolamak için kullanılan bir depolama hesabı ve kapsayıcı örneği oluşturur. Bu iki kaynak, sağlanan kaynaklarla aynı kaynak grubunda oluşturulur ve betiğin süresi dolarsa betik hizmeti tarafından silinir. Bu kaynakların yaşam döngüsünü kontrol edebilirsiniz.  Silinene kadar her iki kaynak için de faturalandırılırsınız. Fiyat bilgileri için bkz. [Container Instances fiyatlandırması](https://azure.microsoft.com/pricing/details/container-instances/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır, aksi takdirde bir kapsayıcı örneğiyle birlikte bir depolama hesabı otomatik olarak betik hizmeti tarafından oluşturulur. Dağıtım betiği yürütmesi bir terminal durumunda olduğunda, otomatik olarak oluşturulan iki kaynak betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Fiyat bilgileri için bkz. [Container Instances fiyatlandırması](https://azure.microsoft.com/pricing/details/container-instances/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
 Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetlenir:
 
-- **cleanuppreference**: betik yürütme bir terminal durumunda olduğunda temizle tercihi.  Desteklenen değerler şunlardır:
+- **cleanuppreference**: betik yürütme bir terminal durumunda olduğunda temizle tercihi. Desteklenen değerler şunlardır:
 
-  - **Her zaman**: komut dosyası yürütmesi bir Terminal durumuna ulaştıktan sonra kaynakları silin. Kaynak temizlenmeden sonra deploymentScripts kaynağı hala mevcut olabileceğinden, sistem betiği, kaynaklar silinmeden önce, betik yürütme sonuçlarını, örneğin stdout, çıktılar, dönüş değeri vs. DB 'ye kopyalar.
-  - **OnSuccess**: yalnızca betik yürütme başarılı olduğunda kaynakları silin. Hata ayıklama bilgilerini bulmak için kaynaklara erişmeye devam edebilirsiniz.
-  - **Onexpiration**: yalnızca **retentionInterval** ayarının süresi dolduğunda kaynakları silin. Bu özellik şu anda devre dışı.
+  - **Her zaman**: betik yürütme bir Terminal durumuna ulaştıktan sonra otomatik olarak oluşturulan kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti depolama hesabında oluşturulan dosya paylaşımından siler. Kaynak temizlenmeden sonra deploymentScripts kaynağı hala mevcut olabileceğinden, betik Hizmetleri komut dosyası yürütme sonuçlarını (örneğin, stdout, çıktılar, dönüş değeri vb.), kaynaklar silinmeden önce kalıcı hale gelebilir.
+  - **OnSuccess**: otomatik olarak oluşturulan kaynakları yalnızca betik yürütme başarılı olduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti yalnızca betik yürütme başarılı olduğunda dosya paylaşımının kaldırılmasına neden olur. Hata ayıklama bilgilerini bulmak için kaynaklara erişmeye devam edebilirsiniz.
+  - **Onexpiration**: yalnızca **retentionInterval** ayarının süresi dolduğunda otomatik olarak kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti dosya paylaşımından kaldırır, ancak depolama hesabını korurlar.
 
 - **retentionInterval**: bir betik kaynağının saklanacağı zaman aralığını ve sonra süresi dolacak ve silinecek süreyi belirtin.
 
 > [!NOTE]
-> Başka amaçlar için dağıtım betiği kaynaklarının kullanılması önerilmez.
+> Başka amaçlar için betik hizmeti tarafından oluşturulan depolama hesabı ve kapsayıcı örneği kullanılması önerilmez. İki kaynak, betik yaşam döngüsüne bağlı olarak kaldırılabilir.
 
 ## <a name="run-script-more-than-once"></a>Betiği birden çok kez çalıştır
 

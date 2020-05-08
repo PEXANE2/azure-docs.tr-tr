@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 03/05/2020
-ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/07/2020
+ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78328672"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891355"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning için algoritmalar seçme
 
@@ -40,7 +40,35 @@ Machine Learning tasarımcı, çok [Lass karar ormanı](https://docs.microsoft.c
 
 Azure Machine Learning algoritma oluşturma sayfasındaki kılavuzla birlikte, çözümünüz için bir makine öğrenimi algoritması seçerken diğer gereksinimleri göz önünde bulundurun. Doğruluk, eğitim süresi, doğrallığı, parametre sayısı ve özellik sayısı gibi göz önünde bulundurulması gereken ek etmenler aşağıda verilmiştir.
 
-## <a name="additional-requirements-for-a-data-science-scenario"></a>Veri bilimi senaryosu için ek gereksinimler
+## <a name="comparison-of-machine-learning-algorithms"></a>Makine öğrenimi algoritmalarının karşılaştırması
+
+Bazı öğrenme algoritmaları, verilerin yapısı veya istenen sonuçlar hakkında belirli varsayımlar yapar. İhtiyaçlarınıza uyan bir tane bulabiliyorsanız, size daha yararlı sonuçlar, daha kesin tahminler veya daha hızlı eğitim süreleri verebilir.
+
+Aşağıdaki tabloda, sınıflandırma, gerileme ve kümeleme ailelerinden algoritmaların en önemli özelliklerinden bazıları özetlenmektedir:
+
+| **Algoritma** | **Veritabanınızın** | **Eğitim süresi** | **Doğrity** | **Parametreler** | **Notlar** |
+| --- |:---:|:---:|:---:|:---:| --- |
+| **Sınıflandırma ailesi** | | | | | |
+| [İki sınıf Lojistik gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |İyi  |Hızlı |Yes |4 | |
+| [İki sınıf karar ormanı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |5 |Daha yavaş Puanlama sürelerini gösterir. Ağaç tahminlerinin biriktirme bölümünde Tread kilitlemesinin neden olduğu daha yavaş Puanlama süreleri nedeniyle Bire Karşı Hepsi Çoklu Sınıf ile çalışmamayı önerin |
+| [İki sınıf önceden artırılmış karar ağacı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |6 |Büyük bellek ayak izi |
+| [İki sınıf sinir ağı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |İyi |Orta |No |8 | |
+| [İki sınıflı ortalama Perceptron](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |İyi |Orta |Yes |4 | |
+| [İki sınıflı destek vektör makinesi](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Yes |5 |Büyük özellik kümeleri için iyi |
+| [Birden çok Lass Lojistik gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Yes |4 | |
+| [Birden çok Lass karar ormanı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |5 |Daha yavaş Puanlama sürelerini gösterir |
+| [Birden çok sınıf tarafından artırılmış karar ağacı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |6 | Daha az kapsama sahip küçük risklerle doğruluğu artırmaya eğilimlidir |
+| [Birden çok Lass sinir ağı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |İyi |Orta |No |8 | |
+| [Tek vs-hepsi birden çok sınıf](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Seçilen iki sınıf yöntemin özelliklerine bakın |
+| **Regresyon ailesi** | | | | | |
+| [Doğrusal regresyon](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |İyi |Hızlı |Yes |4 | |
+| [Karar ormanı gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Mükemmel |Orta |No |5 | |
+| [Artırılmış karar ağacı gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |No |6 |Büyük bellek ayak izi |
+| [Sinir ağ gerileme](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |İyi |Orta |No |8 | |
+| **Kümeleme ailesi** | | | | | |
+| [K-kümelemenin anlamı](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Mükemmel |Orta |Yes |8 |Kümeleme algoritması |
+
+## <a name="requirements-for-a-data-science-scenario"></a>Bir veri bilimi senaryosu için gereksinimler
 
 Verilerinize ne yapmak istediğinizi öğrendikten sonra çözümünüz için ek gereksinimler belirlemeniz gerekir. 
 
@@ -117,7 +145,6 @@ Machine Learning 'de, bir özellik çözümlemek istediğiniz olgudur tarafında
 Özellik seçimi, girdilere, belirtilen bir çıktı verildiğinde istatistiksel testlerin uygulanması işlemini ifade eder. Amaç, çıktının hangi sütunlarda daha tahmin olduğunu belirlemektir. Machine Learning tasarımcısında [filtre tabanlı özellik seçimi modülü](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) arasından seçim yapmak için birden çok özellik seçimi algoritması sağlar. Modül, Pearson bağıntı ve Chi-kare değerleri gibi bağıntı yöntemleri içerir.
 
 Veri kümenizin Özellik önem puanlarını bir kümesini hesaplamak için [permütasyon özelliği önem derecesini](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) de kullanabilirsiniz. Daha sonra, bir modelde kullanılacak en iyi özellikleri belirlemenize yardımcı olması için bu puanlara yararlanabilirsiniz.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

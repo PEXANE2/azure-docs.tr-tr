@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/10/2020
-ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232845"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889251"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -25,6 +25,8 @@ Hadoop kümesi, görevlerin dağıtılmış işlemesi için kullanılan birkaç 
 
 > [!IMPORTANT]  
 > HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme silindiğinde sona erer. Fatura dakikalara eşit olarak dağıtıldığından, kullanılmayan kümelerinizi mutlaka silmelisiniz. [Bir kümeyi silmeyi öğrenin.](hdinsight-delete-cluster.md)
+
+Birden çok kümeyi birlikte kullanıyorsanız, bir sanal ağ oluşturmak isteyeceksiniz ve bir Spark kümesi kullanıyorsanız, Hive ambarı bağlayıcısını de kullanmak isteyeceksiniz. Daha fazla bilgi için bkz. [Azure HDInsight için bir sanal ağ planlayın](./hdinsight-plan-virtual-network-deployment.md) ve [Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirin](interactive-query/apache-hive-warehouse-connector.md).
 
 ## <a name="cluster-setup-methods"></a>Küme kurulum yöntemleri
 

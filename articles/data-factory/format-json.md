@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 05/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e26a2ed81ed215d7ef2029123349b39e6e67d25
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686274"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890918"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory JSON biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,10 +31,10 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Veri kümesinin Type özelliği **JSON**olarak ayarlanmalıdır. | Yes      |
 | location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında `location`kendi konum türü ve desteklenen özellikleri vardır. **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
-| encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| Hayır       |
-| sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | Hayır |
+| encodingName     | Test dosyalarını okumak/yazmak için kullanılan kodlama türü. <br>İzin verilen değerler şunlardır: "UTF-8", "UTF-16", "UTF-16TO", "UTF-32", "UTF-32TO", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JıS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "" IBM861 "," IBM863 "," IBM864 "," IBM865 "," IBM869 "," IBM870 "," IBM01140 "," IBM01141 "," IBM01142 "," IBM01143 "," IBM01144 "," IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".| No       |
+| sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | No |
 | type | JSON dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler şunlardır **bzip2**, **gzip**, **söndür**, **zipsöndür**, **Snappy**veya **lz4**. dosyasını kaydederken kullanmak için. Varsayılan değer sıkıştırılmaz.<br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür" seçeneğini desteklemez.<br>Bu dosyaları açmak ve dosya tabanlı havuz veri deposuna yazmak için kopyalama **etkinliğini kullanırken,** dosyalar klasörüne ayıklanacaktır: `<path specified in dataset>/<folder named as source zip file>/`. | Hayır.  |
-| düzey | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | Hayır       |
+| düzey | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu. | No       |
 
 Azure Blob depolamada JSON veri kümesinin bir örneği aşağıda verilmiştir:
 
@@ -73,7 +73,7 @@ Aşağıdaki özellikler, etkinlik *** \*kaynağını\* *** kopyalama bölümün
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Kopyalama etkinliği kaynağının Type özelliği **Jsonsource**olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında `storeSettings`kendi desteklenen okuma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında `storeSettings`kendi desteklenen okuma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 ### <a name="json-as-sink"></a>Havuz olarak JSON
 
@@ -82,24 +82,23 @@ Aşağıdaki özellikler, etkinlik *** \*havuzunu\* *** Kopyala bölümünde des
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Kopyalama etkinliği kaynağının Type özelliği **Jsonsink**olarak ayarlanmalıdır. | Yes      |
-| formatSettings | Bir özellik grubu. Aşağıdaki **JSON yazma ayarları** tablosuna bakın. | Hayır       |
-| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen yazma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+| formatSettings | Bir özellik grubu. Aşağıdaki **JSON yazma ayarları** tablosuna bakın. | No       |
+| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen yazma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | No       |
 
 Altında `formatSettings`desteklenen **JSON yazma ayarları** :
 
 | Özellik      | Açıklama                                                  | Gerekli                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings türü **Jsonwritesettings**olarak ayarlanmalıdır. | Yes                                                   |
-| filePattern |Her bir JSON dosyasında depolanan verilerin desenini belirtir. İzin verilen değerler: **setOfObjects** ve **arrayOfObjects**. **Varsayılan** değer **setOfObjects** olarak belirlenmiştir. Bu desenler hakkında ayrıntılı bilgi için bkz. [JSON dosyası desenleri](#json-file-patterns). |Hayır |
+| filePattern |Her bir JSON dosyasında depolanan verilerin desenini belirtir. İzin verilen değerler: **Setofobjects** (JSON satırları) ve **arrayofobjects**. **Varsayılan** değer **setOfObjects** olarak belirlenmiştir. Bu desenler hakkında ayrıntılı bilgi için bkz. [JSON dosyası desenleri](#json-file-patterns). |No |
 
 ### <a name="json-file-patterns"></a>JSON dosyası desenleri
 
-Kopyalama etkinliği, aşağıdaki JSON dosyası desenlerini otomatik olarak algılayabilir ve ayrıştırılabilir. 
+JSON dosyalarından veri kopyalarken, kopyalama etkinliği aşağıdaki JSON dosyası desenlerini otomatik olarak algılayabilir ve ayrıştırılabilir. JSON dosyalarına veri yazarken kopyalama etkinliği havuzunda dosya modelini yapılandırabilirsiniz.
 
 - **1. Tür: setOfObjects**
 
-    Her dosya tek bir nesne veya satırlara ayrılmış/bitiştirilmiş birden fazla nesne içerir. 
-    Kopyalama etkinliği havuzunda bu seçenek seçildiğinde, kopyalama etkinliği her satır için her bir nesne (satır için ayrılmış) ile tek bir JSON dosyası üretir.
+    Her dosya tek nesne, JSON satırları veya birleştirilmiş nesneler içerir.
 
     * **tek nesne JSON örneği**
 
@@ -114,7 +113,7 @@ Kopyalama etkinliği, aşağıdaki JSON dosyası desenlerini otomatik olarak alg
         }
         ```
 
-    * **satırlara ayrılmış JSON örneği**
+    * **JSON satırları (havuz için varsayılan)**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}

@@ -1,6 +1,6 @@
 ---
-title: RBAC ve REST API rol atamaları ekleme veya kaldırma
-description: Azure rol tabanlı erişim denetimi (RBAC) ve REST API kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
+title: REST API-Azure RBAC kullanarak Azure rol atamaları ekleme veya kaldırma
+description: REST API ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına nasıl erişim sağlayacağınızı öğrenin.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,17 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9beda6589c03f1b14fc9756af86a9ce0711894c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9a8b35b07a4149fa2d6b9f8e6698e41f3e6870c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063004"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891306"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC ve REST API kullanarak rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>REST API kullanarak Azure rol atamaları ekleme veya kaldırma
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Bu makalede, REST API kullanarak rollerin nasıl atanacağı açıklanır.
 
@@ -34,7 +34,7 @@ Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 ## <a name="add-a-role-assignment"></a>Rol ataması ekleyin
 
-RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol ataması eklemek için, [rol atamalarını kullanın-REST API oluşturun](/rest/api/authorization/roleassignments/create) ve güvenlik sorumlusunu, rol tanımını ve kapsamı belirtin. Bu API 'yi çağırmak için `Microsoft.Authorization/roleAssignments/write` işleme erişiminizin olması gerekir. Yerleşik rollerde, yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişim yöneticisine](built-in-roles.md#user-access-administrator) bu işleme erişim izni verilir.
+Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol ataması eklemek için, [rol atamalarını kullanın-REST API oluşturun](/rest/api/authorization/roleassignments/create) ve güvenlik sorumlusunu, rol tanımını ve kapsamı belirtin. Bu API 'yi çağırmak için `Microsoft.Authorization/roleAssignments/write` işleme erişiminizin olması gerekir. Yerleşik rollerde, yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişim yöneticisine](built-in-roles.md#user-access-administrator) bu işleme erişim izni verilir.
 
 1. Atamak istediğiniz rol tanımının tanımlayıcısını almak için [rol tanımları-liste](/rest/api/authorization/roledefinitions/list) REST API kullanın veya [yerleşik roller](built-in-roles.md) ' e bakın.
 
@@ -43,7 +43,7 @@ RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol ataması ek
 1. Aşağıdaki istek ve gövdeyi başlatın:
 
     ```http
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
     ```json
@@ -67,7 +67,7 @@ RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol ataması ek
 
     Önceki örnekte, Microsoft. Web bir App Service örneğine başvuran bir kaynak sağlayıcıdır. Benzer şekilde, diğer herhangi bir kaynak sağlayıcısını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) ve desteklenen [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md).  
 
-1. *{Roleatamaadı}* değerini rol atamasının GUID tanımlayıcısı ile değiştirin.
+1. *{Roleatamamentıd}* değerini rol atamasının GUID tanımlayıcısı ile değiştirin.
 
 1. İstek gövdesi içinde, *{scope}* değerini rol atamasının kapsamıyla değiştirin.
 
@@ -83,16 +83,50 @@ RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz. Rol ataması ek
 
 1. *{PrincipalId}* öğesini, role atanacak olan Kullanıcı, Grup veya hizmet sorumlusunun nesne tanımlayıcısıyla değiştirin.
 
+Aşağıdaki istek ve gövde, abonelik kapsamındaki bir kullanıcıya [yedekleme okuyucusu](built-in-roles.md#backup-reader) rolünü atar:
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+    "principalId": "{objectId1}"
+  }
+}
+```
+
+Aşağıda çıktının bir örneği gösterilmektedir:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:23.7679147Z",
+        "updatedOn": "2020-05-06T23:55:23.7679147Z",
+        "createdBy": null,
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
+
 ## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
 
-RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir. Rol atamasını kaldırmak için, [atamaları-sil REST API rol atamalarını](/rest/api/authorization/roleassignments/delete) kullanın. Bu API 'yi çağırmak için `Microsoft.Authorization/roleAssignments/delete` işleme erişiminizin olması gerekir. Yerleşik rollerde, yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişim yöneticisine](built-in-roles.md#user-access-administrator) bu işleme erişim izni verilir.
+Azure RBAC 'de, erişimi kaldırmak için bir rol atamasını kaldırırsınız. Rol atamasını kaldırmak için, [atamaları-sil REST API rol atamalarını](/rest/api/authorization/roleassignments/delete) kullanın. Bu API 'yi çağırmak için `Microsoft.Authorization/roleAssignments/delete` işleme erişiminizin olması gerekir. Yerleşik rollerde, yalnızca [sahip](built-in-roles.md#owner) ve [Kullanıcı erişim yöneticisine](built-in-roles.md#user-access-administrator) bu işleme erişim izni verilir.
 
 1. Rol atama tanımlayıcısını (GUID) alın. Bu tanımlayıcı, rol atamasını ilk oluşturduğunuzda döndürülür veya rol atamalarını listeleyerek alabilir.
 
 1. Aşağıdaki istekle başlayın:
 
     ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
 1. URI içinde, *{scope}* değerini rol atamasını kaldırma kapsamı ile değiştirin.
@@ -105,11 +139,36 @@ RBAC'de erişimi kaldırmak için rol atamasını kaldırmanız gerekir. Rol ata
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Kaynak |
 
-1. *{Roleatamaadı}* değerini rol atamasının GUID tanımlayıcısı ile değiştirin.
+1. *{Roleatamamentıd}* değerini rol atamasının GUID tanımlayıcısı ile değiştirin.
+
+Aşağıdaki istek, abonelik kapsamında belirtilen rol atamasını kaldırır:
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+Aşağıda çıktının bir örneği gösterilmektedir:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:24.5379478Z",
+        "updatedOn": "2020-05-06T23:55:24.5379478Z",
+        "createdBy": "{createdByObjectId1}",
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve REST API kullanarak rol atamalarını listeleyin](role-assignments-list-rest.md)
+- [REST API kullanarak Azure rol atamalarını listeleyin](role-assignments-list-rest.md)
 - [Kaynakları Resource Manager şablonları ve Resource Manager REST API’si ile dağıtma](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)
-- [REST API kullanarak Azure kaynakları için özel roller oluşturma](custom-roles-rest.md)
+- [REST API kullanarak Azure özel rolleri oluşturun veya güncelleştirin](custom-roles-rest.md)

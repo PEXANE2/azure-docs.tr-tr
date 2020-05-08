@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509525"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872427"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central 'e bağlanın
 
@@ -95,6 +95,14 @@ X. 509.440 sertifikalarını kullanarak cihazları toplu bağlamak için, önce 
 
 Karşıya yüklenen kök veya ara sertifikayı kullanarak cihazlarınız için X. 509.440 yaprak sertifikaları oluşturun. Yaprak sertifikalarındaki `CNAME` değer olarak **cihaz kimliğini** kullanın. Cihaz kodunuz, uygulamanız için **kimlik kapsamı** değeri, **cihaz kimliği**ve karşılık gelen cihaz sertifikası gerektirir.
 
+#### <a name="sample-device-code"></a>Örnek cihaz kodu
+
+[Azure IoT Node. js SDK 'sının](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) aşağıdaki örneği, bir Node. js cihaz istemcisinin bir IoT Central uygulamasına kaydolmak Için bir X. 509.952 yaprak SERTIFIKASı ve DPS nasıl kullandığını gösterir:
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+Eşdeğer bir C örneği için bkz. [Azure IoT C sağlama aygıtı istemci SDK 'sında](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) [prov_dev_client_sample. C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) .
+
 ### <a name="for-testing-purposes-only"></a>Yalnızca test amaçlı
 
 Yalnızca test için, kök, ara ve cihaz sertifikaları oluşturmak üzere aşağıdaki yardımcı programları kullanabilirsiniz:
@@ -106,11 +114,6 @@ Yalnızca test için, kök, ara ve cihaz sertifikaları oluşturmak üzere aşa�
   - IoT Central uygulamanıza yüklemek için sertifikaları. cer dosyası olarak kaydedin.
   - Doğrulama sertifikasını oluşturmak için IoT Central uygulamasındaki doğrulama kodunu kullanın.
   - Cihaz kimliklerinizi araç için bir parametre olarak kullanarak cihazlarınız için yaprak sertifikaları oluşturun.
-
-### <a name="further-reference"></a>Daha fazla başvuru
-
-- [RaspberryPi için örnek uygulama](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [C 'de örnek aygıt istemcisi](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>Cihazları kaydettirmeden Bağlan
 

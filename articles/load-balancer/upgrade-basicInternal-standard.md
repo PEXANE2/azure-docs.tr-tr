@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858355"
+ms.locfileid: "82871589"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekmez
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -31,6 +31,7 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * Betik yalnızca giden bağlantı gerekli olmadığında dahili Load Balancer yükseltmesini destekler. Bazı sanal makinelerinize [giden bağlantı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) gerekiyorsa lütfen yönergeler için bu [sayfaya](upgrade-InternalBasic-To-PublicStandard.md) bakın. 
+* Temel Load Balancer arka uç VM 'Leri ve NIC 'Lerle aynı kaynak grubunda olması gerekir.
 * Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
 * Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Bunların boş olmadığından emin olun.
 
@@ -47,7 +48,7 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 ## <a name="download-the-script"></a>Betiği indir
 
-[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0)geçiş betiğini indirin.
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0)geçiş betiğini indirin.
 ## <a name="use-the-script"></a>Betiği kullan
 
 Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
@@ -85,7 +86,7 @@ Betiği çalıştırmak için:
    * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
 1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
-    **Örnek**
+    **Örneğinde**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
