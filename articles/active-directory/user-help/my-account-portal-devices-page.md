@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062498"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625842"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Cihazlar sayfasından bağlı cihazlarınızı yönetin
 
@@ -31,7 +31,7 @@ ms.locfileid: "77062498"
 
 ## <a name="view-your-connected-devices"></a>Bağlı cihazlarınızı görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardından **Hesabım** (https://myprofile.microsoft.com/) sayfasına gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından **Hesabım** (https://myaccount.microsoft.com/) sayfasına gidin.
 
 2. Sol gezinti bölmesinden **cihazlar** ' ı seçin veya **cihazlar bloğundan cihazları** **Yönet** bağlantısını seçin.
 

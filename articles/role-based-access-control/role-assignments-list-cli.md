@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve Azure CLı kullanarak rol atamalarını listeleme
-description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve Azure CLı kullanarak hangi kaynakların erişimi olduğunu nasıl belirleyebileceğinizi öğrenin.
+title: Azure CLı kullanarak Azure rol atamalarını listeleme-Azure RBAC
+description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure CLı ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak hangi kaynakların erişimi olduğunu belirlemeyi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385070"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735751"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Azure RBAC ve Azure CLı kullanarak rol atamalarını listeleme
+# <a name="list-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamalarını listeleme
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, Azure CLı kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
@@ -144,4 +144,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve Azure CLı kullanarak rol atamaları ekleme veya kaldırma](role-assignments-cli.md)
+- [Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-cli.md)

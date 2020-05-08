@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062345"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628342"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Doğrulama yönteminiz olarak bir güvenlik anahtarı ayarlayın
 
@@ -63,7 +63,7 @@ Güvenlik anahtarınızı kaydedebilmek için aşağıdaki koşulların doğru o
 
 Anahtar kullanarak iş veya okul hesabınızda oturum açabilmeniz için güvenlik anahtarınızı oluşturmanız ve bu anahtara benzersiz bir PIN sağlamanız gerekir. Hesabınıza kayıtlı en fazla 10 anahtarınız olabilir. 
 
-1. ' De Profilim sayfasına gidin ve henüz yapmadıysanız oturum açın. **My Profile** https://myprofile.microsoft.com
+1. ' De Profilim sayfasına gidin ve henüz yapmadıysanız oturum açın. **My Profile** https://myaccount.microsoft.com
 
 2. **Güvenlik bilgileri**' ni seçin **, Yöntem Ekle**' yi seçin ve ardından **Yöntem Ekle** açılır listesinden **güvenlik anahtarı** ' nı seçin.
 

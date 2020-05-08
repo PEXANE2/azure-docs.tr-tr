@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4f4cc5cefe8090e9e95f80b8b74bf15591cb7887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133069"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612070"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET özel seri hale getiriciler kullanarak her biçimdeki girişi oku
 
@@ -247,6 +247,10 @@ Bu işlev desteklenmiyor. Bu özelliğe ihtiyaç duyuyorsanız, bu istek için [
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Seri hale getirici uygulamamı, diğerlerinin avantajlarından faydalanabilmesi için topluluk ile paylaşabilir miyim?
 
 Seri hale getirinizi uyguladıktan sonra, diğer kişilere topluluk ile paylaşarak yardımcı olabilirsiniz. Kodunuzu [Azure Stream Analytics GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)deposuna gönderebilirsiniz.
+
+### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Stream Analytics özel seri hale getiriciler kullanmanın diğer sınırlamaları nelerdir?
+
+Giriş, MapField türünü içeren şema içeren bir prototip biçimindeyse, özel bir seri hale getirici uygulayabilmeniz mümkün olmayacaktır. Bu tür ileri doğru şekilde desteklemek için çalışıyoruz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
