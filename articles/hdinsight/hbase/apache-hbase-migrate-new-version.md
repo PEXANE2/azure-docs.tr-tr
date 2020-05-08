@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 30cda7a83feddaeb41385252a61d1dc68a881a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646515"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792641"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase kümesini yeni bir sürüme geçirme
 
@@ -220,4 +220,4 @@ Azure HDInsight 'ta Apache HBase kümenizi yükseltmek için aşağıdaki adıml
 * [HDInsight kümesini daha yeni bir sürüme yükseltme](../hdinsight-upgrade-cluster.md)
 * [Apache ambarı Web Kullanıcı arabirimini kullanarak Azure HDInsight 'ı izleme ve yönetme](../hdinsight-hadoop-manage-ambari.md)
 * [Bileşenler ve sürümler Apache Hadoop](../hdinsight-component-versioning.md)
-* [Apache ambarı 'nı kullanarak konfigürasyonları iyileştirme](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [Apache HBase 'i iyileştirme](../optimize-hbase-ambari.md)

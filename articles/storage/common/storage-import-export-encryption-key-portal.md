@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d3e4535c05ef077d14ef74310459a84af0f02fd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176337"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871168"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın
 
@@ -90,9 +90,8 @@ Içeri/dışarı aktarma hizmetiniz için müşteri tarafından yönetilen anaht
 
 **Şifreleme** dikey penceresinde, anahtar kasasını ve müşterinizin yönettiği anahtar için seçilen anahtarı görebilirsiniz.
 
-## <a name="disable-keys"></a>Anahtarları devre dışı bırak
-
-Yalnızca Microsoft tarafından yönetilen anahtarları devre dışı bırakabilir ve içeri/dışarı aktarma işinin herhangi bir aşamasında müşterinin yönetilen anahtarlarına geçebilirsiniz. Ancak, bir kez oluşturduktan sonra müşterinin yönettiği anahtarı devre dışı bırakabilirsiniz.
+> [!IMPORTANT]
+> Yalnızca Microsoft tarafından yönetilen anahtarları devre dışı bırakabilir ve içeri/dışarı aktarma işinin herhangi bir aşamasında müşterinin yönetilen anahtarlarına geçebilirsiniz. Ancak, bir kez oluşturduktan sonra müşterinin yönettiği anahtarı devre dışı bırakabilirsiniz.
 
 ## <a name="troubleshoot-customer-managed-key-errors"></a>Müşterinin yönettiği anahtar hatalarında sorun giderme
 

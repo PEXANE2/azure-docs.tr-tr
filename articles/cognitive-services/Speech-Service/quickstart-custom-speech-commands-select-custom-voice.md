@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
-ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2b9b4d51e89975d988ed94bf85695bd8a1cc770
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456415"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872448"
 ---
 # <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Hızlı başlangıç: özel sesle özel komutlar kullanma (Önizleme)
 
@@ -35,7 +35,8 @@ Bu makalede, oluşturduğumuz uygulama için özel bir çıkış sesi seçeceği
 > ![Parametrelere sahip örnek cümleler](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Özel sesler, özel ses projesi sayfasından oluşturulabilir. Başlamak için **konuşma Studio** bağlantısını ve ardından **özel ses** ' i seçin.
+> - **Genel sesler**için **sinir türleri** yalnızca belirli bölgelerde kullanılabilir. Kullanılabilirliği denetlemek için [bölgeye/uç noktaya göre standart ve sinir seslikleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)bölümüne bakın.
+> - **Özel sesler**Için özel ses projesi sayfasından oluşturulabilirler. Bkz. [özel sesle çalışmaya başlama](./how-to-custom-voice.md).
 
 Artık uygulama, varsayılan ses yerine seçili sesle yanıt verir.
 

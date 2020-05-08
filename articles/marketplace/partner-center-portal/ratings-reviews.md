@@ -1,44 +1,41 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market Analytics 'teki derecelendirmeler ve Incelemeler panosu
-description: Azure Market ve AppSource 'ta tekliflerinize ilişkin müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüme nasıl erişebileceğinizi öğrenin.
+title: Derecelendirmeler & Iş Ortağı Merkezi 'nde analiz panosu
+description: Microsoft AppSource ve Azure Marketi 'ndeki tekliflerinize yönelik olarak müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüme nasıl erişebileceğinizi öğrenin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262426"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792930"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te derecelendirmeler ve İncelemeler panosu
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Derecelendirmeler & Iş Ortağı Merkezi 'nde analiz panosu
 
-Bu makalede, Iş Ortağı Merkezi 'ndeki derecelendirmeler & İncelemeleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, Azure Marketi ve AppSource 'ta teklifler için müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüm görüntüler.
-
-Iş ortağı merkezi analiz araçları 'ndaki **derecelendirmelere & incelemeler panosuna** erişmek Için, ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
-
->[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
-
-## <a name="ratings--reviews"></a>Derecelendirmeler & değerlendirmeleri
-
-Müşteriler her iki markette de teklifler sunarak, arama ve satın alma tekliflerinden elde ettikleri teklifler için derecelendirmeleri ve incelemeleri bırakabilir.
+Bu makalede, Iş Ortağı Merkezi 'ndeki derecelendirmeler & Incelemeleri panosu hakkında bilgi sağlanmaktadır. Bu Pano, Microsoft AppSource ve Azure Market 'te teklifler için müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüm görüntüler. Müşteriler her iki markette de teklifler sunarak, arama ve satın alma tekliflerinden elde ettikleri teklifler için derecelendirmeleri ve incelemeleri bırakabilir.
 
 - Müşteriler yeni bir derecelendirme gönderebilir veya var olan bir derecelendirme ya da gönderdikleri gözden geçirmeyi veya silmeyi ya da silmesini ya da silmenizi sağlayabilir. Müşteriler yalnızca derecelendirmelere ve sahip oldukları gözden geçirmelere değişiklik yapabilirler.  
 - İncelemeler, Azure Market veya AppSource 'ta teklifin ürün görüntüsü sayfasındaki Incelemeler sekmesinde gönderilir. Müşteriler, adlarını veya anonim olarak posta ekleyebilir.  
 
-**Derecelendirmeler & gözden geçirme panosu** , müşteriler tarafından bu etkinliğin eğilimlerini ve öngörülerini görüntüler. Aşağıdaki öğelerin grafik temsilini görüntüleyebilirsiniz:
+>[!NOTE]
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+
+## <a name="access-the-dashboard"></a>Panoya erişin
+
+Iş Ortağı Merkezi 'ndeki [ticari Market panosunda](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) , **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** bölümünü genişletin ve **Derecelendirme & değerlendirmeleri**' ni seçin.
+
+Panoda aşağıdaki müşteri etkinliğinin grafik gösterimi görüntülenir:
 
 - Derecelendirmeler & değerlendirmeleri  
 - Açıklamaları gözden geçir
 
-**Market storefront sekmeleri** , yayımcıların teklif ölçümlerini Azure Market sekmelerinde appsource & Ayrıca görüntülemesine olanak tanır. Belirli teklif ölçümlerini görüntülemek için teklif açılan listesinden teklifi seçin.
+Teklif Microsoft AppSource ve Azure Market ölçümlerini ayrı olarak görüntülemek için **Market storefront** sekmelerini kullanın. Belirli teklif ölçümlerini görüntülemek için teklif açılan listesinden teklifi seçin.
 
-
-### <a name="ratings-and-reviews-summary"></a>Derecelendirmeler ve İncelemeler Özeti
+### <a name="ratings--reviews-summary"></a>Derecelendirmeler & değerlendirmeleri Özeti
 
 Derecelendirmeler & gözden geçirmeler Özeti bölümünde, seçilen bir tarih aralığı için aşağıdaki ölçümler görüntülenir:
 

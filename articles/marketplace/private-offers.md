@@ -1,22 +1,22 @@
 ---
-title: Özel teklifler | Azure Marketi
-description: Uygulama ve hizmet yayımcıları için Azure Market 'te özel teklifler.
+title: Microsoft ticari Market 'teki özel teklifler
+description: Uygulama ve hizmet yayımcıları için Microsoft ticari Market 'teki özel teklifler.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
-ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681425"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872386"
 ---
-# <a name="private-offers"></a>Özel teklifler
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market 'teki özel teklifler
 
-Özel teklifler [Microsoft Azure Market](https://azuremarketplace.microsoft.com/) , yayımcıları yalnızca hedeflenen müşterilere görünen SKU 'lar oluşturmak üzere etkinleştirir.
+Özel teklifler [Microsoft Azure Market](https://azuremarketplace.microsoft.com/) , yayımcıların yalnızca hedeflenen müşterilere görünen planlar oluşturmalarına olanak tanır. Bu makalede, özel tekliflerin seçenekleri ve avantajları hakkında bilgi edineceksiniz.
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>Özel tekliflerle kurumsal anlaşmalar üzerinde yararlanın
 

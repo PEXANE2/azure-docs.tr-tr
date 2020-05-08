@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4fff7c8865a59b916755a69a98448a1684da229
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853320"
+ms.locfileid: "82872004"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -103,6 +103,18 @@ Coğrafi olarak yedekli depolama (GZRS), coğrafi çoğaltma tarafından sunulan
 Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır.
 
 GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok Blobları, sayfa Blobları (VHD diskleri hariç), dosyalar, tablolar ve kuyruklar. GZRS ve RA-GZRS tüm Azure bölgelerinde kullanılabilir.
+
+GZRS ve RA-GZRS aşağıdaki bölgelerde desteklenir:
+
+- Güneydoğu Asya
+- Kuzey Avrupa
+- Batı Avrupa
+- Doğu Japonya
+- Güney Birleşik Krallık
+- ABD Orta
+- ABD Doğu
+- ABD Doğu 2
+- ABD Batı 2
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Bloblar](https://azure.microsoft.com/pricing/details/storage/blobs), [dosyalar](https://azure.microsoft.com/pricing/details/storage/files/), [Kuyruklar](https://azure.microsoft.com/pricing/details/storage/queues/)ve [Tablolar](https://azure.microsoft.com/pricing/details/storage/tables/)için fiyatlandırma ayrıntıları.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260947"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871264"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure Event Hubs olayları Azure 'da günlüğe kaydetme API Management
 Azure Event Hubs, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen oldukça büyük miktardaki verileri işleyip analiz edebilmeniz için saniye başına milyonlarca olayı işleyebilen ileri düzeyde ölçeklenebilir bir veri alım sistemidir. Event Hubs, bir olay ardışık düzeni için "ön kapı" olarak görev yapar ve veriler bir olay hub 'ına toplandıktan sonra herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işlem/depolama bağdaştırıcısı kullanılarak dönüştürülebilir ve depolanabilir. Event Hubs olay akışı üretimlerini bu olayların tüketilmesinden ayırır, böylece olay tüketicileri olaylara kendi zamanlamalarında erişebilir.
@@ -34,9 +34,9 @@ Artık bir olay hub 'ına sahip olduğunuza göre, bir sonraki adım, olayları 
 
 API Management Günlükçüler [API Management REST API](https://aka.ms/apimapi)kullanılarak yapılandırılır. Ayrıntılı istek örnekleri için bkz. [Günlükçüler oluşturma](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
-## <a name="configure-log-to-eventhubs-policies"></a>Günlük-eventhubs ilkelerini yapılandırma
+## <a name="configure-log-to-eventhub-policies"></a>Günlük-eventhub ilkelerini yapılandırma
 
-Günlükçü API Management ' de yapılandırıldıktan sonra, günlük-eventhubs ilkelerinizi istenen olayları günlüğe kaydetmek için yapılandırabilirsiniz. Günlük-eventhubs ilkesi, gelen ilke bölümünde veya giden ilke bölümünde kullanılabilir.
+Günlükçüize API Management bir kez yapılandırıldıktan sonra, istenen olayları günlüğe kaydetmek için, kayıt-eventhub ilkenizi yapılandırabilirsiniz. Eventhub ile oturum açma ilkesi, gelen ilke bölümünde veya giden ilkesi bölümünde kullanılabilir.
 
 1. APIM örneğinize göz atın.
 2. API sekmesini seçin.
@@ -49,15 +49,32 @@ Günlükçü API Management ' de yapılandırıldıktan sonra, günlük-eventhub
 9. Sağdaki pencerede,**EventHub için** **Gelişmiş İlkeler** > günlüğü ' nü seçin. Bu, `log-to-eventhub` ilke ekstresi şablonunu ekler.
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-Önceki `logger-id` adımda günlükçü oluşturmak için URL 'de `{new logger name}` için kullandığınız değerle değiştirin.
+Önceki `logger-id` adımda günlükçü oluşturmak IÇIN istek URL `{loggerId}` 'sinde kullandığınız değerle değiştirin.
 
-`log-to-eventhub` Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz. Bu örnekte, tarih ve saat, hizmet adı, istek kimliği, istek IP adresi ve işlem adı içeren bir dize günlüğe kaydedilir.
+`log-to-eventhub` Öğesi için değer olarak bir dize döndüren herhangi bir ifadeyi kullanabilirsiniz. Bu örnekte, tarih ve saat, hizmet adı, istek kimliği, istek IP adresi ve işlem adı içeren JSON biçimindeki bir dize günlüğe kaydedilir.
 
 Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet** ' e tıklayın. Kaydedilen ilke etkin olur ve olaylar belirlenen Olay Hub 'ına kaydedilir.
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Event Hubs Azure Stream Analytics kullanarak günlüğü önizleyin
+
+[Azure Stream Analytics sorguları](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics)kullanarak Event Hubs oturum açma önizlemesini yapabilirsiniz. 
+
+1. Azure portal, günlükçü 'nin olayları gönderdiği Olay Hub 'ına gidin. 
+2. **Özellikler**altında **işlem verileri** sekmesini seçin.
+3. **Etkinliklerden gerçek zamanlı** Içgörüleri etkinleştir kartında **keşfet**' i seçin.
+4. **Giriş önizleme** sekmesinde günlüğün önizlemesini görüntüleyebilmelisiniz. Gösterilen veriler güncel değilse, en son olayları görmek için **Yenile** ' yi seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Event Hubs hakkında daha fazla bilgi

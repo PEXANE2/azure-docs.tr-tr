@@ -87,7 +87,7 @@ Tüm olaylar en üst düzey verilere sahiptir:
 | Türü | string | Yes | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
 | eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | id | string | Yes | Etkinliğin benzersiz tanımlayıcısı. |
-| veri | object | Hayır | Kaynak sağlayıcısına özel olay verileri. |
+| veri | object | No | Kaynak sağlayıcısına özel olay verileri. |
 | dataVersion | string | Hayır, ancak boş bir değerle damgalı olacak. | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Gerekli değildir, ancak dahil ise Event Grid şeması `metadataVersion` ile tam olarak eşleşmelidir (Şu anda yalnızca `1`). Dahil edilmediğinden, Event Grid olayın üzerine damgası eklenir. | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 

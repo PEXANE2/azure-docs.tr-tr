@@ -1,14 +1,14 @@
 ---
 title: 'Öğretici: kilitlerle yeni kaynakları koruma'
 description: Bu öğreticide, Azure şemaları kaynak kilitleri seçeneklerini salt okunurdur ve yeni dağıtılan kaynakları korumak için silmeyin.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: tutorial
-ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90ffb0f5b8c1b6d3919b05abf778c5082bfee0dc
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74327454"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864173"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma
 
@@ -154,7 +154,7 @@ Bu adım, şema 'in bir aboneliğe atanmasını olanaklı kılar. Şema tanımı
 
      |Yapıt adı|Yapıt türü|Parametre adı|Değer|Açıklama|
      |-|-|-|-|-|
-     |RGtoLock kaynak grubu|Kaynak grubu|Adı|Testingbpkilitleri|Şema kilitlerinin uygulanacağı yeni kaynak grubunun adını tanımlar.|
+     |RGtoLock kaynak grubu|Kaynak grubu|Name|Testingbpkilitleri|Şema kilitlerinin uygulanacağı yeni kaynak grubunun adını tanımlar.|
      |RGtoLock kaynak grubu|Kaynak grubu|Konum|Batı ABD 2|Şema kilitlerini uygulamak için yeni kaynak grubunun konumunu tanımlar.|
      |StorageAccount|Resource Manager şablonu|storageAccountType (StorageAccount)|Standard_GRS|Depolama SKU 'SU. Varsayılan değer _Standard_LRS_.|
 

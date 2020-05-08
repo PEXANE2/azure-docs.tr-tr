@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb37efb796ddf41bd1d19e10d22f934590604274
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313701"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871726"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure SYNAPSE Analytics Business Intelligence iş ortakları
 
@@ -38,7 +38,7 @@ Azure SYNAPSE içinde SYNAPSE SQL havuzunu kullanarak tam veri ambarı çözüm�
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense, bir işletmenin verileri analiz etmek ve görselleştirmek için gereken araçlarla birlikte sunulan bir tam yığın Iş zekası yazılımıdır: yüksek performanslı bir analitik veritabanı, birden fazla kaynağa katılabilme, basit veri ayıklama (ETL) ve Web tabanlı veri görselleştirme. SiSense bı ve Analytics ile büyük veri kümelerini çözümlemeye ve görselleştirmeye başlayın. |[Ürün sayfası](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau self servis Analytics, verileri basit dosyalardan veritabanlarına birçok veri üzerinde görme ve anlama konusunda yardımcı olur. Tableau, hem canlı verileri hem de bellek içi analizleri destekleyen, SYNAPSE SQL Pool 'a yönelik yerel ve iyileştirilmiş bir bağlayıcıya sahiptir. |[Ürün sayfası](https://www.tableau.com/)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (karar paketi)**<br>Targit karar paketi, tek ve ortak bir çözümde gerçek zamanlı panolar, self servis analiz, Kullanıcı dostu raporlama, etkileyici mobil yetenekler ve basit veri bulma teknolojisi sunan bı ve analiz platformu sağlar. Targıa şirketleri, kurs için hareket etmesini sağlar. |[Ürün sayfası](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
-| ![Düşünme noktası](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**Düşünme noktası**<br>Dünyanın en yenilikçi kuruluşları, kuruluşlarındaki her kişinin, C Suite Executive 'den ön satır çalışana kadar, veri odaklı öngörülere hızlı bir şekilde bir şekilde artabilme olanağı sunan, bu kuruluşların sunduğu her kişiyi güçlendirin. Düşündüme noktası sayesinde iş kullanıcıları, milyarlarca veri satırı verilerini anında analiz etmek için basit bir arama yazabilir ve güvenilir, ilgili öngörüleri, sormayı düşünmedikleri sorulardan yanıt olarak bunlara yanıt olarak gönderilir. Düşündüme noktası, herhangi bir iş kişinin kullanması için yeterince basittir, ancak hız, güvenlik veya idare olmadan en büyük ve karmaşık kurumsal verilerin işlenmesi için yeterince güçlü olur. Bu nedenle, Walmart, 7-11, BT, Daimler, Exxon, Hulu, Batı 'nın Royal Bankası Bankası, Batı Bankası ve ülke çapındaki bina topluluğu gibi müşterilerin, karar veren kültürlerini ve analistini, 2020 Magic çeyrekte bir öncü olarak adlandırılan karar verme kültürlerini ve analistini sağlayan Gartner 'i dönüştürmesi için bir düşüncedir. Her görüşmenin ve her kararın bir parçası sunarak, daha fazla olgu temelli bir dünya oluşturma bölümünde verilerin rolü daha ayrıntılı bir şekilde değerlendiriliyor. |[Ürün sayfası](https://www.thoughtspot.com)<br>|
+| ![Düşünme noktası](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**Düşünme noktası**<br>Milyarlarca veri satırı üzerinden ayrıntılı Öngörüler elde etmek için arama 'yı kullanın veya soru sormaktan düşünmeyebilirsiniz sorulardan Öngörüler elde edin. Düşüneme noktası, businesspeople bulma öngörülerini şirket verilerinde Saniyeler içinde gizlemeye yardımcı olur. Verilerinizi analiz etmek ve ihtiyacınız olduğunda otomatik Öngörüler elde etmek için arama ' yı kullanın.|[Ürün sayfası](https://www.thoughtspot.com)<br>|
 | ![YellowFin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**YellowFin**<br>Sarımsı, BARC 'ye göre geçici raporlama ve panolar için en iyi derecelendirmeli bir bulut bı satıcısına sahiptir; Bı anketi. SYNAPSE SQL Pool 'a bağlanın, daha sonra ödül kazanmış bir BI ve konum zekası özellikleriyle harika raporlar ve panolar oluşturun ve bunları paylaşabilirsiniz. |[Ürün sayfası](https://www.yellowfinbi.com/)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 489f241453436190213b99cb4e7be0688a8b6237
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240180"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858129"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Hızlı başlangıç: Azure Cosmos DB SQL API verilerini yönetmek için bir Java uygulaması oluşturma
 
@@ -81,6 +81,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Uygulamayı çalıştırma](#run-the-app) konusuna atlayabilirsiniz. 
 
+
+# <a name="sync-api"></a>[Eşitleme API 'SI](#tab/sync)
+
 ### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Zaman uyumlu (eşitleme) API 'sini kullanarak veritabanı kaynaklarını yönetme
 
 * `CosmosClient` başlatma. , `CosmosClient` Azure Cosmos veritabanı hizmeti için istemci tarafı mantıksal temsili sağlar. Bu istemci, istekleri hizmete göre yapılandırmak ve çalıştırmak için kullanılır.
@@ -106,6 +109,8 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 * JSON üzerinden SQL sorguları, `queryItems` yöntemi kullanılarak gerçekleştirilir.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+# <a name="async-api"></a>[Zaman uyumsuz API](#tab/async)
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Zaman uyumsuz (Async) API 'sini kullanarak veritabanı kaynaklarını yönetme
 
@@ -134,6 +139,8 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 * Eşitleme API 'sinde olduğu gibi, JSON üzerinden SQL sorguları `queryItems` yöntemi kullanılarak gerçekleştirilir.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+
+---
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 

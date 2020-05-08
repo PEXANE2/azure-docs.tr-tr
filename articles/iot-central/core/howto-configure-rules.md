@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158495"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871947"
 ---
 # <a name="configure-rules"></a>Kuralları yapılandırma
-
-
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
@@ -36,6 +34,12 @@ Koşullar, üzerinde hangi kuralların tetikleyeceğini de tetikler. Şu anda, b
 Aşağıdaki ekran görüntüsünde koşullar, sıcaklığın 70&deg; F 'den büyük olduğunu ve nem 10 ' dan küçük olduğunu denetler. Bu deyimlerden her ikisi de doğru olduğunda, kural true olarak değerlendirilir ve bir eylemi tetikler.
 
 ![Koşullar](media/howto-configure-rules/conditions.png)
+
+### <a name="use-a-cloud-property-in-a-value-field"></a>Değer alanında bir bulut özelliği kullanın
+
+Koşul için **değer** alanındaki cihaz şablonundan bir bulut özelliğine başvurabilirsiniz. Bulut özelliği ve telemetri değeri benzer türlere sahip olmalıdır. Örneğin, **sıcaklık** bir Double Ise, **değer** açılan kutusunda yalnızca Double olarak göster türündeki bulut özellikleri.
+
+Bir olay türü telemetri değeri seçerseniz, **değer açılır değeri** **herhangi bir**seçeneği içerir. **Any** seçeneği, uygulamanız bu türden bir olay aldığında yükün ne zaman tetiklendiği anlamına gelir.
 
 ## <a name="use-aggregate-windowing"></a>Birleşik Pencereleme kullan
 

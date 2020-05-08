@@ -7,13 +7,13 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/27/2020
-ms.openlocfilehash: 51e1b24f9080d102dee234fa1ca6d460c400ba78
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 05/05/2020
+ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780683"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872312"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Bloblarından AI tarafından oluşturulan aranabilir içerik
 
@@ -30,9 +30,9 @@ Bu öğretici aşağıdaki görevleri gerçekleştirmek için C# ve [.NET SDK](h
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-+ [Azure depolama](https://azure.microsoft.com/services/storage/)
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 + [Mevcut bir arama hizmeti](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) [oluşturun](search-create-service-portal.md) veya bulun 
 
@@ -43,7 +43,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Bu [OneDrive klasörünü](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) açın ve sol üst köşedeki dosyaları bilgisayarınıza kopyalamak için **İndir** ' e tıklayın. 
 
-1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu öğreticide tüm bunları kullanın.
+1. ZIP dosyasına sağ tıklayın ve **Tümünü Ayıkla**' yı seçin. Çeşitli türlerde 14 dosya vardır. Bu alıştırma için 7 kullanacaksınız.
+
+Ayrıca, Bu öğreticinin kaynak kodunu indirebilirsiniz. Kaynak kodu, [Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) deposundaki öğretici-AI-zenginleştirme klasöründedir.
 
 ## <a name="1---create-services"></a>1-hizmet oluşturma
 
@@ -75,22 +77,22 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 1. **Bloblar** hizmeti ' ne tıklayın.
 
-1. Bir kapsayıcı oluşturmak ve *temel-demo-Data-PR*olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
+1. Bir kapsayıcı oluşturmak ve *COG-Search-demo*olarak adlandırmak Için **+ kapsayıcı** ' ya tıklayın.
 
-1. *Temel-demo-Data-PR* ' yi seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Tüm on dört dosyayı seçip karşıya yüklemek üzere **Tamam** ' a tıklayın.
+1. *COG-Search-demo* ' i seçin ve ardından yükleme dosyalarını kaydettiğiniz klasörü açmak Için **karşıya yükle** ' ye tıklayın. Tüm on dört dosyayı seçip karşıya yüklemek üzere **Tamam** ' a tıklayın.
 
    ![Örnek dosyaları karşıya yükle](media/cognitive-search-quickstart-blob/sample-data.png "Örnek dosyaları karşıya yükle")
 
 1. Azure depolama alanını kapatmadan önce Azure Bilişsel Arama bir bağlantıyı formülleştirmek için bir bağlantı dizesi alın. 
 
-   1. Depolama hesabınızın genel bakış sayfasına geri gidin (örnek olarak *blobstragewestus* kullandık). 
+   1. Depolama hesabınızın genel bakış sayfasına geri gidin (örnek olarak *blobstoragewestus* kullandık). 
    
    1. Sol gezinti bölmesinde **erişim anahtarları** ' nı seçin ve bağlantı dizelerinden birini kopyalayın. 
 
    Bağlantı dizesi, aşağıdaki örneğe benzer bir URL 'dir:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=blobstoragewestus;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. Bağlantı dizesini Not defteri 'ne kaydedin. Daha sonra veri kaynağı bağlantısını ayarlarken gerekecektir.
@@ -99,7 +101,7 @@ Mümkünse, yakınlık ve yönetilebilirlik için aynı bölgede ve kaynak grubu
 
 AI zenginleştirme, doğal dil ve görüntü işleme için Metin Analizi ve Görüntü İşleme dahil bilişsel hizmetler tarafından desteklenir. Amacınız gerçek bir prototipi veya projeyi tamamlayacaksa, bu noktada bilişsel hizmetler sağlama (Azure Bilişsel Arama ile aynı bölgede), böylece dizin oluşturma işlemlerine iliştirebilirsiniz.
 
-Bununla birlikte, Azure Bilişsel Arama, arka planda bilişsel hizmetlere bağlanıp Dizin Oluşturucu başına 20 ücretsiz işlem sunabileceğinden kaynak sağlamayı atlayabilirsiniz. Bu öğretici 7 işlem kullandığından, ücretsiz ayırma yeterlidir. Daha büyük projeler için, Kullandıkça öde, bu hizmetleri, Kullandıkça öde, bu hizmetler için sağlama bölümüne planlayın. Daha fazla bilgi için bkz. bilişsel [Hizmetler iliştirme](cognitive-search-attach-cognitive-services.md).
+Bununla birlikte, Azure Bilişsel Arama, arka planda bilişsel hizmetlere bağlanıp Dizin Oluşturucu başına 20 ücretsiz işlem sunabileceğinden kaynak sağlamayı atlayabilirsiniz. Bu öğretici 14 işlem kullandığından, ücretsiz ayırma yeterlidir. Daha büyük projeler için, Kullandıkça öde, bu hizmetleri, Kullandıkça öde, bu hizmetler için sağlama bölümüne planlayın. Daha fazla bilgi için bkz. bilişsel [Hizmetler iliştirme](cognitive-search-attach-cognitive-services.md).
 
 ### <a name="azure-cognitive-search"></a>Azure Bilişsel Arama
 
@@ -129,15 +131,15 @@ Visual Studio 'Yu açıp .NET Core üzerinde çalışabilen yeni bir konsol uygu
 
 Bu proje için `Microsoft.Azure.Search` NuGet paketinin 9 veya sonraki bir sürümünü yüklemelisiniz.
 
-1. Paket Yöneticisi konsolunu açın. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. 
-
-1. [Microsoft. Azure. Search NuGet paketi sayfasına](https://www.nuget.org/packages/Microsoft.Azure.Search)gidin.
+1. Bir tarayıcıda [Microsoft. Azure. Search NuGet paketi sayfasına](https://www.nuget.org/packages/Microsoft.Azure.Search)gidin.
 
 1. En son sürümü (9 veya üzeri) seçin.
 
 1. Paket Yöneticisi komutunu kopyalayın.
 
-1. Paket Yöneticisi konsoluna dönün ve önceki adımda kopyaladığınız komutu çalıştırın.
+1. Paket Yöneticisi konsolunu açın. **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. 
+
+1. Önceki adımda kopyaladığınız komutu yapıştırın ve çalıştırın.
 
 Sonra, en son `Microsoft.Extensions.Configuration.Json` NuGet paketini yükler.
 
@@ -167,8 +169,10 @@ Sonra, en son `Microsoft.Extensions.Configuration.Json` NuGet paketini yükler.
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-
+    
 Arama hizmetinizi ve BLOB depolama hesabı bilgilerinizi ekleyin. Bu bilgileri, önceki bölümde belirtilen hizmet sağlama adımlarından alabileceğiniz şekilde geri çekin.
+
+**SearchServiceName**için, tam URL 'yi değil, kısa hizmet adını girin.
 
 ### <a name="add-namespaces"></a>Ad alanı Ekle
 
@@ -246,7 +250,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
     DataSource dataSource = DataSource.AzureBlobStorage(
         name: "demodata",
         storageConnectionString: configuration["AzureBlobConnectionString"],
-        containerName: "basic-demo-data-pr",
+        containerName: "cog-search-demo",
         description: "Demo files to demonstrate cognitive search capabilities.");
 
     // The data source does not need to be deleted if it was already created
@@ -281,34 +285,6 @@ public static void Main(string[] args)
     Console.WriteLine("Creating or updating the data source...");
     DataSource dataSource = CreateOrUpdateDataSource(serviceClient, configuration);
 ```
-
-
-<!-- 
-```csharp
-DataSource dataSource = DataSource.AzureBlobStorage(
-    name: "demodata",
-    storageConnectionString: configuration["AzureBlobConnectionString"],
-    containerName: "basic-demo-data-pr",
-    deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-        softDeleteColumnName: "IsDeleted",
-        softDeleteMarkerValue: "true"),
-    description: "Demo files to demonstrate cognitive search capabilities.");
-```
-
-Now that you have initialized the `DataSource` object, create the data source. `SearchServiceClient` has a `DataSources` property. This property provides all the methods you need to create, list, update, or delete Azure Cognitive Search data sources.
-
-For a successful request, the method will return the data source that was created. If there is a problem with the request, such as an invalid parameter, the method will throw an exception.
-
-```csharp
-try
-{
-    serviceClient.DataSources.CreateOrUpdate(dataSource);
-}
-catch (Exception e)
-{
-    // Handle the exception
-}
-``` -->
 
 Çözümü derleyin ve çalıştırın. Bu ilk isteğiniz olduğundan, veri kaynağının Azure Bilişsel Arama oluşturulduğunu onaylamak için Azure portal denetleyin. Arama hizmeti panosu sayfasında, Veri Kaynakları kutucuğunun yeni bir öğe içerdiğini doğrulayın. Portal sayfasının yenilenmesi için birkaç dakika beklemeniz gerekebilir.
 
@@ -630,33 +606,6 @@ namespace EnrichwithAI
 }
 ```
 
-<!-- Add the below model class definition to `DemoIndex.cs` and include it in the same namespace where you'll create the index.
-
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Cognitive Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-}
-``` -->
-
 Artık bir model sınıfı tanımladığınıza göre, bir dizin tanımını `Program.cs` oldukça kolay bir şekilde oluşturabilirsiniz. Bu dizinin adı olacaktır `demoindex`. Bu ada sahip bir dizin zaten varsa, silinir.
 
 ```csharp
@@ -696,27 +645,14 @@ Aşağıdaki satırları öğesine `Main`ekleyin.
 ```csharp
     // Create the index
     Console.WriteLine("Creating the index...");
-    Index demoIndex = CreateDemoIndex(serviceClient);
+    Microsoft.Azure.Search.Models.Index demoIndex = CreateDemoIndex(serviceClient);
 ```
 
-<!-- ```csharp
-try
-{
-    bool exists = serviceClient.Indexes.Exists(index.Name);
+Ayırt eden başvuruyu çözümlemek için aşağıdaki using ifadesini ekleyin.
 
-    if (exists)
-    {
-        serviceClient.Indexes.Delete(index.Name);
-    }
-
-    serviceClient.Indexes.Create(index);
-}
-catch (Exception e)
-{
-    // Handle exception
-}
+```csharp
+using Index = Microsoft.Azure.Search.Models.Index;
 ```
- -->
 
 Dizin tanımlama hakkında daha fazla bilgi edinmek için bkz. [Dizin oluşturma (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
@@ -799,7 +735,7 @@ Aşağıdaki satırları öğesine `Main`ekleyin.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
-    Console.WriteLine("Creating the indexer...");
+    Console.WriteLine("Creating the indexer and executing the pipeline...");
     Indexer demoIndexer = CreateDemoIndexer(serviceClient, dataSource, skillset, demoIndex);
 ```
 

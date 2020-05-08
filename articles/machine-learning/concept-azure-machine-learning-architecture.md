@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257343"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871484"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -119,7 +119,7 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning Ayrıca ZIP dosyasını çalışma kaydının bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydına gözatabilir, anlık görüntüyü indirebilir.
 
 > [!NOTE]
-> Gereksiz dosyaların anlık görüntüye eklenmesini engellemek için, bir yoksayma dosyası (. gitignore veya. amlignore) yapın. Bu dosyayı Snapshot dizinine yerleştirin ve içinde yok sayılacak dosya adlarını ekleyin. . Amlignore dosyası [. gitignore dosyasıyla aynı söz dizimini ve desenleri](https://git-scm.com/docs/gitignore)kullanır. Her iki dosya de varsa,. amlignore dosyası önceliklidir.
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub izleme ve Tümleştirme
 
@@ -224,7 +224,7 @@ Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), ma
 
 Veri kümeleri, veya `from_delimited_files()` `to_pandas_dataframe()`kullanma gibi popüler biçimlerdeki verilerle çalışmaya yönelik yöntemler sağlar.
 
-Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
+Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial).
 
 Bir **veri deposu** , bir Azure depolama hesabı üzerinden bir depolama soyutlamasıdır. Veri deposu, arka uç depolama alanı olarak bir Azure Blob kapsayıcısını veya bir Azure dosya paylaşımından kullanabilir. Her çalışma alanının varsayılan bir veri deposu vardır ve ek veri depolarını kaydedebilirsiniz. Veri deposundan dosyaları depolamak ve almak için Python SDK API 'sini veya Azure Machine Learning CLı 'yi kullanın.
 

@@ -1,22 +1,22 @@
 ---
-title: Standart Sözleşme | Azure Marketi
-description: Azure Market ve AppSource için standart sözleşme
+title: Microsoft ticari Market için standart sözleşme
+description: Azure Marketi ve Iş Ortağı Merkezi 'nde AppSource için standart sözleşme
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681458"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871439"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market için standart sözleşme
 
-Microsoft, müşterilerin tedarik sürecini basitleştirmek ve yazılım satıcılarının yasal karmaşıklığını azaltmak için Microsoft ticari Market 'e yönelik standart bir sözleşme sunarak Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Ticari Market yayımcıları, özel hüküm ve koşulları ortadan kaldırmaktansa, müşterilerin yalnızca her bir kez ve kabul etmesi gereken standart sözleşme altında yazılımlarını sunmayı tercih edebilir. Standart Sözleşme şurada bulunabilir: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
+Microsoft, Microsoft ticari Market için standart bir sözleşme sunmaktadır. Bu, müşterilerin tedarik sürecini basitleştirmeye, yazılım satıcıları için yasal Karmaşıklığın azaltılmasına ve Market 'teki işlemleri kolaylaştırmaya yardımcı olur. Tek bir market yayımcısı olarak özel hüküm ve koşullar oluşturmanız yerine, yazılımınızı [standart sözleşme](https://go.microsoft.com/fwlink/?linkid=2041178)kapsamında sunmayı seçebilirsiniz ve bu da müşterilerin yalnızca her zaman bir kez ve kabul etmesi gerekir.
 
 Teklif hüküm ve koşulları, teklif Iş Ortağı Merkezi 'nde oluşturulurken tanımlanmıştır. Kendi özel hüküm ve koşullarınızı sağlamak yerine Microsoft ticari Market için standart sözleşmeyi kullanmayı seçebilirsiniz.
 

@@ -1,17 +1,17 @@
 ---
+title: Microsoft ticari Market için vergi ayrıntıları
 Description: Fiyat seçimine, ödeme etkilerine ve vergi sorumluluğuna ilişkin vergilere ilişkin önemli noktaları anlamak için aşağıdaki tablolarda bulunan ülkelere/dağıtım Bölgelerinizle ilgili konulara bakın.
-title: Vergi ayrıntıları | Azure Marketi
-ms.date: 2/13/2020
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 2546de2b63c70d7456712ba39086cd7fb540cf82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285172"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793032"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Ticari Market yayımcıları için vergi ayrıntıları
 
@@ -23,10 +23,6 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 > [!IMPORTANT]
 > Satıcı ülkeleri/bölgeleri ve koşulları ( [aşağıda](#reseller-countriesregions)açıklandığı gibi) için vergi sorumluluğu, aşağıdaki tabloda yer almayan [Microsoft Azure Market yayımcı sözleşmesinin](https://go.microsoft.com/fwlink/p/?LinkID=699560)bir bölümünde verilmiştir.
 > **Ödeyen** sütununun yalnızca yayımcılar için geçerli olduğunu unutmayın. Bu sütunda belirtilen vergi ücretleri herhangi bir zamanda değişikliğe tabidir ve Microsoft aşağıdaki tablolardaki hızların her zaman doğru olacağını garanti edemez.
-
-
-
- 
 
 | Ülke/bölge                   | Fiyat seçimi için vergi değerlendirmesi                                                                                                             | Ödeme uygulaması                    | Vergi sorumluluğu |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
@@ -262,19 +258,18 @@ Fiyat seçimine ilişkin vergi ve ticari sorumluluğun [Microsoft Azure Market Y
 | Zambiya                           | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 | Zimbabve                         | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir.                                                                   | Fiyat eksi mağaza ücreti                 | Yayımcı          |
 
-Aşağıdakiler yalnızca Azure Marketi yayımcıları için geçerlidir ve yukarıdaki her türlü bir şeyi tersine alır: 
+Aşağıdakiler yalnızca Azure Marketi yayımcıları için geçerlidir ve yukarıdaki her türlü bir şeyi tersine alır:
 
-| Ülke/bölge                   | Fiyat seçimi için vergi değerlendirmesi                                                                                                             | Vergi yönetimi                    | 
+| Ülke/bölge                   | Fiyat seçimi için vergi değerlendirmesi                                                                                                             | Vergi yönetimi                    |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Avustralya (Kurumsal Anlaşma hariç tüm müşteri satın alma senaryolarından yapılan satın alımlar için) | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. | Microsoft |
 | Avustralya (yalnızca Kurumsal Anlaşma müşteri satın alma senaryosu aracılığıyla yapılan satın alımlar için) | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. | Yayımcı |
-| Brezilya | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. | Yayımcı **(satıcı ülkelerine/bölgelerine bakın)** |
-| Meksika | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. | Yayımcı **(satıcı ülkelerine/bölgelerine bakın)** |
+| Brezilya | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. | Yayımcı (**satıcı ülkelerine/bölgelerine bakın**) |
+| Meksika | Seçilen Fiyat son satış fiyatıdır ve geçerli vergiler dahildir. | Yayımcı (**satıcı ülkelerine/bölgelerine bakın**) |
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Yayımcılar için karışık havale ülkeleri/bölgeleri
 
-
-Belirli Microsoft faturalandırma ortakları, satış, kullanım, mal ve hizmet, katma değer veya benzer vergiler (varsa), varsa uygulama veya uygulama Içi ürün (ler) için aşağıda listelenen ülkelerde/bölgelerde mağaza aracılığıyla müşteriler tarafından alınması ve bu ürünlerin havale etmesidir. Microsoft 'un sizin için kullanılabilir hale getiren [raporlar](payout-summary.md#transaction-history-download-export) , bir faturalandırma ortağının satışları, kullanımı, malları ve Hizmetleri, eklenen değer ya da uygulama veya uygulama içi ürün (ler) Mağaza aracılığıyla kullanıcılara alımı için geçerli olan işlemleri tanımlayacaktır. Bu tür raporlamada açıklanan işlemler hariç, Microsoft ve faturalandırma hizmetleri sağlayıcıları hiçbir satış, kullanım, mal ve hizmet, değer eklenmiş veya diğer benzer vergiyi, bu ülkelerde uygulamanızın veya uygulama Içi ürünlerin alımı ile bağlantılı olarak kabul edecektir. Sizin için sunulan raporlamayı gözden geçirmekten ve yükümlülüklerinizi belirlemekten ve bunlarla uyumlu olacak şekilde, uygulama veya uygulama Içi ürün (ler) i ilgilendiren işlemlerle ilgili olarak vergileri kaydetme, toplama ve havale etme sorumluluğunuz vardır.
+Belirli Microsoft faturalandırma ortakları, satış, kullanım, mal ve hizmet, katma değer veya benzer vergiler (varsa), varsa uygulama veya uygulama Içi ürün (ler) için aşağıda listelenen ülkelerde/bölgelerde mağaza aracılığıyla müşteriler tarafından alınması ve bu ürünlerin havale etmesidir. Microsoft 'un sizin için kullanılabilir hale getiren [raporlar](payout-summary-overview.md#transaction-history-download-export) , bir faturalandırma ortağının satışları, kullanımı, malları ve Hizmetleri, eklenen değer ya da uygulama veya uygulama içi ürün (ler) Mağaza aracılığıyla kullanıcılara alımı için geçerli olan işlemleri tanımlayacaktır. Bu tür raporlamada açıklanan işlemler hariç, Microsoft ve faturalandırma hizmetleri sağlayıcıları hiçbir satış, kullanım, mal ve hizmet, değer eklenmiş veya diğer benzer vergiyi, bu ülkelerde uygulamanızın veya uygulama Içi ürünlerin alımı ile bağlantılı olarak kabul edecektir. Sizin için sunulan raporlamayı gözden geçirmekten ve yükümlülüklerinizi belirlemekten ve bunlarla uyumlu olacak şekilde, uygulama veya uygulama Içi ürün (ler) i ilgilendiren işlemlerle ilgili olarak vergileri kaydetme, toplama ve havale etme sorumluluğunuz vardır.
 
 | Karışık havale ülkeleri/bölgeleri |
 |------------------------------------|
@@ -285,16 +280,13 @@ Belirli Microsoft faturalandırma ortakları, satış, kullanım, mal ve hizmet,
 
 Belirli ülkelerde/bölgelerde, Microsoft, uygulama ve uygulama içi ürün (ler) mağazada kullanılabilir hale getirmek için, aracılarınız yerine bir satıcı olarak davranır. Satıcı ülkelerine/bölgelerine yönelik hüküm ve koşullar hakkında daha fazla ayrıntı için [Microsoft Azure Market Yayımcı Sözleşmesi](https://go.microsoft.com/fwlink/p/?LinkID=699560)' ne bakın.
 
-Aşağıdakiler yalnızca Azure Marketi yayımcıları için geçerlidir: 
+Aşağıdakiler yalnızca Azure Marketi yayımcıları için geçerlidir:
 
 |                    Satıcı ülkeleri/bölgeleri                                                                          |
 |------------------------------------------------------------------------------------------------------------------------|
 | Brezilya (CSP hariç tüm müşteri satın alma senaryolarından yapılan satın alımlar için) |
 | Meksika (yalnızca Kurumsal Anlaşma müşteri satın alma senaryosu aracılığıyla yapılan satın alımlar için) |
 
+## <a name="next-steps"></a>Sonraki adımlar
 
- 
-
-
-
-
+[Ödeme hesabınızı ve vergi formlarınızı ayarlama](set-up-your-payout-account-tax-forms.md)

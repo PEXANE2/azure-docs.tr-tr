@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: a2d6f41756d87e43ac7db9e6a8670c453920c834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1c85c98b9ea0dcaa6498622a0667bffba080401
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770363"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858400"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
-[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
+[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/skus#skus).
 
 Bir yükseltmede üç aşama vardır:
 

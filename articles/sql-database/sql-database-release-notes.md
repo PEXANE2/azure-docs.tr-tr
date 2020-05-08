@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201321"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801697"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -78,30 +78,35 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 
 |Sorun  |Keşfedilen Tarih  |Durum  |Çözümlenme tarihi  |
 |---------|---------|---------|---------|
-|[Kaynak grubundaki izinler yönetilen örneğe uygulanmadı](#permissions-on-resource-group-not-applied-to-managed-instance)|Şub 2020|Geçici çözüm vardır||
-|[Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması](#limitation-of-manual-failover-via-portal-for-failover-groups)|Ocak 2020|Geçici çözüm vardır||
-|[SQL Aracısı rollerinin sysadmin olmayan oturumlar için açık yürütme izinlerine ihtiyacı vardır](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Geçici çözüm vardır||
+|[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Otomatik olarak azaltıldığında| |
+|[Kaynak grubundaki izinler yönetilen örneğe uygulanmadı](#permissions-on-resource-group-not-applied-to-managed-instance)|Şub 2020|Geçici çözüm vardır| |
+|[Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması](#limitation-of-manual-failover-via-portal-for-failover-groups)|Ocak 2020|Geçici çözüm vardır| |
+|[SQL Aracısı rollerinin sysadmin olmayan oturumlar için açık yürütme izinlerine ihtiyacı vardır](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Geçici çözüm vardır| |
 |[SQL Aracısı işleri, aracı işleminin yeniden başlatılmasına göre kesintiye uğrar](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dec 2019|Çözümlendi|Mar 2020|
-|[SSDT 'de AAD oturum açmaları ve kullanıcılar desteklenmez](#aad-logins-and-users-are-not-supported-in-ssdt)|Kas 2019|Geçici çözüm yok||
-|[Bellek içi OLTP bellek sınırları uygulanmadı](#in-memory-oltp-memory-limits-are-not-applied)|Eki 2019|Geçici çözüm vardır||
-|[Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Eki 2019|Geçici çözüm vardır||
-|[Hizmet katmanını değiştirme ve örnek oluşturma işlemleri sürekli veritabanı geri yükleme tarafından engelleniyor](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Eyl 2019|Geçici çözüm vardır||
-|[İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Eyl 2019|Geçici çözüm vardır||
-|[Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|Ağu 2019|Geçici çözüm vardır||
-|[Azure AD oturum açma türleri için ımpersonbirleşme desteklenmez](#impersonification-of-azure-ad-login-types-is-not-supported)|2019 Tem|Geçici çözüm yok||
-|[@querysp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Geçici çözüm yok||
-|[İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Geçici çözüm yok||
-|[GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor](#temporary-database-is-used-during-restore-operation)||Geçici çözüm vardır||
-|[TEMPDB yapısı ve içerik yeniden oluşturuluyor](#tempdb-structure-and-content-is-re-created)||Geçici çözüm yok||
-|[Küçük veritabanı dosyalarıyla depolama alanını aşma](#exceeding-storage-space-with-small-database-files)||Geçici çözüm vardır||
-|[Veritabanı adları yerine gösterilen GUID değerleri](#guid-values-shown-instead-of-database-names)||Geçici çözüm vardır||
-|[Hata günlükleri kalıcı değil](#error-logs-arent-persisted)||Geçici çözüm yok||
+|[SSDT 'de AAD oturum açmaları ve kullanıcılar desteklenmez](#aad-logins-and-users-are-not-supported-in-ssdt)|Kas 2019|Geçici çözüm yok| |
+|[Bellek içi OLTP bellek sınırları uygulanmadı](#in-memory-oltp-memory-limits-are-not-applied)|Eki 2019|Geçici çözüm vardır| |
+|[Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Eki 2019|Geçici çözüm vardır| |
+|[Hizmet katmanını değiştirme ve örnek oluşturma işlemleri sürekli veritabanı geri yükleme tarafından engelleniyor](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Eyl 2019|Geçici çözüm vardır| |
+|[İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Eyl 2019|Geçici çözüm vardır| |
+|[Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|Ağu 2019|Geçici çözüm vardır| |
+|[Azure AD oturum açma türleri için ımpersonbirleşme desteklenmez](#impersonification-of-azure-ad-login-types-is-not-supported)|2019 Tem|Geçici çözüm yok| |
+|[@querysp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Geçici çözüm yok| |
+|[İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Geçici çözüm yok| |
+|[GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor](#temporary-database-is-used-during-restore-operation)||Geçici çözüm vardır| |
+|[TEMPDB yapısı ve içerik yeniden oluşturuluyor](#tempdb-structure-and-content-is-re-created)||Geçici çözüm yok| |
+|[Küçük veritabanı dosyalarıyla depolama alanını aşma](#exceeding-storage-space-with-small-database-files)||Geçici çözüm vardır| |
+|[Veritabanı adları yerine gösterilen GUID değerleri](#guid-values-shown-instead-of-database-names)||Geçici çözüm vardır| |
+|[Hata günlükleri kalıcı değil](#error-logs-arent-persisted)||Geçici çözüm yok| |
 |[Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Geçici çözüm vardır|Mar 2020|
-|[CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Geçici çözüm vardır||
-|Veritabanı tutarlılığı, Azure Blob depolamadan geri yükleme sonrasında DBCC CHECKDB kullanılarak doğrulanmadı.||Çözümlendi|Kas 2019|
-|Kaynak veritabanında bellek içi OLTP nesneleri varsa, İş Açısından Kritik katmanından Genel Amaçlı katmana geri yükleme işlemi başarılı olmaz.||Çözümlendi|Eki 2019|
-|Güvenli bağlantı kullanarak harici (Azure dışı) posta sunucularıyla Veritabanı Postası özelliği||Çözümlendi|Eki 2019|
-|Kapsanan veritabanları yönetilen örnekte desteklenmiyor||Çözümlendi|Ağu 2019|
+|[CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Geçici çözüm vardır| |
+|Veritabanı tutarlılığı, Azure Blob depolamadan geri yükleme sonrasında DBCC CHECKDB kullanılarak doğrulanmadı.| |Çözümlendi|Kas 2019|
+|Kaynak veritabanında bellek içi OLTP nesneleri varsa, İş Açısından Kritik katmanından Genel Amaçlı katmana geri yükleme işlemi başarılı olmaz.| |Çözümlendi|Eki 2019|
+|Güvenli bağlantı kullanarak harici (Azure dışı) posta sunucularıyla Veritabanı Postası özelliği| |Çözümlendi|Eki 2019|
+|Kapsanan veritabanları yönetilen örnekte desteklenmiyor| |Çözümlendi|Ağu 2019|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı
+
+Belirli durumlarda, var olan bir işi değiştirme, devre dışı bırakma veya etkinleştirme aracının yanıt vermemesine neden olabilir. Sorun, aracı işleminin yeniden başlatılmasına neden olan algılama sonrasında otomatik olarak azaltıldığında.
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Kaynak grubundaki izinler yönetilen örneğe uygulanmadı
 

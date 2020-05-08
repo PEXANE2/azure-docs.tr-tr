@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24befd6e5d90c7c3fffd2049bae3bee392e6e0e0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855677"
+ms.locfileid: "82872157"
 ---
 # <a name="update-management-in-azure-automation"></a>Azure Otomasyonu 'nda Güncelleştirme Yönetimi
 
@@ -197,7 +197,7 @@ Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden tra
 
 Red Hat Linux makineleri için, gerekli uç noktalar için [rhuı içerik teslim sunucuları Için IP 'ler](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) bölümüne bakın. Diğer Linux dağıtımları için sağlayıcı belgelerinize bakın.
 
-Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma çalışan rolü bağlantı noktaları](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bilgi için bkz. [karma Runbook Worker için güncelleştirme yönetimi adresleri](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker).
 
 Özel durumları tanımlarken listelenen adresleri kullanmanızı öneririz. IP adresleri için [Microsoft Azure veri MERKEZI IP aralıklarını](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu dosya haftalık olarak güncelleştirilir ve şu anda dağıtılmış aralıkları ve IP aralıklarında yaklaşan değişiklikleri yansıtır.
 

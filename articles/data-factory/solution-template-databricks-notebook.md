@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414860"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857652"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks ile dönüştürme
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğreticide, Azure Data Factory **doğrulama**, **kopyalama verileri**ve **Not defteri** etkinliklerini içeren uçtan uca bir işlem hattı oluşturacaksınız.
 
@@ -153,6 +153,9 @@ Yeni işlem hattında, çoğu ayar varsayılan değerlerle otomatik olarak yapı
 1. **Ardışık düzen parametrelerinin** aşağıdaki ekran görüntüsünde gösterilenle eşleştiğini doğrulayın: ![işlem hattı parametreleri](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Veri kümelerinize bağlanın.
+
+    >[!NOTE]
+    >Aşağıdaki veri kümelerinde, dosya yolu şablonda otomatik olarak belirtilmiştir. Herhangi bir değişiklik gerekliyse, bağlantı hatası durumunda hem **kapsayıcı** hem de **Dizin** için yol belirttiğinizden emin olun.
 
    - Kaynak verilerin kullanılabilir olup olmadığını denetlemek için **Sourcekullanılabilirliği Bilitydataset** .
 

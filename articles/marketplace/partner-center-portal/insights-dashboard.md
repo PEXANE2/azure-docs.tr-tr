@@ -1,22 +1,22 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market Analytics 'teki Market öngörüleri panosu
-description: Yayımcıların AppSource ve Azure Market stoklarının müşteri katılımını ölçmesine olanak sağlayan Market Web Analytics özetine erişin.
+title: Market öngörüleri-Microsoft ticari Market
+description: Microsoft AppSource ve Azure Marketi 'nde müşteri katılımını ölçmenizi sağlayan Market Web Analytics özetine erişin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251716"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857915"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te Market öngörüleri panosu
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>Iş Ortağı Merkezi 'nde Market öngörüleri panosu
 
-Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu pano Market Web Analytics 'in bir özetini görüntüler. Bu, yayımcıların Market storetları: AppSource ve Azure Marketi 'nde listelenen ilgili ürün ayrıntı sayfaları için müşteri etkileşimini ölçmesine olanak sağlar.
+Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bilgi sağlanmaktadır. Bu pano Market Web Analytics 'in bir özetini görüntüler. Bu, yayımcıların Market storeları: Microsoft AppSource ve Azure Market 'te listelenen ilgili ürün ayrıntı sayfaları için müşteri etkileşimini ölçmesine olanak sağlar.
 
 ## <a name="marketplace-insights-dashboard"></a>Market İçgörüleri panosu
 

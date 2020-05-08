@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74269442"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591695"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Depolama Kaynaklarını C++ dilinde listeleme
 
@@ -62,7 +62,7 @@ Bölümlenmiş bir listeleme işleminin yanıtı şunları içerir:
 * liste API 'sine tek bir çağrı için döndürülen sonuç kümesini içeren *_segment*.
 * sonraki sonuçların bir sonraki sayfasına ulaşmak için bir sonraki çağrıya geçirilen *continuation_token*. Döndürülecek daha fazla sonuç olmadığında devamlılık belirteci null olur.
 
-Örneğin, bir kapsayıcıdaki tüm Blobları listelemek için tipik bir çağrı aşağıdaki kod parçacığı gibi görünebilir. Kod, [örneklerimizde](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)mevcuttur:
+Örneğin, bir kapsayıcıdaki tüm Blobları listelemek için tipik bir çağrı aşağıdaki kod parçacığı gibi görünebilir. Kod, [örneklerimizde](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)mevcuttur:
 
 ```cpp
 // List blobs in the blob container

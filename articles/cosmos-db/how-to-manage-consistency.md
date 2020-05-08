@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184291"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870082"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
 
@@ -23,7 +23,13 @@ Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetilece�
 
 [Varsayılan tutarlılık düzeyi](consistency-levels.md) , istemcilerin varsayılan olarak kullandığı tutarlılık düzeyidir.
 
-### <a name="cli"></a>CLI
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
+
+Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
+
+![Azure portal tutarlılık menüsü](./media/how-to-manage-consistency/consistency-settings.png)
+
+# <a name="cli"></a>[CLI](#tab/cli)
 
 Oturum tutarlılığı olan bir Cosmos hesabı oluşturun ve ardından varsayılan tutarlılığı güncelleştirin.
 
@@ -35,7 +41,7 @@ az cosmosdb create --name $accountName --resource-group $resourceGroupName --def
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Oturum tutarlılığı olan bir Cosmos hesabı oluşturun ve ardından varsayılan tutarlılığı güncelleştirin.
 
@@ -49,11 +55,7 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
   -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
-### <a name="azure-portal"></a>Azure portal
-
-Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
-
-![Azure portal tutarlılık menüsü](./media/how-to-manage-consistency/consistency-settings.png)
+---
 
 ## <a name="override-the-default-consistency-level"></a>Varsayılan tutarlılık düzeyini geçersiz kılma
 
@@ -62,7 +64,9 @@ Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azur
 > [!TIP]
 > Tutarlılık yalnızca istek düzeyinde **gevşek** olabilir. Daha zayıf bir tutarlılığa geçiş yapmak için Cosmos hesabının varsayılan tutarlılığını güncelleştirin.
 
-### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 // Override consistency at the client level
@@ -74,7 +78,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 // Override consistency at the request level via request options
@@ -86,8 +90,11 @@ var response = await client.GetContainer(databaseName, containerName)
         new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java Async SDK’sı
+### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+
+# <a name="java-async-sdk"></a>[Java zaman uyumsuz SDK](#tab/javaasync)
 
 ```java
 // Override consistency at the client level
@@ -101,13 +108,14 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java Sync SDK’sı
+# <a name="java-sync-sdk"></a>[Java eşitleme SDK 'Sı](#tab/javasync)
 
 ```java
 // Override consistency at the client level
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -137,7 +145,9 @@ Azure Cosmos DB ' deki tutarlılık düzeylerinden biri *oturum* tutarlılığı
 
 Oturum belirteçlerini el ile yönetmek için, yanıttan oturum belirtecini alın ve istek başına bunları ayarlayın. Oturum belirteçlerini el ile yönetmeniz gerekmiyorsa, bu örnekleri kullanmanız gerekmez. SDK oturum belirteçlerini otomatik olarak izler. Oturum belirtecini el ile ayarlamazsanız, SDK varsayılan olarak en son oturum belirtecini kullanır.
 
-### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -150,7 +160,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -161,8 +171,11 @@ ItemRequestOptions options = new ItemRequestOptions();
 options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java Async SDK’sı
+### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+
+# <a name="java-async-sdk"></a>[Java zaman uyumsuz SDK](#tab/javaasync)
 
 ```java
 // Get session token from response
@@ -184,7 +197,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java Sync SDK’sı
+# <a name="java-sync-sdk"></a>[Java eşitleme SDK 'Sı](#tab/javasync)
 
 ```java
 // Get session token from response
@@ -196,6 +209,7 @@ RequestOptions options = new RequestOptions();
 options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 

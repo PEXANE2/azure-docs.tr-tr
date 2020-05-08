@@ -1,7 +1,7 @@
 ---
-title: ML ardışık düzenlerinden giriş ve çıkış verileri
+title: ML işlem hatlarında verileri taşıma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning işlem hatları 'nda veri hazırlama, kullanma ve oluşturma
+description: Verilerin Azure Machine Learning işlem hatlarında giriş & çıkışı hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 3dd1a82bf7fad1f201f5c0f52af944ef44a3fdf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879771"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858460"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Veriler, makine öğrenimi işlem hatlarına göre yapılır. Bu makalede, bir Azure Machine Learning işlem hattındaki adımlar arasında veri alma, dönüştürme ve taşıma kodu sağlanmaktadır. Verilerin Azure Machine Learning nasıl çalıştığına ilişkin genel bakış için bkz. [Azure Storage hizmetlerindeki verilere erişme](how-to-access-data.md). Azure Machine Learning işlem hatlarının avantajları ve yapısı için bkz. [Azure Machine Learning işlem hatları nedir?](concept-ml-pipelines.md).
+Bu makalede, bir Azure Machine Learning işlem hattındaki adımlar arasında veri alma, dönüştürme ve taşıma kodu sağlanmaktadır. Verilerin Azure Machine Learning nasıl çalıştığına ilişkin genel bakış için bkz. [Azure Storage hizmetlerindeki verilere erişme](how-to-access-data.md). Azure Machine Learning işlem hatlarının avantajları ve yapısı için bkz. [Azure Machine Learning işlem hatları nedir?](concept-ml-pipelines.md).
 
 Bu makalede nasıl yapılacağı gösterilmektedir:
 

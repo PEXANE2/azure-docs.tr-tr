@@ -1,23 +1,21 @@
 ---
 title: Azure Service Fabric ters proxy güvenli iletişim
 description: Azure Service Fabric uygulamasında uçtan uca iletişimin güvenliğini sağlamak için ters proxy 'yi yapılandırın.
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617120"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858534"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Ters proxy ile güvenli bir hizmete bağlanma
 
 Bu makalede, ters proxy ve hizmetler arasında güvenli bağlantı kurmayı ve böylece uçtan uca güvenli kanalı etkinleştirmeyi açıklar. Ters proxy hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da ters proxy Service Fabric](service-fabric-reverseproxy.md)
 
-Güvenli hizmetlere bağlanma yalnızca ters proxy, HTTPS üzerinde dinlemek üzere yapılandırıldığında desteklenir. Bu makalede bu durum olduğu varsayılır.
-Service Fabric ' de ters proxy 'yi yapılandırmak için [Azure Service Fabric 'da ters proxy ayarlama](service-fabric-reverseproxy-setup.md) bölümüne bakın.
+> [!IMPORTANT]
+> Güvenli hizmetlere bağlanma yalnızca ters proxy, HTTPS üzerinde dinlemek üzere yapılandırıldığında desteklenir. Bu makalede bu durum olduğu varsayılır. Service Fabric ' de ters proxy 'yi yapılandırmak için [Azure Service Fabric 'da ters proxy ayarlama](service-fabric-reverseproxy-setup.md) bölümüne bakın.
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Ters proxy ve hizmetler arasında güvenli bağlantı kurulumu 
 
@@ -183,7 +181,7 @@ Daha sonra istemci sertifikası verilerini **X-Client-Certificate**adlı özel b
 İstemci bir sertifika sunmıyorsa, ters proxy boş bir üst bilgiyi iletir ve hizmetin durumu işlemesini sağlar.
 
 > [!NOTE]
-> Ters proxy bir boyutundaydı ileticidir. İstemci sertifikasının herhangi bir doğrulamasını gerçekleştirmeyecektir.
+> Ters proxy yalnızca bir iletme hizmeti olarak çalışır. İstemci sertifikasının herhangi bir doğrulamasını gerçekleştirmeyecektir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

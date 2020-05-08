@@ -1,5 +1,5 @@
 ---
-title: Teklif türüne göre Microsoft ticari Market Yayımlama Kılavuzu
+title: Teklif türü ile yayımlama Kılavuzu-Microsoft ticari Market
 description: Bu makalede, Microsoft ticari marketi 'nde bulunan teklif türleri açıklanmaktadır.
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419298"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872358"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
-[Bir yayımlama seçeneğine karar verdikten](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)sonra, teklifinizi sunmak için kullanılacak teklif türünü seçmek için hazır olursunuz.
+Bu makalede, ticari Market 'te bulunan teklif türleri açıklanmaktadır. *Teklif türü* , teklifi Market 'te sunmak için kullanılan meta verileri, yapıtları ve diğer içerikleri içeren teklif yapısını tanımlar.
 
- *Teklif türü* , teklifi Market 'te sunmak için kullanılan meta verileri, yapıtları ve diğer içerikleri içeren teklif yapısını tanımlar.
+Bir teklif oluşturabilmeniz için ve [bir yayımlama seçeneğine karar](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)verdikten sonra, teklifinizi sunmak için kullanılacak bir teklif türü seçmeniz gerekir. Teklif türü, yayımlamak istediğiniz çözüm, uygulama veya hizmet teklifinin türüne, ayrıca Microsoft ürün ve hizmetlerine yönelik hizalamasını karşılayacak.
 
-Bir teklif oluşturabilmeniz için önce bir teklif türü seçmeniz gerekir. Teklif türü, yayımlamak istediğiniz çözüm, uygulama veya hizmet teklifinin türüne, ayrıca Microsoft ürün ve hizmetlerine yönelik hizalamasını karşılayacak.
-
-Tek bir teklif türü farklı yayımlama seçeneklerini, eylem çağrılarını, sağlamayı veya fiyatlandırmayı etkinleştirmek üzere farklı şekilde yapılandırılabilir. Teklif türünün yayımlama seçeneği ve yapılandırması Ayrıca, teklif uygunluğu ve teknik gereksinimlere de uyum sağlar.
+Tek bir teklif türü farklı yayımlama seçeneklerini etkinleştirmek için farklı yollarla yapılandırılabilir, eylem çağrısı, sağlama veya fiyatlandırma. Teklif türünün yayımlama seçeneği ve yapılandırması Ayrıca, teklif uygunluğu ve teknik gereksinimlere de uyum sağlar.
 
 Teklifinizi oluşturmadan önce storefront ve teklif türü uygunluk gereksinimlerini ve teknik yayımlama gereksinimlerini gözden geçirdiğinizden emin olun.
 

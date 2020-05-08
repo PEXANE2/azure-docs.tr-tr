@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74024245"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582561"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory oturum açma sayfaları için giriş bölgesi bulma
 
@@ -28,7 +28,7 @@ Yeni kimlik doğrulama yöntemlerine yer açmak ve kullanılabilirliği gelişti
 
 Tarihsel olarak, giriş bölgesi bulma, oturum açma sırasında veya bazı eski uygulamalar için bir giriş bölgesi bulma ilkesiyle belirtilen etki alanı tarafından yönetilir. Örneğin, bulma davranışımızda Azure Active Directory bir Kullanıcı Kullanıcı adını yanlış bir şekilde yanlış verebilir, ancak kuruluşunuzun kimlik bilgisi toplama ekranına ulaşacak. Bu durum, Kullanıcı kuruluşun "contoso.com" etki alanı adını doğru şekilde sunursa oluşur. Bu davranış, tek bir kullanıcı için ayrıntı düzeyi deneyimlerinin özelleştirilmesine izin vermez.
 
-Daha geniş bir kimlik bilgilerini desteklemek ve kullanılabilirliği artırmak için, oturum açma işlemi sırasında Azure Active Directory Kullanıcı adı arama davranışı artık güncellenir. Yeni davranış, oturum açma sayfasına girilen kullanıcı adına göre kiracı ve Kullanıcı düzeyi ayarlarını okuyarak akıllı kararlar verir. Bunu mümkün kılmak için Azure Active Directory, oturum açma sayfasına girilen kullanıcı adının belirtilen etki alanında bulunup bulunmadığını ve Kullanıcı kimlik bilgilerini sağlamak için kullanıcıyı yeniden yönlendirdiği denetlenir.
+Daha geniş bir kimlik bilgilerini desteklemek ve kullanılabilirliği artırmak için, oturum açma işlemi sırasında Azure Active Directory Kullanıcı adı arama davranışı artık güncellenir. Yeni davranış, oturum açma sayfasına girilen kullanıcı adına göre kuruluş düzeyindeki ve kullanıcı düzeyindeki ayarları okuyarak akıllı kararlar verir. Bunu mümkün kılmak için Azure Active Directory, oturum açma sayfasına girilen kullanıcı adının belirtilen etki alanında bulunup bulunmadığını ve Kullanıcı kimlik bilgilerini sağlamak için kullanıcıyı yeniden yönlendirdiği denetlenir.
 
 Bu çalışmanın ek bir avantajı, hata iletileri geliştirilerek geliştirilmiştir. Aşağıda yalnızca Azure Active Directory Kullanıcıları destekleyen bir uygulamada oturum açarken geliştirilmiş hata iletilerine ilişkin bazı örnekler verilmiştir.
 

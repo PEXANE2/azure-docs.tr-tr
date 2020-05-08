@@ -1,31 +1,31 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market Analytics 'teki kullanım panosu
-description: Tüm VM 'ler için kullanım ve ölçümlenen faturalandırma ölçümlerinin nasıl erişebileceğini öğrenin.
+title: Microsoft ticari Market Analytics 'teki kullanım panosu
+description: Tüm VM 'ler için kullanım ve ölçümlenen faturalandırma ölçümlerinin nasıl erişebileceğini öğrenin. Ticari Market altında Iş Ortağı Merkezi ' ndeki kullanım panosuna gidin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262188"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793015"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'teki kullanım panosu
+# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft ticari Market Analytics 'teki kullanım panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki kullanım panosu hakkında bilgi sağlanır. Bu Pano, tüm VM 'leri kullanım ve ölçümlenen faturalandırma ölçümlerini iki ayrı sekmede görüntüler: VM kullanımı ve tarifeli faturalandırma kullanımı.
 
-Kullanım panosuna erişmek için ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
+Kullanım panosuna erişmek için **ticari Market**altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
 > Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
 
 ## <a name="usage-dashboard"></a>Kullanım panosu
 
-Kullanım panosu, tüm sanal makineler (VM) için ölçümleri temsil eder ve kullanım ve tarifeli faturalandırma kullanımı sunar. Bunlar iki ayrı sekmede bulunur: VM kullanımı ve tarifeli faturalandırma kullanımı.
+Kullanım panosu, tüm sanal makineler (VM) için ölçümleri temsil eder ve kullanım ve tarifeli faturalandırma kullanımı sunar. Bu ölçümler iki ayrı sekmede bulunur: VM kullanımı ve tarifeli faturalandırma kullanımı.
 
 VM kullanımı sekmesinde, aşağıdaki öğelerin grafik gösterimleri vardır:
 
@@ -46,7 +46,7 @@ VM kullanımı sekmesinde, aşağıdaki öğelerin grafik gösterimleri vardır:
 Kullanım Özeti tablosu, satın aldıkları tüm teklifler için müşterinin kullanım saatlerini görüntüler.
 
 - Normalleştirilmiş kullanım saatleri, sanal makine çekirdekleri ([VM çekirdeği sayısı] x [saat ham kullanım]) için hesaba normalleştirilmiş kullanım saatleri olarak tanımlanır. "SHAREDCORE" olarak belirlenen VM 'Ler [VM çekirdeklerinin sayısı] çarpanı olarak 1/6 (veya 0,1666) kullanır.
-- Ham kullanım saatleri, VM 'Lerin saat bakımından çalıştırıldığı süre miktarı olarak tanımlanır.
+- Ham kullanım saatleri, VM 'Lerin saat cinsinden çalıştığı zaman sayısı olarak tanımlanır.
 - Yüzde değeri, seçilen tarih aralığı için kullanım büyüme değişikliğini ([son ay kullanımı – ilk ay kullanımı])/ilk ayın kullanımını temsil eder.
 - Yukarıyı gösteren yeşil üçgenler, büyüme değişikliğini gösterir.
 - Aşağıyı gösteren kırmızı üçgen, önceki aya göre negatif büyüme değişikliğini gösterir.
@@ -58,13 +58,13 @@ Coğrafya ısı haritasını **tarafından normalleştirilmiş kullanımı** , m
 
 ### <a name="usage-by-offers"></a>Tekliflere göre kullanım
 
-- Bir pasta grafiği sunarak **normalleştirilmiş kullanım** , seçilen tarih aralığına göre tekliflere göre normalleştirilmiş kullanım saatlerinin dökümünü görüntüler. İlk 5 teklif grafikte görüntülenir, diğerleri ise "Rest All" kategorisinde gruplandırılır.
+- Bir pasta grafiği sunarak **normalleştirilmiş kullanım** , seçilen tarih aralığına göre tekliflere göre normalleştirilmiş kullanım saatlerinin dökümünü görüntüler. İlk beş teklif grafikte görüntülenir, diğerleri ise **rest All** kategorisinde gruplandırılır.
 - Çubuk grafik, seçilen tarih aralığı için aylık bir ay büyüme eğilimi gösterir. Month sütunları, ilgili ay için en yüksek kullanım saatlerine sahip tekliflerden kullanım saatlerini temsil eder. Çizgi grafik, ikincil Y ekseni üzerinde çizilen büyüme yüzdesi eğilimini gösterir.
 - Sağ üst kısımdaki kaydırıcıyı kullanarak x ekseni üzerinde sola kaydırın ve/veya belirli veri noktalarına odaklayın.
 
 ### <a name="usage-trend-by-offers-and-skus"></a>Tekliflere ve SKU 'Lara göre kullanım eğilimi
 
-Bu grafik, bir teklifin seçili SKU 'Larının normalleştirilmiş kullanımının eğilimini görüntüler. Teklif teklifi panosu, en yüksek kullanıma sahip 50 teklifi görüntüler ve kullanım saatlerine göre sıralanır. SKU öncü kartı, en yüksek kullanım 50 SKU 'Larını seçili teklif için görüntüler.
+Bu grafik, bir teklifin seçili SKU 'Larının normalleştirilmiş kullanımının eğilimini görüntüler. Teklif teklifi panosu, en yüksek kullanım için kullanım saatlerine göre sıralanan ilk 50 teklifi görüntüler. SKU öncü kartı, en yüksek kullanım 50 SKU 'Larını seçili teklif için görüntüler.
 
 ### <a name="usage-by-offer-type"></a>Teklif türüne göre kullanım
 
@@ -101,7 +101,7 @@ Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 5
 
 - **Teklif türleri** ve **teklif adları** yalnızca seçili tarih aralığı sırasında elde ettiğiniz teklifler için listelenir. Listedeki teklif adları, listeden seçilen teklif türleri için görüntülenir.
 - **Kullanım türü**dışında, filtre seçeneklerinin her biri için varsayılan seçim "tümü" dir. **Kullanım türü** için varsayılan seçim normalleştirilmiş kullanımdır. Grafiklerde ham kullanımı göstermek için "ham kullanım" yi seçin.
-- Uygulanan filtreler, yapılan filtre seçimleri için sayım seçimlerini gösterir. Uygulanan filtreler varsayılan seçimler için gösterilmez.
+- Uygulanan filtreler, yapılan filtre seçimlerinin sayı seçimini gösterir. Uygulanan filtreler varsayılan seçimler için gösterilmez.
 
 > [!NOTE]
 > "Ayrıntılı sıralama verileri" kılavuzunda, sayfa filtrelerinde ve tüm olası seçimlerdeki her bir alanın ayrıntılı tanımı, [SSS ve terminoloji](link needed) makalesinin veri sözlüğü bölümünde tanımlanmıştır.
@@ -123,5 +123,5 @@ Puan tablosu en yüksek kullanım ve kullanım saatlerine göre sıralanan ilk 5
 - Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
 - Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
 - Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./downloads-dashboard.md).
-- Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
+- Microsoft AppSource ve Azure Marketi 'ndeki teklifler için müşteri geri bildirimlerine yönelik birleştirilmiş bir görünüm görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
 - Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).

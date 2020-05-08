@@ -8,8 +8,6 @@
       href: overview.md
     - name: Mesajlaşma hizmetlerini karşılaştırma
       href: compare-messaging-services.md
-    - name: Premium ile temel katmanların karşılaştırılması
-      href: premium-basic-tiers.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -149,6 +147,8 @@
           href: event-filtering.md
         - name: Teslim ve yeniden deneme
           href: delivery-and-retry.md
+        - name: Web kancası olay teslimi
+          href: webhook-event-delivery.md
     - name: Olağanüstü durum kurtarma
       items:
         - name: Coğrafi olağanüstü durum kurtarma
@@ -161,20 +161,18 @@
           href: security-authorization.md
         - name: Ağ güvenliği
           href: network-security.md
+    - name: İzleme ve sorun giderme
+      items:
+        - name: Tanılama günlükleri
+          href: diagnostic-logs.md
+        - name: Ölçümler
+          href: metrics.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Özel uç noktaları yapılandırma (önizleme)
-      href: configure-private-endpoints.md
-    - name: IP güvenlik duvarını yapılandırma (önizleme)
-      href: configure-firewall.md
-    - name: Fiyatlandırma katmanını güncelleştirme
-      href: update-tier.md
     - name: Özel konuya gönderme
       href: post-to-custom-topic.md
     - name: HTTP uç noktasında olayları alma
       href: receive-events.md
-    - name: AAD ile güvenli web kancası
-      href: secure-webhook-delivery.md
     - name: Teslim edilemeyen ileti ve yeniden deneme
       href: manage-event-delivery.md
     - name: Olayları filtreleme
@@ -191,12 +189,24 @@
       href: how-to-event-domains.md
     - name: İstemci tarafı yük devretmeyi uygulama
       href: custom-disaster-recovery.md
+    - name: Zaman uyumsuz REST işlemlerini izleme
+      href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Güvenlik
+      items:
+        - name: Özel uç noktaları yapılandırma (önizleme)
+          href: configure-private-endpoints.md
+        - name: IP güvenlik duvarını yapılandırma (önizleme)
+          href: configure-firewall.md
+        - name: AAD ile güvenli web kancası
+          href: secure-webhook-delivery.md
     - name: Sorun giderme
       items:
-        - name: Belirli bir konuya yönelik tanılama günlüklerini etkinleştirme
+        - name: Tanılama günlüklerini etkinleştirme
           href: enable-diagnostic-logs-topic.md
         - name: Sorun giderme hataları
           href: troubleshoot-errors.md
+        - name: Abonelik doğrulama sorunlarını giderme
+          href: troubleshoot-subscription-validation.md
         - name: Olay teslimi izleme
           href: monitor-event-delivery.md
 - name: Başvuru

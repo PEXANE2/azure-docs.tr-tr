@@ -1,27 +1,25 @@
 ---
-title: Workday öznitelik başvurusu | Microsoft Docs
+title: Workday öznitelik başvurusu
 description: Başarılı bir şekilde hangi özniteliklerin desteklendiğini
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/19/2020
 ms.author: chmutali
-ms.openlocfilehash: 61f374c3fbc15e78784fe30c4e66ea109537727d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: b0acb058e7e58656257d55f82f5dd02a8ae7d9c3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112890"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593072"
 ---
 # <a name="workday-attribute-reference"></a>Workday öznitelik başvurusu
+
 Bu bölüm, XPATH sorgularını kullanarak Workday 'den getirileceği özniteliklerin bir listesini sağlar. Workday Web Hizmetleri API sürümüne bağlı olarak, kullanmayı planlarsınız ve ilgili bölüme bakın. 
 
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>Workday Web Hizmetleri (WWS) API v 21.1 için XPATH değerleri
@@ -29,7 +27,7 @@ Bu bölüm, XPATH sorgularını kullanarak Workday 'den getirileceği öznitelik
 
 Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağlama uygulama Bağlayıcısı ile kutudan sevk edilen karşılık gelen XPATH ifadelerini yakalar. 
 
-| \# | Adı                                  | Workday API ifadesi                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Name                                  | Workday API ifadesi                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Etkin                                | WD: Worker/WD: Worker\_Data/WD: iş\_verileri/WD: çalışan\_durumu\_verileri/WD: etkin/metin\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | WD: Worker/WD: çalışan\_verileri/WD: iş\_verileri/WD: konum\_verileri/WD: iş\_sitesi\_Özet\_verileri/WD: Adres\_verileri/WD: Adres\_satırı\_verileri\[@wd:Type= ' adres\_satırı\_2 '\]/Text\(\)                                                                                                                                                                                                                             |
@@ -117,7 +115,7 @@ Aşağıdaki tablo, Workday özniteliklerinin listesini ve iş günü gelen sağ
 Bir WWS API v 30.0 ve üstünü kullanıyorsanız, sağlama işini açmadan önce lütfen öznitelik eşleme altındaki **XPath API deyimlerini** güncelleştirin **-> gelişmiş seçenekler-> Workday Için öznitelik listesini düzenleyin** ve aşağıda listelenen değerleri kullanın. Ek XPATHs yapılandırmak için, [yapılandırmanızı yönetme](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)bölümüne bakın. 
 
 
-| \# | Adı                                  | Workday XPATH API ifadesi                                                                                                                                                                                                                                                                                                                                                |
+| \# | Name                                  | Workday XPATH API ifadesi                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Etkin                                | WD: Worker/WD: Worker\_Data/WD: iş\_verileri/WD: çalışan\_durumu\_verileri/WD: etkin/metin\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | WD: Worker/WD: Worker\_Data/WD: iş\_verileri/WD: çalışan\_iş\_verisi\[@wd:Primary\_işi = 1\]/WD: konum\_verisi/WD: iş\_sitesi\_Özet\_verileri/WD: Adres\_verileri/WD: Adres\_satırı\_verileri\[@wd:Type= ' adres\_satırı\_2 '\]/Text\(\)                                                                                                                                                            |

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4deae235ed15d02874ab5cb3470c62e934324364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 389dea74f5002cb09d7683947356d236ea8d338b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234289"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858699"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Depolama blobları için geçici silme
 
@@ -148,7 +148,7 @@ Genel olarak Azure Blob depolama fiyatları hakkında daha fazla ayrıntı için
 
 Geçici silme özelliğini ilk kez açtığınızda, özelliğin faturanızı nasıl etkileyeceğini daha iyi anlamak için küçük bir bekletme süresi kullanmanızı öneririz.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Aşağıdaki adımlarda, geçici silme ile çalışmaya başlama gösterilmektedir.
 
@@ -371,5 +371,5 @@ Kullanmakta olduğunuz API sürümüne bakılmaksızın geçici silme avantajın
 * [.NET örnek kodu](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [Blob Hizmeti REST API'si](/rest/api/storageservices/blob-service-rest-api)
 * [Azure depolama çoğaltma](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Olağanüstü durum kurtarma ve depolama hesabı yük devretme](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

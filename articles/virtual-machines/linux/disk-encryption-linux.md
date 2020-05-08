@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313618"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792590"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
 
 
-Linux sanal makineleri için Azure disk şifrelemesi (VM 'Ler), işletim sistemi diskinin ve veri disklerinin tam disk şifrelemesini sağlamak için Linux 'un DM-Crypt özelliğini kullanır. Ayrıca, EncryptFormatAll özelliği kullanılırken kısa ömürlü kaynak disk şifrelemesi de sağlar.
+Linux sanal makineleri için Azure disk şifrelemesi (VM 'Ler), işletim sistemi diskinin ve veri disklerinin tam disk şifrelemesini sağlamak için Linux 'un DM-Crypt özelliğini kullanır. Ayrıca, EncryptFormatAll özelliği kullanılırken geçici disk şifrelemesi de sağlar.
 
 Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault ile tümleşiktir](disk-encryption-key-vault.md) . Hizmete genel bakış için bkz. [Linux VM 'leri Için Azure disk şifrelemesi](disk-encryption-overview.md).
 
@@ -209,9 +209,9 @@ Linux VM disk şifrelemesi şablonunu yapılandırma hakkında daha fazla bilgi 
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Linux VM 'lerinde veri diskleri için EncryptFormatAll özelliğini kullanın
 
-**Encryptformatall** parametresi, Linux veri disklerinin şifrelenme süresini azaltır. Belirli ölçütlere uyan bölümler biçimlendirilecek (geçerli dosya sistemi ile) ve ardından komut yürütmeden önce olduğu yere yeniden takılacaktır. Ölçütlere uyan bir veri diskini dışlamak istiyorsanız, komutu çalıştırmadan önce onu kaldırabilirsiniz.
+**Encryptformatall** parametresi, Linux veri disklerinin şifrelenme süresini azaltır. Belirli ölçütlere uyan bölümler, geçerli dosya sistemleriyle birlikte biçimlendirilir ve ardından komut yürütmeden önce oldukları yere yeniden takılacaktır. Ölçütlere uyan bir veri diskini dışlamak istiyorsanız, komutu çalıştırmadan önce onu kaldırabilirsiniz.
 
- Bu komutu çalıştırdıktan sonra, daha önce bağlanan tüm sürücüler biçimlendirilir ve şifreleme katmanı artık boş sürücünün üstünde başlatılır. Bu seçenek belirlendiğinde, VM 'ye bağlı olan kısa ömürlü kaynak disk de şifrelenir. Kısa ömürlü sürücü sıfırlandığında, sonraki fırsatta Azure disk şifrelemesi çözümü tarafından sanal makine için yeniden biçimlendirilir ve yeniden şifrelenir. Kaynak disk şifrelendikten sonra, [Microsoft Azure Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) kaynak diski yönetemez ve takas dosyasını etkinleştiremeyecektir, ancak takas dosyasını el ile yapılandırabilirsiniz.
+ Bu komutu çalıştırdıktan sonra, daha önce bağlanan tüm sürücüler biçimlendirilir ve şifreleme katmanı artık boş sürücünün üstünde başlatılır. Bu seçenek belirlendiğinde, VM 'ye bağlı geçici disk da şifrelenir. Geçici disk sıfırlandığında, sonraki fırsatta Azure disk şifrelemesi çözümü tarafından sanal makine için yeniden biçimlendirilir ve yeniden şifrelenir. Kaynak disk şifrelendikten sonra, [Microsoft Azure Linux Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) kaynak diski yönetemez ve takas dosyasını etkinleştiremeyecektir, ancak takas dosyasını el ile yapılandırabilirsiniz.
 
 >[!WARNING]
 > Bir VM 'nin veri birimlerinde gerekli veriler olduğunda, EncryptFormatAll kullanılmamalıdır. Diskleri şifrelemeden hariç tutabilir. Öncelikle bir test sanal makinesinde ilk olarak Encryptformatı denemeniz, özellik parametresini ve uygulamayı üretim VM 'sinde denemeden önce öğrenmelisiniz. EncryptFormatAll seçeneği, veri diskini ve üzerindeki tüm verileri biçimlendirir. Devam etmeden önce, dışlamak istediğiniz disklerin düzgün şekilde takılmamış olduğunu doğrulayın. </br></br>
@@ -408,9 +408,10 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - Paylaşılan/dağıtılmış dosya sistemlerinin şifrelenmesi (ancak bunlarla sınırlı olmamak üzere): DFS, GFS, DRDB ve CephFS gibi.
 - Şifrelenmiş bir VM 'yi başka bir aboneliğe taşıma.
 - Çekirdek kilitlenme dökümü (kdump).
-- Oracle ACFS (ASM küme dosyası sistemi)
-- Gen2 VM 'Ler (bkz. [Azure 'da 2. nesil VM 'ler Için destek](generation-2.md#generation-1-vs-generation-2-capabilities))
-- Lsv2 serisi VM 'Ler (bkz: [Lsv2-Series](../lsv2-series.md))
+- Oracle ACFS (ASM küme dosyası sistemi).
+- Gen2 VM 'Ler (bkz: [Azure 'da 2. nesil VM 'ler Için destek](generation-2.md#generation-1-vs-generation-2-capabilities)).
+- Lsv2 serisi VM 'Ler (bkz: [Lsv2-Series](../lsv2-series.md)).
+- "İç içe bağlama noktaları" olan bir VM. diğer bir deyişle, tek bir yolda birden çok bağlama noktası ("/1stmountpoint/Data/2stbağlamanoktası" gibi).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

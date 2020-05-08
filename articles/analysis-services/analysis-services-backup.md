@@ -4,15 +4,15 @@ description: Bu makalede, model meta verilerinin ve verilerinin bir Azure Analys
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145446"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871305"
 ---
 # <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
@@ -24,7 +24,7 @@ Tablo modeli veritabanlarının Azure Analysis Services yedeklenmesi, şirket i�
 > 
 
 > [!NOTE]
-> Depolama hesabı farklı bir bölgedeyse, güvenlik duvarı ayarlarının **tüm ağlardan**erişime izin verecek şekilde yapılandırılması gerekir. Beyaz listelenmiş IP adresleriyle ve güvenilen Microsoft Hizmetleri özel durumuna Izin veren seçili ağlarda yapılandırılmış güvenlik duvarı ayarları desteklenmez.
+> Depolama hesabı farklı bir bölgedeyse, **Seçili ağlardan**erişime izin vermek için depolama hesabı güvenlik duvarı ayarlarını yapılandırın. Güvenlik Duvarı **adres aralığı**' nda, Analysis Services sunucusunun bulunduğu bölge için IP adresi aralığını belirtin. Depolama hesabı güvenlik duvarı ayarlarının tüm ağlardan erişime izin verecek şekilde yapılandırılması desteklenir, ancak seçili ağları seçip bir IP adresi aralığı belirtilerek tercih edilir. Daha fazla bilgi için bkz. [ağ BAĞLANTıSı SSS](analysis-services-network-faq.md#backup-and-restore).
 
 Yedeklemeler bir. abf uzantısıyla kaydedilir. Bellek içi tablolu modeller için hem model verileri hem de meta veriler depolanır. DirectQuery tablolu modeller için yalnızca model meta verileri depolanır. Yedeklemeler, seçtiğiniz seçeneklere bağlı olarak sıkıştırılabilir ve şifrelenebilir.
 
@@ -107,5 +107,5 @@ Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığ
 ## <a name="related-information"></a>İlgili bilgiler
 
 [Azure depolama hesapları](../storage/common/storage-create-storage-account.md)  
-[Yüksek kullanılabilirlik](analysis-services-bcdr.md)     
-[Azure Analysis Services Yönet](analysis-services-manage.md)
+[Yüksek kullanılabilirlik](analysis-services-bcdr.md)      
+[Analysis Services ağ bağlantısı SSS](analysis-services-network-faq.md)

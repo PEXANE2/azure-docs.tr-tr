@@ -7,21 +7,22 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: c16d7247b781fea04cfa2d53b8854cff14e039c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: security-benchmark
+ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616441"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871993"
 ---
-# <a name="overview-of-azure-security-baselines"></a>Azure güvenlik temellerine genel bakış
+# <a name="security-baselines-for-azure"></a>Azure için güvenlik temelleri
 
-Azure güvenlik temelleri, geliştirilmiş araçlar, izleme ve güvenlik özellikleri aracılığıyla ürünlerimizin güvenliğini güçlendirin ve ortamınızı güvenli hale getirirken tutarlı bir deneyim sağlar.
+Azure için güvenlik temelleri, Gelişmiş araç, izleme ve güvenlik özellikleriyle güvenliği güçlendirmeye yardımcı olur. Ayrıca, ortamınızı güvenli hale getirirken size tutarlı bir deneyim sağlar.
 
-Azure hizmeti güvenlik temelleri, bulut merkezli denetim alanlarında odaklanmaktadır. Bu denetimler, Internet güvenliği (CIS) için merkezi tarafından açıklananlar gibi iyi bilinen güvenlik değerlendirmeleri ile tutarlıdır. Temellerimiz, [Azure Güvenlik kıyaslaması](overview.md)'nda listelenen denetim alanlarıyla ilgili rehberlik sağlar.
+Azure 'un bulut merkezli denetim alanlarında odaklanacağı güvenlik temelleri. Bu denetimler, Internet güvenliği (CIS) için merkezi tarafından açıklananlar gibi iyi bilinen güvenlik değerlendirmeleri ile tutarlıdır. Temellerimiz, [Azure Güvenlik kıyaslaması](overview.md)'nda listelenen denetim alanlarıyla ilgili rehberlik sağlar.
 
 Her öneri aşağıdaki bilgileri içerir:
+
 - **Azure ID**: öneriye karşılık gelen Azure GÜVENLIK kıyaslama kimliği.
 - **Öneri**: doğrudan Azure kimliğinden sonra, öneri denetimin üst düzey açıklamasını sağlar.
 - **Rehberlik**: önerinin ve nasıl uygulanacağı üzerine kılavuzluk eden bağlantılar. Öneri Azure Güvenlik Merkezi tarafından destekleniyorsa, bu bilgiler de listelenecektir.
@@ -29,3 +30,6 @@ Her öneri aşağıdaki bilgileri içerir:
 - **Azure Güvenlik Merkezi izleme**: denetim, Azure Güvenlik Merkezi tarafından, başvuruya bağlantı ile izlenip izlenmediği.
 
 Bu belirli hizmet için geçerli olmayan öneriler de dahil olmak üzere tüm öneriler, Azure Güvenlik kıyaslamaları 'nın her bir hizmetle nasıl ilişkili olduğu hakkında ayrıntılı bir resim sunmak için temele dahil edilmiştir. Bazen çeşitli nedenlerle geçerli olmayan denetimler olabilir — Örneğin, IaaS/bilgi işlem merkezli denetimler (örneğin, işletim sistemi yapılandırma yönetimine özgü denetimler) PaaS hizmetleri için geçerli olmayabilir.
+
+
+Azure hizmetleri için güvenlik taban çizgileri hakkında geri bildirimde bulunun. Aşağıdaki geri bildirim alanına yorum sağlamanızı öneririz. Ya da, Azure Güvenlik kıyaslama ekibi ile girişinizi daha özel olarak paylaşmayı tercih ediyorsanız, formu doldurmaya hoş geldiniz https://aka.ms/AzSecBenchmark.

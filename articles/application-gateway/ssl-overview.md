@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ae80b49c3bfb40743665768622d3f4a8a6990c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 286c9329be38055808571d8d32c724d27a61cbf3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311859"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855882"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
 
@@ -28,6 +28,10 @@ Application Gateway, ağ geçidinde TLS sonlandırmasını destekler, bu da akı
 - **Sertifika yönetimi** – sertifikaların yalnızca uygulama ağ geçidinde satın alınması ve yüklenmesi gerekir ve bu, arka uç sunucuları için kullanılamaz. Bu hem zaman hem de para tasarrufu sağlar.
 
 TLS sonlandırmayı yapılandırmak için, uygulama ağ geçidinin, TLS/SSL protokol belirtimine göre bir simetrik anahtar türemesini sağlamak üzere dinleyiciye bir TLS/SSL sertifikası eklenmesi gerekir. Daha sonra simetrik anahtar, ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. TLS/SSL sertifikasının kişisel bilgi değişimi (PFX) biçiminde olması gerekir. Bu dosya biçimi, trafiğin şifrelemesini ve şifresini çözmeyi gerçekleştirmek üzere uygulama ağ geçidi için gereken özel anahtarı dışarı aktarma olanağı sağlar.
+
+> [!IMPORTANT] 
+> Lütfen dinleyicide bulunan sertifikanın tüm Sertifika zincirinin karşıya yüklenmesini gerektirdiğini unutmayın. 
+
 
 > [!NOTE] 
 >

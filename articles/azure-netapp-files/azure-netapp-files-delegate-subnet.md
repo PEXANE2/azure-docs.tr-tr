@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/04/2020
 ms.author: b-juche
-ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f36e40091ada27f411adc2ffa78b6d4a58f8cca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80054459"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791417"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Azure NetApp Files için bir alt ağı temsilci olarak belirleme 
 
@@ -28,7 +28,8 @@ Azure NetApp Files için bir alt ağ temsilciliğini almalısınız.   Bir birim
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 * Yeni bir alt ağ oluşturmak için sihirbaz, 251 kullanılabilir IP adresi sağlayan bir/24 ağ maskesini varsayılan olarak belirler. 16 kullanılabilir IP adresi sağlayan/28 ağ maskesini kullanma hizmeti için yeterlidir.
 * Her bir Azure sanal ağında (VNet), Azure NetApp Files için yalnızca bir alt ağ atanabilir.   
-   Azure, bir sanal ağda birden fazla Temsilcili alt ağ oluşturmanızı sağlar.  Ancak, birden fazla Temsilcili alt ağ kullanırsanız, yeni bir birim oluşturma girişimleri başarısız olur.
+   Azure, bir sanal ağda birden fazla Temsilcili alt ağ oluşturmanızı sağlar.  Ancak, birden fazla Temsilcili alt ağ kullanırsanız, yeni bir birim oluşturma girişimleri başarısız olur.  
+   VNet 'te yalnızca tek bir Temsilcili alt ağa sahip olabilirsiniz. Bir NetApp hesabı, her biri kendi Temsilcili alt ağına sahip olan birden fazla VNET 'e birim dağıtabilir.  
 * Temsilci alt ağında bir ağ güvenlik grubu veya hizmet uç noktası belirtemezsiniz. Bunun yapılması alt ağ temsilcisinin başarısız olmasına neden olur.
 * Genel olarak eşlenmiş bir sanal ağdan bir birime erişim şu anda desteklenmiyor.
 * Azure NetApp Files için temsilci atanmış bir alt ağa adres ön eki (hedef) ile VM alt ağları üzerinde [Kullanıcı tanımlı özel yollar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) oluşturma desteklenmiyor. Bunun yapılması, VM bağlantısını etkiler.

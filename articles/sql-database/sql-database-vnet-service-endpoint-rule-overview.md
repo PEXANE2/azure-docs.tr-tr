@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414389"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651813"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Veritabanı sunucuları için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 
-*Sanal ağ kuralları* , Azure [SQL veritabanı](sql-database-technical-overview.md) veya [SQL veri ambarı](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'ndaki veritabanları için veritabanı sunucusunun, sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen tek bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanınıza ve SQL veri ambarınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
+*Sanal ağ kuralları* , Azure [SQL veritabanı](sql-database-technical-overview.md) veya [Azure SYNAPSE Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'teki veritabanları için veritabanı sunucusunun, sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen tek bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanınıza ve Azure SYNAPSE analizinize yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenek olduğu açıklanmaktadır.
 
 > [!IMPORTANT]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
+> Bu makale, Azure SQL Server ve Azure SQL Server 'da oluşturulan hem SQL veritabanı hem de Azure SYNAPSE Analytics veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e başvururken kullanılır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
 
 Bir sanal ağ kuralı oluşturmak için öncelikle kuralın başvurması için bir [sanal ağ hizmet uç noktası][vm-virtual-network-service-endpoints-overview-649d] olması gerekir.
 
@@ -105,11 +105,11 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>VNet hizmet uç noktalarını Azure depolama ile kullanmanın etkileri
 
-Azure depolama, Azure depolama hesabınızla olan bağlantıyı sınırlandırmanıza olanak tanıyan özelliği de uygulamıştır. Bu özelliği Azure SQL Server tarafından kullanılmakta olan bir Azure depolama hesabıyla kullanmayı tercih ederseniz, sorunlar ' de çalıştırabilirsiniz. Bundan etkilenen Azure SQL veritabanı ve Azure SQL veri ambarı özelliklerinin bir listesi ve tartışılması daha vardır.
+Azure depolama, Azure depolama hesabınızla olan bağlantıyı sınırlandırmanıza olanak tanıyan özelliği de uygulamıştır. Bu özelliği Azure SQL Server tarafından kullanılmakta olan bir Azure depolama hesabıyla kullanmayı tercih ederseniz, sorunlar ' de çalıştırabilirsiniz. Bundan etkilenen Azure SQL veritabanı ve Azure SYNAPSE Analytics özelliklerinin bir listesi ve tartışılması daha vardır.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL veri ambarı PolyBase
+### <a name="azure-synapse-analytics-polybase"></a>Azure SYNAPSE Analytics PolyBase
 
-PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlandırırsanız, PolyBase 'den hesaba bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SQL veri ambarı ile hem PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
+PolyBase, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca bir VNet-alt ağ kümesine sınırlandırırsanız, PolyBase 'den hesaba bağlantı kesilir. VNet ile güvenli hale getirilmiş Azure depolama 'ya bağlanan Azure SYNAPSE Analytics ile PolyBase içeri ve dışarı aktarma senaryolarını etkinleştirmek için aşağıda belirtilen adımları izleyin:
 
 #### <a name="prerequisites"></a>Ön koşullar
 
@@ -122,7 +122,7 @@ PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yükleme
 
 #### <a name="steps"></a>Adımlar
 
-1. PowerShell 'de Azure SQL veri ambarı örneğinizi Azure Active Directory (AAD) barındırarak **azure SQL Server kaydettirin** :
+1. PowerShell 'de, Azure SYNAPSE Analytics örneğinizi Azure Active Directory (AAD) ile barındırarak **azure SQL Server kaydedin** :
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ PolyBase, Azure depolama hesaplarından Azure SQL veri ambarı 'na veri yükleme
    > [!NOTE]
    > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)kullanarak **v2 'ye yükseltmeniz** gerekir.
    > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)bakın.
-
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' ye tıklayın. Azure SQL veri Ambarınızı, 1. adımda Azure Active Directory (AAD) ile kaydolduysanız Azure SQL Server barındırarak **Depolama Blobu veri katılımcısı** RBAC rolünü Azure 'a atayın.
+    
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Açılan listeden **Depolama Blobu veri katılımcısı** RBAC rolünü seçin. **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**seçmek **için erişim atama** için. **Seç**için, 1. adımda Azure ACTIVE DIRECTORY (AAD) Ile kaydettiğiniz Azure SQL Server (Azure SYNAPSE Analytics veri ambarınızın mantıksal sunucusu) sunucu adını yazın. Yalnızca tam DNS adı olmayan sunucu adını kullan (. database.windows.net olmadan**sunucuadı** )
 
    > [!NOTE]
-   > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)bakın.
+   > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Azure kaynakları için çeşitli yerleşik roller için bu [kılavuza](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)bakın.
   
 1. **Azure depolama hesabına PolyBase bağlantısı:**
 

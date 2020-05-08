@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 01b5f87c2557e2195573b90766ee45e001798cca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5aee3a19e33204da00483d0f4ee3f6ee97e8a07d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537704"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856261"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -68,7 +68,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
 * <a id="redundancy-options"></a>
   **Azure dosyaları tarafından desteklenen depolama yedeklilik seçenekleri nelerdir?**  
-    Şu anda Azure dosyaları yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge-yedekli depolama (GZRS) (Önizleme) destekler. Gelecekte Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) depolamayı desteklemeyi planlıyoruz, ancak şu anda paylaşılacak zaman çizelgelerinizi yok.
+    Şu anda Azure dosyaları yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) destekler. Gelecekte Okuma Erişimli Coğrafi olarak yedekli (RA-GRS) depolamayı desteklemeyi planlıyoruz, ancak şu anda paylaşılacak zaman çizelgelerinizi yok.
 
 * <a id="tier-options"></a>
   **Azure dosyalarında hangi depolama katmanları desteklenir?**  

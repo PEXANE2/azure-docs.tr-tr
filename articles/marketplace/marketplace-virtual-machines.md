@@ -1,6 +1,6 @@
 ---
-title: Azure Marketi için sanal makine teklifi Yayımlama Kılavuzu
-description: Bu makalede, Market 'ten dağıtılması için bir sanal makine ve yazılım ücretsiz deneme sürümü yayımlama gereksinimleri açıklanmaktadır.
+title: Azure Marketi 'nde sanal makine teklifleri için Yayımlama Kılavuzu
+description: Bu makalede, Azure Marketi 'nden dağıtılması için bir sanal makine ve yazılım ücretsiz deneme sürümü yayımlama gereksinimleri açıklanmaktadır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,63 +8,62 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687507"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858301"
 ---
-# <a name="virtual-machine-offer-publishing-guide"></a>Sanal Makine teklifi Yayımlama Kılavuzu
+# <a name="publishing-guide-for-virtual-machine-offers"></a>Sanal makine teklifleri için Yayımlama Kılavuzu
 
-Sanal makine görüntüleri, bir çözümü Azure Marketi 'nde yayımlamanın ana yöntemlerinden biridir. Bu teklifin gereksinimlerini anlamak için bu kılavuzu kullanın. 
+Sanal makine (VM) görüntülerini yayımlama, bir çözümü Azure Marketi 'Nde yayımlamanın ana yöntemlerinden biridir. Bu teklif türü için gereksinimleri anlamak için bu kılavuzu kullanın. 
 
-Bunlar Market aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü eyleme yapılan çağrı "Şimdi al" dır.
+Sanal makine teklifleri, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü eyleme yapılan çağrı *Şimdi bu uygulamayı alır*.
 
-## <a name="free-trial"></a>Ücretsiz Deneme 
+## <a name="free-trial"></a>Ücretsiz deneme sürümü 
 
-Kullanıcıları, kendi lisansını getir (KLG) Faturalandırma modelini kullanırken sınırlı süreli yazılım lisanslarına erişerek teklifinizi test etmek üzere düzenleyebilirsiniz. 
+Teklifinizi test etmek üzere kullanıcıları düzenlemek için, kendi lisansını getir (KLG) Faturalandırma modelini kullanırken sınırlı süreli yazılım lisanslarına erişin. 
 
-## <a name="test-drive"></a>Test Sürüşü
+## <a name="test-drive"></a>Sınama sürücüsü
 
-Hizmet olarak altyapı (IaaS) veya hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla bir veya daha fazla sanal makine dağıtırsınız. Test sürüşü yayımlama seçeneğinin bir avantajı, bir sanal makinenin otomatik olarak sağlanması veya iş ortağının barındırdığı bir Kılavuzlu tura katılarak tamamen bir çözümdür. Sınama sürücüsü, müşterinize hiçbir ek ücret ödemeden bir değerlendirme sağlar. Müşterinizin deneme deneyimine yönelik mevcut bir Azure müşterisi olması gerekmez. 
+Hizmet olarak altyapı (IaaS) veya hizmet olarak yazılım (SaaS) uygulamaları aracılığıyla bir veya daha fazla sanal makine dağıtabilirsiniz. *Test sürücüsü* yayımlama seçeneğinin bir avantajı, bir sanal makinenin veya tüm çözümünün iş ortağı tarafından barındırılan bir Kılavuzlu tura göre otomatik olarak kurulumu. Bir sınama sürücüsü, müşterilerinizin VM 'Leri hiçbir ek ücret ödemeden değerlendirmelerini sağlar. Deneme deneyimiyle birlikte çalışmak için müşterinin mevcut bir Azure müşterisi olması gerekmez. 
 
-Başlamak için [amp-testdrive](mailto:amp-testdrive@microsoft.com) 'da bizimle iletişim kurun. 
+Başlamak için [amp-testdrive](mailto:amp-testdrive@microsoft.com)'da e-postayla bizimle iletişim kurun. 
 
 |Gereksinimler  |Ayrıntılar |
 |---------|---------|
-| Market uygulamanız var   |    IaaS veya SaaS aracılığıyla bir veya daha fazla sanal makine.      |
+| Azure Market uygulamanız var   |  IaaS veya SaaS aracılığıyla bir veya daha fazla sanal makine.      |
 
-## <a name="interactive-demo"></a>Etkileşimli Tanıtım
+## <a name="interactive-demo"></a>Etkileşimli tanıtım
 
-Etkileşimli bir tanıtım kullanarak müşterilerinizin çözümüne yönelik kılavuzlu bir deneyim sağlarsınız. Etkileşimli Tanıtım yayımlama seçeneğinin avantajı, karmaşık çözümünüzün karmaşık bir şekilde sağlanması gerekmeden bir deneme deneyimi sağlamaktır. 
+Bu teklifle, etkileşimli bir tanıtım kullanarak müşterilerinize çözümünüze yönelik kılavuzlu bir deneyim verirsiniz. Etkileşimli Tanıtım yayımlama seçeneğinin avantajı, karmaşık çözümünüz için karmaşık bir kurulum sağlamak zorunda kalmadan bir deneme deneyimi sunabilmeniz sağlamaktır. 
 
-## <a name="virtual-machine-offer"></a>Sanal Makine teklifi
+## <a name="virtual-machine-offer"></a>Sanal makine teklifi
 
-Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. VM 'Ler, Kullandıkça Öde veya kendi lisansını getir (KLG) lisanslama modelleri kullanılarak tamamen ticari olarak etkinleştirilmiştir. Microsoft, ticari işlemi barındırır ve müşterinizin adına fatura alır. Müşteri ile Microsoft arasında, kurumsal sözleşmeler dahil tercih edilen ödeme ilişkilerini kullanmanın avantajını elde edersiniz.
+Müşterinizle ilişkili aboneliğe bir Sanal Gereç dağıtırken *sanal makine* teklif türünü kullanın. VM 'Ler, Kullandıkça Öde veya kendi lisansını getir (KLG) lisanslama modellerini kullanarak tam olarak ticari olarak etkinleştirilmiştir. Microsoft, ticari işlemi barındırır ve müşterinizin adına fatura alır. Müşteri ile Microsoft arasında, kurumsal sözleşmeler dahil tercih edilen ödeme ilişkilerini kullanmanın avantajını elde edersiniz.
 
 > [!NOTE]
 > Şu anda, bir Kurumsal Anlaşma ilişkili parasal taahhütler, VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.  
 > 
 > [!NOTE]
 > Görüntüyü ve fiyatlandırmayı özel bir teklif olarak yayımlayarak, sanal makinenizin bulma ve dağıtımını belirli bir müşteri kümesiyle kısıtlayabilirsiniz. Özel teklifler, en yakın müşterileriniz için özel teklifler oluşturma ve özelleştirilmiş yazılım ve koşulları sunma imkanını açar. Özelleştirilmiş terimler, özel fiyatlandırma ve koşullara sahip alan ve sınırlı yayın yazılımına erken erişim dahil olmak üzere çeşitli senaryolar vurgulamanızı sağlar. Özel teklifler, bu ayrıntılarla yeni bir SKU oluşturarak belirli fiyatlandırma veya ürünleri sınırlı bir müşteri kümesine vermenizi sağlar.  
-> *   Özel teklifler hakkında daha fazla bilgi için, [Azure.Microsoft.com/blog/Private-offers-on-Azure-Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)adresinde bulunan Azure Marketi 'Ndeki özel teklifleri ziyaret edin.  
+>
+> Daha fazla bilgi için bkz. [Azure Marketi 'Ndeki özel teklifler](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- | 
 | Faturalandırma ve ölçüm | SANAL makinenizin KLG veya Kullandıkça Öde aylık faturalandırmasını desteklemesi gerekir. |  
-| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure 'da desteklenen Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için bkz. [Azure ile uyumlu bır VHD oluşturma](./partner-center-portal/azure-vm-create-offer.md).</li> </ul> |  
+| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. VHD oluşturma hakkında daha fazla bilgi için bkz. <ul> <li>[Azure 'da desteklenen Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 'ler için).</li> <li>[Azure ile uyumlu bır VHD oluşturun](./partner-center-portal/azure-vm-create-offer.md) (Windows VHD 'ler için).</li> </ul> |  
 
 >[!Note]
->Bulut çözümü sağlayıcıları (CSP) iş ortağı kanalı kabul etme artık kullanılabilir.  Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için lütfen bkz. [bulut çözümü sağlayıcıları](./cloud-solution-providers.md) .
+>Bulut çözümü sağlayıcısı (CSP) iş ortağı kanalı kabul etme artık kullanılabilir. Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](./cloud-solution-providers.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, 
+Henüz yapmadıysanız, [Azure Marketi ile bulut işletmenizi nasıl büyütireceğinizi](https://azuremarketplace.microsoft.com/sell)öğrenin.
 
-- Market hakkında [bilgi edinin](https://azuremarketplace.microsoft.com/sell) .
-
-Kaydolduysanız ve yeni bir teklif oluşturuyor ya da mevcut bir teklif üzerinde çalışıyorsanız,
+Iş Ortağı Merkezi 'nde çalışmaya kaydolmak ve başlamak için:
 
 - Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
 - Daha fazla bilgi için bkz. [Sanal Makine teklifi oluşturma](./partner-center-portal/azure-vm-create-offer.md) .

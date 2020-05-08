@@ -3,16 +3,17 @@ title: Packer ile Linux Azure VM görüntüleri oluşturma
 description: Azure 'da Linux sanal makinelerinin görüntülerini oluşturmak için Packer 'ı nasıl kullanacağınızı öğrenin
 author: cynthn
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 3aec50b8c8f2033b7340bde15ea7670c1a0b6bb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534228"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792709"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Azure 'da Linux sanal makine görüntüleri oluşturmak için Packer kullanma
 Azure 'daki her sanal makine (VM), Linux dağıtımını ve işletim sistemi sürümünü tanımlayan bir görüntüden oluşturulur. Görüntüler, önceden yüklenmiş uygulamaları ve konfigürasyonları içerebilir. Azure Marketi, en yaygın dağıtımlar ve uygulama ortamları için birçok birinci ve üçüncü taraf görüntü sağlar veya gereksinimlerinize uygun kendi özel görüntülerinizi oluşturabilirsiniz. Bu makalede, Azure 'da özel görüntüler tanımlamak ve derlemek için açık kaynak aracı [Packer](https://www.packer.io/) 'ın nasıl kullanılacağı açıklanır.

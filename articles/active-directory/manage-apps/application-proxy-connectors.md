@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406823"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583117"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama
 
@@ -136,7 +136,7 @@ Ağınızı en iyi duruma getirme hakkında daha fazla bilgi için, [Azure Activ
 
 Bağlayıcılar, etki alanına katılmamış bir makinede çalıştırılabilir. Ancak, tümleşik Windows kimlik doğrulaması (ıWA) kullanan uygulamalar için çoklu oturum açma (SSO) istiyorsanız, etki alanına katılmış bir makineye ihtiyacınız vardır. Bu durumda, bağlayıcı makineleri yayımlanan uygulamalar için kullanıcılar adına [Kerberos](https://web.mit.edu/kerberos) kısıtlı temsili gerçekleştirebilen bir etki alanına katılmalıdır.
 
-Bağlayıcılar Ayrıca kısmi güveni olan etki alanlarına veya ormanlara veya salt okunabilir etki alanı denetleyicilerine de katılabilir.
+Bağlayıcılar, kısmi güven veya salt okuma etki alanı denetleyicileri olan ormanlarda bulunan etki alanlarına da katılabilir.
 
 ## <a name="connector-deployments-on-hardened-environments"></a>Sağlamlaştırılmış ortamlarda bağlayıcı dağıtımları
 

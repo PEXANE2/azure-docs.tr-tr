@@ -3,72 +3,125 @@ title: Azure IoT Central uygulamalarınız için cihaz şablonu sürüm oluştur
 description: Yeni sürümler oluşturarak ve canlı bağlı cihazlarınızı etkilemeden cihaz şablonlarınızda yineleme yapın
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 12/09/2019
+ms.date: 04/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 772521a8d3181721270d7fe4dbd11b7807c8d90e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81756730"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583659"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
 
 *Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
-Azure IoT Central IoT uygulamalarının hızla geliştirilmesini sağlar. Cihaz özelliklerini, görünümleri ve özelleştirmeleri ekleyerek, düzenleyerek veya silerek cihaz şablonu tasarımlarınız üzerinde hızlıca yineleme yapabilirsiniz. Cihaz şablonunuzu yayımladıktan sonra cihaz yeteneği modeli, modelin yanında kilit simgeleri ile **yayımlandı** olarak gösterilir. Cihaz yetenek modelinde değişiklik yapabilmek için cihaz şablonunun yeni bir sürümünü oluşturmanız gerekir. Bu arada, bulut özellikleri, özelleştirmeler ve görünümler, cihaz şablonunun sürümü gerekmeden herhangi bir zamanda düzenlenebilirler. Bu değişikliklerden birini kaydettikten sonra, işlecin Device Explorer içinde görüntülemesi için en son değişiklikleri kullanılabilir hale getirmek üzere cihaz şablonunu yayımlayabilirsiniz.
+Bir cihaz şablonu, bir cihazın IoT Central nasıl etkileşime gireceğini tanımlayan bir şema içerir. Bu etkileşimler telemetri, Özellikler ve komutları içerir. Hem cihaz hem de IoT Central uygulaması, bilgi alışverişi için bu şemanın paylaşılan olarak anlaşılmasını kullanır. Şemayı bozmadan yalnızca şemada sınırlı değişiklikler yapabilirsiniz. Bu, en çok şema değişikliklerinin cihaz şablonunun yeni bir sürümünü gerektirmesinin nedeni budur. Cihaz şablonunun sürümü, daha eski cihazların anladıkları şema sürümü ile devam etmesine izin verir, daha yeni veya güncelleştirilmiş cihazlar daha sonraki bir şema sürümünü kullanır.
+
+Bir cihaz şablonundaki şema, cihaz yetenek modeli (DCM) ve arabirimlerinde tanımlanmıştır. Cihaz şablonları, bulut özellikleri, görüntüleme özelleştirmeleri ve görünümleri gibi diğer bilgileri içerir. Cihaz şablonunun bu bölümlerinde, cihazın IoT Central verileri nasıl değiş tokuşunu tanımlamayan bir değişiklik yaparsanız, şablonun sürümünü yüklemeniz gerekmez.
+
+Bir işlecin kullanabilmesi için bir sürüm güncelleştirmesi gerektirmeksizin, herhangi bir cihaz şablonu değişikliğini yayımlamanız gerekir. IoT Central, önce şablon sürümü oluşturmadan bir cihaz şablonuna yönelik son değişiklikleri yayımlamanızı engeller.
 
 > [!NOTE]
 > Cihaz şablonu oluşturma hakkında daha fazla bilgi edinmek için bkz. [cihaz şablonu ayarlama ve yönetme](howto-set-up-template.md)
 
-## <a name="add-customizations-to-the-device-template-without-versioning"></a>Sürüm oluşturma olmadan cihaz şablonuna özelleştirmeler ekleme
+## <a name="versioning-rules"></a>Sürüm oluşturma kuralları
+
+Bu bölüm, cihaz şablonları için uygulanan sürüm oluşturma kurallarını özetler. Hem DCMs hem de arabirimlerin sürüm numaraları vardır. Aşağıdaki kod parçacığında bir ortam algılayıcı cihazı için DCM gösterilmektedir. DCM iki arabirime sahiptir: **Deviceınformation** ve **Environmentalalgılayıcı**. `@id` Alanların sonundaki sürüm numaralarını görebilirsiniz. Bu bilgileri IoT Central Kullanıcı arabiriminde görüntülemek için cihaz şablonu düzenleyicisinde **kimliği görüntüle** ' yi seçin.
+
+```json
+{
+  "@id": "urn:contoso:sample_device:1",
+  "@type": "CapabilityModel",
+  "implements": [
+    {
+      "@id": "urn:contoso:sample_device:deviceinfo:1",
+      "@type": "InterfaceInstance",
+      "name": "deviceinfo",
+      "schema": {
+        "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Device Information"
+        },
+        "contents": [...
+        ]
+      }
+    },
+    {
+      "@id": "urn:contoso:sample_device:sensor:1",
+      "@type": "InterfaceInstance",
+      "name": "sensor",
+      "schema": {
+        "@id": "urn:contoso:EnvironmentalSensor:2",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Environmental Sensor"
+        },
+        "contents": [...
+        ]
+      }
+    }
+  ],
+  "displayName": {
+    "en": "Environment Sensor Capability Model"
+  },
+  "@context": [
+    "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
+}
+```
+
+* Bir DCM yayımlandıktan sonra, cihaz şablonunun yeni bir sürümünde bile tüm arabirimleri kaldıramazsınız.
+* Bir DCM yayımlandıktan sonra, cihaz şablonunun yeni bir sürümünü oluşturursanız bir arabirim ekleyebilirsiniz.
+* Bir DCM yayımlandıktan sonra, cihaz şablonunun yeni bir sürümünü oluşturursanız bir arabirimi daha yeni bir sürümle değiştirebilirsiniz. Örneğin, algılayıcı v1 cihaz şablonu Environmentalalgılayıcı v1 arabirimini kullanıyorsa, Environmentalalgılayıcı v2 arabirimini kullanan bir algılayıcı v2 cihaz şablonu oluşturabilirsiniz.
+* Bir arabirim yayımlandıktan sonra, yeni bir cihaz şablonu sürümünde bile arabirim içeriklerinin hiçbirini kaldıramazsınız.
+* Arabirim yayımlandıktan sonra, arabirim ve cihaz şablonunun yeni bir sürümünü oluşturursanız bir arabirimin içeriğine öğeler ekleyebilirsiniz. Arabirime ekleyebileceğiniz öğeler telemetri, Özellikler ve komutları içerir.
+* Bir arabirim yayımlandıktan sonra, arabirimin ve cihaz şablonunun yeni bir sürümünü oluşturursanız, arabirimdeki varolan öğelerde şema dışı değişiklikler yapabilirsiniz. Bir arabirim öğesinin şema dışı kısımları, görünen adı ve anlam türünü içerir. Değiştiremiyoruz bir arabirim öğesinin şema bölümleri ad, yetenek türü ve şemadır.
+
+Aşağıdaki bölümlerde, IoT Central cihaz şablonlarının değiştirilmesine ilişkin bazı örnekler gösterilmektedir.
+
+## <a name="customize-the-device-template-without-versioning"></a>Cihaz şablonunu sürüm oluşturma olmadan özelleştirme
 
 Cihaz olanaklarınızın belirli öğeleri, cihaz şablonu ve arabirimlerinizin sürümü gerekmeden düzenlenebilir. Örneğin, bu alanlardan bazıları görünen adı, anlam türünü, minimum değeri, en büyük değer, ondalık basamak, renk, birim, görüntü birimi, açıklama ve açıklama içerir. Şu özelleştirmelere birini eklemek için:
 
 1. **Cihaz şablonları** sayfasına gidin.
 1. Özelleştirmek istediğiniz cihaz şablonunu seçin.
 1. **Özelleştir** sekmesini seçin.
-1. Cihaz yetenek modelinizde tanımlanan tüm yetenekler burada listelenir. Burada düzenleyebileceğiniz tüm alanlar, cihaz şablonunuzun sürümü gerekmeden uygulamanız genelinde kaydedilebilir ve kullanılabilir. Salt okunurdur düzenlemek istediğiniz alanlar varsa, bunları değiştirmek için cihaz şablonunuzu yüklemeniz gerekir. Düzenlemek istediğiniz bir alanı seçin ve yeni değerleri girin.
-1. **Kaydet**’e tıklayın. Bu değerler, başlangıçta cihaz şablonunuzda kaydedilen ve uygulama genelinde kullanılacak olan her şeyi geçersiz kılacak.
+1. Cihaz yetenek modelinizde tanımlanan tüm yetenekler burada listelenmiştir. Cihaz şablonunuzu sürüm gerekmeden bu alanları düzenleyebilir, kaydedebilir ve kullanabilirsiniz. Salt okunurdur düzenlemek istediğiniz alanlar varsa, bunları değiştirmek için cihaz şablonunuzu sürümüne uygulamanız gerekir. Düzenlemek istediğiniz bir alanı seçin ve yeni değerleri girin.
+1. **Kaydet**’e tıklayın. Artık bu değerler, ilk olarak cihaz şablonunuzda kaydedilen ve uygulama genelinde kullanılan her şeyi geçersiz kılar.
 
-## <a name="versioning-a-device-template"></a>Cihaz şablonu sürümü oluşturma
+## <a name="version-a-device-template"></a>Bir cihaz şablonu sürümü
 
-Cihaz şablonunuzun yeni bir sürümünü oluşturmak, cihaz yetenek modelinin düzenlenebildiği şablonun taslak bir sürümünü oluşturur. Yayımlanan tüm arabirimler tek tek sürümleyene kadar yayımlanmaya devam eder. Yayımlanmış bir arabirimi değiştirmek için, önce yeni bir cihaz şablonu sürümü oluşturmanız gerekir.
+Cihaz şablonunuzun yeni bir sürümünü oluşturmak, cihaz yetenek modelinin düzenlenebildiği şablonun taslak bir sürümünü oluşturur. Yayımlanan tüm arabirimler, tek tek sürümleyene kadar yayımlanmaya devam eder. Yayınlanmış bir arabirimi değiştirmek için önce yeni bir cihaz şablonu sürümü oluşturun.
 
-Cihaz şablonu, cihaz şablonunun özelleştirmeler bölümünde düzenleyebileceğiniz cihaz yetenek modelinin bir parçasını düzenlemeye çalışırken yalnızca sürümlük edilmelidir. 
+Yalnızca, cihaz özelliği modelinin özelleştirmeler bölümünde düzenleyebileceğiniz bir parçasını düzenlemeye çalışırken cihaz şablonunu sürüm olarak değiştirin.
 
-Bir cihaz şablonunun sürümü için:
+Bir cihaz şablonunu sürüm için:
 
 1. **Cihaz şablonları** sayfasına gidin.
 1. Sürüm oluşturmaya çalıştığınız cihaz şablonunu seçin.
-1. Sayfanın üst kısmındaki **Sürüm** düğmesine tıklayın ve şablona yeni bir ad verin. Sizin için düzenlenebilecek yeni bir ad önerdi.
+1. Sayfanın üst kısmındaki **Sürüm** düğmesine tıklayın ve şablona yeni bir ad verin. IoT Central, düzenleyebilmeniz için yeni bir ad önerir.
 1. **Oluştur**' a tıklayın.
-1. Artık cihaz şablonunuz taslak modunda. Arabirimlerinizin hala kilitli olduğunu ve düzenlenebilmesi için ayrı ayrı sürüm oluşturulması gerektiğini görürsünüz. 
+1. Artık cihaz şablonunuz taslak modunda. Arabirimlerinizin hala kilitli olduğunu görebilirsiniz. Değiştirmek istediğiniz arabirimlerin herhangi bir sürümünü kullanabilirsiniz.
 
-### <a name="versioning-an-interface"></a>Arabirim sürümü oluşturma
+## <a name="version-an-interface"></a>Bir arabirim sürümü
 
-Bir arabirimin sürümü oluşturma, önceden oluşturduğunuz arabirim içindeki özellikleri eklemenize, güncelleştirmenize ve kaldırmanıza olanak sağlar. 
+Bir arabirimin sürümü oluşturma, önceden oluşturduğunuz arabirim içindeki özellikleri eklemenize, güncelleştirmenize ve kaldırmanıza olanak sağlar.
 
-Bir arabirimin sürümü için:
+Bir arabirimi sürüm için:
 
 1. **Cihaz şablonları** sayfasına gidin.
 1. Taslak modunda olan cihaz şablonunu seçin.
 1. Sürüm ve düzenleme yapmak istediğiniz yayımlanmış modda olan arabirimi seçin.
-1. Arabirim sayfasının en üstündeki **Sürüm** düğmesine tıklayın. 
+1. Arabirim sayfasının en üstündeki **Sürüm** düğmesine tıklayın.
 1. **Oluştur**' a tıklayın.
-1. Artık arabiriminiz taslak modunda. Mevcut özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya bu özellikleri düzenleyebilirsiniz. 
+1. Artık arabiriminiz taslak modunda. Mevcut özelleştirmeleri ve görünümleri bozmadan arabiriminize özellikler ekleyebilir veya düzenleyebilirsiniz.
 
-> [!NOTE]
-> Azure IoT tarafından yayınlanan standart arabirimlerin sürümü oluşturulamıyor veya düzenlenemiyor. Bu standart arabirimler cihaz sertifikası için kullanılır.
-
-> [!NOTE]
-> Arabirim yayımlandıktan sonra, bir taslak modunda bile bu özellikleri silemezsiniz. Yetenekler yalnızca taslak modundaki arabirime düzenlenebilir veya eklenebilir.
-
-
-## <a name="migrate-a-device-across-device-template-versions"></a>Cihazı cihaz şablonu sürümleri arasında geçirme
+## <a name="migrate-a-device-across-versions"></a>Bir cihazı sürümler arasında geçirme
 
 Cihaz şablonunun birden çok sürümünü oluşturabilirsiniz. Zaman içinde, bu cihaz şablonlarını kullanan birden fazla bağlı cihazınız olacaktır. Cihazları, cihaz şablonunuzun bir sürümünden başka bir sürümüne geçirebilirsiniz. Aşağıdaki adımlarda bir cihazın nasıl geçirileceği açıklanır:
 
@@ -80,5 +133,7 @@ Cihaz şablonunun birden çok sürümünü oluşturabilirsiniz. Zaman içinde, b
 ![Cihaz geçirme](media/howto-version-device-template/pick-version.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Operatör veya çözüm Oluşturucu kullanıyorsanız, [cihazlarınızın nasıl yönetileceğini](./howto-manage-devices.md)öğrenmek için bir sonraki adım önerilir.
 
 Bir cihaz geliştiricisiyseniz, önerilen bir sonraki adım [Azure IoT Edge cihazları ve Azure IoT Central](./concepts-iot-edge.md)hakkında bilgi almanız gerekir.

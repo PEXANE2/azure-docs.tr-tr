@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376945"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791825"
 ---
 # <a name="monitoring-the-cluster"></a>Kümeyi izleme
 
@@ -74,7 +74,7 @@ Azure Service Fabric kümeniz hakkında yardım almak için Microsoft desteği '
 
 ## <a name="measuring-performance"></a>Performansı ölçme
 
-Kümenizin performans ölçümü, kümenizin ölçeklendirilmesine ilişkin yükleme ve sürücü kararlarını nasıl işleyebileceğinizi anlamanıza yardımcı olur (bkz. [Azure 'da](service-fabric-cluster-scale-up-down.md)küme ölçekleme veya [Şirket içi](service-fabric-cluster-windows-server-add-remove-nodes.md)). Performans verileri, gelecekte Günlükler analiz edilirken sizin veya uygulama ve hizmetleriniz ile karşılaştırıldığında da yararlıdır. 
+Kümenizin performans ölçümü, kümenizin ölçeklendirilmesine ilişkin yükleme ve sürücü kararlarını nasıl işleyebileceğinizi anlamanıza yardımcı olur (bkz. [Azure 'da](service-fabric-cluster-scale-in-out.md)küme ölçekleme veya [Şirket içi](service-fabric-cluster-windows-server-add-remove-nodes.md)). Performans verileri, gelecekte Günlükler analiz edilirken sizin veya uygulama ve hizmetleriniz ile karşılaştırıldığında da yararlıdır. 
 
 Service Fabric kullanırken toplanacak performans sayaçlarının listesi için, bkz. [Service Fabric performans sayaçları](service-fabric-diagnostics-event-generation-perf.md)
 

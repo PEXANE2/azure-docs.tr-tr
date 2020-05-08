@@ -1,24 +1,22 @@
 ---
-title: Ticari Market desteği | Azure Marketi
-description: Azure Market ve AppSource için destek bilgileri ve bağlantılar
+title: Microsoft ticari Market desteği-Azure Marketi
+description: Iş Ortağı Merkezi 'nde Azure Marketi ve AppSource için destek bilgileri ve bağlantılar
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159924"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871559"
 ---
-# <a name="support-for-the-marketplace"></a>Market için destek
+# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft ticari Market desteği
 
-Market için destek seçeneklerinin bir listesi aşağıda verilmiştir.  
-
-Ayrıca, [C + AI topluluk Forumunun Market kanalında](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)cevaplanlarınızın birçoğuna ulaşabilirsiniz.  
+Microsoft ticari Market yayımcısı olarak çalışmaya başlama hakkında sorularınız mı var? Ticari Market için destek seçeneklerinin bir listesi aşağıda verilmiştir. Aşağıdaki kaynaklara ek olarak, [C + AI topluluk Forumunun Market kanalında](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)yanıtlanmış birçok sorudan da ulaşabilirsiniz.  
 
 ## <a name="onboarding"></a>Ekleme
 
