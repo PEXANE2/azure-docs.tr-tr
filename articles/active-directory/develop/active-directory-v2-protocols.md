@@ -1,5 +1,6 @@
 ---
-title: OAuth 2,0 ve OpenID Connect protokolleri-Microsoft Identity platform | Mavisi
+title: Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri | Mavisi
+titleSuffix: Microsoft identity platform
 description: Microsoft Identity platform uç noktası tarafından desteklenen OAuth 2,0 ve OpenID Connect protokollerine yönelik bir kılavuz.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690257"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926825"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
+# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
 
-Endüstri standardı protokoller, OpenID Connect ve OAuth 2,0 ile hizmet olarak kimlik için Microsoft Identity platform uç noktası. Hizmet standartlarla uyumlu olsa da, bu protokollerin iki uygulaması arasında hafif farklar olabilir. Buradaki bilgiler, HTTP isteklerini doğrudan gönderip işleyerek veya [Açık kaynaklı kitaplıklarımızın](reference-v2-libraries.md)birini kullanmak yerine bir üçüncü taraf açık kaynak kitaplığı kullanarak kodunuzu yazmayı tercih ediyorsanız yararlı olacaktır.
+Endüstri standardı protokoller, OpenID Connect (OıDC) ve OAuth 2,0 ile hizmet olarak kimlik için Microsoft Identity platform uç noktası. Hizmet standartlarla uyumlu olsa da, bu protokollerin iki uygulaması arasında hafif farklar olabilir. Buradaki bilgiler, HTTP isteklerini doğrudan gönderip işleyerek veya [Açık kaynaklı kitaplıklarımızın](reference-v2-libraries.md)birini kullanmak yerine bir üçüncü taraf açık kaynak kitaplığı kullanarak kodunuzu yazmayı tercih ediyorsanız yararlı olacaktır.
 
 ## <a name="the-basics"></a>Temel bilgiler
 
@@ -69,13 +70,13 @@ Bu uç noktalarla nasıl etkileşim kuracağınızı öğrenmek için, [protokol
 
 ## <a name="tokens"></a>Belirteçler
 
-OAuth 2,0 ve OpenID Connect 'in Microsoft Identity platform uygulamaları, JWTs olarak temsil edilen taşıyıcı belirteçleri dahil olmak üzere taşıyıcı belirteçlerinin yoğun bir şekilde kullanılmasını kolaylaştırır. Taşıyıcı belirteç, korunan bir kaynağa "taşıyıcı" erişimini sağlayan hafif bir güvenlik belirtecidir. Bu anlamda, "taşıyıcı" belirteci sunacak herhangi bir tarafdır. Bir tarafın, taşıyıcı belirtecini almak için öncelikle Microsoft Identity platformunda kimlik doğrulaması yapması gerekir, ancak gerekli adımlar iletim ve depolama alanındaki belirtecin güvenliğini sağlamak için alınmadığından, istenmeyen bir taraf tarafından yakalanabilir ve kullanılabilir. Bazı güvenlik belirteçlerinin, yetkisiz tarafların onları kullanmasını önlemek için yerleşik bir mekanizması vardır ancak, taşıyıcı belirteçleri bu mekanizmaya sahip değildir ve Aktarım Katmanı Güvenliği (HTTPS) gibi güvenli bir kanalda aktarılmalıdır. Bir taşıyıcı belirteci açık bir şekilde iletilebilise, kötü amaçlı bir taraf, belirteci almak ve korumalı bir kaynağa yetkisiz erişim için kullanmak üzere bir ortadaki adam saldırısı kullanabilir. Aynı güvenlik ilkeleri, daha sonra kullanılmak üzere taşıyıcı belirteçleri depolarken veya önbelleğe alırken geçerlidir. Her zaman uygulamanızın taşıyıcı belirteçlerini güvenli bir şekilde ilettiğinden ve depoladığından emin olun. Taşıyıcı belirteçleriyle ilgili daha fazla bilgi için bkz. [RFC 6750 Bölüm 5](https://tools.ietf.org/html/rfc6750).
+OAuth 2,0 ve OpenID Connect 'in Microsoft Identity platform uygulamaları, JWTs (JSON Web belirteçleri) olarak temsil edilen taşıyıcı belirteçleri dahil olmak üzere taşıyıcı belirteçlerinin yoğun bir şekilde kullanılmasını kolaylaştırır. Taşıyıcı belirteç, korunan bir kaynağa "taşıyıcı" erişimini sağlayan hafif bir güvenlik belirtecidir. Bu anlamda, "taşıyıcı" belirteci sunacak herhangi bir tarafdır. Bir tarafın, taşıyıcı belirtecini almak için öncelikle Microsoft Identity platformunda kimlik doğrulaması yapması gerekir, ancak gerekli adımlar iletim ve depolama alanındaki belirtecin güvenliğini sağlamak için alınmadığından, istenmeyen bir taraf tarafından yakalanabilir ve kullanılabilir. Bazı güvenlik belirteçlerinin, yetkisiz tarafların onları kullanmasını önlemek için yerleşik bir mekanizması vardır ancak, taşıyıcı belirteçleri bu mekanizmaya sahip değildir ve Aktarım Katmanı Güvenliği (HTTPS) gibi güvenli bir kanalda aktarılmalıdır. Bir taşıyıcı belirteci açık bir şekilde iletilebilise, kötü amaçlı bir taraf, belirteci almak ve korumalı bir kaynağa yetkisiz erişim için kullanmak üzere bir ortadaki adam saldırısı kullanabilir. Aynı güvenlik ilkeleri, daha sonra kullanılmak üzere taşıyıcı belirteçleri depolarken veya önbelleğe alırken geçerlidir. Her zaman uygulamanızın taşıyıcı belirteçlerini güvenli bir şekilde ilettiğinden ve depoladığından emin olun. Taşıyıcı belirteçleriyle ilgili daha fazla bilgi için bkz. [RFC 6750 Bölüm 5](https://tools.ietf.org/html/rfc6750).
 
 Microsoft Identity platform uç noktasında kullanılan farklı belirteç türleri hakkında daha fazla ayrıntı [Microsoft Identity platform Endpoint Token başvurusunda](v2-id-and-access-tokens.md)bulunabilir.
 
 ## <a name="protocols"></a>Protokoller
 
-Bazı örnek istekleri görmeyi hazırsanız aşağıdaki öğreticilerden birini kullanmaya başlayın. Her biri belirli bir kimlik doğrulama senaryosuna karşılık gelir. Sizin için doğru Flow 'un belirlenmesi için yardıma ihtiyacınız varsa, [Microsoft Identity platform ile oluşturabileceğiniz uygulama türlerine](v2-app-types.md)göz atın.
+Bazı örnek istekleri görmeyi hazırsanız aşağıdaki öğreticilerden birini kullanmaya başlayın. Her biri belirli bir kimlik doğrulama senaryosuna karşılık gelir. Sizin için doğru akış olduğunu belirlemek için yardıma ihtiyacınız varsa, [Microsoft Identity platform ile oluşturabileceğiniz uygulama türlerine](v2-app-types.md)göz atın.
 
 * [OAuth 2,0 ile mobil ve yerel uygulama oluşturma](v2-oauth2-auth-code-flow.md)
 * [OpenID Connect ile Web uygulamaları oluşturun](v2-protocols-oidc.md)

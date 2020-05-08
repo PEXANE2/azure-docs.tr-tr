@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663462"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928015"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager VM'ler için Azure İzleyici eşleme özelliğiyle tümleştirin
 
@@ -108,8 +108,8 @@ Hizmet Eşlemesi klasörü dört düğüme sahiptir:
 
 Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesinde düzenleyebilir veya silebilirsiniz (**Yönetim** bölmesi > **Operations Management Suite** > **hizmet eşlemesi**).
 
->[!NOTE]
->Operations Management Suite, artık [Azure izleyici](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)'nin bir parçası olan Log Analytics dahil olan [hizmetlerden oluşan bir koleksiyondur](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) .
+> [!NOTE]
+> Operations Management Suite, artık [Azure izleyici](../overview.md)'nin bir parçası olan Log Analytics dahil olan [hizmetlerden oluşan bir koleksiyondur](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) .
 
 Bu geçerli sürümde yalnızca bir Log Analytics çalışma alanı yapılandırabilirsiniz.
 

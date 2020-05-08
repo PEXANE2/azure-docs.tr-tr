@@ -3,14 +3,14 @@ title: Windows Update ayarlarını Azure Güncelleştirme Yönetimi ile çalış
 description: Bu makalede, Azure Güncelleştirme Yönetimi ile çalışmak üzere yapılandırdığınız Windows Update ayarları açıklanmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 03/02/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279032"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779459"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Güncelleştirme Yönetimi için Windows Update ayarlarını yapılandırma
 
@@ -22,6 +22,8 @@ Azure Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yü
 - Kayıt defterini doğrudan Düzenle
 
 Güncelleştirme Yönetimi, Windows Update istemcisini denetlemek için belirtilen ayarların birçoğunu sağlar. Windows dışı güncelleştirmeleri etkinleştirmek için ayarları kullanıyorsanız, Güncelleştirme Yönetimi bu güncelleştirmeleri de yönetecektir. Güncelleştirme dağıtımı gerçekleşmeden önce güncelleştirmelerin indirilmesini etkinleştirmek istiyorsanız, güncelleştirme dağıtımı daha hızlı, daha verimli ve bakım penceresini aşmaya daha az olabilir.
+
+Azure aboneliğinizde WSUS ayarlama ve Windows sanal makinelerinizi güvenli bir şekilde güncel tutmanız konusunda ek öneriler için, [WSUS kullanarak Azure 'Da Windows sanal makinelerini güncelleştirme dağıtımınızı planlayın](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/).
 
 ## <a name="pre-download-updates"></a>Güncelleştirmeleri indirme öncesi
 

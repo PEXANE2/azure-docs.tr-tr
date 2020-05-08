@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: d380e4c025b35f0000e13c62422d54dc10079524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192876"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735360"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 
@@ -27,7 +27,9 @@ Denetim denetim düzlemi işlemlerinin yararlı olduğu bazı örnek senaryolar 
 
 ## <a name="disable-key-based-metadata-write-access"></a>Anahtar tabanlı meta veri yazma erişimini devre dışı bırak
 
-Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. `disableKeyBasedMetadataWriteAccess` Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz. Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#preventing-changes-from-cosmos-sdk) yapma makalesi. Yazma erişimini devre dışı bıraktıktan sonra, iş akışındaki SDK tabanlı değişiklikler, Dizin çalışmaya devam edecektir.
+Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. `disableKeyBasedMetadataWriteAccess` Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz. Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#preventing-changes-from-cosmos-sdk) yapma makalesi. 
+
+`disableKeyBasedMetadataWriteAccess` Etkinleştirildikten sonra, SDK tabanlı istemciler oluşturma veya güncelleştirme işlemleri çalıştırdıysa, *' ContainerNameorDatabaseName ' kaynağındaki "işlem ' POST ' öğesine Azure Cosmos DB uç noktası üzerinden izin verilmez* . Hesabınız için bu tür işlemlere erişimi açmanız veya Azure Resource Manager, Azure CLı veya Azure PowerShell aracılığıyla oluşturma/güncelleştirme işlemleri gerçekleştirmeniz gerekir. Geri dönmek için, [Cosmos SDK 'dan gelen değişiklikleri](role-based-access-control.md#preventing-changes-from-cosmos-sdk) kısıtlama makalesinde açıklandığı gibi, Azure CLI kullanarak disableKeyBasedMetadataWriteAccess 'i **false** olarak ayarlayın. Değerini doğru yerine false `disableKeyBasedMetadataWriteAccess` olarak değiştirdiğinizden emin olun.
 
 Meta veri yazma erişimini kapatırken aşağıdaki noktaları göz önünde bulundurun:
 
@@ -65,7 +67,7 @@ Günlüğe kaydetmeyi etkinleştirdikten sonra, belirli bir hesap için işlemle
    | where TimeGenerated >= ago(1h)
    ```
 
-Aşağıdaki ekran görüntüleri, bir Azure Cosmos hesabına VNET eklendiğinde günlükleri yakalar:
+Aşağıdaki ekran görüntüleri, bir Azure Cosmos hesabı için tutarlılık düzeyi değiştiğinde günlükleri yakalar:
 
 ![VNet eklendiğinde denetim düzlemi günlükleri](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
@@ -149,8 +151,25 @@ API 'ye özgü işlemler için, işlem aşağıdaki biçimde adlandırılır:
 
 * CassandraKeyspacesUpdateStart, Cassandrakeyspacesupdatetamamlanmıştır
 * CassandraKeyspacesThroughputUpdateStart, Cassandrakeyspacesthroughputupdatetamamlanmıştır
+* SqlContainersUpdateStart, Sqlcontainersupdatetamamlanmıştır
 
 *Resourcedetails* özelliği, kaynak gövdesinin tamamını bir istek yükü olarak içerir ve güncelleştirmek için istenen tüm özellikleri içerir
+
+## <a name="diagnostic-log-queries-for-control-plane-operations"></a>Denetim düzlemi işlemleri için tanılama günlüğü sorguları
+
+Aşağıda denetim düzlemi işlemlerine yönelik tanılama günlüklerini almak için bazı örnekler verilmiştir:
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdateStart"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

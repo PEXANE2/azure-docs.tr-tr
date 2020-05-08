@@ -2,7 +2,7 @@
 title: IoT için Azure Güvenlik Merkezi belgeleri
 summary: IoT için Azure Güvenlik Merkezi IoT cihazları için tehditlere karşı kapsamlı koruma sağlayan Azure tabanlı bir bulut güvenliği hizmetidir.
 metadata:
-  title: Belgeler
+  title: IoT için Azure Güvenlik Merkezi belgeleri
   description: Azure tabanlı bir bulut güvenliği hizmeti olan IoT için Azure Güvenlik Merkezi’nin IoT cihazlarına yönelik tehditlere karşı nasıl kapsamlı koruma sağladığını öğrenin.
   services: service
   ms.service: asc-for-iot
@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/23/2019
-  ms.openlocfilehash: f5b399ad604918f7644b90e7b5f852bb27c46be0
-  ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+  ms.openlocfilehash: 5a9f5c9d919c6c30c6318749ad2a62d40865e573
+  ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/14/2020
-  ms.locfileid: "81310978"
+  ms.lasthandoff: 05/07/2020
+  ms.locfileid: "82890915"
 landingContent:
 - title: IoT için Azure Güvenlik Merkezi hakkında
   linkLists:
@@ -32,7 +32,8 @@ landingContent:
       url: architecture.md
     - text: IoT için Azure Güvenlik Merkezi Aracıları
       url: security-agent-architecture.md
-    - text: Microsoft Edge güvenlik modülü
+    - text: >
+        Microsoft Edge güvenlik modülü
       url: security-edge-architecture.md
 - title: IoT için Azure Güvenlik Merkezi’ni IoT Hub'a ekleme
   linkLists:
@@ -68,7 +69,8 @@ landingContent:
       url: how-to-deploy-linux-cs.md
     - text: Linux için IoT için Azure Güvenlik Merkezi C tabanlı güvenlik aracısını dağıtma
       url: how-to-deploy-linux-c.md
-    - text: Microsoft Edge güvenlik modülünü dağıtma
+    - text: >
+        Microsoft Edge güvenlik modülünü dağıtma
       url: how-to-deploy-edge.md
     - text: Güvenlik aracılarını yapılandırma
       url: how-to-agent-configuration.md

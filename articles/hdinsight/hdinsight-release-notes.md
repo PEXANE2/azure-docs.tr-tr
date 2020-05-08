@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e76c75e172e48866565cc292ac673f7bbddabf1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/08/2020
+ms.openlocfilehash: 458925dd9f7f7386a9159256fdb024d027f7016c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232828"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929324"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -48,17 +48,20 @@ Bu sürümde hiçbir davranış değişikliği yok. Yaklaşan değişikliklere h
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur. 
 
-### <a name="deprecate-spark-21-and-22-for-hdinsight-36-spark-cluster"></a>HDInsight 3,6 Spark kümesi için Spark 2,1 ve 2,2 'i kullanımdan kaldırma
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintisinden kaçınmak için HDInight 3,6 tarihinde Haziran 30 2020 ' ye kadar Spark 2,3 ' a geçiş yapmayı düşünün.
+### <a name="deprecate-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 3,6 Spark kümesinde Spark 2,1 ve 2,2 'i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 3,6 üzerinde Spark 2,1 ve 2,2 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 3,6 ' ye 30 2020 göre Spark 2,3 ' ye geçmek için göz önünde bulundurun.
 
-### <a name="deprecate-spark-23-for-hdinsight-40-spark-cluster"></a>HDInsight 4,0 Spark kümesi için Spark 2,3 'i kullanımdan kaldırma
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintisinden kaçınmak için HDInight 4,0 tarihinde Haziran 30 2020 ' ye kadar Spark 2,4 ' a geçiş yapmayı düşünün.
+### <a name="deprecate-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4,0 Spark kümesinde Spark 2,3 'i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Spark 2,3 ile yeni Spark kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 30 2020 4,0 ' ye 2,4 ' ye kadar Spark ' ye geçmeyi düşünün.
 
-### <a name="deprecate-kafka-11-for-hdinsight-40-kafka-cluster"></a>HDInsight 4,0 Kafka kümesi için Kafka 1,1 'i kullanımdan kaldırma
-1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInight 4,0 tarihinde Haziran 30 2020 ' ye Kafka 2,1 ' a geçiş yapmayı düşünün.
+### <a name="deprecate-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4,0 Kafka kümesi 'nde Kafka 1,1 'i kullanımdan kaldırma
+1 2020 Temmuz 'dan başlayarak, müşteriler HDInsight 4,0 üzerinde Kafka 1,1 ile yeni Kafka kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 30 2020 4,0 ' de Kafka 2,1 ' ye geçmeyi göz önünde bulundurun.
 
-### <a name="hbase-20-to-21"></a>HBase 2,0-2,1
-Yakında düzenlenecek HDInsight 4,0 sürümünde HBase sürümü 2,0 sürümünden 2,1 sürümüne yükseltilir.
+### <a name="hbase-20-to-216"></a>HBase 2,0 2.1.6
+Yaklaşan HDInsight 4,0 sürümünde, HBase sürümü 2,0 sürümünden 2.1.6 sürümüne yükseltilir.
+
+### <a name="spark-240-to-244"></a>Spark 2.4.0 to 2.4.4
+Yakında düzenlenecek HDInsight 4,0 sürümünde Spark sürümü 2.4.0 sürümünden 2.4.4 sürümüne yükseltilir.
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Baş düğüm için en az 4 çekirdekli bir VM gereklidir 
 Baş düğüm için en az 4 çekirdekli bir VM, HDInsight kümelerinin yüksek kullanılabilirliğini ve güvenilirliğini güvence altına almak için gereklidir. Müşteriler, 6 2020 Nisan 'dan başlayarak yeni HDInsight kümeleri için yalnızca 4 çekirdekli veya VM 'nin üzerinde baş düğüm olarak seçim yapabilir. Mevcut kümeler beklenen şekilde çalışmaya devam edecektir. 

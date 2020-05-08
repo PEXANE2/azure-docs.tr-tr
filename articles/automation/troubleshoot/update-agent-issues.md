@@ -9,25 +9,28 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 25f3734a2a12ddf87862cc1d127f88f175225e07
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900299"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927896"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update Aracısı sorunlarını giderme
 
-Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, Azure makineler için sorun gidericinin Azure portal, [çevrimdışı senaryoda](#troubleshoot-offline)Azure dışı makinelerden nasıl çalıştırılacağı açıklanmaktadır.
+Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Temeldeki sorunu tespit etmek için bir Windows karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bir makineye yönelik üç hazırlık durumu aşağıda verilmiştir:
 
-Bir makineye yönelik üç hazırlık durumu aşağıda verilmiştir:
-
-* Hazırlanıyor: karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
-* Bağlantısı kesik: karma Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* Hazırlanıyor: karma Runbook Worker dağıtıldı ve en son bir saatten önce görüldü.
+* Bağlantısı kesik: karma runbook çalışanı dağıtıldı ve en son bir saat önce görüldü.
 * Yapılandırılmadı: karma Runbook Worker bulunamadı veya ekleme bitmedi.
 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
+
+Bu makalede, Azure makineler için sorun gidericinin Azure portal, [çevrimdışı senaryoda](#troubleshoot-offline)Azure dışı makinelerden nasıl çalıştırılacağı açıklanmaktadır. Sorun giderici artık Windows Server Update Services (WSUS) ve oto indirme ve yükleme anahtarları için denetimler içerir.
+
+> [!NOTE]
+> Sorun giderici betiği, bir proxy sunucusu yapılandırılmışsa trafiği Şu anda yönlendirmez.
 
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi Başlat
 

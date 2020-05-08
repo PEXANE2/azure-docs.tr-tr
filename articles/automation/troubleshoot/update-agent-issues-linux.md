@@ -9,36 +9,39 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dadfe0022cfb99703222ba7a91ca3ec6f5fce645
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836640"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927981"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Güncelleştirme Aracısı sorunlarını giderme
 
-Azure Otomasyonu Güncelleştirme Yönetimi çözümünde makinenizin çok sayıda (sağlıklı) görünmemesinin pek çok nedeni olabilir. Güncelleştirme Yönetimi, temeldeki sorunu tespit etmek için karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır. 
+Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin pek çok nedeni olabilir. Temeldeki sorunu tespit etmek için bir Linux karma Runbook Worker aracısının sistem durumunu kontrol edebilirsiniz. Bir makineye yönelik üç hazırlık durumu aşağıda verilmiştir:
 
-Makine üç hazırlık durumunda olabilir:
-
-* **Hazırlanıyor**: karma Runbook Worker dağıtıldı ve en son bir saatten önce görüldü.
-* **Bağlantısı kesik**: karma runbook çalışanı dağıtıldı ve en son bir saat önce görüldü.
-* **Yapılandırılmadı**: karma Runbook Worker bulunamadı veya ekleme bitmedi.
+* Hazırlanıyor: karma Runbook Worker dağıtıldı ve en son bir saatten önce görüldü.
+* Bağlantısı kesik: karma runbook çalışanı dağıtıldı ve en son bir saat önce görüldü.
+* Yapılandırılmadı: karma Runbook Worker bulunamadı veya ekleme bitmedi.
 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
 
+Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır. 
+
+> [!NOTE]
+> Sorun giderici betiği, bir proxy sunucusu yapılandırılmışsa trafiği Şu anda yönlendirmez.
+
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi Başlat
 
-Azure makineler için portalda **Güncelleştirme Aracısı hazırlığı** sütununda **sorun gider** bağlantısını seçin ve **Güncelleştirme Aracısı sorunlarını gider** sayfasını açın. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermek için, "çevrimdışı sorun giderme" bölümündeki yönergelere bakın.
+Azure makineler için portalda **Güncelleştirme Aracısı hazırlığı** sütununda **sorun gider** bağlantısını seçin ve güncelleştirme Aracısı sorunlarını gider sayfasını açın. Azure dışı makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinede sorun gidermek için, "çevrimdışı sorun giderme" bölümündeki yönergelere bakın.
 
 ![VM listesi sayfası](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
 > Denetimler VM 'nin çalışıyor olmasını gerektirir. VM çalışmıyorsa **VM 'Yi başlatın** .
 
-**Güncelleştirme Aracısı sorunlarını giderme** sayfasında, sorun gidericiyi başlatmak Için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+Güncelleştirme Aracısı sorunlarını giderme sayfasında, sorun gidericiyi başlatmak için **denetimleri Çalıştır** ' ı seçin. Sorun giderici, bağımlılıkları doğrulamak üzere makinede bir betiği çalıştırmak için [Run komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
 
 ![Sorun giderme sayfası](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -84,6 +87,9 @@ Bu denetim, Linux için Log Analytics aracısının karma Runbook Worker paketin
 ### <a name="hybrid-runbook-worker-status"></a>Karma Runbook Worker durumu
 
 Bu denetim, karma Runbook Worker 'ın makinede çalıştığından emin olmanızı sağlar. Karma Runbook Worker doğru çalışıyorsa aşağıdaki işlemlerin mevcut olması gerekir. Daha fazla bilgi için bkz. [Linux için Log Analytics aracısında sorun giderme](hybrid-runbook-worker.md#oms-agent-not-running).
+
+> [!NOTE]
+> Karma Runbook Worker çalışmıyorsa ve işlemler uç noktası başarısız olduysa, güncelleştirme başarısız olabilir. Güncelleştirme Yönetimi, karma çalışan paketlerini işlemler uç noktasından indirir.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
