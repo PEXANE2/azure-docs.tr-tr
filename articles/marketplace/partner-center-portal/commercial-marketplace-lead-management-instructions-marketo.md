@@ -1,22 +1,22 @@
 ---
-title: Marketo 'da lider yönetimini yapılandırma | Azure Marketi
-description: Azure Market müşterileri için Marketo için lider yönetimini yapılandırın.
+title: Marketo 'da lider Yönetimi-Microsoft ticari marketi
+description: Microsoft AppSource ve Azure Marketi 'nden müşteri adaylarını yönetmek için bir Marketo CRM sistemini nasıl kullanacağınızı öğrenin.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133647"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789887"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Marketo 'da lider yönetimini yapılandırma
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Ticari Market müşteri adaylarını yönetmek için Marketo kullanın
 
-Bu makalede, ticari Market teklifinizden satış fırsatlarını işlemek üzere Marketo CRM sisteminizin nasıl ayarlanacağı açıklanır.
+Bu makalede, Microsoft AppSource ve Azure Marketi 'ndeki tekliflerinizin satış fırsatlarını işlemek üzere Marketo CRM sisteminizin nasıl ayarlanacağı açıklanır.
 
 ## <a name="set-up-your-marketo-crm-system"></a>Marketo CRM sisteminizi ayarlama
 
@@ -67,9 +67,11 @@ Bu makalede, ticari Market teklifinizden satış fırsatlarını işlemek üzere
 
 Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandırmaya hazırsanız, bu adımları izleyin. 
 
-1. Teklifiniz için **teklif kurulumu** sayfasına gidin.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 
-1. **Müşteri adayı yönetimi** bölümünde **Bağlan** ' ı seçin. 
+1. Teklifinizi seçin ve **teklif kurulumu** sekmesine gidin.
+
+1. **Müşteri adayı yönetimi** bölümünde **Bağlan**' ı seçin. 
 
     ![Lider yönetimi bölümü Bağlan düğmesi](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
@@ -86,6 +88,6 @@ Yayımlama portalında teklifiniz için lider yönetimi bilgilerini yapılandır
 
 1. **Tamam**’ı seçin.
 
-   Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula** düğmesini seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
+   Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için **Doğrula**' yı seçin. Başarılı olursa, müşteri adayı hedefinde bir test liderine sahip olacaksınız.
 
    ![Bağlantı ayrıntıları açılır penceresi](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

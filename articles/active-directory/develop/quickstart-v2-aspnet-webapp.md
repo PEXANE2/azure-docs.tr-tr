@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991152"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853948"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Active Directory (Azure AD) örneğinden kişisel hesaplara (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarına nasıl oturum açmasını öğrenmek için bir kod örneği kullanırsınız.  (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının herhangi bir Azure Ac
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
 >      - **Ad** bölümünde, örneğin `ASPNET-Quickstart`, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
->      - `http://localhost:44368/` **Yeniden yönlendirme URI 'Si**ekleyin ve **Kaydet**' e tıklayın.
+>      - `https://localhost:44368/` **Yeniden yönlendirme URI 'Si**ekleyin ve **Kaydet**' e tıklayın.
 >      - Yönet bölümünün altındaki sol gezinti bölmesinden **kimlik doğrulaması** ' nı seçin.
 >          - **Örtük Izin ver** alt bölümünde **Kimlik belirteçleri**' ni seçin.
 >          - Sonra **Kaydet**' i seçin.

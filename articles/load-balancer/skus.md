@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: faf77411abca63516b00ac953bc7203da69f3ca9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794157"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854099"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU 'Ları
 
@@ -49,6 +49,12 @@ Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümel
 | SLA | [% 99,99](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Kullanılamaz | 
 
 Daha fazla bilgi için bkz. [yük dengeleyici sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Standart Load Balancer hakkında ayrıntılı bilgi için bkz. [genel bakış](load-balancer-standard-overview.md), [fiyatlandırma](https://aka.ms/lbpricing) ve [SLA](https://aka.ms/lbsla).
+
+## <a name="limitations"></a>Sınırlamalar
+
+- SKU 'Lar değişebilir değildir. Mevcut bir kaynağın SKU 'sunu değiştiremezsiniz.
+- Tek başına bir sanal makine kaynağı, kullanılabilirlik kümesi kaynağı veya sanal makine ölçek kümesi kaynağı, her ikisi de tek bir SKU 'ya başvurabilir.
+- [Abonelik taşıma işlemleri](../azure-resource-manager/management/move-resource-group-and-subscription.md) standart Load Balancer ve standart genel IP kaynakları için desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

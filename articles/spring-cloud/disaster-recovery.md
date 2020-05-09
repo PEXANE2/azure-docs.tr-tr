@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279146"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792335"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure yay bulut olağanüstü durum kurtarma
 
@@ -31,4 +31,33 @@ Olağanüstü durumlarda yüksek kullanılabilirlik ve koruma sağlamak için, S
 
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) , DNS tabanlı trafik yük dengelemesi sağlar ve ağ trafiğini birden çok bölgeye dağıtabilir.  Müşterileri, en yakın Azure Spring Cloud Service örneğine yönlendirmek için Azure Traffic Manager kullanın.  En iyi performans ve artıklık için, Azure Spring Cloud Service 'e göndermeden önce tüm uygulama trafiğini Azure Traffic Manager aracılığıyla doğrudan yönlendirin.
 
-Birden çok bölgede Azure Spring Cloud uygulamalarınız varsa, her bölgede uygulamalarınıza giden trafik akışını denetlemek için Azure Traffic Manager kullanın.  Hizmet IP 'sini kullanarak her hizmet için bir Azure Traffic Manager uç noktası tanımlayın. Müşteriler Azure Spring Cloud Service ' i işaret eden bir Azure Traffic Manager DNS adına bağlanmalıdır.  Azure Traffic Manager yük, trafiği tanımlanan uç noktalar arasında dengeler.  Bir olağanüstü durum veri merkezini ortaya çıkardığında, Azure Traffic Manager, trafiği bu bölgeden çiftine yönlendirirler ve hizmet devamlılığını sağlar.
+Birden çok bölgede Azure Spring Cloud uygulamalarınız varsa, her bölgedeki uygulamalarınıza giden trafik akışını denetlemek için Azure Traffic Manager kullanın.  Hizmet IP 'sini kullanarak her hizmet için bir Azure Traffic Manager uç noktası tanımlayın. Müşteriler Azure Spring Cloud Service ' i işaret eden bir Azure Traffic Manager DNS adına bağlanmalıdır.  Azure Traffic Manager yük, trafiği tanımlanan uç noktalar arasında dengeler.  Bir olağanüstü durum veri merkezini ortaya çıkardığında, Azure Traffic Manager, trafiği bu bölgeden çiftine yönlendirirler ve hizmet devamlılığını sağlar.
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Azure yay bulutu için Azure Traffic Manager oluşturma
+
+1. Azure yay bulutu 'nı iki farklı bölgede oluşturun.
+İki farklı bölgede (Doğu ABD ve Batı Avrupa) dağıtılan Azure Spring Cloud 'ın iki hizmet örneğine ihtiyacınız olacak. İki hizmet örneği oluşturmak için Azure portal kullanarak mevcut bir Azure yay bulutu uygulamasını başlatın. Her biri trafik için birincil ve yük devretme uç noktası olarak görev yapar. 
+
+**İki hizmet örneği bilgisi:**
+
+| Hizmet Adı | Konum | Uygulama |
+|--|--|--|
+| hizmet-örnek-a | Doğu ABD | Ağ Geçidi/kimlik doğrulama-hizmet/hesap-hizmet |
+| hizmet-örnek-b | Batı Avrupa | Ağ Geçidi/kimlik doğrulama-hizmet/hesap-hizmet |
+
+2. Hizmet için özel etki alanı ayarla özel etki alanı [belgeyi](spring-cloud-tutorial-custom-domain.md) izleyerek bu iki mevcut hizmet örneği için özel etki alanı ayarlayın. Başarılı olduktan sonra, her iki hizmet örneği de özel etki alanına bağlanır: bcdr-test.contoso.com
+
+3. Traffic Manager ve iki uç nokta oluşturma: [Azure Portal kullanarak Traffic Manager profili oluşturun](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+
+Traffic Manager profili aşağıda verilmiştir:
+* Traffic Manager DNS adı:http://asc-bcdr.trafficmanager.net
+* Uç nokta profilleri: 
+
+| Profil | Tür | Hedef | Öncelik | Özel üstbilgi ayarları |
+|--|--|--|--|--|
+| Bir profilin uç noktası | Dış uç nokta | service-sample-a.asc-test.net | 1 | Ana bilgisayar: bcdr-test.contoso.com |
+| Uç nokta B profili | Dış uç nokta | service-sample-b.asc-test.net | 2 | Ana bilgisayar: bcdr-test.contoso.com |
+
+4. DNS bölgesinde bir CNAME kaydı oluşturun: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
+
+5. Artık ortam tamamen ayarlanmıştır. Müşteriler uygulamaya şu yolla erişebilmelidir: bcdr-test.contoso.com

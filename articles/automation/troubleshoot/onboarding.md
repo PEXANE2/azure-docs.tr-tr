@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu yönetim çözümlerini ekleme sorunlarını giderme
-description: Çözüm ekleme hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
+description: Azure Otomasyonu çözüm ekleme hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679225"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836538"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>Çözüm ekleme sorunlarını giderme
 
-Güncelleştirme Yönetimi çözümünü veya Değişiklik İzleme ve envanter çözümünü eklerken hata alabilirsiniz. Bu makalede oluşabilecek çeşitli hatalar ve bunların nasıl giderileceği açıklanmaktadır.
+Azure Otomasyonu Güncelleştirme Yönetimi çözümünü veya Değişiklik İzleme ve envanter çözümünü eklediğinizde hata iletileri alabilirsiniz. Bu makalede oluşabilecek çeşitli hatalar ve bunların nasıl giderileceği açıklanmaktadır.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -35,11 +35,11 @@ Kayıtlı düğümlerin yeniden adlandırılması, Azure Automation 'da düğüm
 
 Azure Otomasyonu durum yapılandırması ' ndan düğümün kaydını kaldırın ve yeniden kaydedin. Bu süreden önce hizmette yayınlanan raporların artık kullanılamayacak.
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Senaryo: https proxy 'si aracılığıyla sertifikaların yeniden imzalanması desteklenmez
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>Senaryo: HTTPS proxy 'si aracılığıyla sertifikaların yeniden imzalanması desteklenmez
 
 #### <a name="issue"></a>Sorun
 
-HTTPS trafiğini sonlandıran ve ardından yeni bir sertifika kullanarak trafiği yeniden şifreleyen bir ara sunucu ile bağlantı kurulurken, hizmet bağlantıya izin vermez.
+HTTPS trafiğini sonlandıran ve ardından yeni bir sertifika kullanarak trafiği yeniden şifreleyen bir ara sunucu çözümünü bağladığınızda hizmet bağlantıya izin vermez.
 
 #### <a name="cause"></a>Nedeni
 
@@ -51,7 +51,7 @@ Azure Otomasyonu, trafiği şifrelemek için kullanılan sertifikaların yeniden
 
 ## <a name="general-errors"></a>Genel hatalar
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Senaryo: ekleme iletiyle başarısız oldu-çözüm etkinleştirilemiyor
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Senaryo: ekleme "çözüm etkinleştirilemiyor" iletisiyle başarısız oluyor
 
 #### <a name="issue"></a>Sorun
 
@@ -71,9 +71,9 @@ Bu hata, VM veya çalışma alanında ya da Kullanıcı için hatalı veya eksik
 
 #### <a name="resolution"></a>Çözüm
 
-[Makineleri eklemek için doğru izinlere](../automation-role-based-access-control.md#onboarding-permissions) sahip olduğunuzdan emin olun ve sonra çözümü tekrar çalıştırmayı deneyin. Hatayı `The solution cannot be enabled on this VM because the permission to read the workspace is missing`alırsanız, sanal makinenin bir çalışma alanına eklendi olup olmadığını `Microsoft.OperationalInsights/workspaces/read` bulmak için izninizin olduğundan emin olun.
+[Makineleri eklemek için gereken doğru izinlere](../automation-role-based-access-control.md#onboarding-permissions)sahip olduğunuzdan emin olun ve sonra çözümü tekrar çalıştırmayı deneyin. Hata iletisini `The solution cannot be enabled on this VM because the permission to read the workspace is missing`alırsanız, sanal makinenin bir çalışma alanına eklendi olup olmadığını `Microsoft.OperationalInsights/workspaces/read` bulmak için izninizin olduğundan emin olun.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Senaryo: ekleme şu iletiyle başarısız oluyor: tanılama günlüğü için Otomasyon hesabı yapılandırılamadı
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Senaryo: ekleme işlemi "tanılama günlüğü için Otomasyon hesabı yapılandırılamadı" iletisiyle başarısız oluyor
 
 #### <a name="issue"></a>Sorun
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Nedeni
 
-Fiyatlandırma Katmanı aboneliğin faturalama modeliyle eşleşmezse bu hataya neden olmuş olabilir. Bkz. [Azure izleyici 'de kullanımı ve tahmini maliyetleri izleme](https://aka.ms/PricingTierWarning).
+Fiyatlandırma Katmanı aboneliğin faturalama modeliyle eşleşmezse bu hataya neden olmuş olabilir. Daha fazla bilgi için bkz. [Azure izleyici 'de kullanımı ve tahmini maliyetleri izleme](https://aka.ms/PricingTierWarning).
 
 #### <a name="resolution"></a>Çözüm
 
@@ -103,7 +103,7 @@ Sorguyu değiştirmiş olabilirsiniz veya sistem onu değiştirmiş olabilir.
 
 #### <a name="resolution"></a>Çözüm
 
-Çözüm için sorguyu silebilir ve sonra, sorguyu yeniden oluşturan çözümü tekrar ekleyebilirsiniz. Sorgu, **kayıtlı aramalar**altında çalışma alanınızda bulunabilir. Sorgunun adı **Microsoftdefaultcomputergroup**, sorgunun kategorisi ise ilişkili çözümün adıdır. Birden çok çözüm etkinse, **Microsoftdefaultcomputergroup** sorgusu **kayıtlı aramalarda**birden çok kez görünür.
+Çözüm için sorguyu silebilir ve sonra, sorguyu yeniden oluşturan çözümü yeniden ekleyebilirsiniz. Sorgu, **kayıtlı aramalar**altında çalışma alanınızda bulunabilir. Sorgunun adı **Microsoftdefaultcomputergroup**, sorgunun kategorisi ise ilişkili çözümün adıdır. Birden çok çözüm etkinse, **Microsoftdefaultcomputergroup** sorgusu **kayıtlı aramalarda**birden çok kez görünür.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Senaryo: policyihla
 
@@ -117,11 +117,11 @@ Bir ilke işlemin tamamlanmasını engelliyor.
 
 #### <a name="resolution"></a>Çözüm
 
-Çözümü başarıyla dağıtmak için, belirtilen ilkeyi değiştirmeyi göz önünde bulundurmanız gerekir. Tanımlanabilir çok sayıda farklı ilke türü olduğundan, gerekli değişiklikler ihlal edilen ilkeye bağlıdır. Örneğin, bir ilke, içerilen bazı kaynakların içeriğini değiştirme iznini reddeden bir kaynak grubunda tanımlanmışsa, bu düzeltmelerden birini seçebilirsiniz:
+Çözümü başarıyla dağıtmak için, belirtilen ilkeyi değiştirmeyi göz önünde bulundurmanız gerekir. Tanımlanabileceğinden çok sayıda farklı ilke türü olduğundan, gerekli değişiklikler ihlal edilen ilkeye göre değişir. Örneğin, bir ilke, içerilen bazı kaynakların içeriğini değiştirme iznini reddeden bir kaynak grubunda tanımlanmışsa, bu düzeltmelerden birini seçebilirsiniz:
 
 * İlkeyi tamamen kaldırın.
 * Çözümü farklı bir kaynak grubuna ekleme deneyin.
-* İlkeyi bir Otomasyon hesabı gibi belirli bir kaynağa yeniden hedefleyin.
+* İlkeyi belirli bir kaynak için yeniden hedefleyin, örneğin bir Otomasyon hesabı.
 * İlkenin reddedecek şekilde yapılandırıldığı kaynak kümesini gözden geçirin.
 
 Azure portal, sağ üst köşedeki bildirimleri denetleyin veya Otomasyon hesabınızı içeren kaynak grubuna gidin ve başarısız dağıtımı görüntülemek için **Ayarlar** altında **dağıtımlar** ' ı seçin. Azure Ilkesi hakkında daha fazla bilgi edinmek için bkz. [Azure Ilkesine genel bakış](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
@@ -130,7 +130,7 @@ Azure portal, sağ üst köşedeki bildirimleri denetleyin veya Otomasyon hesab�
 
 #### <a name="issue"></a>Sorun
 
-Bir çalışma alanının bağlantısını kaldırılmaya çalışırken şu hatayı alıyorsunuz:
+Bir çalışma alanının bağlantısını kaldırmayı denediğinizde aşağıdaki hata iletisini alırsınız:
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -148,10 +148,10 @@ Aşağıdaki çözümleri kullanıyorsanız çalışma alanınızdan kaldırın:
 * Değişiklik İzleme ve Stok
 * Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
 
-Çözümleri kaldırdıktan sonra, çalışma alanınızın bağlantısını kaldırabilirsiniz. Bu çözümlerdeki mevcut yapıtları çalışma alanınızdan ve otomasyon hesabınızda temizlemeniz önemlidir 
+Çözümleri kaldırdıktan sonra, çalışma alanınızın bağlantısını kaldırabilirsiniz. Bu çözümlerdeki mevcut yapıtları çalışma alanınızdan ve otomasyon hesabınızda temizlemeniz önemlidir:
 
-* Güncelleştirme Yönetimi için, Otomasyon hesabınızdan güncelleştirme dağıtımlarını (zamanlamalar) kaldırın.
-* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Çözüm bileşenlerinde bulunan kilitleri **Ayarlar** > **kilitleri**altında kaldırın. Bkz. [VM'leri çalışma saatleri dışında Başlat/Durdur çözümünü kaldırma](../automation-solution-vm-management.md#remove-the-solution).
+* Güncelleştirme Yönetimi için, Otomasyon hesabınızdan **güncelleştirme dağıtımlarını (zamanlamalar)** kaldırın.
+* VM'leri çalışma saatleri dışında Başlat/Durdur için, Otomasyon hesabınızdaki Çözüm bileşenlerinde bulunan kilitleri **Ayarlar** > **kilitleri**altında kaldırın. Daha fazla bilgi için bkz. [VM'leri çalışma saatleri dışında Başlat/Durdur çözümünü kaldırma](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows uzantısı hatalarında Log Analytics
 
@@ -189,13 +189,13 @@ Bu hatanın olası nedenleri şunlardır:
 
 İletişim için uygun bağlantı noktalarına ve adreslere sahip olduğunuzdan emin olun. Bağlantı noktalarının ve adreslerin listesi için bkz. [ağınızı planlama](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Senaryo: geçici bir ortam sorunları nedeniyle yüklenemedi
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>Senaryo: geçici ortam sorunları nedeniyle yüklenemedi
 
-Windows uzantısı için Log Analytics yüklemesi, başka bir yükleme veya yüklemeyi engelleyen bir eylem nedeniyle dağıtım sırasında başarısız oldu
+Windows uzantısı için Log Analytics yüklemesi, başka bir yükleme veya yüklemeyi engelleyen bir eylem nedeniyle dağıtım sırasında başarısız oldu.
 
 #### <a name="issue"></a>Sorun
 
-Aşağıda, hata iletileri örnekleri gösterilebilir:
+Aşağıda, döndürülen hata iletilerinin örnekleri verilmiştir:
 
 ```error
 The Microsoft Monitoring Agent failed to install on this machine. Please try to uninstall and reinstall the extension. If the issue persists, please contact support.
@@ -242,8 +242,8 @@ VM daha düşük bir yük altında olduğunda Windows uzantısı için Log Analy
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport)'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, Azure Community 'yi yanıtlar, destek ve uzmanlar için bağlar.
+* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.

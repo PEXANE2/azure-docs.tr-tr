@@ -1,17 +1,17 @@
 ---
-title: '.NET SDK: Azure Data Lake Storage 1. dosya sistemi işlemleri'
+title: .NET SDK-Data Lake Storage 1. dosya sistemi işlemleri-Azure
 description: Klasör oluşturma gibi Data Lake Storage 1. dosya sistemi işlemleri için Azure Data Lake Storage 1. .NET SDK 'yı kullanın.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638910"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690957"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemleri
 
@@ -31,7 +31,7 @@ Bu makalede, .NET SDK kullanarak Data Lake Storage 1. dosya sistemi işlemlerini
 
 * **Visual Studio 2013 veya üzeri**. Bu makaledeki yönergeler Visual Studio 2019 kullanır.
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Data Lake Storage 1. hesabı**. Hesap oluşturma yönergeleri için bkz. kullanmaya [başlama Azure Data Lake Storage 1.](data-lake-store-get-started-portal.md).
 

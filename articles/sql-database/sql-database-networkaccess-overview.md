@@ -1,10 +1,10 @@
 ---
 title: Ağ erişim denetimleri
-description: Erişimi yönetmek ve tek veya havuza alınmış bir veritabanını yapılandırmak için Azure SQL veritabanı ve veri ambarı için ağ erişim denetimlerine genel bakış.
+description: Erişimi yönetmek ve tek veya havuza alınmış bir veritabanını yapılandırmak için Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e yönelik ağ erişim denetimlerine genel bakış.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414407"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629584"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri
 
 > [!NOTE]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu makale, Azure SQL Server ve Azure SQL Server 'da oluşturulan hem SQL veritabanı hem de Azure SYNAPSE Analytics veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e başvururken kullanılır.
 
 > [!IMPORTANT]
 > Bu *Makale,* **Azure SQL veritabanı yönetilen örneği**için geçerlidir. ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](sql-database-managed-instance-connect-app.md) .
@@ -81,7 +81,7 @@ PS C:\> $sql.Properties.AddressPrefixes
 ```
 
 > [!TIP]
-> Get-AzNetworkServiceTag, location parametresini belirtirken sql Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
+> Get-AzNetworkServiceTag, location parametresini belirtirken SQL Service etiketinin genel aralığını döndürür. Eşitleme grubunuz tarafından kullanılan Merkez veritabanını barındıran bölgeye filtre uyguladığınızdan emin olun
 
 PowerShell betiğinin çıktısının sınıfsız etki alanları arası yönlendirme (CıDR) gösterimi içinde ve [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) kullanarak bir başlangıç ve bitiş IP adresi biçimine dönüştürülmesi gerektiğini unutmayın
 ```powershell

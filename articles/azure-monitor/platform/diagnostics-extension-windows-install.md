@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd18fd484ac456f0c38cd6d9b73a2395a08ad5d0
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672268"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883116"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma
 Azure tanılama uzantısı, Azure Izleyici 'de Konuk işletim sisteminden ve Azure sanal makinelerinin ve diğer işlem kaynaklarının iş yüklerinden izleme verilerini toplayan bir aracıdır. Bu makalede, Windows Tanılama uzantısı 'nı yükleme ve yapılandırma hakkında ayrıntılar ve verilerin ve Azure depolama hesabında nasıl depolandığı hakkında bir açıklama sağlanmaktadır.
@@ -124,28 +124,28 @@ Aşağıda, tanılama altyapısı günlüklerinin, tek bir performans sayacını
     "PublicConfig": {
         "WadCfg": {
             "DiagnosticMonitorConfiguration": {
-                "overallQuotaInMB": 10000
-            },
-            "DiagnosticInfrastructureLogs": {
-                "scheduledTransferLogLevelFilter": "Error"
-            },
-            "PerformanceCounters": {
-                "scheduledTransferPeriod": "PT1M",
-                "PerformanceCounterConfiguration": [
-                    {
-                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                        "sampleRate": "PT3M",
-                        "unit": "percent"
-                    }
-                ]
-            },
-            "WindowsEventLog": {
-                "scheduledTransferPeriod": "PT1M",
-                    "DataSource": [
-                    {
-                        "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
-                    }
-                ]
+                "overallQuotaInMB": 10000,
+                "DiagnosticInfrastructureLogs": {
+                    "scheduledTransferLogLevelFilter": "Error"
+                },
+                "PerformanceCounters": {
+                    "scheduledTransferPeriod": "PT1M",
+                    "PerformanceCounterConfiguration": [
+                        {
+                            "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                            "sampleRate": "PT3M",
+                            "unit": "percent"
+                        }
+                    ]
+                },
+                "WindowsEventLog": {
+                    "scheduledTransferPeriod": "PT1M",
+                        "DataSource": [
+                        {
+                            "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
+                        }
+                    ]
+                }
             }
         },
         "StorageAccount": "mystorageaccount",

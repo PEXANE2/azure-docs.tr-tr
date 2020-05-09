@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535970"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871530"
 ---
 # <a name="whats-new-for-authentication"></a>Kimlik doğrulaması yenilikleri nelerdir?
 
@@ -37,13 +37,31 @@ Kimlik doğrulama sistemi değiştirir ve güvenlik ve standartlar uyumluluğunu
 
 Şu anda zamanlanmadı.  Lütfen ' de bulunan veya üretime yönelik olan değişiklikler için aşağıya bakın.
 
+## <a name="may-2020"></a>Mayıs 2020
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure Kamu uç noktaları değişiyor
+
+**Geçerlilik tarihi**: Mayıs 5 mayıs (2020 Haziran tarihinde bitiriliyor) 
+
+**Etkilenen uç noktalar**: tümü
+
+**Etkilenen protokol**: tüm akışlar
+
+1 Haziran 2018 ' de, Azure Kamu için resmi Azure Active Directory (AAD) yetkilisi ' den `https://login-us.microsoftonline.com` ' `https://login.microsoftonline.us`a değiştirilir. Bu değişiklik Ayrıca, Azure Kamu AAD 'nin de Hizmetleri olan GCC High ve DoD Microsoft 365 de uygulanır. ABD kamu kiracısında bir uygulamaya sahipseniz, `.us` son noktadaki kullanıcıları oturum açmak için uygulamanızı güncelleştirmeniz gerekir.  
+
+Azure AD, Mayıs 5 ' ten itibaren bitiş noktası değişikliğini zorunlu hale getirmeye başlayacak ve kamu kullanıcılarının ortak uç nokta (`microsoftonline.com`) kullanılarak ABD kamu kiracılarında barındırılan uygulamalarda oturum açmasını önlüyor.  Etkilenen uygulamalar bir hata `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`görmeye başlayacaktır. Bu hata, uygulamanın genel bulut uç noktasında bir ABD kamu kullanıcısına oturum açmaya çalışıyor olduğunu gösterir. Uygulamanız ortak bir bulut kiracısında ise ve ABD hükümeti kullanıcılarını desteklemek istiyorsanız, [uygulamanızı açıkça destekleyecek şekilde güncelleştirmeniz](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)gerekir. Bu, ABD kamu bulutunda yeni bir uygulama kaydı oluşturulmasını gerektirebilir. 
+
+Bu değişikliğin uygulanması, ABD kamu bulutundaki kullanıcıların uygulamada oturum açma ve ABD devlet kullanıcılarına yönelik uygulamalar için ne sıklıkta oturum açması gerektiğini temel alan aşamalı bir dağıtım kullanılarak yapılır ve ABD hükümeti kullanıcıları tarafından sık kullanılan uygulamalar en son zorlama için geçerlidir. Uygulama, Haziran 2020 ' deki tüm uygulamalarda tamamlanmasını bekliyor. 
+
+Daha ayrıntılı bilgi için lütfen [bu geçişte Azure Kamu blog gönderisine](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)bakın. 
+
 ## <a name="march-2020"></a>Mart 2020
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>Kullanıcı parolaları 256 karakterle sınırlandırılır.
 
 **Geçerlilik tarihi**: 13 Mart 2020
 
-**Etkilenen uç noktalar**: v 1.0 ve v 2.0
+**Etkilenen uç noktalar**: tümü
 
 **Etkilenen protokol**: tüm Kullanıcı akışları.
 

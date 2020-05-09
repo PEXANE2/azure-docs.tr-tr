@@ -4,171 +4,269 @@ description: Azure PowerShell kullanarak, sanal makine ölçek kümesini dağıt
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/04/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 4b072991a86922fe2b4ba5be93b4c96841dc24af
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76278288"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792777"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümeleri için özel görüntü oluşturma ve kullanma
 
 Ölçek kümesi oluşturduğunuzda, sanal makine örnekleri dağıtılırken kullanılacak bir görüntü belirtirsiniz. Sanal makine örnekleri dağıtıldıktan sonraki görev sayısını azaltmak için özel bir sanal makine görüntüsünü kullanabilirsiniz. Bu özel sanal makine görüntüsü, gerekli uygulama yüklemelerini veya yapılandırmalarını içerir. Ölçek kümesinde oluşturulan tüm sanal makine örnekleri, özel sanal makine görüntüsünü kullanır ve uygulama trafiğinizi sunmaya hazır olur. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Sanal makine oluşturma ve özelleştirme
-> * Sanal makinenin sağlamasını kaldırma ve sanal makineyi genelleştirme
-> * Kaynak sanal makineden özel bir sanal makine görüntüsü oluşturma
-> * Özel sanal makine görüntüsünü kullanan bir ölçek kümesini dağıtma
+> * Paylaşılan görüntü galerisi oluşturma
+> * Görüntü tanımı oluşturma
+> * Görüntü sürümü oluşturma
+> * Görüntüden ölçek kümesi oluşturma 
+> * Resim galerisini paylaşma
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
+## <a name="before-you-begin"></a>Başlamadan önce
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Aşağıdaki adımlar, var olan bir VM 'nin nasıl alınacağını ve bir ölçek kümesi oluşturmak için kullanabileceğiniz yeniden kullanılabilir bir özel görüntüye nasıl kullanılacağına ilişkin ayrıntılı bilgiler sağlar.
+
+Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu öğreticide kullanmak üzere bir VM oluşturmak için [PowerShell hızlı](quick-create-powershell.md) başlangıcını görebilirsiniz. Öğreticide çalışırken, kaynak adlarını gereken yerde değiştirin.
+
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
+
+Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
+
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 
-## <a name="create-and-configure-a-source-vm"></a>Kaynak sanal makine oluşturma ve yapılandırma
+## <a name="get-the-vm"></a>VM 'yi al
 
->[!NOTE]
-> Bu öğreticide, genelleştirilmiş bir sanal makine görüntüsü oluşturma ve kullanma işlemi gösterilmektedir. Özelleştirilmiş VHD dosyasından ölçek kümesi oluşturulması desteklenmez.
-
-İlk olarak, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun ve ardından [New-AZVM](/powershell/module/az.compute/new-azvm)ile bir VM oluşturun. Bu sanal makine daha sonra özel bir sanal makine görüntüsü için kaynak olarak kullanılır. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myCustomVM* adlı bir sanal makine oluşturur. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir kullanıcı adı ve parola girin:
-
-```azurepowershell-interactive
-# Create a resource a group
-New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
-
-# Create a Windows Server 2016 Datacenter VM
-New-AzVm `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myCustomVM" `
-  -ImageName "Win2016Datacenter" `
-  -OpenPorts 3389
-```
-
-VM 'nize bağlanmak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) Ile genel IP adresini şu şekilde listeleyin:
+[Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)kullanarak bir kaynak grubunda kullanılabilir olan sanal makinelerin listesini görebilirsiniz. VM adını ve kaynak grubunu öğrendikten sonra, VM nesnesini almak ve daha sonra `Get-AzVM` kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *sourcevm* ADLı bir VM 'yi alır ve *$VM*değişkenine atar. 
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+$sourceVM = Get-AzVM `
+   -Name sourceVM `
+   -ResourceGroupName myResourceGroup
 ```
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Sanal makineyle uzaktan bağlantı oluşturun. Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Önceki komuttan kendi IP adresinizi sağlayın. İstendiğinde, ilk adımda sanal makineyi oluştururken kullandığınız kimlik bilgilerini girin:
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutuyla bir kaynak grubu oluşturun.
 
-```powershell
-mstsc /v:<IpAddress>
-```
-
-Şimdi sanal makinenizi özelleştirmek için bir temel web sunucusu yükleyelim. Ölçek kümesindeki sanal makine örneği dağıtılacağı zaman, bir web uygulamasını çalıştırmak için gerekli tüm paketleri içerir. Sanal makinede yerel bir PowerShell istemini açın ve aşağıdaki adımları uygulayarak [Install-WindowsFeature](/powershell/module/servermanager/install-windowsfeature) ile IIS web sunucusunu yükleyin:
-
-```powershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-```
-
-Sanal makinenizi özel görüntü olarak kullanılmaya hazırlamanın son adımı, sanal makinenizin genelleştirilmesidir. Sysprep tüm kişisel hesap bilgilerinizi ve yapılandırmalarınızı kaldırır ve sanal makineyi gelecekteki dağıtımlar için sıfırlayıp temiz bir duruma getirir. Daha fazla bilgi için bkz. [Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
-
-Sanal makineyi genelleştirmek için Sysprep işlemini çalıştırıp sanal makineyi ayarlayarak hızlı bir deneyim elde edin. İşlem tamamlandığında, Sysprep işlemine sanal makineyi kapatmasını bildirin:
-
-```powershell
-C:\Windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown
-```
-
-Sysprep, işlemi tamamladığında ve sanal makine kapatıldığında sanal makineyle uzaktan bağlantı otomatik olarak kapanır.
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Kaynak sanal makineden özel bir sanal makine görüntüsü oluşturma
-Kaynak sanal makine şimdi IIS web sunucusunun yüklenmesiyle birlikte özelleştirilir. Şimdi ölçek kümesi ile kullanılacak özel sanal makine görüntüsü oluşturalım.
-
-Bir görüntü oluşturmak için VM’nin serbest bırakılması gerekir. [Stop-AzVm](/powershell/module/az.compute/stop-azvm)ile VM 'yi serbest bırakın. Daha sonra, Azure platformunun sanal makinenin özel bir görüntü kullanmaya hazırsa bilmesini sağlamak için VM 'nin durumunu [set-AzVm](/powershell/module/az.compute/set-azvm) ile Genelleştirilmiş olarak ayarlayın. Yalnızca genelleştirilmiş bir sanal makineden görüntü oluşturabilirsiniz:
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnekte, *EastUS* bölgesinde *mygallerrg* adlı bir kaynak grubu oluşturulur:
 
 ```azurepowershell-interactive
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
-Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
+$resourceGroup = New-AzResourceGroup `
+   -Name 'myGalleryRG' `
+   -Location 'EastUS'
 ```
 
-Sanal makinenin serbest bırakılıp genelleştirilmesi birkaç dakika sürebilir.
+## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma 
 
-Şimdi [New-Azımageconfig](/powershell/module/az.compute/new-azimageconfig) ve [New-AZıMAGE](/powershell/module/az.compute/new-azimage)ile VM 'nin bir görüntüsünü oluşturun. Aşağıdaki örnek, sanal makinenizden *myImage* adlı bir görüntü oluşturur:
+Görüntü Galerisi, görüntü paylaşımını etkinleştirmek için kullanılan birincil kaynaktır. Galeri adı için izin verilen karakterler büyük veya küçük harflerden, rakamlardan, noktalardan ve noktalardan oluşur. Galeri adı tire içeremez. Galeri adları, aboneliğiniz dahilinde benzersiz olmalıdır. 
+
+[New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery)kullanarak bir görüntü galerisi oluşturun. Aşağıdaki örnek *Mygallerrg* kaynak grubunda *MyGallery* adlı bir galeri oluşturur.
 
 ```azurepowershell-interactive
-# Get VM object
-$vm = Get-AzVM -Name "myCustomVM" -ResourceGroupName "myResourceGroup"
-
-# Create the VM image configuration based on the source VM
-$image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID 
-
-# Create the custom VM image
-New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
+$gallery = New-AzGallery `
+   -GalleryName 'myGallery' `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -Description 'Shared Image Gallery for my organization'  
 ```
 
-## <a name="configure-the-network-security-group-rules"></a>Ağ güvenlik grubu kurallarını yapılandırma
-Ölçek kümesini oluşturmadan önce, ağ güvenlik grubu kurallarını HTTP, RDP ve Uzaktan erişime izin verecek şekilde yapılandırmamız gerekir 
+
+## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma 
+
+Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar içinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+
+[New-Azgallerımagedefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, Galeri görüntüsü *Mygallerımage* olarak adlandırılır ve özelleştirilmiş bir görüntü için oluşturulur. 
 
 ```azurepowershell-interactive
-$rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
-
-$rule2 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-
-$rule3 = New-AzNetworkSecurityRuleConfig -Name remoting-rule -Description "Allow PS Remoting" -Access Allow -Protocol Tcp -Direction Inbound -Priority 120 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5985
-
-New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -Location "EastUS" -SecurityRules $rule1,$rule2,$rule3
+$galleryImage = New-AzGalleryImageDefinition `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $gallery.Location `
+   -Name 'myImageDefinition' `
+   -OsState specialized `
+   -OsType Windows `
+   -Publisher 'myPublisher' `
+   -Offer 'myOffer' `
+   -Sku 'mySKU'
 ```
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Özel bir sanal makine görüntüsünden ölçek kümesi oluşturma
+
+## <a name="create-an-image-version"></a>Görüntü sürümü oluşturma
+
+[New-Azgallerımageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)kullanarak bir VM 'den görüntü sürümü oluşturma. 
+
+Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
+
+Bu örnekte, görüntü sürümü *1.0.0* ve hem *Doğu ABD* hem de *Orta Güney ABD* veri merkezlerine çoğaltılır. Çoğaltma için hedef bölge seçerken, *kaynak* bölgeyi çoğaltma için hedef olarak eklemeniz gerekir.
+
+VM 'den bir görüntü sürümü oluşturmak için, için kullanın `$vm.Id.ToString()` `-Source`.
+
+```azurepowershell-interactive
+$region1 = @{Name='South Central US';ReplicaCount=1}
+$region2 = @{Name='East US';ReplicaCount=2}
+$targetRegions = @($region1,$region2)
+
+New-AzGalleryImageVersion `
+   -GalleryImageDefinitionName $galleryImage.Name`
+   -GalleryImageVersionName '1.0.0' `
+   -GalleryName $gallery.Name `
+   -ResourceGroupName $resourceGroup.ResourceGroupName `
+   -Location $resourceGroup.Location `
+   -TargetRegion $targetRegions  `
+   -Source $vm.Id.ToString() `
+   -PublishingProfileEndOfLifeDate '2020-12-01'
+```
+
+Görüntünün tüm hedef bölgelere çoğaltılması biraz zaman alabilir.
+
+## <a name="create-a-scale-set-from-the-image"></a>Görüntüden ölçek kümesi oluşturma
 Şimdi, önceki adımda oluşturulan özel VM görüntüsünü tanımlamak için `-ImageName` parametresini kullanan [New-azvmss](/powershell/module/az.compute/new-azvmss) ile bir ölçek kümesi oluşturun. Her bir sanal makine örneklerine trafiği dağıtmak için bir yük dengeleyici de oluşturulur. Yük dengeleyici hem 80 numaralı TCP bağlantı noktasında trafiği dağıtmak hem de 3389 numaralı TCP bağlantı noktasında uzak masaüstü trafiğine ve 5985 numaralı TCP bağlantı noktasında PowerShell uzaktan iletişimine olanak tanımak için kurallar içerir. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi istediğiniz yönetici kimlik bilgilerini sağlayın:
 
 ```azurepowershell-interactive
+# Define variables for the scale set
+$resourceGroupName = "myVMSSRG3"
+$scaleSetName = "myScaleSet3"
+$location = "East US"
+
+# Create a resource group
+New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+
+# Create a networking pieces
+$subnet = New-AzVirtualNetworkSubnetConfig `
+  -Name "mySubnet" `
+  -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myVnet" `
+  -Location $location `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $subnet
+$publicIP = New-AzPublicIpAddress `
+  -ResourceGroupName $resourceGroupName `
+  -Location $location `
+  -AllocationMethod Static `
+  -Name "myPublicIP"
+$frontendIP = New-AzLoadBalancerFrontendIpConfig `
+  -Name "myFrontEndPool" `
+  -PublicIpAddress $publicIP
+$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
+$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
+  -Name "myRDPRule" `
+  -FrontendIpConfigurationId $frontendIP.Id `
+  -Protocol TCP `
+  -FrontendPortRangeStart 50001 `
+  -FrontendPortRangeEnd 50010 `
+  -BackendPort 3389
+# Create the load balancer and health probe
+$lb = New-AzLoadBalancer `
+  -ResourceGroupName $resourceGroupName `
+  -Name "myLoadBalancer" `
+  -Location $location `
+  -FrontendIpConfiguration $frontendIP `
+  -BackendAddressPool $backendPool `
+  -InboundNatPool $inboundNATPool
+Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+  -LoadBalancer $lb `
+  -Protocol TCP `
+  -Port 80 `
+  -IntervalInSeconds 15 `
+  -ProbeCount 2
+Add-AzLoadBalancerRuleConfig `
+  -Name "myLoadBalancerRule" `
+  -LoadBalancer $lb `
+  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+  -BackendAddressPool $lb.BackendAddressPools[0] `
+  -Protocol TCP `
+  -FrontendPort 80 `
+  -BackendPort 80 `
+  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
+Set-AzLoadBalancer -LoadBalancer $lb
+
+# Create IP address configurations
+$ipConfig = New-AzVmssIpConfig `
+  -Name "myIPConfig" `
+  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
+  -SubnetId $vnet.Subnets[0].Id
+
+# Create a configuration 
+$vmssConfig = New-AzVmssConfig `
+    -Location $location `
+    -SkuCapacity 2 `
+    -SkuName "Standard_DS2" `
+    -UpgradePolicyMode "Automatic"
+
+# Reference the image version
+Set-AzVmssStorageProfile $vmssConfig `
+  -OsDiskCreateOption "FromImage" `
+  -ImageReferenceId $galleryImage.Id
+
+# Complete the configuration
+ 
+Add-AzVmssNetworkInterfaceConfiguration `
+  -VirtualMachineScaleSet $vmssConfig `
+  -Name "network-config" `
+  -Primary $true `
+  -IPConfiguration $ipConfig 
+
+# Create the scale set 
 New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -SecurityGroupName "myNSG"
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
-  -UpgradePolicyMode "Automatic" `
-  -ImageName "myImage"
+  -ResourceGroupName $resourceGroupName `
+  -Name $scaleSetName `
+  -VirtualMachineScaleSet $vmssConfig
 ```
 
 Tüm ölçek kümesi kaynaklarının ve VM'lerin oluşturulup yapılandırılması birkaç dakika sürer.
 
 
-## <a name="test-your-scale-set"></a>Ölçek kümenizi test etme
-Ölçek kümesini eylem bölümünde görmek için [Get-Azpublicıpaddress](/powershell/module/az.network/Get-AzPublicIpAddress) ile yük dengeleyicinizin genel IP adresini aşağıdaki şekilde alın:
+## <a name="share-the-gallery"></a>Galeriyi paylaşma
 
+Görüntü Galerisi düzeyinde erişimi paylaşmanızı öneririz. Kullanıcının nesne KIMLIĞINI almak için bir e-posta adresi ve [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet 'ini kullanın, ardından galeriye erişim sağlamak için [New-azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment) kullanın. Örnek e-postayı, alinne_montes@contoso.com Bu örnekte kendi bilgileriniz ile değiştirin.
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress `
-  -ResourceGroupName "myResourceGroup" `
-  -Name "myPublicIPAddress" | Select IpAddress
+# Get the object ID for the user
+$user = Get-AzADUser -StartsWith alinne_montes@contoso.com
+# Grant access to the user for our gallery
+New-AzRoleAssignment `
+   -ObjectId $user.Id `
+   -RoleDefinitionName Reader `
+   -ResourceName $gallery.Name `
+   -ResourceType Microsoft.Compute/galleries `
+   -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
-
-Genel IP adresini bir web tarayıcınıza yazın. Aşağıdaki örnekte gösterildiği gibi varsayılan IIS web sayfası görüntülenir:
-
-![Özel sanal makine görüntüsünden çalıştırılan IIS](media/tutorial-use-custom-image-powershell/default-iis-website.png)
-
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Ölçek kümesini ve ek kaynaklarınızı kaldırmak için, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak kaynak grubunu ve tüm kaynaklarını silin. `-Force` parametresi kaynakları ek bir komut istemi olmadan silmek istediğinizi onaylar. `-AsJob` parametresi işlemin tamamlanmasını beklemeden denetimi komut istemine döndürür.
+
+Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini kullanarak kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
+# Delete the gallery 
+Remove-AzResourceGroup -Name myGalleryRG
+
+# Delete the scale set resource group
+Remove-AzResourceGroup -Name myResoureceGroup
 ```
 
+## <a name="azure-image-builder"></a>Azure Görüntü Oluşturucusu
+
+Azure Ayrıca, Packer, [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview)üzerine inşa olan bir hizmet sunar. Özelleştirmeleri bir şablonda açıklamanız yeterlidir ve görüntü oluşturma işleme alınacaktır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, Azure PowerShell ile ölçek kümeleriniz için özel sanal makine görüntüsü oluşturma ve kullanma işleminin nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
-> * Sanal makine oluşturma ve özelleştirme
-> * Sanal makinenin sağlamasını kaldırma ve sanal makineyi genelleştirme
-> * Özel bir sanal makine görüntüsü oluşturma
-> * Özel sanal makine görüntüsünü kullanan bir ölçek kümesini dağıtma
+> * Paylaşılan görüntü galerisi oluşturma
+> * Görüntü tanımı oluşturma
+> * Görüntü sürümü oluşturma
+> * Görüntüden ölçek kümesi oluşturma 
+> * Resim galerisini paylaşma
 
 Uygulamaların ölçek kümenize nasıl dağıtılacağını öğrenmek için sonraki öğreticiye ilerleyin.
 

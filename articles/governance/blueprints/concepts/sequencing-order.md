@@ -1,14 +1,14 @@
 ---
 title: Dağıtım sırası sırasını anlayın
 description: Şema yapıtlarının bir şema atama sırasında dağıtıldığı ve dağıtım sırasının nasıl özelleştirileceğine ilişkin varsayılan sıra hakkında bilgi edinin.
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677571"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864530"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure 'de dağıtım sırasını anlayın
 
@@ -47,8 +47,7 @@ Büyük şema tanımları oluştururken kaynakların belirli bir sırada oluştu
 Sıralama, JSON içinde bir `dependsOn` Özellik tanımlayarak yapılır. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
 
 > [!NOTE]
-> Şema nesneleri oluştururken, her yapıt kaynağı, [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)kullanıyorsanız veya [REST API](/rest/api/blueprints/artifacts/createorupdate)kullanılıyorsa URL uç noktası olan adı dosya adıyla alır.
-> yapıtlar içindeki _resourceGroup_ başvuruları, şema tanımında tanımlananlarla aynı olmalıdır.
+> Şema nesneleri oluştururken, her yapıt kaynağı, [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)kullanıyorsanız veya [REST API](/rest/api/blueprints/artifacts/createorupdate)kullanılıyorsa URL uç noktası olan adı dosya adıyla alır. yapıtlar içindeki _resourceGroup_ başvuruları, şema tanımında tanımlananlarla aynı olmalıdır.
 
 ### <a name="example---ordered-resource-group"></a>Örnek-sıralı kaynak grubu
 
@@ -137,7 +136,8 @@ Bu örnek, bir kaynak grubuna bağlı olmak için abonelik düzeyinde dağıtıl
 
 Oluşturma işlemi sırasında, planlar yapıtlarının bağımlılık grafiğini oluşturmak için bir topik sıralama kullanılır. Denetim, kaynak grupları ve yapıtlar arasındaki her bağımlılık düzeyinin desteklendiğinden emin olmanızı sağlar.
 
-Bir yapıt bağımlılığının varsayılan sırayı değiştirmediği bildirilirse, hiçbir değişiklik yapılmaz. Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer bir örnek, kaynak grubu ' standart-RG ' alt rol atamasına bağlı olan bir kaynak grubu ' standart-RG ' alt ilke atamasıdır. Her iki durumda da varsayılan `dependsOn` sıralama sırasını değiştirmezdi ve hiçbir değişiklik yapılmaz.
+Bir yapıt bağımlılığının varsayılan sırayı değiştirmediği bildirilirse, hiçbir değişiklik yapılmaz.
+Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer bir örnek, kaynak grubu ' standart-RG ' alt rol atamasına bağlı olan bir kaynak grubu ' standart-RG ' alt ilke atamasıdır. Her iki durumda da varsayılan `dependsOn` sıralama sırasını değiştirmezdi ve hiçbir değişiklik yapılmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

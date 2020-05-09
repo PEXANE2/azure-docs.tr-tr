@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0d8228586c0e20e4314331339aa2f2c46a38c9a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255626"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792165"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -281,7 +281,7 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
 - Ultra depolama katmanı-128 MIB/sn  
 
 > [!IMPORTANT]
-> Tek bir NFS biriminde dağıttığınız kapasiteden bağımsız olarak üretilen iş, bir sanal makinedeki bir tüketici tarafından 1.2-1.4 GB/sn bant genişliği yararlanılabilir aralığında platoya 'ya bekleniyor. Bu, ANF teklifinin temel mimarisiyle ve NFS 'nin çevresindeki ilgili Linux oturum sınırlarının ile ilgilidir. [Azure NetApp Files Için performans kıyaslama test sonuçları](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks) makalesinde belgelenen performans ve verimlilik numaraları, birden fazla istemci VM 'sine sahip BIR paylaşılan NFS biriminde ve birden çok oturumla bir sonuç olarak yapılmıştır. Bu senaryo, SAP 'de ölçüdiğimiz senaryoya göre farklılık gösteren bir senaryodur. Bir NFS birimine göre tek bir VM 'den üretilen iş verimini ölçyoruz. ANF üzerinde barındırılıyor.
+> Tek bir NFS biriminde dağıttığınız kapasiteden bağımsız olarak üretilen iş, bir sanal makinedeki bir tüketici tarafından 1.2-1.4 GB/sn bant genişliği yararlanılabilir aralığında platoya 'ya bekleniyor. Bu, ANF teklifinin temel mimarisiyle ve NFS 'nin çevresindeki ilgili Linux oturum sınırlarının ile ilgilidir. [Azure NetApp Files Için performans kıyaslama test sonuçları](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux) makalesinde belgelenen performans ve verimlilik numaraları, birden fazla istemci VM 'sine sahip BIR paylaşılan NFS biriminde ve birden çok oturumla bir sonuç olarak yapılmıştır. Bu senaryo, SAP 'de ölçüdiğimiz senaryoya göre farklılık gösteren bir senaryodur. Bir NFS birimine göre tek bir VM 'den üretilen iş verimini ölçyoruz. ANF üzerinde barındırılıyor.
 
 Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak için ve yönergelerine göre `/hana/shared`, önerilen boyutlar şöyle görünür:
 

@@ -12,12 +12,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 713fa09319f1b95fe2bcc0d15c973a2096a250ec
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535987"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801170"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -42,9 +42,11 @@ Bu örnekler, Microsoft Identity platform ile güvenliği sağlanmış tek sayfa
 | Platform | Açıklama | Bağlantı |
 | -------- | --------------------- | -------- |
 | ![Bu resimde JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Çağrılar Microsoft Graph |[JavaScript-graphapı-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+| ![Bu resimde JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Kimlik doğrulama kod akışı kullanan Microsoft Graph çağırır g/PKCE |[JavaScript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
 | ![Bu resimde JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | B2C çağırır |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![Bu resimde JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Kendi Web API 'sini çağırır |[JavaScript-singlepageapp-DotNet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
+| ![Bu görüntüde angular logosu](media/sample-v2-code/logo_angular.png) [JavaScript (msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir| Kendi Web API 'sini çağırır | [MS-Identity-JavaScript-angular-Spa-aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Bu görüntüde angular logosu](media/sample-v2-code/logo_angular.png) [JavaScript (msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir| Çağrılar Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-angular](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![Bu görüntü, yanıt verme logosu](media/sample-v2-code/logo_react.png) [JavaScript 'i (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterir| ' De çağıran Web API 'sini çağırır Microsoft Graph  | [MS-Identity-JavaScript-tepki-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
 | ![Bu görüntüde angular logosu](media/sample-v2-code/logo_angular.png) [JavaScript (msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir | B2C çağırır |[Active-Directory-B2C-JavaScript-angular-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 
 ## <a name="web-applications"></a>Web uygulamaları
@@ -53,7 +55,7 @@ Aşağıdaki örneklerde, kullanıcıların oturum açmasını sağlayan Web uyg
 
 | Platform | Yalnızca kullanıcılar oturum açar | Kullanıcılar ve çağrılar Microsoft Graph imzalar |
 | -------- | ------------------- | --------------------------------- |
-| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [ASP.NET Core WebApp oturum açan kullanıcılar öğreticisi](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web uygulaması çağrılarındaki](https://aka.ms/aspnetcore-webapp-call-msgraph) aynı örnek Microsoft Graph aşaması |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdeği | [ASP.NET Core WebApp oturum açan kullanıcılar öğreticisi](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web uygulaması çağrılarındaki](https://aka.ms/aspnetcore-webapp-call-msgraph) aynı örnek Microsoft Graph aşaması |
 | ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET hızlı başlangıç](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openıdconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-Yönetici-kısıtlı-kapsamlar-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph-eğitim-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)  |                   | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
@@ -63,7 +65,7 @@ Aşağıdaki örneklerde, kullanıcıların oturum açmasını sağlayan Web uyg
 
 Aşağıdaki örneklerde, Microsoft Graph API 'sine veya bir kullanıcı adına kendi Web API 'sine erişen ortak istemci uygulamaları (masaüstü veya mobil uygulamalar) gösterilmektedir. Tüm bu istemci uygulamaları Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanır.
 
-| İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | ASP.NET Core 2,0 Web API 'sini çağırır |
+| İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | ASP.NET Core Web API 'sini çağırır |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
 | Masaüstü (WPF)      | ![Bu görüntüde .NET/C# logosu gösterilmektedir](media/sample-v2-code/logo_NET.png) | [etkileşimli](msal-authentication-flows.md#interactive)| [DotNet-masaüstü-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
 | Masaüstü (konsol)   | ![Bu görüntüde .NET/C# (Masaüstü) logosu gösterilir](media/sample-v2-code/logo_NET.png) | [Tümleşik Windows Kimlik Doğrulaması](msal-authentication-flows.md#integrated-windows-authentication) | [DotNet-IWA-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
@@ -74,7 +76,7 @@ Aşağıdaki örneklerde, Microsoft Graph API 'sine veya bir kullanıcı adına 
 | Masaüstü (konsol)   | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png) | [Kullanıcı Adı/Parola](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Python-Masaüstü](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
 | Mobil (Android, iOS, UWP)   | ![Bu görüntüde .NET/C# (Xamarin) logosu gösterilir](media/sample-v2-code/logo_xamarin.png) | [etkileşimli](msal-authentication-flows.md#interactive) |[Xamarin-Native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
 | Mobil (iOS)       | ![Bu görüntüde iOS/amaç-C veya Swift gösterilmektedir](media/sample-v2-code/logo_iOS.png) | [etkileşimli](msal-authentication-flows.md#interactive) |[iOS-Swift-ObjC-Native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [iOS-Native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
-| Masaüstü (macOS)       | macOS | [etkileşimli](msal-authentication-flows.md#interactive) |[macOS-Swift-ObjC-Native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
+| Masaüstü (macOS)       | Mac OS | [etkileşimli](msal-authentication-flows.md#interactive) |[macOS-Swift-ObjC-Native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
 | Mobil (Android-Java)   | ![Bu resimde Android logosu gösterilir](media/sample-v2-code/logo_Android.png) | [etkileşimli](msal-authentication-flows.md#interactive) |  [Android-Java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
 | Mobil (Android-Kotlin)   | ![Bu resimde Android logosu gösterilir](media/sample-v2-code/logo_Android.png) | [etkileşimli](msal-authentication-flows.md#interactive) |  [Android-Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
 
@@ -105,7 +107,7 @@ Aşağıdaki örneklerde, bir Web API 'sinin Microsoft Identity platform uç nok
 
 | Platform | Örnek |
 | -------- | ------------------- |
-| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) ASP.NET Core Web API (hizmeti)  |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdeği | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) ASP.NET Core Web API (hizmeti)  |
 | ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | [MS-Identity-ASPNET-WebApi-OnBehalfOf](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) Web API (hizmeti) |
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png) | [MS-Identity-Java-WebApi](https://github.com/Azure-Samples/ms-identity-java-webapi) Web API (hizmeti) |
 | ![Bu görüntüde Node. js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png) | [Active-Directory-JavaScript-NodeJS-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) Web API (hizmeti) |
@@ -117,7 +119,7 @@ Aşağıdaki örneklerde HttpTrigger kullanılarak bir Azure Işlevinin nasıl k
 
 | Platform | Örnek |
 | -------- | ------------------- |
-| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core Web API (hizmet) Azure Işlevi [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdeği | ASP.NET Core Web API (hizmet) Azure Işlevi [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
 | ![Bu görüntüde Node. js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS ve Passport Web API (hizmeti) [-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) 'un Web API 'si (hizmeti) |
 | ![Bu görüntüde Node. js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | NodeJS ve Passport için Web API (hizmeti) [-Azure-AD 'nin adına using](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |

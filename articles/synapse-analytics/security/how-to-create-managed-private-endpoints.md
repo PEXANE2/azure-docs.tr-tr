@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428907"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983236"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Veri kaynağınıza yönetilen özel uç nokta oluşturma (Önizleme)
 
@@ -30,17 +30,17 @@ Azure SYNAPSE Studio 'da sol gezinti bölmesindeki **Yönet** sekmesini seçin. 
 
 ## <a name="step-3-select-the-data-source-type"></a>3. Adım: veri kaynağı türünü seçin
 
-Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS Gen2 hesabıdır. **Devam**'ı seçin.
+Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS 2. hesabıdır. **Devam**'ı seçin.
 ![Hedef veri kaynağı türü seçin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. Adım: veri kaynağıyla ilgili bilgileri girin
 
-Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, ADLS Gen2 hesabına yönetilen özel bir uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**’u seçin.
+Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**’u seçin.
 ![Hedef veri kaynağı ayrıntılarını girin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. Adım: yönetilen özel uç noktanızın başarıyla oluşturulduğunu doğrulama
 
-İsteği gönderdikten sonra, durumunu görürsünüz. Yönetilen özel uç noktanızın başarıyla oluşturulmasını doğrulamak için *sağlama durumunu*kontrol edin. Sağlama durumunu güncelleştirmek için 1 dakika beklemeniz ve **Yenile** ' yi seçmeniz gerekebilir. ADLS Gen2 hesabının yönetilen özel uç noktasının başarıyla oluşturulduğunu görebilirsiniz.
+İsteği gönderdikten sonra, durumunu görürsünüz. Yönetilen özel uç noktanızın başarıyla oluşturulmasını doğrulamak için *sağlama durumunu*kontrol edin. Sağlama durumunu güncelleştirmek için 1 dakika beklemeniz ve **Yenile** ' yi seçmeniz gerekebilir. ADLS 2. hesabının yönetilen özel uç noktasının başarıyla oluşturulduğunu görebilirsiniz.
 
 *Onay durumunun* *bekliyor*olduğunu da görebilirsiniz. Hedef kaynağın sahibi özel uç nokta bağlantı isteğini onaylayabilir veya reddedebilir. Sahip özel uç nokta bağlantı isteğini onayladığında, özel bir bağlantı oluşturulur. Reddedilirse, özel bir bağlantı kurulmaz.
 ![Yönetilen özel uç nokta oluşturma isteği durumu](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

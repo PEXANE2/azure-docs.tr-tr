@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266383"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582922"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
@@ -46,7 +46,7 @@ Bir üyelik kuralı için sözdizimi, desteklenen özellikler, işleçler ve de�
 
 ## <a name="to-create-a-group-membership-rule"></a>Bir grup üyeliği kuralı oluşturmak için
 
-1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , Kiracıdaki genel yönetici, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla oturum açın.
+1. Azure AD kuruluşunda genel yönetici, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 1. **Grupları**arayın ve seçin.
 1. **Tüm gruplar**' ı seçin ve **Yeni Grup**' u seçin.
 
@@ -66,7 +66,7 @@ Girdiğiniz kural geçerli değilse, kuralın neden işlenmediği hakkında bir 
 
 ## <a name="to-update-an-existing-rule"></a>Mevcut bir kuralı güncelleştirmek için
 
-1. [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) , Kiracıdaki genel yönetici, Grup Yöneticisi, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla oturum açın.
+1. Azure AD kuruluşunda genel yönetici, Grup Yöneticisi, Intune Yöneticisi veya Kullanıcı Yöneticisi rolündeki bir hesapla [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
 1. **Gruplar** > **tüm gruplar**' ı seçin.
 1. Profilini açmak için bir grup seçin.
 1. Grubun profil sayfasında **dinamik üyelik kuralları**' nı seçin. Kural Oluşturucusu en fazla beş ifadeyi destekler. Beşten fazla ifade eklemek için metin kutusunu kullanmanız gerekir.
@@ -102,7 +102,7 @@ Grubun **genel bakış** sayfasında Üyelik işleme durumu ve son güncelleşti
 - **Devam**ediyor: Şu anda güncelleştirmeler devam ediyor.
 - **Bilinmiyor**: son güncelleştirme saati alınamıyor. Grup yeni olabilir.
 
-Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. Kiracıdaki tüm gruplar için 24 saatten uzun bir sürede bekleyen dinamik üyelik güncelleştirmeleri işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
+Belirli bir grup için üyelik kuralı işlenirken bir hata oluşursa, grubun **Genel Bakış sayfasının** üst kısmında bir uyarı gösterilir. 24 saatten uzun bir sürede kuruluştaki tüm gruplar için bekleyen dinamik üyelik güncelleştirmeleri işlenemezse, **tüm grupların**en üstünde bir uyarı gösterilir.
 
 ![işlem hata iletisi uyarıları](./media/groups-create-rule/processing-error.png)
 

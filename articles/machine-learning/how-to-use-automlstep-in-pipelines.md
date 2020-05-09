@@ -1,0 +1,502 @@
+---
+title: ML işlem hatları içinde otomatik ML kullanma
+titleSuffix: Azure Machine Learning
+description: Otomatikmlstep, ardışık düzeninizde otomatik makine öğrenimini kullanmanıza olanak sağlar.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+ms.author: laobri
+author: lobrien
+manager: cgronlun
+ms.date: 04/28/2020
+ms.openlocfilehash: 9bf17512d0b14c7106101d98598e2914020afc7a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857942"
+---
+# <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python 'da Azure Machine Learning işlem hattında otomatik ML kullanma
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+Azure Machine Learning otomatikleştirilmiş ML özelliği, mümkün olan her yaklaşımı yeniden uygulamadan yüksek performanslı modelleri keşfetmenize yardımcı olur. Azure Machine Learning işlem hatlarında, verileriniz için en uygun algoritmayı hızlı bir şekilde keşfedelebilecek dağıtılabilir iş akışları oluşturabilirsiniz. Bu makalede, bir veri hazırlama adımını otomatik bir ML adımına nasıl verimli bir şekilde katılacaksınız gösterilmektedir. Otomatikleştirilmiş ML, verilerinize en uygun algoritmayı hızlıca bulabilir. bu sırada, işlem hatlarıyla birlikte MLOps ve model yaşam döngüsü için yol üzerine getirme yapabilirsiniz.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+
+* Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).  
+
+* Azure 'un [otomatik makine öğrenimi](concept-automated-ml.md) ve [makine öğrenimi ARDıŞıK düzenleri](concept-ml-pipelines.md) ve SDK ile temel benzerlik.
+
+## <a name="review-automated-mls-central-classes"></a>Otomatik ML 'nin merkezi sınıflarını gözden geçirin
+
+Bir işlem hattındaki otomatikleştirilen ML bir `AutoMLStep` nesne tarafından temsil edilir. `AutoMLStep` Sınıfı, öğesinin `PipelineStep`bir alt sınıfıdır. `PipelineStep` Nesneleri bir `Pipeline`grafik tanımlar.
+
+Öğesinin `PipelineStep`birkaç alt sınıfları vardır. `AutoMLStep`' A ek olarak, bu makalede bir veri hazırlığı `PythonScriptStep` ve modeli kaydetmek için bir diğeri görüntülenir.
+
+İlk _olarak BIR ml_ ardışık düzenine veri taşımanın tercih edilen yolu, nesneleriyle `Dataset` birlikte. Adımlar _arasında_ veri taşımak için tercih edilen yöntem nesneleriyle birlikte `PipelineData` bulunur. İle birlikte `AutoMLStep`kullanılabilmesi için `PipelineData` nesnenin bir `PipelineOutputTabularDataset` nesnesine dönüştürülmesi gerekir. Daha fazla bilgi için bkz. [ml işlem hatlarından giriş ve çıkış verileri](how-to-move-data-in-out-of-pipelines.md).
+
+, `AutoMLStep` Bir `AutoMLConfig` nesnesi aracılığıyla yapılandırılır. `AutoMLConfig`, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)bölümünde anlatıldığı gibi esnek bir sınıftır. 
+
+Bir `Pipeline` üzerinde çalışır `Experiment`. İşlem hattı `Run` , her adım bir alt öğe `StepRun`için içerir. Otomatikleştirilmiş ML `StepRun` 'nin çıkışları eğitim ölçümleri ve en yüksek performanslı modeldir.
+
+Bu makale, şeyleri somut hale getirmek için bir sınıflandırma görevi için basit bir işlem hattı oluşturur. Görev, Titanic Inval 'i tahmin ediyor, ancak veri veya görev geçirilme dışında tartışıyoruz.
+
+## <a name="get-started"></a>Kullanmaya başlayın
+
+### <a name="retrieve-initial-dataset"></a>İlk veri kümesini alma
+
+Genellikle, bir ML iş akışı önceden varolan temel verilerle başlar. Bu, kayıtlı bir veri kümesi için iyi bir senaryodur. Veri kümeleri çalışma alanı genelinde görünür, sürüm oluşturmayı destekler ve etkileşimli olarak araştırılabilir. [Azure Machine Learning veri kümeleri oluşturma](how-to-create-register-datasets.md)bölümünde açıklandığı gibi, bir veri kümesi oluşturmanın ve doldurmanın birçok yolu vardır. İşlem hattımızı oluşturmak için Python SDK 'sını kullanacağız, temel verileri indirmek ve ' titanic_ds ' adına kaydetmek için SDK 'Yı kullanın.
+
+```python
+from azureml.core import Workspace, Dataset
+
+ws = Workspace.from_config()
+if not 'titanic_ds' in ws.datasets.keys() :
+    # create a TabularDataset from Titanic training data
+    web_paths = ['https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
+                 'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv']
+    titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
+
+    titanic_ds.register(workspace = ws,
+                                     name = 'titanic_ds',
+                                     description = 'Titanic baseline data',
+                                     create_new_version = True)
+
+titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
+```
+
+Kod, ilk olarak **config. JSON** içinde tanımlanan Azure Machine Learning çalışma alanında oturum açar (bir açıklama için bkz. [ÖĞRETICI: Python SDK ile ilk ml denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)). Zaten kayıtlı adlı `'titanic_ds'` bir veri kümesi yoksa, bir tane oluşturur. Kod, Web 'den CSV verilerini indirir, bunları bir `TabularDataset` örneğini başlatmak için kullanır ve sonra veri kümesini çalışma alanına kaydeder. Son olarak, işlevi `Dataset.get_by_name()` `Dataset` öğesine `titanic_ds`atar. 
+
+### <a name="configure-your-storage-and-compute-target"></a>Depolama ve işlem hedefini yapılandırma
+
+İşlem hattının gerek duyduğu ek kaynaklar depolama ve genellikle işlem kaynaklarını Azure Machine Learning. 
+
+```python
+from azureml.core import Datastore
+from azureml.core.compute import AmlCompute, ComputeTarget
+
+datastore = ws.get_default_datastore()
+
+compute_name = 'cpu-cluster'
+if not compute_name in ws.compute_targets :
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                                min_nodes=0,
+                                                                max_nodes=1)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+
+    compute_target.wait_for_completion(
+        show_output=True, min_node_count=None, timeout_in_minutes=20)
+
+    # Show the result
+    print(compute_target.get_status().serialize())
+
+compute_target = ws.compute_targets[compute_name]
+```
+
+Veri hazırlama ve otomatik ML adımı arasındaki ara veri, çalışma alanının varsayılan veri deposunda depolanabilir, bu nedenle `get_default_datastore()` `Workspace` nesne üzerinde çağrıdan daha fazlasını yapmak zorunda kalmazsınız. 
+
+Bundan sonra kod, AML işlem hedefinin `'cpu-cluster'` zaten var olup olmadığını denetler. Aksi takdirde, küçük bir CPU tabanlı işlem hedefi istiyoruz. Otomatik ML 'nin derin öğrenme özelliklerini kullanmayı planlıyorsanız (örneğin, DNN desteği ile metin kullanımı), [GPU iyileştirmeli sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)bölümünde açıklandığı gıbı güçlü GPU desteğiyle bir işlem seçmeniz gerekir. 
+
+Kod, hedef sağlanana kadar engeller ve ardından yeni oluşturulan işlem hedefinin bazı ayrıntılarını yazdırır. Son olarak, adlandırılmış işlem hedefi çalışma alanından alınır ve öğesine `compute_target`atanır. 
+
+### <a name="configure-the-training-run"></a>Eğitim çalıştırmasını yapılandırma
+
+Bir sonraki adım, uzaktan eğitim çalıştırmasının eğitim adımları için gereken tüm bağımlılıklara sahip olduğundan emin olmanızı sağlamak. Bağımlılıklar ve çalışma zamanı bağlamı bir `RunConfiguration` nesne oluşturularak ve yapılandırılarak ayarlanır. 
+
+```python
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+
+aml_run_config = RunConfiguration()
+# Use just-specified compute target ("cpu-cluster")
+aml_run_config.target = compute_target
+aml_run_config.environment.python.user_managed_dependencies = False
+
+# Add some packages relied on by data prep step
+aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+    conda_packages=['pandas','scikit-learn'], 
+    pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
+    pin_sdk_version=False)
+```
+
+## <a name="prepare-data-for-automated-machine-learning"></a>Otomatik makine öğrenimi için verileri hazırlama
+
+### <a name="write-the-data-preparation-code"></a>Veri hazırlama kodunu yazma
+
+Taban çizgisi Titanic veri kümesi, bazı değerler eksik olan karma sayısal ve metin verilerinden oluşur. Otomatik makine öğrenimi için hazırlamak üzere veri hazırlama işlem hattı adımı şunları olacak:
+
+- Eksik verileri rastgele verilerle veya "Unknown" öğesine karşılık gelen bir kategori ile doldur
+- Kategorik verileri tamsayılara Dönüştür
+- Kullanmayı planlamadığımız bırakma sütunları
+- Verileri eğitim ve test kümelerine bölme
+- Dönüştürülen verileri `PipelineData` çıkış yollarına yaz
+
+```python
+%%writefile dataprep.py
+from azureml.core import Run
+
+import pandas as pd 
+import numpy as np 
+import pyarrow as pa
+import pyarrow.parquet as pq
+import argparse
+
+RANDOM_SEED=42
+
+def prepare_age(df):
+    # Fill in missing Age values from distribution of present Age values 
+    mean = df["Age"].mean()
+    std = df["Age"].std()
+    is_null = df["Age"].isnull().sum()
+    # compute enough (== is_null().sum()) random numbers between the mean, std
+    rand_age = np.random.randint(mean - std, mean + std, size = is_null)
+    # fill NaN values in Age column with random values generated
+    age_slice = df["Age"].copy()
+    age_slice[np.isnan(age_slice)] = rand_age
+    df["Age"] = age_slice
+    df["Age"] = df["Age"].astype(int)
+    
+    # Quantize age into 5 classes
+    df['Age_Group'] = pd.qcut(df['Age'],5, labels=False)
+    df.drop(['Age'], axis=1, inplace=True)
+    return df
+
+def prepare_fare(df):
+    df['Fare'].fillna(0, inplace=True)
+    df['Fare_Group'] = pd.qcut(df['Fare'],5,labels=False)
+    df.drop(['Fare'], axis=1, inplace=True)
+    return df 
+
+def prepare_genders(df):
+    genders = {"male": 0, "female": 1, "unknown": 2}
+    df['Sex'] = df['Sex'].map(genders)
+    df['Sex'].fillna(2, inplace=True)
+    df['Sex'] = df['Sex'].astype(int)
+    return df
+
+def prepare_embarked(df):
+    df['Embarked'].replace('', 'U', inplace=True)
+    df['Embarked'].fillna('U', inplace=True)
+    ports = {"S": 0, "C": 1, "Q": 2, "U": 3}
+    df['Embarked'] = df['Embarked'].map(ports)
+    return df
+    
+parser = argparse.ArgumentParser()
+parser.add_argument('--output_path', dest='output_path', required=True)
+args = parser.parse_args()
+    
+titanic_ds = Run.get_context().input_datasets['titanic_ds']
+df = titanic_ds.to_pandas_dataframe().drop(['PassengerId', 'Name', 'Ticket', 'Cabin'], axis=1)
+df = prepare_embarked(prepare_genders(prepare_fare(prepare_age(df))))
+
+os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
+pq.write_table(pa.Table.from_pandas(df), args.output_path)
+
+print(f"Wrote test to {args.output_path} and train to {args.output_path}")
+```
+
+Yukarıdaki kod parçacığı, Titanic verileri için veri hazırlama işleminin tamamlığını ve en düşük örneğidir. Kod parçacığı, kodu bir dosyaya çıkarmak için bir Jupyıter "Magic komutuyla" başlar. Jupyter Not defteri kullanmıyorsanız, bu satırı kaldırın ve dosyayı el ile oluşturun.
+
+Yukarıdaki kod `prepare_` parçacığındaki çeşitli işlevler, giriş veri kümesindeki ilgili sütunu değiştirir. Bu işlevler, bir Pandas `DataFrame` nesnesine değiştirildikten sonra veriler üzerinde çalışır. Her durumda, eksik veriler temsili rastgele veriler veya "bilinmiyor" belirten kategorik veriler ile doldurulur. Metin tabanlı kategorik veriler, tamsayılarla eşlenir. Daha uzun süre gerekli olmayan sütunlar üzerine yazılır veya bırakılır. 
+
+Kod, veri hazırlama işlevlerini tanımladıktan sonra kod, veri değişkenini ayrıştırır. Bu, verilerimizi yazmak istediğimizden oluşan yoldur. (Bu değerler, bir sonraki adımda `PipelineData` ele edilecek nesneler tarafından belirlenir.) Kod, kayıtlı `'titanic_cs'` `Dataset`öğesini alır, bir Pandas `DataFrame`'e dönüştürür ve çeşitli veri hazırlama işlevlerini çağırır. 
+
+`output_path` Tam nitelikli olduğundan, işlev `os.makedirs()` dizin yapısını hazırlamak için kullanılır. Bu noktada, çıkış verilerini yazmak için `DataFrame.to_csv()` kullanabilirsiniz, ancak Parquet dosyaları daha etkilidir. Bu verimlilik büyük olasılıkla bu tür küçük bir veri kümesiyle ilgisizdir, ancak **Pyarrow** paketinin `from_pandas()` ve `write_table()` işlevlerinin kullanılması, yalnızca birkaç tuş vuruşu kullanmaktır `to_csv()`.
+
+Parquet dosyaları aşağıda ele alınan otomatik ML adımı tarafından yerel olarak desteklenir, bu nedenle bunları kullanmak için özel bir işlem gerekmez. 
+
+### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>Veri hazırlama işlem hattı adımını (`PythonScriptStep`) yazın
+
+Yukarıda açıklanan veri hazırlama kodu, işlem hattı ile kullanılacak bir `PythonScripStep` nesneyle ilişkilendirilmelidir. Parquet veri hazırlama çıktısının yazıldığı yol bir `PipelineData` nesne tarafından oluşturulur. Daha önce hazırlanan kaynakları,, ve `ComputeTarget` `RunConfig` `'titanic_ds' Dataset` gibi, belirtimi gerçekleştirmek için kullanılır.
+
+```python
+from azureml.pipeline.core import PipelineData
+from azureml.pipeline.steps import PythonScriptStep
+
+prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
+prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
+
+dataprep_step = PythonScriptStep(
+    name="dataprep", 
+    script_name="dataprep.py", 
+    compute_target=compute_target, 
+    runconfig=aml_run_config,
+    arguments=["--output_path", prepped_data_path],
+    inputs=[titanic_ds.as_named_input("titanic_ds")],
+    outputs=[prepped_data_path],
+    allow_reuse=True
+)
+```
+
+`prepped_data_path` Nesne türündedir `PipelineOutputFileDataset`. `arguments` Ve `outputs` bağımsız değişkenlerinde belirtildiğine dikkat edin. Önceki adımı gözden geçirdikten sonra, veri hazırlama kodunda bağımsız değişkenin `'--output_path'` değeri, Parquet dosyasının yazıldığı dosya yolu olduğunu görürsünüz. 
+
+## <a name="train-with-automlstep"></a>Oto Mlstep ile eğitme
+
+Bir otomatik ML ardışık düzen adımını yapılandırma `AutoMLConfig` sınıfı ile yapılır. Bu esnek sınıf, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)bölümünde açıklanmaktadır. Veri girişi ve çıkışı, bir ML ardışık düzeninde özel dikkat gerektiren yapılandırmanın tek yönlerine göre yapılır. İşlem hatlarında giriş `AutoMLConfig` ve çıkış aşağıda ayrıntılı olarak ele alınmıştır. Verilerin ötesinde, ML ardışık düzenleri avantajı farklı adımlar için farklı işlem hedefleri kullanabilme olanağıdır. Yalnızca otomatikleştirilmiş ML işlemi için daha güçlü `ComputeTarget` bir işlem kullanmayı tercih edebilirsiniz. Bunun yapılması, `RunConfiguration` `AutoMLConfig` nesnenin `run_configuration` parametresine daha güçlü atama yapmak kadar basittir.
+
+### <a name="send-data-to-automlstep"></a>Verileri buraya gönder`AutoMLStep`
+
+Bir ML ardışık düzeninde, giriş verileri bir `Dataset` nesne olmalıdır. En yüksek performanslı yol, giriş verilerini `PipelineOutputTabularDataset` nesne biçiminde sağlamaktır. Nesne gibi, `parse_parquet_files()` veya `parse_delimited_files()` üzerinde `PipelineOutputFileDataset`bu türde bir nesne oluşturun. `prepped_data_path`
+
+```python
+# type(prepped_data_path) == PipelineOutputFileDataset
+# type(prepped_data) == PipelineOutputTabularDataset
+prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
+```
+
+Yukarıdaki kod parçacığı, veri hazırlama adımının `PipelineOutputTabularDataset` `PipelineOutputFileDataset` çıktısından yüksek performanslı bir durum oluşturur.
+
+Diğer bir seçenek de çalışma `Dataset` alanında kayıtlı nesneleri kullanmaktır:
+
+```python
+prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
+```
+
+İki tekniği karşılaştırma:
+
+| Teknik |  | 
+|-|-|
+|`PipelineOutputTabularDataset`| Daha yüksek performans | 
+|| Doğal yol`PipelineData` | 
+|| İşlem hattı çalıştırıldıktan sonra veriler kalıcı değil |
+|| [Tekniği gösteren `PipelineOutputTabularDataset` Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+| Kaydedilmeyecek`Dataset` | Düşük performans |
+| | Birçok şekilde oluşturulabilir | 
+| | Veriler devam ettirir ve çalışma alanı boyunca görünür |
+| | [Kayıtlı `Dataset` tekniği gösteren not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
+
+### <a name="specify-automated-ml-outputs"></a>Otomatik ML çıkışları belirtin
+
+Çıkışları, `AutoMLStep` daha yüksek performanslı modelin ve bu modelin kendisi için nihai ölçüm puanlarından oluşur. Bu çıktıları daha fazla ardışık düzen adımlarında kullanmak için, `PipelineData` nesneleri bunları alacak şekilde hazırlayın.
+
+```python
+from azureml.pipeline.core import TrainingOutput
+
+metrics_data = PipelineData(name='metrics_data',
+                           datastore=datastore,
+                           pipeline_output_name='metrics_output',
+                           training_output=TrainingOutput(type='Metrics'))
+model_data = PipelineData(name='best_model_data',
+                           datastore=datastore,
+                           pipeline_output_name='model_output',
+                           training_output=TrainingOutput(type='Model'))
+```
+
+Yukarıdaki kod parçacığında ölçümler ve model `PipelineData` çıktısı için iki nesne oluşturulur. Her birinin adı, daha önce alınan varsayılan veri deposuna atanır ve `type` `TrainingOutput` kaynağından özel ile ilişkilendirilir. `AutoMLStep` Bu `pipeline_output_name` `PipelineData` nesnelere atandığımız için, değerleri yalnızca bireysel ardışık düzen adımından değil, işlem hattından bir bütün olarak değil, "işlem hattı sonuçlarını inceleme" bölümünde açıklanacaktır. 
+
+### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>Otomatik ML ardışık düzen adımını yapılandırma ve oluşturma
+
+Girişler ve çıktılar tanımlandıktan sonra, `AutoMLConfig` ve `AutoMLStep`oluşturma zamanı. Yapılandırma ayrıntıları, [Python 'da OTOMATIK ml denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)başlığı altında açıklandığı gibi, görevinize bağlı olacaktır. Titanic Inval sınıflandırma görevi için aşağıdaki kod parçacığında basit bir yapılandırma gösterilmektedir.
+
+```python
+from azureml.train.automl import AutoMLConfig
+from azureml.pipeline.steps import AutoMLStep
+
+# Change iterations to a reasonable number (50) to get better accuracy
+automl_settings = {
+    "iteration_timeout_minutes" : 10,
+    "iterations" : 2,
+    "experiment_timeout_hours" : 0.25,
+    "primary_metric" : 'AUC_weighted'
+}
+
+automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+
+train_step = AutoMLStep(name='AutoML_Classification',
+    automl_config=automl_config,
+    passthru_automl_config=False,
+    outputs=[metrics_data,model_data],
+    allow_reuse=True)
+```
+Kod parçacığında ile `AutoMLConfig`yaygın olarak kullanılan bir deyim gösterilmektedir. Daha akıcı olan bağımsız değişkenler, farklı bir sözlükte belirtilir, ancak değişmeme olasılığı düşük olan değerler doğrudan `AutoMLConfig` oluşturucuda belirtilir. Bu durumda, kısa bir `automl_settings` çalıştırma belirtin: çalıştırma, ilk olarak yalnızca 2 yinelemeden veya 15 dakikadan sonra durur.
+
+`automl_settings` Sözlük, `AutoMLConfig` oluşturucuya kwarg olarak geçirilir. Diğer parametreler karmaşık değildir:
+
+- `task`Bu örnek için `classification` olarak ayarlanır. Diğer geçerli değerler şunlardır `regression` ve`forecasting`
+- `path`ve `debug_log` hata ayıklama bilgilerinin yazılacağı projenin ve yerel bir dosyanın yolunu açıklama 
+- `compute_target`daha önce tanımlanan `compute_target` , bu örnekte ucuz bir CPU tabanlı makinedir. Oto ml 'nin derin öğrenme tesislerini kullanıyorsanız, işlem hedefini GPU tabanlı olacak şekilde değiştirmek isteyebilirsiniz
+- `featurization`, olarak `auto`ayarlanır. Diğer ayrıntılar, otomatik ML yapılandırma belgesinin [veri Korleştirme](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) bölümünde bulunabilir 
+- `training_data`veri hazırlama adımının çıktılarından yapılan `PipelineOutputTabularDataset` nesnelere ayarlanır 
+- `label_column_name`tahmin etmek için ilgilendiğiniz sütunu belirtir 
+
+, Ve, ölçümleri ve model verilerini tutmak için oluşturulan `PipelineData` nesneler olan ve ' ı alır. `AutoMLConfig` `AutoMLStep` 
+
+>[!Important]
+> Giriş için nesneleri `passthru_automl_config` kullanıyorsa `False` `PipelineOutputTabularDataset` , olarak `AutoMLStep` ' i ayarlamanız gerekir.
+
+Bu örnekte, otomatik ML işlemi üzerinde çapraz doğrulamalar gerçekleştirecek `training_data`. `n_cross_validations` Bağımsız değişkenle çapraz doğrulama sayısını kontrol edebilirsiniz. Eğitim verilerinizi veri hazırlama adımlarınızın bir parçası olarak zaten ayırdıysanız kendi kendine `validation_data` `Dataset`ayarlayabilirsiniz.
+
+Veri özellikleri ve `y` veri etiketleri için `X` kullanımı zaman zaman görebilirsiniz. Bu teknik kullanım dışıdır ve giriş için kullanmanız `training_data` gerekir. 
+
+## <a name="register-the-model-generated-by-automated-ml"></a>Otomatik ML tarafından oluşturulan modeli Kaydet 
+
+Temel bir ML işlem hattının son adımı oluşturulan modeli kaydediyor. Modeli çalışma alanının model kayıt defterine ekleyerek portalda kullanılabilir ve sürümlenebilir. Modeli kaydetmek için, `PythonScriptStep` `model_data` çıktısını alan bir tane yazın. `AutoMLStep`
+
+### <a name="write-the-code-to-register-the-model"></a>Modeli kaydetmek için kodu yazın
+
+Bir model bir `Workspace`öğesine kaydedilir. Yerel makinenizde çalışma alanınızda oturum açmak `Workspace.from_config()` için kullanımı hakkında bilgi sahibisiniz, ancak çalışma alanını çalışan bir ml işlem hattı içinden almanın başka bir yolu var. , `Run.get_context()` Etkin `Run`öğesini alır. Bu `run` nesne, burada `Workspace` kullanılan birçok önemli nesneye erişim sağlar.
+
+```python
+%%writefile register_model.py
+from azureml.core.model import Model, Dataset
+from azureml.core.run import Run, _OfflineRun
+from azureml.core import Workspace
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--model_name", required=True)
+parser.add_argument("--model_path", required=True)
+args = parser.parse_args()
+
+print(f"model_name : {args.model_name}")
+print(f"model_path: {args.model_path}")
+
+run = Run.get_context()
+ws = Workspace.from_config() if type(run) == _OfflineRun else run.experiment.workspace
+
+model = Model.register(workspace=ws,
+                       model_path=args.model_path,
+                       model_name=args.model_name)
+
+print("Registered version {0} of model {1}".format(model.version, model.name))
+```
+
+### <a name="write-the-pythonscriptstep-code"></a>PythonScriptStep kodunu yazma
+
+Model kaydı `PythonScriptStep` , bağımsız değişkenlerinden biri `PipelineParameter` için bir kullanır. İşlem hattı parametreleri, çalışma gönderme zamanında kolayca ayarlanabilme işlem hatları için bağımsız değişkenlerdir. Bildirildiğinde, normal bağımsız değişken olarak geçirilir. 
+
+```python
+
+from azureml.pipeline.core.graph import PipelineParameter
+
+# The model name with which to register the trained model in the workspace.
+model_name = PipelineParameter("model_name", default_value="TitanicSurvivalInitial")
+
+register_step = PythonScriptStep(script_name="register_model.py",
+                                       name="register_model",
+                                       allow_reuse=False,
+                                       arguments=["--model_name", model_name, "--model_path", model_data],
+                                       inputs=[model_data],
+                                       compute_target=compute_target,
+                                       runconfig=aml_run_config)
+```
+
+## <a name="create-and-run-your-automated-ml-pipeline"></a>Otomatikleştirilmiş ML işlem hattınızı oluşturma ve çalıştırma
+
+Bir normal `AutoMLStep` işlem hattından farklı olmayan bir işlem hattı oluşturmak ve çalıştırmak. 
+
+```python
+from azureml.pipeline.core import Pipeline
+from azureml.core import Experiment
+
+pipeline = Pipeline(ws, [dataprep_step, train_step, register_step])
+
+experiment = Experiment(workspace=ws, name='titanic_automl')
+
+run = experiment.submit(pipeline, show_output=True)
+run.wait_for_completion()
+```
+
+Yukarıdaki kod veri hazırlama, otomatik ML ve model kaydı adımlarını bir `Pipeline` nesneye birleştirir. Daha sonra bir `Experiment` nesnesi oluşturur. Varsa `Experiment` , Oluşturucu adlandırılmış denemeyi alır veya gerekirse oluşturun. İşlem hattını zaman `Pipeline` uyumsuz olarak `Experiment`çalıştıracak bir `Run` nesne oluşturarak öğesine gönderir. `wait_for_completion()` İşlev, çalıştırma tamamlanana kadar engeller.
+
+### <a name="examine-pipeline-results"></a>İşlem hattı sonuçlarını inceleme 
+
+`run` Tamamlandıktan sonra, atanmış nesneleri alabilirsiniz `PipelineData` `pipeline_output_name`. Sonuçları indirebilir ve daha fazla işleme için yükleyebilirsiniz.  
+
+```python
+metrics_output_port = run.get_pipeline_output('metrics_output')
+model_output_port = run.get_pipeline_output('model_output')
+
+metrics_output_port.download('.', show_progress=True)
+model_output_port.download('.', show_progress=True)
+```
+
+İndirilen dosyalar alt dizine `azureml/{run.id}/`yazılır. Ölçüm dosyası JSON olarak biçimlendirilir ve İnceleme için bir Pandas dataframe 'e dönüştürülebilir.
+
+Yerel işleme için, Pandas, Pickle, AzureML SDK vb. gibi ilgili paketleri yüklemeniz gerekebilir. Bu örnekte, otomatik ML tarafından bulunan en iyi modelin XGBoost 'e bağlı olması olasıdır.
+
+```bash
+!pip install xgboost==0.90
+```
+
+```python
+import pandas as pd
+import json
+
+metrics_filename = metrics_output._path_on_datastore
+# metrics_filename = path to downloaded file
+with open(metrics_filename) as f:
+   metrics_output_result = f.read()
+   
+deserialized_metrics_output = json.loads(metrics_output_result)
+df = pd.DataFrame(deserialized_metrics_output)
+df
+```
+
+Yukarıdaki kod parçacığı, Azure veri deposundaki konumundan yüklenen ölçüm dosyasını gösterir. Bu dosyayı, açıklamada gösterildiği gibi indirilen dosyadan da yükleyebilirsiniz. Seri durumdan çıkarıldıktan ve bir Pandas DataFrame 'e dönüştürüldükten sonra otomatik ML adımının yinelemelerinin her biri için ayrıntılı ölçümleri görebilirsiniz.
+
+Model dosyası, yük, daha fazla ölçüm `Model` Analizi vb. için kullanabileceğiniz bir nesne için seri durumdan çıkarılmış olabilir. 
+
+```python
+import pickle
+
+model_filename = model_output._path_on_datastore
+# model_filename = path to downloaded file
+
+with open(model_filename, "rb" ) as f:
+    best_model = pickle.load(f)
+
+# ... inferencing code not shown ...
+```
+
+Mevcut modellerle ilgili yükleme ve bunlarla çalışma hakkında daha fazla bilgi için bkz. [Azure Machine Learning var olan bir modeli kullanma](how-to-deploy-existing-model.md).
+
+### <a name="download-the-results-of-an-automated-ml-run"></a>Otomatikleştirilmiş bir ML çalıştırmasının sonuçlarını indir
+
+Makale ile birlikte takip ediyorsanız, Örneklenmiş `run` bir nesneniz olacaktır. Ancak, `Run` `Workspace` tamamlanan nesneleri bir `Experiment` nesnenin yoluyla da alabilirsiniz.
+
+Çalışma alanı tüm denemeleri ve çalıştırmalarınızın tüm kayıtlarını içerir. Denemeleri çıkışlarını bulmak ve indirmek ya da kodu kullanmak için portalını kullanabilirsiniz. Geçmişteki bir çalıştırıcıdaki kayıtlara erişmek için, ilgilendiğiniz çalıştırmanın KIMLIĞINI bulmak için Azure Machine Learning kullanın. Bu KIMLIKLE, `run` `Workspace` ve `Experiment`' nin belirli bir yöntemini seçebilirsiniz.
+
+```python
+# Retrieved from Azure Machine Learning web UI
+run_id = 'aaaaaaaa-bbbb-cccc-dddd-0123456789AB'
+experiment = ws.experiments['titanic_automl']
+run = next(run for run in ex.get_runs() if run.id == run_id)
+```
+
+Yukarıdaki koddaki dizeleri geçmiş çalıştırmalarınızın özelliklerine göre değiştirmeniz gerekir. Yukarıdaki kod parçacığında, normal `ws` `Workspace` `from_config()`konuyla ilgili olarak atadığınız varsayılır. İlgilendiğiniz deneme doğrudan alınır ve ardından kod, `Run` `run.id` değeri eşleştirerek ilgi alanını bulur.
+
+Bir `Run` nesneye sahip olduktan sonra ölçümleri ve modeli indirebilirsiniz. 
+
+```python
+automl_run = next(r for r in run.get_children() if r.name == 'AutoML_Classification')
+outputs = automl_run.get_outputs()
+metrics = outputs['default_metrics_AutoML_Classification']
+model = outputs['default_model_AutoML_Classification']
+
+metrics.get_port_data_reference().download('.')
+model.get_port_data_reference().download('.')
+```
+
+Her `Run` nesne, `StepRun` tek bir işlem hattı adımı çalıştırması hakkında bilgi içeren nesneler içerir. `run` , İçin `StepRun` nesnesine aranır `AutoMLStep`. Ölçüm ve model varsayılan adları kullanılarak alınır `PipelineData` `outputs` `AutoMLStep`. Bu, nesneleri öğesinin parametresine geçirmeseniz bile kullanılabilir. 
+
+Son olarak, yukarıdaki "işlem hattı sonuçlarını Inceleme" bölümünde anlatıldığı gibi gerçek ölçümler ve model yerel makinenize indirilir.
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+- Bu Jupyter Not defterini, taksi Fares 'yi tahmin etmek için regresyon kullanan bir işlem hattında [Otomatik ml 'nin tamamen bir örneğini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) çalıştırın
+- [Kod yazmadan otomatik ML denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)
+- [Otomatikleştirilen ml 'yi gösteren çeşitli jupi not defterlerini](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) keşfet
+- İşlem hattınızı [uçtan uca mlops](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) 'ye tümleştirme veya [Mlops GitHub deposunu](https://github.com/Microsoft/MLOpspython) araştırma hakkında bilgi edinin 
