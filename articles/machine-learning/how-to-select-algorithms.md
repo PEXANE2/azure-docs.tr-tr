@@ -10,12 +10,12 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891355"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927590"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning için algoritmalar seçme
 
@@ -148,6 +148,6 @@ Veri kümenizin Özellik önem puanlarını bir kümesini hesaplamak için [perm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- - [Azure Machine Learning Tasarımcısı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - [Azure Machine Learning Tasarımcısı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
  - Azure Machine Learning tasarımcısında bulunan tüm makine öğrenimi algoritmalarının açıklamaları için, bkz. [Machine Learning tasarımcı algoritması ve modül başvurusu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)
- - Derin öğrenme, makine öğrenimi ve AI arasındaki ilişkiyi araştırmak için bkz [. derin öğrenme vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
+ - Derin öğrenme, makine öğrenimi ve AI arasındaki ilişkiyi araştırmak için bkz [. derin öğrenme vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)

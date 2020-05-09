@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254241"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612461"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows lisansını oturum ana bilgisayarı sanal makinelerine Uygula
 
@@ -23,7 +23,7 @@ Windows sanal masaüstü lisansı, bir konak havuzunda oturum ana bilgisayarı o
 
 Windows sanal masaüstü lisansını kullanmanın birkaç yolu vardır:
 - [Azure Marketi](./create-host-pools-azure-marketplace.md)teklifini kullanarak bir konak havuzu ve onun oturum ana bilgisayarı sanal makinelerini oluşturabilirsiniz. Bu şekilde oluşturulan sanal makinelere otomatik olarak lisans uygulanır.
-- [GitHub Azure Resource Manager şablonunu](./create-host-pools-arm-template.md)kullanarak bir konak havuzu ve onun oturum ana bilgisayarı sanal makinelerini oluşturabilirsiniz. Bu şekilde oluşturulan sanal makinelere otomatik olarak lisans uygulanır.
+- [GitHub Azure Resource Manager şablonunu](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)kullanarak bir konak havuzu ve onun oturum ana bilgisayarı sanal makinelerini oluşturabilirsiniz. Bu şekilde oluşturulan sanal makinelere otomatik olarak lisans uygulanır.
 - Mevcut bir oturum ana bilgisayar sanal makinesine lisans uygulayabilirsiniz. Bunu yapmak için önce [PowerShell ile konak havuzu oluşturma](./create-host-pools-powershell.md) ' daki yönergeleri izleyerek bir konak havuzu ve Ilişkili VM 'ler oluşturun ve ardından bu makaleye geri dönüp lisansın nasıl uygulanacağını öğrenin.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Bir oturum ana bilgisayar VM 'sine bir Windows lisansı uygulama

@@ -8,29 +8,28 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4538c1d15aeae624f5d73e9985448bda2fd8f1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3149d45f50c53209e3be6be6688c9c2ce8fb0555
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188469"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900344"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Amazon hesabı ile kaydolma ve oturum açma ayarlama
 
-## <a name="create-an-amazon-application"></a>Amazon uygulaması oluşturma
+## <a name="create-an-app-in-the-amazon-developer-console"></a>Amazon geliştirici konsolunda uygulama oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını bir [kimlik sağlayıcısı](authorization-code-flow.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Henüz bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/).
+Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını federal kimlik sağlayıcısı olarak kullanmak için, [Amazon Developer Services ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/).
 
-1. Amazon hesabı kimlik bilgilerinizle [Amazon Geliştirici Merkezi](https://login.amazon.com/) ' nde oturum açın.
-1. Daha önce yapmadıysanız, **Kaydol**' a tıklayın, geliştirici kayıt adımlarını izleyin ve ilkeyi kabul edin.
-1. **Yeni uygulama kaydet**' i seçin.
-1. Bir **ad**, **Açıklama**ve **Gizlilik bildirimi URL 'si**girin ve ardından **Kaydet**' e tıklayın. Gizlilik bildirimi, kullanıcılara gizlilik bilgileri sağlayan bir sayfasıdır.
-1. **Web ayarları** bölümünde, **istemci kimliği**değerlerini kopyalayın. İstemci parolasını almak için **gizli göster** ' i seçin ve sonra kopyalayın. Bir Amazon hesabını kiracınızda kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız vardır. **Istemci parolası** önemli bir güvenlik kimlik bilgileridir.
-1. **Web ayarları** bölümünde **Düzenle**' yi seçin ve izin verilen **JavaScript kaynakları** ' na ve `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **izin verilen dönüş URL 'lerine**girin. `https://your-tenant-name.b2clogin.com` Kiracınızın adıyla değiştirin `your-tenant-name` . Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-1. **Kaydet**’e tıklayın.
+> [!NOTE]  
+> Aşağıdaki **8. adımdaki** URL 'leri kullanarak kiracınızın adıyla `your-tenant-name` değiştirin. Kiracı adınızı girerken, kiracı, Azure AD B2C büyük harfle tanımlansa bile, tüm küçük harfleri kullanın.
+> - **Izin verilen çıkış noktaları**için şunu girin`https://your-tenant-name.b2clogin.com` 
+> - **Izin verilen dönüş URL 'leri**için şunu girin`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Bir Amazon hesabını kimlik sağlayıcısı olarak yapılandırma
 

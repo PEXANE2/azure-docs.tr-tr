@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509831"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980907"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure Ölçüm Gezgini’nin gelişmiş özellikleri
 
@@ -137,9 +137,6 @@ Grafikleri yapılandırdıktan sonra, grafik satırlarına otomatik olarak varsa
 Bir grafik çizgisinin rengini değiştirmek için, göstergede grafiğe karşılık gelen renkli çubuğa tıklayın. Renk Seçici iletişim kutusu açılır. Çizginin rengini yapılandırmak için renk seçiciyi kullanın.
 
 Grafik renkleri yapılandırıldıktan sonra, grafiği bir panoya sabitledikten bu şekilde devam eder. Aşağıdaki bölümde bir grafiği nasıl sabitlenebilmeniz gösterilmektedir.
-
-> [!NOTE]
-> Yayın ve yayımlama zamanlamalarımızda kısıtlamalar nedeniyle, grafik çizgilerinin renkleri geçici olarak değiştirmek, Azure portal [https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)başlatılırken özel bir parametre **mi? Feature. ColorPicker = true** olarak geçirilmesini gerektirir. Bu sınırlama yakında kaldırılacak. 
 
 ![ölçüm resmi](./media/metrics-charts/018.png)
 

@@ -3,12 +3,12 @@ title: Azure portal Azure dosya paylaşımlarını yedekleme
 description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için Azure portal nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101336"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978037"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasında Azure dosya paylaşımlarını yedekleme
 
@@ -50,35 +50,70 @@ Depolama çoğaltma türünü değiştirmek için:
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Dosya paylaşımlarını bulma ve yedeklemeyi yapılandırma
 
-1. [Azure Portal](https://portal.azure.com/), dosya paylaşımının yedeklenmesini sağlamak için kullanmak Istediğiniz kurtarma hizmetleri kasasını açın.
+1. [Azure Portal](https://portal.azure.com/), dosya paylaşımının yedeklemesini yapılandırmak için kullanmak Istediğiniz kurtarma hizmetleri kasasını açın.
 
-1. **Kurtarma Hizmetleri Kasası** panosunda **+ yedekleme**' yi seçin.
+1. **Kurtarma Hizmetleri Kasası** bölmesinde, üstteki menüden **+ Backup** ' ı seçin.
 
    ![Kurtarma Hizmetleri kasası](./media/backup-afs/recovery-services-vault.png)
 
-    a. **Yedekleme hedefi**' nde, **iş yükünüzün çalıştığı yeri** **Azure**'da belirleyin.
+    1. **Yedekleme hedefi** bölmesinde, **Iş yükünüzün nerede çalıştığını** , açılan listeden **Azure** seçeneğini belirleyerek **Azure** 'a ayarlayın.
 
-    ![Azure dosya paylaşma 'yı yedekleme hedefi olarak seçme](./media/backup-afs/backup-goal.png)
+          ![İş yükü olarak Azure 'u seçin](./media/backup-afs/backup-goal.png)
 
-    b.  **Neleri yedeklemek istiyorsunuz?** bölümünde, açılan listeden **Azure dosya paylaşma** ' yı seçin.
+    2. **Neleri yedeklemek istiyorsunuz?** bölümünde, açılan listeden **Azure dosya paylaşma** ' yı seçin.
 
-    c.  Azure dosya paylaşımının uzantısını kasaya kaydetmek için **Yedekle** ' yi seçin.
+          ![Azure FileShare seçin](./media/backup-afs/select-azure-file-share.png)
 
-    ![Azure dosya paylaşımının kasasıyla ilişkilendirilmesi için yedekleme 'yi seçin](./media/backup-afs/register-extension.png)
+    3. Azure dosya paylaşımının uzantısını kasaya kaydetmek için **Yedekle** ' yi seçin.
 
-1. **Yedekleme**seçeneğini belirledikten sonra, **yedekleme** bölmesi açılır ve bulunan desteklenen depolama hesapları listesinden bir depolama hesabı seçmenizi ister. Bu kasayla ilişkilendirilir veya kasada aynı bölgede bulunur, ancak henüz herhangi bir kurtarma hizmetleri kasasıyla ilişkilendirilmemiştir.
+          ![Azure dosya paylaşımının kasasıyla ilişkilendirilmesi için yedekleme 'yi seçin](./media/backup-afs/register-extension.png)
 
-1. Bulunan depolama hesapları listesinden bir hesap seçin ve **Tamam**' ı seçin. Azure, yedeklenebilir dosya paylaşımları için depolama hesabını arar. Dosya paylaşımlarınızı son zamanlarda eklediyseniz ve listede görmüyorsanız, dosya paylaşımlarının görünmesi için bir süre bekleyin.
+1. **Yedekle**' yi seçtikten sonra **yedekleme** bölmesi açılır. Korumak istediğiniz dosya paylaşımının barındırıldığı depolama hesabını seçmek için, **depolama hesabı** metin kutusunun altındaki bağlantı **Seç** metnine tıklayın.
 
-    ![Dosya paylaşımları bulunuyor](./media/backup-afs/discovering-file-shares.png)
+   ![Seçme bağlantısını seçin](./media/backup-afs/choose-select-link.png)
 
-1. **Dosya paylaşımları** listesinde, yedeklemek istediğiniz bir veya daha fazla dosya paylaşımını seçin. **Tamam**’ı seçin.
+1. **Depolama hesabı Seç bölmesi** sağ tarafta açılarak, bulunan desteklenen depolama hesaplarının bir kümesini listeler. Bu kasayla ilişkilendirilir veya kasada aynı bölgede bulunur, ancak henüz herhangi bir kurtarma hizmetleri kasasıyla ilişkilendirilmemiştir.
+
+1. Bulunan depolama hesapları listesinden bir hesap seçin ve **Tamam**' ı seçin.
+
+   ![Bulunan depolama hesaplarından seçin](./media/backup-afs/select-discovered-storage-account.png)
+
+1. Sonraki adım, yedeklemek istediğiniz dosya paylaşımlarını seçdir. **Yedeklenecek dosya paylaşımları** bölümünde **Ekle** düğmesine tıklayın.
+
+   ![Yedeklenecek dosya paylaşımlarını seçin](./media/backup-afs/select-file-shares-to-back-up.png)
+
+1. Sağ tarafta **dosya paylaşımları seçin** bağlam bölmesi açılır. Azure, yedeklenebilir dosya paylaşımları için depolama hesabını arar. Dosya paylaşımlarınızı son zamanlarda eklediyseniz ve listede görmüyorsanız, dosya paylaşımlarının görünmesi için bir süre bekleyin.
+
+1. **Dosya paylaşımları Seç** listesinden yedeklemek istediğiniz bir veya daha fazla dosya paylaşımını seçin. **Tamam**’ı seçin.
 
    ![Dosya paylaşımlarını seçin](./media/backup-afs/select-file-shares.png)
 
-1. Dosya paylaşımlarınızı seçtikten sonra, **yedekleme** menüsü **yedekleme ilkesi**' ne geçer. Bu menüden, mevcut bir yedekleme ilkesi seçin ya da yeni bir tane oluşturun. Sonra **yedeklemeyi etkinleştir**' i seçin.
+1. Dosya paylaşımınız için bir yedekleme ilkesi seçmek üzere üç seçeneğiniz vardır:
 
-    ![Yedekleme ilkesi seçin](./media/backup-afs/select-backup-policy.png)
+   * Varsayılan ilkeyi seçin.<br>
+   Bu seçenek, 30 gün boyunca tutulacak günlük yedeklemeyi etkinleştirmenizi sağlar. Kasada mevcut bir yedekleme ilkeniz yoksa, yedekleme bölmesi varsayılan ilke ayarlarıyla açılır. Varsayılan ayarları seçmek istiyorsanız, doğrudan **yedeklemeyi etkinleştir**' e tıklayabilirsiniz.
+
+   * Yeni ilke oluşturma <br>
+
+      1. Dosya paylaşımınız için yeni bir yedekleme ilkesi oluşturmak üzere **yedekleme ilkesi** bölümündeki aşağı açılan listenin altındaki bağlantı metnine tıklayın.<br>
+
+         ![Yeni ilke oluştur](./media/backup-afs/create-new-policy.png)
+
+      1. **Yedekleme ilkesi** bağlam bölmesi sağ tarafta açılır. Metin kutusunda bir ilke adı belirtin ve gereksinimlerinize göre bekletme dönemini seçin. Yalnızca günlük bekletme seçeneği varsayılan olarak etkindir. Haftalık, aylık veya yıllık saklama kullanmak istiyorsanız, ilgili onay kutusunu seçin ve istenen saklama değerini sağlayın.
+
+      1. Saklama değerlerini ve geçerli bir ilke adını belirttikten sonra Tamam ' a tıklayın.<br>
+
+         ![İlke adı ve bekletme değerleri verme](./media/backup-afs/policy-name.png)
+
+   * Mevcut yedekleme ilkelerinden birini seçin <br>
+
+   Korumayı yapılandırmak için mevcut yedekleme ilkelerinden birini seçmek için **yedekleme ilkesi** açılan listesinden istenen ilkeyi seçin.<br>
+
+   ![Mevcut ilkeyi seçin](./media/backup-afs/choose-existing-policy.png)
+
+1. Dosya paylaşımının korunmasına başlamak için **yedeklemeyi etkinleştir** ' e tıklayın.
+
+   ![Yedeklemeyi Etkinleştir ' i seçin](./media/backup-afs/enable-backup.png)
 
 Bir yedekleme İlkesi ayarladıktan sonra, dosya paylaşımlarının bir anlık görüntüsü zamanlanan saatte alınır. Kurtarma noktası, seçilen dönem için de korunur.
 

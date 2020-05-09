@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: f4379a5149fff020eb532f0e17cc1c37fbdcd694
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232436"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612801"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Gelişmiş güvenlik için Standart katmana yükseltme
 
@@ -49,9 +49,12 @@ Standart katmanı almak için:
 [![Güvenlik Merkezi fiyatlandırması](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
-> Gelişmiş tehdit koruması özellikleri dahil tüm güvenlik merkezi özelliklerini etkinleştirmek için, uygun iş yüklerini içeren aboneliğe standart fiyatlandırma katmanını uygulamanız gerekir. Bir çalışma alanı için fiyatlandırmayı yapılandırmak, Azure kaynakları için tam zamanında VM erişimi, uyarlamalı uygulama denetimleri ve ağ algılamalarını etkinleştirmez. 
+> Tehdit koruması özellikleri dahil tüm güvenlik merkezi özelliklerini etkinleştirmek için, ilgili iş yüklerini içeren aboneliğe standart fiyatlandırma katmanını uygulamanız gerekir. Bir çalışma alanı için fiyatlandırmayı yapılandırmak, Azure kaynakları için tam zamanında VM erişimi, uyarlamalı uygulama denetimleri ve ağ algılamalarını etkinleştirmez. 
 >
-> Depolama hesapları ve PaaS SQL/MySQL/PG sunucuları için Güvenlik Merkezi 'nin tehdit koruması Şu anda tek tek depolama/SQL iş yüklerini korumak için kaynak düzeyinde etkinleştirilebilen tek iş yükleridir.
+> **Azure depolama hesapları** için tehdit korumasını abonelik düzeyinde veya kaynak düzeyinde etkinleştirebilirsiniz.
+> **Azure SQL VERITABANı SQL Server 'lar** için tehdit korumasını abonelik düzeyinde veya kaynak düzeyinde etkinleştirebilirsiniz.
+> **MariaDB/MySQL/PostgreSQL Için Azure veritabanı** için tehdit korumasını yalnızca kaynak düzeyinde etkinleştirebilirsiniz.
+
 
 ## <a name="why-upgrade-to-standard"></a>Neden standart olarak yükseltilir?
 Güvenlik Merkezi, karma bulut iş yükleriniz için aşağıdakiler dahil gelişmiş güvenlik ve tehdit koruması sağlar:

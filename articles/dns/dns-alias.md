@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 271770935cf4cb83d4abc6e82a4f4b13ffe865b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295497"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926241"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS diğer ad kayıtlarına genel bakış
 
@@ -66,7 +66,7 @@ Bu sorun diğer ad kayıtları kullanılarak çözülebilir. CNAME kayıtların�
 
 Traffic Manager bir profilde olduğu gibi, DNS bölgenizi Azure CDN tepesinde uç noktalarına göstermek için diğer ad kayıtlarını da kullanabilirsiniz. Bu, Azure depolama ve Azure CDN kullanarak statik Web siteleri oluşturduğunuzda yararlı olur. Daha sonra Web sitesine "www" önlemeden DNS adınızı gönderebilirsiniz.
 
-Örneğin, statik Web siteniz, DNS adına son `www.contoso.com, your users can access your site using contoso.com` www 'e eklenmiş olması gerekmeden adlandırılmışsa.
+Örneğin, statik Web siteniz adlandırılmışsa `www.contoso.com`, kullanıcılarınız www 'i DNS adına eklemek zorunda `contoso.com` kalmadan sitenize erişebilir.
 
 Daha önce açıklandığı gibi, CNAME kayıtları tepesinde bölgesinde desteklenmez. Bu nedenle, contoso.com 'i CDN uç noktanıza göstermek için bir CNAME kaydı kullanamazsınız. Bunun yerine, bölge tepesinde doğrudan bir CDN uç noktasına göstermek için bir diğer ad kaydı kullanabilirsiniz.
 
