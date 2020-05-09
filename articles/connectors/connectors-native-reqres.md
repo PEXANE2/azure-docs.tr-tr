@@ -3,20 +3,20 @@ title: HTTPS kullanarak çağrıları alma ve yanıtlama
 description: Azure Logic Apps kullanarak dış hizmetlerden gelen HTTPS isteklerini işleyin
 services: logic-apps
 ms.suite: integration
-ms.reviewers: klam, logicappspm
+ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: c6d8dc087e6306173fc4d55368cd3c4c624d5302
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900945"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978578"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi veya yanıtı eylemiyle, gelen https isteklerini alıp yanıtlayan otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik istek tetikleyicisi ve yanıtı eylemiyle, gelen https isteklerini alıp yanıtlayan otomatik görevler ve iş akışları oluşturabilirsiniz. Örneğin, mantıksal uygulamanızı kullanabilirsiniz:
 
 * Şirket içi bir veritabanındaki veriler için bir HTTPS isteği alın ve yanıt verin.
 * Dış Web kancası olayı gerçekleştiğinde iş akışı tetikleyin.
@@ -49,11 +49,11 @@ Istek tetikleyicisi, mantıksal uygulamanıza gelen çağrıları yetkilendirmek
 
 ## <a name="add-request-trigger"></a>Istek tetikleyicisi Ekle
 
-Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile ÇAĞRıLABILIR bir HTTPS uç noktası oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır.
+Bu yerleşik tetikleyici, *yalnızca* gelen https isteklerini alabilen el ile ÇAĞRıLABILIR bir HTTPS uç noktası oluşturur. Bu olay gerçekleştiğinde tetikleyici ateşlenir ve mantıksal uygulamayı çalıştırır. Tetikleyicinin temel alınan JSON tanımı ve bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [istek tetikleme türü](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ve Azure Logic Apps ' [de HTTPS uç noktaları ile çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
-1. Mantıksal uygulama Tasarımcısı açıldıktan sonra, arama kutusuna filtreniz olarak "http isteği" yazın. Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olan **BIR http isteği alındığında** tetiklenir ' ı seçin.
+1. Mantıksal uygulama Tasarımcısı açıldıktan sonra arama kutusuna filtreniz olarak girin `http request` . Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olan **BIR http isteği alındığında** tetiklenir ' ı seçin.
 
    ![Istek tetikleyicisi seçin](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -254,7 +254,7 @@ Mantıksal uygulamanız gelen isteği yalnızca bir dakika boyunca açık tutar.
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
    | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
-   | **Üst bilgiler** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Bilgisinde** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
    | **Gövde** | `body` | No | Yanıt gövdesi |
    |||||
 
