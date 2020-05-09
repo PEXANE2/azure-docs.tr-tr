@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc86dd488ff9e8649ae80f4768941791dd37fce6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726780"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735343"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC için en iyi uygulamalar
 
@@ -26,13 +26,13 @@ Bu makalede, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmaya yöneli
 
 ## <a name="only-grant-the-access-users-need"></a>Yalnızca kullanıcılara ihtiyacı olan erişime izin ver
 
-Azure RBAC kullanarak, ekiplerinizi takımınızın içinde ayırabilirsiniz ve yalnızca işlerini gerçekleştirmesi için ihtiyaç duydukları kullanıcılara erişim miktarını verebilirsiniz. Herkese Azure aboneliğiniz veya kaynaklarınızda sınırsız izin vermek yerine belirli eylemlere yalnızca belirli kapsamlarda izin verebilirsiniz.
+Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz. Herkese Azure aboneliğiniz veya kaynaklarınızda sınırsız izin vermek yerine belirli eylemlere yalnızca belirli kapsamlarda izin verebilirsiniz.
 
-Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Aşağıdaki diyagramda RBAC kullanımı için önerilen model gösterilmiştir.
+Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Aşağıdaki diyagramda Azure RBAC kullanımı için önerilen bir model gösterilmektedir.
 
-![RBAC ve en düşük öncelik](./media/best-practices/rbac-least-privilege.png)
+![Azure RBAC ve en düşük ayrıcalık](./media/best-practices/rbac-least-privilege.png)
 
-Rol atamaları ekleme hakkında daha fazla bilgi için bkz. [rol atamaları ekleme veya kaldırma](role-assignments-portal.md).
+Rol atamaları ekleme hakkında daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](role-assignments-portal.md).
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Abonelik sahiplerinin sayısını sınırlayın
 
