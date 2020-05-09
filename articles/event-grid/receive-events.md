@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60803767"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629601"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
 
-Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve seri durumdan çıkarmak için [BIR HTTP uç noktasının nasıl doğrulanacağı](security-authentication.md#webhook-event-delivery) açıklanır. Bu makalede tanıtım amaçlı olarak bir Azure Işlevi kullanılmaktadır, ancak aynı kavramlar uygulamanın nerede barındırıldığından bağımsız olarak geçerlidir.
+Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve seri durumdan çıkarmak için [BIR HTTP uç noktasının nasıl doğrulanacağı](webhook-event-delivery.md) açıklanır. Bu makalede tanıtım amaçlı olarak bir Azure Işlevi kullanılmaktadır, ancak aynı kavramlar uygulamanın nerede barındırıldığından bağımsız olarak geçerlidir.
 
 > [!NOTE]
 > Event Grid ile bir Azure Işlevi tetiklendiğinde [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önemle** önerilir. Burada genel Web kancası tetikleyicisi kullanımı gösterim amaçlıdır ' dir.
@@ -50,7 +50,7 @@ Azure işlevinizdeki "dosyaları görüntüle" bağlantısına tıklayın (Azure
 
 ## <a name="endpoint-validation"></a>Uç nokta doğrulaması
 
-Yapmak istediğiniz ilk şey olayları işler `Microsoft.EventGrid.SubscriptionValidationEvent` . Her biri bir olaya abone olduğunda, Event Grid veri yükünde bir olan bir `validationCode` doğrulama olayını uç noktaya gönderir. Uç noktanın [geçerli olduğunu ve size ait olduğunu kanıtlamak](security-authentication.md#webhook-event-delivery)için bu uç noktanın yanıt gövdesinde geri yankılanması gerekir. Web kancası tarafından tetiklenen bir Işlev yerine [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanıyorsanız, uç nokta doğrulaması sizin için işlenir. Üçüncü taraf bir API hizmeti kullanıyorsanız ( [Zapier](https://zapier.com) veya [ifttt](https://ifttt.com/)gibi), doğrulama kodunu programlama yoluyla yankılanmayabilir. Bu hizmetler için abonelik doğrulama olayında gönderilen doğrulama URL 'sini kullanarak aboneliği el ile doğrulayabilirsiniz. Bu URL 'YI `validationUrl` özellikte kopyalayın ve bir rest istemcisi veya Web tarayıcınız aracılığıyla bir get isteği gönderin.
+Yapmak istediğiniz ilk şey olayları işler `Microsoft.EventGrid.SubscriptionValidationEvent` . Her biri bir olaya abone olduğunda, Event Grid veri yükünde bir olan bir `validationCode` doğrulama olayını uç noktaya gönderir. Uç noktanın [geçerli olduğunu ve size ait olduğunu kanıtlamak](webhook-event-delivery.md)için bu uç noktanın yanıt gövdesinde geri yankılanması gerekir. Web kancası tarafından tetiklenen bir Işlev yerine [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanıyorsanız, uç nokta doğrulaması sizin için işlenir. Üçüncü taraf bir API hizmeti kullanıyorsanız ( [Zapier](https://zapier.com) veya [ifttt](https://ifttt.com/)gibi), doğrulama kodunu programlama yoluyla yankılanmayabilir. Bu hizmetler için abonelik doğrulama olayında gönderilen doğrulama URL 'sini kullanarak aboneliği el ile doğrulayabilirsiniz. Bu URL 'YI `validationUrl` özellikte kopyalayın ve bir rest istemcisi veya Web tarayıcınız aracılığıyla bir get isteği gönderin.
 
 C# ' de, `DeserializeEventGridEvents()` işlev Event Grid olaylarını serileştirir. Olay verilerini StorageBlobCreatedEventData gibi uygun tür olarak serileştirir. Desteklenen olay `Microsoft.Azure.EventGrid.EventTypes` türlerini ve adlarını almak için sınıfını kullanın.
 

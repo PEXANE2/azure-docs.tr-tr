@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406037"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855783"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Automation 'da metin runbook 'larını Düzenle
 
@@ -22,7 +22,7 @@ Azure Otomasyonu 'ndaki metinsel düzenleyici, [PowerShell runbook](automation-r
 
 Metinsel düzenleyici, bir runbook 'a cmdlet 'ler, varlıklar ve alt runbook 'lar için kod ekleme özelliğini içerir. Kodu kendiniz yazmak yerine, kullanılabilir kaynaklar listesinden seçim yapabilirsiniz ve düzenleyici ilgili kodu runbook 'a ekler.
 
-Azure Otomasyonu 'ndaki her runbook 'un taslak ve yayımlanan iki sürümü vardır. Runbook 'un taslak sürümünü düzenleyin ve ardından yürütülebilmesi için yayımlayın. Yayımlanan sürüm düzenlenemez. Daha fazla bilgi için bkz. [runbook yayımlama](manage-runbooks.md#publishing-a-runbook).
+Azure Otomasyonu 'ndaki her runbook 'un taslak ve yayımlanan iki sürümü vardır. Runbook 'un taslak sürümünü düzenleyin ve ardından yürütülebilmesi için yayımlayın. Yayımlanan sürüm düzenlenemez. Daha fazla bilgi için bkz. [runbook yayımlama](manage-runbooks.md#publish-a-runbook).
 
 Bu makalede, bu düzenleyiciyle farklı işlevler gerçekleştirmeye yönelik ayrıntılı adımlar sağlanmaktadır. Bunlar [grafik runbook 'lar](automation-runbook-types.md#graphical-runbooks)için geçerli değildir. Bu runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md).
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir runbook 'un içeriğini değiştirme
 
-Aşağıdaki örnek komutlarda bir runbook 'un mevcut içeriğinin bir betik dosyasının içeriğiyle nasıl değiştirileceği gösterilmektedir. Bu, [Windows PowerShell ile bir betik dosyasından bir runbook 'u içeri aktarmak için ile](manage-runbooks.md#importing-a-runbook)aynı örnek yordamdır.
+Aşağıdaki örnek komutlarda bir runbook 'un mevcut içeriğinin bir betik dosyasının içeriğiyle nasıl değiştirileceği gösterilmektedir. 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

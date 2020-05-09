@@ -1,20 +1,20 @@
 ---
-title: Ticari Market 'te Azure uygulamaları teklifi için gözden geçirme geri bildirimini işleme
-description: Azure uygulamaları için, Microsoft Iş Ortağı Merkezi 'nde ticari Market portalı 'nı kullanarak Azure Market, AppSource veya bulut çözümü sağlayıcısı (CSP) aracılığıyla listeleme veya satma için gözden geçirme ile ilgili geri bildirimleri ele alma.
+title: Microsoft Commercial Market 'te Azure uygulamaları teklifi için gözden geçirme geri bildirimi işleme
+description: Azure uygulamalarının Azure Market, AppSource veya Microsoft Iş Ortağı Merkezi 'ndeki ticari Market portalını kullanan bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listelemek veya satmak için gözden geçirme geri bildirimleri nasıl ele alır.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279802"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744882"
 ---
-# <a name="handling-review-feedback"></a>Gözden geçirme geri bildirimini işleme
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Azure Market 'te yayımlamadan önce Azure uygulamaları için gözden geçirme geri bildirimini işleme
 
 Bu makalede, Microsoft Azure Market gözden geçirme ekibi tarafından kullanılan Azure DevOps ortamına nasıl erişebileceğiniz açıklanır. **Microsoft gözden geçirme** adımı sırasında Azure Uygulama teklifinizdeki kritik sorunlar bulunursa, bu sorunlarla ilgili ayrıntılı bilgileri görüntülemek için bu sistemde oturum açabilirsiniz (geri bildirim gözden geçirin). Tüm bu sorunları düzelttikten sonra, Azure Marketi 'nde yayımlamaya devam etmek için teklifinizi yeniden göndermeniz gerekir. Aşağıdaki diyagramda, bu geri bildirim işleminin yayımlama işlemiyle nasıl ilişkili olduğu gösterilmektedir.
 

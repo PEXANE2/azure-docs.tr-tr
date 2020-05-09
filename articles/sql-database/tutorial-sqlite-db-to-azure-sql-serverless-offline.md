@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780515"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629210"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite veritabanınızı Azure SQL veritabanı sunucusuz 'a geçirme
-Birçok kişi için, SQLite, veritabanlarının ve SQL programlamanın ilk deneyimini sağlar. Birçok işletim sistemine dahil değildir ve popüler uygulamalar, dünyanın en yaygın olarak dağıtılan ve kullanılan veritabanı altyapılarından biridir. Büyük olasılıkla çok sayıda kişinin kullandıkları ilk veritabanı altyapısı olduğundan, proje veya uygulamaların merkezi bir parçası olarak genellikle bu durum oluşabilir. Bu tür durumlarda, projenin veya uygulamanın ilk SQLite uygulamasını artmıştır, geliştiricilerin verilerini güvenilir, merkezi bir veri deposuna geçirilmesi gerekebilir.
+Birçok kişi için, SQLite, veritabanlarının ve SQL programlamanın ilk deneyimini sağlar. Birçok işletim sistemine dahil değildir ve popüler uygulamalarda, dünyanın en yaygın olarak dağıtılan ve kullanılan veritabanı altyapılarından biri SQLite olur. Büyük olasılıkla çok sayıda kişinin kullandıkları ilk veritabanı altyapısı olduğundan, proje veya uygulamaların merkezi bir parçası olarak genellikle bu durum oluşabilir. Bu tür durumlarda, projenin veya uygulamanın ilk SQLite uygulamasını artmıştır, geliştiricilerin verilerini güvenilir, merkezi bir veri deposuna geçirilmesi gerekebilir.
 
 Azure SQL veritabanı sunucusuz, iş yükü talebine göre işlemi otomatik olarak ölçeklendirilen tek veritabanlarına yönelik bir işlem katmandır ve saniye başına kullanılan işlem miktarına göre faturalandırılır. Sunucusuz bilgi işlem katmanı Ayrıca, yalnızca depolama faturalandırılırken etkin olmayan dönemler sırasında veritabanlarını otomatik olarak duraklatır ve etkinlik döndüğünde veritabanlarını otomatik olarak sürdürür.
 

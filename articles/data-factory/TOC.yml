@@ -675,6 +675,8 @@
           href: how-to-fixed-width.md
         - name: Hata satırı işleme
           href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB’den CosmosDB’ye
+          href: how-to-sqldb-to-cosmosdb.md
     - name: Şirket içinden SSIS’ye geçirme
       items:
         - name: SSIS geçişine genel bakış
