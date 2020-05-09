@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653725"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611390"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için NPS uzantısından alınan hata iletilerini çözme
 
@@ -66,9 +67,9 @@ Azure Multi-Factor Authentication için NPS uzantısıyla ilgili hatalarla karş
 
 Bazen, kullanıcılarınız kimlik doğrulama isteği başarısız olduğundan Multi-Factor Authentication iletiler alabilir. Bunlar yapılandırma ürününde hatalar değildir, ancak bir kimlik doğrulama isteğinin neden reddedildiğini belirten kasıtlı bir uyarılardır.
 
-| Hata kodu | Hata iletisi | Önerilen adımlar | 
+| Hata kodu | Hata iletisi | Önerilen adımlar |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Yanlış kod Entered\om kodu yanlış | Kullanıcı yanlış koda girdi. Yeni bir kod isteyerek veya yeniden oturum açarak yeniden deneyin. | 
+| **OathCodeIncorrect** | Yanlış kod Entered\om kodu yanlış | Kullanıcı yanlış koda girdi. Yeni bir kod isteyerek veya yeniden oturum açarak yeniden deneyin. |
 | **Smsauthfailedmaxallowedcoderetr'e ulaşıldı** | İzin verilen maksimum kod yeniden denemesi ulaştı | Kullanıcı doğrulama sınaması çok fazla kez başarısız oldu. Ayarlarınıza bağlı olarak, şimdi bir yönetici tarafından engellenmemiş olmaları gerekebilir.  |
 | **Smsauthfailedyanlışlıkla Gcodegirildi** | Yanlış kod girildi/kısa mesaj OTP yanlış | Kullanıcı yanlış koda girdi. Yeni bir kod isteyerek veya yeniden oturum açarak yeniden deneyin. |
 

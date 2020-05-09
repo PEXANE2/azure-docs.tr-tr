@@ -1,6 +1,6 @@
 ---
-title: Azure portal ile Azure kaynakları için atamaları reddetme listesi
-description: Azure portal kullanarak belirli kapsamlardaki belirli Azure Kaynak eylemlerine erişimi reddedilmiş kullanıcıları, grupları, hizmet sorumlularını ve yönetilen kimlikleri nasıl listeleyeceğinizi öğrenin.
+title: Azure portal-Azure RBAC kullanarak Azure reddetme atamalarını listeleme
+description: Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak belirli kapsamlardaki belirli Azure Kaynak eylemlerine erişimi reddedilmiş kullanıcıları, grupları, hizmet sorumlularını ve yönetilen kimlikleri nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137433"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734119"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure portal kullanarak Azure kaynakları için atamaları reddetme listesi
+# <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure reddetme atamalarını listeleyin
 
-Bir rol ataması erişime izin verirse, [atamaları Reddet](deny-assignments.md) , kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede, Azure portal kullanarak reddedilen atamaları listeleme açıklanmaktadır.
+[Azure reddetme atamaları](deny-assignments.md) , bir rol ataması erişim izni veriyorsa bile kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede, Azure portal kullanarak reddedilen atamaları listeleme açıklanmaktadır.
 
 > [!NOTE]
-> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [atamaları reddetme](deny-assignments.md).
+> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [Azure atamaları reddetme](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
-- `Microsoft.Authorization/denyAssignments/read`[Azure kaynakları için en yerleşik rollerde](built-in-roles.md)bulunan izin.
+- `Microsoft.Authorization/denyAssignments/read`[Azure yerleşik rollerinin](built-in-roles.md)çoğunda bulunan izin.
 
 ## <a name="list-deny-assignments"></a>Ret atamalarını listeleme
 
@@ -109,5 +109,5 @@ Reddetme atama hakkında ek ayrıntıları listelemek için aşağıdaki adımla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure kaynakları için reddedilen atamaları anlama](deny-assignments.md)
-* [Azure PowerShell kullanarak Azure kaynakları için atamaları reddetme listesi](deny-assignments-powershell.md)
+* [Azure reddetme atamalarını anlama](deny-assignments.md)
+* [Azure PowerShell kullanarak Azure reddetme atamalarını listeleme](deny-assignments-powershell.md)

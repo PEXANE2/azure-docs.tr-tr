@@ -27,10 +27,13 @@
   items:
     - name: Redis için Azure Önbelleği örnekleri
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Güvenlik
@@ -63,7 +66,7 @@
           href: cache-migrate-to-redis.md
     - name: Otomatikleştirme
       items:
-        - name: Azure Powershell kullanarak dağıtma ve yönetme
+        - name: Azure PowerShell kullanarak dağıtma ve yönetme
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI Kullanarak Dağıtın ve Yönetin
           href: cli-samples.md
@@ -83,7 +86,7 @@
           items:
             - name: Spring Boot Başlatıcı uygulaması kullanma
               href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: Azure portalında yapılandırma
           href: cache-configure.md
@@ -130,7 +133,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis istemcileri
       href: 'https://redis.io/clients'
     - name: Redis komutları

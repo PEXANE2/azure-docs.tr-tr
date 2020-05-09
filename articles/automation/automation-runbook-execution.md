@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: ace701a6c19f4fe3af1c9ae6f5e63097dd59d405
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871681"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927930"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -86,7 +86,7 @@ Azure Otomasyonu, makine işlemlerini izlemek için [Azure izleyici](https://doc
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows için Log Analytics Aracısı
 
-[Windows için Log Analytics Aracısı](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir. Aracıyı bir veya daha fazla Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir. 
+[Windows için Log Analytics Aracısı](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows) , Windows VM 'leri ve fiziksel bilgisayarları yönetmek Için Azure izleyici ile birlikte çalışmaktadır. Makineler Azure 'da veya yerel bir veri merkezi gibi Azure dışı bir ortamda çalıştırılabilir. Aracıyı bir veya daha fazla Log Analytics çalışma alanına rapor verecek şekilde yapılandırmanız gerekir. 
 
 >[!NOTE]
 >Windows için Log Analytics Aracısı daha önce Microsoft Monitoring Agent (MMA) olarak biliniyordu.
@@ -109,7 +109,7 @@ Log Analytics Aracısı ve **nxautomation** hesabı için kullanılabilir Günl�
 
 Bir runbook 'un kimlik bilgileriyle Azure 'da kimlik doğrulaması için izinleri olması gerekir. Bkz. [Azure Otomasyonu farklı çalıştır hesaplarını yönetme](manage-runas-account.md). 
 
-## <a name="modules"></a>Modül
+## <a name="modules"></a>Modüller
 
 Azure Otomasyonu, bazı Azurerd modülleri (azurerm. Automation) ve birkaç iç cmdlet içeren bir modül dahil olmak üzere çeşitli varsayılan modülleri destekler. Desteklenen, az modüller (az. Automation) dahil olmak üzere, şu anda Azurermmodules için tercih edilen olarak kullanılan yüklenebilir modüllerdir. Runbook 'larınız ve DSC yapılandırmalarında kullanılabilen modüllerin ayrıntıları için bkz. [Azure Automation 'da modülleri yönetme](shared-resources/modules.md).
 

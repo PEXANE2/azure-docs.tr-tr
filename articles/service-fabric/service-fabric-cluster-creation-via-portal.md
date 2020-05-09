@@ -3,12 +3,12 @@ title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure 'da Azure portal ve Azure Key Vault kullanarak güvenli Service Fabric kümesi ayarlamayı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458326"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792488"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM 
 2. Birincil düğüm türü için en düşük sanal makine **boyutu** , küme Için seçtiğiniz **dayanıklılık katmanı** ile çalıştırılır. Dayanıklılık katmanı için varsayılan değer bronz ' dir. Dayanıklılık hakkında daha fazla bilgi için bkz. [Service Fabric kümesi dayanıklılığı seçme][service-fabric-cluster-durability].
 3. **Sanal makine boyutunu**seçin. D serisi VM 'Ler SSD sürücülerine sahiptir ve durum bilgisi olan uygulamalar için önemle önerilir. Kısmi çekirdekleri olan veya 10 GB 'den az kullanılabilir disk kapasitesi olan herhangi bir VM SKU 'SU kullanmayın. VM boyutunu seçerken yardım almak için bkz. [Service Fabric küme planlama değerlendirmesi belgesi][service-fabric-cluster-capacity] .
 4.  **Tek düğümlü küme ve üç düğümlü kümeler** yalnızca test kullanımı için tasarlanmıştır. Bunlar çalışan tüm üretim iş yükleri için desteklenmez.
-5. Düğüm türü için **Ilk VM Ölçek kümesi kapasitesini** seçin. Üzerinde daha sonra bir düğüm türündeki sanal makine sayısını ölçeklendirebilir veya azaltabilirsiniz, ancak birincil düğüm türünde üretim iş yükleri için en az beş olur. Diğer düğüm türlerinde en az bir VM olabilir. Birincil düğüm türü için en az sanal makine **sayısı** , kümenizin **güvenilirliğini artırır** .  
+5. Düğüm türü için **Ilk VM Ölçek kümesi kapasitesini** seçin. Üzerinde daha sonra bir düğüm türündeki sanal makine sayısını ölçeklendirebilir veya izleyebilirsiniz, ancak birincil düğüm türünde üretim iş yükleri için en az beş olur. Diğer düğüm türlerinde en az bir VM olabilir. Birincil düğüm türü için en az sanal makine **sayısı** , kümenizin **güvenilirliğini artırır** .  
 6. **Özel uç noktaları**yapılandırın. Bu alan, uygulamalarınız için genel Internet 'e Azure Load Balancer göstermek istediğiniz, virgülle ayrılmış bağlantı noktalarının bir listesini girmenize olanak sağlar. Örneğin, kümenize bir Web uygulaması dağıtmayı planlıyorsanız, "80" girerek kümenize bağlantı noktası 80 üzerinde trafiğe izin verin. Uç noktalar hakkında daha fazla bilgi için bkz. [uygulamalarla iletişim kurma][service-fabric-connect-and-communicate-with-services]
 7. **Ters proxy 'Yi etkinleştirin**.  [Ters proxy Service Fabric](service-fabric-reverseproxy.md) , bir Service Fabric kümesinde çalışan mikro hizmetlerin, HTTP uç noktalarına sahip diğer hizmetlerle bulmasına ve iletişim kurmasına yardımcı olur.
 8. **Küme yapılandırması** dikey penceresine geri dönün ve **+ Isteğe bağlı ayarları göster**altında küme **tanılamayı**yapılandırın. Varsayılan olarak, tanılama, sorun giderme sorunlarını gidermeye yardımcı olmak için kümenizde etkinleştirilir. Tanılamayı devre dışı bırakmak istiyorsanız, **durumu** **kapalı**olarak değiştirin. Tanılamayı **kapatmak önerilmez.** Zaten Application Insights projesi oluşturduysanız, uygulama izlemelerinin kendisine yönlendirilmesi için anahtarını sağlayın.

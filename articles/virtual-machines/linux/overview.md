@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9921db093cc111917d50acfccc10165c0eab6b0f
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759414"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930752"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portalı |VM oluştururken listeden konum seçin. |
+| Azure portal |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -77,16 +77,16 @@ Tercih ettiğiniz Linux dağıtımı şu anda galeride yoksa, [Azure'da Linux VH
 Microsoft, sağlanan görüntülerin güncelleştirilmiş ve Azure çalışma zamanı için iyileştirilmiş olduğundan emin olmak için iş ortaklarıyla yakın bir çalışma sürdürür.  Azure iş ortakları hakkında daha fazla bilgi için şu bağlantılara göz atın:
 
 * Azure[ Destekli Dağıtımlarda](endorsed-distros.md) Linux
-* SUSE - [Azure Market - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES?tab=Overview)
-* Red Hat - [Azure Market - Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
-* Canonical - [Azure Market - Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
-* Debian - [Azure Market - Debian 8 "Jessie"](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
+* SUSE - [Azure Market - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?search=suse%20sles&page=1)
+* Red hat- [Azure Marketi-Red Hat Enterprise Linux 8,1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
+* Kurallı- [Azure Marketi-Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
+* Debian - [Azure Market - Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian)
 * FreeBSD- [Azure Marketi-freebsd 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-* CoreOS - [Azure Market - CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
-* RancherOS - [Azure Market - RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
+* CoreOS- [Azure Marketi-CoreOS tarafından kapsayıcı Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
+* RancherOS - [Azure Market - RancherOS](https://azuremarketplace.microsoft.com/marketplace/apps/rancher.rancheros)
 * Bitnami - [Azure için Bitnami Kitaplığı](https://azure.bitnami.com/)
-* Mesosphere - [Azure Market - Azure'da Mesosphere DC/OS](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
-* Docker - [Azure Market - Docker Swarm ile Azure Container Service](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
+* Mesosphere - [Azure Market - Azure'da Mesosphere DC/OS](https://azure.microsoft.com/services/kubernetes-service/mesosphere/)
+* Docker- [Azure Marketi-Docker görüntüleri](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
 * Jenkins - [Azure Market - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 

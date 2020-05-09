@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231977"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889390"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -39,7 +39,7 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları](how-to-manage-quotas.md) hakkında bilgi edinin.
 
 ## <a name="installation-and-import"></a>Yükleme ve içeri aktarma
-
+                           
 * **PIP yüklemesi: bağımlılıkların tek satırlık yüklemeyle tutarlı olması garanti edilmez**: 
 
    Tek bir satır olarak yüklediğinizde çalışan bir bağımlılık Çözümleyicisi olmadığından, bu, PIP 'nin bilinen bir sınırlamasıdır. İlk benzersiz bağımlılık, tek bir baktığı tek. 
@@ -56,7 +56,29 @@ Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **Açıklama paketi, azureml-tren-oto ml-Client yüklenirken yüklenemedi:** 
+   
+   Model açıklaması etkinken uzak bir oto ml çalıştırma çalışırken, "" model açıklamaları için lütfen azureml-açıkla-model paketi 'ni yüklemeyi belirten bir hata iletisi görürsünüz. Bu bilinen bir sorundur ve geçici bir çözüm olarak, lütfen aşağıdaki adımlardan birini izleyin:
+  
+  1. Azureml-açıkla-model yerel olarak yüklenir.
+   ```
+      pip install azureml-explain-model
+   ```
+  2. Explainability özelliğini, oto ml yapılandırmasında model_explainability = false geçirerek tamamen devre dışı bırakın.
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Panda hataları: genellikle, normal ml denemesi sırasında görüldü:**
    
    Environmnet kullanarak environmnet 'i el ile kurarken, desteklenmeyen paket sürümlerinin yüklenmesi nedeniyle öznitelik hataları (özellikle Pandas 'tan) fark edeceksiniz. Bu tür hataları engellemek için [lütfen automl_setup. cmd ' yi kullanarak oto ml SDK 'sını yüklemelisiniz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
