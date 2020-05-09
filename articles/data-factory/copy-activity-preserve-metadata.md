@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414164"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891763"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory kopyalama etkinliğini kullanarak meta verileri ve ACL 'Leri koruma
 
@@ -32,6 +32,8 @@ Kopyalama etkinliği, veri kopyalama sırasında aşağıdaki özniteliklerin ko
 
 - **Müşterinin belirttiği tüm meta veriler** 
 - Ve aşağıdaki **beş veri deposu yerleşik sistem özellikleri** `contentType`:, `contentLanguage` (Amazon S3 hariç), `contentEncoding`,, `contentDisposition`,. `cacheControl`
+
+**Meta verilerde farkları işle:** Amazon S3 ve Azure Storage, müşteri tarafından belirtilen meta veriler anahtarlarındaki farklı karakter kümelerine izin veriyor. Kopya korumayı kullanarak meta verileri korumayı seçtiğinizde, ADF geçersiz karakterleri ' _ ' ile otomatik olarak değiştirir.
 
 Dosyaları Amazon S3/Azure Data Lake Storage 2./Azure blobundan ikili biçimi ile Azure Data Lake Storage 2./Azure Blob 'a kopyaladığınızda, **koruma** seçeneğini etkinlik yazma için **etkinlik** > **ayarlarını** Kopyala sekmesinde veya veri kopyalama aracındaki **Ayarlar** sayfasında bulabilirsiniz.
 

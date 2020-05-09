@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268411"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692724"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics ölçümleri (klasik)
 
@@ -23,7 +23,7 @@ Depolama Analizi, toplanan işlem istatistiklerini ve bir depolama hizmetine yap
 
 > [!NOTE]
 > Depolama Analizi ölçümler blob, kuyruk, tablo ve dosya hizmetleri için kullanılabilir.
-> Depolama Analizi ölçümler artık klasik ölçümlerdir. Microsoft, Depolama Analizi ölçümleri yerine [Azure izleyici 'de depolama ölçümlerini](storage-metrics-in-azure-monitor.md) kullanmanızı önerir.
+> Depolama Analizi ölçümler artık klasik ölçümlerdir. Microsoft, Depolama Analizi ölçümleri yerine [Azure izleyici 'de depolama ölçümlerini](monitor-storage.md) kullanmanızı önerir.
 
 ## <a name="transaction-metrics"></a>İşlem ölçümleri  
  Sağlam bir veri kümesi, her depolama hizmeti için saatlik veya dakika aralıklarında, giriş/çıkış, kullanılabilirlik, hatalar ve kategorilere ayrılan istek yüzdeleri dahil olmak üzere istenen API işlemi için kaydedilir. İşlem ayrıntılarının tüm listesini [depolama Analizi ölçüm tablosu şeması](/rest/api/storageservices/storage-analytics-metrics-table-schema) konusunda görebilirsiniz.  

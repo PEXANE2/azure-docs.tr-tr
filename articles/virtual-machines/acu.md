@@ -13,16 +13,22 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535706"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629108"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure işlem birimi (ACU)
 
-Azure Işlem birimi (ACU) kavramı, Azure SKU 'Ları genelinde işlem (CPU) performansını karşılaştırmak için bir yol sağlar. Bu birim, performans ihtiyaçlarınızı karşılayabilecek SKU'yu kolayca belirlemenize yardımcı olacak. ACU şu anda Küçük (Standard_A1) VM'de 100 olarak standart haline getirilmiş ve diğer tüm SKU'lar, standart bir karşılaştırmalı testte sunabilecekleri yaklaşık hıza göre derecelendirilmiştir.
+Azure Işlem birimi (ACU) kavramı, Azure SKU 'Ları genelinde işlem (CPU) performansını karşılaştırmak için bir yol sağlar. Bu birim, performans ihtiyaçlarınızı karşılayabilecek SKU'yu kolayca belirlemenize yardımcı olacak. ACU Şu anda küçük (Standard_A1) bir VM 'de 100 olan ve diğer tüm SKU 'Ların standart bir kıyaslama işlemini kaç ne kadar hızlı çalıştırabileceğini temsil etmektedir.
+
+* ACUs CPU sıklığını artırmak ve bir performans artışı sağlamak için Intel® Turbo teknolojisini kullanın.  Performans artışının miktarı, VM boyutu, iş yükü ve aynı konakta çalışan diğer iş yüklerine göre farklılık gösterebilir.
+
+* * ACUs CPU sıklığını artırmak ve performans artışı sağlamak için AMD® arttırma teknolojisini kullanın.  Performans artışının miktarı, VM boyutu, iş yükü ve aynı konakta çalışan diğer iş yüklerine göre farklılık gösterebilir.
+
+Hiper iş parçacıklı ve iç içe sanallaştırma çalıştırabilme
 
 > [!IMPORTANT]
 > ACU yalnızca rehberlik etme amacı taşımaktadır. İş yükünüzle aldığınız sonuçlar farklılık gösterebilir.
@@ -49,16 +55,12 @@ Azure Işlem birimi (ACU) kavramı, Azure SKU 'Ları genelinde işlem (CPU) perf
 | [F1s-F16s](sizes-previous-gen.md) |210-250* | 1:1 |
 | [G1-G5](sizes-previous-gen.md) |180-240* | 1:1 |
 | [GS1-GS5](sizes-previous-gen.md) |180-240* | 1:1 |
-| [Olsun](h-series.md) |290-300* | 1:1 |
+| [H](h-series.md) |290-300* | 1:1 |
 | [HB](hb-series.md) |199-216 * * | 1:1 |
 | [HC](hc-series.md) |297-315 * | 1:1 |
 | [L4s-L32s](sizes-previous-gen.md) |180-240* | 1:1 |
 | [L8s_v2 L80s_v2](lsv2-series.md) |150-175 * * | 2:1 |
 | [M](m-series.md) | 160-180 | 2:1\*\*\* |
-
-* ACUs CPU sıklığını artırmak ve bir performans artışı sağlamak için Intel® Turbo teknolojisini kullanın.  Performans artışının miktarı, VM boyutu, iş yükü ve aynı konakta çalışan diğer iş yüklerine göre farklılık gösterebilir.
-* * ACUs CPU sıklığını artırmak ve performans artışı sağlamak için AMD® arttırma teknolojisini kullanın.  Performans artışının miktarı, VM boyutu, iş yükü ve aynı konakta çalışan diğer iş yüklerine göre farklılık gösterebilir.
-Hiper iş parçacıklı ve iç içe sanallaştırma çalıştırabilme
 
 Farklı boyutlar hakkında daha fazla bilgi için bağlantılar aşağıda verilmiştir:
 

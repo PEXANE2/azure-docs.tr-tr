@@ -972,10 +972,14 @@
               href: sql-api-query-metrics.md
             - name: .NET SDK’sı için performans ipuçları
               href: performance-tips.md
-            - name: Java SDK’sı için performans ipuçları
-              href: performance-tips-java.md
-            - name: Async Java SDK’sı için performans ipuçları
-              href: performance-tips-async-java.md
+            - name: Java SDK v4 için performans ipuçları
+              href: performance-tips-java-sdk-v4-sql.md
+            - name: Daha eski Java SDK’ları için performans ipuçları
+              items:
+                - name: Zaman uyumsuz Java SDK v2
+                  href: performance-tips-async-java.md
+                - name: Zaman uyumlu Java SDK v2
+                  href: performance-tips-java.md
             - name: Performans testi - örnek uygulama
               href: performance-testing.md
         - name: Düşük maliyetli okuma ve yazmalar
@@ -984,8 +988,12 @@
       items:
         - name: Sorgu performansı sorunlarını giderme
           href: troubleshoot-query-performance.md
-        - name: Java Async SDK sorunlarını giderme
-          href: troubleshoot-java-async-sdk.md
+        - name: Java SDK v4 sorunlarını giderme
+          href: troubleshoot-java-sdk-v4-sql.md
+        - name: Daha eski Java SDK’larının sorunlarını giderme
+          items:
+            - name: Zaman uyumsuz Java SDK v2
+              href: troubleshoot-java-async-sdk.md
         - name: .NET SDK’da sorun giderme
           href: troubleshoot-dot-net-sdk.md
     - name: Değişiklik Akışı

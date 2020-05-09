@@ -52,6 +52,8 @@
       href: language-support.md
     - name: Metin uzaklıkları
       href: concepts/text-offsets.md
+    - name: Veri sınırları
+      href: concepts/data-limits.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Metin Analizi API’sini çağırma

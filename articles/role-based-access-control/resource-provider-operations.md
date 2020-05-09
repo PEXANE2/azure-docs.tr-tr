@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133150"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839105"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -52,7 +52,7 @@ Azure hizmeti: [Azure Active Directory Domain Services](../active-directory-doma
 
 ## <a name="microsoftaadiam"></a>Microsoft. aadihar
 
-Microsoft Monitoring Insights
+Azure Active Directory
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Eylem Türü | İşlem | Açıklama |
@@ -67,6 +67,23 @@ Microsoft Monitoring Insights
 > | Eylem | Microsoft. aadihar/metricDefinitions/oku | Kiracı düzeyinde ölçüm tanımlarını okuma |
 > |  | **ölçümler** |  |
 > | Eylem | Microsoft. aadihar/ölçümler/okuma | Kiracı düzeyinde ölçümleri okuma |
+> |  | **privateLinkForAzureAD** |  |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Read | Özel bağlantı Ilkesi tanımını oku |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Write | Özel bağlantı Ilkesi tanımı oluştur ve Güncelleştir |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Delete | Özel bağlantı Ilkesi tanımını sil |
+> |  | **privateLinkForAzureAD/Privateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Privateendpointconnectionproxy/okuma | Özel bağlantı proxy 'Lerini oku |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Privateendpointconnectionproxy/yazma | Özel bağlantı proxy 'Leri oluşturma ve güncelleştirme |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Privateendpointconnectionproxy/Delete | Özel bağlantı proxy 'Lerini Sil |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/Privateendpointconnectionproxy/doğrulama/eylem | Özel bağlantı proxy 'Lerini doğrula |
+> |  | **privateLinkForAzureAD/privateEndpointConnections** |  |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/privateEndpointConnections/Read | PrivateEndpointConnections 'ı okuyun |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/privateEndpointConnections/Write | PrivateEndpointConnections oluşturma ve güncelleştirme |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/privateEndpointConnections/Delete | PrivateEndpointConnections 'ı Sil |
+> |  | **privateLinkForAzureAD/privateLinkResources** |  |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/privateLinkResources/Read | PrivateLinkResources 'i okuyun |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/privateLinkResources/Write | PrivateLinkResources oluşturma ve güncelleştirme |
+> | Eylem | Microsoft. aadihar/privateLinkForAzureAD/privateLinkResources/Delete | PrivateLinkResources silme |
 
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
@@ -173,6 +190,11 @@ Azure hizmeti: [Azure Active Directory](../active-directory/index.yml)
 > | Eylem | Microsoft. ADHybridHealthService/Services/exportstatus/Read | Belirli bir hizmet için dışarı aktarma durumunu alır. |
 > |  | **Hizmetler/feedbacktype/feedback** |  |
 > | Eylem | Microsoft. ADHybridHealthService/Services/feedbacktype/görüşler/Read | Belirli bir hizmet ve sunucu için uyarı geri bildirimi alır. |
+> |  | **Hizmetler/IP Adresisaggregyeler** |  |
+> | Eylem | Microsoft. ADHybridHealthService/Services/ıpaddressaggreglemi/Read | Hizmete erişmeye çalışılan hatalı IP 'Leri okur. |
+> |  | **Hizmetler/ıpaddressaggregatesettings** |  |
+> | Eylem | Microsoft. ADHybridHealthService/Services/ıpaddressaggregatesettings/Read | Hatalı IP 'Ler için alarm eşiklerini okur. |
+> | Eylem | Microsoft. ADHybridHealthService/Services/ıpaddressaggregatesettings/Write | Hatalı IP 'Ler için alarm eşikleri yazar. |
 > |  | **Hizmetler/metricmetadata** |  |
 > | Eylem | Microsoft. ADHybridHealthService/Services/metricmetadata/Read | Belirli bir hizmet için desteklenen ölçümlerin listesini alır.<br>Örneğin, extranet hesabı kilitleme Işlemleri, toplam başarısız Istek sayısı, bekleyen belirteç Istekleri (proxy), ADFS hizmeti için belirteç Istekleri/sn.<br>NTLM kimlik doğrulamaları/sn, LDAP başarılı bağlamalar/sn, LDAP bağlama süresi, LDAP etkin Iş parçacıkları, Kerberos kimlik doğrulamaları/sn, ADDomainService için ATQ Iş parçacığı toplamı.<br>Profil gecikmesini çalıştırın, TCP bağlantıları oluşturulmuştur, Insights Aracısı özel baytları, ADSync hizmeti için Azure AD 'ye Istatistikleri dışarı aktarın. |
 > |  | **Hizmetler/ölçümler/gruplar** |  |
@@ -648,10 +670,6 @@ Azure hizmeti: çekirdek
 > | Eylem | Microsoft. AppConfiguration/Configurationmağazaları/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Microsoft uygulama yapılandırması için tanılama ayarlarını yazın/üzerine yazın. |
 > |  | **Configurationmağazaları/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. AppConfiguration/Configurationmağazaları/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Microsoft uygulama yapılandırması için tüm ölçüm tanımlarını alın. |
-> |  | **Configurationmağazaların/syncTasks** |  |
-> | Eylem | Microsoft. AppConfiguration/Configurationmağazaları/syncTasks/Read | Belirtilen yapılandırma deposu eşitleme görevinin özelliklerini alır veya belirtilen yapılandırma deposu altındaki tüm yapılandırma deposu eşitleme görevlerini listeler. |
-> | Eylem | Microsoft. AppConfiguration/Configurationmağazaları/syncTasks/Write | Belirtilen parametrelerle bir yapılandırma deposu eşitleme görevi oluşturun veya güncelleştirin. |
-> | Eylem | Microsoft. AppConfiguration/Configurationmağazaların/syncTasks/Delete | Bir yapılandırma deposu eşitleme görevini siler. |
 > |  | **konumlar/operationsStatus** |  |
 > | Eylem | Microsoft. AppConfiguration/konumlar/operationsStatus/Read | Bir işlemin durumunu alın. |
 > |  | **operasyonları** |  |
@@ -1073,6 +1091,8 @@ Azure hizmeti: [maliyet yönetimi + faturalandırma](../cost-management-billing/
 > | Eylem | Microsoft. faturalandırma/faturalar/indir/eylem | Listeden indirme bağlantısını kullanarak fatura indir |
 > | Eylem | Microsoft. faturalandırma/faturalar/indir/eylem | Listeden indirme bağlantısını kullanarak fatura indir |
 > | Eylem | Microsoft. faturalandırma/faturalar/okuma |  |
+> |  | **operasyonları** |  |
+> | Eylem | Microsoft. faturalandırma/işlemler/okuma |  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
@@ -1782,6 +1802,17 @@ Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 > | Eylem | Microsoft. Biliveservices/hesaplar/Sil | API hesaplarını siler |
 > | Eylem | Microsoft. Biliveservices/accounts/listKeys/Action | Anahtarları Listele |
 > | Eylem | Microsoft. Biliveservices/accounts/regenerateKey/Action | Anahtarı yeniden oluştur |
+> |  | **hesaplar/Privateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. Biliveservices/accounts/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantılarını okur. |
+> | Eylem | Microsoft. Biliveservices/accounts/Privateendpointconnectionproxy/yazma | Özel bir uç nokta bağlantıları yazar. |
+> | Eylem | Microsoft. Biliveservices/accounts/Privateendpointconnectionproxy/Delete | Özel bir uç nokta bağlantılarını siler. |
+> | Eylem | Microsoft. Biliveservices/accounts/Privateendpointconnectionproxy/doğrulama/eylem | Özel uç nokta bağlantılarını doğrulayın. |
+> |  | **hesaplar/privateEndpointConnections** |  |
+> | Eylem | Microsoft. Biliveservices/accounts/privateEndpointConnections/Read | Özel uç nokta bağlantılarını okur. |
+> | Eylem | Microsoft. Biliveservices/accounts/privateEndpointConnections/Write | Özel bir uç nokta bağlantıları yazar. |
+> | Eylem | Microsoft. Biliveservices/accounts/privateEndpointConnections/Delete | Özel bir uç nokta bağlantılarını siler. |
+> |  | **hesaplar/privateLinkResources** |  |
+> | Eylem | Microsoft. Biliveservices/accounts/privateLinkResources/Read | Bir hesabın özel bağlantı kaynaklarını okur. |
 > |  | **hesaplar/SKU 'lar** |  |
 > | Eylem | Microsoft. Biliveservices/hesaplar/SKU 'lar/okuma | Mevcut bir kaynak için kullanılabilir SKU 'Ları okur. |
 > |  | **hesaplar/kullanımlar** |  |
@@ -2147,6 +2178,18 @@ Azure hizmeti: [sanal makineler](../virtual-machines/index.yml), [Sanal Makine �
 > | Eylem | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/Delete | Kullanılabilirlik kümesini siler |
 > |  | **Kullanılabilirlik kümeleri/vmSizes** |  |
 > | Eylem | Microsoft. COMPUTE/kullanılabilirliği Bilitysets/vmSizes/Read | Kullanılabilirlik kümesinde bir sanal makine oluşturmak veya güncelleştirmek için kullanılabilir boyutları listeleyin |
+> |  | **Diskeriþler** |  |
+> | Eylem | Microsoft. COMPUTE/Diskeriþler/Read | DiskAccess kaynağının özelliklerini al |
+> | Eylem | Microsoft. COMPUTE/Diskeriþerler/Write | Yeni bir DiskAccess kaynağı oluşturma veya var olanı güncelleştirme |
+> | Eylem | Microsoft. COMPUTE/Diskeriþerler/Sil | DiskAccess kaynağını silme |
+> | Eylem | Microsoft. COMPUTE/Diskeriþler/privateEndpointConnectionsApproval/eylem | Özel bir uç nokta bağlantısını onaylama |
+> |  | **Diskeriþler/Privateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. COMPUTE/Diskeriþler/Privateendpointconnectionproxy/okuma | Özel bir uç noktası bağlantı proxy 'sinin özelliklerini al |
+> | Eylem | Microsoft. COMPUTE/Diskeriþler/Privateendpointconnectionproxy/yazma | Yeni bir özel uç nokta bağlantı proxy 'Si oluştur |
+> | Eylem | Microsoft. COMPUTE/Diskeriþler/Privateendpointconnectionproxy/Delete | Özel bir uç nokta bağlantı ara sunucusunu silme |
+> | Eylem | Microsoft. COMPUTE/Diskeriþg/Privateendpointconnectionproxy/Validate/Action | Özel bir uç nokta bağlantısı proxy nesnesini doğrulama |
+> |  | **Diskeriþler/privateEndpointConnections** |  |
+> | Eylem | Microsoft. COMPUTE/Diskeriþler/privateEndpointConnections/Delete | Özel bir uç nokta bağlantısını silme |
 > |  | **diskEncryptionSets** |  |
 > | Eylem | Microsoft. COMPUTE/diskEncryptionSets/Read | Disk şifreleme kümesinin özelliklerini al |
 > | Eylem | Microsoft. COMPUTE/diskEncryptionSets/Write | Yeni bir disk şifrelemesi kümesi oluşturma veya var olanı güncelleştirme |
@@ -2342,6 +2385,10 @@ Azure hizmeti: [sanal makineler](../virtual-machines/index.yml), [Sanal Makine �
 > | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/yeniden dağıtma/eylem | Sanal makine ölçek kümesindeki bir sanal makine örneğini yeniden dağıtır |
 > | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/performMaintenance/Action | Sanal makine ölçek kümesindeki bir sanal makine örneğinde planlanmış bakım gerçekleştirir |
 > | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/runCommand/Action | Bir sanal makine ölçek kümesindeki bir sanal makine örneğinde önceden tanımlanmış bir betiği yürütür. |
+> |  | **virtualMachineScaleSets/virtualMachines/uzantıları** |  |
+> | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Extensions/Read | Sanal makine ölçek kümesindeki sanal makine uzantısının özelliklerini al |
+> | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/uzantılar/Write | Sanal makine ölçek kümesindeki sanal makine için yeni bir uzantı oluşturur veya mevcut olanı güncelleştirir |
+> | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Extensions/Sil | Sanal makine ölçek kümesindeki sanal makinenin uzantısını siler |
 > |  | **virtualMachineScaleSets/virtualMachines/InstanceView** |  |
 > | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/InstanceView/Read | Bir VM Ölçek kümesindeki bir sanal makinenin örnek görünümünü alır. |
 > |  | **virtualMachineScaleSets/virtualMachines/NetworkInterfaces** |  |
@@ -2352,10 +2399,6 @@ Azure hizmeti: [sanal makineler](../virtual-machines/index.yml), [Sanal Makine �
 > | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/ipConfigurations/Publicıpaddresses/Read | Sanal makine ölçek kümesi kullanılarak oluşturulan genel IP adresinin özelliklerini al. Sanal makine ölçek kümesi, IP yapılandırması başına en çok bir genel IP (özel IP) oluşturabilir |
 > |  | **virtualMachineScaleSets/vmSizes** |  |
 > | Eylem | Microsoft. COMPUTE/virtualMachineScaleSets/vmSizes/Read | Sanal makine ölçek kümesinde bir sanal makine oluşturmak veya güncelleştirmek için kullanılabilir boyutları listeleyin |
-> |  | **virtualMachineScaleSetVirtualMachines/uzantılar** |  |
-> | Eylem | Microsoft. COMPUTE/virtualMachineScaleSetVirtualMachines/Extensions/Read | Sanal makine ölçek kümesindeki sanal makine uzantısının özelliklerini al |
-> | Eylem | Microsoft. COMPUTE/virtualMachineScaleSetVirtualMachines/Extensions/Write | Sanal makine ölçek kümesindeki sanal makine için yeni bir uzantı oluşturur veya mevcut olanı güncelleştirir |
-> | Eylem | Microsoft. COMPUTE/virtualMachineScaleSetVirtualMachines/Extensions/Delete | Sanal makine ölçek kümesindeki sanal makinenin uzantısını siler |
 > |  | **virtualMachines** |  |
 > | DataAction | Microsoft. COMPUTE/virtualMachines/LOGIN/Action | Bir sanal makinede normal kullanıcı olarak oturum açın |
 > | DataAction | Microsoft. COMPUTE/virtualMachines/loginAsAdmin/Action | Windows yönetici veya Linux kök kullanıcı ayrıcalıklarına sahip bir sanal makinede oturum açma |
@@ -2439,8 +2482,6 @@ Azure hizmeti: [Container Instances](../container-instances/index.yml)
 > | Eylem | Microsoft. Containerınstance/containerGroups/kapsayıcılar/buildlogs/Read | Belirli bir kapsayıcı için derleme günlüklerini al. |
 > |  | **containerGroups/kapsayıcılar/Günlükler** |  |
 > | Eylem | Microsoft. Containerınstance/containerGroups/kapsayıcılar/Günlükler/okuma | Belirli bir kapsayıcı için günlükleri al. |
-> |  | **containerGroups/operationResults** |  |
-> | Eylem | Microsoft. Containerınstance/containerGroups/operationResults/Read | Zaman uyumsuz işlem sonucunu al |
 > |  | **containerGroups/Providers/Microsoft. Insights/diagnosticSettings** |  |
 > | Eylem | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/diagnosticSettings/Read | Kapsayıcı grubu için tanılama ayarını alır. |
 > | Eylem | Microsoft. Containerınstance/containerGroups/Providers/Microsoft. Insights/diagnosticSettings/Write | Kapsayıcı grubu için tanılama ayarını oluşturur veya güncelleştirir. |
@@ -2452,6 +2493,8 @@ Azure hizmeti: [Container Instances](../container-instances/index.yml)
 > | Eylem | Microsoft. Containerınstance/Locations/Önbellekedimages/Read | Bir bölgedeki aboneliğin önbelleğe alınmış görüntülerini alır. |
 > |  | **konumlar/yetenekler** |  |
 > | Eylem | Microsoft. Containerınstance/Locations/Capabilities/Read | Bir bölgenin yeteneklerini alın. |
+> |  | **konumlar/operationResults** |  |
+> | Eylem | Microsoft. Containerınstance/Locations/operationResults/Read | Zaman uyumsuz işlem sonucunu al |
 > |  | **konumlar/işlemler** |  |
 > | Eylem | Microsoft. Containerınstance/Locations/işlemler/okuma | Azure Container Instance hizmeti için işlemleri listeleyin. |
 > |  | **konumlar/kullanımlar** |  |
@@ -2734,7 +2777,7 @@ Azure hizmeti: [Azure Data Box](../databox-family/index.md)
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
-Azure hizmeti: [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+Azure hizmeti: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Eylem Türü | İşlem | Açıklama |
@@ -3698,7 +3741,7 @@ Azure hizmeti: [IoT Hub](../iot-hub/index.yml) [IoT Hub cihaz sağlama hizmeti](
 > |  | **iotHubs/Privateendpointconnectionproxy/operationResults** |  |
 > | Eylem | Microsoft. Devices/iotHubs/Privateendpointconnectionproxy/operationResults/Read | Özel bir uç nokta bağlantı proxy 'si üzerinde zaman uyumsuz bir işlemin sonucunu alın |
 > |  | **iotHubs/privateEndpointConnections** |  |
-> | Eylem | Microsoft. Devices/ıothubs/privateEndpointConnections/Read | Belirtilen özel uç nokta bağlantısının özelliklerini alır |
+> | Eylem | Microsoft. Devices/ıothubs/privateEndpointConnections/Read | Belirtilen IoT Hub 'ı için tüm özel uç nokta bağlantılarını alır |
 > | Eylem | Microsoft. Devices/ıothubs/privateEndpointConnections/Delete | Var olan bir özel uç nokta bağlantısını siler |
 > | Eylem | Microsoft. Devices/ıothubs/privateEndpointConnections/Write | Özel bir uç nokta bağlantısı oluşturur veya güncelleştirir |
 > |  | **iotHubs/privateEndpointConnections/operationResults** |  |
@@ -3948,6 +3991,7 @@ Azure hizmeti: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Eylem | Microsoft. DocumentDB/databaseAccounts/onlineRegion/ACTION | Veritabanı hesabının bir bölgesi çevrimiçi. |
 > | Eylem | Microsoft. DocumentDB/databaseAccounts/Delete | Veritabanı hesaplarını siler. |
 > | Eylem | Microsoft. DocumentDB/databaseAccounts/getBackupPolicy/Action | Veritabanı hesabının yedekleme ilkesini al |
+> | Eylem | Microsoft. DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/eylem | Veritabanı hesabının özel uç nokta bağlantısını yönetme |
 > | Eylem | Microsoft. DocumentDB/databaseAccounts/restore/Action | Geri yükleme isteği gönder |
 > | Eylem | Microsoft. DocumentDB/databaseAccounts/Backup/Action | Yedeklemeyi yapılandırmak için bir istek gönder |
 > |  | **databaseAccounts/API/veritabanları** |  |
@@ -4284,7 +4328,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 > |  | **etki alanları/privateLinkResources** |  |
 > | Eylem | Microsoft. EventGrid/Domains/privateLinkResources/Read | Etki alanları için PrivateLinkResources Al veya Listele |
 > |  | **etki alanları/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
-> | Eylem | Microsoft. EventGrid/Domains/Providers/Microsoft. Insights/logDefinitions/Read | Kaynak günlüklerine erişime izin verir |
+> | Eylem | Microsoft. EventGrid/Domains/Providers/Microsoft. Insights/logDefinitions/Read | Tanılama günlüklerine erişime izin verir |
 > |  | **etki alanları/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. EventGrid/Domains/Providers/Microsoft. Insights/metricDefinitions/Read | Etki alanları için kullanılabilir ölçümleri alır |
 > |  | **etki alanları/konular** |  |
@@ -4352,7 +4396,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 > | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | Sistem konuları için tanılama ayarını alır |
 > | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Sistem konuları için tanılama ayarını oluşturur veya güncelleştirir |
 > |  | **Systemkonular/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
-> | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Kaynak günlüklerine erişime izin verir |
+> | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Tanılama günlüklerine erişime izin verir |
 > |  | **Systemkonular/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Sistem konuları için kullanılabilir ölçümleri alır |
 > |  | **konularıyla** |  |
@@ -4376,7 +4420,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 > | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | Konular için tanılama ayarını alır |
 > | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Konular için tanılama ayarını oluşturur veya güncelleştirir |
 > |  | **Konular/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
-> | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Kaynak günlüklerine erişime izin verir |
+> | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Tanılama günlüklerine erişime izin verir |
 > |  | **Konular/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Konular için kullanılabilir ölçümleri alır |
 > |  | **topictypes** |  |
@@ -5715,6 +5759,16 @@ Azure hizmeti: [Machine Learning hizmeti](../machine-learning/index.yml)
 > |  | **çalışma alanları/modüller** |  |
 > | Eylem | Microsoft. MachineLearningServices/çalışma alanları/modüller/okuma | Machine Learning Services çalışma alanındaki modülleri alır |
 > | Eylem | Microsoft. MachineLearningServices/çalışma alanları/modüller/yazma | Machine Learning Services çalışma alanlarında modül oluşturur veya güncelleştirir |
+> |  | **çalışma alanları/Not defterleri/örnekler** |  |
+> | Eylem | Microsoft. MachineLearningServices/Workspaces/Notebook/Samples/Read | Örnek not defterlerini alır |
+> |  | **çalışma alanları/Not defterleri/depolama** |  |
+> | Eylem | Microsoft. MachineLearningServices/çalışma alanları/Not defterleri/depolama/okuma | Bir çalışma alanı için Not defteri dosyalarını alır |
+> | Eylem | Microsoft. MachineLearningServices/çalışma alanları/Not defterleri/depolama/yazma | Çalışma alanı depolamasına dosya yazar |
+> | Eylem | Microsoft. MachineLearningServices/çalışma alanları/Not defterleri/depolama/silme | Çalışma alanı depolamadan dosyaları siler |
+> |  | **çalışma alanları/Not defterleri/VM** |  |
+> | Eylem | Microsoft. MachineLearningServices/çalışma alanları/Not defterleri/VM/okuma | Belirli bir çalışma alanı için Not defteri VM 'lerini alır |
+> | Eylem | Microsoft. MachineLearningServices/çalışma alanları/Not defterleri/VM/yazma | Bir not defteri VM 'sinin durumunu değiştirme |
+> | Eylem | Microsoft. MachineLearningServices/çalışma alanları/Not defterleri/VM/silme | Bir not defteri VM 'sini siler |
 > |  | **çalışma alanları/pipelinedrafts** |  |
 > | Eylem | Microsoft. MachineLearningServices/Workspaces/pipelinedrafts/Read | Machine Learning Services çalışma alanlarında işlem hattı taslaklarını alır |
 > | Eylem | Microsoft. MachineLearningServices/Workspaces/pipelinedrafts/Write | Machine Learning Services çalışma alanlarında işlem hattı taslakları oluşturur veya güncelleştirir |
@@ -5905,11 +5959,16 @@ Azure hizmeti: [Media Services](../media-services/index.yml)
 > | Eylem | Microsoft. Media/Register/ACTION | Media Services kaynak sağlayıcısı için aboneliği kaydeder ve Media Services hesaplarının oluşturulmasını sunar |
 > | Eylem | Microsoft. Media/Unregister/eylem | Media Services kaynak sağlayıcısı için aboneliğin kaydını siler |
 > | Eylem | Microsoft. Media/checknameavaılabılıty/Action | Media Services hesap adının kullanılabilir olup olmadığını denetler |
+> |  | **yerlerini** |  |
+> | Eylem | Microsoft. Media/Locations/Checknameavaılabılıty/Action | Media Services hesap adının kullanılabilir olup olmadığını denetler |
 > |  | **mediaservices** |  |
 > | Eylem | Microsoft. Media/mediaservices/okuma | Tüm Media Services hesaplarını okuyun |
 > | Eylem | Microsoft. Media/mediaservices/Write | Media Services hesabı oluşturun veya güncelleştirin |
 > | Eylem | Microsoft. Media/mediaservices/Delete | Media Services hesabı silme |
+> | Eylem | Microsoft. Media/mediaservices/regenerateKey/Action | Media Services ACS anahtarını yeniden üret |
+> | Eylem | Microsoft. Media/mediaservices/listKeys/ACTION | Media Services hesabının ACS anahtarlarını listeleyin |
 > | Eylem | Microsoft. Media/mediaservices/syncStorageKeys/Action | Bağlı bir Azure depolama hesabı için depolama anahtarlarını eşitler |
+> | Eylem | Microsoft. Media/mediaservices/listEdgePolicies/eylem | Sınır cihazının ilkelerini listeleyin. |
 > |  | **mediaservices/accountfilters** |  |
 > | Eylem | Microsoft. Media/mediaservices/accountfilters/okuma | Tüm hesap filtrelerini okuyun |
 > | Eylem | Microsoft. Media/mediaservices/accountfilters/Write | Hesap Filtresi Oluştur veya güncelleştir |
@@ -5936,6 +5995,17 @@ Azure hizmeti: [Media Services](../media-services/index.yml)
 > | Eylem | Microsoft. Media/mediaservices/eventGridFilters/Delete | Event Grid filtresini silme |
 > |  | **mediaservices/liveEventOperations** |  |
 > | Eylem | Microsoft. Media/mediaservices/liveEventOperations/Read | Canlı olay Işlemlerini okuyun |
+> |  | **mediaservices/Liveeventprivateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. Media/mediaservices/Liveeventprivateendpointconnectionproxy/okuma | Tüm canlı etkinlik özel uç nokta bağlantı proxy 'Sini okuyun |
+> | Eylem | Microsoft. Media/mediaservices/Liveeventprivateendpointconnectionproxy/yazma | Canlı etkinlik özel uç nokta bağlantısı proxy 'Si oluştur |
+> | Eylem | Microsoft. Media/mediaservices/Liveeventprivateendpointconnectionproxy/Delete | Canlı olay özel uç nokta bağlantı proxy 'Sini Sil |
+> | Eylem | Microsoft. Media/mediaservices/Liveeventprivateendpointconnectionproxy/Validate/Action | Canlı olay özel uç noktası bağlantı proxy 'Sini doğrula |
+> |  | **mediaservices/liveEventPrivateEndpointConnections** |  |
+> | Eylem | Microsoft. Media/mediaservices/liveEventPrivateEndpointConnections/Read | Canlı olay özel uç nokta bağlantısını okuyun |
+> | Eylem | Microsoft. Media/mediaservices/liveEventPrivateEndpointConnections/Write | Canlı etkinlik özel uç nokta bağlantısı oluştur |
+> | Eylem | Microsoft. Media/mediaservices/liveEventPrivateEndpointConnections/Delete | Canlı olay özel uç nokta bağlantısını sil |
+> |  | **mediaservices/liveEventPrivateLinkResources** |  |
+> | Eylem | Microsoft. Media/mediaservices/liveEventPrivateLinkResources/Read | Tüm canlı etkinlik özel bağlantı kaynağını okuyun |
 > |  | **mediaservices/liveEvents** |  |
 > | Eylem | Microsoft. Media/mediaservices/liveEvents/Read | Tüm canlı olayları okuyun |
 > | Eylem | Microsoft. Media/mediaservices/liveEvents/Write | Canlı bir olay oluşturun veya güncelleştirin |
@@ -5949,6 +6019,23 @@ Azure hizmeti: [Media Services](../media-services/index.yml)
 > | Eylem | Microsoft. Media/mediaservices/liveEvents/Liveçıktıları/Delete | Canlı çıktıyı silme |
 > |  | **mediaservices/liveOutputOperations** |  |
 > | Eylem | Microsoft. Media/mediaservices/liveOutputOperations/Read | Tüm canlı çıktı Işlemlerini okuyun |
+> |  | **mediaservices/Mediagraf** |  |
+> | Eylem | Microsoft. Media/mediaservices/Mediagraf/Read | Tüm medya Graflarını okuyun |
+> | Eylem | Microsoft. Media/mediaservices/Mediagraf/Write | Tüm medya Graflarını oluşturun veya güncelleştirin |
+> | Eylem | Microsoft. Media/mediaservices/Mediagraf/Delete | Tüm medya Graflarını Sil |
+> | Eylem | Microsoft. Media/mediaservices/Mediagraf/start/Action | Tüm medya grafiği Işlemlerini Başlat |
+> | Eylem | Microsoft. Media/mediaservices/Mediagraf/durdur/eylem | Tüm medya grafiği Işlemlerini durdur |
+> |  | **mediaservices/Privateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. Media/mediaservices/Privateendpointconnectionproxy/okuma | Tüm özel uç nokta bağlantı ara sunucusunu oku |
+> | Eylem | Microsoft. Media/mediaservices/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantısı proxy 'Si oluştur |
+> | Eylem | Microsoft. Media/mediaservices/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Sini Sil |
+> | Eylem | Microsoft. Media/mediaservices/Privateendpointconnectionproxy/doğrulama/eylem | Özel uç nokta bağlantı proxy 'Sini doğrula |
+> |  | **mediaservices/privateEndpointConnections** |  |
+> | Eylem | Microsoft. Media/mediaservices/privateEndpointConnections/Read | Herhangi bir özel uç nokta bağlantısını okuyun |
+> | Eylem | Microsoft. Media/mediaservices/privateEndpointConnections/Write | Özel uç nokta bağlantısı oluştur |
+> | Eylem | Microsoft. Media/mediaservices/privateEndpointConnections/Delete | Özel uç nokta bağlantısını sil |
+> |  | **mediaservices/privateLinkResources** |  |
+> | Eylem | Microsoft. Media/mediaservices/privateLinkResources/okuma | Herhangi bir özel bağlantı kaynağını okuyun |
 > |  | **mediaservices/streamingEndpointOperations** |  |
 > | Eylem | Microsoft. Media/mediaservices/streamingEndpointOperations/okuma | Tüm akış uç noktası Işlemlerini okuyun |
 > |  | **mediaservices/streamingEndpoints** |  |
@@ -5958,6 +6045,17 @@ Azure hizmeti: [Media Services](../media-services/index.yml)
 > | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/start/Action | Tüm akış uç noktası Işlemlerini başlatma |
 > | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/durdur/eylem | Tüm akış uç noktası Işlemlerini durdur |
 > | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/ölçek/eylem | Tüm akış uç noktası Işlemlerini ölçeklendirme |
+> |  | **mediaservices/streamingEndpoints/Streamingendpointprivateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/Streamingendpointprivateendpointconnectionproxy/okuma | Herhangi bir akış uç noktası özel uç nokta bağlantı ara sunucusunu okuyun |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/Streamingendpointprivateendpointconnectionproxy/yazma | Akış uç noktası özel uç nokta bağlantısı proxy 'Si oluştur |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/Streamingendpointprivateendpointconnectionproxy/Delete | Akış uç noktası özel uç noktası bağlantı proxy 'Sini Sil |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/Streamingendpointprivateendpointconnectionproxy/Validate/Action | Akış uç noktası özel uç noktası bağlantı proxy 'Sini doğrula |
+> |  | **mediaservices/streamingEndpoints/streamingEndpointPrivateEndpointConnections** |  |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/streamingEndpointPrivateEndpointConnections/Read | Herhangi bir akış uç noktası özel uç nokta bağlantısını okuyun |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/streamingEndpointPrivateEndpointConnections/Write | Akış uç noktası özel uç nokta bağlantısı oluştur |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/streamingEndpointPrivateEndpointConnections/Delete | Akış uç noktası özel uç nokta bağlantısını sil |
+> |  | **mediaservices/streamingEndpoints/streamngEndpointPrivateLinkResources** |  |
+> | Eylem | Microsoft. Media/mediaservices/streamingEndpoints/streamngEndpointPrivateLinkResources/Read | Tüm akış uç noktası özel bağlantı kaynağını okuyun |
 > |  | **mediaservices/Streamingkonumlandırıcı** |  |
 > | Eylem | Microsoft. Media/mediaservices/Streamingkonumlandırıcı/okuma | Herhangi bir akış bulucuyu okuyun |
 > | Eylem | Microsoft. Media/mediaservices/Streamingkonumlandırıcı/yazma | Herhangi bir akış Bulucu oluşturma veya güncelleştirme |
@@ -5968,6 +6066,10 @@ Azure hizmeti: [Media Services](../media-services/index.yml)
 > | Eylem | Microsoft. Media/mediaservices/streamingPolicies/okuma | Herhangi bir akış Ilkesini okuyun |
 > | Eylem | Microsoft. Media/mediaservices/streamingPolicies/Write | Herhangi bir akış Ilkesi oluşturun veya güncelleştirin |
 > | Eylem | Microsoft. Media/mediaservices/streamingPolicies/Delete | Tüm akış Ilkelerini silme |
+> |  | **mediaservices/streamingPrivateEndpointConnectionOperations** |  |
+> | Eylem | Microsoft. Media/mediaservices/streamingPrivateEndpointConnectionOperations/Read | Herhangi bir akış özel uç nokta bağlantı Işlemini okuyun |
+> |  | **mediaservices/streamingPrivateEndpointConnectionProxyOperations** |  |
+> | Eylem | Microsoft. Media/mediaservices/streamingPrivateEndpointConnectionProxyOperations/Read | Tüm akış özel uç nokta bağlantısı proxy Işlemini okuyun |
 > |  | **mediaservices/dönüşümler** |  |
 > | Eylem | Microsoft. Media/mediaservices/dönüşümler/okuma | Herhangi bir dönüşümü okuyun |
 > | Eylem | Microsoft. Media/mediaservices/dönüşümler/yazma | Herhangi bir dönüşüm oluşturun veya güncelleştirin |
@@ -6156,6 +6258,7 @@ Azure hizmeti: [Azure NetApp Files](../azure-netapp-files/index.yml)
 > | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/döndürülüyor/Action | Birimi belirli bir anlık görüntüye Al |
 > | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/BreakReplication/Action | Birim çoğaltma ilişkilerini kes |
 > | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/ReplicationStatus/Action | Birim çoğaltmasının durumlarını okur. |
+> | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/yeniden ınitializerep/Action |  |
 > | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/Authorizereptes/Action | Kaynak birim çoğaltmasını yetkilendirme |
 > | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/yeniden eşitleniyor/eylem | Hedef birimde çoğaltmayı yeniden eşitleme |
 > | Eylem | Microsoft. NetApp/netAppAccounts/Capacityhavuzlar/birimler/Deletereptes/eylem | Hedef birimdeki çoğaltmayı silme |
@@ -6214,6 +6317,13 @@ Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../loa
 > | Eylem | Microsoft. Network/Applicationgateway/stop/Action | Bir uygulama ağ geçidini durduruyor |
 > |  | **Applicationgateway 'ler/Backendavddresspoir** |  |
 > | Eylem | Microsoft. Network/Applicationgateway/Backendavddresspoir/JOIN/Action | Bir uygulama ağ geçidi arka uç adres havuzunu birleştirir. Alertable değil. |
+> |  | **Applicationgateway 'ler/privateEndpointConnections** |  |
+> | Eylem | Microsoft. Network/Applicationgateway/privateEndpointConnections/Read | Application Gateway PrivateEndpoint bağlantılarını alır |
+> | Eylem | Microsoft. Network/Applicationgateway/privateEndpointConnections/Write | Application Gateway PrivateEndpoint bağlantısını güncelleştirir |
+> | Eylem | Microsoft. Network/Applicationgateway/privateEndpointConnections/Delete | Application Gateway PrivateEndpoint bağlantısını siler |
+> |  | **Applicationgateway/privateLinkResources** |  |
+> | Eylem | Microsoft. Network/Applicationgateway/privateLinkResources/Read | ApplicationGateway PrivateLink kaynaklarını alır |
+> | Eylem | Microsoft. Network/Applicationgateway/privateLinkResources/Resolveprivatelinkserviceıd/Action | Application Gateway özel bağlantı kaynağı için özel bağlantı tanımlayıcısı alır |
 > |  | **ApplicationGatewayWebApplicationFirewallPolicies** |  |
 > | Eylem | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Read | Application Gateway WAF ilkesi alır |
 > | Eylem | Microsoft. Network/ApplicationGatewayWebApplicationFirewallPolicies/Write | Bir Application Gateway WAF ilkesi oluşturur veya bir Application Gateway WAF ilkesini güncelleştirir |
@@ -6244,6 +6354,7 @@ Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../loa
 > | Eylem | Microsoft. Network/Bastionkonakları/getShareableLinks/Action | Bir savunma alt ağında, URL 'lerinin oluşturulmasını sağlayan, belirtilen VM 'ler için paylaşılabilir URL 'leri döndürür |
 > | Eylem | Microsoft. Network/Bastionkonakları/createShareableLinks/Action | Bir savunma kapsamındaki sanal makineler için paylaşılabilir URL 'ler oluşturur ve URL 'leri döndürür |
 > | Eylem | Microsoft. Network/Bastionkonakları/deleteShareableLinks/Action | Bir savunma kapsamındaki belirtilen VM 'ler için paylaşılabilir URL 'leri siler |
+> | Eylem | Microsoft. Network/Bastionkonakları/deleteShareableLinksByToken/Action | Bir savunma kapsamındaki belirtilen belirteçler için paylaşılabilir URL 'leri siler |
 > |  | **bgpServiceCommunities** |  |
 > | Eylem | Microsoft. Network/bgpServiceCommunities/Read | BGP hizmeti topluluklarını al |
 > |  | **bağlantının** |  |
@@ -6415,6 +6526,10 @@ Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../loa
 > | Eylem | Microsoft. Network/Frontkapaklı/routingRules/Read | Bir yönlendirme kuralı alır |
 > | Eylem | Microsoft. Network/Frontkapaklı/routingRules/Write | Yönlendirme kuralı oluşturur veya güncelleştirir |
 > | Eylem | Microsoft. Network/Frontkapaklı/routingRules/Delete | Bir yönlendirme kuralını siler |
+> |  | **Frontkapaklı/rulesEngines** |  |
+> | Eylem | Microsoft. Network/Frontkapaklı/rulesEngines/Read | Bir kural altyapısını alır |
+> | Eylem | Microsoft. Network/Frontkapaklı/rulesEngines/Write | Bir kural altyapısı oluşturur veya güncelleştirir |
+> | Eylem | Microsoft. Network/Frontkapaklı/rulesEngines/Delete | Bir kural altyapısını siler |
 > |  | **frontDoorWebApplicationFirewallManagedRuleSets** |  |
 > | Eylem | Microsoft. Network/frontDoorWebApplicationFirewallManagedRuleSets/Read | Web uygulaması güvenlik duvarı yönetilen kural kümelerini alır |
 > |  | **frontDoorWebApplicationFirewallPolicies** |  |
@@ -6470,7 +6585,6 @@ Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../loa
 > | Eylem | Microsoft. Network/localnetworkgateway/Delete | LocalNetworkGateway 'i siler |
 > |  | **yerlerini** |  |
 > | Eylem | Microsoft. Network/Locations/Checkivme Networkingsupport/Action | Hızlandırılmış ağ desteğini denetler |
-> | Eylem | Microsoft. Network/Locations/batchNotifyPrivateEndpointsForResourceMove/Action | Kaynak taşıma için toplu iş uç noktasına bildirir. |
 > | Eylem | Microsoft. Network/Locations/checkPrivateLinkServiceVisibility/eylem | Özel bağlantı hizmeti görünürlüğünü denetler |
 > | Eylem | Microsoft. Network/Locations/bareMetalTenants/Action | Çıplak kiracıyı ayırır veya doğrular |
 > |  | **konumlar/oto Approlarprivatelinkservices** |  |
@@ -6665,10 +6779,12 @@ Azure hizmeti: [sanal ağ](../virtual-network/index.yml), [Load Balancer](../loa
 > | Eylem | Microsoft. Network/privateEndpointRedirectMaps/Read | Özel bir uç nokta RedirectMap alır |
 > | Eylem | Microsoft. Network/privateEndpointRedirectMaps/Write | Özel uç nokta RedirectMap oluşturur veya var olan bir özel uç nokta RedirectMap 'i güncelleştirir |
 > |  | **privateEndpoints** |  |
-> | Eylem | Microsoft. Network/privateEndpoints/pushPropertiesToResource/Action | NRP istemcisinden özel uç nokta Özellik güncelleştirmelerini gönderme işlemi |
 > | Eylem | Microsoft. Network/privateEndpoints/okuma | Özel bir uç nokta kaynağı alır. |
 > | Eylem | Microsoft. Network/privateEndpoints/yazma | Yeni bir özel uç nokta oluşturur veya var olan bir özel uç noktayı güncelleştirir. |
 > | Eylem | Microsoft. Network/privateEndpoints/Delete | Özel bir uç nokta kaynağını siler. |
+> |  | **privateEndpoints/privateDnsZoneGroups** |  |
+> | Eylem | Microsoft. Network/privateEndpoints/privateDnsZoneGroups/Read | Bir Özel DNS bölge grubu alır |
+> | Eylem | Microsoft. Network/privateEndpoints/privateDnsZoneGroups/Write | Bir Özel DNS bölge grubu koyar |
 > |  | **privateLinkServices** |  |
 > | Eylem | Microsoft. Network/privateLinkServices/Read | Özel bir bağlantı hizmeti kaynağı alır. |
 > | Eylem | Microsoft. Network/privateLinkServices/Write | Yeni bir özel bağlantı hizmeti oluşturur veya var olan bir özel bağlantı hizmetini güncelleştirir. |
@@ -7379,6 +7495,7 @@ Azure hizmeti: [Azure izleyici](../azure-monitor/index.yml)
 > |  | **çalışma alanları/sorgu/AzureDevOpsAuditing** |  |
 > | Eylem | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureDevOpsAuditing/okuma | AzureDevOpsAuditing tablosundan verileri okuma |
 > |  | **çalışma alanları/sorgu/AzureDiagnostics** |  |
+> | Eylem | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureDiagnostics/okuma | AzureDiagnostics tablosundan verileri okuma |
 > | Eylem | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureDiagnostics/okuma | AzureDiagnostics tablosundan verileri okuma |
 > |  | **çalışma alanları/sorgu/AzureMetrics** |  |
 > | Eylem | Microsoft. Operationalınsights/çalışma alanları/sorgu/AzureMetrics/okuma | AzureMetrics tablosundan verileri okuma |
@@ -8529,14 +8646,34 @@ Azure hizmeti: [Güvenlik Merkezi](../security-center/index.yml)
 > |  | **kopyalan** |  |
 > | Eylem | Microsoft. Security/değerlendirmeleri/okuma | Aboneliğinizde güvenlik değerlendirmeleri alın |
 > | Eylem | Microsoft. Security/değerlendirmeleri/yazma | Aboneliğinizde güvenlik değerlendirmeleri oluşturun veya güncelleştirin |
+> |  | **akışlarını otomatikleştirin** |  |
+> | Eylem | Microsoft. Security/Automations/Read | Kapsam için tahminleri alır |
+> | Eylem | Microsoft. Security/Automations/Write | Kapsam için Otomasyonu oluşturur veya güncelleştirir |
+> | Eylem | Microsoft. Security/Automations/Delete | Kapsam için Otomasyonu siler |
+> | Eylem | Microsoft. Security/Automations/Validate/ACTION | Kapsam için otomasyon modelini doğrular |
 > |  | **Oto Provisioningsettings** |  |
 > | Eylem | Microsoft. Security/oto Provisioningsettings/Read | Abonelik için güvenlik otomatik sağlama ayarını al |
 > | Eylem | Microsoft. Security/oto Provisioningsettings/Write | Abonelik için güvenlik otomatik sağlama ayarı oluştur veya güncelleştir |
 > |  | **Karmaşık Anceresults** |  |
 > | Eylem | Microsoft. Security/Karmaşıkanceresults/okuma | Kaynak için uyumluluk sonuçlarını alır |
+> |  | **deviceSecurityGroups** |  |
+> | Eylem | Microsoft. Security/deviceSecurityGroups/Write | IoT cihaz güvenlik grupları oluşturur veya güncelleştirir |
+> | Eylem | Microsoft. Security/deviceSecurityGroups/Delete | IoT cihaz güvenlik gruplarını siler |
+> | Eylem | Microsoft. Security/deviceSecurityGroups/Read | IoT cihaz güvenlik gruplarını alır |
 > |  | **ınformationprotectionpolicies** |  |
 > | Eylem | Microsoft. Security/ınformationprotectionpolicies/Read | Kaynak için bilgi koruma ilkelerini alır |
 > | Eylem | Microsoft. Security/ınformationprotectionpolicies/Write | Kaynak için bilgi koruma ilkelerini güncelleştirir |
+> |  | **ıotsecuritysolutions** |  |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/Write | IoT güvenlik çözümlerini oluşturur veya güncelleştirir |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/Delete | IoT güvenlik çözümlerini siler |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/Read | IoT güvenlik çözümlerini alır |
+> |  | **ıotsecuritysolutions/analiz Ticsmodeller** |  |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/analiz Ticsmodeller/okuma | IoT güvenlik Analizi modelini alır |
+> |  | **ıotsecuritysolutions/Analticsmodeller/Aggreggıt uyarıları** |  |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/Analticsmodeller/Aggregber uyarıları/okuma | IoT toplanmış uyarıları alır |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/Analticsmodeller/Aggregber uyarıları/kapatma/eylem | IoT toplanmış uyarıların kayıplarını kaldır |
+> |  | **ıotsecuritysolutions/analiz Ticsmodeller/Aggreg, öneriler** |  |
+> | Eylem | Microsoft. Security/ıotsecuritysolutions/Analticsmodeller/Aggregber önerileri/okuma | IoT toplu önerilerini alır |
 > |  | **yerlerini** |  |
 > | Eylem | Microsoft. Security/Locations/Read | Güvenlik veri konumunu alır |
 > |  | **konumlar/uyarılar** |  |
@@ -8657,6 +8794,14 @@ Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 > |  | **ayarlar** |  |
 > | Eylem | Microsoft. Securityınsights/ayarlar/okuma | Ayarları alır |
 > | Eylem | Microsoft. Securityınsights/ayarlar/yazma | Güncelleştirme ayarları |
+> |  | **threatıntelligence** |  |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/Read | Tehdit zekasını alır |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/Write | Güncelleştirmeler tehdit bilgileri |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/Delete | Tehdit zekasını siler |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/Query/Action | Sorgu tehdit bilgileri |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/ölçümler/eylem | Tehdit zekası ölçümlerini toplayın |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/bulkDelete/Action | Tehdit zekasını toplu silme |
+> | Eylem | Microsoft. Securityınsights/threatıntelligence/Bulakg/Action | Toplu Etiketler tehdit bilgileri |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -8872,6 +9017,11 @@ Azure hizmeti: [Azure SignalR hizmeti](../azure-signalr/index.yml)
 > | Eylem | Microsoft. SignalRService/SignalR/privateEndpointConnections/Read | Özel bir uç nokta bağlantısını oku |
 > |  | **SignalR/privateLinkResources** |  |
 > | Eylem | Microsoft. SignalRService/SignalR/privateLinkResources/Read | Tüm SignalR özel bağlantı kaynaklarını listeleyin |
+> |  | **SignalR/serverConnection** |  |
+> | DataAction | Microsoft. SignalRService/SignalR/serverConnection/Write | Sunucu bağlantısı başlatın. |
+> |  | **SignalR/Service** |  |
+> | DataAction | Microsoft. SignalRService/SignalR/Service/accessKey/Action | Clienttoken imzalamak için geçici bir AccessKey alın. |
+> | DataAction | Microsoft. SignalRService/SignalR/Service/clientToken/Action | İstemci bağlantısı başlatmak için bir ClientToken alın. |
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
@@ -9003,12 +9153,22 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 > | Eylem | Microsoft. SQL/konumlar/managedInstanceLongTermRetentionPolicyAzureAsyncOperation/Read | Yönetilen bir veritabanı için uzun süreli bekletme ilkesi işleminin durumunu alır |
 > |  | **konumlar/managedInstanceLongTermRetentionPolicyOperationResults** |  |
 > | Eylem | Microsoft. SQL/konumlar/managedInstanceLongTermRetentionPolicyOperationResults/Read | Yönetilen bir veritabanı için uzun süreli bekletme ilkesi işleminin durumunu alır |
+> |  | **konumlar/Managedınstanceprivateendpointconnectionazureasyncoperation** |  |
+> | Eylem | Microsoft. SQL/Locations/Managedınstanceprivateendpointconnectionazureasyncoperation/Read | Özel bir uç nokta bağlantısı işleminin sonucunu alır |
+> |  | **konumlar/Managedınstanceprivateendpointconnectionoperationresults** |  |
+> | Eylem | Microsoft. SQL/Locations/Managedınstanceprivateendpointconnectionoperationresults/Read | Özel bir uç nokta bağlantısı işleminin sonucunu alır |
+> |  | **konumlar/Managedınstanceprivateendpointconnectionproxyazureasyncoperation** |  |
+> | Eylem | Microsoft. SQL/Locations/Managedınstanceprivateendpointconnectionproxyazureasyncoperation/Read | Özel bir uç noktası bağlantı proxy 'si işleminin sonucunu alır |
+> |  | **konumlar/Managedınstanceprivateendpointconnectionproxyoperationsonuçları** |  |
+> | Eylem | Microsoft. SQL/Locations/Managedınstanceprivateendpointconnectionproxyoperationresults/Read | Özel bir uç noktası bağlantı proxy 'si işleminin sonucunu alır |
 > |  | **konumlar/managedShortTermRetentionPolicyOperationResults** |  |
 > | Eylem | Microsoft. SQL/konumlar/managedShortTermRetentionPolicyOperationResults/Read | Kısa süreli bekletme ilkesi işleminin durumunu alır |
 > |  | **konumlar/managedTransparentDataEncryptionAzureAsyncOperation** |  |
 > | Eylem | Microsoft. SQL/konumlar/managedTransparentDataEncryptionAzureAsyncOperation/Read | Yönetilen veritabanı saydam veri şifrelemesi üzerinde devam eden işlemleri alır |
 > |  | **konumlar/managedTransparentDataEncryptionOperationResults** |  |
 > | Eylem | Microsoft. SQL/konumlar/managedTransparentDataEncryptionOperationResults/Read | Yönetilen veritabanı saydam veri şifrelemesi üzerinde devam eden işlemleri alır |
+> |  | **konumlar/Operationsheılgizli** |  |
+> | Eylem | Microsoft. SQL/konumlar/Operationshegizli/Read | Bir konumdaki hizmet işleminin sistem durumunu alır |
 > |  | **konumlar/privateEndpointConnectionAzureAsyncOperation** |  |
 > | Eylem | Microsoft. SQL/konumlar/privateEndpointConnectionAzureAsyncOperation/Read | Özel bir uç nokta bağlantısı işleminin sonucunu alır |
 > |  | **konumlar/privateEndpointConnectionOperationResults** |  |
@@ -9077,6 +9237,10 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Kaynak için tanılama ayarını oluşturur veya güncelleştirir |
 > |  | **ManagedInstances/veritabanları/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Yönetilen örnek veritabanları için kullanılabilir günlükleri alır |
+> |  | **ManagedInstances/veritabanları/sorgular** |  |
+> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/sorgular/okundu | Sorgu kimliğine göre sorgu metni al |
+> |  | **ManagedInstances/veritabanları/sorgular/istatistikler** |  |
+> | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/sorgular/istatistikler/okundu | Sorgu kimliğine göre sorgu yürütme istatistiklerini al |
 > |  | **ManagedInstances/veritabanları/recommendedSensitivityLabels** |  |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/recommendedSensitivityLabels/Read | Belirli bir veritabanının duyarlılık etiketlerini listeleyin |
 > | Eylem | Microsoft. SQL/ManagedInstances/veritabanları/recommendedSensitivityLabels/Write | Toplu güncelleştirme önerilen duyarlılık etiketleri |
@@ -9133,6 +9297,17 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 > |  | **ManagedInstances/işlemler** |  |
 > | Eylem | Microsoft. SQL/ManagedInstances/işlemler/okuma | Yönetilen örnek işlemlerini al |
 > | Eylem | Microsoft. SQL/ManagedInstances/işlemler/iptal/eylem | Henüz bitmemiş Azure SQL yönetilen örneği bekleyen zaman uyumsuz işlemi iptal eder. |
+> |  | **ManagedInstances/Privateendpointconnectionproxy 'Leri** |  |
+> | Eylem | Microsoft. SQL/ManagedInstances/Privateendpointconnectionproxy/okuma | Özel uç nokta bağlantı proxy 'leri listesini döndürür veya belirtilen özel uç nokta bağlantı proxy 'sinin özelliklerini alır. |
+> | Eylem | Microsoft. SQL/ManagedInstances/Privateendpointconnectionproxy/yazma | Belirtilen parametrelerle özel bir uç nokta bağlantı proxy 'si oluşturur veya belirtilen özel uç nokta bağlantısı proxy 'si için özellikleri veya etiketleri güncelleştirir. |
+> | Eylem | Microsoft. SQL/ManagedInstances/Privateendpointconnectionproxy/Delete | Var olan bir özel uç nokta bağlantı proxy 'sini siler |
+> | Eylem | Microsoft. SQL/ManagedInstances/Privateendpointconnectionproxy/doğrulama/eylem | Özel bir uç nokta bağlantısını doğrular NRP tarafında çağrı oluştur |
+> |  | **ManagedInstances/privateEndpointConnections** |  |
+> | Eylem | Microsoft. SQL/ManagedInstances/privateEndpointConnections/Read | Özel uç nokta bağlantılarının listesini döndürür veya belirtilen özel uç nokta bağlantısının özelliklerini alır. |
+> | Eylem | Microsoft. SQL/ManagedInstances/privateEndpointConnections/Delete | Var olan bir özel uç nokta bağlantısını siler |
+> | Eylem | Microsoft. SQL/ManagedInstances/privateEndpointConnections/Write | Var olan bir özel uç nokta bağlantısını onaylar veya reddeder |
+> |  | **ManagedInstances/privateLinkResources** |  |
+> | Eylem | Microsoft. SQL/ManagedInstances/privateLinkResources/okuma | Karşılık gelen SQL Server için özel bağlantı kaynaklarını alın |
 > |  | **ManagedInstances/Providers/Microsoft. Insights/diagnosticSettings** |  |
 > | Eylem | Microsoft. SQL/ManagedInstances/Providers/Microsoft. Insights/diagnosticSettings/Read | Kaynak için tanılama ayarını alır |
 > | Eylem | Microsoft. SQL/ManagedInstances/Providers/Microsoft. Insights/diagnosticSettings/Write | Kaynak için tanılama ayarını oluşturur veya güncelleştirir |
@@ -9150,6 +9325,8 @@ Azure hizmeti: [Azure SQL veritabanı](../sql-database/index.yml), [SQL veri amb
 > |  | **ManagedInstances/Securityalcertpolicies** |  |
 > | Eylem | Microsoft. SQL/ManagedInstances/Securityalcertpolicies/Write | Belirli bir yönetilen sunucu için yönetilen sunucu tehdit algılama ilkesini değiştirme |
 > | Eylem | Microsoft. SQL/ManagedInstances/Securityalcertpolicies/okuma | Belirli bir sunucu için yapılandırılmış yönetilen sunucu tehdit algılama ilkelerinin listesini alma |
+> |  | **ManagedInstances/topqueries** |  |
+> | Eylem | Microsoft. SQL/ManagedInstances/topqueries/Read | Yönetilen bir örnek için popüler kaynak kullanan sorguları al |
 > |  | **ManagedInstances/** |  |
 > | Eylem | Microsoft. SQL/ManagedInstances/ | Belirli bir yönetilen örnek için güvenlik açığı değerlendirmesini değiştirme |
 > | Eylem | Microsoft. SQL/ManagedInstances/ | Belirli bir yönetilen örnek için güvenlik açığı değerlendirmesini kaldırma |
@@ -9648,6 +9825,7 @@ Azure hizmeti: [depolama](../storage/index.yml)
 > | Eylem | Microsoft. Storage/storageAccounts/Privateendpointconnectionproxy/Delete | Özel uç nokta bağlantı proxy 'Lerini Sil |
 > | Eylem | Microsoft. Storage/storageAccounts/Privateendpointconnectionproxy/yazma | Özel uç nokta bağlantı proxy 'Leri koy |
 > |  | **storageAccounts/privateEndpointConnections** |  |
+> | Eylem | Microsoft. Storage/storageAccounts/privateEndpointConnections/Read | Özel uç nokta bağlantılarını listeleme |
 > | Eylem | Microsoft. Storage/storageAccounts/privateEndpointConnections/Delete | Özel uç nokta bağlantısını sil |
 > | Eylem | Microsoft. Storage/storageAccounts/privateEndpointConnections/Read | Özel uç nokta bağlantısı al |
 > | Eylem | Microsoft. Storage/storageAccounts/privateEndpointConnections/Write | Özel uç nokta bağlantısı koy |

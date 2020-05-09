@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547791"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891655"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla istenen durum yapılandırma uzantısı
 
@@ -185,8 +185,8 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 | Settings. Configuration. Function |string |DSC yapılandırmanızın adını belirtir. Adlı yapılandırma, **Settings. Configuration. Script** 'in tanımladığı betiğe dahil olmalıdır. **Settings. Configuration. URL** veya **Settings. Configuration. Function** tanımlanmışsa bu özellik gereklidir. Bu özellikler için hiçbir değer verilmezse, uzantı, LCM meta verilerini ayarlamak için varsayılan yapılandırma betiğini çağırır ve bağımsız değişkenlerin sağlanması gerekir. |
 | Settings. configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenmedi. |
 | Settings. configurationData. URL |string |DSC yapılandırmanız için giriş olarak kullanılacak yapılandırma verileri (. psd1) dosyanızın indirileceği URL 'YI belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, **Protectedsettings. configurationDataUrlSasToken** özelliğini SAS belirtecinizin değerine ayarlayın. |
-| Settings. privacy. dataCollection |string |Telemetri toplamayı etkinleştirilir veya devre dışı bırakır. Bu özelliğin olası tek değeri **Etkinleştir**, **devre dışı bırak**, **' '** veya **$null**. Bu özelliğin boş veya null bırakılması telemetri sunar. Varsayılan değer **' '**. Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
-| Settings. Advancedoçen. downloadMappings |Koleksiyon |WMF 'nin indirileceği alternatif konumları tanımlar. Daha fazla bilgi için bkz. [Azure DSC uzantısı 2,8 ve uzantı bağımlılıklarını karşıdan yüklemelerin kendi konumunuza nasıl eşleneceğini öğrenin](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
+| Settings. privacy. dataCollection |string |Telemetri toplamayı etkinleştirilir veya devre dışı bırakır. Bu özelliğin olası tek değeri **Etkinleştir**, **devre dışı bırak**, **' '** veya **$null**. Bu özelliğin boş veya null bırakılması telemetri sunar. Varsayılan değer **' '**. Daha fazla bilgi için bkz. [Azure DSC Uzantısı veri toplama](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/). |
+| Settings. Advancedoçen. downloadMappings |Koleksiyon |WMF 'nin indirileceği alternatif konumları tanımlar. Daha fazla bilgi için bkz. [Azure DSC uzantısı 2,8 ve uzantı bağımlılıklarını karşıdan yüklemelerin kendi konumunuza nasıl eşleneceğini öğrenin](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
 | protectedSettings. configurationArguments |Koleksiyon |DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
 | protectedSettings. configurationUrlSasToken |string |**Settings. Configuration. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |
 | protectedSettings. configurationDataUrlSasToken |string |**Settings. configurationData. URL** tarafından tanımlanan URL 'ye erişmek IÇIN kullanılacak SAS belirtecini belirtir. Bu özellik şifrelenir. |

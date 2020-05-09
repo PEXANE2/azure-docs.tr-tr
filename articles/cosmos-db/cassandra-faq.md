@@ -6,16 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192842"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608260"
 ---
-# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB için Cassandra API hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB Cassandra API hakkında sık sorulan sorular
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra ve Cassandra API arasında bazı önemli farklılıklar nelerdir?
+Bu makalede, Azure Cosmos DB içindeki Apache Cassandra ve Cassandra API arasındaki işlevsellik farkları açıklanmaktadır. Ayrıca, Azure Cosmos DB Cassandra API hakkında sık sorulan soruların yanıtlarını da sağlar.
+
+## <a name="key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra ve Cassandra API arasındaki önemli farklılıklar
 
 - Apache Cassandra, Bölüm anahtarının boyutunda 100 MB 'lik bir sınır önerir. Azure Cosmos DB için Cassandra API, bölüm başına 20 GB 'a kadar izin verir.
 - Apache Cassandra, dayanıklı işlemeleri devre dışı bırakmanızı sağlar. Kayıt günlüğüne yazmayı atlayabilir ve doğrudan memtables 'a gidebilirsiniz. Bu, düğüm, memtables 'ın disk üzerindeki SSTables 'a boşaltılmadan önce gelmesi durumunda veri kaybına yol açabilir. Azure Cosmos DB, veri kaybını önlemeye yardımcı olmak için her zaman sürekli olarak işlemeler uygular.

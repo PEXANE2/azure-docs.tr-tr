@@ -1,20 +1,20 @@
 ---
-title: VM 'Leri başlatma/durdurma çözümünü günlüğe sorgulama
-description: Bu makalede, Azure Izleyici 'deki VM 'Leri Başlat/Durdur çözümü tarafından oluşturulan günlük verilerinin nasıl sorgulanyapılacağı açıklanır.
+title: VM'leri çalışma saatleri dışında başlat/durdur günlüklerini sorgulama
+description: Bu makalede, Azure Izleyici 'den VM'leri çalışma saatleri dışında başlat/durdur çözümü tarafından oluşturulan günlük verilerinin nasıl sorgulanyapılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604737"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864241"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>VM 'Leri başlatma/durdurma çözümünü günlüğe sorgulama
+# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur günlüklerini sorgulama
 
-Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına iletir: iş günlükleri ve iş akışları. Bu veriler Azure Izleyici 'de [sorgu](../azure-monitor/log-query/log-query-overview.md) için kullanılabilir.
+Azure Otomasyonu, iki kayıt türünü bağlı Log Analytics çalışma alanına iletir: iş günlükleri ve iş akışları. Bu makalede, Azure Izleyici 'de [sorgu](../azure-monitor/log-query/log-query-overview.md) için kullanılabilen veriler incelenir.
 
 ## <a name="job-logs"></a>İş günlükleri
 

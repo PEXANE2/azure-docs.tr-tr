@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 4/29/2020
+ms.date: 05/06/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594160"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982386"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -100,6 +100,7 @@ Cosmos kapsayıcılarının içindeki ve içindeki veri hareketleri her zaman RU
 Şimdi aşağıdaki makalelerde akış işlemcisini Değiştir hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Değişiklik akışına genel bakış](change-feed.md)
+* [Akış çekme modelini Değiştir](change-feed-pull-model.md)
 * [Değişiklik akışı işlemci kitaplığından geçiş yapma](how-to-migrate-from-change-feed-library.md)
 * [Değişiklik akışı tahmin aracını kullanma](how-to-use-change-feed-estimator.md)
 * [Değişiklik akışı işlemcisi başlangıç zamanı](how-to-configure-change-feed-start-time.md)

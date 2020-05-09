@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 82660cdb4ab6523bae7608fe3b071f20cb3603f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419179"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780427"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Azure Data Factory veri akışlarını eşleme, parametrelerin kullanımını destekler. Daha sonra deyimlerinizin tamamında kullanabileceğiniz veri akışı tanımınızın içinde parametreler tanımlayabilirsiniz. Parametre değerleri, veri akışını Yürüt etkinliği aracılığıyla çağıran işlem hattı tarafından ayarlanabilir. Veri akışı etkinlik ifadelerindeki değerleri ayarlamak için üç seçeneğiniz vardır:
+Azure Data Factory veri akışlarını eşleme, parametrelerin kullanımını destekler. Veri akışı tanımınızın içindeki parametreleri tanımlayın ve bunları deyimlerinizin tamamında kullanın. Parametre değerleri, veri akışını Yürüt etkinliği aracılığıyla çağıran işlem hattı tarafından ayarlanır. Veri akışı etkinlik ifadelerindeki değerleri ayarlamak için üç seçeneğiniz vardır:
 
 * Ardışık düzen denetim akışı ifade dilini kullanarak dinamik bir değer ayarlayın
 * Dinamik bir değer ayarlamak için veri akışı ifade dilini kullanın
@@ -42,34 +42,71 @@ Parametrelere, herhangi bir veri akışı ifadesinde başvurulabilir. Parametrel
 
 ![Veri akışı parametre ifadesi](media/data-flow/new-parameter-expression.png "Veri akışı parametre ifadesi")
 
-### <a name="passing-in-a-column-name-as-a-parameter"></a>Sütun adını parametre olarak geçirme
-
-Ortak bir model, bir sütun adını parametre değeri olarak geçirmektir. Parametresiyle ilişkili sütuna başvurmak için `byName()` işlevini kullanın. Sütununu, gibi bir atama işleviyle ilgili türe dönüştürmeyi unutmayın `toString()`.
-
-Örneğin, bir parametreye `columnName`göre bir dize sütununu eşlemek isterseniz, öğesinden türetilmiş bir sütun dönüşümü ekleyebilirsiniz. `toString(byName($columnName))`
-
-![Sütun adını parametre olarak geçirme](media/data-flow/parameterize-column-name.png "Sütun adını paramete olarak geçirme")
-
 ## <a name="assign-parameter-values-from-a-pipeline"></a>İşlem hattından parametre değerleri atama
 
-Veri akışınızı parametrelerle oluşturduktan sonra, veri akışını Yürüt etkinliğinin bulunduğu bir işlem hattından çalıştırabilirsiniz. Etkinliği işlem hattı Tuvalinize ekledikten sonra etkinliğin **Parametreler** sekmesinde kullanılabilir veri akışı parametreleri görüntülenir.
+Parametrelerle bir veri akışı oluşturduktan sonra, veri akışını Yürüt etkinliğinin bulunduğu bir işlem hattından çalıştırabilirsiniz. Etkinliği işlem hattı Tuvalinize ekledikten sonra etkinliğin **Parametreler** sekmesinde kullanılabilir veri akışı parametreleri görüntülenir.
+
+Parametre değerlerini atarken, Spark türlerine göre işlem [hattı ifade dilini](control-flow-expression-language-functions.md) veya [veri akışı ifade dilini](data-flow-expression-functions.md) kullanabilirsiniz. Her eşleme veri akışı, ardışık düzen ve veri akışı ifade parametrelerinin herhangi bir birleşimini içerebilir.
 
 ![Veri akışı parametresini ayarlama](media/data-flow/parameter-assign.png "Veri akışı parametresini ayarlama")
 
-Parametre veri türü dize ise, parametre değerlerini ayarlamak için metin kutusuna tıkladığınızda bir işlem hattı veya bir veri akışı ifadesi girmeyi seçebilirsiniz. Ardışık düzen ifadesini seçerseniz, işlem hattı ifade paneli sunulur. Dize ilişkilendirme sözdiziminin içinde ardışık düzen işlevlerini dahil ettiğinizden emin olun `'@{<expression>}'`, örneğin:
+### <a name="pipeline-expression-parameters"></a>Ardışık düzen ifade parametreleri
 
-```'@{pipeline().RunId}'```
+İşlem hattı ifade parametreleri, sistem değişkenlerine, işlevlere, işlem hattı parametrelerine ve diğer işlem hattı etkinliklerine benzer değişkenlere başvurmasına olanak tanır. **Ardışık düzen ifadesi**' ne tıkladığınızda, ifade oluşturucuyu kullanarak bir ifade girmenize izin veren bir yan gezinti açılır.
 
-Parametreniz dize türünde değilse, her zaman veri akışı Ifade Oluşturucusu görüntülenir. Burada, parametresinin veri türüyle eşleşen herhangi bir ifade veya sabit değer girebilirsiniz. Aşağıda, veri akışı ifadesi ve ifade oluşturucusunun bir sabit dizesi örnekleri verilmiştir:
+![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline.png "Veri akışı parametresini ayarlama")
 
-* ```toInteger(Role)```
-* ```'this is my static literal string'```
+Başvurulduğunda, işlem hattı parametreleri değerlendirilir ve ardından bu değer veri akışı ifade dilinde kullanılır. Ardışık düzen ifadesi türünün veri akışı parametre türüyle eşleşmesi gerekmez. 
 
-Her eşleme veri akışı, ardışık düzen ve veri akışı ifade parametrelerinin herhangi bir birleşimini içerebilir. 
+#### <a name="string-literals-vs-expressions"></a>Dize sabit değerleri vs ifadeleri
 
-![Veri akışı parametreleri örneği](media/data-flow/parameter-example.png "Veri akışı parametreleri örneği")
+Dize türünde bir işlem hattı ifade parametresi atarken, varsayılan olarak tırnak işaretleri eklenir ve değer değişmez değer olarak değerlendirilir. Parametre değerini bir veri akışı ifadesi olarak okumak için, parametrenin yanındaki ifade kutusunu işaretleyin.
+
+![Veri akışı parametresini ayarlama](media/data-flow/string-parameter.png "Veri akışı parametresini ayarlama")
+
+Veri akışı parametresi `stringParam` değeri `upper(column1)`olan bir işlem hattı parametresine başvuruyorsa. 
+
+- Eğer ifadesi işaretliyse, `$stringParam` Sütun1 'nin tümü büyük harf değeri olarak değerlendirilir.
+- İfade işaretli değilse (varsayılan davranış), `$stringParam` olarak değerlendirilir`'upper(column1)'`
+
+#### <a name="passing-in-timestamps"></a>Zaman damgalarına geçirme
+
+İşlem hattı ifade dilinde, gibi sistem `pipeline().TriggerTime` değişkenleri ve ' yyyy-aa `utcNow()` -gg\'T\'hh: mm: ss biçiminde dizeler olarak dönüş zaman damgası olarak işlevler. SSSSSSZ '. Bunları zaman damgası türünde veri akışı parametrelerine dönüştürmek için, istenen zaman damgasını bir `toTimestamp()` işleve dahil etmek üzere dize ilişkilendirmeyi kullanın. Örneğin, işlem hattı tetikleme süresini bir veri akışı parametresine dönüştürmek için kullanabilirsiniz `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`. 
+
+![Veri akışı parametresini ayarlama](media/data-flow/parameter-timestamp.png "Veri akışı parametresini ayarlama")
+
+> [!NOTE]
+> Veri akışları yalnızca 3 milisaniyeye kadar basamağı destekleyebilir. İşlev `left()` , ek basamakların kırpılıp kullanılamaz.
+
+#### <a name="pipeline-parameter-example"></a>Ardışık düzen parametresi örneği
+
+String türünde bir işlem hattı parametresine `intParam` başvuran bir tamsayı parametresi olduğunu varsayalım `@pipeline.parameters.pipelineParam`. 
+
+![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-2.png "Veri akışı parametresini ayarlama")
+
+`@pipeline.parameters.pipelineParam`çalışma zamanında bir değeri `abs(1)` atandı.
+
+![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-4.png "Veri akışı parametresini ayarlama")
+
+`$intParam` Türetilmiş sütun gibi bir ifadede başvuruluyorsa, return `1`sonucunu değerlendirir `abs(1)` . 
+
+![Veri akışı parametresini ayarlama](media/data-flow/parameter-pipeline-3.png "Veri akışı parametresini ayarlama")
+
+### <a name="data-flow-expression-parameters"></a>Veri akışı ifade parametreleri
+
+**Veri akışı ifadesini Seç ifadesi** veri akışı ifadesi oluşturucuyu açar. Veri akışınız genelinde işlevlere, diğer parametrelere ve tanımlanmış herhangi bir şema sütununa başvurabileceksiniz. Bu ifade başvuruluyorsa olduğu gibi değerlendirilir.
+
+> [!NOTE]
+> Geçersiz bir ifade geçirirseniz veya bu dönüşümde mevcut olmayan bir şema sütununa başvuruda bulunmanız durumunda, parametre null olarak değerlendirilir.
 
 
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Sütun adını parametre olarak geçirme
+
+Ortak bir model, bir sütun adını parametre değeri olarak geçirmektir. Sütun veri akışı şemasında tanımlanmışsa, doğrudan dize ifadesi olarak başvurabilirsiniz. Sütun şemada tanımlanmamışsa, `byName()` işlevini kullanın. Sütununu, gibi bir atama işleviyle ilgili türe dönüştürmeyi unutmayın `toString()`.
+
+Örneğin, bir parametreye `columnName`göre bir dize sütununu eşlemek isterseniz, öğesinden türetilmiş bir sütun dönüşümü ekleyebilirsiniz. `toString(byName($columnName))`
+
+![Sütun adını parametre olarak geçirme](media/data-flow/parameterize-column-name.png "Sütun adını parametre olarak geçirme")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Veri akışı yürütme etkinliği](control-flow-execute-data-flow-activity.md)
