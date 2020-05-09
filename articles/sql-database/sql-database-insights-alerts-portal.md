@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 37eabd4b2f61a82388b1c8d0aaf4aef2320f008e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79209558"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801816"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics veritabanları için uyarı oluşturma
 
@@ -24,8 +24,8 @@ ms.locfileid: "79209558"
 
 Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te (eskiden Azure SQL veri ambarı) Azure portal kullanarak tek, havuza alınmış ve veri ambarı veritabanları için uyarıların nasıl ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir. Bu makale, uyarı dönemlerini ayarlamaya yönelik en iyi yöntemleri de sağlar.
 
-> [!IMPORTANT]
-> Bu özellik, yönetilen örnekte henüz kullanılamıyor. Alternatif olarak, [dinamik yönetim görünümlerine](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)göre bazı ölçümler için e-posta uyarıları göndermek üzere SQL Agent 'ı kullanabilirsiniz.
+> [!NOTE]
+> SQL yönetilen örneğe özgü yönergeler için bkz. [Azure SQL yönetilen örneği için uyarı oluşturma](sql-database-managed-instance-alerts.md).
 
 Azure hizmetleriniz, veya üzerindeki olaylar için izleme ölçümlerini temel alarak bir uyarı alabilirsiniz.
 

@@ -2,13 +2,13 @@
 title: Azure Geçişi gereci
 description: Sunucu değerlendirmesi ve geçişte kullanılan Azure geçişi gerecine genel bakış sağlar.
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106411"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780343"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -42,6 +42,7 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 
 **Gereksinim** | **VMware** 
 --- | ---
+**İzinler** | Gereç Web uygulamasına yerel olarak veya uzaktan erişmek için, Gereç makinesinde bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir.
 **Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir:<br/><br/> - **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Değerlendirme Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).<br/>- **DRA Aracısı**: VM çoğaltmasını düzenleyin ve çoğaltılan makineler ile Azure arasındaki iletişimi koordine edin. Yalnızca VMware VM 'Leri aracısız geçiş kullanılarak Azure 'a çoğaltılırken kullanılır.<br/>- **Ağ geçidi**: çoğaltılan verileri Azure 'a gönderir. Yalnızca VMware VM 'Leri aracısız geçiş kullanılarak Azure 'a çoğaltılırken kullanılır.
 **Desteklenen Dağıtım** | OVA şablonunu kullanarak VMware VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak VMware VM veya fiziksel makine olarak dağıtın.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
@@ -61,6 +62,7 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 
 **Gereksinim** | **Hyper-V** 
 --- | ---
+**İzinler** | Gereç Web uygulamasına yerel olarak veya uzaktan erişmek için, Gereç makinesinde bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir.
 **Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir:<br/><br/>- **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Değerlendirme Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).
 **Desteklenen Dağıtım** | Bir VHD şablonu kullanarak Hyper-V VM olarak dağıtın.<br/><br/> PowerShell yükleme betiği kullanarak Hyper-V VM veya fiziksel makine olarak dağıtın.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
@@ -77,12 +79,13 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 
 **Gereksinim** | **Fiziksel** 
 --- | ---
+**İzinler** | Gereç Web uygulamasına yerel olarak veya uzaktan erişmek için, Gereç makinesinde bir etki alanı yöneticisi veya yerel yönetici olmanız gerekir.
 **Gereç bileşenleri** | Gereç aşağıdaki bileşenlere sahiptir: <br/><br/> - **Yönetim uygulaması**: Bu, Gereç dağıtımı sırasında Kullanıcı girişi için bir Web uygulamasıdır. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/> - **Keşif Aracısı**: aracı makine yapılandırma verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Değerlendirme Aracısı**: aracı performans verilerini toplar. Makineleri Azure 'a geçiş için değerlendirmek için kullanılır.<br/>- **Otomatik güncelleştirme hizmeti**: gereç bileşenlerini güncelleştirir (24 saatte bir çalışır).
 **Desteklenen Dağıtım** | PowerShell yükleme betiği kullanarak adanmış fiziksel makine veya VM olarak dağıtın. Betik, portaldan indirilebilir.
 **Proje desteği** |  Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma sınırları** | Bir gereç, en fazla 250 fiziksel sunucu bulabilir.
 **PowerShell betiği** | Kodu (AzureMigrateInstaller. ps1) portaldan daraltılmış bir klasöre indirin. [Daha fazla bilgi edinin](tutorial-assess-physical.md#set-up-the-appliance). Alternatif olarak, [doğrudan indirin](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> İndirme boyutu 59,7 MB 'tır.
-**Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
+**Yazılım/donanım** |  Gereç, Windows Server 2016, 32-GB RAM, 8 vCPU ve 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun.<br/> Gereci Windows Server 2019 ile bir makinede çalıştırmak desteklenmez.
 **Karma değeri** | PowerShell betiği karma değerlerini [doğrulayın](deploy-appliance-script.md#verify-file-security) .
 
 ## <a name="url-access"></a>URL erişimi
@@ -90,7 +93,8 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 Azure geçişi gereci internet bağlantısı gerektirir.
 
 - Gereci dağıtırken, Azure geçişi gerekli URL 'lere bir bağlantı denetimi yapar.
-- İnternet 'e bağlanmak için URL tabanlı bir ara sunucu kullanıyorsanız, bu URL 'lere erişim izni vermeniz gerekir ve proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği doğrulanıyor.
+- Listedeki tüm URL 'Lere erişim izni vermeniz gerekir. Yalnızca değerlendirme yapıyorsanız, yalnızca VMware aracısız geçişi için gerekli olarak işaretlenen URL 'Leri atlayabilirsiniz.
+-  İnternet 'e bağlanmak için URL tabanlı bir ara sunucu kullanıyorsanız, proxy 'nin URL 'Leri ararken alınan CNAME kayıtlarını çözümlediği emin olun.
 
 ### <a name="public-cloud-urls"></a>Genel bulut URL 'Leri
 
@@ -100,7 +104,7 @@ Azure geçişi gereci internet bağlantısı gerektirir.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure aboneliğinizde oturum açın.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Gereç için Azure geçişi ile iletişim kurmak üzere Azure Active Directory (AD) uygulamalar oluşturun.
 management.azure.com | Azure geçişi hizmeti ile iletişim kurmak için gereç için Azure AD uygulamaları oluşturun.
-dc.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
+*.services.visualstudio.com | İç izleme için kullanılan uygulama günlüklerini karşıya yükleyin.
 *.vault.azure.net | Azure Key Vault gizli dizileri yönetin.
 aka.ms/* | Diğer adıyla bağlantılarına erişime izin ver. Azure geçiş gereci güncellemeleri için kullanılır.
 download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
@@ -176,7 +180,7 @@ IPv6 adresleri | 'nin. Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Adı | kapsayıcı. GetType (). Ada
+Name | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -257,7 +261,7 @@ Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamal
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
 
-**VERILERI* | **WMı SıNıFı** | **WMı SıNıFı ÖZELLIĞI**
+**VERILERI** | **WMı SıNıFı** | **WMı SıNıFı ÖZELLIĞI**
 --- | --- | ---
 **Makine ayrıntıları** | 
 BIOS _ Msvm_BIOSElement seri numarası | Bıino SerialNumber
@@ -298,6 +302,84 @@ Hyper-V sanal ağ bağdaştırıcısı | Gönderilen bayt/saniye | VM boyutu iç
 - CPU kullanımı, bir VM 'ye bağlı tüm sanal işlemcilerin toplam kullanım toplamıdır.
 - Bellek kullanımı (geçerli basınç * Konuk görünür fiziksel bellek)/100.
 - Disk ve ağ kullanım değerleri, listelenen Hyper-V performans sayaçlarından toplanır.
+
+
+## <a name="collected-data---physical"></a>Toplanan veriler-fiziksel
+
+Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
+
+### <a name="windows-metadata"></a>Windows meta verileri
+
+Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
+
+Bu, gerecin topladığı ve Azure 'a gönderdiği Windows Server meta verilerinin tam listesidir.
+
+**VERILERI** | **WMı SıNıFı** | **WMı SıNıFı ÖZELLIĞI**
+--- | --- | ---
+FQDN | Win32_ComputerSystem | Etki alanı, ad, PartOfDomain
+İşlemci çekirdek sayısı | Win32_PRocessor | Numberofçekirdekler
+Ayrılan bellek | Win32_ComputerSystem | TotalPhysicalMemory
+BIOS seri numarası | Win32_ComputerSystemProduct | Identifyingnumber
+BıOS GUıD 'SI | Win32_ComputerSystemProduct | EDIN
+Önyükleme türü | Win32_DiskPartition | Tür = GPT olan bölümü denetle **:** EFı/BIOS için sistem
+İşletim sistemi adı | Win32_OperatingSystem | Başlık
+İşletim sistemi sürümü |Win32_OperatingSystem | Sürüm
+İşletim sistemi mimarisi | Win32_OperatingSystem | OSArchitecture
+Disk sayısı | Win32_DiskDrive | Model, boyut, DeviceID, MediaType, ad
+Disk boyutu | Win32_DiskDrive | Boyut
+NIC listesi | Win32_NetworkAdapterConfiguration | Açıklama, Dizin
+NIC IP adresi | Win32_NetworkAdapterConfiguration | IPAddress
+NIC MAC adresi | Win32_NetworkAdapterConfiguration | MACAddress
+
+### <a name="linux-metadata"></a>Linux meta verileri
+
+Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu meta verilerinin tam listesidir.
+
+**VERILERI** | **'Un** 
+--- | --- 
+FQDN | Cat/proc/sys/kernel/hostname, ana bilgisayar adı-f
+İşlemci çekirdek sayısı |  /proc/cpuinfo \| awk '/^ işlemci/{Print $3} ' \| WC-l
+Ayrılan bellek | Cat/proc/meminfo \| grep memtotal \| awk ' {printf "%. 0f", $2/1024} '
+BIOS seri numarası | lshw \| grep "seri:" \| baş-N1 \| awk ' {Print $2} ' <br/> /usr/sbin/dmidecode-t 1 \| grep ' Serial ' \| awk ' {$1 = ""; $2 = ""; Print} '
+BıOS GUıD 'SI | Cat/sys/Class/DMI/ID/product_uuid
+Önyükleme türü | [-d/sys/firmware/EFI]  && Echo EFI \| \| Echo BIOS
+İşletim sistemi adı/sürümü | Bu dosyalara işletim sistemi sürümü ve adı için erişirsiniz:<br/><br/> /etc/OS-Release<br/> /usr/lib/OS-Release <br/> /etc/Enterprise-Release <br/> /etc/redhat-release<br/> /etc/Oracle-Release<br/>  /etc/SuSE-release<br/>  /etc/LSB-Release  <br/> /etc/debian_version
+İşletim sistemi mimarisi | UNAME-a
+Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| kes-F1-d ': '
+Önyükleme diski | df/Boot \| SED-n 2p \| awk ' {Print $1} '
+Disk boyutu | Fdisk-l \| egrep ' disk. * bayt ' \| egrep $disk: \| awk ' {Print $5} '
+NIC listesi | IP-o-4 addr awk ' {Print $2} ' göster \|
+NIC IP adresi | IP addr $nic \| grep Inet \| awk ' {Print $2} ' \| kes-F1-d "/" 
+NIC MAC adresi | IP addr $Nic \| grep istatistiklerinden \| awk ' {Print $2} ' öğesini göster
+
+### <a name="windows-performance-data"></a>Windows performans verileri
+
+Bu, gerecin topladığı ve Azure 'a gönderdiği Windows Server performans verileri aşağıda verilmiştir.
+
+**Veri** | **WMI sınıfı** | **WMI sınıfı özelliği**
+--- | --- | ---
+CPU kullanımı | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+Bellek kullanımı | Win32_PerfFormattedData_PerfOS_Memory | Availablembayt
+NIC sayısı | Win32_PerfFormattedData_Tcpip_NetworkInterface | Ağ aygıtı sayısını alın.
+NIC başına alınan veri | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+NIC başına aktarılan veriler | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+Disk sayısı | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | Disk sayısı
+Disk ayrıntıları | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
+
+### <a name="linux-performance-data"></a>Linux performans verileri
+
+Bu, gerecin topladığı ve Azure 'a gönderdiği Linux sunucu performansı verileri.
+
+**Veri** | **Linux** 
+--- | --- 
+CPU kullanımı | Cat/proc/stat/| grep ' CPU '/proc/stat
+Bellek kullanımı | ücretsiz \| grep mem \| awk ' {Print $3/$ 2 * 100,0} '
+NIC sayısı | lshw sınıfı ağ \| grep ETH [0-60] \| WC-l
+NIC başına alınan veri | Cat/sys/Class/net/ETH $ NIC/istatistikler/rx_bytes
+NIC başına aktarılan veriler | Cat/sys/Class/net/ETH $ NIC/istatistikler/tx_bytes
+Disk sayısı | Fdisk-l \| egrep ' disk. * bayt ' \| awk ' {Print $2} ' \| kes-F1-d ': '
+Disk ayrıntıları | Cat/proc/diskstats
+
 
 ## <a name="appliance-upgrades"></a>Gereç yükseltmeleri
 

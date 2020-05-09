@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755107"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582637"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory LinkedIn hesabı bağlantılarını tümleştirin
 
@@ -30,8 +30,8 @@ Kuruluşunuzdaki kullanıcıların bazı Microsoft uygulamaları dahilinde Linke
 > Özel durumlar:
 >
 > * Bu ayar ABD Kamu, Microsoft Bulut Almanya veya Azure ve Office 365 ile Çin 'de 21Vianet tarafından işletilen Microsoft Bulut kullanan müşteriler için kullanılamaz.
-> * Bu ayar, Almanya 'da sağlanan kiracılar için varsayılan olarak kapalıdır. Ayarın Microsoft Bulut Almanya kullanan müşteriler için kullanılamaz olduğunu unutmayın.
-> * Bu ayar, Fransa 'da sağlanan kiracılar için varsayılan olarak kapalıdır.
+> * Bu ayar, Almanya 'da sağlanan Azure AD kuruluşları için varsayılan olarak kapalıdır. Ayarın Microsoft Bulut Almanya kullanan müşteriler için kullanılamaz olduğunu unutmayın.
+> * Bu ayar, Fransa 'da sağlanan kuruluşlar için varsayılan olarak kapalıdır.
 >
 > Kuruluşunuz için LinkedIn hesabı bağlantıları etkinleştirildikten sonra, Kullanıcı adına şirket verilerine erişen uygulamalara izin verdikten sonra hesap bağlantıları çalışır. Kullanıcı izin ayarı hakkında daha fazla bilgi için, bkz. [kullanıcının bir uygulamaya erişimini kaldırma](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 
