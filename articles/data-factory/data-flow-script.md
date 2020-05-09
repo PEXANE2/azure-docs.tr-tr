@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/13/2020
-ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413440"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890865"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı betiği (DFS)
 
@@ -177,6 +177,21 @@ aggregate(groupBy(movie),
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
+Bu komut dosyasını, her sütuna ad vermek zorunda kalmadan akışınız içindeki tüm sütunları kullanarak bir satır karması oluşturmak için de kullanabilirsiniz:
+
+```
+derive(DWhash = sha1(columns()))
+```
+
+### <a name="string_agg-equivalent"></a>String_agg eşdeğeri
+Bu kod T-SQL ```string_agg()``` işlevi gibi davranır ve dize değerlerini bir dizi olarak toplar. Daha sonra bu diziyi SQL hedefleri ile kullanmak üzere bir dizeye çevirebilirsiniz.
+
+```
+source1 aggregate(groupBy(year),
+    string_agg = collect(title)) ~> Aggregate1
+Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

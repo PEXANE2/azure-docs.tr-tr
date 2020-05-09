@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678062"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82925434"
 ---
 ## <a name="register-an-azure-ad-app"></a>Azure AD uygulamasını kaydetme
 
@@ -36,7 +36,7 @@ Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleşt
 
 ### <a name="configuring-optional-claims"></a>İsteğe bağlı talepler yapılandırılıyor
 
-Azure AD 'den `family_name` ve `given_name` taleplerini almak istiyorsanız, Azure Portal Kullanıcı arabirimi veya uygulama bildiriminde uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure AD uygulamanıza isteğe bağlı talepler sağlama](/active-directory/develop/active-directory-optional-claims.md).
+Azure AD 'den `family_name` ve `given_name` taleplerini almak istiyorsanız, Azure Portal Kullanıcı arabirimi veya uygulama bildiriminde uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure AD uygulamanıza isteğe bağlı talepler sağlama](/azure/active-directory/develop/active-directory-optional-claims).
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** bölümünden **uygulama kayıtları**' yi seçin.

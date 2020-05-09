@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176609"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792080"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -82,7 +82,7 @@ Depolama hesabınıza bağlı özel uç noktalarınız varsa, alt ağlar için a
 
 **Rehberlik**: Ağ İzleyicisi paket yakalama, depolama hesabı ile sanal makine arasındaki trafiği izlemek için yakalama oturumları oluşturmanızı sağlar. Yalnızca istediğiniz trafiği yakalamanızı sağlamak için yakalama oturumu için filtreler sağlanır. Paket yakalama, ağ anormalilerin hem yeniden etkin hem de proaktif olarak tanımlanmasına yardımcı olur. Diğer kullanımlar arasında ağ istatistiklerini toplama, ağ erişimi ile ilgili bilgi alma, istemci-sunucu iletişiminde hata ayıklama ve çok daha fazlası yer alır. Paket yakalamalarını uzaktan tetikleyebilmek için, istenen bir sanal makinede bir paket yakalamayı çalıştırmanın yükünü kolaylaştırır ve bu da değerli süreyi kaydeder. 
 
-- [Portalı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme](https://docs.microsoft.comazure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [Portalı kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -240,7 +240,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 - [Log Analytics günlük verilerinde uyarı alma](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -428,7 +428,7 @@ Kullanıcı hesabı erişiminin şüpheli olma riskini azaltmak için etkili bir
 
 Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluşturun, Denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına gönderir. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz. Azure depolama hesaplarında kimlik doğrulama başarısızlıklarını izlemek için, depolama kaynak ölçümleri için belirli eşiklere ulaşıldığında size bildirimde bulunan uyarılar oluşturabilirsiniz. Ayrıca, anonim kimlik doğrulama koşulunu kullanarak depolama hesaplarına yönelik anonim erişim hakkında uyarı almak için Azure Izleyici 'yi kullanın.
 
-- [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -574,7 +574,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Azure Depolama analizi günlüğü](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Azure Depolama analizini günlüğe kaydetme](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Azure depolama hesapları için ölçüm uyarılarını yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
@@ -887,7 +887,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 Ayrıca, depolama hesabı anahtarlarının kaybının veya açıklanmasının etkilerini sınırlamak için depolama hesabı anahtarlarını sık aralıklarla döndürün.
 
-- [Bekleyen veriler için Azure depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Bekleyen veri için Azure Depolama şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
 - [Depolama hesabı erişim anahtarlarını yönetme](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
 

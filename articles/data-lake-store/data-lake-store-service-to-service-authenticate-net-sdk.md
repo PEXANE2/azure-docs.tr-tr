@@ -1,22 +1,17 @@
 ---
-title: 'Hizmetten hizmete kimlik doğrulaması: Azure Active Directory kullanarak .NET SDK Azure Data Lake Storage 1. | Microsoft Docs'
+title: .NET-hizmetten hizmete kimlik doğrulaması-Data Lake Storage 1.
 description: .NET SDK kullanarak Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması elde etme hakkında bilgi edinin
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265538"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691626"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -32,7 +27,7 @@ Bu makalede, Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulamas
 ## <a name="prerequisites"></a>Ön koşullar
 * **Visual Studio 2013 veya üzeri**. Aşağıdaki yönergelerde Visual Studio 2019 kullanılır.
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Active Directory "Web" uygulaması oluşturun**. [Azure Active Directory kullanarak, Data Lake Storage 1. Ile hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-using-active-directory.md)adımlarını tamamlamış olmanız gerekir.
 

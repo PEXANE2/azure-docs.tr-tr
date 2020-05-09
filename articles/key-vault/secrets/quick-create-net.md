@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 5e62e8c3883ad8414d1fb550dd4221eb8b9e4056
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: be612c1e28c0d07228a0f9a183a82edd1ed70753
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81425038"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901533"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v4)
 
@@ -31,7 +31,7 @@ Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [.NET Core 2,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/2.1).
 * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview)
 
 Bu hızlı başlangıçta, bir Windows `dotnet`terminalinde ( [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)veya [Azure Cloud Shell](https://shell.azure.com/)) çalıştırdığınız, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)ve Windows komutlarının bulunduğu varsayılmaktadır.
@@ -95,12 +95,14 @@ New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGr
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. Kolaylık sağlaması için bu hızlı başlangıç, bir .NET konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimlik doğrulaması için hizmet sorumlusu ve erişim denetimi ilkesi kullanılması gerekir.
+Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. 
+
+Kolaylık sağlaması için, bu hızlı başlangıç, hizmet sorumlusu ve erişim denetimi ilkesi kullanımını gerektiren bir .NET konsol uygulaması oluşturur. Hizmet prensibi, "http://<My-Unique-Service-prensibi-Name>" biçiminde benzersiz bir ad gerektirir.
 
 Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
 ```
 
 Bu işlem, bir dizi anahtar/değer çifti döndürür. 
@@ -123,7 +125,7 @@ Azure PowerShell [New-AzADServicePrincipal](/powershell/module/az.resources/new-
 
 ```azurepowershell
 # Create a new service principal
-$spn = New-AzADServicePrincipal -DisplayName "http://mySP"
+$spn = New-AzADServicePrincipal -DisplayName "http://<my-unique-service-principle-name>"
 
 # Get the tenant ID and subscription ID of the service principal
 $tenantId = (Get-AzContext).Tenant.Id

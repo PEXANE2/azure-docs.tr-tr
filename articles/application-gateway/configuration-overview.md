@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632183"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856063"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -101,18 +101,18 @@ Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıd
 
    0.0.0.0/0 trafiğini doğrudan Internet 'e göndermek için bir UDR oluşturabilirsiniz. 
 
-  **Senaryo 3**: Azure Kubernetes hizmeti Kubernetes kullanan için UDR
+  **Senaryo 3**: Kubernetes kullanan ile Azure Kubernetes hizmeti için UDR
 
-  Azure Kubernetes hizmeti (AKS) ve Application Gateway giriş denetleyicisi (AGIC) ile Kubernetes kullanan kullanıyorsanız, yığınlara gönderilen trafiğin doğru düğüme yönlendirilmesine izin vermek için bir rota tablosu ayarlamanız gerekir. Azure CNı kullanıyorsanız bu gerekli değildir. 
+  Azure Kubernetes hizmeti (AKS) ve Application Gateway giriş denetleyicisi (AGIC) ile Kubernetes kullanan kullanıyorsanız, Application Gateway olan ve alt öğe için gönderilen trafiğin doğru düğüme yönlendirilmesini sağlamak için bir yol tablosu gerekir. Azure CNı kullanıyorsanız bu gerekli değildir. 
 
-   Kubernetes kullanan 'in çalışmasına izin vermek için rota tablosunu ayarlamak için aşağıdaki adımları kullanın:
+  Kubernetes kullanan 'in çalışmasına izin vermek için yol tablosunu kullanmak üzere aşağıdaki adımları izleyin:
 
-  1. Azure 'da bir yol tablosu kaynağı oluşturun. 
-  2. Oluşturulduktan sonra **rotalar** sayfasına gidin. 
-  3. Yeni bir yol ekleyin:
+  1. AKS tarafından oluşturulan kaynak grubuna gidin (kaynak grubunun adı "MC_" ile başlamalıdır)
+  2. Bu kaynak grubunda AKS tarafından oluşturulan yol tablosunu bulun. Yol tablosu aşağıdaki bilgilerle doldurulmalıdır:
      - Adres ön eki, AKS 'te erişmek istediğiniz nesnelerin IP aralığı olmalıdır. 
-     - Sonraki atlama türü **Sanal Gereç**olmalıdır. 
-     - Sonraki atlama adresi, adres ön eki alanında tanımlanan IP aralığı içindeki düğüm sayısını barındıran düğümün IP adresi olmalıdır. 
+     - Sonraki atlama türü Sanal Gereç olmalıdır. 
+     - Sonraki atlama adresi, pods 'yi barındıran düğümün IP adresi olmalıdır.
+  3. Bu yol tablosunu Application Gateway alt ağıyla ilişkilendirin. 
     
   **v2 desteklenmeyen senaryolar**
 

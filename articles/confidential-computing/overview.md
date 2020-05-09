@@ -25,7 +25,7 @@ Azure gizli bilgi işlem, bulutta işlendiği sırada hassas verilerinizi yalıt
 - Birden çok kaynaktan şifrelenmiş veri kümelerinde algoritmalar gerçekleştirme
 
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 <p><p>
 
 
@@ -90,7 +90,7 @@ Azure gizli bilgi işlem sanal makinelerini donanım tabanlı güvenilen şifrel
 - [Açık şifreleme yazılım geliştirme seti (SDK)](https://github.com/openenclave/openenclave)
 - [Gizli konsorsiyum çatısı (CCF)](https://github.com/Microsoft/CCF)
 
-### <a name="overview"></a>Genel Bakış
+### <a name="overview"></a>Genel bakış
 
 Şifreleme ile oluşturulmuş bir uygulama iki şekilde bölümlenir:
 1. "Güvenilmeyen" bir bileşen (konak)

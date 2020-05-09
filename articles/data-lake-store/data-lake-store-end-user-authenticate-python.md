@@ -1,22 +1,18 @@
 ---
-title: 'Son Kullanıcı kimlik doğrulaması: Azure Active Directory kullanarak Azure Data Lake Storage 1. Python | Microsoft Docs'
+title: Son Kullanıcı kimlik doğrulaması-Data Lake Storage 1.-Azure ile Python
 description: Python ile Azure Active Directory kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması elde etme hakkında bilgi edinin
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265603"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691791"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79265603"
 > * [.NET SDK’sını kullanma](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python’u kullanma](data-lake-store-end-user-authenticate-python.md)
 > * [REST API kullanma](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 Bu makalede, Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması yapmak için Python SDK 'sını kullanma hakkında bilgi edineceksiniz. Son Kullanıcı kimlik doğrulaması, daha fazla iki kategoriye ayrılabilir:
 
@@ -38,7 +34,7 @@ Bu seçeneklerin her ikisi de bu makalede ele alınmıştır. Python kullanarak 
 
 * **Python**. Python’u [buradan](https://www.python.org/downloads/) indirebilirsiniz. Bu makalede Python 3.6.2 kullanılmıştır.
 
-* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Bir Azure Active Directory "yerel" uygulaması oluşturun**. [Azure Active Directory kullanarak Data Lake Storage 1. Ile Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md)adımlarını tamamlamış olmanız gerekir.
 
@@ -98,7 +94,7 @@ Data Lake Storage 1. hesapta hesap yönetimi işlemleri için Azure AD 'de kimli
     client_id = 'FILL-IN-HERE'
     redirect = 'urn:ietf:wg:oauth:2.0:oob'
     RESOURCE = 'https://management.core.windows.net/'
-    
+
     context = adal.AuthenticationContext(authority_url)
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
@@ -114,10 +110,9 @@ Data Lake Storage 1. bir hesapta dosya sistemi işlemleri için Azure AD 'de kim
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Multi-Factor Authentication olmadan son kullanıcı kimlik doğrulaması
 
 Bu kullanım dışıdır. Daha fazla bilgi için bkz. [Python SDK kullanarak Azure kimlik doğrulaması](/azure/python/python-sdk-azure-authenticate).
-   
+
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Python kullanarak Azure Data Lake Storage 1. kimlik doğrulaması yapmak için son kullanıcı kimlik doğrulamasını nasıl kullanacağınızı öğrendiniz. Artık Azure Data Lake Storage 1. ile çalışmak için Python kullanma hakkında konuşabilecek aşağıdaki makalelere bakabilirsiniz.
 
 * [Python kullanarak Data Lake Storage 1. hesap yönetimi işlemleri](data-lake-store-get-started-python.md)
 * [Python kullanarak Data Lake Storage 1. veri işlemleri](data-lake-store-data-operations-python.md)
-

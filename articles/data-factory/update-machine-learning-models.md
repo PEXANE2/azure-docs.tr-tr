@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409068"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927420"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Güncelleştirme Kaynağı etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak ML Studio (klasik) v modellerini güncelleştirme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturma](transform-data-using-machine-learning.md)ana Azure Data Factory Azure Machine Learning tümleştirme makalesini tamamlar. Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
+Bu makale, ana Azure Data Factory ML Studio (klasik) tümleştirme makalesini tamamlar: [Azure Machine Learning ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturun](transform-data-using-machine-learning.md). Daha önce yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
 
 ## <a name="overview"></a>Genel Bakış
-Azure Machine Learning modellerini işlemin bir parçası olarak modelinize eğitim ve kaydedilir. Daha sonra bunu, tahmine dayalı bir Web hizmeti oluşturmak için kullanırsınız. Web hizmeti daha sonra Web sitelerinde, panolarda ve mobil uygulamalarda tüketilebilir.
+İşlem ML Studio (klasik) modellerinin bir parçası olarak modelinize eğitim ve kaydedilir. Daha sonra bunu, tahmine dayalı bir Web hizmeti oluşturmak için kullanırsınız. Web hizmeti daha sonra Web sitelerinde, panolarda ve mobil uygulamalarda tüketilebilir.
 
-Machine Learning kullanarak oluşturduğunuz modeller genellikle statik değildir. Yeni veriler kullanılabilir hale geldiğinde veya API 'nin tüketicisi kendi verilerine sahip olduğunda, modelin geri çekilmesi gerekir. Azure Machine Learning bir modeli nasıl yeniden eğitebilmeniz hakkındaki ayrıntılar için [Machine Learning modelini yeniden eğitme](../machine-learning/machine-learning-retrain-machine-learning-model.md) bölümüne bakın.
+Machine Learning kullanarak oluşturduğunuz modeller genellikle statik değildir. Yeni veriler kullanılabilir hale geldiğinde veya API 'nin tüketicisi kendi verilerine sahip olduğunda, modelin geri çekilmesi gerekir. 
 
 Yeniden eğitim sık gerçekleşebilir. Toplu yürütme etkinliği ve kaynak güncelleştirme etkinliği sayesinde, Data Factory kullanarak tahmine dayalı Web hizmetini yeniden eğitmek ve güncelleştirmek Azure Machine Learning modelini çalıştırabilirsiniz.
 
@@ -35,9 +35,9 @@ Aşağıdaki resimde, eğitim ve tahmine dayalı Web Hizmetleri arasındaki ili�
 
 ![Web Hizmetleri](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure Machine Learning kaynak etkinliğini Güncelleştir
+## <a name="ml-studio-classic-update-resource-activity"></a>ML Studio (klasik) kaynak güncelleştirme etkinliği
 
-Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme etkinliği tanımlar.
+Aşağıdaki JSON kod parçacığı ML Studio (klasik) toplu yürütme etkinliğini tanımlar.
 
 ```json
 {
@@ -62,7 +62,7 @@ Aşağıdaki JSON kod parçacığı bir Azure Machine Learning Batch yürütme e
 | Özellik                      | Açıklama                              | Gerekli |
 | :---------------------------- | :--------------------------------------- | :------- |
 | ad                          | İşlem hattındaki etkinliğin adı     | Yes      |
-| açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
+| açıklama                   | Etkinliğin ne yaptığını açıklayan metin.  | No       |
 | type                          | Azure Machine Learning kaynak güncelleştirme etkinliği için etkinlik türü **AzureMLUpdateResource**' dir. | Yes      |
 | linkedServiceName             | UpdateResourceEndpoint özelliği içeren bağlı hizmet Azure Machine Learning. | Yes      |
 | Traınedmodelname              | Web hizmeti denemesinde güncellenmek üzere eğitilen model modülünün adı | Yes      |

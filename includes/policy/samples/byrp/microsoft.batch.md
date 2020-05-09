@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d483e4accffb1a374fbcff6ac781329b33e71260
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8611eed3502eab77f775914333186f69c259456e
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82629829"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837286"
 ---
-|Adı |Açıklama |Efekt (ler) |Sürüm |GitHub |
+|Name |Açıklama |Efekt (ler) |Sürüm |GitHub |
 |---|---|---|---|---|
 |[Batch hesabı için tanılama ayarlarını Olay Hub 'ına dağıt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdb51110f-0865-4a6e-b274-e2e07a5b2cd7) |Bu Tanılama ayarları eksik olan herhangi bir Batch hesabı oluşturulduğunda veya güncelleştirilirse, bir bölgesel Olay Hub 'ına akış için toplu Iş hesabı tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |2.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Batch_DeployDiagnosticLog_Deploy_EventHub.json) |
 |[Batch hesabı için tanılama ayarlarını Log Analytics çalışma alanına dağıt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc84e5349-db6d-4769-805e-e14037dab9b5) |Bu tanılama ayarlarının eksik olduğu herhangi bir Batch hesabı oluşturulduğunda veya güncelleştirilirse, bölgesel bir Log Analytics çalışma alanına akış için toplu Iş hesabı tanılama ayarlarını dağıtır. |DeployIfNotExists, devre dışı |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Batch_DeployDiagnosticLog_Deploy_LogAnalytics.json) |

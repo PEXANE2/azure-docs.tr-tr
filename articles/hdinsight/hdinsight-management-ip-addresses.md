@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271833"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778269"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
@@ -82,7 +82,7 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 
 Azure Kamu için kullanılacak IP adresleri hakkında daha fazla bilgi için bkz. [Azure Kamu Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) belgesi.
 
-Daha fazla bilgi için [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic) bölümüne bakın.
+Daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).
 
 Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, bir yol belirtmeniz ve bir sonraki atlama "Internet" olarak ayarlandığında sanal ağdan yukarıdaki IP 'lere giden trafiğe izin vermeniz gerekir.
 

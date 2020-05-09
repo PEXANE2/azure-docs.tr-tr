@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786980"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928287"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -114,6 +114,15 @@ Uzak kullanıcıdan dal yolu, Azure 'a Noktadan siteye bağlantı kullanan uzak 
 
 Sanal ağdan sanal ağa aktarma, sanal ağların birden çok sanal ağa uygulanmış çok katmanlı uygulamalar bağlantısı sağlamak için birbirlerine bağlanmasını sağlar. İsteğe bağlı olarak, sanal ağları VNet eşlemesi aracılığıyla birbirlerine bağlayabilirsiniz ve bu, VWAN hub aracılığıyla geçiş yapılması gereken bazı senaryolar için uygun olabilir.
 
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>Azure sanal WAN 'da Zorlamalı tünel ve varsayılan yol
+
+Zorlamalı tünel, sanal WAN 'da VPN, ExpressRoute veya sanal ağ bağlantısı üzerinde varsayılan yolu etkinleştir özelliği yapılandırılarak etkinleştirilebilir.
+
+Bir sanal hub, bağlantıda varsayılan bayrağı etkinleştir ' etkin ' ise, bir sanal ağ/siteden siteye VPN/ExpressRoute bağlantısına öğrenilen bir varsayılan yol yayar. 
+
+Kullanıcı bir sanal ağ bağlantısını, bir VPN bağlantısını veya ExpressRoute bağlantısını düzenlediğinde bu bayrak görünür. Varsayılan olarak, bir site veya ExpressRoute devresi bir hub 'a bağlıyken bu bayrak devre dışıdır. Sanal ağı bir sanal hub 'a bağlamak için bir sanal ağ bağlantısı eklendiğinde varsayılan olarak etkindir. Varsayılan yol, sanal WAN hub 'ında değil; Varsayılan yol, hub 'da bir güvenlik duvarı dağıtımının bir sonucu olarak sanal WAN hub tarafından zaten öğrenildiği ya da başka bir bağlı sitede Zorlamalı tünel etkinse yayılır.
+
 ## <a name="security-and-policy-control"></a><a name="security"></a>Güvenlik ve ilke denetimi
 
 Azure sanal WAN hub 'ları karma ağ genelinde tüm ağ uç noktalarını birbirine iletiyor ve tüm aktarım ağı trafiğini görebilir. Sanal WAN hub 'ları, bulut tabanlı güvenlik, erişim ve ilke denetimini etkinleştirmek için VWAN hub 'larına Azure Güvenlik Duvarı dağıtarak güvenli sanal hub 'lara dönüştürülebilir. Azure Güvenlik duvarlarını sanal WAN hub 'larda düzenleme, Azure Güvenlik Duvarı Yöneticisi tarafından gerçekleştirilebilir.
@@ -140,6 +149,24 @@ VNet 'Ten Internet 'e veya üçüncü taraf güvenli geçiş, sanal ağ hub 'ın
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Daldan Internet veya üçüncü taraf güvenlik hizmeti (j)
 Daldan Internet veya üçüncü taraf güvenli geçiş, dalların internet 'e veya desteklenen bir üçüncü taraf güvenlik hizmetine sanal WAN hub 'ındaki Azure Güvenlik Duvarı üzerinden bağlanmasını sağlar.
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Güvenli bir sanal hub 'da varsayılan yolu (0.0.0.0/0) etkinleştirmek Nasıl yaparım?
+
+Bir sanal WAN hub 'ında (güvenli sanal hub) dağıtılan Azure Güvenlik Duvarı, tüm dallar (VPN veya Express Route ile bağlanmış), bağlı olan sanal ağlar ve kullanıcılar (P2S VPN aracılığıyla bağlanmış) için varsayılan yönlendirici olarak Internet veya güvenilen güvenlik sağlayıcısına yapılandırılabilir. Bu yapılandırmanın Azure Güvenlik Duvarı Yöneticisi kullanılarak yapılması gerekir.  Dallardaki tüm trafiği (kullanıcılar dahil) ve Azure Güvenlik Duvarı üzerinden Internet 'e VNET 'leri yapılandırmak için bkz. trafiği hub 'ınıza yönlendirin. 
+
+Bu iki adımlı bir yapılandırmadır:
+
+1. Güvenli sanal hub yol ayarı menüsünü kullanarak Internet trafiği yönlendirmeyi yapılandırın. İnternet 'e güvenlik duvarı üzerinden trafik gönderebilen sanal ağları ve dalları yapılandırın.
+
+2. Hub veya güvenilen güvenlik sağlayıcısındaki Azure ILT aracılığıyla hangi bağlantıların (VNet ve dal) internet 'e (0.0.0.0/0) trafik yönlendirdiğini yapılandırın. Bu adım, varsayılan yolun, bağlantılar aracılığıyla sanal WAN hub 'ına eklenmiş seçili dallara ve sanal ağlara yayılmasını sağlar. 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>Güvenli bir sanal hub 'da şirket Içi güvenlik duvarında tünel trafiğini zorla
+
+Dallardan (VPN veya ER siteleri) birindeki sanal hub tarafından öğrenilen bir varsayılan yol zaten varsa, bu varsayılan yol Azure Güvenlik Duvarı Yöneticisi ayarından öğrenilen varsayılan yol tarafından geçersiz kılınır. Bu durumda, sanal ağlar ve internet 'e giden dallardan hub 'ı giren tüm trafik Azure Güvenlik Duvarı veya güvenilen güvenlik sağlayıcısına yönlendirilir.
+
+> [!NOTE]
+> Şu anda, sanal ağlar, dallar veya kullanıcılardan kaynaklanan internet 'e bağlı trafik için şirket içi güvenlik duvarı veya Azure Güvenlik Duvarı (ve güvenilen güvenlik sağlayıcısı) seçme seçeneği yoktur. Azure Güvenlik Duvarı Yöneticisi ayarından öğrenilen varsayılan yol, dallardan birinden öğrenilen varsayılan yol üzerinden her zaman tercih edilir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

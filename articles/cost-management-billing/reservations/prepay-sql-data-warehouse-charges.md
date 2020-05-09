@@ -1,46 +1,46 @@
 ---
-title: Azure ayrılmış kapasitesi ile SQL Veri Ambarı ücretlerinden tasarruf etme
-description: Para tasarrufu sağlamak için ayrılmış kapasite ile SQL Veri Ambarı ücretleri için nasıl maliyet tasarrufu yapacağınızı öğrenin.
+title: Azure ayrılmış kapasitesiyle Azure Synapse Analytics ücretlerinden tasarruf edin
+description: Para tasarrufu sağlamak için ayrılmış kapasite ile Azure Synapse Analytics ücretlerinden nasıl maliyet tasarrufu elde edeceğinizi öğrenin.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: c428472d5564393e9f9fcdc3103bb1506dc50936
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3706493f0132cd4cc57af589e0d2935c31d6657e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200376"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629159"
 ---
-# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Ayrılmış kapasite ile SQL Veri Ambarı ücretlerinden maliyet tasarrufu sağlama
+# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Ayrılmış kapasiteyle Azure Synapse Analytics ücretlerinde maliyet tasarrufu sağlayın
 
-Bir ile üç yıl arasındaki cDWU kullanımınız için bir rezervasyon taahhüdü vererek Azure SQL Veri Ambarı’nda tasarruf elde edebilirsiniz. SQL Veri Ambarı ayrılmış kapasitesi satın almak için, Azure bölgesini ve dönemi seçmeniz gerekir. Sonra SQL Veri Ambarı SKU’sunu sepetinize ekleyin ve satın almak istediğiniz cDWU birimi miktarını seçin.
+Bir ile üç yıl arasındaki cDWU kullanımınız için bir rezervasyon taahhüdü vererek Azure Synapse Analytics’de tasarruf elde edebilirsiniz. Azure Synapse Analytics ayrılmış kapasitesi satın almak için Azure bölgesini ve dönemi seçmeniz gerekir. Sonra Azure Synapse Analytics SKU’sunu sepetinize ekleyin ve satın almak istediğiniz cDWU birimi miktarını seçin.
 
-Rezervasyon satın aldığınızda, rezervasyonun öznitelikleriyle eşleşen SQL Veri Ambarı kullanımı artık kullandıkça öde fiyatlarıyla ücretlendirilmez.
+Rezervasyon satın aldığınızda, rezervasyonun öznitelikleriyle eşleşen Azure Synapse Analytics kullanımı artık kullandıkça öde fiyatlarıyla ücretlendirilmez.
 
-SQL Veri Ambarı’nın kullanımıyla ilişkili depolama ve ağ ücretleri rezervasyonun kapsamında değildir.
+Azure Synapse Analytics’in kullanımıyla ilişkili depolama ve ağ ücretleri rezervasyonun kapsamında değildir.
 
-Ayrılmış kapasitenin süresi dolduğunda SQL Veri Ambarı örnekleri çalışmaya devam eder, ancak kullandıkça öde fiyatlarıyla faturalanır. Rezervasyonlar otomatik olarak yenilenmez.
+Ayrılmış kapasitenin süresi dolduğunda Azure Synapse Analytics örnekleri çalışmaya devam eder, ancak kullandıkça öde fiyatlarıyla faturalanır. Rezervasyonlar otomatik olarak yenilenmez.
 
-Fiyatlandırma bilgileri için bkz [SQL Veri Ambarı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
+Fiyatlandırma bilgileri için bkz. [Azure Synapse Analytics ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-[Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) Azure SQL Veri Ambarı ayrılmış kapasitesi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
+[Azure portalında](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) Azure Synapse Analytics ayrılmış kapasitesi satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](monthly-payments-reservations.md) rezervasyon ödemesi yapın. Ayrılmış kapasite satın almak için:
 
 - En az bir kurumsal veya Kullandıkça Öde aboneliği için sahip rolüne sahip olmanız gerekir.
 - Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ayar devre dışı bırakılırsa EA Yöneticisi olmanız gerekir.
-- Bulut Çözümü Sağlayıcısı (CSP) programı için yalnızca yönetici aracılar veya satış temsilcileri, SQL Veri Ambarı ayrılmış kapasitesi satın alabilir.
+- Bulut Çözümü Sağlayıcısı (CSP) programı için yalnızca yönetici aracılar veya satış temsilcileri, Azure Synapse Analytics ayrılmış kapasitesi satın alabilir.
 
 Kurumsal müşteriler ve Kullandıkça Öde müşterilerinin, rezervasyon satın alımları için nasıl ücretlendirildiği hakkında daha fazla bilgi için bkz. [Kurumsal kaydınız için Azure rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](understand-reserved-instance-usage.md).
 
 ## <a name="choose-the-right-size-before-purchase"></a>Satın almadan önce doğru boyutu seçme
 
-SQL Veri Ambarı rezervasyon boyutu, kullandığınız toplam işlem veri ambarı birimlerini (cDWU) temel almalıdır. Satın almalar, 100’er cDWU artımlarla gerçekleştirilir.
+Azure Synapse Analytics rezervasyon boyutu, kullandığınız toplam işlem veri ambarı birimlerini (cDWU) temel almalıdır. Satın almalar, 100’er cDWU artımlarla gerçekleştirilir.
 
-Örneğin, toplam SQL Veri Ambarı tüketiminizin DW3000c olduğunu varsayın. Tümü için ayrılmış kapasite satın almak istiyorsunuz. Bu nedenle 30 birim cDWU ayrılmış kapasitesi satın almanız gerekir.
+Örneğin, toplam Azure Synapse Analytics tüketiminizin DW3000c olduğunu varsayın. Tümü için ayrılmış kapasite satın almak istiyorsunuz. Bu nedenle 30 birim cDWU ayrılmış kapasitesi satın almanız gerekir.
 
-## <a name="buy-sql-data-warehouse-reserved-capacity"></a>SQL Veri Ambarı ayrılmış kapasitesi satın alma
+## <a name="buy-azure-synapse-analytics-reserved-capacity"></a>Azure Synapse Analytics ayrılmış kapasitesi satın alma
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
@@ -56,7 +56,7 @@ SQL Veri Ambarı rezervasyon boyutu, kullandığınız toplam işlem veri ambar�
 5. Ayrılmış kapasite kapsamındaki bir Azure bölgesi seçmek için bir bölge seçin.
 6. Bir miktar seçin. Satın almak istediğiniz 100 Veri Ambarı birimi (cDWU) miktarını girin.    
    Örneğin, 30 miktarı size her saat 3.000 cDWU ayrılmış kapasite sunar.
-7. **Maliyetler** bölümünde SQL Veri Ambarı ayrılmış kapasite rezervasyonunu gözden geçirin.
+7. **Maliyetler** bölümünde Azure Synapse Analytics ayrılmış kapasite rezervasyonunu gözden geçirin.
 8. **Satın al**'ı seçin.
 9. Satın alma durumunuzu görmek için **Bu Rezervasyonu Görüntüle** seçeneğini belirleyin.
 
@@ -64,7 +64,7 @@ SQL Veri Ambarı rezervasyon boyutu, kullandığınız toplam işlem veri ambar�
 
 Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](exchange-and-refund-azure-reservations.md).
 
-SQL Veri Ambarı ayrılmış kapasite kapsamı ve bölgesi ile eşleşen SQL Veri Ambarı örneklerine otomatik olarak bir rezervasyon indirimi uygulanır. [Azure portalı](https://portal.azure.com/), PowerShell, CLI ile veya API aracılığıyla SQL Veri Ambarı ayrılmış kapasitesinin kapsamını güncelleştirebilirsiniz.
+Azure Synapse Analytics ayrılmış kapasite kapsamı ve bölgesi ile eşleşen Azure Synapse Analytics örneklerine otomatik olarak bir rezervasyon indirimi uygulanır. [Azure portalı](https://portal.azure.com/), PowerShell, CLI ile veya API aracılığıyla Azure Synapse Analytics ayrılmış kapasitesinin kapsamını güncelleştirebilirsiniz.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
@@ -72,7 +72,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure SQL Veri Ambarı’na rezervasyon indirimlerinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [Azure SQL Veri Ambarı için rezervasyon indirimleri nasıl uygulanır?](prepay-sql-data-warehouse-charges.md).
+- Azure Synapse Analytics’e rezervasyon indirimlerinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [Azure Synapse Analytics için rezervasyon indirimleri nasıl uygulanır?](prepay-sql-data-warehouse-charges.md).
 
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
   - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](save-compute-costs-reservations.md)
