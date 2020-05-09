@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662528"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691121"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme (Önizleme)
 
@@ -67,7 +67,7 @@ Açılan listelerin altındaki sayaç kutucuğu, abonelikteki toplam depolama he
 **Kullanılabilirlik**, **e2e gecikme süresi**, **sunucu gecikmesi**ve **işlem hata türü/hata** sütunlarında bir değer seçin, sizi bu depolama hesabı için seçilen sütunla eşleşen belirli depolama ölçümleri türüne uyarlanmış bir rapora yönlendirir. Her bir kategorinin çalışma kitapları hakkında daha fazla bilgi için aşağıdaki [ayrıntılı depolama çalışma kitapları](#detailed-storage-workbooks) bölümüne bakın. 
 
 >[!NOTE]
->Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
+>Raporda hangi hataların gösterilebileceği hakkında ayrıntılı bilgi için bkz. [yanıt türü şeması](../../storage/common/monitor-storage-reference.md#metrics-dimensions) ve **serverothererror**, **clienentothererror**, **clientkısıtlanror**gibi yanıt türlerini arayın. Seçili depolama hesaplarına bağlı olarak, üçten fazla üç tür hata bildirildiğinde, diğer tüm hatalar **diğeri**kategorisi altında gösterilir.
 
 Varsayılan **kullanılabilirlik** eşiği:
 

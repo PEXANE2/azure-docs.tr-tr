@@ -4,12 +4,12 @@ description: Windows Server sistem durumunu Azure 'daki bir yedekten geri yükle
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77602457"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610794"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Sistem durumunu Windows Server 'a geri yükleme
 
@@ -124,7 +124,7 @@ Azure kurtarma hizmetleri Aracısı 'nı kullanarak sistem durumunu dosyalar ola
 
 2. Yeniden başlatmadan sonra Windows Server Yedekleme ek bileşenini açın. Ek bileşenin nerede yüklü olduğunu bilmiyorsanız, bilgisayarı veya sunucuyu **Windows Server yedekleme**arayın.
 
-    Masaüstü uygulaması arama sonuçlarında görünür.
+    Masaüstü uygulaması arama sonuçlarında görünür. Bu görünmezse veya uygulamayı açarken hata yaşarsanız, **Windows Server yedekleme özellikleri**ve bunun altındaki bağımlı bileşenleri, **Sunucu Yöneticisi** **Özellik Ekleme Sihirbazı** ' nda bulunan ' yi yüklemelisiniz.
 
 3. Ek bileşende **yerel yedekleme**' yi seçin.
 

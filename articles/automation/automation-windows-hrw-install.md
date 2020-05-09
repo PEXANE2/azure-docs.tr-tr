@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617331"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787384"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -51,15 +51,15 @@ Bir Windows karma Runbook Worker için en düşük gereksinimler şunlardır:
 
 Karma Runbook Worker için daha fazla ağ gereksinimi almak üzere [ağınızı yapılandırma](automation-hybrid-runbook-worker.md#network-planning)konusuna bakın.
 
-### <a name="server-onboarding-for-management-with-automation-dsc"></a>Automation DSC ile yönetim için sunucu ekleme
+### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>Durum Yapılandırması (DSC) ile yönetim için sunucu ekleme
 
-Sunucuları DSC ile yönetime ekleme hakkında daha fazla bilgi için bkz. [Azure Automation DSC yönetim için makineleri ekleme](automation-dsc-onboarding.md).
+Sunucuları durum yapılandırması (DSC) ile yönetim için ekleme hakkında daha fazla bilgi için bkz. [yerleşik makineler, durum yapılandırmasına göre yönetim (DSC)](automation-dsc-onboarding.md).
 
-[Güncelleştirme yönetimi çözümünü](../operations-management-suite/oms-solution-update-management.md) etkinleştirmek, çözüme dahil olan runbook 'ları desteklemek için Log Analytics çalışma alanınıza karma runbook çalışanı olarak bağlı tüm Windows bilgisayarları otomatik olarak yapılandırır. Ancak bu çalışan, Otomasyon hesabınızda zaten tanımlanmış olan karma Runbook Worker gruplarına kayıtlı değildir.
+[Güncelleştirme yönetimi](automation-update-management.md) etkinleştirilmesi, runbook güncelleştirmelerini desteklemek için Log Analytics çalışma alanınıza bir karma runbook çalışanı olarak bağlı tüm Windows bilgisayarları otomatik olarak yapılandırır. Ancak bu çalışan, Otomasyon hesabınızda zaten tanımlanmış olan karma Runbook Worker gruplarına kayıtlı değildir.
 
 ### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>Bilgisayarın karma Runbook Worker grubuna eklenmesi
 
-Çalışan bilgisayarı, Otomasyon hesabınızdaki bir karma Runbook Worker grubuna ekleyebilirsiniz. Hem çözüm hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon Runbook 'larını desteketmeniz gerektiğini unutmayın. Bu işlev Karma Runbook Çalışanının 7.2.12024.0 sürümüne eklenmiştir.
+Çalışan bilgisayarı, Otomasyon hesabınızdaki bir karma Runbook Worker grubuna ekleyebilirsiniz. Hem Azure Otomasyonu özelliği hem de karma runbook çalışanı grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon Runbook 'larını desteketmeniz gerektiğini unutmayın. Bu işlev Karma Runbook Çalışanının 7.2.12024.0 sürümüne eklenmiştir.
 
 ## <a name="automated-deployment"></a>Otomatik dağıtım
 
@@ -81,7 +81,7 @@ Hedef makinede, Windows hibrit çalışan rolünün yükleme ve yapılandırmas�
 | `WorkspaceName` | İsteğe Bağlı | Log Analytics çalışma alanı adı. Log Analytics çalışma alanınız yoksa, betik bir tane oluşturur ve yapılandırır. |
 
 > [!NOTE]
-> Çözümleri etkinleştirirken, Azure Otomasyonu yalnızca bir Log Analytics çalışma alanı ve bir Otomasyon hesabı bağlamak için belirli bölgeleri destekler. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
+> Özellikleri etkinleştirirken, Azure Otomasyonu yalnızca bir Log Analytics çalışma alanı ve Otomasyon hesabı bağlamak için belirli bölgeleri destekler. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](how-to/region-mappings.md).
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>2. Adım-Windows PowerShell komut satırı kabuğunu açın
 
@@ -115,9 +115,9 @@ Hedef makinede, Otomasyon ortamınız için bir kez ilk iki adımı gerçekleşt
 
 Zaten bir Log Analytics çalışma alanınız yoksa, çalışma alanını oluşturmadan önce [Azure Izleyici günlüğü tasarım kılavuzunu](../azure-monitor/platform/design-logs-deployment.md) gözden geçirin.
 
-### <a name="step-2---add-the-automation-solution-to-the-log-analytics-workspace"></a>2. adım-otomasyon çözümünü Log Analytics çalışma alanına ekleme
+### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>2. adım-Log Analytics çalışma alanına Azure Otomasyonu özelliği ekleme
 
-Otomasyon çözümü, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Çözümü Log Analytics çalışma alanınıza eklediğinizde, otomatik olarak, bir sonraki adımda açıklandığı gibi yüklediğiniz çalışan bileşenleri Aracı bilgisayara otomatik olarak iter.
+Otomasyon özelliği, karma Runbook Worker desteği de dahil olmak üzere Azure Otomasyonu için işlevsellik ekler. Log Analytics çalışma alanınıza bir çözüm eklediğinizde, bir sonraki adımda açıklandığı gibi yüklediğiniz çalışan bileşenleri Aracı bilgisayara otomatik olarak gönderir.
 
 Otomasyon çözümünü çalışma alanınıza eklemek için aşağıdaki PowerShell cmdlet 'ini çalıştırın.
 
@@ -177,13 +177,38 @@ Bu cmdlet için gereken bilgileri Azure portal anahtarları Yönet sayfasından 
 
 Runbook 'lar, Azure Otomasyonu ortamınızda yüklü olan modüllerde tanımlanan etkinlikleri ve cmdlet 'leri kullanabilir. Bu modüller şirket içi bilgisayarlara otomatik olarak dağıtılmadığından, el ile kurmanız gerekir. Özel durum Azure modülüdür. Bu modül varsayılan olarak yüklenir ve Azure Otomasyonu için tüm Azure hizmetleri ve etkinlikleri için cmdlet 'lere erişim sağlar.
 
-Karma Runbook Worker özelliğinin birincil amacı yerel kaynakları yönettiğinden, büyük olasılıkla bu kaynakları destekleyen modülleri, özellikle `PowerShellGet` modülünü yüklemeniz gerekir. Windows PowerShell modüllerini yükleme hakkında bilgi için bkz. [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Karma Runbook Worker 'ın birincil amacı yerel kaynakları yönettiğinden, büyük olasılıkla bu kaynakları destekleyen modülleri, özellikle `PowerShellGet` modülünü yüklemeniz gerekir. Windows PowerShell modüllerini yükleme hakkında bilgi için bkz. [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
 Yüklenen modüller, karma çalışanın otomatik olarak içe aktarabilmesi için `PSModulePath` ortam değişkeni tarafından başvurulan bir konumda olmalıdır. Daha fazla bilgi için bkz. [PSModulePath Içinde modül yüklemeleri](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>Karma runbook çalışanını şirket içi bir Windows bilgisayarından kaldırma
+
+1. Azure portal Otomasyon hesabınıza gidin.
+2. **Hesap ayarları**altında **anahtarlar** ' ı seçin ve **URL** ve **birincil erişim anahtarı**değerlerini aklınızda yapın.
+
+3. Yönetici modunda bir PowerShell oturumu açın ve URL 'niz ile birincil erişim anahtarı değerlerinizle aşağıdaki komutu çalıştırın. Kaldırma işleminin `Verbose` ayrıntılı günlüğü için parametresini kullanın. Eski makineleri karma çalışanı grubundan kaldırmak için isteğe bağlı `machineName` parametresini kullanın.
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
+
+## <a name="remove-a-hybrid-worker-group"></a>Karma Çalışanı grubunu kaldırma
+
+Karma runbook çalışanı grubunu kaldırmak için, önce karma runbook çalışanını grubun üyesi olan her bilgisayardan kaldırmanız gerekir. Sonra, grubu kaldırmak için aşağıdaki adımları kullanın:
+
+1. Azure portal Otomasyon hesabını açın.
+2. **Işlem Otomasyonu**altında **karma çalışan grupları** ' nı seçin. Silmek istediğiniz grubu seçin. Bu grubun Özellikler sayfası görüntülenir.
+
+   ![Özellikler sayfası](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+
+3. Seçili grubun Özellikler sayfasında **Sil**' i seçin. Bu eylemi onaylamanızı isteyen bir ileti. Devam etmek istediğinizden emin değilseniz **Evet** ' i seçin.
+
+   ![Onay iletisi](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+
+   Bu işlemin tamamlanması birkaç saniye sürebilir. Bu işlemin ilerleme durumunu menüdeki **Bildirimler**’in altından izleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatik hale getirmek üzere nasıl yapılandıracağınızı öğrenmek için bkz. [runbook 'Ları karma Runbook Worker üzerinde çalıştırma](automation-hrw-run-runbooks.md).
-* Karma runbook çalışanları kaldırma hakkında yönergeler için bkz. [Azure Otomasyonu karma runbook çalışanlarını kaldırma](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
 * Karma runbook çalışanlarınızın sorunlarını giderme hakkında bilgi edinmek için bkz. [Windows karma runbook çalışanları sorunlarını giderme](troubleshoot/hybrid-runbook-worker.md#windows).
-* Güncelleştirme yönetimi sorunlarını gidermeye yönelik ek adımlar için, bkz. [güncelleştirme yönetimi: sorun giderme](troubleshoot/update-management.md).
+

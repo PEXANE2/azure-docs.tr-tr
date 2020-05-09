@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654349"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610658"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory’de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
 
@@ -45,7 +46,7 @@ Sertifika tabanlı kimlik doğrulamasını yapılandırmak için aşağıdaki de
 - İstemciye istemci kimlik doğrulaması için bir istemci sertifikası verilmiş olmalıdır.
 
 >[!IMPORTANT]
->Azure Active Directory için CRL 'nin başarıyla indirileceği ve önbelleğe aldığı en büyük boyut 20 MB 'tır ve CRL 'YI indirmek için gereken süre 10 saniye değerini aşmamalıdır.  Azure Active Directory CRL indiremez, karşılık gelen CA tarafından verilen sertifikaları kullanarak sertifika tabanlı kimlik doğrulamaları başarısız olur. CRL dosyalarının boyut kısıtlamalarına göre olduğundan emin olmak için en iyi yöntemler, sertifika ömrünü makul sınırlar içinde tutmalarıdır ve süresi dolmuþ sertifikaları temizler. 
+>Azure Active Directory için CRL 'nin başarıyla indirileceği ve önbelleğe aldığı en büyük boyut 20 MB 'tır ve CRL 'YI indirmek için gereken süre 10 saniye değerini aşmamalıdır.  Azure Active Directory CRL indiremez, karşılık gelen CA tarafından verilen sertifikaları kullanarak sertifika tabanlı kimlik doğrulamaları başarısız olur. CRL dosyalarının boyut kısıtlamalarına göre olduğundan emin olmak için en iyi yöntemler, sertifika ömrünü makul sınırlar içinde tutmalarıdır ve süresi dolmuþ sertifikaları temizler.
 
 ## <a name="step-1-select-your-device-platform"></a>1. Adım: cihaz platformunuzu seçin
 

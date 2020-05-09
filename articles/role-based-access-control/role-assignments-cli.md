@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve Azure CLı kullanarak rol atamaları ekleme veya kaldırma
-description: Azure rol tabanlı erişim denetimi (RBAC) ve Azure CLı kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına erişim izni verme hakkında bilgi edinin.
+title: Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma-Azure RBAC
+description: Azure CLı ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kullanıcılar, gruplar, hizmet sorumluları veya yönetilen kimlikler için Azure kaynaklarına erişim izni verme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245674"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735785"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Azure RBAC ve Azure CLı kullanarak rol atamaları ekleme veya kaldırma
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLı kullanarak Azure rol atamaları ekleme veya kaldırma
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Bu makalede, Azure CLı kullanarak rollerin nasıl atanacağı açıklanır.
 
@@ -62,7 +62,7 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 ## <a name="add-a-role-assignment"></a>Rol ataması ekleyin
 
-RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
+Azure RBAC 'de, erişim izni vermek için bir rol ataması eklersiniz.
 
 ### <a name="user-at-a-resource-group-scope"></a>Kaynak grubu kapsamındaki Kullanıcı
 
@@ -97,7 +97,7 @@ Rol adı yerine benzersiz rol KIMLIĞINI kullanarak rol ataması eklemek için [
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong\@contoso.com* kullanıcısına atar. Benzersiz rol KIMLIĞINI almak için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) ' i kullanabilir veya [Azure kaynakları için yerleşik roller](built-in-roles.md)' e bakabilirsiniz.
+Aşağıdaki örnek, [sanal makine katılımcısı](built-in-roles.md#virtual-machine-contributor) rolünü *ilaç-Sales* kaynak grubu kapsamındaki *patlong\@contoso.com* kullanıcısına atar. Benzersiz rol KIMLIĞINI almak için [az role Definition List](/cli/azure/role/definition#az-role-definition-list) ' i kullanabilir veya [Azure yerleşik rolleri](built-in-roles.md)' ne bakabilirsiniz.
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -187,7 +187,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>Rol atamasını kaldırma
 
-RBAC 'de, erişimi kaldırmak için [az role atama Sil](/cli/azure/role/assignment#az-role-assignment-delete)' i kullanarak bir rol atamasını kaldırırsınız:
+Azure RBAC 'de, erişimi kaldırmak için [az role atama Sil](/cli/azure/role/assignment#az-role-assignment-delete)' i kullanarak bir rol atamasını kaldırırsınız:
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
@@ -213,5 +213,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve Azure CLı kullanarak rol atamalarını listeleme](role-assignments-list-cli.md)
+- [Azure CLı kullanarak Azure rol atamalarını listeleme](role-assignments-list-cli.md)
 - [Azure CLı 'yı kullanarak Azure kaynaklarını ve kaynak gruplarını yönetme](../azure-resource-manager/cli-azure-resource-manager.md)

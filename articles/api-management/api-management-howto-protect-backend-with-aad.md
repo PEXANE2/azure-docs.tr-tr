@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804376"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778983"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2.0 kullanarak API'yi koruma
 
@@ -79,7 +79,7 @@ API 'YI çağıran her istemci uygulamasının, Azure AD 'de bir uygulama olarak
     - **Ad** bölümünde, uygulamanın kullanıcılarına, örneğin *istemci-uygulama*gibi görüntülenecek anlamlı bir uygulama adı girin. 
     - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) hesaplar**' ı seçin. 
 
-1. **Yeniden YÖNLENDIRME URI** 'si bölümünde, URL `Web` 'yi `https://contoso5.portal.azure-api.net/signin`seçip girin.
+1. **Yeniden YÖNLENDIRME URI** 'si bölümünde, URL `Web` alanını şu anda boş bırakın ve ' ı seçin.
 
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin. 
 
@@ -149,9 +149,9 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. **Oluştur**’u seçin.
 
-1. İstemci uygulamanıza geri dönün ve **kimlik doğrulaması**' nı seçin.
+1. Azure Active Directory ' de istemci uygulaması kaydına geri dönün ve **kimlik doğrulaması**' nı seçin.
 
-1. **Yeniden yönlendirme URI 'leri**altında, türü **Web**olarak SEÇIN, **yeniden yönlendirme URI 'si**altına **redirect_url** yapıştırın ve kaydedin.
+1. **Platform yapılandırması** ' nın altında, **Platform Ekle**' ye tıklayın ve türü **Web**olarak seçin, **yeniden yönlendirme URI 'si**altına **redirect_url** yapıştırın ve ardından Kaydet **Configure** ' e tıklayarak kaydedin.
 
 Bir OAuth 2,0 yetkilendirme sunucusu yapılandırdığınıza göre, Geliştirici Konsolu Azure AD 'den erişim belirteçleri alabilir. 
 

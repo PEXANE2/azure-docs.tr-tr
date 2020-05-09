@@ -3,13 +3,12 @@ title: Azure App Services performansını izleme | Microsoft Docs
 description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729801"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733473"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -71,7 +70,7 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
 
     * Örneğin, başlangıçtaki örnekleme yüzdesini değiştirmek için, bir uygulama ayarı oluşturabilirsiniz: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` ve değeri. `100`
 
-    * Desteklenen Uyarlamalı örnekleme telemetri işlemcisi ayarlarının listesi için [koda](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) ve [ilişkili belgelere](https://docs.microsoft.com/azure/azure-monitor/app/sampling)başvurabilirsiniz.
+    * Desteklenen Uyarlamalı örnekleme telemetri işlemcisi ayarlarının listesi için [koda](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs) ve [ilişkili belgelere](https://docs.microsoft.com/azure/azure-monitor/app/sampling)başvurabilirsiniz.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -399,7 +398,11 @@ Application Insights Aracısı/uzantısıyla ilgili en son bilgiler için, [sür
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP ve WordPress desteklenmez
 
-PHP ve WordPress siteleri desteklenmez. Şu anda bu iş yüklerinin sunucu tarafında izlenmesi için resmi olarak desteklenen bir SDK/aracı yoktur. Ancak, Web sayfalarınıza istemci tarafı JavaScript ekleyerek bir PHP veya WordPress sitesinde istemci tarafı işlemlerini el ile, [JavaScript SDK 'sı](https://docs.microsoft.com/azure/azure-monitor/app/javascript)kullanılarak gerçekleştirebilirsiniz. 
+PHP ve WordPress siteleri desteklenmez. Şu anda bu iş yüklerinin sunucu tarafında izlenmesi için resmi olarak desteklenen bir SDK/aracı yoktur. Ancak, Web sayfalarınıza istemci tarafı JavaScript ekleyerek bir PHP veya WordPress sitesinde istemci tarafı işlemlerini el ile, [JavaScript SDK 'sı](https://docs.microsoft.com/azure/azure-monitor/app/javascript)kullanılarak gerçekleştirebilirsiniz.
+
+### <a name="connection-string-and-instrumentation-key"></a>Bağlantı dizesi ve izleme anahtarı
+
+Kodsuz kullanacaksınız izleme kullanıldığında yalnızca bağlantı dizesi gereklidir. Bununla birlikte, el ile izleme gerçekleştirilirken SDK 'nın eski sürümleriyle geriye dönük uyumluluğu korumak için de izleme anahtarını ayarlamayı öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Canlı uygulamanızda profil oluşturucuyu çalıştırın](../app/profiler.md).

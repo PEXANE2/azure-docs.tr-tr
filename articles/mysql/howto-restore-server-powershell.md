@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 1e63a6e57e1dc929c78e5278df6ef0e4ab2a17d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230853"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609094"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>PowerShell kullanarak MySQL için Azure veritabanı sunucusunu yedekleme ve geri yükleme
 
 MySQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
@@ -77,7 +77,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
-| Adı | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| Name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00**gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
 | Usepointintimerestınic | `<SwitchParameter>` | Geri yüklemek için zaman noktası modunu kullanın. |
 
@@ -119,7 +119,7 @@ Cmdlet 'in Georestore parametre kümesi aşağıdaki parametreleri gerektirir: *
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
-|Adı | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|Name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |Konum | eastus | Yeni sunucunun konumu. |
 |UseGeoRestore | `<SwitchParameter>` | Geri yüklemek için coğrafi mod kullanın. |
 
@@ -131,6 +131,5 @@ Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VN
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmetin [yedeklemeleri](concepts-backup.md) hakkında daha fazla bilgi edinin
-- [Çoğaltmalar](concepts-read-replicas.md) hakkında bilgi edinin
-- [İş sürekliliği](concepts-business-continuity.md) seçenekleri hakkında daha fazla bilgi edinin
+> [!div class="nextstepaction"]
+> [PowerShell kullanarak MySQL için Azure veritabanı sunucu parametrelerini özelleştirme](howto-configure-server-parameters-using-powershell.md)

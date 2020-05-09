@@ -1,23 +1,17 @@
 ---
-title: 'Java SDK: Azure Data Lake Storage 1. dosya sistemi işlemleri | Microsoft Docs'
-description: Klasör oluşturma gibi Data Lake Storage 1. dosya sistemi işlemlerini gerçekleştirmek için Azure Data Lake Storage 1. Java SDK 'sını kullanın.
-services: data-lake-store
-documentationcenter: ''
+title: Java SDK-Data Lake Storage 1. dosya sistemi işlemleri-Azure
+description: Klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme gibi Data Lake Storage 1. dosya sistemi işlemleri gerçekleştirmek için Azure Data Lake Storage 1. için Java SDK 'sını kullanın.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60877473"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691784"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK kullanarak Azure Data Lake Storage 1. dosya sistemi işlemleri
 > [!div class="op_single_selector"]
@@ -58,7 +52,7 @@ Data Lake Storage 1. için Java SDK API belgelerine, [Azure Data Lake Storage 1.
           </dependency>
         </dependencies>
    
-    Birinci bağımlılık, Maven deposundan Data Lake Storage 1. SDK (`azure-data-lake-store-sdk`) kullanmaktır. İkinci bağımlılık, bu uygulama için hangi günlük altyapısının (`slf4j-nop`) kullanılacağını belirtmektir. Data Lake Storage 1. SDK, Log4J, Java günlüğü, logback, vb. gibi birçok popüler günlük çerçevesi arasından seçim yapmanızı sağlayan [dolayısıyla slf4j](https://www.slf4j.org/) günlük façlade kullanır. Bu örnekte, günlük kaydını devre dışı bırakacak ve dolayısıyla **slf4j-nop** bağlamasını kullanacağız. Uygulamanızda diğer günlük seçeneklerini kullanmak için [buraya](https://www.slf4j.org/manual.html#projectDep) bakın.
+    Birinci bağımlılık, Maven deposundan Data Lake Storage 1. SDK (`azure-data-lake-store-sdk`) kullanmaktır. İkinci bağımlılık, bu uygulama için hangi günlük altyapısının (`slf4j-nop`) kullanılacağını belirtmektir. Data Lake Storage 1. SDK, Log4J, Java günlüğü, Logback, vb. gibi birçok popüler günlük çerçevesi arasından seçim yapmanızı sağlayan [dolayısıyla slf4j](https://www.slf4j.org/) günlük façlade kullanır. Bu örnekte, günlük kaydını devre dışı bırakacak ve dolayısıyla **slf4j-nop** bağlamasını kullanacağız. Uygulamanızda diğer günlük seçeneklerini kullanmak için [buraya](https://www.slf4j.org/manual.html#projectDep) bakın.
 
 3. Aşağıdaki içeri aktarma deyimlerini uygulamanıza ekleyin.
 
@@ -73,7 +67,7 @@ Data Lake Storage 1. için Java SDK API belgelerine, [Azure Data Lake Storage 1.
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 * Uygulamanız için son kullanıcı kimlik doğrulaması için bkz. [Java kullanarak Data Lake Storage 1. Ile Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-java-sdk.md).
 * Uygulamanıza yönelik hizmetten hizmete kimlik doğrulaması için bkz. [Java kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-java.md).
