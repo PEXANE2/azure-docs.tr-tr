@@ -62,6 +62,9 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Anahtar değeri deposu

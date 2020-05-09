@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77659501"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731721"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics çalışma alanını farklı bir aboneliğe veya kaynak grubuna taşıyın
 
@@ -29,16 +29,17 @@ Bu makalede, Log Analytics çalışma alanını aynı bölgedeki başka bir kayn
 ```
 
 ## <a name="workspace-move-considerations"></a>Çalışma alanı taşıma konuları
-Çalışma alanına yüklenen yönetilen çözümler Log Analytics çalışma alanı taşıma işlemiyle birlikte taşınır. Bağlı aracılar bağlı kalacak ve taşıma sonrasında çalışma alanına veri göndermeyecektir. Taşıma işlemi, çalışma alanından herhangi bir Otomasyon hesabına herhangi bir bağlantı olmadığından, bu bağlantıyı kullanan çözümlerin kaldırılması gerekir.
+Çalışma alanına yüklenen yönetilen çözümler Log Analytics çalışma alanı taşıma işlemiyle birlikte taşınır. Bağlı aracılar bağlı kalacak ve taşıma sonrasında çalışma alanına veri göndermeyecektir. Taşıma işlemi çalışma alanından bağlı bir hizmet olmadığından, çalışma alanının taşınmasına izin vermek için o bağlantıyı kullanan çözümlerin kaldırılması gerekir.
 
 Otomasyon Hesabınızın bağlantısını kaldırmak için önce kaldırılması gereken çözümler:
 
 - Güncelleştirme Yönetimi
 - Değişiklik İzleme
 - Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
+- Azure Güvenlik Merkezi
 
 
-### <a name="delete-in-azure-portal"></a>Azure portalında silme
+### <a name="delete-solutions-in-azure-portal"></a>Azure portal çözümleri silme
 Azure portal kullanarak çözümleri kaldırmak için aşağıdaki yordamı kullanın:
 
 1. Üzerinde çözümlerin yüklendiği kaynak grubunun menüsünü açın.
@@ -57,8 +58,8 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-### <a name="remove-alert-rules"></a>Uyarı kurallarını kaldır
-**VM 'Leri Başlat/Durdur** çözümü için, çözüm tarafından oluşturulan uyarı kurallarını da kaldırmanız gerekir. Bu kuralları kaldırmak için Azure portal aşağıdaki yordamı kullanın.
+### <a name="remove-alert-rules-for-startstop-vms-solution"></a>VM 'Leri Başlat/Durdur çözümünün uyarı kurallarını kaldır
+**VM 'Leri Başlat/Durdur** çözümünü kaldırmak için, çözüm tarafından oluşturulan uyarı kurallarını da kaldırmanız gerekir. Bu kuralları kaldırmak için Azure portal aşağıdaki yordamı kullanın.
 
 1. **İzleyici** menüsünü açın ve ardından **Uyarılar**' ı seçin.
 2. **Uyarı kurallarını yönet**' e tıklayın.
@@ -98,8 +99,6 @@ Azure portal kullanarak çalışma alanınızı taşımak için aşağıdaki yor
 ``` PowerShell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
-
-
 
 > [!IMPORTANT]
 > Taşıma işleminden sonra, çalışma alanını önceki durumuna geri getirmek için kaldırılan çözümlerin ve Otomasyon hesabı bağlantısının yeniden yapılandırılması gerekir.

@@ -1,28 +1,35 @@
 ---
-title: Java için Azure Cosmos DB performans ipuçları
-description: Azure Cosmos veritabanı performansını geliştirmek için istemci yapılandırma seçeneklerini öğrenin
-author: SnehaGunda
+title: Azure Cosmos DB Sync Java SDK v2 için performans ipuçları
+description: Eşitleme Java SDK v2 için Azure Cosmos veritabanı performansını iyileştirecek istemci yapılandırma seçeneklerini öğrenin
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 9475fce054356606c09947721019a264143a716b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548774"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982522"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB ve Java için performans ipuçları
+# <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB Sync Java SDK v2 için performans ipuçları
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
+> * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı yapmak kadar kolaydır. Daha fazla bilgi edinmek için bkz. [kapsayıcı verimini sağlama](how-to-provision-container-throughput.md) veya [veritabanı verimini sağlama](how-to-provision-database-throughput.md). Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, [SQL Java SDK 'sını](documentdb-sdk-java.md)kullanırken en yüksek performans elde etmek için, istemci tarafı iyileştirmeler vardır.
+> [!IMPORTANT]  
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için Azure Cosmos DB Java SDK v4 kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
+> 
+> Bu performans ipuçları yalnızca Azure Cosmos DB Sync Java SDK v2 içindir. Daha fazla bilgi için lütfen Azure Cosmos DB eşitleme Java SDK v2 [sürüm notları](sql-api-sdk-java.md) ve [Maven deposunu](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) görüntüleyin.
+>
+
+Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı yapmak kadar kolaydır. Daha fazla bilgi edinmek için bkz. [kapsayıcı verimini sağlama](how-to-provision-container-throughput.md) veya [veritabanı verimini sağlama](how-to-provision-database-throughput.md). Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, [Azure Cosmos DB eşitleme Java SDK v2](documentdb-sdk-java.md)kullanırken en yüksek performans elde etmek için, istemci tarafı iyileştirmeler vardır.
 
 Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz Aşağıdaki seçenekleri göz önünde bulundurun:
 
@@ -38,9 +45,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
       Ağ Geçidi modu tüm SDK platformlarında desteklenir ve yapılandırılmış varsayılandır.  Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağ içinde çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi en iyi seçenektir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin her okunduğu veya Azure Cosmos DB yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, DirectHttps modu, daha az ağ atlaması nedeniyle daha iyi performans sunar. 
 
-      Java SDK 'Sı, aktarım protokolü olarak HTTPS kullanır. HTTPS, ilk kimlik doğrulaması ve trafiği şifrelemek için TLS kullanır. Java SDK 'sını kullanırken, yalnızca HTTPS bağlantı noktası 443 ' in açık olması gerekir. 
+      Azure Cosmos DB Sync Java SDK v2, aktarım protokolü olarak HTTPS kullanır. HTTPS, ilk kimlik doğrulaması ve trafiği şifrelemek için TLS kullanır. Azure Cosmos DB Sync Java SDK v2 kullanılırken, yalnızca HTTPS bağlantı noktası 443 açık olmalıdır. 
 
       ConnectionMode, DocumentClient örneğinin oluşturulması sırasında ConnectionPolicy parametresiyle yapılandırılır. 
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-connectionpolicy"></a>Java SDK v2 'yi eşitleme (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
       ```Java
       public ConnectionPolicy getConnectionPolicy() {
@@ -74,11 +83,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
    <a id="max-connection"></a>
 3. **Ağ Geçidi modu kullanılırken konak başına MaxPoolSize değerini artır**
 
-    Azure Cosmos DB istekleri, ağ geçidi modu kullanılırken HTTPS/REST üzerinden yapılır ve ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabi. İstemci kitaplığının Azure Cosmos DB için birden çok eş zamanlı bağlantıyı kullanabilmesi için MaxPoolSize değerini daha yüksek bir değere (200-1000) ayarlamanız gerekebilir. Java SDK 'sında, [Connectionpolicy. getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) için varsayılan değer 100 ' dir. Değeri değiştirmek için [Setmaxpoolsize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) değerini kullanın.
+    Azure Cosmos DB istekleri, ağ geçidi modu kullanılırken HTTPS/REST üzerinden yapılır ve ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabi. İstemci kitaplığının Azure Cosmos DB için birden çok eş zamanlı bağlantıyı kullanabilmesi için MaxPoolSize değerini daha yüksek bir değere (200-1000) ayarlamanız gerekebilir. Azure Cosmos DB Sync Java SDK v2 sürümünde, [Connectionpolicy. getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) için varsayılan değer 100 ' dir. Değeri değiştirmek için [Setmaxpoolsize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) değerini kullanın.
 
 4. **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
-    Azure Cosmos DB SQL Java SDK sürümü 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
+    Azure Cosmos DB Java SDK sürüm 1.9.0 Eşitle ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
 
     (a) ***setmaxdegreeofparalellik\: *** Paralel sorguları ayarlama, birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümlenmiş koleksiyondaki veriler, sorguya göre işlem içine alınır. Bu nedenle, en iyi performansı elde etmek için en yüksek performansa sahip bölüm sayısını ayarlamak için [Setmaxdegreeofparalellik](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) kullanın, diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız, yüksek bir sayı ayarlamak için Setmaxdegreeofparalellik kullanabilirsiniz ve sistem en az paralellik derecesi olarak en düşük (bölüm sayısı, Kullanıcı tarafından girilen giriş) değerini seçer. 
 
@@ -90,7 +99,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 5. **GetRetryAfterInMilliseconds aralıklarında geri alma Uygula**
 
-    Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. Kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından geri dönüş olması gerekir. Geri alma işleminin en düşük olması, yeniden denemeler arasında bekleyen minimum süreyi harcamanızı sağlar. Yeniden deneme ilkesi desteği, [Java SDK 'sının](documentdb-sdk-java.md)1.8.0 ve üzeri sürümlerinde bulunur. Daha fazla bilgi için bkz. [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
+    Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. Kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından geri dönüş olması gerekir. Geri alma işleminin en düşük olması, yeniden denemeler arasında bekleyen minimum süreyi harcamanızı sağlar. Yeniden deneme ilkesi desteği, [Azure Cosmos DB Sync Java SDK 'sının](documentdb-sdk-java.md)1.8.0 sürümüne ve üstüne dahildir. Daha fazla bilgi için bkz. [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
 
 6. **İstemcinizi genişletme-iş yükü**
 
@@ -113,7 +122,10 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
  
 1. **Daha hızlı yazma işlemleri için, kullanılmayan yolları dizin oluşturmanın dışında bırakma**
 
-    Azure Cosmos DB Dizin oluşturma ilkesi, dizin oluşturma yollarını ([Setıncludedpaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) ve [setexcludedpaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)) kullanarak hangi belge yollarının dizine eklenmesini veya dışlanacağını belirtmenize olanak tanır. Dizin oluşturma yollarının kullanımı, sorgu desenlerinin önceden bildiği senaryolar için gelişmiş yazma performansı ve daha düşük dizin depolaması sunabilir, dizin oluşturma maliyetleri doğrudan dizinli benzersiz yolların sayısıyla bağıntılı olur.  Örneğin, aşağıdaki kod belgelerin tamamını nasıl dışlayacak gösterir (deyişle "*" joker karakterini kullanarak dizin oluşturma işleminden bir alt ağacı.
+    Azure Cosmos DB Dizin oluşturma ilkesi, dizin oluşturma yollarını ([Setıncludedpaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) ve [setexcludedpaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)) kullanarak hangi belge yollarının dizine eklenmesini veya dışlanacağını belirtmenize olanak tanır. Dizin oluşturma yollarının kullanımı, sorgu desenlerinin önceden bildiği senaryolar için gelişmiş yazma performansı ve daha düşük dizin depolaması sunabilir, dizin oluşturma maliyetleri doğrudan dizinli benzersiz yolların sayısıyla bağıntılı olur.  Örneğin, aşağıdaki kod, "*" joker karakterini kullanarak, belgelerin tamamının (alt ağaç) dizin oluşturma işleminden nasıl hariç tutulacağı gösterilmektedir.
+
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-indexing"></a>Java SDK v2 'yi eşitleme (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -139,6 +151,9 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     Bir sorgunun karmaşıklığı, bir işlem için kaç istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
     Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), bu işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya [\<resourceresvert>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) veya [Feedresponse\<>T](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) ' deki eşdeğer requestücretle) inceleyin.
+
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>Java SDK v2 'yi eşitleme (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);

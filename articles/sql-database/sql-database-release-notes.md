@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801697"
+ms.locfileid: "82838493"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -93,12 +93,12 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 |[@querysp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Geçici çözüm yok| |
 |[İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Geçici çözüm yok| |
 |[GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor](#temporary-database-is-used-during-restore-operation)||Geçici çözüm vardır| |
-|[TEMPDB yapısı ve içerik yeniden oluşturuluyor](#tempdb-structure-and-content-is-re-created)||Geçici çözüm yok| |
-|[Küçük veritabanı dosyalarıyla depolama alanını aşma](#exceeding-storage-space-with-small-database-files)||Geçici çözüm vardır| |
-|[Veritabanı adları yerine gösterilen GUID değerleri](#guid-values-shown-instead-of-database-names)||Geçici çözüm vardır| |
+|[TEMPDB yapısı ve içerik yeniden oluşturuluyor](#tempdb-structure-and-content-is-re-created)| |Geçici çözüm yok| |
+|[Küçük veritabanı dosyalarıyla depolama alanını aşma](#exceeding-storage-space-with-small-database-files)| |Geçici çözüm vardır| |
+|[Veritabanı adları yerine gösterilen GUID değerleri](#guid-values-shown-instead-of-database-names) ||Geçici çözüm vardır| |
 |[Hata günlükleri kalıcı değil](#error-logs-arent-persisted)||Geçici çözüm yok| |
-|[Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Geçici çözüm vardır|Mar 2020|
-|[CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Geçici çözüm vardır| |
+|[CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |Geçici çözüm vardır| |
+|[Aynı örnek içindeki iki veritabanında işlem kapsamı desteklenmiyor](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |Çözümlendi|Mar 2020|
 |Veritabanı tutarlılığı, Azure Blob depolamadan geri yükleme sonrasında DBCC CHECKDB kullanılarak doğrulanmadı.| |Çözümlendi|Kas 2019|
 |Kaynak veritabanında bellek içi OLTP nesneleri varsa, İş Açısından Kritik katmanından Genel Amaçlı katmana geri yükleme işlemi başarılı olmaz.| |Çözümlendi|Eki 2019|
 |Güvenli bağlantı kullanarak harici (Azure dışı) posta sunucularıyla Veritabanı Postası özelliği| |Çözümlendi|Eki 2019|

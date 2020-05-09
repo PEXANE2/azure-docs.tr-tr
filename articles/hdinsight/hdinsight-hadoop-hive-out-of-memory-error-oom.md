@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74687762"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891102"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight 'ta bellek yetersiz Apache Hive hatasını çözme
 
@@ -101,7 +101,7 @@ Hive-site. xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , 
 </property>
 ```
 
-Büyük olasılıkla Map JOIN, Java yığın alanının bellek yetersiz hatası nedeniyle oluşur. Tez yürütme altyapısı, aslında tez kapsayıcısına ait olan bir yığın alanı kullanıldığında, [HDInsight 'Ta Hadoop Yarn bellek ayarlarında](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)blog gönderisi bölümünde açıklandığı gibi. Tez kapsayıcı belleğini açıklayan aşağıdaki resme bakın.
+Büyük olasılıkla Map JOIN, Java yığın alanının bellek yetersiz hatası nedeniyle oluşur. Tez yürütme altyapısı, aslında tez kapsayıcısına ait olan bir yığın alanı kullanıldığında, [HDInsight 'Ta Hadoop Yarn bellek ayarlarında](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)blog gönderisi bölümünde açıklandığı gibi. Tez kapsayıcı belleğini açıklayan aşağıdaki resme bakın.
 
 ![Tez kapsayıcı bellek diyagramı: Hive bellek yetersiz hatası](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

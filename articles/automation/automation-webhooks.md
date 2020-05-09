@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367032"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582442"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Otomasyonu runbook'unu web kancasıyla başlatma
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda bir Web kancası için yapılandırmanız gereken özellikl
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Adı |Web kancasının adı. İstemciye açık olmadığından istediğiniz adı verebilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
+| Name |Web kancasının adı. İstemciye açık olmadığından istediğiniz adı verebilirsiniz. Yalnızca Azure Otomasyonu 'nda runbook 'u tanımlamak için kullanılır. En iyi uygulama olarak, Web kancasına onu kullanan istemciyle ilgili bir ad vermeniz gerekir. |
 | URL'si |Web kancasının URL 'SI. Bu, bir istemcinin Web kancasına bağlı olan runbook 'u başlatmak için bir HTTP POST ile çağırdığı benzersiz adrestir. Web kancasını oluşturduğunuzda otomatik olarak oluşturulur. Özel bir URL belirtemezsiniz. <br> <br> URL, üçüncü taraf bir sistemin runbook 'u başka bir kimlik doğrulaması olmadan çağırmasına izin veren bir güvenlik belirteci içeriyor. Bu nedenle, URL 'YI bir parola gibi kabul etmelisiniz. Güvenlik nedenleriyle, URL 'YI yalnızca Web kancasını oluştururken Azure portal görüntüleyebilirsiniz. Daha sonra kullanılmak üzere güvenli bir konumda URL 'YI aklınızda bulundurma. |
 | Son kullanma tarihi | Web kancasının, daha sonra kullanılamayacak son kullanma tarihi. Web kancasının süresi dolduğu sürece, Web kancası oluşturulduktan sonra sona erme tarihini değiştirebilirsiniz. |
 | Etkin | Web kancasının oluşturulduğu zaman varsayılan olarak etkinleştirilip etkinleştirilmediğini belirten ayar. Bu özelliği devre dışı olarak ayarlarsanız, hiçbir istemci Web kancasını kullanamaz. Bu özelliği, Web kancasını veya oluşturulduktan sonra herhangi bir zamanı oluşturduğunuzda ayarlayabilirsiniz. |
@@ -88,7 +88,7 @@ Bir Web kancası tarafından çağrılıp çağrılmadığını öğrenmek için
 
 Başka bir strateji, runbook 'un bir Web kancası isteği aldığında dış koşul doğrulaması gerçekleştirmesini sağlar. Örneğin bir GitHub deposuna yeni bir kayıt olduğunda GitHub tarafından çağrılan bir runbook 'u göz önünde bulundurun. Runbook, devam etmeden önce yeni bir işleme gerçekleştiğini doğrulamak için GitHub 'a bağlanabilir.
 
-## <a name="creating-a-webhook"></a>Web kancası oluşturma
+## <a name="create-a-webhook"></a>Web kancası oluşturma
 
 Azure portal bir runbook 'a bağlı yeni bir Web kancası oluşturmak için aşağıdaki yordamı kullanın.
 
@@ -106,7 +106,7 @@ Azure portal bir runbook 'a bağlı yeni bir Web kancası oluşturmak için aşa
 1. Runbook parametreleri için değerler sağlamak üzere **Parametreler** ' e tıklayın. Runbook 'un zorunlu parametreleri varsa, değer sağlamadıkça Web kancasını oluşturamazsınız.
 1. Web kancasını oluşturmak için **Oluştur**’a tıklayın.
 
-## <a name="using-a-webhook"></a>Web kancası kullanma
+## <a name="use-a-webhook"></a>Web kancası kullanma
 
 Bir Web kancasını oluşturulduktan sonra kullanmak için, istemciniz Web kancası URL 'siyle bir HTTP `POST` isteği vermelidir. Söz dizimi aşağıdaki gibidir:
 
@@ -131,7 +131,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 İstemci, runbook işinin ne zaman tamamlandığını veya Web kancasından tamamlanma durumunu belirleyemez. Bu bilgileri, [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) veya [Azure Otomasyonu API](/rest/api/automation/job)gibi başka BIR mekanizmasıyla iş kimliğini kullanarak bulabilir.
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>Web kancasını yenileme
+## <a name="renew-a-webhook"></a>Web kancasını yenileme
 
 Bir Web kancası oluşturulduğunda, geçerlilik süresi on yıl, sonrasında otomatik olarak sona erer. Bir Web kancası süresi dolduktan sonra yeniden etkinleştiremezsiniz. Yalnızca kaldırıp yeniden oluşturabilirsiniz. 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>Örneği test etme
+## <a name="test-the-sample"></a>Örneği test etme
 
 Aşağıdaki örnek Windows PowerShell kullanarak bir runbook 'u bir Web kancası ile başlatır. HTTP isteğinde bulunan herhangi bir dil, Web kancası kullanabilir. Windows PowerShell bir örnek olarak burada kullanılır.
 

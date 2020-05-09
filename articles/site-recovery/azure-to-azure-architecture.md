@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294109"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983338"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -55,8 +55,7 @@ Bir sanal makine için çoğaltmayı etkinleştirdiğinizde Site Recovery, hedef
 Hedef kaynakları aşağıdaki şekilde yönetebilirsiniz:
 
 - Çoğaltmayı etkinleştirdiğinizde hedef ayarları değiştirebilirsiniz.
-- Hedef ayarları, çoğaltma zaten çalıştıktan sonra değiştirebilirsiniz. Özel durum kullanılabilirlik türüdür (tek örnek, küme veya bölge). Bu ayarı değiştirmek için çoğaltmayı devre dışı bırakmanız, ayarı değiştirmeniz ve ardından yeniden etkinleştirmeniz gerekir.
-
+- Hedef ayarları, çoğaltma zaten çalıştıktan sonra değiştirebilirsiniz. Hedef bölge sanal makinesi için varsayılan SKU 'nun kaynak VM 'nin SKU 'SU (veya kaynak VM SKU 'suna kıyasla bir sonraki en iyi kullanılabilir SKU) ile aynı olduğunu lütfen unutmayın. Hedef kaynak grubu, hedef adı ve diğer kaynaklarla benzer şekilde, hedef bölge VM SKU 'SU de çoğaltma devam ettikten sonra da yapılandırılabilir. Güncelleştirilemeyebilir bir kaynak kullanılabilirlik türüdür (tek örnek, küme veya bölge). Bu ayarı değiştirmek için çoğaltmayı devre dışı bırakmanız, ayarı değiştirmeniz ve ardından yeniden etkinleştirmeniz gerekir. 
 
 
 ## <a name="replication-policy"></a>Çoğaltma ilkesi 
