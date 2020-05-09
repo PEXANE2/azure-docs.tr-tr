@@ -1,6 +1,6 @@
 ---
-title: Azure kaynakları için reddedilen atamaları anlama
-description: Azure kaynakları için rol tabanlı erişim denetimi 'nde (RBAC) atamaları reddetme hakkında bilgi edinin.
+title: Azure reddetme atamalarını anlama-Azure RBAC
+description: Azure rol tabanlı erişim denetimi (Azure RBAC) üzerinde Azure reddetme atamaları hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372480"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733784"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Azure kaynakları için reddedilen atamaları anlama
+# <a name="understand-azure-deny-assignments"></a>Azure reddetme atamalarını anlama
 
 Bir rol atamasına benzer şekilde, *reddetme atama* , erişimi reddetmek amacıyla belirli bir kapsamdaki bir Kullanıcı, Grup veya hizmet sorumlusu için bir reddetme eylemleri kümesi iliştirir. Bir rol ataması erişime izin verirse, atamaları Reddet, kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller.
 
@@ -57,18 +57,18 @@ Atamaları Reddet, benzer bir kalıbı rol atamaları olarak izler, ancak bazı 
 > | Özellik | Gerekli | Tür | Açıklama |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Yes | Dize | Reddetme atamasının görünen adı. Adlar, belirli bir kapsam için benzersiz olmalıdır. |
-> | `Description` | Hayır | Dize | Reddetme atamasının açıklaması. |
+> | `Description` | No | Dize | Reddetme atamasının açıklaması. |
 > | `Permissions.Actions` | En az bir eylem veya bir veri eylemi | String [] | Reddetme atamasının erişimi engellediği yönetim işlemlerini belirten dizeler dizisi. |
-> | `Permissions.NotActions` | Hayır | String [] | Reddetme atamasından dışlanacak yönetim işlemlerini belirten dizeler dizisi. |
+> | `Permissions.NotActions` | No | String [] | Reddetme atamasından dışlanacak yönetim işlemlerini belirten dizeler dizisi. |
 > | `Permissions.DataActions` | En az bir eylem veya bir veri eylemi | String [] | Reddetme atamasının erişimi engellediği veri işlemlerini belirten dizeler dizisi. |
-> | `Permissions.NotDataActions` | Hayır | String [] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
-> | `Scope` | Hayır | Dize | Reddetme atamasının geçerli olduğu kapsamı belirten bir dize. |
-> | `DoNotApplyToChildScopes` | Hayır | Boole | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
+> | `Permissions.NotDataActions` | No | String [] | Reddetme atamasından çıkarılacak veri işlemlerini belirten dizeler dizisi. |
+> | `Scope` | No | Dize | Reddetme atamasının geçerli olduğu kapsamı belirten bir dize. |
+> | `DoNotApplyToChildScopes` | No | Boole | Reddetme atamasının alt kapsamlar için geçerli olup olmadığını belirtir. Varsayılan değer false 'dur. |
 > | `Principals[i].Id` | Yes | String [] | Reddetme atamasının uygulandığı Azure AD Principal nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. Tüm sorumluları temsil etmek için `00000000-0000-0000-0000-000000000000` boş bir GUID olarak ayarlayın. |
-> | `Principals[i].Type` | Hayır | String [] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. tüm sorumluları `SystemDefined` temsil edecek şekilde ayarlanır. |
-> | `ExcludePrincipals[i].Id` | Hayır | String [] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
-> | `ExcludePrincipals[i].Type` | Hayır | String [] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
-> | `IsSystemProtected` | Hayır | Boole | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
+> | `Principals[i].Type` | No | String [] | Sorumlular tarafından temsil edilen nesne türleri dizisi [i]. ID. tüm sorumluları `SystemDefined` temsil edecek şekilde ayarlanır. |
+> | `ExcludePrincipals[i].Id` | No | String [] | Reddetme atamasının uygulanmadığından, Azure AD sorumlusu nesne kimliklerinin (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) bir dizisi. |
+> | `ExcludePrincipals[i].Type` | No | String [] | Excludesorumlularını [i]. ID tarafından temsil edilen nesne türleri dizisi. |
+> | `IsSystemProtected` | No | Boole | Bu reddetme atamasının Azure tarafından oluşturulup oluşturulmayacağını veya silinemeyeceğini belirtir. Şu anda tüm reddetme atamaları sistem korumalıdır. |
 
 ## <a name="the-all-principals-principal"></a>Tüm asıl adlar
 
@@ -90,4 +90,4 @@ Tüm sorumlular, bazı kullanıcılar `ExcludePrincipals` hariç tüm sorumlular
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Öğretici: Azure şemaları kaynak kilitleri ile yeni kaynakları koruma](../governance/blueprints/tutorials/protect-new-resources.md)
-* [Azure portal kullanarak Azure kaynakları için atamaları reddetme listesi](deny-assignments-portal.md)
+* [Azure portal kullanarak Azure reddetme atamalarını listeleyin](deny-assignments-portal.md)

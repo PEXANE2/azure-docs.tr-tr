@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254371"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731586"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -29,7 +29,7 @@ ms.locfileid: "79254371"
 Bu nedenle Traffic Manager, istemcilerin bağlanması için bir uç nokta veya IP adresi sağlamaz. Hizmetiniz için statik IP adresi istiyorsanız, bu, Traffic Manager değil, hizmette yapılandırılması gerekir.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager kullanılarak hangi türde trafik yönlendirilebilir?
-[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, bir Traffic Manager uç noktası, Azure içinde veya dışında barındırılan internet 'e yönelik herhangi bir hizmet olabilir. Bu nedenle Traffic Manager, genel İnternet 'ten gelen trafiği de internet 'e yönelik bir uç nokta kümesine yönlendirebilir. Özel bir ağ içinde (örneğin, [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)iç sürümü) veya kullanıcıların bu Iç ağlardan DNS istekleri yapmasını istiyorsanız, bu trafiği yönlendirmek için Traffic Manager kullanamazsınız.
+[Traffic Manager nasıl çalıştığı konusunda](../traffic-manager/traffic-manager-how-it-works.md)açıklandığı gibi, bir Traffic Manager uç noktası, Azure içinde veya dışında barındırılan internet 'e yönelik herhangi bir hizmet olabilir. Bu nedenle Traffic Manager, genel İnternet 'ten gelen trafiği de internet 'e yönelik bir uç nokta kümesine yönlendirebilir. Özel bir ağ içinde (örneğin, [Azure Load Balancer](../load-balancer/components.md#frontend-ip-configurations)iç sürümü) veya kullanıcıların bu Iç ağlardan DNS istekleri yapmasını istiyorsanız, bu trafiği yönlendirmek için Traffic Manager kullanamazsınız.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>"Sticky" oturumlarını Traffic Manager destekler mi?
 

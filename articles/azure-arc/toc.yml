@@ -4,6 +4,11 @@
   items:
     - name: Sunucular için Azure Arc nedir?
       href: ./servers/overview.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Arc’a bağlanma

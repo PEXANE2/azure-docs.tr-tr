@@ -1,16 +1,16 @@
 ---
-title: Azure Otomasyonu 'Nu devre dışı bırakma çözüm sırasında VM 'Leri Başlat/Durdur
-description: Bu makalede, Azure sanal makineleriniz için Azure Otomasyonu başlatma/durdurma VM çözümünün nasıl etkinleştirileceği açıklanır.
+title: Azure Otomasyonu VM'leri çalışma saatleri dışında başlat/durdur çözümünü etkinleştirme
+description: Bu makalede, Azure sanal makineleriniz için Azure Otomasyonu başlatma/durdurma VM 'sinin saat dışı çözümü nasıl etkinleştirileceği açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47daa29c65f847fdeb33b9e24a892ac1f31b52a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed9937576334fcba6707f2737e92c3cddce2d7f7
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096971"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864224"
 ---
 # <a name="enable-azure-automation-startstop-vms-solution"></a>Azure Otomasyonu başlatma/durdurma VM çözümünü etkinleştirme
 

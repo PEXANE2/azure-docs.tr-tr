@@ -1,23 +1,17 @@
 ---
-title: Azure Depolama Blobu karşılaştırma Azure Data Lake Storage 1. | Microsoft Docs
-description: Azure Depolama Blobu karşılaştırma Azure Data Lake Storage 1.
-services: data-lake-store
-documentationcenter: ''
+title: BLOB depolama ile Azure Data Lake Storage 1. karşılaştırması
+description: Azure Data Lake Storage 1. ile Azure Blob depolama arasındaki farkların özetini sağlar.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438714"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691734"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage 1. ve Azure Blob depolamayı karşılaştırma
 
@@ -39,11 +33,11 @@ Bu makaledeki tabloda, büyük veri işlemenin bazı önemli yönleri üzerinde 
 | Veri Işlemleri-yetkilendirme |POSIX Access Control listeleri (ACL 'Ler).  Azure Active Directory kimlikleri temel alan ACL 'Ler dosya ve klasör düzeyinde ayarlanabilir. |Hesap düzeyinde yetkilendirme için – [hesap erişim anahtarlarını](../storage/common/storage-account-keys-manage.md) kullanın<br>Hesap, kapsayıcı veya blob yetkilendirmesi için- [paylaşılan erişim Imza anahtarlarını](../storage/common/storage-dotnet-shared-access-signature-part-1.md) kullanın |
 | Veri Işlemleri-denetim |Kullanılabileceğini. Bilgi için [buraya](data-lake-store-diagnostic-logs.md) bakın. |Kullanılabilir |
 | Bekleyen şifreleme verileri |<ul><li>Saydam, sunucu tarafı</li> <ul><li>Hizmet tarafından yönetilen anahtarlarla</li><li>Azure Anahtar Kasası 'nda müşteri tarafından yönetilen anahtarlarla</li></ul></ul> |<ul><li>Saydam, sunucu tarafı</li> <ul><li>Hizmet tarafından yönetilen anahtarlarla</li><li>Azure Anahtar Kasası 'nda müşteri tarafından yönetilen anahtarlarla (Önizleme)</li></ul><li>İstemci Tarafında Şifreleme</li></ul> |
-| Yönetim işlemleri (örn. hesap oluşturma) |Hesap yönetimi için Azure tarafından sunulan [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC) |Hesap yönetimi için Azure tarafından sunulan [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC) |
-| Geliştirici SDK 'Ları |.NET, Java, Python, Node. js |.Net, Java, Python, Node. js, C++, Ruby, PHP, Go, Android, iOS |
+| Yönetim işlemleri (örneğin, hesap oluşturma) |Hesap yönetimi için Azure tarafından sunulan [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC) |Hesap yönetimi için Azure tarafından sunulan [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC) |
+| Geliştirici SDK 'Ları |.NET, Java, Python, Node. js |.NET, Java, Python, Node. js, C++, Ruby, PHP, Go, Android, iOS |
 | Analiz Iş yükü performansı |Paralel analiz iş yükleri için iyileştirilmiş performans. Yüksek aktarım hızı ve ıOPS. |Paralel analiz iş yükleri için iyileştirilmiş performans. |
 | Boyut sınırları |Hesap boyutları, dosya boyutları veya dosya sayısı sınırı yoktur |Belirli sınırlar için bkz. [Standart depolama hesapları Için ölçeklenebilirlik hedefleri](../storage/common/scalability-targets-standard-account.md) , [BLOB depolama için ölçeklenebilirlik ve performans hedefleri](../storage/blobs/scalability-targets.md). [Azure desteğiyle](https://azure.microsoft.com/support/faq/) iletişim kurarak daha büyük hesap limitleri kullanılabilir |
-| Coğrafi yedeklilik |Yerel olarak yedekli (bir Azure bölgesindeki verilerin birden çok kopyasını) |Yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS), küresel olarak yedekli (GRS), okuma erişimli küresel olarak yedekli (RA-GRS). Daha fazla bilgi için [buraya](../storage/common/storage-redundancy.md) bakın |
+| Coğrafi yedeklilik |Yerel olarak yedekli (bir Azure bölgesindeki verilerin birden fazla kopyası) |Yerel olarak yedekli (LRS), bölgesel olarak yedekli (ZRS), küresel olarak yedekli (GRS), okuma erişimli küresel olarak yedekli (RA-GRS). Daha fazla bilgi için [buraya](../storage/common/storage-redundancy.md) bakın |
 | Hizmet durumu |Genel kullanıma sunuldu |Genel kullanıma sunuldu |
 | Bölgesel kullanılabilirlik |[Buraya](https://azure.microsoft.com/regions/#services) bakın |Tüm Azure bölgelerinde kullanılabilir |
 | Fiyat |[Fiyatlandırmaya](https://azure.microsoft.com/pricing/details/data-lake-store/) bakın |[Fiyatlandırmaya](https://azure.microsoft.com/pricing/details/storage/) bakın |
