@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 description: Bu makale bulut yatırımlarınızdan en iyi şekilde yararlanmanıza, maliyetlerinizi azaltmanıza ve paranızın nereye harcandığını değerlendirmenize yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874594"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791621"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -104,6 +104,12 @@ Farklı seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure'ı sat�
 
 - Peşin parasal taahhütler için seçenekler
 - Düşük Azure fiyatlarına erişim
+
+#### <a name="azure-in-csp"></a>[CSP'de Azure](https://azure.microsoft.com/offers/ms-azr-0145p/)
+
+- CSP iş ortakları müşterilerinin ihtiyaçlarıyla ilgili olarak ilk iletişim noktası ve müşteri ilişkilerinin merkezidir
+- CSP iş ortakları yeni müşteriler sağlar, abonelik siparişleri verir, abonelikleri yönetir ve müşterileri adına yönetici görevlerini gerçekleştirir
+- CSP iş ortakları hizmetleri benzersiz çözümlerde paketler veya fiyatlandırmayı, koşulları ve faturalamayı denetleyerek Azure’ın yeniden satışını yapar
 
 ## <a name="estimate-the-cost-of-your-solution"></a>Çözümünüzün maliyetini tahmin etme
 

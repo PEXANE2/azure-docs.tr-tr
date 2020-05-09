@@ -3,20 +3,18 @@ title: JavaScript kullanarak Azure 'da ilk dayanıklı işlevinizi oluşturma
 description: Visual Studio Code kullanarak bir Azure dayanıklı Işlevi oluşturun ve yayımlayın.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257657"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889662"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript'te ilk dayanıklı işlevinizi oluşturma
 
 *Dayanıklı işlevler* , bir sunucusuz ortamda durum bilgisi olan işlevler yazmanıza olanak sağlayan bir [Azure işlevleri](../functions-overview.md) uzantısıdır. Uzantı sizin için durumu, denetim noktalarını ve yeniden başlatmaları yönetir.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 Bu makalede, bir "Hello World" dayanıklı işlevini yerel olarak oluşturmak ve test etmek için Visual Studio Code Azure Işlevleri uzantısının nasıl kullanılacağını öğrenirsiniz.  Bu işlev, diğer işlevlere yönelik çağrıları düzenler ve birlikte zincirler. Ardından işlev kodunu Azure’da yayımlayacaksınız.
 
@@ -44,7 +42,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
 
 1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...`.
 
-    ![Create işlevi](media/quickstart-js-vscode/functions-create-project.png)
+    ![İşlev oluşturma](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Projeniz için boş bir klasör konumu seçin ve **Seç**' i seçin.
 
@@ -61,7 +59,7 @@ Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir 
 
 Kök klasörde bir Package. JSON dosyası da oluşturulur.
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Azure Işlevleri v2 uyumluluk modunu etkinleştir
+### <a name="enable-compatibility-mode"></a>Uyumluluk modunu etkinleştir
 
 Şu anda JavaScript Dayanıklı İşlevler Azure Işlevleri v2 uyumluluk modunun etkinleştirilmesini gerektirir.
 
@@ -165,7 +163,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
     | Bir depolama hesabı seçin | Yeni depolama hesabı oluşturma |  |
     | Yeni depolama hesabının adını girin | *benzersiz ad* | Oluşturulacak depolama hesabının adı |
     | Kaynak grubu seçme | *benzersiz ad* | Oluşturulacak kaynak grubunun adı |
-    | Bir konum seçin | *geli* | Size yakın bir bölge seçin |
+    | Bir konum seçin | *bölgesinde kullanılamıyor* | Size yakın bir bölge seçin |
 
 1. **Terminal** panelinde, HTTP ile tetiklenen işlevinizin URL uç noktasını kopyalayın.
 
@@ -204,7 +202,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Azure Işlevleri v2 uyumluluk modunu etkinleştir
+### <a name="enable-compatibility-mode"></a>Uyumluluk modunu etkinleştir
 
 Yerel olarak etkinleştirdiğiniz Azure Işlevleri v2 uyumluluğu, Azure 'daki uygulamada etkinleştirilmelidir.
 

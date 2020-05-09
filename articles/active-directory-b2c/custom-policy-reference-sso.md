@@ -8,29 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229689"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926128"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da çoklu oturum açma oturumu yönetimi
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) içindeki [Çoklu oturum açma (SSO) oturum](session-overview.md) yönetimi, kullanıcının kimliği doğrulandıktan sonra bir kullanıcının Kullanıcı ile etkileşimini denetlemesine olanak sağlar. Örneğin, yönetici, kimlik sağlayıcılarının seçiminin görüntülenip görüntülenmediğini veya hesap ayrıntılarının yeniden girilmesi gerekip gerekmediğini denetleyebilir. Bu makalede Azure AD B2C için SSO ayarlarının nasıl yapılandırılacağı açıklanır.
-
-SSO oturum yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvuru için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
+[Çoklu oturum açma (SSO) oturum](session-overview.md) yönetimi, özel ilkelerdeki diğer teknik profille aynı semantiğini kullanır. Bir düzenleme adımı yürütüldüğünde, adımla ilişkili teknik profil bir `UseTechnicalProfileForSessionManagement` başvuru için sorgulanır. Varsa, başvurulan SSO oturum sağlayıcısı, kullanıcının bir oturum katılımcısı olup olmadığını görmek için denetlenir. Öyleyse, oturum yeniden doldurmak için SSO oturum sağlayıcısı kullanılır. Benzer şekilde, bir düzenleme adımının yürütülmesi tamamlandığında, bir SSO oturum sağlayıcısı belirtilmişse, oturum bilgilerini oturumdaki depolamak için sağlayıcı kullanılır.
 
 Azure AD B2C, kullanılabilecek birkaç SSO oturum sağlayıcısı tanımladı:
 
 |Oturum sağlayıcısı  |Kapsam  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Hiçbiri       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Yok       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C iç oturum Yöneticisi.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C ile OAuth1, OAuth2 veya OpenID Connect kimlik sağlayıcısı arasında.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Bir OAuth2 veya OpenID Connect bağlı olan taraf uygulaması ve Azure AD B2C.        |        
@@ -125,7 +123,7 @@ Bu sağlayıcı, "kimlik sağlayıcısı Seç" ekranını bastırmak ve bir Fede
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Hayır | Şu anda kullanılmıyor olabilir. |
+| AlwaysFetchClaimsFromProvider | No | Şu anda kullanılmıyor olabilir. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -167,10 +165,11 @@ Aşağıdaki `SM-Saml-issuer` teknik profil, [SAML verenin teknik profili](saml-
 
 | Öznitelik | Gerekli | Açıklama|
 | --- | --- | --- |
-| Includesessionındex | Hayır | Şu anda kullanılmıyor olabilir.|
-| RegisterServiceProviders | Hayır | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
+| Includesessionındex | No | Şu anda kullanılmıyor olabilir.|
+| RegisterServiceProviders | No | Sağlayıcının onay verilen tüm SAML hizmeti sağlayıcılarını kaydetmesi gerektiğini gösterir. Olası değerler: `true` (varsayılan) veya `false`.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD B2C oturum](session-overview.md)hakkında daha fazla bilgi edinin.
+- [Özel ilkelerde oturum davranışını yapılandırmayı](session-behavior-custom-policy.md)öğrenin.

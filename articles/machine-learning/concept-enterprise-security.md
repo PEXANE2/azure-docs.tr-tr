@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188404"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891311"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -105,29 +105,9 @@ Azure Machine Learning, her çalışma alanı bölgesi için aboneliğinizde kat
 
 Azure Machine Learning, işlem kaynakları için diğer Azure hizmetlerini kullanır. İşlem kaynakları (işlem hedefleri) modelleri eğitmek ve dağıtmak için kullanılır. Bu işlem hedeflerini bir sanal ağda oluşturabilirsiniz. Örneğin, bir modeli eğitebilmek ve sonra modeli AKS 'e dağıtmak için Azure Veri Bilimi Sanal Makinesi kullanabilirsiniz.  
 
-Daha fazla bilgi için bkz. [Sanal ağda denemeleri ve çıkarımı çalıştırma](how-to-enable-virtual-network.md).
+Daha fazla bilgi için bkz. [yalıtılmış bir sanal ağda güvenli şekilde denemeleri ve çıkarımı çalıştırma](how-to-enable-virtual-network.md).
 
 Ayrıca, çalışma alanınız için Azure özel bağlantısını etkinleştirebilirsiniz. Özel bağlantı, bir Azure sanal ağından çalışma alanınıza yönelik iletişimleri kısıtlamanıza olanak sağlar. Daha fazla bilgi için bkz. [özel bağlantı yapılandırma](how-to-configure-private-link.md).
-
-> [!TIP]
-> Çalışma alanınız ve diğer Azure kaynakları arasındaki iletişimi korumak için sanal ağ ve özel bağlantıyı birlikte birleştirebilirsiniz. Ancak, bazı birleşimler Enterprise Edition çalışma alanı gerektirir. Hangi senaryoların Enterprise Edition gerektirdiğini anlamak için aşağıdaki tabloyu kullanın:
->
-> | Senaryo | Enterprise</br>Edition | Temel</br>Edition |
-> | ----- |:-----:|:-----:| 
-> | Sanal ağ veya özel bağlantı yok | ✔ | ✔ |
-> | Özel bağlantı olmadan çalışma alanı. Bir sanal ağdaki diğer kaynaklar (Azure Container Registry hariç) | ✔ | ✔ |
-> | Özel bağlantı olmadan çalışma alanı. Özel bağlantısı olan diğer kaynaklar | ✔ | |
-> | Özel bağlantılı çalışma alanı. Bir sanal ağdaki diğer kaynaklar (Azure Container Registry hariç) | ✔ | ✔ |
-> | Çalışma alanı ve özel bağlantısı olan diğer kaynaklar | ✔ | |
-> | Özel bağlantılı çalışma alanı. Özel bağlantı veya sanal ağ içermeyen diğer kaynaklar | ✔ | ✔ |
-> | Bir sanal ağda Azure Container Registry | ✔ | |
-> | Çalışma alanı için müşteri tarafından yönetilen anahtarlar | ✔ | |
-> 
-
-> [!WARNING]
-> Azure Machine Learning işlem örnekleri önizlemesi, özel bağlantının etkinleştirildiği bir çalışma alanında desteklenmez.
-> 
-> Azure Machine Learning, özel bağlantısı etkin olan bir Azure Kubernetes hizmetini kullanmayı desteklemez. Bunun yerine, bir sanal ağda Azure Kubernetes hizmeti kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal ağı Içindeki güvenli Azure ML deneme ve çıkarım işleri](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Veri şifrelemesi
 
@@ -265,7 +245,7 @@ Her çalışma alanı, çalışma alanıyla aynı ada sahip ilişkili, sistem ta
 
 Microsoft, kaynak adları (örneğin, veri kümesi adı veya makine öğrenimi deneme adı) gibi kullanıcı olmayan tanımlama bilgilerini veya tanılama amacıyla iş ortamı değişkenlerini toplayabilir. Bu tür veriler, Microsoft 'un sahip olduğu aboneliklerde barındırılan depolamada Microsoft tarafından yönetilen anahtarlar kullanılarak depolanır ve [Microsoft 'un standart Gizlilik ilkesi ve veri işleme standartlarını](https://privacy.microsoft.com/privacystatement)izler.
 
-Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır. Benzer şekilde, [RunId](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)'yi adlandırırken Kullanıcı adları veya gizli proje adları gibi hassas bilgileri de eklemekten kaçının. Bu bilgiler, Microsoft Desteği mühendislerine erişilebilen telemetri günlüklerinde görünebilir.
+Microsoft ayrıca, önemli bilgileri (örneğin, hesap anahtarı gizli dizileri) ortam değişkenlerine depolamamanızı da önerir. Ortam değişkenleri günlüğe kaydedilir, şifrelenir ve bizimle saklanır. Benzer şekilde [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)adlandırırken, Kullanıcı adları veya gizli proje adları gibi hassas bilgileri de eklemekten kaçının. Bu bilgiler, Microsoft Desteği mühendislerine erişilebilen telemetri günlüklerinde görünebilir.
 
 Çalışma alanını sağlarken parametresini olarak `hbi_workspace` `TRUE` ayarlayarak, toplanan tanılama verilerinden bu verileri devre dışı kalabilirsiniz. Bu işlev, AzureML Python SDK 'Sı, CLı, REST API 'Leri veya Azure Resource Manager şablonları kullanılırken desteklenir.
 

@@ -1,5 +1,5 @@
 ---
-title: Otomasyon hesabı sorunlarını giderme
+title: Azure Otomasyonu hesabı sorunlarını giderme
 description: Azure hesabıyla ilgili sorun giderme ve sorunları çözme hakkında bilgi edinin.
 services: automation
 author: mgoedtel
@@ -8,16 +8,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7defdaa9b4b0f0b3580a3ac6b1a0487434a97c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679390"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864139"
 ---
-# <a name="troubleshoot-the-automation-account"></a>Otomasyon hesabı sorunlarını giderme
+# <a name="troubleshoot-an-azure-automation-account"></a>Azure Otomasyonu hesabında sorun giderme
 
-Bu makalede, bir Otomasyon hesabı kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler ele alınmaktadır. Aşağıdaki bölümlerde, belirli hata iletileri ve her biri için olası çözümler vurgulanacak. Otomasyon hesapları hakkında genel bilgi için bkz. [Azure hesabı oluşturma](../automation-quickstart-create-account.md).
+Bu makalede, bir Azure Otomasyonu hesabı kullanırken karşılaşabileceğiniz sorunlara yönelik çözümler ele alınmaktadır. Otomasyon hesapları hakkında genel bilgi için bkz. [Azure hesabı oluşturma](../automation-quickstart-create-account.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Senaryo: abonelikler için Otomasyon kaynak sağlayıcısı kaydedilemiyor
 
@@ -39,7 +39,7 @@ Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki ad
 
 1. Tarayıcınızdan [Azure Portal](https://portal.azure.com)gidin.
 
-2. **Abonelikler ' e** gidin ve abonelikler sayfasından aboneliğinizi seçin.   
+2. **Abonelikler**' e gidin ve aboneliğinizi seçin.   
 
 3. **Ayarlar**altında **kaynak sağlayıcıları**' nı seçin.
 
@@ -49,8 +49,8 @@ Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki ad
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Bu makale sorununuzu gidermezse, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport)'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+* İle [@AzureSupport](https://twitter.com/azuresupport)bağlanın. Bu, Azure Community 'yi doğru kaynaklara bağlamaya yönelik resmi Microsoft Azure hesabıdır: yanıtlar, destek ve uzmanlar.
+* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.

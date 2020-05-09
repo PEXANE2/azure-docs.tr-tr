@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605474"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838595"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 'da bulunan Red Hat Enterprise Linux (RHEL) görüntüleri
 Azure, farklı kullanım durumları için çeşitli RHEL görüntüleri sunmaktadır.
@@ -27,6 +27,9 @@ Azure, farklı kullanım durumları için çeşitli RHEL görüntüleri sunmakta
 
 ## <a name="list-of-rhel-images"></a>RHEL görüntülerinin listesi
 Bu, Azure 'da kullanılabilen RHEL görüntülerinin bir listesidir. Aksi belirtilmedikçe, tüm görüntüler LVM bölümlidir ve normal RHEL depolarına (E4S değil) eklenir. Aşağıdaki görüntüler şu anda genel kullanım için kullanılabilir:
+
+> [!NOTE]
+> Ham görüntüler, LVM bölümlenmiş görüntülerin yerine artık üretilmez. LVM, önemli ölçüde daha esnek bölüm yeniden boyutlandırma seçenekleri de dahil olmak üzere eski ham (LVM olmayan) bölümleme şemasına birçok avantaj sağlar.
 
 Sunduğu| SKU | Bölümleme | Sağlama | Notlar
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | Madde    | Linux Aracısı |
 |             | 7,6      | Madde    | Linux Aracısı | Varsayılan olarak 2019 Mayıs itibariyle EUS depolarında kullanıma açıldı.
 |             | 76-Gen2  | Madde    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
 |             | 7,7      | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
+|             | 77-Gen2  | LVM    | Linux Aracısı | Varsayılan olarak, EUS depolarına eklendi.
+|             | 7,8      | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
+|             | 78-Gen2  | LVM    | Linux Aracısı | Düzenli depolara ekli (RHEL 7,8 için kullanılamaz)
 |             | 8-LVM    | LVM    | Linux Aracısı | RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.
 |             | 8-LVM-Gen2| LVM    | Linux Aracısı | Hyper-V 2. nesil-RHEL 8. x resim ailesi. Düzenli depolara iliştirilir.
 |             | 8        | LVM    | Linux Aracısı | RHEL 8,0 görüntüleri

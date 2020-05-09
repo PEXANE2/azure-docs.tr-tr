@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418805"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870045"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Atlayan pencere tetikleyici bağımlılığı oluşturma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,6 +24,10 @@ ms.locfileid: "81418805"
 Bu makalede, atlayan pencere tetikleyicisinde bir bağımlılık oluşturma adımları sağlanmaktadır. Atlayan pencere Tetikleyicileri hakkında genel bilgi için bkz. [dönüştürme penceresi oluşturma tetikleyicisi](how-to-create-tumbling-window-trigger.md).
 
 Bir bağımlılık zinciri derlemek ve bir tetikleyicinin yalnızca veri fabrikasında başka bir tetikleyicinin başarıyla yürütülmesinden sonra yürütüldüğü emin olmak için bu gelişmiş özelliği kullanarak bir pencere bağımlılığı oluşturun.
+
+Azure Data Factory iç içe geçmiş pencere tetikleyicisi kullanarak bağımlı işlem hatları oluşturma hakkında bir tanıtım için aşağıdaki videoyu izleyin:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Data Factory Kullanıcı arabiriminde bağımlılık oluşturma
 
@@ -79,14 +83,17 @@ Aşağıdaki tabloda, bir atlayan pencere bağımlılığı tanımlamak için ge
 |---|---|---|---|
 | type  | Varolan tüm pencere Tetikleyicileri bu açılan pencerede görüntülenir. Bağımlılık yapılacak tetikleyiciyi seçin.  | TumblingWindowTriggerDependencyReference veya SelfDependencyTumblingWindowTriggerReference | Yes |
 | uzaklık | Bağımlılık tetikleyicisinin boşluğu. Zaman aralığı biçiminde bir değer sağlayın ve hem negatif hem de pozitif uzaklıklara izin verilir. Tetikleyici kendisine bağlı ise ve tüm diğer durumlarda isteğe bağlı ise bu özellik zorunludur. Kendinden bağımlılık her zaman negatif bir konum olmalıdır. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Timespan<br/>(SS: DD: SS) | Kendinden bağımlılık: Evet<br/>Diğer: Hayır |
-| size | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Timespan<br/>(SS: DD: SS) | Hayır  |
+| size | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Timespan<br/>(SS: DD: SS) | No  |
 
 > [!NOTE]
-> Atlayan bir pencere tetikleyicisi, en fazla iki tetikleyicisine bağlı olabilir.
+> Atlayan bir pencere tetikleyicisi, en fazla beş başka tetikleyicisine bağlı olabilir.
 
 ## <a name="tumbling-window-self-dependency-properties"></a>Atlayan pencere iç bağımlılık özellikleri
 
-Önceki pencere başarıyla tamamlanana kadar tetikleyicinin bir sonraki pencereye geçebilmesi gereken senaryolarda, kendinden bağımlılık oluşturun. Önceki HR içinde kendisinin önceki çalışmalarının başarısına bağımlı olan bir kendinden bağımlılık tetikleyicisi aşağıdaki özelliklere sahip olacaktır:
+Önceki pencere başarıyla tamamlanana kadar tetikleyicinin sonraki pencereye geçememesi gereken senaryolarda, kendinden bağımlılık oluşturun. Önceki saatin içinde kendisinin daha önceki çalışmalarının başarısına bağımlı olan bir kendinden bağımlılık tetikleyicisi aşağıdaki kodda belirtilen özelliklere sahip olacaktır.
+
+> [!NOTE]
+> Tetiklenen işlem hatlarınız, daha önce tetiklenen Windows 'un işlem hatları çıktısına dayanıyorsa, yalnızca içe geçmiş pencere tetikleyicisi kendi kendine bağımlılığı kullanmanızı öneririz. Paralel tetikleyici çalıştırmalarını sınırlandırmak için en yüksek tetikleyici eşzamanlılık kümesini ayarlayın.
 
 ```json
 {
@@ -147,10 +154,6 @@ Son yedi gün çıktısını toplayarak günlük telemetri işleme işi ve yedi 
 İşin çıkış akışlarında boşluk olmayan günlük bir iş:
 
 ![Kendi kendine bağımlılık örneği](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Kendi kendine bağımlılık örneği")
-
-Azure Data Factory iç içe geçmiş pencere tetikleyicisi kullanarak bağımlı işlem hatları oluşturma hakkında bir tanıtım için aşağıdaki videoyu izleyin:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>Bağımlılıkları izle
 

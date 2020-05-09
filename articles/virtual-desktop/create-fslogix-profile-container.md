@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270902"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607393"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -23,7 +23,7 @@ Müşterilerin Windows sanal masaüstü ortamları için kurumsal düzeyde SMB b
 
 Bu kılavuzda, Windows sanal masaüstü 'nde bir Azure NetApp Files hesabı ayarlama ve FSLogix profil kapsayıcıları oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
-Bu makalede, [konak havuzlarınızın](create-host-pools-azure-marketplace.md) zaten Windows sanal masaüstü ortamınızda bir veya daha fazla kiracıda gruplandırıldığı varsayılır. Kiracılar ayarlama hakkında bilgi edinmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md) ve [Tech Community blog gönderimiz](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+Bu makalede, [konak havuzlarınızın](create-host-pools-azure-marketplace.md) zaten Windows sanal masaüstü ortamınızda bir veya daha fazla kiracıda gruplandırıldığı varsayılır. Kiracılar ayarlama hakkında bilgi edinmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) ve [Tech Community blog gönderimiz](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
 Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları içindir. Azure NetApp Files ayarlama ve Windows sanal masaüstü dışında FSLogix profil kapsayıcıları oluşturma hakkında daha genel rehberlik arıyorsanız, bkz. Kurulum [Azure NetApp Files ve NFS birimi oluşturma hızlı başlangıç](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md).
 
@@ -210,7 +210,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Kullanıcıların Azure NetApp dosya paylaşımında erişebildiğinizden emin olun
 
-1. Internet tarayıcınızı açın ve adresine gidin <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Internet tarayıcınızı açın ve adresine gidin <https://rdweb.wvd.microsoft.com/arm/webclient>.
 
 2. Uzak Masaüstü grubuna atanan bir kullanıcının kimlik bilgileriyle oturum açın.
 

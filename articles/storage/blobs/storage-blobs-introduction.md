@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176678"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853352"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob depolamaya giriş
 
@@ -65,7 +65,7 @@ Farklı blob türleri hakkında daha fazla bilgi için bkz. [blok bloblarını, 
 
 Mevcut verilerin blob depolamaya geçirilmesi için bir dizi çözüm vardır:
 
-- **AzCopy** , Windows ve Linux Için, blob depolamaya, kapsayıcılara veya depolama hesaplarına veri kopyalayan kullanımı kolay bir komut satırı aracıdır. AzCopy hakkında daha fazla bilgi için bkz. [AzCopy ile v10 arasındaki (Önizleme) ile veri aktarma](../common/storage-use-azcopy-v10.md).
+- **AzCopy** , Windows ve Linux Için, blob depolamaya, kapsayıcılara veya depolama hesaplarına veri kopyalayan kullanımı kolay bir komut satırı aracıdır. AzCopy hakkında daha fazla bilgi için bkz. [AzCopy ile v10 arasındaki ile veri aktarma](../common/storage-use-azcopy-v10.md).
 - **Azure depolama veri taşıma kitaplığı** , verileri Azure depolama hizmetleri arasında taşımak için bir .net kitaplığıdır. AzCopy yardımcı programı, veri taşıma kitaplığıyla oluşturulmuştur. Daha fazla bilgi için bkz. veri taşıma kitaplığı için [başvuru belgeleri](/dotnet/api/microsoft.azure.storage.datamovement) .
 - **Azure Data Factory** , hesap anahtarı, paylaşılan erişim imzası, hizmet sorumlusu veya Azure kaynakları için Yönetilen kimlikler kullanarak blob depolamadan veri kopyalamayı destekler. Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure Blob depolama alanına veya buradan veri kopyalama](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 - **Blobsigortası** , Azure Blob depolama için bir sanal dosya sistemi sürücüsüdür. Blobsigortası kullanarak, Linux dosya sistemi aracılığıyla Depolama hesabınızdaki mevcut blok blob verilerinize erişebilirsiniz. Daha fazla bilgi için bkz. [BLOB depolamayı bir dosya sistemi olarak blobsigortası ile bağlama](storage-how-to-mount-container-linux.md).

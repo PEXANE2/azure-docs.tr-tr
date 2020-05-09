@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868070"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793049"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC 'yi yüklemek için CloudSimple özel bulutunuzu iyileştirin
 
@@ -46,10 +46,10 @@ Aşağıdaki örnek aşağıdaki tabloda tanımlanan diskleri kullanır.
 
 | Disk                                      | Amaç                                       | Paylaşılan disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| İşletim Sistemi                                        | İşletim sistemi diski                         | Hayır          |
-| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | Hayır          |
-| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | Hayır          |
-| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | Hayır          |
+| İşletim Sistemi                                        | İşletim sistemi diski                         | No          |
+| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | No          |
+| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | No          |
+| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | No          |
 | VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Yes         |
 | REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Yes         |
 | OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Yes         |
@@ -244,7 +244,7 @@ Oracle verileri, günlükleri ve yineleme günlük dosyaları için gereken tüm
 Sanal makineden konağa benzeşim kuralları VM 'nin istenen konakta çalıştığından emin olun.  Oracle VM 'nin yeterli kaynakları olan konakta ve belirli lisans gereksinimlerini karşılayacak şekilde çalıştığından emin olmak için vCenter üzerinde kurallar tanımlayabilirsiniz.
 
 1. CloudSimple portalında, cloudowner kullanıcısının [ayrıcalıklarını ilerletin](escalate-private-cloud-privileges.md) .
-2. Özel bulutunuzun [vSphere Istemcisinde oturum açın](https://docs.azure.cloudsimple.com/vsphere-access) .
+2. Özel bulutunuzun vSphere istemcisinde oturum açın.
 3. VSphere istemcisinde, Oracle VM 'lerinin dağıtıldığı kümeyi seçin ve **Yapılandır**' a tıklayın.
 4. Yapılandır altında **VM/konak grupları**' nı seçin.
 5. Öğesine **+** tıklayın.

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509661"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888776"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
 
@@ -158,6 +158,7 @@ Gelişmiş filtreleme aşağıdaki sınırlamalara sahiptir:
 * Olay Kılavuzu aboneliği başına beş gelişmiş filtre
 * dize değeri başına 512 karakter
 * **İçindeki** ve **Not** işleçleri için beş değer
+* (Nokta) karakterleriyle anahtarlar. ** `.` ** Örneğin: `http://schemas.microsoft.com/claims/authnclassreference` veya `john.doe@contoso.com`. Şu anda Anahtarlar içinde kaçış karakterleri için destek yoktur. 
 
 Aynı anahtar birden fazla filtrede kullanılabilir.
 

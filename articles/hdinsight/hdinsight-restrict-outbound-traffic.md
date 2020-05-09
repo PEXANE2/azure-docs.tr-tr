@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf51f6778d38d236808c3fd809082bc3b2d54b2
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189390"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863442"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -69,13 +69,13 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     **FQDN etiketleri bölümü**
 
-    | Adı | Kaynak adres | FQDN etiketi | Notlar |
+    | Name | Kaynak adres | FQDN etiketi | Notlar |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate ve HDInsight | HDI Hizmetleri için gerekli |
 
     **Hedef FQDN bölümü**
 
-    | Adı | Kaynak adresler | `Protocol:Port` | Hedef FQDN 'ler | Notlar |
+    | Name | Kaynak adresler | `Protocol:Port` | Hedef FQDN 'ler | Notlar |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
@@ -103,7 +103,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     **IP adresleri bölümü**
 
-    | Adı | Protokol | Kaynak adresler | Hedef adresler | Hedef bağlantı noktaları | Notlar |
+    | Name | Protokol | Kaynak adresler | Hedef adresler | Hedef bağlantı noktaları | Notlar |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Zaman hizmeti |
     | Rule_2 | Herhangi biri | * | DC_IP_Address_1, DC_IP_Address_2 | * | Kurumsal Güvenlik Paketi (ESP) kullanıyorsanız, IP adresleri bölümüne, ESP kümeleri için AAD-DS ile iletişime izin veren bir ağ kuralı ekleyin. Etki alanı denetleyicilerinin IP adreslerini portaldaki AAD-DS bölümünde bulabilirsiniz |
@@ -112,7 +112,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     **Hizmet etiketleri bölümü**
 
-    | Adı | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
+    | Name | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | SQL trafiğini günlüğe kaydetmek ve denetleyeceğinizi sağlayacak SQL için hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. |
 
@@ -188,61 +188,7 @@ Güvenlik duvarını başarıyla ayarladıktan sonra, sanal ağın içinden amba
 
 Genel uç noktasını (`https://CLUSTERNAME.azurehdinsight.net`) veya SSH uç noktasını (`CLUSTERNAME-ssh.azurehdinsight.net`) kullanmak için, [burada](../firewall/integrate-lb.md)açıklanan asimetrik yönlendirme sorununa engel olmak için yol tablosunda ve NSG kurallarında doğru yollara sahip olduğunuzdan emin olun. Özellikle bu durumda, gelen NSG kurallarında istemci IP adresine izin vermeniz ve sonraki atlama kümesiyle birlikte Kullanıcı tanımlı yol tablosuna de eklemeniz gerekir `internet`. Yönlendirme doğru ayarlanmamışsa bir zaman aşımı hatası görürsünüz.
 
-## <a name="configure-another-network-virtual-appliance"></a>Başka bir ağ sanal gereci yapılandırma
-
-> [!Important]
-> Aşağıdaki bilgiler **yalnızca** Azure Güvenlik Duvarı dışında bir ağ sanal gereci (NVA) yapılandırmak istiyorsanız gereklidir.
-
-Önceki yönergeler, HDInsight kümenizdeki giden trafiği kısıtlamak için Azure Güvenlik duvarını yapılandırmanıza yardımcı olur. Azure Güvenlik Duvarı, yaygın olarak karşılaşılan birçok önemli senaryo için trafiğe izin verecek şekilde otomatik olarak yapılandırılır. Başka bir ağ sanal gerecinin kullanılması, birkaç ek özellik yapılandırmanızı gerektirir. Ağ sanal gerecinizi yapılandırırken aşağıdaki faktörleri göz önünde bulundurun:
-
-* Hizmet uç noktası özellikli Hizmetleri, hizmet uç noktaları ile yapılandırılmalıdır.
-* IP adresi bağımlılıkları HTTP/sn olmayan trafiğe yöneliktir (TCP ve UDP trafiği).
-* FQDN HTTP/HTTPS uç noktaları, NVA cihazınıza yerleştirilebilir.
-* Joker karakter HTTP/HTTPS uç noktaları, bir dizi niteleyicilere göre değişebilen bağımlılıklardır.
-* Oluşturduğunuz yol tablosunu HDInsight alt ağına atayın.
-
-### <a name="service-endpoint-capable-dependencies"></a>Hizmet uç noktası özellikli bağımlılıklar
-
-| **Uç Nokta** |
-|---|
-| Azure SQL |
-| Azure Storage |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>IP adresi bağımlılıkları
-
-| **Uç Nokta** | **Bilgileri** |
-|---|---|
-| \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
-| [Burada](hdinsight-management-ip-addresses.md) Yayınlanan IP 'ler | Bu IP 'Ler HDInsight hizmetidir |
-| ESP kümeleri için AAD-DS özel IP 'Leri |
-| \*: KMS Windows etkinleştirmesi 16800 |
-| \*Log Analytics için 12000 |
-
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları
-
-> [!Important]
-> Aşağıdaki liste, en önemli FQDN 'lerin çoğunu sağlar. [Bu dosyada](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)NVA 'nizi yapılandırmak Için ek FQDN 'ler (çoğunlukla Azure depolama ve Azure Service Bus) alabilirsiniz.
-
-| **Uç Nokta**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure HDInsight sanal ağ mimarisi](hdinsight-virtual-network-architecture.md)
+* [Ağ sanal gereç yapılandırma](./network-virtual-appliance.md)

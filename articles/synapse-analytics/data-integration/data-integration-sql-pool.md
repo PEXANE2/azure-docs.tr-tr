@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430571"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982709"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Verileri bir SQL havuzuna yerleştirme
 
@@ -39,7 +39,7 @@ Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, ADLS Gen 2 ' den bir SQL havuzuna veri veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
+İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, verileri bir SQL havuzuna ADLS 2. veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
 
 1. Organize **et sekmesine gidin** . ardışık düzen üstbilgisinin yanındaki artı simgesine tıklayın ve Işlem **hattı**' nı seçin.
 1. Etkinlikler bölmesinde **taşıma ve dönüştürme** ' nın altında, verileri ardışık düzen tuvaline **Kopyala** ' yı sürükleyin.

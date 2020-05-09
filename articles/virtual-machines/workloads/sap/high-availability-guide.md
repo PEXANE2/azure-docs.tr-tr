@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246129"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594891"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -452,7 +452,7 @@ Dağıtım ve yapılandırmayı basitleştirmek için, bu makalede SAP üç katm
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Kaynakları
 Başlamadan önce, aşağıdaki bölümlerde açıklanan önkoşulları karşıladığınızdan emin olun. Ayrıca, [kaynaklar][sap-ha-guide-2] bölümünde listelenen tüm kaynakları denetlediğinizden emin olun.
 
-Bu makalede, [üç KATMANLı SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/)için Azure Resource Manager şablonlar kullanırız. Şablonlara faydalı bir genel bakış için bkz. [SAP Azure Resource Manager şablonları](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+Bu makalede, [üç KATMANLı SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/)için Azure Resource Manager şablonlar kullanırız. Şablonlara faydalı bir genel bakış için bkz. [SAP Azure Resource Manager şablonları](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Kaynakların
 Bu makaleler Azure 'da SAP dağıtımlarını kapsar:
@@ -677,8 +677,8 @@ Azure Resource Manager içindeki üç katmanlı şablonlar, iki kümeye sahip mi
 
 Burada, bu makalede anladığımız örnek senaryo için Azure Resource Manager şablonları edinebilirsiniz:
 
-* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/)  
+* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/)
 
 Altyapıyı mimari Şablon 1 için hazırlamak için:
 
@@ -768,8 +768,8 @@ SAP mimari şablonu 2 için gerekli altyapı kaynaklarının dağıtımını bas
 
 Burada, bu dağıtım senaryosu için Azure Resource Manager şablonları edinebilirsiniz:
 
-* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure Market görüntüsü](https://github.com/Azure/azure-quickstart-templates/)  
+* [Özel görüntü](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Altyapıyı mimari Şablon 3 için hazırlama
@@ -1016,7 +1016,7 @@ SAP ASCS veya SCS örnekleri için farklı numaralar kullanmak istiyorsanız, ba
 1. Azure Portal ** < *SID*>-lb-ascs yük dengeleyici** > **Yük Dengeleme kuralları**' nı seçin.
 2. SAP ASCS veya SCS örneğine ait olan tüm yük dengeleme kuralları için şu değerleri değiştirin:
 
-   * Adı
+   * Name
    * Bağlantı noktası
    * Arka uç bağlantı noktası
 

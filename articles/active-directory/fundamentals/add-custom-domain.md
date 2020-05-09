@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262158"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734748"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme
 
@@ -37,7 +37,7 @@ Etki alanı adınızı aldıktan sonra, ilk Azure AD dizininizi oluşturabilirsi
 >[!IMPORTANT]
 >Kiracıyı oluşturan kişi, bu kiracının otomatik olarak genel yöneticisidir. Genel yönetici kiracıya daha fazla yönetici ekleyebilir.
 
-Abonelik rolleri hakkında daha fazla bilgi için bkz. [Azure RBAC rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
+Abonelik rolleri hakkında daha fazla bilgi için bkz. [Azure rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
 >[!TIP]
 > Şirket içi Windows Server AD 'nizi Azure AD ile federasyona eklemek istiyorsanız, dizinlerinizi eşitlemeniz için Azure AD Connect aracını çalıştırdığınızda **Bu etki alanını yerel Active Directory çoklu oturum açma için yapılandırmayı planlıyorum** ' ı seçmeniz gerekir.

@@ -50,7 +50,7 @@
     - name: Dağıtım kılavuzu
       items:
         - name: 'Dağıtım 30, 90 ve sonrası'
-      href: active-directory-deployment-checklist-p2.md
+          href: active-directory-deployment-checklist-p2.md
     - name: Veri depolama
       items:
         - name: Avrupa müşterileri için kimlik verileri depolama

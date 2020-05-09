@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77580660"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891546"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -154,11 +154,6 @@ Alternatif olarak [MSDN abone avantajlarını etkinleştirebilirsiniz](https://a
 
 Arama motorları, mobil uygulamalarda, web’de ve kurumsal veri depolarında bilgi alımını sağlayan genel tetikleyicilerdir. Azure Bilişsel Arama, büyük ticari web sitelerine benzer bir arama deneyimi oluşturmaya yönelik araçlar sağlar.
 
-Program yöneticisi Liam Cavanagh’ın bu 9 dakikalık videosunda, arama motorunu tümleştirmenin uygulamanıza nasıl fayda sağlayabileceğini öğrenebilirsiniz. Kısa tanıtımlar Azure Bilişsel Arama 'daki temel özellikleri ve tipik bir iş akışının nasıl göründüğünü kapsar. 
+Bu 15 dakikalık videoda, program Yöneticisi Lusıs Cabrera, Azure Bilişsel Arama tanıtır. 
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
- 
-+ 0.-3. dakikada, temel özellikler ve kullanım durumları ele alınmaktadır.
-+ 3.-4. dakikada, hizmet sağlama ele alınmaktadır. 
-+ 4.-6. dakikada, yerleşik emlak veri kümesini kullanarak bir dizin oluşturmak için kullanılan Veri İçeri Aktarma sihirbazı ele alınmaktadır.
-+ 6.-9. dakikada, Arama gezgini ve çeşitli sorgular ele alınmaktadır.
+>[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]
