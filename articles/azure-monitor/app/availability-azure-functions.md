@@ -2,15 +2,15 @@
 title: Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 description: Bu belge, TimerTrigger işlevinde verilen yapılandırmaya göre düzenli olarak çalışacak TrackAvailability () ile bir Azure Işlevi oluşturmayı kapsar. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bölgenizde yoksa bir kullanılabilirlik testi oluşturmanızı sağlar.
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665808"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791127"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Her şeyin çalıştığından emin olmak için Application Insights kaynağınızın kullanılabilirlik sekmesinde grafiğe bakabilirsiniz.
 
 > [!NOTE]
-> Runkullanılabilirliği Bilitytest. CSX içinde kendi iş mantığınızı uyguladıysanız, aşağıdaki ekran görüntülerinde olduğu gibi başarılı sonuçları görürsünüz. Bu durumda, başarısız sonuçları görürsünüz.
+> Runkullanılabilirliği Bilitytest. CSX içinde kendi iş mantığınızı uyguladıysanız, aşağıdaki ekran görüntülerinde olduğu gibi başarılı sonuçları görürsünüz. Bu durumda, başarısız sonuçları görürsünüz. İle `TrackAvailability()` oluşturulan testler, test adının yanında **özel** ile görünür.
 
 >[!div class="mx-imgBorder"]
->![Başarılı sonuçlarla kullanılabilirlik sekmesi](media/availability-azure-functions/availtab.png)
-
-Azure Işlevleri 'ni kullanarak testinizi ayarlarken, kullanılabilirlik sekmesinde **Test Ekle** ' yi kullanmaktan farklı olarak, testinizin adının görünmediğine ve bununla etkileşime giremeyeceksiniz. Sonuçlar görselleştirilir, ancak Portal aracılığıyla bir kullanılabilirlik testi oluştururken alacağınız ayrıntılı görünüm yerine bir Özet görünümü alırsınız.
+>![Başarılı sonuçlarla kullanılabilirlik sekmesi](media/availability-azure-functions/availability-custom.png)
 
 Uçtan uca işlem ayrıntılarını görmek için detaya git altında **başarılı** veya **başarısız** ' ı seçin ve ardından bir örnek seçin. Ayrıca, grafikteki bir veri noktasını seçerek uçtan uca işlem ayrıntılarına de ulaşabilirsiniz.
 

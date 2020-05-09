@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872120"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871012"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 
@@ -39,7 +39,9 @@ Bu makalede, Azure Cosmos kapsayıcısı oluştururken [benzersiz anahtarları](
 
 Benzersiz anahtarlarla bir kapsayıcı oluşturmak için bkz. [benzersiz anahtar ve TTL Ile Azure Cosmos kapsayıcısı oluşturma](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="use-the-net-sdk-v2"></a>.NET SDK v2 'yi kullanma
+## <a name="use-the-net-sdk"></a>.NET SDK’yı kullanma
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)'yi kullanarak yeni bir kapsayıcı oluştururken, bir `UniqueKeyPolicy` nesne benzersiz anahtar kısıtlamalarını tanımlamak için kullanılabilir.
 
@@ -59,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 'i kullanma
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 [.NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtarları kısa ve okunabilir bir şekilde BILDIRMEK için SDK 'nın Fluent API kullanın.
 
@@ -75,6 +77,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
 

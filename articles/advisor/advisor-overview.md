@@ -3,12 +3,12 @@ title: Azure Advisor 'a giriş
 description: Azure dağıtımlarınızı iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443090"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854423"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor 'a giriş
 
@@ -24,7 +24,7 @@ Advisor ile şunları yapabilirsiniz:
 
 [Azure Portal](https://aka.ms/azureadvisordashboard)aracılığıyla Advisor 'a erişebilirsiniz. [Portalda](https://portal.azure.com)oturum açın, gezinti menüsünde **Advisor** 'ı bulun veya **tüm hizmetler** menüsünde aramak için arama yapın.
 
-Danışman panosu, tüm abonelikleriniz için kişiselleştirilmiş öneriler görüntüler.  Belirli abonelikler ve kaynak türleri için önerileri görüntüleme için filtre uygulayabilirsiniz.  Öneriler dört kategoriye ayrılır: 
+Danışman panosu, tüm abonelikleriniz için kişiselleştirilmiş öneriler görüntüler.  Belirli abonelikler ve kaynak türleri için önerileri görüntüleme için filtre uygulayabilirsiniz.  Öneriler beş kategoriye ayrılmıştır: 
 
 * **Yüksek kullanılabilirlik**: iş açısından kritik uygulamalarınızın sürekliliğini sağlamak ve artırmak için. Daha fazla bilgi için bkz. [danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md).
 * **Güvenlik**: güvenlik ihlallerine neden olabilecek tehditleri ve güvenlik açıklarını algılamak için. Daha fazla bilgi için bkz. [Advisor güvenlik önerileri](advisor-security-recommendations.md).

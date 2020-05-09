@@ -1,30 +1,30 @@
 ---
 title: Öğretici-BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 titleSuffix: Azure Storage
-description: Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak uygulama verilerinizi yüksek oranda kullanılabilir hale getirin.
+description: Uygulama verilerinizi yüksek oranda kullanılabilir hale getirmek için Read-Access coğrafi bölge-yedekli (RA-GZRS) depolama alanını kullanın.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606019"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856139"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
 Bu öğretici, bir dizinin birinci bölümüdür. Burada, uygulama verilerinizi Azure 'da yüksek oranda kullanılabilir hale getirme hakkında bilgi edineceksiniz.
 
-Bu öğreticiyi tamamladığınızda, [Okuma Erişimli Coğrafi olarak yedekli](../common/storage-redundancy.md) (RA-GRS) depolama hesabından bir blobu yükleyen ve alan bir konsol uygulamasına sahip olursunuz.
+Bu öğreticiyi tamamladığınızda, [Okuma Erişimli Coğrafi bölge-yedekli](../common/storage-redundancy.md) (ra-GZRS) depolama hesabından bir blobu yükleyen ve alan bir konsol uygulamasına sahip olursunuz.
 
-RA-GRS, işlemleri birincil bir bölgeden ikincil bir bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, ikincil bölgedeki verilerin nihai olarak tutarlı olmasını sağlar. Uygulama, hangi uç noktanın bağlanacağı için [devre kesici](/azure/architecture/patterns/circuit-breaker) modelini kullanır, otomatik olarak başarısızlık ve kurtarmalar arasında geçiş noktaları arasında geçiş yapılır.
+Azure depolamada coğrafi yedeklilik, işlemleri birincil bir bölgeden zaman uyumsuz olarak yüzlerce mil olan ikincil bir bölgeye çoğaltır. Bu çoğaltma işlemi, ikincil bölgedeki verilerin nihai olarak tutarlı olmasını sağlar. Konsol uygulaması, hangi uç noktanın bağlanacağı için [devre kesici](/azure/architecture/patterns/circuit-breaker) modelini kullanır, otomatik olarak, başarısızlık ve kurtarmalar arasında uç noktalar arasında geçiş yapılır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
@@ -64,25 +64,24 @@ Bu öğreticiyi tamamlamak için:
 
 Depolama hesabı, Azure Storage veri nesnelerinizi depolamak ve erişmek için benzersiz bir ad alanı sağlar.
 
-Okuma erişimli coğrafi olarak yedekli depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
+Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** düğmesini seçin.
-2. **Yeni** sayfadan **depolama** ' yı seçin.
-3. **Depolama hesabı-blob, dosya, tablo,** **öne çıkan**kuyruk ' ı seçin.
+1. Azure portal **kaynak oluştur** düğmesini seçin.
+2. **Yeni** sayfadan **depolama hesabı-blob, dosya, tablo, kuyruk ' ı** seçin.
 4. Aşağıdaki bilgileri kullanarak depolama hesabı formunu alttaki resimde gösterildiği gibi doldurun ve **Oluştur**’u seçin:
 
-   | Ayar       | Önerilen değer | Açıklama |
+   | Ayar       | Örnek değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Adı** | mystorageaccount | Depolama hesabınız için benzersiz bir değer |
-   | **Dağıtım modeli** | Resource Manager  | Resource Manager en son özellikleri içerir.|
-   | **Hesap türü** | StorageV2 | Hesap türleri hakkında ayrıntılı bilgi almak için bkz. [depolama hesabı türleri](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **Performans** | Standart | Standart, örnek senaryo için yeterli olacaktır. |
-   | **Çoğaltma**| Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS) | Örneğin çalışması için bunun seçilmesi gereklidir. |
-   |**Abonelik** | aboneliğiniz |Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
-   |**Kaynak** | myResourceGroup |Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   |**Konum** | Doğu ABD | Konum seçin. |
+   | **Abonelik** | *Aboneliğim* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
+   | **Kaynak** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
+   | **Adı** | *mystorageaccount* | Depolama hesabınız için benzersiz bir ad. |
+   | **Konum** | *Doğu ABD* | Konum seçin. |
+   | **Performans** | *Standart* | Standart performans, örnek senaryo için iyi bir seçenektir. |
+   | **Hesap türü** | *StorageV2* | Genel amaçlı v2 depolama hesabı kullanılması önerilir. Azure depolama hesabı türleri hakkında daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md). |
+   | **Çoğaltma**| *Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)* | Birincil bölge, bölgesel olarak yedekli olur ve ikincil bölgeye okuma erişimi olan ikincil bir bölgeye çoğaltılır. |
+   | **Erişim katmanı**| *Sık Erişimli* | Sık erişilen veriler için sık kullanılan katmanı kullanın. |
 
-![depolama hesabı oluşturma](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![depolama hesabı oluşturma](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
@@ -173,7 +172,7 @@ Gerekli bağımlılıkları yükler. Bunu yapmak için bir komut istemi açın, 
 
 Visual Studio 'da **F5** tuşuna basın veya uygulamada hata ayıklamaya başlamak için **Başlat** ' ı seçin. Visual Studio, yapılandırıldıysa eksik NuGet paketlerini otomatik olarak geri yükler, daha fazla bilgi edinmek için [paketleri yükleme ve yeniden yükleme paketini geri yükleyin](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) .
 
-Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, resmin ikincil RA-GRS uç noktasında çoğaltıldığını denetler. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
+Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, görüntünün ikincil RA-GZRS uç noktasına çoğaltıldığından emin olmak için kontrol eder. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ Bir konsol penceresi açılır ve uygulama çalışmaya başlar. Uygulama, çöz
 
 # <a name="python"></a>[Python](#tab/python)
 
-Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitbreaker.py** dizinine gidip `python circuitbreaker.py` komutunu girin. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, resmin ikincil RA-GRS uç noktasında çoğaltıldığını denetler. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
+Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitbreaker.py** dizinine gidip `python circuitbreaker.py` komutunu girin. Uygulama, çözümdeki **HelloWorld.png** resmini depolama hesabına yükler. Uygulama, görüntünün ikincil RA-GZRS uç noktasına çoğaltıldığından emin olmak için kontrol eder. Ardından, resmi 999 kereye kadar indirmeye başlar. Her okuma bir **P** veya **S**tarafından temsil edilir. Burada **P** , birincil uç noktayı temsil eder ve **S** ikincil uç noktayı temsil eder.
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin birinci bölümünde, RA-GRS depolama hesaplarıyla bir uygulamayı yüksek oranda kullanılabilir hale getirme hakkında bilgi edindiniz.
+Serinin birinci bölümünde, RA-GZRS depolama hesaplarıyla bir uygulamayı yüksek oranda kullanılabilir hale getirme hakkında bilgi edindiniz.
 
-Bir hata simülasyonu yapıp uygulamanızı ikincil RA-GRS uç noktasını kullanmaya zorlamayı öğrenmek için serinin ikinci bölümüne geçin.
+Bir hatanın benzetimini yapmayı öğrenmek ve uygulamanızı ikincil RA-GZRS uç noktasını kullanmak üzere zorlamak için serinin ikinci bölümüne ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Birincil bölgeden okurken hata benzetimi yap](storage-simulate-failure-ragrs-account-app.md)
+> [Birincil bölgeden okurken hata benzetimi yap](simulate-primary-region-failure.md)
