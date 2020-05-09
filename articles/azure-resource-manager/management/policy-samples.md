@@ -1,21 +1,21 @@
 ---
-title: Azure Resource Manager için yerleşik ilke tanımlarının listesi
-description: Azure Resource Manager için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik bileşenler, Azure kaynaklarınızı yönetmeye yönelik yaygın yaklaşımları sağlar.
+title: Azure Resource Manager için yerleşik ilke tanımları
+description: Azure Resource Manager için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
 ms.date: 04/30/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 677b250ab6cdbedaf019e0c0dfe9696ffd646b52
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 18f130f53e3a593f52c16f4d54876bcd2f5f3d50
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966396"
+ms.locfileid: "82980465"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-resource-manager"></a>Azure Resource Manager için Azure Ilkesi yerleşik ilke tanımları
 
 Bu sayfa, Azure Resource Manager için [Azure ilkesi](../../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı adı. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **kaynak** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

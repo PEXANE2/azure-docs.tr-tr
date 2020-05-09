@@ -1,21 +1,21 @@
 ---
-title: Azure Kubernetes hizmeti için yerleşik ilke tanımlarının listesi
-description: Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik bileşenler, Azure kaynaklarınızı yönetmeye yönelik yaygın yaklaşımları sağlar.
+title: Azure Kubernetes hizmeti için yerleşik ilke tanımları
+description: Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
 ms.date: 04/30/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a8c123408e5a72d334d55aa36d2b27dcb9765db0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 256e6b0932cd08ed49e138d2f15e2339ee6249d2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966186"
+ms.locfileid: "82981434"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-kubernetes-service"></a>Azure, Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımları
 
 Bu sayfa, Azure Kubernetes hizmeti için [Azure ilkesi](../governance/policy/overview.md) yerleşik ilke tanımlarının bir dizinidir. Diğer hizmetlere yönelik diğer Azure Ilkesi için yerleşik olarak [bulunan Azure ilkesi yerleşik tanımları](../governance/policy/samples/built-in-policies.md)bölümüne bakın.
 
-Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı adı. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **kaynak** sütunundaki bağlantıyı kullanın.
+Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda kaynağı görüntülemek için **GitHub** sütunundaki bağlantıyı kullanın.
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 

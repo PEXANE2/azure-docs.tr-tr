@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230918"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927046"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C oturumu
 
@@ -99,22 +99,20 @@ Bir oturum kapatma isteği sonrasında Azure AD B2C:
    - SAML-kimlik sağlayıcısı meta verileri `SingleLogoutService` konumu içeriyorsa.
 1. İsteğe bağlı olarak, diğer uygulamalardan oturum kapatır. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](#single-sign-out) bölümü.
 
-> [!NOTE]
-> Oturum açma, kullanıcının çoklu oturum açma durumunu Azure AD B2C temizler, ancak kullanıcıyı sosyal kimlik sağlayıcısı oturumunun dışında imzalayamayabilir. Kullanıcı sonraki oturum açma sırasında aynı kimlik sağlayıcısını seçerse, kimlik bilgilerini girmeden yeniden kimlik doğrulaması sağlayabilir. Kullanıcı uygulamanın oturumunu kapatmak isterse, Facebook hesabında oturumu kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar kullanılıyorsa, kullanıcının oturumu doğru şekilde sona erer.
+Oturum açma, kullanıcının çoklu oturum açma durumunu Azure AD B2C temizler, ancak kullanıcıyı sosyal kimlik sağlayıcısı oturumunun dışında imzalayamayabilir. Kullanıcı sonraki oturum açma sırasında aynı kimlik sağlayıcısını seçerse, kimlik bilgilerini girmeden yeniden kimlik doğrulaması sağlayabilir. Kullanıcı uygulamanın oturumunu kapatmak isterse, Facebook hesabında oturumu kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar kullanılıyorsa, kullanıcının oturumu doğru şekilde sona erer.
 
-### <a name="single-sign-out"></a>Çoklu oturum kapatma
+### <a name="single-sign-out"></a>Çoklu oturum kapatma 
+
+
+> [!NOTE]
+> Bu özellik [özel ilkelerle](custom-policy-overview.md)sınırlıdır.
 
 Kullanıcıyı Azure AD B2C oturum kapatma uç noktasına yönlendirirsiniz (hem OAuth2 hem de SAML protokolleri için), Azure AD B2C kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Azure AD B2C kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcıyı aynı anda imzalamasını sağlamak için, Azure AD B2C kullanıcının oturum açmış olduğu tüm uygulamalara kayıtlı `LogoutUrl` BIR http get isteği gönderir.
 
-Uygulamalar, kullanıcıyı tanıtan ve `200` yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir. Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda bir `LogoutUrl` uygulamanız gerekir. Öğesini Azure portal ayarlayabilirsiniz `LogoutUrl` :
 
-1. [Azure portalına](https://portal.azure.com) gidin.
-1. Sayfanın sağ üst köşesindeki hesabınıza tıklayarak etkin B2C dizininizi seçin.
-1. Sol taraftaki Gezinti panelinden **Azure AD B2C**öğesini seçin, **uygulama kayıtları**' i seçin ve ardından uygulamanızı seçin.
-1. **Ayarlar**' ı seçin, **Özellikler**' i seçin ve ardından **oturum kapatma URL 'si** metin kutusunu bulun. 
-
+Uygulamalar, kullanıcıyı tanıtan ve `200` yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir. Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda bir `LogoutUrl` uygulamanız gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kullanıcı akışındaki oturum davranışını yapılandırmayı](session-behavior.md)öğrenin.
-- [Özel ilkede oturum davranışını yapılandırmayı](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso)öğrenin.
+- [Özel ilkelerde oturum davranışını yapılandırmayı](session-behavior-custom-policy.md)öğrenin.
