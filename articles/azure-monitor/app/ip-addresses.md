@@ -4,26 +4,26 @@ description: Application Insights için gereken sunucu güvenlik duvarı özel d
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/23/2020
-ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105854"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652738"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights ve Log Analytics tarafından kullanılan IP adresleri
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) hizmeti, birkaç IP adresi kullanır. İzlemekte olduğunuz uygulama bir güvenlik duvarının arkasında barındırılıyorsa, bu adresleri bilmeniz gerekebilir.
 
 > [!NOTE]
 > Bu adresler statik olsa da, bunları zaman zaman değiştirmek zorunda olduğumuz olasıdır. Tüm Application Insights trafiği, gelen güvenlik duvarı kuralları gerektiren kullanılabilirlik izleme ve Web kancaları dışında giden trafiği temsil eder.
-> 
-> 
 
 > [!TIP]
-> En son değişiklikler hakkında bilgi almak için sık kullandığınız RSS https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom /atom okuyucusuna ekleyerek bu sayfaya bir RSS akışı olarak abone olun.
-> 
-> 
+> Azure ağ güvenlik grupları kullanıyorsanız, erişimi yönetmek için Azure [ağ hizmeti etiketlerini](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+) kullanabilirsiniz. Karma/şirket içi kaynaklara erişimi yönetiyorsanız, denk IP adresi listelerini her hafta güncellenen [JSON dosyaları](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) olarak indirebilirsiniz:. Bu makaledeki tüm özel durumları kapsamak için, hizmet etiketlerini kullanmanız gerekir: ' ActionGroup ', ' Applicationınsilarsavailability ', ' AzureMonitor '.
+
+Alternatif olarak, en son değişiklikler hakkında bilgi almak için sık kullandığınız RSS/ https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom atom okuyucusuna ekleyerek bu sayfaya bir RSS akışı olarak abone olabilirsiniz.
+
 
 ## <a name="outgoing-ports"></a>Giden bağlantı noktaları
 Application Insights SDK ve/veya Durum İzleyicisi portala veri göndermesini sağlamak için sunucunuzun güvenlik duvarında bazı giden bağlantı noktalarını açmanız gerekir:
@@ -178,6 +178,13 @@ East US
 20.42.35.112/28
 20.42.35.128/28
 
+Azure US Government (Not needed if you are an Azure Public cloud customer)
+
+20.140.48.160/27
+20.140.56.160/27
+20.140.64.160/27
+20.140.72.160/27
+52.127.49.96/27
 ```  
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights & Log Analytics API 'Leri
@@ -220,11 +227,11 @@ Note: *. loganalytics.io etki alanının sahibi Log Analytics ekibine aittir.
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | dynamic | 80,443 |
 | Application Insights Java SDK 'Sı | aijavasdk.blob.core.windows.net | dynamic | 80,443 |
 
-## <a name="alert-webhooks"></a>Web kancalarını uyar
+## <a name="action-group-webhooks"></a>Eylem grubu Web kancaları
 
 | Amaç | IP | Bağlantı noktaları
 | --- | --- | --- |
-| Uyarı | 23.96.11.4 | 443 |
+| Uyarı | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
 
 ## <a name="profiler"></a>Profil Oluşturucu
 
