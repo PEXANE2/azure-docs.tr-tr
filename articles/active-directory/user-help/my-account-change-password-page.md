@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064062"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625961"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Parola değiştirme sayfasında iş veya okul hesabınızın parolasını değiştirme
 
@@ -27,7 +27,7 @@ ms.locfileid: "77064062"
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Parolayı Değiştir sayfasından bir parolayı güncelleştirin
 
-1. Mevcut parolanızı kullanarak iş veya okul hesabınızda oturum açın ve sonra **Hesabım** (https://myprofile.microsoft.com/) sayfasına gidin.
+1. Mevcut parolanızı kullanarak iş veya okul hesabınızda oturum açın ve sonra **Hesabım** (https://myaccount.microsoft.com/) sayfasına gidin.
 
 2. Sol gezinti bölmesinden **parolayı** seçin veya **parola bloğundan parolayı** **Değiştir** bağlantısını seçin.
 

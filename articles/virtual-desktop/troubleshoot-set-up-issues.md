@@ -1,6 +1,6 @@
 ---
-title: Windows sanal masaüstü kiracı konak havuzu oluşturma-Azure
-description: Windows sanal masaüstü kiracı ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
+title: Windows sanal masaüstü ortamı konak havuzu oluşturma-Azure
+description: Windows sanal masaüstü ortamının kurulumu sırasında kiracı ve konak havuzu sorunlarını giderme ve çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371605"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612624"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
+# <a name="host-pool-creation"></a>Konak havuzu oluşturma
+
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bu makalede, Windows sanal masaüstü kiracısı ve ilgili oturum ana bilgisayar havuzu altyapısının ilk kurulumu sırasında sorunlar ele alınmaktadır.
 
@@ -25,92 +31,27 @@ Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle ta
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Windows 10 Enterprise çoklu oturum görüntüsünü edinme
 
-Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, [sanal masaüstleri, sürüm 1809 için](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice) **Başlangıç** > **Microsoft Windows 10** > ve Windows 10 Enterprise ' ı seçin.
+Windows 10 Enterprise çoklu oturum görüntüsünü kullanmak için Azure Marketi ' ne gidin, **kullanmaya başlama** > **Microsoft Windows 10** > ve [Windows 10 Enterprise multi-session, sürüm 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)' i seçin.
 
-![Sanal masaüstleri için Windows 10 Enterprise, sürüm 1809 ' ı seçme ekran görüntüsü.](media/AzureMarketPlace.png)
+## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>Konak havuzları oluşturmak için Azure portal kullanma sorunları
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Windows sanal masaüstü kiracısı oluşturuluyor
+### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Hata: hizmete erişirken "ücretsiz hesap oluşturma" görüntülenir
 
-Bu bölümde, Windows sanal masaüstü kiracısı oluşturulurken olası sorunlar ele alınmaktadır.
+!["Ücretsiz hesap oluşturma" iletisinin gösterildiği Azure portal gösteren resim](media/create-new-account.png)
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
+**Neden**: Azure 'da oturum açtığınız hesapta etkin abonelikler yok veya hesabın abonelikleri görüntüleme izni yok. 
 
-![Kullanıcının yönetim hizmetini sorgulama yetkisine sahip olmadığı PowerShell penceresinin ekran görüntüsü.](media/UserNotAuthorizedNewTenant.png)
+**Çözüm**: en az katkıda bulunan düzeyinde erişimi olan bir hesapla oturum ana bilgisayarı sanal makinelerini (VM 'ler) dağıtacağınız abonelikte oturum açın.
 
-Ham hata örneği:
+### <a name="error-exceeding-quota-limit"></a>Hata: "kota sınırını aşılıyor"
 
-```Error
-   New-RdsTenant : User isn't authorized to query the management service.
-   ActivityId: ad604c3a-85c6-4b41-9b81-5138162e5559
-   Powershell commands to diagnose the failure:
-   Get-RdsDiagnosticActivities -ActivityId ad604c3a-85c6-4b41-9b81-5138162e5559
-   At line:1 char:1
-   + New-RdsTenant -Name "testDesktopTenant" -AadTenantId "01234567-89ab-c ...
-   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       + CategoryInfo          : FromStdErr: (Microsoft.RDInf...nt.NewRdsTenant:NewRdsTenant) [New-RdsTenant], RdsPowerSh
-      ellException
-       + FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.RDInfra.RDPowershell.Tenant.NewRdsTenant
-```
+İşlem, kota sınırının üzerine gittiğinde, aşağıdakilerden birini yapabilirsiniz: 
 
-**Neden:** Oturum açmış olan kullanıcıya Azure Active Directory, TenantCreator rolü atanmaz.
+- Aynı parametrelerle, ancak daha az VM ve VM çekirdeğine sahip yeni bir konak havuzu oluşturun.
 
-**Çözüm:** [Azure Active Directory kiracınızdaki bir kullanıcıya TenantCreator uygulama rolünü atama](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)bölümündeki yönergeleri izleyin. Yönergeleri tamamladıktan sonra, TenantCreator rolüne atanan bir Kullanıcı olacaktır.
+- Belirtilen VM SKU 'SU için Azure aboneliğinizin kotasını artırma isteği göndermek üzere bir tarayıcıda statusMessage alanında gördüğünüz bağlantıyı açın.
 
-![Atanan TenantCreator rolü ekran görüntüsü.](media/TenantCreatorRoleAssigned.png)
-
-## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows sanal masaüstü oturumu ana bilgisayarı VM 'Leri oluşturma
-
-Oturum Ana bilgisayar VM 'Leri çeşitli yollarla oluşturulabilir, ancak Windows sanal masaüstü ekibi yalnızca [Azure Marketi](https://azuremarketplace.microsoft.com/) TEKLIFIYLE ilgili VM sağlama sorunlarını destekler. Daha fazla bilgi için bkz. [Windows sanal masaüstü 'nü kullanan sorunlar-bir konak havuzu sağlama Azure Marketi teklifi](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
-
-## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Windows sanal masaüstü ile ilgili sorunlar – bir konak havuzu sağlama Azure Marketi teklifi
-
-Windows sanal masaüstü – Azure Marketi 'nden bir konak havuzu şablonu sağlayın.
-
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Hata: GitHub 'dan bağlantı kullanılırken, "ücretsiz hesap oluştur" iletisi görüntülenir
-
-![Ücretsiz bir hesap oluşturmak için ekran görüntüsü.](media/be615904ace9832754f0669de28abd94.png)
-
-**Neden 1:** Hesapta Azure 'da oturum açmak için kullanılan etkin abonelikler yok veya kullanılan hesabın abonelikleri görüntüleme izni yok.
-
-**1. Çözüm:** Katılımcı erişimi olan bir hesapla (en azından) oturum ana bilgisayar VM 'lerinin dağıtılacağı aboneliğe oturum açın.
-
-**Neden 2:** Kullanılan abonelik Microsoft Bulut hizmet sağlayıcısı (CSP) kiracısının bir parçasıdır.
-
-**2. Çözüm:** **Yeni Windows sanal masaüstü konak havuzu oluşturma ve sağlama** için GitHub konumuna gidin ve şu yönergeleri izleyin:
-
-1. **Azure 'A dağıt** ' a sağ tıklayın ve **bağlantı adresini kopyala**' yı seçin.
-2. **Not defteri 'ni** açın ve bağlantıyı yapıştırın.
-3. # Karakterinden önce, CSP son müşteri kiracı adını ekleyin.
-4. Yeni bağlantıyı bir tarayıcıda açın ve Azure portal şablonu yükler.
-
-    ```Example
-    Example: https://portal.azure.com/<CSP end customer tenant name>
-    #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
-    2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
-    ```
-
-### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Hata: "şablon dağıtımı geçerli değil" hatası alıyorsunuz
-
-!["Şablon dağıtımı... ekran görüntüsü geçerli değil "hatası](media/troubleshooting-marketplace-validation-error-generic.png)
-
-Belirli bir eylem yapmadan önce, başarısız dağıtım doğrulamasına ilişkin ayrıntılı hatayı görmek için etkinlik günlüğünü denetlemeniz gerekir.
-
-Etkinlik günlüğündeki hatayı görüntülemek için:
-
-1. Geçerli Azure Marketi dağıtım sunumndan çıkın.
-2. Üst arama çubuğunda **etkinlik günlüğü**' nü arayıp seçin.
-3. Durumu **başarısız** olan **dağıtımı doğrula** adlı bir etkinlik bulun ve etkinliği seçin.
-   ![* * Başarısız * * durumundaki tek * * dağıtımı doğrula * * etkinliğinin ekran görüntüsü](media/troubleshooting-marketplace-validation-error-activity-summary.png)
-
-4. JSON ' ı seçin ve ardından "statusMessage" alanını görene kadar ekranın alt kısmına gidin.
-   ![JSON metninin statusMessage özelliği etrafında kırmızı bir kutu ile başarısız etkinliğin ekran görüntüsü.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
-
-İşlem şablonunuz kota sınırının üzerine gittiğinde, bunu onarmak için aşağıdaki işlemlerden birini yapabilirsiniz:
-
- - Azure Marketi 'ni ilk kez kullandığınız parametrelerle çalıştırın, ancak bu kez daha az VM ve VM çekirdeği kullanır.
- - Belirtilen VM SKU 'SU için Azure aboneliğinizin kotasını artırma isteği göndermek üzere bir tarayıcıda **StatusMessage** alanında gördüğünüz bağlantıyı açın.
-
-## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Şablon ve PowerShell Istenen durum yapılandırması (DSC) hatalarını Azure Resource Manager
+## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager şablonu hataları
 
 Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağıtımlarıyla ilgili sorunları gidermek için bu yönergeleri izleyin.
 
@@ -121,7 +62,7 @@ Azure Resource Manager şablonlarının ve PowerShell DSC 'nin başarısız dağ
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hata: dağıtımınız başarısız oldu....\<ana bilgisayar adı>/JoinDomain
 
-![Dağıtımınız ekran görüntüsünde başarısız oldu.](media/e72df4d5c05d390620e07f0d7328d50f.png)
+![Dağıtımınız ekran görüntüsünde başarısız oldu.](media/failure-joindomain.png)
 
 Ham hata örneği:
 
@@ -145,7 +86,7 @@ Ham hata örneği:
 
 Bunu yapmak için aşağıdaki işlemleri yapın:
 
-1. Azure portalını açın ve **sanal ağlar** sekmesine gidin.
+1. Azure portal açın ve **sanal ağlar** sekmesine gidin.
 2. VNET 'nizi bulun ve **DNS sunucuları**' nı seçin.
 3. Ekranınızın sağ tarafında DNS sunucuları menüsü görünmelidir. Bu menüde **özel**' i seçin.
 4. Özel altında listelenen DNS sunucularının etki alanı denetleyicinize veya Active Directory etki alanına göre eşleştiğinden emin olun. DNS sunucunuzu görmüyorsanız, değerini **DNS sunucusu Ekle** alanına girerek ekleyebilirsiniz.
@@ -162,7 +103,7 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hata: VMExtensionProvisioningError
 
-![Dağıtımınızın ekran görüntüsü, Terminal sağlama durumuyla başarısız oldu.](media/7aaf15615309c18a984673be73ac969a.png)
+![Dağıtımınızın ekran görüntüsü, Terminal sağlama durumuyla başarısız oldu.](media/failure-vmextensionprovisioning.png)
 
 **Neden 1:** Windows sanal masaüstü ortamında geçici bir hata oluştu.
 
@@ -172,17 +113,15 @@ Bunu yapmak için aşağıdaki işlemleri yapın:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hata: belirtilen yönetici kullanıcı adına izin verilmiyor
 
-![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](media/f2b3d3700e9517463ef88fa41875bac9.png)
+![Belirtilen bir yöneticiye izin verilmediğinden dağıtımınızın ekran görüntüsü başarısız oldu.](media/failure-username.png)
 
 Ham hata örneği:
 
 ```Error
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostDesktop/providers/Microsoft.
-  Resources/deployments/vmCreation-linkedTemplate/operations/EXAMPLE", "operationId": "EXAMPLE", "properties": { "provisioningOperation":
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
- "The Admin Username specified is not allowed.", "target": "adminUsername" } }, "targetResource": { "id": "/subscriptions/EXAMPLE
- /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
+ { …{ "provisioningOperation": 
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
 **Neden:** Girilen parola yasak alt dizeler (yönetici, yönetici, kök) içeriyor.
@@ -191,24 +130,17 @@ Ham hata örneği:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hata: VM, uzantıyı işlerken bir hata bildirdi
 
-![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](media/49c4a1836a55d91cd65125cf227f411f.png)
+![Dağıtımınızda Terminal sağlama durumu ile tamamlanan kaynak işleminin ekran görüntüsü başarısız oldu.](media/failure-processing.png)
 
 Ham hata örneği:
 
 ```Error
-{ "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.Resources/deployments/
- rds.wvd-provision-host-pool-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
- { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T21:43:05.1416423Z",
- "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
- "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+{ … "code": "ResourceDeploymentFailure", "message":
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
- Compute/virtualMachines/desktop-1/extensions/dscextension",
- "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
 **Neden:** PowerShell DSC Uzantısı VM 'de yönetici erişimini alamadı.
@@ -217,7 +149,7 @@ Ham hata örneği:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Hata: DeploymentFailed – PowerShell DSC yapılandırması ' FirstSessionHost ' hatalarla tamamlandı
 
-![' FirstSessionHost ' PowerShell DSC yapılandırması başarısız olan dağıtım ekran görüntüsü hata (ler) ile tamamlandı.](media/64870370bcbe1286906f34cf0a8646ab.png)
+![' FirstSessionHost ' PowerShell DSC yapılandırması başarısız olan dağıtım ekran görüntüsü hata (ler) ile tamamlandı.](media/failure-dsc.png)
 
 Ham hata örneği:
 
@@ -319,58 +251,6 @@ the VM.\\\"
 **Neden:** Bu hata, bir statik yol, güvenlik duvarı kuralı veya NSG 'nin Azure Resource Manager şablonuna bağlı ZIP dosyasının indirilmesini engellediğini nedeniyle oluşur.
 
 **Çözüm:** Statik yolu, güvenlik duvarı kuralını veya NSG 'yi engellemeyi kaldırın. İsteğe bağlı olarak, Azure Resource Manager şablonu json dosyasını bir metin düzenleyicisinde açın, ZIP dosyasına bağlantıyı alın ve kaynağı izin verilen bir konuma indirin.
-
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
-
-Ham hata örneği:
-
-```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
-Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
- functionality with error message: User is not authorized to query the management service.
-\nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
-The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
-```
-
-**Neden:** Belirtilen Windows sanal masaüstü kiracı yöneticisinin geçerli bir rol ataması yok.
-
-**Çözüm:** Windows sanal masaüstü kiracısını oluşturan kullanıcının Windows sanal masaüstü PowerShell 'de oturum açması ve denenen kullanıcıya bir rol ataması atamasını sağlaması gerekir. GitHub Azure Resource Manager şablonu parametrelerini çalıştırıyorsanız, PowerShell komutlarını kullanarak şu yönergeleri izleyin:
-
-```PowerShell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
-```
-
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hata: Kullanıcı Azure Multi-Factor Authentication gerektiriyor (MFA)
-
-![Multi-Factor Authentication olmaması nedeniyle dağıtımınızın ekran görüntüsü başarısız oldu (MFA)](media/MFARequiredError.png)
-
-Ham hata örneği:
-
-```Error
-"message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
-```
-
-**Neden:** Belirtilen Windows sanal masaüstü kiracı yöneticisi, oturum açmak için Azure Multi-Factor Authentication (MFA) gerektirir.
-
-**Çözüm:** [Öğretici: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma](create-service-principal-role-powershell.md)' daki adımları izleyerek bir hizmet sorumlusu oluşturun ve Windows sanal masaüstü kiracınız için bir rol atayın. Hizmet sorumlusu ile Windows sanal masaüstü 'nde oturum açadığınızı doğruladıktan sonra, kullandığınız yönteme bağlı olarak Azure Marketi teklifini veya GitHub Azure Resource Manager şablonunu yeniden çalıştırın. Yönteminizin doğru parametrelerini girmek için aşağıdaki yönergeleri izleyin.
-
-Azure Marketi teklifini çalıştırıyorsanız, Windows sanal masaüstü 'nde düzgün şekilde kimlik doğrulaması yapmak için aşağıdaki parametrelerin değerlerini sağlayın:
-
-- Windows sanal masaüstü kiracı RDS sahibi: hizmet sorumlusu
-- Uygulama KIMLIĞI: oluşturduğunuz yeni hizmet sorumlusunun uygulama kimliği
-- Parola/parolayı onayla: hizmet sorumlusu için oluşturduğunuz parola parolası
-- Azure AD kiracı KIMLIĞI: oluşturduğunuz hizmet sorumlusunun Azure AD kiracı KIMLIĞI
-
-GitHub Azure Resource Manager şablonu çalıştırıyorsanız, Windows sanal masaüstü 'nde düzgün şekilde kimlik doğrulaması yapmak için aşağıdaki parametrelerin değerlerini sağlayın:
-
-- Kiracı Yöneticisi Kullanıcı asıl adı (UPN) veya uygulama KIMLIĞI: oluşturduğunuz yeni hizmet sorumlusunun uygulama kimliği
-- Kiracı Yönetici parolası: hizmet sorumlusu için oluşturduğunuz parola parolası
-- Isserviceprincipal: **true**
-- Aadtenantıd: oluşturduğunuz hizmet sorumlusunun Azure AD kiracı KIMLIĞI
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
