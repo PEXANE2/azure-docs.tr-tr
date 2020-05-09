@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460725"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891224"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
 *Çözümleyici* , sorgu dizelerinde ve dizini oluşturulmuş belgelerde metin işlemeden sorumlu [tam metin arama altyapısının](search-lucene-query-architecture.md) bir bileşenidir. Farklı çözümleyiciler, senaryoya bağlı olarak metni farklı şekillerde işleyebilir. Dil Çözümleyicileri, arama kalitesini artırmak için dil kurallarını kullanarak metin işler, diğer çözümleyiciler ise, örneğin, daha küçük harfe dönüştürme gibi daha temel görevler gerçekleştirir. 
+
+Aşağıdaki video segmenti, metin işlemenin Azure Bilişsel Arama nasıl çalıştığı hakkında bir açıklamaya hızlı bir şekilde iletir.
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 Dil Çözümleyicileri en sık kullanılan ve bir Azure Bilişsel Arama dizininde her aranabilir alana atanan varsayılan dil Çözümleyicisi vardır. Aşağıdaki dil dönüştürmeleri, metin analizi sırasında tipik bir şekilde yapılır:
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300160"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857051"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid kaynakları için ağ güvenliği
 Bu makalede, Azure Event Grid ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -58,7 +58,7 @@ VNet 'iniz içindeki bir konu veya etki alanı için özel bir uç nokta oluştu
 
 Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışından çözdüğünde, hizmetin genel uç noktasına dönüşür. Özel uç noktasını barındıran **VNET dışından** çözümlendiğinde ' Topica ' için DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                          | Tür      | Değer                                         |
+| Name                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure Traffic Manager profili\>
@@ -67,7 +67,7 @@ Konuyu veya etki alanı uç noktası URL 'sini özel uç noktayla VNet dışınd
 
 Özel uç noktasını barındıran VNet 'ten çözümlendiğinde, konu veya etki alanı uç noktası URL 'SI özel uç noktanın IP adresini çözümler. Özel uç noktasını barındıran **VNET 'in içinden** çözümlendiğinde ' Topica ' konusunun DNS kaynak kayıtları şu şekilde olur:
 
-| Adı                                          | Tür      | Değer                                         |
+| Name                                          | Tür      | Değer                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
@@ -85,17 +85,16 @@ Aşağıdaki tabloda özel uç nokta bağlantısının çeşitli durumları ve y
 | Bağlantı durumu   |  Başarıyla Yayımla (Evet/Hayır) |
 | ------------------ | -------------------------------|
 | Onaylandı           | Yes                            |
-| Reddedilen           | Hayır                             |
-| Beklemede            | Hayır                             |
-| Bağlantı kesildi       | Hayır                             |
+| Reddedilen           | No                             |
+| Beklemede            | No                             |
+| Bağlantı kesildi       | No                             |
 
 Yayımlamanın başarılı olması için özel uç nokta bağlantı durumunun **onaylanması**gerekir. Bir bağlantı reddedilirse, Azure portal kullanılarak onaylanamaz. Tek olasılık, bağlantıyı silmek ve bunun yerine yeni bir tane oluşturmaktır.
 
 ## <a name="pricing-and-quotas"></a>Fiyatlandırma ve Kotalar
-**Özel uç noktalar** yalnızca Premium katman konuları ve etki alanları ile kullanılabilir. Event Grid, konuya veya etki alanına göre 64 'e kadar özel uç nokta bağlantısının oluşturulmasına izin verir. Temel katmandan Premium katmana yükseltmek için bkz. [fiyatlandırma katmanını güncelleştirme](update-tier.md) makalesi.
+**Özel uç noktalar** , Event Grid hem temel hem de Premium katmanlarında kullanılabilir. Event Grid, konuya veya etki alanına göre 64 'e kadar özel uç nokta bağlantısının oluşturulmasına izin verir. 
 
 **IP güvenlik duvarı** özelliği, Event Grid hem temel hem de Premium katmanlarında kullanılabilir. Her konu veya etki alanı için 16 adede kadar IP güvenlik duvarı kuralına izin veririz.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Genel internet üzerinden erişimi yalnızca belirli bir IP adresi veya IP adresi aralığı kümesinden kısıtlamak için, Event Grid kaynağınız için IP güvenlik duvarını yapılandırabilirsiniz. Adım adım yönergeler için bkz. [IP güvenlik duvarını yapılandırma](configure-firewall.md).

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631407"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982896"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning model yorumlenebilirliği
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,17 +74,17 @@ Desteklenen yorumlenebilirlik teknikleri, desteklenen makine öğrenimi modeller
 
 |Yorumlenebilirlik tekniği|Açıklama|Tür|
 |--|--|--------------------|
-|1. SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
-|2. SHAP derin açıklama| [Shap](https://github.com/slundberg/shap)'nin açıklamasına göre, derin açıklama ", SHAP [NIP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme modellerindeki Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|
-|3. SHAP doğrusal açıklama| [Shap](https://github.com/slundberg/shap)'nin doğrusal açıklama, **Doğrusal BIR model**için Shap değerlerini hesaplar ve isteğe bağlı olarak yetenek ilişkileri için hesaplar.|Modele özgü|
-|4. SHAP Kernel açıklama| [Shap](https://github.com/slundberg/shap)'nin Kernel açıklama, **herhangi BIR model**için Shap değerlerini tahmin etmek üzere özel ağırlıklı bir yerel doğrusal regresyon kullanır.|Model belirsiz|
-|5. benzeme açıklama (genel yedek)| Benzeme açıklama, kara kutu modellerini taklit etmek için [genel yedek modellerine](https://christophm.github.io/interpretable-ml-book/global.html) eğitim fikrini temel alır. Genel yedek modeli, **herhangi bir siyah kutu modelinin** tahmin edilebilmesini mümkün olduğunca doğru şekilde tahmin etmek için eğitilen bir doğası gereği ınterbox modelidir. Veri bilimcileri, siyah kutu modeli hakkında ekibinizle çizmek için yedek modeli yorumlayabilir. Aşağıdaki yorumlu modellerden birini yedek modeliniz olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), doğrusal regresyon (LinearExplainableModel), Stochastic gradyan Descent explainable model (SGDExplainableModel) ve karar ağacı (DecisionTreeExplainableModel).|Model belirsiz|
-|6. permütasyon özelliği önem açıklama (PFı)| Permütasyon özelliği önem derecesi, [Breiman 'Nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgilendiğiniz performans ölçüsünün ne kadarını değiştirdiğine göre belirlenir. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur. PFı, **temel alınan tüm modelin** genel davranışını açıklayabilir, ancak bireysel tahminleri açıklamaz. |Model belirsiz|
+|SHAP ağacı açıklama| Ağaç **ve Kümelemeler**ağaçlarına özgü polinom zaman hızlı Shap değer tahmini algoritmasına odaklanan [Shap](https://github.com/slundberg/shap)'nin Tree açıklama.|Modele özgü|
+|SHAP derin açıklama| SHAP 'nin açıklamasına göre, derin açıklama ", Shap [NıP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)'Lerde açıklanan ayrıntılı bir bağlantı üzerinde bağlantı kurulan derin öğrenme MODELLERINDEKI Shap değerleri için yüksek hızda bir yaklaşık algoritmadır. TensorFlow arka ucunu kullanan **TensorFlow** modelleri ve **keras** modelleri desteklenir (Ayrıca, pytorch için de ön destek vardır) ".|Modele özgü|
+|SHAP doğrusal açıklama| SHAP 'nin doğrusal açıklama, **Doğrusal bir model**için Shap değerlerini hesaplar ve isteğe bağlı olarak yetenek ilişkileri için hesaplar.|Modele özgü|
+|SHAP Kernel açıklama| SHAP 'nin Kernel açıklama, **herhangi bir model**için Shap değerlerini tahmin etmek üzere özel ağırlıklı bir yerel doğrusal regresyon kullanır.|Model belirsiz|
+|Taklit açıklama (genel yedek)| Benzeme açıklama, kara kutu modellerini taklit etmek için [genel yedek modellerine](https://christophm.github.io/interpretable-ml-book/global.html) eğitim fikrini temel alır. Genel yedek modeli, **herhangi bir siyah kutu modelinin** tahmin edilebilmesini mümkün olduğunca doğru şekilde tahmin etmek için eğitilen bir doğası gereği ınterbox modelidir. Veri bilimcileri, siyah kutu modeli hakkında ekibinizle çizmek için yedek modeli yorumlayabilir. Aşağıdaki yorumlu modellerden birini yedek modeliniz olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), doğrusal regresyon (LinearExplainableModel), Stochastic gradyan Descent explainable model (SGDExplainableModel) ve karar ağacı (DecisionTreeExplainableModel).|Model belirsiz|
+|Permütasyon özelliği önem açıklama (PFı)| Permütasyon özelliği önem derecesi, [Breiman 'Nın rastgele ormanlar kağıdına](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre önemli olan sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. Bölüm 10). Yüksek düzeyde, çalışma şekli, veri kümesinin tamamı için bir seferde bir özelliği rastgele karıştırarak ve ilgilendiğiniz performans ölçüsünün ne kadarını değiştirdiğine göre belirlenir. Değişiklik ne kadar büyükse, bu özellik o kadar önemli olur. PFı, **temel alınan tüm modelin** genel davranışını açıklayabilir, ancak bireysel tahminleri açıklamaz. |Model belirsiz|
 
 
 
 
-Yukarıda açıklanan yorumlamalar tekniklerinin yanı sıra, adlı `TabularExplainer`başka bir [Shap tabanlı açıklama](https://github.com/slundberg/shap)destekliyoruz. Modele bağlı olarak, `TabularExplainer` desteklenen Shap explainers birini kullanır:
+Yukarıda açıklanan yorumlamalar tekniklerinin yanı sıra, adlı `TabularExplainer`başka BIR Shap tabanlı açıklama destekliyoruz. Modele bağlı olarak, `TabularExplainer` desteklenen Shap explainers birini kullanır:
 
 * Tüm ağaç tabanlı modeller için TreeExplainer
 * DNN modelleri için DeepExplainer
@@ -120,4 +120,6 @@ Azure Machine Learning Işlem sırasında açıklamayı Uzaktan çalıştırabil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Modeller için [, hem](how-to-machine-learning-interpretability-aml.md) yerel olarak hem de uzaktan işlem kaynakları Azure Machine Learning için yorumlenebilirliği etkinleştirme konusuna bakın. Ek senaryolar için [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) bakın.
+- Modeller için [, hem](how-to-machine-learning-interpretability-aml.md) yerel olarak hem de uzaktan işlem kaynakları Azure Machine Learning için yorumlenebilirliği etkinleştirme konusuna bakın. 
+- Ek senaryolar için [örnek not defterlerine](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) bakın. 
+- Metin senaryoları için yorumlarla ilgileniyorsanız, NLP için yorumlamış teknikler için bkz. yorumlama [-metin](https://github.com/interpretml/interpret-text), ilgili bir açık kaynak deposu [yorumlamaya yönelik yorum-topluluk](https://github.com/interpretml/interpret-community/). `azureml.interpret`paket şu anda bu teknikleri desteklemez, ancak [metin sınıflandırmasına örnek bir not defteri](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)ile çalışmaya başlayın.

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204228"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929290"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
 
@@ -68,7 +68,7 @@ Jupyter Notebook, veri araştırması ve modelleme için tarayıcı tabanlı bir
 
 Jupyter Notebook başlatmak için **Başlat** menüsünde veya masaüstünde **Jupyter Notebook** simgesini seçin. DSVM komut isteminde, mevcut not defterlerine sahip olduğunuz veya yeni Not ```jupyter notebook``` defterleri oluşturmak istediğiniz dizinden komutunu da çalıştırabilirsiniz.  
 
-Jupyıter 'ı başlattıktan sonra, DSVM 'ye önceden paketlenmiş birkaç örnek Not defteri içeren bir dizin görmeniz gerekir. Artık şunları yapabilirsiniz:
+Jupyıter 'ı başlattıktan sonra, DSVM 'ye `/notebooks` önceden paketlenmiş örnek Not defterleri için dizine gidin. Artık şunları yapabilirsiniz:
 
 * Kodu görmek için Not defterini seçin.
 * Her hücreyi SHIFT + enter ' i seçerek çalıştırın.
@@ -142,7 +142,7 @@ Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, P
 
 Azure Machine Learning bir modeli bir Web hizmeti olarak ayarlamak, derlemek, yayımlamak ve kullanmak için aşağıdaki yordamı ve kod parçacıklarını kullanın.
 
-#### <a name="set-up"></a>Ayarla
+#### <a name="set-up"></a>Ayarlama
 
 Giriş dizininiz altında adlı ```.azureml``` bir dizin altında bir Settings. JSON dosyası oluşturun. Azure Machine Learning çalışma alanınızdan parametreleri girin.
 
