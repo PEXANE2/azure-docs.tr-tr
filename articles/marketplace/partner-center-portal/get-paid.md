@@ -1,19 +1,20 @@
 ---
-title: Ticari Market 'te ücretli olarak | Azure Marketi
-description: Ticari Market 'teki gelirinize yönelik ödemeleri alma hakkında bilgi edinin.
+title: Microsoft ticari Market 'te ücretli olarak edinme
+description: Microsoft ticari Market 'teki gelirinize yönelik ödemeleri alma hakkında bilgi edinin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275841"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780506"
 ---
-# <a name="getting-paid"></a>Ödeme alma
+# <a name="getting-paid-in-commercial-marketplace"></a>Ticari Market 'te ücretli olarak edinme
+
 Tekliflerinizin, eklentilerin ve reklam gelirlerine ilişkin ödeme alma hakkında bazı önemli bilgiler aşağıda verilmiştir.
 
 > [!IMPORTANT]
@@ -40,18 +41,17 @@ Her fiyat katmanının, mağaza tarafından sunulan her bir para birimi için ka
 
 Ayrıca, belirli bir pazara ait yerel para birimiyle seçtiğiniz bir serbest biçimli fiyat girme seçeneğiniz de vardır. Bunu yaptığınızda, yeni bir fiyatla bir güncelleştirme göndermediğiniz takdirde fiyat ayarlanmaz (dönüştürme ücretleri değişse bile). 
 
-Seçtiğiniz fiyata müşterilerinizin ödemesi gereken satış veya katma değer vergisi dahil olabileceğini göz önünde bulundurun. Daha fazla bilgi için [ücretli teklif Için vergi ayrıntılarına](tax-details-paid-transactions.md) bakın.
+Seçtiğiniz fiyata müşterilerinizin ödemesi gereken satış veya katma değer vergisi dahil olabileceğini göz önünde bulundurun. Ayrıntılar için bkz. [ücretli teklif Için vergi ayrıntıları](tax-details-paid-transactions.md).
 
 
 ## <a name="payout-reporting"></a>Ödeme raporlama
 
-Ödeme bilgilerinize ilişkin ayrıntılara erişip, [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)'nin **ödeme özetinde** rapor indirebilirsiniz. Burada gösterilen bilgiler hakkında daha fazla bilgi edinmek ve kazandığınız parayı nasıl sınıflandırdığımızda, bkz. [Ödeme Özeti](payout-summary.md).
+Ödeme bilgilerinize ilişkin ayrıntılara erişip, [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)'nin **ödeme özetinde** rapor indirebilirsiniz. Burada gösterilen bilgiler ve kazandığınız paradan nasıl sınıflandırdığımız hakkında ayrıntılı bilgi için bkz. [ödeme özetine genel bakış](payout-summary-overview.md).
 
 
-## <a name="payout-timeframe"></a>Ödeme zaman çerçevesi
+## <a name="payout-time-frame"></a>Ödeme zaman dilimi
 
-Ödemeler aylık olarak yapılır (geçerli ödeme eşiği karşılanmıştır ve ödemenizi aşağıda açıklandığı gibi ayrı tutmaya yerleştirmezsiniz). Genellikle söz konusu ayın 15. gününe kadar, belirli bir ayda ödenmesi gereken tüm ödemeleri göndereceğiz. Ödemelerden, ödeme hesabınıza ulaşmak için genellikle 3 ila 10 ek iş günü ele alındığına göz atın. Daha fazla bilgi için bkz. [ödeme eşikleri, Yöntemler ve süreleri](payment-thresholds-methods-timeframes.md).
-
+Ödemeler aylık olarak yapılır (geçerli ödeme eşiği karşılanmıştır ve ödemenizi aşağıda açıklandığı gibi ayrı tutmaya yerleştirmezsiniz). Genellikle söz konusu ayın 15. gününe kadar, belirli bir ayda ödenmesi gereken tüm ödemeleri göndereceğiz. Ödemelerden, ödeme hesabınıza ulaşmak için genellikle 3 ila 10 ek iş günü ele alındığına göz atın. Ayrıntılar için bkz. [ödeme eşikleri, Yöntemler ve zaman kareleri](payment-thresholds-methods-timeframes.md).
 
 ##  <a name="payout-hold-status"></a>Ödeme tutma durumu
 
@@ -63,12 +63,3 @@ Varsayılan olarak, yukarıda açıklandığı gibi ödemeleri aylık olarak gö
 
 > [!NOTE]
 > **Ödeme tutma durumunuz** her program için ayrı ayrı (Microsoft Store, reklam, Azure Marketi vb.) uygulanır. Tüm programlarınızda ödemeleri tutmak istiyorsanız, ödemeleri her bir programda tek tek tutmanız gerekir.
-
-
- 
-
- 
-
-
-
-

@@ -2,19 +2,19 @@
 title: ASP.NET Core uygulamalar için Azure Application Insights | Microsoft Docs
 description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web uygulamalarını izleyin.
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145256"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652784"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
 Bu makalede, [ASP.NET Core](https://docs.microsoft.com/aspnet/core) bir uygulama için Application Insights nasıl etkinleştirileceği açıklanır. Bu makaledeki yönergeleri tamamladığınızda Application Insights, ASP.NET Core uygulamanızdan istekleri, bağımlılıkları, özel durumları, performans sayaçlarını, sinyalleri ve günlükleri toplar.
 
-Burada kullanacağınız örnek, ' i hedefleyen `netcoreapp2.2`bir [MVC uygulamasıdır](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) . Bu yönergeleri tüm ASP.NET Core uygulamalarına uygulayabilirsiniz.
+Burada kullanacağınız örnek, ' i hedefleyen `netcoreapp3.0`bir [MVC uygulamasıdır](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) . Bu yönergeleri tüm ASP.NET Core uygulamalarına uygulayabilirsiniz.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -28,7 +28,7 @@ Burada kullanacağınız örnek, ' i hedefleyen `netcoreapp2.2`bir [MVC uygulama
 * **IDE**: Visual Studio, vs Code veya komut satırı.
 
 > [!NOTE]
-> Application Insights ile birlikte ASP.NET Core 3. X kullanıyorsanız, lütfen [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) sürümünü veya üstünü kullanın. Bu, ASP.NET Core 3. X ' i destekleyen tek sürümdür.
+> ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -109,7 +109,9 @@ Burada kullanacağınız örnek, ' i hedefleyen `netcoreapp2.2`bir [MVC uygulama
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Azure Web Apps dağıtılan uygulamalar için izleme anahtarını belirtir.
+    * `APPINSIGHTS_INSTRUMENTATIONKEY`genellikle [Azure Web Apps](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)' de kullanılır, ancak bu SDK 'nın desteklendiği her yerde de kullanılabilir. (Kodsuz kullanacaksınız Web uygulaması izleme yapıyorsanız, bağlantı dizelerini kullanmıyorsanız bu biçim gereklidir.)
+
+    İzleme anahtarlarını ayarlama yerine artık [bağlantı dizelerini](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)de kullanabilirsiniz.
 
     > [!NOTE]
     > Diğer seçenekler üzerinde WINS olan ortam değişkeni `APPINSIGHTS_INSTRUMENTATIONKEY`üzerinden WINS kodunda belirtilen bir izleme anahtarı.
@@ -209,7 +211,7 @@ public void ConfigureServices(IServiceCollection services)
 |EnableAzureInstanceMetadataTelemetryModule   |  Etkinleştir/devre dışı bırak`AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | Liveölçümlerini etkinleştir/devre dışı bırak özelliği | true
 |Enableadaptiveörnekleme | Uyarlamalı örneklemeyi etkinleştir/devre dışı bırak | true
-|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartBeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
+|Enablesinyal | Düzenli aralıklarla (15 dakikalık varsayılan), .NET sürümü, Azure ortam bilgileri, varsa vb. gibi çalışma zamanı hakkında bilgi içeren "HeartbeatState" adlı özel bir ölçüm göndererek, sinyalleri etkinleştir/devre dışı bırak özelliği. | true
 |Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | true
 |RequestCollectionOptions. TrackExceptions | Istek koleksiyonu modülü tarafından işlenmeyen özel durum izlemenin raporlamasını etkinleştirin/devre dışı bırakın. | NETSTANDARD 2.0'da false (özel durumlar Applicationınsightsloggerprovider ile izleniyor), aksi takdirde true.
 

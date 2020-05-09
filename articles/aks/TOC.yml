@@ -59,6 +59,11 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - Kümeyi yükseltme
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Kümeler ve iş yükleri

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 84846e642fa102045b89eb12dbc85b0995867a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: a13b860e01e7ef295df629d79dfa44700b5f0d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061592"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691585"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
 
@@ -48,13 +48,27 @@ Genellikle hizmet katmanını veya işlem boyutunu değiştirmek hizmeti aşağ�
 
 ## <a name="latency"></a>Gecikme süresi 
 
-Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzun işlem boyutunu yeniden boyutlandırma için beklenen gecikme süresi şu şekilde parametrelenir:
+Hizmet katmanını değiştirmek, tek bir veritabanının veya elastik havuzun işlem boyutunu ölçeklendirmek, bir veritabanını elastik havuzun içine/dışına taşımak veya bir veritabanını elastik havuzlar arasında taşımak için beklenen gecikme süresi şu şekildedir:
 
 |Hizmet katmanı|Temel tek veritabanı,</br>Standart (S0-S1)|Temel elastik havuz,</br>Standart (S2-S12), </br>Hiper ölçekli </br>Tek veritabanı veya elastik havuz Genel Amaçlı|Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz|
 |:---|:---|:---|:---|
 |**Temel tek veritabanı,</br> standart (S0-S1)**|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
 |**Temel elastik havuz </br>, standart (S2-S12) </br>, hiper ölçek </br>genel amaçlı tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
 |**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
+
+> [!NOTE]
+> Ayrıca, standart (S2-S12) ve Genel Amaçlı veritabanları için, veritabanı Premium dosya paylaşma ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) depolaması kullanıyorsa, bir veritabanını elastik havuzun içine/dışına veya elastik havuzlar arasında taşıma gecikmesi veritabanı boyutuyla orantılıdır.
+>
+> Bir veritabanının PFS depolama kullanıp kullanmadığını anlamak için, veritabanı bağlamında aşağıdaki sorguyu yürütün. AccountType sütunundaki değer ise `PremiumFileStorage`, veritabanı PFS depolama alanını kullanıyor demektir.
+ 
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
 
 > [!TIP]
 > Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
