@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679341"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582151"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Değişiklik İzleme ve envanter sorunlarını giderme
 
-Bu makalede Değişiklik İzleme ve envanter sorunlarının nasıl giderileceği açıklanmaktadır.
+Bu makalede, Azure Otomasyonu Değişiklik İzleme ve envanter sorunlarını giderme işlemleri açıklanmaktadır.
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
@@ -35,14 +35,14 @@ Eklendi olan Windows makineler için herhangi bir Değişiklik İzleme ve envant
 
 Bu hata aşağıdaki nedenlerle olabilir:
 
-* Windows için Log Analytics Aracısı çalışmıyor.
+* Windows için Azure Log Analytics Aracısı çalışmıyor.
 * Otomasyon hesabına geri iletişim engelleniyor.
 * Değişiklik İzleme ve envanter yönetim paketleri indirilmez.
 * Eklendi olan VM, Windows için Log Analytics aracısıyla Sysprep yüklenmemiş bir kopyalanmış makineden gelmiş olabilir.
 
 #### <a name="resolution"></a>Çözüm
 
-Log Analytics Aracısı makinesinde, **C:\Program Files\Microsoft izleme araçları \ araç \ araçlar** ' a gidin ve aşağıdaki komutları çalıştırın:
+Log Analytics Aracısı makinesinde, **C:\Program Files\Microsoft Monitoring Tors T\tors \ araçlar** ' a gidin ve aşağıdaki komutları çalıştırın:
 
 ```cmd
 net stop healthservice
@@ -51,10 +51,10 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-Hala yardıma ihtiyacınız varsa tanılama bilgilerini toplayabilir ve desteğe başvurabilirsiniz. 
+Hala yardıma ihtiyacınız varsa tanılama bilgilerini toplayabilir ve desteğe başvurabilirsiniz.
 
 > [!NOTE]
-> Günlük analiz aracıları, varsayılan olarak hata izleme imkanı sunar. Önceki örnekte olduğu gibi ayrıntılı hata iletilerini etkinleştirmek için `VER` parametresini kullanın. Bilgi izlemeleri için çağrılırken `INF` `StartTracing.cmd`kullanın.
+> Log Analytics Aracısı varsayılan olarak hata izleme imkanı sunar. Önceki örnekte olduğu gibi ayrıntılı hata iletilerini etkinleştirmek için `VER` parametresini kullanın. Bilgi izlemeleri için öğesini çağırdığınızda `INF` `StartTracing.cmd`kullanın.
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Windows için Log Analytics Aracısı çalışmıyor
 
@@ -64,7 +64,7 @@ Makinede Windows (**HealthService. exe**) Log Analytics aracısının çalışt�
 
 Makinedeki Olay Görüntüleyicisi denetleyin ve içindeki sözcüğe `changetracking` sahip tüm olayları arayın.
 
-Değişiklik İzleme ve envanterin çalışması için izin verilmesi gereken adresler ve bağlantı noktaları hakkında bilgi edinmek için bkz. [karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatikleştirin](../automation-hybrid-runbook-worker.md#network-planning) .
+Değişiklik İzleme ve envanterin çalışması için izin verilmesi gereken adresler ve bağlantı noktaları hakkında bilgi edinmek için bkz. [karma runbook çalışanı kullanarak veri merkezinizdeki veya buluttaki kaynakları otomatikleştirme](../automation-hybrid-runbook-worker.md#network-planning).
 
 ##### <a name="management-packs-not-downloaded"></a>Yönetim paketleri indirilmedi
 
@@ -84,13 +84,13 @@ Kopyalanmış bir görüntü kullanıyorsanız, önce görüntüyü Sysprep yap�
 
 #### <a name="issue"></a>Sorun
 
-Çözüm için eklendi olan Linux makineler için herhangi bir envanter ve Değişiklik İzleme sonuç görmezsiniz. 
+Çözüm için eklendi olan Linux makineler için herhangi bir Değişiklik İzleme ve envanter sonucu görmezsiniz. 
 
 #### <a name="cause"></a>Nedeni
 Bu soruna özel nedenler aşağıda verilmiştir:
 * Linux için Log Analytics Aracısı çalışmıyor.
 * Linux için Log Analytics Aracısı doğru yapılandırılmamış.
-* Dosya bütünlüğü Izleme (FIM) çakışmaları var.
+* Dosya bütünlüğü izleme (FIM) çakışmaları var.
 
 #### <a name="resolution"></a>Çözüm 
 
@@ -103,7 +103,7 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve aracıyı yeniden yüklemeniz gerekir. Yükleme ve yapılandırma hakkında bilgi için bkz. [Log Analytics aracısında günlük verileri toplama](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve aracıyı yeniden yüklemeniz gerekir. Yükleme ve yapılandırma hakkında bilgi için bkz. [Log Analytics aracısında günlük verileri toplama](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
 
 Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırmasını doğrulayın. Bkz. [Azure izleyici 'de izleme çözümlerini hedefleme](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
 
@@ -119,8 +119,8 @@ Azure Güvenlik Merkezi 'nin FIM özelliği, Linux dosyalarınızın bütünlü�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport)'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, Azure Community 'yi yanıtlar, destek ve uzmanlar için bağlar.
+* Azure destek olayı dosyası oluşturma. [Azure destek sitesine](https://azure.microsoft.com/support/options/)gidin ve **Destek Al**' ı seçin.
