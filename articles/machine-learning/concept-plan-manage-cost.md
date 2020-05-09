@@ -9,13 +9,13 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/08/2020
+ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857006"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891213"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -63,7 +63,7 @@ Farklı zaman aralıkları için grafikler ve tablolardaki maliyetleri görünt�
 
 Machine Learning için ayrı bir hizmet alanı görmezsiniz.  Bunun yerine Machine Learning çalışma alanlarınızda eklediğiniz çeşitli kaynakları görürsünüz.
 
-## <a name="use-amlcompute"></a>AmlCompute kullanma
+## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning işlem kümesi (AmlCompute) kullanın
 
 Sürekli değişen veriler sayesinde, doğru modelleri sürdürmek için hızlı ve kolaylaştırılmış model eğitimi ve yeniden eğitimlere ihtiyacınız vardır. Ancak, özellikle GPU 'Larda derin öğrenme modelleri için sürekli eğitim bir maliyetle gelir. 
 
@@ -138,5 +138,7 @@ Azure Machine Learning Işlem, ayrılmış örnekleri kendiliğinden destekler. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
-* [Azure Machine Learning işlem](how-to-set-up-training-targets.md#amlcompute)hakkında daha fazla bilgi edinin.
+Aşağıdakiler hakkında daha fazla bilgi edinin:
+* [Kaynak kotalarını yönetme ve artırma](how-to-manage-quotas.md)
+* [ [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md)ile maliyetleri yönetme.
+* [İşlem Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute).

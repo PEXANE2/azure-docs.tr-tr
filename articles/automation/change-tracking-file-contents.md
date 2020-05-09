@@ -5,27 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dc218416e3b91998a6f06a62670ff8d2158d533
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509166"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779306"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
 İzlemek üzere yeni bir dosya veya kayıt defteri anahtarı eklediğinizde Azure Otomasyonu, [değişiklik izleme ve envanter](change-tracking.md) özelliği için bunu sağlar. Bu makale, bu özellikle çalışma yordamlarını içerir.
 
-## <a name="enable-the-full-change-tracking-and-inventory-solution"></a>Tam Değişiklik İzleme ve envanter çözümünü etkinleştirme
+## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>Tam Değişiklik İzleme ve envanter özelliğini etkinleştirme
 
-[Azure Güvenlik Merkezi dosya bütünlüğü izleme 'yi (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)etkinleştirdiyseniz, aşağıda açıklandığı gibi tam değişiklik izleme ve envanter çözümünü kullanabilirsiniz. Ayarlarınız bu işlem tarafından kaldırılmaz.
+[Azure Güvenlik Merkezi dosya bütünlüğü izleme 'yi (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)etkinleştirdiyseniz, aşağıda açıklandığı gibi tam değişiklik izleme ve envanter özelliğini de kullanabilirsiniz. Ayarlarınız bu işlem tarafından kaldırılmaz.
 
 > [!NOTE]
-> Tam Değişiklik İzleme ve stok çözümünü etkinleştirmek ek ücretler oluşmasına neden olabilir. Bkz. [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
+> Tam Değişiklik İzleme ve envanter özelliğinin etkinleştirilmesi ek ücretlere neden olabilir. Bkz. [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Çalışma alanına giderek ve bunları [yüklü izleme çözümleri listesinde](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)bularak izleme çözümünü kaldırın.
 2. Çözüm adına tıklayarak Özet sayfasını açın ve [izleme çözümünü kaldırma](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)bölümünde açıklandığı gibi **Sil**' e tıklayın.
-3. Çözümü yeniden etkinleştirmek için Otomasyon hesabına gidin ve **yapılandırma yönetimi**altında **değişiklik izleme** ' yi seçin.
+3. Değişiklik İzleme ve envanteri yeniden etkinleştirmek için Otomasyon hesabına gidin ve **yapılandırma yönetimi**altında **değişiklik izleme** ' yi seçin.
 4. Log Analytics çalışma alanı ve Otomasyon hesabı ' nı seçin, çalışma alanı ayarlarınızı doğrulayın ve **Etkinleştir**' e tıklayın.
 
 ## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Değişiklik İzleme ve stoğa makine ekleme

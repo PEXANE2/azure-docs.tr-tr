@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dab5f3dcdfb6ddabbd94960dcf8a8bf2bce98af
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257768"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890767"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
 Bu makalede, Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenime odaklanan bir laboratuvarı nasıl ayarlayabileceğiniz gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir.  
@@ -40,7 +40,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
 | VM görüntüsü | [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Bu görüntü, Machine Learning ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu görüntüdeki yüklü araçların tam listesini görüntülemek için şu makaleye bakın: [DSVM 'ye nelerin dahil olduğu?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin uzak masaüstü (RDP) kullanarak kendi sanal makinelerine (VM) bağlanmasına imkan tanır.</p><p>**Önemli**: RDP, Linux görüntüsü için veri bilimi sanal makinesi zaten yüklü ve yapılandırılmış. Sonuç olarak, öğretmenler/öğrenciler ek adımlar olmadan VM 'lere RDP aracılığıyla bağlanabilir. Ayrıca, grafik masaüstüne bağlanmanız gerekiyorsa, bu görüntüde [X2Go sunucusu](https://wiki.x2go.org/doku.php/doc:newtox2go) zaten sanal makinede yüklü olmalıdır. Öğrenciler, X2Go istemcisini yerel makinelerine yüklemelidir ve bağlanmak için istemcisini kullanmalıdır. Daha fazla bilgi için aşağıdaki kılavuzlara bakın: <ul><li>[Linux için Veri Bilimi Sanal Makinesi erişme](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[RDP ve GUI paketlerini yüklemek için şablon VM 'sine bağlanma](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| Uzak Masaüstü bağlantısı 'nı etkinleştir | <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin uzak masaüstü (RDP) kullanarak kendi sanal makinelerine (VM) bağlanmasına imkan tanır.</p><p>**Önemli**: Bu ayarı etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. RDP, sanal makine görüntüsünde zaten yüklü ve yapılandırılmışsa, siz/öğrenciler ek adımları izleyerek RDP aracılığıyla VM 'lere bağlanabilir. <p>VM görüntüsünün RDP yüklemesi ve yapılandırması yoksa, Linux makinesine ilk kez SSH kullanarak bağlanmanız ve RDP ve GUI paketlerini yüklemeniz gerekir, böylelikle/öğrenciler daha sonra RDP kullanarak Linux makinesine bağlanabilir. Daha fazla bilgi için bkz. [Azure 'da bir LINUX VM 'sine bağlanmak Için uzak masaüstü 'Nü yüklemek ve yapılandırmak](../../virtual-machines/linux/use-remote-desktop.md). Daha sonra, öğrencilerin öğrenci Linux VM 'lerinde RDP kullanabilmesi için görüntüyü yayımlayın.  |
 
 Linux görüntüsü için Veri Bilimi Sanal Makinesi, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar. Sonuç olarak, şablon makine oluşturulduktan sonra daha fazla özelleştirmeniz gerekmez. Bu, öğrencilerin kullanması için yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 
