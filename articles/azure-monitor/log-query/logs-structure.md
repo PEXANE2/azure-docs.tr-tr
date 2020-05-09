@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662085"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738091"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
@@ -54,16 +54,17 @@ Log Analytics çalışma alanının aksine, bir Application Insights uygulaması
 
 | Tablo | Açıklama | 
 |:---|:---|
-| availabilityResults | Kullanılabilirlik testlerinden özet veriler. |
-| Browserzamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler. |
-| customEvents        | Uygulamanız tarafından oluşturulan özel olaylar. |
-| customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler. |
-| bağımlılıklar        | Uygulamadan dış bileşenlere çağrılar. |
-| larý          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
-| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
-| performanceCounters | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri. |
-| istekleri            | Her uygulama isteğinin ayrıntıları.  |
-| lerin              | Dağıtılmış izlemenin sonuçları. |
+| availabilityResults   | Kullanılabilirlik testlerinden özet veriler.
+| Browserzamanlamalar      |     Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler.
+| customEvents        | Uygulamanız tarafından oluşturulan özel olaylar.
+| customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler.
+| bağımlılıklar        | Uygulamadan, TrackDependency () ile kaydedilen diğer bileşenlere (Dış bileşenler dahil) yapılan çağrılar (örneğin, REST API, veritabanı veya dosya sistemine yapılan çağrılar). 
+| larý            | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar, hem sunucu tarafı hem de istemci tarafı (tarayıcı) özel durumlarını yakalar.
+| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler.
+| performanceCounters   | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri, örneğin, Windows performans sayaçları.
+| istekleri            | Uygulamanız tarafından alınan istekler. Örneğin, Web uygulamanızın aldığı her HTTP isteği için ayrı bir istek kaydı kaydedilir. 
+| lerin                | TrackTrace () ile kaydedilen uygulama kodu/günlük çerçeveleri aracılığıyla yayılan ayrıntılı Günlükler (izlemeler).
+
 
 Her tablo için şemayı, uygulama için Log Analytics **şema** sekmesinde görüntüleyebilirsiniz.
 

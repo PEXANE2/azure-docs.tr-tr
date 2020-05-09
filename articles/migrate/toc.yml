@@ -92,6 +92,8 @@
       href: create-manage-projects.md
     - name: İlk kez araç ekleme
       href: how-to-add-tool-first-time.md
+    - name: ISV araçlarıyla çalışmaya hazırlanma/Movere
+      href: prepare-isv-movere.md
     - name: Değerlendirme araçları ekleme
       href: how-to-assess.md
     - name: Azure Geçişi aletini dağıtma

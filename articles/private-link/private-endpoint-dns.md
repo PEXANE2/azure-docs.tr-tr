@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209035"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928658"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
@@ -36,57 +36,58 @@ Uygulamalarınızın bağlantı URL 'sini değiştirmesi gerekmez. Genel bir DNS
 
 Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen bölge adlarını kullanın:
 
-|Özel bağlantı kaynağı türü   |Alt kaynak  |Bölge adı  |
-|---------|---------|---------|
-|SQL DB (Microsoft. SQL/Servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Azure SYNAPSE Analytics (Microsoft. SQL/Servers)    |  SQL Server (sqlServer)        | privatelink.database.windows.net |
-|Depolama hesabı (Microsoft. Storage/storageAccounts)    |  Blob (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Depolama hesabı (Microsoft. Storage/storageAccounts)    |    Tablo (tablo, table_secondary)      |   privatelink.table.core.windows.net       |
-|Depolama hesabı (Microsoft. Storage/storageAccounts)    |    Kuyruk (kuyruk, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Depolama hesabı (Microsoft. Storage/storageAccounts)   |    Dosya (dosya, file_secondary)      |    privatelink.file.core.windows.net      |
-|Depolama hesabı (Microsoft. Storage/storageAccounts)     |  Web (Web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake dosya sistemi Gen2 (Microsoft. Storage/storageAccounts)  |  Data Lake dosya sistemi Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|SQL    |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|MongoDB    |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Gremlin    |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Tablo|privatelink.table.cosmos.azure.com|
-|PostgreSQL için Azure veritabanı-tek sunucu (Microsoft. DBforPostgreSQL/Servers)|Postgressqlserver|privatelink.postgres.database.azure.com|
-|MySQL için Azure veritabanı (Microsoft. Dbformyısql/sunucular)|Te yapılandırılmış MySQLServer|privatelink.mysql.database.azure.com|
-|MariaDB için Azure veritabanı (Microsoft. Dbformarıdb/sunucular)|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault (Microsoft. Keykasası/Kaults)|kasa|privatelink.vaultcore.azure.net|
-|Azure Kubernetes hizmeti-Kubernetes API (Microsoft. ContainerService/Managedkümeler)    | managedCluster | {GUID}. Privatelink. {Region}. azmk8s. IO|
-|Azure Search (Microsoft. Search/searchServices)|searchService|privatelink.search.windows.net|   
-|Azure Container Registry (Microsoft. ContainerRegistry/kayıt defterleri) | registry | privatelink.azurecr.io |
-|Azure Uygulama yapılandırması (Microsoft. Appconfiguration/Configurationmağazaları)| Configurationstore 'da | privatelink.azconfig.io|
-|Azure Backup (Microsoft. RecoveryServices/Vaults)| kasa |Privatelink. {Region}. yedekleme. windowsazure. com|
-|Azure Olay Hub 'ı (Microsoft. EventHub/namespaces)| ad alanı |privatelink.servicebus.windows.net|
-|Azure Service Bus (Microsoft. ServiceBus/namespaces) | ad alanı |privatelink.servicebus.windows.net|
-|Azure Relay (Microsoft. Relay/Namespace) | ad alanı |privatelink.servicebus.windows.net|
-|Azure Event Grid (Microsoft. EventGrid/konular)     | konu başlığı | ilerde. {Region}. privatelınk. eventgrid. Azure. net|
-|Azure Event Grid (Microsoft. EventGrid/Domains) | etki alanı | alanını. {Region}. privatelınk. eventgrid. Azure. net |
-|Azure WebApps (Microsoft. Web/Sites)    | Site | privatelink.azurewebsites.net |
-|Azure Machine Learning (Microsoft. MachineLearningServices/Workspaces)    | çalışma alanı | privatelink.api.azureml.ms |
+| Özel bağlantı kaynak türü/alt kaynak |Özel DNS bölge adı | Genel DNS bölge adı |
+|---|---|---|---|
+| SQL DB (Microsoft. SQL/Servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
+| Azure SYNAPSE Analytics (Microsoft. SQL/Servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Depolama hesabı (Microsoft. Storage/storageAccounts)/blob (blob, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
+| Depolama hesabı (Microsoft. Storage/storageAccounts)/tablo (tablo, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
+| Depolama hesabı (Microsoft. Storage/storageAccounts)/kuyruk (kuyruk, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
+| Depolama hesabı (Microsoft. Storage/storageAccounts)/dosya (dosya, file_secondary) | privatelink.file.core.windows.net | file.core.windows.net |
+| Depolama hesabı (Microsoft. Storage/storageAccounts)/Web (Web, web_secondary) | privatelink.web.core.windows.net | web.core.windows.net |
+| Data Lake dosya sistemi Gen2 (Microsoft. Storage/storageAccounts)/Data Lake dosya sistemi Gen2 (DFS, dfs_secondary) | privatelink.dfs.core.windows.net | dfs.core.windows.net |
+| Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)/SQL | privatelink.documents.azure.com | documents.azure.com |
+| Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)/MongoDB | privatelink.mongo.cosmos.azure.com | mongo.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)/tablo | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| PostgreSQL için Azure veritabanı-tek sunucu (Microsoft. DBforPostgreSQL/Servers)/Postgrescollection sunucusu | privatelink.postgres.database.azure.com | postgres.database.azure.com |
+| MySQL için Azure veritabanı (Microsoft. Dbformyısql/sunucular)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
+| MariaDB için Azure veritabanı (Microsoft. Dbformarıdb/sunucular)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
+| Azure Key Vault (Microsoft. Keykasası/Vaults)/kasa | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Kubernetes hizmeti-Kubernetes API (Microsoft. ContainerService/Managedkümeler)/managedCluster | Privatelink. {Region}. azmk8s. IO | {Region}. azmk8s. IO |
+| Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
+| Azure Container Registry (Microsoft. ContainerRegistry/kayýt defterleri)/kayıt defteri | privatelink.azurecr.io | azurecr.io |
+| Azure Uygulama yapılandırması (Microsoft. AppConfiguration/Configurationmağazaları)/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure Backup (Microsoft. RecoveryServices/Vaults)/kasa | Privatelink. {Region}. yedekleme. windowsazure. com | {Region}. yedekleme. windowsazure. com |
+| Azure Olay Hub 'ı (Microsoft. EventHub/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Service Bus (Microsoft. ServiceBus/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Relay (Microsoft. Relay/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Event Grid (Microsoft. EventGrid/konular)/konu başlığı | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure Event Grid (Microsoft. EventGrid/Domains)/etki alanı | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure WebApps (Microsoft. Web/Sites)/site | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure Machine Learning (Microsoft. MachineLearningServices/Workspaces)/çalışma alanı | privatelink.api.azureml.ms | api.azureml.ms |
+
  
 
 
 ## <a name="dns-configuration-scenarios"></a>DNS yapılandırma senaryoları
 
-Hizmetlerin FQDN 'SI genel bir IP adresini çözümlerse, Özel uç noktanın özel IP adresini çözümlemek için DNS yapılandırmanızı değiştirmeniz gerekir.
+Hizmetlerin FQDN 'SI otomatik olarak genel bir IP adresine çözümlenir, bu nedenle özel uç noktanın özel IP adresine çözümlemek için DNS yapılandırmanızı uygun şekilde değiştirmeniz gerekir.
 
 DNS, Özel uç nokta IP adresini doğru bir şekilde çözerek uygulamanın doğru şekilde çalışmasını sağlamak için önemli bir bileşendir.
 
 Tercihlerinize bağlı olarak, aşağıdaki senaryolar tümleşik DNS çözümlemesi için kullanılabilir:
 
 - [Özel DNS sunucusu olmayan sanal ağ iş yükleri](#virtual-network-workloads-without-custom-dns-server)
-
+- [DNS ileticisi kullanan şirket içi iş yükleri](#on-premises-workloads-using-a-dns-forwarder)
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>Özel DNS sunucusu olmayan sanal ağ iş yükleri
 
 Bu yapılandırma, özel DNS sunucusu olmayan sanal ağ iş yükleri için uygundur. Bu senaryoda istemci, Özel uç nokta IP adresini Azure tarafından belirtilen DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)için sorgular. Azure DNS, özel DNS bölgelerinin DNS çözümünden sorumludur.
 
 
- > [!NOTE]
+> [!NOTE]
 > Bu senaryo, Azure SQL veritabanı 'nın önerilen Özel DNS bölgeyi kullanıyor. Diğer hizmetler için, aşağıdaki referans [Azure HIZMETLERI DNS bölge yapılandırmasını](#azure-services-dns-zone-configuration)kullanarak modeli ayarlayabilirsiniz.
 
 Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vardır:
@@ -99,16 +100,60 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 
 Aşağıdaki diyagramda, özel DNS bölgesi kullanan sanal ağ iş yüklerinden DNS çözümleme sırası gösterilmektedir
 
-:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="tek sanal ağ ve Azure tarafından sağlanmış DNS":::
+:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="Tek sanal ağ ve Azure tarafından sağlanmış DNS":::
 
 Bu model, aynı özel uç noktayla ilişkili birden fazla eşlenmiş sanal ağa genişletilebilir. Bu, tüm eşlenmiş sanal ağlar için özel DNS bölgesine [Yeni sanal ağ bağlantıları eklenerek](../dns/private-dns-virtual-network-links.md) yapılabilir.
 
- > [!IMPORTANT]
+> [!IMPORTANT]
 >  Bu yapılandırma için tek bir özel DNS bölgesi gereklidir, farklı sanal ağlar için aynı ada sahip birden çok bölge oluşturulması, DNS kayıtlarını birleştirmek için el ile gerçekleştirilen işlemlere ihtiyaç duyar
 
 Bu senaryoda, ortak bir özel bitiş noktasını paylaşan ve bağlı olan tüm sanal ağ, aynı özel DNS bölgesine bağlı olan bağlı bileşen ağları ile bir [hub &](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Azure tarafından sunulan DNS ile hub ve bağlı":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Azure tarafından sunulan DNS ile hub ve bağlı bileşen":::
+
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan şirket içi iş yükleri
+ 
+Şirket içi iş yükleri için özel bir uç noktanın FQDN 'sini özel IP adresine çözümleyebilmek üzere Azure hizmeti [Genel DNS bölgesinin](#azure-services-dns-zone-configuration) Azure 'da dağıtılmasını sağlamak IÇIN bir DNS ileticisi kullanmanız gerekir.
+
+
+Aşağıdaki senaryo, Azure 'da DNS ileticisi olan bir şirket içi ağ için uygundur. Bu, bir sunucu düzeyi ileticisi aracılığıyla tüm DNS sorgularını Azure tarafından sunulan DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 'e çözümlemeden sorumludur. 
+
+> [!NOTE]
+> Bu senaryo, Azure SQL veritabanı 'nın önerilen Özel DNS bölgeyi kullanıyor.Diğer hizmetler için, aşağıdaki referans [Azure HIZMETLERI DNS bölge yapılandırmasını](#azure-services-dns-zone-configuration)kullanarak modeli ayarlayabilirsiniz.
+
+Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vardır:
+
+- Şirket içi ağ
+-  [Şirket içi ağa bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) sanal ağ
+- Azure 'da dağıtılan DNS ileticisi 
+-  [Kayıt türündeki](../dns/dns-zones-records.md#record-types)  [Privatelink.Database.Windows.net](../dns/private-dns-privatednszone.md) bölgeleri özel DNS
+- Özel uç nokta bilgileri (FQDN kayıt adı ve özel IP adresi)
+
+Aşağıdaki diyagramda, bir sanal ağa bağlı özel bir DNS bölgesi tarafından çözümlemenin yapıldığı Azure 'da dağıtılan bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="Azure DNS kullanarak şirket içi":::
+
+Bu yapılandırma, zaten bir DNS çözümü olan şirket içi ağ için genişletilebilir. 
+Şirket içi DNS çözümünün, DNS trafiğini Azure 'da dağıtılan DNS ileticisine başvuran [koşullu bir iletici](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) aracılığıyla Azure DNS iletmek üzere yapılandırılması gerekir.
+
+> [!NOTE]
+> Bu senaryo, Azure SQL veritabanı 'nın önerilen Özel DNS bölgeyi kullanıyor.Diğer hizmetler için, aşağıdaki referans [Azure HIZMETLERI DNS bölge yapılandırmasını](#azure-services-dns-zone-configuration)kullanarak modeli ayarlayabilirsiniz.
+
+Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vardır:
+
+
+- Yerinde özel bir DNS çözümü olan şirket içi ağ 
+-  [Şirket içi ağa bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) sanal ağ
+- Azure 'da dağıtılan DNS ileticisi
+-  [Kayıt türündeki](../dns/dns-zones-records.md#record-types)  [Privatelink.Database.Windows.net](../dns/private-dns-privatednszone.md)  bölgeleri özel DNS
+- Özel uç nokta bilgileri (FQDN kayıt adı ve özel IP adresi)
+
+Aşağıdaki diyagramda DNS trafiğini bir sanal ağa bağlı özel bir DNS bölgesi tarafından oluşturulan Azure 'a koşullu olarak ileten bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir
+
+> [!IMPORTANT]
+> Koşullu iletme, **Privatelink**. Database.Windows.net yerine [Genel DNS bölgesi](#azure-services-dns-zone-configuration) Ex: `database.windows.net` ' a verilmelidir.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="Azure DNS şirket içi iletme":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

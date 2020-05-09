@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 08c80b0a37e21d53fc974bd878501b9326c9449b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: e85e41796d0fc4fb9ac72b4032de3143b26d890f
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207233"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871062"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](/azure/security-center/)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -147,7 +147,7 @@ Azure Izleyici günlüklerine aktarılan verilerin güvenliğini sağlamak için
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows için SHA-2 kod Imzalama desteği gereksinimi
-Windows Aracısı 18 Mayıs 2020 tarihinde yalnızca SHA-2 oturum açmayı kullanmaya başlayacaktır. Bu değişiklik, herhangi bir Azure hizmetinin (Azure Izleyici, Azure Otomasyonu, Azure Güncelleştirme Yönetimi, Azure Değişiklik İzleme, Azure Güvenlik Merkezi, Azure Sentinel, Windows Defender ATP) bir parçası olarak eski bir IŞLETIM sistemindeki Log Analytics aracısını kullanarak müşterileri etkiler. Aracıyı eski bir işletim sistemi sürümünde (Windows 7, Windows Server 2008 R2 ve Windows Server 2008) çalıştırmadığınız takdirde değişiklik herhangi bir müşteri eylemi gerektirmez. Eski bir işletim sistemi sürümünde çalışan müşterilerin, 2020 Mayıs tarihinden önce makinelerinde aşağıdaki işlemleri yapması gerekir veya aracıların Log Analytics çalışma alanlarına veri göndermeyi durdurmalarını sağlar:
+Windows Aracısı, 17 Ağustos 2020 tarihinde yalnızca SHA-2 imzalamayı kullanmaya başlayacaktır. Bu değişiklik, herhangi bir Azure hizmetinin (Azure Izleyici, Azure Otomasyonu, Azure Güncelleştirme Yönetimi, Azure Değişiklik İzleme, Azure Güvenlik Merkezi, Azure Sentinel, Windows Defender ATP) bir parçası olarak eski bir IŞLETIM sistemindeki Log Analytics aracısını kullanarak müşterileri etkiler. Aracıyı eski bir işletim sistemi sürümünde (Windows 7, Windows Server 2008 R2 ve Windows Server 2008) çalıştırmadığınız takdirde değişiklik herhangi bir müşteri eylemi gerektirmez. Eski bir işletim sistemi sürümünde çalışan müşterilerin, 17 Ağustos 2020 tarihinden önce makinelerinde aşağıdaki işlemleri yapması gerekir veya aracıların Log Analytics çalışma alanlarına veri göndermeyi durduracaktır:
 
 1. IŞLETIM sisteminiz için en son hizmet paketini yükler. Gerekli hizmet paketi sürümleri şunlardır:
     - Windows 7 SP1

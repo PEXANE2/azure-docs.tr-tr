@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655341"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926978"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Sık sorulan sorular (SSS)
 
@@ -91,6 +91,7 @@ Evet. Her Azure AD Domain Services yönetilen etki alanı iki etki alanı denetl
 * [Yönetilen etki alanım 'da DNS kayıtlarını değiştirebilir veya ekleyebilir miyim?](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [Yönetilen bir etki alanında parola ömrü ilkesi nedir?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Azure AD Domain Services AD hesabı kilitleme koruması sağlar mi?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [Azure AD Domain Services içinde Dağıtılmış Dosya Sistemi (DFS) ve çoğaltmayı yapılandırabilir miyim?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Yönetilen etki alanım için Uzak Masaüstü 'Nü kullanarak etki alanı denetleyicisine bağlanabilir miyim?
 Hayır. Uzak Masaüstü 'Nü kullanarak yönetilen etki alanı için etki alanı denetleyicilerine bağlanma izniniz yok. *AAD DC yöneticileri* grubunun üyeleri, Active Directory Yönetim MERKEZI (ADAC) veya ad POWERSHELL gibi ad yönetim araçlarını kullanarak yönetilen etki alanını yönetebilir. Bu araçlar, yönetilen etki alanına katılmış bir Windows Server üzerinde *uzak sunucu yönetim araçları* özelliği kullanılarak yüklenir. Daha fazla bilgi için bkz. [Azure AD Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için YÖNETIM VM oluşturma](tutorial-create-management-vm.md).
@@ -118,6 +119,9 @@ Azure AD Domain Services yönetilen bir etki alanında varsayılan parola ömrü
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services AD hesabı kilitleme koruması sağlar mi?
 Evet. Yönetilen etki alanında 2 dakika içinde 5 geçersiz parola denemesi, bir kullanıcı hesabının 30 dakika boyunca kilitlenmesine neden olur. 30 dakika sonra, Kullanıcı hesabı otomatik olarak kilidi açılır. Yönetilen etki alanında geçersiz parola denemeleri, Azure AD 'de Kullanıcı hesabını kilitlemez. Kullanıcı hesabı yalnızca Azure AD Domain Services yönetilen etki alanı içinde kilitlenir. Daha fazla bilgi için bkz. [yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri](password-policy.md).
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Azure AD Domain Services içinde Dağıtılmış Dosya Sistemi ve çoğaltmayı yapılandırabilir miyim?
+Hayır. Azure AD Domain Services kullanılırken Dağıtılmış Dosya Sistemi (DFS) ve çoğaltma kullanılamaz.
 
 ## <a name="billing-and-availability"></a>Faturalandırma ve kullanılabilirlik
 

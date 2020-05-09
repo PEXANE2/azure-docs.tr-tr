@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) içindeki kubeconfig 'e erişimi sınırla
 description: Küme yöneticileri ve küme kullanıcıları için Kubernetes yapılandırma dosyasına (kubeconfig) erişimi denetleme hakkında bilgi edinin
 services: container-service
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259558"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890889"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) Kubernetes yapılandırma dosyasına erişim tanımlamak için Azure rol tabanlı erişim denetimlerini kullanma
 
@@ -40,7 +40,8 @@ Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü de çalıştırıyor olman
 
 Bu RBAC rolleri, bir Azure Active Directory (AD) kullanıcısına veya grubuna uygulanabilir.
 
-> ! NOTUN Azure AD kullanan kümeler üzerinde, *Clusteruser* rolüne sahip kullanıcılar oturum açmak isteyen boş bir *kubeconfig* dosyasına sahiptir. Oturum açıldıktan sonra kullanıcıların Azure AD Kullanıcı veya grup ayarlarına bağlı olarak erişimi vardır. *Clusteradmin* rolüne sahip kullanıcılar yönetici erişimine sahiptir.
+> [!NOTE]
+> Azure AD kullanan kümeler üzerinde, *Clusteruser* rolüne sahip kullanıcılar oturum açmak isteyen boş bir *kubeconfig* dosyasına sahiptir. Oturum açıldıktan sonra kullanıcıların Azure AD Kullanıcı veya grup ayarlarına bağlı olarak erişimi vardır. *Clusteradmin* rolüne sahip kullanıcılar yönetici erişimine sahiptir.
 >
 > Azure AD kullanmayan kümeler yalnızca *Clusteradmin* rolünü kullanır.
 

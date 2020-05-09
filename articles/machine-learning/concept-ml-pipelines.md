@@ -1,7 +1,6 @@
 ---
-title: ML işlem hatları nelerdir
-titleSuffix: Azure Machine Learning
-description: Bu makalede, Python için Azure Machine Learning SDK ile oluşturabileceğiniz Machine Learning (ML) işlem hatlarının avantajlarını öğrenin. Makine öğrenimi ardışık düzenleri, veri bilimcilerinin makine öğrenimi iş akışlarını derlemek, iyileştirmek ve yönetmek için kullanılır.
+title: Azure Machine Learning işlem hatları nedir?
+description: Machine Learning (ML) ardışık düzenleri makine öğrenimi iş akışlarını oluşturmanıza, iyileştirmenize ve yönetmenize nasıl yardımcı olduğunu öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +8,16 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e9551650866e5f5fc28b123c1259e2a5fb6f20
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878587"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983457"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
-Azure Machine Learning işlem hatları, Machine Learning projelerinizde iş akışları oluşturmanıza olanak tanır. Bu iş akışlarının çeşitli avantajları vardır: 
+Bu makalede, Azure Machine Learning işlem hatları makine öğrenimi iş akışlarını oluşturmanıza, iyileştirmenize ve yönetmenize nasıl yardımcı olabileceğini öğrenebilirsiniz. Bu iş akışlarının çeşitli avantajları vardır: 
 
 + Olması
 + Hız
@@ -45,7 +44,6 @@ Azure bulutu, her biri farklı bir amaca sahip birkaç farklı işlem hattı sa�
 | Model düzenleme (Machine Learning) | Veri bilimcisi | Azure Machine Learning işlem hatları | Kubeflow işlem hatları | Veri > modeli | Dağıtım, önbelleğe alma, kod ilk, yeniden kullanım | 
 | Veri düzenleme (veri hazırlığı) | Veri mühendisi | [Azure Data Factory işlem hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | Veri > verileri | Kesin tür belirtilmiş hareket. Veri merkezli etkinlikler. |
 | Kod & uygulama düzenlemesi (CI/CD) | Uygulama geliştiricisi/Ops | [Azure DevOps işlem hatları](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kod + model-> App/Service | En açık ve esnek etkinlik desteği, onay kuyrukları, geçişi olan aşamalar | 
-
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML işlem hatları ne yapabilir?
 

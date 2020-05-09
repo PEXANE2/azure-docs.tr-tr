@@ -1,29 +1,30 @@
 ---
-title: Microsoft Identity platform erişim belirteçleri başvurusu | Mavisi
+title: Microsoft Identity platform erişim belirteçleri | Mavisi
+titleSuffix: Microsoft identity platform
 description: Azure AD v 1.0 ve Microsoft Identity platform (v 2.0) uç noktaları tarafından yayılan erişim belirteçleri hakkında bilgi edinin.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ed583abc8f60f3d367bf75254807e3f28cd0f1c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedaf5214305003bf302c7c74466adb84c42b2f4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309721"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926808"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
-Erişim belirteçleri, istemcilerin Azure tarafından korunan API 'Leri güvenli bir şekilde çağırmasını sağlar. Microsoft Identity platform erişim belirteçleri, Azure tarafından imzalanmış olan [Jwts](https://tools.ietf.org/html/rfc7519), Base64 kodlamalı JSON nesneleridir. Belirtecin içeriği yalnızca kaynak için tasarlanan istemciler, erişim belirteçlerini donuk dizeler olarak kabul etmelidir. Geliştiriciler, doğrulama ve hata ayıklama amacıyla, [JWT.MS](https://jwt.ms)gibi bir siteyi kullanarak JWTs 'nin kodunu çözebilir. İstemciniz, çok sayıda protokol kullanarak v 1.0 uç noktasından veya v 2.0 uç noktasından bir erişim belirteci alabilir.
+Erişim belirteçleri, istemcilerin korumalı API 'Leri güvenli bir şekilde çağırmasını sağlar. Microsoft Identity platform erişim belirteçleri, Microsoft Identity platform tarafından imzalanmış olan [Jwts](https://tools.ietf.org/html/rfc7519), Base64 kodlamalı JSON nesneleridir. Belirtecin içeriği yalnızca kaynak için tasarlanan istemciler, erişim belirteçlerini donuk dizeler olarak kabul etmelidir. Geliştiriciler, doğrulama ve hata ayıklama amacıyla, [JWT.MS](https://jwt.ms)gibi bir siteyi kullanarak JWTs (JSON Web belirteçleri) kodunu çözebilirler. İstemciniz, çok sayıda protokol kullanarak v 1.0 uç noktasından veya v 2.0 uç noktasından bir erişim belirteci alabilir.
 
-İstemciniz bir erişim belirteci istediğinde, Azure AD uygulamanızın tüketimi için erişim belirteci hakkında bazı meta veriler de döndürür. Bu bilgiler, erişim belirtecinin süre sonu süresini ve geçerli olduğu kapsamları içerir. Bu veriler, uygulamanızın erişim belirtecinin kendisini ayrıştırmasına gerek kalmadan erişim belirteçlerinin akıllı önbelleğe alınmasına izin verir.
+İstemciniz bir erişim belirteci istediğinde, Microsoft Identity platform uygulamanızın tüketimine yönelik erişim belirteci hakkında bazı meta veriler de döndürür. Bu bilgiler, erişim belirtecinin süre sonu süresini ve geçerli olduğu kapsamları içerir. Bu veriler, uygulamanızın erişim belirtecinin kendisini ayrıştırmasına gerek kalmadan erişim belirteçlerinin akıllı önbelleğe alınmasına izin verir.
 
 Uygulamanız, istemcilerin erişim isteyebileceklerini belirten bir kaynaktır (Web API), erişim belirteçleri Kullanıcı, istemci, verenin, izinler ve daha fazlası gibi kimlik doğrulama ve yetkilendirme için yararlı bilgiler sağlar.
 
@@ -55,7 +56,7 @@ Bu v 2.0 belirtecini [JWT.MS](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhb
 
 ## <a name="claims-in-access-tokens"></a>Erişim belirteçlerinde talepler
 
-JWTs üç parçaya ayrılır:
+JWTs (JSON Web belirteçleri) üç parçaya ayrılır:
 
 * **Üstbilgi** -belirtecin türü ve nasıl imzalanacağı hakkında bilgi dahil olmak üzere [belirtecin nasıl doğrulanacağı](#validating-tokens) hakkında bilgi sağlar.
 * **Yük** -hizmetinize çağrı yapmaya çalışan Kullanıcı veya uygulamayla ilgili tüm önemli verileri içerir.

@@ -2,13 +2,13 @@
 title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft Docs
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275886"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780513"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -24,7 +24,7 @@ Daha önce Azure aboneliğinizle PowerShell kullanmadıysanız:
 Azure PowerShell modülünü, betikleri çalıştırmak istediğiniz makineye yükleyebilirsiniz:
 
 1. [Microsoft Web Platformu Yükleyicisi (V5 veya üzeri)](https://www.microsoft.com/web/downloads/platform.aspx)yükler.
-2. PowerShell 'i Microsoft Azure yüklemek için kullanın.
+2. Microsoft Azure PowerShell yüklemek için kullanın.
 
 Kaynak Yöneticisi şablonlarını kullanmanın yanı sıra, program aracılığıyla Application Insights kaynaklarını yapılandırmayı kolaylaştıran zengin bir [Application Insights PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.applicationinsights)kümesi vardır. Cmdlet 'ler tarafından etkinleştirilen yetenekler şunlardır:
 
@@ -229,7 +229,21 @@ Cmdlet 'ler aracılığıyla ek özellikler mevcuttur:
 
 Bu cmdlet 'lerin parametreleri için [ayrıntılı belgelere](https://docs.microsoft.com/powershell/module/az.applicationinsights) başvurun.  
 
-## <a name="set-the-data-retention"></a>Veri bekletmesini ayarlama 
+## <a name="set-the-data-retention"></a>Veri bekletmesini ayarlama
+
+Aşağıda, bir Application Insights kaynağında veri bekletmesini programlı bir şekilde ayarlamak için üç yöntem verilmiştir.
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>PowerShell komutları kullanarak veri saklama ayarlama
+
+Application Insights kaynağınız için veri bekletmesini ayarlamak üzere basit bir PowerShell komutları kümesi aşağıda verilmiştir:
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>REST kullanarak veri saklama ayarlama
 
 Application Insights kaynağınız için geçerli veri bekletmesini almak için, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' ı kullanabilirsiniz.  ( [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.)  Aşağıda, geçerli bekletmenin `ARMClient`elde etmek için kullanılan bir örnek verilmiştir:
 
@@ -251,6 +265,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -retentionInDays 365 `
        -appName myApp
 ```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>PowerShell betiği kullanarak veri saklama ayarlama
 
 Aşağıdaki betik, bekletme değiştirmek için de kullanılabilir. Bu betiği farklı `Set-ApplicationInsightsRetention.ps1`kaydet 'e kopyalayın.
 
