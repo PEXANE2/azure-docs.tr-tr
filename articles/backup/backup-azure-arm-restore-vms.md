@@ -4,12 +4,12 @@ description: Azure portal kullanarak bir Azure sanal makinesini bir kurtarma nok
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 687406676320f93bab22e34ca95951035187718d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182897"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597782"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -136,7 +136,7 @@ Disk geri yüklendikten sonra, özelleştirmek ve yeni bir VM oluşturmak için 
 
 [Geri yükleme seçeneklerinden](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerini bir Azure eşlenmiş bölgesi olan ikincil bir bölgeye geri yüklemenize olanak tanır.
 
-Önizleme sırasında özelliğe eklemek için lütfen [başlamadan önce bölümünü](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)okuyun.
+Önizleme sırasında özelliğe eklemek için [başlamadan önce bölümünü](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)okuyun.
 
 CRR 'nin etkin olup olmadığını görmek için [çapraz bölge geri yükleme 'Yi yapılandırma](backup-create-rs-vault.md#configure-cross-region-restore) bölümündeki yönergeleri izleyin.
 
@@ -190,7 +190,7 @@ VM 'Leri geri yüklemeniz gerekebilecek bazı yaygın senaryolar vardır.
 **Tam geri yükleme** | Azure VM 'Leri ve şirket içi hiper yöneticilerde yer alan başlıca fark, Azure 'da kullanılabilir VM konsolunun olmaması olabilir. Bir konsol, çıplak kurtarma (BMR) türünde Yedekleme kullanarak kurtarma gibi belirli senaryolar için gereklidir. Ancak, kasadan VM geri yüklemesi BMR 'nin tam yerini alır.
 **Özel ağ yapılandırmalarına sahip VM 'Leri geri yükleme** | Özel ağ yapılandırmalarında, birden çok NIC veya birden çok ayrılmış IP adresi kullanarak iç veya dış yük dengelemesi kullanan VM 'Ler bulunur. [Diski geri yükle seçeneğini](#restore-disks)kullanarak bu VM 'leri geri yükleyin. Bu seçenek, VHD 'lerin bir kopyasını belirtilen depolama hesabına yapar ve ardından, yapılandırmanıza uygun olarak bir [iç](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) veya [dış](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) yük DENGELEYICI, [birden çok NIC](../virtual-machines/windows/multiple-nics.md)veya [bırden çok ayrılmış IP adresi](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)olan bir VM oluşturabilirsiniz.
 **NIC/alt ağ üzerinde ağ güvenlik grubu (NSG)** | Azure VM yedeklemesi, NSG bilgilerinin VNet, alt ağ ve NIC düzeyinde yedeklenmesini ve geri yüklenmesini destekler.
-**Bölge sabitlenmiş VM 'Ler** | Azure Backup, bölge sabitlenmiş sanal makinelerin yedeklenmesini ve geri yüklenmesini destekler. [Daha fazlasını öğrenin](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**Bölge sabitlenmiş VM 'Ler** | Bir bölgeye sabitlenmiş bir Azure VM 'yi (Azure Backup ile) yedeklebiliyorsanız, onu sabitlendiği bölgeye geri yükleyebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/availability-zones/az-overview)
 
 ## <a name="track-the-restore-operation"></a>Geri yükleme işlemini izleme
 
@@ -218,7 +218,7 @@ Bir VM 'yi geri yükledikten sonra dikkat etmeniz gereken birkaç nokta vardır:
 - Yedeklenen VM 'nin statik bir IP adresi varsa, geri yüklenen VM 'nin çakışmayı önlemek için dinamik bir IP adresi olur. [Geri yüklenen VM 'ye statik BIR IP adresi ekleyebilirsiniz](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description).
 - Geri yüklenen bir VM 'nin kullanılabilirlik kümesi yok. Diski geri yükle seçeneğini kullanırsanız, belirtilen şablonu veya PowerShell 'i kullanarak diskten bir VM oluşturduğunuzda [bir kullanılabilirlik kümesi belirtebilirsiniz](../virtual-machines/windows/tutorial-availability-sets.md) .
 - Ubuntu gibi Cloud-init tabanlı bir Linux dağıtımı kullanırsanız, güvenlik nedenleriyle geri yüklemeden sonra parolanın engellenmesi engellenir. [Parolayı sıfırlamak](../virtual-machines/linux/reset-password.md)için GERI yüklenen VM 'de VMAccess uzantısını kullanın. Bu dağıtımlardaki SSH anahtarlarının kullanılması önerilir, bu nedenle geri yüklemeden sonra parolayı sıfırlamanız gerekmez.
-- VM 'nin etki alanı denetleyicisiyle bağlantısı kopmuş olduğundan sanal makineye geri yüklendikten sonra sanal makineye erişemiyorsanız, VM 'yi getirmek için aşağıdaki adımları izleyin:
+- VM 'nin etki alanı denetleyicisiyle bozulmuş bir ilişkisi olduğundan, bir VM 'ye geri yüklendikten sonra bir VM 'ye erişemiyorsanız, VM 'yi getirmek için aşağıdaki adımları izleyin:
   - İşletim sistemi diskini kurtarılan bir VM 'ye veri diski olarak ekleyin.
   - Bu [bağlantıyı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)Izleyerek Azure aracısının yanıt VERMEMESI durumunda VM aracısını el ile yükleyebilirsiniz.
   - VM 'ye komut satırı erişimine izin vermek için sanal makinede seri konsol erişimini etkinleştirin
@@ -239,7 +239,7 @@ Bir VM 'yi geri yükledikten sonra dikkat etmeniz gereken birkaç nokta vardır:
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
-- VM 'ye bir kez ve yeniden başlatıldıktan sonra, yerel yönetici kimlik bilgileri ile VM 'ye başarıyla RDP ve etki alanına başarıyla geri dönüş sağlayacaksınız.
+- VM 'ye ve yeniden başlatıldıktan sonra, yerel yönetici kimlik bilgileri ile sanal makineye başarıyla RDP ve etki alanına başarıyla geri dönüş sağlayacaksınız.
 
 ## <a name="backing-up-restored-vms"></a>Geri yüklenen VM 'Leri yedekleme
 

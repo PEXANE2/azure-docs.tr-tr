@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 045c1d255ae380c722506615aae9cf5d22105747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 347f8a4cf1fb95849bcf1008e91d17878f3d01f8
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133105"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598530"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
@@ -24,7 +24,7 @@ Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasal
 
 ## <a name="supporting-interfaces"></a>Destekleyici arabirimler
 
-Geçici silme özelliği, ilk olarak [rest](/rest/api/keyvault/), [CLI](soft-delete-cli.md), [PowerShell](soft-delete-powershell.md) ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) arabirimleri aracılığıyla kullanılabilir.
+Geçici silme özelliği, ilk olarak [rest](/rest/api/keyvault/), [CLI](soft-delete-cli.md), [PowerShell](soft-delete-powershell.md)ve [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) arabirimleri ve [ARM şablonları](https://docs.microsoft.com/azure/templates/microsoft.keyvault/2019-09-01/vaults)aracılığıyla kullanılabilir.
 
 ## <a name="scenarios"></a>Senaryolar
 

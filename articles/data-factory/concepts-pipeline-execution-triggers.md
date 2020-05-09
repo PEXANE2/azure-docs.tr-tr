@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a31f800ad157e22f3d35abae3d3b714fa29178ef
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418363"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562211"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 
@@ -283,11 +283,11 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 | JSON özelliği | Tür | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Yes | Hiçbiri | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **yinelemeyi** | object | Yes | Hiçbiri | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **aralığında** | number | Hayır | 1 | 1-1000 arası | `"interval":10` |
-| **endTime** | string | Yes | Hiçbiri | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **çizelgesini** | object | Hayır | Hiçbiri | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | string | Yes | Yok | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **yinelemeyi** | object | Yes | Yok | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **aralığında** | number | No | 1 | 1-1000 arası | `"interval":10` |
+| **endTime** | string | Yes | Yok | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **çizelgesini** | object | No | Yok | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:
@@ -326,6 +326,9 @@ Aşağıdaki tabloda **schedule** öğeleri ayrıntılı bir şekilde açıklanm
 Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zamanından itibaren periyodik bir zaman aralığında başlatılan bir tetikleyici türüdür. Atlayan pencereler sabit boyutlu, çakışmayan ve bitişik zaman aralıkları dizisidir.
 
 Atlayan pencere Tetikleyicileri hakkında daha fazla bilgi için ve örnekler için bkz. [pencere tetikleyicisi oluşturma](how-to-create-tumbling-window-trigger.md).
+
+> [!NOTE]
+> Dönen pencere tetikleyicisi çalıştırması, tetiklenen işlem *hattı çalışmasının bitmesini bekler* . Çalışma durumu, tetiklenen işlem hattı çalıştırmasının durumunu yansıtır. Örneğin, tetiklenen bir işlem hattı çalıştırması iptal edilirse, karşılık gelen içe geçmiş pencere tetikleyicisi çalıştırması iptal edildi olarak işaretlenir. Bu, zamanlama tetikleyicisinin "yangın ve unut" davranışından farklıdır ve bu işlem hattı çalıştırması başladığı sürece başarılı olarak işaretlenir.
 
 ## <a name="event-based-trigger"></a>Olay tabanlı tetikleyici
 

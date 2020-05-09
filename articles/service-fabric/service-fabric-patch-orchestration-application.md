@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366323"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608924"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
 
@@ -165,7 +165,7 @@ Gereksinimlerinizi karşılamak için POA davranışını yapılandırabilirsini
 | Wuoperationtimeoutınminutes | int <br>(Varsayılan: *90*)                   | Herhangi bir Windows Update işlemi için (arama veya indirme veya yükleme) zaman aşımını belirtir. İşlem belirtilen zaman aşımı süresi içinde tamamlanmazsa, durdurulur.       |
 | WURescheduleCount     | int <br> (Varsayılan: *5*)                  | Bir işlemin kalıcı olarak başarısız olması halinde hizmetin Windows Update müşteri sizinle randevusunu en fazla kaç kez başarısız olduğunu.          |
 | WURescheduleTimeInMinutes | int <br>(Varsayılan: *30*) | Hata devam ederse hizmetin Windows güncelleştirmelerini müşteri sizinle randevusunu zaman aralığı. |
-| WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>&nbsp;&nbsp;-Aylık: gg, ss: DD: SS (örneğin, *aylık, 5, 12:22:32*)<br>Alan gg (gün) için izin verilen değerler 1 ile 28 ve "son" sayılardır. <br> &nbsp;&nbsp;-Haftalık, gün, ss: DD: SS (örneğin, *haftalık, Salı, 12:22:32*)  <br> &nbsp;&nbsp;-Günlük, ss: DD: SS (örneğin, *günlük, 12:22:32*)  <br> &nbsp;&nbsp;-  *Hiçbiri* Windows güncelleştirmelerinin yapılmayacağını gösterir.  <br><br> Süreler UTC olarak.|
+| WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>-Aylık, gg, ss: DD: SS (örnek: *aylık, 5, 12:22:32*). Alan _gg_ (gün) için izin verilen değerler 1 ile 28 arasında ve _son_sayılardır. <br>-Haftalık, gün, ss: DD: SS (örnek: *haftalık, Salı, 12:22:32*)  <br>-Günlük, ss: DD: SS (örnek: *günlük, 12:22:32*)  <br>-Hafta, gün, ss: DD: SS (örnek: *2, Cuma, 21:00:00* her ayın 2. haftası ÜZERINDE 9:00 PM UTC 'yi gösterir) <br>- *Hiçbiri* Windows güncelleştirmelerinin yapılmayacağını gösterir.  <br><br> Süreler UTC olarak.|
 | AcceptWindowsUpdateEula | Boole <br>(Varsayılan: *true*) | Bu bayrak ayarlanarak uygulama, makinenin sahibi adına Windows Update için Son Kullanıcı Lisans sözleşmesini kabul eder.              |
 
 > [!TIP]

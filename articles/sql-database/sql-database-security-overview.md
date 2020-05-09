@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7feb6282f3a3551e08d1bb8db2cf6ad2fcd754a8
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461404"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626165"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL veritabanı güvenlik özelliklerine genel bakış
 
@@ -30,7 +30,7 @@ Microsoft Azure SQL Veritabanı, bulut ve kurumsal uygulamalar için bir ilişki
 
 ### <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 
-IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritabanlarına erişim izni verir. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve SQL veri ambarı güvenlik duvarı kurallarına genel bakış](sql-database-firewall-configure.md).
+IP güvenlik duvarı kuralları, her isteğin kaynak IP adresine göre veritabanlarına erişim izni verir. Daha fazla bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics güvenlik duvarı kurallarına genel bakış](sql-database-firewall-configure.md).
 
 ### <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
@@ -56,7 +56,7 @@ Kimlik doğrulama, kullanıcının talep ettikleri kim olduğunu kanıtlama işl
 
 - **Azure Active Directory kimlik doğrulaması**:
 
-    Azure Active Directory kimlik doğrulaması, [Azure SQL veritabanı](sql-database-technical-overview.md) ve [SQL veri ambarı](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'Na Azure ACTIVE DIRECTORY kimlik (Azure AD) kullanarak bağlanma mekanizmasıdır. Azure AD kimlik doğrulaması, yöneticilerin, diğer Microsoft hizmetleriyle birlikte veritabanı kullanıcılarının kimliklerini ve izinlerini tek bir merkezi konumda merkezi olarak yönetmesine olanak tanır. Bu, parola depolamanın en az düzeyde bir kısmını içerir ve merkezi parola döndürme ilkelerini sunar.
+    Azure Active Directory kimlik doğrulaması, Azure Active Directory (Azure AD) kimlikleri kullanılarak [Azure SQL veritabanı](sql-database-technical-overview.md) ve [Azure SYNAPSE Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'e bağlanma mekanizmasıdır. Azure AD kimlik doğrulaması, yöneticilerin, diğer Microsoft hizmetleriyle birlikte veritabanı kullanıcılarının kimliklerini ve izinlerini tek bir merkezi konumda merkezi olarak yönetmesine olanak tanır. Bu, parola depolamanın en az düzeyde bir kısmını içerir ve merkezi parola döndürme ilkelerini sunar.
 
      SQL veritabanı ile Azure AD kimlik doğrulamasını kullanmak için **Active Directory Yöneticisi** olarak adlandırılan bir sunucu yöneticisi oluşturulmalıdır. Daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'Na bağlanma](sql-database-aad-authentication.md). Azure AD kimlik doğrulaması hem yönetilen hem de Federasyon hesaplarını destekler. Federasyon hesapları, Azure AD ile federe bir müşteri etki alanı için Windows kullanıcılarını ve gruplarını destekler.
 
@@ -97,7 +97,7 @@ Gelişmiş tehdit koruması SQL Server günlüklerinizi çözümleyerek, olağan
 
 SQL veritabanı, [Aktarım Katmanı Güvenliği](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)ile hareket halindeki verileri şifreleyerek müşteri verilerinin güvenliğini sağlar.
 
-SQL Server tüm bağlantılar için her zaman şifreleme (SSL/TLS) uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
+SQL Server tüm bağlantılarda şifrelemeyi (TLS) her zaman uygular. Bu, bağlantı dizesinde **şifreleme** veya **TrustServerCertificate** ayarından bağımsız olarak, tüm verilerin istemci ve sunucu arasında "geçişte" şifrelendiğinden emin olmanızı sağlar.
 
 En iyi uygulama olarak, uygulamanızın bağlantı dizesinde şifreli bir bağlantı _**belirtmeniz ve sunucu**_ sertifikasına güvenmesini öneririz. Bu, uygulamanızı sunucu sertifikasını doğrulamaya zorlar ve böylece uygulamanızın ortadaki tür saldırılarına karşı savunmasız kalmasına engel olur.
 

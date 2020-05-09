@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733093"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854610"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub'ına gönderme
 Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulamalar ve hizmetler için eksiksiz bir tam yığın izleme çözümü sağlar. Verileri analiz etmek ve farklı izleme senaryolarında kullanmak için Azure Izleyici kullanmanın yanı sıra, bu dosyayı ortamınızdaki diğer izleme araçlarına göndermeniz gerekebilir. Çoğu durumda, izleme verilerinin dış araçlara akışını sağlamak için en etkili yöntem [Azure Event Hubs](/azure/event-hubs/)kullanmaktır. Bu makalede, farklı kaynaklardan bir olay hub 'ına izleme verileri akışını ve ayrıntılı kılavuza bağlantıları nasıl alabileceğiniz hakkında kısa bir açıklama sunulmaktadır.
@@ -23,7 +23,7 @@ Azure Izleyici, Azure 'da, diğer bulutlarda ve şirket içinde bulunan uygulama
 Herhangi bir veri kaynağı için akışı yapılandırmadan önce, [bir Event Hubs ad alanı ve Olay Hub 'ı oluşturmanız](../../event-hubs/event-hubs-create.md)gerekir. Bu ad alanı ve Olay Hub 'ı tüm izleme verilerinizin hedefdir. Event Hubs ad alanı, aynı erişim ilkesini paylaşan bir olay hub 'larının mantıksal gruplandırmasıdır. Bu, depolama hesabının bu depolama hesabı içinde ayrı blob 'lara sahip olduğu gibidir. İzleme verileri akışı için kullandığınız Olay Hub 'ları ad alanı ve Olay Hub 'ları hakkında aşağıdaki ayrıntıları göz önünde bulundurun:
 
 * Üretilen iş birimi sayısı, Olay Hub 'larınız için üretilen iş ölçeğini artırmanıza olanak tanır. Genellikle yalnızca bir üretilen iş birimi gereklidir. Günlük kullanımınız arttıkça ölçeği büyütmeniz gerekiyorsa, ad alanı için üretilen iş birimi sayısını el ile artırabilir veya otomatik enflasyon sağlayabilirsiniz.
-* Bölüm sayısı, birçok tüketici genelinde tüketim paralel hale getirmek sağlar. Tek bir bölüm, saniyede en fazla 20 Mbps veya yaklaşık 20.000 ileti destekleyebilir. Verileri kullanan araca bağlı olarak, birden çok bölümden kullanmayı desteklemiyor olabilir veya desteklemeyebilir. Ayarlanacak bölüm sayısı hakkında emin değilseniz, bunun için dört bölüm başlamak mantıklı değildir.
+* Bölüm sayısı, birçok tüketici genelinde tüketim paralel hale getirmek sağlar. Tek bir bölüm, saniyede en fazla 20 Mbps veya yaklaşık 20.000 ileti destekleyebilir. Verileri kullanan araca bağlı olarak, birden çok bölümden kullanmayı desteklemiyor olabilir veya desteklemeyebilir. Ayarlanacak bölüm sayısı hakkında emin değilseniz, dört bölüm ile başlamak mantıklı değildir.
 * Olay Hub 'ınızdaki ileti bekletmesini en az 7 güne ayarlayın. Tüketim aracınız bir günden daha uzun bir süre kapanıyorsa bu, aracın 7 güne kadar eski olaylar için kaldığınız yerden devam edebilmesini sağlar.
 * Olay Hub 'ınız için varsayılan tüketici grubunu kullanmanız gerekir. Aynı Olay Hub 'ından aynı verileri tüketmek üzere iki farklı araca sahip olmak için başka tüketici grupları oluşturmanız veya ayrı bir tüketici grubu kullanmanız gerekmez.
 * Azure etkinlik günlüğü için bir Event Hubs ad alanı seçmelisiniz ve Azure Izleyici, bu ad alanı içinde _Öngörüler-logs-işletimsel-logs_adlı bir olay hub 'ı oluşturur. Diğer günlük türleri için, mevcut bir olay hub 'ını seçebilir veya Azure Izleyici 'nin günlük kategorisi başına bir olay hub 'ı oluşturmasını sağlayabilirsiniz.
@@ -50,12 +50,12 @@ Bir olay hub 'ına doğrudan akış yapamazsınız, Azure depolama 'ya yazabilir
 
 | Araç | Azure 'da barındırılıyor | Açıklama |
 |:---|:---| :---|
-|  IBM QRadar | Hayır | Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. Azure ile tümleştirme hakkında daha fazla bilgi için bkz. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
-| Splunk | Hayır | [Splunk Için Azure Izleyici eklentisi](https://splunkbase.splunk.com/app/3534/) , Splunkbase 'de kullanılabilen açık kaynaklı bir projem. Belgeler, [Azure Izleyici eklentisi Ile splunk için](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)kullanılabilir.<br><br> Splunk örneğiniz için bir eklenti yükleyemezseniz, örneğin bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız, bu olayları splunk [Için Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak splunk http olay toplayıcısına iletebilir. Bu, Olay Hub 'ında yeni iletiler tarafından tetiklenir. |
-| SumoLogic | Hayır | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | Hayır | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
-| Syslog sunucusu | Hayır | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
-| Logrhythd | Hayır| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+|  IBM QRadar | No | Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. Azure ile tümleştirme hakkında daha fazla bilgi için bkz. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | No | [Splunk Için Azure Izleyici eklentisi](https://splunkbase.splunk.com/app/3534/) , Splunkbase 'de kullanılabilen açık kaynaklı bir projem. Belgeler, [Azure Izleyici eklentisi Ile splunk için](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)kullanılabilir.<br><br> Splunk örneğiniz için bir eklenti yükleyemezseniz, örneğin bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız, bu olayları splunk [Için Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak splunk http olay toplayıcısına iletebilir. Bu, Olay Hub 'ında yeni iletiler tarafından tetiklenir. |
+| SumoLogic | No | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | No | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
+| Syslog sunucusu | No | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
+| Logrhythd | No| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
 |Logz.io | Yes | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
 
 
