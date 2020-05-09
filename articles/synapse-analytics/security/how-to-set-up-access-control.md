@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692625"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983219"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -145,7 +145,7 @@ SYNAPSE Studio, Kullanıcı rollerine göre farklı davranır. Bir kullanıcı u
 | SYNAPSE Studio 'Yu açın | EVET | EVET | EVET |
 | Ana Hub 'ı görüntüle | EVET | EVET | EVET |
 | Veri merkezini görüntüle | EVET | EVET | EVET |
-| Veri hub 'ı/bkz. bağlantılı ADLSGen2 hesapları ve kapsayıcıları | EVET [1] | EVET [1] | EVET [1] |
+| Veri merkezi/bkz. bağlı ADLS 2. hesapları ve kapsayıcıları | EVET [1] | EVET [1] | EVET [1] |
 | Veri merkezi/bkz. veritabanları | EVET | EVET | EVET |
 | Veri merkezi/veritabanlarındaki nesneleri görüntüle | EVET | EVET | EVET |
 | SQL havuzu veritabanlarındaki veri merkezi/erişim verileri | EVET   | NO   | EVET   |
@@ -179,8 +179,8 @@ SYNAPSE Studio, Kullanıcı rollerine göre farklı davranır. Bir kullanıcı u
 
 
 > [!NOTE]
-> [1] kapsayıcılardaki verilere erişim, ADLSGen2 içindeki erişim denetimine göre değişir. </br>
-> [2] SQL OD tabloları ve Spark tabloları, verilerini ADLSGen2 ' de depolar ve erişim, ADLSGen2 üzerinde uygun izinleri gerektirir.
+> [1] kapsayıcılardaki verilere erişim, ADLS 2. erişim denetimine göre değişir. </br>
+> [2] SQL OD tabloları ve Spark tabloları, verilerini ADLS 2. ADLS 2. depolar ve erişim için uygun izinler gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

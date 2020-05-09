@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: ced807b25cd1e829988a1e6b7621a5f73e0edfc2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: HT
+ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202456"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562245"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP üstbilgilerini Application Gateway yeniden yazın
 
@@ -157,6 +157,8 @@ Bir üst bilgi veya sunucu değişkeni varlığı için bir HTTP isteği veya ya
 ## <a name="limitations"></a>Sınırlamalar
 
 - Bir yanıtta aynı ada sahip birden fazla üst bilgi varsa, bu üst bilgilerden birinin değerini yeniden yazmak yanıttaki diğer üstbilgilerin bırakılmasına neden olur. Bu, genellikle bir yanıtta birden fazla set-Cookie üst bilgisine sahip olabileceğinizden, set-Cookie üst bilgisinde meydana gelebilir. Bu tür bir senaryo, uygulama ağ geçidi ile uygulama hizmeti kullanırken ve uygulama ağ geçidinde tanımlama bilgisi tabanlı oturum benzeşimi yapılandırmış olduğunuz bir senaryodur. Bu durumda, yanıt iki set-Cookie üst bilgisi içerir: bir App Service tarafından kullanılan, örneğin: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` ve uygulama ağ geçidi benzeşimi için bir diğeri (örneğin, `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`). Bu senaryodaki set-Cookie başlıklarından birini yeniden yazmak, diğer set-Cookie üst bilgisinin yanıttan kaldırılmasına neden olabilir.
+
+- Uygulama ağ geçidi istekleri yeniden yönlendirmek veya özel bir hata sayfası göstermek üzere yapılandırıldığında, yeniden yazar desteklenmez.
 
 - Bağlantı, yükseltme ve ana bilgisayar üst bilgilerini yeniden yazma Şu anda desteklenmiyor.
 

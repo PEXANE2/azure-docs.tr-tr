@@ -1,41 +1,43 @@
 ---
-title: Olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
+title: Olağanüstü durum kurtarma ve depolama hesabı yük devretme
 titleSuffix: Azure Storage
-description: Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini (Önizleme) destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz.
+description: Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7340f419912324e488dc38e5aa0d884b150a44b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176388"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857779"
 ---
-# <a name="disaster-recovery-and-account-failover-preview"></a>Olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)
+# <a name="disaster-recovery-and-storage-account-failover"></a>Olağanüstü durum kurtarma ve depolama hesabı yük devretme
 
 Microsoft, Azure hizmetlerinin her zaman kullanılabilir olduğundan emin olmaya çalışır. Ancak, planlanmamış hizmet kesintileri meydana gelebilir. Uygulamanız dayanıklılık gerektiriyorsa, Microsoft, verilerinizin ikinci bir bölgeye kopyalanması için coğrafi olarak yedekli depolamayı kullanmanızı önerir. Ayrıca, müşterilerin bölgesel hizmet kesintisi için bir olağanüstü durum kurtarma planı olması gerekir. Olağanüstü durum kurtarma planının önemli bir kısmı, birincil uç noktanın kullanılamaz hale geldiği olaydaki ikincil uç noktaya yük devretmek için hazırlanmalıdır.
 
-Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini (Önizleme) destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz. Yük devretme, ikincil bitiş noktasını, depolama hesabınız için birincil uç nokta olacak şekilde güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil uç noktaya yazmaya başlayabilir.
+Azure depolama, coğrafi olarak yedekli depolama hesapları için hesap yük devretmesini destekler. Hesap yük devretmeyle, birincil uç nokta kullanılamaz hale gelirse depolama hesabınız için yük devretme işlemini başlatabilirsiniz. Yük devretme, ikincil bitiş noktasını, depolama hesabınız için birincil uç nokta olacak şekilde güncelleştirir. Yük devretme işlemi tamamlandıktan sonra istemciler yeni birincil uç noktaya yazmaya başlayabilir.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+Hesap yük devretmesi, genel amaçlı v1, genel amaçlı v2 ve Azure Resource Manager dağıtımlarıyla BLOB depolama hesabı türleri için kullanılabilir. Hesap yük devretmesi tüm ortak bölgeler için desteklenir, ancak şu anda sogeign veya National bulutlar içinde kullanılamaz.
 
-Bu makalede, hesap yük devretmesi ile ilgili kavramlar ve işlemler açıklanmakta ve depolama hesabınızın en az müşteri etkisi miktarına göre kurtarmaya nasıl hazırlanacağı anlatılmaktadır. Azure portal veya PowerShell 'de hesap yük devretmesini başlatmayı öğrenmek için bkz. [Hesap yük devretmesi başlatma (Önizleme)](storage-initiate-account-failover.md).
+Bu makalede, hesap yük devretmesi ile ilgili kavramlar ve işlemler açıklanmakta ve depolama hesabınızın en az müşteri etkisi miktarına göre kurtarmaya nasıl hazırlanacağı anlatılmaktadır. Azure portal veya PowerShell 'de hesap yük devretmesini başlatmayı öğrenmek için bkz. [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md).
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>Doğru artıklık seçeneğini belirleyin
 
-Azure depolama, dayanıklılık ve yüksek kullanılabilirlik sağlamak için depolama hesabınızın birden çok kopyasını tutar. Hesabınız için seçtiğiniz artıklık seçeneği, ihtiyacınız olan dayanıklılık derecesine bağlıdır. Bölgesel kesintilere karşı koruma için, ikincil bölgeden okuma erişimi seçeneği olmadan veya bunlarla birlikte coğrafi olarak yedekli depolama ' yı seçin:  
+Azure depolama, dayanıklılık ve yüksek kullanılabilirlik sağlamak için depolama hesabınızın birden çok kopyasını tutar. Hesabınız için seçtiğiniz artıklık seçeneği, ihtiyacınız olan dayanıklılık derecesine bağlıdır. Bölgesel kesintilere karşı koruma için hesabınızı, ikincil bölgeden okuma erişimi seçeneği olmadan veya olmayan coğrafi olarak yedekli depolama için yapılandırın:  
 
-**Coğrafi olarak yedekli depolama (GRS) veya coğrafi bölge yedekli depolama (GZRS) (Önizleme)** , verilerinizi en az yüzlerce mil olan iki coğrafi bölgede zaman uyumsuz olarak kopyalar. Birincil bölge bir kesinti olursa, ikincil bölge verileriniz için yedek bir kaynak görevi görür. İkincil uç noktayı birincil uç noktaya dönüştürmek için bir yük devretme işlemi başlatabilirsiniz.
+**Coğrafi olarak yedekli depolama (GRS) veya coğrafi bölge yedekli depolama (GZRS)** , verilerinizi en az yüzlerce mil olan iki coğrafi bölgede zaman uyumsuz olarak kopyalar. Birincil bölge bir kesinti olursa, ikincil bölge verileriniz için yedek bir kaynak görevi görür. İkincil uç noktayı birincil uç noktaya dönüştürmek için bir yük devretme işlemi başlatabilirsiniz.
 
-**Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (ra-GZRS) (Önizleme)** , ikincil uç noktaya okuma erişiminin ek avantajına sahip coğrafi olarak yedekli depolama sağlar. Birincil uç noktada bir kesinti oluşursa, RA-GRS için yapılandırılan ve yüksek kullanılabilirlik için tasarlanan uygulamalar ikincil uç noktadan okumaya devam edebilir. Microsoft, uygulamalarınız için en yüksek dayanıklılık için RA-GRS önerir.
+**Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (ra-GZRS)** , ikincil uç noktaya okuma erişiminin ek avantajına sahip coğrafi olarak yedekli depolama sağlar. Birincil uç noktada bir kesinti oluşursa, ikinciye okuma erişimi için yapılandırılan ve yüksek kullanılabilirlik için tasarlanan uygulamalar ikincil uç noktadan okumaya devam edebilir. Microsoft, uygulamalarınız için maksimum kullanılabilirlik ve dayanıklılık için RA-GZRS önerir.
 
 Azure depolama 'daki artıklık hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
@@ -46,15 +48,15 @@ Azure depolama 'daki artıklık hakkında daha fazla bilgi için bkz. [Azure Sto
 
 Uygulamanızı, başlangıçtan itibaren yüksek kullanılabilirlik için tasarlamak önemlidir. Uygulamanızı tasarlama ve olağanüstü durum kurtarmayı planlama konusunda rehberlik için bu Azure kaynaklarına başvurun:
 
-- [Azure için dayanıklı uygulamalar tasarlama](/azure/architecture/checklist/resiliency-per-service): Azure 'da yüksek oranda kullanılabilir uygulamalar oluşturmaya yönelik temel kavramlara genel bakış.
-- [Kullanılabilirlik denetim listesi](/azure/architecture/checklist/resiliency-per-service): uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
-- [RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md): RA-GRS 'nin avantajlarından yararlanmak için uygulama oluşturmaya yönelik tasarım kılavuzu.
+- [Azure için dayanıklı uygulamalar tasarlama](/azure/architecture/framework/resiliency/app-design): Azure 'da yüksek oranda kullanılabilir uygulamalar oluşturmaya yönelik temel kavramlara genel bakış.
+- [Dayanıklılık denetim listesi](/azure/architecture/checklist/resiliency-per-service): uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
+- [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi yedeklilik kullanın](geo-redundant-design.md): coğrafi olarak yedekli depolama alanının avantajlarından yararlanmak için uygulama oluşturmaya yönelik tasarım kılavuzu.
 - [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md): uç noktalar arasında otomatik olarak bir şekilde geçiş yapan ve kurtarmaların benzetilyilmiş olduğu yüksek oranda kullanılabilir bir uygulamanın nasıl oluşturulacağını gösteren bir öğretici. 
 
 Ayrıca, Azure depolama verileriniz için yüksek kullanılabilirlik sağlamak üzere bu en iyi yöntemleri göz önünde bulundurun:
 
 - **Diskler:** Azure sanal makineleriniz tarafından kullanılan VM disklerini yedeklemek için [Azure Backup](https://azure.microsoft.com/services/backup/) kullanın. Ayrıca, bölgesel bir olağanüstü durum durumunda sanal makinelerinizi korumak için [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanmayı göz önünde bulundurun.
-- **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/storage-blob-soft-delete.md) özelliğini açın veya [azcopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
+- **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/storage-blob-soft-delete.md) özelliğini açın veya [azcopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](storage-use-data-movement-library.md)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
 - **Dosyalar:** Dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanın.
 - **Tablolar:** farklı bir bölgedeki başka bir depolama hesabına tablo verilerini dışarı aktarmak Için [AzCopy](storage-use-azcopy.md) kullanın.
 
@@ -66,7 +68,7 @@ Microsoft ayrıca, yazma hatalarıyla ilgili hazırlanabilmesi için uygulamanı
 
 ## <a name="understand-the-account-failover-process"></a>Hesap yük devretme sürecini anlayın
 
-Müşteri tarafından yönetilen hesap yük devretmesi (Önizleme), birincil bölge herhangi bir nedenle kullanılamaz hale gelirse tüm depolama hesabınızı ikincil bölgeye devredebilmenizi sağlar. İkincil bölgeye yük devretmeyi zorlarsanız, istemciler yük devretme tamamlandıktan sonra ikincil uç noktaya veri yazmaya başlayabilir. Yük devretme genellikle yaklaşık bir saat sürer.
+Müşteri tarafından yönetilen hesap yük devretmesi, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse tüm depolama hesabınızı ikincil bölgeye devrederlemenize olanak sağlar. İkincil bölgeye yük devretmeyi zorlarsanız, istemciler yük devretme tamamlandıktan sonra ikincil uç noktaya veri yazmaya başlayabilir. Yük devretme genellikle yaklaşık bir saat sürer.
 
 ### <a name="how-an-account-failover-works"></a>Hesap yük devretmesi nasıl çalışır?
 
@@ -82,12 +84,12 @@ Müşteri, ikincil uç noktaya yük devretme hesabı başlatır. Yük devretme i
 
 ![Müşteri, ikincil uç noktaya hesap yük devretmesini başlatır](media/storage-disaster-recovery-guidance/failover-to-secondary.png)
 
-DNS girdisi güncelleştirildikten ve istekler yeni birincil uç noktaya yönlendirildikten sonra, GRS ve RA-GRS hesapları için yazma erişimi geri yüklenir. Blob 'lar, tablolar, kuyruklar ve dosyalar için mevcut depolama hizmeti uç noktaları, yük devretmeden sonra aynı kalır.
+DNS girdisi güncelleştirildikten ve istekler yeni birincil uç noktaya yönlendirildikten sonra, coğrafi olarak yedekli hesaplar için yazma erişimi geri yüklenir. Blob 'lar, tablolar, kuyruklar ve dosyalar için mevcut depolama hizmeti uç noktaları, yük devretmeden sonra aynı kalır.
 
 > [!IMPORTANT]
-> Yük devretme işlemi tamamlandıktan sonra, depolama hesabı yeni birincil uç noktada yerel olarak yedekli olacak şekilde yapılandırılır. Yeni ikincil çoğaltmayı yeniden başlatmak için, hesabı coğrafi olarak yedekli depolamayı (RA-GRS veya GRS) kullanacak şekilde yapılandırın.
+> Yük devretme işlemi tamamlandıktan sonra, depolama hesabı yeni birincil uç noktada yerel olarak yedekli olacak şekilde yapılandırılır. Yeni ikincil çoğaltmayı yeniden başlatmak için, hesabı coğrafi artıklık için yeniden yapılandırın.
 >
-> LRS hesabını RA-GRS veya GRS 'ye dönüştürmenin bir maliyet doğurur olduğunu unutmayın. Bu maliyet, yük devretmeden sonra RA-GRS veya GRS kullanmak üzere yeni birincil bölgedeki depolama hesabını güncelleştirmek için geçerlidir.  
+> Bir LRS hesabını coğrafi artıklık kullanacak şekilde dönüştürmenin bir maliyet doğurur olduğunu unutmayın. Bu maliyet, yük devretmeden sonra yeni birincil bölgedeki depolama hesabını güncelleştirmek için geçerlidir.  
 
 ### <a name="anticipate-data-loss"></a>Veri kaybını tahmin edin
 
@@ -104,7 +106,7 @@ En iyi uygulama olarak, beklenen veri kaybını değerlendirmek için son eşitl
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Özgün birincili geri yüklerken dikkatli olun
 
-Birincil sunucudan ikincil bölgeye yük devretme yaptıktan sonra, depolama hesabınız yeni birincil bölgede yerel olarak yedekli olacak şekilde yapılandırılır. GRS veya RA-GRS kullanacak şekilde güncelleştirerek hesabı coğrafi yedeklilik için yeniden yapılandırabilirsiniz. Hesap, yük devretmeden sonra coğrafi yedeklilik için yapılandırıldığında yeni birincil bölge, ilk yük devretmeden önce birincil olan yeni ikincil bölgeye doğrudan veri kopyalamaya başlar. Ancak, birincil içindeki mevcut verilerin yeni ikincil öğesine tamamen kopyalanabilmesi için bu işlem biraz zaman alabilir.
+Birincil sunucudan ikincil bölgeye yük devretme yaptıktan sonra, depolama hesabınız yeni birincil bölgede yerel olarak yedekli olacak şekilde yapılandırılır. Daha sonra hesabı coğrafi artıklık için yeniden yapılandırabilirsiniz. Hesap, yük devretmeden sonra coğrafi yedeklilik için yapılandırıldığında yeni birincil bölge, ilk yük devretmeden önce birincil olan yeni ikincil bölgeye doğrudan veri kopyalamaya başlar. Ancak, birincil içindeki mevcut verilerin yeni ikincil öğesine tamamen kopyalanabilmesi için bu işlem biraz zaman alabilir.
 
 Depolama hesabı coğrafi yedeklilik için yeniden yapılandırıldıktan sonra, yeni birincili yeni ikincil sunucudan başka bir yük devretme başlatmak mümkündür. Bu durumda, ilk birincil bölge yük devretmeden önce birincil bölge yeniden olur ve yerel olarak yedekli olacak şekilde yapılandırılır. Yük devretme sonrası birincil bölgesindeki (orijinal ikincil) tüm veriler kaybolur. Depolama hesabındaki verilerin büyük bir bölümünü yeniden denemeden önce yeni ikincil sürümüne kopyalanmamışsa, büyük bir veri kaybını etkilemeyebilir.
 
@@ -112,33 +114,27 @@ Depolama hesabı coğrafi yedeklilik için yeniden yapılandırıldıktan sonra,
 
 ## <a name="initiate-an-account-failover"></a>Hesap yük devretmesi başlatma
 
-Azure portal, PowerShell, Azure CLı veya Azure depolama kaynak sağlayıcısı API 'sinden bir hesap yük devretmesi başlatabilirsiniz. Yük devretme başlatma hakkında daha fazla bilgi için bkz. [Hesap yük devretmesi başlatma (Önizleme)](storage-initiate-account-failover.md).
+Azure portal, PowerShell, Azure CLı veya Azure depolama kaynak sağlayıcısı API 'sinden bir hesap yük devretmesi başlatabilirsiniz. Yük devretme başlatma hakkında daha fazla bilgi için bkz. [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md).
 
-## <a name="about-the-preview"></a>Önizleme hakkında
+## <a name="additional-considerations"></a>Diğer konular
 
-Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS kullanan tüm müşteriler için önizleme aşamasında kullanılabilir. Genel amaçlı v1, genel amaçlı v2 ve BLOB depolama hesabı türleri desteklenir. Hesap yük devretmesi Şu anda tüm genel bölgelerde kullanılabilir. Hesap yük devretmesi Şu anda Sovereign/National bulutlar içinde kullanılamıyor.
+Bir yük devretmeye zorlarsanız uygulamalarınızın ve hizmetlerinizin nasıl etkilenebileceğini anlamak için bu bölümde açıklanan ek konuları gözden geçirin.
 
-Önizleme yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
+### <a name="storage-account-containing-archived-blobs"></a>Arşivlenmiş blob 'ları içeren depolama hesabı
 
-### <a name="additional-considerations"></a>Diğer konular
+Arşivlenmiş blob 'ları içeren depolama hesapları, hesap yük devretmesini destekler. Yük devretme işlemi tamamlandıktan sonra, hesabın coğrafi artıklık için yapılandırılabilmesi için tüm arşivlenmiş Blobların çevrimiçi bir katmana yeniden doldurulması gerekir.
 
-Önizleme dönemi boyunca bir yük devretmeyi zorlarsanız uygulamalarınızın ve hizmetlerinizin nasıl etkilenebileceğini anlamak için bu bölümde açıklanan ek konuları gözden geçirin.
-
-#### <a name="storage-account-containing-archived-blobs"></a>Arşivlenmiş blob 'ları içeren depolama hesabı
-
-Arşivlenmiş blob 'ları içeren depolama hesapları, hesap yük devretmesini destekler. Yük devretme işlemi tamamlandıktan sonra, hesabı GRS 'ye veya RA-GRS ' e dönüştürmek için tüm arşivlenmiş blob 'ların önce çevrimiçi bir katmana yeniden doldurulması gerekir.
-
-#### <a name="storage-resource-provider"></a>Depolama kaynak sağlayıcısı
+### <a name="storage-resource-provider"></a>Depolama kaynak sağlayıcısı
 
 Yük devretme tamamlandıktan sonra, istemciler yeni birincil bölgedeki Azure depolama verilerini okuyup yazabilir. Ancak, Azure depolama kaynak sağlayıcısı yük devri yapmaz, bu nedenle kaynak yönetimi işlemleri birincil bölgede hala gerçekleşmelidir. Birincil bölge kullanılamıyorsa, depolama hesabında yönetim işlemleri gerçekleştiremezsiniz.
 
 Azure depolama kaynak sağlayıcısı yük devretmediğinden, [konum](/dotnet/api/microsoft.azure.management.storage.models.trackedresource.location) özelliği, yük devretme tamamlandıktan sonra orijinal birincil konumu döndürür.
 
-#### <a name="azure-virtual-machines"></a>Azure sanal makineleri
+### <a name="azure-virtual-machines"></a>Azure sanal makineleri
 
 Azure sanal makineleri (VM 'Ler), hesap yük devretmesi kapsamında yük devreder. Birincil bölge kullanılamaz duruma gelirse ve ikincil bölgeye yük devretmek, yük devretmeden sonra VM 'Leri yeniden oluşturmanız gerekir. Ayrıca, hesap yük devretmesi ile ilişkili potansiyel bir veri kaybı vardır. Microsoft, Azure 'daki sanal makinelere özgü aşağıdaki [yüksek kullanılabilirlik](../../virtual-machines/windows/manage-availability.md) ve [olağanüstü durum kurtarma](../../virtual-machines/virtual-machines-disaster-recovery-guidance.md) kılavuzunu önerir.
 
-#### <a name="azure-unmanaged-disks"></a>Azure yönetilmeyen diskler
+### <a name="azure-unmanaged-disks"></a>Azure yönetilmeyen diskler
 
 En iyi uygulama olarak, Microsoft yönetilmeyen disklerin yönetilen disklere dönüştürülmesini önerir. Ancak, Azure VM 'lerine bağlı yönetilmeyen diskler içeren bir hesabın yük devretmesinin gerekli olması gerekiyorsa, yük devretmeyi başlatmadan önce sanal makineyi kapatmanız gerekir.
 
@@ -155,30 +151,28 @@ Yönetilmeyen diskler, Azure depolama 'da sayfa Blobları olarak depolanır. Azu
 
 VM kapatılırken geçici bir diskte depolanan tüm verilerin kaybedildiğini aklınızda bulundurun.
 
-### <a name="unsupported-features-and-services"></a>Desteklenmeyen özellikler ve hizmetler
+## <a name="unsupported-features-and-services"></a>Desteklenmeyen özellikler ve hizmetler
 
-Önizleme sürümü için hesap yük devretmesi için aşağıdaki özellikler ve hizmetler desteklenmez:
+Hesap yük devretmesi için aşağıdaki özellikler ve hizmetler desteklenmez:
 
 - Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme'de bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarının bulunduğu depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir.
 - ADLS 2. depolama hesapları (hiyerarşik ad alanı etkin olan hesaplar) Şu anda desteklenmiyor.
 - Premium blok bloblarını içeren bir depolama hesabı yük devredilemez. Premium blok bloblarını destekleyen depolama hesapları Şu anda coğrafi artıklığı desteklemez.
 - [Solucan ve kullanılabilirlik ilkesi](../blobs/storage-blob-immutable-storage.md) etkinleştirilmiş kapsayıcıları içeren bir depolama hesabı yük devredilemez. Kilitlemeli/kilitlenmiş zamana dayalı saklama veya yasal saklama ilkeleri, uyumluluk sağlamak için yük devretmeyi önler.
-- Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkin olursa çalışmayı durdurabilir: [olay abonelikleri](../blobs/storage-blob-event-overview.md), [değişiklik akışı](../blobs/storage-blob-change-feed.md), [yaşam döngüsü ilkeleri](../blobs/storage-lifecycle-management-concepts.md)ve [depolama Analizi günlüğe kaydetme](storage-analytics-logging.md).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Yük devretmeye alternatif olarak verileri kopyalama
 
-Depolama Hesabınız RA-GRS için yapılandırılmışsa, ikincil uç noktayı kullanarak verilerinize okuma erişiminizin olması gerekir. Birincil bölgedeki bir kesinti olması durumunda yük devredememeyi tercih ediyorsanız, İkincil bölgedeki depolama hesabınızdan verileri etkilenmeyen bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) gibi araçları kullanabilirsiniz. Daha sonra hem okuma hem de yazma kullanılabilirliği için uygulamalarınızı bu depolama hesabına işaret edebilirsiniz.
+Depolama Hesabınız ikinciye okuma erişimi için yapılandırılmışsa, uygulamanızı ikincil uç noktadan okumak üzere tasarlayabilirsiniz. Birincil bölgedeki bir kesinti olması durumunda yük devredememeyi tercih ediyorsanız, İkincil bölgedeki depolama hesabınızdan verileri etkilenmeyen bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)veya [Azure veri taşıma kitaplığı](../common/storage-use-data-movement-library.md) gibi araçları kullanabilirsiniz. Daha sonra hem okuma hem de yazma kullanılabilirliği için uygulamalarınızı bu depolama hesabına işaret edebilirsiniz.
 
 > [!CAUTION]
 > Hesap yük devretmesi, veri geçiş stratejinizin bir parçası olarak kullanılmamalıdır.
 
-
 ## <a name="microsoft-managed-failover"></a>Microsoft tarafından yönetilen yük devretme
 
-Önemli bir olağanüstü durum nedeniyle bölgenin kaybolması durumunda Microsoft, bölgesel bir yük devretme işlemi başlatabilir. Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez. Microsoft tarafından yönetilen yük devretme tamamlanana kadar, depolama hesabınıza yazma erişiminiz olmayacaktır. Depolama Hesabınız RA-GRS için yapılandırılmışsa uygulamalarınız ikincil bölgeden okunabilir. 
+Önemli bir olağanüstü durum nedeniyle bölgenin kaybolması durumunda Microsoft, bölgesel bir yük devretme işlemi başlatabilir. Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez. Microsoft tarafından yönetilen yük devretme tamamlanana kadar, depolama hesabınıza yazma erişiminiz olmayacaktır. Depolama Hesabınız RA-GRS veya RA-GZRS için yapılandırılmışsa, uygulamalarınız ikincil bölgeden okunabilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Hesap yük devretmesini başlatma (Önizleme)](storage-initiate-account-failover.md)
-- [RA-GRS’yi kullanarak yüksek kullanılabilirliğe sahip uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)
-- [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md) 
+- [Yüksek oranda kullanılabilir uygulamalar tasarlamak için coğrafi artıklığı kullanın](geo-redundant-design.md)
+- [Hesap yük devretmesi başlatma](storage-initiate-account-failover.md)
+- [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md)

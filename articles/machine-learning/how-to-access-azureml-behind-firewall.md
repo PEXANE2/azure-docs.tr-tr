@@ -1,7 +1,7 @@
 ---
-title: Güvenlik duvarının arkasında Azure Machine Learning kullanma
+title: Güvenlik duvarı kullanma
 titleSuffix: Azure Machine Learning
-description: Azure Güvenlik duvarının arkasındaki Azure Machine Learning güvenle kullanın. Azure Machine Learning düzgün çalışması için güvenlik duvarı üzerinden izin vermeniz gereken konaklar hakkında bilgi edinin.
+description: Azure Güvenlik duvarları ile Azure Machine Learning çalışma alanlarına erişimi denetleyin. Azure Machine Learning düzgün çalışması için güvenlik duvarı üzerinden izin vermeniz gereken konaklar hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 2c5fe9d46ef408775cc4b99d4820a652a91683c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196328"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981974"
 ---
-# <a name="use-azure-machine-learning-workspace-behind-azure-firewall"></a>Azure Güvenlik duvarının arkasında Azure Machine Learning çalışma alanı kullanma
+# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Machine Learning için Azure Güvenlik duvarının arkasındaki çalışma alanını kullanın
 
-Bu makale, Azure Machine Learning ile kullanmak üzere Azure Güvenlik Duvarı 'nı yapılandırma hakkında bilgi içerir.
+Bu makalede, Azure Güvenlik duvarını bir Azure Machine Learning çalışma alanıyla kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
 
 Azure Güvenlik Duvarı, Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek için kullanılabilir. Doğru yapılandırılmamışsa, güvenlik duvarı çalışma alanınızı kullanarak sorunlara yol açabilir.
 

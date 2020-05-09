@@ -1,28 +1,35 @@
 ---
-title: Zaman uyumsuz Java için performans ipuçları Azure Cosmos DB
-description: Azure Cosmos veritabanı performansını geliştirmek için istemci yapılandırma seçeneklerini öğrenin
-author: SnehaGunda
+title: Azure Cosmos DB zaman uyumsuz Java SDK v2 için performans ipuçları
+description: Zaman uyumsuz Java SDK v2 için Azure Cosmos veritabanı performansını iyileştirecek istemci yapılandırma seçeneklerini öğrenin
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549179"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982556"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Azure Cosmos DB ve Async Java için performans ipuçları
+# <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB zaman uyumsuz Java SDK v2 için performans ipuçları
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Zaman uyumsuz Java SDK v2](performance-tips-async-java.md)
+> * [Zaman uyumlu Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı veya SDK Yöntem çağrısı yapmak kadar kolaydır. Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, [SQL zaman uyumsuz Java SDK 'sını](sql-api-sdk-async-java.md)kullanırken en yüksek performans elde etmek için, istemci tarafı iyileştirmeler vardır.
+> [!IMPORTANT]  
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için Azure Cosmos DB Java SDK v4 kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
+> 
+> Bu makaledeki performans ipuçları yalnızca Azure Cosmos DB zaman uyumsuz Java SDK v2 içindir. Daha fazla bilgi için bkz. Azure Cosmos DB zaman uyumsuz Java SDK v2 [sürüm notları](sql-api-sdk-async-java.md), [Maven deposu](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)ve Azure Cosmos DB zaman uyumsuz Java SDK v2 [sorun giderme kılavuzu](troubleshoot-java-async-sdk.md) .
+>
+
+Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı veya SDK Yöntem çağrısı yapmak kadar kolaydır. Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, [Azure Cosmos DB zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)'yi kullanırken en yüksek performans elde etmenizi sağlayabilirsiniz.
 
 Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz Aşağıdaki seçenekleri göz önünde bulundurun:
 
@@ -31,7 +38,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 * **Bağlantı modu: doğrudan modu kullan**
 <a id="direct-connection"></a>
     
-    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. *Connectionmode* , Istemci *connectionpolicy*'yi yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Zaman uyumsuz Java SDK 'Sı için, kullanılabilir iki Connectionmode şunlardır:  
+    İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. *Connectionmode* , Istemci *connectionpolicy*'yi yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Azure Cosmos DB zaman uyumsuz Java SDK v2 için, kullanılabilir iki Connectionmode şunlardır:  
       
     * [Ağ Geçidi (varsayılan)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
     * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
@@ -39,7 +46,9 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     Ağ Geçidi modu tüm SDK platformlarında desteklenir ve varsayılan olarak yapılandırılmış seçenektir. Uygulamalarınız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağ içinde çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin her okunduğu veya Azure Cosmos DB yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması nedeniyle doğrudan mod daha iyi performans sunar.
 
     *Connectionmode* , *documentclient* örneğinin oluşturulması sırasında *connectionpolicy* parametresiyle yapılandırılır.
-    
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
+
     ```java
         public ConnectionPolicy getConnectionPolicy() {
           ConnectionPolicy policy = new ConnectionPolicy();
@@ -61,7 +70,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 ## <a name="sdk-usage"></a>SDK kullanımı
 * **En son SDK 'Yı yükler**
 
-    Azure Cosmos DB SDK 'Ları, en iyi performansı sağlamak için sürekli geliştirilmiştir. En son SDK 'Yı öğrenmek ve geliştirmeleri gözden geçirmek için [Azure Cosmos DB SDK](sql-api-sdk-async-java.md) sayfalarına bakın.
+    Azure Cosmos DB SDK 'Ları, en iyi performansı sağlamak için sürekli geliştirilmiştir. En son SDK 'yı ve geliştirmeleri gözden geçirmeyi öğrenmek için Azure Cosmos DB zaman uyumsuz Java SDK v2 [sürüm notları](sql-api-sdk-async-java.md) sayfalarına bakın.
 
 * **Uygulamanızın ömrü boyunca tek bir Azure Cosmos DB istemcisi kullanın**
 
@@ -71,9 +80,9 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 * **ConnectionPolicy ayarlama**
 
-    Varsayılan olarak, zaman uyumsuz Java SDK 'Sı kullanılırken doğrudan mod Cosmos DB istekleri TCP üzerinden yapılır. Dahili olarak SDK, ağ kaynaklarını dinamik olarak yönetmek ve en iyi performansı elde etmek için özel bir doğrudan mod mimarisi kullanır.
+    Varsayılan olarak, Azure Cosmos DB zaman uyumsuz Java SDK v2 kullanılırken doğrudan mod Cosmos DB istekleri TCP üzerinden yapılır. Dahili olarak SDK, ağ kaynaklarını dinamik olarak yönetmek ve en iyi performansı elde etmek için özel bir doğrudan mod mimarisi kullanır.
 
-    Zaman uyumsuz Java SDK 'sında, doğrudan modu, en iyi iş yükleriyle veritabanı performansını geliştirmek için en iyi seçenektir. 
+    Azure Cosmos DB zaman uyumsuz Java SDK v2 'de, doğrudan mod, en iyi iş yükleriyle veritabanı performansını geliştirmek için en iyi seçenektir. 
 
     * ***Doğrudan moda genel bakış***
 
@@ -106,7 +115,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     * ***Doğrudan mod için programlama ipuçları***
 
-        Zaman uyumsuz Java SDK sorunlarını çözmek için temel olarak Azure Cosmos DB [zaman uyumsuz Java SDK sorunlarını giderme](troubleshoot-java-async-sdk.md) makalesini gözden geçirin.
+        SDK sorunlarını çözmek için temel olarak Azure Cosmos DB zaman uyumsuz Java SDK v2 [sorun giderme](troubleshoot-java-async-sdk.md) makalesini gözden geçirin.
 
         Doğrudan mod kullanırken bazı önemli programlama ipuçları:
 
@@ -114,14 +123,14 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
         + **Özel bir iş parçacığında yoğun işlem yoğunluğu olan iş yüklerini gerçekleştirin** ; önceki ipucunun benzer nedenlerle, karmaşık veri işleme gibi işlemler ayrı bir iş parçacığına en iyi şekilde yerleştirilir. Başka bir veri deposundan veri çeken bir istek (örneğin, iş parçacığı Azure Cosmos DB kullanır ve Spark veri depoları aynı anda), daha fazla gecikme yaşar ve diğer veri deposundan bir yanıtı bekleyen ek bir iş parçacığı üretme önerilir.
 
-            + Zaman uyumsuz Java SDK 'sında temel alınan ağ GÇ 'leri Netty tarafından yönetiliyor, [NETTY GÇ iş parçacıklarını engelleyen kodlama desenlerini önlemeye yönelik bu ipuçlarına](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)bakın.
+            + Azure Cosmos DB zaman uyumsuz Java SDK v2 'de temel alınan ağ GÇ, netty tarafından yönetilir, [NETTY GÇ iş parçacıklarını engelleyen kodlama desenlerini önlemeye yönelik bu ipuçlarına](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)bakın.
 
         + **Veri modellemesi** -Azure Cosmos DB SLA 'sı belge boyutunu 1kb 'tan küçük olacak şekilde kabul eder. Veri modelinizi ve programlamanın daha küçük belge boyutunu tercih etmek için en iyi duruma getirilmesi genellikle azaltılmış gecikmeye neden olur. 1 KB 'den büyük belgeleri depolamaya ve almaya ihtiyaç duyecekseniz, belgelerin Azure Blob depolama alanındaki verilere bağlanması için önerilen yaklaşım önerilir.
 
 
 * **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
-    Azure Cosmos DB SQL zaman uyumsuz Java SDK 'Sı, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
+    Azure Cosmos DB Async Java SDK v2 Paralel sorguları destekler ve bu, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlar. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır.
 
     * ***Setmaxdegreeofparalellik ayarlama\:***
     
@@ -159,9 +168,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 * **Uygun zamanlayıcıyı kullan (olay döngüsü GÇ ağ parçacıklarının çalınmasını önleyin)**
 
-    Zaman uyumsuz Java SDK 'Sı, engellenmeyen GÇ için [Netty](https://netty.io/) kullanır. SDK, GÇ işlemlerini yürütmek için sabit sayıda GÇ Netty olay döngüsü iş parçacığını (makinenizin sahip olduğu CPU çekirdekleri) kullanır. API tarafından döndürülen observable, paylaşılan GÇ olay döngüsü Netty iş parçacıklarından birindeki sonucu yayar. Bu nedenle, paylaşılan GÇ olay döngüsü Netty iş parçacıklarının engellenmemesi önemlidir. GÇ olay döngüsü Netty iş parçacığı üzerinde CPU yoğun iş veya engelleme işlemi yapıldığında kilitlenme olabilir veya SDK verimlilik önemli ölçüde azalabilir.
+    Azure Cosmos DB Async Java SDK v2, engellenmeyen GÇ için [Netty](https://netty.io/) kullanır. SDK, GÇ işlemlerini yürütmek için sabit sayıda GÇ Netty olay döngüsü iş parçacığını (makinenizin sahip olduğu CPU çekirdekleri) kullanır. API tarafından döndürülen observable, paylaşılan GÇ olay döngüsü Netty iş parçacıklarından birindeki sonucu yayar. Bu nedenle, paylaşılan GÇ olay döngüsü Netty iş parçacıklarının engellenmemesi önemlidir. GÇ olay döngüsü Netty iş parçacığı üzerinde CPU yoğun iş veya engelleme işlemi yapıldığında kilitlenme olabilir veya SDK verimlilik önemli ölçüde azalabilir.
 
     Örneğin, aşağıdaki kod olay döngüsü GÇ Netty iş parçacığı üzerinde yoğun bir CPU kullanımı işi yürütür:
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-noscheduler"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -178,6 +189,8 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
     ```
 
     Sonuç alındıktan sonra, CPU yoğun işi gerçekleştirmek istiyorsanız olay döngüsü GÇ ağ parçacığında bunu yapmaktan kaçınmalısınız. Bunun yerine, işinizi çalıştırmak için kendi iş parçacığını sağlamak üzere kendi Scheduler 'ı sağlayabilirsiniz.
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
     ```java
     import rx.schedulers;
@@ -198,7 +211,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Çalışmanızın türüne göre, çalışmanız için mevcut olan RxJava Scheduler 'ı kullanmanız gerekir. Buradan [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)okuyun.
 
-    Daha fazla bilgi için lütfen zaman uyumsuz Java SDK 'Sı için [GitHub sayfasına](https://github.com/Azure/azure-cosmosdb-java) bakın.
+    Daha fazla bilgi için lütfen Azure Cosmos DB zaman uyumsuz Java SDK v2 için [GitHub sayfasına](https://github.com/Azure/azure-cosmosdb-java) bakın.
 
 * **Netty 'ın günlüğünü devre dışı bırak**
 
@@ -258,6 +271,8 @@ Diğer platformlar (Red hat, Windows, Mac vb.) için bu yönergelere bakınhttps
 
     Azure Cosmos DB Dizin oluşturma ilkesi, dizin oluşturma yollarını (Setıncludedpaths ve setExcludedPaths) kullanarak hangi belge yollarının dizine eklenmesini veya dışlanacağını belirtmenize olanak tanır. Dizin oluşturma yollarının kullanımı, sorgu desenlerinin önceden bildiği senaryolar için gelişmiş yazma performansı ve daha düşük dizin depolaması sunabilir, dizin oluşturma maliyetleri doğrudan dizinli benzersiz yolların sayısıyla bağıntılı olur. Örneğin, aşağıdaki kod, "*" joker karakterini kullanarak, belgelerin tamamının (alt ağaç olarak da bilinir) bir bölümünün tamamını nasıl dışlayacak olduğunu gösterir.
 
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-indexing"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
+
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
     numberIndex.set("precision", -1);
@@ -282,6 +297,8 @@ Diğer platformlar (Red hat, Windows, Mac vb.) için bu yönergelere bakınhttps
     Bir sorgunun karmaşıklığı, bir işlem için kaç istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
     Herhangi bir işlemin (oluşturma, güncelleştirme veya silme) yükünü ölçmek için, bu işlemler tarafından tüketilen istek birimi sayısını ölçmek üzere [x-MS-Request-şarj](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) üst bilgisini inceleyin. Ayrıca,\<Resourceresıset> veya feedresponse\<T> ' de eşdeğer requestücretözelliğine bakabilirsiniz.
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
     ```Java
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,
