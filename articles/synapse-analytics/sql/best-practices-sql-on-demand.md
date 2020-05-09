@@ -2,20 +2,20 @@
 title: Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 description: İsteğe bağlı SQL (Önizleme) ile çalışırken bilmeniz gereken öneriler ve en iyi uygulamalar.
 services: synapse-analytics
-author: mlee3gsd
+author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429076"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692157"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -50,11 +50,73 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 - Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması daha iyidir.
 - Bölümleri farklı klasörlere veya dosya adlarına depolayarak verilerinizi bölümleyin; [belirli bölümleri hedeflemek için dosya adı ve FilePath işlevlerini kullanın](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
+## <a name="push-wildcards-to-lower-levels-in-path"></a>Yoldaki daha düşük düzeylerde joker karakter gönder
+
+[Birden çok dosya ve klasörü sorgulamak](develop-storage-files-overview.md#query-multiple-files-or-folders)için yolunuzda joker karakterler kullanabilirsiniz. İsteğe bağlı SQL, depolama ortamınızdaki ilk * depolama API 'SI kullanılarak başlayan ve belirtilen yoldan eşleşmeyen dosyaları ortadan kaldıran dosyaları listeler. İlk joker karaktere kadar belirtilen yol ile eşleşen çok sayıda dosya varsa, ilk dosya listesini azaltmak performansı iyileştirebilir.
+
+## <a name="use-appropriate-data-types"></a>Uygun veri türlerini kullan
+
+Sorgunuzda kullanılan veri türleri performansı etkiler. Şunları yaparsanız daha iyi performans alabilirsiniz: 
+
+- Olası en büyük değere uyum sağlayacak en küçük veri boyutunu kullanın.
+  - Maksimum karakter değeri uzunluğu 30 karakter ise, 30 uzunluğunda karakter veri türünü kullanın.
+  - Tüm karakter sütun değerleri sabit boyutlardır char veya nchar kullanın. Aksi takdirde, varchar veya nvarchar kullanın.
+  - En büyük tamsayı sütun değeri 500 ise, bu değere sahip olabilecek en küçük veri türü olduğu için smallint kullanın. Tamsayı veri türü aralıklarını [burada](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)bulabilirsiniz.
+- Mümkünse, nvarchar ve nchar yerine varchar ve Char kullanın.
+- Mümkünse tamsayı tabanlı veri türlerini kullanın. Sıralama, JOIN ve gruplandırma işlemleri, karakter verilerinden daha hızlı bir şekilde gerçekleştirilir.
+- Şema çıkarımı kullanıyorsanız, [gösterilen veri türünü denetleyin](#check-inferred-data-types).
+
+## <a name="check-inferred-data-types"></a>Gösterilen veri türlerini denetle
+
+[Şema çıkarımı](query-parquet-files.md#automatic-schema-inference) , dosya şemasını bilmeden sorguları hızlı bir şekilde yazmanıza ve verileri araştırmanıza yardımcı olur. Bu rahatlık, çıkarsanından daha büyük olan çıkarılan veri türlerinin masrafına gelir. Uygun veri türünün kullanıldığından emin olmak için kaynak dosyalarında yeterli bilgi olmadığında gerçekleşir. Örneğin, Parquet dosyaları en fazla karakter sütun uzunluğu hakkında meta veriler içermez ve isteğe bağlı SQL bu verileri varchar (8000) olarak algılar. 
+
+[Sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15)kullanarak sorgunuzun sonuç veri türlerini kontrol edebilirsiniz.
+
+Aşağıdaki örnek, çıkarılan veri türlerini nasıl iyileştiribileceğinizi göstermektedir. Yordamı, gösterilen veri türlerini göstermek için kullanılır. 
+```sql  
+EXEC sp_describe_first_result_set N'
+    SELECT
+        vendor_id, pickup_datetime, passenger_count
+    FROM 
+        OPENROWSET(
+            BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*'',
+            FORMAT=''PARQUET''
+        ) AS nyc';
+```
+
+Sonuç kümesini burada bulabilirsiniz.
+
+|is_hidden|column_ordinal|ad|system_type_name|max_length|
+|----------------|---------------------|----------|--------------------|-------------------||
+|0|1|vendor_id|varchar (8000)|8000|
+|0|2|pickup_datetime|datetime2 (7)|8|
+|0|3|passenger_count|int|4|
+
+Sorgu için gösterilen veri türlerini öğrendikten sonra, uygun veri türlerini belirteceğiz:
+
+```sql  
+SELECT
+    vendor_id, pickup_datetime, passenger_count
+FROM 
+    OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        FORMAT='PARQUET'
+    ) 
+    WITH (
+        vendor_id varchar(4), -- we used length of 4 instead of inferred 8000
+        pickup_datetime datetime2,
+        passenger_count int
+    ) AS nyc;
+```
+
 ## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için FileInfo ve FilePath işlevlerini kullanın
 
 Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bu işlev, sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. Ek bir ödül daha iyi bir performans elde edersiniz.
 
 Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-function) ve [FilePath](develop-storage-files-overview.md#filepath-function) işlevlerini ve [belirli dosyaları sorgulama](query-specific-files.md)ile ilgili örnekleri denetleyin.
+
+> [!TIP]
+> Her zaman FilePath ve FileInfo işlevlerinin sonucunu uygun veri türlerine atayın. Karakter veri türleri kullanıyorsanız, uygun uzunluğun kullanıldığından emin olun.
 
 Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmek üzere Bölümlendirmeyi düşünün. [Bölümlenmiş Spark TABLOLARıNı](develop-storage-files-spark-tables.md) SQL isteğe bağlı olarak sorgularken, sorgu yalnızca gerekli dosyaları hedefleyecek.
 

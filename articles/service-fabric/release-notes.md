@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729592"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891718"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -27,17 +27,17 @@ Bu makalede, Service Fabric çalışma zamanına ve SDK 'lara yönelik en son ya
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
 Geçerli COVı-19 çapraz olduğu ve müşterilerimizin karşılaştığı zorluk göz önünde bulundurarak 7,1 kullanılabilir hale getirdik, ancak Otomatik yükseltmeleri alacak şekilde kümeleri otomatik olarak yükseltmeyecektir. Müşterilerin, bu kullanıcılara en uygun olan yükseltmeleri uygulayabilmesi için, beklenmeyen kesintilere engel olmak üzere Otomatik yükseltmeleri durakladık.
 
-[Azure Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) aracılığıyla veya [Azure Resource Manager bir dağıtım](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)aracılığıyla 7,1 ' e güncelleştirebilirsiniz.
+[Azure Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) aracılığıyla veya bir [Azure Resource Manager dağıtımı](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)aracılığıyla 7,1 ' e güncelleştirebilirsiniz.
 
 Otomatik yükseltmelere sahip Service Fabric kümeleri, standart dağıtım yordamını sürdürtikten sonra otomatik olarak 7,1 güncelleştirmesini almaya başlayacaktır. Standart dağıtım [Service Fabric Tech Community sitesinde](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)başlamadan önce başka bir duyuru sağlayacağız.
-Ayrıca, 7,1 6,5 ' den başlayan önemli yayınlar için destek tarihinin sonuna kadar güncelleştirmeler yayımladık. [here](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions) 
+Ayrıca, 7,1 6,5 ' den başlayan önemli yayınlar için destek tarihinin sonunda güncelleştirme yayımladık [.](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions) 
 
 ## <a name="what-is-new-in-service-fabric-71"></a>Service Fabric 7,1 ' deki yenilikler nelerdir?
 Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, temel özellikler ve geliştirmeler ile yüklenir. Önemli özelliklerden bazıları aşağıda vurgulanır:
 ## <a name="key-announcements"></a>Anahtar Duyurular
 - **General Availability** [ **Service Fabric uygulamalar Için Service Fabric yönetilen kimliklerin** genel kullanılabilirliği](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
-- [**Ubuntu 1804 desteği**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**Önizleme: VMSS kısa ömürlü işletim sistemi disk desteği**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: kısa ömürlü işletim sistemi diskleri yerel sanal makinede oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Geleneksel kalıcı işletim sistemi disklerine kıyasla, kısa ömürlü işletim sistemi disklerine kıyasla tüm Service Fabric düğüm türleri (birincil ve Ikincil) için önerilir:
+- [**Ubuntu 18,04 desteği**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**Önizleme: sanal makine ölçek kümesi kısa ömürlü işletim sistemi disk desteği**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: kısa ömürlü işletim sistemi diskleri yerel sanal makinede oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Geleneksel kalıcı işletim sistemi disklerine kıyasla, kısa ömürlü işletim sistemi disklerine kıyasla tüm Service Fabric düğüm türleri (birincil ve Ikincil) için önerilir:
       -  İşletim sistemi diskine okuma/yazma gecikmesini azaltma
       -  Daha hızlı sıfırlama/yeniden görüntü düğüm yönetimi işlemlerini etkinleştirme
       -  Genel maliyetleri düşürün (diskler ücretsizdir ve ek depolama maliyeti yoktur)
@@ -61,7 +61,7 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
        
  ### <a name="reliable-collections-improvements"></a>Güvenilir koleksiyonlar geliştirmeleri
 
-- [**Bellekte yalnızca güvenilir koleksiyonlar kullanılarak durum bilgisi olan hizmetler için depolama desteği**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): geçici güvenilir koleksiyonlar, verilerin büyük ölçekli kesintilere karşı dayanıklılık açısından diskte kalıcı olmasını sağlar; örneğin, zaman zaman veri kaybı toleranslı olduğu durumlarda çoğaltılan önbellek gibi iş yükleri için kullanılabilir. [Geçici güvenilir koleksiyonların sınırlamalarına ve kısıtlamalarına](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)bağlı olarak, çekirdek kaybının nadir olarak görülen hizmetler için bunu kalıcılığı gerektirmeyen iş yükleri için öneririz.
+- [**Bellekte yalnızca güvenilir koleksiyonlar kullanılarak durum bilgisi olan hizmetler için bir destek**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections)sağlanır: geçici güvenilir koleksiyonlar, verilerin büyük ölçekli kesintilere karşı dayanıklılık açısından diskte kalıcı olmasını sağlar; örneğin, büyük ölçekte veri kaybı olduğu gibi, çoğaltılan önbellek gibi iş yükleri için de kullanılabilir. [Geçici güvenilir koleksiyonların sınırlamalarına ve kısıtlamalarına](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)bağlı olarak, çekirdek kaybının nadir olarak görülen hizmetler için bunu kalıcılığı gerektirmeyen iş yükleri için öneririz.
 - [**Önizleme: yedekleme gezgini Service Fabric**](https://github.com/microsoft/service-fabric-backup-explorer): Service Fabric durum bilgisi olan uygulamalar Için güvenilir koleksiyonlar yedeklemelerinin yönetimini kolaylaştırmak için, Service Fabric yedekleme Gezgini kullanıcıların
     - Güvenilir koleksiyonların içeriğini denetleyin ve gözden geçirin,
     - Geçerli durumu tutarlı bir görünüm olarak güncelleştir
@@ -89,9 +89,9 @@ Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler i
   
 - [**Kullanıcı Hizmetleri Için kaynak sınırları**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services): kullanıcılar, Service Fabric sistem hizmetlerinin kaynak tükenmesi gibi senaryoları engellemek için bir düğümdeki Kullanıcı Hizmetleri için kaynak sınırları ayarlayabilir. 
   
-- Bir çoğaltma türü için [**çok yüksek hizmet taşıma maliyeti**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) . Çok yüksek taşıma maliyeti olan çoğaltmalar yalnızca kümede başka bir şekilde sabitlenemez bir kısıtlama ihlali varsa taşınır. "Çok yüksek" taşıma maliyetinin kullanımının makul olduğu ve ek konular açısından daha fazla bilgi için lütfen belgelere bakın.
+- Bir çoğaltma türü için [**çok yüksek hizmet taşıma maliyeti**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) . Çok yüksek taşıma maliyeti olan çoğaltmalar yalnızca kümede başka bir şekilde sabitlenemez bir kısıtlama ihlali varsa taşınır. "Çok yüksek" taşıma maliyetinin kullanımının makul olduğu ve ek konular hakkında daha fazla bilgi için bağlantılı belgeye bakın.
   
--  **Ek küme güvenliği denetimleri**: Bu sürümde, yapılandırılabilir bir çekirdek düğüm çekirdeği güvenlik denetimi tanıtıldık. Bu, küme yaşam döngüsü ve yönetim senaryolarında kaç çekirdek düğümünün kullanılabilir olması gerektiğini özelleştirmenizi sağlar. Yapılandırılan değerin altında kümeyi alacak işlemler engellenir. Günümüzde varsayılan değer her zaman çekirdek düğümlerinin bir çekirdektir. Örneğin, 7 çekirdek düğümünüz varsa, 5 tohum düğümü altına almanız gereken bir işlem varsayılan olarak engellenir. Bu değişiklik ile, en az bir çekirdek düğümün aynı anda kapatılmasını sağlayan 6 Minimum güvenli değerini yapabilirsiniz.
+-  **Ek küme güvenliği denetimleri**: Bu sürümde, yapılandırılabilir bir çekirdek düğümü çekirdek güvenlik denetimi sunuyoruz. Bu, küme yaşam döngüsü ve yönetim senaryolarında kaç çekirdek düğümünün kullanılabilir olması gerektiğini özelleştirmenizi sağlar. Yapılandırılan değerin altında kümeyi alacak işlemler engellenir. Günümüzde varsayılan değer her zaman çekirdek düğümlerinin bir çekirdektir. Örneğin, 7 çekirdek düğümünüz varsa, 5 tohum düğümü altına almanız gereken bir işlem varsayılan olarak engellenir. Bu değişiklik ile, en az bir çekirdek düğümün aynı anda kapatılmasını sağlayan 6 Minimum güvenli değerini yapabilirsiniz.
    
 - [**Service Fabric Explorer 'de yedekleme ve geri yükleme hizmetinin yönetilmesine**](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)yönelik destek eklendi. Bu, aşağıdaki etkinlikleri doğrudan SFX içinden mümkün hale getirir: yedekleme ve geri yükleme hizmetini keşfetme, yedekleme ilkesi oluşturma, otomatik yedeklemeleri etkinleştirme, geçici yedeklemeler alma, geri yükleme işlemlerini tetikleme ve var olan yedeklemelere göz atma.
 

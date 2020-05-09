@@ -1,22 +1,20 @@
-- name: Windows Sanal Masaüstü
+- name: Windows Sanal Masaüstü İlkbahar 2020 Sürümü
   href: index.yml
 - name: Genel Bakış
   items:
     - name: Windows Sanal Masaüstü nedir?
       href: overview.md
+    - name: Sonbahar 2019 Sürümü belgeleri
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Öğreticiler
   items:
-    - name: 1. Windows Sanal Masaüstü'nde kiracı oluşturma
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
-      href: create-service-principal-role-powershell.md
-    - name: 3. Azure Market kullanarak ana bilgisayar havuzu oluşturma
+    - name: 1. Azure portalıyla yeni bir konak havuzu oluşturma
       href: create-host-pools-azure-marketplace.md
-    - name: 4. Uygulama gruplarını yönetme
+    - name: 2. Uygulama gruplarını yönetme
       href: manage-app-groups.md
-    - name: 5. Hizmet güncelleştirmelerini doğrulamak için konak havuzu oluşturma
+    - name: 3. Hizmet güncelleştirmelerini doğrulamak için konak havuzu oluşturma
       href: create-validation-host-pool.md
-    - name: 6. Hizmet uyarılarını ayarlama
+    - name: 4. Hizmet uyarılarını ayarlama
       href: set-up-service-alerts.md
 - name: Nasıl yapılır
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: iOS istemcisiyle bağlanma
           href: connect-ios.md
+    - name: PowerShell modülünü ayarlama
+      href: powershell-module.md
     - name: Konak havuzu ve oturum konakları oluşturma
       items:
-        - name: Azure Resource Manager şablonu
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: Bir Windows 7 sanal makinesi dağıtma
-          href: deploy-windows-7-virtual-machine.md
         - name: GPU tabanlı bir oturum konağı dağıtma
           href: configure-vm-gpu.md
         - name: Mevcut konak havuzunu genişletme
           href: expand-existing-host-pool.md
+        - name: PowerShell ile uygulama gruplarını yönetme
+          href: manage-app-groups-powershell.md
     - name: Profil kapsayıcısı oluşturma
       items:
         - name: VM tabanlı dosya paylaşımı kullanma
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: Ana VHD görüntüsü üzerinde Office yükleme
           href: install-office-on-wvd-master-image.md
-    - name: Oturum konaklarını otomatik olarak ölçeklendirme
-      href: set-up-scaling-script.md
     - name: Akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Yönetim aracını dağıtma
-      items:
-        - name: Azure Resource Manager şablonu
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: Hizmet tanılamalarını kullanma
       items:
-        - name: Tanılama aracını dağıtma
-          href: deploy-diagnostics.md
         - name: Log Analytics ile tanılamaları kullanma
           href: diagnostics-log-analytics.md
     - name: Yerleşik uygulamaları yayımlama
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: Oturum ana bilgisayarı sanal makine yapılandırması
       href: troubleshoot-vm-configuration.md
-    - name: Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
-      href: troubleshoot-windows-7-vm.md
-    - name: Windows Sanal Masaüstü yönetim aracı sorunlarını giderme
-      href: troubleshoot-management-tool.md
     - name: Uzak Masaüstü hizmeti bağlantıları
       href: troubleshoot-service-connection.md
     - name: Uzak Masaüstü istemcisi sorunları
@@ -138,12 +122,10 @@
       href: remotefx-graphics-performance-counters.md
 - name: Başvuru
   items:
+    - name: En iyi güvenlik uygulamaları
+      href: security-guide.md
     - name: Linux desteği
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST API
-      href: /rest/api/virtual-desktop/
     - name: Desteklenen RDP dosyası ayarları
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: Ağ kılavuzu

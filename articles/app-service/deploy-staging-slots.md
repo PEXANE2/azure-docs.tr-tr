@@ -3,14 +3,14 @@ title: Hazırlama ortamlarını ayarlama
 description: Uygulamaları üretim dışı bir yuvaya dağıtmayı ve üretime nasıl bir şekilde takacağınızı öğrenin. Güvenilirliği artırın ve dağıtımlardan uygulama kesinti süresini ortadan kaldırın.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78300880"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597934"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service’te hazırlık ortamları ayarlama
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ Birden çok dağıtım yuvası etkinleştirebilmeniz için uygulamanın **Standa
    
     ![Dağıtım yuvası başlığı](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Hazırlama yuvasında, tıpkı diğer App Service uygulamaları gibi bir yönetim sayfası vardır. Yuvanın yapılandırmasını değiştirebilirsiniz. Yuva adı sayfanın en üstünde gösterilir ve dağıtım yuvasını görüntülemekte olduğunuzu hatırlatır.
+    Hazırlama yuvasında, tıpkı diğer App Service uygulamaları gibi bir yönetim sayfası vardır. Yuvanın yapılandırmasını değiştirebilirsiniz. Dağıtım yuvasını görüntülediğinizden emin olmak için, uygulama adı ** \<app-name>/\<yuva adı>** olarak gösterilir ve uygulama türü **App Service (yuva)** olur. Ayrıca, yuvası aynı gösterimlerle aynı şekilde kaynak grubunuzda ayrı bir uygulama olarak da görebilirsiniz.
 
 6. Yuvanın kaynak sayfasında Uygulama URL 'sini seçin. Dağıtım yuvası kendi ana bilgisayar adına sahiptir ve ayrıca canlı bir uygulamadır. Dağıtım yuvasına genel erişimi sınırlandırmak için bkz. [IP kısıtlamaları Azure App Service](app-service-ip-restrictions.md).
 
-Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının içeriği yoktur. Örneğin, [Bu yuvaya git ile yayımlayabilirsiniz](app-service-deploy-local-git.md). Yuvaya farklı bir depo dalından veya farklı bir depodan dağıtım yapabilirsiniz. 
+Ayarları farklı bir yuvadan kopyalasanız bile, yeni dağıtım yuvasının içeriği yoktur. Örneğin, [Bu yuvaya git ile yayımlayabilirsiniz](app-service-deploy-local-git.md). Yuvaya farklı bir depo dalından veya farklı bir depodan dağıtım yapabilirsiniz.
 
 <a name="AboutConfiguration"></a>
 
@@ -272,7 +272,7 @@ Varsayılan olarak, yeni yuvalara gri olarak gösterilen bir yönlendirme `0%`ku
 
 ## <a name="delete-a-slot"></a>Yuva silme
 
-Uygulamanızı arayın ve seçin. > >  **genel bakışı***\<silmek için * **dağıtım yuvaları** > yuvası ' nı seçin. Komut çubuğunda **Sil** ' i seçin.  
+Uygulamanızı arayın ve seçin. > >  **genel bakışı***\<silmek için * **dağıtım yuvaları** > yuvası ' nı seçin. Uygulama türü, bir dağıtım yuvası görüntülemekte olduğunuzu hatırlatmak için **App Service (yuva)** olarak gösterilir. Komut çubuğunda **Sil** ' i seçin.  
 
 ![Dağıtım yuvasını silme](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

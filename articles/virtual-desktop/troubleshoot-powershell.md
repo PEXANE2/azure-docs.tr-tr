@@ -1,21 +1,27 @@
 ---
 title: Windows sanal masaüstü PowerShell-Azure
-description: Windows sanal masaüstü kiracı ortamı ayarlarken PowerShell ile ilgili sorunları giderme.
+description: Windows sanal masaüstü ortamı ayarlarken PowerShell ile ilgili sorunları giderme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/08/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fb5436c2b5c30c5336385792d0597bdcea2b538
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127476"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612019"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Sanal Masaüstü PowerShell
+
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 PowerShell 'i Windows sanal masaüstü ile kullanırken oluşan hataları ve sorunları gidermek için bu makaleyi kullanın. PowerShell Uzak Masaüstü Hizmetleri hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü PowerShell](/powershell/module/windowsvirtualdesktop/).
 
@@ -27,71 +33,57 @@ Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle ta
 
 Bu bölümde, Windows sanal masaüstü ayarlanırken genellikle kullanılan PowerShell komutları listelenir ve bunları kullanırken oluşabilecek sorunları çözmeye yönelik yollar sağlanır.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Hata: Add-RdsAppGroupUser komutu--belirtilen UserPrincipalName zaten belirtilen konak havuzundaki bir RemoteApp uygulama grubuna atandı
+### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Hata: New-Azroleatama: belirtilen bilgiler bir AD nesne KIMLIĞIYLE eşlenmiyor
 
-```Powershell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
+```powershell
+AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
-**Neden:** Kullanılan Kullanıcı adı, farklı türdeki bir uygulama grubuna zaten atandı. Kullanıcılar aynı oturum ana bilgisayar havuzunda hem uzak masaüstü hem de uzak uygulama grubuna atanamaz.
+**Neden:** *-Signınname* parametresi tarafından belirtilen kullanıcı, Windows sanal masaüstü ortamına bağlı Azure Active Directory bulunamıyor. 
 
-**Çözüm:** Kullanıcı hem uzak uygulamalara hem de uzak masaüstüne ihtiyaç duyuyorsa, farklı konak havuzları oluşturun veya Uzak masaüstüne Kullanıcı erişimi verin; bu, oturum ana bilgisayar VM üzerinde herhangi bir uygulamanın kullanılmasına izin verir.
+**Çözüm:** Aşağıdaki işlemlerden emin olun.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Hata: Add-RdsAppGroupUser komutu--belirtilen UserPrincipalName, uzak masaüstü kiracısı ile ilişkili Azure Active Directory yok
+- Azure Active Directory için kullanıcının eşitlenmesi gerekir.
+- Kullanıcı, işletmeden müşteriye (B2C) veya işletmeden işletmeye (B2B) ticareti 'ne bağlı olmamalıdır.
+- Windows sanal masaüstü ortamı, doğru Azure Active Directory bağlı olmalıdır.
 
-```PowerShell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
-```
+### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Hata: New-Azroleatama: "nesne kimliği olan istemcinin kapsam üzerinde eylem gerçekleştirme yetkilendirmesi yok (kod: AuthorizationFailed)"
 
-**Neden:** -UserPrincipalName tarafından belirtilen kullanıcı, Windows sanal masaüstü kiracısına bağlı Azure Active Directory bulunamıyor.
+**Neden 1:** Kullanılan hesabın abonelik üzerinde sahip izinleri yok. 
 
-**Çözüm:** Aşağıdaki listedeki öğeleri onaylayın.
+**1. Çözüm:** Sahip izinlerine sahip bir kullanıcının rol atamasını yürütmesi gerekir. Alternatif olarak, bir Kullanıcı bir uygulama grubuna atamak için kullanıcının Kullanıcı erişimi Yöneticisi rolüne atanması gerekir.
 
-- Kullanıcı Azure Active Directory eşitleniyor.
-- Kullanıcı, işletmeden müşteriye (B2C) veya işletmeden işletmeye (B2B) ticareti 'ne bağlı değildir.
-- Windows sanal masaüstü kiracısı, doğru Azure Active Directory bağlıdır.
-
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--User, Yönetim hizmetini sorgulama yetkisine sahip değil
-
-```PowerShell
-Get-RdsDiagnosticActivities -ActivityId <ActivityId>
-```
-
-**Neden:** -TenantName parametresi
-
-**Çözüm:** Get-RdsDiagnosticActivities with-TenantName \<tenantname>.
-
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: Get-RdsDiagnosticActivities--Kullanıcı, Yönetim hizmetini sorgulama yetkisine sahip değil
-
-```PowerShell
-Get-RdsDiagnosticActivities -Deployment -username <username>
-```
-
-**Neden:** Dağıtım anahtarı kullanılıyor.
-
-**Çözüm:** -dağıtım anahtarı yalnızca dağıtım yöneticileri tarafından kullanılabilir. Bu yöneticiler genellikle Uzak Masaüstü Hizmetleri/Windows sanal masaüstü ekibinin üyeleridir. -Deployment anahtarını-TenantName \<tenantname> ile değiştirin.
-
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Hata: New-RdsRoleAssignment--Kullanıcı Yönetim hizmetini sorgulama yetkisine sahip değil
-
-**Neden 1:** Kullanılan hesabın kiracı üzerinde Uzak Masaüstü Hizmetleri sahip izinleri yok.
-
-**1. Çözüm:** Uzak Masaüstü Hizmetleri sahip izinlerine sahip bir kullanıcının rol atamasını yürütmesi gerekir.
-
-**Neden 2:** Kullanılan hesap Uzak Masaüstü Hizmetleri sahip izinlerine sahip ancak kiracının Azure Active Directory bir parçası değil veya kullanıcının bulunduğu Azure Active Directory sorgulamak için izinlere sahip değil.
+**Neden 2:** Kullanılan hesabın sahip izinleri var, ancak ortamın Azure Active Directory parçası değil veya kullanıcının bulunduğu Azure Active Directory sorgulamak için izinlere sahip değil.
 
 **2. Çözüm:** Active Directory izinlere sahip bir kullanıcının rol atamasını yürütmesi gerekir.
 
->[!Note]
->New-RdsRoleAssignment, Azure Active Directory (AD) içinde olmayan bir kullanıcıya izin verebilir.
+### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Hata: New-AzWvdHostPool--konum, kaynak türü için kullanılamaz
+
+```powershell
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+```
+
+Neden: Windows sanal masaüstü, belirli konumlarda hizmet meta verilerini depolamak için konak havuzlarının, uygulama gruplarının ve çalışma alanlarının konumunu seçmeyi destekler. Seçenekleriniz bu özelliğin kullanılabildiği yerle kısıtlıdır. Bu hata, özelliğin seçtiğiniz konumda kullanılamadığı anlamına gelir.
+
+Çözüm: hata iletisinde, desteklenen bölgelerin bir listesi yayımlanacak. Bunun yerine desteklenen bölgelerden birini kullanın.
+
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Hata: New-AzWvdApplicationGroup, konak havuzuyla aynı konumda olmalıdır
+
+```powershell
+New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
+```
+
+**Neden:** Bir konum uyumsuzluğu var. Tüm konak havuzları, uygulama grupları ve çalışma alanları, hizmet meta verilerini depolamak için bir konuma sahiptir. Oluşturduğunuz tüm nesneler aynı konumda olmalıdır. Örneğin, bir konak havuzu içinde `eastus`ise, içinde `eastus`uygulama grupları da oluşturmanız gerekir. Bu uygulama gruplarının kaydedileceği bir çalışma alanı oluşturursanız, bu çalışma alanının da olması `eastus` gerekir.
+
+**Çözüm:** Konak havuzunun oluşturulduğu konumu alın, ardından oluşturmakta olduğunuz uygulama grubunu aynı konuma atayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
-- Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
+- Windows sanal masaüstü ortamınızı ve konak havuzlarınızı ayarlarken oluşan sorunları gidermek için bkz. [ortam ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
 - Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md).
 - Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için bkz [. uzak masaüstü Istemcisinde sorun giderme](troubleshoot-client.md)
 - Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü ortamı](environment-setup.md).
-- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
 - Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/management/view-activity-logs.md).
 - Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](../azure-resource-manager/templates/deployment-history.md).
