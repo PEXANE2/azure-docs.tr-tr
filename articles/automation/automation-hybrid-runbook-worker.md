@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0b36651a40267ec3ea8bfe7285c5f6c5d5c31562
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871646"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994756"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -42,7 +42,7 @@ Karma Runbook Worker 'ı yüklemek için işlem işletim sistemine bağlıdır. 
 
 Önerilen yükleme yöntemi, bir Windows bilgisayarı yapılandırma işlemini tamamen otomatik hale getirmek için bir Azure Otomasyonu runbook 'unu kullanmaktır. İkinci yöntem, rolü el ile yüklemek ve yapılandırmak için adım adım bir yordamı izmaktır. Linux makinelerinde aracıyı makineye yüklemek için bir Python betiği çalıştırırsınız.
 
-## <a name="network-configuration"></a><a name="network-planning"></a>Ağ yapılandırması
+## <a name="network-planning"></a><a name="network-planning"></a>Ağ planlama
 
 Karma Runbook Worker 'ın Azure Otomasyonu 'na bağlanması ve kaydolmasının ardından bu bölümde açıklanan bağlantı noktası numarasına ve URL 'Lere erişimi olması gerekir. Çalışan Ayrıca Log Analytics aracısının Azure Izleyici Log Analytics çalışma alanına bağlanması için [gereken bağlantı noktalarına ve URL 'lere](../azure-monitor/platform/agent-windows.md) erişebilmelidir.
 
@@ -61,7 +61,7 @@ Karma Runbook Worker için aşağıdaki bağlantı noktası ve URL 'Ler gereklid
 
 Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, karma Runbook Worker iletişimini ilgili bölge veri merkezi ile kısıtlayabilirsiniz. Aşağıdaki tabloda her bölge için DNS kaydı sağlanmaktadır.
 
-| **Geli** | **DNS kaydı** |
+| **Bölge** | **DNS kaydı** |
 | --- | --- |
 | Orta Avustralya |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Doğu Avustralya |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |

@@ -5,16 +5,16 @@ description: Windows Veri Bilimi Sanal Makinesi veri keşif ve modelleme görevl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.date: 05/08/2020
+ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929290"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994064"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi yapabileceğiniz on işlem
 
@@ -30,7 +30,7 @@ Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetle
 - Azure portal veya PowerShell 'i kullanarak Azure kaynaklarınızı yönetin.
 - DSVM 'niz üzerinde bir Azure dosya paylaşımından bağlanabilir sürücü olarak depolama alanınızı genişletin ve büyük ölçekli veri kümelerini/kodları tüm ekibiniz üzerinde paylaşabilirsiniz.
 - GitHub kullanarak kodu ekibinizle paylaşabilirsiniz. Önceden yüklenmiş Git istemcilerini kullanarak deponuza erişin: git Bash ve git GUI.
-- Azure Blob depolama, Azure Data Lake, Azure HDInsight (Hadoop), Azure Cosmos DB, Azure SQL veri ambarı ve Azure SQL veritabanı gibi Azure verilerine ve analiz hizmetlerine erişin.
+- Azure Blob depolama, Azure Data Lake, Azure Cosmos DB, Azure SQL veri ambarı ve Azure SQL veritabanı gibi Azure verilerine ve analiz hizmetlerine erişin.
 - DSVM 'de önceden yüklenmiş Power BI Desktop örneğini kullanarak raporlar ve bir pano oluşturun ve bunları buluta dağıtın.
 - DSVM 'nizi projenizin ihtiyaçlarını karşılayacak şekilde dinamik olarak ölçeklendirin.
 - Sanal makinenize ek araçlar yükler.   
@@ -127,11 +127,6 @@ pass
 
 IrisPredictor(3,2,3,4)
 ```
-
-> [!NOTE]
-> Şu anda Azure Machine Learning kitaplığı yalnızca Python 2,7 ' de desteklenir.   
-> 
-> 
 
 ### <a name="build-and-operationalize-r-models"></a>R modellerini derleme ve operationleştir
 Veri Bilimi Sanal Makinesi veya başka bir yerde oluşturulmuş R modellerini, Python için nasıl yapıldığına benzer bir şekilde Azure Machine Learning dağıtabilirsiniz. Adımlar aşağıdaki gibidir:
@@ -269,7 +264,7 @@ Azure Blob depolama, büyük ve küçük veriler için güvenilir, ekonomik bir 
 
 * [Azure Portal](https://portal.azure.com)Azure Blob Storage hesabınızı oluşturun.
 
-   ![Azure portal depolama hesabı oluşturma işleminin ekran görüntüsü](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+   ![Azure portal depolama hesabı oluşturma işleminin ekran görüntüsü](./media/vm-do-ten-things/create-azure-blob.png)
 
 * Komut satırı AzCopy aracının önceden yüklü olduğunu doğrulayın: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. AzCopy. exe ' yi içeren dizin, PATH ortam değişkeninizden zaten bulunur, bu nedenle bu aracı çalıştırırken tam komut yolunu yazmaktan kaçınabilirsiniz. AzCopy aracı hakkında daha fazla bilgi için bkz. [AzCopy belgeleri](../../storage/common/storage-use-azcopy.md).
 * Azure Depolama Gezgini aracını başlatın. [Depolama Gezgini Web sayfasından](https://storageexplorer.com/)indirebilirsiniz. 
@@ -371,7 +366,7 @@ Azure Data Lake Storage, büyük veri analizi iş yükleri için hiper ölçekli
 
 * Azure Data Lake Analytics örneğinizi [Azure Portal](https://portal.azure.com)oluşturun.
 
-   ![Azure portal Data Lake Analytics örneği oluşturma ekran görüntüsü](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+   ![Azure portal Data Lake Analytics örneği oluşturma ekran görüntüsü](./media/vm-do-ten-things/azure-data-lake-create-v3.png)
 
 * [Visual Studio eklentisi için Azure Data Lake ve Stream Analytics araçları](https://www.microsoft.com/download/details.aspx?id=49504) , sanal makinede Visual Studio Community Edition 'da zaten yüklüdür. Visual Studio 'Yu başlattıktan ve Azure aboneliğinizde oturum açtıktan sonra, Visual Studio 'nun sol bölmesinde Azure veri analizi hesabınızı ve depolamayı görmeniz gerekir.
 
@@ -448,361 +443,6 @@ Sorgu sunucuya gönderildikten sonra, tripdata_summary. CSV Azure Data Lake Expl
 Dosya bilgileri görüntülenir:
 
 ![Dosya Özet bilgisinin ekran görüntüsü](./media/vm-do-ten-things/USQL_tripdata_summary.png)
-
-### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümeleri
-Azure HDInsight, bulutta yönetilen bir Apache Hadoop, Spark, HBase ve fırtınası hizmetidir. Veri Bilimi Sanal Makinesi Azure HDInsight kümeleriyle kolayca çalışabilirsiniz.
-
-#### <a name="prerequisites"></a>Ön koşullar
-
-* [Azure Portal](https://portal.azure.com)Azure Blob Storage hesabınızı oluşturun. Bu depolama hesabı, HDInsight kümelerine yönelik verileri depolamak için kullanılır.
-
-   ![Azure portal depolama hesabı oluşturma ekran görüntüsü](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
-
-* Azure HDInsight Hadoop kümelerini [Azure Portal](../team-data-science-process/customize-hadoop-cluster.md)özelleştirin.
-  
-   Oluşturduğunuz zaman HDInsight kümeniz ile oluşturulan depolama hesabını bağlayın. Bu depolama hesabı, küme içinde işlenebilecek verilere erişmek için kullanılır.
-
-   ![HDInsight kümesiyle oluşturulan depolama hesabını bağlama seçimleri](./media/vm-do-ten-things/Create_HDI_v4.PNG)
-
-* Oluşturulduktan sonra kümenin baş düğümüne uzak masaüstü erişimini etkinleştirin. Sonraki yordamda ihtiyacınız olacak şekilde burada belirttiğiniz uzaktan erişim kimlik bilgilerini unutmayın.
-
-   ![HDInsight kümesine uzaktan erişimi etkinleştirmek için Uzak Masaüstü düğmesi](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
-
-* Azure Machine Learning çalışma alanı oluşturun. Machine Learning denemeleri bu Machine Learning çalışma alanında depolanır. Aşağıdaki ekran görüntüsünde gösterildiği gibi portalda vurgulanan seçenekleri seçin:
-
-   ![Azure Machine Learning çalışma alanı oluşturma](./media/vm-do-ten-things/Create_ML_Space.PNG)
-
-* Çalışma alanınızın parametrelerini girin.
-
-   ![Machine Learning çalışma alanı parametrelerini girin](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
-
-* IPython Not defterini kullanarak verileri karşıya yükleyin. Gerekli paketleri içeri aktarın, kimlik bilgilerini takın, depolama hesabınızda bir veritabanı oluşturun ve ardından verileri HDI kümelerine yükleyin.
-
-```python
-# Import required packages
-import pyodbc
-import time as time
-import json
-import os
-import urllib
-import urllib2
-import warnings
-import re
-import pandas as pd
-import matplotlib.pyplot as plt
-from azure.storage.blob import BlobService
-warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
-
-
-# Create the connection to Hive by using ODBC
-SERVER_NAME = 'xxx.azurehdinsight.net'
-DATABASE_NAME = 'nyctaxidb'
-USERID = 'xxx'
-PASSWORD = 'xxxx'
-DB_DRIVER = 'Microsoft Hive ODBC Driver'
-driver = 'DRIVER={' + DB_DRIVER + '}'
-server = 'Host=' + SERVER_NAME + ';Port=443'
-database = 'Schema=' + DATABASE_NAME
-hiveserv = 'HiveServerType=2'
-auth = 'AuthMech=6'
-uid = 'UID=' + USERID
-pwd = 'PWD=' + PASSWORD
-CONNECTION_STRING = ';'.join(
-    [driver, server, database, hiveserv, auth, uid, pwd])
-connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-cursor = connection.cursor()
-
-
-# Create the Hive database and tables
-queryString = "create database if not exists nyctaxidb;"
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.trip
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    rate_code string,
-                    store_and_fwd_flag string,
-                    pickup_datetime string,
-                    dropoff_datetime string,
-                    passenger_count int,
-                    trip_time_in_secs double,
-                    trip_distance double,
-                    pickup_longitude double,
-                    pickup_latitude double,
-                    dropoff_longitude double,
-                    dropoff_latitude double)  
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-queryString = """
-                create external table if not exists nyctaxidb.fare
-                (
-                    medallion string,
-                    hack_license string,
-                    vendor_id string,
-                    pickup_datetime string,
-                    payment_type string,
-                    fare_amount double,
-                    surcharge double,
-                    mta_tax double,
-                    tip_amount double,
-                    tolls_amount double,
-                    total_amount double)
-                PARTITIONED BY (month int)
-                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
-            """
-cursor.execute(queryString)
-
-
-# Upload data from Blob storage to an HDI cluster
-for i in range(1, 13):
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);" % (
-        i, i)
-    cursor.execute(queryString)
-```
-
-Alternatif olarak, [Bu yönergeyi](../team-data-science-process/hive-walkthrough.md) , NYC TAXI VERILERINI HDI kümesine yüklemek için de izleyebilirsiniz. Ana adımlar şunlardır:
-  
-* Genel bloba ait yerel klasörünüze ZIP CSV 'leri indirmek için AzCopy kullanın.
-* Yerel klasörden bir HDI kümesine ZIP CSV 'leri yüklemek için AzCopy kullanın.
-* Hadoop kümesinin baş düğümünde oturum açın ve araştırmacı veri analizi hazırlayın.
-
-Veriler HDI kümesine yüklendikten sonra, Azure Depolama Gezgini verilerinizi kontrol edebilirsiniz. Ve nyctaxidb veritabanı HDI kümesinde oluşturulmuştur.
-
-#### <a name="data-exploration-hive-queries-in-python"></a>Veri araştırması: Python 'da Hive sorguları
-
-Veriler bir Hadoop kümesinde olduğundan, araştırma ve özellik Mühendisliği yapmak üzere Hive kullanarak Hadoop kümelerine ve sorgu veritabanlarına bağlanmak için pyodbc paketini kullanabilirsiniz. Önkoşul adımında oluşturduğunuz mevcut tabloları görüntüleyebilirsiniz.
-
-```python
-queryString = """
-    show tables in nyctaxidb2;
-    """
-pd.read_sql(queryString, connection)
-```
-
-![Mevcut tabloları görüntüle](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
-
-Her ay içindeki kayıt sayısına ve seyahat sıklığına göre eğimli veya geçiş tablosunda olup olmadığına bakalım:
-
-```python
-queryString = """
-    select month, count(*) from nyctaxidb.trip group by month;
-    """
-results = pd.read_sql(queryString,connection)
-
-%matplotlib inline
-
-results.columns = ['month', 'trip_count']
-df = results.copy()
-df.index = df['month']
-df['trip_count'].plot(kind='bar')
-```
-
-![Her ayın kayıt sayısını çizdirme](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
-
-```python
-queryString = """
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
-    """
-results = pd.read_sql(queryString, connection)
-
-results.columns = ['tipped', 'trip_count']
-df = results.copy()
-df.index = df['tipped']
-df['trip_count'].plot(kind='bar')
-```
-
-![İpucu sıklıkların çizimi](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
-
-Ayrıca, toplama konumu ve bırakma konumu arasındaki mesafeyi de hesaplar ve ardından seyahat mesafesini karşılaştırın.
-
-```python
-queryString = """
-                select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-                    3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-                    *radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-                    *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-                    /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-                    +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*
-                    pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance
-                    from nyctaxidb.trip
-                    where month=1
-                        and pickup_longitude between -90 and -30
-                        and pickup_latitude between 30 and 90
-                        and dropoff_longitude between -90 and -30
-                        and dropoff_latitude between 30 and 90;
-            """
-results = pd.read_sql(queryString, connection)
-results.head(5)
-```
-
-![Toplama ve bırakma tablosunun en üstteki satırları](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
-
-```python
-results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                   'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-df = results.loc[results['trip_distance'] <= 100]  # remove outliers
-df = df.loc[df['direct_distance'] <= 100]  # remove outliers
-plt.scatter(df['direct_distance'], df['trip_distance'])
-```
-
-![Çekme uzaklığına ilişkin toplama/bırakma uzaklığı çizimi](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
-
-Şimdi, modelleme için bir aşağı örneklenmiş (yüzde 1) veri kümesi hazırlayalım. Bu verileri Machine Learning okuyucu modülünde kullanabilirsiniz.
-
-```python
-queryString = """
-create  table if not exists nyctaxi_downsampled_dataset_testNEW (
-medallion string,
-hack_license string,
-vendor_id string,
-rate_code string,
-store_and_fwd_flag string,
-pickup_datetime string,
-dropoff_datetime string,
-pickup_hour string,
-pickup_week string,
-weekday string,
-passenger_count int,
-trip_time_in_secs double,
-trip_distance double,
-pickup_longitude double,
-pickup_latitude double,
-dropoff_longitude double,
-dropoff_latitude double,
-direct_distance double,
-payment_type string,
-fare_amount double,
-surcharge double,
-mta_tax double,
-tip_amount double,
-tolls_amount double,
-total_amount double,
-tipped string,
-tip_class string
-)
-row format delimited fields terminated by ','
-lines terminated by '\\n'
-stored as textfile;
-"""
-cursor.execute(queryString)
-```
-
-Şimdi, önceki iç tabloya birleştirmenin içeriğini ekleyin.
-
-```python
-queryString = """
-insert overwrite table nyctaxi_downsampled_dataset_testNEW
-select
-t.medallion,
-t.hack_license,
-t.vendor_id,
-t.rate_code,
-t.store_and_fwd_flag,
-t.pickup_datetime,
-t.dropoff_datetime,
-hour(t.pickup_datetime) as pickup_hour,
-weekofyear(t.pickup_datetime) as pickup_week,
-from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-t.passenger_count,
-t.trip_time_in_secs,
-t.trip_distance,
-t.pickup_longitude,
-t.pickup_latitude,
-t.dropoff_longitude,
-t.dropoff_latitude,
-t.direct_distance,
-f.payment_type,
-f.fare_amount,
-f.surcharge,
-f.mta_tax,
-f.tip_amount,
-f.tolls_amount,
-f.total_amount,
-if(tip_amount>0,1,0) as tipped,
-if(tip_amount=0,0,
-if(tip_amount>0 and tip_amount<=5,1,
-if(tip_amount>5 and tip_amount<=10,2,
-if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
-from
-(
-select
-medallion,
-hack_license,
-vendor_id,
-rate_code,
-store_and_fwd_flag,
-pickup_datetime,
-dropoff_datetime,
-passenger_count,
-trip_time_in_secs,
-trip_distance,
-pickup_longitude,
-pickup_latitude,
-dropoff_longitude,
-dropoff_latitude,
-3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-+cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance,
-rand() as sample_key
-
-from trip
-where pickup_latitude between 30 and 90
-    and pickup_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-)t
-join
-(
-select
-medallion,
-hack_license,
-vendor_id,
-pickup_datetime,
-payment_type,
-fare_amount,
-surcharge,
-mta_tax,
-tip_amount,
-tolls_amount,
-total_amount
-from fare
-)f
-on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-where t.sample_key<=0.01
-"""
-cursor.execute(queryString)
-```
-
-Bir süre sonra, verilerin Hadoop kümelerinde yüklendiğini görebilirsiniz:
-
-```python
-queryString = """
-    select * from nyctaxi_downsampled_dataset limit 10;
-    """
-cursor.execute(queryString)
-pd.read_sql(queryString, connection)
-```
-
-![Tablodaki en üstteki veri satırları](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL veri ambarı ve veritabanları
 Azure SQL veri ambarı, kurumsal sınıf SQL Server deneyimine sahip bir hizmet olarak elastik bir veri ambarıdır.

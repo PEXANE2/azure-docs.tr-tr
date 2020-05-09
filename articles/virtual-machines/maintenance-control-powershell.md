@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136541"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996468"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Bakım denetimi ve Azure PowerShell güncelleştirmeleri denetleme
 
@@ -20,11 +20,17 @@ Bakım denetimi, yalıtılmış sanal makinelerinize ve Azure adanmış ana bilg
  
 ## <a name="enable-the-powershell-module"></a>PowerShell modülünü etkinleştir
 
-Güncel olduğundan `PowerShellGet` emin olun.
+Güncel olduğundan `PowerShellGet` emin olun.    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+`Az.Maintenance` PowerShell modülünü yükler.     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 Yerel olarak yüklüyorsanız, PowerShell komut dosyanızı yönetici olarak açtığınızdan emin olun.
 

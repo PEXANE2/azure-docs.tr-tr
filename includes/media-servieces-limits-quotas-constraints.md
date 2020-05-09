@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656186"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997721"
 ---
 > [!NOTE]
 > Düzeltilmeyen kaynaklar için, kotalarda artış istemek üzere bir destek bileti açın. Daha yüksek limitleri elde etmeye yönelik bir denemede ek Azure Media Services hesapları oluşturmayın.
@@ -66,7 +66,7 @@ Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 g�
 | --- | --- | 
 | Media Services hesap başına canlı olaylar <sup>(4)</sup> |5|
 | Canlı olay başına canlı çıktılar |3 <sup>(5)</sup> |
-| En büyük canlı çıkış süresi | 25 saat |
+| En büyük canlı çıkış süresi | [DVR penceresinin boyutu](../articles/media-services/latest/live-event-cloud-dvr.md) |
 
 <sup>4</sup> canlı olay sınırlamaları hakkında ayrıntılı bilgi için bkz. [canlı olay türleri karşılaştırması ve sınırlamaları](../articles/media-services/latest/live-event-types-comparison.md).
 

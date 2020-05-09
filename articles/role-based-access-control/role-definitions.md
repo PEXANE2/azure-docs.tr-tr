@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735547"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996610"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
 
@@ -28,7 +28,9 @@ Bir Azure rolünün nasıl çalıştığını anlamaya çalışıyorsanız veya 
 
 ## <a name="role-definition"></a>Rol tanımı
 
-*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca gerçekleştirilemeyen işlemleri veya temel verilerle ilgili işlemleri de listeleyebilir. Rol tanımı aşağıdaki özelliklere sahiptir:
+*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca, temel alınan verilerle ilgili olarak izin verilen işlemler veya işlemlerden çıkarılan işlemleri de listeleyebilir.
+
+Aşağıda, Azure PowerShell kullanılarak görüntülenmediğinde rol tanımındaki özelliklerin bir örneği gösterilmektedir:
 
 ```
 Name
@@ -42,17 +44,33 @@ NotDataActions []
 AssignableScopes []
 ```
 
+Aşağıda, Azure portal, Azure CLı veya REST API kullanılarak görüntülenmediğinde rol tanımındaki özelliklerin bir örneği gösterilmektedir:
+
+```
+roleName
+name
+type
+description
+actions []
+notActions []
+dataActions []
+notDataActions []
+assignableScopes []
+```
+
+Aşağıdaki tabloda rol özelliklerinin anlamı açıklanmaktadır.
+
 | Özellik | Açıklama |
 | --- | --- |
-| `Name` | Rolün görünen adı. |
-| `Id` | Rolün benzersiz KIMLIĞI. |
-| `IsCustom` | Bunun özel bir rol olup olmadığını gösterir. Özel roller `true` için olarak ayarlayın. |
-| `Description` | Rolün açıklaması. |
-| `Actions` | Rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirten dizeler dizisi. |
-| `NotActions` | İzin verilen `Actions`' dan dışlanan yönetim işlemlerini belirten dizeler dizisi. |
-| `DataActions` | Rolün bu nesne içindeki verilerinize gerçekleştirilmesine izin verdiği veri işlemlerini belirten dizeler dizisi. |
-| `NotDataActions` | İzin verilen `DataActions`' dan dışlanan veri işlemlerini belirten dizeler dizisi. |
-| `AssignableScopes` | Rolün atama için kullanılabilir olduğu kapsamları belirten dizeler dizisi. |
+| `Name`</br>`roleName` | Rolün görünen adı. |
+| `Id`</br>`name` | Rolün benzersiz KIMLIĞI. |
+| `IsCustom`</br>`roleType` | Bunun özel bir rol olup olmadığını gösterir. Özel roller `true` için `CustomRole` veya olarak ayarlayın. Yerleşik roller `false` için `BuiltInRole` veya olarak ayarlayın. |
+| `Description`</br>`description` | Rolün açıklaması. |
+| `Actions`</br>`actions` | Rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirten dizeler dizisi. |
+| `NotActions`</br>`notActions` | İzin verilen `Actions`' dan dışlanan yönetim işlemlerini belirten dizeler dizisi. |
+| `DataActions`</br>`dataActions` | Rolün bu nesne içindeki verilerinize gerçekleştirilmesine izin verdiği veri işlemlerini belirten dizeler dizisi. |
+| `NotDataActions`</br>`notDataActions` | İzin verilen `DataActions`' dan dışlanan veri işlemlerini belirten dizeler dizisi. |
+| `AssignableScopes`</br>`assignableScopes` | Rolün atama için kullanılabilir olduğu kapsamları belirten dizeler dizisi. |
 
 ### <a name="operations-format"></a>İşlemler biçimi
 
@@ -72,7 +90,9 @@ Bir `{action}` işlem dizesinin bölümü, bir kaynak türü üzerinde gerçekle
 
 ### <a name="role-definition-example"></a>Rol tanımı örneği
 
-JSON biçiminde [katılımcı](built-in-roles.md#contributor) rolü tanımı aşağıda verilmiştir. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm eylemleri gerçekleştirebileceğini gösterir veya başka bir deyişle her şeyi yönetebilir. Bu, Azure yeni kaynak türleri ekledikçe gelecekte tanımlanacak eylemleri de içerir. `NotActions` altındaki işlemler `Actions` işlemlerinden çıkarılır. [Katkıda Bulunan](built-in-roles.md#contributor) rolünde, `NotActions` bu rolün kaynakları erişimi yönetme becerisini kaldırır ve kaynaklara erişim atar.
+İşte Azure PowerShell ve Azure CLı 'de gösterildiği gibi [katkıda](built-in-roles.md#contributor) bulunan rol tanımı. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm eylemleri gerçekleştirebileceğini gösterir veya başka bir deyişle her şeyi yönetebilir. Bu, Azure yeni kaynak türleri ekledikçe gelecekte tanımlanacak eylemleri de içerir. `NotActions` altındaki işlemler `Actions` işlemlerinden çıkarılır. [Katkıda Bulunan](built-in-roles.md#contributor) rolünde, `NotActions` bu rolün kaynakları erişimi yönetme becerisini kaldırır ve kaynaklara erişim atar.
+
+Azure PowerShell içinde gösterildiği gibi katkıda bulunan rolü:
 
 ```json
 {
@@ -86,13 +106,47 @@ JSON biçiminde [katılımcı](built-in-roles.md#contributor) rolü tanımı aş
   "NotActions": [
     "Microsoft.Authorization/*/Delete",
     "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Authorization/elevateAccess/Action",
+    "Microsoft.Blueprint/blueprintAssignments/write",
+    "Microsoft.Blueprint/blueprintAssignments/delete"
   ],
   "DataActions": [],
   "NotDataActions": [],
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Azure CLı 'de gösterildiği gibi katkıda bulunan rolü:
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage everything except access to resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "permissions": [
+    {
+      "actions": [
+        "*"
+      ],
+      "notActions": [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.Blueprint/blueprintAssignments/write",
+        "Microsoft.Blueprint/blueprintAssignments/delete"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -116,6 +170,8 @@ Veri işlemlerini desteklemek için, rol tanımına yeni veri özellikleri eklen
 
 Hem `Actions` hem de `DataActions` özelliklerinde Işlemler Içeren [Depolama Blobu veri okuyucusu](built-in-roles.md#storage-blob-data-reader) rol tanımı aşağıda verilmiştir. Bu rol, blob kapsayıcısını ve ayrıca temel alınan blob verilerini okumanızı sağlar.
 
+Azure PowerShell içinde gösterildiği gibi Depolama Blobu veri okuyucusu rolü:
+
 ```json
 {
   "Name": "Storage Blob Data Reader",
@@ -123,7 +179,8 @@ Hem `Actions` hem de `DataActions` özelliklerinde Işlemler Içeren [Depolama B
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
   "Actions": [
-    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+    "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
   ],
   "NotActions": [],
   "DataActions": [
@@ -133,6 +190,35 @@ Hem `Actions` hem de `DataActions` özelliklerinde Işlemler Içeren [Depolama B
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Azure CLı 'de gösterildiği gibi Depolama Blobu veri okuyucusu rolü:
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage blob containers and data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "name": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Blob Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -159,9 +245,11 @@ Depolama Blobu veri Katılımcısı
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Veri eylemleri<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
 Ayla bir abonelik kapsamında bir joker`*`karakter () eylemi olduğundan, izinleri tüm yönetim eylemlerini gerçekleştirmeye olanak tanımak için devralınır. Gamze kapsayıcıları okuyabilir, yazabilir ve silebilir. Ancak, Çiğdem ek adımlar uygulamadan veri işlemleri gerçekleştiremez. Örneğin, varsayılan olarak, Gamze bir kapsayıcı içindeki Blobları okuyamaz. Blobları okumak için, Çiğdem 'in depolama erişim anahtarlarını alması ve bloblara erişmek için onları kullanması gerekir.

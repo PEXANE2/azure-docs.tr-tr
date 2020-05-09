@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682921"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993769"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Bileşik kaynakları kullanarak Azure Otomasyonu durum yapılandırmasında DSC yapılandırmaları oluşturma
 
@@ -34,9 +34,9 @@ Azure portal bileşik kaynaklardan yapılan bir yapılandırmayı atamadan önce
 1. **Parametreler** adımında, her bileşik kaynağın parametresi, değerlerin sağlanabilmesi için sunulur. Bir parametrenin açıklaması varsa, parametre alanının yanında görüntülenir. Bir parametre `PSCredential` türü ise, açılan liste geçerli Otomasyon hesabındaki **kimlik bilgisi** nesnelerinin bir listesini sağlar. Bir **+ kimlik bilgisi ekle** seçeneği de mevcuttur. Tüm gerekli parametreler sağlandıktan sonra **Kaydet ve derle**' ye tıklayın.
    ![Yapılandırma oluşturma sayfasının parametreler adımının ekran görüntüsü](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Yeni yapılandırma kaydedildikten sonra, derleme için gönderilir. Derleme işinin durumu, içeri aktarılan tüm yapılandırmalar gibi görüntülenebilir. Daha fazla bilgi için bkz. [derleme Işini görüntüleme](automation-dsc-getting-started.md#viewing-a-compilation-job).
+Yeni yapılandırma kaydedildikten sonra, derleme için gönderilir. Derleme işinin durumu, içeri aktarılan tüm yapılandırmalar gibi görüntülenebilir. Daha fazla bilgi için bkz. [derleme Işini görüntüleme](automation-dsc-getting-started.md#view-a-compilation-job).
 
-Derleme başarıyla tamamlandığında, yeni yapılandırma **derlenen yapılandırmalar** sekmesinde görünür. Daha sonra, [bir düğümü farklı bir düğüm yapılandırmasına yeniden atama](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)bölümündeki adımları kullanarak bir yönetilen düğüme yapılandırmayı atayabilirsiniz.
+Derleme başarıyla tamamlandığında, yeni yapılandırma **derlenen yapılandırmalar** sekmesinde görünür. Daha sonra, [bir düğümü farklı bir düğüm yapılandırmasına yeniden atama](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration)bölümündeki adımları kullanarak bir yönetilen düğüme yapılandırmayı atayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

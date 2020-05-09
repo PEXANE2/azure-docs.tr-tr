@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392114"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996116"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Automation durum yapılandırması ve Chocolatey kullanarak sanal makinelere sürekli dağıtım sağlama
 
@@ -21,9 +21,6 @@ Azure Otomasyonu, kimlik bilgileri, zamanlamalar ve genel değişkenler gibi run
 Bu makalede, bir Windows bilgisayarı için sürekli dağıtımı (CD) ayarlama gösterilmektedir. Yöntemi, rol için gereken sayıda Windows bilgisayarı (örneğin, bir Web sitesi) dahil etmek için ve ek rollere giderek daha kolay bir şekilde genişletebilirsiniz.
 
 ![IaaS VM 'Leri için sürekli dağıtım](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="at-a-high-level"></a>Yüksek düzeyde
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637460"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996417"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -176,8 +176,8 @@ Configuration MMAgent
 ```
 
 4. Komut dosyasındaki `ProductId` değeri, daha önce önerilen yöntemleri kullanarak aracı yüklemesi paketinin en son sürümünden ayıklanan ürün koduyla güncelleştirin. 
-5. [MMAgent. ps1 yapılandırma betiğini](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) Otomasyon hesabınıza aktarın. 
-5. Yapılandırmaya [bir Windows bilgisayarı veya düğüm atayın](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) . 15 dakika içinde düğüm yapılandırmasını denetler ve aracı düğümüne gönderilir.
+5. [MMAgent. ps1 yapılandırma betiğini](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) Otomasyon hesabınıza aktarın. 
+6. Yapılandırmaya [bir Windows bilgisayarı veya düğüm atayın](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration) . 15 dakika içinde düğüm yapılandırmasını denetler ve aracı düğümüne gönderilir.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Log Analytics için aracı bağlantısını doğrula
 

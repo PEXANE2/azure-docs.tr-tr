@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431910"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995756"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Azure Event Grid ile Key Vault izleme (Önizleme)
 
@@ -30,8 +30,6 @@ Daha fazla bilgi için bkz. [Key Vault olay şeması](../../event-grid/event-sch
 
 > [!WARNING]
 > Bildirim olayları yalnızca yeni parolalar, anahtarlar ve sertifikalar sürümlerinde tetiklenir ve bu bildirimleri almak için öncelikle anahtar kasasındaki olaya abone olmanız gerekir.
-> 
-> Yalnızca sertifika, sertifika için belirttiğiniz ilkeye göre otomatik olarak yenilendiğinde, sertifikalarla ilgili bildirim olayları alırsınız.
 
 ## <a name="practices-for-consuming-events"></a>Olayları tüketen uygulamalar
 

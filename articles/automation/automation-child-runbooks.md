@@ -5,19 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21dc14362fed2abf80c2c5ecf57f688541c9c639
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367372"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994788"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda alt runbook 'lar
 
 Başka runbook 'lar tarafından çağrılan ayrı bir işlevle yeniden kullanılabilir, modüler runbook 'lar yazmak için Azure Otomasyonu 'nda önerilen bir uygulamadır. Bir üst runbook, gerekli işlevselliği gerçekleştirmek için genellikle bir veya daha fazla alt runbook 'u çağırır. Alt runbook 'u bulmanın iki yolu vardır ve senaryolarınız için en uygun olanı belirleyebilmek için anlamanız gereken ayrı farklılıklar vardır.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>Satır içi yürütme kullanarak alt runbook çağırma
 

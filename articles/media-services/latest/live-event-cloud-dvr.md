@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74899790"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995816"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
 
-Azure Media Services, [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcı hale getirilir (kapsayıcı, hesabınıza bağlı olan Azure Storage hesabıdır). Canlı çıktı ayrıca giden canlı akışın bazı özelliklerini denetlemenize olanak tanır (örneğin, bulut DVR 'ın kapasitesi gibi) veya görüntüleyiciler canlı akışı izlemeye başlayabileceği zaman. Diskteki arşiv, yalnızca canlı çıktının **archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan bir dairesel arşiv "penceresidir". Bu pencerenin dışında kalan içerikler, depolama kapsayıcısından otomatik olarak atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR 'ın kapasitesini belirten bir ISO-8601 TimeSpan süresini (örneğin, PTHH: MM: SS) temsil eder. Değer, en az üç dakikadan en fazla 25 saat arasında ayarlanabilir.
+Azure Media Services, [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcı hale getirilir (kapsayıcı, hesabınıza bağlı olan Azure Storage hesabıdır). Canlı çıktı ayrıca giden canlı akışın bazı özelliklerini denetlemenize olanak tanır (örneğin, bulut DVR 'ın kapasitesi gibi) veya görüntüleyiciler canlı akışı izlemeye başlayabileceği zaman. Diskteki arşiv, yalnızca canlı çıktının **archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan bir dairesel arşiv "penceresidir". Bu pencerenin dışında kalan içerikler, depolama kapsayıcısından otomatik olarak atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR 'ın kapasitesini belirten bir ISO-8601 TimeSpan süresini (örneğin, PTHH: MM: SS) temsil eder. Değer en az bir dakika ile en fazla 25 saat arasında ayarlanabilir.
 
 Canlı bir olay ve canlı çıkışları arasındaki ilişki geleneksel TV yayınına benzer, bu da bir kanalın (canlı olay) sabit bir video akışını ve bir kaydın (canlı çıktı) belirli bir zaman segmentine (örneğin, 6:12 ila 7:00PM) kapsamı vardır. Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı çıkış ve akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Canlı çıktı akışı Arşivle ve [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla görüntüleyiciler için kullanılabilir hale getirir. Farklı arşiv uzunlukları ve ayarları ile canlı bir olayda birden fazla canlı çıkış (en fazla üç maksimum) oluşturabilirsiniz. Canlı akış iş akışı hakkında daha fazla bilgi için, [genel adımlar](live-streaming-overview.md#general-steps) bölümüne bakın.
 

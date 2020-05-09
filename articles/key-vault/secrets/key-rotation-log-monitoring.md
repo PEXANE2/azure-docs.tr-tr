@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430259"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995953"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Anahtar döndürme ve denetimle Azure Key Vault ayarlama
 
@@ -85,23 +85,35 @@ Gizli bir gizli dizi olduğuna göre, birkaç adım daha gerçekleştirdikten so
 > [!NOTE]
 > Uygulamanız, anahtar kasanız ile aynı Azure Active Directory kiracısında oluşturulmalıdır.
 
-1. **Azure Active Directory**açın.
-2. **Uygulama kayıtları**'nı seçin. 
-3. Azure Active Directory bir uygulama eklemek için **Yeni uygulama kaydı** ' nı seçin.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+1. **Azure Active Directory**'yi bulun ve seçin. **Yönet**'in altında **Uygulama kayıtları**nı seçin.
+1. **Yeni kayıt**seçeneğini belirleyin.
+1. **Bir uygulamayı kaydet**' de kullanıcılara görüntülenecek anlamlı bir uygulama adı girin.
+1. Uygulamayı şu şekilde kullanabilecek kişileri belirtin:
 
-    ![Uygulamaları Azure Active Directory açın](../media/keyvault-keyrotation/azure-ad-application.png)
+    | Desteklenen hesap türleri | Açıklama |
+    |-------------------------|-------------|
+    | **Yalnızca bu kuruluş dizinindeki hesaplar** | Bir iş kolu uygulaması (LOB) oluşturuyorsanız bu seçeneği belirtin. Uygulamayı bir dizine kaydetaçmadıysanız, bu seçenek kullanılamaz.<br><br>Bu seçenek, yalnızca Azure AD tek kiracılı hesaba eşlenir.<br><br>Uygulamayı bir dizinin dışına kaydetmiyorsanız Bu seçenek varsayılandır. Uygulamanın bir dizin dışında kaydedildiği durumlarda, varsayılan seçenek Azure çok kiracılı ve kişisel Microsoft kişisel hesaplarıdır. |
+    | **Herhangi bir kuruluş dizinindeki hesaplar** | Tüm iş ve eğitim müşterilerini hedeflemek istiyorsanız bu seçeneği belirleyin.<br><br>Bu seçenek, bir yalnızca Azure AD çok kiracılı hesaba eşlenir.<br><br>Uygulamayı Azure AD 'ye yalnızca tek kiracı olarak kaydettirdiğiniz takdirde, **kimlik doğrulama** sayfası aracılığıyla Azure AD çok kiracılı ve tek kiracıya geri yükleyebilirsiniz. |
+    | **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları** | En geniş müşteri kümesini hedeflemek için bu seçeneği belirleyin.<br><br>Bu seçenek Azure AD çok kiracılı ve kişisel Microsoft hesaplarına eşlenir.<br><br>Uygulamayı Azure AD çok kiracılı ve kişisel Microsoft hesapları olarak kaydettiniz, Kullanıcı arabiriminde bu ayarı değiştiremezsiniz. Bunun yerine, desteklenen hesap türlerini değiştirmek için uygulama bildirimi düzenleyicisini kullanmanız gerekir. |
 
-4. **Oluştur**altında uygulama türünü **Web uygulaması/API** olarak bırakın ve uygulamanıza bir ad verin. Uygulamanıza bir **oturum açma URL 'si**verin. Bu URL, bu tanıtım için istediğiniz herhangi bir şey olabilir.
+1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** altında, oluşturmakta olduğunuz uygulamanın türünü seçin: **Web** veya **Public Client (mobil & Masaüstü)**. Ardından, uygulamanız için yeniden yönlendirme URI 'sini veya yanıt URL 'sini girin.
 
-    ![Uygulama kaydı oluştur](../media/keyvault-keyrotation/create-app.png)
+    * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `https://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
+    * Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örn. `myapp://auth`.
 
-5. Uygulama Azure Active Directory eklendikten sonra uygulama sayfası açılır. **Ayarlar**' ı seçin ve ardından **Özellikler**' i seçin. **Uygulama kimliği** değerini kopyalayın. Daha sonraki adımlarda bu gereklidir.
+1. Bittiğinde **Kaydet**’i seçin.
 
-Daha sonra, Azure Active Directory etkileşime girebilmesi için uygulamanız için bir anahtar oluşturun. Anahtar oluşturmak için **Ayarlar**altında **anahtarlar** ' ı seçin. Azure Active Directory uygulamanız için yeni oluşturulan anahtarı unutmayın. Daha sonraki bir adımda gerekecektir. Bu bölümden ayrıldığınızda anahtar kullanılamaz. 
+    ![Azure portal yeni bir uygulamanın kaydedileceği ekranı gösterir](../media/new-app-registration.png)
 
-![Azure Active Directory uygulama anahtarları](../media/keyvault-keyrotation/create-key.png)
+Azure AD, uygulamanıza benzersiz bir uygulama veya istemci KIMLIĞI atar. Portal, uygulamanızın **genel bakış** sayfasını açar. **Uygulama (istemci) kimliği** değerini aklınızda edin.
 
-Uygulamanızdan anahtar kasasına çağrı yapmadan önce, uygulamanız ve izinleri hakkında anahtar kasasını bildirmeniz gerekir. Aşağıdaki komut, uygulamanın anahtar kasanıza **erişmesini sağlamak için Azure Active Directory uygulamanızdaki kasa** adını ve uygulama kimliğini kullanır.
+Uygulamanıza özellik eklemek için, marka, sertifikalar ve gizlilikler, API izinleri ve daha fazlasını içeren diğer yapılandırma seçeneklerini belirleyebilirsiniz.
+
+![Yeni kayıtlı bir uygulamaya genel bakış sayfası örneği](../media//new-app-overview-page-expanded.png)
+
+Uygulamanızdan anahtar kasasına çağrı yapmadan önce, uygulamanız ve izinleri hakkında anahtar kasasını bildirmeniz gerekir. Aşağıdaki komut, uygulama anahtar kasanıza **erişim sağlamak için Azure Active Directory uygulamanızdan kasa** adını ve **uygulama (istemci) kimliğini** kullanır.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get

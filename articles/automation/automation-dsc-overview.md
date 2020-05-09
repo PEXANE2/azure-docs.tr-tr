@@ -1,6 +1,6 @@
 ---
 title: Azure Otomasyonu durum yapılandırmasına genel bakış
-description: Azure Otomasyonu durum yapılandırması (DSC), koşullarına ve bilinen sorunlara genel bakış
+description: Azure Otomasyonu durum yapılandırmasına, koşullarına ve bilinen sorunlara genel bakış
 keywords: PowerShell DSC, istenen durum yapılandırması, PowerShell DSC Azure
 services: automation
 ms.service: automation
@@ -10,20 +10,34 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406175"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993865"
 ---
-# <a name="state-configuration-overview"></a>Durum Yapılandırmasına genel bakış
+# <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
-Azure Otomasyonu durum yapılandırması, PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations)yazmanıza, yönetmenize ve derlemenize olanak tanıyan bir Azure hizmetidir. Hizmet ayrıca [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarır ve tüm bulutta, hedef düğümlere yapılandırma atar.
+Azure Otomasyonu durum yapılandırması, herhangi bir bulutta veya şirket içi veri merkezinde bulunan düğümler için PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations) yazmanızı, yönetmenizi ve derlemenize olanak tanıyan bir Azure yapılandırma yönetim hizmetidir. Hizmet ayrıca [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarır ve tüm bulutta, hedef düğümlere yapılandırma atar. **Yapılandırma yönetimi**altında **Durum Yapılandırması (DSC)** seçeneğini belirleyerek Azure Portal Azure Automation durum yapılandırmasına erişebilirsiniz. 
+
+Çeşitli makineleri yönetmek için Azure Otomasyonu durum yapılandırmasını kullanabilirsiniz:
+
+- Azure sanal makineleri
+- Azure sanal makineleri (klasik)
+- Şirket içinde veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri (AWS EC2 örnekleri dahil)
+- Şirket içinde, Azure 'da veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Linux makineleri
+
+Makine yapılandırmasını buluttan yönetmeye hazırsanız, Azure Otomasyonu durum yapılandırması 'nı yalnızca rapor uç noktası olarak kullanabilirsiniz. Bu özellik, konfigürasyonları DSC aracılığıyla ayarlamanıza ve Azure Otomasyonu 'nda raporlama ayrıntılarını görüntülemenize olanak sağlar.
+
+> [!NOTE]
+> Azure Otomasyonu durum yapılandırması ile Azure VM 'Leri yönetmek, yüklü Azure VM Istenen durum yapılandırma uzantısı sürümü 2,70 ' den büyükse ek ücret alınmaz. Daha fazla bilgi için bkz. [**Automation fiyatlandırma sayfası**](https://azure.microsoft.com/pricing/details/automation/).
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması neden kullanılmalıdır?
 
-Azure Otomasyonu durum yapılandırması, Azure dışında DSC kullanmaya kıyasla çeşitli avantajlar sağlar.
+Azure Otomasyonu durum yapılandırması, Azure dışında DSC 'nin kullanımıyla çeşitli avantajlar sağlar. Bu hizmet, merkezi bir güvenli konumdan binlerce makine genelinde hızla ve kolayca ölçeklenebilirlik sunar. Makineleri kolayca etkinleştirebilir, bildirime dayalı yapılandırmalara atayabilir ve her makinenin, belirttiğiniz istenen durumla uyumluluğunu gösteren raporları görüntüleyebilirsiniz.
+
+Azure Otomasyonu durum yapılandırma hizmeti, Azure Otomasyonu runbook 'larının PowerShell komut dosyasına ne kadar olduğunu DSC 'ye göre yapılır. Diğer bir deyişle, Azure Otomasyonu 'nun PowerShell betiklerini yönetmenize yardımcı olduğu şekilde, DSC yapılandırmalarının yönetilmesine de yardımcı olur. 
 
 ### <a name="built-in-pull-server"></a>Yerleşik çekme sunucusu
 
@@ -41,7 +55,7 @@ Azure Otomasyonu durum yapılandırması ile yönetilen düğümler, yerleşik �
 
 ## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması 'nı kullanma önkoşulları
 
-DSC için Azure Otomasyonu durum yapılandırması 'nı kullanırken lütfen aşağıdaki gereksinimleri göz önünde bulundurun.
+Azure Otomasyonu durum yapılandırması 'nı kullanırken bu bölümdeki gereksinimleri göz önünde bulundurun.
 
 ### <a name="operating-system-requirements"></a>İşletim sistemi gereksinimleri
 
@@ -63,9 +77,9 @@ Linux çalıştıran düğümler için DSC Linux uzantısı, [desteklenen Linux 
 
 ### <a name="dsc-requirements"></a>DSC gereksinimleri
 
-Azure 'da çalışan tüm Windows düğümleri için [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) ekleme sırasında yüklenir. Windows Server 2012 ve Windows 7 çalıştıran düğümler için [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) etkinleştirilmiştir.
+Azure 'da çalışan tüm Windows düğümleri için, makineler etkinleştirildiğinde [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) yüklenir. Windows Server 2012 ve Windows 7 çalıştıran düğümler için [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) etkinleştirilmiştir.
 
-Azure 'da çalışan tüm Linux düğümleri için ekleme sırasında [Linux Için POWERSHELL DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) yüklenir.
+Azure 'da çalışan tüm Linux düğümleri için, makineler etkinleştirildiğinde [Linux Için POWERSHELL DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) yüklenir.
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Özel ağların yapılandırması
 
@@ -80,7 +94,7 @@ Düğümleriniz özel bir ağda bulunuyorsa, aşağıdaki bağlantı noktası ve
 
 #### <a name="proxy-support"></a>Proxy desteği
 
-DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir. Bu seçenek, düğümleri kaydetmek için kullanılan `ProxyURL` [metaconfiguration betiğinde](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) ve `ProxyCredential` için değerleri ayarlanarak etkinleştirilir.
+DSC aracısına yönelik ara sunucu desteği Windows sürüm 1809 ve sonrasında kullanılabilir. Bu seçenek, düğümleri kaydetmek için kullanılan `ProxyURL` [metaconfiguration betiğinde](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) ve `ProxyCredential` için değerleri ayarlanarak etkinleştirilir.
 
 >[!NOTE]
 >Azure Otomasyonu durum yapılandırması, önceki Windows sürümleri için DSC proxy desteği sağlamaz.
@@ -121,7 +135,7 @@ Azure ExpressRoute kullanıcıları bu dosyanın, her ayın ilk haftasında Azur
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure Otomasyonu durum yapılandırmasında DSC kullanmaya başlamak için bkz. [Azure Automation durum yapılandırması ile çalışmaya](automation-dsc-getting-started.md)başlama.
-- Düğümlerin nasıl ekleneceğini öğrenmek için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makineleri ekleme](automation-dsc-onboarding.md).
+- Düğümleri nasıl etkinleştireceğinizi öğrenmek için bkz. [Azure Otomasyonu durum yapılandırması tarafından yönetim için makineleri etkinleştirme](automation-dsc-onboarding.md).
 - Hedef düğümlere atayabilmeniz için DSC yapılandırmalarını derleme hakkında bilgi edinmek için bkz. [Azure Otomasyonu durum yapılandırmasında yapılandırmaları derleme](automation-dsc-compile.md).
 - PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).

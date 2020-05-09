@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, runbook, JSON, Azure Otomasyonu
-ms.openlocfilehash: 2a6652c988eb77a1c5c7dbf800586b1c5fb756c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bf381499ac31fafc8aaeef2b4ee488cfa1aa5c1
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392205"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994695"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Otomasyonu PowerShell runbook’unda Azure Resource Manager şablonu dağıtma
 
@@ -20,9 +20,6 @@ Azure Kaynak [yönetimi şablonu](../azure-resource-manager/resource-manager-cre
 Bunu yaptığınızda, Azure kaynaklarının dağıtımını otomatik hale getirebilirsiniz. Kaynak Yöneticisi şablonlarınızı Azure depolama gibi merkezi ve güvenli bir konumda tutabilirsiniz.
 
 Bu makalede, yeni bir Azure depolama hesabı dağıtmak için [Azure Storage](../storage/common/storage-introduction.md) 'da depolanan kaynak yöneticisi şablonunu kullanan bir PowerShell runbook 'u oluşturacağız.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

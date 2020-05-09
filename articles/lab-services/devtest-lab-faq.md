@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270790"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996909"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -209,6 +209,9 @@ Mevcut sanal makinelerinizi DevTest Labs 'e kopyalamak için:
 ### <a name="can-i-attach-multiple-disks-to-my-vms"></a>VM 'larıma birden çok disk ekleyebilir miyim?
 
 Evet, sanal makinelerinize birden çok disk ekleyebilirsiniz.
+
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs tarafından desteklenen Gen 2 görüntüleri mi?
+Hayır. DevTest Labs hizmeti [Gen 2 görüntülerini](../virtual-machines/windows/generation-2.md)desteklemez. Bir görüntü için hem Gen 1 hem de Gen 2 sürümleri varsa, DevTest Labs VM oluştururken görüntünün yalnızca Gen 1 sürümünü gösterir. Kullanılabilir yalnızca Gen 2 sürümü varsa bir görüntü görmezsiniz. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Sınamam için bir Windows işletim sistemi görüntüsü kullanmak istersem bir MSDN aboneliği satın almam gerekiyor mu?
 Azure 'da geliştirme veya test etme için Windows istemci işletim sistemi görüntülerini (Windows 7 veya sonraki bir sürümü) kullanmak için aşağıdaki adımlardan birini uygulayın:

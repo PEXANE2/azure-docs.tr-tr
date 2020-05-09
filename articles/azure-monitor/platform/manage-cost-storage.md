@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/07/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854754"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993758"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -72,9 +72,9 @@ Log Analytics ücretleri Azure faturanızda eklenir. Azure faturanızın ayrınt
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Azure faturanızda Log Analytics kullanımı görüntüleme 
 
-Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre ekleme (Log Analytics için Microsoft. operationalınsights/çalışma alanı için), harcamalarınızı izlemenize imkan tanır.
+Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. İlk olarak, "kaynak türü" ile bir filtre ekleyin (Log Analytics için Microsoft. operationalınsights/çalışma alanı ve Microsoft. operationalınsights/çalışma alanı Log Analytics kümeler için), Log Analytics harcamalarınızı izlemenize imkan tanır. "Grup ölçütü" için "ölçüm kategorisi" veya "ölçüm" seçeneğini belirleyin.  Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetlerin ayrıca kullanımını Log Analytics çalışma alanı kaynaklarına karşı faturalayacağını unutmayın. Hizmet adı eşlemesini görmek için bir grafik yerine tablo görünümünü seçebilirsiniz. 
 
-Kullanımınız [Azure Portal kullanımınıza indirilerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlama kazanılabilir. İndirilen elektronik tabloda, Azure kaynağı başına kullanım (ör. Log Analytics çalışma alanı) için günlük kullanımını görebilirsiniz. Bu Excel elektronik tablosunda, Log Analytics çalışma alanlarınızın kullanımı, "içgörüler ve çözümlemeler" (Eski fiyatlandırma katmanları tarafından kullanılır) ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve "çalışma alanı içerir" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir. Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
+Kullanımınız [Azure Portal kullanımınıza indirilerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlama kazanılabilir. İndirilen elektronik tabloda, Azure kaynağı başına kullanım (ör. Log Analytics çalışma alanı) için günlük kullanımını görebilirsiniz. Bu Excel elektronik tablosunda, Log Analytics çalışma alanlarınızın kullanımı "ölçüm kategorisi" sütununda "Log Analytics" göstermek için önce filtrelenebilir. içgörüler ve çözümlemeler "(Eski fiyatlandırma katmanlarından bazıları tarafından kullanılır) ve" Azure Izleyici "(kapasite ayırma fiyatlandırma katmanları tarafından kullanılır) ve sonra" çalışma alanı "veya" kümeyi içerir "olan" örnek KIMLIĞI "sütununa bir filtre ekleniyor (Log Analytics küme kullanımı dahil olmak üzere). Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
 
 ## <a name="changing-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
 
@@ -108,7 +108,7 @@ Fiyatlandırma Katmanı sınırlamalarıyla ilgili daha fazla ayrıntıya [burad
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
-Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar süreyle saklanacağını nasıl yapılandıracağınız açıklanır. Veri saklama, eski ücretsiz fiyatlandırma katmanını kullanmadıkça tüm çalışma alanları için 30 ila 730 gün (2 yıl) yapılandırılabilir. 
+Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar süreyle saklanacağını nasıl yapılandıracağınız açıklanır. Veri saklama, eski ücretsiz fiyatlandırma katmanını kullanmadıkça tüm çalışma alanları için 30 ila 730 gün (2 yıl) yapılandırılabilir. Daha uzun veri saklama fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
 
 ### <a name="default-retention"></a>Varsayılan saklama
 
@@ -253,7 +253,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Veri türlerinde `union withsource = tt *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. Bu sorgu, bilgisayar başına bilgilerin kullanım veri türüyle sorgulanması için eski yolu değiştirir.  
+> Veri türlerinde `union *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
 
 ## <a name="understanding-ingested-data-volume"></a>Alınan veri birimini anlama
 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-`_IsBillable` [Özelliği](log-standard-properties.md#_isbillable) , alınan verilerin ücretlendirip ödemeyeceğini belirtir.
+`_IsBillable` [Özelliği](log-standard-properties.md#_isbillable) , alınan verilerin ücretlendirip ödemeyeceğini belirtir. 
 
 Bilgisayar başına alınan faturalandırılabilir olay **sayısını** görmek için şunu kullanın: 
 
@@ -333,6 +333,10 @@ union withsource = tt *
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  | sort by eventCount nulls last
 ```
+
+> [!TIP]
+> Veri türlerinde `union  *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara gerek yoksa kullanım verileri türü üzerinde sorgulama yapın.
+
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure kaynağına, kaynak grubuna veya aboneliğe göre veri hacmi
 
@@ -357,6 +361,9 @@ union withsource = tt *
 ```
 
 `resourceGroup` ' A değiştirmek `subscriptionId` , Azure Kaynak grubu ile faturalandırılabilen veri hacmini gösterir. 
+
+> [!TIP]
+> Veri türlerinde `union  *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. Abonelik başına sonuçlara, kaynak grubuna veya kaynak adına ihtiyaç duymayın, ardından kullanım veri türü üzerinde sorgulama yapın.
 
 > [!WARNING]
 > Kullanım verileri türünün bazı alanları şemada hala kullanım dışı bırakılmıştır ve değerleri artık doldurulmayacaktır. Bunlar, **bilgisayar** ve alma (**totaltoplu işler**, **batcheswithınsla**, **batchesoutsidesla**, **batchescaıda** **averageprocessingtimems**) ile ilgili alanlardır.
@@ -454,24 +461,34 @@ Farklı Otomasyon düğümlerinin sayısını görmek için sorguyu kullanın:
 
 Eski **düğüm başına** fiyatlandırma katmanına erişimi olan çalışma alanlarının bu katmanda veya geçerli **Kullandıkça Öde** ya da **Kapasite rezervasyon** katmanının daha iyi bir şekilde değerlendirilmesi, müşterilerin değerlendirmesi için genellikle zordur.  Bu, düğüm başına fiyatlandırma katmanındaki izlenen düğüm başına sabit maliyet ve 500 MB/düğüm/gün dahil olmak üzere veri tahsisatı ve yalnızca Kullandıkça Öde (GB başına) katmanındaki verilerin ödenme maliyeti arasındaki ticaretin kullanımını anlamayı içerir. 
 
-Bu değerlendirmeyi kolaylaştırmak için aşağıdaki sorgu, çalışma alanının kullanım desenlerine göre en uygun fiyatlandırma katmanına yönelik bir öneri oluşturmak için kullanılabilir.  Bu sorgu, son 7 gün içinde bir çalışma alanına alınan izlenen düğümlere ve verilere bakar ve her gün için hangi fiyatlandırma katmanının en uygun olduğunu değerlendirir. Sorguyu kullanmak için, çalışma alanının Azure Güvenlik Merkezi ' ne göre `workspaceHasSecurityCenter` `true` veya `false`' ı kullanıp kullanmadığını belirtmeniz gerekir. (isteğe bağlı olarak), kuruluş tarafından alınan düğümü ve GB başına fiyatları güncelleyerek. 
+Bu değerlendirmeyi kolaylaştırmak için aşağıdaki sorgu, çalışma alanının kullanım desenlerine göre en uygun fiyatlandırma katmanına yönelik bir öneri oluşturmak için kullanılabilir.  Bu sorgu, son 7 gün içinde bir çalışma alanına alınan izlenen düğümlere ve verilere bakar ve her gün için hangi fiyatlandırma katmanının en uygun olduğunu değerlendirir. Sorguyu kullanmak için şunu belirtmeniz gerekir
+
+1. çalışma alanının, veya `workspaceHasSecurityCenter` `true` `false`olarak ayarlayarak Azure Güvenlik Merkezi kullanıp kullanmadığını 
+2. belirli indirimleriniz varsa fiyatları güncelleştirin ve
+3. Ayarlar `daysToEvaluate`ile geri Aranacak ve analiz edilecek gün sayısını belirtin. Bu, sorgunun 7 güne kadar veri almaya çalışırken çok uzun sürmesi durumunda yararlıdır. 
+
+Fiyatlandırma Katmanı öneri sorgusu aşağıda verilmiştir:
 
 ```kusto
 // Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your montly price per monitored nodes
-let PerGBPrice = 2.30; // Enter your price per GB 
+let PerNodeOveragePrice = 2.30; // Enter your price per GB for data overage in the Per Node pricing tier
+let PerGBPrice = 2.30; // Enter your price per GB in the Pay-as-you-go pricing tier
+let daysToEvaluate = 7; // Enter number of previous days look at (reduce if the query is taking too long)
 // ---------------------------------------
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
+let EndDate = startofday(now());
 union withsource = tt * 
-| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| where TimeGenerated >= StartDate and TimeGenerated < EndDate
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join kind=leftouter (
     Heartbeat 
-    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where TimeGenerated >= StartDate and TimeGenerated < EndDate
     | where Computer != ""
     | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
     | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
@@ -479,8 +496,7 @@ union withsource = tt *
 ) on day
 | join (
     Usage 
-    | where TimeGenerated > ago(8d)
-    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where TimeGenerated >= StartDate and TimeGenerated < EndDate
     | where IsBillable == true
     | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
     | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
@@ -493,15 +509,18 @@ union withsource = tt *
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
              max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
-| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerNodeOveragePrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
 | project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
-| project day, Recommendation // Comment this line to see details
+//| project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
 
 Bu sorgu, kullanımın nasıl hesaplanmasının tam bir yinelemesi değildir, ancak çoğu durumda fiyatlandırma katmanı önerileri sağlamaya çalışır.  
+
+> [!NOTE]
+> System Center için OMS E1 Suite, OMS E2 Suite veya OMS eklentisi satın alma işleminden gelen yetkilendirmeleri kullanmak için *düğüm başına* fiyatlandırma katmanını Log Analytics seçin.
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama işlemi yüksekse uyarı oluştur
 

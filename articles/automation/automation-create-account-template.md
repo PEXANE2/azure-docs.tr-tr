@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927879"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996096"
 ---
 # <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
 
@@ -22,7 +22,7 @@ Kaynak grubunuzda Azure Otomasyonu hesabı oluşturmak için [Azure Resource Man
 * Bir Azure Otomasyonu hesabının oluşturulmasını otomatikleştirir.
 * Otomasyon hesabını Log Analytics çalışma alanına bağlar.
 
-Şablon, Azure veya Azure olmayan sanal makinelerin veya çözümlerin eklenmesi için otomatikleştirmez. 
+Şablon, Azure veya Azure dışı sanal makinelerin etkinleştirilmesini otomatik hale getirir. 
 
 >[!NOTE]
 >Azure Resource Manager şablonu kullanırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesaplarını yönetme](manage-runas-account.md).

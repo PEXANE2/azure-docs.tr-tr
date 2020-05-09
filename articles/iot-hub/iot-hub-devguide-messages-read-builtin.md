@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729982"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996930"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
 
@@ -51,7 +51,7 @@ IoT Hub farkında olmayan Event Hubs SDK 'Ları veya ürün tümleştirmelerini 
 
 Portalda, Olay Hub 'ı ile uyumlu uç nokta alanı, şunun gibi görünen bir tam Event Hubs bağlantı dizesi içerir: **Endpoint = SB://abcd1234namespace.ServiceBus.Windows.net/; SharedAccessKeyName = ıothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = ıothub-eHub-abcd-1234-123456**. Kullanmakta olduğunuz SDK başka değerler gerektiriyorsa, bunlar şöyle olur:
 
-| Adı | Değer |
+| Name | Değer |
 | ---- | ----- |
 | Uç Nokta | sb://abcd1234namespace.servicebus.windows.net/ |
 | Ana Bilgisayar Adı | abcd1234namespace.servicebus.windows.net |
@@ -61,12 +61,12 @@ Daha sonra, belirtilen olay hub 'ına bağlanmak için **Serviceconnect** izinle
 
 IoT Hub ortaya çıkaran yerleşik Olay Hub 'ı ile uyumlu uç noktaya bağlanmak için kullanabileceğiniz SDK 'lar şunlardır:
 
-| Dil | SDK | Örnek | Notlar |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Hızlı Başlangıç](quickstart-send-telemetry-dotnet.md) | Event Hubs uyumlu bilgileri kullanır |
- Java | https://github.com/Azure/azure-event-hubs-java | [Hızlı Başlangıç](quickstart-send-telemetry-java.md) | Event Hubs uyumlu bilgileri kullanır |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Hızlı Başlangıç](quickstart-send-telemetry-node.md) | IoT Hub bağlantı dizesi kullanır |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | IoT Hub bağlantı dizesi kullanır |
+| Dil | SDK | Örnek |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Hızlı Başlangıç](quickstart-send-telemetry-dotnet.md) |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Hızlı Başlangıç](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Hızlı Başlangıç](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 IoT Hub ortaya çıkaran yerleşik Olay Hub 'ı ile uyumlu uç nokta ile kullanabileceğiniz ürün tümleştirmeleri şunlardır:
 

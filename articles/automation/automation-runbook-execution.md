@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927930"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994735"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyonu’nda runbook yürütme
 
@@ -68,7 +68,7 @@ Runbook 'larınız, [kaynaklarla ilgili kaynakları](https://docs.microsoft.com/
 
 ## <a name="security"></a>Güvenlik
 
-Azure Otomasyonu, [Azure Güvenlik Merkezi 'ni (ASC)](https://docs.microsoft.com/azure/security-center/security-center-introAzure) kullanarak kaynaklarınız için güvenlik sağlar ve Linux sistemlerinde tehlikeye atabilir. Kaynaklar Azure 'da olup olmadığı için iş yükleriniz genelinde güvenlik sağlanır. Bkz. [Azure Otomasyonu 'nda kimlik doğrulamaya giriş](automation-security-overview.md).
+Azure Otomasyonu, [Azure Güvenlik Merkezi 'ni (ASC)](../security-center/security-center-intro.md) kullanarak kaynaklarınız için güvenlik sağlar ve Linux sistemlerinde tehlikeye atabilir. Kaynaklar Azure 'da olup olmadığı için iş yükleriniz genelinde güvenlik sağlanır. Bkz. [Azure Otomasyonu 'nda kimlik doğrulamaya giriş](automation-security-overview.md).
 
 ASC, bir VM 'de imzalanmış veya imzasız herhangi bir komut dosyasını çalıştırabilen kullanıcılara yönelik kısıtlamaları. VM 'ye kök erişimi olan bir kullanıcı değilseniz, makineyi bir dijital imza ile açıkça yapılandırmanız veya kapatmanız gerekir. Aksi takdirde, yalnızca bir Otomasyon hesabı oluşturduktan ve uygun özelliği etkinleştirerek işletim sistemi güncelleştirmelerini uygulamak için bir komut dosyası çalıştırabilirsiniz.
 

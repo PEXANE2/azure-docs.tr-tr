@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598156"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994481"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics işleri için .NET Standard Kullanıcı tanımlı işlevler geliştirme (Önizleme)
 
@@ -51,7 +51,7 @@ C# dilinde kullanılacak Azure Stream Analytics değerler için, bir ortamdan di
 |nvarchar (max) | string |
 |datetime | DateTime |
 |Kayıt | Sözlük\<dizesi, nesne> |
-|Dizi | Dizi\<nesnesi> |
+|Dizi | Object [] |
 
 Aynı durum, verilerin C# ' den Azure Stream Analytics, UDF 'nin çıkış değerinde meydana gelen olarak sıralanması gerektiğinde de geçerlidir. Aşağıdaki tabloda hangi türlerin desteklendiğini gösterilmektedir:
 
@@ -62,8 +62,8 @@ Aynı durum, verilerin C# ' den Azure Stream Analytics, UDF 'nin çıkış değe
 |string  |  nvarchar (max)   |
 |DateTime  |  tarih saat   |
 |struct   |  Kayıt   |
-|object  |  Kayıt   |
-|Dizi\<nesnesi>  |  Dizi   |
+|nesne  |  Kayıt   |
+|Object []  |  Dizi   |
 |Sözlük\<dizesi, nesne>  |  Kayıt   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -140,6 +140,43 @@ Azure depolama hesabınıza derleme ZIP paketleri yüklendikten sonra, Azure Str
    |Özel kod depolama ayarları kapsayıcısı|Depolama kapsayıcınızı < >|
    |Özel kod derleme kaynağı|Buluttan mevcut derleme paketleri|
    |Özel kod derleme kaynağı|UserCustomCode. zip|
+
+## <a name="user-logging"></a>Kullanıcı günlüğü
+Günlüğe kaydetme mekanizması, bir iş çalışırken özel bilgileri yakalamanızı sağlar. Hata ayıklamak veya gerçek zamanlı olarak özel kodun doğruluğunu değerlendirmek için günlük verilerini kullanabilirsiniz.
+
+`StreamingContext` Sınıfı, `StreamingDiagnostics.WriteError` işlevini kullanarak tanılama bilgilerini yayımlamanıza olanak sağlar. Aşağıdaki kodda Azure Stream Analytics tarafından sunulan arabirim gösterilmektedir.
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext`, UDF yöntemine bir giriş parametresi olarak geçirilir ve özel günlük bilgilerini yayımlamak için UDF içinde kullanılabilir. Aşağıdaki örnekte, `MyUdfMethod` sorgu tarafından belirtilen bir **veri** girişi ve çalışma zamanı altyapısı tarafından sağlanmış olan olarak `StreamingContext`bir **bağlam** girişi tanımlanmaktadır. 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+`StreamingContext` Değerin SQL sorgusu tarafından geçirilmesi gerekmez. Azure Stream Analytics bir giriş parametresi varsa otomatik olarak bir bağlam nesnesi sağlar. Aşağıdaki sorguda gösterildiği gibi `MyUdfMethod` , öğesinin kullanımı değişmez:
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+Günlük iletilerine [tanılama günlükleri](data-errors.md)aracılığıyla erişebilirsiniz.
 
 ## <a name="limitations"></a>Sınırlamalar
 UDF önizlemesi Şu anda aşağıdaki sınırlamalara sahiptir:
