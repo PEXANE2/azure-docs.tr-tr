@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756843"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627781"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -27,8 +27,9 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-| Soru | Çözüm |
-| -------- | -------- |
+| Soru | Yanıt |
+| -------- | ------ |
+| Cihaza şirket veya hizmet erişimi vermek için bir cihaz kabul etmiş kaydediyor mu? | Bir cihazın kaydedilmesi, cihazınızın kuruluşunuzun hizmetlerine erişmesini sağlar ve kuruluşunuzun cihazınıza erişmesine izin vermez. |
 | Android Microsoft Authenticator OTP kodlarım ekran görüntülerini alabilir miyim? | Microsoft Authenticator Android Release 6.2003.1704 itibariyle, varsayılan olarak, Authenticator 'nin bir ekran görüntüsü çekilirken, kullanıcılarımızı daha iyi korumak için tüm OTP kodları gizlenir. Bir Kullanıcı, kendi OTP kodlarını ekran görüntülerinde görmek veya diğer uygulamaların kimlik doğrulayıcısının ekranını yakalamasını sağlamak istiyorsanız, kimlik doğrulayıcı uygulamasında "ekran yakalama" ayarını etkinleştirip uygulamayı yeniden başlatarak bunu yapabilir. |
 | Kimlik Doğrulayıcı hangi verileri kendi adınıza depolar ve nasıl silerim? | Microsoft Authenticator uygulaması üç tür bilgi toplar:<ul><li>Hesabınızı eklediğinizde sağladığınız hesap bilgileri. Bu veriler, hesabınız kaldırılarak kaldırılabilir.</li><li>Yalnızca uygulamada kalan tanılama günlüğü verileri, Microsoft 'a Günlükler göndermek için uygulamanın **Yardım** **menüsünü seçin.** Bu günlük dosyaları, e-posta adresleriniz (örneğin, alain@contoso.com), sunucu veya IP adresleri ve cihaz verileri (örneğin, cihaz adı ve işletim sistemi sürümü) gibi kişisel verileri, uygulama sorunlarını gidermeye yardımcı olmak için gereken bilgilerle sınırlı olarak içerir. Toplanmakta olan bilgileri görmek için bu günlük dosyalarını dilediğiniz zaman uygulamada görüntüleyebilirsiniz. Günlük dosyalarını gönderirseniz, kimlik doğrulama uygulama mühendisleri bunu müşteri tarafından bildirilen sorunları gidermek için kullanabilir.</li><li>Kişisel olarak tanımlanabilen kullanım verileri, "hesap akışı ekleme/başarıyla eklendi hesabı" veya "bildirim Onaylandı" gibi. Bu veriler, mühendislik kararlarımızın bir parçasıdır ve sizin için önemli olan özellikleri belirlememize ve geliştirmelerin uygulamalara yönelik güncelleştirmeler biçiminde yapılması gerektiği konusunda yardımcı olur. Uygulama kullanıcısı olarak, uygulamanın ilk başlatıldığında bu veri koleksiyonunun bir bildirimine bakın ve uygulamanın **Ayarlar** sayfasında kapatıtabileceğini bilgilendirilir. Bu ayarı dilediğiniz zaman etkinleştirebilir veya devre dışı bırakabilirsiniz.</li></ul> |
 | Uygulamadaki kodlar nelerdir? | Microsoft Authenticator uygulamasını açtığınızda, eklenen hesaplarınızı kutucuk olarak görürsünüz.<li>Bir iOS cihazında, iş veya okul hesaplarınız ve kişisel Microsoft hesaplarınızda, hesabın tam ekran görünümünde (hesap kutucuğuna dokunarak erişilen) altı veya sekiz basamaklı sayılar görünür.<br><br>![Uygulamadaki hesaplar ekranı](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>İOS cihazındaki diğer hesaplar ve bir Android cihazındaki tüm hesaplar için, uygulamanın hesaplar sayfasında altı veya sekiz basamaklı bir sayı görürsünüz. Bu kodları, siz söylediğleriniz olduğunu doğrulama olarak kullanacaksınız. Kullanıcı adınız ve parolanızla oturum açtıktan sonra, bu hesapla ilişkili doğrulama kodunu yazmanız gerekir. Örneğin, contoso hesabınızda Katy oturum açarsanız ve bir iOS cihazı kullanıyorsanız, hesap kutucuğuna dokunduktan sonra kimliğinizi doğrulamak için doğrulama kodunu kullanmanız gerekir. Outlook Hesabınızda Katy açıyorsanız aynı adımları izlemelisiniz.<br><br>![uygulamadaki hesap kutucuğuna dokunduktan sonra](./media/user-help-auth-app-faq/katy-signin.png)<br><br>Contoso hesap kutucuğuna dokunduktan sonra, Katy tam ekran görünümünde doğrulama kodunu görür ve oturum açmayı tamamlayacak 895823 değerini girer.<br><br>![uygulamadaki doğrulama kodu ekranı](./media/user-help-auth-app-faq/verification-code.png) |

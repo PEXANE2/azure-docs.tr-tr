@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68fe7da136d744e1efa76a89061afe6995a75051
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133253"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628751"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -51,9 +51,18 @@ Hatanın ayrıntılarını ve hataya neden olan iletiyi (yükü) görüntülemek
 
 Event Hubs kullanmak için en iyi yöntem, iş ölçeklenebilirliği için birden çok tüketici grubu kullanmaktır. Belirli bir giriş için Stream Analytics işteki okuyucu sayısı, tek bir tüketici grubundaki okuyucu sayısını etkiler. Tam alıcı sayısı, genişleme topolojisi mantığının iç uygulama ayrıntılarına dayanır ve dışarıdan gösterilmez. Bir iş başlatıldığında veya iş yükseltmeleri sırasında okuyucu sayısı değişebilir.
 
-Alıcı sayısı üst sınırı aşıldığında gösterilen hata: 
+Alıcı sayısı üst sınırı aştığında aşağıdaki hata iletileri gösterilir. Hata iletisi, bir tüketici grubu altında Olay Hub 'ına yapılan mevcut bağlantıların bir listesini içerir. Etiket `AzureStreamAnalytics` , bağlantıların Azure Streaming Service 'ten olduğunu gösterir.
 
-`The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+```
+The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.
+
+The following information may be helpful in identifying the connected receivers: Exceeded the maximum number of allowed receivers per partition in a consumer group which is 5. List of connected receivers – 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
+```
 
 > [!NOTE]
 > Bir iş yükseltmesi sırasında okuyucu sayısı değiştiğinde, denetim günlüklerine geçici uyarılar yazılır. Stream Analytics işleri bu geçici sorunlardan otomatik olarak kurtarılır.

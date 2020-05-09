@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921445"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628308"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Azure'da Linux sanal makine dağıtma sorunlarını giderme
 
@@ -56,13 +56,13 @@ Aylık kredinizi etkinleştirmek için bu [makaleye](https://azure.microsoft.com
 
 ## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>Linux N serisi VM 'imde sürücüm eksik
 
-Linux tabanlı VM 'Ler için sürücüler [burada](../linux/n-series-driver-setup.md)bulunur. 
+Linux tabanlı VM 'Ler için sürücü yüklemeye yönelik yönergeler [buradan](../sizes-gpu.md#supported-operating-systems-and-drivers)bulunur.
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>N serisi VM My içinde bir GPU örneği bulamıyorum
 
-Windows Server 2016 veya Windows Server 2012 R2 çalıştıran Azure N serisi VM 'lerinin GPU yetilerinden yararlanmak için, her bir VM 'ye, her bir sanal makinede NVıDıA grafik sürücülerini yüklemelisiniz. [Windows VM](../windows/n-series-driver-setup.md) 'Leri ve [Linux VM 'leri](../linux/n-series-driver-setup.md)için sürücü kurulum bilgileri kullanılabilir.
+Azure N serisi VM 'lerin GPU yeteneklerini avantajlarından yararlanmak için dağıtımdan sonra her bir VM 'ye grafik sürücüleri yüklemelisiniz. Sürücü kurulum bilgilerine [buradan](../sizes-gpu.md#supported-operating-systems-and-drivers)ulaşabilirsiniz.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>N serisi VM 'Ler bölgemde kullanılabilir mi?
+## <a name="are-n-series-vms-available-in-my-region"></a>N serisi VM 'Ler bölgemde kullanılabilir mi?
 
 [Bölge tablosuna göre kullanılabilir ürünlerden](https://azure.microsoft.com/regions/services)kullanılabilirliği denetleyebilir ve [burada](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)fiyatlandırma yapabilirsiniz.
 

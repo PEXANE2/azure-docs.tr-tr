@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417666"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626709"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Denetimi veri akışındaki dönüştürme işlevleri
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory 'de denetimi veri akışı, bulut ölçeğinde kod ücretsiz çevik veri hazırlama ve denetimi kullanmanıza olanak sağlar. Denetimi veri akışı, [çevrimiçi Power Query](https://docs.microsoft.com/powerquery-m/power-query-m-reference) ile tümleşir ve Spark yürütmesi aracılığıyla veriler için Power Query M işlevlerini kullanılabilir hale getirir. 
 

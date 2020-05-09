@@ -1,11 +1,11 @@
 ---
 title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Samanage 'ı yapılandırma | Microsoft Docs"
-description: Azure Active Directory yapılandırma hakkında bilgi edinmek için Kullanıcı hesaplarını otomatik olarak sağlama ve sağlamayı kaldırma hakkında bilgi edinin.
+description: Azure AD 'den Samanage 'a Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
+manager: beatrizd
 ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,80 +13,79 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
-ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988efc2087b3b30e6073bd7f6e2cf08f91fd397c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 01/13/2020
+ms.author: Zhchia
+ms.openlocfilehash: 182d314b24ce082d996cb692e2a7bb35265abcfe
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77060533"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628085"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Samanage 'ı yapılandırma
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Samanage hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, kullanıcıları ve grupları otomatik olarak sağlar ve Azure AD sağlama hizmetini kullanarak [Sayönetmek](https://www.samanage.com/pricing/) üzere hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 
-Bu öğreticide, Azure AD 'yi otomatik olarak sağlamak ve Kullanıcı ve grupları Sayönetilecek olarak sağlamak üzere yapılandırmak için, Samanage ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımlar gösterilmektedir.
+## <a name="migrate-to-the-new-samange-application"></a>Yeni Samange uygulamasına geçiş
 
-> [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+Samanage ile mevcut bir tümleştirmenize sahipseniz lütfen sonraki değişiklikler hakkında bölümüne bakın. Samanage 'ı ilk kez ayarlıyorsanız, bu bölümü atlayabilir ve **desteklenen yeteneklere**geçebilirsiniz.
+
+#### <a name="whats-changing"></a>Ne değişiyor?
+* Azure AD tarafındaki değişiklikler: Samange 'de kullanıcıları sağlamak için yetkilendirme yöntemi geçmişte **temel kimlik doğrulaması**yapıldı. Yakında, yetkilendirme yönteminin **uzun süreli gizli belirteç**olarak değiştirildiğini görürsünüz.
+
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Mevcut özel tümleştirmem yeni uygulamaya geçirmek için ne yapmam gerekir?
+Geçerli yönetici kimlik bilgileriyle mevcut bir Samanage tümleştirmenize sahipseniz, **herhangi bir eylem gerekmez**. Müşterileri otomatik olarak yeni uygulamaya geçiririz. Bu işlem arka planda tamamen yapılır. Mevcut kimlik bilgilerinin süreleri dolarsa veya uygulamaya yeniden erişim yetkisi vermeniz gerekiyorsa, uzun süreli bir gizli belirteç oluşturmanız gerekir. Yeni bir belirteç oluşturmak için bu makalenin 2. adımına bakın.
+
+
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Uygulamamın geçirilip geçirilmeyeceğini nasıl anlayabilirim? 
+Uygulamanız geçirildiğinde, yönetici **kimlik bilgileri** bölümünde **Yönetici Kullanıcı adı** ve **yönetici parolası** alanları tek bir **gizli dizi belirteci** alanıyla birlikte değişir.
+
+## <a name="capabilities-supported"></a>Desteklenen yetenekler
+> [!div class="checklist"]
+> * Samanage kullanıcıları oluşturma
+> * Artık erişim gerektirmeyen kullanıcıları Samanage 'a kaldır
+> * Kullanıcı özniteliklerinin Azure AD ile Samanage arasında eşitlenmiş olmasını sağlama
+> * Samanage grupları ve grup üyeliklerini sağlama
+> * Samanage için [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/samanage-tutorial) (önerilir)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracısı.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Profesyonel paketiyle bir [Samanage kiracısı](https://www.samanage.com/pricing/) .
 * Yönetici izinleriyle Samanage Kullanıcı hesabı.
 
-> [!NOTE]
-> Azure AD sağlama tümleştirmesi, [Samanage REST API](https://www.samanage.com/api/)'sini kullanır. Bu API, profesyonel paketi olan hesaplara yönelik geliştiricilerin Sayönetilebilmesi için kullanılabilir.
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Azure AD ve Samanage arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="add-samanage-from-the-azure-marketplace"></a>Azure Marketi 'nden Samanage ekleyin
+## <a name="step-2-configure-samanage-to-support-provisioning-with-azure-ad"></a>2. Adım Samanage 'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-Azure AD ile otomatik Kullanıcı sağlama için Samanage 'ı yapılandırmadan önce, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize Samanage ekleyin.
+Kimlik doğrulaması için bir gizli belirteç oluşturmak için [bunu](https://help.samanage.com/s/article/Tutorial-Tokens-Authentication-for-API-Integration-1536721557657)inceleyin.
 
-Market 'ten Samanage eklemek için aşağıdaki adımları izleyin.
+## <a name="step-3-add-samanage-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Samanage ekleme
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki gezinti bölmesinde **Azure Active Directory**' i seçin.
+Azure AD uygulama galerisinden Samanage ' i ekleyerek Samanage sağlamasını yönetmeye başlayın. Daha önce SSO için Samanage 'u ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-    ![Azure Active Directory simgesi](common/select-azuread.png)
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+* Kullanıcıları ve grupları Samanage 'a atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** ' yı seçin.
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Samanage** yazın ve sonuç panelinden **Samanage** ' ı seçin. Uygulamayı eklemek için **Ekle**' yi seçin.
+## <a name="step-5-configure-automatic-user-provisioning-to-samanage"></a>5. Adım. Samanage otomatik Kullanıcı sağlamasını yapılandırma 
 
-    ![Sonuçlar listesinde Samanage](common/search-new-app.png)
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
-## <a name="assign-users-to-samanage"></a>Kullanıcıları Samanage 'a atama
+### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Azure AD 'de Samanage otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
-
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Samanage 'a erişmesi gerektiğine karar verin. Bu kullanıcıları veya grupları Samanage 'a atamak için, [bir kullanıcı veya grubu bir kurumsal uygulamaya atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)' daki yönergeleri izleyin.
-
-### <a name="important-tips-for-assigning-users-to-samanage"></a>Kullanıcıları Samanage 'a atamaya yönelik önemli ipuçları
-
-*    Günümüzde, Samanage rolleri, Azure portal Kullanıcı arabiriminde otomatik olarak ve dinamik olarak doldurulur. Kullanıcılara Samanage rolleri atamadan önce, Samanage kiracınızdaki en son rolleri almak için bir ilk eşitlemenin, Samanage 'e göre tamamlandığından emin olun.
-
-*    İlk otomatik Kullanıcı sağlama yapılandırmanızı test etmek için tek bir Azure AD kullanıcısını Samanage 'e atamanızı öneririz. Testler başarılı olduktan sonra daha sonra ek kullanıcılar ve gruplar atayabilirsiniz.
-
-*    Bir kullanıcıyı Samanage 'a atadığınızda atama iletişim kutusunda varsa uygulamaya özgü geçerli herhangi bir rolü seçin. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
-
-## <a name="configure-automatic-user-provisioning-to-samanage"></a>Samanage otomatik Kullanıcı sağlamasını yapılandırma
-
-Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehberlik eder. Azure AD 'de Kullanıcı veya grup atamalarına göre Samanage kullanıcıları veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için kullanın.
-
-> [!TIP]
-> Ayrıca, Samanage için SAML tabanlı çoklu oturum açmayı etkinleştirebilirsiniz. [Samanage çoklu oturum açma öğreticisindeki](samanage-tutorial.md)yönergeleri izleyin. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
-
-### <a name="configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Azure AD 'de Samanage otomatik Kullanıcı sağlamasını yapılandırma
-
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > **sayönet**' i seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -96,58 +95,56 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 3. **Sağlama** sekmesini seçin.
 
-    ![Samanage sağlama](./media/samanage-provisioning-tutorial/ProvisioningTab.png)
+    ![Sağlama sekmesi](common/provisioning.png)
 
 4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, Samanage **kiracı URL** 'nizi ve **gizli belirtecinizi**girin. Azure AD 'nin Samanage 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Samanage hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://api.samanage.com` **kiracı URL 'sini**girin.  Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin Samanage 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Samanage hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin
 
-    ![Test bağlantısını sayönet](./media/samanage-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/samanage-provisioning-tutorial/provisioning.png)
 
-6. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alacak kişinin veya grubun e-posta adresini girin. **Bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim e-postasını sayönet](./media/samanage-provisioning-tutorial/EmailNotification.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sayönet**' i seçin.
 
-    ![Kullanıcı eşitlemesini sayönet](./media/samanage-provisioning-tutorial/UserMappings.png)
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den Samanage ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemlerinde Samanage Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, SAMANAGE API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-9. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Samanage ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemlerinde Samanage Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
+      ![Samange Kullanıcı eşlemeleri](./media/samanage-provisioning-tutorial/user-attributes.png)
 
-    ![Eşleşen kullanıcı özniteliklerini sayönet](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
+10. **Eşlemeler** bölümü altında, **Azure Active Directory gruplarını Samanage olarak eşitler**' ı seçin.
 
-10. Grup eşlemelerini etkinleştirmek için, **eşlemeler** bölümünde, **Azure Active Directory gruplarını Samanage olarak eşitler**' ı seçin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'Den Samanage ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemlerinde Samanage grupları ile eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Grup eşitlemesini sayönet](./media/samanage-provisioning-tutorial/GroupMappings.png)
+      ![Grup eşlemelerini samange](./media/samanage-provisioning-tutorial/group-attributes.png)
 
-11. Grupları eşleştirmek için **Enabled** ayarını **Evet** olarak ayarlayın. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Samanage ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemlerinde Samanage Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-    ![Eşleşen grup özniteliklerini sayönet](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
+13. Azure AD sağlama hizmeti 'ni Samanage için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-13. Kapsam filtrelerini yapılandırmak için [kapsam filtresi öğreticisindeki](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)yönergeleri izleyin.
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-13. Azure AD sağlama hizmeti 'ni Samanage için etkinleştirmek üzere **Ayarlar** bölümünde, **sağlama durumunu** **Açık**olarak değiştirin.
+14. **Ayarlar** bölümünde **kapsam** içinde Istenen değerleri seçerek, Samanage için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Samanage sağlama durumu](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-14. Samanage için sağlamak istediğiniz kullanıcıları veya grupları tanımlayın. **Ayarlar** bölümünde, **kapsam**içinde istediğiniz değerleri seçin. **Tüm kullanıcıları ve grupları Eşitle** seçeneğini belirlediğinizde, aşağıdaki "bağlayıcı sınırlamaları" bölümünde açıklanan sınırlamaları göz önünde bulundurun.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Samanage kapsamı](./media/samanage-provisioning-tutorial/ScopeSync.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' i seçin.
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
 
-    ![Sakla](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
+## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
+Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-
-Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm kullanıcıların veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra eşitlenmesi daha uzun sürer. Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşir. 
-
-İlerleme durumunu izlemek ve sağlama etkinliği raporunun bağlantılarını izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz. Rapor, Azure AD sağlama hizmeti tarafından, Samanage üzerinde gerçekleştirilen tüm eylemleri açıklar.
-
-Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+1. Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+2. Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+3. Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
@@ -155,17 +152,14 @@ Azure AD sağlama günlüklerini okuma hakkında daha fazla bilgi için bkz. [Ot
 
 - {"displayName": "role"}, burada rol istediğiniz varsayılan değerdir.
 
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 04/22/2020-yetkilendirme yöntemi temel kimlik doğrulaması 'ndan uzun süreli gizli belirtece güncelleştirildi.
+
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
-
-<!--Image references-->
-[1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png
-[2]: ./media/samanage-provisioning-tutorial/tutorial_general_02.png
-[3]: ./media/samanage-provisioning-tutorial/tutorial_general_03.png
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

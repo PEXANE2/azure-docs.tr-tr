@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560074"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628904"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy ilgili sorunları giderin
 
@@ -92,6 +92,17 @@ Bunlar, kapsayıcı ve paylaşma adlarıyla ilgili hatalardır.
     - Geçerli olmayan adların örnekleri `my-folder_1`:, `my`, `--myfolder`,, `myfolder--``myfolder!`
 
     Daha fazla bilgi için bkz. [kapsayıcı adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) ve [paylaşma adları](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)için Azure adlandırma kuralları.
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**Hata açıklaması**: Dizin veya kapsayıcı adları geçersiz karakterler içeriyor.
+
+**Önerilen çözüm**: kopyaladığınız dizin veya kapsayıcı adları desteklenmeyen karakterler içeriyor.
+
+- Yerel Web Kullanıcı arabiriminin Bağlan ve Kopyala sayfasında, sorun ile klasör adlarını belirlemek için hata dosyalarını indirin ve gözden geçirin. 
+- Azure adlandırma kurallarıyla uyumlu olduklarından emin olmak için dizini veya kapsayıcıları yeniden adlandırın.
+
+Daha fazla bilgi için bkz. [dizinler](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) ve [kapsayıcılar](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)için Azure adlandırma kuralları.
 
 ## <a name="container-or-share-size-limit-errors"></a>Kapsayıcı veya paylaşma boyut sınırı hataları
 

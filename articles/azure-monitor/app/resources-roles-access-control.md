@@ -3,12 +3,12 @@ title: Azure Application Insights kaynaklar, roller ve erişim denetimi | Micros
 description: Kuruluşunuzun öngörülerinin sahipleri, katkıda bulunanlar ve okuyucular.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473141"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628252"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights içindeki kaynaklar, roller ve erişim denetimi
 
@@ -40,11 +40,6 @@ ms.locfileid: "79473141"
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Kaynak grubunda erişimi denetleme
 
 Uygulamanız için oluşturduğunuz kaynağa ek olarak, uyarılar ve Web testleri için ayrı gizli kaynaklar da olduğunu anlamak önemlidir. Bunlar, Application Insights kaynağınız ile aynı [kaynak grubuna](#resource-group) iliştirilir. Ayrıca, Web siteleri veya depolama gibi diğer Azure hizmetlerini de yerleştirebilirsiniz.
-
-Bu kaynaklara erişimi denetlemek için bu nedenle şunları yapmanız önerilir:
-
-* **Kaynak grubu veya abonelik** düzeyinde erişimi denetleyin.
-* Kullanıcılara **Application Insights bileşeni katkıda bulunan** rolünü atayın. Bu, gruptaki diğer hizmetlere erişim sağlamadan Web testlerini, uyarıları ve Application Insights kaynaklarını düzenlemesine olanak tanır.
 
 ## <a name="to-provide-access-to-another-user"></a>Başka bir kullanıcıya erişim sağlamak için
 
