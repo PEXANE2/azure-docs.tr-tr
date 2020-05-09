@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08325c8163073c083e927f84fecbde9a9d104572
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652790"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855100"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Runbook hatalarında sorun giderme
 
@@ -49,7 +49,7 @@ Azure Otomasyonu 'nda runbook yürütmesi sırasında hata aldığınızda, soru
     * Runbook 'u başlatmak için zaman aşımına uğradı bir Web kancasını kullanmaya çalışıyorsanız [Web kancasını yenileyin](../automation-webhooks.md#renew-a-webhook) .
     * Geçerli runbook durumlarını ve sorunun olası nedenlerini öğrenmek için [iş durumlarını denetleyin](../automation-runbook-execution.md#job-statuses) .
     * Runbook 'un askıya alınmadan önce ne olacağını belirlemek için Runbook 'a [ek çıkış ekleyin](../automation-runbook-output-and-messages.md#message-streams) .
-    * İşiniz tarafından oluşturulan [tüm özel durumları işleyin](../automation-runbook-execution.md#handling-exceptions) .
+    * İşiniz tarafından oluşturulan [tüm özel durumları işleyin](../automation-runbook-execution.md#exceptions) .
 
 1. Bu adımı, runbook işi veya karma Runbook Worker ortamı yanıt vermezse yapın.
 
@@ -234,7 +234,7 @@ Runbook çalışırken doğru bağlamı kullanmıyor.
 
 ### <a name="resolution"></a>Çözüm
 
-Runbook birden çok runbook 'u çağırdığında abonelik bağlamı kaybolabilir. Abonelik bağlamının runbook 'lara geçirildiğinden emin olmak için, istemci runbook 'unun bağlamı `Start-AzureRmAutomationRunbook` `AzureRmContext` parametresindeki cmdlet 'e iletmesini sağlayın. Belirtilen kimlik `Disable-AzureRmContextAutosave` bilgilerinin yalnızca geçerli `Scope` runbook için kullanıldığından `Process` emin olmak için cmdlet 'ini olarak ayarlanmış parametresiyle kullanın. Daha fazla bilgi için bkz. [birden çok abonelikle çalışma](../automation-runbook-execution.md#working-with-multiple-subscriptions).
+Runbook birden çok runbook 'u çağırdığında abonelik bağlamı kaybolabilir. Abonelik bağlamının runbook 'lara geçirildiğinden emin olmak için, istemci runbook 'unun bağlamı `Start-AzureRmAutomationRunbook` `AzureRmContext` parametresindeki cmdlet 'e iletmesini sağlayın. Belirtilen kimlik `Disable-AzureRmContextAutosave` bilgilerinin yalnızca geçerli `Scope` runbook için kullanıldığından `Process` emin olmak için cmdlet 'ini olarak ayarlanmış parametresiyle kullanın. Daha fazla bilgi için bkz. [abonelikler](../automation-runbook-execution.md#subscriptions).
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -634,7 +634,7 @@ Bu sorun, Azure korumalı alanlar tüm işlem dışı COM sunucularına erişimi
 
 ### <a name="resolution"></a>Çözüm
 
-Azure korumalı alanının kullanımı hakkında ayrıntılı bilgi için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md#where-to-run-your-runbooks).
+Azure korumalı alanının kullanımı hakkında ayrıntılı bilgi için bkz. [runbook yürütme ortamı](../automation-runbook-execution.md#runbook-execution-environment).
 
 ## <a name="scenario-invalid-forbidden-status-code-when-using-key-vault-inside-a-runbook"></a>Senaryo: runbook içinde Key Vault kullanılırken geçersiz yasak durum kodu
 

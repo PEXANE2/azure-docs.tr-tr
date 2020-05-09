@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4714a78ed03a9b861f3a266cfd0d7bca456b3c4
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063977"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628359"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Doğrulama yönteminiz olarak güvenlik sorularını ayarlama
 
@@ -55,7 +55,7 @@ Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte
 
 ### <a name="to-set-up-your-security-questions"></a>Güvenlik sorularınızı ayarlamak için
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin.
 
     ![, Vurgulanan güvenlik bilgisi bağlantılarını gösteren profilim sayfası](media/security-info/securityinfo-myprofile-page.png)
 

@@ -3,16 +3,16 @@ title: Visual Studio 'Yu Cloud Explorer ile kullanarak mantıksal uygulamaları 
 description: Cloud Explorer ile Visual Studio 'Yu kullanarak düzenleme, güncelleştirme, yönetme, kaynak denetimine ekleme ve mantıksal uygulamalar dağıtma
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/29/2019
-ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803199"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598445"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
 
@@ -259,7 +259,11 @@ Mantıksal uygulamanızı Azure portal silmek için, Cloud Explorer 'da mantıks
 ![Azure portal mantıksal uygulamanızı silme](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir. 
+> Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
+
+> [!NOTE]
+> Bir alt mantıksal uygulamayı silip yeniden oluşturursanız, ana mantıksal uygulamayı yeniden kaydetmeniz gerekir. Yeniden oluşturulan alt uygulamanın farklı meta verileri olacak.
+> Üst mantıksal uygulamayı alt öğesini yeniden oluşturduktan sonra yeniden kaydetmezseniz, alt mantıksal uygulamaya yapılan çağrılarınız "yetkilendirilmemiş" hatası ile başarısız olur. Bu davranış, örneğin tümleştirme hesaplarında yapıtlar kullanan veya Azure işlevleri çağıran ana alt mantıksal uygulamalar için geçerlidir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

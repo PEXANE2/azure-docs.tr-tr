@@ -655,7 +655,7 @@
             - name: Ölçek
               items:
                 - name: El ile ölçeği genişletme
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: Programlı olarak ölçeği genişletme
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: Birincil düğüm türlerinin ölçeğini artırma

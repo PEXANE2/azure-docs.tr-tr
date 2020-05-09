@@ -3,12 +3,12 @@ title: Azure Işlevleri için Python geliştirici başvurusu
 description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 936d6455f448e0243c7d4de2b9f1b88673a32798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185991"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780054"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -22,7 +22,7 @@ Azure Işlevleri, bir işlevin girişi işleyen ve çıkış üreten Python beti
 
 Tetikleyiciler ve bağlamalardan alınan veriler, Function `name` *. JSON* dosyasında tanımlanan özelliği kullanarak Yöntem öznitelikleri aracılığıyla işleve bağlanır. Örneğin, aşağıdaki _function. JSON_ ADLı `req`bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır:
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 Bu tanıma göre, işlev kodunu `__init__.py` içeren dosya aşağıdaki örnekteki gibi görünebilir:
 
@@ -77,6 +77,7 @@ Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 Ana\_\_proje klasörü (uygulama\_\_) aşağıdaki dosyaları içerebilir:
@@ -86,6 +87,7 @@ Ana\_\_proje klasörü (uygulama\_\_) aşağıdaki dosyaları içerebilir:
 * *Host. JSON*: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [Host. JSON](functions-host-json.md).
 * *. funcignore*: (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir.
 * *. gitignore*: (isteğe bağlı) yerel. Settings. JSON gibi bir git deposundan dışlanan dosyaları bildirir.
+* *Dockerfile*: (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (Function. JSON) vardır. 
 

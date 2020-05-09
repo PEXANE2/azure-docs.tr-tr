@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78227891"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628802"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -19,7 +19,7 @@ ms.locfileid: "78227891"
 > Yerel önbellek, [Windows kapsayıcıları](app-service-web-get-started-windows-container.md) veya [Linux üzerinde App Service](containers/app-service-linux-intro.md)gibi işlev uygulamalarında veya Kapsayıcılı App Service uygulamalarda desteklenmez.
 
 
-Azure App Service içerik Azure Storage 'da depolanır ve bir içerik paylaşımında dayanıklı bir biçimde ortaya çıkmış olur. Bu tasarımın çeşitli uygulamalarla çalışması amaçlanmıştır ve aşağıdaki özniteliklere sahiptir:  
+Azure App Service içerik Azure Storage 'da depolanır ve içerik paylaşımında dayanıklı bir şekilde ortaya çıkmış olur. Bu tasarımın çeşitli uygulamalarla çalışması amaçlanmıştır ve aşağıdaki özniteliklere sahiptir:  
 
 * İçerik, uygulamanın birden çok sanal makine (VM) örneği arasında paylaşılır.
 * İçerik dayanıklı olabilir ve uygulamalar çalıştırılarak değiştirilebilir.
@@ -36,7 +36,7 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Yerel önbelleğin App Service davranışını nasıl değiştirdiği
 * _D:\home_ , uygulama başlatıldığında VM örneğinde oluşturulan yerel önbelleğe işaret eder. _D:\Local_ , VM 'ye özgü geçici depolamaya işaret etmeye devam ediyor.
-* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başlatıldığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 300 MB ile sınırlıdır, ancak bunu 2 GB 'a kadar artırabilirsiniz. Kopyalanan dosyalar yerel önbelleğin boyutunu aşarsa App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur.
+* Yerel önbellek, sırasıyla _D:\home\site_ ve _D:\home\siteextensions_konumundaki paylaşılan içerik deposunun _/site_ ve _/siteextensions_ klasörlerinin tek seferlik bir kopyasını içerir. Dosyalar, uygulama başladığında yerel önbelleğe kopyalanır. Her bir uygulama için iki klasörün boyutu varsayılan olarak 1 GB ile sınırlıdır, ancak 2 GB 'a artırılabilir. Önbellek boyutunun arttıkça önbelleğin yüklenmesi daha uzun sürer. Kopyalanan dosyalar yerel önbelleğin boyutunu aşarsa App Service sessizce yerel önbelleği yoksayar ve uzak dosya paylaşımından okur.
 * Yerel önbellek okuma-yazma ' dır. Ancak, uygulama sanal makineleri taşıdığında veya yeniden başlatıldığında herhangi bir değişiklik atılır. Görev açısından kritik verileri içerik deposunda depolayan uygulamalar için yerel önbellek kullanmayın.
 * _D:\home\logfiles_ ve _d:\home\data_ günlük dosyalarını ve uygulama verilerini içerir. İki alt klasör, sanal makine örneğinde yerel olarak depolanır ve paylaşılan içerik deposuna düzenli olarak kopyalanır. Uygulamalar, günlük dosyalarını ve verileri bu klasörlere yazarak kalıcı hale getirebilirler. Ancak, paylaşılan içerik deposuna yapılan kopya en iyi çaba olduğundan, bir VM örneğinin ani kilitlenmesi nedeniyle günlük dosyaları ve verilerin kaybedilmesi mümkündür.
 * [Günlük akışı](troubleshoot-diagnostic-logs.md#stream-logs) , en iyi çaba kopyasından etkilenir. Akışlı günlüklerde bir dakikalık gecikmeye kadar gözlemleyebilirsiniz.
@@ -75,7 +75,7 @@ Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına teme
 
     "properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
-        "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
+        "WEBSITE_LOCAL_CACHE_SIZEINMB": "1000"
     }
 }
 
@@ -83,7 +83,7 @@ Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına teme
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Yerel önbellekteki boyut ayarını değiştir
-Varsayılan olarak, yerel önbellek boyutu **300 MB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını `WEBSITE_LOCAL_CACHE_SIZEINMB`kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz.
+Varsayılan olarak, yerel önbellek boyutu **1 GB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını `WEBSITE_LOCAL_CACHE_SIZEINMB`kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz. Boyut arttıkça yerel önbelleğin yüklenmesi daha uzun sürer.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
 Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.

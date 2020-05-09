@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274768"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739373"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Izleyici 'de Windows ve Linux performansı veri kaynakları
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerinin toplanmasının yanı sıra, neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla performans sayaçlarını toplayabilir.
@@ -175,7 +175,7 @@ Performans ölçümlerinin varsayılan yapılandırması aşağıda verilmiştir
     </source>
 
 ## <a name="data-collection"></a>Veri toplama
-Azure Izleyici, bu sayacın yüklü olduğu tüm aracıların belirtilen örnek aralığındaki tüm belirtilen performans sayaçlarını toplar.  Veriler toplanmaz ve ham veriler, aboneliğiniz tarafından belirtilen süre boyunca tüm günlük sorgu görünümlerinde kullanılabilir.
+Azure Izleyici, bu sayacın yüklü olduğu tüm aracıların belirtilen örnek aralığındaki tüm belirtilen performans sayaçlarını toplar.  Veriler toplanmaz ve ham veriler, Log Analytics çalışma alanınız tarafından belirtilen süre için tüm günlük sorgu görünümlerinde kullanılabilir.
 
 ## <a name="performance-record-properties"></a>Performans kaydı özellikleri
 Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bulunan özelliklere sahiptir.

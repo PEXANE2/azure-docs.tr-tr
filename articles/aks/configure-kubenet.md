@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 01b2f3baefc2320ec11f9cb7f29392ebb0841289
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: 09fd5326c2532e115dbab0752af31a809488f04c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207488"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559681"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -199,7 +199,7 @@ Bir AKS kümesi oluşturduğunuzda, bir ağ güvenlik grubu ve yol tablosu oluş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Var olan sanal ağ alt ağınıza dağıtılmış bir AKS kümesi ile, artık kümeyi normal olarak kullanabilirsiniz. Azure Dev Spaces veya [taslak][use-draft]kullanarak [uygulama oluşturmaya][dev-spaces] veya [Held kullanarak uygulama dağıtmaya][use-helm]başlayın.
+Var olan sanal ağ alt ağınıza dağıtılmış bir AKS kümesi ile, artık kümeyi normal olarak kullanabilirsiniz. [Azure dev Spaces kullanarak uygulama oluşturmaya][dev-spaces], [Held kullanarak mevcut uygulamaları dağıtmanıza][use-helm]veya [Held kullanarak yeni uygulamalar oluşturmaya][develop-helm]başlayın.
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
@@ -217,8 +217,8 @@ Var olan sanal ağ alt ağınıza dağıtılmış bir AKS kümesi ile, artık k�
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
-[use-draft]: kubernetes-draft.md
 [virtual-nodes]: virtual-nodes-cli.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md

@@ -1,6 +1,6 @@
 ---
-title: Azure 'da Azure Izleyici çalışma kitaplarını temel alan panolar kullanarak verilerinizi görselleştirin | Microsoft Docs
-description: Azure Sentinel 'deki çalışma kitaplarına göre panoları kullanarak verilerinizi görselleştirmeyi öğrenmek için bu öğreticiyi kullanın.
+title: Azure 'da Azure Izleyici çalışma kitaplarını kullanarak verilerinizi görselleştirin | Microsoft Docs
+description: Azure Sentinel 'de çalışma kitaplarını kullanarak verilerinizi görselleştirmeyi öğrenmek için bu öğreticiyi kullanın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/01/2020
+ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585229"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739169"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Öğretici: verilerinizi görselleştirin ve izleyin
 
 
 
- [Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, özel panolar oluşturma konusunda çok yönlülük sağlayan Azure izleyici çalışma kitaplarını benimseyerek Azure Sentinel benimseme kullanarak verileri görselleştirebilir ve izleyebilirsiniz. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/app/usage-workbooks.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
+[Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, özel panolar oluşturma konusunda çok yönlülük sağlayan Azure izleyici çalışma kitaplarını benimseyerek Azure Sentinel benimseme kullanarak verileri görselleştirebilir ve izleyebilirsiniz. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/app/usage-workbooks.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
 
 
 Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı olur.
@@ -38,7 +38,7 @@ Bu öğretici, verilerinizi Azure Sentinel 'de görselleştirmenize yardımcı o
 - Azure Sentinel çalışma alanının kaynak grubunda en az çalışma kitabı okuyucusu veya çalışma kitabı katılımcısı izinlerinizin olması gerekir.
 
 > [!NOTE]
-> Azure Sentinel 'de görebileceğiniz çalışma kitapları, Azure Sentinel çalışma alanı kaynak grubu içinde kaydedilir ve oluşturuldukları çalışma alanına göre etiketlenebilir.
+> Azure Sentinel 'de görebileceğiniz çalışma kitapları, Azure Sentinel çalışma alanının kaynak grubu içinde kaydedilir ve oluşturuldukları çalışma alanına göre etiketlenebilir.
 
 ## <a name="use-built-in-workbooks"></a>Yerleşik çalışma kitaplarını kullanma
 

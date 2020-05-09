@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164041"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594347"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -27,6 +27,8 @@ Lsv2-Series, yüksek performans, düşük gecikme süresi ve [AMD EPIC<sup>TM</s
 
 ACU: 150-175
 
+Burdımı: destekleniyor
+
 Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenmiyor
@@ -35,14 +37,14 @@ Dinamik Geçiş: desteklenmiyor
 
 Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
-| Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış maksimum veri diski verimlilik (IOPS/MBps)<sup>4</sup> | En fazla veri diski | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4X 1.92 TB  | 1,5 milyon/8000    | 32000/640  | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 d/14000   | 48000/960  | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8X 1.92 TB  | 2.9 a/16000   | 64000/1280 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 d/20000 | 80000/1400 | 32 | 8/16000 + |
+| Boyut | Sanal işlemci | Bellek (GiB) | Geçici disk<sup>1</sup> (gib) | NVMe diskleri<sup>2</sup> | NVMe disk işleme<sup>3</sup> (Okuma IOPS/Mbps) | Önbelleğe alınmamış veri diski verimlilik (IOPS/MBps)<sup>4</sup> | Önbelleğe alınmamış veri diski performansı üst sınırı (IOPS/MBps)<sup>5</sup>| En fazla veri diski | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4X 1.92 TB  | 1,5 milyon/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 d/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8X 1.92 TB  | 2.9 a/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 d/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
 
 <sup>1</sup> Lsv2 serisi VM 'ler, işletim sistemi disk belleği/takas dosyası kullanımı için standart bir SCSI tabanlı geçici kaynak diskine sahiptir (D: Windows 'Ta, Linux üzerinde/dev/sdb). Bu disk, her 8 vCPU için 80 GiB depolama, 4.000 ıOPS ve 80 MBps aktarım hızı sağlar (örneğin, Standard_L80s_v2 40.000 ıOPS ve 800 MBPS ' te 800 GiB sağlar). Bu, NVMe sürücülerinin uygulama kullanımına tamamen ayrılmasını sağlar. Bu disk geçici bir işlemdir ve tüm veriler durdurma/serbest bırakma durumunda kaybedilir.
 
@@ -52,7 +54,9 @@ Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
 <sup>4</sup> Lsv2 serisi VM 'Ler, Lsv2 iş yüklerini avantajına sahip olmadığından veri diski için konak önbelleği sunmaz.  Ancak, Lsv2 VM 'Leri Azure 'un kısa ömürlü VM OS disk seçeneğine (en fazla 30 GiB) uyum sağlayabilir.
 
-64 ' den fazla vCPU içeren <sup>5</sup> VM, desteklenen bu konuk işletim sistemlerinden birini gerektirir:
+<sup>5</sup> Lsv2 serisi VM 'ler, disk performansını aynı anda en fazla 30 dakika boyunca [aşırı](linux/disk-bursting.md) alabilir. 
+
+64 ' den fazla vCPU içeren <sup>6</sup> VM, desteklenen bu konuk işletim sistemlerinden birini gerektirir:
 
 - Windows Server 2016 veya üzeri
 - Ubuntu 16,04 LTS veya üzeri, Azure ayarlanmış çekirdekle (4,15 çekirdek veya üzeri)
