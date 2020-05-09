@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681849"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792624"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -98,6 +98,10 @@ Bu iki adım yardımcı olduysa, video çerçevelerinin istemci tarafından alı
 
 ### <a name="common-client-side-issues"></a>Ortak istemci tarafı sorunları
 
+**Model, seçilen VM 'nin sınırlarını, özellikle de en yüksek sayıda poligonu aşıyor:**
+
+Bkz. belirli [VM boyut sınırlamaları](../reference/limits.md#overall-number-of-polygons).
+
 **Model Frustum görünümü içinde değil:**
 
 Çoğu durumda, model doğru şekilde görüntülenir, ancak kameranın dışında bulunur. Yaygın bir nedenden dolayı modelin, kameranın en kırpma düzlemine göre kırpılması için, modelin en dışı bir özete aktarılmasının yaygın bir nedeni vardır. Modelin sınırlayıcı kutusunun programlı bir şekilde sorgulanmasına ve kutuyu bir satır kutusu olarak görselleştirmeye veya değerlerini hata ayıklama günlüğüne yazdırmaya yardımcı olur.
@@ -139,8 +143,20 @@ Azure uzaktan Işleme, video ile çerçeve oluşturmayı ve yeniden projeksiyonu
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Uzaktan Işleme API 'sini kullanan Unity kodu derlenmiyor
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Unity Düzenleyicisi için derlerken hata ayıklamayı kullan
+
 Unity çözümünün *derleme türünü* **hata ayıklaması**için değiştirin. Unity düzenleyicisinde ARR testi yaparken, tanımlama `UNITY_EDITOR` yalnızca ' Debug ' yapılarında kullanılabilir. Bu, [dağıtılan uygulamalar](../quickstarts/deploy-to-hololens.md)için kullanılan yapı türü ile ilgili değildir ve burada ' Release ' derlemelerini tercih etmelisiniz.
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 için Unity örnekleri derlenirken derleme sorunları
+
+HoloLens 2 için Unity örneklerini (hızlı başlangıç, ShowCaseApp,..) derlemeye çalışırken silatik arızalarıyla karşılaştık. Visual Studio şikayet eden bazı dosyaları burada kopyalayamıyorum. Bu soruna ulaşırsanız:
+* Tüm geçici Unity dosyalarını projeden kaldırın ve yeniden deneyin.
+* Kopyalama adımı bazen uzun dosya adlarıyla sorunlar halinde çalıştırıldıklarından, projelerin olabildiğince kısa yola sahip bir diskte dizinde bulunduğundan emin olun.
+* Bu yardım yoksa, MS Sense kopyalama adımını kesintiye uğratır. Bir özel durum ayarlamak için komut satırından bu kayıt defteri komutunu çalıştırın (yönetici hakları gerektirir):
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>Dengesiz Hologragram
 
 İşlenen nesnelerin baş hareketlerle birlikte taşınması gibi görünse de, *geç aşama yeniden projeksiyonu* (LSR) ile ilgili sorunlarla karşılaşıyor olabilirsiniz. Böyle bir duruma yaklaşıma ilişkin yönergeler için, [geç aşama yeniden projeksiyonunun](../overview/features/late-stage-reprojection.md) bölümüne bakın.

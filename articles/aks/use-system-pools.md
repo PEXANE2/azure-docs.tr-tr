@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) içindeki sistem düğüm havuzlarını ku
 description: Azure Kubernetes hizmeti 'nde (AKS) sistem düğüm havuzları oluşturmayı ve yönetmeyi öğrenin
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259077"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790567"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
@@ -29,6 +29,8 @@ Sistem düğüm havuzlarını destekleyen AKS kümelerini oluştururken ve yöne
 * [Azure Kubernetes Service (AKS) Içindeki kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions]konusuna bakın.
 * AKS kümesi VM türü olarak sanal makine ölçek kümeleri ile oluşturulmalıdır.
 * Düğüm havuzunun adı yalnızca küçük harfli alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır. Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
+* Düğüm havuzu modunu ayarlamak için 2020-03-01 veya üzeri bir API sürümü kullanılmalıdır.
+* Düğüm havuzunun modu gerekli bir özelliktir ve ARM şablonları veya doğrudan API çağrıları kullanılırken açıkça ayarlanması gerekir.
 
 ## <a name="system-and-user-node-pools"></a>Sistem ve Kullanıcı düğümü havuzları
 
@@ -175,4 +177,4 @@ Bu makalede, bir AKS kümesinde sistem düğüm havuzlarını oluşturmayı ve y
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944101"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610250"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager tümleştirmeyle Azure App Service bir özel etki alanı adı yapılandırma
 
@@ -66,12 +66,18 @@ App Service uygulamanız desteklenen bir fiyatlandırma katmanındaysa, uç nokt
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-Her etki alanı sağlayıcının özellikleri farklılık gösterdiğinden, özel etki alanı adından (örneğin, **contoso.com** *) uygulamanızla* tümleştirilmiş Traffic Manager etki alanı adına (**contoso.trafficmanager.net** *) eşleyebilirsiniz.*
+Her etki alanı sağlayıcısının özellikleri farklılık gösterdiğinden, [kök olmayan bir özel etki alanı adından](#what-about-root-domains) (örneğin, **www.contoso.com** *) uygulamanızla* tümleştirilmiş Traffic Manager etki alanı adına (**contoso.trafficmanager.net**) eşleyebilirsiniz. *from* 
 
 > [!NOTE]
 > Bir kayıt zaten kullanımda ise ve uygulamalarınızı buna preemptively bağlamanız gerekiyorsa, ek bir CNAME kaydı oluşturabilirsiniz. Örneğin, preemptively için **\.www contoso.com** 'yi uygulamanıza bağlamak için **awverify. www** öğesinden **contoso.trafficmanager.net**'e bir CNAME kaydı oluşturun. "Www" CNAME kaydını değiştirmeye\.gerek kalmadan uygulamanıza "www contoso.com" ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure App Service için etkin BIR DNS adı geçirme](manage-custom-dns-migrate-domain.md).
 
 Etki alanı sağlayıcınızda DNS kayıtlarını ekleme veya değiştirme işlemi tamamlandıktan sonra, değişiklikleri kaydedin.
+
+### <a name="what-about-root-domains"></a>Kök etki alanları ne?
+
+Traffic Manager, yalnızca CNAME kayıtlarıyla özel etki alanı eşlemeyi desteklediğinden ve DNS standartları kök etki alanlarını eşlemek için CNAME kayıtlarını desteklemediğinden (örneğin, **contoso.com**), Traffic Manager kök etki alanlarına eşlemeyi desteklemez. Bu sorunu geçici olarak çözmek için uygulama düzeyinde bir URL yeniden yönlendirmesi kullanın. ASP.NET Core, örneğin, [URL yeniden yazma](/aspnet/core/fundamentals/url-rewriting)kullanabilirsiniz. Sonra, alt etki alanının yükünü dengelemek için Traffic Manager kullanın (**www.contoso.com**).
+
+Yüksek kullanılabilirlik senaryolarında, kök etki alanından her bir uygulama kopyasının IP adresine işaret eden birden çok *kayıt* oluşturarak, Traffic Manager olmadan hataya DAYANıKLı bir DNS kurulumu uygulayabilirsiniz. Ardından, [aynı kök etki alanını tüm uygulama kopyalarla eşleyin](app-service-web-tutorial-custom-domain.md#map-an-a-record). Aynı etki alanı adı aynı bölgedeki iki farklı uygulamayla eşleştirilemediğinden, bu kurulum yalnızca uygulama kopyalarınız farklı bölgelerde olduğunda işe yarar.
 
 ## <a name="enable-custom-domain"></a>Özel etki alanını etkinleştir
 Etki alanı adınızın kayıtları dağıtıldıktan sonra, özel etki alanı adınızın App Service uygulamanıza çözümlendiğini doğrulamak için tarayıcıyı kullanın.

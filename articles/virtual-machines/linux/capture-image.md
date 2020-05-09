@@ -1,21 +1,25 @@
 ---
-title: Azure CLı kullanarak Linux VM 'nin bir görüntüsünü yakalama
-description: Azure CLı kullanarak toplu dağıtımlar için kullanmak üzere Azure VM 'nin bir görüntüsünü yakalayın.
+title: Azure CLı kullanarak bir Linux VM 'sinin yönetilen bir görüntüsünü yakalama
+description: Azure CLı kullanarak toplu dağıtımlar için kullanmak üzere Azure VM 'nin yönetilen bir görüntüsünü yakalayın.
 author: cynthn
-ms.service: virtual-machines-linux
-ms.topic: article
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250406"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792692"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Sanal makine veya VHD görüntüsü oluşturma
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin yönetilen görüntüsünü oluşturma
 
-Azure 'da kullanmak üzere bir sanal makinenin (VM) birden çok kopyasını oluşturmak için VM 'nin veya işletim sistemi VHD 'sinin bir görüntüsünü yakalayın. Dağıtım için bir görüntü oluşturmak üzere kişisel hesap bilgilerini kaldırmanız gerekir. Aşağıdaki adımlarda, var olan bir VM 'yi serbest bırakın, serbest bırakın ve bir görüntü oluşturun. Bu görüntüyü, aboneliğinizdeki tüm kaynak grupları arasında VM 'Ler oluşturmak için kullanabilirsiniz.
+Geliştirme ve test için Azure 'da kullanmak üzere bir sanal makinenin (VM) birden çok kopyasını oluşturmak için, VM 'nin veya işletim sistemi VHD 'sinin yönetilen bir görüntüsünü yakalayın. Görüntü oluşturmak, depolamak ve ölçeklenebilir bir şekilde paylaşmak için bkz. [paylaşılan görüntü galerileri](../shared-images-cli.md).
+
+Yönetilen bir görüntü oluşturmak için kişisel hesap bilgilerini kaldırmanız gerekir. Aşağıdaki adımlarda, var olan bir VM 'yi serbest bırakın, serbest bırakın ve bir görüntü oluşturun. Bu görüntüyü, aboneliğinizdeki tüm kaynak grupları arasında VM 'Ler oluşturmak için kullanabilirsiniz.
 
 Yedekleme veya hata ayıklama için mevcut Linux sanal makinenizin bir kopyasını oluşturmak veya şirket içi bir VM 'den özelleştirilmiş bir Linux VHD 'yi yüklemek için, bkz. [özel disk görüntüsünden LINUX VM 'Yi karşıya yükleme ve oluşturma](upload-vhd.md).  
 
@@ -131,11 +135,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kaynak VM görüntüsünden birden çok VM oluşturabilirsiniz. Resimde değişiklik yapmak için: 
-
-- Görüntinizden bir VM oluşturun.
-- Tüm güncelleştirmeleri veya yapılandırma değişikliklerini yapın.
-- Bir görüntü sağlamayı, serbest ayırmayı, genelleştirmenizi ve bir görüntüyü oluşturmayı geri almak için adımları izleyin.
-- Gelecekteki dağıtımlar için bu yeni görüntüyü kullanın. Özgün görüntüyü silebilirsiniz.
-
-CLı ile VM 'lerinizi yönetme hakkında daha fazla bilgi için bkz. [Azure CLI](/cli/azure).
+Görüntü oluşturmak, depolamak ve ölçeklenebilir bir şekilde paylaşmak için bkz. [paylaşılan görüntü galerileri](shared-images.md).

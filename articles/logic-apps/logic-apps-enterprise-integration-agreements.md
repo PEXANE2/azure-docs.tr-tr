@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790728"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612342"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps 'de ticari iş ortağı sözleşmeleri oluşturun ve yönetin
 
@@ -68,6 +68,14 @@ Ana Azure menüsünde **tüm hizmetler**' i seçin. Arama kutusuna filtreniz ola
    | **Ayarları al** | Değişir | Değişir | Bu özellikler, ana bilgisayar ortağının anlaşmada Konuk iş ortağından gelen tüm iletileri nasıl alacağını belirtir. Daha fazla bilgi için bkz. ilgili anlaşma türü: <p>- [AS2 ileti ayarları](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIOLGU ileti ayarları](logic-apps-enterprise-integration-edifact.md) <br>- [X12 ileti ayarları](logic-apps-enterprise-integration-x12.md) |
    | **Ayarları gönder** | Değişir | Değişir | Bu özellikler, ana bilgisayar ortağının tüm giden iletileri anlaşmada Konuk iş ortağına nasıl göndereceğini belirtir. Daha fazla bilgi için bkz. ilgili anlaşma türü: <p>- [AS2 ileti ayarları](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIOLGU ileti ayarları](logic-apps-enterprise-integration-edifact.md) <br>- [X12 ileti ayarları](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > Bir sözleşmenin çözümü, iş ortağı ve gelen iletide tanımlanan bu öğelerin eşleştirmesine bağlıdır:
+   >
+   > * Gönderenin niteleyicisi ve tanımlayıcısı
+   > * Alıcının niteleyicisi ve tanımlayıcısı
+   >
+   > Bu değerler iş ortağınız için değişiklik içeriyorsa, sözleşmeyi de güncelleştirdiğinizden emin olun.
 
 1. Sözleşmenizi oluşturmayı tamamladığınızda, **Ekle** sayfasında **Tamam**' ı seçin ve tümleştirme hesabınıza geri dönün.
 
