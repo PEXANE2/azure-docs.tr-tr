@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: db6b8b2ff199b7b26d0c641ded31a5c1417468b9
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 9ba568f3a6b6e85ce90db7d6b4d72c2c0d958da1
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901271"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982743"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -60,7 +60,7 @@ Bir uygulama için objectID, ilişkili hizmet sorumlusuna karşılık gelir. Hiz
 
 Bir uygulama için ObjectID almanın iki yolu vardır.  Birincisi Azure Active Directory uygulamanızı kaydeder. Bunu yapmak için hızlı başlangıç ' daki adımları izleyerek [Microsoft Identity platformu ile uygulamayı kaydedin](../../active-directory/develop/quickstart-register-app.md). Kayıt tamamlandığında, ObjectID "uygulama (istemci) KIMLIĞI" olarak listelenecektir.
 
-İkincisi, bir Terminal penceresinde bir hizmet sorumlusu oluşturmaktır. Azure CLı ile, [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın ve "http://<My-Unique-Service-prensibi-Name>" biçimindeki-n bayrağına benzersiz bir hizmet asıl adı sağlayın.
+İkincisi, bir Terminal penceresinde bir hizmet sorumlusu oluşturmaktır. Azure CLı ile, [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın ve "http://&lt;My-Unique-Service-İlkeAdı&gt;" biçiminde benzersiz bir hizmet asıl adı belirtin.
 
 ```azurecli-interactive
 az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
