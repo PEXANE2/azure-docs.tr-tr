@@ -23,6 +23,9 @@
     - name: Birden çok adres ile dağıtma
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: Kullanılabilirlik Alanları ile dağıtma
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: Örnekler
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: Azure CLI’yi kullanarak dağıtma
       href: deploy-cli.md
-    - name: Şablon kullanarak dağıtma
-      href: deploy-template.md
     - name: Birden çok genel IP ile dağıtma
       href: deploy-multi-public-ip-powershell.md
     - name: Kullanılabilirlik Alanları ile dağıtma
@@ -75,6 +76,8 @@
       href: snat-private-range.md
     - name: IP Grupları oluşturma
       href: create-ip-group.md
+    - name: Windows Sanal Masaüstü’nü koruma
+      href: protect-windows-virtual-desktop.md
 - name: Başvuru
   items:
     - name: Azure CLI

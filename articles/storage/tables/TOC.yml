@@ -53,15 +53,11 @@
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
           items:
             - name: Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
-              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Veri yedekliği
-      items:
-        - name: Veri yedekliği
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Olağanüstü durum kurtarma ve yük devretme
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Üst düzeyde kullanılabilir uygulamalar tasarlama
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Olağanüstü durum kurtarma ve yük devretme
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 'Performans, ölçeklendirme ve maliyet iyileştirmesi'
       items:
         - name: Performans ve ölçeklenebilirlik denetim listesi
@@ -131,9 +127,13 @@
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: Aktarım Katmanı Güvenliğini etkinleştirme
               href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Verilerin nasıl çoğaltıldığını değiştirme
-      href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Olağanüstü durum kurtarma
+    - name: Veri yedekliğini yönetme
+      items:
+        - name: Verilerin nasıl çoğaltıldığını değiştirme
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Üst düzeyde kullanılabilir uygulamalar tasarlama
+          href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Olağanüstü durum kurtarmayı yönetme
       items:
         - name: Son Eşitleme Zamanı özelliğini denetleme
           href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
@@ -145,8 +145,6 @@
           href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
         - name: Linux üzerinde AzCopy (v8)
           href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
-    - name: Hesap yük devretmesi başlatma
-      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Sorun giderme
       items:
         - name: Gecikme sorunları

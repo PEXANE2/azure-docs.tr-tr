@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204211"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780751"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -107,7 +107,7 @@ IoT Edge hub, varsayılan olarak performans için en iyi duruma getirilmiştir, 
 
 **Optimizeforperformance** **değeri true**olarak ayarlandığında MQTT protokol kafası, daha iyi performansa sahip olan ancak daha fazla bellek ayıran PooledByteBufferAllocator kullanır. Ayırıcı, 32 bitlik işletim sistemlerinde veya düşük bellekli cihazlarda iyi çalışmaz. Ayrıca, performans için optimize edildiğinde, RocksDb yerel depolama sağlayıcısı olarak rolü için daha fazla bellek ayırır.
 
-Daha fazla bilgi için bkz. [kaynak kısıtlı cihazlarda kararlılık sorunları](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+Daha fazla bilgi için bkz. daha [küçük cihazlarda kararlılık sorunları](troubleshoot-common-errors.md#stability-issues-on-smaller-devices).
 
 #### <a name="disable-unused-protocols"></a>Kullanılmayan protokolleri devre dışı bırak
 
@@ -200,7 +200,7 @@ Ardından, edgeAgent ve edgeHub sistem modülleri için Deployment. Template. JS
 
 ### <a name="review-outboundinbound-configuration"></a>Giden/gelen yapılandırmayı gözden geçir
 
-Azure IoT Hub ve IoT Edge arasındaki iletişim kanalları her zaman giden olacak şekilde yapılandırılır. Çoğu IoT Edge senaryo için yalnızca üç bağlantı gereklidir. Kapsayıcı altyapısının modül görüntülerini tutan kapsayıcı kayıt defterine (veya kayıt defterlerine) bağlanması gerekir. IoT Edge çalışma zamanının cihaz yapılandırma bilgilerini almak ve ileti ve telemetri göndermek için IoT Hub ile bağlanması gerekir. Otomatik sağlama kullanıyorsanız, IoT Edge arka plan programının cihaz sağlama hizmetine bağlanması gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Azure IoT Hub ve IoT Edge arasındaki iletişim kanalları her zaman giden olacak şekilde yapılandırılır. Çoğu IoT Edge senaryo için yalnızca üç bağlantı gereklidir. Kapsayıcı altyapısının modül görüntülerini tutan kapsayıcı kayıt defterine (veya kayıt defterlerine) bağlanması gerekir. IoT Edge çalışma zamanının cihaz yapılandırma bilgilerini almak ve ileti ve telemetri göndermek için IoT Hub ile bağlanması gerekir. Otomatik sağlama kullanıyorsanız, IoT Edge arka plan programının cihaz sağlama hizmetine bağlanması gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı ve bağlantı noktası yapılandırma kuralları](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge cihazlarından bağlantılara izin ver
 

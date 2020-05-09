@@ -8,21 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476663"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580610"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
 Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights önizleme ortamında kendi modellerinizi oluşturma ve güncelleştirme işlemlerinin nasıl başlatılacağı açıklanmaktadır.
 
 > [!TIP]
->  * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
+>
+> * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
 > * Zaman serisi modeli Kullanıcı arabiriminize nasıl gidebileceğinizi öğrenmek için [Azure Time Series Insights önizleme Gezgini](time-series-insights-update-explorer.md) hakkında bilgi edinin.
 > * Time Series Insights Web gezginini kullanarak [zaman serisi modeliyle çalışmayı](time-series-insights-update-how-to-tsm.md) öğrenin.
 
@@ -51,9 +52,9 @@ Zaman serisi modeli, bu kurgusal örnekte karşılaşılan birçok senaryoya **u
 
 [![Zaman serisi modeli akıllı oven grafik örneği](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Zaman serisi modeli sorgular ve gezinmede önemli bir rol oynar, bu da karşılaştırmalar, zaman aralıklarıyla ve algılayıcı ile cihaz çeşitleri arasında çizilmesine izin vererek verileri ayırır. (**A**) 
+* Zaman serisi modeli sorgular ve gezinmede önemli bir rol oynar, bu da karşılaştırmalar, zaman aralıklarıyla ve algılayıcı ile cihaz çeşitleri arasında çizilmesine izin vererek verileri ayırır. (**A**)
 * Zaman serisi modelinde kalıcı veriler, zaman serisi sorgu hesaplamalarıyla değişken olarak korunduğu ve bunları sorgu sırasında yeniden kullandığı için veriler daha kapsamlı hale getirilir.
-* Zaman serisi modeli, geliştirilmiş görselleştirme ve yönetim özellikleri için verileri düzenler ve toplar. (**B**) 
+* Zaman serisi modeli, geliştirilmiş görselleştirme ve yönetim özellikleri için verileri düzenler ve toplar. (**B**)
 
 ### <a name="key-capabilities"></a>Temel işlevler
 
@@ -290,7 +291,7 @@ Time Series Insights türler, olaylar üzerinde formül ve hesaplama kuralların
 
 Her değişken üç *türden*biri olabilir: *sayısal*, *kategorik*ve *Toplam*.
 
-* **Sayısal** türleri sürekli değerlerle çalışır. 
+* **Sayısal** türleri sürekli değerlerle çalışır.
 * **Kategorik** türleri tanımlanmış bir dizi farklı değer kümesiyle çalışır.
 * **Toplama** değerleri, tek bir türdeki birden çok değişkeni (tüm sayısal veya tüm kategorik) birleştirir.
 

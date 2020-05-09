@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970616"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792607"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux sanal makinelerinde Azure AD ile Azure disk şifrelemesini etkinleştirme (önceki sürüm)
 
@@ -158,7 +158,7 @@ Aşağıdaki tabloda, bir Azure AD istemci KIMLIĞI kullanan mevcut veya çalı�
 ## <a name="use-the-encryptformatall-feature-for-data-disks-on-linux-iaas-vms"></a><a name="bkmk_EFA"> </a>Linux IaaS VM 'lerinde veri diskleri Için EncryptFormatAll özelliğini kullanın
 EncryptFormatAll parametresi, Linux veri disklerinin şifrelenme süresini azaltır. Belirli ölçütlere uyan bölümler biçimlendirilir (geçerli dosya sistemiyle birlikte). Ardından, komut yürütmeden önce oldukları yere geri takılırlar. Ölçütlere uyan bir veri diskini dışlamak istiyorsanız, komutu çalıştırmadan önce bunu kaldırabilirsiniz.
 
- Bu komutu çalıştırdıktan sonra, daha önce bağlanan tüm sürücüler biçimlendirilir. Ardından, şifreleme katmanı artık boş sürücünün üstünde başlar. Bu seçenek belirlendiğinde, VM 'ye bağlı olan kısa ömürlü kaynak diski de şifrelenir. Kısa ömürlü sürücü sıfırlandığında, sonraki fırsatta Azure disk şifrelemesi çözümü tarafından VM için yeniden biçimlendirilir ve yeniden şifrelenir.
+ Bu komutu çalıştırdıktan sonra, daha önce bağlanan tüm sürücüler biçimlendirilir. Ardından, şifreleme katmanı artık boş sürücünün üstünde başlar. Bu seçenek belirlendiğinde, VM 'ye bağlı geçici disk da şifrelenir. Kısa ömürlü sürücü sıfırlandığında, sonraki fırsatta Azure disk şifrelemesi çözümü tarafından VM için yeniden biçimlendirilir ve yeniden şifrelenir.
 
 >[!WARNING]
 > Bir VM 'nin veri birimlerinde gerekli veriler olduğunda, EncryptFormatAll kullanılmamalıdır. Diskleri şifrelemeden hariç tutun. Özellik parametresini ve uygulamayı üretim VM 'sinde denemeden önce anlamak için öncelikle bir test sanal makinesinde EncryptFormatAll parametresini deneyin. EncryptFormatAll seçeneği veri diskini biçimlendirir, bu nedenle üzerindeki tüm veriler kaybedilir. Devam etmeden önce, dışlamak istediğiniz disklerin düzgün şekilde takılmamış olduğunu doğrulayın. </br></br>

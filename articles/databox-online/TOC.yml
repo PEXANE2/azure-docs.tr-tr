@@ -48,7 +48,7 @@
         - name: Sorun giderme
           href: data-box-gateway-troubleshoot.md
         - name: Microsoft Desteği’ne başvurma
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
     - name: Sürüm notları
       items:
         - name: 1911 - Geçerli
@@ -64,59 +64,59 @@
     - name: Genel Bakış
       items:
         - name: Azure Stack Edge nedir?
-          href: data-box-edge-overview.md
+          href: azure-stack-edge-overview.md
     - name: Öğreticiler
       items:
         - name: 1 - Hazırlanma
-          href: data-box-edge-deploy-prep.md
+          href: azure-stack-edge-deploy-prep.md
         - name: 2 - Yükleme
-          href: data-box-edge-deploy-install.md
+          href: azure-stack-edge-deploy-install.md
         - name: '3 - Bağlanma, kurma, etkinleştirme'
-          href: data-box-edge-deploy-connect-setup-activate.md
+          href: azure-stack-edge-deploy-connect-setup-activate.md
         - name: '4 - Paylaşıma ekleme, bağlanma'
-          href: data-box-edge-deploy-add-shares.md
+          href: azure-stack-edge-deploy-add-shares.md
         - name: 5A - İşlemi yapılandırma (basit)
-          href: data-box-edge-deploy-configure-compute.md
+          href: azure-stack-edge-deploy-configure-compute.md
         - name: 5B - İşlemi yapılandırma (gelişmiş)
-          href: data-box-edge-deploy-configure-compute-advanced.md
+          href: azure-stack-edge-deploy-configure-compute-advanced.md
     - name: Kavramlar
       items:
         - name: Gereksinimleri inceleme
-          href: data-box-edge-system-requirements.md
+          href: azure-stack-edge-system-requirements.md
         - name: Sınırları anlama
-          href: data-box-edge-limits.md
+          href: azure-stack-edge-limits.md
         - name: Güvenliğe genel bakış
-          href: data-box-edge-security.md
+          href: azure-stack-edge-security.md
         - name: Belirtimleri gözden geçirme
-          href: data-box-edge-technical-specifications-compliance.md
+          href: azure-stack-edge-technical-specifications-compliance.md
     - name: Nasıl yapılır
       items:
         - name: 'C# modülü geliştirme'
-          href: data-box-edge-create-iot-edge-module.md
+          href: azure-stack-edge-create-iot-edge-module.md
         - name: Yönetme
           items:
             - name: Uç işlemi
-              href: data-box-edge-manage-compute.md
+              href: azure-stack-edge-manage-compute.md
             - name: Uç işlemi ağı
-              href: data-box-edge-extend-compute-access-modules.md
+              href: azure-stack-edge-extend-compute-access-modules.md
             - name: Paylaşımlar
-              href: data-box-edge-manage-shares.md
+              href: azure-stack-edge-manage-shares.md
             - name: Kullanıcılar
-              href: data-box-edge-manage-users.md
+              href: azure-stack-edge-manage-users.md
             - name: Bant genişliği zamanlamaları
-              href: data-box-edge-manage-bandwidth-schedules.md
+              href: azure-stack-edge-manage-bandwidth-schedules.md
             - name: 'Güç, erişim, bağlantı'
-              href: data-box-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: PowerShell aracılığıyla
-              href: data-box-edge-connect-powershell-interface.md
+              href: azure-stack-edge-connect-powershell-interface.md
         - name: Sorun giderme
-          href: data-box-edge-troubleshoot.md
+          href: azure-stack-edge-troubleshoot.md
         - name: Microsoft Desteği’ne başvurma
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
         - name: İzleme
-          href: data-box-edge-monitor.md
+          href: azure-stack-edge-monitor.md
         - name: Cihazı iade etme veya değiştirme
-          href: data-box-edge-return-device.md
+          href: azure-stack-edge-return-device.md
     - name: Sürüm notları
       items:
         - name: 1911 - Geçerli

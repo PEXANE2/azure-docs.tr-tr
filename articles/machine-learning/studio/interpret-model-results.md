@@ -8,21 +8,18 @@ ms.subservice: studio
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a201ef63a9a1a6bb5bd078867ccc1200893049
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218060"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982029"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model sonuçlarını yorumlama (klasik)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Bu konuda, tahmin sonuçlarının Azure Machine Learning Studio (klasik) görselleştirilmesi ve yorumlanması açıklanmaktadır. Bir modeli eğitdikten ve bunun üzerine ("model puanlanır") ilişkin tahminleri tamamladıktan sonra, tahmin sonucunu anlamanız ve yorumlamanıza gerek duyarsınız.
-
-
 
 Azure Machine Learning Studio (klasik) üzerinde dört önemli makine öğrenimi modeli vardır:
 
@@ -37,11 +34,11 @@ Bu modellerin üzerine tahmin için kullanılan modüller şunlardır:
 * Kümeleme için [kümeler modülüne atama][assign-to-clusters]
 * Öneri sistemleri için [Matchbox öneren puanı][score-matchbox-recommender]
 
-Bu belgede, bu modüllerin her biri için tahmin sonuçlarının nasıl yorumlanacağı açıklanmaktadır. Bu modüllerle ilgili genel bir bakış için bkz. [Azure Machine Learning Studio (klasik) algoritmalarınızı iyileştirmek için parametreler seçme](algorithm-parameters-optimize.md).
+[Ml Studio (klasik) içindeki algoritmalarınızı iyileştirmek için parametre seçme](algorithm-parameters-optimize.md)hakkında bilgi edinin.
 
-Bu konuda tahmin yorumu ele alınmaktadır, ancak model değerlendirmesi uygulanmaz. Modelinizin nasıl değerlendirileceği hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio model performansını değerlendirme (klasik)](evaluate-model-performance.md).
+Modellerinizi değerlendirme hakkında bilgi edinmek için bkz. [model performansını değerlendirme](evaluate-model-performance.md).
 
-Azure Machine Learning Studio (klasik) ' i kullanmaya yeni başladıysanız ve başlamak için basit bir deneme oluşturma konusunda yardıma ihtiyacınız varsa, bkz. [Azure Machine Learning studio 'de basit bir deneme oluşturma (klasik)](create-experiment.md).
+ML Studio (klasik) yeni [bir deneydeyseniz, basit bir deneme oluşturmayı öğrenin](create-experiment.md).
 
 ## <a name="classification"></a>Sınıflandırma
 Sınıflandırma sorunlarının iki alt kategorisi vardır:

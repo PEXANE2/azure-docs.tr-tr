@@ -127,7 +127,7 @@
         - name: IoT çözüm hızlandırıcıları
           href: /azure/iot-accelerators
         - name: IoT Tak Çalıştır
-          href: /azure/iot
+          href: /azure/iot-pnp
         - name: Azure Haritalar
           href: /azure/azure-maps
         - name: Time Series Insights
