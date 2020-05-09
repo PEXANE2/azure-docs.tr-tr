@@ -1,31 +1,21 @@
 ---
 title: Azure geçişi 'nde değerlendirme araçları ekleme
 description: Azure geçişi 'nde değerlendirme araçları eklemeyi öğrenin.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185904"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901048"
 ---
 # <a name="add-assessment-tools"></a>Değerlendirme araçları ekleme
 
-Bu makalede, [Azure geçişi](migrate-overview.md)'nde değerlendirme araçlarının nasıl ekleneceği açıklanmaktadır.
+Bu makalede, [Azure geçişi](migrate-overview.md)'nde değerlendirme araçlarının nasıl ekleneceği açıklanmaktadır. 
 
-Azure geçişi, değerlendirme ve Azure 'a geçiş için bir araç merkezi sağlar. Azure geçiş araçlarının yanı sıra diğer araçlar ve bağımsız yazılım satıcısı (ISV) tekliflerini da içerir.
-
-Bir değerlendirme aracı eklemek isterseniz ve henüz bir Azure geçişi projeniz yoksa, bu [makaleye](how-to-add-tool-first-time.md)uyun.
-
-## <a name="select-a-tool"></a>Bir araç seçin
-
-Değerlendirme için Azure dışı bir geçiş aracı seçerseniz, bir lisans alarak başlayın veya ücretsiz deneme için kayıt yaparak araç ilkesine uygun olarak kaydolun. Araçların Azure geçişi 'ne bağlanma seçeneği vardır. Aracı Azure geçişi 'ne bağlamak için yönergeleri ve belgeleri izleyin. Araçlar hakkında [daha fazla bilgi edinin](migrate-services-overview.md) .
-
+- Bir değerlendirme aracı eklemek isterseniz ve henüz bir Azure geçişi projeniz yoksa, bu [makaleye](how-to-add-tool-first-time.md)uyun.
+- Değerlendirme için bir ISV aracı veya Movere eklediyseniz, araçla çalışmaya hazırlanmak için [adımları izleyin](prepare-isv-movere.md).
 
 ## <a name="select-an-assessment-scenario"></a>Değerlendirme senaryosu seçin
 

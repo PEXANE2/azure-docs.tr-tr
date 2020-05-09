@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity platform KIMLIĞI belirteç başvurusu
+title: Microsoft Identity platform KIMLIĞI belirteçleri | Mavisi
+titleSuffix: Microsoft identity platform
 description: Azure AD v 1.0 ve Microsoft Identity platform (v 2.0) uç noktaları tarafından yayılan id_tokens nasıl kullanacağınızı öğrenin.
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690174"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926723"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
-`id_tokens`, bir [OpenID Connect](v2-protocols-oidc.md) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır.
+`id_tokens`, bir [OpenID Connect](v2-protocols-oidc.md) (OIDC) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır.
 
 ## <a name="using-the-id_token"></a>İd_token kullanma
 
@@ -30,7 +31,7 @@ KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrula
 
 ## <a name="claims-in-an-id_token"></a>İd_token talepler
 
-`id_tokens`bir Microsoft kimliği [için, bir](https://tools.ietf.org/html/rfc7519)üst bilgi, yük ve imza kısmından oluşan anlamına gelir. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm talepler v 1.0 ve v 2.0 belirteçlerinde görünür.
+`id_tokens`bir Microsoft kimliği için, [Jwts](https://tools.ietf.org/html/rfc7519) (JSON Web belirteçleri), yani bir üst bilgi, yük ve imza kısmından oluşur. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm JWT talepleri v 1.0 ve v 2.0 belirteçlerinde görünür.
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ Bu v 2.0 örnek belirtecini [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJKV1QiLC
 
 |İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
-|`typ` | Dize-Always "JWT" | Belirtecin JWT olduğunu gösterir.|
+|`typ` | Dize-Always "JWT" | Belirtecin bir JWT belirteci olduğunu gösterir.|
 |`alg` | Dize | Belirteci imzalamak için kullanılan algoritmayı belirtir. Örnek: "RS256" |
 |`kid` | Dize | Bu belirteci imzalamak için kullanılan ortak anahtar için parmak izi. Hem v 1.0 hem de v 2.0 `id_tokens`içinde yayınlanır. |
 |`x5t` | Dize | Aynı (kullanımda ve değerde) olarak `kid`. Bununla birlikte, bu, uyumluluk amacıyla yalnızca v 1.0 `id_tokens` ile yayılan eski bir taleptür. |
 
 ### <a name="payload-claims"></a>Yük talepleri
 
-Bu liste varsayılan olarak en çok id_tokens olan talepleri gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek talepler istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, kullanıcıdan kullanıcının adı `groups` hakkında bilgi talep edebilir.
+Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (aksi belirtilmedikçe).  Bununla birlikte, uygulamanız id_token ek JWT talepleri istemek için [isteğe bağlı talepler](active-directory-optional-claims.md) kullanabilir.  Bunlar, kullanıcıdan kullanıcının adı `groups` hakkında bilgi talep edebilir.
 
 |İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ Bu liste varsayılan olarak en çok id_tokens olan talepleri gösterir (aksi bel
 |`uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`ver` | Dize, 1,0 ya da 2,0 | İd_token sürümünü gösterir. |
 
-
 > [!NOTE]
-> V1 ve v2 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklılıklar vardır. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulamasında](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) yıllarca bir gelişmiştir. Şu anda AzureAD uygulamaları için iki farklı oAuth uç noktası sunuyoruz. V2 olarak sınıflandırılan yeni bitiş noktalarından herhangi birini ya da v1 olarak söyedilen eskileri kullanabilirsiniz. Her ikisine ait OAuth uç noktaları farklı. V2 uç noktası, v1 uç noktasının tüm özelliklerini geçirmeye çalıştığı ve yeni geliştiricilerin v2 uç noktasını kullanmasını önerdiğimiz yeni bir noktadır. 
+> V1 ve v2 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklılıklar vardır. Sürüm temelde, verildiği yerden Azure AD platformu uç noktasını belirtir. [Azure AD OAuth uygulamasında](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) yıllarca bir gelişmiştir. Şu anda AzureAD uygulamaları için iki farklı oAuth uç noktası sunuyoruz. V2 olarak sınıflandırılan yeni bitiş noktalarından herhangi birini ya da v1 olarak söyedilen eskileri kullanabilirsiniz. Her ikisine ait OAuth uç noktaları farklı. V2 uç noktası, v1 uç noktasının tüm özelliklerini geçirmeye çalıştığı ve yeni geliştiricilerin v2 uç noktasını kullanmasını önerdiğimiz yeni bir noktadır.
+>
 > - V1: Azure Active Directory uç noktaları:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2: Microsoft Identity platform uç noktaları:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>İd_token doğrulama
 
-Bir `id_token` [erişim belirtecini doğrulamaya](access-tokens.md#validating-tokens) yönelik ilk adımla benzer bir şekilde doğrulama, istemciniz doğru veren 'in belirteci geri gönderdiğini ve üzerinde oynanmadığını doğrulayabilmelidir. Her `id_tokens` zaman bir JWT olduğundan, bu belirteçleri doğrulamak için birçok kitaplık bulunur; bunlardan birini kendi başınıza yapmak yerine kullanmanızı öneririz.
+Bir `id_token` [erişim belirtecini doğrulamaya](access-tokens.md#validating-tokens) yönelik ilk adımla benzer bir şekilde doğrulama, istemciniz doğru veren 'in belirteci geri gönderdiğini ve üzerinde oynanmadığını doğrulayabilmelidir. Her `id_tokens` zaman bir JWT belirteci olduğundan, bu belirteçleri doğrulamak için birçok kitaplık bulunur; bunlardan birini kendi başınıza yapmak yerine kullanmanızı öneririz.
 
-Belirteci el ile doğrulamak için, [erişim belirtecini doğrulama](access-tokens.md#validating-tokens)konusunda bulunan adım ayrıntılarına bakın. Belirteçteki imza doğrulandıktan sonra, aşağıdaki talepler id_token doğrulanmalıdır (Bunlar ayrıca belirteç doğrulama kitaplığınız tarafından yapılabilir):
+Belirteci el ile doğrulamak için, [erişim belirtecini doğrulama](access-tokens.md#validating-tokens)konusunda bulunan adım ayrıntılarına bakın. Belirteçteki imzayı doğruladıktan sonra, aşağıdaki JWT taleplerinin id_token doğrulanması gerekir (Bunlar ayrıca, belirteç doğrulama kitaplığınız tarafından da yapılabilir):
 
-* Zaman damgaları: `iat`, `nbf`, ve `exp` zaman damgaları, uygun şekilde, geçerli zamandan önce veya sonra düşmelidir. 
+* Zaman damgaları: `iat`, `nbf`, ve `exp` zaman damgaları, uygun şekilde, geçerli zamandan önce veya sonra düşmelidir.
 * Hedef kitle: `aud` talebin, UYGULAMANıZıN uygulama kimliğiyle eşleşmesi gerekir.
 * Nonce: yükteki `nonce` talep, ilk istek sırasında/yetkilendirmeli uç noktasına geçirilen nonce parametresiyle eşleşmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Erişim belirteçleri](access-tokens.md) hakkında bilgi edinin
-* [İsteğe bağlı talepler](active-directory-optional-claims.md)kullanarak id_token talepleri özelleştirin.
+* [İsteğe bağlı talepler](active-directory-optional-claims.md)kullanarak id_token JWT taleplerini özelleştirin.

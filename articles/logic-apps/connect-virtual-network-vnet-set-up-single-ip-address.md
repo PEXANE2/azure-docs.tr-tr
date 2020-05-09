@@ -3,19 +3,19 @@ title: Açık bir giden IP adresini, sesleri için ayarlama
 description: Azure Logic Apps 'de tümleştirme hizmeti ortamları (sesleri) için tek bir genel giden IP adresi ayarlamayı öğrenin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191473"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927148"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
 
-Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-network/virtual-networks-overview.md)kaynaklara erişmesi gereken mantıksal uygulamaları barındırmak için bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ayarlayabilirsiniz. IP kısıtlamalarına sahip diğer uç noktalara erişmesi gereken birden çok ıSE örneğiniz varsa, sanal ağınıza bir [Azure Güvenlik Duvarı](../firewall/overview.md) veya [ağ sanal](../virtual-network/virtual-networks-overview.md#filter-network-traffic) gereci dağıtın ve giden trafiği bu güvenlik duvarı veya ağ sanal gereci üzerinden yönlendirin. Daha sonra sanal ağınızdaki tüm ıSE örneklerinin hedef sistemlerle iletişim kurmak için tek, genel, statik ve öngörülebilir bir IP adresi kullanmasını sağlayabilirsiniz. Bu şekilde, her bir ıSE için bu hedef sistemlerde ek güvenlik duvarı açılışlarını ayarlamanız gerekmez.
+Azure Logic Apps ile çalışırken, bir [Azure sanal ağındaki](../virtual-network/virtual-networks-overview.md)kaynaklara erişmesi gereken mantıksal uygulamaları barındırmak için bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ayarlayabilirsiniz. IP kısıtlamalarına sahip diğer uç noktalara erişmesi gereken birden çok ıSE örneğiniz varsa, sanal ağınıza bir [Azure Güvenlik Duvarı](../firewall/overview.md) veya [ağ sanal](../virtual-network/virtual-networks-overview.md#filter-network-traffic) gereci dağıtın ve giden trafiği bu güvenlik duvarı veya ağ sanal gereci üzerinden yönlendirin. Daha sonra sanal ağınızdaki tüm ıSE örneklerinin istediğiniz hedef sistemlerle iletişim kurmak için tek, genel, statik ve öngörülebilir bir IP adresi kullanmasını sağlayabilirsiniz. Bu şekilde, her bir ıSE için hedef sistemlerinizde ek güvenlik duvarı açılışlarını ayarlamanız gerekmez.
 
 Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzerinden nasıl yönlendirileceği gösterilmektedir, ancak Azure Marketi 'nden üçüncü taraf güvenlik duvarı gibi bir ağ sanal gerecine benzer kavramlar uygulayabilirsiniz. Bu konu, birden çok ıSE örneğine yönelik kuruluma odaklanırken, senaryonuza erişmesi gereken IP adresi sayısını sınırlamayı gerektirdiğinde tek bir ıSE için de bu yaklaşımı kullanabilirsiniz. Güvenlik duvarının veya sanal ağ gerecinin ek maliyetlerinin senaryonuz için anlamlı olup olmadığını göz önünde bulundurun. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-firewall/)hakkında daha fazla bilgi edinin.
 
@@ -52,10 +52,12 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Yol adı** | <*benzersiz-rota adı*> | Yol tablosundaki yol için benzersiz bir ad |
-   | **Adres ön eki** | <*Hedef adres*> | Trafiğin gitmesini istediğiniz hedef sistemin adresi. Bu adres için [sınıfsız etki alanları arası yönlendirme (CIDR) gösterimi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) kullandığınızdan emin olun. |
+   | **Adres ön eki** | <*Hedef adres*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin adres ön eki. Bu adres için [sınıfsız etki alanları arası yönlendirme (CIDR) gösterimi](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) kullandığınızdan emin olun. Bu örnekte, bu adres ön [Eki, bölümünde](#set-up-network-rule)açıklanan bir SFTP sunucusu içindir. |
    | **Sonraki atlama türü** | **Sanal gereç** | Giden trafik tarafından kullanılan [atlama türü](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
    | **Sonraki atlama adresi** | <*Güvenlik Duvarı-özel-IP-adres*> | Güvenlik duvarınızın özel IP adresi |
    |||
+
+<a name="set-up-network-rule"></a>
 
 ## <a name="set-up-network-rule"></a>Ağ kuralını ayarlama
 
@@ -65,7 +67,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
 1. Koleksiyonda, hedef sisteme giden trafiğe izin veren bir kural ekleyin.
 
-   Örneğin, bir ıSE 'de çalışan ve bir SFTP sistemiyle iletişim kurması gereken bir mantıksal uygulamanız olduğunu varsayalım. Adında bir ağ kuralı içeren adlı `LogicApp_ISE_SFTP_Outbound`bir ağ kuralı koleksiyonu oluşturursunuz. `ISE_SFTP_Outbound` Bu kural, güvenlik duvarınızın özel IP adresini kullanarak, ıSE 'nin sanal ağınızda hedef SFTP sistemine çalıştığı herhangi bir alt ağın IP adresinden gelen trafiğe izin verir.
+   Örneğin, bir ıSE 'de çalışan ve bir SFTP sunucusuyla iletişim kurması gereken bir mantıksal uygulamanız olduğunu varsayalım. Adında bir ağ kuralı içeren adlı `LogicApp_ISE_SFTP_Outbound`bir ağ kuralı koleksiyonu oluşturursunuz. `ISE_SFTP_Outbound` Bu kural, güvenlik duvarınızın özel IP adresini kullanarak, ıSE 'nin sanal ağınızda hedef SFTP sunucusuna çalıştırıldığı herhangi bir alt ağın IP adresinden gelen trafiğe izin verir.
 
    ![Güvenlik Duvarı için ağ kuralı ayarlama](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -85,7 +87,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | **Adı** | <*Ağ kuralı-adı*> | Ağ kuralınız için ad |
    | **Protocol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |
    | **Kaynak adresler** | <*ISE-alt ağ-adresler*> | ISE 'nin çalıştığı ve mantıksal uygulamanızdan gelen trafiğin kaynaklandığı alt ağ IP adresleri |
-   | **Hedef adresler** | <*hedef-IP adresi*> | Trafiğin gitmesini istediğiniz hedef sisteminizin IP adresi |
+   | **Hedef adresler** | <*hedef-IP adresi*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin IP adresi. Bu örnekte, bu IP adresi SFTP sunucusu içindir. |
    | **Hedef bağlantı noktaları** | <*hedef bağlantı noktaları*> | Hedef sisteminizin gelen iletişim için kullandığı bağlantı noktaları |
    |||
 
