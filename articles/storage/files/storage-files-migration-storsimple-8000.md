@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755036"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858719"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -23,7 +23,7 @@ StorSimple 8000 serisi, adım 2022 ' de [yaşam sonuna](https://support.microsof
 ## <a name="azure-file-sync"></a>Azure Dosya Eşitleme
 
 > [!IMPORTANT]
-> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş AzureFilesMigration@microsoft bir geçiş planı için e-posta. com ve geçiş sırasında yardım.
+> Microsoft, müşterilerine kendi geçişlerinde yardımcı olmaya kararlıdır. Özelleştirilmiş AzureFiles@microsoft.com bir geçiş planının yanı sıra geçiş sırasında da yardım için e-posta.
 
 Azure Dosya Eşitleme, iki ana bileşeni temel alan bir Microsoft bulut hizmetidir:
 
