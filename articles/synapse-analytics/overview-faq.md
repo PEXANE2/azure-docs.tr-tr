@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083bad1aa9abd2cb8efe3520b0acecc9ab00853c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770719"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983882"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanı önizlemesi) sık sorulan sorular
 
@@ -94,9 +94,9 @@ Y: veri akışı, veri mühendislerinin kod yazmadan grafik veri dönüştürme 
 
 Y: uçtan uca çoklu oturum açma deneyimi, SYNAPSE Analytics 'teki önemli bir kimlik doğrulama işlemidir. Tam bir AAD tümleştirmesiyle aracılığıyla kimlik yönetimi ve geçirme bir olmalıdır.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>S: ADLSg2 içindeki dosyalara ve klasörlere erişim Nasıl yaparım?
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>S: Nasıl yaparım? ADLS 2. dosyalara ve klasörlere erişim sağlayın
 
-Y: dosya ve klasörlere erişim şu anda ADLSg2 aracılığıyla yönetiliyor. Daha fazla bilgi için bkz. [Data Lake Storage Access Control](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Y: dosya ve klasörlere erişim şu anda ADLS 2. aracılığıyla yönetilmektedir. Daha fazla bilgi için bkz. [Data Lake Storage Access Control](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>S: Azure SYNAPSE Analytics 'e erişmek için üçüncü taraf iş zekası araçlarını kullanabilir miyim?
 

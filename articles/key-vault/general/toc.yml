@@ -14,8 +14,13 @@
           href: tutorial-net-windows-virtual-machine.md
         - name: Python’da Windows sanal makinesiyle Azure Key Vault’u kullanma
           href: tutorial-python-windows-virtual-machine.md
-    - name: .NET’te Azure web uygulamasıyla Azure Key Vault’u kullanma
+    - name: Key Vault’u yönetilen kimlik ve .NET ile Web Uygulamasına bağlama
       href: tutorial-net-create-vault-azure-web-app.md
+- name: Örnekler
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: Kavramlar
   items:
     - name: Temel kavramlar
@@ -96,6 +101,10 @@
           href: soft-delete-powershell.md
     - name: Key Vault’u Taşıma
       items:
+        - name: Key Vault’u Başka Bir Kaynak Grubuna Taşıma
+          href: keyvault-moveresourcegroup.md
+        - name: Key Vault’u Başka Bir Aboneliğe Taşıma
+          href: keyvault-move-subscription.md
         - name: Key Vault’u Başka Bir Bölgeye Taşıma
           href: keyvault-moveregion.md
     - name: Sorun giderme

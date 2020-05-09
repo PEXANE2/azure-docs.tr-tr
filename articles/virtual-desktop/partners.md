@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127578"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692218"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -82,6 +82,16 @@ Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaü
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [İş ortağı Web sitesine gidin](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="dell"></a>'İn
+
+![Dell logosu](./media/partners/dell.png)
+
+Dell teknolojileri ' ince istemciler, Microsoft Azure ve Windows sanal masaüstü hizmetlerine erişmek için iyileştirilmiştir. İşbirliğine dayalı bilgi çalışanlarının grafik yoğunluklu güç kullanıcılarına yönelik ihtiyaçlarını karşılamak için Wyse ince istemciler, artan sayıda uygulama ve içerikten tam olarak yararlanabilmek için yüksek kaliteli bir bilgi işlem deneyimi sağlar. Boşluk sınırlamalı ortamlar için Ideal olan Wyse ince istemciler, insanların çok yönlü form faktörleri ve bağlama seçenekleri için geniş bir seçenek dizisi ile çalışma yöntemini uyarlar.
+
+Wyse ince istemciler, sınırlı saldırı yüzeyi, güvenlik uyumluluk standartları desteği ve gelişmiş Multi-Factor Authentication çözümleri için güvenlik ile tasarlanmıştır. Dell 'e özgü Wyse cesos sayesinde yüksek düzeyde güvenli ince istemciler dağıtın veya bulut uygulamalarına ve sanal çalışma alanlarına, Dell tarafından eklenen güvenlik özellikleriyle, kendini kanıtlamış bir tasarım ve Windows 10 IoT Enterprise ile güçlendirilmiş Wyse ölçülü Linux 'tan güvenli erişim yaşayın. Rol tabanlı yönetim için güvenli, HTTPS tabanlı iletişimler ve Active Directory kimlik doğrulaması ile Wyse Management Suite, Wyse uç noktalarını her zaman güncel tutar ve WMS Pro için mobil uygulama, önemli uyarıları görüntülemesine ve herhangi bir dokunmayla gerçek zamanlı komutlar gönderebilmesine olanak sağlar.
+
+- [İş ortağı Web sitesine gidin](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST logosu](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ ILEK, Microsoft Azure ve Windows Sanal Masaüstü Hizmetleri 'nin onaylı ve ona
  
 ILEK OS, Citrix, Microsoft ve VMware 'den tüm popüler sanal uygulamaları, masaüstü bilgisayarları ve bulut çalışma alanı istemci protokollerini destekler. Kuruluşların Windows Sanal Masaüstü Hizmetleri 'ni kendi benzersiz kullanıcı ortamlarına hızla benimsemesine yardımcı olmak için 85 çevresel, arabirim ve protokol iş ortaklarının tümleşik teknolojilerini içerir. ILEK OS, bir salt okunurdur, modüler bir uç nokta işletim sistemi ve bu da izinsiz koruma sağlar. Artık, uç nokta donanımında çalışan tüm önemli ana işlemlerin (bazı seçili modellerden) veya UEFı işleminin Azure bulutuna ve Windows sanal masaüstü hizmetlerine kadar her şekilde bütünlüğünü doğrulayan "güven zinciri" de içerir. IGEL işletim sistemi sayesinde kuruluşlar, kullanıcıların uç nokta cihazlarının bütünlüğü, güvenliği ve yönetilebilirliği açısından tam güvenle Azure bulutunda Windows sanal masaüstüne abone olabilir.
 
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
 - [İş ortağı Web sitesine gidin](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ PolicyPak yazılımı, uygulamalar, Masaüstü, tarayıcılar, Java ve güvenlik
 
 PolicyPak için en iyi kullanım örnekleri, yerel yönetici haklarını kaldırmak ve UAC istemlerini aşmak, fidye, birden çok tarayıcıyı yönetmek, Internet Explorer 'ın kurumsal ve uyumluluk modlarını yönetmek, GPO sayısını azaltmak, Windows 10 dosya Ilişkilendirmelerini yönetmek, Windows 10 ' un başlangıç menüsünü ve görev çubuğunu yönetmek ve Windows 10 özelliklerini ve Isteğe bağlı özellikleri yönetmek içindir.  
 
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [İş ortağı Web sitesine gidin](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix, Office yazdırma kaynaklarına Kullanıcı bağlantısını otomatikle�
 
 Yazdırma işlemi, yalnızca her ofis ve küçük işletme ortamıyla ilgili temel bir görevdir. Windows sanal masaüstü 'nden tam olarak yararlanabilmek ve harika bir kullanıcı deneyimi sunabilmeniz için, kullanıcılarınızın en düşük çabaya ve en yüksek güvenilirliğe sahip yazıcılara bağlanabilmelerini sağlamak gereklidir. Printix ile, tek oturum açma (SSO), sessiz yapılandırma, düzenli güncelleştirmeler ve yazdırma ortamınızın sürekli izlenmesini kullanarak Windows sanal masaüstünden en iyi şekilde yararlanın.
 
-- [Birleşik çözüme bakın kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [İş ortağı Web sitesine gidin](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2).
+- [İş ortağı Web sitesine gidin](https://www.printix.net/printix-for-windows-virtual-desktop).
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft, güçlü ve pahalı izleme, yönetim ve raporlama çözümleri sağlaya
  
 RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yönetimi 'ni geliştirir. Premium yönetim özellikleri, uzaktan yardım, Kullanıcı oturumu ve işlem yönetimi sağlayarak masaüstü personelini desteklemek için Windows sanal masaüstü yönetim görevlerinin temsilciliğini basitleştirir. Aynı zamanda, uzak masaüstü Commander Suite, Kullanıcı başına performans ve yükleme, Kullanıcı etkinlikleri ve denetim, Windows sanal masaüstü bağlantısı kalitesi (gecikme süresi ve bant genişliği), lisanslama ve güvenlik hakkında bir merkezi Azure SQL veritabanı örneğine yönelik zengin ölçümler toplar. RDPSoft ile, zengin geçmişe yönelik raporlama ve kapsamlı panolar yalnızca bir tıklama.
 
-- [İş ortağı Web sitesine gidin](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [İş ortağı Web sitesine gidin](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago, Cologne 'da dört arkadaşa göre 2002 ' de kurulmuştur. Bugün sepago,
 
 sepago 'nın yenilik ve geliştirme Laboratuvarı, büyük veri ve AI teknolojilerini kullanarak akıllı çözümler oluşturur. Bu çözümler, Windows sanal masaüstü gibi iş ortağı ürünlerin iş, Kullanıcı deneyimi ve yönetimlerini geliştirmeye odaklanmaktadır.
 
-- [İş ortağı Web sitesine gidin](https://www.sepago.de/wvd-value-add-tools/)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
+- [İş ortağı Web sitesine gidin](https://www.sepago.de/wvd-value-add-tools/).
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 
@@ -263,7 +276,18 @@ uberAgent şirketi de büyük sınırlara Windows sanal masaüstü dağıtımlar
 
 uberAgent, yalnızca veri toplamadığı Son Kullanıcı bilgi işlem için tasarlanan bir izleme ve analiz ürünüdür; müşterilere önemli bilgiler verir. uberAgent 'ın kendi ölçümleri vardır ve kullanıcı deneyiminin, uygulama performansının ve uç nokta güvenliğinin önemli yönlerini kapsayan, sistem Kullanıcı yoğunluğunu etkilemeden Windows sanal masaüstü Sanal makinelerinizle ilgili bilmeniz gereken her şeyi size söylemiş olursunuz. uberAgent sorun gidermeyi basitleştirir, boyutlandırılmasına yardımcı olur ve bilgi güvenliği açısından çok daha fazla bilgi sağlar.
 
-- [İş ortağı Web sitesine gidin](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [İş ortağı Web sitesine gidin](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
+
+## <a name="workspace-365"></a>Çalışma alanı 365
+
+![Çalışma alanı 365 logosu](./media/partners/workspace-365.png)
+
+Çalışma alanı 365 tüm bilgilerinizi (iş verileri, belgeler, iletişim ve mikro uygulamalar) barındırın ve tek bir çalışma alanında yerel, Web veya barındırılan uygulamalara erişim sağlar. Kişiselleştirilmiş bir çalışma alanı sağlamak için rol, konum, cihaz, tarayıcı ve daha fazlasına otomatik olarak uyum sağlar. Kullanıcılar, yüzeyin altında bulunan teknolojinin ne olduğuna bakılmaksızın Basitleştirilmiş ve tutarlı bir deneyim alırlar. RDP, Citrix ve eski uygulamalar gibi geçerli çözümlerinizi tümleştirebilir ve aynı kullanıcı deneyimini koruyarak bunları Windows sanal masaüstüne taşıyabilirsiniz. Ayrıca, SharePoint, OneDrive, takımlar ve dosya sunucuları gibi tüm dosya konumlarınızın bir belge yönetimi uygulamasında tümleştirileceğini de sağlayabilirsiniz.
+
+Çalışma alanı 365 ile, BT yöneticileri Windows sanal masaüstü özellikli uygulamaları izinler temelinde kişiler için kullanılabilir hale getirebilirsiniz. Yönetici daha sonra bu uygulamaları paylaşılan bir uygulama grubuna ekleyebilir. Windows sanal masaüstü uygulaması, çalışma alanı 365 ' de görünür olduğunda, kullanıcılar yeniden oturum açmak zorunda kalmadan onu çalışma alanından açabilir. 
+
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
+- [İş ortağı Web sitesine gidin](https://workspace365.net/product-tour/hybrid-workspace-365/).
 
 ## <a name="workspot"></a>Çalışma noktası
 
@@ -279,4 +303,4 @@ uberAgent, yalnızca veri toplamadığı Son Kullanıcı bilgi işlem için tasa
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Windows sanal masaüstü hakkında daha fazla bilgi edinin](overview.md).
-- [Windows sanal masaüstü 'nde kiracı oluşturun](tenant-setup-azure-active-directory.md).
+- [Windows sanal masaüstü 'nde kiracı oluşturun](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

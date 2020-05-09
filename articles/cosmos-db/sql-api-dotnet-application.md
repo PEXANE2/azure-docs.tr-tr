@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 1f2051addfa1266b754d230c3804834c63f89002
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7e164420b02be35069103ac06238d56449eb7ef
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78274068"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996727"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -42,7 +42,7 @@ Bu öğreticinin içindekiler:
 > [!TIP]
 > Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Kaynakları
 
 Bu makaledeki yönergeleri izleyerek önce aşağıdaki kaynaklara sahip olduğunuzdan emin olun:
 
@@ -189,15 +189,27 @@ Bu adımları tamamladıktan sonra, bu görünümlere daha sonra geri döndüğ�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. *Startup.cs* dosyasını çözümünüzde açın ve `ConfigureServices` yöntemi ile değiştirin:
+1. Çözümünüzde *Startup.cs* dosyasını açın ve aşağıdaki **ınitializecosmosclientınstanceasync**yöntemini ekleyerek yapılandırmayı okur ve istemciyi başlatır.
 
-    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
-    Bu adımdaki kod, [ASP.NET Core ' de bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)yoluyla eklenecek tek bir örnek olarak istemciyi başlatır.
+1. Aynı dosyada, `ConfigureServices` yöntemi ile değiştirin:
 
-1. Aynı dosya içinde, yapılandırmayı okuyan ve istemcisini başlatan **ınitializecosmosclientınstanceasync**yöntemini ekleyin.
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="ConfigureServices":::
 
-   [!code-csharp[](~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs?name=InitializeCosmosClientInstanceAsync)]
+   Bu adımdaki kod, [ASP.NET Core ' de bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)yoluyla eklenecek tek bir örnek olarak istemciyi başlatır.
+
+   Aynı dosyanın `Item` `Configure` YÖNTEMINDEKI yolları düzenleyerek varsayılan MVC denetleyicisini olarak değiştirin:
+
+   ```csharp
+    app.UseEndpoints(endpoints =>
+          {
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Item}/{action=Index}/{id?}");
+          });
+   ```
+
 
 1. Aşağıdaki kod parçacığında gösterildiği gibi projenin *appSettings. JSON* dosyasında yapılandırmayı tanımlayın:
 

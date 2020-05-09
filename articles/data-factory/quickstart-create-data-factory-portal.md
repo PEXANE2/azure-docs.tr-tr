@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f7a70454e395f5f9d39266e0777749e1fcbef68e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d66d226554c4b6f84e3040cdd7c3edea0a5f054
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419366"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982182"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 
@@ -26,7 +26,7 @@ ms.locfileid: "81419366"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürme* hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](tutorial-transform-data-spark-portal.md).
+Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürmek* için bkz. [eşleme veri akışı](concepts-data-flow-overview.md) ve [wrangling veri akışı (Önizleme)](wrangling-data-flow-overview.md).
 
 > [!NOTE]
 > Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 

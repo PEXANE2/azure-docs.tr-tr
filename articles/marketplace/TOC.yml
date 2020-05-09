@@ -199,19 +199,7 @@
             - name: Mevcut teklifi güncelleştirme
               href: ./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md
         - name: Danışmanlık hizmetleri
-          href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
-          items:
-            - name: Ön koşullar
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
-            - name: Danışmanlık hizmeti teklifi oluşturma
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
-              items:
-                - name: Teklif ayarları sekmesi
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md
-                - name: Storefront ayrıntıları sekmesi
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md
-            - name: Danışmanlık hizmeti teklifini yayımlama
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md
+          href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: Kapsayıcılar teklifi
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:

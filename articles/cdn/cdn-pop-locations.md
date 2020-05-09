@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 227aae23babbcd5d734a10821d9311f91532ea4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32b76687910b2bf028365cc6df2bc8272b393f32
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770972"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837473"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Metro tarafından Azure CDN kapsama 
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 | Bölge | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Kuzey Amerika | TORIN, Kanada<br />Vansu ver, Kanada<br />Montreal, Kanada<br />Querétaro, Meksika<br />San Juan, Porto Riko<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Cheyenne, WY, ABD<br />Chicago, IL, ABD<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, ABD<br />Las Vegas, NV, ABD<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland veya, ABD<br />San Antonio, TX, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA | Guadalajara, Meksika<br />Mexico City, Mexico<br />Puebla, Meksika<br />Querétaro, Meksika<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, ABD<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Philaphia, PA, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Meksika<br />ABD |
-| Güney Amerika | Kaya, Brezilya<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Santiago, Şili | Buenos Aonis, Arjantin<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Valparaíso, Şili<br />Bogota, Kolombiya<br />Barranquilla, Kolombiya<br />Medellin, Kolombiya<br />Tito, Ekvador<br />Lima, Peru | Arjantin<br />Brezilya<br />Şili<br />Kolumbiyası<br />Ekvador<br />Peru<br />Uruguay |
+| Güney Amerika | Kaya, Brezilya<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Santiago, Şili<br />Bogota, Kolombiya<br />Buenos Aonis, Arjantin | Buenos Aonis, Arjantin<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Valparaíso, Şili<br />Bogota, Kolombiya<br />Barranquilla, Kolombiya<br />Medellin, Kolombiya<br />Tito, Ekvador<br />Lima, Peru | Arjantin<br />Brezilya<br />Şili<br />Kolumbiyası<br />Ekvador<br />Peru<br />Uruguay |
 | Avrupa | Viyana, Avusturya<br />Brüksel, Belçika<br />Sofia, Bulgaristan<br />Zagreb, Hırvatistan<br />Prag, Çek Cumhuriyeti<br />Kopenhag, Danimarka<br /> Helsinki, Finlandiya<br /> Oslo, Norveç<br />Marseille, Fransa<br />Paris, Fransa<br />Berlin, Almanya<br />Frankfurt, Almanya<br />Atina, Yunanistan<br />Budapeşte, Macaristan<br />Dublin, Irlanda<br />MILAN, Italya<br />Amsterdam, Hollanda<br />Varşova, Polonya<br />Lizbon, Portekiz<br />Bukreş, Romanya<br />Barcelona, Ispanya<br />Madrid, Ispanya<br />Stockholm, Isveç<br />Zurich, Isviçre<br />Londra, UK<br />Manchester, UK | Viyana, Avusturya<br />Kopenhag, Danimarka<br />Helsinki, Finlandiya<br />Marseille, Fransa<br />Paris, Fransa<br />Frankfurt, Almanya<br />MILAN, Italya<br />Riga, Letonya<br />Amsterdam, Hollanda<br />Varşova, Polonya<br />Madrid, Ispanya<br />Stockholm, Isveç<br />Londra, UK | Avusturya<br />Bulgaristan<br />Danimarka<br />Finlandiya<br />Fransa<br />Almanya<br />Yunanistan<br />İrlanda<br />İtalya<br />Hollanda<br />Polonya<br />Rusya<br />İspanya<br />İsveç<br />İsviçre<br />Birleşik Krallık |
 | Afrika | Cabo Town, Güney Afrika<br />Johannesburg, Güney Afrika<br />Lagos, Nijerya<br />Nairobi, Kenya | Johannesburg, Güney Afrika | Güney Afrika |
 | Orta Doğu | Dubai, Birleşik Arap Emirlikleri<br />Tel Aviv, Israil<br />Istanbul, Türkiye | Muscat, Umman<br />Fujirah, Birleşik Arap Emirlikleri | Katar<br />Birleşik Arap Emirlikleri |

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde mevcut bir Held grafiğine sahip bir uygulama geliştirmek için Azure Dev Spaces ve komut satırının nasıl kullanılacağı gösterilir.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e767b1ade2a80882ee33ff1fdd718c691dcefcf3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82033567"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996675"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'de mevcut bir helk grafiği ile uygulama geliştirme-Azure Dev Spaces
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
@@ -96,7 +96,7 @@ Press Ctrl+C to detach
 ...
 ```
 
-Hizmetin çıkış `azds up` bölümünde gösterildiği genel URL 'yi açarak çalışır durumda olduğunu görebilirsiniz. Bu örnekte, genel URL olur *http://dev.service.1234567890abcdef1234.eus.azds.io/*.
+Hizmetin çıkış `azds up` bölümünde gösterildiği genel URL 'yi açarak çalışır durumda olduğunu görebilirsiniz. Bu örnekte, genel URL olur `http://dev.service.1234567890abcdef1234.eus.azds.io/`.
 
 > [!NOTE]
 > Çalışırken hizmetinize gittiğinizde `azds up`, http isteği izlemeleri `azds up` komutun çıktısında de görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. Çalıştırırken `--disable-http-traces` `azds up`kullanarak bu izlemeleri devre dışı bırakabilirsiniz.

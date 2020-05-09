@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 37debf076fcaa4f4b62af93dbdb667fb699b0568
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 056dc7bbe29c3c963818ee2fca626be4e2be9645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901363"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983491"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v3)
 
@@ -101,12 +101,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. 
 
-Kolaylık sağlaması için, bu hızlı başlangıç, hizmet sorumlusu ve erişim denetimi ilkesi kullanımını gerektiren bir .NET konsol uygulaması oluşturur. Hizmet prensibi, "http://<My-Unique-Service-prensibi-Name>" biçiminde benzersiz bir ad gerektirir.
+Kolaylık sağlaması için, bu hızlı başlangıç, hizmet sorumlusu ve erişim denetimi ilkesi kullanımını gerektiren bir .NET konsol uygulaması oluşturur. Hizmet prensibi, "http://&lt;My-Unique-Service-prensibi-Name&gt;" biçiminde benzersiz bir ad gerektirir.
 
 Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
 ```
 
 Bu işlem, bir dizi anahtar/değer çifti döndürür. 

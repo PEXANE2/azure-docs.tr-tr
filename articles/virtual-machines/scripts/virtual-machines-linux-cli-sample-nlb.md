@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3182b3f059bf586dce32d8a555ec0d15542c6afc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5765c2e7335183734c86f1ddd11e4fa61576740c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460367"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977558"
 ---
 # <a name="create-a-highly-available-vm"></a>Yüksek oranda kullanılabilir VM oluşturma
 
@@ -53,7 +53,7 @@ Bu betik bir kaynak grubu, sanal makine, kullanılabilirlik kümesi, yük dengel
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) | Statik bir IP adresi ve ilişkili bir DNS adı ile bir genel IP adresi oluşturur. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) | Bir Azure Ağ Yükü Dengeleyici (NLB) oluşturur. |
 | [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) | Bir NLB araştırması oluşturur. NLB araştırması, NLB kümesindeki her bir VM’yi izlemek için kullanılır. Herhangi bir VM erişilemez hale gelirse trafik VM’ye yönlendirilmez. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Bir NLB kuralı oluşturur. Bu örnekte 80 numaralı bağlantı noktası için bir kural oluşturulur. HTTP trafiği NLB’ye ulaştığında, NLB kümesindeki VM’lerden birinin 80 numaralı bağlantı noktasına yönlendirilir. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Bir NLB kuralı oluşturur. Bu örnekte 80 numaralı bağlantı noktası için bir kural oluşturulur. NLB 'ye HTTP trafiği ulaştığında, NLB kümesindeki sanal makinelerin birindeki 80 numaralı bağlantı noktasına yönlendirilir. |
 | [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) | Bir NLB Ağ Adresi Çevirisi (NAT) kuralı oluşturur.  NAT kuralları, bir NLB bağlantı noktasını VM üzerindeki bir bağlantı noktasına eşler. Bu örnekte, NLB kümesindeki her bir VM’ye giden SSH trafiği için bir NAT kuralı oluşturulur.  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) | İnternet ile sanal makine arasında güvenlik sınırı olan bir ağ güvenlik grubu (NSG) oluşturur. |
 | [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Gelen trafiğe izin veren bir NSG kuralı oluşturur. Bu örnekte 22 numaralı bağlantı noktası SSH trafiğine açılır. |

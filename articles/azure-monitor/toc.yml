@@ -112,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: Etkinlik günlüğü uyarıları
           href: platform/activity-log-alerts.md
-        - name: Değişiklik analizi
-          href: app/change-analysis.md
     - name: Verileri görselleştirme
       href: visualizations.md
     - name: İş ortağı tümleştirmeleri
@@ -528,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: Event Hubs’a veri akışı sağlama
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: Değişiklik analizi
+          href: app/change-analysis.md
     - name: VM’leri ve konuk işletim sistemini izleme
       items:
         - name: Azure sanal makinelerini izleme

@@ -38,6 +38,8 @@
           href: relay-authentication-and-authorization.md
         - name: Yerleşik güvenlik denetimleri
           href: service-bus-relay-security-controls.md
+        - name: Ağ güvenliği
+          href: network-security.md
     - name: Karma Bağlantılar protokolü
       href: relay-hybrid-connections-protocol.md
 - name: Nasıl yapılır
@@ -59,6 +61,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: Güvenlik
+      items:
+        - name: IP güvenlik duvarını yapılandırma (önizleme)
+          href: ip-firewall-virtual-networks.md
+        - name: Özel uç noktaları yapılandırma (önizleme)
+          href: private-link-service.md
     - name: Yönetme ve izleme
       items:
         - name: Azure İzleyici ile Azure Relay’i izleme

@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: be612c1e28c0d07228a0f9a183a82edd1ed70753
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 46ffcfbe382a974b2e8cf465f35bf9eff77dbb7e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901533"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983185"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v4)
 
@@ -97,12 +97,12 @@ New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGr
 
 Bulut tabanlı bir .NET uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimliktir; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. 
 
-Kolaylık sağlaması için, bu hızlı başlangıç, hizmet sorumlusu ve erişim denetimi ilkesi kullanımını gerektiren bir .NET konsol uygulaması oluşturur. Hizmet prensibi, "http://<My-Unique-Service-prensibi-Name>" biçiminde benzersiz bir ad gerektirir.
+Kolaylık sağlaması için, bu hızlı başlangıç, hizmet sorumlusu ve erişim denetimi ilkesi kullanımını gerektiren bir .NET konsol uygulaması oluşturur. Hizmet prensibi, "http://&lt;My-Unique-Service-prensibi-Name&gt;" biçiminde benzersiz bir ad gerektirir.
 
 Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
 ```
 
 Bu işlem, bir dizi anahtar/değer çifti döndürür. 
@@ -125,7 +125,7 @@ Azure PowerShell [New-AzADServicePrincipal](/powershell/module/az.resources/new-
 
 ```azurepowershell
 # Create a new service principal
-$spn = New-AzADServicePrincipal -DisplayName "http://<my-unique-service-principle-name>"
+$spn = New-AzADServicePrincipal -DisplayName "http://&lt;my-unique-service-principle-name&gt;"
 
 # Get the tenant ID and subscription ID of the service principal
 $tenantId = (Get-AzContext).Tenant.Id

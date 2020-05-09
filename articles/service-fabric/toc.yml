@@ -116,6 +116,9 @@
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
       href: samples-cli.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Mikro hizmetleri anlama
