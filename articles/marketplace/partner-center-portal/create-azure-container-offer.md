@@ -1,33 +1,33 @@
 ---
-title: Iş Ortağı Merkezi 'nde Azure Container teklifi oluşturma-Azure Marketi
-description: Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
+title: Azure Container teklifi oluşturma-Azure Marketi
+description: Bu makalede, Azure Marketi 'ne bir kapsayıcı teklifi oluşturma ve yayımlama açıklanmaktadır.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867357"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791944"
 ---
-# <a name="create-an-azure-container-offer"></a>Azure Kapsayıcısı teklifi oluşturma
+# <a name="create-an-azure-container-offer"></a>Azure Container teklifi oluşturma
 
 > [!IMPORTANT]
 > Azure Container tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için lütfen Bulut İş Ortağı Portalı [kapsayıcılarındaki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) yönergeleri izleyin.
 
-Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Başlamadan önce [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Bu makalede, Azure Marketi için bir kapsayıcı teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
-1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın ve üst menüden **Pano**' yı seçin.
-2. Sol tarafta, **ticari Market**' i ve ardından **genel bakış**' ı seçin.
-3. **Genel bakış** sayfasında **+ yeni teklif**' i ve ardından **Azure kapsayıcısı**' nı seçin. **Yeni teklif** iletişim kutusu görüntülenir.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
+2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif** > **Azure kapsayıcısı**' nı seçin.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="Iş Ortağı Merkezi 'nde genel bakış sayfası gösterilmektedir. Yeni teklif düğmesi ve danışmanlık hizmeti teklifi vurgulanır.":::
+    ![Sol gezinti menüsünü gösterir.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
@@ -40,12 +40,12 @@ Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir
 - Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-**Bir** **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklifi ifade etmek için kullanılan addır.
+Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
 - Bu, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-Devam etmeden önce **Oluştur** ' u seçin.
+Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ## <a name="offer-overview"></a>Teklifin genel bakış
 
@@ -64,7 +64,7 @@ Teklifinizi ayarlamak için bu adımları izleyin.
 
 ### <a name="connect-lead-management--optional"></a>Connect lider yönetimi – isteğe bağlı
 
-Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayabilirsiniz. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar.
+Teklifinizi Iş Ortağı Merkezi ile ticari Market 'te yayımlarken, Müşteri Ilişkileri yönetimi (CRM) sisteminize bağlayabilirsiniz. Bu, bir kişi, ürününüzü ilgilendiren veya ürünü kullandığı anda müşteri iletişim bilgilerini almanızı sağlar.
 
 1. **Müşteri adaylarını göndermemizi istediğiniz bir müşteri adayı hedefi seçin**. İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
 
@@ -83,10 +83,10 @@ Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
 - [Müşteri adayı yönetimine genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun)
 
-Sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin.
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ### <a name="properties"></a>Özellikler
 
@@ -129,7 +129,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -434,4 +434,4 @@ Teklifinizi herkese (veya özel bir teklif, özel bir hedef kitleye) yayımlamak
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Ticari Market'te bulunan bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Ticari Market 'te mevcut bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

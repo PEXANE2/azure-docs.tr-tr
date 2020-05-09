@@ -1,22 +1,17 @@
 ---
-title: 'Hizmetten hizmete kimlik doğrulaması: Azure Active Directory ile Azure Data Lake Storage 1. | Microsoft Docs'
-description: Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması elde etme hakkında bilgi edinin
-services: data-lake-store
-documentationcenter: ''
+title: Hizmetten hizmete kimlik doğrulaması-Data Lake Storage 1.-Azure
+description: Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması elde etme hakkında bilgi edinin.
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66241370"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688194"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -73,7 +68,7 @@ Programlı olarak oturum açtığınızda, uygulamanız için KIMLIĞE ihtiyacı
     ![Gruba izin atama](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Gruba izin atama")
    
     Data Lake Storage 1. izinler ve varsayılan/erişim ACL 'Leri hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md).
-7. **Özel erişim Ekle** dikey penceresinde **Tamam**' a tıklayın. Yeni eklenen grup, ilişkili izinlerle birlikte **erişim** dikey penceresinde listelenir.
+7. **Özel erişim Ekle** dikey penceresinde **Tamam**' a tıklayın. Yeni eklenen gruplar, ilişkili izinlerle birlikte **erişim** dikey penceresinde listelenir.
    
     ![Gruba izin atama](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Gruba izin atama")
 

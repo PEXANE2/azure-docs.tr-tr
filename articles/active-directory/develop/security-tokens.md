@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: HT
+ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584291"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926587"
 ---
 # <a name="security-tokens"></a>Güvenlik belirteçleri
 
 Merkezi bir kimlik sağlayıcısı özellikle, dünyanın dört bir yanındaki, kuruluşun ağından oturum açması gerekmeyen kullanıcılar için yararlıdır. Microsoft Identity platform kullanıcıların kimliğini doğrular ve bir [istemci uygulamasının](developer-glossary.md#client-application) bir [kaynak sunucusundaki](developer-glossary.md#resource-server)korumalı kaynaklara erişmesine izin veren [erişim belirteci](developer-glossary.md#access-token), [yenileme belirteci](developer-glossary.md#refresh-token)ve [kimlik belirteci](developer-glossary.md#id-token)gibi güvenlik belirteçleri sağlar.
 
-**Erişim belirteçleri** , bir [OAuth 2,0](active-directory-v2-protocols.md) akışının parçası olarak bir [yetkilendirme sunucusu](developer-glossary.md#authorization-server) tarafından verilen bir güvenlik belirtecidir. Kullanıcının ve belirtecin hedeflenen uygulamayla ilgili bilgiler içerir; Web API 'Lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir. Microsoft Identity platform 'un erişim belirteçleri hakkında daha fazla bilgi edinmek için bkz. [erişim belirteçleri](access-tokens.md).
+**Erişim belirteci** , bir [yetkilendirme sunucusu](developer-glossary.md#authorization-server) tarafından [OAuth 2,0](active-directory-v2-protocols.md) akışının bir parçası olarak verilen bir güvenlik belirtecidir. Kullanıcının ve belirtecin hedeflenen uygulamayla ilgili bilgiler içerir; Web API 'Lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir. Microsoft Identity platform 'un erişim belirteçleri hakkında daha fazla bilgi edinmek için bkz. [erişim belirteçleri](access-tokens.md).
 
-Erişim belirteçleri yalnızca kısa bir süre için geçerlidir. bu nedenle, yetkilendirme sunucuları bazen erişim belirteci verildiği sırada **yenileme belirteçleri** verir. İstemci uygulaması daha sonra gerektiğinde yeni bir erişim belirteci için bu yenileme belirtecini değiştirebilir. Microsoft Identity platformunun izinleri iptal etmek için yenileme belirteçleri kullanma hakkında daha fazla bilgi edinmek için bkz. [belirteç iptali](access-tokens.md#token-revocation).
+Erişim belirteçleri yalnızca kısa bir süre için geçerlidir. bu nedenle, yetkilendirme sunucuları bazen erişim belirteci verildiği sırada bir **yenileme belirteci** verir. İstemci uygulaması daha sonra gerektiğinde yeni bir erişim belirteci için bu yenileme belirtecini değiştirebilir. Microsoft Identity platformunun izinleri iptal etmek için yenileme belirteçleri kullanma hakkında daha fazla bilgi edinmek için bkz. [belirteç iptali](access-tokens.md#token-revocation).
 
 **Kimlik belirteçleri** , bir [OpenID Connect](v2-protocols-oidc.md) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır. Microsoft kimlik platformunun KIMLIK belirteçleri hakkında daha fazla bilgi edinmek için bkz. [Kimlik belirteçleri](id-tokens.md).
+
+> [!NOTE]
+> Bu makalede OAuth2 ve OpenID Connect protokollerinin güvenlik belirteçleri açıklanır. Birçok kurumsal uygulama, kullanıcıların kimliğini doğrulamak için SAML kullanır. SAML onayları hakkında bilgi için bkz. [Azure AD SAML belirteci başvurusu](reference-saml-tokens.md) .
 
 ## <a name="validating-security-tokens"></a>Güvenlik belirteçleri doğrulanıyor
 
@@ -45,7 +48,7 @@ Erişim belirteçleri, `Authorization` üst bilgide taşıyıcı belirteci olara
 
 Microsoft Identity platformu, **talepler**Içeren **JSON Web belirteçleri (jwts)** olarak güvenlik belirteçleri uygular.
 
-Bir [talep](developer-glossary.md#claim) , bir istemci uygulaması veya [kaynak sahibi](developer-glossary.md#resource-owner)gibi bir varlık hakkında, kaynak sunucusu gibi başka bir varlığa onay verir.
+Bir [talep](developer-glossary.md#claim) , bir istemci uygulaması veya [kaynak sahibi](developer-glossary.md#resource-owner)gibi bir varlık hakkında, kaynak sunucusu gibi başka bir varlığa onay verir. Bir talep, JWT talebi veya JSON Web Token talebi olarak da adlandırılabilir.
 
 Talepler, belirteç konusuyla ilgili olgu geçişi yapan ad/değer çiftleridir. Örneğin, bir talep yetkilendirme sunucusu tarafından kimliği doğrulanan güvenlik sorumlusu hakkında olgu içerebilir. Belirli bir belirteçte mevcut talepler, belirteç türü, konunun kimliğini doğrulamak için kullanılan kimlik bilgisi türü, uygulama yapılandırması vb. dahil olmak üzere birçok konuya bağlıdır.
 
