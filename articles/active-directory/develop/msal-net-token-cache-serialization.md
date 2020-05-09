@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1aa7de4290d0050b9d6b1c8b048f9e5a2836790f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127993"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890567"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
 [Belirteç](msal-acquire-cache-tokens.md)alındıktan sonra, Microsoft kimlik doğrulama KITAPLıĞı (msal) tarafından önbelleğe alınır.  Uygulama kodu, başka bir yöntem tarafından belirteç almadan önce önbellekten bir belirteç almayı denemelidir.  Bu makalede, MSAL.NET içinde belirteç önbelleğinin varsayılan ve özel serileştirmesi açıklanmaktadır.
@@ -51,7 +51,7 @@ Aşağıdaki sınıflar ve arabirimler, belirteç önbelleği serileştirmesi i�
 
 Bir [genel istemci uygulaması](msal-client-applications.md) (Masaüstü) veya [Gizli istemci uygulaması](msal-client-applications.md)için bir belirteç önbelleği serileştirmesi yazıyorsanız, Stratejiler farklılık açıktır. (Web uygulaması/Web API 'si, Daemon uygulaması).
 
-### <a name="token-cache-for-a-public-client"></a>Ortak istemci için belirteç önbelleği 
+### <a name="token-cache-for-a-public-client"></a>Ortak istemci için belirteç önbelleği
 
 MSAL.NET v2. x, bir genel istemcinin belirteç önbelleğini serileştirmek için birkaç seçeneğiniz vardır. Önbelleği yalnızca MSAL.NET biçimine seri hale getirebilirsiniz (Birleşik biçim önbelleği MSAL ve platformlar arasında ortaktır).  ADAL v3 'in [eski](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) belirteç önbelleği serileştirmesini de destekleyebilirsiniz.
 
@@ -124,7 +124,7 @@ $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{A
  }
 ```
 
-Ortak istemci uygulamalarına yönelik bir ürün kalitesi belirteç önbelleği dosya tabanlı serileştirici Önizlemesi (Windows, Mac ve Linux üzerinde çalışan masaüstü uygulamaları için) [Microsoft. Identity. Client. Extensions. msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) açık kaynak kitaplığından bulunabilir. Bunu uygulamalarınıza şu NuGet paketinden dahil edebilirsiniz: [Microsoft. Identity. Client. Extensions. msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+Ortak istemci uygulamalarına yönelik ürün kalitesi belirteç önbelleği dosya tabanlı serileştirici (Windows, Mac ve Linux üzerinde çalışan masaüstü uygulamaları için), [Microsoft. Identity. Client. Extensions. msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) açık kaynak kitaplığından edinilebilir. Bunu uygulamalarınıza şu NuGet paketinden dahil edebilirsiniz: [Microsoft. Identity. Client. Extensions. msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Çift belirteç önbelleği serileştirme (MSAL Birleşik önbellek ve ADAL v3)
 
@@ -273,14 +273,63 @@ namespace CommonCacheMsalV3
 
 Web Apps veya Web API 'Lerinde, önbellek oturum, Redsıs önbelleği veya bir veritabanı aracılığıyla faydalanabilir.
 
-Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tutun.  Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.  Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir. MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Olaylar, önbelleğe erişildiğinde harekete geçirilir, uygulamalar önbelleğin serileştirip serileştirmeyeceğini veya seri durumdan çıkaramayacağını seçebilir. Kullanıcıları işleyen gizli istemci uygulamalarında (kullanıcıların oturum açması ve Web API 'Lerini çağıran Web uygulamaları ve aşağı akış Web API 'lerini çağıran Web API 'Leri), birçok kullanıcı olabilir ve kullanıcılar paralel olarak işlenir. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Serileştirme olayları, işlenen kullanıcının kimliğine göre bir önbellek anahtarını hesaplar ve bu kullanıcı için bir belirteç önbelleğini seri hale getirme/kaldırma.
+Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tutun.  Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.  Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir. MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Olaylar, önbelleğe erişildiğinde harekete geçirilir, uygulamalar önbelleğin serileştirip serileştirmeyeceğini veya seri durumdan çıkaramayacağını seçebilir. Kullanıcıları işleyen gizli istemci uygulamalarında (kullanıcıların oturum açması ve Web API 'Lerini çağıran Web uygulamaları ve aşağı akış Web API 'lerini çağıran Web API 'Leri), birçok kullanıcı olabilir ve kullanıcılar paralel olarak işlenir. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Serileştirme olayları, işlenen kullanıcının kimliğine bağlı olarak bir önbellek anahtarını hesaplar ve bu kullanıcı için bir belirteç önbelleğinin serileştirilmesi/serisini kaldıramıyor.
 
-Web uygulamaları ve Web API 'Leri için belirteç önbelleklerinin nasıl kullanılacağına ilişkin örnekler, aşama [2-2 belirteç önbelleğindeki](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) [ASP.NET Core Web uygulaması öğreticisinde](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) bulunabilir. Uygulamalar için, [Microsoft-Authentication-Extensions-for-DotNet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) kitaplığı ( [Microsoft. Identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) klasöründe) [tokencacheproviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) klasörüne göz atalım. 
+[Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) kitaplığı, belirteç önbelleği serileştirmesini içeren [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) Önizleme paketi sağlar:
+
+
+| Genişletme yöntemi | Microsoft. Identity. Web Sub ad alanı | Açıklama  |
+| ---------------- | --------- | ------------ |
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | Bellek belirteci önbelleği serileştirme. Bu uygulama örneklerde harika. Ayrıca, Web uygulaması yeniden başlatıldığında belirteç önbelleğinin kaybolup olmadığını aklınızda bulundurmayabilmeniz için üretim uygulamalarında da iyidir. `AddInMemoryTokenCaches`, kullanılmadığı takdirde önbellek girişinin süresinin `MsalMemoryTokenCacheOptions` dolacağı süreyi belirtmenize olanak tanıyan, isteğe bağlı bir tür parametresi alır.
+| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Belirteç önbelleği Kullanıcı oturumuna bağlanır. Tanımlama bilgisi çok büyük hale gelecağından KIMLIK belirteci çok sayıda talep içeriyorsa bu seçenek ideal değildir.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Belirteç önbelleği, ASP.NET Core `IDistributedCache` uygulamasına karşı bir bağdaştırıcıdır, bu nedenle dağıtılmış bellek önbelleği, redsıs önbelleği, dağıtılmış bir nCache veya bir SQL Server önbelleği arasından seçim yapabilirsiniz. `IDistributedCache` Uygulamalar hakkındaki ayrıntılar için bkz https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache..
+
+Bellek içi önbelleği kullanarak basit bir durum:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddInMemoryTokenCaches();
+```
+
+
+Olası Dağıtılmış önbelleklere örnek olarak şunlar verilebilir:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+Kullanımları, aşama [2-2 belirteç önbelleğindeki](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) [ASP.NET Core Web uygulaması öğreticisinde](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) öne çıkanlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Aşağıdaki örneklerde belirteç önbelleği serileştirmesi gösterilmektedir.
 
 | Örnek | Platform | Açıklama|
 | ------ | -------- | ----------- |
 |[Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Masaüstü (WPF) | Microsoft Graph API 'sini çağıran Windows Masaüstü .NET (WPF) uygulaması. ![Topoloji](media/msal-net-token-cache-serialization/topology.png)|
-|[Active-Directory-DotNet-v1--v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Masaüstü (konsol) | Azure AD v 1.0 uygulamalarının (ADAL.NET kullanarak), belirli bir [belirteç önbelleği geçişinde](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md) yakınsanmış uygulamalar (msal.NET kullanılarak) olarak da ADLANDıRıLAN Azure AD v 2.0 uygulamalarına geçişini gösteren Visual Studio çözümleri kümesi|
+|[Active-Directory-DotNet-v1--v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Masaüstü (konsol) | Azure AD v 1.0 uygulamalarının (ADAL.NET kullanarak) Microsoft Identity platform uygulamalarına (MSAL.NET kullanılarak) geçişini gösteren Visual Studio çözümleri kümesi. Özellikle, bkz. [belirteç önbelleği geçişi](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

@@ -1,20 +1,20 @@
 ---
-title: Azure Otomasyonu yapılandırma saatleri dışında VM 'Leri Başlat/Durdur çözümü
+title: Azure Otomasyonu yapılandırma VM'leri çalışma saatleri dışında başlat/durdur çözümü
 description: Bu makalede, farklı kullanım durumlarını veya senaryolarını desteklemek üzere VM'leri çalışma saatleri dışında başlat/durdur çözümünün nasıl yapılandırılacağı açıklanır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9842a736cf922e0490f2b0c8acb1d2e5833f3d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604772"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864275"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü yapılandırma
+# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>VM'leri çalışma saatleri dışında başlat/durdur çözümü nasıl yapılandırılır
 
-**VM 'leri çalışma saatleri dışında Başlat/Durdur** çözümü ile şunları yapabilirsiniz:
+**VM'leri çalışma saatleri dışında Başlat/Durdur** çözümü ile şunları yapabilirsiniz:
 
 - [VM 'leri başlatıp durdurulacak şekilde zamanlayın](#schedule).
 - [Azure etiketlerini kullanarak](#tags) (klasik VM 'lerde desteklenmez), sanal makinelerin artan sırada başlamasını ve durdurulmasını zamanlayın.
@@ -125,7 +125,7 @@ Eylemi bir abonelik ve kaynak grubuna karşı etkinleştirebilir ve hedefleyebil
 
 ### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>Bir VM listesine oto durdurma eylemini hedeflemek için
 
-1. Yeni bir [zamanlama](shared-resources/schedules.md#creating-a-schedule) oluşturun ve bu `VMList` parametreyi **AutoStop_CreateAlert_Parent** runbook 'una bağlayın, bu da parametreye virgülle ayrılmış bir VM adları listesi ekler.
+1. Yeni bir [zamanlama](shared-resources/schedules.md#create-a-schedule) oluşturun ve bu `VMList` parametreyi **AutoStop_CreateAlert_Parent** runbook 'una bağlayın, bu da parametreye virgülle ayrılmış bir VM adları listesi ekler.
 
 2. İsteğe bağlı olarak, bazı sanal makineleri otomatik kapatmadan dışlamak istiyorsanız, `External_ExcludeVMNames` değişkenine bir sanal makine adları virgülle ayrılmış listesini ekleyebilirsiniz.
 

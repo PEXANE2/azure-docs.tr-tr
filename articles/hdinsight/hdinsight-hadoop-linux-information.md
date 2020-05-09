@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272467"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594106"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -95,21 +95,21 @@ Hadoop ile ilgili dosyalar konumundaki `/usr/hdp`küme düğümlerinde bulunabil
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>, Azure depolama ve Data Lake Storage
 
-Çoğu Hadoop dağıtımlarında, veriler, kümedeki makinelerde yerel depolama alanı tarafından desteklenen bir. Yerel depolama kullanmak, saatlik olarak veya işlem kaynakları için dakikaya göre ücretlendirilebilen bulut tabanlı bir çözüm için maliyetli olabilir.
+Çoğu Hadoop dağıtımlarında veriler, Bu, kümedeki makinelerde yerel depolama alanı tarafından desteklenir. Yerel depolama kullanmak, saatlik olarak veya işlem kaynakları için dakikaya göre ücretlendirilebilen bulut tabanlı bir çözüm için maliyetli olabilir.
 
-HDInsight kullanılırken, veri dosyaları Azure Blob depolama alanı kullanılarak bulutta ölçeklenebilir ve dayanıklı bir şekilde depolanır ve isteğe bağlı olarak Azure Data Lake Storage. Bu hizmetler aşağıdaki avantajları sağlar:
+HDInsight kullanılırken, veri dosyaları Azure Blob depolama ve isteğe bağlı olarak Azure Data Lake Storage bulutta bir uyarlamalı tablo ve dayanıklı bir şekilde depolanır. Bu hizmetler aşağıdaki avantajları sağlar:
 
 * Cheap uzun süreli depolama.
 * Web siteleri, dosya yükleme/indirme yardımcı programları, çeşitli dil SDK 'Ları ve Web tarayıcıları gibi dış hizmetlerden erişilebilirlik.
-* Büyük dosya kapasitesi ve büyük ölçeklenebilir depolama.
+* Büyük dosya kapasitesi ve büyük uyarlanabilir depolama.
 
 Daha fazla bilgi için bkz. [Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) ve [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)anlama.
 
-Azure Storage veya Data Lake Storage kullanılırken, HDInsight 'tan verilere erişmek için özel bir şey yapmanız gerekmez. Örneğin, aşağıdaki komut, Azure Storage 'da mi yoksa `/example/data` Data Lake Storage ' de depolanmadığına bakılmaksızın klasördeki dosyaları listeler:
+Azure Storage veya Data Lake Storage kullanılırken, HDInsight 'tan verilere erişmek için özel bir şey yapmanız gerekmez. Örneğin, aşağıdaki komut, `/example/data` klasördeki dosyaları Azure depolama 'da mi yoksa Data Lake Storage, mi depolandığını listeler:
 
     hdfs dfs -ls /example/data
 
-HDInsight 'ta veri depolama kaynakları (Azure Blob depolama ve Azure Data Lake Storage) işlem kaynaklarından ayrılır. Bu nedenle, ihtiyacınız olduğu sürece hesaplamayı yapmak için HDInsight kümeleri oluşturabilir ve daha sonra iş bittiğinde kümeyi sildikten sonra, ihtiyaç duyduğunuz sürece veri dosyalarınızı bulut depolamada güvenle kalıcı hale getirebilirsiniz.
+HDInsight 'ta veri depolama kaynakları (Azure Blob depolama ve Azure Data Lake Storage) işlem kaynaklarından ayrılır. Gerektiğinde hesaplamayı yapmak için HDInsight kümeleri oluşturabilir ve daha sonra iş bittiğinde kümeyi silebilirsiniz. Bu arada, veri dosyalarınızı, ihtiyacınız olduğu sürece Bulut depolamada güvenli bir şekilde tutmaya devam ediyor.
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI ve şema
 
@@ -210,46 +210,11 @@ __Azure Data Lake Storage__kullanıyorsanız verilerinize erişebilmenizin yolla
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>Kümenizi ölçeklendirme
 
-Küme ölçekleme özelliği, bir küme tarafından kullanılan veri düğümlerinin sayısını dinamik olarak değiştirmenize olanak sağlar. Bir kümede diğer işler veya işlemler çalışırken ölçekleme işlemleri gerçekleştirebilirsiniz.  Ayrıca bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md)
-
-Farklı küme türleri ölçeklendirerek aşağıdaki gibi etkilenir:
-
-* **Hadoop**: bir kümedeki düğümlerin sayısını ölçeklendirirken, kümedeki hizmetlerin bazıları yeniden başlatılır. Ölçeklendirme işlemleri, ölçeklendirme işleminin tamamlanmasında çalışan veya bekleyen işlerin başarısız olmasına neden olabilir. İşlem tamamlandıktan sonra işleri yeniden gönderebilirsiniz.
-* **HBase**: ölçeklendirme işlemi tamamlandıktan sonra Bölgesel sunucular birkaç dakika içinde otomatik olarak dengelenir. Bölgesel sunucuları el ile dengelemek için aşağıdaki adımları kullanın:
-
-    1. SSH kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-    2. HBase kabuğunu başlatmak için aşağıdakileri kullanın:
-
-            hbase shell
-
-    3. HBase kabuğu yüklendikten sonra bölgesel sunucuları el ile dengelemek için aşağıdakileri kullanın:
-
-            balancer
-
-* **Fırtınası**: bir ölçeklendirme işlemi gerçekleştirildikten sonra çalışan tüm fırtınası topolojilerini yeniden dengelemeniz gerekir. Yeniden dengeleme, topolojinin kümedeki yeni düğüm sayısına göre yalnızca paralellik ayarları ayarlamasına olanak tanır. Çalışan topolojileri yeniden dengelemek için aşağıdaki seçeneklerden birini kullanın:
-
-    * **SSH**: sunucuya bağlanın ve bir topolojiyi yeniden dengelemek için aşağıdaki komutu kullanın:
-
-            storm rebalance TOPOLOGYNAME
-
-        Ayrıca, ilk olarak topoloji tarafından sağlanmış paralellik ipuçlarını geçersiz kılmak için parametreler belirtebilirsiniz. Örneğin, `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` topolojiyi 5 çalışan işleme, Blue-Spout bileşeni için 3 yürütme ve sarı-cıvam bileşeni için 10 yürütme yeniden yapılandırır.
-
-    * **Fırtınası Kullanıcı arabirimi**: fırtınası Kullanıcı arabirimini kullanarak bir topolojiyi yeniden dengelemek için aşağıdaki adımları kullanın.
-
-        1. Web `https://CLUSTERNAME.azurehdinsight.net/stormui` tarayıcınızda açın, burada `CLUSTERNAME` , fırtınası kümenizin adıdır. İstenirse, kümeyi oluştururken belirttiğiniz HDInsight Küme Yöneticisi (yönetici) adını ve parolasını girin.
-        2. Yeniden dengelemek istediğiniz topolojiyi seçin, sonra yeniden **Dengeleme** düğmesini seçin. Yeniden dengeleme işlemi gerçekleştirilmeden önce gecikme girin.
-
-* **Kafka**: ölçeklendirme işlemleri sonrasında bölüm çoğaltmalarını yeniden dengelemeniz gerekir. Daha fazla bilgi için bkz. [HDInsight 'ta Apache Kafka verilerin yüksek kullanılabilirliği](./kafka/apache-kafka-high-availability.md) belgesi.
-
-HDInsight kümenizi ölçeklendirmeyle ilgili belirli bilgiler için, bkz.:
-
-* [HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Azure CLı kullanarak HDInsight 'ta Apache Hadoop kümelerini yönetme](hdinsight-administer-use-command-line.md#scale-clusters)
+Küme ölçekleme özelliği, bir küme tarafından kullanılan veri düğümlerinin sayısını dinamik olarak değiştirmenize olanak sağlar. Bir kümede diğer işler veya işlemler çalışırken ölçeklendirme işlemleri yapabilirsiniz.  Bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Nasıl yaparım? ton (veya başka bir Hadoop bileşeni) yüklensin mi?
 
-HDInsight Yönetilen bir hizmettir. Azure, kümeyle ilgili bir sorun algılarsa, başarısız olan düğümü silebilir ve bunun yerine geçecek bir düğüm oluşturabilirsiniz. Öğeleri kümeye el ile yüklüyorsanız, bu işlem gerçekleştiğinde kalıcı olmaz. Bunun yerine, [HDInsight betik eylemlerini](hdinsight-hadoop-customize-cluster-linux.md)kullanın. Bir betik eylemi, aşağıdaki değişiklikleri yapmak için kullanılabilir:
+HDInsight Yönetilen bir hizmettir. Azure, kümeyle ilgili bir sorun algılarsa, başarısız olan düğümü silebilir ve bunun yerine geçecek bir düğüm oluşturabilirsiniz. Bunları kümeye el ile yüklediğinizde, bu işlem gerçekleştiğinde kalıcı olmaz. Bunun yerine, [HDInsight betik eylemlerini](hdinsight-hadoop-customize-cluster-linux.md)kullanın. Bir betik eylemi, aşağıdaki değişiklikleri yapmak için kullanılabilir:
 
 * Bir hizmet veya Web sitesi yükleyip yapılandırın.
 * Kümedeki birden fazla düğümde yapılandırma değişiklikleri gerektiren bir bileşeni yükler ve yapılandırın.
@@ -258,7 +223,7 @@ Komut dosyası eylemleri Bash betikleridir. Betikler, küme oluşturma sırasın
 
 ### <a name="jar-files"></a>Jar dosyaları
 
-Bazı Hadoop teknolojileri, MapReduce işinin bir parçası olarak veya Pig ya da Hive içinden kullanılan işlevleri içeren, kendi içinde bulunan jar dosyalarında sağlanır. Bunlar genellikle kurulum gerektirmez ve oluşturulduktan ve doğrudan kullanıldıktan sonra kümeye yüklenebilirler. Bileşenin kümenin yeniden görüntüsünü geliştirmekte olduğundan emin olmak istiyorsanız, JAR dosyasını kümeniz için varsayılan depolama alanında (ıLB veya ADL) saklayabilirsiniz.
+Bazı Hadoop teknolojileri, kendi içinde bulunan jar dosyaları sağlar. Bu dosyalar, MapReduce işinin bir parçası olarak veya Pig ya da Hive içinden kullanılan işlevleri içerir. Bunlar genellikle kurulum gerektirmez ve oluşturulduktan ve doğrudan kullanıldıktan sonra kümeye yüklenebilirler. Bileşenin kümeyi yeniden görüntülemeye çalıştığından emin olmak istiyorsanız jar dosyasını küme varsayılan deposunda depolayın.
 
 Örneğin, en son [Apache DataFu](https://datafu.incubator.apache.org/)sürümünü kullanmak istiyorsanız, projeyi içeren bir jar indirebilir ve bunu HDInsight kümesine yükleyebilirsiniz. Daha sonra Pig veya Hive 'den nasıl kullanılacağına ilişkin veri Fu belgelerini izleyin.
 
