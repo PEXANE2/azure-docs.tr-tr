@@ -8,10 +8,10 @@
       href: cdn-features.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Profil ve uç nokta oluşturma
-      href: cdn-create-new-endpoint.md
     - name: Depolama hesabı tümleştirme
       href: cdn-create-a-storage-account-with-cdn.md
+    - name: Profil ve uç nokta oluşturma
+      href: cdn-create-new-endpoint.md
     - name: Azure Resource Manager şablonu kullanarak profil oluşturma
       href: create-profile-resource-manager-template.md
 - name: Öğreticiler
@@ -57,7 +57,7 @@
           href: cdn-media-streaming-optimization.md
         - name: Dinamik site hızlandırma
           href: cdn-dynamic-site-acceleration.md
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: Uç nokta oluşturma
           href: cdn-create-endpoint-how-to.md

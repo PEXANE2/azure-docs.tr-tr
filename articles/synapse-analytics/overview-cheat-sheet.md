@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: aa93a816fc11158d928978bdec2dbf42119fa149
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7ae76128e90dbd9328c4bc5adcbddc334ab11cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424660"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983168"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure SYNAPSE Analytics, yemek sayfası
 
@@ -30,7 +30,7 @@ Azure SYNAPSE Analytics, hizmet ve önemli komutların temel kavramları boyunca
 ## <a name="concepts"></a>Kavramlar
 | Adlar ve fiiller                         | Ne yapar?       |
 |:---                                 |:---                 |
-| **SYNAPSE çalışma alanı (Önizleme)** | Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırı. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLSg2 hesabı ve dosya sistemi vardır (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında. |
+| **SYNAPSE çalışma alanı (Önizleme)** | Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırı. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında. |
 | **SQL Analytics**   | Analytics 'i havuzlarla veya isteğe bağlı yetenekler ile çalıştırın.  |
 | **SQL havuzu**   | karşılık gelen veritabanları ile birlikte 0-N SQL sağlanan kaynaklar bir çalışma alanına dağıtılabilir. Her SQL havuzunun ilişkili bir veritabanı vardır. Bir SQL havuzu el ile veya otomatik olarak ölçeklendirilebilir, duraklatılıp devam edebilir. Bir SQL havuzu 100 DWU 'dan 30.000 DWU 'ya kadar ölçeklendirebilir.       |
 | **İsteğe bağlı SQL (Önizleme)**   | Veri Gölü veri üzerinde T-SQL sorguları çalıştırmanıza olanak sağlayan, büyük ölçekli veriler için oluşturulmuş dağıtılmış veri işleme sistemi. Bu, sunucusuz olduğundan altyapıyı yönetmeniz gerekmez.       |

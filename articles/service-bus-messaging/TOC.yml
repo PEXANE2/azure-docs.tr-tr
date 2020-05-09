@@ -72,6 +72,9 @@
   items:
     - name: Service Bus örnekleri
       href: service-bus-samples.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Kavramlar
   items:
     - name: Premium mesajlaşma

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583213"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996041"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -109,7 +109,7 @@ Her SSML belgesi SSML öğeleri (veya etiketleri) ile oluşturulur. Bu öğeler,
 
 Konuşma SDK diline bağlı olarak, `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` özelliğini `false` `SpeechConfig` nesnesinin bir örneği üzerinde olarak ayarlarsınız.
 
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>..
 
@@ -359,7 +359,10 @@ Fonetik alfabeller, bazen birlikte harflerin, sayıların veya karakterlerin üz
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Söylenişi geliştirmek için özel sözlüğü kullanma
 
-Bazen TTS, örneğin bir şirket veya yabancı ad gibi bir kelimeyi doğru bir şekilde pronounce. Geliştiriciler SSML kullanarak `phoneme` ve `sub` etiketiyle bu varlıkların okunmasını tanımlayabilir veya etiketi kullanarak `lexicon` özel bir sözlük dosyasına başvurarak birden çok varlığın okunmasını tanımlayabilir.
+Bazen metinden konuşmaya hizmeti bir sözcüğe doğru pronounce. Örneğin, bir şirketin adı veya bir tıbbi dönem. Geliştiriciler, `phoneme` ve `sub` etiketlerini kullanarak SSML 'de tek varlıkların nasıl okunacağını tanımlayabilir. Ancak, birden çok varlığın nasıl okunduğunu tanımlamanız gerekiyorsa `lexicon` etiketini kullanarak özel bir sözlük oluşturabilirsiniz.
+
+> [!NOTE]
+> Özel sözlük Şu anda UTF-8 kodlamasını desteklemektedir. 
 
 **Sözdizimi**
 
@@ -375,14 +378,10 @@ Bazen TTS, örneğin bir şirket veya yabancı ad gibi bir kelimeyi doğru bir �
 
 **Kullanımıyla**
 
-1. Adım: özel sözlüğü tanımlama 
-
-Varlıkların, bir. xml veya. pls dosyası olarak depolanan özel bir sözlük öğeleri listesiyle okunmasını tanımlayabilirsiniz.
-
-**Örneğinde**
+Birden çok varlığın nasıl okunduğunu tanımlamak için, bir. xml veya. pls dosyası olarak depolanan özel bir sözlük oluşturabilirsiniz. Aşağıda örnek bir. xml dosyası verilmiştir.
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,39 +399,61 @@ Varlıkların, bir. xml veya. pls dosyası olarak depolanan özel bir sözlük �
 </lexicon>
 ```
 
-Her `lexeme` öğe bir sözlük öğesidir. `grapheme`dikgraf tanımlayan metni içerir `lexeme`. Yeniden kullanılabilir form, olarak `alias`sağlanıyor. Telefon dizesi `phoneme` öğede sağlanıyor.
+`lexicon` Öğesi en az bir `lexeme` öğe içeriyor. Her `lexeme` öğe `grapheme` en az bir öğe ve bir veya daha fazla `grapheme`, `alias`, ve `phoneme` öğesi içerir. `grapheme` Öğesi, <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">dikgrafi <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>tanımlayan metni içerir. `alias` Öğeler, bir kısaltın veya kısaltılmış bir terimin telaffuz olduğunu göstermek için kullanılır. `phoneme` Öğesi, nasıl bir açıklama ekleneceğini `lexeme` açıklayan metin sağlar.
 
-`lexicon` Öğesi en az bir `lexeme` öğe içeriyor. Her `lexeme` öğe `grapheme` en az bir öğe ve bir veya daha fazla `grapheme`, `alais`, ve `phoneme` öğesi içerir. `grapheme` Öğesi, <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">dikgrafi <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>tanımlayan metni içerir. `alias` Öğeler, bir kısaltın veya kısaltılmış bir terimin telaffuz olduğunu göstermek için kullanılır. `phoneme` Öğesi, nasıl bir açıklama ekleneceğini `lexeme` açıklayan metin sağlar.
+Özel sözlüğü kullanarak bir sözcüğün söylenişini doğrudan ayarlayamayacağınızı aklınızda olmak önemlidir. İçin telaffuz ayarlamanız gerekiyorsa, önce bir `alias`belirtin ve ardından `phoneme` ile ilişkilendirin. `alias` Örneğin:
 
-Özel sözlük dosyası hakkında daha fazla bilgi için bkz. W3C Web sitesinde [telaffuz sözlüğü belirtimi (PLS) sürüm 1,0](https://www.w3.org/TR/pronunciation-lexicon/) .
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-2. Adım: adım 1 ' de oluşturulan özel sözlük dosyasını karşıya yükleyin, her yerde saklayabilirsiniz ve bu dosyayı [Azure Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)gibi Microsoft Azure depolamanızı öneririz.
+> [!IMPORTANT]
+> IPA `phoneme` kullanılırken öğe boşluk içeremez.
 
-Adım 3: SSML 'de özel sözlük dosyasına bakın
+Özel sözlük dosyası hakkında daha fazla bilgi için bkz. [telaffuz sözlüğü belirtim (PLS) sürüm 1,0](https://www.w3.org/TR/pronunciation-lexicon/).
+
+Sonra, özel sözlük dosyanızı yayımlayın. Bu dosyanın nerede depolanabileceği konusunda kısıtlamalar olmadığı sürece [Azure Blob depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)kullanmanızı öneririz.
+
+Özel sözlüğü yayımladıktan sonra SSML 'nizden buna başvurabilirsiniz.
+
+> [!NOTE]
+> `lexicon` Öğe, `voice` öğesinin içinde olmalıdır.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-"BTW", "yönteme göre" okunacak. "Benignı", IPA "bɛ ˈ nı ː nji" ile okunacak.  
 
-**Sınırlama**
+Bu özel sözlük kullanılırken "BTW", "sizin" olarak okunacak. "Benignı", belirtilen IPA "bɛ ˈ nı ː nji" ile okunacaktır.  
+
+**Sınırlamalar**
 - Dosya boyutu: özel sözlük dosyası boyutu üst sınırı 100KB, bu boyuttan daha fazla olursa sensıs isteği başarısız olur.
 - Sözlük önbelleği yenilemesi: özel sözlük, ilk yüklendiğinde TTS hizmetinde anahtar olarak URI ile önbelleğe alınır. Aynı URI 'ye sahip bir sözlük 15 dakika içinde yeniden yüklenmez, bu nedenle özel sözlük değişikliğinin en fazla 15 dakikalık bir geçerlilik yapması gerekir.
 
 **Konuşma hizmeti fonetik kümeleri**
 
-Yukarıdaki örnekte, IPA telefon kümesi olarak da bilinen International fonetik alfabesini kullanıyoruz. Uluslararası standart olduğundan, geliştiricilerin IPA kullanmasını öneririz. IPA 'in anımsanması kolay olmadığından`en-US`, konuşma hizmeti yedi dil (, `fr-FR` `de-DE`,, `es-ES`, `ja-JP` `zh-CN`,, ve `zh-TW`) için bir fonetik kümesi tanımlar.
+Yukarıdaki örnekte, IPA telefon kümesi olarak da bilinen International fonetik alfabesini kullanıyoruz. Uluslararası standart olduğundan, geliştiricilerin IPA kullanmasını öneririz. Bazı IPA karakterler için Unicode ile temsil edildiğinde ' önceden oluşturulmuş ' ve ' ayrıştırılmış ' sürümü vardır. Özel sözlükte yalnızca ayrıştırılmış unicodes desteklenir.
+
+IPA 'in anımsanması kolay olmadığından`en-US`, konuşma hizmeti yedi dil (, `fr-FR` `de-DE`,, `es-ES`, `ja-JP` `zh-CN`,, ve `zh-TW`) için bir fonetik kümesi tanımlar.
 
 Özniteliği için değerini olarak `sapi` , aşağıda gösterildiği gibi özel lexsimgeleri ile kullanabilirsiniz: `alphabet`
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

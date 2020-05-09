@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77914390"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993799"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -88,7 +88,7 @@ Hazır olma durumu bilinmiyor | Azure geçişi, genellikle veri kullanılamadı�
 Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayacağını belirlemek için bir dizi VM özelliği hesaba girer.
 
 
-**Özellik** | **Bilgileri** | **Hazırlığı**
+**Özelliði** | **Bilgileri** | **Hazırlığı**
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
 **Çekirdekler** | Makine çekirdeği <= bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
@@ -216,7 +216,7 @@ Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
 
 > [!NOTE]
-> Aracıların yüklenmesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümü sağlayan, Configuration Manager gibi bir dağıtım aracını veya bir [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)gibi bir iş ortağı aracı kullanabilirsiniz.
+> Aracıların yüklenmesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümü sağlayan, Configuration Manager gibi bir dağıtım aracını veya bir [ıntigua](https://www.intigua.com/intigua-for-azure-migration)gibi bir iş ortağı aracı kullanabilirsiniz.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>MMA aracısını bir Windows makinesine yükler

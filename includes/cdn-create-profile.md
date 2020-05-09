@@ -5,46 +5,40 @@ services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
 ms.topic: include
-ms.date: 05/24/2018
+ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67594009"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996254"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Yeni bir CDN profili oluşturma
 
 CDN profili, CDN uç noktaları için bir kapsayıcı olup bir fiyatlandırma katmanını belirtir.
 
-1. Azure portalında sol üst köşedeki **Kaynak oluştur** seçeneğini belirleyin. 
-    
-    **Yeni** bölmesi görüntülenir.
+1. Azure portal, **kaynak oluştur** ' u seçin (sol üst tarafta). **Yeni** bölmesi görüntülenir.
    
-2. **Web ve Mobil** seçeneğini belirleyin ve **CDN**’yi seçin.
+1. **CDN**'yi arayıp seçin, sonra **Oluştur**' u seçin:
    
     ![CDN kaynağını seçin](./media/cdn-create-profile/cdn-new-resource.png)
 
     **CDN profili** bölmesi görüntülenir.
 
-3. CDN profil ayarları için aşağıdaki tabloda belirtilen değerleri kullanın:
+1. Aşağıdaki değerleri girin:
    
     | Ayar  | Değer |
     | -------- | ----- |
-    | **Adı** | Profil adınız olarak *my-cdn-profile-123* girin. Bu ad küresel olarak benzersiz olmalıdır; zaten kullanılıyorsa farklı bir ad girebilirsiniz. |
+    | **Adı** | Profil adınız için *CDN-profile-123* girin. Bu ad genel olarak benzersiz olmalıdır; zaten kullanımda ise, farklı bir ad girin. |
     | **Abonelik** | Açılan listeden bir Azure aboneliği seçin. |
-    | **Kaynak grubu** | **Yeni oluştur**’u seçin ve kaynak grubu adınız olarak *my-resource-group-123* girin. Ad zaten kullanılıyorsa, farklı bir ad girebilir ya da **Var olanı kullan**'ı seçip açılan listeden **my-resource-group-123**'ü seçebilirsiniz. | 
-    | **Kaynak grubu konumu** | Açılan listeden **Orta ABD**’yi seçin. |
-    | **Fiyatlandırma Katmanı** | Açılan listeden **Standart Verizon**’u seçin. |
+    | **Kaynak grubu** | **Yeni oluştur** ' u seçin ve kaynak grubunuzun adı Için *cdnquickstart-RG* girin veya **var olanı kullan** ' ı seçin ve zaten grubunuz varsa *cdnquickstart-RG* öğesini seçin. | 
+    | **Kaynak grubu konumu** | Aşağı açılan listeden yakınınızdaki bir konum seçin. |
+    | **Fiyatlandırma Katmanı** | Açılan listeden bir **Standart Akamai** seçeneği belirleyin. (Akamai katmanının dağıtım süresi yaklaşık bir dakikadır. Microsoft katmanı yaklaşık 10 dakika sürer ve Verizon katmanları yaklaşık 90 dakika sürer.) |
     | **Şimdi yeni bir CDN uç noktası oluşturun** | Seçilmemiş şekilde bırakın. |  
    
     ![Yeni CDN profili](./media/cdn-create-profile/cdn-new-profile.png)
 
-4. **Panoya sabitle**’yi seçerek profili oluşturulduktan sonra panonuza kaydedin.
-    
-5. Profili oluşturmak için **Oluştur**’u seçin. 
-
-    **Microsoft’tan Azure CDN Standart** profilleri için tamamlanma işlemi genellikle iki saat sürer. 
+1. Profili oluşturmak için **Oluştur**’u seçin.
 

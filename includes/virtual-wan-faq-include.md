@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cde644b821b8c9233c9a79c2c5e9fe8478850a65
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204663"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82997709"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -49,7 +49,7 @@ P2S istemcileri için DNS sunucuları eklemenin iki seçeneği vardır.
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Kullanıcı VPN için (Noktadan siteye)-kaç istemci destekleniyor?
 
-Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12, 5000 bağlantılarını ve ölçek birimi ' ni destekler. Örnek olarak, kullanıcının 1 ölçek birimi seçtiği konusunda izin verir. Her ölçek birimi etkin-etkin bir ağ geçidinin dağıtıldığını ve örneklerin her biri (Bu durumda 2) 500 bağlantıyı destekler. Ağ Geçidi başına 500 bağlantı alabilmeniz için, önerilen bağlantı sayısını geçirirseniz, ek 500 bağlantısının kesintiye uğratılacağı durumlarda örnek olarak bakım yapılması gerekebileceği için bu ölçek birimi için 500 yerine 1000 ' i planladığınız anlamına gelmez.
+Her bir kullanıcı VPN P2S ağ geçidi iki örneğe sahiptir ve her örnek, ölçek birimi değiştikçe belirli kullanıcıları destekler. Ölçek birimi 1-3, 500 bağlantıları destekler, birim 4-6, 1000 bağlantıları destekler, ölçek birimi 7-12, 5000 bağlantılarını ve ölçek birimi ' ni destekler. Örnek olarak, kullanıcının 1 ölçek birimi seçtiği konusunda izin verir. Her ölçek birimi etkin-etkin bir ağ geçidinin dağıtıldığını ve örneklerin her biri (Bu durumda 2) 500 bağlantıyı destekler. Ağ Geçidi başına 500 bağlantı alabilmeniz için, önerilen bağlantı sayısını geçirirseniz, ek 500 bağlantısının kesintiye uğratılacağı durumlarda örnek olarak bakım yapılması gerekebileceği için bu ölçek birimi için 500 yerine 1000 ' i planladığınız anlamına gelmez. Ayrıca, ölçek biriminde ölçeği büyütme veya küçültme kararı verirken veya VPN ağ geçidinde Noktadan siteye yapılandırmayı değiştirmek için kapalı kalma süresi planlandığınızdan emin olun.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure sanal ağ geçidi (VPN Gateway) ve Azure sanal WAN VPN Gateway arasındaki fark nedir?
 

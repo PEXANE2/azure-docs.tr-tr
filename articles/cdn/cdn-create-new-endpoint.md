@@ -1,5 +1,5 @@
 ---
-title: Hızlı Başlangıç - Azure CDN profili ve uç noktası oluşturma | Microsoft Docs
+title: Hızlı başlangıç-Azure CDN profili ve uç noktası oluşturma
 description: Bu hızlı başlangıçta, yeni bir CDN profili ve uç noktası oluşturularak Azure CDN’nin nasıl etkinleştirileceği gösterilmektedir.
 services: cdn
 documentationcenter: ''
@@ -12,82 +12,76 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/24/2018
+ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254062"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996219"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Hızlı Başlangıç: Azure CDN profili ve uç noktası oluşturma
-Bu hızlı başlangıçta, yeni bir CDN profili ve CDN uç noktası oluşturarak Azure Content Delivery Network’ü (CDN) etkinleştireceksiniz. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Bu hızlı başlangıçta, bir veya daha fazla CDN uç noktası koleksiyonu olan yeni bir CDN profili oluşturarak Azure Content Delivery Network 'yi (CDN) etkinleştirirsiniz. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu hızlı başlangıç amaçları doğrultusunda, kaynak konak adı için kullandığınız *mystorageacct123* adlı bir depolama hesabı oluşturmuş olmanız gerekir. Daha fazla bilgi için bkz. [Azure CDN ile bir Azure depolama hesabını tümleştirme](cdn-create-a-storage-account-with-cdn.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Kaynak ana bilgisayar adı için kullandığınız *cdnstorageacct123*adlı bir Azure depolama hesabı. Bu gereksinimi gerçekleştirmek için bkz. [Azure Storage hesabını Azure CDN Ile tümleştirme](cdn-create-a-storage-account-with-cdn.md).
+
+## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
+
 Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
 ## <a name="create-a-new-cdn-endpoint"></a>Yeni bir CDN uç noktası oluşturma
 
-CDN profili oluşturduktan sonra bir uç nokta oluşturmak için bunu kullanabilirsiniz.
+Bir CDN profili oluşturduktan sonra, bunu bir uç nokta oluşturmak için kullanırsınız.
 
-1. Azure portalında, panonuzda oluşturduğunuz CDN profilini seçin. Bulamazsanız, **Tüm hizmetler**’i ve sonra **CDN profilleri**’ni seçin. **CDN profilleri** sayfasında, kullanmak istediğiniz profili seçin. 
+1. Azure portalında, panonuzda oluşturduğunuz CDN profilini seçin. Bu dosyayı bulamıyorsanız, oluşturduğunuz kaynak grubunu açabilir veya portalın üst kısmındaki arama çubuğunu kullanabilir, profil adını girebilir ve sonuçlardan profili seçebilirsiniz ve sonra da sonuçlardan profil oluşturabilirsiniz.
    
-    CDN profili sayfası görüntülenir.
-
-2. **Uç nokta**seçin.
+1. CDN profili sayfasında **+ uç noktası**' nı seçin.
    
     ![CDN profili](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
     **Uç nokta ekleyin** bölmesi görünür.
 
-3. Uç noktası ayarları için aşağıdaki tabloda belirtilen değerleri kullanın:
+3. Aşağıdaki ayar değerlerini girin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | **Adı** | Uç nokta konak adınız için *my-endpoint-123* değerini girin. Bu ad küresel olarak benzersiz olmalıdır; zaten kullanılıyorsa farklı bir ad girebilirsiniz. Bu ad, etki alanı _ &lt;uç noktası adı&gt;_. azureedge.net olan önbelleğe alınmış kaynaklarınıza erişmek için kullanılır.|
+    | **Adı** | Uç nokta ana bilgisayar adı için *CDN-Endpoint-123* girin. Bu ad Azure genelinde genel olarak benzersiz olmalıdır; zaten kullanımda ise, farklı bir ad girin. Bu ad, etki alanı _ &lt;uç noktası-adı&gt;_. azureedge.net olan önbelleğe alınmış kaynaklarınıza erişmek için kullanılır.|
     | **Kaynak türü** | **Depolama**’yı seçin. | 
-    | **Kaynak konak adı** | Konak adınız için *mystorageacct123.blob.core.windows.net* değerini girin. Bu ad küresel olarak benzersiz olmalıdır; zaten kullanılıyorsa farklı bir ad girebilirsiniz. |
+    | **Kaynak konak adı** | *Cdnstorageacct123.blob.Core.Windows.net*gibi açılan listeden kullandığınız Azure depolama hesabının konak adını seçin. |
     | **Kaynak yolu** | Boş bırakın. |
-    | **Kaynak barındırma üst bilgisi** | Varsayılan olarak oluşturulan değeri değiştirmeyin. |  
+    | **Kaynak barındırma üst bilgisi** | Varsayılan değeri (depolama hesabı için ana bilgisayar adı) bırakın. |  
     | **Protocol** | Varsayılan **HTTP** ve **HTTPS** seçeneklerini seçili şekilde bırakın. |
     | **Kaynak bağlantı noktası** | Varsayılan bağlantı noktası değerlerini değiştirmeyin. | 
     | **Şunun için iyileştirildi:** | Varsayılan **Genel web teslimatı** seçimini değiştirmeyin. |
 
     ![Uç nokta ekleyin bölmesi](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
 
-3. Yeni uç nokta oluşturmak için **Ekle**’yi seçin.
-   
-   Uç nokta oluşturulduktan sonra, profile yönelik uç noktalar listesinde görünür.
+3. Yeni uç nokta oluşturmak için **Ekle**’yi seçin. Uç nokta oluşturulduktan sonra, profile yönelik uç noktalar listesinde görünür.
     
    ![CDN uç noktası](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   Kaydın yayılması zaman alacağından, uç nokta hemen kullanılabilir olmaz: 
-   - **Microsoft’tan Azure CDN Standart** profilleri için yayma işlemi genellikle 10 dakikada tamamlanır. 
-   - **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
-   - **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium** profilleri için yayma işlemi genellikle 90 dakika içinde tamamlanır. 
+   Uç noktanın yayılması için gereken süre, profili oluştururken seçilen fiyatlandırma katmanına bağlıdır. **Standart Akamai** genellikle bir dakika içinde, 10 dakika Içinde **standart Microsoft standart** **Verizon** ve **Premium Verizon** 90 dakikaya kadar tamamlanır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
+
 Önceki adımlarda, bir kaynak grubunda CDN profili ve bir uç nokta oluşturdunuz. [Sonraki adımlara](#next-steps) gidip uç noktanıza nasıl özel etki alanı ekleneceğini öğrenmek istiyorsanız bu kaynakları kaydedin. Ancak ileride bu kaynakları kullanmayı düşünmüyorsanız, kaynak grubunu silerek bunları silebilir, böylece ek ücretleri önleyebilirsiniz:
 
-1. Azure portalındaki sol menüden **Kaynak grupları**’nı seçin ve sonra **my-resource-group-123** seçeneğini belirleyin.
+1. Azure portal sol taraftaki menüden **kaynak grupları** ' nı seçin ve ardından **cdnquickstart-RG**' yi seçin.
 
-2. **Kaynak grubu** sayfasında **Kaynak grubunu sil**’i seçin, metin kutusuna *my-resource-group-123* değerini girin ve **Sil**’i seçin.
-
-    Bu işlem, bu hızlı başlangıçta oluşturduğunuz kaynak grubunu, profili ve uç noktayı siler.
+2. **Kaynak grubu** sayfasında, **kaynak grubunu sil**' i seçin, metin kutusuna *cdnquickstart-RG* girin ve **Sil**' i seçin. Bu eylem, bu hızlı başlangıçta oluşturduğunuz kaynak grubunu, profili ve uç noktayı silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-CDN uç noktanıza özel etki alanı ekleme hakkında bilgi edinmek için aşağıdaki öğreticiye bakın:
+
+> [!div class="nextstepaction"]
+> [Öğretici: bir Web uygulamasının statik içeriğini sunucu için CDN kullanma](cdn-add-to-web-app.md)
 
 > [!div class="nextstepaction"]
 > [Öğretici: Azure CDN uç noktanıza özel etki alanı ekleme](cdn-map-content-to-custom-domain.md)
-
-

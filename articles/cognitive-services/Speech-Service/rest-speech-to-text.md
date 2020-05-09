@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
-ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82131291"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978629"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -52,7 +52,7 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 | Parametre | Açıklama | Gerekli/Isteğe bağlı |
 |-----------|-------------|---------------------|
 | `language` | Tanınmakta olan konuşulan dili tanımlar. [Desteklenen diller](language-support.md#speech-to-text)bölümüne bakın. | Gerekli |
-| `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed`. Basit sonuçlar, `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, güvenirlik değerleri ve dört farklı gösterimle birden çok sonuç içerir. Varsayılan ayar `simple` değeridir. | İsteğe Bağlı |
+| `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed`. Basit sonuçlar, `RecognitionStatus`, `DisplayText`, `Offset`ve `Duration`içerir. Ayrıntılı yanıtlar, görüntü metninin dört farklı temsilini içerir. Varsayılan ayar `simple` değeridir. | İsteğe Bağlı |
 | `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked`, küfür ile bir bütün küfür kaldıran, ya `removed` `raw`da sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe Bağlı |
 | `pronunciationScoreParams` | Tanınma sonuçlarında telaffuz puanlarını göstermek için parametreleri belirtir; doğruluk, akıcı, tamamlanma, vb. göstergeler ile konuşma girişi için telaffuz kalitesini değerlendirir. Bu parametre, birden çok ayrıntılı parametre içeren Base64 kodlamalı JSON 'dir. Bu parametrenin nasıl oluşturulacağı için [telaffuz değerlendirmesi parametrelerine](#pronunciation-assessment-parameters) bakın. | İsteğe Bağlı |
 | `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın. `cid` | İsteğe Bağlı |
@@ -75,9 +75,9 @@ Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgil
 HTTP `POST` isteğinin gövdesinde ses gönderilir. Bu tablodaki biçimlerden birinde olmalıdır:
 
 | Biçimlendir | Bileşeni | Bit hızı | Örnek hız  |
-|--------|-------|---------|--------------|
-| WAV    | PCM   | 16 bit  | 16 kHz, mono |
-| OGG    | OPUS 'LAR  | 16 bit  | 16 kHz, mono |
+|--------|-------|----------|--------------|
+| WAV    | PCM   | 256 kbps | 16 kHz, mono |
+| OGG    | OPUS 'LAR  | 256 kpbs | 16 kHz, mono |
 
 >[!NOTE]
 >Yukarıdaki biçimler, konuşma hizmetindeki REST API ve WebSocket aracılığıyla desteklenir. [Konuşma SDK 'sı](speech-sdk.md) Şu anda, PCM codec ve [DIĞER biçimlere](how-to-use-codec-compressed-audio-input-streams.md)sahip WAV biçimini desteklemektedir.
@@ -200,9 +200,10 @@ Sonuçlar JSON olarak sağlanır. Biçim `simple` , bu üst düzey alanları iç
 > [!NOTE]
 > Ses yalnızca küfür içeriyorsa ve `profanity` sorgu parametresi olarak `remove`ayarlanırsa, hizmet bir konuşma sonucu döndürmez.
 
-`detailed` Biçim, ile birlikte aynı tanıma sonucunun alternatif `simple` yorumlarının bir listesi `NBest`olan biçimiyle aynı verileri içerir. Bu sonuçlar en büyük olasılıkla en az büyük olasılıkla derecelendirilir. İlk giriş, ana tanıma sonucuyla aynıdır.  `detailed` Biçimini kullanırken, `DisplayText` `NBest` listedeki her sonuç için olarak `Display` olarak sağlanır.
+Biçim `detailed` , tanınan sonuçların ek biçimlerini içerir.
+`detailed` Biçimini kullanırken, `DisplayText` `NBest` listedeki her sonuç için olarak `Display` olarak sağlanır.
 
-`NBest` Listedeki her bir nesne şunları içerir:
+`NBest` Listedeki nesne şunları içerebilir:
 
 | Parametre | Açıklama |
 |-----------|-------------|
@@ -244,13 +245,6 @@ Tanıma için `detailed` tipik bir yanıt:
         "ITN" : "remind me to buy 5 pencils",
         "MaskedITN" : "remind me to buy 5 pencils",
         "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
       }
   ]
 }
