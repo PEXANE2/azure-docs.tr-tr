@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064028"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625417"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Son oturum açma etkinliğinizi, oturum açma (Önizleme) sayfasından görüntüleme ve arama
 
@@ -30,7 +30,7 @@ En son iş veya okul hesabı oturum açma etkinliğinizi, **Hesabım** portalın
 
 ## <a name="view-your-recent-sign-in-activity"></a>Son oturum açma etkinliğinizi görüntüleme
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin.
 
 2. Sol gezinti bölmesinden **oturum açma işlemlerini (Önizleme)** seçin veya **oturum açma (Önizleme)** bloğundan **son etkinliği gözden geçir** bağlantısını seçin.
 
