@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77189099"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734833"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesinde vamp ile mikro hizmetler yayın
 
@@ -129,7 +129,7 @@ Artık vamp çalışır durumdadır ve bir Blueprint 'ten bir hizmet dağıtın.
 
 En basit biçimde, bir [vamp şeması](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) , dağıtılacak uç noktaları (ağ geçitleri), kümeleri ve hizmetleri açıklar. Vamp, aynı hizmetin farklı türevlerini, kanlarca serbest bırakma veya A/B testi için mantıksal gruplar halinde gruplamak için kümeler kullanır.  
 
-Bu senaryo, sürüm 1,0 ' de olan [**Sava**](https://github.com/magneticio/sava)adlı örnek bir tek parçalı uygulama kullanır. Mimariden, manyetik ticio/Sava: 1.0.0 altındaki Docker Hub 'ında bulunan bir Docker kapsayıcısında paketlenir. Uygulama normalde bağlantı noktası 8080 ' de çalışır, ancak bu durumda, bağlantı noktası 9050 altında kullanıma sunabilirsiniz. Basit bir Blueprint kullanarak uygulamayı vamp aracılığıyla dağıtın.
+Bu senaryo, sürüm 1,0 ' de olan [**Sava**](https://github.com/magneticio/sava-product)adlı örnek bir tek parçalı uygulama kullanır. Mimariden, manyetik ticio/Sava: 1.0.0 altındaki Docker Hub 'ında bulunan bir Docker kapsayıcısında paketlenir. Uygulama normalde bağlantı noktası 8080 ' de çalışır, ancak bu durumda, bağlantı noktası 9050 altında kullanıma sunabilirsiniz. Basit bir Blueprint kullanarak uygulamayı vamp aracılığıyla dağıtın.
 
 1. **Dağıtımlar**'a gidin.
 

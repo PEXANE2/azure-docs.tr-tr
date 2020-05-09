@@ -5,17 +5,17 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 05/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273741"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864377"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleriyle Uygulama Sistem Durumu uzantısını kullanma
-Uygulamanızın sistem durumunu izlemek, dağıtımınızı yönetmek ve yükseltmek için önemli bir sinyaldir. Azure sanal makine ölçek kümeleri, dağıtımınızı yükseltmek için ayrı örneklerin sistem durumu izlemesini kullanan [Otomatik işletim sistemi görüntüsü yükseltmeleri](virtual-machine-scale-sets-automatic-upgrade.md)dahil olmak üzere, çalışan [yükseltmeler](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) için destek sağlar.
+Uygulamanızın sistem durumunu izlemek, dağıtımınızı yönetmek ve yükseltmek için önemli bir sinyaldir. Azure sanal makine ölçek kümeleri, dağıtımınızı yükseltmek için ayrı örneklerin sistem durumu izlemesini kullanan [Otomatik işletim sistemi görüntüsü yükseltmeleri](virtual-machine-scale-sets-automatic-upgrade.md)dahil olmak üzere, çalışan [yükseltmeler](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) için destek sağlar. Ayrıca, ölçek kümesindeki her bir örneğin uygulama durumunu izlemek ve [Otomatik örnek onarımları](virtual-machine-scale-sets-automatic-instance-repairs.md)kullanarak örnek onarımları gerçekleştirmek için sistem durumu uzantısı ' nı da kullanabilirsiniz.
 
 Bu makalede, sanal makine ölçek kümelerine dağıtılan uygulamalarınızın sistem durumunu izlemek için uygulama sistem durumu uzantısını nasıl kullanabileceğiniz açıklanır.
 
@@ -31,7 +31,7 @@ Uzantı, bir VM içinden sistem durumunu raporladığında, uzantı, uygulama si
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. Uzantı, en azından ilişkili bağlantı noktası veya istek yoluyla bir "TCP" ya da "http" isteği gerektirir.
+Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. Uzantı, sırasıyla ilişkili bağlantı noktası veya istek yoluyla en az bir "TCP", "http" veya "https" isteği gerektirir.
 
 ```json
 {
@@ -55,20 +55,20 @@ Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/örnek | Veri Türü
+| Name | Değer/örnek | Veri Türü
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | date |
+| apiVersion | `2018-10-01` | tarih |
 | yayımcı | `Microsoft.ManagedServices` | string |
 | type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ayarlar
 
-| Adı | Değer/örnek | Veri Türü
+| Name | Değer/örnek | Veri Türü
 | ---- | ---- | ----
-| protokol | `http` veya `tcp` | string |
-| port | Protokol olduğunda isteğe bağlı `http`, protokol olduğunda zorunludur`tcp` | int |
-| Istek yolu | Protokol olduğunda zorunlu `http`, protokol ise izin verilmez`tcp` | string |
+| protokol | `http`or `https` veya`tcp` | string |
+| port | Protokol `http` veya `https`olduğunda isteğe bağlı, protokol olduğunda zorunludur`tcp` | int |
+| Istek yolu | `http` Protokol olduğunda zorunlu `https`, protokol ise izin verilmez`tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Uygulama durumu uzantısını dağıtma
 Aşağıdaki örneklerde açıklandığı şekilde, uygulama durumu uzantısını ölçek kümelerinizi dağıtmanın birden çok yolu vardır.

@@ -1,26 +1,26 @@
 ---
-title: SaaS karşılama API 'Leri-SSS | Azure Marketi
-description: Azure Marketi 'nde SaaS teklifinin müşterilerine yönelik bulma ve satın alma deneyimleri.
+title: SaaS karşılama API 'SI SSS-Microsoft ticari Market
+description: Azure müşterilerinin SaaS tekliflerine abone olmalarını sağlamak için Microsoft Commercial Market 'in çeşitli Tümleştirme gereksinimlerinden birkaçı hakkında bilgi edinin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 6d3a84341d5221950da20f39456461dafc5d2e75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275705"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792913"
 ---
-# <a name="saas-fulfillment-apis---faq"></a>SaaS gerçekleştirme API’leri - SSS
+# <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS 'in API 'Leri karşılama hakkında genel sorular
 
-Azure müşterilerinin SaaS teklifine abone olmalarını sağlamak için Azure Marketi ile tümleştirme gereksinimleri listelenmiştir.
+Bu makalede, Azure müşterilerinin SaaS tekliflerine abone olmalarını sağlamak için Microsoft Commercial Market 'in çeşitli tümleştirme gereksinimleri açıklanmaktadır.
 
 ## <a name="discovery-experience"></a>Bulma deneyimi
 
-Teklif yayımlandıktan sonra, Azure kullanıcıları Azure Marketi 'nde SaaS teklifini bulabilir. Müşterileriniz ürün türü (SaaS) temelinde teklifleri filtreleyebilir ve ilgilendiğiniz SaaS hizmetlerini keşfedebilecektir.
+SaaS teklifi yayımlandıktan sonra Azure kullanıcıları bunu Azure Marketi 'nde bulabilir. Müşterileriniz, ürün türü (SaaS) temelinde teklifleri filtreleyebilir ve ilgilendiğiniz SaaS hizmetlerini bulabilir.
 
 ## <a name="purchase-experience"></a>Satın alma deneyimi
 
@@ -30,7 +30,7 @@ Bir Kullanıcı belirli bir SaaS hizmeti ile ilgilendikten sonra, Kullanıcı bu
 
 Bu, bir kullanıcının SaaS hizmeti ile ilişkili kullanım koşullarını ve gizlilik bildirimini görüntüleyebileceği ve BT için Microsoft 'un faturasında, SaaS teklifinin yayıncısı olan faturalandırma koşullarına göre ödeme yapmayı kabul etmiş olduğu anlamına gelir. Kullanıcılar, SaaS hizmeti tüketimi için ödeme yapmak üzere Azure 'da mevcut ödeme profilini kullanabilir.
 
-Bu çok sayıda nedenden dolayı faydalıdır. Müşteriler artık Microsoft Bulut platformunu güvenilir bir kaynak olarak kullanarak tek bir yerde bulabilir ve abone olabilir. Ayrıca, müşteriler her ISV yazılımını bağımsız olarak açıkça ödemek zorunda kalmadan mevcut ödeme profillerini kullanabilir.
+Bu özellik birkaç şekilde faydalıdır. Müşteriler artık Microsoft Bulut platformunu güvenilir bir kaynak olarak kullanarak tek bir yerde bulabilir ve abone olabilir. Ayrıca, müşteriler her ISV yazılımını bağımsız olarak açıkça ödemek zorunda kalmadan mevcut ödeme profillerini kullanabilir.
 
 ### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>Teklif abone olduğunda kullanıcı otomatik olarak ücretlendirilir mi?
 
@@ -38,15 +38,15 @@ SaaS teklifine abone olurken, Kullanıcı Microsoft Platformu aracılığıyla S
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Kullanıcı SaaS teklifinizi abone olduğunda nasıl bilgilendirirsiniz?
 
-Bir teklifine abone olduktan sonra Azure kullanıcısı tüm tekliflerini Azure 'da bulabilir ve yönetebilir. Varsayılan olarak, yeni abone olunan SaaS teklifinin durumu **' sağlama, bekleyen tamamlama '** olur. Bu durumda, Azure kullanıcısına Azure portal SaaS Abonelik yönetimi deneyimine gitmek için bir **' hesap yapılandırma '** eylemi istenir.
+Bir teklifine abone olduktan sonra Azure kullanıcısı tüm tekliflerini Azure 'da bulabilir ve yönetebilir. Varsayılan olarak, yeni abone olunan SaaS teklifinin durumu **sağlama, bekleyen karşılama**olarak gösterilir. Bu durumda, Azure kullanıcısına, Azure portal SaaS Abonelik yönetimi deneyimine gitmek için **Hesap Yapılandırma**eylemiyle karşılaşacaktır.
 
-Kullanıcı **' hesabı Yapılandır '** seçeneğine tıkladığında, SaaS hizmeti Web sitesine yönlendirilir. Gezindikleri URL, teklifi yayınlama sırasında yayımcı tarafından sağlanır. Bu sayfa, yayımcının giriş sayfası olarak adlandırılır. Azure kullanıcıları, Azure 'daki mevcut AAD kimlik bilgilerini temel alarak SaaS giriş sayfasında oturum açabilmelidir.
+Kullanıcı **hesabı Yapılandır**' ı seçtiğinde, SaaS hizmeti Web sitesine yönlendirilir. Yayımcı, teklifi yayınlama sırasında URL 'YI yapılandırdı. Bu sayfa, yayımcının giriş sayfası olarak adlandırılır. Azure kullanıcıları, Azure 'daki mevcut AAD kimlik bilgilerine göre SaaS giriş sayfasında oturum açabilirler.
 
 Azure kullanıcısı giriş sayfasına yeniden yönlendirildiğinde sorgu URL 'sine bir belirteç eklenir. Bu belirteç kısa süreli ve 24 saatlik bir süre için geçerlidir. Daha sonra bu belirtecin varlığını algılayabilir ve belirteçle ilişkili daha fazla bağlam almak için Microsoft 'un API 'sini çağırabilirsiniz.
 
 ![Müşteri aboneliği akışı](media/saas-metering-service-integration-flow-a.png)
 
-Bir SaaS teklifinin yaşam döngüsünde Transact senaryolarını işlemeye yönelik API sözleşmesi hakkında daha fazla bilgi için [SaaS karşılama API 'si](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) belgesine bakın.
+SaaS teklifinin yaşam döngüsünde Transact senaryolarını işlemeye yönelik API sözleşmesi hakkında daha fazla bilgi için bkz. [SaaS karşılama API 'si](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Kullanıcının Azure 'da abone olduğu SaaS teklifini nasıl anlarsınız?
 
@@ -56,7 +56,7 @@ Bir SaaS teklifinin yaşam döngüsünde Transact senaryolarını işlemeye yön
 
 * Azure kullanıcısı SaaS aboneliğiyle ilişkili planı doğrudan SaaS deneyiminde veya Microsoft Platformu aracılığıyla değiştirebilir.
 
-* Dönüştürme işlemleri, fatura döngüsünün herhangi bir saatinde yapılabilir. Her dönüştürmeyi kabul etmeniz gerekir, bu, onaylanmış bir kez etkili olur.
+* Dönüştürme işlemleri, fatura döngüsünün herhangi bir saatinde yapılabilir. Her dönüştürmeyi onaylamanız istenir ve bu, kabul edildikten sonra etkili olur.
 
 * Ön ödemeli plan (**aylık** veya **yıllık**) ücretleri, eşit olarak derecelendirilmiştir. Dönüştürme zamanına göre yayılan tüm fazla kullanım, bir sonraki faturada ücretlendirilecektir. Yeni yerleştirme, yeni plana göre yayınlanacaktır.
 
@@ -85,4 +85,4 @@ Aşağıdaki sıra, Azure kullanıcısı Microsoft 'un storefront abone olarak k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi için bkz. [Market ölçüm hizmeti API 'leri](./marketplace-metering-service-apis.md) .
+[Market ölçüm hizmeti API’leri](./marketplace-metering-service-apis.md)

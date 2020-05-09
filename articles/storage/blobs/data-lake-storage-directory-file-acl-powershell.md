@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: db098210d6de28d9dc1db7e264459f57bc0f4d86
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c859176857f64559b9a2994c9cfc2d4ec5f61e57
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161032"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691088"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme
 
@@ -351,15 +351,25 @@ Bu örnekte, sahip olan Kullanıcı ve sahip olan Grup yalnızca okuma ve yazma 
 
 ### <a name="set-acls-on-all-items-in-a-file-system"></a>Bir dosya sistemindeki tüm öğelerde ACL 'Leri ayarlama
 
-Bir dosya sistemindeki tüm `Get-AzDataLakeGen2Item` dizinlerin ve `-Recurse` dosyaların ACL 'sini ayarlamak `Update-AzDataLakeGen2Item` için ve parametresini yinelemeli olarak cmdlet ile birlikte kullanabilirsiniz. 
+Bir dosya sistemindeki dizinlerin `Get-AzDataLakeGen2Item` ve dosyaların `-Recurse` ACL 'sini ayarlamak için `Update-AzDataLakeGen2Item` ve parametresini yinelemeli olarak cmdlet ile birlikte kullanabilirsiniz. 
 
 ```powershell
 $filesystemName = "my-file-system"
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+
+$Token = $Null
+do
+{
+     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
+     if($items.Length -le 0) { Break;}
+     $items | Update-AzDataLakeGen2Item -Acl $acl
+     $Token = $items[$items.Count -1].ContinuationToken;
+}
+While ($Token -ne $Null) 
 ```
+
 ### <a name="add-or-update-an-acl-entry"></a>ACL girdisi ekleme veya güncelleştirme
 
 İlk olarak, ACL 'yi alın. Ardından, bir ACL `set-AzDataLakeGen2ItemAclObject` girdisi eklemek veya güncelleştirmek için cmdlet 'ini kullanın. ACL 'yi `Update-AzDataLakeGen2Item` yürütmek için cmdlet 'ini kullanın.

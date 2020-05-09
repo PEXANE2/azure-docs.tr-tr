@@ -3,12 +3,12 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259701"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788102"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -49,6 +49,9 @@ Azure Advisor, tekrar tekrar başarısız olan Azure Data Factory işlem hatlar�
 
 ## <a name="utilize-lifecycle-management"></a>Yaşam Döngüsü Yönetimi'ni Kullanma
 Azure Advisor, bir veya daha fazla depolama hesabınızın, katman verilerine yönelik yaşam döngüsü yönetimini etkinleştirmek için en uygun olup olmadığını algılamak üzere Azure Blob depolama nesne sayısı, toplam boyutu ve işlemleri ile ilgili zeka 'yı kullanır. Verilerinizi, uygulama uyumluluğu için Azure Blob depolama alanındaki verilerinizi korurken depolama maliyetlerinizi iyileştirmek üzere otomatik olarak seyrek erişimli veya arşiv 'e yönelik bir yaşam döngüsü yönetimi kuralları oluşturmanızı ister.
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>Kısa ömürlü işletim sistemi disk önerisi oluşturma
+[Kısa ömürlü işletim sistemi diski](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)sayesinde müşteriler bu avantajları alırlar: işletim sistemi diski için depolama maliyetini kaydetme. İşletim sistemi diskine daha düşük okuma/yazma gecikme süresi alın. İşletim sistemini (ve geçici diski) özgün durumuna sıfırlayarak daha hızlı sanal makine yeniden görüntüsü işlemi. Kısa süreli IaaS VM 'Leri veya durum bilgisiz iş yükleri olan VM 'Ler için kısa ömürlü işletim sistemi diski kullanmak daha tercih edilir. Danışman, kısa ömürlü işletim sistemi diski ile faydalanan kaynaklar için öneride bulunur. 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 

@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295123"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690366"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma (Önizleme)
+# <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma
 
 Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırmak için:
 
@@ -42,7 +42,7 @@ Belirli bir oturum açma için yalnızca rapor ilkesinin sonucunu görüntüleme
 1. **Azure Portal** bir rapor okuyucu, güvenlik okuyucusu, güvenlik yöneticisi veya genel yönetici olarak oturum açın.
 1. **Azure Active Directory** > **oturum açma**işlemlerini inceleyin.
 1. Bir oturum açma seçin veya dar sonuçlara filtre ekleyin.
-1. **Ayrıntılar** çekmecede, oturum açma sırasında değerlendirilen ilkeleri görüntülemek Için **yalnızca rapor (Önizleme)** sekmesini seçin.
+1. **Ayrıntılar** çekmecede, oturum açma sırasında değerlendirilen ilkeleri görüntülemek Için **yalnızca rapor** sekmesini seçin.
 
 > [!NOTE]
 > Oturum açma günlüklerini karşıdan yüklerken, yalnızca koşullu erişim rapor sonuç verilerini dahil etmek için JSON biçimini seçin.
@@ -62,7 +62,7 @@ Azure AD günlüklerinizi Azure Izleyici ile tümleştirdikten sonra, koşullu e
 
 1. **Azure Portal** bir güvenlik yöneticisi veya genel yönetici olarak oturum açın.
 1. **Azure Active Directory** > **çalışma kitaplarına**gidin.
-1. **Koşullu erişim öngörülerini (Önizleme)** seçin.
+1. **Koşullu erişim öngörülerini**seçin.
 1. **Koşullu erişim ilkesi** açılan listesinden bir veya daha fazla ilke seçin. Etkinleştirilen tüm ilkeler varsayılan olarak seçilidir.
 1. Bir zaman aralığı seçin (zaman aralığı kullanılabilir veri kümesini aşarsa, rapor tüm kullanılabilir verileri gösterir). **Koşullu erişim ilkesini** ve **zaman aralığı** parametrelerini ayarladıktan sonra rapor yüklenir.
    1. İsteğe bağlı olarak, rapor kapsamını daraltmak için bireysel **kullanıcıları** veya **uygulamaları** arayın.

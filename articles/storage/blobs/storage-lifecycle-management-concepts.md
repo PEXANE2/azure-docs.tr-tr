@@ -3,17 +3,17 @@ title: Azure depolama yaşam döngüsünü yönetme
 description: Sık erişimli verileri sık erişimli ve arşiv katmanlarına geçirmeye yönelik yaşam döngüsü ilke kuralları oluşturmayı öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598315"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692137"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -24,7 +24,7 @@ Yaşam döngüsü yönetimi ilkesi şunları yapmanızı sağlar:
 - Performansı ve maliyeti iyileştirmek için Blobları daha soğuk bir depolama katmanına (seyrek erişimli, sık erişimli, arşiv veya seyrek erişimli) geçiş
 - Bloblarını son kullanım ömrü sonunda silin
 - Depolama hesabı düzeyinde günde bir kez çalıştırılacak kuralları tanımlama
-- Kapsayıcılara veya Blobların bir alt kümesine kuralları uygulama (ön ekleri filtre olarak kullanma)
+- Kuralları kapsayıcılara veya Blobların bir alt kümesine uygulama (ad öneklerini veya [blob dizini etiketlerini](storage-manage-find-blobs.md) filtre olarak kullanarak)
 
 Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman içinde sık sık erişim aldığı bir senaryo düşünün. İlk ayın ötesinde veri kümesine nadiren erişilir. Bu senaryoda, etkin depolama, erken aşamalar sırasında en iyisidir. Seyrek Erişimli Depolama, büyük olasılıkla erişim için en uygun. Arşiv depolaması, verilerin bir ay boyunca yaşından sonraki en iyi katman seçeneğidir. Depolama katmanlarını verilerin yaşına göre ayarlayarak, gereksinimlerinize göre en düşük maliyetli depolama seçeneklerini tasarlayabilirsiniz. Bu geçişe ulaşmak için, eskime verilerini daha soğuk katmanlara taşımak amacıyla yaşam döngüsü yönetimi ilke kuralları kullanılabilir.
 
@@ -292,7 +292,11 @@ Filtreler aşağıdakileri içerir:
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın şunları destekler `blockBlob`. | Yes |
-| prefixMatch | Öneklerin eşleşmesi için bir dize dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki `https://myaccount.blob.core.windows.net/container1/foo/...` tüm Blobları eşleştirmek Istiyorsanız, prefixMatch olur. `container1/foo` | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | Hayır |
+| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki `https://myaccount.blob.core.windows.net/container1/foo/...` tüm Blobları eşleştirmek Istiyorsanız, prefixMatch olur. `container1/foo` | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | No |
+| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için `Project = Contoso` altındaki `https://myaccount.blob.core.windows.net/` tüm Blobları eşleştirmek Istiyorsanız, blobindexmatch olur. `{"name": "Project","op": "==","value": "Contoso"}` | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
+
+> [!NOTE]
+> Blob dizini genel önizlemededir ve **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Kural eylemleri
 
@@ -405,6 +409,42 @@ Bazı verilerin oluşturulduktan sonra gün veya ay sonu bekleniyor. Bir yaşam 
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>Blob dizini etiketleriyle verileri silme
+Bazı verilerin yalnızca silinmek üzere işaretlenmişse zaman aşımına uğradı. Bir yaşam döngüsü yönetim ilkesini, blob dizini anahtar/değer öznitelikleriyle etiketlenmiş verilerin süresi dolacak şekilde yapılandırabilirsiniz. Aşağıdaki örnek, ile `Project = Contoso`etiketlenmiş tüm blok bloblarını silen bir ilke gösterir. Blob dizini hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>Eski anlık görüntüleri Sil
 
 Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görüntüler genellikle verilerin eski sürümlerini izlemek için kullanılır. Anlık görüntü yaşı temelinde eski anlık görüntüleri silen bir ilke oluşturabilirsiniz. Anlık görüntü yaşı, anlık görüntü oluşturma süresi hesaplanarak belirlenir. Bu ilke kuralı, anlık görüntü oluşturulduktan sonra 90 `activedata` gün veya daha eski kapsayıcı içindeki Blok Blobu anlık görüntülerini siler.
@@ -448,3 +488,7 @@ Bir blob bir erişim katmanından diğerine taşındığında, son değiştirilm
 Yanlışlıkla silinmeden sonra verileri nasıl kurtaracağınızı öğrenin:
 
 - [Azure Depolama blobları için geçici silme](../blobs/storage-blob-soft-delete.md)
+
+Blob diziniyle verileri yönetme ve bulma hakkında bilgi edinin:
+
+- [Blob diziniyle Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 309e467f5831961b6bc5a94ad2ce05fd3b991794
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629278"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927913"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET ve .NET Core 'da özel ölçüm koleksiyonu
 
@@ -20,7 +20,7 @@ ms.locfileid: "82629278"
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric ve GetMetric karşılaştırması
 
-`TrackMetric()`bir ölçümü belirten ham telemetri gönderir. Her bir değer için tek bir telemetri öğesi gönderilmesi verimsiz bir öğedir. `TrackMetric()`bir ölçümü belirten ham telemetri gönderir. Her bir değer için tek bir telemetri öğesi gönderilmesi verimsiz bir öğedir. `TrackMetric()`, telemetri başlatıcılarının ve işlemcilerin tam SDK ardışık `TrackMetric(item)` düzeninde gezindiğinden performans açısından da verimsiz olur. Farklı `TrackMetric()`olarak `GetMetric()` , yerel ön toplamasını sizin için işler ve sonra yalnızca bir dakikalık sabit bir aralıkta toplanmış bir özet ölçümü gönderir. Bu nedenle, bazı özel metrikleri ikinci veya hatta milisaniyelik düzeyde yakından izlemeniz gerekiyorsa, bunu yalnızca her dakika izlemenin yalnızca depolama ve ağ trafiği maliyetlerini alırken yapabilirsiniz. Bu Ayrıca, toplanan bir ölçüm için gönderilmesi gereken toplam telemetri öğesi sayısının büyük ölçüde azaltılmasından dolayı, kısıtlama riskini önemli ölçüde azaltır.
+`TrackMetric()`bir ölçümü belirten ham telemetri gönderir. Her bir değer için tek bir telemetri öğesi gönderilmesi verimsiz bir öğedir. `TrackMetric()`, telemetri başlatıcılarının ve işlemcilerin tam SDK ardışık `TrackMetric(item)` düzeninde gezindiğinden performans açısından da verimsiz olur. Farklı `TrackMetric()`olarak `GetMetric()` , yerel ön toplamasını sizin için işler ve sonra yalnızca bir dakikalık sabit bir aralıkta toplanmış bir özet ölçümü gönderir. Bu nedenle, bazı özel metrikleri ikinci veya hatta milisaniyelik düzeyde yakından izlemeniz gerekiyorsa, bunu yalnızca her dakika izlemenin yalnızca depolama ve ağ trafiği maliyetlerini alırken yapabilirsiniz. Bu Ayrıca, toplanan bir ölçüm için gönderilmesi gereken toplam telemetri öğesi sayısının büyük ölçüde azaltılmasından dolayı, kısıtlama riskini önemli ölçüde azaltır.
 
 Application Insights, ve `TrackMetric()` `GetMetric()` ile toplanan özel ölçümler, [örneklemeye](https://docs.microsoft.com/azure/azure-monitor/app/sampling)tabi değildir. Önemli ölçümleri örnekleme, bu ölçümler etrafında derleyebileceğiniz uyarı, güvenilmez hale gelebileceği senaryolara yol açabilir. Özel ölçümlerinizi hiçbir zaman örnekleyerek, genellikle uyarı eşikleriniz ihlal edildiğinde bir uyarının tetikleneceği şekilde emin olabilirsiniz.  Ancak, özel ölçümler örneklenolmadığından, bazı olası sorunlar vardır.
 
@@ -186,7 +186,22 @@ Bununla birlikte, ölçüyü yeni özel boyutuz ile bölmeyebilirsiniz veya öl�
 
 ![Desteği bölme](./media/get-metric/splitting-support.png)
 
-Varsayılan olarak, Ölçüm Gezgini deneyimi içindeki çok boyutlu ölçümler Application Insights kaynaklarda açık değildir. Bu davranışı açmak için, ["özel ölçüm boyutlarında uyarı etkinleştir" seçeneğini](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)işaretleyerek kullanım ve tahmini maliyet sekmesine gidin.
+Varsayılan olarak, Ölçüm Gezgini deneyimi içindeki çok boyutlu ölçümler Application Insights kaynaklarda açık değildir.
+
+### <a name="enable-multi-dimensional-metrics"></a>Çok boyutlu ölçümleri etkinleştir
+
+Bir Application Insights kaynağı için çok boyutlu ölçümleri etkinleştirmek üzere **kullanım ve tahmini maliyetler** > **özel ölçümler** > ' i seçin > **OK****özel ölçüm boyutlarında uyarı ' ı etkinleştirin**. Bu konuda daha fazla ayrıntı için [burada](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)bulunabilir.
+
+Bu değişikliği yaptıktan ve yeni çok boyutlu telemetri gönderdikten sonra, **bölmeyi uygulayacaksınız**.
+
+> [!NOTE]
+> Yalnızca yeni gönderilen ölçümler portalda özelliği etkinleştirildikten sonra, boyutları depolanır.
+
+![Bölmeyi Uygula](./media/get-metric/apply-splitting.png)
+
+Ve her bir _FormFactor_ boyutu için ölçüm toplamaların görünümünü görüntüleyin:
+
+![Form faktörleri](./media/get-metric/formfactor.png)
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>Üçten fazla boyut olduğunda Metricıdentifier kullanma
 
@@ -199,21 +214,6 @@ MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 ```
-
-### <a name="enable-multi-dimensional-metrics"></a>Çok boyutlu ölçümleri etkinleştir
-
-Bir Application Insights kaynağı için çok boyutlu ölçümleri etkinleştirmek üzere **kullanım ve tahmini maliyetler** > **özel ölçümler** > ' i seçin > **OK****özel ölçüm boyutlarında uyarı ' ı etkinleştirin**.
-
-Bu değişikliği yaptıktan ve yeni çok boyutlu telemetri gönderdikten sonra, **bölmeyi uygulayacaksınız**.
-
-> [!NOTE]
-> Yalnızca yeni gönderilen ölçümler portalda özelliği etkinleştirildikten sonra, boyutları depolanır.
-
-![Bölmeyi Uygula](./media/get-metric/apply-splitting.png)
-
-Ve her bir _FormFactor_ boyutu için ölçüm toplamaların görünümünü görüntüleyin:
-
-![Form faktörleri](./media/get-metric/formfactor.png)
 
 ## <a name="custom-metric-configuration"></a>Özel Ölçüm yapılandırması
 
