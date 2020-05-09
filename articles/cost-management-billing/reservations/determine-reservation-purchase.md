@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135564"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628614"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Satın alınacak rezervasyonu saptama
 
 Azure Databricks dışındaki tüm rezervasyonlar saatlik olarak uygulanır. Rezervasyonları tutarlı kullanıma göre satın almalısınız. Neyin satın alınması gerektiğini saptamanın çeşitli yolları vardır ve bu makale hangi rezervasyonu satın almanız gerektiğini saptamanıza yardımcı olur.
 
-Geçmiş kullanımınızdan daha fazla kapasite satın almak bir rezervasyonun yetersiz kullanılmasına yol açar. Mümkün olduğunca yetersiz kullanımdan kaçınmalısınız. Kullanılmayan ayrılmış kapasite bir saatten diğerine taşınmaz.  Ayrılmış kapasiteyi aşan kullanım daha pahalı kullandıkça ödeme fiyatlarıyla ücretlendirilir.
+Geçmiş kullanımınızdan daha fazla kapasite satın almak bir rezervasyonun yetersiz kullanılmasına yol açar. Mümkün olduğunca yetersiz kullanımdan kaçınmalısınız. Kullanılmayan ayrılmış kapasite bir saatten diğerine taşınmaz. Ayrılmış kapasiteyi aşan kullanım daha pahalı kullandıkça ödeme fiyatlarıyla ücretlendirilir.
 
 ## <a name="analyze-usage-data"></a>Kullanım verilerini analiz etme
 
@@ -40,11 +40,11 @@ Günlük kullanımı 24 saatten az olan kaynakları yoksayın.
 
 Örnek boyutu ailesi düzeyinde analiz etmek isterseniz, örnek boyutu esneklik değerlerini [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) adresinden alabilirsiniz. Analiz etmek için değerleri verilerle birleştirin. Örnek boyutu esnekliği hakkında daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>SQL Veritabanı ayrılmış örneği satın almak için kullanımı analiz etme
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Azure Synapse Analytics ayrılmış örneği satın alımı için kullanımı analiz etme
 
-Ayrılmış kapasite SQL Veritabanları sanal çekirdek işlem fiyatlandırmasına uygulanır. DTU tabanlı fiyatlandırmaya, SQL lisans maliyetine veya işlem dışında hiçbir maliyete uygulanmaz.
+Ayrılmış kapasite Azure Synapse Analytics DWU fiyatlandırmasına uygulanır. Azure Synapse Analytics lisans maliyetine veya işlem dışında hiçbir maliyete uygulanmaz.
 
-Uygun SQL kullanımını daraltmak için kullanım verilerinize aşağıdaki filtreleri uygulayın:
+Uygun kullanımı daraltmak için kullanım verilerinize aşağıdaki filtreleri uygulayın:
 
 
 - **MeterCategory** öğesini **SQL Veritabanı**’na göre filtreleyin.
@@ -60,22 +60,22 @@ Veriler size şunların tutarlı kullanımı hakkında bilgi verir:
 - Nesil. Örneğin, 5. Nesil.
 - Kaynak Konumu
 
-### <a name="analysis-for-sql-data-warehouse"></a>SQL Veri Ambarı için analiz
+### <a name="analysis-for-azure-synapse-analytics"></a>Azure Synapse Analytics için analiz
 
-Ayrılmış kapasite SQL Veri Ambarı DWU kullanımına uygulanır ve 100 DWU’luk artımlarla satın alınır. Uygun SQL kullanımını daraltmak için kullanım verilerinize aşağıdaki filtreleri uygulayın:
+Ayrılmış kapasite Azure Synapse Analytics DWU kullanımına uygulanır ve 100 DWU’luk artımlarla satın alınır. Uygun kullanımı daraltmak için kullanım verilerinize aşağıdaki filtreleri uygulayın:
 
 - **MeterName** öğesini **100 DWU**’ya göre filtreleyin.
 - **Meter Sub-Category** öğesini **İşlem İçin İyileştirilmiş 2. Nesil**’e göre filtreleyin.
 
-Bir bölgedeki SQL DW kullanımını saptamak için **Kaynak Konumu** alanını kullanın.
+Bir bölgedeki Azure Synapse Analytics kullanımını saptamak için **Kaynak Konumu** alanını kullanın.
 
-SQL Veri Ambarı kullanımının ölçeği gün boyunca artırılabilir ve azaltılabilir. Temel kullanımı öğrenmek için SQL Veri Ambarı örneğini yöneten ekiple görüşün.
+Azure Synapse Analytics kullanımının ölçeği gün boyunca artırılabilir ve azaltılabilir. Temel kullanımı öğrenmek için Azure Synapse Analytics örneğini yöneten ekiple görüşün.
 
-Azure portalında Rezervasyonlar’a gidin ve 100 DWU’nun katlarında SQL Veri Ambarı ayrılmış kapasitesi satın alın.
+Azure portalında Rezervasyonlar’a gidin ve 100 DWU’nun katlarında Azure Synapse Analytics ayrılmış kapasitesi satın alın.
 
 ## <a name="reservation-purchase-recommendations"></a>Rezervasyon satın alma önerileri
 
-Rezervasyon satın alma önerileri son 7, 30 ve 60 gün içindeki saatlik kullanım verilerinizin analiz edilmesiyle hesaplanır. Azure, bir rezervasyonunuz olsa maliyetlerinizin ne kadar olacağını hesaplar ve bunu söz konusu süredeki fiili kullandıkça öde maliyetlerinizle karşılaştırır. Hesaplama, zaman çerçevesinde kullandığınız her miktar için gerçekleştirilir. Tasarruflarınızı en üst düzeye çıkaran miktar önerilir. 
+Rezervasyon satın alma önerileri son 7, 30 ve 60 gün içindeki saatlik kullanım verilerinizin analiz edilmesiyle hesaplanır. Azure, bir rezervasyonunuz olsa maliyetlerinizin ne kadar olacağını hesaplar ve bunu söz konusu süredeki fiili kullandıkça öde maliyetlerinizle karşılaştırır. Hesaplama, zaman çerçevesinde kullandığınız her miktar için gerçekleştirilir. Tasarruflarınızı en üst düzeye çıkaran miktar önerilir.
 
 Örneğin çoğunlukla 500 sanal makine kullanıyor olabilirsiniz ama bazen kullanım 700 sanal makineye fırlıyor olabilir. Bu örnekte Azure hem 500 hem de 700 sanal makinelik miktarlar için tasarruflarınızı hesaplar. 700 sanal makine kullanımı seyrek görülen bir durum olduğundan, öneri hesaplaması 500 sanal makine rezervasyonu satın alındığında tasarrufların en üst düzeye çıktığını saptar ve 500 sanal makine miktarına yönelik öneri sağlanır.
 

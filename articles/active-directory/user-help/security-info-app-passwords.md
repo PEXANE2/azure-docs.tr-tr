@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77619f7bc24943b2b7051ff51f92cf96d439775e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064079"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628427"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Güvenlik bilgileri (Önizleme) sayfasından uygulama parolaları oluşturma
 
@@ -45,7 +45,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 ### <a name="to-create-a-new-app-password"></a>Yeni bir uygulama parolası oluşturmak için
 
-1. İş veya okul hesabınızda oturum açın ve ardından https://myprofile.microsoft.com/ sayfanıza gidin.
+1. İş veya okul hesabınızda oturum açın ve ardından https://myaccount.microsoft.com/ sayfanıza gidin.
 
     ![, Vurgulanan güvenlik bilgisi bağlantılarını gösteren profilim sayfası](media/security-info/securityinfo-myprofile-page.png)
 
