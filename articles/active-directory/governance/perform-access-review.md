@@ -11,26 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee4125e82dd5176f01de294011e22a1d66005094
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a939eece83b94043f750d6f7f63db290f827da4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128461"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611276"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplara ve uygulamalara erişimi gözden geçirme
 
-Azure Active Directory (Azure AD), kuruluşların Azure AD 'de bulunan gruplara ve uygulamalara ve Azure AD erişim gözden geçirmeleri adlı bir özellik ile diğer Microsoft çevrimiçi hizmetlerine erişimi nasıl yöneteceğini basitleştirir.
+Azure Active Directory (Azure AD), kuruluşların Azure AD 'de bulunan gruplara ve uygulamalara ve Azure AD erişim gözden geçirmeleri adlı bir özellik ile diğer Microsoft çevrimiçi hizmetlerine erişimi nasıl yöneteceğini basitleştirir. Bu makale, belirlenen bir gözden geçirenin bir grubun üyeleri veya bir uygulamaya erişimi olan kullanıcılar için bir erişim incelemesi gerçekleştirdiğine göre değişir. Gözden geçirmek istiyorsanız, [Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketine](entitlement-management-access-reviews-review-access.md) yönelik bir pakete erişimi oku konusunu okuyun
 
-Bu makalede, belirlenen bir gözden geçirenin, bir grubun üyeleri veya bir uygulamaya erişimi olan kullanıcılar için erişim incelemesi nasıl gerçekleştirdiği açıklanır.
+## <a name="perform-access-review-using-my-apps"></a>Uygulamalarımı kullanarak erişim incelemesi gerçekleştirme
 
-## <a name="open-the-access-review"></a>Erişim gözden geçirmesini açın
+Erişim gözden geçirme işlemini bildirim e-postalarından başlatabilir veya doğrudan siteye giderek gönderebilirsiniz.
 
-Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incelemesini bulup açmak.
+- **E-posta**:
+
+>[!IMPORTANT]
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. Tüm e azure-noreply@microsoft.com -postaları aldığınızdan emin olmak için beyaz liste.
 
 1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Bir grubun erişimini gözden geçirmek için örnek bir e-posta aşağıda verilmiştir.
 
@@ -38,57 +41,57 @@ Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incele
 
 1. Erişim gözden geçirmesini açmak için **Incelemeye başla** bağlantısına tıklayın.
 
-E-postanız yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
+- **E-postanız**yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamaps portalında oturum açın.
+    1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamalarım portalında oturum açın.
 
-    ![Uygulamaps portalı izinleriniz olan uygulamaları listeleme](./media/perform-access-review/myapps-access-panel.png)
+        ![İzinleriniz olan uygulamaları listeleme uygulamalarım portalı](./media/perform-access-review/myapps-access-panel.png)
 
-1. Sayfanın sağ üst köşesinde yer alan ve adınızla varsayılan kuruluşunuzun gösterildiği kullanıcı simgesine tıklayın. Listede birden fazla kuruluş varsa erişim gözden geçirmesi isteğinde bulunan kuruluşu seçin.
+    1. Sayfanın sağ üst köşesinde adınızın ve varsayılan kuruluşunuzun yanındaki kullanıcıya tıklayın. Listede birden fazla kuruluş varsa erişim gözden geçirmesi isteğinde bulunan kuruluşu seçin.
 
-1. Bekleyen erişim incelemelerinin listesini görmek için **erişim İncelemeleri** kutucuğuna tıklayın.
+    1. Bekleyen erişim incelemelerinin listesini görmek için **erişim İncelemeleri** kutucuğuna tıklayın.
 
-    Kutucuk yoksa ilgili kuruluş için bekleyen erişim gözden geçirmesi yoktur ve herhangi bir işlem yapmanız gerekmez.
+        > [!NOTE]
+        > **Erişim gözden geçirmeleri** kutucuğunda görünmüyorsa, bu kuruluş için gerçekleştirilecek bir erişim incelemesi yoktur ve şu anda hiçbir işlem yapmanız gerekmez.
 
-    ![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/perform-access-review/access-reviews-list.png)
+        ![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/perform-access-review/access-reviews-list.png)
 
-1. Gerçekleştirmek istediğiniz erişim incelemesi için **gözden geçirmeyi Başlat** bağlantısına tıklayın.
+    1. Gerçekleştirmek istediğiniz erişim incelemesi için **gözden geçirmeyi Başlat** bağlantısına tıklayın.
 
-## <a name="perform-the-access-review"></a>Erişim gözden geçirmesini gerçekleştir
-
-Erişim gözden geçirmesini açtıktan sonra, incelenmesi gereken kullanıcıların adlarını görürsünüz.
+Erişim gözden geçirmesini açtıktan sonra, erişiminin gözden geçirilmesi gereken kullanıcıların adlarını görürsünüz.
 
 İstek kendi erişiminizi gözden geçirmek ise, sayfa farklı görünür. Daha fazla bilgi için bkz. [gruplar veya uygulamalar için kendinize erişimi gözden geçirme](review-your-access.md).
 
-![Gözden geçirilmesi gereken kullanıcıları listelemek için açık erişim gözden geçirme](./media/perform-access-review/perform-access-review.png)
+![Gözden geçirilecek kullanıcıları listelemek için açık erişim gözden geçirme](./media/perform-access-review/perform-access-review.png)
 
 Erişimi onaylamak veya reddetmek için kullanabileceğiniz iki yol vardır:
 
-- Bir veya daha fazla kullanıcı için erişimi onaylayabilir veya reddedebilirsiniz veya
-- En kolay ve en hızlı şekilde sistem önerilerini kabul edebilirsiniz.
+- Her Kullanıcı isteği için uygun eylemi seçerek bir veya daha fazla kullanıcının ' el ile ' erişimini onaylayabilir veya reddedebilirsiniz.
+- Sistem önerilerini kabul edebilirsiniz.
 
 ### <a name="approve-or-deny-access-for-one-or-more-users"></a>Bir veya daha fazla kullanıcı için erişimi onaylama veya reddetme
 
-1. Devam eden erişimlerini onaylama veya reddetme seçeneklerinden birini belirlemek için Kullanıcı listesini gözden geçirin.
+1. Kullanıcı listesini gözden geçirin ve devam eden erişimleri onaylama veya reddetme seçeneklerinden birini belirleyin.
 
-1. Tek bir kullanıcıya erişimi onaylamak veya reddetmek için, yapılacak eylemi belirtmek üzere bir pencere açmak için satıra tıklayın. Birden çok kullanıcının erişimini onaylamak veya reddetmek için, kullanıcıların yanındaki onay işaretlerini ekleyin ve sonra gerçekleştirilecek eylemi belirtmek üzere bir pencere açmak için **X kullanıcıları gözden geçir** düğmesine tıklayın.
+    - Tek bir kullanıcıya erişimi onaylamak veya reddetmek için, yapılacak eylemi belirtmek üzere bir pencere açmak için satıra tıklayın. 
+    - Birden çok kullanıcının erişimini onaylamak veya reddetmek için, kullanıcıların yanındaki onay işaretlerini ekleyin ve sonra gerçekleştirilecek eylemi belirtmek üzere bir pencere açmak için **X kullanıcıları gözden geçir** düğmesine tıklayın.
 
-1. **Onayla** veya **Reddet**' e tıklayın. Emin değilseniz, **bilinmiyor**' a tıklayabilirsiniz. Bunun yapılması kullanıcının erişimini sürdürmasına neden olur, ancak seçim denetim günlüklerine yansıtılır.
+1. **Onayla** veya **Reddet**' e tıklayın. 
 
     ![Onaylama, reddetme ve bilmiyorum seçeneklerini içeren eylem penceresi](./media/perform-access-review/approve-deny.png)
+    >[!NOTE]
+    > Emin değilseniz, **bilinmiyor**' a tıklayabilirsiniz. ve Kullanıcı, erişiminin tutulmasını alır ve seçiminiz denetim günlüklerine kaydedilir.
 
-1. Gerekirse, **neden** kutusunda bir neden girin.
-
-    Erişim incelemesinin Yöneticisi, devam eden erişimi veya grup üyeliğini onaylamak için bir neden belirtmeniz gerekebilir.
+1. Erişim gözden geçirmesi Yöneticisi, kararınız için **neden** kutusunda bir neden belirtmeniz gerekebilir. Bir neden gerekli olmasa bile. Kararınız için bir neden sağlayabilirsiniz ve eklediğiniz bilgiler diğer gözden geçirenler tarafından kullanılabilir olacaktır.
 
 1. Gerçekleştirilecek eylemi belirledikten sonra **Kaydet**' e tıklayın.
 
-    Yanıtınızı değiştirmek istiyorsanız, satırı seçin ve yanıtı güncelleştirin. Örneğin, daha önce reddedilen bir kullanıcıyı onaylayabilir veya daha önce onaylanmış bir kullanıcıyı reddedebilirsiniz. Erişim incelemesi sonlanana kadar yanıtınızı dilediğiniz zaman değiştirebilirsiniz.
+    >[!NOTE]
+    > Erişim gözden geçirmesi sona ermeden önce yanıtınızı istediğiniz zaman değiştirebilirsiniz. Yanıtınızı değiştirmek istiyorsanız, satırı seçin ve yanıtı güncelleştirin. Örneğin, daha önce reddedilen bir kullanıcıyı onaylayabilir veya daha önce onaylanmış bir kullanıcıyı reddedebilirsiniz.
 
-    Birden çok gözden geçiren varsa, son gönderilen yanıt kaydedilir. Yöneticinin iki gözden geçiren – Gamze ve Bob 'u aldığı bir örnek düşünün. Çiğdem önce erişim gözden geçirmeyi açar ve erişimi onaylar. İnceleme bitmeden önce, Bob erişim incelemesini açar ve erişimi reddeder. Son reddetme yanıtı kaydedilir.
-
-    > [!NOTE]
-    > Bir kullanıcının erişimi reddedildiyse, bu kişiler hemen kaldırılmaz. İnceleme sona erdiğinde veya bir yönetici incelemeyi durdurduklarında bunlar kaldırılır.
+    >[!IMPORTANT]
+    > - Bir kullanıcının erişimi reddedildiyse, bu kişiler hemen kaldırılmaz. Bunlar, gözden geçirme süresi sona erdiğinde veya [Otomatik Uygula](complete-access-review.md#apply-the-changes) etkinse bir yönetici incelemeyi durdurduklarında kaldırılır.
+    > - Birden çok gözden geçiren varsa, son gönderilen yanıt kaydedilir. Yöneticinin iki gözden geçiren – Gamze ve Bob 'u aldığı bir örnek düşünün. Çiğdem önce erişim gözden geçirmeyi açar ve kullanıcının erişim isteğini onaylar. İnceleme dönemi bitmeden önce, Bob erişim gözden geçirmesini açar ve daha önce gamze tarafından onaylanan istek için erişimi reddeder. Erişimi reddeten son karar, kaydedilen yanıttır.
 
 ### <a name="approve-or-deny-access-based-on-recommendations"></a>Önerilere göre erişimi onaylayın veya reddedin
 
@@ -104,6 +107,103 @@ Erişim incelemelerini sizin için daha kolay ve hızlı hale getirmek için, te
 
 1. Önerileri kabul etmek için **Tamam** ' ı tıklatın.
 
+## <a name="perform-access-review-using-my-access-new"></a>Erişimimi kullanarak erişim incelemesi gerçekleştir (yeni)
+
+Erişimimde güncelleştirilmiş Kullanıcı arabirimiyle ilgili yeni gözden geçiren deneyime birkaç farklı yolla ulaşabilirsiniz:
+
+### <a name="my-apps-portal"></a>Uygulamalarım portalı
+
+1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamamda oturum açın.
+
+    ![İzinleriniz olan uygulamaları listeleme uygulamalarım portalı](./media/perform-access-review/myapps-access-panel.png)
+
+2. Bekleyen erişim incelemelerinin listesini görmek için **erişim İncelemeleri** kutucuğuna tıklayın.
+
+    > [!NOTE]
+    > **Erişim gözden geçirmeleri** kutucuğunda görünmüyorsa, bu kuruluş için gerçekleştirilecek bir erişim incelemesi yoktur ve şu anda hiçbir işlem yapmanız gerekmez.
+
+![Önizleme sırasında yeni deneyim kullanılabilir başlığı bulunan uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/perform-access-review/banner.png)
+
+3. Dene 'ye tıklayın **!** sayfanın üst kısmındaki başlıkta. Bu, sizi yeni erişim deneyimime götürür.
+  
+### <a name="email"></a>E-posta
+
+  >[!IMPORTANT]
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. Tüm e azure-noreply@microsoft.com -postaları aldığınızdan emin olmak için beyaz liste.
+
+   1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Aşağıda örnek bir e-posta iletisi görebilirsiniz:
+
+   ![Bir gruba erişimi gözden geçirmek için Microsoft 'tan örnek e-posta](./media/perform-access-review/access-review-email-preview.png)
+
+   2. Erişim gözden geçirmesini açmak için **Incelemeye başla** bağlantısına tıklayın.
+
+>[!NOTE]
+>Başlat İnceleme ' ye tıkladığınızda **uygulamalarım** , uygulamalar **portalından**yukarıdaki bölümde listelenen adımları izleyin.
+
+### <a name="navigate-to-my-access-directly"></a>Erişimime doğrudan git
+
+Ayrıca, erişiminizi açmak için tarayıcınızı kullanarak bekleyen erişim incelemelerinizi görüntüleyebilirsiniz.
+
+1. Erişimimde şurada oturum açın:https://myaccess.microsoft.com/
+
+2. Size atanan bekleyen erişim incelemelerinin listesini görmek için sol taraftaki menüden **erişim gözden geçirmeleri** ' nı seçin.
+
+   ![menüdeki erişim İncelemeleri](./media/perform-access-review/access-review-menu.png)
+
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>Bir veya daha fazla kullanıcı için erişimi onaylama veya reddetme
+
+Erişim grupları ve uygulamalar altında erişimimi açtıktan sonra şunları görebilirsiniz:
+
+- **Ad** Erişim gözden geçirmesi adı.
+- **Son tarih** İnceleme için son tarih. Bu tarihten sonra kullanıcılar gözden geçirilmekte olan gruptan veya uygulamadan kaldırılabilir.
+- **Kaynak** Gözden geçirme kapsamındaki kaynağın adı.
+- **Ilerleme durumu** Bu erişim incelemesinin Toplam Kullanıcı sayısı üzerinde incelenen Kullanıcı sayısı.
+
+Başlamak için erişim gözden geçirmesi adına tıklayın.
+
+![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/perform-access-review/access-reviews-list-preview.png)
+
+Açıldıktan sonra erişim gözden geçirmesi için kapsamdaki kullanıcıların listesini görürsünüz. İstek kendi erişiminizi gözden geçirmek ise, sayfa farklı görünür. Daha fazla bilgi için bkz. [gruplar veya uygulamalar için kendinize erişimi gözden geçirme](review-your-access.md).
+
+Erişimi onaylamak veya reddetmek için kullanabileceğiniz iki yol vardır:
+
+- Bir veya daha fazla kullanıcının erişimini el ile onaylayabilir veya reddedebilirsiniz.
+- Sistem önerilerini kabul edebilirsiniz.
+
+#### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>Bir veya daha fazla kullanıcının erişimini el ile onaylama veya reddetme
+
+1. Kullanıcı listesini gözden geçirin ve devam eden erişimleri onaylama veya reddetme seçeneklerinden birini belirleyin.
+2. Adlarının yanındaki daireye tıklayarak bir veya daha fazla kullanıcı seçin.
+3. Yukarıdaki çubukta **Onayla** veya **Reddet** ' i seçin.
+    - Emin değilseniz, **bilinmiyor**' a tıklayabilirsiniz. Kullanıcı, erişiminin tutulmasını alır ve seçiminiz denetim günlüklerine kaydedilir. Sağladığınız tüm bilgilerin diğer gözden geçirenler tarafından kullanılabilir olacağını aklınızda bulundurmanız önemlidir. Açıklamaları okuyabilir ve isteği gözden geçirdiklerinde onları hesaba götürebilirler.
+
+    ![Gözden geçirilmesi gereken kullanıcıları listelemek için açık erişim gözden geçirme](./media/perform-access-review/user-list-preview.png)
+
+4. Erişim gözden geçirmesi Yöneticisi, kararınız için **neden** kutusunda bir neden belirtmeniz gerekebilir. Bir neden gerekli olmasa bile. Kararınız için bir neden de sağlayabilirsiniz ve dahil ettiğiniz bilgiler, gözden geçirilmek üzere diğer onaylayanlar tarafından kullanılabilir olacaktır.
+
+5. **Gönder**' e tıklayın.
+    - Erişim incelemesi sonlanana kadar yanıtınızı dilediğiniz zaman değiştirebilirsiniz. Yanıtınızı değiştirmek istiyorsanız, satırı seçin ve yanıtı güncelleştirin. Örneğin, daha önce reddedilen bir kullanıcıyı onaylayabilir veya daha önce onaylanmış bir kullanıcıyı reddedebilirsiniz.
+
+ >[!IMPORTANT]
+ > - Bir kullanıcının erişimi reddedildiyse, bu kişiler hemen kaldırılmaz. İnceleme süresi sona erdiğinde veya bir yönetici incelemeyi durdurduklarında bunlar kaldırılır. 
+ > - Birden çok gözden geçiren varsa, son gönderilen yanıt kaydedilir. Yöneticinin iki gözden geçiren – Gamze ve Bob 'u aldığı bir örnek düşünün. Çiğdem önce erişim gözden geçirmeyi açar ve kullanıcının erişim isteğini onaylar. İnceleme dönemi bitmeden önce, Bob erişim gözden geçirmesini açar ve daha önce gamze tarafından onaylanan istek için erişimi reddeder. Erişimi reddeten son karar, kaydedilen yanıttır.
+
+#### <a name="approve-or-deny-access-based-on-recommendations"></a>Önerilere göre erişimi onaylayın veya reddedin
+
+Erişim incelemelerini sizin için daha kolay ve hızlı hale getirmek için, tek bir tıklama ile kabul etmenizi sağlayacak öneriler de sağlarız. Öneriler, kullanıcının oturum açma etkinliğine göre oluşturulur.
+
+1. Bir veya daha fazla kullanıcı seçin ve ardından **önerileri kabul et**' e tıklayın.
+
+    ![Önerileri kabul et düğmesini gösteren erişim gözden geçirme listesini aç](./media/perform-access-review/accept-recommendations-preview.png)
+
+1. Önerileri kabul etmek için **Gönder** ' e tıklayın.
+
+Tüm kullanıcılar için önerileri kabul etmek için, hiç birinin seçili olmadığından emin olun ve üstteki çubukta **önerileri kabul et** düğmesine tıklayın.
+
+>[!NOTE]
+>Önerileri kabul ettiğinizde önceki kararlar değiştirilmez.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Grupların veya uygulamaların erişim incelemesini tamamlar](complete-access-review.md)
+

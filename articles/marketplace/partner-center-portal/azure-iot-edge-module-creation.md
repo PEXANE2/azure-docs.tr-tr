@@ -1,36 +1,30 @@
 ---
-title: Iş Ortağı Merkezi ile Azure IoT Edge bir modül teklifi oluşturma-Azure Marketi
-description: Iş Ortağı Merkezi 'ni kullanarak Azure Marketi 'nde IoT Edge modül teklifi oluşturmayı öğrenin
+title: Azure Marketi 'nde Iş Ortağı Merkezi ile Azure IoT Edge bir modül teklifi oluşturma
+description: Iş Ortağı Merkezi 'ni kullanarak Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama hakkında bilgi edinin
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869137"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857661"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>IoT Edge modül teklifi oluşturma
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Azure Marketi 'nde IoT Edge modülü teklifi oluşturma, yapılandırma ve yayımlama
 
-> [!IMPORTANT]
-> IoT Edge modülü tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için, lütfen IoT Edge modülündeki yönergeleri izleyerek Bulut İş Ortağı Portalı için [yayımlamaya genel yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) konusuna göz atın.
-
-Bu makalede, Azure Marketi için bir Nesnelerin İnterneti (IoT) Edge modülü teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır.
-
-IoT Edge bir modül teklifi oluşturabilmeniz için önce Iş Ortağı Merkezi 'nde bir ticari Market hesabınız olmalıdır. Henüz bir tane oluşturmadıysanız [Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)konusuna bakın.
+Bu makalede, Azure Marketi için bir Nesnelerin İnterneti (IoT) Edge modülü teklifinin nasıl oluşturulacağı ve yayımlanacağı açıklanır. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
-1. İş Ortağı Merkezi'nde oturum açın.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 2. Sol gezinti menüsünde **ticari Market** > **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif** > **IoT Edge modülünü**seçin.
 
-    ![Sol gezinti menüsünü gösterir.](./media/cs-menu-overview.png)
-
-3. **+ Yeni teklif** > **IoT Edge modülünü**seçin. **Yeni teklif** iletişim kutusu görüntülenir.
+    ![Sol gezinti menüsünü gösterir.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca stoporonts 'de görüntülenir. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
@@ -41,14 +35,14 @@ Bir **TEKLIF kimliği**girin. Bu, hesabınızdaki her teklif için benzersiz bir
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
 - Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, **Test-teklif-1**girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-- Teklif KIMLIĞI, Oluştur ' u seçtikten sonra değiştirilemez.
+- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklifi ifade etmek için kullanılan addır.
+Bir **teklif diğer adı**girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
 - Bu, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-Bu iki değeri girdikten sonra, bir sonraki sayfaya geçmeden önce **Oluştur** ' u seçin, teklif genel bakış ' a tıklayın.
+Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ## <a name="offer-overview"></a>Teklifin genel bakış
 
@@ -86,10 +80,10 @@ Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
 - [Müşteri adayı yönetimine genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Müşteri adayı yönetimi hakkında SSS](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Sık karşılaşılan müşteri adayı yapılandırma hataları](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
 
-Sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin.
+Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ### <a name="properties"></a>Özellikler
 
@@ -132,7 +126,7 @@ Burada, Market 'te görüntülenen teklif ayrıntılarını tanımlayacaksınız
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] bölümünde kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 

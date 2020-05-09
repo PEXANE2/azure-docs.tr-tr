@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731755"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982148"
 ---
 # <a name="programmatically-manage-workbooks"></a>Program aracılığıyla çalışma kitaplarını yönetme
 
@@ -42,7 +42,7 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
 2. Aşağıda, Azure Izleyici çalışma kitabı galerisine bir çalışma kitabı şablonu dağıtan örnek bir Azure Resource Manager şablonu verilmiştir. Yerinde kopyaladığınız JSON 'yi yapıştırın `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`. Bir çalışma kitabı şablonu oluşturan bir başvuru Azure Resource Manager şablonu [burada](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)bulunabilir.
 
     ```json
-          {
+    {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
@@ -114,7 +114,7 @@ Programlı olarak yönetilebilecek iki tür çalışma kitabı kaynağı vardır
 | Kaynak gruplarındaki çalışma kitapları                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
 | Azure Active Directory çalışma kitapları            | `microsoft.aadiam/tenant`                          | `workbook`    |
 | Sanal makinelerde VM öngörüleri                | `microsoft.compute/virtualmachines`                | `insights`    |
-| Sanal makine ölçek kümelerinde VM öngörüleri                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| Sanal makine ölçek kümelerinde VM öngörüleri      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Çalışma kitabı örneği dağıtmak için Azure Resource Manager şablonu
 

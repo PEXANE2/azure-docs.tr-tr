@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 5fd69dcd30292630862887ab5434764ba377b396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78e01c854201e3c5253cd86aebcd85b62bf5568d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481091"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629309"
 ---
 # <a name="vcore-model-overview"></a>Sanal çekirdek modeline genel bakış
 
@@ -102,7 +102,7 @@ Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir deste
 |4. nesil     |-Intel E5-2673 v3 (Haswell) 2,4 GHz işlemcileri<br>-En fazla 24 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek)  |-Sanal çekirdek başına 7 GB<br>-168 GB 'a kadar sağlama|
 |5. nesil     |**Sağlanan işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel E5-2673 v4 (çok Iyi) 2,3-GHz ve Intel SP-8160 (ufuk Gölü) * işlemciler<br>-16 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 48 GB 'a kadar otomatik ölçeklendirme|
 |Fsv2 serisi     |-Intel Xeon Platinum 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-Sağlama 72 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-Sağlama 136 GB|
-|M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
+|M serisi     |-Intel Xeon E7-8890 v3 2,5 GHz ve Intel Xeon Platinum 8280M2,7 GHz (Cascade Lake) işlemcileri<br>-Sağlama 128 sanal çekirdekler (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-Sağlama 3,7 TB|
 
 \*[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, Intel SP-8160 (ufuk Gölü) Işlemcileri kullanılarak 5. nesil veritabanları için donanım oluşturma, Gen6 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (geniş ve ufuk Gölü) bağımsız olarak aynıdır.
 
@@ -199,7 +199,7 @@ Bir abonelikte d serisi kullanılabilirliği etkinleştirmek için [Yeni bir des
 ##### <a name="create-a-support-request-to-enable-m-series"></a>D serisini etkinleştirmek için bir destek isteği oluşturun: 
 
 1. Portalda **Yardım + Destek** ' i seçin.
-2. **Yeni destek isteği**’ni seçin.
+2. **Yeni destek isteği ' ni**seçin.
 
 **Temel bilgiler** sayfasında, aşağıdakileri sağlayın:
 

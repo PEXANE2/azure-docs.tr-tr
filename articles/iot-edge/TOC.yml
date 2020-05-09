@@ -206,7 +206,11 @@
         - name: Jenkins için IoT Edge eklentisi
           href: how-to-devops-plugins.md
     - name: Sorun giderme
-      href: troubleshoot.md
+      items:
+        - name: Standart tanılama adımları
+          href: troubleshoot.md
+        - name: Genel hata çözümleri
+          href: troubleshoot-common-errors.md
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri

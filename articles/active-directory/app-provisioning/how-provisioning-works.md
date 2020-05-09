@@ -2,31 +2,27 @@
 title: Azure AD sağlamasının nasıl çalıştığını anlayın | Microsoft Docs
 description: Azure AD sağlamasının nasıl çalıştığını anlama
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884894"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593735"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
 Otomatik sağlama, kullanıcıların erişmesi gereken bulut uygulamalarında kullanıcı kimliklerinin ve rollerinin oluşturulmasına başvurur. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Dağıtıma başlamadan önce, Azure AD sağlama 'nın nasıl çalıştığını ve yapılandırma önerilerini alma hakkında bilgi edinmek için bu makaleyi gözden geçirebilirsiniz. 
 
-**Azure AD sağlama hizmeti** , uygulama satıcısı tarafından sağlanan etki alanları arası kimlik yönetimi (SCIM) 2,0 Kullanıcı yönetimi API uç noktası Için bir sisteme bağlanarak kullanıcılara ve diğer sistemlere SaaS uygulamaları sağlar. Bu SCıM uç noktası, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir. Seçilen uygulamalarda, sağlama hizmeti gruplar ve roller gibi kimlik ile ilgili diğer nesneleri de oluşturabilir, güncelleştirebilir ve kaldırabilir. Azure AD ile uygulama arasında sağlama için kullanılan kanal, HTTPS TLS şifrelemesi kullanılarak şifrelenir.
+**Azure AD sağlama hizmeti** , uygulama satıcısı tarafından sağlanan etki alanları arası kimlik yönetimi (SCIM) 2,0 Kullanıcı yönetimi API uç noktası Için bir sisteme bağlanarak kullanıcılara ve diğer sistemlere SaaS uygulamaları sağlar. Bu SCıM uç noktası, Azure AD 'nin Kullanıcı aracılığıyla kullanıcıları oluşturmasına, güncelleştirmesine ve kaldırmasına izin verir. Seçilen uygulamalarda, sağlama hizmeti gruplar ve roller gibi kimlik ile ilgili diğer nesneleri de oluşturabilir, güncelleştirebilir ve kaldırabilir. Azure AD ile uygulama arasında sağlama için kullanılan kanal, HTTPS TLS 1,2 şifrelemesi kullanılarak şifrelenir.
 
 
 ![Azure AD sağlama hizmeti](./media/how-provisioning-works/provisioning0.PNG)

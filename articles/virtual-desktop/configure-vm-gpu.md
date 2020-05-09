@@ -7,14 +7,20 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae3f8b1cfe224f0a948eb16bd6ee5120b19dde1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767032"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612087"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows sanal masaüstü için grafik işleme birimi (GPU) hızlandırmasını yapılandırma
+
+>[!IMPORTANT]
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)bakın.
+>
+> Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Windows sanal masaüstü, geliştirilmiş uygulama performansı ve ölçeklenebilirliği için GPU hızlandırmalı işleme ve kodlamayı destekler. GPU hızlandırma özellikle grafik yoğun uygulamalar için önemlidir.
 
@@ -26,7 +32,7 @@ Azure, çok sayıda [GPU iyileştirilmiş sanal makine boyutu](/azure/virtual-ma
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Bir konak havuzu oluşturun, sanal makinenizi sağlayın ve bir uygulama grubu yapılandırın
 
-Seçtiğiniz boyuttaki bir VM 'yi kullanarak yeni bir konak havuzu oluşturun. Yönergeler için bkz. [öğretici: Azure Marketi ile konak havuzu oluşturma](/azure/virtual-desktop/create-host-pools-azure-marketplace).
+Seçtiğiniz boyuttaki bir VM 'yi kullanarak yeni bir konak havuzu oluşturun. Yönergeler için bkz. [öğretici: Azure Portal bir konak havuzu oluşturma](/azure/virtual-desktop/create-host-pools-azure-marketplace).
 
 Windows sanal masaüstü, aşağıdaki işletim sistemlerinde GPU hızlandırmalı işleme ve kodlamayı destekler:
 
@@ -39,7 +45,7 @@ Ayrıca, yeni bir konak havuzu oluştururken otomatik olarak oluşturulan varsay
 
 Windows sanal masaüstündeki Azure N serisi VM 'lerin GPU yetilerinden yararlanmak için uygun grafik sürücülerini yüklemelisiniz. Uygun grafik satıcısından sürücüleri el ile veya bir Azure VM uzantısı kullanarak yüklemek için [desteklenen işletim sistemleri ve sürücüler](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) bölümündeki yönergeleri izleyin.
 
-Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. Additionaly, NVıDıA GPU 'lara sahip Azure VM 'Leri için yalnızca [NVıDıA kılavuz sürücüleri](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) Windows sanal masaüstü için desteklenir.
+Windows sanal masaüstü için yalnızca Azure tarafından dağıtılan sürücüler desteklenir. Ayrıca, NVıDıA GPU 'lara sahip Azure VM 'Leri için Windows sanal masaüstü için yalnızca [NVıDıA kılavuz sürücüleri](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) desteklenir.
 
 Sürücü yüklemesinden sonra, bir VM yeniden başlatması gerekir. Grafik sürücülerinin başarıyla yüklendiğini doğrulamak için yukarıdaki yönergelerdeki doğrulama adımlarını kullanın.
 

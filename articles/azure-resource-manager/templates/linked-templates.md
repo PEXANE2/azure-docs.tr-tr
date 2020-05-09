@@ -2,13 +2,13 @@
 title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için Azure Resource Manager şablonda bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131920"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609315"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -35,7 +35,7 @@ Bir şablonu iç içe aktarmak için ana şablonunuza bir [dağıtımlar kaynağ
   "resources": [
     {
       "name": "nestedTemplate1",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -64,7 +64,7 @@ Aşağıdaki örnek, iç içe geçmiş bir şablon aracılığıyla bir depolama
   "resources": [
     {
       "name": "nestedTemplate1",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -101,7 +101,7 @@ Kapsamını `expressionEvaluationOptions` özelliği aracılığıyla ayarlarsı
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2017-05-10",
+  "apiVersion": "2019-10-01",
   "name": "nestedTemplate1",
   "properties": {
   "expressionEvaluationOptions": {
@@ -124,7 +124,7 @@ Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiği
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -208,7 +208,7 @@ Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -292,7 +292,7 @@ Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azu
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -326,7 +326,7 @@ Bağlı şablonunuz için parametreleri bir dış dosyada ya da satır içi olar
 "resources": [
   {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2018-05-01",
+  "apiVersion": "2019-10-01",
   "name": "linkedTemplate",
   "properties": {
     "mode": "Incremental",
@@ -349,7 +349,7 @@ Parametre değerlerini satır içi olarak geçirmek için **Parameters** özelli
 "resources": [
   {
    "type": "Microsoft.Resources/deployments",
-   "apiVersion": "2018-05-01",
+   "apiVersion": "2019-10-01",
    "name": "linkedTemplate",
    "properties": {
      "mode": "Incremental",
@@ -367,7 +367,7 @@ Parametre değerlerini satır içi olarak geçirmek için **Parameters** özelli
 
 Hem satır içi parametreleri hem de bir parametre dosyası bağlantısını kullanamazsınız. Hem hem de `parametersLink` `parameters` belirtildiğinde dağıtım bir hata ile başarısız olur.
 
-## `contentVersion`
+## <a name="contentversion"></a>contentVersion
 
 `templateLink` Veya `parametersLink` özelliği için `contentVersion` özelliği sağlamanız gerekmez. Bir `contentVersion`sağlamazsanız, şablonun geçerli sürümü dağıtılır. İçerik sürümü için bir değer sağlarsanız, bu bağlantı bağlantılı şablondaki sürümle eşleşmelidir; Aksi takdirde, dağıtım hata vererek başarısız olur.
 
@@ -412,7 +412,7 @@ Aşağıdaki örnek şablon, kopyalamanın iç içe geçmiş bir şablonla nası
 "resources": [
   {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2018-05-01",
+  "apiVersion": "2019-10-01",
   "name": "[concat('nestedTemplate', copyIndex())]",
   // yes, copy works here
   "copy":{
@@ -486,7 +486,7 @@ Ana şablon, bağlantılı şablonu dağıtır ve döndürülen değeri alır. D
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -593,7 +593,7 @@ Yük dengeleyici dağıtma sırasında önceki şablondaki genel IP adresini kul
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -666,7 +666,7 @@ Aşağıdaki şablon önceki şablona bağlantı sağlar. Üç genel IP adresi o
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -733,7 +733,7 @@ Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirtecinin nasıl geç
   "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2018-05-01",
+    "apiVersion": "2019-10-01",
     "name": "linkedTemplate",
     "properties": {
     "mode": "Incremental",

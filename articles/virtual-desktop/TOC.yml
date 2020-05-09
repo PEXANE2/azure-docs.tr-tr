@@ -122,6 +122,8 @@
       href: remotefx-graphics-performance-counters.md
 - name: Başvuru
   items:
+    - name: En iyi güvenlik uygulamaları
+      href: security-guide.md
     - name: Linux desteği
       href: linux-overview.md
     - name: Desteklenen RDP dosyası ayarları

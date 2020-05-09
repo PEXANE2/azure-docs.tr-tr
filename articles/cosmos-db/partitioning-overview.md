@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 1a760b4cedad5e43a2ef9f186162675aaf6d5ea5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234188"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864343"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümleme
 
@@ -56,7 +56,7 @@ Ancak, Kapsayıcınız küçükse, bölümler arası sorguların performans etki
 Kapsayıcınız birkaç fiziksel bölümden daha fazla büyümeye devam ediyorsanız, çapraz bölüm sorgularını en aza indiren bir bölüm anahtarı seçtiğinizden emin olun. Aşağıdakilerden biri geçerliyse, Kapsayıcınız birkaç fiziksel bölümden fazlasını gerektirecektir:
 
 * Kapsayıcıda 30.000 RU üzerinde sağlanan
-* Konteyner, 100 GB veri üzerinden depolanacak
+* Kapsayıcınız 100 GB veri üzerinden depolanacak
 
 ## <a name="using-item-id-as-the-partition-key"></a>Bölüm anahtarı olarak öğe KIMLIĞI kullanma
 

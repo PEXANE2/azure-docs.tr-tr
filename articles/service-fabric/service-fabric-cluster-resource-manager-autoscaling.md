@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984546"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793100"
 ---
 # <a name="introduction-to-auto-scaling"></a>Otomatik ölçeklendirmeye giriş
 Otomatik ölçeklendirme, hizmetlerin raporlanması gereken yükün veya kaynakların kullanımlarına göre dinamik olarak ölçeklendirilmesine yönelik Service Fabric ek bir özelliktir. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve isteğe bağlı olarak hizmetinizin ek örneklerinin veya bölümlerinin sağlanmasına olanak tanır. Otomatik ölçeklendirme işleminin tamamı otomatik ve şeffaftır ve ilkeleri bir hizmette ayarladıktan sonra hizmet düzeyinde el ile ölçeklendirme işlemlerine gerek yoktur. Otomatik Ölçeklendirme hizmeti oluşturma sırasında veya hizmeti güncelleştirilerek herhangi bir zamanda açılabilir.
@@ -130,7 +130,7 @@ Gerçekleştirilen gerçek otomatik ölçeklendirme işlemi, bu adlandırma düz
 * _Minimum örnek sayısı_ ölçekleme için alt sınırı tanımlar. Hizmetin bölüm sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet bu sınıra göre ölçeklenmez.
 
 > [!WARNING] 
-> AddRemoveIncrementalNamedPartitionScalingMechanism, durum bilgisi olmayan hizmetlerle kullanıldığında, Service Fabric **bildirim veya uyarı olmaksızın**bölüm ekler veya kaldırır. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecektir. Ölçeği artırma işlemi durumunda, yeni bölümler boş olur ve ölçeği azaltma işlemi durumunda, **bölüm içerdiği tüm verilerle birlikte silinir**.
+> AddRemoveIncrementalNamedPartitionScalingMechanism, durum bilgisi olmayan hizmetlerle kullanıldığında, Service Fabric **bildirim veya uyarı olmaksızın**bölüm ekler veya kaldırır. Ölçeklendirme mekanizması tetiklendiğinde verilerin yeniden bölümlenmesi gerçekleştirilmeyecektir. Ölçeği genişletme işlemi durumunda, yeni bölümler boş olur ve çalışma sırasında ölçekleme durumunda, **bölüm içerdiği tüm verilerle birlikte silinir**.
 
 ## <a name="setting-auto-scaling-policy"></a>Otomatik ölçeklendirme ilkesi ayarlanıyor
 

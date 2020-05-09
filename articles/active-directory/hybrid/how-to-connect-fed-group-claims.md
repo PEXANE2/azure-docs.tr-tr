@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408411"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854177"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma (Genel Önizleme)
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma
 
 Azure Active Directory, bir Kullanıcı grubu üyelik bilgilerini uygulamalar içinde kullanım için belirteçlerde sağlayabilir.  İki ana desen desteklenir:
 
-- Azure Active Directory nesne tanımlayıcısı (OID) özniteliğiyle tanımlanan gruplar (genel olarak kullanılabilir)
-- Active Directory (AD) eşitlenmiş gruplar ve kullanıcılar için sAMAccountName veya Groupsıd öznitelikleriyle tanımlanan gruplar (Genel Önizleme)
+- Azure Active Directory nesne tanımlayıcısı (OID) özniteliğiyle tanımlanan gruplar
+- Active Directory (AD) eşitlenmiş gruplar ve kullanıcılar için sAMAccountName veya Groupsıd öznitelikleriyle tanımlanan gruplar
 
 > [!IMPORTANT]
-> Bu önizleme işlevselliği için dikkat edilecek bir dizi uyarılar vardır:
+> Bu işlevsellik için dikkat edilecek bir dizi uyarılar vardır:
 >
 >- Şirket içinden eşitlenen sAMAccountName ve güvenlik tanımlayıcısı (SID) özniteliklerinin kullanımı için destek, mevcut uygulamaların AD FS ve diğer kimlik sağlayıcılarından taşınmasını sağlamak üzere tasarlanmıştır. Azure AD 'de yönetilen gruplar, bu talepleri oluşturmak için gereken öznitelikleri içermez.
 >- Daha büyük kuruluşlarda, bir kullanıcının üyesi olduğu grupların sayısı Azure Active Directory bir belirtece eklenecek sınırı aşabilir. bir SAML belirteci için 150 grupları ve JWT için 200. Bu, öngörülemeyen sonuçlara neden olabilir. Kullanıcılarınızın çok sayıda grup üyeliği varsa, taleplerde yayınlanan grupları uygulamanın ilgili gruplarıyla kısıtlama seçeneğini kullanmanızı öneririz.  

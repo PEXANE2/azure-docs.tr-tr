@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244816"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791995"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -88,7 +88,7 @@ Evet. Bir yol tablosu oluşturup bir alt ağla ilişkilendirebilirsiniz. Azure '
 Hayır. Çok noktaya yayın ve yayın desteklenmez.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>VNET 'ler içinde hangi protokolleri kullanabilirim?
-Sanal ağlar içindeki TCP, UDP ve ıCMP TCP/IP protokollerini kullanabilirsiniz. Tek noktaya yayın, sanal ağlar içinde dinamik ana bilgisayar Yapılandırma Protokolü (DHCP) dışında tek noktaya yayın aracılığıyla desteklenir (kaynak bağlantı noktası UDP/68/hedef bağlantı noktası UDP/67). Çok noktaya yayın, yayın, IP-IP kapsüllenmiş paketleri ve Genel Yönlendirme Kapsüllemesi (GRE) paketleri VNET 'ler içinde engellenir. 
+Sanal ağlar içindeki TCP, UDP ve ıCMP TCP/IP protokollerini kullanabilirsiniz. Tek noktaya yayın, sanal ağlar içinde dinamik ana bilgisayar Yapılandırma Protokolü (DHCP) dışında, tek noktaya yayın (kaynak bağlantı noktası UDP/68/hedef bağlantı noktası UDP/67) ve ana bilgisayar için ayrılmış UDP kaynak bağlantı noktası 65330 ile desteklenir. Çok noktaya yayın, yayın, IP-IP kapsüllenmiş paketleri ve Genel Yönlendirme Kapsüllemesi (GRE) paketleri VNET 'ler içinde engellenir. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>VNet içindeki varsayılan yönlendiricileriyle ping yapabilir miyim?
 Hayır.

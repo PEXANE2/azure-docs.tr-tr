@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18~~~~
-ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087252"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838527"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Time Series Insights ortamınız için Azure portal kullanarak bir başvuru veri kümesi oluşturun
 
@@ -78,7 +78,7 @@ Başvuru verileri geriye dönük olarak katılmadı. Bu nedenle, yapılandırıl
 
    [![Sütun başlıklarında veri türleri ' ni seçin.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-1. Gerekirse sütun üstbilgilerini yeniden adlandırın. Anahtar sütun adı, olay kaynağınızdaki ilgili özelliğe katılması için gereklidir. 
+1. Gerekirse sütun üstbilgilerini yeniden adlandırın. Anahtar sütun adı, olay kaynağınızdaki ilgili özelliğe katılması için gereklidir.
 
    > [!IMPORTANT]
    > Başvuru veri anahtarı sütun adlarının, büyük/küçük harf duyarlılığı dahil olmak üzere gelen verilerinize tam olarak olay adıyla eşleştiğinden emin olun. Anahtar olmayan sütun adları, gelen verileri karşılık gelen başvuru verileri değerleriyle artırmak için kullanılır.
