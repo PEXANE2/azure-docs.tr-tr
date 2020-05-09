@@ -3,12 +3,12 @@ title: Azure Service Fabric küme sertifikasını alma
 description: Sertifika ortak adı tarafından tanımlanan Service Fabric kümesi sertifikasını nasıl alabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a5fe2a7f2a05295605ef0e1d5db321a83b96712
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451971"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611917"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric kümesi sertifikasını el ile alma
 Service Fabric küme sertifikasının süresi dolmak üzere kapatıldığında, sertifikayı güncelleştirmeniz gerekir.  Küme, ortak ada (parmak izi yerine) [göre sertifikalar kullanmak üzere ayarlandıysa](service-fabric-cluster-change-cert-thumbprint-to-cn.md) Sertifika geçişi basittir.  Yeni bir sona erme tarihine sahip bir sertifika yetkilisinden yeni bir sertifika alın.  Otomatik olarak imzalanan sertifikalar, Azure portal kümesi oluşturma iş akışı sırasında oluşturulan sertifikaları dahil etmek için üretim Service Fabric kümeleri için desteklenmez. Yeni sertifika, eski sertifikayla aynı ortak ada sahip olmalıdır. 
@@ -64,7 +64,7 @@ $certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -
 $vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($newVaultCertificate)
 
 # Update the VM scale set 
 Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose

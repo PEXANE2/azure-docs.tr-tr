@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0fd8a379927396f2ae44d74c2d968d48fbd039c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2501f66c42360d3ec1626f5f4ee42e0212f1967b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096376"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792250"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview"></a>Hızlı başlangıç: yeni bir Apache Spark havuzu oluşturma (Önizleme)
 
@@ -25,16 +25,16 @@ Bu hızlı başlangıçta, bir Synapse çalışma alanında bir Apache Spark hav
 > [!IMPORTANT]
 > Spark örnekleri için faturalandırma, bunları kullanıp kullanmayacağınızı de dakika başına eşit olarak dağıtılır. Kullanmayı bitirdikten sonra Spark örneğinizi kapattığınızdan emin olun veya kısa bir zaman aşımı ayarlayın. Daha fazla bilgi için bu makalenin **Kaynakları temizleme** bölümüne bakın.
 
-Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https:/azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https:/azure.microsoft.com/free/)
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https:/portal.azure.com/) oturum açın
+[Azure Portal](https://portal.azure.com/) oturum açın
 
 ## <a name="create-new-apache-spark-pool"></a>Yeni Apache Spark Havuzu Oluştur
 
