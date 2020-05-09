@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891067"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926859"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure App Service uygulama sorunlarını giderme
 ## <a name="overview"></a>Genel Bakış
@@ -28,7 +28,7 @@ Bu öğreticide, [hata ayıklama modunda](https://docs.microsoft.com/visualstudi
 
 Visual Studio Ultimate sahipseniz, hata ayıklama için [IntelliTrace](/visualstudio/debugger/intellitrace) de kullanabilirsiniz. Bu öğreticide IntelliTrace kapsamında değildir.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a><a name="prerequisites"></a>Kaynakları
 Bu öğretici, [Azure App Service bir ASP.NET uygulaması oluşturma](app-service-web-get-started-dotnet-framework.md)bölümünde ayarladığınız geliştirme ortamı, Web projesi ve App Service uygulamayla birlikte çalışır. WebJobs bölümleri için, [Azure Web İşleri SDK 'Sını kullanmaya başlama][GetStartedWJ]bölümünde oluşturduğunuz uygulamanın olması gerekir.
 
 Bu öğreticide gösterilen kod örnekleri bir C# MVC web uygulaması içindir, ancak sorun giderme yordamları Visual Basic ve Web Forms uygulamalar için aynıdır.
@@ -634,7 +634,7 @@ App Service uygulamalar ve Web Işleri için uzaktan hata ayıklama hakkında da
 * [Azure App Service Bölüm 3 ' te uzaktan hata ayıklamaya giriş-çok örnekli ortam ve GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [Web Işleri hata ayıklaması (video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Uygulamanız bir Azure Web API 'SI veya arka uç Mobile Services kullanıyorsa ve hata ayıklaması yapmanız gerekiyorsa, bkz. [Visual Studio 'da .net arka uca hata ayıklama](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Uygulamanız bir Azure Web API 'SI veya arka uç Mobile Services kullanıyorsa ve hata ayıklaması yapmanız gerekiyorsa, bkz. [Visual Studio 'da .net arka uca hata ayıklama](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio).
 
 ### <a name="tracing-in-aspnet-applications"></a>ASP.NET uygulamalarında izleme
 ASP.NET izlemeye yönelik kapsamlı ve güncel tanıtımları Internet 'te bulunabilir. En iyi yöntem, MVC henüz olmadığı için Web Forms yazılmış eski giriş malzemeleri ile çalışmaya başlayın ve bu, belirli sorunlara odaklanarak daha yeni blog gönderileriyle birlikte ek niteliğindedir. Başlamak için bazı iyi konumlar aşağıdaki kaynaklardır:
@@ -647,7 +647,7 @@ ASP.NET izlemeye yönelik kapsamlı ve güncel tanıtımları Internet 'te bulun
   İzleme dinleyicileri hakkında bilgiler, ancak [Webpagetkıcelistener](/dotnet/api/system.web.webpagetracelistener)'tan bahsetmez.
 * [İzlenecek yol: ASP.NET Izlemesini System. Diagnostics Izleme ile tümleştirme](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Bu makale de Eskiler, ancak giriş makalesinin kapsamadığında bazı ek bilgiler içerir.
-* [ASP.NET MVC Razor görünümlerinde izleme](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [ASP.NET MVC Razor görünümlerinde izleme](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   Razor görünümlerinde izlemenin yanı sıra, bu gönderi bir MVC uygulamasında işlenmeyen tüm özel durumları günlüğe kaydetmek için bir hata filtresi oluşturmayı da açıklar. Web Forms uygulamasındaki tüm işlenmemiş özel durumların nasıl günlüğe kaydedilecek hakkında daha fazla bilgi için, MSDN 'de [hata işleyicileri için](/previous-versions/bb397417(v=vs.140)) bkz. Global. asax örneği. MVC veya Web Forms, bazı özel durumları günlüğe kaydetmek, ancak varsayılan çerçeve işleme için geçerli olmasını sağlamak istiyorsanız, aşağıdaki örnekte olduğu gibi yakalayabilir ve yeniden oluşturabilirsiniz:
 
     ```csharp

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430334"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583761"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
 
 1. MyVM uzak masaüstünde PowerShell ' i açın.
-2. `nslookup myserver.database.windows.net` yazın. 
+2. `nslookup myserver.database.windows.net` yazın. SQL Server adınızla `myserver` değiştirmeyi unutmayın.
 
     Şuna benzer bir ileti alacaksınız:
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,14 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. SQL Server Management Studio yüklensin
-4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin: ayar değeri sunucu türü veritabanı altyapısı seçin.
-      Sunucu adı myserver.database.windows.net Kullanıcı adı Seç oluşturma sırasında sağlanmış bir Kullanıcı adı girin.
-      Parola oluşturma sırasında sağlanmış bir parola girin.
-      Parolayı anımsa Evet ' i seçin.
-5. Bağlan’ı seçin.
-6. Sol menüden veritabanlarına gözatamazsınız. 
-7. I MyDatabase 'teki bilgileri oluşturma veya sorgulama
+    
+3. SQL Server Management Studio 'i yükler.
+4. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
+
+    | Ayar | Değer |
+    | --- | --- |
+    | Sunucu türü | Veritabanı Altyapısı |
+    | Sunucu adı | myserver.database.windows.net |
+    | Kullanıcı adı | Oluşturma sırasında belirtilen kullanıcı adını girin |
+    | Parola | Oluşturma sırasında girilen parolayı girin |
+    | Parolayı anımsa | Yes |
+    
+5. **Bağlan**’ı seçin.
+6. Sol menüden **veritabanlarına** gözatamazsınız. 
+7. I MyDatabase 'ten bilgi oluşturun veya sorgulayın.
 8. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 

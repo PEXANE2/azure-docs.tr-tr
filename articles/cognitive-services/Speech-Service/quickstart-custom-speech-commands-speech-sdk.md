@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76156786"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872504"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Hızlı başlangıç: konuşma SDK 'Sı ile özel bir komut uygulamasına bağlanma (Önizleme)
 
@@ -24,19 +24,20 @@ Barındırılan özel komutlar uygulaması oluşturduktan sonra, bir istemci cih
 Bu makalede şunları yapmanız gerekir:
 
 - Özel bir komut uygulaması yayımlama ve uygulama tanımlayıcısı (uygulama KIMLIĞI)
-- Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir istemci uygulaması oluşturun
+- Özel komutlar uygulamanızla iletişim kurmasını sağlamak için konuşma SDK 'sını kullanarak bir Evrensel Windows Platformu (UWP) istemci uygulaması oluşturun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalenin tamamlanabilmesi için özel bir komutlar uygulaması gereklidir. Henüz bir özel komutlar uygulaması oluşturmadıysanız, bu önceki hızlı başlangıçlarda bunu yapabilirsiniz:
-
-- [Hızlı başlangıç: özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-new.md)
-- [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [Hızlı başlangıç: özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-new.md)
+> * [Hızlı başlangıç: parametrelerle özel komut oluşturma (Önizleme)](./quickstart-custom-speech-commands-create-parameters.md)
 
 Ayrıca şunları da yapmanız gerekir:
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Bir tane ücretsiz alın](get-started.md) veya [Azure Portal](https://portal.azure.com) oluşturun
+> * [Cihazınızı geliştirme için etkinleştirme](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
 
@@ -44,12 +45,13 @@ Bu hızlı başlangıçta, bir istemci uygulamasını özel komutlar uygulamanı
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. Adım: özel komutlar uygulaması yayımlama
 
-1. [Önceden oluşturulmuş özel komutlar uygulamanızı](./quickstart-custom-speech-commands-create-new.md) açın ve **Yayımla** ' yı seçin.
+1. [Önceden oluşturulmuş özel komutlar uygulamanızı (Önizleme)](./quickstart-custom-speech-commands-create-new.md) açın ve **Yayımla** ' yı seçin.
 
    > [!div class="mx-imgBorder"]
    > ![Uygulama yayımlama](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Uygulama KIMLIĞINI daha sonra kullanmak üzere yayımlama bildiriminden Kopyala
+1. Daha sonra kullanmak üzere konuşma kaynak anahtarını kopyalama
 
 ## <a name="step-2-create-a-visual-studio-project"></a>2. Adım: Visual Studio projesi oluşturma
 
@@ -129,7 +131,7 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 
 1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs` açın (altında `MainPage.xaml`gruplanır)
 
-1. Dosyanın içeriğini aşağıdaki kodla değiştirin:
+1. Dosyanın içeriğini aşağıdaki kodla değiştirin: 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
        }
    }
    ```
+    > [!NOTE]
+    > Hata görürseniz: "Object ' türü, başvurulmayan bir derlemede tanımlanmıştır"
+    > 1. Çözümünüz için sağ istemci.
+    > 1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin, **güncelleştirmeler** ' i seçin 
+    > 1. Güncelleştirme listesinde **Microsoft. netcore. üniversalwindowsplatform** görürseniz, **Microsoft. Netcore. üniversalwindowsplatform** ' ı en yeni sürüme güncelleştirin
 
 1. Aşağıdaki kodu ' ın yöntem gövdesine ekleyin`InitializeDialogServiceConnector`
 
@@ -419,3 +426,6 @@ Arka plan kod kaynağını aşağıdaki gibi ekleyin:
 > [!div class="nextstepaction"]
 > [Nasıl yapılır: konuşma SDK 'sı (Önizleme)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > ile istemcideki komutları yerine getirmek[: özel komut parametrelerine doğrulama ekleme (Önizleme)](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>Örnek kaynak kodu
+[GitHub-Voiceassiste](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant) 'da istemci örnek kodlarımıza göz atın

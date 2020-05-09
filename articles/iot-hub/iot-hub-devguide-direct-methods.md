@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730396"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583672"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Doğrudan yöntemleri anlama ve IoT Hub'dan çağırma
 
@@ -83,11 +83,19 @@ Bir cihazdaki doğrudan yöntem etkinleştirmeleri, aşağıdaki öğelerden olu
 
 #### <a name="example"></a>Örnek
 
-Kullanarak `curl`bir barekemiörneği için aşağıya bakın. 
+Bu örnek, bir Azure IoT Hub kayıtlı bir IoT cihazında doğrudan yöntem çağırma isteğini güvenli bir şekilde başlatabilmeniz için size izin verir.
+
+Başlamak için, SharedAccessSignature oluşturmak üzere [Azure CLI için Microsoft Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension) kullanın. 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+Ardından, yetkilendirme üst bilgisini yeni oluşturulan sharedaccesssignature ile değiştirin, ardından `iothubName`, `deviceId` `methodName` ve `payload` parametrelerini aşağıdaki örnek `curl` komutta uygulamanız ile eşleşecek şekilde değiştirin.  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -100,6 +108,14 @@ curl -X POST \
 }'
 ```
 
+Belirtilen doğrudan yöntemi çağırmak için Modified komutunu yürütün. Başarılı istekler, bir HTTP 200 durum kodu döndürür.
+
+> [!NOTE]
+> Yukarıdaki örnekte, bir cihazda doğrudan bir yöntemi çağırma gösterilmektedir.  Bir IoT Edge modülünde doğrudan bir yöntemi çağırmak isterseniz, URL isteğini aşağıda gösterildiği gibi değiştirmeniz gerekir:
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>Yanıt
 
 Arka uç uygulaması, aşağıdaki öğelerden oluşan bir yanıt alır:

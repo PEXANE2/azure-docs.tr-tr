@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81265778"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607291"
 ---
 # <a name="create-an-fslogix-profile-container-with-azure-files"></a>Azure dosyaları ile FSLogix profil kapsayıcısı oluşturma
 
@@ -219,7 +219,7 @@ Kullanıcıları atamak için:
 
 Profilinizi doğrulamak için:
 
-1. Bir tarayıcı açın ve [Windows Sanal Masaüstü Web istemcisine](https://rdweb.wvd.microsoft.com/webclient/index.html)gidin.
+1. Bir tarayıcı açın ve [Windows Sanal Masaüstü Web istemcisine](https://rdweb.wvd.microsoft.com/arm/webclient)gidin.
 
 2. Uzak Masaüstü grubuna atanan kullanıcı hesabıyla oturum açın.
 

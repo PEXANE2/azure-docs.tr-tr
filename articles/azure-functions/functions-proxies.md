@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74849199"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562075"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure İşlev Proxy'leri çalışın
 
@@ -184,8 +184,8 @@ Proxy 'ler, bir JSON dosyasının dışında tüm dizeleri okur ve bunu çıkı�
 RequestOverrides nesnesi, arka uç kaynağı çağrıldığında istek üzerinde yapılan değişiklikleri tanımlar. Nesnesi aşağıdaki özellikler tarafından tanımlanır:
 
 * **arka uç. Request. Method**: arka ucu çağırmak IÇIN kullanılan http yöntemi.
-* **arka uç. Request. QueryString. ParameterName\>: arka uca çağrı için ayarlanabilir bir sorgu dizesi \<** parametresi. * \<ParameterName\> * değerini, ayarlamak istediğiniz parametrenin adıyla değiştirin. Boş dize sağlanırsa, parametrenin yine de arka uç isteğine dahil edildiğini lütfen unutmayın.
-* **arka uç. Request. Headers. HeaderName\>: arka uca çağrı için ayarlanabilir bir üst \<** bilgi. * \<HeaderName\> * değerini, ayarlamak istediğiniz üstbilginin adıyla değiştirin. Boş dize sağlarsanız, üst bilgi arka uç isteğine dahil edilmez.
+* **arka uç. Request. QueryString. ParameterName\>: arka uca çağrı için ayarlanabilir bir sorgu dizesi \<** parametresi. * \<ParameterName\> * değerini, ayarlamak istediğiniz parametrenin adıyla değiştirin. Boş bir dize sağlanırsa, parametrenin yine de arka uç isteğine dahil edildiğini unutmayın.
+* **arka uç. Request. Headers. HeaderName\>: arka uca çağrı için ayarlanabilir bir üst \<** bilgi. * \<HeaderName\> * değerini, ayarlamak istediğiniz üstbilginin adıyla değiştirin. Boş bir dize sağlanırsa, parametrenin yine de arka uç isteğine dahil edildiğini unutmayın.
 
 Değerler, özgün istemci isteğinden uygulama ayarlarına ve parametrelere başvurabilir.
 

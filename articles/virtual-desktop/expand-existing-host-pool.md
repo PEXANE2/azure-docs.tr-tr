@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: be76c665e1f5319b3e1ff1976e44fee9cd90ea6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607207"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929222"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Yeni oturum Konakları ile mevcut bir konak havuzunu Genişlet
 
@@ -58,7 +58,7 @@ Sanal makineler ekleyerek konak havuzunuzu genişletmek için:
 
 7. VM 'Leri oluşturmak istediğiniz kaynak grubunu seçin, ardından bölgeyi seçin. Kullanmakta olduğunuz geçerli bölgeyi veya yeni bir bölgeyi seçebilirsiniz.
    
-8. **Sanal makinelerin sayısına**istediğiniz yeni toplam oturum ana bilgisayar sayısını girin. Örneğin, ana bilgisayar havuzunuzu beş oturum ana bilgisayardan sekiz ' a genişleyorsanız **8**girin. 
+8. Konak havuzunuza eklemek istediğiniz oturum ana bilgisayarlarının sayısını **VM sayısına**girin. Örneğin, ana bilgisayar havuzunuzu beş ana bilgisayar ile genişlettiğiniz takdirde **5**girin.
    
     >[!NOTE]
     >Konak havuzundaki tüm VM 'Lerin aynı boyutta olduğundan emin olmak önemlidir çünkü VM 'lerin boyutunu veya görüntüsünü düzenleyemezsiniz.

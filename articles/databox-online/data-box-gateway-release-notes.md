@@ -8,18 +8,18 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265408"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561040"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway genel kullanılabilirlik sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları, Azure Data Box Edge ve Azure Data Box Gateway için kritik açık sorunları ve genel kullanılabilirlik (GA) sürümü için çözülmüş sorunları belirler.
+Aşağıdaki sürüm notları, Azure Data Box Edge ve Azure Data Box Gateway için kritik açık sorunları ve genel kullanılabilirlik (GA) sürümü için çözülmüş sorunları belirler. 
 
 Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Data Box Edge/Data Box Gateway dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
@@ -50,4 +50,4 @@ Aşağıdaki tabloda, sürüm çalıştıran Data Box Gateway için bilinen soru
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Data Box Gateway dağıtmaya hazırlanın](data-box-gateway-deploy-prep.md).
-- [Azure Data Box Edge dağıtmaya hazırlanın](data-box-edge-deploy-prep.md).
+- [Azure Data Box Edge dağıtmaya hazırlanın](azure-stack-edge-deploy-prep.md).

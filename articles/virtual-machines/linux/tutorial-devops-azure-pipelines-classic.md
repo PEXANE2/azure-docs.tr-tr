@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure Linux Sanal Makineleri için sıralı dağıtımları yapılandırma
-description: Bu öğreticide, sıralı dağıtım stratejisini kullanarak bir Azure Linux Sanal Makineleri grubunu artımlı olarak güncelleştiren sürekli dağıtım (CD) işlem hattı ayarlamayı öğreneceksiniz.
+title: Öğretici-Azure Linux sanal makineleri için sıralı dağıtımları yapılandırma
+description: Bu öğreticide, sürekli dağıtım (CD) işlem hattı ayarlamayı öğreneceksiniz. Bu işlem hattı, sıralı dağıtım stratejisini kullanarak bir Azure Linux sanal makinesi grubunu artımlı olarak güncelleştirir.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,75 +12,86 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 75888b1ebbda33891296fe0b54c5d204955e32a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113501"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871224"
 ---
-# <a name="tutorial---configure-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux Sanal Makineleri için sıralı dağıtım stratejisini yapılandırma
+# <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Öğretici-Azure Linux sanal makineleri için sıralı dağıtım stratejisini yapılandırma
 
-Azure DevOps, her türlü Azure kaynağı için sürekli tümleştirme ve sürekli dağıtım ile DevOps işleminin her bir bölümünü otomatikleştiren yerleşik bir Azure hizmetidir.
-Uygulamanızda sanal makineler, Web Apps, Kubernetes veya başka herhangi bir kaynak kullanılıyorsa, Azure ve Azure DevOps ile kod olarak altyapı, sürekli tümleştirme, sürekli test, sürekli teslim ve sürekli izleme uygulayabilirsiniz.  
+Azure DevOps, her türlü Azure kaynağı için DevOps işleminin her bölümünü otomatikleştiren yerleşik bir Azure hizmetidir. Uygulamanızda sanal makineler, Web Apps, Kubernetes veya başka herhangi bir kaynak kullanılıyorsa, Azure ve Azure DevOps ile kod olarak altyapı (IaaC), sürekli tümleştirme, sürekli test, sürekli teslim ve sürekli izleme uygulayabilirsiniz.
 
-![AzDevOps_portalView](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png) 
+![Hizmetler altında seçili Azure DevOps ile Azure portal](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Hizmet olarak altyapı (IaaS)-CI/CD 'yi yapılandırma
 
-## <a name="iaas---configure-cicd"></a>IaaS-CI/CD 'yi yapılandırma 
-Azure Pipelines, sanal makinelere dağıtımlar için tam ve tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure VM için bir sürekli teslim işlem hattını doğrudan Azure portal yapılandırabilirsiniz. Bu belge, Azure portal 'ten çok makineli dağıtımlar için bir CI/CD işlem hattı ayarlamayla ilişkili adımları içerir. Ayrıca, Azure Portal ' den kullanıma hazır olarak desteklenen [kanarya](https://aka.ms/AA7jdrz) ve [mavi yeşil](https://aka.ms/AA83fwu)gibi diğer stratejileri de göz atabilirsiniz. 
+Azure Pipelines, sanal makinelere dağıtımlar için tam özellikli bir CI/CD otomasyon araçları kümesi sağlar. Azure portal bir Azure VM için sürekli teslim işlem hattı yapılandırabilirsiniz.
 
+Bu makalede, Azure portal çok makineli dağıtımlar için bir CI/CD işlem hattının nasıl ayarlanacağı gösterilmektedir. Azure Portal Ayrıca [kanarya](https://aka.ms/AA7jdrz) ve [mavi-yeşil](https://aka.ms/AA83fwu)gibi diğer stratejileri de destekler.
 
-**Sanal makinelerde CI/CD 'yi yapılandırma**
+### <a name="configure-cicd-on-virtual-machines"></a>Sanal makinelerde CI/CD 'yi yapılandırma
 
-Sanal makineler, bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) hedef olarak eklenebilir ve çok makineli güncelleştirme için hedeflenebilir. Dağıtım grubu içindeki **dağıtım geçmişi** , DAĞıTıLDıKTAN sonra VM 'den işlem hattına ve sonra işlemeye izlenebilirlik sağlar. 
- 
+Sanal makineleri bir [dağıtım grubuna](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)hedefler olarak ekleyebilirsiniz. Daha sonra bunları çok makineli güncelleştirmeler için hedefleyebilirsiniz. Makinelere dağıttıktan sonra, dağıtım **geçmişini** bir dağıtım grubu içinde görüntüleyin. Bu görünüm VM 'den işlem hattına ve sonra işlemeye izlemenizi sağlar.
 
-Sıralı **dağıtımlar**: sıralı dağıtım, bir uygulamanın önceki sürümünün örneklerini, her yinelemede sabit bir makine kümesindeki (sıralı olarak ayarlanan) uygulamanın yeni sürümünün örneklerine koyar. Sanal makinelere sıralı güncelleştirme yapılandırma hakkında yol açalım.  
-Sürekli teslim seçeneğini kullanarak Azure portal içindeki "**sanal makinelerinize**" yönelik güncelleştirmeleri yapılandırabilirsiniz. 
+### <a name="rolling-deployments"></a>Sıralı dağıtımlar
 
-İşte adım adım yönergeler. 
-1. Azure portal oturum açın ve bir sanal makineye gidin. 
-2. VM sol bölmesinde, **sürekli teslim** menüsüne gidin. Ardından **Yapılandır**' a tıklayın. 
+Her yinelemede, sıralı dağıtım, uygulamanın önceki sürümünün örneklerinin yerini alır. Bunları, sabit bir makine kümesindeki (sıralı küme) yeni sürümün örnekleriyle değiştirir. Aşağıdaki izlenecek yol, sanal makinelere yapılan bir sıralı güncelleştirmenin nasıl yapılandırılacağını gösterir.
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. Yapılandırma panelinde, mevcut bir hesabı seçmek veya bir hesap oluşturmak için "Azure DevOps Organization" düğmesine tıklayın. Ardından, ardışık düzeni yapılandırmak istediğiniz projeyi seçin.  
+Sürekli teslim seçeneğini kullanarak, Azure portal içindeki sanal makinelerinize yönelik güncelleştirmeleri yapılandırabilirsiniz. Adım adım izlenecek yol:
 
+1. Azure portal oturum açın ve bir sanal makineye gidin.
+1. VM ayarlarının sol bölmesinde **sürekli teslim**' yı seçin. Ardından **Yapılandır**' ı seçin.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. Dağıtım grubu, fiziksel ortamları temsil eden bir dağıtım hedefi makineleri kümesidir; Örneğin, "dev", "test", "UAT" ve "üretim". Yeni bir dağıtım grubu oluşturabilir veya mevcut bir dağıtım grubunu seçebilirsiniz. 
-5. Sanal makineye dağıtılacak paketi yayımlayan derleme işlem hattını seçin. Yayımlanan paketin, paket kökündeki `deployscripts` klasöründe _Deploy. ps1_ veya _Deploy.sh_ dağıtım betiği olması gerektiğini unutmayın. Bu dağıtım betiği, çalışma zamanında Azure DevOps işlem hattı tarafından çalıştırılacak.
-6. Tercih ettiğiniz dağıtım stratejisini seçin. Bu durumda, ' kayan ' seçeneğini belirlemenizi sağlar.
-7. İsteğe bağlı olarak, makineyi rolüyle etiketleyebilir. Örneğin, ' Web ', ' DB ' vb. Bu, yalnızca belirli bir rolü olan VM 'Leri hedeflemenize yardımcı olur.
-8. Sürekli teslim işlem hattını yapılandırmak için iletişim kutusunda **Tamam** ' a tıklayın. 
-9. İşiniz bittiğinde, sanal makineye dağıtmak için yapılandırılmış bir sürekli teslim işlem hattı olacaktır.  
+   ![Yapılandır düğmesi ile sürekli teslim bölmesi](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
+1. Yapılandırma panelinde, mevcut bir hesabı seçmek veya yeni bir hesap oluşturmak için **Azure DevOps organizasyonu** ' nı seçin. Ardından, ardışık düzeni yapılandırmak istediğiniz projeyi seçin.  
 
-   ![AzDevOps_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
-10. Sanal makine dağıtımının devam ettiğini görürsünüz. İşlem hattına gitmek için bağlantıya tıklayabilirsiniz. Dağıtımı görüntülemek için **Release-1** ' e tıklayın. Ya da yayın işlem hattı tanımını değiştirmek için **Düzenle** ' ye tıklayabilirsiniz. 
-11. Yapılandırılacak birden fazla sanal makine varsa, dağıtım grubuna eklenecek diğer VM 'Ler için 2-4 adımlarını yineleyin. Bir işlem hattı çalıştırmasının zaten bulunduğu bir dağıtım grubu seçerseniz, sanal makinenin yeni işlem hattı oluşturmadan önce dağıtım grubuna ekleneceğini unutmayın. 
-12. İşiniz bittiğinde, işlem hattı tanımına tıklayın, Azure DevOps kuruluşuna gidin ve yayın işlem hattını **Düzenle** ' ye tıklayın. 
-   ![AzDevOps_edit_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
-13. Bağlantı 1 işi ' ne tıklayın, **geliştirme** aşamasında **1 görev** . **Dağıt** aşamasına tıklayın.
-   ![AzDevOps_deploymentGroup](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
-14. Sağdaki yapılandırma bölmesinden, her yinelemede paralel olarak dağıtmak istediğiniz makine sayısını belirtebilirsiniz. Aynı anda birden çok makineye dağıtmak istiyorsanız kaydırıcıyı kullanarak bu değeri yüzde cinsinden belirtebilirsiniz.  
+   ![Sürekli teslim paneli](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-15. Dağıtımı betiği Yürüt görevi varsayılan olarak, yayımlanan paketin kök dizinindeki ' deployscripts ' klasöründe dağıtım betiği _Deploy. ps1_ veya _Deploy.sh_ ' i yürütür.  
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. Dağıtım grubu, fiziksel ortamları temsil eden bir dağıtım hedefi makineleri kümesidir. Geliştirme, test, UAT ve üretim örneklere örnektir. Yeni bir dağıtım grubu oluşturabilir veya var olan bir dağıtım grubu seçebilirsiniz.
+1. Sanal makineye dağıtılacak paketi yayımlayan derleme işlem hattını seçin. Yayınlanan paketin, paketin kök klasöründeki deployscripts klasöründe Deploy. ps1 veya deploy.sh adlı bir dağıtım betiği olmalıdır. İşlem hattı bu dağıtım betiğini çalıştırır.
+1. **Dağıtım stratejisi**' nde, sıralı ' **ı seçin.**
+1. İsteğe bağlı olarak, her bir makineyi rolüyle etiketleyebilir. "Web" ve "DB" etiketleri örnek olarak verilebilir. Bu etiketler yalnızca belirli bir rolü olan VM 'Leri hedefetmenize yardımcı olur.
+1. Sürekli teslim işlem hattını yapılandırmak için **Tamam ' ı** seçin.
+1. Yapılandırma bittikten sonra, sanal makineye dağıtmak için yapılandırılmış bir sürekli teslim işlem hattı vardır.  
+
+   ![Dağıtım geçmişini gösteren sürekli teslim paneli](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
+
+1. Sanal makine için dağıtım ayrıntıları görüntülenir. İşlem hattına gitmek için bağlantıyı, dağıtımı görüntülemek için **-1** ' i veya yayın işlem hattı tanımını değiştirmek için **Düzenle** ' yi seçebilirsiniz.
+
+1. Birden çok VM yapılandırıyorsanız, dağıtım grubuna eklenecek diğer VM 'Ler için 2 ile 4 arasındaki adımları tekrarlayın. Zaten bir işlem hattı çalıştırması olan bir dağıtım grubu seçerseniz, VM 'Ler yalnızca dağıtım grubuna eklenir. Yeni işlem hattı oluşturulmaz.
+1. Yapılandırma yapıldıktan sonra, işlem hattı tanımını seçin, Azure DevOps kuruluşuna gidin ve yayın işlem hattı için **Düzenle** ' yi seçin.
+
+   ![Sıralı ardışık düzeni Düzenle](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
+
+1. **Geliştirme** aşamasında **1 iş, 1 görev** seçin. **Dağıtım** aşamasını seçin.
+
+   ![Dağıt görevi seçiliyken ardışık düzen görevleri](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
+
+1. En sağdaki yapılandırma bölmesinden, her yinelemede paralel olarak dağıtmak istediğiniz makine sayısını belirtebilirsiniz. Aynı anda birden çok makineye dağıtmak istiyorsanız, kaydırıcıyı kullanarak makine sayısını yüzde olarak belirtebilirsiniz.  
+
+1. Dağıtımı betiği Yürüt görevi varsayılan olarak Deploy. ps1 veya deploy.sh dağıtım betiğini yürütür. Betik, yayımlanan paketin kök klasöründe yer aldığı deployscripts klasöründedir.
+
+   ![Deployscripts klasöründe deploy.sh gösteren yapılar bölmesi](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Diğer dağıtım stratejileri
 
-- [Canary dağıtım stratejisini yapılandırma](https://aka.ms/AA7jdrz)
-- [Mavi-yeşil dağıtım stratejisini yapılandırma](https://aka.ms/AA83fwu)
+- [Kanarya dağıtım stratejisini yapılandırma](https://aka.ms/AA7jdrz)
+- [Mavi yeşil dağıtım stratejisini yapılandırma](https://aka.ms/AA83fwu)
 
+## <a name="azure-devops-projects"></a>Azure DevOps Projeleri
+
+Azure 'ı kolay bir şekilde kullanmaya başlayın. Azure DevOps Projeleri, aşağıdakileri yaparak uygulamanızı yalnızca üç adımda herhangi bir Azure hizmetinde çalıştırmaya başlayın:
+
+- Uygulama dili
+- Çalışma zamanı
+- Bir Azure hizmeti
  
-## <a name="azure-devops-project"></a>Azure DevOps projesi 
-Azure 'ı her zamankinden daha kolay bir şekilde kullanmaya başlayın.
+[Daha fazla bilgi edinin](https://azure.microsoft.com/features/devops-projects/).
  
-DevOps Projeleri, uygulamanızı yalnızca üç adımda herhangi bir Azure hizmetinde çalıştırmaya başlayın: bir uygulama dili, çalışma zamanı ve bir Azure hizmeti seçin.
- 
-[Daha fazla bilgi edinin](https://azure.microsoft.com/features/devops-projects/ ).
- 
-## <a name="additional-resources"></a>Ek kaynaklar 
-- [DevOps projesini kullanarak Azure sanal makinelerine dağıtma](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+## <a name="additional-resources"></a>Ek kaynaklar
+
+- [Azure DevOps Projeleri kullanarak Azure sanal makinelerine dağıtma](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Azure sanal makine ölçek kümesine uygulamanızın sürekli dağıtımını uygulama](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

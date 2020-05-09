@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80992224"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793134"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. erişim denetimi
+# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'de Erişim Denetimi
 
 Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (RBAC) hem de POSIX benzeri erişim denetim listelerini (ACL 'Ler) destekleyen bir erişim denetimi modeli uygular. Bu makalede Data Lake Storage 2. için erişim denetimi modelinin temelleri özetlenmektedir.
 
@@ -287,7 +287,7 @@ HNS kapalıysa, Azure RBAC yetkilendirme kuralları yine de geçerlidir.
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>ACL 'Leri uygulamak için en iyi yol nedir?
 
-Her zaman ACL 'lerdeki atanan sorumlu olarak Azure AD güvenlik gruplarını kullanın. Bireysel kullanıcıları veya hizmet sorumlularını doğrudan atamaya yönelik fırsatı yeniden ölçeklendirin. Bu yapının kullanılması, ACL 'Leri tüm dizin yapısına yeniden uygulama gereksinimi olmadan Kullanıcı veya hizmet sorumluları eklemenize ve kaldırmanıza olanak tanır. ) Bunun yerine, yalnızca uygun Azure AD güvenlik grubundan eklemeniz veya kaldırmanız gerekir. ACL 'Lerin devralındığını aklınızda bulundurun ve bu nedenle, ACL 'Leri yeniden uygulamak için her dosya ve alt dizinde ACL 'nin güncelleştirilmesi gerekir. 
+Her zaman ACL 'lerdeki atanan sorumlu olarak Azure AD güvenlik gruplarını kullanın. Bireysel kullanıcıları veya hizmet sorumlularını doğrudan atamaya yönelik fırsatı yeniden ölçeklendirin. Bu yapının kullanılması, ACL 'Leri tüm dizin yapısına yeniden uygulama gereksinimi olmadan Kullanıcı veya hizmet sorumluları eklemenize ve kaldırmanıza olanak tanır. Bunun yerine, yalnızca uygun Azure AD güvenlik grubundan eklemeniz veya kaldırmanız gerekir. ACL 'Lerin devralındığını aklınızda bulundurun ve bu nedenle, ACL 'Leri yeniden uygulamak için her dosya ve alt dizinde ACL 'nin güncelleştirilmesi gerekir. 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Bir dizini ve içeriğini yinelemeli olarak silmek için hangi izinler gereklidir?
 
