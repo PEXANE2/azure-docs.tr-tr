@@ -2,7 +2,7 @@
 title: Erişim incelemeleriyle & uygulamalara erişiminizi gözden geçirme-Azure AD
 description: Azure Active Directory erişim gözden geçirmeleriyle gruplara veya uygulamalara kendi erişiminizi incelemeyi öğrenin.
 services: active-directory
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
-ms.author: ajburnle
+ms.date: 04/30/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d75d7ffe28fa126ee5e359cba19e66e3c0f36e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422396"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611140"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD erişim incelemeleriyle ilgili grupları veya uygulamaları kendiniz için erişimi gözden geçirin
 
@@ -28,9 +28,12 @@ Azure Active Directory (Azure AD), kuruluşların Azure AD erişim gözden geçi
 
 Bu makalede, bir grup veya uygulamaya kendi erişiminizi nasıl gözden geçibileceğinizi açıklar.
 
-## <a name="open-the-access-review"></a>Erişim gözden geçirmesini açın
+## <a name="review-your-access-using-my-apps"></a>Uygulamalarımı kullanarak erişiminizi gözden geçirme
 
 Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incelemesini bulup açmak.
+
+>[!IMPORTANT]
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. Tüm e azure-noreply@microsoft.com -postaları aldığınızdan emin olmak için beyaz liste.
 
 1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Bir gruba erişiminizi gözden geçirmek için örnek bir e-posta aşağıda verilmiştir.
 
@@ -40,9 +43,9 @@ Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incele
 
 E-postanız yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamaps portalında oturum açın.
+1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamalarım portalında oturum açın.
 
-    ![Uygulamaps portalı izinleriniz olan uygulamaları listeleme](./media/review-your-access/myapps-access-panel.png)
+    ![İzinleriniz olan uygulamaları listeleme uygulamalarım portalı](./media/review-your-access/myapps-access-panel.png)
 
 1. Sayfanın sağ üst köşesinde yer alan ve adınızla varsayılan kuruluşunuzun gösterildiği kullanıcı simgesine tıklayın. Listede birden fazla kuruluş varsa erişim gözden geçirmesi isteğinde bulunan kuruluşu seçin.
 
@@ -54,7 +57,7 @@ E-postanız yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izl
 
 1. Gerçekleştirmek istediğiniz erişim incelemesi için **gözden geçirmeyi Başlat** bağlantısına tıklayın.
 
-## <a name="perform-the-access-review"></a>Erişim gözden geçirmesini gerçekleştir
+### <a name="perform-the-access-review"></a>Erişim gözden geçirmesini gerçekleştir
 
 Erişim gözden geçirmesini açtıktan sonra erişiminizi görebilirsiniz.
 
@@ -72,7 +75,88 @@ Erişim gözden geçirmesini açtıktan sonra erişiminizi görebilirsiniz.
 
 1. **Gönder**' e tıklayın.
 
-    Seçiminiz gönderilir ve Uygıps portalına dönersiniz.
+    Seçiminiz gönderilir ve My Apps portalına dönersiniz.
+
+    Yanıtınızı değiştirmek istiyorsanız, erişim İncelemeleri sayfasını yeniden açın ve yanıtınızı güncelleştirin. Erişim incelemesi sonlanana kadar yanıtınızı dilediğiniz zaman değiştirebilirsiniz.
+
+    > [!NOTE]
+    > Artık erişime ihtiyaç duymadığını belirttiyseniz, hemen kaldırılmamıştır. İnceleme sona erdiğinde veya bir yönetici incelemeyi durdurduğu zaman kaldırılır.
+
+## <a name="review-your-own-access-using-my-access-new"></a>Erişimimi kullanarak kendi erişiminizi gözden geçirin (yeni)
+
+Yeni deneyimi erişimimde güncelleştirilmiş Kullanıcı arabirimiyle birkaç farklı şekilde deneyebilirsiniz:
+
+### <a name="my-apps-portal"></a>Uygulamalarım portalı
+
+1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamalarım portalında oturum açın.
+
+    ![İzinleriniz olan uygulamaları listeleme uygulamalarım portalı](./media/review-your-access/myapps-access-panel.png)
+
+2. Bekleyen erişim incelemelerinin listesini görmek için **erişim İncelemeleri** kutucuğuna tıklayın.
+
+    > [!NOTE]
+    > **Erişim gözden geçirmeleri** kutucuğunda görünmüyorsa, bu kuruluş için gerçekleştirilecek bir erişim incelemesi yoktur ve şu anda hiçbir işlem yapmanız gerekmez.
+
+3. Dene 'ye tıklayın **!** sayfanın üst kısmındaki başlıkta yeni erişim deneyimime gidebilirsiniz.
+
+    ![Önizleme sırasında yeni deneyim kullanılabilir başlığı bulunan uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/review-your-access/banner-your-access.png)
+
+4. **Erişim gözden geçirmesini gerçekleştirme** bölümünde devam et
+
+### <a name="email"></a>E-posta
+
+>[!IMPORTANT]
+> E-posta alınırken gecikmeler olabilir ve bu durum 24 saate kadar sürebilir. Tüm e azure-noreply@microsoft.com -postaları aldığınızdan emin olmak için beyaz liste.
+
+1. Microsoft 'un, erişimi incelemenizi isteyen bir e-posta bulun. Aşağıda örnek bir e-posta iletisi görebilirsiniz:
+
+ ![Bir gruba erişimi gözden geçirmek için Microsoft 'tan örnek e-posta](./media/review-your-access/access-review-email-preview.png)
+
+2. Erişim gözden geçirmesini açmak için **erişimi gözden geçir** bağlantısına tıklayın.
+
+3. **Erişim gözden geçirmesini gerçekleştirme** bölümünde devam et
+
+>[!NOTE]
+>Başlat İnceleme ' ye tıkladığınızda **uygulamalarım** , uygulamalar **portalından**yukarıdaki bölümde listelenen adımları izleyin.
+
+### <a name="directly-at-my-access"></a>Doğrudan erişimimde
+
+Ayrıca, erişiminizi açmak için tarayıcınızı kullanarak bekleyen erişim incelemelerinizi görüntüleyebilirsiniz.
+
+1. Erişimimde şurada oturum açın:https://myaccess.microsoft.com/
+
+2. Size atanan bekleyen erişim incelemelerinin listesini görmek için sol taraftaki menüden **erişim gözden geçirmeleri** ' nı seçin.
+
+   ![menüdeki erişim İncelemeleri](./media/review-your-access/access-review-menu.png)
+
+### <a name="perform-the-access-review"></a>Erişim gözden geçirmesini gerçekleştir
+
+1. Gruplar ve uygulamalar altında şunları görebilirsiniz:
+    
+    - **Ad** Erişim gözden geçirmesi adı.
+    - **Son tarih** İnceleme için son tarih. Bu tarihten sonra kullanıcılar gözden geçirilmekte olan gruptan veya uygulamadan kaldırılabilir.
+    - **Kaynak** Gözden geçirme kapsamındaki kaynağın adı.
+    - **Ilerleme durumu** Bu erişim incelemesinin Toplam Kullanıcı sayısı üzerinde incelenen Kullanıcı sayısı.
+    
+2. Başlamak için erişim gözden geçirmesi adına tıklayın.
+
+   ![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/review-your-access/access-reviews-list-preview.png)
+
+3. Erişiminizi gözden geçirin ve hâlâ erişime ihtiyacınız olup olmadığına karar verin.
+
+    İstek başkalarının erişimini gözden geçirmektir, sayfa farklı görünür. Daha fazla bilgi için bkz. [gruplara veya uygulamalara erişimi gözden geçirme](perform-access-review.md).
+
+    ![Hala bir gruba erişmeniz gerekip gerekmediğini soran açık erişim gözden geçirme](./media/review-your-access/review-access-preview.png)
+
+1. Erişiminizi korumak için **Evet** ' i seçin veya erişiminizi kaldırmak için **Hayır** ' ı seçin.
+
+1. **Evet**' e tıklarsanız, **neden** kutusunda bir gerekçe belirtmeniz gerekebilir.
+
+    ![Bir gruba erişmeniz gerekip gerekmediğini soran tamamlanmış erişim incelemesi](./media/review-your-access/review-access-yes-preview.png)
+
+1. **Gönder**' e tıklayın.
+
+    Seçiminiz gönderilir ve erişim sayfasına dönersiniz.
 
     Yanıtınızı değiştirmek istiyorsanız, erişim İncelemeleri sayfasını yeniden açın ve yanıtınızı güncelleştirin. Erişim incelemesi sonlanana kadar yanıtınızı dilediğiniz zaman değiştirebilirsiniz.
 

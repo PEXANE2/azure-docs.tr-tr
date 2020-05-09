@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: Güvenlik
       items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
         - name: Yerleşik güvenlik denetimleri
           href: api-management-security-controls.md
     - name: Abonelikler
@@ -101,10 +103,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Şirket içinde barındırılan ağ geçidini sağlama
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Şirket içinde barındırılan ağ geçidini Azure Kubernetes Service’e dağıtma
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: Şirket içinde barındırılan ağ geçidini Docker'a dağıtma
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: Şirket içinde barındırılan ağ geçidi için özel etki alanı yapılandırma
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: Önbellek
@@ -209,12 +213,20 @@
           href: api-management-transformation-policies.md
     - name: Üretimi yönetin
       items:
+        - name: API’leri Power Platform’a dışarı aktarma
+          href: export-api-power-platform.md
         - name: Grupları yönetme
           href: api-management-howto-create-groups.md
         - name: IP adreslerini alma
           href: api-management-howto-ip-addresses.md
         - name: Olayları Azure Event Hubs’a kaydetme
           href: api-management-howto-log-event-hubs.md
+        - name: Azure Application Insights ile istekleri günlüğe kaydetme
+          href: api-management-howto-app-insights.md
+        - name: Şirket içinde barındırılan ağ geçidi için bulut ölçümlerini ve günlüklerini yapılandırma
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: Şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma
+          href: how-to-configure-local-metrics-logs.md
         - name: Azure Application Insights ile istekleri günlüğe kaydetme
           href: api-management-howto-app-insights.md
         - name: Yedekleme/geri yükleme kullanarak DR'yi ayarlama

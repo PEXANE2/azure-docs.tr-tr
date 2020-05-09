@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271093"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735428"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Kullanım DıŞı Bir Kubernetes kümesinde kapsayıcılar dağıtmak için Held kullanma
 
@@ -34,7 +34,7 @@ Held 'nin iki bileşeni vardır:
 
 * Yerel bir bilgisayarda [yükleyip yapılandırma `kubectl` ](../container-service-connect.md)
 
-* Yerel bilgisayara [Held 'Yi yükler](https://github.com/kubernetes/helm/blob/master/docs/install.md)
+* Yerel bilgisayara [Held 'Yi yükler](https://helm.sh/docs/intro/quickstart/)
 
 ## <a name="helm-basics"></a>Hela temelleri 
 
@@ -149,5 +149,5 @@ Artık veritabanları, tablolar vb. oluşturmak için standart SQL komutlarını
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kubernetes grafiklerini yönetme hakkında daha fazla bilgi için [helk belgelerine](https://github.com/kubernetes/helm/blob/master/docs/index.md)bakın. 
+* Kubernetes grafiklerini yönetme hakkında daha fazla bilgi için [helk belgelerine](https://helm.sh/docs/)bakın. 
 

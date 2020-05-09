@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137425"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872547"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme
 
@@ -21,6 +21,8 @@ Cassandra için Azure Cosmos DB API 'sindeki [akış desteğini değiştirme](ch
 Aşağıdaki örnek .NET kullanarak bir Cassandra API keyspace tablosundaki tüm satırlarda nasıl değişiklik akışı alınacağını göstermektedir. COSMOS_CHANGEFEED_START_TIME () koşulu doğrudan CQL içinde, değişiklik akışındaki öğeleri belirli bir başlangıç zamanından (Bu durumda geçerli DateTime) sorgulamak için kullanılır. [Burada C# ve](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [Java için](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)tam örneği indirebilirsiniz.
 
 Her yinelemede sorgu, sayfalama durumu kullanılarak yapılan son noktada devam ediyor. Keyspace 'teki tabloda yeni değişikliklerin sürekli akışını görebiliriz. Eklenen veya güncellenen satırlardaki değişiklikleri görüyoruz. Cassandra API değişiklik akışını kullanarak silme işlemleri için izleme şu anda desteklenmiyor.
+
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,6 +72,9 @@ Her yinelemede sorgu, sayfalama durumu kullanılarak yapılan son noktada devam 
     }
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
         Session cassandraSession = utils.getSession();
 
@@ -104,7 +109,11 @@ Her yinelemede sorgu, sayfalama durumu kullanılarak yapılan son noktada devam 
         }
 
 ```
+---
+
 Birincil anahtara göre tek bir satırdaki değişiklikleri almak için sorguya birincil anahtar ekleyebilirsiniz. Aşağıdaki örnek, "user_id = 1" olduğu satırdaki değişikliklerin nasıl izleneceğini gösterir
+
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -112,11 +121,15 @@ Birincil anahtara göre tek bir satırdaki değişiklikleri almak için sorguya 
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
     String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
                     + dtf.format(now)+ "'";
     SimpleStatement st=new  SimpleStatement(query);
 ```
+---
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 Cassandra API ile değişiklik akışı kullanılırken aşağıdaki sınırlamalar geçerlidir:

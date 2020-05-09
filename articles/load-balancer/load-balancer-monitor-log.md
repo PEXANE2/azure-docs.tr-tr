@@ -11,19 +11,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76935326"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858774"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Genel Temel Yük Dengeleyici için Azure İzleyici günlükleri
-
->[!IMPORTANT]
->Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standart Load Balancer hakkında daha fazla bilgi için bkz. Azure Izleyici 'de çok boyutlu ölçümler aracılığıyla telemetri sunan [Standart Load Balancer genel bakış](load-balancer-standard-overview.md) .
 
 Temel yük dengeleyiciler yönetmek ve sorunlarını gidermek için Azure 'da farklı türlerde Günlükler kullanabilirsiniz. Bu günlüklerden bazılarına Portal üzerinden erişilebilir. Günlükler bir olay hub 'ına veya Log Analytics çalışma alanına akışla eklenebilir. Tüm Günlükler Azure Blob depolamadan ayıklanıp Excel ve Power BI gibi farklı araçlarla görüntülenebilir.  Aşağıdaki listeden farklı türlerdeki Günlükler hakkında daha fazla bilgi edinebilirsiniz.
 

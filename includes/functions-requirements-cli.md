@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: a84f0a92703d1b626710cfc4dcfa2820bc58bda6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673171"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876031"
 ---
 ## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
@@ -24,7 +24,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 + Python 3,6 ve 3,7 için [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) sürüm 2.7.1846 veya sonraki bir 2. x sürümü gerekir. Python 3,8, çekirdek araçların [3. x sürümünü](../articles/azure-functions/functions-run-local.md#v2) gerektirir.
 ::: zone-end
 
-+ [Azure CLI](/cli/azure/install-azure-cli) sürüm 2.0.76 veya üzeri. 
++ [Azure CLI](/cli/azure/install-azure-cli) sürüm 2,4 veya sonraki bir sürümü. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
 + [Node. js](https://nodejs.org/), ETKIN LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
 ::: zone-end

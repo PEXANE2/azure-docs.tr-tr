@@ -1,18 +1,18 @@
 ---
 title: Azure Blueprints’e genel bakış
 description: Azure şemaları hizmetinin Azure ortamınızda yapıt oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677408"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864513"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
-Mühendislerin veya mimarların projenin ana hatlarını oluşturmak için kullandıkları şemalar gibi Azure Blueprints de bulut mimarlarının ve merkezi bilgi teknolojisi gruplarının bir kuruluşun standartlarına, desenlerine ve gereksinimlerine uygun Azure kaynaklarından oluşan tekrarlanabilir bir küme tanımlamasını sağlar. Azure Blueprints geliştirme ekiplerinin yeni ortamları hızlı bir şekilde oluşturup kullanıma almalarını ve bunu yaparken kurumsal uyumluluk çerçevesinde olduklarından ve ağ iletişimi gibi yerleşik bileşenlere sahip olduklarından emin olmalarını mümkün hale getirir.
+Mühendislerin veya mimarların projenin ana hatlarını oluşturmak için kullandıkları şemalar gibi Azure Blueprints de bulut mimarlarının ve merkezi bilgi teknolojisi gruplarının bir kuruluşun standartlarına, desenlerine ve gereksinimlerine uygun Azure kaynaklarından oluşan tekrarlanabilir bir küme tanımlamasını sağlar. Azure şemaları, geliştirme ve teslimin geliştirilmesi için ağ gibi bir yerleşik bileşen kümesi ile kurumsal uyumluluk kapsamında yeni ortamları hızla oluşturup sürekli olarak oluşturma olanağı sağlar.
 
 Blueprints, aşağıdakiler gibi çeşitli kaynak şablonlarını ve diğer yapıtları dağıtma sürecini yönetmenin bildirim temelli bir yoludur:
 
@@ -21,12 +21,11 @@ Blueprints, aşağıdakiler gibi çeşitli kaynak şablonlarını ve diğer yap�
 - Azure Resource Manager şablonları
 - Kaynak Grupları
 
-Azure Blueprints hizmeti, genel olarak dağıtılmış [Azure Cosmos DB](../../cosmos-db/introduction.md) tarafından desteklenir.
-Şema nesneleri birden çok Azure bölgesinde çoğaltılır. Bu çoğaltma, Azure 'un kaynaklarınızı hangi bölgeden dağıttığı bağımsız olarak, şema nesneleriniz için düşük gecikme süresi, yüksek kullanılabilirlik ve tutarlı erişim sağlar.
+Azure Blueprints hizmeti, genel olarak dağıtılmış [Azure Cosmos DB](../../cosmos-db/introduction.md) tarafından desteklenir. Şema nesneleri birden çok Azure bölgesinde çoğaltılır. Bu çoğaltma, Azure 'un kaynaklarınızı hangi bölgeden dağıttığı bağımsız olarak, şema nesneleriniz için düşük gecikme süresi, yüksek kullanılabilirlik ve tutarlı erişim sağlar.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Resource Manager şablonlarından farkı
 
-Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle bir dizi kaynak grubu, ilke, rol ataması ve Resource Manager şablon dağıtımını içerir. Şema, tüm bu _yapıt_ türlerini bir araya getirerek CI/CD işlem hattı dahil olmak üzere oluşturmanızı ve sürüm belirlemenizi sağlayan bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
+Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle bir dizi kaynak grubu, ilke, rol ataması ve Resource Manager şablon dağıtımını içerir. Şema, bu _yapıt_ türlerinin her birini bir araya getiren ve bir CI/CD işlem hattı ile birlikte bu paketi oluşturma ve sürümü oluşturmaya olanak tanıyan bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
 
 Azure şemaları 'nda dağıtım için eklemek istediğiniz neredeyse her şey Kaynak Yöneticisi şablonuyla gerçekleştirilebilir. Ancak Resource Manager şablonu, Azure'da yerel olarak bulunan bir belge değildir, her birinin yerel ortamda veya kaynak denetiminde depolanması gerekir. Şablon bir veya daha fazla Azure kaynağının dağıtılması için kullanılır ancak bu kaynaklar dağıtıldıktan sonra kullanılan şablonla etkin bir bağlantı veya ilişki kalmaz.
 
@@ -124,10 +123,10 @@ Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
 |Nesne|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Şema|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Name|harfler, rakamlar, tireler ve noktalar|48|
 |Şema|Sürüm|harfler, rakamlar, tireler ve noktalar|20|
-|Şema ataması|Adı|harfler, rakamlar, tireler ve noktalar|90|
-|Blueprint yapıtı|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema ataması|Name|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Name|harfler, rakamlar, tireler ve noktalar|48|
 
 ## <a name="video-overview"></a>Genel bakış videosu
 
