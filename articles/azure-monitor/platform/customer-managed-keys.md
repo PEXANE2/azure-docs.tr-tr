@@ -5,15 +5,15 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 05/04/2020
-ms.openlocfilehash: 64dd56339244364340ea9b78fbbe1e63cf611c44
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 05/07/2020
+ms.openlocfilehash: c78d8d603b6686d382ec7edcccc24d5dacc4745a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780836"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982233"
 ---
-# <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Izleyici müşteri tarafından yönetilen anahtar yapılandırması 
+# <a name="azure-monitor-customer-managed-key"></a>Azure Izleyici müşteri tarafından yönetilen anahtar 
 
 Bu makalede, Log Analytics çalışma alanlarınız için müşteri tarafından yönetilen anahtarları (CMK) yapılandırmaya yönelik arka plan bilgileri ve adımlar sağlanmaktadır. Yapılandırıldıktan sonra, çalışma alanlarına gönderilen tüm veriler Azure Key Vault anahtarınızla şifrelenir.
 
@@ -25,29 +25,29 @@ Yapılandırmadan önce aşağıdaki [sınırlamaları ve kısıtlamaları](#lim
 
 - Bu makalede açıklanan CMK dağıtımı, üretim kalitesiyle birlikte dağıtılır ve bir erken erişim özelliği olduğundan desteklenir.
 
-- CMK özelliği, bir Azure Veri Gezgini (ADX) kümesi olan ve günde 1 GB ya da daha fazlasını gönderen müşterilere uygun olan adanmış bir veri deposu kümesine dağıtılır. 
+- CMK özelliği, fiziksel bir küme ve günde 1 GB ya da daha fazlasını gönderen müşteriler için uygun bir veri deposu olan ayrılmış bir Log Analytics kümesinde dağıtılır
 
-- CMK fiyatlandırma modeli şu anda kullanılamaz ve bu makalede ele alınmamaktadır. Takvim yılının (CY) 2020 ' nin ikinci çeyreğinde adanmış ADX kümesine yönelik fiyatlandırma modeli beklenir ve var olan CMK dağıtımları için geçerli olacaktır.
+- CMK fiyatlandırma modeli şu anda kullanılamaz ve bu makalede ele alınmamaktadır. Takvim yılının (CY) 2020 ' nin ikinci çeyreğinde adanmış Log Analytics kümesi için bir fiyatlandırma modeli beklenir ve var olan CMK dağıtımları için geçerli olacaktır.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Müşteri tarafından yönetilen anahtar (CMK) genel bakış
 
 [Bekleyen şifreleme](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) , kuruluşlarda ortak bir gizlilik ve güvenlik gereksinimidir. Azure 'un bekleyen şifrelemeyi tamamen yönetmesine izin verebilir, şifreleme veya şifreleme anahtarlarını yakından yönetmek için çeşitli seçenekleriniz vardır.
 
-Azure Izleyici veri deposu, Azure depolama 'da depolanırken Azure tarafından yönetilen anahtarlar kullanılarak bekleyen tüm verilerin şifrelenmesini sağlar. Azure Izleyici Ayrıca, sistem tarafından atanan [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) doğrulaması kullanılarak erişilen [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)depolanan kendi anahtarınızı kullanarak veri şifrelemesi için bir seçenek sağlar. Bu anahtar, [yazılım ya da donanım HSM korumalı](https://docs.microsoft.com/azure/key-vault/key-vault-overview)olabilir.
+Azure Izleyici depolaması, Azure depolama 'da depolanırken Azure tarafından yönetilen anahtarlar kullanılarak bekleyen tüm verilerin şifrelenmesini sağlar. Azure Izleyici Ayrıca, sistem tarafından atanan [yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) doğrulaması kullanılarak erişilen [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)depolanan kendi anahtarınızı kullanarak veri şifrelemesi için bir seçenek sağlar. Bu anahtar, [yazılım ya da donanım HSM korumalı](https://docs.microsoft.com/azure/key-vault/key-vault-overview)olabilir.
 Azure Izleyici şifreleme kullanımı, [Azure depolama şifrelemesiyle](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption) aynı şekilde çalışır.
 
 Azure Izleyici depolama 'nın sarmalama ve sarmalama işlemleri için Key Vault erişim sıklığı, 6 ila 60 saniye arasındadır.Azure Izleyici depolaması, her zaman bir saat içindeki anahtar izinlerinde yapılan değişikliklere uyar.
 
-Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler CMK yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD 2020 'nin ilk yarısında CMK ile şifrelendiğinden SSD 'yi şifrelebilmemiz için çalışıyoruz.
+Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler CMK yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz bir [anahtar iptalinde](#cmk-kek-revocation) kalır ve erişilemez olur. SSD verilerinin 2020 ikinci yarısında CMK ile şifrelenmesini sağlamak için çalışıyoruz.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Azure Izleyici 'de CMK nasıl çalışmaktadır
 
-Azure Izleyici, Azure Key Vault erişim sağlamak için sistem tarafından atanan yönetilen kimliğin yararlanır.Sistem tarafından atanan yönetilen kimlik, yalnızca tek bir Azure kaynağıyla ilişkilendirilebilir. Azure Izleyici veri deposu (ADX kümesi) kimliği, küme düzeyinde desteklenir ve bu, CMK özelliğinin adanmış bir ADX kümesine teslim edildiğini belirler. Birden çok çalışma alanı üzerinde CMK 'yi desteklemek için yeni bir Log Analytics kaynak (*küme*) Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Bu kavram, sistem tarafından atanan kimlik kısıtlamasına uygundur ve kimlik, ADX kümesi ile Log Analytics *küme* kaynağı arasında saklanır, ancak tüm ilişkili çalışma alanlarının verileri Key Vault anahtarınızla korunur. Underlay ADX küme depolaması, Azure Key Vault kimlik doğrulaması yapmak ve\'Azure Active Directory aracılığıyla erişmek için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır.
+Azure Izleyici, Azure Key Vault erişim sağlamak için sistem tarafından atanan yönetilen kimliğin yararlanır.Sistem tarafından atanan yönetilen kimlik, yalnızca tek bir Azure kaynağıyla ilişkilendirilebilir. Adanmış Log Analytics kümesinin kimliği, küme düzeyinde desteklenir ve bu, CMK özelliğinin adanmış Log Analytics kümesine teslim edildiğini belirler. Birden çok çalışma alanı üzerinde CMK 'yi desteklemek için yeni bir Log Analytics *küme* kaynağı, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Bu kavram, ayrılmış Log Analytics kümesi ve Log Analytics *küme* kaynağı arasındaki kimliği korur, ancak ilişkili çalışma alanlarının verileri Key Vault anahtarınızla korunur. Adanmış Log Analytics küme depolaması, Azure Active Directory aracılığıyla Azure Key Vault kimlik doğrulamak\'ve erişmek için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır.
 
 ![CMK genel bakış](media/customer-managed-keys/cmk-overview-8bit.png)
 1.    Müşterinin Key Vault.
-2.    Müşterinin Log Analytics *küme* kaynağı, Key Vault izinleri olan yönetilen kimliğe sahip: kimlik, veri deposu (ADX kümesi) düzeyinde desteklenir.
-3.    Azure Izleyici adanmış ADX kümesi.
+2.    Müşterinin Log Analytics *küme* kaynağı Key Vault izinleri olan yönetilen kimliğe sahip – kimlik, adanmış Log Analytics kümesi düzeyinde desteklenir.
+3.    Adanmış Log Analytics kümesi.
 4.    CMK şifrelemesi için *küme* kaynağıyla ilişkili müşteri çalışma alanları.
 
 ## <a name="encryption-keys-operation"></a>Şifreleme anahtarları işlemi
@@ -60,7 +60,7 @@ Depolama veri şifrelemesi ile ilgili 3 tür anahtar vardır:
 
 Aşağıdaki kurallar geçerlidir:
 
-- ADX depolama hesapları, AEK olarak bilinen her depolama hesabı için benzersiz bir şifreleme anahtarı oluşturur.
+- Adanmış Log Analytics kümesi depolama hesapları, AEK olarak bilinen her depolama hesabı için benzersiz şifreleme anahtarı oluşturur.
 
 - AEK, diske yazılan her veri bloğunu şifrelemek için kullanılan anahtarlar olan DEKs 'leri türetmek için kullanılır.
 
@@ -75,7 +75,6 @@ Aşağıdaki kurallar geçerlidir:
 1. Abonelik beyaz listesi--bu erken erişim özelliği için gereklidir
 2. Azure Key Vault oluşturma ve anahtar depolama
 3. *Küme* kaynağı oluşturma
-4. Azure Izleyici veri deposu (ADX kümesi) sağlama
 5. Key Vault izinler veriliyor
 6. Log Analytics çalışma alanlarını ilişkilendirme
 
@@ -167,14 +166,21 @@ Zaten oluşturmak için gereken bir Azure Key Vault oluşturun veya kullanın ve
 ![Geçici silme ve Temizleme koruması ayarları](media/customer-managed-keys/soft-purge-protection.png)
 
 Bu ayarlar CLı ve PowerShell aracılığıyla kullanılabilir:
-- [Geçici Silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- [Geçici silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
 - Geçici silme işleminden sonra bile gizli/kasaların silinmesini zorlamak için [koruma koruyucuları temizle](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)
 
 ### <a name="create-cluster-resource"></a>*Küme* kaynağı oluştur
 
 Bu kaynak, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak kullanılır. Aboneliklerinizin beyaz listeye alınmasını doğruladıktan sonra, çalışma alanlarınızın bulunduğu bölgede bir Log Analytics *küme* kaynağı oluşturun.
 
-*Küme* kaynağı oluştururken kapasite ayırma düzeyini (SKU) belirtmeniz gerekir. Kapasite ayırma düzeyi günde 1.000 ila 2.000 GB aralığında olabilir ve daha sonra 100 adımlarında güncelleştirebilirsiniz. Gün başına 2.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, bunu etkinleştirmek için Microsoft kişinize ulaşın. Bu özellik şu anda faturalandırmayı etkilemez; adanmış küme için fiyatlandırma modeli sunulduktan sonra faturalandırma, var olan CMK dağıtımları için geçerli olacaktır.
+*Küme* kaynağı oluştururken *Kapasite ayırma* düzeyini (SKU) belirtmeniz gerekir. *Kapasite ayırma* düzeyi günde 1.000 Ila 2.000 GB aralığında olabilir ve daha sonra 100 adımlarında güncelleştirebilirsiniz. Gün başına 2.000 GB 'den yüksek kapasite ayırma düzeyine ihtiyacınız varsa, adresinden LAIngestionRate@microsoft.combizimle iletişime geçin. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+    
+*Billingtype* özelliği *küme* kaynağı ve verileri için faturalandırma atışmasını belirler:
+- *küme* (varsayılan)--Faturalandırma, *küme* kaynağınızı barındıran abonelikle ilişkilidir
+- *çalışma alanları* --faturalandırma, çalışma alanlarınızı orantılı olarak barındıran aboneliklerle ilişkilidir 
+
+> [!NOTE]
+> *Küme* kaynağını oluşturduktan sonra, düzeltme eki Rest isteği kullanarak *SKU*, *Keyvaultproperties* veya *billingtype* ile güncelleştirebilirsiniz.
 
 **Oluştur**
 
@@ -194,7 +200,7 @@ Content-type: application/json
     "Capacity": 1000
     },
   "properties": {
-    "clusterType": "LogAnalytics",
+    "billingType": "cluster",
     },
   "location": "<region-name>",
 }
@@ -204,13 +210,12 @@ Kimlik, oluşturma zamanında *küme* kaynağına atanır.
 **Yanıtıyla**
 
 200 Tamam ve üst bilgi.
-Özelliğin erken erişim süresi boyunca, ADX kümesi el ile sağlanır. Düşük bir ADX kümesinin tamamlanmasını sağlarken, sağlama durumunu iki şekilde kontrol edebilirsiniz:
+
+Özel Log Analytics kümesinin tamamlanmasını sağlarken, sağlama durumunu iki şekilde kontrol edebilirsiniz:
+
 1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
 2. *Küme* KAYNAĞıNDA bir get isteği gönderin ve *provisioningstate* değerine bakın. Sağlama sırasında *Provisioningaccount* , tamamlandığında *başarılı oldu* .
 
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Izleyici veri deposu (ADX kümesi) sağlama
-
-Özelliğin erken erişim süresi boyunca, ADX kümesi, önceki adımlar tamamlandıktan sonra ürün ekibi tarafından el ile sağlanır. Bu adım için Microsoft kanalınızı kullanın ve *küme* kaynak yanıtını belirtin. 
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -236,7 +241,8 @@ Authorization: Bearer <token>
     },
   "properties": {
     "provisioningState": "ProvisioningAccount",
-    "clusterType": "LogAnalytics", 
+    "clusterType": "LogAnalytics",
+    "billingType": "cluster",
     "clusterId": "cluster-id"
     },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
@@ -273,11 +279,11 @@ KeyVaultProperties *küme* kaynağını anahtar tanımlayıcı ayrıntıları il
 
 Bu Kaynak Yöneticisi isteği, anahtar tanımlayıcı ayrıntıları güncelleştirilirken zaman uyumsuz bir işlemdir, kapasite değeri güncelleştirilirken zaman uyumludur.
 
-> [!Warning]
-> *Küme* kaynak güncelleştirmesinde *kimlik*, *SKU*, *keyvaultproperties* ve *Location*' ı içeren bir tam gövde sağlamanız gerekir. *Keyvaultproperties* ayrıntılarının eksik olması, anahtar tanımlayıcısını *küme* kaynağından kaldırır ve [anahtar iptalinin](#cmk-kek-revocation)oluşmasına neden olur.
+> [!Note]
+> Bir *SKU*, *keyvaultproperties* veya *Billingtype*güncelleştirmek için *küme* kaynağında kısmi gövde sağlayabilirsiniz.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +296,12 @@ Content-type: application/json
      "capacity": 1000
      },
    "properties": {
+    "billingType": "cluster",
      "KeyVaultProperties": {
        KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
        KeyName: "<key-name>",
        KeyVersion: "<current-version>"
-       },
+       }
    },
    "location":"<region-name>"
 }
@@ -323,13 +330,14 @@ Anahtar tanımlayıcı güncelleştirmesi tamamlandığında, *küme* kaynağın
     "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
     },
   "properties": {
-    "KeyVaultProperties": {
-      KeyVaultUri: "https://key-vault-name.vault.azure.net",
-      KeyName: "key-name",
-      KeyVersion: "current-version"
+    "keyVaultProperties": {
+      keyVaultUri: "https://key-vault-name.vault.azure.net",
+      kyName: "key-name",
+      keyVersion: "current-version"
       },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
+    "billingType": "cluster",
     "clusterId": "cluster-id"
   },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
@@ -347,7 +355,7 @@ Bu işlemi gerçekleştirmek için hem çalışma alanınız hem de *küme* kayn
 - *Küme* kaynağında: Microsoft. Operationalınsights/kümeler/yaz
 
 > [!IMPORTANT]
-> Bu adım yalnızca ADX küme sağlamasının ardından gerçekleştirilmelidir. Sağlama öncesinde çalışma alanlarını ve veri alma verilerini ilişkilendirirseniz, alınan veriler bırakılır ve kurtarılmayacaktır.
+> Bu adım yalnızca adanmış Log Analytics kümesi sağlama işleminin tamamlanmasından sonra gerçekleştirilmelidir. Sağlama öncesinde çalışma alanlarını ve veri alma verilerini ilişkilendirirseniz, alınan veriler bırakılır ve kurtarılmayacaktır.
 
 **Çalışma alanını ilişkilendirme**
 
@@ -368,7 +376,9 @@ Content-type: application/json
 **Yanıtıyla**
 
 200 Tamam ve üst bilgi.
+
 Alınan veriler ilişkilendirme işleminden sonra yönetilen anahtarınızla şifrelenmiş olarak depolanır, bu da tamamlanması 90 dakika sürebilir. Çalışma alanı ilişkilendirme durumunu iki şekilde kontrol edebilirsiniz:
+
 1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
 2. [Çalışma alanları gönderme – Istek al](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) ve yanıtı gözlemleyin, ilişkili çalışma alanı "Özellikler" altında bir kümelekoya sahip olur.
 
@@ -410,7 +420,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK (KEK) iptali
 
-Anahtarınızı devre dışı bırakarak veya Key Vault *küme* kaynağı erişim ilkesini silerek verilerinize erişiminizi iptal edebilirsiniz. Azure Izleyici depolaması, her zaman bir saat içindeki anahtar izinlerinde yapılan değişikliklere göre her zaman uygulanır, normalde daha erken ve depolama kullanılamaz hale gelir. *Küme* kaynağınız ile ilişkili çalışma alanlarına alınan tüm veriler bırakılır ve sorgular başarısız olur. Daha önce alınan veriler, *küme* kaynağınız olduğunuz ve çalışma alanlarınızın silinmediği sürece Azure izleyici depolamada erişilemez durumda kalır. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bekletmeye ulaşıldığında temizlenir.
+Anahtarınızı devre dışı bırakarak veya Key Vault *küme* kaynağı erişim ilkesini silerek verilerinize erişiminizi iptal edebilirsiniz. Azure Izleyici depolaması, her zaman bir saat içindeki anahtar izinlerinde yapılan değişikliklere göre her zaman uygulanır, normalde daha erken ve depolama kullanılamaz hale gelir. *Küme* kaynağınız ile ilişkili çalışma alanlarına alınan tüm veriler bırakılır ve sorgular başarısız olur. Daha önce alınan veriler, *küme* kaynağınız olduğunuz ve çalışma alanlarınızın silinmediği sürece Azure izleyici depolamada erişilemez durumda kalır. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bekletmeye ulaşıldığında temizlenir. 
+
+Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler CMK yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak anahtar iptali işleminde silinir ve erişilemez hale gelir.
 
 Depolama, şifreleme anahtarını sarmalamak ve erişildikten sonra, veri alımı ve sorgu 30 dakika içinde devam ettirmeye çalışmak için Key Vault düzenli aralıklarla yoklar.
 
@@ -421,15 +433,15 @@ Tüm verileriniz, döndürmeden önce ve sonra gelen veriler de dahil olmak üze
 
 ## <a name="limitations-and-constraints"></a>Sınırlamalar ve kısıtlamalar
 
-- CMK özelliği, ADX küme düzeyinde desteklenir ve günde 1 GB veya daha fazla TB gönderme gereksinimi içeren adanmış bir Azure Izleyici ADX kümesi gerektirir.
+- CMK, günde 1 GB veya daha fazla TB gönderen müşterilere uygun adanmış Log Analytics kümesinde desteklenir.
 
-- Abonelik başına en fazla *küme* kaynağı sayısı 2 ile sınırlıdır
+- Her bölge ve abonelik için en fazla *küme* kaynağı sayısı 2 ' dir
 
-- Çalışma alanına yönelik *küme* kaynağı ILIŞKILENDIRMESI, yalnızca ADX küme sağlama tamamlandığını doğruladıktan sonra yapılmalıdır. Hazırlama işlemi tamamlanmadan önce çalışma alanınıza gönderilen veriler bırakılır ve geri alınamaz.
+- Bir çalışma alanını *küme* kaynağınız ile ilişkilendirebilir ve ardından, verileri için CMK artık gerekli olmadığında veya başka bir nedenden dolayı onu ilişkilendirebilirsiniz. 30 günlük sürede bir çalışma alanında gerçekleştirebileceğiniz çalışma alanı ilişkilendirmesi sayısı 2 ile sınırlıdır
+
+- *Küme* kaynağıyla çalışma alanı ilişkilendirmesi yalnızca adanmış Log Analytics kümesi sağlama tamamlandığını doğruladıktan sonra taşınmalıdır. Tamamlanmadan önce çalışma alanınıza gönderilen veriler bırakılır ve geri alınamaz.
 
 - CMK şifrelemesi, CMK yapılandırmasından sonra yeni alınan veriler için geçerlidir. CMK yapılandırmasından önce alınan veriler, Microsoft anahtarıyla şifreli olarak kalır. CMK yapılandırmasından önce ve sonra gelen verileri sorunsuz bir şekilde sorgulayabilirsiniz.
-
-- Söz konusu çalışma alanı için CMK 'nin gerekli olmadığını saptarken bir *küme* kaynağından bir çalışma alanı ilişkilendirebilirsiniz. Serbest ilişkilendirme işleminden sonra yeni alınan veriler, *küme* kaynağıyla ilişkilendirilmeden önce olduğundan, paylaşılan Log Analytics depolama alanında depolanır. *Küme* kaynağınızın sağlanması ve geçerli Key Vault anahtarıyla yapılandırılması durumunda, aynı şekilde, yeniden ilişkilendirmeden önce ve sonra gelen verileri sorgulayabilirsiniz.
 
 - Azure Key Vault kurtarılabilir olarak yapılandırılmalıdır. Bu özellikler varsayılan olarak etkinleştirilmemiştir ve CLı veya PowerShell kullanılarak yapılandırılmalıdır:
 
@@ -443,26 +455,9 @@ Tüm verileriniz, döndürmeden önce ve sonra gelen veriler de dahil olmak üze
 - *Küme* kaynağıyla çalışma alanı ilişkilendirmesi, başka bir *küme* kaynağıyla ilişkiliyse başarısız olur
 
 
-## <a name="troubleshooting-and-management"></a>Sorun giderme ve yönetim
+## <a name="management"></a>Yönetim
 
-- Key Vault kullanılabilirlik konuları
-    - Normal işlemde--depolama, kısa süreler için AEK önbelleğe alınır ve düzenli aralıklarla sarmalaması için Key Vault geri gider.
-    
-    - Geçici bağlantı hataları--depolama, anahtarların kısa bir süre boyunca önbellekte kalmasına izin vererek geçici hataları (zaman aşımları, bağlantı hataları, DNS sorunları) işler ve bu da tüm küçük sinyalleri 'leri kullanılabilirliğinden fazla. Sorgu ve alma özellikleri kesinti olmadan devam eder.
-    
-    - Canlı site--yaklaşık 30 dakikalık bir işlem, depolama hesabının kullanılamaz hale gelmesine neden olur. Sorgu özelliği kullanılamaz ve veri kaybını önlemek için Microsoft anahtar kullanarak birkaç saat boyunca önbelleğe alınır. Key Vault erişimi geri yüklendiğinde, sorgu kullanılabilir hale gelir ve geçici önbelleğe alınmış veriler veri deposuna alınır ve CMK ile şifrelenir.
-
-- Bir *küme* kaynağı oluşturur ve KeyVaultProperties 'i hemen belirtirseniz, sistem kimliği *küme* kaynağına atanana kadar erişim ilkesi tanımlanmadığından işlem başarısız olabilir.
-
-- Mevcut *küme* kaynağını KeyVaultProperties ile güncelleştirirseniz ve ' Get ' anahtar erişim ilkesi Key Vault eksik olduğunda, işlem başarısız olur.
-
-- Bir çalışma alanıyla ilişkili bir *küme* kaynağını silmeye çalışırsanız, silme işlemi başarısız olur.
-
-- Bir *küme* kaynağı oluştururken çakışma hatası alırsanız, *küme* kaynağınızı son 14 gün içinde silmiş ve bu da geçici silme döneminde olabilir. *Küme* kaynak adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Ad, *küme* kaynağı kalıcı olarak silindiğinde geçici silme süresinden sonra serbest bırakılır.
-
-- Bir işlem devam ederken *küme* kaynağınızı güncelleştirirseniz, işlem başarısız olur.
-
-- Bir kaynak grubu için tüm *küme* kaynaklarını al:
+- **Kaynak grubu için tüm *küme* kaynaklarını al**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -493,6 +488,7 @@ Tüm verileriniz, döndürmeden önce ve sonra gelen veriler de dahil olmak üze
               },
           "provisioningState": "Succeeded",
           "clusterType": "LogAnalytics", 
+          "billingType": "cluster",
           "clusterId": "cluster-id"
         },
         "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
@@ -504,7 +500,7 @@ Tüm verileriniz, döndürmeden önce ve sonra gelen veriler de dahil olmak üze
   }
   ```
 
-- Bir abonelik için tüm *küme* kaynaklarını al:
+- **Bir abonelik için tüm *küme* kaynaklarını al**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -515,9 +511,58 @@ Tüm verileriniz, döndürmeden önce ve sonra gelen veriler de dahil olmak üze
     
   ' Kaynak grubu için*küme* kaynakları ' için aynı yanıt, ancak abonelik kapsamı.
 
-- *Küme* kaynağında *Kapasite ayırmayı* Güncelleştir--ilişkili çalışma alanlarınızın veri hacmi değiştiğinde ve faturalandırma hususları için kapasite ayırma düzeyini güncelleştirmek istediğinizde, [ *küme* kaynağını güncelleştirin](#update-cluster-resource-with-key-identifier-details) ve yeni kapasite değerini sağlayın. Kapasite ayırma düzeyi 1.000 aralığında, gün başına 2.000 GB ve 100 adımlarında olabilir. Günde 2.000 GB 'den yüksek düzey için, Microsoft kişinize ulaşın.
+- ***Küme* kaynağında *Kapasite ayırmayı* Güncelleştir**
 
-- *Küme* kaynağınızı silme--bu işlemi gerçekleştirmek için *küme* kaynağında ' yazma ' izinlerine sahip olmanız gerekir. Silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, verileri 14 gün içinde içeren *küme* kaynağınızın kurtarılmasına izin vermek için bir geçici silme işlemi yapılır. *Küme* kaynak adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Geçici silme süresinden sonra, *küme* kaynağı adı serbest bırakılır, *küme* kaynağınız ve verileriniz kalıcı olarak silinir ve kurtarılamaz. Herhangi bir ilişkili çalışma alanı silme işleminde *küme* kaynağı ile ilişkili olur. Yeni alınan veriler paylaşılan Log Analytics depolama alanında depolanır ve Microsoft anahtarıyla şifrelenir. Çalışma alanları ile ilişkili işlem zaman uyumsuzdur.
+  İlişkili çalışma alanlarınızın veri hacmi zaman içinde değişiklik yaparken ve kapasite ayırma düzeyini uygun şekilde güncellemek istediğinizde. [Güncelleştirme *kümesi* kaynağını](#update-cluster-resource-with-key-identifier-details) izleyin ve yeni kapasite değerini sağlayın. Bu, gün başına 1.000 GB ve 100 adımlarında 2.000 arasında olabilir. Günde 2.000 GB 'den yüksek düzey için, Microsoft kişinize ulaşın. Tam REST istek gövdesini sağlamanız ve SKU 'yu içermesi gerektiğini unutmayın:
+
+  ```json
+  {
+    "sku": {
+      "name": "capacityReservation",
+      "Capacity": 1000
+    }
+  }
+  ``` 
+
+- ***Küme* kaynağında *billingtype* güncelleştirme**
+
+  *Billingtype* özelliği *küme* kaynağı ve verileri için faturalandırma atışmasını belirler:
+  - *küme* (varsayılan)--Faturalandırma, küme kaynağınızı barındıran abonelikle ilişkilidir
+  - *çalışma alanları* --faturalandırma, çalışma alanlarınızı orantılı olarak barındıran aboneliklerle ilişkilidir
+  
+  [Güncelleştirme *kümesi* kaynağını](#update-cluster-resource-with-key-identifier-details) Izleyin ve yeni billingtype değerini sağlayın. Tam REST istek gövdesini sağlamanız gerekmez ve *Billingtype*öğesini içermelidir:
+
+  ```json
+  {
+    "properties": {
+      "billingType": "cluster",
+      }  
+  }
+  ``` 
+
+- **Çalışma alanını ilişkili olarak kaldır**
+
+  Bu işlemi gerçekleştirmek için çalışma alanında ve *küme* kaynağında ' yazma ' izinlerine sahip olmanız gerekir. Bir çalışma alanını *küme* kaynağından dilediğiniz zaman ilişkilendirebilirsiniz. Yeniden ilişkilendirme işleminden sonra yeni alınan veriler Log Analytics depolama alanında depolanır ve Microsoft anahtarıyla şifrelenir. *Küme* kaynağı sağlandığı ve geçerli Key Vault anahtarıyla yapılandırıldığı sürece, aynı şekilde, çalışma alanınıza alınan verileri, aynı şekilde yeniden ilişkilendirmeden önce ve sonra sorunsuz bir şekilde sorgulayabilirsiniz.
+
+  Bu Kaynak Yöneticisi isteği zaman uyumsuz bir işlemdir.
+
+  ```rest
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
+  ```
+
+  **Yanıtıyla**
+
+  200 Tamam ve üst bilgi.
+
+  Verileri kaldırma işlemi Log Analytics depolama alanında depolandıktan sonra alınan veriler, bu işlemin tamamlanması 90 dakika sürebilir. Çalışma alanı ilişkisini kaldırma durumunu iki şekilde denetleyebilirsiniz:
+
+  1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
+  2. [Çalışma alanları gönderme – Isteği al](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) ve yanıtı gözlemleyin, ancak ilişkili çalışma alanının *Özellikler*bölümünde *kümelekoya* sahip olmayacaktır.
+
+
+- ***Küme* kaynağınızı silme**
+
+  Bu işlemi gerçekleştirmek için *küme* kaynağında ' yazma ' izinlerine sahip olmanız gerekir. Silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, verileri 14 gün içinde içeren *küme* kaynağınızın kurtarılmasına izin vermek için bir geçici silme işlemi yapılır. *Küme* kaynak adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Geçici silme süresinden sonra, *küme* kaynağı adı serbest bırakılır, *küme* kaynağınız ve verileriniz kalıcı olarak silinir ve kurtarılamaz. Herhangi bir ilişkili çalışma alanı silme işleminde *küme* kaynağı ile ilişkili olur. Yeni alınan veriler Log Analytics depolama alanında depolanır ve Microsoft anahtarıyla şifrelenir. Çalışma alanları ile ilişkili işlem zaman uyumsuzdur ve tamamlanması 90 dakika sürebilir.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -528,5 +573,25 @@ Tüm verileriniz, döndürmeden önce ve sonra gelen veriler de dahil olmak üze
 
   200 TAMAM
 
-- *Küme* kaynağınızı ve verilerinizi kurtarma--son 14 gün Içinde silinen bir *küme* kaynağı, geçici silme durumunda ve kurtarılabilir. Bu, şu anda ürün grubu tarafından el ile gerçekleştirilir. Kurtarma isteklerinde Microsoft kanalınızı kullanın.
+- ***Küme* kaynağınızı ve verilerinizi kurtarma** 
+  
+  Son 14 gün içinde silinen bir *küme* kaynağı, geçici silme durumunda ve kurtarılabilir. Bu, şu anda ürün grubu tarafından el ile gerçekleştirilir. Kurtarma isteklerinde Microsoft kanalınızı kullanın.
 
+
+## <a name="troubleshooting"></a>Sorun giderme
+- Key Vault kullanılabilirliği ile davranış
+  - Normal işlemde--depolama, kısa süreler için AEK önbelleğe alınır ve düzenli aralıklarla sarmalaması için Key Vault geri gider.
+    
+  - Geçici bağlantı hataları--depolama, anahtarların kısa bir süre boyunca önbellekte kalmasına izin vererek geçici hataları (zaman aşımları, bağlantı hataları, DNS sorunları) işler ve bu da tüm küçük sinyalleri 'leri kullanılabilirliğinden fazla. Sorgu ve alma özellikleri kesinti olmadan devam eder.
+    
+  - Canlı site--yaklaşık 30 dakikalık bir işlem, depolama hesabının kullanılamaz hale gelmesine neden olur. Sorgu özelliği kullanılamaz ve veri kaybını önlemek için Microsoft anahtar kullanarak birkaç saat boyunca önbelleğe alınır. Key Vault erişimi geri yüklendiğinde, sorgu kullanılabilir hale gelir ve geçici önbelleğe alınmış veriler veri deposuna alınır ve CMK ile şifrelenir.
+
+- Bir *küme* kaynağı oluşturur ve KeyVaultProperties 'i hemen belirtirseniz, sistem kimliği *küme* kaynağına atanana kadar erişim ilkesi tanımlanmadığından işlem başarısız olabilir.
+
+- Mevcut *küme* kaynağını KeyVaultProperties ile güncelleştirirseniz ve ' Get ' anahtar erişim ilkesi Key Vault eksik olduğunda, işlem başarısız olur.
+
+- Bir çalışma alanıyla ilişkili bir *küme* kaynağını silmeye çalışırsanız, silme işlemi başarısız olur.
+
+- Bir *küme* kaynağı oluştururken çakışma hatası alırsanız, *küme* kaynağınızı son 14 gün içinde silmiş ve bu da geçici silme döneminde olabilir. *Küme* kaynak adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Ad, *küme* kaynağı kalıcı olarak silindiğinde geçici silme süresinden sonra serbest bırakılır.
+
+- Bir işlem devam ederken *küme* kaynağınızı güncelleştirirseniz, işlem başarısız olur.
