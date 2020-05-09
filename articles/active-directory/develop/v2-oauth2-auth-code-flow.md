@@ -1,5 +1,6 @@
 ---
-title: OAuth yetkilendirme kodu akışı-Microsoft Identity platform | Mavisi
+title: Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı | Mavisi
+titleSuffix: Microsoft identity platform
 description: OAuth 2,0 kimlik doğrulama protokolünün Microsoft Identity platform uygulamasını kullanarak Web uygulamaları oluşturun.
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b01a0a9162412092f9339810a51838c4bdbb0a20
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: HT
+ms.openlocfilehash: 29720b338326a29e65af1b6564cb0b59a976c62c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864190"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926451"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -25,11 +26,11 @@ OAuth 2,0 yetkilendirme kodu verme, Web API 'Leri gibi korumalı kaynaklara eri�
 
 Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılacağı açıklanır.  Mümkün olduğunda, [belirteçleri edinmek ve güvenli Web API 'lerini çağırmak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)Için desteklenen Microsoft kimlik doğrulama KITAPLıKLARıNı (msal) kullanmanızı öneririz.  Ayrıca [, msal kullanan örnek uygulamalara](sample-v2-code.md)göz atın.
 
-OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. [Web uygulamaları](v2-app-types.md#web-apps) ve [yerel olarak yüklenen uygulamalar](v2-app-types.md#mobile-and-native-apps)dahil olmak üzere uygulama türlerinin çoğunda kimlik doğrulama ve yetkilendirme gerçekleştirmek için kullanılır. Flow, uygulamaların Microsoft Identity platform uç noktası tarafından güvenliği sağlanmış kaynaklara erişmek için kullanılabilecek access_tokens güvenli bir şekilde almasına olanak sağlar.
+OAuth 2,0 yetkilendirme kodu akışı, [oauth 2,0 belirtiminin 4,1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmaktadır. [Web uygulamaları](v2-app-types.md#web-apps) ve [yerel olarak yüklenen uygulamalar](v2-app-types.md#mobile-and-native-apps)dahil olmak üzere uygulama türlerinin çoğunda kimlik doğrulama ve yetkilendirme gerçekleştirmek için kullanılır. Bu OAuth akışı, uygulamaların Microsoft Identity platform uç noktası tarafından güvenliği sağlanmış kaynaklara erişmek için kullanılabilecek access_tokens güvenli bir şekilde almasına olanak sağlar.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
-Yüksek düzeyde, yerel/mobil uygulama için tüm kimlik doğrulama akışı şuna benzer bir bit:
+Yüksek düzeyde, yerel/mobil uygulama için tüm OAuth2 kimlik doğrulama akışı şuna benzer bir bit:
 
 ![OAuth kimlik doğrulama kod akışı](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
@@ -148,7 +149,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | gerekli   | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, ilk Bata istenen kapsamların alt kümesiyle veya buna eşit olmalıdır. Kapsamların tümü tek bir kaynaktan olmalıdır ve OıDC kapsamları (`profile`, `openid`, `email`) ile birlikte. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
 | `code`          | gerekli  | Akışın ilk Bata elde ettiğiniz authorization_code. |
 | `redirect_uri`  | gerekli  | Authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
-| `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda güvenilir bir şekilde depolanamadığı için, yerel bir uygulamada uygulama gizli anahtarını kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. Daha fazla bilgi için [buraya](https://tools.ietf.org/html/rfc3986#page-12)tıklayın. |
+| `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda güvenilir bir şekilde depolanamadığı için, yerel bir uygulamada uygulama gizli anahtarını kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. Daha fazla bilgi için bkz. [URI genel sözdizimi belirtimi](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | isteğe bağlı  | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Başarılı yanıt
@@ -260,7 +261,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | gerekli    | Yetkilendirme kodu `refresh_token` akışının bu bacağı için olmalıdır. |
 | `scope`         | gerekli    | Kapsamların boşlukla ayrılmış listesi. Bu Bata istenen kapsamlar, özgün authorization_code isteği balarında istenen kapsamların bir alt kümesiyle eşit olmalıdır. Bu istekte belirtilen kapsamlar birden çok kaynak sunucusuna yayılsa, Microsoft Identity platform uç noktası ilk kapsamda belirtilen kaynak için bir belirteç döndürür. Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. |
 | `refresh_token` | gerekli    | Akışın ikinci Bada elde ettiğiniz refresh_token. |
-| `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets, cihazlarda güvenilir bir şekilde depolanamadığı için yerel bir uygulamada kullanılmamalıdır. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir. Bu parolanın URL kodlamalı olması gerekir, daha fazla bilgi için [buraya](https://tools.ietf.org/html/rfc3986#page-12)tıklayın. |
+| `client_secret` | Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets, cihazlarda güvenilir bir şekilde depolanamadığı için yerel bir uygulamada kullanılmamalıdır. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir. Bu parolanın URL kodlamalı olması gerekir. Daha fazla bilgi için bkz. [URI genel sözdizimi belirtimi](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Başarılı yanıt
 

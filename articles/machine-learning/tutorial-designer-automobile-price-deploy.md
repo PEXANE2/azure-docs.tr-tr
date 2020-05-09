@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma'
+title: 'Öğretici: tasarımcı ile ML modellerini dağıtma'
 titleSuffix: Azure Machine Learning
 description: Bu öğreticide, Azure Machine Learning tasarımcısında bir tahmine dayalı analiz çözümü oluşturma (Önizleme) gösterilmektedir. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
 author: peterclu
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8c38707f68b5841edb39e4527ec2cdcb1a35adf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389401"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983389"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]

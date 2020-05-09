@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: fc7551c081d14a871c8ee96610ca7190f629901d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 62546fc98429c3a28217b1992f803aa40ce615c8
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790975"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982352"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Öğretici: Spark havuzları için Apache Spark uygulamalar oluşturmak için Azure Toolkit for IntelliJ kullanma (Önizleme)
 
@@ -143,7 +143,7 @@ Bir Scala uygulaması oluşturduktan sonra, uzaktan çalıştırabilirsiniz.
     |Ana sınıf adı|Varsayılan değer, seçili dosyadaki ana sınıftır. Üç nokta (**...**) simgesini seçip başka bir sınıf seçerek sınıfı değiştirebilirsiniz.|
     |İş yapılandırması|Varsayılan anahtar ve değerleri değiştirebilirsiniz. Daha fazla bilgi için bkz. [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Komut satırı bağımsız değişkenleri|Gerekirse ana sınıf için boşlukla ayrılmış bağımsız değişkenler girebilirsiniz.|
-    |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Azure sanal dosya sisteminde, şu anda yalnızca ADLS Gen 2 kümesini destekleyen dosyalara da gidebilirsiniz. Daha fazla bilgi için: yapılandırma ve [kaynakları kümeye yükleme](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) .|
+    |Başvurulan Jliler ve başvurulan dosyalar|Varsa, başvurulan jars ve dosyalar için yollar girebilirsiniz. Yalnızca ADLS 2. kümesini destekleyen Azure sanal dosya sistemindeki dosyalara da gidebilirsiniz. Daha fazla bilgi için: yapılandırma ve [kaynakları kümeye yükleme](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [Apache Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) .|
     |İş yükleme depolaması|Ek seçenekleri açığa çıkarmak için genişletin.|
     |Depolama Türü|Açılan listeden **karşıya yüklemek Için Azure blobu kullan** ' ı seçin.|
     |Depolama Hesabı|Depolama hesabınızı girin.|
