@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691810"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983916"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
@@ -67,7 +67,7 @@ Hayır. sınıf laboratuvarında bir VM 'ye ek diskler eklemek mümkün değildi
 Bir derslik laboratuvarına en fazla 400 kullanıcı ekleyebilirsiniz. 
 
 ## <a name="blog-post"></a>Blog gönderisi
-[Azure Lab Services bloguna](https://azure.microsoft.com/blog/tag/azure-lab-services/)abone olun.
+[Azure Lab Services bloguna](https://aka.ms/azlabs-blog)abone olun.
 
 ## <a name="update-notifications"></a>Güncelleştirme bildirimleri
 Laboratuvar Hizmetleri 'ndeki yeni özellikler hakkında bilgi sahibi olmak için [Laboratuvar Hizmetleri güncelleştirmelerine](https://azure.microsoft.com/updates/?product=lab-services) abone olun.
