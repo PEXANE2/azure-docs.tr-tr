@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652803"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995301"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasıyla ilgili sorunları giderme
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Azure Otomasyonu durum yapılandırması sorunlarını giderme
 
 Bu makalede, Azure Otomasyonu durum yapılandırması 'nda yapılandırmaları derlerken veya dağıtırken ortaya çıkan sorunları gidermeye yönelik bilgiler sağlanmaktadır.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)bölümündeki adımları izleyerek modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="diagnose-an-issue"></a>Bir sorunu Tanıla
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, hatalı veya geçerliliği olumsuz bir sertifika nedeniyle oluşur. Bkz. [sertifika süre sonu ve yapılabilir](../automation-dsc-onboarding.md#re-registering-a-node).
+Bu sorun, hatalı veya geçerliliği olumsuz bir sertifika nedeniyle oluşur. Bkz. [bir düğümü yeniden kaydetme](../automation-dsc-onboarding.md#re-register-a-node).
 
 Bu sorun, ***. Azure-Automation.net**erişimine izin verilmeyen bir ara sunucu yapılandırması nedeniyle de oluşabilir. Daha fazla bilgi için bkz. [özel ağların yapılandırması](../automation-dsc-overview.md#network-planning). 
 
@@ -239,11 +236,11 @@ Yapılandırmada bir kimlik bilgisi kullandınız, ancak her düğüm yapıland�
 
 Yapılandırmada belirtilen her düğüm yapılandırması için doğru `ConfigurationData` olarak ayarlanması `PSDscAllowPlainTextPassword` için doğru şekilde geçiş yaptığınızdan emin olun. Bkz. [Azure Otomasyonu durum YAPıLANDıRMASıNDA DSC yapılandırmalarını derleme](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Senaryo: bir DSC uzantısından ekleme sırasında "uzantı işlenemedi" hatası
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Senaryo: bir makineyi DSC uzantısından etkinleştirirken "uzantı işleme hatası" hatası
 
 ### <a name="issue"></a>Sorun
 
-Bir DSC Uzantısı kullanarak eklediğinizde, şu hatayı içeren bir hata oluşur:
+Bir DSC Uzantısı kullanarak bir makineyi etkinleştirdiğinizde, şu hatayı içeren bir hata oluşur:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ Bu hata genellikle, düğüme hizmette mevcut olmayan bir düğüm yapılandırm
 ### <a name="resolution"></a>Çözüm
 
 * Düğümü, hizmette adıyla tam olarak eşleşen bir adla atadığınızdan emin olun.
-* Düğüm yapılandırma adını eklemeyi tercih edebilirsiniz; Bu, düğümü ekleme, ancak düğüm yapılandırması atamakla sonuçlanır.
+* Düğüm yapılandırma adını eklemeyi tercih edebilirsiniz; Bu, düğümü etkinleştirmeye, ancak düğüm yapılandırması atamamasına neden olur.
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>Senaryo: bir düğümü PowerShell kullanarak kaydederken "bir veya daha fazla hata oluştu" hatası
 
@@ -274,10 +271,10 @@ Bu hata, Otomasyon hesabı tarafından kullanılan bir düğümü ayrı bir abon
 
 ### <a name="resolution"></a>Çözüm
 
-Abonelikler arası düğümü ayrı bir bulut veya şirket içi için tanımlanmış gibi değerlendirin. Şu ekleme seçeneklerinden birini kullanarak düğümü kaydedin:
+Abonelikler arası düğümü ayrı bir bulut veya şirket içi için tanımlanmış gibi değerlendirin. Makineleri etkinleştirmek için şu seçeneklerden birini kullanarak düğümü kaydedin:
 
-* Windows: [Şirket içinde veya Azure/AWS dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
-* Linux: [Şirket içinde veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Linux makineler](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
+* Windows: [Şirket içinde veya Azure/AWS dışındaki bir bulutta bulunan fiziksel/sanal Windows makineleri](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines).
+* Linux: [Şirket içinde veya Azure dışındaki bir bulutta bulunan fiziksel/sanal Linux makineler](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines).
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>Senaryo: "sağlama başarısız oldu" hata iletisi
 

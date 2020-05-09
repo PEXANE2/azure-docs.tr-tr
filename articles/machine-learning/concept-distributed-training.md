@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385551"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995032"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning ile dağıtılmış eğitim
 
 Bu makalede, dağıtılmış eğitim ve Azure Machine Learning derin öğrenme modelleri için nasıl destekleyeceğinizi öğreneceksiniz. 
 
-Dağıtılmış eğitiminde, bir modeli eğitme iş yükü, çalışan düğümleri olarak adlandırılan birden çok mini işlemci arasında bölünür ve paylaşılır. Bu çalışan düğümleri, model eğitiminin hızlandırılmasına yönelik paralel olarak çalışır. Dağıtılmış eğitim geleneksel ML modelleri için kullanılabilir, ancak eğitim derin sinir ağları için [derin öğrenme](concept-deep-learning-vs-machine-learning.md) gibi işlem ve zaman yoğun görevler için daha uygundur.
+Dağıtılmış eğitiminde, bir modeli eğitme iş yükü, çalışan düğümleri olarak adlandırılan birden çok mini işlemci arasında bölünür ve paylaşılır. Bu çalışan düğümleri, model eğitiminin hızlandırılmasına yönelik paralel olarak çalışır. Dağıtılmış eğitim geleneksel ML modelleri için kullanılabilir, ancak eğitim derin sinir ağları için [derin öğrenme](concept-deep-learning-vs-machine-learning.md) gibi işlem ve zaman yoğun görevler için daha uygundur. 
 
 ## <a name="deep-learning-and-distributed-training"></a>Derin öğrenme ve dağıtılmış eğitim 
 
@@ -36,7 +36,9 @@ Dağıtılmış eğitim gerektirmeyen ML modelleriyle ilgili olarak, Python SDK 
 
 Veri paralelliği, iki dağıtılmış eğitim yaklaşımını uygulamanın en kolay yoludur ve çoğu kullanım durumu için yeterlidir.
 
-Bu yaklaşımda veriler, bölüm sayısının işlem kümesinde kullanılabilir düğümlerin toplam sayısına eşit olduğu bölümlere ayrılır. Model bu çalışan düğümlerinin her birine kopyalanır ve her çalışan, verilerin kendi alt kümesinde çalışır. Her bir düğümün eğitilen modeli desteklemek için kapasiteye sahip olması gerektiğini unutmayın. Bu, modelin her düğüme tamamen sığması gerekir.
+Bu yaklaşımda veriler, bölüm sayısının işlem kümesinde kullanılabilir düğümlerin toplam sayısına eşit olduğu bölümlere ayrılır. Model bu çalışan düğümlerinin her birine kopyalanır ve her çalışan, verilerin kendi alt kümesinde çalışır. Her bir düğümün eğitilen modeli desteklemek için kapasiteye sahip olması gerektiğini unutmayın. Bu, modelin her düğüme tamamen sığması gerekir. Aşağıdaki diyagramda bu yaklaşımın görsel bir gösterimi sunulmaktadır.
+
+![Veri-paralellik-kavram-diyagram](./media/concept-distributed-training/distributed-training.svg)
 
 Her düğüm, kendi eğitim örnekleri ve etiketli çıkışlar için tahminleri arasındaki hataları bağımsız olarak hesaplar. Sırasıyla, her düğüm kendi modelini hatalara göre güncelleştirir ve ilgili modellerini güncelleştirmek için diğer düğümlerdeki tüm değişikliklerini iletmelidir. Bu, çalışan düğümlerinin, tutarlı bir modele eğitim aldığından emin olmak için Batch hesaplamasının sonundaki model parametrelerini veya degradelerini eşitlemesini gerektiren anlamına gelir. 
 
