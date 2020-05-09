@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2019
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60349853"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926485"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
 Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
@@ -99,7 +99,6 @@ Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü l
 | 1 $ Supportednonlocaldbınstall yükseltildi |SQL Server Express LocalDB veritabanı kullandeğilsiniz. |
 | Yükseltildi nominal olmayan Msolaccount |[AD DS bağlayıcı hesabı](reference-connect-accounts-permissions.md#ad-ds-connector-account) artık varsayılan MSOL_ hesabı değil. |
 | 1 $ Supportednotconfiguredsignınmethod yükseltildi | AAD Connect ayarlanırken, oturum açma yöntemini seçerken *yapılandırmayın* seçeneğini tercih edersiniz. |
-| IBir ısupportedptasignınmethod yükseltildi | Geçiş kimlik doğrulamasını oturum açma yöntemi olarak seçtiniz. |
 | Yükseltilebilir nominal Tsupportedstagingmodeenabled |Sunucu, [hazırlama modunda](how-to-connect-sync-staging-server.md)olacak şekilde ayarlanır. |
 | Şu değeri Yükseltsupporteduserwritebackenabled |[Kullanıcı geri yazma](how-to-connect-preview.md#user-writeback) özelliğini etkinleştirdiniz. |
 

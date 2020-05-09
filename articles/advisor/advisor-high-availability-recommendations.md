@@ -3,12 +3,12 @@ title: Azure Danışmanı ile uygulamanızın kullanılabilirliğini geliştirme
 description: Azure dağıtımlarınızın yüksek oranda kullanılabilirliğini geliştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443104"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788034"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Danışmanı ile uygulamanızın kullanılabilirliğini geliştirme
 
@@ -28,6 +28,10 @@ Uygulamanıza yedeklilik sağlamak için bir kullanılabilirlik kümesinde iki v
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Veri güvenilirliğini geliştirmek için Yönetilen Diskler kullanın
 
 Depolama hesaplarını veya depolama ölçek birimlerini paylaşan diskler içeren bir kullanılabilirlik kümesindeki sanal makineler, kesintiler sırasında tek depolama ölçek birimi hatalarıyla dayanıklı değildir. Danışman, bu kullanılabilirlik kümelerini tanımlar ve Azure yönetilen disklere geçiş yapmanızı önerir. Bu, kullanılabilirlik kümesindeki farklı sanal makinelerin disklerinin tek bir hata noktası oluşmasını önlemek için yeterince yalıtılmış olmasını sağlar. 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Check Point ağ sanal gereç görüntüsü sürümünde bilinen sorun
+
+Danışman, sanal makinenizin bir platform bakım işlemi durumunda ağ bağlantısını kaybetmesinin bilinen bir denetim noktası görüntüsü sürümü çalıştırıyor olup olmadığını tanımlayabilir. Danışman önerisi, görüntünün bu sorunu gideren daha yeni bir sürümüne yükseltmenize yardımcı olur. Bu, daha iyi ağ bağlantısı aracılığıyla iş sürekliliği sağlayacaktır.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Application Gateway hata toleransı sağlayın
 
@@ -83,7 +87,7 @@ Azure Advisor, .NET SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hes
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Azure Cosmos DB Java SDK'nızı Maven'dan en son sürüme yükseltin
 
-Azure Advisor, Java SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hesaplarını belirler ve en son düzeltmeler, performans iyileştirmeleri ve yeni özellik özellikleri için Maven 'den en son sürüme yükseltmeyi önerir. [Java SDK Cosmos DB hakkında daha fazla bilgi edinin](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor, Java SDK 'sının eski sürümlerini kullanan Azure Cosmos DB hesaplarını belirler ve en son düzeltmeler, performans iyileştirmeleri ve yeni özellik özellikleri için Maven 'den en son sürüme yükseltmeyi önerir. [Java SDK Cosmos DB hakkında daha fazla bilgi edinin](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark Bağlayıcınızı Maven'dan en son sürüme yükseltin
 

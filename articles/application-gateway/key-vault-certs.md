@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617514"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743707"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikalarla TLS sonlandırma
 
@@ -50,7 +50,21 @@ Key Vault ile tümleştirme Application Gateway üç adımlı bir yapılandırma
    Daha sonra mevcut bir sertifikayı içeri aktarırsınız veya Anahtar Kasanızda yeni bir sertifika oluşturacaksınız. Sertifika, uygulama ağ geçidi aracılığıyla çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, parola kullanmayan, temel 64 kodlu PFX dosyası olarak depolanan bir Anahtar Kasası gizli anahtarını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleriyle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya gizli dizi oluşturduktan sonra, kimliğe gizli dizi *erişimi verilmesini sağlamak* için anahtar kasasında erişim ilkeleri tanımlarsınız.
    
    > [!NOTE]
-   > Application Gateway 'i Azure CLı veya PowerShell kullanarak veya Azure portal dağıtılan bir Azure uygulaması aracılığıyla bir ARM şablonuyla dağıtırsanız, temel 64 kodlu bir PFX dosyası olarak anahtar kasasında depolanan SSL sertifikası **parolasız**olmalıdır. Ayrıca, [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md)adımlarını gerçekleştirmeniz gerekir. Olarak `enabledForTemplateDeployment` `true`ayarlanması özellikle önemlidir.
+   > Application Gateway 'i Azure CLı veya PowerShell kullanarak ya da Azure portal dağıtılan bir Azure uygulaması aracılığıyla bir ARM şablonuyla dağıtırsanız, SSL sertifikası anahtar kasasında Base64 kodlamalı PFX dosyası olarak depolanır. [Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md)adımlarını gerçekleştirmeniz gerekir. 
+   >
+   > Olarak `enabledForTemplateDeployment` `true`ayarlanması özellikle önemlidir. Sertifika parolasız olabilir veya bir parolası olabilir. Parolası olan bir sertifika söz konusu olduğunda, aşağıdaki örnek, bir uygulama ağ geçidi için ARM şablon yapılandırmasında `sslCertificates` girişi `properties` için olası bir yapılandırma gösterir. Ve değerleri, anahtar kasasından [dınamık kimliğe sahip başvuru gizli](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)dizileri bölümünde açıklandığı gibi aranır. `appGatewaySSLCertificatePassword` `appGatewaySSLCertificateData` Aramanın nasıl gerçekleştiğini görmek için `parameters('secretName')` , öğesinden geriye doğru başvuruları izleyin. Sertifika passwordless ise `password` girişi atlayın.
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **Uygulama ağ geçidini yapılandırma**
 

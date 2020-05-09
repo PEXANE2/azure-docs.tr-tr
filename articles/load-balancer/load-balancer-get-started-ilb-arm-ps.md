@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 485afaa4b7009731784cf5da6f8c28e0a787c1d9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045480"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629431"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell modülünü kullanarak iç yük dengeleyici oluşturma
 
@@ -48,7 +48,7 @@ Bir yük dengeleyiciyi dağıtmak için aşağıdaki nesneleri oluşturmanız ge
 * Araştırma yapılandırması: Sanal makineler için sistem durumu araştırmaları.
 * Gelen NAT kuralları: Sanal makinelere doğrudan erişim için bağlantı noktası kuralları.
 
-Yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri](concepts-limitations.md#load-balancer-components).
+Yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri](components.md).
 
 Aşağıdaki adımlarda iki sanal makine arasında yük dengeleyici yapılandırma işlemleri açıklanmaktadır.
 
