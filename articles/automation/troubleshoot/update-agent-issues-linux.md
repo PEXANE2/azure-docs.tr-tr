@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927981"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997025"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Güncelleştirme Aracısı sorunlarını giderme
 
@@ -82,14 +82,14 @@ Bu denetim, aracının birden çok çalışma alanına raporlama olup olmadığ�
 
 ### <a name="hybrid-runbook-worker"></a>Karma Runbook Çalışanı
 
-Bu denetim, Linux için Log Analytics aracısının karma Runbook Worker paketine sahip olup olmadığını doğrular. Güncelleştirme Yönetimi çalışması için bu paket gereklidir.
+Bu denetim, Linux için Log Analytics aracısının karma Runbook Worker paketine sahip olup olmadığını doğrular. Güncelleştirme Yönetimi çalışması için bu paket gereklidir. Daha fazla bilgi edinmek için bkz. [Linux için Log Analytics Aracısı çalışmıyor](hybrid-runbook-worker.md#oms-agent-not-running).
+
+Güncelleştirme Yönetimi, karma Runbook Worker paketlerini işlemler uç noktasından indirir. Bu nedenle, karma Runbook Worker çalışmıyorsa ve [işlemler uç noktası](#operations-endpoint) başarısız olursa, güncelleştirme başarısız olabilir.
 
 ### <a name="hybrid-runbook-worker-status"></a>Karma Runbook Worker durumu
 
-Bu denetim, karma Runbook Worker 'ın makinede çalıştığından emin olmanızı sağlar. Karma Runbook Worker doğru çalışıyorsa aşağıdaki işlemlerin mevcut olması gerekir. Daha fazla bilgi için bkz. [Linux için Log Analytics aracısında sorun giderme](hybrid-runbook-worker.md#oms-agent-not-running).
+Bu denetim, karma Runbook Worker 'ın makinede çalıştığından emin olmanızı sağlar. Karma Runbook Worker doğru çalışıyorsa aşağıdaki örnekteki işlemlerin mevcut olması gerekir.
 
-> [!NOTE]
-> Karma Runbook Worker çalışmıyorsa ve işlemler uç noktası başarısız olduysa, güncelleştirme başarısız olabilir. Güncelleştirme Yönetimi, karma çalışan paketlerini işlemler uç noktasından indirir.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -107,13 +107,13 @@ Bu denetim, makinenin internet erişimi olduğundan emin olmanızı sağlar.
 
 Bu denetim, karma Runbook Worker 'ın Log Analytics çalışma alanında Azure Otomasyonu ile düzgün şekilde iletişim kurabildiğini belirler.
 
-Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracısının kayıt uç noktasıyla iletişim kurmasına izin verilmelidir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracısının kayıt uç noktasıyla iletişim kurmasına izin verilmelidir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>İşlemler uç noktası
 
-Bu denetim, aracının Iş çalışma zamanı veri hizmetiyle düzgün şekilde iletişim kurabildiğini belirler.
+Bu denetim, Log Analytics aracısının Iş çalışma zamanı veri hizmetiyle düzgün şekilde iletişim kurabildiğini belirler.
 
-Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracısının Iş çalışma zamanı veri hizmetiyle iletişim kurmasına izin verilmelidir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [karma çalışanlar Için ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
+Proxy ve güvenlik duvarı yapılandırmalarının, karma Runbook Worker aracısının Iş çalışma zamanı veri hizmetiyle iletişim kurmasına izin verilmelidir. Açılacak adreslerin ve bağlantı noktalarının listesi için bkz. [ağ planlaması](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics uç noktası 1
 

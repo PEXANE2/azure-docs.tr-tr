@@ -6,18 +6,15 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/08/2020
+ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791910"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994345"
 ---
 # <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturma
-
-> [!IMPORTANT]
-> Danışmanlık hizmeti tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için lütfen [Azure ve Dynamics 365 danışmanlık hizmeti teklifiyle](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) bulut iş ortağı portalı ilgili yönergeleri izleyin.
 
 Bu makalede, [Microsoft AppSource](https://appsource.microsoft.com/) veya [Azure Market](https://azuremarketplace.microsoft.com/)'e bir danışmanlık hizmeti teklifinin nasıl yayımlanacağı açıklanır. AppSource 'ta Microsoft [Dynamics 365](https://dynamics.microsoft.com/) ve Power platform temelinde danışmanlık hizmeti tekliflerini listeleyin. Azure Marketi 'ndeki Microsoft Azure temel alan danışmanlık hizmeti tekliflerini listeleyin. Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
@@ -99,10 +96,10 @@ Bu sayfa, danışmanlık hizmetinizin en iyi şekilde kapsaabileceği birincil �
     - **Kavram kanıtı**: bir çözümün müşteri gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama.
     - **Workshop**: bir müşterinin şirket içinde etkileşimli bir katılım yürütülür. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir.
 
-1. **Azure**'ın birincil bir ürününü seçtiyseniz en fazla üç **çözüm alanı**seçin. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. Azure 'u seçmediyseniz, bu adımı atlayın.
-2. Azure _dışında bir birincil ürün seçtiyseniz_ , en fazla üç **uygulanabilir ürünü**seçin. Bu, AppSource 'taki müşterilerin teklifinizi bulmasını kolaylaştırır. Ayrıntılar için bkz. [Microsoft AppSource danışmanlık hizmeti listeleme yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
-3. Teklifinizin uygulanacağı en fazla altı **sektör** seçin. Bu, müşterilerin teklifinizi bulmasını kolaylaştırır.
-4. Şirketinizin danışmanlık hizmeti teklifi listesinde görüntülenmek üzere kazanıldığını en fazla üç **uzmanlık** ekleyin. Azure Expert MSPs ve Azure ağı MSPs hariç en az bir yetenek gereklidir.
+3. **Azure**'ın birincil bir ürününü seçtiyseniz en fazla üç **çözüm alanı**seçin. Bu, Azure Marketi 'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. Azure 'u seçmediyseniz, bu adımı atlayın.
+4. Azure _dışında bir birincil ürün seçtiyseniz_ , en fazla üç **uygulanabilir ürünü**seçin. Bu, AppSource 'taki müşterilerin teklifinizi bulmasını kolaylaştırır. Ayrıntılar için bkz. [Microsoft AppSource danışmanlık hizmeti listeleme yönergeleri](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+5. Teklifinizin uygulanacağı en fazla altı **sektör** seçin. Bu, müşterilerin teklifinizi bulmasını kolaylaştırır.
+6. Şirketinizin danışmanlık hizmeti teklifi listesinde görüntülenmek üzere kazanıldığını en fazla üç **uzmanlık** ekleyin. Azure Expert MSPs ve Azure ağı MSPs hariç en az bir yetenek gereklidir.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 

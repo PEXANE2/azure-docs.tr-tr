@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77199050"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994173"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLı kullanarak HDInsight kümeleri oluşturma
 
@@ -49,7 +49,7 @@ Azure CLı. Azure CLı 'yı yüklemediyseniz, adımlar için bkz. [Azure CLI 'Yi
     |`--workernode-count`| Kümedeki çalışan düğümlerinin sayısı. Bu makalede, değişkeni `clusterSizeInNodes` geçirildiği değer olarak kullanılır. `--workernode-count` |
     |`--version`| HDInsight kümesi sürümü. Bu makalede, değişkeni `clusterVersion` geçirildiği değer olarak kullanılır. `--version` Ayrıca bkz: [desteklenen HDInsight sürümleri](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| HDInsight kümesinin türü, örneğin: Hadoop, ınteractivehive, HBase, Kafka, fırtınası, Spark, Rserver, mlservices.  Bu makalede, değişkeni `clusterType` geçirildiği değer olarak kullanılır. `--type` Ayrıca bkz: [küme türleri ve yapılandırması](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|' Component = Version ' biçimindeki, boşlukla ayrılmış sürümlerde çeşitli Hadoop bileşenlerinin sürümleri. Bu makalede, değişkeni `componentVersion` geçirildiği değer olarak kullanılır. `--component-version` Ayrıca bkz: [Hadoop bileşenleri](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--component-version`|' Component = Version ' biçimindeki, boşlukla ayrılmış sürümlerde çeşitli Hadoop bileşenlerinin sürümleri. Bu makalede, değişkeni `componentVersion` geçirildiği değer olarak kullanılır. `--component-version` Ayrıca bkz: [Hadoop bileşenleri](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
     `STORAGEACCOUNTNAME` `PASSWORD` `RESOURCEGROUPNAME` `LOCATION`,,, Ve değerlerini istenen değerlerle değiştirin. `CLUSTERNAME` Diğer değişkenlerin değerlerini istediğiniz şekilde değiştirin. Ardından CLı komutlarını girin.
 

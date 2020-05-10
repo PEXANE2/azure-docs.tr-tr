@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983809"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995330"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps ' de HTTPS uç noktalarını kullanarak Logic Apps 'i çağırma, tetikleme veya iç içe geçme
 
@@ -140,17 +140,19 @@ Varsayılan olarak, Istek tetikleyicisi bir POST isteği bekler. Yalnızca tek b
 
    ![Tetikleyici tarafından beklenen istek metodunu seçin](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>Uç nokta URL 'sindeki parametreleri kabul et
+<a name="endpoint-url-parameters"></a>
 
-Endpoint URL 'nizin bitiş noktası URL 'SI aracılığıyla parametre değerlerini kabul etmesini istediğinizde, şu seçeneklere sahip olursunuz:
+## <a name="pass-parameters-through-endpoint-url"></a>Uç nokta URL 'SI aracılığıyla parametreleri geçirme
+
+Bitiş noktasının URL 'SI aracılığıyla parametre değerlerini kabul etmek istediğinizde, şu seçeneklere sahipsiniz:
 
 * [PARAMETRELERI Al veya URL parametreleri aracılığıyla kabul edin](#get-parameters) .
 
-  Bu değerler, isteği bitiş noktasının URL 'sine gönderirken ad-değer çiftleri olarak geçirilir. Bu seçenek için, Istek tetikleyicinizdeki GET yöntemini kullanmanız gerekir. Sonraki bir eylemde, bir ifadede `triggerOutputs()` işlevini kullanarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
+  Bu değerler, uç noktanın URL 'sinde ad-değer çiftleri olarak geçirilir. Bu seçenek için, Istek tetikleyicinizdeki GET yöntemini kullanmanız gerekir. Sonraki bir eylemde, bir ifadede `triggerOutputs()` işlevini kullanarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
 
 * Istek tetikleyicinizdeki parametreler için [göreli bir yol aracılığıyla değerleri kabul edin](#relative-path) .
 
-  Bu değerler, istek bitiş noktasının URL 'sine gönderilirken geçirilir. Ayrıca, tetikleyicinin beklediği [yöntemi açıkça seçmeniz](#select-method) gerekir. Sonraki bir eylemde, bu çıkışlara doğrudan başvurarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
+  Bu değerler bitiş noktasının URL 'sindeki göreli bir yol üzerinden geçirilir. Ayrıca, tetikleyicinin beklediği [yöntemi açıkça seçmeniz](#select-method) gerekir. Sonraki bir eylemde, bu çıkışlara doğrudan başvurarak parametre değerlerini tetikleyici çıkışları olarak alabilirsiniz.
 
 <a name="get-parameters"></a>
 

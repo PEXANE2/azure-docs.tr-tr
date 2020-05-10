@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılı
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: e61b7b4e6c3e566aa67d2bd585d2049ae885083b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79453624"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996884"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -75,7 +75,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
 5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
-Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://go.microsoft.com/fwlink/?linkid=2104196)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.
+Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://www.intigua.com/intigua-for-azure-migration)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.
 - MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) .
 - MMA aracısı bu [betik](https://go.microsoft.com/fwlink/?linkid=2104394) kullanılarak da yüklenebilir.
 - MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) .

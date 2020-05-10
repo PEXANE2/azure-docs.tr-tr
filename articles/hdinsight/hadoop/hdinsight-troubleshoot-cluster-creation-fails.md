@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: 3af7515995a305f41fb9b9f85deb9107de51c622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453498"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996408"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight ile küme oluşturma hatalarıyla ilgili sorunları giderme
 
@@ -68,7 +68,7 @@ Bir Express Route veya kendi özel DNS sunucunuz kullanıyorsanız bkz. [Azure H
 
 ## <a name="unsupported-component-versions"></a>Desteklenmeyen bileşen sürümleri
 
-Çözümünüzde [desteklenen bir Azure HDInsight sürümü](../hdinsight-component-versioning.md) ve [Apache Hadoop bileşenleri](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) kullandığınızdan emin olun.  
+Çözümünüzde [desteklenen bir Azure HDInsight sürümü](../hdinsight-component-versioning.md) ve [Apache Hadoop bileşenleri](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) kullandığınızdan emin olun.  
 
 ## <a name="storage-account-name-restrictions"></a>Depolama hesabı adı kısıtlamaları
 
@@ -83,6 +83,6 @@ Olası kesintiler veya hizmet sorunları için [Azure durumunu](https://status.a
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Sanal Ağını kullanarak Azure HDInsight kapsamını genişletme](../hdinsight-plan-virtual-network-deployment.md)
-* [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
+* [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Azure HDInsight kümeleri ile Azure Depolama'yı kullanma](../hdinsight-hadoop-use-blob-storage.md)
 * [Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)

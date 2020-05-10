@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968707"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995519"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>iOS için Çevrimdışı FairPlay Akışı 
 
@@ -211,7 +211,7 @@ Aşağıdaki sık sorulan sorular, sorun giderme konusunda yardım sağlar:
 - **Son parametre, FPS çevrimdışı modu için aşağıdaki API 'de ne için stand?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Bu API için belgeler için bkz. [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametresi, birim olarak saat ile çevrimdışı kiralama süresini temsil eder.
+    Bu API için belgeler için bkz. [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametresi, birim olarak saniye ile çevrimdışı kiralama süresini temsil eder.
 - **İOS cihazlarında indirilen/OFFLINE dosya yapısı nedir?** Bir iOS cihazında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer şekilde görünür. `_keys` Klasör, indirilen fps lisanslarını, her bir lisans hizmeti ana bilgisayarı için bir depolama dosyası ile depolar. Klasör `.movpkg` , ses ve video içeriğini depolar. Bir tire ile biten ve ardından sayısal olan bir ada sahip ilk klasörün video içeriği vardır. Sayısal değer, video yorumlamaları 'nın en yüksek bant genişliğidir. Bir kısa çizgi ile biten bir ada sahip ikinci klasör, izleyen 0 ile ses içeriği içerir. "Data" adlı üçüncü klasör, FPS içeriğinin ana çalma listesini içerir. Son olarak, Boot. xml, `.movpkg` klasör içeriğinin tamamının bir açıklamasını sağlar. 
 
 ![Çevrimdışı FairPlay iOS örnek uygulama dosyası yapısı](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

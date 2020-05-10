@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 61d7d2a52f58162d288b1155f9724c7912e451f3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 8407aafdb9b9dadcbc8e220ac42e5d7856116959
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780105"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996776"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
 
@@ -23,7 +23,7 @@ Bu makale, Azure HDInsight kümelerinin altyapısını yönetmeye yönelik öner
 
 HDInsight kümesi kapasite planlaması için yapılacak temel seçimler şunlardır:
 
-**Geli**  
+**Bölge**  
 Azure bölgesi, kümenin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerle aynı bölgede olması gerekir.
 
 **Depolama konumu ve boyutu**  
@@ -76,7 +76,7 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 |Palanyapıştır|IaaS 
 |Sailpoint|IaaS 
 
-Daha fazla bilgi için, [farklı HDInsight sürümleriyle kullanılabilen bileşenler Apache Hadoop](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions) makalesine bakın
+Daha fazla bilgi için, [farklı HDInsight sürümleriyle kullanılabilen bileşenler Apache Hadoop](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) makalesine bakın
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Betik eylemlerini kullanarak HDInsight kümelerini özelleştirme
 

@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730305"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996948"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Başvuru IoT Hub uç noktaları
 
@@ -54,9 +54,9 @@ Aşağıdaki listede uç noktalar açıklanmaktadır:
 
   * *Doğrudan yöntem Istekleri alın*. Bir cihaz, [doğrudan metodun](iot-hub-devguide-direct-methods.md)isteklerini dinlemek için bu uç noktayı kullanır.
 
-    Bu uç noktalar [MQTT v 3.1.1](https://mqtt.org/), https 1,1 ve [AMQP 1,0](https://www.amqp.org/) protokolleri kullanılarak sunulur. AMQP, 443 numaralı bağlantı noktasında [WebSockets](https://tools.ietf.org/html/rfc6455) üzerinden de kullanılabilir.
+    Bu uç noktalar [MQTT v 3.1.1](https://mqtt.org/), https 1,1 ve [AMQP 1,0](https://www.amqp.org/) protokolleri kullanılarak sunulur. AMQP ve MQTT, 443 numaralı bağlantı noktasında de [WebSockets](https://tools.ietf.org/html/rfc6455) üzerinden kullanılabilir.
 
-* **Hizmet uç noktaları**. Her IoT Hub 'ı, çözüm arka ucunun cihazlarınızla iletişim kurması için bir uç nokta kümesi sunar. Tek bir istisna ile, bu uç noktalar yalnızca [AMQP](https://www.amqp.org/) protokolü kullanılarak sunulur. Yöntem çağırma uç noktası, HTTPS protokolü üzerinden sunulur.
+* **Hizmet uç noktaları**. Her IoT Hub 'ı, çözüm arka ucunun cihazlarınızla iletişim kurması için bir uç nokta kümesi sunar. Tek bir istisna ile bu uç noktalar yalnızca [AMQP](https://www.amqp.org/) ve AMQP Over WebSockets protokolleri kullanılarak sunulur. Doğrudan yöntem çağırma uç noktası, HTTPS protokolü üzerinden sunulur.
   
   * *Cihazdan buluta Iletileri alma*. Bu uç nokta [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)ile uyumludur. Bir arka uç hizmeti, cihazlarınız tarafından gönderilen [cihazdan buluta iletileri](iot-hub-devguide-messages-d2c.md) okumak için bunu kullanabilir. IoT Hub 'ınızda bu yerleşik uç noktaya ek olarak özel uç noktalar oluşturabilirsiniz.
   

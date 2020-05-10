@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ed1c2f14ca5a791743a95cc50e5af0c29c74fefe
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 126a6f2f26d8eaaf6ea1a85f029e56bc8f4432f3
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983321"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996773"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarlarını yönetme 
 Bu makalede bir sınıf Laboratuvarı oluşturma ve silme açıklanmaktadır. Ayrıca, tüm sınıf laboratuvarlarını bir laboratuvar hesabında nasıl görüntüleyekullanacağınızı gösterir. 
@@ -104,14 +104,15 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için ilgili laboratu
 | Küçük | 2 | 3,5 GB | Bu boyut, komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
 | Orta | 4 | 7 GB | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir | 
 | Orta (Iç Içe sanallaştırma) | 4 | 16 GB | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. Bu boyut, iç içe sanallaştırmayı da destekler. <p>Bu boyut, her öğrencinin birden çok VM gerektiren senaryolarda kullanılabilir. Öğretmenler, sanal makine içinde birkaç küçük boyutlu iç içe sanal makine ayarlamak için iç içe sanallaştırmayı kullanabilir. </p> |
-| Küçük GPU (Işlem) | 6 | 56 GB | Bu boyut, yapay zeka ve derin öğrenme uygulamaları gibi işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. | 
+| Küçük GPU (Işlem) | 6 | 56 GB | <p>Bu boyut, yapay zeka ve derin öğrenme uygulamaları gibi işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir.</p><p>Azure Lab Services, GPU görüntüleriyle bir laboratuvar oluşturduğunuzda sizin için gerekli GPU sürücülerini otomatik olarak yükleyip yapılandırır. </p> | 
 | Küçük GPU (görselleştirme) | 6 | 56 GB | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. | 
 | Büyük | 8 | 16 GB | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
 | Büyük (Iç Içe sanallaştırma) | 8 | 32 GB | Bu boyut daha hızlı CPU, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. Bu boyut, iç içe sanallaştırmayı da destekler. |  
 | Orta ölçekli GPU (görselleştirme) | 12 | 112 GB | Bu boyut, OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. | 
 
 > [!NOTE]
-> Azure Lab Services, GPU görüntüleriyle bir laboratuvar oluşturduğunuzda sizin için gerekli GPU sürücülerini otomatik olarak yükleyip yapılandırır.  
+> Bir sınıf Laboratuvarı oluştururken listede bu sanal makine boyutlarından bazılarını görmeyebilirsiniz. Liste, laboratuvarın konumunun geçerli kapasitesine göre doldurulur. Laboratuvar hesabı Oluşturucusu laboratuvar [oluşturucularının laboratuvar için bir konum seçmesine izin veriyorsa](allow-lab-creator-pick-lab-location.md), laboratuvar için farklı bir konum seçmeyi DENEYEBILIR ve VM boyutunun kullanılabilir olup olmadığını görebilirsiniz. 
+
 
 ## <a name="view-all-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleyin
 1. [Azure Lab Services Portal](https://labs.azure.com)' a gidin.

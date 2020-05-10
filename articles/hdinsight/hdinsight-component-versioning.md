@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 04/09/2020
-ms.openlocfilehash: 87c3e2439d1b4bef4a58663e3ea06d8bb7cb9b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 98bb643e1a780754fcb3b9f4eb91d8f04dc4e90b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192544"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996398"
 ---
-# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
+# <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight için kullanılabilen Apache bileşenleri ve sürümleri
 
 Microsoft Azure HDInsight ve Kurumsal Güvenlik Paketi [Apache Hadoop](https://hadoop.apache.org/) ortamı bileşenleri ve sürümleri hakkında bilgi edinin. Ayrıca, HDInsight 'ta Hadoop bileşen sürümlerini nasıl denetleyeceğinizi öğrenin.
 
-## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Farklı HDInsight sürümleriyle kullanılabilen Apache Hadoop bileşenleri
+## <a name="apache-components-available-with-different-hdinsight-versions"></a>Farklı HDInsight sürümleriyle kullanılabilen Apache bileşenleri
 
 Azure HDInsight, dilediğiniz zaman dağıtılabilecek birden çok Hadoop küme sürümünü destekler. 4 Nisan 2017 ' de, Azure HDInsight tarafından kullanılan varsayılan küme sürümü 3,6 ' dir.
 
@@ -53,7 +53,7 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 > [!NOTE]
 > Sistem performansına ilişkin hususlar nedeniyle, 0,10 2019 Mart 'da Kafka sürüm için destek süresi sona eriyordu.
 
-## <a name="check-for-current-hadoop-component-version-information"></a>Geçerli Hadoop bileşeni sürüm bilgilerini denetle
+## <a name="check-for-current-apache-component-version-information"></a>Geçerli Apache bileşen sürümü bilgilerini denetle
 
 HDInsight küme sürümleriyle ilişkili Hadoop ortamı bileşen sürümleri, HDInsight güncelleştirmeleriyle değiştirilebilir. Hadoop bileşenlerini denetlemek ve bir küme için hangi sürümlerin kullanıldığını doğrulamak için, ambarı REST API kullanın. **Getcomponentınformation** komutu, hizmet bileşenleriyle ilgili bilgileri alır. Ayrıntılar için bkz. [Apache ambarı belgeleri](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -91,62 +91,18 @@ Aşağıdaki tabloda, Azure portal mevcut **olmayan** HDInsight sürümleri list
 
 | HDInsight sürümü | HDP sürümü | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Yes |Hayır |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |Hayır |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |Hayır |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |Hayır |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |Hayır |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |Hayır |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |Hayır |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |Hayır |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Yes |No |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |No |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |No |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |No |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |No |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |No |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |No |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |No |
 | HDInsight 1,6 |HDP 1,1 | |28 Ekim 2013 |26 Nisan 2014 |31 Mayıs 2015 |Hayır |Hayır |
 
 > [!NOTE]  
 > İki baş düğümü olan yüksek oranda kullanılabilir kümeler, HDInsight sürüm 2,1 ve üzeri için varsayılan olarak dağıtılır. Bunlar HDInsight sürüm 1,6 kümeleri için kullanılamaz.
-
-## <a name="enterprise-security-package-for-hdinsight"></a>HDInsight için Kurumsal Güvenlik Paketi
-
-Kurumsal Güvenlik, HDInsight kümenize küme iş akışı oluşturma işlemi kapsamında ekleyebileceğiniz isteğe bağlı bir pakettir. Kurumsal Güvenlik Paketi şunları destekler:
-
-- Kimlik doğrulaması için Active Directory ile tümleştirme.
-
-    Geçmişte, yerel yönetici kullanıcısı ve yerel SSH kullanıcısı ile HDInsight kümeleri oluşturdunuz. Yerel yönetici kullanıcı tüm dosyalara, klasörlere, tablolara ve sütunlara erişebilir.  Kurumsal Güvenlik Paketi, HDInsight 'ı Active Directory ile tümleştirerek rol tabanlı erişim denetimini etkinleştirirsiniz. Şirket içi Active Directory Azure Active Directory Domain Services içerir. IaaS sanal makinesinde veya Active Directory. Kümedeki etki alanı yöneticisi, kullanıcılara kendi şirket (etki alanı) Kullanıcı adını ve parolasını kullanmasını sağlayabilir.
-
-    Daha fazla bilgi için bkz.
-
-    - [Etki alanına katılmış HDInsight kümeleriyle güvenliği Apache Hadoop bir giriş](./domain-joined/hdinsight-security-overview.md)
-    - [HDInsight 'ta Azure etki alanına katılmış Apache Hadoop kümeleri planlayın](./domain-joined/apache-domain-joined-architecture.md)
-    - [Etki alanına katılmış korumalı alan ortamını yapılandırma](./domain-joined/apache-domain-joined-configure.md)
-    - [Azure Active Directory Domain Services kullanarak etki alanına katılmış HDInsight kümelerini yapılandırma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
-
-- Veri yetkilendirmesi
-
-  - Hive, Spark SQL ve Yarn kuyrukları için yetkilendirme için Apache Ranger ile tümleştirme.
-  - Dosya ve klasörlerde erişim denetimi ayarlayabilirsiniz.
-
-    Daha fazla bilgi için bkz.
-
-  - [Etki alanına katılmış HDInsight 'ta Apache Hive ilkeleri yapılandırma](./domain-joined/apache-domain-joined-run-hive.md)
-
-- Erişimleri ve yapılandırılan ilkeleri izlemek için Denetim günlüklerini görüntüleyin.
-
-### <a name="supported-cluster-types"></a>Desteklenen küme türleri
-
-Şu anda yalnızca aşağıdaki küme türleri Kurumsal Güvenlik Paketi destekler:
-
-- Hadoop (yalnızca HDInsight 3,6)
-- Spark
-- Kafka
-- HBase
-- Interactive Query
-
-### <a name="support-for-azure-data-lake-storage"></a>Azure Data Lake Storage için destek
-
-Kurumsal Güvenlik Paketi, hem birincil depolama hem de eklenti depolama alanı olarak Azure Data Lake Storage kullanımını destekler.
-
-### <a name="pricing-and-service-level-agreement-sla"></a>Fiyatlandırma ve hizmet düzeyi sözleşmesi (SLA)
-
-Kurumsal Güvenlik Paketi için fiyatlandırma ve SLA hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight küme sürümleri için hizmet düzeyi sözleşmesi
 
@@ -166,3 +122,4 @@ Kümeniz için seçilecek sanal makine SKU 'Larının hakkında daha fazla bilgi
 - [HDInsight üzerinde Apache Hadoop, Spark ve daha fazlası için küme kurulumu](hdinsight-hadoop-provision-linux-clusters.md)
 - [Windows BILGISAYARDAN HDInsight üzerinde Apache Hadoop çalışma](hdinsight-hadoop-windows-tools.md)
 - [Azure HDInsight sürümleriyle ilişkili hortonçalışmalar sürüm notları](./hortonworks-release-notes.md)
+- [Kurumsal Güvenlik Paketi](./enterprise-security-package.md)

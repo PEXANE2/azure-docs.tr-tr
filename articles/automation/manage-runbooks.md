@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 687579825c652888112ff8ddff7401b3305e3a8e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cd89314b0d847909bf4196361e471b71ebb9b6e9
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871187"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995487"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu 'nda runbook 'ları yönetme
 
@@ -228,7 +228,7 @@ Start-AzAutomationRunbook `
 Özel bir komut dosyası kullanmak için:
 
 1. Bir Otomasyon hesabı oluşturun ve [katkıda bulunan rolü](automation-role-based-access-control.md)alın.
-2. [Hesabı Azure çalışma alanına bağlayın](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection.md).
+2. [Hesabı Azure çalışma alanına bağlayın](../security-center/security-center-enable-data-collection.md).
 3. [Karma Runbook Worker](automation-hybrid-runbook-worker.md), [güncelleştirme yönetimi](automation-update-management.md)veya başka bir Otomasyon özelliğini etkinleştirin. 
 4. Bir Linux makinesinde, yüksek izinlere sahip olmanız gerekir. [İmza denetimlerini](automation-linux-hrw-install.md#turn-off-signature-validation)kapatmak için oturum açın.
 

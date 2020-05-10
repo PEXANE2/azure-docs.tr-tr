@@ -5,27 +5,24 @@ author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 05/08/2020
 ms.author: mingshen
-ms.openlocfilehash: af272968ec81671e38db0a6cc52b4baf51c94a80
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789649"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996369"
 ---
 # <a name="consulting-service-prerequisites"></a>Danışmanlık hizmeti önkoşulları
 
-> [!IMPORTANT]
-> Danışmanlık hizmeti tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş Ortağı Merkezi 'ne taşıdık. Tekliflerinizi geçirene kadar, tekliflerinizi yönetmek için lütfen [Azure ve Dynamics 365 danışmanlık hizmeti teklifiyle](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) bulut iş ortağı portalı ilgili yönergeleri izleyin.
-
-Danışmanlık hizmeti teklifi hakkında, bu teklif türü gereksinimleri de dahil olmak üzere, bkz. [Azure Market ve AppSource Için danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services). Aşağıdaki tabloda, belirli danışmanlık hizmeti türleri için ek gereksinimler gösterilmektedir.
+Danışmanlık hizmeti teklifi hakkında daha fazla bilgi için, bu teklif türüne yönelik gereksinimler de dahil olmak üzere [Microsoft AppSource ve Azure Market Için danışmanlık hizmetleri](https://docs.microsoft.com/azure/marketplace/consulting-services)bölümüne bakın. Aşağıdaki tabloda, belirli danışmanlık hizmeti türleri için ek gereksinimler gösterilmektedir.
 
 | Danışmanlık hizmeti konusu | Iş Ortağı Merkezi 'nde seçilecek birincil ürün | Gereksinim |
 |---------|---------|---------|
 | Azure ürünleri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | Teklif, aşağıdaki tam kazanılan uzmanlara en az birini listemalıdır: <ul><li>Uygulama Geliştirme</li><li>Uygulama Tümleştirme</li><li>Uygulama yaşam döngüsü yönetimi</li><li>Bulut platformu</li><li>Veri Analizi</li><li>Veri Merkezi</li><li>Veri platformu</li><li>DevOps|
-| Dynamics 365 Sales<br/> Dynamics 365 pazarlama<br/> Dynamics 365 müşteri hizmeti<br/> Dynamics 365 alan hizmeti<br/> Dynamics 365 Insan kaynakları | Müşteri katılım uygulamaları | [Bulut Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) müşteri katılımı seçeneğinde altın veya gümüş sertifikalı veya hizmetin ilişkili olduğu birincil ürün için ortak satış teklifine sahip olmalıdır. |
-| Dynamics 365 finans<br/> Dynamics 365 tedarik zinciri yönetimi<br/>Dynamics 365 ticari<br/> Dynamics 365 Insan kaynakları<br/>Dynamics 365 proje hizmeti Otomasyonu | Finans ve Işlemler uygulamaları | , Birleştirilmiş Işlemler seçeneği için [Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) bir altın ya da gümüş sertifikalı olmalıdır ya da hizmetin ilişkili olduğu birincil ürün için ortak satış teklifi vardır. |
+| Dynamics 365 Sales<br>Dynamics 365 pazarlama<br>Dynamics 365 müşteri hizmeti<br>Dynamics 365 alan hizmeti<br>Dynamics 365 Insan kaynakları | Müşteri katılım uygulamaları | [Bulut Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) müşteri katılımı seçeneğinde altın veya gümüş sertifikalı veya hizmetin ilişkili olduğu birincil ürün için ortak satış teklifine sahip olmalıdır. |
+| Dynamics 365 finans<br>Dynamics 365 tedarik zinciri yönetimi<br>Dynamics 365 ticari<br>Dynamics 365 Insan kaynakları<br>Dynamics 365 proje hizmeti Otomasyonu | Finans ve Işlemler uygulamaları | , Birleştirilmiş Işlemler seçeneği için [Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) bir altın ya da gümüş sertifikalı olmalıdır ya da hizmetin ilişkili olduğu birincil ürün için ortak satış teklifi vardır. |
 | Dynamics 365 Customer Insights | Dynamics 365 Customer Insights | En az beş ölçüyle ve beş kesimle [Customer Insights Dynamics 365](https://dynamics.microsoft.com/ai/customer-insights/) ' in en az bir adet başarılı üretim sürümü uygulamanız olmalı veya hizmetin ilişkili olduğu birincil ürün için ortak satış teklifi vardır. |
 | Dynamics 365 Business Central | Dynamics 365 Business Central | [Kurumsal kaynak planlama uzmanlığına](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) altın veya gümüş sertifikalı olması gerekir, en az üç müşteriye hizmet verebilir veya Microsoft AppSource bir iş merkezi uygulaması yayımlamış olmalı ya da hizmetin ilişkili olduğu birincil ürün için ortak satış teklifi vardır. |
 | Power BI | Power BI | [Power BI iş ortağı tanıtımında](https://powerbi.microsoft.com/partner-showcase/)listelenmesi veya hizmetin ilişkili olduğu birincil ürün için ortak satış teklifine sahip olmanız gerekir.|

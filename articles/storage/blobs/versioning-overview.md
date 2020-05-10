@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 77af321b74a47306a7202c1fddf6e81edc0ee02a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926077"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993954"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
 
@@ -195,7 +195,6 @@ Aşağıdaki tabloda bir blob sürümünü silmek için SAS üzerinde gereken iz
 
 Blob sürümü oluşturma, önizleme aşamasında aşağıdaki bölgelerde kullanılabilir:
 
-- Güney Fransa
 - Orta Fransa
 - Doğu Kanada
 - Orta Kanada

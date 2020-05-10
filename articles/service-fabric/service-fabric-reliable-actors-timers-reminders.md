@@ -1,16 +1,14 @@
 ---
 title: Reliable Actors zamanlayıcılar ve anımsatıcılar
 description: Her birinin ne zaman kullanılacağı hakkında rehberlik dahil olmak üzere Service Fabric Reliable Actors için zamanlayıcılar ve anımsatıcılara giriş.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75639624"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996363"
 ---
 # <a name="actor-timers-and-reminders"></a>Aktör zamanlayıcılar ve anımsatıcıları
 Aktör, zamanlayıcılar veya anımsatıcılar kaydederek kendi üzerinde düzenli işler zamanlayabilir. Bu makalede, zamanlayıcılar ve anımsatıcıların nasıl kullanılacağı gösterilir ve aralarındaki farklar açıklanmaktadır.
@@ -122,12 +120,17 @@ Süreölçerin bir sonraki dönemi, geri çağırma yürütmeyi tamamladıktan s
 
 Aktör çalışma zamanı, geri çağırma tamamlandığında aktörün durum yöneticisine yapılan değişiklikleri kaydeder. Durumu kaydederken bir hata oluşursa, bu aktör nesnesi devre dışı bırakılır ve yeni bir örnek etkinleştirilir.
 
+[Anımsatıcılardan](#actor-reminders)farklı olarak, zamanlayıcılar güncelleştirilemiyor. `RegisterTimer` Yeniden çağrılırsa, yeni bir Zamanlayıcı kaydedilir.
+
 Aktör çöp toplama işleminin parçası olarak devre dışı bırakıldığında tüm zamanlayıcılar durdurulur. Sonrasında hiçbir süreölçer geri çağırma çağrılmaz. Ayrıca, aktör çalışma zamanı devre dışı bırakmadan önce çalışmakta olan zamanlayıcılar hakkındaki bilgileri korumaz. Bu, gelecekte yeniden etkinleştirildiğinde ihtiyacı olan tüm zamanlayıcıları kaydetmek için aktöre kadar. Daha fazla bilgi için [aktör çöp toplamanın](service-fabric-reliable-actors-lifecycle.md)bölümüne bakın.
 
 ## <a name="actor-reminders"></a>Aktör anımsatıcıları
-Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağırmaları tetiklemeye yönelik bir mekanizmadır. İşlevleri zamanlayıcılar ile benzerdir. Ancak zamanlayıcılar aksine, aktör açıkça silinmediği veya aktör açıkça silinene kadar tüm koşullarda anımsatıcılar tetiklenir. Özellikle de, aktör çalışma zamanı aktör durumu sağlayıcısı kullanarak aktörün anımsatıcıları hakkında bilgi sağladığından, bir aktör ve yük devretmeler genelinde uyarı tetiklenir. Lütfen anımsatıcıların güvenilirliğini aktör durumu sağlayıcısı tarafından sunulan durum güvenilirliği garantisi 'na bağlı olduğunu unutmayın. Bu, durum kalıcılığı yok olarak ayarlanmış aktörler için, bir yük devretmeden sonra, anımsatıcıların tetikleneceği anlamına gelir. 
+Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağırmaları tetiklemeye yönelik bir mekanizmadır. İşlevleri zamanlayıcılar ile benzerdir. Ancak zamanlayıcılar aksine, aktör açıkça silinmediği veya aktör açıkça silinene kadar tüm koşullarda anımsatıcılar tetiklenir. Özellikle de, aktör çalışma zamanı aktör durumu sağlayıcısı kullanarak aktörün anımsatıcıları hakkında bilgi sağladığından, bir aktör ve yük devretmeler genelinde uyarı tetiklenir. Ayrıca, zamanlayıcılar aksine, var olan anımsatıcılar, kayıt yöntemi (`RegisterReminderAsync`), aynı uyarı *adı*kullanılarak tekrar çağırarak güncelleştirilemeyebilir.
 
-Bir anımsatıcıyı kaydetmek için bir aktör, aşağıdaki örnekte `RegisterReminderAsync` gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
+> [!NOTE]
+> Anımsatıcıların güvenilirliği, aktör durumu sağlayıcısı tarafından sunulan durum güvenilirliği garantisi ile bağlantılıdır. Bu, durum kalıcılığı *yok*olarak ayarlanmış aktörler için, bir yük devretmeden sonra, anımsatıcıların tetikleneceği anlamına gelir.
+
+Bir anımsatıcıyı kaydetmek için bir aktör, aşağıdaki örnekte [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
 
 ```csharp
 protected override async Task OnActivateAsync()

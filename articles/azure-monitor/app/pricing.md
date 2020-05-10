@@ -4,14 +4,14 @@ description: Application Insights telemetri birimlerini yönetin ve maliyetleri 
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 11/27/2019
+ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405384"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995549"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -62,7 +62,7 @@ E. Günlük veri hacmi ucunu ayarlayın.
 
 Application Insights kullanımınızı daha derin araştırmak için **ölçümler** sayfasını açın, "veri noktası birimi" adlı ölçümü ekleyin ve ardından verileri "Telemetri öğe türü" olarak bölmek Için *bölmeyi Uygula* seçeneğini belirleyin.
 
-Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın ayrıntılarını Azure portal veya [Azure Faturalandırma portalındaki](https://account.windowsazure.com/Subscriptions) **faturalandırma** bölümünde görebilirsiniz.
+Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın ayrıntılarını Azure portal veya [Azure Faturalandırma portalındaki](https://account.windowsazure.com/Subscriptions) **maliyet yönetimi + faturalandırma** bölümünde görebilirsiniz.  Bunu Application Insights için kullanmayla ilgili ayrıntılar için [aşağıya bakın](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) . 
 
 ![Sol menüde Faturalandırma ' i seçin.](./media/pricing/02-billing.png)
 
@@ -129,7 +129,7 @@ dependencies
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure faturanızda Application Insights kullanımı görüntüleme
 
-Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre (Microsoft. Insights/Application Insights için) ekleme, harcamalarınızı izlemenize imkan tanır.
+Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre (Microsoft. Insights/Application Insights için) ekleme, harcamalarınızı izlemenize imkan tanır. "Grup ölçütü" için "ölçüm kategorisi" veya "ölçüm" seçeneğini belirleyin.  Geçerli fiyatlandırma planlarındaki Application Insights kaynaklar için, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, çoğu kullanım ölçüm kategorisi için Log Analytics olarak görünür. 
 
 Kullanımınız [Azure Portal kullanımınıza indirilerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlama kazanılabilir.
 İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım, "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Microsoft. Insights/bileşenleri içerir" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir.  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz.
@@ -212,7 +212,7 @@ Her bir tutulan kaydında, `itemCount` temsil ettiği özgün kayıt sayısını
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
-Application Insights kaynakları için varsayılan saklama 90 gündür. Her bir Application Insights kaynağı için farklı saklama dönemleri seçilebilir. Kullanılabilir saklama dönemlerinin tam kümesi 30, 60, 90, 120, 180, 270, 365, 550 veya 730 günleridir.
+Application Insights kaynakları için varsayılan saklama 90 gündür. Her bir Application Insights kaynağı için farklı saklama dönemleri seçilebilir. Kullanılabilir saklama dönemlerinin tam kümesi 30, 60, 90, 120, 180, 270, 365, 550 veya 730 günleridir. Daha uzun veri saklama fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
 
 Application Insights kaynağınız, saklama süresini değiştirmek için **kullanım ve tahmini maliyetler** sayfasına gidin ve **veri saklama** seçeneğini belirleyin:
 

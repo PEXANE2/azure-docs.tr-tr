@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eeb60012ae607e49b1249fda13222cb2fa753911
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392081"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996070"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -28,9 +28,6 @@ Azure Otomasyonu durum yapılandırması ' nda Istenen durum yapılandırması (
   - Önemli performans iyileştirmesi
 
 Azure VM 'lerinize yapılandırma göndermek için Azure Istenen durum yapılandırması (DSC) uzantısıyla birlikte Azure Resource Manager şablonlarını da kullanabilirsiniz. Azure DSC Uzantısı, Azure VM 'lerde çalışan DSC yapılandırmasını teslim etmek, uygulamak ve raporlamak için Azure VM Aracısı çerçevesini kullanır. Azure Resource Manager şablonları kullanarak derleme ayrıntıları için, [Azure Resource Manager şablonlarla Istenen durum yapılandırma uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)' na bakın. 
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Azure durum yapılandırmasında DSC yapılandırması derleme
 

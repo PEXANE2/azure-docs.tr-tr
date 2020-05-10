@@ -1,27 +1,29 @@
 ---
-title: Öğretici-değişiklik akışı ile uçtan uca zaman uyumsuz Java SQL API uygulaması örneği
-description: Bu öğreticide, değişiklik akışını kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü koruyarak Azure Cosmos DB kapsayıcısına belge ekleyen basit bir Java SQL API uygulaması adım adım gösterilmektedir.
+title: Değişiklik akışını kullanarak uçtan uca Azure Cosmos DB Java SDK 'Sı v4 uygulaması örneği oluşturma
+description: Bu nasıl yapılır Kılavuzu, değişiklik akışını kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü koruyarak Azure Cosmos DB kapsayıcısına belge ekleyen basit bir Java SQL API uygulaması boyunca size yol gösterir.
 author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: tutorial
-ms.date: 04/01/2020
+ms.topic: conceptual
+ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c74ec73eb06c43110747d87e6fecd12183527759
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872538"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996503"
 ---
-# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Öğretici-değişiklik akışı ile uçtan uca zaman uyumsuz Java SQL API uygulaması örneği
+# <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>SQL API Azure Cosmos DB kullanan bir Java uygulaması oluşturma ve akış Işlemcisini değiştirme
 
-Bu öğretici Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge ekleyen basit bir Java SQL API uygulamasında, değişiklik akışını kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü sürdürirken size rehberlik eder.
+> [!IMPORTANT]  
+> Java SDK 'Sı v4 Azure Cosmos DB hakkında daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 sürüm notları, [Maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [performans Ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK 'sı v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md)görüntüleyin.
+>
+
+Bu nasıl yapılır Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge eklemek için Azure Cosmos DB SQL API 'sini kullanan basit bir Java uygulamasında size kılavuzluk eder ve değişiklik akışı ve değişiklik akışı Işlemcisini kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü sürdürmektedir. Java uygulaması, Azure Cosmos DB Java SDK v4 kullanarak SQL API Azure Cosmos DB ile iletişim kurar.
 
 ## <a name="prerequisites"></a>Ön koşullar
-
-* Kişisel bilgisayar
 
 * Azure Cosmos DB hesabınız için URI ve anahtar
 
@@ -45,8 +47,6 @@ Daha önce yapmadıysanız, uygulama örneği deposunu kopyalayın:
 git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example.git
 ```
 
-> Java SDK 4,0 veya Java SDK 3.7.0 ile bu hızlı başlangıç aracılığıyla çalışma seçeneğiniz vardır. **Java SDK 3.7.0 kullanmak istiyorsanız, Terminal ```git checkout SDK3.7.0```türü ' nde **. Aksi takdirde, varsayılan olarak ```master``` Java SDK 4,0 ' i olan dalda kalın.
-
 Depo dizininde bir Terminal açın. Çalıştırarak uygulamayı oluşturun
 
 ```bash
@@ -55,7 +55,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>Kılavuz
 
-1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure portalını** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini**' a gidin.
+1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure Portal** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini**' a gidin.
 
     ![Azure Cosmos DB hesabı](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
 
@@ -71,7 +71,7 @@ mvn clean package
     Press enter to create the grocery store inventory system...
     ```
 
-    daha sonra tarayıcınızda Veri Gezgini Azure portalına geri dönün. Üç boş kapsayıcıyla bir **Market veritabanı** eklendiğini göreceksiniz: 
+    ardından Azure portal Veri Gezgini tarayıcınıza geri dönün. Üç boş kapsayıcıyla bir **Market veritabanı** eklendiğini göreceksiniz: 
 
     * **Inventorycontainer** -bir UUID olan öğe ```id``` üzerinde bölümlenen, bizim örnek Market depomız için Envanter kaydı.
     * **Inventorycontainer-pktype** -stok kaydının gerçekleştirilmiş bir görünümü, öğe üzerindeki sorgular için iyileştirilmiştir```type```
@@ -89,7 +89,7 @@ mvn clean package
 
     ENTER tuşuna basın. Aşağıdaki kod bloğu, başka bir iş parçacığında değişiklik akışı işlemcisini yürütecektir ve başlatacak: 
 
-   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
@@ -103,30 +103,15 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start
     ```
 
-   # <a name="java-sdk-370"></a>[Java SDK 3.7.0](#tab/v3sdk)
-
-    ```java
-    changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
-    changeFeedProcessorInstance.start()
-        .subscribeOn(Schedulers.elastic())
-        .doOnSuccess(aVoid -> {
-            isProcessorRunning.set(true);
-        })
-        .subscribe();
-
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
-    ```
-   ---
-
     ```"SampleHost_1"```, değişiklik akışı işlemci çalışanının adıdır. ```changeFeedProcessorInstance.start()```Değişiklik akışı işlemcisini asıl olarak başlatır.
 
-    Tarayıcınızda Azure portalına Veri Gezgini geri dönün. **Inventorycontainer-kiralamalar** kapsayıcısının altında, içeriğini görmek için **öğeler** ' e tıklayın. Değişiklik akışı Işlemcisinin kira kapsayıcısını doldurduğuna, yani işlemcinin bir ```SampleHost_1``` çalışan tarafından **ınventorycontainer**'in bazı bölümlerinde bir kira atamasıyla karşılaşırsınız.
+    Tarayıcınızda Azure portal Veri Gezgini geri dönün. **Inventorycontainer-kiralamalar** kapsayıcısının altında, içeriğini görmek için **öğeler** ' e tıklayın. Değişiklik akışı Işlemcisinin kira kapsayıcısını doldurduğuna, yani işlemcinin bir ```SampleHost_1``` çalışan tarafından **ınventorycontainer**'in bazı bölümlerinde bir kira atamasıyla karşılaşırsınız.
 
     ![Kiralamalar](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
 1. Terminalde ENTER tuşuna basın. Bu işlem, 10 belgeyi **ınventorycontainer**içine eklenecek şekilde tetikler. Her belge ekleme, değişiklik akışında JSON olarak görünür; Aşağıdaki geri çağırma kodu, JSON belgelerini gerçekleştirilmiş bir görünüme yansıtarak bu olayları işler:
 
-   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
@@ -153,35 +138,7 @@ mvn clean package
     }
     ```
 
-   # <a name="java-sdk-370"></a>[Java SDK 3.7.0](#tab/v3sdk)
-
-    ```java
-    public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosContainer feedContainer, CosmosContainer leaseContainer) {
-        ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
-        cfOptions.feedPollDelay(Duration.ofMillis(100));
-        cfOptions.startFromBeginning(true);
-        return ChangeFeedProcessor.Builder()
-            .options(cfOptions)
-            .hostName(hostName)
-            .feedContainer(feedContainer)
-            .leaseContainer(leaseContainer)
-            .handleChanges((List<CosmosItemProperties> docs) -> {
-                for (CosmosItemProperties document : docs) {
-                        //Duplicate each document update from the feed container into the materialized view container
-                        updateInventoryTypeMaterializedView(document);
-                }
-
-            })
-            .build();
-    }
-
-    private static void updateInventoryTypeMaterializedView(CosmosItemProperties document) {
-        typeContainer.upsertItem(document).subscribe();
-    }    
-    ```
-   ---
-
-1. Kodun 5-10sn çalışmasına izin verin. Ardından Azure portalına Veri Gezgini dönüp, **ınventorycontainer > öğelerine**gidin. Öğelerin envanter kapsayıcısına eklenmekte olduğunu görmeniz gerekir; bölüm anahtarına (```id```) göz önünde.
+1. Kodun 5-10sn çalışmasına izin verin. Ardından Azure portal Veri Gezgini geri dönüp **ınventorycontainer > öğelerine**gidin. Öğelerin envanter kapsayıcısına eklenmekte olduğunu görmeniz gerekir; bölüm anahtarına (```id```) göz önünde.
 
     ![Akış kapsayıcısı](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
@@ -189,13 +146,13 @@ mvn clean package
 
     ![Gerçekleştirilmiş görünüm](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. Yalnızca tek ```upsertItem()``` bir çağrı kullanarak hem **ınventorycontainer** hem de **ınventorycontainer-pktype** öğesinden bir belgeyi silelim. İlk olarak, Azure Portal Veri Gezgini göz atın. Belgeyi sileceğiz ```/type == "plums"```; Aşağıda kırmızı renkle şifreli
+1. Yalnızca tek ```upsertItem()``` bir çağrı kullanarak hem **ınventorycontainer** hem de **ınventorycontainer-pktype** öğesinden bir belgeyi silelim. İlk olarak, Azure portal Veri Gezgini göz atın. Belgeyi sileceğiz ```/type == "plums"```; Aşağıda kırmızı renkle şifreli
 
     ![Gerçekleştirilmiş görünüm](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
     Örnek kodda işlevi ```deleteDocument()``` çağırmak için yeniden ENTER tuşuna basın. Aşağıda gösterilen bu işlev, belge yaşam süresi (TTL) ile 5 sn arasında olan ```/ttl == 5```belgenin yeni bir sürümünü kaplamıştır. 
     
-   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) zaman uyumsuz API
 
     ```java
     public static void deleteDocument() {
@@ -223,35 +180,6 @@ mvn clean package
         feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
     }    
     ```
-   # <a name="java-sdk-370"></a>[Java SDK 3.7.0](#tab/v3sdk)
-
-    ```java
-    public static void deleteDocument() {
-
-        String jsonString =    "{\"id\" : \"" + idToDelete + "\""
-                + ","
-                + "\"brand\" : \"Jerry's\""
-                + ","
-                + "\"type\" : \"plums\""
-                + ","
-                + "\"quantity\" : \"50\""
-                + ","
-                + "\"ttl\" : 5"
-                + "}";
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode document = null;
-
-        try {
-            document = mapper.readTree(jsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
-    }    
-    ```
-   ---
 
     Değişiklik akışı ```feedPollDelay``` 100 ms olarak ayarlanır; Bu nedenle, değişiklik akışı bu güncelleştirmeyi neredeyse anında ve yukarıda gösterilen ```updateInventoryTypeMaterializedView()``` çağrılara yanıt verir. Bu son işlev çağrısı, 5 San TTL ile yeni belgeyi **ınventorycontainer-pktype**olarak kaplacaktır.
 

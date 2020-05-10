@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983032"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996653"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure rol atamalarını listeleyin
 
@@ -130,7 +130,7 @@ Bir kullanıcının, grubun, hizmet sorumlusunun veya yönetilen kimliğin eriş
 
 ## <a name="list-number-of-role-assignments"></a>Rol atamalarının sayısını listeleyin
 
-Her abonelikte en fazla **2000** rol ataması yapabilirsiniz. Bu sınırı izlemenize yardımcı olması için, **rol atamaları** sekmesi geçerli aboneliğin rol atamalarının sayısını listeleyen bir grafik içerir.
+Her abonelikte en fazla **2000** rol ataması yapabilirsiniz. Bu sınır, abonelik, kaynak grubu ve kaynak kapsamlarındaki rol atamalarını içerir. Bu sınırı izlemenize yardımcı olması için, **rol atamaları** sekmesi geçerli aboneliğin rol atamalarının sayısını listeleyen bir grafik içerir.
 
 ![Erişim denetimi-rol atamaları grafiğinin sayısı](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

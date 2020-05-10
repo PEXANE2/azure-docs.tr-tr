@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/22/2017
 ms.author: robinsh
-ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68414336"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995501"
 ---
 # <a name="use-ip-filters"></a>IP filtrelerini kullanma
 
@@ -66,7 +66,7 @@ Mevcut bir kuralı düzenlemek için, değiştirmek istediğiniz verileri seçin
 > IP adreslerini reddetme, diğer Azure hizmetlerinin (Azure Stream Analytics, Azure sanal makineleri veya portaldaki Device Explorer) IoT Hub ile etkileşimde bulunmasını önleyebilir.
 
 > [!WARNING]
-> IP filtresi etkin olan bir IoT Hub 'ından iletileri okumak için Azure Stream Analytics (ASA) kullanırsanız, ASA bağlantı dizesinde IoT Hub Olay Hub 'ı ile uyumlu adı ve uç noktasını kullanın.
+> IP filtresi etkin olan bir IoT Hub 'ından iletileri okumak için Azure Stream Analytics (ASA) kullanırsanız, IoT Hub 'ınızın Olay Hub 'ı ile uyumlu adını ve uç noktasını kullanarak ASA el ile [Event Hubs akış girişi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs) ekleyin.
 
 ## <a name="delete-an-ip-filter-rule"></a>IP filtre kuralını Sil
 
