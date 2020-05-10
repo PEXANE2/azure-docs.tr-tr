@@ -8,20 +8,24 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270514"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005520"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure uzamsal bağlayıcıları kullanarak etkin bir bağlantı deneyimi oluşturma
 
-Bu makalede, uzamsal bağlayıcıları kullanarak bağlayıcıları etkin bir şekilde oluşturmanıza ve bulmanıza yardımcı olacak yönergeler ve konular sunulmaktadır.
+Bu makalede, Azure uzamsal bağlayıcıları kullanarak bağlantıları etkili bir şekilde oluşturmanıza ve bulmanıza yardımcı olacak yönergeler ve konular sunulmaktadır.
+
+## <a name="anchor-improvement-over-time"></a>Zamana göre geçiş geliştirme
+
+Azure uzamsal bağlayıcılarla, her bir tutamacı bulduğunuzda, gelecekteki bulma işlemlerinin kalitesini artırmaya çalışıyoruz. Bunu, aradığımız bağlayıcıların görsel bilgilerini artırmak için toplanan ortam verilerini kullanarak yaptık. Bu işlem, çalışan kapsamında çalışır ve ortamınız için optimize etmek üzere Azure uzamsal bağlayıcı hizmeti tarafından bir çevrimdışı iyileştirme çalıştırmıştır. Her işlem sırasında toplanan ek veriler, ortamı daha güçlü bir şekilde öğrenmeyi oluşturur. Bu, kaliteyi artırır ve ortam değişikliği, zaman geçme ve farklı açılardan ve perspektiflerden çıpası arayan kullanıcılar için bağlantıları daha iyi bulmanıza olanak sağlar.
 
 ## <a name="good-anchors"></a>İyi bağlantılar
 
-Uzamsal bağlayıcı, iyi bağlantılar oluşturmanıza yardımcı olur. Doğru bağlantıları oluşturmak için Kullanıcı deneyiminizdeki (UX) kullanıcıları eğitmekte veya buna göre yatırım yapmanız önemlidir. Önde gelen bağlantılar oluşturmaya yatırım yaparak, son kullanıcıların bağlantıları güvenilir bir şekilde bulmasına yardımcı olursunuz:
+Azure uzamsal bağlantıları zaman içinde bağlayıcı kalitesini artırmaya çalışırken, iyi bir çıpası oluşturmak için Kullanıcı deneyiminizdeki (UX) kullanıcıları eğitmekte veya buna göre yatırım yapmak da önemlidir. Önde gelen bağlantılar oluşturmaya yatırım yaparak, son kullanıcıların bağlantıları güvenilir bir şekilde bulmasına yardımcı olursunuz:
 
 - Farklı cihazlarda.
 - Çeşitli zamanlarda.
@@ -100,7 +104,7 @@ Görsel izleme sistemleri, bir ortamdaki görsel özellikleri kullanır. Taraman
 
 Ortamda yararlı bir tarama teşvik eden bir UX oluşturmak için bu bölümdeki genel yönergeleri izleyin.
 
-İlk olarak, Kullanıcı birkaç saniye içinde bir tutturucu bulamazsa, uygulama, kullanıcıların cihazı daha fazla perspektifle yakalamaya taşımasını teşvik etmelidir. Bu uygulama, kullanıcıların, bağlayıcıyı daha fazla perspektifden tarayabilmesi için ortama taşımasını de teşvik edebilir. Cihazın gördüğü daha fazla özellik perspektifi, daha iyidir.
+İlk olarak, Kullanıcı birkaç saniye içinde bir tutturucu bulamazsa, uygulama, kullanıcıların cihazı daha fazla perspektifle yakalamaya taşımasını teşvik etmelidir. Bu uygulama, kullanıcıların, bağlayıcıyı daha fazla perspektifden tarayabilmesi için ortama taşımasını de teşvik edebilir. Cihazın gördüğü daha fazla özellik perspektifi, bir bağlayıcının bulunduğu olasılığını artırdıkça daha iyi hale gelir ve ayrıca bağlayıcının kalitesini artırmak için kullanılacak daha fazla ortam verisi toplar.
 
 Hedef senaryolar için kullanıcıdan farklı perspektiflerden görüntülemek üzere hedefin etrafında hareket etmesini isteyin. Diğer bir deyişle, bağlayıcı bulunana kadar kullanıcıdan hedefi yeni perspektiflerden yakalamasını isteyin.
 

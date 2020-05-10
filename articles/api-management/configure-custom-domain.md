@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335846"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004737"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -71,12 +71,12 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
     > Joker karakter etki alanı adları, `*.contoso.com` örn. tüketim katmanı hariç tüm katmanlarda desteklenir.
 
     > [!TIP]
-    > Sertifikaları yönetmek için Azure Key Vault kullanmanızı ve onları oto döndürme için ayarlamayı öneririz.
+    > Sertifikaları yönetmek ve bunları autorenew olarak ayarlamak [için Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) kullanmanızı öneririz.
     > Özel etki alanı TLS/SSL sertifikasını yönetmek için Azure Key Vault kullanırsanız, sertifikanın _gizli_değil, [ _sertifika_olarak](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)Key Vault yerleştirildiğinden emin olun.
     >
     > Bir TLS/SSL sertifikası getirmek için API Management, sertifikayı içeren Azure Key Vault liste ve parolaları al izinlerine sahip olmalıdır. Azure portal kullanırken, tüm gerekli yapılandırma adımları otomatik olarak tamamlanır. Komut satırı araçları veya yönetim API 'SI kullanılırken, bu izinlerin el ile verilmesi gerekir. Bu iki adımda yapılır. İlk olarak, yönetilen kimliğin etkin olduğundan emin olmak için API Management örnekte Yönetilen kimlikler sayfasını kullanın ve bu sayfada gösterilen asıl kimliği bir yere göz önünde yapın. İkincisi, izin listesini verin ve sertifikayı içeren Azure Key Vault bu asıl kimliğe gizli dizi izinleri alın.
     >
-    > Sertifika, otomatik döndürme olarak ayarlandıysa, API Management hizmetin herhangi bir kesinti süresi olmadan en son sürümü otomatik olarak seçer (API Management katmanınızda, geliştirici katmanı hariç tüm katmanlarda SLA-i. e.).
+    > Sertifika autorenew olarak ayarlandıysa API Management hizmetin herhangi bir kesinti süresi olmadan en son sürümü otomatik olarak seçer (API Management katmanınızda, geliştirici katmanı hariç tüm katmanlarda SLA-i. e.).
 
 1. Uygula ' ya tıklayın.
 

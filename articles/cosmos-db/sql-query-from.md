@@ -4,22 +4,22 @@ description: SQL söz dizimi ve Azure Cosmos DB for FROM yan tümcesinin örneğ
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587694"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005868"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB FROM yan tümcesi
 
 Kaynak filtrelenmez`FROM <from_specification>`veya sorgu daha sonra yansıtılmamışsa from () yan tümcesi isteğe bağlıdır. Kapsayıcının tamamına `Families` göre `SELECT * FROM Families` numaralandırmış bir sorgu. Kapsayıcı adını kullanmak yerine kapsayıcı için özel tanımlayıcı kökünü de kullanabilirsiniz.
 
-FROM yan tümcesi sorgu başına aşağıdaki kuralları uygular:
+`FROM` Yan tümce sorgu başına aşağıdaki kuralları uygular:
 
-* Kapsayıcı, `SELECT f.id FROM Families AS f` veya gibi diğer ad olabilir `SELECT f.id FROM Families f`. Diğer `f` adı aşağıda verilmiştir `Families`. , Tanımlayıcı [diğer adı](sql-query-aliasing.md) için isteğe bağlı bir anahtar sözcüktür.  
+* Kapsayıcı, `SELECT f.id FROM Families AS f` veya gibi diğer ad olabilir `SELECT f.id FROM Families f`. Diğer `f` adı aşağıda verilmiştir `Families`. , Tanımlayıcı [diğer adı](sql-query-working-with-json.md#aliasing) için isteğe bağlı bir anahtar sözcüktür.  
 
 * Diğer ad eklendikten sonra özgün kaynak adı bağlanamaz. Örneğin, `SELECT Families.id FROM Families f` tanımlayıcı `Families` başka bir ad olduğu ve artık çözümlenemediği için sözdizimsel olarak geçersiz.  
 
@@ -30,30 +30,30 @@ FROM yan tümcesi sorgu başına aşağıdaki kuralları uygular:
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
      | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
   
 - `<from_source>`  
   
   Diğer adı olan veya olmayan bir veri kaynağını belirtir. Diğer ad belirtilmemişse, aşağıdaki kurallar `<container_expression>` kullanılarak çıkarsedilir:  
   
-  -  İfade bir container_name ise, container_name bir diğer ad olarak kullanılacaktır.  
+-  İfade bir container_name ise, container_name bir diğer ad olarak kullanılacaktır.  
   
-  -  İfade `<container_expression>`ise property_name, property_name bir diğer ad olarak kullanılır. İfade bir container_name ise, container_name bir diğer ad olarak kullanılacaktır.  
+-  İfade `<container_expression>`ise property_name, property_name bir diğer ad olarak kullanılır. İfade bir container_name ise, container_name bir diğer ad olarak kullanılacaktır.  
   
 - GEREKTIĞI`input_alias`  
   
@@ -99,9 +99,9 @@ Bir kapsayıcı ifadesi özelliklere veya dizi öğelerine erişirse ve bu değe
   
 Kapsayıcı ifadesi kapsayıcı kapsamlı veya belge kapsamlı olabilir:  
   
--   Kapsayıcı ifadesinin temeldeki kaynağı kök veya `container_name`varsa, bir ifade kapsayıcı kapsamıdır. Böyle bir ifade, doğrudan kapsayıcıdan alınan bir belge kümesini temsil eder ve diğer kapsayıcı ifadelerinin işlenmesine bağlı değildir.  
+- Kapsayıcı ifadesinin temeldeki kaynağı kök veya `container_name`varsa, bir ifade kapsayıcı kapsamıdır. Böyle bir ifade, doğrudan kapsayıcıdan alınan bir belge kümesini temsil eder ve diğer kapsayıcı ifadelerinin işlenmesine bağlı değildir.  
   
--   Bir ifade, kapsayıcı ifadesinin temel alınan kaynağı sorguda daha önce `input_alias` tanıtıldığında belge kapsamlı bir ifadedir. Böyle bir ifade, diğer ad kapsayıcında ilişkili olan her belge kapsamındaki kapsayıcı ifadesi hesaplanarak elde edilen bir belge kümesini temsil eder.  Sonuç kümesi, temel alınan küme içindeki her belge için kapsayıcı ifadesi hesaplanarak elde edilen bir küme birleşimidir. 
+- Bir ifade, kapsayıcı ifadesinin temel alınan kaynağı sorguda daha önce `input_alias` tanıtıldığında belge kapsamlı bir ifadedir. Böyle bir ifade, diğer ad kapsayıcında ilişkili olan her belge kapsamındaki kapsayıcı ifadesi hesaplanarak elde edilen bir belge kümesini temsil eder. Sonuç kümesi, temel alınan küme içindeki her belge için kapsayıcı ifadesi hesaplanarak elde edilen bir küme birleşimidir.
 
 ## <a name="examples"></a>Örnekler
 

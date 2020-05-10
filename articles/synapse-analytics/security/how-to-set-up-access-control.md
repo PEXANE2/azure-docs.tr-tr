@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983219"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006064"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -89,7 +89,7 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
 - Azure portal açın
 - STG1 bulun
 - CNT1 adresine gidin
-- WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1 üzerinde **Azure blob veri katılımcısı** rolüne atandığından emin olun
+- WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1 üzerinde **Depolama Blobu veri katılımcısı** rolüne atandığından emin olun
   - Atanmadığını görmüyorsanız, atayın.
   - MSI, çalışma alanıyla aynı ada sahiptir. Bu durumda, &quot;WS1&quot;olacaktır.
 

@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925958"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005783"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
-Bu sayfa temel ve standart ortak Azure Load Balancer soruları için sorun giderme bilgileri sağlar. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+
+Bu sayfa temel ve standart ortak Azure Load Balancer soruları için sorun giderme bilgileri sağlar. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](load-balancer-standard-diagnostics.md).
 
 Load Balancer bağlantısı kullanılamadığında en yaygın belirtiler aşağıdaki gibidir: 
 

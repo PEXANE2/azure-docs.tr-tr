@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3648bb102d539156067cdc259c1cf9b6e73d6a49
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884494"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005149"
 ---
 # <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 ## <a name="what-types-of-load-balancer-exist"></a>Ne tür Load Balancer var?
-Bir sanal ağ ve dış yük dengeleyiciler içindeki trafiği dengelemeye yönelik iç yük dengeleyiciler, internet 'e bağlı bir uç noktadan gelen ve giden trafiği dengelemek Daha fazla bilgi için bkz. [Load Balancer Types]https://docs.microsoft.com/azure/load-balancer/concepts-limitations#load-balancer-types)(. 
+Bir sanal ağ ve dış yük dengeleyiciler içindeki trafiği dengelemeye yönelik iç yük dengeleyiciler, internet 'e bağlı bir uç noktadan gelen ve giden trafiği dengelemek Daha fazla bilgi için bkz. [Load Balancer türleri](components.md#frontend-ip-configurations). 
 
-Her iki tür için de Azure, farklı işlevsel, performans, güvenlik ve sistem durumu izleme özelliklerine sahip temel bir SKU ve standart SKU sunmaktadır. Bu farklılıklar [SKU karşılaştırma] (https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) makalemiz) bölümünde açıklanmaktadır.
+Her iki tür için de Azure, farklı işlevsel, performans, güvenlik ve sistem durumu izleme özelliklerine sahip temel bir SKU ve standart SKU sunmaktadır. Bu farklılıklar, [SKU karşılaştırma](skus.md) makalemiz bölümünde açıklanmaktadır.
 
  ## <a name="how-can-i-upgrade-from-a-basic-to-a-standard-load-balancer"></a>Bir temel bilgisayardan bir Standart Load Balancer nasıl yükseltebilirim?
 Bir Load Balancer SKU yükseltmesi hakkında otomatik betik ve yönergeler için [temel ve standart sürümüne yükseltme](upgrade-basic-standard.md) makalesine bakın.

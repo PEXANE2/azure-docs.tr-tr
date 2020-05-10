@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995706"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005939"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -23,7 +23,7 @@ Video Indexer bir hesap oluştururken, ücretsiz bir deneme hesabı (belirli bir
 
 Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağlı Video Indexer hesabının nasıl oluşturulacağı gösterilmektedir. Bu konuda otomatik (varsayılan) Flow kullanılarak Azure 'a bağlanmak için gereken adımlar sağlanmaktadır. Ayrıca, Azure 'a el ile nasıl bağlanagösterdiğini gösterir (Gelişmiş).
 
-*Deneme* sürümünden *ücretli* video Indexer hesaba taşıyorsanız, [içeriğinizi deneme hesabından içeri aktarma](#import-your-content-from-the-trial-account)bölümünde anlatıldığı gibi tüm videolar ve model özelleştirmesini yeni hesaba kopyalamayı seçebilirsiniz.
+*Deneme* sürümünden *ücretli* video Indexer hesabına geçiş yapıyorsanız tüm videolar ve model özelleştirmesini, [içeriğinizi deneme hesabından içeri aktarma](#import-your-content-from-the-trial-account) bölümünde anlatıldığı şekilde yeni hesaba kopyalamayı seçebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

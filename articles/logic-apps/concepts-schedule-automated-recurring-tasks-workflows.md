@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234103"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005196"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps ile yinelenen otomatik görevleri, işlemleri ve iş akışlarını zamanlama ve çalıştırma
 
@@ -48,13 +48,13 @@ Bu makalede, zamanlama yerleşik Tetikleyicileri ve eylemleri için yetenekler a
 
 ## <a name="schedule-triggers"></a>Zamanlama Tetikleyicileri
 
-Mantıksal uygulama iş akışınızı, belirli bir hizmet veya sistemle ilişkili olmayan yineleme tetikleyicisi veya kayan pencere tetikleyicisi kullanarak başlatabilir (örneğin, Office 365 Outlook veya SQL Server). Bu Tetikleyiciler, her iki tetikleyici için saniye, dakika ve saat sayısı veya yineleme tetikleyicisi için gün, hafta veya ay sayısı gibi aralığı ve sıklığı seçtiğinizde, iş akışınızı belirtilen yineleme temelinde başlatır ve çalıştırır. Ayrıca, başlangıç tarihi ve saati ile saat dilimini de ayarlayabilirsiniz. Her tetikleyici tetiklendiğinde, Logic Apps mantıksal uygulamanız için yeni bir iş akışı örneği oluşturup çalıştırır.
+Mantıksal uygulama iş akışınızı, belirli bir hizmet veya sistemle ilişkili olmayan yineleme tetikleyicisi veya kayan pencere tetikleyicisi kullanarak başlatabilirsiniz. Bu Tetikleyiciler, gün, dakika, saat, gün, hafta veya ay sayısı gibi Aralık ve sıklığı seçtiğiniz zaman, belirttiğiniz yineleme temelinde iş akışınızı başlatır ve çalıştırır. Ayrıca, başlangıç tarihi ve saati ile saat dilimini de ayarlayabilirsiniz. Her tetikleyici tetiklendiğinde, Logic Apps mantıksal uygulamanız için yeni bir iş akışı örneği oluşturup çalıştırır.
 
 Bu Tetikleyiciler arasındaki farklılıklar aşağıda verilmiştir:
 
 * **Yinelenme**: iş akışınızı, belirtilen zamanlamanıza göre düzenli zaman aralıklarıyla çalıştırır. Yinelenmeler kaçırıldığında, yinelenme tetikleyicisi atlanan tekrarları işlemez ancak sonraki zamanlanan aralıkla yinelenmeleri yeniden başlatır. Saat dilimini ve bir başlangıç tarihi ve saati de belirtebilirsiniz. "Gün" seçeneğini belirlerseniz saatin gün ve dakikalarının saatini (örneğin, her gün 2:30 ' de) belirtebilirsiniz. "Hafta" seçeneğini belirlerseniz, hafta içinde Çarşamba ve Cumartesi gibi günleri de seçebilirsiniz. Daha fazla bilgi için bkz. [yineleme tetikleyicisi ile yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-recurrence.md).
 
-* **Kayan pencere**: iş akışınızı sürekli öbeklerdeki verileri işleyen düzenli zaman aralıklarıyla çalıştırır. Yinelenmeler kaçırıldığında, kayan pencere tetikleyicisi geri döner ve unutulan tekrarları işler. İş akışınızda her yinelemeyi geciktirmek için bir başlangıç tarihi ve saati, saat dilimi ve bir süre belirtebilirsiniz. Bu tetikleyici, gün, hafta ve ay, günün saati, saat ve haftanın günleri belirtme seçeneklerine sahip değildir. Daha fazla bilgi için bkz. [kayan pencere tetikleyicisiyle yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-sliding-window.md).
+* **Kayan pencere**: iş akışınızı sürekli öbeklerdeki verileri işleyen düzenli zaman aralıklarıyla çalıştırır. Yinelenmeler kaçırıldığında, kayan pencere tetikleyicisi geri döner ve unutulan tekrarları işler. İş akışınızda her yinelemeyi geciktirmek için bir başlangıç tarihi ve saati, saat dilimi ve bir süre belirtebilirsiniz. Bu tetikleyici, örneğin günün belirli saatleri, saatin dakikası ve haftanın günleri gibi gelişmiş zamanlamaları desteklemez. Daha fazla bilgi için bkz. [kayan pencere tetikleyicisiyle yinelenen görevler ve iş akışları oluşturma, zamanlama ve çalıştırma](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 

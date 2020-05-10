@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: e1ebc0257082ecfacc708352ba0a68e38e10717f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 05/12/2020
+ms.openlocfilehash: 56bf1898eb00d74fe92934ca8cd7d9d2848c2f1f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607801"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005905"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -29,9 +29,6 @@ ms.locfileid: "82607801"
 ||||
 
 İşlevleri [genel amaçlarına göre](#ordered-by-purpose)bulmak için aşağıdaki tabloları gözden geçirin. Ya da her işlev hakkında ayrıntılı bilgi için [alfabetik listeye](#alphabetical-list)bakın.
-
-> [!NOTE]
-> Parametre tanımlarının sözdiziminde, bir parametre sonrasında görünen bir soru işareti (?), parametrenin isteğe bağlı olduğu anlamına gelir. Örneğin bkz. [Getfuturetime ()](#getFutureTime).
 
 ## <a name="functions-in-expressions"></a>Deyimlerdeki işlevler
 
@@ -51,8 +48,7 @@ Deyimlerde işlevleri kullanabileceğiniz bazı genel yollar şunlardır:
 | 1. Sonuç olarak *fonksiyonadı*'dan elde edin. </br>2. sonucun *PropertyName*özelliğine sahip bir nesne olduğu için, bu özelliğin değerini alın. | "\@<*fonksiyonadı*> (<*öğe*>). <*PropertyName*>" |
 |||
 
-Örneğin, `concat()` işlev iki veya daha fazla dize değerini parametre olarak alabilir. Bu işlev bu dizeleri tek bir dize olarak birleştirir.
-"Sophia" ve "Owen" gibi dize değişmez değerlerini geçirebilirsiniz, böylece "SophiaOwen" birleştirilmiş bir dize alırsınız:
+Örneğin, `concat()` işlev iki veya daha fazla dize değerini parametre olarak alabilir. Bu işlev bu dizeleri tek bir dize olarak birleştirir. "Sophia" ve "Owen" gibi dize değişmez değerlerini geçirebilirsiniz, böylece "SophiaOwen" birleştirilmiş bir dize alırsınız:
 
 ```json
 "customerName": "@concat('Sophia', 'Owen')"
@@ -66,7 +62,13 @@ Ya da parametrelerden dize değerleri alabilirsiniz. Bu örnek, her `parameters(
 
 Her iki durumda da, her iki örnek de sonucu `customerName` özelliğine atar.
 
-Genel amaçlarına göre sıralanan kullanılabilir işlevler aşağıda verilmiştir veya [alfabetik sıraya](#alphabetical-list)göre işlevlere gidebilirsiniz.
+Deyimlerdeki işlevlerle ilgili diğer notlar aşağıda verilmiştir:
+
+* İşlev parametreleri soldan sağa değerlendirilir.
+
+* Parametre tanımlarının sözdiziminde, bir parametre sonrasında görünen bir soru işareti (?), parametrenin isteğe bağlı olduğu anlamına gelir. Örneğin bkz. [Getfuturetime ()](#getFutureTime).
+
+Aşağıdaki bölümler, işlevleri genel amaçlarına göre düzenler veya bu işlevlere [alfabetik sırayla](#alphabetical-list)gözatabilmenizi sağlayabilirsiniz.
 
 <a name="ordered-by-purpose"></a>
 <a name="string-functions"></a>
@@ -121,11 +123,11 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
-| ['](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
-| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
+| [kullandıysanız](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
 | [daha az](../logic-apps/workflow-definition-language-functions-reference.md#less) | İlk değerin ikinci değerden küçük olup olmadığını kontrol edin. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını kontrol edin. |
 | [başlatılmadı](../logic-apps/workflow-definition-language-functions-reference.md#not) | İfadenin yanlış olup olmadığını denetleyin. |
@@ -846,7 +848,7 @@ Ve isteğe bağlı "D" biçimini kullanarak sonucu döndürür:`"Tuesday, Januar
 
 <a name="and"></a>
 
-### <a name="and"></a>ve
+### <a name="and"></a>and
 
 Tüm ifadelerin doğru olup olmadığını denetleyin.
 Tüm ifadeler doğru olduğunda true, en az bir ifade false olduğunda false döndürün.
@@ -2270,8 +2272,7 @@ Ve şu sonucu döndürür:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 ### <a name="if"></a>if
 
-İfadenin true veya false olduğunu denetleyin.
-Sonuca göre belirtilen değeri döndürün.
+İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. Parametreler soldan sağa değerlendirilir.
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -3047,7 +3048,7 @@ Ve şu sonuçları döndürür:
 
 <a name="or"></a>
 
-### <a name="or"></a>or
+### <a name="or"></a>veya
 
 En az bir ifadenin doğru olup olmadığını denetleyin.
 En az bir ifade true olduğunda true, All false ise false döndürün.

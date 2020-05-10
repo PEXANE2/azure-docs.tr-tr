@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791927"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005793"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Bilişsel Arama Dizinleyicileri kullanarak alan eşlemeleri ve dönüştürmeler
 
@@ -36,7 +36,7 @@ Bir alan eşlemesi üç bölümden oluşur:
 
 1. Veri `sourceFieldName`kaynağınızdaki bir alanı temsil eden bir. Bu özellik gereklidir.
 2. Arama dizininizdeki bir alanı temsil eden isteğe bağlı `targetFieldName`. Atlanırsa, veri kaynağıyla aynı ad kullanılır.
-3. Önceden tanımlanmış `mappingFunction`birkaç işlevden birini kullanarak verilerinizi dönüştürebilen isteğe bağlı bir. İşlevlerin tam listesi [aşağıda](#mappingFunctions)verilmiştir.
+3. Önceden tanımlanmış `mappingFunction`birkaç işlevden birini kullanarak verilerinizi dönüştürebilen isteğe bağlı bir. Bu, hem giriş hem de çıkış alanı eşlemelerinde uygulanabilir. İşlevlerin tam listesi [aşağıda](#mappingFunctions)verilmiştir.
 
 Alan eşlemeleri, Dizin Oluşturucu tanımının `fieldMappings` dizisine eklenir.
 

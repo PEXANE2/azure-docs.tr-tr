@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e42a4d738d375b4bceeb32f6159b4476843cf281
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612665"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005996"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Uzak masaüstü istemcisinde sorun giderme
 
@@ -59,6 +59,12 @@ Web istemcisini kullanırken tarayıcınızın çalışmaya başlaması veya ça
 2. Tarayıcı tanımlama bilgilerini temizleyin. Bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 3. Tarayıcı önbelleğini temizleyin. [Tarayıcınızın tarayıcı önbelleğini temizleme](https://binged.it/2RKyfdU)bölümüne bakın.
 4. Tarayıcıyı özel modda açın.
+
+## <a name="web-client-does-not-show-my-resources"></a>Web istemcisi kaynaklarımı göstermiyor
+
+İlk olarak, kullanmakta olduğunuz Azure Active Directory hesabı kontrol edin. Winodws sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, veya özel tarayıcı penceresi kullanmanız gerekir.
+
+Windows sanal masaüstü Fall 2019 sürümünü kullanıyorsanız, kaynaklarınıza bağlanmak için [Bu makaledeki](./virtual-desktop-fall-2019/connect-web-2019.md) Web istemcisi bağlantısını kullanın.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web istemcisi yanıt vermeyi durduruyor veya bağlantıyı keser
 

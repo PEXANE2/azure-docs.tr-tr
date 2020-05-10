@@ -7,16 +7,27 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267293"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006160"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
 Başvuru verileri (arama tablosu olarak da bilinir), bir arama gerçekleştirmek veya veri akışlarınızı genişletmek için kullanılan, statik veya yavaş değişen, sınırlı bir veri kümesidir. Örneğin, bir IoT senaryosunda, sensörlerle ilgili meta verileri (sık değişmeyin) başvuru verilerinde saklayabilir ve gerçek zamanlı IoT veri akışları ile birleştirebilirsiniz. Azure Stream Analytics düşük gecikmeli akış işleme elde etmek için belleğe başvuru verilerini yükler. Azure Stream Analytics işinizdeki başvuru verilerini kullanmak için, genellikle sorgunuzda bir [başvuru verisi katılımı](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) kullanacaksınız. 
+
+## <a name="example"></a>Örnek  
+ Ticari bir araç ücretli şirkete kayıtlı ise, denetim için durdurulmaksızın ücretli stand üzerinden geçebilirler. Bir ticari araç kayıt arama tablosu, zaman aşımına uğradı tüm ticari araçlar 'ı belirlemek için kullanılır.  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 Stream Analytics, Azure Blob depolama ve Azure SQL veritabanını başvuru verileri için depolama katmanı olarak destekler. Ayrıca, [bulut tabanlı ve şirket içi veri mağazalarını](../data-factory/copy-activity-overview.md)kullanmak için Azure Data Factory ' den BLOB depolama alanına başvuru verileri dönüştürebilir ve/veya kopyalayabilirsiniz.
 
@@ -34,7 +45,7 @@ Başvuru verilerinizi yapılandırmak için önce **başvuru verileri**türünde
 |Depolama Hesabı   | Bloblarınızın bulunduğu depolama hesabının adı. Stream Analytics Işiniz ile aynı abonelikte yer alıyorsa, açılır listeden seçim yapabilirsiniz.   |
 |Depolama hesabı anahtarı   | Depolama hesabıyla ilişkili gizli anahtar. Depolama hesabı Stream Analytics işle aynı abonelikte ise bu otomatik olarak doldurulur.   |
 |Depolama kapsayıcısı   | Kapsayıcılar Microsoft Azure Blob hizmetinde depolanan Bloblar için mantıksal bir gruplama sağlar. Blob hizmetine bir blob yüklediğinizde, o blob için bir kapsayıcı belirtmeniz gerekir.   |
-|Yol Deseni   | Belirtilen kapsayıcı içindeki bloblarınızı bulmak için kullanılan yol. Yol içinde, aşağıdaki 2 değişkenlerin bir veya daha fazla örneğini belirtmeyi seçebilirsiniz:<BR>{date}, {Time}<BR>Örnek 1: Ürünler/{Date}/{Time}/Product-List. csv<BR>Örnek 2: Ürünler/{Date}/Product-List. csv<BR>Örnek 3: Product-List. csv<BR><br> Blob belirtilen yolda yoksa, blob 'un kullanılabilir olması için Stream Analytics işi süresiz olarak bekler.   |
+|Yol Deseni   | Bu, belirtilen kapsayıcı içindeki bloblarınızı bulmak için kullanılan gerekli bir özelliktir. Yol içinde, aşağıdaki 2 değişkenlerin bir veya daha fazla örneğini belirtmeyi seçebilirsiniz:<BR>{date}, {Time}<BR>Örnek 1: Ürünler/{Date}/{Time}/Product-List. csv<BR>Örnek 2: Ürünler/{Date}/Product-List. csv<BR>Örnek 3: Product-List. csv<BR><br> Blob belirtilen yolda yoksa, blob 'un kullanılabilir olması için Stream Analytics işi süresiz olarak bekler.   |
 |Tarih biçimi [isteğe bağlı]   | Belirttiğiniz yol deseninin içinde {Date} kullandıysanız, bloblarınızın desteklenen biçimlerin açılan listesinden düzenlendiği tarih biçimini seçebilirsiniz...<BR>Örnek: YYYY/AA/GG, AA/GG/YYYY vb.   |
 |Saat biçimi [isteğe bağlı]   | Belirttiğiniz yol deseninin içinde {Time} kullandıysanız, bloblarınızın desteklenen biçimlerin açılan listesinden düzenlendiği zaman biçimini seçebilirsiniz...<BR>Örnek: HH, HH/mm veya HH-mm.  |
 |Olay serileştirme biçimi   | Sorgularınızın istediğiniz şekilde çalıştığından emin olmak için, Stream Analytics gelen veri akışları için hangi serileştirme biçimini kullandığınızı bilmeniz gerekir. Başvuru verileri için desteklenen biçimler CSV ve JSON ' tır.  |
@@ -110,7 +121,24 @@ Stream Analytics **en fazla 300 MB boyutlu**başvuru verilerini destekler. En b�
 
 6 ' dan fazla bir işin akış birimi sayısının artırılması, en fazla desteklenen başvuru verileri boyutunu artırmaz.
 
-Başvuru verileri için sıkıştırma desteği kullanılamaz. 
+Başvuru verileri için sıkıştırma desteği kullanılamaz.
+
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>Bir işte birden çok başvuru veri kümesini birleştirme
+Sorgunuzun tek adımında tek bir başvuru veri girişi ile yalnızca bir akış girişine katılabilir. Ancak, sorgunuzu birden çok adıma ayırarak birden çok başvuru veri kümesine katılabilmeniz gerekir. Aşağıda bir örnek gösterilmiştir.
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

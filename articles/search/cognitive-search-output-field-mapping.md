@@ -8,18 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74280977"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005486"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI zenginleştirilmiş alanları aranabilir bir dizinle eşleme
 
 Bu makalede, aranabilir bir dizindeki çıkış alanlarına zenginleştirilmiş giriş alanlarını eşlemeyi öğreneceksiniz. [Bir beceri tanımladıktan](cognitive-search-defining-skillset.md)sonra, arama dizininizdeki belirli bir alana doğrudan değer katkıda bulunan herhangi bir yeteneğin çıkış alanlarını eşlemeniz gerekir. 
 
 İçeriği zenginleştirilmiş belgelerden dizine taşımak için çıkış alanı eşlemeleri gereklidir.  Zenginleştirilmiş belge gerçekten bir bilgi ağacıdır ve dizindeki karmaşık türler için destek olsa bile, bazen zenginleştirilmiş ağaç içindeki bilgileri daha basit bir türe (örneğin, dizeler dizisi) dönüştürmek isteyebilirsiniz. Çıkış alanı eşlemeleri, bilgileri düzleştirerek veri şekli dönüştürmeleri gerçekleştirmenize olanak tanır.
+
+> [!NOTE]
+> Son zamanlarda çıkış alanı eşlemelerinde işlevleri eşleme işlevlerini etkinleştirdik. Eşleme işlevleri hakkında daha fazla bilgi için bkz. [alan eşleme işlevleri](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings kullanma
 Alanları eşlemek için, Dizin `outputFieldMappings` Oluşturucu tanımınıza aşağıda gösterildiği gibi ekleyin:
@@ -50,7 +53,10 @@ Content-Type: application/json
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

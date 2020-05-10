@@ -3,15 +3,15 @@ title: Azure Logic Apps için REST API 'Leri & Web API 'Leri oluşturma
 description: API 'leri, hizmetlerinizi veya sistemlerinizi Azure Logic Apps içindeki Sistem tümleştirmeleri için çağırmak üzere Web API 'leri & REST API 'leri oluşturun
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270543"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005260"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps çağırabilmeniz için özel API 'Ler oluşturun
 
@@ -136,11 +136,13 @@ Bu düzende, denetleyicinizde iki uç nokta ayarlayın: `subscribe` ve`unsubscri
 
 ![Web kancası eylem kalıbı](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> Şu anda Logic App Designer, Swagger aracılığıyla Web kancası uç noktalarının bulunmasını desteklemez. Bu nedenle, bu düzende bir [ **Web kancası** eylemi](../connectors/connectors-native-webhook.md) eklemenız ve isteğiniz için URL, üst bilgiler ve gövde belirtmeniz gerekir. Ayrıca bkz. [Iş akışı eylemleri ve Tetikleyicileri](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
+Şu anda Logic App Designer, Swagger aracılığıyla Web kancası uç noktalarının bulunmasını desteklemez. Bu nedenle, bu düzende bir [ **Web kancası** eylemi](../connectors/connectors-native-webhook.md) eklemenız ve isteğiniz için URL, üst bilgiler ve gövde belirtmeniz gerekir. Ayrıca bkz. [Iş akışı eylemleri ve Tetikleyicileri](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da inceleyin.
 
-> [!TIP]
-> Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da inceleyin.
+Diğer ipuçları ve notlar aşağıda verilmiştir:
+
+* Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
+
+* Hem mantıksal uygulamanın hem de abone olunan hizmetin sahibiyseniz, geri çağırma URL 'SI çağrıldıktan sonra `unsubscribe` uç noktayı çağırmanız gerekmez. Aksi takdirde, Logic Apps çalışma zamanının daha fazla çağrının `unsubscribe` beklenmediği ve sunucu tarafında kaynak temizlemeye izin verilmesi için uç noktayı çağırması gerekir.
 
 <a name="triggers"></a>
 
@@ -171,7 +173,7 @@ Aşağıda, API 'nin perspektifinden tanımlanan bir yoklama tetikleyicisi için
 
 | İstek şunları `triggerState`içerir? | API yanıtı | 
 | -------------------------------- | -------------| 
-| Hayır | Bir HTTP `202 ACCEPTED` durumu ve geçerli saate `location` ayarlanmış bir `triggerState` üstbilgi ve `retry-after` 15 saniyeye kadar olan bir üst bilgi döndürür. | 
+| No | Bir HTTP `202 ACCEPTED` durumu ve geçerli saate `location` ayarlanmış bir `triggerState` üstbilgi ve `retry-after` 15 saniyeye kadar olan bir üst bilgi döndürür. | 
 | Yes | `DateTime` İçin `triggerState`' den sonra eklenen dosyalar için hizmetinizi kontrol edin. | 
 ||| 
 
@@ -198,13 +200,15 @@ Web kancası Tetikleyicileri, bu konuda daha önce açıklanan [Web kancası eyl
 
 ![Web kancası tetikleyici stili](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> Şu anda Logic App Designer, Swagger aracılığıyla Web kancası uç noktalarının bulunmasını desteklemez. Bu nedenle, bu düzende bir [ **Web kancası** tetikleyicisi](../connectors/connectors-native-webhook.md) eklemenız ve isteğiniz için URL, üst bilgiler ve gövde belirtmeniz gerekir. Ayrıca bkz. [Httpweb kancası tetikleyicisi](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
->
-> Aynı verinin birden çok kez işlenmesini engellemek için, Tetikleyiciniz zaten okunmuş ve mantıksal uygulamaya geçirilen verileri temizlemelidir.
+Şu anda Logic App Designer, Swagger aracılığıyla Web kancası uç noktalarının bulunmasını desteklemez. Bu nedenle, bu düzende bir [ **Web kancası** tetikleyicisi](../connectors/connectors-native-webhook.md) eklemenız ve isteğiniz için URL, üst bilgiler ve gövde belirtmeniz gerekir. Ayrıca bkz. [Httpweb kancası tetikleyicisi](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyici denetleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da gözden geçirin.
 
-> [!TIP]
-> Örnek bir Web kancası düzeniyle ilgili bu [Web kancası tetikleyici denetleyicisi örneğini GitHub '](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)da gözden geçirin.
+Diğer ipuçları ve notlar aşağıda verilmiştir:
+
+* Geri çağırma URL 'sini geçirmek için, bir önceki alanda bulunan `@listCallbackUrl()` iş akışı işlevini gerekli şekilde kullanabilirsiniz.
+
+* Aynı verinin birden çok kez işlenmesini engellemek için, Tetikleyiciniz zaten okunmuş ve mantıksal uygulamaya geçirilen verileri temizlemelidir.
+
+* Hem mantıksal uygulamanın hem de abone olunan hizmetin sahibiyseniz, geri çağırma URL 'SI çağrıldıktan sonra `unsubscribe` uç noktayı çağırmanız gerekmez. Aksi takdirde, Logic Apps çalışma zamanının daha fazla çağrının `unsubscribe` beklenmediği ve sunucu tarafında kaynak temizlemeye izin verilmesi için uç noktayı çağırması gerekir.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Mantıksal uygulamalardan API 'lerinize yapılan çağrılar için güvenliği geliştirme
 

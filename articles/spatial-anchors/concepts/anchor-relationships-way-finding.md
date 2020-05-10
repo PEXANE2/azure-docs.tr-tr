@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270612"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006010"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarını ve bağlama ilişkilerini ve yolunu bulma
 
@@ -73,7 +73,7 @@ Zaman içinde daha fazla bağlayıcı ve daha fazla oturum için bu yordama deva
 
 ### <a name="verify-anchor-connections"></a>Bağlantı bağlantılarını doğrulama
 
-Uygulama, yakın Tutturucular için bir sorgu vererek iki Tutturucuların bağlandığını doğrulayabilirler. Sorgunun sonucu hedef bağlayıcıyı içerdiğinde, bağlantı bağlantısı doğrulanır. Bağlantı bağlantıları bağlı değilse, uygulama bunları yeniden bağlamayı deneyebilir.
+Uygulama, bir `NearAnchorCriteria` `CloudSpatialAnchorWatcher`üzerinde ayarını yaparak yaptığınız yakın bağlantı için bir sorgu vererek iki tutturun bağlandığını doğrulayabilirsiniz. Sorgunun sonucu hedef bağlayıcıyı içerdiğinde, bağlantı bağlantısı doğrulanır. Bağlantı bağlantıları bağlı değilse, uygulama bunları yeniden bağlamayı deneyebilir.
 
 Bağlantı oluşturulamalarının bağlanamamasının bazı nedenleri aşağıda verilmiştir:
 

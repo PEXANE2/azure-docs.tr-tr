@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cde644b821b8c9233c9a79c2c5e9fe8478850a65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82997709"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006478"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure sanal WAN 'ı kullanmak için kullanıcının SD-WAN/VPN cihazlarıyla hub ve bağlı olması gerekir mi?
 
@@ -190,8 +190,8 @@ Bir hub 'ın toplam VPN verimlilik, seçilen ölçek birimine bağlı olarak 20 
 Portalda bir hub 'ın içindeki VPN ağ geçidine gidin ve uygun ayarla değiştirmek için ölçek birimine tıklayın.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Sanal WAN, şirket içi cihazın birden çok ISS 'yi paralel olarak kullanmasına izin veriyor mu veya her zaman tek bir VPN tüneli mi?
+Şirket içi cihaz çözümleri, birden çok tüneldeki trafiği Azure 'a eklemek için trafik ilkelerini uygulayabilir.
 
-Sanal WAN VPN 'ye gelen bir bağlantı, dalda bulunan bir bağlantı kullanılarak her zaman etkin-etkin bir tüneldir (aynı hub/bölge dahilinde esneklik için). Bu bağlantı, şirket içi dalda bir ISS bağlantısı olabilir. ' VPNSite ' sanal WAN 'ı siteye bağlantı bilgilerini ekleme özelliği sağlar. Dalda birden çok ISS varsa ve her bir ISS 'nin bir bağlantı sağladıysanız, bu bilgiler Azure 'daki VPN sitesi bilgilerinde ayarlanabilir. Ancak, daldaki ISS 'lerde yük devretmeyi yönetmek, tamamen şube merkezli bir yönlendirme işlemidir.
 
 ### <a name="what-is-global-transit-architecture"></a>Küresel geçiş mimarisi nedir?
 

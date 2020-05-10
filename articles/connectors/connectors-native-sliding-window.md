@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: ab4bf802772c95d8c48a8cdba48def05e8a2761b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 03/25/2020
+ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74786920"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004593"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Azure Logic Apps içindeki kayan pencere tetikleyicisini kullanarak ardışık veriler için görevleri zamanlayın ve çalıştırın
 
@@ -19,9 +19,9 @@ Sürekli öbeklerdeki verileri işlemesi gereken görevleri, işlemleri veya iş
 
 Bu tetikleyicinin desteklediği bazı desenler aşağıda verilmiştir:
 
-* Hemen çalıştırın ve her *n* saniye, dakika veya saat sayısını yineleyin.
+* Hemen çalıştırın ve her *n* saniye, dakika, saat, gün, hafta veya ay sayısını yineleyin.
 
-* Belirli bir tarih ve saatte başlayıp, her *n* saniye, dakika veya saat sonra çalıştırın ve tekrarlayın. Bu tetikleyici ile, geçmişte tüm geçmiş yinelenmeleri çalıştıran bir başlangıç saati belirtebilirsiniz.
+* Belirli bir tarih ve saatte başlayıp, her *n* saniye, dakika, saat, gün, hafta veya ay çalıştırın ve tekrarlayın. Bu tetikleyici ile, geçmişte tüm geçmiş yinelenmeleri çalıştıran bir başlangıç saati belirtebilirsiniz.
 
 * Çalışmadan önce belirli bir süre için her yinelemeyi geciktir.
 
@@ -40,7 +40,7 @@ Bu tetikleyici ile yineleme tetikleyicisi arasındaki farklar veya yinelenen iş
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
-1. Mantıksal uygulama Tasarımcısı görüntülendikten sonra arama kutusuna filtreniz olarak "kayan pencere" yazın. Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olarak bu tetikleyiciyi seçin: **kayan pencere**
+1. Mantıksal uygulama Tasarımcısı görüntülendikten sonra arama kutusuna filtreniz olarak girin `sliding window` . Tetikleyiciler listesinden, mantıksal uygulama iş akışınızın ilk adımı olarak **kayan pencere** tetikleyicisi ' ni seçin.
 
    !["Kayan pencere" tetikleyicisi seçin](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -48,22 +48,21 @@ Bu tetikleyici ile yineleme tetikleyicisi arasındaki farklar veya yinelenen iş
 
    ![Aralık ve sıklığı ayarlama](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Özellik | Gerekli | JSON adı | Tür | Açıklama |
+   | Özellik | JSON adı | Gerekli | Tür | Açıklama |
    |----------|----------|-----------|------|-------------|
-   | **Interval** | Yes | interval | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "saat" ise yinelenme 6 saattir. |
-   | **Sıklık** | Yes | frequency | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**veya **saat** |
+   | **Interval** | `interval` | Yes | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay <br>-Hafta: 1-71 hafta <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
+   | **Sıklık** | `frequency` | Yes | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta**veya **ay** |
    ||||||
 
    ![Gelişmiş yinelenme seçenekleri](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   Daha fazla yinelenme seçeneği için **yeni parametre Ekle** listesini açın. 
-   Seçtiğiniz tüm seçenekler, seçimden sonra tetikde görünür.
+   Daha fazla yinelenme seçeneği için **yeni parametre Ekle** listesini açın. Seçtiğiniz tüm seçenekler, seçimden sonra tetikde görünür.
 
    | Özellik | Gerekli | JSON adı | Tür | Açıklama |
    |----------|----------|-----------|------|-------------|
-   | **Gecikme** | Hayır | ilir | Dize | [Iso 8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Durations) kullanarak her tekrarın geciktirime süresi |
-   | **Saat dilimi** | Hayır | timeZone | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini seçin. |
-   | **Başlangıç saati** | Hayır | startTime | Dize | Bu biçimde bir başlangıç tarihi ve saati belirtin: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme <p>Örneğin, 18 Eylül 2017, 2:00 PM üzerinde istiyorsanız, "2017-09-18T14:00:00" belirtin ve Pasifik standart saati gibi bir saat dilimi seçin. Ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC boşluğu](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Bir saat dilimi seçmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak gelişmiş Yinelenmeler için tetikleyici başlangıç zamanından daha önce harekete geçmez. [*Başlangıç tarihini ve saatini kullanmanın yolları nelerdir?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Gecikme** | No | ilir | Dize | [Iso 8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Durations) kullanarak her tekrarın geciktirime süresi |
+   | **Saat dilimi** | No | timeZone | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini seçin. |
+   | **Başlangıç saati** | No | startTime | Dize | Bu biçimde bir başlangıç tarihi ve saati belirtin: <p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme <p>Örneğin, 18 Eylül 2017, 2:00 PM üzerinde istiyorsanız, "2017-09-18T14:00:00" belirtin ve Pasifik standart saati gibi bir saat dilimi seçin. Ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC boşluğu](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Bir saat dilimi seçmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak gelişmiş Yinelenmeler için tetikleyici başlangıç zamanından daha önce harekete geçmez. [*Başlangıç tarihini ve saatini kullanmanın yolları nelerdir?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    |||||
 
 1. Şimdi diğer eylemlerle kalan iş akışınızı derleyin. Ekleyebileceğiniz daha fazla eylem için bkz. [bağlayıcılar Azure Logic Apps](../connectors/apis-list.md).
