@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261049"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115617"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD ile uygulama yönetimini merkezileştirme
 
@@ -53,7 +53,7 @@ Daha fazla parola yönetilme. Şirket kimlik bilgilerinizle ihtiyacınız olan t
 
 |Özellik  |Açıklama|Öneri |
 |---------|---------|---------|
-|SCıM sağlama|[SCIM](https://aka.ms/SICMOverview) , Kullanıcı sağlamasını otomatikleştirmek için sektör açısından en iyi uygulamadır. Herhangi bir SCıM uyumlu uygulama, Azure AD ile tümleştirilebilir. CSV dosyalarını, özel betikleri veya şirket içi çözümleri sürdürmek zorunda kalmadan kullanıcı hesaplarını otomatik olarak oluşturun, güncelleştirin ve silin.|Azure AD uygulama galerisinde [önceden tümleştirilmiş](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) uygulamalar listesini gözden geçirin|
+|SCıM sağlama|[SCIM](https://aka.ms/SCIMOverview) , Kullanıcı sağlamasını otomatikleştirmek için sektör açısından en iyi uygulamadır. Herhangi bir SCıM uyumlu uygulama, Azure AD ile tümleştirilebilir. CSV dosyalarını, özel betikleri veya şirket içi çözümleri sürdürmek zorunda kalmadan kullanıcı hesaplarını otomatik olarak oluşturun, güncelleştirin ve silin.|Azure AD uygulama galerisinde [önceden tümleştirilmiş](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) uygulamalar listesini gözden geçirin|
 |Microsoft Graph|Azure AD 'nin uygulamanızı, ihtiyaç duyacağı verilerle zenginleştirmesini sağlayan verilerin genişliği ve derinliğine yararlanın.|Microsoft ekosistemi üzerinden veri almak için [Microsoft Graph](https://developer.microsoft.com/graph/) 'tan yararlanın. |
 
 
