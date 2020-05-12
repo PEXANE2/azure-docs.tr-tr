@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985890"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125800"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure İşlevleri’ni ölçeklendirme ve barındırma
 
@@ -109,7 +109,7 @@ Her zaman etkinleştirilmiş olsa bile, tek tek işlevlerde yürütme zaman aş�
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Mevcut bir uygulamanın barındırma planını belirleme
 
-İşlev uygulamanız tarafından kullanılan barındırma planını öğrenmek için, [Azure Portal](https://portal.azure.com)işlev uygulaması Için **genel bakış** sekmesinde **App Service plan/fiyatlandırma katmanı** ' na bakın. App Service planlar için, fiyatlandırma katmanı da belirtilir.
+İşlev uygulamanız tarafından kullanılan barındırma planını öğrenmek için, [Azure Portal](https://portal.azure.com)işlev uygulaması Için **genel bakış** sekmesinde **App Service plan** bölümüne bakın. Fiyatlandırma katmanını görmek için **App Service planının**adını seçin ve ardından sol bölmedeki **Özellikler** ' i seçin.
 
 ![Portalda ölçeklendirme planını görüntüleme](./media/functions-scale/function-app-overview-portal.png)
 
@@ -120,11 +120,11 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Bu komutun çıktısı olduğunda `dynamic`, Işlev uygulamanız tüketim planınızdan olur. Bu komutun çıktısı olduğunda `ElasticPremium`, Işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
+Bu komutun çıktısı olduğunda `dynamic` , işlev uygulamanız tüketim planınızdan olur. Bu komutun çıktısı olduğunda `ElasticPremium` , işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerini yönetme gibi işlemler için Azure Storage 'ı temel aldığından, ancak bazı depolama hesapları kuyrukları ve tabloları desteklemezler. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama çoğaltması olan genel amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması oluşturduğunuzda mevcut **depolama hesabı** Seçimlerinizden filtrelenmiştir.
+Herhangi bir planda, bir işlev uygulaması Azure blob, kuyruk, dosyalar ve tablo depolamayı destekleyen genel bir Azure depolama hesabı gerektirir. Bunun nedeni Azure Işlevlerinin Tetikleyicileri yönetme ve işlev yürütmelerini yönetme gibi işlemler için Azure Storage 'ı kullandığından, ancak bazı depolama hesaplarının kuyrukları ve tabloları desteklememesi nedeniyle oluşur. Yalnızca BLOB depolama hesapları (Premium Depolama dahil) ve bölgesel olarak yedekli depolama çoğaltması olan genel amaçlı depolama hesapları dahil olmak üzere bu hesaplar, bir işlev uygulaması oluşturduğunuzda mevcut **depolama hesabı** Seçimlerinizden filtrelenmiştir.
 
 İşlev uygulamanız tarafından kullanılan depolama hesabı, Tetikleyiciniz ve bağlamalarınız tarafından, uygulama verilerinizi depolamak için de kullanılabilir. Ancak, depolama yoğun işlemler için ayrı bir depolama hesabı kullanmanız gerekir.  
 

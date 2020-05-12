@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77591549"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201662"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP Ass/SCS örnekleri için bir Windows Yük devretme kümesi ve dosya paylaşma kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama
 
@@ -228,7 +228,7 @@ Yüklemeye başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
 **Tablo 1**: yoks/SCS kümesi
 
-| SAP \<SID> | SAP ASCS/SCS örnek numarası |
+| SAP \< sıd> | SAP ASCS/SCS örnek numarası |
 | --- | --- |
 | PR1 | 00 |
 
@@ -348,7 +348,7 @@ Windows Genişleme Dosya Sunucusu kümesini başarıyla yükledikten sonra, yük
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- Routinggeçmişini = 30
+- Routegeçmişini uzunluğu = 30
 
 Bu ayarlar müşterilerle test edilmiştir ve iyi bir uzlaşma sağlar. Bunlar yeterince esnektir, ancak gerçek hata koşullarında ya da VM hatasında yeterince hızlı yük devretme sağlar.
 

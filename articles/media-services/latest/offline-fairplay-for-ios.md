@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887223"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197164"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>İOS için Media Services v3 ile çevrimdışı FairPlay Akışı
 
@@ -59,7 +59,7 @@ Bu makalede iOS 10 veya üstünü çalıştıran cihazları hedefleyen FairPlay 
 
     - Anahtar güvenlik modülünü (KSM), istemci örneklerini, bir belirtimi ve bir test vektörü kümesini içeren FPS sunucu SDK 'Sı.
     - G işlevi belirtimini içeren FPS dağıtım paketi, FPS sertifikası, müşteriye özgü özel anahtar ve uygulama gizli anahtarı oluşturma yönergeleriyle birlikte. Apple, FPS dağıtım paketini yalnızca lisanslı içerik sağlayıcılarına yayınlar.
-* Kopyala https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git. 
+* Kopyala https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git . 
 
     FairPlay yapılandırması eklemek için [.NET kullanarak DRM Ile şifrelemeden](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) kodu değiştirmeniz gerekir.  
 
@@ -87,7 +87,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>Çevrimdışı modunu etkinleştir
 
-Çevrimdışı modu etkinleştirmek için özel bir StreamingPolicy oluşturun ve [Createstreaminglocatokısync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)Içinde StreamingLocator oluştururken adını kullanın.
+Çevrimdışı modu etkinleştirmek için özel bir StreamingPolicy oluşturun ve [Createstreaminglocatokısync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561)Içinde StreamingLocator oluştururken adını kullanın.
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -96,23 +96,24 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
     {
         FairPlay = new StreamingPolicyFairPlayConfiguration()
         {
-            AllowPersistentLicense = true  //this enables offline mode
+            AllowPersistentLicense = true // This enables offline mode
         }
     },
     EnabledProtocols = new EnabledProtocols()
     {
         Hls = true,
-        Dash = true //Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
+        Dash = true // Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
     },
 
     ContentKeys = new StreamingPolicyContentKeys()
     {
-        //Default key must be specified if keyToTrackMappings is present
+        // Default key must be specified if keyToTrackMappings is present
         DefaultKey = new DefaultKey()
         {
             Label = "CBCS_DefaultKeyLabel"
         }
     }
+}
 
 ```
 
@@ -133,7 +134,7 @@ FPS 'nin çevrimdışı mod desteği yalnızca iOS 10 ve üzeri sürümlerde kul
 
 Bu adımlarda çalışan bir iOS yürütücüsünün nasıl ayarlanacağı gösterilmektedir. FPS sunucu SDK 'Sı 4.0.1 sürümündeki HLSCatalog örneğinden başlattığınız varsayılarak aşağıdaki kod değişikliklerini yapın:
 
-Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kullanarak yöntemini `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` aşağıdaki kodu kullanarak yöntemini uygulayın. "DrmUr", HLS URL 'sine atanmış bir değişken olmasına izin verir.
 
 ```swift
     var ckcData: Data? = nil
@@ -166,7 +167,7 @@ Hldağık\shared\managers\contentkeydelegate.exe içinde, aşağıdaki kodu kull
     return ckcData
 ```
 
-Hldağık\shared\managers\contentkeydelegate.exe içinde, yöntemini `requestApplicationCertificate()`uygulayın. Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
+Hldağık\shared\managers\contentkeydelegate.exe içinde, yöntemini uygulayın `requestApplicationCertificate()` . Bu uygulama, sertifikayı aygıtla (yalnızca ortak anahtar) veya sertifikayı Web üzerinde barındırmanıza bağlı olarak değişir. Aşağıdaki uygulama, test örneklerinde kullanılan barındırılan uygulama sertifikasını kullanır. "CertUrl" ın uygulama sertifikasının URL 'sini içeren bir değişken olmasına izin verin.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {

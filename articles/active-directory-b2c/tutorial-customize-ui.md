@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186259"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116535"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
 
@@ -63,8 +63,8 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
  Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir URL 'den özel içerik yüklemek için modern ve standart bir yaklaşım kullanır. Çıkış noktaları arası kaynak paylaşımı (CORS), bir Web sayfasındaki kısıtlanmış kaynakların diğer etki alanlarından istenmesinin yapılmasına izin verir.
 
 1. Menüsünde **CORS**' yi seçin.
-2. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. Azure AD B2C `your-tenant-name` kiracınızın adıyla değiştirin. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-3. **İzin verilen Yöntemler**için, `GET``PUT`ve `OPTIONS`seçin.
+2. **Izin verilen çıkış noktaları**için girin `https://your-tenant-name.b2clogin.com` . `your-tenant-name`Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+3. **Izin verilen Yöntemler**için `GET` , ve seçin `PUT` `OPTIONS` .
 4. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 5. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
 6. **Maksimum yaş**için 200 girin.
@@ -75,9 +75,9 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 
 ### <a name="create-the-customization-files"></a>Özelleştirme dosyalarını oluşturma
 
-Kaydolma deneyiminin Kullanıcı arabirimini özelleştirmek için, basit bir HTML ve CSS dosyası oluşturarak başlayın. HTML 'nizi istediğiniz şekilde yapılandırabilirsiniz, ancak tanımlayıcı içeren bir **div** öğesi olmalıdır `api`. Örneğin, `<div id="api"></div>`. Sayfa görüntülenirken öğeleri `api` kapsayıcıya Azure AD B2C çıkartır.
+Kaydolma deneyiminin Kullanıcı arabirimini özelleştirmek için, basit bir HTML ve CSS dosyası oluşturarak başlayın. HTML 'nizi istediğiniz şekilde yapılandırabilirsiniz, ancak tanımlayıcı içeren bir **div** öğesi olmalıdır `api` . Örneğin, `<div id="api"></div>`. Sayfa görüntülenirken öğeleri kapsayıcıya Azure AD B2C çıkartır `api` .
 
-1. Yerel bir klasörde aşağıdaki dosyayı oluşturun ve depolama hesabının adına ve `your-storage-account` `your-container` oluşturduğunuz kapsayıcının adına değişiklik yaptığınızdan emin olun. Örneğin, `https://store1.blob.core.windows.net/b2c/style.css`.
+1. Yerel bir klasörde aşağıdaki dosyayı oluşturun ve `your-storage-account` depolama hesabının adına ve `your-container` oluşturduğunuz kapsayıcının adına değişiklik yaptığınızdan emin olun. Örneğin, `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -166,4 +166,4 @@ Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
 > * Özelleştirilmiş kullanıcı arabirimini test etme
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C dil özelleştirmesi](user-flow-language-customization.md)
+> [Azure Active Directory B2C Kullanıcı arabirimini özelleştirme](customize-ui-overview.md)

@@ -1,6 +1,6 @@
 ---
 title: Windows için Azure N serisi AMD GPU sürücü kurulumu
-description: Azure'da Windows Server veya Windows çalıştıran N serisi VM'ler için AMD GPU sürücüleri nasıl ayarlanır?
+description: Azure 'da Windows Server veya Windows çalıştıran N serisi VM 'Ler için AMD GPU sürücülerini ayarlama
 author: vikancha
 manager: jkabat
 ms.service: virtual-machines-windows
@@ -8,18 +8,22 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 63114bdf60c1feb2b6cb1092ef78397efdc5b666
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865769"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198005"
 ---
-# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM'lere AMD GPU sürücülerini yükleme
+# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM 'Lere AMD GPU sürücülerini yükler
 
-Windows çalıştıran yeni Azure NVv4 serisi VM'lerin GPU özelliklerinden yararlanmak için AMD GPU sürücülerinin yüklenmesi gerekir. AMD sürücü uzantısı önümüzdeki haftalarda kullanıma sunulacaktır. Bu makalede desteklenen işletim sistemleri, sürücüler ve el ile yükleme ve doğrulama adımları sağlar.
+Windows çalıştıran yeni Azure NVv4 serisi VM 'lerinin GPU Özellikleri avantajlarından yararlanmak için, AMD GPU sürücüleri yüklenmelidir. [AMD GPU sürücü uzantısı](../extensions/hpccompute-amd-gpu-windows.md) , NVv4 SERISI bir VM 'ye AMD GPU sürücülerini kurar. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen işletim sistemleri ve dağıtım adımları için [AMD GPU sürücü uzantısı belgelerine](../extensions/hpccompute-amd-gpu-windows.md) bakın.
 
-Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için [GPU Windows VM boyutlarına](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın.
+AMD GPU sürücülerini el ile yüklemeyi seçerseniz, bu makale desteklenen işletim sistemleri, sürücüler ve yükleme ve doğrulama adımları sağlar.
+
+NVv4 VM 'lerinde yalnızca Microsoft tarafından yayımlanan GPU sürücüleri desteklenir. Lütfen GPU sürücülerini başka bir kaynaktan yüklemeyin.
+
+Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU WINDOWS VM boyutları](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 
@@ -27,33 +31,33 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için [GPU Windo
 
 | İşletim Sistemi | Sürücü |
 | -------- |------------- |
-| Windows 10 EVD - Yapı 1903 <br/><br/>Windows 10 - Yapı 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 EVD-derleme 1903 <br/><br/>Windows 10-derleme 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
 
 
 ## <a name="driver-installation"></a>Sürücü yükleme
 
-1. Uzak Masaüstü'ne bağlanın ve her NVv4 serisi VM'ye bağlanın.
+1. Uzak Masaüstü ile her NVv4 serisi VM 'ye bağlanın.
 
-2. Bir NVv4 önizleme müşterisiyseniz, lütfen VM'yi durdurun ve Durduruldu(Deallocated) durumuna geçmesini bekleyin.
+2. Bir NVv4 Preview müşterisiyseniz lütfen VM 'yi durdurun ve bu işlemin durdurulmuş (serbest bırakılmış) duruma gelmesini bekleyin.
 
-3. Lütfen VM'yi başlatın ve en son [AMD Temizleme Yardımcı Programını](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)indirin. "amdcleanuputility-x64.exe" çalıştırarak varolan sürücüyü kaldırın. Lütfen önceki sürücü ile yüklü herhangi bir varolan temizleme yardımcı programı kullanmayın.  
+3. Lütfen VM 'yi başlatın ve en son [AMD Temizleme yardımcı programını](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)indirin. "Amdcleanuputility-x64. exe" çalıştırarak var olan sürücüyü kaldırın. Lütfen önceki sürücüyle yüklenmiş mevcut Temizleme yardımcı programını kullanmayın.  
 
-4. En son sürücüyü indirin ve kurun.
+4. En son sürücüyü indirip yükleyin.
 
-5. VM'yi yeniden başlatın.
+5. VM 'yi yeniden başlatın.
 
 ## <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 
-Aygıt Yöneticisi'nde sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnek, Azure NVv4 VM'deki Radeon Instinct MI25 kartının başarılı bir şekilde yapılandırışını gösterir.
+Aygıt Yöneticisi ' de sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki örnekte, bir Azure NVv4 VM üzerinde Radeon Instinct MI25 kartının başarıyla yapılandırılması gösterilmektedir.
 <br />
-![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/device-manager.png)
+![GPU sürücüsü özellikleri](./media/n-series-amd-driver-setup/device-manager.png)
 
-Video RAM de dahil olmak üzere GPU ekran özelliklerini doğrulamak için dxdiag'ı kullanabilirsiniz. Aşağıdaki örnek, Azure NVv4 VM'deki Radeon Instinct MI25 kartının 1/2'lik bir bölümüdür.
+Video RAM dahil GPU görüntüleme özelliklerini doğrulamak için dxdiag 'ı kullanabilirsiniz. Aşağıdaki örnekte, bir Azure NVv4 VM üzerinde Radeon Instinct MI25 kartının 1/2 bölümü gösterilmektedir.
 <br />
-![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/dxdiag-output.png)
+![GPU sürücüsü özellikleri](./media/n-series-amd-driver-setup/dxdiag-output.png)
 
-Windows 10 build 1903 veya daha yüksek çalıştırıyorsanız, dxdiag 'Görüntüle' sekmesinde hiçbir bilgi göstermez. Lütfen en alttaki 'Tüm Bilgileri Kaydet' seçeneğini kullanın ve çıkış dosyası AMD MI25 GPU ile ilgili bilgileri gösterir.
+Windows 10 derleme 1903 veya sonraki bir sürümü çalıştırıyorsanız, dxdiag ' görüntü ' sekmesinde hiçbir bilgi göstermez. Lütfen en alttaki ' tüm bilgileri Kaydet ' seçeneğini kullanın ve çıkış dosyasında AMD MI25 GPU ile ilgili bilgiler gösterilir.
 
-![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/dxdiag-details.png)
+![GPU sürücüsü özellikleri](./media/n-series-amd-driver-setup/dxdiag-details.png)
 
 

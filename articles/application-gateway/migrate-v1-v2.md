@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312044"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198809"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
 
@@ -50,18 +50,18 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
 
-* Azure az modules yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız, en iyi seçenek betiği çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
+* Azure az modules yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız, en iyi seçenek `Install-Script` betiği çalıştırmak için seçeneğini kullanmaktır.
 * Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
 
-Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az`. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
+Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az` . Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
 ### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
 
 Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
   
-Betiği aşağıdaki komutla çalıştırın:
+En son sürümü almak için betiği aşağıdaki komutla çalıştırın:
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 Bu komut ayrıca gerekli az modülleri de yüklüyor.  
 
@@ -71,11 +71,11 @@ Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldı
 
 Betiği çalıştırmak için:
 
-1. Azure `Connect-AzAccount` 'a bağlanmak için kullanın.
+1. `Connect-AzAccount`Azure 'a bağlanmak için kullanın.
 
-1. Az `Import-Module Az` modülleri içeri aktarmak için kullanın.
+1. `Import-Module Az`Az modülleri içeri aktarmak için kullanın.
 
-1. Gerekli `Get-Help AzureAppGWMigration.ps1` parametreleri incelemek için ' i çalıştırın:
+1. `Get-Help AzureAppGWMigration.ps1`Gerekli parametreleri incelemek için ' i çalıştırın:
 
    ```
    AzureAppGwMigration.ps1
@@ -101,7 +101,7 @@ Betiği çalıştırmak için:
 
    * **Subnetaddressrange: [dize]: gereklidir** -bu, yeni V2 ağ geçidinizi içeren yeni bir alt ağ için ayrılan (veya ayırmak ISTEDIĞINIZ) IP adres alanıdır. Bu, CıDR gösteriminde belirtilmelidir. Örneğin: 10.0.0.0/24. Bu alt ağı önceden oluşturmanız gerekmez. Bu komut dosyası, yoksa sizin için oluşturur.
    * **Appgwname: [dize]: Isteğe bağlı**. Bu, yeni Standard_v2 veya ağ geçidi WAF_v2 için ad olarak kullanmak üzere belirttiğiniz bir dizedir. Bu parametre sağlanmazsa, mevcut v1 ağ geçidinizin adı, sonek *_v2* eklenmiş olarak kullanılır.
-   * **Sslcertificates: [PSApplicationGatewaySslCertificate]: Isteğe bağlı**.  V1 ağ Geçidinizden TLS/SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülle ayrılmış bir listesi, yeni V2 ağ geçidine yüklenmiş olmalıdır. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılmış her bir TLS/SSL sertifikalarınızın her biri için burada gösterilen `New-AzApplicationGatewaySslCertificate` komut aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. TLS/SSL sertifika dosyanızın ve parolanın yolu gereklidir.
+   * **Sslcertificates: [PSApplicationGatewaySslCertificate]: Isteğe bağlı**.  V1 ağ Geçidinizden TLS/SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülle ayrılmış bir listesi, yeni V2 ağ geçidine yüklenmiş olmalıdır. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılmış her bir TLS/SSL sertifikalarınızın her biri için burada gösterilen komut aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz `New-AzApplicationGatewaySslCertificate` . TLS/SSL sertifika dosyanızın ve parolanın yolu gereklidir.
 
      Bu parametre yalnızca v1 Gateway veya WAF için HTTPS dinleyicilerinin yapılandırılmış olması durumunda isteğe bağlıdır. En az bir HTTPS dinleyicisi kurulumuna sahipseniz, bu parametreyi belirtmeniz gerekir.
 
@@ -115,7 +115,7 @@ Betiği çalıştırmak için:
         -Password $password
       ```
 
-     Önceki örnekte, betikteki Bu parametre için değer olarak `$mySslCert1, $mySslCert2` (virgülle ayrılmış) geçiş yapabilirsiniz.
+     `$mySslCert1, $mySslCert2`Önceki örnekte, betikteki Bu parametre için değer olarak (virgülle ayrılmış) geçiş yapabilirsiniz.
    * **Trustedrootcertificates: [PSApplicationGatewayTrustedRootCertificate]: Isteğe bağlı**. V2 ağ Geçidinizden arka uç örneklerinizin kimlik doğrulaması için [güvenilir kök sertifikaları](ssl-overview.md) temsil etmek üzere oluşturduğunuz PSApplicationGatewayTrustedRootCertificate nesnelerinin virgülle ayrılmış bir listesi.
    
       ```azurepowershell
@@ -162,7 +162,7 @@ Burada, geçerli uygulama ağ geçidinizin (Standart) istemci trafiği alabilece
 
   * Uygulama ağ geçidiniz üzerinde genel IP adresleri kullanıyorsanız, trafiği (ağırlıklı trafik yönlendirme yöntemi) yeni V2 ağ geçidine artımlı yönlendirmek için bir Traffic Manager profili kullanarak denetimli, ayrıntılı bir geçiş yapabilirsiniz.
 
-    Bu, hem v1 hem de v2 uygulama ağ geçitlerinin DNS etiketlerini [Traffic Manager profiline](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)ekleyerek ve özel DNS kaydınızı ( `www.contoso.com`örneğin, contoso.trafficmanager.net) Traffic Manager etki alanına (örneğin,) ekleyerek yapabilirsiniz.
+    Bu, hem v1 hem de v2 uygulama ağ geçitlerinin DNS etiketlerini [Traffic Manager profiline](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)ekleyerek ve özel DNS kaydınızı (örneğin, `www.contoso.com` contoso.trafficmanager.net) Traffic Manager etki alanına (örneğin,) ekleyerek yapabilirsiniz.
   * Ya da, özel etki alanı DNS kaydınızı, yeni v2 Application Gateway 'in DNS etiketini işaret etmek üzere güncelleştirebilirsiniz. DNS kaydınıza yapılandırılan TTL 'ye bağlı olarak, tüm istemci trafiğiniz yeni V2 ağ geçidinize geçirilmesi biraz zaman alabilir.
 * **İstemcileriniz, uygulama ağ geçidinizin ön uç IP adresine bağlanır**.
 
@@ -196,7 +196,7 @@ Hayır. Şu anda betik, anahtar kasasındaki sertifikaları desteklemez. Bununla
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
   
-Adresine appgwmigrationsup@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
+"Yapılandırma ve kurulum/v2 SKU 'suna geçiş" konusunun altında Azure desteğine başvurabilirsiniz. [Burada Azure desteği](https://azure.microsoft.com/support/options/)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

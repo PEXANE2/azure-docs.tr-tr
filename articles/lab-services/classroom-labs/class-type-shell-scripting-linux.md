@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1199bca9e2ab7c85ccf5c90879fe5141a55a7bb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443559"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115073"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
 Bu makalede, Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarın nasıl ayarlanacağı gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevleri önlemeyi sağlayan, sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıfı geleneksel Bash betiklerini ve gelişmiş betikleri içerir. Gelişmiş betikler, Bash komutlarını ve Ruby 'yi birleştiren betiklerdir. Bu yaklaşım, Ruby 'nin kabuğa ve Bash komutlarına karşı etkileşimde bulunmak için veri geçmesini sağlar. 
@@ -32,22 +32,22 @@ Laboratuvar hesabını oluşturduktan sonra laboratuvar hesabında aşağıdaki 
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ----------- | ------------ |  
-| Market görüntüleri | Laboratuar hesabınızda kullanmak için [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](specify-marketplace-images.md). | 
+| Market görüntüleri | Laboratuar hesabınızda kullanmak için Ubuntu Server 18,04 LTS görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](specify-marketplace-images.md). | 
 
 Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu öğreticiyi](tutorial-setup-classroom-lab.md) izleyin:
 
 | Laboratuvar ayarları | Değer/yönergeler | 
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük  |
-| VM görüntüsü | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| VM görüntüsü | Ubuntu Server 18,04 LTS |
 | Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin, Uzak Masaüstü (RDP) kullanarak VM 'lerine bağlanmasına imkan tanır. Daha fazla bilgi için bkz. [Azure Lab Services bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'Nü etkinleştirme](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Masaüstü ve xrdp 'yi yükler
-[Ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünde varsayılan olarak uzak masaüstü sunucusu yüklü değil. Uzak Masaüstü Protokolü aracılığıyla bağlanmak üzere şablon makinesinde gerekli olan paketleri yüklemek için, [Uzak Masaüstü 'Nü yüklemek ve yapılandırmak Için Azure 'da bir LINUX VM 'ye bağlanma](../../virtual-machines/linux/use-remote-desktop.md) makalesindeki yönergeleri izleyin.
+Ubuntu Server 18,04 LTS görüntüsünde varsayılan olarak uzak masaüstü sunucusu yüklü değil. Uzak Masaüstü Protokolü aracılığıyla bağlanmak üzere şablon makinesinde gerekli olan paketleri yüklemek için, [Uzak Masaüstü 'Nü yüklemek ve yapılandırmak Için Azure 'da bir LINUX VM 'ye bağlanma](../../virtual-machines/linux/use-remote-desktop.md) makalesindeki yönergeleri izleyin.
 
 ## <a name="install-ruby"></a>Ruby’yi yükleme
-Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. Bu bölümde, [Ruby](https://www.ruby-lang.org/)'nin en `apt-get` son sürümünü yüklemek için nasıl kullanılacağı gösterilmektedir.
+Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. Bu bölümde `apt-get` , [Ruby](https://www.ruby-lang.org/)'nin en son sürümünü yüklemek için nasıl kullanılacağı gösterilmektedir.
 
 1. Aşağıdaki komutları çalıştırarak güncelleştirmeleri yükler:
 

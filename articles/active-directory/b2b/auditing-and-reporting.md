@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67b543bd46b195a0944959f3f462a2bdc7d150ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273283"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199473"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B işbirliği kullanıcısını denetleme ve raporlama
 Konuk kullanıcılar ile, üye kullanıcılarla aynı denetim özelliklerine sahip olursunuz. 
 
 ## <a name="access-reviews"></a>Erişim gözden geçirmeleri
-Erişim gözden geçirmeleri kullanarak, konuk kullanıcıların kaynaklarınıza erişmeye devam edilip edilmeyeceğini düzenli aralıklarla doğrulayabilirsiniz. **Erişim gözden geçirmeleri** özelliği,**kuruluş ilişkilerini** **yönetme** > altında **Azure Active Directory** sunulmaktadır. (Ayrıca, Azure portal **tüm hizmetlerden** "erişim gözden geçirmeleri" için arama da yapabilirsiniz.) Erişim incelemelerini nasıl kullanacağınızı öğrenmek için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
+Erişim gözden geçirmeleri kullanarak, konuk kullanıcıların kaynaklarınıza erişmeye devam edilip edilmeyeceğini düzenli aralıklarla doğrulayabilirsiniz. **Erişim gözden geçirmeleri** özelliği, **Kurumsal ilişkiler** **Azure Active Directory**  >  **erişim gözden geçirmeleri** (veya **dış kimlikler**  >  **erişim İncelemeleri** ) altında Azure Active Directory kullanılabilir. Ayrıca, Azure portal **tüm hizmetlerden** "erişim gözden geçirmeleri" için arama yapabilirsiniz. Erişim incelemelerini nasıl kullanacağınızı öğrenmek için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296736"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115039"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Sınıf türlerine genel bakış-Azure Lab Services
 
@@ -61,6 +61,10 @@ Tanıtım amaçlı bir mobil uygulama geliştirme sınıfı öğretmek için Azu
 
 Bu tür laboratuvarın nasıl ayarlanacağı hakkında ayrıntılı bilgi için bkz. [mobil uygulama geliştirmeyi Android Studio öğretmek için laboratuvar ayarlama](class-type-mobile-dev-android-studio.md).
 
+## <a name="big-data-analytics"></a>Büyük veri analizi
+Büyük bir veri analizi sınıfı öğretmek için bir laboratuvar ayarlayabilirsiniz. Bu tür bir sınıfla, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor. Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan Apache Hadoop açık kaynaklı yazılım paketi gibi veri analizi araçlarını kullanmayı öğrenmektir. 
+
+Bu tür laboratuvar kurulumu hakkında ayrıntılı bilgi için bkz. [Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizi için laboratuvar ayarlama](class-type-big-data-analytics.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

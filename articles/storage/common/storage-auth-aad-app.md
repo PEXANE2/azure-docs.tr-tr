@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268489"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201080"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
@@ -178,7 +179,7 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 Sonra, Azure AD 'den Kullanıcı adına belirteç isteyen bir yöntem ekleyin. Bu yöntem, izin verilecek kapsamı tanımlar. İzinler ve kapsamlar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform uç noktasındaki izinler ve onay](../../active-directory/develop/v2-permissions-and-consent.md).
 
-Belirtecin alınacağı kapsamı oluşturmak için kaynak KIMLIĞINI kullanın. Örnek, kaynak KIMLIĞINI yerleşik `user_impersonation` kapsamla birlikte kullanarak, belirtecin Kullanıcı adına istenmekte olduğunu gösteren kapsamı oluşturur.
+Belirtecin alınacağı kapsamı oluşturmak için kaynak KIMLIĞINI kullanın. Örnek, kaynak KIMLIĞINI yerleşik kapsamla birlikte kullanarak `user_impersonation` , belirtecin Kullanıcı adına istenmekte olduğunu gösteren kapsamı oluşturur.
 
 Kullanıcıya, kullanıcının adına belirteç isteme izni vermesini sağlayan bir arayüz sunmanız gerektiğini aklınızda bulundurun. Onay gerekli olduğunda, örnek **Msaluırequiredexception** yakalar ve izin isteğini kolaylaştırmak için başka bir yöntem çağırır:
 
@@ -202,7 +203,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Microsoft Identity Platform 2,0 artımlı onayı destekler, yani bir güvenlik sorumlusu başlangıçta minimum izin kümesi isteyebilir ve gerektiğinde zaman içinde izinler ekleyebilir. Kodunuz bir erişim belirteci istediğinde, uygulamanız için `scope` , parametre içinde herhangi bir zamanda uygulamanıza gereken izin kapsamını belirtin. Artımlı izin hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesinde neden](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)olan **artımlı ve dinamik onay** başlıklı Bölüm.
+Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendirme izni veren bir işlemdir. Microsoft Identity Platform 2,0 artımlı onayı destekler, yani bir güvenlik sorumlusu başlangıçta minimum izin kümesi isteyebilir ve gerektiğinde zaman içinde izinler ekleyebilir. Kodunuz bir erişim belirteci istediğinde, uygulamanız için, parametre içinde herhangi bir zamanda uygulamanıza gereken izin kapsamını belirtin `scope` . Artımlı izin hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesinde neden](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)olan **artımlı ve dinamik onay** başlıklı Bölüm.
 
 Aşağıdaki yöntem artımlı izin istemek için kimlik doğrulama özelliklerini oluşturur:
 

@@ -5,21 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501503"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200463"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapılandırma
-
-> [!IMPORTANT]
-> SQL FQDN 'leri olan Azure Güvenlik Duvarı uygulama kuralları şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Artık, Azure Güvenlik Duvarı uygulama kurallarını SQL FQDN 'leri ile yapılandırabilirsiniz. Bu, sanal ağlarınızdaki erişimi yalnızca belirtilen SQL Server örneklerine sınırlamanıza izin verir.
 
@@ -29,7 +24,7 @@ SQL FQDN 'leri ile trafiği filtreleyebilirsiniz:
 - Şirket içinden Azure SQL yönetilen örneklerine veya sanal ağlarınızdaki SQL IaaS 'ye çalışır.
 - Sanal ağlarınız üzerinde çalışan Azure SQL yönetilen örneklerine veya SQL IaaS 'ye bağlı noktadan
 
-Genel Önizleme sırasında SQL FQDN filtrelemesi yalnızca [proxy modunda](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) desteklenir (bağlantı noktası 1433). Varsayılan yeniden yönlendirme modunda SQL kullanıyorsanız, [ağ kurallarının](overview.md#network-traffic-filtering-rules)bir PARÇASı olarak SQL hizmeti etiketini kullanarak erişimi filtreleyebilirsiniz.
+SQL FQDN filtrelemesi yalnızca [proxy modunda](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) desteklenir (bağlantı noktası 1433). Varsayılan yeniden yönlendirme modunda SQL kullanıyorsanız, [ağ kurallarının](overview.md#network-traffic-filtering-rules)bir PARÇASı olarak SQL hizmeti etiketini kullanarak erişimi filtreleyebilirsiniz.
 SQL IaaS trafiği için varsayılan olmayan bağlantı noktaları kullanırsanız, bu bağlantı noktalarını güvenlik duvarı uygulama kurallarında yapılandırabilirsiniz.
 
 SQL FQDN 'leri olan uygulama kuralları şu anda tüm bölgelerde Azure portal, Azure CLı, REST ve şablonlar aracılığıyla kullanılabilir.

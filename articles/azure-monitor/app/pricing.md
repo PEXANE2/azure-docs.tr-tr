@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995549"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199035"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -29,6 +29,10 @@ Fiyatlandırma Application Insights için nasıl çalıştığı hakkında sorul
 [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md) ek bir ücret doğurur. Çok adımlı Web testleri, bir dizi eylemi gerçekleştiren Web sınamalardır. Tek bir sayfanın *ping testlerine* yönelik ayrı ücret alınmaz. Ping sınamalarından ve çok adımlı testlerin telemetrisi, uygulamanızdan diğer telemetri ile aynı şekilde ücretlendirilir.
 
 [Özel ölçüm boyutlarında uyarı](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) verme seçeneğini etkinleştirmek için Application Insights seçeneği ek maliyetler halinde de oluşturulabilir, çünkü bu, ek ön toplama ölçümleri oluşturulmasına neden olabilir. Application Insights 'de günlük tabanlı ve önceden toplanmış ölçümler hakkında daha fazla bilgi edinin ve Azure Izleyici özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) .
+
+### <a name="workspace-based-application-insights"></a>Çalışma alanı tabanlı Application Insights
+
+[Çalışma alanı tabanlı Application Insights kaynakları](create-workspace-resource.md)olarak adlandırılan verileri bir Log Analytics çalışma alanına Gönderen Application Insights kaynakları için, veri alma ve bekletme için faturalandırma, Application Insights verilerinin bulunduğu çalışma alanı tarafından yapılır. Bu, müşterilerin, Kullandıkça öde ' ye ek olarak kapasite rezervasyonları içeren Log Analytics [fiyatlandırma modelinin](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model) tüm seçeneklerini kullanmasını sağlar. Log Analytics, veri saklama için [veri türüne göre bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type)de dahil olmak üzere daha fazla seçenek içerir. Çalışma alanındaki Application Insights veri türleri, ücretlendirmesiz 90 günlük bekletme alır. Web testlerinin kullanımı ve özel ölçüm boyutlarında uyarı etkinleştirme işlemi Application Insights aracılığıyla rapor edilir. [Kullanım ve tahmini maliyetler](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs), [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill) ve [Log Analytics sorguları](#data-volume-for-workspace-based-application-insights-resources)kullanarak Log Analytics veri alımı ve bekletme maliyetlerini nasıl izleyeceğinizi öğrenin. 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Uygulamanızı yönetme maliyetlerini tahmin etme
 
@@ -75,11 +79,11 @@ Veri birimleriniz hakkında daha fazla bilgi edinmek için Application Insights 
 
 ### <a name="queries-to-understand-data-volume-details"></a>Veri hacmi ayrıntılarını anlamak için sorgular
 
-Application Insights için veri birimlerini araştırmak için iki yaklaşım vardır. İlki `systemEvents` tablodaki toplu bilgileri kullanır ve ikincisi, her alınan olayda kullanılabilen `_BilledSize` özelliğini kullanır.
+Application Insights için veri birimlerini araştırmak için iki yaklaşım vardır. İlki tablodaki toplu bilgileri kullanır `systemEvents` ve ikincisi `_BilledSize` , her alınan olayda kullanılabilen özelliğini kullanır. `systemEvents`, [çalışma alanı tabanlı-Application-Insights](#data-volume-for-workspace-based-application-insights-resources)için veri boyutu bilgilerine sahip olmayacaktır.
 
 #### <a name="using-aggregated-data-volume-information"></a>Toplu veri hacmi bilgilerini kullanma
 
-Örneğin, sorgu ile son 24 saat `systemEvents` içinde alınan veri hacmini görmek için tablosunu kullanabilirsiniz:
+Örneğin, `systemEvents` sorgu ile son 24 saat içinde alınan veri hacmini görmek için tablosunu kullanabilirsiniz:
 
 ```kusto
 systemEvents
@@ -116,15 +120,56 @@ systemEvents
 
 #### <a name="using-data-size-per-event-information"></a>Olay bilgileri başına veri boyutunu kullanma
 
-Veri birimlerinizin kaynağı hakkında daha fazla bilgi edinmek için, alınan her olayda mevcut olan `_BilledSize` özelliğini kullanabilirsiniz.
+Veri birimlerinizin kaynağı hakkında daha fazla bilgi edinmek için, `_BilledSize` alınan her olayda mevcut olan özelliğini kullanabilirsiniz.
 
-Örneğin, son 30 gün içinde en çok veri birimini üreten işlemleri görmek için tüm bağımlılık olayları için toplam `_BilledSize` bir işlem yapabilirsiniz:
+Örneğin, son 30 gün içinde en çok veri birimini üreten işlemleri görmek için `_BilledSize` tüm bağımlılık olayları için toplam bir işlem yapabilirsiniz:
 
 ```kusto
 dependencies
 | where timestamp >= startofday(ago(30d))
 | summarize sum(_BilledSize) by operation_Name
 | render barchart  
+```
+
+#### <a name="data-volume-for-workspace-based-application-insights-resources"></a>Çalışma alanı tabanlı Application Insights kaynakları için veri hacmi
+
+Son hafta çalışma alanındaki tüm [çalışma alanı tabanlı Application Insights kaynakları](create-workspace-resource.md) için veri hacmi eğilimlerini görmek için, Log Analytics çalışma alanına gidin ve sorguyu çalıştırın:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
+| render areachart
+```
+
+Belirli bir çalışma alanı tabanlı Application Insights kaynağının türüne göre veri hacmi eğilimlerini sorgulamak için, Log Analytics çalışma alanında şunu kullanın:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where _ResourceId contains "<myAppInsightsResourceName>"
+| summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
+| render areachart
 ```
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure faturanızda Application Insights kullanımı görüntüleme
@@ -174,11 +219,11 @@ Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yap�
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-003.png)
 
-[Günlük ucunu Azure Resource Manager ile değiştirmek](../../azure-monitor/app/powershell.md)için, değiştirilecek özellik olur `dailyQuota`.  Azure Resource Manager aracılığıyla, `dailyQuotaResetTime` ve günlük Cap 'leri `warningThreshold`de ayarlayabilirsiniz.
+[Günlük ucunu Azure Resource Manager ile değiştirmek](../../azure-monitor/app/powershell.md)için, değiştirilecek özellik olur `dailyQuota` .  Azure Resource Manager aracılığıyla, `dailyQuotaResetTime` ve günlük Cap 'leri de ayarlayabilirsiniz `warningThreshold` .
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Günlük üst sınır için uyarı oluşturma
 
-Application Insights günlük uç, alınan veri birimleri uyarı düzeyini veya günlük sınır düzeyini ziyaret eden Azure etkinlik günlüğünde bir olay oluşturur.  [Bu etkinlik günlüğü olaylarına göre bir uyarı oluşturabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Bu olayların sinyal adları şunlardır:
+Application Insights günlük uç, alınan veri birimleri uyarı düzeyine veya günlük sınır düzeyine ulaştığında Azure etkinlik günlüğünde bir olay oluşturur.  [Bu etkinlik günlüğü olaylarına göre bir uyarı oluşturabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Bu olayların sinyal adları şunlardır:
 
 * Application Insights bileşen günlük sınır uyarısı eşiğine ulaşıldı
 
@@ -220,7 +265,7 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 Bekletme düşürüldü, en eski veriler kaldırılmadan önce birkaç gün yetkisiz kullanım süresi vardır.
 
-Saklama Ayrıca `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak program aracılığıyla de ayarlanabilir](powershell.md#set-the-data-retention) . Veri bekletmesini 30 güne ayarlarsanız,, uyumluluk ile ilgili senaryolar için faydalı olabilecek, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizlenmesini tetikleyebilirsiniz. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. Veri hacmi üst sınırı için günlük sıfırlama süresi, `dailyQuotaResetTime` parametresini ayarlamak için Azure Resource Manager kullanılarak yapılandırılabilir.
+Saklama Ayrıca parametresi kullanılarak [PowerShell kullanılarak program aracılığıyla de ayarlanabilir](powershell.md#set-the-data-retention) `retentionInDays` . Veri bekletmesini 30 güne ayarlarsanız,, `immediatePurgeDataOn30Days` Uyumluluk ile ilgili senaryolar için faydalı olabilecek, parametresini kullanarak eski verilerin hemen temizlenmesini tetikleyebilirsiniz. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. Veri hacmi üst sınırı için günlük sıfırlama süresi, parametresini ayarlamak için Azure Resource Manager kullanılarak yapılandırılabilir `dailyQuotaResetTime` .
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights kullanarak veri aktarımı ücretleri
 

@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717992"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115124"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Ders laboratuvarları kullanma
-Seyahat için bir laboratuvar oluşturabilirsiniz. Azure Lab Services derslik Labs, her bir eğitimin eğitim için aynı ve yalıtılmış ortamları kullandığı eğitim için bir laboratuvar oluşturmanıza imkan tanır. Eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir Trae tarafından kullanılabilir olmasını sağlamak için ilkeler uygulayabilirsiniz. 
+Azure Labs hizmetleri, mesleler, tracılar veya öğretim yardımcılarının, daha önceden yapılandırılmış öğrenme ortamları sağlamak için hızlı ve kolay bir şekilde çevrimiçi laboratuvar oluşturmalarına olanak tanır. Her bir eğitimin eğitim için aynı ve yalıtılmış ortamları kullanabiliyor. Bu ilkeler, eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir şekilde kullanılabilir olmasını sağlamak için uygulanabilir. 
 
 ![Sınıf Laboratuvarı](../media/classroom-labs-scenarios/classroom.png)
 

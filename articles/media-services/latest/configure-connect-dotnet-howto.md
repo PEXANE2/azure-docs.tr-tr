@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269815"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201127"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API-.NET ' e bağlanın
 
@@ -35,15 +36,15 @@ Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Ser
 ## <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
 
 1. Visual Studio’yu çalıştırın. 
-1. **Dosya** menüsünde **Yeni** > **Proje**' ye tıklayın. 
+1. **Dosya** menüsünde **Yeni**  >  **Proje**' ye tıklayın. 
 1. **.NET Core** konsol uygulaması oluşturun.
 
-Bu konudaki örnek uygulama, hedefler `netcoreapp2.0`. Kod, C# 7,1 ile başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
+Bu konudaki örnek uygulama, hedefler `netcoreapp2.0` . Kod, C# 7,1 ile başlayarak kullanılabilir olan ' Async Main ' kullanır. Daha fazla ayrıntı için bu [bloga](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) bakın.
 
 ## <a name="add-required-nuget-packages"></a>Gerekli NuGet paketlerini ekleyin
 
-1. Visual Studio 'da **Araçlar** > **NuGet Paket Yöneticisi** > **NuGet Yönetici Konsolu**' nu seçin.
-2. **Paket Yöneticisi konsolu** penceresinde, aşağıdaki NuGet paketlerini `Install-Package` eklemek için komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
+1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **NuGet Yönetici Konsolu**' nu seçin.
+2. **Paket Yöneticisi konsolu** penceresinde, `Install-Package` aşağıdaki NuGet paketlerini eklemek için komutunu kullanın. Örneğin, `Install-Package Microsoft.Azure.Management.Media`.
 
 |Paket|Açıklama|
 |---|---|
@@ -57,20 +58,20 @@ Bu konudaki örnek uygulama, hedefler `netcoreapp2.0`. Kod, C# 7,1 ile başlayar
 
 ### <a name="create-appsettingsjson"></a>AppSettings. JSON oluştur
 
-1. Git **genel** > **metin dosyası**.
+1. Git **genel**  >  **metin dosyası**.
 1. "AppSettings. JSON" olarak adlandırın.
 1. . Json dosyasının "çıkış dizinine Kopyala" özelliğini "daha sonra Kopyala" olarak ayarlayın (böylece uygulamanın yayımlandığında erişebilmesi için).
 
 ### <a name="set-values-in-appsettingsjson"></a>AppSettings. JSON içindeki değerleri ayarla
 
-`az ams account sp create` Komutunu [erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi çalıştırın. Komutu, "appSettings. JSON" uygulamanıza kopyalamanız gereken JSON döndürür.
+`az ams account sp create`Komutunu [erişim API 'lerinde](access-api-cli-how-to.md)açıklandığı gibi çalıştırın. Komutu, "appSettings. JSON" uygulamanıza kopyalamanız gereken JSON döndürür.
  
 ## <a name="add-configuration-file"></a>Yapılandırma dosyasını ekleme
 
 Kolaylık sağlaması için, "appSettings. JSON" öğesinden değerleri okumaktan sorumlu bir yapılandırma dosyası ekleyin.
 
 1. Projenize yeni bir. cs sınıfı ekleyin. Bunu, `ConfigWrapper` olarak adlandırın. 
-1. Aşağıdaki kodu bu dosyaya yapıştırın (Bu örnek, ad alanının olduğunu `ConsoleApp1`varsayar).
+1. Aşağıdaki kodu bu dosyaya yapıştırın (Bu örnek, ad alanının olduğunu varsayar `ConsoleApp1` ).
 
 ```csharp
 using System;

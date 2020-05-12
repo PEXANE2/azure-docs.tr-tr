@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383065"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201578"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -129,7 +129,7 @@ Hedef IP adresi, [ıANA RFC 1918](https://tools.ietf.org/html/rfc1918)başına �
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Bir ağ sanal gerecine Zorlamalı tünel/zincir oluşturma işlemi destekleniyor mu?
 
-Zorlamalı tünel oluşturma destekleniyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel (Önizleme)](forced-tunneling.md). 
+Zorlamalı tünel oluşturma destekleniyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı Zorlamalı tünel](forced-tunneling.md). 
 
 Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 

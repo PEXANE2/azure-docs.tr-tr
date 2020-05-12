@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692157"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198895"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -44,7 +44,7 @@ Daraltma algılandıktan sonra, SQL isteğe bağlı, bu senaryonun yerleşik ola
 
 Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
-- CSV 'yi Parquet-Parquet, sütunlu biçim olarak dönüştürür. Sıkıştırılmış olduğundan, dosya boyutları aynı verilerle CSV dosyalarından daha küçüktür. İsteğe bağlı SQL 'i okumak için daha az zaman ve depolama istekleri gerekecektir.
+- CSV ve JSON 'ı Parquet-Parquet, sütunlu biçim olarak dönüştürür. Sıkıştırılmış olduğundan, dosya boyutları CSV veya aynı verilere sahip JSON dosyalarından daha küçüktür. İsteğe bağlı SQL 'i okumak için daha az zaman ve depolama istekleri gerekecektir.
 - Bir sorgu tek bir büyük dosyayı hedefliyorsa, onu birden çok daha küçük dosyaya bölmeyi avantajdan yararlanabilirsiniz.
 - CSV dosyanızın boyutunu 10 GB 'tan daha düşük tutmaya çalışın.
 - Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması daha iyidir.
@@ -118,7 +118,14 @@ Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-f
 > [!TIP]
 > Her zaman FilePath ve FileInfo işlevlerinin sonucunu uygun veri türlerine atayın. Karakter veri türleri kullanıyorsanız, uygun uzunluğun kullanıldığından emin olun.
 
+> [!NOTE]
+> Bölüm yok etme, FilePath ve FileInfo için kullanılan işlevler, SYNAPSE Spark içinde oluşturulan her tablo için otomatik olarak oluşturulanlardan farklı dış tablolarda Şu anda desteklenmemektedir.
+
 Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmek üzere Bölümlendirmeyi düşünün. [Bölümlenmiş Spark TABLOLARıNı](develop-storage-files-spark-tables.md) SQL isteğe bağlı olarak sorgularken, sorgu yalnızca gerekli dosyaları hedefleyecek.
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>CSV dosyalarını sorgulamak için PARSER_VERSION 2,0 kullanın
+
+CSV dosyalarını sorgularken performans için iyileştirilmiş ayrıştırıcısı kullanabilirsiniz. Ayrıntılar için [PARSER_VERSION](develop-openrowset.md) denetleyin.
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını ve birleştirmeleri geliştirmek için CETAS kullanın
 
@@ -127,6 +134,12 @@ Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iy
 Birleşik başvuru tabloları gibi sorguların sık kullanılan parçalarını yeni bir dosya kümesine depolamak için CETAS kullanabilirsiniz. Daha sonra, birden çok sorgu içinde ortak birleştirmeleri yinelemek yerine bu tek dış tabloya katabilirsiniz.
 
 CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedeflediğinde istatistikler otomatik olarak oluşturulur ve bu da gelişmiş performansa neden olur.
+
+## <a name="aad-pass-through-performance"></a>AAD geçiş performansı
+
+İsteğe bağlı SQL, AAD geçişli veya SAS kimlik bilgilerini kullanarak depolamadaki dosyalara erişmenize olanak tanır. AAD geçişiyle SAS ile karşılaştırıldığında daha yavaş performans yaşayabilirsiniz. 
+
+Daha iyi performansa ihtiyacınız varsa, AAD geçiş performansı iyileştirilene kadar SAS kimlik bilgilerini depolamaya erişin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

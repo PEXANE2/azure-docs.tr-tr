@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926587"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115804"
 ---
 # <a name="security-tokens"></a>Güvenlik belirteçleri
 
@@ -31,7 +31,7 @@ Erişim belirteçleri yalnızca kısa bir süre için geçerlidir. bu nedenle, y
 **Kimlik belirteçleri** , bir [OpenID Connect](v2-protocols-oidc.md) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır. Microsoft kimlik platformunun KIMLIK belirteçleri hakkında daha fazla bilgi edinmek için bkz. [Kimlik belirteçleri](id-tokens.md).
 
 > [!NOTE]
-> Bu makalede OAuth2 ve OpenID Connect protokollerinin güvenlik belirteçleri açıklanır. Birçok kurumsal uygulama, kullanıcıların kimliğini doğrulamak için SAML kullanır. SAML onayları hakkında bilgi için bkz. [Azure AD SAML belirteci başvurusu](reference-saml-tokens.md) .
+> Bu makalede, OAuth2 ve OpenID Connect protokolleri tarafından kullanılan güvenlik belirteçleri ele alınmaktadır. Birçok kurumsal uygulama, kullanıcıların kimliğini doğrulamak için SAML kullanır. SAML onayları hakkında bilgi için bkz. [Azure AD SAML belirteci başvurusu](reference-saml-tokens.md) .
 
 ## <a name="validating-security-tokens"></a>Güvenlik belirteçleri doğrulanıyor
 
@@ -42,11 +42,11 @@ Belirteçler yalnızca sınırlı bir süre için geçerlidir. STS genellikle bi
 * Uygulamaya veya korunan kaynağa erişmek için bir erişim belirteci ve
 * Erişim belirtecinin süresi dolmak üzere kapatıldığında erişim belirtecini yenilemek için kullanılan yenileme belirteci.
 
-Erişim belirteçleri, `Authorization` üst bilgide taşıyıcı belirteci olarak BIR Web API 'sine geçirilir. Bir uygulama STS 'ye yenileme belirteci sağlayabilir ve uygulamaya yönelik kullanıcı erişimi iptal edilmediği takdirde, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. Bu, kuruluşa ayrılmaya yönelik senaryonun işlenme yönteminden oluşur. STS yenileme belirtecini aldığında, Kullanıcı artık yetkilendirilmezse başka bir geçerli erişim belirteci vermez.
+Erişim belirteçleri, üst bilgide taşıyıcı belirteci olarak bir Web API 'sine geçirilir `Authorization` . Bir uygulama STS 'ye yenileme belirteci sağlayabilir ve uygulamaya yönelik kullanıcı erişimi iptal edilmediği takdirde, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. Bu, kuruluşa ayrılmaya yönelik senaryonun işlenme yönteminden oluşur. STS yenileme belirtecini aldığında, Kullanıcı artık yetkilendirilmezse başka bir geçerli erişim belirteci vermez.
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON Web belirteçleri (JWTs) ve talepleri
 
-Microsoft Identity platformu, **talepler**Içeren **JSON Web belirteçleri (jwts)** olarak güvenlik belirteçleri uygular.
+Microsoft Identity platformu, **talepler**Içeren **JSON Web belirteçleri (jwts)** olarak güvenlik belirteçleri uygular. JWTs güvenlik belirteçleri olarak kullanıldığından, bu kimlik doğrulama biçimi bazen **JWT kimlik doğrulaması**olarak adlandırılır.
 
 Bir [talep](developer-glossary.md#claim) , bir istemci uygulaması veya [kaynak sahibi](developer-glossary.md#resource-owner)gibi bir varlık hakkında, kaynak sunucusu gibi başka bir varlığa onay verir. Bir talep, JWT talebi veya JSON Web Token talebi olarak da adlandırılabilir.
 
@@ -82,7 +82,7 @@ Microsoft kimlik platformunun belirteçleri ve talep bilgilerini nasıl uygulad�
 |[On-behalf-of akışı](v2-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
 |[İstemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
 
-Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment`).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur.
+Örtülü mod aracılığıyla yayınlanan belirteçlerin, tarayıcıya URL aracılığıyla geri geçirilme nedeniyle bir uzunluk sınırlaması vardır (burada `response_mode` `query` veya `fragment` ).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

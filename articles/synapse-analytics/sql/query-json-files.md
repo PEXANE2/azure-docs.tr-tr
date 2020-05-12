@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0db022ff4fdf092c2286d2da333df2ea23406569
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4c1fe9ac5d3b2470fb70231a83e57f3e08d0dfb1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692709"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197601"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı SQL (Önizleme) kullanarak JSON dosyalarını sorgulama
 
-Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgunun hedefi JSON dosyalarını okumalıdır.
+Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgunun hedefi JSON dosyalarını okumalıdır. Desteklenen biçimler [OPENROWSET](develop-openrowset.md)'de listelenmiştir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri gözden geçirin:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Ön koşullar](query-data-storage.md#prerequisites)
+- [Önkoşullar](query-data-storage.md#prerequisites)
 
 ## <a name="sample-json-files"></a>Örnek JSON dosyaları
 

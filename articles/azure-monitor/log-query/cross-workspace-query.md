@@ -5,15 +5,18 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/05/2019
-ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249613"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199903"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme  
+
+> [!IMPORTANT]
+> [Çalışma alanı tabanlı Application Insights kaynak](../app/create-workspace-resource.md) telemetrisi kullanıyorsanız, diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Birden çok çalışma alanındaki uygulamayı içeren bir sorgu yazmak için log () ifadesini kullanın. Aynı çalışma alanındaki birden çok uygulama için, bir çapraz çalışma alanı sorgusuna gerek yoktur.
 
 Daha önce Azure Izleyici ile, verileri yalnızca geçerli çalışma alanından çözümleyebilirsiniz ve aboneliğinizde tanımlanan birden çok çalışma alanında sorgulama yeteneğinizi sınırlı olursunuz.  Ayrıca, yalnızca Application Insights veya Visual Studio 'dan Application Insights doğrudan Web tabanlı uygulamanızdan toplanan telemetri öğelerini arayabilirsiniz. Bu, işletimsel ve uygulama verilerinin birlikte yerel olarak analiz edilmesi için de bir zorluk yaptı.
 
@@ -103,7 +106,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Birden çok kaynak için çapraz kaynak sorgusu kullanma
 Çoklu Log Analytics çalışma alanları ve Application Insights kaynaklarından verileri ilişkilendirmek için çapraz kaynak sorguları kullanırken, sorgu karmaşık ve bakım açısından zor hale gelebilir. Sorgu mantığını sorgu yapısını kolaylaştıran sorgu kaynaklarının kapsamından ayırmak için [Azure izleyici günlük sorgularının işlevlerinden](functions.md) yararlanabilirsiniz. Aşağıdaki örnek, birden çok Application Insights kaynağını nasıl izleyebileceğinizi ve uygulama adına göre başarısız isteklerin sayısını görselleştirmenizi gösterir. 
 
-Aşağıdaki gibi Application Insights kaynak kapsamına başvuran bir sorgu oluşturun. `withsource= SourceApp` Komut, günlüğü gönderen uygulama adını atayan bir sütun ekler. Sorguyu, _Applicationsscoping_diğer adı ile birlikte bir [işlev olarak kaydedin](functions.md#create-a-function) .
+Aşağıdaki gibi Application Insights kaynak kapsamına başvuran bir sorgu oluşturun. `withsource= SourceApp`Komut, günlüğü gönderen uygulama adını atayan bir sütun ekler. Sorguyu, _Applicationsscoping_diğer adı ile birlikte bir [işlev olarak kaydedin](functions.md#create-a-function) .
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources

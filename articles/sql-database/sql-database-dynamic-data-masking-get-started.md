@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78192923"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121261"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için dinamik veri maskeleme
 
@@ -44,7 +44,7 @@ Dinamik veri maskeleme, Azure SQL veritabanı yöneticisi, Sunucu Yöneticisi ve
 
 | Maskeleme Işlevi | Maskeleme mantığı |
 | --- | --- |
-| **Varsayılanını** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• XML için \<maskelenmiş/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
+| **Varsayılanını** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• XML için \< maskelenmiş/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
 | **Kredi kartı** |**Belirlenen alanların son dört basamağını sunan maskeleme yöntemi** ve bir kredi kartı biçiminde önek olarak bir sabit dize ekler.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-posta** |**İlk harfi kullanıma sunan maskeleme yöntemi ve** bir e-posta adresi biçiminde bir sabit dize öneki kullanarak etki alanını xxx.com ile değiştirir.<br/><br/>aXX@XXXX.com |
 | **Rastgele sayı** |Maske yöntemi, seçilen sınırlara ve gerçek veri türlerine göre **rastgele bir sayı üretir** . Belirlenen sınırlar eşitse, maskeleme işlevi sabit bir sayıdır.<br/><br/>![Gezinti bölmesi](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
@@ -58,8 +58,28 @@ DDM öneriler altyapısı, veritabanınızdaki belirli alanları potansiyel olar
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>PowerShell cmdlet 'lerini kullanarak veritabanınız için dinamik veri maskeleme ayarlama
 
-Bkz. [Azure SQL veritabanı cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.sql).
+### <a name="data-masking-policy"></a>Veri maskeleme Ilkesi
+
+- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+
+### <a name="data-masking-rules"></a>Veri maskeleme kuralları
+
+- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [New-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>REST API kullanarak veritabanınız için dinamik veri maskeleme ayarlama
 
-Bkz. [Azure SQL veritabanı işlemleri](https://docs.microsoft.com/rest/api/sql/).
+Veri maskeleme ilkesini ve kurallarını programlı bir şekilde yönetmek için REST API kullanabilirsiniz. Yayımlanan REST API aşağıdaki işlemleri destekler:
+
+### <a name="data-masking-policies"></a>Veri Maskeleme İlkeleri
+
+- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
+- [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): bir veritabanı veri maskeleme ilkesi alır. 
+
+### <a name="data-masking-rules"></a>Veri maskeleme kuralları
+
+- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): bir veritabanı veri maskeleme kuralı oluşturur veya güncelleştirir.
+- [Veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): veritabanı veri maskeleme kurallarının bir listesini alır.

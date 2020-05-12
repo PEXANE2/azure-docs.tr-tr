@@ -1,18 +1,18 @@
 ---
-title: Azure Application Insights telemetri ayırma
+title: Application Insights dağıtımınızı tasarlama-bir çok kaynak karşılaştırması
 description: Geliştirme, test ve üretim damgaları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562160"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125698"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Geliştirme, test ve üretimden telemetri ayırma
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>Kaç Application Insights kaynak dağıtmalıyım?
 
-Bir Web uygulamasının sonraki sürümünü geliştirirken, yeni sürümden ve önceden yayınlanan sürümden [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrisini karıştırmak istemezsiniz. Karışıklığın önüne geçmek için, farklı geliştirme aşamalarından Telemetriyi ayrı Application Insights kaynaklarına (ıkeys 'ler) göre ayrı olarak gönderin. Bir sürüm bir aşamadan diğerine geçiş yaparken izleme anahtarının değiştirilmesini kolaylaştırmak için, yapılandırma dosyası yerine koddaki Ikey ' i ayarlamak yararlı olabilir. 
+Bir Web uygulamasının sonraki sürümünü geliştirirken, yeni sürümden ve önceden yayınlanan sürümden [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrisini karıştırmak istemezsiniz. Karışıklığın önüne geçmek için, farklı geliştirme aşamalarından Telemetriyi ayrı Application Insights kaynaklarına (ıkeys 'ler) göre ayrı olarak gönderin. Bir sürüm bir aşamadan diğerine geçiş yaparken izleme anahtarının değiştirilmesini kolaylaştırmak için, yapılandırma dosyası yerine koddaki Ikey ' i ayarlamak yararlı olabilir.
 
 (Sisteminiz bir Azure bulut hizmeti ise [ayrı ıkeys 'leri ayarlamaya yönelik başka bir yöntem](../../azure-monitor/app/cloudservices.md)vardır.)
 
@@ -22,7 +22,7 @@ Web uygulamanız için Application Insights izlemeyi ayarlarken Microsoft Azure 
 
 Her Application Insights kaynak, kullanıma hazır olan ölçümler ile gelir. Tek tek bileşenler aynı Application Insights kaynağına rapor alıyorsa, bu ölçümler Pano/Uyarı üzerinde anlamlı olmayabilir.
 
-### <a name="use-a-single-application-insights-resource"></a>Tek bir Application Insights kaynağı kullanma
+### <a name="when-to-use-a-single-application-insights-resource"></a>Tek bir Application Insights kaynağı ne zaman kullanılır?
 
 -   Birlikte dağıtılan uygulama bileşenleri için. Genellikle aynı DevOps/Ise kullanıcıları tarafından yönetilen tek bir ekip tarafından geliştirilmiştir.
 -   Bu, yanıt süreleri, panodaki hata oranları gibi ana performans göstergelerini (KPI 'Lar), varsayılan olarak tüm bunların tamamında (Ölçüm Gezgini deneyiminde rol adına göre segmentleyebilirsiniz) bir araya getirir.
@@ -93,7 +93,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
 * Tüm TelemetryClient örneklerinin tutarlı şekilde ayarlandığından emin olmak için bu satırı bir [telemetri başlatıcısında](../../azure-monitor/app/api-custom-events-metrics.md#defaults) sarın.
-* [ASP.NET] Sürümünü ' de `BuildInfo.config`ayarlayın. Web modülü, BuildLabel düğümünden sürümü alacak. Bu dosyayı projenize ekleyin ve Çözüm Gezgini her zaman Kopyala özelliğini ayarlamayı unutmayın.
+* [ASP.NET] Sürümünü ' de ayarlayın `BuildInfo.config` . Web modülü, BuildLabel düğümünden sürümü alacak. Bu dosyayı projenize ekleyin ve Çözüm Gezgini her zaman Kopyala özelliğini ayarlamayı unutmayın.
 
     ```XML
 
@@ -108,7 +108,7 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] MSBuild 'te Builınfo. config dosyasını otomatik olarak oluşturun. Bunu yapmak için `.csproj` dosyanıza birkaç satır ekleyin:
+* [ASP.NET] MSBuild 'te Builınfo. config dosyasını otomatik olarak oluşturun. Bunu yapmak için dosyanıza birkaç satır ekleyin `.csproj` :
 
     ```XML
 
@@ -121,10 +121,10 @@ Uygulama sürümü özelliğini ayarlamanın birkaç farklı yöntemi vardır.
 
     Visual Studio ile derleme sırasında derleme etiketi bir yer tutucu (AutoGen_...) içerir. Ancak MSBuild ile birlikte kullanıldığında, doğru sürüm numarasıyla doldurulur.
 
-    MSBuild 'in sürüm numaraları oluşturmasına izin vermek için AssemblyReference.cs içindeki gibi `1.0.*` bir sürümü ayarlayın
+    MSBuild 'in sürüm numaraları oluşturmasına izin vermek için AssemblyReference.cs içindeki gibi bir sürümü ayarlayın `1.0.*`
 
 ## <a name="version-and-release-tracking"></a>Sürüm ve sürüm izleme
-Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. `.csproj` Dosyanıza şunu ekleyin:  
+Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Build Engine işleminiz tarafından oluşturulduğundan emin olun. `.csproj`Dosyanıza şunu ekleyin:  
 
 ```XML
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/10/2020
+ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 50c1d7e35b1c4e92664d810836fe1213183fbf83
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927352"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119051"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Özel sanal ağlarla makine öğrenimi yaşam döngülerinizi güvenceye alın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,9 @@ Bu makalede, bir Azure sanal ağı (VNet) içinde Azure Machine Learning deneme/
 > - Otomatik makine öğrenimi için Kullanıcı arabirimi
 > - Veri etiketleme için Kullanıcı arabirimi
 > - Veri kümeleri için Kullanıcı arabirimi
+> - Notebooks
 > 
->  Denerseniz, şuna benzer bir sanal ağ içindeki depolama hesabından verileri görselleştirirken bir hata alırsınız:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+> Denerseniz, aşağıdakine benzer bir ileti alırsınız:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="what-is-a-vnet"></a>VNET nedir?
 
@@ -176,7 +177,7 @@ Machine Learning İşlem ile Zorlamalı tünel kullanıyorsanız, [Kullanıcı t
 
 * Kaynaklarınızın bulunduğu bölgedeki Azure Batch hizmeti tarafından kullanılan her IP adresi için bir UDR oluşturun. Bu UDRs, Batch hizmetinin görev zamanlama için işlem düğümleriyle iletişim kurmasını sağlar. Ayrıca, Işlem örneklerine erişim için gerekli olduğundan, kaynakların bulunduğu Azure Machine Learning hizmeti için IP adresini de ekleyin. Batch hizmetinin ve Azure Machine Learning hizmetinin IP adreslerinin bir listesini almak için aşağıdaki yöntemlerden birini kullanın:
 
-    * [Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=56519) indirin ve dosyada `BatchNodeManagement.<region>` ve `AzureMachineLearning.<region>`Azure bölgeniz olduğu yerde `<region>` arama yapın.
+    * [Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=56519) indirin ve dosyada `BatchNodeManagement.<region>` ve `AzureMachineLearning.<region>` Azure bölgeniz olduğu yerde arama yapın `<region>` .
 
     * Bilgileri indirmek için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 'yi kullanın. Aşağıdaki örnek, IP adresi bilgilerini indirir ve Doğu ABD 2 bölgesinin bilgilerini filtreler:
 
@@ -185,7 +186,7 @@ Machine Learning İşlem ile Zorlamalı tünel kullanıyorsanız, [Kullanıcı t
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
 
-* Azure depolama 'ya giden trafik, şirket içi ağ gereciniz tarafından engellenmemelidir. Özellikle, URL 'ler, ve `<account>.table.core.windows.net` `<account>.queue.core.windows.net` `<account>.blob.core.windows.net`biçiminde bulunur.
+* Azure depolama 'ya giden trafik, şirket içi ağ gereciniz tarafından engellenmemelidir. Özellikle, URL 'Ler, ve biçiminde bulunur `<account>.table.core.windows.net` `<account>.queue.core.windows.net` `<account>.blob.core.windows.net` .
 
 UDRs 'yi eklediğinizde, ilgili her Batch IP adresi ön eki için yolu tanımlayın ve __sonraki atlama türünü__ __Internet__olarak ayarlayın. Aşağıdaki görüntüde, Azure portal bu UDR 'nin bir örneği gösterilmektedir:
 
@@ -201,7 +202,7 @@ Machine Learning İşlem kümesi oluşturmak için aşağıdaki adımları kulla
 
 1. Sol tarafta __işlem__ ' ı seçin.
 
-1. Merkezden __eğitim kümeleri__ ' ni seçin ve ardından öğesini seçin __+__.
+1. Merkezden __eğitim kümeleri__ ' ni seçin ve ardından öğesini seçin __+__ .
 
 1. __Yeni eğitim kümesi__ Iletişim kutusunda __Gelişmiş ayarlar__ bölümünü genişletin.
 
@@ -213,7 +214,7 @@ Machine Learning İşlem kümesi oluşturmak için aşağıdaki adımları kulla
 
    ![Machine Learning İşlem için sanal ağ ayarları](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-Ayrıca, Azure Machine Learning SDK kullanarak bir Machine Learning İşlem kümesi de oluşturabilirsiniz. Aşağıdaki kod, adlı `default` `mynetwork`bir sanal ağın alt ağında yeni bir Machine Learning işlem kümesi oluşturur:
+Ayrıca, Azure Machine Learning SDK kullanarak bir Machine Learning İşlem kümesi de oluşturabilirsiniz. Aşağıdaki kod, `default` adlı bir sanal ağın alt ağında yeni bir Machine Learning işlem kümesi oluşturur `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -309,7 +310,7 @@ Bir sanal ağa Azure Kubernetes hizmeti (AKS) çalışma alanınıza eklemek iç
 
 1. Sol tarafta __işlem__ ' ı seçin.
 
-1. Merkezden __çıkarım kümeleri__ ' ni seçin ve ardından öğesini __+__ seçin.
+1. Merkezden __çıkarım kümeleri__ ' ni seçin ve ardından öğesini seçin __+__ .
 
 1. __Yeni çıkarım kümesi__ Iletişim kutusunda __ağ yapılandırması__altında __Gelişmiş__ ' i seçin.
 
@@ -330,7 +331,7 @@ Bir sanal ağa Azure Kubernetes hizmeti (AKS) çalışma alanınıza eklemek iç
 
    [![Bir gelen güvenlik kuralı](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
-Azure Kubernetes hizmetini bir sanal ağa eklemek için Azure Machine Learning SDK 'sını de kullanabilirsiniz. Bir sanal ağda zaten bir AKS kümeniz varsa, bunları [aks 'e dağıtma](how-to-deploy-and-where.md)bölümünde açıklandığı gibi çalışma alanına ekleyin. Aşağıdaki kod, adlı `default` `mynetwork`bir sanal ağın alt ağında yeni bir aks örneği oluşturur:
+Azure Kubernetes hizmetini bir sanal ağa eklemek için Azure Machine Learning SDK 'sını de kullanabilirsiniz. Bir sanal ağda zaten bir AKS kümeniz varsa, bunları [aks 'e dağıtma](how-to-deploy-and-where.md)bölümünde açıklandığı gibi çalışma alanına ekleyin. Aşağıdaki kod, `default` adlı bir sanal ağın alt ağında yeni BIR AKS örneği oluşturur `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -406,7 +407,7 @@ __Azure CLI__
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
 ```
 
-Komutu tarafından başvurulan `body.json` dosyanın IÇERIĞI aşağıdaki JSON belgesine benzer:
+`body.json`Komutu tarafından başvurulan dosyanın içeriği AŞAĞıDAKI JSON belgesine benzer:
 
 ```json
 { 
@@ -469,13 +470,13 @@ Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi içi
 
     __Azure CLI__
 
-    [Azure CLI için Machine Learning uzantısını yüklediyseniz](reference-azure-machine-learning-cli.md), çalışma alanı bilgilerini göstermek için `az ml workspace show` komutunu kullanabilirsiniz.
+    [Azure CLI için Machine Learning uzantısını yüklediyseniz](reference-azure-machine-learning-cli.md), `az ml workspace show` çalışma alanı bilgilerini göstermek için komutunu kullanabilirsiniz.
 
     ```azurecli-interactive
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
     ```
 
-    Bu komut şuna benzer bir değer döndürür `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`. Dizenin son bölümü, çalışma alanının Azure Container Registry adıdır.
+    Bu komut şuna benzer bir değer döndürür `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` . Dizenin son bölümü, çalışma alanının Azure Container Registry adıdır.
 
 1. Sanal ağınıza erişimi sınırlandırmak için, [kayıt defteri için ağ erişimini yapılandırma](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)bölümündeki adımları kullanın. Sanal ağ eklenirken Azure Machine Learning kaynaklarınızın sanal ağını ve alt ağını seçin.
 
@@ -618,7 +619,7 @@ Sanal bir makineyi veya Azure HDInsight kümesini çalışma alanınıza sahip b
 
     * __Kaynak hizmet etiketi__ açılan listesinde __AzureMachineLearning__' yi seçin.
 
-    * __Kaynak bağlantı noktası aralıkları__ açılan listesinde, öğesini seçin __*__.
+    * __Kaynak bağlantı noktası aralıkları__ açılan listesinde, öğesini seçin __*__ .
 
     * __Hedef__ açılan listesinde __herhangi birini__seçin.
 

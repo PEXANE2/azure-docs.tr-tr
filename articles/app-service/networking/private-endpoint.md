@@ -4,17 +4,17 @@ description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel 
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756285"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198814"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
@@ -28,7 +28,7 @@ Web uygulamanız için özel uç nokta kullanımı şunları yapmanızı sağlar
 - Özel uç noktayı yapılandırarak Web uygulamanızın güvenliğini sağlayın ve genel pozlamayı ortadan kaldırın.
 - VPN veya ExpressRoute özel eşlemesi kullanarak VNet 'e bağlanan şirket içi ağlardan Web uygulamasına güvenli bir şekilde bağlanın.
 
-VNet ve Web uygulamanız arasında güvenli bir bağlantıya ihtiyacınız varsa, en basit çözüm bir hizmet uç noktasıdır. Ayrıca, bir Azure ağ geçidi aracılığıyla Şirket içinden Web uygulamasına erişmeniz gerekiyorsa, bölgesel olarak eşlenmiş VNet veya genel eşlenmiş VNet, Özel uç nokta çözümdür.  
+VNet ve Web uygulamanız arasında güvenli bir bağlantıya ihtiyacınız varsa, en basit çözüm bir hizmet uç noktasıdır. Ayrıca, bir Azure ağ geçidi, bölgesel olarak eşlenmiş VNet veya genel olarak eşlenmiş VNet aracılığıyla Web uygulamasına Şirket içinden erişmeniz gerekiyorsa, Özel uç nokta çözümdür.  
 
 Daha fazla bilgi için bkz. [hizmet uç noktaları][serviceendpoint].
 
@@ -63,13 +63,21 @@ Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksın
 ## <a name="dns"></a>DNS
 
 Bu özellik önizlemede olduğundan, önizleme sırasında DNS girişini değiştirmedik. Özel DNS sunucunuzdaki DNS girişini yönetmeniz veya özel bölge Azure DNS kendiniz yapmanız gerekir.
-Özel bir DNS adı kullanmanız gerekiyorsa, Web uygulamanıza özel adı eklemeniz gerekir. Önizleme sırasında, özel ad genel DNS çözümlemesi kullanılarak herhangi bir özel ad gibi doğrulanması gerekir. Daha fazla bilgi için bkz. [özel DNS doğrulaması][dnsvalidation] .
+Özel bir DNS adı kullanmanız gerekiyorsa, Web uygulamanıza özel adı eklemeniz gerekir. Önizleme sırasında, özel ad genel DNS çözümlemesi kullanılarak herhangi bir özel ad gibi doğrulanması gerekir. Daha fazla bilgi için bkz. [özel DNS doğrulaması][dnsvalidation].
+
+Kudu konsolunu veya kudu REST API (örneğin, Azure DevOps şirket içinde barındırılan aracılarla dağıtım) kullanmanız gerekiyorsa, Azure DNS özel bölgeniz veya özel DNS sunucunuzda iki kayıt oluşturmanız gerekir. 
+- PrivateEndpointIP yourwebappname.azurewebsites.net 
+- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
 
 ## <a name="pricing"></a>Fiyatlandırma
 
 Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması][pricing].
 
 ## <a name="limitations"></a>Sınırlamalar
+
+Azure Işlevi 'ni özel uç nokta ile elastik Premium planda kullandığınızda, işlevi Azure Web portalında çalıştırmak veya yürütmek için doğrudan ağ erişiminizin olması gerekir veya bir HTTP 403 hatası alırsınız. Diğer bir deyişle, tarayıcınız Azure Web portalından işlevi yürütmek için özel uç noktaya ulaşabilmelidir. 
+
+Önizleme sırasında yalnızca üretim yuvası özel uç noktasının arkasında kullanıma sunulduğunu, diğer yuvaların yalnızca ortak uç nokta tarafından erişilebilir olması gerekir.
 
 Özel bağlantı özelliğini ve özel uç noktayı düzenli olarak geliştirdik, sınırlamalar hakkında güncel bilgiler için [Bu makaleye][pllimitations] bakın.
 

@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617657"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199543"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -76,15 +77,15 @@ Uzantıyı yüklediğinizde, Azure AD kiracınız için dizin KIMLIĞI ve yönet
 
 NPS sunucusunun, 80 ve 443 bağlantı noktaları üzerinden aşağıdaki URL 'lerle iletişim kurabilmesi gerekir.
 
-- https:\//adnotifications.windowsazure.com
+- https: \/ /adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- https:\//Credentials.Azure.com
+- https: \/ /Credentials.Azure.com
 
 Ayrıca, [belirtilen PowerShell betiği kullanılarak bağdaştırıcının kurulumunu](#run-the-powershell-script) tamamlaması Için aşağıdaki URL 'lere bağlantı gerekir
 
 - https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- https: \/ /provisioningapi.microsoftonline.com
+- https: \/ /aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -110,7 +111,7 @@ Kullandığınız VPN çözümüne bağlı olarak, RADIUS kimlik doğrulama ilke
 Bu adım kiracınızda zaten tamamlanmış olabilir, ancak Azure AD Connect veritabanlarınızı yakın zamanda eşitler.
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Azure AD Connect** seçin
+2. **Azure Active Directory**  >  **Azure AD Connect** seçin
 3. Eşitleme durumunuzu **etkinleştirildiğini** ve son eşitlemenin bir saatten daha önce olduğunu doğrulayın.
 
 Eşitlemenin yeni bir hepsini açmanız gerekiyorsa [Azure AD Connect eşitleme: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)' daki yönergeler bizimle yapılır.
@@ -139,7 +140,7 @@ NPS uzantısını dağıtmadan ve kullanmadan önce, iki adımlı doğrulama ger
 
 Bir sınama hesabını kullanmaya başlamak için bu adımları kullanın:
 
-1. [https://aka.ms/mfasetup](https://aka.ms/mfasetup) Bir test hesabıyla oturum açın.
+1. [https://aka.ms/mfasetup](https://aka.ms/mfasetup)Bir test hesabıyla oturum açın.
 2. Bir doğrulama yöntemi ayarlamak için istemleri izleyin.
 3. Test hesabı için çok faktörlü kimlik doğrulaması gerektiren [bir koşullu erişim Ilkesi oluşturun](howto-mfa-getstarted.md#create-conditional-access-policy) .
 
@@ -172,7 +173,7 @@ Mevcut bir NPS uzantısı yüklemesini yükseltirken, temeldeki sunucunun yenide
 
 ### <a name="run-the-powershell-script"></a>PowerShell betiğini çalıştırma
 
-Yükleyici şu konumda bir PowerShell betiği oluşturuyor: `C:\Program Files\Microsoft\AzureMfa\Config` (burada c:\ yükleme sürücünüz). Bu PowerShell betiği her çalıştırılışında aşağıdaki eylemleri gerçekleştirir:
+Yükleyici şu konumda bir PowerShell betiği oluşturuyor: `C:\Program Files\Microsoft\AzureMfa\Config` (burada C:\ yükleme sürücünüz). Bu PowerShell betiği her çalıştırılışında aşağıdaki eylemleri gerçekleştirir:
 
 - Kendinden imzalı bir sertifika oluşturun.
 - Sertifikanın ortak anahtarını Azure AD 'de hizmet sorumlusu ile ilişkilendirin.
@@ -200,7 +201,7 @@ Yük Dengeleme için ayarlamak istediğiniz tüm ek NPS sunucuları üzerinde bu
 Önceki bilgisayar sertifikanızın süresi dolmuşsa ve yeni bir sertifika oluşturulduysa, süresi geçmiş tüm sertifikaları silmelisiniz. Süre dolma sertifikaları olması, NPS uzantısıyla başlayarak soruna neden olabilir.
 
 > [!NOTE]
-> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN\<= tenantıd\>, OU = Microsoft NPS uzantısı**olmalıdır. 
+> PowerShell betiği ile sertifika oluşturmak yerine kendi sertifikalarınızı kullanırsanız, NPS adlandırma kuralına göre hizalandıklarından emin olun. Konu adı **CN = \< tenantıd \> , OU = Microsoft NPS uzantısı**olmalıdır. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Kamu ek adımlar
 
@@ -223,9 +224,9 @@ Azure Kamu Bulutu kullanan müşteriler için, her NPS sunucusunda aşağıdaki 
 
 NPS uzantısının Release 1.0.1.32 ile birden çok sertifika okumak artık desteklenmektedir. Bu yetenek, sertifika güncelleştirmelerinin süresi dolmadan önce işlenmesine yardımcı olur. Kuruluşunuz NPS uzantısının önceki bir sürümünü çalıştırıyorsa, sürüm 1.0.1.32 veya üstünü yükseltmeniz gerekir.
 
-`AzureMfaNpsExtnConfigSetup.ps1` Betik tarafından oluşturulan sertifikalar 2 yıl için geçerlidir. BT kuruluşları, sertifikaları süre sonu için izlemelidir. NPS uzantısı için sertifikalar, kişisel ' in altındaki yerel bilgisayar sertifika deposuna yerleştirilir ve betiğe verilen kiracı KIMLIĞINE verilir.
+Betik tarafından oluşturulan sertifikalar `AzureMfaNpsExtnConfigSetup.ps1` 2 yıl için geçerlidir. BT kuruluşları, sertifikaları süre sonu için izlemelidir. NPS uzantısı için sertifikalar, kişisel ' in altındaki yerel bilgisayar sertifika deposuna yerleştirilir ve betiğe verilen kiracı KIMLIĞINE verilir.
 
-Bir sertifika sona erme tarihine yaklaşıyorsa, değiştirmek için yeni bir sertifika oluşturulmalıdır.  Bu işlem, `AzureMfaNpsExtnConfigSetup.ps1` yeniden çalıştırılarak ve istendiğinde aynı Kiracı kimliği korunarak gerçekleştirilir. Bu işlem, ortamınızdaki her NPS sunucusunda tekrarlanmış olmalıdır.
+Bir sertifika sona erme tarihine yaklaşıyorsa, değiştirmek için yeni bir sertifika oluşturulmalıdır.  Bu işlem, `AzureMfaNpsExtnConfigSetup.ps1` yeniden çalıştırılarak ve istendiğinde aynı KIRACı kimliği korunarak gerçekleştirilir. Bu işlem, ortamınızdaki her NPS sunucusunda tekrarlanmış olmalıdır.
 
 ## <a name="configure-your-nps-extension"></a>NPS uzantınızı yapılandırma
 
@@ -267,7 +268,7 @@ NPS uzantısı sorunlarını giderirken temel sistem durumu denetimi adımların
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Nasıl yaparım? istemci sertifikası 'nın beklendiği şekilde yüklendiğini doğrulayın.
 
-Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertifikayı bulun ve özel anahtarın Kullanıcı **ağ hizmeti**'ne verilmiş izinlere sahip olup olmadığını denetleyin. Sertifika, ** \<CN tenantıd\>, OU = Microsoft NPS uzantısı** konu adına sahiptir
+Sertifika deposunda yükleyici tarafından oluşturulan kendinden imzalı sertifikayı bulun ve özel anahtarın Kullanıcı **ağ hizmeti**'ne verilmiş izinlere sahip olup olmadığını denetleyin. Sertifika, **CN \< tenantıd \> , OU = Microsoft NPS uzantısı** konu adına sahiptir
 
 *AzureMfaNpsExtnConfigSetup. ps1* betiği tarafından oluşturulan otomatik olarak imzalanan sertifikaların Ayrıca iki yıla ait geçerlilik ömrü de vardır. Sertifikanın yüklendiği doğrulanırken, sertifikanın sona ermemiş olduğunu da denetlemeniz gerekir.
 

@@ -3,19 +3,19 @@ title: Azure sanal makine ölçek kümeleri için tasarım konuları
 description: Azure sanal makine ölçek kümeleriniz için tasarım konuları hakkında bilgi edinin. Ölçek Kümeleri özelliklerini VM özellikleriyle karşılaştırın.
 keywords: Linux sanal makinesi, sanal makine ölçek kümeleri
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
-ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: vm-linux
-ms.topic: conceptual
-ms.date: 06/01/2017
 ms.author: mimckitt
-ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/01/2017
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273775"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200190"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ölçek Kümeleri Için tasarım konuları
 Bu makalede, sanal makine ölçek kümelerine ilişkin tasarım konuları ele alınmaktadır. Sanal makine ölçek kümelerinin ne olduğu hakkında bilgi için [sanal makine ölçek kümelerine genel bakış](virtual-machine-scale-sets-overview.md)bölümüne bakın.
@@ -56,7 +56,7 @@ Azure yönetilen diskler ile tanımlanmayan bir ölçek kümesi, küme içindeki
 ## <a name="overprovisioning"></a>Fazla sağlama
 Ölçek Kümeleri Şu anda varsayılan "fazla sağlama" sanal makinelerinize sahiptir. Aşırı sağlama açık olduğunda, ölçek kümesi, sizin isteenden daha fazla VM 'yi alır, ardından istenen VM sayısı başarıyla sağlandığında ek VM 'leri siler. Aşırı sağlama, sağlama başarı oranlarını artırır ve dağıtım süresini azaltır. Ek VM 'Ler için faturalandırılmaz ve kota sınırlarınıza doğru sayılmaz.
 
-Aşırı sağlama, sağlama başarı oranlarını iyileştirirken, ek VM 'Leri işlemek ve sonra geri dönmek için tasarlanmamış bir uygulama için kafa karıştırıcı davranışa neden olabilir. Fazla sağlamayı devre dışı bırakmak için şablonunuzda aşağıdaki dizeye sahip olduğunuzdan emin olun: `"overprovision": "false"`. Daha fazla ayrıntı, [Ölçek kümesi REST API belgelerinde](/rest/api/virtualmachinescalesets/create-or-update-a-set)bulunabilir.
+Aşırı sağlama, sağlama başarı oranlarını iyileştirirken, ek VM 'Leri işlemek ve sonra geri dönmek için tasarlanmamış bir uygulama için kafa karıştırıcı davranışa neden olabilir. Fazla sağlamayı devre dışı bırakmak için şablonunuzda aşağıdaki dizeye sahip olduğunuzdan emin olun: `"overprovision": "false"` . Daha fazla ayrıntı, [Ölçek kümesi REST API belgelerinde](/rest/api/virtualmachinescalesets/create-or-update-a-set)bulunabilir.
 
 Ölçek ayarlandıysa Kullanıcı tarafından yönetilen depolama kullanılıyorsa ve aşırı sağlamayı kapatırsanız, depolama hesabı başına 20 ' den fazla VM 'niz olabilir, ancak GÇ performans nedenleriyle 40 ' ün üzerine gitmeniz önerilmez. 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263510"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199517"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin
 
@@ -42,9 +42,6 @@ Dizine B2B işbirliği kullanıcıları eklemek için aşağıdaki adımları iz
 
    ![Yeni Konuk kullanıcının Kullanıcı arabiriminde nerede olduğunu gösterir](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > **Yeni Konuk Kullanıcı** seçeneği de **Kuruluş ilişkileri** sayfasında bulunur. **Azure Active Directory**, **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
-
 5. **Yeni Kullanıcı** sayfasında, **kullanıcıyı davet et** ' i seçin ve ardından Konuk kullanıcının bilgilerini ekleyin. 
 
     > [!NOTE]
@@ -85,7 +82,7 @@ Bir uygulamaya B2B işbirliği kullanıcıları eklemek için aşağıdaki adım
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
 2. Herhangi bir sayfadan **Azure Active Directory** arayın ve seçin.
-3. **Yönet**altında **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+3. **Yönet**altında **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 4. Konuk kullanıcıları eklemek istediğiniz uygulamayı seçin.
 5. Uygulamanın panosunda, **Kullanıcılar ve gruplar** bölmesini açmak Için **Toplam Kullanıcı** ' yı seçin.
 

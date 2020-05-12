@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126669"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199527"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -37,20 +37,20 @@ Konuk Kullanıcı bir "üst bilgi çok uzun" hatası görürse, kendi tanımlama
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Takımlar tüm cihazlarda Google Konuk kullanıcılarını tamamen destekler. Google kullanıcıları gibi `https://teams.microsoft.com`ortak bir uç noktadan ekiplerde oturum açabilirler.
+Takımlar tüm cihazlarda Google Konuk kullanıcılarını tamamen destekler. Google kullanıcıları gibi ortak bir uç noktadan ekiplerde oturum açabilirler `https://teams.microsoft.com` .
 
 Diğer uygulamaların ortak uç noktaları Google kullanıcılarını desteklemeyebilir. Google Konuk kullanıcılarının kiracı bilgilerinizi içeren bir bağlantı kullanarak oturum açması gerekir. Aşağıda örnekleri verilmektedir:
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
 
-   Google Konuk kullanıcıları `https://myapps.microsoft.com` veya `https://portal.azure.com`gibi bir bağlantı kullanmayı denlerse bir hata alırlar.
+   Google Konuk kullanıcıları veya gibi bir bağlantı kullanmayı denlerse `https://myapps.microsoft.com` `https://portal.azure.com` bir hata alırlar.
 
-Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece Google Konuk kullanıcılarına bir uygulama veya kaynağa doğrudan bağlantı verebilirsiniz `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
+Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece Google Konuk kullanıcılarına bir uygulama veya kaynağa doğrudan bağlantı verebilirsiniz `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` . 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>1. Adım: Google Geliştirici projesini yapılandırma
 İlk olarak, bir istemci KIMLIĞI ve daha sonra Azure AD 'ye ekleyebileceğiniz bir istemci gizli anahtarı almak için Google geliştiricileri konsolunda yeni bir proje oluşturun. 
-1. Adresindeki https://console.developers.google.comGoogle API 'lerine gidin ve Google hesabınızla oturum açın. Paylaşılan bir takım Google hesabı kullanmanızı öneririz.
+1. Adresindeki Google API 'Lerine gidin https://console.developers.google.com ve Google hesabınızla oturum açın. Paylaşılan bir takım Google hesabı kullanmanızı öneririz.
 2. Yeni bir proje oluşturun: panoda **proje oluştur**' u seçin ve ardından **Oluştur**' u seçin. Yeni proje sayfasında, bir **Proje adı**girin ve ardından **Oluştur**' u seçin.
    
    ![Google için yeni bir proje sayfası gösteren ekran görüntüsü](media/google-federation/google-new-project.png)
@@ -74,10 +74,10 @@ Ayrıca, bu bağlantı kiracı bilgilerinizi içerdiği sürece Google Konuk kul
 
 9. **Uygulama türü**' nün altında **Web uygulaması**' nı seçin ve ardından **yetkili yeniden yönlendirme URI 'leri**altında aşağıdaki URI 'leri girin:
    - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(Dizin `<directory id>` kimliğiniz nerede)
+   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>( `<directory id>` DIZIN kimliğiniz nerede)
    
      > [!NOTE]
-     > Dizin KIMLIĞINIZI bulmak için adresine https://portal.azure.comgidin ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
+     > Dizin KIMLIĞINIZI bulmak için adresine gidin https://portal.azure.com ve **Azure Active Directory**altında **Özellikler** ' i seçin ve **dizin kimliğini**kopyalayın.
 
    ![Yetkili yeniden yönlendirme URI 'Leri bölümünü gösteren ekran görüntüsü](media/google-federation/google-create-oauth-client-id.png)
 
@@ -90,15 +90,15 @@ Artık Google istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portalı
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Google Federasyonu 'ni Azure AD portalında yapılandırmak için 
 1. [Azure Portal](https://portal.azure.com)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini**seçin.
-3. **Kimlik sağlayıcıları**' nı seçin ve ardından **Google** düğmesine tıklayın.
+2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+3. **Tüm kimlik sağlayıcıları**' nı seçin ve ardından **Google** düğmesine tıklayın.
 4. Bir ad girin. Daha önce edindiğiniz istemci KIMLIĞINI ve istemci gizli anahtarını girin. **Kaydet**’i seçin. 
 
    ![Google Identity Provider Ekle sayfasını gösteren ekran görüntüsü](media/google-federation/google-identity-provider.png)
 
 #### <a name="to-configure-google-federation-by-using-powershell"></a>PowerShell kullanarak Google Federasyonu yapılandırmak için
 1. Graph modülü için Azure AD PowerShell 'in en son sürümünü ([Azureadpreview](https://www.powershellgallery.com/packages/AzureADPreview)) yükler.
-2. Şu komutu çalıştırın: `Connect-AzureAD`.
+2. Şu komutu çalıştırın: `Connect-AzureAD` .
 3. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın.  
 4. Şu komutu çalıştırın: 
    
@@ -112,8 +112,8 @@ Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Azure AD portalında Google Federasyonu 'ni silmek için: 
 1. [Azure Portal](https://portal.azure.com)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini**seçin.
-3. **Kimlik sağlayıcıları**' nı seçin.
+2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+3. **Tüm kimlik sağlayıcılarını**seçin.
 4. **Google** satırında bağlam menüsünü (**...**) seçin ve **Sil**' i seçin. 
    
    ![Sosyal kimlik sağlayıcısı için silme seçeneğini gösteren ekran görüntüsü](media/google-federation/google-social-identity-providers.png)

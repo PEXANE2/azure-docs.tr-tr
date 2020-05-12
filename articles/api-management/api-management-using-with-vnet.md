@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/11/2020
 ms.author: apimpm
-ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 93f66f3c030b9845b58083a992e1e1f11aa37f9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203225"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196981"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
 <a name="required-ports"> </a> Bir API Management hizmet ÖRNEĞI bir sanal ağda barındırıldığı zaman, aşağıdaki tablodaki bağlantı noktaları kullanılır.
 
-| Kaynak/hedef bağlantı noktaları | Yön          | Aktarım Protokolü |   [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak/hedef   | Amaç (\*)                                                 | Sanal ağ türü |
+| Kaynak/hedef bağlantı noktaları | Yön          | Aktarım Protokolü |   [Hizmet etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak/hedef   | Amaç ( \* )                                                 | Sanal ağ türü |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Gelen            | TCP                | ıNTERNET/VIRTUAL_NETWORK            | API Management istemci iletişimi                      | Dış             |
 | */3443                     | Gelen            | TCP                | Apimanaya/VIRTUAL_NETWORK       | Azure portal ve PowerShell için yönetim uç noktası         | Dış & Iç  |
@@ -136,22 +136,22 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
     | Azure ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**Yeni**)</li><li>prod.warmpath.msftcloudes.com (**kullanım dışı**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com burada `East US 2` eastus2.Warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Genel      | <ul><li>gcs.prod.monitoring.core.windows.net (**Yeni**)</li><li>prod.warmpath.msftcloudes.com (**kullanım dışı**)</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-black.prod.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3-black.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3-red.prod.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3-red.prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**Yeni**)</li><li>shoebox2.metrics.nsatc.net (**kullanım dışı**)</li><li>prod3.metrics.microsoftmetrics.com (**Yeni**)</li><li>prod3.metrics.nsatc.net (**kullanım dışı**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > DNS bölgesi **. nsatc.net** to **. microsoftmetrics.com** ile yukarıdaki kümelerin DEĞIŞIKLIĞI, genellikle bir DNS değişiklidir. Kümenin IP adresi değişmeyecektir.
 
 + **Bölgesel hizmet etiketleri**: bir depolama, SQL ve Event Hubs hizmet etiketlerine giden bağlantıya izin veren NSG kuralları, API Management örneğini içeren bölgeye karşılık gelen etiketlerin bölgesel sürümlerini kullanabilir (örneğin, Batı ABD bölgesindeki bir API Management örneği için Storage. WestUS). Çok bölgeli dağıtımlarda, her bölgedeki NSG bu bölge ve birincil bölge için hizmet etiketlerine giden trafiğe izin verilmelidir.
 
-+ **SMTP geçişi**: konak `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com` `smtpi-sin.msn.com` ve altında çözümlenen SMTP geçişi için giden ağ bağlantısı`ies.global.microsoft.com`
++ **SMTP geçişi**: konak `smtpi-co1.msn.com` , `smtpi-ch1.msn.com` , `smtpi-db3.msn.com` `smtpi-sin.msn.com` ve altında çözümlenen SMTP geçişi için giden ağ bağlantısı`ies.global.microsoft.com`
 
-+ **Geliştirici PORTALı CAPTCHA**: Geliştirici portalının CAPTCHA için giden ağ bağlantısı, Konaklar `client.hip.live.com` ve `partner.hip.live.com`altında çözümleniyor.
++ **Geliştirici PORTALı CAPTCHA**: Geliştirici portalının CAPTCHA için giden ağ bağlantısı, konaklar ve altında çözümleniyor `client.hip.live.com` `partner.hip.live.com` .
 
-+ **Tanılama Azure Portal**: Azure Portal bir sanal ağ içinden API Management uzantısı kullanılırken tanılama günlüklerinin akışını etkinleştirmek için, 443 numaralı bağlantı noktasına giden erişim `dc.services.visualstudio.com` gerekir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorunları gidermeye yardımcı olur.
++ **Tanılama Azure Portal**: Azure Portal bir sanal ağ içinden API Management uzantısı kullanılırken tanılama günlüklerinin akışını etkinleştirmek için, `dc.services.visualstudio.com` 443 numaralı bağlantı noktasına giden erişim gerekir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorunları gidermeye yardımcı olur.
 
-+ **Azure Load Balancer**: hizmet etiketinin `AZURE_LOAD_BALANCER` gelen istek için izin verme, bu, arkasında yalnızca `Developer` bir işlem birimi dağıttiğimiz için SKU için bir gereksinim değildir. Ancak `Premium`, Load Balancer ' den gelen sistem durumu araştırmasının başarısız olması nedeniyle, [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) from, daha yüksek SKU 'ya ölçeklendirilirken kritik hale gelir.
++ **Azure Load Balancer**: hizmet etiketinin gelen istek için izin verme, bu, `AZURE_LOAD_BALANCER` `Developer` arkasında yalnızca bir işlem birimi dağıttiğimiz için SKU için bir gereksinim değildir. Ancak [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) `Premium` , Load Balancer ' den gelen sistem durumu araştırmasının başarısız olması nedeniyle, 168.63.129.16 from, daha yüksek SKU 'ya ölçeklendirilirken kritik hale gelir.
 
 + **Express Route veya ağ sanal gereci kullanarak tünel trafiğini şirket Içi güvenlik duvarında zorla**: ortak bir müşteri yapılandırması, API Management atanmış alt ağdan gelen tüm trafiği şirket içi bir güvenlik duvarı veya ağ sanal gereci üzerinden akışa zorlayan kendi varsayılan yolunu (0.0.0.0/0) tanımlamaktır. Giden trafik, şirket içi veya NAT 'ın, artık çeşitli Azure uç noktalarıyla çalışmayan tanınmayan bir adres kümesine engellediği için bu trafik akışı, Azure API Management ile bağlantıyı keser. Çözüm için birkaç şey yapmanız gerekir:
 
@@ -203,7 +203,7 @@ Her ek ölçek birimi API Management için iki IP adresi gerekir.
 
 IP adresleri **Azure ortamı**tarafından bölünür. Gelen isteklere izin verilmesi durumunda **genel** Ile işaretlenen IP adresinin, **bölgeye** özgü IP adresiyle birlikte beyaz listelenmesi gerekir.
 
-| **Azure ortamı**|   **Bölge**|  **IP adresi**|
+| **Azure ortamı**|   **Geli**|  **IP adresi**|
 |-----------------|-------------------------|---------------|
 | Azure Genel| Orta Güney ABD (genel)| 104.214.19.224|
 | Azure Genel| Orta Kuzey ABD (genel)| 52.162.110.80|

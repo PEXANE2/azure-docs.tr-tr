@@ -8,12 +8,13 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410221"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199003"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -30,7 +31,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: BLOB depolama işlemi isabet sorunu.
 
-- **Öneri**: ayrıntıdaki hatayı denetleyin. Blob yardım belgesine başvurun: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes. Yardım gerekirse depolama ekibine başvurun.
+- **Öneri**: ayrıntıdaki hatayı denetleyin. Blob yardım belgesine başvurun: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes . Yardım gerekirse depolama ekibine başvurun.
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Hata kodu: AzureBlobServiceNotReturnExpectedDataLength
@@ -134,7 +135,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: hata Iletisi ' yasak ' içerdiğinde, kullandığınız hizmet sorumlusu veya yönetilen kimlik ADLS 2. erişmek için yeterli izne sahip olmayabilir.
 
-- **Öneri**: yardım belgesine bakın: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+- **Öneri**: yardım belgesine bakın: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
 
 - **Neden**: hata Iletisi ' ınternalservererror ' içerdiğinde hata ADLS 2. tarafından döndürülür.
 
@@ -198,11 +199,11 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: hata Iletisinde "SqlException" varsa, SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur.
 
-- **Öneri**: lütfen daha fazla ayrıntı için bu başvuru BELGESI içindeki SQL hata kodu ile arama https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsyapın:. Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
+- **Öneri**: lütfen daha fazla ayrıntı için bu başvuru BELGESI içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
 - **Neden**: hata ILETISI "IP adresi olan istemci '... ' içeriyorsa) sunucusuna erişim izni verilmez "ve Azure SQL veritabanı 'na bağlanmaya çalışıyorsunuz, genellikle Azure SQL veritabanı güvenlik duvarı sorunu nedeniyle oluşur.
 
-- **Öneri**: Azure SQL Server güvenlik duvarı yapılandırması 'nda, "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine izin ver" seçeneğini etkinleştirin. Başvuru belgesi: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+- **Öneri**: Azure SQL Server güvenlik duvarı yapılandırması 'nda, "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine izin ver" seçeneğini etkinleştirin. Başvuru belgesi: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Hata kodu: SqlOperationFailed
@@ -211,8 +212,8 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: hata Iletisinde "SqlException" varsa, SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur.
 
-- **Öneri**: SQL hatası net değilse, lütfen veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. En son sürüm SQL hatalarını oluşturabilir. Lütfen belge: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompatAyrıntılar bölümüne bakın.
-        SQL sorunlarını gidermek için lütfen daha fazla ayrıntı için bu başvuru belgesi içindeki SQL hata kodu ile arama yapın https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors:. Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
+- **Öneri**: SQL hatası net değilse, lütfen veritabanını en son uyumluluk düzeyi olan ' 150 ' olarak değiştirmeyi deneyin. En son sürüm SQL hatalarını oluşturabilir. Lütfen belge: Ayrıntılar bölümüne bakın https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat .
+        SQL sorunlarını gidermek için lütfen daha fazla ayrıntı için bu başvuru belgesi içindeki SQL hata kodu ile arama yapın: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
 - **Neden**: hata Iletisi "PdwManagedToNativeInteropException" içeriyorsa, genellikle kaynak ve havuz sütun boyutları arasında uyuşmazlık olur.
 
@@ -220,7 +221,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: hata Iletisi "InvalidOperationException" içeriyorsa, genellikle geçersiz giriş verileri oluşur.
 
-- **Öneri**: sorunla ilgili hangi satırın olduğunu belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Başvuru belgesi: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Öneri**: sorunla ilgili hangi satırın olduğunu belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Başvuru belgesi: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Hata kodu: SqlUnauthorizedAccess
@@ -323,7 +324,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: bcp istemcisinden geçersiz bir sütun uzunluğu aldığından SQL toplu kopyalama başarısız oldu.
 
-- **Öneri**: sorunla ilgili hangi satırın olduğunu belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Başvuru belgesi: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Öneri**: sorunla ilgili hangi satırın olduğunu belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Başvuru belgesi: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Hata kodu: Sqlconnectionısclosed
@@ -545,7 +546,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: Parquet biçimi Azure Data Factory desteklenmiyor.
 
-- **Öneri**: kaynak verileri iki kez kontrol edin. Belgeye başvurun: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Öneri**: kaynak verileri iki kez kontrol edin. Belgeye başvurun: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Hata kodu: ParquetMissedDecimalPrecisionScale
@@ -581,7 +582,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: veriler eşlemeler. Source içinde belirtilen türe dönüştürülemiyor
 
-- **Öneri**: kaynak verileri iki kez kontrol edin veya kopyalama etkinliği sütun eşlemesinde bu sütun için doğru veri türünü belirtin. Belgeye başvurun: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Öneri**: kaynak verileri iki kez kontrol edin veya kopyalama etkinliği sütun eşlemesinde bu sütun için doğru veri türünü belirtin. Belgeye başvurun: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Hata kodu: ParquetDataCountNotMatchColumnCount

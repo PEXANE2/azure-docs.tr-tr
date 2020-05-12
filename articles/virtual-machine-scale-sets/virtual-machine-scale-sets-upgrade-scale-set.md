@@ -1,19 +1,20 @@
 ---
 title: Azure sanal makine ölçek kümesini değiştirme
 description: REST API 'Leri, Azure PowerShell ve Azure CLı ile Azure sanal makine ölçek kümesini değiştirme ve güncelleştirme hakkında bilgi edinin
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: management
 ms.date: 03/10/2020
-ms.author: mimckitt
-ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476833"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121023"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini değiştirme
 
@@ -156,7 +157,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Bu özellikler, ölçek kümesi içindeki bir sanal makine örneğinin yapılandırmasını bir bütün olarak değil, bir ölçek kümesi içinde tanımlıyor. Örneğin, ölçek kümesi modelinin bir özelliği vardır `overprovision` , ancak bir ölçek kümesi içindeki bir sanal makine örneği için model değildir. Bu fark, aşırı sağlamanın ölçek kümesindeki tek tek VM örnekleri değil, bir bütün olarak ölçek kümesi için bir özellik olmasından kaynaklanır (aşırı sağlama hakkında daha fazla bilgi için bkz. [Ölçek Kümeleri Için tasarım konuları](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Bu özellikler, ölçek kümesi içindeki bir sanal makine örneğinin yapılandırmasını bir bütün olarak değil, bir ölçek kümesi içinde tanımlıyor. Örneğin, ölçek kümesi modelinin `overprovision` bir özelliği vardır, ancak bir ölçek kümesi içindeki bir sanal makine örneği için model değildir. Bu fark, aşırı sağlamanın ölçek kümesindeki tek tek VM örnekleri değil, bir bütün olarak ölçek kümesi için bir özellik olmasından kaynaklanır (aşırı sağlama hakkında daha fazla bilgi için bkz. [Ölçek Kümeleri Için tasarım konuları](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>Ölçek kümesi VM örneği görünümü
@@ -272,11 +273,11 @@ Küresel ölçek kümesi özelliğini güncelleştirmek için ölçek kümesi mo
         az vmss update --remove {propertyPath} {indexToRemove}
         ```
 
-    - Ölçek kümesini daha önce `az vmss create` komutuyla dağıttıysanız, ölçek kümesini güncelleştirmek için `az vmss create` komutu yeniden çalıştırabilirsiniz. `az vmss create` Komutta tüm özelliklerin, değiştirmek istediğiniz özellikler dışında, önceki ile aynı olduğundan emin olun.
+    - Ölçek kümesini daha önce `az vmss create` komutuyla dağıttıysanız, `az vmss create` Ölçek kümesini güncelleştirmek için komutu yeniden çalıştırabilirsiniz. Komutta tüm özelliklerin `az vmss create` , değiştirmek istediğiniz özellikler dışında, önceki ile aynı olduğundan emin olun.
 
 - Ayrıca [Resources.Azure.com](https://resources.azure.com) veya [Azure SDK](https://azure.microsoft.com/downloads/)'larını de kullanabilirsiniz.
 
-Ölçek kümesi modeli güncelleştirildikten sonra yeni yapılandırma, ölçek kümesinde oluşturulan tüm yeni VM 'lere uygulanır. Ancak, ölçek kümesindeki mevcut VM 'Lerin modelleri hala en son genel ölçek kümesi modeliyle güncel hale getirilmelidir. Her VM için modelinde, sanal makinenin en son genel ölçek `latestModelApplied` kümesi modeliyle güncel olup olmadığını belirten adlı bir Boole ÖZELLIĞI (`true` VM 'nin en son model ile güncel olduğu anlamına gelir).
+Ölçek kümesi modeli güncelleştirildikten sonra yeni yapılandırma, ölçek kümesinde oluşturulan tüm yeni VM 'lere uygulanır. Ancak, ölçek kümesindeki mevcut VM 'Lerin modelleri hala en son genel ölçek kümesi modeliyle güncel hale getirilmelidir. Her VM için modelinde, `latestModelApplied` sanal makinenin en son genel ölçek kümesi modeliyle güncel olup olmadığını belirten adlı bir Boole özelliği ( `true` VM 'nin en son model ile güncel olduğu anlamına gelir).
 
 
 ## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>En son ölçek kümesi modeliyle VM 'Leri güncel hale getirme

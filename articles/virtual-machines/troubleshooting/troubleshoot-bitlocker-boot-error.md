@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250016"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201341"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
 
@@ -31,7 +32,7 @@ ms.locfileid: "79250016"
 
 - BitLocker anahtarına sahip USB sürücüsünü takın
 
-- Kilitlendi! Yeniden almak için kurtarma anahtarını girin (klavye düzeni: US) yanlış oturum açma bilgileri çok fazla girilmiştir, bu nedenle BILGISAYARıNıZ gizliliğinizi korumak için kilitlendi. Kurtarma anahtarını almak için, başka bir BILGISAYARDAN https://windows.microsoft.com/recoverykeyfaq veya mobil cihazdan adresine gidin. İhtiyacınız olması durumunda anahtar KIMLIĞI XXXXXXX ' dir. İsterseniz bilgisayarınızı sıfırlayabilirsiniz.
+- Kilitlendi! Yeniden almak için kurtarma anahtarını girin (klavye düzeni: US) yanlış oturum açma bilgileri çok fazla girilmiştir, bu nedenle BILGISAYARıNıZ gizliliğinizi korumak için kilitlendi. Kurtarma anahtarını almak için, https://windows.microsoft.com/recoverykeyfaq başka BIR bilgisayardan veya mobil cihazdan adresine gidin. İhtiyacınız olması durumunda anahtar KIMLIĞI XXXXXXX ' dir. İsterseniz bilgisayarınızı sıfırlayabilirsiniz.
 
 - Bu sürücünün kilidini açmak için parolayı girin [] yazdığınız parolayı görmek için Ekle tuşuna basın.
 - Kurtarma anahtarınızı bir USB cihazdan yükleyin.
@@ -107,7 +108,7 @@ Bu yöntem sorunu çözmezse, BEK dosyasını el ile geri yüklemek için şu ad
 
     Artık sürücü için BEK dosyasının adına sahip olduğunuza göre, gizli anahtar adı oluşturmanız gerekir. Sürücünün kilidini açmak için BEK dosyası.
 
-6.  BEK dosyasını kurtarma diskine indirin. Aşağıdaki örnek, BEK dosyasını C:\BEK klasörüne kaydeder. Betikleri çalıştırmadan önce `C:\BEK\` yolun mevcut olduğundan emin olun.
+6.  BEK dosyasını kurtarma diskine indirin. Aşağıdaki örnek, BEK dosyasını C:\BEK klasörüne kaydeder. `C:\BEK\`Betikleri çalıştırmadan önce yolun mevcut olduğundan emin olun.
 
     ```powershell
     $vault = "myKeyVault"
@@ -273,13 +274,13 @@ Anahtar şifreleme anahtarı senaryosu için aşağıdaki adımları izleyin:
 
 **Hata: dosya veya derleme yüklenemedi**
 
-ADAL derlemelerinin yollarının yanlış olduğu için bu hata oluşur. AZ Module yalnızca geçerli kullanıcı için yüklüyse, ADAL derlemeleri içinde `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`bulunur.
+ADAL derlemelerinin yollarının yanlış olduğu için bu hata oluşur. AZ Module yalnızca geçerli kullanıcı için yüklüyse, ADAL derlemeleri içinde bulunur `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` .
 
-Ayrıca, doğru yolu bulmak `Az.Accounts` için klasör araması yapabilirsiniz.
+Ayrıca, `Az.Accounts` doğru yolu bulmak için klasör araması yapabilirsiniz.
 
 **Hata: Get-AzKeyVaultSecret veya Get-AzKeyVaultSecret bir cmdlet 'in adı olarak tanınmıyor**
 
-Eski AZ PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultSecret` ve ile `Get-AzureKeyVaultSecret`değiştirmeniz gerekir.
+Eski AZ PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultSecret` ve ile değiştirmeniz gerekir `Get-AzureKeyVaultSecret` .
 
 **Parametre örnekleri**
 

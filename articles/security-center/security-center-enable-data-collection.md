@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 056b9bdd46520790f3ffbd9aca56ad8555e23a3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1edb0791e80a8503e5ecba3154d7b421206272c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189829"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198609"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan (Şirket içi) bilgisayarların yanı sıra güvenlik açıklarını ve tehditleri izlemek için veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır. Bu verilere örnek olarak şunlar verilebilir: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan süreçler, makine adı, IP adresleri ve oturum açmış kullanıcı. Log Analytics Aracısı Ayrıca kilitlenme bilgi döküm dosyalarını çalışma alanınıza kopyalar.
@@ -72,7 +72,7 @@ Güvenlik Merkezi tarafından oluşturulan bir çalışma alanı seçmek için:
 
 1. **Kaydet**’e tıklayın.<br>
     Güvenlik Merkezi, bu coğrafi konum içinde yeni bir kaynak grubu ve varsayılan çalışma alanı oluşturur ve aracıyı bu çalışma alanına bağlar. Çalışma alanı ve kaynak grubu için adlandırma kuralı:<br>
-   **Çalışma alanı: DefaultWorkspace-[abonelik-KIMLIĞI]-[coğrafi<br> ] kaynak grubu: defaultresourcegroup-[coğrafi]**
+   **Çalışma alanı: DefaultWorkspace-[abonelik-KIMLIĞI]-[coğrafi] <br> kaynak grubu: DefaultResourceGroup-[coğrafi]**
 
    Abonelik birden çok geoloa 'dan VM 'Ler içeriyorsa, güvenlik merkezi birden çok çalışma alanı oluşturur. Veri gizliliği kurallarını sürdürmek için birden çok çalışma alanı oluşturulur.
 1. Güvenlik Merkezi, abonelik için ayarlanan fiyatlandırma katmanı uyarınca çalışma alanında bir güvenlik merkezi çözümünü otomatik olarak etkinleştirir. 
@@ -126,7 +126,7 @@ Mevcut bir Log Analytics çalışma alanını seçmek için:
     a.  Güvenlik Merkezi ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
      
     b.  Aracıyı bağlamayı planladığınız istediğiniz çalışma alanını seçin.
-        ![Çalışma alanı][7] c 'yi seçin. Fiyatlandırma katmanını ayarlayın.
+        ![Çalışma alanı ][7] c 'yi seçin. Fiyatlandırma katmanını ayarlayın.
         ![Fiyatlandırma katmanını seçin][9]
    
    >[!NOTE]
@@ -223,9 +223,8 @@ Bu ayarı güvenlik ilkesinde devre dışı bırakarak, her zaman kaynaklardan o
 
 Otomatik sağlama devre dışı bırakıldığında (kapalı), varsayılan çalışma alanı yapılandırma bölümü görüntülenmez.
 
-Daha önce yapıldıktan sonra otomatik sağlamayı devre dışı geçerseniz:
--   Aracılar yeni VM 'lerde sağlanmayacak.
--   Güvenlik Merkezi, verileri varsayılan çalışma alanından toplamayı durduruyor.
+Daha önce aracılardan sonra otomatik sağlamayı devre dışı bırakırsanız yeni VM 'lerde sağlanmamıştır.
+
  
 > [!NOTE]
 >  Otomatik sağlamayı devre dışı bırakmak, aracının sağlandığı Azure VM 'lerinden Log Analytics aracısını kaldırmaz. OMS uzantısını kaldırma hakkında bilgi için, bkz. [Güvenlik Merkezi tarafından yüklenen OMS uzantılarını kaldırma nasıl yaparım?](faq-data-collection-agents.md#remove-oms).

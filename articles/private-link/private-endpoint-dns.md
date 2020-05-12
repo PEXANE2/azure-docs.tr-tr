@@ -7,30 +7,30 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7db02546b562f1b542080efdbda8968940655e95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928658"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121312"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure özel uç nokta DNS yapılandırması
 
 
-Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. Özel uç noktanız kullanılarak bağlanmak için bunun geçersiz kılınması gerekir. 
+Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. Özel uç noktanız kullanılarak bağlanmak için bu yapılandırmanın geçersiz kılınması gerekir. 
  
 Özel uç nokta ile ilişkili ağ arabirimi, DNS 'nizi yapılandırmak için gerekli olan ve belirli bir özel bağlantı kaynağı için ayrılan FQDN ve özel IP adresleri dahil olmak üzere tam bilgi kümesini içerir. 
  
 Özel uç noktalar için DNS ayarlarınızı yapılandırmak üzere aşağıdaki seçenekleri kullanabilirsiniz: 
 - **Ana bilgisayar dosyasını kullanın (yalnızca test için önerilir)**. DNS 'yi geçersiz kılmak için bir sanal makinede ana bilgisayar dosyasını kullanabilirsiniz.  
 - **Özel BIR DNS bölgesi kullanın**. Belirli bir özel uç nokta için DNS çözümlemesini geçersiz kılmak üzere [özel DNS bölgelerini](../dns/private-dns-privatednszone.md) kullanabilirsiniz. Özel bir DNS bölgesi, belirli etki alanlarını çözümlemek için sanal ağınıza bağlanabilir.
-- **Özel DNS sunucunuzu kullanın**. Belirli bir özel bağlantı kaynağı için DNS çözümlemesini geçersiz kılmak üzere kendi DNS sunucunuzu kullanabilirsiniz. [DNS sunucunuz](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bir sanal ağ üzerinde barındırılıyorsa, tüm özel bağlantı kaynakları için yapılandırmayı basitleştirmek üzere özel bir DNS bölgesi kullanmak üzere bir DNS iletme kuralı oluşturabilirsiniz.
+- **DNS ileticinizi kullanın (Isteğe bağlı)**. Belirli bir özel bağlantı kaynağı için DNS çözümlemesini geçersiz kılmak üzere DNS ileticinizi kullanabilirsiniz. [DNS sunucunuz](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bir sanal ağ üzerinde barındırılıyorsa, tüm özel bağlantı kaynakları için yapılandırmayı basitleştirmek üzere özel bir DNS bölgesi kullanmak üzere bir DNS iletme kuralı oluşturabilirsiniz.
  
 > [!IMPORTANT]
 > Ortak uç noktaları çözümlemek için etkin olarak kullanılan bir bölgenin geçersiz kılınması önerilmez. Kaynaklara bağlantılar, DNS iletimi olmadan genel DNS 'e iletilmeksizin doğru şekilde çözümlenemez. Sorunları önlemek için, farklı bir etki alanı adı oluşturun veya aşağıdaki her hizmet için önerilen adı izleyin. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>Azure hizmetleri DNS bölge yapılandırması
-Azure Hizmetleri, çözümü önerilen özel etki alanı adlarına yönlendirmek için ortak DNS üzerinde kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabileceksiniz. 
+Azure Hizmetleri, çözümü önerilen özel etki alanı adına yönlendirmek için genel DNS 'de kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabilirsiniz. 
  
 Uygulamalarınızın bağlantı URL 'sini değiştirmesi gerekmez. Genel bir DNS kullanarak çözümlemeye çalışırken, DNS sunucusu şimdi özel uç noktalarınıza çözümlenir. İşlem, mevcut uygulamalarınızı etkilemez. 
 
@@ -107,13 +107,13 @@ Bu model, aynı özel uç noktayla ilişkili birden fazla eşlenmiş sanal ağa 
 > [!IMPORTANT]
 >  Bu yapılandırma için tek bir özel DNS bölgesi gereklidir, farklı sanal ağlar için aynı ada sahip birden çok bölge oluşturulması, DNS kayıtlarını birleştirmek için el ile gerçekleştirilen işlemlere ihtiyaç duyar
 
-Bu senaryoda, ortak bir özel bitiş noktasını paylaşan ve bağlı olan tüm sanal ağ, aynı özel DNS bölgesine bağlı olan bağlı bileşen ağları ile bir [hub &](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . 
+Bu senaryoda, ortak bir özel bitiş noktasını paylaşan ve bağlı olan tüm sanal ağ, aynı özel DNS bölgesine bağlı olan bağlı ağ ağlarının bulunduğu bir [hub &](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Azure tarafından sunulan DNS ile hub ve bağlı bileşen":::
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>DNS ileticisi kullanan şirket içi iş yükleri
  
-Şirket içi iş yükleri için özel bir uç noktanın FQDN 'sini özel IP adresine çözümleyebilmek üzere Azure hizmeti [Genel DNS bölgesinin](#azure-services-dns-zone-configuration) Azure 'da dağıtılmasını sağlamak IÇIN bir DNS ileticisi kullanmanız gerekir.
+Şirket içi iş yükleri için özel bir uç noktanın FQDN 'sini özel IP adresine çözümleyebilmek üzere Azure hizmeti [Genel DNS bölgesinin](#azure-services-dns-zone-configuration) Azure 'da dağıtılan çözümlemesini yapmak IÇIN bir DNS ileticisi kullanmanız gerekir.
 
 
 Aşağıdaki senaryo, Azure 'da DNS ileticisi olan bir şirket içi ağ için uygundur. Bu, bir sunucu düzeyi ileticisi aracılığıyla tüm DNS sorgularını Azure tarafından sunulan DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 'e çözümlemeden sorumludur. 
@@ -123,18 +123,18 @@ Aşağıdaki senaryo, Azure 'da DNS ileticisi olan bir şirket içi ağ için uy
 
 Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vardır:
 
-- Şirket içi ağ
+- Şirket içi ağı
 -  [Şirket içi ağa bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) sanal ağ
 - Azure 'da dağıtılan DNS ileticisi 
--  [Kayıt türündeki](../dns/dns-zones-records.md#record-types)  [Privatelink.Database.Windows.net](../dns/private-dns-privatednszone.md) bölgeleri özel DNS
+-  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)    [Kayıt türündeki](../dns/dns-zones-records.md#record-types) Privatelink.Database.Windows.net bölgeleri özel DNS
 - Özel uç nokta bilgileri (FQDN kayıt adı ve özel IP adresi)
 
-Aşağıdaki diyagramda, bir sanal ağa bağlı özel bir DNS bölgesi tarafından çözümlemenin yapıldığı Azure 'da dağıtılan bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
+Aşağıdaki diyagramda, çözümlemenin bir sanal ağa bağlı özel bir DNS bölgesi tarafından yapıldığı Azure 'da dağıtılan bir DNS ileticisi kullanan bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir.
 
-:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="Azure DNS kullanarak şirket içi":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Azure DNS kullanarak şirket içi":::
 
-Bu yapılandırma, zaten bir DNS çözümü olan şirket içi ağ için genişletilebilir. 
-Şirket içi DNS çözümünün, DNS trafiğini Azure 'da dağıtılan DNS ileticisine başvuran [koşullu bir iletici](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) aracılığıyla Azure DNS iletmek üzere yapılandırılması gerekir.
+Bu yapılandırma, zaten bir DNS çözümü olan bir şirket içi ağ için genişletilebilir. 
+Şirket içi DNS çözümünün, DNS trafiğini Azure 'da dağıtılan DNS ileticisine başvuran bir [Koşullu iletici](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) aracılığıyla Azure DNS iletmek üzere yapılandırılması gerekir.
 
 > [!NOTE]
 > Bu senaryo, Azure SQL veritabanı 'nın önerilen Özel DNS bölgeyi kullanıyor.Diğer hizmetler için, aşağıdaki referans [Azure HIZMETLERI DNS bölge yapılandırmasını](#azure-services-dns-zone-configuration)kullanarak modeli ayarlayabilirsiniz.
@@ -145,15 +145,15 @@ Doğru şekilde yapılandırmak için aşağıdaki kaynaklara ihtiyacınız vard
 - Yerinde özel bir DNS çözümü olan şirket içi ağ 
 -  [Şirket içi ağa bağlı](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) sanal ağ
 - Azure 'da dağıtılan DNS ileticisi
--  [Kayıt türündeki](../dns/dns-zones-records.md#record-types)  [Privatelink.Database.Windows.net](../dns/private-dns-privatednszone.md)  bölgeleri özel DNS
+-  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)     [Kayıt türündeki](../dns/dns-zones-records.md#record-types) Privatelink.Database.Windows.net bölgeleri özel DNS
 - Özel uç nokta bilgileri (FQDN kayıt adı ve özel IP adresi)
 
 Aşağıdaki diyagramda DNS trafiğini bir sanal ağa bağlı özel bir DNS bölgesi tarafından oluşturulan Azure 'a koşullu olarak ileten bir şirket içi ağdan gelen DNS çözümleme sırası gösterilmektedir
 
 > [!IMPORTANT]
-> Koşullu iletme, **Privatelink**. Database.Windows.net yerine [Genel DNS bölgesi](#azure-services-dns-zone-configuration) Ex: `database.windows.net` ' a verilmelidir.
+> Koşullu iletme, [public DNS zone](#azure-services-dns-zone-configuration)    `database.windows.net`    **PRIVATELINK**. Database.Windows.net yerine genel DNS bölgesi Ex: ' a verilmelidir.
 
-:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="Azure DNS şirket içi iletme":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Azure DNS şirket içi iletme":::
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,36 +1,36 @@
 ---
 title: Haritaya HTML Işaretleyicisi ekleme | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya HTML Işaretleyicisi ekleme hakkında bilgi edineceksiniz.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 2700d42c25d58911fb275ad9ce6c5610cd22624d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536777"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119288"
 ---
 # <a name="add-html-markers-to-the-map"></a>Haritaya HTML işaretçileri ekleyin
 
 Bu makalede, bir HTML Işaretçisi olarak haritaya bir görüntü dosyası gibi özel bir HTML nasıl ekleyeceğiniz gösterilir.
 
 > [!NOTE]
-> HTML Işaretçileri veri kaynaklarına bağlanamaz. Bunun yerine, konum bilgisi doğrudan işaretçiye eklenir ve işaret, bir [Htmlmarkermanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)olan `markers` Maps özelliğine eklenir.
+> HTML Işaretçileri veri kaynaklarına bağlanamaz. Bunun yerine, konum bilgisi doğrudan işaretçiye eklenir ve işaret, `markers` bir [Htmlmarkermanager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)olan Maps özelliğine eklenir.
 
 > [!IMPORTANT]
 > Azure Haritalar Web denetimindeki birçok katmanın farklı olarak, işlemek için WebGL kullanan çoğu katmanın aksine, HTML Işaretçileri işleme için geleneksel DOM öğeleri kullanır. Bu nedenle, bir sayfaya daha fazla HTML işaretleyicisi eklendiğinde, daha fazla DOM öğesi vardır. Birkaç yüz HTML işaretleyicisi eklendikten sonra performans düşebilir. Daha büyük veri kümeleri için verilerinizi kümelendirmeyi veya sembol ya da kabarcık katmanı kullanmayı düşünün.
 
 ## <a name="add-an-html-marker"></a>HTML işaretleyicisi ekleme
 
-[Htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) sınıfının varsayılan bir stili vardır. İşaretin renk ve metin seçeneklerini ayarlayarak işaretçiyi özelleştirebilirsiniz. HTML işaret sınıfının varsayılan stili, `{color}` ve `{text}` yer tutucusu olan bir SVG şablonudur. Hızlı özelleştirme için HTML işaretleyici seçeneklerinde renk ve metin özelliklerini ayarlayın. 
+[Htmlişaretleyici](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) sınıfının varsayılan bir stili vardır. İşaretin renk ve metin seçeneklerini ayarlayarak işaretçiyi özelleştirebilirsiniz. HTML işaret sınıfının varsayılan stili, `{color}` ve yer tutucusu olan BIR SVG şablonudur `{text}` . Hızlı özelleştirme için HTML işaretleyici seçeneklerinde renk ve metin özelliklerini ayarlayın. 
 
-Aşağıdaki kod bir HTML işaretleyicisi oluşturur ve Color özelliğini "DodgerBlue" olarak ve metin özelliğini "10" olarak ayarlar. Açılan pencere, işaretleyicinin görünürlüğünü değiştirmek için `click` işaretçiye eklenir ve olay kullanılır.
+Aşağıdaki kod bir HTML işaretleyicisi oluşturur ve Color özelliğini "DodgerBlue" olarak ve metin özelliğini "10" olarak ayarlar. Açılan pencere, işaretleyicinin `click` görünürlüğünü değiştirmek için işaretçiye eklenir ve olay kullanılır.
 
 ```javascript
 //Create an HTML marker and add it to the map.
@@ -56,16 +56,16 @@ Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmi�
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Haritaya HTML Işaretleyicisi ekleme' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>bir haritaya HTML işaretleyicisi ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Haritaya HTML Işaretleyicisi ekleme' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>bir HARITAYA HTML Işaretleyicisi ekleme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="create-svg-templated-html-marker"></a>SVG şablonu oluşturma HTML işaretleyicisi
 
-HTML işaretleyicisinin varsayılan değer `htmlContent` , yer klasörleri `{color}` ve `{text}` içindeki bir SVG şablonudur. Özel SVG dizeleri oluşturabilir ve bu aynı yer tutucuları SVG 'ye ekleyebilirsiniz ve bu nedenle, işaretleyicinin `color` ve `text` seçeneklerini ayarlayarak, bu yer tutucuları SVG 'de güncelleştirin.
+`htmlContent`HTML işaretleyicisinin varsayılan değer, yer klasörleri ve içindeki BIR SVG şablonudur `{color}` `{text}` . Özel SVG dizeleri oluşturabilir ve bu aynı yer tutucuları SVG 'ye ekleyebilirsiniz ve bu nedenle, `color` `text` işaretleyicinin ve seçeneklerini ayarlayarak, bu yer tutucuları SVG 'de güncelleştirin.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Özel SVG şablonuyla HTML Işaretleyicisi' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>özel SVG şablonuyla kalem HTML işaretine</a> bakın.
+<iframe height='500' scrolling='no' title='Özel SVG şablonuyla HTML Işaretleyicisi' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>özel SVG şablonuyla kalem HTML işaretine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -77,16 +77,16 @@ HTML işaretlerinin avantajlarından biri, CSS kullanılarak erişilebilecek ço
 
 <br/>
 
-<iframe height='500' scrolling='no' title='HTML veri kaynağı' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML veri kaynağına</a> bakın.
+<iframe height='500' scrolling='no' title='HTML veri kaynağı' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML veri kaynağına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="draggable-html-markers"></a>Sürüklenebilir HTML işaretçileri
 
-Bu örnek, bir HTML işaretleyici sürüklenebilir nasıl yapılacağını gösterir. HTML işaretçileri, `drag` `dragstart`ve `dragend` olaylarını destekler.
+Bu örnek, bir HTML işaretleyici sürüklenebilir nasıl yapılacağını gösterir. HTML işaretçileri `drag` , `dragstart` ve olaylarını destekler `dragend` .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Sürüklenebilir HTML Işaretleyicisi' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>sürüklenebilir HTML işaretine</a> bakın.
+<iframe height='500' scrolling='no' title='Sürüklenebilir HTML Işaretleyicisi' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>SÜRÜKLENEBILIR HTML işaretine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-mouse-events-to-html-markers"></a>HTML işaretçilerine fare olayları ekleme
@@ -95,7 +95,7 @@ Bu örnekler, bir HTML işaretine fare ve sürükleme olaylarının nasıl eklen
 
 <br/>
 
-<iframe height='500' scrolling='no' title='HTML Işaretçilerine fare olayları ekleme' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>HTML Işaretçilerine fare olayları ekleme</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='HTML Işaretçilerine fare olayları ekleme' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>HTML Işaretçilerine fare olayları ekleme</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926995"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199447"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 |     |
@@ -28,7 +28,7 @@ ms.locfileid: "82926995"
 Bu makalede, B2B işbirliği için başka bir kuruluşla doğrudan Federasyonun nasıl ayarlanacağı açıklanır. Kimlik sağlayıcısı (IDP) SAML 2,0 veya WS-beslenir protokolünü destekleyen herhangi bir kuruluşla doğrudan Federasyon oluşturabilirsiniz.
 Bir iş ortağının IDP 'si ile doğrudan Federasyon ayarladığınızda, bu etki alanındaki yeni Konuk kullanıcılar, Azure AD kiracınızda oturum açmak ve sizinle işbirliği yapmaya başlamak için kendi IDP tarafından yönetilen kurumsal hesaplarını kullanabilir. Konuk kullanıcının ayrı bir Azure AD hesabı oluşturmalarına gerek yoktur.
 > [!NOTE]
-> Doğrudan Federasyon Konuk kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>`doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Doğrudan Federasyon kullanıcıları, kiracı bağlamı olmayan ortak uç noktaları kullanarak oturum açamıyor. Örneğin,, veya `https://myapps.microsoft.com` `https://teams.microsoft.com` kullanarak `https://portal.azure.com`bir hatayla sonuçlanır.
+> Doğrudan Federasyon Konuk kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı olması durumunda `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Doğrudan Federasyon kullanıcıları, kiracı bağlamı olmayan ortak uç noktaları kullanarak oturum açamıyor. Örneğin,, `https://myapps.microsoft.com` veya kullanarak `https://portal.azure.com` `https://teams.microsoft.com` bir hatayla sonuçlanır.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Bir Konuk kullanıcının kimliği doğrudan Federasyonla mı?
 Bir kuruluşla doğrudan Federasyonu ayarladıktan sonra, davet ettiğiniz tüm yeni Konuk kullanıcılardan kimlik doğrulaması doğrudan Federasyon kullanılarak yapılır. Doğrudan Federasyonu ayarlamanın, sizin için bir davet zaten kullanılmış olan Konuk kullanıcılar için kimlik doğrulama yöntemini değiştirmediğini unutmayın. İşte bazı örnekler:
@@ -61,7 +61,7 @@ Doğrudan federasyona yalnızca kimlik doğrulama URL 'sinin hedef etki alanı i
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Örneğin, **fabrikam.com**için doğrudan Federasyon ayarlarken, kimlik doğrulama URL 'si `https://fabrikam.com/adfs` doğrulamayı geçilecektir. Örneğin `https://sts.fabrikam.com/adfs`, aynı etki alanındaki bir konak da geçirilecek. Ancak, kimlik doğrulama URL `https://fabrikamconglomerate.com/adfs` 'si `https://fabrikam.com.uk/adfs` veya aynı etki alanı için geçiş gerçekleştirilmez.
+Örneğin, **fabrikam.com**için doğrudan Federasyon ayarlarken, kimlik doğrulama URL 'si `https://fabrikam.com/adfs` doğrulamayı geçilecektir. Örneğin, aynı etki alanındaki bir konak da geçirilecek `https://sts.fabrikam.com/adfs` . Ancak, kimlik doğrulama URL 'SI `https://fabrikamconglomerate.com/adfs` veya `https://fabrikam.com.uk/adfs` aynı etki alanı için geçiş gerçekleştirilmez.
 
 ### <a name="signing-certificate-renewal"></a>İmza sertifikası yenileme
 Kimlik sağlayıcısı ayarlarında meta veri URL 'sini belirtirseniz, Azure AD, oturum sona erdiğinde imza sertifikasını otomatik olarak yenileyecek. Ancak, sertifika, süre sonu zamanından önce herhangi bir nedenle döndürülürse veya bir meta veri URL 'SI sağlamazsanız, Azure AD onu yenileyemeyecektir. Bu durumda, imzalama sertifikasını el ile güncelleştirmeniz gerekir.
@@ -146,8 +146,8 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Azure AD portalında doğrudan Federasyonu yapılandırmak için
 
 1. [Azure Portal](https://portal.azure.com/)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini**seçin.
-3. **Kimlik sağlayıcıları**' nı seçin ve ardından **yenı SAML/WS-besıop**' ı seçin.
+2. **Organizational Relationships**  >  **Tüm kimlik sağlayıcılarının** (veya **dış kimliklerin**  >  **tüm kimlik sağlayıcılarının**) kuruluş ilişkilerini seçin.
+3. Öğesini seçin ve ardından **yenı SAML/WS-Besıop**' ı seçin.
 
     ![Yeni SAML veya WS-Besıop ekleme düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -174,7 +174,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
    Connect-AzureAD
    ```
 1. Oturum açma isteminde, yönetilen genel yönetici hesabıyla oturum açın. 
-2. Federasyon meta verileri dosyasındaki değerleri değiştirerek aşağıdaki komutları çalıştırın. AD FS Server ve okta için, Federasyon dosyası federationmetadata. xml ' dir, örneğin: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`. 
+2. Federasyon meta verileri dosyasındaki değerleri değiştirerek aşağıdaki komutları çalıştırın. AD FS Server ve okta için, Federasyon dosyası federationmetadata. xml ' dir, örneğin: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -194,8 +194,8 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Doğrudan bir Federasyon ilişkisini Nasıl yaparım? mi düzenleyin?
 
 1. [Azure Portal](https://portal.azure.com/)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini**seçin.
-3. **Kimlik sağlayıcılarını** seçin
+2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+3. **Tüm kimlik sağlayıcılarını** Seç
 4. **SAML/WS-beslik kimlik sağlayıcıları**altında sağlayıcıyı seçin.
 5. Kimlik sağlayıcısı ayrıntıları bölmesinde değerleri güncelleştirin.
 6. **Kaydet**’i seçin.
@@ -205,8 +205,8 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 Doğrudan Federasyon kurulumunuzu kaldırabilirsiniz. Bunu yaparsanız, doğrudan davetlerini daha önce kullanan Federasyon Konuk kullanıcıları oturum açamaz. Ancak onları dizinden silerek ve yeniden davet ederek kaynaklarınıza erişim izni verebilirsiniz. Azure AD portalındaki bir kimlik sağlayıcısıyla doğrudan Federasyonu kaldırmak için:
 
 1. [Azure Portal](https://portal.azure.com/)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini**seçin.
-3. **Kimlik sağlayıcıları**' nı seçin.
+2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+3. **Tüm kimlik sağlayıcılarını**seçin.
 4. Kimlik sağlayıcısını seçin ve **Sil**' i seçin. 
 5. Silmeyi onaylamak için **Evet** ' i seçin. 
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: a8f32ad69d32844305c1cc785afc9f1df3c102b8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006358"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117028"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JSON ile çalışma
 
@@ -45,9 +45,9 @@ Bir nokta erişimcisi kullanarak iç içe geçmiş JSON 'a erişebilirsiniz. Sor
 }
 ```
 
-`state`Bu durumda `country`,, ve `city` özelliklerinin hepsi `address` özelliği içinde iç içe.
+Bu durumda,, `state` `country` ve `city` özelliklerinin hepsi özelliği içinde iç içe `address` .
 
-Aşağıdaki örnek iki iç içe geçmiş özelliği projeler `f.address.state` : `f.address.city`ve.
+Aşağıdaki örnek iki iç içe geçmiş özelliği projeler: `f.address.state` ve `f.address.city` .
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -141,9 +141,9 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 'da ayrılmış anahtar sözcükler ve özel karakterler
 
-Tırnak içine alınmış Özellik işlecini `[]`kullanarak özelliklere erişebilirsiniz. Örneğin, `SELECT c.grade` ve `SELECT c["grade"]` eşdeğerdir. Bu sözdizimi, boşluk, özel karakter veya bir SQL anahtar sözcüğüyle veya ayrılmış sözcükle aynı ada sahip bir özelliğin kaçış için yararlıdır.
+Tırnak içine alınmış Özellik işlecini kullanarak özelliklere erişebilirsiniz `[]` . Örneğin, `SELECT c.grade` ve `SELECT c["grade"]` eşdeğerdir. Bu sözdizimi, boşluk, özel karakter veya bir SQL anahtar sözcüğüyle veya ayrılmış sözcükle aynı ada sahip bir özelliğin kaçış için yararlıdır.
 
-Örneğin, adında `order` bir özelliği ve özel karakterler içeren bir özelliği `price($)` içeren bir belge:
+Örneğin, adında bir özelliği `order` ve `price($)` özel karakterler içeren bir özelliği içeren bir belge:
 
 ```json
 {
@@ -160,7 +160,7 @@ Tırnak içine alınmış Özellik işlecini `[]`kullanarak özelliklere erişeb
 }
 ```
 
-`order` Özelliği veya `price($)` özelliği içeren bir sorgu çalıştırırsanız, bir sözdizimi hatası alırsınız.
+Özelliği veya özelliği içeren bir sorgu çalıştırırsanız `order` `price($)` , bir sözdizimi hatası alırsınız.
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -208,7 +208,7 @@ Sonuçlar:
     }]
 ```
 
-Önceki örnekte, `SELECT` yan TÜMCESININ bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını `$1`kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürür: `$1` ve `$2`.
+Önceki örnekte, `SELECT` yan tümcesinin BIR JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını kullanır `$1` . Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürür: `$1` ve `$2` .
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -237,7 +237,7 @@ Sorgularda açıkça diğer ad değerleri ekleyebilirsiniz. Sorgunun aynı ada s
 
 ### <a name="examples"></a>Örnekler
 
-Diğer `AS` ad için kullanılan anahtar sözcük, aşağıdaki örnekte gösterildiği gibi isteğe bağlıdır `NameInfo`:
+`AS`Diğer ad için kullanılan anahtar sözcük, aşağıdaki örnekte gösterildiği gibi isteğe bağlıdır `NameInfo` :
 
 ```sql
     SELECT
@@ -270,7 +270,7 @@ Bir örneği aşağıda verilmiştir:
 ```sql
     SELECT
            {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
-           { "JSON expression with a special character": { "name": f.id }}
+           {"JSON expression with a special character!": { "name": f.id }}
     FROM Families f
     WHERE f.id = "AndersenFamily"
 ```

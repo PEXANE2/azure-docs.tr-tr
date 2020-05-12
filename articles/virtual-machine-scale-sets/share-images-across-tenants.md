@@ -2,18 +2,19 @@
 title: Azure 'daki kiracılar genelinde Galeri görüntülerini paylaşma
 description: Paylaşılan görüntü galerileri kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: conceptual
-ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
+ms.date: 04/05/2019
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5b86335ab8bcc3af75dbd8af39e3d913f2461e58
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276333"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119850"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
 
@@ -22,7 +23,7 @@ ms.locfileid: "76276333"
 
 ## <a name="create-a-scale-set-using-azure-cli"></a>Azure CLI kullanarak ölçek kümesi oluşturma
 
-AppID, uygulama anahtarı ve kiracı 1 KIMLIĞI kullanarak kiracı 1 için hizmet sorumlusu 'nda oturum açın. Gerekirse kiracı kimliklerini `az account show --query "tenantId"` almak için ' i kullanabilirsiniz.
+AppID, uygulama anahtarı ve kiracı 1 KIMLIĞI kullanarak kiracı 1 için hizmet sorumlusu 'nda oturum açın. `az account show --query "tenantId"`Gerekirse kiracı kimliklerini almak için ' i kullanabilirsiniz.
 
 ```azurecli-interactive
 az account clear

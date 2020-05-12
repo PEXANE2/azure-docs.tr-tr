@@ -8,24 +8,18 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2559b7d81a6f60b633d023a35081b54e1204268a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422331"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120206"
 ---
-1. Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azure.com/) gidin. Giriş sayfanızda **Azure hizmetleri** panelinden **kaynak oluştur** ' u seçin.
+1. Azure portal menüsünde veya **giriş sayfasında**, **kaynak oluştur**' u seçin.
 
-   ![Kaynak oluşturma](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
+1. **Yeni** sayfasında, **Azure Cosmos DB**bulun ve seçin.
 
-1. **Azure Cosmos DB**’yi arayın ve seçin.
-
-   ![Azure portal kaynakları açılır](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
-
-1. **Oluştur**’u seçin.
-
-   ![Azure Cosmos DB kaynağı oluşturma](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+1. **Azure Cosmos DB** sayfasında **Oluştur**' u seçin.
 
 1. **Azure Cosmos DB Hesabı Oluştur** sayfasında, yeni Azure Cosmos hesabına yönelik temel ayarları girin. 
 

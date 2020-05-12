@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008662"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196955"
 ---
 Azure Ultra diskler, Azure IaaS sanal makineleri (VM 'Ler) için yüksek aktarım hızı, yüksek ıOPS ve tutarlı düşük gecikme süreli disk depolama alanı sunar. Bu yeni teklif, var olan diskler tekliflerimiz ile aynı Kullanılabilirlik düzeylerinde satır performansının üst kısmında yer sağlar. Ultra disklerin büyük bir avantajı, sanal makinelerinizi yeniden başlatmanıza gerek kalmadan SSD 'nin performansını ve iş yüklerinizde dinamik olarak değiştirme yeteneğidir. Ultra diskler SAP HANA, en üst katman veritabanları ve ağır işlem içeren iş yükleri gibi yoğun veri kullanan iş yüklerine uygundur.
 
@@ -51,7 +51,7 @@ Yanıt aşağıdaki biçimde olacaktır; burada X, seçtiğiniz bölgede dağıt
 
 Bölge değerini koru, kullanılabilirlik **bölgenizi** temsil eder ve bir ultra disk dağıtmak için bu alana ihtiyacınız olur.
 
-|ResourceType  |Adı  |Konum  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
+|ResourceType  |Name  |Konum  |Bölgeler  |Kısıtlama  |Özellik  |Değer  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disklerinden     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -62,7 +62,7 @@ Hangi bölgeyi dağıtacağınızı bildiğinize göre, bu makaledeki dağıtım
 
 ### <a name="vms-with-no-redundancy-options"></a>Artıklık seçeneği olmayan VM 'Ler
 
-Batı ABD dağıtılan Ultra disklerin, şimdilik hiçbir artıklık seçeneği olmadan dağıtılması gerekir. Ancak, Ultra diskleri destekleyen her disk boyutu bu bölgede olabilir. Batı ABD hangi nesnelerin Ultra diskleri desteklediğini öğrenmek için aşağıdaki kod parçacıklarında birini kullanabilirsiniz. Önce `vmSize` ve `subscription` değerlerini değiştirdiğinizden emin olun:
+Batı ABD dağıtılan Ultra disklerin, şimdilik hiçbir artıklık seçeneği olmadan dağıtılması gerekir. Ancak, Ultra diskleri destekleyen her disk boyutu bu bölgede olabilir. Batı ABD hangi nesnelerin Ultra diskleri desteklediğini öğrenmek için aşağıdaki kod parçacıklarında birini kullanabilirsiniz. `vmSize`Önce ve değerlerini değiştirdiğinizden emin olun `subscription` :
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -115,7 +115,7 @@ UltraSSDAvailable                            True
 
 Birden çok Ultra disk içeren bir VM oluşturmak isterseniz, örneğe [birden çok Ultra disk içeren BIR VM oluşturma](https://aka.ms/ultradiskArmTemplate)konusuna bakın.
 
-Kendi şablonunuzu kullanmayı düşünüyorsanız, ve `Microsoft.Compute/Disks` Için `2018-06-01` `Microsoft.Compute/virtualMachines` **apiversion** ' ın (veya üzeri) olarak ayarlandığından emin olun.
+Kendi şablonunuzu kullanmayı düşünüyorsanız, ve için **Apiversion** ' `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks` ın `2018-06-01` (veya üzeri) olarak ayarlandığından emin olun.
 
 Disk SKU 'sunu **UltraSSD_LRS**olarak ayarlayın, ardından bir ultra disk oluşturmak için disk KAPASITESINI, IOPS 'yi, kullanılabilirlik alanını ve aktarım hızını MB cinsinden ayarlayın.
 
