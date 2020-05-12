@@ -3,7 +3,7 @@ title: Azure 'da Windows VM dağıtımı sorunlarını giderme | Microsoft Docs
 description: Azure 'da yeni bir Windows sanal makinesi oluştururken Kaynak Yöneticisi dağıtım sorunlarını giderme
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981398"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120972"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure 'da yeni bir Windows VM oluştururken dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -75,7 +75,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
   * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
-    Kaynak **grupları** > ' na tıklayın**Resources** > *kullanılabilirlik kümesi* > **makinelerinizi** > *sanal makinenizin* > **durulacağı**kaynak*grubu* > 
+    Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi*sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı**kaynak grubu
   * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
   * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
 

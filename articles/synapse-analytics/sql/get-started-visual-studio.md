@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428569"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201686"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -28,9 +28,8 @@ ms.locfileid: "81428569"
 
 Azure SYNAPSE Analytics kullanarak SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın. Bu yöntem, Visual Studio 2019 ' de SQL Server Veri Araçları (SSDT) uzantısını kullanır. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (Önizleme)
-
-Visual Studio şu anda SQL isteğe bağlı (Önizleme) için desteklenmiyor. Ancak, Azure Data Studi (Önizleme) o, tam olarak desteklenen bir araçtır. SQL Server Management Studio sürüm 18,4 ' den kısmen desteklenir ve bağlanma ve sorgulama gibi sınırlı özelliklere sahiptir.
+> [!NOTE]
+> SQL isteğe bağlı (Önizleme) SSDT tarafından desteklenmiyor.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
@@ -41,7 +40,7 @@ Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir
 
 ## <a name="1-connect-to-sql-pool"></a>1. SQL havuzuna Bağlan
 1. Visual Studio 2019 ' i açın.
-2. SQL Server Nesne Gezgini açın. Bunu yapmak için**SQL Server Nesne Gezgini** **görüntüle** > ' yi seçin.
+2. SQL Server Nesne Gezgini açın. Bunu yapmak için SQL Server Nesne Gezgini **görüntüle**' yi seçin  >  **SQL Server Object Explorer**.
    
     ![SQL Server Nesne Gezgini](./media/get-started-visual-studio/open-ssdt.png)
 3. **SQL Server ekle** simgesine tıklayın.

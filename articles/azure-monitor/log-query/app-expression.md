@@ -5,32 +5,33 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670272"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201115"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Izleyici sorgusunda App () ifadesi
 
 Bu `app` ifade, bir Azure izleyici sorgusunda aynı kaynak grubunda, başka bir kaynak grubunda veya başka bir abonelikte bulunan belirli bir Application Insights uygulamasından verileri almak için kullanılır. Bu, uygulama verilerini bir Azure Izleyici günlük sorgusuna eklemek ve bir Application Insights sorgusunda birden çok uygulama arasında veri sorgulamak için yararlıdır.
 
-
+> [!IMPORTANT]
+> Günlük verileri bir Log Analytics çalışma alanında depolandığından, bu, bir [çalışma alanı tabanlı Application Insights kaynağı](../app/create-workspace-resource.md) kullanıyorsanız, uygulama () ifadesi kullanılmaz. Birden çok çalışma alanındaki uygulamayı içeren bir sorgu yazmak için log () ifadesini kullanın. Aynı çalışma alanındaki birden çok uygulama için, bir çapraz çalışma alanı sorgusuna gerek yoktur.
 
 ## <a name="syntax"></a>Sözdizimi
 
 `app(`*Tanımlayıcısını*`)`
 
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
 
 - *Tanımlayıcı*: aşağıdaki tablodaki biçimlerden birini kullanarak uygulamayı tanımlar.
 
 | Tanımlayıcı | Açıklama | Örnek
 |:---|:---|:---|
-| Kaynak Adı | Uygulamanın okunabilir adı (DIĞER adıyla "bileşen adı") | uygulama ("fabrikamapp") |
+| Kaynak Adı | Uygulamanın okunabilir adı ("bileşen adı" olarak da bilinir) | uygulama ("fabrikamapp") |
 | Tam ad | Şu biçimdeki uygulamanın tam adı: "subscriptionName/resourceGroup/componentName" | uygulama (' AI-Prototype/fabrikam/fabrikamapp ') |
 | Kimlik | Uygulamanın GUID 'SI | uygulama ("988ba129-363e-4415-8fe7-8cbe5447518") |
 | Azure Kaynak KIMLIĞI | Azure kaynağı için tanımlayıcı |uygulama ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |

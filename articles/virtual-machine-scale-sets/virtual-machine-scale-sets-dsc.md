@@ -1,20 +1,20 @@
 ---
 title: Sanal makine ölçek kümeleriyle Istenen durum yapılandırmasını kullanma
 description: Sanal makineleri yapılandırmak için, Azure Istenen durum yapılandırması Uzantısı ile sanal makine ölçek kümelerini kullanma.
-author: zjalexander
-tags: azure-service-management,azure-resource-manager
-ms.assetid: c8f047b5-0e6c-4ef3-8a47-f1b284d32942
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
+ms.subservice: extensions
 ms.date: 04/05/2017
-ms.author: zachal
-ms.openlocfilehash: a93a8a9c27be5a1736a50e6c4c4b830980b7d974
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278065"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124850"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Azure DSC Uzantısı ile sanal makine ölçek kümelerini kullanma
 [Sanal Makine Ölçek Kümeleri](virtual-machine-scale-sets-overview.md) , [Azure istenen durum yapılandırması (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) uzantı işleyicisiyle birlikte kullanılabilir. Sanal Makine Ölçek Kümeleri, büyük miktarlarda sanal makine dağıtmak ve yönetmek için bir yol sağlar ve yükleme yanıtı olarak esnek ve out edebilir. DSC, üretim yazılımını çalıştırdığından VM 'Leri çevrimiçi olarak yapılandırmak için kullanılır.

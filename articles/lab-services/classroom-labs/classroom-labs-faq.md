@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983916"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115158"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
@@ -77,6 +77,6 @@ Laboratuvar Hizmetleri 'ndeki yeni özellikler hakkında bilgi sahibi olmak içi
 Sorunuz burada listelenmiyorsa bize bilgi verin. bu nedenle bir yanıt bulmanıza yardımcı olabiliriz.
 
 - Bu SSS sonunda bir soru gönderin. 
-- Daha geniş bir hedef kitleye ulaşmak için [Azure Lab Services Stack Overflow forumuna](https://stackoverflow.com/questions/tagged/azure-lab-services)bir soru gönderin. 
+- Daha geniş bir hedef kitleye ulaşmak için Azure Lab Services bir soru gönderin [(Tech Community Forumu)](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). 
 - Özellik istekleri için isteklerinizi ve fikirlerinizi [Azure Lab Services — Kullanıcı seslerine](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)gönderebilirsiniz.
 

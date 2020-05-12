@@ -11,17 +11,17 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 444cb2c8378ad873beb61116c5c4387ad3c59761
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416044"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200351"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile Azure SYNAPSE Analytics 'e bağlanma
 > [!div class="op_single_selector"]
+> * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
@@ -39,7 +39,7 @@ Bu öğreticiyi kullanmak için şunlar gerekir:
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. SQL havuzunuza bağlanma
 1. Visual Studio 2019 ' i açın.
-2. SQL Server Nesne Gezgini**SQL Server Nesne Gezgini** **göster** > ' i seçerek açın.
+2. SQL Server Nesne Gezgini SQL Server Nesne Gezgini **göster**' i seçerek açın  >  **SQL Server Object Explorer**.
    
     ![SQL Server Nesne Gezgini](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. **SQL Server ekle** simgesine tıklayın.
@@ -69,7 +69,7 @@ Artık veritabanınızla bağlantı kurulduğuna göre bir sorgu yazalım.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Yeşil oka tıklayarak sorguyu çalıştırın veya şu kısayolu kullanın `CTRL` + `SHIFT` + `E`:.
+4. Yeşil oka tıklayarak sorguyu çalıştırın veya şu kısayolu kullanın: `CTRL` + `SHIFT` + `E` .
    
     ![Sorgu çalıştırma](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Sorgu sonuçlarına bakın. Bu örnekte FactInternetSales tablosunda 60398 satır var.

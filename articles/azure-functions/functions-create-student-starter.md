@@ -4,14 +4,14 @@ description: Öğrenciler için Azure başlangıç aboneliği içinden bir Azure
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
 ms.topic: how-to
-ms.date: 02/22/2019
+ms.date: 04/29/2020
 ms.author: alkarche
-ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756466"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122910"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Öğrenciler için Azure başlangıç kullanarak bir işlev oluşturma
 
@@ -21,78 +21,51 @@ Bu öğreticide, öğrenciler için Azure başlangıç aboneliğinde bir "Hello 
 
 Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda yürütmenize olanak tanır. [Burada Işlevler hakkında daha fazla bilgi edinin.](./functions-overview.md)
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="create-a-function"></a>İşlev oluşturma
 
- Bu konu başlığında, Azure portal bir HTTP ile tetiklenen "Hello World" işlevi oluşturmak için Işlevleri nasıl kullanacağınızı öğrenin.
+ Bu makalede, Azure Işlevleri 'ni kullanarak Azure portal bir "Hello World" HTTP tetikleyici işlevi oluşturma hakkında bilgi edinin.
 
 ![Azure portalında işlev uygulaması oluşturma](./media/functions-create-student-starter/function-app-in-portal-editor.png)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında oturum açın.
+Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
 İşlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır.
 
-1. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin. Sonra **işlem** > **işlev uygulaması**seçin.
-
-    ![Azure portalında işlev uygulaması oluşturma](./media/functions-create-student-starter/function-app-create-flow.png)
-
-2. Görüntünün altındaki tabloda belirtilen işlev uygulaması ayarlarını kullanın.
-
-    <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
-
-    | Ayar      | Önerilen değer  | Açıklama                                        |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **Uygulama adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler: `a-z`, `0-9`, ve `-`.  | 
-    | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. | 
-    | **[Kaynak grubu](../azure-resource-manager/management/overview.md)** |  myResourceGroup | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
-   | **[Plan/konum App Service](./functions-scale.md)** | Yeni | İşlev uygulamanızın hangi bölgeye dağıtıldığını ve kaynaklarınızın yoğunluğunu denetleyen barındırma planı. Aynı plana dağıtılan birden çok Işlev uygulaması aynı tek bir ücretsiz örneği paylaşacaktır. Bu, öğrenci başlangıç planının kısıtlamasıdır. Tam barındırma seçenekleri [burada açıklanmıştır.](./functions-scale.md)|
-    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
-    |**[Application Insights](./functions-monitoring.md)**| Etkin | Application Insights, işlev uygulamanızın günlüklerini depolamak ve analiz etmek için kullanılır. Application Insights destekleyen bir konum seçerseniz, varsayılan olarak etkindir. Application Insights, Application Insights dağıtmak üzere yakın bölgeyi el ile seçerek herhangi bir işlev için etkinleştirilebilir. Application Insights olmadan yalnızca canlı akış günlüklerini görüntüleyebileceksiniz.
-
-3. Farklı bir konum seçmek için yukarıdaki **App Service planı/konumu** seçin
-
-4. **Yeni oluştur** ' u seçin ve planınızı benzersiz bir ad verin.
-
-5. Size en yakın konumu seçin. [Azure bölgelerinin tam haritasını buradan görebilirsiniz.](https://azure.microsoft.com/global-infrastructure/regions/) 
-
-    <img src="./media/functions-create-student-starter/Create-ASP.png" width="800">
-
-6. İşlev uygulamasını sağlamak ve dağıtmak için **Oluştur**'u seçin.
-
-    <img src="./media/functions-create-student-starter/Function-create-end.png" width="315">
-
-7. Portalın sağ üst köşesindeki Bildirim simgesini seçin ve **Dağıtım başarılı** iletisini bekleyin.
-
-    ![Yeni işlev uygulaması ayarlarını tanımlama](./media/functions-create-student-starter/function-app-create-notification.png)
-
-8. Yeni işlev uygulamanızı görüntülemek için **Kaynağa git**’i seçin.
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
-## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP ile tetiklenen bir işlev oluşturma
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>HTTP tetikleyici işlevi oluşturma
 
-1. Yeni işlev uygulamanızı genişletin, **işlevler**' ın yanındaki **+** düğmeyi seçin, **Portal**' ı seçin ve **devam**' ı seçin.
+1. **İşlevler** penceresinin sol menüsünde **işlevler**' i seçin ve ardından üst menüden **Ekle** ' yi seçin. 
+ 
+1. **Yeni işlev** penceresinden **http tetikleyicisi**' ni seçin.
 
-    ![İşlevler hızlı başlangıcı platform seçimi.](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
+    ![HTTP tetikleyici işlevini seçin](./media/functions-create-student-starter/function-app-select-http-trigger.png)
 
-1. **Web Kancası + API**'yi ve ardından **Oluştur**'u seçin.
+1. **Yeni işlev** penceresinde, **yeni işlev**için varsayılan adı kabul edin veya yeni bir ad girin. 
 
-    ![Azure portalındaki İşlevler hızlı başlangıcı.](./media/functions-create-student-starter/function-app-quickstart-node-webhook.png)
+1. **Yetkilendirme düzeyi** açılan listesinden **anonim** ' i seçin ve ardından **işlev oluştur**' u seçin.
 
-Dile özgü HTTP ile tetiklenen işlev şablonu kullanılarak bir işlev oluşturulur.
-
-Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
+    Azure, HTTP tetikleyici işlevini oluşturur. Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
 ## <a name="test-the-function"></a>İşlevi test etme
 
-1. Yeni işlevinizde sağ üst kısımdaki **</> İşlev URL'sini al**'a tıklayın, **varsayılan (İşlev anahtarı)** seçeneğini belirleyin ve ardından **Kopyala**'ya tıklayın. 
+1. Yeni HTTP tetikleyici işlevinizde, sol menüden **Code + test** ' i seçin ve ardından üstteki menüden **Işlev URL 'sini al** ' ı seçin.
+
+    ![İşlev URL 'sini Al ' ı seçin](./media/functions-create-student-starter/function-app-select-get-function-url.png)
+
+1. **İşlev URL 'Sini al** iletişim kutusunda, açılan listeden **varsayılan** ' ı seçin ve ardından **Panoya Kopyala** simgesini seçin. 
 
     ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-student-starter/function-app-develop-tab-testing.png)
 
-2. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. `&name=<yourname>` sorgu dizesi değerini bu URL’nin sonuna ekleyin ve isteği yürütmek için klavyenizdeki `Enter` tuşuna basın. İşlev tarafından döndürülen yanıtın tarayıcıda gösterildiğini görürsünüz.  
+1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `?name=<your_name>` Bu URL 'nin sonuna ekleyin ve isteği çalıştırmak Için ENTER 'a basın. 
 
     Aşağıdaki örnekte tarayıcıdaki yanıt gösterilmektedir:
 
@@ -100,7 +73,7 @@ Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
     İstek URL’si, işlevinize HTTP üzerinden erişmek için varsayılan olarak gerekli olan bir anahtar içerir.
 
-3. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. Önceki yürütme işleminden alınan izleme çıktısını görmek için, portalda işlevinize geri dönün ve ekranın altındaki oka tıklayarak **Günlükler**’i genişletin.
+1. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. İzleme çıktısını görmek için, portalda **Code + test** sayfasına dönüp sayfanın altındaki **Günlükler** okunu genişletin.
 
    ![Azure portalında İşlevler günlük görüntüleyicisi.](./media/functions-create-student-starter/function-view-logs.png)
 
@@ -120,13 +93,13 @@ Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
     * F # (.NET Core 2)
     * [Daha yüksek planlarda desteklenen dillere bakın](supported-languages.md)
 * Windows desteklenen tek işletim sistemidir.
-* Ölçek, her gün 60 dakika boyunca çalışan [bir ücretsiz katman örneğiyle](https://azure.microsoft.com/pricing/details/app-service/windows/) kısıtlıdır. HTTP trafiği alındığından ancak başka hiçbir işlem yapılmadığında 0 ' dan 1 ' e kadar örnek olarak ölçeklendirirsiniz.
+* Ölçek, her gün 60 dakika boyunca çalışan [bir ücretsiz katman örneğiyle](https://azure.microsoft.com/pricing/details/app-service/windows/) kısıtlıdır. HTTP trafiği alındığından, ancak başka bir şekilde 0 ' dan 1 ' e kadar örnek olarak ölçeklendirirsiniz.
 * Işlevler çalışma zamanının yalnızca [sürüm 2. x ve üzeri](functions-versions.md) sürümleri desteklenir.
 * Tüm geliştirici araçları, işlevleri düzenlenmek ve yayımlamak için desteklenir. Buna VS Code, Visual Studio, Azure CLı ve Azure portal dahildir. Portal dışında bir şey kullanmak isterseniz, önce portalda bir uygulama oluşturmanız ve ardından tercih ettiğiniz araçta bir dağıtım hedefi olarak bu uygulamayı seçmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HTTP ile tetiklenen basit bir işlevi olan bir işlev uygulaması oluşturdunuz! Artık yerel araçları, daha fazla dili, izlemeyi ve tümleştirmeleri inceleyebilirsiniz.
+Artık basit bir HTTP tetikleyici işlevi olan bir işlev uygulaması oluşturmayı tamamladınız. Ardından, yerel araçları, daha fazla dili, izlemeyi ve tümleştirmeleri inceleyebilirsiniz.
 
  * [Visual Studio kullanarak ilk işlevinizi oluşturma](./functions-create-your-first-function-visual-studio.md)
  * [Visual Studio Code kullanarak ilk işlevinizi oluşturma](./functions-create-first-function-vs-code.md)

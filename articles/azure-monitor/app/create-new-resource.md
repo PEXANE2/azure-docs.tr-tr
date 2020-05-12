@@ -3,12 +3,12 @@ title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537585"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200684"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -26,9 +26,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Adı**      | Benzersiz değer | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
-   | **Kaynak grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
-   | **Konum** | Doğu ABD | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
+   | **Adı**      | `Unique value` | İzlemekte olduğunuz uygulamayı tanımlayan ad. |
+   | **Kaynak grubu**     | `myResourceGroup`      | App Insights verilerini barındıracak yeni veya mevcut kaynak grubunun adı. |
+   | **Geli** | `East US` | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını görürsünüz. |
+   | **Kaynak modu** | `Classic` veya `Workspace-based` | Çalışma alanı tabanlı kaynaklar şu anda genel önizlemededir ve Application Insights telemetrinizi ortak bir Log Analytics çalışma alanına göndermenizi sağlar. Daha fazla bilgi için [çalışma alanı tabanlı kaynaklardaki makaleye](create-workspace-resource.md)bakın.
 
 > [!NOTE]
 > Aynı kaynak adını farklı kaynak grupları arasında kullanabilmeniz mümkün olsa da, genel olarak benzersiz bir ad kullanılması yararlı olabilir. Bu, gerekli sözdizimini basitleştirdiği için [çapraz kaynak sorguları gerçekleştirmeyi](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) planlıyorsanız yararlı olabilir.
@@ -102,7 +103,7 @@ Azure CLı komutlarına önizleme Application Insights erişmek için öncelikle
  az extension add -n application-insights
 ```
 
-`az extension add` Komutu çalıştırmazsanız şunları belirten bir hata iletisi görürsünüz:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Komutu çalıştırmazsanız `az extension add` , şu durumlarda bir hata iletisi görürsünüz:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Artık Application Insights kaynağınız oluşturmak için aşağıdakileri çalıştırabilirsiniz:
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526238"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115056"
 ---
 # <a name="classroom-labs-concepts"></a>Sınıf Laboratuvarları kavramları
 
@@ -50,7 +50,7 @@ Bu makalede Azure Lab Services içindeki farklı kullanıcı profilleri açıkla
 
 ### <a name="lab-account-owner"></a>Laboratuvar hesap sahibi
 
-Genellikle, bir kuruluşun bulut kaynaklarının, aynı zamanda Azure aboneliğinin sahibi olan BT yöneticisi, laboratuvar hesap sahibi olarak hareket eder ve aşağıdaki görevleri yerine getirir:
+Genellikle, kuruluşun Azure aboneliğinin sahibi olan bulut kaynakları için BT Yöneticisi, bir laboratuar hesabı sahibi görevi görür ve aşağıdaki görevleri yapar:
 
 - Kuruluşunuz için bir laboratuvar hesabı ayarlar.
 - Tüm laboratuvarlardaki ilkeleri yönetir ve yapılandırır.

@@ -1,18 +1,20 @@
 ---
 title: Linux ölçek kümesi şablonunda Konuk ölçümleriyle Azure otomatik ölçeklendirmeyi kullanma
 description: Linux sanal makine ölçek kümesi şablonunda Konuk ölçümleri kullanarak otomatik ölçeklendirmeyi nasıl kullanacağınızı öğrenin
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 8021b7b8feb6dc06fb2e48bc4e825200a1baad33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273656"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124814"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux ölçek kümesi şablonunda Konuk ölçümleri kullanarak otomatik ölçeklendirme
 
@@ -24,7 +26,7 @@ Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirm
 
 Önceki bir [makalede](virtual-machine-scale-sets-mvss-start.md) temel bir ölçek kümesi şablonu oluşturduk. Artık bu önceki şablonu kullanacağız ve konuk ölçümü tabanlı otomatik ölçeklendirme ile Linux ölçek kümesi dağıtan bir şablon oluşturacak şekilde değiştirirsiniz.
 
-İlk olarak, ve `storageAccountName` `storageAccountSasToken`için parametreleri ekleyin. Tanılama Aracısı, ölçüm verilerini bu depolama hesabındaki bir [tabloda](../cosmos-db/table-storage-how-to-use-dotnet.md) depolar. Linux Tanılama Aracısı sürüm 3,0 itibariyle, depolama erişim anahtarı kullanmak artık desteklenmemektedir. Bunun yerine bir [SAS belirteci](../storage/common/storage-dotnet-shared-access-signature-part-1.md)kullanın.
+İlk olarak, ve için parametreleri ekleyin `storageAccountName` `storageAccountSasToken` . Tanılama Aracısı, ölçüm verilerini bu depolama hesabındaki bir [tabloda](../cosmos-db/table-storage-how-to-use-dotnet.md) depolar. Linux Tanılama Aracısı sürüm 3,0 itibariyle, depolama erişim anahtarı kullanmak artık desteklenmemektedir. Bunun yerine bir [SAS belirteci](../storage/common/storage-dotnet-shared-access-signature-part-1.md)kullanın.
 
 ```diff
      },
@@ -40,7 +42,7 @@ Konak ölçümleri konak VM tarafından toplandığı için ek kurulum gerektirm
    },
 ```
 
-Sonra, ölçek kümesini `extensionProfile` tanılama uzantısını içerecek şekilde değiştirin. Bu yapılandırmada, ölçümlerin toplanacağı ölçek kümesinin kaynak KIMLIĞINI, Ayrıca ölçümleri depolamak için kullanılacak depolama hesabını ve SAS belirtecini belirtin. Ölçümlerin ne sıklıkta toplanduğunu (Bu durumda, her dakika) ve hangi ölçümlerin izleneceğini (Bu örnekte, kullanılan bellek yüzdesini) belirtin. Kullanılan bu yapılandırma ve ölçümler hakkında daha ayrıntılı bilgi için [Bu belgelere](../virtual-machines/linux/diagnostic-extension.md)bakın.
+Sonra, ölçek kümesini `extensionProfile` Tanılama uzantısını içerecek şekilde değiştirin. Bu yapılandırmada, ölçümlerin toplanacağı ölçek kümesinin kaynak KIMLIĞINI, Ayrıca ölçümleri depolamak için kullanılacak depolama hesabını ve SAS belirtecini belirtin. Ölçümlerin ne sıklıkta toplanduğunu (Bu durumda, her dakika) ve hangi ölçümlerin izleneceğini (Bu örnekte, kullanılan bellek yüzdesini) belirtin. Kullanılan bu yapılandırma ve ölçümler hakkında daha ayrıntılı bilgi için [Bu belgelere](../virtual-machines/linux/diagnostic-extension.md)bakın.
 
 ```diff
                  }
@@ -103,7 +105,7 @@ Sonra, ölçek kümesini `extensionProfile` tanılama uzantısını içerecek ş
        }
 ```
 
-Son olarak, bu `autoscaleSettings` ölçümlere göre otomatik ölçeklendirmeyi yapılandırmak için bir kaynak ekleyin. Bu kaynak, ölçek `dependsOn` kümesinin otomatik ölçeklendirmeyi denemeden önce mevcut olduğundan emin olmak için ölçek kümesine başvuran bir yan tümcesine sahiptir. Otomatik ölçeklendirme için farklı bir ölçüm seçerseniz, ' yi otomatik ölçeklendirme yapılandırmasındaki olarak `counterSpecifier` `metricName` tanılama uzantısı yapılandırmasından kullanırsınız. Otomatik ölçeklendirme yapılandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme en iyi uygulamaları](../azure-monitor/platform/autoscale-best-practices.md) ve [Azure izleyici REST API başvuru belgeleri](/rest/api/monitor/autoscalesettings).
+Son olarak, `autoscaleSettings` Bu ölçümlere göre otomatik ölçeklendirmeyi yapılandırmak için bir kaynak ekleyin. Bu kaynak, ölçek kümesinin `dependsOn` Otomatik ölçeklendirmeyi denemeden önce mevcut olduğundan emin olmak için ölçek kümesine başvuran bir yan tümcesine sahiptir. Otomatik ölçeklendirme için farklı bir ölçüm seçerseniz, ' yi `counterSpecifier` Otomatik ölçeklendirme yapılandırmasındaki olarak tanılama uzantısı yapılandırmasından kullanırsınız `metricName` . Otomatik ölçeklendirme yapılandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme en iyi uygulamaları](../azure-monitor/platform/autoscale-best-practices.md) ve [Azure izleyici REST API başvuru belgeleri](/rest/api/monitor/autoscalesettings).
 
 ```diff
 +    },

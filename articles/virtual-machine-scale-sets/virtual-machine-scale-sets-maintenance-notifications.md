@@ -1,19 +1,20 @@
 ---
 title: Azure 'da sanal makine ölçek kümeleri için bakım bildirimleri
 description: Azure 'da bakım bildirimlerini görüntüleyin ve sanal makine ölçek kümeleri için self servis bakımını başlatın.
-author: shants123
-tags: azure-service-management,azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 08/20/2019
-ms.author: shants
-ms.openlocfilehash: 53ebb7c4710c5455ef90701dc7e94f1b846a874a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062694"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200098"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için planlı bakım bildirimleri
 
@@ -111,7 +112,7 @@ Bakım başladıktan sonra, sanal makine ölçek kümesindeki etkilenen VM 'Ler 
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>PowerShell kullanarak bakım durumunu denetleme
 
-Sanal makine ölçek kümelerindeki VM 'Lerin bakım için zamanlandığını görmek için Azure PowerShell kullanabilirsiniz. Planlı bakım bilgileri, `-InstanceView` parametresini kullandığınızda [Get-azvmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) cmdlet 'i kullanılarak kullanılabilir.
+Sanal makine ölçek kümelerindeki VM 'Lerin bakım için zamanlandığını görmek için Azure PowerShell kullanabilirsiniz. Planlı bakım bilgileri, parametresini kullandığınızda [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) cmdlet 'i kullanılarak kullanılabilir `-InstanceView` .
  
 Bakım bilgileri yalnızca bakım planlandığından döndürülür. VM örneğini etkileyen bakım zamanlanmamışsa, cmdlet herhangi bir bakım bilgisi döndürmez. 
 
@@ -134,7 +135,7 @@ Aşağıdaki özellikler **MaintenanceRedeployStatus**altında döndürülür:
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>PowerShell kullanarak VM örneğiniz üzerinde bakım başlatma
 
-**IsCustomerInitiatedMaintenanceAllowed** **true**olarak ayarlandıysa, bir VM üzerinde bakım başlatabilirsiniz. `-PerformMaintenance` Parametresiyle [set-azvmss](/powershell/module/az.compute/set-azvmss) cmdlet 'ini kullanın.
+**IsCustomerInitiatedMaintenanceAllowed** **true**olarak ayarlandıysa, bir VM üzerinde bakım başlatabilirsiniz. Parametresiyle [set-AzVmss](/powershell/module/az.compute/set-azvmss) cmdlet 'ini kullanın `-PerformMaintenance` .
 
 ```powershell
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 

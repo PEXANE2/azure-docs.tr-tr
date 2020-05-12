@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801714"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196275"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -75,7 +75,7 @@ Evet.
 
 Azure Backup, Azure Backup Sunucusu ve DPM kullanılarak korunan dosyaların, klasörlerin ve uygulamaların yedeklenmesi için şu işletim sistemlerini destekler.
 
-**İşletim Sistemi** | **ISTEYIN** | **Bilgileri**
+**İşletim Sistemi** | **ISTEYIN** | **Ayrıntılar**
 --- | --- | ---
 İş İstasyonu | |
 Windows 10 64 bit | Enterprise, Pro, Home | Makinelerin en son hizmet paketlerini ve güncelleştirmeleri çalıştırması gerekir.
@@ -107,13 +107,13 @@ Windows 8 veya üzeri | 54.400 GB
 Windows 7 |1700 GB
 Windows Server 2012 veya üzeri | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Azure VM | 16 veri diski<br/> 16 + diskle (32 diske kadar) VM 'lerin sınırlı önizlemesine kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com <br><br> 32 TB'a kadar veri diski
+Azure VM | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>Veri kaynağı boyutu nasıl saptanır?
 
 Aşağıdaki tabloda, her bir veri kaynağı boyutunun nasıl belirlendiği açıklanmaktadır.
 
-**Veri kaynağı** | **Bilgileri**
+**Veri kaynağı** | **Ayrıntılar**
 --- | ---
 Birim |Yedeklenmekte olan tek bir birim VM'den yedeklenen verilerin miktarı.
 SQL Server veritabanı |Yedeklenmekte olan tek bir SQL veritabanının boyutu.

@@ -1,19 +1,20 @@
 ---
 title: Azure ölçek kümesi şablonunda özel bir görüntüye başvurma
 description: Var olan bir Azure sanal makine ölçek kümesi şablonuna nasıl özel görüntü ekleneceğini öğrenin
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: cynthn
+ms.author: cynthn
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: imaging
 ms.date: 04/26/2018
-ms.author: mimckitt
-ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273707"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124916"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Azure ölçek kümesi şablonuna özel görüntü ekleme
 
@@ -24,9 +25,9 @@ Bu makalede, [temel ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss
 
 ### <a name="creating-a-managed-disk-image"></a>Yönetilen disk görüntüsü oluşturma
 
-Zaten özel bir yönetilen disk görüntünüz (türünde `Microsoft.Compute/images`bir kaynağınız) varsa, bu bölümü atlayabilirsiniz.
+Zaten özel bir yönetilen disk görüntünüz (türünde bir kaynağınız `Microsoft.Compute/images` ) varsa, bu bölümü atlayabilirsiniz.
 
-İlk olarak, Azure `sourceImageVhdUri` depolama 'daki Genelleştirilmiş blob 'un dağıtım yapılacak özel görüntüyü içeren URI 'si olan bir parametre ekleyin.
+İlk olarak, `sourceImageVhdUri` Azure depolama 'daki Genelleştirilmiş blob 'un dağıtım yapılacak özel görüntüyü içeren URI 'si olan bir parametre ekleyin.
 
 
 ```diff
@@ -44,7 +45,7 @@ Zaten özel bir yönetilen disk görüntünüz (türünde `Microsoft.Compute/ima
    "variables": {},
 ```
 
-Ardından, URI `sourceImageVhdUri`konumunda bulunan Genelleştirilmiş blobu `Microsoft.Compute/images`temel alan yönetilen disk görüntüsü olan türünde bir kaynak ekleyin. Bu görüntü, onu kullanan ölçek kümesiyle aynı bölgede olmalıdır. Görüntünün özelliklerinde işletim sistemi türünü, Blobun konumunu ( `sourceImageVhdUri` parametresinden) ve depolama hesabı türünü belirtin:
+Ardından, `Microsoft.Compute/images` URI konumunda bulunan Genelleştirilmiş blobu temel alan yönetilen disk görüntüsü olan türünde bir kaynak ekleyin `sourceImageVhdUri` . Bu görüntü, onu kullanan ölçek kümesiyle aynı bölgede olmalıdır. Görüntünün özelliklerinde işletim sistemi türünü, Blobun konumunu ( `sourceImageVhdUri` parametresinden) ve depolama hesabı türünü belirtin:
 
 ```diff
    "resources": [
@@ -71,7 +72,7 @@ Ardından, URI `sourceImageVhdUri`konumunda bulunan Genelleştirilmiş blobu `Mi
 
 ```
 
-Ölçek kümesi kaynağında, ölçek kümesi bu görüntüden `dependsOn` dağıtmayı denemeden önce görüntünün oluşturulduğundan emin olmak için özel görüntüye başvuran bir yan tümce ekleyin:
+Ölçek kümesi kaynağında, `dependsOn` Ölçek kümesi bu görüntüden dağıtmayı denemeden önce görüntünün oluşturulduğundan emin olmak için özel görüntüye başvuran bir yan tümce ekleyin:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -88,7 +89,7 @@ Ardından, URI `sourceImageVhdUri`konumunda bulunan Genelleştirilmiş blobu `Mi
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Ölçek kümesi özelliklerini yönetilen disk görüntüsünü kullanacak şekilde değiştirme
 
-`imageReference` Ölçek `storageProfile`kümesinde, bir platform görüntüsünün Yayımcı, teklif, SKU 'su ve sürümünü belirtmek yerine, `id` `Microsoft.Compute/images` kaynağın şunu belirtin:
+`imageReference`Ölçek kümesinde `storageProfile` , bir platform görüntüsünün Yayımcı, teklif, SKU 'su ve sürümünü belirtmek yerine, kaynağın şunu belirtin `id` `Microsoft.Compute/images` :
 
 ```json
          "virtualMachineProfile": {
@@ -100,7 +101,7 @@ Ardından, URI `sourceImageVhdUri`konumunda bulunan Genelleştirilmiş blobu `Mi
            "osProfile": {
 ```
 
-Bu örnekte, aynı şablonda oluşturulan `resourceId` görüntünün kaynak kimliğini almak için işlevini kullanın. Yönetilen disk görüntüsünü önceden oluşturduysanız bunun yerine söz konusu görüntünün KIMLIĞINI sağlamanız gerekir. Bu KIMLIK şu biçimde olmalıdır: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+Bu örnekte, `resourceId` aynı şablonda oluşturulan görüntünün kaynak kimliğini almak için işlevini kullanın. Yönetilen disk görüntüsünü önceden oluşturduysanız bunun yerine söz konusu görüntünün KIMLIĞINI sağlamanız gerekir. Bu KIMLIK şu biçimde olmalıdır: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>` .
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
