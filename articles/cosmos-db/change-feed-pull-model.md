@@ -1,19 +1,19 @@
 ---
-title: Akış çekme modelini Değiştir
+title: Değişiklik akışı çekme modeli
 description: Değişiklik akışını ve çekme modeli ve değişiklik akışı Işlemcisi arasındaki farkları okumak için Azure Cosmos DB değişiklik akışı çekme modelini nasıl kullanacağınızı öğrenin
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2854e3d92462ced3958afd1cf1e7e99d7e9892f6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984687"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116722"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
 
@@ -24,23 +24,23 @@ Değişiklik akışı çekme modeliyle birlikte Azure Cosmos DB değişiklik ak�
 
 ## <a name="consuming-an-entire-containers-changes"></a>Kapsayıcının tüm değişikliklerinin kullanılması
 
-Çekme modelini kullanarak değişiklik `FeedIterator` akışını işlemek için bir oluşturabilirsiniz. İlk olarak bir `FeedIterator`oluşturduğunuzda, içinde isteğe bağlı `StartTime` olarak belirtebilirsiniz. `ChangeFeedRequestOptions` Belirtilmediğinde, belirtilmemişse geçerli saat `StartTime` olur.
+`FeedIterator`Çekme modelini kullanarak değişiklik akışını işlemek için bir oluşturabilirsiniz. İlk olarak bir oluşturduğunuzda, `FeedIterator` içinde isteğe bağlı olarak belirtebilirsiniz `StartTime` `ChangeFeedRequestOptions` . Belirtilmediğinde, belirtilmemişse `StartTime` geçerli saat olur.
 
-İki `FeedIterator` şekilde sunulur. Aşağıdaki örnek varlık nesneleri döndüren örneklere ek olarak, destek ile `Stream` yanıtı da elde edebilirsiniz. Akışlar, verileri ilk seri durumdan çıkmadan, istemci kaynakları üzerinde kaydederek okuyabilmeniz için izin verir.
+`FeedIterator`İki şekilde sunulur. Aşağıdaki örnek varlık nesneleri döndüren örneklere ek olarak, destek ile yanıtı da elde edebilirsiniz `Stream` . Akışlar, verileri ilk seri durumdan çıkmadan, istemci kaynakları üzerinde kaydederek okuyabilmeniz için izin verir.
 
-İşte, bu durumda bir `FeedIterator` `User` nesnesi olan varlık nesnelerini döndüren bir örnek:
+İşte `FeedIterator` , bu durumda bir nesnesi olan varlık nesnelerini döndüren bir örnek `User` :
 
 ```csharp
 FeedIterator<User> iteratorWithPOCOS = container.GetChangeFeedIterator<User>();
 ```
 
-Aşağıda şunu döndüren bir `FeedIterator` örneği elde etmek için bir örnek `Stream`verilmiştir:
+Aşağıda şunu döndüren bir örneği elde etmek için bir örnek verilmiştir `FeedIterator` `Stream` :
 
 ```csharp
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 ```
 
-Bir `FeedIterator`kullanarak, kapsayıcının tüm değişiklik akışını kendi hızınızda kolayca işleyebilirsiniz. Bir örneği aşağıda verilmiştir:
+Bir kullanarak `FeedIterator` , kapsayıcının tüm değişiklik akışını kendi hızınızda kolayca işleyebilirsiniz. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -58,7 +58,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 
 ## <a name="consuming-a-partition-keys-changes"></a>Bölüm anahtarının değişikliklerini kullanma
 
-Bazı durumlarda, yalnızca belirli bir bölüm anahtarının değişikliklerini işlemek isteyebilirsiniz. Belirli bir bölüm anahtarı `FeedIterator` için bir elde edebilir ve değişiklikleri tüm kapsayıcı için kullanabileceğiniz şekilde işleyebilirsiniz:
+Bazı durumlarda, yalnızca belirli bir bölüm anahtarının değişikliklerini işlemek isteyebilirsiniz. `FeedIterator`Belirli bir bölüm anahtarı için bir elde edebilir ve değişiklikleri tüm kapsayıcı için kullanabileceğiniz şekilde işleyebilirsiniz:
 
 ```csharp
 FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -76,7 +76,7 @@ while (iteratorForThePartitionKey.HasMoreResults)
 
 ## <a name="using-feedrange-for-parallelization"></a>Paralelleştirme için FeedRange kullanma
 
-[Değişiklik akışı işlemcisinde](change-feed-processor.md), çalışma otomatik olarak birden çok tüketiciye yayılır. Değişiklik akışı Çekme modelinde, değişiklik akışı işlemesini paralel hale getirmek `FeedRange` için kullanabilirsiniz. Bir `FeedRange` bölüm anahtarı değerleri aralığını temsil eder.
+[Değişiklik akışı işlemcisinde](change-feed-processor.md), çalışma otomatik olarak birden çok tüketiciye yayılır. Değişiklik akışı Çekme modelinde, `FeedRange` değişiklik akışı işlemesini paralel hale getirmek için kullanabilirsiniz. Bir `FeedRange` bölüm anahtarı değerleri aralığını temsil eder.
 
 Bu, Kapsayıcınız için aralıkların bir listesinin nasıl alınacağını gösteren bir örnek aşağıda verilmiştir:
 
@@ -86,11 +86,11 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 
 Kapsayıcınız için FeedRanges listesini aldığınızda, `FeedRange` [fiziksel bölüm](partition-data.md#physical-partitions)başına bir tane elde edersiniz.
 
-Bir `FeedRange`kullanarak, birden fazla makinede veya iş `FeedIterator` parçacığında değişiklik akışı işlemesini paralel hale getirmek için bir oluşturabilirsiniz. Tüm kapsayıcının tek `FeedIterator` bir için nasıl alınacağını gösteren önceki örneğin aksine, değişiklik akışını paralel olarak işleyebilen birden fazla `FeedRange` Fede elde etmek için kullanabilirsiniz.
+Bir kullanarak `FeedRange` , `FeedIterator` birden fazla makinede veya iş parçacığında değişiklik akışı işlemesini paralel hale getirmek için bir oluşturabilirsiniz. Tüm kapsayıcının tek bir için nasıl alınacağını gösteren önceki örneğin aksine, `FeedIterator` `FeedRange` değişiklik akışını paralel olarak işleyebilen birden fazla Fede elde etmek için kullanabilirsiniz.
 
 FeedRanges kullanmak istediğiniz durumda, FeedRanges alıp bu makinelere dağıtan bir Orchestrator işleminiz olması gerekir. Bu dağıtım şu olabilir:
 
-* Bu `FeedRange.ToJsonString` dize değerini kullanarak ve dağıtarak. Tüketiciler bu değeri şu şekilde kullanabilir`FeedRange.FromJsonString`
+* `FeedRange.ToJsonString`Bu dize değerini kullanarak ve dağıtarak. Tüketiciler bu değeri şu şekilde kullanabilir`FeedRange.FromJsonString`
 * Dağıtım sürecde ise, `FeedRange` nesne başvurusunu geçirerek.
 
 Aşağıda, paralel olarak okunan iki kuramsal ayrı makine kullanarak kapsayıcının değişiklik akışından nasıl okunacağını gösteren bir örnek verilmiştir:
@@ -127,7 +127,7 @@ while (iteratorB.HasMoreResults)
 
 ## <a name="saving-continuation-tokens"></a>Devamlılık belirteçleri kaydediliyor
 
-Devamlılık belirteci oluşturarak sitenizin `FeedIterator` konumunu kaydedebilirsiniz. Devamlılık belirteci, FeedIterator 'ın son işlenen değişikliklerinin izlenmesini tutan bir dize değeridir. Bu, `FeedIterator` daha sonra bu noktada sürdürülmesine izin verir. Aşağıdaki kod, kapsayıcı oluşturulduktan sonra değişiklik akışını okuyacaktır. Daha fazla değişiklik yoksa, değişiklik akışı tüketiminin daha sonra devam edebilmesi için bir devamlılık belirteci kalıcı hale gelir.
+`FeedIterator`Devamlılık belirteci oluşturarak sitenizin konumunu kaydedebilirsiniz. Devamlılık belirteci, FeedIterator 'ın son işlenen değişikliklerinin izlenmesini tutan bir dize değeridir. Bu, `FeedIterator` daha sonra bu noktada sürdürülmesine izin verir. Aşağıdaki kod, kapsayıcı oluşturulduktan sonra değişiklik akışını okuyacaktır. Daha fazla değişiklik yoksa, değişiklik akışı tüketiminin daha sonra devam edebilmesi için bir devamlılık belirteci kalıcı hale gelir.
 
 ```csharp
 FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -137,9 +137,9 @@ string continuation = null;
 while (iterator.HasMoreResults)
 {
    FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = orders.ContinuationToken;
+   continuation = users.ContinuationToken;
 
-   foreach (User user in Users)
+   foreach (User user in users)
     {
         Console.WriteLine($"Detected change for user with id {user.id}");
     }

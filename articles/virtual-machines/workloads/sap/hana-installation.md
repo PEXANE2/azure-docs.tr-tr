@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617087"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117130"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -90,7 +90,7 @@ SLES 'de SAP HANA dağıtımıyla ilgili çok sayıda faydalı kaynak (yüksek o
 Aşağıda SUSE ile ilgili bağlantılarda ek ve yararlı SAP verilmiştir:
 
 - [SUSE Linux sitesinde SAP HANA](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [SAP için en iyi uygulamalar: sıraya alma çoğaltması-SUSE Linux Enterprise 12 üzerinde SAP NetWeaver](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [SAP için en iyi uygulamalar: sıraya alma çoğaltması-SUSE Linux Enterprise 12 üzerinde SAP NetWeaver](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)
 - [Clamsap – SAP IÇIN SLES Virus koruması](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (SAP uygulamaları için SLES 12 dahil)
 
 Aşağıda, SLES 12 ' de SAP HANA uygulamak için geçerli olan SAP destek notları verilmiştir:
@@ -117,7 +117,7 @@ Aşağıda, Red hat üzerinde SAP HANA uygulamak için geçerli olan SAP destek 
 
 ### <a name="time-synchronization"></a>Zaman eşitleme
 
-SAP NetWeaver mimarisinde oluşturulan SAP uygulamaları, SAP sistemini oluşturan çeşitli bileşenlere yönelik zaman farklılıklarına duyarlıdır. ZDATE\_büyük\_saat\_farkı hata başlığına sahip SAP ABAP kısa dökümleri büyük olasılıkla tanıdık gelecektir. Çünkü bu kısa dökümler, farklı sunucuların veya VM 'lerin sistem saatinin çok fazla ayrı olarak çizmediği durumlarda görüntülenmesidir.
+SAP NetWeaver mimarisinde oluşturulan SAP uygulamaları, SAP sistemini oluşturan çeşitli bileşenlere yönelik zaman farklılıklarına duyarlıdır. ZDATE büyük saat farkı hata başlığına sahip SAP ABAP kısa \_ dökümleri \_ \_ büyük olasılıkla tanıdık gelecektir. Çünkü bu kısa dökümler, farklı sunucuların veya VM 'lerin sistem saatinin çok fazla ayrı olarak çizmediği durumlarda görüntülenmesidir.
 
 Azure 'da (büyük örnekler) SAP HANA için, Azure 'da gerçekleştirilen zaman eşitlemesi, büyük örnek Damgalarında işlem birimlerine uygulanmaz. Bu eşitleme, yerel Azure VM 'lerinde SAP uygulamalarının çalıştırılması için geçerli değildir, çünkü Azure bir sistem zamanının doğru şekilde eşitlendiğinden emin olmanızı sağlar. 
 
@@ -136,7 +136,7 @@ Mimarinizin Ethernet ayrıntıları hakkında daha fazla bilgi için bkz. [HLI d
 
 ## <a name="storage"></a>Depolama
 
-Azure 'da SAP HANA için depolama düzeni (büyük örnekler), SAP tarafından önerilen yönergeler aracılığıyla Azure `service management` 'da SAP HANA tarafından yapılandırılır. Bu yönergeler [SAP HANA depolama gereksinimleri](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) teknik incelemesi bölümünde belgelenmiştir. 
+Azure 'da SAP HANA için depolama düzeni (büyük örnekler), `service management` SAP tarafından önerilen yönergeler aracılığıyla Azure 'da SAP HANA tarafından yapılandırılır. Bu yönergeler [SAP HANA depolama gereksinimleri](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) teknik incelemesi bölümünde belgelenmiştir. 
 
 Farklı HANA büyük örnekler SKU 'Larının bulunduğu farklı birimlerin kaba boyutları, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)açıklanmaktadır.
 
@@ -144,8 +144,8 @@ Depolama birimlerinin adlandırma kuralları aşağıdaki tabloda listelenmişti
 
 | Depolama alanı kullanımı | Bağlama adı | Birim adı | 
 | --- | --- | ---|
-| HANA verileri | /Hana/Data/SID/mnt0000\<a> | Depolama IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA günlüğü | /Hana/log/SID/mnt0000\<a> | Depolama IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA verileri | /Hana/Data/SID/mnt0000 \< a> | Depolama IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA günlüğü | /Hana/log/SID/mnt0000 \< a> | Depolama IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA günlük yedeklemesi | /Hana/log/Backups | Depolama IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA paylaşılan | /hana/shared/SID | Depolama IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /Usr/SAP/SID | Depolama IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -164,7 +164,7 @@ HANA/günlük/yedekleme biriminin veritabanı yedeklemeleri için birim olmamas�
 
 Sağlanmış depolama alanının yanı sıra, 1 TB 'lik artışlarla ek depolama kapasitesi satın alabilirsiniz. Bu ek depolama alanı, bir HANA büyük örneğine yeni birimler olarak eklenebilir.
 
-Azure `service management`'da SAP HANA ekleme sırasında, müşteri sıdaddm kullanıcısı ve sapsys grubu için BIR kullanıcı KIMLIĞI (UID) ve Grup KIMLIĞI (GID) belirtir (örneğin: 1.000.500). SAP HANA sisteminin yüklenmesi sırasında aynı değerleri kullanmanız gerekir. Bir birimde birden çok HANA örneği dağıtmak istiyorsanız, birden çok birim kümesi (her örnek için bir küme) alırsınız. Sonuç olarak, dağıtım zamanında şunu tanımlamanız gerekir:
+Azure 'da SAP HANA ekleme sırasında `service management` , müşteri sıdaddm kullanıcısı ve sapsys grubu için bir kullanıcı kimliği (UID) ve grup kimliği (GID) belirtir (örneğin: 1.000.500). SAP HANA sisteminin yüklenmesi sırasında aynı değerleri kullanmanız gerekir. Bir birimde birden çok HANA örneği dağıtmak istiyorsanız, birden çok birim kümesi (her örnek için bir küme) alırsınız. Sonuç olarak, dağıtım zamanında şunu tanımlamanız gerekir:
 
 - Farklı HANA örneklerinin SID 'SI (sıdaddm bundan türetilir).
 - Farklı HANA örneklerinin bellek boyutları. Örnek başına bellek boyutu, her bir birim kümesindeki birimlerin boyutunu tanımlar.

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7f3eaa54ecb39922a155e2ea65e15d38f2b138e4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615311"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117436"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -84,7 +84,7 @@ VM 'Leri sağlamak için önerilen yol, **Windows sanal masaüstü konak havuzu 
 
 Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu yönergeleri izleyin.
 
-1. **Denetim Masası** > **Programlar** > **Programlar ve Özellikler ' i**denetleyerek iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
+1. **Denetim Masası**  >  **Programlar**  >  **Programlar ve Özellikler ' i**denetleyerek iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
 2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlog.log**konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
 3. **C:\windows\temp\scriptlog.log** dosyası varsa, açın ve hata iletilerini denetleyin.
 
@@ -237,7 +237,7 @@ Düzeltmeyi çalıştırmak için kullanılan VM 'nin, hatalı çalışan yan ya
 Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki yönergeleri izleyin:
 
 1. Standart Uzak Masaüstü Protokolü (RDP) ile, bu, düzeltmesinin uygulanacağı VM 'ye bağlanın.
-2. PsExec 'yi şuradan https://docs.microsoft.com/sysinternals/downloads/psexecindirin.
+2. PsExec 'yi şuradan indirin https://docs.microsoft.com/sysinternals/downloads/psexec .
 3. İndirilen dosyayı sıkıştırmayı açın.
 4. Komut istemi 'ni yerel yönetici olarak başlatın.
 5. PsExec 'nin sıkıştırısaklandığı klasöre gidin.
@@ -313,7 +313,7 @@ Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleşti
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
 
-VM 'de Grup İlkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenlerine** > giderek**Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı** > **lisanslama** > **Uzak Masaüstü lisans modunu ayarlayarak**Grup İlkesi ayarını kontrol edin. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
+VM 'de Grup İlkesi düzenleyicisini açıp **Yönetim Şablonları**  >  **Windows bileşenlerine**giderek  >  **Uzak Masaüstü Hizmetleri**  >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **lisanslama**  >  **Uzak Masaüstü lisans modunu ayarlayarak**Grup İlkesi ayarını kontrol edin. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
 
 >[!NOTE]
 >Etki alanınız aracılığıyla Grup İlkesi ayarlarsanız, bu Windows 10 Kurumsal Çoklu oturum VM 'lerini hedefleyen ilkelerde bu ayarı devre dışı bırakın.
@@ -338,6 +338,12 @@ Sürüm numaranız "1809" ifadesini görürseniz, [KB4516077 güncelleştirmesin
 ### <a name="version-1903"></a>Sürüm 1903
 
 Azure galerisinden Windows 10, sürüm 1903 görüntüsünün en son sürümüyle konak işletim sistemini yeniden dağıtın.
+
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>Bir güvenlik hatası nedeniyle uzak BILGISAYARA bağlanamıyoruz
+
+Kullanıcılarınız "bir hata görürseniz," bir güvenlik hatası nedeniyle uzak BILGISAYARA bağlanamıyoruz. Bu durum devam ederse, "varsayılan RDP 'yi değiştiren mevcut ilkeleri doğrulama" konusunda yardım için yöneticinize veya teknik desteğe sorun. Bu hatanın görünmesine neden olabilecek bir ilke, "Uzak Masaüstü Hizmetleri güvenlik ilkesinde oturum açmaya Izin ver" dir.
+
+Bu ilke hakkında daha fazla bilgi edinmek için bkz. [Uzak Masaüstü Hizmetleri aracılığıyla oturum açmaya Izin verme](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

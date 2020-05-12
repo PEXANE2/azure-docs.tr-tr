@@ -2,20 +2,20 @@
 title: Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
 description: App Service ' de barındırılan bir API 'yi PowerApps ve Microsoft Flow üzerinde kullanıma sunma konusuna genel bakış
 ms.topic: conceptual
-ms.date: 12/15/2017
+ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233084"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115838"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure 'da barındırılan bir API 'yi PowerApps ve Microsoft Flow dışa aktarma
 
 [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) , verilerinize bağlanan ve platformlar arasında çalışan özel iş uygulamaları oluşturmaya ve kullanmaya yönelik bir hizmettir. [Microsoft Flow](/learn/modules/get-started-with-flow/index) , sık kullandığınız uygulamalar ve hizmetler arasında iş akışlarını ve iş süreçlerini otomatikleştirmenizi kolaylaştırır. Hem PowerApps hem de Microsoft Flow, Office 365, Dynamics 365, Salesforce gibi veri kaynaklarına yönelik çeşitli yerleşik bağlayıcılarla birlikte gelir. Bazı durumlarda, uygulama ve akış oluşturucuları, kuruluşları tarafından oluşturulan veri kaynaklarına ve API 'lere bağlanmak de ister.
 
-Benzer şekilde, API 'Lerini bir kuruluşta daha geniş hale getirmek isteyen geliştiriciler, API 'Lerinin uygulama ve akış oluşturucuları tarafından kullanılabilmesini sağlayabilir. Bu konu başlığı altında, [Azure işlevleri](../azure-functions/functions-overview.md) veya [Azure App Service](../app-service/overview.md)ile oluşturulmuş bir API 'nin nasıl dışarı aktarılacağı gösterilmektedir. Oluşturulan API, PowerApps 'te kullanılan *özel bir bağlayıcı*olur ve tıpkı yerleşik bağlayıcı gibi Microsoft Flow.
+Benzer şekilde, API 'Lerini bir kuruluşta daha geniş hale getirmek isteyen geliştiriciler, API 'Lerinin uygulama ve akış oluşturucuları tarafından kullanılabilmesini sağlayabilir. Bu makalede, [Azure işlevleri](../azure-functions/functions-overview.md) veya [Azure App Service](../app-service/overview.md)ile oluşturulmuş bir API 'yi dışarı aktarma işlemi gösterilmektedir. Oluşturulan API, PowerApps 'te kullanılan *özel bir bağlayıcı*olur ve tıpkı yerleşik bağlayıcı gibi Microsoft Flow.
 
 > [!IMPORTANT]
 > Bu makalede gösterilen API tanımı işlevselliği yalnızca [Azure işlevleri çalışma zamanı ve App Services uygulamalarının sürüm 1. x](functions-versions.md#creating-1x-apps) 'i için desteklenir. 2. x Işlevleri, Openapı tanımlarını oluşturmak ve sürdürmek için API Management ile tümleşir. Daha fazla bilgi edinmek için bkz. [Azure API Management bir işlev Için Openapı tanımı oluşturma](functions-openapi-definition.md). 
@@ -28,25 +28,21 @@ Bir API 'yi dışarı aktarmadan önce, bir Openapı tanımı (eski adıyla [Swa
 
 API tanımını dışarı aktarmak için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)Azure işlevleriniz veya başka bir App Service uygulamasına gidin.
+1. [Azure Portal](https://portal.azure.com), işlev uygulamanıza veya bir App Service uygulamasına gidin.
 
-    Azure Işlevleri 'ni kullanıyorsanız, işlev uygulamanızı seçin, **platform özellikleri**' ni ve ardından **API tanımı**' nı seçin.
+    Sol taraftaki menüden **API**altında **API tanımı**' nı seçin.
 
-    ![Azure Işlevleri API tanımı](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
+    :::image type="content" source="media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png" alt-text="Azure Işlevleri API tanımı":::
 
-    Azure App Service kullanıyorsanız, ayarlar listesinden **API tanımı** ' nı seçin.
-
-    ![App Service API tanımı](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
-
-2. **PowerApps 'e ver + Microsoft Flow** düğmesi kullanılabilir olmalıdır (yoksa, önce bir openapı tanımı oluşturmanız gerekir). Dışarı aktarma işlemine başlamak için bu düğmeye tıklayın.
+2. **PowerApps 'e ver + Microsoft Flow** düğmesi kullanılabilir olmalıdır (yoksa, önce bir openapı tanımı oluşturmanız gerekir). Dışarı aktarma işlemine başlamak için bu düğmeyi seçin.
 
     ![PowerApps + Microsoft Flow düğmesine aktar](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
 
 3. **Dışarı aktarma modunu**seçin:
 
-    **Express** , Azure Portal içinden özel bağlayıcı oluşturmanıza olanak sağlar. PowerApps veya Microsoft Flow oturum açmanızı ve hedef ortamda bağlayıcı oluşturma iznine sahip olmanızı gerektirir. Bu iki gereksinim karşılanabileceği durumlarda önerilen yaklaşım budur. Bu modu kullanıyorsanız aşağıdaki [hızlı dışarı aktarma yönergelerini kullanın](#express) ' ı izleyin.
+    **Express** , Azure Portal içinden özel bağlayıcı oluşturmanıza olanak sağlar. PowerApps veya Microsoft Flow oturum açmanızı ve hedef ortamda bağlayıcı oluşturma iznine sahip olmanızı gerektirir. Bu iki gereksinim karşılanabileceği durumlarda bu yaklaşım önerilir. Bu modu kullanıyorsanız aşağıdaki [hızlı dışarı aktarma yönergelerini kullanın](#express) ' ı izleyin.
 
-    **El ile** , PowerApps veya Microsoft Flow portallarını kullanarak IÇERI aktardığınız API tanımını dışarı aktarmanızı sağlar. Bu, Azure kullanıcısı ve bağlayıcı oluşturma izni olan kullanıcı farklı insanlardır ya da bağlayıcının başka bir Azure kiracısında oluşturulması gerekiyorsa önerilen yaklaşımdır. Bu modu kullanıyorsanız aşağıdaki [el ile dışarı aktarma yönergelerini kullanın](#manual) .
+    **El ile** , PowerApps veya Microsoft Flow portallarını kullanarak IÇERI aktardığınız API tanımını dışarı aktarmanızı sağlar. Bu yaklaşım, Azure kullanıcısı ve bağlayıcı oluşturma izni olan kullanıcı farklı kişilerse ya da bağlayıcının başka bir Azure kiracısında oluşturulması gerekiyorsa önerilir. Bu modu kullanıyorsanız aşağıdaki [el ile dışarı aktarma yönergelerini kullanın](#manual) .
 
     ![Dışarı aktarma modu](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -81,7 +77,7 @@ Dışarı aktarmayı **el ile** gerçekleştirmek için şu adımları izleyin:
  
     ![PowerApps ve Microsoft Flow el ile dışarı aktarma](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
  
-2. API tanımınızda herhangi bir güvenlik tanımı varsa, bunlar adım #2 ' de çağrılır. İçeri aktarma sırasında PowerApps ve Microsoft Flow bunları algılar ve güvenlik bilgilerini ister. Bir sonraki bölümde kullanılmak üzere her tanım ile ilgili kimlik bilgilerini toplayın. Daha fazla bilgi için bkz. [kimlik doğrulama türünü belirtin](#auth) .
+2. API tanımınızda herhangi bir güvenlik tanımı varsa, bu tanımlar adım #2 ' de çağrılır. İçeri aktarma sırasında PowerApps ve Microsoft Flow bu tanımları algılar ve güvenlik bilgilerini ister. Bir sonraki bölümde kullanılmak üzere her tanım ile ilgili kimlik bilgilerini toplayın. Daha fazla bilgi için bkz. [kimlik doğrulama türünü belirtin](#auth) .
 
     ![El ile dışarı aktarma için güvenlik](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
 
@@ -117,7 +113,7 @@ API tanımını PowerApps ve Microsoft Flow aktarmak için şu adımları izleyi
 
     ![Tanımlar sekmesi](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Bu örnekte adlı `CalculateCosts`bir işlem vardır. **Description**gibi metaveri, openapı dosyasından gelir.
+    Bu örnekte adlı bir işlem vardır `CalculateCosts` . **Description**gibi metaveri, openapı dosyasından gelir.
 
 7. Sayfanın üst kısmındaki **bağlayıcı oluştur** ' a tıklayın.
 
@@ -143,29 +139,29 @@ Dışa aktarma sırasında, PowerApps ve Microsoft Flow kullanıcıların kimli�
 Bu bölüm **Express** modunda desteklenen kimlik doğrulama türlerini, Azure Active Directory ve genel OAuth 2,0 ' i içerir. PowerApps ve Microsoft Flow Dropbox, Facebook ve SalesForce gibi belirli hizmetler için de temel kimlik doğrulamasını ve OAuth 2,0 'yi destekler.
 
 ### <a name="api-key"></a>API anahtarı
-Bir API anahtarı kullanırken, bağlayıcınızın kullanıcılarına bir bağlantı oluşturduklarında anahtarı sağlaması istenir. Hangi anahtarın gerekli olduğunu anlamalarına yardımcı olmak için bir API anahtarı adı belirtirsiniz. Önceki örnekte, bu adı `API Key (contact meganb@contoso.com)` , insanların API anahtarı hakkında nereden bilgi alınacağını bilmesi için kullanırız. Azure Işlevleri için anahtar, genellikle işlev uygulaması içindeki çeşitli işlevleri kapsayan ana bilgisayar anahtarlarından biridir.
+Bir API anahtarı kullanırken, bağlayıcınızın kullanıcılarına bir bağlantı oluşturduklarında anahtarı sağlaması istenir. Hangi anahtarın gerekli olduğunu anlamalarına yardımcı olmak için bir API anahtarı adı belirtirsiniz. Önceki örnekte, bu adı, `API Key (contact meganb@contoso.com)` Insanların API anahtarı hakkında nereden bilgi alınacağını bilmesi için kullanırız. Azure Işlevleri için anahtar, genellikle işlev uygulaması içindeki çeşitli işlevleri kapsayan ana bilgisayar anahtarlarından biridir.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Azure AD kullanırken iki Azure AD uygulama kaydı gerekir: biri API kendisi için ve diğeri özel bağlayıcı için:
 
 - API 'nin kaydını yapılandırmak için [App Service kimlik doğrulaması/yetkilendirme](../app-service/configure-authentication-provider-aad.md) özelliğini kullanın.
 
-- Bağlayıcının kaydını yapılandırmak için, [Azure AD uygulaması ekleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bölümündeki adımları izleyin. Kayıt, API 'nize atanmış erişime ve yanıt URL 'sine sahip olmalıdır `https://msmanaged-na.consent.azure-apim.net/redirect`. 
+- Bağlayıcının kaydını yapılandırmak için, [Azure AD uygulaması ekleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bölümündeki adımları izleyin. Kayıt, API 'nize atanmış erişime ve yanıt URL 'sine sahip olmalıdır `https://msmanaged-na.consent.azure-apim.net/redirect` . 
 
 Daha fazla bilgi için bkz. [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) IÇIN Azure AD kayıt örnekleri ve [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Bu örnekler, API olarak Azure Resource Manager kullanır; adımları izlerseniz API 'nizi değiştirin.
 
 Aşağıdaki yapılandırma değerleri gereklidir:
 - **ISTEMCI kimliği** -bağlayıcınızın Istemci KIMLIĞI Azure ad kaydı
 - **İstemci gizli anahtarı** -bağlayıcınızın Istemci sırrı Azure ad kaydı
-- **Oturum açma URL 'si** -Azure AD 'nin temel URL 'si. Azure 'da bu genellikle `https://login.windows.net`olur.
-- **KIRACı kimliği** -oturum açma için kullanılacak KIRACıNıN kimliği. Bu, "ortak" ya da bağlayıcının oluşturulduğu kiracının KIMLIĞI olmalıdır.
+- **Oturum açma URL 'si** -Azure AD 'nin temel URL 'si. Azure 'da genellikle `https://login.windows.net` .
+- **KIRACı kimliği** -oturum açma için kullanılacak KIRACıNıN kimliği. Bu KIMLIK "ortak" ya da bağlayıcının oluşturulduğu kiracının KIMLIĞI olmalıdır.
 - **Kaynak URL 'si** -API 'Niz IÇIN Azure ad kaydı 'nın kaynak URL 'si
 
 > [!IMPORTANT]
 > Başka biri de API tanımını PowerApps 'e aktarabilir ve el ile akışının bir parçası olarak Microsoft Flow, bu istemcilere *bağlayıcı kaydının*istemci kimliği ve istemci GIZLILIĞINI ve API 'NIZIN kaynak URL 'sini sağlamanız gerekir. Bu parolaların güvenli şekilde yönetildiğinden emin olun. **API 'nin güvenlik kimlik bilgilerini paylaşmayın.**
 
 ### <a name="generic-oauth-20"></a>Genel OAuth 2.0
-Genel OAuth 2,0 kullanılırken, herhangi bir OAuth 2,0 sağlayıcısıyla tümleştirilebilir. Bu, yerel olarak desteklenmeyen özel sağlayıcılarla çalışmanıza olanak sağlar.
+Genel OAuth 2,0 kullanılırken, herhangi bir OAuth 2,0 sağlayıcısıyla tümleştirilebilir. Bunun yapılması, yerel olarak desteklenmeyen özel sağlayıcılarla çalışmanıza olanak sağlar.
 
 Aşağıdaki yapılandırma değerleri gereklidir:
 - **ISTEMCI kimliği** -OAuth 2,0 istemci kimliği

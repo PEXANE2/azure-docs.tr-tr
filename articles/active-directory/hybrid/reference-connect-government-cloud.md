@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Azure Kamu için karma kimlik konuları'
-description: Kamu bulutuyla Azure AD Connect dağıtmaya yönelik özel konular.
+title: 'Azure AD Connect: Azure Kamu bulutunda karma kimlik konuları'
+description: Azure Kamu bulutuyla Azure AD Connect dağıtmaya yönelik özel konular.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,69 +11,96 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ad28beb68afb5207e7b36c5d76c4dac808c5114
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acdc99ca50255bd9b75828f0a051f364c5218471
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81378931"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115498"
 ---
-# <a name="hybrid-identity-considerations-for-azure-government"></a>Azure Kamu planlarında hibrit kimlik hakkında dikkate alınması gerekenler 
-Aşağıdaki belgede, Azure Kamu bulutu ile hibrit bir ortam uygulamayla ilgili konular açıklanmaktadır.  Bu bilgiler, Azure Kamu bulutuyla çalışan yöneticiler ve Mimarlar için başvuru olarak sağlanır.  
-> [!NOTE] 
-> Şirket içi bir AD ortamını Azure governemnt bulutu ile tümleştirebilmek için [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)en son sürümüne yükseltmeniz gerekir. 
+# <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
 
-> [!NOTE] 
-> ABD kamu DoD uç noktalarının tam listesi için [belgelere](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) bakın 
+Bu makalede, karma bir ortamı Microsoft Azure Kamu bulutu ile tümleştirmeyle ilgili konular açıklanmaktadır. Bu bilgiler, Azure Kamu bulutuyla çalışan yöneticiler ve Mimarlar için bir başvuru olarak sağlanır.
 
-## <a name="pass-through-authentication"></a>Geçişli kimlik doğrulaması 
-Doğrudan kimlik doğrulama (PTA) ve Azure Kamu Bulutu 'nın uygulanması için aşağıdaki bilgiler verilmiştir.
-
-### <a name="allow-access-to-urls"></a>URL 'lere erişime izin ver  
-Doğrudan kimlik doğrulama aracısını dağıtılmadan önce sunucularınız ve Azure AD arasında bir güvenlik duvarı olup olmadığını doğrulayın. Güvenlik duvarınız veya ara sunucunuz DNS beyaz listeye izin veriyorsa aşağıdaki bağlantıları ekleyin: 
 > [!NOTE]
-> Aşağıdaki kılavuz, Azure Kamu ortamları için [uygulama proxy bağlayıcısını](https://aka.ms/whyappproxy) yüklemeye de yöneliktir.
+> Şirket içi Microsoft Azure Active Directory (Azure AD) ortamını Azure Kamu bulutu ile bütünleştirmek için en son [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)sürümüne yükseltmeniz gerekir.
+
+Savunma uç noktalarının Birleşik Devletler kamu departmanı tam listesi için [belgelere](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)bakın.
+
+## <a name="azure-ad-pass-through-authentication"></a>Azure AD geçişli kimlik doğrulaması
+
+Aşağıdaki bilgiler doğrudan kimlik doğrulamanın ve Azure Kamu bulutunun uygulanmasını açıklamaktadır.
+
+### <a name="allow-access-to-urls"></a>URL 'lere erişime izin ver
+
+Doğrudan kimlik doğrulama aracısını dağıtmadan önce, sunucularınız ve Azure AD arasında bir güvenlik duvarının var olup olmadığını doğrulayın. Güvenlik duvarınız veya ara sunucunuz etki alanı adı sistemi (DNS) Engellenen veya güvenli programlara izin veriyorsa, aşağıdaki bağlantıları ekleyin.
+
+> [!NOTE]
+> Azure Kamu ortamları için [azure ad uygulama ara sunucusu Bağlayıcısı](https://aka.ms/whyappproxy) 'nı yüklemek için aşağıdaki kılavuz de geçerlidir.
 
 |URL'si |Nasıl kullanılır?|
-|-----|-----| 
-|*. msappproxy.us *. servicebus.usgovcloudapi.net|Aracı ve Azure AD bulut hizmeti arasındaki iletişim |
-|mscrl.microsoft.us:80 crl.microsoft.us:80 </br>ocsp.msocsp.us:80 www.microsoft.us:80| Aracı, sertifikaları doğrulamak için bu URL 'Leri kullanır.| 
-|Login.Windows.us Secure.aadcdn.microsoftonline-p.com *. microsoftonline.us </br> *. microsoftonline-p.us </br>*. msauth.net </br> *. msauthimages.net </br>*. msecnd.net</br>*. msftauth.net </br>*. msftauthimages.net</br>*. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| Aracı, kayıt işlemi sırasında bu URL 'Leri kullanır.| 
+|-----|-----|
+|&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Aracı bu URL 'Leri Azure AD bulut hizmeti ile iletişim kurmak için kullanır. |
+|mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| Aracı, sertifikaları doğrulamak için bu URL 'Leri kullanır.|
+|login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| Aracı, kayıt işlemi sırasında bu URL 'Leri kullanır.
 
-### <a name="install-the-agent-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için aracıyı yükler 
-Aracıyı Azure Kamu Bulutu için yüklemek üzere şu adımları izlemeniz gerekir: komut satırı terminalinde, aracıyı yüklemek için yürütülebilir dosyanın bulunduğu klasöre gidin. Yüklemesinin Azure Kamu için olduğunu belirten aşağıdaki komutu çalıştırın. 
+### <a name="install-the-agent-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için aracıyı yükler
 
-Geçiş kimlik doğrulaması için: 
-```
-AADConnectAuthAgentSetup.exe ENVIRONMENTNAME="AzureUSGovernment"
-```
+Azure Kamu Bulutu için aracıyı yüklemek üzere aşağıdaki adımları izleyin:
 
-Uygulama proxy 'Si için:
-```
-AADApplicationProxyConnectorInstaller.exe ENVIRONMENTNAME="AzureUSGovernment" 
-```
+1. Komut satırı terminalinde, aracıyı yükleyen yürütülebilir dosyayı içeren klasöre gidin.
+1. Yüklemesinin Azure Kamu için olduğunu belirten aşağıdaki komutları çalıştırın.
 
-## <a name="single-sign-on"></a>Çoklu oturum açma 
-Azure AD Connect sunucunuzu ayarlama: geçiş kimlik doğrulamasını oturum açma yönteminiz olarak kullanırsanız, ek önkoşul denetimi gerekli değildir. Oturum açma yönteminiz olarak parola karması eşitlemesi kullanıyorsanız ve Azure AD Connect ile Azure AD arasında bir güvenlik duvarı varsa, aşağıdakileri doğrulayın:
-- Azure AD Connect sürüm 1.1.644.0 veya üstünü kullanıyorsunuz. 
-- Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, bağlantı noktası 443 üzerinden *. msapproxy.us URL 'Lerine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen Azure veri merkezi IP aralıklarına erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir. 
+   Geçişli kimlik doğrulaması için:
 
-### <a name="rolling-out-seamless-sso"></a>Sorunsuz SSO kullanıma alınıyor 
-Aşağıda belirtilen yönergeleri kullanarak kullanıcılarınıza sorunsuz SSO 'yu yavaş bir şekilde dağıtabilirsiniz. Aşağıdaki Azure AD URL 'sini, Active Directory grup ilkesi kullanarak, tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayabilirsiniz:https://autologon.microsoft.us 
+   ```
+   AADConnectAuthAgentSetup.exe ENVIRONMENTNAME="AzureUSGovernment"
+   ```
 
-Ayrıca, grup ilkesi aracılığıyla betik aracılığıyla durum çubuğuna güncelleştirmelere Izin ver adlı bir Intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir. Tarayıcı konuları Mozilla Firefox (tüm platformlar) Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Her kullanıcının aşağıdaki adımları kullanarak, Azure AD URL 'sini Firefox ayarlarına el ile eklemesi gerekir: 
-1. Firefox 'u çalıştırın ve adres çubuğuna about: config yazın. Gördüğünüz tüm bildirimleri kapatın. 
-2. Network. Negotiate-Auth. Trusted-uris tercihini arayın. Bu tercih edilecek Kerberos kimlik doğrulaması için Firefox 'un güvenilen siteleri listelenir. 
-3. Sağ tıklayın ve Değiştir ' i seçin. 
-4. Alana https://autologon.microsoft.us girin.
-5. Tamam ' ı seçin ve ardından tarayıcıyı yeniden açın. 
+   Uygulama proxy 'Si için:
 
-### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Kmıum temelinde Microsoft Edge (tüm platformlar) 
- `AuthNegotiateDelegateAllowlist`  `AuthServerAllowlist`Ortamınızdaki ilke ayarlarını veya bu ayarları geçersiz kıldıysanız, Azure AD 'nin URL 'sini (https://autologon.microsoft.us) bunlara de) eklemediğinizden emin olun. 
+   ```
+   AADApplicationProxyConnectorInstaller.exe ENVIRONMENTNAME="AzureUSGovernment" 
+   ```
 
-### <a name="google-chrome-all-platforms"></a>Google Chrome (tüm platformlar) 
- `AuthNegotiateDelegateWhitelist`  `AuthServerWhitelist`Ortamınızdaki ilke ayarlarını veya bu ayarları geçersiz kıldıysanız, Azure AD 'nin URL 'sini (https://autologon.microsoft.us) bunlara de) eklemediğinizden emin olun. 
+## <a name="single-sign-on"></a>Çoklu oturum açma
+
+### <a name="set-up-your-azure-ad-connect-server"></a>Azure AD Connect sunucunuzu ayarlama
+
+Geçiş kimlik doğrulamasını oturum açma yönteminiz olarak kullanırsanız, ek önkoşul denetimi gerekli değildir. Oturum açma yönteminiz olarak parola karması eşitlemeyi kullanırsanız ve Azure AD Connect ile Azure AD arasında bir güvenlik duvarı varsa, aşağıdakileri doğrulayın:
+
+- Azure AD Connect sürüm 1.1.644.0 veya sonraki bir sürümü kullanıyorsunuz.
+- Güvenlik duvarınız veya ara sunucunuz DNS Engellenen veya güvenli programlara izin veriyorsa, bağlantı noktası 443 üzerinden &#42;. msappproxy.us URL 'Lerine bağlantı ekleyin.
+
+  Aksi takdirde, haftalık olarak güncellenen Azure veri merkezi IP aralıklarına erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Gerçek Kullanıcı oturum açma bileşenleri için gerekli değildir.
+
+### <a name="roll-out-seamless-single-sign-on"></a>Sorunsuz çoklu oturum açmayı kullanıma al
+
+Aşağıdaki yönergeleri kullanarak, kullanıcılarınız için Azure AD sorunsuz çoklu oturum açmayı kademeli olarak alabilirsiniz. Azure AD URL 'sini, [https://autologon.microsoft.us](https://autologon.microsoft.us) Active Directory Grup İlkesi kullanarak tüm kullanıcıların Intranet bölgesi ayarlarına ekleyerek başlayın.
+
+Ayrıca, **Grup İlkesi aracılığıyla betik aracılığıyla durum çubuğu güncelleştirmelerine Izin ver**intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir.
+
+## <a name="browser-considerations"></a>Tarayıcı konuları
+
+### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (tüm platformlar)
+
+Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Aşağıdaki adımları izleyerek her bir kullanıcının, Azure AD URL 'sini Firefox ayarlarına el ile eklemesi gerekir:
+
+1. Firefox 'u çalıştırın ve adres çubuğuna **about: config**yazın   . Görebileceğiniz tüm bildirimleri kapatın.
+1.  **Network. Negotiate-Auth. Trusted-uris**   tercihini arayın. Bu tercih, Kerberos kimlik doğrulaması için Firefox tarafından güvenilen siteleri listeler.
+1. Tercih adına sağ tıklayın ve ardından **Değiştir**' i seçin.
+1.  [**https://autologon.microsoft.us**](https://autologon.microsoft.us**)   Kutuya yazın.
+1.  **Tamam**   ' ı seçin ve ardından tarayıcıyı yeniden açın.
+
+### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Kmıum temelinde Microsoft Edge (tüm platformlar)
+
+ `AuthNegotiateDelegateAllowlist`   Ortamınızdaki veya ilke ayarlarını geçersiz kıldıysanız `AuthServerAllowlist`   , Azure AD URL 'sini bunlara eklemediğinizden emin olun [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+
+### <a name="google-chrome-all-platforms"></a>Google Chrome (tüm platformlar)
+
+ `AuthNegotiateDelegateWhitelist`   Ortamınızdaki veya ilke ayarlarını geçersiz kıldıysanız `AuthServerWhitelist`   , Azure AD URL 'sini bunlara eklemediğinizden emin olun [https://autologon.microsoft.us](https://autologon.microsoft.us) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Geçişli kimlik doğrulaması](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)
-[Çoklu oturum açma](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites) 
+
+- [Geçişli kimlik doğrulaması](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)
+- [Çoklu oturum açma](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)

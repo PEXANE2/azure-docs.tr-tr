@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105667"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116297"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
 Bu makale, Azure portal Multi-Factor Authentication ayarlarını yönetmenize yardımcı olur. Azure Multi-Factor Authentication en iyi şekilde yararlanmanıza yardımcı olacak çeşitli konular ele alınmaktadır. Her Azure Multi-Factor Authentication sürümünde tüm özellikler kullanılamaz.
 
-Azure Multi-Factor Authentication ile ilgili ayarlara **Azure Active Directory** > **güvenlik** > **MFA**' ya giderek Azure Portal erişebilirsiniz.
+Azure Multi-Factor Authentication ile ilgili ayarlara **Azure Active Directory**  >  **güvenlik**  >  **MFA**' ya giderek Azure Portal erişebilirsiniz.
 
 ![Azure portal-Azure AD Multi-Factor Authentication ayarları](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -36,7 +36,7 @@ Bu ayarlardan bazıları MFA sunucusu, Azure MFA veya her ikisi için de geçerl
 | [Kullanıcıları engelle/engelini kaldır](#block-and-unblock-users) | Belirli kullanıcıların Multi-Factor Authentication isteklerini almasına engel olmak için kullanılır. Engellenen kullanıcılar için tüm kimlik doğrulaması denemeleri otomatik olarak reddedilir. Kullanıcılar engellendikleri tarihten 90 gün sonrasına kadar engellenmiş olarak kalır. |
 | [Sahtekarlık uyarısı](#fraud-alert) | Kullanıcılara sahte doğrulama isteklerini bildirme yeteneği ile ilgili ayarları yapılandırın |
 | [Bildirimler](#notifications) | MFA sunucusundan olayların bildirimlerini etkinleştirin. |
-| [OATH belirteçleri](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Kullanıcılar için OATH belirteçlerini yönetmek üzere bulut tabanlı Azure MFA ortamlarında kullanılır. |
+| [OATH belirteçleri](concept-authentication-methods.md#oath-hardware-tokens) | Kullanıcılar için OATH belirteçlerini yönetmek üzere bulut tabanlı Azure MFA ortamlarında kullanılır. |
 | [Telefon araması ayarları](#phone-call-settings) | Bulut ve şirket içi ortamlar için telefon çağrılarıyla ve tebrikler ilgili ayarları yapılandırın. |
 | Sağlayıcılar | Bu, hesabınızla ilişkilendirdiğiniz mevcut herhangi bir kimlik doğrulama sağlayıcısını gösterir. Yeni kimlik doğrulama sağlayıcıları 1 Eylül 2018 itibariyle oluşturulmayabilir |
 
@@ -62,15 +62,15 @@ Kullanıcıların kimlik doğrulama isteklerini almasını engellemek için _kul
 ### <a name="block-a-user"></a>Kullanıcıyı engelle
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Security**güvenlik > **MFA**MFA > **blok/kullanıcıları engellemeyi kaldır**' a gidin.
+2. **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **blok/kullanıcıları engellemeyi kaldır**' a gidin.
 3. Kullanıcıyı engellemek için **Ekle** ' yi seçin.
-4. **Çoğaltma grubunu**seçin. Engellenen kullanıcının Kullanıcı adını **Kullanıcı adı\@Domain.com**olarak girin. **Neden** alanına bir açıklama girin.
+4. **Çoğaltma grubunu**seçin. Engellenen kullanıcının Kullanıcı adını **Kullanıcı adı \@ Domain.com**olarak girin. **Neden** alanına bir açıklama girin.
 5. Kullanıcıyı engellemeyi durdurmak için **Ekle** ' yi seçin.
 
 ### <a name="unblock-a-user"></a>Kullanıcının engellemesini kaldırma
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Security**güvenlik > **MFA**MFA > **blok/kullanıcıları engellemeyi kaldır**' a gidin.
+2. **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **blok/kullanıcıları engellemeyi kaldır**' a gidin.
 3. Engellemeyi kaldırmak için kullanıcının yanındaki **eylem** sütununda **Engellemeyi kaldır** ' ı seçin.
 4. **Engellemeyi kaldırma nedeni** alanına bir açıklama girin.
 5. Kullanıcının engellemesini kaldırma işleminin bitmesini **kaldırmak Için engellemeyi kaldır** seçeneğini belirleyin.
@@ -82,14 +82,14 @@ Kullanıcılarınızın kaynaklarına erişmek için sahte denemeleri bildirebil
 ### <a name="turn-on-fraud-alerts"></a>Sahtekarlık uyarılarını aç
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Security**güvenliği > **MFA**MFA > **sahtekarlığı uyarısı**' na gidin.
+2. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **sahtekarlığı uyarısı**' na gidin.
 3. **Kullanıcıların sahtekarlık uyarıları göndermesine Izin ver** ayarını **Açık**olarak ayarlayın.
 4. **Kaydet**’i seçin.
 
 ### <a name="configuration-options"></a>Yapılandırma seçenekleri
 
 * **Sahtekarlık bildirildiğinde kullanıcıyı engelle**: bir Kullanıcı sahtekarlık bildirirse, hesabı 90 gün boyunca engellenir veya bir yönetici kendi hesabını engellemez. Yönetici, oturum açma raporunu kullanarak oturum açma işlemlerini gözden geçirebilir ve ileride sahtekarlık oluşmasını önlemek için gerekli işlemleri gerçekleştirebilir. Yönetici daha sonra kullanıcının hesabının [engellemesini kaldırabilir](#unblock-a-user) .
-* **İlk tebrik sırasında sahtekarlık raporlamak Için kod**: kullanıcılar iki adımlı doğrulama gerçekleştirmek için bir telefon araması aldıklarında, normalde oturum açma işlemini **#** onaylamak için Basırlar. Sahtekarlık raporlamak için Kullanıcı, basmadan **#** önce bir kod girer. Bu kod varsayılan olarak **0** ' dır, ancak özelleştirebilirsiniz.
+* **İlk tebrik sırasında sahtekarlık raporlamak Için kod**: kullanıcılar iki adımlı doğrulama gerçekleştirmek için bir telefon araması aldıklarında, normalde **#** oturum açma işlemini onaylamak için Basırlar. Sahtekarlık raporlamak için Kullanıcı, basmadan önce bir kod girer **#** . Bu kod varsayılan olarak **0** ' dır, ancak özelleştirebilirsiniz.
 
    >[!NOTE]
    >Microsoft 'un varsayılan ses tebrikleri, kullanıcılardan bir sahtekarlık uyarısı göndermesi için **0 #** tuşlarına basmalarını ister. **0**dışında bir kod kullanmak istiyorsanız, kullanıcılarınız için uygun yönergeler ile kendi özel ses tebrikleri kaydedin ve yükleyin.
@@ -98,11 +98,11 @@ Kullanıcılarınızın kaynaklarına erişmek için sahte denemeleri bildirebil
 ### <a name="view-fraud-reports"></a>Sahtekarlık raporlarını görüntüleme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > **oturum açma** > **kimlik doğrulaması ayrıntıları**' nı seçin. Sahtekarlık raporu artık standart Azure AD oturum açma raporunun bir parçasıdır ve MFA reddedildi olarak, sahtekarlık kodu girildiğinde **"sonuç Ayrıntısı"** içinde görünür.
+2. **Azure Active Directory**  >  **oturum açma**  >  **kimlik doğrulaması ayrıntıları**' nı seçin. Sahtekarlık raporu artık standart Azure AD oturum açma raporunun bir parçasıdır ve MFA reddedildi olarak, sahtekarlık kodu girildiğinde **"sonuç Ayrıntısı"** içinde görünür.
  
 ## <a name="notifications"></a>Bildirimler
 
-**Azure Active Directory** > **Security**güvenlik > **Multi-Factor Authentication**Multi-Factor Authentication > **bildirimlerinde**sahtekarlık uyarı e-postaları alacak kullanıcılar için buradaki e-posta adreslerini yapılandırın.
+**Azure Active Directory**  >  **güvenlik**  >  **Multi-Factor Authentication**  >  **bildirimlerinde**sahtekarlık uyarı e-postaları alacak kullanıcılar için buradaki e-posta adreslerini yapılandırın.
 
 ![Bildirim sahtekarlık uyarısı e-posta örneği](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
@@ -145,7 +145,7 @@ Kullanıcıya özel bir sesli mesaj yürütüldüğünde, iletinin dili şu etke
 ### <a name="set-up-a-custom-message"></a>Özel bir ileti ayarlama
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-1. **Azure Active Directory** > **Security**Security > **MFA**MFA > **telefon araması ayarları**' na gidin.
+1. **Azure Active Directory**  >  **Security**  >  **MFA**  >  **telefon araması ayarları**' na gidin.
 1. **Karşılama Ekle**' yi seçin.
 1. Selamlama türünü seçin.
 1. Dili seçin.
@@ -184,16 +184,16 @@ _Tek seferlik atlama_ özelliği, bir kullanıcının iki adımlı doğrulama ge
 ### <a name="create-a-one-time-bypass"></a>Tek seferlik atlama oluşturma
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Security**güvenliği > **MFA**MFA > **bir kerelik geçişe**gidin.
+2. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **bir kerelik geçişe**gidin.
 3. **Add (Ekle)** seçeneğini belirleyin.
 4. Gerekirse, atlama için çoğaltma grubunu seçin.
-5. Kullanıcı adını **Kullanıcı adı\@Domain.com**olarak girin. Atlatma 'nin en son kaç saniye sayısını girin. Atlama nedenini girin.
+5. Kullanıcı adını **Kullanıcı adı \@ Domain.com**olarak girin. Atlatma 'nin en son kaç saniye sayısını girin. Atlama nedenini girin.
 6. **Add (Ekle)** seçeneğini belirleyin. Zaman sınırı hemen yürürlüğe girer. Kullanıcının bir kerelik atlama süresi dolmadan önce oturum açması gerekir.
 
 ### <a name="view-the-one-time-bypass-report"></a>Tek seferlik atlama raporunu görüntüleme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > **Security**güvenliği > **MFA**MFA > **bir kerelik geçişe**gidin.
+2. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **bir kerelik geçişe**gidin.
 
 ## <a name="caching-rules"></a>Önbelleğe alma kuralları
 
@@ -205,7 +205,7 @@ _Önbelleğe alma_ özelliğini kullanarak bir kullanıcının kimliği doğrula
 ### <a name="set-up-caching"></a>Önbelleğe almayı ayarla
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Security**güvenliği > **MFA**MFA > **önbelleğe alma kurallarını**inceleyin.
+2. **Azure Active Directory**  >  **güvenliği**  >  **MFA**  >  **önbelleğe alma kurallarını**inceleyin.
 3. **Add (Ekle)** seçeneğini belirleyin.
 4. Açılan listeden **önbellek türünü** seçin. En fazla **önbellek saniyesi**sayısını girin.
 5. Gerekirse, bir kimlik doğrulama türü seçin ve bir uygulama belirtin.
@@ -213,7 +213,7 @@ _Önbelleğe alma_ özelliğini kullanarak bir kullanıcının kimliği doğrula
 
 ## <a name="mfa-service-settings"></a>MFA hizmet ayarları
 
-Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure Multi-Factor Authentication için çok faktörlü kimlik doğrulamasını hatırlama ayarları, hizmet ayarları ' nda bulunabilir. Hizmet ayarlarına **Azure Active Directory** > **güvenlik** > **MFA** > 'ya giderek Azure Portal erişilebilir ve**bulut tabanlı ek MFA ayarlarını****yapılandırma** > ile**çalışmaya** > başlama.
+Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure Multi-Factor Authentication için çok faktörlü kimlik doğrulamasını hatırlama ayarları, hizmet ayarları ' nda bulunabilir. Hizmet ayarlarına **Azure Active Directory**güvenlik MFA 'ya giderek Azure Portal erişilebilir ve  >  **Security**  >  **MFA**  >  **Getting started**  >  **Configure**  >  **bulut tabanlı ek MFA ayarlarını**yapılandırma ile çalışmaya başlama.
 
 ![Azure Multi-Factor Authentication hizmet ayarları](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
@@ -278,7 +278,7 @@ Azure AD, şirket içi Windows Server Active Directory Domain Services (AD DS) i
 Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Uygulama parolaları özelliğinin etkinleştirilmesi gerekir. Kullanıcılara uygulama parolaları oluşturma yeteneği vermek için aşağıdaki yordamı kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
+2. Sol tarafta **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **kullanıcıların tarayıcı olmayan uygulamalara oturum açmak için uygulama parolaları oluşturmasına izin ver** seçeneğini belirleyin.
@@ -318,7 +318,7 @@ Güvenilen IP 'Lerin özelliğinin etkinleştirilip etkinleştirilmediği bağı
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Koşullu erişimi kullanarak adlandırılmış konumları etkinleştir
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **güvenlik** > **koşullu erişim** > **adlı konumlar**' ı seçin.
+2. Sol tarafta, **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişim**  >  **adlı konumlar**' ı seçin.
 3. **Yeni konum**' u seçin.
 4. Konum için bir ad girin.
 5. **Güvenilen konum olarak işaretle**' yi seçin.
@@ -328,7 +328,7 @@ Güvenilen IP 'Lerin özelliğinin etkinleştirilip etkinleştirilmediği bağı
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Koşullu erişimi kullanarak güvenilir IP 'Ler özelliğini etkinleştirme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta, **Azure Active Directory** > **güvenlik** >  **koşullu erişim** > **adlı konumlar**' ı seçin.
+2. Sol tarafta, **Azure Active Directory**  >  **güvenlik**  >   **koşullu erişim**  >  **adlı konumlar**' ı seçin.
 3. **MFA güvenilir IP 'Lerini Yapılandır**' ı seçin.
 4. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini seçin:
 
@@ -346,7 +346,7 @@ Güvenilen IP 'Lerin özelliğinin etkinleştirilip etkinleştirilmediği bağı
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Hizmet ayarlarını kullanarak güvenilir IP 'Leri özelliğini etkinleştirme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
+2. Sol tarafta **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **güvenilir IP 'ler**altında, aşağıdaki iki seçenekten birini (veya her ikisini) seçin:
@@ -378,7 +378,7 @@ Kullanıcılarınız Azure Multi-Factor Authentication hesaplarını kaydettiği
 ### <a name="enable-and-disable-verification-methods"></a>Doğrulama yöntemlerini etkinleştirme ve devre dışı bırakma
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
+2. Sol tarafta **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **doğrulama seçenekleri**altında kullanıcılarınıza sağlanacak yöntemlerin seçin/seçimini kaldırın.
@@ -414,7 +414,7 @@ Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark e
 ### <a name="enable-remember-multi-factor-authentication"></a>Enable Multi-Factor Authentication anımsa
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **kullanıcıları**' nı seçin.
+2. Sol tarafta **Azure Active Directory**  >  **kullanıcıları**' nı seçin.
 3. **Multi-Factor Authentication**seçin.
 4. Multi-Factor Authentication altında **hizmet ayarları**' nı seçin.
 5. **Hizmet ayarları** sayfasında, **çok faktörlü kimlik doğrulamasını anımsa**' yı yönetin, **kullanıcıların güvendikleri cihazlarda Multi-Factor Authentication 'ı anımsamasını izin ver** seçeneğini belirleyin.

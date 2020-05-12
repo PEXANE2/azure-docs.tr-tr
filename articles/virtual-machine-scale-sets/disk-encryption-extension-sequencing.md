@@ -1,17 +1,20 @@
 ---
 title: Azure disk şifrelemesi ve Azure sanal makine ölçek kümeleri uzantı sıralaması
 description: Bu makale, Linux IaaS VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar.
-author: msmbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279021"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117266"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Sanal makine ölçek kümesi uzantısı sıralaması ile Azure disk şifrelemesini kullanma
 
@@ -157,7 +160,7 @@ Daha ayrıntılı bir şablon için bkz.:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Uzantı sıralaması hakkında daha fazla bilgi edinin: [sanal makine ölçek kümelerinde dizi uzantısı sağlama](virtual-machine-scale-sets-extension-sequencing.md).
-- `provisionAfterExtensions` Özelliği hakkında daha fazla bilgi edinin: [Microsoft. COMPUTE virtualMachineScaleSets/Extensions şablon başvurusu](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- Özelliği hakkında daha fazla bilgi edinin `provisionAfterExtensions` : [Microsoft. COMPUTE virtualMachineScaleSets/Extensions şablon başvurusu](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
 - [Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesi](disk-encryption-overview.md)
 - [Azure CLı kullanarak sanal makine ölçek kümelerini şifreleme](disk-encryption-cli.md)
 - [Azure PowerShell kullanarak bir sanal makine ölçek kümelerini şifreleme](disk-encryption-powershell.md)

@@ -1,64 +1,201 @@
 ---
-title: Kimlik doğrulama yöntemleri-Azure Active Directory
-description: MFA ve SSPR için Azure AD 'de kullanılabilir kimlik doğrulama yöntemleri
+title: Kimlik doğrulama yöntemleri ve özellikleri-Azure Active Directory
+description: Oturum açma olaylarının artırılmasına ve güvenliğinin sağlanmasına yardımcı olmak için Azure Active Directory 'de bulunan farklı kimlik doğrulama yöntemleri ve özellikleri hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968783"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116448"
 ---
-# <a name="what-are-authentication-methods"></a>Kimlik doğrulaması yöntemleri nelerdir?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory hangi kimlik doğrulama ve doğrulama yöntemleri kullanılabilir?
 
-Yönetici olarak, Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini seçme, kullanıcıların birden çok kimlik doğrulama yöntemini kaydetmesini gerektirmesini öneririz. Bir kullanıcı için kimlik doğrulama yöntemi kullanılabilir olmadığında, başka bir yöntemle kimlik doğrulaması seçebilirler.
+Azure Active Directory (Azure AD) hesapları için oturum açma deneyiminin bir parçası olarak, bir kullanıcının kimliklerini doğrulayabilmesi için farklı yollar vardır. Kullanıcı adı ve parola, bir kullanıcının geçmişe ait kimlik bilgilerini sağlaması için en yaygın yoldur. Azure AD 'de Modern kimlik doğrulama ve güvenlik özellikleriyle, bu temel parola ek kimlik doğrulama yöntemleriyle takıma girebilir veya değiştirilebilir.
 
-Yöneticiler, SSPR ve MFA kullanıcıları tarafından hangi kimlik doğrulama yöntemlerinin kullanılabildiği ilke ' de tanımlayabilir. Bazı kimlik doğrulama yöntemleri, tüm özellikler için kullanılamayabilir. İlkelerinizi yapılandırma hakkında daha fazla bilgi için [self servis parola sıfırlama](howto-sspr-deployment.md) ve [bulut tabanlı bir Azure Multi-Factor Authentication planlama](howto-mfa-getstarted.md) makalesine bakın.
+Azure AD 'deki bir Kullanıcı, aşağıdaki kimlik doğrulama yöntemlerinden birini kullanarak kimlik doğrulaması seçebilir:
 
-Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönteminden fazlasını seçmesini olanaklı kılmanızı sağlar.
+* Geleneksel Kullanıcı adı ve parola
+* Microsoft Authenticator uygulama parolasız oturum açma
+* OATH donanım belirteci veya FIDO2 güvenlik anahtarı
+* SMS tabanlı parolasız oturum açma
 
-|Kimlik Doğrulama Yöntemi|Kullanım|
-| --- | --- |
-| Parola | MFA ve SSPR |
-| Güvenlik soruları | Yalnızca SSPR |
-| E-posta adresi | Yalnızca SSPR |
-| Microsoft Authenticator uygulaması | MFA ve SSPR |
-| OATH donanım belirteci | MFA ve SSPR için genel önizleme |
-| SMS | MFA ve SSPR |
-| Sesli arama | MFA ve SSPR |
-| Uygulama parolaları | Yalnızca belirli durumlarda MFA |
+Azure AD 'deki pek çok hesap self servis parola sıfırlama (SSPR) veya Azure Multi-Factor Authentication için etkinleştirilmiştir. Bu özellikler, telefon araması veya güvenlik soruları gibi ek doğrulama yöntemlerini içerir. Kullanıcıların birden çok doğrulama yöntemini kaydetmesini gerektirmesini öneririz. Bir kullanıcı için bir yöntem kullanılamadığında, başka bir yöntemle kimlik doğrulamayı seçebilirler.
+
+Aşağıdaki tabloda, farklı senaryolar için hangi kimlik doğrulama veya doğrulama yöntemlerinin kullanılabildiği özetlenmektedir:
+
+| Yöntem | Oturum açma sırasında kullanın | Doğrulama sırasında kullanın |
+| --- | --- | --- |
+| [Parola](#password) | Yes | MFA ve SSPR |
+| [Microsoft Authenticator uygulaması](#microsoft-authenticator-app) | Evet (Önizleme) | MFA ve SSPR |
+| [FIDO2 güvenlik anahtarları (Önizleme)](#fido2-security-keys) | Yes | Yalnızca MFA |
+| [OATH Donanım belirteçleri (Önizleme)](#oath-hardware-tokens) | Yes | SSPR ve MFA |
+| [SMS](#phone-options) | Evet (Önizleme) | MFA ve SSPR |
+| [Sesli arama](#phone-options) | Hayır | MFA ve SSPR |
+| [Güvenlik soruları](#security-questions) | Hayır | Yalnızca SSPR |
+| [E-posta adresi](#email-address) | Hayır | Yalnızca SSPR |
+| [Uygulama parolaları](#app-passwords) | Hayır | Yalnızca belirli durumlarda MFA |
+
+Bu makalede, Azure AD 'de bulunan bu farklı kimlik doğrulama ve doğrulama yöntemleri ve belirli sınırlamalar veya kısıtlamalar özetlenmektedir.
 
 ![Oturum açma ekranında kullanılan kimlik doğrulama yöntemleri](media/concept-authentication-methods/overview-login.png)
 
-|     |
-| --- |
-| MFA ve SSPR için OATH Donanım belirteçleri, Azure Active Directory genel önizleme özellikleridir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
-
 ## <a name="password"></a>Parola
 
-Azure AD parolanız bir kimlik doğrulama yöntemi olarak kabul edilir. Bu, **devre dışı**bırakıladesteklemeyen bir yöntemdir.
+Azure AD parolası genellikle birincil kimlik doğrulama yöntemlerinden biridir. Parola kimlik doğrulama yöntemini devre dışı bırakamıyorum.
+
+Kullanıcı imza için parolasını kullanmazsa [SMS tabanlı oturum açma](howto-authentication-sms-signin.md) gibi bir kimlik doğrulama yöntemi kullanıyor olsanız bile, bir parola kullanılabilir kimlik doğrulama yöntemi olarak kalır.
+
+## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
+
+Kimlik doğrulayıcı uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar ve [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594)ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)için kullanılabilir. Microsoft Authenticator uygulamayla, kullanıcılar oturum açma sırasında parolasız bir şekilde veya self servis parola sıfırlama (SSPR) veya Azure Multi-Factor Authentication olayları sırasında ek bir doğrulama seçeneği olarak kimlik doğrulaması yapabilir.
+
+Kullanıcılar, bir oturum açma arabirimine girilebilecek bir OATH doğrulama kodu oluşturmak için Mobil uygulamayla ilgili bir bildirim alabilir veya bu uygulamayı kullanabilir. Hem bildirim hem de doğrulama kodunu etkinleştirirseniz, Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için her iki yöntemi de kullanabilir.
+
+Kimlik doğrulayıcı uygulamasını Kullanıcı adı ve parola birleşimi yerine bir oturum açma isteminde kullanmak için bkz. [Microsoft Authenticator App (Önizleme) ile passwordless oturum açmayı etkinleştirme](howto-authentication-passwordless-phone.md).
+
+> [!NOTE]
+> Kullanıcılar SSPR 'yi etkinleştirdiklerinde mobil uygulamalarını kaydetme seçeneğine sahip değildir. Bunun yerine, kullanıcılar mobil uygulamalarını [https://aka.ms/mfasetup](https://aka.ms/mfasetup) konumundaki Birleşik güvenlik bilgileri kaydının bir parçası olarak veya ' de kaydedebilir [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
+
+### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
+
+Authenticator uygulaması, Smartphone 'a veya tabletinize bir bildirim göndererek, hesaplara yetkisiz erişimin önlenmesine ve sahte işlemleri durdurmasına yardımcı olabilir. Kullanıcılar bildirimi görüntüler ve meşru ise **Doğrula**' yı seçin. Aksi takdirde, **Reddet**' i seçebilir.
+
+![Oturum açma işlemini tamamlamaya yönelik kimlik doğrulayıcı uygulama bildirimi için Web tarayıcı istemi örnek ekran görüntüsü](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+
+> [!NOTE]
+> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, Android cihazlarda *mobil uygulama yöntemi aracılığıyla bildirim* söz konusu ülkede çalışmaz. Diğer kimlik doğrulama yöntemleri bu kullanıcılar için kullanılabilir duruma getirilmelidir.
+
+### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
+
+Kimlik doğrulayıcı uygulaması bir OATH doğrulama kodu oluşturmak için yazılım belirteci olarak kullanılabilir. Kullanıcı adınızı ve parolanızı girdikten sonra, kimlik doğrulayıcı uygulaması tarafından belirtilen kodu oturum açma arabirimine girersiniz. Doğrulama kodu, ikinci bir kimlik doğrulama biçimi sağlar.
+
+Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Authenticator uygulaması gibi beş OATH donanım belirtecinin veya Authenticator uygulamasının bir birleşimine sahip olabilir.
+
+> [!WARNING]
+> Yalnızca bir yöntem sıfırlama için gerekli olduğunda self servis parola sıfırlamasının en yüksek düzeyde güvenlik sağlamak için, kullanıcılara sunulan tek seçenek bir doğrulama kodu olur.
+>
+> İki yöntem gerektiğinde, kullanıcılar diğer etkin yöntemlerin yanı sıra bir bildirim ya da doğrulama kodu kullanarak sıfırlayabilir.
+
+## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
+
+FIDO (hızlı kimlik çevrimiçi) Birliği, açık kimlik doğrulama standartlarını yükseltmenize ve parolaların Kullanıcı kimliğini bir kimlik doğrulama formu olarak azaltmaya yardımcı olur. FIDO2, Web kimlik doğrulaması (WebAuthn) standardını içeren en son standarttır.
+
+FIDO2 güvenlik anahtarlarını bir Kullanıcı adı ve parola birleşimi yerine bir oturum açma isteminde kullanmak için bkz. [passwordless FIDO2 güvenlik anahtarı oturum açma 'Yı etkinleştirme (Önizleme)](howto-authentication-passwordless-security-key.md).
+
+Kullanıcılar, kimlik doğrulama yöntemi olarak oturum açma arabiriminde bir FIDO2 güvenlik anahtarı kaydedebilir ve seçebilir. Bu FIDO2 güvenlik anahtarları genellikle USB cihazlarıdır, ancak Bluetooth veya NFC de kullanabilir. Kimlik doğrulamasını işleyen bir donanım aygıtıyla, açığa çıkarılan veya tahmin edilecek bir parola olmadığından hesabın güvenliği artar.
+
+Azure AD 'de FIDO2 güvenlik anahtarları şu anda önizlemededir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="oath-hardware-tokens"></a>OATH donanım belirteçleri
+
+OATH, bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. Azure AD, 30 saniyelik veya 60 saniyelik birçok farklı OATH-TOTP SHA-1 belirteçleri kullanımını destekler. Müşteriler bu belirteçleri kendi tercih ettiği satıcıdan satın alabilir.
+
+Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7*rakamları içerebilir ve *Base32*içinde kodlanmalıdır.
+
+Azure AD 'de OATH Donanım belirteçleri Şu anda önizleme aşamasındadır. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+![OATH belirteçleri MFA OATH belirteçleri penceresine yükleniyor](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+
+Belirteçler alındıktan sonra, aşağıdaki örnekte gösterildiği gibi, UPN, seri numarası, gizli anahtar, zaman aralığı, üretici ve model dahil olmak üzere bir virgülle ayrılmış değerler (CSV) dosya biçiminde karşıya yüklenmelidir:
+
+```csv
+upn,serial number,secret key,time interval,manufacturer,model
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> Üst bilgi satırını CSV dosyanıza eklediğinizden emin olun.
+
+Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, yönetici Azure Portal oturum açabilir, **Azure Active Directory**  >  **güvenlik**  >  **MFA**  >  **Oath belirteçleri**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
+
+CSV dosyasının boyutuna bağlı olarak, işlem birkaç dakika sürebilir. Geçerli durumu almak için **Yenile** düğmesini seçin. Dosyada herhangi bir hata varsa, çözmeniz için herhangi bir hatayı listeleyen bir CSV dosyası indirebilirsiniz. İndirilen CSV dosyasındaki alan adları karşıya yüklenen sürümden farklı.
+
+Herhangi bir hata çözüldükten sonra, yönetici belirteç için **Etkinleştir** ' i seçip BELIRTEÇTE görünen OTP 'yi girerek her anahtarı etkinleştirebilir.
+
+Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Authenticator uygulaması gibi beş OATH donanım belirtecinin veya Authenticator uygulamasının bir birleşimine sahip olabilir.
+
+## <a name="phone-options"></a>Telefon seçenekleri
+
+Metin iletisini kullanarak doğrudan kimlik doğrulama için, [SMS tabanlı kimlik doğrulaması (Önizleme) için kullanıcıları yapılandırabilir ve etkinleştirebilirsiniz](howto-authentication-sms-signin.md). SMS tabanlı oturum açma, ön satır çalışanları için harika. SMS tabanlı oturum açma sayesinde, kullanıcıların uygulama ve hizmetlere erişmek için bir Kullanıcı adı ve parola bilmeleri gerekmez. Bunun yerine Kullanıcı kayıtlı cep telefonu numarasını girer, doğrulama kodu içeren bir kısa mesaj alır ve oturum açma arabirimine girer.
+
+Kullanıcılar ayrıca, Azure Multi-Factor Authentication veya self servis parola sıfırlama (SSPR) sırasında kullanılan ikincil kimlik doğrulama biçimi olarak bir cep telefonu veya ofis telefonu kullanarak kendilerini doğrulayabilirler.
+
+Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin *+ 1 4251234567*.
+
+> [!NOTE]
+> Ülke kodu ile telefon numarası arasında bir boşluk olması gerekir.
+>
+> Parola sıfırlama, telefon uzantılarını desteklemez. *+ 1 4251234567X12345* biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
+
+### <a name="mobile-phone-verification"></a>Cep telefonu doğrulama
+
+Azure Multi-Factor Authentication veya SSPR için, kullanıcılar oturum açma arabirimine girmek üzere doğrulama kodu içeren bir kısa mesaj almayı seçebilir veya tanımlı PIN kodunu girmek için bir istem içeren bir telefon araması alabilir.
+
+Kullanıcılar cep telefonu numarasının dizinde görünmesini istemiyor, ancak parola sıfırlama için kullanmak istiyorsanız, Yöneticiler dizindeki telefon numarasını doldurmamalıdır. Bunun yerine, kullanıcılar, **kimlik doğrulama telefonu** özniteliğini, Birleşik güvenlik bilgileri kaydı aracılığıyla doldurmalıdır [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Yöneticiler bu bilgileri kullanıcının profilinde görebilir, ancak başka bir yerde yayımlanmaz.
+
+![Bir telefon numarası doldurulmuş kimlik doğrulama yöntemlerini gösteren Azure portal ekran görüntüsü](media/concept-authentication-methods/user-authentication-methods.png)
+
+Microsoft, tutarlı SMS veya sesli tabanlı Azure Multi-Factor Authentication istem teslimini aynı numarayla garanti etmez. Kullanıcılarımıza ilişkin olarak, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için istediğiniz zaman kısa kodlar ekleyebilir veya kaldırabiliriz. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
+
+#### <a name="text-message-verification"></a>Kısa mesaj doğrulaması
+
+SSPR veya Azure Multi-Factor Authentication sırasında kısa mesaj doğrulamayla birlikte, bir doğrulama kodu içeren cep telefonu numarasına SMS gönderilir. Oturum açma işlemini gerçekleştirmek için, girilen doğrulama kodu oturum açma arabirimine girilir.
+
+#### <a name="phone-call-verification"></a>Telefon araması doğrulaması
+
+SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan PIN numarasını girmesi istenir ve ardından tuş takımında # gelmelidir.
+
+### <a name="office-phone-verification"></a>Office telefon doğrulaması
+
+Office Phone özniteliği Azure AD yöneticisi tarafından yönetilir ve Kullanıcı tarafından kaydedilemez.
+
+SSPR veya Azure Multi-Factor Authentication sırasında telefon araması doğrulaması ile, Kullanıcı tarafından kaydedilen telefon numarasına otomatik bir sesli çağrı yapılır. Oturum açma işlemini tamamlamaya yönelik olarak, kullanıcıdan PIN numarasını girmesi istenir ve ardından tuş takımında # gelmelidir.
+
+### <a name="troubleshooting-phone-options"></a>Telefon seçenekleriyle ilgili sorunları giderme
+
+Azure AD için telefon kimlik doğrulamasıyla ilgili sorunlar yaşıyorsanız, aşağıdaki sorun giderme adımlarını gözden geçirin:
+
+* Tek bir cihazda engellenen arayan KIMLIĞI.
+   * Cihazda yapılandırılan tüm engellenen numaraları gözden geçirin.
+* Yanlış telefon numarası veya yanlış ülke kodu ya da kişisel telefon numarası ile iş telefonu numarası arasında karışıklık.
+   * Kullanıcı nesnesi ve yapılandırılmış kimlik doğrulama yöntemleri sorunlarını giderin. Doğru telefon numaralarının kaydedildiğinden emin olun.
+* Yanlış PIN girildi.
+   * Kullanıcının, hesabı için kayıtlı doğru PIN 'ı kullandığını onaylayın.
+* Sesli mesaj ile iletilen çağrı.
+   * Kullanıcının telefonu açık olduğundan ve bu hizmetin kendi alanında kullanılabilir olduğundan emin olun veya alternatif yöntemi kullanın.
+* Kullanıcı engellendi
+   * Azure portal kullanıcının engellemesini kaldırmak için bir Azure AD yöneticisi vardır.
+* Cihazda SMS abone değil.
+   * Kullanıcının bir yöntemi değiştirmesini veya cihazda SMS 'yi etkinleştirmesini sağlamak.
+* Telefon girişi yok, eksik DTMF tonları sorunları, birden çok cihazda engellenen çağıran KIMLIĞI veya birden çok cihazda SMS tarafından engellenen hatalı Telekom sağlayıcıları.
+   * Microsoft, kimlik doğrulaması için telefon çağrılarını ve SMS iletilerini yönlendirmek üzere birden çok Telekom sağlayıcısı kullanır Yukarıdaki sorunlardan herhangi birini görürseniz, bir kullanıcının yöntemini 5 dakika içinde en az beş kez kullanmayı denemesi ve Microsoft desteği ile iletişim kurulurken kullanıcının bilgilerinin kullanılabilir olması gerekir.
 
 ## <a name="security-questions"></a>Güvenlik soruları
 
-Güvenlik soruları **yalnızca Azure AD self servis parola sıfırlama ' da** yönetici olmayan hesaplara kullanılabilir.
+Güvenlik soruları, oturum açma olayında kimlik doğrulama yöntemi olarak kullanılmaz. Bunun yerine, güvenlik soruları, kim olduğunu onaylamak için self servis parola sıfırlama (SSPR) işlemi sırasında kullanılabilir. Yönetici hesapları, SSPR ile doğrulama yöntemi olarak güvenlik sorularını kullanamaz.
 
-Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte kullanmanızı öneririz. Bazı kullanıcılar başka bir Kullanıcı sorusunun yanıtlarını bilebileceğinden, güvenlik soruları diğer yöntemlerden daha az güvenli olabilir.
+Kullanıcılar SSPR 'ye kaydolduklarında, kullanılacak kimlik doğrulama yöntemlerini seçmeleri istenir. Güvenlik sorularını kullanmayı tercih ederseniz, kendi yanıtlarını isteyecek ve sonra kendi yanıtlarını sağlamaları için bir soru kümesinden seçim yapılır.
+
+![Güvenlik soruları için kimlik doğrulama yöntemlerini ve seçeneklerini gösteren Azure portal ekran görüntüsü](media/concept-authentication-methods/security-questions-authentication-method.png)
 
 > [!NOTE]
 > Güvenlik soruları, dizindeki bir kullanıcı nesnesi üzerinde özel olarak ve güvenli bir şekilde depolanır ve yalnızca kayıt sırasında kullanıcılar tarafından yanıtlanabilecek. Bir yöneticinin bir kullanıcının sorularını veya yanıtlarını okuması veya değiştirmesi için bir yol yoktur.
->
+
+Bazı kullanıcılar başka bir Kullanıcı sorusunun yanıtlarını bilebileceğinden, güvenlik soruları diğer yöntemlerden daha az güvenli olabilir. SSPR ile güvenlik soruları kullanıyorsanız, bunları başka bir yöntemle birlikte kullanmanız önerilir. Bir kullanıcıdan SSPR işlemi sırasında kimliklerini doğrulamak için Microsoft Authenticator uygulama veya telefon kimlik doğrulamasını kullanması istenebilir ve yalnızca telefon veya kayıtlı cihazları yoksa güvenlik soruları ' nı seçin.
 
 ### <a name="predefined-questions"></a>Önceden tanımlanmış sorular
+
+Aşağıdaki önceden tanımlanmış güvenlik soruları, SSPR ile doğrulama yöntemi olarak kullanılabilir. Bu güvenlik sorularının tümü, kullanıcının tarayıcı yerel ayarlarına bağlı olarak Office 365 dillerinin tam kümesine çevrilir ve yerelleştirilir:
 
 * İlk eşiniz/iş ortağınızı hangi şehirle karşıladınız?
 * Ebeveynleriniz hangi şehirle buluşmış?
@@ -74,7 +211,7 @@ Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte
 * En sevdiğiniz yemek nedir?
 * Anneannenizin en Annenizin adı ve soyadı nedir?
 * Annenizin ikinci adı nedir?
-* En eski eşdüzey Doğum günün ayı ve yılı nedir? (örn. Kasım 1985)
+* En eski eşdüzey Doğum günün ayı ve yılı nedir? (örneğin, Kasım 1985)
 * En eski eşdüzey öğenin ikinci adı nedir?
 * Babanızın babalar adı ve soyadı nedir?
 * Kardeşinizin eşdüzey ortaınızın ikinci adı nedir?
@@ -96,15 +233,15 @@ Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte
 * Küçükken, büyüyken ne yapmak istiyorsunuz?
 * Şimdiye kadar tanıştığınız en ünlü kişi kim?
 
-Önceden tanımlanmış tüm güvenlik soruları, kullanıcının tarayıcı yerel ayarlarına bağlı olarak Office 365 dillerinin tam kümesine çevrilir ve yerelleştirilir.
-
 ### <a name="custom-security-questions"></a>Özel güvenlik soruları
 
-Özel güvenlik soruları yerelleştirilmez. Kullanıcının tarayıcı yerel ayarı farklı olsa bile, tüm özel sorular Yönetici Kullanıcı arabirimine girildikleri dilde görüntülenir. Yerelleştirilmiş sorulara ihtiyacınız varsa, önceden tanımlanmış soruları kullanmanız gerekir.
+Ek esneklik için kendi özel güvenlik sorularınızı tanımlayabilirsiniz. Özel bir güvenlik sorusunun en fazla uzunluğu 200 karakterdir.
 
-Özel bir güvenlik sorusunun en fazla uzunluğu 200 karakterdir.
+Özel güvenlik soruları, varsayılan güvenlik soruları gibi otomatik olarak yerelleştirilmez. Kullanıcının tarayıcı yerel ayarı farklı olsa bile, tüm özel sorular yönetim kullanıcı arabirimine girildikleri dilde görüntülenir. Yerelleştirilmiş sorulara ihtiyacınız varsa, önceden tanımlanmış soruları kullanmanız gerekir.
 
 ### <a name="security-question-requirements"></a>Güvenlik sorusu gereksinimleri
+
+Hem varsayılan hem de özel güvenlik soruları için aşağıdaki gereksinimler ve sınırlamalar geçerlidir:
 
 * En küçük yanıt karakter sınırı üç karakterdir.
 * En fazla yanıt karakter sınırı 40 karakterdir.
@@ -115,154 +252,39 @@ Güvenlik sorularını kullanıyorsanız, bunları başka bir yöntemle birlikte
 
 ## <a name="email-address"></a>E-posta adresi
 
-E-posta adresi **yalnızca Azure AD self servis parola sıfırlama ' da**kullanılabilir.
+Bir e-posta adresi doğrudan kimlik doğrulama yöntemi olarak kullanılamaz. E-posta adresi yalnızca self servis parola sıfırlama (SSPR) için doğrulama seçeneği olarak kullanılabilir. SSPR sırasında e-posta adresi seçildiğinde, kimlik doğrulama/doğrulama işlemini tamamlaması için kullanıcıya bir e-posta gönderilir.
 
-Microsoft, kullanıcının Azure AD parolasının erişmesini gerektirmeyen bir e-posta hesabının kullanılmasını önerir.
-
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
-
-Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar.
-
-Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)'da kullanılabilir.
-
-> [!NOTE]
-> Kullanıcılar self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip olmayacaktır. Bunun yerine, kullanıcılar mobil uygulamalarını tarihinde [https://aka.ms/mfasetup](https://aka.ms/mfasetup) [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)veya güvenlik bilgileri kayıt önizlemesine kaydedebilir.
->
-
-### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
-
-Microsoft Authenticator uygulaması, Smartphone 'a veya tabletinize bildirim göndererek, hesaplara yetkisiz erişimin önlenmesine ve sahte işlemleri durdurmaya yardımcı olabilir. Kullanıcılar bildirimi görüntüler ve meşru ise Doğrula ' yı seçin. Aksi takdirde, Reddet ' i seçebilir.
-
-> [!WARNING]
-> Yalnızca bir yöntem sıfırlama için gerekliyse, self servis parola sıfırlama için, **en yüksek düzeyde güvenlik sağlamak üzere**kullanıcılara sunulan tek seçenektir.
->
-> İki yöntem gerekli olduğunda, kullanıcılar diğer etkin yöntemlerin yanı **sıra bildirim** **veya** doğrulama kodu kullanarak sıfırlayabilecektir.
->
-
-Mobil uygulama ve doğrulama kodu aracılığıyla her iki bildirimin de kullanımını etkinleştirirseniz, bir bildirim kullanarak Microsoft Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için hem bildirimi hem de kodu kullanabilir.
-
-> [!NOTE]
-> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
-
-### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
-
-Microsoft Authenticator uygulaması veya diğer üçüncü taraf uygulamalar, bir OATH doğrulama kodu oluşturmak için yazılım belirteci olarak kullanılabilir. Kullanıcı adınızı ve parolanızı girdikten sonra, uygulama tarafından belirtilen kodu oturum açma ekranına girersiniz. Doğrulama kodu, ikinci bir kimlik doğrulama biçimi sağlar.
-
-> [!WARNING]
-> Kendi kendine parola sıfırlama için yalnızca bir yöntem gerekliyse, sıfırlama doğrulama kodu için yalnızca bir yöntem gerekliyse, **en yüksek düzeyde güvenlik sağlamak için**kullanıcılara sunulan tek seçenektir.
->
-
-Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Authenticator uygulaması gibi beş OATH donanım belirtecinin veya Authenticator uygulamasının bir birleşimine sahip olabilir.
-
-## <a name="oath-hardware-tokens-public-preview"></a>OATH Donanım belirteçleri (Genel Önizleme)
-
-OATH, bir kerelik parola (OTP) kodlarının nasıl oluşturulduğunu belirten bir açık standarttır. Azure AD, 30 saniyelik veya 60 saniyelik birçok farklı OATH-TOTP SHA-1 belirteçleri kullanımını destekleyecektir. Müşteriler bu belirteçleri tercih ettikleri satıcıdan temin edebilir. Gizli anahtarlar 128 karakterle sınırlıdır ve bu, tüm belirteçlerle uyumlu olmayabilir. Gizli anahtar yalnızca *a-z* veya *a-z* karakterleri ve *1-7*rakamları içerebilir ve Base32 içinde kodlanmalıdır.
-
-![OATH belirteçlerini MFA OATH belirteçleri dikey penceresine yükleme](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
-
-OATH Donanım belirteçleri, genel önizlemenin bir parçası olarak desteklenir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
-
-Belirteçler alındıktan sonra, aşağıdaki örnekte gösterildiği gibi, UPN, seri numarası, gizli anahtar, zaman aralığı, üretici ve model dahil olmak üzere bir virgülle ayrılmış değerler (CSV) dosya biçiminde karşıya yüklenmelidir:
-
-```csv
-upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
-
-> [!NOTE]
-> Üst bilgi satırını CSV dosyanıza eklediğinizden emin olun.
-
-Bir CSV dosyası olarak düzgün biçimlendirildikten sonra, yönetici Azure Portal oturum açabilir, **Azure Active Directory** > **güvenlik** > **MFA** > **Oath belirteçleri**' ne gidebilir ve elde edilen CSV dosyasını karşıya yükleyebilir.
-
-CSV dosyasının boyutuna bağlı olarak, işlem birkaç dakika sürebilir. Geçerli durumu almak için **Yenile** düğmesine tıklayın. Dosyada herhangi bir hata varsa, çözmeniz için herhangi bir hata listelemesi için bir CSV dosyası indirme seçeneğine sahip olursunuz. İndirilen CSV dosyasındaki alan adları karşıya yüklenen sürümden farklı.
-
-Herhangi bir hata çözüldükten sonra, yönetici, belirtecin etkinleştirilebilmesi için **Etkinleştir** ' e tıklayarak ve BELIRTEÇTE görünen OTP 'yi girerek her anahtarı etkinleştirebilir.
-
-Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Authenticator uygulaması gibi beş OATH donanım belirtecinin veya Authenticator uygulamasının bir birleşimine sahip olabilir.
-
-## <a name="phone-options"></a>Telefon seçenekleri
-
-### <a name="mobile-phone"></a>Cep telefonu
-
-Mobil telefonlarla kullanıcılara iki seçenek mevcuttur.
-
-Kullanıcılar cep telefonu numarasının dizinde görünür olmasını istemiyor, ancak yine de parola sıfırlama için kullanmak istiyorlarsa, yöneticiler onu dizinde doldurmamalıdır. Kullanıcılar, **kimlik doğrulama telefonu** özniteliğini [parola sıfırlama kayıt portalı](https://aka.ms/ssprsetup)aracılığıyla doldurmalıdır. Yöneticiler bu bilgileri kullanıcının profilinde görebilir, ancak başka bir yerde yayımlanmaz.
-
-Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin + 1 4255551234.
-
-> [!NOTE]
-> Ülke kodu ile telefon numarası arasında bir boşluk olması gerekir.
->
-> Parola sıfırlama, telefon uzantılarını desteklemez. + 1 4255551234X12345 biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
-
-Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
-
-#### <a name="text-message"></a>Kısa mesaj
-
-Bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Devam etmek için oturum açma arabiriminde belirtilen doğrulama kodunu girin.
-
-#### <a name="phone-call"></a>Telefon görüşmesi
-
-Sağladığınız telefon numarasına otomatik bir sesli çağrı yapılır. Numarayı yanıtlayın ve telefon tuş takımında # tuşlarına basarak kimlik doğrulaması yapın
-
-> [!IMPORTANT]
-> Mart 2019 ' den itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında MFA ve SSPR kullanıcıları tarafından kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması, ücretli Azure AD kiracılarındaki kullanıcılar için kullanılabilir olmaya devam edecektir. Bu değişiklik yalnızca ücretsiz/deneme Azure AD kiracılarını etkiler.
-
-### <a name="office-phone"></a>Ofis telefonu
-
-Sağladığınız telefon numarasına otomatik bir sesli çağrı yapılır. Numarayı yanıtlayın ve telefon tuş takımında # tuşlarına bastıktan sonra kimlik doğrulaması yapın.
-
-Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNumber*biçiminde olması gerekir, örneğin + 1 4255551234.
-
-Ofis telefonu özniteliği yöneticiniz tarafından yönetilir.
-
-> [!IMPORTANT]
-> Mart 2019 ' den itibaren telefon araması seçenekleri ücretsiz/deneme Azure AD kiracılarında MFA ve SSPR kullanıcıları tarafından kullanılamaz. SMS iletileri bu değişiklikten etkilenmez. Telefon araması, ücretli Azure AD kiracılarındaki kullanıcılar için kullanılabilir olmaya devam edecektir. Bu değişiklik yalnızca ücretsiz/deneme Azure AD kiracılarını etkiler.
-
-> [!NOTE]
-> Ülke kodu ile telefon numarası arasında bir boşluk olması gerekir.
->
-> Parola sıfırlama, telefon uzantılarını desteklemez. + 1 4255551234X12345 biçiminde bile, çağrı yerleştirilmadan önce uzantılar kaldırılır.
-
-### <a name="troubleshooting-phone-options"></a>Telefon seçenekleriyle ilgili sorunları giderme
-
-Telefon numarası kullanan kimlik doğrulama yöntemleriyle ilgili yaygın sorunlar:
-
-* Tek bir cihazda engellenen arayan KIMLIĞI
-   * Cihaz sorunlarını giderme
-* Yanlış telefon numarası, yanlış ülke kodu, ev telefonu numarası ve iş telefonu numarası
-   * Kullanıcı nesnesi ve yapılandırılmış kimlik doğrulama yöntemleriyle ilgili sorunları giderin. Doğru telefon numaralarının kaydedildiğinden emin olun.
-* Yanlış PIN girildi
-   * Kullanıcının Azure MFA sunucusu 'nda kayıtlı doğru PIN 'ı kullandığını onaylayın.
-* Sesli mesaj ile iletilen çağrı
-   * Kullanıcının telefonu açık olduğundan ve bu hizmetin kendi alanında kullanılabilir olduğundan emin olun veya alternatif yöntemi kullanın.
-* Kullanıcı engellendi
-   * Yöneticinin Azure portal kullanıcının engellemesini kaldırma.
-* Cihazda SMS abone değil
-   * Kullanıcının bir yöntemi değiştirmesini veya cihazda SMS 'yi etkinleştirmesini sağlamak.
-* Hatalı Telekom sağlayıcıları (telefon girişi algılanmadı, eksik DTMF tonları sorunları, birden çok cihazda engellenen çağıran KIMLIĞI veya birden çok cihazda engellenen SMS)
-   * Microsoft, kimlik doğrulaması için telefon çağrılarını ve SMS iletilerini yönlendirmek üzere birden çok Telekom sağlayıcısı kullanır Yukarıdaki sorunlardan herhangi birini görüyorsanız, bir Kullanıcı, 5 dakika içinde yöntemi en az 5 kez kullanmaya çalışır ve Microsoft Destek ile iletişim kurarken bu kullanıcının bilgilerinin kullanılabilir olmasını sağlar.
+SSPR için kayıt sırasında, Kullanıcı kullanılacak e-posta adresini sağlar. SSPR sırasında bunlara erişebildiklerinden emin olmak için kurumsal hesabından farklı bir e-posta hesabı kullanmaları önerilir.
 
 ## <a name="app-passwords"></a>Uygulama parolaları
 
-Tarayıcı olmayan bazı uygulamalar Multi-Factor Authentication 'ı desteklemez, bir Kullanıcı Multi-Factor Authentication için etkinleştirildiyse ve tarayıcı olmayan uygulamaları kullanmaya çalışırsanız, kimlik doğrulaması yapamaz. Uygulama parolası, kullanıcıların kimlik doğrulamaya devam etmesine izin verir
+Bazı eski, tarayıcı olmayan uygulamalar, kimlik doğrulama işleminde duraklamaları veya kesmeleri anlamıyor. Bir Kullanıcı Multi-Factor Authentication için etkinleştirilmişse ve bu eski, tarayıcı olmayan uygulamalardan birini kullanmaya çalışırsa, genellikle kimlik doğrulaması başarılı olur. Uygulama parolası, kullanıcıların kesintiye uğramadan daha eski, tarayıcı olmayan uygulamalarla kimlik doğrulaması yapmaya devam etmesine olanak tanır.
 
-Kullanıcı başına MFA aracılığıyla değil, koşullu erişim ilkeleri aracılığıyla Multi-Factor Authentication zorunlu kılabilirsiniz, uygulama parolaları oluşturamazsınız. Erişimi denetlemek için koşullu erişim ilkelerini kullanan uygulamalar, uygulama parolalara gerek kalmaz.
+Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların uygulama parolaları oluşturmalarına izin vermeniz gerekiyorsa, kullanıcının Azure Multi-Factor Authentication özellikleri için *hizmet ayarları* altında **tarayıcı olmayan uygulamalarda oturum açmak için kullanıcıların uygulama parolaları oluşturmasına izin ver** ' i seçin.
 
-Kuruluşunuz Azure AD ile SSO için federe ise ve Azure MFA 'yı kullanacaksanız, aşağıdaki ayrıntıları göz önünde bulundurun:
+![Uygulama parolalarının kullanıcısına izin vermek için çok faktörlü kimlik doğrulamasının hizmet ayarlarını gösteren Azure portal ekran görüntüsü](media/concept-authentication-methods/app-password-authentication-method.png)
 
-* Uygulama parolası Azure AD tarafından doğrulanır ve bu nedenle Federasyonu atlar. Federasyon yalnızca uygulama parolaları ayarlanırken kullanılır. Federasyon (SSO) kullanıcıları için, parolalar kuruluş KIMLIĞINDE depolanır. Kullanıcı şirketten ayrılırsa, bu bilgi DirSync kullanarak kuruluş KIMLIĞINE akacaktır. Hesabın devre dışı bırakılması/silinmesi üç saate kadar zaman alabilir. Bu, Azure AD 'de uygulama parolalarının devre dışı bırakılması/silinmesi gecikmeyebilir.
-* Şirket için İstemci Erişimi Denetimi ayarları Uygulama Parolası tarafından onaylanmaz.
-* Uygulama parolaları için şirket içi kimlik doğrulama günlüğü/Denetim yeteneği kullanılamaz.
-* Bazı gelişmiş mimari tasarımları, kimlik doğrulamalarına bağlı olarak istemcilerle iki aşamalı doğrulamayı kullanırken kurumsal Kullanıcı adı ve parolaların ve uygulama parolalarının bir birleşimini kullanmanızı gerektirebilir. Şirket içi altyapıya karşı kimlik doğrulaması yapan istemciler için bir kuruluş Kullanıcı adı ve parolası kullanırsınız. Azure AD kimlik doğrulaması yapan istemciler için uygulama parolasını kullanırsınız.
-* Varsayılan olarak, kullanıcılar uygulama parolaları oluşturamaz. Kullanıcıların uygulama parolaları oluşturmalarına izin vermeniz gerekiyorsa, hizmet ayarları altındaki **tarayıcı olmayan uygulamalarda oturum açmak için kullanıcıların uygulama parolaları oluşturmasına Izin ver seçeneğini** belirleyin.
+Azure Multi-Factor Authentication, koşullu erişim ilkelerini kullanarak zorunlu kılabilir ve Kullanıcı başına MFA aracılığıyla değil, uygulama parolaları oluşturamazsınız. Erişimi denetlemek için koşullu erişim ilkelerini kullanan modern uygulamaların uygulama parolaları gerekmez.
+
+Kuruluşunuz Azure AD ile çoklu oturum açma (SSO) için federe ise ve Azure Multi-Factor Authentication kullanıyorsanız aşağıdaki noktalar geçerlidir:
+
+* Uygulama parolası Azure AD tarafından doğrulandığından, Federasyonu atlar. Federasyon yalnızca uygulama parolaları ayarlanırken kullanılır. Federasyon (SSO) kullanıcıları için, parolalar kuruluş KIMLIĞINDE depolanır. Kullanıcı şirketten ayrılırsa, bu bilgi DirSync kullanarak kuruluş KIMLIĞINE akacaktır. Hesap devre dışı bırakma veya silme olaylarının eşitlenmesi üç saate kadar sürebilir. Bu, Azure AD 'de uygulama parolalarının devre dışı bırakılmasını/silinmesini erteler.
+* Şirket içi Istemci Access Control ayarları uygulama parolaları tarafından kabul edilmez.
+* Uygulama parolaları için şirket içi kimlik doğrulaması günlüğü veya denetim yeteneği kullanılamaz.
+* Bazı gelişmiş mimari tasarımları, kimlik doğrulamasının bulunduğu yere bağlı olarak Multi-Factor Authentication kullanırken kurumsal Kullanıcı adı ve parolaların ve uygulama parolalarının bir birleşimini kullanmanızı gerektirebilir.
+    * Şirket içi altyapıya karşı kimlik doğrulaması yapan istemciler için bir kuruluş Kullanıcı adı ve parolası kullanırsınız.
+    * Azure AD kimlik doğrulaması yapan istemciler için uygulama parolasını kullanırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kuruluşunuz için self servis parola sıfırlamayı etkinleştirin](quickstart-sspr.md)
+Başlamak için [self servis parola sıfırlama (SSPR)][tutorial-sspr] ve [Azure Multi-Factor Authentication][tutorial-azure-mfa]öğreticisine bakın.
 
-[Kuruluşunuz için Azure Multi-Factor Authentication etkinleştirme](howto-mfa-getstarted.md)
+SSPR kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure AD self servis parola sıfırlamasının nasıl çalıştığı][concept-sspr].
 
-[Kiracınızda Birleşik kayıt özelliğini etkinleştirme](howto-registration-mfa-sspr-combined.md)
+MFA kavramları hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication nasıl çalıştığı][concept-mfa].
 
-[Son Kullanıcı kimlik doğrulama yöntemi yapılandırma belgeleri](https://aka.ms/securityinfoguide)
+<!-- INTERNAL LINKS -->
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
+[concept-sspr]: concept-sspr-howitworks.md
+[concept-mfa]: concept-mfa-howitworks.md

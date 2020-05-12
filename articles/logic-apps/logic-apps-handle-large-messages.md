@@ -3,16 +3,16 @@ title: Öbek kullanarak büyük iletileri işleme
 description: Azure Logic Apps ile oluşturduğunuz otomatikleştirilmiş görevler ve iş akışlarında parçalama kullanarak büyük ileti boyutlarını nasıl işleyeceğinizi öğrenin
 services: logic-apps
 ms.suite: integration
-author: shae-hurst
-ms.author: shhurst
+author: DavidCBerry13
+ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456560"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117572"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
 
@@ -41,7 +41,7 @@ Logic Apps ile iletişim kuran hizmetler kendi ileti boyutu sınırlarına sahip
 Parçalama desteği sunan bağlayıcılar için, temel alınan Parçalama Protokolü son kullanıcılara görünmez. Ancak, tüm bağlayıcılar öbek oluşturmayı desteklemez, bu nedenle bu bağlayıcılar, gelen iletiler bağlayıcıların boyut sınırlarını aştığında çalışma zamanı hataları oluşturur.
 
 > [!NOTE]
-> Öbek kullanan eylemler için, tetikleyici gövdesini geçiremezseniz veya bu eylemlerde olduğu `@triggerBody()?['Content']` gibi ifadeleri kullanamazsınız. Bunun yerine, metin veya JSON dosya içeriği için, [ **oluşturma** eylemini](../logic-apps/logic-apps-perform-data-operations.md#compose-action) kullanmayı deneyebilir veya bu içeriği işlemek için [bir değişken oluşturabilirsiniz](../logic-apps/logic-apps-create-variables-store-values.md) . Tetikleyici gövdesi, medya dosyaları gibi diğer içerik türlerini içeriyorsa, bu içeriği işlemek için diğer adımları gerçekleştirmeniz gerekir.
+> Öbek kullanan eylemler için, tetikleyici gövdesini geçiremezseniz veya bu eylemlerde olduğu gibi ifadeleri kullanamazsınız `@triggerBody()?['Content']` . Bunun yerine, metin veya JSON dosya içeriği için, [ **oluşturma** eylemini](../logic-apps/logic-apps-perform-data-operations.md#compose-action) kullanmayı deneyebilir veya bu içeriği işlemek için [bir değişken oluşturabilirsiniz](../logic-apps/logic-apps-create-variables-store-values.md) . Tetikleyici gövdesi, medya dosyaları gibi diğer içerik türlerini içeriyorsa, bu içeriği işlemek için diğer adımları gerçekleştirmeniz gerekir.
 
 <a name="set-up-chunking"></a>
 
@@ -51,7 +51,7 @@ Genel HTTP senaryolarında, mantıksal uygulamanızın ve bir uç noktanın büy
 
 Bir uç nokta indirme veya karşıya yükleme için parçalama etkinleştirmişse, mantıksal uygulamanızdaki HTTP eylemleri otomatik olarak büyük iletileri öbektir. Aksi takdirde, uç noktada parçalama desteği ayarlamanız gerekir. Uç nokta veya bağlayıcınızı bilmiyorsanız veya denetmezseniz, parçalama ayarlama seçeneğiniz olmayabilir.
 
-Ayrıca, bir HTTP eylemi zaten parçalama etkinleştirmezse, eylemin `runTimeConfiguration` özelliğinde de parçalama ayarlamanız gerekir. Bu özelliği, doğrudan kod görünümü düzenleyicisinde, daha sonra açıklandığı şekilde veya Logic Apps tasarımcısında, burada açıklandığı gibi, eylem içinde ayarlayabilirsiniz:
+Ayrıca, bir HTTP eylemi zaten parçalama etkinleştirmezse, eylemin özelliğinde de parçalama ayarlamanız gerekir `runTimeConfiguration` . Bu özelliği, doğrudan kod görünümü düzenleyicisinde, daha sonra açıklandığı şekilde veya Logic Apps tasarımcısında, burada açıklandığı gibi, eylem içinde ayarlayabilirsiniz:
 
 1. HTTP eyleminin sağ üst köşesinde üç nokta düğmesini (**...**) ve ardından **Ayarlar**' ı seçin.
 
@@ -69,7 +69,7 @@ Ayrıca, bir HTTP eylemi zaten parçalama etkinleştirmezse, eylemin `runTimeCon
 
 Bir HTTP GET isteği aracılığıyla indirilen birçok uç nokta, öbeklere otomatik olarak büyük iletiler gönderir. HTTP üzerinden bir uç noktadan öbekli iletileri indirmek için, uç noktanın kısmi içerik isteklerini veya *öbekli İndirmeleri*desteklemesi gerekir. Mantıksal uygulamanız içerik indirmek için bir uç noktaya HTTP GET isteği gönderdiğinde ve uç nokta bir "206" durum kodu ile yanıt verirse, yanıt öbekli içerik içerir. Logic Apps, bir uç noktanın kısmi istekleri destekleyip desteklemediğini denetleyemiyorum. Ancak, mantıksal uygulamanız ilk "206" yanıtını aldığında, mantıksal uygulamanız tüm içeriği indirmek için otomatik olarak birden çok istek gönderir.
 
-Bir uç noktanın kısmi içeriği destekleyemeyeceğini denetlemek için bir HEAD isteği gönderin. Bu istek, yanıtın `Accept-Ranges` üstbilgiyi içerip içermediğini belirlemenize yardımcı olur. Bu şekilde, uç nokta, öbekli İndirmeleri destekliyorsa ancak öbekli içerik göndermezse, HTTP GET talebinizdeki `Range` üstbilgiyi ayarlayarak bu seçeneği *önerebilirsiniz* . 
+Bir uç noktanın kısmi içeriği destekleyemeyeceğini denetlemek için bir HEAD isteği gönderin. Bu istek, yanıtın üstbilgiyi içerip içermediğini belirlemenize yardımcı olur `Accept-Ranges` . Bu şekilde, uç nokta, öbekli İndirmeleri destekliyorsa ancak öbekli içerik göndermezse, HTTP GET talebinizdeki üstbilgiyi ayarlayarak bu seçeneği *önerebilirsiniz* `Range` . 
 
 Bu adımlar, bir uç noktadan mantıksal uygulamanıza öbekli içerik indirmek için kullanılan Logic Apps ayrıntılı süreci anlatmaktadır:
 
@@ -85,7 +85,7 @@ Bu adımlar, bir uç noktadan mantıksal uygulamanıza öbekli içerik indirmek 
 
     Mantıksal uygulamanız, tüm içerik alınana kadar izleme Al istekleri gönderir.
 
-Örneğin, bu eylem tanımı `Range` üstbilgiyi ayarlayan BIR http get isteği gösterir. Üstbilgi, uç noktanın öbekli içerikle yanıt vermesini *önerir* :
+Örneğin, bu eylem tanımı üstbilgiyi ayarlayan bir HTTP GET isteği gösterir `Range` . Üstbilgi, uç noktanın öbekli içerikle yanıt vermesini *önerir* :
 
 ```json
 "getAction": {
@@ -107,7 +107,7 @@ GET isteği, "Range" üst bilgisini "byte = 0-1023" olarak ayarlar ve bu da bayt
 
 ## <a name="upload-content-in-chunks"></a>Öbeklere içerik yükleme
 
-Bir HTTP eyleminden öbekli içerik yüklemek için eylemin, eylemin `runtimeConfiguration` özelliği aracılığıyla öbek desteğini etkinleştirmiş olması gerekir. Bu ayar eyleme öbek protokolünü başlatma izni verir. Mantıksal uygulamanız daha sonra bir ilk GÖNDERI gönderebilir veya hedef uç noktaya ileti YERLEŞTIREBILIR. Uç nokta, önerilen bir öbek boyutuyla yanıt verdikten sonra mantıksal uygulamanız, içerik öbeklerini içeren HTTP PATCH istekleri göndererek takip eder.
+Bir HTTP eyleminden öbekli içerik yüklemek için eylemin, eylemin özelliği aracılığıyla öbek desteğini etkinleştirmiş olması gerekir `runtimeConfiguration` . Bu ayar eyleme öbek protokolünü başlatma izni verir. Mantıksal uygulamanız daha sonra bir ilk GÖNDERI gönderebilir veya hedef uç noktaya ileti YERLEŞTIREBILIR. Uç nokta, önerilen bir öbek boyutuyla yanıt verdikten sonra mantıksal uygulamanız, içerik öbeklerini içeren HTTP PATCH istekleri göndererek takip eder.
 
 Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yüklemek için kullanılan ayrıntılı işlem Logic Apps açıklanmıştır:
 
@@ -148,7 +148,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
    | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
    ||||
 
-Örneğin, bu eylem tanımı, bir uç noktaya öbekli içerik yüklemek için bir HTTP POST isteği gösterir. Eylemin `runTimeConfiguration` özelliğinde, `contentTransfer` özelliği şu şekilde `transferMode` `chunked`ayarlanır:
+Örneğin, bu eylem tanımı, bir uç noktaya öbekli içerik yüklemek için bir HTTP POST isteği gösterir. Eylemin `runTimeConfiguration` özelliğinde, `contentTransfer` özelliği şu `transferMode` şekilde ayarlanır `chunked` :
 
 ```json
 "postAction": {

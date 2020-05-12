@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aea252772bfd911899ebdc00c902996b32475a90
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461824"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115141"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 
@@ -362,7 +362,7 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
 
    ![Birincil yönetilen örnek için ağ geçidi ekle](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve arama kutusuna yazın `Virtual network gateway` . **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
+1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve `Virtual network gateway` Arama kutusuna yazın. **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
 
    ![Yeni bir sanal ağ geçidi oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -374,10 +374,10 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
     | **Adı** | Sanal ağ geçidinizin adı. | 
-    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
+    | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
-    | **ISTEYIN**| Varsayılan bırakın `VpnGw1`. |
+    | **ISTEYIN**| Varsayılan bırakın `VpnGw1` . |
     | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| İkincil yönetilen örneğiniz için sanal ağı seçin. |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
@@ -434,15 +434,15 @@ Azure portal veya PowerShell kullanarak ikincil sanal ağ geçidini oluşturun.
    | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway`. | 
-   | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
+   | **Adı** | Sanal ağ geçidinizin adı, örneğin `secondary-mi-gateway` . | 
+   | **Geli** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
-   | **ISTEYIN**| Varsayılan bırakın `VpnGw1`. |
+   | **ISTEYIN**| Varsayılan bırakın `VpnGw1` . |
    | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
-   | **Sanal ağ**| 2 `vnet-sql-mi-secondary`. bölümde oluşturulan sanal ağı seçin. |
+   | **Sanal ağ**| 2. bölümde oluşturulan sanal ağı seçin `vnet-sql-mi-secondary` . |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
-   | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `secondary-gateway-IP`. |
+   | **Genel IP adresi adı**| IP adresiniz için gibi bir ad girin `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![İkincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -500,11 +500,11 @@ Azure portal kullanarak iki ağ geçidi arasında bağlantı oluşturun.
     1. Açılan kutuda yönetilen örneğiniz için kaynak grubunu seçin. 
     1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin 
 1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
-    1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `Primary-Gateway`.  
-    1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `Secondary-Gateway`. 
+    1. **İlk sanal ağ geçidi**için, gibi birincil ağ geçidini seçin `Primary-Gateway` .  
+    1. **İkinci sanal ağ geçidi**için ikincil ağ geçidini (gibi) seçin `Secondary-Gateway` . 
     1. **Çift yönlü bağlantı oluştur**' un yanındaki onay kutusunu işaretleyin. 
     1. Varsayılan birincil bağlantı adını bırakın ya da seçtiğiniz bir değerle yeniden adlandırın. 
-    1. Bağlantı için, gibi bir **paylaşılan anahtar (PSK)** sağlayın `mi1m2psk`. 
+    1. Bağlantı için, gibi bir **paylaşılan anahtar (PSK)** sağlayın `mi1m2psk` . 
 
    ![Ağ Geçidi bağlantısı oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
@@ -644,17 +644,30 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 ---
 
+## <a name="use-private-link"></a>Özel Bağlantı kullanma
+
+Özel bir bağlantı kullanmak, mantıksal bir sunucuyu sanal ağ ve alt ağ içindeki belirli bir özel IP adresiyle ilişkilendirmenizi sağlar. 
+
+Yük devretme grubunuza özel bir bağlantı kullanmak için aşağıdakileri yapın:
+
+1. Birincil ve ikincil sunucularınızın [eşleştirilmiş bir bölgede](/azure/best-practices-availability-paired-regions)bulunduğundan emin olun. 
+1. Birincil ve ikincil sunucular için özel uç noktaları, çakışmayan IP adresi alanları olacak şekilde barındırmak için her bölgede sanal ağ ve alt ağ oluşturun. Örneğin, 10.0.0.0/16 birincil sanal ağ adresi aralığı ve 10.0.0.1/16 için ikincil sanal ağ adresi aralığı çakışıyor. Sanal ağ adres aralıkları hakkında daha fazla bilgi için bkz. [Azure sanal ağlarını tasarlama](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)blogu.
+1. [Birincil sunucu için özel bir uç nokta ve Azure özel DNS bölgesi](../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)oluşturun. 
+1. İkincil sunucu için de özel bir uç nokta oluşturun, ancak bu kez birincil sunucu için oluşturulan Özel DNS bölgeyi yeniden kullanmayı tercih edin. 
+1. Özel bağlantı kurulduktan sonra, bu makalede daha önce özetlenen adımları izleyerek yük devretme grubunu oluşturabilirsiniz. 
+
+
 ## <a name="locate-listener-endpoint"></a>Dinleyici uç noktasını bul
 
 Yük devretme grubunuz yapılandırıldıktan sonra, uygulamanız için bağlantı dizesini dinleyici uç noktasına güncelleştirin. Bu işlem, uygulamanızı birincil veritabanı, elastik havuz veya yönetilen örnek yerine yük devretme grubu dinleyicisine bağlı tutar. Bu şekilde, Azure SQL veritabanı varlığınızın her seferinde bağlantı dizesini el ile güncelleştirmeniz gerekmez ve trafik şu anda birincil olan varlığa yönlendirilir. 
 
-Dinleyici uç noktası `fog-name.database.windows.net`,,, yük devretme grubu görüntülenirken Azure Portal görünür.
+Dinleyici uç noktası `fog-name.database.windows.net` ,,, yük devretme grubu görüntülenirken Azure Portal görünür.
 
 ![Yük devretme grubu bağlantı dizesi](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Tek veya havuza alınmış bir veritabanının yük devretme grubunu kaldırmak çoğaltmayı durdurmaz ve çoğaltılan veritabanını silmez. Bir yük devretme grubuna kaldırıldıktan sonra tek veya havuza alınmış bir veritabanı eklemek istiyorsanız Coğrafi çoğaltmayı el ile durdurmanız ve veritabanını ikincil sunucudan silmeniz gerekir. Bunun yapılması, veritabanının yük devretme grubuna eklenmeye çalışıldığında buna benzer `The operation cannot be performed due to multiple errors` bir hata oluşmasına neden olabilir. 
+- Tek veya havuza alınmış bir veritabanının yük devretme grubunu kaldırmak çoğaltmayı durdurmaz ve çoğaltılan veritabanını silmez. Bir yük devretme grubuna kaldırıldıktan sonra tek veya havuza alınmış bir veritabanı eklemek istiyorsanız Coğrafi çoğaltmayı el ile durdurmanız ve veritabanını ikincil sunucudan silmeniz gerekir. Bunun yapılması `The operation cannot be performed due to multiple errors` , veritabanının yük devretme grubuna eklenmeye çalışıldığında buna benzer bir hata oluşmasına neden olabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

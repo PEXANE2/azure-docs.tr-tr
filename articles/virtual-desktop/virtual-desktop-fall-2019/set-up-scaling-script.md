@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 28e76a93e309112d965c49f25be232ced789ad66
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983202"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117402"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
@@ -23,6 +23,10 @@ ms.locfileid: "82983202"
 Sanal makinelerinizi (VM 'Ler) ölçeklendirerek toplam Windows sanal masaüstü dağıtım maliyetinizi azaltabilirsiniz. Bu, yoğun olmayan kullanım saatlerinde oturum ana bilgisayar VM 'lerinin kapatılması ve serbest bir şekilde çıkarılması, daha sonra yeniden açılması ve yoğun saatlerde yeniden bulunması anlamına gelir.
 
 Bu makalede, Azure Otomasyonu ile derlenen ve Windows sanal masaüstü ortamınızdaki oturum ana bilgisayarı sanal makinelerini otomatik olarak ölçeklendirecek Azure Logic Apps ölçeklendirme aracı hakkında bilgi edineceksiniz. Ölçeklendirme aracının nasıl kullanılacağını öğrenmek için [önkoşulların](#prerequisites)önüne atlayın.
+
+## <a name="report-issues"></a>Sorun bildirme
+
+Ölçeklendirme aracı için sorun raporları Şu anda Microsoft Desteği yerine GitHub 'da işlenmekte. Ölçeklendirme aracıyla ilgili herhangi bir sorunla karşılaşırsanız, [RDS GitHub sayfasında](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)"4A-WVD-ölçeklendirmesini-logicapps" olarak etiketlenmiş bir GitHub sorunu açmak için bu dosyaları bildirebilirsiniz.
 
 ## <a name="how-the-scaling-tool-works"></a>Ölçeklendirme aracının çalışması
 
@@ -43,7 +47,7 @@ En yüksek kullanım süresi boyunca iş, her konak havuzu için geçerli çalı
 
 En yoğun kullanım süresi boyunca, iş, hangi oturum ana bilgisayar VM 'lerinin *Minimumnumberofrdsh* parametresine bağlı olarak kapanması gerektiğini belirler. İş, konaklara bağlanan yeni oturumları engellemek için oturum ana bilgisayarları 'nı boşalt moduna ayarlar. *Limitsecondstoforcelogoffuser* parametresini sıfır olmayan pozitif bir değere ayarlarsanız, iş, oturum açmış olan tüm kullanıcılara, çalışmalarını kaydetmesi, yapılandırılan süreyi beklemesi ve ardından kullanıcıları oturumu kapatmaya zorlayacaktır. Oturum Ana bilgisayar VM 'si üzerindeki tüm Kullanıcı oturumları oturumu kapatıldıktan sonra, iş sanal makineyi kapatır.
 
-*Limitsecondstoforcelogoffuser* parametresini sıfır olarak ayarlarsanız, iş, belirtilen grup ilkelerindeki oturum yapılandırma ayarının kullanıcı oturumlarını kapatmayı işlemesine izin verir. Bu grup ilkelerini görmek için**Windows bileşenleri** > **Terminal Hizmetleri** > **Terminal sunucusu** > **oturumu süre sınırları****Yönetim Şablonları** >  **bilgisayar yapılandırma** > **ilkeleri** > ' ne gidin. Bir oturum ana bilgisayar VM 'sinde etkin bir oturum varsa, iş, oturum ana bilgisayar VM 'sini çalışır durumda bırakır. Etkin oturum yoksa, iş, oturum ana bilgisayarı sanal makinesini kapatır.
+*Limitsecondstoforcelogoffuser* parametresini sıfır olarak ayarlarsanız, iş, belirtilen grup ilkelerindeki oturum yapılandırma ayarının kullanıcı oturumlarını kapatmayı işlemesine izin verir. Bu grup ilkelerini görmek için **Computer Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Terminal Hizmetleri**  >  **Terminal sunucusu**  >  **oturumu süre sınırları**Yönetim Şablonları bilgisayar yapılandırma ilkeleri ' ne gidin. Bir oturum ana bilgisayar VM 'sinde etkin bir oturum varsa, iş, oturum ana bilgisayar VM 'sini çalışır durumda bırakır. Etkin oturum yoksa, iş, oturum ana bilgisayarı sanal makinesini kapatır.
 
 İş düzenli aralıklarla ayarlanan yineleme aralığına göre çalışır. Windows sanal masaüstü ortamınızın boyutuna bağlı olarak bu aralığı değiştirebilirsiniz, ancak sanal makinelerin başlatılması ve kapatılması biraz zaman alabilir, bu nedenle gecikmeyi hesaba erteleyebilirsiniz. Yinelenme aralığını her 15 dakikada bir ayarlamanız önerilir.
 
@@ -258,6 +262,3 @@ Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin (var
 
 ![Ölçeklendirme aracı için çıkış penceresinin bir görüntüsü.](../media/tool-output.png)
 
-## <a name="report-issues"></a>Sorun bildirme
-
-Ölçeklendirme aracıyla ilgili herhangi bir sorunla karşılaşırsanız, bunları [RDS GitHub sayfasından](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)rapor edebilirsiniz.

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617148"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117216"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Olağanüstü durum kurtarma yük devretme yordamı
 
@@ -34,7 +34,7 @@ Bir DR sitesine yük devretmek için göz önünde bulundurmanız gereken iki du
 >[!NOTE]
 >Aşağıdaki adımlar, DR birimini temsil eden HANA büyük örnek biriminde yapılmalıdır. 
  
-En son çoğaltılan depolama anlık görüntülerine geri yüklemek için, [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)'nda "tam Dr yük devretmesi-azure_hana_dr_failover gerçekleştirme" bölümündeki adımları izleyin. 
+En son çoğaltılan depolama anlık görüntülerine geri yüklemek için, [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)'nda "tam Dr yük devretmesi-azure_hana_dr_failover gerçekleştirme" bölümündeki adımları izleyin. 
 
 Birden çok SAP HANA örneğine yük devredilecek şekilde, azure_hana_dr_failover komutunu birkaç kez çalıştırın. İstendiğinde, yük devretmek ve geri yüklemek istediğiniz SAP HANA SID 'sini girin. 
 
@@ -115,7 +115,7 @@ Olağanüstü durum kurtarma sitesinde SAP üretim iş yükünüzü bir süredir
 
 ## <a name="monitor-disaster-recovery-replication"></a>Olağanüstü durum kurtarma çoğaltmasını izleme
 
-Depolama çoğaltma ilerleme durumunun durumunu izlemek için betiği `azure_hana_replication_status`çalıştırın. Bu komutun beklenen şekilde çalışması için olağanüstü durum kurtarma konumunda çalışan bir birimden çalıştırılması gerekir. Bu komut, çoğaltmanın etkin olup olmadığı bağımsız olarak işe yarar. Komut, olağanüstü durum kurtarma konumunda kiracınızın her HANA büyük örnek birimi için çalıştırılabilir. Önyükleme birimiyle ilgili ayrıntıları almak için kullanılamaz. 
+Depolama çoğaltma ilerleme durumunun durumunu izlemek için betiği çalıştırın `azure_hana_replication_status` . Bu komutun beklenen şekilde çalışması için olağanüstü durum kurtarma konumunda çalışan bir birimden çalıştırılması gerekir. Bu komut, çoğaltmanın etkin olup olmadığı bağımsız olarak işe yarar. Komut, olağanüstü durum kurtarma konumunda kiracınızın her HANA büyük örnek birimi için çalıştırılabilir. Önyükleme birimiyle ilgili ayrıntıları almak için kullanılamaz. 
 
 Komut ve çıktısı hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA Için Microsoft Snapshot araçları](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)'NDA "Dr çoğaltma durumunu alma-azure_hana_replication_status".
 

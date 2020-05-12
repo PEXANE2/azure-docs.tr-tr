@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 03/31/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d1d7ad27c43a0f8b4bbb763a1eb933a63cec58e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80607534"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115651"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management içinde yönetileyemiyorum roller
 
@@ -40,7 +40,7 @@ Klasik abonelik yöneticisi rolleri hakkında daha fazla bilgi için bkz. [Klasi
 Exchange Yöneticisi ve SharePoint Yöneticisi gibi Azure AD rolleri ve yöneticiler portalı deneyiminde tüm Office365 rollerini destekliyoruz, ancak Exchange RBAC veya SharePoint RBAC içindeki belirli rolleri desteklemiyoruz. Bu Office 365 hizmetleri hakkında daha fazla bilgi için bkz. [office 365 Yönetici rolleri](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> SharePoint yönetici rolü için uygun kullanıcılar ve Microsoft Güvenlik ve Uyumluluk Merkezi 'Ne erişmeye çalışan tüm roller, rollerini etkinleştirdikten sonra birkaç saate kadar gecikme yaşar. Bu ekiplerle ilgili sorunları gidermek için çalışıyoruz.
+> SharePoint yönetici rolü için uygun kullanıcılar, Cihaz Yöneticisi rolü ve Microsoft Güvenlik ve Uyumluluk Merkezi 'ne erişmeye çalışan tüm roller, rollerini etkinleştirdikten sonra birkaç saate kadar gecikme yaşar. Bu ekiplerle ilgili sorunları gidermek için çalışıyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

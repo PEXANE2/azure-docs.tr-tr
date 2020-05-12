@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050489"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115906"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -26,6 +26,9 @@ Bu makalede, Microsoft Identity platformu ile tümleştirilirken en iyi uygulama
 Yeni başladıysanız, kimlik doğrulama temelleri, Microsoft Identity platformunda uygulama senaryoları ve daha fazlası hakkında bilgi edinmek için [Microsoft Identity Platform belgelerine](index.yml) göz atın.
 
 Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/active-directory/develop/)ile etkin bir şekilde tümleştirildiğinden emin olmak için aşağıdaki denetim listesini kullanın.
+
+> [!TIP]
+> Azure portal *tümleştirme Yardımcısı* , bu en iyi yöntemler ve önerilerin birçoğunu uygulamanıza yardımcı olabilir. Azure portal [uygulama kayıtlarınızın](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) birini seçin ve ardından yardımcı kullanmaya başlamak için **tümleştirme Yardımcısı (Önizleme)** menü öğesini seçin.
 
 ## <a name="basics"></a>Temel Bilgiler
 
@@ -56,7 +59,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 
 |   |   |
 |---|---|
-| ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) | Yeniden yönlendirme URI 'larınızı yönetin: <ul><li>Tüm yeniden yönlendirme URI 'Lerinin sahipliğini koruyun ve DNS kayıtlarını güncel tutun.</li><li>URI 'larınız için joker karakterler (*) kullanmayın.</li><li>Web uygulamaları için tüm URI 'Lerin güvenli ve şifreli olduğundan emin olun (örneğin, https şemaları kullanarak).</li><li>Genel istemciler için, varsa platforma özgü yeniden yönlendirme URI 'Lerini kullanın (temel olarak iOS ve Android için). Aksi takdirde, uygulamanıza geri çağrı yaparken çarpışmaları engellemek için yüksek miktarda rasgelelik ile yeniden yönlendirme URI 'Leri kullanın.</li><li>Uygulamanız yalıtılmış bir Web aracısından kullanılıyorsa, kullanabilirsiniz `https://login.microsoftonline.com/common/oauth2/nativeclient`.</li><li>Tüm kullanılmayan veya gereksiz yeniden yönlendirme URI 'Lerini düzenli olarak gözden geçirin ve kırpın.</li></ul> |
+| ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) | Yeniden yönlendirme URI 'larınızı yönetin: <ul><li>Tüm yeniden yönlendirme URI 'Lerinin sahipliğini koruyun ve DNS kayıtlarını güncel tutun.</li><li>URI 'larınız için joker karakterler (*) kullanmayın.</li><li>Web uygulamaları için tüm URI 'Lerin güvenli ve şifreli olduğundan emin olun (örneğin, https şemaları kullanarak).</li><li>Genel istemciler için, varsa platforma özgü yeniden yönlendirme URI 'Lerini kullanın (temel olarak iOS ve Android için). Aksi takdirde, uygulamanıza geri çağrı yaparken çarpışmaları engellemek için yüksek miktarda rasgelelik ile yeniden yönlendirme URI 'Leri kullanın.</li><li>Uygulamanız yalıtılmış bir Web aracısından kullanılıyorsa, kullanabilirsiniz `https://login.microsoftonline.com/common/oauth2/nativeclient` .</li><li>Tüm kullanılmayan veya gereksiz yeniden yönlendirme URI 'Lerini düzenli olarak gözden geçirin ve kırpın.</li></ul> |
 | ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulamanız bir dizine kayıtlıysa, uygulama kayıt sahiplerinin listesini simge durumuna küçültün ve el ile izleyin. |
 | ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) | Açıkça gerekli olmadığı takdirde [OAuth2 örtük verme akışı](v2-oauth2-implicit-grant-flow.md) desteğini etkinleştirmeyin. Geçerli senaryo hakkında [buradan](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)bilgi edinin. |
 | ![onay kutusu](./media/active-directory-integration-checklist/checkbox-two.svg) | Kullanıcı adı/parola ötesine geçin. Kullanıcıların parolalarını doğrudan işleyen [kaynak sahibi parola kimlik bilgisi akışını (ROPC)](v2-oauth-ropc.md)kullanmayın. Bu akış, yüksek derecede güven ve Kullanıcı pozlaması gerektirir ve yalnızca diğer, daha güvenli ve akış kullanılmıyorsa kullanılmalıdır. Bu akış, bazı senaryolarda (DevOps gibi) hala gereklidir, ancak bunu kullanmanın uygulamanıza kısıtlamalar getirdiğinden emin olun.  Daha modern yaklaşımlar için [kimlik doğrulama akışlarını ve uygulama senaryolarını](authentication-flows-app-scenarios.md)okuyun.|
@@ -104,4 +107,4 @@ V2.0 hakkında ayrıntılı bilgileri keşfedin:
 * [Kimlik belirteçleri başvurusu](id-tokens.md)
 * [Kimlik doğrulama kitaplıkları başvurusu](reference-v2-libraries.md)
 * [Microsoft Identity platformunda izinler ve onay](v2-permissions-and-consent.md)
-* [Microsoft Graph API'si](https://developer.microsoft.com/graph)
+* [Microsoft Graph API’si](https://developer.microsoft.com/graph)
