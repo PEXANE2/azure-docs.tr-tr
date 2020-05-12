@@ -15,7 +15,7 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM şablonu
           href: quick-setup-auto-provision-rm.md
-    - name: Tek bir simülasyon cihazı sağlama
+    - name: Tek cihaz sağlama
       items:
         - name: Simetrik Anahtar kanıtlama
           items:

@@ -426,13 +426,31 @@
           items:
             - name: Ses yardımcıları hakkında SSS
               href: faq-voice-assistants.md
+    - name: Windows’da ses yardımcıları
+      items:
+        - name: Windows’da ses yardımcılarına genel bakış
+          href: windows-voice-assistants-overview.md
+        - name: Nasıl yapılır kılavuzları
+          items:
+            - name: Windows’da yardımcınızı geliştirmeye başlama
+              href: how-to-windows-voice-assistants-get-started.md
+            - name: Ses etkinleştirmeyi açma
+              href: windows-voice-assistants-implementation-guide.md
+        - name: Kaynaklar
+          items:
+            - name: Gizlilik gereksinimleri ve yönergeleri
+              href: windows-voice-assistants-automatic-enablement-guidelines.md
+            - name: Yardımcı deneyimleri için en iyi yöntemler
+              href: windows-voice-assistants-best-practices.md
+            - name: Örnekler ve sık sorulan sorular
+              href: windows-voice-assistants-faq.md
     - name: Özel Anahtar Sözcük
       items:
         - name: Özel anahtar sözcüğe genel bakış
           href: custom-keyword-overview.md
         - name: Özel anahtar sözcük adlandırma yönergeleri
           href: speech-devices-sdk-kws-guidelines.md
-        - name: Özel anahtar sözcük belirleme
+        - name: Özel klavye tanıma
           href: speech-devices-sdk-create-kws.md
 - name: Barındırma
   items:

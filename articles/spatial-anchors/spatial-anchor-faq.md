@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844896"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004464"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure uzamsal bağlantıları hakkında sık sorulan sorular
 
@@ -49,6 +49,10 @@ Y **:** Bağlantı oluşturma ve bulma için gereken süre birçok etkene bağl�
 
 Y **:** Çıpaları Azure hesabı tarafından yalıtılmıştır. Yalnızca hesabınıza erişim izni verdiğiniz uygulamalar, hesap içindeki Tutturuculara erişebilecektir.
 
+**S: Azure uzamsal bağlantıları verileri nasıl depolar?**
+
+Y **:** Tüm veriler, Microsoft tarafından yönetilen bir veri şifreleme anahtarıyla şifrelenmiş olarak depolanır.
+
 **S: Azure uzamsal bağlayıcıları kullanılırken bir ortamla ilgili hangi bilgiler iletilir ve hizmete depolanır? Aktarılan ve depolanan ortamın resimleri mı var?**
 
 Y **: bağlantıları**oluştururken veya bulmada, ortamın resimleri, cihazda türetilmiş bir biçimde işlenir. Bu türetilmiş biçim öğesine iletilir ve hizmete depolanır.
@@ -59,7 +63,6 @@ Azure uzamsal bağlantıları, [Azure hizmet sözleşmesi koşullarına](https:/
 
 ![Bir ortam ve onun türetilmiş seyrek nokta bulutu](./media/sparse-point-cloud.png)
 *Şekil 1: bir ortam ve onun türetilmiş seyrek nokta bulutu*
-
 
 **S: Microsoft 'a tanılama bilgilerini gönderemem için bir yol var mı?**
 

@@ -37,8 +37,10 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Kavramlar
       items:
-        - name: HDInsight üzerindeki Apache Hadoop bileşenleri
+        - name: HDInsight üzerindeki Apache bileşenleri
           href: ./hdinsight-component-versioning.md
+        - name: Kurumsal Güvenlik Paketi
+          href: ./enterprise-security-package.md
         - name: Hortonworks sürüm notları
           href: ./hortonworks-release-notes.md
         - name: Yüksek kullanılabilirlik bileşenleri
