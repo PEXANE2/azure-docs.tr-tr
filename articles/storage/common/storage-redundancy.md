@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872004"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117725"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -102,7 +102,7 @@ Coğrafi olarak yedekli depolama (GZRS), coğrafi çoğaltma tarafından sunulan
 
 Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır.
 
-GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok Blobları, sayfa Blobları (VHD diskleri hariç), dosyalar, tablolar ve kuyruklar. GZRS ve RA-GZRS tüm Azure bölgelerinde kullanılabilir.
+GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok Blobları, sayfa Blobları (VHD diskleri hariç), dosyalar, tablolar ve kuyruklar.
 
 GZRS ve RA-GZRS aşağıdaki bölgelerde desteklenir:
 
@@ -126,7 +126,7 @@ Coğrafi olarak yedekli depolama (GRS veya GZRS ile), bölgesel kesintilere kar�
 
 Depolama Hesabınız ikincil bölgeye okuma erişimi için yapılandırılmışsa, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse, uygulamalarınızı ikincil bölgeden verileri okumak için sorunsuz bir şekilde kaydırma yapmak üzere tasarlayabilirsiniz. İkincil bölge, her zaman okuma erişimi için kullanılabilir olduğundan, bir kesinti durumunda ikincinden okunmasını sağlamak için uygulamanızı test edebilirsiniz. Uygulamalarınızı yüksek kullanılabilirliğe göre tasarlamak hakkında daha fazla bilgi için bkz. [coğrafi artıklığı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](geo-redundant-design.md).
 
-İkinciye okuma erişimi etkinleştirildiğinde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, BLOB depolama için birincil uç noktanız ise `myaccount.blob.core.windows.net`ikincil uç nokta olur. `myaccount-secondary.blob.core.windows.net` Depolama hesabınızın hesap erişim anahtarları, hem birincil hem de ikincil uç noktalar için aynıdır.
+İkinciye okuma erişimi etkinleştirildiğinde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, BLOB depolama için birincil uç noktanız ise `myaccount.blob.core.windows.net` İkincil uç nokta olur `myaccount-secondary.blob.core.windows.net` . Depolama hesabınızın hesap erişim anahtarları, hem birincil hem de ikincil uç noktalar için aynıdır.
 
 ### <a name="check-the-last-sync-time-property"></a>Son Eşitleme Zamanı özelliğini denetleme
 
@@ -143,7 +143,7 @@ Aşağıdaki tabloda, depolama hesabınızda hangi artıklık türünün geçerl
 | Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                  |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | No                              | Yes                              | Yes                                  | Yes                                  |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Yes                              | Yes                                  | Yes                                  |
 | Bölge genelinde kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Yes                                  | Yes                                  |
 | Birincil bölge kullanılamaz duruma gelirse ikincil bölgedeki verilere yönelik okuma erişimi | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
 | Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |

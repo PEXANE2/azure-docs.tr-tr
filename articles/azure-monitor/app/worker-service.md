@@ -2,19 +2,19 @@
 title: Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 description: Azure Izleyici Application Insights .NET Core/. NET Framework HTTP olmayan uygulamaları izleme.
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: f043140e5a342d114f777ad16bba588790b7f8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 1f9b35022e63c4c3fe671237149602f8db465466
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536735"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117886"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
-Application Insights, mesajlaşma, arka plan görevleri, `Microsoft.ApplicationInsights.WorkerService`konsol uygulamaları vb. gibi http olmayan iş yükleri için en uygun olan adlı yenı bir SDK 'yı serbest bırakmaktadır. Bu tür uygulamalar, bir geleneksel ASP.NET/ASP.NET Core Web uygulaması gibi gelen HTTP isteği kavramı içermez ve bu nedenle [ASP.net](asp-net.md) veya [ASP.NET Core](asp-net-core.md) uygulamaları için Application Insights paketleri kullanılması desteklenmez.
+Application Insights `Microsoft.ApplicationInsights.WorkerService` , mesajlaşma, arka plan görevleri, konsol uygulamaları vb. gıbı http olmayan iş yükleri için en uygun olan adlı yeni BIR SDK 'yı serbest bırakmaktadır. Bu tür uygulamalar, bir geleneksel ASP.NET/ASP.NET Core Web uygulaması gibi gelen HTTP isteği kavramı içermez ve bu nedenle [ASP.net](asp-net.md) veya [ASP.NET Core](asp-net-core.md) uygulamaları için Application Insights paketleri kullanılması desteklenmez.
 
-Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependencycollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [perfcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [applicationınsightsloggingprovider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) vb. gibi diğer iyi bilinen Application Insights otomatik toplayıcılarda yer alır. Bu SDK, telemetri toplamayı etkinleştirmek `IServiceCollection` ve yapılandırmak için üzerinde uzantı yöntemleri sunar.
+Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependencycollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [perfcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [applicationınsightsloggingprovider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) vb. gibi diğer iyi bilinen Application Insights otomatik toplayıcılarda yer alır. Bu SDK `IServiceCollection` , telemetri toplamayı etkinleştirmek ve yapılandırmak için üzerinde uzantı yöntemleri sunar.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -27,7 +27,7 @@ Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insi
 ## <a name="using-application-insights-sdk-for-worker-services"></a>Çalışan hizmetleri için Application Insights SDK 'sını kullanma
 
 1. [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
-   Aşağıdaki kod parçacığında, projenizin `.csproj` dosyasına eklenmesi gereken değişiklikler gösterilmektedir.
+   Aşağıdaki kod parçacığında, projenizin dosyasına eklenmesi gereken değişiklikler gösterilmektedir `.csproj` .
 
 ```xml
     <ItemGroup>
@@ -35,9 +35,9 @@ Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insi
     </ItemGroup>
 ```
 
-1. ' `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` De `IServiceCollection`, izleme anahtarını sağlayan genişletme yöntemini çağırın. Bu yöntem, uygulamanın başlangıcında çağrılmalıdır. Tam konum, uygulamanın türüne bağlıdır.
+1. ' `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` De `IServiceCollection` , izleme anahtarını sağlayan genişletme yöntemini çağırın. Bu yöntem, uygulamanın başlangıcında çağrılmalıdır. Tam konum, uygulamanın türüne bağlıdır.
 
-1. Oluşturucu Ekleme `ILogger` işlemini çağırarak `TelemetryClient` `serviceProvider.GetRequiredService<TelemetryClient>();` veya kullanarak bağımlılık ekleme (dı) kapsayıcısından bir örnek veya örnek alın. Bu adım, `TelemetryConfiguration` ve otomatik toplama modülleri ayarlamayı tetikler.
+1. `ILogger` `TelemetryClient` Oluşturucu ekleme işlemini çağırarak veya kullanarak bağımlılık ekleme (dı) kapsayıcısından bir örnek veya örnek alın `serviceProvider.GetRequiredService<TelemetryClient>();` . Bu adım, `TelemetryConfiguration` ve otomatik toplama modülleri ayarlamayı tetikler.
 
 Her uygulama türü için belirli yönergeler aşağıdaki bölümlerde açıklanmıştır.
 
@@ -49,7 +49,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
 2. Visual Studio yeni proje şablonu veya komut satırı kullanarak yeni bir çalışan hizmeti projesi oluşturma`dotnet new worker`
 3. [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
 
-4. Aşağıdaki `services.AddApplicationInsightsTelemetryWorkerService();` örnekte olduğu `CreateHostBuilder()` gibi sınıfınıza `Program.cs` yöntemine ekleyin:
+4. `services.AddApplicationInsightsTelemetryWorkerService();` `CreateHostBuilder()` `Program.cs` Aşağıdaki örnekte olduğu gibi sınıfınıza yöntemine ekleyin:
 
 ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -61,7 +61,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
             });
 ```
 
-5. Aşağıdaki örnekteki `Worker.cs` gibi değiştirin.
+5. `Worker.cs`Aşağıdaki örnekteki gibi değiştirin.
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -102,7 +102,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
 
 6. İzleme anahtarını ayarlayın.
 
-    İzleme anahtarını için `AddApplicationInsightsTelemetryWorkerService`bir bağımsız değişken olarak sağlayabilseniz de, yapılandırmada izleme anahtarını belirtmenizi öneririz. Aşağıdaki kod örneği, içinde `appsettings.json`bir izleme anahtarının nasıl ekleneceğini gösterir. Yayımlama sırasında `appsettings.json` uygulama kök klasörüne kopyalandığından emin olun.
+    İzleme anahtarını için bir bağımsız değişken olarak sağlayabilseniz de `AddApplicationInsightsTelemetryWorkerService` , yapılandırmada izleme anahtarını belirtmenizi öneririz. Aşağıdaki kod örneği, içinde bir izleme anahtarının nasıl ekleneceğini gösterir `appsettings.json` . `appsettings.json`Yayımlama sırasında uygulama kök klasörüne kopyalandığından emin olun.
 
 ```json
     {
@@ -129,7 +129,7 @@ VEYA`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Web işleri olarak Web Apps dağıtılan uygulamalar için izleme anahtarını belirler.
 
 > [!NOTE]
-> Diğer seçenekler üzerinde WINS olan ortam değişkeni `APPINSIGHTS_INSTRUMENTATIONKEY`üzerinden WINS kodunda belirtilen bir izleme anahtarı.
+> Diğer seçenekler üzerinde WINS olan ortam değişkeni üzerinden WINS kodunda belirtilen bir izleme anahtarı `APPINSIGHTS_INSTRUMENTATIONKEY` .
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Barındırılan hizmetlerle arka plan görevlerini ASP.NET Core
 
@@ -137,8 +137,8 @@ Genellikle, `APPINSIGHTS_INSTRUMENTATIONKEY` Web işleri olarak Web Apps dağıt
 
 Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) paylaşılır
 
-1. Microsoft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
-2. Aşağıdaki `services.AddApplicationInsightsTelemetryWorkerService();` örnekteki gibi `ConfigureServices()` yöntemine ekleyin:
+1. Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
+2. `services.AddApplicationInsightsTelemetryWorkerService();` `ConfigureServices()` Aşağıdaki örnekteki gibi yöntemine ekleyin:
 
 ```csharp
     public static async Task Main(string[] args)
@@ -170,7 +170,7 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
     }
 ```
 
-Arka plan görevi mantığının bulunduğu `TimedHostedService` kod aşağıda verilmiştir.
+`TimedHostedService`Arka plan görevi mantığının bulunduğu kod aşağıda verilmiştir.
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -216,15 +216,15 @@ Arka plan görevi mantığının bulunduğu `TimedHostedService` kod aşağıda 
 ```
 
 3. İzleme anahtarını ayarlayın.
-   Yukarıdaki .NET Core `appsettings.json` 3,0 çalışan Hizmeti örneğinde aynısını kullanın.
+   `appsettings.json`Yukarıdaki .NET Core 3,0 çalışan Hizmeti örneğinde aynısını kullanın.
 
 ## <a name="net-corenet-framework-console-application"></a>.NET Core/. NET Framework konsol uygulaması
 
-Bu makalenin başlangıcında bahsedildiği gibi, yeni paket, düzenli bir konsol uygulamasından bile Application Insights Telemetri sağlamak için kullanılabilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), .net Core 2,0 veya üzeri konsol uygulamaları için ve .NET Framework 4.7.2 veya üzeri için kullanılabilir.
+Bu makalenin başlangıcında bahsedildiği gibi, yeni paket, düzenli bir konsol uygulamasından bile Application Insights Telemetri sağlamak için kullanılabilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , .NET Core 2,0 veya üzeri konsol uygulamaları için ve .NET Framework 4.7.2 veya üzeri için kullanılabilir.
 
 Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) paylaşılır
 
-1. Microsoft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
+1. Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) paketini uygulamaya yükler.
 
 2. Aşağıdaki örnekte Program.cs değiştirin.
 
@@ -288,13 +288,13 @@ Tam örnek [burada](https://github.com/microsoft/ApplicationInsights-Home/tree/m
     }
 ```
 
-Bu konsol uygulaması aynı varsayılanı `TelemetryConfiguration`kullanır ve önceki bölümde örneklerle aynı şekilde özelleştirilebilir.
+Bu konsol uygulaması aynı varsayılanı kullanır `TelemetryConfiguration` ve önceki bölümde örneklerle aynı şekilde özelleştirilebilir.
 
 ## <a name="run-your-application"></a>Uygulamanızı çalıştırma
 
-Uygulamanızı çalıştırın. Yukarıdaki yukarıdaki tüm Yukarıdaki örnek çalışanlar, bing.com ' ye her saniye bir http çağrısı yapar ve ayrıca ILogger kullanarak birkaç günlük yayar. Bu satırlar `StartOperation` `TelemetryClient`, bir işlem oluşturmak için kullanılan (Bu örnekte `RequestTelemetry` "işlem" adlı) çağrısı içinde sarmalanır. Application Insights, bu ILogger günlüklerini (varsayılan olarak uyarı veya üstü) ve bağımlılıkları toplayacak ve üst-alt ilişkisiyle bağıntılı `RequestTelemetry` olacak. Bağıntı Ayrıca çapraz işlem/ağ sınırını da işler. Örneğin, çağrı başka bir izlenen bileşene yapılmışsa, bu üst öğeyle da bağıntılı olur.
+Uygulamanızı çalıştırın. Yukarıdaki yukarıdaki tüm Yukarıdaki örnek çalışanlar, bing.com ' ye her saniye bir http çağrısı yapar ve ayrıca ILogger kullanarak birkaç günlük yayar. Bu satırlar `StartOperation` `TelemetryClient` , bir işlem oluşturmak için kullanılan (Bu örnekte `RequestTelemetry` "işlem" adlı) çağrısı içinde sarmalanır. Application Insights, bu ILogger günlüklerini (varsayılan olarak uyarı veya üstü) ve bağımlılıkları toplayacak ve `RequestTelemetry` üst-alt ilişkisiyle bağıntılı olacak. Bağıntı Ayrıca çapraz işlem/ağ sınırını da işler. Örneğin, çağrı başka bir izlenen bileşene yapılmışsa, bu üst öğeyle da bağıntılı olur.
 
-Bu özel işlemi `RequestTelemetry` , tipik bir Web uygulamasındaki gelen bir Web isteğinin eşdeğeri olarak düşünülebilir. Bir Işlemi kullanmak gerekli olmasa da, üst işlem olarak `RequestTelemetry` davrandığı ve çalışan yinelemede oluşturulan her telemetriyi aynı işleme göre mantıksal olarak kabul edilen [Application Insights bağıntı veri modeliyle](https://docs.microsoft.com/azure/azure-monitor/app/correlation) en iyi şekilde uyum sağlar. Bu yaklaşım ayrıca oluşturulan tüm Telemetriyi (otomatik ve el ile) aynı `operation_id`olacak şekilde sağlar. Örnekleme temel alınarak `operation_id`örnekleme algoritması, tek bir yinelemeden Telemetriyi korur ya da bırakır.
+Bu özel işlemi, `RequestTelemetry` tipik bir Web uygulamasındaki gelen bir Web isteğinin eşdeğeri olarak düşünülebilir. Bir Işlemi kullanmak gerekli olmasa da, [Application Insights correlation data model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) `RequestTelemetry` üst işlem olarak davrandığı ve çalışan yinelemede oluşturulan her telemetriyi aynı işleme göre mantıksal olarak kabul edilen Application Insights bağıntı veri modeliyle en iyi şekilde uyum sağlar. Bu yaklaşım ayrıca oluşturulan tüm Telemetriyi (otomatik ve el ile) aynı olacak şekilde sağlar `operation_id` . Örnekleme temel alınarak `operation_id` örnekleme algoritması, tek bir yinelemeden Telemetriyi korur ya da bırakır.
 
 Aşağıda, Application Insights tarafından otomatik olarak toplanan tüm telemetri listelenmektedir.
 
@@ -304,7 +304,7 @@ Aşağıda, Application Insights tarafından otomatik olarak toplanan tüm telem
 
 ### <a name="ilogger-logs"></a>ILogger günlükleri
 
-Önem derecesi `Warning` veya `ILogger` daha büyük aracılığıyla yayılan Günlükler otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
+`ILogger`Önem derecesi `Warning` veya daha büyük aracılığıyla yayılan Günlükler otomatik olarak yakalanır. Application Insights tarafından yakalanan günlük düzeylerini özelleştirmek için [ILogger belgelerini](ilogger.md#control-logging-level) izleyin.
 
 ### <a name="dependencies"></a>Bağımlılıklar
 
@@ -316,20 +316,20 @@ Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencie
 
 ### <a name="manually-tracking-additional-telemetry"></a>Ek Telemetriyi el ile izleme
 
-SDK, yukarıda açıklandığı gibi telemetri otomatik olarak toplarken, çoğu durumda kullanıcının Application Insights hizmetine ek telemetri gönderebilmesi gerekir. Ek Telemetriyi `TelemetryClient` izlemek için önerilen yol, bağımlılık ekleme ve sonra desteklenen `TrackXXX()` [API](api-custom-events-metrics.md) yöntemlerinden birini çağırma. Başka bir tipik kullanım örneği, [işlemlerin özel izlemedir](custom-operations-tracking.md). Bu yaklaşım yukarıdaki çalışan örneklerde gösterilmiştir.
+SDK, yukarıda açıklandığı gibi telemetri otomatik olarak toplarken, çoğu durumda kullanıcının Application Insights hizmetine ek telemetri gönderebilmesi gerekir. Ek Telemetriyi izlemek için önerilen yol, `TelemetryClient` bağımlılık ekleme ve sonra desteklenen `TrackXXX()` [API](api-custom-events-metrics.md) yöntemlerinden birini çağırma. Başka bir tipik kullanım örneği, [işlemlerin özel izlemedir](custom-operations-tracking.md). Bu yaklaşım yukarıdaki çalışan örneklerde gösterilmiştir.
 
 ## <a name="configure-the-application-insights-sdk"></a>Application Insights SDK 'sını yapılandırma
 
-Çalışan hizmeti `TelemetryConfiguration` SDK 'sı tarafından kullanılan varsayılan yapılandırma, ASP.NET veya ASP.NET Core uygulamasında kullanılan otomatik yapılandırmaya benzerdir ve bu da Telemetriyi zenginleştirmek Için kullanılan TelemetryInitializers `HttpContext`.
+`TelemetryConfiguration`Çalışan hizmeti SDK 'sı tarafından kullanılan varsayılan yapılandırma, ASP.NET veya ASP.NET Core uygulamasında kullanılan otomatik yapılandırmaya benzerdir ve bu da Telemetriyi zenginleştirmek için kullanılan TelemetryInitializers `HttpContext` .
 
-Çalışan hizmeti için Application Insights SDK 'sını, varsayılan yapılandırmayı değiştirecek şekilde özelleştirebilirsiniz. Application Insights ASP.NET Core SDK kullanıcıları ASP.NET Core yerleşik [bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)kullanılarak yapılandırma değişikliği hakkında bilgi sahibi olabilir. WorkerService SDK 'Sı benzer ilkeleri de temel alır. Aşağıda açıklandığı gibi, üzerinde `ConfigureServices()` `IServiceCollection`uygun yöntemleri çağırarak, bölümünde neredeyse tüm yapılandırma değişikliklerini yapın.
+Çalışan hizmeti için Application Insights SDK 'sını, varsayılan yapılandırmayı değiştirecek şekilde özelleştirebilirsiniz. Application Insights ASP.NET Core SDK kullanıcıları ASP.NET Core yerleşik [bağımlılık ekleme](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)kullanılarak yapılandırma değişikliği hakkında bilgi sahibi olabilir. WorkerService SDK 'Sı benzer ilkeleri de temel alır. `ConfigureServices()`Aşağıda açıklandığı gibi, üzerinde uygun yöntemleri çağırarak, bölümünde neredeyse tüm yapılandırma değişikliklerini yapın `IServiceCollection` .
 
 > [!NOTE]
-> Bu SDK kullanılırken, değiştirilerek `TelemetryConfiguration.Active` yapılandırmayı değiştirme desteklenmiyor ve değişiklikler yansıtılmayacak.
+> Bu SDK kullanılırken, değiştirilerek yapılandırmayı değiştirme `TelemetryConfiguration.Active` desteklenmiyor ve değişiklikler yansıtılmayacak.
 
 ### <a name="using-applicationinsightsserviceoptions"></a>Applicationınsightsserviceoptions kullanma
 
-Aşağıdaki örnekte olduğu gibi `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetryWorkerService`, ' a geçirerek birkaç ortak ayarı değiştirebilirsiniz:
+`ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetryWorkerService` Aşağıdaki örnekte olduğu gibi, ' a geçirerek birkaç ortak ayarı değiştirebilirsiniz:
 
 ```csharp
     using Microsoft.ApplicationInsights.WorkerService;
@@ -347,7 +347,7 @@ Aşağıdaki örnekte olduğu gibi `ApplicationInsightsServiceOptions` `AddAppli
     }
 ```
 
-Bu SDK `ApplicationInsightsServiceOptions` 'DAKI ASP.NET Core SDK 'nın aksine `Microsoft.ApplicationInsights.WorkerService` `Microsoft.ApplicationInsights.AspNetCore.Extensions` ad alanında olduğunu unutmayın.
+`ApplicationInsightsServiceOptions`Bu SDK 'daki ASP.NET Core SDK 'nın aksine ad alanında olduğunu unutmayın `Microsoft.ApplicationInsights.WorkerService` `Microsoft.ApplicationInsights.AspNetCore.Extensions` .
 
 İçinde yaygın olarak kullanılan ayarlar`ApplicationInsightsServiceOptions`
 
@@ -368,7 +368,7 @@ En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılan
 
 Tüm telemetri ile gönderilen özellikleri tanımlamak istediğinizde [telemetri başlatıcıları](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) 'nı kullanın.
 
-Kapsayıcıya yeni `TelemetryInitializer` bir Ekle ve SDK 'yi otomatik olarak öğesine ekleyin `TelemetryConfiguration` `DependencyInjection`
+Kapsayıcıya yeni bir Ekle `TelemetryInitializer` `DependencyInjection` ve SDK 'yi otomatik olarak öğesine ekleyin `TelemetryConfiguration` .
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -382,7 +382,7 @@ Kapsayıcıya yeni `TelemetryInitializer` bir Ekle ve SDK 'yi otomatik olarak ö
 
 ### <a name="removing-telemetryinitializers"></a>TelemetryInitializers kaldırılıyor
 
-Telemetri başlatıcıları varsayılan olarak mevcuttur. Tüm veya belirli telemetri başlatıcıları 'nı kaldırmak için, çağrısından `AddApplicationInsightsTelemetryWorkerService()` *sonra* aşağıdaki örnek kodu kullanın.
+Telemetri başlatıcıları varsayılan olarak mevcuttur. Tüm veya belirli telemetri başlatıcıları 'nı kaldırmak için, çağrısından *sonra* aşağıdaki örnek kodu kullanın `AddApplicationInsightsTelemetryWorkerService()` .
 
 ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -404,7 +404,7 @@ Telemetri başlatıcıları varsayılan olarak mevcuttur. Tüm veya belirli tele
 
 ### <a name="adding-telemetry-processors"></a>Telemetri işlemcisi ekleme
 
-Üzerinde genişletme yöntemi `TelemetryConfiguration` `AddApplicationInsightsTelemetryProcessor` kullanarak ' `IServiceCollection`ye özel telemetri işlemcileri ekleyebilirsiniz. Application Insights hizmetine göndereceğiniz telemetride nelerin dahil edildiğini veya dışlandığından daha doğrudan denetim sağlamak için, [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer) telemetri işlemcileri kullanırsınız. Aşağıdaki örneği kullanın.
+`TelemetryConfiguration`Üzerinde genişletme yöntemi kullanarak ' ye özel telemetri işlemcileri ekleyebilirsiniz `AddApplicationInsightsTelemetryProcessor` `IServiceCollection` . Application Insights hizmetine göndereceğiniz telemetride nelerin dahil edildiğini veya dışlandığından daha doğrudan denetim sağlamak için, [Gelişmiş filtreleme senaryolarında](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer) telemetri işlemcileri kullanırsınız. Aşağıdaki örneği kullanın.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -425,10 +425,11 @@ Aşağıdaki otomatik koleksiyon modülleri varsayılan olarak etkinleştirilmi�
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`
+* `AppServicesHeartbeatTelemetryModule`-(Şu anda bu telemetri modülüyle ilgili bir sorun var. Geçici bir çözüm için bkz. [GitHub sorunu 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+).)
 * `AzureInstanceMetadataTelemetryModule`
 
-Herhangi bir varsayılanı `TelemetryModule`yapılandırmak için, aşağıdaki örnekte gösterildiği `ConfigureTelemetryModule<T>` gibi `IServiceCollection`genişletme yöntemini üzerinde kullanın.
+Herhangi bir Varsayılanı yapılandırmak için, `TelemetryModule` `ConfigureTelemetryModule<T>` `IServiceCollection` Aşağıdaki örnekte gösterildiği gibi genişletme yöntemini üzerinde kullanın.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -458,7 +459,7 @@ Herhangi bir varsayılanı `TelemetryModule`yapılandırmak için, aşağıdaki 
 
 ### <a name="configuring-telemetry-channel"></a>Telemetri kanalını yapılandırma
 
-Varsayılan kanal `ServerTelemetryChannel`. Aşağıdaki örnekte gösterildiği gibi, geçersiz kılabilirsiniz.
+Varsayılan kanal `ServerTelemetryChannel` . Aşağıdaki örnekte gösterildiği gibi, geçersiz kılabilirsiniz.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -475,7 +476,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="disable-telemetry-dynamically"></a>Telemetrisi dinamik olarak devre dışı bırak
 
-Telemetriyi koşullu ve dinamik olarak devre dışı bırakmak istiyorsanız, kodunuzu `TelemetryConfiguration` kodunuzda herhangi bir yere ASP.NET Core bağımlılık ekleme kapsayıcısı ile çözümleyebilir ve üzerinde `DisableTelemetry` bayrak ayarlayabilirsiniz.
+Telemetriyi koşullu ve dinamik olarak devre dışı bırakmak istiyorsanız, `TelemetryConfiguration` kodunuzu kodunuzda herhangi bir yere ASP.NET Core bağımlılık ekleme kapsayıcısı ile çözümleyebilir ve `DisableTelemetry` üzerinde bayrak ayarlayabilirsiniz.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -494,7 +495,7 @@ Telemetriyi koşullu ve dinamik olarak devre dışı bırakmak istiyorsanız, ko
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Otomatik olarak toplanmayan telemetrileri nasıl izleyebilirim?
 
-Oluşturucu Ekleme kullanarak bir `TelemetryClient` örneğini alın ve üzerinde gerekli `TrackXXX()` yöntemi çağırın. Yeni `TelemetryClient` örnek oluşturmanız önerilmez. Tek bir örneği `TelemetryClient` `DependencyInjection` kapsayıcıda zaten kayıtlı olduğundan telemetri geri kalanıyla birlikte paylaşır `TelemetryConfiguration` . Yeni `TelemetryClient` bir örnek oluşturmak yalnızca telemetri geri kalanından ayrı bir yapılandırmaya ihtiyaç duyduğunda önerilir.
+`TelemetryClient`Oluşturucu Ekleme kullanarak bir örneğini alın ve `TrackXXX()` üzerinde gerekli yöntemi çağırın. Yeni örnek oluşturmanız önerilmez `TelemetryClient` . Tek bir örneği `TelemetryClient` kapsayıcıda zaten kayıtlı olduğundan `DependencyInjection` `TelemetryConfiguration` telemetri geri kalanıyla birlikte paylaşır. Yeni bir `TelemetryClient` örnek oluşturmak yalnızca telemetri geri kalanından ayrı bir yapılandırmaya ihtiyaç duyduğunda önerilir.
 
 ### <a name="can-i-use-visual-studio-ide-to-onboard-application-insights-to-a-worker-service-project"></a>Bir çalışan hizmeti projesine Application Insights eklemek için Visual Studio IDE kullanabilir miyim?
 
@@ -509,7 +510,7 @@ Hayır. [Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/m
 Evet. Bu SDK için özellik desteği, aşağıdaki özel durumlarla birlikte tüm platformlarda aynıdır:
 
 * Performans sayaçları yalnızca Windows 'da, canlı ölçümlerde gösterilen Işlem CPU 'SU/belleği dışında desteklenir.
-* `ServerTelemetryChannel` Varsayılan olarak etkin olsa da, uygulama Linux veya MacOS 'ta çalışıyorsa, ağ sorunları varsa Telemetriyi geçici tutmak için kanal otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybedilir. Bu sorunu geçici olarak çözmek için, kanal için yerel bir klasör yapılandırın:
+* `ServerTelemetryChannel`Varsayılan olarak etkin olsa da, uygulama Linux veya MacOS 'ta çalışıyorsa, ağ sorunları varsa Telemetriyi geçici tutmak için kanal otomatik olarak yerel bir depolama klasörü oluşturmaz. Bu sınırlama nedeniyle, geçici ağ veya sunucu sorunları olduğunda telemetri kaybedilir. Bu sorunu geçici olarak çözmek için, kanal için yerel bir klasör yapılandırın:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/11/2020
+ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732045"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117793"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -196,11 +196,15 @@ Görünüm Tasarımcısı yalnızca Log Analytics çalışma alanında katkıda 
 * [Azure tanılama](platform/diagnostics-extension-to-application-insights.md)
 * [Java web uygulaması](app/java-troubleshoot.md)
 
-*Sunucuma veri aldım*
+*Sunucuma veri aldım:*
 
 * [Güvenlik Duvarı özel durumlarını ayarlama](app/ip-addresses.md)
 * [ASP.NET sunucusu kurma](app/monitor-performance-live-website-now.md)
 * [Java sunucusu kurma](app/java-agent.md)
+
+*Kaç Application Insights dağıtmalıyım?:*
+
+* [Application Insights dağıtımınızı tasarlama: bir çok Application Insights kaynağı.](app/separate-resources.md)
 
 ### <a name="can-i-use-application-insights-with-"></a>Application Insights,... ile birlikte kullanabilir miyim?
 
@@ -247,15 +251,15 @@ Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
 * İçine öğe ekler:
   * Web.config
   * packages.config
-* (Yalnızca yeni projeler- [var olan bir projeye Application Insights eklerseniz][start]bunu el ile yapmanız gerekir.) , Application Insights kaynak KIMLIĞI ile başlatmak için istemci ve sunucu koduna kod parçacıkları ekler. Örneğin, bir MVC uygulamasında kod ana sayfa görünümlerine/paylaşılan/\_Layout. cshtml 'ye eklenir
+* (Yalnızca yeni projeler- [var olan bir projeye Application Insights eklerseniz][start]bunu el ile yapmanız gerekir.) , Application Insights kaynak KIMLIĞI ile başlatmak için istemci ve sunucu koduna kod parçacıkları ekler. Örneğin, bir MVC uygulamasında kod ana sayfa görünümlerine/paylaşılan/ \_ Layout. cshtml 'ye eklenir
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Nasıl yaparım? eski SDK sürümlerinden yükseltme yapılsın mı?
 Uygulama türüne uygun SDK için [sürüm notlarına](app/release-notes.md) bakın.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?
-Çözüm Gezgini ' de sağ tıklayın ve `ApplicationInsights.config` **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
+Çözüm Gezgini ' de sağ tıklayın `ApplicationInsights.config` ve **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
 
-### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Azure Resource Manager dağıtımlarım `providers('Microsoft.Insights', 'components').apiVersions[0]` içinde kullanabilir miyim?
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>`providers('Microsoft.Insights', 'components').apiVersions[0]`Azure Resource Manager dağıtımlarım içinde kullanabilir miyim?
 
 API sürümünü doldurmak için bu yöntemi kullanmanızı önermiyoruz. En yeni sürüm, son değişiklikleri içerebilen önizleme sürümlerini temsil edebilir. Daha yeni önizleme olmayan sürümlerden bile, API sürümleri mevcut şablonlarla her zaman geriye doğru uyumlu değildir veya bazı durumlarda API sürümü tüm abonelikler için kullanılamayabilir.
 
@@ -309,7 +313,7 @@ Evet, şu sunucuda yazabilirsiniz:
 * IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)bakın.
 
 
-Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN ile taşınır `X-Originating-IP`. [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN ile taşınır `X-Originating-IP` . [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 İstek telemetrinizi bir haritada göstermek için [Power BI kullanabilirsiniz](app/export-power-bi.md ) .
 
@@ -378,7 +382,7 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 
 [Örnekleme](app/sampling.md) , gerçekten uygulamanızdan portala gönderilen telemetri öğelerinin (istek, özel olay vb.) sayısını azaltır. Arama bölümünde, gerçekten alınan öğe sayısını görürsünüz. Olayların sayısını görüntüleyen ölçüm grafiklerinde, gerçekleşen özgün olay sayısını görürsünüz. 
 
-Aktarılan her öğe, öğenin kaç tane `itemCount` özgün olay temsil ettiğini gösteren bir özellik taşır. Örneklemede örnekleme gözlemlemek için bu sorguyu Analytics 'te çalıştırabilirsiniz:
+Aktarılan her öğe, `itemCount` öğenin kaç tane özgün olay temsil ettiğini gösteren bir özellik taşır. Örneklemede örnekleme gözlemlemek için bu sorguyu Analytics 'te çalıştırabilirsiniz:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -436,7 +440,7 @@ Web sunucunuzun, uç noktalarımıza telemetri göndermesini sağlar.
 
 Yapılandırmanızda bulunan uç noktaların üzerine yazarak intranetteki trafiği intranetinizdeki bir ağ geçidine yönlendirin. Bu "uç nokta" özellikleri, config uygulamanızda yoksa, bu sınıflar örnek ApplicationInsights. config örneğinde aşağıda gösterilen varsayılan değerleri kullanır. 
 
-Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda varsayılan değerleri ile `http://<your.gateway.address>/<relative path>`değiştirin.
+Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda varsayılan değerleri ile değiştirin `http://<your.gateway.address>/<relative path>` .
 
 
 ##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Varsayılan bitiş noktaları ile örnek ApplicationInsights. config:
@@ -515,7 +519,7 @@ Bunlar, düğümünüz üzerinde çalışan kapsayıcısız işlemlerdir.
 
 Bunu nasıl hesaplarız?
 
-**Diğer işlemler** = , - *Kapsayıcılı işlemden* *cadvizörü kullanımının toplam kullanımını*
+**Diğer süreçler**  =  *Cadvizörü*  -  'ten toplam kullanım *Kapsayıcılı Işlemden kullanım*
 
 **Diğer süreçler** şunları içerir:
 
@@ -537,7 +541,7 @@ Aracı sürümü ciprod12042019 ve üzeri için, varsayılan olarak bu iki özel
 
 Sonuçlara bu özellik değerlerini dahil etmek için diğer tabloları birleştirin.
 
-Kapsayıcılarınızda, tablo ve ImageTag özelliklerini, ```ContainerInventory``` containerıd özelliğine katılarak tablodaki resim ve ImageTag özelliklerini içerecek şekilde değiştirin. Name özelliğini (daha önce ```ContainerLog``` tabloda göründüğü gibi) KubepodInventory tablosunun Containename alanındaki containerıd özelliğine katılarak dahil edebilirsiniz. Önerilen seçenek budur.
+Kapsayıcılarınızda, tablo ve ImageTag özelliklerini, ```ContainerInventory``` Containerıd özelliğine katılarak tablodaki resim ve ImageTag özelliklerini içerecek şekilde değiştirin. Name özelliğini (daha önce tabloda göründüğü gibi ```ContainerLog``` ) KubepodInventory tablosunun ContaineName alanındaki Containerıd özelliğine katılarak dahil edebilirsiniz. Önerilen seçenek budur.
 
 Aşağıdaki örnek, bu alan değerlerinin birleşimlerle nasıl alınacağını anlatan örnek bir ayrıntılı sorgudur.
 
@@ -628,7 +632,7 @@ Soruna ilişkin ayrıntılı bir bakış için aşağıdaki [GitHub bağlantıs�
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Canlı günlükleri etkinleştirdiğimde Azure AD hatalarını Nasıl yaparım? çözün misiniz? 
 
-Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' <uygulama kimliği\>'**. Çözümü çözecek çözüm, [kapsayıcılar Için Azure izleyici ile kapsayıcı verilerinin gerçek zamanlı olarak nasıl görüntüleneceği](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)makalesinde bulunabilir. 
+Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' <uygulama kimliği \> '**. Çözümü çözecek çözüm, [kapsayıcılar Için Azure izleyici ile kapsayıcı verilerinin gerçek zamanlı olarak nasıl görüntüleneceği](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)makalesinde bulunabilir. 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Ekleme işleminden sonra kümeyi neden yükseltemiyorum?
 
