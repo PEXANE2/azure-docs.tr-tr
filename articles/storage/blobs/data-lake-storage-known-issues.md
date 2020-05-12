@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767967"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007468"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -43,7 +43,7 @@ Bu bölümde, aynı verilerde çalışacak blob API 'Leri ve Data Lake Storage 2
 
 * Aynı dosyanın aynı örneğine yazmak için hem blob API 'Leri hem de Data Lake Storage API 'Leri kullanamazsınız. Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez. Data Lake Storage 2. API 'leri ya da blob API 'Lerini kullanarak bir dosyanın üzerine yazabilirsiniz. Bu dosya özelliklerini etkilemez.
 
-* Bir sınırlayıcı belirtmeden [Blobları Listele](https://docs.microsoft.com/rest/api/storageservices/list-blobs) işlemini kullandığınızda, sonuçlar hem dizinleri hem de Blobları içerecektir. Bir sınırlayıcı kullanmayı seçerseniz yalnızca eğik çizgi (`/`) kullanın. Bu, desteklenen tek sınırlayıcıdır.
+* Bir sınırlayıcı belirtmeden [Blobları Listele](https://docs.microsoft.com/rest/api/storageservices/list-blobs) işlemini kullandığınızda, sonuçlar hem dizinleri hem de Blobları içerecektir. Bir sınırlayıcı kullanmayı seçerseniz yalnızca eğik çizgi ( `/` ) kullanın. Bu, desteklenen tek sınırlayıcıdır.
 
 * Bir dizini silmek için [blobu silme](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 'sini kullanırsanız, bu dizin yalnızca boşsa silinir. Bu, blob API 'SI silme dizinlerini yinelemeli olarak kullanamayacağı anlamına gelir.
 
@@ -70,12 +70,11 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 
 ## <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
 
-* Blob anlık görüntülerini silme henüz desteklenmiyor.  
+Blob anlık görüntülerini silme henüz desteklenmiyor. 
 
 ## <a name="archive-tier"></a>Arşiv katmanı
 
 Şu anda arşiv erişim katmanını etkileyen bir hata var.
-
 
 ## <a name="blobfuse"></a>Blobsigortası
 
@@ -91,7 +90,7 @@ AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki]
 
 ## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 
-Yalnızca sürümlerini `1.6.0` veya üstünü kullanın.
+Yalnızca sürümlerini  `1.6.0`   veya üstünü kullanın.
 
 <a id="explorer-in-portal" />
 
@@ -108,6 +107,39 @@ REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri ç
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Erişim denetim listeleri (ACL) ve anonim okuma erişimi
 
 Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
+
+## <a name="premium-performance-block-blob-storage-accounts"></a>Premium-performans Blok Blobu depolama hesapları
+
+### <a name="diagnostic-logs"></a>Tanılama günlükleri
+
+Tanılama günlükleri henüz Azure portal kullanılarak etkinleştirilemez. PowerShell kullanarak bunları etkinleştirebilirsiniz. Örneğin:
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri
+
+- Yaşam döngüsü yönetimi ilkeleri henüz Premium Blok Blob depolama hesaplarında desteklenmemektedir. 
+
+- Veriler Premium katmandan daha düşük katmanlara taşınamaz. 
+
+- **BLOB silme** eylemi şu anda desteklenmiyor. 
+
+### <a name="hdinsight-support"></a>HDInsight desteği
+
+N HDInsight kümesi oluşturduğunuzda, hiyerarşik ad alanı özelliği etkinleştirilmiş bir Blok Blobu depolama hesabı seçemezsiniz. Ancak, hesabı oluşturduktan sonra kümeye ekleyebilirsiniz.
+
+### <a name="dremio-support"></a>Dremio desteği
+
+Dremio henüz hiyerarşik ad alanı özelliği etkinleştirilmiş bir Blok Blobu depolama hesabına bağlanmıyor. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Depolama Blobu (. b) sürücüsü (Data Lake Storage 2. ile desteklenmez)
 
