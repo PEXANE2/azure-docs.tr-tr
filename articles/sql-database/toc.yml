@@ -127,6 +127,8 @@
               items:
                 - name: Güvenlik açığı değerlendirmesi
                   href: sql-vulnerability-assessment.md
+                - name: Güvenlik açığı değerlendirme kuralları
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: VA taramalarını güvenlik duvarlarının ve sanal ağların arkasında depolama
                   href: sql-database-vulnerability-assessment-storage.md
             - name: Gelişmiş Tehdit Koruması

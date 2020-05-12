@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: Güvenlik uyarılarını yönetme
           href: security-center-managing-and-responding-alerts.md
+        - name: Güvenlik uyarıları için engelleme kuralları
+          href: alerts-suppression-rules.md
         - name: Güvenlik olaylarını yönetme
           href: security-center-incident.md
         - name: Bulut Akıllı Uyarı bağıntısı (olaylar)

@@ -1,14 +1,14 @@
 ---
 title: UK resmi & UK NHS şema örnek denetimleri
 description: UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851375"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005606"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
@@ -27,9 +27,6 @@ Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır
 - Depolama hesaplarına güvenli aktarım etkinleştirilmelidir
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularından denetim sonuçlarını göster
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için önkoşulları dağıtma
-- API uygulamanızda en son TLS sürümü kullanılmalıdır
-- Web uygulamanızda en son TLS sürümü kullanılmalıdır
-- İşlev Uygulaması en son TLS sürümü kullanılmalıdır
 
 ## <a name="23-data-at-rest-protection"></a>2,3 veri bekleyen koruma
 
@@ -129,8 +126,8 @@ Bu şema ayrıca Azure ilke tanımlarını atayarak Azure kaynaklarına erişimi
 
 - \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
 - \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetleyin
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetleme
+- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerinden denetim sonuçlarını göster
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
 - Yönetilen diskleri kullanmayan VM 'Leri denetleme
@@ -141,12 +138,10 @@ Uygun güvenli Kullanıcı yönetimi için 25 ' ten fazla ilke kullanmaktan baş
 
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - Uyarlamalı uygulama denetimleri sanal makinelerde etkinleştirilmelidir
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
-- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
+- Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır
 - Uç nokta koruma çözümü, sanal makine ölçek kümelerine yüklenmelidir
 - Sanal makinelere anlık ağ erişim denetimi uygulanmalıdır
-- Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - İşlev Uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - Web uygulaması için uzaktan hata ayıklama kapatılmalıdır
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
@@ -179,13 +174,13 @@ Bu şema Ayrıca, hesap tanımlarını, ve yükseltilmiş izinlere sahip olan am
 
 Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
 
-- \[Önizleme\]: Linux VM/etc/passwd dosya izinlerinin denetim 0644 olarak ayarlanır
+- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
 
 ## <a name="13-audit-information-for-users"></a>Kullanıcılar için 13 denetim bilgileri
 
 Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../../../policy/overview.md) tanımları atanarak sistem olaylarının günlüğe kaydedildiğinden emin olmanıza yardımcı olur. Atanan bir ilke, sanal makinelerin belirli bir Log Analytics çalışma alanına günlük gönderip göndermemişse de denetler.
 
-- SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - Tanılama ayarını denetle
 - \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
 - \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma

@@ -130,6 +130,8 @@
       href: reference-powershell-module.md
 - name: Kaynaklar
   items:
+    - name: Azure Lab Services Blogu
+      href: 'https://aka.ms/azlabs-blog'
     - name: Azure güncelleştirmeleri
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: Fiyatlandırma

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657316"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006103"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure uzamsal Tutturucuların genel bakış
 
@@ -26,7 +26,7 @@ Bu kesin ilgi noktaları, uzamsal bağlayıcı olarak adlandırılır.
 
 Uzamsal Tutturucuların etkinleştirildiği bazı örnek kullanım durumları şunlardır:
 
-- [Çok kullanıcılı deneyimler](tutorials/tutorial-share-anchors-across-devices.md). Uzamsal bağlantılar, aynı yerde bulunan kişilerin çok kullanıcılı karma gerçeklik uygulamalarına katılmasını kolaylaştırır. Örneğin, iki kişi bir tabloya sanal satranç panosu yerleştirerek karma gerçeklik satranç oyununu başlatabilir. Ardından, cihazlarını tabloya işaret ederek, sanal satranç panosunu birlikte görüntüleyip etkileşime girebilirler.
+- [Çok kullanıcılı deneyimler](tutorials/tutorial-share-anchors-across-devices.md). Azure uzamsal bağlantıları, aynı yerde bulunan kişilerin çok kullanıcılı karma gerçeklik uygulamalarına katılmasını kolaylaştırır. Örneğin, iki kişi bir tabloya sanal satranç panosu yerleştirerek karma gerçeklik satranç oyununu başlatabilir. Ardından, cihazlarını tabloya işaret ederek, sanal satranç panosunu birlikte görüntüleyip etkileşime girebilirler.
 
 - [Yol bulma](concepts/anchor-relationships-way-finding.md). Geliştiriciler, uzamsal bağlantıları aralarında ilişkiler oluşturarak da birbirine bağlayabilirler. Örneğin, bir uygulama, bir kullanıcının bir görevi tamamlaması için etkileşimde bulunması gereken iki veya daha fazla ilgi noktasına sahip bir deneyim içerebilir. Bu ilgi çekici noktaları, bağlı bir biçimde oluşturulabilir. Daha sonra, Kullanıcı çok adımlı görevi tamamlarken, uygulama, kullanıcının görevin bir sonraki adımına yaklaşmasını sağlamak için yakın olan bağlantıları ister.
 
@@ -36,7 +36,7 @@ Azure Spatial Anchors bir yönetilen hizmetten ve desteklenen cihaz platformlar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
+Azure uzamsal bağlayıcılarla ilk uygulamanızı oluşturun.
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)
