@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231229"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007543"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -138,8 +138,6 @@ Sınırlayıcı kutular için, önemli sorular şunlardır:
 
 **Ml yardımlı etiketleme** sayfası etiketleme görevini hızlandırmak için otomatik makine öğrenimi modellerini tetiklemenizi sağlar. Etiketleme projenizin başlangıcında, görüntüler potansiyel bir farkı azaltmak için rastgele bir sıraya bölünür. Ancak, veri kümesinde bulunan herhangi bir sapmaları eğitilen modele yansıtılır. Örneğin, görüntülerinizin %80 ' u tek bir sınıfta ise, modeli eğitmek için kullanılan verilerin yaklaşık %80 ' i o sınıfa ait olacaktır. Bu eğitim, etkin öğrenimi içermez.
 
-Bu özellik, görüntü sınıflandırması (çok sınıf veya çok etiketli) görevler için kullanılabilir.  
-
 *Ml yardımlı etiketlemeyi etkinleştir* ' i seçin ve iki aşamadan oluşan yardımlı etiketlemeyi etkinleştirmek IÇIN bir GPU belirtin:
 * Kümeleme
 * Önceden etiketleme
@@ -150,13 +148,15 @@ Son Etiketler etiketleyici 'den girişe hala dayandığından, bu teknoloji baze
 
 ### <a name="clustering"></a>Kümeleme
 
-Belirli sayıda etiket gönderildikten sonra, makine öğrenimi modeli benzer görüntüleri gruplamak için başlatılır.  Bu benzer görüntüler, el ile etiketlemesini hızlandırmak için aynı ekranda Etiketleyiciler tarafından sunulur. Kümeleme, özellikle etiketleyici 4, 6 veya 9 ' un bir kılavuzunu görüntülerken yararlıdır. 
+Belirli sayıda etiket gönderildikten sonra, görüntü sınıflandırması için makine öğrenimi modeli benzer görüntüleri birlikte gruplamak için başlar.  Bu benzer görüntüler, el ile etiketlemesini hızlandırmak için aynı ekranda Etiketleyiciler tarafından sunulur. Kümeleme, özellikle etiketleyici 4, 6 veya 9 ' un bir kılavuzunu görüntülerken yararlıdır. 
 
 Bir Machine Learning modeli el ile etiketlenmiş veriler üzerinde eğitilirken, model en son tam bağlantılı katmana kesilir. Etiketlendirmesiz görüntüler, daha sonra "gömme" veya "uygun hale getirme" olarak bilinen bir işlemdeki kesilen modelden geçirilir. Bu, her görüntüyü bu model katmanı tarafından tanımlanan yüksek boyutlu bir alana katıştırır. Alanda en yakın komşu olan görüntüler kümeleme görevleri için kullanılır. 
 
+Kümeleme aşaması, nesne algılama modelleri için görüntülenmez.
+
 ### <a name="prelabeling"></a>Önceden etiketleme
 
-Daha fazla resim etiketi gönderildikten sonra, görüntü etiketlerini tahmin etmek için bir sınıflandırma modeli kullanılır.  Etiketleyici artık her görüntüde önceden tahmin edilen etiketler içeren sayfaları görüyor.  Daha sonra görev, sayfayı göndermeden önce bu etiketleri gözden geçirdikten sonra yanlış etiketlenmiş görüntüleri düzeltir.  
+Yeterli resim etiketi gönderildikten sonra, görüntü etiketlerini tahmin etmek için bir sınıflandırma modeli kullanılır. Ya da bir nesne algılama modeli, sınırlayıcı kutuları tahmin etmek için kullanılır. Etiketleyici artık her görüntüde önceden tahmin edilen etiketler içeren sayfaları görüyor. Nesne algılama için tahmin edilen kutular da gösterilir. Görev daha sonra bu tahminleri gözden geçirdikten sonra sayfayı göndermeden önce, yanlış etiketlenmiş görüntüleri düzeltir.  
 
 Bir makine öğrenimi modelinin el ile etiketlendiği veriler üzerinde eğitilene kadar, model el ile etiketlenmiş bir test kümesi üzerinde değerlendirilir ve farklı güven eşiklerinde doğruluğu tespit edilir. Bu değerlendirme işlemi, modelin, ön etiketleri göstermek için yeterince doğru olduğu bir güven eşiğini belirlemede kullanılır. Model daha sonra etiketli olmayan verilere karşı değerlendirilir. Tahmine dayalı olarak bu eşikten daha güvenli olan görüntüler, önceden etiketleme için kullanılır.
 

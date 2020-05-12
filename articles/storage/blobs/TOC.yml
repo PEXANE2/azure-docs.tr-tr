@@ -59,6 +59,8 @@
               href: storage-quickstart-blobs-php.md
             - name: Ruby
               href: storage-quickstart-blobs-ruby.md
+            - name: Xamarin
+              href: storage-quickstart-blobs-xamarin.md
     - name: Öğreticiler
       items:
         - name: Görüntüyü karşıya yükleme ve işleme
@@ -700,8 +702,10 @@
       items:
         - name: Oluştur
           items:
-            - name: Genel amaçlı v2 depolama hesabı oluşturma
+            - name: Depolama hesabı oluşturma (genel amaçlı v2)
               href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Depolama hesabı oluşturma (blok blobu)
+              href: storage-blob-create-account-block-blob.md
         - name: Geçiş
           items:
             - name: Data Lake Storage 1. Nesil’den geçirme

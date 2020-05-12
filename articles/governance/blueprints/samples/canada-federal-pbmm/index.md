@@ -1,18 +1,18 @@
 ---
 title: Kanada Federal PBMM şema örneğine genel bakış
 description: Kanada Federal PBMM şeması örneğine genel bakış. Bu şema örneği, müşterilerin belirli Kanada Federal PBMM denetimlerini değerlendirmesine yardımcı olur.
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: c1c5f9c6ec8dc49db4c93d0fbf9caa379a4ab160
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fcaf4a844db10f4a87b205d08cfe3a86a6182957
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74544502"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005674"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal PBMM şeması örneğine genel bakış
 
-Kanada Federal Korumalı B, Orta Bütünlük, Orta Kullanılabilirlik (PBMM) şema örneği, [Kanada Federal PBMM](../../../policy/overview.md) kanıtlamasına yardımcı olan [Azure İlkesi](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4)’ni kullanarak bir idare koruyucu kümesi sağlar. 
+Kanada Federal Korumalı B, Orta Bütünlük, Orta Kullanılabilirlik (PBMM) şema örneği, [Kanada Federal PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) kanıtlamasına yardımcı olan [Azure İlkesi](../../../policy/overview.md)’ni kullanarak bir idare koruyucu kümesi sağlar. 
 
 ## <a name="blueprint-sample"></a>Şema örneği
 
