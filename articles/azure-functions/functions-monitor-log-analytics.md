@@ -3,14 +3,14 @@ title: Azure Izleme günlükleri ile Azure Işlevlerini izleme
 description: İşlev yürütmelerini izlemek için Azure Işlevleri ile Azure Izleme günlüklerini nasıl kullanacağınızı öğrenin.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649883"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121669"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Izleme günlükleri ile Azure Işlevlerini izleme
 
@@ -25,17 +25,23 @@ Azure Izleyici, Azure Veri Gezgini tarafından kullanılan ve basit günlük sor
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
-**İzleme** bölümünde **Tanılama ayarları** ' nı seçin ve ardından **Tanılama ayarı Ekle**' ye tıklayın.
+1. [Azure Portal](https://portal.azure.com)Işlev uygulamanızın **izleme** bölümünden **Tanılama ayarları**' nı ve ardından **Tanılama ayarı Ekle**' yi seçin.
 
-![Tanılama ayarı ekleme](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Tanılama ayarlarını seçin":::
 
-**Tanılama ayarları** sayfasında **Log Analytics gönder**' i seçin ve sonra Log Analytics çalışma alanınızı seçin. **Günlük** **' i**seçin, bu tablo istenen günlükleri içerir.
+1. **Tanılama ayarları** sayfasında, **Kategori ayrıntıları** ve **günlüğü**altında **functionapplogs**' u seçin.
 
-![Tanılama ayarı ekleme](media/functions-monitor-log-analytics/choose-table.png)
+   **Functionapplogs** tablosu, istenen günlükleri içerir.
+
+1. **Hedef ayrıntıları**altında **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma alanınızı**seçin. 
+
+1. Bir **Tanılama ayarları adı**girin ve ardından **Kaydet**' i seçin.
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Tanılama ayarı ekleme":::
 
 ## <a name="user-generated-logs"></a>Kullanıcı tarafından oluşturulan Günlükler
 
-Özel Günlükler oluşturmak için, dilinize bağlı olarak belirli günlük ifadesini kullanabilirsiniz, örnek kod parçacıkları aşağıda verilmiştir:
+Özel Günlükler oluşturmak için, dilinize özgü günlüğe kaydetme ifadesini kullanın. Örnek kod parçacıkları şunlardır:
 
 
 # <a name="c"></a>[, #](#tab/csharp)
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Günlükleri sorgulama
 
-Oluşturulan günlükleri sorgulamak için, işlev günlüklerini göndermek üzere yapılandırdığınız Log Analytics çalışma alanına gidin ve **Günlükler**' e tıklayın.
+Oluşturulan günlükleri sorgulamak için:
+ 
+1. İşlev uygulamanızdan **Tanılama ayarları**' nı seçin. 
 
-![LA çalışma alanındaki sorgu penceresi](media/functions-monitor-log-analytics/querying.png)
+1. **Tanılama ayarları** listesinden, işlev günlüklerini göndermek için yapılandırdığınız Log Analytics çalışma alanını seçin. 
 
-Azure Işlevleri tüm günlükleri **Functionapplogs** tablosuna yazar, bazı örnek sorgular aşağıda verilmiştir.
+1. **Log Analytics çalışma alanı** sayfasında **Günlükler**' i seçin.
+
+   Azure Işlevleri, tüm günlükleri **Logmanagement**altındaki **functionapplogs** tablosuna yazar. 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics çalışma alanındaki sorgu penceresi":::
+
+Bazı örnek sorgular aşağıda verilmiştir:
 
 ### <a name="all-logs"></a>Tüm Günlükler
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Belirli bir işlev günlükleri
+### <a name="specific-function-logs"></a>Belirli işlev günlükleri
 
 ```
 
@@ -96,7 +110,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure işlevlerine genel bakış](functions-overview.md) konusunu inceleyin
-- [Azure Izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md) hakkında daha fazla bilgi edinin
+- [Azure işlevlerine genel bakış](functions-overview.md)konusunu gözden geçirin.
+- [Azure Izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md)hakkında daha fazla bilgi edinin.
 - [Sorgu dili](../azure-monitor/log-query/get-started-queries.md)hakkında daha fazla bilgi edinin.
