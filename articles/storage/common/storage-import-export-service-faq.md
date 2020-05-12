@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8af4cafb2c7ab4d39a591f5972803161c2aa0f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519477"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120394"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Içeri/dışarı aktarma hizmeti: sık sorulan sorular
 
@@ -109,7 +109,7 @@ Karşıya yükleme tamamlandıktan sonra, bir uluslararası adrese sürücü dö
 
 Gereksinimler, belirli Azure veri merkezi kısıtlamalarına bağlıdır.
 
-- Avustralya, Almanya ve UK Güney gibi birkaç site vardır. Bu, güvenlik nedenleriyle, paket üzerinde bir Microsoft veri merkezi gelen KIMLIK numarası yazılmasına gerek duyar. Sürücülerinizi veya disklerinizi veri merkezine göndermeden önce, bu sayıyı almak için Azure Data Box Işlemlerine (adbops@microsoft.com) başvurun. Bu sayı olmadan paket reddedilir.
+- Avustralya, Almanya ve UK Güney gibi birkaç site vardır. Bu, güvenlik nedenleriyle, paket üzerinde bir Microsoft veri merkezi gelen KIMLIK numarası yazılmasına gerek duyar. Sürücülerinizi veya disklerinizi veri merkezine göndermeden önce, bu sayıyı almak için Azure Data Box Işlemlerine ( adbops@microsoft.com ) başvurun. Bu sayı olmadan paket reddedilir.
 - Hindistan 'daki veri merkezleri, sürücünün kamu KIMLIK kartı veya kanıt No gibi kişisel ayrıntılarını gerektirir. (örneğin, PAN, AADHAR, DL), ad, kişi ve bir kapı girişi geçişi almak için otomobil levha numarası. Teslim gecikmelerinden kaçınmak için, bu gereksinimlere ilişkin taşıyıcınızın bilgilerini bildirin.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bir iş oluştururken, sevkiyat adresi depolama hesabı konumumdaki farklı bir konum olur. Ne yapmalıyım?
@@ -153,7 +153,7 @@ Hayır. Waımportexport aracı yalnızca 64 bitlik Windows işletim sistemleriyl
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure Içeri/dışarı aktarma, AES-256 şifrelemesini destekliyor mu?
 
-Hayır. Azure Içeri/dışarı aktarma hizmeti AES-128 BitLocker şifrelemesi kullanır.
+Evet. Azure Içeri/dışarı aktarma hizmeti AES-256 BitLocker şifrelemesi kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

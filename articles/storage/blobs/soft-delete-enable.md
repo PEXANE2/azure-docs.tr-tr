@@ -1,24 +1,30 @@
 ---
-title: Bloblar için geçici silmeyi etkinleştir
+title: Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 titleSuffix: Azure Storage
 description: Yanlışlıkla değiştirildiğinde veya silindiğinde verilerinizi daha kolay kurtarmak için blob nesneleri için geçici silmeyi etkinleştirin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26a16d0eeb81c12faede1c00bdf5a0d724f7a6c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884689"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120122"
 ---
-# <a name="enable-soft-delete-for-blobs"></a>Bloblar için geçici silmeyi etkinleştir
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 
-Aşağıdaki adımlarda, geçici silme ile çalışmaya başlama gösterilmektedir.
+Geçici silme, blob verilerinin yanlışlıkla veya yanlışlıkla değiştirilmesini veya silinmesini önler. Bir depolama hesabı için geçici silme etkinleştirildiğinde, blob 'lar, blob sürümleri (Önizleme) ve bu depolama hesabındaki anlık görüntüler, belirttiğiniz bir bekletme dönemi içinde silindikten sonra kurtarılabilir.
+
+Verilerinizin yanlışlıkla bir uygulama veya başka bir depolama hesabı kullanıcısı tarafından değiştirilmesi veya silinmesi olasılığı varsa, Microsoft geçici silme özelliğini etkinleştirmeyi önerir.
+
+Bu makalede, geçici silme ile çalışmaya başlama işlemi gösterilmektedir.
+
+## <a name="enable-soft-delete"></a>Geçici silmeyi etkinleştirme
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -71,6 +77,7 @@ Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
+
 Aşağıdaki komutu kullanarak geçici silmenin açık olduğunu doğrulayabilirsiniz:
 
 ```powershell
@@ -174,3 +181,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [BLOB depolama için geçici silme](soft-delete-overview.md)
+- [Blob sürümü oluşturma (Önizleme)](versioning-overview.md)

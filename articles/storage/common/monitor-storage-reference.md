@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722966"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118167"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure depolama izleme veri başvurusu
 
@@ -44,7 +44,7 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 | ContainerCount    | Depolama hesabındaki kapsayıcıların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 | Dizin kapasitesi     | ADLS 2. hiyerarşik dizin tarafından kullanılan depolama miktarı <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Tablo depolama
 
 | Ölçüm | Açıklama |
 | ------------------- | ----------------- |
@@ -131,18 +131,18 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 |:--- |:---|
 |**time** | İsteğin depolama tarafından alındığı evrensel zaman eşgüdümlü (UTC) saati. Örneğin: `2018/11/08 21:09:36.6900118`.|
 |**RESOURCEID** | Depolama hesabının kaynak KIMLIĞI. Örneğin, `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
-|**alan** | İstenen işlemin kategorisi. Örneğin: `StorageRead`, `StorageWrite`, veya. `StorageDelete`|
+|**alan** | İstenen işlemin kategorisi. Örneğin: `StorageRead` , `StorageWrite` , veya `StorageDelete` .|
 |**operationName** | Gerçekleştirilen REST işleminin türü. <br> İşlemlerin tüm listesi için bkz. [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri konusu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 |**operationVersion** | İstek yapıldığında belirtilen depolama hizmeti sürümü. Bu, **x-MS-Version** üst bilgisinin değerine eşdeğerdir. Örneğin: `2017-04-17`.|
 |**schemaVersion** | Günlüğün şema sürümü. Örneğin: `1.0`.|
-|**Durum** | İsteğin HTTP durum kodu. İstek kesintiye uğrarsa, bu değer olarak `Unknown`ayarlanabilir. <br> Örneğin, `206` |
+|**Durum** | İsteğin HTTP durum kodu. İstek kesintiye uğrarsa, bu değer olarak ayarlanabilir `Unknown` . <br> Örneğin, `206` |
 |**statusText** | İstenen işlemin durumu.  Durum iletilerinin tamamı listesi için bkz. [depolama Analizi günlüğe kaydedilmiş işlemler ve durum iletileri konusu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Sürüm 2017-04-17 ve sonrasında durum iletisi `ClientOtherError` kullanılmaz. Bunun yerine, bu alan bir hata kodu içerir. Örneğin, `SASSuccess`  |
 |**durationMs** | İstenen işlemi gerçekleştirmek için milisaniye olarak ifade edilen toplam süre. Bu, gelen isteği okuma ve yanıtı istek sahibine gönderme süresini içerir. Örneğin: `12`.|
 |**callerIpAddress** | İstek sahibinin IP adresi (bağlantı noktası numarası dahil). Örneğin: `192.100.0.102:4362`. |
 |**correlationId** | Kaynaklar arasında günlükleri ilişkilendirmek için kullanılan KIMLIK. Örneğin: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
 |**konumuna** | Depolama hesabının konumu. Örneğin: `North Europe`. |
-|**Protocol**|İşlemde kullanılan protokol. Örneğin: `HTTP`, `HTTPS`, `SMB`, veya`NFS`|
-| **kullanılmamışsa** | İstenen Tekdüzen Kaynak tanımlayıcısı. Örneğin: http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10. |
+|**Protocol**|İşlemde kullanılan protokol. Örneğin: `HTTP` ,, `HTTPS` `SMB` , veya`NFS`|
+| **kullanılmamışsa** | İstenen Tekdüzen Kaynak tanımlayıcısı. Örneğin: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>İşlemin nasıl doğrulandığını tanımlayan alanlar
 
@@ -177,7 +177,7 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 
 | Özellik | Açıklama |
 |:--- |:---|
-|**kimlik/tür** | İsteği yapmak için kullanılan kimlik doğrulaması türü. Örneğin: `OAuth`, `SAS Key`, `Account Key`, veya`Anonymous` |
+|**kimlik/tür** | İsteği yapmak için kullanılan kimlik doğrulaması türü. Örneğin: `OAuth` ,, `SAS Key` `Account Key` , veya`Anonymous` |
 |**Identity/tokenHash**|Bu alan yalnızca iç kullanım için ayrılmıştır. |
 |**Yetkilendirme/eylem** | İsteğe atanan eylem. Örneğin, `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**Authorization/Roleatamakimliği** | Rol atama KIMLIĞI. Örneğin: `4e2521b7-13be-4363-aeda-111111111111`.|
@@ -239,8 +239,8 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 |**Clientrequestıd 'ye sahip** | İsteğin **x-MS-Client-Request-id** üstbilgi değeri. Örneğin: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`. |
 |**özelliği** | Döndürülen nesnenin, tırnak içinde ETag tanımlayıcısı. Örneğin: `0x8D101F7E4B662C4`.  |
 |**Sunucu Redms** | İstenen işlemi gerçekleştirmek için milisaniye olarak ifade edilen toplam süre. Bu değer ağ gecikmesini (gelen isteği okumak ve yanıtı istek sahibine göndermek için geçen süre) içermez. Örneğin: `22`. |
-|**Türü** | Bu istekle ilişkili hizmet. Örneğin: `blob`, `table` `files`, veya. `queue` |
-|**operationCount** | İstekte bulunan günlüğe kaydedilen her işlemin sayısı. Bu sayı bir diziniyle başlar `0`. Bazı istekler, blob kopyalama isteği gibi birden fazla işlem gerektirir. Çoğu istek yalnızca bir işlem gerçekleştirir. Örneğin: `1`. |
+|**Türü** | Bu istekle ilişkili hizmet. Örneğin: `blob` ,, `table` `files` veya `queue` . |
+|**operationCount** | İstekte bulunan günlüğe kaydedilen her işlemin sayısı. Bu sayı bir diziniyle başlar `0` . Bazı istekler, blob kopyalama isteği gibi birden fazla işlem gerektirir. Çoğu istek yalnızca bir işlem gerçekleştirir. Örneğin: `1`. |
 |**requestHeaderSize** | İstek üstbilgisinin boyutu bayt cinsinden ifade edilir. Örneğin: `578`. <br>Bir istek başarısız olursa, bu değer boş olabilir. |
 |**requestBodySize** | Depolama hizmeti tarafından okunan, bayt olarak ifade edilen istek paketlerinin boyutu. <br> Örneğin: `0`. <br>Bir istek başarısız olursa, bu değer boş olabilir.  |
 |**responseHeaderSize** | Yanıt üstbilgisinin boyutu bayt cinsinden ifade edilir. Örneğin: `216`. <br>Bir istek başarısız olursa, bu değer boş olabilir.  |

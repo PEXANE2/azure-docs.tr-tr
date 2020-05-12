@@ -14,24 +14,28 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 03/17/2020
 ms.author: spelluru
-ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebda7ecec363abc1b58cdc3fc6c0799ca879adcc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501919"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118405"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
 
 ## <a name="register-to-the-lab"></a>Laboratuvara kaydolun
 
-1. Profesörden/eğitimciden aldığınız **kayıt URL’sine** gidin. Kayıt tamamlandıktan sonra kayıt URL 'sini kullanmanız gerekmez. Bunun yerine, URL 'YI kullanın [https://labs.azure.com](https://labs.azure.com):. Internet Explorer 11 henüz desteklenmiyor. 
+1. Profesörden/eğitimciden aldığınız **kayıt URL’sine** gidin. Kayıt tamamlandıktan sonra kayıt URL 'sini kullanmanız gerekmez. Bunun yerine, URL 'YI kullanın: [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 henüz desteklenmiyor. 
+
+    ![Laboratuvara kaydolun](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Kaydı tamamlamak için okul hesabınızı kullanarak hizmette oturum açın. 
 
     > [!NOTE]
     > Azure Lab Services kullanımı için Microsoft hesabı gereklidir. Portalda oturum açmak için Yahoo veya Google hesapları gibi Microsoft hesabı ' yi kullanmaya çalışıyorsanız, Microsoft hesabı olmayan bir Microsoft hesabı oluşturmak için yönergeleri izleyin. Ardından, kayıt işlemini tamamlamaya yönelik adımları izleyin. 
 1. Kaydolduktan sonra, erişimine sahip olduğunuz laboratuvarlar için sanal makineleri gördüğünüzü onaylayın. 
+
+    ![Erişilebilir VM 'Ler](../media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. Sanal makine hazırlanana kadar bekleyin. VM kutucuğunda aşağıdaki alanlara dikkat edin:
     1. Kutucuğun en üstünde, **laboratuvarın adını**görürsünüz.
     1. Sağ tarafta, VM 'nin **işletim sistemini (OS)** temsil eden simgeyi görürsünüz. Bu örnekte, Windows işletim sistemi. 
@@ -80,7 +84,7 @@ Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-u
 ## <a name="view-all-the-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleme
 Laboratuvarlara kaydolduktan sonra, aşağıdaki adımları uygulayarak tüm sınıf laboratuvarlarını görüntüleyebilirsiniz: 
 
-1. Öğesine [https://labs.azure.com](https://labs.azure.com)gidin. Internet Explorer 11 henüz desteklenmiyor. 
+1. Öğesine gidin [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 henüz desteklenmiyor. 
 2. Laboratuvara kaydolmak için kullandığınız kullanıcı hesabını kullanarak hizmette oturum açın. 
 3. Erişiminiz olan tüm laboratuvarları görtığınızdan emin olun. 
 

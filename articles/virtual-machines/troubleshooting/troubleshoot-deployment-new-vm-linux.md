@@ -3,7 +3,7 @@ title: Linux VM dağıtımı sorunlarını giderme | Microsoft Docs
 description: Azure 'da yeni bir Linux sanal makinesi oluştururken Kaynak Yöneticisi dağıtım sorunlarını giderme
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
-ms.author: cjiang
-ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981414"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118235"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure 'da yeni bir Linux sanal makinesi oluşturma konusunda Kaynak Yöneticisi dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -74,7 +74,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
   * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
-    Kaynak **grupları** > ' na tıklayın**Resources** > *kullanılabilirlik kümesi* > **makinelerinizi** > *sanal makinenizin* > **durulacağı**kaynak*grubu* > 
+    Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi*sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı**kaynak grubu
   * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
   * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
 

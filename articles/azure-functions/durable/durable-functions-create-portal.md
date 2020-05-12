@@ -2,14 +2,14 @@
 title: Azure portal kullanarak Dayanıklı İşlevler oluşturun
 description: Portal geliştirme için Azure Işlevleri Dayanıklı İşlevler uzantısını yüklemeyi öğrenin.
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769651"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120173"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal kullanarak Dayanıklı İşlevler oluşturun
 
@@ -30,17 +30,19 @@ Oluşturulan işlev uygulaması, varsayılan olarak Azure Işlevleri çalışma 
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Dayanıklı işlevler NPM paketini (yalnızca JavaScript) yükler
 
-JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM paketini](https://www.npmjs.com/package/durable-functions)yüklemeniz gerekir.
+JavaScript Dayanıklı İşlevler oluşturuyorsanız [ `durable-functions` NPM paketini](https://www.npmjs.com/package/durable-functions)yüklemeniz gerekir:
 
-1. İşlev uygulamanızın adını, ardından **platform özelliklerini**ve **Gelişmiş Araçlar 'ı (kudu)** seçin.
+1. İşlev uygulamanızın sayfasından sol bölmedeki **geliştirme araçları** altında **Gelişmiş Araçlar** ' ı seçin.
 
-   ![İşlevler platform özellikleri kudu seçme](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="İşlevler platform özellikleri kudu seçme":::
 
-2. Kudu konsolunun içinde **Hata Ayıkla Konsolu** sonra **cmd**' yi seçin.
+2. **Gelişmiş Araçlar** sayfasında **Git**' i seçin.
 
-   ![Kudu hata ayıklama konsolu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+3. Kudu konsolunun içinde **Hata Ayıkla Konsolu**ve sonra **cmd**' yi seçin.
 
-3. İşlev uygulamanızın dosya dizini yapısı görüntülenmelidir. `site/wwwroot` klasörüne gidin. Buradan dosya dizini penceresine sürükleyip bırakarak bir `package.json` dosyayı karşıya yükleyebilirsiniz. Örnek `package.json` aşağıda verilmiştir:
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu hata ayıklama konsolu":::
+
+3. İşlev uygulamanızın dosya dizini yapısı görüntülenmelidir. `site/wwwroot` klasörüne gidin. Buradan dosya `package.json` dizini penceresine sürükleyip bırakarak bir dosyayı karşıya yükleyebilirsiniz. Örnek `package.json` aşağıda verilmiştir:
 
     ```json
     {
@@ -50,37 +52,31 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
     }
     ```
 
-   ![Kudu yükleme paketi. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu yükleme paketi. JSON":::
 
-4. `package.json` Karşıya yüklendikten sonra kudu uzaktan yürütme `npm install` konsolundan komutunu çalıştırın.
+4. Karşıya yüklendikten sonra `package.json` `npm install` kudu uzaktan yürütme konsolundan komutunu çalıştırın.
 
    ![Kudu çalıştırma NPM yüklemesi](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator işlevi oluşturma
 
-1. İşlev uygulamanızı genişletin ve **işlevler**' in **+** yanındaki düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. İşlev uygulamanızda sol bölmeden **işlevler** ' i seçin ve ardından üst menüden **Ekle** ' yi seçin. 
 
-   ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
+1. **Yeni işlev** sayfasının arama alanına girin `durable` ve ardından **dayanıklı işlevler http başlangıç** şablonu ' nu seçin.
 
-1. **Diğer şablonlar**'ı ve ardından **Sonlandır ve şablonları görüntüle**'yi seçin.
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Dayanıklı İşlevler HTTP Starter 'ı seçin":::
 
-    ![İşlevler hızlı başlangıcı diğer şablonlar](./media/durable-functions-create-portal/add-first-function.png)
+1. **Yeni işlev** adı için girin `HttpStart` ve ardından **işlev oluştur**' u seçin.
 
-1. Arama alanına yazın `durable` ve ardından **dayanıklı işlevler http başlangıç** şablonunu seçin.
+   Oluşturulan işlev Düzenleme başlatmak için kullanılır.
 
-1. İstendiğinde, Azure DurableTask uzantısını ve işlev uygulamasındaki tüm bağımlılıkları yüklemek için **Install** ' u seçin. Uzantıyı işlev uygulamasına yalnızca bir kez yüklemeniz gerekir. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
+1. İşlev uygulamasında, bu kez **dayanıklı işlevler Orchestrator** şablonunu kullanarak başka bir işlev oluşturun. Yeni düzenleme işlevinizi adlandırın `HelloSequence` .
 
-    ![Bağlama uzantılarını yükleme](./media/durable-functions-create-portal/install-durabletask-extension.png)
-
-1. Yükleme tamamlandıktan sonra, yeni işlevi `HttpStart` adlandırın ve **Oluştur**' u seçin. Oluşturulan işlev Düzenleme başlatmak için kullanılır.
-
-1. İşlev uygulamasında, bu kez **dayanıklı işlevler Orchestrator** şablonunu kullanarak başka bir işlev oluşturun. Yeni düzenleme işlevinizi `HelloSequence`adlandırın.
-
-1. **Dayanıklı işlevler etkinlik** şablonunu kullanarak adlı `Hello` üçüncü bir işlev oluşturun.
+1. `Hello` **Dayanıklı işlevler etkinlik** şablonunu kullanarak adlı üçüncü bir işlev oluşturun.
 
 ## <a name="test-the-durable-function-orchestration"></a>Dayanıklı işlev düzenlemesini test etme
 
-1. **Httpstart** işlevine geri dönün **</> Işlev URL 'sini al** ' ı seçin ve URL 'yi **kopyalayın** . **Merhaba sıra** işlevini başlatmak IÇIN bu URL 'yi kullanın.
+1. **Httpstart** işlevine dönün, **Işlev URL 'sini al**' ı seçin ve **Panoya Kopyala** simgesini seçerek URL 'yi kopyalayın. **Merhaba sıra** işlevini başlatmak IÇIN bu URL 'yi kullanın.
 
 1. Kopyaladığınız URL 'ye bir POST isteği göndermek için Postman veya kıvrık gibi bir HTTP aracını kullanın. Aşağıdaki örnek, dayanıklı işleve POST isteği gönderen bir kıvrımlı komuttur:
 
@@ -100,7 +96,7 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
     }
     ```
 
-1. `statusQueryGetUri` Uç nokta URI 'sini çağırın ve dayanıklı işlevin geçerli durumunu görürsünüz ve bu örnek aşağıdaki gibi görünebilir:
+1. `statusQueryGetUri`Uç nokta URI 'sini çağırın ve dayanıklı işlevin geçerli durumunu görürsünüz ve bu örnek aşağıdaki gibi görünebilir:
 
     ```json
         {
@@ -112,7 +108,7 @@ JavaScript dayanıklı işlevler oluşturuyorsanız [ `durable-functions` NPM pa
         }
     ```
 
-1. Durum tamamlanana kadar `statusQueryGetUri` , bitiş noktasını çağırmaya devam edin **Completed**ve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
+1. `statusQueryGetUri`Durum **tamamlanana**kadar, bitiş noktasını çağırmaya devam edin ve aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
 
     ```json
     {

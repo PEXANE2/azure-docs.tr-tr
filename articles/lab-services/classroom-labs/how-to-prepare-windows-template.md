@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521182"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119306"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services bir Windows şablon makinesi ayarlamaya yönelik kılavuz
 
@@ -32,7 +32,7 @@ Bir sanal makine sıfırlandığında öğrenci verilerinin kaybedilmesini korum
 
 OneDrive 'ı el ile indirip yüklemek için [OneDrive](https://onedrive.live.com/about/download/) veya [OneDrive iş](https://onedrive.live.com/about/business/) indirme sayfalarına bakın.
 
-Aşağıdaki PowerShell betiğini de kullanabilirsiniz.  Bu, OneDrive 'ın en son sürümünü otomatik olarak indirip yükleyecek.  OneDrive istemcisi yüklendikten sonra yükleyiciyi çalıştırın.  Örneğimizde, OneDrive 'ı makinedeki tüm `/allUsers` kullanıcılar için yüklemek üzere anahtarını kullanıyoruz. Ayrıca, `/silent` OneDrive 'ı sessizce yüklemek için anahtarını da kullanırız.
+Aşağıdaki PowerShell betiğini de kullanabilirsiniz.  Bu, OneDrive 'ın en son sürümünü otomatik olarak indirip yükleyecek.  OneDrive istemcisi yüklendikten sonra yükleyiciyi çalıştırın.  Örneğimizde, `/allUsers` OneDrive 'ı makinedeki tüm kullanıcılar için yüklemek üzere anahtarını kullanıyoruz. Ayrıca, `/silent` OneDrive 'ı sessizce yüklemek için anahtarını da kullanırız.
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -136,9 +136,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 Şablon makineniz Office 'e ihtiyaç duyuyorsa Office [dağıtım aracı (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 )aracılığıyla Office yüklemenizi öneririz. Hangi mimarinin, Office 'te hangi özelliklere ihtiyacınız olacağını ve ne sıklıkta güncelleştireceğiz seçmek için [office 365 Istemci Yapılandırma hizmetini](https://config.office.com/) kullanarak yeniden kullanılabilir bir yapılandırma dosyası oluşturmanız gerekecektir.
 
 1. [Office 365 Istemci Yapılandırma hizmeti](https://config.office.com/) ' ne gidin ve kendi yapılandırma dosyanızı indirin.
-2. [Office dağıtım aracı 'nı](https://www.microsoft.com/download/details.aspx?id=49117)indirin.  İndirilen dosya olacak `setup.exe`.
-3. Office `setup.exe /download configuration.xml` bileşenlerini indirmek için ' i çalıştırın.
-4. Office `setup.exe /configure configuration.xml` bileşenlerini yüklemek için ' i çalıştırın.
+2. [Office dağıtım aracı 'nı](https://www.microsoft.com/download/details.aspx?id=49117)indirin.  İndirilen dosya olacak `setup.exe` .
+3. `setup.exe /download configuration.xml`Office bileşenlerini indirmek için ' i çalıştırın.
+4. `setup.exe /configure configuration.xml`Office bileşenlerini yüklemek için ' i çalıştırın.
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Microsoft Office 365 güncelleştirme kanalını değiştirme
 
@@ -211,7 +211,7 @@ Sanal makinede ek dillerin yüklü olması gerekiyorsa, Microsoft Store aracıl�
 2. "Dil paketi" araması yapın
 3. Yüklenecek dili seçin
 
-Zaten şablon VM 'de oturum açtıysanız, uygun ayarlar sayfasına doğrudan gitmek için ["dil paketini yükler" kısayolunu](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) kullanın.
+Zaten şablon VM 'de oturum açtıysanız, `ms-settings:regionlanguage?activationSource=SMC-IA-4027670` uygun ayarlar sayfasına doğrudan gitmek için "dil paketini yükler" kısayolunu () kullanın.
 
 ## <a name="remove-unneeded-built-in-apps"></a>Gereksiz yerleşik uygulamaları kaldırma
 

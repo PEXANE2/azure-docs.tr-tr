@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af69b9105d55749267e6c54a6584566b499b4097
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183475"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118473"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
 Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, genellikle okulunuzun laboratuvar hesabını ayarlamaktan sorumludur. Laboratuvar hesabı kurulduktan sonra, Yöneticiler veya eğitimciler laboratuvar hesabı içinde bulunan derslik laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
@@ -124,16 +124,16 @@ Azure Lab Services kullanmaya başlarken, kaynak grupları, laboratuvar hesaplar
 
 | Kaynak türü | Rol | Önerilen düzen | Örnekler |
 | ------------- | ---- | ----------------- | -------- | 
-| Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan görüntü Galerisi içerir | \<Kuruluş kısa adı\>-\<ortamı\>-RG<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**RG** , kaynak türü: kaynak grubu için bir temsil eder.</li></ul> | contosoüniversıtylabs-RG<br/>contosoüniversıtylabs-pilot-RG<br/>contosoüniversıtylabs-prod-RG |
-| Laboratuvar hesabı | Bir veya daha fazla Laboratuvarı içerir | \<Kuruluş kısa adı\>-\<ortamı\>-La<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**La** , kaynak türü: Laboratuvar hesabı için temsil eder.</li></ul> | contosoüniversıtylabs-La<br/>mathdeptlabs-La<br/>bilimsel deptlabs-pilot-La<br/>bilimsel deptlabs-prod-La |
-| Sınıf Laboratuvarı | Bir veya daha fazla sanal makine içeriyor |\<sınıf adı\>-\<zaman\>-dilimi\<eğitimci tanımlayıcısı\><ul><li>**Sınıf adı** , laboratuvarın desteklediği sınıfın adını tanımlar.</li><li>**Zaman çerçevesi** , sınıfın sunulduğu zaman dilimini tanımlar.</li>**Eğitim tanımlayıcısı** , laboratuvarın sahibi olan eğitimci 'yi tanımlar.</li></ul> | CS1234-fall2019-johntikan<br/>CS1234-spring2019-johntikan |
-| Paylaşılan görüntü Galerisi | Bir veya daha fazla VM görüntüsü sürümü içeriyor | \<Kuruluş kısa adı\>Galerisi | contosoüniversıtylabsgallery |
+| Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan görüntü Galerisi içerir | \<Kuruluş kısa adı \> - \< ortamı \> -RG<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**RG** , kaynak türü: kaynak grubu için bir temsil eder.</li></ul> | contosoüniversıtylabs-RG<br/>contosoüniversıtylabs-pilot-RG<br/>contosoüniversıtylabs-prod-RG |
+| Laboratuvar hesabı | Bir veya daha fazla Laboratuvarı içerir | \<Kuruluş kısa adı \> - \< ortamı \> -La<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar</li><li>**Ortam** , kaynak için pilot veya üretim gibi ortamı tanımlar</li><li>**La** , kaynak türü: Laboratuvar hesabı için temsil eder.</li></ul> | contosoüniversıtylabs-La<br/>mathdeptlabs-La<br/>bilimsel deptlabs-pilot-La<br/>bilimsel deptlabs-prod-La |
+| Sınıf Laboratuvarı | Bir veya daha fazla sanal makine içeriyor |\<sınıf adı \> - \< zaman dilimi \> - \< eğitimci tanımlayıcısı\><ul><li>**Sınıf adı** , laboratuvarın desteklediği sınıfın adını tanımlar.</li><li>**Zaman çerçevesi** , sınıfın sunulduğu zaman dilimini tanımlar.</li>**Eğitim tanımlayıcısı** , laboratuvarın sahibi olan eğitimci 'yi tanımlar.</li></ul> | CS1234-fall2019-johntikan<br/>CS1234-spring2019-johntikan |
+| Paylaşılan görüntü Galerisi | Bir veya daha fazla VM görüntüsü sürümü içeriyor | \<Kuruluş kısa adı \> Galerisi | contosoüniversıtylabsgallery |
 
 Diğer Azure kaynaklarını adlandırma hakkında daha fazla bilgi için bkz. [Azure kaynakları Için adlandırma kuralları](/azure/architecture/best-practices/naming-conventions).
 
 ## <a name="regionslocations"></a>Regions\locations
 
-Azure Lab Services ' kaynaklarınızı ayarlarken, kaynağı barındıracak veri merkezinin bölgesini (veya konumunu) sağlamanız gerekir. Aşağıda, bölgenin bir laboratuvarı ayarlamaya yönelik her bir kaynağı nasıl etkilediği hakkında daha fazla bilgi verilmiştir.
+Azure Lab Services ' kaynaklarınızı ayarlarken, kaynağı barındıracak veri merkezinin bölgesini (veya konumunu) sağlamanız gerekir. Aşağıda, bölgenin bir laboratuvarı ayarlamaya yönelik kaynakların her birini nasıl etkilediği hakkında daha fazla bilgi verilmektedir.
 
 ### <a name="resource-group"></a>Kaynak grubu
 

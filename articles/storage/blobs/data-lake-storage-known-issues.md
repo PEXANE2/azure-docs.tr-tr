@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: b02835ae3a1d7fed52f2cdb4ab25aa74ba66e8c3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007468"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119901"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -65,7 +65,6 @@ Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklen
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK 'lar, PowerShell ve Azure CLı 'da dosya sistemi desteği
 
 - Get ve set ACL işlemleri şu anda özyinelemeli değil.
-- [Azure CLI](data-lake-storage-directory-file-acl-cli.md) desteği genel önizlemeye sunuldu.
 
 
 ## <a name="lifecycle-management-policies"></a>Yaşam döngüsü yönetim ilkeleri

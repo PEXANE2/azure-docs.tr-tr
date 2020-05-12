@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883354"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120428"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada akış desteğini değiştirme (Önizleme)
 
@@ -36,6 +36,8 @@ Değişiklik akışı desteği, değiştirilen nesnelere göre verileri işleyen
   - Olağanüstü durum yönetimi veya uyumluluk için hesabınızdaki nesne durumunu yedeklemeye, yansıtmaya veya çoğaltmaya yönelik çözümler oluşturun.
 
   - Oluşturulan veya değiştirilen nesneye göre değişiklik olaylarına tepki veren veya yürütmeleri zamanlamaya dayalı bağlantılı uygulama işlem hatları oluşturun.
+  
+Değişiklik akışı, [blok Blobları Için noktadan noktaya geri yükleme](point-in-time-restore-overview.md)için bir önkoşul özelliğidir.
 
 > [!NOTE]
 > Değişiklik akışı, blob 'a gerçekleşen değişikliklerin dayanıklı ve sıralı bir günlük modelini sağlar. Değişiklikler yazılır ve değişiklik akışı günlüğünde değişiklik için birkaç dakika içinde kullanılabilir hale getirilir. Uygulamanızın olaylara çok daha hızlı yanıt vermesini istiyorsanız, bunun yerine [BLOB Storage olaylarını](storage-blob-event-overview.md) kullanmayı göz önünde bulundurun. [BLOB depolama olayları](storage-blob-event-overview.md) , Azure işlevlerinizin veya uygulamalarınızın blob 'da oluşan değişikliklere hızlı bir şekilde tepki vermesini sağlayan gerçek zamanlı bir kerelik olaylar sağlar. 
@@ -55,7 +57,7 @@ Değişiklik akışını etkinleştirdiğinizde göz önünde bulundurmanız ger
 - Yalnızca GPv2 ve BLOB depolama hesapları değişiklik akışını etkinleştirebilir. Premium blok Blobstorage hesapları ve hiyerarşik ad alanı etkinleştirilmiş hesaplar Şu anda desteklenmemektedir. GPv1 depolama hesapları desteklenmez, ancak kapalı kalma süresi olmadan GPv2 sürümüne yükseltilebilir. daha fazla bilgi için bkz. [GPv2 Storage hesabına yükseltme](../common/storage-account-upgrade.md) .
 
 > [!IMPORTANT]
-> Değişiklik akışı genel önizlemededir ve **westcentralus** ve **westus2** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
+> Değişiklik akışı genel önizlemededir ve **Orta Batı ABD**, **Batı ABD 2**, **Fransa orta**, **Fransa Güney**, **Kanada Orta**ve **Kanada Doğu** bölgelerinde kullanılabilir. Bu makalenin [koşullar](#conditions) bölümüne bakın. Önizlemeye kaydolmak için bu makalenin [aboneliğinizi kaydetme](#register) bölümüne bakın. Depolama hesaplarınızda değişiklik akışını etkinleştirebilmeniz için aboneliğinizi kaydetmeniz gerekir.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -89,7 +91,7 @@ PowerShell kullanarak akışı değiştirme özelliğini etkinleştir:
    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.8.1-preview –AllowPrerelease –AllowClobber –Force
    ```
 
-4. `Connect-AzAccount` Komutuyla Azure aboneliğinizde oturum açın ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
+4. Komutuyla Azure aboneliğinizde oturum açın `Connect-AzAccount` ve kimlik doğrulaması yapmak için ekrandaki yönergeleri izleyin.
 
    ```powershell
    Connect-AzAccount
@@ -110,7 +112,7 @@ Azure portal aracılığıyla mevcut depolama hesabınızda değişiklik akış�
 
 3. **[Özel bir şablon dağıt](https://portal.azure.com/#create/Microsoft.Template)**' ı seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
-4. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın. `<accountName>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
+4. Şablon Düzenleyicisi 'nde aşağıdaki JSON öğesine yapıştırın. `<accountName>`Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
    ```json
    {
@@ -154,7 +156,7 @@ Bkz. [Azure Blob depolamada işlem değişiklik akışı günlükleri](storage-b
 
 Değişiklik akışı, **saatlik** *kesimlerde* düzenlenmiş, ancak birkaç dakikada bir eklenen ve güncellenen bir değişiklik günlüğü olur. Bu segmentler yalnızca o saat içinde oluşan blob değişiklik olayları olduğunda oluşturulur. Bu, istemci uygulamanızın tüm günlük içinde arama yapmak zorunda kalmadan belirli zaman aralıklarında oluşan değişiklikleri kullanmasını sağlar. Daha fazla bilgi edinmek için bkz. [Özellikler](#specifications).
 
-Değişiklik akışına ait kullanılabilir saatlik bir kesim, bu segmentin değişiklik akışı dosyalarının yollarını belirten bir bildirim dosyasında açıklanmıştır. `$blobchangefeed/idx/segments/` Sanal dizin listesi bu segmentleri zamana göre sıralanmış olarak gösterir. Segmentin yolu, segmentin gösterdiği saatlik zaman aralığının başlangıcını açıklar. Sizi ilgilendiren günlüklerin segmentlerini filtrelemek için bu listeyi kullanabilirsiniz.
+Değişiklik akışına ait kullanılabilir saatlik bir kesim, bu segmentin değişiklik akışı dosyalarının yollarını belirten bir bildirim dosyasında açıklanmıştır. `$blobchangefeed/idx/segments/`Sanal dizin listesi bu segmentleri zamana göre sıralanmış olarak gösterir. Segmentin yolu, segmentin gösterdiği saatlik zaman aralığının başlangıcını açıklar. Sizi ilgilendiren günlüklerin segmentlerini filtrelemek için bu listeyi kullanabilirsiniz.
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -168,7 +170,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 > [!NOTE]
 > , `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` Değişiklik akışını etkinleştirdiğinizde otomatik olarak oluşturulur. Bu dosyayı güvenle yoksayabilirsiniz. Her zaman boş bir başlatma dosyasıdır. 
 
-Segment bildirim dosyası (`meta.json`), `chunkFilePaths` özelliğindeki bu segmentin değişiklik akışı dosyalarının yolunu gösterir. Segment bildirim dosyasına bir örnek aşağıda verilmiştir.
+Segment bildirim dosyası ( `meta.json` ), özelliğindeki bu segmentin değişiklik akışı dosyalarının yolunu gösterir `chunkFilePaths` . Segment bildirim dosyasına bir örnek aşağıda verilmiştir.
 
 ```json
 {
@@ -199,7 +201,7 @@ Segment bildirim dosyası (`meta.json`), `chunkFilePaths` özelliğindeki bu seg
 ```
 
 > [!NOTE]
-> `$blobchangefeed` Kapsayıcı yalnızca hesabınızda değişiklik akışı özelliğini etkinleştirdikten sonra görünür. Kapsayıcıda blob 'ları listelebilmeniz için önce değişiklik akışını etkinleştirdikten sonra birkaç dakika beklemeniz gerekir. 
+> `$blobchangefeed`Kapsayıcı yalnızca hesabınızda değişiklik akışı özelliğini etkinleştirdikten sonra görünür. Kapsayıcıda blob 'ları listelebilmeniz için önce değişiklik akışını etkinleştirdikten sonra birkaç dakika beklemeniz gerekir. 
 
 <a id="log-files"></a>
 
@@ -207,7 +209,13 @@ Segment bildirim dosyası (`meta.json`), `chunkFilePaths` özelliğindeki bu seg
 
 Değişiklik akışı dosyaları bir dizi değişiklik olay kaydını içerir. Her değişiklik olay kaydı, tek bir Blobun bir değişikliğe karşılık gelir. Kayıtlar serileştirilir ve [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak dosyaya yazılır. Kayıtlar avro dosya biçimi belirtimi kullanılarak okunabilir. Bu biçimdeki dosyaları işlemek için kullanabileceğiniz çeşitli kitaplıklar vardır.
 
-Değişiklik akışı dosyaları, `$blobchangefeed/log/` sanal dizinde [ekleme Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)olarak depolanır. Her yolun altındaki ilk değişiklik akışı dosyası dosya adında olacaktır `00000` (örneğin `00000.avro`). Bu yola eklenen her bir sonraki günlük dosyasının adı 1 ile artacaktır (örneğin: `00001.avro`).
+Değişiklik akışı dosyaları, `$blobchangefeed/log/` sanal dizinde [ekleme Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)olarak depolanır. Her yolun altındaki ilk değişiklik akışı dosyası `00000` dosya adında olacaktır (örneğin `00000.avro` ). Bu yola eklenen her bir sonraki günlük dosyasının adı 1 ile artacaktır (örneğin: `00001.avro` ).
+
+Aşağıdaki olay türleri değişiklik akışı kayıtlarında yakalanır:
+- BlobCreated
+- BlobDeleted
+- BlobPropertiesUpdated
+- Blobsnapshotoluşturuldu
 
 Değişiklik akışı dosyasından JSON 'a dönüştürülmüş değişiklik olay kaydı örneği aşağıda verilmiştir.
 
@@ -238,7 +246,7 @@ Değişiklik akışı dosyasından JSON 'a dönüştürülmüş değişiklik ola
 }
 ```
 
-Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Grid olay şeması](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties).
+Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Grid olay şeması](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). BlobPropertiesUpdated ve BlobSnapshotCreated olayları şu anda akışı değiştirebilir ve BLOB depolama olayları için henüz desteklenmemiştir.
 
 > [!NOTE]
 > Bir kesim için değişiklik akışı dosyaları bir segment oluşturulduktan sonra hemen görünmez. Gecikme süresi, değişikliğin birkaç dakika içinde olan değişiklik akışında bulunan normal Yayımlanma zaman aralığı içindedir.
@@ -255,15 +263,15 @@ Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Gr
 
 - Değişiklik olay kayıtları, [Apache avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak günlük dosyasına serileştirilir.
 
-- Öğesinin `Control` değeri olan olay kayıtlarını `eventType` değiştirme, iç sistem kayıtlardır ve hesabınızdaki nesnelerde yapılan değişiklikleri yansıtmaz. Bu kayıtları güvenle yoksayabilirsiniz.
+- Öğesinin değeri olan olay kayıtlarını değiştirme, `eventType` `Control` iç sistem kayıtlardır ve hesabınızdaki nesnelerde yapılan değişiklikleri yansıtmaz. Bu kayıtları güvenle yoksayabilirsiniz.
 
-- `storageDiagnonstics` Özellik çantasındaki değerler yalnızca dahili kullanım içindir ve uygulamanız tarafından kullanılmak üzere tasarlanmamıştır. Uygulamalarınızın bu verilere yönelik bir sözleşme bağımlılığı olması gerekmez. Bu özellikleri güvenle yoksayabilirsiniz.
+- `storageDiagnonstics`Özellik çantasındaki değerler yalnızca dahili kullanım içindir ve uygulamanız tarafından kullanılmak üzere tasarlanmamıştır. Uygulamalarınızın bu verilere yönelik bir sözleşme bağımlılığı olması gerekmez. Bu özellikleri güvenle yoksayabilirsiniz.
 
 - Segment tarafından temsil edilen zaman, 15 dakikalık sınırlara göre **yaklaşık** olur. Bu nedenle, belirli bir süre içinde tüm kayıtların tüketimini sağlamak için, ardışık önceki ve sonraki saat segmentini kullanın.
 
-- Her segment, yayımlama aktarım hızını yönetmek için `chunkFilePaths` günlük akışının iç bölümlenmesi nedeniyle farklı bir sayıda olabilir. Her `chunkFilePath` birinde bulunan günlük dosyalarının birbirini dışlayan blob 'lar içermesi garanti edilir ve yineleme sırasında blob başına değişiklik sıralamasını ihlal etmeden paralel olarak tüketilebilir ve işlenebilir.
+- Her segment `chunkFilePaths` , yayımlama aktarım hızını yönetmek için günlük akışının iç bölümlenmesi nedeniyle farklı bir sayıda olabilir. Her birinde bulunan günlük dosyalarının `chunkFilePath` birbirini dışlayan blob 'lar içermesi garanti edilir ve yineleme sırasında blob başına değişiklik sıralamasını ihlal etmeden paralel olarak tüketilebilir ve işlenebilir.
 
-- Kesimlerde `Publishing` durum başlangıcı vardır. Kayıtların segmente eklenmesi tamamlandıktan sonra, olacaktır `Finalized`. `$blobchangefeed/meta/Segments.json` Dosyadaki `LastConsumable` özelliğin tarihinden sonra tarihli tüm kesimlerdeki günlük dosyaları, uygulamanız tarafından tüketilmemelidir. İşte bir `LastConsumable` `$blobchangefeed/meta/Segments.json` dosyadaki özelliğe bir örnek:
+- Kesimlerde durum başlangıcı vardır `Publishing` . Kayıtların segmente eklenmesi tamamlandıktan sonra, olacaktır `Finalized` . Dosyadaki özelliğin tarihinden sonra tarihli tüm kesimlerdeki günlük dosyaları `LastConsumable` `$blobchangefeed/meta/Segments.json` , uygulamanız tarafından tüketilmemelidir. İşte `LastConsumable` bir dosyadaki özelliğe bir örnek `$blobchangefeed/meta/Segments.json` :
 
 ```json
 {
@@ -310,13 +318,13 @@ az provider register --namespace 'Microsoft.Storage'
 ## <a name="conditions-and-known-issues-preview"></a>Koşullar ve bilinen sorunlar (Önizleme)
 
 Bu bölümde, değişiklik akışında geçerli genel önizlemede bulunan bilinen sorunlar ve koşullar açıklanmaktadır. 
-- Önizleme için, westcentralus veya westus2 bölgelerinde depolama hesabınızın değişiklik akışını etkinleştirebilmeniz için önce [aboneliğinizi kaydetmeniz](#register) gerekir. 
-- Değişiklik akışı yalnızca oluşturma, güncelleştirme, silme ve kopyalama işlemlerini yakalar. Meta veri güncelleştirmeleri Şu anda önizlemede yakalanmıyor.
+- Önizleme için, Orta Batı ABD, Batı ABD 2, Fransa Orta, Fransa Güney, Kanada Orta ve Kanada Doğu bölgelerinde depolama hesabınızın değişiklik akışını etkinleştirebilmeniz için önce [aboneliğinizi kaydetmeniz](#register) gerekir. 
+- Değişiklik akışı yalnızca oluşturma, güncelleştirme, silme ve kopyalama işlemlerini yakalar. Blob özelliği ve meta veri değişiklikleri de yakalanır. Ancak, Access Tier özelliği şu anda yakalanmaz. 
 - Değişiklik akışınızda tek bir değişikliğin değişiklik olay kayıtları birden çok kez görüntülenebilir.
-- Zaman tabanlı bekletme ilkesi ayarlayarak değişiklik akışı günlük dosyalarının yaşam süresini henüz yönetemezsiniz ve Blobları silemezsiniz 
-- Günlük `url` dosyasının özelliği şu anda her zaman boştur.
-- Segment `LastConsumable` . json dosyasının özelliği, değişiklik akışı 'nın sonlandırabildiği ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saatin ardından gelen tüm bölümler, `LastConsumable` özellikte doğru bir şekilde yakalanır.
-- Şu anda ListContainers API 'sini çağırdığınızda **$blobchangefeed** kapsayıcısını göremez ve kapsayıcı Azure portal veya Depolama Gezgini gösterilmez
+- Bunlara zaman tabanlı bekletme ilkesi ayarlayarak değişiklik akışı günlük dosyalarının yaşam süresini henüz yönetemezsiniz ve Blobları silemezsiniz.
+- `url`Günlük dosyasının özelliği şu anda her zaman boştur.
+- `LastConsumable`Segment. json dosyasının özelliği, değişiklik akışı 'nın sonlandırabildiği ilk parçayı listelemez. Bu sorun yalnızca ilk kesim sonlandırıldıktan sonra oluşur. İlk saatin ardından gelen tüm bölümler, özellikte doğru bir şekilde yakalanır `LastConsumable` .
+- Şu anda ListContainers API 'sini çağırdığınızda **$blobchangefeed** kapsayıcısını göremez ve kapsayıcı Azure portal veya Depolama Gezgini gösterilmez. Listblobları API 'sini doğrudan $blobchangefeed kapsayıcısında çağırarak içeriği görüntüleyebilirsiniz.
 - Daha önce bir [Hesap yük devretmesini](../common/storage-disaster-recovery-guidance.md) Başlatan depolama hesaplarında, günlük dosyası görünmediğinden ilgili sorunlar olabilir. Gelecekteki tüm hesap yük devretme işlemleri, önizleme sırasında günlük dosyasını da etkileyebilir.
 
 ## <a name="faq"></a>SSS

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e53b6bdb041bfac5a82ed607b75b25ab0513f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188013"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118371"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Laboratuvarınızın ağını Azure Lab Services içindeki bir eş sanal ağla bağlayın
 
@@ -48,7 +48,7 @@ Yeni [Laboratuvar hesabı oluşturma](tutorial-setup-lab-account.md)sırasında,
 
 Ayrıca, laboratuvarlara yönelik sanal makineler için **adres aralığı** sağlama seçeneği de vardır.  **Adres aralığı** özelliği yalnızca laboratuvar için **eş sanal ağ** etkinse geçerlidir.  Adres aralığı sağlanmışsa, laboratuvar hesabı kapsamındaki laboratuvarlarda bulunan tüm sanal makineler bu adres aralığında oluşturulur. Adres aralığı CıDR gösteriminde (ör. 10.20.0.0/20) olmalıdır ve mevcut adres aralıklarıyla çakışmaz.  Bir adres aralığı sağlarken, oluşturulacak *laboratuvarların* sayısını göz önünde bulundurmamak ve buna uyum sağlamak için bir adres aralığı sağlamanız gerekir. Laboratuvar Hizmetleri, laboratuvar başına en fazla 512 sanal makine olduğunu varsayar.  Örneğin, '/23 ' olan bir IP aralığı yalnızca bir laboratuvar oluşturabilir.  '/21 ' olan bir Aralık dört laboratuvarın oluşturulmasına olanak sağlar.
 
-**Adres aralığı** belirtilmemişse, Laboratuvar Hizmetleri sanal ağınızla ilişkilendirilen sanal ağı oluştururken Azure tarafından verilen varsayılan adres aralığını kullanır.  Aralık genellikle 10. x. 0.0/16 gibi bir şeydir.  Bu, IP aralığı çakışmasına neden olabilir, bu nedenle laboratuvar ayarlarında bir veya daha fazla adres aralığı belirttiğinizden emin olun veya sanal ağınızın eşlenen adres aralığını denetleyin.
+**Adres aralığı** belirtilmemişse, Laboratuvar Hizmetleri sanal ağınızla ilişkilendirilen sanal ağı oluştururken Azure tarafından verilen varsayılan adres aralığını kullanır.  Aralık genellikle 10. x. 0.0/16 gibi bir şeydir.  Bu, IP aralığı çakışmasına neden olabilir, bu nedenle laboratuvar ayarlarında bir adres aralığı belirttiğinizden emin olun veya sanal ağınızın eşlenmekte olduğu adres aralığını kontrol edin.
 
 ## <a name="configure-after-the-lab-is-created"></a>Laboratuvar oluşturulduktan sonra yapılandırma
 

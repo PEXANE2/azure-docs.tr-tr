@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'te (AKS) Azure CNı (Gelişmiş) ağını
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207505"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120938"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -22,7 +22,7 @@ Bu makalede, bir AKS kümesi için bir sanal ağ alt ağı oluşturmak ve kullan
 ## <a name="prerequisites"></a>Ön koşullar
 
 * AKS kümesinin sanal ağı giden internet bağlantısına izin vermelidir.
-* Aks kümeleri `169.254.0.0/16`, `172.30.0.0/16` `172.31.0.0/16`,, veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı için kullanılamıyor olabilir.
+* Aks kümeleri,,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` veya `192.0.2.0/24` Kubernetes hizmeti adres aralığı için kullanılamıyor olabilir.
 * AKS kümesi tarafından kullanılan hizmet sorumlusu, sanal ağınızdaki alt ağda en az bir [ağ katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) iznine sahip olmalıdır. Yerleşik ağ katılımcısı rolünü kullanmak yerine [özel bir rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız aşağıdaki izinler gereklidir:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -38,10 +38,10 @@ Pod ve kümenin düğümlerine ait IP adresleri, sanal ağ içindeki belirtilen 
 > [!IMPORTANT]
 > Gerekli IP adresi sayısı, yükseltme ve ölçeklendirme işlemlerine yönelik hususlar içermelidir. IP adresi aralığını yalnızca sabit sayıda düğümü destekleyecek şekilde ayarlarsanız, kümenizi yükseltemez veya ölçeklendirebilirsiniz.
 >
-> - AKS kümenizi **yükselttiğinizde** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar ve eski bir düğüm kümeden kaldırılır. Bu sıralı yükseltme işlemi, en az bir IP adresi bloğunun kullanılabilir olmasını gerektirir. Düğüm sayıınız daha sonra `n + 1`.
+> - AKS kümenizi **yükselttiğinizde** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar ve eski bir düğüm kümeden kaldırılır. Bu sıralı yükseltme işlemi, en az bir IP adresi bloğunun kullanılabilir olmasını gerektirir. Düğüm sayıınız daha sonra `n + 1` .
 >   - Windows Server düğüm havuzlarını kullandığınızda bu durum özellikle önemlidir. AKS 'deki Windows Server düğümleri, düğüm havuzunda bir yükseltme gerçekleştirmeniz yerine otomatik olarak Windows güncelleştirmelerini uygulamaz. Bu yükseltme, son Windows Server 2019 temel düğüm görüntüsü ve güvenlik düzeltme ekleriyle yeni düğümleri dağıtır. Bir Windows Server düğüm havuzunu yükseltme hakkında daha fazla bilgi için bkz. [AKS 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 >
-> - Bir AKS kümesini **ölçeklendirirseniz** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar. IP adresi aralığınızı, kümenizin destekleyebileceği düğüm sayısını ve sınırları nasıl ölçeklendirmek istediğinizi göz önünde bulundurmanız gerekir. Yükseltme işlemleri için bir ek düğüm da dahil edilmelidir. Düğüm sayıınız daha sonra `n + number-of-additional-scaled-nodes-you-anticipate + 1`.
+> - Bir AKS kümesini **ölçeklendirirseniz** , kümeye yeni bir düğüm dağıtılır. Hizmetler ve iş yükleri yeni düğümde çalışmaya başlar. IP adresi aralığınızı, kümenizin destekleyebileceği düğüm sayısını ve sınırları nasıl ölçeklendirmek istediğinizi göz önünde bulundurmanız gerekir. Yükseltme işlemleri için bir ek düğüm da dahil edilmelidir. Düğüm sayıınız daha sonra `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
 
 Düğümlerinizin maksimum sayıda pods çalıştırmasını ve düzenli olarak dizin oluşturup dağıtımını bekleliyorsanız, düğüm başına bazı ek IP adreslerini de çarpanlara katmalısınız. Bu ek IP adresleri, bir hizmetin silinmesi ve yeni bir hizmetin dağıtılması ve adresi edinmeniz için birkaç saniye sürebilir.
 
@@ -67,7 +67,9 @@ AKS kümesindeki düğüm başına en fazla düğüm sayısı 250 ' dir. Düğü
 
 ### <a name="configure-maximum---new-clusters"></a>En fazla yeni küme yapılandırma
 
-Düğüm başına en fazla düğüm sayısını *yalnızca küme dağıtım saatinde*yapılandırabileceksiniz. Azure CLı ile veya bir Kaynak Yöneticisi şablonuyla dağıtırsanız, düğüm başına maksimum düğüm sayısı değerini 250 olarak belirleyebilirsiniz.
+Küme dağıtım sırasında düğüm başına en fazla düğüm sayısını veya yeni düğüm havuzları eklerken yapılandırabileceksiniz. Azure CLı ile veya bir Kaynak Yöneticisi şablonuyla dağıtırsanız, düğüm başına maksimum düğüm sayısı değerini 250 olarak belirleyebilirsiniz.
+
+Yeni düğüm havuzları oluştururken maxPods belirtmezseniz, Azure CNı için varsayılan değer olan 30 değerini alırsınız.
 
 Düğüm başına en fazla düğüm sayısı için en düşük değer, sistem Pod 'nin küme durumu için kritik alan garantisi sağlamak üzere zorlanır. Düğüm başına maksimum pod için ayarlanalabilen en düşük değer 10 ' dur ve yalnızca her düğüm havuzunun yapılandırmasında en az 30 pod için alan varsa. Örneğin, düğüm başına en fazla 10 düğüm için maksimum Pod 'nin ayarlanması, her bir düğüm havuzunun en az 3 düğüme sahip olmasını gerektirir. Bu gereksinim, oluşturulan her yeni düğüm havuzu için geçerlidir; bu nedenle, 10 düğüm başına en fazla sayıda düğüm, eklenen her düğüm havuzu için en az 3 düğüm olmalıdır.
 
@@ -80,12 +82,12 @@ Düğüm başına en fazla düğüm sayısı için en düşük değer, sistem Po
 > Yukarıdaki tablodaki minimum değer AKS hizmeti tarafından kesinlikle zorlanır. Bir maxPods değerini, bu şekilde gösterilen en düşük boyuttan düşük ayarlayamazsınız. Bu, kümenin başlamasını engelleyebilir.
 
 * **Azure CLI**: `--max-pods` [az aks Create][az-aks-create] komutuyla bir küme dağıtırken bağımsız değişkeni belirtin. En büyük değer 250 ' dir.
-* **Kaynak Yöneticisi şablonu**: bir kümeyi `maxPods` Kaynak Yöneticisi şablonuyla dağıtırken [managedclusteragentpoolprofile] nesnesinde özelliğini belirtin. En büyük değer 250 ' dir.
+* **Kaynak Yöneticisi şablonu**: `maxPods` bir kümeyi Kaynak Yöneticisi şablonuyla dağıtırken [Managedclusteragentpoolprofile] nesnesinde özelliğini belirtin. En büyük değer 250 ' dir.
 * **Azure Portal**: bir kümeyi Azure Portal birlikte dağıtırken düğüm başına en fazla düğüm sayısını değiştiremezsiniz. Azure CNI ağ kümeleri, Azure Portal kullanarak dağıtırken düğüm başına 30 Pod ile sınırlıdır.
 
 ### <a name="configure-maximum---existing-clusters"></a>En fazla mevcut kümeleri yapılandırma
 
-Mevcut bir AKS kümesindeki düğüm başına en fazla düğüm sayısını değiştiremezsiniz. Numarayı yalnızca kümeyi ilk kez dağıttığınızda ayarlayabilirsiniz.
+Düğüm başına maxPod ayarı, yeni bir düğüm havuzu oluşturduğunuzda tanımlanabilir. Var olan bir kümede düğüm başına maxPod ayarını artırmanız gerekiyorsa, istenen yeni maxPod sayımına sahip yeni bir düğüm havuzu ekleyin. Yığınlarınızı yeni havuza geçirdikten sonra eski havuzu silin. Bir kümedeki eski bir havuzu silmek için, düğüm havuzu modlarını [sistem düğüm havuzu belge[sistemi-düğüm-havuzlarında]tanımlandığı şekilde ayarlamadığınıza emin olun.
 
 ## <a name="deployment-parameters"></a>Dağıtım parametreleri
 
@@ -100,7 +102,7 @@ Bir AKS kümesi oluşturduğunuzda, aşağıdaki parametreler Azure CNı ağı i
 * Kümenizin sanal ağ IP adresi aralığı içinde olmaması gerekir
 * Küme sanal ağ eşlerinin bulunduğu diğer sanal ağlarla çakışmamalıdır
 * Herhangi bir şirket içi IP ile çakışmamalıdır
-* ,, Veya aralıkları `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16`dahilinde olmamalıdır`192.0.2.0/24`
+* ,, Veya aralıkları dahilinde olmamalıdır `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16``192.0.2.0/24`
 
 Bir hizmet adres aralığını kümeniz ile aynı sanal ağ içinde belirtmek Teknik olarak mümkün olsa da, bunun yapılması önerilmez. Çakışan IP aralıkları kullanılırsa öngörülemeyen davranış oluşabilir. Daha fazla bilgi için bu makalenin [SSS](#frequently-asked-questions) bölümüne bakın. Kubernetes hizmetleri hakkında daha fazla bilgi için bkz. Kubernetes belgelerindeki [Hizmetler][services] .
 
@@ -123,7 +125,7 @@ $ az network vnet subnet list \
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
 
-Gelişmiş ağlarla bir küme oluşturmak için, `--network-plugin azure` bağımsız değişkeniyle [az aks Create][az-aks-create] komutunu kullanın. Değeri, `--vnet-subnet-id` önceki adımda toplanan alt ağ kimliğiyle güncelleştirin:
+Gelişmiş ağlarla bir küme oluşturmak için, bağımsız değişkeniyle [az aks Create][az-aks-create] komutunu kullanın `--network-plugin azure` . Değeri, `--vnet-subnet-id` önceki adımda toplanan alt ağ kimliğiyle güncelleştirin:
 
 ```azurecli-interactive
 az aks create \
@@ -212,3 +214,4 @@ Aks motoru ile oluşturulan Kubernetes kümeleri hem [Kubernetes kullanan][kuben
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
+[Sistem düğümü havuzları]: use-system-pools.md

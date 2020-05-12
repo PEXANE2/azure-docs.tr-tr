@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538784"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118439"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizlerinin bir laboratuvarını ayarlama
 
@@ -102,7 +102,7 @@ Bu bölümde, HDP korumalı alanı dağıtırsınız ve ayrıca, tarayıcıyı k
 1. HDP korumalı alan için Docker Kapsayıcıları dağıtıldıktan ve çalışır olduktan sonra, tarayıcınızı başlatarak ve [korumalı alan karşılama sayfasını](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) açmak ve HDP panosunu başlatmak Için aşağıdaki Cloudera yönergelerini izleyerek ortama erişebilirsiniz.
 
     > [!NOTE] 
-    > Bu yönergelerde, önce Sandbox ortamının yerel IP adresini, şablon VM 'nizin ana bilgisayar dosyasındaki sandbox-hdp.hortonworks.com ile eşleştirdiğini varsayalım.  Bu **eşlemeyi yapmazsanız,** ' a giderek korumalı alan karşılama sayfasına erişebilirsiniz. [http://localhost:8080](http://localhost:8080)
+    > Bu yönergelerde, önce Sandbox ortamının yerel IP adresini, şablon VM 'nizin ana bilgisayar dosyasındaki sandbox-hdp.hortonworks.com ile eşleştirdiğini varsayalım.  Bu **eşlemeyi yapmazsanız,** ' a giderek korumalı alan karşılama sayfasına erişebilirsiniz `http://localhost:8080` .
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>Öğrenciler oturum açarken Docker kapsayıcılarını otomatik olarak Başlat
 
