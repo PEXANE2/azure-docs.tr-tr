@@ -1,14 +1,14 @@
 ---
 title: Kanada Federal pbmm şema örnek denetimleri
 description: Kanada Federal pbmm şema örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545246"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005708"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
@@ -57,8 +57,8 @@ Yalnızca bir Azure aboneliğinin sahibi, yönetici artıklığına izin vermez.
 
 - Aboneliğiniz için en fazla 3 sahip belirtilmelidir
 - Aboneliğinize birden fazla sahip atanmalıdır
-- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows VM 'lerini denetleyin
-- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows VM 'lerini denetleyin
+- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows VM 'lerinden denetim sonuçlarını göster
+- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows VM 'lerinden denetim sonuçlarını göster
 - Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 - Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 
@@ -68,8 +68,8 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 
 - Aboneliğiniz için en fazla 3 sahip belirtilmelidir
 - Aboneliğinize birden fazla sahip atanmalıdır
-- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows VM 'lerini denetleyin
-- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows VM 'lerini denetleyin
+- Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows VM 'lerinden denetim sonuçlarını göster
+- Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows VM 'lerinden denetim sonuçlarını göster
 - Yöneticiler grubunun belirtilen üyelerden birini içerdiği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 - Yöneticiler grubunun belirtilen tüm üyeleri içermediği Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 
@@ -85,7 +85,7 @@ Azure SQL veritabanı için gelişmiş veri güvenliği 'nin veri bulma ve sın�
 
 Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı olduğunu izlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atayarak uzaktan erişimi izleyip denetlemenize yardımcı olur. Şema Ayrıca, parola olmadan hesaplardan gelen uzak bağlantılara izin veren Linux sanal makinelerini denetleyen ilke tanımları atar. Ayrıca, şema, depolama hesaplarına Kısıtlanmamış erişimi izlemenize yardımcı olan bir Azure ilke tanımı atar. Bu göstergeleri izlemek, uzaktan erişim yöntemlerinin güvenlik ilkenize uyduğundan emin olmanıza yardımcı olabilir.
 
-- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetleme
+- \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerinden denetim sonuçlarını göster
 - \[Önizleme\]: parola olmadan hesaplardan uzak bağlantılara Izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
 - API uygulaması için uzaktan hata ayıklama kapatılmalıdır
@@ -107,7 +107,7 @@ Azure Izleyici tarafından toplanan günlük verileri, merkezi yapılandırma ve
 Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu yapılandırmaların izlenmesi, bir denetim sistem hatası veya yanlış yapılandırması göstergesi sağlayabilir ve düzeltici eylem yapmanıza yardımcı olabilir.
 
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
+- SQL Server üzerinde denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 
@@ -131,7 +131,7 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 - \[Önizleme\]: Linux VM 'ler Için Log Analytics aracısı dağıtma
 - \[Önizleme\]: Windows VM 'leri Için Log Analytics aracısı dağıtma
 - Tanılama ayarını denetle
-- SQL Server Level denetim ayarlarını denetleme
+- SQL Server üzerinde denetim etkinleştirilmelidir
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
 - Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
@@ -167,8 +167,8 @@ Bu şema, çok faktörlü kimlik doğrulaması etkinleştirilmemiş olan sahip v
 
 Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya passwd dosyasında yanlış izinlere sahip olan Linux sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atar. Bu şema Ayrıca, Windows sanal makineleri için parola şifreleme türünün yapılandırılmasını denetleyen ilke tanımları atar. Bu göstergeleri izlemek, sistem kimlik doğrulamasının kuruluşunuzun kimlik ve kimlik doğrulama ilkesiyle uyumlu olmasını sağlamanıza yardımcı olur.
 
-- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerini denetleyin
-- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetleyin
+- \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerinden denetim sonuçlarını göster
 - \[Önizleme\]: passwd dosyası izinleri 0644 olarak ayarlanan Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
 - \[Önizleme\]: parola olmayan hesaplara sahip Linux VM 'lerini denetlemek için gereksinimleri dağıtın
 
@@ -176,11 +176,11 @@ Bu şema, parola olmadan hesaplardan uzak bağlantılara izin veren ve/veya pass
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows sanal makinelerini denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden sanal makinelerin farkında olmak, tüm sanal makine Kullanıcı hesaplarının parolalarının kuruluşunuzun parola ilkesiyle uyumlu olmasını sağlamak için düzeltici eylemler almanıza yardımcı olur.
 
-- \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows VM 'lerini denetleyin
-- \[Önizleme\]: en fazla 70 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'leri denetleme
-- \[Önizleme\]: en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerini denetleyin
+- \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: en fazla 70 gün parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: parola karmaşıklığı ayarı etkin olmayan Windows VM 'lerinden denetim sonuçlarını göster
+- \[Önizleme\]: en az parola uzunluğunu 14 karakter olarak kısıtlayan Windows VM 'lerinden denetim sonuçlarını göster
 - \[Önizleme\]: önceki 24 parolanın yeniden kullanılmasına Izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 - \[Önizleme\]: 70 gün maksimum parola yaşı olmayan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
 - \[Önizleme\]: en az 1 günlük parola yaşı olmayan Windows VM 'leri denetlemek için gereksinimleri dağıtın
@@ -217,10 +217,9 @@ Azure 'un dağıtılmış hizmet reddi (DDoS) standart katmanı, temel hizmet ka
 Bu şema, Azure Güvenlik Merkezi 'nde ağ güvenlik grubu sağlamlaştırma önerilerini izleyen bir [Azure ilke](../../../policy/overview.md) tanımı atayarak sistem sınırını yönetmenize ve denetlemenize yardımcı olur. Azure Güvenlik Merkezi, Internet 'e yönelik sanal makinelerin trafik düzenlerini analiz eder ve olası saldırı yüzeyini azaltmak için ağ güvenlik grubu kuralı önerileri sağlar.
 Ayrıca, bu şema korunmayan uç noktaları, uygulamalar ve depolama hesaplarını izleyen ilke tanımları da atar. Bir güvenlik duvarı tarafından korunmayan uç noktalar ve uygulamalar ve Kısıtlanmamış erişimi olan depolama hesapları, bilgi sisteminde bulunan bilgilere istenmeden erişime izin verebilir.
 
-- Internet 'e yönelik sanal makineler için ağ güvenlik grubu kuralları sağlamlaştırılmış olmalıdır
+- Uyarlamalı ağ sağlamlaştırma önerileri internet 'e yönelik sanal makinelere uygulanmalıdır
 - Internet 'e yönelik uç nokta ile erişim kısıtlı olmalıdır
 - Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme
-- IaaS üzerinde Web uygulamalarına yönelik NSG kuralları sağlamlaştırılmış olmalıdır
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) sınır koruması | Erişim noktaları
 
@@ -239,7 +238,7 @@ Tam zamanında (JıT) sanal makine erişimi, Azure sanal makinelerine giden traf
 Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izlemenize yardımcı olan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak, iletilen bilgilerin gizli ve bütünlüğünü korumanıza yardımcı olur. İletişimin düzgün şekilde şifrelendiğinden emin olmak, kuruluşunuzun gereksinimlerini karşılamanıza veya bilgilerin yetkisiz olarak açıklanmasını ve değiştirilmesini sağlamanıza yardımcı olabilir.
 
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetleme
+- Güvenli iletişim protokolleri kullanmayan Windows Web sunucularından denetim sonuçlarını göster
 - Güvenli iletişim protokolleri kullanmayan Windows Web sunucularını denetlemek için gereksinimleri dağıtma
 - İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Yalnızca Redis Cache güvenli bağlantılar etkinleştirilmelidir

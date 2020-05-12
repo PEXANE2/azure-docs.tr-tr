@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 505670e719e86086dbf7721b4298ec913220f928
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 849777ac3ec11915c602861fea0c42a49fb08bcb
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76694381"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006471"
 ---
 ## <a name="provide-frames-to-the-session"></a>Oturuma kareler sağlama
 
-Uzamsal bağlantı oturumu, kullanıcının etrafındaki alanı eşleyerek işe yarar. Bunun yapılması, Tutturucuların nerede bulunduğunu belirlemesine yardımcı olur. Mobil platformlar (iOS & Android), platformunuzun AR kitaplığından çerçeveler almak için kamera akışına yerel bir çağrı gerektirir. Buna karşılık, HoloLens sürekli olarak ortamı taramakta olduğundan, mobil ortamda olduğu gibi belirli bir çağrının olması gerekmez.
+Uzamsal bağlantı oturumu, kullanıcının etrafındaki alanı eşleyerek işe yarar. Bunun yapılması, Tutturucuların nerede bulunduğunu belirlemesine yardımcı olur. Mobil platformlar (iOS & Android), platformunuzun AR kitaplığından çerçeveler almak için kamera akışına yerel bir çağrı gerektirir. Buna karşılık, HoloLens, ortamı sürekli olarak taramakta olduğundan mobil platformlar gibi belirli bir çağrının olması gerekmez.

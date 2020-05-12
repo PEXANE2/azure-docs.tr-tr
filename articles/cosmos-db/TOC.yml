@@ -39,8 +39,6 @@
               href: sql-api-java-get-started.md
             - name: Async Java
               href: sql-api-async-java-get-started.md
-            - name: Değişiklik akışı ile Async Java örneği
-              href: create-sql-api-java-changefeed.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
         - name: Web uygulaması oluşturma
@@ -168,15 +166,15 @@
             - name: KAYDIRMA SINIRI
               displayName: offset limit
               href: sql-query-offset-limit.md
+        - name: JSON ile çalışma
+          displayName: 'alias, JSON, projection'
+          href: sql-query-working-with-json.md
         - name: Alt sorgu
           displayName: 'subquery, exists'
           href: sql-query-subquery.md
         - name: Birleştirme
           displayName: join
           href: sql-query-join.md
-        - name: Diğer ad kullanımı
-          displayName: 'alias, aliasing'
-          href: sql-query-aliasing.md
         - name: Diziler ve nesneler
           displayName: 'object and array creation, object and array'
           href: sql-query-object-array.md
@@ -494,6 +492,8 @@
         - name: Azure İşlevleri'ni tetikleme
           displayName: change feed
           href: change-feed-functions.md
+        - name: Değişiklik akışı çekme modeli
+          href: change-feed-pull-model.md
     - name: Küresel olarak dağıtılan analiz ve AI
       items:
         - name: Analiz kullanım örnekleri
@@ -665,6 +665,8 @@
               href: create-mongodb-xamarin.md
             - name: Golang
               href: create-mongodb-golang.md
+            - name: Başlayın
+              href: create-mongodb-go.md
         - name: Öğreticiler
           items:
             - name: 1 - Verileri oluşturma ve yönetme
@@ -996,6 +998,10 @@
               href: troubleshoot-java-async-sdk.md
         - name: .NET SDK’da sorun giderme
           href: troubleshoot-dot-net-sdk.md
+    - name: Daha yeni SDK’lara geçirme
+      items:
+        - name: Java V4 SDK’ya geçirme
+          href: migrate-java-v4-sdk.md
     - name: Değişiklik Akışı
       items:
         - name: Azure Cosmos DB Tetikleyicisi günlükleri
@@ -1012,6 +1018,8 @@
           href: how-to-use-change-feed-estimator.md
         - name: Değişiklik akışı işlemci kitaplığından geçiş
           href: how-to-migrate-from-change-feed-library.md
+        - name: Değişiklik Akışı ile Java SQL uygulaması oluşturma
+          href: create-sql-api-java-changefeed.md
     - name: Apache Spark ile yerleşik analiz
       items:
         - name: Azure Databricks Spark bağlayıcısı

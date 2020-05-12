@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726448"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005884"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Anahtarlar, gizli diziler ve sertifikalar hakkında
 
@@ -46,7 +46,7 @@ Anahtarlar, şifreleme ve imzalama için ilgili veri türleri için JOTE belirti
 
 Key Vault depolanan nesneler, bir nesnenin yeni bir örneği oluşturulduğunda sürümlüdür. Her sürüme benzersiz bir tanımlayıcı ve URL atanır. Bir nesne ilk oluşturulduğunda, benzersiz bir sürüm tanımlayıcısı verilir ve nesnenin geçerli sürümü olarak işaretlenir. Aynı nesne adına sahip yeni bir örnek oluşturmak, yeni nesneye benzersiz bir sürüm tanımlayıcısı sağlar ve bunun geçerli sürüm olmasına neden olur.  
 
-Key Vault nesneler, geçerli tanımlayıcı veya sürüme özgü tanımlayıcı kullanılarak çözülebilir. Örneğin, ada `MasterKey`sahip bir anahtar verildiğinde, geçerli tanımlayıcıyla işlem gerçekleştirmek sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıyla işlem gerçekleştirmek sistemin nesnenin o belirli sürümünü kullanmasına neden olur.  
+Key Vault nesneler, bir sürümü tanımlayarak veya nesnenin geçerli sürümündeki işlemler için sürüm dışarıda bırakarak çözülebilir. Örneğin, adı `MasterKey`olan bir anahtar verildiğinde, bir sürümü belirtmeden işlemleri gerçekleştirmek sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıyla işlem gerçekleştirmek sistemin nesnenin o belirli sürümünü kullanmasına neden olur.  
 
 Nesneler bir URL kullanarak Key Vault içinde benzersiz şekilde tanımlanır. Coğrafi konumdan bağımsız olarak sistemdeki iki nesne aynı URL 'ye sahip değildir. Bir nesnenin tüm URL 'SI, nesne tanımlayıcısı olarak adlandırılır. URL, Key Vault, nesne türü, Kullanıcı tarafından sağlanmış nesne adı ve bir nesne sürümü tanımlayan bir önekden oluşur. Nesne adı büyük/küçük harfe duyarlıdır ve sabittir. Nesne sürümünü içermeyen tanımlayıcılar temel tanımlayıcılar olarak adlandırılır.  
 
@@ -62,7 +62,7 @@ Konumlar:
 |-|-|  
 |`keyvault-name`|Microsoft Azure Key Vault hizmetindeki bir anahtar kasasının adı.<br /><br /> Key Vault adlar Kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br /> Key Vault ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 3-24 karakter dizesi olmalıdır.|  
 |`object-type`|Nesnenin türü, "anahtarlar", "gizlilikler" veya ' Certificates '.|  
-|`object-name`|`object-name` , İçin Kullanıcı tarafından sağlanmış bir addır ve bir Key Vault içinde benzersiz olmalıdır. Ad, yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır.|  
+|`object-name`|`object-name` , İçin Kullanıcı tarafından sağlanmış bir addır ve bir Key Vault içinde benzersiz olmalıdır. Ad, bir harfle başlayan ve yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır.|  
 |`object-version`|`object-version` , İsteğe bağlı olarak bir nesnenin benzersiz bir sürümünü ele almak için kullanılan, sistem tarafından oluşturulan 32 karakter dizesi tanımlayıcısıdır.|  
 
 ## <a name="next-steps"></a>Sonraki adımlar

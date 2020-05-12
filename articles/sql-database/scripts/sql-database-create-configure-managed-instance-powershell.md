@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4ba4d69b560307e52c277f5c695bbba718cd1d3
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73691634"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005838"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>PowerShell kullanarak Azure SQL veritabanı yönetilen örneği oluşturma
 
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik aşağıdaki komutlardan bazılarını kullanır. Aşağıdaki tabloda kullanılan ve diğer komutlar hakkında daha fazla bilgi için, komuta özgü belgelere yönelik bağlantılara tıklayın.
 
 | Komut | Notlar |
 |---|---|
