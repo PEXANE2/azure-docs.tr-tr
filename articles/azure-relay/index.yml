@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Azure Relay belgeleri
+summary: Azure Relay hizmetinin kurumsal ağınızda çalışan hizmetleri nasıl güvenli bir şekilde genel bulutta kullanıma sunmanıza olanak sağladığını öğrenin.
+metadata:
+  title: Azure Relay belgeleri
+  description: Azure Relay hizmetinin kurumsal ağınızda çalışan hizmetleri nasıl güvenli bir şekilde genel bulutta kullanıma sunmanıza olanak sağladığını öğrenin.
+  services: service-bus-relay
+  ms.service: service-bus-relay
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 09/06/2019
+  ms.openlocfilehash: f4d186169998aad628dc8efa4781dc55f457edd4
+  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 05/12/2020
+  ms.locfileid: "83202923"
+landingContent:
+- title: Azure Relay hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Geçiş nedir?
+      url: relay-what-is-it.md
+- title: Karma bağlantılar
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web Yuvalarını kullanarak ileti alma ve gönderme - .NET
+      url: relay-hybrid-connections-dotnet-get-started.md
+    - text: HTTP kullanarak ileti alma ve gönderme - .NET
+      url: relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - text: Web Yuvalarını kullanarak ileti alma ve gönderme - Node.js
+      url: relay-hybrid-connections-node-get-started.md
+    - text: HTTP kullanarak ileti alma ve gönderme - Node.js
+      url: relay-hybrid-connections-http-requests-node-get-started.md
+  - linkListType: download
+    links:
+    - text: GitHub’daki örnekler
+      url: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
+- title: WCF Geçişi
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bir şirket içi WCF hizmetini buluttaki bir web uygulamasının kullanımına sunma
+      url: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+    - text: Bir şirket içi WCF hizmetini ağınızın dışındaki bir WCF hizmetinin kullanımına sunma
+      url: service-bus-relay-tutorial.md
+    - text: Bir şirket içi WCF REST hizmetini ağınızın dışındaki bir istemcinin kullanımına sunma
+      url: service-bus-relay-rest-tutorial.md
+  - linkListType: download
+    links:
+    - text: GitHub’daki örnekler
+      url: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- title: API başvuruları
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.relay?view=azure-dotnet
+    - text: REST
+      url: /rest/api/relay/

@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: Şirket içinde barındırılan ağ geçidi için yerel ölçümleri ve günlükleri yapılandırma
           href: how-to-configure-local-metrics-logs.md
-        - name: Azure Application Insights ile istekleri günlüğe kaydetme
-          href: api-management-howto-app-insights.md
         - name: Yedekleme/geri yükleme kullanarak DR'yi ayarlama
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Kullanıcı hesaplarını yönetme

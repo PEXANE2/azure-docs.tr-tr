@@ -106,6 +106,8 @@
           items:
             - name: Azure Uygulama Yapılandırması
               href: event-schema-app-configuration.md
+            - name: Azure App Service
+              href: event-schema-app-service.md
             - name: Azure Blob Depolama
               href: event-schema-blob-storage.md
             - name: Azure Container Registry

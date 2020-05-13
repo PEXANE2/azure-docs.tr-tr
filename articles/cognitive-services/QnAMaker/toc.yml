@@ -227,6 +227,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Şifreleme
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma ve limitler
