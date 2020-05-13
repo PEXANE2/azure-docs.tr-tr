@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459041"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198499"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Bir Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -55,7 +55,7 @@ Azure portal kullanarak bir şablonu dışarı aktarmak için:
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
-3. > **ayarları** > **dışarı aktarma şablonu**' nu seçin.
+3. > **ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 
 4. **Şablonu dışarı aktar** dikey penceresinde **İndir** ' i seçin.
 
@@ -115,7 +115,7 @@ Azure portal kullanarak şablonu dağıtmak için:
 
 6. **Dosya Yükle**' yi seçin ve ardından son bölümde indirdiğiniz **Template. JSON** dosyasını yüklemek için yönergeleri izleyin.
 
-7. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak `mytargetaccount`ayarlar.
+7. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ Azure portal kullanarak şablonu dağıtmak için:
          "location": "centralus"
          }]          
     ```
-    Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
+    Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD**  =  **merkezileştirme**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak şablonu dağıtmak için:
 
-1. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak `mytargetaccount`ayarlar.
+1. **Template. JSON** dosyasında, depolama hesabı adının varsayılan değerini ayarlayarak hedef depolama hesabını adlandırın. Bu örnek, depolama hesabı adının varsayılan değerini olarak ayarlar `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ PowerShell kullanarak şablonu dağıtmak için:
     },
     ``` 
 
-2. **Template. JSON** dosyasındaki **Location** özelliğini hedef bölgeye düzenleyin. Bu örnek, hedef bölgeyi olarak `eastus`ayarlar.
+2. **Template. JSON** dosyasındaki **Location** özelliğini hedef bölgeye düzenleyin. Bu örnek, hedef bölgeyi olarak ayarlar `eastus` .
 
     ```json
     "resources": [{
@@ -232,25 +232,10 @@ Aşağıdaki tablo, bu özellikleri yeni depolama hesabınıza ekleme kılavuzla
 
 ### <a name="move-data-to-the-new-storage-account"></a>Verileri yeni depolama hesabına taşı
 
-Verilerinizi üzerine taşımanın bazı yolları aşağıda verilmiştir.
+AzCopy, verilerinizi üzerine taşımak için tercih edilen bir araçtır. Performans için en iyi duruma getirilmiştir.  Daha hızlı bir şekilde, verilerin doğrudan depolama sunucuları arasında kopyalandığı, AzCopy 'in bilgisayarınızın ağ bant genişliğini kullanmadığı bir yoldur. Komut satırında veya özel bir betiğin parçası olarak AzCopy kullanın. Bkz. [AzCopy ile çalışmaya başlama](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-: heavy_check_mark: **Azure Depolama Gezgini**
+Verilerinizi üzerine taşımak için Azure Data Factory de kullanabilirsiniz. Sezgisel bir kullanıcı arabirimi sağlar. Azure Data Factory kullanmak için şu bağlantılardan herhangi birine bakın:. 
 
-  Kullanımı kolay ve küçük veri kümeleri için uygundur. Kapsayıcıları ve dosya paylaşımlarını kopyalayabilir ve sonra bunları hedef hesaba yapıştırabilirsiniz.
-
-  Bkz. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/);
-
-: heavy_check_mark: **AzCopy**
-
-  Bu tercih edilen yaklaşımdır. Performans için en iyi duruma getirilmiştir.  Daha hızlı bir şekilde, verilerin doğrudan depolama sunucuları arasında kopyalandığı, AzCopy 'in bilgisayarınızın ağ bant genişliğini kullanmadığı bir yoldur. Komut satırında veya özel bir betiğin parçası olarak AzCopy kullanın.
-
-  Bkz. [AzCopy ile çalışmaya başlama](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-: heavy_check_mark: **Azure Data Factory** 
-
-  Bu aracı yalnızca AzCopy 'in geçerli sürümünde desteklenmeyen işlevlere ihtiyacınız varsa kullanın. Örneğin, AzCopy 'ın geçerli sürümünde blob 'ları hiyerarşik bir ad alanı olan hesaplar arasında kopyalayamazsınız. Ayrıca AzCopy dosya erişim denetim listelerini veya dosya zaman damgalarını korumaz (örneğin: oluşturma ve değiştirme zaman damgaları). 
-
-  Şu bağlantılara bakın:
   - [Azure Data Factory kullanarak Azure Blob depolama alanına veya veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [Azure Data Factory kullanarak Azure dosya depolamadan veri kopyalama](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)

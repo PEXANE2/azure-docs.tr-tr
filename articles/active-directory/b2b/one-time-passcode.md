@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263380"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199479"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması (Önizleme)
 
@@ -31,7 +31,7 @@ Bu makalede, B2B Konuk kullanıcıları için bir kerelik geçiş kodu kimlik do
 Bu özellik şu anda önizleme için kullanılabilir (bkz. aşağıdaki [önizlemede bulunan](#opting-in-to-the-preview) ). Önizleme sonrasında, bu özellik tüm kiracılar için varsayılan olarak açılır.
 
 > [!NOTE]
-> Bir kerelik geçiş kodu kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>`doğrulanmış bir etki alanı söz konusu olduğunda `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Konuk kullanıcılar şu anda kiracı bağlamı olmayan uç noktaları kullanarak oturum açamıyor. Örneğin,, `https://portal.azure.com`, `https://myapps.microsoft.com`veya ekipleri ortak uç nokta kullanımı bir hataya neden olur. 
+> Bir kerelik geçiş kodu kullanıcılarının kiracı bağlamını içeren bir bağlantı kullanarak oturum açması gerekir (örneğin, `https://myapps.microsoft.com/?tenantid=<tenant id>` veya `https://portal.azure.com/<tenant id>` doğrulanmış bir etki alanı söz konusu olduğunda `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Uygulama ve kaynakların doğrudan bağlantıları, kiracı bağlamını dahil ettikleri sürece da çalışır. Konuk kullanıcılar şu anda kiracı bağlamı olmayan uç noktaları kullanarak oturum açamıyor. Örneğin,, `https://myapps.microsoft.com` `https://portal.azure.com` , veya ekipleri ortak uç nokta kullanımı bir hataya neden olur. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Bir kerelik geçiş kodu Konuk kullanıcıları için Kullanıcı deneyimi
 Bir kerelik geçiş kodu kimlik doğrulamasıyla, Konuk Kullanıcı doğrudan bağlantıya tıklayarak veya davet e-postasını kullanarak davetinizi kullanabilir. Her iki durumda da tarayıcıda bir ileti, Konuk kullanıcının e-posta adresine bir kod gönderileceğini belirtir. Konuk Kullanıcı, **kodu gönder**' i seçer:
@@ -56,7 +56,7 @@ Konuk Kullanıcı bir daveti bir kez kullanır veya bununla paylaşılan bir kay
 
 Davet sırasında, davet ettiğiniz kullanıcının bir kerelik geçiş kodu kimlik doğrulamasını kullanacağı belirtilecektir. Ancak Konuk Kullanıcı oturum açtığında, başka bir kimlik doğrulama yöntemi kullanılmıyorsa, tek seferlik geçiş kodu kimlik doğrulaması geri dönüş yöntemi olur. 
 
-**Diğer kuruluşlardan****Kurumsal ilişkiler** > kullanıcılarına **Azure Active Directory** > giderek, Azure Portal kimlik doğrulaması yapan Konuk kullanıcıları görüntüleyebilirsiniz.
+**Azure Active Directory**kullanıcılara giderek Azure Portal, tek seferlik Geçiş kodlarıyla kimlik doğrulayan Konuk kullanıcıları görüntüleyebilirsiniz  >  **Users**.
 
 ![Kaynak değeri OTP olan bir kerelik geçiş kodu kullanıcısını gösteren ekran görüntüsü](media/one-time-passcode/otp-users.png)
 
@@ -72,8 +72,7 @@ Kabul etme eyleminin etkili olması birkaç dakika sürebilir. Bundan sonra, yal
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD portalını kullanmayı kabul etmek için
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-3.  **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
-4.  **Ayarlar**' ı seçin.
+3.  **Kurumsal ilişki**  >  **ayarları** ' nı seçin (veya **dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin).
 5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Evet**' i seçin.
  
 ### <a name="to-opt-in-using-powershell"></a>PowerShell 'i kullanmayı kabul etmek için
@@ -139,8 +138,7 @@ Geri çevirme eyleminin etkili olması birkaç dakika sürebilir. Önizlemeyi ka
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD portalını kullanarak önizlemeyi devre dışı bırakmak için
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-3.  **Yönet**altında **Kuruluş ilişkileri**' ni seçin.
-4.  **Ayarlar**' ı seçin.
+3.  **Kurumsal ilişki**  >  **ayarları** ' nı seçin (veya **dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin).
 5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Hayır**' ı seçin.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell 'i kullanarak önizlemeyi devre dışı bırakmak için

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 9ac6927df63d51830a58773e32ad0968920c0867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061772"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198568"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
@@ -61,6 +61,8 @@ Aşağıdaki örnekleri kullanarak bu işlemlerden bazılarını deneyebilirsini
 SQL veritabanı, otomatik olarak tam yedeklemeler, fark yedeklemeleri ve işlem günlüğü yedeklemeleri oluşturarak, zaman içinde nokta geri yükleme (ıNR) için self servis hizmetini destekler. Tam veritabanı yedeklemeleri haftalık olarak oluşturulur ve fark veritabanı yedeklemeleri genellikle her 12 saatte bir oluşturulur. İşlem günlüğü yedeklemeleri genellikle her 5 ila 10 dakika oluşturulur. İşlem günlüğü yedeklemelerinin sıklığı, işlem boyutuna ve veritabanı etkinliğinin miktarına göre belirlenir. 
 
 İlk tam yedekleme, bir veritabanı oluşturulduktan hemen sonra zamanlanır. Bu yedekleme genellikle 30 dakika içinde tamamlanır, ancak veritabanı büyükse daha uzun sürebilir. Örneğin, ilk yedekleme geri yüklenen bir veritabanında veya bir veritabanı kopyasında daha uzun sürebilir. İlk tam yedeklemeden sonra diğer tüm yedeklemeler otomatik olarak zamanlanır ve arka planda sessizce yönetilir. Tüm veritabanı yedeklemelerinin tam zamanlaması, genel sistem iş yükünü dengelediği için SQL Veritabanı hizmeti tarafından belirlenir. Yedekleme işlerini değiştiremez veya devre dışı bırakamazsınız.
+
+### <a name="default-backup-retention-period"></a>Varsayılan yedekleme saklama süresi
 
 INR yedeklemeleri, coğrafi olarak yedekli depolama ile korunur. Daha fazla bilgi için bkz. [Azure Depolama yedekliliği](../storage/common/storage-redundancy.md).
 
@@ -156,7 +158,7 @@ Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil o
 
 Azure SQL veritabanı Mühendisliği ekibi, sürekli olarak mantıksal sunuculara ve esnek veritabanı havuzlarına yerleştirilmiş veritabanlarının otomatik veritabanı yedeklerinin geri yüklenmesini otomatik olarak sınar. (Bu test yönetilen örnekte kullanılamaz.) Bir noktadan sonra geri yükleme sonrasında veritabanları DBCC CHECKDB bütünlük denetimleri de alır.
 
-Yönetilen örnek, yerel `CHECKSUM` `RESTORE` komutla veya geçiş tamamlandıktan sonra Azure Data Migration hizmeti ile geri yüklenen veritabanlarıyla otomatik olarak ilk yedeklemeyi alır.
+Yönetilen örnek, `CHECKSUM` yerel `RESTORE` komutla veya geçiş tamamlandıktan sonra Azure Data Migration hizmeti ile geri yüklenen veritabanlarıyla otomatik olarak ilk yedeklemeyi alır.
 
 Bütünlük denetimi sırasında bulunan tüm sorunlar, mühendislik ekibine bir uyarıya neden olur. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda veri bütünlüğü](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 

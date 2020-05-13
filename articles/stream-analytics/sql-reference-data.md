@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6feca8cc87eadb2be5f43cafaa82195a18c3c75
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426495"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200376"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
@@ -101,7 +101,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. **Çözüm Gezgini** **Input. JSON** öğesine çift tıklayın.
 
-3. **Stream Analytics giriş yapılandırmasını**doldurun. Veritabanı adını, sunucu adını, yenileme türünü ve yenileme hızını seçin. Yenileme hızını biçimde `DD:HH:MM`belirtin.
+3. **Stream Analytics giriş yapılandırmasını**doldurun. Veritabanı adını, sunucu adını, yenileme türünü ve yenileme hızını seçin. Yenileme hızını biçimde belirtin `DD:HH:MM` .
 
    ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
@@ -147,7 +147,7 @@ Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../sql-database/sql-da
    ```
 2. Anlık görüntü sorgusunu yazar. 
 
-   Stream Analytics çalışma zamanına, SQL veritabanı 'na yönelik başvuru verileri kümesinin, sistem saatinde geçerli olarak geçerli olduğunu bildirmek için ** \@snapshottime** parametresini kullanın. Bu parametreyi sağlamazsanız, saat eğrisinden dolayı yanlış bir temel başvuru veri kümesi elde edersiniz. Tam anlık görüntü sorgusuna örnek aşağıda verilmiştir:
+   Stream Analytics çalışma zamanına, SQL veritabanı 'na yönelik başvuru verileri kümesinin, sistem saatinde geçerli olarak geçerli olduğunu bildirmek için ** \@ snapshottime** parametresini kullanın. Bu parametreyi sağlamazsanız, saat eğrisinden dolayı yanlış bir temel başvuru veri kümesi elde edersiniz. Tam anlık görüntü sorgusuna örnek aşağıda verilmiştir:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,16 +156,16 @@ Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../sql-database/sql-da
  
 2. Delta sorgusunu yazar. 
    
-   Bu sorgu, SQL veritabanınızda bir başlangıç saati, ** \@deltastarttime**ve bitiş zamanı ** \@deltabitişsaati**içinde eklenmiş veya silinmiş olan tüm satırları alır. Delta sorgusunun anlık görüntü sorgusuyla aynı sütunları ve sütun **_işlemini_** döndürmesi gerekir. Bu sütun, ** \@deltastarttime** ve ** \@deltabitişsaati**arasında satırın eklendiğini veya silinip silinmediğini tanımlar. Kayıtlar eklenmişse, sonuç satırları **1** olarak işaretlenir veya silinirse **2** ' dir. 
+   Bu sorgu, SQL veritabanınızda bir başlangıç saati, ** \@ deltastarttime**ve bitiş zamanı ** \@ deltabitişsaati**içinde eklenmiş veya silinmiş olan tüm satırları alır. Delta sorgusunun anlık görüntü sorgusuyla aynı sütunları ve sütun **_işlemini_** döndürmesi gerekir. Bu sütun, ** \@ deltastarttime** ve ** \@ deltabitişsaati**arasında satırın eklendiğini veya silinip silinmediğini tanımlar. Kayıtlar eklenmişse, sonuç satırları **1** olarak işaretlenir veya silinirse **2** ' dir. Ayrıca, Delta dönemindeki tüm güncelleştirmelerin uygun şekilde yakalandığından emin olmak için sorgunun SQL Server kenarından **filigran** eklemesi gerekir. Delta sorgusunun **filigran** olmadan kullanılması yanlış başvuru veri kümesine neden olabilir.  
 
    Güncelleştirilmiş kayıtlar için, isteğe bağlı tablo, ekleme ve silme işlemini yakalayıp barındırmaz. Stream Analytics çalışma zamanı, başvuru verilerini güncel tutmak için Delta sorgusunun sonuçlarını önceki anlık görüntüye uygular. Delta sorgusuna örnek aşağıda gösterilmektedir:
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as watermark 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as watermark 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

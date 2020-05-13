@@ -13,20 +13,18 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839105"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199574"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
-Bu makalede Azure Resource Manager kaynak sağlayıcılarından her birinin kullanılabildiği işlemler listelenir. Bu işlemler, Azure 'daki kaynaklara ayrıntılı erişim denetimi sağlamak için [Azure özel rollerinde](custom-roles.md) kullanılabilir. İşlem dizeleri şu biçimdedir: `{Company}.{ProviderName}/{resourceType}/{action}`. Kaynak sağlayıcısı ad alanlarının Azure hizmetlerine nasıl eşlendiğini gösteren bir liste için bkz. [kaynak sağlayıcısını hizmetle eşleştirme](../azure-resource-manager/management/azure-services-resource-providers.md).
+Bu makalede Azure Resource Manager kaynak sağlayıcılarından her birinin kullanılabildiği işlemler listelenir. Bu işlemler, Azure 'daki kaynaklara ayrıntılı erişim denetimi sağlamak için [Azure özel rollerinde](custom-roles.md) kullanılabilir. İşlem dizeleri şu biçimdedir: `{Company}.{ProviderName}/{resourceType}/{action}` . Kaynak sağlayıcısı ad alanlarının Azure hizmetlerine nasıl eşlendiğini gösteren bir liste için bkz. [kaynak sağlayıcısını hizmetle eşleştirme](../azure-resource-manager/management/azure-services-resource-providers.md).
 
 Kaynak sağlayıcısı işlemleri her zaman gelişmektedir. En son işlemleri almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) veya [az Provider Operation List](/cli/azure/provider/operation#az-provider-operation-list)komutunu kullanın.
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Microsoft. AAD
 
@@ -2137,7 +2135,7 @@ Azure hizmeti: bilişsel [Hizmetler](../cognitive-services/index.yml)
 > | DataAction | Microsoft. Biliveservices/accounts/SpellCheck/SpellCheck/Action | GET veya POST aracılığıyla bir yazım denetimi sorgusunun sonucunu elde edin. |
 > |  | **hesaplar/TextAnalytics** |  |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Languages/eylem | API, algılanan dili ve 0 ile 1 arasında bir sayısal puan döndürür. 1 ' e yakın puanlar, tanımlanan dilin doğru olduğunu belirten %100 belirsizlik olduğunu gösterir. Toplam 120 dil desteklenir. |
-> | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların\"(kişi\", \"konum\", \"kuruluş\" vb.) listesini döndürür. |
+> | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/Entities/Action | API, belirli bir belgedeki bilinen varlıkların ve genel adlandırılmış varlıkların ( \" kişi \" , \" Konum \" , \" kuruluş \" vb.) listesini döndürür. |
 > | DataAction | Microsoft. Biliveservices/accounts/TextAnalytics/keyphrases/Action | API, giriş metnindeki önemli konuşma noktalarını belirten dizelerin bir listesini döndürür. |
 > | DataAction | Microsoft. Biliveservices/hesaplar/TextAnalytics/yaklaşım/eylem | API, 0 ile 1 arasında sayısal bir puan döndürür.<br>1'e yaklaşan puanlar olumlu yaklaşımı ve 0'a yaklaşan puanlar olumsuz yaklaşımı gösterir.<br>0,5 puanı, yaklaşım eksikliğinden (ör.<br>bir FACTOID Bildirisi). |
 > |  | **hesaplar/VideoSearch** |  |

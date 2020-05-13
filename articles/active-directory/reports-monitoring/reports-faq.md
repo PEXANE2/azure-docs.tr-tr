@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266513"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199388"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
@@ -29,15 +29,15 @@ Bu makale Azure Active Directory (Azure AD) raporlama hakkında sık sorulan sor
 
 ## <a name="getting-started"></a>Başlarken 
 
-**S: Şu anda Azure AD `https://graph.windows.net/<tenant-name>/reports/` Audit ve tümleşik uygulama kullanım raporlarını raporlama sistemlerimize programlı bir şekilde çekmek Için Endpoint API 'leri kullanıyorum. Ne geçiş yapmam gerekir?**
+**S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD Audit ve tümleşik uygulama kullanım raporlarını raporlama sistemlerimize programlı bir şekilde çekmek için Endpoint API 'leri kullanıyorum. Ne geçiş yapmam gerekir?**
 
 Y **:** [Etkinlik raporlarına erişmek için API 'leri nasıl kullanabileceğinizi](concept-reporting-api.md)görmek için [API başvurusunu](https://developer.microsoft.com/graph/) bulun. Bu uç noktanın, eski API uç noktasında aldığınız tüm verileri sağlayan iki raporu (**Denetim** ve **oturum açma**) vardır. Bu yeni uç noktanın Ayrıca uygulama kullanımını, cihaz kullanımını ve Kullanıcı oturum açma bilgilerini almak için kullanabileceğiniz Azure AD Premium lisansıyla bir oturum açma raporu bulunur.
 
 ---
 
-**S: Şu anda Azure AD `https://graph.windows.net/<tenant-name>/reports/` güvenlik raporlarını (IP adreslerinden gelen kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi), raporlama sistemlerimize programlı olarak çekmek için uç nokta API 'lerini kullanıyorum. Ne geçiş yapmam gerekir?**
+**S: Şu anda `https://graph.windows.net/<tenant-name>/reports/` Azure AD güvenlik raporlarını (IP adreslerinden gelen kimlik bilgileri veya anonim IP adreslerinden oturum açma işlemleri gibi), raporlama sistemlerimize programlı olarak çekmek için uç nokta API 'lerini kullanıyorum. Ne geçiş yapmam gerekir?**
 
-Y **:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk algılama API](../identity-protection/graph-get-started.md) 'sini kullanabilirsiniz. Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli Microsoft Graph yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
+Y **:** Güvenlik algılamalarını Microsoft Graph aracılığıyla erişmek için [kimlik koruması risk ALGıLAMA API](../identity-protection/graph-get-started.md)'sini kullanabilirsiniz   . Bu yeni biçim, Gelişmiş filtreleme, alan seçimi ve daha fazlası ile verileri nasıl sorgulayabilme ve risk algılamalarını bir tür halinde kullanarak Sıems ve diğer veri toplama araçlarına daha kolay tümleştirme için daha fazla esneklik sağlar. Veriler farklı bir biçimde olduğundan eski sorgularınız için yeni bir sorgu yerine kullanamazsınız. Ancak, [yenı API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), O365 veya Azure AD gibi bu API 'Ler için Microsoft standard olan Microsoft Graph kullanır. Bu nedenle, gereken iş, geçerli Microsoft Graph yatırımlarınızı genişletebilir veya bu yeni standart platforma geçişinizi başlamanıza yardımcı olabilir.
 
 ---
 
@@ -71,13 +71,7 @@ Y **:** Hayır, raporlama verilerine Portal üzerinden veya kiracı için **güv
 
 **S: Azure portal etkinlik günlükleri (denetim ve oturum açma işlemleri) için veri saklama nedir?** 
 
-Y **:** Aşağıdaki tabloda, etkinlik günlükleri için veri saklama süresi listelenmektedir. Daha fazla bilgi için bkz. [Azure AD raporları için veri saklama ilkeleri](reference-reports-data-retention.md).
-
-| Rapor                 | Azure AD Ücretsiz | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Denetim günlükleri             | 7 gün        | 30 gün             | 30 gün             |
-| Oturum açma işlemleri               | Yok           | 30 gün             | 30 gün             |
-| Azure MFA kullanımı        | 30 gün       | 30 gün             | 30 gün             |
+Y **:** Daha fazla bilgi için bkz. [Azure AD raporları için veri saklama ilkeleri](reference-reports-data-retention.md).
 
 ---
 

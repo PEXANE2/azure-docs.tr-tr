@@ -4,19 +4,19 @@ description: SQL veritabanı ve Azure SYNAPSE Analytics için SSMS ile çok yön
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 38d8eba5dd451c8e8709ce4d43aba107e5346bfc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e551ac54414cb3114a7d0905b1b2e59b0d16580a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627373"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198539"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio ve Azure AD için Multi-Factor Authentication 'ı yapılandırma
 
@@ -38,7 +38,7 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak SQL Database veya SAzure SYNA
 
 1. Evrensel kimlik doğrulaması kullanarak bağlanmak için, **sunucuya Bağlan** ILETIŞIM kutusunda **MFA desteğiyle Active Directory-Universal**' ı seçin. ( **Active Directory evrensel kimlik doğrulaması** ' nı görürseniz, en son SSMS sürümünde değilsiniz.)  
    ![1mfa-Universal-Connect][1]  
-2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu, biçimde `user_name@domain.com`doldurun.  
+2. Azure Active Directory kimlik bilgileriyle **Kullanıcı adı** kutusunu, biçimde doldurun `user_name@domain.com` .  
    ![1mfa-evrensel-Bağlan-Kullanıcı](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. Konuk Kullanıcı olarak bağlanıyorsanız, SMS 18. x veya daha sonraki bir sürümü tarafından otomatik olarak tanıyacağından, Konuk kullanıcılar için AD etki alanı adını veya kiracı KIMLIĞI alanını doldurmanız artık gerekmez. Daha fazla bilgi için bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md).
    ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
@@ -46,7 +46,7 @@ Aşağıdaki adımlarda, en son SSMS kullanılarak SQL Database veya SAzure SYNA
    Ancak, SSMS 17. x veya daha eski bir sürümle Konuk Kullanıcı olarak bağlanıyorsanız, **Seçenekler**' e tıklamanız ve **bağlantı özelliği** iletişim kutusunda, **ad etkı alanı adını veya Kiracı kimliği** kutusunu doldurmanız gerekir.
    ![MFA-kiracı-SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. SQL veritabanı ve Azure SYNAPSE için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com), kutuyu denetlemeniz ve geçerli ad etki alanı adını ya da kiracı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
+4. SQL veritabanı ve Azure SYNAPSE için her zamanki gibi **Seçenekler** ' e tıklamanız ve **Seçenekler** iletişim kutusunda veritabanını belirtmeniz gerekir. (Bağlı Kullanıcı bir Konuk Kullanıcı (yani joe@outlook.com ), kutuyu denetlemeniz ve geçerlI ad etki alanı adını ya da KIRACı kimliğini seçeneklerin bir parçası olarak eklemeniz gerekir. Bkz. [SQL veritabanı ve Azure SYNAPSE Ile evrensel kimlik doğrulaması (MFA IÇIN SSMS desteği)](sql-database-ssms-mfa-authentication.md). Ardından **Bağlan**’a tıklayın.  
 5. **Hesapta oturum açma** iletişim kutusu göründüğünde, Azure Active Directory kimliğinizin hesabını ve parolasını girin. Bir Kullanıcı Azure AD ile federe bir etki alanının parçasıysa parola gerekli değildir.  
    ![2mfa-oturum açma][2]  
 

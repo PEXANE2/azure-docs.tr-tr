@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mimart
 ms.reviewer: dhanyahk
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dbaa169bbe85a06694bde9719924f2006623cc
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: b117309a3ccc9893890d82c2d0b0d2cb0c6e7bca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890336"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197885"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -50,7 +50,7 @@ Yeni riskDetection API 'SI hakkında daha fazla bilgi için [risk algılama API 
 
 **Şunu yazın:** Değişiklik **hizmeti kategorisini planlayın:** uygulama proxy 'si **ürün yeteneği:** Access Control
 
-Chrome 80 tarayıcı sürümünden önceki birkaç hafta önce, uygulama proxy tanımlama bilgilerinin **SameSite** özniteliğini nasıl değerlendirdiğinin güncelleştirilmesini planlıyoruz. Chrome 80 sürümü ile, **SameSite** özniteliğini belirtmeyen tüm tanımlama bilgileri, olarak ayarlanmış olsa da olarak kabul edilir `SameSite=Lax`.
+Chrome 80 tarayıcı sürümünden önceki birkaç hafta önce, uygulama proxy tanımlama bilgilerinin **SameSite** özniteliğini nasıl değerlendirdiğinin güncelleştirilmesini planlıyoruz. Chrome 80 sürümü ile, **SameSite** özniteliğini belirtmeyen tüm tanımlama bilgileri, olarak ayarlanmış olsa da olarak kabul edilir `SameSite=Lax` .
 
 Bu değişiklik nedeniyle olumsuz olumsuz etkileri önlemeye yardımcı olmak için uygulama proxy 'Si erişimi ve oturum tanımlama bilgilerini şu şekilde güncelleştiriyoruz:
 
@@ -105,7 +105,7 @@ Bu yeni yetenekler hakkında daha fazla bilgi için, bkz. [Kurumsal uygulamalar 
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** izleme & raporlama
 
-Yeni **oturum açma** işlemleri sayfası ekledik (https://mysignins.microsoft.com) kuruluşunuzun kullanıcılarına olağan dışı etkinlikleri denetlemek için en son oturum açma geçmişini görüntülemesine olanak tanır. Bu yeni sayfa, kullanıcılarınızın şunları görmesini sağlar:
+Yeni **oturum açma** işlemleri sayfası ekledik ( https://mysignins.microsoft.com) kuruluşunuzun kullanıcılarına olağan dışı etkinlikleri denetlemek için en son oturum açma geçmişini görüntülemesine olanak tanır. Bu yeni sayfa, kullanıcılarınızın şunları görmesini sağlar:
 
 - Herkes parolasını tahmin etmeye çalışıyorsa.
 
@@ -268,7 +268,7 @@ Bu yeni uç noktanın nasıl kullanılacağı hakkında daha fazla bilgi için, 
 
 Eylül 2019 ' de, uygulama galerisine federasyon desteğiyle bu 29 yeni uygulamaları ekledik:
 
-[Schedulelook](https://schedulelook.bbsonlineservices.net/), [MS Azure SSO erişimi, etidex uyumluluk ofisi&trade; -çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial), [Iver portalı](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial), [ufuk sitesi](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial), [yarışmayı ve harcama](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial), [çalışma panosu](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial) `https://apps.yeeflow.com/`, [yay tesislerini](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial), [luware strazı ekibi](https://stratus.emea.luware.cloud/login), [geniş fikirler](https://wideideas.online/wideideas/), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), [jdlt Client hub](https://clients.jdlt.co.uk/login), [renpaku](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial), [sealpath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial) `https://app.penneo.com/`, `https://app.testhtm.com/settings/email-integration`,, işlem [çok fazla bulut](https://aec.cintoo.com/login), [beyaz kaynak](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial), [barındırılan herials online SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial), [IDC](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial), [cakehr](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial), b, [COO Kai ekip derlemesi](https://ms-contacts.coo-kai.jp/), [sonarquin](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial), [Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial), [Discovery avantajları SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial), [Amelio](https://app.amelio.co/), [BIS](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial)`https://itask.yipinapp.com/`
+[Schedulelook](https://schedulelook.bbsonlineservices.net/), [MS Azure SSO erişimi, etidex uyumluluk ofisi &trade; -Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial), [Iver portalı](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial), [ufuk sitesi](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial), [yarışmayı ve harcama](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial), [çalışma panosu](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial), `https://apps.yeeflow.com/` [yay tesislerini](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial), [luware strazı ekibi](https://stratus.emea.luware.cloud/login), [geniş fikirler](https://wideideas.online/wideideas/), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), [jdlt Client hub](https://clients.jdlt.co.uk/login), [renpaku](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial), [sealpath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [przma bulutu](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), `https://app.penneo.com/` ,, işlem `https://app.testhtm.com/settings/email-integration` [çok fazla bulut](https://aec.cintoo.com/login), [beyaz kaynak](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial), [barındırılan herials online SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial), [IDC](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial), [cakehr](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial)b, [COO Kai ekip derlemesi](https://ms-contacts.coo-kai.jp/), [sonarquin](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial), [Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial), [Discovery avantajları SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial), [Amelio](https://app.amelio.co/),`https://itask.yipinapp.com/`
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](https://aka.ms/azureadapprequest)listeleme bölümüne bakın.
 
@@ -427,7 +427,7 @@ Daha fazla bilgi için bkz. [nasıl çalıştığını öğrenin: Azure AD self 
 
 **Şunu yazın:** Sabit **hizmet kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-Azure AD kimlik doğrulama kitaplığı (ADAL.NET) sürüm 5.0.0-Preview sürümünden itibaren, uygulama geliştiricileri [Web uygulamaları ve Web API 'leri için hesap başına bir önbellek serileştirmelidir](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Aksi takdirde, bazı belirli kullanım durumları `UserAssertion`ile birlikte, [Şirket adına akışı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kullanan bazı senaryolar ayrıcalık yükselmesine neden olabilir. Bu güvenlik açığından kaçınmak için, ADAL.NET artık, için Microsoft kimlik doğrulama kitaplığı için DotNet (MSAL.NET) paylaşılan önbellek için Microsoft kimlik doğrulama kitaplığını yok sayar.
+Azure AD kimlik doğrulama kitaplığı (ADAL.NET) sürüm 5.0.0-Preview sürümünden itibaren, uygulama geliştiricileri [Web uygulamaları ve Web API 'leri için hesap başına bir önbellek serileştirmelidir](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Aksi takdirde, bazı belirli kullanım durumları ile birlikte, [Şirket adına akışı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kullanan bazı senaryolar `UserAssertion` ayrıcalık yükselmesine neden olabilir. Bu güvenlik açığından kaçınmak için, ADAL.NET artık, için Microsoft kimlik doğrulama kitaplığı için DotNet (MSAL.NET) paylaşılan önbellek için Microsoft kimlik doğrulama kitaplığını yok sayar.
 
 Bu sorun hakkında daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kitaplığı ayrıcalık yükselmesi güvenlik açığı](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258).
 
@@ -439,7 +439,7 @@ Bu sorun hakkında daha fazla bilgi için bkz. [Azure Active Directory kimlik do
 
 Ağustos 2019 ' de, uygulama galerisine federasyon desteğiyle bu 26 yeni uygulamalar ekledik:
 
-[Cıvic platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial), [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial), [ProNovos Ops Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial), [bilitodoks](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial), [viareport 'ın Inativ Portal (Avrupa)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial), [Azure Databricks](https://azure.microsoft.com/services/databricks), [deneme](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial), akademik katılım, [Öncelik matrisi](https://sync.appfluence.com/pmwebng/), [cousto MySpace](https://cousto.platformers.be/account/login), [uploadilgilenme](https://uploadcare.com/accounts/signup/), [Carbonite uç nokta yedeklemesi](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial),, [Incom ile cpqsync](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial), [chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial), [sunma.&trade; Media Portal](https://portal.deliver.media), [Frontline eğitim](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial), [F5](https://www.f5.com/products/security/access-policy-manager), [stashcat AD Connect](https://www.stashcat.com), [yanıp sönme](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial), [vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial), [ProNovos Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial), [sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial), [darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial), [renklerin göre izleme](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial) [, ana,](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial) [EAB stratejik bakım](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial) [Academy Attendance](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial)
+[Cıvic platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial), [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial), [ProNovos Ops Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial), [bilitodoks](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial), [viareport 'ın Inativ Portal (Avrupa)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial), [Azure Databricks](https://azure.microsoft.com/services/databricks), [deneme](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial), akademik katılım, [Öncelik matrisi](https://sync.appfluence.com/pmwebng/), [cousto MySpace](https://cousto.platformers.be/account/login), [uploadilgilenme](https://uploadcare.com/accounts/signup/), [Carbonite uç nokta yedeklemesi](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial),, [Incom ile cpqsync](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial), [chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial), [sunma. Media &trade; Portal](https://portal.deliver.media), [Frontline eğitim](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial), [F5](https://www.f5.com/products/security/access-policy-manager), [stashcat AD Connect](https://www.stashcat.com), [yanıp sönme](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial), [vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial), [ProNovos Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial), [sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial), [darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial), [renklerin göre izleme](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial) [, ana,](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial) [EAB stratejik bakım](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial) [Academy Attendance](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial)
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](https://aka.ms/azureadapprequest)listeleme bölümüne bakın.
 
@@ -451,7 +451,7 @@ Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS 
 
 AzureAD ve AzureAD Preview PowerShell modüllerine yönelik yeni güncelleştirmeler mevcuttur:
 
-- AzureAD `-Filter` modülündeki `Get-AzureADDirectoryRole` parametreye yeni bir parametre eklendi. Bu parametre, cmdlet tarafından döndürülen dizin rollerini filtrelemenize yardımcı olur.
+- `-Filter` `Get-AzureADDirectoryRole` Azuread modülündeki parametreye yeni bir parametre eklendi. Bu parametre, cmdlet tarafından döndürülen dizin rollerini filtrelemenize yardımcı olur.
 - Yeni cmdlet 'ler, Azure AD 'de aşağıdakiler de dahil olmak üzere özel rolleri tanımlamaya ve atamaya yardımcı olmak için AzureADPreview modülüne eklenmiştir:
 
     - `Get-AzureADMSRoleAssignment`
@@ -478,7 +478,7 @@ Daha fazla bilgi için bkz. [dinamik üyelik kurallarını yönetme](https://doc
 
 **Şunu yazın:** Değiştirilen özellik **hizmeti kategorisi:** erişim gözden geçirmeleri **ürün yeteneği:** Identity idare
 
-Uygulamaların grup üyelikleri ve uygulama atamaları için otomatik olarak `AccessReview.ReadWrite.Membership`erişim İncelemeleri oluşturmasına ve almasına izin veren yeni bir Microsoft Graph App izni sunuyoruz. Bu izin, zamanlanmış işleriniz veya Otomasyon kapsamında oturum açmış bir kullanıcı bağlamı gerekmeden kullanılabilir.
+`AccessReview.ReadWrite.Membership`Uygulamaların grup üyelikleri ve uygulama atamaları için otomatik olarak erişim İncelemeleri oluşturmasına ve almasına izin veren yeni bir Microsoft Graph App izni sunuyoruz. Bu izin, zamanlanmış işleriniz veya Otomasyon kapsamında oturum açmış bir kullanıcı bağlamı gerekmeden kullanılabilir.
 
 Daha fazla bilgi için bkz. [PowerShell blogu ile Microsoft Graph uygulama izinleri kullanarak Azure AD erişim incelemeleri oluşturma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-how-to-create-Azure-AD-access-reviews-using-Microsoft/m-p/807241).
 
@@ -517,7 +517,7 @@ Gelişmiş güvenlik bilgileri deneyimi hakkında daha fazla bilgi için [yönet
     Ayarlarınızı kaydettikten sonra eski güvenlik bilgileri deneyimine artık erişebileceksiniz.
 
 >[!Important]
->25 Eylül 2019 tarihinden önce bu adımları tamamlamazsanız, Azure Active Directory kiracınız gelişmiş deneyim için otomatik olarak etkinleştirilir. Sorularınız varsa lütfen adresinden registrationpreview@microsoft.combizimle iletişime geçin.
+>25 Eylül 2019 tarihinden önce bu adımları tamamlamazsanız, Azure Active Directory kiracınız gelişmiş deneyim için otomatik olarak etkinleştirilir. Sorularınız varsa lütfen adresinden bizimle iletişime geçin registrationpreview@microsoft.com .
 
 ---
 
@@ -567,7 +567,7 @@ MFA sunucusu IP adresini [Office 365 IP adresi ve URL Web hizmetinden](https://d
 
 26 Temmuz 2019 ' de, [istemci kimlik bilgileri verme](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)yoluyla yalnızca uygulama belirteçleri sağlıyoruz. Daha önce, uygulamalar, istemci uygulamanın kiracıda olup olmamasına bakılmaksızın diğer uygulamaları çağırmak için belirteçleri alabilir. Bu davranışı, bazen Web API 'Leri olarak adlandırılan tek kiracılı kaynakların yalnızca kaynak kiracısında bulunan istemci uygulamaları tarafından çağrılabilir şekilde güncelleştirdik.
 
-Uygulamanız kaynak kiracısında değilse, bu sorunu çözmek `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` için, bir hata iletisi alırsınız. Bu sorunu gidermek için, [Yönetici onay uç noktasını](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) veya [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)'i kullanarak kiracıda istemci uygulama hizmeti sorumlusunu oluşturmanız gerektiğini, kiracınızın kiracı içinde çalışmaya yönelik uygulama iznini vermiş olmasını sağlar.
+Uygulamanız kaynak kiracısında değilse, bu sorunu çözmek için, bir hata iletisi alırsınız `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` . Bu sorunu gidermek için, [Yönetici onay uç noktasını](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) veya [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)'i kullanarak kiracıda istemci uygulama hizmeti sorumlusunu oluşturmanız gerektiğini, kiracınızın kiracı içinde çalışmaya yönelik uygulama iznini vermiş olmasını sağlar.
 
 Daha fazla bilgi için bkz. [kimlik doğrulaması yenilikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -592,7 +592,7 @@ Daha fazla bilgi için bkz. yönetici ile ilgili bilgiler için [Azure AD 'de pa
 
 Haziran 2019 ' de, uygulama galerisine federasyon desteği olan bu 18 yeni uygulamayı ekledik:
 
-[Ungerboeck yazılımı](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial), [parlak model omnichannel iletişim merkezi](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial), [Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial), [acquireio](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial), [gevop](https://www.looop.co/schedule-a-demo/), [productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial), [MS Azure SSO, etiıdex uyumluluk ofisi&trade;](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso), [hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial), [soyut](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial), [ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial), [flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html), [wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial), [TwineSocial](https://twinesocial.com/), [kallifer](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial), [hyperanna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial) [ilaç](https://pharmid.com/) [i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)
+[Ungerboeck yazılımı](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial), [parlak model omnichannel iletişim merkezi](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial), [Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial), [acquireio](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial), [gevop](https://www.looop.co/schedule-a-demo/), [productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial), [MS Azure SSO, etiıdex uyumluluk ofisi &trade; ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso), [hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial), [soyut](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial), [ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial), [flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html), [wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial), [TwineSocial](https://twinesocial.com/), [kallifer](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial), [hyperanna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial) [ilaç](https://pharmid.com/) [i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://aka.ms/appstutorial). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](https://aka.ms/azureadapprequest)listeleme bölümüne bakın.
 
@@ -724,7 +724,7 @@ Daha fazla bilgi için bkz. [Azure AD portalındaki grupları yönetme](https://
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-Azure AD Apps artık, OAuth 2,0 istekleri için statik sorgu parametreleriyle (örneğin, `https://contoso.com/oauth2?idp=microsoft`) Yanıtla (yeniden yönlendirme) URI 'leri kaydedebilir ve kullanabilir. Statik sorgu parametresi, yanıt URI 'sinin diğer herhangi bir bölümünde olduğu gibi, yanıt URI 'Leri için dize eşlemeye tabidir. URL kodu çözülmüş yeniden yönlendirme URI 'si ile eşleşen kayıtlı bir dize yoksa, istek reddedilir. Yanıt URI 'SI bulunursa, statik sorgu parametresi dahil olmak üzere, kullanıcının yeniden yönlendirileceği tüm dize kullanılır.
+Azure AD Apps artık, `https://contoso.com/oauth2?idp=microsoft` OAuth 2,0 istekleri için statik sorgu parametreleriyle (örneğin,) Yanıtla (yeniden yönlendirme) URI 'leri kaydedebilir ve kullanabilir. Statik sorgu parametresi, yanıt URI 'sinin diğer herhangi bir bölümünde olduğu gibi, yanıt URI 'Leri için dize eşlemeye tabidir. URL kodu çözülmüş yeniden yönlendirme URI 'si ile eşleşen kayıtlı bir dize yoksa, istek reddedilir. Yanıt URI 'SI bulunursa, statik sorgu parametresi dahil olmak üzere, kullanıcının yeniden yönlendirileceği tüm dize kullanılır.
 
 Bir güvenlik riskini temsil ettiğinden dinamik yanıt URI 'Leri hala yasaktır ve bir kimlik doğrulama isteği genelinde durum bilgilerini sürdürmek için kullanılamaz. Bu amaçla `state` parametresini kullanın.
 
@@ -1072,7 +1072,7 @@ Erişim incelemesi oluşturma hakkında daha fazla bilgi için bkz. [Azure AD er
 
 **Şunu yazın:** Değiştirilen özellik **hizmeti kategorisi:** ad eşitleme **ürün yeteneği:** platform
 
-Azure AD Connect, e-posta uyarı sistemlerimizi geçiş sürecinde olduğundan, bazı müşterilere yeni bir e-posta gönderici gösteriliyor olabilir. Bunu çözmek için kuruluşunuzun izin verilenler listesine `azure-noreply@microsoft.com` eklemeniz gerekir veya Office 365, Azure veya eşitleme hizmetinizden önemli uyarıları almaya devam edemeyeceksiniz.
+Azure AD Connect, e-posta uyarı sistemlerimizi geçiş sürecinde olduğundan, bazı müşterilere yeni bir e-posta gönderici gösteriliyor olabilir. Bunu çözmek için `azure-noreply@microsoft.com` kuruluşunuzun izin verilenler listesine eklemeniz gerekir veya Office 365, Azure veya eşitleme hizmetinizden önemli uyarıları almaya devam edemeyeceksiniz.
 
 ---
 
@@ -1688,7 +1688,7 @@ Hizmet olarak yazılım (SaaS) uygulamaları için çoklu oturum açma (SSO) aya
 
 - Jamf Pro
 
-Bu tek tıklamayla deneyim 'i kullanmaya başlamak için, uygulamanın **Azure Portal** > **SSO yapılandırma** sayfasına gidin. Daha fazla bilgi için bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+Bu tek tıklamayla deneyim 'i kullanmaya başlamak için, uygulamanın **Azure Portal**  >  **SSO yapılandırma** sayfasına gidin. Daha fazla bilgi için bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
 ---
 
@@ -1706,7 +1706,7 @@ Bu özelliğe erişmek ve daha fazla bilgi için, bkz. [Azure Active Directory-v
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** uygulamalarım **ürün yeteneği:** SSO
 
-Uygulamalarım erişim paneli için kullanılabilen yeni dağıtım planına göz atın (https://aka.ms/deploymentplans).
+Uygulamalarım erişim paneli için kullanılabilen yeni dağıtım planına göz atın ( https://aka.ms/deploymentplans) .
 Uygulamalarım erişim paneli kullanıcılara uygulamaları bulmak ve bunlara erişmek için tek bir yer sağlar. Bu portal Ayrıca kullanıcılara, uygulamalar ve gruplar için erişim isteme ya da diğer kişilerin adına bu kaynaklara erişimi yönetme gibi self servis fırsatları sağlar.
 
 Daha fazla bilgi için bkz. [uygulamalarım portalı nedir?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
@@ -2133,7 +2133,7 @@ Güncel olmayan tarayıcılar TLS 1,2 gibi daha yeni TLS sürümlerini desteklem
 
 - **Microsoft Edge ve Internet Explorer (her ikisi de Internet Explorer kullanılarak ayarlanır)**
 
-    1. Internet Explorer 'ı açın, **Araçlar** > **Internet seçenekleri** > **Gelişmiş**' i seçin.
+    1. Internet Explorer 'ı açın, **Araçlar**  >  **Internet seçenekleri**  >  **Gelişmiş**' i seçin.
     2. **Güvenlik** alanında, **TLS 1,2 kullan**' ı seçin ve ardından **Tamam**' ı seçin.
     3. Tüm tarayıcı pencerelerini kapatın ve Internet Explorer 'ı yeniden başlatın.
 
@@ -2301,7 +2301,7 @@ Azure AD, Dropbox, Salesforce, ServiceNow gibi SaaS uygulamalarında kullanıcı
 
 - [Zendesk](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
 
-Azure AD galerisinde Kullanıcı sağlamayı destekleyen tüm uygulamaların listesi için bkz [https://aka.ms/appstutorial](https://aka.ms/appstutorial)..
+Azure AD galerisinde Kullanıcı sağlamayı destekleyen tüm uygulamaların listesi için bkz [https://aka.ms/appstutorial](https://aka.ms/appstutorial) ..
 
 ---
 
@@ -2605,7 +2605,7 @@ Daha fazla bilgi için bkz. [sorunsuz SSO ile yerel bir istemcide oturum açma n
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-Kullanıcılar, sorunsuz SSO ile sessiz bir oturum açma deneyimi alırlar. bir uygulama (örneğin `https://contoso.sharepoint.com`,) Azure AD 'nin kiracı uç noktalarına `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` oturum açma ISTEKLERI gönderirse (örneğin, Azure AD 'nin ortak uç noktası (`https://login.microsoftonline.com/common/<...>`) yerine).
+Kullanıcılar, sorunsuz SSO ile sessiz bir oturum açma deneyimi alırlar. bir uygulama (örneğin, `https://contoso.sharepoint.com` ) Azure AD 'nin kiracı uç noktalarına oturum açma istekleri gönderirse (örneğin, `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` Azure AD 'nin ortak uç noktası () yerine) `https://login.microsoftonline.com/common/<...>` .
 
 Daha fazla bilgi için bkz. [kesintisiz çoklu oturum açma Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso).
 
@@ -2615,7 +2615,7 @@ Daha fazla bilgi için bkz. [kesintisiz çoklu oturum açma Azure Active Directo
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** kimlik doğrulamaları (oturum açmalar) **ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-Kullanıcılarınıza sorunsuz SSO eklemek için, Active Directory ' de Grup İlkesi kullanarak kullanıcıların Intranet bölgesi ayarlarına yalnızca bir Azure AD URL 'SI eklemeniz gerekir: `https://autologon.microsoftazuread-sso.com`. Daha önce müşterilerin iki URL eklemesi gerekiyordu.
+Kullanıcılarınıza sorunsuz SSO eklemek için, Active Directory ' de Grup İlkesi kullanarak kullanıcıların Intranet bölgesi ayarlarına yalnızca bir Azure AD URL 'SI eklemeniz gerekir: `https://autologon.microsoftazuread-sso.com` . Daha önce müşterilerin iki URL eklemesi gerekiyordu.
 
 Daha fazla bilgi için bkz. [kesintisiz çoklu oturum açma Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso).
 
@@ -2972,7 +2972,7 @@ Daha fazla bilgi için bkz. [uygulamalarımın güvenli oturum açma uzantısı]
 
 8 Ocak 2018 itibariyle PhoneFactor Web portalı kullanımdan kaldırılmıştır. Bu portal MFA sunucusu 'nun yönetimi için kullanılmıştır, ancak bu işlevler portal.azure.com adresinde Azure portal taşınmıştır.
 
-MFA yapılandırması şurada bulunur: ** \> Azure Active Directory MFA sunucusu**
+MFA yapılandırması şurada bulunur: **Azure Active Directory \> MFA sunucusu**
 
 ---
 

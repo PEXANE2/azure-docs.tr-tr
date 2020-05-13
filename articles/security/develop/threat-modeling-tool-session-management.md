@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203871"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198873"
 ---
 # <a name="security-frame-session-management"></a>Güvenlik çerçevesi: oturum yönetimi
 | Ürün/hizmet | Makale |
@@ -178,7 +179,7 @@ Bu ayar, uygulamaya erişmek için HTTP kullanılmasına rağmen zorlanır. Uygu
 | **İlgili teknolojiler** | Web Forms, MVC5 |
 | **Öznitelikler**              | EnvironmentType-Onprea |
 | **Başvurular**              | Yok  |
-| **Adımlar** | Web uygulaması bağlı olan taraf ve IDP ADFS sunucusu olduğunda Feeruth belirtecinin Secure özniteliği, Web. config 'in `system.identityModel.services` bölümünde RequireSsl özelliği true olarak ayarlanarak yapılandırılabilir:|
+| **Adımlar** | Web uygulaması bağlı olan taraf ve IDP ADFS sunucusu olduğunda Feeruth belirtecinin Secure özniteliği, `system.identityModel.services` Web. config 'in bölümünde requireSSL özelliği true olarak ayarlanarak yapılandırılabilir:|
 
 ### <a name="example"></a>Örnek
 ```csharp
@@ -272,7 +273,7 @@ Aşağıdaki yapılandırma doğru yapılandırmayı gösterir:
 | **İlgili teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET MVC ve Web Sayfalarında XSRF/CSRF Önleme](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
-| **Adımlar** | Anti-CSRF ve ASP.NET MVC Forms-görünümlerde `AntiForgeryToken` yardımcı yöntemi kullanın; formu `Html.AntiForgeryToken()` içine yerleştirin, örneğin|
+| **Adımlar** | Anti-CSRF ve ASP.NET MVC Forms- `AntiForgeryToken` görünümlerde yardımcı yöntemi kullanın; `Html.AntiForgeryToken()` Örneğin,|
 
 ### <a name="example"></a>Örnek
 ```csharp
@@ -301,8 +302,8 @@ public ViewResult SubmitUpdate()
 ```
 Bunu denetleyen yetkilendirme filtresi:
 * Gelen istek __RequestVerificationToken adlı bir tanımlama bilgisine sahiptir
-* Gelen istekte __RequestVerificationToken adlı bir `Request.Form` giriş vardır
-* Bu tanımlama bilgisi `Request.Form` ve değerler, tümünün Iyi olduğu varsayıldığında, istek normal olarak ilerler. Aksi halde, "gerekli bir Anti-forgery belirteci sağlanmadı veya geçersizdi" iletisiyle bir yetkilendirme hatası oluştu. 
+* Gelen istekte `Request.Form` __RequestVerificationToken adlı bir giriş vardır
+* Bu tanımlama bilgisi ve `Request.Form` değerler, tümünün iyi olduğu varsayıldığında, istek normal olarak ilerler. Aksi halde, "gerekli bir Anti-forgery belirteci sağlanmadı veya geçersizdi" iletisiyle bir yetkilendirme hatası oluştu. 
 
 ### <a name="example"></a>Örnek
 Anti-CSRF ve AJAX: bir AJAX isteği HTML form verileri değil JSON verilerini gönderebileceğinden, form belirteci AJAX istekleri için bir sorun olabilir. Tek bir çözüm, belirteçleri özel bir HTTP üst bilgisinde göndermektir. Aşağıdaki kod belirteçleri oluşturmak için Razor söz dizimi kullanır ve ardından belirteçleri bir AJAX isteğine ekler. 
@@ -545,8 +546,8 @@ public ViewResult SubmitUpdate()
 ```
 Bunu denetleyen yetkilendirme filtresi:
 * Gelen istek __RequestVerificationToken adlı bir tanımlama bilgisine sahiptir
-* Gelen istekte __RequestVerificationToken adlı bir `Request.Form` giriş vardır
-* Bu tanımlama bilgisi `Request.Form` ve değerler, tümünün Iyi olduğu varsayıldığında, istek normal olarak ilerler. Aksi halde, "gerekli bir Anti-forgery belirteci sağlanmadı veya geçersizdi" iletisiyle bir yetkilendirme hatası oluştu.
+* Gelen istekte `Request.Form` __RequestVerificationToken adlı bir giriş vardır
+* Bu tanımlama bilgisi ve `Request.Form` değerler, tümünün iyi olduğu varsayıldığında, istek normal olarak ilerler. Aksi halde, "gerekli bir Anti-forgery belirteci sağlanmadı veya geçersizdi" iletisiyle bir yetkilendirme hatası oluştu.
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
@@ -558,7 +559,7 @@ Bunu denetleyen yetkilendirme filtresi:
 | **Adımlar** | Web API 'sinin OAuth 2,0 kullanılarak güvenliği varsa, yetkilendirme isteği üstbilgisinde bir taşıyıcı belirteci bekler ve yalnızca belirteç geçerliyse isteğe erişim izni verir. Tanımlama bilgisi tabanlı kimlik doğrulamasından farklı olarak, tarayıcılar taşıyıcı belirteçlerini isteklere iliştirmez. İstekte bulunan istemcinin, istek üstbilgisine doğrudan taşıyıcı belirtecini eklemesi gerekir. Bu nedenle, OAuth 2,0 kullanılarak korunan ASP.NET Web API 'Leri için, taşıyıcı belirteçleri CSRF saldırılarına karşı savunma olarak değerlendirilir. Uygulamanın MVC bölümü Forms kimlik doğrulaması (yani, tanımlama bilgileri kullanır) kullanıyorsa, güvenlik yumuşatma simgelerinin MVC web uygulaması tarafından kullanılması gerektiğini lütfen unutmayın. |
 
 ### <a name="example"></a>Örnek
-Web API 'sinin tanımlama bilgilerinde değil yalnızca taşıyıcı belirteçlerine güvenilmesi için bilgilendirilmesi yeterlidir. Bu, `WebApiConfig.Register` yönteminde aşağıdaki yapılandırma tarafından yapılabilir:
+Web API 'sinin tanımlama bilgilerinde değil yalnızca taşıyıcı belirteçlerine güvenilmesi için bilgilendirilmesi yeterlidir. Bu, yönteminde aşağıdaki yapılandırma tarafından yapılabilir `WebApiConfig.Register` :
 
 ```csharp
 config.SuppressDefaultHostAuthentication();

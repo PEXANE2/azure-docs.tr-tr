@@ -1,25 +1,25 @@
 ---
-title: Depolama için Azure Izleyici (Önizleme) ile Azure depolama hizmetlerini izleme | Microsoft Docs
+title: Depolama için Azure Izleyici ile Azure depolama hizmetlerini izleme | Microsoft Docs
 description: Bu makalede, Azure depolama hesaplarıyla ilgili performans ve kullanım sorunlarını hızlı bir şekilde anlamak için depolama yöneticileri sağlayan depolama için Azure Izleyici özelliği açıklanır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691121"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199964"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme (Önizleme)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
-Depolama için Azure Izleyici (Önizleme), Azure depolama hizmetleri Performanslarınızın, kapasitesinin ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlar. Depolama kapasitesini ve performansı iki şekilde gözlemleyebilirsiniz, depolama hesabı gruplarına bakmak için doğrudan Azure Izleyici 'den bir depolama hesabından veya görünümünden görüntüleyebilirsiniz. 
+Depolama için Azure Izleyici, Azure depolama hizmetleri Performanslarınızın, kapasitesinin ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlar. Depolama kapasitesini ve performansı iki şekilde gözlemleyebilirsiniz, depolama hesabı gruplarına bakmak için doğrudan Azure Izleyici 'den bir depolama hesabından veya görünümünden görüntüleyebilirsiniz. 
 
-Bu makale, depolama hesaplarının, etkin noktalara odaklanıp gecikme süresi, azaltma ve kullanılabilirlik sorunlarını tanılayıp, depolama hesaplarının sistem durumu ve performansı hakkında uygun bir şekilde işlem yapılabilir bilgi türetmenize yardımcı olur.
+Bu makale, depolama hesaplarının, etkin noktalara odaklanıp gecikme süresi, azaltma ve kullanılabilirlik sorunlarını tanılayıp, depolama hesaplarının sistem durumu ve performansı hakkında uygun bir şekilde işlem yapılabilir bilgi türetmeye yönelik Azure Izleyici deneyimini anlamanıza yardımcı olur.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Depolama için Azure Izleyici 'ye giriş (Önizleme)
+## <a name="introduction-to-azure-monitor-for-storage"></a>Depolama için Azure Izleyici 'ye giriş
 
 Deneyime girmeden önce, bilgilerin nasıl sunulduklarını ve görselleştirir. Depolama özelliğini doğrudan bir depolama hesabından veya Azure Izleyici 'den seçip depolama için Azure Izleyici, tutarlı bir deneyim sunar. 
 
@@ -48,7 +48,7 @@ Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve kullanılabi
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları ' nı (Önizleme)** seçin.
+2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları**' nı seçin.
 
     ![Birden çok depolama hesabı görünümü](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Bir depolama hesabından doğrudan VM'ler için Azure İzleyici erişmek için:
 
 1. Azure portal depolama hesapları ' nı seçin.
 
-2. Listeden bir depolama hesabı seçin. Izleme bölümünde Öngörüler ' i (Önizleme) seçin.
+2. Listeden bir depolama hesabı seçin. Izleme bölümünde Öngörüler ' i seçin.
 
     ![Seçili depolama hesabına genel bakış sayfası](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ Bölümün sağ üst köşesindeki raptiye simgesini seçerek ölçüm bölümle
 
 ![Çalışma kitabı kılavuz sonuçlarını dışarı aktarma örneği](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Depolama için Azure Izleyicisini özelleştirme (Önizleme)
+## <a name="customize-azure-monitor-for-storage"></a>Depolama için Azure Izleyicisini özelleştirme
 
 Bu bölümde, veri analizi ihtiyaçlarınızı desteklemeye yönelik olarak özelleştirmek üzere çalışma kitabını düzenlemeyle ilgili yaygın senaryolar vurgulanmıştır:
 
@@ -155,7 +155,7 @@ Bu bölümde, veri analizi ihtiyaçlarınızı desteklemeye yönelik olarak öze
 
 Çoklu abonelik ve depolama hesabı **genel bakış** veya **Kapasite** çalışma kitaplarını her çalıştırmada belirli bir abonelik veya depolama hesabı için kapsama göre yapılandırabilir ve aşağıdaki adımları gerçekleştirin.
 
-1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki **depolama hesapları (Önizleme)** öğesini seçin.
+1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki **depolama hesapları** ' nı seçin.
 
 2. **Genel bakış** çalışma kitabında, komut çubuğundan **Düzenle**' yi seçin.
 
@@ -176,7 +176,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 Önceden oluşturulmuş **hatalardan**, **performans**, **kullanılabilirlik**ve **Kapasite** çalışma kitaplarının herhangi birine karşı aynı değişiklikleri gerçekleştirebilirsiniz.
 
-1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki **depolama hesapları (Önizleme)** öğesini seçin.
+1. Portalda **izleyici** ' yi seçin ve ardından sol bölmedeki **depolama hesapları** ' nı seçin.
 
 2. Kapasite çalışma kitabına geçiş yapmak için **kapasiteyi** seçin ve komut çubuğundan komut çubuğundan **Düzenle** ' yi seçin.
 
@@ -210,7 +210,7 @@ Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışı
 
 1. Portaldan **depolama hesapları** ' nı seçin ve ardından listeden bir depolama hesabı seçin.
 
-2. Sol bölmeden **Öngörüler (Önizleme)** seçeneğini belirleyin.
+2. Sol bölmeden **Öngörüler** ' i seçin.
 
 3. Çalışma kitabında kullanılabilirlik çalışma kitabına geçiş yapmak için **kullanılabilirlik** ' i seçin ve ardından komut çubuğundan **Düzenle** ' yi seçin. 
 
@@ -228,11 +228,11 @@ Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışı
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Bu bölüm, depolama için Azure Izleyici (Önizleme) kullanırken karşılaşabileceğiniz bazı yaygın sorunların tanılanması ve sorun gidermede size yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
+Bu bölüm, depolama için Azure Izleyicisi 'ni kullanırken karşılaşabileceğiniz bazı yaygın sorunların tanılanması ve sorun gidermede size yardımcı olur. Belirli sorununuzla ilgili bilgileri bulmak için aşağıdaki listeyi kullanın.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Performans, kapasite veya kullanılabilirlik sorunlarını çözme
 
-Depolama için Azure Izleyici (Önizleme) ile belirttiğiniz depolamayla ilgili sorunları gidermeye yardımcı olmak için bkz. Azure depolama [sorun giderme kılavuzu](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance).  
+Depolama için Azure Izleyici ile belirttiğiniz depolamayla ilgili sorunları gidermenize yardımcı olması için bkz. Azure Storage [sorun giderme kılavuzu](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance).  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Neden 200 depolama hesabı görmem yeterlidir?
 
@@ -311,8 +311,8 @@ Bir panoya sabitlenmiş çalışma kitabının veya çalışma kitabı adımın�
 
 Kaydettiğiniz çalışma kitabınızdaki bir adımın adını değiştirmek için adım altında Düzenle ' yi seçin ve ardından ayarların en altındaki dişli ' ı seçin.
 
-![Çalışma kitabı adımının](./media/storage-insights-overview/fqa-edit.png)
-![altındaki Düzenle ' yi seçerek, adım adını değiştirebilmek için ayarların altındaki dişli ' ı seçin.](./media/storage-insights-overview/fqa-change-name.png)
+![Çalışma kitabı adımının altındaki Düzenle ](./media/storage-insights-overview/fqa-edit.png)
+ ![ ' yi seçerek, adım adını değiştirebilmek için ayarların altındaki dişli ' ı seçin.](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

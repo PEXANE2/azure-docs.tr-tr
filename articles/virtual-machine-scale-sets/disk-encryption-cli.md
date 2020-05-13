@@ -1,19 +1,20 @@
 ---
 title: Azure CLı ile Azure ölçek kümeleri için diskleri şifreleme
 description: Windows sanal makine ölçek kümesindeki sanal makine örneklerini ve bağlı diskleri şifrelemek için Azure PowerShell kullanmayı öğrenin
-author: msmbaldwin
-manager: rkarlin
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 10/15/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fd8b88e55f487032f76aa379018f09c144842d60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279072"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200305"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile bir sanal makine ölçek kümesindeki işletim sistemini ve bağlı veri disklerini şifreleme
 

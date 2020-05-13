@@ -12,12 +12,13 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: has-adal-ref
+ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981995"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200968"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -87,9 +88,9 @@ Bu düzeltme derlemesi, Grup filtreleme özelliği etkinse ve kaynak bağlantıs
 > **' Yı ad grubu Ile Birleştir** eşitleme kuralından klondıysanız ve ' ı **ad-grup ortak** eşitleme kuralıyla klonlamadıysanız ve yükseltmeyi planlarsanız, yükseltmenin bir parçası olarak aşağıdaki adımları izleyin:
 > 1. Yükseltme sırasında, **yapılandırma tamamlandığında eşitleme Işlemini Başlat**seçeneğinin işaretini kaldırın.
 > 2. Kopyalanmış JOIN eşitleme kuralını düzenleyin ve aşağıdaki iki dönüşümü ekleyin:
->     - Doğrudan akışı `objectGUID` olarak `sourceAnchorBinary`ayarlayın.
->     - İfade akışını `ConvertToBase64([objectGUID])` olarak `sourceAnchor`ayarlayın.     
-> 3. Kullanarak `Set-ADSyncScheduler -SyncCycleEnabled $true`Scheduler 'ı etkinleştirin.
+>     - Doğrudan akışı `objectGUID` olarak ayarlayın `sourceAnchorBinary` .
+>     - İfade akışını `ConvertToBase64([objectGUID])` olarak ayarlayın `sourceAnchor` .     
+> 3. Kullanarak Scheduler 'ı etkinleştirin `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 
@@ -209,7 +210,7 @@ Yedek karakterleri doğru bir şekilde işlemeyen Eşitleme hataları sıkışt�
 >[!IMPORTANT]
 >Daha önceki bir sürümden Azure AD Connect yükseltirken, Azure AD Connect başarıyla yükseltilse de O365 portalının güncelleştirilmiş sürümü yansıtmadığından, bu bilinen bir sorun vardır.
 >
-> Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra Azure AD Connect sunucusunda`Set-ADSyncDirSyncConfiguration` PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
+> Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra `Set-ADSyncDirSyncConfiguration` Azure AD Connect sunucusunda PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
 >
 >1. PowerShell 'i erişiminizin engellenmediğinden modunda açın.
 >2. `Import-Module "ADSync"` öğesini çalıştırın.
@@ -618,7 +619,7 @@ Durum: Ekim 27 2017
 >Bu derleme, Azure AD Connect otomatik yükseltme özelliği aracılığıyla müşteriler tarafından kullanılamaz.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6879]() sorunu düzeltildi
+#### <a name="fixed-issue"></a>[https://github.com/Azure/azure-powershell/issues/6814]() sorunu düzeltildi
 * Azure AD Connect ve Azure AD Connect Health Aracısı arasında sürüm uyumluluğu sorunu düzeltildi (eşitleme için). Bu sorun, 1.1.647.0 sürümüne yerinde yükseltme Azure AD Connect, ancak şu anda sistem durumu Aracısı sürümü 3.0.127.0 olan müşterileri etkiler. Yükseltmeden sonra, sistem durumu Aracısı artık Azure AD Connect eşitleme hizmeti ile Azure AD Sistem Sağlığı Hizmeti arasında sistem durumu verileri gönderemez. Bu düzeltmeyle birlikte Azure AD Connect yerinde yükseltme sırasında durum Aracısı sürümü 3.0.129.0 yüklenir. Sistem Durumu Aracısı sürüm 3.0.129.0 Azure AD Connect sürüm 1.1.649.0 ile uyumluluk sorununa sahip değil.
 
 
@@ -772,7 +773,7 @@ Durum: Temmuz 23 2017
   * Kullanıcı geri yazma özelliğini etkinleştirdiniz.
   
   >[!NOTE]
-  >Otomatik yükseltme özelliğinin kapsam genişletmesi, müşterileri Azure AD Connect Build 1.1.105.0 ve After ile etkiler. Azure AD Connect sunucunuzun otomatik olarak yükseltilmesini istemiyorsanız, Azure AD Connect sunucunuzda aşağıdaki cmdlet 'i çalıştırmanız gerekir: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Otomatik yükseltmeyi etkinleştirme/devre dışı bırakma hakkında daha fazla bilgi için, [Azure AD Connect: otomatik yükseltme](how-to-connect-install-automatic-upgrade.md)makalesine bakın.
+  >Otomatik yükseltme özelliğinin kapsam genişletmesi, müşterileri Azure AD Connect Build 1.1.105.0 ve After ile etkiler. Azure AD Connect sunucunuzun otomatik olarak yükseltilmesini istemiyorsanız, Azure AD Connect sunucunuzda aşağıdaki cmdlet 'i çalıştırmanız gerekir: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` . Otomatik yükseltmeyi etkinleştirme/devre dışı bırakma hakkında daha fazla bilgi için, [Azure AD Connect: otomatik yükseltme](how-to-connect-install-automatic-upgrade.md)makalesine bakın.
 
 ## <a name="115580"></a>1.1.558.0
 Durum: yayınlanmayacak. Bu derlemedeki değişiklikler 1.1.561.0 sürümüne dahildir.
@@ -800,7 +801,7 @@ Durum: yayınlanmayacak. Bu derlemedeki değişiklikler 1.1.561.0 sürümüne da
   * Kullanıcı geri yazma özelliğini etkinleştirdiniz.
   
   >[!NOTE]
-  >Otomatik yükseltme özelliğinin kapsam genişletmesi, müşterileri Azure AD Connect Build 1.1.105.0 ve After ile etkiler. Azure AD Connect sunucunuzun otomatik olarak yükseltilmesini istemiyorsanız, Azure AD Connect sunucunuzda aşağıdaki cmdlet 'i çalıştırmanız gerekir: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Otomatik yükseltmeyi etkinleştirme/devre dışı bırakma hakkında daha fazla bilgi için, [Azure AD Connect: otomatik yükseltme](how-to-connect-install-automatic-upgrade.md)makalesine bakın.
+  >Otomatik yükseltme özelliğinin kapsam genişletmesi, müşterileri Azure AD Connect Build 1.1.105.0 ve After ile etkiler. Azure AD Connect sunucunuzun otomatik olarak yükseltilmesini istemiyorsanız, Azure AD Connect sunucunuzda aşağıdaki cmdlet 'i çalıştırmanız gerekir: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` . Otomatik yükseltmeyi etkinleştirme/devre dışı bırakma hakkında daha fazla bilgi için, [Azure AD Connect: otomatik yükseltme](how-to-connect-install-automatic-upgrade.md)makalesine bakın.
 
 ## <a name="115570"></a>1.1.557.0
 Durum: Temmuz 2017
@@ -940,12 +941,12 @@ CBool(
 #### <a name="issues-fixed"></a>Düzeltilen sorunlar
 
 * Aşağıdaki URL 'Ler, kimlik doğrulama kesintisine karşı dayanıklılığı artırmak için Azure AD tarafından sunulan yeni WS-Federation uç noktalardır ve şirket içi AD FS yanıtlama tarafı güveni yapılandırmasına eklenecektir:
-  * https:\//ESTs.Login.microsoftonline.com/login.srf
-  * https:\//stamp2.Login.microsoftonline.com/login.srf
+  * https: \/ /ESTs.Login.microsoftonline.com/login.srf
+  * https: \/ /stamp2.Login.microsoftonline.com/login.srf
   * https://ccs.login.microsoftonline.com/login.srf
   * https://ccs-sdf.login.microsoftonline.com/login.srf
   
-* AD FS ıssuerıd için yanlış talep değeri oluşturulmasına neden olan bir sorun düzeltildi. Bu sorun, Azure AD kiracısında birden çok doğrulanmış etki alanı varsa ve ıssuerıd talebini oluşturmak için kullanılan userPrincipalName özniteliğinin etki alanı sonekinin en az 3 düzey derinlikte (örneğin, johndoe@us.contoso.com) oluşması durumunda oluşur. Bu sorun, talep kuralları tarafından kullanılan Regex güncelleştirilerek çözümlenir.
+* AD FS ıssuerıd için yanlış talep değeri oluşturulmasına neden olan bir sorun düzeltildi. Bu sorun, Azure AD kiracısında birden çok doğrulanmış etki alanı varsa ve ıssuerıd talebini oluşturmak için kullanılan userPrincipalName özniteliğinin etki alanı sonekinin en az 3 düzey derinlikte (örneğin,) oluşması durumunda oluşur johndoe@us.contoso.com . Bu sorun, talep kuralları tarafından kullanılan Regex güncelleştirilerek çözümlenir.
 
 #### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 * Daha önce Azure AD Connect tarafından sunulan ADFS sertifika yönetimi özelliği, yalnızca Azure AD Connect ile yönetilen ADFS grupları ile kullanılabilir. Şimdi, özelliği Azure AD Connect kullanılarak yönetilmeyen ADFS grupları ile kullanabilirsiniz.
@@ -1155,7 +1156,7 @@ Yayımlanma tarihi: Ağustos 2016
 **Sorun düzeltildi:**
 
 * Eşitleme aralığında yapılan değişiklikler, bir sonraki eşitleme döngüsünün tamamlanmasından önce gerçekleşmez.
-* Azure AD Connect sihirbaz, Kullanıcı adı bir alt çizgi (\_) ile başlayan BIR Azure AD hesabını kabul etmez.
+* Azure AD Connect sihirbaz, Kullanıcı adı bir alt çizgi () ile başlayan bir Azure AD hesabını kabul etmez \_ .
 * Hesap parolası çok fazla özel karakter içeriyorsa Azure AD Connect sihirbaz Azure AD hesabının kimliğini doğrulayamazsa. Hata iletisi "kimlik bilgileri doğrulanamıyor. Beklenmeyen bir hata oluştu. " döndürülür.
 * Hazırlama sunucusunu kaldırmak, Azure AD kiracısında parola eşitlemesini devre dışı bırakır ve parola eşitlemesinin etkin sunucu ile başarısız olmasına neden olur.
 * Kullanıcı üzerinde depolanan Parola karması olmadığında sık olmayan durumlarda parola eşitleme başarısız olur.
@@ -1220,7 +1221,7 @@ Yayımlanma tarihi: Şubat 2016
 
 * Yükleme varsayılan C:\Program Files klasöründe değilse, önceki sürümlerden yükseltme işlemi çalışmaz.
 * Yükleme sihirbazının sonunda **eşitleme Işlemini başlatır** ve temizlerseniz, Yükleme Sihirbazı ikinci kez çalıştırıldığında Zamanlayıcı etkinleştirilmeyecektir.
-* Zamanlayıcı, ABD-ve tarih/saat biçiminin kullanıldığı sunucularda beklendiği gibi çalışmaz. Ayrıca, doğru süreleri `Get-ADSyncScheduler` döndürmeye da engel olur.
+* Zamanlayıcı, ABD-ve tarih/saat biçiminin kullanıldığı sunucularda beklendiği gibi çalışmaz. Ayrıca, `Get-ADSyncScheduler` doğru süreleri döndürmeye da engel olur.
 * Azure AD Connect önceki bir sürümünü oturum açma seçeneği ve yükseltme olarak AD FS yüklediyseniz, Yükleme Sihirbazı 'nı yeniden çalıştıramazsınız.
 
 ## <a name="111050"></a>1.1.105.0
@@ -1230,8 +1231,8 @@ Yayımlanma tarihi: Şubat 2016
 
 * Hızlı ayarlar müşterileri için [otomatik yükseltme](how-to-connect-install-automatic-upgrade.md) özelliği.
 * Azure Multi-Factor Authentication kullanarak genel yönetici desteği ve Yükleme sihirbazında Privileged Identity Management.
-  * Multi-Factor Authentication kullanıyorsanız https://secure.aadcdn.microsoftonline-p.com , proxy 'nizin trafiğe da izin vermek için izin vermeniz gerekir.
-  * Düzgün çalışması için Multi-Factor Authentication https://secure.aadcdn.microsoftonline-p.com için güvenilen siteler listenize eklemeniz gerekir.
+  * Multi-Factor Authentication kullanıyorsanız, proxy 'nizin trafiğe da izin vermek için izin vermeniz gerekir https://secure.aadcdn.microsoftonline-p.com .
+  * https://secure.aadcdn.microsoftonline-p.comDüzgün çalışması için Multi-Factor Authentication için güvenilen siteler listenize eklemeniz gerekir.
 * İlk yüklemeden sonra kullanıcının oturum açma yöntemini değiştirmeye izin verin.
 * Yükleme sihirbazında [etki alanı ve OU filtrelemesine](how-to-connect-install-custom.md#domain-and-ou-filtering) izin verin. Bu Ayrıca, tüm etki alanlarının kullanılamadığı ormanlarda bağlanmasına izin verir.
 * [Zamanlayıcı](how-to-connect-sync-feature-scheduler.md) , eşitleme altyapısında yerleşiktir.

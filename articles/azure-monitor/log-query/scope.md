@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2019
-ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249600"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199021"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
 [Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
@@ -25,6 +25,9 @@ Kapsam her zaman Log Analytics penceresinin sol üst kısmında görüntülenir.
 ![Kapsam](media/scope/scope.png)
 
 Kapsam, Log Analytics başlamak için kullandığınız yönteme göre belirlenir ve bazı durumlarda, üzerine tıklayarak kapsamı değiştirebilirsiniz. Aşağıdaki tabloda, kullanılan farklı kapsam türleri ve her biri için farklı Ayrıntılar listelenmektedir.
+
+> [!IMPORTANT]
+> APM 2,1 kullanıyorsanız, Application Insights uygulamalar diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır ve Application Insights kapsamı kullanılamaz. Application Insights menüsünden **Günlükler** ' i seçerseniz, **diğer Azure kaynakları** kapsamıyla aynı şekilde davranır ve yalnızca Application Insights tablolarında bu uygulamanın bulunduğu veri testten bulunur.
 
 | Sorgu kapsamı | Kapsamdaki kayıtlar | Seçme | Kapsam değiştiriliyor |
 |:---|:---|:---|:---|

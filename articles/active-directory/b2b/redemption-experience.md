@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160758"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199501"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
 
@@ -41,10 +41,10 @@ Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının b
 Davet e-postasına alternatif olarak, bir konuğa uygulamanız veya portalınızın doğrudan bağlantısını sağlayabilirsiniz. Önce [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) veya [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)aracılığıyla konuk kullanıcıyı dizininize eklemeniz gerekir. Ardından doğrudan oturum açma bağlantıları dahil olmak üzere [kullanıcılara uygulama dağıtmak için özelleştirilebilen bir yol](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)kullanabilirsiniz. Bir konuk davet e-postası yerine doğrudan bağlantı kullandığında, yine de ilk kez onay deneyiminde gezinir.
 
 > [!IMPORTANT]
-> Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. Kimlik doğrulaması için kendi https://myapps.microsoft.com giriş kiracısına yönlendirireceği için, benzer ortak bir URL, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
- > - Uygulamalar erişim paneli: https://myapps.microsoft.com/?tenantid=&lt; Kiracı kimliği&gt; 
- > - Doğrulanan etki alanı için uygulamalar erişim paneli: https://myapps.microsoft.com/&lt; doğrulanan etki alanı&gt;
- > - Azure portal: https://portal.azure.com/&lt; Kiracı kimliği&gt;
+> Doğrudan bağlantı, kiracıya özgü olmalıdır. Diğer bir deyişle, bir kiracı KIMLIĞI veya doğrulanmış etki alanı içermesi gerekir, bu sayede Konuk, paylaşılan uygulamanın bulunduğu kiracınızda kimlik doğrulaması yapılabilir. https://myapps.microsoft.comKimlik doğrulaması için kendi giriş kiracısına yönlendirireceği için, benzer ortak BIR URL, konuk için çalışmaz. Kiracı bağlamıyla doğrudan bağlantı örnekleri aşağıda verilmiştir:
+ > - Uygulamalar erişim paneli: https://myapps.microsoft.com/?tenantid=&lt ; Kiracı kimliği&gt; 
+ > - Doğrulanan etki alanı için uygulamalar erişim paneli: https://myapps.microsoft.com/&lt ; doğrulanan etki alanı&gt;
+ > - Azure portal: https://portal.azure.com/&lt ; Kiracı kimliği&gt;
  > - Tek uygulama: bkz. [doğrudan oturum açma bağlantısı](../manage-apps/end-user-experiences.md#direct-sign-on-links) kullanma
 
 Davet e-postasında doğrudan bağlantı üzerinden önerilen bazı durumlar vardır. Bu özel durumlar kuruluşunuz için önemliyse, davet e-postasını hala gönderen yöntemleri kullanarak kullanıcıları davet etmenizi öneririz:
@@ -99,7 +99,7 @@ Bir konuk, bir iş ortağı kuruluşundaki kaynaklara ilk kez erişmek üzere ot
 
    ![Yeni kullanım koşullarını gösteren ekran görüntüsü](media/redemption-experience/terms-of-use-accept.png) 
 
-   Yapılandırabilirsiniz:**kuruluş ilişkilerini** >  **yönetme** > **kullanım koşulları**için [kullanım koşulları](../governance/active-directory-tou.md) ' nı yapılandırabilirsiniz.
+   > **kullanım koşulları** **Kurumsal ilişkilerdeki** (veya **dış kimliklerden**) [kullanım koşullarını](../governance/active-directory-tou.md) yapılandırabilirsiniz.
 
 3. Aksi belirtilmediği takdirde, Konuk, konuk tarafından erişebilen uygulamaları listeleyen uygulamalar erişim paneline yönlendirilir.
 

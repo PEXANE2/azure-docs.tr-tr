@@ -12,12 +12,13 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512836"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197863"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Çoklu oturum açma dağıtımını planlama
 
@@ -236,11 +237,11 @@ Rolü her zaman Azure Active Directory içinde gerekli görevi gerçekleştirmek
 
 | Bilgisini| Roller | Azure AD rolü (gerekirse) |
 |--------|-------|-----------------------------|
-| Yardım Masası Yöneticisi | Katman 1 desteği | Hiçbiri |
+| Yardım Masası Yöneticisi | Katman 1 desteği | Yok |
 | Kimlik Yöneticisi | Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama | Genel yönetici |
-| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
+| Uygulama Yöneticisi | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 | Altyapı Yöneticileri | Sertifika aktarma sahibi | Genel yönetici |
-| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Hiçbiri |
+| İşletme sahibi/paydaş | Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma | Yok |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek üzere [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) kullanmanızı öneririz.
 

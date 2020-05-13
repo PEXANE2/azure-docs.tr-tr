@@ -5,23 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 463bccb29d59f06e7381d7d7123946029223a93a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597294"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199728"
 ---
-# <a name="azure-firewall-forced-tunneling-preview"></a>Azure Güvenlik Duvarı Zorlamalı tünel (Önizleme)
+# <a name="azure-firewall-forced-tunneling"></a>Azure Güvenlik Duvarı Zorlamalı tünel
 
 Azure Güvenlik Duvarı 'nı, Internet 'e yönelik tüm trafiği doğrudan Internet 'e gitmek yerine belirlenen bir sonraki atlamaya yönlendirmek üzere yapılandırabilirsiniz. Örneğin, Internet 'e geçirilmeden önce ağ trafiğini işlemek için şirket içi bir uç güvenlik duvarına veya diğer ağ sanal gerecine (NVA) sahip olabilirsiniz.
-
-> [!IMPORTANT]
-> Azure Güvenlik Duvarı Zorlamalı tünel Şu anda genel önizleme aşamasındadır.
->
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Varsayılan olarak, tüm giden Azure bağımlılıklarının karşılanmasını sağlamak için Azure Güvenlik duvarında zorlamalı tünelye izin verilmez. Varsayılan bir yolu olan *AzureFirewallSubnet* üzerinde Kullanıcı tanımlı yol (UDR), doğrudan Internet 'e gitmez.
 

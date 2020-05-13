@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: fb6092b7ccb3d1a4214f8d26119d9dc50b0ed317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81482058"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125766"
 ---
 # <a name="topic-filters-and-actions"></a>Konu başlığı filtreleri ve eylemleri
 
@@ -29,7 +29,7 @@ Service Bus üç filtre koşulu destekler:
 
 -   *Boole filtreleri* - **truefilter** ve **yanlışfiltre** tüm gelen iletilerin (**true**) ya da abonelik için seçili olmayan iletilerin (**false**) hiçbirinin seçilmemesine neden olur.
 
--   *SQL filtreleri* -bir **sqlfilter** , gelen iletilerin Kullanıcı tanımlı özellikler ve sistem özelliklerine karşı ARACıDA değerlendirilen bir SQL benzeri koşullu ifade barındırır. Koşullu ifadede tüm sistem özelliklerinin ön eki `sys.` olmalıdır. [Filtre koşulları Için SQL-Language alt kümesi](service-bus-messaging-sql-filter.md) , özelliklerin (`EXISTS`), null-değerlerin (`IS NULL`), mantıksal olmayan/ve/veya ilişkisel işleçlerin, basit sayısal aritmetiğinin ve ile `LIKE`eşleşen basit metin deseninin varlığını sınar.
+-   *SQL filtreleri* -bir **sqlfilter** , gelen iletilerin Kullanıcı tanımlı özellikler ve sistem özelliklerine karşı ARACıDA değerlendirilen bir SQL benzeri koşullu ifade barındırır. Koşullu ifadede tüm sistem özelliklerinin ön eki olmalıdır `sys.` . [Filtre koşulları Için SQL-Language alt kümesi](service-bus-messaging-sql-filter.md) , özelliklerin ( `EXISTS` ), null-değerlerin ( `IS NULL` ), mantıksal olmayan/ve/veya ilişkisel işleçlerin, basit sayısal aritmetiğinin ve ile eşleşen basit metin deseninin varlığını sınar `LIKE` .
 
 -   *Bağıntı filtreleri* -bir **correlationfilter** , gelen bir veya daha fazla iletinin Kullanıcı ve sistem özelliklerine göre eşleşen bir koşullar kümesi tutar. Yaygın olarak kullanılan bir kullanım, **CorrelationId** özelliğiyle eşleşmedir, ancak uygulama aşağıdaki özelliklerle eşleşmeyi de seçebilir:
 
@@ -71,8 +71,6 @@ Aşağıdaki örneklere bakın:
 
 - [Filtrelerle .NET-temel gönderme ve alma öğreticisi](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET-konu filtreleri](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/javascript/advanced/topicFilters.js)
-- [Betik yazın](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/typescript/src/advanced/topicFilters.ts)
 - [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
 
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261253"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197845"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>TLS 1,0 ve 1,1 ' i Redsıs için Azure Cache ile birlikte kullanarak kaldırma
 
@@ -19,7 +19,7 @@ Aktarım Katmanı Güvenliği (TLS) sürüm 1,2 veya üzeri için özel kullanı
 
 Bu çaba kapsamında, Redsıs için Azure önbelleğinde aşağıdaki değişiklikleri yapacağız:
 
-* **1. Aşama:** Yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olarak yapılandıracağız. (Bu, TLS 1,0 olarak kullanılır.) Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek. Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz. Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
+* **1. Aşama:** Yeni oluşturulan önbellek örnekleri için varsayılan en düşük TLS sürümünü 1,2 olarak yapılandıracağız (daha önce TLS 1,0).  Mevcut önbellek örnekleri bu noktada güncelleştirilmeyecek. Gerekirse, geriye doğru uyumluluk için [En düşük TLS sürümünü](cache-configure.md#access-ports) yeniden 1,0 veya 1,1 olarak değiştirebilirsiniz. Bu değişiklik Azure portal veya diğer yönetim API 'Leri aracılığıyla yapılabilir.
 * **2. Aşama:** 1,0 ve 1,1 TLS sürümlerini desteklemeye başlayacağız. Bu değişiklikten sonra, uygulamanız önbelleğiyle iletişim kurmak için TLS 1,2 veya sonraki bir sürümü kullanmanız gerekecektir.
 
 Ayrıca, bu değişikliğin bir parçası olarak, eski, güvenli olmayan şifresi üzerinde anlaşılamadı paketleri desteğini kaldıracağız.  Önbellek en düşük TLS sürümü 1,2 ile yapılandırıldığında desteklenen şifresi üzerinde anlaşılamadı paketlerimiz aşağıdakiler ile kısıtlanır.
@@ -33,7 +33,7 @@ Bu değişikliklerin etkili olması için tarihler şunlardır:
 
 | Bulut               | Aşama 1 başlangıç tarihi | 2. aşama başlangıç tarihi      |
 |---------------------|--------------------|-------------------------|
-| Azure (genel)      |  13 Ocak 2020  | 11 Mayıs 2020 (genişletilmiş) |
+| Azure (genel)      |  13 Ocak 2020  | 11 Mayıs 2020            |
 | Azure Kamu    |  13 Mart 2020    | 11 Mayıs 2020            |
 | Azure Almanya       |  13 Mart 2020    | 11 Mayıs 2020            |
 | Azure Çin         |  13 Mart 2020    | 11 Mayıs 2020            |
@@ -50,7 +50,7 @@ Uygulamanızın TLS 1,2 ile çalışıp çalışmadığını bulmanın en kolay 
 
 Redsıs .NET istemcileri, en eski TLS sürümünü varsayılan olarak .NET Framework 4.5.2 veya önceki sürümlerde kullanır ve .NET Framework 4,6 veya sonraki sürümlerde en son TLS sürümünü kullanır. .NET Framework eski bir sürümünü kullanıyorsanız, TLS 1,2 'yi el ile etkinleştirebilirsiniz:
 
-* **StackExchange. Reddir:** Bağlantı `ssl=true` dizesinde `sslprotocols=tls12` ve ayarlanır.
+* **StackExchange. Reddir:** `ssl=true` `sslprotocols=tls12` Bağlantı dizesinde ve ayarlanır.
 * **Servicestack. redsıs:** [Servicestack. redin](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) talimatlarını izleyin ve en azından Servicestack. redsıs v 5.6 'yı gerektirir.
 
 ### <a name="net-core"></a>.NET Core

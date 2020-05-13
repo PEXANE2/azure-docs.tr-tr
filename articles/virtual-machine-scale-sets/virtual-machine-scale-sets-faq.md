@@ -2,18 +2,19 @@
 title: Azure sanal makine ölçek kümeleri hakkında SSS
 description: Azure 'daki sanal makine ölçek kümeleri hakkında en sık sorulan soruların yanıtlarını alın.
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: faq
+ms.date: 05/24/2019
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611407"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200157"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -225,17 +226,17 @@ Linux VM oluştururken düz metin olarak SSH ortak anahtarlarını sağlayabilir
 
 linuxConfiguration öğe adı | Gerekli | Tür | Açıklama
 --- | --- | --- | ---
-SSH | No | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
+SSH | Hayır | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
 yol | Yes | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
 keyData | Yes | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
 
 Bir örnek için bkz. [101-VM-sshkey GitHub hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
-### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Aynı anahtar kasasından birden fazla sertifika ekledikten sonra çalıştırdığımda `Update-AzVmss` şu iletiyi görüyorum:
+### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>`Update-AzVmss`Aynı anahtar kasasından birden fazla sertifika ekledikten sonra çalıştırdığımda şu iletiyi görüyorum:
 
->Update-AzVmss: List Secret, izin verilmeyen/Subscriptions/\<My-Subscription-id>/ResourceGroups/internal-RG-dev/Providers/Microsoft.keyvault/Vaults/internal-keyvault-dev yinelenen örneklerini içeriyor.
+>Update-AzVmss: List Secret, izin verilmeyen/Subscriptions/ \< My-Subscription-id>/ResourceGroups/internal-RG-dev/Providers/Microsoft.keyvault/Vaults/internal-keyvault-dev yinelenen örneklerini içeriyor.
 
-Bu durum, mevcut kaynak Kasası için yeni bir kasa sertifikası kullanmak yerine aynı kasayı yeniden eklemeye çalışırsanız meydana gelebilir. Ek `Add-AzVmssSecret` gizli dizileri ekliyorsanız Komut düzgün çalışmaz.
+Bu durum, mevcut kaynak Kasası için yeni bir kasa sertifikası kullanmak yerine aynı kasayı yeniden eklemeye çalışırsanız meydana gelebilir. `Add-AzVmssSecret`Ek gizli dizileri ekliyorsanız Komut düzgün çalışmaz.
 
 Aynı anahtar kasasından daha fazla gizli dizi eklemek için $vmss. Properties. osProfile. gizlilikler [0]. vaultCertificates listesini güncelleştirin.
 
@@ -251,7 +252,7 @@ Yeni VM 'Ler eski sertifikaya sahip olmayacaktır. Ancak, sertifikaya sahip ve z
 
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>Sertifika, parola olmadan sanal makine ölçek kümesine, sertifika gizli depoda olduğunda sertifika gönderebilir miyim?
 
-Betiklerdeki parolalara sabit kod eklemeniz gerekmez. Dağıtım betiğini çalıştırmak için kullandığınız izinlerle parolaları dinamik olarak alabilirsiniz. Gizli depolama anahtarı kasasından bir sertifikayı taşınan bir betiğe sahipseniz, gizli dizi `get certificate` komutu da. pfx dosyasının parolasını çıkarır.
+Betiklerdeki parolalara sabit kod eklemeniz gerekmez. Dağıtım betiğini çalıştırmak için kullandığınız izinlerle parolaları dinamik olarak alabilirsiniz. Gizli depolama anahtarı kasasından bir sertifikayı taşınan bir betiğe sahipseniz, gizli `get certificate` dizi komutu da. pfx dosyasının parolasını çıkarır.
 
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>VirtualMachineProfile. osProfile 'in bir sanal makine ölçek kümesi için gizli dizi özelliği nasıl çalışır? CertificateUrl özelliğini kullanarak bir sertifika için mutlak URI 'yi belirtmem gerektiğinde Sourcekasa değerine neden ihtiyacım var?
 
@@ -287,9 +288,9 @@ Bir VM 'yi yeniden görüntüederseniz sertifikalar silinir. Yeniden görüntül
 
 ### <a name="what-happens-if-you-delete-a-certificate-from-the-key-vault"></a>Anahtar kasasından bir sertifikayı silerseniz ne olur?
 
-Gizli anahtar kasasından silinirse, tüm sanal makinelerinizden çalıştırın `stop deallocate` ve sonra yeniden başlatırsanız bir hatayla karşılaşırsınız. Bu hata, CRP 'nin anahtar kasasından gizli dizileri alması gerektiğinden, ancak başarısız olur. Bu senaryoda, sertifikaları sanal makine ölçek kümesi modelinden silebilirsiniz.
+Gizli anahtar kasasından silinirse, `stop deallocate` tüm sanal makinelerinizden çalıştırın ve sonra yeniden başlatırsanız bir hatayla karşılaşırsınız. Bu hata, CRP 'nin anahtar kasasından gizli dizileri alması gerektiğinden, ancak başarısız olur. Bu senaryoda, sertifikaları sanal makine ölçek kümesi modelinden silebilirsiniz.
 
-CRP bileşeni, müşteri gizli dizilerini kalıcı tutmaz. Sanal makine ölçek `stop deallocate` kümesindeki tüm VM 'ler için çalıştırırsanız, önbellek silinir. Bu senaryoda, gizli dizileri anahtar kasasından alınır.
+CRP bileşeni, müşteri gizli dizilerini kalıcı tutmaz. `stop deallocate`Sanal makine ölçek kümesindeki tüm VM 'ler için çalıştırırsanız, önbellek silinir. Bu senaryoda, gizli dizileri anahtar kasasından alınır.
 
 Azure Service Fabric (tek doku kiracı modelinde) bir parolanın önbelleğe alınmış bir kopyası olduğundan, ölçeklendirilirken bu sorunla karşılaşmazsınız.
 
@@ -301,7 +302,7 @@ Bir VM oluşturup gizli anahtarı anahtar kasasında güncelleştirirseniz yeni 
 
 ### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>Ekibim, bize. cer ortak anahtarları olarak dağıtılan çeşitli sertifikalarla birlikte çalışmaktadır. Bu sertifikaları bir sanal makine ölçek kümesine dağıtmak için önerilen yaklaşım nedir?
 
-. Cer ortak anahtarlarını bir sanal makine ölçek kümesine dağıtmak için, yalnızca. cer dosyalarını içeren bir. pfx dosyası oluşturabilirsiniz. Bunu yapmak için kullanın `X509ContentType = Pfx`. Örneğin,. cer dosyasını C# veya PowerShell 'de bir x509Certificate2 nesnesi olarak yükleyin ve sonra yöntemi çağırın.
+. Cer ortak anahtarlarını bir sanal makine ölçek kümesine dağıtmak için, yalnızca. cer dosyalarını içeren bir. pfx dosyası oluşturabilirsiniz. Bunu yapmak için kullanın `X509ContentType = Pfx` . Örneğin,. cer dosyasını C# veya PowerShell 'de bir x509Certificate2 nesnesi olarak yükleyin ve sonra yöntemi çağırın.
 
 Daha fazla bilgi için bkz [. X509Certificate. Export yöntemi (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
 
@@ -359,7 +360,7 @@ $vmss=Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
 Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
 
-İçinde `$vmss`ExtensionName değerini bulabilirsiniz.
+İçinde extensionName değerini bulabilirsiniz `$vmss` .
 
 ### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile tümleşen bir sanal makine ölçek kümesi şablonu örneği var mı?
 
@@ -638,7 +639,7 @@ Sanal makine ölçek kümesini yeni bir görüntüye güncelleştirmek ve düzel
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Görüntüyü değiştirmeden bir VM 'yi sıfırlamak için yeniden görüntü işlemini kullanabilir miyim? (Yani, bir VM 'yi yeni bir görüntü yerine fabrika ayarlarına sıfırlıyorum.)
 
-Evet, görüntüyü değiştirmeden bir VM 'yi sıfırlamak için ReImage işlemini kullanabilirsiniz. Ancak, sanal makine ölçek kümesi bir platform görüntüsüne ile `version = latest`başvuruyorsa, çağırdığınızda `reimage`VM 'niz daha sonraki bir işletim sistemi görüntüsüne güncelleştirebilir.
+Evet, görüntüyü değiştirmeden bir VM 'yi sıfırlamak için ReImage işlemini kullanabilirsiniz. Ancak, sanal makine ölçek kümesi bir platform görüntüsüne ile başvuruyorsa `version = latest` , ÇAĞıRDıĞıNıZDA VM 'niz daha sonraki bir işletim sistemi görüntüsüne güncelleştirebilir `reimage` .
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Ölçek Kümeleri Azure Izleyici günlükleriyle tümleştirilebilecek mi?
 
@@ -683,13 +684,13 @@ Yeni bir VM oluşturulduğunda, sanal makinenin InstanceView özelliği, ekran g
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>Nasıl yaparım? birden çok çağrı yapmadan her VM için özellik bilgilerini almak mı istiyorsunuz? Örneğin, sanal makine ölçek kümesindeki 100 VM 'lerinin her biri için hata etki alanını nasıl alabilirim?
 
-Birden çok çağrı `ListVMInstanceViews` yapmadan her VM için özellik bilgilerini almak için AŞAĞıDAKI Kaynak URI 'sinde bir REST API `GET` yapabilirsiniz:
+Birden çok çağrı yapmadan her VM için özellik bilgilerini almak için `ListVMInstanceViews` `GET` AŞAĞıDAKI Kaynak URI 'sinde bir REST API yapabilirsiniz:
 
 /Subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines? $expand = InstanceView&$select = InstanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Farklı uzantı bağımsız değişkenlerini bir sanal makine ölçek kümesindeki farklı VM 'lere geçirebilir miyim?
 
-Hayır, bir sanal makine ölçek kümesindeki farklı VM 'lere farklı uzantı bağımsız değişkenleri geçiremezsiniz. Ancak, uzantılar, makine adı gibi, üzerinde çalıştığı VM 'nin benzersiz özelliklerine göre davranabilir. Uzantılar VM hakkında daha fazla bilgi almak http://169.254.169.254 için örnek meta verilerini de sorgulayabilir.
+Hayır, bir sanal makine ölçek kümesindeki farklı VM 'lere farklı uzantı bağımsız değişkenleri geçiremezsiniz. Ancak, uzantılar, makine adı gibi, üzerinde çalıştığı VM 'nin benzersiz özelliklerine göre davranabilir. Uzantılar http://169.254.169.254 VM hakkında daha fazla bilgi almak için örnek meta verilerini de sorgulayabilir.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Sanal makine ölçek kümesi VM makine adları ve VM kimlikleri arasında neden boşluklar var? Örneğin: 0, 1, 3...
 
@@ -699,12 +700,12 @@ Bu özelliği **false**olarak ayarlayabilirsiniz. Küçük sanal makine ölçek 
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Sanal makine ölçek kümesindeki bir VM 'yi silme ve VM 'nin ayırmayı kaldırma arasındaki fark nedir? Ne zaman birini seçmem gerekir?
 
-Sanal makine ölçek kümesindeki bir VM 'yi silme ve VM `deallocate` 'nin ayırmayı kaldırma arasındaki temel fark, sanal sabit diskleri (VHD 'ler) silmez. Çalıştırmaya `stop deallocate`ilişkin depolama maliyetleri var. Aşağıdaki nedenlerden biri için bir veya diğerini kullanabilirsiniz:
+Sanal makine ölçek kümesindeki bir VM 'yi silme ve VM 'nin ayırmayı kaldırma arasındaki temel fark, `deallocate` sanal sabit diskleri (VHD 'ler) silmez. Çalıştırmaya ilişkin depolama maliyetleri var `stop deallocate` . Aşağıdaki nedenlerden biri için bir veya diğerini kullanabilirsiniz:
 
 - İşlem maliyetleri ödemekten vazgeçmek istiyorsunuz, ancak VM 'lerin disk durumunu tutmak istiyorsunuz.
 - Sanal makine ölçek kümesini ölçeklendirebilmeniz için bir VM kümesini daha hızlı başlatmak istiyorsunuz.
   - Bu senaryoyla ilgili olarak, kendi otomatik ölçeklendirme motorinizi oluşturmuş ve uçtan uca daha hızlı bir ölçek istemeniz olabilir.
-- Hata etki alanları veya güncelleştirme etki alanları arasında eşit olarak dağıtılan bir sanal makine ölçek kümesi vardır. Bunun nedeni, sanal makineleri seçmeli olarak silmiş veya aşırı sağlama sonrasında VM 'Lerin silindiğinden olabilir. Sanal `stop deallocate` makine ölçek `start` kümesi tarafından Izlenen çalıştırmak, VM 'leri hata etki alanları veya güncelleştirme etki alanları arasında eşit olarak dağıtır.
+- Hata etki alanları veya güncelleştirme etki alanları arasında eşit olarak dağıtılan bir sanal makine ölçek kümesi vardır. Bunun nedeni, sanal makineleri seçmeli olarak silmiş veya aşırı sağlama sonrasında VM 'Lerin silindiğinden olabilir. `stop deallocate` `start` Sanal makine ölçek kümesi tarafından izlenen çalıştırmak, VM 'leri hata etki alanları veya güncelleştirme etki alanları arasında eşit olarak dağıtır.
 
 ### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Bir sanal makine ölçek kümesi örneğinin anlık görüntüsünü almak Nasıl yaparım? mı?
 Bir sanal makine ölçek kümesi örneğinden bir anlık görüntü oluşturun.

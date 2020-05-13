@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731982"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199733"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
 
@@ -22,6 +22,11 @@ Azure HDInsight 'ın ücretsiz otomatik ölçeklendirme özelliği, daha önce a
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
 Otomatik Ölçeklendirme özelliği, ölçeklendirme olaylarını tetiklemek için iki tür koşul kullanır: çeşitli küme performansı ölçümleri ( *Yük tabanlı ölçeklendirme*olarak adlandırılır) ve zaman tabanlı tetikleyiciler ( *zamanlama tabanlı ölçeklendirme*olarak adlandırılır). Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek için, kümenizdeki düğüm sayısını sizin ayarladığınız bir Aralık içinde değiştirir. Zamanlama tabanlı ölçeklendirme, belirli tarih ve saatlerle ilişkilendirdiğiniz işlemlere göre kümenizdeki düğüm sayısını değiştirir.
+
+Aşağıdaki videoda, otomatik ölçeklendirmeyi çözen zorlukları ve HDInsight ile maliyetleri denetlemenize nasıl yardımcı olabilecek hakkında genel bir bakış sunulmaktadır.
+
+
+> [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>Yük tabanlı veya zamanlama tabanlı ölçeklendirmeyi seçme
 
@@ -128,7 +133,7 @@ Azure portal kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi 
 
 #### <a name="load-based-autoscaling"></a>Yük tabanlı otomatik ölçeklendirme
 
-Özellikler `computeProfile`  >  `autoscale` `minInstanceCount` `maxInstanceCount` ile `workernode` bölüme bir düğüm ekleyerek ve aşağıdaki JSON kod parçacığında gösterildiği gibi, Azure Resource Manager şablonu yük tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz.
+`autoscale` `computeProfile`  >  `workernode` Özellikler ile bölüme bir düğüm ekleyerek `minInstanceCount` ve `maxInstanceCount` aşağıdaki JSON kod parçacığında gösterildiği gibi, Azure Resource Manager şablonu yük tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz.
 
 ```json
 {
@@ -156,7 +161,7 @@ Azure portal kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi 
 
 #### <a name="schedule-based-autoscaling"></a>Zamanlama tabanlı otomatik ölçeklendirme
 
-Bölüme bir `autoscale` düğüm `computeProfile`  >  ekleyerek bir Azure Resource Manager şablonu zamanlama tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz. `workernode` `autoscale` Düğüm, ' a `recurrence` `timezone` sahip olan ve `schedule` değişikliğin ne zaman gerçekleştireceğinizi açıklayan bir içerir.
+Bölüme bir düğüm ekleyerek bir Azure Resource Manager şablonu zamanlama tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz `autoscale` `computeProfile`  >  `workernode` . `autoscale`Düğüm, `recurrence` ' a sahip olan `timezone` ve `schedule` değişikliğin ne zaman gerçekleştireceğinizi açıklayan bir içerir.
 
 ```json
 {
@@ -202,7 +207,7 @@ REST API kullanarak çalışan bir kümede otomatik ölçeklendirmeyi etkinleşt
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
 ```
 
-İstek yükünde uygun parametreleri kullanın. Aşağıdaki JSON yükü otomatik ölçeklendirmeyi etkinleştirmek için kullanılabilir. Otomatik ölçeklendirmeyi devre `{autoscale: null}` dışı bırakmak için yükü kullanın.
+İstek yükünde uygun parametreleri kullanın. Aşağıdaki JSON yükü otomatik ölçeklendirmeyi etkinleştirmek için kullanılabilir. `{autoscale: null}`Otomatik ölçeklendirmeyi devre dışı bırakmak için yükü kullanın.
 
 ```json
 { autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
