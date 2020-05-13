@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738091"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196283"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 Azure Izleyici günlüklerindeki veriler Log Analytics çalışma alanında veya Application Insights uygulamasında depolanır. Her ikisi de [Azure Veri Gezgini](/azure/data-explorer/) tarafından desteklenir ve güçlü veri motoru ve sorgu dilinden faydalanır.
+
+> [!IMPORTANT]
+> [Çalışma alanı tabanlı Application Insights kaynak](../app/create-workspace-resource.md)kullanıyorsanız telemetri, diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Tablolar yeniden adlandırıldı ve yeniden yapılandırıldı, ancak Application Insights uygulamasındaki tablolarla aynı bilgilere sahip.
 
 Her iki çalışma alanında ve uygulamada bulunan veriler, her biri farklı veri türlerini depolayan ve kendi benzersiz özellik kümesine sahip olan tablolar halinde düzenlenmiştir. Çoğu [veri kaynağı](../platform/data-sources.md) bir Log Analytics çalışma alanında kendi tablolarına yazılır, ancak Application Insights bir Application Insights uygulamasındaki önceden tanımlanmış bir tablo kümesine yazar. Günlük sorguları, birden çok tablodan verileri kolayca birleştirebilmenizi ve hatta birden fazla çalışma alanındaki tablolardan verileri birleştirmek ya da çalışma alanını ve uygulama verilerini birleştiren sorgular yazmak için bir çapraz kaynak sorgusu kullanmak çok esnektir.
 
@@ -48,23 +51,26 @@ Oluşturdukları tabloların ayrıntıları için her bir veri kaynağı için b
 Çalışma alanındaki verilere erişim sağlama önerilerini ve erişim denetimi stratejisini anlamak için bkz. [Azure Izleyici günlükleri dağıtımı tasarlama](../platform/design-logs-deployment.md) . Çalışma alanına erişim vermeye ek olarak, [tablo DÜZEYI RBAC](../platform/manage-access.md#table-level-rbac)kullanarak tek tek tablolarla erişimi sınırlayabilirsiniz.
 
 ## <a name="application-insights-application"></a>Application Insights uygulaması
+
+> [!IMPORTANT]
+> [Çalışma alanı tabanlı Application Insights kaynak](../app/create-workspace-resource.md) telemetrisi kullanıyorsanız, diğer tüm günlük verileriyle birlikte bir Log Analytics çalışma alanında depolanır. Tablolar yeniden adlandırıldı ve yeniden yapılandırıldı, ancak klasik Application Insights kaynaktaki tablolarla aynı bilgilere sahip.
+
 Application Insights bir uygulama oluşturduğunuzda, Azure Izleyici günlüklerinde ilgili bir uygulama otomatik olarak oluşturulur. Veri toplamak için yapılandırma gerekmez ve uygulama sayfa görünümleri, istekler ve özel durumlar gibi izleme verilerini otomatik olarak yazar.
 
 Log Analytics çalışma alanının aksine, bir Application Insights uygulamasının sabit bir tablo kümesi vardır. Başka veri kaynaklarını uygulamaya yazacak şekilde yapılandıramazsınız, böylece başka bir tablo oluşturulamaz. 
 
 | Tablo | Açıklama | 
 |:---|:---|
-| availabilityResults   | Kullanılabilirlik testlerinden özet veriler.
-| Browserzamanlamalar      |     Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler.
-| customEvents        | Uygulamanız tarafından oluşturulan özel olaylar.
-| customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler.
-| bağımlılıklar        | Uygulamadan, TrackDependency () ile kaydedilen diğer bileşenlere (Dış bileşenler dahil) yapılan çağrılar (örneğin, REST API, veritabanı veya dosya sistemine yapılan çağrılar). 
-| larý            | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar, hem sunucu tarafı hem de istemci tarafı (tarayıcı) özel durumlarını yakalar.
-| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler.
-| performanceCounters   | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri, örneğin, Windows performans sayaçları.
-| istekleri            | Uygulamanız tarafından alınan istekler. Örneğin, Web uygulamanızın aldığı her HTTP isteği için ayrı bir istek kaydı kaydedilir. 
-| lerin                | TrackTrace () ile kaydedilen uygulama kodu/günlük çerçeveleri aracılığıyla yayılan ayrıntılı Günlükler (izlemeler).
-
+| availabilityResults | Kullanılabilirlik testlerinden özet veriler. |
+| Browserzamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler. |
+| customEvents        | Uygulamanız tarafından oluşturulan özel olaylar. |
+| customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler. |
+| bağımlılıklar        | Uygulamadan, TrackDependency () ile kaydedilen diğer bileşenlere (Dış bileşenler dahil) yapılan çağrılar (örneğin, REST API, veritabanı veya dosya sistemine yapılan çağrılar). |
+| larý          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar, hem sunucu tarafı hem de istemci tarafı (tarayıcı) özel durumlarını yakalar.|
+| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
+| performanceCounters | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri, örneğin, Windows performans sayaçları. |
+| istekleri            | Uygulamanız tarafından alınan istekler. Örneğin, Web uygulamanızın aldığı her HTTP isteği için ayrı bir istek kaydı kaydedilir.  |
+| lerin              | TrackTrace () ile kaydedilen uygulama kodu/günlük çerçeveleri aracılığıyla yayılan ayrıntılı Günlükler (izlemeler). |
 
 Her tablo için şemayı, uygulama için Log Analytics **şema** sekmesinde görüntüleyebilirsiniz.
 

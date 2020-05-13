@@ -16,12 +16,13 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081719"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196888"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: sertifikalarla Azure Active Directory Raporlama API 'sini kullanarak veri edinme
 
@@ -44,7 +45,7 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
     - ADAL kullanarak kullanıcı, uygulama anahtarları ve sertifikalardan erişim belirteçleri
     - Disk belleğine alınmış Graph API işleme sonuçları
 
-6. Modülü ilk kez kullanıyorsanız **Install-MSCloudIdUtilsModule**komutunu çalıştırın, aksi takdirde **Import-Module** PowerShell komutunu kullanarak içeri aktarın. Oturumunuz Şu ekrana benzer görünmelidir: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Modülü ilk kez kullanıyorsanız **Install-MSCloudIdUtilsModule**komutunu çalıştırın, aksi takdirde **Import-Module** PowerShell komutunu kullanarak içeri aktarın. Oturumunuz Şu ekrana benzer görünmelidir: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Bir test sertifikası oluşturmak için **New-SelfSignedCertificate** PowerShell komutunu kullanın.
 

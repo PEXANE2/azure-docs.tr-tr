@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0a29ee1536c7c808fe7d15c0abe26f27042bc962
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982216"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196256"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı, tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen sanal makineler arasında kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, toplanan verileri Azure Izleyici 'deki Log Analytics çalışma alanınıza, ayrıca bir izleme çözümünde tanımlanan tüm benzersiz günlüklere veya ölçümlere gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](/azure/security-center/)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -43,7 +43,7 @@ Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics ça
 | --- | --- |
 | [Windows olay günlükleri](data-sources-windows-events.md) | Windows olay günlüğü sistemine gönderilen bilgiler. |
 | [Syslog](data-sources-syslog.md)                     | Linux olay günlüğü sistemine gönderilen bilgiler. |
-| [Performans](data-sources-performance-counters.md)  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
+| [Mının](data-sources-performance-counters.md)  | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | [IIS günlükleri](data-sources-iis-logs.md)                 | Konuk işletim sisteminde çalışan IIS Web siteleri için kullanım bilgileri. |
 | [Özel günlükler](data-sources-custom-logs.md)           | Hem Windows hem de Linux bilgisayarlardaki metin dosyalarından gelen olaylar. |
 
@@ -115,11 +115,11 @@ Bu bölüm desteklenen Linux dağıtımları hakkında ayrıntılı bilgi sağla
 >Şu anda desteklenmeyen ve destek modelimize hizalanmayan bir veya daha fazla sürümü kullanıyorsanız, bu depoyu çatalla, Microsoft destek 'in aracılı aracı sürümleriyle ilgili yardım sağlamayamayacak olduğunu bildiren bu depoyu çatallandırmanızı öneririz.
 
 * Amazon Linux 2017,09 (x64)
-* CentOS Linux 6 (x86/x64) ve 7 (x64)  
-* Oracle Linux 6 ve 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) ve 7 (x64)
-* De, GNU/Linux 8 ve 9 (x86/x64)
-* Ubuntu 14,04 LTS (x86/x64), 16,04 LTS (x86/x64) ve 18,04 LTS (x64)
+* CentOS Linux 6 (x64) ve 7 (x64)  
+* Oracle Linux 6 ve 7 (x64) 
+* Red Hat Enterprise Linux Server 6 (x64), 7 (x64) ve 8 (x64)
+* De, GNU/Linux 8 ve 9 (x64)
+* Ubuntu 14,04 LTS (x86/x64), 16,04 LTS (x64) ve 18,04 LTS (x64)
 * SUSE Linux Enterprise Server 12 (x64) ve 15 (x64)
 
 >[!NOTE]
@@ -201,7 +201,7 @@ Linux Aracısı için ara sunucu, yükleme sırasında veya proxy. conf yapılan
 Örneğin, `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Parolandaki "\@" gibi özel karakterler kullanırsanız, değer yanlış ayrıştırılacağından bir ara sunucu bağlantı hatası alırsınız.  Bu sorunu geçici olarak çözmek için URL 'deki parolayı [Urlşifre çözme](https://www.urldecoder.org/)gibi bir araç kullanarak kodlayın.  
+> Parolandaki "" gibi özel karakterler kullanırsanız \@ , değer yanlış ayrıştırılacağından bir ara sunucu bağlantı hatası alırsınız.  Bu sorunu geçici olarak çözmek için URL 'deki parolayı [Urlşifre çözme](https://www.urldecoder.org/)gibi bir araç kullanarak kodlayın.  
 
 
 

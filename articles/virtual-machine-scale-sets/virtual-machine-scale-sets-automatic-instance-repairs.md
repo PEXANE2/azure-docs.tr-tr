@@ -2,20 +2,19 @@
 title: Azure sanal makine ölçek kümeleri ile otomatik örnek onarımları
 description: Ölçek kümesindeki sanal makine örnekleri için otomatik onarımlar ilkesini yapılandırma hakkında bilgi edinin
 author: avirishuv
-manager: vashan
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
-ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 02/28/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603674"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197032"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için otomatik örnek onarımları
 
@@ -154,7 +153,7 @@ az vmss create \
   --generate-ssh-keys \
   --load-balancer <existingLoadBalancer> \
   --health-probe <existingHealthProbeUnderLoaderBalancer> \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 Yukarıdaki örnek, örneklerin uygulama sistem durumunu izlemek için mevcut yük dengeleyiciyi ve sistem durumu araştırmasını kullanır. Bunun yerine izleme için bir uygulama sistem durumu uzantısı kullanmayı tercih ederseniz, bir ölçek kümesi oluşturabilir, uygulama durumu uzantısını yapılandırabilir ve ardından, sonraki bölümde açıklandığı gibi *az VMSS Update*kullanarak otomatik örnek onarım ilkesini etkinleştirebilirsiniz.
@@ -217,7 +216,7 @@ az vmss update \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
   --enable-automatic-repairs true \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 ## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>Otomatik örnek onarımı ilkesinin hizmet durumunu görüntüleme ve güncelleştirme

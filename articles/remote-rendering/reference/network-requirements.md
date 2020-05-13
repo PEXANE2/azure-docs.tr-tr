@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617889"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196540"
 ---
 # <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -20,7 +20,7 @@ Azure uzaktan Işlemede iyi bir kullanıcı deneyimi için, Azure veri merkezine
 
 Tam ağ gereksinimleri, uzaktan sahne grafiğinde yapılan değişikliklerin sayısı ve sıklığı ile işlenmiş görünümün karmaşıklığı gibi belirli bir kullanım örneğine bağlıdır, ancak deneyiminizin mümkün olduğunca iyi olduğundan emin olmak için çeşitli yönergeler vardır:
 
-* Internet bağlantınızın, ağda rekabet eden bir trafik olmadığı varsayılarak, Azure uzaktan oluşturma işleminin tek bir kullanıcı oturumunda en az **50 Mbps 'lik aşağı akış** ve **10 Mbps 'lik yukarı akış** desteği sağlaması gerekir. Daha iyi deneyimler için daha yüksek ücretler öneririz. Aynı ağda daha fazla kullanıcı varsa, bu gereksinimlerin ölçeği aynı şekilde ölçeklendirilir.
+* Internet bağlantınızın, ağda rekabet eden bir trafik olmadığı varsayılarak, Azure uzaktan oluşturma işleminin tek bir kullanıcı oturumunda en az **40 Mbps 'lik aşağı akış** ve **5 Mbps 'lik yukarı** akış desteklemesi gerekir. Daha iyi deneyimler için daha yüksek ücretler öneririz. Aynı ağda daha fazla kullanıcı varsa, bu gereksinimlerin ölçeği aynı şekilde ölçeklendirilir.
 * **5 GHz Wi-Fi bandı** kullanmak genellikle 2,4 GHz Wi-Fi bandından daha iyi sonuçlar üretir, ancak her ikisi de çalışır.
 * Yakında başka Wi-Fi ağları varsa, bu diğer ağlar tarafından kullanılan Wi-Fi kanallarını kullanmaktan kaçının. Wi-Fi ağınızın kullandığı kanalların, rekabet eden trafiğin ücretsizdir olup olmadığını doğrulamak için [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) gibi ağ tarama araçlarını kullanabilirsiniz.
 * **Wi-Fi repeaters** veya ağ üzerinden-Powerline iletmeyi kullanmaktan kesinlikle kaçının.

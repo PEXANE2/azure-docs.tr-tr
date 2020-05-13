@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008664"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196965"
 ---
 Şimdilik, Ultra diskler ek sınırlamalara sahiptir ve bunlar şu şekildedir:
 
@@ -22,23 +22,30 @@ ms.locfileid: "81008664"
 Aşağıdaki tabloda, Ultra disklerin ' de kullanılabildiği bölgeler ve bunlara karşılık gelen kullanılabilirlik seçenekleri de özetlenmektedir:
 
 > [!NOTE]
-> Bu bölgelerdeki bazı kullanılabilirlik bölgeleri Ultra diskler sunmaz.
+> Aşağıdaki listede yer alan bir bölgede Ultra disk özellikli kullanılabilirlik alanları yoksa, bir ultra disk iliştirmek için bu bölgedeki VM 'Ler herhangi bir altyapı artıklık seçeneği olmadan dağıtılmalıdır.
 
-|Bölgeler  |Altyapı yedekliliği yok  |Kullanılabilirlik alanları  |
-|---------|---------|---------|
-|Batı ABD     |Yes         |Hayır         |
-|Batı ABD 2    |Hayır         |Yes         |
-|Doğu ABD     |Hayır         |Yes         |
-|Doğu ABD 2     |Hayır         |Yes         |
-|Güneydoğu Asya     |Hayır         |Yes         |
-|Kuzey Avrupa     |Hayır         |Yes         |
-|Batı Avrupa     |Hayır         |Yes         |
-|Güney Birleşik Krallık     |Hayır         |Yes         |
+|Bölgeler  |Ultra diskleri destekleyen kullanılabilirlik bölgesi sayısı  |
+|---------|---------|
+|US Gov Virginia     |Yok         |
+|Orta Güney ABD     |Yok         |
+|Orta ABD     |Üç bölge         |
+|Batı ABD     |Yok         |
+|Batı ABD 2    |Üç bölge         |
+|Doğu ABD     |Üç bölge         |
+|Doğu ABD 2     |İki bölge         |
+|Güneydoğu Asya     |Üç bölge         |
+|Kuzey Avrupa     |Üç bölge          |
+|Batı Avrupa     |Üç bölge          |
+|Güney Birleşik Krallık     |Üç bölge          |
+|Doğu Japonya     |İki bölge         |
+
+
 
 - Yalnızca şu VM serisinde desteklenir:
-    - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - FSv2
+    - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [FSv2](../articles/virtual-machines/fsv2-series.md)
+    - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Her VM boyutu, tüm desteklenen bölgelerde Ultra disklerle kullanılamaz

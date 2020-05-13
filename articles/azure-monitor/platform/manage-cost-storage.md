@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/12/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993758"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196587"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -40,15 +40,15 @@ Log Analytics için varsayılan fiyatlandırma, veri hacmine dayalı ve isteğe 
   
 Kullandıkça Öde modeline ek olarak Log Analytics, Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf etmeniz için **Kapasite rezervasyon** katmanlarına sahiptir. Kapasite ayırma fiyatlandırması, 100 GB/gün üzerinden başlayan bir rezervasyon satın almanıza olanak sağlar. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Kapasite rezervasyon katmanlarında 31 günlük taahhüt dönemi vardır. Taahhüt dönemi boyunca, daha yüksek düzey kapasite rezervasyon katmanına (31 günlük taahhüt dönemini yeniden başlatacak) geçebilirsiniz, ancak taahhüt dönemi tamamlanana kadar, Kullandıkça Öde veya daha düşük bir kapasite Ayırma katmanına geri dönemezsiniz. Kapasite rezervasyon katmanları için faturalandırma, günlük olarak yapılır. Log Analytics Kullandıkça öde ve kapasite rezervasyon fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
 
-Tüm fiyatlandırma katmanlarında veri hacmi, depolanmak üzere hazırlanan verilerin dize gösteriminden hesaplanır. [Tüm veri türlerinde ortak](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) olan bazı özellikler, `_ResourceId`, `_ItemId` `_IsBillable` ve `_BilledSize`dahil olmak üzere olay boyutunun hesaplamasına dahil değildir.
+Tüm fiyatlandırma katmanlarında veri hacmi, depolanmak üzere hazırlanan verilerin dize gösteriminden hesaplanır. [Tüm veri türlerinde ortak](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) olan bazı özellikler,, ve dahil olmak üzere olay boyutunun hesaplamasına dahil değildir `_ResourceId` `_ItemId` `_IsBillable` `_BilledSize` .
 
 Ayrıca, [Azure Güvenlik Merkezi](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) ve [yapılandırma yönetimi](https://azure.microsoft.com/pricing/details/automation/) gibi bazı çözümlerin kendi fiyatlandırma modellerine sahip olduğunu unutmayın. 
 
-### <a name="log-analytics-clusters"></a>Log Analytics kümeleri
+### <a name="log-analytics-dedicated-clusters"></a>Adanmış kümeler Log Analytics
 
-Log Analytics kümeler, [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)gibi gelişmiş senaryoları desteklemek için tek bir yönetilen Azure Veri Gezgini kümesinde çalışma alanı koleksiyonlarıdır.  Log Analytics kümeler yalnızca, Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında %25 oranında bir indirim ile 1000 GB/gün üzerinden başlayan bir kapasite ayırma fiyatlandırma modelini destekler. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Küme kapasitesi rezervasyonunun, ayırma düzeyi arttırılarak 31 günlük taahhüt süresi vardır. Taahhüt dönemi boyunca kapasite ayırma düzeyi düşürülemez, ancak herhangi bir zamanda artırılabilir. [Log Analytics kümeleri oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) ve [çalışma alanlarını onunla ilişkilendirme](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)hakkında daha fazla bilgi edinin.  
+Log Analytics adanmış kümeler, [müşteri tarafından yönetilen anahtarlar](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)gibi gelişmiş senaryoları desteklemek üzere tek bir yönetilen Azure Veri Gezgini kümesinde çalışma alanlarının koleksiyonlarıdır.  Log Analytics adanmış kümeler yalnızca, Kullandıkça Öde fiyatlandırmasıyla karşılaştırıldığında %25 oranında bir indirim ile 1000 GB/gün üzerinden başlayan bir kapasite ayırma fiyatlandırma modelini destekler. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Küme kapasitesi rezervasyonunun, ayırma düzeyi arttırılarak 31 günlük taahhüt süresi vardır. Taahhüt dönemi boyunca kapasite ayırma düzeyi düşürülemez, ancak herhangi bir zamanda artırılabilir. [Log Analytics kümeleri oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) ve [çalışma alanlarını onunla ilişkilendirme](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)hakkında daha fazla bilgi edinin.  
 
-Küme kapasitesi ayırma düzeyi, altındaki `Capacity` `Sku`parametresi kullanılarak Azure Resource Manager ile program aracılığıyla aracılığıyla yapılandırılır. `Capacity` GB cinsinden belirtilir ve 100 GB/gün ARTıŞLARLA 1000 GB veya daha fazla değere sahip olabilir. [Burada](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)ayrıntılı olarak verilmiştir. Kümenizin 2000 GB/gün üzerinde bir ayırmaya ihtiyacı varsa bizimle iletişime geçin [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com).
+Küme kapasitesi ayırma düzeyi, altındaki parametresi kullanılarak Azure Resource Manager ile program aracılığıyla aracılığıyla yapılandırılır `Capacity` `Sku` . `Capacity`GB cinsinden belirtilir ve 100 GB/gün artışlarla 1000 GB veya daha fazla değere sahip olabilir. [Burada](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)ayrıntılı olarak verilmiştir. Kümenizin 2000 GB/gün üzerinde bir ayırmaya ihtiyacı varsa bizimle iletişime geçin [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Alınan veriler için faturalandırma küme düzeyinde yapıldığından, bir kümeyle ilişkili çalışma alanlarının artık fiyatlandırma katmanı yoktur. Kümeyle ilişkilendirilen her çalışma alanından alınan veri miktarları, küme için günlük faturanızı hesaplamak üzere toplanır. [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/) 'ndeki düğüm başına ayırmaların, kümedeki tüm çalışma alanları genelinde toplanan verilerin toplanmasından önce çalışma alanı düzeyinde uygulandığını unutmayın. Veri saklama, hala çalışma alanı düzeyinde faturalandırılır. Küme faturalandırma, küme oluşturulduğunda, çalışma alanlarının kümeyle ilişkilendirilmediğine bakılmaksızın başlar. 
 
@@ -88,7 +88,7 @@ Kullanımınız [Azure Portal kullanımınıza indirilerek](https://docs.microso
 
 3. Son 31 güne göre Tahmini maliyetleri gözden geçirdikten sonra, fiyatlandırma katmanını değiştirmeye karar verirseniz **Seç**' e tıklayın.  
 
-Ayrıca, `sku` parametresini kullanarak (`pricingTier` Azure Resource Manager şablonunda) [Azure Resource Manager aracılığıyla fiyatlandırma katmanını ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . 
+Ayrıca, parametresini kullanarak (Azure Resource Manager şablonunda) [Azure Resource Manager aracılığıyla fiyatlandırma katmanını ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) `sku` `pricingTier` . 
 
 ## <a name="legacy-pricing-tiers"></a>Eski fiyatlandırma katmanları
 
@@ -122,10 +122,12 @@ Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar s
 
 Bekletme düşürüldü, en eski veriler kaldırılmadan önce birkaç gün yetkisiz kullanım süresi vardır. 
     
-Saklama Ayrıca `retentionInDays` parametresi kullanılarak [Azure Resource Manager ile de ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, bu, uyumluluk ile ilgili senaryolar için yararlı olabilecek `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz. Bu işlevsellik yalnızca Azure Resource Manager aracılığıyla sunulur. 
+Saklama Ayrıca parametresi kullanılarak [Azure Resource Manager ile de ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) `retentionInDays` . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` Bu, uyumluluk ile ilgili senaryolar için yararlı olabilecek parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz. Bu işlevsellik yalnızca Azure Resource Manager aracılığıyla sunulur. 
+
 
 İki veri türü-- `Usage` ve `AzureActivity` --varsayılan olarak 90 gün boyunca tutulur ve bu 90 günlük bekletme için ücret alınmaz. Bu veri türleri de veri alma ücretlerinden ücretsizdir. 
 
+Çalışma alanı tabanlı Application Insights kaynak (,,,,,,,, `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` , `AppSystemEvents` ve) veri türleri `AppTraces` de varsayılan olarak 90 gün boyunca tutulur ve bu 90 günlük bekletmeye yönelik ücret alınmaz. Saklama, veri türü işlevselliğine göre bekletme kullanılarak ayarlanabilir. 
 
 
 ### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
@@ -160,9 +162,9 @@ Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletilmesini 730 gün 
     }
 ```
 
-İçin `retentionInDays` geçerli değerler 30 ila 730 ' dir.
+İçin geçerli değerler `retentionInDays` 30 ila 730 ' dir.
 
-`Usage` Ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
+`Usage`Ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
 
 Veri türüne göre saklama ayarlamak için Azure Resource Manager doğrudan bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dir.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.  ARMClient kullanarak bir örnek aşağıda, SecurityEvent verilerini 730 günlük bekletmeye ayarlamaya yönelik bir örnek verilmiştir:
 
@@ -253,7 +255,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Veri türlerinde `union *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
+> `union *`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara Ihtiyacınız yoksa kullanım verileri türü üzerinde sorgulama yapın (aşağıya bakın).
 
 ## <a name="understanding-ingested-data-volume"></a>Alınan veri birimini anlama
 
@@ -261,7 +263,7 @@ union withsource = tt *
 
 ### <a name="data-volume-for-specific-events"></a>Belirli olaylar için veri hacmi
 
-Belirli bir olay kümesi için alınan verilerin boyutuna bakmak için, belirli bir tabloyu sorgulayabilir (Bu örnekte `Event`) ve sonra sorguyu ilgilendiğiniz olaylarla sınırlandırabilirsiniz (Bu örnekte olay kimliği 5145 veya 5156):
+Belirli bir olay kümesi için alınan verilerin boyutuna bakmak için, belirli bir tabloyu sorgulayabilir (Bu örnekte `Event` ) ve sonra sorguyu ilgilendiğiniz olaylarla sınırlandırabilirsiniz (Bu örnekte olay kimliği 5145 veya 5156):
 
 ```kusto
 Event
@@ -271,7 +273,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-Yan tümcesinin `where IsBillable = true` , alma ücreti olmayan belirli çözümlerden veri türlerini filtreleyeceğini unutmayın. 
+Yan tümcesinin, `where IsBillable = true` alma ücreti olmayan belirli çözümlerden veri türlerini filtreleyeceğini unutmayın. 
 
 ### <a name="data-volume-by-solution"></a>Çözüme göre veri hacmi
 
@@ -312,7 +314,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Bilgisayara göre veri hacmi
 
-`Usage` Veri türü, bilgisayar düzeyinde bilgi içermez. Bilgisayar başına alınan verilerin **boyutunu** görmek için, boyutu bayt cinsinden sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
+`Usage`Veri türü, bilgisayar düzeyinde bilgi içermez. Bilgisayar başına alınan verilerin **boyutunu** görmek için, `_BilledSize` boyutu bayt cinsinden sağlayan [özelliğini](log-standard-properties.md#_billedsize)kullanın:
 
 ```kusto
 union withsource = tt * 
@@ -335,8 +337,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Veri türlerinde `union  *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara gerek yoksa kullanım verileri türü üzerinde sorgulama yapın.
-
+> `union  *`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. **Bilgisayar başına** sonuçlara gerek yoksa kullanım verileri türü üzerinde sorgulama yapın.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure kaynağına, kaynak grubuna veya aboneliğe göre veri hacmi
 
@@ -349,7 +350,7 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Azure 'da barındırılan düğümlerdeki veriler için, __Azure aboneliği başına__alınan verilerin `_ResourceId` **boyutunu** alabilir, özelliği şu şekilde ayrıştırın:
+Azure 'da barındırılan düğümlerdeki veriler için, __Azure aboneliği başına__alınan verilerin **boyutunu** alabilir, özelliği şu şekilde ayrıştırın `_ResourceId` :
 
 ```kusto
 union withsource = tt * 
@@ -360,18 +361,21 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-`resourceGroup` ' A değiştirmek `subscriptionId` , Azure Kaynak grubu ile faturalandırılabilen veri hacmini gösterir. 
+' A değiştirmek `subscriptionId` `resourceGroup` , Azure Kaynak grubu ile faturalandırılabilen veri hacmini gösterir. 
 
 > [!TIP]
-> Veri türlerinde `union  *` taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. Abonelik başına sonuçlara, kaynak grubuna veya kaynak adına ihtiyaç duymayın, ardından kullanım veri türü üzerinde sorgulama yapın.
+> `union  *`Veri türlerinde taramalar için [kaynakların yürütülmesi yoğun](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) olduğundan, bu sorguları dikkatli bir şekilde kullanın. Abonelik başına sonuçlara, kaynak grubuna veya kaynak adına ihtiyaç duymayın, ardından kullanım veri türü üzerinde sorgulama yapın.
 
 > [!WARNING]
 > Kullanım verileri türünün bazı alanları şemada hala kullanım dışı bırakılmıştır ve değerleri artık doldurulmayacaktır. Bunlar, **bilgisayar** ve alma (**totaltoplu işler**, **batcheswithınsla**, **batchesoutsidesla**, **batchescaıda** **averageprocessingtimems**) ile ilgili alanlardır.
+
 
 ### <a name="querying-for-common-data-types"></a>Ortak veri türleri sorgulanıyor
 
 Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde incelemek için bazı yararlı örnek sorgular aşağıda verilmiştir:
 
++ **Çalışma alanı tabanlı Application Insights** kaynakları
+  - [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/app/pricing#data-volume-for-workspace-based-application-insights-resources)
 + **Güvenlik** çözümü
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + **Günlük Yönetimi** çözümü
@@ -463,9 +467,9 @@ Eski **düğüm başına** fiyatlandırma katmanına erişimi olan çalışma al
 
 Bu değerlendirmeyi kolaylaştırmak için aşağıdaki sorgu, çalışma alanının kullanım desenlerine göre en uygun fiyatlandırma katmanına yönelik bir öneri oluşturmak için kullanılabilir.  Bu sorgu, son 7 gün içinde bir çalışma alanına alınan izlenen düğümlere ve verilere bakar ve her gün için hangi fiyatlandırma katmanının en uygun olduğunu değerlendirir. Sorguyu kullanmak için şunu belirtmeniz gerekir
 
-1. çalışma alanının, veya `workspaceHasSecurityCenter` `true` `false`olarak ayarlayarak Azure Güvenlik Merkezi kullanıp kullanmadığını 
+1. çalışma alanının, `workspaceHasSecurityCenter` veya olarak ayarlayarak Azure Güvenlik Merkezi kullanıp kullanmadığını `true` `false` 
 2. belirli indirimleriniz varsa fiyatları güncelleştirin ve
-3. Ayarlar `daysToEvaluate`ile geri Aranacak ve analiz edilecek gün sayısını belirtin. Bu, sorgunun 7 güne kadar veri almaya çalışırken çok uzun sürmesi durumunda yararlıdır. 
+3. ayarlar ile geri Aranacak ve analiz edilecek gün sayısını belirtin `daysToEvaluate` . Bu, sorgunun 7 güne kadar veri almaya çalışırken çok uzun sürmesi durumunda yararlıdır. 
 
 Fiyatlandırma Katmanı öneri sorgusu aşağıda verilmiştir:
 

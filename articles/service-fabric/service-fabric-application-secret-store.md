@@ -3,18 +3,18 @@ title: Azure Service Fabric merkezi gizli dizi deposu
 description: Bu makalede, Azure Service Fabric 'da merkezi gizlilikler deposunun nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770424"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197759"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 'da merkezi gizlilikler Mağazası 
 Bu makalede, Service Fabric uygulamalarında gizli diziler oluşturmak için Azure Service Fabric 'da merkezi gizlilikler deposunun (CSS) nasıl kullanılacağı açıklanır. CSS, bir parola, belirteç ve anahtar gibi hassas verileri bellekte şifreli olarak tutan bir yerel gizli dizi deposu önbelleğidir.
 
 ## <a name="enable-central-secrets-store"></a>Merkezi gizli dizi deposunu etkinleştir
-CSS 'yi etkinleştirmek `fabricSettings` için aşağıdaki betiği küme yapılandırmanıza ekleyin. CSS için bir küme sertifikası dışında bir sertifika kullanmanızı öneririz. Şifreleme sertifikasının tüm düğümlerde yüklü olduğundan ve sertifikanın özel anahtarı için okuma `NetworkService` iznine sahip olduğundan emin olun.
+CSS 'yi etkinleştirmek için aşağıdaki betiği küme yapılandırmanıza ekleyin `fabricSettings` . CSS için bir küme sertifikası dışında bir sertifika kullanmanızı öneririz. Şifreleme sertifikasının tüm düğümlerde yüklü olduğundan ve `NetworkService` sertifikanın özel anahtarı için okuma iznine sahip olduğundan emin olun.
   ```json
     "fabricSettings": 
     [
@@ -28,7 +28,7 @@ CSS 'yi etkinleştirmek `fabricSettings` için aşağıdaki betiği küme yapıl
                 },
                 {
                     "name":  "MinReplicaSetSize",
-                    "value":  "3"
+                    "value":  "1"
                 },
                 {
                     "name":  "TargetReplicaSetSize",
@@ -51,7 +51,7 @@ REST API kullanarak gizli bir kaynak oluşturabilirsiniz.
   > [!NOTE] 
   > Küme Windows kimlik doğrulaması kullanıyorsa, REST isteği güvenli olmayan HTTP kanalı üzerinden gönderilir. Bu öneri, güvenli uç noktalarla x509 tabanlı bir küme kullanmaktır.
 
-REST API kullanarak bir `supersecret` gizli kaynak oluşturmak için, IÇIN `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`bir PUT isteği yapın. Gizli bir kaynak oluşturmak için küme sertifikası veya yönetici istemci sertifikasına ihtiyacınız vardır.
+`supersecret`REST API kullanarak bir gizli kaynak oluşturmak için, için BIR PUT isteği yapın `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` . Gizli bir kaynak oluşturmak için küme sertifikası veya yönetici istemci sertifikasına ihtiyacınız vardır.
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
@@ -73,7 +73,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
 
-1. Aşağıdaki kod parçacığına sahip **Settings. xml** dosyasına bir bölüm ekleyin. Değerin {`secretname:version`} biçiminde olduğunu buraya unutmayın.
+1. Aşağıdaki kod parçacığına sahip **Settings. xml** dosyasına bir bölüm ekleyin. Değerin {} biçiminde olduğunu buraya unutmayın `secretname:version` .
 
    ```xml
      <Section Name="testsecrets">
@@ -94,11 +94,11 @@ Service Fabric uygulamanızda gizli dizi kullanmak için bu adımları izleyin.
      </ServiceManifestImport>
    ```
 
-   Ortam değişkeni `SecretPath` , tüm parolaların depolandığı dizine işaret eder. `testsecrets` Bölüm altında listelenen her bir parametre ayrı bir dosyada depolanır. Uygulama artık gizli anahtarı şu şekilde kullanabilir:
+   Ortam değişkeni, `SecretPath` tüm parolaların depolandığı dizine işaret eder. Bölüm altında listelenen her bir parametre `testsecrets` ayrı bir dosyada depolanır. Uygulama artık gizli anahtarı şu şekilde kullanabilir:
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. Gizli dizileri bir kapsayıcıya bağlayın. Kapsayıcının içinde kullanılabilir gizli dizileri oluşturmak için gereken tek değişiklik, içindeki `specify` `<ConfigPackage>`bir bağlama noktasına ait.
+1. Gizli dizileri bir kapsayıcıya bağlayın. Kapsayıcının içinde kullanılabilir gizli dizileri oluşturmak için gereken tek değişiklik, `specify` içindeki bir bağlama noktasına ait `<ConfigPackage>` .
 Aşağıdaki kod parçacığı, değiştirilen **ApplicationManifest. xml**' dir.  
 
    ```xml
@@ -117,7 +117,7 @@ Aşağıdaki kod parçacığı, değiştirilen **ApplicationManifest. xml**' dir
    ```
    Gizli dizileri, kapsayıcının içindeki bağlama noktası altında bulunur.
 
-1. Belirterek `Type='SecretsStoreRef`bir işlem ortam değişkenine gizli dizi bağlayabilirsiniz. Aşağıdaki kod parçacığı `supersecret` , sürümü `ver1` `MySuperSecret` **servicemanifest. xml**dosyasındaki ortam değişkenine bağlama örneğidir.
+1. Belirterek bir işlem ortam değişkenine gizli dizi bağlayabilirsiniz `Type='SecretsStoreRef` . Aşağıdaki kod parçacığı, `supersecret` sürümü `ver1` `MySuperSecret` **servicemanifest. xml**dosyasındaki ortam değişkenine bağlama örneğidir.
 
    ```xml
    <EnvironmentVariables>

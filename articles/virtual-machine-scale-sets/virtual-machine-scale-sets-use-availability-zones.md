@@ -1,20 +1,20 @@
 ---
 title: Kullanılabilirlik Alanları kullanan bir Azure ölçek kümesi oluşturma
 description: Kesintilere karşı daha fazla artıklık için Kullanılabilirlik Alanları kullanan Azure sanal makine ölçek kümeleri oluşturmayı öğrenin
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 08/08/2018
-ms.author: jushiman
-ms.openlocfilehash: a23164215376bee291c07d49c88bd9e916d710bf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207845"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197365"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir sanal makine ölçek kümesi oluşturma
 
@@ -39,7 +39,7 @@ Bir ölçek kümesi dağıttığınızda, kullanılabilirlik alanı başına tek
 
 ### <a name="zone-balancing"></a>Bölge Dengeleme
 
-Son olarak, birden çok bölgede dağıtılan ölçek kümelerinde, "en iyi efor bölge bakiyesi" veya "katı bölge bakiyesi" seçme seçeneğiniz de vardır. Ölçek kümesi için her bölgede aynı VM 'Ler veya +\\-1 VM varsa, ölçek kümesi "dengeli" olarak değerlendirilir. Örneğin:
+Son olarak, birden çok bölgede dağıtılan ölçek kümelerinde, "en iyi efor bölge bakiyesi" veya "katı bölge bakiyesi" seçme seçeneğiniz de vardır. Ölçek kümesi için her bölgede aynı VM 'Ler veya +-1 VM varsa, ölçek kümesi "dengeli" olarak değerlendirilir \\ . Örneğin:
 
 - Bölge 1 ' de 2 VM, bölge 2 ' deki 3 VM ve bölge 3 ' te 3 VM içeren bir ölçek kümesi dengeli kabul edilir. Farklı bir VM sayısı olan tek bir bölge vardır ve bu yalnızca diğer bölgelerden yalnızca 1 küçüktür. 
 - Bölge 1 ' de 1 VM, bölge 2 ' deki 3 VM ve bölge 3 ' te 3 VM içeren bir ölçek kümesi dengesiz olarak değerlendirilir. Bölge 1 2 ve 3 bölge 2 ' den daha az VM 'ye sahiptir.
@@ -75,7 +75,7 @@ Azure yük dengeleyici ve genel IP adresi gibi ölçek kümesi ve destekleyici k
 
 Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir.
 
-`--zones` Parametresini [az VMSS Create](/cli/azure/vmss) komutuna ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2*veya *3*) belirtin. Aşağıdaki örnek, bölge *1*' de *myScaleSet* adlı tek bölgeli bir ölçek kümesi oluşturur:
+`--zones`Parametresini [az VMSS Create](/cli/azure/vmss) komutuna ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2*veya *3*) belirtin. Aşağıdaki örnek, bölge *1*' de *myScaleSet* adlı tek bölgeli bir ölçek kümesi oluşturur:
 
 ```azurecli
 az vmss create \
@@ -94,7 +94,7 @@ Tek bölgeli ölçek kümesi ve ağ kaynaklarının tam bir örneği için, bkz.
 
 Bölgesel olarak yedekli ölçek kümesi oluşturmak için *Standart* SKU genel IP adresi ve yük dengeleyici kullanın. Gelişmiş artıklık için *Standart* SKU, bölgesel olarak yedekli ağ kaynakları oluşturur. Daha fazla bilgi için bkz. [Azure Load Balancer standart genel bakış](../load-balancer/load-balancer-standard-overview.md) ve [Standart Load Balancer ve kullanılabilirlik alanları](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Bölgesel olarak yedekli ölçek kümesi oluşturmak için, `--zones` parametresiyle birden çok bölge belirtin. Aşağıdaki örnek, bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur:
+Bölgesel olarak yedekli ölçek kümesi oluşturmak için, parametresiyle birden çok bölge belirtin `--zones` . Aşağıdaki örnek, bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur:
 
 ```azurecli
 az vmss create \
@@ -130,7 +130,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Bölgesel olarak yedekli ölçek kümesi
 
-Bölgesel olarak yedekli ölçek kümesi oluşturmak için, `-Zone` parametresiyle birden çok bölge belirtin. Aşağıdaki örnek, *Doğu ABD 2* bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur. Sanal ağ, genel IP adresi ve yük dengeleyici için bölge yedekli Azure ağ kaynakları otomatik olarak oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi istediğiniz yönetici kimlik bilgilerini sağlayın:
+Bölgesel olarak yedekli ölçek kümesi oluşturmak için, parametresiyle birden çok bölge belirtin `-Zone` . Aşağıdaki örnek, *Doğu ABD 2* bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur. Sanal ağ, genel IP adresi ve yük dengeleyici için bölge yedekli Azure ağ kaynakları otomatik olarak oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi istediğiniz yönetici kimlik bilgilerini sağlayın:
 
 ```powershell
 New-AzVmss `
@@ -147,7 +147,7 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 
-Kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir. Şablonunuzda `zones` *Microsoft. COMPUTE/virtualMachineScaleSets* kaynak türüne özelliği ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2*veya *3*) belirtin.
+Kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir. `zones`Şablonunuzda *Microsoft. COMPUTE/virtualMachineScaleSets* kaynak türüne özelliği ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2*veya *3*) belirtin.
 
 Aşağıdaki örnek, *Doğu ABD 2* bölge *1*' de *myScaleSet* adlı bir Linux tek bölge ölçek kümesi oluşturur:
 
@@ -193,7 +193,7 @@ Tek bölgeli ölçek kümesi ve ağ kaynaklarının tam bir örneği için, bkz.
 
 ### <a name="zone-redundant-scale-set"></a>Bölgesel olarak yedekli ölçek kümesi
 
-Bölgesel olarak yedekli ölçek kümesi oluşturmak için, *Microsoft. COMPUTE/virtualMachineScaleSets* kaynak `zones` türü özelliğinde birden çok değer belirtin. Aşağıdaki örnek, *Doğu ABD 2* bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur:
+Bölgesel olarak yedekli ölçek kümesi oluşturmak için, `zones` *Microsoft. COMPUTE/virtualMachineScaleSets* kaynak türü özelliğinde birden çok değer belirtin. Aşağıdaki örnek, *Doğu ABD 2* bölge *1, 2, 3*üzerinde *myScaleSet* adlı bölgesel olarak yedekli bir ölçek kümesi oluşturur:
 
 ```json
 {

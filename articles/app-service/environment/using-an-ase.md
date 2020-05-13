@@ -4,15 +4,15 @@ description: App Service Ortamı uygulama oluşturmayı, yayımlamayı ve ölçe
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586128"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125817"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -36,7 +36,7 @@ Ao 'a sahip değilseniz, [App Service ortamı oluşturma][MakeExternalASE]bölü
 
 AS 'de bir uygulama oluşturmak için:
 
-1. **Web uygulaması****Web ve mobil** >  **kaynak** > oluştur ' u seçin.
+1. **Create a resource**  >  **Web + Mobile**  >  **Web uygulaması**Web ve mobil kaynak oluştur ' u seçin.
 
 1. Uygulama için bir ad girin. Ao 'da zaten bir App Service planı seçtiyseniz, uygulamanın etki alanı adı Ao 'nun etki alanı adını yansıtır:
 
@@ -104,14 +104,14 @@ Oran veya ön uç boyutlarının değiştirilmesinin bir ücreti vardır. Daha f
 
 ## <a name="app-access"></a>Uygulama erişimi
 
-Bir dış ate, uygulama oluşturma için kullanılan etki alanı son eki *.&lt; asename&gt;. p.azurewebsites.net*. Ao 'niz _External-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'lerden ulaşabilirsiniz:
+Bir dış ate, uygulama oluşturma için kullanılan etki alanı son eki *. &lt; asename &gt; . p.azurewebsites.net*. Ao 'niz _External-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'lerden ulaşabilirsiniz:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 Dış AIN oluşturma hakkında daha fazla bilgi için bkz. [Create a App Service ortamı][MakeExternalASE].
 
-Bir ıLB Ao 'da, uygulama oluşturma için kullanılan etki alanı soneki olur *.&lt; asename&gt;. appserviceenvironment.net*. Ao 'niz _ILB-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'lerden ulaşabilirsiniz:
+Bir ıLB Ao 'da, uygulama oluşturma için kullanılan etki alanı soneki olur *. &lt; asename &gt; . appserviceenvironment.net*. Ao 'niz _ILB-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'lerden ulaşabilirsiniz:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -122,19 +122,26 @@ SCM URL 'SI, kudu konsoluna erişmek veya Web Dağıtımı kullanarak uygulaman�
 
 ### <a name="dns-configuration"></a>DNS yapılandırması 
 
-Bir dış Ai kullandığınızda, Ao uygulamanızda yapılan uygulamalar Azure DNS kaydedilir. ILB Ao ile kendi DNS 'nizi yönetmeniz gerekir. 
+Bir dış Ai kullandığınızda, Ao uygulamanızda yapılan uygulamalar Azure DNS kaydedilir. Uygulamalarınızın genel kullanıma açık olması için bir dış Ao 'da ek adım yoktur. ILB Ao ile kendi DNS 'nizi yönetmeniz gerekir. Bunu kendi DNS sunucunuzda veya Azure DNS özel bölgelerle yapabilirsiniz.
 
-DNS 'yi ıLB Ao ile yapılandırmak için:
+Kendi DNS sunucunuzdaki DNS 'yi ıLB Ao 'ınızla yapılandırmak için:
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. . appserviceenvironment.net için bir bölge oluşturun <ASE name>
+1. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
+1. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
+1. <ASE name>. appserviceenvironment.NET içinde SCM adlı bir bölge oluşturun
+1. SCM bölgesinde * ıLB IP adresine işaret eden bir kayıt oluşturun
 
-Ao varsayılan etki alanı son ekinin DNS ayarları, uygulamalarınızı yalnızca bu adlar tarafından erişilebilir olarak kısıtlayamaz. Bir ıLB Ao 'da uygulamalarınızda herhangi bir doğrulama yapmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra *contoso.net*adlı bir bölge oluşturmak istiyorsanız bunu yapabilirsiniz ve ıLB IP adresine işaret edebilirsiniz. Özel etki alanı adı, uygulama istekleri için geçerlidir ancak SCM sitesi için değildir. SCM sitesi yalnızca * &lt;&gt;AppName. SCM adresinde kullanılabilir.&lt; asename&gt;. appserviceenvironment.net*. 
+Azure DNS özel bölgelerde DNS 'yi yapılandırmak için:
 
-Adlı bölge *.&lt; asename&gt;. appserviceenvironment.net* , genel olarak benzersizdir. 2019 tarihinden önce, müşteriler ıLB Ao 'nun etki alanı sonekini belirleyebildi. Etki alanı soneki için *. contoso.com* kullanmak istiyorsanız, bunu yapabilir ve SCM sitesini de kapsayabileceksiniz. Bu modelde olduğu gibi sorunlar oluştu; varsayılan SSL sertifikasını yönetme, SCM sitesiyle çoklu oturum açma olmaması ve bir joker karakter sertifikası kullanma gereksinimi. ILB ATıCı varsayılan sertifika yükseltme işlemi de karışıklığa ve uygulamanın yeniden başlatılmasına neden oldu. Bu sorunları gidermek için ıLB Ao davranışı, Ao 'nun adına ve Microsoft 'un sonekine sahip olan bir etki alanı sonekini kullanacak şekilde değiştirilmiştir. ILB ASE davranışında yapılan değişiklik yalnızca 2019 ' den sonra gerçekleştirilen ıLB ASE 'yi etkiler. Önceden var olan ıLB 'ler, ASE 'nin varsayılan sertifikasını ve DNS yapılandırmalarını yine de yönetmelidir.
+1. . appserviceenvironment.net adlı bir Azure DNS özel bölge oluşturun <ASE name>
+1. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
+1. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
+1. Bu bölgede, ıLB IP adresine *. SCM 'yi işaret eden bir kayıt oluşturun
+
+Ao varsayılan etki alanı son ekinin DNS ayarları, uygulamalarınızı yalnızca bu adlar tarafından erişilebilir olarak kısıtlayamaz. Bir ıLB Ao 'da uygulamalarınızda herhangi bir doğrulama yapmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra *contoso.net*adlı bir bölge oluşturmak istiyorsanız bunu yapabilirsiniz ve ıLB IP adresine işaret edebilirsiniz. Özel etki alanı adı, uygulama istekleri için geçerlidir ancak SCM sitesi için değildir. SCM sitesi yalnızca * &lt; appname. SCM adresinde kullanılabilir &gt; . &lt; asename &gt; . appserviceenvironment.net*. 
+
+Adlı bölge *. &lt; asename &gt; . appserviceenvironment.net* , genel olarak benzersizdir. 2019 tarihinden önce, müşteriler ıLB Ao 'nun etki alanı sonekini belirleyebildi. Etki alanı soneki için *. contoso.com* kullanmak istiyorsanız, bunu yapabilir ve SCM sitesini de kapsayabileceksiniz. Bu modelde olduğu gibi sorunlar oluştu; varsayılan SSL sertifikasını yönetme, SCM sitesiyle çoklu oturum açma olmaması ve bir joker karakter sertifikası kullanma gereksinimi. ILB ATıCı varsayılan sertifika yükseltme işlemi de karışıklığa ve uygulamanın yeniden başlatılmasına neden oldu. Bu sorunları gidermek için ıLB Ao davranışı, Ao 'nun adına ve Microsoft 'un sonekine sahip olan bir etki alanı sonekini kullanacak şekilde değiştirilmiştir. ILB ASE davranışında yapılan değişiklik yalnızca 2019 ' den sonra gerçekleştirilen ıLB ASE 'yi etkiler. Önceden var olan ıLB 'ler, ASE 'nin varsayılan sertifikasını ve DNS yapılandırmalarını yine de yönetmelidir.
 
 ## <a name="publishing"></a>Yayımlama
 
@@ -152,11 +159,11 @@ ILB Ao ile, yayımlama uç noktaları yalnızca ıLB ile kullanılabilir. ILB, s
 
 Ek değişiklikler olmadan GitHub ve Azure DevOps gibi internet tabanlı CI sistemleri bir ıLB Ao ile çalışmaz, çünkü yayımlama uç noktası internet 'e erişilebilir değildir. ILB asa 'yı içeren sanal ağa şirket içinde barındırılan bir yayın Aracısı yükleyerek Azure DevOps 'dan bir ıLB Ao 'a yayımlamayı etkinleştirebilirsiniz. Alternatif olarak, Dropbox gibi bir çekme modeli kullanan bir CI sistemini de kullanabilirsiniz.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Uygulamanın yayımlama profilinde ve uygulamanın Portal bölmesinde ( **genel bakış** > **temelleri** ' nde ve ayrıca **özelliklerinde**) görebilirsiniz.
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Uygulamanın yayımlama profilinde ve uygulamanın Portal bölmesinde ( **genel bakış**  >  **temelleri** ' nde ve ayrıca **özelliklerinde**) görebilirsiniz.
 
 ## <a name="storage"></a>Depolama
 
-ATıCı, Ao 'daki tüm uygulamalar için 1 TB depolama alanına sahiptir. Yalıtılmış fiyatlandırma SKU 'sunda bir App Service planı varsayılan olarak 250 GB 'lik bir sınıra sahiptir. Beş veya daha fazla App Service planınız varsa, Ao 'un 1 TB sınırını aşmamaya dikkat edin. Bir App Service planında 250 GB sınırından daha fazlasına ihtiyacınız varsa, App Service planı limitini en fazla 1 TB olarak ayarlamak için desteğe başvurun. Plan limiti ayarlandığında, Ao 'daki tüm App Service planlarında 1 TB 'lik bir sınır vardır.
+ATıCı, Ao 'daki tüm uygulamalar için 1 TB depolama alanına sahiptir. Yalıtılmış fiyatlandırma SKU 'sunda bir App Service planı 250 GB 'lik bir sınıra sahiptir. Bir Ao 'da, App Service plan başına 1 TB sınırına kadar 250 GB depolama alanı eklenir. Yalnızca dörtten fazla App Service planınıza sahip olabilirsiniz ancak 1 TB sınırının ötesinde daha fazla depolama alanı eklenmez.
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
@@ -164,16 +171,16 @@ Aşirinizi Azure depolama, Azure Event Hubs veya Log Analytics ile ilgili günl�
 
 | Olanını | İleti |
 |---------|----------|
-| Ao uygun değil | Belirtilen Ao, geçersiz bir sanal ağ yapılandırması nedeniyle uygun değil. Sağlıksız durum devam ederse Ao askıya alınır. Burada tanımlanan yönergelerin izlendiğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info. |
-| Ao alt ağında neredeyse yer kalmadı | Belirtilen Ao, neredeyse boş alan olmayan bir alt ağda. {0} Kalan adresler var. Bu adresler tükendiğinde Ao, ölçeklendirmeyecektir.  |
-| ATıCı toplam örnek sınırına yaklaşıyor | Belirtilen Ao, Ao 'nun toplam örnek sınırına yaklaşıyor. Şu anda en {0} fazla 201 örnek App Service plan örnekleri içerir. |
-| ATıCı bir bağımlılığa ulaşamıyor | Belirtilen Ao, ulaşılamıyor {0}.  Burada tanımlanan yönergelerin izlendiğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| Ao uygun değil | Belirtilen Ao, geçersiz bir sanal ağ yapılandırması nedeniyle uygun değil. Sağlıksız durum devam ederse Ao askıya alınır. Burada tanımlanan yönergelerin izlendiğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info . |
+| Ao alt ağında neredeyse yer kalmadı | Belirtilen Ao, neredeyse boş alan olmayan bir alt ağda. {0}Kalan adresler var. Bu adresler tükendiğinde Ao, ölçeklendirmeyecektir.  |
+| ATıCı toplam örnek sınırına yaklaşıyor | Belirtilen Ao, Ao 'nun toplam örnek sınırına yaklaşıyor. Şu anda {0} en fazla 201 örnek App Service plan örnekleri içerir. |
+| ATıCı bir bağımlılığa ulaşamıyor | Belirtilen Ao, ulaşılamıyor {0} .  Burada tanımlanan yönergelerin izlendiğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info . |
 | ATıCı askıya alındı | Belirtilen Ao, askıya alındı. Ao askıya alma, bir hesap kısaltıcı veya geçersiz bir sanal ağ yapılandırmasından kaynaklanıyor olabilir. Ana neden çözümleyin ve trafiğe hizmet vermeye devam etmek için Ao 'yu sürdürün. |
 | ALUPGRADE yükseltmesi başlatıldı | Belirtilen asa 'ya bir platform yükseltmesi başladı. Ölçeklendirme işlemlerinde gecikme süreleri bekliyor. |
 | ALUPGRADE yükseltmesi tamamlandı | Belirtilen asa 'ya platform yükseltmesi bitti. |
-| Ölçeklendirme işlemleri başlatıldı | App Service planı ({0}) ölçeklendirmeye başladı. İstenen durum: {1} I{2} çalışanları.
-| Ölçeklendirme işlemleri tamamlandı | App Service planı ({0}) ölçeklendirmeyi bitirdi. Geçerli durum: {1} I{2} çalışanları. |
-| Ölçeklendirme işlemleri başarısız oldu | App Service planı ({0}) ölçeklendirilemedi. Geçerli durum: {1} I{2} çalışanları. |
+| Ölçeklendirme işlemleri başlatıldı | App Service planı ( {0} ) ölçeklendirmeye başladı. İstenen durum: {1} I {2} çalışanları.
+| Ölçeklendirme işlemleri tamamlandı | App Service planı ( {0} ) ölçeklendirmeyi bitirdi. Geçerli durum: {1} I {2} çalışanları. |
+| Ölçeklendirme işlemleri başarısız oldu | App Service planı ( {0} ) ölçeklendirilemedi. Geçerli durum: {1} I {2} çalışanları. |
 
 AŞIRDE günlüğe kaydetmeyi etkinleştirmek için:
 
@@ -200,16 +207,16 @@ Günlüklerinizi karşılaştırarak bir uyarı oluşturmak için [Azure izleyic
 
 ## <a name="upgrade-preference"></a>Yükseltme tercihi
 
-Birden çok ASE varsa, bazı ASE 'lerin başkalarından önce yükseltilmesini isteyebilirsiniz. ATıCı **HostingEnvironment Kaynak Yöneticisi** nesnesi Içinde, **upgradepreference**için bir değer ayarlayabilirsiniz. **Upgradepreference** ayarı bir şablon, ARMClient veya https://resources.azure.comkullanılarak yapılandırılabilir. Olası üç değer şunlardır:
+Birden çok ASE varsa, bazı ASE 'lerin başkalarından önce yükseltilmesini isteyebilirsiniz. ATıCı **HostingEnvironment Kaynak Yöneticisi** nesnesi Içinde, **upgradepreference**için bir değer ayarlayabilirsiniz. **Upgradepreference** ayarı bir şablon, ARMClient veya kullanılarak yapılandırılabilir https://resources.azure.com . Olası üç değer şunlardır:
 
 - **Hiçbiri**: Azure, Ao 'nizi belirli bir toplu iş olmadan yükseltecektir. Bu varsayılan değerdir.
 - **Erken**: Ao 'niz App Service yükseltmelerin ilk yarısında yükseltilir.
 - **Geç**: Ao 'niz App Service yükseltmelerinin ikinci yarısında yükseltilir.
 
-Kullanıyorsanız https://resources.azure.com, **upgradepreferences** değerini ayarlamak için şu adımları izleyin:
+Kullanıyorsanız https://resources.azure.com , **upgradepreferences** değerini ayarlamak için şu adımları izleyin:
 
 1. Resources.azure.com adresine gidin ve Azure hesabınızla oturum açın.
-1. \/\[Kaynakları aboneliklerle abonelikler abonelik adı\]\/\/\[ResourceGroups kaynak grubu adı\]\/sağlayıcılar\/Microsoft. Web\/hostingenvironments\/\[Ao adı.\]
+1. Kaynakları aboneliklerle abonelikler \/ \[ abonelik adı \] \/ ResourceGroups \/ \[ kaynak grubu adı \] \/ sağlayıcılar \/ Microsoft. Web \/ hostingenvironments \/ \[ Ao adı \] .
 1. Üstteki **oku/yaz** seçeneğini belirleyin.
 1. **Düzenle**' yi seçin.
 1. **Yükseltme tercihini** , istediğiniz üç değerden hangisinin hangisi olduğuna göre ayarlayın.

@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410621"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125715"
 ---
 # <a name="connection-strings"></a>Bağlantı dizeleri
 
@@ -64,10 +64,10 @@ Bağlantı dizesi, noktalı virgülle ayrılmış anahtar-değer çiftleri olara
 - `EndpointSuffix`(örn: applicationinsights.azure.cn) Uç nokta son ekinin ayarlanması, SDK 'Yı hangi Azure bulutunun bağlanacağı ile talimat verecektir. SDK, her bir hizmet için uç noktanın geri kalanını birleştirir.
 - Açık uç noktalar.
   Bağlantı dizesinde, herhangi bir hizmet açıkça geçersiz kılınabilir.
-   - `IngestionEndpoint`değerinehttps://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`değerinehttps://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`değerinehttps://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`değerinehttps://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`(örn: `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint`(örn: `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint`(örn: `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint`(örn: `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Uç nokta şeması
 
@@ -106,10 +106,10 @@ Bu örnekte, yalnızca Izleme anahtarı ayarlanmıştır.
 - Yetkilendirme düzeni varsayılan olarak "Ikey" olarak belirlenmiştir 
 - İzleme anahtarı: 00000000-0000-0000-0000-000000000000
 - Bölgesel hizmet URI 'Leri, [SDK varsayılanlarına](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) dayanır ve genel Global Azure 'a bağlanır:
-   - Alımıhttps://dc.services.visualstudio.com/
-   - Canlı ölçümler:https://rt.services.visualstudio.com/
-   - Profilhttps://agent.azureserviceprofiler.net/
-   - Sýhttps://agent.azureserviceprofiler.net/  
+   - Alımı`https://dc.services.visualstudio.com/`
+   - Canlı ölçümler:`https://rt.services.visualstudio.com/`
+   - Profil`https://agent.azureserviceprofiler.net/`
+   - Sý`https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ Bu örnekte, bu bağlantı dizesi uç nokta sonekini belirtir ve SDK hizmet uç 
 - Yetkilendirme düzeni varsayılan olarak "Ikey" olarak belirlenmiştir 
 - İzleme anahtarı: 00000000-0000-0000-0000-000000000000
 - Bölgesel hizmet URI 'Leri, belirtilen uç nokta sonekine dayalıdır: 
-   - Alımıhttps://dc.ai.contoso.com
-   - Canlı ölçümler:https://live.ai.contoso.com
-   - Profilhttps://profiler.ai.contoso.com 
-   - Sýhttps://snapshot.ai.contoso.com   
+   - Alımı`https://dc.ai.contoso.com`
+   - Canlı ölçümler:`https://live.ai.contoso.com`
+   - Profil`https://profiler.ai.contoso.com`
+   - Sý`https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ Bu örnekte, bu bağlantı dizesi her hizmet için açık geçersiz kılmalar be
 - Yetkilendirme düzeni varsayılan olarak "Ikey" olarak belirlenmiştir 
 - İzleme anahtarı: 00000000-0000-0000-0000-000000000000
 - Bölgesel hizmet URI 'Leri açık geçersiz kılma değerlerine dayalıdır: 
-   - Alma: https:\//Custom.com:111/
-   - Canlı ölçümler: https:\//Custom.com:222/
-   - Profil Oluşturucu: https\/:/Custom.com:333/ 
-   - Hata ayıklayıcı: https\/:/Custom.com:444/   
+   - Alımı`https://custom.com:111/`
+   - Canlı ölçümler:`https://custom.com:222/`
+   - Profil`https://custom.com:333/`
+   - Sý`https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>Bağlantı dizesi ayarlama

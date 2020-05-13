@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928287"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195674"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
@@ -145,10 +145,10 @@ VNet 'ten VNet 'e güvenli geçiş, sanal ağ hub 'ındaki Azure Güvenlik Duvar
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet-Internet veya üçüncü taraf güvenlik hizmeti (ı)
 
-VNet 'Ten Internet 'e veya üçüncü taraf güvenli geçiş, sanal ağ hub 'ındaki Azure Güvenlik Duvarı üzerinden İnternet 'e veya desteklenen bir üçüncü taraf güvenlik hizmetine bağlanmasını sağlar.
+VNet 'Ten Internet 'e sanal WAN hub 'ındaki Azure Güvenlik Duvarı üzerinden İnternet 'e bağlanmasını sağlar. Desteklenen üçüncü taraf güvenlik hizmetleri aracılığıyla internet 'e giden trafik, Azure güvenlik duvarından geçmez. Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak, desteklenen üçüncü taraf güvenlik hizmeti aracılığıyla VNET-Internet yolunu yapılandırabilirsiniz.  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Daldan Internet veya üçüncü taraf güvenlik hizmeti (j)
-Daldan Internet veya üçüncü taraf güvenli geçiş, dalların internet 'e veya desteklenen bir üçüncü taraf güvenlik hizmetine sanal WAN hub 'ındaki Azure Güvenlik Duvarı üzerinden bağlanmasını sağlar.
+Daldan Internet 'e, dalların sanal WAN hub 'ındaki Azure Güvenlik Duvarı üzerinden İnternet 'e bağlanmasını sağlar. Desteklenen üçüncü taraf güvenlik hizmetleri aracılığıyla internet 'e giden trafik, Azure güvenlik duvarından geçmez. Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak, desteklenen üçüncü taraf güvenlik hizmeti aracılığıyla Dalla Internet yolunu yapılandırabilirsiniz. 
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Güvenli bir sanal hub 'da varsayılan yolu (0.0.0.0/0) etkinleştirmek Nasıl yaparım?
 

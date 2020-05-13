@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653126"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195124"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Windows sanal masaüstü için PowerShell modülünü ayarlama
 
@@ -46,7 +46,7 @@ Ardından, Azure 'a bağlanmak için aşağıdaki cmdlet 'i çalıştırın:
 Connect-AzAccount
 ```
 
-Azure hesabınızda oturum açmak, Connect cmdlet 'ini çalıştırdığınızda oluşturulmuş bir kod gerektirir. Oturum açmak için adresine gidin <https://microsoft.com/devicelogin>, kodu girin ve ardından Azure yönetici kimlik bilgilerinizi kullanarak oturum açın.
+Azure hesabınızda oturum açmak, Connect cmdlet 'ini çalıştırdığınızda oluşturulmuş bir kod gerektirir. Oturum açmak için adresine gidin <https://microsoft.com/devicelogin> , kodu girin ve ardından Azure yönetici kimlik bilgilerinizi kullanarak oturum açın.
 
 ```powershell
 Account SubscriptionName TenantId Environment
@@ -63,7 +63,7 @@ Bu, sizi yönetici kimlik bilgileriniz için varsayılan olan abonelikte doğrud
 Oturum açtıktan sonra varsayılan aboneliği değiştirmek istiyorsanız şu cmdlet 'i çalıştırın:
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 Kullanmak üzere yeni bir abonelik seçtiğinizde, bu aboneliğin KIMLIĞINI daha sonra çalıştırdığınız cmdlet 'lerde belirtmeniz gerekmez. Örneğin, aşağıdaki cmdlet abonelik KIMLIĞINE gerek duymadan belirli bir oturum konağını alır:

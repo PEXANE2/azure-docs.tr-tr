@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733269"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125783"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows sanal makine ölçek kümesi için Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
 
@@ -238,8 +238,8 @@ Her iki dosyayı da kaydedin ve kapatın.
 Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:  
 
 1. PowerShell’i başlatın. 
-1. Kullanarak `Login-AzAccount`Azure 'da oturum açın.
-1. Kullanarak `Get-AzSubscription`abonelik listenizi alın.
+1. Kullanarak Azure 'da oturum açın `Login-AzAccount` .
+1. Kullanarak abonelik listenizi alın `Get-AzSubscription` .
 1. Oluşturacağınız aboneliği ayarlayın veya sanal makineyi güncelleştirin: 
 
    ```powershell
@@ -252,7 +252,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
    ```
 
    > [!NOTE]  
-   > Özel ölçümler için etkinleştirilen bir Azure bölgesi kullanmayı unutmayın. [Özel ölçümler için etkinleştirilen bir Azure bölgesi](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions)kullanmayı unutmayın.
+   > Özel ölçümler için etkinleştirilen bir Azure bölgesi kullanmayı unutmayın. [Özel ölçümler için etkinleştirilen bir Azure bölgesi](./metrics-custom-overview.md#supported-regions)kullanmayı unutmayın.
  
 1. VM 'yi dağıtmak için aşağıdaki komutları çalıştırın:  
 
@@ -285,7 +285,7 @@ Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell kullanın:
 
 1. Ad alanları açılan menüsünde **Azure. VM. Windows. Guest**' yi seçin. 
 
-1. Ölçümler açılan menüsünde, **Kullanımdaki bellek\%kaydedilmiş bayt**' ı seçin.  
+1. Ölçümler açılan menüsünde, ** \% Kullanımdaki bellek kaydedilmiş bayt**' ı seçin.  
 
 Ayrıca, bu ölçümdeki boyutları belirli bir VM için grafik olarak veya ölçek kümesindeki her bir VM 'yi çizmek için de kullanabilirsiniz. 
 

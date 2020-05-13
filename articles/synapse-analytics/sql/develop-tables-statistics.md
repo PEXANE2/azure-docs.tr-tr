@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676928"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197583"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
@@ -34,7 +34,7 @@ SQL havuzu sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricudur. Çeşit
 
 ### <a name="automatic-creation-of-statistics"></a>İstatistiklerin otomatik olarak oluşturulması
 
-Veritabanı AUTO_CREATE_STATISTICS seçeneği olarak `ON`ayarlandığında SQL havuzu eksik istatistik için gelen kullanıcı sorgularını analiz eder.  İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda veya JOIN koşulunda tek tek sütunlarda istatistikler oluşturur. Bu işlev, sorgu planına yönelik kardinalite tahminlerini geliştirmek için kullanılır.
+Veritabanı AUTO_CREATE_STATISTICS seçeneği olarak ayarlandığında SQL havuzu eksik istatistik için gelen kullanıcı sorgularını analiz eder `ON` .  İstatistikler eksikse, sorgu iyileştiricisi sorgu koşulunda veya JOIN koşulunda tek tek sütunlarda istatistikler oluşturur. Bu işlev, sorgu planına yönelik kardinalite tahminlerini geliştirmek için kullanılır.
 
 > [!IMPORTANT]
 > İstatistiklerin otomatik olarak oluşturulması Şu anda varsayılan olarak açıktır.
@@ -149,7 +149,7 @@ Aşağıdaki temel ilkeler, yükleme işlemi sırasında istatistiklerinizi gün
 - JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerinde yer alan sütunlara odaklanın.
 - Bu değerler istatistik histogramı 'ne dahil edilmeyeceği için, işlem tarihleri gibi "artan anahtar" sütunları güncellemeyi daha sık düşünün.
 - Statik dağıtım sütunlarını daha az sıklıkta güncelleştirmeyi göz önünde bulundurun.
-- Her istatistik nesnesinin sırayla güncelleştirildiğini unutmayın. Özellikle çok `UPDATE STATISTICS <TABLE_NAME>` sayıda istatistik nesnesi olan geniş tablolar için her zaman ideal bir uygulama değildir.
+- Her istatistik nesnesinin sırayla güncelleştirildiğini unutmayın. `UPDATE STATISTICS <TABLE_NAME>`Özellikle çok sayıda istatistik nesnesi olan geniş tablolar için her zaman ideal bir uygulama değildir.
 
 Daha fazla bilgi için bkz. [kardinalite tahmini](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
@@ -239,7 +239,7 @@ Tam başvuru için bkz. [Istatistik oluşturma](/sql/t-sql/statements/create-sta
 > [!NOTE]
 > Sorgu sonucundaki satır sayısını tahmin etmek için kullanılan histogramı yalnızca istatistik nesne tanımında listelenen ilk sütunda kullanılabilir.
 
-Bu örnekte, histogram *ürün\_kategorisinde*bulunur. Çapraz sütun istatistikleri *ürün\_kategorisinde* ve *ürün\_sub_category*hesaplanır:
+Bu örnekte, histogram *ürün \_ kategorisinde*bulunur. Çapraz sütun istatistikleri *ürün \_ kategorisinde* ve *ürün \_ sub_category*hesaplanır:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-*Ürün\_kategorisi* ile *\_ürün alt\_kategorisi*arasında bir bağıntı bulunduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
+*Ürün \_ kategorisi* ile *ürün \_ alt \_ kategorisi*arasında bir bağıntı bulunduğundan, bu sütunlara aynı anda erişildiğinde çok sütunlu bir istatistik nesnesi yararlı olabilir.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Tablodaki tüm sütunlarda istatistik oluşturma
 
@@ -423,7 +423,7 @@ GÜNCELLEŞTIRME ISTATISTIKLERI bildiriminin kullanımı kolaydır. Yalnızca ta
 > [!NOTE]
 > Bir tablodaki tüm İstatistikleri güncelleştirirken, SQL havuzu her bir istatistik nesnesi için tabloyu örneklemek üzere bir tarama yapar. Tablo büyükse ve çok sayıda sütun ve birçok istatistik içeriyorsa, her bir istatistiği ihtiyaya göre güncelleştirmek daha verimli olabilir.
 
-Bir `UPDATE STATISTICS` yordamın uygulanması için bkz. [geçici tablolar](develop-tables-temporary.md). Uygulama yöntemi önceki `CREATE STATISTICS` yordamdan biraz farklıdır, ancak sonuç aynıdır.
+Bir yordamın uygulanması için `UPDATE STATISTICS` bkz. [geçici tablolar](develop-tables-temporary.md). Uygulama yöntemi önceki yordamdan biraz farklıdır `CREATE STATISTICS` , ancak sonuç aynıdır.
 Tam sözdizimi için bkz. [güncelleştirme istatistikleri](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="statistics-metadata"></a>İstatistik meta verileri
@@ -611,6 +611,8 @@ Aşağıdaki örneklerde, istatistik oluşturmak için çeşitli seçeneklerin n
 
 > [!NOTE]
 > Yalnızca şu an için tek sütunlu istatistikler oluşturabilirsiniz.
+>
+> Yordam sp_create_file_statistics sp_create_openrowset_statistics olarak yeniden adlandırılacaktır. Ortak veritabanı rolü sp_create_file_statistics ve sp_drop_file_statistics üzerinde yürütme izinlerine sahip olan genel sunucu rolünde Toplu IŞLEMLERI Yönet izni verildi. Bu durum gelecekte değiştirilebilir.
 
 Aşağıdaki saklı yordam istatistik oluşturmak için kullanılır:
 
@@ -618,7 +620,7 @@ Aşağıdaki saklı yordam istatistik oluşturmak için kullanılır:
 sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-Bağımsız değişkenler: @stmt [=] N ' statement_text '-istatistikler için kullanılacak sütun değerlerini döndürecek bir Transact-SQL ifadesini belirtir. Kullanılacak veri örneklerini belirtmek için, "can" kullanabilirsiniz. Bu belirtilmemişse, FULLSCAN kullanılacaktır.
+Bağımsız değişkenler: [ @stmt =] N ' statement_text '-istatistikler için kullanılacak sütun değerlerini döndürecek bir Transact-SQL Ifadesini belirtir. Kullanılacak veri örneklerini belirtmek için, "can" kullanabilirsiniz. Bu belirtilmemişse, FULLSCAN kullanılacaktır.
 
 ```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
@@ -696,7 +698,10 @@ FROM OPENROWSET(
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-Bağımsız değişkenler: @stmt [=] N ' statement_text '-istatistikler oluşturulduğunda kullanılan Transact-SQL ifadesini belirtir.
+> [!NOTE]
+> Yordam sp_drop_file_statistics sp_drop_openrowset_statistics olarak yeniden adlandırılacaktır. Ortak veritabanı rolü sp_create_file_statistics ve sp_drop_file_statistics üzerinde yürütme izinlerine sahip olan genel sunucu rolünde Toplu IŞLEMLERI Yönet izni verildi. Bu durum gelecekte değiştirilebilir.
+
+Bağımsız değişkenler: [ @stmt =] N ' statement_text '-istatistikler oluşturulduğunda kullanılan Transact-SQL Ifadesini belirtir.
 
 Veri kümesinde, popülasyon. csv dosyasını temel alan yıl sütununun istatistiklerini güncelleştirmek için, istatistikleri bırakıp oluşturmanız gerekir:
 

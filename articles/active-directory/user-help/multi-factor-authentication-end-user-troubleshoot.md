@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 555ba9a55a135bd38dcc46e1ff7a3d751083d47e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271701"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196423"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınızla ilgili yaygın sorunlar
 
@@ -32,7 +32,7 @@ Bizden daha sık gerçekleşmemizi sağlayan bazı yaygın iki öğeli doğrulam
 >[!Important]
 >Yöneticimce sahipseniz Azure AD [belgelerinde](https://docs.microsoft.com/azure/active-directory)Azure AD ortamınızı ayarlama ve yönetme hakkında daha fazla bilgi edinebilirsiniz.
 >
->Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap olan iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır (örneğin, alain@contoso.com). İki öğeli doğrulamayla ilgili sorun yaşıyorsanız (örneğin, danielle@outlook.com) kendiniz için ayarladığınız bir hesap olan kişisel Microsoft hesabı, [Microsoft hesabı için Iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+>Bu içerik, yalnızca kuruluşunuz tarafından sağlanmış olan hesap olan iş veya okul hesabınızla birlikte kullanılmak üzere tasarlanmıştır (örneğin, alain@contoso.com ). İki öğeli doğrulamayla ilgili sorun yaşıyorsanız (örneğin,) kendiniz için ayarladığınız bir hesap olan kişisel Microsoft hesabı, danielle@outlook.com [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Mobil cihazım benim benimle yok
 
@@ -99,9 +99,9 @@ Uygulama parolaları, iki öğeli doğrulamayı desteklemeyen eski masaüstü uy
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>İki öğeli doğrulamayı kapatma
 
-İş veya okul hesabınızla iki öğeli doğrulama kullanıyorsanız (örneğin, alain@contoso.com), büyük olasılıkla kuruluşunuzun bu ek güvenlik özelliğini kullanmanız gerektiğine karar vermiş olması anlamına gelir. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur. Bununla birlikte, bir kişisel hesapla alain@outlook.comiki öğeli doğrulama kullanıyorsanız, bu özelliği açıp kapatabilirsiniz. Kişisel hesaplarınız için iki öğeli doğrulamanın nasıl denetılacağı hakkında yönergeler için, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
+İş veya okul hesabınızla iki öğeli doğrulama kullanıyorsanız (örneğin, alain@contoso.com ), büyük olasılıkla kuruluşunuzun bu ek güvenlik özelliğini kullanmanız gerektiğine karar vermiş olması anlamına gelir. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, tek yapmanız gereken bir yöntem yoktur. Bununla birlikte, bir kişisel hesapla iki öğeli doğrulama kullanıyorsanız, bu alain@outlook.com özelliği açıp kapatabilirsiniz. Kişisel hesaplarınız için iki öğeli doğrulamanın nasıl denetılacağı hakkında yönergeler için, [Microsoft hesabı için iki öğeli doğrulamayı açma veya kapatma](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)konusuna bakın.
 
-İki öğeli doğrulamayı kapatamaz, Ayrıca kuruluş düzeyinde uygulanmış olan güvenlik varsayılanlarının de olabilir. Güvenlik Varsayılanları hakkında daha fazla bilgi için bkz. [Security defulta nedir?](../fundamentals/concept-fundamentals-security-defaults.md)
+İki öğeli doğrulamayı kapatamaz, Ayrıca kuruluş düzeyinde uygulanmış olan güvenlik varsayılanlarının de olabilir. Güvenlik Varsayılanları hakkında daha fazla bilgi için bkz. [güvenlik Varsayılanları nelerdir?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Sorunum için bir yanıt bulamadık
 

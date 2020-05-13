@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609230"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125511"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -82,27 +82,7 @@ Bölge artıklığı, [çok yöneticili çoğaltma](how-to-multi-master.md) öze
 
 Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Bölgeyi kaldırarak ve bölge yedekliği etkinken yeniden ekleyerek, Azure Cosmos hesabınızın mevcut bir bölgesinde bölge yedekliliği etkinleştirebilirsiniz.
 
-Bu özellik aşağıdaki Azure bölgelerinde kullanılabilir:
-
-- Güney Birleşik Krallık
-
-- Güneydoğu Asya
-
-- Doğu ABD
-
-- Doğu ABD 2
-
-- Orta ABD
-
-- Batı Avrupa
-
-- Batı ABD 2
-
-- Doğu Avustralya
-
-- Doğu Japonya
-
-- Kuzey Avrupa
+Bu özellik: *UK Güney, Güneydoğu Asya, Doğu ABD, Doğu ABD 2, Orta ABD, Batı Avrupa, Batı ABD 2, Avustralya Doğu, Japonya Doğu,* Kuzey Avrupa, Fransa orta bölgelerinde kullanılabilir.
 
 > [!NOTE]
 > Tek bir bölge için Kullanılabilirlik Alanları etkinleştirme Azure Cosmos hesabı, hesabınıza ek bir bölge eklemeye eşdeğer olan ücretlere neden olur. Fiyatlandırma hakkında ayrıntılı bilgi için, Azure Cosmos DB makalelerinde [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) ve [çok bölgeli maliyete](optimize-cost-regions.md) bakın.
@@ -125,7 +105,7 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 > [!NOTE]
 > Çok bölgeli bir Azure Cosmos hesabı için kullanılabilirlik alanı desteğini etkinleştirmek üzere, hesabın çoklu yöneticili yazmaları etkinleştirilmiş olması gerekir.
 
-Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` bayrağını belirli bir konum `true` için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
+Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` bayrağını `true` belirli bir konum için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
 
 ```powershell
 $locations = @(

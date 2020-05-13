@@ -1,21 +1,21 @@
 ---
-title: Cosmos DB için Azure Izleyici ile Azure Cosmos DB izleme (Önizleme) | Microsoft Docs
+title: Cosmos DB için Azure Izleyici ile Azure Cosmos DB izleme | Microsoft Docs
 description: Bu makalede, CosmosDB hesaplarıyla performans ve kullanım sorunlarını hızlı bir şekilde anlamak için Cosmos DB sahipler sağlayan Cosmos DB özelliği için Azure Izleyicisi açıklanmaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250670"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195409"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Izleyicisini keşfet (Önizleme)
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini keşfet
 
-Azure Cosmos DB için Azure Izleyici (Önizleme), Birleşik etkileşimli bir deneyime göre tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işlemsel sistem durumunun bir görünümünü sağlar. Bu makale, bu yeni izleme deneyiminin avantajlarını ve bu deneyimi kuruluşunuzun benzersiz ihtiyaçlarına uyacak şekilde nasıl değiştirebileceğiniz ve uyarlayabileceğinizi anlamanıza yardımcı olur.   
+Azure Cosmos DB için Azure Izleyici, Birleşik etkileşimli bir deneyimde tüm Azure Cosmos DB kaynaklarınızın genel performans, başarısızlık, kapasite ve işletimsel sistem durumunun bir görünümünü sağlar. Bu makale, bu yeni izleme deneyiminin avantajlarını ve bu deneyimi kuruluşunuzun benzersiz ihtiyaçlarına uyacak şekilde nasıl değiştirebileceğiniz ve uyarlayabileceğinizi anlamanıza yardımcı olur.   
 
 ## <a name="introduction"></a>Giriş
 
@@ -44,7 +44,7 @@ Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansı
 
     !["Monitor" sözcüğünün bulunduğu ve bir hızölçer Style görüntüsüyle Hizmetleri "Monitor" adlı bir açılan pencerede arama kutusu](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. **Cosmos DB (Önizleme)** öğesini seçin.
+3. **Cosmos DB**seçin.
 
     ![Cosmos DB genel bakış çalışma kitabının ekran görüntüsü](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -92,7 +92,7 @@ Genel Bakış çalışma kitabında olduğu gibi, **abonelik** sütunundaki bir 
 
 Sayfanın üst kısmındaki **işlemler** ' i seçin ve çalışma kitabı şablonunun **işlemler** bölümü açılır. Bu, isteklerinizi yapılan istek türlerine göre kırarak görmenizi sağlar. 
 
-Bu `eastus-billingint` nedenle aşağıdaki örnekte, ağırlıklı okuma isteklerinin alınması, ancak az sayıda büyük miktarda ve oluşturma isteği ile ilgili bilgi edinebilirsiniz. `westeurope-billingint` , Bir istek perspektifinden, en az son dört saat içinde, çalışma kitabının zaman aralığı parametresi aracılığıyla şu anda kapsama alınmış olduğu, salt okunurdur.
+Bu nedenle aşağıdaki örnekte, `eastus-billingint` ağırlıklı okuma isteklerinin alınması, ancak az sayıda büyük miktarda ve oluşturma isteği ile ilgili bilgi edinebilirsiniz. `westeurope-billingint`, Bir istek perspektifinden, en az son dört saat içinde, çalışma kitabının zaman aralığı parametresi aracılığıyla şu anda kapsama alınmış olduğu, salt okunurdur.
 
 ![İşlemler çalışma kitabı](./media/cosmosdb-insights-overview/operation.png) 
 
@@ -110,9 +110,9 @@ Verilerinizi Excel biçiminde dışarı aktarmak için raptiye simgesinin solund
 
 ![Çalışma kitabı simgesini Genişlet](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure Izleyicisini özelleştirme (Önizleme)
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini özelleştirme
 
-Bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine inşa edildiğinden, değiştirilmiş sürümünüzün bir kopyasını **Customize** > **düzenleme** ve bir kopyasını özel çalışma kitabına **kaydetme** olanağınız vardır. 
+Bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine inşa edildiğinden, **Customize**  >  değiştirilmiş sürümünüzün bir kopyasını**düzenleme** ve bir kopyasını özel çalışma kitabına **kaydetme** olanağınız vardır. 
 
 ![Çubuğu Özelleştir](./media/cosmosdb-insights-overview/customize.png)
 

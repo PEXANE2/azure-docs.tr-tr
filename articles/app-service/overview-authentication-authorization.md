@@ -5,15 +5,13 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 04/15/2020
 ms.reviewer: mahender
-ms.custom:
-- seodec18
-- fasttrack-edit
-ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457867"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196446"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -50,9 +48,9 @@ Modül, uygulama kodınızdan ayrı olarak çalışır ve uygulama ayarları kul
 
 ### <a name="userapplication-claims"></a>Kullanıcı/uygulama talepleri
 
-Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliği doğrulanmış bir son kullanıcının veya bir istemci uygulamasından mi olsun), istek üst bilgilerine ekleme göre kodunuzun kullanımına sunar. ASP.NET 4,6 uygulamaları için App Service [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) 'ı kimliği doğrulanmış kullanıcının taleplerine göre doldurur. böylece, `[Authorize]` özniteliği de dahil olmak üzere standart .NET kod modelini izleyebilirsiniz. Benzer şekilde, PHP uygulamaları için App Service `_SERVER['REMOTE_USER']` değişkeni doldurur. Java uygulamaları için, talepler [Tomcat servlet 'ten erişilebilir](containers/configure-language-java.md#authenticate-users-easy-auth).
+Tüm dil çerçeveleri için App Service, gelen belirteçteki talepleri (kimliği doğrulanmış bir son kullanıcının veya bir istemci uygulamasından mi olsun), istek üst bilgilerine ekleme göre kodunuzun kullanımına sunar. ASP.NET 4,6 uygulamaları için App Service [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) 'ı kimliği doğrulanmış kullanıcının taleplerine göre doldurur. böylece, özniteliği de dahil olmak üzere standart .NET kod modelini izleyebilirsiniz `[Authorize]` . Benzer şekilde, PHP uygulamaları için App Service değişkeni doldurur `_SERVER['REMOTE_USER']` . Java uygulamaları için, talepler [Tomcat servlet 'ten erişilebilir](containers/configure-language-java.md#authenticate-users-easy-auth).
 
-[Azure işlevleri](../azure-functions/functions-overview.md)için, `ClaimsPrincipal.Current` .NET kodu için doldurulmamış, ancak istek üst bilgilerinde kullanıcı taleplerini bulabilir veya istek bağlamından ya da bir bağlama parametresi aracılığıyla `ClaimsPrincipal` nesne alabilirsiniz. Daha fazla bilgi için bkz. [istemci kimlikleriyle çalışma](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
+[Azure işlevleri](../azure-functions/functions-overview.md)için, `ClaimsPrincipal.Current` .NET kodu için doldurulmamış, ancak istek üst bilgilerinde kullanıcı taleplerini bulabilir veya istek `ClaimsPrincipal` bağlamından ya da bir bağlama parametresi aracılığıyla nesne alabilirsiniz. Daha fazla bilgi için bkz. [istemci kimlikleriyle çalışma](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
 Daha fazla bilgi için bkz. [Kullanıcı taleplerine erişme](app-service-authentication-how-to.md#access-user-claims).
 
@@ -71,7 +69,7 @@ Uygulamanızdaki belirteçlerle çalışmanız gerekmiyorsa, belirteç deposunu 
 
 ### <a name="logging-and-tracing"></a>Günlüğe kaydetme ve izleme
 
-[Uygulama günlüğünü etkinleştirirseniz](troubleshoot-diagnostic-logs.md), kimlik doğrulama ve yetkilendirme izlemelerini doğrudan günlük dosyalarınızda görürsünüz. Beklemediğiniz bir kimlik doğrulama hatası görürseniz, mevcut uygulama günlüklerinizi inceleyerek tüm ayrıntıları rahat bir şekilde bulabilirsiniz. [Başarısız istek izlemeyi](troubleshoot-diagnostic-logs.md)etkinleştirirseniz, kimlik doğrulama ve yetkilendirme modülünün başarısız bir istekte hangi rol oynadığını tam olarak görebilirsiniz. İzleme günlüklerinde adlı `EasyAuthModule_32/64`bir modüle başvuruları arayın. 
+[Uygulama günlüğünü etkinleştirirseniz](troubleshoot-diagnostic-logs.md), kimlik doğrulama ve yetkilendirme izlemelerini doğrudan günlük dosyalarınızda görürsünüz. Beklemediğiniz bir kimlik doğrulama hatası görürseniz, mevcut uygulama günlüklerinizi inceleyerek tüm ayrıntıları rahat bir şekilde bulabilirsiniz. [Başarısız istek izlemeyi](troubleshoot-diagnostic-logs.md)etkinleştirirseniz, kimlik doğrulama ve yetkilendirme modülünün başarısız bir istekte hangi rol oynadığını tam olarak görebilirsiniz. İzleme günlüklerinde adlı bir modüle başvuruları arayın `EasyAuthModule_32/64` . 
 
 ## <a name="identity-providers"></a>Kimlik sağlayıcıları
 
@@ -102,12 +100,12 @@ Aşağıdaki tabloda, kimlik doğrulama akışı adımları gösterilmektedir.
 
 | Adım | Sağlayıcı SDK 'Sı olmadan | Sağlayıcı SDK ile |
 | - | - | - |
-| 1. Kullanıcı oturum açma | İstemcisini olarak `/.auth/login/<provider>`yeniden yönlendirir. | İstemci kodu, kullanıcıyı doğrudan sağlayıcının SDK 'Sı ile imzalar ve bir kimlik doğrulama belirteci alır. Bilgi için sağlayıcının belgelerine bakın. |
-| 2. kimlik doğrulama sonrası | Sağlayıcı istemciyi öğesine `/.auth/login/<provider>/callback`yeniden yönlendirir. | İstemci kodu, sağlayıcıya doğrulama `/.auth/login/<provider>` için [olan belirteci gönderir](app-service-authentication-how-to.md#validate-tokens-from-providers) . |
+| 1. Kullanıcı oturum açma | İstemcisini olarak yeniden yönlendirir `/.auth/login/<provider>` . | İstemci kodu, kullanıcıyı doğrudan sağlayıcının SDK 'Sı ile imzalar ve bir kimlik doğrulama belirteci alır. Bilgi için sağlayıcının belgelerine bakın. |
+| 2. kimlik doğrulama sonrası | Sağlayıcı istemciyi öğesine yeniden yönlendirir `/.auth/login/<provider>/callback` . | İstemci kodu, sağlayıcıya doğrulama için [olan belirteci gönderir](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` . |
 | 3. kimliği doğrulanmış oturum oluşturma | App Service, yanıta kimliği doğrulanmış tanımlama bilgisi ekler. | App Service, kendi kimlik doğrulama belirtecini istemci koduna döndürür. |
-| 4. kimliği doğrulanmış içerik hizmeti | İstemci sonraki isteklerde kimlik doğrulama tanımlama bilgisi içerir (otomatik olarak tarayıcı tarafından işlenir). | İstemci kodu, `X-ZUMO-AUTH` kimlik doğrulama belirtecini üst bilgide gösterir (Mobile Apps Istemci SDK 'ları tarafından otomatik olarak işlenir). |
+| 4. kimliği doğrulanmış içerik hizmeti | İstemci sonraki isteklerde kimlik doğrulama tanımlama bilgisi içerir (otomatik olarak tarayıcı tarafından işlenir). | İstemci kodu, kimlik doğrulama belirtecini `X-ZUMO-AUTH` üst bilgide gösterir (Mobile Apps Istemci SDK 'ları tarafından otomatik olarak işlenir). |
 
-İstemci tarayıcıları için, App Service tüm kimliği doğrulanmamış kullanıcıları otomatik olarak öğesine `/.auth/login/<provider>`yönlendirebilir. Ayrıca, bir veya daha fazla bağlantıyla kullanıcılara tercih `/.auth/login/<provider>` ettiğiniz sağlayıcıyı kullanarak oturum açmak için bir veya daha fazla bağlantı sunabilirsiniz.
+İstemci tarayıcıları için, App Service tüm kimliği doğrulanmamış kullanıcıları otomatik olarak öğesine yönlendirebilir `/.auth/login/<provider>` . Ayrıca, bir veya daha fazla bağlantıyla kullanıcılara `/.auth/login/<provider>` tercih ettiğiniz sağlayıcıyı kullanarak oturum açmak için bir veya daha fazla bağlantı sunabilirsiniz.
 
 <a name="authorization"></a>
 
@@ -127,7 +125,7 @@ Bu seçenek, anonim istekleri işlemek için daha fazla esneklik sağlar. Örne�
 
 ### <a name="allow-only-authenticated-requests"></a>Yalnızca kimliği doğrulanmış isteklere izin ver
 
-Seçenek, ** \<sağlayıcı>oturum açın **. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir `HTTP 401 Unauthorized`olur.
+Seçenek, ** \< sağlayıcı>oturum açın **. App Service, tüm anonim istekleri `/.auth/login/<provider>` seçtiğiniz sağlayıcıya yönlendirir. Anonim istek yerel bir mobil uygulamadan geliyorsa, döndürülen yanıt bir olur `HTTP 401 Unauthorized` .
 
 Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gerekmez. Role özgü yetkilendirme gibi daha ayrıntılı yetkilendirme, kullanıcının taleplerini inceleyerek (bkz. [erişim kullanıcı talepleri](app-service-authentication-how-to.md#access-user-claims)) işlenebilir.
 
@@ -142,9 +140,9 @@ Bu seçenekle, uygulamanızda herhangi bir kimlik doğrulama kodu yazmanız gere
 
 [Öğretici: kullanıcıların Azure App Service (Windows) ile uçtan uca kimlik doğrulama ve yetkilendirme](app-service-web-tutorial-auth-aad.md)  
 [Öğretici: Linux için Azure App Service Kullanıcı tarafından uçtan uca kimlik doğrulama ve yetkilendirme](containers/tutorial-auth-aad.md)  
-[Customize authentication and authorization in App Service](app-service-authentication-how-to.md)
-
-[Azure appservice easyauth (3. taraf) App Service .NET Core tümleştirmesinde](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)kimlik doğrulama ve yetkilendirmeyi özelleştirme[.NET Core (3. taraf) ile çalışan Azure App Service kimlik doğrulaması alma](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+App Service kimlik doğrulaması [ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md) 
+ [Azure AppService EasyAuth (3. taraf)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
+ .NET Core tümleştirmesi [.NET Core ile çalışan Azure App Service kimlik doğrulaması alma (3. taraf)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Sağlayıcıya özgü nasıl yapılır Kılavuzu:
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeee7558aeeb0c1a3de291abc66578d7d955d842
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100286"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196192"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
 
@@ -43,9 +43,7 @@ Yüksek düzeyde, veritabanı geçiş işlemi şöyle görünür:
 
 İlk olarak, yönetilen Örneğin uygulamanızın veritabanı gereksinimleriyle uyumlu olup olmadığını saptayın. Yönetilen örnek dağıtım seçeneği, şirket içinde veya sanal makinelerde SQL Server kullanan mevcut uygulamaların çoğunluğu için kolay yükseltme ve kaydırma geçişi sağlamak üzere tasarlanmıştır. Ancak bazen henüz desteklenmeyen özellikler veya yetenekler gerektirebilir, geçici çözüm uygulama maliyeti de çok yüksektir.
 
-Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. DMA, yönetilen örneği henüz geçiş hedefi olarak desteklemez, ancak Azure SQL veritabanı 'na karşı değerlendirme çalıştırmak ve bildirilen özellik eşliği ve ürün belgelerine karşı uyumluluk sorunları listesini dikkatle gözden geçirmeniz önerilir. Azure SQL veritabanı 'na geçişi engelleyen engelleyici sorunların çoğu yönetilen örnekle kaldırıldığından, bu nedenle [Azure SQL veritabanı özellikleri](sql-database-features.md) 'ne göz atın. Örneğin, çapraz veritabanı sorguları, aynı örnekteki veritabanları arası işlemler, bağlantılı sunucu diğer SQL kaynakları, CLR, genel geçici tablolar, örnek düzeyi görünümler, Hizmet Aracısı ve benzer özellikler yönetilen örneklerde mevcuttur.
-
-Yönetilen örnek dağıtımı seçeneği ile kaldırılmayan bazı raporlanan engelleyici sorunlar varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
+Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. Bazı bildirilmiş engelleme sorunları varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. İşte bazı örnekler:
 
 - İşletim sistemine veya dosya sistemine doğrudan erişim istiyorsanız, örneğin, SQL Server ile aynı sanal makineye üçüncü taraf veya özel aracılar yüklemek için.
 - FILESTREAM/FileTable, PolyBase ve platformlar arası işlemler gibi hala desteklenmeyen özelliklerde kesin bağımlılığı varsa.
@@ -53,6 +51,7 @@ Yönetilen örnek dağıtımı seçeneği ile kaldırılmayan bazı raporlanan e
 - İşlem gereksinimleriniz, yönetilen örnek tekliflerinin çok daha düşükse (örneğin, bir sanal çekirdek, örnek için) ve veritabanı birleştirme kabul edilebilir seçenek değildir.
 
 Belirlenen tüm geçiş engelleyicilerini çözümledikten ve yönetilen örneğe geçişe devam ederseniz, bazı değişikliklerin iş yükünüzün performansını etkileyebileceğini unutmayın:
+
 - Zorunlu tam kurtarma modeli ve düzenli otomatik yedekleme zamanlaması, düzenli aralıklarla basit/toplu olarak günlüğe kaydedilmiş bir model kullandıysanız veya yedeklemeleri istek üzerine durdurduktan sonra iş yükünüzün veya bakım/ETL eylemlerinin performansını etkileyebilir.
 - İzleme bayrakları veya uyumluluk düzeyleri gibi farklı sunucu veya veritabanı düzeyi yapılandırma
 - Saydam veritabanı şifreleme (TDE) veya otomatik yük devretme grupları gibi kullandığınız yeni özellikler CPU ve GÇ kullanımını etkileyebilir.
@@ -181,7 +180,7 @@ Gereksinimlerinize uygun iş yükü performansını elde edene kadar parametrele
 Yönetilen örnek, izleme ve sorun giderme için çok sayıda gelişmiş araç sağlar ve bunları örneğinizin performansını izlemek için kullanmanız gerekir. İzlemeniz gereken parametrelerden bazıları şunlardır:
 - Örneğin CPU kullanımı, sağladığınız sanal çekirdek sayısının iş yükünüz için doğru eşleşme olduğunu belirlemektir.
 - Daha [fazla bellek](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)gerekip gerekmediğini öğrenmek için yönetilen Örneğinizde sayfa ömrü erkeklerin.
-- Örneğin, daha `INSTANCE_LOG_GOVERNOR` iyi `PAGEIOLATCH` GÇ performansı almak için dosyaları önceden ayırmanız GEREKEBILECEK genel amaçlı katmanda depolama GÇ sorunları olduğunu belirten veya gibi bekleme istatistikleri.
+- Örneğin `INSTANCE_LOG_GOVERNOR` `PAGEIOLATCH` , daha iyi GÇ performansı almak için dosyaları önceden ayırmanız gerekebilecek genel amaçlı KATMANDA depolama GÇ sorunları olduğunu belirten veya gibi bekleme istatistikleri.
 
 ## <a name="leverage-advanced-paas-features"></a>Gelişmiş PaaS özelliklerinden yararlanın
 

@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72c4c3da193a1f61280a13ff1e2fa9eea2ff4823
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991288"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196399"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -71,6 +71,19 @@ Azure App Service yönetilen kimliği (varsa) yapılandırmak için aşağıdaki
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+
+### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
+
+| Yönetilen kimlik türü | Tüm genel kullanıma açık<br>Küresel Azure bölgeleri | Azure Kamu | Azure Almanya | Azure Çin 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Sistem atandı | ![Kullanılabileceğini][check] | - | - | - | 
+| Kullanıcı atandı | ![Kullanılabileceğini][check] | - | - | - |
+
+
+Daha fazla bilgi için bkz. [Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma](https://docs.microsoft.com/azure/aks/use-managed-identity).
+
+
 
 ### <a name="azure-blueprints"></a>Azure Blueprints
 
