@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80517936"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201443"
 ---
 # <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
 
@@ -22,11 +22,11 @@ Iş Ortağı Merkezi 'ndeki ortak satış seçeneği, bazı teklif türleri içi
 
 | **Teklif türü** | **Ortak satış sayfası Iş Ortağı Merkezi 'nde kullanılabilir** |
 |    -----------------------    |    -----------------------------  |
-| Hizmet olarak yazılım (SaaS) |     Genel kullanılabilirlik 2020 Nisan      |
+| Hizmet olarak yazılım (SaaS) |      Kullanıma sunuldu      |
 | PowerApps & müşteri katılımı için Dynamics 365      |     Kullanıma sunuldu      |
 | Dynamics 365 for Operations     |     Kullanıma sunuldu       |
-| Dynamics 365 Business Central      |  Genel kullanılabilirlik 2020 Nisan     |
-| Azure Uygulaması     |     Genel kullanılabilirlik 2020 Nisan     |
+| Dynamics 365 Business Central      |   Kullanıma sunuldu     |
+| Azure Uygulaması     |      Kullanıma sunuldu     |
 | Azure Sanal Makinesi      |     Duyurulacak       |
 | Azure kapsayıcısı     |     Duyurulacak       |
 | Danışmanlık Hizmetleri      |     Duyurulacak       |

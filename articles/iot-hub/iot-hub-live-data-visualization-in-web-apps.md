@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78675311"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201539"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
 
@@ -141,7 +141,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>IoT Hub 'ınızdaki verileri görmek için bir Web sayfası açın
 
-İçin `http://localhost:3000`bir tarayıcı açın.
+İçin bir tarayıcı açın `http://localhost:3000` .
 
 Cihaz **seçin** listesinde, cihaz tarafından IoT Hub 'ınıza gönderilen son 50 sıcaklık ve nem veri noktalarının çalışan bir çizim listesini görmek için cihazınızı seçin.
 
@@ -165,16 +165,16 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git` Parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir. Kullandığınız Node. js çalışma zamanının sürümüne bağlı olarak, `--runtime` parametresi için düğüm sürüm 10,6 veya üstünü belirttiğinizden emin olun. Desteklenen çalışma zamanlarının listesini `az webapp list-runtimes` almak için komutunu kullanabilirsiniz.
+2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git`Parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir. `--runtime`Kullandığınız Node. js çalışma zamanının sürümüne bağlı olarak, parametresi Için düğüm sürüm 10,6 veya üstünü belirttiğinizden emin olun. `az webapp list-runtimes`Desteklenen çalışma zamanlarının listesini almak için komutunu kullanabilirsiniz.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
-3. Şimdi IoT Hub bağlantı dizesini ve Olay Hub 'ı tüketici grubunu belirten ortam değişkenlerine yönelik uygulama ayarlarını ekleyin. Bağımsız ayarlar `-settings` parametrede ayrılmış boşluktur. IoT Hub 'ınız ve bu öğreticide daha önce oluşturduğunuz tüketici grubu için hizmet bağlantı dizesini kullanın. Değerleri tırnak içine mayın.
+3. Şimdi IoT Hub bağlantı dizesini ve Olay Hub 'ı tüketici grubunu belirten ortam değişkenlerine yönelik uygulama ayarlarını ekleyin. Bağımsız ayarlar parametrede ayrılmış boşluktur `-settings` . IoT Hub 'ınız ve bu öğreticide daha önce oluşturduğunuz tüketici grubu için hizmet bağlantı dizesini kullanın. Değerleri tırnak içine mayın.
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. Web uygulaması için Web soketi protokolünü etkinleştirin ve Web uygulamasını yalnızca HTTPS isteklerini alacak şekilde ayarlayın (HTTP istekleri HTTPS 'ye yönlendirilir).
@@ -198,7 +198,7 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. App Service içindeki Web uygulaması için git deposuna başvuran bir uzak kopya ekleyin. Git \<kopyası URL 'si\>için, önceki adımda döndürülen URL 'yi kullanın. Komut pencerenizde aşağıdaki komutu çalıştırın.
+7. App Service içindeki Web uygulaması için git deposuna başvuran bir uzak kopya ekleyin. \<Git kopyası URL 'si için \> , önceki adımda döndürülen URL 'yi kullanın. Komut pencerenizde aşağıdaki komutu çalıştırın.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -251,9 +251,9 @@ Bu örnekle ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki bölümlerde
 
 * Azure portal, Web uygulamanıza gidin. Sol bölmedeki **izleme** altında **App Service Günlükler**' i seçin. **Uygulama günlüğünü (dosya sistemi)** açın, **düzeyi** hata olarak ayarlayın ve ardından **Kaydet**' i seçin. Ardından **günlük akışı** ' nı açın ( **izleme**altında).
 
-* Web uygulamanızdan Azure portal, **geliştirme araçları** altında **konsol** ' ı seçin ve ve NPM sürümlerini ve `node -v` `npm -v`ile doğrulayın.
+* Web uygulamanızdan Azure portal, **geliştirme araçları** altında **konsol** ' ı seçin ve ve NPM sürümlerini ve ile doğrulayın `node -v` `npm -v` .
 
-* Bir paket bulmayla ilgili bir hata görürseniz, adımları sıra dışı olarak çalıştırmanız gerekebilir. Site dağıtıldığında (ile `git push`) App Service çalışır `npm install`ve bu, yapılandırılan düğümün geçerli sürümüne göre çalışır. Bu yapılandırmada daha sonra değiştirilirse kodda daha az bir değişiklik yapmanız ve yeniden göndermeniz gerekir.
+* Bir paket bulmayla ilgili bir hata görürseniz, adımları sıra dışı olarak çalıştırmanız gerekebilir. Site dağıtıldığında (ile `git push` ) App Service çalışır ve `npm install` Bu, yapılandırılan düğümün geçerli sürümüne göre çalışır. Bu yapılandırmada daha sonra değiştirilirse kodda daha az bir değişiklik yapmanız ve yeniden göndermeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
