@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301684"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121703"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes üzerinde Azure Işlevleri
 
@@ -28,11 +28,11 @@ Kubernetes kümenizdeki Işlevleri çalıştırmak için KEDA bileşenini yükle
 
 ### <a name="installing-with-helm"></a>Held ile yükleme
 
-Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeşitli yolları vardır.  Dağıtım seçenekleri [Keda sitesinde](https://keda.sh/deploy/)belgelenmiştir.
+Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeşitli yolları vardır.  Dağıtım seçenekleri [Keda sitesinde](https://keda.sh/docs/deploy/)belgelenmiştir.
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes 'e işlev uygulaması dağıtma
 
-Herhangi bir işlev uygulamasını KEDA çalıştıran bir Kubernetes kümesine dağıtabilirsiniz.  İşlevleriniz bir Docker kapsayıcısında çalıştığından, projeniz bir `Dockerfile`gerektirir.  Henüz bir tane yoksa, Işlevler projenizin kökünde aşağıdaki komutu çalıştırarak bir Dockerfile ekleyebilirsiniz:
+Herhangi bir işlev uygulamasını KEDA çalıştıran bir Kubernetes kümesine dağıtabilirsiniz.  İşlevleriniz bir Docker kapsayıcısında çalıştığından, projeniz bir gerektirir `Dockerfile` .  Henüz bir tane yoksa, Işlevler projenizin kökünde aşağıdaki komutu çalıştırarak bir Dockerfile ekleyebilirsiniz:
 
 ```cli
 func init --docker-only
@@ -41,23 +41,23 @@ func init --docker-only
 Bir görüntü oluşturmak ve işlevlerinizi Kubernetes 'e dağıtmak için aşağıdaki komutu çalıştırın:
 
 > [!NOTE]
-> Temel araçlar, görüntüyü derlemek ve yayımlamak için Docker CLı özelliğinden yararlanır. Docker 'ın zaten yüklü olduğundan ve hesabınıza bağlı olduğundan emin olun `docker login`.
+> Temel araçlar, görüntüyü derlemek ve yayımlamak için Docker CLı özelliğinden yararlanır. Docker 'ın zaten yüklü olduğundan ve hesabınıza bağlı olduğundan emin olun `docker login` .
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> İşlev `<name-of-function-deployment>` uygulamanızın adıyla değiştirin.
+> `<name-of-function-deployment>`İşlev uygulamanızın adıyla değiştirin.
 
-Bu, bir Kubernetes `Deployment` kaynağı, bir `ScaledObject` kaynak ve `Secrets`, `local.settings.json` dosyanızda içeri aktarılan ortam değişkenlerini içeren bir kaynak oluşturur.
+Bu, bir Kubernetes `Deployment` kaynağı, bir `ScaledObject` kaynak ve `Secrets` , dosyanızda içeri aktarılan ortam değişkenlerini içeren bir kaynak oluşturur `local.settings.json` .
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Özel bir kayıt defterinden işlev uygulaması dağıtma
 
-Yukarıdaki akış, özel kayıt defterleri için de kullanılır.  Kapsayıcı görüntünüzü özel bir kayıt defterinden çekeediyorsanız, çalışırken `--pull-secret` `func kubernetes deploy`özel kayıt defteri bilgilerini tutan Kubernetes gizli öğesine başvuran bayrağı ekleyin.
+Yukarıdaki akış, özel kayıt defterleri için de kullanılır.  Kapsayıcı görüntünüzü özel bir kayıt defterinden çekeediyorsanız, `--pull-secret` çalışırken özel kayıt defteri bilgilerini tutan Kubernetes gizli öğesine başvuran bayrağı ekleyin `func kubernetes deploy` .
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Kubernetes 'ten bir işlev uygulamasını kaldırma
 
-Dağıttıktan sonra, ilişkili `Deployment`, oluşturuldu olan `ScaledObject` `Secrets` öğesini kaldırarak bir işlevi kaldırabilirsiniz.
+Dağıttıktan sonra, ilişkili, `Deployment` Oluşturuldu olan öğesini kaldırarak bir işlevi kaldırabilirsiniz `ScaledObject` `Secrets` .
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>

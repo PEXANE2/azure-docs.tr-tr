@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 28a909c3b4011b55fb3fb67d9d64ab57a310cb86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207269"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125239"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -132,8 +133,16 @@ Toplam Fiyat = $267,84 + $85,71 = $353,55
 
 Application Gateway ve WAF, iki modda ölçeklenebilen şekilde yapılandırılabilir:
 
-- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite birimi olarak sayılır. Sıfır, ayrılmış kapasite olmadığını belirtir ve doğası halinde tamamen otomatik ölçeklendirin. Lütfen sıfır ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Ağ Geçidi tarafından hizmet verilen trafik miktarı için faturalandırılmaya devam edeceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir.
+- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek, yaklaşık olarak 10 ek ayrılmış Kapasite birimi ile eşdeğerdir. Sıfır, ayrılmış kapasite olmadığını belirtir ve doğası halinde tamamen otomatik ölçeklendirin. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Yalnızca ağ geçidi tarafından hizmet verilen trafik miktarı üzerinden faturalandırılırsınız. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir.
 - **El ile** -ağ geçidinin otomatik ölçeklendirme Meyeceği el ile modunu seçebilirsiniz. Bu modda, Application Gateway veya WAF 'nin işleyebileceğinden daha fazla trafik varsa, bu durum trafik kaybına neden olabilir. El ile moduyla, örnek sayısını belirtmek zorunludur. Örnek sayısı 1 ile 125 arasında örnek farklılık gösterebilir.
+
+## <a name="autoscaling-and-high-availability"></a>Otomatik ölçeklendirme ve yüksek kullanılabilirlik
+
+Azure uygulama ağ geçitleri her zaman yüksek oranda kullanılabilir bir biçimde dağıtılır. Hizmet, yapılandırılmış olarak oluşturulan (otomatik ölçeklendirme devre dışıysa) veya uygulama yükü (otomatik ölçeklendirme etkinse) için gerekli olan birden çok örnek üzerinden yapılır. Kullanıcının perspektifinden, tek tek örneklere ilişkin görünürlüğe sahip olmasa da, yalnızca Application Gateway hizmetine bir bütün olarak sahip olmanız gerektiğini unutmayın. Belirli bir örnekte sorun varsa ve çalışır şekilde karşılaşırsanız Azure Application Gateway, saydam olarak yeni bir örnek oluşturur.
+
+Otomatik ölçeklendirmeyi sıfır minimum örneklerle yapılandırsanız bile hizmetin, her zaman sabit fiyata dahil olan yüksek oranda kullanılabilir olacağını lütfen unutmayın.
+
+Ancak, yeni bir örnek oluşturmak biraz zaman alabilir (altı veya yedi dakika içinde). Bu nedenle, bu kapalı kalma süresiyle kullanmak istemiyorsanız, kullanılabilirlik alanı desteğiyle en az 2 örnek sayısını yapılandırabilirsiniz. Bu şekilde, normal koşullarda Azure Application Gateway içinde en az iki örneğe sahip olursunuz. bu nedenle, bunlardan biri başka bir örnek oluşturulurken trafikle ilgili bir sorun varsa diğer bir sorunla karşılaşırsanız. Bir Azure Application Gateway örneğinin, genellikle en düşük örnek otomatik ölçeklendirme ayarınızı 2 ' den yüksek bir değere yapılandırmak isteyebileceğiniz trafik miktarına bağlı olarak, 10 Kapasite birimi etrafında destekleyebileceğini unutmayın.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>V1 SKU 'SU ve v2 SKU 'SU arasındaki Özellik Karşılaştırması
 

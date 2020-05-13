@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB içinde yaşam süresi yapılandırma ve yönetme
 description: Bir kapsayıcıda ve Azure Cosmos DB bir öğede yaşam süresi yapılandırma ve yönetme hakkında bilgi edinin
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 3019e9f78a51a991d5c6e96655f5dbae1f224620
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869894"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124134"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi yapılandırma
 
@@ -113,7 +113,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>SDK kullanarak bir kapsayıcıda yaşam süresi belirleme
 
-Bir kapsayıcıda yaşam süresi ayarlamak için saniye cinsinden zaman aralığını belirten sıfır olmayan bir pozitif sayı sağlamalısınız. Yapılandırılmış TTL değerine bağlı olarak, öğenin `_ts` son değiştirilme zaman damgasından sonra kapsayıcıdaki tüm öğeler silinir.
+Bir kapsayıcıda yaşam süresi ayarlamak için saniye cinsinden zaman aralığını belirten sıfır olmayan bir pozitif sayı sağlamalısınız. Yapılandırılmış TTL değerine bağlı olarak, öğenin son değiştirilme zaman damgasından sonra kapsayıcıdaki tüm öğeler `_ts` silinir.
 
 ### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK
 
@@ -195,7 +195,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 Bir kapsayıcıda yaşam için varsayılan bir zaman ayarlamaya ek olarak, bir öğe için bir süre için canlı olarak ayarlayabilirsiniz. Öğe düzeyinde yaşam süresi ayarı, o kapsayıcıdaki öğenin varsayılan TTL değerini geçersiz kılar.
 
-* Bir öğe üzerindeki TTL 'yi ayarlamak için, öğenin son değiştirilme zaman damgasından sonra öğenin süresinin dolacağını belirten sıfır olmayan pozitif bir sayı sağlamanız gerekir `_ts`.
+* Bir öğe üzerindeki TTL 'yi ayarlamak için, öğenin son değiştirilme zaman damgasından sonra öğenin süresinin dolacağını belirten sıfır olmayan pozitif bir sayı sağlamanız gerekir `_ts` .
 
 * Öğenin bir TTL alanı yoksa, varsayılan olarak kapsayıcıya ayarlanan TTL öğe için geçerlidir.
 
@@ -496,7 +496,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 ## <a name="disable-time-to-live"></a>Yaşam süresini devre dışı bırak
 
-Bir kapsayıcıda yaşam süresini devre dışı bırakmak ve arka plan işleminin süresi geçmiş öğeleri denetlemesini durdurmak için, kapsayıcıdaki `DefaultTimeToLive` özelliği silinmelidir. Bu özelliğin silinmesi,-1 ' e ayarlamalarından farklıdır. -1 olarak ayarladığınızda, kapsayıcıya eklenen yeni öğeler sonsuza kadar canlı olur, ancak bu değeri kapsayıcıdaki belirli öğelerde geçersiz kılabilirsiniz. TTL özelliğini kapsayıcıdan kaldırdığınızda, önceki varsayılan TTL değerini açıkça geçersiz kılmamış olsa bile öğelerin süresi dolmayacaktır.
+Bir kapsayıcıda yaşam süresini devre dışı bırakmak ve arka plan işleminin süresi geçmiş öğeleri denetlemesini durdurmak için, `DefaultTimeToLive` kapsayıcıdaki özelliği silinmelidir. Bu özelliğin silinmesi,-1 ' e ayarlamalarından farklıdır. -1 olarak ayarladığınızda, kapsayıcıya eklenen yeni öğeler sonsuza kadar canlı olur, ancak bu değeri kapsayıcıdaki belirli öğelerde geçersiz kılabilirsiniz. TTL özelliğini kapsayıcıdan kaldırdığınızda, önceki varsayılan TTL değerini açıkça geçersiz kılmamış olsa bile öğelerin süresi dolmayacaktır.
 
 ### <a name="net-sdk"></a><a id="dotnet-disable-ttl"></a>.NET SDK
 

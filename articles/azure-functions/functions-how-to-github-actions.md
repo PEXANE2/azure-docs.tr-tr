@@ -3,14 +3,14 @@ title: Azure Işlevlerinde kod güncelleştirmeleri yapmak için GitHub eylemler
 description: GitHub 'da Azure Işlevleri projelerini derlemek ve dağıtmak için bir iş akışı tanımlamak üzere GitHub eylemlerini nasıl kullanacağınızı öğrenin.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878213"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122349"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -18,7 +18,7 @@ ms.locfileid: "80878213"
 
 GitHub eylemlerinde, bir [iş akışı](https://help.github.com/articles/about-github-actions#workflow) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlevler uygulama projenizi nasıl oluşturup dağıtacağınızı gösterir. 
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
+Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
 
 Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır: 
 
@@ -46,21 +46,23 @@ Bu örnekte, kaynak içindeki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu
 
 ## <a name="download-the-publishing-profile"></a>Yayımlama profilini indir
 
-Uygulamanızın **genel bakış** sayfasına giderek ve **Yayımlama profili al**' a tıklayarak işlev uygulamanızın yayımlama profilini indirebilirsiniz.
+İşlev uygulamanızın yayımlama profilini indirmek için:
 
-   ![Yayımlama profilini indir](media/functions-how-to-github-actions/get-publish-profile.png)
+1. İşlev uygulamasının **genel bakış** sayfasını seçin ve ardından **Yayımlama profili al**' ı seçin.
 
-Dosyanın içeriğini kopyalayın.
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Yayımlama profilini indir":::
+
+1. Yayımlama ayarları dosyasının içeriğini kaydedin ve kopyalayın.
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
-1. [GitHub](https://github.com)'da deponuza gidin, **Ayarlar** > **gizli** > dizileri**Yeni bir parola ekleyin**' i seçin.
+1. [GitHub](https://github.com)'da deponuza gidin, **Ayarlar**  >  **gizli**dizileri  >  **Yeni bir parola ekleyin**' i seçin.
 
-   ![Gizli dizi Ekle](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Gizli dizi Ekle":::
 
 1. Yeni bir parola ekleyin.
 
-   * Azure CLı kullanarak oluşturduğunuz hizmet sorumlusunu kullanıyorsanız, `AZURE_CREDENTIALS` **ad**için kullanın. Ardından, kopyalanmış JSON nesnesi çıkışını **değer**için yapıştırın ve gizli dizi **Ekle**' yi seçin.
+   * Azure CLı kullanarak oluşturduğunuz hizmet sorumlusunu kullanıyorsanız, `AZURE_CREDENTIALS` **ad**için kullanın. Ardından, kopyalanmış JSON nesnesi çıkışını **değer**için yapıştırın ve **gizli dizi Ekle**' yi seçin.
    * Yayımlama profili kullanıyorsanız, `SCM_CREDENTIALS` **ad**için kullanın. Ardından, yayımlama profilinin **değer**için dosya içeriğini kullanın ve **gizli dizi Ekle**' yi seçin.
 
 GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
@@ -71,7 +73,7 @@ Ortamı ayarlamak, dile özgü bir yayımlama kurulum eylemi kullanılarak yapı
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-node` eylemi kullanan iş akışının parçasını gösterir:
+Aşağıdaki örnek, `actions/setup-node` ortamı ayarlamak için eylemi kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -86,7 +88,7 @@ Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-node` eylemi kullana
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-python` eylemi kullanan iş akışının parçasını gösterir:
+Aşağıdaki örnek, `actions/setup-python` ortamı ayarlamak için eylemi kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +103,7 @@ Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-python` eylemi kulla
 
 # <a name="c"></a>[, #](#tab/csharp)
 
-Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-dotnet` eylemi kullanan iş akışının parçasını gösterir:
+Aşağıdaki örnek, `actions/setup-dotnet` ortamı ayarlamak için eylemi kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -116,7 +118,7 @@ Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-dotnet` eylemi kulla
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, ortamı ayarlamak için `actions/setup-java` eylemi kullanan iş akışının parçasını gösterir:
+Aşağıdaki örnek, `actions/setup-java` ortamı ayarlamak için eylemi kullanan iş akışının parçasını gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -197,7 +199,7 @@ Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akı�
 
 ## <a name="deploy-the-function-app"></a>İşlev uygulamasını dağıtma
 
-Kodunuzu bir işlev uygulamasına dağıtmak için `Azure/functions-action` eylemini kullanmanız gerekir. Bu eylemin iki parametresi vardır:
+Kodunuzu bir işlev uygulamasına dağıtmak için eylemini kullanmanız gerekir `Azure/functions-action` . Bu eylemin iki parametresi vardır:
 
 |Parametre |Açıklama  |
 |---------|---------|
@@ -205,7 +207,7 @@ Kodunuzu bir işlev uygulamasına dağıtmak için `Azure/functions-action` eyle
 |_**yuva adı**_ | Seçim Dağıtmak istediğiniz [dağıtım yuvasının](functions-deployment-slots.md) adı. Yuva, işlev uygulamanızda zaten tanımlanmış olmalıdır. |
 
 
-Aşağıdaki örnek, öğesinin 1. `functions-action`sürümünü kullanır:
+Aşağıdaki örnek, öğesinin 1. sürümünü kullanır `functions-action` :
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -217,7 +219,7 @@ Aşağıdaki örnek, öğesinin 1. `functions-action`sürümünü kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm iş akışı. YAML 'yi görüntülemek için, adında bulunan [Azure GitHub eylemleri iş akışı örnekleri](https://aka.ms/functions-actions-samples) `functionapp` deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
+Tamamlanmış bir Workflow. YAML dosyasını görüntülemek için, adında bulunan [Azure GitHub eylemleri iş akışı örnekleri](https://aka.ms/functions-actions-samples) deposunda bulunan dosyalardan birine bakın `functionapp` . Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [GitHub eylemleri hakkında daha fazla bilgi edinin](https://help.github.com/en/articles/about-github-actions)

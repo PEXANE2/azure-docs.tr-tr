@@ -4,12 +4,12 @@ description: İşlev yürütmeyi izlemek için Azure Application Insights Azure 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 9997a44d14f5b4ca4de4e5b135efc453b12bff01
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202422"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121599"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -29,7 +29,7 @@ Işlev uygulamalarıyla Application Insights tümleştirmeyi ücretsiz olarak de
 
 [Application Insights tümleştirme etkin](#enable-application-insights-integration)olduğunda, telemetri verilerini **izleyici** sekmesinde görüntüleyebilirsiniz.
 
-1. İşlev uygulaması sayfasında, Application Insights yapılandırıldıktan sonra en az bir kez çalışan bir işlev seçin. Ardından **izleyici** sekmesini seçin. işlev etkinleştirmeleri listesi görünene kadar düzenli aralıklarla **Yenile** 'yi seçin.
+1. İşlev uygulaması sayfasında, Application Insights yapılandırıldıktan sonra en az bir kez çalışan bir işlev seçin. Ardından, sol bölmeden **izleyici** ' yi seçin. İşlev etkinleştirmeleri listesi görünene kadar düzenli aralıklarla **Yenile** ' yi seçin.
 
    ![Etkinleştirmeleri listesi](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -40,9 +40,9 @@ Işlev uygulamalarıyla Application Insights tümleştirmeyi ücretsiz olarak de
 
    ![Çağırma ayrıntıları](media/functions-monitoring/invocation-details-ai.png)
 
-1. Azure günlüğünde Azure Izleyici günlük verilerini alan sorgunun kaynağını görüntülemek için **Application Insights Çalıştır** bağlantısını seçin. Bu, aboneliğinizdeki Azure Log Analytics ilk kez kullanılıyorsa, ' ı etkinleştirmeniz istenir.
+1. Azure günlüğünde Azure Izleyici günlük verilerini alan sorgunun kaynağını görüntülemek için **Application Insights Içinde Çalıştır '** ı seçin. Aboneliğinizde Azure Log Analytics 'yi ilk kez kullanıyorsanız etkinleştirmeniz istenir.
 
-1. Bu bağlantıyı seçtiğinizde Günlük Analizi 'ni etkinleştirmeyi seçin. Aşağıdaki sorgu görüntülenir. Sorgu sonuçlarının son 30 güne (`where timestamp > ago(30d)`) sınırlı olduğunu görebilirsiniz. Ayrıca, sonuçlar 20 ' den fazla satır (`take 20`) göstermez. Buna karşılık, işlevinizin çağırma ayrıntıları listesi, son 30 gün için sınır olmadan olur.
+1. Log Analytics etkinleştirdikten sonra, aşağıdaki sorgu görüntülenir. Sorgu sonuçlarının son 30 güne () sınırlı olduğunu görebilirsiniz `where timestamp > ago(30d)` . Ayrıca, sonuçlar 20 ' den fazla satır ( `take 20` ) göstermez. Buna karşılık, işlevinizin çağırma ayrıntıları listesi, son 30 gün için sınır olmadan olur.
 
    ![Application Insights Analytics çağırma listesi](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -50,7 +50,7 @@ Daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak [teleme
 
 ## <a name="view-telemetry-in-application-insights"></a>Application Insights telemetri görüntüleme
 
-Azure portal bir işlev uygulamasından Application Insights açmak için, işlev uygulamasının **genel bakış** sayfasına gidin. **Yapılandırılan Özellikler**altında **Application Insights**' yi seçin.
+Azure portal bir işlev uygulamasından Application Insights açmak için sol taraftaki sayfada **Ayarlar** ' ın altında **Application Insights** ' yı seçin. Aboneliğiniz ile Application Insights ilk kez kullanıyorsanız, etkinleştirmeniz istenir: **Application Insights aç**' ı seçin ve ardından sonraki sayfada **Uygula** ' yı seçin.
 
 ![İşlev uygulamasına genel bakış sayfasından Application Insights açın](media/functions-monitoring/ai-link.png)
 
@@ -62,8 +62,8 @@ Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hata
 
 | Araştır | Açıklama |
 | ---- | ----------- |
-| **[Kesil](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
-| **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
+| **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
+| **[Mının](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu veriler, işlevlerin temeldeki kaynaklarınızın gerisinde bulunduğu hata ayıklama senaryolarında yararlı olabilir. |
 | **[Ölçümler](../azure-monitor/app/metrics-explorer.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
 | **[Canlı ölçümler](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
 
@@ -97,14 +97,14 @@ Kullanılabilir tablolar, sol taraftaki **şema** sekmesinde gösterilir. İşle
 
 Diğer tablolar, kullanılabilirlik testleri, istemci ve tarayıcı telemetri içindir. Verilere veri eklemek için özel telemetri uygulayabilirsiniz.
 
-Her tablo içinde IŞLEVLERE özgü verilerden bazıları bir `customDimensions` alandır.  Örneğin, aşağıdaki sorgu günlük düzeyine `Error`sahip tüm izlemeleri alır.
+Her tablo içinde IŞLEVLERE özgü verilerden bazıları bir `customDimensions` alandır.  Örneğin, aşağıdaki sorgu günlük düzeyine sahip tüm izlemeleri alır `Error` .
 
 <pre>
 traces 
 | where customDimensions.LogLevel == "Error"
 </pre>
 
-Çalışma zamanı `customDimensions.LogLevel` ve `customDimensions.Category` alanlarını sağlar. İşlev kodunuzda yazdığınız günlüklerde ek alanlar sağlayabilirsiniz. Bu makalenin sonraki kısımlarında bulunan [yapılandırılmış günlüğe](#structured-logging) bakın.
+Çalışma zamanı `customDimensions.LogLevel` ve alanlarını sağlar `customDimensions.Category` . İşlev kodunuzda yazdığınız günlüklerde ek alanlar sağlayabilirsiniz. Bu makalenin sonraki kısımlarında bulunan [yapılandırılmış günlüğe](#structured-logging) bakın.
 
 ## <a name="configure-categories-and-log-levels"></a>Kategorileri ve günlük düzeylerini yapılandırma
 
@@ -116,16 +116,16 @@ Azure Işlevleri günlükçüsü, her günlük için bir *Kategori* içerir. Kat
 
 | Kategori | Açıklama |
 | ----- | ----- | 
-| Host.Results | Bu Günlükler Application Insights **istek** olarak gösterir. Bir işlevin başarısını veya başarısızlığını gösterir. Tüm bu Günlükler `Information` düzeyinde yazılır. `Warning` Veya üzerine filtre yaparsanız, bu verilerden herhangi birini görmezsiniz. |
-| Host. toplayıcısı | Bu Günlükler, [yapılandırılabilir](#configure-the-aggregator) bir süre boyunca işlev çağırma sayısının sayısını ve ortalamasını sağlar. Varsayılan süre 30 saniye veya 1.000 sonuçdur, hangisi önce gelir. Günlükler, Application Insights 'daki **Customölçümler** tablosunda bulunabilir. Çalıştırma sayısı, başarı oranı ve süre örnekleri verilebilir. Tüm bu Günlükler `Information` düzeyinde yazılır. `Warning` Veya üzerine filtre yaparsanız, bu verilerden herhangi birini görmezsiniz. |
+| Host.Results | Bu Günlükler Application Insights **istek** olarak gösterir. Bir işlevin başarısını veya başarısızlığını gösterir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
+| Host. toplayıcısı | Bu Günlükler, [yapılandırılabilir](#configure-the-aggregator) bir süre boyunca işlev çağırma sayısının sayısını ve ortalamasını sağlar. Varsayılan süre 30 saniye veya 1.000 sonuçdur, hangisi önce gelir. Günlükler, Application Insights 'daki **Customölçümler** tablosunda bulunabilir. Çalıştırma sayısı, başarı oranı ve süre örnekleri verilebilir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
 
 Bunlar dışındaki kategoriler için tüm Günlükler Application Insights içindeki **izlemeler** tablosunda kullanılabilir.
 
-İle `Host` başlayan kategorilerin bulunduğu tüm Günlükler işlevler çalışma zamanı tarafından yazılır. **Başlatılan işlev** ve **işlev tamamlanan** günlüklerde kategori `Host.Executor`var. Başarılı çalıştırmalar için bu Günlükler düzeydir `Information` . Özel durumlar `Error` düzeyinde günlüğe kaydedilir. Çalışma zamanı ayrıca düzey `Warning` günlükleri oluşturur, örneğin, zarar kuyruğuna gönderilen kuyruk iletileri.
+İle başlayan kategorilerin bulunduğu tüm Günlükler `Host` işlevler çalışma zamanı tarafından yazılır. **Başlatılan işlev** ve **işlev tamamlanan** günlüklerde kategori var `Host.Executor` . Başarılı çalıştırmalar için bu Günlükler `Information` düzeydir. Özel durumlar düzeyinde günlüğe kaydedilir `Error` . Çalışma zamanı ayrıca `Warning` düzey günlükleri oluşturur, örneğin, zarar kuyruğuna gönderilen kuyruk iletileri.
 
-Işlevler çalışma zamanı, "Host" ile başlayan bir kategoriye sahip Günlükler oluşturur. Sürüm `function started`1. x `function executed`içinde,, ve `function completed` günlükleri kategorisi `Host.Executor`vardır. 2. x sürümünden itibaren bu günlüklerde kategori `Function.<YOUR_FUNCTION_NAME>`vardır.
+Işlevler çalışma zamanı, "Host" ile başlayan bir kategoriye sahip Günlükler oluşturur. Sürüm 1. x içinde,, `function started` `function executed` ve `function completed` günlükleri kategorisi vardır `Host.Executor` . 2. x sürümünden itibaren bu günlüklerde kategori vardır `Function.<YOUR_FUNCTION_NAME>` .
 
-İşlev kodunuzda Günlükler yazarsanız, kategori olur `Function.<YOUR_FUNCTION_NAME>.User` ve herhangi bir günlük düzeyi olabilir. Işlevler çalışma zamanının 1. x sürümünde kategori olur `Function`.
+İşlev kodunuzda Günlükler yazarsanız, kategori olur `Function.<YOUR_FUNCTION_NAME>.User` ve herhangi bir günlük düzeyi olabilir. Işlevler çalışma zamanının 1. x sürümünde kategori olur `Function` .
 
 ### <a name="log-levels"></a>Günlük düzeyleri
 
@@ -139,7 +139,7 @@ Azure Işlevleri günlükçüsü, her günlük için bir *günlük düzeyi* de i
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Günlük düzeyi `None` sonraki bölümde açıklanmaktadır. 
 
@@ -184,13 +184,13 @@ Işlev çalışma zamanının Sürüm V2. x ve sonraki sürümlerinde [.NET Core
 
 Bu örnek aşağıdaki kuralları ayarlar:
 
-* Kategorisi `Host.Results` olan günlükler veya `Function`Application Insights için yalnızca `Error` bir düzey ve yukarıya gönder. Düzey ve `Warning` alt için Günlükler yoksayıldı.
-* Kategorisi `Host.Aggregator`olan Günlükler için tüm günlükleri Application Insights gönderin. `Trace` Günlük düzeyi, bazı günlükçülerin çağrı `Verbose`yaptığı, ancak [Host. JSON] dosyasında `Trace` kullanılan şeydir.
-* Tüm diğer Günlükler için, Application Insights için `Information` yalnızca düzeyini ve üstünü gönderin.
+* Kategorisi olan Günlükler `Host.Results` veya `Function` Application Insights için yalnızca bir `Error` düzey ve yukarıya gönder. Düzey ve alt için Günlükler `Warning` yoksayıldı.
+* Kategorisi olan Günlükler için `Host.Aggregator` tüm günlükleri Application Insights gönderin. `Trace`Günlük düzeyi, bazı günlükçülerin çağrı yaptığı `Verbose` , ancak `Trace` [Host. JSON] dosyasında kullanılan şeydir.
+* Tüm diğer Günlükler için, `Information` Application Insights için yalnızca düzeyini ve üstünü gönderin.
 
-[Host. JSON] dosyasındaki kategori değeri aynı değerle başlayan tüm kategoriler için günlük kaydını denetler. `Host`[konak. JSON] ' da, `Host.General` `Host.Executor` `Host.Results`,, vb. için günlüğe kaydetmeyi denetler.
+[Host. JSON] dosyasındaki kategori değeri aynı değerle başlayan tüm kategoriler için günlük kaydını denetler. `Host`[konak. JSON] ' da,,, vb. için günlüğe kaydetmeyi denetler `Host.General` `Host.Executor` `Host.Results` .
 
-[Host. JSON] aynı dizeyle başlayan birden çok kategori içeriyorsa, daha uzun olanlar önce eşleştirilir. `Host.Aggregator` Çalışma zamanından itibaren oturum açma `Error` haricinde, ancak `Host.Aggregator` şu `Information` düzeyde günlüğe kaydetmek istediğiniz her şeyi istediğinizi varsayalım:
+[Host. JSON] aynı dizeyle başlayan birden çok kategori içeriyorsa, daha uzun olanlar önce eşleştirilir. Çalışma zamanından itibaren `Host.Aggregator` oturum açma haricinde `Error` , ancak şu `Host.Aggregator` düzeyde günlüğe kaydetmek istediğiniz her şeyi istediğinizi varsayalım `Information` :
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
@@ -225,7 +225,7 @@ Bu örnek aşağıdaki kuralları ayarlar:
 }
 ```
 
-Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi `None`' ni kullanabilirsiniz. Bu kategoriyle hiçbir günlük yazılmadı ve üzerinde günlük düzeyi yok.
+Bir kategorinin tüm günlüklerini gizlemek için günlük düzeyi ' ni kullanabilirsiniz `None` . Bu kategoriyle hiçbir günlük yazılmadı ve üzerinde günlük düzeyi yok.
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
@@ -281,9 +281,9 @@ Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde 
 
 ### <a name="ilogger"></a>ILogger
 
-İşlevinizdeki bir `TraceWriter` parametre yerine bir [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) parametresi kullanın. Kullanılarak `TraceWriter` oluşturulan Günlükler Application Insights git, ancak `ILogger` [yapılandırılmış günlüğe kaydetme](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)yapmanızı sağlar.
+İşlevinizdeki bir parametre yerine bir [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) parametresi kullanın `TraceWriter` . Kullanılarak oluşturulan Günlükler `TraceWriter` Application Insights git, ancak `ILogger` [yapılandırılmış günlüğe kaydetme](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)yapmanızı sağlar.
 
-Bir `ILogger` nesnesi ile, günlük oluşturmak `Log<level>` için [ILogger üzerinde uzantı yöntemleri](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) çağırın. Aşağıdaki kod, " `Information` Function. <YOUR_FUNCTION_NAME> kategorisi ile günlükleri yazar. Kullanıcı. "
+Bir `ILogger` nesnesi ile, `Log<level>` günlük oluşturmak Için [ILogger üzerinde uzantı yöntemleri](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) çağırın. Aşağıdaki kod, `Information` "function. <YOUR_FUNCTION_NAME> kategorisi ile günlükleri yazar. Kullanıcı. "
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -305,11 +305,11 @@ Aynı ileti dizesini tutar ve parametrelerin sırasını ters tutarsanız, sonu�
 
 Yer tutucular bu şekilde işlenir, böylece yapılandırılmış günlüğe kaydetme yapabilirsiniz. Application Insights, ad-değer çiftlerini ve ileti dizesini depolayan parametre. Sonuç olarak, ileti bağımsız değişkenlerinin sorgulayabilmeniz için alanlar haline gelir.
 
-Günlükçü yöntemi çağrın bir önceki örneğe benzei durumunda, alanı `customDimensions.prop__rowKey`sorgulayabilirsiniz. Çalışma `prop__` zamanı eklemeleri ve işlev kodunuzun eklediği alanlar arasında çakışma olmadığından emin olmak için ön ek eklenir.
+Günlükçü yöntemi çağrın bir önceki örneğe benzei durumunda, alanı sorgulayabilirsiniz `customDimensions.prop__rowKey` . `prop__`Çalışma zamanı eklemeleri ve işlev kodunuzun eklediği alanlar arasında çakışma olmadığından emin olmak için ön ek eklenir.
 
-Ayrıca, alanına `customDimensions.prop__{OriginalFormat}`başvurarak özgün ileti dizesinde sorgulama yapabilirsiniz.  
+Ayrıca, alanına başvurarak özgün ileti dizesinde sorgulama yapabilirsiniz `customDimensions.prop__{OriginalFormat}` .  
 
-Aşağıda, `customDimensions` verilerin JSON örnek bir gösterimi verilmiştir:
+Aşağıda, verilerin JSON örnek bir gösterimi verilmiştir `customDimensions` :
 
 ```json
 {
@@ -324,17 +324,17 @@ Aşağıda, `customDimensions` verilerin JSON örnek bir gösterimi verilmiştir
 
 ### <a name="custom-metrics-logging"></a>Özel Ölçüm günlüğü
 
-C# betik işlevlerinde, Application Insights ' de özel ölçümler `LogMetric` oluşturmak `ILogger` için genişletme yöntemini kullanabilirsiniz. Örnek bir yöntem çağrısı aşağıda verilmiştir:
+C# betik işlevlerinde, `LogMetric` `ILogger` Application Insights ' de özel ölçümler oluşturmak için genişletme yöntemini kullanabilirsiniz. Örnek bir yöntem çağrısı aşağıda verilmiştir:
 
 ```csharp
 logger.LogMetric("TestMetric", 1234);
 ```
 
-Bu kod, .NET için Application Insights API `TrackMetric` 'si kullanılarak çağırmanın bir alternatifidir.
+Bu kod, `TrackMetric` .NET için Application Insights API 'si kullanılarak çağırmanın bir alternatifidir.
 
 ## <a name="write-logs-in-javascript-functions"></a>JavaScript işlevlerinde yazma günlükleri
 
-Node. js işlevlerinde, günlükleri yazmak `context.log` için kullanın. Yapılandırılmış günlüğe kaydetme etkin değil.
+Node. js işlevlerinde, `context.log` günlükleri yazmak için kullanın. Yapılandırılmış günlüğe kaydetme etkin değil.
 
 ```
 context.log('JavaScript HTTP trigger function processed a request.' + context.invocationId);
@@ -342,13 +342,13 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Özel Ölçüm günlüğü
 
-Functions çalışma zamanının [1. x sürümünde](functions-versions.md#creating-1x-apps) çalışırken Node. js işlevleri Application Insights içinde özel ölçümler oluşturmak için `context.log.metric` yöntemini kullanabilir. Bu yöntem şu anda sürüm 2. x ve üzeri sürümlerde desteklenmiyor. Örnek bir yöntem çağrısı aşağıda verilmiştir:
+Functions çalışma zamanının [1. x sürümünde](functions-versions.md#creating-1x-apps) çalışırken Node. js işlevleri `context.log.metric` Application Insights içinde özel ölçümler oluşturmak için yöntemini kullanabilir. Bu yöntem şu anda sürüm 2. x ve üzeri sürümlerde desteklenmiyor. Örnek bir yöntem çağrısı aşağıda verilmiştir:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-Bu kod, Application Insights için Node. `trackMetric` js SDK 'sını kullanarak çağırmak için bir alternatiftir.
+Bu kod, `trackMetric` Application Insights Için Node. js SDK 'sını kullanarak çağırmak için bir alternatiftir.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>C# işlevlerinde özel telemetriyi günlüğe kaydetme
 
@@ -374,7 +374,7 @@ Aşağıdaki C# örnekleri [özel TELEMETRI API](../azure-monitor/app/api-custom
 
 ### <a name="version-2x-and-later"></a>Sürüm 2. x ve üzeri
 
-Çalışma zamanının sürüm 2. x ve sonraki sürümleri, geçerli işlemle Telemetriyi otomatik olarak ilişkilendirmek için Application Insights yeni özellikleri kullanır. İşlem `Id`, `ParentId`veya `Name` alanlarını el ile ayarlamanız gerekmez.
+Çalışma zamanının sürüm 2. x ve sonraki sürümleri, geçerli işlemle Telemetriyi otomatik olarak ilişkilendirmek için Application Insights yeni özellikleri kullanır. İşlem `Id` , veya alanlarını el ile ayarlamanız gerekmez `ParentId` `Name` .
 
 ```cs
 using System;
@@ -527,9 +527,9 @@ namespace functionapp0915
 }
 ```
 
-Bir işlev `TrackRequest` çağrısı `StartOperation<RequestTelemetry>` için yinelenen istekler göreceğiniz için veya çağrısı yapmayın.  Işlevler çalışma zamanı istekleri otomatik olarak izler.
+`TrackRequest` `StartOperation<RequestTelemetry>` Bir işlev çağrısı için yinelenen istekler göreceğiniz için veya çağrısı yapmayın.  Işlevler çalışma zamanı istekleri otomatik olarak izler.
 
-Ayarlanmadı `telemetryClient.Context.Operation.Id`. Aynı anda çok sayıda işlev çalışırken bu genel ayar yanlış bağıntı oluşmasına neden olur. Bunun yerine, yeni bir telemetri örneği (`DependencyTelemetry`, `EventTelemetry`) oluşturun ve `Context` özelliğini değiştirin. Ardından Telemetri örneğini `Track` ( `TelemetryClient` `TrackDependency()`, `TrackEvent()`, `TrackMetric()`) üzerinde ilgili yönteme geçirin. Bu yöntem, telemetrinin geçerli işlev çağırma için doğru bağıntı ayrıntılarına sahip olmasını sağlar.
+Ayarlanmadı `telemetryClient.Context.Operation.Id` . Aynı anda çok sayıda işlev çalışırken bu genel ayar yanlış bağıntı oluşmasına neden olur. Bunun yerine, yeni bir telemetri örneği ( `DependencyTelemetry` , `EventTelemetry` ) oluşturun ve `Context` özelliğini değiştirin. Ardından Telemetri örneğini `Track` `TelemetryClient` ( `TrackDependency()` , `TrackEvent()` ,) üzerinde ilgili yönteme geçirin `TrackMetric()` . Bu yöntem, telemetrinin geçerli işlev çağırma için doğru bağıntı ayrıntılarına sahip olmasını sağlar.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript işlevlerinde özel telemetriyi günlüğe kaydetme
 
@@ -583,7 +583,7 @@ module.exports = function (context, req) {
 };
 ```
 
-`tagOverrides` Parametresi, `operation_Id` öğesini işlevin çağırma kimliğine ayarlar. Bu ayar, belirli bir işlev çağrısı için otomatik olarak oluşturulan ve özel telemetrinin tümünü ilişkilendirmenizi sağlar.
+`tagOverrides`Parametresi, öğesini `operation_Id` IŞLEVIN çağırma kimliğine ayarlar. Bu ayar, belirli bir işlev çağrısı için otomatik olarak oluşturulan ve özel telemetrinin tümünü ilişkilendirmenizi sağlar.
 
 ## <a name="dependencies"></a>Bağımlılıklar
 
@@ -605,7 +605,7 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 
 ![İşlev uygulaması oluştururken Application Insights etkinleştirme](media/functions-monitoring/enable-ai-new-function-app.png)
 
-**Oluştur**' u seçtiğinizde, işlev uygulamanız ile uygulama ayarlarında `APPINSIGHTS_INSTRUMENTATIONKEY` ayarlanmış olan bir Application Insights kaynak oluşturulur. Her şey başlamaya hazırlanıyor.
+**Oluştur**' u seçtiğinizde, işlev uygulamanız ile uygulama ayarlarında ayarlanmış olan bir Application Insights kaynak oluşturulur `APPINSIGHTS_INSTRUMENTATIONKEY` . Her şey başlamaya hazırlanıyor.
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>Mevcut bir işlev uygulamasına ekleme 

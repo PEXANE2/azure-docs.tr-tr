@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993954"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123845"
 ---
 # <a name="blob-versioning-preview"></a>Blob sürümü oluşturma (Önizleme)
 
@@ -167,7 +167,7 @@ Aşağıdaki diyagramda, sürümlü bir Blobun anlık görüntüsünü alırken 
 Aşağıdaki yaklaşımlardan birini kullanarak blob sürümlerine erişim yetkisi verebilirsiniz:
 
 - Rol tabanlı erişim denetimi 'ni (RBAC) kullanarak Azure Active Directory (Azure AD) güvenlik sorumlusu için izin verin. Microsoft, üstün güvenlik ve kullanım kolaylığı için Azure AD 'nin kullanılmasını önerir. Azure AD 'yi blob işlemleriyle kullanma hakkında daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad.md).
-- Blob sürümlerine erişim yetkisi vermek için paylaşılan erişim imzasını (SAS) kullanarak. Belirli bir sürümdeki işlemler için bir SAS belirteci oluşturmak `bv`üzere, bir blob sürümünü temsil eden imzalı kaynak türü IÇIN sürüm kimliğini belirtin. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md).
+- Blob sürümlerine erişim yetkisi vermek için paylaşılan erişim imzasını (SAS) kullanarak. `bv`Belirli bir sürümdeki işlemler için BIR SAS belirteci oluşturmak üzere, bir blob sürümünü temsil eden imzalı kaynak türü için sürüm kimliğini belirtin. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md).
 - Paylaşılan anahtarla blob sürümlerine karşı işlemleri yetkilendirmek için hesap erişim anahtarlarını kullanarak. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirme](/rest/api/storageservices/authorize-with-shared-key).
 
 Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olarak silinmeye karşı korumak için tasarlanmıştır. Korumayı iyileştirmek için bir blob sürümünün silinmesi özel izinler gerektirir. Aşağıdaki bölümlerde bir blob sürümünü silmek için gereken izinler açıklanır.
@@ -183,7 +183,7 @@ Aşağıdaki tabloda, hangi RBAC eylemlerinin bir blob veya blob sürümünü si
 
 ### <a name="shared-access-signature-sas-parameters"></a>Paylaşılan erişim imzası (SAS) parametreleri
 
-Blob sürümü için imzalanan kaynak `bv`. Daha fazla bilgi için bkz. [HIZMET SAS oluşturma](/rest/api/storageservices/create-service-sas) veya [Kullanıcı temsili SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas).
+Blob sürümü için imzalanan kaynak `bv` . Daha fazla bilgi için bkz. [HIZMET SAS oluşturma](/rest/api/storageservices/create-service-sas) veya [Kullanıcı temsili SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas).
 
 Aşağıdaki tabloda bir blob sürümünü silmek için SAS üzerinde gereken izin gösterilmektedir.
 
@@ -224,9 +224,10 @@ Blob sürüm oluşturma önizlemesine kaydolmak için, özelliği aboneliğinize
 PowerShell 'e kaydolmak için [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) komutunu çağırın.
 
 ```powershell
+# Register for blob versioning (preview)
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-    
+
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
@@ -308,7 +309,7 @@ Senaryo 3 ' te blob güncelleştirildi, ancak sürüm değil. Blok 3, temel Blob
 
 #### <a name="scenario-4"></a>4. Senaryo
 
-Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap, temel Blobun dört benzersiz blok &mdash; ve önceki sürümde dört adet ücretlendirilir. Bu senaryo, blob 'u koy işlemi ile bir blob 'a yazıyorsanız, bu durum temel Blobun tüm içeriğinin yerini almıştır.
+Senaryo 4 ' te, temel blob tamamen güncelleştirilmiştir ve özgün bloklarından hiçbirini içermez. Sonuç olarak, hesap, &mdash; temel Blobun dört benzersiz blok ve önceki sürümde dört adet ücretlendirilir. Bu senaryo, blob 'u koy işlemi ile bir blob 'a yazıyorsanız, bu durum temel Blobun tüm içeriğinin yerini almıştır.
 
 ![Azure depolama kaynakları](./media/versioning-overview/versions-billing-scenario-4.png)
 

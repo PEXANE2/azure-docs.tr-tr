@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280363"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124712"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Tablo depolama için öncü yönetim yönergeleri
 
@@ -98,7 +98,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
 
    - **Filtre sorgusu**: bu alanı seçtiğinizde, **son zaman al** simgesi açılır pencerede görüntülenir. Sorguyu filtrelemek için bu değeri bir zaman damgası olarak kullanmak üzere **geçmiş zamanı** seçin. Veya, alanına aşağıdaki işlevi yapıştırabilirsiniz:
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![Filtre sorgusu işlevini ayarlama](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -111,7 +111,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
      ![Koşul denetimi ekleme](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. **Koşul** penceresinde, **bir değer seçin**' i seçin ve ardından açılır pencerede **ifade** ' ı seçin.
-1. FX `length(body('Get_entities')?['value'])` alanına yapıştırın ***fx*** . Bu işlevi eklemek için **Tamam ' ı** seçin. 
+1. `length(body('Get_entities')?['value'])` ***FX*** alanına yapıştırın. Bu işlevi eklemek için **Tamam ' ı** seçin. 
 
 
 
@@ -133,7 +133,7 @@ Sonraki adımlarda, depolama tablonuza bağlanır ve yeni müşteri adaylarını
 
       - **Kime**: bildirimi alacak herkese yönelik bir e-posta adresi.
       - **Konu**: e-posta konusu. Örneğin: *yeni müşteri adayları!*
-      - **Gövde**: her bir e-postaya dahil etmek istediğiniz metin (isteğe bağlı). Ayrıca, müşteri `body('Get_entities')?['value']` adayı bilgilerini eklemek için bir işlev olarak içine yapıştırın.
+      - **Gövde**: her bir e-postaya dahil etmek istediğiniz metin (isteğe bağlı). Ayrıca, `body('Get_entities')?['value']` müşteri adayı bilgilerini eklemek için bir işlev olarak içine yapıştırın.
 
         >[!NOTE] 
         >E-postanın gövdesine ek statik veya dinamik veri noktaları ekleyebilirsiniz.

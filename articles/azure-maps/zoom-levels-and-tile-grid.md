@@ -1,19 +1,19 @@
 ---
 title: Yakınlaştırma düzeyleri ve kutucuk Kılavuzu | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edineceksiniz.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530300"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123913"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 
@@ -140,12 +140,12 @@ Yakınlaştırma düzeyi 1 ' in yakınlaştırma Kılavuzu aşağıda verilmişt
 
 ## <a name="quadkey-indices"></a>Çeyrek anahtar dizinleri
 
-Bazı eşleme platformları, kutucuğu `quadkey` ZY koordinatlarını anahtarlar veya `quadtree` `quadkeys` Short olarak adlandırılan tek boyutlu bir dize olarak birleştiren bir dizin oluşturma adlandırma kuralı kullanır. Her `quadkey` biri belirli bir ayrıntı düzeyinde tek bir kutucuğu benzersiz şekilde tanımlar ve ortak veritabanı B-ağaç dizinlerinde anahtar olarak kullanılabilir. Azure Haritalar SDK 'Ları, [kutucuk katmanı Ekle](map-add-tile-layer.md) belgesinde belgelendiği gibi, `quadkey` diğer adlandırma kurallarına ek olarak adlandırma kuralı kullanan döşeme katmanlarının fazla kümesini destekler.
+Bazı eşleme platformları `quadkey` , kutucuğu ZY koordinatlarını `quadtree` anahtarlar veya Short olarak adlandırılan tek boyutlu bir dize olarak birleştiren bir dizin oluşturma adlandırma kuralı kullanır `quadkeys` . Her biri `quadkey` belirli bir ayrıntı düzeyinde tek bir kutucuğu benzersiz şekilde tanımlar ve ortak veritabanı B-ağaç dizinlerinde anahtar olarak kullanılabilir. Azure Haritalar SDK 'Ları, `quadkey` [kutucuk katmanı Ekle](map-add-tile-layer.md) belgesinde belgelendiği gibi, diğer adlandırma kurallarına ek olarak adlandırma kuralı kullanan döşeme katmanlarının fazla kümesini destekler.
 
 > [!NOTE]
-> `quadkeys` Adlandırma kuralı yalnızca bir veya daha fazla yakınlaştırma düzeyi için geçerlidir. Azure Haritalar SDK 'Sı, tüm dünyadaki tek bir harita kutucuğu olan 0 yakınlaştırma düzeyini destekler. 
+> `quadkeys`Adlandırma kuralı yalnızca bir veya daha fazla yakınlaştırma düzeyi için geçerlidir. Azure Haritalar SDK 'Sı, tüm dünyadaki tek bir harita kutucuğu olan 0 yakınlaştırma düzeyini destekler. 
 
-Döşeme koordinatlarını a `quadkey`'ya dönüştürmek için Y ve X koordinatlarının bitleri araya eklemeli ve sonuç bir Base-4 numarası olarak yorumlanır (önde sıfır korunur) ve bir dizeye dönüştürülür. Örneğin, 2. `quadkey` düzey 3 ' te XY koordinatlarının (3, 5) kutucuğu, aşağıdaki şekilde belirlenir:
+Döşeme koordinatlarını a 'ya dönüştürmek için `quadkey` Y ve X koordinatlarının bitleri araya eklemeli ve sonuç bir Base-4 numarası olarak yorumlanır (önde sıfır korunur) ve bir dizeye dönüştürülür. Örneğin, 2. düzey 3 ' te XY koordinatlarının (3, 5) kutucuğu, `quadkey` aşağıdaki şekilde belirlenir:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,13 +155,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`ilginç birçok özelliğe sahiptir. İlk olarak, a `quadkey` 'nın uzunluğu (basamak sayısı) karşılık gelen kutucuğun yakınlaştırma düzeyine eşittir. İkincisi, `quadkey` herhangi bir kutucuğun üst kutucuğu ( `quadkey` önceki düzeyde kapsayan kutucuk) ile başlar. Aşağıdaki örnekte gösterildiği gibi, 2. kutucuk, 20 ile 23 arasındaki kutucukların üst öğesidir:
+`Qquadkeys`ilginç birçok özelliğe sahiptir. İlk olarak, a 'nın uzunluğu `quadkey` (basamak sayısı) karşılık gelen kutucuğun yakınlaştırma düzeyine eşittir. İkincisi, `quadkey` herhangi bir kutucuğun `quadkey` üst kutucuğu (önceki düzeyde kapsayan kutucuk) ile başlar. Aşağıdaki örnekte gösterildiği gibi, 2. kutucuk, 20 ile 23 arasındaki kutucukların üst öğesidir:
 
 <center>
 
 ![Quadkey kutucuğu piramit](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Son olarak `quadkeys` , genellikle XY alanındaki kutucukların yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlayın. Diğer `quadkeys` bir deyişle, yakın XY koordinatlarına sahip iki kutucuk genellikle görece bir şekilde yakın olur. Bu, veritabanı performansını iyileştirmek için önemlidir, çünkü komşu kutucuklar genellikle gruplar halinde istenir ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk blokları üzerinde tutmanız istenebilir.
+Son olarak, `quadkeys` genellıkle XY alanındaki kutucukların yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlayın. Diğer bir deyişle, yakın XY koordinatlarına sahip iki kutucuk genellikle `quadkeys` görece bir şekilde yakın olur. Bu, veritabanı performansını iyileştirmek için önemlidir, çünkü komşu kutucuklar genellikle gruplar halinde istenir ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk blokları üzerinde tutmanız istenebilir.
 
 ## <a name="tile-math-source-code"></a>Kutucuk matematik kaynak kodu
 

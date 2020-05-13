@@ -2,17 +2,19 @@
 title: Azure CLı ile sanal makine ölçek kümelerini yönetme
 description: Bir örneği başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi sanal makine ölçek kümelerini yönetmeye yönelik genel Azure CLı komutları.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2742b0b73d4143159fd1ed1338988b01a2171041
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011591"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124338"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLı ile sanal makine ölçek kümesini yönetme
 Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Ayrıca, çeşitli yaşam döngüsü görevlerini otomatikleştiren betikler oluşturmak isteyebilirsiniz. Bu makalede, bu görevleri gerçekleştirmenize olanak tanıyan yaygın Azure CLı komutlarının bazıları ayrıntılı olarak açıklanır.
@@ -120,7 +122,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Ölçek kümesinden VM 'Leri kaldırma
-Ölçek kümesindeki bir veya daha fazla VM 'yi kaldırmak için [az VMSS Delete-Instances](/cli/azure/vmss)komutunu kullanın. Parametresi `--instance-ids` , kaldırılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek KIMLIĞI için * belirtirseniz, ölçek kümesindeki tüm sanal makineler kaldırılır. Birden çok VM 'yi kaldırmak için, her örnek KIMLIĞINI bir boşluk ile ayırın.
+Ölçek kümesindeki bir veya daha fazla VM 'yi kaldırmak için [az VMSS Delete-Instances](/cli/azure/vmss)komutunu kullanın. `--instance-ids`Parametresi, kaldırılacak bir veya daha fazla sanal makine belirtmenize olanak sağlar. Örnek KIMLIĞI için * belirtirseniz, ölçek kümesindeki tüm sanal makineler kaldırılır. Birden çok VM 'yi kaldırmak için, her örnek KIMLIĞINI bir boşluk ile ayırın.
 
 Aşağıdaki örnek, *myScaleSet* ve *myresourcegroup* kaynak grubu adlı ölçek kümesinde *0* örneğini kaldırır. Kendi değerlerinizi aşağıdaki gibi sağlayın:
 

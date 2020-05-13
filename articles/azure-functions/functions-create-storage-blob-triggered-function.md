@@ -1,85 +1,78 @@
 ---
 title: Azure 'da BLOB depolama tarafından tetiklenen bir işlev oluşturma
-description: Azure Blob depolamaya eklenen öğeler tarafından çağrılan sunucusuz bir işlev oluşturmak için Azure İşlevlerini kullanın.
+description: BLOB depolama kapsayıcısına eklenen öğeler tarafından çağrılan sunucusuz bir işlev oluşturmak için Azure Işlevleri 'ni kullanın.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: d3e90decad217afc1c8d9a43ef585fdfbeca5eb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf6865d2756579f457dded90b247326d2eec137c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756550"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123131"
 ---
-# <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob depolama ile tetiklenen bir işlev oluşturma
+# <a name="create-a-function-in-azure-thats-triggered-by-blob-storage"></a>Azure 'da BLOB depolama tarafından tetiklenen bir işlev oluşturma
 
-Azure Blob depolamada dosyalar karşıya yüklendiğinde veya güncelleştirildiğinde tetiklenen bir işlev oluşturma hakkında bilgi edinin.
-
-![Günlüklerde iletiyi görüntüleyin.](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
+Bir BLOB depolama kapsayıcısına dosyalar yüklenirken veya güncelleştirilirken tetiklenen bir işlev oluşturmayı öğrenin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)'ni indirip yükleme.
 + Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-an-azure-function-app"></a>Azure İşlev uygulaması oluşturma
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![İşlev uygulaması başarıyla oluşturuldu.](./media/functions-create-first-azure-function/function-app-create-success.png)
+Yeni işlev uygulamanızı başarıyla oluşturdunuz.
+
+:::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-create-success.png" alt-text="İşlev uygulaması başarıyla oluşturuldu." border="true":::
 
 Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 <a name="create-function"></a>
 
-## <a name="create-a-blob-storage-triggered-function"></a>Blob depolama ile tetiklenen bir işlev oluşturma
+## <a name="create-an-azure-blob-storage-triggered-function"></a>Azure Blob depolama ile tetiklenen bir işlev oluşturma
 
-1. İşlev uygulamanızı genişletin ve **işlevler**' in **+** yanındaki düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde üçüncü adıma geçin.
+1. **İşlevler**' i seçin ve sonra yeni bir işlev eklemek Için **+ Ekle** ' yi seçin.
 
-   ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-template.png" alt-text="Azure portal bir Işlev şablonu seçin." border="true":::
 
-1. **Diğer şablonlar**'ı ve ardından **Sonlandır ve şablonları görüntüle**'yi seçin.
-
-    ![İşlevler hızlı başlangıcı diğer şablonlar](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
-
-1. Arama alanına `blob` yazıp **Blob tetikleyici** şablonunu seçin.
-
-1. İstenirse, Azure Storage uzantısını ve işlev uygulamasındaki tüm bağımlılıkları yüklemek için **Install** ' ı seçin. Yükleme başarılı olduktan sonra **Devam**'ı seçin.
-
-    ![Bağlama uzantılarını yükleme](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+1. **Azure Blob depolama tetikleyicisi** şablonunu seçin.
 
 1. Görüntünün altındaki tabloda belirtilen ayarları kullanın.
 
-    ![Blob depolama ile tetiklenen bir işlev oluşturun.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png" alt-text="BLOB depolama ile tetiklenen işlevi adlandırın ve yapılandırın." border="true":::
 
     | Ayar | Önerilen değer | Açıklama |
     |---|---|---|
-    | **Adı** | İşlev uygulamanızda benzersiz olmalıdır | Blob ile tetiklenen bu işlevin adı. |
+    | **Yeni Işlev** | İşlev uygulamanızda benzersiz olmalıdır | Blob ile tetiklenen bu işlevin adı. |
     | **Yol**   | samples-workitems/{ad}    | İzlenmekte olan Blob depolamanın konumu. Blob’un dosya adı bağlamaya _name_ parametresi olarak geçirilir.  |
     | **Depolama hesabı bağlantısı** | AzureWebJobsStorage | İşlev uygulamanız tarafından kullanılmakta olan depolama hesabı bağlantısını kullanabilir veya yeni bir bağlantı oluşturabilirsiniz.  |
 
-1. İşlevinizi oluşturmak için **Oluştur**'a tıklayın.
+1. İşlevinizi oluşturmak için **Işlev oluştur** ' u seçin.
 
-Ardından Azure Depolama hesabınıza bağlanıp **samples-workitems** kapsayıcısını oluşturun.
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-3.png" alt-text="Blob depolama ile tetiklenen bir işlev oluşturun." border="true":::
+
+Ardından, **Samples-WorkItems** kapsayıcısını oluşturun.
 
 ## <a name="create-the-container"></a>Kapsayıcı oluşturma
 
-1. İşlevinizde **Tümleştir**'e tıklayın, **Belgeler**'i genişletin ve hem **Hesap adı** hem de **Hesap anahtarı** değerlerini kopyalayın. Depolama hesabına bağlanmak için bu kimlik bilgilerini kullanacaksınız. Depolama hesabınıza önceden bağlandıysanız 4. adıma geçin.
+1. İşlevinizde **genel bakış** sayfasında, kaynak grubunuzu seçin.
 
-    ![Depolama hesabı bağlantısı için kimlik bilgilerini alın.](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-resource-group.png" alt-text="Azure portal kaynak grubunuzu seçin." border="true":::
 
-1. [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/) aracını çalıştırın, sol taraftaki bağlan simgesine tıklayın, **Depolama hesabı adı ve anahtarı kullan**'ı seçin ve **İleri**'ye tıklayın.
+1. Kaynak grubunuzun depolama hesabını bulun ve seçin.
 
-    ![Depolama Hesabı Gezgini aracını çalıştırın.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-account-access.png" alt-text="Depolama hesabına erişin." border="true":::
 
-1. 1 Adımda kopyaladığınız **Hesap adı** ve **Hesap anahtarı** değerlerini girin, **İleri**'ye ve ardından **Bağlan**'a tıklayın. 
+1. **Kapsayıcılar**' ı seçin ve ardından **+ kapsayıcı**' yı seçin. 
 
-    ![Depolama kimlik bilgilerini girin ve bağlanın.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-add-container.png" alt-text="Azure portal depolama hesabınıza kapsayıcı ekleyin." border="true":::
 
-1. Bağlı depolama hesabını genişletin, **BLOB kapsayıcıları**' na sağ tıklayın, **BLOB kapsayıcısı oluştur**' a tıklayın `samples-workitems`, yazın ve ardından ENTER tuşuna basın.
+1. **Ad** alanına yazın `samples-workitems` ve ardından **Oluştur**' u seçin.
 
-    ![Depolama kuyruğu oluşturun.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-name-blob-container.png" alt-text="Depolama kapsayıcısını adlandırın." border="true":::
 
 Artık bir blob kapsayıcısına sahip olduğunuza göre, kapsayıcıya bir dosya yükleyerek işlevi test edebilirsiniz.
 
@@ -87,15 +80,23 @@ Artık bir blob kapsayıcısına sahip olduğunuza göre, kapsayıcıya bir dosy
 
 1. Azure portalına dönün, işlevinizi bulun, sayfanın en altındaki **Günlükler** bölümünü genişletin ve günlük akışının duraklatılmış olmadığından emin olun.
 
-1. Depolama Gezgini, depolama hesabınızı, **BLOB kapsayıcıları**ve **örnekleri-WorkItems**' ı genişletin. **Karşıya Yükle**’ye ve ardından **Dosyaları yükle...** seçeneğine tıklayın.
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-log-expander.png" alt-text="Azure portal günlüğü genişletin." border="true":::
 
-    ![Dosyayı blob kapsayıcısına yükleyin.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
+1. Ayrı bir tarayıcı penceresinde, Azure portal kaynak grubunuza gidin ve depolama hesabını seçin.
 
-1. **Dosyaları karşıya yükle** iletişim kutusunda **Dosyalar** alanına tıklayın. Yerel bilgisayarınızda görüntü dosyası gibi bir dosyaya gidin, seçin, **Aç**’ı ve ardından **Karşıya Yükle**’yi seçin.
+1. **Kapsayıcılar**' ı seçin ve ardından **Samples-WorkItems** kapsayıcısını seçin.
+
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-container.png" alt-text="Azure portal, Samples-WorkItems kapsayıcısına gidin." border="true":::
+
+1. **Karşıya yükle**' yi seçin ve ardından karşıya yüklenecek dosyayı seçmek için klasör simgesini seçin.
+
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png" alt-text="Dosyayı blob kapsayıcısına yükleyin." border="true":::
+
+1. Yerel bilgisayarınızda bir görüntü dosyası gibi bir dosyaya gidin, dosyayı seçin. **Aç** ' ı seçin ve ardından **karşıya yükleyin**.
 
 1. İşlev günlüklerinize geri dönün ve blob’un okunduğunu doğrulayın.
 
-   ![Günlüklerde iletiyi görüntüleyin.](./media/functions-create-storage-blob-triggered-function/functions-blob-storage-trigger-view-logs.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png" alt-text="Günlüklerde iletiyi görüntüleyin." border="true":::
 
     >[!NOTE]
     > İşlev uygulamanız varsayılan Tüketim planında çalıştığında, blob’un eklenmesi veya güncelleştirilmesi ile işlevin tetiklenmesi arasında birkaç dakika gecikme olabilir. Blob ile tetiklenen işlevlerde düşük gecikme süresi gerekiyorsa, işlev uygulamanızı bir App Service planında çalıştırmayı düşünün.

@@ -3,12 +3,12 @@ title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 81d545066ea6bcc1d3e2eecd884671324155d796
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900972"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124695"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, bir Azure Kaynak türünün taşıma işlemini destekleyip desteklemediğini listelenmiştir. Ayrıca bir kaynağı taşırken göz önünde bulundurmanız gereken özel koşullar hakkında bilgi sağlar.
@@ -418,8 +418,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | DomainNames | Yes | No |
-> | virtualmachines | Yes | No |
+> | DomainNames | Yes | Hayır |
+> | virtualmachines | Yes | Hayır |
 
 > [!IMPORTANT]
 > Bkz. [klasik dağıtım taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md). Klasik dağıtım kaynakları, bu senaryoya özel bir işlemle abonelikler arasında taşınabilir.
@@ -441,7 +441,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Yes | No |
+> | storageaccounts | Yes | Hayır |
 
 > [!IMPORTANT]
 > Bkz. [klasik dağıtım taşıma Kılavuzu](./move-limitations/classic-model-move-limitations.md). Klasik dağıtım kaynakları, bu senaryoya özel bir işlemle abonelikler arasında taşınabilir.
@@ -771,10 +771,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Hayır | Hayır |
-> | larda | Yes | No |
+> | larda | Yes | Hayır |
 > | Laboratuvarlar/ortamlar | Yes | Yes |
 > | Labs/servicerunanlar | Yes | Yes |
-> | Labs/virtualmachines | Yes | No |
+> | Labs/virtualmachines | Yes | Hayır |
 > | cağını | Yes | Yes |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
@@ -1025,8 +1025,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Hayır | Hayır |
 > | Tümleştirme hesapları | Yes | Yes |
-> | ıntegrationserviceortamortamları | Yes | No |
-> | ıntegrationserviceortamortamları/managedap | Yes | No |
+> | ıntegrationserviceortamortamları | Yes | Hayır |
+> | ıntegrationserviceortamortamları/managedap | Yes | Hayır |
 > | ısotedenvironments | Hayır | Hayır |
 > | sürdürülen | Yes | Yes |
 
@@ -1036,7 +1036,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | commitmentplanlar | Hayır | Hayır |
-> | Hizmetleri | Yes | No |
+> | Hizmetleri | Yes | Hayır |
 > | çalışma alanı | Yes | Yes |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -1197,10 +1197,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | NetworkInterfaces | Yes | Yes |
 > | networkprofiles | Hayır | Hayır |
 > | networksecuritygroups | Yes | Yes |
-> | networkwatchers | Yes | No |
-> | networkwatchers/connectionmonitörleri | Yes | No |
-> | networkwatchers/flowlogs | Yes | No |
-> | networkwatchers/pingkafesler | Yes | No |
+> | networkwatchers | Yes | Hayır |
+> | networkwatchers/connectionmonitörleri | Yes | Hayır |
+> | networkwatchers/flowlogs | Yes | Hayır |
+> | networkwatchers/pingkafesler | Yes | Hayır |
 > | p2svpngateways | Hayır | Hayır |
 > | privatednszones | Yes | Yes |
 > | privatednszones/virtualnetworklinks | Yes | Yes |
@@ -1253,8 +1253,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 
 > [!IMPORTANT]
 > Yeni bir aboneliğe geçiş için [abonelik kotalarını](azure-subscription-service-limits.md#azure-monitor-limits)aşmayacağından emin olun.
-
-> [!IMPORTANT]
+> 
 > Bağlı bir Otomasyon hesabına sahip olan çalışma alanları taşınamaz. Bir taşıma işlemine başlamadan önce, tüm otomasyon hesaplarının bağlantısını kaldırmayı unutmayın.   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
@@ -1399,7 +1398,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | uygulamalar | Yes | No |
+> | uygulamalar | Yes | Hayır |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
@@ -1677,8 +1676,8 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | account | Hayır | Hayır |
-> | Hesap/uzantı | Yes | Yes |
-> | hesap/proje | Yes | Yes |
+> | Hesap/uzantı | Hayır | Hayır |
+> | hesap/proje | Hayır | Hayır |
 
 > [!IMPORTANT]
 > Azure DevOps aboneliğini değiştirmek için, bkz. [faturalandırma için kullanılan Azure aboneliğini değiştirme](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
@@ -1705,15 +1704,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | accounts | Yes | Yes |
-> | Planlama | Yes | Yes |
+> | accounts | Hayır | Hayır |
+> | Planlama | Hayır | Hayır |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | sertifikalar | No | Yes |
+> | sertifikalar | Hayır | Yes |
 > | connectiongateway 'ler | Yes | Yes |
 > | bağlantının | Yes | Yes |
 > | customapsıs | Yes | Yes |

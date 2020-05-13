@@ -3,14 +3,14 @@ title: Azure 'da işlev uygulaması ayarlarını yapılandırma
 description: Azure işlevi uygulama ayarlarını yapılandırmayı öğrenin.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276952"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122315"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -27,9 +27,11 @@ Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönet
 
 ## <a name="get-started-in-the-azure-portal"></a>Azure portalında kullanmaya başlama
 
-Başlamak için [Azure Portal] gidin ve Azure hesabınızda oturum açın. Portalın en üstündeki arama çubuğunda, işlev uygulamanızın adını yazın ve uygulamayı listeden seçin. İşlev uygulamanızı seçtikten sonra aşağıdaki sayfayı görürsünüz:
+1. Başlamak için [Azure Portal] gidin ve Azure hesabınızda oturum açın. Portalın üst kısmındaki arama çubuğunda, işlev uygulamanızın adını girin ve listeden seçin. 
 
-![Azure portal işlev uygulamasına genel bakış](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. Sol bölmedeki **Ayarlar** ' ın altında **yapılandırma**' yı seçin.
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure portal işlev uygulamasına genel bakış":::
 
 Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)**' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
 
@@ -45,14 +47,14 @@ Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni an
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) Komut, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür:
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Komut, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) Komut bir uygulama ayarı ekler veya güncelleştirir. Aşağıdaki örnek, adında `CUSTOM_FUNCTION_APP_SETTING` bir anahtar ve değeri olan bir ayar oluşturur: `12345`
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)Komut bir uygulama ayarı ekler veya güncelleştirir. Aşağıdaki örnek, adında bir anahtar ve değeri olan bir ayar oluşturur `CUSTOM_FUNCTION_APP_SETTING` `12345` :
 
 
 ```azurecli-interactive
@@ -69,9 +71,7 @@ Yerel olarak bir işlev uygulaması geliştirirken, bu değerlerin yerel kopyala
 
 ## <a name="platform-features"></a>Platform özellikleri
 
-![İşlev uygulaması platform özellikleri sekmesi.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-İşlev uygulamaları ' de çalışır ve Azure App Service platformu tarafından korunur. Bu nedenle, işlev uygulamalarınızın Azure 'un çekirdek Web barındırma platformu özelliklerinin çoğuna erişimi vardır. **Platform özellikleri** sekmesi, işlev uygulamalarınızda kullanabileceğiniz App Service platformunun birçok özelliğine erişirsiniz. 
+İşlev uygulamaları içinde çalışır ve, Azure App Service platformu tarafından korunur. Bu nedenle, işlev uygulamalarınızın Azure 'un çekirdek Web barındırma platformu özelliklerinin çoğuna erişimi vardır. Sol bölmede, işlev uygulamalarınızda kullanabileceğiniz App Service platformunun birçok özelliğine erişirsiniz. 
 
 > [!NOTE]
 > Bir işlev uygulaması tüketim barındırma planı üzerinde çalıştırıldığında tüm App Service özellikleri kullanılamaz.
@@ -120,13 +120,13 @@ Modern tarayıcılar istemcide kötü amaçlı kod yürütmeyi engellemek için 
 
 #### <a name="portal"></a>Portal
 
-İşlev uygulamanız için **Izin verilen** kaynaklar listesini yapılandırdığınızda, `Access-Control-Allow-Origin` üst BILGI, işlev uygulamanızdaki HTTP uç noktalarından gelen tüm yanıtlara otomatik olarak eklenir. 
+İşlev uygulamanız için **Izin verilen** kaynaklar listesini yapılandırdığınızda, `Access-Control-Allow-Origin` üst bilgi, işlev uygulamanızdaki HTTP uç noktalarından gelen tüm yanıtlara otomatik olarak eklenir. 
 
 ![İşlev uygulamasının CORS listesini yapılandır](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-Joker karakteri (`*`) kullanıldığında, diğer tüm etki alanları yok sayılır. 
+Joker karakteri ( `*` ) kullanıldığında, diğer tüm etki alanları yok sayılır. 
 
-İzin verilen [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) çıkış noktaları listesine bir etki alanı eklemek için komutunu kullanın. Aşağıdaki örnek contoso.com etki alanını ekler:
+[`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add)İzin verilen çıkış noktaları listesine bir etki alanı eklemek için komutunu kullanın. Aşağıdaki örnek contoso.com etki alanını ekler:
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,7 +134,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-Mevcut izin [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) verilen kaynakları listelemek için komutunu kullanın.
+[`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show)Mevcut izin verilen kaynakları listelemek için komutunu kullanın.
 
 ### <a name="authentication"></a><a name="auth"></a>Kimlik Doğrulaması
 

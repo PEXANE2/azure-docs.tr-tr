@@ -5,16 +5,16 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80754851"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123641"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure portalında ilk işlevinizi oluşturma
 
-Azure Işlevleri, öncelikle bir sanal makine (VM) oluşturmak veya bir Web uygulaması yayımlamak zorunda kalmadan kodunuzu sunucusuz bir ortamda çalıştırmanızı sağlar. Bu makalede, Azure Işlevleri 'ni kullanarak Azure portal bir "Hello World" HTTP ile tetiklenen bir işlev oluşturma hakkında bilgi edineceksiniz.
+Azure Işlevleri, öncelikle bir sanal makine (VM) oluşturmak veya bir Web uygulaması yayımlamak zorunda kalmadan kodunuzu sunucusuz bir ortamda çalıştırmanızı sağlar. Bu makalede, Azure Işlevleri 'ni kullanarak Azure portal bir "Hello World" HTTP tetikleyici işlevi oluşturma hakkında bilgi edineceksiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,29 +32,31 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 Sonra, yeni işlev uygulamasında bir işlev oluşturun.
 
-## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP ile tetiklenen bir işlev oluşturma
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>HTTP tetikleyici işlevi oluşturma
 
-1. Yeni işlev uygulamanızı genişletin, **işlevler**' ın **+** yanındaki düğmeyi seçin, **Portal**' ı seçin ve ardından **devam**' ı seçin.
+1. **İşlevler** penceresinin sol menüsünde **işlevler**' i seçin ve ardından üst menüden **Ekle** ' yi seçin. 
+ 
+1. **Yeni işlev** penceresinden **http tetikleyicisi**' ni seçin.
 
-    ![Platform seçme için hızlı başlangıç işlevleri.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![HTTP tetikleyici işlevini seçin](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. **Web kancası + API**' yi seçin ve ardından **Oluştur**' u seçin.
+1. **Yeni işlev** penceresinde, **yeni işlev**için varsayılan adı kabul edin veya yeni bir ad girin. 
 
-    ![Azure portalındaki İşlevler hızlı başlangıcı.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+1. **Yetkilendirme düzeyi** açılan listesinden **anonim** ' i seçin ve ardından **işlev oluştur**' u seçin.
 
-   Dile özgü HTTP ile tetiklenen işlev şablonu kullanılarak bir işlev oluşturulur.
-
-Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
+    Azure, HTTP tetikleyici işlevini oluşturur. Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
 ## <a name="test-the-function"></a>İşlevi test etme
 
-1. Yeni işlevinizde, sağ üst köşedeki **</> işlev URL 'Sini al** ' ı seçin. 
+1. Yeni HTTP tetikleyici işlevinizde, sol menüden **Code + test** ' i seçin ve ardından üstteki menüden **Işlev URL 'sini al** ' ı seçin.
 
-1. **İşlev URL 'Sini al** iletişim kutusunda, açılan listeden **varsayılan (işlev anahtarı)** seçeneğini belirleyin ve ardından **Kopyala**' yı seçin. 
+    ![İşlev URL 'sini Al ' ı seçin](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. **İşlev URL 'Sini al** iletişim kutusunda, açılan listeden **varsayılan** ' ı seçin ve ardından **Panoya Kopyala** simgesini seçin. 
 
     ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `&name=<your_name>` bu URL 'nin sonuna ekleyin ve isteği çalıştırmak için ENTER 'a basın. 
+1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `?name=<your_name>` Bu URL 'nin sonuna ekleyin ve isteği çalıştırmak Için ENTER 'a basın. 
 
     Aşağıdaki örnekte tarayıcıdaki yanıt gösterilmektedir:
 
@@ -62,7 +64,7 @@ Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
     İstek URL’si, işlevinize HTTP üzerinden erişmek için varsayılan olarak gerekli olan bir anahtar içerir.
 
-1. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. Önceki yürütmeden alınan izleme çıktısını görmek için, portalda işlevinizin simgesine dönün ve ekranın altındaki oku seçerek **günlükleri**genişletin.
+1. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. İzleme çıktısını görmek için, portalda **Code + test** sayfasına dönüp sayfanın altındaki **Günlükler** okunu genişletin.
 
    ![Azure portalında İşlevler günlük görüntüleyicisi.](./media/functions-create-first-azure-function/function-view-logs.png)
 

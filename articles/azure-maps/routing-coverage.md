@@ -1,19 +1,19 @@
 ---
 title: Yönlendirme kapsamı | Microsoft Azure haritaları
 description: Bu makalede, Microsoft Azure haritaları için yönlendirme kapsamına sahip bölgeler hakkında bilgi edineceksiniz.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b59816abf0cd03450c9fc4ebb8417c62df7e3288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529400"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123896"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure haritalar yönlendirme kapsamı
 

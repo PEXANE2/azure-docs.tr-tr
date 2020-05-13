@@ -2,23 +2,24 @@
 title: Yönetilen disk kullanmak üzere bir ölçek kümesi şablonu dönüştürme
 description: Bir Azure Resource Manager sanal makine ölçek kümesi şablonunu yönetilen disk ölçek kümesi şablonuna dönüştürün.
 keywords: sanal makine ölçek kümeleri
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 5/18/2017
-ms.author: mimckitt
-ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 85f8694a017c8de94d987c244994a24ad0929441
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270664"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124899"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Ölçek kümesi şablonunu yönetilen disk ölçek kümesi şablonuna dönüştürme
 
-Yönetilen disk kullanmayan bir ölçek kümesi oluşturmak için Kaynak Yöneticisi şablonu olan müşteriler, yönetilen disk kullanmak üzere değiştirmek isteyebilir. Bu makalede, [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates)örnek Kaynak Yöneticisi şablonları için topluluk odaklı depo olan bir çekme isteği örnek olarak kullanılarak yönetilen disklerin nasıl kullanılacağı gösterilmektedir. Tam çekme isteği şu şekilde görülebilir: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)ve fark öğesinin ilgili bölümleri aşağıda, açıklamalarla birlikte aşağıdaki gibidir:
+Yönetilen disk kullanmayan bir ölçek kümesi oluşturmak için Kaynak Yöneticisi şablonu olan müşteriler, yönetilen disk kullanmak üzere değiştirmek isteyebilir. Bu makalede, [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates)örnek Kaynak Yöneticisi şablonları için topluluk odaklı depo olan bir çekme isteği örnek olarak kullanılarak yönetilen disklerin nasıl kullanılacağı gösterilmektedir. Tam çekme isteği şu şekilde görülebilir: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) ve fark öğesinin ilgili bölümleri aşağıda, açıklamalarla birlikte aşağıdaki gibidir:
 
 ## <a name="making-the-os-disks-managed"></a>İşletim sistemi disklerinin yönetilmesini sağlama
 
@@ -85,7 +86,7 @@ Aşağıdaki fark içinde, depolama hesabı kaynağı kaynak dizisinden tamamen 
        "location": "[resourceGroup().location]",
 ```
 
-Aşağıdaki fark içinde, ölçek kümesinden, depolama hesapları oluşturan döngüye işaret eden bağlı olan yan tümceyi kaldırdığımızda görüyoruz. Eski şablonda, bu, depolama hesaplarının ölçek kümesi oluşturmaya başlamadan önce oluşturulmasını sağlamaktır, ancak bu yan tümce artık yönetilen disk ile gerekli değildir. VHD kapsayıcıları özelliği ayrıca, işletim sistemi disk adı özelliği ile birlikte kaldırılır ve bu özellikler yönetilen disk 'nin altında otomatik olarak işlenir. Premium işletim sistemi `"managedDisk": { "storageAccountType": "Premium_LRS" }` disklerini Isterseniz "OSDisk" yapılandırmasına ekleyebilirsiniz. Yalnızca VM SKU 'sunda büyük veya küçük harfli ' a sahip VM 'Ler Premium diskler kullanabilir.
+Aşağıdaki fark içinde, ölçek kümesinden, depolama hesapları oluşturan döngüye işaret eden bağlı olan yan tümceyi kaldırdığımızda görüyoruz. Eski şablonda, bu, depolama hesaplarının ölçek kümesi oluşturmaya başlamadan önce oluşturulmasını sağlamaktır, ancak bu yan tümce artık yönetilen disk ile gerekli değildir. VHD kapsayıcıları özelliği ayrıca, işletim sistemi disk adı özelliği ile birlikte kaldırılır ve bu özellikler yönetilen disk 'nin altında otomatik olarak işlenir. `"managedDisk": { "storageAccountType": "Premium_LRS" }`Premium işletim sistemi disklerini isterseniz "osDisk" yapılandırmasına ekleyebilirsiniz. Yalnızca VM SKU 'sunda büyük veya küçük harfli ' a sahip VM 'Ler Premium diskler kullanabilir.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -131,7 +132,7 @@ Yukarıdaki değişikliklerle ölçek kümesi, işletim sistemi diski için yön
 ]
 ```
 
-Bu dizide diskler `n` belirtirseniz, ölçek kümesindeki her sanal makine veri disklerini alır `n` . Bununla birlikte, bu veri disklerinin ham cihaz olduğunu unutmayın. Bunlar biçimlendirilmez. Bu, kullanmadan önce diskleri eklemek, bölümlemek ve biçimlendirmek için müşteriye kadar sürer. İsteğe bağlı olarak, her bir `"managedDisk": { "storageAccountType": "Premium_LRS" }` veri diski nesnesinde bir Premium veri diski olması gerektiğini belirtmek için de belirtebilirsiniz. Yalnızca VM SKU 'sunda büyük veya küçük harfli ' a sahip VM 'Ler Premium diskler kullanabilir.
+`n`Bu dizide diskler belirtirseniz, ölçek kümesindeki her sanal makine `n` veri disklerini alır. Bununla birlikte, bu veri disklerinin ham cihaz olduğunu unutmayın. Bunlar biçimlendirilmez. Bu, kullanmadan önce diskleri eklemek, bölümlemek ve biçimlendirmek için müşteriye kadar sürer. İsteğe bağlı olarak, `"managedDisk": { "storageAccountType": "Premium_LRS" }` her bir veri diski nesnesinde bir Premium veri diski olması gerektiğini belirtmek için de belirtebilirsiniz. Yalnızca VM SKU 'sunda büyük veya küçük harfli ' a sahip VM 'Ler Premium diskler kullanabilir.
 
 Ölçek kümeleri ile veri disklerini kullanma hakkında daha fazla bilgi edinmek için [Bu makaleye](./virtual-machine-scale-sets-attached-disks.md)bakın.
 

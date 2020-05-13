@@ -3,7 +3,7 @@ title: Azure VM ayırma hatalarında sorun giderme | Microsoft Docs
 description: Azure 'da VM oluşturma, yeniden başlatma veya yeniden boyutlandırma sırasında ayırma hatalarıyla ilgili sorunları giderme
 services: virtual-machines
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: felixwu
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
@@ -11,13 +11,13 @@ ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
-ms.author: cjiang
-ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484409"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124797"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure’da VM’leri oluştururken, yeniden başlatırken ve yeniden boyutlandırırken ortaya çıkan ayırma hatalarında sorun giderme
 
@@ -25,11 +25,11 @@ Bir sanal makine (VM) oluşturduğunuzda, yeniden başlatma (serbest bırakıld�
 
 **Hata kodu**: allocationfailed veya ZonalAllocationFailed
 
-**Hata iletisi**: "ayırma başarısız oldu. Bu bölgedeki istenen VM boyutu için yeterli kapasiteye sahip değilsiniz. Https:\//aka.MS/Allocation-Guidance ", ayırma başarısını oluşma olasılığını artırma hakkında daha fazla bilgi edinin
+**Hata iletisi**: "ayırma başarısız oldu. Bu bölgedeki istenen VM boyutu için yeterli kapasiteye sahip değilsiniz. Https: \/ /aka.MS/Allocation-Guidance ", ayırma başarısını oluşma olasılığını artırma hakkında daha fazla bilgi edinin
 
 Bu makalede bazı yaygın ayırma hatalarının nedenleri açıklanmakta ve olası düzeltmeler önerilmektedir.
 
-Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow Azure forumlarını](https://azure.microsoft.com/support/forums/)ziyaret edin. Sorununuzu bu forumlarda veya Twitter @AzureSupport 'da gönderebilirsiniz. Ayrıca, [Azure](https://azure.microsoft.com/support/options/) destek sitesinde destek al ' ı seçerek bir Azure destek isteği oluşturabilirsiniz.
+Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow Azure forumlarını](https://azure.microsoft.com/support/forums/)ziyaret edin. Sorununuzu bu forumlarda veya @AzureSupport Twitter 'da gönderebilirsiniz. Ayrıca, [Azure](https://azure.microsoft.com/support/options/) destek sitesinde destek al ' ı seçerek bir Azure destek isteği oluşturabilirsiniz.
 
 Tercih ettiğiniz sanal makine türü tercih ettiğiniz bölgede kullanılabilir olana kadar, dağıtım sorunlarıyla karşılaşan müşterilerimiz için aşağıdaki tabloda yer alan ve geçici bir geçici çözüm olarak kılavuzluk yapmayı öneririz. 
 

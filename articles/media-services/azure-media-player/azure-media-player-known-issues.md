@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692253"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124644"
 ---
 # <a name="known-issues"></a>Bilinen Sorunlar #
 
@@ -41,6 +41,7 @@ Geçerli yayında aşağıdaki bilinen sorunlar var:
 
 - Tarayıcıya bir ad engelleyicisinin yüklendiği durumlarda reklamları (isteğe bağlı veya canlı) ekleme sorunları olabilir
 - Mobil cihazlarda reklamları kayıttan yürütme sorunları olabilir.
+- MP4 Mıdroll reklamları şu anda Azure Media Player tarafından desteklenmemektedir.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -62,7 +63,7 @@ Geçerli yayında aşağıdaki bilinen sorunlar var:
 
 - Eksik Özellikler
 - Teknik ve http arızaları (404 ağ zaman aşımları gibi), Player diğer Techs 'den kurtarmak için daha uzun sürer.
-- Silverlight ile Mac 'te yürütülen Safari ve Firefox, kaynak `"http://` `https://` için açıkça tanımlamayı gerektirir.
+- Silverlight ile Mac 'te yürütülen Safari ve Firefox `"http://` `https://` , kaynak için açıkça tanımlamayı gerektirir.
 - Bu teknik için bir API eksikse genellikle null döndürülür.
 - Kullanıcı Flash yüklüyse ancak sitede yükleme izni vermezse, sonsuz bir dönme meydana gelebilir. Bunun nedeni, eklentinin, eklentinin yüklü ve kullanılabilir olduğunu ve eklentinin içeriği çalıştırmakta olduğunu düşündüğü bir eklentidir. JavaScript kodu gönderildi, ancak tarayıcı ayarları, Kullanıcı eklentiye izin verme isteğini kabul edene kadar eklentinin yürütülmesini engelledi. Bu, tüm tarayıcılarda gerçekleşebilir.  
 

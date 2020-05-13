@@ -1,18 +1,20 @@
 ---
 title: Azure sanal makine ölçek kümeleri ile uzantı sıralamasını kullanma
 description: Sanal makine ölçek kümelerinde birden çok uzantı dağıtıldığında uzantı sağlamayı nasıl sıraleyeceğinizi öğrenin.
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 01/30/2019
-ms.author: mimckitt
-ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273758"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121040"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerinde dizi uzantısı sağlama
 Azure sanal makine uzantıları, dağıtım sonrası yapılandırma ve yönetim, izleme, güvenlik ve daha fazlası gibi yetenekler sağlar. Üretim dağıtımları genellikle, istenen sonuçlara ulaşmak için VM örnekleri için yapılandırılmış birden çok uzantı birleşimini kullanır.
@@ -166,7 +168,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Eğer ExtensionC, ölçek kümesi modelinde daha önce tanımlanmışsa ve bağımlılıklarını eklemek istiyorsanız, zaten dağıtılan uzantının özelliklerini düzenlemek için bir `PATCH` çalıştırabilirsiniz.
+Eğer ExtensionC, ölçek kümesi modelinde daha önce tanımlanmışsa ve bağımlılıklarını eklemek istiyorsanız, `PATCH` zaten dağıtılan uzantının özelliklerini düzenlemek için bir çalıştırabilirsiniz.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -186,7 +188,7 @@ Varolan ölçek kümesi örneklerine yapılan değişiklikler bir sonraki [yüks
 ### <a name="azure-powershell"></a>Azure PowerShell
 Uygulama durumu uzantısını ölçek kümesi model tanımına eklemek için [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 'ini kullanın. Uzantı sıralaması az PowerShell 1.2.0 veya üzeri kullanılmasını gerektirir.
 
-Aşağıdaki örnek, `extensionProfile` [uygulama sistem durumu uzantısını](virtual-machine-scale-sets-health-extension.md) Windows tabanlı ölçek kümesinin ölçek kümesi modelinde öğesine ekler. Uygulama sistem durumu uzantısı, zaten ölçek kümesinde tanımlanmış olan [Özel Betik uzantısı](../virtual-machines/extensions/custom-script-windows.md)sağlandıktan sonra sağlanır.
+Aşağıdaki örnek, [uygulama sistem durumu uzantısını](virtual-machine-scale-sets-health-extension.md) `extensionProfile` Windows tabanlı ölçek kümesinin ölçek kümesi modelinde öğesine ekler. Uygulama sistem durumu uzantısı, zaten ölçek kümesinde tanımlanmış olan [Özel Betik uzantısı](../virtual-machines/extensions/custom-script-windows.md)sağlandıktan sonra sağlanır.
 
 ```azurepowershell-interactive
 # Define the scale set variables

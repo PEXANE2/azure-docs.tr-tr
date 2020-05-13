@@ -2,17 +2,19 @@
 title: Azure spot VM 'Leri kullanan bir ölçek kümesi oluşturma
 description: Maliyetlerden tasarruf etmek için spot VM 'Ler kullanan Azure sanal makine ölçek kümeleri oluşturmayı öğrenin.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545931"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125052"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure spot VM 'Ler 
 
@@ -26,7 +28,7 @@ Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası 
 Spot örnekleri için fiyatlandırma, bölgeye ve SKU 'ya göre değişkendir. Daha fazla bilgi için bkz. [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) ve [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)fiyatlandırması. 
 
 
-Değişken fiyatlandırmayla, en fazla 5 ondalık basamak kullanarak ABD Doları (USD) cinsinden maksimum fiyat ayarlama seçeneğiniz vardır. Örneğin, değer `0.98765`, saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak `-1`şekilde ayarlarsanız, örnek fiyata göre çıkarılmaz. Örneğin fiyatı, kapasite ve kota kullanılabilir olduğu sürece daha az olan bir standart örnek için geçerli fiyat veya fiyat fiyatı olacaktır.
+Değişken fiyatlandırmayla, en fazla 5 ondalık basamak kullanarak ABD Doları (USD) cinsinden maksimum fiyat ayarlama seçeneğiniz vardır. Örneğin, değer, `0.98765` saat başına $0,98765 ABD Doları olan en yüksek fiyat olacaktır. En yüksek fiyatı olacak şekilde ayarlarsanız `-1` , örnek fiyata göre çıkarılmaz. Örneğin fiyatı, kapasite ve kota kullanılabilir olduğu sürece daha az olan bir standart örnek için geçerli fiyat veya fiyat fiyatı olacaktır.
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
@@ -49,12 +51,12 @@ Kullanıcılar [Azure zamanlanan olaylar](../virtual-machines/linux/scheduled-ev
 
 ## <a name="portal"></a>Portal
 
-Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılıdır. Bir ölçek kümesi dağıttığınızda, spot bayrağını ve çıkarma ilkesini ayarlamayı seçebilirsiniz: ![spot VM 'ler ile ölçek kümesi oluşturma](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılıdır. Bir ölçek kümesi dağıttığınızda, spot bayrağını ve çıkarma ilkesini ayarlamayı seçebilirsiniz: ![ spot VM 'ler ile ölçek kümesi oluşturma](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Spot VM 'Ler içeren bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılıdır. '--Priority noktası ' ve Ekle `--max-price`' yi eklemeniz yeterlidir. Bu örnekte, örneğin fiyata göre `-1` çıkarılamadığı için `--max-price` kullanırız.
+Spot VM 'Ler içeren bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılıdır. '--Priority noktası ' ve Ekle ' yi eklemeniz yeterlidir `--max-price` . Bu örnekte, `-1` Örneğin `--max-price` fiyata göre çıkarılamadığı için kullanırız.
 
 ```azurecli
 az vmss create \
@@ -87,7 +89,7 @@ $vmssConfig = New-AzVmssConfig `
 
 Spot VM 'Ler kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. 
 
-Spot şablon dağıtımları için veya üstünü`"apiVersion": "2019-03-01"` kullanın. `priority` `evictionPolicy` Şablonunuzda `"virtualMachineProfile":` bölümüne ve `billingProfile` özelliklerini ekleyin: 
+Spot şablon dağıtımları için `"apiVersion": "2019-03-01"` veya üstünü kullanın. `priority` `evictionPolicy` `billingProfile` Şablonunuzda bölümüne ve özelliklerini ekleyin `"virtualMachineProfile":` : 
 
 ```json
                 "priority": "Spot",
@@ -97,7 +99,7 @@ Spot şablon dağıtımları için veya üstünü`"apiVersion": "2019-03-01"` ku
                 }
 ```
 
-Çıkarıldıktan sonra örneği silmek için `evictionPolicy` parametresini olarak `Delete`değiştirin.
+Çıkarıldıktan sonra örneği silmek için `evictionPolicy` parametresini olarak değiştirin `Delete` .
 
 ## <a name="faq"></a>SSS
 
@@ -123,12 +125,12 @@ Y **:** Evet, [Standart kota isteği işlemi](https://docs.microsoft.com/azure/a
 
 **S:** Varolan ölçek kümelerini spot ölçek kümelerine dönüştürebilir miyim?
 
-Y **:** Hayır, `Spot` bayrak ayarı yalnızca oluşturma sırasında desteklenir.
+Y **:** Hayır, bayrak ayarı `Spot` yalnızca oluşturma sırasında desteklenir.
 
 
-**S:** Düşük öncelikli ölçek kümeleri `low` için kullanılıyorsa, bunun yerine kullanmaya `Spot` başlamam gerekir mi?
+**S:** `low`Düşük öncelikli ölçek kümeleri için kullanılıyorsa, bunun yerine kullanmaya başlamam gerekir `Spot` mi?
 
-Y **:** Şimdilik her ikisi de `low` `Spot` çalışır, ancak kullanmaya `Spot`geçiş başlatmanız gerekir.
+Y **:** Şimdilik her ikisi de `low` `Spot` çalışır, ancak kullanmaya geçiş başlatmanız gerekir `Spot` .
 
 
 **S:** Hem normal VM 'Ler hem de spot VM 'Ler içeren bir ölçek kümesi oluşturabilir miyim?

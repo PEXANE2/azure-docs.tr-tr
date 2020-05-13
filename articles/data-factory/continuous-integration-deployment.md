@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 87cb7c57aab048e1b7acf211d58c850a41afa5a2
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 54ff58735b6831bb45a9477360ffca3439d2f6b4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628256"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124729"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -88,7 +88,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
 1.  **Aşama adı** kutusuna ortamınızın adını girin.
 
-1.  **Yapıt Ekle**' yi seçin ve ardından geliştirme veri fabrikayla yapılandırılmış Git deposunu seçin. **Varsayılan dal**için deponun [Yayımla dalını](source-control.md#configure-publishing-settings) seçin. Bu yayın dalı varsayılan olarak `adf_publish`. **Varsayılan sürüm**için **varsayılan daldan en son**' u seçin.
+1.  **Yapıt Ekle**' yi seçin ve ardından geliştirme veri fabrikayla yapılandırılmış Git deposunu seçin. **Varsayılan dal**için deponun [Yayımla dalını](source-control.md#configure-publishing-settings) seçin. Bu yayın dalı varsayılan olarak `adf_publish` . **Varsayılan sürüm**için **varsayılan daldan en son**' u seçin.
 
     ![Yapıt ekleme](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -104,9 +104,9 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
     d.  **Eylem** listesinde, **kaynak grubunu oluştur veya Güncelleştir**' i seçin.
 
-    e.  **Şablon** kutusunun yanındaki üç nokta düğmesini (**...**) seçin. Yapılandırılmış git deposunun Yayımla dalınızda oluşturulan Azure Resource Manager şablonuna gözatamazsınız. Adf_publish dalının <FactoryName> klasöründe dosyayı `ARMTemplateForFactory.json` arayın.
+    e.  **Şablon** kutusunun yanındaki üç nokta düğmesini (**...**) seçin. Yapılandırılmış git deposunun Yayımla dalınızda oluşturulan Azure Resource Manager şablonuna gözatamazsınız. `ARMTemplateForFactory.json` <FactoryName> Adf_publish dalının klasöründe dosyayı arayın.
 
-    f.  Seç **...** **şablon parametreleri** kutusunun yanındaki parametreler dosyasını seçin. Adf_publish dalının <FactoryName> klasöründe dosyayı `ARMTemplateParametersForFactory.json` arayın.
+    f.  Seç **...** **şablon parametreleri** kutusunun yanındaki parametreler dosyasını seçin. `ARMTemplateParametersForFactory.json` <FactoryName> Adf_publish dalının klasöründe dosyayı arayın.
 
     g.  Seç **...** **şablon parametrelerinin üzerine yaz** kutusunun yanında, hedef veri fabrikası için istenen parametre değerlerini girin. Azure Key Vault gelen kimlik bilgileri için, çift tırnak işaretleri arasında gizli dizi adını girin. Örneğin, gizli dizinin adı cred1 ise, bu değer için **"$ (cred1)"** girin.
 
@@ -183,7 +183,7 @@ Etkin Tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarıs�
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-Dağıtımdan sonra Tetikleyicileri yeniden başlatmak için benzer adımları `Start-AzDataFactoryV2Trigger` (işleviyle birlikte) tamamlayabilirsiniz.
+`Start-AzDataFactoryV2Trigger`Dağıtımdan sonra Tetikleyicileri yeniden başlatmak için benzer adımları (işleviyle birlikte) tamamlayabilirsiniz.
 
 Data Factory ekibi, bu makalenin alt kısmında bulunan [örnek bir ön ve dağıtım sonrası betiği](#script) sağladı. 
 
@@ -228,14 +228,14 @@ Bir Kaynak Yöneticisi şablonu dışarı aktarırken, Data Factory yalnızca i�
 Aşağıda, **ARM-şablon-parametreleri-Definition. JSON**özel parametre dosyasını oluştururken izlenecek bazı yönergeler verilmiştir. Dosya her varlık türü için bir bölümden oluşur: tetikleyici, işlem hattı, bağlı hizmet, veri kümesi, tümleştirme çalışma zamanı ve veri akışı.
 
 * İlgili varlık türünün altında özellik yolunu girin.
-* İçin `*` bir özellik adının ayarlanması, altındaki tüm özellikleri parametreleştirmek istediğinizi (özyinelemeli değil, yalnızca ilk düzeye doğru değil) gösterir. Bu yapılandırmaya özel durumlar da sağlayabilirsiniz.
-* Bir özelliğin değerini dize olarak ayarlamak, özelliği parametreleştirmek istediğinizi gösterir. Biçimini `<action>:<name>:<stype>`kullanın.
+* İçin bir özellik adının ayarlanması  `*` , altındaki tüm özellikleri parametreleştirmek istediğinizi (özyinelemeli değil, yalnızca ilk düzeye doğru değil) gösterir. Bu yapılandırmaya özel durumlar da sağlayabilirsiniz.
+* Bir özelliğin değerini dize olarak ayarlamak, özelliği parametreleştirmek istediğinizi gösterir. Biçimini kullanın  `<action>:<name>:<stype>` .
    *  `<action>` Şu karakterlerden biri olabilir:
       * `=` , geçerli değeri parametresi için varsayılan değer olarak tutacağı anlamına gelir.
       * `-` parametresi için varsayılan değeri saklama anlamına gelir.
       * `|` , bağlantı dizeleri veya anahtarlar için Azure Key Vault parolalar için özel bir durumdur.
-   * `<name>` parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakterle başlıyorsa, ad kısaltılmıştır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` olarak `AzureStorage1_connectionString`kısaltılacak.
-   * `<stype>` parametrenin türüdür. Boşsa, varsayılan tür olur `string` `<stype>`  Desteklenen değerler: `string`, `bool`, `number` `object`, ve `securestring`.
+   * `<name>` parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakterle başlıyorsa, ad kısaltılmıştır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` olarak kısaltılacak `AzureStorage1_connectionString` .
+   * `<stype>` parametrenin türüdür.  `<stype>`   Boşsa, varsayılan tür olur `string` . Desteklenen değerler: `string` , `bool` , `number` , `object` ve `securestring` .
 * Tanım dosyasında bir dizi belirtilmesi, şablondaki eşleşen özelliğin bir dizi olduğunu gösterir. Data Factory, dizinin tümleştirme çalışma zamanı nesnesinde belirtilen tanımı kullanarak dizideki tüm nesneler arasında yinelenir. İkinci nesne, bir dize, her yineleme için parametresinin adı olarak kullanılan özelliğin adı olur.
 * Bir tanım, kaynak örneğine özgü olamaz. Herhangi bir tanım, bu türdeki tüm kaynaklar için geçerlidir.
 * Varsayılan olarak, Key Vault gizli dizileri ve bağlantı dizeleri, anahtarlar ve belirteçler gibi güvenli dizeler gibi tüm güvenli dizeler parametrelenir.
@@ -307,27 +307,27 @@ Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bö
 
 #### <a name="pipelines"></a>İşlem hatları
     
-* Yoldaki `activities/typeProperties/waitTimeInSeconds` herhangi bir özellik parametrelenir. Bir işlem hattındaki (örneğin, `waitTimeInSeconds` `Wait` etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
-* Benzer şekilde, adlı `headers` bir Özellik (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
+* Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
+* Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
 
 #### <a name="integrationruntimes"></a>Tümleştirme çalışma zamanları
 
-* Yolun `typeProperties` altındaki tüm özellikler, kendi varsayılan değerleriyle parametrelenir. Örneğin, tür özellikleri altında `IntegrationRuntimes` iki özellik vardır: `computeProperties` ve. `ssisProperties` Her iki özellik türü de ilgili varsayılan değerleri ve türleri (nesne) ile oluşturulur.
+* Yolun altındaki tüm özellikler, kendi `typeProperties` varsayılan değerleriyle parametrelenir. Örneğin, tür özellikleri altında iki özellik vardır `IntegrationRuntimes` : `computeProperties` ve `ssisProperties` . Her iki özellik türü de ilgili varsayılan değerleri ve türleri (nesne) ile oluşturulur.
 
 #### <a name="triggers"></a>Tetikleyiciler
 
-* Altında `typeProperties`iki özellik parametrelenir. Birincisi, varsayılan bir `maxConcurrency`değere sahip ve türünde`string`olan bir ' dır. Varsayılan parametre adı `<entityName>_properties_typeProperties_maxConcurrency`vardır.
-* `recurrence` Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum, tür `interval` `number`olarak parametreleştirilen özelliktir. Parametre adı ile `<entityName>_properties_typeProperties_recurrence_triggerSuffix`sondüzeltildi. Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
+* Altında `typeProperties` iki özellik parametrelenir. Birincisi, `maxConcurrency` varsayılan bir değere sahip ve türünde olan bir ' dır `string` . Varsayılan parametre adı vardır `<entityName>_properties_typeProperties_maxConcurrency` .
+* `recurrence`Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , tür olarak parametreleştirilen özelliktir `number` . Parametre adı ile sondüzeltildi `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, türündeki `AzureDataLakeStore`tüm bağlı hizmetler için belirli bir şablon uygulanır. Tüm diğerleri için (aracılığıyla `*`), farklı bir şablon uygulanır.
-* `connectionString` Özelliği bir `securestring` değer olarak parametrelendirilecektir. Varsayılan bir değere sahip olmayacaktır. Bu, ile `connectionString`Sonekli bir kısaltılmış parametre adı olacaktır.
+* Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, türündeki tüm bağlı hizmetler için `AzureDataLakeStore` belirli bir şablon uygulanır. Tüm diğerleri için (aracılığıyla `*` ), farklı bir şablon uygulanır.
+* `connectionString`Özelliği bir değer olarak parametrelendirilecektir `securestring` . Varsayılan bir değere sahip olmayacaktır. Bu, ile Sonekli bir kısaltılmış parametre adı olacaktır `connectionString` .
 * Özelliği `secretAccessKey` bir `AzureKeyVaultSecret` (örneğin, bir Amazon S3 bağlantılı hizmetinde) olur. Otomatik olarak Azure Key Vault gizli dizi olarak parametrelenir ve yapılandırılan anahtar kasasından alınır. Ayrıca, anahtar kasasının kendisini parametreleştirebilirsiniz.
 
 #### <a name="datasets"></a>Veri kümeleri
 
-* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, açıkça bir \*düzeyi yapılandırması olmadan yapılandırma sağlayabilirsiniz. Yukarıdaki örnekte, altındaki `typeProperties` tüm veri kümesi özellikleri parametrelenir.
+* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, açıkça bir düzeyi yapılandırması olmadan yapılandırma sağlayabilirsiniz \* . Yukarıdaki örnekte, altındaki tüm veri kümesi özellikleri `typeProperties` parametrelenir.
 
 ### <a name="default-parameterization-template"></a>Varsayılan parameterleştirme şablonu
 
@@ -443,7 +443,7 @@ Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnı
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Örnek: varolan Azure Databricks etkileşimli küme KIMLIĞINI parametrize etme
 
-Aşağıdaki örnek, varsayılan parameterleştirme şablonuna tek bir değerin nasıl ekleneceğini gösterir. Yalnızca bir Databricks bağlı hizmeti için mevcut Azure Databricks etkileşimli küme KIMLIĞINI parametreler dosyasına eklemek istiyoruz. Bu dosyanın, öğesinin `existingClusterId` `Microsoft.DataFactory/factories/linkedServices`Özellikler alanının altına eklenmesi hariç önceki dosyayla aynı olduğunu unutmayın.
+Aşağıdaki örnek, varsayılan parameterleştirme şablonuna tek bir değerin nasıl ekleneceğini gösterir. Yalnızca bir Databricks bağlı hizmeti için mevcut Azure Databricks etkileşimli küme KIMLIĞINI parametreler dosyasına eklemek istiyoruz. Bu dosyanın, `existingClusterId` öğesinin Özellikler alanının altına eklenmesi hariç önceki dosyayla aynı olduğunu unutmayın `Microsoft.DataFactory/factories/linkedServices` .
 
 ```json
 {
@@ -569,6 +569,26 @@ Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için,
 Dağıtım görevinden önce ve sonra, CI/CD işlem hattınızda Data Factory betikleri eklemeyi unutmayın.
 
 Git 'in yapılandırılıp yapılandırılmadığını, **ARM şablon** listesindeki **ARM şablonunu dışarı aktar** aracılığıyla bağlı şablonlara erişebilirsiniz.
+
+## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>CI/CD 'den Azure-SSIS tümleştirme çalışma zamanlarını hariç tut
+
+Geliştirme fabrikanızın Azure-SSIS tümleştirme çalışma zamanı varsa, aşağıdaki senaryoda bulunan tüm Azure-SSIS tümleştirme çalışma zamanlarını CI/CD işleminden hariç bırakabilirsiniz:
+
+- Azure-SSIS IR altyapı karmaşıktır ve her bir ortamda farklılık gösterir.  
+- Azure-SSIS IR, aynı ada sahip her bir ortam için el ile ayarlanır. Aksi takdirde, Azure-SSIS IR bağlı olarak etkinlik varsa yayımlama başarısız olur.
+
+Azure-SSIS tümleştirme çalışma zamanını dışlamak için:
+
+1. Mevcut değilse, işbirliği dalında kök klasöre bir publish_config. JSON dosyası ekleyin.
+1. Publish_config. JSON öğesine aşağıdaki ayarı ekleyin: 
+
+```json
+{
+    " excludeIRs": "true"
+}
+```
+
+İşbirliği dalından yayımlarken, Azure-SSIS tümleştirme çalışma zamanları oluşturulan Kaynak Yöneticisi şablondan dışlanır.
 
 ## <a name="hotfix-production-branch"></a>Düzeltme üretim Dalı
 

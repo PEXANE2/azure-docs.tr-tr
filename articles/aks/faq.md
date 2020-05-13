@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854250"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123828"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -127,6 +127,8 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS bir hizmet düzeyi sözleşmesi sunuyor mu?
 
+AKS, API sunucusu için [çalışma süresi SLA] [çalışma zamanı-sla.md] içeren% 99,95 kullanılabilirlik elde etmenizi sağlar.
+
 Hizmet düzeyi sözleşmesinde (SLA), sağlayıcı, yayımlanan hizmet düzeyi karşılanmazsa müşteriyi hizmetin maliyeti olarak tarafımızca kuruluşlarımız kabul eder. AKS ücretsizdir, tarafımızca kuruluşlarımız için kullanılabilir maliyet yok, bu nedenle AKS 'in resmi SLA 'Sı yok. Ancak, AKS, Kubernetes API sunucusu için en az% 99,5 kullanılabilirlik düzeyini korumak üzere arar.
 
 Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) okuyun.
@@ -137,7 +139,7 @@ AKS aracı düğümleri standart Azure sanal makineleri olarak faturalandırıl�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kümemi Azure kiracılar arasında taşıyabilir/geçirebilir miyim?
 
-Bu `az aks update-credentials` komut, BIR aks kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](https://docs.microsoft.com/azure/aks/update-credentials) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+Bu `az aks update-credentials` komut, BIR AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](https://docs.microsoft.com/azure/aks/update-credentials) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Abonelikler arasında kümemi taşıyabilir/geçirebilir miyim?
 
@@ -173,7 +175,7 @@ Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçek kümesi API 'Lerini el ile ölçeklendirmek için kullanabilir miyim?
 
-Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez. AKS API 'Lerini (`az aks scale`) kullanın.
+Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez. AKS API 'Lerini ( `az aks scale` ) kullanın.
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Sanal makine ölçek kümelerini, 0 düğüme el ile ölçeklendirmek için kullanabilir miyim?
 
@@ -209,6 +211,7 @@ Hiçbir AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklen
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[çalışma süresi-SLA]./uptime-sla.mdd
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612478"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121074"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX uygulama iliştirmeyi ayarlama
 
@@ -41,7 +41,7 @@ Başlamadan önce, MSIX uygulama iliştirme 'yi yapılandırmak için gerekenler
      >[!NOTE]
      >Windows Insider portalına erişmek için Windows Insider programının üyesi olmanız gerekir. Windows Insider programı hakkında daha fazla bilgi edinmek için [Windows Insider belgelerimize](/windows-insider/at-home/)göz atın.
 
-2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (Fast) – Build 19035** veya üzeri ' i seçin.
+2. **Seç sürümü** bölümüne gidin ve **Windows 10 Insider PREVIEW Enterprise (Fast) – Build 19041** veya üzeri ' i seçin.
 
 3. **Onayla**' yı seçin, ardından kullanmak istediğiniz dili seçin ve sonra yeniden **Onayla** ' yı seçin.
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+Otomatik güncelleştirmeleri devre dışı bırakıldıktan sonra, Hyper-V ' ı etkinleştirmeniz gerekir, çünkü VHD 'yi hazırlamak ve ve çıkarmak için-VHD 'yi, önbellekten çıkarmak için. 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>Bu değişiklik, sanal makineyi yeniden başlatmanızı gerektirir.
 
 Ardından, Azure için VM VHD 'yi hazırlayın ve elde edilen VHD diskini Azure 'a yükleyin. Daha fazla bilgi için bkz. [ana VHD görüntüsünü hazırlama ve özelleştirme](set-up-customize-master-image.md).
 
@@ -211,7 +219,7 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
 
 5.  Bir komut istemi açın ve **mountvol**yazın. Bu komut, birimlerin ve GUID 'Lerinin bir listesini görüntüler. 2. adımda sürücü harfinin VHD 'nizi bağladığınız sürücüyle eşleşen birimin GUID 'sini kopyalayın.
 
-    Örneğin, mountvol komutuna yönelik bu örnek çıktıda, VHD 'nizi C sürücüsüne bağladıysanız Yukarıdaki `C:\`değeri kopyalamak isteyeceksiniz:
+    Örneğin, mountvol komutuna yönelik bu örnek çıktıda, VHD 'nizi C sürücüsüne bağladıysanız yukarıdaki değeri kopyalamak isteyeceksiniz `C:\` :
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -257,7 +265,7 @@ PowerShell betiklerini güncelleştirmeden önce, VHD 'deki birimin birim GUID '
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 

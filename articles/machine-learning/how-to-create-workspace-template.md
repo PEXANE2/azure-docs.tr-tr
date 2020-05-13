@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2a35b75d2896f6e04c68d7562ed9f5455006ae4d
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983270"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121329"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Machine Learning için bir çalışma alanı oluşturmak üzere Azure Resource Manager şablonu kullanma
 
@@ -85,201 +85,79 @@ Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl o
 
 Daha fazla bilgi için bkz. [bekleyen şifreleme](concept-enterprise-security.md#encryption-at-rest).
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "workspaceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the Azure Machine Learning workspace."
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "southcentralus",
-      "allowedValues": [
-        "eastus",
-        "eastus2",
-        "southcentralus",
-        "southeastasia",
-        "westcentralus",
-        "westeurope",
-        "westus2"
-      ],
-      "metadata": {
-        "description": "Specifies the location for all resources."
-      }
-    },
-    "sku":{
-      "type": "string",
-      "defaultValue": "basic",
-      "allowedValues": [
-        "basic",
-        "enterprise"
-      ],
-      "metadata": {
-        "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
-      }
-    },
-    "high_confidentiality":{
-      "type": "string",
-      "defaultValue": "false",
-      "allowedValues": [
-        "false",
-        "true"
-      ],
-      "metadata": {
-        "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
-      }
-    },
-    "encryption_status":{
-      "type": "string",
-      "defaultValue": "Disabled",
-      "allowedValues": [
-        "Enabled",
-        "Disabled"
-      ],
-      "metadata": {
-        "description": "Specifies if the Azure Machine Learning workspace should be encrypted with the customer managed key."
-      }
-    },
-    "cmk_keyvault":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault Resource Manager ID."
-      }
-    },
-    "resource_cmk_uri":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault key uri."
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
-    "storageAccountType": "Standard_LRS",
-    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
-    "tenantId": "[subscription().tenantId]",
-    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]",
-    "containerRegistryName": "[concat('cr',uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2018-07-01",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "StorageV2",
-      "properties": {
-        "encryption": {
-          "services": {
-            "blob": {
-              "enabled": true
-            },
-            "file": {
-              "enabled": true
-            }
-          },
-          "keySource": "Microsoft.Storage"
-        },
-        "supportsHttpsTrafficOnly": true
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2018-02-14",
-      "name": "[variables('keyVaultName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "tenantId": "[variables('tenantId')]",
-        "sku": {
-          "name": "standard",
-          "family": "A"
-        },
-        "accessPolicies": []
-      }
-    },
-    {
-      "type": "Microsoft.Insights/components",
-      "apiVersion": "2015-05-01",
-      "name": "[variables('applicationInsightsName')]",
-      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
-      "kind": "web",
-      "properties": {
-        "Application_Type": "web"
-      }
-    },
-    {
-      "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2017-10-01",
-      "name": "[variables('containerRegistryName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "Standard"
-      },
-      "properties": {
-        "adminUserEnabled": true
-      }
-    },
-    {
-      "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2020-01-01",
-      "name": "[parameters('workspaceName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
-        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
-        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
-      ],
-      "identity": {
-        "type": "systemAssigned"
-      },
-      "sku": {
-            "tier": "[parameters('sku')]",
-            "name": "[parameters('sku')]"
-      },
-      "properties": {
-        "friendlyName": "[parameters('workspaceName')]",
-        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
-        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
-        "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
-        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]",
-         "encryption": {
-                "status": "[parameters('encryption_status')]",
-                "keyVaultProperties": {
-                    "keyVaultArmId": "[parameters('cmk_keyvault')]",
-                    "keyIdentifier": "[parameters('resource_cmk_uri')]"
-                  }
-            },
-        "hbiWorkspace": "[parameters('high_confidentiality')]"
-      }
-    }
-  ]
-}
-```
+> [!IMPORTANT]
+> Bu şablonu kullanmadan önce aboneliğinizin karşılaması gereken bazı özel gereksinimler vardır:
+> * __Azure Machine Learning__ uygulaması Azure aboneliğiniz için __katkıda bulunan__ olmalıdır.
+> * Şifreleme anahtarı içeren bir Azure Key Vault var olmalıdır.
+> * __Azure Cosmos DB__ uygulamasına __Get__, __Wrap__ve __sarmalama__ erişimini sağlayan Azure Key Vault bir erişim ilkeniz olması gerekir.
+> * Azure Key Vault, Azure Machine Learning çalışma alanını oluşturmayı planladığınız bölgede olmalıdır.
+> * Aboneliğiniz, Azure Cosmos DB için __müşteri tarafından yönetilen anahtarları__ desteklemelidir.
 
-Key Vault KIMLIĞINI ve bu şablon için gereken anahtar URI 'sini almak için Azure CLı 'yi kullanabilirsiniz. Aşağıdaki komut Key Vault KIMLIĞINI alır:
+__Azure Machine Learning uygulamayı katkıda bulunan olarak eklemek için__aşağıdaki komutları kullanın:
 
-```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
-```
+1. CLı 'dan Azure 'da kimlik doğrulaması yapmak için aşağıdaki komutu kullanın:
 
-Bu komut şuna benzer bir değer döndürür `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`.
+    ```azurecli-interactive
+    az login
+    ```
+    
+    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
 
-Müşteri tarafından yönetilen anahtar için URI 'yi almak için aşağıdaki komutu kullanın:
+1. Azure Machine Learning uygulamasının nesne KIMLIĞINI almak için aşağıdaki komutu kullanın. Değer, Azure aboneliklerinizin her biri için farklı olabilir:
 
-```azurecli-interactive
-az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
-```
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
 
-Bu komut şuna benzer bir değer döndürür `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`.
+    Bu komut, GUID olan nesne KIMLIĞINI döndürür.
+
+1. Aboneliğinize katkıda bulunan nesne KIMLIĞINI eklemek için aşağıdaki komutu kullanın. `<object-ID>`Önceki ADıMDAN GUID ile değiştirin. `<subscription-ID>`Azure aboneliğinizin adı veya kimliğiyle değiştirin:
+
+    ```azurecli-interactive
+    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
+    ```
+
+__Azure Key Vault bir anahtar eklemek Için__ __Azure CLI kullanarak Key Vault yönetme__ makalesindeki anahtar [Kasası ' nda anahtar, gizli dizi veya sertifika ekleme](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) bölümündeki bilgileri kullanın.
+
+__Anahtar kasasına bir erişim ilkesi eklemek için aşağıdaki komutları kullanın__:
+
+1. Azure Cosmos DB uygulamasının nesne KIMLIĞINI almak için aşağıdaki komutu kullanın. Değer, Azure aboneliklerinizin her biri için farklı olabilir:
+
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
+    
+    Bu komut, GUID olan nesne KIMLIĞINI döndürür.
+
+1. İlkeyi ayarlamak için aşağıdaki komutu kullanın. `<keyvault-name>`Varolan Azure Key Vault adıyla değiştirin. `<object-ID>`Önceki ADıMDAN GUID ile değiştirin:
+
+    ```azurecli-interactive
+    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
+    ```
+
+__Azure Cosmos DB için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere__ azurecosmosdbcmk@service.microsoft.com Azure abonelik Kimliğinizle posta gönderin. Daha fazla bilgi için bkz. [Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları yapılandırma](..//cosmos-db/how-to-setup-cmk.md).
+
+__To get the values__ `cmk_keyvault` Bu şablon için gereken (Key Vault kimliği) ve `resource_cmk_uri` (anahtar URI) parametrelerinin değerlerini almak için aşağıdaki adımları kullanın:
+
+1. Key Vault KIMLIĞI almak için aşağıdaki komutu kullanın:
+
+    ```azurecli-interactive
+    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    ```
+
+    Bu komut şuna benzer bir değer döndürür `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+
+1. Müşteri tarafından yönetilen anahtar için URI değerini almak üzere aşağıdaki komutu kullanın:
+
+    ```azurecli-interactive
+    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    ```
+
+    Bu komut şuna benzer bir değer döndürür `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
+
+__Örnek şablon__
+
+:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Bir çalışma alanı oluşturulduktan sonra gizli verilerin, şifrelemenin, Anahtar Kasası KIMLIĞININ veya anahtar tanımlayıcılarının ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
@@ -298,7 +176,7 @@ Daha fazla bilgi için bkz. [özel şablondan kaynak dağıtma](../azure-resourc
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
-Bu örnekte, şablonu geçerli dizinde adlı `azuredeploy.json` bir dosyaya kaydettiğiniz varsayılır:
+Bu örnekte, şablonu geçerli dizinde adlı bir dosyaya kaydettiğiniz varsayılır `azuredeploy.json` :
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -311,7 +189,7 @@ Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtm
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-Bu örnekte, şablonu geçerli dizinde adlı `azuredeploy.json` bir dosyaya kaydettiğiniz varsayılır:
+Bu örnekte, şablonu geçerli dizinde adlı bir dosyaya kaydettiğiniz varsayılır `azuredeploy.json` :
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -340,13 +218,13 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 * Aynı parametreler için şablonu birden çok kez dağıtmayın. Ya da yeniden oluşturmak için şablonu kullanmadan önce mevcut kaynakları silin.
 
-* Key Vault erişim ilkelerini inceleyin ve sonra şablonun `accessPolicies` özelliğini ayarlamak için bu ilkeleri kullanın. Erişim ilkelerini görüntülemek için aşağıdaki Azure CLı komutunu kullanın:
+* Key Vault erişim ilkelerini inceleyin ve sonra şablonun özelliğini ayarlamak için bu ilkeleri kullanın `accessPolicies` . Erişim ilkelerini görüntülemek için aşağıdaki Azure CLı komutunu kullanın:
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    Şablonun `accessPolicies` bölümünü kullanma hakkında daha fazla bilgi Için [accesspolicyentry nesne başvurusuna](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)bakın.
+    Şablonun bölümünü kullanma hakkında daha fazla bilgi için `accessPolicies` [Accesspolicyentry nesne başvurusuna](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)bakın.
 
 * Key Vault kaynağının zaten var olup olmadığını denetleyin. Varsa, şablon aracılığıyla yeniden oluşturmayın. Örneğin, yeni bir tane oluşturmak yerine varolan Key Vault kullanmak için, şablonda aşağıdaki değişiklikleri yapın:
 
@@ -381,7 +259,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
         },
         ```
 
-    * **Remove** Çalışma alanının `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` `dependsOn` bölümündeki satırı kaldırın. Ayrıca **Change** , çalışma `keyVault` alanının `properties` bölümündeki girişi `keyVaultId` parametreye başvuracak şekilde değiştirin:
+    * **Remove** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` `dependsOn` Çalışma alanının bölümündeki satırı kaldırın. Ayrıca **Change** , `keyVault` `properties` çalışma alanının bölümündeki girişi parametreye başvuracak şekilde değiştirin `keyVaultId` :
 
         ```json
         {
@@ -409,7 +287,7 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
         }
         ```
 
-    Bu değişikliklerden sonra, şablonu çalıştırırken mevcut Key Vault kaynağının KIMLIĞINI belirtebilirsiniz. Daha sonra şablon, çalışma alanının `keyVault` özelliğini kimliğine ayarlayarak Key Vault yeniden kullanacaktır.
+    Bu değişikliklerden sonra, şablonu çalıştırırken mevcut Key Vault kaynağının KIMLIĞINI belirtebilirsiniz. Daha sonra şablon, `keyVault` çalışma alanının ÖZELLIĞINI kimliğine ayarlayarak Key Vault yeniden kullanacaktır.
 
     Key Vault KIMLIĞINI almak için özgün şablon çalıştırmasının çıkışına başvurabilirsiniz veya Azure CLı 'yi kullanabilirsiniz. Aşağıdaki komut, Key Vault kaynak KIMLIĞINI almak için Azure CLı kullanma örneğidir:
 

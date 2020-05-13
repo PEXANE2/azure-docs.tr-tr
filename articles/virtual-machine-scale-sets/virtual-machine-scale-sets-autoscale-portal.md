@@ -2,18 +2,19 @@
 title: Azure portal sanal makine ölçek kümelerini otomatik ölçeklendirme
 description: Azure portal sanal makine ölçek kümeleri için otomatik ölçeklendirme kuralları oluşturma
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms:service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 05/29/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010299"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124950"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portal bir sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır.
@@ -45,7 +46,7 @@ Uygulamanızın talebi artarsa, ölçek kümenizdeki sanal makine örneklerinde 
     | *Zaman toplama*     | Toplanan ölçümlerin analiz için nasıl bir araya getirileceğini tanımlar.                                                | Ortalama        |
     | *Ölçüm adı*          | İzlenecek ve ölçek kümesi eylemlerinin uygulanmasında temel alınacak performans ölçümü.                                                   | CPU yüzdesi |
     | *Zaman dilimi istatistiği* | Her seferinde toplanan ölçümlerin analiz için nasıl toplanması gerektiğini tanımlar.                             | Ortalama        |
-    | *İşleç*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
+    | *İşlecinde*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                     | Büyüktür   |
     | *Eşiği*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan yüzde.                                                 | 70             |
     | *Süre*             | Ölçüm ve eşik değerleri karşılaştırılmadan önce izlenecek süre.                                   | 10 dakika     |
     | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerekip gerekmediğini tanımlar                        | Yüzdeyi yüzde artır |
@@ -69,7 +70,7 @@ Bir akşam veya hafta sonu uygulama talebiniz azalabilir. Yük belirli bir süre
     
     | Parametre              | Açıklama                                                                                                          | Değer          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *İşleç*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                      | Küçüktür   |
+    | *İşlecinde*             | Ölçüm verilerini eşikle karşılaştırmak için kullanılan işleç.                                                      | Küçüktür   |
     | *Eşiği*            | Otomatik ölçeklendirme kuralının bir eylemi tetiklemesine neden olan yüzde.                                                 | 30             |
     | *İşlem*            | Kural geçerli olduğunda ölçek kümesinin ölçeği büyütme veya küçültme yapmanız gerekip gerekmediğini tanımlar                         | Yüzdeyi azalt |
     | *Örnek sayısı*       | Kural tetiklendiğinde değiştirilmesi gereken sanal makine örneklerinin yüzdesi.                                             | 20             |

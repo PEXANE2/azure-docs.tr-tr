@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS) sistem düğüm havuzları olu�
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790567"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125256"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetindeki (AKS) sistem düğüm havuzlarını yönetme
 
@@ -50,6 +50,7 @@ Düğüm havuzlarıyla aşağıdaki işlemleri yapabilirsiniz:
 * Kullanıcı düğümü havuzlarını silin.
 * Sistem düğüm havuzlarını, kendi AKS kümesindeki yerini almak için başka bir sistem düğüm havuzunuz olması şartıyla silebilirsiniz.
 * AKS kümesinde birden fazla sistem düğüm havuzu olabilir ve en az bir sistem düğüm havuzu gerekir.
+* Mevcut düğüm havuzlarındaki çeşitli sabit ayarları değiştirmek istiyorsanız, bunları değiştirmek için yeni düğüm havuzları oluşturabilirsiniz. Bir örnek, yeni bir maxPods ayarı ile yeni bir düğüm havuzu eklemek ve eski düğüm havuzunu silmektir.
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Sistem düğüm havuzu ile yeni bir AKS kümesi oluşturma
 

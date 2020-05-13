@@ -1,21 +1,20 @@
 ---
 title: Visual Studio kullanarak sanal makine ölçek kümesini dağıtma
 description: Visual Studio ve bir Kaynak Yöneticisi şablonu kullanarak sanal makine ölçek kümeleri dağıtma
-ms.custom: vs-azure, H1Hack27Feb2017
-ms.workload: azure-vs
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: visual-studio
 ms.date: 09/09/2019
-ms.author: mimckitt
-ms.openlocfilehash: adc91d5f4f79be8a85dfed7d10a882493f6427b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273350"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124372"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio ile sanal makine ölçek kümesi oluşturma
 
@@ -65,7 +64,7 @@ Yük dengeleyici, sanal makine örneklerine SSH (Linux) veya RDP (Windows) ile b
 
 Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manager şablonunu dağıtın:
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve**Yeni** **Dağıt** > ' ı seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve yeni **Dağıt**' ı seçin  >  **New**.
 
     ![Projenizi dağıtma](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -85,7 +84,7 @@ Sanal makine ölçek kümesi kaynağını oluşturmak için Azure Resource Manag
 
 ## <a name="explore-your-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini keşfet<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Yeni sanal makine ölçek kümesini görüntülemek için**bulut Gezginini** **görüntüle** > ' yi seçin. Gerekirse **Tümünü Yenile**seçeneğini kullanın.
+**View**  >  Yeni sanal makine ölçek kümesini görüntülemek için**bulut Gezginini** görüntüle ' yi seçin. Gerekirse **Tümünü Yenile**seçeneğini kullanın.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

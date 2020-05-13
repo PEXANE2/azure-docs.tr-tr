@@ -1,20 +1,20 @@
 ---
 title: Azure haritalar ile harita oluşturma | Microsoft Azure haritaları
 description: Bu makalede, bir Web sayfasında Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritanın nasıl işleneceğini öğreneceksiniz.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c85d6078fce7fc8e5a5b5d8485517a8b262044a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97eb1ebb61e5ff78ed918fded8107f5775b533c2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802340"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124032"
 ---
 # <a name="create-a-map"></a>Harita oluşturma
 
@@ -22,12 +22,12 @@ Bu makalede harita oluşturma ve Haritayı canlandırma yolları gösterilmekted
 
 ## <a name="loading-a-map"></a>Harita yükleme
 
-Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)yeni bir örneğini oluşturun. Haritayı başlatırken, Haritayı işlemek için bir DIV öğe KIMLIĞI geçirin ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirin. `atlas` Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse, eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra haritaya bir `ready` veya `load` olayı ekleyin ve ardından eşleme ile etkileşimde bulunan ek kodu olay işleyicisine ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. İlk `load` harita görünümü tamamen yüklemeyi tamamladıktan sonra olay ateşlenir. 
+Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)yeni bir örneğini oluşturun. Haritayı başlatırken, Haritayı işlemek için bir DIV öğe KIMLIĞI geçirin ve eşleme yüklenirken kullanılacak bir seçenek kümesi geçirin. Ad alanında varsayılan kimlik doğrulama bilgileri belirtilmemişse `atlas` , eşleme yüklenirken bu bilgilerin eşleme seçeneklerinde belirtilmesi gerekir. Eşleme, performans için birkaç kaynağı zaman uyumsuz olarak yükler. Bu nedenle, eşleme örneğini oluşturduktan sonra `ready` haritaya bir veya olayı ekleyin `load` ve ardından eşleme ile etkileşimde bulunan ek kodu olay işleyicisine ekleyin. Bu `ready` olay, haritada programlı olarak bir şekilde etkileşim altına almak için yeterli miktarda kaynak yüklendiği anda ateşlenir. `load`İlk harita görünümü tamamen yüklemeyi tamamladıktan sonra olay ateşlenir. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Temel harita yüklemesi" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>temel haritasını</a> inceleyin.
+Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>temel haritasını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -35,12 +35,12 @@ Eşleme yüklemek için, [Map sınıfının](https://docs.microsoft.com/javascri
 
 ## <a name="show-a-single-copy-of-the-world"></a>Dünyanın tek bir kopyasını göster
 
-Harita geniş bir ekranda yakınlaştırıldığında dünyanın birden fazla kopyası yatay olarak görünür. Bu seçenek bazı senaryolar için idealdir, ancak diğer uygulamalar için dünyanın tek bir kopyasını görmeniz istenebilir. Bu davranış, haritalar `renderWorldCopies` seçeneği olarak `false`ayarlanarak uygulanır.
+Harita geniş bir ekranda yakınlaştırıldığında dünyanın birden fazla kopyası yatay olarak görünür. Bu seçenek bazı senaryolar için idealdir, ancak diğer uygulamalar için dünyanın tek bir kopyasını görmeniz istenebilir. Bu davranış, haritalar seçeneği olarak ayarlanarak uygulanır `renderWorldCopies` `false` .
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Renderworldkopyaları = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Için bkz. <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderworldkopyaların = false</a> .
+Codepen üzerinde Azure Maps () için bkz. <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>Renderworldkopyaların = false</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -53,17 +53,17 @@ Bir harita oluştururken, eşlemenin aşağıda listelenen şekilde nasıl çal�
 - Stil [seçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) , haritanın biçimlendirilmiş ve işlenmiş olması gerektiğini belirtmek için kullanılır.
 - [Userınteractionoptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) , kullanıcının haritada etkileşim kurarken eşlemenin nasıl ulaşması gerektiğini belirtmek için kullanılır. 
 
-Bu seçenekler `setCamera`, `setServiceOptions` `setStyle`eşleme yüklendikten sonra,,, ve `setUserInteraction` işlevleri kullanılarak da güncelleştirilir. 
+Bu seçenekler, eşleme yüklendikten sonra,,, ve işlevleri kullanılarak da güncelleştirilir `setCamera` `setServiceOptions` `setStyle` `setUserInteraction` . 
 
 ## <a name="controlling-the-map-camera"></a>Harita kamerasını denetleme
 
-Harita kamerasını kullanarak haritanın görüntülenen alanını ayarlamak için iki yol vardır. Haritayı yüklerken kamera seçeneklerini ayarlayabilirsiniz. Veya, eşleme görünümünü program aracılığıyla `setCamera` güncelleştirmek için eşleme yüklendikten sonra istediğiniz zaman çağırabilirsiniz.  
+Harita kamerasını kullanarak haritanın görüntülenen alanını ayarlamak için iki yol vardır. Haritayı yüklerken kamera seçeneklerini ayarlayabilirsiniz. Veya, eşleme `setCamera` görünümünü program aracılığıyla güncelleştirmek için eşleme yüklendikten sonra istediğiniz zaman çağırabilirsiniz.  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>Kamerayı ayarlama
 
-Harita Kamerası, harita tuvalinin görünüm penceresinde neyin görüntülendiğini denetler. Kamera seçenekleri, başlatılan veya haritalar `setCamera` işlevine geçirildiğinde harita seçeneklerine geçirilebilir.
+Harita Kamerası, harita tuvalinin görünüm penceresinde neyin görüntülendiğini denetler. Kamera seçenekleri, başlatılan veya haritalar işlevine geçirildiğinde harita seçeneklerine geçirilebilir `setCamera` .
 
 ```javascript
 //Set the camera options when creating the map.
@@ -85,7 +85,7 @@ Aşağıdaki kodda bir [harita nesnesi](https://docs.microsoft.com/javascript/ap
 
 <br/>
 
-<iframe height='500' scrolling='no' title='CameraOptions aracılığıyla harita oluşturma' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure konum tabanlı hizmetler (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>bir harita `CameraOptions` oluşturma </a>kalemine bakın.
+<iframe height='500' scrolling='no' title='CameraOptions aracılığıyla harita oluşturma' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure konum tabanlı hizmetler () ile <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>bir harita `CameraOptions` oluşturma </a>kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 <a id="setCameraBoundsOptions"></a>
@@ -101,11 +101,11 @@ map.setCamera({
 });
 ```
 
-Aşağıdaki kodda, ile `new atlas.Map()`bir [Map nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) oluşturulur. Gibi eşleme özellikleri `CameraBoundsOptions` , Map sınıfının [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) işlevi aracılığıyla tanımlanabilir. Sınırlar ve doldurma özellikleri kullanılarak `setCamera`ayarlanır.
+Aşağıdaki kodda, ile bir [Map nesnesi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) oluşturulur `new atlas.Map()` . Gibi eşleme özellikleri `CameraBoundsOptions` , Map sınıfının [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) işlevi aracılığıyla tanımlanabilir. Sınırlar ve doldurma özellikleri kullanılarak ayarlanır `setCamera` .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='CameraBoundsOptions aracılığıyla harita oluşturma' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>bir harita `CameraBoundsOptions` oluşturma </a>kalemine bakın.
+<iframe height='500' scrolling='no' title='CameraBoundsOptions aracılığıyla harita oluşturma' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>bir harita `CameraBoundsOptions` oluşturma </a>kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ### <a name="animate-map-view"></a>Harita görünümüne animasyon ekleme
@@ -121,11 +121,11 @@ map.setCamera({
 });
 ```
 
-Aşağıdaki kodda, ilk kod bloğu bir harita oluşturur ve ENTER ve zoom harita stillerini ayarlar. İkinci kod bloğunda, animasyon düğmesi için bir tıklama olayı işleyicisi oluşturulur. Bu düğme tıklandığında, `setCamera` işlev [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) ve [animationoptions](/javascript/api/azure-maps-control/atlas.animationoptions)için bazı rastgele değerlerle çağırılır.
+Aşağıdaki kodda, ilk kod bloğu bir harita oluşturur ve ENTER ve zoom harita stillerini ayarlar. İkinci kod bloğunda, animasyon düğmesi için bir tıklama olayı işleyicisi oluşturulur. Bu düğme tıklandığında, `setCamera` Işlev [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) ve [animationoptions](/javascript/api/azure-maps-control/atlas.animationoptions)için bazı rastgele değerlerle çağırılır.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Harita görünümüne animasyon ekleme' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile ilgili <a href='https://codepen.io/azuremaps/pen/WayvbO/'>harita görünümü</a> kalemine bakın.
+<iframe height='500' scrolling='no' title='Harita görünümüne animasyon ekleme' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure haritalar () ile ilgili <a href='https://codepen.io/azuremaps/pen/WayvbO/'>harita görünümü</a> kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="try-out-the-code"></a>Kodu deneyin

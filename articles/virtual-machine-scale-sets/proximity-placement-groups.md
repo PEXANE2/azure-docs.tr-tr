@@ -1,19 +1,20 @@
 ---
 title: Sanal Makine Ölçek Kümeleri için yakınlık yerleşimi grupları önizlemesi
 description: Azure 'da Windows sanal makine ölçek kümeleri için yakınlık yerleşimi grupları oluşturma ve kullanma hakkında bilgi edinin.
-author: cynthn
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.subservice: availability
 ms.date: 07/01/2019
-ms.author: cynthn
-ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273614"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124355"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Önizleme: PowerShell kullanarak yakınlık yerleşimi grupları oluşturma ve kullanma
 
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
 
-Ölçek kümesini oluşturmak için `-ProximityPlacementGroup $ppg.Id` [New-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) KULLANDıĞıNıZDA yakınlık yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
+`-ProximityPlacementGroup $ppg.Id`Ölçek kümesini oluşturmak Için [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) kullandığınızda YAKıNLıK yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

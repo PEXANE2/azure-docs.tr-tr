@@ -1,23 +1,23 @@
 ---
 title: Sanal makine ölçek kümeleriyle otomatik ölçeklendirme sorunlarını giderme
 description: Sanal makine ölçek kümeleriyle otomatik ölçeklendirme sorunlarını giderin. Karşılaşılan tipik sorunları ve bunların nasıl çözümleneceğini anlayın.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
+author: avirishuv
+ms.author: avverma
+ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: windows
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 11/16/2017
-ms.author: mimckitt
-ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviwer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273384"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125154"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleriyle otomatik ölçeklendirme sorunlarını giderme
-**Sorun** : https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.
+**Sorun** : sanal makine ölçek kümelerini kullanarak Azure Resource Manager bir otomatik ölçeklendirme altyapısı oluşturdunuz; Örneğin, bunun gibi bir şablon dağıtarak, https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale Ölçek kurallarınızı tanımlamış ve VM 'lere ne kadar yük yerleştirdiğinize bakılmaksızın, otomatik ölçeklendirme yapmaz.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 Göz önünde bulundurulması gereken bazı noktalar şunlardır:
@@ -40,13 +40,13 @@ Göz önünde bulundurulması gereken bazı noktalar şunlardır:
     Hataları oluşturmak kolaydır, bu nedenle, üzerinde değişen bir şablonla başlayın ve küçük artımlı değişiklikler yapın. 
 * El ile ölçeklendirebilir veya kapatabilirsiniz mi?
   
-    VM sayısını el ile değiştirmek için sanal makine ölçek kümesi kaynağını farklı bir "kapasite" ayarıyla yeniden dağıtmaya çalışın. Örnek bir şablon aşağıda verilmiştir: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – ölçek kümesi tarafından kullanılan makine boyutuna sahip olduğundan emin olmak için şablonu düzenlemeniz gerekebilir. VM sayısını el ile başarıyla değiştirebiliyorsanız, sorunun otomatik ölçeklendirme için yalıtılmış olduğunu bilirsiniz.
+    VM sayısını el ile değiştirmek için sanal makine ölçek kümesi kaynağını farklı bir "kapasite" ayarıyla yeniden dağıtmaya çalışın. Örnek bir şablon aşağıda verilmiştir: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – Ölçek kümesi tarafından kullanılan makine boyutuna sahip olduğundan emin olmak için şablonu düzenlemeniz gerekebilir. VM sayısını el ile başarıyla değiştirebiliyorsanız, sorunun otomatik ölçeklendirme için yalıtılmış olduğunu bilirsiniz.
 * Microsoft. COMPUTE/virtualMachineScaleSet ve Microsoft. Insights kaynaklarınızı [Azure Kaynak Gezgini](https://resources.azure.com/) denetleyin
   
     Azure Kaynak Gezgini, Azure Resource Manager kaynaklarınızın durumunu gösteren bir olmazdır sorun giderme aracıdır. Aboneliğinize tıklayın ve sorun gidermekte olduğunuz kaynak grubuna bakın. Işlem kaynak sağlayıcısı altında, oluşturduğunuz sanal makine ölçek kümesine bakın ve dağıtım durumunu gösteren örnek görünümünü denetleyin. Ayrıca, sanal makine ölçek kümesindeki VM 'lerin örnek görünümünü kontrol edin. Ardından, Microsoft. Insights kaynak sağlayıcısına gidin ve otomatik ölçeklendirme kurallarının doğru olup olmadığını denetleyin.
 * Tanılama uzantısı çalışıyor ve performans verileri yaysın mı?
   
-    **Güncelleştirme:** Azure otomatik ölçeklendirme, artık bir tanılama uzantısının yüklenmesini gerektirmeyen ana bilgisayar tabanlı ölçüm işlem hattını kullanacak şekilde geliştirilmiştir. Yeni işlem hattını kullanarak bir otomatik ölçeklendirme uygulaması oluşturursanız, sonraki birkaç paragraf artık uygulanmaz. Ana bilgisayar ardışık düzenini kullanacak şekilde dönüştürülmüş Azure şablonlarının bir örneği burada bulunabilir: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Güncelleştirme:** Azure otomatik ölçeklendirme, artık bir tanılama uzantısının yüklenmesini gerektirmeyen ana bilgisayar tabanlı ölçüm işlem hattını kullanacak şekilde geliştirilmiştir. Yeni işlem hattını kullanarak bir otomatik ölçeklendirme uygulaması oluşturursanız, sonraki birkaç paragraf artık uygulanmaz. Ana bilgisayar ardışık düzenini kullanacak şekilde dönüştürülmüş Azure şablonlarının bir örneği burada bulunabilir: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale . 
   
     Otomatik ölçeklendirme için ana bilgisayar tabanlı ölçümlerin kullanılması aşağıdaki nedenlerden dolayı daha iyidir:
   

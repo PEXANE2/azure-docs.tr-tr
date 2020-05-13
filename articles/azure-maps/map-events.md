@@ -1,20 +1,20 @@
 ---
 title: Eşleme olaylarını işle | Microsoft Azure haritaları
 description: Bu makalede, harita olayları ile etkileşimli Web SDK haritasını Microsoft Azure Maps web SDK 'sını kullanarak nasıl yapacağınızı öğreneceksiniz.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534907"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124015"
 ---
 # <a name="interact-with-the-map"></a>Harita ile etkileşim kurma
 
@@ -26,7 +26,7 @@ Aşağıdaki haritada yürütün ve sağ tarafta vurgulanan ilgili fare olaylar�
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Harita ile etkileşim kurma – fare olayları' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kalemin <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>harita – fare olayları Ile</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io'>codepen</a>.
+<iframe height='600' scrolling='no' title='Harita ile etkileşim kurma – fare olayları' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. kalemin <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>harita – fare olayları Ile</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) Ile <a href='https://codepen.io'>codepen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>Harita katmanları ile etkileşim kurma
@@ -35,7 +35,7 @@ Aşağıdaki kod, simge katmanıyla etkileşime geçerek tetiklenen olayı vurgu
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Harita-katman olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'da <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>harita-katman olayları</a> (Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile etkileşim kurma kalemine bakın.
+<iframe height='600' scrolling='no' title='Harita-katman olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>harita-katman olayları</a> (Azure Maps () Ile etkileşim kurma kalemine bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>HTML Işaretleyicisi ile etkileşim kurma
@@ -44,7 +44,7 @@ Aşağıdaki kod, bir HTML işaretine JavaScript harita olayları ekler. Ayrıca
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Map-HTML Işaretleyici olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>harita-HTML Işaretçisi olayları ile etkileşime</a> geçen kaleme bakın.
+<iframe height='500' scrolling='no' title='Map-HTML Işaretleyici olayları ile etkileşim kurma' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>harita-HTML işaretçisi olayları Ile etkileşime</a> geçen kaleme bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedir.
@@ -57,9 +57,9 @@ Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedi
 | `close`             | Popup el ile veya program aracılığıyla kapatıldığında harekete geçirilir.|
 | `contextmenu`       | Farenin sağ düğmesine tıklandığında harekete geçirilir.|
 | `data`              | Herhangi bir harita verisi yüklendiğinde veya değiştiğinde harekete geçirilir. |
-| `dataadded`         | Öğesine şekiller eklendiğinde harekete geçirildi `DataSource`.|
-| `dataremoved`       | Şekilleri Öğesinden kaldırıldığında tetiklenir `DataSource`.|
-| `datasourceupdated` | `DataSource` Nesne güncellendiğinde harekete geçirilir.|
+| `dataadded`         | Öğesine şekiller eklendiğinde harekete geçirildi `DataSource` .|
+| `dataremoved`       | Şekilleri Öğesinden kaldırıldığında tetiklenir `DataSource` .|
+| `datasourceupdated` | `DataSource`Nesne güncellendiğinde harekete geçirilir.|
 | `dblclick`          | Bir işaret aygıtı, haritada aynı noktada iki kez tıklandığında harekete geçirilir.|
 | `drag`              | Harita, açılan menü veya HTML işaretçisi üzerinde "kaydırmak için sürükleyin" etkileşimi sırasında sürekli olarak harekete geçirildi.|
 | `dragend`           | Harita, açılan menü veya HTML işaretçisi üzerinde "kaydırmak için sürükle" etkileşimi sona erdiğinde tetiklenir.|
@@ -94,8 +94,8 @@ Aşağıdaki tabloda desteklenen tüm harita sınıfı olayları listelenmektedi
 | `rotatestart`       | "Döndürmek için sürükle" etkileşimi başladığında tetiklenir.|
 | `shapechanged`      | Şekil nesnesi özelliği değiştirildiğinde harekete geçirilir.|
 | `sourcedata`        | Bir kaynak veya değişiklik olmasına ait bir kutucuk da dahil olmak üzere, haritanın kaynaklarından biri yüklediğinde veya değiştiğinde harekete geçirilir. |
-| `sourceadded`       | Eşlemeye bir `DataSource` veya `VectorTileSource` eklendiğinde tetiklenir.|
-| `sourceremoved`     | Eşlemden bir `DataSource` veya `VectorTileSource` kaldırıldığında tetiklenir.|
+| `sourceadded`       | `DataSource`Eşlemeye bir veya `VectorTileSource` eklendiğinde tetiklenir.|
+| `sourceremoved`     | `DataSource`Eşlemden bir veya `VectorTileSource` kaldırıldığında tetiklenir.|
 | `styledata`         | Haritanın stili yüklenirken veya değiştiğinde harekete geçirilir.|
 | `styleimagemissing` | Bir katman mevcut olmayan görüntü Sprite öğesinden bir görüntü yüklemeye çalıştığında tetiklenir |
 | `tokenacquired`     | AAD erişim belirteci edinildiği zaman tetiklenir.|

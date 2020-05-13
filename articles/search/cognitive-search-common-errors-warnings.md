@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e18fcc5dc23bdbd9027de62a5bee0fb7d4ceff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086624"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125103"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama ortak Dizin Oluşturucu hataları ve uyarıları sorunlarını giderme
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Bilişsel Arama 'de dizin oluşturma ve AI zenginleştirmesi 
 
 Hata sayısı [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)aştığında dizin oluşturma durduruluyor. 
 
-Dizin oluşturucularının bu hataları yok saymasını (ve "başarısız belgeleri" atlamasını) istiyorsanız, `maxFailedItems` [burada](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)açıklandığı gibi ve `maxFailedItemsPerBatch` ' yi güncellemeyi göz önünde bulundurun.
+Dizin oluşturucularının bu hataları yok saymasını (ve "başarısız belgeleri" atlamasını) istiyorsanız, `maxFailedItems` `maxFailedItemsPerBatch` [burada](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)açıklandığı gibi ve ' yi güncellemeyi göz önünde bulundurun.
 
 > [!NOTE]
 > Belge anahtarı (varsa) ile birlikte başarısız olan her belge, Dizin Oluşturucu yürütme durumundaki bir hata olarak görünür. [Dizin](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oluşturucuyu, Dizin oluşturucularını hatalara karşı ayarlamanız durumunda daha sonraki bir noktada el ile karşıya yüklemek için kullanabilirsiniz.
@@ -30,14 +30,14 @@ Bu makaledeki hata bilgileri, dizin oluşturmanın devam etmesine izin veren hat
 
 Uyarılar Dizin oluşturmayı durdurmaz, ancak beklenmedik sonuçlar oluşmasına neden olabilecek koşullar olduğunu gösterir. Eyleme ve senaryonuza bağlı olup olmadığına bakılmaksızın.
 
-API sürümünden `2019-05-06`itibaren, öğe düzeyinde Dizin Oluşturucu hataları ve uyarıları, nedenler ve sonraki adımlarda daha fazla açıklık sağlamak üzere yapılandırılır. Bunlar aşağıdaki özellikleri içerir:
+API sürümünden itibaren `2019-05-06` , öğe düzeyinde Dizin Oluşturucu hataları ve uyarıları, nedenler ve sonraki adımlarda daha fazla açıklık sağlamak üzere yapılandırılır. Bunlar aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Örnek |
 | --- | --- | --- |
-| anahtar | Hatanın veya uyarıdan etkilenen belge KIMLIĞI. | https:\//coromsearch.blob.Core.Windows.net/JFK-1k/docid-32112954.PDF |
+| anahtar | Hatanın veya uyarıdan etkilenen belge KIMLIĞI. | https: \/ /coromsearch.blob.Core.Windows.net/JFK-1k/docid-32112954.PDF |
 | ad | Hatanın veya uyarının nerede oluştuğunu açıklayan işlem adı. Bu, şu yapı tarafından oluşturulur: [Kategori]. [alt kategori]. [resourceType]. Kaynak | Belgetextraction. azureblob. myBlobContainerName Enrichment. WebApiSkill. mySkillName Projection. Searchındex. OutputFieldMapping. mbir Putfieldname Projection. Searchındex. MergeOrUpload. Myındexname Projection. KnowledgeStore. Table. myTableName |
 | message | Hatanın veya uyarının üst düzey bir açıklaması. | Web API isteği başarısız olduğundan yetenek yürütülemedi. |
-| bilgileri | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... yığın izlemenin geri kalanı... |
+| bilgileri | Özel bir yetenek yürütülerek WebApi yanıtı gibi sorunu tanılamaya yardımcı olabilecek ek ayrıntılar başarısız oldu. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak, Func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... yığın izlemenin geri kalanı... |
 | Belgetationlink | Hata ayıklama ve sorunu çözme hakkında ayrıntılı bilgiler içeren ilgili belgelere bir bağlantı. Bu bağlantı genellikle bu sayfada aşağıdaki bölümlerden birini işaret eder. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
@@ -48,7 +48,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 
 | Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
-| Farklı belgeler genelinde tutarsız alan türleri | "Değer türü sütun türüyle eşleşmiyor. Yazarlar sütununda `'{47.6,-122.1}'` depolanamadı.  Beklenen tür JArray. "  "Veri türü nvarchar, float olarak dönüştürülürken hata oluştu."  "' 12 ay ' nvarchar değeri int veri türüne dönüştürülürken dönüştürme başarısız oldu."  "İfade, int veri türüne dönüştürülürken aritmetik taşma hatası." | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih saat ise ve ikinci belgede bir dize ise, bu hata olur. |
+| Farklı belgeler genelinde tutarsız alan türleri | "Değer türü sütun türüyle eşleşmiyor. `'{47.6,-122.1}'`Yazarlar sütununda depolanamadı.  Beklenen tür JArray. "  "Veri türü nvarchar, float olarak dönüştürülürken hata oluştu."  "' 12 ay ' nvarchar değeri int veri türüne dönüştürülürken dönüştürme başarısız oldu."  "İfade, int veri türüne dönüştürülürken aritmetik taşma hatası." | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih saat ise ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB)`{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
 | geçici sorunlar | Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 
@@ -59,7 +59,7 @@ Blob veri kaynağı olan Dizin Oluşturucu, belgeden (örneğin, bir PDF dosyas�
 
 | Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
-| blob boyut sınırının üzerinde | Belge, `'150441598'` geçerli hizmet katmanınız için belge ayıklama `'134217728'` için maksimum boyut baytlarını aşan bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
+| blob boyut sınırının üzerinde | Belge, `'150441598'` `'134217728'` geçerli hizmet katmanınız için belge ayıklama için maksimum boyut baytlarını aşan bayttır. | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob desteklenmeyen içerik türüne sahip | Belgede desteklenmeyen içerik türü yok`'image/png'` | [blob dizin oluşturma hataları](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob şifreli | Belge işlenemedi; şifrelenmiş veya parola korumalı olabilir. | Blobu [BLOB ayarlarına](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)atlayabilirsiniz. |
 | geçici sorunlar | "Blob işleme hatası: istek durduruldu: istek iptal edildi." "İşlem sırasında belge zaman aşımına uğradı." | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
@@ -73,8 +73,13 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 | --- | --- | --- |
 | Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
-| Alan eşlemesi bir alana uygulanamadı | Eşleme işlevi `'functionName'` alana `'fieldName'`uygulanamadı. Dizi null olamaz. Parametre adı: bayt | Dizin oluşturucuda tanımlı [alan eşlemelerini](search-indexer-field-mappings.md) iki kez kontrol edin ve başarısız olan belgenin belirtilen alanındaki verilerle karşılaştırın. Alan eşlemelerini veya belge verilerini değiştirmek gerekebilir. |
-| Alan değeri okunamadı | Dizindeki `'fieldName'` `'fieldIndex'`sütunun değeri okunamadı. Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı.) | Bu hatalar genellikle veri kaynağının temelindeki hizmet ile ilgili beklenmedik bağlantı sorunlarından kaynaklanır. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
+| Alan eşlemesi bir alana uygulanamadı | Eşleme işlevi `'functionName'` alana uygulanamadı `'fieldName'` . Dizi null olamaz. Parametre adı: bayt | Dizin oluşturucuda tanımlı [alan eşlemelerini](search-indexer-field-mappings.md) iki kez kontrol edin ve başarısız olan belgenin belirtilen alanındaki verilerle karşılaştırın. Alan eşlemelerini veya belge verilerini değiştirmek gerekebilir. |
+| Alan değeri okunamadı | Dizindeki sütunun değeri okunamadı `'fieldName'` `'fieldIndex'` . Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı.) | Bu hatalar genellikle veri kaynağının temelindeki hizmet ile ilgili beklenmedik bağlantı sorunlarından kaynaklanır. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
+
+<a name="Could not map output field '`xyz`' to search index due to deserialization problem while applying mapping function '`abc`'"/>
+
+## <a name="error-could-not-map-output-field-xyz-to-search-index-due-to-deserialization-problem-while-applying-mapping-function-abc"></a>Hata: ' ' `xyz` eşleme işlevi uygulanırken seri durumundan çıkarma sorunu nedeniyle ' ' Çıkış alanı arama dizinine eşlenemiyor `abc`
+Çıkış verileri, kullanmakta olduğunuz eşleme işlevi için yanlış biçimde olduğundan çıkış eşlemesi başarısız olmuş olabilir. Örneğin, ikili verilerde Base64Encode Mapping işlevinin uygulanması bu hatayı oluşturur. Sorunu çözmek için eşleme işlevini belirtmeden Dizin oluşturucuyu yeniden çalıştırın veya eşleme işlevinin çıktı alanı veri türüyle uyumlu olduğundan emin olun. Ayrıntılar için bkz. [çıktı alan eşleme](cognitive-search-output-field-mapping.md) .
 
 <a name="could-not-execute-skill"/>
 
@@ -110,7 +115,7 @@ Dil algılama, varlık tanıma veya OCR gibi yerleşik bilişsel yeteneklerin ç
 Bu hatayı, yerleşik bir Bilişsel Beceri yeteneği için aynı belgede görmeye devam ederseniz, bu beklenmediğinden yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.
 
 ### <a name="custom-skills"></a>Özel beceriler
-Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşılaşırsanız, deneyebileceğiniz birkaç işlem vardır. İlk olarak, özel becerinizi gözden geçirin ve sonsuz bir döngüde takılı olmadığından ve sürekli olarak bir sonuç döndürmediğinden emin olun. Durum olduğunu onayladıktan sonra, becerinizde yürütme zamanının ne olduğunu saptayın. Özel beceri tanımınızda açık bir `timeout` değer ayarlamadıysanız varsayılan `timeout` değer 30 saniyedir. Becerinizi yürütmek için 30 saniye yeterince uzun değilse, özel beceri tanımınızda daha yüksek `timeout` bir değer belirtebilirsiniz. Zaman aşımının 90 saniyeye ayarlandığı özel beceri tanımına bir örnek aşağıda verilmiştir:
+Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşılaşırsanız, deneyebileceğiniz birkaç işlem vardır. İlk olarak, özel becerinizi gözden geçirin ve sonsuz bir döngüde takılı olmadığından ve sürekli olarak bir sonuç döndürmediğinden emin olun. Durum olduğunu onayladıktan sonra, becerinizde yürütme zamanının ne olduğunu saptayın. `timeout`Özel beceri tanımınızda açık bir değer ayarlamadıysanız varsayılan değer `timeout` 30 saniyedir. Becerinizi yürütmek için 30 saniye yeterince uzun değilse, `timeout` özel beceri tanımınızda daha yüksek bir değer belirtebilirsiniz. Zaman aşımının 90 saniyeye ayarlandığı özel beceri tanımına bir örnek aşağıda verilmiştir:
 
 ```json
   {
@@ -134,11 +139,11 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
       }
 ```
 
-`timeout` Parametresi için ayarlayabileceğiniz maksimum değer 230 saniyedir.  Özel becerinizde sürekli olarak 230 saniye içinde yürütülemediğinde, tek bir yürütmede işlemek üzere daha `batchSize` az belge olması için özel becerinizi azaltmayı düşünebilirsiniz.  ' Yi zaten 1 `batchSize` olarak ayarladıysanız, bu yeteneği 230 saniyelik bir süre içinde yürütebilmek için yeniden yazmanız gerekir veya herhangi bir özel beceri için yürütme süresi en fazla 230 saniyelik olacak şekilde birden çok özel beceriye bölebilirsiniz. Daha fazla bilgi için [özel beceri belgelerini](cognitive-search-custom-skill-web-api.md) gözden geçirin.
+Parametresi için ayarlayabileceğiniz maksimum değer `timeout` 230 saniyedir.  Özel becerinizde sürekli olarak 230 saniye içinde yürütülemediğinde, `batchSize` tek bir yürütmede işlemek üzere daha az belge olması için özel becerinizi azaltmayı düşünebilirsiniz.  `batchSize`' Yi zaten 1 olarak ayarladıysanız, bu yeteneği 230 saniyelik bir süre içinde yürütebilmek için yeniden yazmanız gerekir veya herhangi bir özel beceri için yürütme süresi en fazla 230 saniyelik olacak şekilde birden çok özel beceriye bölebilirsiniz. Daha fazla bilgi için [özel beceri belgelerini](cognitive-search-custom-skill-web-api.md) gözden geçirin.
 
 <a name="could-not-mergeorupload--delete-document-to-the-search-index"/>
 
-## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Hata: '`MergeOrUpload`' | Arama`Delete`dizinine ' ' belgesi
+## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>Hata: ' `MergeOrUpload` ' | `Delete`arama dizinine ' ' belgesi
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
@@ -146,7 +151,7 @@ Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi.
 | --- | --- | --- |
 | Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
 | Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
-| Belge koleksiyonda çok fazla nesne içeriyor | Belgenizdeki bir koleksiyon [tüm karmaşık koleksiyonlar sınırında bulunan en fazla öğe sayısını](search-limits-quotas-capacity.md#index-limits) aşıyor "anahtardaki `'1000052'` belge koleksiyonlardaki nesneler `'4303'` içeriyor (JSON dizileri). Çoğu `'3000'` nesnenin tüm belge genelinde koleksiyonlar halinde olmasına izin verilir. Lütfen nesneleri koleksiyonlardan kaldırın ve belgeyi yeniden dizinlemeyi deneyin. " | Belgedeki karmaşık toplamanın boyutunu sınırın altına düşürmenizi ve yüksek depolama kullanımından kaçınmanızı öneririz.
+| Belge koleksiyonda çok fazla nesne içeriyor | Belgenizdeki bir koleksiyon [tüm karmaşık koleksiyonlar sınırında bulunan en fazla öğe sayısını](search-limits-quotas-capacity.md#index-limits) aşıyor " `'1000052'` `'4303'` anahtardaki belge koleksiyonlardaki nesneler içeriyor (JSON dizileri). Çoğu `'3000'` nesnenin tüm belge genelinde koleksiyonlar halinde olmasına izin verilir. Lütfen nesneleri koleksiyonlardan kaldırın ve belgeyi yeniden dizinlemeyi deneyin. " | Belgedeki karmaşık toplamanın boyutunu sınırın altına düşürmenizi ve yüksek depolama kullanımından kaçınmanızı öneririz.
 | Hizmet, sorgulama veya dizin oluşturma gibi başka bir yük altında olduğundan, hedef dizine bağlanma sorunu (yeniden denemeden sonra devam eden). | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti ağır yük altında. | [Arama hizmetinizin ölçeğini artırma](search-capacity-planning.md)
 | Arama hizmeti 'nin hizmet güncelleştirmesi için düzeltme eki uygulanıyor veya bir topoloji yeniden yapılandırması ortasında. | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti şu anda açık/arama hizmeti bir geçiş işlemi yaşıyor. | [SLA belgeleri](https://azure.microsoft.com/support/legal/sla/search/v1_0/) başına% 99,9 kullanılabilirlik için en az 3 çoğaltmalarla hizmeti yapılandırın
 | Temeldeki işlem/ağ kaynağında hata (nadir) | Güncelleştirme diziniyle bağlantı kurulamadı. Bilinmeyen bir hata oluştu. | Başarısız bir durumdan almak için [bir zamanlamaya göre çalıştırılacak](search-howto-schedule-indexers.md) Dizin oluşturucularını yapılandırın.
@@ -186,9 +191,9 @@ Bu hata, Dizin Oluşturucu [verileri bir bilgi deposuna proje](knowledge-store-p
 
 | Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
-| Kapsayıcıda projeksiyon blobu `'blobUri'` güncelleştirilemedi`'containerName'` |Belirtilen kapsayıcı yok. | Dizin Oluşturucu, belirtilen kapsayıcının önceden oluşturulup oluşturulmadıysa denetler ve gerekirse onu oluşturur, ancak bu denetimi dizin oluşturucunun her yerine yalnızca bir kez çalıştırır. Bu hata, bu adımdan sonra kapsayıcının silindiği anlamına gelir.  Bu hatayı çözmek için şunu deneyin: depolama hesabı bilgilerinizi tek tek bırakın, dizin oluşturucunun bitmesini bekleyin ve ardından dizin oluşturucuyu yeniden çalıştırın. |
-| Kapsayıcıda projeksiyon blobu `'blobUri'` güncelleştirilemedi`'containerName'` |Aktarım bağlantısına veri yazılamıyor: mevcut bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
-| Tablodaki satır `'projectionRow'` güncelleştirilemedi`'tableName'` | Sunucu meşgul. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
+| Kapsayıcıda projeksiyon blobu güncelleştirilemedi `'blobUri'``'containerName'` |Belirtilen kapsayıcı yok. | Dizin Oluşturucu, belirtilen kapsayıcının önceden oluşturulup oluşturulmadıysa denetler ve gerekirse onu oluşturur, ancak bu denetimi dizin oluşturucunun her yerine yalnızca bir kez çalıştırır. Bu hata, bu adımdan sonra kapsayıcının silindiği anlamına gelir.  Bu hatayı çözmek için şunu deneyin: depolama hesabı bilgilerinizi tek tek bırakın, dizin oluşturucunun bitmesini bekleyin ve ardından dizin oluşturucuyu yeniden çalıştırın. |
+| Kapsayıcıda projeksiyon blobu güncelleştirilemedi `'blobUri'``'containerName'` |Aktarım bağlantısına veri yazılamıyor: mevcut bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
+| Tablodaki satır güncelleştirilemedi `'projectionRow'``'tableName'` | Sunucu meşgul. | Bu, Azure depolama ile ilgili geçici bir hata olması beklenir ve bu nedenle dizin oluşturucunun yeniden çalıştırılarak çözülmesi gerekir. Bu hatayla sürekli karşılaşırsanız, daha fazla araştırılması için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) dosyası sağlayın.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
@@ -197,13 +202,13 @@ Yeteneğe bir giriş eksikti, yanlış tür ya da başka bir şekilde geçersiz.
 1) Yetenek yürütülemedi
 2) Yetenek yürütüldü ancak beklenmeyen sonuçlara neden olabilir
 
-Bilişsel yetenekler için gerekli girişler ve isteğe bağlı girişler vardır. Örneğin, [anahtar tümceciği ayıklama becerinin](cognitive-search-skill-keyphrases.md) iki zorunlu girişi `text` `languageCode`vardır ve isteğe bağlı giriş yoktur. Özel beceri girişlerinin tümü isteğe bağlı girişler olarak kabul edilir.
+Bilişsel yetenekler için gerekli girişler ve isteğe bağlı girişler vardır. Örneğin, [anahtar tümceciği ayıklama becerinin](cognitive-search-skill-keyphrases.md) iki zorunlu girişi vardır `text` `languageCode` ve isteğe bağlı giriş yoktur. Özel beceri girişlerinin tümü isteğe bağlı girişler olarak kabul edilir.
 
 Gerekli girişler eksikse veya herhangi bir giriş doğru türde değilse, yetenek atlanır ve bir uyarı oluşturur. Atlanan yetenekler hiçbir çıkış oluşturmaz, bu nedenle diğer yetenekler atlanan yeteneğin çıkışlarını kullanıyorsa, ek uyarılar oluşturabilir.
 
 İsteğe bağlı bir giriş eksikse, yetenek hala çalışmaya devam eder, ancak eksik giriş nedeniyle beklenmedik bir çıkış oluşturabilir.
 
-Her iki durumda da, verilerinizin şekli nedeniyle bu uyarı beklenmeyebilir. Örneğin `firstName`, ve alanlarına `middleName`sahip kişiler hakkında bilgi içeren bir belgeniz varsa, ve `lastName`için `middleName`girişi olmayan bazı belgeleriniz olabilir. İşlem hattındaki bir `middleName` yeteneğe girdi olarak geçmeniz durumunda, bu yetenek girişinde bazı bazı durumlarda eksik olabilir. Bu uyarının sonucu olarak herhangi bir eylemin gerekli olup olmadığını anlamak için verilerinizi ve senaryonuzu değerlendirmeniz gerekir.
+Her iki durumda da, verilerinizin şekli nedeniyle bu uyarı beklenmeyebilir. Örneğin, ve alanlarına sahip kişiler hakkında bilgi içeren bir belgeniz varsa, `firstName` `middleName` ve `lastName` için girişi olmayan bazı belgeleriniz olabilir `middleName` . İşlem hattındaki `middleName` bir yeteneğe girdi olarak geçmeniz durumunda, bu yetenek girişinde bazı bazı durumlarda eksik olabilir. Bu uyarının sonucu olarak herhangi bir eylemin gerekli olup olmadığını anlamak için verilerinizi ve senaryonuzu değerlendirmeniz gerekir.
 
 Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu yeteneği](cognitive-search-skill-conditional.md) kullanarak varsayılan bir değer oluşturabilir ve sonra [koşullu yeteneğin](cognitive-search-skill-conditional.md) çıkışını yetenek girişi olarak kullanabilirsiniz.
 
@@ -223,18 +228,18 @@ Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu
 
 | Neden | Ayrıntılar/örnek | Çözüm |
 | --- | --- | --- |
-| Beceri girişi yanlış türde | "Gerekli yetenek girişi beklenen türde `String`değildi. Ad: `text`, kaynak: `/document/merged_content`. "  "Gerekli beceri girişi beklenen biçimde değil. Ad: `text`, kaynak: `/document/merged_content`. "  "Dizi `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`olmayan bir üzerinde yinelenemez."  "Dizi `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`olmayan bir `0` seçim yapılamıyor" | Belirli yetenekler belirli türlerin giriş beklentilerini bekler, örneğin yaklaşım [yeteneği](cognitive-search-skill-sentiment.md) bir dize olmasını `text` bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda olduğunu `*` kontrol edin. Genellikle bağlam ve giriş kaynağının diziler için ile `*` bitmesi gerekir. |
-| Yetenek girişi eksik | "Gerekli yetenek girişi eksik. Ad: `text`, kaynak: `/document/merged_content`"" eksik değer `/document/normalized_images/0/imageTags`. "  "Uzunluk `0` `/document/pages` `0`dizisinde seçim yapılamıyor." | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve bu durumda özellik adı büyük/ `*` küçük harf ' i çift kontrol etmeniz ve veri kaynağındaki belgelerin gerekli girişleri sağlaması gerekir. |
-| Yetenek dil kodu girişi geçersiz | Beceri girişi `languageCode` , en az biri geçersiz `X,Y,Z`olan aşağıdaki dil kodlarına sahiptir. | Daha fazla ayrıntı için [aşağıya](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) bakın |
+| Beceri girişi yanlış türde | "Gerekli yetenek girişi beklenen türde değildi `String` . Ad: `text` , kaynak: `/document/merged_content` . "  "Gerekli beceri girişi beklenen biçimde değil. Ad: `text` , kaynak: `/document/merged_content` . "  "Dizi olmayan bir üzerinde yinelenemez `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` ."  "Dizi olmayan bir seçim yapılamıyor `0` `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` " | Belirli yetenekler belirli türlerin giriş beklentilerini bekler, örneğin yaklaşım [yeteneği](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda olduğunu kontrol edin `*` . Genellikle bağlam ve giriş kaynağının diziler için ile bitmesi gerekir `*` . |
+| Yetenek girişi eksik | "Gerekli yetenek girişi eksik. Ad: `text` , kaynak: `/document/merged_content` "" eksik değer `/document/normalized_images/0/imageTags` . "  " `0` Uzunluk dizisinde seçim yapılamıyor `/document/pages` `0` ." | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve bu durumda özellik adı büyük/küçük harf ' i çift kontrol etmeniz `*` ve veri kaynağındaki belgelerin gerekli girişleri sağlaması gerekir. |
+| Yetenek dil kodu girişi geçersiz | Beceri girişi `languageCode` `X,Y,Z` , en az biri geçersiz olan aşağıdaki dil kodlarına sahiptir. | Daha fazla ayrıntı için [aşağıya](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) bakın |
 
 <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Uyarı: ' languageCode ' yetenek girişi, en az bir tane geçersiz olan ' X, Y, Z ' dil kodlarına sahip.
-Aşağı akış beceriye ait isteğe bağlı `languageCode` girişe geçirilen bir veya daha fazla değer desteklenmiyor. Bu durum, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) çıktısını sonraki becerilerle geçirmeniz durumunda meydana gelir ve çıktı bu aşağı akış becerilerinizi desteklenenden daha fazla dilde oluşur.
+Aşağı akış beceriye ait isteğe bağlı girişe geçirilen bir veya daha fazla değer `languageCode` desteklenmiyor. Bu durum, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) çıktısını sonraki becerilerle geçirmeniz durumunda meydana gelir ve çıktı bu aşağı akış becerilerinizi desteklenenden daha fazla dilde oluşur.
 
-Veri ayarlamış olduğunuz tek bir dilde olduğunu biliyorsanız, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` yetenek girişini kaldırmalı ve söz konusu beceri için dilin desteklendiği varsayıldığında bu beceri `defaultLanguageCode` için yetenek parametresini kullanmanız gerekir.
+Veri ayarlamış olduğunuz tek bir dilde olduğunu biliyorsanız, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve yetenek girişini kaldırmalı ve söz konusu beceri için `languageCode` `defaultLanguageCode` dilin desteklendiği varsayıldığında bu beceri için yetenek parametresini kullanmanız gerekir.
 
-Veri ayarlamış olduğunuz birden çok dil içerdiğini ve bu nedenle [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` Input 'a ihtiyacınız olduğunu biliyorsanız, metni aşağı akış yeteneklerine geçirmeden önce desteklenmeyen dillerle metni filtrelemek için bir [conditionalbeceri](cognitive-search-skill-conditional.md) eklemeyi göz önünde bulundurun.  İşte bunun Entityrecognitionbeceri için nasıl görünebileceğini bir örnek:
+Veri ayarlamış olduğunuz birden çok dil içerdiğini ve bu nedenle [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve Input 'a ihtiyacınız olduğunu biliyorsanız `languageCode` , metni aşağı akış yeteneklerine geçirmeden önce desteklenmeyen dillerle metni filtrelemek Için bir [conditionalbeceri](cognitive-search-skill-conditional.md) eklemeyi göz önünde bulundurun.  İşte bunun Entityrecognitionbeceri için nasıl görünebileceğini bir örnek:
 
 ```json
 {
@@ -289,9 +294,9 @@ Bu uyarı yalnızca Cosmos DB veri kaynakları için oluşur.
 
 Dizin oluşturma sırasında artımlı ilerleme durumu, Dizin Oluşturucu yürütmesi geçici hatalara veya yürütme süresi sınırına göre kesintiye uğrarsa, dizin oluşturucunun, sıfırdan tüm koleksiyonu yeniden dizinlemesini sağlamak yerine, bir sonraki çalıştırıldığında kaldığınız yerden seçim yapmasına olanak sağlar. Büyük koleksiyonlar dizinlenirken bu özellikle önemlidir.
 
-Tamamlanmamış bir dizin oluşturma işinin sürdürülebilmesi, `_ts` sütun tarafından sıralanan belgelerin elde edileceği şekilde tahmin edilir. Dizin Oluşturucu, sonraki hangi belgenin çalıştırılacağını belirleyen zaman damgasını kullanır. `_ts` Sütun eksikse veya Dizin Oluşturucu özel bir sorgunun bu tarafından sıralı olup olmadığını belirleyeemdi, Dizin Oluşturucu başlangıcında başlar ve bu uyarıyı görürsünüz.
+Tamamlanmamış bir dizin oluşturma işinin sürdürülebilmesi, sütun tarafından sıralanan belgelerin elde edileceği şekilde tahmin edilir `_ts` . Dizin Oluşturucu, sonraki hangi belgenin çalıştırılacağını belirleyen zaman damgasını kullanır. `_ts`Sütun eksikse veya Dizin Oluşturucu özel bir sorgunun bu tarafından sıralı olup olmadığını belirleyeemdi, Dizin Oluşturucu başlangıcında başlar ve bu uyarıyı görürsünüz.
 
-Bu davranışı geçersiz kılmak, artımlı ilerleme durumunu etkinleştirmek ve `assumeOrderByHighWatermarkColumn` yapılandırma özelliği kullanılarak bu uyarının gizlenmesi olabilir.
+Bu davranışı geçersiz kılmak, artımlı ilerleme durumunu etkinleştirmek ve yapılandırma özelliği kullanılarak bu uyarının gizlenmesi olabilir `assumeOrderByHighWatermarkColumn` .
 
 Daha fazla bilgi için bkz. [artımlı ilerleme ve özel sorgular](search-howto-index-cosmosdb.md#IncrementalProgress).
 
@@ -311,7 +316,12 @@ Daha fazla bilgi için bkz. [Dizin Oluşturucu sınırları](search-limits-quota
 <a name="could-not-map-output-field-x-to-search-index"/>
 
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>Uyarı: ' X ' Çıkış alanı arama dizinine eşlenemiyor
-Varolmayan/null olmayan verilere başvuran çıkış alanı eşlemeleri, her belge için uyarı üretir ve boş bir dizin alanına neden olur. Bu soruna geçici bir çözüm olarak, olası yazım hataları için çıkış alan eşleme kaynak yollarını iki kez kontrol edin veya [koşullu beceriye](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)kullanarak varsayılan bir değer ayarlayın.
+Varolmayan/null olmayan verilere başvuran çıkış alanı eşlemeleri, her belge için uyarı üretir ve boş bir dizin alanına neden olur. Bu soruna geçici bir çözüm olarak, olası yazım hataları için çıkış alan eşleme kaynak yollarını iki kez kontrol edin veya [koşullu beceriye](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)kullanarak varsayılan bir değer ayarlayın. Ayrıntılar için bkz. [çıktı alan eşleme](cognitive-search-output-field-mapping.md) .
+
+| Neden | Ayrıntılar/örnek | Çözüm |
+| --- | --- | --- |
+| Dizi olmayan üzerinde yinelenemez | "Dizi olmayan bir üzerinde yinelenemez `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` ." | Bu hata, çıkış bir dizi olmadığında oluşur. Çıktının bir dizi olması gerektiğini düşünüyorsanız, belirtilen çıkış kaynağı alan yolunu hatalara karşı denetleyin. Örneğin, kaynak alanı adında eksik veya ekstra olabilir `*` . Bu beceri girişi null ve boş bir dizi ile sonuçlanır. [Yetenek girişinde](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid) benzer ayrıntıları bul bölümü geçersiz.    |
+| `0`Dizi olmayan içinde seçim yapılamıyor | "Dizi olmayan bir seçim yapılamıyor `0` `/document/pages` ." | Bu durum, yetenekler çıktısı bir dizi oluşturmuyorsa ve çıkış kaynağı alan adının dizi dizini veya yolunda olması durumunda meydana gelebilir `*` . Lütfen belirtilen alan adı için çıkış kaynağı alan adlarında ve alan değerinde belirtilen yolları çift kontrol edin. [Yetenek girişinde](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid) benzer ayrıntıları bul bölümü geçersiz.  |
 
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
 

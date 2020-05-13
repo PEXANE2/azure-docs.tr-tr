@@ -6,20 +6,20 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.date: 5/11/2020
+ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006160"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124083"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
 Başvuru verileri (arama tablosu olarak da bilinir), bir arama gerçekleştirmek veya veri akışlarınızı genişletmek için kullanılan, statik veya yavaş değişen, sınırlı bir veri kümesidir. Örneğin, bir IoT senaryosunda, sensörlerle ilgili meta verileri (sık değişmeyin) başvuru verilerinde saklayabilir ve gerçek zamanlı IoT veri akışları ile birleştirebilirsiniz. Azure Stream Analytics düşük gecikmeli akış işleme elde etmek için belleğe başvuru verilerini yükler. Azure Stream Analytics işinizdeki başvuru verilerini kullanmak için, genellikle sorgunuzda bir [başvuru verisi katılımı](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) kullanacaksınız. 
 
 ## <a name="example"></a>Örnek  
- Ticari bir araç ücretli şirkete kayıtlı ise, denetim için durdurulmaksızın ücretli stand üzerinden geçebilirler. Bir ticari araç kayıt arama tablosu, zaman aşımına uğradı tüm ticari araçlar 'ı belirlemek için kullanılır.  
+Otomobiller bir stand geldiğinde gerçek zamanlı bir olay akışına sahip olabilirsiniz. Ücretli stand, lisans levhasını gerçek zamanlı olarak yakalayabilir ve süresi doldu lisans kalıplarını belirlemek için kayıt ayrıntıları olan statik bir veri kümesiyle katılabilir.  
   
 ```SQL  
 SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
@@ -57,18 +57,18 @@ Başvuru verilerinizin değiştirilmesi beklenmiyorsa, giriş yapılandırmasın
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Bir zamanlamaya göre başvuru verileri oluşturma
 
-Başvuru verileriniz yavaş değişen bir veri kümesi ise, başvuru verilerinin yenilenmesi desteği, giriş yapılandırmasında {Date} ve {Time} değiştirme belirteçlerini kullanarak bir yol kalıbı belirtilerek etkinleştirilir. Stream Analytics, bu yol düzenine göre güncelleştirilmiş başvuru verileri tanımlarını seçer. Örneğin, `sample/{date}/{time}/products.csv` tarih biçimi **"yyyy-aa-gg"** ve saat biçimi **"hh-mm"** olan bir örüntü, 15 NISAN 2015 UTC saat diliminde 5:30 PM 'de güncelleştirilmiş blobu `sample/2015-04-16/17-30/products.csv` Stream Analytics.
+Başvuru verileriniz yavaş değişen bir veri kümesi ise, başvuru verilerinin yenilenmesi desteği, giriş yapılandırmasında {Date} ve {Time} değiştirme belirteçlerini kullanarak bir yol kalıbı belirtilerek etkinleştirilir. Stream Analytics, bu yol düzenine göre güncelleştirilmiş başvuru verileri tanımlarını seçer. Örneğin, `sample/{date}/{time}/products.csv` Tarih biçimi **"yyyy-aa-gg"** ve saat biçimi **"hh-mm"** olan bir örüntü `sample/2015-04-16/17-30/products.csv` , 15 NISAN 2015 UTC saat diliminde 5:30 PM 'de güncelleştirilmiş blobu Stream Analytics.
 
 Azure Stream Analytics, yenilenen başvuru verileri bloblarını bir dakikalık aralıklarla otomatik olarak tarar. Zaman damgası 10:30:00 olan bir blob küçük bir gecikmeyle karşıya yüklenirse (örneğin, 10:30:30), bu bloba başvuran Stream Analytics işinde küçük bir gecikme fark edeceksiniz. Bu senaryolara engel olmak için, blob 'u bellek içinde bulup yüklemek ve işlemleri gerçekleştirmek için yeterli zaman Stream Analytics izin vermek üzere hedef geçerlilik zamanından (Bu örnekteki 10:30:00) daha önce blob yüklemeniz önerilir. 
 
 > [!NOTE]
-> Şu anda Stream Analytics işleri yalnızca makine süresi blob adında kodlanan zamana ilerlediği zaman blob yenilemesini arar. Örneğin, iş mümkün olan en kısa sürede `sample/2015-04-16/17-30/products.csv` , 16 NISAN 2015 UTC saat DILIMINDE 5:30 PM 'tan önceki bir süre içinde görünür. Bir blob, bulunan son değerden daha önce kodlanmış bir saat ile *hiçbir zaman* aramaz.
+> Şu anda Stream Analytics işleri yalnızca makine süresi blob adında kodlanan zamana ilerlediği zaman blob yenilemesini arar. Örneğin, iş `sample/2015-04-16/17-30/products.csv` mümkün olan en kısa sürede, 16 nisan 2015 UTC saat diliminde 5:30 PM 'tan önceki bir süre içinde görünür. Bir blob, bulunan son değerden daha önce kodlanmış bir saat ile *hiçbir zaman* aramaz.
 > 
-> Örneğin, iş blobu `sample/2015-04-16/17-30/products.csv` bulduktan sonra 2015, 12 Nisan 5:30 ' den önceki kodlanmış bir tarih içeren tüm dosyaları yok sayacaktır. bu nedenle, bir geç gelen `sample/2015-04-16/17-25/products.csv` blob aynı kapsayıcıda oluşturulduysa iş onu kullanmaz.
+> Örneğin, iş blobu bulduktan sonra `sample/2015-04-16/17-30/products.csv` 2015, 12 nisan 5:30 ' den önceki kodlanmış bir tarih içeren tüm dosyaları yok sayacaktır. bu nedenle, bir geç gelen `sample/2015-04-16/17-25/products.csv` BLOB aynı kapsayıcıda oluşturulduysa iş onu kullanmaz.
 > 
-> `sample/2015-04-16/17-30/products.csv` Benzer şekilde, yalnızca 16 Nisan 2015 ' de 10:03, ancak kapsayıcıda daha önceki bir tarih içeren bir blob yoksa, iş bu 10:03 dosyayı 11 nisan, 2015 ve önceki başvuru verilerini kullanarak kullanır.
+> Benzer şekilde `sample/2015-04-16/17-30/products.csv` , yalnızca 16 nisan 2015 ' de 10:03, ancak kapsayıcıda daha önceki bir tarih içeren bir blob yoksa, iş bu 10:03 dosyayı 11 Nisan, 2015 ve önceki başvuru verilerini kullanarak kullanır.
 > 
-> Bunun bir özel durumu, işin, verileri zamanında yeniden işlemesi veya işin ilk başlatılışında olması gerekir. Başlangıç zamanında iş, belirtilen iş başlangıç zamanından önce üretilen en son blobu arıyor. Bu, iş başladığında **boş olmayan** bir başvuru veri kümesi olduğundan emin olmak için yapılır. Bir tane bulunamazsa, iş aşağıdaki tanılamayı görüntüler: `Initializing input without a valid reference data blob for UTC time <start time>`.
+> Bunun bir özel durumu, işin, verileri zamanında yeniden işlemesi veya işin ilk başlatılışında olması gerekir. Başlangıç zamanında iş, belirtilen iş başlangıç zamanından önce üretilen en son blobu arıyor. Bu, iş başladığında **boş olmayan** bir başvuru veri kümesi olduğundan emin olmak için yapılır. Bir tane bulunamazsa, iş aşağıdaki tanılamayı görüntüler: `Initializing input without a valid reference data blob for UTC time <start time>` .
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) , başvuru veri tanımlarını güncelleştirmek için Stream Analytics gereken güncelleştirilmiş blob 'ların oluşturulması görevini düzenlemek üzere kullanılabilir. Data Factory, verilerin taşınmasını ve dönüştürülmesini düzenleyen ve otomatikleştiren bulut tabanlı bir veri tümleştirme hizmetidir. Data Factory, [çok sayıda bulut tabanlı ve şirket içi veri depolarına bağlanmayı](../data-factory/copy-activity-overview.md) ve verileri belirttiğiniz düzenli bir zamanlamaya göre kolayca taşımayı destekler. Daha fazla bilgi ve bir Data Factory işlem hattının, önceden tanımlanmış bir zamanlamaya göre yenileyen Stream Analytics için başvuru verileri oluşturmak üzere nasıl ayarlanacağı hakkında adım adım yönergeler için bu [GitHub örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)göz atın.
 
@@ -111,15 +111,13 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 ## <a name="size-limitation"></a>Boyut sınırlaması
 
-Stream Analytics **en fazla 300 MB boyutlu**başvuru verilerini destekler. En büyük başvuru verisi boyutu 300 MB sınırı yalnızca basit sorgularla ulaşılabilir. Sorgu karmaşıklığı, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi içeren işleme dahil olmak üzere arttıkça, başvuru verilerinin en fazla desteklenen boyutunun azalttığı beklenmektedir. Azure Stream Analytics başvuru verilerini yükleyemez ve karmaşık işlemler gerçekleştirmeyebilir, iş belleği tükenme ve başarısız olur. Bu gibi durumlarda% SU kullanım ölçümü %100 ' ye ulaşacaktır.    
+En iyi performansı elde etmek için 300 MB 'tan az olan başvuru veri kümelerini kullanmanız önerilir. 300 MB 'den büyük başvuru verilerinin kullanımı 6 SUs veya daha fazla iş ortamında desteklenir. Bu işlevsellik önizlemededir ve üretimde kullanılmamalıdır. Çok büyük bir başvuru verilerinin kullanılması, işinizin performansını etkileyebilir. Sorgu karmaşıklığı, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi içeren işleme dahil olmak üzere arttıkça, başvuru verilerinin en fazla desteklenen boyutunun azalttığı beklenmektedir. Azure Stream Analytics başvuru verilerini yükleyemez ve karmaşık işlemler gerçekleştirmeyebilir, iş belleği tükenme ve başarısız olur. Bu gibi durumlarda% SU kullanım ölçümü %100 ' ye ulaşacaktır.    
 
-|**Akış birimi sayısı**  |**Yaklaşık olarak desteklenen en büyük boyut (MB)**  |
+|**Akış birimi sayısı**  |**Önerilen boyut**  |
 |---------|---------|
-|1   |50   |
-|3   |150   |
-|6 ve daha fazla   |300   |
-
-6 ' dan fazla bir işin akış birimi sayısının artırılması, en fazla desteklenen başvuru verileri boyutunu artırmaz.
+|1   |50 MB veya daha düşük   |
+|3   |150 MB veya daha düşük   |
+|6 ve daha fazla   |300 MB veya daha düşük. Önizleme aşamasında 300 MB 'den büyük başvuru verilerinin kullanılması, önizlemede desteklenir ve işinizin performansını etkileyebilir.    |
 
 Başvuru verileri için sıkıştırma desteği kullanılamaz.
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766948"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123862"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için veri bulma & sınıflandırması
 
@@ -113,7 +113,7 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Gizli verilere erişimi denetleme
 
-Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleme olanağıdır. [Azure SQL veritabanı denetimi](sql-database-auditing.md) , adlı `data_sensitivity_information`denetim günlüğüne yeni bir alan içerecek şekilde geliştirilmiştir. Bu alan, bir sorgu tarafından döndürülen verilerin duyarlılık sınıflandırmalarını (etiketleri) günlüğe kaydeder. Bir örneği aşağıda verilmiştir:
+Bilgi koruma paradigmasının önemli bir yönü, hassas verilere erişimi izleme olanağıdır. [Azure SQL veritabanı denetimi](sql-database-auditing.md) , adlı denetim günlüğüne yeni bir alan içerecek şekilde geliştirilmiştir `data_sensitivity_information` . Bu alan, bir sorgu tarafından döndürülen verilerin duyarlılık sınıflandırmalarını (etiketleri) günlüğe kaydeder. Bir örneği aşağıda verilmiştir:
 
 ![Denetim günlüğü](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -152,18 +152,6 @@ Sınıflandırmalar için T-SQL kullanma hakkında daha fazla bilgi için aşağ
 - Sınıflandırmayı bir veya daha fazla sütundan kaldırmak için: [DÜŞÜRÜLME DUYARLıLıK sınıflandırması](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Veritabanındaki tüm sınıflandırmaları görüntülemek için: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>REST API 'YI kullanma
-
-Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST API kullanabilirsiniz. Yayımlanan REST API aşağıdaki işlemleri destekler:
-
-- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
-- [Sil](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): belirtilen sütunun duyarlılık etiketini siler.
-- [Öneriyi devre dışı bırak](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): belirtilen sütunda duyarlılık önerilerini devre dışı bırakır.
-- [Öneriyi etkinleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): belirtilen sütunda duyarlılık önerilerini etkinleştirir. (Öneriler varsayılan olarak tüm sütunlarda etkindir.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): belirtilen sütunun duyarlılık etiketini alır.
-- [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
-- [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
-
 ### <a name="use-powershell-cmdlets"></a>PowerShell cmdlet'leri kullanma
 Azure SQL veritabanı ve yönetilen örneklerin sınıflandırmalarını ve önerilerini yönetmek için PowerShell 'i kullanabilirsiniz.
 
@@ -185,6 +173,17 @@ Azure SQL veritabanı ve yönetilen örneklerin sınıflandırmalarını ve öne
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>REST API 'YI kullanma
+
+Sınıflandırmaları ve önerileri programlı bir şekilde yönetmek için REST API kullanabilirsiniz. Yayımlanan REST API aşağıdaki işlemleri destekler:
+
+- [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): belirtilen sütunun duyarlılık etiketini oluşturur veya güncelleştirir.
+- [Sil](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): belirtilen sütunun duyarlılık etiketini siler.
+- [Öneriyi devre dışı bırak](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): belirtilen sütunda duyarlılık önerilerini devre dışı bırakır.
+- [Öneriyi etkinleştir](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): belirtilen sütunda duyarlılık önerilerini etkinleştirir. (Öneriler varsayılan olarak tüm sütunlarda etkindir.)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): belirtilen sütunun duyarlılık etiketini alır.
+- [Geçerli veritabanına göre Listele](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): belirtilen veritabanının geçerli duyarlılık etiketlerini alır.
+- [Veritabanı tarafından önerilen liste](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): belirtilen veritabanının önerilen duyarlılık etiketlerini alır.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Sonraki adımlar
 

@@ -12,16 +12,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131201"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124593"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
->Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` alın: RSS akışı okuyucusuna.
+>Bu URL 'YI kopyalayarak ve yapıştırarak bu sayfanın ne zaman yeniden ziyaret ettikleridir hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` RSS akışı okuyucusuna.
 
 En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
@@ -34,9 +34,9 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 
 ### <a name="new-widget-parameters-capabilities"></a>Yeni pencere öğesi parametreleri özellikleri
 
-**Öngörüler** pencere öğesi yeni parametreler içerir: `language` ve `control`.
+**Öngörüler** pencere öğesi yeni parametreler içerir: `language` ve `control` .
 
-**Oynatıcı** pencere öğesi yeni `locale` bir parametreye sahiptir. Hem `locale` hem `language` de parametreleri Player 'ın dilini denetler.
+**Oynatıcı** pencere öğesi yeni bir `locale` parametreye sahiptir. Hem `locale` hem de `language` parametreleri Player 'ın dilini denetler.
 
 Daha fazla bilgi için [pencere öğesi türleri](video-indexer-embed-widgets.md#widget-types) bölümüne bakın. 
 
@@ -54,11 +54,11 @@ Güncelleştirilmiş tasarımla başlatılan yeni bir oyuncu kaplaması.
     * [-Hesaplar-belirteç Ile](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
  
     Hesap nesnesi `Url` [video Indexer Web sitesinin](https://www.videoindexer.ai/)konumunu işaret eden bir alana sahiptir.
-Ücretli hesaplar için, `Url` alan şu anda genel Web sitesi yerine BIR iç URL 'yi işaret ediyor.
+Ücretli hesaplar için, `Url` alan şu anda genel Web sitesi yerine bir Iç URL 'yi işaret ediyor.
 Önümüzdeki haftalarda bunu değiştirecek ve tüm hesapların [video Indexer Web sitesi](https://www.videoindexer.ai/) URL 'sini döndürecek (deneme ve ücretli).
 
     İç URL 'Leri kullanmayın, [video Indexer ortak API 'leri](https://api-portal.videoindexer.ai/)kullanmanız gerekir.
-* Video Indexer URL 'Leri uygulamalarınıza katıştırdıysanız ve URL 'Ler [video Indexer Web sitesini](https://www.videoindexer.ai/) veya [video Indexer API uç noktasını](https://api.videoindexer.ai) ya da bir bölgesel uç noktaya (örneğin, `https://wus2.videoindexer.ai`) işaret ediyorsanız, URL 'leri yeniden üretin.
+* Video Indexer URL 'Leri uygulamalarınıza katıştırdıysanız ve URL 'Ler [video Indexer Web sitesini](https://www.videoindexer.ai/) veya video Indexer API uç noktasını () işaret etmediğinden `https://api.videoindexer.ai` (örneğin, `https://wus2.videoindexer.ai` ), URL 'leri yeniden üretin.
 
    Bunu şu şekilde yapabilirsiniz:
 
@@ -73,7 +73,7 @@ Güncelleştirilmiş tasarımla başlatılan yeni bir oyuncu kaplaması.
  
 ### <a name="custom-language-support-for-additional-languages"></a>Ek diller için özel dil desteği
 
-Video Indexer artık, `ar-SY` `en-UK`ve `en-AU` için özel dil modellerini destekler (yalnızca API).
+Video Indexer artık, ve için özel dil modellerini destekler `ar-SY` `en-UK` `en-AU` (yalnızca API).
  
 ### <a name="delete-account-timeframe-action-update"></a>Hesap zaman çerçevesi eylem güncelleştirmesini Sil
 
@@ -127,7 +127,7 @@ Durum kodu 409 şimdi, video etkin bir şekilde dizinlenerek, geçerli yeniden d
  
 * Korece özel dil modelleri desteği
 
-    Video Indexer artık hem API hem de portalda Korece`ko-KR`() dilinde özel dil modellerini desteklemektedir. 
+    Video Indexer artık hem API hem de portalda Korece () dilinde özel dil modellerini desteklemektedir `ko-KR` . 
 * Konuşmayı metne dönüştürme (STT) için desteklenen yeni diller
 
     Video Indexer API 'Leri artık, Arapça Levantine (ar-SY), Ingiliz Birleşik Krallık (en-GB) ve Ingilizce Avustralya diyalekti (en-AU) içinde STT 'i desteklemektedir.
