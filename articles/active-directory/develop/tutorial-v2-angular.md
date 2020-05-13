@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181605"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201322"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -81,7 +81,7 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
 
 ## <a name="configure-the-application"></a>Uygulamayı yapılandırma
 
-1. *Src/App* klasöründe *app. Module. TS* ' yi düzenleyin ve `MSALModule` `imports` `isIE` sabitine ek olarak ekleyin:
+1. *Src/App* klasöründe *app. Module. TS* ' yi düzenleyin ve `MSALModule` `imports` sabitine ek olarak ekleyin `isIE` :
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -126,9 +126,9 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
     |Değer adı|Hakkında|
     |---------|---------|
     |Enter_the_Application_Id_Here|Uygulama kaydlarınızın **genel bakış** sayfasında bu, **uygulamanızın (istemci) kimlik** değeridir. |
-    |Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com**. Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+    |Enter_the_Cloud_Instance_Id_Here|Bu, Azure bulutunun örneğidir. Ana veya küresel Azure bulutu için girin **https://login.microsoftonline.com** . Ulusal bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
     |Enter_the_Tenant_Info_Here| Aşağıdaki seçeneklerden birine ayarlayın: uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu değeri dizin (KIRACı) kimliği veya kiracı adı (örneğin, **contoso.Microsoft.com**) ile değiştirin. Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin. Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin. |
-    |Enter_the_Redirect_Uri_Here|İle **http://localhost:4200**değiştirin.|
+    |Enter_the_Redirect_Uri_Here|İle değiştirin **http://localhost:4200** .|
 
     Kullanılabilir yapılandırılabilir seçenekler hakkında daha fazla bilgi için bkz. [istemci uygulamalarını başlatma](msal-js-initializing-client-applications.md).
 
@@ -138,7 +138,7 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
     import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
     ```
 
-3. Aşağıdaki import deyimlerini en üst öğesine ekleyin `src/app/app.component.ts`:
+3. Aşağıdaki import deyimlerini en üst öğesine ekleyin `src/app/app.component.ts` :
 
     ```javascript
     import { MsalService } from '@azure/msal-angular';
@@ -146,7 +146,7 @@ Kaydlarınızın uygulamaya **genel bakış** sayfasında, daha sonra kullanılm
     ```
 ## <a name="sign-in-a-user"></a>Kullanıcı oturumu açma
 
-Kullanıcı oturumu açmak `AppComponent` için aşağıdaki kodu ekleyin:
+`AppComponent`Kullanıcı oturumu açmak için aşağıdaki kodu ekleyin:
 
 ```javascript
 export class AppComponent implements OnInit {
@@ -169,13 +169,13 @@ export class AppComponent implements OnInit {
 ```
 
 > [!TIP]
-> Internet Explorer kullanıcıları `loginRedirect` için kullanmanızı öneririz.
+> `loginRedirect`Internet Explorer kullanıcıları için kullanmanızı öneririz.
 
 ## <a name="acquire-a-token"></a>Belirteç alma
 
 ### <a name="angular-interceptor"></a>Angular yakalayıcısı
 
-MSAL angular, bilinen `Interceptor` korumalı kaynaklara angular `http` istemcisini kullanan giden istekler için otomatik olarak belirteçler elde eden bir sınıf sağlar.
+MSAL angular `Interceptor` , bilinen korumalı kaynaklara angular istemcisini kullanan giden istekler için otomatik olarak belirteçler elde eden bir sınıf sağlar `http` .
 
 İlk olarak, `Interceptor` sınıfı uygulamanıza sağlayıcı olarak ekleyin:
 
@@ -195,7 +195,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Daha sonra, ' `MsalModule.forRoot()` `protectedResourceMap` `consentScopes`ye bu kapsamları dahil et ve dahil olan korumalı kaynakların haritasını belirtin:
+Daha sonra, `MsalModule.forRoot()` `protectedResourceMap` ' ye bu kapsamları dahil et ve dahil olan korumalı kaynakların haritasını belirtin `consentScopes` :
 
 ```javascript
 @NgModule({
@@ -244,11 +244,11 @@ getProfile() {
 ```
 
 ### <a name="acquiretokensilent-acquiretokenpopup-acquiretokenredirect"></a>acquireTokenSilent, acquireTokenPopup, acquireTokenRedirect
-MSAL belirteçleri elde etmek için üç yöntem kullanır `acquireTokenRedirect`: `acquireTokenPopup`,, `acquireTokenSilent`ve. Ancak, önceki bölümde gösterildiği gibi `MsalInterceptor` , angular uygulamaları için sınıfını kullanmanızı öneririz.
+MSAL belirteçleri elde etmek için üç yöntem kullanır: `acquireTokenRedirect` , `acquireTokenPopup` , ve `acquireTokenSilent` . Ancak, `MsalInterceptor` önceki bölümde gösterildiği gibi, angular uygulamaları için sınıfını kullanmanızı öneririz.
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-Yöntemi `acquireTokenSilent` , Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. Ya `loginRedirect` `loginPopup` da yöntemi ilk kez yürütüldükten sonra, `acquireTokenSilent` daha sonraki çağrılarındaki korunan kaynaklara erişmek için kullanılan belirteçleri almak için genellikle kullanılır. Belirteçleri istek veya yenileme çağrıları sessizce yapılır.
+`acquireTokenSilent`Yöntemi, Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. Ya da `loginRedirect` `loginPopup` yöntemi ilk kez yürütüldükten sonra, `acquireTokenSilent` daha sonraki çağrılarındaki korunan kaynaklara erişmek için kullanılan belirteçleri almak için genellikle kullanılır. Belirteçleri istek veya yenileme çağrıları sessizce yapılır.
 
 ```javascript
 const requestObj = {
@@ -268,7 +268,7 @@ Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsaml
 Örneğin:
 
 * `["user.read"]`Microsoft Graph için
-* `["<Application ID URL>/scope"]`Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user`)
+* `["<Application ID URL>/scope"]`Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
@@ -278,9 +278,9 @@ Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kur
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.
 
-Çoğu uygulama için önerilen model ilk olarak çağrı `acquireTokenSilent` yapmak, sonra özel durumu yakalamak ve sonra etkileşimli bir istek `acquireTokenPopup` başlatmak için `acquireTokenRedirect`(veya) çağırır.
+Çoğu uygulama için önerilen model ilk olarak çağrı yapmak `acquireTokenSilent` , sonra özel durumu yakalamak ve sonra `acquireTokenPopup` `acquireTokenRedirect` etkileşimli bir istek başlatmak için (veya) çağırır.
 
-Sonuçları `acquireTokenPopup` açılan bir oturum açma penceresinde çağırma. Alternatif olarak `acquireTokenRedirect` , kullanıcıları Microsoft Identity platform uç noktasına yönlendirir. Bu pencerede, kullanıcıların kimlik bilgilerini onaylaması, gerekli kaynağa onay vermesi veya iki öğeli kimlik doğrulamayı tamamlaması gerekir.
+`acquireTokenPopup`Sonuçları açılan bir oturum açma penceresinde çağırma. Alternatif olarak, `acquireTokenRedirect` kullanıcıları Microsoft Identity platform uç noktasına yönlendirir. Bu pencerede, kullanıcıların kimlik bilgilerini onaylaması, gerekli kaynağa onay vermesi veya iki öğeli kimlik doğrulamayı tamamlaması gerekir.
 
 ```javascript
   const requestObj = {
@@ -296,7 +296,7 @@ Sonuçları `acquireTokenPopup` açılan bir oturum açma penceresinde çağırm
 ```
 
 > [!NOTE]
-> Bu hızlı başlangıç, `loginRedirect` Internet `acquireTokenRedirect` Explorer tarafından açılır pencerelerin işlenmesiyle ilgili [bilinen bir sorun](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) nedeniyle Microsoft Internet Explorer ile ve yöntemlerini kullanır.
+> Bu hızlı başlangıç, `loginRedirect` `acquireTokenRedirect` Internet Explorer tarafından açılır pencerelerin işlenmesiyle ilgili [bilinen bir sorun](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) nedeniyle Microsoft Internet Explorer ile ve yöntemlerini kullanır.
 
 ## <a name="log-out"></a>Oturumu Kapat
 
@@ -319,7 +319,7 @@ Angular malzeme bileşen kitaplığı 'nı kullanarak Kullanıcı arabirimi ekle
     npm install
     npm start
     ```
-1. Tarayıcınızda, veya **http://localhost:4200** **http://localhost:{port}** yazın; burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır.
+1. Tarayıcınızda, veya yazın; **http://localhost:4200** **http://localhost:{port}** burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır.
 
 
 ### <a name="provide-consent-for-application-access"></a>Uygulama erişimi için onay sağlayın
@@ -343,7 +343,6 @@ Bir arka uç API 'SI bir kapsam gerektirmiyorsa (önerilmez), belirteçleri alma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, bir kullanıcı oturumunu nasıl kullanabileceğinizi ve angular öğreticisinde belirteç edinmeyi öğrenin:
+Kimlik ve erişim yönetimine yeni başladıysanız, [kimlik doğrulama ve yetkilendirme](authentication-vs-authorization.md)ile başlayarak modern kimlik doğrulama kavramlarını öğrenmenize yardımcı olacak çeşitli makalelerimiz vardır.
 
-> [!div class="nextstepaction"]
-> [Angular öğreticisi](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Microsoft Identity platformunda tek sayfalı uygulama geliştirmeye daha ayrıntılı bir şekilde geçmek istiyorsanız, çok parçalı [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md) makaleleri, başlamanıza yardımcı olabilir.

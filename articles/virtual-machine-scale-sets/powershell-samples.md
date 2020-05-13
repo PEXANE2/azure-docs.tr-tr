@@ -1,19 +1,20 @@
 ---
 title: Azure PowerShell Örnekleri
 description: Ölçek kümesi oluşturma ve yönetme gibi Azure PowerShell kullanılarak oluşturulan örnek Bash betiklerinin bağlantılarını içeren bir tablo.
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
 ms.date: 03/27/2018
-ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: b0c5f7fb3841df1cc5649d48348d985311a97062
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 2566cc9266128bac7f1d5f6223c72675831539e6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011353"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197051"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için Azure PowerShell örnekleri.
 

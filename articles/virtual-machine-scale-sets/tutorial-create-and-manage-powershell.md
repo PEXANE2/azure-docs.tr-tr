@@ -2,18 +2,19 @@
 title: Öğretici-Azure sanal makine ölçek kümesi oluşturma ve yönetme
 description: Örnek başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi bazı genel yönetim görevlerinin yanı sıra, sanal makine ölçek kümesi oluşturmak için Azure PowerShell'in nasıl kullanılacağını öğrenin.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 05/18/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 938b4e64dd5b67488ae5d061f2ceb29ae4bb7f6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/18/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011260"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195182"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve yönetme
 
@@ -83,7 +84,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için `-InstanceId` [Get-azvmssvm](/powershell/module/az.compute/get-azvmssvm)' ye parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenmektedir:
+Belirli bir sanal makine örneği hakkında ek bilgileri görüntülemek için `-InstanceId` [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)' ye parametresini ekleyin. Aşağıdaki örnekte, *1* sanal makine örneğiyle ilgili bilgiler görüntülenmektedir:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -132,7 +133,7 @@ IpAddress
 52.168.121.216
 ```
 
-İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluştururken kullanılan kimlik bilgilerini girin ( *azureuser* ve *\@P ssw0rd!* örnek komutları içinde varsayılan olarak). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *1*'e bağlanır:
+İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluştururken kullanılan kimlik bilgilerini girin ( *azureuser* ve *P \@ ssw0rd!* örnek komutları içinde varsayılan olarak). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *1*'e bağlanır:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -251,7 +252,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Ölçek kümesinin kapasitesini değiştirme
 Ölçek kümesi oluşturduğunuzda iki sanal makine örneği istediniz. Ölçek kümesindeki sanal makine örneği sayısını artırmak veya azaltmak için kapasiteyi el ile değiştirebilirsiniz. Ölçek kümesi, gerektiği sayıda sanal makine örneği oluşturur veya kaldırır ve sonra trafiği dağıtmak için yük dengeleyiciyi yapılandırır.
 
-İlk olarak [Get-AzVmss](/powershell/module/az.compute/get-azvmss)ile bir ölçek kümesi nesnesi oluşturun ve ardından için `sku.capacity`yeni bir değer belirtin. Kapasite değişikliğini uygulamak için [Update-AzVmss](/powershell/module/az.compute/update-azvmss)komutunu kullanın. Aşağıdaki örnek, ölçek kümenizdeki sanal makine sayısını *3* olarak ayarlar:
+İlk olarak [Get-AzVmss](/powershell/module/az.compute/get-azvmss)ile bir ölçek kümesi nesnesi oluşturun ve ardından için yeni bir değer belirtin `sku.capacity` . Kapasite değişikliğini uygulamak için [Update-AzVmss](/powershell/module/az.compute/update-azvmss)komutunu kullanın. Aşağıdaki örnek, ölçek kümenizdeki sanal makine sayısını *3* olarak ayarlar:
 
 ```azurepowershell-interactive
 # Get current scale set

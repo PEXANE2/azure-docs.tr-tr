@@ -2,18 +2,19 @@
 title: Öğretici-Azure PowerShell ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini Azure PowerShell ile otomatik olarak ölçeklendirmeyi öğrenin
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 03/27/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 3c8488fa794e2bfa4de7833cb4cd4756b5394263
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81009007"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201361"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 
@@ -180,7 +181,7 @@ IpAddress
 52.168.121.216
 ```
 
-İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için kendi genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluştururken kullanılan kimlik bilgilerini girin (örnek komutlarda varsayılan olarak *azureuser* ve *\@P ssw0rd!*). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *0*'a bağlanır:
+İlk sanal makine örneğinize bir uzak bağlantı oluşturun. Önceki komutlarda gösterildiği gibi, gerekli sanal makine örneği için kendi genel IP adresinizi ve bağlantı noktası numaranızı belirtin. İstendiğinde, ölçek kümesini oluştururken kullanılan kimlik bilgilerini girin (örnek komutlarda varsayılan olarak *azureuser* ve *P \@ ssw0rd!*). Azure Cloud Shell kullanıyorsanız, bu adımı yerel PowerShell isteminden veya Uzak Masaüstü İstemcisinden gerçekleştirin. Aşağıdaki örnek sanal makine örneği *0*'a bağlanır:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -189,7 +190,7 @@ mstsc /v 52.168.121.216:50001
 Oturum açıldıktan sonra, görev çubuğundan Internet Explorer’ı açın.
 
 - **Önerilen güvenlik, gizlilik ve uyumluluk ayarlarını kullan** istemini kabul etmek için *Tamam*'ı seçin
-- Adres *http://download.sysinternals.com/files/CPUSTRES.zip* çubuğunu yazın.
+- *http://download.sysinternals.com/files/CPUSTRES.zip*Adres çubuğunu yazın.
 - Internet Explorer Artırılmış Güvenlik Yapılandırması etkinleştirildiğinden, *http://download.sysinternals.com* etki alanının güvenilen siteler listenize eklenmesi için **Ekle**'yi seçin.
 - Dosya indirme için sorulduğunda **Aç**'ı seçin ve ardından *CPUSTRES.EXE* aracı için **Çalıştır**'ı seçin.
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Key Vault 'de sertifikanın otomatik döndürme sıklığı güncelleştiriliyor | Microsoft Docs
+title: Öğretici-Key Vault 'de sertifika otomatik döndürme sıklığı güncelleştiriliyor | Microsoft Docs
 description: Azure Key Vault Azure portal kullanarak bir sertifikanın otomatik döndürme sıklığını güncelleştirmeyi gösteren öğretici
 services: key-vault
 author: msmbaldwin
@@ -11,28 +11,27 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 2e6c250a0bcb9d73e7c572dfe8138c31269993e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82106807"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201522"
 ---
-# <a name="tutorial-configuring-certificates-auto-rotation-in-key-vault"></a>Öğretici: Key Vault ' de sertifikanın otomatik döndürmesini yapılandırma
+# <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Öğretici: Key Vault içinde sertifika otomatik döndürmeyi yapılandırma
 
-Azure Key Vault, dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanır. Bunlar, sertifika yetkilisi tarafından imzalanmış genel ve özel SSL/TLS sertifikaları ya da otomatik olarak imzalanan bir sertifika olabilir. Key Vault, sertifika yetkilileri ile, sertifika yaşam döngüsü yönetimine yönelik sağlam bir çözüm sunan, sertifikalar talep edebilir ve bunları yenileyebilir. Bu öğreticide, sertifikanın özniteliklerini-geçerlilik süresini, otomatik döndürme sıklığını, CA 'yı güncelleşitecaksınız. Key Vault hakkında daha fazla bilgi için [Genel Bakış](../general/overview.md) bölümünü inceleyin.
+Azure Key Vault kullanarak dijital sertifikalar kolayca temin edebilir, yönetebilir ve dağıtabilirsiniz. Sertifikalar, bir sertifika yetkilisi (CA) tarafından imzalanmış ortak ve özel Güvenli Yuva Katmanı (SSL)/Aktarım Katmanı Güvenliği (TLS) sertifikaları veya otomatik olarak imzalanan bir sertifika olabilir. Key Vault, sertifika yaşam döngüsü yönetimine yönelik sağlam bir çözüm sunarak, CA 'larla ortaklık aracılığıyla sertifika talep edebilir ve yenileyebilir. Bu öğreticide, bir sertifikanın geçerlilik süresini, otomatik döndürme sıklığını ve CA özniteliklerini güncelleşitecaksınız.
 
 Öğretici şunların nasıl yapıldığını göstermektedir:
 
 > [!div class="checklist"]
-> * Azure portal kullanarak bir sertifikayı yönetme
-> * Sertifika yetkilisi sağlayıcısı hesabı ekle
-> * Sertifikanın geçerlilik süresini Güncelleştir
-> * Sertifikanın otomatik döndürme sıklığını Güncelleştir
-> * Azure PowerShell kullanarak sertifika özniteliklerini güncelleştirme
+> * Azure portal kullanarak bir sertifikayı yönetin.
+> * CA sağlayıcısı hesabı ekleyin.
+> * Sertifikanın geçerlilik süresini güncelleştirin.
+> * Sertifikanın otomatik döndürme sıklığını güncelleştirin.
+> * Azure PowerShell kullanarak sertifikanın özniteliklerini güncelleştirin.
 
-
-Başlamadan önce [temel kavramları Key Vault](../general/basic-concepts.md)okuyun. 
+Başlamadan önce [temel kavramları Key Vault](../general/basic-concepts.md)okuyun.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -42,75 +41,76 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-İşlemleri gerçekleştirmek için mevcut Key Vault oluşturun veya seçin. [(Bir Anahtar Kasası oluşturma adımları).](../quick-create-portal.md) Örnekte, kasa adı **örnek kasadır**. 
+İşlem gerçekleştirmek için bir Anahtar Kasası oluşturun veya mevcut kasalarınızı seçin (bkz. [Anahtar Kasası oluşturma adımları](../quick-create-portal.md)). Örnekte, Anahtar Kasası adı **örnek kasadır**.
 
-![Key Vault oluşturma işlemi tamamlandıktan sonra alınan çıktı](../media/certificates/tutorial-import-cert/vault-properties.png)
+![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Key Vault bir sertifika oluşturun
 
-Kasada bir sertifika oluşturun veya içeri aktarın. [(Anahtar Kasası 'nda sertifika oluşturma adımları).](../quick-create-portal.md) Bu durumda, **examplecertificate**adlı sertifika üzerinde çalışacağız.
+Bir sertifika oluşturun veya bir sertifikayı anahtar kasasına aktarın (bkz. [Key Vault sertifika oluşturma adımları](../quick-create-portal.md)). Bu durumda, **examplecertificate**adlı bir sertifika üzerinde çalışacaksınız.
+
+## <a name="update-certificate-lifecycle-attributes"></a>Sertifika yaşam döngüsü özniteliklerini güncelleştirme
+
+Azure Key Vault, sertifikanın yaşam döngüsü özniteliklerini, sertifika oluşturma zamanından önce ve sonra güncelleştirebilirsiniz.
+
+Key Vault oluşturulan bir sertifika şu olabilir:
+
+- Otomatik olarak imzalanan bir sertifika.
+- Key Vault ile iş ortağı olan bir CA ile oluşturulan bir sertifika.
+- Key Vault ile iş ortağı olmayan bir CA 'ya sahip bir sertifika.
+
+Aşağıdaki CA 'Lar Şu anda Key Vault ile iş ortağı sağlayıcılardır:
+
+- DigiCert: Key Vault OV TLS/SSL sertifikaları sunmaktadır.
+- GlobalSign: Key Vault OV TLS/SSL sertifikaları sunmaktadır.
+
+Key Vault CAs ile belirlenen ortaklıklar aracılığıyla sertifikaları otomatik olarak döndürür. Key Vault, sertifikaları iş ortaklığı üzerinden otomatik olarak istediğinde ve yenilediği için otomatik döndürme özelliği, Key Vault iş ortağı olmayan CA 'larla oluşturulan sertifikalar için geçerli değildir.
 
 > [!NOTE]
-> Azure Key Vault, sertifikanın yaşam döngüsü öznitelikleri, her ikisi de sertifika oluşturma sırasında ve oluşturulduktan sonra güncelleştirilebilen olabilir. 
-## <a name="updating-certificates-life-cycle-attributes"></a>Sertifikanın yaşam döngüsü öznitelikleri güncelleştiriliyor
-
-Key Vault oluşturulan bir sertifika, 
-- kendinden imzalı bir sertifika
-- Key Vault ile iş ortağı olan bir sertifika yetkilisi (CA) ile oluşturulan bir sertifika
-- Sertifika yetkilisi olan ve Key Vault iş ortağı olmayan bir sertifika
-
-Aşağıdaki sertifika yetkilileri şu anda Key Vault ile iş ortağı sağlayıcılardır:
-- DigiCert-Key Vault, DigiCert ile OV TLS/SSL sertifikaları sunmaktadır.
-- GlobalSign-Key Vault, GlobalSign ile OV TLS/SSL sertifikaları sunmaktadır.
-
-Sertifika yetkilileri olan ortaklıklar aracılığıyla sertifikaları otomatik olarak döndürür Azure Key Vault. Bu iş ortaklığı sayesinde, sertifikaları otomatik olarak ister ve yeniler Key Vault. Bu nedenle, **otomatik döndürme özelliği, Key Vault ile ortakmış olmayan CA 'larla oluşturulan sertifikalar için geçerli değildir.** 
-
-> [!NOTE]
-> CA sağlayıcısı için bir hesap yöneticisi, Key Vault üzerinden TLS/SSL sertifikaları oluşturmak, yenilemek ve kullanmak için Key Vault tarafından kullanılacak kimlik bilgilerini oluşturur.
+> CA sağlayıcısı için bir hesap yöneticisi, Key Vault, TLS/SSL sertifikaları oluşturmak, yenilemek ve kullanmak için kullandığı kimlik bilgilerini oluşturur.
 ![Sertifika yetkilisi](../media/certificates/tutorial-rotate-cert/cert-authority-create.png)
-> 
+>
 
-
-### <a name="updating-certificates-life-cycle-attributes-at-the-time-of-certificate-creation"></a>Sertifika oluşturma sırasında sertifikanın yaşam döngüsü özniteliklerini güncelleştirme
+### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>Sertifika yaşam döngüsü özniteliklerini oluşturma sırasında Güncelleştir
 
 1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-2. **Oluştur/İçeri Aktar**’a tıklayın.
-3. **Sertifika oluştur** ekranında aşağıdaki değerleri güncelleştirin:
-    
+1. **Oluştur/Içeri aktar**' ı seçin.
+1. **Sertifika oluştur** ekranında, aşağıdaki değerleri güncelleştirin:
 
-    - **Geçerlilik süresi**: değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
-    - **Ömür eylemi türü**: sertifikanın otomatik yenilemesini ve uyarı eylemini seçin. Seçime göre, ' yüzde ömrü ' veya ' bitiş tarihinden önceki gün sayısı ' güncelleştirmesini güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, süresinin %80 ' u oranında ayarlanmıştır.<br> Açılan menüden, seçeneğini belirleyin:
+   - **Geçerlilik süresi**: değeri girin (ay). Kısa süreli sertifikaların oluşturulması önerilen bir güvenlik uygulamasıdır. Varsayılan olarak, yeni oluşturulan sertifikanın geçerlilik değeri 12 aydan oluşur.
+   - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından **yüzde ömrü** veya **süre sonu öncesindeki gün sayısını**güncelleştirin. Varsayılan olarak, bir sertifikanın otomatik yenilenmesi, yaşam süresinin yüzde 80 ' sinden belirlenir. Aşağı açılan menüden, aşağıdaki seçeneklerden birini seçin.
 
-    |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
-    |-----------|------|
-    |Bu seçeneğin belirlenmesi, oto dönüşü açmak için | Bu seçeneğin belirlenmesi otomatik olarak döndürülecektir, yalnızca ilgili kişileri uyarır|
-        
+        |  Belirli bir zamanda otomatik olarak Yenile| Belirli bir zamanda tüm kişileri e-postayla gönder |
+        |-----------|------|
+        |Bu seçeneğin belirlenmesi, oto dönüşü *etkinleştirebilir* . | Bu seçeneğin *belirlenmesi otomatik olarak döndürülmez, ancak* yalnızca ilgili kişileri uyarır.|
 
-
-4. **Oluştur**'a tıklayın.
+1. **Oluştur**’u seçin.
 
 ![Sertifika yaşam döngüsü](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
-### <a name="updating-life-cycle-attributes-of-stored-certificate"></a>Depolanan sertifikanın yaşam döngüsü öznitelikleri güncelleştiriliyor
+### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Depolanan bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirme
 
-1. Key Vault seçin.
-2. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-3. Güncelleştirmek istediğiniz sertifikayı seçin. Bu durumda, **examplecertificate**adlı sertifika üzerinde çalışacağız.
-4. Üst menü çubuğundan **verme ilkesi** ' ni seçin.
+1. Anahtar kasasını seçin.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
+1. Güncelleştirmek istediğiniz sertifikayı seçin. Bu durumda, **examplecertificate**adlı bir sertifika üzerinde çalışacaksınız.
+1. Üst menü çubuğundan **verme ilkesi** ' ni seçin.
 
-![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
-5. **Verme ilkesi** ekranında, aşağıdaki değerleri güncelleştirin:
-- **Geçerlilik süresi**: değeri güncelleştirme (ay)
-- **Ömür eylemi türü**: sertifikanın otomatik yenilemesini ve uyarı eylemini seçin. Seçime göre, ' yüzde ömrü ' veya ' bitiş tarihinden önceki gün sayısı ' ' nı güncelleştirin. 
+   ![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
-![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
-6. **Kaydet**'e tıklayın.
+1. **Verme ilkesi** ekranında, aşağıdaki değerleri güncelleştirin:
+
+   - **Geçerlilik süresi**: değeri güncelleştirin (ay).
+   - **Ömür eylemi türü**: sertifikanın otomatik yenileme ve uyarı eylemini seçin ve ardından sürenin dolması için gereken **ömrü** veya **gün sayısını**güncelleştirin.
+
+   ![Sertifika Özellikleri](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
+
+1. **Kaydet**’i seçin.
 
 > [!IMPORTANT]
 > Bir sertifikanın ömür eylemi türünü değiştirmek, mevcut sertifikalara yönelik değişiklikleri hemen kaydeder.
 
 
-### <a name="updating-certificates-attributes-using-powershell"></a>PowerShell kullanarak sertifikanın özniteliklerini güncelleştirme
+### <a name="update-certificate-attributes-by-using-powershell"></a>PowerShell kullanarak sertifika özniteliklerini güncelleştirme
 
 ```azurepowershell
 
@@ -121,9 +121,10 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 ```
 
 > [!TIP]
-> Sertifika listesi için yenileme ilkesini değiştirmek için, VaultName, CertName içeren girdi dosyası. csv <br/>
->  vault1,Cert1 <br/>
->  vault2, Cert2
+> Sertifika listesinin yenileme ilkesini değiştirmek için, `File.csv` Aşağıdaki örnekteki gibi içeren öğesini girin `VaultName,CertName` :
+> <br/>
+ `vault1,Cert1` <br/>
+>  `vault2,Cert2`
 >
 >  ```azurepowershell
 >  $file = Import-CSV C:\Users\myfolder\ReadCSVUsingPowershell\File.csv 
@@ -133,21 +134,23 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-[Burada](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes) parametreler hakkında daha fazla bilgi edinin
+Parametreler hakkında daha fazla bilgi edinmek için bkz. [az keykasa Certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer Key Vault hızlı başlangıçları ve öğreticileri bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıç ve öğreticilerle çalışmaya devam etmeyi planlıyorsanız, bu kaynakları yerinde bırakmanız yararlı olabilir.
-Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vault ve ilgili kaynaklar silinir. Kaynak grubunu portal aracılığıyla silmek için:
+Diğer Key Vault öğreticileri Bu öğreticiye göre derleyin. Bu öğreticilerle çalışmayı planlıyorsanız, mevcut kaynakları yerinde bırakmak isteyebilirsiniz.
+Artık ihtiyacınız kalmadığında, anahtar kasasını ve ilgili kaynakları silen kaynak grubunu silin.
 
-1. Portalın üst kısmındaki Arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubunu arama sonuçlarında gördüğünüzde seçin.
-2. **Kaynak grubunu sil**'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil**’i seçin.
+Portalı kullanarak kaynak grubunu silmek için:
+
+1. Portalın üst kısmındaki **arama** kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubu arama sonuçlarında göründüğünde, bunu seçin.
+1. **Kaynak grubunu sil**'i seçin.
+1. **Kaynak grubu adını yazın:** kutusuna kaynak grubunun adını yazın ve **Sil**' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir sertifikanın yaşam döngüsünü güncelleştirmiş olursunuz. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+Bu öğreticide, bir sertifikanın yaşam döngüsü özniteliklerini güncelleştirmiş olursunuz. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere geçin:
 
-[Azure Key Vault 'da sertifika oluşturmayı yönetme](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) hakkında daha fazla bilgi edinin
-- [Key Vault genel bakışı](../general/overview.md) gözden geçirin
+- [Azure Key Vault 'de sertifika oluşturmayı yönetme](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)hakkında daha fazla bilgi edinin.
+- [Key Vault genel bakışı](../general/overview.md)gözden geçirin.

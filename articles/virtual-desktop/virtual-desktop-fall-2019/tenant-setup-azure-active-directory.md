@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614406"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124406"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
@@ -57,7 +57,7 @@ Hizmet izinleri vermek için:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Windows sanal masaüstü onayı sayfasında Genel yönetici hesabıyla oturum açın. Örneğin, contoso organizasyonu ile karşılaşırsanız hesabınız admin@contoso.com veya admin@contoso.onmicrosoft.comolabilir.
+2. Windows sanal masaüstü onayı sayfasında Genel yönetici hesabıyla oturum açın. Örneğin, contoso organizasyonu ile karşılaşırsanız hesabınız admin@contoso.com veya olabilir admin@contoso.onmicrosoft.com .
 3. **Kabul Et**’i seçin.
 4. Azure AD 'nin izin kaydı yapabilmesi için bir dakika bekleyin.
 5. Bir tarayıcı açın ve yönetici onay akışını [Windows sanal masaüstü istemci uygulamasına](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)başlatın.
@@ -87,7 +87,7 @@ TenantCreator uygulama rolünü atamak için:
    !["Windows sanal masaüstü" Kurumsal uygulamasını yönetmek için atanan kullanıcı ve grupların ekran görüntüsü. Ekran görüntüsünde, "varsayılan erişim" için olan yalnızca bir atama gösterilmektedir.](../media/tenant-default-access.png)
 4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** sekmesinden **Kullanıcılar ve gruplar** ' ı seçin.
 5. Windows sanal masaüstü kiracınızı oluşturacak bir kullanıcı hesabı arayın. Kolaylık olması için bu genel yönetici hesabı olabilir.
-   - Veya contosoadmin@live.com contosoadmin@outlook.comgibi bir Microsoft Identity sağlayıcısı kullanıyorsanız, Windows sanal masaüstü 'nde oturum açabilmeyebilirsiniz. admin@contoso.onmicrosoft.com Bunun gibi admin@contoso.com etki alanına özgü bir hesap kullanmanızı öneririz.
+   - Veya gibi bir Microsoft Identity sağlayıcısı kullanıyorsanız contosoadmin@live.com contosoadmin@outlook.com , Windows sanal masaüstü 'nde oturum açabilmeyebilirsiniz. Bunun gibi etki alanına özgü bir hesap kullanmanızı öneririz admin@contoso.com admin@contoso.onmicrosoft.com .
 
    !["TenantCreator" olarak eklenecek bir kullanıcı seçme ekran görüntüsü.](../media/tenant-assign-user.png)
    > [!NOTE]
@@ -145,13 +145,15 @@ Parantez içine alınmış değerleri, kuruluşunuzla ve kiracınızla ilgili de
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-Hesabınızı bilgisayarınızdan kilitlediyseniz veya bir kişinin sizin devamsızınızda kiracı yöneticisi olarak hareket etmesini gerektiren ikinci bir kullanıcıya yönetici erişimi atamanız iyi bir fikirdir. İkinci bir kullanıcıya yönetici erişimi atamak için aşağıdaki cmdlet 'i ile `<TenantName>` çalıştırın ve `<Upn>` KIRACı adınızla ikinci kullanıcının UPN 'sini kullanın.
+Hesabınızı bilgisayarınızdan kilitlediyseniz veya bir kişinin sizin devamsızınızda kiracı yöneticisi olarak hareket etmesini gerektiren ikinci bir kullanıcıya yönetici erişimi atamanız iyi bir fikirdir. İkinci bir kullanıcıya yönetici erişimi atamak için aşağıdaki cmdlet 'i ile çalıştırın `<TenantName>` ve `<Upn>` kiracı adınızla ıkıncı kullanıcının UPN 'sini kullanın.
 
 ```powershell
 New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Daha ayrıntılı bir anlatım için [Windows sanal masaüstü öğrenimi yolumuzu](https://docs.microsoft.com/learn/paths/m365-wvd/)inceleyin.
 
 Kiracınızı oluşturduktan sonra, Azure Active Directory bir hizmet sorumlusu oluşturmanız ve Windows sanal masaüstü 'nde bir rol atamanız gerekir. Hizmet sorumlusu, bir konak havuzu oluşturmak için Windows sanal masaüstü Azure Marketi teklifini başarıyla dağıtmanıza olanak tanır. Konak havuzları hakkında daha fazla bilgi edinmek için Windows sanal masaüstü 'nde bir konak havuzu oluşturma öğreticisine geçin.
 

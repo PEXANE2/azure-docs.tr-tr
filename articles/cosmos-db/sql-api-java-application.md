@@ -1,19 +1,19 @@
 ---
-title: 'Öğretici: Azure Cosmos DB kullanarak Java uygulama geliştirme öğreticisi'
+title: 'Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma'
 description: "Öğretici: Bu Java Web uygulaması öğreticisi, Azure Web siteleri 'nde barındırılan bir Java uygulamasında verileri depolamak ve erişmek için Azure Cosmos DB ve SQL API 'sini nasıl kullanacağınızı gösterir."
-author: tknandu
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
-ms.author: ramkris
-ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: anfeldma
+ms.openlocfilehash: fc8fb0e3c9ad35957291376691d5ed2c0484192a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985278"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120207"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API kullanarak Java Web uygulaması oluşturma
 
@@ -50,7 +50,7 @@ Bu uygulama geliştirme öğreticisine başlamadan önce aşağıdakilere sahip 
 * [Java EE Geliştiricileri için Eclipse IDE.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java çalışma zamanı ortamı (ör. Tomcat veya Jetty) etkin bir Azure Web Sitesi.](../app-service/app-service-web-get-started-java.md)
 
-Bu araçları ilk kez yüklüyorsanız coreservlets.com adresindeki [Öğretici: TomCat7'yi yükleme ve Eclipse ile kullanma](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) makalesinin Hızlı Başlangıç bölümünde yükleme işlem için bir adım adım kılavuz mevcuttur.
+Bu araçları ilk kez yüklüyorsanız coreservlets.com, öğreticinin hızlı başlangıç bölümünde yükleme işlemini adım adım sağlar [: TomCat7 yükleme ve Çakışan Küreler Ile kullanma](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) .
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>1. Adım: Azure Cosmos DB hesabı oluşturma
 İlk olarak bir Azure Cosmos DB hesabı oluşturalım. Zaten bir hesabınız varsa veya bu öğretici için Azure Cosmos DB Öykünücüsü’nü kullanıyorsanız [2. Adım: Java JSP uygulaması oluşturma](#CreateJSP) adımına atlayabilirsiniz.
@@ -98,7 +98,7 @@ Bunu yapmak için aşağıdaki adımları tamamlayarak projenizi bir Maven proje
      
    ![SQL Java Uygulaması SDK'sını yükleme](./media/sql-api-java-application/image13.png)
      
-   * Alternatif olarak, Grup Kimliği ve Yapıt Kimliği için bağımlılık XML'sini bir metin düzenleyicisi aracılığıyla doğrudan pom.xml'ye ekleyin:
+   * Ya da bir metin Düzenleyicisi aracılığıyla Grup KIMLIĞI ve yapıt KIMLIĞI için bağımlılık XML 'ini doğrudan Pod. xml öğesine ekleyin:
         ```xml
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -250,7 +250,7 @@ Bunu yapmak için aşağıdaki adımları tamamlayarak projenizi bir Maven proje
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. Azure Cosmos veritabanlarına ve koleksiyonlarına benzer şekilde, belgelere de kendine bağlantılar tarafından başvurulur. Aşağıdaki yardımcı işlevi, belgeleri kendine bağlantı yerine başka bir öznitelik (ör. "id") aracılığıyla almamızı sağlar:
+5. Azure Cosmos veritabanlarına ve koleksiyonlarına benzer şekilde, belgelere de kendine bağlantılar tarafından başvurulur. Aşağıdaki yardımcı işlevi, belgeleri kendi kendine bağlantı yerine başka bir özniteliğe (ör. "ID") almamıza izin verir:
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -265,7 +265,7 @@ Bunu yapmak için aşağıdaki adımları tamamlayarak projenizi bir Maven proje
                 return null;
             }
         }
-6. Id ile bir TodoItem JSON belgesini alıp ardından bunu bir POJO'ya seri durumdan çıkarmak için 5. adımdaki yardımcı yöntemi kullanabiliriz:
+6. TodoItem JSON belgesini KIMLIĞE göre almak ve sonra bir POJO 'ya seri durumdan çıkarmak için 5. adımdaki yardımcı yöntemi kullanabiliriz:
    
         @Override
         public TodoItem readTodoItem(String id) {

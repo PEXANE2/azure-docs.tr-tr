@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3195be3486aaafa91a22b6f6e9cb4fd5f4fe6de2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d9effbe29917c774279b6e9d203f44d5ad5c72e2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930004"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121057"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
 >[!IMPORTANT]
->Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)bakın.
+>Bu içerik, Azure Resource Manager Windows sanal masaüstü nesneleriyle Spring 2020 güncelleştirmesine yöneliktir. Windows sanal masaüstü Fall 2019 sürümünü Azure Resource Manager nesneleri olmadan kullanıyorsanız, [Bu makaleye](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)bakın. Windows sanal masaüstü 2019 ile oluşturduğunuz tüm makaleler Azure portal ile yönetilemez.
 >
 > Windows sanal masaüstü Spring 2020 güncelleştirmesi şu anda genel önizlemededir. Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için kullanmanızı önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
 > Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -105,7 +105,7 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
     >[!NOTE]
     >Kurulum işlemi, konak havuzunuzu ayarlarken en fazla 400 VM oluşturabilir ve her bir VM kurulum işlemi kaynak grubunuzda dört nesne oluşturur. Oluşturma işlemi abonelik kotayı denetlemediğinden, girdiğiniz sanal makine sayısının Azure VM 'de ve kaynak grubunuz ve aboneliğiniz için API sınırları içinde olduğundan emin olun. Konak havuzunuzu oluşturmayı bitirdikten sonra daha fazla VM ekleyebilirsiniz.
 
-5. Bundan sonra, kurulum işleminin oluşturduğu sanal makineleri adlandırmak için bir **ad ön eki** sağlayın. Sonek 0 ' dan `-` başlayan sayılarla birlikte olacaktır.
+5. Bundan sonra, kurulum işleminin oluşturduğu sanal makineleri adlandırmak için bir **ad ön eki** sağlayın. Sonek `-` 0 ' dan başlayan sayılarla birlikte olacaktır.
 
 6. Sonra, sanal makineyi oluşturmak için kullanılması gereken görüntüyü seçin. **Galeri** veya **Depolama Blobu**seçeneklerinden birini belirleyebilirsiniz.
 
