@@ -8,25 +8,23 @@ ms.topic: include
 ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d06bda1826964b019edb156375885c7f389ca6ec
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: aa9a715fdafc143a116458691965087b016dec1f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67189020"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343363"
 ---
 Bir işlev uygulaması tarafından şu anda kullanılan çalışma zamanı sürümünü görüntülemek ve güncelleştirmek için aşağıdaki yordamı kullanın.
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanıza gidin.
 
-1. **Yapılandırılan Özellikler**altında **işlev uygulama ayarları**' nı seçin.
+1. **Ayarlar**altında **yapılandırma**' yı seçin. **İşlev çalışma zamanı ayarları** sekmesinde, **çalışma zamanı sürümünü**bulun. Belirli çalışma zamanı sürümünü aklınızda edin. Aşağıdaki örnekte, sürümü olarak ayarlanır `~3` .
 
-    ![İşlev uygulaması ayarlarını seçin](./media/functions-view-update-version-portal/add-update-app-setting.png)
-
-1. **İşlev uygulaması ayarları** sekmesinde, **çalışma zamanı sürümünü**bulun. Belirli çalışma zamanı sürümüne ve istenen ana sürüme göz önünde edin. Aşağıdaki örnekte, sürümü olarak `~2`ayarlanır.
-
-   ![İşlev uygulaması ayarlarını seçin](./media/functions-view-update-version-portal/function-app-view-version.png)
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-view-runtime-version.png" alt-text="Çalışma zamanı sürümünü görüntüleyin." border="true":::
 
 1. İşlev uygulamanızı sürüm 1. x çalışma zamanına sabitlemek için, **çalışma zamanı sürümü**altında **~ 1** seçeneğini belirleyin. Uygulamanızda işlevleriniz olduğunda bu anahtar devre dışıdır.
 
 1. Çalışma zamanı sürümünü değiştirdiğinizde, **genel bakış** sekmesine dönün ve uygulamayı yeniden başlatmak Için **Yeniden Başlat** ' ı seçin.  Sürüm 1. x çalışma zamanı üzerinde çalışan işlev uygulaması yeniden başlatılır ve işlev oluştururken sürüm 1. x şablonları kullanılır.
+
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="İşlev uygulamanızı yeniden başlatın." border="true":::

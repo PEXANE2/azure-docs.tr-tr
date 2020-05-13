@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595286"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343312"
 ---
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -178,7 +178,7 @@ Yalnızca P15 veya üzeri olan Premium SSD 'ler Paylaşılan diskleri destekler.
 
 **Mevcut bir Premium SSD varsa, üzerinde paylaşılan diskler etkinleştirebilirim miyim?**
 
-API sürümü 2019-07-01 veya üzeri ile oluşturulan tüm yönetilen diskler, Paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM 'lerden diski çıkarmanız gerekir. Sonra, diskteki `maxShares` özelliğini düzenleyin.
+API sürümü 2019-07-01 veya üzeri ile oluşturulan tüm yönetilen diskler, Paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM 'lerden diski çıkarmanız gerekir. Sonra, `maxShares` diskteki özelliğini düzenleyin.
 
 **Artık paylaşılan modda bir disk kullanmak istemiyorum, bunu nasıl devre dışı bırakabilirim?**
 
@@ -257,32 +257,6 @@ Tüm Azure bölgeleri artık Standart SSD diskleri desteklemektedir.
 **Standart SSD 'Ler kullanılırken Azure Backup kullanılabilir mi?**
 Evet, Azure Backup artık kullanılabilir.
 
-**Nasıl yaparım? Standart SSD diskler mi oluşturulsun?**
-Azure Resource Manager şablonları, SDK, PowerShell veya CLı kullanarak Standart SSD diskleri oluşturabilirsiniz. Standart SSD disk oluşturmak için Kaynak Yöneticisi şablonunda gereken parametreler şunlardır:
-
-* Microsoft. COMPUTE için *Apiversion* , (veya üzeri `2018-04-01` ) olarak ayarlanmalıdır
-* *Manageddisk. storageAccountType* olarak belirtin`StandardSSD_LRS`
-
-Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. storageProfile. osDisk* bölümünü gösterir:
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-Şablon ile Standart SSD disk oluşturma hakkında ayrıntılı bir örnek için, bkz. [Standart SSD Veri disklerine sahip bir Windows GÖRÜNTÜSÜNDEN VM oluşturma](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
-
-**Mevcut disklerimi Standart SSD dönüştürebilir miyim?**
-Evet, bunu yapabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
--AccountType StandardSSD_LRS
-
 **HDD yerine Standart SSD diskleri kullanmanın avantajı nedir?**
 Standart SSD diskler, HDD disklerine kıyasla daha iyi gecikme, tutarlılık, kullanılabilirlik ve güvenilirlik sağlar. Uygulama iş yükleri bu nedenle Standart SSD çok daha sorunsuz bir şekilde çalışır. Premium SSD diskler, en fazla GÇ yoğun üretim iş yükleri için önerilen çözümdür.
 
@@ -332,9 +306,9 @@ Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
-**Azure Depolama Hizmeti Şifrelemesi, yönetilen bir disk oluştururken varsayılan olarak etkindir mi?**
+**Yönetilen bir disk oluşturduğum sunucu tarafında şifreleme varsayılan olarak etkindir mi?**
 
-Evet.
+Evet. Yönetilen diskler, platform tarafından yönetilen anahtarlarla sunucu tarafı şifreleme ile şifrelenir. 
 
 **Önyükleme birimi, yönetilen bir diskte varsayılan olarak şifrelendi mı?**
 
@@ -342,30 +316,27 @@ Evet. Varsayılan olarak, işletim sistemi diski dahil olmak üzere tüm yöneti
 
 **Şifreleme anahtarlarını kim yönetir?**
 
-Microsoft, şifreleme anahtarlarını yönetir.
+Platform tarafından yönetilen anahtarlar Microsoft tarafından yönetilir. Ayrıca, Azure Key Vault depolanan kendi anahtarlarınızı de kullanabilir ve yönetebilirsiniz. 
 
-**Yönetilen disklerimin Depolama Hizmeti Şifrelemesi devre dışı bırakabilir miyim?**
+**Yönetilen disklerimin sunucu tarafı şifrelemesini devre dışı bırakabilir miyim?**
 
 Hayır.
 
-**Depolama Hizmeti Şifrelemesi yalnızca belirli bölgelerde kullanılabilir mi?**
+**Sunucu tarafı şifreleme yalnızca belirli bölgelerde kullanılabilir mi?**
 
-Hayır. Yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir. Yönetilen diskler tüm genel bölgelerde ve Almanya 'da kullanılabilir. Bununla birlikte, yalnızca Microsoft tarafından yönetilen anahtarlar için, müşteri tarafından yönetilen anahtarlar için değil, Çin 'de de kullanılabilir.
+Hayır. Hem platform hem de müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir. 
 
-**Yönetilen diskimin şifrelenip şifrelenmediğini nasıl öğrenebilirim?**
+**, Şirket içi olarak Azure 'a ve Azure 'dan Azure 'a olağanüstü durum kurtarma senaryolarında müşteri tarafından yönetilen anahtarla sunucu tarafı şifrelemeyi destekler Azure Site Recovery.**
 
-Yönetilen bir diskin Azure portal, Azure CLı ve PowerShell 'den oluşturulma zamanını öğrenebilirsiniz. Süre, 9 Haziran 2017 ' den sonra ise, diskiniz şifrelenir.
+Evet. 
 
-**10 Haziran 2017 ' den önce oluşturulan mevcut disklerimi nasıl şifreleyebilirim?**
+**Azure Backup hizmeti 'ni kullanarak müşteri tarafından yönetilen anahtarla sunucu tarafı şifreleme ile şifrelenmiş yönetilen diskleri yedeklebilirim miyim?**
 
-10 Haziran 2017 itibariyle, mevcut yönetilen disklere yazılan yeni veriler otomatik olarak şifrelenir. Ayrıca, var olan verileri şifrelemeyi planlıyoruz ve şifreleme arka planda zaman uyumsuz olarak gerçekleşecektir. Mevcut verileri şimdi şifrelemeniz gerekiyorsa, diskinizin bir kopyasını oluşturun. Yeni diskler şifrelenir.
-
-* [Azure CLı kullanarak yönetilen diskleri kopyalama](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [Yönetilen diskleri PowerShell kullanarak kopyalama](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+Evet.
 
 **Yönetilen anlık görüntüler ve görüntüler şifrelendi mı?**
 
-Evet. 9 Haziran 2017 ' den sonra oluşturulan tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şifrelenir. 
+Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şifrelenir. 
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
