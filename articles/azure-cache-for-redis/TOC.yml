@@ -7,18 +7,26 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: ASP.NET uygulaması
-      href: cache-web-app-howto.md
-    - name: .NET Core uygulaması
-      href: cache-dotnet-core-quickstart.md
-    - name: .NET uygulaması
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Java uygulaması
-      href: cache-java-get-started.md
-    - name: Node.js uygulaması
-      href: cache-nodejs-get-started.md
-    - name: Python uygulaması
-      href: cache-python-get-started.md
+    - name: Bir önbellek oluşturma
+      items:
+        - name: 'Temel, Standart ve Premium katmanları'
+          href: quickstart-create-redis.md
+        - name: Kurumsal katmanlar
+          href: quickstart-create-redis-enterprise.md
+    - name: Önbellek kullanma
+      items:
+        - name: ASP.NET uygulaması
+          href: cache-web-app-howto.md
+        - name: .NET Core uygulaması
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET uygulaması
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Java uygulaması
+          href: cache-java-get-started.md
+        - name: Node.js uygulaması
+          href: cache-nodejs-get-started.md
+        - name: Python uygulaması
+          href: cache-python-get-started.md
 - name: Öğreticiler
   items:
     - name: Puan tabloları ile önbelleğe almayı kullanma

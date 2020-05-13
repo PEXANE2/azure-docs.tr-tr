@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Azure PaaS kaynakları için özellik kapsamı
           href: features-paas.md
+    - name: Güvenlik Merkezi’ndeki yenilikler
+      href: release-notes.md
     - name: Güvenlik önerileri
       href: recommendations-reference.md
     - name: Güvenlik uyarıları ve amaç sonlandırma zinciri
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Mevcut Azure Log Analytics kullanıcıları
           href: faq-azure-monitor-logs.md
-    - name: Sürüm notları
+    - name: Güvenlik Merkezi’ndeki yeniliklerin arşivi
+      href: release-notes-archive.md
+    - name: Azure yol haritası blogu
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Özellik ve API’yi kullanımdan kaldırma (Temmuz 2019)
       href: security-center-features-retirement-july2019.md

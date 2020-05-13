@@ -18,6 +18,8 @@
       href: quickstart-create-workspace.md
     - name: Azure Synapse Studio’yu kullanma
       href: quickstart-synapse-studio.md
+    - name: Power BI çalışma alanına bağlanma
+      href: quickstart-power-bi.md
     - name: Havuz oluşturma
       items:
         - name: Web araçlarını kullanarak Apache Spark not defteri oluşturma
@@ -30,6 +32,8 @@
       items:
         - name: COPY ifadesi
           href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Studio
+          href: quickstart-load-studio-sql-pool.md
     - name: İsteğe bağlı SQL kullanma
       href: quickstart-sql-on-demand.md
 - name: Öğreticiler
@@ -188,6 +192,8 @@
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Apache Spark performansı
               href: ./spark/apache-spark-performance.md
+            - name: Apache Spark Otomatik Ölçeklendirme davranışı
+              href: ./spark/apache-spark-autoscale.md
         - name: Geliştirme
           items:
             - name: Azure Synapse Studio not defterleri

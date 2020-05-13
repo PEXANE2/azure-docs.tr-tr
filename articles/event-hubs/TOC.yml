@@ -212,6 +212,8 @@
     - name: Sorun giderme
       items:
         - name: Sorun giderme kılavuzu
+          href: troubleshooting-guide.md
+        - name: .NET özel durumları
           href: event-hubs-messaging-exceptions.md
         - name: Kaynak Yöneticisi özel durumları
           href: resource-manager-exceptions.md

@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: Günlükleri etkinleştirme
           href: troubleshoot-diagnostic-logs.md
+        - name: Kaynak olaylarını alma
+          href: get-resource-events.md
     - name: Uygulama yönetme
       items:
         - name: Barındırma planını yönetme

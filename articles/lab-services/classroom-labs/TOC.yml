@@ -22,6 +22,8 @@
   items:
     - name: Sınıf Laboratuvarları kavramları
       href: classroom-labs-concepts.md
+    - name: Sınıf Laboratuvarları mimarisinin temelleri
+      href: classroom-labs-fundamentals.md
     - name: Senaryolar
       items:
         - name: Sınıfları yönetmek için laboratuvarları kullanma
@@ -136,7 +138,7 @@
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: Teknik topluluk forumu
+      href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: Sık sorulan sorular
       href: classroom-labs-faq.md

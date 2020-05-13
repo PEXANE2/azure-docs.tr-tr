@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Veri fabrikası oluşturma - Resource Manager şablonu
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: Güvenlik - Müşteri Tarafından Yönetilen Anahtar Şifrelemesini Etkinleştirme
+      href: quickstart-enable-customer-managed-key.md
     - name: Veri akışı oluşturma
       href: data-flow-create.md
 - name: Öğreticiler

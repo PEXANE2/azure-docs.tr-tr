@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: Değişiklik akışı işlemci kitaplığından geçiş
           href: how-to-migrate-from-change-feed-library.md
-        - name: Değişiklik Akışı ile Java SQL uygulaması oluşturma
+        - name: Değişiklik akışı - Zaman uyumsuz Java örneği
           href: create-sql-api-java-changefeed.md
     - name: Apache Spark ile yerleşik analiz
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: İstek birimi kullanımını izleme
               href: monitor-request-unit-usage.md
+            - name: Normalleştirilmiş istek birimi kullanımını izleme
+              href: monitor-normalized-request-units.md
         - name: Azure izleyici günlüklerini kullanma
           items:
             - name: Tanılama günlükleriyle izleme

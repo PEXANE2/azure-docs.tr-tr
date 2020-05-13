@@ -557,6 +557,20 @@
       items:
         - name: Konuşma cihazları SDK’sı sürüm notları
           href: devices-sdk-release-notes.md
+- name: Araçlar
+  items:
+    - name: SPX
+      items:
+        - name: SPX nedir?
+          href: spx-overview.md
+        - name: SPX temel bilgileri
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Speech Studio nedir?
+          href: 'https://speech.microsoft.com'
+        - name: Speech Studio ile Özel Komutlar uygulaması oluşturma
+          href: quickstart-custom-speech-commands-create-new.md
 - name: Geçiş
   items:
     - name: Bing Konuşma’dan

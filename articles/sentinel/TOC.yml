@@ -94,11 +94,11 @@
                   items:
                     - name: Denetim Noktası
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Forcepoint ürünleri
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama
           href: connect-azure-stack.md
-    - name: Birden çok kiracı (MSSP)
+    - name: Birden çok kiracı ile çalışma (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Birden çok çalışma alanında olaylarla çalışma
+      href: multiple-workspace-view.md
     - name: Müşteri tarafından yönetilen anahtarları (CMK) ayarlama
       href: customer-managed-keys.md
     - name: Uyarıdan olay oluşturma
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'

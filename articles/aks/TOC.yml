@@ -129,6 +129,8 @@
           href: scale-cluster.md
         - name: AKS kümesini yükseltme
           href: upgrade-cluster.md
+        - name: Çalışma Süresi SLA’sını kullanma
+          href: uptime-sla.md
         - name: İşlem düğümü işletim sistemi güncelleştirmeleri
           href: node-updates-kured.md
         - name: AKS kümesini yapılandırma
@@ -231,7 +233,7 @@
         - name: Azure Active Directory tümleştirmesini etkinleştirme
           items:
             - name: Azure AD’yi tümleştirme (önizleme)
-              href: azure-ad-v2.md
+              href: managed-aad.md
             - name: Azure CLI kullanma
               href: azure-ad-integration-cli.md
             - name: Azure portalı kullanma
