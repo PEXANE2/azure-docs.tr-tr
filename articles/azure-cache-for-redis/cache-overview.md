@@ -5,21 +5,21 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/11/2020
-ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/12/2020
+ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113213"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196367"
 ---
-# <a name="azure-cache-for-redis-description"></a>Redis için Azure Cache açıklaması
+# <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
 
-Redsıs için Azure önbelleği, açık kaynaklı yazılım [redin](https://redis.io/)temel alınarak bellek içi veri deposu sağlar. Reddir, önbellek olarak kullanıldığında, yoğun arka uç veri depolarında yoğun olan sistemlerin performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen veriler uygulamaya yakın olan hızlı depolamaya kopyalanarak performans artırıldı. Redin için Azure Cache ile, bu hızlı depolama, diskten bir veritabanı tarafından yüklenmesi yerine bellek içinde bulunur.
+Redsıs için Azure önbelleği, açık kaynaklı yazılım [redin](https://redis.io/)temel alınarak bellek içi veri deposu sağlar. Reddir, önbellek olarak kullanıldığında, yoğun olarak arka uç veri depolarında çalışan sistemlerin performansını ve ölçeklenebilirliğini geliştirir. Sık erişilen veriler uygulamaya yakın olan hızlı depolamaya kopyalanarak performans artırıldı. Redin için Azure Cache ile, bu hızlı depolama, diskten bir veritabanı tarafından yüklenmesi yerine bellek içinde bulunur.
 
-Redo için Azure Cache, bellek içi veri yapısı deposu, dağıtılmış ilişkisel olmayan bir veritabanı ve bir ileti Aracısı olarak kullanılabilir. Redis altyapısının düşük gecikmeli, yüksek aktarım hızına sahip performansından yararlanılarak uygulama performansı iyileştirilir.
+Redsıs için Azure önbelleği, dağıtılmış bir veri önbelleği, bir oturum deposu ve bir ileti Aracısı olarak kullanılabilir. Redis altyapısının düşük gecikmeli, yüksek aktarım hızına sahip performansından yararlanılarak uygulama performansı iyileştirilir.
 
-Redsıs için Azure önbelleği, güvenli ve adanmış bir Redsıs önbelleğine erişim sağlar. Redsıs için Azure önbelleği, Azure 'da barındırılan ve Azure içindeki veya dışındaki tüm uygulamalar tarafından erişilebilen Microsoft tarafından yönetilir. Ayrıca, Azure Redsıs for Cache, daha az çoğaltma stratejisini kullanır ve bu da ödeme kartı sektöriyle uyumluluğu geliştirir.
+Redsıs için Azure önbelleği, güvenli ve adanmış bir Redsıs önbelleğine erişim sağlar. Azure 'da barındırılan ve Azure 'un içindeki veya dışındaki herhangi bir uygulamayla erişilebilen Microsoft tarafından yönetilir.
 
 ## <a name="using-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini kullanma
 

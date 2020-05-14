@@ -2,18 +2,19 @@
 title: Hızlı başlangıç-Azure Resource Manager şablonuyla Linux sanal makine ölçek kümesi oluşturma
 description: Örnek uygulama dağıtan ve otomatik ölçeklendirme kurallarını yöneten bir Azure Resource Manager şablonuyla hızlıca bir Linux sanal makine ölçek kümesi oluşturmayı öğrenin
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-ms.custom: mvc,subject-armqs
-ms.date: 03/27/2020
 ms.author: jushiman
-ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
+ms.date: 03/27/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: f51bfa012c62e7acdd0aa2cd16279ec68702a72c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010469"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117342"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonuyla Linux sanal makine ölçek kümesi oluşturma
 
@@ -52,7 +53,7 @@ Vurgulanan bölüm, ölçek kümesi kaynak tanımıdır. Şablonla ölçek küme
 | Özellik                     | Özellik açıklaması                                  | Örnek şablon değeri                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | Oluşturulacak Azure kaynağı türü                            | Microsoft.Compute/virtualMachineScaleSets |
-| ad                         | Ölçek kümesi adı                                       | myScaleSet                                |
+| name                         | Ölçek kümesi adı                                       | myScaleSet                                |
 | location                     | Ölçek kümesinin oluşturulacağı konum                     | Doğu ABD                                   |
 | sku.name                     | Her bir ölçek kümesi örneği için VM boyutu                  | Standard_A1                               |
 | sku.capacity                 | Başlangıçta oluşturulacak VM örneği sayısı           | 2                                         |
@@ -76,7 +77,7 @@ Vurgulanan bölüm, ölçek kümesi kaynak tanımıdır. Şablonla ölçek küme
 
 Şablon, [şişe](https://bottlepy.org/docs/dev/), Python Web çerçevesi ve basıt bir http sunucusu yüklemek Için özel betik uzantısını kullanır.
 
-**Fileuris** - *installserver.sh*ve *workserver.py*içinde iki komut dosyası tanımlanmıştır. Bu dosyalar GitHub 'dan indirilir, sonra da uygulamayı yüklemek ve yapılandırmak `bash installserver.sh` Için *komutoexecute* çalıştırmaları.
+**Fileuris**  -  *installserver.sh*ve *workserver.py*içinde iki komut dosyası tanımlanmıştır. Bu dosyalar GitHub 'dan indirilir, sonra da uygulamayı yüklemek ve yapılandırmak için *Komutoexecute* çalıştırmaları `bash installserver.sh` .
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -108,7 +109,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-*\/Http:/publicıpaddress: 9000/do_work*biçiminde bir Web TARAYıCıSıNA yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
+*Http: \/ /Publicıpaddress: 9000/do_work*biçiminde bir Web tarayıcısına yük dengeleyicinin genel IP adresini girin. Aşağıdaki örnekte gösterildiği gibi yük dengeleyici trafiği VM örneklerinizden birine dağıtır:
 
 ![NGINX varsayılan web sayfası](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

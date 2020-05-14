@@ -9,74 +9,110 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a708e5e713e62ab5b7ca70b61235a84830b051cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f90021e35b4089547b236d01b10820f6c06bd0cc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424555"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195159"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure SYNAPSE Analytics kullanarak SQL isteğe bağlı (Önizleme) içinde dış tablolar oluşturma ve kullanma
 
-Bu bölümde, SQL isteğe bağlı (Önizleme) içinde dış tabloları oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, SQL isteğe bağlı SQL 'de dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte yararlı olur.
+Bu bölümde, SQL isteğe bağlı (Önizleme) içinde dış tabloları oluşturmayı ve kullanmayı öğreneceksiniz. Dış tablolar, SQL isteğe bağlı SQL 'de dış verilere erişimi denetlemek istediğinizde ve Power BI gibi araçlar kullanmak istiyorsanız, isteğe bağlı SQL ile birlikte yararlı olur. Dış tablolar, iki tür depolama alanına erişebilir:
+- Kullanıcıların ortak depolama dosyalarına erişebileceği ortak depolama.
+- Kullanıcıların SAS kimlik bilgilerini, Azure AD kimliğini veya SYNAPSE çalışma alanının yönetilen kimliğini kullanarak depolama dosyalarına erişebileceği korumalı depolama.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-İlk adımınız aşağıdaki makaleleri gözden geçirdiğinizden ve SQL isteğe bağlı dış tabloları oluşturma ve kullanma önkoşullarını karşıladığınızdan emin olmanızı sağlar:
+İlk adımınız tabloların oluşturulacağı bir veritabanı oluşturmaktır. Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, bu örnekte kullanılan aşağıdaki nesneleri oluşturacaktır:
+- `sqlondemand`SAS korumalı Azure depolama hesabına erişim sağlayan VERITABANı KAPSAMLı KIMLIK bilgileri `https://sqlondemandstorage.blob.core.windows.net` .
 
-- [İlk kez kurulum](query-data-storage.md#first-time-setup)
-- [Ön koşullar](query-data-storage.md#prerequisites)
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
+    WITH IDENTITY='SHARED ACCESS SIGNATURE',  
+    SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
+    ```
 
-## <a name="create-an-external-table"></a>Dış tablo oluşturma
+- `sqlondemanddemo`SAS anahtarıyla korunan tanıtım depolama hesabına başvuran dış VERI kaynağı ve `YellowTaxi` yerinde genel kullanıma açık Azure depolama HESABıNA başvuran dış veri kaynağı `https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/` .
 
-Dış tabloları, normal SQL Server dış tablolar oluşturduğunuz şekilde oluşturabilirsiniz. Aşağıdaki sorgu, *popülasyon. csv* dosyasını okuyan bir dış tablo oluşturur.
+    ```sql
+    CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+        LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+        CREDENTIAL = sqlondemand
+    );
+    GO
+    CREATE EXTERNAL DATA SOURCE YellowTaxi
+    WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/')
+    ```
+
+- `QuotedCSVWithHeaderFormat` `ParquetFormat` CSV ve Parquet dosya türlerini tanımlayan dosya biçimleri.
+
+    ```sql
+    CREATE EXTERNAL FILE FORMAT QuotedCsvWithHeaderFormat
+    WITH (  
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS ( FIELD_TERMINATOR = ',', STRING_DELIMITER = '"', FIRST_ROW = 2   )
+    );
+    GO
+    CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
+    ```
+
+Bu makaledeki sorgular, örnek veritabanınızda yürütülecektir ve bu nesneleri kullanacaktır. 
+
+## <a name="create-an-external-table-on-protected-data"></a>Korumalı verilerde dış tablo oluşturma
+
+Azure depolama hesabındaki verilere erişen, Azure AD kimlik veya SAS anahtarı olan kullanıcılara erişim sağlayan dış tablolar oluşturabilirsiniz. Dış tabloları, normal SQL Server dış tablolar oluşturduğunuz şekilde oluşturabilirsiniz. Aşağıdaki sorgu, veri kaynağı kullanılarak başvuruda bulunulan ve çağrılan veritabanı kapsamlı kimlik bilgileriyle korunan SynapseSQL demo Azure Storage hesabından *popülasyon. csv* dosyasını okuyan bir dış tablo oluşturur `sqlondemanddemo` `sqlondemand` . Veri kaynağı ve veritabanı kapsamlı kimlik bilgileri [Kurulum komut](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)dosyasında oluşturulur.
 
 > [!NOTE]
-> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. Bir veritabanı oluşturmadıysanız, lütfen [ilk kez kurulum 'u](query-data-storage.md#first-time-setup)okuyun.
+> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. 
 
 ```sql
 USE [mydbname];
 GO
-
-CREATE EXTERNAL DATA SOURCE [CsvDataSource] WITH (
-    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net/csv'
-);
-GO
-
-CREATE EXTERNAL FILE FORMAT CSVFileFormat
-WITH (  
-    FORMAT_TYPE = DELIMITEDTEXT,
-    FORMAT_OPTIONS (
-        FIELD_TERMINATOR = ',',
-        STRING_DELIMITER = '"',
-        FIRST_ROW = 2
-    )
-);
-GO
-
 CREATE EXTERNAL TABLE populationExternalTable
 (
     [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
     [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
     [year] smallint,
     [population] bigint
-);
+)
 WITH (
-    LOCATION = 'population/population.csv',
-    DATA_SOURCE = CsvDataSource,
-    FILE_FORMAT = CSVFileFormat
+    LOCATION = 'csv/population/population.csv',
+    DATA_SOURCE = sqlondemanddemo,
+    FILE_FORMAT = QuotedCSVWithHeaderFormat
 );
 GO
 ```
 
+## <a name="create-an-external-table-on-public-data"></a>Ortak verilerde dış tablo oluşturma
+
+Genel kullanıma açık Azure depolama alanına yerleştirilmiş dosyalardaki verileri okuyan dış tablolar oluşturabilirsiniz. Bu [kurulum betiği](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) , aşağıdaki sorguda kullanılan ortak dış veri kaynağı ve Parquet dosya biçimi tanımı oluşturacak:
+
+```sql
+CREATE EXTERNAL TABLE Taxi (
+     vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+     pickup_datetime DATETIME2, 
+     dropoff_datetime DATETIME2,
+     passenger_count INT,
+     trip_distance FLOAT,
+     fare_amount FLOAT,
+     tip_amount FLOAT,
+     tolls_amount FLOAT,
+     total_amount FLOAT
+) WITH (
+         LOCATION = 'puYear=*/puMonth=*/*.parquet',
+         DATA_SOURCE = YellowTaxi,
+         FILE_FORMAT = ParquetFormat
+);
+```
 ## <a name="use-a-external-table"></a>Dış tablo kullan
 
 Sorgularınızdaki dış tabloları, SQL Server sorgularda kullandığınız şekilde kullanabilirsiniz.
 
-Aşağıdaki sorgu, [dış tablo oluşturma](#create-an-external-table) bölümünde oluşturduğumuz *popülasyon* dış tablosunun kullanımını gösterir. Ülke adlarını, popülasyon 2019 ' de azalan sırada döndürür.
+Aşağıdaki sorgu, önceki bölümde oluşturduğumuz *popülasyon* dış tablosunu kullanarak bunu gösterir. Ülke adlarını, popülasyon 2019 ' de azalan sırada döndürür.
 
 > [!NOTE]
-> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz. Bir veritabanı oluşturmadıysanız, lütfen [ilk kez kurulum 'u](query-data-storage.md#first-time-setup)okuyun.
+> Sorgudaki ilk satırı değiştirin, örn., [mydbname], bu nedenle Oluşturduğunuz veritabanını kullanıyorsunuz.
 
 ```sql
 USE [mydbname];

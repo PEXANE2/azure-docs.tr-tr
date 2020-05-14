@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bf7ff668584a78fea6e2d787e96f36a20f12e37
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424030"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197623"
 ---
 # <a name="cetas-with-synapse-sql"></a>SYNAPSE SQL ile CETAS
 
@@ -52,7 +52,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
     SELECT <select_criteria>
 ```
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
 
 *[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *table_name**
 
@@ -77,6 +77,9 @@ Ortak tablo ifadesi (CTE) olarak bilinen geçici bir adlandırılmış sonuç k�
 <select_criteria SEÇIN>
 
 Yeni tabloyu bir SELECT deyimindeki sonuçlarla doldurur. *select_criteria* , yeni tabloya hangi verilerin KOPYALANACAĞıNı belirleyen SELECT ifadesinin gövdesidir. SELECT deyimleri hakkında daha fazla bilgi için bkz. [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+
+> [!NOTE]
+> CETAS 'ın SELECT bölümündeki ORDER BY yan tümcesi desteklenmiyor.
 
 ## <a name="permissions"></a>İzinler
 
@@ -139,7 +142,7 @@ CETAS, sonuç kümelerini aşağıdaki SQL veri türleriyle depolamak için kull
 - ikili
 - char
 - varchar
-- date
+- tarih
 - time
 - datetime2
 - decimal

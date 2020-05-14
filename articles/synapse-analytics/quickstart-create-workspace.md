@@ -2,19 +2,19 @@
 title: Hızlı başlangıç-çalışma alanı oluşturma
 description: Bu kılavuzdaki adımları izleyerek bir Azure SYNAPSE Analytics çalışma alanı oluşturun.
 services: synapse-analytics
-author: malvenko
+author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: josels
+ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0bf58348d91c23db9bcc016ff6d71ce2b3804ced
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792216"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201052"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Hızlı başlangıç: Azure SYNAPSE Analytics çalışma alanı oluşturma (Önizleme)
 
@@ -33,9 +33,9 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma
 
 1. Microsoft Azure Arama bölmesinde, **SYNAPSE Workspace** girin ve ardından bu hizmeti seçin.
-![İçinde yazılan Azure SYNAPSE çalışma alanları ile arama çubuğu Azure portal](media/quickstart-create-synapse-workspace/workspace-search.png)..
+![İçinde yazılan Azure SYNAPSE çalışma alanları ile arama çubuğu Azure portal.](media/quickstart-create-synapse-workspace/workspace-search.png)
 2. **SYNAPSE çalışma alanları** sayfasında **+ Ekle**' ye tıklayın.
-![Yeni Azure SYNAPSE çalışma alanı vurgulanmış olan komut. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
+![Yeni Azure SYNAPSE çalışma alanı vurgulanmış olan komut.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
 3. **Azure SYNAPSE çalışma alanı** formunu aşağıdaki bilgilerle doldurun:
 
     | Ayar | Önerilen değer | Açıklama |
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     | **Data Lake Storage Gen2** | Hesabı`storage account name` </br> Dosya sistemi:`root file system to use` | Birincil depolama ve kullanılacak dosya sistemi olarak kullanılacak ADLS 2. depolama hesabı adını belirtir.|
     ||||
 
-    ![Çalışma alanı sağlama akışı-temel kavramlar sekmesi.](media/quickstart-create-synapse-workspace/create-workspace-03.png).
+    ![Çalışma alanı sağlama akışı-temel kavramlar sekmesi.](media/quickstart-create-synapse-workspace/create-workspace-03.png)
 
     Depolama hesabı şu kaynaktan seçilebilir:
     - Aboneliğinizde kullanılabilen ADLS 2. hesaplarının listesi
@@ -60,8 +60,8 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 4. Seçim **Güvenlik + ağ Varsayılanları** sekmesinden herhangi birini değiştirin:
 5. Seçim **Etiketler** sekmesine Etiketler ekleyin.
-6. **Özet** sekmesi, çalışma alanının başarıyla oluşturulduğundan emin olmak için gerekli doğrulamaları çalıştırır. Doğrulama başarılı olduktan sonra **,** ![çalışma alanı sağlama akışı-onay sekmesine basın.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. Kaynak sağlama işlemi başarıyla tamamlandıktan sonra, SYNAPSE çalışma alanları listesinde oluşturulan çalışma alanı için bir giriş görürsünüz. ![Yeni sağlanan çalışma alanını gösteren SYNAPSE çalışma alanlarının listesi.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
+6. **Özet** sekmesi, çalışma alanının başarıyla oluşturulduğundan emin olmak için gerekli doğrulamaları çalıştırır. Doğrulama başarılı olduktan sonra, **Create** ![ çalışma alanı sağlama akışı-onay sekmesine basın.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
+7. Kaynak sağlama işlemi başarıyla tamamlandıktan sonra, SYNAPSE çalışma alanları listesinde oluşturulan çalışma alanı için bir giriş görürsünüz. ![Yeni sağlanan çalışma alanını gösteren SYNAPSE çalışma alanlarının listesi.](media/quickstart-create-synapse-workspace/create-workspace-07.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

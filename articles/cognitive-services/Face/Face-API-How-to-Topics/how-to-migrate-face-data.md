@@ -3,19 +3,19 @@ title: Yüz verilerinizi abonelikler arasında geçirme-yüz
 titleSuffix: Azure Cognitive Services
 description: Bu kılavuzda, depolanan yüz verilerinizi bir yüz aboneliğinden diğerine nasıl geçirebileceğiniz gösterilmektedir.
 services: cognitive-services
-author: lewlu
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.author: lewlu
-ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: nitinme
+ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169806"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120819"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Yüz verilerinizi farklı bir yüz aboneliğine geçirin
 
@@ -62,7 +62,7 @@ Kaynak ve hedef abonelikleriniz için abonelik anahtarı değerlerini ve uç nok
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Bir kişilik grubunu geçiş için hazırlama
 
-Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLIĞINE sahip olmanız gerekir. [Persongroupoperationsextensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) yöntemini kullanarak, persongroup nesnelerinizin bir listesini alın. Ardından, [Persongroup. Persongroupıd](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) özelliğini alın. Bu işlem, sahip olduğunuz PersonGroup nesnelerine göre farklılık yapar. Bu kılavuzda, kaynak kişinin KIMLIĞI ' nde `personGroupId`depolanır.
+Hedef aboneliğe geçirmek için kaynak aboneliğinizdeki PersonGroup 'un KIMLIĞINE sahip olmanız gerekir. [Persongroupoperationsextensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) yöntemini kullanarak, persongroup nesnelerinizin bir listesini alın. Ardından, [Persongroup. Persongroupıd](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) özelliğini alın. Bu işlem, sahip olduğunuz PersonGroup nesnelerine göre farklılık yapar. Bu kılavuzda, kaynak kişinin KIMLIĞI ' nde depolanır `personGroupId` .
 
 > [!NOTE]
 > [Örnek kod](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) , geçirilecek yeni bir persongroup oluşturur ve bunları ister. Çoğu durumda, kullanmak için zaten bir PersonGroup grubunuz olmalıdır.
@@ -85,20 +85,20 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>Anlık görüntü KIMLIĞINI alma
 
-Anlık görüntü almak için kullanılan yöntem zaman uyumsuzdur, bu yüzden tamamlanmasını beklemeniz gerekir. Anlık görüntü işlemleri iptal edilemez. Bu kodda, `WaitForOperation` yöntemi zaman uyumsuz çağrıyı izler. Her 100 ms durumunu denetler. İşlem bittikten sonra, `OperationLocation` alanı ayrıştırarak BIR işlem kimliği alın. 
+Anlık görüntü almak için kullanılan yöntem zaman uyumsuzdur, bu yüzden tamamlanmasını beklemeniz gerekir. Anlık görüntü işlemleri iptal edilemez. Bu kodda, `WaitForOperation` yöntemi zaman uyumsuz çağrıyı izler. Her 100 ms durumunu denetler. İşlem bittikten sonra, alanı ayrıştırarak bir işlem KIMLIĞI alın `OperationLocation` . 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
 var operationStatus = await WaitForOperation(FaceClientEastAsia, takeOperationId);
 ```
 
-Tipik `OperationLocation` bir değer şöyle görünür:
+Tipik bir `OperationLocation` değer şöyle görünür:
 
 ```csharp
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
 ```
 
-`WaitForOperation` Yardımcı yöntemi şöyledir:
+`WaitForOperation`Yardımcı yöntemi şöyledir:
 
 ```csharp
 /// <summary>
@@ -127,13 +127,13 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-İşlem durumu görüntülendikten sonra `Succeeded`, döndürülen OperationStatus örneğinin `ResourceLocation` alanını AYRıŞTıRARAK anlık görüntü kimliğini alın.
+İşlem durumu görüntülendikten sonra `Succeeded` , `ResourceLocation` döndürülen OperationStatus örneğinin alanını ayrıştırarak anlık görüntü kimliğini alın.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
 ```
 
-Tipik `resourceLocation` bir değer şöyle görünür:
+Tipik bir `resourceLocation` değer şöyle görünür:
 
 ```csharp
 "/snapshots/e58b3f08-1e8b-4165-81df-aa9858f233dc"
@@ -152,13 +152,13 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > Anlık görüntü nesnesi yalnızca 48 saat için geçerlidir. Yalnızca kısa bir süre sonra veri geçişi için kullanmak istiyorsanız bir anlık görüntü alın.
 
-Anlık görüntü uygulama isteği başka bir işlem KIMLIĞI döndürüyor. Bu KIMLIĞI almak için döndürülen applySnapshotResult örneğinin `OperationLocation` alanını ayrıştırın. 
+Anlık görüntü uygulama isteği başka bir işlem KIMLIĞI döndürüyor. Bu KIMLIĞI almak için `OperationLocation` döndürülen applySnapshotResult örneğinin alanını ayrıştırın. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-Anlık görüntü uygulama işlemi de zaman uyumsuzdur, bu nedenle daha `WaitForOperation` sonra işlemin bitmesini beklemek için kullanın.
+Anlık görüntü uygulama işlemi de zaman uyumsuzdur, bu nedenle daha sonra `WaitForOperation` işlemin bitmesini beklemek için kullanın.
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);

@@ -8,12 +8,13 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e8f17f54f52aef6f552b7c211aa8f0e498b94df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424926"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197669"
 ---
 # <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor AAD kimlik doğrulamasını SYNAPSE SQL ile kullanma (MFA için SSMS desteği)
 
@@ -56,7 +57,7 @@ Konuk kullanıcılar, diğer Azure reklamları, outlook.com, hotmail.com, live.c
 
 Evrensel kimlik doğrulaması kullanarak kimlik doğrulaması yapmak isteyen tüm bu kullanıcıların Azure AD etki alanı adını veya kiracı KIMLIĞINI girmesi gerekir. Bu parametre, Azure Server ile bağlantılı olan geçerli Azure AD etki alanı adını/kiracı KIMLIĞINI temsil eder. 
 
-Örneğin, Azure `contosotest.onmicrosoft.com` Server, kullanıcının `joe@contosodev.onmicrosoft.com` Azure AD etki `contosodev.onmicrosoft.com`alanından Içeri AKTARıLMıŞ bir kullanıcı olarak barındırıldığı Azure AD etki alanı ile ilişkiliyse, bu kullanıcının kimliğini doğrulamak için gereken etki alanı adı. `contosotest.onmicrosoft.com` 
+Örneğin, Azure Server, `contosotest.onmicrosoft.com` kullanıcının `joe@contosodev.onmicrosoft.com` Azure AD etki alanından içeri aktarılmış bir kullanıcı olarak BARıNDıRıLDıĞı Azure AD etki alanı ile ilişkiliyse `contosodev.onmicrosoft.com` , bu kullanıcının kimliğini doğrulamak için gereken etki alanı adı `contosotest.onmicrosoft.com` . 
 
 Kullanıcı Azure AD 'nin Azure Server 'a bağlı olduğu yerel bir kullanıcı olduğunda ve bir MSA hesabı olmadığında, etki alanı adı veya kiracı KIMLIĞI gerekmez. 
 
@@ -71,15 +72,15 @@ SSMS 18. x veya sonraki bir sürümünü çalıştırıyorsanız, bu AD etki ala
    ![MFA-kiracı-SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD iş 'e iş desteği   
-Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kullanıcıları (bkz. [Azure B2B Işbirliği nedir,](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) GEÇERLI Azure AD 'de oluşturulan bir grubun üyelerinin parçası olarak yalnızca SYNAPSE SQL 'e bağlanabilir ve belirli bir veritabanındaki Transact-SQL `CREATE USER` ifadesiyle el ile eşleştirilir. 
+Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kullanıcıları (bkz. [Azure B2B Işbirliği nedir,](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) GEÇERLI Azure AD 'de oluşturulan bir grubun üyelerinin parçası olarak yalnızca SYNAPSE SQL 'e bağlanabilir ve `CREATE USER` belirli bir VERITABANıNDAKI Transact-SQL ifadesiyle el ile eşleştirilir. 
 
-Örneğin, Azure AD `steve@gmail.com` 'ye `contosotest` (Azure AD etki alanı `contosotest.onmicrosoft.com`ile) davet edildiyseniz, `usergroup` `steve@gmail.com` üyeyi içeren Azure AD 'de, gibi bir Azure AD grubunun oluşturulması gerekir. Ardından, bir Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` ekstresi yürüterek, bu grup Azure ad SQL Yöneticisi veya Azure AD dbo tarafından belirli bir veritabanı (yani, MyDatabase) için oluşturulmalıdır. 
+Örneğin, Azure AD `steve@gmail.com` 'ye `contosotest` (Azure AD etki alanı ile) davet edildiyseniz, `contosotest.onmicrosoft.com` `usergroup` üyeyi içeren Azure AD 'de, gibi bir Azure AD grubunun oluşturulması gerekir `steve@gmail.com` . Ardından, bir Transact-SQL ekstresi yürüterek, bu grup Azure AD SQL Yöneticisi veya Azure AD DBO tarafından belirli bir veritabanı (yani, MyDatabase) için oluşturulmalıdır `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
-Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com` SSMS kimlik doğrulama seçeneğini `MyDatabase` `Active Directory – Universal with MFA support`kullanarak oturum açabilir. 
+Veritabanı kullanıcısı oluşturulduktan sonra, Kullanıcı `steve@gmail.com` `MyDatabase` SSMS kimlik doğrulama seçeneğini kullanarak oturum açabilir `Active Directory – Universal with MFA support` . 
 
 UserGroup, varsayılan olarak yalnızca Connect iznine ve normal şekilde verilmesi gereken daha fazla veri erişimine sahiptir. 
 
-Konuk Kullanıcı olarak `steve@gmail.com` kullanıcının, SSMS **bağlantı özelliği** iletişim kutusunda kutuyu denetlemesi ve ad etki alanı `contosotest.onmicrosoft.com` adını eklemesi gerektiğini unutmayın. **Ad etki alanı adı veya KIRACı kimliği** SEÇENEĞI yalnızca MFA bağlantı seçenekleriyle Universal için desteklenir, aksi halde gri olur.
+`steve@gmail.com`Konuk Kullanıcı olarak kullanıcının, `contosotest.onmicrosoft.com` SSMS **bağlantı özelliği** iletişim kutusunda kutuyu denetlemesi ve ad etki alanı adını eklemesi gerektiğini unutmayın. **Ad etki alanı adı veya KIRACı kimliği** SEÇENEĞI yalnızca MFA bağlantı seçenekleriyle Universal için desteklenir, aksi halde gri olur.
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>SYNAPSE SQL için evrensel kimlik doğrulama sınırlamaları
 

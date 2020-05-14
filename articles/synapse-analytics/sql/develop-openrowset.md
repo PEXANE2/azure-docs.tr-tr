@@ -6,30 +6,70 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c4b0c5277fb826780ff0c103f011c26049282672
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680501"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201475"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
-OPENROWSET (toplu...) işlevi, Azure Storage 'daki dosyalara erişmenize olanak tanır. SQL isteğe bağlı (Önizleme) kaynağı içinde, OPENROWSET işlevi çağırarak ve toplu seçeneği belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
+`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET`işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. SQL isteğe bağlı (Önizleme) kaynağı içinde, OPENROWSET işlevi çağırarak ve toplu seçeneği belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
 
-OPENROWSET işlevine, bir sorgunun FROM yan tümcesinde bir tablo adı OPENROWSET gibi başvurulabilir. Bir dosyadaki verilerin bir satır kümesi olarak okunmasını ve döndürülmesini sağlayan yerleşik bir toplu sağlayıcı aracılığıyla toplu işlemleri destekler.
+İşlevine, bir `OPENROWSET` `FROM` tablo adı gibi bir sorgunun yan tümcesinde başvurulabilir `OPENROWSET` . Bir dosyadaki verilerin bir satır kümesi olarak okunmasını ve döndürülmesini sağlayan yerleşik bir toplu sağlayıcı aracılığıyla toplu işlemleri destekler.
 
-OPENROWSET Şu anda SQL havuzunda desteklenmiyor.
+## <a name="data-source"></a>Veri kaynağı
+
+SYNAPSE SQL içindeki OPENROWSET işlevi, bir veri kaynağından dosya içeriğini okur. Veri kaynağı bir Azure Storage hesabıdır ve işlevde açıkça başvurulabilir `OPENROWSET` ya da okumak istediğiniz dosyaların URL 'sinden dinamik olarak çıkarsanamıyor.
+`OPENROWSET`İşlevi, isteğe bağlı olarak `DATA_SOURCE` , dosyaları içeren veri kaynağını belirtmek için bir parametre içerebilir.
+- `OPENROWSET`olmadan `DATA_SOURCE` , bu dosya içeriğini seçenek olarak BELIRTILEN URL konumundan doğrudan okumak için kullanılabilir `BULK` :
+
+    ```sql
+    SELECT *
+    FROM OPENROWSET(BULK 'http://storage..../container/folder/*.parquet',
+                    TYPE = 'PARQUET') AS file
+    ```
+
+Bu, önceden yapılandırma olmadan dosyaların içeriğini okumak için hızlı ve kolay bir yoldur. Bu seçenek, depolama alanına erişmek için temel kimlik doğrulama seçeneğini kullanmanıza olanak sağlar (Azure AD oturum açmaları için Azure AD geçişi ve SQL oturum açma için SAS belirteci). 
+
+- `OPENROWSET``DATA_SOURCE`, ile belirtilen depolama hesabındaki dosyalara erişmek için kullanılabilir:
+
+    ```sql
+    SELECT *
+    FROM OPENROWSET(BULK '/folder/*.parquet',
+                    DATA_SOURCE='storage', --> Root URL is in LOCATION of DATA SOURCE
+                    TYPE = 'PARQUET') AS file
+    ```
+
+    Bu seçenek, veri kaynağındaki depolama hesabının konumunu yapılandırmanıza ve depolamaya erişmek için kullanılması gereken kimlik doğrulama yöntemini belirtmenize olanak sağlar. 
+    
+    > [!IMPORTANT]
+    > `OPENROWSET`olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumlusu yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md#user-identity) kullanarak dosyalara erişebilir ve genel kullanıma açık dosyalara erişemez. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
+
+## <a name="security"></a>Güvenlik
+
+Bir veritabanı kullanıcısının `ADMINISTER BULK OPERATIONS` işlevini kullanma izni olması gerekir `OPENROWSET` .
+
+Depolama Yöneticisi ayrıca, bir kullanıcının geçerli SAS belirteci sağlayarak veya Azure AD sorumlusunu depolama dosyalarına erişmesine olanak tanıyarak dosyalara erişmesini sağlamalıdır. [Bu makaledeki](develop-storage-files-storage-access-control.md)depolama erişimi denetimi hakkında daha fazla bilgi edinin.
+
+`OPENROWSET`depolama alanının kimliğini nasıl doğrulayacağınızı öğrenmek için aşağıdaki kuralları kullanın:
+- `OPENROWSET`İle içinde `DATA_SOURCE` , kimlik doğrulama mekanizması arayan türüne bağlıdır.
+  - Azure depolama, Azure AD kullanıcısının temel dosyalara erişmesine izin veriyorsa (örneğin, arayan, depolama üzerinde depolama okuyucusu iznine sahipse) ve SYNAPSE SQL hizmetinde [Azure AD PASSTHROUGH kimlik doğrulamasını etkinleştirirseniz](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) , AAD oturum açmaları yalnızca kendı [Azure AD kimliklerini](develop-storage-files-storage-access-control.md#user-identity) kullanarak dosyalara erişebilir.
+  - SQL oturumları `OPENROWSET` `DATA_SOURCE` , genel kullanıma açık dosyalara erişmek için olmadan da KULLANABILIR, SAS belirteci kullanılarak korunan dosyalar veya SYNAPSE çalışma alanının yönetilen kimliği. Depolama dosyalarına erişim izni vermek için [sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) gerekir. 
+- İçindeki `OPENROWSET` `DATA_SOURCE` kimlik doğrulama mekanizması, başvurulan veri kaynağına atanan veritabanı kapsamlı kimlik bilgileri içinde tanımlanmıştır. Bu seçenek, genel olarak kullanılabilir depolamaya erişmenizi veya SAS belirtecini, çalışma alanının yönetilen kimliğini veya [arayanın Azure AD kimliğini](develop-storage-files-storage-access-control.md#user-identity) (arayan Azure AD sorumlusu ise) kullanarak depolamaya erişmenizi sağlar. `DATA_SOURCE`Ortak olmayan Azure Storage 'a başvuruyorsa, depolama dosyalarına erişime izin vermek için, [veritabanı kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) ve içinde başvurulmasına gerek duyarsınız `DATA SOURCE` .
+
+Çağıranın, `REFERENCES` depolamada kimlik doğrulaması yapmak için kimlik bilgisi üzerinde izni olması gerekir.
 
 ## <a name="syntax"></a>Sözdizimi
 
 ```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
-( { BULK 'unstructured_data_path' , 
+( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ]
     FORMAT='PARQUET' }  
 )  
 [WITH ( {'column_name' 'column_type' }) ]
@@ -37,7 +77,7 @@ OPENROWSET
 
 --OPENROWSET syntax for reading delimited text files
 OPENROWSET  
-( { BULK 'unstructured_data_path' , 
+( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ] 
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
@@ -48,11 +88,13 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDTERMINATOR = 'char' ]    
 [ , ROWTERMINATOR = 'char' ] 
 [ , ESCAPE_CHAR = 'char' ] 
-[ , FIRSTROW = 'first_row'  ]     
-[ , FIELDQUOTE = 'quote_characters']
+[ , FIRSTROW = 'first_row' ]     
+[ , FIELDQUOTE = 'quote_characters' ]
+[ , DATA_COMPRESSION = 'data_compression_method' ]
+[ , PARSER_VERSION = 'parser_version' ]
 ```
 
-## <a name="arguments"></a>Bağımsız Değişkenler
+## <a name="arguments"></a>Arguments
 
 Sorgulamak için hedef verileri içeren giriş dosyaları için iki seçeneğiniz vardır. Geçerli değerler:
 
@@ -62,11 +104,11 @@ Sorgulamak için hedef verileri içeren giriş dosyaları için iki seçeneğini
 
 **' unstructured_data_path '**
 
-Verilerin yolunu oluşturan unstructured_data_path aşağıdaki gibi yapılandırılır:  
-'\<önek>://\<storage_account_path>/\<storage_path> '
- 
- 
- Aşağıda, belirli dış veri kaynağınıza bağlanacak ilgili depolama hesabı yolları bulacaksınız. 
+Verilerin yolunu oluşturan unstructured_data_path mutlak veya göreli bir yol olabilir:
+- ' \< Önek>:// \< storage_account_path>/ \< storage_path> ' biçimindeki mutlak yol, kullanıcının dosyaları doğrudan okumasını sağlar.
+- ' <storage_path> ' biçimindeki göreli yol, parametresiyle kullanılması gerekir `DATA_SOURCE` ve <storage_account_path> konum içindeki dosya modelini tanımlar `EXTERNAL DATA SOURCE` . 
+
+ Aşağıda, <storage account path> belirli dış veri kaynağınıza bağlanacak ilgili değerleri bulacaksınız. 
 
 | Dış veri kaynağı       | Ön ek | Depolama hesabı yolu                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -75,10 +117,10 @@ Verilerin yolunu oluşturan unstructured_data_path aşağıdaki gibi yapılandı
 | Azure Data Lake Store Gen2 | https  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
-'\<storage_path> '
+' \< storage_path> '
 
  Depolama alanınızı, okumak istediğiniz klasörü veya dosyayı işaret eden bir yolu belirtir. Yol bir kapsayıcıya veya klasöre işaret ediyorsa, tüm dosyalar söz konusu kapsayıcı veya klasörden okunacaktır. Alt klasörlerdeki dosyalar dahil değildir. 
- 
+
  Birden çok dosya veya klasörü hedeflemek için joker karakterler kullanabilirsiniz. Ardışık olmayan birden çok joker karakter kullanımına izin verilir.
 Aşağıda, */CSV/popülasyonu*ile başlayan tüm klasörlerden *popülasyon* ile başlayan tüm *CSV* dosyalarını okuyan bir örnek verilmiştir:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
@@ -88,7 +130,7 @@ Bir klasör olarak unstructured_data_path belirtirseniz, bir SQL isteğe bağlı
 > [!NOTE]
 > Hadoop ve PolyBase 'in aksine, SQL isteğe bağlı alt klasörler döndürmez. Ayrıca, Hadoop ve PloyBase farklı olarak, SQL isteğe bağlı, dosya adının altı çizili (_) veya nokta (.) ile başladığı dosyaları döndürür.
 
-Aşağıdaki örnekte, unstructured_data_path =`https://mystorageaccount.dfs.core.windows.net/webdata/`ise, bir SQL isteğe bağlı sorgusu, mydata. txt ve _Hidden. txt ' den satırları döndürür. Bir alt klasörde bulunduğundan mydata2. txt ve mydata3. txt döndürmez.
+Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.dfs.core.windows.net/webdata/` , BIR SQL isteğe bağlı sorgusu, mydata. txt ve _Hidden. txt ' den satırları döndürür. Bir alt klasörde bulunduğundan mydata2. txt ve mydata3. txt döndürmez.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-openrowset/folder-traversal.png)
 
@@ -98,8 +140,10 @@ WıTH yan tümcesi, dosyalardan okumak istediğiniz sütunları belirtmenize ola
 
 - CSV veri dosyaları için tüm sütunları okumak üzere sütun adlarını ve bunların veri türlerini belirtin. Sütunların bir alt kümesini isterseniz, kaynak veri dosyalarından sütunları sıralı olarak seçmek için sıralı numaraları kullanın. Sütunlar sıra atamağına göre bağlanacaktır. 
 
-> [!IMPORTANT]
-> WıTH yan tümcesi CSV dosyaları için zorunludur.
+    > [!IMPORTANT]
+    > WıTH yan tümcesi CSV dosyaları için zorunludur.
+    >
+    
 - Parquet veri dosyaları için, kaynak veri dosyalarındaki sütun adlarıyla eşleşen sütun adları sağlayın. Sütunlar ada göre bağlanacaktır. WıTH yan tümcesi atlanırsa, Parquet dosyalarındaki tüm sütunlar döndürülür.
 
 çıkış sütununun adı column_name. Sağlanmışsa, bu ad kaynak dosyadaki sütun adını geçersiz kılar.
@@ -125,7 +169,7 @@ Kullanılacak alan sonlandırıcıyı belirtir. Varsayılan alan Sonlandırıcı
 
 ROWSONLANDıRıCı = ' row_terminator ' '
 
-Kullanılacak satır sonlandırıcıyı belirtir. Varsayılan satır Sonlandırıcı, \r\ngibi bir yeni satır karakteridir.
+Kullanılacak satır sonlandırıcıyı belirtir. Satır Sonlandırıcı belirtilmemişse varsayılan sonlandırıcılar kullanılacaktır. PARSER_VERSION = ' 1,0 ' için varsayılan sonlandırıcılar \r\n, \n ve \r. PARSER_VERSION = ' 2,0 ' için varsayılan sonlandırıcılar \r\n ve \n
 
 ESCAPE_CHAR = ' Char '
 
@@ -141,22 +185,33 @@ FIELDQUOTE = ' field_quote '
 
 CSV dosyasında tırnak karakteri olarak kullanılacak bir karakter belirtir. Belirtilmezse, tırnak karakteri (") kullanılır. 
 
+DATA_COMPRESSION = ' data_compression_method '
+
+Sıkıştırma yöntemini belirtir. Aşağıdaki sıkıştırma yöntemi destekleniyor:
+
+- org. Apache. Hadoop. IO. compress. GzipCodec
+
+PARSER_VERSION = ' parser_version '
+
+Dosyalar okunurken kullanılacak ayrıştırıcı sürümünü belirtir. Şu anda desteklenen CSV ayrıştırıcı sürümleri 1,0 ve 2,0
+
+- PARSER_VERSION = ' 1,0 '
+- PARSER_VERSION = ' 2,0 '
+
+CSV Ayrıştırıcısı sürüm 1,0, varsayılan ve özelliklere sahiptir, ancak 2,0 performans için oluşturulmuştur ve tüm seçenekleri ve kodlamaları desteklemez. 
+
+CSV Ayrıştırıcısı sürüm 2,0 özellikleri:
+
+- Tüm veri türleri desteklenmez.
+- En büyük satır boyutu sınırı 8MB.
+- Aşağıdaki seçenekler desteklenmez: DATA_COMPRESSION.
+- Tırnak işareti boş dize ("") boş dize olarak yorumlanır.
+
 ## <a name="examples"></a>Örnekler
 
 Aşağıdaki örnek, population*. csv dosyalarından yalnızca 1 ve 4 sıralı numaralarına sahip iki sütun döndürür. Dosyalarda üstbilgi satırı olmadığından, ilk satırdan okumaya başlar:
 
 ```sql
-/* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-GO
-
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = ''
-GO
-*/
-
 SELECT * 
 FROM OPENROWSET(
         BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
@@ -169,22 +224,9 @@ WITH (
 ) AS [r]
 ```
 
-
-
 Aşağıdaki örnek, sütun adları ve veri türleri belirtmeden Parquet biçimindeki görselleştirmenizdeki veri kümesindeki ilk satırın tüm sütunlarını döndürür: 
 
 ```sql
-/* make sure you have credentials for storage account access created
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-GO
-
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]  
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = ''
-GO
-*/
-
 SELECT 
     TOP 1 *
 FROM  
@@ -194,8 +236,10 @@ FROM
     ) AS [r]
 ```
 
-
+Dosyaların listelenmediğinden ilgili bir hata alıyorsanız, SYNAPSE SQL isteğe bağlı olarak genel depolamaya erişimi etkinleştirmeniz gerekir:
+- SQL oturum açma kullanıyorsanız, [genel depolamaya erişime izin veren sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples)gerekir.
+- Genel depolamaya erişmek için bir Azure AD sorumlusu kullanıyorsanız, genel depolamaya erişime izin veren ve [Azure AD PASSTHROUGH kimlik doğrulamasını](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)devre dışı bırakan [sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla örnek için [hızlı](query-data-storage.md) başlangıçlara gidin veya [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydedin.
+Daha fazla örnek için bkz. [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için ' OPENROWSET ' i nasıl kullanacağınızı öğrenmek için [Query Data Storage hızlı](query-data-storage.md) başlangıcı. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.

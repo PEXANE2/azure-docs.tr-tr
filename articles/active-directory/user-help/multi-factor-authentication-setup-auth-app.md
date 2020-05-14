@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea6f78d0d0856bb6a758a3168b6b86a1c962962b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062583"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200998"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>İki öğeli doğrulama yöntemi olarak bir Authenticator uygulaması ayarlama
 
@@ -29,7 +29,7 @@ Bir kimlik doğrulayıcı uygulamasını, mobil cihazınıza bildirim göndermek
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Bildirimleri göndermek için Microsoft Authenticator uygulamasını ayarlama
 
-1. **Ek güvenlik doğrulaması** sayfasında, 1. adımdaki **mobil uygulama** ' yı seçin ve sizinle **nasıl iletişim kuracağız** ? bölümüne başvurun.
+1. [Ek güvenlik doğrulaması sayfasında](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1), 1. adımdaki **mobil uygulama** ' yı seçin ve sizinle **nasıl iletişim kuracağız** ? bölümüne başvurun.
 
 2. **Mobil uygulama alanını nasıl kullanmak istediğinizi** **doğrulamak için bildirimleri al** ' ı seçin ve ardından **Ayarla**' yı seçin.
 

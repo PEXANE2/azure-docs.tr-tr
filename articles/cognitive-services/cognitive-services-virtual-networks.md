@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79371231"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202069"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure bilişsel hizmetler sanal ağlarını yapılandırma
 
@@ -55,7 +55,7 @@ Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUA
 
 Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUAP*, *Orta Güney ABD*, *Doğu ABD*, *Batı ABD 2*, *Global*ve *US gov Virginia* Azure bölgeleriyle sınırlıdır.
 > [!div class="checklist"]
-> * [Translator Metin Çevirisi](./translator/index.yml)
+> * [Translator Metin Çevirisi](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Hizmet Etiketleri
 Bilişsel hizmetler, yukarıdaki hizmetler için sanal ağ hizmet uç noktalarını desteklemeye ek olarak, giden ağ kuralları yapılandırması için de bir hizmet etiketi destekler. Aşağıdaki hizmetler, Biliveservicesmanagement hizmeti etiketinde bulunur.
@@ -84,7 +84,7 @@ Bilişsel hizmetler kaynakları, varsayılan olarak herhangi bir ağdaki istemci
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -186,7 +186,7 @@ Bilişsel hizmetler kaynağı ve erişim verilen sanal ağlar, farklı bir Azure
 
 Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, PowerShell veya Azure CLı aracılığıyla yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -339,12 +339,12 @@ Bilişsel hizmetler kaynakları için sanal ağ kurallarını Azure portal, Powe
 
 Bilişsel hizmetler kaynaklarını belirli genel İnternet IP adresi aralıklarından erişime izin verecek şekilde yapılandırabilirsiniz. Bu yapılandırma, belirli hizmetlere ve şirket içi ağlara erişim verir ve genel İnternet trafiğini etkin bir şekilde engeller.
 
-Formunda `16.17.18.0/24` `16.17.18.19` [CıDR gösterimini](https://tools.ietf.org/html/rfc4632) veya gibi ayrı IP adresleri kullanarak izin verilen internet adresi aralıklarını sağlayın.
+Formunda [CIDR gösterimini](https://tools.ietf.org/html/rfc4632) `16.17.18.0/24` veya gibi ayrı IP adresleri kullanarak izin verilen internet adresi aralıklarını sağlayın `16.17.18.19` .
 
    > [!Tip]
    > "/31" veya "/32" önek boyutları kullanılarak küçük adres aralıkları desteklenmez. Bu aralıklar tek tek IP adresi kuralları kullanılarak yapılandırılmalıdır.
 
-IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel `10.*`ağlarda, `172.16.*`  -  `172.31.*`, ve `192.168.*`ile başlayan adresler bulunur.
+IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına ( [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)' de tanımlandığı gıbı) IP kurallarında izin verilmez. Özel ağlarda,, ve ile başlayan adresler bulunur `10.*` `172.16.*`  -  `172.31.*` `192.168.*` .
 
    > [!NOTE]
    > IP ağ kuralları, bilişsel hizmetler kaynağı ile aynı Azure bölgesinden kaynaklanan isteklere hiçbir etkiye sahip değildir. Aynı bölge isteklerine izin vermek için [sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın.
@@ -361,7 +361,7 @@ IP ağ kurallarına yalnızca **genel İnternet** IP adresleri için izin verili
 
 Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı aracılığıyla IP ağ kurallarını yönetebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 1. Güvenli hale getirmek istediğiniz bilişsel hizmetler kaynağına gidin.
 
@@ -369,11 +369,11 @@ Bilişsel hizmetler kaynakları için Azure portal, PowerShell veya Azure CLı a
 
 1. **Seçili ağlardan**erişime izin vermeyi seçtiğinizden emin olun.
 
-1. Bir internet IP aralığına erişim vermek için, **güvenlik duvarı** > **adres aralığı**altına IP adresini veya adres aralığını ( [CIDR biçiminde](https://tools.ietf.org/html/rfc4632)) girin. Yalnızca geçerli genel IP (ayrılmamış) adresleri kabul edilir.
+1. Bir internet IP aralığına erişim vermek için, **güvenlik duvarı**adres aralığı altına IP adresini veya adres aralığını ( [CIDR biçiminde](https://tools.ietf.org/html/rfc4632)) girin  >  **Address Range**. Yalnızca geçerli genel IP (ayrılmamış) adresleri kabul edilir.
 
    ![IP aralığı Ekle](media/vnet/virtual-network-add-ip-range.png)
 
-1. Bir IP ağ kuralını kaldırmak için, adres aralığının yanındaki çöp <span class="docon docon-delete x-hidden-focus"></span> kutusu simgesini seçin.
+1. Bir IP ağ kuralını kaldırmak için, <span class="docon docon-delete x-hidden-focus"></span> adres aralığının yanındaki çöp kutusu simgesini seçin.
 
    ![IP aralığını Sil](media/vnet/virtual-network-delete-ip-range.png)
 

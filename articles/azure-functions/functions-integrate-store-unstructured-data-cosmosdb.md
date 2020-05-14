@@ -1,15 +1,15 @@
 ---
 title: Azure Cosmos DB ve Işlevleri kullanarak yapılandırılmamış verileri depolama
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
-ms.topic: how-to
-ms.date: 10/01/2018
+ms.topic: quickstart
+ms.date: 04/14/2020
 ms.custom: mvc
-ms.openlocfilehash: d11b7e7d55d0327bdec0a8bd6c73571cf846fd3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09d9bbca7119539f31a4cea056f338cf28dfcd23
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756659"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121953"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
@@ -19,8 +19,6 @@ ms.locfileid: "80756659"
 > Şu anda Azure Cosmos DB tetikleyicisi, giriş bağlamaları ve çıkış bağlamaları yalnızca SQL API ve Graph API hesaplarıyla çalışır.
 
 Azure İşlevleri’nde giriş ve çıkış bağlamaları, işlevinizden dış hizmet verilerine bağlanmanın bildirim temelli bir yöntemini sağlar. Bu makalede, yapılandırılmamış verileri bir Azure Cosmos DB belgesinde depolayan bir çıktı bağlaması eklemek için var olan bir işlevi güncelleştirme hakkında bilgi edinin.
-
-![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -36,30 +34,30 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-1. Portalda önceden oluşturduğunuz işlev uygulamasına gidin ve hem işlev uygulamasını hem de işlevi genişletin.
+1. Azure portal ' a gidin ve daha önce oluşturduğunuz işlev uygulamasını seçin.
 
-1. **Tümleştir** öğesini ve sayfanın sağ üst kısmındaki **+ Yeni Çıktı**’yı seçin. **Azure Cosmos DB**’yi seçip **Seç**’e tıklayın.
+1. **İşlevler**' i seçin ve ardından httptrigger işlevini seçin.
 
-    ![Azure Cosmos DB çıkış bağlaması ekleme](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-select-http-function.png" alt-text="Azure portal http işlevinizi seçin." border="true":::
 
-1. **Uzantılar yüklü değil** iletisiyle karşılaşırsanız **Yükle**'yi seçerek Azure Cosmos DB bağlamaları uzantısını işlev uygulamasına yükleyin. Yükleme bir veya iki dakika sürebilir.
+1. **Tümleştirme** ' i ve **Çıkış Ekle**' yi seçin.
 
-    ![Azure Cosmos DB bağlama uzantısını yükleme](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-install-binding-extension.png)
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Azure Cosmos DB çıkış bağlaması ekleyin." border="true":::
 
-1. Tabloda belirtilen **Azure Cosmos DB çıktısı** ayarlarını kullanın:
+1. Tabloda belirtilen **çıkış oluştur** ayarlarını kullanın:
 
-    ![Cosmos DB çıktı bağlamasını yapılandırma](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Azure Cosmos DB çıkış bağlamayı yapılandırın." border="true":::
 
     | Ayar      | Önerilen değer  | Açıklama                                |
     | ------------ | ---------------- | ------------------------------------------ |
+    | **Bağlama türü** | Azure Cosmos DB | Azure Cosmos DB çıkış bağlamasını oluşturmak için seçilecek bağlama türünün adı. |
     | **Belge parametre adı** | taskDocument | Kodda Cosmos DB nesnesine başvuran ad. |
     | **Veritabanı adı** | taskDatabase | Belgelerin kaydedileceği veritabanının adı. |
-    | **Koleksiyon adı** | TaskCollection | Veritabanı koleksiyonunun adı. |
-    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | İşaretli | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
-    | **Azure Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**'yi ve ardından **Aboneliğinizi**, önceden oluşturduğunuz **Veritabanı hesabını** ve **Seç**'i belirtin. Hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
-    | **Koleksiyon aktarım hızı** |400 RU| Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz. |
+    | **Koleksiyon adı** | taskCollection | Veritabanı koleksiyonunun adı. |
+    | **True ise, Cosmos DB veritabanı ve koleksiyonunu oluşturur** | Evet | Koleksiyon henüz mevcut değil, bu yüzden oluşturun. |
+    | **Cosmos DB hesabı bağlantısı** | Yeni ayar | **Yeni**' yi ve ardından daha önce oluşturduğunuz **Azure Cosmos DB hesabı** ve **veritabanı hesabı** ' nı seçin ve ardından **Tamam**' ı seçin. Hesap bağlantınız için bir uygulama ayarı oluşturulur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
 
-1. Bağlamayı oluşturmak için **Kaydet**'i seçin.
+1. Bağlamayı oluşturmak için **Tamam ' ı** seçin.
 
 ## <a name="update-the-function-code"></a>İşlev kodunu güncelleştirme
 
@@ -134,25 +132,29 @@ Bu kod örneği, HTTP İsteği sorgu dizelerini okur ve `taskDocument` nesnesind
 
 ## <a name="test-the-function-and-database"></a>İşlevi ve veritabanını test etme
 
-1. Sağ pencereyi genişletip **Test**’i seçin. **Sorgu** altında **+ Parametre ekle**’ye tıklayıp aşağıdaki parametreleri sorgu dizesine ekleyin:
+1. **Test**'i seçin. **Sorgu**altında **+ parametre Ekle** ' yi seçin ve sorgu dizesine aşağıdaki parametreleri ekleyin:
 
     + `name`
     + `task`
     + `duedate`
 
-1. **Çalıştır**’a tıklayın ve 200 durumunun döndürüldüğünü doğrulayın.
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="İşlevi test edin." border="true":::
 
-    ![Cosmos DB çıktı bağlamasını yapılandırma](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
 
-1. Azure portalının sol tarafındaki simge çubuğunu genişletin, arama alanına `cosmos` yazın ve **Azure Cosmos DB**’yi seçin.
+1. **Çalıştır** ' ı seçin ve 200 durumunun döndürüldüğünü doğrulayın.
 
-    ![Cosmos DB hizmetini arama](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="İşlevi test edin." border="true":::
 
-1. Azure Cosmos DB hesabınızı seçin ve ardından **Veri Gezgini**’ni seçin.
 
-1. **Koleksiyonlar** düğümünü genişletin, yeni belgeyi seçin ve belgenin sorgu dizesi değerlerinizin yanı sıra bazı ek meta verileri içerdiğini onaylayın.
+1. Azure portal, araması yapın ve **Azure Cosmos DB**seçin.
 
-    ![Cosmos DB girişini doğrulama](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Cosmos DB hizmeti için arama yapın." border="true":::
+
+1. Azure Cosmos DB hesabınızı seçin ve **Veri Gezgini**' ı seçin.
+
+1. **TaskCollection** düğümlerini genişletin, yeni belge ' yi seçin ve belgenin sorgu dizesi değerlerinizi içerdiğinden, bazı ek meta verilerle birlikte emin olun.
+
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Belgenizdeki dize değerlerini doğrulayın." border="true":::
 
 Yapılandırılmamış verileri bir Azure Cosmos DB’de depolayan HTTP tetikleyicinize başarıyla bir bağlama eklediniz.
 

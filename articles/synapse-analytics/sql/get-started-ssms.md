@@ -9,14 +9,15 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 704da86fd1d816dbf5d6cd9cf67dfee53fce2622
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a25049aee620a1cf14eeb51adfb75f6577defc2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423743"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197062"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -30,8 +31,11 @@ ms.locfileid: "81423743"
 
 ### <a name="supported-tools-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için desteklenen araçlar (Önizleme)
 
-SSMS, sürüm 18,5 ' den başlayarak, bağlanma ve sorgulama gibi sınırlı özelliklerle kısmen desteklenir. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) tam olarak desteklenir.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) , 1.18.0 sürümünden başlayarak tam olarak desteklenmektedir. SSMS, sürüm 18,5 ' den başlayarak kısmen desteklenir, bunu yalnızca bağlanmak ve sorgulamak için kullanabilirsiniz.
 
+> [!NOTE]
+> AAD oturumunun sorgu yürütme sırasında 1 saatten uzun süre açık bağlantısı varsa, AAD 'yi kullanan herhangi bir sorgu başarısız olur. Bu, AAD ile etkileşime geçen AAD geçişli geçiş ve deyimlerini kullanarak depolamayı sorgulamayı içerir (dış sağlayıcı oluşturma gibi). Bu, SSMS ve REKLAMLARı 'nda sorgu Düzenleyicisi gibi bağlantı açık tutan tüm araçları etkiler. Sorgu yürütmek için yeni bağlantı açan araçlar SYNAPSE Studio gibi etkilenmez.
+> Bu sorunu gidermek için SSMS 'yi yeniden başlatabilir veya reklamlar ' a bağlanıp bağlantıyı kesebilirsiniz. .
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:  
@@ -94,7 +98,7 @@ Bir veritabanı bağlantısı kuruldığına göre, verileri sorgulayabilirsiniz
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için aşağıdaki kısayola `Execute` tıklayın veya kullanın: `F5`.
+4. Sorguyu çalıştırın. Bunu yapmak için `Execute` aşağıdaki kısayola tıklayın veya kullanın: `F5` .
    
     ![Sorgu çalıştırma](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Sorgu sonuçlarına bakın. Bu örnekte FactInternetSales tablosunda 60398 satır var.
@@ -114,7 +118,7 @@ Bir veritabanı bağlantısı kurdığınıza göre, verileri sorgulayabilirsini
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Sorguyu çalıştırın. Bunu yapmak için aşağıdaki kısayola `Execute` tıklayın veya kullanın: `F5`.
+4. Sorguyu çalıştırın. Bunu yapmak için `Execute` aşağıdaki kısayola tıklayın veya kullanın: `F5` .
    
     ![Sorgu çalıştırma](./media/get-started-ssms/execute-query.png)
 5. Sorgu sonuçlarına bakın. Bu örnekte, usPopulationView görünümü 3664512 satıra sahiptir.

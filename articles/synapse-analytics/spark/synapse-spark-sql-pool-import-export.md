@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f562c195e90f2356568530b9b618ae9e6610fa56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424296"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201470"
 ---
 # <a name="introduction"></a>Giriş
 
@@ -24,7 +24,7 @@ Spark SQL Analytics Bağlayıcısı, Azure SYNAPSE 'te Spark Havuzu (Önizleme) 
 
 Spark havuzları ve SQL havuzları arasında veri aktarımı, JDBC kullanılarak yapılabilir. Bununla birlikte, Spark ve SQL havuzları gibi iki Dağıtılmış Sistem, JDBC, seri veri aktarımı ile ilgili bir performans sorunu olduğunu eğilimi gösterir.
 
-Spark havuzları SQL Analytics Connector, Apache Spark için bir veri kaynağı uygulamasıdır. Spark kümesi ve SQL Analytics örneği arasında verileri verimli bir şekilde aktarmak için SQL havuzlarındaki Azure Data Lake Storage Gen 2 ve PolyBase 'i kullanır.
+SQL Analytics bağlayıcısıyla Spark havuzları, Apache Spark için bir veri kaynağı uygulamasıdır. Spark kümesi ve SQL Analytics örneği arasında verileri verimli bir şekilde aktarmak için SQL havuzlarındaki Azure Data Lake Storage Gen 2 ve PolyBase 'i kullanır.
 
 ![Bağlayıcı mimarisi](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -55,7 +55,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 ## <a name="usage"></a>Kullanım
 
-İçeri aktarma deyimlerinin sağlanması gerekmez, bunlar Not defteri deneyimi için önceden içeri aktarılır.
+İçeri aktarma deyimleri gerekli değildir, Not defteri deneyimi için önceden içeri aktarırlar.
 
 ### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Çalışma alanıyla eklenen mantıksal sunucudaki (DW örneği) bir SQL havuzundan veri aktarma
 
@@ -161,9 +161,36 @@ val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
+
 Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesinde sorgulamak için PySpark içinde Spark SQL kullanın.
+
+## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Diğer kullanıcıların çalışma alanınızda DW bağlayıcısını kullanmasına izin verme
+
+Başkalarının eksik izinlerini değiştirmek için, çalışma alanına bağlı ADLS 2. depolama hesabında Depolama Blobu veri sahibi olmanız gerekir. Kullanıcının çalışma alanına erişimi olduğundan ve not defterlerini çalıştırma izinlerine sahip olduğundan emin olun.
+
+### <a name="option-1"></a>Seçenek 1
+
+- Kullanıcıya Depolama Blobu verileri katılımcısı/Owner yapın
+
+### <a name="option-2"></a>2. Seçenek
+
+- Klasör yapısında aşağıdaki ACL 'Leri belirtin:
+
+| Klasör | / | synapse | çalışma alanı  | <workspacename> | Mini veri havuzları | <sparkpoolname>  | parlak havuzörnekleri  |
+|--|--|--|--|--|--|--|--|
+| Erişim Izinleri |--X |--X |--X |--X |--X |--X |-WX |
+| Varsayılan Izinler |---|---|---|---|---|---|---|
+
+- "SYNAPSE" ve Azure portal 'den aşağı doğru tüm klasörlere ACL 'leri sağlayabilmelisiniz. "/" Kök dizinini ACL 'ye eklemek için aşağıdaki yönergeleri izleyin.
+
+- AAD kullanarak Depolama Gezgini çalışma alanıyla bağlantılı depolama hesabına bağlanma
+- Hesabınızı seçin ve çalışma alanı için ADLS 2. URL 'sini ve varsayılan dosya sistemini verin
+- Listelenen depolama hesabını gördüğünüzde, liste çalışma alanına sağ tıklayın ve "erişimi yönet" i seçin
+- Kullanıcıyı "Yürüt" erişim Izniyle/klasörüne ekleyin. "Tamam" ı seçin
+
+**Şunları yapmayı düşünmüyorsanız "varsayılan" seçeneğini seçmeyin emin olun.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SQL havuzu oluşturma]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
+- [SQL havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
 - [Azure SYNAPSE Analytics çalışma alanı için yeni bir Apache Spark havuzu oluşturma](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 

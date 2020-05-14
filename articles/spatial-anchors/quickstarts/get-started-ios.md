@@ -8,12 +8,13 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6304077a26f5c0ecb91e1ec4936bd79b3d839d95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79471226"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195328"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla, Swift veya amaç-C ' d a iOS uygulaması oluşturma
 
@@ -34,9 +35,9 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 
 - En son <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> ve <a href="https://cocoapods.org" target="_blank">Cocoapods</a> sürümü yüklü olan MacOS makinesi özellikli bir geliştirici.
 - HomeBrew aracılığıyla Git yüklendi:
-  1. Terminalde aşağıdaki komutu tek bir satır olarak girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. 
+  1. Terminalde aşağıdaki komutu tek bir satır olarak girin: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . 
   1. `brew install git` ve `brew install git-lfs` komutlarını çalıştırın.
-  1. Git yapılandırmasını (geçerli kullanıcı `git lfs install` için) veya `git lfs install --system` (tüm sistem için) ile güncelleştirin.
+  1. Git yapılandırmasını `git lfs install` (geçerli kullanıcı için) veya `git lfs install --system` (tüm sistem için) ile güncelleştirin.
 - Bir geliştirici, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit uyumlu</a> bir iOS cihazını etkinleştirdi.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -67,9 +68,9 @@ cd ./iOS/Objective-C/
 
 ---
 
-Proje `pod install --repo-update` için Cocoapods yüklemek üzere çalıştırın.
+`pod install --repo-update`Proje Için Cocoapods yüklemek üzere çalıştırın.
 
-Şimdi Xcode `.xcworkspace` 'da açın.
+Şimdi `.xcworkspace` Xcode 'da açın.
 
 > [!NOTE]
 > MacOS Catalina 'e yükselttikten sonra CocoaPod sorunları [yaşıyorsanız, sorun giderme adımlarına bakın](#cocoapods-issues-on-macos-catalina-1015) (10,15).
@@ -96,17 +97,17 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 
 `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift` dosyasını açın.
 
-`spatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
+Alanı bulun `spatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
-`spatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
+Alanı bulun `spatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 `iOS/Objective-C/SampleObjC/BaseViewController.m` dosyasını açın.
 
-`SpatialAnchorsAccountKey` Alanı bulun ve hesap anahtarıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountKey` ve `Set me` Hesap anahtarıyla değiştirin.
 
-`SpatialAnchorsAccountId` Alanı bulun ve hesap tanımlayıcısıyla `Set me` değiştirin.
+Alanı bulun `SpatialAnchorsAccountId` ve `Set me` Hesap tanımlayıcısıyla değiştirin.
 
 ---
 
@@ -121,7 +122,7 @@ Bir sonraki adım, uygulamayı hesap tanımlayıcıyı ve hesap anahtarınızı 
 ![Dağıt ve Çalıştır](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
-> Bir `library not found for -lPods-SampleObjC` hata görürseniz, büyük olasılıkla `.xcodeproj` dosyası yerine dosyayı açtınız. `.xcworkspace` Öğesini açın `.xcworkspace` ve yeniden deneyin.
+> Bir hata görürseniz, `library not found for -lPods-SampleObjC` büyük olasılıkla `.xcodeproj` dosyası yerine dosyayı açtınız `.xcworkspace` . Öğesini açın `.xcworkspace` ve yeniden deneyin.
 
 Xcode 'da **Durdur**' a basarak uygulamayı durdurun.
 
@@ -129,7 +130,7 @@ Xcode 'da **Durdur**' a basarak uygulamayı durdurun.
 
 ### <a name="cocoapods-issues-on-macos-catalina-1015"></a>MacOS Catalina CocoaPods sorunlar (10,15)
 
-Yakın zamanda MacOS Catalina (10,15) olarak güncelleştirdiyseniz ve önceden Cocoapods yüklüyse, Cocoapods bozuk bir durumda olabilir ve pod ve `.xcworkspace` proje dosyalarınızı düzgün şekilde yapılandıramadı. Bu sorunu çözmek için aşağıdaki komutları çalıştırarak CocoaPods öğesini yeniden yüklemeniz gerekir:
+Yakın zamanda MacOS Catalina (10,15) olarak güncelleştirdiyseniz ve önceden Cocoapods yüklüyse, Cocoapods bozuk bir durumda olabilir ve pod ve proje dosyalarınızı düzgün şekilde yapılandıramadı `.xcworkspace` . Bu sorunu çözmek için aşağıdaki komutları çalıştırarak CocoaPods öğesini yeniden yüklemeniz gerekir:
 
 ```shell
 brew update
@@ -139,7 +140,7 @@ brew link --overwrite cocoapods
 
 ### <a name="app-crashes-when-deploying-to-ios-1031-from-a-personal-provisioning-profiledeveloper-account"></a>Bir kişisel sağlama profili/geliştirici hesabından iOS 10.3.1 'a dağıtım yaparken uygulama kilitleniyor 
 
-İOS uygulamanızı bir kişisel sağlama profili/geliştirici hesabından iOS 10.3.1 üzerinde dağıtırsanız şu hatayı görebilirsiniz: `Library not loaded: @rpath/ADAL...`. 
+İOS uygulamanızı bir kişisel sağlama profili/geliştirici hesabından iOS 10.3.1 üzerinde dağıtırsanız şu hatayı görebilirsiniz: `Library not loaded: @rpath/ADAL...` . 
 
 Sorunu çözmek için:
 

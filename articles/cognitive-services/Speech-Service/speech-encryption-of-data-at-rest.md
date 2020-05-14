@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372364"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198665"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Bekleyen verilerin konuşma hizmeti şifrelemesi
 
@@ -42,13 +42,10 @@ Kendi depolama alanınızı getirmek üzere erişim istemek için, [konuşma h
 > [!IMPORTANT]
 > Sistem tarafından atanan yönetilen kimlikleri devre dışı bırakırsanız, depolama hesabına erişim kaldırılır. Bu, konuşma hizmetinin depolama hesabına erişmesi gereken bölümlerinin çalışmayı durdurmasına neden olur.  
 
-## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
+Konuşma hizmeti şu anda Müşteri Kasası desteklememektedir. Ancak, müşteri verileri KCG kullanılarak depolanabilir ve [müşteri kasası](../../security/fundamentals/customer-lockbox-overview.md)için benzer veri denetimleri elde etmenizi sağlar. Konuşma hizmeti verilerinin, konuşma kaynağının oluşturulduğu bölgede kaldığından ve işlendiğini aklınızda bulundurun. Bu, bekleyen veriler ve iletim verileri için geçerlidir. Özel Konuşma Tanıma ve özel ses gibi özelleştirme özellikleri kullanılırken, tüm müşteri verileri, KCG (kullanılıyorsa) ve konuşma hizmeti kaynağının bulunduğu bölgede aktarılır, depolanır ve işlenir.
 
-BYOS Şu anda şu bölgelerde kullanılabilir:
-
-* ABD Orta Güney
-* Batı ABD 2
-* Doğu ABD
+> [!IMPORTANT]
+> Microsoft, konuşma modellerini geliştirmek için müşteri **verilerini kullanmaz.** Ayrıca, uç nokta günlüğü devre dışıysa ve hiçbir özelleştirme kullanılmazsa, hiçbir müşteri verisi depolanmaz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

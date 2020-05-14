@@ -4,12 +4,12 @@ description: Visual Studio Code projenize bir çıkış bağlaması ekleyerek Az
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb5db5858a65759c6cf20789da9cb5bfca761b1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673503"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125868"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Işlevlerini Visual Studio Code kullanarak Azure depolama 'ya bağlama
 
@@ -17,7 +17,7 @@ ms.locfileid: "80673503"
 
 Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md) oluşturduğunuz Işlevi Azure Storage 'a bağlamak için Visual Studio Code nasıl kullanılacağı gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, HTTP isteğinden verileri bir Azure kuyruk depolama kuyruğundaki bir iletiye yazar. 
 
-Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı `AzureWebJobsStorage`bir uygulama ayarında depolanıyor.  
+Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı bir uygulama ayarında depolanıyor `AzureWebJobsStorage` .  
 
 ## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırma
 
@@ -33,20 +33,20 @@ Bu makaleye başlamadan önce, aşağıdaki gereksinimleri karşılamanız gerek
 
 * [Visual Studio Code hızlı başlangıcı ' nın 1. bölümündeki](functions-create-first-function-vs-code.md)adımları uygulayın. 
 
-Bu makalede, Visual Studio Code Azure aboneliğinizde zaten oturum açmış olduğunuz varsayılmaktadır. Komut paletinden komutunu çalıştırarak `Azure: Sign In` oturum açabilirsiniz. 
+Bu makalede, Visual Studio Code Azure aboneliğinizde zaten oturum açmış olduğunuz varsayılmaktadır. Komut paletinden komutunu çalıştırarak oturum açabilirsiniz `Azure: Sign In` . 
 
 ## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 
 [Önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md), Azure 'Da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını yerel. Settings. JSON dosyasına indirmeniz gerekir. 
 
-1. F1 tuşuna basarak komut paletini açın, sonra komutunu `Azure Functions: Download Remote Settings....`arayıp çalıştırın. 
+1. F1 tuşuna basarak komut paletini açın, sonra komutunu arayıp çalıştırın `Azure Functions: Download Remote Settings....` . 
 
 1. Önceki makalede oluşturduğunuz işlev uygulamasını seçin. Var olan yerel ayarların üzerine yazmak için **Tümüne Evet** ' i seçin. 
 
     > [!IMPORTANT]  
     > Gizli dizi içerdiğinden, Local. Settings. JSON dosyası hiçbir şekilde yayımlanmaz ve kaynak denetiminden çıkarılır.
 
-1. Depolama hesabı bağlantı `AzureWebJobsStorage`dizesi değeri için anahtar olan değeri kopyalayın. Çıkış bağlamasının beklendiği gibi çalıştığını doğrulamak için bu bağlantıyı kullanın.
+1. `AzureWebJobsStorage`Depolama hesabı bağlantı dizesi değeri için anahtar olan değeri kopyalayın. Çıkış bağlamasının beklendiği gibi çalıştığını doğrulamak için bu bağlantıyı kullanın.
 
 ## <a name="register-binding-extensions"></a>Bağlama uzantılarını kaydetme
 
@@ -56,7 +56,7 @@ Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştır
 
 Projeniz, önceden tanımlanmış bir uzantı paketleri kümesini otomatik olarak yüklediği [uzantı](functions-bindings-register.md#extension-bundles)paketlerini kullanmak üzere yapılandırılmıştır. 
 
-Uzantı paketleri, projenin kökünde bulunan Host. json dosyasında etkinleştirilir ve bu, aşağıdaki gibi görünür:
+Uzantı demeti kullanımı, projenin kökündeki, aşağıdaki gibi görünen Host. json dosyasında etkinleştirilir:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -76,7 +76,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-İşlevlerde, her bağlama türü, function. JSON `direction`dosyasında `type`tanımlanması için bir, `name` ve benzersiz gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
+Işlevlerde, her bağlama türü `direction` , `type` `name` function. json dosyasında tanımlanması için bir, ve benzersiz gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
@@ -98,7 +98,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek `name` için bağlamayı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
+Bağlama tanımlandıktan sonra, `name` işlev imzasında bir öznitelik olarak erişmek için bağlamayı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
 ::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
@@ -172,7 +172,7 @@ Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm A
 
 ### <a name="examine-the-output-queue"></a>Çıkış kuyruğunu inceleme
 
-1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın, sonra komutu `Azure Storage: Open in Storage Explorer` arayıp çalıştırın ve depolama hesabınızın adını seçin. Depolama Hesabınız Azure Depolama Gezgini açılır.  
+1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın, sonra komutu arayıp çalıştırın `Azure Storage: Open in Storage Explorer` ve depolama hesabınızın adını seçin. Depolama Hesabınız Azure Depolama Gezgini açılır.  
 
 1. **Kuyruklar** düğümünü genişletin ve sonra **outqueue** adlı kuyruğu seçin. 
 
@@ -186,11 +186,11 @@ Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm A
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>Güncelleştirilmiş uygulamayı yeniden dağıtın ve doğrulayın
 
-1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde, araması yapın ve seçin `Azure Functions: Deploy to function app...`.
+1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde, araması yapın ve seçin `Azure Functions: Deploy to function app...` .
 
-1. İlk makalede oluşturduğunuz işlev uygulamasını seçin. Projenizi aynı uygulamaya yeniden dağıtmakta olduğunuzdan, dosyaların üzerine yazma uyarısını kapatmak için **Dağıt** ' ı seçin.
+1. İlk makalede oluşturduğunuz işlev uygulamasını seçin. Projenizi aynı uygulamaya yeniden **dağıtmakta** olduğunuzdan, dosyaların üzerine yazma uyarısını kapatmak için Dağıt ' ı seçin.
 
-1. Dağıtım tamamlandıktan sonra yeniden dağıtılan işlevi test etmek için kıvrımlı veya bir tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki örnekte `&name=<yourname>` olduğu gibi sorgu dizesini URL 'ye ekleyin:
+1. Dağıtım tamamlandıktan sonra yeniden dağıtılan işlevi test etmek için kıvrımlı veya bir tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, `&name=<yourname>` Aşağıdaki örnekte olduğu gibi sorgu DIZESINI URL 'ye ekleyin:
 
     ```bash
     curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
@@ -200,7 +200,7 @@ Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm A
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. *Kaynak grupları* halinde gruplandırılırlar ve bir grubu silerek içindeki her şeyi silebilirsiniz.
+Azure 'da, *kaynaklar* işlev uygulamalarına, işlevlere, depolama hesaplarına ve benzeri bir kaynağa başvurur. Bunlar *kaynak grupları*halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz.
 
 Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap durumunuza](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmanıza](https://azure.microsoft.com/pricing/) bağlı olarak size bu kaynakların ücretleri yansıtılabilir. Kaynaklara artık ihtiyacınız yoksa, şunları yaparak silebilirsiniz:
 

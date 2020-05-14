@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9cb90ba81f6399d7b0e238d673c2d956911bd004
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692165"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201041"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Hızlı başlangıç: isteğe bağlı SQL kullanma
 
-SYNAPSE SQL isteğe bağlı (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, isteğe bağlı SQL kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz.
+SYNAPSE SQL isteğe bağlı (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, isteğe bağlı SQL kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz. Desteklenen biçimler [OPENROWSET](sql/develop-openrowset.md)'de listelenmiştir.
 
-Aşağıdaki dosya türleri desteklenir: JSON, CSV, Apache Parquet
+Bu hızlı başlangıçta sorgulama: CSV, Apache Parquet ve JSON dosyaları gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -54,7 +54,7 @@ Tanıtım amacıyla kendi veritabanınızı oluşturun. Bu veritabanını, bu ma
 > Veritabanları, gerçek veriler için değil yalnızca görünüm meta verileri için kullanılır.
 >Daha sonra hızlı başlangıçta kullanmak üzere kullandığınız veritabanı adını yazın.
 
-Seçtiğiniz bir ada geçiş `mydbname` yapmak için aşağıdaki sorguyu kullanın:
+`mydbname`Seçtiğiniz bir ada geçiş yapmak için aşağıdaki sorguyu kullanın:
 
 ```sql
 CREATE DATABASE mydbname
@@ -123,7 +123,7 @@ Daha fazla örnek için bkz. [CSV dosyasını sorgulama](sql/query-single-csv-fi
 Aşağıdaki örnek, Parquet dosyalarını sorgulamak için otomatik Şema çıkarımı özelliklerini gösterir. Şemayı belirtmeden, Eylül 2017 ' deki satır sayısını döndürür.
 
 > [!NOTE]
-> Parquet dosyalarını okurken yan tümce içinde `OPENROWSET WITH` sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı, verileri Parquet dosyasında kullanır ve sütunları ada göre bağlar.
+> `OPENROWSET WITH`Parquet dosyalarını okurken yan tümce içinde sütunlar belirtmeniz gerekmez. Bu durumda, SQL isteğe bağlı, verileri Parquet dosyasında kullanır ve sütunları ada göre bağlar.
 
 ```sql
 SELECT COUNT_BIG(*)
