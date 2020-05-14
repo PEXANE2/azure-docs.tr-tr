@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 04/24/2020
+ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 51cd464da417bfd1d6d4ff52e2a2595a7ce77fe6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201712"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402370"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -38,7 +38,7 @@ Temsilcili kaynaklar üzerinde doğrudan portalda veya API 'Ler ile yönetim ara
 Benzer şekilde, [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) gıbı Azure CLI komutları **Hometenantid** ve **managedbykiracılar** özniteliklerini gösterir.
 
 > [!TIP]
-> Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak `az account clear` Önbelleğinizi temizlemeyi deneyin. `az login --identity`
+> Azure CLı kullanırken bu değerleri görmüyorsanız, arkasından ' i çalıştırarak Önbelleğinizi temizlemeyi deneyin `az account clear` `az login --identity` .
 
 Ayrıca, Azure tarafından atanan kaynak yönetimi görevlerini gerçekleştirmeye özgü API 'Ler sunuyoruz. Daha fazla bilgi için **başvuru** bölümüne bakın.
 
@@ -113,6 +113,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - [Müşteri Kiracılarında](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel kaynaklarını yönetme
 - [Birden çok müşteri kiracısından saldırıları izleyin ve güvenlik uyarılarını görüntüleyin](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- Birden çok Sentinel çalışma alanı genelinde, müşteri kiracılarına yayılan [olayları görüntüleme](../../sentinel/multiple-workspace-view.md)
 
 [Azure hizmet durumu](../../service-health/index.yml):
 
@@ -138,7 +139,7 @@ Destek istekleri:
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 Tüm senaryolarla, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
 
-- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri ile `https://management.azure.com`başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan bir adresle başlar, örneğin `https://myaccount.blob.core.windows.net` veya. `https://mykeyvault.vault.azure.net/` İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
+- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri ile başlar `https://management.azure.com` . Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan bir adresle başlar, örneğin `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/` . İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
 - Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](../../role-based-access-control/built-in-roles.md)kullanması gerekir. Tüm yerleşik roller Şu anda, sahip veya [Dataactions](../../role-based-access-control/role-definitions.md#dataactions) iznine sahip herhangi bir yerleşik rol haricinde Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Kullanıcı erişimi yönetici rolü yalnızca [yönetilen kimliklere rol atama](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)konusunda sınırlı kullanım için desteklenir.  Özel roller ve [Klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
 - Azure Databricks kullanan abonelikler ekleyebilirsiniz, ancak yönetme kiracısındaki kullanıcılar şu anda bir temsilci olan abonelikte Azure Databricks çalışma alanlarını başlatamaz.
 - Kaynak kilitleri olan Azure tarafından atanan kaynak yönetimi için abonelikler ve kaynak grupları ekleyebilirsiniz, ancak bu kilitler, eylemlerin yönetim kiracısındaki kullanıcılar tarafından gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure şemaları (sistem tarafından atanan reddetme atamaları) tarafından oluşturulanlar gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme](../../role-based-access-control/deny-assignments.md) , yönetim kiracısındaki kullanıcıların bu kaynaklara göre davranmasını önler; Bununla birlikte, müşteri kiracısındaki kullanıcılar kendi reddetme atamalarını oluşturamaz (Kullanıcı tarafından atanan reddetme atamaları).

@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593589"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402455"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için destek ilkeleri
 
@@ -38,11 +38,6 @@ Microsoft, Denetim bölmesi aracılığıyla aşağıdaki bileşenleri yönetir 
 AKS tamamen yönetilen bir küme çözümüdür. Çalışan düğümleri gibi bazı bileşenler, kullanıcıların AKS kümesini korumanızda yardımcı olması gereken, *paylaşılan sorumluluğa*sahiptir. Kullanıcı girişi, örneğin bir çalışan düğümü işletim sistemi (OS) güvenlik düzeltme eki uygulamak için gereklidir.
 
 Hizmetler, Microsoft 'un ve AKS ekibinin hizmet kullanılabilirliği ve işlevleri dağıttığı, çalıştığı ve sorumlu olduğu konusunda bir şekilde *yönetilir* . Müşteriler bu yönetilen bileşenleri değiştiremezler. Microsoft, tutarlı ve ölçeklenebilir bir kullanıcı deneyimi sağlamak için özelleştirmeyi kısıtlar. Tamamen özelleştirilebilir bir çözüm için bkz. [aks motoru](https://github.com/Azure/aks-engine).
-
-> [!NOTE]
-> AKS çalışan düğümleri Azure portal normal Azure IaaS kaynakları olarak görünür. Ancak bu sanal makineler özel bir Azure Kaynak grubuna dağıtılır (MC\\* önekli). AKS çalışan düğümlerini değiştirmek mümkündür. Örneğin, normal sanal makineleri değiştirdiğiniz şekilde AKS çalışan düğümlerini değiştirmek için Secure Shell (SSH) kullanabilirsiniz (ancak, temel işletim sistemi görüntüsünü değiştirebilirsiniz ve değişiklikler bir güncelleştirme veya yeniden başlatma ile devam edebilir) ve diğer Azure kaynaklarını AKS çalışan düğümlerine ekleyebilirsiniz. Ancak *, bant yönetimi ve özelleştirme dışında* değişiklikler yaptığınızda aks kümesi, desteklenmeyen tablo haline gelebilir. Microsoft Desteği değişiklik yapmaya yönlendirmedikleri takdirde çalışan düğümlerini değiştirmekten kaçının.
-
-Yukarıda tanımlanan, tüm aracı düğümlerinin bant dışında ayırmayı kaldırma gibi desteklenmeyen işlemler verme, kümeyi desteklenmeyen şekilde işler. AKS, 30 güne eşit ve daha fazla uzatılmış dönemler için destek yönergelerinden daha fazla yapılandırılmış olan denetim düzlemleri Arşivi saklı tutar. AKS, küme etcd meta verilerinin yedeklerini tutar ve kümeyi kolayca yeniden tahsis edebilir. Bu yeniden ayırma, bir yükseltme ya da etkin aracı düğümlerine ölçeklendirilmesi gibi, kümeyi tekrar desteğe getiren herhangi bir PUT işlemi tarafından başlatılabilir.
 
 ## <a name="shared-responsibility"></a>Paylaşılan sorumluluk
 
@@ -104,8 +99,22 @@ Microsoft, işletim sistemi düzeyi düzeltme eklerini uygulamak için çalışa
 
 Müşteriler, Kubernetes yükseltmelerini yürütmekten sorumludur. Azure Denetim Masası veya Azure CLı aracılığıyla yükseltmeleri yürütebilirler. Bu, Kubernetes için güvenlik veya işlevsellik iyileştirmeleri içeren güncelleştirmeler için geçerlidir.
 
+#### <a name="user-customization-of-worker-nodes"></a>Çalışan düğümlerinin Kullanıcı özelleştirmesi
 > [!NOTE]
-> AKS *yönetilen bir hizmet*olduğundan, son hedefleri hizmet yönetiminin daha kapsamlı ve uygulamalı hale getirmek için düzeltme ekleri, güncelleştirmeler ve günlük toplama sorumluluğunu kaldırmayı içerir. Hizmetin uçtan uca yönetim kapasitesi arttıkça, gelecek sürümler bazı işlevleri (örneğin, düğüm yeniden başlatma ve otomatik düzeltme eki uygulama) atlayabilir.
+> AKS çalışan düğümleri Azure portal normal Azure IaaS kaynakları olarak görünür. Ancak bu sanal makineler özel bir Azure Kaynak grubuna dağıtılır (MC \\ * önekli). AKS çalışan düğümlerini temel yapılandırmalarından artırmak mümkündür. Örneğin, AKS çalışan düğümlerini normal sanal makineleri değiştirdiğiniz şekilde değiştirmek için Secure Shell (SSH) kullanabilirsiniz. Ancak, temel işletim sistemi görüntüsünü değiştiremezsiniz. Herhangi bir özel değişiklik, yükseltme, ölçeklendirme, güncelleştirme veya yeniden başlatma aracılığıyla kalıcı olmayabilir. **Ancak**, *aks API 'sinin bant dışı ve kapsam dışında* değişiklikler yapmak aks kümesinin desteklenmeyen hale gelmesine neden oluyor. Microsoft Desteği değişiklik yapmaya yönlendirmedikleri takdirde çalışan düğümlerini değiştirmekten kaçının.
+
+Yukarıda tanımlanan, tüm aracı düğümlerinin bant dışında ayırmayı kaldırma gibi desteklenmeyen işlemler verme, kümeyi desteklenmeyen şekilde işler. AKS, 30 güne eşit ve daha fazla uzatılmış dönemler için destek yönergelerinden daha fazla yapılandırılmış olan denetim düzlemleri Arşivi saklı tutar. AKS, küme etcd meta verilerinin yedeklerini tutar ve kümeyi kolayca yeniden tahsis edebilir. Bu yeniden ayırma, bir yükseltme ya da etkin aracı düğümlerine ölçeklendirilmesi gibi, kümeyi tekrar desteğe getiren herhangi bir PUT işlemi tarafından başlatılabilir.
+
+AKS, çalışan düğümlerinin yaşam döngüsünü ve işlemlerini müşteriler adına yönetir. çalışan düğümleriyle ilişkili IaaS kaynaklarını değiştirme **desteklenmez**. Desteklenmeyen bir işleme bir örnek, VMSS portalı veya VMSS API aracılığıyla VMSS yapılandırmasını el ile değiştirerek bir düğüm havuzu VM Ölçek kümesini özelleştirmektir.
+ 
+İş yüküne özgü yapılandırma veya paketler için AKS, [Kubernetes daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)kullanmayı önerir.
+
+Kubernetes ayrıcalıklı daemonsets ve init kapsayıcıları kullanmak, müşterilerin küme çalışan düğümlerinde üçüncü taraf yazılımları ayarlamanıza/değiştirmesine veya yüklemesine olanak sağlar. Bu tür özelleştirmeler örnekleri, özel güvenlik taraması yazılımı eklemeyi veya sysctl ayarlarını güncelleştirmeyi içerir.
+
+Yukarıdaki gereksinimler uygunsa, bu önerilen bir yoldur, AKS Mühendisliği ve desteği, bozuk/işlevsel değişikliklere veya bir müşterinin dağıtıldığı daemonset nedeniyle kullanılamayan düğümü işlemeye yönelik sorunları gidermeye veya tanılamaya yardımcı olabilir.
+
+> [!NOTE]
+> *Yönetilen bir hizmet* olarak aks, hizmet yönetiminin daha kapsamlı ve uygulamalı hale getirmek için düzeltme ekleri, güncelleştirmeler ve günlük toplama sorumluluğunu kaldırma gibi son hedeflere sahiptir. Hizmetin uçtan uca yönetim kapasitesi arttıkça, gelecek sürümler bazı işlevleri (örneğin, düğüm yeniden başlatma ve otomatik düzeltme eki uygulama) atlayabilir.
 
 ### <a name="security-issues-and-patching"></a>Güvenlik sorunları ve düzeltme eki uygulama
 

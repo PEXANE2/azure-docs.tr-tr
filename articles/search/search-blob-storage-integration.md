@@ -1,19 +1,19 @@
 ---
 title: Azure Blob depolamaya tam metin araması ekleme
 titleSuffix: Azure Cognitive Search
-description: Azure bilişsel bir şekilde tam metin arama dizini oluştururken içeriği ayıklayın ve Azure bloblarına yapı ekleyin.
+description: Azure bilişsel aramada tam metin arama dizini oluştururken içeriği ayıklayın ve Azure bloblarına yapı ekleyin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83308f42fb1f2ea3408b5c1a63d88d21a8e7830a
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73496487"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402089"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak Azure Blob verilerine tam metin araması ekleme
 
@@ -58,6 +58,11 @@ Bir kapsayıcı üzerinde bir blob Indexer çalıştırarak, aşağıdaki içeri
 ### <a name="indexing-blob-metadata"></a>Blob meta verileri dizinleniyor
 
 Herhangi bir içerik türünün Blobları arasında sıralama yapmayı kolaylaştıran yaygın bir senaryo, her blob için hem özel meta verileri hem de sistem özelliklerini dizinlemek. Bu şekilde, tüm Bloblar için bilgiler, arama hizmetinizde bir dizinde depolanan belge türünden bağımsız olarak dizinlenir. Yeni dizininizi kullanarak, tüm blob depolama içeriklerine göre sıralama, filtreleme ve model işleme devam edebilirsiniz.
+
+> [!NOTE]
+> Blob dizin etiketleri, BLOB depolama hizmeti tarafından yerel olarak dizinlenir ve sorgulama için sunulur. Bloblarınızın anahtar/değer öznitelikleri dizin oluşturma ve filtreleme özellikleri gerektiriyorsa, blob dizini etiketlerinin meta veriler yerine yararlanılabilir olması gerekir.
+>
+> Blob dizini hakkında daha fazla bilgi edinmek için bkz. [BLOB diziniyle Azure Blob depolama üzerinde verileri yönetme ve bulma](../storage/blobs/storage-manage-find-blobs.md).
 
 ### <a name="indexing-json-blobs"></a>JSON bloblarını dizine alma
 Dizin oluşturucular, JSON içeren bloblarda bulunan yapılandırılmış içerikleri ayıklamak üzere yapılandırılabilir. Bir Dizin Oluşturucu, JSON bloblarını okuyabilir ve yapılandırılmış içeriği bir arama belgesinin uygun alanlarıyla ayrıştırır. Dizin oluşturucular Ayrıca, bir dizi JSON nesnesi içeren Bloblar alabilir ve her öğeyi ayrı bir arama belgesiyle eşler. Dizin Oluşturucu tarafından oluşturulan JSON nesnesinin türünü etkilemek için bir ayrıştırma modu ayarlayabilirsiniz.

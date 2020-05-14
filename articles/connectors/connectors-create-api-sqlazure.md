@@ -3,16 +3,16 @@ title: SQL Server veya Azure SQL veritabanı 'na bağlanma
 description: Azure Logic Apps kullanarak şirket içinde veya bulutta SQL veritabanları için görevleri otomatikleştirin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789213"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402591"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server veya Azure SQL veritabanı için iş akışlarını Azure Logic Apps kullanarak otomatikleştirin
 
@@ -86,7 +86,7 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    ![Mantıksal uygulamanıza yeni adım ekleme](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "SQL Server" yazın. Eylemler listesinden istediğiniz SQL eylemini seçin.
 
@@ -129,6 +129,20 @@ Bazen, bağlayıcının tüm sonuçları aynı anda döndürmemesi veya sonuç k
   * [Logic Apps ile toplu veri aktarımı için SQL sayfalandırma](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [SELECT-ORDER BY yan tümcesi](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>Dinamik toplu verileri işle
+
+Bazen, SQL Server bağlayıcısında saklı yordam çağrısı yaptığınızda döndürülen çıktı dinamiktir. Bu senaryoda, aşağıdaki adımları izleyin:
+
+1. **Logic Apps tasarımcısını**açın.
+1. Çıkış biçimini görmek için mantıksal uygulamanızın test çalıştırmasını gerçekleştirin. Örnek çıktılarınızı kopyalayın.
+1. Tasarımcıda, saklı yordamı çağırdığınız eylemin altında **yeni adım**' ı seçin.
+1. **Eylem seçin**altında [**JSON 'u Ayrıştır**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) eylemini bulun ve seçin.
+1. JSON 'u **Ayrıştır** eyleminde **şema oluşturmak Için örnek yük kullan**' ı seçin.
+1. **Örnek JSON yükü girin veya yapıştırın** penceresinde, örnek çıktılarınızı yapıştırın ve **bitti**' yi seçin.
+1. Logic Apps şema oluşturmadığının bir hata alırsanız, örnek çıktısının sözdiziminin doğru biçimlendirildiğinden emin olun. Şemayı yine de üretemiyor, **şema** kutusuna el ile bir tane girin.
+1. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1. JSON içerik özelliklerine erişmek için [ **JSON Ayrıştır** eylemi](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)altındaki dinamik içerik listesinde görünen veri belirteçlerini kullanın.
 
 ## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 

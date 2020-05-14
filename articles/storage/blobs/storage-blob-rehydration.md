@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1265d018997f9540e14e83ab15a44e78f4f86fb1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684083"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402656"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
 
@@ -34,6 +34,9 @@ Blob, arşiv erişim katmanında olduğunda çevrimdışı olarak kabul edilir v
 Arşiv blobundan yeniden doldurma yapmak istemiyorsanız, bir [blobu kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi yapabilirsiniz. İş üzerinde çalışmanız için çevrimiçi sık erişimli veya seyrek erişimli katmanda yeni bir blob oluşturulduğunda, özgün Blobun arşiv 'de değiştirilmemiş olarak kalır. Blobu kopyalama işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-MS-rehibulunan öncelik* özelliğini standart veya yüksek olarak ayarlayabilirsiniz.
 
 Bir Blobun arşivden kopyalanması, seçili olan yeniden doldurma önceliğine bağlı olarak tamamlanması saatler sürebilir. Arka planda **kopyalama blobu** işlemi, seçili hedef katmanda yeni bir çevrimiçi blob oluşturmak için Arşiv kaynak blobunu okur. Blob 'ları listelediğinizde yeni blob görünebilir, ancak kaynak arşiv blobundan okuma tamamlanana ve veriler yeni çevrimiçi hedef bloba yazıldıktan sonra veriler kullanılamaz. Yeni blob bağımsız bir kopya olarak ve üzerinde yapılan herhangi bir değişiklik veya silme, kaynak Arşivi blob 'unu etkilemez.
+
+> [!IMPORTANT]
+> Hedef üzerinde kopyalama başarıyla tamamlanana kadar kaynak blobu silmeyin. Kaynak blobu silinirse, hedef blobu kopyalamayı tamamlamayabilir ve boş olur. Kopyalama işleminin durumunu öğrenmek için *x-MS-Copy-Status durumunu* kontrol edebilirsiniz.
 
 Arşiv blob 'ları yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blobunun başka bir arşiv blobuna kopyalanması desteklenmez. Aşağıdaki tablo, CopyBlob 'un yeteneklerini gösterir.
 
@@ -74,11 +77,11 @@ Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmi�
 
 1. Alt kısımdaki **Kaydet** ' i seçin.
 
-![Depolama hesabı katmanını](media/storage-tiers/blob-access-tier.png)
-![Değiştir yeniden doldurma durumu](media/storage-tiers/rehydrate-status.png)
+![Depolama hesabı katmanını Değiştir ](media/storage-tiers/blob-access-tier.png)
+ ![ yeniden doldurma durumu](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Bir arşiv Blobun blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. Değişken `$rgName` , kaynak grubu adınızla başlatılmalıdır. Değişken `$accountName` , depolama hesabı adınızla başlatılmalıdır. Değişken `$containerName` , kapsayıcı adınızla başlatılmalıdır. Değişken `$blobName` , blob adınızla başlatılmalıdır. 
+Bir arşiv Blobun blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır. `$containerName`Değişken, kapsayıcı adınızla başlatılmalıdır. `$blobName`Değişken, blob adınızla başlatılmalıdır. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -99,7 +102,7 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ---
 
 ### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Bir arşiv blobunu çevrimiçi bir katman ile yeni bir bloba kopyalama
-Aşağıdaki PowerShell betiği, aynı depolama hesabı içindeki yeni bir bloba arşiv blobu kopyalamak için kullanılabilir. Değişken `$rgName` , kaynak grubu adınızla başlatılmalıdır. Değişken `$accountName` , depolama hesabı adınızla başlatılmalıdır. `$srcContainerName` Ve `$destContainerName` değişkenleri kapsayıcı adlarınızla başlatılmalıdır. `$srcBlobName` Ve `$destBlobName` değişkenlerinin blob adlarınızla başlatılması gerekir. 
+Aşağıdaki PowerShell betiği, aynı depolama hesabı içindeki yeni bir bloba arşiv blobu kopyalamak için kullanılabilir. `$rgName`Değişken, kaynak grubu adınızla başlatılmalıdır. `$accountName`Değişken, depolama hesabı adınızla başlatılmalıdır. `$srcContainerName`Ve `$destContainerName` değişkenleri kapsayıcı adlarınızla başlatılmalıdır. `$srcBlobName`Ve `$destBlobName` değişkenlerinin blob adlarınızla başlatılması gerekir. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

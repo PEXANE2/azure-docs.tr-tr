@@ -7,16 +7,16 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3be60888d3d12d37650ad2cffc1911fb3b5e6682
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 14e80f6348772af77c5a53b1d5e9111c4ae8ba9b
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790703"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402063"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
-Azure Kubernetes Service (AKS) içindeki türdeki `LoadBalancer` Kubernetes Hizmetleri aracılığıyla uygulamalara erişim sağlamak için bir Azure Load Balancer kullanabilirsiniz. AKS üzerinde çalışan bir yük dengeleyici, iç veya dış yük dengeleyici olarak kullanılabilir. İç yük dengeleyici, bir Kubernetes hizmetini yalnızca AKS kümesi ile aynı sanal ağda çalışan uygulamalar için erişilebilir hale getirir. Dış yük dengeleyici, giriş için bir veya daha fazla genel IP alır ve genel IP 'Leri kullanarak bir Kubernetes hizmetini dışarıdan erişilebilir hale getirir.
+`LoadBalancer`Azure Kubernetes Service (AKS) içindeki türdeki Kubernetes Hizmetleri aracılığıyla uygulamalara erişim sağlamak için bir Azure Load Balancer kullanabilirsiniz. AKS üzerinde çalışan bir yük dengeleyici, iç veya dış yük dengeleyici olarak kullanılabilir. İç yük dengeleyici, bir Kubernetes hizmetini yalnızca AKS kümesi ile aynı sanal ağda çalışan uygulamalar için erişilebilir hale getirir. Dış yük dengeleyici, giriş için bir veya daha fazla genel IP alır ve genel IP 'Leri kullanarak bir Kubernetes hizmetini dışarıdan erişilebilir hale getirir.
 
 Azure Load Balancer, *temel* ve *Standart*olmak üzere iki SKU 'da kullanılabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda *Standart* SKU kullanılır. *Standart* SKU yük dengeleyici kullanmak, daha büyük bir arka uç havuzu boyutu ve kullanılabilirlik alanları gibi ek özellikler ve işlevler sağlar. Kullanmayı seçmeden önce *Standart* ve *temel* yük dengeleyiciler arasındaki farkları anlamanız önemlidir. Bir AKS kümesi oluşturduktan sonra, bu küme için yük dengeleyici SKU 'sunu değiştiremezsiniz. *Temel* ve *Standart* SKU 'lar hakkında daha fazla bilgi için bkz. [Azure yük dengeleyici SKU karşılaştırması][azure-lb-comparison].
 
@@ -38,7 +38,7 @@ AKS küme hizmeti sorumlusu Ayrıca mevcut bir alt ağ veya kaynak grubu kullan�
 
 Temel SKU 'nun Load Balancer var olan bir kümeniz varsa, standart SKU Load Balancer sahip bir küme kullanmaya geçiş yaparken dikkat etmeniz önemli davranış farklılıkları vardır.
 
-Örneğin, kümeleri geçirmek için mavi/yeşil dağıtımlar yapmak, küme `load-balancer-sku` türü için yalnızca küme oluşturma zamanında tanımlanmış olan yaygın bir uygulamadır. Ancak, *temel SKU* yük dengeleyiciler *Standart* SKU IP adreslerini gerektirdiğinden *Standart* SKU yük dengeleyiciler Ile uyumlu olmayan *temel SKU* IP adreslerini kullanır. Kümeleri Load Balancer SKU 'Larına geçirirken, uyumlu bir IP adresi SKU 'SU olan yeni bir IP adresi gerekir.
+Örneğin, kümeleri geçirmek için mavi/yeşil dağıtımlar yapmak, `load-balancer-sku` küme türü için yalnızca küme oluşturma zamanında tanımlanmış olan yaygın bir uygulamadır. Ancak, *temel SKU* yük dengeleyiciler *Standart* SKU IP adreslerini gerektirdiğinden *Standart* SKU yük dengeleyiciler Ile uyumlu olmayan *temel SKU* IP adreslerini kullanır. Kümeleri Load Balancer SKU 'Larına geçirirken, uyumlu bir IP adresi SKU 'SU olan yeni bir IP adresi gerekir.
 
 Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önünde bulundurmanız gereken önemli konuların bir listesini görüntülemek için [geçiş konuları hakkındaki belgelerimizi](aks-migration.md) ziyaret edin. Aşağıdaki sınırlamalar Ayrıca AKS 'de standart SKU yük dengeleyicileri kullanırken dikkat edilecek önemli davranış farklarıdır.
 
@@ -60,7 +60,7 @@ Kümeleri geçirme hakkında daha fazla bilgi için, geçiş yaparken göz önü
 Bir AKS kümesi oluşturduğunuzda, varsayılan olarak, bu kümede Hizmetleri çalıştırdığınızda *Standart* SKU yük dengeleyici kullanılır. Örneğin, [Azure CLI kullanan hızlı başlangıç][aks-quickstart-cli] *Standart* SKU yük dengeleyiciyi kullanan bir örnek uygulama dağıtır.
 
 > [!IMPORTANT]
-> Kullanıcı tanımlı bir yol (UDR) özelleştirilerek genel IP adreslerine kaçınılabilir. Bir AKS kümesinin giden türünü UDR olarak belirtmek, AKS tarafından oluşturulan Azure Yük Dengeleyici için IP sağlama ve arka uç havuzu kurulumunu atlayabilir. Bkz. [küme ' userDefinedRouting `outboundType` ' olarak ayarlanıyor](egress-outboundtype.md).
+> Kullanıcı tanımlı bir yol (UDR) özelleştirilerek genel IP adreslerine kaçınılabilir. Bir AKS kümesinin giden türünü UDR olarak belirtmek, AKS tarafından oluşturulan Azure Yük Dengeleyici için IP sağlama ve arka uç havuzu kurulumunu atlayabilir. Bkz. [küme `outboundType` ' userdefinedrouting ' olarak ayarlanıyor](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Yük dengeleyiciyi iç olarak yapılandırma
 
@@ -81,7 +81,7 @@ az aks update \
 
 Yukarıdaki örnek, *Myresourcegroup*Içindeki *Myakscluster* kümesi Için yönetilen giden genel IP sayısını *2* ' ye ayarlar. 
 
-Ayrıca, `--load-balancer-managed-outbound-ip-count` parametreyi ekleyerek ve istediğiniz değere ayarlayarak, kümenizi oluştururken yönetilen giden genel IP 'lerin ilk sayısını ayarlamak için *yük dengeleyici-yönetilen-IP-Count* parametresini de kullanabilirsiniz. Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
+Ayrıca, parametreyi ekleyerek ve istediğiniz değere ayarlayarak, kümenizi oluştururken yönetilen giden genel IP 'lerin ilk sayısını ayarlamak için *yük dengeleyici-yönetilen-IP-Count* parametresini de kullanabilirsiniz `--load-balancer-managed-outbound-ip-count` . Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
 
 ## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Çıkış için kendi genel IP 'Leri veya ön eklerini sağlayın
 
@@ -89,12 +89,17 @@ Ayrıca, `--load-balancer-managed-outbound-ip-count` parametreyi ekleyerek ve is
 
 Birden çok IP adresi veya ön ek sunarak, tek bir yük dengeleyici nesnesi arkasında IP adresini tanımlarken birden çok yedekleme hizmeti tanımlayabilirsiniz. Belirli düğümlerin çıkış uç noktası, ilişkili oldukları hizmete bağlı olarak değişir.
 
-> [!IMPORTANT]
-> *Standart* SKU 'su yük dengeleyiciniz ile çıkış için *Standart* SKU genel IP 'lerini kullanmanız gerekir. [Az Network public-ip show][az-network-public-ip-show] komutunu kullanarak genel IP 'nizin SKU 'sunda emin olabilirsiniz:
->
-> ```azurecli-interactive
-> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-> ```
+### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Kendi IP adreslerinizi veya IP öneklerinizi getirmek için önkoşulları
+1. *Standart* SKU 'su yük dengeleyiciniz ile çıkış için *Standart* SKU genel IP 'lerini kullanmanız gerekir. [Az Network public-ip show][az-network-public-ip-show] komutunu kullanarak genel IP 'nizin SKU 'sunda emin olabilirsiniz:
+
+   ```azurecli-interactive
+   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+   ```
+ 1. Genel IP 'Ler ve IP önekleri, AKS kümeniz ile aynı aboneliğin aynı bölgede ve bir parçası olmalıdır.
+ 1. Genel IP 'Ler ve IP önekleri, AKS tarafından yönetilen bir IP olarak oluşturulan IP 'Ler olamaz. Özel IP olarak belirtilen IP 'Lerin, AKS hizmeti olmadığından, el ile oluşturulduğundan emin olun.
+ 1. Genel IP 'Ler ve IP önekleri başka bir kaynak veya hizmet tarafından kullanılamaz.
+
+ ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Mevcut bir kümede kendi genel IP veya öneklerinizi tanımlayın
 
 Genel IP 'nizin kimliklerini listelemek için [az Network public-ip show][az-network-public-ip-show] komutunu kullanın.
 
@@ -131,9 +136,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
-
-> [!IMPORTANT]
-> Genel IP 'Ler ve IP önekleri, AKS kümeniz ile aynı aboneliğin aynı bölgede ve bir parçası olmalıdır. 
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Küme oluşturma zamanında kendi genel IP veya öneklerinizi tanımlama
 
@@ -222,7 +224,7 @@ az aks create \
 ### <a name="required-quota-for-customizing-allocatedoutboundports"></a>AllocatedOutboundPorts özelleştirmek için gereken kota
 Düğüm sanal makinelerinizin sayısına ve istenen ayrılmış giden bağlantı noktalarına bağlı olarak yeterli giden IP kapasitesine sahip olmanız gerekir. Yeterli sayıda çıkış IP kapasitesi olduğunu doğrulamak için aşağıdaki formülü kullanın: 
  
-*outboundıps* \* 64.000 \> *nodevms* \* *desiredAllocatedOutboundPorts*.
+*Outboundıps* \* 64.000 \> *nodevms* \* *desiredAllocatedOutboundPorts*.
  
 Örneğin, 3 *Nodevms*ve 50.000 *desiredAllocatedOutboundPorts*varsa, en az 3 *outboundıps*gerekir. İhtiyaç duyduğunuz süreden daha fazla giden IP kapasitesi eklemeniz önerilir. Ayrıca, giden IP kapasitesini hesaplarken küme otomatik Scaler ve düğüm havuzu yükseltmeleri olasılığa yönelik hesaba sahip olmanız gerekir. Küme otomatik yüklemesi için geçerli düğüm sayısını ve en fazla düğüm sayısını gözden geçirin ve daha yüksek değeri kullanın. Yükseltme için, yükseltmeye izin veren her düğüm havuzu için ek bir düğüm VM 'si hesabı.
  

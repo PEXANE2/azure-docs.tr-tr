@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/19/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6345d210e26747f921595039a2a3c8e11be11fda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f26fa00f78b8564e08b6352d4da31640b13f47f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80387640"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402672"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma
 
@@ -38,8 +38,8 @@ VNet veya güvenlik duvarının arkasındaki bir depolama hesabına yazma deneti
 > [!div class="checklist"]
 > * Genel amaçlı v2 depolama hesabı. Genel amaçlı bir v1 veya blob depolama hesabınız varsa, [genel amaçlı v2 depolama hesabına yükseltin](../storage/common/storage-account-upgrade.md). Daha fazla bilgi için bkz. [depolama hesabı türleri](../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * Depolama hesabının aynı abonelikte ve Azure SQL veritabanı sunucusuyla aynı konumda olması gerekir. 
-> * Azure depolama hesabı gerekir `Allow trusted Microsoft services to access this storage account`. Bunu depolama hesabı **güvenlik duvarları ve sanal ağlarda**ayarlayın.
-> * Seçili depolama hesabı `Microsoft.Authorization/roleAssignments/write` üzerinde izninizin olması gerekir. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md).
+> * Azure depolama hesabı gerekir `Allow trusted Microsoft services to access this storage account` . Bunu depolama hesabı **güvenlik duvarları ve sanal ağlarda**ayarlayın.
+> * `Microsoft.Authorization/roleAssignments/write`Seçili depolama hesabı üzerinde izninizin olması gerekir. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Azure portalında yapılandırma
 
@@ -54,7 +54,7 @@ Aboneliğinizle [Azure Portal](https://portal.azure.com) bağlayın. Kaynak grub
   > [!NOTE]
   > Seçili depolama hesabı VNet 'in arkasındaysa aşağıdaki iletiyi görürsünüz:
   >
-  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage: requires an Active Directory admin on the server; enables 'Allow trusted Microsoft services to access this storage account' on the storage account; and creates a server managed identity with 'storage blob data contributor' RBAC.`
+  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
   >Bu iletiyi görmüyorsanız, depolama hesabı bir sanal ağın arkasında değildir.
 

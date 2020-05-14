@@ -16,12 +16,12 @@ ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0b7070502059eee7f87e82812e06095e56d578
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: bf34f808e2c59e32990a83c817b98ee899e769ac
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582660"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402248"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Lisanslama için ürün adları ve hizmet planı tanımlayıcıları
 
@@ -38,7 +38,8 @@ ms.locfileid: "82582660"
 
 | Ürün adı | Dize KIMLIĞI | GUID | Hizmet planları dahil | Hizmet planları dahildir (kolay adlar) |
 | --- | --- | --- |--- | --- |
-| SES KONFERANSı | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 |MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | Ses Konferansı (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
+| UYGULAMA BAĞLANTıSı ıW | SPZA_IW |  8f0c5670-4e56-4892-b06d-91c085d7004f | SPZA (0bfc98ed-1dbc-4a97-b246-701754e48b17)<br/>EXCHANGE_S_FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318) | Uygulama BAĞLANTıSı (0bfc98ed-1dbc-4a97-b246-701754e48b17)<br/>EXCHANGE FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318) |
+| SES KONFERANSı | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 | MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | Ses Konferansı (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
 | AZURE ACTIVE DIRECTORY TEMEL  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) | MICROSOFT AZURE ACTIVE DIRECTORY temel (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) |
 | AZURE ACTIVE DIRECTORY PREMIUM P1 | AAD_PREMIUM   | 078d2b04-f1bd-4111-bbd4-b4b1b354cef4  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0) | AZURE ACTIVE DIRECTORY PREMIUM P1 (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MICROSOFT AZURE MULTI-FACTOR AUTHENTICATION (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>CLOUD APP SECURITY bulma (932ad362-64a8-4783-9106-97849a1a30b9) |
 | AZURE ACTIVE DIRECTORY PREMIUM P2 | AAD_PREMIUM_P2    | 84a661c4-e949-4BD2-A560-ed7766fcaf2b  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>AAD_PREMIUM_P2 (eec0eb4f-6444-4f95-aba0-50c24d67f998)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0) | AZURE ACTIVE DIRECTORY PREMIUM P1 (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MICROSOFT AZURE MULTI-FACTOR AUTHENTICATION (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>CLOUD APP SECURITY bulma (932ad362-64a8-4783-9106-97849a1a30b9)<br/>AZURE ACTIVE DIRECTORY PREMIUM P2 (eec0eb4f-6444-4f95-aba0-50c24d67f998) |
@@ -130,7 +131,7 @@ ms.locfileid: "82582660"
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>Aynı anda atanmayan hizmet planları
 
-Bazı ürünler aynı kullanıcıya aynı anda atanmayan hizmet planlarını içerir. Örneğin, Azure AD kuruluşunuzda *office 365 E1* ve *Office 365 E3* varsa ve her iki lisansı aynı kullanıcıya atamaya çalışırsanız, işlem başarısız olur. Bunun nedeni, E3 ürününün E1 karşılıklarıyla çakışan aşağıdaki hizmet planlarını içerir:
+Bazı ürünler aynı kullanıcıya aynı anda atanmayan hizmet planlarını içerir. Örneğin, kiracınızda *office 365 E1* ve *Office 365 E3* varsa ve her iki lisansı aynı kullanıcıya atamayı denerseniz, işlem başarısız olur. Bunun nedeni, E3 ürününün E1 karşılıklarıyla çakışan aşağıdaki hizmet planlarını içerir:
 
 -   SharePoint Online (plan 2), SharePoint Online (plan 1) ile çakışıyor.
 -   Exchange Online (plan 2), Exchange Online (plan 1) ile çakışıyor.

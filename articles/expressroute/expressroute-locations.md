@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7af6bd0f36f5a1fc11acbd7906088d7d5c17d32
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f91ec2fb004ed3745afafd59f4e64e08c11f76a9
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996795"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402287"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -95,6 +95,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **China Telecom Global** |Destekleniyor |Destekleniyor |Hong Kong, Hong Kong2 |
 | **Çin tek noktaya yayın küresel** |Destekleniyor |Destekleniyor | Singapur2 |
 | **[Chunghwa telekomünikasyon](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Destekleniyor |Destekleniyor |Taipei |
+| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** | Destekleniyor | Destekleniyor | Miami |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Destekleniyor |Destekleniyor |Chicago, Dallas, Montreal, Tora, Vantaya ver, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Destekleniyor |Destekleniyor |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londra, London2, Newport, New York, Osaka, Paris, Silicon Valley, Silicon Valley2, Singapur2, Tokyo, Washington DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Destekleniyor |Destekleniyor |Chicago, Silikon Vadisi, Washington DC |
@@ -158,7 +159,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Destekleniyor |Destekleniyor |Melbourne, Singapur, Sidney |
 | **[Telus](https://www.telus.com)** |Destekleniyor |Destekleniyor |Montreal, Seattle, Tora |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Destekleniyor |Destekleniyor |Cape Town, Johannesburg |
-| **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/cloud-interconnect)** | Destekleniyor | Destekleniyor | Kuala Lumpur |
+| **[TIME dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Destekleniyor | Destekleniyor | Kuala Lumpur |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Destekleniyor |Destekleniyor |Dallas, Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Destekleniyor |Destekleniyor |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Destekleniyor |Destekleniyor |Amsterdam, Chicago, Dallas, Hong Kong ÖIB, Londra, Mumbai, Silicon Valley, Singapur, Sidney, Tokyo, Toron, Washington DC |

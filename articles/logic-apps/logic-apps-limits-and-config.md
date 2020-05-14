@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 807949d7ed0c68edd44fba95109f118e97c59b5a
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 1dfb1b43eadebbfc7128c5a2451668be8a99329f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901256"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402550"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -33,7 +33,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 | İş akışı başına değişkenler | 250 | |
 | İfade başına karakter | 8,192 | |
 | En büyük boyut`trackedProperties` | 16.000 karakter |
-| Or için `action` ad`trigger` | 80 karakter | |
+| Or için ad `action``trigger` | 80 karakter | |
 | Uzunluğu`description` | 256 karakter | |
 | Çok`parameters` | 50 | |
 | Çok`outputs` | 10 | |
@@ -143,7 +143,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 | Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
-| Giden istek | 120 saniye <br>(2 dakika) | 240 saniye <br>(4 dakika) | Giden istek örnekleri HTTP Tetikleyicileri tarafından yapılan çağrıları içerir. <p><p>**İpucu**: daha uzun süre çalışan işlemler için [zaman uyumsuz yoklama deseninin](../logic-apps/logic-apps-create-api-app.md#async-pattern) veya [until döngüsünün](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)kullanılması gerekir. |
+| Giden istek | 120 saniye <br>(2 dakika) | 240 saniye <br>(4 dakika) | Giden istek örnekleri HTTP Tetikleyicileri tarafından yapılan çağrıları içerir. <p><p>**İpucu**: daha uzun süre çalışan işlemler için [zaman uyumsuz yoklama deseninin](../logic-apps/logic-apps-create-api-app.md#async-pattern) veya [until döngüsünün](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)kullanılması gerekir. [Çağrılabilir bir uç noktasına](logic-apps-http-endpoint.md)sahip başka bir mantıksal uygulamayı çağırdığınızda zaman aşımı sınırlarına geçici bir çözüm Için, yerleşik Azure Logic Apps eylemini kullanabilirsiniz. bunun yerine, **yerleşik olarak**bağlayıcı seçicisinde bulabilirsiniz. |
 | Gelen istek | 120 saniye <br>(2 dakika) | 240 saniye <br>(4 dakika) | Gelen istek örnekleri, istek Tetikleyicileri ve Web kancası Tetikleyicileri tarafından alınan çağrıları içerir. <p><p>**Note**: özgün arayanın yanıtı alması için, başka bir mantıksal uygulamayı iç içe geçmiş iş akışı olarak çağırmadığınız sürece yanıttaki tüm adımların sınırı içinde tamamlaması gerekir. Daha fazla bilgi için bkz. [çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
@@ -161,7 +161,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 | Name | Notlar |
 |------|-------|
-| İfade değerlendirme limiti | 131.072 karakter | `@concat()` `@string()` ,, İfadeleri bu sınırdan `@base64()`daha uzun olamaz. |
+| İfade değerlendirme limiti | 131.072 karakter | , `@concat()` , `@base64()` `@string()` İfadeleri bu sınırdan daha uzun olamaz. |
 | İstek URL 'SI karakter sınırı | 16.384 karakter |
 |||
 
