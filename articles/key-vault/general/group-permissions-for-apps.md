@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: abb61afab3391f9a53ada4881cb186aa9fae3187
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 49c1a29547195ad8557550ba1bc0cb80fae40ad8
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005924"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402623"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -60,13 +60,13 @@ Bir uygulama için objectID, ilişkili hizmet sorumlusuna karşılık gelir. Hiz
 
 Bir uygulama için ObjectID almanın iki yolu vardır.  Birincisi Azure Active Directory uygulamanızı kaydeder. Bunu yapmak için hızlı başlangıç ' daki adımları izleyerek [Microsoft Identity platformu ile uygulamayı kaydedin](../../active-directory/develop/quickstart-register-app.md). Kayıt tamamlandığında, ObjectID "uygulama (istemci) KIMLIĞI" olarak listelenecektir.
 
-İkincisi, bir Terminal penceresinde bir hizmet sorumlusu oluşturmaktır. Azure CLı ile, [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın ve "http://&lt;My-Unique-Service-İlkeAdı&gt;" biçiminde benzersiz bir hizmet asıl adı belirtin.
+İkincisi, bir Terminal penceresinde bir hizmet sorumlusu oluşturmaktır. Azure CLı ile, [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın ve "http:// &lt; My-Unique-Service-İlkeAdı" biçiminde benzersiz bir hizmet asıl adı belirtin &gt; .
 
 ```azurecli-interactive
 az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
-ObjectID, çıktıda olarak `clientID`listelenecektir.
+ObjectID, çıktıda olarak listelenecektir `clientID` .
 
 Azure PowerShell, [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal?view=azps-2.7.0) cmdlet 'ini kullanın.
 
@@ -75,13 +75,13 @@ Azure PowerShell, [New-AzADServicePrincipal](/powershell/module/Az.Resources/New
 New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
-ObjectID, çıkışta (değil `Id` `ApplicationId`) olarak listelenecektir.
+ObjectID, çıkışta `Id` (değil) olarak listelenecektir `ApplicationId` .
 
 #### <a name="azure-ad-groups"></a>Azure AD grupları
 
 Bir Azure AD grubuna birden çok uygulama ve kullanıcı ekleyebilir ve sonra gruba anahtar kasanıza erişim izni verebilirsiniz.  Daha ayrıntılı bilgi için, aşağıdaki [bir Azure AD grubuna üye oluşturma ve ekleme](#creating-and-adding-members-to-an-azure-ad-group) bölümüne bakın.
 
-Azure CLı ile bir Azure AD grubunun ObjectID 'sini bulmak için [az Ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) komutunu kullanın. Kuruluşunuzda olabilecek çok sayıda grup olduğundan, `--display-name` parametreye bir arama dizesi de sağlamanız gerekir.
+Azure CLı ile bir Azure AD grubunun ObjectID 'sini bulmak için [az Ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) komutunu kullanın. Kuruluşunuzda olabilecek çok sayıda grup olduğundan, parametreye bir arama dizesi de sağlamanız gerekir `--display-name` .
 
 ```azurecli-interactive
 az ad group list --display-name <search-string>
@@ -94,13 +94,13 @@ ObjectID, JSON içinde döndürülecek:
     "odata.type": "Microsoft.DirectoryServices.Group",
 ```
 
-Azure PowerShell olan bir Azure AD grubunun ObjectID 'sini bulmak için [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) cmdlet 'ini kullanın. Kuruluşunuzda olabilecek çok sayıda grup olduğundan, muhtemelen `-SearchString` parametreye bir arama dizesi sağlamak isteyeceksiniz.
+Azure PowerShell olan bir Azure AD grubunun ObjectID 'sini bulmak için [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) cmdlet 'ini kullanın. Kuruluşunuzda olabilecek çok sayıda grup olduğundan, muhtemelen parametreye bir arama dizesi sağlamak isteyeceksiniz `-SearchString` .
 
 ```azurepowershell-interactive
 Get-AzADGroup -SearchString <search-string>
 ```
 
-Çıkışta ObjectID şöyle `Id`listelenir:
+Çıkışta ObjectID şöyle listelenir `Id` :
 
 ```console
 ...
@@ -109,13 +109,13 @@ Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ```
 
 > [!WARNING]
-> Azure AD grupları yönetilen kimlikleri desteklemez. Yalnızca hizmet ve Kullanıcı sorumluları desteklenir.
+> Yönetilen kimlikleri olan Azure AD grupları, belirtecin yenilenmesi ve etkili olması için 8 saat kadar sürebilir.
 
 #### <a name="users"></a>Kullanıcılar
 
 Ayrıca, bir anahtar kasasının erişim denetimi ilkesine bireysel bir kullanıcı ekleyebilirsiniz. **Bunu önermeyiz.** Bunun yerine, bir Azure AD grubuna kullanıcı eklemenizi ve grubu ilkelere eklemenizi öneririz.
 
-Azure CLı ile bir Kullanıcı bulmayı Nonetheless isterseniz, kullanıcılar e-posta adresini `--id` parametreye geçirerek [az ad User Show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) komutunu kullanın.
+Azure CLı ile bir Kullanıcı bulmayı Nonetheless isterseniz, kullanıcılar e-posta adresini parametreye geçirerek [az ad User Show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) komutunu kullanın `--id` .
 
 
 ```azurecli-interactive
@@ -137,7 +137,7 @@ Azure PowerShell olan bir kullanıcıyı bulmak için [Get-AzADUser](/powershell
  Get-AzAdUser -UserPrincipalName <email-address-of-user>
 ```
 
-Kullanıcının objectID, çıkışta döndürülür `Id`.
+Kullanıcının objectID, çıkışta döndürülür `Id` .
 
 ```console
 ...
@@ -189,7 +189,7 @@ Her iki durumda da, aşağıdaki adımlarda gerekli olacak şekilde, yeni oluşt
 
 ### <a name="find-the-objectids-of-your-applications-and-users"></a>Uygulamalarınızın ve kullanıcılarınızın Nesneslarını bulun
 
-Azure CLı kullanarak uygulamalarınızın Nesneslarını, `--show-mine` parametresi ile [az ad SP List](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) komutuyla bulabilirsiniz.
+Azure CLı kullanarak uygulamalarınızın Nesneslarını, parametresi ile [az ad SP List](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) komutuyla bulabilirsiniz `--show-mine` .
 
 ```azurecli-interactive
 az ad sp list --show-mine

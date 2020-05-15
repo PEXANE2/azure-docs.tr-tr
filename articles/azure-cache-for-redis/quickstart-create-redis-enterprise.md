@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/12/2020
-ms.openlocfilehash: f3eee85c600d40b3997a0e6dff6a9b218242feb4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204721"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402485"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Hızlı başlangıç: Kurumsal katman önbelleği oluşturma (Önizleme)
 
@@ -20,7 +20,7 @@ Redsıs ' Kurumsal katmanları için Azure önbelleği, Azure 'da tamamen tümle
 * Verileri depolamak için bir sanal makinede geçici bellek (DRAM) kullanan kuruluş
 * Verileri depolamak için hem geçici hem de geçici olmayan belleği (NVMe) kullanan Enterprise SSD.
 
-Önizlemeye katılmak için herhangi bir maliyet yoktur. İlgilendiğiniz [Azure Marketi](https://aka.ms/redispreviewsignup/) ' ne kaydolun. Çok sınırlı sayıda katılımcı noktası sunuyoruz ve önizlemeye kabul edileceği garanti edilemez.
+Önizlemeye katılmak için herhangi bir maliyet yoktur. İlgilendiğiniz [Azure Marketi](https://aka.ms/redispreviewsignup/) **'ne başvurun** . Çok sınırlı sayıda katılımcı noktası sunuyoruz ve önizlemeye kabul edileceği garanti edilemez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
