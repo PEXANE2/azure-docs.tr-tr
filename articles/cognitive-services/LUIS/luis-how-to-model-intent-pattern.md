@@ -9,58 +9,58 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 077e29856842972fae2c723d4a2c368cbb80df06
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76311725"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593265"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Tahmin doğruluğunu artırmak için desenler ekleme
 Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sırası ve Word seçimindeki bir düzeni açığa çıkarmaya yönelik tahmin doğruluğunu artırmak için bir [desen](luis-concept-patterns.md) kullanın. Desenler, konumunu belirtmek için özel [sözdizimini](luis-concept-patterns.md#pattern-syntax) kullanır: [varlıklar](luis-concept-entity-types.md), varlık [rolleri](luis-concept-roles.md)ve isteğe bağlı metin.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
 > [!CAUTION]
-> Desenler, alt bileşenleri değil, yalnızca makine tarafından öğrenilen varlık üst öğelerini içerir.
+> Desenler, alt varlıklar değil yalnızca makine tarafından öğrenilen varlık üst öğelerini içerir.
 
 ## <a name="adding-example-utterances-as-pattern"></a>Desen olarak örnek ekleme
 
 Bir varlık için bir model eklemek istiyorsanız, _en kolay_ yol, amaç ayrıntıları sayfasından deseninin oluşturulması olur. Bu, sözdiziminizin örnek uttaslı ile eşleşmesini sağlar.
 
-1. [ÖNIZLEME Luu portalında](https://preview.luis.ai), **uygulamalarım** sayfasından uygulamayı seçin.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 1. **Amaç** listesi sayfasında, bir şablon oluşturmak istediğiniz örnek olarak kullanılacak amaç adını seçin.
 1. Amaç ayrıntıları sayfasında, şablon olarak kullanmak istediğiniz örnek için satırı seçin ve bağlam araç çubuğundan **+ as desen ekle** ' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Amaç ayrıntıları sayfasında şablon stili olarak örnek oluşturma ekranının ekran görüntüsü.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
 
-1. Açılır kutuda, **düzenleri Onayla** sayfasında **bitti** ' yi seçin. Varlıkların alt bileşenlerini, kısıtlamalarını veya tanımlayıcılarını tanımlamanız gerekmez. Yalnızca makineye öğrenilen varlığı listeetmeniz gerekir.
+1. Açılır kutuda, **düzenleri Onayla** sayfasında **bitti** ' yi seçin. Varlıkların alt varlıklarını veya özelliklerini tanımlamanız gerekmez. Yalnızca makineye öğrenilen varlığı listeetmeniz gerekir.
 
     > [!div class="mx-imgBorder"]
     > ![Amaç ayrıntıları sayfasında şablon stili olarak onaylama örnek ekran görüntüsü.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. Şablonu düzenlemeniz gerekiyorsa `[]` (örneğin, metni isteğe bağlı olarak seçme gibi), (köşeli ayraç), bu düzenleme **desenler** sayfasından yapmanız gerekir.
+1. Şablonu düzenlemeniz gerekiyorsa (örneğin, metni isteğe bağlı olarak seçme gibi `[]` ), (köşeli ayraç), bu düzenleme **desenler** sayfasından yapmanız gerekir.
 
 1. Gezinti çubuğunda, uygulamayı yeni bir Düzenle eğiteiçin **eğitme** ' yi seçin.
 
 ## <a name="add-template-utterance-using-correct-syntax"></a>Doğru sözdizimini kullanarak şablon söylenişi ekleyin
-
-1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın ve ardından sol paneldeki **uygulama performansını iyileştirme**altında **desenler** ' i seçin.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
+1. Sol panelde, **uygulama performansını iyileştirme**altında **desenler** ' i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Desenler listesinin ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
 1. Model için doğru amacı seçin.
 
-1. Şablon metin kutusuna, şablonu yazın ve ENTER ' u seçin. Varlık adını girmek istediğinizde, doğru model varlığı sözdizimini kullanın. Varlık söz dizimini ile `{`başlatın. Varlıkların listesi görüntülenir. Doğru varlığı seçin.
+1. Şablon metin kutusuna, şablonu yazın ve ENTER ' u seçin. Varlık adını girmek istediğinizde, doğru model varlığı sözdizimini kullanın. Varlık söz dizimini ile başlatın `{` . Varlıkların listesi görüntülenir. Doğru varlığı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Düzenin varlık ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Varlığınız bir [rol](luis-concept-roles.md)içeriyorsa, rolü tek bir iki nokta üst üste `:`ile, örneğin, varlık adından sonra belirtin. `{Location:Origin}` Varlıkların rollerinin listesi bir listede görüntülenir. Rolü seçin ve ardından ENTER ' u seçin.
+    Varlığınız bir [rol](luis-concept-roles.md)içeriyorsa, rolü tek bir iki nokta üst üste ile, örneğin, `:` varlık adından sonra belirtin `{Location:Origin}` . Varlıkların rollerinin listesi bir listede görüntülenir. Rolü seçin ve ardından ENTER ' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Role sahip varlığın ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-4.png)
