@@ -13,15 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005783"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590273"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer sorunlarını giderme
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
 
 Bu sayfa temel ve standart ortak Azure Load Balancer soruları için sorun giderme bilgileri sağlar. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](load-balancer-standard-diagnostics.md).
 
@@ -98,7 +97,7 @@ Bir VM veri trafiğine yanıt vermezse, bunun nedeni hedef bağlantı noktasın�
 **Doğrulama ve çözümleme**
 
 1. Arka uç VM 'de oturum açın. 
-2. Bir komut istemi açın ve veri bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için şu komutu çalıştırın:  netstat-a 
+2. Bir komut istemi açın ve veri bağlantı noktasında dinleme yapan bir uygulama olduğunu doğrulamak için şu komutu çalıştırın:   netstat-a 
 3. Bağlantı noktası "dınleme" durumu ile listelenmiyorsa, doğru dinleyici bağlantı noktasını yapılandırın 
 4. Bağlantı noktası dinleme olarak işaretlenmişse, olası sorunlar için bu bağlantı noktasındaki hedef uygulamayı kontrol edin.
 

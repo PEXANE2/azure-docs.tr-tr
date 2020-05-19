@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7d73b3a1a7c3b2ab290d85d88aa24108d9e7a605
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83401981"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589287"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için depolama hesabı erişimini denetleme (Önizleme)
 
@@ -28,8 +28,8 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 
 İsteğe bağlı bir SQL kaynağında oturum açan bir kullanıcının, dosyalar herkese açık değilse Azure Storage 'daki dosyalara erişme ve bunları sorgulama yetkisi olmalıdır. Üç yetkilendirme türü desteklenir:
 
-- [Kullanıcı kimliği](?tabs=user-identity)
 - [Paylaşılan erişim imzası](?tabs=shared-access-signature)
+- [Kullanıcı kimliği](?tabs=user-identity)
 - [Yönetilen Kimlik](?tabs=managed-identity)
 
 > [!NOTE]
@@ -42,13 +42,13 @@ Bu makalede, kullanabileceğiniz kimlik bilgileri türleri ve SQL ve Azure AD ku
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci SQL isteğe bağlı olarak kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 SAS belirtecini kullanarak erişimi etkinleştirmek için veritabanı kapsamlı veya sunucu kapsamlı kimlik bilgileri oluşturmanız gerekir.
 
-### <a name="user-identity"></a>Kullanıcı kimliği
+### <a name="user-identity"></a>[Kullanıcı kimliği](#tab/user-identity)
 
 "Doğrudan geçiş" olarak da bilinen **Kullanıcı kimliği**, veri erişimine yetki vermek için Isteğe bağlı SQL 'de oturum açan Azure AD kullanıcısının kimliğinin kullanıldığı bir yetkilendirme türüdür. Verilere erişmeden önce Azure depolama yöneticisinin Azure AD kullanıcısına izin vermesi gerekir. Yukarıdaki tabloda gösterildiği gibi, SQL kullanıcı türü için desteklenmez.
 
@@ -91,13 +91,13 @@ DROP CREDENTIAL [UserIdentity];
 
 Yeniden etkinleştirmek istiyorsanız, [Azure AD geçiş 'yi zorlama](#force-azure-ad-pass-through) bölümüne bakın.
 
-### <a name="managed-identity"></a>Yönetilen Kimlik
+### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
 **Yönetilen kimlik** de MSI olarak bilinir. İsteğe bağlı SQL için Azure hizmetleri sağlayan Azure Active Directory (Azure AD) özelliğidir. Ayrıca, Azure AD 'de otomatik olarak yönetilen bir kimlik dağıtır. Bu kimlik, Azure Storage 'da veri erişimi isteğine yetki vermek için kullanılabilir.
 
 Verilere erişmeden önce Azure depolama yöneticisinin verilere erişim için yönetilen kimliğe izinler vermesi gerekir. Yönetilen kimliğe izin verilmesi, diğer Azure AD kullanıcıları için izin verme ile aynı şekilde yapılır.
 
-### <a name="anonymous-access"></a>Anonim erişim
+### <a name="anonymous-access"></a>[Anonim erişim](#tab/public-access)
 
 [Anonim erişime izin](/azure/storage/blobs/storage-manage-access-to-resources.md)veren Azure depolama hesaplarına yerleştirilmiş genel kullanıma açık dosyalara erişebilirsiniz.
 
@@ -171,7 +171,7 @@ Sunucu düzeyi KIMLIK BILGISI adı, depolama hesabının (ve isteğe bağlı ola
 
 Sunucu kapsamlı kimlik bilgileri, aşağıdaki kimlik doğrulama türlerini kullanarak Azure depolama 'ya erişim sağlar:
 
-### <a name="shared-access-signature"></a>Paylaşılan erişim imzası
+### <a name="shared-access-signature"></a>[Paylaşılan erişim imzası](#tab/shared-access-signature)
 
 Aşağıdaki betik, `OPENROWSET` SAS belirtecini kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur. Bu kimlik bilgisini, `OPENROWSET` kimlik bilgisi ADıNDAKI URL ile eşleşen Azure depolama 'DA SAS anahtarıyla korunan dosyaları okumak için işlevi yürüten SQL sorumlusunu etkinleştirmek üzere oluşturun.
 
@@ -184,7 +184,7 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="user-identity"></a>Kullanıcı kimliği
+### <a name="user-identity"></a>[Kullanıcı kimliği](#tab/user-identity)
 
 Aşağıdaki betik, kullanıcının Azure AD kimlik kullanarak taklit etmesine olanak tanıyan sunucu düzeyinde bir kimlik bilgisi oluşturur.
 
@@ -193,7 +193,7 @@ CREATE CREDENTIAL [UserIdentity]
 WITH IDENTITY = 'User Identity';
 ```
 
-### <a name="managed-identity"></a>Yönetilen Kimlik
+### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
 Aşağıdaki betik, `OPENROWSET` çalışma alanı yönetilen kimliği kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur.
 
@@ -202,7 +202,7 @@ CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystora
 WITH IDENTITY='Managed Identity'
 ```
 
-### <a name="public-access"></a>Genel erişim
+### <a name="public-access"></a>[Genel erişim](#tab/public-access)
 
 Aşağıdaki betik, `OPENROWSET` genel olarak kullanılabilir Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur. Bu kimlik bilgisini, çalışan SQL sorumlusunu, `OPENROWSET` kimlik bilgisi ADıNDAKI URL ile eşleşen Azure depolama üzerinde herkese açık dosyaları okumak üzere çalıştıran SQL sorumlusu 'nı etkinleştirmek için oluşturun.
 
@@ -222,7 +222,7 @@ Veritabanı kapsamlı kimlik bilgileri, herhangi bir asıl çağrı çalıştır
 
 Veritabanı kapsamlı kimlik bilgileri, aşağıdaki kimlik doğrulama türlerini kullanarak Azure depolama 'ya erişim sağlar:
 
-### <a name="shared-access-signature"></a>Paylaşılan erişim imzası
+### <a name="shared-access-signature"></a>[Paylaşılan erişim imzası](#tab/shared-access-signature)
 
 Aşağıdaki betik, kimlik bilgilerinde belirtilen SAS belirtecini kullanarak depolamadaki dosyalara erişmek için kullanılan bir kimlik bilgisi oluşturur.
 
@@ -232,7 +232,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=s
 GO
 ```
 
-### <a name="azure-ad-identity"></a>Azure AD kimliği
+### <a name="azure-ad-identity"></a>[Azure AD kimliği](#tab/user-identity)
 
 Aşağıdaki betik, [external table](develop-tables-external-tables.md) `OPENROWSET` kendi Azure AD kimliklerini kullanarak depolama dosyalarına erişmek için kimlik bilgileriyle veri kaynağı kullanan dış tablo ve işlevler tarafından kullanılan veritabanı kapsamlı bir kimlik bilgisi oluşturur.
 
@@ -242,7 +242,7 @@ WITH IDENTITY = 'User Identity';
 GO
 ```
 
-### <a name="managed-identity"></a>Yönetilen Kimlik
+### <a name="managed-identity"></a>[Yönetilen Kimlik](#tab/managed-identity)
 
 Aşağıdaki betik, geçerli Azure AD kullanıcısının yönetilen hizmet kimliği olarak taklit etmek için kullanılabilecek veritabanı kapsamlı bir kimlik bilgisi oluşturur. 
 

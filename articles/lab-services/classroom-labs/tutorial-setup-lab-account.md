@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: dba6a4c07691f3d7ec88d8b889e68d6ac7116f07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1823d9df8824c9a0bf1ee30a9900ca118625fd9e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79239451"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589440"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Öğretici: Azure Lab Services ile bir laboratuvar hesabı ayarlama
 Azure Lab Services’te, bir laboratuvar hesabı, kuruluşunuzdaki laboratuvarların yönetildiği merkezi hesap olarak görev yapar. Laboratuvar hesabınızda, laboratuvar oluşturmak üzere başkalarına izin verin ve laboratuvar hesabı altındaki tüm laboratuvarlara uygulanan ilkeler ayarlayın. Bu öğreticide laboratuvar hesabı oluşturmayı öğrenin. 
@@ -35,8 +35,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="create-a-lab-account"></a>Laboratuvar hesabı oluşturma
 Aşağıdaki adımlar, Azure portalını kullanarak Azure Lab Services ile nasıl bir laboratuvar hesabı oluşturulacağını göstermektedir. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. Kategorilerden **DevOps** ' **Categories**u seçin. Ardından **Laboratuvar Hizmetleri**' ni seçin. **Laboratuvar Hizmetleri**' nin yanında`*`Star () seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. Kategorilerden **DevOps** ' **Categories**u seçin. Ardından **Laboratuvar Hizmetleri**' ni seçin. `*` **Laboratuvar Hizmetleri**' nin yanında Star () seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm hizmetler-> Laboratuvar Hizmetleri](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. **Laboratuvar Hizmetleri** sayfasında, araç çubuğunda **Ekle** ' yi seçin veya sayfada **Laboratuvar hesabı oluştur** düğmesini seçin. 
@@ -75,7 +75,7 @@ Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için kullanıcının
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, bir laboratuvar hesabı oluşturdunuz. Bir Mesleme olarak bir ders Laboratuvarı oluşturma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin:
+Bu öğreticide, bir laboratuvar hesabı oluşturdunuz. Bir eğitimci olarak bir ders Laboratuvarı oluşturma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
 > [Bir sınıf laboratuvarı ayarlama](tutorial-setup-classroom-lab.md)

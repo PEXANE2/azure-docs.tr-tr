@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f751aa947988544977f9baf2746191921c1aa9d4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876852"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590680"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure bilişsel hizmetler 'de kapsayıcı desteği
 
@@ -24,7 +24,7 @@ Azure bilişsel hizmetler 'deki kapsayıcı desteği, geliştiricilerin Azure 'd
 > [!div class="checklist"]
 > * [Anomali Algılayıcısı][ad-containers]
 > * [Görüntü İşleme][cv-containers]
-> * [Yüz][fa-containers]
+> * [Yüz Tanıma][fa-containers]
 > * [Form Tanıma][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Konuşma Hizmeti API’si][sp-containers]
@@ -50,19 +50,19 @@ Bilişsel hizmetler kaynakları [Microsoft Azure](https://azure.microsoft.com)ku
 Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler 'deki hizmetlerden bir işlev alt kümesini içeren aşağıdaki Docker Kapsayıcıları kümesini sağlar:
 
 | Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
-|---------|----------|----------|-------------|
-|[Anomali algılayıcısı][ad-containers] |F0, S0|**Anomali-algılayıcı** |Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme](https://aka.ms/adcontainer)|
-|[Görüntü İşleme][cv-containers] |F0, S1|**Okuma** |Farklı yüzeylerden (örneğin, alındılar, posterleri ve iş kartları), çeşitli nesnelerin görüntülerinden yazdırılan metni ayıklar. Okuma kapsayıcısı resimlerde *el yazısı metinleri* de ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Okuma kapsayıcısı Şu anda yalnızca Ingilizce ile çalışmaktadır.|
-|[Yüz][fa-containers] |F0, S0|**Yüz** |Görüntülerde insan yüzlerini algılar ve yüzleri (Nosi ve gözler gibi), cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için aynı görüntüde veya farklı görüntülerde iki yüzün aynı olup olmadığını denetleyebilir veya bir veritabanı ile yüzleri karşılaştırın. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.<br>[Erişim izni isteme](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[Form tanıyıcı][fr-containers] |F0, S0|**Form Tanıma** |Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim izni isteme](https://aka.ms/FormRecognizerContainerRequestAccess)|
-|[LUIS][lu-containers] |F0, S0|**Lusıs** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Bir Docker kapsayıcısı olarak da bilinen eğitilen veya yayınlanan Language Understanding modelini bir Docker kapsayıcısına yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar. Kapsayıcıda sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [Luo portalına](https://www.luis.ai) geri yükleyebilirsiniz.|
-|[Konuşma Hizmeti API’si][sp-containers-stt] |F0, S0|**Konuşmayı metne dönüştürme** |Sürekli, gerçek zamanlı konuşmaları metne dönüştürür.|
-|[Konuşma Hizmeti API’si][sp-containers-cstt] |F0, S0|**Özel Konuşma Tanıma metin** |Özel bir model kullanarak sürekli gerçek zamanlı konuşmayı metne dönüştürme.|
-|[Konuşma Hizmeti API’si][sp-containers-tts] |F0, S0|**Metin okuma** |Metni, doğal sesli konuşmaya dönüştürür.|
-|[Konuşma Hizmeti API’si][sp-containers-ctts] |F0, S0|**Özel metin okuma** |Özel bir model kullanarak metni doğal-sounkonuşmaya dönüştürür.|
-|[Metin Analizi][ta-containers-keyphrase] |F0, S|**Anahtar ifade ayıklama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Ana noktaları belirlemek için anahtar tümceleri ayıklar. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. |
-|[Metin Analizi][ta-containers-language]|F0, S|**Dil algılama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |120 dilde dile kadar, giriş metninin hangi dilde yazıldığını algılar ve istekte gönderilen her belge için tek bir dil kodu bildirir. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir. |
-|[Metin Analizi][ta-containers-sentiment]|F0, S|**Yaklaşım Analizi** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Olumlu veya negatif yaklaşım hakkında ipuçları için ham metni analiz eder. API, her belge için 0 ile 1 arasında bir yaklaşım puanı döndürür ve 1 en pozitif değerdir. Analiz modelleri, Microsoft 'un sunduğu çok sayıda metin ve doğal dil teknolojileri kullanılarak önceden eğitilir. API, [seçili dillerde](./text-analytics/language-support.md) sağladığınız ham metni analiz edip puanlayabilir ve sonuçları doğrudan çağrıyı yapan uygulamaya döndürebilir. |
+|--|--|--|--|
+| [Anomali algılayıcısı][ad-containers] | F0, S0 | **Anomali-algılayıcı** | Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim izni isteme][request-access] |
+| [Görüntü İşleme][cv-containers] | F0, S1 | **Okuyamaz** | Farklı yüzeylerden (örneğin, alındılar, posterleri ve iş kartları), çeşitli nesnelerin görüntülerinden yazdırılan metni ayıklar. Okuma kapsayıcısı resimlerde *el yazısı metinleri* de ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Okuma kapsayıcısı Şu anda yalnızca Ingilizce ile çalışmaktadır. |
+| [Yüz Tanıma][fa-containers] | F0, S0 | **Yüz Tanıma** | Görüntülerde insan yüzlerini algılar ve yüzleri (Nosi ve gözler gibi), cinsiyet, yaş ve diğer makine tarafından öngörülen yüz özellikleri dahil olmak üzere öznitelikleri tanımlar. Algılamanın yanı sıra, benzer bir veya aynı yüzün zaten mevcut olup olmadığını görmek için aynı görüntüde veya farklı görüntülerde iki yüzün aynı olup olmadığını denetleyebilir veya bir veritabanı ile yüzleri karşılaştırın. Ayrıca, paylaşılan görsel nitelikleri kullanarak benzer yüzeyleri gruplar halinde düzenleyebilir.<br>[Erişim izni isteme][request-access] |
+| [Form tanıyıcı][fr-containers] | F0, S0 | **Form Tanıma** | Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim izni isteme][request-access] |
+| [LUIS][lu-containers] | F0, S0 | **Lusıs** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Bir Docker kapsayıcısı olarak da bilinen eğitilen veya yayınlanan Language Understanding modelini bir Docker kapsayıcısına yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar. Kapsayıcıda sorgu günlüklerini toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [Luo portalına](https://www.luis.ai) geri yükleyebilirsiniz. |
+| [Konuşma Hizmeti API’si][sp-containers-stt] | F0, S0 | **Konuşmayı metne dönüştürme** | Sürekli, gerçek zamanlı konuşmaları metne dönüştürür. |
+| [Konuşma Hizmeti API’si][sp-containers-cstt] | F0, S0 | **Özel Konuşma Tanıma metin** | Özel bir model kullanarak sürekli gerçek zamanlı konuşmayı metne dönüştürme. |
+| [Konuşma Hizmeti API’si][sp-containers-tts] | F0, S0 | **Metin okuma** | Metni, doğal sesli konuşmaya dönüştürür. |
+| [Konuşma Hizmeti API’si][sp-containers-ctts] | F0, S0 | **Özel metin okuma** | Özel bir model kullanarak metni doğal-sounkonuşmaya dönüştürür. |
+| [Metin Analizi][ta-containers-keyphrase] | F0, S | **Anahtar ifade ayıklama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Ana noktaları belirlemek için anahtar tümceleri ayıklar. Örneğin, "The food was delicious and there were wonderful staff" (Yemekler lezzetliydi ve personel harikaydı) giriş metni olduğunda API, "food" (yemek) ve "wonderful staff" (personel harikaydı) ana konuşma noktalarını döndürür. |
+| [Metin Analizi][ta-containers-language] | F0, S | **Dil algılama** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 120 dilde dile kadar, giriş metninin hangi dilde yazıldığını algılar ve istekte gönderilen her belge için tek bir dil kodu bildirir. Dil kodu, puanın ağırlığını belirten bir puanla eşleştirilir. |
+| [Metin Analizi][ta-containers-sentiment] | F0, S | **Yaklaşım Analizi v3** ([görüntü](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Olumlu veya negatif yaklaşım hakkında ipuçları için ham metni analiz eder. Bu yaklaşım analizinin bu sürümü, her belge ve tümce için yaklaşım etiketlerini (örneğin *pozitif* veya *negatif*) döndürür. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -71,7 +71,7 @@ Azure bilişsel hizmetler kapsayıcıları, her biri Azure bilişsel hizmetler '
 Ayrıca, bazı kapsayıcılar bilişsel Hizmetler [**hepsi bir arada sunum**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) kaynak anahtarları içinde desteklenir. Tek bir bilişsel hizmetler oluşturup bir adet tek kaynak oluşturabilir ve aşağıdaki hizmetler için desteklenen hizmetler genelinde aynı faturalandırma anahtarını kullanabilirsiniz:
 
 * Görüntü İşleme
-* Yüz
+* Yüz Tanıma
 * LUIS
 * Metin Analizi
 
@@ -79,17 +79,9 @@ Ayrıca, bazı kapsayıcılar bilişsel Hizmetler [**hepsi bir arada sunum**](ht
 
 Azure bilişsel hizmetler kapsayıcıları Azure aboneliğiniz aracılığıyla herkese açık ve Docker kapsayıcı görüntüleri Microsoft Container Registry ya da Docker Hub 'ından alınabilir. Uygun kayıt defterinden bir kapsayıcı görüntüsünü indirmek için [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanabilirsiniz.
 
-> [!IMPORTANT]
-> Şu anda, aşağıdaki kapsayıcılara erişmek için bir kaydolma işlemini doldurmanız gerekir. burada, sizin, şirketiniz ve kapsayıcıları uygulamak istediğiniz kullanım durumu ile ilgili soruları içeren bir soru formunu doldurun ve gönderebilirsiniz. Erişim izni verildiğinde ve kimlik bilgilerini sağladıktan sonra, Azure Container Registry tarafından barındırılan özel bir kapsayıcı kayıt defterinden kapsayıcı görüntülerini çekebilirsiniz.
-> * [Anomali algılayıcısı](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
-> * [Yüz](Face/face-how-to-install-containers.md)
-> * [Form Tanıma](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
-> * [Okuma](computer-vision/computer-vision-how-to-install-containers.md)
-> * [Konuşmadan metne ve metinden konuşmaya](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
-
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure bilişsel hizmetler kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
@@ -97,7 +89,7 @@ Azure bilişsel hizmetler kapsayıcılarını kullanmadan önce aşağıdaki ön
 
 Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır.
 
-**Microsoft Container Registry ve Docker Ile benzerlik**: kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Microsoft Container Registry ve Docker kavramlarının yanı sıra temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.
+**Microsoft Container Registry ve Docker Ile benzerlik**: kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Microsoft Container Registry ve Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` .
 
 Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.
 
@@ -138,3 +130,4 @@ Azure bilişsel hizmetler 'de kapsayıcılar tarafından sunulan işlevleri yük
 [ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[request-access]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u

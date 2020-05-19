@@ -2,13 +2,13 @@
 title: Geliştirici kaynakları-Language Understanding
 description: SDK 'Lar, REST API 'Leri, CLı, programlama dilinizde Language Understanding (LUıS) uygulamaları geliştirmenize yardımcı olur. Azure kaynaklarınızı ve LUSıS tahminlerinizi yönetin.
 ms.topic: reference
-ms.date: 03/16/2020
-ms.openlocfilehash: 5e375157cef4789bc2980f6154ea8d59e765ff3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/05/2020
+ms.openlocfilehash: 820811c53f143c9747cd11f45cafb075398b080b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79457993"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589015"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding için SDK, REST ve CLı geliştirici kaynakları (LUSıS)
 
@@ -56,14 +56,14 @@ LUIN Şu anda 2 uç nokta türü vardır:
 * Eğitim uç noktasında yazma
 * çalışma zamanı uç noktasında sorgu tahmini.
 
-|Amaç|URL'si|
+|Amaç|URL|
 |--|--|
 |Eğitim uç noktasında yazma|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
 |V2 çalışma zamanı-çalışma zamanı uç noktasındaki tüm tahminler|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
 |V3 çalışma zamanı-çalışma zamanı uç noktasındaki sürümler tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 |V3 çalışma zamanı-çalışma zamanı uç noktasında yuva tahmini|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 
-Aşağıdaki tabloda, önceki tabloda küme ayraçları `{}`ile belirtilen parametreler açıklanmaktadır.
+Aşağıdaki tabloda, önceki tabloda küme ayraçları ile belirtilen parametreler açıklanmaktadır `{}` .
 
 |Parametre|Amaç|
 |--|--|
@@ -72,14 +72,18 @@ Aşağıdaki tabloda, önceki tabloda küme ayraçları `{}`ile belirtilen param
 |`version`|10 karakter sürümü adı|
 |`slot`| `production` veya `staging`|
 
+## <a name="app-schema"></a>Uygulama şeması
+
+[Uygulama şeması](app-schema-definition.md) içeri aktarılır ve bir `.json` veya `.lu` biçiminde aktarılır.
+
 ### <a name="language-based-sdks"></a>Dil tabanlı SDK 'lar
 
 |Dil |Başvuru belgeleri|Paket|Örnekler|Hızlı başlangıçlar|
 |--|--|--|--|--|
-|C#|[Yazma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Tahmin](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet yazma](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet tahmini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Uygulama oluşturma ve yönetme](sdk-authoring.md?pivots=programming-language-csharp)<br>[Sorgu tahmin uç noktası](sdk-query-prediction-endpoint.md)|
-|Başlayın|[Yazma ve tahmin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[REST kullanarak yazma ve tahmin](luis-get-started-get-intent-from-rest.md)|
-|Java|[Yazma ve tahmin](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven yazma](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven tahmini](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Yazma ve tahmin](luis-get-started-get-intent-from-rest.md)
-|Node.js|[Yazma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Tahmin](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM tahmini](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Tahmin](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[REST kullanarak yazma ve tahmin](luis-get-started-get-intent-from-rest.md)|
+|C#|[Yazma](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Hızlı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet yazma](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet tahmini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.NET SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Uygulama oluşturma ve yönetme](sdk-authoring.md?pivots=programming-language-csharp)<br>[Sorgu tahmin uç noktası](sdk-query-prediction-endpoint.md)|
+|Go|[Yazma ve tahmin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Hızlı](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[REST kullanarak yazma ve tahmin](luis-get-started-get-intent-from-rest.md)|
+|Java|[Yazma ve tahmin](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven yazma](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven tahmini](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Hızlı](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Yazma ve tahmin](luis-get-started-get-intent-from-rest.md)
+|Node.js|[Yazma](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Hızlı](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM yazma](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM tahmini](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Yazma](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Hızlı](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[REST kullanarak yazma ve tahmin](luis-get-started-get-intent-from-rest.md)|
 |Python|[Yazma ve tahmin](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Yazma](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Yazma](sdk-authoring.md?pivots=programming-language-python)<br>[REST kullanarak tahmin](luis-get-started-get-intent-from-rest.md)
 
 

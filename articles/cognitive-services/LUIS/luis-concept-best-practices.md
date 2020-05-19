@@ -2,14 +2,14 @@
 title: LUSıS uygulamanızı oluşturmaya yönelik en iyi uygulamalar
 description: LUSıS uygulamanızın modelinden en iyi sonuçları elde etmek için en iyi uygulamaları öğrenin.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382381"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589814"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Dil anlama (LUSıS) uygulaması oluşturmak için en iyi uygulamalar
 LUSıS uygulamanızı derlemek için uygulama yazma işlemini kullanın:
@@ -31,11 +31,11 @@ Aşağıdaki liste, LUSıS uygulamalarına yönelik en iyi yöntemleri içerir:
 
 |Yapın|Yapmayın|
 |--|--|
-|[Ayrı amaçlar tanımlayın](#do-define-distinct-intents)<br>[Amaçlar 'a tanımlayıcı ekleme](#do-add-descriptors-to-intents) |[Amaçlar için birçok örnek ekleme](#dont-add-many-example-utterances-to-intents)<br>[Birkaç veya basit varlık kullanın](#dont-use-few-or-simple-entities) |
+|[Ayrı amaçlar tanımlayın](#do-define-distinct-intents)<br>[Amaçlar 'a özellik ekleme](#do-add-features-to-intents) |[Amaçlar için birçok örnek ekleme](#dont-add-many-example-utterances-to-intents)<br>[Birkaç veya basit varlık kullanın](#dont-use-few-or-simple-entities) |
 |[Her amaç için çok genel ve çok özel arasında bir tatlı noktası bulun](#do-find-sweet-spot-for-intents)|[LUSıS 'yi eğitim platformu olarak kullanma](#dont-use-luis-as-a-training-platform)|
 |[Uygulamanızı sürümleriyle tekrarlayarak oluşturun](#do-build-your-app-iteratively-with-versions)<br>[Model ayrıştırma için varlık oluşturma](#do-build-for-model-decomposition)|[Diğer biçimleri yoksayarak aynı biçimdeki birçok örnek utde ekleyin](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Sonraki yinelemelerde desenler ekleme](#do-add-patterns-in-later-iterations)|[Amaç ve varlıkların tanımını karıştırma](#dont-mix-the-definition-of-intents-and-entities)|
-|Hiçbiri amacı dışında [tüm amaçlar genelinde utbotlarınızı dengeleyin](#balance-your-utterances-across-all-intents) .<br>[Hiçbiri amacına örnek ekleme](#do-add-example-utterances-to-none-intent)|[Tüm olası değerlerle tanımlayıcı oluştur](#dont-create-descriptors-with-all-the-possible-values)|
+|Hiçbiri amacı dışında [tüm amaçlar genelinde utbotlarınızı dengeleyin](#balance-your-utterances-across-all-intents) .<br>[Hiçbiri amacına örnek ekleme](#do-add-example-utterances-to-none-intent)|[Tüm olası değerlerle tümcecik listeleri oluştur](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Etkin öğrenme için öneri özelliğinden yararlanın](#do-leverage-the-suggest-feature-for-active-learning)|[Çok fazla desen ekleme](#dont-add-many-patterns)|
 |[Toplu test ile uygulamanızın performansını izleyin](#do-monitor-the-performance-of-your-app)|[Her tek örnekle eğitim ve yayımlama eklendi](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -51,11 +51,11 @@ Aşağıdaki örnek noktaları göz önünde bulundurun:
 |Uçuş kitabı|
 |Otel kitabı|
 
-`Book a flight`ve `Book a hotel` aynı sözlüğünü kullanın `book a `. Bu biçim aynı olduğu için aynı amaç, `flight` ve `hotel` ayıklanan varlıkların farklı kelimeleri ile aynı amaç olmalıdır.
+`Book a flight`ve `Book a hotel` aynı sözlüğünü kullanın `book a ` . Bu biçim aynı olduğu için aynı amaç, `flight` ve ayıklanan varlıkların farklı kelimeleri ile aynı amaç olmalıdır `hotel` .
 
-## <a name="do-add-descriptors-to-intents"></a>Amaçlar 'a tanımlayıcı ekleme
+## <a name="do-add-features-to-intents"></a>Amaçlar 'a özellik ekleme
 
-Tanımlayıcılar, bir amaç için özellikleri tanımlamaya yardımcı olur. Bir tanımlayıcı, bu amaç için önemli olan sözcüklerin bir ifade listesi veya bu amaç için önemli bir varlık olabilir.
+Özellikler bir amaç için kavramları açıkla. Bir özellik, bu amaç için önemli olan sözcüklerin bir ifade listesi veya bu amaç için önemli bir varlık olabilir.
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Amaçlar için tatlı noktası bulun
 Amaçlarınızın örtüşmesini öğrenmek için LUSıS 'den tahmin verileri kullanın. Çakışan amaçlar LUSıS 'yi şaşırtır. Sonuç, en üst Puanlama hedefinin başka bir amaç için çok yakın olması olur. LUSıS her seferinde eğitim verileri aracılığıyla tam olarak aynı yolu kullanmadığından, çakışan bir amaç eğitimin ilk veya ikinci bir şansına sahiptir. Bu çevir/flop gerçekleşmemesi için her bir amaç için utterance 'in puanına sahip olmasını istiyorsunuz. Amaçlar için iyi ayrım, her seferinde beklenen en iyi amaç ile sonuçlanmalıdır.
@@ -73,17 +73,22 @@ Model ayrıştırma işleminin tipik bir süreci vardır:
 * istemci uygulamanın kullanıcı amaçları temelinde **Amaç** oluşturun
 * gerçek dünya Kullanıcı girişine göre 15-30 örnek ekleme
 * örnek utde üst düzey veri kavramını etiketle
-* veri kavramını alt bileşenlere Böl
-* alt bileşenlere tanımlayıcı (Özellikler) ekleme
-* amaca tanımlayıcı (Özellikler) ekleme
+* veri kavramını alt varlıklara Böl
+* alt varlıklara özellikler ekleme
+* amaçlar 'a özellik ekleme
 
 Amacınızı oluşturduktan sonra, örnek bir şekilde, aşağıdaki örnekte varlık ayrıştırma açıklanmaktadır.
 
-Bir utterde çıkarmak istediğiniz tüm veri kavramlarını tanımlayarak başlayın. Bu, makineniz tarafından öğrenilen varlıktır. Ardından, tümceciğini parçalarını parçalara ayırın. Bu, alt bileşenleri (varlıklar olarak), tanımlayıcılar ve kısıtlamalarla birlikte tanımlamayı içerir.
+Bir utterde çıkarmak istediğiniz tüm veri kavramlarını tanımlayarak başlayın. Bu, makineniz tarafından öğrenilen varlıktır. Ardından, tümceciğini parçalarını parçalara ayırın. Bu, alt varlıkları ve özellikleri tanımlamayı içerir.
 
-Örneğin, bir adresi ayıklamak istiyorsanız, makine tarafından öğrenilen en popüler varlık çağrılabilir `Address`. Adresi oluştururken, sokak adresi, şehir, eyalet ve posta kodu gibi bazı alt bileşenlerinden bazılarını yapın.
+Örneğin, bir adresi ayıklamak istiyorsanız, makine tarafından öğrenilen en popüler varlık çağrılabilir `Address` . Adresi oluştururken, sokak adresi, şehir, eyalet ve posta kodu gibi alt varlıklarından bazılarını belirleyebilirsiniz.
 
-Posta kodunu normal bir **ifadeye geçirerek bu** öğeleri oluşturmaya devam edin. Cadde adresini bir cadde numarası (önceden oluşturulmuş bir sayı kullanarak), sokak adı ve sokak türü bölümlerine ayırın. Cadde türü, Avenue, Circle, Road ve Lane gibi bir **tanımlayıcı** listesi ile açıklanabilir.
+Bu öğelerin çıkarılması ile devam edin:
+* Posta kodunun gerekli bir özelliği normal ifade varlığı olarak ekleniyor.
+* Cadde adresini parçalar halinde kaldırma:
+    * Önceden oluşturulmuş bir varlık için gerekli özelliği olan bir **cadde numarası** .
+    * **Cadde adı**.
+    * Avenue, Circle, Road ve Lane gibi sözcükler dahil olmak üzere liste varlığının gerekli özelliğine sahip bir **cadde türü** .
 
 V3 yazma API 'SI, model ayrıştırma için izin verir.
 
@@ -145,9 +150,9 @@ Botunuzun yapması için gereken tüm eylemler için bir amaç oluşturun. Varl�
 
 Hava yolu fışıklarından kitap oluşturacak bir bot için, bir **muhasebeci** amaç oluşturun. Her hava yolu veya her hedef için bir amaç oluşturmayın. Bu veri parçalarını [varlık](luis-concept-entity-types.md) olarak kullanın ve örnekleri örnek olarak işaretleyin.
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Tüm olası değerlerle tanımlayıcı oluşturma
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>Tüm olası değerlerle ifade listeleri oluşturmayın
 
-Tanımlayıcı [tümceciği listelerinde](luis-concept-feature.md) birkaç örnek sağlayın, ancak her sözcüğe değil. LUSıS genelleştirir ve hesabı dikkate alır.
+[Tümcecik listelerinde](luis-concept-feature.md) birkaç örnek sağlayın, ancak her sözcüğe veya ifadeye uygulanmaz. LUSıS genelleştirir ve hesabı dikkate alır.
 
 ## <a name="dont-add-many-patterns"></a>Çok sayıda desen eklemeyin
 

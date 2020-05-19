@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a263e7e17cda64a8519bab215f97fdf26e88d9d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402234"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589661"
 ---
-# <a name="improve-synthesis-with-audio-content-creation"></a>Ses Içeriği oluşturma ile sensıs 'yi geliştirme
+# <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Ses Içeriği oluşturma aracı ile sensıs 'yi geliştirme
 
 [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation) , Microsoft 'un Uygulamalarınız ve ürünleriniz için kendi metin okuma çıktısını özelleştirmenizi ve ayarlamanıza olanak tanıyan bir çevrimiçi araçtır. Bu aracı, daha doğru doğal ifadeler için genel ve özel seslere ince ayar yapmak ve çıktunuzu bulutta yönetmek için kullanabilirsiniz.
 
@@ -25,28 +25,26 @@ Ses Içeriği oluşturma aracı, [konuşma birleştirme biçimlendirme dilini (S
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-Bu diyagramda, özelleştirilmiş konuşmaya metin çıkışlarını ayarlama ve dışarı aktarma için gereken adımlar gösterilir. Her adım hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
+Bu diyagramda, metinden konuşmaya okuma çıktıları üzerinde ince ayar yapmak için gereken adımlar gösterilir. Her adım hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. İlk adım, [bir Azure hesabı oluşturmak, bir konuşma kaynağını kaydetmek ve bir abonelik anahtarı almak](#create-a-speech-resource)için kullanılır. Abonelik anahtarınız olduktan sonra, konuşma hizmetini çağırmak ve [Ses Içeriği oluşturmaya](https://aka.ms/audiocontentcreation)erişmek için kullanabilirsiniz.
-2. Düz metin veya SSML kullanarak [bir ses ayarlama dosyası oluşturun](#create-an-audio-tuning-file) .
-3. Ayarlamak istediğiniz sesi ve dili seçin. Ses Içeriği oluşturma, tüm [Microsoft metin okuma seslerini](language-support.md#text-to-speech)içerir. Standart, sinir veya kendi özel sesinizi kullanabilirsiniz.
+1. Başlamak için [Azure hesabınızı ve konuşma kaynağını ayarlayın](#set-up-your-azure-account-and-speech-resource) .
+2. Düz metin veya SSML betikleri kullanarak [bir ses ayarlama dosyası oluşturun](#create-an-audio-tuning-file) .
+3. Komut dosyası içeriğiniz için ses ve dili seçin. Ses Içeriği oluşturma, tüm [Microsoft metin okuma seslerini](language-support.md#text-to-speech)içerir. Standart, sinir veya kendi özel sesinizi kullanabilirsiniz.
    >[!NOTE]
    > Geçitli erişim, doğal bir konuşma konuşmayla benzer yüksek tanımlı sesler oluşturmanıza olanak sağlayan özel sinir sesleri için kullanılabilir. Daha fazla bilgi için bkz. [işlem işleme](https://aka.ms/ignite2019/speech/ethics).
 
-4. Varsayılan sonucu gözden geçirin. Daha sonra, telaffuz, sıklık, hız, giriş, ses stili ve daha fazlasını ayarlamak için ayarlama aracını kullanın. Seçeneklerin tamamı listesi için bkz. [konuşma sen, biçimlendirme dili](speech-synthesis-markup.md).
+4. Varsayılan sensıs çıkışını gözden geçirin. Ardından, telaffuz, kesme, sıklık, oran, intonation, ses stili ve daha fazlasını ayarlayarak çıktıyı geliştirebilirsiniz. Seçeneklerin tamamı listesi için bkz. [konuşma sen, biçimlendirme dili](speech-synthesis-markup.md). İşte ses Içeriği oluşturma ile konuşma çıkışının nasıl ince ayarlanacağını gösteren bir [video](https://youtu.be/mUvf2NbfuYU) . 
 5. [Ayarlanmış sesinizi kaydedin ve dışarı aktarın](#export-tuned-audio). Ayarlama parçasını sisteme kaydettiğinizde, çalışmaya ve çıkışta yineleme yapmaya devam edebilirsiniz. Çıktıyı karşıladığınızda, dışa aktarma özelliği ile bir ses oluşturma görevi oluşturabilirsiniz. Dışarı aktarma görevinin durumunu gözlemleyebilirsiniz ve uygulama ve ürünlerinizle kullanım için çıktıyı indirebilirsiniz.
-6. Son adım, uygulamalarınızda ve ürünleriniz için özel olarak ayarlanmış sesi kullanmaktır.
 
-## <a name="create-a-speech-resource"></a>Konuşma kaynağı oluşturma
+## <a name="set-up-your-azure-account-and-speech-resource"></a>Azure hesabınızı ve konuşma kaynağını ayarlama
 
-Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımları izleyin.
-
-1. [Azure hesabına kaydolmak](get-started.md#new-resource) ve [bir konuşma kaynağı oluşturmak](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource)için bu yönergeleri izleyin. Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
-2. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açın.
-3. Mevcut bir projeyi seçin veya **Yeni oluştur**' a tıklayın.
-4. Aboneliğinizi istediğiniz zaman, üst gezinti bölmesinde bulunan **Ayarlar** seçeneğiyle değiştirebilirsiniz.
+1. Ses Içeriği oluşturma ile çalışmak için bir Azure hesabınızın olması gerekir. Microsoft hesabınızı kullanarak bir Azure hesabı oluşturabilirsiniz. [Bir Azure hesabı ayarlamak](get-started.md#new-resource)için bu yönergeleri izleyin. 
+2. Azure hesabınızda [bir konuşma kaynağı oluşturun](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource) . Fiyatlandırma katmanınızın **S0**olarak ayarlandığından emin olun. Sinir sesinden birini kullanıyorsanız, kaynağı [desteklenen bir bölgede](regions.md#standard-and-neural-voices)oluşturduğunuzdan emin olun.
+2. Azure hesabı ve konuşma kaynağını aldıktan sonra, konuşma hizmetlerini kullanabilir ve [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)erişimi sağlayabilirsiniz.
+3. Üzerinde çalışmanız gereken konuşma kaynağını seçin. Burada yeni bir konuşma kaynağı da oluşturabilirsiniz. 
+4. Konuşma kaynağınızı, üst gezinti bölmesinde bulunan **Ayarlar** seçeneğiyle istediğiniz zaman değiştirebilirsiniz.
 
 ## <a name="create-an-audio-tuning-file"></a>Ses ayarlama dosyası oluşturma
 
@@ -54,21 +52,22 @@ Konuşma kaynağı oluşturmak ve konuşma Studio 'ya bağlamak için bu adımla
 
 **Seçenek 1:**
 
-1. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)' da oturum açtıktan sonra yeni bir ses ayarlama dosyası oluşturmak Için **Ses ayarlama** ' ya tıklayın.
-2. Düzen penceresi göründüğünde, en fazla 10.000 karakter girebilirsiniz.
+1. Yeni bir ses ayarlama dosyası oluşturmak için **yeni dosya** ' ya tıklayın.
+2. İçeriğinizi, Düzen penceresine yazın veya yapıştırın. Her bir dosyanın karakterleri 20.000 ' e kadar olur. Betiğinizin 20.000 karakterden uzun olması durumunda, içeriğinizi otomatik olarak birden çok dosyaya bölmek için 2 seçeneğini kullanabilirsiniz. 
 3. Kaydetmeyi unutmayın.
 
 **Seçenek 2:**
 
-1. [Ses Içeriği oluşturma](https://aka.ms/audiocontentcreation)sırasında oturum açtıktan sonra bir veya daha fazla metin dosyasını içeri aktarmak Için **karşıya yükle** ' ye tıklayın. Hem düz metin hem de SSML desteklenir.
-2. Metin dosyalarınızı karşıya yüklediğinizde, içeriğin bu gereksinimleri karşıladığından emin olun.
+1. Bir veya daha fazla metin dosyasını içeri aktarmak için **Yükle** ' ye tıklayın. Hem düz metin hem de SSML desteklenir.
+2. Betik dosyanız 20.000 karakterden büyükse, lütfen dosyayı paragraflara, karaktere veya normal ifadelerle ayırın. 
+3. Metin dosyalarınızı karşıya yüklediğinizde, dosyanın bu gereksinimleri karşıladığından emin olun.
 
    | Özellik | Değer/notlar |
    |----------|---------------|
    | Dosya biçimi | Düz metin (. txt)<br/> SSML metni (. txt)<br/> ZIP dosyaları desteklenmiyor |
    | Kodlama biçimi | UTF-8 |
    | Dosya adı | Her dosyanın benzersiz bir adı olmalıdır. Yinelemeler desteklenmez. |
-   | Metin uzunluğu | Metin dosyalarının 10.000 karakteri aşmaması gerekir. |
+   | Metin uzunluğu | Metin dosyalarının 20.000 karakteri aşmaması gerekir. |
    | SSML kısıtlamaları | Her SSML dosyası yalnızca tek bir SSML parçası içerebilir. |
 
 ### <a name="plain-text-example"></a>Düz metin örneği
@@ -91,7 +90,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 Ses çıktlarınızı inceledikten ve ayarlama ve ayarlamasıyla memnun olduktan sonra, sesi dışa aktarabilirsiniz.
 
-1. Ses [Içeriği oluşturma](https://aka.ms/audiocontentcreation) aracında, bir ses oluşturma görevi oluşturmak Için **dışarı aktar** ' a tıklayın.
+1. Ses oluşturma görevi oluşturmak için **dışarı aktar** ' a tıklayın. Uzun ses çıkışını ve tam ses çıkış deneyimini desteklediğinden, **Ses kitaplığına dışa aktarma** önerilir. Ayrıca, sesi yerel diskinize doğrudan indirebilirsiniz, ancak yalnızca ilk 10 dakika kullanılabilir. 
 2. Ayarlanmış sesinizi için çıkış biçimini seçin. Desteklenen biçimlerin ve örnek hızların listesi aşağıda verilmiştir.
 3. Görevi **dışarı aktar** sekmesinde görevin durumunu görüntüleyebilirsiniz. Görev başarısız olursa, tam bir rapor için ayrıntılı bilgi sayfasına bakın.
 4. Görev tamamlandığında ses **kitaplığı** sekmesinde Sesinizdeki indirilebilir.
@@ -111,4 +110,4 @@ Ses çıktlarınızı inceledikten ve ayarlama ve ayarlamasıyla memnun olduktan
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşma Studio](https://speech.microsoft.com)
+> [Speech Studio](https://speech.microsoft.com)

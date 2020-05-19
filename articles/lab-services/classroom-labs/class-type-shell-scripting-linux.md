@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 1199bca9e2ab7c85ccf5c90879fe5141a55a7bb5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115073"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589508"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
 Bu makalede, Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarın nasıl ayarlanacağı gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevleri önlemeyi sağlayan, sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıfı geleneksel Bash betiklerini ve gelişmiş betikleri içerir. Gelişmiş betikler, Bash komutlarını ve Ruby 'yi birleştiren betiklerdir. Bu yaklaşım, Ruby 'nin kabuğa ve Bash komutlarına karşı etkileşimde bulunmak için veri geçmesini sağlar. 
@@ -40,7 +40,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük  |
 | VM görüntüsü | Ubuntu Server 18,04 LTS |
-| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin, Uzak Masaüstü (RDP) kullanarak VM 'lerine bağlanmasına imkan tanır. Daha fazla bilgi için bkz. [Azure Lab Services bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'Nü etkinleştirme](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
+| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, eğitimciler ve öğrencilerin, Uzak Masaüstü (RDP) kullanarak VM 'lerine bağlanmasına imkan tanır. Daha fazla bilgi için bkz. [Azure Lab Services bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'Nü etkinleştirme](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Masaüstü ve xrdp 'yi yükler

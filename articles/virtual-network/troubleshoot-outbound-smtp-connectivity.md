@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e5a878c8108706c4a3a175c920708beeeaa4aa12
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 148a8bf7626d8b8ee687658990fdaf2fce9f7de7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801759"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590103"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure 'da giden SMTP bağlantısı sorunlarını giderme
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=027fa865-2329-23de-3740-cfbe35359302" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
+
 15 Kasım 2017 tarihinden itibaren, bir sanal makineden (VM) doğrudan dış etki alanlarına (outlook.com ve gmail.com) gönderilen giden e-posta iletileri yalnızca Microsoft Azure içindeki belirli Abonelik türleri için kullanılabilir hale getirilir. TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellendi. (Bağlantı noktası 25 öncelikle kimliği doğrulanmamış e-posta teslimi için kullanılır.)
 
 Bu davranış değişikliği, 15 Kasım 2017 ' den beri yalnızca yeni abonelikler ve Yeni dağıtımlar için geçerlidir.
@@ -36,7 +36,7 @@ Kurumsal Anlaşma Azure kullanıcıları için, kimlik doğrulamalı geçiş kul
 ## <a name="pay-as-you-go"></a>Kullandıkça Öde
 Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik teklifleri için 15 Kasım 2017 tarihinden önce kaydolduysanız, giden e-posta teslimini deneyebilme özelliği hiçbir değişiklik olmayacaktır. Azure platformundan herhangi bir kısıtlama olmadan bu aboneliklerdeki Azure VM 'lerinden gelen e-posta teslimini doğrudan dış e-posta sağlayıcılarına deneyebileceksiniz. Bu, e-posta sağlayıcılarının belirli bir kullanıcıdan gelen e-postayı kabul edeceğini garanti etmez ve kullanıcıların herhangi bir ileti teslimini veya belirli sağlayıcıları içeren istenmeyen posta filtreleme sorunlarını gidermek için doğrudan e-posta sağlayıcılarıyla çalışması gerekecektir.
 
-15 Kasım 2017 ' den sonra oluşturulan Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelikler için, bu abonelikler içindeki VM 'lerden doğrudan gönderilen e-postaları engelleyen teknik kısıtlamalar olacaktır. Azure VM 'lerinden doğrudan dış e-posta sağlayıcılarına (kimliği doğrulanmış SMTP geçişi kullanmadan) e-posta gönderebilme olanağı istiyorsanız, kısıtlamayı kaldırmak için bir istek yapabilirsiniz. İstekler, Microsoft 'un kararına göre incelenip onaylanacaktır ve yalnızca ek sahtekarlık denetimleri yapıldıktan sonra verilecek. Bir istek yapmak için aşağıdaki sorun türünü kullanarak bir destek talebi açın: **Teknik** > **sanal ağ** > **bağlantısı** > **e-posta gönderemez (SMTP/bağlantı noktası 25)**. Dağıtımınızın neden kimliği doğrulanmış bir geçiş kullanmak yerine doğrudan posta sağlayıcılarına e-posta göndermek zorunda olduğuna ilişkin ayrıntıları eklediğinizden emin olun.
+15 Kasım 2017 ' den sonra oluşturulan Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelikler için, bu abonelikler içindeki VM 'lerden doğrudan gönderilen e-postaları engelleyen teknik kısıtlamalar olacaktır. Azure VM 'lerinden doğrudan dış e-posta sağlayıcılarına (kimliği doğrulanmış SMTP geçişi kullanmadan) e-posta gönderebilme olanağı istiyorsanız, kısıtlamayı kaldırmak için bir istek yapabilirsiniz. İstekler, Microsoft 'un kararına göre incelenip onaylanacaktır ve yalnızca ek sahtekarlık denetimleri yapıldıktan sonra verilecek. Bir istek yapmak için aşağıdaki sorun türünü kullanarak bir destek talebi açın: **Teknik**  >  **sanal ağ**  >  **bağlantısı**  >  **e-posta gönderemez (SMTP/bağlantı noktası 25)**. Dağıtımınızın neden kimliği doğrulanmış bir geçiş kullanmak yerine doğrudan posta sağlayıcılarına e-posta göndermek zorunda olduğuna ilişkin ayrıntıları eklediğinizden emin olun.
 
 Kullandıkça Öde veya Microsoft İş Ortağı Ağı abonelik dışlandıktan sonra ve VM 'Ler Azure portal ' & ' başlatıldı ' olarak durdurulduktan sonra, Bu abonelikteki tüm VM 'Ler ileri alınır. Muafiyet yalnızca istenen aboneliğe uygulanabilir ve yalnızca doğrudan internet 'e yönlendirilen sanal makine trafiği için geçerlidir. Azure [güvenlik duvarı](https://azure.microsoft.com/services/azure-firewall/) gibi Azure PaaS hizmetleri aracılığıyla yönlendirme bağlantı noktası 25 trafiği desteklenmez.
 

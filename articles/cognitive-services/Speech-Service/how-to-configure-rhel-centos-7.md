@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
-ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80639168"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589746"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konuşma SDK 'Sı için RHEL/CentOS 7 yapılandırma
 
@@ -45,7 +45,7 @@ ldconfig -p | grep libstdc++
 
 Vanilla RHEL/CentOS 7 (x64) çıkışı:
 
-```
+```bash
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
@@ -57,7 +57,7 @@ strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 
 Çıktının olması gerekir:
 
-```
+```bash
 ...
 GLIBCXX_3.4.19
 ...
@@ -65,14 +65,18 @@ CXXABI_1.3.7
 ...
 ```
 
-Konuşma SDK 'Sı **CXXABI_1.3.9** ve **GLIBCXX_3.4.21**gerektirir. Bu bilgileri Linux paketindeki konuşma SDK kitaplıkları `ldd libMicrosoft.CognitiveServices.Speech.core.so` üzerinde çalıştırarak bulabilirsiniz.
+Konuşma SDK 'Sı **CXXABI_1.3.9** ve **GLIBCXX_3.4.21**gerektirir. Bu bilgileri `ldd libMicrosoft.CognitiveServices.Speech.core.so` Linux paketindeki konuşma SDK kitaplıkları üzerinde çalıştırarak bulabilirsiniz.
 
 > [!NOTE]
 > Sistemde yüklü GCC sürümünün, eşleşen çalışma zamanı kitaplıklarıyla en az **5.4.0**olması önerilir.
 
 ## <a name="example"></a>Örnek
 
-Bu, geliştirme için RHEL/CentOS 7 x64 (C++, C#, Java, Python) konuşma SDK 1.10.0 veya üzerini kullanarak nasıl yapılandırılacağını gösteren örnek bir komuttur:
+Bu, geliştirme için RHEL/CentOS 7 x64 (C++, C#, Java, Python) konuşma SDK 1.10.0 veya üzerini kullanarak nasıl yapılandırılacağını gösteren örnek bir komut kümesidir:
+
+### <a name="1-general-setup"></a>1. genel kurulum
+
+İlk olarak tüm genel bağımlılıkları yükler:
 
 ```bash
 # Only run ONE of the following two commands
@@ -86,16 +90,53 @@ sudo yum update -y
 sudo yum groupinstall -y "Development tools"
 sudo yum install -y alsa-lib dotnet-sdk-2.1 java-1.8.0-openjdk-devel openssl python3
 sudo yum install -y gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
 
-# Build GCC 5.4.0 and runtimes and install them under /usr/local
+### <a name="2-cc-compiler-and-runtime-libraries"></a>2. C/C++ derleyicisi ve çalışma zamanı kitaplıkları
+
+Önkoşul paketlerini şu komutla birlikte yükler:
+
+```bash
 sudo yum install -y gmp-devel mpfr-devel libmpc-devel
+```
+
+> [!NOTE]
+> Libmpc-delevel paketi RHEL 7,8 güncelleştirmesinde kullanımdan kaldırılmıştır. Önceki komutun çıktısı bir ileti içeriyorsa
+>
+> ```bash
+> No package libmpc-devel available.
+> ```
+>
+> ardından gerekli dosyaların özgün kaynaklardan yüklenmesi gerekir. Aşağıdaki komutları çalıştırın:
+>
+> ```bash
+> curl https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz -O
+> tar zxf mpc-1.1.0.tar.gz
+> mkdir mpc-1.1.0-build && cd mpc-1.1.0-build
+> ../mpc-1.1.0/configure --prefix=/usr/local --libdir=/usr/local/lib64
+> make -j$(nproc)
+> sudo make install-strip
+> ```
+
+Daha sonra derleyici ve çalışma zamanı kitaplıklarını güncelleştirin:
+
+```bash
+# Build GCC 5.4.0 and runtimes and install them under /usr/local
 curl https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2 -O
 tar jxf gcc-5.4.0.tar.bz2
 mkdir gcc-5.4.0-build && cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-bootstrap --disable-multilib --prefix=/usr/local
 make -j$(nproc)
 sudo make install-strip
+```
 
+Güncelleştirilmiş derleyicisinin ve kitaplıkların çeşitli makinelere dağıtılması gerekiyorsa, bunları `/usr/local` diğer makinelere kopyalamak yeterlidir. Yalnızca çalışma zamanı kitaplıkları gerekliyse, içindeki dosyalar `/usr/local/lib64` yeterli olacaktır.
+
+### <a name="3-environment-settings"></a>3. ortam ayarları
+
+Yapılandırmayı gerçekleştirmek için aşağıdaki komutları çalıştırın:
+
+```bash
 # Set SSL cert file location
 # (this is required for any development/testing with Speech SDK)
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt

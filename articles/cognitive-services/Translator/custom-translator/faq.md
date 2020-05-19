@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0413c15c025e554ab8465736dfdb5607149c5ed2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836606"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588692"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Özel Translator hakkında sık sorulan sorular
 
@@ -41,14 +41,14 @@ Dağıtım genellikle bir saatten daha az sürer.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Dağıtılan bir sisteme nasıl erişirsiniz?
 
-Dağıtılmış sistemlere CategoryID 'yi belirterek Microsoft Translator Metin Çevirisi API'si v3 aracılığıyla erişilebilir. Translator Metin Çevirisi API'si hakkında daha fazla bilgi [API başvuru](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web sayfasında bulunabilir.
+Dağıtılmış sistemlere CategoryID belirtilerek Microsoft Translator v3 aracılığıyla erişilebilir. Çevirici hakkında daha fazla bilgi [API başvuru](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web sayfasında bulunabilir.
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Verilerim zaten tümce hizalanmışsa hizalama ve tümce Nasıl yaparım? atlayın mi?
 
-Özel çevirmen, TMX dosyaları ve `.align` uzantılı metin dosyaları için tümce hizalamasını ve tümce atlamalarını atlar. `.align`dosyalar, kullanıcılara kusursuz hizalanmış dosyalar için özel çevirmenin tümce ve hizalama sürecini atlama ve daha fazla işleme gerektirmez bir seçenek sunar. Yalnızca kusursuz hizalanmış `.align` dosyalar için uzantı kullanmanızı öneririz.
+Özel çevirmen, TMX dosyaları ve uzantılı metin dosyaları için tümce hizalamasını ve tümce atlamalarını atlar `.align` . `.align`dosyalar, kullanıcılara kusursuz hizalanmış dosyalar için özel çevirmenin tümce ve hizalama sürecini atlama ve daha fazla işleme gerektirmez bir seçenek sunar. `.align`Yalnızca kusursuz hizalanmış dosyalar için uzantı kullanmanızı öneririz.
 
-Ayıklanan Tümcelerin sayısı aynı temel ada sahip iki dosya ile eşleşmezse özel çevirmen, `.align` dosyalardaki tümce Aligner 'i çalıştırmaya devam eder.
+Ayıklanan Tümcelerin sayısı aynı temel ada sahip iki dosya ile eşleşmezse özel çevirmen, dosyalardaki tümce Aligner 'i çalıştırmaya devam eder `.align` .
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>TMX sayfamı karşıya yüklemeye çalıştım, ancak "belge işleme başarısız oldu" diyor.
 
-TMX 'in konumundaki <https://www.gala-global.org/tmx-14b>TMX 1.4 b belirtimine uyduğundan emin olun.
+TMX 'in konumundaki TMX 1.4 b belirtimine uyduğundan emin olun <https://www.gala-global.org/tmx-14b> .

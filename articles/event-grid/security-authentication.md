@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 528c3613549ee49009f99d45e5bd9c2cf1745d78
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780003"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588267"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Azure Event Grid kaynaklarına erişim izni doğrulanıyor
 Bu makalede aşağıdaki senaryolar hakkında bilgi verilmektedir:  
@@ -28,19 +28,25 @@ Kimlik doğrulama değerini HTTP üstbilgisine dahil edersiniz. SAS için, üst 
 
 ### <a name="key-authentication"></a>Anahtar kimlik doğrulaması
 
-Anahtar kimlik doğrulaması en basit kimlik doğrulama biçimidir. Şu biçimi kullanın:`aeg-sas-key: <your key>`
+Anahtar kimlik doğrulaması en basit kimlik doğrulama biçimidir. İleti üstbilgisinde şu biçimi kullanın: `aeg-sas-key: <your key>` .
 
 Örneğin, şunu içeren bir anahtar geçirirsiniz:
 
 ```
-aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
+aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+```
+
+Ayrıca, `aeg-sas-key` bir sorgu parametresi olarak belirtebilirsiniz. 
+
+```
+https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 ### <a name="sas-tokens"></a>SAS belirteçleri
 
-Event Grid için SAS belirteçleri, kaynak, sona erme saati ve imza içerir. SAS belirtecinin biçimi: `r={resource}&e={expiration}&s={signature}`.
+Event Grid için SAS belirteçleri, kaynak, sona erme saati ve imza içerir. SAS belirtecinin biçimi: `r={resource}&e={expiration}&s={signature}` .
 
-Kaynak, olayları gönderdiğiniz olay Kılavuzu konusunun yoludur. Örneğin, geçerli bir kaynak yolu: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`. Desteklenen tüm API sürümlerini görmek için bkz. [Microsoft. EventGrid kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
+Kaynak, olayları gönderdiğiniz olay Kılavuzu konusunun yoludur. Örneğin, geçerli bir kaynak yolu: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Desteklenen tüm API sürümlerini görmek için bkz. [Microsoft. EventGrid kaynak türleri](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
 
 İmza bir anahtardan oluşturulur.
 

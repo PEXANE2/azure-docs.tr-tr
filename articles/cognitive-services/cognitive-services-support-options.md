@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590545"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure bilişsel Hizmetler desteği ve geri bildirim seçenekleri
 
 Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Belki de uygulamanızda yeni bir özellik uygulama. Hizmeti kullandıktan sonra nasıl iyileştireceğimiz hakkında önerileriniz var mı? Burada destek alabileceğiniz, güncel kalacağınız, geri bildirimde bulunmanıza ve bilişsel hizmetler için hataları bildirebileceğiniz seçenekler verilmiştir.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 
 ### <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -30,10 +30,10 @@ Azure bilişsel hizmetler 'in işlevlerini keşfetmeye başladınız mı? Belki 
 
 [Azure destek seçeneklerini bulun ve en uygun planı seçin](https://azure.microsoft.com/support/plans) , böylece yalnızca bulut yolculuğuna veya iş açısından kritik ve stratejik uygulamalar dağıtan büyük bir kuruluşa sahip bir geliştirici olursunuz. Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
-### <a name="search"></a>Arama
+### <a name="search"></a>Arayın
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
@@ -45,7 +45,7 @@ Daha hızlı sonuçlar için [Stack Overflow](https://stackoverflow.com/), [Micr
 {search keywords} site:stackoverflow.com
 ```
 
-Aramanızın `{search keywords}` bağlamı nerede. Bu kapsamlı aramaları uygun şekilde kullanmayı göz önünde bulundurun:
+`{search keywords}`Aramanızın bağlamı nerede. Bu kapsamlı aramaları uygun şekilde kullanmayı göz önünde bulundurun:
 
  - Stack Overflow:`site:stackoverflow.com`
  - Microsoft Docs:`site:docs.microsoft.com`
@@ -78,8 +78,8 @@ Yeni bir yayındaki veya Azure blogundan Haberler hakkında bilgi sahibi olmak, 
 
 Bilişsel hizmetler sürüm notları, yeni sürümler kullanılabilir hale getirildiğinden güncelleştirilir. Notlar yeni özellikler, geliştirmeler ve hata düzeltmeleri hakkında bilgiler içerir.
 
- - [Özel Görüntü](custom-vision-service/release-notes.md)
- - [Yüz](face/releasenotes.md)
+ - [Özel Görüntü İşleme](custom-vision-service/release-notes.md)
+ - [Yüz Tanıma](face/releasenotes.md)
  - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Konuşma Hizmetleri](speech-service/releasenotes.md)
  - [Konuşma Hizmetleri SDK 'Sı](speech-service/devices-sdk-release-notes.md)
@@ -102,7 +102,7 @@ Bilişsel hizmetler hakkında haberler, [Azure bloguna](https://azure.microsoft.
 
 Reddıt, Azure bilişsel [Hizmetler](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) haberleri, yardım, bilgi, ipuçları ve püf noktaları hakkında en son konuşmaları sunan topluluk odaklı bir tartışma web sitesidir. Kayıtlı üyeler içerik gönderebilir ve başkalarının bu içeriği, en son ilgili içeriği beslemelerine göre daha fazla şekilde yükseltir.
 
-## <a name="give-feedback"></a>Geri bildirim gönderme
+## <a name="give-feedback"></a>Görüş bildirin
 
 ### <a name="uservoice-forum"></a>UserVoice forumu
 
@@ -132,7 +132,7 @@ Yeni özellikler istemek için UserVoice 'a gönderin. Bilişsel hizmetler ve AP
 | Konuşma Hizmetleri               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Özel Konuşma Tanıma                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | Metin Analizi                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator Metin Çevirisi               | https://cognitive.uservoice.com/forums/558796-translator |
+| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Hataları raporla

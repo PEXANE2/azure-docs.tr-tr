@@ -10,16 +10,24 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155197"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589100"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
-Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
+Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
+
+## <a name="may-2020"></a>Mayıs 2020
+Görüntü İşleme API'si v 3.0 genel kullanılabilirliği ve [API 'Yi okumak](concept-recognizing-text.md)için güncelleştirmeler ile girilmiş:
+
+* Ingilizce, Felemenkçe, Fransızca, Almanca, Italyanca, Portekizce ve Ispanyolca desteği
+* İyileştirilmiş doğruluk
+* Ayıklanan her sözcüğün Güvenirlik puanı
+* Yeni çıkış biçimi
 
 ## <a name="march-2020"></a>Mart 2020
 
@@ -30,10 +38,10 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blo
 ### <a name="read-api-30-preview"></a>API 3,0 Preview 'ı okuyun
 
 Artık görüntülerden yazdırılmış veya el yazısı metin ayıklamak için Read API 'sinin 3,0 sürümünü kullanma seçeneğiniz vardır. Önceki sürümlere kıyasla 3,0 şunları sağlar:
-* iyileştirilmiş doğruluk
+* İyileştirilmiş doğruluk
 * Yeni çıkış biçimi
-* ayıklanan her sözcüğün Güvenirlik puanı
-* ek dil parametresiyle hem Ispanyolca hem de Ingilizce diller için destek
+* Ayıklanan her sözcüğün Güvenirlik puanı
+* Ek dil parametresiyle hem Ispanyolca hem de Ingilizce diller için destek
 
 3,0 API 'sini kullanmaya başlamak için [Extract metin hızlı](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) başlangıcını izleyin.
 

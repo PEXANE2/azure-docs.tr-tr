@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690807"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589865"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı ile yazılan metinleri tanıma
 
@@ -26,10 +26,9 @@ Görüntü İşleme görüntülerde görüntülenen yazdırılmış veya el yaz�
 
 Okuma API 'SI, en son tanınma modellerimizi kullanarak bir görüntüdeki metin içeriğini algılar ve tanımlanan metni makine tarafından okunabilen bir karakter akışına dönüştürür. Metin açısından ağır görüntüler (dijital olarak taranan belgeler gibi) ve çok sayıda görsel gürültü içeren görüntüler için iyileştirilmiştir. Her metin satırı için hangi tanıma modelinin kullanılacağını, hem yazdırılmış hem de el yazısı metinle birlikte destekleyeceğini belirleyen bir görüntü oluşturur. Okuma API 'SI, büyük belgeler bir sonuç döndürmek için birkaç dakika sürebileceğinden zaman uyumsuz olarak yürütülür.
 
-Okuma işlemi, tanınan sözcüklerin orijinal satır gruplamalarını çıktıda saklar. Her satır sınırlayıcı kutu koordinatları ile gelir ve satırdaki her sözcüğün kendi koordinatları de vardır. Bir sözcük düşük güvenilirlikle tanınıyorsa, bu bilgiler de bu bilgileri verir. Daha fazla bilgi edinmek için bkz. [API v 2.0 başvuru belgeleri](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) veya [okuma API v 3.0 Önizleme başvurusu belgeleri](https://go.microsoft.com/fwlink/?linkid=2118322) .
+Okuma işlemi, tanınan sözcüklerin orijinal satır gruplamalarını çıktıda saklar. Her satır sınırlayıcı kutu koordinatları ile gelir ve satırdaki her sözcüğün kendi koordinatları de vardır. Bir sözcük düşük güvenilirlikle tanınıyorsa, bu bilgiler de bu bilgileri verir. Daha fazla bilgi edinmek için bkz. [API v 2.0 başvuru belgeleri](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) veya [okuma API v 3.0 başvuru belgeleri](https://aka.ms/computer-vision-v3-ref) .
 
-> [!NOTE]
-> Bu özellik yalnızca Ingilizce ve Ispanyolca (v 3.0 Önizleme) metin için kullanılabilir.
+Okuma işlemi Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Hollanda dilinde metni tanıyabilir.
 
 ### <a name="image-requirements"></a>Görüntü gereksinimleri
 

@@ -2,13 +2,13 @@
 title: Liste varlık türü-LUSıS
 description: Liste varlıkları, sabit ve kapalı bir ilgili sözcük kümesini eş anlamlılarıyla birlikte temsil eder. LUSıS, liste varlıkları için ek değerler bulamaz. Geçerli listeye göre yeni kelimelerin önerilerini görmek için öner özelliğini kullanın.
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097583"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588896"
 ---
 # <a name="list-entity"></a>Liste varlığı
 
@@ -52,7 +52,7 @@ Bir liste varlığı makine tarafından öğrenilen değildir. Tam metin eşleş
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 
-Uygulamanın Havaalanı (deniz-Tac `Cities`), Havaalanı Kodu (SEA), posta posta kodu (98101) ve telefon alanı kodu (206) dahil olmak üzere şehir adlarının çeşitlemelerine izin veren, adında bir liste olduğunu varsayalım.
+Uygulamanın `Cities` Havaalanı (deniz-Tac), Havaalanı Kodu (SEA), posta posta kodu (98101) ve telefon alanı kodu (206) dahil olmak üzere şehir adlarının çeşitlemelerine izin veren, adında bir liste olduğunu varsayalım.
 
 |Liste öğesi|Öğe eş anlamlılar|
 |---|---|
@@ -61,7 +61,7 @@ Uygulamanın Havaalanı (deniz-Tac `Cities`), Havaalanı Kodu (SEA), posta posta
 
 `book 2 tickets to paris`
 
-Önceki bir deyişle, sözcük `paris` , `Cities` liste varlığının bir parçası olarak Paris öğesiyle eşlenir. Liste varlığı hem öğenin normalleştirilmiş adının hem de öğe eş anlamlısını eşleştirir.
+Önceki bir deyişle, sözcük, `paris` liste varlığının bir parçası olarak Paris öğesiyle eşlenir `Cities` . Liste varlığı hem öğenin normalleştirilmiş adının hem de öğe eş anlamlısını eşleştirir.
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
@@ -84,7 +84,7 @@ Uygulamanın Havaalanı (deniz-Tac `Cities`), Havaalanı Kodu (SEA), posta posta
 #### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
+Bu, `verbose=false` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
 }
 ```
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
+Bu, `verbose=true` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -132,4 +132,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](tutorial-list-entity.md), bilinen öğeler listesinden metnin tam eşleşmelerini çıkarmak için bir **liste varlığını** nasıl kullanacağınızı öğrenin.
+Varlıklar hakkında daha fazla bilgi edinin:
+
+* [Kavramlar](luis-concept-entity-types.md)
+* [Oluşturma](luis-how-to-add-entities.md)

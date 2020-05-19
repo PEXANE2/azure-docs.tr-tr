@@ -6,42 +6,68 @@ manager: nitinme
 description: Tüm bilişsel hizmet teklifleri için kapsayıcı kayıt defterleri, depolar ve görüntü adları temsil eden iki tablo.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: a854a090af908da691e9b26f5b0714c6560fc0ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876853"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590681"
 ---
 ### <a name="container-repositories-and-images"></a>Kapsayıcı depoları ve görüntüleri
 
-Aşağıdaki tablolarda, Azure bilişsel hizmetler tarafından sunulan kullanılabilir kapsayıcı görüntülerinin bir listesi verilmiştir. Tüm kullanılabilir kapsayıcı görüntüsü adlarının ve kullanılabilir etiketlerinin tüm listesi için bkz. bilişsel [Hizmetler kapsayıcısı görüntü etiketleri](../container-image-tags.md). Şu anda genel kullanıma açık olan bilişsel hizmet kapsayıcıları yoktur (GA). Bu süre boyunca, daha fazla duyuru yapılıncaya kadar, kapsayıcılar *ortak olmayan* veya *genel geçitli önizleme*olarak kullanılabilir.
+Aşağıdaki tablolarda, Azure bilişsel hizmetler tarafından sunulan kullanılabilir kapsayıcı görüntülerinin bir listesi verilmiştir. Tüm kullanılabilir kapsayıcı görüntüsü adlarının ve kullanılabilir etiketlerinin tüm listesi için bkz. bilişsel [Hizmetler kapsayıcısı görüntü etiketleri](../container-image-tags.md). 
 
- - *Ortak ungated*: kapsayıcılar, bir başarı mekanizması olmadan herkese açık bir şekilde kullanılabilir.
- - *Ortak geçişli önizleme*: kapsayıcılar herkese açık bir şekilde kullanılabilir, ancak önce kapsayıcı kayıt defterine erişmek için biçimsel isteğin olması gerekir.
+#### <a name="generally-available"></a>Genel kullanıma sunuldu 
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Ortak "ungated" (kapsayıcı kayıt defteri `mcr.microsoft.com`:)
+Microsoft Container Registry (MCR), bilişsel hizmetler için genel kullanıma sunulan kapsayıcıları Syndicates. Kapsayıcılar doğrudan [Docker Hub 'ından](https://hub.docker.com/_/microsoft-azure-cognitive-services)de kullanılabilir.
 
-Microsoft Container Registry (MCR), bilişsel hizmetler için tüm genel kullanıma açık "olmayan" kapsayıcıları Syndicates. Kapsayıcılar doğrudan [Docker Hub 'ından](https://hub.docker.com/_/microsoft-azure-cognitive-services)de kullanılabilir.
+#### <a name="luis"></a>[LUIS](#tab/luis)
+
+| LUSıS kapsayıcısı | Container Registry/depo/görüntü adı |
+|--|--|
+| LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+
+Daha fazla bilgi için bkz. [lusıs kapsayıcılarını çalıştırma ve yüklemeyi öğrenin](../../LUIS/luis-container-howto.md) .
+
+#### <a name="text-analytics"></a>[Metin Analizi](#tab/text-analytics)
+
+| Metin Analizi kapsayıcı | Container Registry/depo/görüntü adı |
+|--|--|
+| Yaklaşım Analizi v3 (Ingilizce) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en` |
+| Yaklaşım Analizi v3 (Ispanyolca) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-es` |
+| Yaklaşım Analizi v3 (Fransızca) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-fr` |
+| Yaklaşım Analizi v3 (Italyanca) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-it` |
+| Yaklaşım Analizi v3 (Almanca) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-de` |
+| Yaklaşım Analizi v3 (Çince-Basitleştirilmiş) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zh` |
+| Yaklaşım Analizi v3 (Çince-Geleneksel) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zht` |
+| Yaklaşım Analizi v3 (Japonca) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-ja` |
+| Yaklaşım Analizi v3 (Portekizce) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-pt` |
+| Yaklaşım Analizi v3 (Felemenkçe) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-nl` |
+
+Daha fazla bilgi için bkz. [metin analizi kapsayıcılarını çalıştırma ve yüklemeyi öğrenin](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) .
+
+---
+
+#### <a name="public-ungated-preview-container-registry-mcrmicrosoftcom"></a>Ortak "açılmamış" Önizleme (kapsayıcı kayıt defteri: `mcr.microsoft.com` )
+
+Aşağıdaki önizleme kapsayıcıları herkese açık bir şekilde kullanılabilir. Microsoft Container Registry (MCR), bilişsel hizmetler için tüm genel kullanıma açık Kapsayıcılı kapsayıcıları Syndicates. Kapsayıcılar doğrudan [Docker Hub 'ından](https://hub.docker.com/_/microsoft-azure-cognitive-services)de kullanılabilir.
 
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cogni'ive-services/luis` |
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Anahtar İfade Ayıklama | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Dil Algılama | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Yaklaşım Analizi | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+| [Anomali algılayıcısı](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomali Algılayıcısı | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
-#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Ortak "geçişli" Önizleme (kapsayıcı kayıt defteri `containerpreview.azurecr.io`:)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Ortak "geçişli" Önizleme (kapsayıcı kayıt defteri: `containerpreview.azurecr.io` )
 
-Kapsayıcı Önizleme kayıt defteri, bilişsel hizmetler için genel kullanıma açık olan "geçitli" kapsayıcıları barındırır. Bu kapsayıcılar, kapsayıcı kayıt defteri aracılığıyla bunlara erişmek için resmi bir istek gerektirir.
+Aşağıdaki geçişli önizleme kapsayıcıları, kapsayıcı önizlemesi kayıt defterinde barındırılır ve bir uygulamanın erişmesini gerektirir. Daha fazla bilgi için bkz. [bilişsel hizmetler geçişi işlemi](../../cognitive-services-gating-process.md) .
 
 | Hizmet | Kapsayıcı | Container Registry/depo/görüntü adı |
 |--|--|--|
-| [Anomali algılayıcısı](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomali Algılayıcısı | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
 | [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Yüz](../../face/face-how-to-install-containers.md) | Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Yüz Tanıma](../../face/face-how-to-install-containers.md) | Yüz Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=stt) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=cstt) | Özel Konuşma Tanıma metin | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |

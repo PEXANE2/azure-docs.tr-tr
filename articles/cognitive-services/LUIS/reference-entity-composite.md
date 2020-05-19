@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71695161"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588913"
 ---
-# <a name="composite-entity"></a>Bileşik varlık 
+# <a name="composite-entity"></a>Bileşik varlık
 
-Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur. 
+Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur.
+
+> [!CAUTION]
+> Bu varlık **kullanım dışıdır**. Lütfen [makine tarafından öğrenilen varlığa](reference-entity-machine-learned-entity.md)geçiş yapın.
 
 **Bu varlık, veriler şu durumlarda iyi bir uyum:**
 
-* Birbirleriyle ilişkilidir. 
+* Birbirleriyle ilişkilidir.
 * Konuşma bağlamında birbiriyle ilişkilidir.
 * Çeşitli varlık türlerini kullanın.
 * İstemci uygulama tarafından bir bilgi birimi olarak gruplanıp işlenmelidir.
@@ -33,17 +36,17 @@ Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve
 
 ## <a name="example-json"></a>Örnek JSON
 
-Aşağıdaki utterance ile önceden oluşturulmuş `number` ve `Location::ToLocation` bileşik bir varlık göz önünde bulundurun:
+`number`Aşağıdaki utterance ile önceden oluşturulmuş ve bileşik bir varlık göz önünde bulundurun `Location::ToLocation` :
 
 `book 2 tickets to cairo`
 
-Bu `2`sayı, ve `cairo`, tolocation 'ın, varlıkların herhangi bir parçası olmayan aralarında sözcükler içerdiğine dikkat edin. [Luo](luis-reference-regions.md) Web sitesinde etiketli bir şekilde kullanılan yeşil alt çizgi, bileşik bir varlığı gösterir.
+Bu `2` sayı, ve `cairo` , tolocation 'ın, varlıkların herhangi bir parçası olmayan aralarında sözcükler içerdiğine dikkat edin. [Luo](luis-reference-regions.md) Web sitesinde etiketli bir şekilde kullanılan yeşil alt çizgi, bileşik bir varlığı gösterir.
 
 ![Bileşik varlık](./media/luis-concept-data-extraction/composite-entity.png)
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Bileşik varlıklar bir `compositeEntities` dizide döndürülür ve Birleşik içindeki tüm varlıklar `entities` dizide de döndürülür:
+Bileşik varlıklar bir `compositeEntities` dizide döndürülür ve Birleşik içindeki tüm varlıklar dizide de döndürülür `entities` :
 
 ```JSON
   "entities": [
@@ -87,11 +90,11 @@ Bileşik varlıklar bir `compositeEntities` dizide döndürülür ve Birleşik i
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
+Bu, `verbose=false` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -108,7 +111,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
 }
 ```
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
+Bu, `verbose=true` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -169,7 +172,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
 }
 ```
 
-* * * 
+* * *
 
 
 |Veri nesnesi|Varlık adı|Değer|
@@ -179,4 +182,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](luis-tutorial-composite-entity.md), çeşitli türlerin ayıklanan verilerini tek bir kapsayan varlığa dönüştürmek için bir **Bileşik varlık** ekleyin. İstemci uygulaması, verileri paketleyerek ilgili verileri farklı veri türlerinde kolayca ayıklayabilir.
+Varlıklar hakkında daha fazla bilgi edinin:
+
+* [Kavramlar](luis-concept-entity-types.md)
+* [Oluşturma](luis-how-to-add-entities.md)

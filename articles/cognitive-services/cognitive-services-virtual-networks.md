@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202069"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588352"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure bilişsel hizmetler sanal ağlarını yapılandırma
 
@@ -45,8 +45,8 @@ Aşağıda listelenen bilişsel hizmetler için sanal ağ desteği *Orta ABD EUA
 > * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
 > * [Görüntü İşleme](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
-> * [Özel Görüntü](./custom-vision-service/index.yml)
-> * [Yüz](./face/index.yml)
+> * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
+> * [Yüz Tanıma](./face/index.yml)
 > * [Form Tanıma](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Kişiselleştirme](./personalizer/index.yml)
@@ -63,14 +63,14 @@ Bilişsel hizmetler, yukarıdaki hizmetler için sanal ağ hizmet uç noktaları
 > * [Anomali Algılayıcısı](./anomaly-detector/index.yml)
 > * [Görüntü İşleme](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
-> * [Özel Görüntü](./custom-vision-service/index.yml)
-> * [Yüz](./face/index.yml)
+> * [Özel Görüntü İşleme](./custom-vision-service/index.yml)
+> * [Yüz Tanıma](./face/index.yml)
 > * [Form Tanıma](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Kişiselleştirme](./personalizer/index.yml)
 > * [Metin Analizi](./text-analytics/index.yml)
 > * [Soru-Cevap Oluşturucu](./qnamaker/index.yml)
-> * [Translator Metin Çevirisi](./translator/index.yml)
+> * [Translator](./translator/index.yml)
 > * [Konuşma Hizmeti](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Varsayılan ağ erişim kuralını değiştirme

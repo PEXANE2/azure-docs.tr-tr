@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 223544f7ceddce6bc2071d561da1cff1c0d4b53b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 978dbf3d8e6a92242c0a984b26bb35cf911a3369
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80420147"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590443"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 
@@ -104,9 +104,13 @@ Azure Cosmos DB Cassandra API'si bir yönetilen hizmet platformudur. Kümeyi yö
 
 * Azure portal veri Gezgini, ölçümler, günlük tanılama, PowerShell ve CLı, hesabı yönetmek için desteklenen diğer mekanizmalarda bulunur.
 
-## <a name="cql-shell"></a>CQL Kabuğu  
+## <a name="hosted-cql-shell-preview"></a>Barındırılan CQL kabuğu (Önizleme)
 
-CENSH komut satırı yardımcı programı Apache Cassandra 3.1.1 ile birlikte gelir ve bazı ortam değişkenlerini ayarlayarak kullanıma hazır değildir.
+Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure cosmos Gezgini](https://cosmos.azure.com/)'ndeki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md) bölümünde vurgulanan nota bakın.
+
+![CSQLSH](./media/cassandra-support/cqlsh.png)
+
+Ayrıca, bir yerel makinede yüklü olan CSQLSH kullanarak Azure Cosmos DB Cassandra API bağlayabilirsiniz. Bu, Apache Cassandra 3.1.1 ile birlikte gelir ve ortam değişkenlerini ayarlayarak kutudan çıkar. Aşağıdaki bölümler, Windows veya Linux 'ta, CSQLSH kullanarak Azure Cosmos DB ' de Cassandra API yüklemek, yapılandırmak ve kurmak için yönergeler içerir.
 
 **Pencerelerin**
 
@@ -198,9 +202,8 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 ## <a name="usage-of-cassandra-retry-connection-policy"></a>Cassandra bağlantı yeniden deneme ilkesi kullanımı
 
-Azure Cosmos DB, kaynak tarafından yönetilen bir sistemdir. Bu, işlemler tarafından tüketilen istek birimlerine göre belirli bir saniye içinde belirli sayıda işlem yapabileceğiniz anlamına gelir. Bir uygulama belirli bir saniye içindeki sınırı aşarsa, istekler hız sınırlı olur ve özel durumlar oluşturulur. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür. Uygulamanızın durum oranı kısıtlamalarındaki istekleri ele geçirebilir ve yeniden denediğinden emin olmak için [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) ve [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) uzantıları sağlanır. Azure Cosmos DB Cassandra API erişmek için diğer SDK 'lar kullanıyorsanız, bu özel durumlar üzerinde yeniden denemek için bir bağlantı ilkesi oluşturun.
+Azure Cosmos DB, kaynak tarafından yönetilen bir sistemdir. Bu, işlemler tarafından tüketilen istek birimlerine göre belirli bir saniye içinde belirli sayıda işlem yapabileceğiniz anlamına gelir. Bir uygulama belirli bir saniye içindeki sınırı aşarsa, istekler hız sınırlı olur ve özel durumlar oluşturulur. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür. Uygulamanızın hız sınırlaması durumunda istekleri ele geçirebilir ve yeniden denediğinden emin olmak için [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) ve [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) uzantıları sağlanır. Ayrıca, Azure Cosmos DB Cassandra API bağlanırken [sürüm 3](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) ve [sürüm 4](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) DataStax sürücüleri için Java kod örneklerine bakın. Azure Cosmos DB Cassandra API erişmek için diğer SDK 'lar kullanıyorsanız, bu özel durumlar üzerinde yeniden denemek için bir bağlantı ilkesi oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Java uygulaması kullanarak [Cassandra API hesabı, veritabanı ve tablo oluşturmaya](create-cassandra-api-account-java.md) başlama
-

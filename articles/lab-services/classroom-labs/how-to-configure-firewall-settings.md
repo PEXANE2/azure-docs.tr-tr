@@ -3,15 +3,15 @@ title: Azure Lab Services için güvenlik duvarı ayarları
 description: Güvenlik duvarı kurallarına eklenmek üzere bir laboratuvardaki sanal makinelerin genel IP adresini ve bağlantı noktası numarası aralığını belirlemeyi öğrenin.
 author: emaher
 ms.author: enewman
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcb8c0d5304f052dbe7f14386425ce67ae3b79a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443473"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589542"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services için güvenlik duvarı ayarları
 
@@ -24,7 +24,7 @@ Her laboratuvar tek genel IP adresi ve birden çok bağlantı noktası kullanır
 
 ## <a name="find-public-ip-for-a-lab"></a>Laboratuvar için genel IP bulma
 
-Her bir laboratuvarın genel IP adresleri, Laboratuvar Hizmetleri Laboratuvarı hesabının **Tüm laboratuvarları** sayfasında listelenir.  **Tüm Labs** sayfasını bulma hakkında yönergeler için bkz. [Laboratuvar hesabındaki laboratuvarları yönetme](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Her bir laboratuvarın genel IP adresleri, Laboratuvar Hizmetleri Laboratuvarı hesabının **Tüm laboratuvarları** sayfasında listelenir.  **Tüm Labs** sayfasını bulma hakkında yönergeler için bkz. [laboratuvarları laboratuvar hesabında görüntüleme](manage-labs.md#view-labs-in-a-lab-account).  
 
 > [!div class="mx-imgBorder"]
 > ![Tüm Labs sayfası](../media/how-to-configure-firewall-settings/all-labs-properties.png)

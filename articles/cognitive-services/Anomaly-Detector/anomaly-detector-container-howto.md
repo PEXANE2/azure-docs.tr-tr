@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: fa25d27e99a9516d461a84dde184e2a6412baa0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 40906c97dc088687bbd960fecc91921a3eb888a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875070"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589984"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomali algılayıcı kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -30,25 +30,17 @@ API 'Ler hakkında ayrıntılı bilgi için lütfen bkz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Anomali algılayıcı kapsayıcılarını kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
 |Gerekli|Amaç|
 |--|--|
 |Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
-|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.| 
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` .| 
 |Anomali algılayıcı kaynağı |Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _anomali algılayıcısı_ kaynağı. Her iki değer de Azure portal **anomali algılayıcısının** genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
-
-Kapsayıcıya erişim istemek için öncelikle [anomali algılayıcı kapsayıcı isteği formunu](https://aka.ms/adcontainer) tamamlayıp göndermeniz gerekir.
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 ## <a name="the-host-computer"></a>Ana bilgisayar
 
@@ -67,15 +59,15 @@ Aşağıdaki tabloda, anomali algılayıcı kapsayıcısı için ayrılacak mini
 
 Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 
-Çekirdek ve bellek, `--cpus` `--memory` `docker run` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir.
+Çekirdek ve bellek, `--cpus` `--memory` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir `docker run` .
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Kapsayıcı görüntüsünü al`docker pull`
 
-Bir kapsayıcı [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) görüntüsünü indirmek için komutunu kullanın.
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)Bir kapsayıcı görüntüsünü indirmek için komutunu kullanın.
 
 | Kapsayıcı | Depo |
 |-----------|------------|
-| bilişsel hizmetler-anomali-algılayıcı | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
+| bilişsel hizmetler-anomali-algılayıcı | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -85,25 +77,25 @@ For a full description of available tags, such as `latest` used in the preceding
 ### <a name="docker-pull-for-the-anomaly-detector-container"></a>Anomali algılayıcı kapsayıcısı için Docker Pull
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest
+docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 
 Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta daha fazla örnek kullanılabilir. [examples](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run`
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [examples](anomaly-detector-container-configuration.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın. `{API_KEY}` `{ENDPOINT_URI}`
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın `{ENDPOINT_URI}` `{API_KEY}` .
 
-Komut örnekleri mevcuttur. [Examples](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run`
+Komut [örnekleri](anomaly-detector-container-configuration.md#example-docker-run-commands) `docker run` mevcuttur.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -117,13 +109,13 @@ ApiKey={API_KEY}
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir. 
 
 > [!IMPORTANT]
-> Kapsayıcısını `Eula`çalıştırmak `Billing`için, `ApiKey` , ve seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 ### <a name="running-multiple-containers-on-the-same-host"></a>Aynı konakta birden çok kapsayıcı çalıştırma
 
 Birden çok kapsayıcıyı açığa çıkarılan bağlantı noktalarıyla çalıştırmayı düşünüyorsanız, her kapsayıcıyı farklı bir bağlantı noktasıyla çalıştırdığınızdan emin olun. Örneğin, bağlantı noktası 5000 ' deki ilk kapsayıcıyı ve bağlantı noktası 5001 üzerindeki ikinci kapsayıcıyı çalıştırın.
 
-`<container-registry>` Ve `<container-name>` değerlerini kullandığınız kapsayıcıların değerleriyle değiştirin. Bunların aynı kapsayıcı olması gerekmez. Anomali algılayıcı kapsayıcısının ve LUSıS kapsayıcısının KONAKTA birlikte çalışmasını sağlayabilir veya çalışan birden fazla anomali algılayıcı kapsayıcınıza sahip olabilirsiniz. 
+`<container-registry>`Ve `<container-name>` değerlerini kullandığınız kapsayıcıların değerleriyle değiştirin. Bunların aynı kapsayıcı olması gerekmez. Anomali algılayıcı kapsayıcısının ve LUSıS kapsayıcısının KONAKTA birlikte çalışmasını sağlayabilir veya çalışan birden fazla anomali algılayıcı kapsayıcınıza sahip olabilirsiniz. 
 
 İlk kapsayıcıyı 5000 numaralı bağlantı noktasında çalıştırın. 
 
@@ -152,7 +144,7 @@ Sonraki her kapsayıcı farklı bir bağlantı noktasında olmalıdır.
 
 Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
 
-Kapsayıcı API 'Leri için http://localhost:5000Konağı kullanın.
+http://localhost:5000Kapsayıcı API 'leri için Konağı kullanın.
 
 <!--  ## Validate container is running -->
 

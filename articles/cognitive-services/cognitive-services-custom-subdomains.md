@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647687"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590647"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
 
@@ -51,7 +51,7 @@ Evet. Özel bir alt etki alanı adının kullanılması bilişsel hizmetler kayn
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Özel bir alt etki alanı adı için gereksinimler nelerdir?
 
-Özel bir alt etki alanı adı, kaynağınız için benzersizdir. Ad yalnızca alfasayısal karakterler ve `-` karakteri içerebilir; 2 ila 64 karakter uzunluğunda olmalı ve ile bitemez `-`.
+Özel bir alt etki alanı adı, kaynağınız için benzersizdir. Ad yalnızca alfasayısal karakterler ve `-` karakteri içerebilir; uzunluğu 2 ile 64 karakter arasında olmalıdır ve ile bitemez `-` .
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Özel bir etki alanı adını değiştirebilir miyim?
 
@@ -66,11 +66,11 @@ Her özel alt etki alanı adı benzersizdir, bu nedenle bilişsel hizmetler kayn
 Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel bitiş noktalarının bir listesidir.
 
 > [!NOTE]
-> Translator Metin Çevirisi API'si ve Bing Arama API'leri genel uç noktaları kullanır.
+> Translator hizmeti ve Bing Arama API'leri genel uç noktaları kullanır.
 
 | Uç nokta türü | Bölge | Uç Nokta |
 |---------------|--------|----------|
-| Ortak | Küresel (Translator Metin Çevirisi & Bing) | `https://api.cognitive.microsoft.com` |
+| Ortak | Genel (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Güney Brezilya | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Orta Kanada | `https://canadacentral.api.cognitive.microsoft.com` |

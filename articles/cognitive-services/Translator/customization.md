@@ -1,5 +1,5 @@
 ---
-title: Çeviri özelleştirmesi-Translator Metin Çevirisi API'si
+title: Çeviri özelleştirmesi-çevirmen
 titleSuffix: Azure Cognitive Services
 description: Tercih ettiğiniz terminolojiyi ve stili kullanarak kendi makine çevirisi sisteminizi oluşturmak için Microsoft Translator hub 'ını kullanın.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71257615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588658"
 ---
 # <a name="customize-your-text-translations"></a>Metin çevirilerinizi özelleştirin
 
-Microsoft özel çevirmeni, Microsoft Translator hizmetinin, kullanıcıların Translator Metin Çevirisi API'si (yalnızca sürüm 3) kullanarak metin çevirirken Microsoft Translator 'ın gelişmiş sinir makine çevirisini özelleştirmesini sağlayan bir özelliktir.
+Özel çevirici, çevirmen hizmetinin, kullanıcıların, çeviriciyi (yalnızca sürüm 3) kullanarak metin çevirirken Microsoft Translator 'ın gelişmiş sinir makine çevirisini özelleştirmesini sağlayan, Translator hizmetinin bir özelliğidir.
 
 Özelliği, bilişsel [Hizmetler konuşmayla](https://docs.microsoft.com/azure/cognitive-services/speech-service/)kullanıldığında konuşma çevirisini özelleştirmek için de kullanılabilir.
 
@@ -33,7 +33,7 @@ Daha önce çevrilmiş belgelerinizi (sızıntı, Web sayfaları, belgeler vb.) 
 
 Sistem ayrıca belge düzeyinde paralel olan ancak tümce düzeyinde henüz hizalanmayan verileri de kabul eder. Kullanıcılar birden çok dilde aynı içeriğin sürümlerine erişebiliyorsa, ancak ayrı belgeler özel çeviricisinde, belgelerde otomatik olarak tümceler eşleştirebilir.  Sistem Ayrıca, çevirileri geliştirmek üzere paralel eğitim verilerini tamamlamak için her iki dilde de monolingual verileri kullanabilir.
 
-Özelleştirilmiş sistem daha sonra Kategori parametresi kullanılarak Microsoft Translator Metin Çevirisi API'si düzenli bir çağrısıyla kullanılabilir.
+Özelleştirilmiş sistem daha sonra Kategori parametresi kullanılarak bir çevirmene çağrı yoluyla kullanılabilir.
 
 Uygun tür ve eğitim verisi miktarı verildiğinde, 5 ile 10 arasında kazanç beklenmez veya özel çevirici kullanarak çeviri kalitesine daha fazla BLEU noktası gelir.
 
@@ -59,7 +59,7 @@ Kullanılabilir verilere göre çeşitli özelleştirme düzeyleri hakkında dah
 ## <a name="collaborative-translations-framework"></a>İşbirliğine dayalı Çeviriler çerçevesi
 
 > [!NOTE]
-> 1 Şubat 2018 itibariyle, AddTranslation () ve AddTranslationArray () artık Translator Metin Çevirisi API'si V 2.0 ile kullanılamaz. Bu yöntemler başarısız olur ve hiçbir şey yazılmaz. Translator Metin Çevirisi API'si V 3.0 bu yöntemleri desteklemez.
+> 1 Şubat 2018 itibariyle, AddTranslation () ve AddTranslationArray (), Translator v 2.0 ile birlikte kullanılamaz. Bu yöntemler başarısız olur ve hiçbir şey yazılmaz. Translator v 3.0 bu yöntemleri desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
