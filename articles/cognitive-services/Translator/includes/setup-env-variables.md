@@ -4,23 +4,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a936afc611462b6ec3c3de9021d517ccf66f666b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70393836"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586569"
 ---
-## <a name="set-up"></a>Ayarla
+## <a name="set-up"></a>Kurulum
 
-### <a name="create-a-translator-text-resource"></a>Translator Metin Çevirisi kaynağı oluşturma
+### <a name="create-a-translator-resource"></a>Çevirmen kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Translator metin çevirisi için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak çevirmen için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
 * [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services) ücretsiz olarak 7 gün boyunca geçerli olacak şekilde öğrenin. Kaydolduktan sonra Azure Web sitesinde mevcut olacaktır.
 * [Azure Portal](https://portal.azure.com/)var olan bir kaynağı görüntüleyin.
 
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
 
-* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`-Translator Metin Çevirisi kaynağınız için abonelik anahtarı.
-* `TRANSLATOR_TEXT_ENDPOINT`-Translator Metin Çevirisi için genel uç nokta. `https://api.cognitive.microsofttranslator.com/` adresini kullanın.
+* `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`-Çevirmen kaynağınız için abonelik anahtarı.
+* `TRANSLATOR_TEXT_ENDPOINT`-Çevirmen için genel uç nokta. `https://api.cognitive.microsofttranslator.com/` adresini kullanın.

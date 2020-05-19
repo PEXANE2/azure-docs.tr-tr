@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742872"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585360"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda dağıtılmış tablo tasarlamaya yönelik kılavuz
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-Bu sütundaki değerler satırların nasıl dağıtıldığını belirlemediğinden, bir dağıtım sütunu seçilmesi önemli bir tasarım kararıdır. En iyi seçenek çeşitli faktörlere bağlıdır ve genellikle avantajları içerir. Ancak, ilk kez en iyi sütunu seçmezseniz, tabloyu farklı bir dağıtım sütunuyla yeniden oluşturmak için [Create Table Select (CTAS) olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
+Dağıtım sütununda depolanan veriler güncelleştirilebilen olabilir. Dağıtım sütunundaki verilerin güncelleştirmeleri, veri karıştırma işlemine neden olabilir.
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Güncelleştirme gerektirmeyen bir dağıtım sütunu seçin
+Bu sütundaki değerler satırların nasıl dağıtıldığını belirlemediğinden, bir dağıtım sütunu seçilmesi önemli bir tasarım kararıdır. En iyi seçenek çeşitli faktörlere bağlıdır ve genellikle avantajları içerir. Bir dağıtım sütunu seçildikten sonra, bunu değiştiremezsiniz.  
 
-Satırı silip güncelleştirilmiş değerlere sahip yeni bir satır eklemediğiniz takdirde bir dağıtım sütununu güncelleştiremezsiniz. Bu nedenle, statik değerleri olan bir sütun seçin.
+En iyi sütunu ilk kez seçmediyseniz, farklı bir dağıtım sütunuyla tabloyu yeniden oluşturmak için [Create Table Select (CTAS) olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Eşit olarak dağıtan verilerle bir dağıtım sütunu seçin
 
@@ -117,8 +117,8 @@ Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğüm
 
 Veri hareketini en aza indirmek için şu şekilde bir dağıtım sütunu seçin:
 
-- , `OVER` `HAVING` `JOIN` `GROUP BY`,, Ve yan tümcelerinde `DISTINCT`kullanılır. İki büyük olgu tablosunun sık birleşme durumunda, her iki tabloyu da birleştirme sütunlarından birine dağıttığınızda sorgu performansı artar.  Bir tablo birleşimlerde kullanılmazsa, tabloyu `GROUP BY` yan tümcesindeki sık kullanılan bir sütuna dağıtmayı düşünün.
-- Yan *not* tümcelerde `WHERE` kullanılmaz. Bu, sorguyu tüm dağıtımların çalıştırılmadığından daraltabilirdi.
+- ,,, `JOIN` `GROUP BY` `DISTINCT` `OVER` Ve `HAVING` yan tümcelerinde kullanılır. İki büyük olgu tablosunun sık birleşme durumunda, her iki tabloyu da birleştirme sütunlarından birine dağıttığınızda sorgu performansı artar.  Bir tablo birleşimlerde kullanılmazsa, tabloyu yan tümcesindeki sık kullanılan bir sütuna dağıtmayı düşünün `GROUP BY` .
+- *not* `WHERE` Yan tümcelerde kullanılmaz. Bu, sorguyu tüm dağıtımların çalıştırılmadığından daraltabilirdi.
 - Bir tarih sütunu *değil* . WHERE yan tümceleri genellikle tarihe göre filtreleyerek.  Bu durumda, tüm işleme yalnızca birkaç dağıtımda çalıştırılabilir.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Sütunlardan hiçbiri iyi bir dağıtım sütunu olmadığında yapmanız gerekenler
@@ -169,7 +169,7 @@ Bir JOIN sırasında veri hareketini önlemek için:
 - Birleşime dahil olan tabloların, birleşime katılan sütunlardan **birinde** karma dağıtılmış olması gerekir.
 - JOIN sütunlarının veri türleri her iki tablo arasında aynı olmalıdır.
 - Sütunlar bir Equals işleci ile birleştirilmelidir.
-- JOIN türü bir `CROSS JOIN`olamaz.
+- JOIN türü bir olamaz `CROSS JOIN` .
 
 Sorguların veri hareketi yaşamadığını görmek için sorgu planına bakabilirsiniz.  
 

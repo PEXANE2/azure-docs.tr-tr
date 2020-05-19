@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b646f1994c83dba18b246dc3738729058ce6922d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1802a8d68030dbc882b4687cae28668f5a1e7a29
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69907038"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587073"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69907038"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-En sevdiğiniz IDE/düzenleyiciyi veya masaüstünüzde yeni bir klasörü kullanarak yeni bir go projesi oluşturun. Sonra bu kod parçacığını, adlı `dictionaryLookup.go`bir dosyadaki projenize/klasörünüze kopyalayın.
+En sevdiğiniz IDE/düzenleyiciyi veya masaüstünüzde yeni bir klasörü kullanarak yeni bir go projesi oluşturun. Sonra bu kod parçacığını, adlı bir dosyadaki projenize/klasörünüze kopyalayın `dictionaryLookup.go` .
 
 ```go
 package main
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>Main işlevini oluşturma
 
-Bu örnek, bu ortam değişkenlerinden Translator Metin Çevirisi abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` ve. `TRANSLATOR_TEXT_ENDPOINT` Ortam değişkenlerine alışkın değilseniz, dizeler ayarlayabilir ve koşullu deyimleri açıklama `subscriptionKey` `endpoint` olarak ayarlayabilirsiniz.
+Bu örnek, bu ortam değişkenlerinden Translator abonelik anahtarınızı ve uç noktasını okumaya çalışacaktır: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` ve `TRANSLATOR_TEXT_ENDPOINT` . Ortam değişkenlerine alışkın değilseniz, dizeler ayarlayabilir ve `subscriptionKey` `endpoint` koşullu deyimleri açıklama olarak ayarlayabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-get-alternate-translations"></a>Alternatif çeviriler almak için bir işlev oluşturma
 
-Alternatif çeviriler almak için bir işlev oluşturalım. Bu işlev, Translator Metin Çevirisi abonelik anahtarınızı tek bir bağımsız değişken alır.
+Alternatif çeviriler almak için bir işlev oluşturalım. Bu işlev, çevirmen abonelik anahtarınızı tek bir bağımsız değişken alır.
 
 ```go
 func dictionaryLookup(subscriptionKey string, uri string) {
@@ -78,7 +78,7 @@ func dictionaryLookup(subscriptionKey string, uri string) {
 }
 ```
 
-Sonra URL 'YI oluşturalım. URL, `Parse()` ve `Query()` yöntemleri kullanılarak oluşturulmuştur. Parametrelerinin `Add()` yöntemiyle eklendiğini fark edeceksiniz. Bu örnekte, Ingilizce 'den Ispanyolca 'ya çeviriyoruz.
+Sonra URL 'YI oluşturalım. URL, ve yöntemleri kullanılarak oluşturulmuştur `Parse()` `Query()` . Parametrelerinin yöntemiyle eklendiğini fark edeceksiniz `Add()` . Bu örnekte, Ingilizce 'den Ispanyolca 'ya çeviriyoruz.
 
 Bu kodu `altTranslations` işleve kopyalayın.
 
@@ -92,11 +92,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Sözlük Arama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator 3,0: sözlük arama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
 
 ## <a name="create-a-struct-for-your-request-body"></a>İstek gövde'niz için bir struct oluşturun
 
-Sonra, istek gövdesi için anonim bir yapı oluşturun ve bunu ile `json.Marshal()`JSON olarak kodlayın. Bu kodu `altTranslations` işleve ekleyin.
+Sonra, istek gövdesi için anonim bir yapı oluşturun ve bunu ile JSON olarak kodlayın `json.Marshal()` . Bu kodu `altTranslations` işleve ekleyin.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -110,7 +110,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>İsteği oluşturma
 
-İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve Translator Metin Çevirisi API'si çağırabilirsiniz.
+İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve çeviriciyi çağırabilirsiniz.
 
 ```go
 // Build the HTTP POST request
@@ -122,18 +122,18 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
 }
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil etmeniz gerekir `Ocp-Apim-Subscription-Region` . [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="handle-and-print-the-response"></a>Yanıtı işleme ve yazdırma
 
-JSON yanıtının kodunu çözmek için `altTranslations` bu kodu işleve ekleyin ve ardından sonucu biçimlendirin ve yazdırın.
+`altTranslations`JSON yanıtının kodunu çözmek için bu kodu işleve ekleyin ve ardından sonucu biçimlendirin ve yazdırın.
 
 ```go
 // Decode the JSON response
@@ -148,7 +148,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-İşte bu kadar! Translator Metin Çevirisi API'sini çağıran ve bir JSON yanıtı döndüren basit bir program oluşturdunuz. Artık programınızı çalıştırmak zamanı geldi:
+Bu, çeviriciyi çağıracak ve JSON yanıtı döndüren basit bir programı birlikte yerleştirdiniz. Artık programınızı çalıştırmak zamanı geldi:
 
 ```console
 go run dictionaryLookup.go
@@ -219,7 +219,7 @@ Kodunuzu bizimkiyle karşılaştırmak isterseniz, tam örnek kodu [GitHub](http
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmenle gerçekleştirebileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -9,38 +9,38 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80370251"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587111"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Hızlı başlangıç: çeviri için özel model oluşturma, dağıtma ve kullanma
 
 Bu makalede, özel çevirmenle bir çeviri sistemi oluşturmak için adım adım yönergeler sağlanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Özel çevirmen](https://portal.customtranslator.azure.ai) portalını kullanmak için, oturum açmak için bir [MICROSOFT HESABı](https://signup.live.com) veya [Azure AD hesabına](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure üzerinde barındırılan kuruluş hesabı) ihtiyacınız olacaktır.
 
-2. Azure portal üzerinden Translator Metin Çevirisi API'si bir abonelik. Özel çevirmende çalışma alanınız ile ilişkilendirilecek Translator Metin Çevirisi API'si abonelik anahtarına ihtiyacınız olacak. Bkz. [Translator metin çevirisi API'si kaydolma](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Azure portal aracılığıyla çeviriciye bir abonelik. Özel çevirmende çalışma alanınız ile ilişkilendirmek için Translator abonelik anahtarına ihtiyacınız olacak. Bkz. [çevirmene kaydolma](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Yukarıdakilerden her ikisine de sahip olduğunuzda, çalışma alanları, projeler, dosyaları karşıya yükleme ve model oluşturma/dağıtma modelleri oluşturmak için [özel çevirmen](https://portal.customtranslator.azure.ai) portalında oturum açın.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-İlk kez Kullanıcı kullanıyorsanız, bir çalışma alanı oluşturmak ve çalışma alanınızı Microsoft Translator Metin Çevirisi API'si aboneliğiyle ilişkilendirmek için hizmet koşullarını kabul etmeniz istenir.
+İlk kez Kullanıcı kullanıyorsanız, hizmet koşulları 'nı kabul etmeniz istenir, bir çalışma alanı oluşturup çalışma alanınızı Translator aboneliğiyle ilişkilendirebilirsiniz.
 
 ![](media/quickstart/terms-of-service.png)
-![Çalışma](media/quickstart/create-workspace-1.png)
-![](media/quickstart/create-workspace-2.png)
-![](media/quickstart/create-workspace-3.png)
-alanı oluşturma çalışma alanı oluştur çalışma alanı oluştur çalışma alanı oluştur çalışma alanı oluştur çalışma alanı oluştur![](media/quickstart/create-workspace-4.png)
-![](media/quickstart/create-workspace-5.png)
-![](media/quickstart/create-workspace-6.png)
+Çalışma alanı oluşturma çalışma alanı oluştur çalışma alanı oluştur ![ çalışma alanı oluştur ](media/quickstart/create-workspace-1.png)
+ ![ ](media/quickstart/create-workspace-2.png)
+ ![ ](media/quickstart/create-workspace-3.png)
+ ![ ](media/quickstart/create-workspace-4.png)
+ ![ çalışma ](media/quickstart/create-workspace-5.png)
+ ![ alanı oluştur çalışma alanı oluştur](media/quickstart/create-workspace-6.png)
 
-Özel çevirmen portalının sonraki ziyaretlerde, çalışma alanınızı yönetebileceğiniz ayarlar sayfasına gidin, daha fazla çalışma alanı oluşturun, Microsoft Translator Metin Çevirisi API'si abonelik anahtarınızı çalışma alanlarınız ile ilişkilendirin, ikincil sahipler ekleyin ve bir abonelik anahtarını değiştirin.
+Özel çevirmen portalının sonraki ziyaretlerde, çalışma alanınızı yönetebileceğiniz ayarlar sayfasına gidin, daha fazla çalışma alanı oluşturun, çevirmen abonelik anahtarınızı çalışma alanlarınız ile ilişkilendirin, ikincil sahipler ekleyin ve bir abonelik anahtarını değiştirin.
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
@@ -83,7 +83,7 @@ Eğitilen modelinizi dağıtmaya hazırsanız, "Dağıt" düğmesine tıklayın.
 
 ## <a name="use-a-deployed-model"></a>Dağıtılan bir model kullan
 
-Dağıtılmış modellere, [CategoryID 'yi belirterek Microsoft Translator metin API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla erişilebilir. Translator Metin Çevirisi API'si hakkında daha fazla bilgi [API başvuru](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web sayfasında bulunabilir.
+Dağıtılmış modellere, [CategoryID 'yi belirterek Microsoft Translator metin API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla erişilebilir. Çevirmen hakkında daha fazla bilgi için [API başvuru](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web sayfasında bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

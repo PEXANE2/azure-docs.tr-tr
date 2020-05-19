@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: metin betiğini Dönüştür-Translator Metin Çevirisi'
+title: 'Hızlı başlangıç: metin betiğini Dönüştür-Translator'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Translator Metin Çevirisi API'si kullanarak metni bir betikten diğerine (dönüştürme) nasıl ayırt leyeceğinizi öğreneceksiniz. Bu örnekte Japonca, Latin alfabesine dönüştürülmektedir.
+description: Bu hızlı başlangıçta, çeviriciyi kullanarak metni bir betikten diğerine (dönüştürme) nasıl ayırt leyeceğinizi öğreneceksiniz. Bu örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 4247983fd39cd8d9acf256d313ae10aa2002585f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ca53abdecfdabb4a49bb45880c0f6c4856b3ed1a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525133"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586573"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Hızlı başlangıç: metni alfabeden ayırmak için Translator Metin Çevirisi API'si kullanın
+# <a name="quickstart-use-the-translator-to-transliterate-text"></a>Hızlı başlangıç: metni alfabeye eklemek için çeviriciyi kullanın
 
-Bu hızlı başlangıçta, Translator Metin Çevirisi REST API kullanarak metni bir betikten diğerine nasıl dönüştüreceğinizi öğreneceksiniz. Verilen örnekte Japonca, Latin alfabesine dönüştürülmektedir.
+Bu hızlı başlangıçta, çeviriciyi REST API kullanarak metni bir betikten diğerine nasıl dönüştüreceğinizi öğreneceksiniz. Verilen örnekte Japonca, Latin alfabesine dönüştürülmektedir.
 
-Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu hızlı başlangıç, bir çevirmen kaynağı içeren bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/transliterate-csharp.md)]

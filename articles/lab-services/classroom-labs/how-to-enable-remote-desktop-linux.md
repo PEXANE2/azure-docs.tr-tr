@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: spelluru
-ms.openlocfilehash: dfd16d0977504e598492225238d29c83fcb7a028
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: a40575340fc5b1c202be6b001807085954439f03
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598071"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588165"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services bir laboratuvardaki Linux sanal makineleri için Uzak Masaüstü 'nü etkinleştirme
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 
 - Linux VM için Uzak Masaüstü 'nü etkinleştirme
-- Öğretmen, Uzak Masaüstü Bağlantısı (RDP) aracılığıyla şablon VM 'sine nasıl bağlanabilir.
+- Bir eğitimci, şablon VM 'ye Uzak Masaüstü Bağlantısı (RDP) aracılığıyla bağlanabilir.
 
 ## <a name="enable-remote-desktop-for-linux-vm"></a>Linux VM için Uzak Masaüstü 'nü etkinleştirme
-Laboratuvar oluşturma sırasında, öğretmenler **Linux** görüntüleri için **Uzak Masaüstü bağlantısı** 'nı etkinleştirebilir. Şablon için bir Linux görüntüsü seçildiğinde **etkinleştir Uzak Masaüstü bağlantısı** seçeneği görüntülenir. Bu seçenek etkinleştirildiğinde, öğretmenler RDP (Uzak Masaüstü) aracılığıyla şablon VM ve öğrenci VM 'lerine bağlanabilir. 
+Laboratuvar oluşturma sırasında eğitimciler, **Linux** görüntüleri için **Uzak Masaüstü bağlantısı** 'nı etkinleştirebilir. Şablon için bir Linux görüntüsü seçildiğinde **etkinleştir Uzak Masaüstü bağlantısı** seçeneği görüntülenir. Bu seçenek etkinleştirildiğinde, eğitimciler RDP (Uzak Masaüstü) aracılığıyla şablon VM ve öğrenci VM 'lerine bağlanabilir. 
 
 ![Linux görüntüsü için Uzak Masaüstü bağlantısını etkinleştirme](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
@@ -49,7 +49,7 @@ Laboratuvar oluşturma sırasında, öğretmenler **Linux** görüntüleri için
 - Ubuntu Server 16,04 LTS
 
 ## <a name="connect-to-the-template-vm"></a>Şablon VM'ye bağlanma 
-Öğretmenler, önce SSH kullanarak şablon VM 'ye bağlanmalıdır ve buna RDP ve GUI paketleri yükler. Ardından, öğretmenler, şablon VM 'ye bağlanmak için RDP kullanabilir: 
+Eğitimciler, önce SSH kullanarak şablon VM 'ye bağlanmalıdır ve buna RDP ve GUI paketleri yükler. Daha sonra eğitimciler, şablon VM 'ye bağlanmak için RDP kullanabilir: 
 
 1. Araç çubuğunda **şablonu Özelleştir** ' i görürseniz, bunu seçin. Ardından, **şablonu Özelleştir** Iletişim kutusunda **devam** ' ı seçin. Bu eylem, şablon VM 'yi başlatır.  
 

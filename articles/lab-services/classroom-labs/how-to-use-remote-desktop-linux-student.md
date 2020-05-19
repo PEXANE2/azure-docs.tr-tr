@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ccad0698ea6560dd183cacc71f5f3a644e8220c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73585094"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588114"
 ---
 # <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarında Linux sanal makineleri için Uzak Masaüstü 'nü kullanma
 Bu makalede, öğrencilerin RDP/SSH kullanarak laboratuvara bir Linux sanal makinesine (VM) nasıl bağlanabildiği gösterilmektedir. 
@@ -29,9 +29,9 @@ Bu makalede, öğrencilerin RDP/SSH kullanarak laboratuvara bir Linux sanal maki
 > **Uzak Masaüstü bağlantısını** etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. Bir eğitmen, Linux makinesine ilk kez SSH kullanarak bağlanıp daha sonra RDP kullanarak Linux makinesine bağlanabilmeniz için RDP ve GUI paketleri yükleyebilir. 
 
 ## <a name="connect-to-the-student-vm"></a>Öğrenci VM 'sine bağlanma
-Öğrenciler, laboratuvar sahibi (öğretmen/Mesleme) ile birlikte Linux VM 'lerinde RDP 'yi makinede yüklü olan RDP ve GUI paketleri ile **yayımlar** . Adımlar aşağıdaki gibidir: 
+Laboratuvar sahibi (eğiticator), sanal makine VM 'yi makinede yüklü olan RDP ve GUI paketleri ile **yayımladıktan** sonra, Linux VM 'Lerinde, LINUX 'ta RDP oluşturabilir. Uygulamanız gereken adımlar: 
 
-1. Bir öğrenci, Labs portalında doğrudan (`https://labs.azure.com`) veya bir kayıt bağlantısı (`https://labs.azure.com/register/<registrationCode>`) kullanarak oturum açtığında, öğrencinin erişimi olan her laboratuvar için bir kutucuk görüntülenir. 
+1. Bir öğrenci, Labs portalında doğrudan ( `https://labs.azure.com` ) veya bir kayıt bağlantısı () kullanarak oturum açtığında `https://labs.azure.com/register/<registrationCode>` , öğrencinin erişimi olan her laboratuvar için bir kutucuk görüntülenir. 
 2. Kutucukta, durdurulmuş durumdaysa sanal makineyi başlatmak için düğmeyi değiştirin. 
 3. **Bağlan**’ı seçin. SANAL makineye bağlanmak için iki seçenek görürsünüz: **SSH** ve **Uzak Masaüstü**.
 

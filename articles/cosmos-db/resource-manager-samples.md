@@ -4,14 +4,14 @@ description: Azure Cosmos DB oluşturmak ve yapılandırmak için Azure Resource
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/08/2020
 ms.author: mjbrown
-ms.openlocfilehash: 501065875cafc035d491e606c016f3ad4dbfc5d4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a98aee61c3a330344b5b7fa0a5f7f53a65e5ecdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791638"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586159"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Resource Manager şablonları
 
@@ -22,6 +22,7 @@ Aşağıdaki tablolar Azure Cosmos DB için Azure Resource Manager şablonların
 |**Şablon**|**Açıklama**|
 |---|---|
 |[Bir Azure Cosmos hesabı, veritabanı, otomatik ölçeklendirme işleme ile kapsayıcı oluşturma](manage-sql-with-resource-manager.md#create-autoscale) | Bu şablon iki bölgede bir çekirdek (SQL) API hesabı, bir veritabanı ve otomatik ölçeklendirme işleme içeren bir kapsayıcı oluşturur. |
+|[Analitik depo ile Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma](manage-sql-with-resource-manager.md#create-analytical-store) | Bu şablon, analitik TTL etkin ve el ile veya otomatik ölçeklendirme üretimi kullanma seçeneği ile yapılandırılmış bir kapsayıcı içeren bir bölgede çekirdek (SQL) API hesabı oluşturur. |
 |[Standart (el ile) aktarım hızı ile bir Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma](manage-sql-with-resource-manager.md#create-manual) | Bu şablon, standart işleme sahip bir veritabanı ve kapsayıcı olmak üzere iki bölgede bir çekirdek (SQL) API hesabı oluşturur. |
 |[Saklı yordam, tetikleyici ve UDF ile bir Azure Cosmos hesabı, veritabanı ve kapsayıcısı oluşturma](manage-sql-with-resource-manager.md#create-sproc) | Bu şablon bir kapsayıcı için saklı yordam, tetikleyici ve UDF olan iki bölgede bir çekirdek (SQL) API hesabı oluşturur. |
 |[Mevcut bir Azure Cosmos hesabı için özel bir uç nokta oluşturma](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Bu şablon var olan bir sanal ağda mevcut bir Azure Cosmos Core (SQL) API hesabı için özel bir uç nokta oluşturur. |

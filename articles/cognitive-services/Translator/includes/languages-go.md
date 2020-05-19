@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: edde734409d064f1bff0212a1cbaecf136206772
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906938"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586921"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69906938"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-En sevdiğiniz IDE veya düzenleyiciyi veya masaüstünüzde yeni bir klasörü kullanarak yeni bir go projesi oluşturun. Sonra bu kod parçacığını, adlı `get-languages.go`bir dosyadaki projenize/klasörünüze kopyalayın.
+En sevdiğiniz IDE veya düzenleyiciyi veya masaüstünüzde yeni bir klasörü kullanarak yeni bir go projesi oluşturun. Sonra bu kod parçacığını, adlı bir dosyadaki projenize/klasörünüze kopyalayın `get-languages.go` .
 
 ```go
 package main
@@ -34,9 +34,9 @@ import (
 
 ## <a name="create-the-main-function"></a>Main işlevini oluşturma
 
-Uygulamamız için ana işlevi oluşturalım. Tek bir kod satırı olduğunu fark edeceksiniz. Bunun nedeni, Translator Metin Çevirisi için desteklenen dillerin listesini almak ve yazdırmak için tek bir işlev oluşturuluyoruz.
+Uygulamamız için ana işlevi oluşturalım. Tek bir kod satırı olduğunu fark edeceksiniz. Bunun nedeni, çevirmen için desteklenen dillerin listesini almak ve yazdırmak için tek bir işlev oluşturuluyoruz.
 
-Bu örnek, Translator Metin Çevirisi uç noktanızı bir ortam değişkeninden okumaya çalışır: `TRANSLATOR_TEXT_ENDPOINT`. Ortam değişkenlerini bilmiyorsanız, `endpoint` öğesini dize olarak ayarlayabilir ve koşul deyimini açıklama satırı yapabilirsiniz.
+Bu örnek, bir ortam değişkeninden çevirmen uç noktanızı okumayı deneyecek: `TRANSLATOR_TEXT_ENDPOINT` . Ortam değişkenlerini bilmiyorsanız, `endpoint` öğesini dize olarak ayarlayabilir ve koşul deyimini açıklama satırı yapabilirsiniz.
 
 Bu kodu projenize kopyalayın:
 
@@ -64,7 +64,7 @@ func getLanguages(uri string) {
 }
 ```
 
-Sonra URL 'YI oluşturalım. URL, `Parse()` ve `Query()` yöntemleri kullanılarak oluşturulmuştur.
+Sonra URL 'YI oluşturalım. URL, ve yöntemleri kullanılarak oluşturulmuştur `Parse()` `Query()` .
 
 Bu kodu `getLanguages` işleve kopyalayın.
 
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator Metin Çevirisi API’si 3.0: Diller](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Uç noktalar, rotalar ve istek parametreleri hakkında daha fazla bilgi için bkz. [Translator 3,0: diller](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ## <a name="build-the-request"></a>İsteği oluşturma
 
-İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve Translator Metin Çevirisi API'si çağırabilirsiniz.
+İstek gövdesini JSON olarak kodladığınıza göre, POST isteğinizi oluşturabilir ve çeviriciyi çağırabilirsiniz.
 
 ```go
 // Build the HTTP GET request
@@ -91,18 +91,18 @@ if err != nil {
 // Add required headers
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
 }
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil etmeniz gerekir `Ocp-Apim-Subscription-Region` . [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="handle-and-print-the-response"></a>Yanıtı işleme ve yazdırma
 
-JSON yanıtının kodunu çözmek için `getLanguages` bu kodu işleve ekleyin ve ardından sonucu biçimlendirin ve yazdırın.
+`getLanguages`JSON yanıtının kodunu çözmek için bu kodu işleve ekleyin ve ardından sonucu biçimlendirin ve yazdırın.
 
 ```go
 // Decode the JSON response
@@ -117,7 +117,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-İşte bu kadar! Translator Metin Çevirisi API'sini çağıran ve bir JSON yanıtı döndüren basit bir program oluşturdunuz. Artık programınızı çalıştırmak zamanı geldi:
+Bu, çeviriciyi çağıracak ve JSON yanıtı döndüren basit bir programı birlikte yerleştirdiniz. Artık programınızı çalıştırmak zamanı geldi:
 
 ```console
 go run get-languages.go
@@ -217,7 +217,7 @@ Başarılı bir yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçimind
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmenle gerçekleştirebileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

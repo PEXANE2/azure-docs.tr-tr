@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc5d2b8f7673488169ee3ae393efcb74ef0a27a2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996462"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588131"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Bu makalenin sonunda [denemeleri gönderme](#submit) hakkında daha fazla bilgi 
 
 Popüler çerçeveleri kullanarak model eğitimi kolaylaştırmak için Azure Machine Learning Python SDK, daha yüksek düzeyde bir soyutlama ve tahmin aracı sınıfı sağlar.  Bu sınıf, çalışma yapılandırmasını kolayca oluşturmanıza olanak tanır. Seçtiğiniz herhangi bir öğrenme çerçevesini kullanan eğitim betikleri göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz (örneğin, scikit-öğren). Bir ortam veya RunConfiguration nesneleri gibi katıştırılmış nesneleri otomatik olarak oluştururken eğitim için bir tahmin aracı kullanmanızı öneririz. Bu nesnelerin nasıl oluşturulduğuna ilişkin daha fazla denetime sahip olmak ve denemenizin çalışması için hangi paketlerin yükleneceğini belirlemek isterseniz, Azure Machine Learning Işlem üzerinde bir RunConfiguration nesnesi kullanarak eğitim denemeleri göndermek için [aşağıdaki adımları](#amlcompute) izleyin.
 
-Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
+Azure Machine Learning [Pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)ve [Ray rllib](how-to-use-reinforcement-learning.md)için belirli tahminler sağlar.
 
 Daha fazla bilgi için bkz. [tahmini ile ml modellerini eğitme](how-to-train-ml-models.md).
 
@@ -182,7 +182,7 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
 
     Kümeyi oluşturduğunuzda bir SSH Kullanıcı adı ve parolası belirtmeniz gerekir. HDInsight 'ı bir işlem hedefi olarak kullanmak için ihtiyacınız olduğu için bu değerleri de göz önünde ayırın.
     
-    Küme oluşturulduktan sonra, ana bilgisayar \<adı clustername>-SSH.azurehdinsight.NET ile bağlanın, burada \<clustername>, küme için verdiğiniz addır. 
+    Küme oluşturulduktan sonra, ana bilgisayar adı \< clustername>-SSH.azurehdinsight.NET ile bağlanın, burada \< clustername>, küme için verdiğiniz addır. 
 
 1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek için HDInsight kümesi IÇIN kaynak kimliği, Kullanıcı adı ve parola sağlamalısınız. HDInsight kümesinin kaynak KIMLIĞI, aşağıdaki dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve HDInsight kümesi adı kullanılarak oluşturulabilir:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
@@ -378,7 +378,7 @@ Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı 
 
 ### <a name="submit-the-experiment"></a>Denemeyi gönderme
 
-Denemeyi bir `ScriptRunConfig` nesneyle birlikte gönder.  Bu nesne şunları içerir:
+Denemeyi bir nesneyle birlikte gönder `ScriptRunConfig` .  Bu nesne şunları içerir:
 
 * **source_directory**: eğitim betiğinizi içeren kaynak dizin
 * **betik**: eğitim betiğini tanımla
@@ -393,7 +393,7 @@ Aynı denemeyi, [amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Bu örnek, eğitim için yalnızca bir işlem hedefi düğümü kullanmayı varsayılan olarak belirler. Birden fazla düğüm kullanmak için, çalıştırma yapılandırmasını istenen `node_count` düğüm sayısı olarak ayarlayın. Örneğin, aşağıdaki kod eğitim için kullanılan düğümlerin sayısını dört olarak ayarlar:
+> Bu örnek, eğitim için yalnızca bir işlem hedefi düğümü kullanmayı varsayılan olarak belirler. Birden fazla düğüm kullanmak için, `node_count` çalıştırma yapılandırmasını istenen düğüm sayısı olarak ayarlayın. Örneğin, aşağıdaki kod eğitim için kullanılan düğümlerin sayısını dört olarak ayarlar:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -409,7 +409,7 @@ Daha fazla bilgi için [ScriptRunConfig](https://docs.microsoft.com/python/api/a
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Azure Machine Learning CLı kullanarak çalıştırma yapılandırması oluşturma ve çalıştırma
 
-Çalışan yapılandırma oluşturmak ve farklı işlem hedeflerinde çalıştırmaları göndermek için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md) kullanabilirsiniz. Aşağıdaki örneklerde, mevcut bir Azure Machine Learning Çalışma Alanı olduğunu ve CLI komutunu kullanarak `az login` Azure 'da oturum açtığınızı varsayalım. 
+Çalışan yapılandırma oluşturmak ve farklı işlem hedeflerinde çalıştırmaları göndermek için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısı](reference-azure-machine-learning-cli.md) kullanabilirsiniz. Aşağıdaki örneklerde, mevcut bir Azure Machine Learning Çalışma Alanı olduğunu ve CLI komutunu kullanarak Azure 'da oturum açtığınızı varsayalım `az login` . 
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -421,7 +421,7 @@ Daha fazla bilgi için [ScriptRunConfig](https://docs.microsoft.com/python/api/a
 az ml folder attach
 ```
 
-Bu komut, farklı işlem `.azureml` hedeflerine yönelik yapılandırma dosyalarını çalıştıran şablon içeren bir alt klasör oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
+Bu komut `.azureml` , farklı işlem hedeflerine yönelik yapılandırma dosyalarını çalıştıran şablon içeren bir alt klasör oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
 
 ### <a name="structure-of-run-configuration-file"></a>Çalışma yapılandırma dosyasının yapısı
 
@@ -484,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Hiperdrive yapılandırmasında runconfig ve *Parameter Space* içindeki *arguments* bölümüne göz önünde bırakın. Eğitim betiğine geçirilecek komut satırı bağımsız değişkenlerini içerirler. Runconfig içindeki değer her yineleme için aynı kalır, hiper sürücü yapılandırma aralığı üzerinden yinelenir. Her iki dosyada de aynı bağımsız değişkeni belirtmeyin.
 
-Bu ```az ml``` CLI komutları hakkında daha fazla bilgi için [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
+Bu CLI komutları hakkında daha fazla bilgi için ```az ml``` [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
 
 <a id="gitintegration"></a>
 

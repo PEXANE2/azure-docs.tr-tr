@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a323bd9b9c605363963d5a25d1746727e379553
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393195"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587604"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
@@ -35,7 +35,7 @@ Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını g
 Şu anda Event Grid’e olay gönderme özelliği aşağıdaki Azure hizmetleri tarafından desteklenmektedir:
 
 - [Azure Uygulama Yapılandırması](event-schema-app-configuration.md)
-- [Azure Blob depolama](event-schema-blob-storage.md)
+- [Azure Blob Depolama](event-schema-blob-storage.md)
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
@@ -52,15 +52,15 @@ Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını g
 
 İşleyicinin özellikleriyle ilgili tüm ayrıntılar ve ilgili makaleler için bkz. [olay işleyicileri](event-handlers.md). Şu anda Event Grid’den olay işleme özelliği aşağıdaki Azure hizmetleri tarafından desteklenmektedir: 
 
-* [Azure Otomasyonu](event-handlers.md#azure-automation)
-* [Azure İşlevleri](event-handlers.md#azure-functions)
-* [Event Hubs](event-handlers.md#event-hubs)
-* [Karma Bağlantılar](event-handlers.md#hybrid-connections)
-* [Logic Apps](event-handlers.md#logic-apps)
+* [Azure Otomasyonu](handler-webhooks.md#azure-automation)
+* [Azure İşlevleri](handler-functions.md)
+* [Event Hubs](handler-event-hubs.md)
+* [Geçiş Karma Bağlantılar](handler-relay-hybrid-connections.md)
+* [Logic Apps](handler-webhooks.md#logic-apps)
 * [Güç otomatikleştirme (eskiden Microsoft Flow olarak bilinirdi)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Service Bus](event-handlers.md#service-bus)
-* [Kuyruk Depolama](event-handlers.md#queue-storage)
-* [WebHooks](event-handlers.md#webhooks)
+* [Service Bus](handler-service-bus.md)
+* [Kuyruk Depolama](handler-storage-queues.md)
+* [WebHooks](handler-webhooks.md)
 
 ## <a name="concepts"></a>Kavramlar
 

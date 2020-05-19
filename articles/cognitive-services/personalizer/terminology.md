@@ -2,13 +2,13 @@
 title: Terminoloji-kişiselleştirici
 description: Kişiselleştirici, pekiştirmeye dayalı Learning 'teki terminolojiyi kullanır. Bu terimler Azure portal ve API 'lerde kullanılır.
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624280"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586312"
 ---
 # <a name="terminology"></a>Terminoloji
 
@@ -19,6 +19,15 @@ Kişiselleştirici, pekiştirmeye dayalı Learning 'teki terminolojiyi kullanır
 * **Öğrenme döngüsü**: uygulamanızın, kişiselleştirmeye faydalanabilir her bölümü için, _öğrenme döngüsü_olarak adlandırılan bir kişiselleştirici kaynağı oluşturursunuz. Kişiselleştirmek için birden fazla deneyim varsa, her biri için bir döngü oluşturun.
 
 * **Model**: bir kişiselleştirici modeli, Kullanıcı davranışı hakkında öğrenilen tüm verileri yakalar, daha fazla bilgi almak için göndereceğiniz bağımsız değişkenlerin birleşiminden eğitim verileri alma ve öğrenme ilkesi tarafından belirlenen bir eğitim davranışı.
+
+* **Çevrimiçi mod**: öğrenme döngünüz için **en iyi eylemi** tahmin eden bir model oluşturmak için Machine Learning 'i kullanan kişiselleştirici için varsayılan [öğrenme davranışı](#learning-behavior) .
+
+* **Apprenlet modu**: uygulamalar arası sonuçları ve eylemleri etkilemeden eğitede bir kişiselleştirici model başlatmaya yardımcı olan bir [öğrenme davranışı](#learning-behavior) .
+
+## <a name="learning-behavior"></a>Öğrenme davranışı:
+
+* **Çevrimiçi mod**: en iyi eylemi döndürür. Modeliniz en iyi eylemle birlikte işlem çağrılarına yanıt verir ve seçimlerini zaman içinde öğrenmek ve geliştirmek için yeniden çağrılar kullanacaktır.
+* **[Apprenlet modu](concept-apprentice-mode.md)**: apprenlet olarak öğrenme. Modelinize, mevcut sisteminizin davranışını gözlemleyerek bilgi edineceksiniz. Derecelendirme çağrıları her zaman uygulamanın **varsayılan eylemini** (taban çizgisi) döndürür.
 
 ## <a name="personalizer-configuration"></a>Kişiselleştirici yapılandırması
 
@@ -63,8 +72,21 @@ Kişiselleştirici [Azure Portal](https://portal.azure.com)bir şekilde yapılan
 
 * **Ödül**: kullanıcının sıralama API 'si tarafından döndürülen geri alma eylemi kimliğine nasıl yanıt verdiğini gösteren bir ölçü, 0 ile 1 arasında bir puan olarak. 0-1 değeri, iş mantığınızla belirlenir ve bu seçenek, nasıl kişiselleştirmenin iş hedeflerine nasıl ulaştığından yardımcı olur. Öğrenme döngüsü, bu yeniden Kullanıcı Geçmişi olarak depolamaz.
 
-## <a name="offline-evaluations"></a>Çevrimdışı değerlendirmeler
+## <a name="evaluations"></a>Lerim
 
-* **Değerlendirme**: çevrimdışı bir değerlendirme, döngünüz için en iyi öğrenme ilkesini döngünün verilerine göre belirler.
+### <a name="offline-evaluations"></a>Çevrimdışı değerlendirmeler
+
+* **Değerlendirme**: çevrimdışı bir değerlendirme, uygulamanızın verilerine göre döngünüz için en iyi öğrenme ilkesini belirler.
 
 * **Öğrenme ilkesi**: her olay üzerinde kişiselleştirici, makine öğrenimi algoritmasının nasıl çalıştığını etkileyen bazı parametrelere göre belirlenir. Yeni bir öğrenme döngüsü, varsayılan bir **öğrenme ilkesiyle**başlar ve bu, orta düzeyde performans sağlayabilir. [Değerlendirme](concepts-offline-evaluation.md)çalıştırılırken, kişiselleştirici, özel olarak döngülerinizin kullanım örneklerine iyileştirilmiş yeni öğrenme ilkeleri oluşturur. Kişiselleştirmede, değerlendirme sırasında oluşturulan her bir döngü için en iyi duruma getirilmiş ilkelerle önemli ölçüde daha iyi işlem yapılır. Öğrenme ilkesi, Azure portal ' deki kişiselleştirici kaynak için **model ve öğrenme ayarları** ' nda _öğrenme ayarları_ olarak adlandırılır.
+
+### <a name="apprentice-mode-evaluations"></a>Apprence modu değerlendirmeleri
+
+Apprenlet modu aşağıdaki **değerlendirme ölçümlerini**sağlar:
+* **Taban çizgisi – ortalama ödül**: uygulamanın varsayılan (taban çizgisi) ortalama yeniden sürümleri.
+* **Kişiselleştirici – ortalama ödül**: Toplam Rede kişiselleştiriciye ait ortalama, potansiyel olarak gelmiş olabilir.
+* **Ortalama hareketli geri**alma: en son 1000 olay üzerinden normalleştirilmeli ve kişiselleştirici geri alma oranı.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Ahlak ve sorumlu kullanım](ethics-responsible-use.md) hakkında bilgi edinin

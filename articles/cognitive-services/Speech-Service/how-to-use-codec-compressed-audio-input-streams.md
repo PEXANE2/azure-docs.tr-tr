@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637293"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585037"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
-Konuşma hizmeti SDK 'Sı **sıkıştırılmış ses girişi akış** API 'si, `PullStream` veya `PushStream`kullanarak konuşma hizmetine sıkıştırılmış ses akışını sağlamanın bir yolunu sağlar.
+Konuşma hizmeti SDK 'Sı **sıkıştırılmış ses girişi akış** API 'si, veya kullanarak konuşma hizmetine sıkıştırılmış ses akışını sağlamanın bir yolunu sağlar `PullStream` `PushStream` .
 
-Şu anda C#, C++, Windows üzerinde Java (UWP uygulamaları desteklenmez) ve Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8) için akış sıkıştırılmış giriş sesi desteklenmektedir. Ayrıca iOS platformunda Android ve amaç-C ' d a Java için de desteklenir.
+Şu anda C#, C++, Windows üzerinde Java (UWP uygulamaları desteklenmez) ve Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 7/8, CentOS 7/8) için sıkıştırılmış giriş sesi akışı desteklenmektedir. Ayrıca iOS platformunda Android ve amaç-C ' d a Java için de desteklenir.
 * RHEL 8 ve CentOS 8 için konuşma SDK sürümü 1.10.0 veya üzeri gereklidir
 * Windows için konuşma SDK sürümü 1.11.0 veya üzeri gereklidir.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/csharp/prerequisites.md)]

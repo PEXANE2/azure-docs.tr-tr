@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199479"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585937"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması (Önizleme)
 
@@ -72,7 +72,7 @@ Kabul etme eyleminin etkili olması birkaç dakika sürebilir. Bundan sonra, yal
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Azure AD portalını kullanmayı kabul etmek için
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-3.  **Kurumsal ilişki**  >  **ayarları** ' nı seçin (veya **dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin).
+3.  **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
 5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Evet**' i seçin.
  
 ### <a name="to-opt-in-using-powershell"></a>PowerShell 'i kullanmayı kabul etmek için
@@ -138,7 +138,7 @@ Geri çevirme eyleminin etkili olması birkaç dakika sürebilir. Önizlemeyi ka
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Azure AD portalını kullanarak önizlemeyi devre dışı bırakmak için
 1.  [Azure Portal](https://portal.azure.com/) Azure AD Genel Yöneticisi olarak oturum açın.
 2.  Gezinti bölmesinde **Azure Active Directory**' yi seçin.
-3.  **Kurumsal ilişki**  >  **ayarları** ' nı seçin (veya **dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin).
+3.  **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
 5.  **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)** altında **Hayır**' ı seçin.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>PowerShell 'i kullanarak önizlemeyi devre dışı bırakmak için

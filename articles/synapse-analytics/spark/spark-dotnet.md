@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6943be033653d88b272817d2dcf58042aaaab616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430519"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587808"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın
 
 [Apache Spark için .net](https://dot.net/spark) , Spark için ücretsiz, açık kaynak ve platformlar arası .NET desteği sunmaktadır. .NET Apache Spark, Spark API 'Lerini C# ve F # aracılığıyla erişmenize olanak tanıyan Spark için .NET bağlamaları sağlar. Apache Spark için .NET sayesinde, .NET kullanarak Spark için Kullanıcı tanımlı işlevler yazma ve yürütme olanağınız vardır. Spark için .NET API 'Leri, Spark SQL ve yapılandırılmış akış dahil olmak üzere verilerinizi çözümlemenize yardımcı olan Spark 'ın tüm yönlerine erişmenizi sağlar.
 
-Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defterleri aracılığıyla Apache Spark için .NET ile verileri analiz edebilirsiniz. Bu makalede her iki tekniği kullanarak Azure SYNAPSE Apache Spark için .NET kullanmayı öğreneceksiniz. 
+Spark Batch iş tanımları veya etkileşimli Azure SYNAPSE Analytics Not defterleri aracılığıyla Apache Spark için .NET ile verileri analiz edebilirsiniz. Bu makalede her iki tekniği kullanarak Azure SYNAPSE Apache Spark için .NET kullanmayı öğreneceksiniz.
 
 ## <a name="submit-batch-jobs-using-the-spark-job-definition"></a>Spark iş tanımını kullanarak Batch işlerini gönderme
 
@@ -52,11 +52,11 @@ Not defterleri, Apache Spark işlem hatları ve senaryolar için .NET uygulaman�
 
 ### <a name="how-to-use-notebooks"></a>Not defterlerini kullanma
 
-Yeni bir not defteri oluşturduğunuzda, iş mantığınızı ifade etmek istediğiniz bir dil çekirdeği seçersiniz. C# dahil olmak üzere çeşitli diller için çekirdek desteği vardır. 
+Yeni bir not defteri oluşturduğunuzda, iş mantığınızı ifade etmek istediğiniz bir dil çekirdeği seçersiniz. C# dahil olmak üzere çeşitli diller için çekirdek desteği vardır.
 
-Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiyorsanız, çekirdek olarak **.net Spark (C#)** öğesini seçin ve Not defterini mevcut bir Spark havuzuna ekleyin. 
+Azure SYNAPSE Analytics Not defterinizde Apache Spark için .NET kullanmak istiyorsanız, çekirdek olarak **.net Spark (C#)** öğesini seçin ve Not defterini mevcut bir Spark havuzuna ekleyin.
 
-.Net Spark Not defteri, .NET etkileşimli deneyimlerine dayalıdır ve daha önceden tanımlanmış Spark oturum değişkeniyle `spark` birlikte Box for Spark for the .NET kullanma özelliği Ile etkileşimli C# deneyimleri sağlar.
+.Net Spark Not defteri, .NET etkileşimli deneyimlerine dayalıdır ve daha önceden tanımlanmış Spark oturum değişkeniyle birlikte Box for Spark for the .NET kullanma özelliği ile etkileşimli C# deneyimleri sağlar `spark` .
 
 ### <a name="sparknet-c-kernel-features"></a>Spark.NET C# çekirdek özellikleri
 
@@ -69,7 +69,7 @@ Azure SYNAPSE Analytics not defterinde Apache Spark için .NET kullandığınız
 * [C# 8,0 dil özellikleri](/dotnet/csharp/whats-new/csharp-8?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)desteği.
 * Apache Spark oturumunuza erişim sağlamak için önceden tanımlanmış bir değişken olarak ' Spark '.
 * [Apache Spark içinde çalışabilen .NET Kullanıcı tanımlı işlevleri](https://github.com/dotnet/spark/blob/master/examples/Microsoft.Spark.CSharp.Examples/Sql)tanımlama desteği.
-* `XPlot.Plotly` Kitaplığı kullanarak farklı grafikleri (örneğin, çizgi, çubuk veya histogram) ve düzenleri (örneğin, tek, kaplama vb.) kullanarak Spark işlerinizde çıktıyı görselleştirmeye yönelik destek.
+* Kitaplığı kullanarak farklı grafikleri (örneğin, çizgi, çubuk veya histogram) ve düzenleri (örneğin, tek, kaplama vb.) kullanarak Spark işlerinizde çıktıyı görselleştirmeye yönelik destek `XPlot.Plotly` .
 * C# Not defterinize NuGet paketleri ekleme özelliği.
 
 ## <a name="next-steps"></a>Sonraki adımlar

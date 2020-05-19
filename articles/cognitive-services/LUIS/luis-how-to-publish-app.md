@@ -9,24 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053427"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585666"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
 
-Etkin LUSıS uygulamanızı oluşturma, eğitim ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin. 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+Etkin LUSıS uygulamanızı oluşturma, eğitim ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin.
 
 ## <a name="publishing"></a>Yayımlama
-
-1. Uç noktaya yayımlamak için, üstteki sağ panelde **Yayımla** ' yı seçin. 
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
+1. Uç noktaya yayımlamak için, üstteki sağ panelde **Yayımla** ' yı seçin.
 
     ![En üstte Yayımla düğmesi, sağ gezinti çubuğu](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -36,21 +35,21 @@ Etkin LUSıS uygulamanızı oluşturma, eğitim ve test etmeyi bitirdiğinizde, 
 
 ### <a name="publishing-slots"></a>Yayımlama Yuvaları
 
-Açılır pencere görüntülendiğinde doğru yuvayı seçin: 
+Açılır pencere görüntülendiğinde doğru yuvayı seçin:
 
 * Hazırlama
-* Üretim 
+* Üretim
 
-Bu, yayımlama yuvalarını iki farklı uç noktada veya aynı sürüme sahip olmak üzere, hem yayımlama yuvaları hem de uygulamanızın iki farklı sürümünün kullanılabilmesini sağlar. 
+Bu, yayımlama yuvalarını iki farklı uç noktada veya aynı sürüme sahip olmak üzere, hem yayımlama yuvaları hem de uygulamanızın iki farklı sürümünün kullanılabilmesini sağlar.
 
 ### <a name="publishing-regions"></a>Yayımlama bölgeleri
 
-Uygulama,**[Azure kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** **Yönet** -> sayfasından halsıs portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır. 
+Uygulama, **Manage**  ->  **[Azure kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** Yönet sayfasından halsıs portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır.
 
 Örneğin, [www.Luis.ai](https://www.luis.ai)üzerinde oluşturulan bir uygulama için, iki bölgede bir Luo kaynağı oluşturursanız, **westus** ve **eastus**ve bunları uygulamaya kaynak olarak eklerseniz, uygulama her iki bölgede da yayımlanır. LUO bölgeleri hakkında daha fazla bilgi için bkz. [bölgeler](luis-reference-regions.md).
 
 > [!TIP]
-> 3 yazma bölgesi vardır. Yayımlamak istediğiniz bölgede yazmanız gerekir. Tüm bölgelerde yayımlamanız gerekiyorsa, yazma işleminizi ve elde edilen eğitilen modeli tüm 3 yazma bölgelerinde yönetmeniz gerekir. 
+> 3 yazma bölgesi vardır. Yayımlamak istediğiniz bölgede yazmanız gerekir. Tüm bölgelerde yayımlamanız gerekiyorsa, yazma işleminizi ve elde edilen eğitilen modeli tüm 3 yazma bölgelerinde yönetmeniz gerekir.
 
 
 ## <a name="configuring-publish-settings"></a>Yayımlama ayarlarını yapılandırma
@@ -59,25 +58,25 @@ Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
 
 * Yaklaşım analizi
 * Yazım denetimi-yalnızca v2 tahmin uç noktası
-* Konuşma primi 
+* Konuşma primi
 
-Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir. 
+Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir.
 
 ### <a name="when-your-app-is-published"></a>Uygulamanız yayımlandığında
 
-Uygulamanız başarıyla yayımlandığında, tarayıcının en üstünde bir başarı bildirimi görüntülenir. Bildirim Ayrıca uç noktalara bir bağlantı içerir. 
+Uygulamanız başarıyla yayımlandığında, tarayıcının en üstünde bir başarı bildirimi görüntülenir. Bildirim Ayrıca uç noktalara bir bağlantı içerir.
 
-Uç nokta URL 'sine ihtiyacınız varsa bağlantıyı seçin. Üst menüden **Yönet** ' i seçip sol menüden **Azure kaynakları** ' nı seçerek uç nokta URL 'lerine de ulaşabilirsiniz. 
+Uç nokta URL 'sine ihtiyacınız varsa bağlantıyı seçin. Üst menüden **Yönet** ' i seçip sol menüden **Azure kaynakları** ' nı seçerek uç nokta URL 'lerine de ulaşabilirsiniz.
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
 <a name="enable-sentiment-analysis"></a>
 
-Yaklaşım analizi, LUTO 'NıN yaklaşım ve anahtar tümceciği analizi sağlamak için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ile tümleştirilemesine olanak tanır. 
+Yaklaşım analizi, LUTO 'NıN yaklaşım ve anahtar tümceciği analizi sağlamak için [metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) ile tümleştirilemesine olanak tanır.
 
-Bir Metin Analizi anahtarı sağlamanız gerekmez ve Azure hesabınızda bu hizmet için faturalandırma ücreti yoktur. 
+Bir Metin Analizi anahtarı sağlamanız gerekmez ve Azure hesabınızda bu hizmet için faturalandırma ücreti yoktur.
 
-Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır. , `positive` `neutral`Ve `negative` ' nin yaklaşım etiketi desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler. 
+Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır. , Ve ' nin yaklaşım etiketi `positive` `neutral` `negative` desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler.
 
 Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-concept-data-extraction.md#sentiment-analysis)
 

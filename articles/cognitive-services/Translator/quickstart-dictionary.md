@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: çift dilli sözlük ile sözcük arama-Translator Metin Çevirisi API'si"
+title: 'Hızlı başlangıç: iki dilli sözlük ile sözcükleri arama-Translator'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca Translator Metin Çevirisi API'si kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca çeviriciyi kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fe2f4f2bea52650c2baa2ac3380b5b92f01c15eb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525167"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587072"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Hızlı başlangıç: çift dilli sözlükte sözcükleri arama
 
-Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca Translator Metin Çevirisi API'si kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
+Bu hızlı başlangıçta, bir terim için alternatif çevirileri nasıl alabileceğinizi ve ayrıca çeviriciyi kullanarak bu alternatif çevirilerin kullanım örneklerini öğreneceksiniz.
 
-Bu hızlı başlangıç, Translator Metin Çevirisi kaynağına sahip bir [Azure Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
+Bu hızlı başlangıç, bir çevirmen kaynağı içeren bir Azure bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) gerektirir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]

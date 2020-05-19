@@ -1,7 +1,7 @@
 ---
-title: Karakter sayıları-Translator Metin Çevirisi API'si
+title: Karakter sayıları-çevirici
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure bilişsel hizmetler 'in içeriği nasıl saydığını anlayabilmeniz için karakterlerin kaç tanesinin Translator Metin Çevirisi API'si olduğu açıklanmaktadır.
+description: Bu makalede, Azure bilişsel hizmetler çeviricisinin, içeriğin nasıl alındığını anlayabilmeniz için karakterleri nasıl saydığı açıklanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0219940a4ac60e4a6187d13802c36e8bff1925b3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73888156"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587332"
 ---
-# <a name="how-the-translator-text-api-counts-characters"></a>Translator Metin Çevirisi API'si karakterlerin sayısı
+# <a name="how-the-translator-counts-characters"></a>Translator 'ın karakterleri sayısı
 
-Translator Metin Çevirisi API'si, giriş metninin her Unicode kod noktasını bir karakter olarak sayar. Bir metnin bir dile her çevirisi, isteğin tek bir API çağrısında yapılmış olsa bile birden çok dile çevrilirken ayrı bir çeviri olarak sayılır. Yanıtın uzunluğu önemi değildir.
+Çevirici her Unicode kod noktasını bir karakter olarak sayar. Bir metnin bir dile her çevirisi, isteğin tek bir API çağrısında yapılmış olsa bile birden çok dile çevrilirken ayrı bir çeviri olarak sayılır. Yanıtın uzunluğu önemi değildir.
 
 Hangi sayımlar şunlardır:
 
-* İsteğin gövdesinde Translator Metin Çevirisi API'si geçirilen metin
+* İsteğin gövdesinde çevirmene geçirilen metin
    * `Text`Çeviri, alfabe ve sözlük arama yöntemlerini kullanırken
-   * `Text``Translation` sözlük örnekleri yöntemi kullanılırken
+   * `Text``Translation`Sözlük örnekleri yöntemi kullanılırken
 * Tüm biçimlendirme: HTML, XML etiketleri, vb. istek gövdesinin metin alanı içinde. İsteği oluşturmak için kullanılan JSON gösterimi (örneğin, "metin:") sayılmaz.
 * Tek bir harf
 * Noktalama işaretleri
@@ -33,11 +33,10 @@ Hangi sayımlar şunlardır:
 * Unicode 'da tanımlanan her kod noktası
 * Daha önce aynı metni çevirseniz bile yinelenen çeviri
 
-Çince ve Japonca Kanji gibi ideograms tabanlı betikler için Translator Metin Çevirisi API'si, İdeogram başına bir karakter olan Unicode kod noktalarının sayısını yine de sayacaktır. Özel durum: Unicode yedeklerin kapıları iki karakter olarak sayılır.
+Çince ve Japonca Kanji gibi ideograms tabanlı betikler için, çevirmen hizmeti, İdeogram başına bir karakter olan Unicode kod noktalarının sayısını yine de sayar. Özel durum: Unicode yedeklerin kapıları iki karakter olarak sayılır.
 
 İstek, sözcük, bayt veya cümle sayısı karakter sayısında ilgisiz değildir.
 
 Algılama ve Breakcümlesi yöntemlerine yapılan çağrılar, karakter tüketimine göre sayılmaz. Ancak, Algıla ve Breakcümlesi yöntemlerine yapılan çağrıların, sayılan diğer işlevlerin kullanımına yönelik makul bir ORANTA olmasını umuz. Yaptığınız algılama veya Breakcümle çağrılarının sayısı 100 kez diğer sayılan yöntemlerin sayısını aşarsa, Microsoft, Algıla ve Breakcümlesi yöntemlerinin kullanımını kısıtlama hakkını saklı tutar.
 
-
-Karakter sayıları hakkında daha fazla bilgi için [Microsoft Translator SSS](https://www.microsoft.com/en-us/translator/faq.aspx)' de yer alır.
+Karakter sayıları hakkında daha fazla bilgi, [ÇEVIRMEN SSS](https://www.microsoft.com/en-us/translator/faq.aspx)' de yer alır.

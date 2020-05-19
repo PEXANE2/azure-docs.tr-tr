@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219516"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587263"
 ---
 # <a name="how-to-manage-settings"></a>Ayarları yönetme
 
@@ -29,11 +29,11 @@ Ayarlar sayfasına erişmek için:
 
 ## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator aboneliğini ilişkilendirme
 
-Modelleri eğitmek veya dağıtmak için çalışma alanınız ile ilişkili bir Microsoft Translator Metin Çevirisi API'si abonelik anahtarınız olması gerekir.
+Modelleri eğitmek veya dağıtmak için çalışma alanınız ile ilişkili bir Translator abonelik anahtarına sahip olmanız gerekir.
 
 Aboneliğiniz yoksa, aşağıdaki adımları izleyin:
 
-1. Microsoft Translator Metin Çevirisi API'si abone olun. Bu makalede, Microsoft Translator Metin Çevirisi API'si nasıl abone olunacağı gösterilmektedir.
+1. Çevirmene abone olun. Bu makalede, çevirmen için nasıl abone olunacağı gösterilmektedir.
 2. Çevirmen aboneliğinizin anahtarını aklınızda edin. KEY1 veya key2 seçeneklerinden biri kabul edilebilir.
 3. Özel çevirmen portalına geri gidin.
 

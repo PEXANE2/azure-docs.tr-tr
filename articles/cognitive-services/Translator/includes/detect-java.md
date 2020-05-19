@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4c10cbec8e22a383ed303b169551999a805f4db6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71837511"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587210"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir detect-sample
 cd detect-sample
 ```
 
-Sonra, bir Gradle projesi başlatacağız. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan, en önemlisi `build.gradle.kts`, Gradle için önemli derleme dosyaları oluşturur. Çalışma dizininizden bu komutu çalıştırın:
+Sonra, bir Gradle projesi başlatacağız. Bu komut, `build.gradle.kts` uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan, en önemlisi, Gradle için önemli derleme dosyaları oluşturur. Çalışma dizininizden bu komutu çalıştırın:
 
 ```console
 gradle init --type basic
@@ -34,7 +34,7 @@ Bir **DSL**seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 ## <a name="configure-the-build-file"></a>Yapı dosyasını yapılandırma
 
-En `build.gradle.kts` sevdiğiniz IDE veya metin düzenleyicinizle bulun ve açın. Sonra bu derleme yapılandırmasında Kopyala:
+En `build.gradle.kts` SEVDIĞINIZ IDE veya metin düzenleyicinizle bulun ve açın. Sonra bu derleme yapılandırmasında Kopyala:
 
 ```
 plugins {
@@ -63,11 +63,11 @@ Bu örnekte HTTP istekleri için OkHttp üzerinde bağımlılıklar ve JSON 'u i
 mkdir -p src/main/java
 ```
 
-Ardından, bu klasörde adlı `Detect.java`bir dosya oluşturun.
+Ardından, bu klasörde adlı bir dosya oluşturun `Detect.java` .
 
 ## <a name="import-required-libraries"></a>Gerekli kitaplıkları içeri aktar
 
-Bu `Detect.java` içeri aktarma deyimlerini açın ve ekleyin:
+`Detect.java`Bu içeri aktarma deyimlerini açın ve ekleyin:
 
 ```java
 import java.io.*;
@@ -88,7 +88,7 @@ public class Detect {
 }
 ```
 
-`Detect` Sınıfa bu satırları ekleyin. Abonelik anahtarı ve uç noktanın ortam değişkenlerinden okunmakta olduğunu fark edeceksiniz:
+Sınıfa bu satırları ekleyin `Detect` . Abonelik anahtarı ve uç noktanın ortam değişkenlerinden okunmakta olduğunu fark edeceksiniz:
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -96,11 +96,11 @@ private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/detect?api-version=3.0";
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil etmeniz gerekir `Ocp-Apim-Subscription-Region` . [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>İstemci oluşturma ve istek oluşturma
 
-Örneği oluşturmak için bu satırı `Detect` sınıfa ekleyin `OkHttpClient`:
+`Detect`Örneği oluşturmak için bu satırı sınıfa ekleyin `OkHttpClient` :
 
 ```java
 // Instantiates the OkHttpClient.
@@ -126,7 +126,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Yanıtı ayrıştırmak için bir işlev oluşturma
 
-Bu basit işlev, Translator Metin Çevirisi hizmetinden gelen JSON yanıtını ayrıştırır ve önceden inceler.
+Bu basit işlev, Translator hizmetinden gelen JSON yanıtını ayrıştırır ve önceden inceler.
 
 ```java
 // This function prettifies the json response.
@@ -202,7 +202,7 @@ gradle run
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmenle gerçekleştirebileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,7 +1,7 @@
 ---
-title: Küfür filtrelemesi-Translator Metin Çevirisi API'si
+title: Küfür filtrelemesi-çevirmen
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler Translator Metin Çevirisi API'si metninizi çevrilmiş bir küfür düzeyini öğrenmek için uygunsuz metin filtrelemeyi kullanın.
+description: Azure bilişsel hizmetler çeviricisinin metinlerinize çevrilmiş bir küfür düzeyini öğrenmek için uygunsuz metin filtrelemeyi kullanın.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 864f6a6d92306c40713f66b526c8a8df1683d3c4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836221"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586805"
 ---
-# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Translator Metin Çevirisi API'si ile küfür filtrelemesi ekleme
+# <a name="add-profanity-filtering-with-the-translator"></a>Çevirmenle bir küfür filtresi ekleme
 
 Normalde çevirmen hizmeti, çevirinin kaynağında bulunan küfür 'ı korur. Küfür derecesi ve küfürlü sözcüklerini yapan bağlam, kültürler arasında farklılık gösterir. Sonuç olarak, hedef dildeki küfür derecesi, daha fazla veya daha az olabilir.
 
@@ -29,9 +29,9 @@ Translate () yöntemi "ProfanityAction" Yeni öğesini içeren "Options" paramet
 |ProfanityAction değeri | Eylem | Örnek: kaynak-Japonca | Örnek: hedef-Ingilizce|
 | :---|:---|:---|:---|
 | NoAction | Varsayılan. Seçeneği ayarlamaya benzer. Küfür kaynaktan hedefe geçiyor. | 彼は変態です. | Bu bir Jerk. |
-| İm | Küfürlü kelimeler, XML etiketleri \<küfür>... \</küfür>. | 彼は変態です. | >Jerk \<\</küfür> bir küfür. |
-| Silme | Küfürlü sözcükler, değişiklik yapılmadan çıktıdan kaldırılır. | 彼は. | Bir. |
+| İm | Küfürlü kelimeler, XML etiketleri \< küfür>... \< /küfür>. | 彼は変態です. | \<>Jerk \< /küfür> bir küfür. |
+| Silindi | Küfürlü sözcükler, değişiklik yapılmadan çıktıdan kaldırılır. | 彼は. | Bir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Çevirmen API çağrlarınız ile uygunsuz filtre uygulama](reference/v3-0-translate.md)
+> [Çevirmen çağrlarınız ile uygunsuz filtre uygulama](reference/v3-0-translate.md)

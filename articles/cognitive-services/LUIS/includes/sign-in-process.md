@@ -7,21 +7,21 @@ manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e2a74f69f575f4b9b332b98d7e19089418b29ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77371719"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585269"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Lug portalında oturum açma
 
 LUBUNA yeni bir kullanıcının bu yordamı izlemesi gerekir:
 
-1. [Luu portalında oturum açın (Önizleme)](https://preview.luis.ai), ülkenizi seçin ve kullanım koşullarını kabul edin. Bunun yerine **uygulamalarımı** görürseniz, bir Luo kaynağı zaten mevcuttur ve bir uygulama oluşturmak için bir atlama yapmanız gerekir.
+1. [Luu portalında](https://www.luis.ai)oturum açın, ülkenizi seçin ve kullanım koşullarını kabul edin. Bunun yerine **uygulamalarımı** görürseniz, bir Luo kaynağı zaten mevcuttur ve bir uygulama oluşturmak için bir atlama yapmanız gerekir.
 
 1. **Azure kaynağı oluştur** ' u seçin ve ardından **uygulamalarınızı geçirmek Için yazma kaynağı oluştur** ' u seçin.
 

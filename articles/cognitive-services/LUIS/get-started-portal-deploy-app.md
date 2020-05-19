@@ -2,13 +2,13 @@
 title: 'Hızlı başlangıç: LUO portalı ile uygulama dağıtma'
 description: Bu hızlı başlangıçta, bir tahmin uç noktası kaynağı oluşturarak, kaynak, eğitim ve uygulamayı yayımlamaya göre bir uygulamanın nasıl dağıtılacağı gösterilmektedir.
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756294"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585119"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
@@ -16,7 +16,7 @@ Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin
 
 Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir tahmin uç noktası kaynağı oluşturur, uygulamayı uygulamaya atayabilir, uygulamayı eğitme ve uygulamayı yayımlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir [Azure aboneliği](https://azure.microsoft.com/free)alın.
 * [Önceki Portal Hızlı](get-started-portal-build-app.md) başlangıcını tamamlayıp [uygulamayı indirip içeri aktarın](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir ta
 
 LUHER yeni yazma veya sorgu tahmini kaynağı oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız takdirde bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha yüksek sayıda tahmin sorgusu desteklemek için yeni bir kaynak oluşturabilirsiniz.
 
-1. [ÖNIZLEME Luo portalında](https://preview.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
+1. [Luo portalında](https://www.luis.ai) oturum açın ve uygulamalar listesinden **Myenglishapp** uygulamasını seçin.
 
 1. Sağ üst menüdeki **Yönet** ' i seçin ve ardından **Azure kaynakları**' nı seçin.
 
@@ -44,10 +44,10 @@ LUHER yeni yazma veya sorgu tahmini kaynağı oluşturduğunuzda, kaynağı LUO 
 
 1. Uygulamanıza yazma anahtarını eklemek için aynı adımları izleyin.
 
-1. Yeni tahmin kaynağı için tablodaki yeni satırı bulun ve uç nokta URL 'sini kopyalayın. Bir tahmine yönelik olarak LUSıS API `HTTP GET` uç noktasına bir istek oluşturmak için doğru bir şekilde oluşturulur.
+1. Yeni tahmin kaynağı için tablodaki yeni satırı bulun ve uç nokta URL 'sini kopyalayın. `HTTP GET`Bir tahmine yönelik olarak LUSıS API uç noktasına bir istek oluşturmak için doğru bir şekilde oluşturulur.
 
 > [!TIP]
-> LUSıS uygulamanızı geliştirmek için etkin öğrenme kullanmak istiyorsanız **sorgu parametrelerini değiştir** ' i seçin ve **günlükleri kaydet**' i seçin. Bu eylem `log=true` QueryString parametresini ekleyerek örnek URL 'yi değiştirir. Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
+> LUSıS uygulamanızı geliştirmek için etkin öğrenme kullanmak istiyorsanız **sorgu parametrelerini değiştir** ' i seçin ve **günlükleri kaydet**' i seçin. Bu eylem QueryString parametresini ekleyerek örnek URL 'YI değiştirir `log=true` . Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
 
 ## <a name="train-the-app"></a>Uygulamayı eğitme
 
@@ -59,7 +59,7 @@ LUHER yeni yazma veya sorgu tahmini kaynağı oluşturduğunuzda, kaynağı LUO 
 
 ## <a name="prediction-endpoint-request"></a>Tahmin uç noktası isteği
 
-Önizleme portalında, `query=` URL 'nin sonunda kullanıcının UTTERINE GET isteğine eklendiği yerdir. `query=`Sonrasında, önceki hızlı başlangıç noktasında kullanılan aynı kullanıcı adını girin:
+Portalda, `query=` URL 'nin sonunda kullanıcının utterine, GET isteğine eklendiği yerdir. Sonrasında, `query=` önceki hızlı başlangıç noktasında kullanılan aynı kullanıcı adını girin:
 
 ```Is there a form named hrf-234098```
 

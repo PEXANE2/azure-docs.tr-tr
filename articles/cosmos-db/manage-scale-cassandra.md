@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791264"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586193"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API bir hesabı ölçeklendirin
 
@@ -63,6 +63,22 @@ Bu yaklaşımın avantajı, ölçek ihtiyaçlarına dinamik olarak ve uygulaman�
 Standart (el ile) veya üretilen iş sağlamaya yönelik programlama yöntemine ek olarak, Azure Cosmos kapsayıcılarını de otomatik ölçeklendirme sağlanan aktarım hızına yapılandırabilirsiniz. Otomatik ölçeklendirme, SLA 'Lara ödün vermeden belirtilen RU aralıklarında tüketim gereksinimlerinize otomatik olarak ve anında ölçeklenecektir. Daha fazla bilgi edinmek için [Otomatik ölçeklendirme makalesinde Azure Cosmos kapsayıcıları ve veritabanları oluşturma](provision-throughput-autoscale.md) makalesine bakın.
 
 Bu yaklaşımın avantajı, sisteminizdeki ölçekleme ihtiyaçlarını yönetmenin en kolay yoludur. **YAPıLANDıRıLAN ru aralıkları içinde**hız sınırlaması uygulamamaya garanti vermez. Dezavantajı, sisteminizdeki ölçekleme ihtiyaçları tahmin edilebilir ise, otomatik ölçeklendirme, yukarıda bahsedilen beslenme denetim düzlemi veya SDK düzeyi yaklaşımlarını kullanmaktan daha az uygun maliyetli bir yol olabilir.
+
+CQL kullanarak otomatik ölçeklendirme için maksimum üretilen iş (ru) ayarlamak veya değiştirmek için aşağıdakileri kullanın (anahtar alanı/tablo adını uygun şekilde değiştirin):
+
+```Bash
+# to set max throughput (RUs) for autoscale at keyspace level:
+create keyspace <keyspace name> WITH cosmosdb_autoscale_max_throughput=5000;
+
+# to alter max throughput (RUs) for autoscale at keyspace level:
+alter keyspace <keyspace name> WITH cosmosdb_autoscale_max_throughput=4000;
+
+# to set max throughput (RUs) for autoscale at table level:
+create table <keyspace name>.<table name> (pk int PRIMARY KEY, ck int) WITH cosmosdb_autoscale_max_throughput=5000;
+
+# to alter max throughput (RUs) for autoscale at table level:
+alter table <keyspace name>.<table name> WITH cosmosdb_autoscale_max_throughput=4000;
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

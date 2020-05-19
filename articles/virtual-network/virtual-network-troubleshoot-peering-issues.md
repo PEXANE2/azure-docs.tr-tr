@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 20580edb84a8c983c2342e6a5904c75a0986a3d7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801578"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587740"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=457b3ba7-7ac5-93be-981c-677553ad39dd" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
 
 Bu sorun giderme kılavuzu, çoğu [sanal ağ eşleme](virtual-network-peering-overview.md) sorununu çözmenize yardımcı olacak adımları sağlar.
 
@@ -96,14 +95,14 @@ NVA cihaz kurulumu ve yönlendirme sorunlarını gidermeye yönelik yardım içi
 
 Genel sanal ağ eşlemesi üzerinden aktarım artık desteklenmektedir. Bağlantı, aşağıdaki kaynaklar için genel sanal ağ eşlemesi üzerinden çalışmaz:
 
-* Temel ıLB SKU 'SU arkasındaki VM 'Ler
+* Temel ILB SKU arkasındaki VM’ler
 * Redsıs önbelleği (temel ıLB SKU 'SU kullanır)
 * Application Gateway (temel ıLB SKU 'SU kullanır)
 * Ölçek Kümeleri (temel ıLB SKU 'SU kullanır)
-* Service Fabric kümeleri (temel ıLB SKU 'SU kullanır)
+* Service Fabric kümeleri (Temel ILB SKU kullanır)
 * SQL Server her zaman açık (temel ıLB SKU 'SU kullanır)
 * App Service Ortamı (temel ıLB SKU 'SU kullanır)
-* API Management (temel ıLB SKU 'SU kullanır)
+* API Management (Temel ILB SKU kullanır)
 * Azure AD DS (temel ıLB SKU 'SU kullanır)
 
 Genel eşleme gereksinimleri ve depoları hakkında daha fazla bilgi edinmek için bkz. [sanal ağ eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints).
@@ -136,14 +135,14 @@ Bu sorunu gidermek için:
    > [!Note]
    > Genel sanal ağ eşlemesi (farklı bölgelerdeki sanal ağlar) üzerinden aşağıdaki kaynak türlerine bağlanamazsınız:
    >
-   > * Temel ıLB SKU 'SU arkasındaki VM 'Ler
+   > * Temel ILB SKU arkasındaki VM’ler
    > * Redsıs önbelleği (temel ıLB SKU 'SU kullanır)
    > * Application Gateway (temel ıLB SKU 'SU kullanır)
    > * Ölçek Kümeleri (temel ıLB SKU 'SU kullanır)
-   > * Service Fabric kümeleri (temel ıLB SKU 'SU kullanır)
+   > * Service Fabric kümeleri (Temel ILB SKU kullanır)
    > * SQL Server her zaman açık (temel ıLB SKU 'SU kullanır)
    > * App Service Ortamı (temel ıLB SKU 'SU kullanır)
-   > * API Management (temel ıLB SKU 'SU kullanır)
+   > * API Management (Temel ILB SKU kullanır)
    > * Azure AD DS (temel ıLB SKU 'SU kullanır)
 
 Daha fazla bilgi için bkz. genel eşleme [gereksinimleri ve kısıtlamaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
@@ -161,7 +160,7 @@ Ağınız bir üçüncü taraf NVA veya VPN Gateway kullanıyor mu?
 Üçüncü taraf bir NVA veya VPN ağ geçidini etkileyen bağlantı sorunlarını gidermek için aşağıdaki makalelere bakın:
 
 * [NVA sorun giderici](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [Hizmet zincirleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [Hizmet zinciri](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>Ağımdaki bir üçüncü taraf NVA veya VPN ağ geçidi kullanılmaz
 
@@ -197,14 +196,14 @@ Daha fazla bilgi için bkz. [hizmet zincirleme](https://docs.microsoft.com/azure
 
 Genel sanal ağ eşlemesi üzerinden aktarım artık desteklenmektedir. Bağlantı, aşağıdaki kaynaklar için genel sanal ağ eşlemesi üzerinden çalışmaz:
 
-* Temel ıLB SKU 'SU arkasındaki VM 'Ler
+* Temel ILB SKU arkasındaki VM’ler
 * Redsıs önbelleği (temel ıLB SKU 'SU kullanır)
 * Application Gateway (temel ıLB SKU 'SU kullanır)
 * Ölçek Kümeleri (temel ıLB SKU 'SU kullanır)
-* Service Fabric kümeleri (temel ıLB SKU 'SU kullanır)
+* Service Fabric kümeleri (Temel ILB SKU kullanır)
 * SQL Server her zaman açık (temel ıLB SKU 'SU kullanır)
 * App Service Ortamı (temel ıLB SKU 'SU kullanır)
-* API Management (temel ıLB SKU 'SU kullanır)
+* API Management (Temel ILB SKU kullanır)
 * Azure AD DS (temel ıLB SKU 'SU kullanır)
 
 Daha fazla bilgi için bkz. genel eşleme ve [farklı VPN topolojileri](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/) [gereksinimleri ve kısıtlamaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
@@ -217,7 +216,7 @@ Bu sorunu gidermek için:
 1. Web uygulamasında **ağ**' ı seçin ve ardından **VNET tümleştirmesi**' ni seçin.
 1. Uzak sanal ağı görüp görmeyeceğinizi denetleyin. Uzak sanal ağ adres alanını el ile girin (**ağa eşitleyin** ve **yollar ekleyin**).
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Uygulamanızı bir Azure sanal ağıyla tümleştirin](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Noktadan Siteye VPN yönlendirme hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
@@ -238,12 +237,12 @@ Bu sorunu çözmek için **Azure Databricks**altında sanal ağ eşlemesini yap�
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Uzak sanal ağda ağ geçidi eksik
 
-Bu sorun, farklı kiracılardan sanal ağları eşler ve daha sonra yapılandırmak `Use Remote Gateways`istediğinizde oluşur. Azure portal sınırlaması, başka bir kiracının sanal ağındaki bir sanal ağ geçidinin varlığını doğrulayamasıdır.
+Bu sorun, farklı kiracılardan sanal ağları eşler ve daha sonra yapılandırmak istediğinizde oluşur `Use Remote Gateways` . Azure portal sınırlaması, başka bir kiracının sanal ağındaki bir sanal ağ geçidinin varlığını doğrulayamasıdır.
 
 Sorunu çözmek için iki yol vardır:
 
- * Eşlemeleri silin ve yeni bir eşleme oluşturduğunuzda `Use Remote Gateways` seçeneği etkinleştirin.
- * Etkinleştirmek `Use Remote Gateways`için Azure Portal yerine POWERSHELL veya CLI kullanın.
+ * Eşlemeleri silin ve `Use Remote Gateways` Yeni bir eşleme oluşturduğunuzda seçeneği etkinleştirin.
+ * Etkinleştirmek için Azure portal yerine PowerShell veya CLı kullanın `Use Remote Gateways` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

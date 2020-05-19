@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74109939"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584935"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Konuşma SDK 'Sı ses girişi akış API 'SI hakkında
 
@@ -25,20 +25,20 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
 - Ses akışının biçimini belirler. Biçim, konuşma SDK 'Sı ve konuşma hizmeti tarafından desteklenmelidir. Şu anda yalnızca aşağıdaki yapılandırma desteklenir:
 
-  PCM biçimindeki ses örnekleri, bir kanal, saniyede 16000 örnek, 32000 bayt/saniye, iki blok hizalanır (örnek için doldurma dahil olmak üzere 16 bit), örnek başına 16 bit.
+  PCM biçimindeki ses örnekleri, bir kanal, örnek başına 16 bit, 8000 veya 16000 örnek/saniye (16000 veya 32000 bayt/saniye), iki blok hizalanır (örnek için doldurma dahil olmak üzere 16 bit).
 
   Ses biçimini oluşturmak için SDK 'daki karşılık gelen kod şöyle görünür:
 
   ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
-  int samplesPerSecond = 16000;
+  int samplesPerSecond = 16000; // or 8000
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
 - Kodunuzun ham ses verilerini bu belirtimlere göre sağlaya, emin olun. Ses kaynağı verileriniz desteklenen biçimleriyle eşleşmiyorsa, sesin gerekli biçime dönüştürülmesi gerekir.
 
-- Öğesinden `PullAudioInputStreamCallback`türetilmiş kendi ses giriş akışı sınıfınızı oluşturun. `Read()` Ve `Close()` üyelerini uygulayın. Tam işlev imzası dile bağımlıdır, ancak kod şu kod örneğine benzer şekilde görünür:
+- Öğesinden türetilmiş kendi ses giriş akışı sınıfınızı oluşturun `PullAudioInputStreamCallback` . `Read()`Ve üyelerini uygulayın `Close()` . Tam işlev imzası dile bağımlıdır, ancak kod şu kod örneğine benzer şekilde görünür:
 
   ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
@@ -59,7 +59,7 @@ Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
    };
   ```
 
-- Ses biçiminizi ve giriş akışınızı temel alan bir ses yapılandırması oluşturun. Tanıyıcıyı oluştururken hem normal konuşma yapılandırmanızın hem de ses giriş yapılandırmasında geçiş yapın. Örneğin:
+- Ses biçiminizi ve giriş akışınızı temel alan bir ses yapılandırması oluşturun. Tanıyıcıyı oluştururken hem normal konuşma yapılandırmanızın hem de ses giriş yapılandırmasında geçiş yapın. Örnek:
 
   ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);

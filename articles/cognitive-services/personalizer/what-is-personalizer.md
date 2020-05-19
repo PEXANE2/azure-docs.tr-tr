@@ -3,12 +3,12 @@ title: Kişiselleştirme nedir?
 description: Kişiselleştirici, gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza gösterilecek en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687255"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586227"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -70,17 +70,24 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
 ## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>İstemci uygulamanız için kişiselleştirici tasarlama ve uygulama
 
 1. İçeriği, **_eylemleri_** ve **_bağlamı_** [tasarlayın](concepts-features.md) ve planlayın. **_Ödül_** puanı için yeniden dengeleme algoritmasını saptayın.
-1. Oluşturduğunuz her bir [kişiselleştirici kaynağı](how-to-settings.md) 1 öğrenme döngüsü olarak kabul edilir. Döngü, bu içerik veya Kullanıcı deneyimi için hem derecelendirme hem de yeniden çağrıları alacaktır.
-1. Web sitenize veya içerik sisteminize kişiselleştirici ekleyin:
+1. Oluşturduğunuz her bir [kişiselleştirici kaynağı](how-to-settings.md) bir öğrenme döngüsü olarak kabul edilir. Döngü, bu içerik veya Kullanıcı deneyimi için hem derecelendirme hem de yeniden çağrıları alacaktır.
+
+    |Kaynak türü| Amaç|
+    |--|--|
+    |[Apprenlet modu](concept-apprentice-mode.md)`E0`|Mevcut uygulamanızı etkilemeden kişiselleştirici modeli eğitme, ardından çevrimiçi öğrenme davranışına bir üretim ortamına dağıtma|
+    |Stand`S0`|Üretim ortamında çevrimiçi öğrenme davranışı|
+    |Süz`F0`| Üretim dışı bir ortamda çevrimiçi öğrenme davranışını deneyin|
+
+1. Uygulamanıza, Web sitenize veya sisteminize kişiselleştirici ekleyin:
     1. İçerik kullanıcıya gösterilmeden önce en iyi, tek _içerik_ öğesini belirleyebilmek için, uygulamanızda, Web sitenizde veya sisteminizde kişiselleştiriciye bir **Derecelendirme** çağrısı ekleyin.
     1. Kullanıcıya döndürülen geri dönüş _EYLEMI kimliği_olan en iyi, tek _içerik_ öğesini görüntüleyin.
-    1. Kullanıcının nasıl davrandığını öğrenmek için, şu gibi, **yeniden** Puanlama sağlamak üzere toplanan bilgilere _algoritma_ uygulayın:
+    1. Kullanıcı _mantığını_ , kullanıcının nasıl davrandığını öğrenmek, örneğin: **reward**
 
-        |Davranış|Hesaplanan ödül puanı|
-        |--|--|
-        |Kullanıcı tarafından seçilen en iyi, tek _içerik_ öğesi (Reward eylem kimliği)|**1**|
-        |Kullanıcı tarafından seçilen diğer içerik|**0**|
-        |Kullanıcı duraklatıldı, en iyi ve tek içerik öğesini seçmeden önce, tek _içerik_ öğesi (Reward eylem kimliği)|**0,5**|
+    |Davranış|Hesaplanan ödül puanı|
+    |--|--|
+    |Kullanıcı tarafından seçilen en iyi, tek _içerik_ öğesi (Reward eylem kimliği)|**1**|
+    |Kullanıcı tarafından seçilen diğer içerik|**0**|
+    |Kullanıcı duraklatıldı, en iyi ve tek içerik öğesini seçmeden önce, tek _içerik_ öğesi (Reward eylem kimliği)|**0,5**|
 
     1. Bir **ödül** çağrısı ekleyerek 0 ile 1 arasında bir ödül puanı gönderiliyor
         * İçeriğinizi gösterdikten hemen sonra
@@ -95,5 +102,5 @@ Kişiselleştirici, tek en iyi içerik öğesini döndürmek için neredeyse ger
 * [Sıralama isteğine yönelik özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
 * [Reward isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
 * [Hızlı Başlangıçlar](sdk-learning-loop.md)
-* [Eğitmen](tutorial-use-azure-notebook-generate-loop-data.md)
+* [Öğretici](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Etkileşimli tanıtımı kullanma](https://personalizationdemo.azurewebsites.net/)

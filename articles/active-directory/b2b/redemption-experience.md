@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199501"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585904"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
 
@@ -99,7 +99,7 @@ Bir konuk, bir iş ortağı kuruluşundaki kaynaklara ilk kez erişmek üzere ot
 
    ![Yeni kullanım koşullarını gösteren ekran görüntüsü](media/redemption-experience/terms-of-use-accept.png) 
 
-   > **kullanım koşulları** **Kurumsal ilişkilerdeki** (veya **dış kimliklerden**) [kullanım koşullarını](../governance/active-directory-tou.md) yapılandırabilirsiniz.
+   **Dış kimliklerden** [kullanım koşullarını](../governance/active-directory-tou.md) yapılandırabilirsiniz  >  **kullanım koşulları**.
 
 3. Aksi belirtilmediği takdirde, Konuk, konuk tarafından erişebilen uygulamaları listeleyen uygulamalar erişim paneline yönlendirilir.
 

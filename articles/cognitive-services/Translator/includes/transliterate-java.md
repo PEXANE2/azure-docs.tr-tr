@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: ad5c51b3d373947e8a09762b0cb27afff990e6da
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 82766e969f62f35f39f6545eb4c2c6bdda29c11b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906524"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586584"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir transliterate-sample
 cd transliterate-sample
 ```
 
-Sonra, bir Gradle projesi başlatacağız. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan, en önemlisi `build.gradle.kts`, Gradle için önemli derleme dosyaları oluşturur. Çalışma dizininizden bu komutu çalıştırın:
+Sonra, bir Gradle projesi başlatacağız. Bu komut, `build.gradle.kts` uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan, en önemlisi, Gradle için önemli derleme dosyaları oluşturur. Çalışma dizininizden bu komutu çalıştırın:
 
 ```console
 gradle init --type basic
@@ -34,7 +34,7 @@ Bir **DSL**seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 ## <a name="configure-the-build-file"></a>Yapı dosyasını yapılandırma
 
-En `build.gradle.kts` sevdiğiniz IDE veya metin düzenleyicinizle bulun ve açın. Sonra bu derleme yapılandırmasında Kopyala:
+En `build.gradle.kts` SEVDIĞINIZ IDE veya metin düzenleyicinizle bulun ve açın. Sonra bu derleme yapılandırmasında Kopyala:
 
 ```
 plugins {
@@ -63,11 +63,11 @@ Bu örnekte HTTP istekleri için OkHttp üzerinde bağımlılıklar ve JSON 'u i
 mkdir -p src\main\java
 ```
 
-Ardından, bu klasörde adlı `Transliterate.java`bir dosya oluşturun.
+Ardından, bu klasörde adlı bir dosya oluşturun `Transliterate.java` .
 
 ## <a name="import-required-libraries"></a>Gerekli kitaplıkları içeri aktar
 
-Bu `Transliterate.java` içeri aktarma deyimlerini açın ve ekleyin:
+`Transliterate.java`Bu içeri aktarma deyimlerini açın ve ekleyin:
 
 ```java
 import java.io.*;
@@ -88,18 +88,18 @@ public class Transliterate {
 }
 ```
 
-`Transliterate` Sınıfa bu satırları ekleyin. İlk olarak, abonelik anahtarı ve uç nokta ortam değişkenlerinden okunmakta. Daha sonra, ile `api-version`birlikte, için iki ek parametre eklenmiş olduğunu fark edeceksiniz. `url` Bu parametreler, giriş dilini ve alfabeye yönelik betikleri ayarlamak için kullanılır. Bu örnekte, Japonca (`jpan`) ve Latin (`latn`) olarak ayarlanır. 
+Sınıfa bu satırları ekleyin `Transliterate` . İlk olarak, abonelik anahtarı ve uç nokta ortam değişkenlerinden okunmakta. Daha sonra, ile birlikte, `api-version` için iki ek parametre eklenmiş olduğunu fark edeceksiniz `url` . Bu parametreler, giriş dilini ve alfabeye yönelik betikleri ayarlamak için kullanılır. Bu örnekte, Japonca ( `jpan` ) ve Latin () olarak ayarlanır `latn` . 
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
 private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
 ```
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil etmeniz gerekir `Ocp-Apim-Subscription-Region` . [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>İstemci oluşturma ve istek oluşturma
 
-Örneği oluşturmak için bu satırı `Transliterate` sınıfa ekleyin `OkHttpClient`:
+`Transliterate`Örneği oluşturmak için bu satırı sınıfa ekleyin `OkHttpClient` :
 
 ```java
 // Instantiates the OkHttpClient.
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Yanıtı ayrıştırmak için bir işlev oluşturma
 
-Bu basit işlev, Translator Metin Çevirisi hizmetinden gelen JSON yanıtını ayrıştırır ve önceden inceler.
+Bu basit işlev, Translator hizmetinden gelen JSON yanıtını ayrıştırır ve önceden inceler.
 
 ```java
 // This function prettifies the json response.
@@ -180,7 +180,7 @@ gradle run
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmenle gerçekleştirebileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

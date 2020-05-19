@@ -9,22 +9,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e3542b976921aa45794d62cad9517984c8348ce3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9d1b72eff3ffac37d2d10cd74c345eac8289b651
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875156"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585699"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLı 'dan Azure Container Instance kaynağı oluşturma
 
-Aşağıdaki YAML, Azure Container Instance kaynağını tanımlar. İçeriği kopyalayıp adlandırılan `my-aci.yaml` yeni bir dosyaya yapıştırın ve açıklama değerlerini kendi değerlerinizle değiştirin. Geçerli YAML için [şablon biçimine][template-format] bakın. Kullanılabilir görüntü adları ve bunlara karşılık gelen depo için [kapsayıcı depoları ve görüntüleri][repositories-and-images] inceleyin. Kapsayıcı örnekleri için YAML başvurusu hakkında daha fazla bilgi için bkz. [YAML başvurusu: Azure Container Instances][aci-yaml-ref].
+Aşağıdaki YAML, Azure Container Instance kaynağını tanımlar. İçeriği kopyalayıp adlandırılan yeni bir dosyaya yapıştırın `my-aci.yaml` ve açıklama değerlerini kendi değerlerinizle değiştirin. Geçerli YAML için [şablon biçimine][template-format] bakın. Kullanılabilir görüntü adları ve bunlara karşılık gelen depo için [kapsayıcı depoları ve görüntüleri][repositories-and-images] inceleyin. Kapsayıcı örnekleri için YAML başvurusu hakkında daha fazla bilgi için bkz. [YAML başvurusu: Azure Container Instances][aci-yaml-ref].
 
 ```YAML
 apiVersion: 2018-10-01
 location: # < Valid location >
 name: # < Container Group name >
-imageRegistryCredentials: # This is required when pulling a non-public image
+imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access.
   - server: containerpreview.azurecr.io
     username: # < The username for the preview container registry >
     password: # < The password for the preview container registry >
@@ -66,13 +66,13 @@ type: Microsoft.ContainerInstance/containerGroups
 > [!NOTE]
 > Tüm konumlar aynı CPU ve bellek kullanılabilirliğine sahip değildir. Konum ve işletim sistemi başına kapsayıcılar için kullanılabilir kaynakların listesinin [konumu ve kaynakları][location-to-resource] tablosuna bakın.
 
-[`az container create`][azure-container-create] Komutu için oluşturduğumuz YAML dosyasını kullanacağız. Azure CLı 'dan, `az container create` `<resource-group>` öğesini kendi ile değiştirme komutunu yürütün. Ek olarak, bir YAML dağıtımı içindeki değerlerin güvenliğini sağlamak için [güvenli değerler][secure-values]bölümüne bakın.
+Komutu için oluşturduğumuz YAML dosyasını kullanacağız [`az container create`][azure-container-create] . Azure CLı 'dan `az container create` , öğesini kendi ile değiştirme komutunu yürütün `<resource-group>` . Ek olarak, bir YAML dağıtımı içindeki değerlerin güvenliğini sağlamak için [güvenli değerler][secure-values]bölümüne bakın.
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-Komutun `Running...` çıktısı geçerliyse, çıkış bir süre sonra yeni oluşturulan aci kaynağını temsil eden bir JSON dizesine değişir. Kapsayıcı görüntüsü büyük olasılıkla bir süre için kullanılamayabilir, ancak kaynak artık dağıtılır.
+Komutun çıktısı `Running...` geçerliyse, çıkış bir süre sonra yeni oluşturulan ACI kaynağını temsil eden BIR JSON dizesine değişir. Kapsayıcı görüntüsü büyük olasılıkla bir süre için kullanılamayabilir, ancak kaynak artık dağıtılır.
 
 > [!TIP]
 > YAML 'nin konumla eşleşecek şekilde ayarlanması gerektiği için, genel önizleme Azure bilişsel hizmet tekliflerinin konumlarına yakın bir şekilde dikkat edin.

@@ -1,21 +1,14 @@
 ---
 title: Normal ifade varlık türü-LUSıS
-titleSuffix: Azure Cognitive Services
 description: Normal ifade, ham söylenişi metin için en iyisidir. Büyük/küçük harf durumunu yoksayar ve kültürel türevini yoksayar.  Normal ifade eşleştirme, belirteç düzeyi değil, karakter düzeyinde yazım denetimi değişiklikleri yapıldıktan sonra uygulanır.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74841226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585615"
 ---
 # <a name="regular-expression-entity"></a>Normal ifade varlığı
 
@@ -32,13 +25,13 @@ Normal ifade, ham söylenişi metin için en iyisidir. Büyük/küçük harf dur
 
 ## <a name="usage-considerations"></a>Kullanım konuları
 
-Normal ifadeler, eşleştirmeye beklediğinizden daha fazla eşleşemez. Buna bir örnek, `one` ve `two`gibi sayısal kelime eşleştirmedir. Aşağıdaki Regex, diğer sayılarla birlikte sayıyla `one` eşleşen aşağıdaki normal ifade örneğidir:
+Normal ifadeler, eşleştirmeye beklediğinizden daha fazla eşleşemez. Buna bir örnek, ve gibi sayısal kelime eşleştirmedir `one` `two` . Aşağıdaki Regex, diğer sayılarla birlikte sayıyla eşleşen aşağıdaki normal ifade örneğidir `one` :
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-Bu Regex ifadesi, gibi bu sayılarla biten sözcüklerle da eşleşir `phone`. Bu gibi sorunları gidermek için, Regex eşleşmelerin, hesap sözcük sınırlarına uyduğundan emin olun. Bu örnek için sözcük sınırları kullanmanın Regex ifadesi aşağıdaki Regex içinde kullanılır:
+Bu Regex ifadesi, gibi bu sayılarla biten sözcüklerle da eşleşir `phone` . Bu gibi sorunları gidermek için, Regex eşleşmelerin, hesap sözcük sınırlarına uyduğundan emin olun. Bu örnek için sözcük sınırları kullanmanın Regex ifadesi aşağıdaki Regex içinde kullanılır:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,7 +39,7 @@ Bu Regex ifadesi, gibi bu sayılarla biten sözcüklerle da eşleşir `phone`. B
 
 ### <a name="example-json"></a>Örnek JSON
 
-Kullanırken `kb[0-9]{6}`, normal ifade varlık tanımı olarak aşağıdaki JSON yanıtı, sorgu için döndürülen normal ifade varlıklarını içeren bir örnektir:
+Kullanırken `kb[0-9]{6}` , normal ifade varlık tanımı olarak AŞAĞıDAKI JSON yanıtı, sorgu için döndürülen normal ifade varlıklarını içeren bir örnektir:
 
 `When was kb123456 published?`:
 
@@ -67,7 +60,7 @@ Kullanırken `kb[0-9]{6}`, normal ifade varlık tanımı olarak aşağıdaki JSO
 #### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
+Bu, `verbose=false` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -77,7 +70,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
 }
 ```
 
-Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
+Bu, `verbose=true` sorgu dizesinde AYARLANDıYSA JSON 'dir:
 
 ```json
 "entities": {
@@ -106,4 +99,7 @@ Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](tutorial-regex-entity.md), **normal ifade** varlığını kullanarak, düzenli olarak biçimlendirilen verileri bir noktadan ayıklamak için bir uygulama oluşturun.
+Varlıklar hakkında daha fazla bilgi edinin:
+
+* [Kavramlar](luis-concept-entity-types.md)
+* [Oluşturma](luis-how-to-add-entities.md)

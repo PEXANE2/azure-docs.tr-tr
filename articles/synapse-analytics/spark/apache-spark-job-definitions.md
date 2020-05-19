@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici-Azure SYNAPSE Analytics: SYNAPSE için Spark iş tanımı'
-description: Öğretici-Azure SYNAPSE Analytics 'i kullanarak Spark iş tanımları oluşturun ve bunları bir Synapse Spark havuzuna gönderebilirsiniz.
+title: 'Öğretici-Azure SYNAPSE Analytics için Apache Spark: SYNAPSE için Apache Spark iş tanımı'
+description: Öğretici-Azure SYNAPSE Analytics 'i kullanarak Spark iş tanımları oluşturun ve bunları Azure SYNAPSE Analytics havuzu için bir Apache Spark gönderebilirsiniz.
 author: hrasheed-msft
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: d5443a2db6f4fecbd84ef51166f44c3a6e920aee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fc9dffaa73d195c842381b6682a00e9834c0fe7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422973"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587944"
 ---
 # <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Öğretici: SYNAPSE Spark havuzları için Apache Spark iş tanımları oluşturmak için Azure SYNAPSE Analytics kullanma
 
@@ -22,14 +22,14 @@ Bu öğreticide, Spark iş tanımları oluşturmak ve ardından bunları bir Syn
 * Bir Synapse Spark havuzunda Spark iş tanımı geliştirin ve gönderebilirsiniz.
 * Gönderimden sonra iş ayrıntılarını görüntüleyin.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Bir Synapse Spark havuzunda Spark iş tanımı geliştirin ve gönderebilirsiniz.
 > * Gönderimden sonra iş ayrıntılarını görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure SYNAPSE Analytics çalışma alanı. Yönergeler için bkz. [Azure SYNAPSE Analytics çalışma alanı oluşturma](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
 
@@ -47,7 +47,7 @@ Spark iş tanımı göndermeden önce, çalışmak istediğiniz ADLS 2. FileSyst
 
     ![Spark gönderimi iletişim kutusu](./media/apache-spark-job-definitions/create-new-filesystem.png)
 
-3. Öğesini `sparkjob`açın, **Access Control (IAM)** ve ardından **Ekle** ' ye tıklayın ve **rol ataması Ekle**' yi seçin.
+3. Öğesini açın `sparkjob` , **Access Control (IAM)** ve ardından **Ekle** ' ye tıklayın ve **rol ataması Ekle**' yi seçin.
 
     ![Spark iş tanımını göndermek için Gönder düğmesine tıklayın](./media/apache-spark-job-definitions/add-role-assignment-01.png)
 
@@ -173,5 +173,5 @@ Spark iş tanımı oluşturduktan sonra, bunu bir Synapse Spark havuzuna gönder
 
 Bu öğreticide, Spark iş tanımları oluşturmak ve ardından bunları bir Synapse Spark havuzuna göndermek için Azure SYNAPSE Analytics 'in nasıl kullanılacağı gösterilmiştir. Daha sonra, Azure SYNAPSE Analytics 'i kullanarak Power BI veri kümeleri oluşturabilir ve Power BI verileri yönetebilirsiniz. 
 
-- [Power BI Desktop verilere bağlanma](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
+- [Power BI Desktop'taki verilere bağlanma](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
 - [Power BI ile görselleştirme](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

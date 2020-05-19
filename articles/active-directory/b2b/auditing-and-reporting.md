@@ -12,18 +12,18 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b543bd46b195a0944959f3f462a2bdc7d150ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b2f1478391eccaabcc4dbcd150b54376494d3f56
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199473"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587536"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B işbirliği kullanıcısını denetleme ve raporlama
 Konuk kullanıcılar ile, üye kullanıcılarla aynı denetim özelliklerine sahip olursunuz. 
 
 ## <a name="access-reviews"></a>Erişim gözden geçirmeleri
-Erişim gözden geçirmeleri kullanarak, konuk kullanıcıların kaynaklarınıza erişmeye devam edilip edilmeyeceğini düzenli aralıklarla doğrulayabilirsiniz. **Erişim gözden geçirmeleri** özelliği, **Kurumsal ilişkiler** **Azure Active Directory**  >  **erişim gözden geçirmeleri** (veya **dış kimlikler**  >  **erişim İncelemeleri** ) altında Azure Active Directory kullanılabilir. Ayrıca, Azure portal **tüm hizmetlerden** "erişim gözden geçirmeleri" için arama yapabilirsiniz. Erişim incelemelerini nasıl kullanacağınızı öğrenmek için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
+Erişim gözden geçirmeleri kullanarak, konuk kullanıcıların kaynaklarınıza erişmeye devam edilip edilmeyeceğini düzenli aralıklarla doğrulayabilirsiniz. **Erişim gözden geçirmeleri** özelliği, **dış kimlikler** **Azure Active Directory**  >  **erişim gözden geçirmeleri**altında Azure Active Directory kullanılabilir. Ayrıca, Azure portal **tüm hizmetlerden** "erişim gözden geçirmeleri" için arama yapabilirsiniz. Erişim incelemelerini nasıl kullanacağınızı öğrenmek için bkz. [Azure AD erişim gözden geçirmeleri ile konuk erişimini yönetme](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 

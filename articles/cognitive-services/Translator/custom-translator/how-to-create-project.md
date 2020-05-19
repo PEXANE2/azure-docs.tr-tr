@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e01f3ddde96903716cf1fcff0426791ff3a90e07
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836557"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587672"
 ---
 # <a name="create-a-project"></a>Proje oluşturma
 
@@ -52,7 +52,7 @@ Proje oluşturmak, model oluşturmaya yönelik ilk adımdır.
 
 Proje seçildikten sonra proje sayfasında şunları görürsünüz:
 
-- CategoryID: çalışma alanı kimliği, proje etiketi ve kategori kodu bitiştirerek CategoryID oluşturulur. Özel Çeviriler almak için metin Çeviricisi API 'SI ile CategoryID 'yi kullanırsınız.
+- CategoryID: çalışma alanı kimliği, proje etiketi ve kategori kodu bitiştirerek CategoryID oluşturulur. Özel Çeviriler almak için metin Çeviricisi ile CategoryID 'yi kullanırsınız.
 
 - Eğitme düğmesi: [bir modeli eğitbaşlamak](how-to-train-model.md)için bu düğmeyi kullanın.
 

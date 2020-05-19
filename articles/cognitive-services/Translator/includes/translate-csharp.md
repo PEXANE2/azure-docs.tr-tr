@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 77242ab35416fb24a3a815e7137280e5f3698c30
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906688"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586681"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o translate-sample
 cd translate-sample
 ```
 
-İlk komut iki şeyi yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı `translate-sample`bir dizin oluşturur. İkinci komut, projenizin dizinine değişir.
+İlk komut iki şeyi yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı bir dizin oluşturur `translate-sample` . İkinci komut, projenizin dizinine değişir.
 
 Sonra, Json.Net yüklemeniz gerekir. Projenizin dizininden şunu çalıştırın:
 
@@ -34,9 +34,9 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="select-the-c-language-version"></a>C# dil sürümünü seçin
 
-Bu hızlı başlangıçta C# 7,1 veya üzeri bir sürüm gerekir. Projenizin C# sürümünü değiştirmek için birkaç yol vardır. Bu kılavuzda, `translate-sample.csproj` dosyayı nasıl ayarlayacağız gösterilmektedir. Visual Studio 'Nun dilini değiştirme gibi kullanılabilir tüm seçenekler için bkz. [C# dil sürümünü seçme](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
+Bu hızlı başlangıçta C# 7,1 veya üzeri bir sürüm gerekir. Projenizin C# sürümünü değiştirmek için birkaç yol vardır. Bu kılavuzda, dosyayı nasıl ayarlayacağız gösterilmektedir `translate-sample.csproj` . Visual Studio 'Nun dilini değiştirme gibi kullanılabilir tüm seçenekler için bkz. [C# dil sürümünü seçme](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Projenizi açın ve sonra açın `translate-sample.csproj`. ' `LangVersion` Nin 7,1 veya üzeri olarak ayarlandığından emin olun. Dil sürümü için bir özellik grubu yoksa şu satırları ekleyin:
+Projenizi açın ve sonra açın `translate-sample.csproj` . ' `LangVersion` Nin 7,1 veya üzeri olarak ayarlandığından emin olun. Dil sürümü için bir özellik grubu yoksa şu satırları ekleyin:
 
 ```xml
 <PropertyGroup>
@@ -46,7 +46,7 @@ Projenizi açın ve sonra açın `translate-sample.csproj`. ' `LangVersion` Nin 
 
 ## <a name="add-required-namespaces-to-your-project"></a>Projenize gerekli ad alanlarını ekleyin
 
-Daha `dotnet new console` önce çalıştırdığınız komut, dahil olmak üzere `Program.cs`bir proje oluşturdu. Bu dosya, uygulama kodunuzu koyacaksınız. Öğesini `Program.cs`açın ve var olan using deyimlerini değiştirin. Bu deyimler, örnek uygulamayı derlemek ve çalıştırmak için gereken tüm türlere erişebildiğinizden emin olmanızı sağlar.
+`dotnet new console`Daha önce çalıştırdığınız komut, dahil olmak üzere bir proje oluşturdu `Program.cs` . Bu dosya, uygulama kodunuzu koyacaksınız. `Program.cs`Öğesini açın ve var olan using deyimlerini değiştirin. Bu deyimler, örnek uygulamayı derlemek ve çalıştırmak için gereken tüm türlere erişebildiğinizden emin olmanızı sağlar.
 
 ```csharp
 using System;
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>JSON yanıtı için sınıflar oluşturma
 
-Sonra, Translator Metin Çevirisi API'si tarafından döndürülen JSON yanıtının serisi kaldırılırken kullanılan bir sınıf kümesi oluşturacağız.
+Ardından, çevirmen tarafından döndürülen JSON yanıtının serisi kaldırılırken kullanılan bir sınıf kümesi oluşturacağız.
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TranslationResult
 {
@@ -107,7 +107,7 @@ public class SentenceLength
 
 ## <a name="get-subscription-information-from-environment-variables"></a>Ortam değişkenlerinden abonelik bilgilerini al
 
-`Program` Sınıfına aşağıdaki satırları ekleyin. Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
+Sınıfına aşağıdaki satırları ekleyin `Program` . Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -132,11 +132,11 @@ static Program()
 
 ## <a name="create-a-function-to-translate-text"></a>Metin çevirmek için bir işlev oluşturma
 
-`Program` Sınıfında, adlı `TranslateTextRequest()`bir zaman uyumsuz işlev oluşturun. Bu işlev dört bağımsız değişken alır `subscriptionKey`: `host`, `route`, ve `inputText`.
+`Program`Sınıfında, adlı bir zaman uyumsuz işlev oluşturun `TranslateTextRequest()` . Bu işlev dört bağımsız değişken alır: `subscriptionKey` , `host` , `route` ve `inputText` .
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
-// Async call to the Translator Text API
+// Async call to the Translator
 static public async Task TranslateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
@@ -148,7 +148,7 @@ static public async Task TranslateTextRequest(string subscriptionKey, string end
 
 ## <a name="serialize-the-translation-request"></a>Çeviri isteğini seri hale getirme
 
-Ardından, çevirmek istediğiniz metni içeren JSON nesnesini oluşturup serileştirmemiz gerekir. Göz önünde bulundurun, içinde birden fazla nesne geçirebilirsiniz `body`.
+Ardından, çevirmek istediğiniz metni içeren JSON nesnesini oluşturup serileştirmemiz gerekir. Göz önünde bulundurun, içinde birden fazla nesne geçirebilirsiniz `body` .
 
 ```csharp
 object[] body = new object[] { new { Text = inputText } };
@@ -157,7 +157,7 @@ var requestBody = JsonConvert.SerializeObject(body);
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>İstemci örneği oluşturma ve bir istek oluşturma
 
-Bu satırlar `HttpClient` ve ' nin örneğini `HttpRequestMessage`oluşturur:
+Bu satırlar ve ' nin örneğini oluşturur `HttpClient` `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -178,7 +178,7 @@ using (var request = new HttpRequestMessage())
 * Zaman uyumsuz istek oluşturma
 * Daha önce oluşturduğunuz sınıfları kullanarak yanıtı Yazdır
 
-Bu kodu öğesine ekleyin `HttpRequestMessage`:
+Bu kodu öğesine ekleyin `HttpRequestMessage` :
 
 ```csharp
 // Build the request.
@@ -208,11 +208,11 @@ foreach (TranslationResult o in deserializedOutput)
 }
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil etmeniz gerekir `Ocp-Apim-Subscription-Region` . [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım, `TranslateTextRequest()` `Main` işlevini çağırmak için kullanılır. Bu örnekte, Almanca`de`(), İtalyanca (`it`), Japonca (`ja`) ve Tay dili (`th`) için çeviri yapıyoruz. Bu `static void Main(string[] args)` kodla bulun ve değiştirin:
+Son adım, işlevini çağırmak için kullanılır `TranslateTextRequest()` `Main` . Bu örnekte, Almanca ( `de` ), İtalyanca ( `it` ), Japonca () `ja` ve Tay dili () için çeviri yapıyoruz `th` . `static void Main(string[] args)`Bu kodla bulun ve değiştirin:
 
 ```csharp
 static async Task Main(string[] args)
@@ -232,7 +232,7 @@ static async Task Main(string[] args)
 }
 ```
 
-İçinde `Main`,, ve `subscriptionKey` `endpoint` `route`bildirirsiniz. Buna ek olarak, kullanıcıdan ile `Console.Readline()` giriş ve değer atamasını de istiyorsunuz. `textToTranslate`
+İçinde,, `Main` ve bildirirsiniz `subscriptionKey` `endpoint` `route` . Buna ek olarak, kullanıcıdan ile giriş `Console.Readline()` ve değer atamasını de istiyorsunuz `textToTranslate` .
 
 ## <a name="run-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
@@ -293,7 +293,7 @@ Bu ileti ham JSON 'dan oluşturulmuştur ve bu şöyle görünür:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmenle gerçekleştirebileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

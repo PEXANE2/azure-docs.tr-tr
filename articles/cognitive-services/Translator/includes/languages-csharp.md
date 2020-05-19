@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906908"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586922"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o languages-sample
 cd languages-sample
 ```
 
-İlk komut iki şeyi yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı `languages-sample`bir dizin oluşturur. İkinci komut, projenizin dizinine değişir.
+İlk komut iki şeyi yapar. Yeni bir .NET konsol uygulaması oluşturur ve adlı bir dizin oluşturur `languages-sample` . İkinci komut, projenizin dizinine değişir.
 
 Sonra, Json.Net yüklemeniz gerekir. Projenizin dizininden şunu çalıştırın:
 
@@ -34,7 +34,7 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="add-required-namespaces-to-your-project"></a>Projenize gerekli ad alanlarını ekleyin
 
-Daha `dotnet new console` önce çalıştırdığınız komut, dahil olmak üzere `Program.cs`bir proje oluşturdu. Bu dosya, uygulama kodunuzu koyacaksınız. Öğesini `Program.cs`açın ve var olan using deyimlerini değiştirin. Bu deyimler, örnek uygulamayı derlemek ve çalıştırmak için gereken tüm türlere erişebildiğinizden emin olmanızı sağlar.
+`dotnet new console`Daha önce çalıştırdığınız komut, dahil olmak üzere bir proje oluşturdu `Program.cs` . Bu dosya, uygulama kodunuzu koyacaksınız. `Program.cs`Öğesini açın ve var olan using deyimlerini değiştirin. Bu deyimler, örnek uygulamayı derlemek ve çalıştırmak için gereken tüm türlere erişebildiğinizden emin olmanızı sağlar.
 
 ```csharp
 using System;
@@ -45,7 +45,7 @@ using Newtonsoft.Json;
 
 ## <a name="get-endpoint-information-from-an-environment-variable"></a>Bir ortam değişkeninden uç nokta bilgilerini al
 
-`Program` Sınıfına aşağıdaki satırları ekleyin. Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
+Sınıfına aşağıdaki satırları ekleyin `Program` . Bu satırlar, ortam değişkenlerinden, abonelik anahtarınızı ve uç noktayı okur ve herhangi bir sorunla karşılaşırsanız bir hata oluşturur.
 
 ```csharp
 private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
@@ -62,7 +62,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Dillerin listesini almak için bir işlev oluşturma
 
-`Program` Sınıfında adlı `GetLanguages`bir işlev oluşturun. Bu sınıf, diller kaynağını çağırmak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
+`Program`Sınıfında adlı bir işlev oluşturun `GetLanguages` . Bu sınıf, diller kaynağını çağırmak için kullanılan kodu kapsüller ve sonucu konsola yazdırır.
 
 ```csharp
 static void GetLanguages()
@@ -84,7 +84,7 @@ string route = "/languages?api-version=3.0";
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>İstemci örneği oluşturma ve bir istek oluşturma
 
-Bu satırlar `HttpClient` ve ' nin örneğini `HttpRequestMessage`oluşturur:
+Bu satırlar ve ' nin örneğini oluşturur `HttpClient` `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -104,7 +104,7 @@ using (var request = new HttpRequestMessage())
 * Zaman uyumsuz istek oluşturma
 * Yanıtı yazdırma
 
-Bu kodu öğesine ekleyin `HttpRequestMessage`:
+Bu kodu öğesine ekleyin `HttpRequestMessage` :
 
 ```csharp
 // Set the method to GET
@@ -119,7 +119,7 @@ Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
 
-Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil `Ocp-Apim-Subscription-Region` etmeniz gerekir. [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Bilişsel hizmetler çoklu hizmet aboneliği kullanıyorsanız, istek parametrelerinize de dahil etmeniz gerekir `Ocp-Apim-Subscription-Region` . [Multi-Service aboneliğiyle kimlik doğrulama hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 Yanıtı "düzgün Yazdır" (Yanıt biçimlendirme) ile yazdırmak için, bu işlevi program sınıfınıza ekleyin:
 
@@ -132,7 +132,7 @@ static string PrettyPrint(string s)
 
 ## <a name="put-it-all-together"></a>Hepsini bir araya getirin
 
-Son adım, `GetLanguages()` `Main` işlevini çağırmak için kullanılır. Şu `static void Main(string[] args)` satırları bulun ve ekleyin:
+Son adım, işlevini çağırmak için kullanılır `GetLanguages()` `Main` . `static void Main(string[] args)`Şu satırları bulun ve ekleyin:
 
 ```csharp
 GetLanguages();
@@ -241,7 +241,7 @@ Bu [diller listesinde](https://docs.microsoft.com/azure/cognitive-services/trans
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Translator Metin Çevirisi API'si ile yapabileceğiniz her şeyi anlamak için API başvurusuna göz atın.
+Çevirmenle gerçekleştirebileceğiniz her şeyi anlamak için API başvurusuna göz atın.
 
 > [!div class="nextstepaction"]
 > [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
