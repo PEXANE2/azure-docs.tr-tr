@@ -1,0 +1,173 @@
+---
+title: 'Hızlı başlangıç: Azure statik Web Apps ilk statik Web uygulamanızı oluşturma'
+description: Tercih ettiğiniz ön uç çerçevesiyle Azure statik Web Apps örneği oluşturmayı öğrenin.
+services: static-web-apps
+author: craigshoemaker
+ms.service: static-web-apps
+ms.topic: quickstart
+ms.date: 05/08/2020
+ms.author: cshoe
+ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83600006"
+---
+# <a name="quickstart-building-your-first-static-web-app"></a>Hızlı başlangıç: ilk statik Web uygulamanızı oluşturma
+
+Azure statik Web Apps, bir GitHub deposundan uygulamalar oluşturarak web sitelerini bir üretim ortamına yayımlar. Bu hızlı başlangıçta, bir GitHub deposundan tercih ettiğiniz ön uç çerçevesini kullanarak bir Web uygulaması oluşturacaksınız.
+
+Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
+
+## <a name="prerequisites"></a>Önkoşullar
+
+- [GitHub](https://github.com) hesabı
+- [Azure](https://portal.azure.com) hesabı
+
+## <a name="create-a-repository"></a>Depo oluştur
+
+Bu makalede yeni bir depo oluşturmanızı kolaylaştırmak için GitHub şablon depoları kullanılmaktadır. Şablonlar özelliği, farklı ön uç çerçevelerle oluşturulmuş başlangıç uygulamalarıdır.
+
+# <a name="angular"></a>[Angular](#tab/angular)
+
+- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+  - https://github.com/staticwebdev/angular-basic/generate
+- Deponuzu **-First-static-Web-App** olarak adlandırın
+
+# <a name="react"></a>[React](#tab/react)
+
+- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+  - https://github.com/staticwebdev/react-basic/generate
+- Deponuzu **-First-static-Web-App** olarak adlandırın
+
+# <a name="vue"></a>[Vue](#tab/vue)
+
+- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+  - https://github.com/staticwebdev/vue-basic/generate
+- Deponuzu **-First-static-Web-App** olarak adlandırın
+
+# <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
+
+- Yeni bir depo oluşturmak için aşağıdaki konuma gidin
+  - https://github.com/staticwebdev/vanilla-basic/generate
+- Deponuzu **-First-static-Web-App** olarak adlandırın
+
+> [!NOTE]
+> Azure statik Web Apps, bir Web uygulaması oluşturmak için en az bir HTML dosyası gerektirir. Bu adımda oluşturduğunuz depo tek bir _index. html_ dosyası içerir.
+
+---
+
+**Şablondan depo oluştur** düğmesine tıklayın.
+
+:::image type="content" source="media/getting-started/create-template.png" alt-text="Şablondan depo oluştur":::
+
+## <a name="create-a-static-web-app"></a>Statik Web uygulaması oluşturma
+
+Artık depo oluşturulduktan sonra, Azure portal statik bir Web uygulaması oluşturabilirsiniz.
+
+- [Azure Portal](https://portal.azure.com) gidin
+- **Kaynak oluştur ' a** tıklayın
+- **Statik Web Apps** ara
+- **Statik Web Apps (Önizleme)** seçeneğine tıklayın
+- **Oluştur** 'a tıklayın
+
+### <a name="basics"></a>Temel Bilgiler
+
+Yeni uygulamanızı yapılandırıp bir GitHub deposuna bağlayarak başlayın.
+
+:::image type="content" source="media/getting-started/basics-tab.png" alt-text="Temel bilgiler sekmesi":::
+
+- _Azure aboneliğinizi_ seçin
+- Yeni bir _kaynak grubu_ seçin veya oluşturun
+- Uygulamanın **-First-static-Web-App**' i adlandırın.
+  - Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9` ve `_` .
+- Size en yakın _bölgeyi_ seçin
+- **Ücretsiz** _SKU 'yu_ seçin
+- GitHub ile **oturum açma** düğmesine tıklayın ve GitHub ile kimlik doğrulaması yapın
+
+GitHub ile oturum açtıktan sonra depo bilgilerini girin.
+
+:::image type="content" source="media/getting-started/repository-details.png" alt-text="Depo ayrıntıları":::
+
+- Tercih ettiğiniz _kuruluşu_ seçin
+- _Depo_ açılır listesinden **My-First-Web-static-App** ' i seçin
+- _Dal_ açılan listesinden **ana öğe** seçin
+- Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın
+
+:::image type="content" source="media/getting-started/next-build-button.png" alt-text="Sonraki derleme düğmesi":::
+
+### <a name="build"></a>Yapı
+
+Ardından, tercih ettiğiniz ön uç çerçevesine özgü yapılandırma ayrıntılarını ekleyin.
+
+# <a name="angular"></a>[Angular](#tab/angular)
+
+- **/** _Uygulama konumu_ kutusuna girin
+- _API konum_ kutusundan varsayılan değeri temizle
+- _Uygulama yapıt konumu_ kutusuna **dağ/angular-temel** girin
+
+# <a name="react"></a>[React](#tab/react)
+
+- **/** _Uygulama konumu_ kutusuna girin
+- _API konum_ kutusundan varsayılan değeri temizle
+- _Uygulama yapıtı konum_ kutusunda **derlemeyi** girin
+
+# <a name="vue"></a>[Vue](#tab/vue)
+
+- **/** _Uygulama konumu_ kutusuna girin
+- _API konum_ kutusundan varsayılan değeri temizle
+- _Uygulama yapıtı konum_ kutusuna **Dist** girin
+
+# <a name="no-framework"></a>[Çerçeve yok](#tab/vanilla-javascript)
+
+- **/** _Uygulama konumu_ kutusuna girin
+- _API konum_ kutusundan varsayılan değeri temizle
+- _Uygulama yapıtı konum_ kutusundan varsayılan değeri temizle
+
+---
+
+**Gözden geçir + oluştur** düğmesine tıklayın.
+
+:::image type="content" source="media/getting-started/review-create.png" alt-text="İnceleme oluştur düğmesi":::
+
+### <a name="review--create"></a>Gözden geçir + oluştur
+
+İstek doğruladıktan sonra, uygulamayı oluşturmaya devam edebilirsiniz.
+
+**Oluştur** düğmesine tıklayın
+
+:::image type="content" source="media/getting-started/create-button.png" alt-text="Düğme oluştur":::
+
+Kaynak oluşturulduktan sonra **Kaynağa Git** düğmesine tıklayın
+
+:::image type="content" source="media/getting-started/resource-button.png" alt-text="Kaynak düğmesine git":::
+
+## <a name="view-the-website"></a>Web sitesini görüntüleme
+
+Statik uygulama dağıtmanın iki yönü vardır. İlki, uygulamanızı oluşturan temel Azure kaynaklarını sağlar. İkincisi, uygulamanızı oluşturup yayımlayan bir GitHub eylemleri iş akışıdır.
+
+Yeni statik sitenize gidebilmeniz için önce dağıtım derlemesinin çalıştırılması gerekir.
+
+Statik Web Apps genel bakış penceresinde web uygulamanızla etkileşime başlamanıza yardımcı olacak bir dizi bağlantı görüntülenir.
+
+:::image type="content" source="media/getting-started/overview-window.png" alt-text="Genel bakış penceresi":::
+
+1. "GitHub eylemlerinizin durumunu denetlemek için buraya tıklayın" ifadesini içeren başlığa tıkladığınızda sizi deponuza karşı çalışan GitHub eylemlerine götürür. Dağıtım işinin tamamlandığını doğruladıktan sonra, oluşturulan URL aracılığıyla Web sitenize gidebilirsiniz.
+
+2. GitHub eylemleri iş akışı tamamlandıktan sonra, Web sitesini yeni sekmede açmak için _URL_ bağlantısına tıklayabilirsiniz.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu uygulamayı kullanmaya devam edemeyecekinizde, Azure statik Web Apps örneğini aşağıdaki adımlarla silebilirsiniz:
+
+1. [Azure Portal](https://portal.azure.com) açın
+1. En üst arama çubuğundan **My-First-Web-static-App** araması yapın
+1. Uygulama adına tıklayın
+1. **Sil** düğmesine tıklayın
+1. Silme eylemini onaylamak için **Evet** ' e tıklayın
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"]
+> [API ekleme](add-api.md)

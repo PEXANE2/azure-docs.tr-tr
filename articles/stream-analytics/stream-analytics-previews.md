@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878315"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83609010"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics Önizleme özellikleri
 
@@ -21,6 +21,15 @@ Bu makale, şu anda Azure Stream Analytics için Önizlemedeki tüm özellikleri
 ## <a name="public-previews"></a>Genel önizlemeler
 
 Aşağıdaki özellikler genel önizlemede. Günümüzde bu özelliklerden faydalanabilirsiniz, ancak bunları üretim ortamınızda kullanmayın.
+
+### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Yönetilen kimlikler ile SQL veritabanı çıktısına kimlik doğrulama
+
+Azure Stream Analytics, Azure SQL veritabanı çıkış havuzları için [yönetilen kimlik kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/overview.md) destekler. Yönetilen kimlikler, Kullanıcı tabanlı kimlik doğrulama yöntemlerinin sınırlamalarını ortadan kaldırarak, parola değişikliklerinden veya her 90 günde bir gerçekleşen Kullanıcı belirteci süre sonu nedeniyle yeniden kimlik doğrulaması yapmanız gerekir. El ile kimlik doğrulaması gereksinimini kaldırdığınızda Stream Analytics dağıtımlarınız tamamen otomatikleştirilebilir.
+
+### <a name="output-to-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'e çıkış
+
+Azure Stream Analytics işleri, [Azure SYNAPSE Analytics](https://azure.microsoft.com/services/synapse-analytics) 'TEKI bir SQL havuz tablosuna çıkış yapabilir ve işleme hızını 200 MB/sn 'ye kadar işleyebilir. Bu, raporlama ve oluşturma gibi iş yükleri için en zorlu gerçek zamanlı analiz ve etkin yol veri işleme ihtiyaçlarını destekler.  
+
 
 ### <a name="online-scaling"></a>Çevrimiçi ölçeklendirme
 
