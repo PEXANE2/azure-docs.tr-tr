@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a09b79992f669c296fe0a674179fde5f38e8fc8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149385"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587805"
 ---
 Go için yüz istemci kitaplığı ile çalışmaya başlayın. Kitaplığı yüklemek için bu adımları izleyin ve temel görevler için örneklerimizi deneyin. Yüz tanıma hizmeti, görüntülerdeki insan yüzlerini algılayıp tanımayı sağlayan gelişmiş algoritmalara erişmenizi sağlar.
 
@@ -26,14 +26,14 @@ Git için yüz hizmeti istemci kitaplığını kullan:
 * [Yüz tanıma](#identify-a-face)
 * [Veri geçişi için bir anlık görüntü alın](#take-a-snapshot-for-data-migration)
 
-[Başvuru belge](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK indirmesi](https://github.com/Azure/azure-sdk-for-go)
+[Başvuru belgeleri](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK indirmesi](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * En son [Go](https://golang.org/dl/) sürümü
 
-## <a name="set-up"></a>Ayarla
+## <a name="set-up"></a>Kurulum
 
 ### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma 
 
@@ -81,7 +81,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-Hesabınızı `.bash_profile`düzenleyin ve ortam değişkenini ekleyin:
+Hesabınızı düzenleyin `.bash_profile` ve ortam değişkenini ekleyin:
 
 ```bash
 export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
@@ -93,7 +93,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 ### <a name="create-a-go-project-directory"></a>Go proje dizini oluştur
 
-Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için adlı `my-app`yeni bir çalışma alanı oluşturun ve buna gidin.
+Konsol penceresinde (cmd, PowerShell, Terminal, Bash), go projeniz için adlı yeni bir çalışma alanı oluşturun `my-app` ve buna gidin.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -102,19 +102,19 @@ cd my-app
 
 Çalışma alanınız üç klasör içerir:
 
-* **src** -bu dizin, kaynak kodu ve paketleri içerir. `go get` Komutuyla yüklenen tüm paketler bu klasörde olacaktır.
+* **src** -bu dizin, kaynak kodu ve paketleri içerir. Komutuyla yüklenen tüm paketler `go get` Bu klasörde olacaktır.
 * **pkg** -bu dizin, derlenmiş go paketi nesnelerini içerir. Bu dosyaların hepsi bir `.a` uzantısı vardır.
-* **bin** -bu dizin, çalıştırdığınızda `go install`oluşturulan ikili yürütülebilir dosyaları içerir.
+* **bin** -bu dizin, çalıştırdığınızda oluşturulan ikili yürütülebilir dosyaları içerir `go install` .
 
 > [!TIP]
-> Go çalışma alanının yapısı hakkında daha fazla bilgi edinmek için [Go Language belgelerine](https://golang.org/doc/code.html#Workspaces)bakın. Bu kılavuz, ve `$GOPATH` `$GOROOT`ayarları hakkında bilgi içerir.
+> Go çalışma alanının yapısı hakkında daha fazla bilgi edinmek için [Go Language belgelerine](https://golang.org/doc/code.html#Workspaces)bakın. Bu kılavuz, ve ayarları hakkında bilgi içerir `$GOPATH` `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>Go için istemci kitaplığını yükler
 
 Ardından, Go için istemci kitaplığını yükleyeceksiniz:
 
 ```bash
-go get -u https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
+go get -u github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
 ```
 
 ya da DEP kullanıyorsanız, deponuzda çalıştırın:
@@ -125,14 +125,14 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go uygulaması oluşturma
 
-Sonra, **src** dizininde adlı `sample-app.go`bir dosya oluşturun:
+Sonra, **src** dizininde adlı bir dosya oluşturun `sample-app.go` :
 
 ```bash
 cd src
 touch sample-app.go
 ```
 
-Tercih `sample-app.go` ettiğiniz IDE veya metin düzenleyicide açın. Ardından, paket adını ekleyin ve aşağıdaki kitaplıkları içeri aktarın:
+`sample-app.go`Tercih ETTIĞINIZ IDE veya metin düzenleyicide açın. Ardından, paket adını ekleyin ve aşağıdaki kitaplıkları içeri aktarın:
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_imports)]
 
@@ -142,10 +142,10 @@ Daha sonra, farklı yüz hizmeti işlemlerini gerçekleştirmek için kod ekleme
 
 Aşağıdaki sınıflar ve arabirimler, yüz hizmeti git istemci kitaplığı 'nın bazı önemli özelliklerini işler.
 
-|Adı|Açıklama|
+|Name|Açıklama|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
-|[İstemcilerinin](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
+|[İstemci](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
 |[DetectedFace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#DetectedFace)|Bu sınıf, görüntüde tek bir yüz tarafından algılanan tüm verileri temsil eder. Yüz hakkında ayrıntılı bilgi almak için bu uygulamayı kullanabilirsiniz.|
 |[ListClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#ListClient)|Bu sınıf, bir assıralanan yüz kümesini depolayan, bulutta depolanan çok **yönlü liste** yapılarını yönetir. |
 |[PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)| Bu sınıf, tek bir kişiye ait olan bir yüzey kümesini depolayan, bulutta depolanan **kişi** yapılarını yönetir.|
@@ -166,7 +166,7 @@ Bu kod örnekleri, Go için yüz hizmeti istemci kitaplığını kullanarak teme
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE] 
-> Bu hızlı başlangıçta, ve `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` sırasıyla adlı yüz anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayılır.
+> Bu hızlı başlangıçta, ve sırasıyla adlı yüz anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayılır `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
 Bir **ana** işlev oluşturun ve uç nokta ve anahtarınıza sahip bir istemci örneği oluşturmak için aşağıdaki kodu ekleyin. Anahtarınızla bir **[Biliveservicesauthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** nesnesi oluşturur ve bir **[istemci](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** nesnesi oluşturmak için bunu uç noktanızla birlikte kullanabilirsiniz. Bu kod ayrıca, istemci nesnelerinin oluşturulması için gerekli olan bir bağlam nesnesi oluşturur. Ayrıca, bu hızlı başlangıçta bulunan örnek görüntülerin bazılarının bulunduğu uzak konumu tanımlar.
 
@@ -214,9 +214,9 @@ Aşağıdaki kod, eşleşme ayrıntılarını konsola yazdırır.
 
 ## <a name="create-and-train-a-person-group"></a>Kişi grubu oluşturma ve eğitme
 
-Bu senaryoda ilerlemek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Bu senaryoda ilerlemek için aşağıdaki görüntüleri projenizin kök dizinine kaydetmeniz gerekir: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
-Bu görüntü grubu üç farklı kişiye karşılık gelen üç tek yüz görüntü kümesini içerir. Kod, üç **kişilik kişi** nesnesi tanımlar ve bunları, `woman` `man`ve `child`ile başlayan resim dosyalarıyla ilişkilendirir.
+Bu görüntü grubu üç farklı kişiye karşılık gelen üç tek yüz görüntü kümesini içerir. Kod, üç **kişilik kişi** nesnesi tanımlar ve bunları, ve ile başlayan resim dosyalarıyla ilişkilendirir `woman` `man` `child` .
 
 ### <a name="create-persongroup"></a>Kişilik grubu oluştur
 
@@ -251,7 +251,7 @@ Aşağıdaki kod, birden çok yüzü olan bir görüntü alır ve görüntüdeki
 
 ### <a name="get-a-test-image"></a>Test görüntüsü al
 
-Aşağıdaki kod, _Test-image-Person-Group. jpg_ görüntüsü için projenizin köküne bakar ve program belleğine yükler. Bu görüntüyü, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde kullanılan görüntülerle aynı depoda bulabilirsiniz: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Aşağıdaki kod, _Test-image-Person-Group. jpg_ görüntüsü için projenizin köküne bakar ve program belleğine yükler. Bu görüntüyü, [bir kişi grubu oluşturma ve eğitme](#create-and-train-a-person-group)bölümünde kullanılan görüntülerle aynı depoda bulabilirsiniz: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -347,7 +347,7 @@ Bu adımları tamamladıktan sonra, yeni (hedef) aboneliğinizdeki yüz veri yap
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulama dizininizdeki `go run [arguments]` komutuyla go uygulamanızı çalıştırın.
+`go run [arguments]`Uygulama dizininizdeki komutuyla go uygulamanızı çalıştırın.
 
 ```bash
 go run sample-app.go

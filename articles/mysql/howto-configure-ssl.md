@@ -45,7 +45,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ```
 
 > [!NOTE]
-> Windows üzerinde MySQL komut satırı arabirimini kullanırken bir hata `SSL connection error: Certificate signature check failed`alabilirsiniz. Bu gerçekleşirse, `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametreleri ile `--ssl`değiştirin.
+> Windows üzerinde MySQL komut satırı arabirimini kullanırken bir hata alabilirsiniz `SSL connection error: Certificate signature check failed` . Bu gerçekleşirse, `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametreleri ile değiştirin `--ssl` .
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>3. Adım: Azure 'da SSL bağlantıları zorlama 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma

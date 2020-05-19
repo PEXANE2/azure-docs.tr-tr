@@ -2,13 +2,13 @@
 title: Kişiselleştirme’yi yapılandırma
 description: Hizmet yapılandırması, hizmetin yeniden nasıl davrandığını, hizmetin ne sıklıkla incelendiğine, modelin ne sıklıkta geri alınacağını ve ne kadar veri depolandığını içerir.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219362"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584663"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Kişiselleştirici öğrenme döngüsünü yapılandırma
 
@@ -18,6 +18,23 @@ Hizmet yapılandırması, hizmetin yeniden nasıl davrandığını, hizmetin ne 
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>Yapılandırma değişikliklerini planlama
+
+Bazı yapılandırma değişiklikleri [modelinizi sıfırlacağından](#settings-that-include-resetting-the-model), yapılandırma değişikliklerinizi planlamanız gerekir.
+
+[Apprenlet modunu](concept-apprentice-mode.md)kullanmayı planlıyorsanız, apprenlet moduna geçmeden önce kişiselleştirici yapılandırmanızı gözden geçirdiğinizden emin olun.
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>Modeli sıfırlamayı içeren ayarlar
+
+Aşağıdaki eylemler, son 2 güne kadar kullanılabilir olan verileri kullanarak modelin yeniden eğitimini tetikler.
+
+* Ödül
+* Araştırma
+
+Tüm verilerinizi [temizlemek](how-to-manage-model.md) için **model ve öğrenme ayarları** sayfasını kullanın.
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>Geri bildirim döngüsü için yeniden ödüller yapılandırma
 
@@ -66,16 +83,7 @@ Bu değeri değiştirdikten sonra **Kaydet**' i seçtiğinizden emin olun.
 
 Bu değeri değiştirdikten sonra **Kaydet**' i seçtiğinizden emin olun.
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>Modeli sıfırlamayı içeren ayarlar
-
-Aşağıdaki eylemler, son 2 güne sahip bir modelin anında yeniden eğitiminin yer aldığı bir modeldir.
-
-* Ödül
-* Araştırma
-
-Tüm verilerinizi [temizlemek](how-to-manage-model.md) için * * model ve öğrenme ayarları * * sayfasını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,28 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c976d3b74badc4eeb5978af352fe425089f2fbfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219857"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584983"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta utbotları inceleyerek LUO uygulamasını geliştirme
 
 Doğru tahmine yönelik uç nokta dıklarını gözden geçirme işlemi, [etkin öğrenme](luis-concept-review-endpoint-utterances.md)olarak adlandırılır. Etkin öğrenme, uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu yazılanları inceleyerek, bu okuma dünyasının amacını seçin ve varlıkları işaretleyin. Bu değişiklikleri örnek söyleyenlerinde kabul edin ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
 ## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştir
 
-Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe yazmanız gerekir. Bu, [ENDPOINT](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) parametresi ve değeri ile `log=true` Endpoint sorgusu çağırarak yapılır.
+Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe yazmanız gerekir. Bu, ENDPOINT parametresi ve değeri ile [Endpoint sorgusu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) çağırarak yapılır `log=true` .
 
 Doğru uç nokta sorgusunu oluşturmak için LUO portalını kullanın.
 
-1. [ÖNIZLEME Luu portalında](https://preview.luis.ai/), uygulamalar listesinden uygulamanızı seçin.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 1. **Yönet** bölümüne gidin ve **Azure kaynakları**' nı seçin.
 1. Atanan tahmin kaynağı için **sorgu parametrelerini değiştir**' i seçin.
 
@@ -42,7 +41,7 @@ Doğru uç nokta sorgusunu oluşturmak için LUO portalını kullanın.
     > [!div class="mx-imgBorder"]
     > ![Etkin öğrenme için gerekli olan günlükleri kaydetmek için LUO portalını kullanın.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-     Bu eylem `log=true` QueryString parametresini ekleyerek örnek URL 'yi değiştirir. Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
+     Bu eylem QueryString parametresini ekleyerek örnek URL 'YI değiştirir `log=true` . Çalışma zamanı uç noktasına tahmin sorguları yaparken değiştirilen örnek sorgu URL 'sini kopyalayın ve kullanın.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Söylemeleri hizalamak için amaç tahminleri doğru
 
@@ -64,7 +63,7 @@ Söylenişi 'i silmeniz gerekip gerekmediğini bilmiyorsanız, bunu hiçbiri ama
 
 ## <a name="disable-active-learning"></a>Etkin öğrenmeyi devre dışı bırak
 
-Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günlüğe eklemeyin. Bu, varsayılan değer false olduğundan, `log=false` QueryString parametresi ve değeri ile [Endpoint sorgusu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) ayarlanarak ve QueryString değeri olmadan gerçekleştirilir.
+Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günlüğe eklemeyin. Bu, [endpoint query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) `log=false` varsayılan değer false olduğundan, QueryString parametresi ve değeri ile Endpoint sorgusu ayarlanarak ve QueryString değeri olmadan gerçekleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

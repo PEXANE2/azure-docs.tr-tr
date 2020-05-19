@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 252759139de7f53cd7875efeb7f477219092aa0b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837444"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584713"
 ---
 # <a name="unsupported-language-deployments"></a>Desteklenmeyen dil dağıtımları
 
@@ -25,7 +25,7 @@ Microsoft Translator hub 'ının yakında kullanımdan kaldırılması sayesinde
 
 Artık, desteklenmeyen modellerinizi özel çevirici aracılığıyla dağıtmanıza izin veren bir işlemdir.  Bu işlem, en son v3 API 'sini kullanarak içerik çevirmeye devam etmenize olanak sağlar.  Bu modeller, dağıtımını kaldırmak seçinceye kadar veya dil çiftinin özel çevirmende kullanılabilir hale gelene kadar barındırılacak.  Bu makalede, desteklenmeyen dil çiftlerine sahip modelleri dağıtma işlemi açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Modellerinizin dağıtıma aday olması için aşağıdaki ölçütleri karşılaması gerekir:
 * Modeli içeren proje, geçiş aracı kullanılarak hub 'dan özel çevirmene geçirilmiş olmalıdır.  Projeleri ve çalışma alanlarını geçirme işlemi [burada](how-to-migrate.md)bulunabilir.
@@ -57,4 +57,4 @@ Standart özel çevirici modellerinden farklı olarak, hub modelleri yalnızca t
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bir modeli eğitme](how-to-train-model.md).
-- Dağıtılmış özel çeviri modelinizi [Microsoft Translator metin çevirisi API'si v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla kullanmaya başlayın.
+- [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)aracılığıyla dağıtılan özel çeviri modelinizi kullanmaya başlayın.

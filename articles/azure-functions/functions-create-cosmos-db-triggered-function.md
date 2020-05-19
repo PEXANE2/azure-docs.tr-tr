@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 05/19/2020
 ms.locfileid: "83123794"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
@@ -18,7 +18,7 @@ Azure Cosmos DB’de veri eklendiğinde veya değiştirildiğinde tetiklenen bir
 
 :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png" alt-text="Azure Cosmos DB kodu":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -60,7 +60,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     | **Yeni Işlev** | Varsayılan adı kabul et | İşlevin adı. |
     | **Cosmos DB hesabı bağlantısı** | Varsayılan yeni adı kabul et | **Yeni**, daha önce oluşturduğunuz **veritabanı hesabı** ' nı seçin ve ardından **Tamam**' a tıklayın. Bu eylem, hesap bağlantınız için bir uygulama ayarı oluşturur. Bu ayar bağlama tarafından veritabanı bağlantısı için kullanılır. |
     | **Veritabanı adı** | Görevler | İzlenecek koleksiyonu içeren veritabanının adı. |
-    | **Koleksiyon adı** | Öğeler | İzlenecek koleksiyonun adı. |
+    | **Koleksiyon adı** | Öğeleri | İzlenecek koleksiyonun adı. |
     | **Kiralamalar için koleksiyon adı** | leases | Kiralamaları depolayacak koleksiyonun adı. |
     | **Yoksa kira koleksiyonu oluştur** | Yes | Kira koleksiyonunun varlığını denetler ve otomatik olarak oluşturur. |
 
@@ -99,7 +99,7 @@ Sonra, Azure Cosmos DB hesabınıza bağlanıp `Items` kapsayıcıyı `Tasks` ve
     | Ayar|Önerilen değer|Açıklama |
     | ---|---|--- |
     | **Veritabanı Kimliği** | Görevler |Yeni veritabanınızın adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir. |
-    | **Kapsayıcı KIMLIĞI** | Öğeler | Yeni kapsayıcının adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir.  |
+    | **Kapsayıcı KIMLIĞI** | Öğeleri | Yeni kapsayıcının adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir.  |
     | **[Bölüm anahtarı](../cosmos-db/partition-data.md)** | /kategori|Verileri her bölüme eşit şekilde dağıtan bir bölüm anahtarı. Doğru bölüm anahtarının seçilmesi, bir performanslı kapsayıcı oluşturmak için önemlidir. | 
     | **Aktarım hızı** |400 RU| Varsayılan değeri kullanın. Daha sonra gecikme süresini azaltmak isterseniz aktarım hızının ölçeğini artırabilirsiniz. |    
 

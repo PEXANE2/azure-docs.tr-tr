@@ -28,13 +28,13 @@ Bir kayıt defteri hizmet uç noktası yapılandırmak **Premium** kapsayıcı k
 * Bir hizmet uç noktası kullanılarak kapsayıcı kayıt defterine erişmek için bir konak olarak yalnızca bir [Azure Kubernetes hizmet](../aks/intro-kubernetes.md) kümesi veya Azure [sanal makinesi](../virtual-machines/linux/overview.md) kullanılabilir. *Azure Container Instances dahil diğer Azure hizmetleri desteklenmez.*
 * Her kayıt defteri en fazla 100 ağ erişim kuralını destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu makalede Azure CLı adımlarını kullanmak için Azure CLı sürüm 2.0.58 veya üzeri gereklidir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
-* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir (Premium SKU gerekir) oluşturun ve Docker Hub 'dan gibi `hello-world` örnek bir görüntü gönderin. Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
+* Zaten bir kapsayıcı kayıt defteriniz yoksa, bir (Premium SKU gerekir) oluşturun ve Docker Hub 'dan gibi örnek bir görüntü gönderin `hello-world` . Örneğin, [Azure Portal][quickstart-portal] veya [Azure CLI][quickstart-cli] kullanarak bir kayıt defteri oluşturun. 
 
-* Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örneğin:
+* Farklı bir Azure aboneliğindeki bir hizmet uç noktası kullanarak kayıt defteri erişimini kısıtlamak istiyorsanız, bu abonelikte Azure Container Registry kaynak sağlayıcısını kaydedin. Örnek:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -124,7 +124,7 @@ Yapılandırmanın güncelleştirilmesi birkaç dakika bekledikten sonra, sanal 
 az acr login --name mycontainerregistry
 ```
 
-Kayıt defterinden örnek bir görüntü çekmek için çalıştırma `docker pull` gibi kayıt defteri işlemleri gerçekleştirebilirsiniz. Kayıt defteri oturum açma sunucusu adı (tümü küçük harf) önekini kullanarak kayıt defteriniz için uygun bir görüntü ve etiket değeri koyun:
+`docker pull`Kayıt defterinden örnek bir görüntü çekmek için çalıştırma gibi kayıt defteri işlemleri gerçekleştirebilirsiniz. Kayıt defteri oturum açma sunucusu adı (tümü küçük harf) önekini kullanarak kayıt defteriniz için uygun bir görüntü ve etiket değeri koyun:
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
@@ -132,7 +132,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Docker görüntüyü sanal makineye başarıyla çeker.
 
-Bu örnekte, özel kapsayıcı kayıt defterine ağ erişim kuralıyla erişebileceğiniz gösterilmektedir. Bununla birlikte, kayıt defterine, yapılandırılmış bir ağ erişim kuralına sahip olmayan bir oturum açma konağından erişilemez. `az acr login` Komutunu veya `docker login` komutunu kullanarak başka bir ana bilgisayardan oturum açmaya çalışırsanız, çıkış aşağıdakine benzer:
+Bu örnekte, özel kapsayıcı kayıt defterine ağ erişim kuralıyla erişebileceğiniz gösterilmektedir. Bununla birlikte, kayıt defterine, yapılandırılmış bir ağ erişim kuralına sahip olmayan bir oturum açma konağından erişilemez. Komutunu veya komutunu kullanarak başka bir ana bilgisayardan oturum açmaya çalışırsanız `az acr login` `docker login` , çıkış aşağıdakine benzer:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
@@ -152,7 +152,7 @@ Kayıt defteriniz için yapılandırılmış ağ kurallarının bir listesini g�
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Yapılandırılan her kural için [az ACR Network-Rule Remove][az-acr-network-rule-remove] komutunu çalıştırarak kaldırın. Örneğin:
+Yapılandırılan her kural için [az ACR Network-Rule Remove][az-acr-network-rule-remove] komutunu çalıştırarak kaldırın. Örnek:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.

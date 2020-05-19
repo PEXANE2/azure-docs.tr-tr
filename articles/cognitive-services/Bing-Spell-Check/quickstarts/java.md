@@ -10,18 +10,18 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 43c528a1e9e46a67e895679b1a0fd04fef8900a7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382968"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735122"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve Java ile yazım denetimi yapma
 
-Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama Java 'da yazıldığı sırada, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java)' da kullanılabilir.
+Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama Java 'da yazıldığı sırada, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java)' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Java Development Kit (JDK) 7 veya üzeri.
 
@@ -55,7 +55,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
 
 ## <a name="create-and-send-an-api-request"></a>API isteği oluşturma ve gönderme
 
-1. API isteği oluşturmak ve `check()` göndermek için adlı bir işlev oluşturun. Bunun içinde, aşağıdaki adımları izleyin. İstek parametreleri için bir dize oluşturun. `?mkt=` parametreyi Pazar dizeniz ve `&mode=` parametresini yazım denetimi moduna ekleyin.  
+1. `check()`API isteği oluşturmak ve göndermek için adlı bir işlev oluşturun. Bunun içinde, aşağıdaki adımları izleyin. İstek parametreleri için bir dize oluşturun. `?mkt=`parametreyi Pazar dizeniz ve `&mode=` parametresini yazım denetimi moduna ekleyin.  
 
    ```java
    public static void check () throws Exception {
@@ -64,14 +64,14 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
    }
    ```
 
-2. Uç nokta konağını, yolunu ve Parameters dizesini birleştirerek bir URL oluşturun. Yeni `HttpsURLConnection` bir nesne oluşturun.
+2. Uç nokta konağını, yolunu ve Parameters dizesini birleştirerek bir URL oluşturun. Yeni bir `HttpsURLConnection` nesne oluşturun.
 
     ```java
     URL url = new URL(host + path + params);
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. URL 'ye bir bağlantı açın. İstek yöntemini olarak `POST`ayarlayın. İstek parametrelerinizi ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye eklediğinizden emin olun.
+3. URL 'ye bir bağlantı açın. İstek yöntemini olarak ayarlayın `POST` . İstek parametrelerinizi ekleyin. Abonelik anahtarınızı üstbilgiye eklediğinizden emin olun `Ocp-Apim-Subscription-Key` .
 
     ```java
     connection.setRequestMethod("POST");
@@ -80,7 +80,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     connection.setDoOutput(true);
     ```
 
-4. Yeni `DataOutputStream` bir nesne oluşturun ve isteği API 'ye gönderin.
+4. Yeni bir `DataOutputStream` nesne oluşturun ve ISTEğI API 'ye gönderin.
 
     ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -103,7 +103,7 @@ Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı baş
     }
     ```
 
-1. Bir `BufferedReader` oluşturun ve API 'den yanıtı okuyun. Bunu konsola yazdır.
+1. Bir oluşturun `BufferedReader` ve API 'den yanıtı okuyun. Bunu konsola yazdır.
     
     ```java
     BufferedReader in = new BufferedReader(
@@ -140,7 +140,7 @@ Komut satırını kullanıyorsanız, uygulamayı derlemek ve çalıştırmak iç
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**Çalıştırın:**
+**Çalışmaz**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```

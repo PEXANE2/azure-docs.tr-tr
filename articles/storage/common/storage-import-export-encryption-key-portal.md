@@ -23,7 +23,7 @@ Müşteri tarafından yönetilen anahtarların bir Azure Key Vault oluşturulmas
 
 Bu makalede, müşteri tarafından yönetilen anahtarların [Azure Portal](https://portal.azure.com/)Içeri/dışarı aktarma hizmeti ile nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlardan emin olun:
 

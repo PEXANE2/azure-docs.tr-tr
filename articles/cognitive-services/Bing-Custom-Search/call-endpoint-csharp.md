@@ -8,36 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 7ea8b272871e681bd9caacf8cf1a84eb91d8849d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e1084c1962db3c04b951245361da80bee098329a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238900"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199830"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Hızlı başlangıç: C kullanarak Bing Özel Arama uç noktanızı çağırma # 
 
-Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bu uygulama C# dilinde yazıldığı sırada, Bing Özel Arama API'si birçok programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs)' da bulunabilir.
+Bing Özel Arama örneğinden arama sonuçları isteme hakkında bilgi edinmek için bu hızlı başlangıcı kullanın. Bu uygulama C# dilinde yazılsa da, Bing Özel Arama API'si çoğu programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs)' da kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Herhangi bir [Visual Studio 2019 veya üzeri](https://www.visualstudio.com/downloads/) sürümü
-- Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
-- [Bing özel arama](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet paketi. 
-    - Visual Studio 'daki **Çözüm Gezgini** , projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet** ' i seçin. `Microsoft.Azure.CognitiveServices.Search.CustomSearch` paketini yükleyin. NuGet Özel Arama paketini yüklediğinizde aşağıdaki derlemeler de yüklenir:
-        - Microsoft.Rest.ClientRuntime
-        - Microsoft.Rest.ClientRuntime.Azure
-        - Newtonsoft.Json
+- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md).
+- [Microsoft .NET Core](https://www.microsoft.com/net/download/core).
+- Herhangi bir [Visual Studio 2019 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
+- Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
+- [Bing özel arama](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) NuGet paketi. 
+
+   Bu paketi Visual Studio 'ya yüklemek için: 
+     1. **Çözüm Gezgini**' de projenize sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin. 
+     2. Arama yapın ve *Microsoft. Azure. Biliveservices. Search. CustomSearch*öğesini seçin ve ardından paketi yükler.
+
+   Bing Özel Arama NuGet paketini yüklediğinizde, Visual Studio aşağıdaki paketleri de yükler:
+     - **Microsoft.Rest.ClientRuntime**
+     - **Microsoft.Rest.ClientRuntime.Azure**
+     - **Newtonsoft.Json**
+
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Visual Studio 'da yeni bir C# konsol uygulaması oluşturun. Ardından projenize aşağıdaki paketleri ekleyin.
+1. Visual Studio 'da yeni bir C# konsol uygulaması oluşturun. Ardından, aşağıdaki paketleri projenize ekleyin:
 
     ```csharp
     using System;
@@ -46,7 +52,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     using Newtonsoft.Json;
     ```
 
-2. Bing Özel Arama API'si tarafından döndürülen arama sonuçlarını depolamak için aşağıdaki sınıfları oluşturun.
+2. Bing Özel Arama API'si tarafından döndürülen arama sonuçlarını depolamak için aşağıdaki sınıfları oluşturun:
 
     ```csharp
     public class BingCustomSearchResponse {        
@@ -70,7 +76,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     }
     ```
 
-3. Projenizin Main yönteminde, Bing Özel Arama API'si abonelik anahtarınız, arama örneğinizin özel yapılandırma KIMLIĞI ve bir arama terimi için değişkenler oluşturun.
+3. Projenizin Main yönteminde, Bing Özel Arama API'si abonelik anahtarınız, arama örneğinin özel yapılandırma KIMLIĞI ve arama terimi için aşağıdaki değişkenleri oluşturun:
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -78,7 +84,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Arama teriminizi `q=` sorgu parametresine ekleyerek istek URL 'sini oluşturun ve arama örneğinizin özel yapılandırma kimliği ' ni olarak `customconfig=`yapın. parametreleri bir `&` karakterle ayırın. `url`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.
+4. Arama teriminizi `q=` sorgu parametresine ve arama örneğinizin özel yapılandırma kimliğini parametreye ekleyerek Istek URL 'sini oluşturun `customconfig=` . Parametreleri bir ve işareti () ile ayırın `&` . `url`Değişken değeri için aşağıdaki kodda genel uç noktasını kullanabilir veya kaynağınız için Azure Portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -102,9 +108,9 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-   ## <a name="process-and-view-the-results"></a>Sonuçları işleme ve görüntüleme
+## <a name="process-and-view-the-results"></a>Sonuçları işleme ve görüntüleme
 
-3. Ad, URL ve Web sayfasının en son gezinildiği tarih dahil olmak üzere her bir arama sonucuyla ilgili bilgileri görüntülemek için yanıt nesnesini yineleyin.
+- Ad, URL ve Web sayfasının en son gezinildiği tarih dahil olmak üzere her bir arama sonucuyla ilgili bilgileri görüntülemek için yanıt nesnesini yineleyin.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

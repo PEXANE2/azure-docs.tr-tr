@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 039a52c9ab0bfc460116e48086c854f4d7e8efb4
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919677"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996977"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Hızlı başlangıç: Ruby için Metin Analizi istemci kitaplığını kullanma
 
@@ -31,15 +31,15 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 > [!NOTE]
 > Bu hızlı başlangıç yalnızca Metin Analizi sürüm 2,1 için geçerlidir. Şu anda Ruby için bir v3 istemci kitaplığı kullanılamıyor.
 
-[Başvuru belge](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics) | [paketi (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+[Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics)  |  [Paket (RubyGems)](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)  |  [Örnekler](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 <a name="HOLTop"></a>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Ruby](https://www.ruby-lang.org/) 'nin geçerli sürümü
-* Azure aboneliğiniz olduktan <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="sonra, anahtarınızı ve uç noktanızı almak için"  target="_blank">Azure Portal bir metin analizi kaynağı <span class="docon docon-navigate-external x-hidden-focus"></span> </a> oluşturun metin analizi bir kaynak oluşturun. 
+* Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun. 
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Bunu daha sonra hızlı başlangıçta yapacaksınız.
     * Ücretsiz fiyatlandırma katmanını kullanarak hizmeti deneyebilir ve daha sonra üretim için ücretli bir katmana yükseltebilirsiniz.
 
@@ -47,13 +47,13 @@ Metin Analizi istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek
 
 ### <a name="create-a-new-ruby-application"></a>Yeni bir Ruby uygulaması oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. Daha sonra kodunuz için adlı `GemFile`bir dosya ve Ruby dosyası oluşturun.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. Daha sonra kodunuz için adlı bir dosya `GemFile` ve Ruby dosyası oluşturun.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-İçinde `GemFile`, istemci kitaplığını bir bağımlılık olarak eklemek için aşağıdaki satırları ekleyin.
+İçinde `GemFile` , istemci kitaplığını bir bağımlılık olarak eklemek için aşağıdaki satırları ekleyin.
 
 ```ruby
 source 'https://rubygems.org'
@@ -77,13 +77,13 @@ const endpoint = `<paste-your-text-analytics-endpoint-here>`
 
 Metin Analizi istemcisi anahtarınızı kullanarak Azure 'da kimlik doğrulaması yapar. İstemci, tek bir dize veya bir toplu iş olarak metin çözümlemek için çeşitli yöntemler sağlar. 
 
-Metin, kullanılan yöntemine bağlı `documents`olarak `dictionary` `id`, `text`ve `language` özniteliklerinin bir birleşimini içeren nesneler olan bir listesi olarak API 'ye gönderilir. `text` Özniteliği, kaynak `language`olarak çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. 
+Metin, `documents` `dictionary` `id` `text` `language` kullanılan yöntemine bağlı olarak, ve özniteliklerinin bir birleşimini içeren nesneler olan bir listesi olarak API 'ye gönderilir. `text`Özniteliği, kaynak olarak çözümlenecek metni depolar `language` ve `id` herhangi bir değer olabilir. 
 
 Yanıt nesnesi, her belge için analiz bilgilerini içeren bir listesidir. 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını gösterir:
+Bu kod parçacıkları, Ruby için Metin Analizi istemci kitaplığı ile aşağıdakilerin nasıl yapılacağını göstermektedir:
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Yaklaşım Analizi](#sentiment-analysis)
@@ -93,7 +93,7 @@ Bu kod parçacıkları, Python için Metin Analizi istemci kitaplığı ile aşa
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Adlı `TextAnalyticsClient`bir sınıf oluşturun. 
+Adlı bir sınıf oluşturun `TextAnalyticsClient` . 
 
 ```ruby
 class TextAnalyticsClient
@@ -102,11 +102,11 @@ class TextAnalyticsClient
 end
 ```
 
-Bu sınıfta, anahtarınızı ve uç noktanızı kullanarak `initialize` istemcinin kimliğini doğrulamak için adlı bir işlev oluşturun. 
+Bu sınıfta, `initialize` anahtarınızı ve uç noktanızı kullanarak istemcinin kimliğini doğrulamak için adlı bir işlev oluşturun. 
 
 [!code-ruby[initialize function for authentication](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=initialize)]
 
-Sınıfının dışında, onun örneğini oluşturmak için istemcinin `new()` işlevini kullanın.
+Sınıfının dışında, `new()` onun örneğini oluşturmak için istemcinin işlevini kullanın.
 
 [!code-ruby[client creation](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=clientCreation)] 
 
@@ -114,15 +114,15 @@ Sınıfının dışında, onun örneğini oluşturmak için istemcinin `new()` i
 
 ## <a name="sentiment-analysis"></a>Yaklaşım analizi
 
-İstemci nesnesinde, daha sonra oluşturulacak giriş belgelerinin bir `AnalyzeSentiment()` listesini alan adlı bir işlev oluşturun. İstemcinin `sentiment()` işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
+İstemci nesnesinde, `AnalyzeSentiment()` daha sonra oluşturulacak giriş belgelerinin bir listesini alan adlı bir işlev oluşturun. İstemcinin `sentiment()` işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belge KIMLIĞINI ve yaklaşım Puanını yazdırın. 0 ' a yakın bir puan negatif bir yaklaşım gösterir, 1 ' e yaklaşarak pozitif bir yaklaşım gösterilir.
 
 [!code-ruby[client method for sentiment analysis](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=analyzeSentiment)] 
 
-İstemci işlevinin dışında, daha önce oluşturulan `SentimentAnalysisExample()` `TextAnalyticsClient` nesneyi alan adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `MultiLanguageInput` içeren bir nesne listesi oluşturun. Her nesne bir `id` `Language` ve `text` özniteliği içerir. `text` Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. Ardından, istemcinin `AnalyzeSentiment()` işlevini çağırın.
+İstemci işlevinin dışında, `SentimentAnalysisExample()` `TextAnalyticsClient` daha önce oluşturulan nesneyi alan adlı yeni bir işlev oluşturun. `MultiLanguageInput`Analiz etmek istediğiniz belgeleri içeren bir nesne listesi oluşturun. Her nesne bir `id` `Language` ve `text` özniteliği içerir. `text`Özniteliği çözümlenecek metni depolar, `language` belgenin dilidir ve `id` herhangi bir değer olabilir. Ardından, istemcinin işlevini çağırın `AnalyzeSentiment()` .
 
 [!code-ruby[sentiment analysis document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=sentimentCall)] 
 
-`SentimentAnalysisExample()` İşlevi çağırın.
+İşlevi çağırın `SentimentAnalysisExample()` .
 
 ```ruby
 SentimentAnalysisExample(textAnalyticsClient)
@@ -142,15 +142,15 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Dil algılama
 
-İstemci nesnesinde, daha sonra oluşturulacak giriş belgelerinin bir `DetectLanguage()` listesini alan adlı bir işlev oluşturun. İstemcinin `detect_language()` işlevini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan dili yazdırın.
+İstemci nesnesinde, `DetectLanguage()` daha sonra oluşturulacak giriş belgelerinin bir listesini alan adlı bir işlev oluşturun. İstemcinin `detect_language()` işlevini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve algılanan dili yazdırın.
 
 [!code-ruby[client method for language detection](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguage)] 
 
-İstemci işlevinin dışında, daha önce oluşturulan `DetectLanguageExample()` `TextAnalyticsClient` nesneyi alan adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `LanguageInput` içeren bir nesne listesi oluşturun. Her nesne bir `id`ve `text` özniteliği içerir. `text` Özniteliği çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. Ardından, istemcinin `DetectLanguage()` işlevini çağırın.
+İstemci işlevinin dışında, `DetectLanguageExample()` `TextAnalyticsClient` daha önce oluşturulan nesneyi alan adlı yeni bir işlev oluşturun. `LanguageInput`Analiz etmek istediğiniz belgeleri içeren bir nesne listesi oluşturun. Her nesne bir `id` ve `text` özniteliği içerir. `text`Özniteliği çözümlenecek metni depolar ve `id` herhangi bir değer olabilir. Ardından, istemcinin işlevini çağırın `DetectLanguage()` .
 
 [!code-ruby[language detection document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=detectLanguageCall)] 
 
-`DetectLanguageExample()` İşlevi çağırın.
+İşlevi çağırın `DetectLanguageExample()` .
 
 ```ruby
 DetectLanguageExample(textAnalyticsClient)
@@ -169,15 +169,15 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Varlık tanıma
 
-İstemci nesnesinde, daha sonra oluşturulacak giriş belgelerinin bir `RecognizeEntities()` listesini alan adlı bir işlev oluşturun. İstemcinin `entities()` işlevini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve tanınan varlıkları yazdırın.
+İstemci nesnesinde, `RecognizeEntities()` daha sonra oluşturulacak giriş belgelerinin bir listesini alan adlı bir işlev oluşturun. İstemcinin `entities()` işlevini çağırın ve sonucu alın. Sonra sonuçlar arasında yineleme yapın ve her belge KIMLIĞINI ve tanınan varlıkları yazdırın.
 
 [!code-ruby[client method for entity recognition](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntities)]
 
-İstemci işlevinin dışında, daha önce oluşturulan `RecognizeEntitiesExample()` `TextAnalyticsClient` nesneyi alan adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `MultiLanguageInput` içeren bir nesne listesi oluşturun. Her nesne `id`, `language`bir, ve bir `text` özniteliği içerir. `text` Özniteliği çözümlenecek metni depolar, `language` metnin dilidir ve `id` herhangi bir değer olabilir. Ardından, istemcinin `RecognizeEntities()` işlevini çağırın.
+İstemci işlevinin dışında, `RecognizeEntitiesExample()` `TextAnalyticsClient` daha önce oluşturulan nesneyi alan adlı yeni bir işlev oluşturun. `MultiLanguageInput`Analiz etmek istediğiniz belgeleri içeren bir nesne listesi oluşturun. Her nesne, bir, `id` ve bir `language` `text` özniteliği içerir. `text`Özniteliği çözümlenecek metni depolar, `language` metnin dilidir ve `id` herhangi bir değer olabilir. Ardından, istemcinin işlevini çağırın `RecognizeEntities()` .
 
 [!code-ruby[entity recognition documents and method call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=recognizeEntitiesCall)] 
 
-`RecognizeEntitiesExample()` İşlevi çağırın.
+İşlevi çağırın `RecognizeEntitiesExample()` .
 
 ```ruby
 RecognizeEntitiesExample(textAnalyticsClient)
@@ -227,16 +227,16 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Anahtar ifade ayıklama
 
-İstemci nesnesinde, daha sonra oluşturulacak giriş belgelerinin bir `ExtractKeyPhrases()` listesini alan adlı bir işlev oluşturun. İstemcinin `key_phrases()` işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin KIMLIĞINI ve ayıklanan anahtar tümceciklerini yazdırın.
+İstemci nesnesinde, `ExtractKeyPhrases()` daha sonra oluşturulacak giriş belgelerinin bir listesini alan adlı bir işlev oluşturun. İstemcinin `key_phrases()` işlevini çağırın ve sonucu alın. Ardından sonuçları yineleyin ve her belgenin KIMLIĞINI ve ayıklanan anahtar tümceciklerini yazdırın.
 
 [!code-ruby[key phrase extraction client method](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=extractKeyPhrases)] 
 
-İstemci işlevinin dışında, daha önce oluşturulan `KeyPhraseExtractionExample()` `TextAnalyticsClient` nesneyi alan adlı yeni bir işlev oluşturun. Analiz etmek istediğiniz belgeleri `MultiLanguageInput` içeren bir nesne listesi oluşturun. Her nesne `id`, `language`bir, ve bir `text` özniteliği içerir. `text` Özniteliği çözümlenecek metni depolar, `language` metnin dilidir ve `id` herhangi bir değer olabilir. Ardından, istemcinin `ExtractKeyPhrases()` işlevini çağırın.
+İstemci işlevinin dışında, `KeyPhraseExtractionExample()` `TextAnalyticsClient` daha önce oluşturulan nesneyi alan adlı yeni bir işlev oluşturun. `MultiLanguageInput`Analiz etmek istediğiniz belgeleri içeren bir nesne listesi oluşturun. Her nesne, bir, `id` ve bir `language` `text` özniteliği içerir. `text`Özniteliği çözümlenecek metni depolar, `language` metnin dilidir ve `id` herhangi bir değer olabilir. Ardından, istemcinin işlevini çağırın `ExtractKeyPhrases()` .
 
 [!code-ruby[key phrase document creation and call](~/cognitive-services-ruby-sdk-samples/samples/text_analytics.rb?name=keyPhrasesCall)]
 
 
-`KeyPhraseExtractionExample()` İşlevi çağırın.
+İşlevi çağırın `KeyPhraseExtractionExample()` .
 
 ```ruby
 KeyPhraseExtractionExample(textAnalyticsClient)

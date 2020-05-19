@@ -26,7 +26,7 @@ Bu makalede, Windows [NVv4 serisi](https://docs.microsoft.com/azure/virtual-mach
 
 Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili yönergeler [burada](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)bulunabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -71,9 +71,9 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 
 | Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | tarih |
+| apiVersion | 2015-06-15 | date |
 | yayımcı | Microsoft. HpcCompute | string |
-| type | AmdGpuDriverWindows | string |
+| tür | AmdGpuDriverWindows | string |
 | typeHandlerVersion | 1.0 | int |
 
 

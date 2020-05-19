@@ -46,7 +46,7 @@ Bu makalede iOS 10 veya üstünü çalıştıran cihazları hedefleyen FairPlay 
 > [!NOTE]
 > Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İOS 10 + cihazında FairPlay için çevrimdışı DRM uygulamadan önce:
 

@@ -38,7 +38,7 @@ Doğrudan kimlik doğrulama aracısını dağıtmadan önce, sunucularınız ve 
 > [!NOTE]
 > Azure Kamu ortamları için [azure ad uygulama ara sunucusu Bağlayıcısı](https://aka.ms/whyappproxy) 'nı yüklemek için aşağıdaki kılavuz de geçerlidir.
 
-|URL'si |Nasıl kullanılır?|
+|URL |Nasıl kullanılır?|
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Aracı bu URL 'Leri Azure AD bulut hizmeti ile iletişim kurmak için kullanır. |
 |mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| Aracı, sertifikaları doğrulamak için bu URL 'Leri kullanır.|

@@ -22,7 +22,7 @@ Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve 
 > [!NOTE]
 > Event Grid ile bir Azure Işlevi tetiklendiğinde [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önemle** önerilir. Burada genel Web kancası tetikleyicisi kullanımı gösterim amaçlıdır ' dir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız vardır.
 

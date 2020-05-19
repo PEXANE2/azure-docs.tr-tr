@@ -38,7 +38,7 @@ Bu özellik herhangi bir şeyi etkinleştirmenizi veya yapılandırmanızı gere
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansını görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. **İzleme** araması yapın ve **izleyiciyi**seçin.
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769880"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734340"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları raporlamak için IoT cihazındaki Özel Görüntü İşleme kullanma
 
@@ -33,7 +33,7 @@ Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
@@ -62,7 +62,7 @@ Aşağıdaki dosyalar uygulamanın ana işlevlerini işler.
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Bu kod, XAML kullanıcı arabirimi 'nin davranışını denetler. Durum makine işleme kodunu içerir.|
 | [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Bu sınıf, Özel Görüntü İşleme Hizmeti tümleştirmeyi işleyen bir sarmalayıcıdır.|
 | [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Bu sınıf, üzerinde ONNX modelini ve Puanlama görüntülerini yüklemek için Windows ML ile tümleştirmeyi işleyen bir sarmalayıcıdır.|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Bu sınıf, Puanlama sonuçlarını Azure 'a yüklemek için IoT Hub ile tümleştirmeyi işleyen bir sarmalayıcıdır.|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IoTHubWrapper.cs) | Bu sınıf, Puanlama sonuçlarını Azure 'a yüklemek için IoT Hub ile tümleştirmeyi işleyen bir sarmalayıcıdır.|
 
 ## <a name="set-up-the-visual-alerts-app"></a>Görsel uyarılar uygulamasını ayarlama
 
@@ -71,12 +71,12 @@ Bilgisayarınızda veya IoT cihazınızda çalışan IoT görsel uyarıları uyg
 1. GitHub 'da [ıotgörselalalerts örneğini](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts) kopyalayın veya indirin.
 1. Visual Studio 'da _ıotgörselalalerts. sln_ çözümünü açın
 1. Özel Görüntü İşleme projenizi tümleştirin:
-    1. _CustomVision\CustomVisionServiceWrapper.cs_ betiğiyle, `ApiKey` değişkeni eğitim anahtarınızla güncelleştirin.
+    1. _CustomVision\CustomVisionServiceWrapper.cs_ `ApiKey` betiğiyle, değişkeni eğitim anahtarınızla güncelleştirin.
     1. Sonra değişkeni, `Endpoint` anahtarınızla ilişkili uç nokta URL 'siyle güncelleştirin.
-    1. `targetCVSProjectGuid` Değişkeni, kullanmak istediğiniz özel görüntü işleme projenin KARŞıLıK gelen kimliğiyle güncelleştirin. 
+    1. Değişkeni, `targetCVSProjectGuid` kullanmak istediğiniz özel görüntü işleme projenin karşılık gelen kimliğiyle güncelleştirin. 
 1. IoT Hub kaynağını ayarlama:
     1. _IoTHub\IotHubWrapper.cs_ komut dosyasında, `s_connectionString` değişkeni cihazınız için uygun bağlantı dizesiyle güncelleştirin. 
-    1. Azure portal, IoT Hub örneğinizi yükleyin, **araştırıcılar**altında **IoT cihazları** ' na tıklayın, hedef cihazınızda ' i seçin (veya gerekirse bir tane oluşturun) ve **birincil bağlantı dizesi**altında bağlantı dizesini bulun. Dize, IoT Hub adı, cihaz KIMLIĞI ve paylaşılan erişim anahtarınızı içerir; Şu biçimdedir: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
+    1. Azure portal, IoT Hub örneğinizi yükleyin, **araştırıcılar**altında **IoT cihazları** ' na tıklayın, hedef cihazınızda ' i seçin (veya gerekirse bir tane oluşturun) ve **birincil bağlantı dizesi**altında bağlantı dizesini bulun. Dize, IoT Hub adı, cihaz KIMLIĞI ve paylaşılan erişim anahtarınızı içerir; Şu biçimdedir: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
@@ -90,9 +90,9 @@ Uygulamayı ilk kez çalıştırdığınızda, hiçbir görsel durum bilgisine s
 
 Bir model ayarlamak için uygulamayı **yakalama eğitim görüntüleri** durumuna yerleştirmeniz gerekir. Aşağıdaki adımlardan birini uygulayın:
 * Uygulamayı BILGISAYAR üzerinde çalıştırıyorsanız, Kullanıcı arabiriminin sağ üst köşesindeki düğmeyi kullanın.
-* Uygulamayı bir IoT cihazında çalıştırıyorsanız, IoT Hub aracılığıyla cihazdaki `EnterLearningMode` yöntemi çağırın. Bunu, Azure portal IoT Hub menüsündeki cihaz girişi veya [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)gibi bir araçla çağırabilirsiniz.
+* Uygulamayı bir IoT cihazında çalıştırıyorsanız, `EnterLearningMode` IoT Hub aracılığıyla cihazdaki yöntemi çağırın. Bunu, Azure portal IoT Hub menüsündeki cihaz girişi veya [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp)gibi bir araçla çağırabilirsiniz.
  
-Uygulama, **yakalama eğitim görüntülerinin** durumuna girdiğinde, hedef görüntü sayısına ulaşıncaya kadar her saniye iki görüntü yakalar. Varsayılan olarak, hedef 30 görüntülerdir, ancak istenen sayıyı `EnterLearningMode` IoT Hub metoduna bir bağımsız değişken olarak geçirerek bu parametreyi ayarlayabilirsiniz. 
+Uygulama, **yakalama eğitim görüntülerinin** durumuna girdiğinde, hedef görüntü sayısına ulaşıncaya kadar her saniye iki görüntü yakalar. Varsayılan olarak, hedef 30 görüntülerdir, ancak istenen sayıyı IoT Hub metoduna bir bağımsız değişken olarak geçirerek bu parametreyi ayarlayabilirsiniz `EnterLearningMode` . 
 
 Uygulama görüntüleri yakalarken, kamerayı, algılamak istediğiniz görsel durumlar türlerine (örneğin, boş bir oda, kişilerle ilgili bir oda, boş bir masa, oyuncak bir masa vb.) kullanıma sunmalısınız.
 
@@ -116,15 +116,15 @@ Bu işlemi kendi senaryoınızla yinelemek için:
 
 Uygulama eğitilen modeli indirdikten sonra, **Puanlama** durumuna geçiş yapar ve bir sürekli döngüde kameradan Puanlama görüntülerini başlatır.
 
-Yakalanan her görüntü için, uygulama ekranda en üstteki etiketi görüntüler. Görsel durumu algılamazsa, **hiçbir eşleşme**göstermez. Uygulama ayrıca bu iletileri IoT Hub gönderir ve algılanmakta olan bir sınıf varsa, bu ileti etiketi, güvenirlik Puanını ve adlı `detectedClassAlert`bir özelliği içerir. Bu, özellikleri temel alarak hızlı ileti yönlendirmesi yapmak isteyen IoT Hub istemciler tarafından kullanılabilir.
+Yakalanan her görüntü için, uygulama ekranda en üstteki etiketi görüntüler. Görsel durumu algılamazsa, **hiçbir eşleşme**göstermez. Uygulama ayrıca bu iletileri IoT Hub gönderir ve algılanmakta olan bir sınıf varsa, bu ileti etiketi, güvenirlik Puanını ve adlı bir özelliği içerir `detectedClassAlert` . Bu, özellikleri temel alarak hızlı ileti yönlendirmesi yapmak isteyen IoT Hub istemciler tarafından kullanılabilir.
 
 Buna ek olarak, örnek bir Sense HAT birimiyle bir Raspberry Pi üzerinde ne zaman çalıştığını algılamak için bir [Sense hat kitaplığı](https://github.com/emmellsoft/RPi.SenseHat) kullanır. bu nedenle, bir sınıf algıladığında tüm görüntüleme ışıkları kırmızı ve herhangi bir şeyi algılamadığında boş olarak ayarlayarak bunu bir çıktı görüntüsü olarak kullanabilir.
 
 ## <a name="reuse-the-app"></a>Uygulamayı yeniden kullanma
 
-Uygulamayı özgün durumuna geri döndürmek isterseniz, Kullanıcı arabiriminin sağ üst köşesindeki düğmeye tıklayarak veya IoT Hub aracılığıyla yöntemi `DeleteCurrentModel` çağırarak bunu yapabilirsiniz...
+Uygulamayı özgün durumuna geri döndürmek isterseniz, Kullanıcı arabiriminin sağ üst köşesindeki düğmeye tıklayarak veya IoT Hub aracılığıyla yöntemi çağırarak bunu yapabilirsiniz `DeleteCurrentModel` ...
 
-Herhangi bir noktada, en sağ üst UI düğmesine tıklayarak veya `EnterLearningMode` yöntemi yeniden çağırarak eğitim görüntülerini karşıya yükleme adımını yineleyebilirsiniz.
+Herhangi bir noktada, en sağ üst UI düğmesine tıklayarak veya yöntemi yeniden çağırarak eğitim görüntülerini karşıya yükleme adımını yineleyebilirsiniz `EnterLearningMode` .
 
 Uygulamayı bir cihazda çalıştırıyorsanız ve IP adresini yeniden almanız gerekiyorsa (örneğin, [Windows IoT uzak istemcisi](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)aracılığıyla uzak bağlantı kurmak için), `GetIpAddress` yöntemi IoT Hub aracılığıyla çağırabilirsiniz.
 

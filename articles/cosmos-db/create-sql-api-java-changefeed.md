@@ -23,7 +23,7 @@ ms.locfileid: "83125681"
 
 Bu nasıl yapılır Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge eklemek için Azure Cosmos DB SQL API 'sini kullanan basit bir Java uygulamasında size kılavuzluk eder ve değişiklik akışı ve değişiklik akışı Işlemcisini kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü sürdürmektedir. Java uygulaması, Azure Cosmos DB Java SDK v4 kullanarak SQL API Azure Cosmos DB ile iletişim kurar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Cosmos DB hesabınız için URI ve anahtar
 
@@ -31,7 +31,7 @@ Bu nasıl yapılır Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge ekleme
 
 * Java 8
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Azure Cosmos DB değişiklik akışı, belge eklemeye yanıt olarak eylemleri tetiklemeye yönelik olay odaklı bir arabirim sağlar. Bunun birçok kullanımı vardır. Örneğin, hem okuma hem de yazma bilgisi olan uygulamalarda, değişiklik akışı kullanımı, belge alındığı sırada bir kapsayıcının gerçek zamanlı **gerçekleştirilmiş bir görünümünü** oluşturmaktır. Gerçekleştirilmiş görünüm kapsayıcısı aynı verileri tutar, ancak etkili okuma için bölümlenmiş, uygulamayı hem okuma hem de yazma verimli hale getirir.
 
@@ -53,7 +53,7 @@ Depo dizininde bir Terminal açın. Çalıştırarak uygulamayı oluşturun
 mvn clean package
 ```
 
-## <a name="walkthrough"></a>Kılavuz
+## <a name="walkthrough"></a>İzlenecek yol
 
 1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure Portal** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini**' a gidin.
 

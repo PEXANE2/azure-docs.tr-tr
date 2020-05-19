@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6330a77f5971348c3f63fdaa7602ebba9ddf45ec
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186348"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691332"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri içeren özel bir model
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
@@ -37,7 +37,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 Örnek etiketleme aracını çalıştırmak için Docker altyapısını kullanacaksınız. Docker kapsayıcısını ayarlamak için bu adımları izleyin. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.
 
 > [!TIP]
-> OCR formu etiketleme Aracı, GitHub 'da açık kaynak proje olarak da kullanılabilir. Araç, yanıt verme + Redux kullanılarak oluşturulan ve TypeScript 'te yazılmış bir Web uygulamasıdır. Daha fazla bilgi edinmek veya katkıda bulunmak için bkz. [OCR formu etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application).
+> OCR formu etiketleme Aracı, GitHub 'da açık kaynak proje olarak da kullanılabilir. Araç, tepki verme + Redux kullanılarak oluşturulan bir TypeScript Web uygulamasıdır. Daha fazla bilgi edinmek veya katkıda bulunmak için bkz. [OCR formu etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) deposu. Aracı çevrimiçi olarak denemek için [Fott Web sitesine](https://fott.azurewebsites.net/)gidin.   
 
 1. İlk olarak, bir ana bilgisayara Docker 'ı yüklemeniz gerekir. Bu kılavuzda, yerel bilgisayarın bir konak olarak nasıl kullanılacağı gösterilir. Azure 'da bir Docker barındırma hizmeti kullanmak istiyorsanız, [örnek etiketleme aracı](../deploy-label-tool.md) nasıl yapılır Kılavuzu ' na bakın. 
 
@@ -52,11 +52,11 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-1. `docker pull` Komutuyla örnek etiketleme araç kapsayıcısını alın.
+1. Komutuyla örnek etiketleme araç kapsayıcısını alın `docker pull` .
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-1. Artık kapsayıcıyı ile `docker run`çalıştırmaya hazırsınız.
+1. Artık kapsayıcıyı ile çalıştırmaya hazırsınız `docker run` .
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
@@ -75,7 +75,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 Depolama hesabınızda CORS 'yi etkinleştirin. Azure portal depolama hesabınızı seçin ve sol bölmedeki **CORS** sekmesine tıklayın. Alt satırda aşağıdaki değerleri girin. Ardından en üstteki **Kaydet** ' e tıklayın.
 
 * İzin verilen çıkış noktaları = * 
-* İzin verilen yöntemler \[= Tümünü Seç\]
+* İzin verilen yöntemler = \[ Tümünü Seç\]
 * İzin verilen üstbilgiler = *
 * Gösterilen üstbilgiler = * 
 * En fazla yaş = 200
@@ -95,7 +95,7 @@ Alanları aşağıdaki değerlerle girin:
 
 * **Görünen ad** -bağlantı görünen adı.
 * **Açıklama** -proje tanımlarınız.
-* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Hizmeti kullandıktan sonra sona erme süresini bir süre olarak ayarlayın. **Okuma**, **yazma**, **silme**ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Hizmeti kullandıktan sonra sona erme süresini bir süre olarak ayarlayın. **Okuma**, **yazma**, **silme**ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ![Örnek etiketleme aracının bağlantı ayarları](../media/label-tool/connections.png)
 
@@ -130,7 +130,7 @@ Her belge için metin düzeni bilgilerini almak için sol bölmedeki **tüm dosy
 Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını istediğiniz metin öğelerine uygulayacaksınız.
 
 1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın.
-   1. Yeni **+** bir etiket oluşturmak için tıklayın.
+   1. **+** Yeni bir etiket oluşturmak için tıklayın.
    1. Etiket adını girin.
    1. Etiketi kaydetmek için ENTER tuşuna basın.
 1. Ana düzenleyicide, vurgulanan metin öğelerinden bir veya birden çok sözcük seçmek için tıklayın ve sürükleyin.
@@ -141,7 +141,7 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
     > * Her etiket, sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünürse, her örnek için farklı etiketler oluşturun. Örneğin: "Invoice # 1", "Invoice # 2" vb.
     > * Etiketler sayfalara yayılamaz.
     > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
-    > * Etiketli alanlarınıza&mdash;anahtar eklemeyin yalnızca değerleri.
+    > * Etiketli alanlarınıza anahtar eklemeyin &mdash; yalnızca değerleri.
     > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
 
 ![Örnek etiketleme aracının ana düzenleyici penceresi](../media/label-tool/main-editor.png)
@@ -157,11 +157,11 @@ Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları 
 
 Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 * `string`
-    * Varsayılan, `no-whitespaces`,`alphanumeric`
+    * Varsayılan, `no-whitespaces` ,`alphanumeric`
 * `number`
     * varsayılanını`currency`
 * `date` 
-    * Varsayılan, `dmy`, `mdy`,`ymd`
+    * Varsayılan, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
 

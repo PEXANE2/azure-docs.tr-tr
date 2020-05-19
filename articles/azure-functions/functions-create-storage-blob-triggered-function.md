@@ -16,7 +16,7 @@ ms.locfileid: "83123131"
 
 Bir BLOB depolama kapsayıcısına dosyalar yüklenirken veya güncelleştirilirken tetiklenen bir işlev oluşturmayı öğrenin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 

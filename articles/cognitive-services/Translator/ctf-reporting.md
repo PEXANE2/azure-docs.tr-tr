@@ -1,5 +1,5 @@
 ---
-title: İşbirliğine dayalı Çeviri Çerçevesi (CTF) raporlama-Translator Metin Çevirisi API'si
+title: İşbirliğine dayalı Çeviri Çerçevesi (CTF) raporlama-Translator
 titleSuffix: Azure Cognitive Services
 description: Işbirliğine dayalı Çeviri Çerçevesi (CTF) raporlamasını kullanma.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732351"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584680"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Collaborative Translation Framework (CTF) raporlamasını kullanma
 
 > [!NOTE]
-> Bu yöntem kullanım dışıdır. Translator Metin Çevirisi API'si V 3.0 sürümünde kullanılamaz.
+> Bu yöntem kullanım dışıdır. Bu, ' ın ' ın V 3.0 sürümünde kullanılamaz.
 > 
-> Daha önce Translator Metin Çevirisi API'si V 2.0 için kullanılabilen Işbirliğine dayalı Çeviri Çerçevesi (CTF), 1 Şubat 2018 itibariyle kullanımdan kaldırılmıştır. AddTranslation ve AddTranslationArray işlevleri, kullanıcıların Işbirliğine dayalı çeviri çerçevesi aracılığıyla düzeltmeleri etkinleştirmesine olanak tanır. 31 Ocak 2018 ' den sonra bu iki işlev yeni tümce gönderilerini kabul etmedi ve kullanıcılar bir hata iletisi alır. Bu işlevler kullanımdan kalkmıştı ve değiştirilmeyecektir.
+> Önceden V 2.0 için sunulan Işbirliği çevirileri çerçevesi (CTF), 1 Şubat 2018 itibariyle kullanımdan kaldırılmıştır. AddTranslation ve AddTranslationArray işlevleri, kullanıcıların Işbirliğine dayalı çeviri çerçevesi aracılığıyla düzeltmeleri etkinleştirmesine olanak tanır. 31 Ocak 2018 ' den sonra bu iki işlev yeni tümce gönderilerini kabul etmedi ve kullanıcılar bir hata iletisi alır. Bu işlevler kullanımdan kalkmıştı ve değiştirilmeyecektir.
 
 Işbirlikçi Çeviri Çerçevesi (CTF) Raporlama API 'SI, CTF deposundaki istatistikleri ve gerçek içeriği döndürür. Bu API, Getçeviriler () yönteminden farklıdır, çünkü:
 * Çevrilen içeriği ve toplam sayısını yalnızca hesabınızdan (AppID veya Azure Market hesabı) döndürür.
@@ -30,11 +30,10 @@ Işbirlikçi Çeviri Çerçevesi (CTF) Raporlama API 'SI, CTF deposundaki istati
 * Otomatik çeviriyi döndürmez (makine çevirisi).
 
 ## <a name="endpoint"></a>Uç Nokta
-CTF Raporlama API 'sinin uç noktasıhttps://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-
+CTF Raporlama API 'sinin uç noktası https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Yöntemler
-| Adı |    Açıklama|
+| Name | Açıklama|
 |:---|:---|
 | GetUserTranslationCounts yöntemi | Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. |
 | Getuserçeviriler yöntemi | Kullanıcı tarafından oluşturulan çevirileri alır. |
@@ -51,7 +50,7 @@ Bu yöntemler şunları sağlar:
 
 Bu yöntem, Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. Bu, uriPrefix, from, to, User, Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çeviri sayısı listesini sağlar.
 
-**Sözdizimi**
+**Söz dizimi**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -103,26 +102,26 @@ Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCo
 | Kullanılmamışsa| AddTranslation () yöntem çağrısında uygulanan URI|
 | Kullanıcı| Kullanıcı adı|
 
-**Özel Durumlar**
+**Özel durumlar**
 
 | Özel durum | İleti | Koşullar |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | '**Maxdateutc**' parametresi '**mindateutc**' değerinden büyük veya buna eşit olmalıdır.| **Maxdateutc** parametresinin değeri **mindateutc**parametresinin değerinden daha küçük.|
-| TranslateApiException | IP, kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşıldı.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota sınırı Microsoft Translator API 'sinin kabul edeceği karakter sayısını sınırlar.</li></ul>|
+| TranslateApiException | IP, kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşıldı.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota sınırı, çeviricisinin kabul edeceği karakter sayısını.</li></ul>|
 | TranslateApiException | AppID, kotanın üzerinde.| Uygulama KIMLIĞI saatlik veya günlük kotayı aştı.|
 
 > [!NOTE]
 > Kota, hizmetin tüm kullanıcıları arasında eşitliği sağlamak için ayarlanacak.
 
 **Githıb 'teki kod örneklerini görüntüle**
-* [, #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>Getuserçeviriler yöntemi
 
 Bu yöntem, Kullanıcı tarafından oluşturulan çevirileri alır. Bu, uriPrefix, from, to, User ve Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çevirileri sağlar.
 
-**Sözdizimi**
+**Söz dizimi**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -176,17 +175,17 @@ Sonuç kümesi **Usertranslation**dizisini içerir. Her UserTranslation aşağı
 |Kullanılmamışsa|   AddTranslation () yöntem çağrısında uygulanan URI|
 |Kullanıcı   |Kullanıcı adı|
 
-**Özel Durumlar**
+**Özel durumlar**
 
 | Özel durum | İleti | Koşullar |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | '**Maxdateutc**' parametresi '**mindateutc**' değerinden büyük veya buna eşit olmalıdır.| **Maxdateutc** parametresinin değeri **mindateutc**parametresinin değerinden daha küçük.|
-| TranslateApiException | IP, kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşıldı.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota sınırı Microsoft Translator API 'sinin kabul edeceği karakter sayısını sınırlar.</li></ul>|
+| TranslateApiException | IP, kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşıldı.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota sınırı, çeviricisinin kabul edeceği karakter sayısını.</li></ul>|
 | TranslateApiException | AppID, kotanın üzerinde.| Uygulama KIMLIĞI saatlik veya günlük kotayı aştı.|
 
 > [!NOTE]
 > Kota, hizmetin tüm kullanıcıları arasında eşitliği sağlamak için ayarlanacak.
 
 **Githıb 'teki kod örneklerini görüntüle**
-* [, #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

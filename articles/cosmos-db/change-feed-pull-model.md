@@ -40,7 +40,7 @@ Aşağıda şunu döndüren bir örneği elde etmek için bir örnek verilmişti
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 ```
 
-Bir kullanarak `FeedIterator` , kapsayıcının tüm değişiklik akışını kendi hızınızda kolayca işleyebilirsiniz. Bir örneği aşağıda verilmiştir:
+Bir kullanarak `FeedIterator` , kapsayıcının tüm değişiklik akışını kendi hızınızda kolayca işleyebilirsiniz. İşte bir örnek:
 
 ```csharp
 FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});

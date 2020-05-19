@@ -284,7 +284,7 @@ Eski AZ PowerShell modülünü kullanıyorsanız, iki komutu `Get-AzureKeyVaultS
 
 **Parametre örnekleri**
 
-| Parametreler  | Değer örneği  |Açıklamalar   |
+| Parametreler  | Değer örneği  |Yorumlar   |
 |---|---|---|
 |  $keyVaultName | myKeyVault2112852926  | Anahtarı depolayan anahtar kasasının adı |
 |$kekName   |MyKey   | VM 'yi şifrelemek için kullanılan anahtarın adı|

@@ -11,19 +11,20 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c96ba3496f4542658878518207b2033342e33f5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c47bdc17041b2c388b01681dc1e65ddea29b0efb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628768"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584408"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Tahmin aracı kullanarak modelleri Azure Machine Learning eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning, bir [RunConfiguration nesnesi](how-to-set-up-training-targets.md#whats-a-run-configuration) ve bir [ScriptRunConfig nesnesi](how-to-set-up-training-targets.md#submit)kullanarak eğitim betiğinizi [çeşitli işlem hedeflerine](how-to-set-up-training-targets.md#compute-targets-for-training)kolayca gönderebilirsiniz. Bu model size çok fazla esneklik ve en yüksek denetim sağlar.
 
-Derin öğrenme modeli eğitimini kolaylaştırmak için, Azure Machine Learning Python SDK 'sı, kullanıcıların kolayca çalıştırma yapılandırması oluşturmasına olanak tanıyan, daha yüksek düzeyde bir soyutlama ve tahmin aracı sınıfı sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini (scikit-öğren gibi) kullanarak eğitim betiğini, sizin yerel makineniz, Azure 'da tek bir VM veya Azure 'da bir GPU kümesi olsun, seçtiğiniz herhangi bir bilgi işlem hedefinde göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz. Pytorch, TensorFlow ve Chainer görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)ve [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) tahmini 'ı da sağlar.
+
+Tahmin aracı sınıfı, modellerinizi derin öğrenme ve pekiştirmeye dayalı öğrenme ile eğmenizi kolaylaştırır. Çalışma yapılandırmasını kolayca oluşturmanıza olanak tanıyan üst düzey bir soyutlama sağlar. Seçtiğiniz herhangi bir öğrenme çerçevesini (scikit-öğren gibi) kullanarak eğitim betiğini, sizin yerel makineniz, Azure 'da tek bir VM veya Azure 'da bir GPU kümesi olsun, seçtiğiniz herhangi bir bilgi işlem hedefinde göndermek için genel bir [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) oluşturabilir ve kullanabilirsiniz. Pytorch, TensorFlow, Chainer ve pekiştirmeye dayalı Learning görevleri için Azure Machine Learning Ayrıca bu çerçeveleri kullanmayı basitleştirmek için, ilgili [pytorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)ve [pekiştirmeye dayalı Learning](how-to-use-reinforcement-learning.md) tahmini 'ı da sağlar.
 
 ## <a name="train-with-an-estimator"></a>Bir tahmin aracı ile eğitme
 
@@ -38,7 +39,7 @@ Bu makale 4-5. adıma odaklanır. 1-3 adımları için bir örnek için [modeli 
 
 ### <a name="single-node-training"></a>Tek düğümlü eğitim
 
-Bir scikit-öğrenme modeli için Azure 'da uzaktan işlem üzerinde çalışan tek düğümlü bir eğitim `Estimator` için kullanın. [İşlem hedefi](how-to-set-up-training-targets.md#amlcompute) nesneniz `compute_target` ve [filedataset](how-to-create-register-datasets.md) nesneniz `ds`zaten oluşturmuş olmanız gerekir.
+Bir `Estimator` scikit-öğrenme modeli Için Azure 'da uzaktan işlem üzerinde çalışan tek düğümlü bir eğitim için kullanın. [İşlem hedefi](how-to-set-up-training-targets.md#amlcompute) nesneniz `compute_target` ve [filedataset](how-to-create-register-datasets.md) nesneniz zaten oluşturmuş olmanız gerekir `ds` .
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -56,19 +57,19 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
                    conda_packages=['scikit-learn'])
 ```
 
-Bu kod parçacığı `Estimator` oluşturucuya aşağıdaki parametreleri belirtir.
+Bu kod parçacığı oluşturucuya aşağıdaki parametreleri belirtir `Estimator` .
 
 Parametre | Açıklama
 --|--
 `source_directory`| Eğitim işi için gereken tüm kodunuzu içeren yerel dizin. Bu klasör yerel makinenizden uzak işlem 'a kopyalanmış olur.
-`script_params`| Bir komut satırı bağımsız değişkenlerini belirten, `entry_script` `<command-line argument, value>` çiftler biçiminde eğitim betiğinizi geçirilecek sözlük. İçinde `script_params`ayrıntılı bir bayrak belirtmek için, kullanın `<command-line argument, "">`.
+`script_params`| Bir komut satırı bağımsız değişkenlerini belirten, çiftler biçiminde eğitim betiğinizi geçirilecek sözlük `entry_script` `<command-line argument, value>` . İçinde ayrıntılı bir bayrak belirtmek için `script_params` , kullanın `<command-line argument, "">` .
 `compute_target`| Eğitim betiğinizin çalışacağı uzaktan işlem hedefi, bu durumda bir Azure Machine Learning Işlem ([Amlcompute](how-to-set-up-training-targets.md#amlcompute)) kümesi olur. (AmlCompute kümesi yaygın olarak kullanılan hedef olsa da, Azure VM 'Leri veya hatta yerel bilgisayar gibi diğer bilgi işlem hedefi türlerini de seçebilirsiniz.)
-`entry_script`| Uzaktan işlem üzerinde çalıştırılacak eğitim `source_directory`betiğinin FilePath (öğesine göre). Bu dosya ve bağımlı olduğu tüm ek dosyalar bu klasörde bulunmalıdır.
+`entry_script`| `source_directory`Uzaktan işlem üzerinde çalıştırılacak eğitim betiğinin FilePath (öğesine göre). Bu dosya ve bağımlı olduğu tüm ek dosyalar bu klasörde bulunmalıdır.
 `conda_packages`| Eğitim betiğinizin gerektirdiği Conda ile yüklenecek Python paketlerinin listesi.  
 
-Oluşturucunun, gerekli tüm PIP `pip_packages` paketleri için kullandığınız başka bir parametresi vardır.
+Oluşturucunun, `pip_packages` gerekli tüm PIP paketleri için kullandığınız başka bir parametresi vardır.
 
-Artık `Estimator` nesneniz oluşturduğumuzdan, `submit` [deneme](concept-azure-machine-learning-architecture.md#experiments) nesneniz `experiment`üzerindeki işleve bir çağrı ile uzak işlem üzerinde çalıştırılacak eğitim işini iletin. 
+Artık nesneniz oluşturduğumuzdan `Estimator` , `submit` [deneme](concept-azure-machine-learning-architecture.md#experiments) nesneniz üzerindeki işleve bir çağrı ile uzak işlem üzerinde çalıştırılacak eğitim işini iletin `experiment` . 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -76,23 +77,23 @@ print(run.get_portal_url())
 ```
 
 > [!IMPORTANT]
-> **Özel klasörler** İki klasör, *Çıkış* ve *günlük*, Azure Machine Learning özel bir işleme alır. Eğitim sırasında, kök dizine (`./outputs` ve `./logs`sırasıyla) göre olan *çıktılar* ve *Günlükler* adlı klasörlere dosya yazdığınızda, çalışma işlemi tamamlandıktan sonra dosyalara erişmeniz için dosyalar otomatik olarak çalıştırma geçmişinize yüklenir.
+> **Özel klasörler** İki klasör, *Çıkış* ve *günlük*, Azure Machine Learning özel bir işleme alır. Eğitim sırasında, kök dizine (ve sırasıyla) göre olan *çıktılar* ve *Günlükler* adlı klasörlere dosya yazdığınızda `./outputs` `./logs` , çalışma işlemi tamamlandıktan sonra dosyalara erişmeniz için dosyalar otomatik olarak çalıştırma geçmişinize yüklenir.
 >
 > Eğitim sırasında (model dosyaları, kontrol noktaları, veri dosyaları veya çizilmiş görüntüler gibi) yapıt oluşturmak için bunları `./outputs` klasörüne yazın.
 >
-> Benzer şekilde, eğitim çalıştırınızdan `./logs` klasöre her türlü günlüğü de yazabilirsiniz. Azure Machine Learning [tensorboard tümleştirmesini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kullanmak Için, tensorboard günlüklerinizi bu klasöre yazdığınızdan emin olun. Çalışma işlemi devam ederken, TensorBoard 'ı başlatabilir ve bu günlükleri akıtırabileceksiniz.  Daha sonra, günlükleri önceki çalıştırabileceksiniz herhangi birinden geri yükleyebilirsiniz.
+> Benzer şekilde, eğitim çalıştırınızdan klasöre her türlü günlüğü de yazabilirsiniz `./logs` . Azure Machine Learning [tensorboard tümleştirmesini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kullanmak Için, tensorboard günlüklerinizi bu klasöre yazdığınızdan emin olun. Çalışma işlemi devam ederken, TensorBoard 'ı başlatabilir ve bu günlükleri akıtırabileceksiniz.  Daha sonra, günlükleri önceki çalıştırabileceksiniz herhangi birinden geri yükleyebilirsiniz.
 >
 > Örneğin, uzak eğitime çalıştıktan sonra *çıktılar* klasörüne yazılmış bir dosyayı yerel makinenize indirmek için:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ### <a name="distributed-training-and-custom-docker-images"></a>Dağıtılmış eğitim ve özel Docker görüntüleri
 
-İle gerçekleştirebilmeniz için `Estimator`kullanabileceğiniz iki ek eğitim senaryosu vardır:
+İle gerçekleştirebilmeniz için kullanabileceğiniz iki ek eğitim senaryosu vardır `Estimator` :
 * Özel bir Docker görüntüsü kullanma
 * Çok düğümlü bir kümede dağıtılmış eğitim
 
-Aşağıdaki kod, bir keras modeli için dağıtılmış eğitimin nasıl alınacağını gösterir. Ayrıca, varsayılan Azure Machine Learning görüntülerini kullanmak yerine, eğitim için Docker Hub 'ından `continuumio/miniconda` özel bir Docker görüntüsü belirtir.
+Aşağıdaki kod, bir keras modeli için dağıtılmış eğitimin nasıl alınacağını gösterir. Ayrıca, varsayılan Azure Machine Learning görüntülerini kullanmak yerine, eğitim için Docker Hub 'ından özel bir Docker görüntüsü belirtir `continuumio/miniconda` .
 
-[İşlem hedefi](how-to-set-up-training-targets.md#amlcompute) nesnenizin `compute_target`zaten oluşturulmuş olması gerekir. Tahmin aracı 'ı aşağıdaki gibi oluşturursunuz:
+[İşlem hedefi](how-to-set-up-training-targets.md#amlcompute) nesnenizin zaten oluşturulmuş olması gerekir `compute_target` . Tahmin aracı 'ı aşağıdaki gibi oluşturursunuz:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -108,13 +109,13 @@ estimator = Estimator(source_directory='./my-keras-proj',
                       custom_docker_image='continuumio/miniconda')
 ```
 
-Yukarıdaki kod, `Estimator` oluşturucuya aşağıdaki yeni parametreleri sunar:
+Yukarıdaki kod, oluşturucuya aşağıdaki yeni parametreleri sunar `Estimator` :
 
 Parametre | Açıklama | Varsayılan
 --|--|--
 `custom_docker_image`| Kullanmak istediğiniz görüntünün adı. Yalnızca ortak Docker depolarında (Bu durumda Docker Hub 'da) bulunan görüntüleri sağlayın. Özel bir Docker deposundan bir görüntü kullanmak için, oluşturucunun `environment_definition` parametresini kullanın. [Örneğe bakın](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Eğitim işiniz için kullanılacak düğüm sayısı. | `1`
-`process_count_per_node`| Her düğümde çalıştırılacak işlem sayısı (veya "çalışanlar"). Bu durumda, her bir düğümde bulunan `2` GPU 'ları kullanırsınız.| `1`
+`process_count_per_node`| Her düğümde çalıştırılacak işlem sayısı (veya "çalışanlar"). Bu durumda, `2` her bir düğümde bulunan GPU 'ları kullanırsınız.| `1`
 `distributed_training`| MPı arka ucunu kullanarak dağıtılmış eğitime başlatmaya yönelik [Mpiconation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) nesnesi.  | `None`
 
 
@@ -128,7 +129,7 @@ print(run.get_portal_url())
 
 Modeli eğittikten sonra, çalışma alanınıza kaydedebilir ve kaydedebilirsiniz. Model kaydı, [model yönetimi ve dağıtımını](concept-model-management-and-deployment.md)basitleştirmek için modellerinizi çalışma alanınızda depolamanızı ve sürümlerini oluşturmanıza imkan tanır.
 
-Aşağıdaki kodu çalıştırmak, modeli çalışma alanınıza kaydeder ve uzak işlem bağlamlarındaki veya dağıtım betiklerdeki ada göre başvuruda bulunmak için kullanılabilir hale gelir. Daha [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) fazla bilgi ve ek parametreler için başvuru belgelerine bakın.
+Aşağıdaki kodu çalıştırmak, modeli çalışma alanınıza kaydeder ve uzak işlem bağlamlarındaki veya dağıtım betiklerdeki ada göre başvuruda bulunmak için kullanılabilir hale gelir. [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-)Daha fazla bilgi ve ek parametreler için başvuru belgelerine bakın.
 
 ```python
 model = run.register_model(model_name='sklearn-sample', model_path=None)
@@ -156,6 +157,7 @@ Derinlemesine öğrenme çerçevesine özgü estimators kullanarak eğitim model
 * [Eğitim sırasında çalıştırma ölçümlerini izleyin](how-to-track-experiments.md)
 * [PyTorch modellerini eğitme](how-to-train-pytorch.md)
 * [TensorFlow modellerini eğitme](how-to-train-tensorflow.md)
+* [Pekiştirmeye dayalı Learning derin sinir ağını eğitme](how-to-use-reinforcement-learning.md)
 * [Hiperparametreleri ayarlama](how-to-tune-hyperparameters.md)
 * [Eğitilen model dağıtma](how-to-deploy-and-where.md)
 * [Eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md)

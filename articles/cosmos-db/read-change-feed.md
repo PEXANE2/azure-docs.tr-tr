@@ -33,7 +33,7 @@ Değişiklik akışı işlemcisi karmaşıklığı gizler ve yine de değişikli
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Azure Cosmos DB SQL API SDK’sını kullanma
 
-SDK ile, değişiklik akışında düşük düzey bir denetim edinirsiniz. Denetim noktasını yönetebilir, belirli bir mantıksal bölüm anahtarına erişebilir, vb. Birden çok okuyucularınız varsa, okuma yükünü farklı `ChangeFeedOptions` iş parçacıklarına veya farklı istemcilere dağıtmak için kullanabilirsiniz.
+SDK ile, değişiklik akışında düşük düzey bir denetim edinirsiniz. Denetim noktasını yönetebilir, belirli bir mantıksal bölüm anahtarına erişebilir, vb. Birden çok okuyucularınız varsa, `ChangeFeedOptions` okuma yükünü farklı iş parçacıklarına veya farklı istemcilere dağıtmak için kullanabilirsiniz.
 
 ## <a name="using-the-change-feed-pull-model"></a>Değişiklik akışı çekme modelini kullanma
 

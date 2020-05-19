@@ -131,7 +131,7 @@ Oluşturucu bağımsız değişkenleri:
 - `server`(gerekli)-genellikle WebSocket. createRelayListenUri () yardımcı yöntemiyle oluşturulan bir karma bağlantı adı için tam URI.
 - `token`(gerekli)-bu bağımsız değişken, önceden verilen bir belirteç dizesini veya böyle bir belirteç dizesini elde etmek için çağrılabilecek bir geri çağırma işlevini barındırır. Belirteç yenilemeyi sağladığından geri çağırma seçeneği tercih edilir.
 
-#### <a name="events"></a>Olaylar
+#### <a name="events"></a>Ekinlikler
 
 `RelayedServer`örnekler, gelen istekleri işleyebilmeniz, bağlantılar oluşturmanız ve hata koşullarını algılamanıza olanak tanıyan üç olay yayar. `connect`İletileri işlemek için olaya abone olmanız gerekir. 
 

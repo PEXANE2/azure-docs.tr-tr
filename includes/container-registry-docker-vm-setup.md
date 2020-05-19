@@ -34,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, Azure CLı tarafından `publicIpAddress` görüntülendiğine göz atın. VM 'ye SSH bağlantısı oluşturmak için bu adresi kullanın.
+VM’nin oluşturulması birkaç dakika sürer. Komut tamamlandığında, `publicIpAddress` Azure CLI tarafından görüntülendiğine göz atın. VM 'ye SSH bağlantısı oluşturmak için bu adresi kullanın.
 
 ### <a name="install-docker-on-the-vm"></a>SANAL makineye Docker 'ı yükler
 
@@ -67,7 +67,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Azure CLI'yı yükleme
 
-Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) bölümündeki adımları izleyin. Örneğin:
+Azure CLI 'yi, Ubuntu sanal makinenize yüklemek için [apt Ile Azure CLI 'Yı kurma](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) bölümündeki adımları izleyin. Örnek:
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash

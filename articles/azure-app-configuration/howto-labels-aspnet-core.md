@@ -29,7 +29,7 @@ Azure portal, **yapılandırma Gezgini** ' ne gidin ve hızlı başlangıçta ol
 > [!div class="mx-imgBorder"]
 > ![Değer menü öğesi Ekle](media/labels-add-value.png)
 
-**Değer Ekle** ekranında, **kırmızı** ve bir **geliştirme** **etiketi** **değeri** girin. **İçerik türünü** boş bırak. **Uygula**’yı seçin.
+**Değer Ekle** ekranında, **kırmızı** ve bir **geliştirme** **etiketi** **değeri** girin. **İçerik türünü** boş bırak. **Apply** (Uygula) seçeneğini belirleyin.
 
 ## <a name="load-configuration-values-with-a-specified-label"></a>Yapılandırma değerlerini belirtilen etiketle yükle
 

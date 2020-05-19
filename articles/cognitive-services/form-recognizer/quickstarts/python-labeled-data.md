@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531109"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594177"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketli form tanıyıcı modelini eğitme
 
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, el ile etiketlenmiş verileri olan özel bir modeli e
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
@@ -63,7 +63,7 @@ Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını göz ön�
 
 1. Okuma düzeni kapsayıcısında, istek gövdesinin bir parçası olarak giriş dosyasını içeren **[Düzen çözümleme](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API 'sini çağırın. Yanıtın **Işlem konumu** üst BILGISINDE bulunan kimliği kaydedin.
 1. Önceki adımdan alınan işlem KIMLIĞINI kullanarak, çözüm **[Düzenleme sonucunu al](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API 'sini çağırın.
-1. Yanıtı alın ve içeriği bir dosyaya yazın. Her kaynak formu için, karşılık gelen OCR dosyası eklenmiş özgün dosya adına sahip olmalıdır `.ocr.json`. OCR JSON çıktısı aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek OCR dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) bakın. 
+1. Yanıtı alın ve içeriği bir dosyaya yazın. Her kaynak formu için, karşılık gelen OCR dosyası eklenmiş özgün dosya adına sahip olmalıdır `.ocr.json` . OCR JSON çıktısı aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek OCR dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) bakın. 
 
     ```json
     {
@@ -118,9 +118,9 @@ Hizmetin etiketli eğitim için karşılık gelen giriş dosyalarını göz ön�
 
 Etiket dosyaları, bir kullanıcının el ile girdiği anahtar-değer ilişkilerini içerir. Etiketlendirilmiş veri eğitiminde olmaları gerekir, ancak her kaynak dosyanın karşılık gelen bir etiket dosyası olması gerekmez. Etiketleri olmayan kaynak dosyalar, sıradan eğitim belgeleri olarak değerlendirilir. Güvenilir eğitim için beş veya daha fazla etiketlenmiş dosya öneririz.
 
-Bir etiket dosyası oluşturduğunuzda, isteğe bağlı olarak belgedeki değerlerin&mdash;tam konumlarını belirtebilirsiniz. Bu, eğitime daha da fazla doğruluk sağlar. Bölgeler dört X, Y koordinatlarına karşılık gelen sekiz değer kümesi olarak biçimlendirilir: sol üst, sağ üst, sağ alt ve sol alt. Koordinat değerleri, sayfanın boyutlarına ölçeklendirilen sıfır ve diğeri arasındadır.
+Bir etiket dosyası oluşturduğunuzda, isteğe bağlı olarak &mdash; belgedeki değerlerin tam konumlarını belirtebilirsiniz. Bu, eğitime daha da fazla doğruluk sağlar. Bölgeler dört X, Y koordinatlarına karşılık gelen sekiz değer kümesi olarak biçimlendirilir: sol üst, sağ üst, sağ alt ve sol alt. Koordinat değerleri, sayfanın boyutlarına ölçeklendirilen sıfır ve diğeri arasındadır.
 
-Her kaynak formu için, karşılık gelen etiket dosyası eklenmiş özgün dosya adına sahip olmalıdır `.labels.json`. Etiket dosyası aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek etiket dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) bakın.
+Her kaynak formu için, karşılık gelen etiket dosyası eklenmiş özgün dosya adına sahip olmalıdır `.labels.json` . Etiket dosyası aşağıdaki biçimde olmalıdır. Tam bir örnek için [örnek etiket dosyasına](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) bakın.
 
 ```json
 {
@@ -195,9 +195,9 @@ Her kaynak formu için, karşılık gelen etiket dosyası eklenmiş özgün dosy
 
 Etiketli verilerle bir modeli eğiteetmek için aşağıdaki python kodunu çalıştırarak **[özel model eğitimi](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
-1. Azure `<SAS URL>` BLOB depolama kapsayıcısının paylaşılan erişim IMZASı (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. Blob `<Blob folder name>` kabınızda giriş verilerinin bulunduğu klasör adıyla değiştirin. Ya da verileriniz kökse, bunu boş bırakın ve HTTP isteğinin gövdesinden `"prefix"` alanı kaldırın.
+1. `<Endpoint>`Form tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
+1. `<SAS URL>`Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. `<Blob folder name>`BLOB kabınızda giriş verilerinin bulunduğu klasör adıyla değiştirin. Ya da verileriniz kökse, bunu boş bırakın ve `"prefix"` http isteğinin gövdesinden alanı kaldırın.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -274,7 +274,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Eğitim süreci tamamlandığında, aşağıdaki gibi JSON içeriğiyle bir `201 (Success)` yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı.
+Eğitim süreci tamamlandığında, `201 (Success)` aşağıdaki gıbı JSON içeriğiyle bir yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı.
 
 ```json
 { 
@@ -342,11 +342,11 @@ Eğitim süreci tamamlandığında, aşağıdaki gibi JSON içeriğiyle bir `201
 }
 ```
 
-Aşağıdaki adımlarda `"modelId"` kullanılacak değeri kopyalayın.
+`"modelId"`Aşağıdaki adımlarda kullanılacak değeri kopyalayın.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-İşlem tamamlandığında, JSON içeriğiyle aşağıdaki biçimde bir `202 (Success)` yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı. Ana anahtar/değer ilişkilendirmeleri `"documentResults"` düğümüdür. Düzen API 'SI sonuçları (belgedeki tüm metnin içeriği ve konumları) `"readResults"` düğümüdür.
+İşlem tamamlandığında, `202 (Success)` JSON içeriğiyle aşağıdaki biçimde bir yanıt alırsınız. Yanıt kolaylık sağlaması için kısaltıldı. Ana anahtar/değer ilişkilendirmeleri `"documentResults"` düğümüdür. Düzen API 'SI sonuçları (belgedeki tüm metnin içeriği ve konumları) `"readResults"` düğümüdür.
 
 ```json
 { 
@@ -486,11 +486,8 @@ Aşağıdaki adımlarda `"modelId"` kullanılacak değeri kopyalayın.
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/15/words/0"
-                }
-              ],
-              "fieldName":"total"
+                "#/analyzeResult/readResults/0/lines/15/words/0"
+              ]
             },
             "invoice #":{ 
               "type":"string",
@@ -509,11 +506,8 @@ Aşağıdaki adımlarda `"modelId"` kullanılacak değeri kopyalayın.
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/12/words/0"
-                }
-              ],
-              "fieldName":"invoice #"
+                "#/analyzeResult/readResults/0/lines/12/words/0"
+              ]
             },
             "vat":{ 
               "type":"string",
@@ -532,11 +526,8 @@ Aşağıdaki adımlarda `"modelId"` kullanılacak değeri kopyalayın.
               "page":1,
               "confidence":0.9839357733726502,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/16/words/0"
-                }
-              ],
-              "fieldName":"vat"
+                "#/analyzeResult/readResults/0/lines/16/words/0"
+              ]
             },
             ...
           }
@@ -551,7 +542,7 @@ Aşağıdaki adımlarda `"modelId"` kullanılacak değeri kopyalayın.
 
 ## <a name="improve-results"></a>Sonuçları geliştirme
 
-Düğüm altındaki `"confidence"` her bir anahtar/değer sonucunun değerlerini inceleyin. `"documentResults"` Ayrıca, düzen işlemine karşılık gelen `"readResults"` düğümdeki güven puanlarını de göz atabilirsiniz. Düzen sonuçlarının güvenilirliği, anahtar/değer ayıklama sonuçlarının güvenini etkilemez, bu nedenle her ikisini de denetlemeniz gerekir.
+`"confidence"`Düğüm altındaki her bir anahtar/değer sonucunun değerlerini inceleyin `"documentResults"` . Ayrıca `"readResults"` , düzen işlemine karşılık gelen düğümdeki güven puanlarını de göz atabilirsiniz. Düzen sonuçlarının güvenilirliği, anahtar/değer ayıklama sonuçlarının güvenini etkilemez, bu nedenle her ikisini de denetlemeniz gerekir.
 * Düzen işleminin güven puanları düşükse, giriş belgelerinizin kalitesini geliştirmeyi deneyin (bkz. [giriş gereksinimleri](../overview.md#input-requirements)).
 * Anahtar/değer ayıklama işleminin güven puanları düşükse, çözümlenmekte olan belgelerin Eğitim kümesinde kullanılan belgelerle aynı türde olduğundan emin olun. Eğitim kümesindeki belgeler görünümde Çeşitlemeler içeriyorsa, bunları farklı klasörlere bölmeyi ve her varyasyon için bir modeli eğitmek için bir modele göz önünde bulundurun.
 

@@ -83,15 +83,15 @@ Aşağıdaki adımlar, Kullanıcı tarafından atanan bir kimlik ve bir uygulama
     az appconfig create --name myTestAppConfigStore --location eastus --resource-group myResourceGroup --sku Free
     ```
 
-1. CLı kullanılarak adlı `myUserAssignedIdentity` Kullanıcı tarafından atanan bir kimlik oluşturun.
+1. CLı kullanılarak adlı Kullanıcı tarafından atanan bir kimlik oluşturun `myUserAssignedIdentity` .
 
     ```azurecli-interactive
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
     ```
 
-    Bu komutun çıkışında, `id` özelliğinin değerini aklınızda bir değer.
+    Bu komutun çıkışında, özelliğinin değerini aklınızda bir değer `id` .
 
-1. Bu yapılandırma deposuna Kullanıcı tarafından atanan yeni kimliği atamak için [az appconfig Identity Assign] komutunu çalıştırın. Önceki adımda not ettiğiniz `id` özelliğin değerini kullanın.
+1. Bu yapılandırma deposuna Kullanıcı tarafından atanan yeni kimliği atamak için [az appconfig Identity Assign] komutunu çalıştırın. `id`Önceki adımda not ettiğiniz özelliğin değerini kullanın.
 
     ```azurecli-interactive
     az appconfig identity assign --name myTestAppConfigStore --resource-group myResourceGroup --identities /subscriptions/[subscription id]/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity

@@ -20,7 +20,7 @@ ms.locfileid: "82984713"
 > Bu SDK hakkında daha fazla bilgi için lütfen Azure Cosmos DB Java SDK v4 sürüm notları, [Maven deposu](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [performans Ipuçları](performance-tips-java-sdk-v4-sql.md)ve Azure Cosmos DB Java SDK v4 [sorun giderme kılavuzunu](troubleshoot-java-sdk-v4-sql.md)görüntüleyin.
 >
 
-Bu makalede, daha eski bir Java SDK 'sını kullanan mevcut Java uygulamanızın çekirdek (SQL) API 'SI için daha yeni Azure Cosmos DB Java SDK 4,0 Azure Cosmos DB nasıl yükseltileceği açıklanır. Azure Cosmos DB Java SDK v4 `com.azure.cosmos` pakete karşılık gelir. Uygulamanızı aşağıdaki Azure Cosmos DB Java SDK 'larından herhangi birinden geçiriyorsanız, bu belgedeki yönergeleri kullanabilirsiniz: 
+Bu makalede, daha eski bir Java SDK 'sını kullanan mevcut Java uygulamanızın çekirdek (SQL) API 'SI için daha yeni Azure Cosmos DB Java SDK 4,0 Azure Cosmos DB nasıl yükseltileceği açıklanır. Azure Cosmos DB Java SDK v4 pakete karşılık gelir `com.azure.cosmos` . Uygulamanızı aşağıdaki Azure Cosmos DB Java SDK 'larından herhangi birinden geçiriyorsanız, bu belgedeki yönergeleri kullanabilirsiniz: 
 
 * Java SDK 'Sı 2. x. x Eşitle
 * Zaman uyumsuz Java SDK 2. x. x
@@ -32,8 +32,8 @@ Aşağıdaki tabloda farklı Azure Cosmos DB Java SDK 'Ları, paket adı ve sür
 
 | Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Başvurusu   | Release Notes (Sürüm Notları)  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
-| Zaman uyumsuz 2. x. x  | Haziran 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm notları](sql-api-sdk-async-java.md) |
-| 2. x. x eşitlemesini Eşitle     | Eyl 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm notları](sql-api-sdk-java.md)  |
+| Zaman uyumsuz 2. x. x  | Haziran 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release Notes (Sürüm Notları)](sql-api-sdk-async-java.md) |
+| 2. x. x eşitlemesini Eşitle     | Eyl 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Release Notes (Sürüm Notları)](sql-api-sdk-java.md)  |
 | 3. x. x    | Temmuz 2019    | Async (reaktör)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
 | 4.0   | Nisan 2020   | Async (reaktör)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | -  |
 
@@ -57,13 +57,13 @@ Aşağıda, Java SDK 4. x. x Azure Cosmos DB önceki SDK 'lara kıyasla (Java SD
 
 ![Azure Cosmos DB Java SDK adlandırma kuralları](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
 
-* Java SDK 3. x. x ve 4,0 Azure Cosmos DB istemci kaynaklarına olarak `Cosmos<resourceName>`başvurur. Örneğin `CosmosClient` `CosmosDatabase`,,, `CosmosContainer`. 2. x. x sürümünde, Java SDK 'larının Azure Cosmos DB Tekdüzen adlandırma düzeni yoktur.
+* Java SDK 3. x. x ve 4,0 Azure Cosmos DB istemci kaynaklarına olarak başvurur `Cosmos<resourceName>` . Örneğin,, `CosmosClient` , `CosmosDatabase` `CosmosContainer` . 2. x. x sürümünde, Java SDK 'larının Azure Cosmos DB Tekdüzen adlandırma düzeni yoktur.
 
 * Azure Cosmos DB Java SDK 3. x. x ve 4,0 hem Sync hem de Async API 'Leri sunmaktadır.
 
-  * **Java SDK 4,0** : sınıf adı daha `Async` sonra `Cosmos`EKLENMEDIĞI takdirde tüm sınıflar eşitleme API 'sine aittir.
+  * **Java SDK 4,0** : sınıf adı daha sonra eklenmediği takdirde tüm SıNıFLAR eşitleme API 'sine aittir `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x**: sınıf adı daha `Async` sonra `Cosmos`eklenmediği takdirde tüm sınıflar zaman uyumsuz API 'ye aittir.
+  * **Java SDK 3. x. x**: sınıf adı daha sonra eklenmediği takdirde tüm sınıflar zaman uyumsuz API 'ye aittir `Async` `Cosmos` .
 
   * **Async Java SDK 2. x. x**: sınıf adları eşitleme Java SDK 'sı 2. x. x ile benzerdir, ancak ad *zaman uyumsuz*olarak başlar.
 
@@ -79,16 +79,16 @@ Azure Cosmos DB Java SDK 'sının 2. x. x sürümünde, kaynak ve belge üzerind
 
 ### <a name="representing-documents"></a>Belgeleri temsil etme
 
-Azure Cosmos DB Java SDK 4,0 ' de, özel POJO 'lar `JsonNodes` ve Azure Cosmos DB belgeleri okuyup yazmak için iki seçenek vardır.
+Azure Cosmos DB Java SDK 4,0 ' de, özel POJO `JsonNodes` 'lar ve Azure Cosmos DB belgeleri okuyup yazmak için iki seçenek vardır.
 
-Java SDK 3. x. x Azure Cosmos DB, `CosmosItemProperties` NESNESI ortak API tarafından gösterilir ve bir belge temsili olarak sunulur. Bu sınıf artık 4,0 sürümünde herkese açık değildir.
+Java SDK 3. x. x Azure Cosmos DB, `CosmosItemProperties` nesnesi ortak API tarafından gösterilir ve bir belge temsili olarak sunulur. Bu sınıf artık 4,0 sürümünde herkese açık değildir.
 
 ### <a name="imports"></a>İşlemlerinin
 
 * Azure Cosmos DB Java SDK 4,0 paketleri şununla başlar`com.azure.cosmos`
   * Azure Cosmos DB Java SDK 3. x. x paketleri şununla başlar`com.azure.data.cosmos`
 
-* Azure Cosmos DB Java SDK 4,0, iç içe bir pakete `com.azure.cosmos.models`birkaç sınıfı koyar. Bu paketlerin bazıları şunlardır:
+* Azure Cosmos DB Java SDK 4,0, iç içe bir pakete birkaç sınıfı koyar `com.azure.cosmos.models` . Bu paketlerin bazıları şunlardır:
 
   * `CosmosContainerResponse`
   * `CosmosDatabaseResponse`
@@ -102,9 +102,9 @@ Java SDK 3. x. x Azure Cosmos DB, `CosmosItemProperties` NESNESI ortak API taraf
 
 ### <a name="accessors"></a>C
 
-Azure Cosmos DB Java SDK 4,0, `get` örnek `set` üyelerine erişim yöntemleri sunar. Örneğin, `CosmosContainer` örneği ve `container.getId()` `container.setId()` yöntemleri vardır.
+Azure Cosmos DB Java SDK 4,0 `get` `set` , örnek üyelerine erişim yöntemleri sunar. Örneğin, `CosmosContainer` örneği `container.getId()` ve `container.setId()` yöntemleri vardır.
 
-Bu, akıcı bir arabirim sunan Azure Cosmos DB Java SDK 3. x. x ' ten farklıdır. Örneğin, `id` değeri almak `CosmosSyncContainer` veya ayarlamak `container.id()` için aşırı yüklenmiş bir örnek vardır.
+Bu, akıcı bir arabirim sunan Azure Cosmos DB Java SDK 3. x. x ' ten farklıdır. Örneğin, `CosmosSyncContainer` `container.id()` değeri almak veya ayarlamak için aşırı yüklenmiş bir örnek vardır `id` .
 
 ## <a name="code-snippet-comparisons"></a>Kod parçacığı karşılaştırmaları
 
