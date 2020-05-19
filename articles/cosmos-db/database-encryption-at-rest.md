@@ -5,20 +5,20 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: db20388b5277e000ffe7055e9840742d6af7788e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062595"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592143"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB'de veri şifreleme 
 
 Bekleyen şifreleme, genellikle katı hal sürücüleri (SSD 'Ler) ve sabit disk sürücüleri (HDD 'Ler) gibi kalıcı depolama cihazlarındaki verilerin şifrelenmesini ifade eden bir tümceciktir. Cosmos DB, birincil veritabanlarını SSD 'lerde depolar. Medya ekleri ve yedeklemeleri, genellikle HDD 'Ler tarafından yedeklenen Azure Blob depolama alanında depolanır. Cosmos DB için bekleyen şifreleme sürümü ile tüm veritabanlarınız, medya ekleri ve yedeklemeleriniz şifrelenir. Verileriniz artık aktarım sırasında (ağ üzerinden) ve bekleyen (kalıcı depolama), uçtan uca şifreleme sağlayan bir biçimde şifrelenir.
 
-PaaS hizmeti olarak Cosmos DB kullanımı çok kolaydır. Cosmos DB içinde depolanan tüm Kullanıcı verileri REST ve aktarımda şifrelendiğinden, herhangi bir işlem gerçekleştirmeniz gerekmez. Bunu yerleştirmek için başka bir yol da, bekleyen şifrelemenin varsayılan olarak "açık" olmasını sağlar. Kapatılacak veya açık bir denetim yoktur. Azure Cosmos DB, hesabın çalıştığı tüm bölgelerde AES-256 şifrelemesini kullanır. [Kullanılabilirlik ve performans SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)'larımızı karşılamaya devam ediyoruz, bu özelliği sağlıyoruz.
+PaaS hizmeti olarak Azure Cosmos DB kullanımı çok kolaydır. Azure Cosmos DB içinde depolanan tüm Kullanıcı verileri REST ve aktarımda şifrelendiğinden, herhangi bir işlem gerçekleştirmeniz gerekmez. Bunu yerleştirmek için başka bir yol da, bekleyen şifrelemenin varsayılan olarak "açık" olmasını sağlar. Kapatılacak veya açık bir denetim yoktur. Azure Cosmos DB, hesabın çalıştığı tüm bölgelerde AES-256 şifrelemesini kullanır. [Kullanılabilirlik ve performans SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)'larımızı karşılamaya devam ediyoruz, bu özelliği sağlıyoruz. Azure Cosmos hesabınızda depolanan veriler, Microsoft tarafından yönetilen anahtarlarla otomatik olarak ve sorunsuz bir şekilde şifrelenir (hizmet tarafından yönetilen anahtarlar). İsteğe bağlı olarak, [müşteri tarafından yönetilen anahtarlar](how-to-setup-cmk.md) makalesinde açıklandığı gibi kendi anahtarlarınız ile ikinci bir şifreleme katmanı eklemeyi tercih edebilirsiniz.
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Azure Cosmos DB için bekleyen şifreleme uygulama
 
@@ -59,5 +59,6 @@ Y: öykünücü, tek başına bir geliştirme/test aracıdır ve yönetilen Cosm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cosmos DB güvenliğe ve en son geliştirmelere genel bakış için bkz. [Azure Cosmos veritabanı güvenliği](database-security.md).
-Microsoft sertifikaları hakkında daha fazla bilgi için [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/)bakın.
+* Daha fazla bilgi edinmek için, kendi anahtarlarınız ile ikinci bir şifreleme katmanı eklemeyi seçebilirsiniz, daha fazla bilgi edinmek için [müşteri tarafından yönetilen anahtarlar](how-to-setup-cmk.md) makalesine bakın.
+* Cosmos DB güvenliğe ve en son geliştirmelere genel bakış için bkz. [Azure Cosmos veritabanı güvenliği](database-security.md).
+* Microsoft sertifikaları hakkında daha fazla bilgi için [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/)bakın.

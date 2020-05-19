@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792352"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592398"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -26,7 +26,7 @@ Azure Machine Learning modellerinizi, otomatik makine öğrenimi ve görsel tasa
     | ----- | ----- |
     | [Yapılandırmayı Çalıştır](#run-configuration) | **Modelleri eğitmek için genel bir yol** , bir eğitim betiği kullanmaktır ve yapılandırma çalıştırmanız. Çalıştırma yapılandırması, modelinizi eğitemak için kullanılan eğitim ortamını yapılandırmak için gereken bilgileri sağlar. Bir çalıştırma yapılandırması, eğitim betiğinizi ve bir işlem hedefini (eğitim ortamı) alabilir ve bir eğitim işi çalıştırabilirsiniz. |
     | [Otomatik makine öğrenimi](#automated-machine-learning) | Otomatikleştirilmiş makine **öğrenimi, kapsamlı veri bilimi veya programlama bilgisi olmadan modelleri eğmenize**olanak tanır. Veri bilimi ve programlama arka planına sahip kişiler için, algoritma seçimini ve hiper parametre ayarlamayı otomatikleştirerek zaman ve kaynak tasarrufu yapmak için bir yol sağlar. Otomatik makine öğrenimi kullanırken çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
-    | [Tahmini](#estimators) | Estimator sınıfları, **popüler makine öğrenimi çerçeveleri temelinde modellerin eğmesini kolaylaştırır**. **Scikit-öğren**, **pytorch**, **TensorFlow**ve **Chainer**için tahmin aracı sınıfları vardır. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
+    | [Tahmini](#estimators) | Estimator sınıfları, **popüler makine öğrenimi çerçeveleri temelinde modellerin eğmesini kolaylaştırır**. **Scikit-öğrenici**, **pytorch**, **TensorFlow**, **Chainer**, ve **Ray rllib**için tahmin aracı sınıfları vardır. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez. |
     | [Machine Learning işlem hattı](#machine-learning-pipeline) | İşlem hatları, farklı bir eğitim yöntemi değildir, ancak iş akışının bir parçası olarak eğitim içerebilen **modüler, yeniden kullanılabilir adımları kullanarak bir iş akışı tanımlamanın bir yoludur**. Makine öğrenimi ardışık düzenleri, otomatik makine öğrenimi, estimators kullanımı ve modelleri eğitmek için yapılandırma çalıştırma desteği sağlar. İşlem hatları eğitimlere özel olarak odaklanmadığından, işlem hattı kullanmanın nedenleri diğer eğitim yöntemlerinden daha farklılaştırılmıştır. Genellikle, şu durumlarda bir işlem hattı kullanabilirsiniz:<br>* Uzun süre çalışan eğitim işleri veya veri hazırlama gibi **Katılımsız işlemleri zamanlamak** istiyorsunuz.<br>* Heterojen işlem kaynakları ve depolama konumları genelinde koordine edilen **birden çok adım** kullanın.<br>* Yeniden eğitim veya toplu Puanlama gibi belirli senaryolar için işlem hattını yeniden **kullanılabilir bir şablon** olarak kullanın.<br>* İş akışınız için **veri kaynaklarını, girişleri ve çıkışları** izleyin.<br>* İş akışınız, **belirli adımlarda bağımsız olarak çalışan farklı takımlar tarafından uygulanır**. Adımlar daha sonra iş akışını uygulamak için bir ardışık düzende birleştirilebilir. |
 
 + [Python IÇIN sdk Azure Machine Learning](#r-sdk): sdk, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
@@ -73,7 +73,7 @@ Yinelemeleri, hiper parametre ayarlarını, fealeştirme ve diğer ayarları tan
 
 ### <a name="estimators"></a>Tahmini
 
-Estimators, popüler ML çerçeveleri kullanarak modellerin eğmesini kolaylaştırır. **Scikit-öğren**, **pytorch**, **TensorFlow**veya **Chainer**kullanıyorsanız, eğitim için bir tahmin aracı kullanmayı göz önünde bulundurmanız gerekir. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez.
+Estimators, popüler ML çerçeveleri kullanarak modellerin eğmesini kolaylaştırır. **Scikit-öğren**, **pytorch**, **TensorFlow**, **Chainer**veya **Ray rllib** kullanıyorsanız, eğitim için bir tahmin aracı kullanmayı göz önünde bulundurmanız gerekir. Zaten adanmış bir tahmin aracı sınıfına sahip olmayan çerçevelerle kullanılabilen genel bir tahmin aracı da vardır. Estimators kullanırken bir çalıştırma yapılandırması tanımlama konusunda endişelenmeniz gerekmez.
 
 * [Estimators nedir?](concept-azure-machine-learning-architecture.md#estimators)
 * [Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin](tutorial-train-models-with-aml.md)
@@ -95,7 +95,7 @@ Machine Learning işlem hatları, daha önce bahsedilen eğitim yöntemlerini (�
 
 R SDK, Azure Machine Learning R dilini kullanmanıza olanak sağlar. SDK, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [Öğretici: lojistik regresyon modeli oluşturma](tutorial-1st-r-experiment.md)
 * [R başvurusu için SDK Azure Machine Learning](https://azure.github.io/azureml-sdk-for-r/index.html)

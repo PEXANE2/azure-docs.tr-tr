@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80744155"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591055"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
@@ -24,7 +24,7 @@ LUSıS, hizmet içindeki çeşitli özelliklere sahiptir. Tüm özellikler aynı
 
 ## <a name="multi-language-luis-apps"></a>Çok dilli LUSıS uygulamaları
 
-Sohbet botu gibi çok dilli bir LUSıS istemci uygulamasına ihtiyacınız varsa, birkaç seçeneğiniz vardır. LUSıS tüm dilleri destekliyorsa, her dil için bir LUO uygulaması geliştirirsiniz. Her bir LUıN uygulamasının benzersiz bir uygulama KIMLIĞI ve uç nokta günlüğü vardır. Bir dil için dil desteği sağlamanız gerekiyorsa, bu bir dilin desteklenmeyen bir dile dönüştürülmesi için [Microsoft Translator API 'sini](../Translator/translator-info-overview.md) kullanabilir, UTTERANLIĞI, Halme uç noktasına gönderebilir ve elde edilen puanları alabilirsiniz.
+Sohbet botu gibi çok dilli bir LUSıS istemci uygulamasına ihtiyacınız varsa, birkaç seçeneğiniz vardır. LUSıS tüm dilleri destekliyorsa, her dil için bir LUO uygulaması geliştirirsiniz. Her bir LUıN uygulamasının benzersiz bir uygulama KIMLIĞI ve uç nokta günlüğü vardır. Bir dil için dil desteği sağlamanız gerekiyorsa, bu bir dilin desteklenmeyen bir dile dönüştürülmesi için [Translator hizmetini](../Translator/translator-info-overview.md) kullanarak, utterliği desteklenen bir dile çevirebilir, söylenişi 'i Luo uç noktasına gönderebilir ve elde edilen puanları alabilirsiniz.
 
 ## <a name="languages-supported"></a>Desteklenen diller
 
@@ -74,7 +74,7 @@ Konuşma dikte modu dilleri için bkz. konuşma tarafından [desteklenen diller]
 Desteklenen dillerin ve durumun bir listesi için [desteklenen Bing yazım denetimi diller](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) bölümüne bakın.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Bir uygulamadaki nadir veya yabancı sözcükler
-`en-us` Kültür IÇINDE, Lu, Slang dahil olmak üzere çoğu İngilizce sözcüğü ayırt edebilir. `zh-cn` Kültürde, Lu, en çok Çince karakteri ayırt etmek için öğrenir. İçinde nadir bir kelime `en-us` veya içinde `zh-cn`bır karakter kullanırsanız ve lubunun sözcüğü veya karakteri ayırt edemediği görürseniz, bu sözcüğü veya karakteri bir [tümcecik listesi özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulamanın kültürünün dışındaki kelimeler (yani, yabancı sözcükler) bir tümcecik listesi özelliğine eklenmelidir.
+Kültür içinde `en-us` , Lu, Slang dahil olmak üzere çoğu İngilizce sözcüğü ayırt edebilir. `zh-cn`Kültürde, Lu, en çok Çince karakteri ayırt etmek için öğrenir. İçinde nadir bir kelime `en-us` veya içinde bir karakter kullanırsanız `zh-cn` ve lubunun sözcüğü veya karakteri ayırt edemediği görürseniz, bu sözcüğü veya karakteri bir [tümcecik listesi özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulamanın kültürünün dışındaki kelimeler (yani, yabancı sözcükler) bir tümcecik listesi özelliğine eklenmelidir.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -113,10 +113,10 @@ Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 
 |Culture (Kültür)|Sürüm|Amaç|
 |--|--|--|
-|Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı bir utterance olarak girerse `Ich fahre einen krankenwagen` , özelliği olarak ayarlanır. `Ich fahre einen kranken wagen` Farklı varlıklar olarak `kranken` ve `wagen` bağımsız olarak işaretlemeye izin verme.|
-|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir utterance olarak girerse `Ich fahre einen krankenwagen` , tek bir belirteç kalır. Bu `krankenwagen` nedenle tek bir varlık olarak işaretlenir. |
-|Felemenkçe<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı bir utterance olarak girerse `Ik ga naar de kleuterschool` , özelliği olarak ayarlanır. `Ik ga naar de kleuter school` Farklı varlıklar olarak `kleuter` ve `school` bağımsız olarak işaretlemeye izin verme.|
-|Felemenkçe<br>`de-de`|1.0.1|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir utterance olarak girerse `Ik ga naar de kleuterschool` , tek bir belirteç kalır. Bu `kleuterschool` nedenle tek bir varlık olarak işaretlenir. |
+|Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, özelliği olarak ayarlanır `Ich fahre einen kranken wagen` . `kranken` `wagen` Farklı varlıklar olarak ve bağımsız olarak işaretlemeye izin verme.|
+|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir `Ich fahre einen krankenwagen` utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |
+|Felemenkçe<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı `Ik ga naar de kleuterschool` bir utterance olarak girerse, özelliği olarak ayarlanır `Ik ga naar de kleuter school` . `kleuter` `school` Farklı varlıklar olarak ve bağımsız olarak işaretlemeye izin verme.|
+|Felemenkçe<br>`de-de`|1.0.1|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir `Ik ga naar de kleuterschool` utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `kleuterschool` tek bir varlık olarak işaretlenir. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Belirteç Oluşturucu sürümler arasında geçiş yapma

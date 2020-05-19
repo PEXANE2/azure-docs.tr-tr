@@ -3,12 +3,12 @@ title: Yayımlama bölgeleri & uç noktaları-LUSıS
 description: Azure portal belirtilen bölge, LUO uygulamasını yayımlayacağınız yer ve aynı bölge için bir uç nokta URL 'SI oluşturulur.
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 680887ecda0843bf770c62a4b9a4d88305ea9e73
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292095"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590919"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Yazma ve yayımlama bölgeleri ve ilişkili anahtarlar
 
@@ -21,9 +21,9 @@ Bölgeye göre üç LUı yazma portalı vardır. Aynı bölgede yazmanız ve yay
 
 |LUIS|Yazma bölgesi|Azure bölge adı|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|ABD<br>Avrupa değil<br>Avustralya değil| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Avustralya| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Avrupa|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|ABD<br>Avrupa değil<br>Avustralya değil| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|Avustralya| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|Avrupa|`westeurope`|
 
 Yazma bölgeleri, [Yük devretme bölgelerini eşleştirilmiştir](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
@@ -41,11 +41,11 @@ Ortak bir uygulama tüm bölgelerde yayımlanır, böylece bölge tabanlı bir L
 
 Yazma bölgesi uygulaması yalnızca ilgili yayımlama bölgesine yayımlanabilir. Uygulamanız Şu anda yanlış yazma bölgedeyse, uygulamayı dışarı aktarın ve yayımlama bölgeniz için doğru yazma bölgesine aktarın.
 
-Üzerinde https://www.luis.ai oluşturulan lusıs uygulamaları [Avrupa](#publishing-to-europe) ve [Avustralya](#publishing-to-australia) bölgeleri hariç tüm uç noktalara yayımlanabilir.
+Üzerinde oluşturulan LUSıS uygulamaları https://www.luis.ai [Avrupa](#publishing-to-europe) ve [Avustralya](#publishing-to-australia) bölgeleri hariç tüm uç noktalara yayımlanabilir.
 
 ## <a name="publishing-to-europe"></a>Avrupa 'da yayımlama
 
-Avrupa bölgelerine yayımlamak için https://eu.luis.ai yalnızca lusıs uygulamaları oluşturursunuz. Avrupa bölgesinde bir anahtar kullanarak başka bir yerde yayımlamayı denerseniz, Luz bir uyarı mesajı görüntüler. Bunun yerine, https://eu.luis.aikullanın. Tarafından oluşturulan [https://eu.luis.ai][eu.luis.ai] lusıs uygulamaları diğer bölgelere otomatik olarak geçirilmez. ' İ dışa aktarıp, daha sonra geçirmek için LUO uygulamasını içeri aktarın.
+Avrupa bölgelerine yayımlamak için yalnızca LUSıS uygulamaları oluşturursunuz https://eu.luis.ai . Avrupa bölgesinde bir anahtar kullanarak başka bir yerde yayımlamayı denerseniz, Luz bir uyarı mesajı görüntüler. Bunun yerine, kullanın https://eu.luis.ai . Tarafından oluşturulan lusıs uygulamaları [https://eu.luis.ai][eu.luis.ai] diğer bölgelere otomatik olarak geçirilmez. ' İ dışa aktarıp, daha sonra geçirmek için LUO uygulamasını içeri aktarın.
 
 ## <a name="europe-publishing-regions"></a>Avrupa yayımlama bölgeleri
 
@@ -58,7 +58,7 @@ Avrupa bölgelerine yayımlamak için https://eu.luis.ai yalnızca lusıs uygula
 
 ## <a name="publishing-to-australia"></a>Avustralya 'da yayımlama
 
-Avustralya bölgelerinde yayımlamak için https://au.luis.ai yalnızca lusıs uygulamaları oluşturursunuz. Avustralya bölgesindeki bir anahtar kullanarak başka bir yerde yayımlamayı denerseniz, Luz bir uyarı mesajı görüntüler. Bunun yerine, https://au.luis.aikullanın. Tarafından oluşturulan [https://au.luis.ai][au.luis.ai] lusıs uygulamaları diğer bölgelere otomatik olarak geçirilmez. ' İ dışa aktarıp, daha sonra geçirmek için LUO uygulamasını içeri aktarın.
+Avustralya bölgelerinde yayımlamak için yalnızca LUSıS uygulamaları oluşturursunuz https://au.luis.ai . Avustralya bölgesindeki bir anahtar kullanarak başka bir yerde yayımlamayı denerseniz, Luz bir uyarı mesajı görüntüler. Bunun yerine, kullanın https://au.luis.ai . Tarafından oluşturulan lusıs uygulamaları [https://au.luis.ai][au.luis.ai] diğer bölgelere otomatik olarak geçirilmez. ' İ dışa aktarıp, daha sonra geçirmek için LUO uygulamasını içeri aktarın.
 
 ## <a name="australia-publishing-regions"></a>Avustralya yayımlama bölgeleri
 
@@ -68,7 +68,7 @@ Avustralya bölgelerinde yayımlamak için https://au.luis.ai yalnızca lusıs u
 
 ## <a name="publishing-to-other-regions"></a>Diğer bölgelere yayımlama
 
-Diğer bölgelere yayımlamak için [https://www.luis.ai](https://www.luis.ai) yalnızca lusıs uygulamaları oluşturursunuz.
+Diğer bölgelere yayımlamak için yalnızca LUSıS uygulamaları oluşturursunuz [https://www.luis.ai](https://www.luis.ai) .
 
 ## <a name="other-publishing-regions"></a>Diğer yayımlama bölgeleri
 

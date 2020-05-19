@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115158"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592619"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
 Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
@@ -28,8 +28,8 @@ Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların ya
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Kullanıcı başına veya haftaya göre mi yoksa laboratuvarın tamamına mı göre kota mi? 
 Laboratuvar için ayarladığınız kota, tüm laboratuvarın süresi boyunca her öğrenciye yöneliktir. Ve [VM 'lerin zamanlanan çalışma süresi](how-to-create-schedules.md) , bir kullanıcıya ayrılan kotaya göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir.  Kotalar hakkında daha fazla bilgi için bkz. [kullanıcılar için kotaları ayarlama](how-to-configure-student-usage.md#set-quotas-for-users).
 
-### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Professlı bir öğrenci sanal makinesini kullanıyorsa, öğrenci kotasını da etkiler mi? 
-Hayır. Bunu yapmaz. Professlı, öğrenci sanal makinesini açtığında öğrenciye ayrılan kotayı etkilemez. 
+### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Eğitimci bir öğrenci sanal makinesini kullanıyorsa, öğrenci kotasını da etkiler mi? 
+Hayır. Bunu yapmaz. Eğitimci, öğrenci sanal makinesini açtığında öğrenciye ayrılan kotayı etkilemez. 
 
 ## <a name="schedules"></a>Zamanlamalar
 

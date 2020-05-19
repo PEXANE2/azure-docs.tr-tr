@@ -1,21 +1,14 @@
 ---
 title: V3 makine tarafından öğrenilen varlığa geçiş
-titleSuffix: Azure Cognitive Services
 description: V3 yazma, makine tarafından öğrenilen varlık ve uygulamanın diğer varlıklarına ya da özelliklerine ilişki ekleyebilme olanağı sunan bir yeni varlık türü (makine tarafından öğrenilen varlık) sağlar.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 12/30/2019
-ms.author: diberry
-ms.openlocfilehash: b5dbcd9033d9a41e43ea907d043e0c0486b236db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.date: 05/08/2020
+ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75563839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593231"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 yazma varlığına geçiş
 
@@ -23,14 +16,14 @@ V3 yazma, makine tarafından öğrenilen varlık ve uygulamanın diğer varlıkl
 
 ## <a name="entities-are-decomposable-in-v3"></a>Varlıklar v3 'de parçalançıkarıldı
 
-[API 'leri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) ya da [önizleme portalını](https://preview.luis.ai/)kullanarak v3 yazma API 'leri ile oluşturulan varlıklar, üst ve alt öğeleri olan katmanlı bir varlık modeli oluşturmanıza olanak sağlar. Üst öğe, **makine tarafından öğrenilen varlık** olarak bilinir ve alt öğeler makine tarafından öğrenilen varlığın alt **bileşenleri** olarak bilinir.
+[API 'leri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) ya da Portal Ile oluşturulan v3 yazma API 'leri ile oluşturulan varlıklar, bir üst ve alt öğe ile katmanlı bir varlık modeli oluşturmanıza olanak sağlar. Üst öğe, **makine tarafından öğrenilen varlık** olarak bilinir ve alt öğeler makine tarafından öğrenilen varlığın **alt varlıkları** olarak bilinir.
 
-Her alt bileşen ayrıca makine tarafından öğrenilen bir varlıktır, ancak kısıtlamaların ve tanımlayıcılarının yapılandırma seçenekleri eklenmiştir.
+Her alt varlık de makine tarafından öğrenilen bir varlıktır ve özelliklerin yapılandırma seçenekleri eklenmiştir.
 
-* **Kısıtlamalar** , bir varlığın bir kuralla eşleştiğinde ayıklandığını garanti eden tam metin eşleştirme kurallarıdır. Kural, bir tam metin ile eşleşen varlık, şu anda [önceden oluşturulmuş bir varlık](luis-reference-prebuilt-entities.md), bir [normal ifade varlığı](reference-entity-regular-expression.md)veya [liste varlığı](reference-entity-list.md)tarafından tanımlanır.
-* **Tanımlayıcılar** , varlığı kesin olarak belirtmek için kullanılan tümcecik listeleri veya varlıklar gibi [özelliklerdir](luis-concept-feature.md).
-
-V3 yazma, makine tarafından öğrenilen varlık ve uygulamanın diğer varlıklarına ya da özelliklerine ilişki ekleyebilme olanağı sunan bir yeni varlık türü (makine tarafından öğrenilen varlık) sağlar.
+* **Gerekli özellikler** , bir varlığın bir özellikle eşleştiğinde ayıklandığını garanti eden kurallardır. Kural, modele gereken özellik tarafından tanımlanır:
+    * [Önceden oluşturulmuş varlık](luis-reference-prebuilt-entities.md)
+    * [Normal ifade varlığı](reference-entity-regular-expression.md)
+    * [Varlık listeleyin](reference-entity-list.md).
 
 ## <a name="how-do-these-new-relationships-compare-to-v2-authoring"></a>Bu yeni ilişkiler v2 yazma ile nasıl karşılaştırılır
 
@@ -61,7 +54,7 @@ V3 ile, ilişki uygulama yazarları tarafından açık ve tasarlanmıştır. Bu,
     * Varlıklar
         * Hiyerarşik varlık
         * Bileşik varlık
-    * Roller-roller yalnızca, makine tarafından öğrenilen (üst) varlığa uygulanabilir. Roller alt bileşenlere uygulanamıyor
+    * Roller-roller yalnızca, makine tarafından öğrenilen (üst) varlığa uygulanabilir. Roller alt varlıklara uygulanamıyor
     * Hiyerarşik ve bileşik varlıkları kullanan toplu testler ve desenler
 
 Geçiş planınızı tasarlarken, tüm hiyerarşik ve bileşik varlıklar geçirildikten sonra, son makineye öğrenilen varlıkları gözden geçirmek için zaman bırakın. Düz bir geçiş çalışmaya başladıktan sonra, değişikliği yaptıktan ve Batch test sonuçlarınızı ve tahmin JSON 'larınızı gözden geçirdikten sonra, daha fazla birleştirilmiş JSON, istemci tarafı uygulamasına teslim edilen son bilgilerin farklı şekilde organize edilmesi için sizi değişiklik yapmaya yol açabilir. Bu kod yeniden düzenlemesi ile benzerdir ve kuruluşunuzun yerinde olduğu gözden geçirme işlemiyle birlikte değerlendirilmelidir.
@@ -70,7 +63,7 @@ V2 modelinize yönelik Batch testleriniz yoksa ve geçişin bir parçası olarak
 
 ## <a name="migrating-from-v2-entities"></a>V2 varlıklarından geçiş
 
-V3 yazma modeline taşımaya başladığınızda, makine tarafından öğrenilen varlığa ve bunların alt bileşenlerinden kısıtlamalar ve tanımlayıcılar dahil olmak üzere nasıl taşınacağını göz önünde bulundurmanız gerekir.
+V3 yazma modeline taşımaya başladığınızda, makine tarafından öğrenilen varlığa ve bunların alt varlıklara ve özelliklerine nasıl geçilebileceğinizi göz önünde bulundurmanız gerekir.
 
 Aşağıdaki tabloda, hangi varlıkların bir v2 'den v3 varlık tasarımına geçirilmesi gerektiğini not edin.
 
@@ -81,26 +74,26 @@ Aşağıdaki tabloda, hangi varlıkların bir v2 'den v3 varlık tasarımına ge
 
 ## <a name="migrate-v2-composite-entity"></a>V2 bileşik varlığını geçirme
 
-V2 Composite 'un her bir alt öğesi v3 makine tarafından öğrenilen varlığın bir alt bileşeni ile temsil edilmelidir. Bileşik alt öğe önceden oluşturulmuş bir, normal ifade veya bir liste varlığı ise, bu, alt bileşeni temsil eden alt bileşen üzerinde bir **kısıtlama** olarak uygulanmalıdır.
+V2 Composite 'un her bir alt öğesi v3 makine tarafından öğrenilen varlığın bir alt varlığıyla temsil edilmelidir. Bileşik alt öğe önceden oluşturulmuş bir, normal ifade veya bir liste varlığı ise, bu, alt varlığa gerekli bir özellik olarak uygulanmalıdır.
 
 Bileşik bir varlığı makineye öğrenilen bir varlığa geçirmeyi planlarken dikkat edilecek noktalar:
 * Alt varlıklar desenlerinde kullanılamaz
 * Alt varlıklar artık paylaşılmıyor
 * Makine öğrenildikleri takdirde alt varlıkların etiketlenmesi gerekir
 
-### <a name="existing-descriptors"></a>Mevcut tanımlayıcılar
+### <a name="existing-features"></a>Mevcut özellikler
 
-Bileşik varlıktaki kelimeleri artırmak için kullanılan tümcecik listesi, makine tarafından öğrenilen (üst) varlığa, alt bileşen (alt) varlığına veya amaca (tümcecik listesi yalnızca bir amaca geçerliyse) bir tanımlayıcı olarak uygulanmalıdır. Tanımlayıcıyı, en önemli düzeyde iyileştirmeli varlığa eklemeyi planlayın. Bir alt bileşen (alt) tahminini en önemli ölçüde iyileştirdiği takdirde, tanımlayıcıyı makine öğrenmiş (üst) varlığına eklemeyin.
+Bileşik varlıktaki sözcükleri artırmak için kullanılan tümcecik listesi, makine tarafından öğrenilen (üst) varlığa, alt varlık (alt) varlığa veya amaca (tümcecik listesi yalnızca bir amaç için geçerliyse) bir özellik olarak uygulanmalıdır. Özelliği en önemli düzeyde iyileştirmeli varlığa eklemeyi planlayın. Özelliği, bir alt varlığın (alt) tahminini önemli ölçüde iyileştirdiği takdirde makine tarafından öğrenilen (üst) varlığa genel olarak eklemeyin.
 
-### <a name="new-descriptors"></a>Yeni tanımlayıcılar
+### <a name="new-features"></a>Yeni özellikler
 
-V3 yazma bölümünde varlıkları tüm varlıklar ve amaçlar için olası tanımlayıcılar olarak değerlendirmek üzere bir planlama adımı ekleyin.
+V3 yazma bölümünde varlıkları tüm varlıklar ve amaçlar için olası özellikler olarak değerlendirmek üzere bir planlama adımı ekleyin.
 
 ### <a name="example-entity"></a>Örnek varlık
 
 Bu varlık yalnızca bir örnektir. Kendi varlık geçişiniz, başka hususlar gerektirebilir.
 
-Şunu kullanan bir pizza `order` 'yi değiştirmek Için bir v2 bileşimini düşünün:
+Şunu kullanan bir pizza 'yi değiştirmek için bir v2 bileşimini düşünün `order` :
 * teslim süresi için önceden oluşturulmuş datetimeV2
 * Pizza, pasta, Crust ve tografik gibi belirli kelimeleri artırmak için tümcecik listesi
 * mushodalar, zeytin, pepperoni gibi toppings algılamak için varlık listeleyin.
@@ -114,8 +107,8 @@ Aşağıdaki tabloda geçiş gösterilmektedir:
 |V2 modelleri|V3 modelleri|
 |--|--|
 |Adlı üst bileşen varlık`Order`|Ana makine tarafından öğrenilen adlı varlık`Order`|
-|Alt-önceden oluşturulmuş datetimeV2|* Önceden oluşturulmuş varlığı yeni uygulamaya geçirin.<br>* Önceden oluşturulmuş datetimeV2 için üst öğede kısıtlama ekleyin.|
-|Toppings için alt liste varlığı|* Liste varlığını yeni uygulamaya geçirin.<br>* Ardından liste varlığı için üst öğeye bir kısıtlama ekleyin.|
+|Alt-önceden oluşturulmuş datetimeV2|* Önceden oluşturulmuş varlığı yeni uygulamaya geçirin.<br>* Önceden oluşturulmuş datetimeV2 için üst öğeye gerekli özelliği ekleyin.|
+|Toppings için alt liste varlığı|* Liste varlığını yeni uygulamaya geçirin.<br>* Ardından liste varlığı için üst öğeye gerekli bir özellik ekleyin.|
 
 
 ## <a name="migrate-v2-hierarchical-entity"></a>V2 hiyerarşik varlığını geçirme
@@ -124,11 +117,11 @@ V2 yazma sürümünde, LUSıS 'de mevcut rollerden önce hiyerarşik bir varlık
 
 V3 yazma:
 * Makine öğrenilmiş (üst) varlığa bir rol uygulanabilir.
-* Bir rol, herhangi bir alt bileşenlere uygulanamaz.
+* Herhangi bir alt varlığa bir rol uygulanamaz.
 
 Bu varlık yalnızca bir örnektir. Kendi varlık geçişiniz, başka hususlar gerektirebilir.
 
-Bir pizza `order`değiştirmek Için bir v2 hiyerarşik varlığı düşünün:
+Bir pizza değiştirmek için bir v2 hiyerarşik varlığı düşünün `order` :
 * Her çocuğun orijinal veya son oluşturma
 
 Bu varlık için bir örnek söylenişi şunlardır:
@@ -140,7 +133,57 @@ Aşağıdaki tabloda geçiş gösterilmektedir:
 |V2 modelleri|V3 modelleri|
 |--|--|
 |Adlı üst bileşen varlık`Order`|Ana makine tarafından öğrenilen adlı varlık`Order`|
-|Orijinal ve son pizza ile alt hiyerarşik varlık|* Her bir `Order` for için rol ekleyin.|
+|Orijinal ve son pizza ile alt hiyerarşik varlık|* `Order` Her bir for için rol ekleyin.|
+
+## <a name="api-change-constraint-replaced-with-required-feature"></a>API değişiklik kısıtlaması, gerekli özellik ile değiştirilmiş
+
+Bu değişiklik, nbuild konferansında 2020 Mayıs 'da yapılmıştır ve yalnızca uygulamanın kısıtlanmış bir özelliği kullandığı v3 yazma API 'Leri için geçerlidir. V2 Authoring öğesinden v3 Authoring 'e geçiş yapıyorsanız veya v3 kısıtlı özellikleri kullanmadıysanız, bu bölümü atlayın.
+
+**İşlevsellik** -mevcut bir varlığı başka bir modele özellik olarak gerektirme ve bu modeli yalnızca varlık algılanırsa ayıkla. İşlev değiştirilmedi, ancak API ve terminoloji değişmiş.
+
+|Önceki terminoloji|Yeni terminoloji|
+|--|--|
+|`constrained feature`<br>`constraint`<br>`instanceOf`|`required feature`<br>`isRequired`|
+
+#### <a name="automatic-migration"></a>Otomatik geçiş
+
+**Haziran 19 2020**' den itibaren, bu işlevselliği kullanıma sunan ÖNCEKI yazma API 'sini kullanarak program aracılığıyla kısıtlama oluşturmanıza izin verilmez.
+
+Tüm mevcut kısıtlama özellikleri otomatik olarak gerekli özellik bayrağına geçirilir. Tahmin API 'niz için programlı bir değişiklik yapılması ve tahmin doğruluk kalitesi üzerinde sonuç değişikliği olmaması gerekmez.
+
+#### <a name="luis-portal-changes"></a>LUSıS portalı değişiklikleri
+
+LUSıS önizleme portalı bu işlevselliğe bir **kısıtlama**olarak başvurdu. Geçerli Lua portalı, bu işlevselliği **gerekli bir özellik**olarak belirler.
+
+#### <a name="previous-authoring-api"></a>Önceki yazma API 'SI
+
+Bu işlev, bir varlığın alt öğesinin özelliğini kullanarak bir varlığın tanımının parçası olarak bir varlık tanımının **[varlık oluşturma alt API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d86cf3c6a25a45529767d77)** için Önizleme yazma ' ya uygulandı `instanceOf` :
+
+```json
+{
+    "name" : "dayOfWeek",
+    "instanceOf": "datetimeV2",
+    "children": [
+        {
+           "name": "dayNumber",
+           "instanceOf": "number",
+           "children": []
+        }
+    ]
+}
+```
+
+#### <a name="new-authoring-api"></a>Yeni yazma API 'SI
+
+Bu işlev, ve özellikleri kullanılarak **[varlık özelliği Ilişkisi Ekle API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d9dc1781e38aaec1c375f26)** ile birlikte `featureName` uygulanır `isRequired` . Özelliğin değeri, `featureName` modelin adıdır.
+
+```json
+{
+    "featureName": "YOUR-MODEL-NAME-HERE",
+    "isRequired" : true
+}
+```
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856419"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591038"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Konuşma hizmeti kapsayıcılarını (Önizleme) yükleyip çalıştırın
 
@@ -35,19 +35,19 @@ Konuşma kapsayıcıları, müşterilerin hem güçlü bulut özellikleri hem de
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
 | Gerekli | Amaç |
 |--|--|
 | Docker altyapısı | Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br> |
-| Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir. |
+| Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` . |
 | Konuşma kaynağı | Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlişkili API anahtarını ve uç nokta URI 'sini almak için bir Azure _konuşma_ kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcının başlatılması için her ikisi de gereklidir.<br><br>**{API_KEY}**: **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}**: **genel bakış** sayfasında belirtilen bitiş noktası |
 
 ## <a name="request-access-to-the-container-registry"></a>Kapsayıcı kayıt defterine erişim isteme
 
-Kapsayıcıya erişim istemek için bilişsel [Hizmetler konuşma kapsayıcıları istek formunu](https://aka.ms/speechcontainerspreview/) doldurun ve iletin. 
+Kapsayıcıya erişim istemek için bilişsel [Hizmetler kapsayıcıları istek formunu](https://aka.ms/cognitivegate) doldurun ve iletin.
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -101,7 +101,7 @@ Aşağıdaki tabloda, her bir konuşma kapsayıcısı için kaynakların en dü�
 
 * Her çekirdek en az 2,6 gigahertz (GHz) veya daha hızlı olmalıdır.
 
-Çekirdek ve bellek, `--cpus` `--memory` `docker run` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir.
+Çekirdek ve bellek, `--cpus` `--memory` komutunun bir parçası olarak kullanılan ve ayarlarına karşılık gelir `docker run` .
 
 > [!NOTE]
 > En düşük ve önerilen, ana makine kaynaklarından *değil* , Docker sınırlarına dayanır. Örneğin, konuşmadan metne kapsayıcı bellek eşleme, büyük bir dil modelinin bölümlerine eşlenir ve tüm dosyanın belleğe sığması *önerilir* , bu da ek 4-6 GB 'tır. Ayrıca, modellerin bellekte sayfalandığından kapsayıcının ilk çalışması daha uzun sürebilir.
@@ -151,11 +151,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> `latest` Etiket, `en-US` yerel ayarı çeker. Daha fazla yerel ayar için bkz. [konuşmayı metne göre yerel ayarlar](#speech-to-text-locales).
+> `latest`Etiket, `en-US` yerel ayarı çeker. Daha fazla yerel ayar için bkz. [konuşmayı metne göre yerel ayarlar](#speech-to-text-locales).
 
 #### <a name="speech-to-text-locales"></a>Konuşmayı metne göre yerel ayarlar
 
-Dışındaki `latest` tüm Etiketler aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
+Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
@@ -180,7 +180,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 ```
 
 > [!NOTE]
-> Özel `locale` konuşma `voice` kapsayıcıları için ve, kapsayıcı tarafından alınan özel model tarafından belirlenir.
+> `locale` `voice` Özel konuşma kapsayıcıları için ve, kapsayıcı tarafından alınan özel model tarafından belirlenir.
 
 # <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
 
@@ -193,11 +193,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> `latest` Etiket, `en-US` yerel ayarı ve `jessarus` sesi çeker. Daha fazla yerel ayar için bkz. [metin okuma yerel ayarları](#text-to-speech-locales).
+> `latest`Etiket, `en-US` yerel ayarı ve `jessarus` sesi çeker. Daha fazla yerel ayar için bkz. [metin okuma yerel ayarları](#text-to-speech-locales).
 
 #### <a name="text-to-speech-locales"></a>Metinden konuşmaya yerel ayarlar
 
-Dışındaki `latest` tüm Etiketler aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
+Dışındaki tüm Etiketler `latest` aşağıdaki biçimdedir ve büyük/küçük harfe duyarlıdır:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
@@ -212,7 +212,7 @@ Aşağıdaki etiket, biçiminin bir örneğidir:
 Desteklenen tüm yerel ayarlar ve **metin okuma** kapsayıcısının karşılık gelen sesleri için bkz. [metin okuma görüntü etiketleri](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma sen, biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi için bir `voice` `name` özniteliği olan bir öğesi gerekir. Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinin bir ses adı olacaktır `en-US-JessaRUS`.
+> *Standart bir metinden konuşmaya* http gönderisi oluştururken, [konuşma sen, biçimlendirme dili (SSML)](speech-synthesis-markup.md) iletisi için bir `voice` özniteliği olan bir öğesi gerekir `name` . Değer, ["kısa ad"](language-support.md#standard-voices)olarak da bilinen karşılık gelen kapsayıcı yerel ayarı ve sestir. Örneğin, `latest` etiketinin bir ses adı olacaktır `en-US-JessaRUS` .
 
 # <a name="custom-text-to-speech"></a>[Özel metin okuma](#tab/ctts)
 
@@ -225,7 +225,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 ```
 
 > [!NOTE]
-> Özel `locale` konuşma `voice` kapsayıcıları için ve, kapsayıcı tarafından alınan özel model tarafından belirlenir.
+> `locale` `voice` Özel konuşma kapsayıcıları için ve, kapsayıcı tarafından alınan özel model tarafından belirlenir.
 
 ***
 
@@ -233,12 +233,12 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta daha fazla örnek kullanılabilir. [examples](speech-container-configuration.md#example-docker-run-commands) `docker run`
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [examples](speech-container-configuration.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma`docker run`
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın. `{API_Key}` `{Endpoint_URI}` Komuta ek örnekler de mevcuttur. [examples](speech-container-configuration.md#example-docker-run-commands) `docker run`
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Ve değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın `{Endpoint_URI}` `{API_Key}` . Komuta ek [örnekler](speech-container-configuration.md#example-docker-run-commands) `docker run` de mevcuttur.
 
 # <a name="speech-to-text"></a>[Konuşmayı metne dönüştürme](#tab/stt)
 
@@ -262,7 +262,7 @@ ApiKey={API_KEY}
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Konuşmayı metne dönüştürme sırasında yaklaşımı çözümleme 
 
-Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örneğin: 
+Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örnek: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -302,7 +302,7 @@ Kapsayıcıyı çalıştırmak için özel konuşma **MODELI kimliği** gereklid
 
 ![Özel konuşma eğitimi sayfası](media/custom-speech/custom-speech-model-training.png)
 
-Komutun parametresine bağımsız değişken olarak kullanılacak **model kimliğini** `ModelId` `docker run` edinin.
+Komutun parametresine bağımsız değişken olarak kullanılacak **model kimliğini** edinin `ModelId` `docker run` .
 <br>
 
 ![Özel konuşma modeli ayrıntıları](media/custom-speech/custom-speech-model-details.png)
@@ -335,7 +335,7 @@ ApiKey={API_KEY}
 * *Özel konuşma tanıma metin* modelini birim girişi bağlamalarından yükler, örneğin *c:\customspeech*.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Verilen modeli indirir `ModelId` (birim bağlaması üzerinde bulunmazsa).
-* Özel model daha önce indirildiyse `ModelId` , yok sayılır.
+* Özel model daha önce indirildiyse, yok `ModelId` sayılır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
 # <a name="text-to-speech"></a>[Metin okuma](#tab/tts)
@@ -364,7 +364,7 @@ ApiKey={API_KEY}
 
 ![Özel ses eğitimi sayfası](media/custom-voice/custom-voice-model-training.png)
 
-Docker Run komutunun `ModelId` parametresine bağımsız değişken olarak kullanılacak **model kimliğini** edinin.
+Docker Run komutunun parametresine bağımsız değişken olarak kullanılacak **model kimliğini** edinin `ModelId` .
 <br>
 
 ![Özel ses modeli ayrıntıları](media/custom-voice/custom-voice-model-details.png)
@@ -397,13 +397,13 @@ ApiKey={API_KEY}
 * Toplu giriş bağlamalarından *özel metin okuma* modelini yükler, örneğin *c:\customvoice*.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Verilen modeli indirir `ModelId` (birim bağlaması üzerinde bulunmazsa).
-* Özel model daha önce indirildiyse `ModelId` , yok sayılır.
+* Özel model daha önce indirildiyse, yok `ModelId` sayılır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
 ***
 
 > [!IMPORTANT]
-> Kapsayıcısını `Eula`çalıştırmak `Billing`için, `ApiKey` , ve seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Kapsayıcının tahmin uç noktasını sorgulama
 
@@ -425,7 +425,7 @@ Metin Analizi API'si kimlik bilgilerinizi [kapsayıcıda](#analyze-sentiment-on-
 
 # <a name="simple-format"></a>[Basit biçim](#tab/simple-format)
 
-Konuşma istemcisini basit bir biçim kullanacak şekilde yapılandırmak için, için `"Sentiment"` `Simple.Extensions`bir değer olarak ekleyin. Belirli bir Metin Analizi modeli sürümü seçmek istiyorsanız, `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` Özellik yapılandırmasında değiştirin.
+Konuşma istemcisini basit bir biçim kullanacak şekilde yapılandırmak için, `"Sentiment"` için bir değer olarak ekleyin `Simple.Extensions` . Belirli bir Metin Analizi modeli sürümü seçmek istiyorsanız, `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` özellik yapılandırmasında değiştirin.
 
 ```python
 speech_config.set_service_property(
@@ -459,7 +459,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[Ayrıntılı biçim](#tab/detailed-format)
 
-Konuşma istemcisini, ayrıntılı bir biçim kullanacak şekilde yapılandırmak için, veya `"Sentiment"` her ikisi için `Detailed.Extensions` `Detailed.Options`bir değer olarak ekleyin. Belirli bir Metin Analizi modeli sürümü seçmek istiyorsanız, `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` Özellik yapılandırmasında değiştirin.
+Konuşma istemcisini, ayrıntılı bir biçim kullanacak şekilde yapılandırmak için, `"Sentiment"` `Detailed.Extensions` veya her ikisi için bir değer olarak ekleyin `Detailed.Options` . Belirli bir Metin Analizi modeli sürümü seçmek istiyorsanız, `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` özellik yapılandırmasında değiştirin.
 
 ```python
 speech_config.set_service_property(
@@ -479,7 +479,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`yanıtın kök katmanında yaklaşım sonucunu sağlar. `Detailed.Options`yanıtın `NBest` katmanında sonucu sağlar. Bunlar ayrı olarak veya birlikte kullanılabilir.
+`Detailed.Extensions`yanıtın kök katmanında yaklaşım sonucunu sağlar. `Detailed.Options`yanıtın katmanında sonucu sağlar `NBest` . Bunlar ayrı olarak veya birlikte kullanılabilir.
 
 ```json
 {
@@ -524,7 +524,7 @@ speech_config.set_service_property(
 
 ---
 
-Yaklaşım analizini tamamen devre dışı bırakmak istiyorsanız, öğesine `false` `sentimentanalysis.enabled`bir değer ekleyin.
+Yaklaşım analizini tamamen devre dışı bırakmak istiyorsanız, `false` öğesine bir değer ekleyin `sentimentanalysis.enabled` .
 
 ```python
 speech_config.set_service_property(

@@ -2,13 +2,13 @@
 title: Language Understanding (LUIS) nedir?
 description: Language Understanding (LUIS), genel anlamı tahmin etmek ve ilgili, ayrıntılı bilgileri çekme amacıyla kullanıcının konuşmasına, doğal dil metnine özel makine öğrenimi zekası uygulayan bulut tabanlı API hizmetidir.
 ms.topic: overview
-ms.date: 02/23/2020
-ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053346"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592823"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
@@ -32,7 +32,7 @@ LUIS uygulaması yayımlandıktan sonra istemci uygulaması konuşmaları (metni
 |Adım|Eylem|
 |:--|:--|
 |1|İstemci uygulaması, kullanıcının "İK temsilcimi aramak istiyorum." şeklindeki _konuşmasını_ (kendi kullandıkları kelimelerle) bir HTTP isteği olarak LUIS uç noktasına gönderir.|
-|2|LUO, uygulamanıza zeka eklemek için özel dil modellerinizi yapmanızı sağlar. Makine tarafından öğrenilen dil modelleri kullanıcının yapılandırılmamış giriş metnini alır ve en iyi amaç ile JSON biçimli bir yanıt döndürür `HRContact`. JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. Ayrıca, _kişi türü_ varlığı gibi verileri de ayıklayabilir.|
+|2|LUO, uygulamanıza zeka eklemek için özel dil modellerinizi yapmanızı sağlar. Makine tarafından öğrenilen dil modelleri kullanıcının yapılandırılmamış giriş metnini alır ve en iyi amaç ile JSON biçimli bir yanıt döndürür `HRContact` . JSON uç nokta yanıtı minimumda sorgu konuşmasını ve en yüksek puanlı amacı içerir. Ayrıca, _kişi türü_ varlığı gibi verileri de ayıklayabilir.|
 |3|İstemci uygulaması, JSON yanıtını kullanarak kullanıcının isteklerini gerçekleştirmeyle ilgili kararları verir. Bu kararlar, bot Framework kodunda karar ağacı ve diğer hizmetlere çağrılar içerebilir. |
 
 LUIS uygulaması, istemci uygulamasının akıllı seçimler yapabilmesi için gerekli bilgileri sunar. LUIS bu seçenekleri sağlamaz.
@@ -55,9 +55,9 @@ LUIS modeli, **[amaçlar](luis-concept-intent.md)** olarak adlandırılan kullan
 
 |Örnek kullanıcı konuşması|Amaç|Ayıklanan veriler|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|Seattle|
-|`When does your store __open__?`|StoreHoursAndLocation|açık|
-|`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting|13, Bob|
+|`Book a flight to Seattle?`|BookFlight|Seattle|
+|`When does your store open?`|StoreHoursAndLocation|open|
+|`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|13, Bob|
 
 ## <a name="query-prediction-endpoint"></a>Sorgu tahmin uç noktası
 

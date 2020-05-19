@@ -1,20 +1,33 @@
 ---
 title: Yenilikler-Language Understanding (LUSıS)
 description: Bu makale, Azure bilişsel hizmetler Language Understanding API hakkındaki haberlerle düzenli olarak güncelleştirilir.
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097736"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592806"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
-Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Videoları, blog gönderilerini ve diğer bilgi türlerini içerir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
+Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Videoları, blog gönderilerini ve diğer bilgi türlerini içerir. Hizmette güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="may-2020---build"></a>Mayıs 2020-/sürümü
+
+* **Genel kullanıma açık** (GA):
+    * [Language Understanding kapsayıcı](luis-container-howto.md)
+    * Önizleme portalı [geçerli portala](https://www.luis.ai)yükseltildi, [önceki](https://previous.luis.ai) Portal hala kullanılabilir
+    * Yeni makine tarafından öğrenilen varlık oluşturma ve etiketleme deneyimi
+    * Bileşik ve basit varlıklardan makine tarafından öğrenilen varlıklara [yükseltme işlemi](migrate-from-composite-entity.md)
+    * Sözcük çeşitlemelerini normalleştirime desteğini [ayarlama](how-to-application-settings-portal.md)
+* Önizleme yazma API 'SI değişiklikleri
+    * Yuvalanmış makine tarafından öğrenilen varlıklar için uygulama şeması 7. x
+    * [Gerekli özelliğe geçiş](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>Mart 2020
 
@@ -26,7 +39,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 
 * Geliştirilmiş geliştirici verimliliği
     * [Tahmin uç noktası v3](luis-migration-api-v3.md)'nin genel kullanılabilirliği.
-    * Uygulamaları. lu ([Luaşağı](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) biçimiyle içeri ve dışarı aktarma özelliği. Bu, etkin bir CI/CD işleminin yolunu ele alır.
+    * `.lu`([Luaşağı](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) biçimindeki uygulamaları içeri ve dışarı aktarma özelliği. Bu, etkin bir CI/CD işleminin yolunu ele alır.
 * Dil genişletmesi
     * [Arapça ve Hintçe](luis-language-support.md) genel önizlemede.
 * Önceden oluşturulmuş modeller

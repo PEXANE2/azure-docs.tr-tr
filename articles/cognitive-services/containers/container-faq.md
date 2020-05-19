@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690833"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592194"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 
@@ -22,16 +22,7 @@ ms.locfileid: "82690833"
 
 **S: kullanılabilir nedir?**
 
-Y **:** Azure bilişsel [Hizmetler 'de kapsayıcı desteği](../cognitive-services-container-support.md) , geliştiricilerin Azure 'Da kullanılabilen akıllı API 'leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Kapsayıcı desteği şu anda Azure bilişsel hizmetler 'in şu parçalar dahil olmak üzere bir alt kümesi için önizleme aşamasında sunulmaktadır:
-
-> [!div class="checklist"]
-> * [Anomali Algılayıcısı][ad-containers]
-> * [Görüntü İşleme][cv-containers]
-> * [Yüz][fa-containers]
-> * [Form Tanıma][fr-containers]
-> * [Language Understanding (LUIS)][lu-containers]
-> * [Konuşma Hizmeti API’si][sp-containers]
-> * [Metin Analizi][ta-containers]
+Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek [geçitli önizleme](../cognitive-services-gating-process.md)olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) ' nde bulabilirsiniz. 
 
 **S: bilişsel hizmetler bulutu ve kapsayıcılar arasında herhangi bir fark var mı?**
 
@@ -62,7 +53,7 @@ Ne yazık ki *bilişsel* hizmetler kapsayıcıları, sogeign bulutlarında yerel
 
 **S: kapsayıcılar en son sürüme nasıl güncelleştirilir?**
 
-Y **:** Müşteriler, dağıttıkları kapsayıcıları ne zaman güncelleştirebilecekleri seçebilirler. Kapsayıcılar, en son sürümü göstermek `latest` için gibi standart [Docker etiketleriyle](https://docs.docker.com/engine/reference/commandline/tag/) işaretlenir. Müşterilerin, bir görüntü güncelleştirildikten sonra bildirim alma hakkında ayrıntılı bilgi edinmek için [Web kancalarını Azure Container Registry](../../container-registry/container-registry-webhook.md) kullanıma sundukları son sürümünü çekmelerini öneririz.
+Y **:** Müşteriler, dağıttıkları kapsayıcıları ne zaman güncelleştirebilecekleri seçebilirler. Kapsayıcılar, en son sürümü göstermek için gibi standart [Docker etiketleriyle](https://docs.docker.com/engine/reference/commandline/tag/) işaretlenir `latest` . Müşterilerin, bir görüntü güncelleştirildikten sonra bildirim alma hakkında ayrıntılı bilgi edinmek için [Web kancalarını Azure Container Registry](../../container-registry/container-registry-webhook.md) kullanıma sundukları son sürümünü çekmelerini öneririz.
  
 **S: hangi sürümler desteklenecek?**
 
@@ -80,7 +71,7 @@ Y **:** Güvenilir bir internet bağlantınız yoksa veya bant genişliği maliy
 
 **S: Bu kapsayıcılar OpenShift ile uyumlu mı?** 
 
-OpenShift ile kapsayıcıları test etmedik, ancak bilişsel hizmetler kapsayıcıları Docker görüntülerini destekleyen herhangi bir platformda çalışmalıdır. OpenShift kullanıyorsanız, kapsayıcıları olarak `root-user`çalıştırmayı öneririz.
+OpenShift ile kapsayıcıları test etmedik, ancak bilişsel hizmetler kapsayıcıları Docker görüntülerini destekleyen herhangi bir platformda çalışmalıdır. OpenShift kullanıyorsanız, kapsayıcıları olarak çalıştırmayı öneririz `root-user` .
 
 **S: ürün geri bildirimi ve özellik önerileri sağlamak Nasıl yaparım? misiniz?**
 
@@ -113,7 +104,7 @@ Y **:** Müşteriler, bilişsel hizmetler bulutuna benzer şekilde tüketimine g
 
 * [Anomali Algılayıcısı][ad-containers-billing]
 * [Görüntü İşleme][cv-containers-billing]
-* [Yüz][fa-containers-billing]
+* [Yüz Tanıma][fa-containers-billing]
 * [Form Tanıma][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Konuşma Hizmeti API’si][sp-containers-billing]
@@ -140,7 +131,7 @@ Y **:** Bilişsel hizmetler kapsayıcıları, x64 Linux Docker kapsayıcıların
 
 * [Anomali Algılayıcısı][ad-containers-recommendations]
 * [Görüntü İşleme][cv-containers-recommendations]
-* [Yüz][fa-containers-recommendations]
+* [Yüz Tanıma][fa-containers-recommendations]
 * [Form Tanıma][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Konuşma Hizmeti API’si][sp-containers-recommendations]

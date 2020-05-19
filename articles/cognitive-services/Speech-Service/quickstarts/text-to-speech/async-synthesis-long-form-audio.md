@@ -10,21 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: dcdc942999e45eb779e54cd5f92432c54d65fc6a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561990"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592568"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Hızlı başlangıç: Python 'da uzun biçimli ses için zaman uyumsuz birleştirme (Önizleme)
 
 Bu hızlı başlangıçta, metin okumayı zaman uyumsuz olarak dönüştürmek ve hizmet tarafından sunulan bir URI 'den ses çıktısını almak için uzun ses API 'sini kullanacaksınız. Bu REST API, metinden 5.000 karakterden (veya uzunluğu 10 dakikadan uzun) daha büyük bir sesi birleştirmesini gerektiren içerik sağlayıcıları için idealdir. Daha fazla bilgi için bkz. [uzun ses API 'si](../../long-audio-api.md).
 
-> [!NOTE]
-> Uzun biçimli ses için zaman uyumsuz birleştirme yalnızca [özel sinir seslerle](../../how-to-custom-voice.md#custom-neural-voices)kullanılabilir.
+Uzun biçimli ses için zaman uyumsuz birleştirme, her biri belirli bir dili ve diyalekt destekleyen [genel sinir seslerle](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) ve [özel sinir seslerle](../../how-to-custom-voice.md#custom-neural-voices)kullanılabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
@@ -34,7 +33,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Bir proje oluşturun ve gerekli modülleri içeri aktarın
 
-Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun. Sonra bu kod parçacığını adlı `voice_synthesis_client.py`bir dosyaya kopyalayın.
+Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun. Sonra bu kod parçacığını adlı bir dosyaya kopyalayın `voice_synthesis_client.py` .
 
 ```python
 import argparse
@@ -56,7 +55,7 @@ Bu modüller, bağımsız değişkenleri ayrıştırmak, HTTP isteğini oluştur
 
 ## <a name="get-a-list-of-supported-voices"></a>Desteklenen seslerin listesini al
 
-Bu kod, metinden konuşmaya dönüştürmek için kullanabileceğiniz kullanılabilir seslerin bir listesini alır. Kodu şu şekilde `voice_synthesis_client.py`ekleyin:
+Bu kod, kullanabileceğiniz belirli bir bölgeye/uç noktaya ait seslerin tam listesini almanızı sağlar. Lütfen [desteklenen bölgeyi/uç noktayı](../../long-audio-api.md)denetleyin. Kodu şu şekilde ekleyin `voice_synthesis_client.py` :
 
 ```python
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
@@ -82,8 +81,8 @@ if args.voices:
 
 Şimdiye kadar yaptığınız işlemi test edelim. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
 
-* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<your_key>`Konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<region>`Konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus` ). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
 
 Şu komutu çalıştırın:
 
@@ -100,13 +99,15 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+**Publicvoice** parametresi **true**ise, Voice genel sinir sestir. Aksi takdirde, özel sinir sestir. 
+
 ## <a name="prepare-input-files"></a>Giriş dosyalarını hazırlama
 
 Giriş metin dosyası hazırlayın. Düz metin veya SSML metni olabilir. Giriş dosyası gereksinimleri için bkz. [birleştirme için içerik hazırlama](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
 
 ## <a name="convert-text-to-speech"></a>Metni konuşmaya Dönüştür
 
-Giriş metin dosyasını hazırladıktan sonra, konuşma birleştirme için şu kodu ekleyin `voice_synthesis_client.py`:
+Giriş metin dosyasını hazırladıktan sonra, konuşma birleştirme için şu kodu ekleyin `voice_synthesis_client.py` :
 
 > [!NOTE]
 > ' concatenateResult ', isteğe bağlı bir parametredir. Bu parametre ayarlanmamışsa, her paragraf için ses çıkışları oluşturulacaktır. Ayrıca, parametresini ayarlayarak sesos 'yi 1 çıkışa ekleyebilirsiniz. Varsayılan olarak, Ses çıktısı Riff-16khz-16bit-mono-PCM olarak ayarlanır. Desteklenen ses çıkışları hakkında daha fazla bilgi için bkz. [ses çıkış biçimleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
@@ -174,11 +175,11 @@ if args.submit:
 
 Kaynak olarak giriş dosyanızı kullanarak metni sentezleştirme isteği oluşturalım. Aşağıdaki istekte birkaç şeyi güncelleştirmeniz gerekir:
 
-* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* Metin `<input>` okuma için hazırladığınız metin dosyasının yoluyla değiştirin.
-* İstenen `<locale>` çıkış yerel ayarıyla değiştirin. Daha fazla bilgi için bkz. [dil desteği](../../language-support.md#neural-voices).
-* İstenen `<voice_guid>` çıkış sesiyle değiştirin. [Desteklenen seslerin listesini al](#get-a-list-of-supported-voices)tarafından döndürülen sesden birini kullanın.
+* `<your_key>`Konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<region>`Konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus` ). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<input>`Metin okuma için hazırladığınız metin dosyasının yoluyla değiştirin.
+* `<locale>`İstenen çıkış yerel ayarıyla değiştirin. Daha fazla bilgi için bkz. [dil desteği](../../language-support.md#neural-voices).
+* `<voice_guid>`İstenen çıkış sesiyle değiştirin. [Desteklenen seslerin listesini al](#get-a-list-of-supported-voices)tarafından döndürülen sesden birini kullanın.
 
 Bu komutla metni konuşmaya dönüştürün:
 
@@ -215,7 +216,7 @@ Sonuç, hizmet tarafından oluşturulan giriş metnini ve ses çıktı dosyalar�
 
 Sunucu, her bir Azure aboneliği hesabı için en fazla **20.000** istek tutar. İstek miktarınız bu sınırlamayı aşarsa, lütfen yenilerini oluşturmadan önce önceki istekleri kaldırın. Mevcut istekleri kaldırmazsanız bir hata bildirimi alırsınız.
 
-Kodu şu şekilde `voice_synthesis_client.py`ekleyin:
+Kodu şu şekilde ekleyin `voice_synthesis_client.py` :
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -250,8 +251,8 @@ if args.delete:
 
 Şimdi, daha önce gönderdiğiniz istekleri görmeyi denetlim. Devam etmeden önce, bu istekteki birkaç şeyi güncelleştirmeniz gerekir:
 
-* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<your_key>`Konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<region>`Konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus` ). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
 
 Şu komutu çalıştırın:
 
@@ -270,9 +271,9 @@ ID : xxx , Name : xxx : Succeeded
 
 Şimdi, daha önce gönderilen bir isteği kaldıralım. Aşağıdaki kodda birkaç şeyi güncelleştirmeniz gerekir:
 
-* Konuşma `<your_key>` hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* Konuşma `<region>` kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus`). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
-* Önceki `<synthesis_id>` istekte döndürülen değerle değiştirin.
+* `<your_key>`Konuşma hizmeti abonelik anahtarınızla değiştirin. Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<region>`Konuşma kaynağınızın oluşturulduğu bölgeyle değiştirin (örneğin: `eastus` veya `westus` ). Bu bilgiler, [Azure Portal](https://aka.ms/azureportal)kaynağınızın **genel bakış** sekmesinde bulunabilir.
+* `<synthesis_id>`Önceki istekte döndürülen değerle değiştirin.
 
 > [!NOTE]
 > Durumu ' Running '/' bekliyor ' olan istekler kaldırılamaz veya silinemez.
@@ -292,7 +293,7 @@ delete successful
 
 ## <a name="get-the-full-client"></a>Tam istemciyi al
 
-Tamamlandı `voice_synthesis_client.py` , [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)' da indirilebilir.
+Tamamlandı, `voice_synthesis_client.py` [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py)' da indirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

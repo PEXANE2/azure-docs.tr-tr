@@ -1,6 +1,6 @@
 ---
 title: Azure Lab Services bir eş ağa bağlan | Microsoft Docs
-description: Laboratuvar ağınızı bir eş olarak başka bir ağla bağlamayı öğrenin. Örneğin, şirket içi okulunuzu/üniversite ağınızı Azure 'daki sanal ağ ile birlikte bağlayın.
+description: Laboratuvar ağınızı bir eş olarak başka bir ağla bağlamayı öğrenin. Örneğin, şirket içi kuruluşunuzu/üniversite ağını Azure 'daki sanal ağ ile birlikte, laboratuvar için bağlayın.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 556a32a111149fe5ade3b11fee9c732c935de289
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118371"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592024"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Laboratuvarınızın ağını Azure Lab Services içindeki bir eş sanal ağla bağlayın
 
@@ -46,11 +46,16 @@ Yeni [Laboratuvar hesabı oluşturma](tutorial-setup-lab-account.md)sırasında,
 
 ### <a name="address-range"></a>Adres aralığı
 
-Ayrıca, laboratuvarlara yönelik sanal makineler için **adres aralığı** sağlama seçeneği de vardır.  **Adres aralığı** özelliği yalnızca laboratuvar için **eş sanal ağ** etkinse geçerlidir.  Adres aralığı sağlanmışsa, laboratuvar hesabı kapsamındaki laboratuvarlarda bulunan tüm sanal makineler bu adres aralığında oluşturulur. Adres aralığı CıDR gösteriminde (ör. 10.20.0.0/20) olmalıdır ve mevcut adres aralıklarıyla çakışmaz.  Bir adres aralığı sağlarken, oluşturulacak *laboratuvarların* sayısını göz önünde bulundurmamak ve buna uyum sağlamak için bir adres aralığı sağlamanız gerekir. Laboratuvar Hizmetleri, laboratuvar başına en fazla 512 sanal makine olduğunu varsayar.  Örneğin, '/23 ' olan bir IP aralığı yalnızca bir laboratuvar oluşturabilir.  '/21 ' olan bir Aralık dört laboratuvarın oluşturulmasına olanak sağlar.
+Ayrıca, laboratuvarlara yönelik sanal makineler için **adres aralığı** sağlama seçeneği de vardır.  **Adres aralığı** özelliği yalnızca laboratuvar için bir **eş sanal ağ** etkinse geçerlidir. Adres aralığı sağlanmışsa, laboratuvar hesabı kapsamındaki laboratuvarlarda bulunan tüm sanal makineler bu adres aralığında oluşturulur. Adres aralığı CıDR gösteriminde (örneğin, 10.20.0.0/20) olmalıdır ve var olan adres aralıklarıyla çakışmaz.  Bir adres aralığı sağlarken, oluşturulacak *laboratuvarların* sayısını göz önünde bulundurmamak ve buna uyum sağlamak için bir adres aralığı sağlamanız gerekir. Laboratuvar Hizmetleri, laboratuvar başına en fazla 512 sanal makine olduğunu varsayar.  Örneğin, '/23 ' olan bir IP aralığı yalnızca bir laboratuvar oluşturabilir.  '/21 ' olan bir Aralık dört laboratuvarın oluşturulmasına olanak sağlar.
 
 **Adres aralığı** belirtilmemişse, Laboratuvar Hizmetleri sanal ağınızla ilişkilendirilen sanal ağı oluştururken Azure tarafından verilen varsayılan adres aralığını kullanır.  Aralık genellikle 10. x. 0.0/16 gibi bir şeydir.  Bu, IP aralığı çakışmasına neden olabilir, bu nedenle laboratuvar ayarlarında bir adres aralığı belirttiğinizden emin olun veya sanal ağınızın eşlenmekte olduğu adres aralığını kontrol edin.
 
-## <a name="configure-after-the-lab-is-created"></a>Laboratuvar oluşturulduktan sonra yapılandırma
+> [!NOTE]
+> Laboratuvar hesabı bir sanal ağ ile eşlenirse ancak bir IP adresi aralığına çok dar sahipse Laboratuvar oluşturma başarısız olabilir. Laboratuvar hesabında çok fazla sayıda Labs varsa (her laboratuvar 512 adres kullanıyorsa) adres aralığındaki boş alan tükendirebilirsiniz. 
+> 
+> Laboratuvar oluşturma işlemi başarısız olursa, laboratuvar hesabı sahibine/yöneticinize başvurun ve adres aralığının artırılmasını isteyin. Yönetici, [bir laboratuvar hesabındaki VM 'ler için adres aralığı belirt](#specify-an-address-range-for-vms-in-the-lab-account) bölümünde bahsedilen adımları kullanarak adres aralığını artırabilir. 
+
+## <a name="configure-after-the-lab-account-is-created"></a>Laboratuvar hesabı oluşturulduktan sonra yapılandırma
 
 Laboratuvar hesabı oluşturma sırasında bir eş ağ ayarlamadıysanız, **Laboratuvar hesabı** sayfasının **Labs yapılandırma** sekmesinden aynı özellik etkinleştirilebilir. Bu ayarda yapılan değişiklik yalnızca değişiklikten sonra oluşturulan laboratuvarlara uygulanır. Görüntüde görebileceğiniz gibi, laboratuvar hesabındaki laboratuvarlar için **eş sanal ağı** etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
@@ -60,6 +65,21 @@ Laboratuvar hesabı oluşturma sırasında bir eş ağ ayarlamadıysanız, **Lab
 
 > [!IMPORTANT]
 > Eşlenen sanal ağ ayarı yalnızca değişiklik yapıldıktan sonra oluşturulan Labs için geçerlidir, mevcut laboratuvarlara uygulanmaz.
+
+
+## <a name="specify-an-address-range-for-vms-in-the-lab-account"></a>Laboratuvar hesabındaki VM 'Ler için bir adres aralığı belirtin
+Aşağıdaki yordamda, laboratuvardaki VM 'Ler için bir adres aralığı belirtme adımları vardır. Daha önce belirttiğiniz aralığı güncelleştirirseniz, değiştirilen adres aralığı yalnızca değişiklik yapıldıktan sonra oluşturulan VM 'Ler için geçerlidir. 
+
+Göz önünde bulundurmanız gereken adres aralığını belirtirken bazı kısıtlamalar aşağıda verilmiştir. 
+
+- Ön ek, 23 ' ten küçük veya buna eşit olmalıdır. 
+- Bir sanal ağ, laboratuvar hesabına eşlenirse, belirtilen adres aralığı eşlenen sanal ağın adres aralığıyla çakışamaz.
+
+1. **Laboratuvar hesabı** sayfasında, soldaki menüden **Labs ayarları** ' nı seçin.
+2. **Adres aralığı** alanı için, laboratuvarda oluşturulacak VM 'ler için adres aralığını belirtin. Adres aralığı, sınıfsız etki alanları arası yönlendirme (CıDR) gösteriminde olmalıdır (örnek: 10.20.0.0/23). Laboratuvardaki sanal makineler, bu adres aralığında oluşturulacaktır.
+3. Araç çubuğunda **Kaydet**’i seçin. 
+
+    ![Adres aralığını yapılandır](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

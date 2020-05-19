@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77560907"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593181"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Konuşma Çevirisi API'si konuşma hizmetine geçirme
 
@@ -26,7 +26,7 @@ Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşm
 
 ## <a name="comparison-of-features"></a>Özelliklerin karşılaştırması
 
-| Özellik                                           | Translator Konuşma Çevirisi API’si                                  | Konuşma hizmeti | Ayrıntılar                                                                                                                                                                                                                                                                            |
+| Öne çıkan özelliği                                           | Translator Konuşma Çevirisi API’si                                  | Konuşma hizmeti | Ayrıntılar                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metne çeviri                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Konuşmaya çeviri                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -37,7 +37,7 @@ Uygulamalarınızı Microsoft Translator Konuşma Çevirisi API'si 'den [konuşm
 | Tek bir istekte birden çok dil çevrilmiş | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Kullanılabilir SDK 'lar                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Kullanılabilir SDK 'lar için [konuşma hizmeti belgelerine](index.yml) bakın.                                                                                                                                                    |
 | WebSockets bağlantıları                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Diller API 'SI                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Konuşma hizmeti, [Translator API dilleri başvuru](../translator-speech/languages-reference.md) makalesinde açıklanan dil aralığını destekler. |
+| Diller API 'SI                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Konuşma hizmeti, [Çevirmen dilleri başvuru](../translator-speech/languages-reference.md) makalesinde açıklanan dil aralığını destekler. |
 | Küfür filtresi ve Işaretleyici                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | . Girdi olarak WAV/PCM                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Giriş olarak diğer dosya türleri                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -55,7 +55,7 @@ Siz veya kuruluşunuzun Translator Konuşma Çevirisi API'si kullanan geliştirm
 
 * Uygulamanız uzun süreli bağlantılar kullanıyorsa ve kullanılabilir SDK 'Ları kullanamıyoruz, bir WebSockets bağlantısı kullanabilirsiniz. 10 dakikalık zaman aşımı sınırını uygun saatlere yeniden bağlanarak yönetin.
 
-* Uygulamanız özel çeviri modellerini etkinleştirmek için Translator Metin Çevirisi API'si ve Translator Konuşma Çevirisi API'si kullanıyorsa, konuşma hizmetini kullanarak kategori kimliklerini doğrudan ekleyebilirsiniz.
+* Uygulamanız Translator hizmetini kullanıyorsa ve özel çeviri modellerini etkinleştirmek için Translator Konuşma Çevirisi API'si, konuşma hizmetini kullanarak doğrudan kategori kimliklerini ekleyebilirsiniz.
 
 * Translator Konuşma Çevirisi API'si farklı olarak, konuşma hizmeti çevirileri tek bir istekte birden fazla dile tamamlayabilir.
 

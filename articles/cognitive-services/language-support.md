@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530990"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592160"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için doğal dil desteği
 
@@ -24,11 +24,11 @@ Azure bilişsel hizmetler, kullanıcılarınızı görmenizi, duymasını, konu�
 Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamalar içermez.
 
 * [Anomali Algılayıcısı (Önizleme)](./anomaly-detector/index.yml)
-* [Özel Görüntü](./Custom-Vision-Service/index.yml)
-* [Yüz](./face/index.yml)
+* [Özel Görüntü İşleme](./Custom-Vision-Service/index.yml)
+* [Yüz Tanıma](./face/index.yml)
 * [Kişiselleştirme](./personalizer/index.yml)
 
-## <a name="vision"></a>Görsel
+## <a name="vision"></a>Vision
 
 * [Görüntü İşleme](./computer-vision/language-support.md)
 * [Form Tanıma (Önizleme)](./form-recognizer/language-support.md)
@@ -41,7 +41,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
 * [Soru-Cevap Oluşturucu](./qnamaker/overview/languages-supported.md)
 * [Metin Analizi](./text-analytics/text-analytics-supported-languages.md)
-* [Translator Metin Çevirisi](./translator/languages.md)
+* [Translator](./translator/languages.md)
 
 ## <a name="speech"></a>Konuşma
 
@@ -49,7 +49,7 @@ Bu bilişsel hizmetler dilden bağımsızdır ve insan diline göre sınırlamal
 * [Konuşma hizmeti: metinden konuşmaya](./speech-service/supported-languages.md#text-to-speech)
 * [Konuşma hizmeti: konuşma çevirisi](./speech-service/supported-languages.md#speech-translation)
 
-## <a name="search"></a>Arama
+## <a name="search"></a>Arayın
 
 * [Bing Özel Arama](./bing-custom-search/supported-countries-markets.md)
 * [Bing Resim Arama](./bing-image-search/supported-countries-markets.md)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77592229"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591786"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -32,14 +32,14 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Laboratuvar için zamanlamayı ayarla
 > * Öğrenciye davetiye e-postası gönder
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide, sınıfınız için sanal makinelerle bir laboratuvar ayarlarsınız. Laboratuvar hesabında bir derslik Laboratuvarı ayarlamak için laboratuvar hesabındaki şu rollerden birine üye olmanız gerekir: sahip, laboratuvar Oluşturucusu veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir. Bu nedenle, bir sınıf laboratuvarı oluşturmak için laboratuvar hesabı oluşturmak için kullandığınız kullanıcı hesabını kullanabilirsiniz. 
 
 Azure Lab Services kullanırken tipik iş akışı aşağıda verilmiştir:
 
-1. Laboratuvar hesabı Oluşturucusu, diğer kullanıcıları **Laboratuvar Oluşturucu** rolüne ekler. Örneğin, laboratuvar hesabı oluşturan/yönetici, kendi sınıfları için laboratuvarları oluşturabilmeleri için **Laboratuvar Oluşturucu** rolüne mesleler ekler. 
-2. Daha sonra, mesleler, sınıfları için VM 'Ler ile Labs oluşturur ve sınıftaki öğrencilerle kayıt bağlantıları gönderir. 
-3. Öğrenciler, mesleler tarafından laboratuvara kaydolmak için aldıkları kayıt bağlantısını kullanır. Kaydolduktan sonra, iş ve ev işlerini yapmak için laboratuvarlarda VM 'Leri kullanabilirler. 
+1. Laboratuvar hesabı Oluşturucusu, diğer kullanıcıları **Laboratuvar Oluşturucu** rolüne ekler. Örneğin, laboratuvar hesabı oluşturan/yönetici laboratuvar **Oluşturucu** rolüne eğitimciler ekler; böylece, sınıfları için laboratuvarları oluşturabilirler. 
+2. Daha sonra eğitimciler, kendi sınıfları için VM 'Ler ile Labs oluşturma ve sınıftaki öğrencilerle kayıt bağlantıları gönderme. 
+3. Öğrenciler, eğitimciler 'tan, laboratuvara kaydolmak için aldıkları kayıt bağlantısını kullanır. Kaydolduktan sonra, iş ve ev işlerini yapmak için laboratuvarlarda VM 'Leri kullanabilirler. 
 
 ## <a name="create-a-classroom-lab"></a>Sınıf laboratuvarı oluşturma
 Bu adımda, Azure 'da sınıfınız için bir laboratuvar oluşturacaksınız. 
@@ -151,7 +151,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 1. **E-postaya davet gönder** sayfasında, isteğe bağlı bir ileti girin ve ardından **Gönder**' i seçin. E-posta otomatik olarak kayıt bağlantısını içerir. Bu kayıt bağlantısını,... öğesini seçerek alabilirsiniz **. (üç nokta)** araç çubuğunda ve **kayıt bağlantısı**. 
 
     ![Kayıt bağlantısını e-posta ile gönder](../media/tutorial-setup-classroom-lab/send-email.png)
-4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **tarihinde gönderilmek üzere ve sonrasında** **gönderilmesi &lt;&gt;** için değişmelidir. 
+4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **tarihinde gönderilmek üzere ve sonrasında** **gönderilmesi &lt; &gt; **için değişmelidir. 
 
     Bir sınıfa öğrenci ekleme ve laboratuvarın kullanımını yönetme hakkında daha fazla bilgi için bkz. [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).
 

@@ -3,22 +3,22 @@ title: Azure Lab Services-destek bilgilerini ayarlama (Laboratuvar hesabı sahib
 description: Laboratuvar hesabı sahibinin destek iletişim bilgilerini nasıl ayarlayabileceğinizi açıklar. Laboratuvar oluşturucuları ve laboratuar kullanıcıları, yardım almak için görüntüleyebilir ve kullanabilir.
 author: spelluru
 ms.author: spelluru
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: f387e6b8832d8e7144b8338a3fc887b6b27db789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a37a4b87b7efe1fc3f3c08824da01e83cbb660
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109348"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592415"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Destek bilgilerini ayarlama (Azure Lab Services laboratuvar hesabı sahibi)
-Bu makalede, laboratuvar hesabı veya Laboratuvarı kullanma ile ilgili herhangi bir teknik sorun yaşınızda yardım almak için laboratuvar oluşturucuları (eğitmenler) ve laboratuvar kullanıcıları (öğrenciler) tarafından kullanılabilecek destek bilgilerini nasıl belirtebileceğiniz açıklanmaktadır (Laboratuvar hesabı sahibi olarak) açıklanır. 
+Bu makalede, laboratuvar veya laboratuvar kullanımıyla ilgili herhangi bir teknik sorun yaşınızda yardım almak için laboratuvar oluşturucuları (eğitimciler) ve laboratuvar kullanıcıları (öğrenciler) tarafından kullanılabilecek destek bilgilerini nasıl belirtebileceğiniz açıklanmaktadır (Laboratuvar hesabı sahibi olarak) açıklanır. 
 
 Destek bilgileri şunları içerir:
 
-- URL'si
+- URL
 - E-posta
 - Telefon
 - Ek yönergeler 

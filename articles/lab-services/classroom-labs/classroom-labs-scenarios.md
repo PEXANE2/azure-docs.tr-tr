@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 26caebafc7c147452decbb28e313513072d7511b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115124"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592058"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Ders laboratuvarları kullanma
-Azure Labs hizmetleri, mesleler, tracılar veya öğretim yardımcılarının, daha önceden yapılandırılmış öğrenme ortamları sağlamak için hızlı ve kolay bir şekilde çevrimiçi laboratuvar oluşturmalarına olanak tanır. Her bir eğitimin eğitim için aynı ve yalıtılmış ortamları kullanabiliyor. Bu ilkeler, eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir şekilde kullanılabilir olmasını sağlamak için uygulanabilir. 
+Azure Labs hizmetleri, eğitimciler (öğretmenler, mesleler, tramacılar veya eğitim yardımcıları vb.) sayesinde, daha önceden yapılandırılmış öğrenme ortamları sağlamak için hızlı ve kolay bir şekilde çevrimiçi laboratuvar oluşturabilir. Her bir eğitimin eğitim için aynı ve yalıtılmış ortamları kullanabiliyor. Bu ilkeler, eğitim ortamlarının yalnızca ihtiyaç duydukları ve sanal makineler gibi yeterli kaynak (eğitim için gerekli) içermesi durumunda her bir şekilde kullanılabilir olmasını sağlamak için uygulanabilir. 
 
 ![Sınıf Laboratuvarı](../media/classroom-labs-scenarios/classroom.png)
 
@@ -37,10 +37,10 @@ Derslik Labs, herhangi bir sanal ortamda eğitim yapmak için gereken aşağıda
 Bu makalede, daha önce açıklanan eğitim gereksinimlerini karşılamak için kullanılabilecek çeşitli Azure Lab Services özellikleri ve eğitim için bir laboratuvar kurmak için izleyebileceğiniz ayrıntılı adımları öğreneceksiniz.  
 
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Laboratuvar hesabını laboratuvar hesabı Yöneticisi olarak oluşturma
-Azure Lab Services kullanmanın ilk adımı Azure portal laboratuvar hesabı oluşturmaktır. Laboratuvar hesabı Yöneticisi laboratuvar hesabını oluşturduktan sonra, yönetici, **Laboratuvar Oluşturucu** rolüne Labs oluşturmak isteyen kullanıcıları ekler. Eğitiçler, öğrenciler için sanal makinelerle birlikte laboratuvarları oluşturarak eğitim aldıkları kursa yönelik alıştırmaları yapabilirler. Ayrıntılar için bkz. [Laboratuvar hesabı oluşturma ve yönetme](how-to-manage-lab-accounts.md).
+Azure Lab Services kullanmanın ilk adımı Azure portal laboratuvar hesabı oluşturmaktır. Laboratuvar hesabı Yöneticisi laboratuvar hesabını oluşturduktan sonra, yönetici, **Laboratuvar Oluşturucu** rolüne Labs oluşturmak isteyen kullanıcıları ekler. Eğitimciler, öğrenciler için sanal makinelere sahip laboratuvarları, öğretme Kursu için alıştırmaları yapması için oluşturur. Ayrıntılar için bkz. [Laboratuvar hesabı oluşturma ve yönetme](how-to-manage-lab-accounts.md).
 
 ## <a name="create-and-manage-classroom-labs"></a>Sınıf laboratuvarları oluşturma ve yönetme
-Laboratuvar hesabındaki laboratuvar Oluşturucu rolünün bir üyesi olan bir Trainer, laboratuvar hesabında bir veya daha fazla Laboratuvarı oluşturabilir. Kursta alýþtýrmalarý gerçekleştirmek için gerekli tüm yazılımlarla bir şablon VM 'si oluşturup yapılandırırsınız. Bir sınıf laboratuvarı oluşturmak için kullanılabilir görüntülerden kullanıma hazır bir görüntü seçer ve ardından Laboratuvar için gereken yazılımı yükleyerek özelleştirebilirsiniz. Ayrıntılar için bkz. [sınıf laboratuvarları oluşturma ve yönetme](how-to-manage-classroom-labs.md).
+Laboratuvar hesabındaki laboratuvar Oluşturucu rolünün bir üyesi olan bir eğitimci, laboratuvar hesabında bir veya daha fazla Laboratuvarı oluşturabilir. Kursta alýþtýrmalarý gerçekleştirmek için gerekli tüm yazılımlarla bir şablon VM 'si oluşturup yapılandırırsınız. Bir sınıf laboratuvarı oluşturmak için kullanılabilir görüntülerden kullanıma hazır bir görüntü seçer ve ardından Laboratuvar için gereken yazılımı yükleyerek özelleştirebilirsiniz. Ayrıntılar için bkz. [sınıf laboratuvarları oluşturma ve yönetme](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Kullanım ayarlarını ve ilkeleri yapılandırma
 Laboratuvar Oluşturucu, laboratuvar kullanıcılarına kullanıcı ekleyebilir veya kaldırabilir, laboratuvar kullanıcılarına göndermek için kayıt bağlantısını alabilir, Kullanıcı başına ayrı kotalar ayarlama, laboratuvardaki kullanılabilir sanal makine sayısını güncelleştirme ve daha fazlası gibi ilkeler ayarlama. Ayrıntılar için bkz. [kullanım ayarlarını ve Ilkeleri yapılandırma](how-to-configure-student-usage.md).

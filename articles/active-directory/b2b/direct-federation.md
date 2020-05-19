@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591225"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 |     |
@@ -146,7 +146,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Azure AD portalında doğrudan Federasyonu yapılandırmak için
 
 1. [Azure Portal](https://portal.azure.com/)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Organizational Relationships**  >  **Tüm kimlik sağlayıcılarının** (veya **dış kimliklerin**  >  **tüm kimlik sağlayıcılarının**) kuruluş ilişkilerini seçin.
+2. **Dış kimlikler**  >  **tüm kimlik sağlayıcıları**' nı seçin.
 3. Öğesini seçin ve ardından **yenı SAML/WS-Besıop**' ı seçin.
 
     ![Yeni SAML veya WS-Besıop ekleme düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp.png)
@@ -194,7 +194,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Doğrudan bir Federasyon ilişkisini Nasıl yaparım? mi düzenleyin?
 
 1. [Azure Portal](https://portal.azure.com/)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcılarını** Seç
 4. **SAML/WS-beslik kimlik sağlayıcıları**altında sağlayıcıyı seçin.
 5. Kimlik sağlayıcısı ayrıntıları bölmesinde değerleri güncelleştirin.
@@ -205,7 +205,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 Doğrudan Federasyon kurulumunuzu kaldırabilirsiniz. Bunu yaparsanız, doğrudan davetlerini daha önce kullanan Federasyon Konuk kullanıcıları oturum açamaz. Ancak onları dizinden silerek ve yeniden davet ederek kaynaklarınıza erişim izni verebilirsiniz. Azure AD portalındaki bir kimlik sağlayıcısıyla doğrudan Federasyonu kaldırmak için:
 
 1. [Azure Portal](https://portal.azure.com/)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcılarını**seçin.
 4. Kimlik sağlayıcısını seçin ve **Sil**' i seçin. 
 5. Silmeyi onaylamak için **Evet** ' i seçin. 

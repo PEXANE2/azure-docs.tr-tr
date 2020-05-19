@@ -10,24 +10,24 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879250"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592908"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUSıS) kapsayıcı sınırlamaları
 
 LUıN kapsayıcıları bazı önemli sınırlamalara sahiptir. Desteklenmeyen bağımlılıklardan, desteklenen dillerin bir alt kümesine, bu makalede bu kısıtlamalar ayrıntılı olarak anlatılmaktadır.
 
-## <a name="supported-dependencies-for-latest-container"></a>Kapsayıcı için `latest` desteklenen bağımlılıklar
+## <a name="supported-dependencies-for-latest-container"></a>Kapsayıcı için desteklenen bağımlılıklar `latest`
 
-[Nbuild/2019](https://news.microsoft.com/build2019/)tarihinde yayınlanan en son Lua kapsayıcısı şunları destekleyecektir:
+En son LUSıS kapsayıcısı şunları destekler:
 
 * [Yeni önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md): Bu kurumsal odaklı etki alanları varlıklar, örnek söylerin ve desenleri içerir. Bu etki alanlarını kendi kullanım için genişletin.
 
-## <a name="unsupported-dependencies-for-latest-container"></a>Kapsayıcı için `latest` desteklenmeyen bağımlılıklar
+## <a name="unsupported-dependencies-for-latest-container"></a>Kapsayıcı için desteklenmeyen bağımlılıklar `latest`
 
 [Kapsayıcıyı dışarı aktarmak](luis-container-howto.md#export-packaged-app-from-luis)IÇIN, lusıs uygulamanızdan desteklenmeyen bağımlılıkları kaldırmanız gerekir. Kapsayıcıyı dışarı aktarmaya çalıştığınızda, Lua portalı, kaldırmanız gereken bu desteklenmeyen özellikleri raporlar.
 
@@ -35,9 +35,9 @@ Aşağıdaki bağımlılıklardan herhangi birini **içermiyorsa** bir Luo uygul
 
 Desteklenmeyen uygulama yapılandırması|Ayrıntılar|
 |--|--|
-|Desteklenmeyen kapsayıcı kültürleri| Felemenkçe (`nl-NL`)<br>Japonca (`ja-JP`)<br>Almanca yalnızca [1.0.2 belirteç ayırıcı](luis-language-support.md#custom-tokenizer-versions)ile desteklenir.|
+|Desteklenmeyen kapsayıcı kültürleri| Felemenkçe ( `nl-NL` )<br>Japonca ( `ja-JP` )<br>Almanca yalnızca [1.0.2 belirteç ayırıcı](luis-language-support.md#custom-tokenizer-versions)ile desteklenir.|
 |Tüm kültürler için desteklenmeyen varlıklar|Tüm kültürler için [KeyPhrase](luis-reference-prebuilt-keyphrase.md) önceden oluşturulmuş varlık|
-|Ingilizce (`en-US`) kültürü için desteklenmeyen varlıklar|[GeographyV2](luis-reference-prebuilt-geographyV2.md) önceden oluşturulmuş varlıklar|
+|Ingilizce () kültürü için desteklenmeyen varlıklar `en-US`|[GeographyV2](luis-reference-prebuilt-geographyV2.md) önceden oluşturulmuş varlıklar|
 |Konuşma primi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|
 |Yaklaşım analizi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|
 |Bing yazım denetimi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|

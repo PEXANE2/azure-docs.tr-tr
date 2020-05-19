@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 548cacfb76aba9093a59a5c87525d038558bf353
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115056"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592636"
 ---
 # <a name="classroom-labs-concepts"></a>Sınıf Laboratuvarları kavramları
 
@@ -26,13 +26,13 @@ Aşağıdaki liste, Temel Laboratuvar Hizmetleri kavramlarını ve tanımların�
 
 ## <a name="quota"></a>Kota
 
-Kota, bir öğrencinin bir laboratuvar VM 'si kullanabilmesi için bir öğretmen tarafından ayarlanabildiğinden zaman sınırı (saat cinsinden). 0 veya belirli bir saat kadar ayarlanabilir. Kota 0 olarak ayarlandıysa, bir öğrenci yalnızca bir zamanlama çalışırken veya bir öğretmen, öğrenci için sanal makineyi el ile açtığında sanal makineyi kullanabilir.  
+Kota, bir eğitimci için bir öğrenciye bir laboratuvar VM 'si kullanacak şekilde ayarlayabileceğiniz zaman sınırı (saat cinsinden). 0 veya belirli bir saat kadar ayarlanabilir. Kota 0 olarak ayarlandıysa, bir öğrenci yalnızca bir zamanlama çalışırken veya bir eğitimci sanal makinesini öğrenci için el ile açtığında sanal makineyi kullanabilir.  
 
-Öğrenci laboratuvar VM 'sini başlattığında kota saatleri sayılır.  Bir öğretmen, bir öğrenci için laboratuvar VM 'sini el ile başlattığında, bu öğrenci için kota saatleri kullanılmaz.
+Öğrenci laboratuvar VM 'sini başlattığında kota saatleri sayılır.  Bir eğitimci sanal makinesini bir öğrenci için el ile başlarsa, bu öğrenci için kota saatleri kullanılmaz.
 
 ## <a name="schedules"></a>Zamanlamalar
 
-Zamanlamalar, bir öğretmenin sınıf için oluşturabileceğiniz zaman yuvaları, bu nedenle öğrenci VM 'lerinin sınıf zamanı için kullanılabilir olmasını sağlayabilir.  Zamanlamalar bir kerelik veya yinelenen olabilir.  Bir zamanlama çalışırken kota saatleri kullanılmaz.
+Zamanlamalar, öğrenci VM 'lerinin sınıf zamanı için kullanılabilmesi için bir eğitimci tarafından sınıf için oluşturabileceğiniz zaman yuvalardır.  Zamanlamalar bir kerelik veya yinelenen olabilir.  Bir zamanlama çalışırken kota saatleri kullanılmaz.
 
 Üç tür zamanlama vardır: Standart, yalnızca Başlat ve yalnızca durdur.
 
@@ -56,7 +56,7 @@ Genellikle, kuruluşun Azure aboneliğinin sahibi olan bulut kaynakları için B
 - Tüm laboratuvarlardaki ilkeleri yönetir ve yapılandırır.
 - Kuruluştaki kişilere laboratuvar hesabı altında laboratuvar oluşturma izinleri verir.
 
-### <a name="professor"></a>Öğretim
+### <a name="educator"></a>Eğitimci
 
 Normalde, öğretmen veya çevrimiçi eğitimci gibi kullanıcılar sınıf laboratuvarlarını bir laboratuvar hesabı altında oluşturur. Eğitimci aşağıdaki görevleri yerine getirir:
 

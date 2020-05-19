@@ -2,34 +2,29 @@
 title: Uygulama ayarları-LUSıS
 description: Azure bilişsel hizmetler dil dilleri uygulamaları için uygulama ayarları, uygulama ve portalda depolanır.
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382196"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591003"
 ---
-# <a name="application-settings"></a>Uygulama ayarları
+# <a name="app-and-version-settings"></a>Uygulama ve sürüm ayarları
 
-Bu uygulama ayarları, [dışarıya](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) kaydedilen uygulamada DEPOLANıR ve REST API 'leri ile [güncelleştirilir](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) . Uygulama sürümü ayarlarınızı değiştirmek, uygulama eğitim durumunuzu eğitilen olarak sıfırlar.
+Bu ayarlar, [dışarıya](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) kaydedilen uygulamada DEPOLANıR ve REST API 'leri ya da LUIS portalı ile güncelleştirilir.
 
-Aksanların ve noktalama işaretlerinin [kavramlarını](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) öğrenin.
+Uygulama sürümü ayarlarınızı değiştirmek, uygulama eğitim durumunuzu eğitilen olarak sıfırlar.
 
-|Ayar|Varsayılan değer|Notlar|
-|--|--|--|
-|Normalizenoktalama|True|Noktalama işaretlerini kaldırır.|
-|Normalizediacritika|True|Aksanları kaldırır.|
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+
+
+Metin başvurusu ve örnekleri şunları içerir:
+
+* [Noktalama işaretleri](#punctuation-normalization)
+* [İşaretlerini](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>Aksanların normalleştirilmesi
-
-`settings` Parametresindeki lusıs JSON uygulama dosyanıza Aksanlar için söylenişi normalleştirmesini açın.
-
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
 
 Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği gösterilmektedir:
 
@@ -75,7 +70,7 @@ Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği g
 |`ü`|`u`|
 |||
 
-#### <a name="french-fr--diacritics"></a>Fransızca `fr-` aksanlar
+#### <a name="french-fr--diacritics"></a>Fransızca `fr-` Aksanlar
 
 Bu hem Fransızca hem de Kanada alt kültürlerini içerir.
 
@@ -104,7 +99,7 @@ Bu hem Fransızca hem de Kanada alt kültürlerini içerir.
 |`ö`|`o`|
 |`ü`|`u`|
 
-#### <a name="italian-it-it-diacritics"></a>İtalyanca `it-it` aksanlar
+#### <a name="italian-it-it-diacritics"></a>İtalyanca `it-it` Aksanlar
 
 |Aksanların değeri false olarak ayarlandı|Aksanların değeri true olarak ayarlandı|
 |--|--|
@@ -119,7 +114,7 @@ Bu hem Fransızca hem de Kanada alt kültürlerini içerir.
 |`ù`|`u`|
 |`ú`|`u`|
 
-#### <a name="spanish-es--diacritics"></a>İspanyolca `es-` aksanlar
+#### <a name="spanish-es--diacritics"></a>İspanyolca `es-` Aksanlar
 
 Buna hem İspanyolca hem de Kanada Meksika dahildir.
 
@@ -133,16 +128,7 @@ Buna hem İspanyolca hem de Kanada Meksika dahildir.
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>Noktalama normalleştirmesi
-
-Noktalama işaretleri için, `settings` parametresindeki halın JSON uygulama dosyanıza noktalama işareti normalleştirmesini açın.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-]
-```
 
 Aşağıdaki noktalamalar, noktalama işaretlerinin nasıl etkilediğini göstermektedir:
 

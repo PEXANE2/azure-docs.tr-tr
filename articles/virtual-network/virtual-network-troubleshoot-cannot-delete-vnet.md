@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c2152b872c82c224c786e56db0318c9df994ac25
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 2a64f42c8672972939bb2870ba40876e5cc8d855
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801595"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591956"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Sorun giderme: Azure 'da bir sanal ağ silinemedi
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=a13a0908-28e0-f9f7-c6c7-301fcd187560" target='_blank'>Start</a></span><span class="has-padding-small"> <b>Otomatikleştirilmiş tanılamayı</b> çalıştırmak için sanal aracımızı kullanarak sorununuzu hızlı bir şekilde çözmeyi başlatın.</span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Gizlilik <div align="right">bildirimi</div></a></span></p>
-Microsoft Azure bir sanal ağı silmeye çalıştığınızda hata alabilirsiniz. Bu makalede, bu sorunu çözmenize yardımcı olacak sorun giderme adımları sunulmaktadır. 
+
+Microsoft Azure bir sanal ağı silmeye çalıştığınızda hata alabilirsiniz. Bu makalede, bu sorunu çözmenize yardımcı olacak sorun giderme adımları sunulmaktadır.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -92,5 +92,5 @@ Sanal ağ bir geçiş durumunda takıldığında, silinemez. Geçişi durdurmak 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Sanal Ağ](virtual-networks-overview.md)
+- [Azure sanal ağı](virtual-networks-overview.md)
 - [Azure Sanal Ağ hakkında sık sorulan sorular (SSS)](virtual-networks-faq.md)

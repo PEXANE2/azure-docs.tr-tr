@@ -2,16 +2,16 @@
 title: Sık sorulan sorular (SSS)-LUSıS
 description: Bu makale Language Understanding (LUO) hakkında sık sorulan soruların yanıtlarını içerir.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101119"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592857"
 ---
-# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding sık sorulan sorular (SSS)
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding ile ilgili Sık Sorulan Sorular (SSS)
 
 Bu makale Language Understanding (LUO) hakkında sık sorulan soruların yanıtlarını içerir.
 
@@ -66,7 +66,7 @@ Bir LUO uygulamasını farklı bir Azure aboneliğine aktarmak için, Luo uygula
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Önceden oluşturulmuş bir varlık özel varlığım yerine örnek bir şekilde etiketlidir. Bu Nasıl yaparım? düzeltilsin mi?
 
-Luu portalında, ayıklama işlemi sırasında ilgilendiğiniz tam varlığın metnini etiketleyebilir. Lua portalı doğru varlık tahminini göstermiyorsa, daha fazla işlem eklemeniz ve varlığın metin içinde etiketlenmesi veya bir tanımlayıcı eklemeniz (örn. bir özellik gibi) gerekebilir.
+Luu portalında, ayıklama işlemi sırasında ilgilendiğiniz tam varlığın metnini etiketleyebilir. Lua portalı doğru varlık tahminini göstermiyorsa, daha fazla işlem eklemeniz ve varlığı metin içinde etiketleyip bir özellik eklemeniz gerekebilir.
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Bir uygulama veya sürüm dosyasını içeri aktarmaya çalıştım, ancak bir hata oluştu, ne oldu?
 
@@ -189,7 +189,7 @@ Bkz. [tüm verilerle eğitme](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>Uygulama yayımlama
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>"Uygulamanıza anahtar ekleme" penceresinde kiracı KIMLIĞI nedir?
-Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. Azure Portal, **dizin kimliği** kutusundaki **Azure Active Directory** > **Manage** > **özellikleri**Yönet ' i seçerek kiracı kimliğinizi bulun.
+Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. Azure Portal, **dizin kimliği** kutusundaki **Azure Active Directory**  >  **Manage**  >  **özellikleri**Yönet ' i seçerek kiracı kimliğinizi bulun.
 
 ![Azure portal Kiracı KIMLIĞI](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -216,7 +216,7 @@ Daha fazla bilgi edinmek için bkz. HTTP durum kodu [403](#i-received-an-http-40
 
 Daha fazla bilgi edinmek için bkz. HTTP durum kodu [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) ve [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) .
 
-### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Bir yazma anahtarı oluşturdum, ancak bu, LUı portalında gösterilmiyor. Ne oldu?
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Bir yazma anahtarı oluşturdum, ancak bu, LUı portalında gösterilmiyor. Neler oldu?
 
 Yazma [anahtarı deneyimine](luis-migration-authoring.md)geçtikten sonra, yazma anahtarları Luo portalında kullanılabilir.
 
@@ -226,7 +226,7 @@ Yazma [anahtarı deneyimine](luis-migration-authoring.md)geçtikten sonra, yazma
 Varsayılan olarak, LUSıS uygulamanız kullanıcılardan gelen günlükleri günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım**' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar**' ı seçin. Günlük, virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Utterslar günlüğünü nasıl devre dışı bırakabilirim?
-İstemci uygulamanızın LUL 'yi sorgulamak için kullandığı uç nokta URL 'SI ayarını `log=false` yaparak Kullanıcı çeşidlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. Veri gizliliği sorunları `log=false` nedeniyle ayarlarsanız, bu kullanıcı aradıklarından BIR kaydını lusıs 'den indiremez veya uygulamanızı geliştirmek için bu söyleyenler kullanabilirsiniz.
+`log=false`İstemci UYGULAMANıZıN LUL 'yi sorgulamak için kullandığı uç nokta URL 'si ayarını yaparak Kullanıcı çeşidlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. `log=false`Veri gizliliği sorunları nedeniyle ayarlarsanız, bu kullanıcı aradıklarından bir KAYDıNı lusıs 'den indiremez veya uygulamanızı geliştirmek için bu söyleyenler kullanabilirsiniz.
 
 Günlüğe kaydetme, tek tek depolamadaki depodır.
 
@@ -271,7 +271,7 @@ Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure bot hizmetinde sorunu çözme
 
-Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** dönüşse `Sorry, my bot code is having an issue`, günlüklerinizi kontrol edin:
+Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** dönüşse, `Sorry, my bot code is having an issue` günlüklerinizi kontrol edin:
 
 1. Azure portal, bot için, **bot yönetimi** bölümünde **Oluştur**' u seçin.
 1. Çevrimiçi kod düzenleyicisini açın.

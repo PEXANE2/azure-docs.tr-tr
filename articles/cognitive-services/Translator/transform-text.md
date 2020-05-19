@@ -1,7 +1,7 @@
 ---
-title: Metni Dönüştür-Translator Metin Çevirisi API'si
+title: Dönüştürme metni-Translator
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si kullanarak metni dönüştürün.
+description: Çeviriciyi kullanarak metin dönüştürün.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68594901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592211"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText yöntemini kullanma
 
 > [!NOTE]
-> Bu yöntem kullanım dışıdır. Translator Metin Çevirisi API'si V 3.0 sürümünde kullanılamaz.
+> Bu yöntem kullanım dışıdır. Bu, çeviricisinin V 3.0 sürümünde kullanılamaz.
 
 TransformText yöntemi, bir sosyal medya için bir metin normalleştirme işlevidir ve bu, girişin normalleştirilmiş bir biçimini döndürür. Yöntemi, makine çevirisi veya Kullanıcı tarafından oluşturulan içeriklerde genellikle bulunmayan Temizleme giriş metnini bekleyen diğer uygulamalar için bir ön işleme adımı olarak kullanılabilir. İşlev şu anda yalnızca Ingilizce girişle çalışır.
 

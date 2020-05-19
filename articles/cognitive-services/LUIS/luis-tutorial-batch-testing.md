@@ -2,13 +2,13 @@
 title: 'Öğretici: sorunları bulmak için Batch testi-LUSıS'
 description: Bu öğreticide, Language Understanding (LUSıS) uygulamanızın kalitesini doğrulamak için Batch test kullanımı gösterilmektedir.
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250529"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592602"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Öğretici: Batch test veri kümeleri
 
@@ -24,7 +24,7 @@ Batch test gereksinimleri:
 
 Bu öğreticiden başka bir uygulama kullanırken, uygulamanıza zaten eklenmiş olan örnek utbotları *kullanmayın.*
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -37,11 +37,13 @@ Bu öğreticiden başka bir uygulama kullanırken, uygulamanıza zaten eklenmiş
 
 ## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
 
-Gibi bir pizza sırası alan bir uygulamayı içeri aktarın `1 pepperoni pizza on thin crust`.
+Gibi bir pizza sırası alan bir uygulamayı içeri aktarın `1 pepperoni pizza on thin crust` .
 
 1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) indirip kaydedin.
 
-1. [ÖNIZLEME Luo portalını](https://preview.luis.ai/)kullanın, JSON 'u yeni bir uygulamaya aktarın, uygulamayı `Pizza app`adlandırın.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. JSON 'u yeni bir uygulamaya aktarın, uygulamayı adlandırın `Pizza app` .
+
 
 1. Uygulamayı eğitebilmeniz için, gezinmede sağ üst köşedeki **eğitme** ' yi seçin.
 
@@ -55,7 +57,7 @@ Testleri amaç ve/veya varlığa göre ayırabilir veya aynı dosyadaki tüm tes
 
 JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için etiketlenmiş bir varlığa sahip bir söylenişi içerir. Kendi testlerinizde, doğru amaç ve makine tarafından öğrenilen varlık etiketli birçok kullanım sahibi olmanız gerekir.
 
-1. Bir `pizza-with-machine-learned-entity-test.json` metin düzenleyicisinde oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
+1. `pizza-with-machine-learned-entity-test.json`Bir metin düzenleyicisinde oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
 
 2. JSON biçimli toplu iş dosyasında, testte tahmin etmek istediğiniz **amacı** içeren bir söylenişi ekleyin.
 
@@ -72,9 +74,9 @@ JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için e
     > [!div class="mx-imgBorder"]
     > ![Içeri aktarma veri kümesi vurgulanmış LUSıS uygulamasının ekran görüntüsü](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
-4. `pizza-with-machine-learned-entity-test.json` Dosyanın dosya konumunu seçin.
+4. Dosyanın dosya konumunu seçin `pizza-with-machine-learned-entity-test.json` .
 
-5. Veri kümesini `pizza test` adlandırın ve **bitti**' yi seçin.
+5. Veri kümesini adlandırın `pizza test` ve **bitti**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Dosya Seç](./media/luis-tutorial-batch-testing/import-dataset-modal.png)

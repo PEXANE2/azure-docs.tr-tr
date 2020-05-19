@@ -1,5 +1,5 @@
 ---
-title: Tanımlayıcılar-LUSıS
+title: Özellikler-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Bu kategorilerin ve desenlerin ve varlıklarının kullanımını ve tahminini iyileştirebilecek uygulama özellikleri eklemek için Language Understanding (LUO) kullanın
 services: cognitive-services
@@ -9,53 +9,49 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 7560fdcbfc77ea2655e8af641794478ead4c11c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80631460"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592313"
 ---
-# <a name="use-descriptors-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için tanımlayıcıları kullanın
+# <a name="use-features-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için özellikleri kullanın
 
 Doğruluğunu artırmak için LUSıS uygulamanıza özellikler ekleyebilirsiniz. Özellikler, belirli sözcüklerin ve deyimlerin bir uygulama etki alanı sözlüğü 'nün parçası olduğunu gösteren ipuçları sunarak LUYA yardımcı olur.
 
-Bir [tanımlayıcı](luis-concept-feature.md) (tümcecik listesi), aynı sınıfa ait olan ve benzer şekilde (örneğin, şehirlerin veya ürünlerin adları) bir grup değer (sözcükler veya ifadeler) içerir. Bunlardan biri hakkında ne tür bir saldırgan, diğerlerine de otomatik olarak uygulanır. Bu liste, eşleşen sözcüklerin bir [liste varlığıyla](reference-entity-list.md) (tam metin eşleşmeleri) aynı şey değildir.
+Bir özelliğin ne zaman ve neden kullanılacağını anlamak için [kavramları](luis-concept-feature.md) gözden geçirin.
 
-Bir tanımlayıcı, bu kelimeyle ilgili ikinci bir sinyal olarak uygulama etki alanının sözlüğüne ekler.
+## <a name="add-phrase-list-as-a-feature"></a>Özellik olarak tümcecik listesi ekleme
 
-Bir tanımlayıcının ne zaman ve neden kullanılacağını anlamak için [özellik kavramlarını](luis-concept-feature.md) gözden geçirin.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
+1. **Oluştur**' u ve ardından uygulamanızın sol panelinden **Özellikler** ' i seçin.
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+1. **Özellikler** sayfasında **+ Oluştur**' u seçin.
 
-## <a name="add-descriptor"></a>Tanımlayıcı Ekle
-
-1. **Uygulamalarım** sayfasında adına tıklayarak uygulamanızı açın ve ardından **Oluştur**' a tıklayın ve ardından uygulamanızın sol panelinde **tanımlayıcılar** ' a tıklayın.
-
-1. **Tanımlayıcılar** sayfasında **+ tanımlayıcı Ekle**' ye tıklayın.
-
-1. **Yeni tümcecik listesi tanımlayıcısı oluştur** iletişim kutusunda, tanımlayıcı için gibi `Cities` bir ad girin. **Değer** kutusuna, tanımlayıcılarının değerlerini yazın (örneğin,) `Seattle`. Tek seferde bir değer veya virgülle ayrılmış bir değerler kümesi yazabilir ve ardından **ENTER**tuşuna basabilirsiniz.
+1. **Yeni tümcecik listesi özelliği oluştur** iletişim kutusunda, gibi bir ad girin `Cities` . **Değer** kutusuna, gibi şehirlerin örneklerini girin `Seattle` . Tek seferde bir değer veya virgülle ayrılmış bir değerler kümesi yazabilir ve ardından **ENTER**tuşuna basabilirsiniz.
 
     > [!div class="mx-imgBorder"]
-    > ![Tanımlayıcı şehir ekleme](./media/luis-add-features/add-phrase-list-cities.png)
+    > ![Özellik (tümcecik listesi) şehirleri ekleme ekran görüntüsü](./media/luis-add-features/add-phrase-list-cities.png)
 
     LUO için yeterli değer girdikten sonra öneriler görünür. Önerilen değerlerin **Tümünü ekleyebilir** veya tek tek terimleri seçebilirsiniz.
 
-1. Bu değerleri, eklenen tanımlayıcı değerleri birbirinin yerine kullanılabilen alternatifler ise, **Bu değerleri, değiştirilebilir olarak** bırakın.
+1. Deyimlerin birbirlerinin yerine kullanılabilir olması halinde **Bu değerleri koru değiştirilebilir** .
 
-1. Tümcecik listesi, **genel** ayarı olan tüm uygulamaya veya belirli bir modele (amaç veya varlık) uygulanabilir. Tümcecik listesini bir amaç veya varlıktan _tanımlayıcı_ olarak oluşturursanız, geçiş işlemi genel değil olarak ayarlanır. Bu durumda, iki durumlu bir özelliğin, bu nedenle, uygulamanın _genel değil_ , yalnızca o modele yönelik bir özellik olduğu anlamına gelir.
+1. Tümcecik listesi, **genel** ayarı olan tüm uygulamaya veya belirli bir modele (amaç veya varlık) uygulanabilir. Tümcecik listesini bir amaç veya varlıktan bir _özellik_ olarak oluşturursanız, geçiş işlemi genel için ayarlanmadı. Bu durumda, iki durumlu özelliğin anlamı, uygulamanın _genel değil_ , bu modelde yalnızca yerel olduğu bir modeldir.
 
-1. **Done** (Bitti) öğesini seçin. Yeni tanımlayıcı, **tanımlayıcılar** sayfasına eklenir.
+1. **Done** (Bitti) öğesini seçin. Yeni özellik **ml özellikleri** sayfasına eklenir.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> **Tanımlayıcılar** sayfasında bağlamsal araç çubuğundan tanımlayıcıyı silebilir veya devre dışı bırakabilirsiniz.
+> Bir tümcecik listesini, **ml özellikleri** sayfasındaki bağlamsal araç çubuğundan silebilir veya devre dışı bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir tanımlayıcıyı ekledikten, düzenledikten, sildikten veya devre dışı bırakarak, performansın gelişip artmediğini görmek için [uygulamayı yeniden eğitin ve test](luis-interactive-test.md) edin.
+Bir özelliği ekledikten, düzenledikten, sildikten veya devre dışı bırakadıktan sonra, performansın gelişip artmediğini görmek için [uygulamayı yeniden eğitin ve test](luis-interactive-test.md) edin.

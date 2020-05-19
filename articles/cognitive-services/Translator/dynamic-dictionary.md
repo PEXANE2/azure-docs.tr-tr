@@ -1,7 +1,7 @@
 ---
-title: Dinamik sözlük-Translator Metin Çevirisi API'si
+title: Dinamik sözlük-Translator
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure bilişsel hizmetler Translator Metin Çevirisi API'si 'ın dinamik Sözlük özelliğinin nasıl kullanılacağı açıklanmaktadır.
+description: Bu makalede, Azure bilişsel hizmetler çeviricisinin dinamik Sözlük özelliğinin nasıl kullanılacağı açıklanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 944bca8644da6127e73af04eb75d01697cd34399
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ef881efc417a6c3816a92d9af7d77bba74355aa
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446706"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592551"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Dinamik sözlük kullanma
 
@@ -27,8 +27,8 @@ Bir sözcüğe veya ifadeye uygulamak istediğiniz çeviriyi zaten biliyorsanız
 
 **Gereklilik**
 
-* `From` Ve `To` dilleri İngilizce ve desteklenen başka bir dili içermelidir. 
-* Otomatik Algıla özelliğini kullanmak `From` yerine API çeviri isteğinize parametresini eklemeniz gerekir. 
+* `From`Ve `To` dilleri İngilizce ve desteklenen başka bir dili içermelidir. 
+* `From`Otomatik Algıla özelliğini kullanmak yerıne API çeviri isteğinize parametresini eklemeniz gerekir. 
 
 **Örnek: en-de:**
 
@@ -38,4 +38,4 @@ Hedef çıktı:`Das Wort "wordomatic" ist ein Wörterbucheintrag.`
 
 Bu özellik HTML modu olmadan ve ile aynı şekilde çalışmaktadır.
 
-Özelliği gelişigüzel bir şekilde kullanın. Çeviriyi özelleştirmenin daha iyi bir yolu özel çevirici kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğe bağlam içinde görüntülenen eğitim verileri varsa veya bu verilere sahipseniz, daha iyi sonuçlar elde edersiniz. İçinde özel çevirici hakkında daha fazla bilgi edinebilirsiniz [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator).
+Özelliği gelişigüzel bir şekilde kullanın. Çeviriyi özelleştirmenin daha iyi bir yolu özel çevirici kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğe bağlam içinde görüntülenen eğitim verileri varsa veya bu verilere sahipseniz, daha iyi sonuçlar elde edersiniz. İçinde özel çevirici hakkında daha fazla bilgi edinebilirsiniz [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator) .

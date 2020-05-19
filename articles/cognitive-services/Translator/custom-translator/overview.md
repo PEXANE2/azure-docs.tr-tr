@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982684"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592772"
 ---
 # <a name="what-is-custom-translator"></a>Özel Çevirmen nedir?
 
@@ -28,13 +28,13 @@ ms.locfileid: "75982684"
 
 Özel çevirmen özel çeviri sistemi oluşturup daha sonra ona erişmek için farklı özellikler sağlar.
 
-|Özellik  |Açıklama  |
+|Öne çıkan özelliği  |Açıklama  |
 |---------|---------|
 |[Sinir makine çevirisi teknolojisinden yararlanın](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Özel çevirici tarafından sunulan sinir makine çevirisi (NMT) özelliğinden yararlanarak çevirinizi geliştirebilirsiniz.       |
 |[İş terminolojinizi bilen yapı sistemleri](what-are-parallel-documents.md)     |  Kendi işinizde ve sektöründe kullanılan terimlerin anlayan paralel belgeler kullanarak çeviri sistemlerini özelleştirin ve oluşturun.       |
 |[Modellerinizi derlemek için sözlük kullanma](what-is-dictionary.md)     |   Eğitim verileri ayarlanmamışsa, bir modeli yalnızca sözlük verileriyle eğitebilirsiniz.       |
 |[Başkalarıyla işbirliği yapma](how-to-manage-settings.md#share-your-workspace)     |   İşinizi farklı kişilerle paylaşarak ekibinizle işbirliği yapın.     |
-|[Özel çeviri modelinize erişin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Özel çeviri modelinize, Microsoft Translator Metin Çevirisi API'si v3 aracılığıyla mevcut uygulamalarınızın/programlarınızın her zaman erişilebilir.       |
+|[Özel çeviri modelinize erişin](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Özel çeviri modelinize, Translator v3 aracılığıyla mevcut uygulamalarınızın/programlarınızın her zaman erişilebilir.       |
 
 ## <a name="get-better-translations"></a>Daha iyi çeviriler alın
 
@@ -54,11 +54,11 @@ Güvenli [özel çevirmen](https://portal.customtranslator.azure.ai) portalını
 
 [Özel çevirmende](https://portal.customtranslator.azure.ai) programlı bir şekilde [adanmış bir API](https://custom-api.cognitive.microsofttranslator.com/swagger/) aracılığıyla erişilebilir (Şu anda önizleme aşamasındadır). API, kullanıcıların kendi uygulamaları veya Web hizmeti aracılığıyla düzenli olarak eğitim oluşturmayı veya güncelleştirmeyi yönetmesini sağlar.
 
-İçeriği çevirmek için özel bir model kullanmanın maliyeti kullanıcının Translator Metin Çevirisi API'si fiyatlandırma katmanını temel alır. Fiyatlandırma Katmanı ayrıntıları için bilişsel Hizmetler [Translator metin çevirisi API'si fiyatlandırma web sayfasına](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) bakın.
+İçeriği çevirmek için özel bir model kullanmanın maliyeti, kullanıcının Translator fiyatlandırma katmanını temel alır. Fiyatlandırma Katmanı ayrıntıları için bilişsel Hizmetler [çevirmeni fiyatlandırma web sayfasına](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) bakın.
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>Tüm uygulama ve hizmetlerinize dilediğiniz zaman güvenli bir şekilde çevirin
 
-Özel sistemler, Microsoft Translator Metin Çevirisi API'si aracılığıyla standart REST teknolojisi aracılığıyla herhangi bir ürün veya iş akışına ve herhangi bir cihaza sorunsuzca erişilebilir ve tümleştirilebilir.
+Özel sistemler sorunsuz bir şekilde erişilebilir ve herhangi bir ürüne veya iş akışına ve herhangi bir cihaza, standart REST teknolojisi aracılığıyla Translator aracılığıyla herhangi bir cihaza tümleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

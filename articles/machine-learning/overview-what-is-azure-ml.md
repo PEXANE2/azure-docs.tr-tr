@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593027"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -23,7 +23,7 @@ Azure Machine Learning, klasik ml 'den derin öğrenme, denetimli ve denetimli �
 
 Yerel makinenizde eğitime başlayın ve ardından buluta ölçeklendirin. 
 
-Hizmet Ayrıca, PyTorch, TensorFlow ve scikit-öğren gibi popüler açık kaynaklı araçlarla birlikte çalışır.
+Hizmet Ayrıca, bilinen derin öğrenme ve pekiştirmeye dayalı açık kaynaklı araçlar ile PyTorch, TensorFlow, scikit-öğren ve Ray. 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
@@ -48,9 +48,11 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 + [Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md)
 
-+ [Machine Learning CLı](reference-azure-machine-learning-cli.md)
++ [Machine learning CLI](reference-azure-machine-learning-cli.md)
 
 + PyTorch, TensorFlow ve scikit-öğrenme gibi açık kaynaklı çerçeveler ve çok daha fazlası
+
++ [Pekiştirmeye dayalı](how-to-use-reinforcement-learning.md) with Ray Rlrllib
 
 Hatta, [ölçümleri izlemek Için Mlflow, modelleri](how-to-use-mlflow.md) veya Kubeflow kullanarak [uçtan uca iş akışı işlem hatları](https://www.kubeflow.org/docs/azure/)oluşturabilirsiniz.
 

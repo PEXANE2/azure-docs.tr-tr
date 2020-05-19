@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372243"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590902"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Bekleyen verilerin Translator şifrelemesi
 
@@ -41,7 +41,7 @@ Ayrıca kendi anahtarlarınız ile aboneliğinizi yönetme seçeneği de vardır
 
 Çevirmen için müşteri tarafından yönetilen anahtarları etkinleştirmek üzere aşağıdaki adımları izleyin:
 
-1. Yeni bölgesel Translator Metin Çevirisi veya bölgesel bilişsel hizmetler kaynağını oluşturun. Bu, genel bir kaynakla çalışmaz.
+1. Yeni bölgesel Çevirmeninizi veya bölgesel bilişsel hizmetler kaynağını oluşturun. Bu, genel bir kaynakla çalışmaz.
 2. Azure portal yönetilen kimliği etkinleştirdi ve müşteri tarafından yönetilen anahtar bilgilerinizi ekleyin.
 3. Özel çevirmende yeni bir çalışma alanı oluşturun ve bu abonelik bilgilerini ilişkilendirin.
 

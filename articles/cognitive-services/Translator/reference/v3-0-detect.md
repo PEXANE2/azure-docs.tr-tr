@@ -1,7 +1,7 @@
 ---
-title: Translator Metin Çevirisi API'si algılama yöntemi
+title: Translator algılama yöntemi
 titleSuffix: Azure Cognitive Services
-description: Azure bilişsel hizmetler Translator Metin Çevirisi API'si algılama yöntemi ile bir metin parçasının dilini belirler.
+description: Azure bilişsel hizmetler çevirmen algılama yöntemi ile bir metin parçasının dilini belirler.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837291"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592296"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Metin Çevirisi API'si 3,0: Algıla
+# <a name="translator-30-detect"></a>Translator 3,0: algılama
 
 Bir metin parçasının dilini tanımlar.
 
-## <a name="request-url"></a>İstek URL'si
+## <a name="request-url"></a>İstek URL’si
 
-Şu kişiye `POST` bir istek gönder:
+Şu kişiye bir `POST` istek gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
@@ -38,14 +38,14 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th>Açıklama</th>
   <tr>
     <td>api-sürümü</td>
-    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0`.</td>
+    <td>*Gerekli parametre*.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır `3.0` .</td>
   </tr>
 </table> 
 
 İstek üstbilgileri şunları içerir:
 
 <table width="100%">
-  <th width="20%">Üst bilgiler</th>
+  <th width="20%">Üst Bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
@@ -53,7 +53,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>İçerik Türü</td>
-    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json`.</td>
+    <td>*Gerekli istek üst bilgisi*.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: `application/json` .</td>
   </tr>
   <tr>
     <td>İçerik Uzunluğu</td>
@@ -61,13 +61,13 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>X-Clienttraceıd</td>
-    <td>*Isteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı `ClientTraceId`sorgu parametresini kullanarak izleme kimliğini sorgu dizesine eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
+    <td>*Isteğe bağlı*.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı sorgu parametresini kullanarak izleme KIMLIĞINI sorgu dizesine eklerseniz bu üstbilgiyi atlayabilirsiniz `ClientTraceId` .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, adlı `Text`bir String özelliği olan bir JSON nesnesidir. Dil algılama `Text` özelliği değeri için geçerlidir. Örnek bir istek gövdesi şöyle görünür:
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, adlı bir String özelliği olan bir JSON nesnesidir `Text` . Dil algılama özelliği değeri için geçerlidir `Text` . Örnek bir istek gövdesi şöyle görünür:
 
 ```json
 [
@@ -93,7 +93,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
   * `isTransliterationSupported`: Algılanan dil, alfabede desteklenen dillerden biri ise true olan bir Boole değeri.
   
-  * `alternatives`: Olası diğer dillerin bir dizisi. Dizideki her öğe, yukarıda listelenen özelliklerle aynı özelliklere sahip başka bir nesnedir `language`:, `score` `isTranslationSupported` ve. `isTransliterationSupported`
+  * `alternatives`: Olası diğer dillerin bir dizisi. Dizideki her öğe, yukarıda listelenen özelliklerle aynı özelliklere sahip başka bir nesnedir: `language` , `score` `isTranslationSupported` ve `isTransliterationSupported` .
 
 Örnek bir JSON yanıtı:
 
@@ -125,7 +125,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
 <table width="100%">
-  <th width="20%">Üst bilgiler</th>
+  <th width="20%">Üst Bilgiler</th>
   <th>Açıklama</th>
   <tr>
     <td>X-RequestId</td>
@@ -162,15 +162,15 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından istek tanımlayıcısı `X-RequestId` ve istek üst bilgisinden istemci tanımlayıcısı `X-ClientTraceId` .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından `X-RequestId`istek tanımlayıcısı ve istek üst `X-ClientTraceId`bilgisinden istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından istek tanımlayıcısı `X-RequestId` ve istek üst bilgisinden istemci tanımlayıcısı `X-ClientTraceId` .</td>
   </tr>
 </table> 
 
-Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator metin çevirisi API'si başvuru sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
+Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 basamaklı HTTP durum kodunu birleştiren 6 basamaklı bir sayıdır ve ardından hatayı daha fazla kategorilere ayırarak 3 basamaklı bir sayıdır. Ortak hata kodları, [v3 Translator başvurusu sayfasında](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)bulunabilir. 
 
 ## <a name="examples"></a>Örnekler
 

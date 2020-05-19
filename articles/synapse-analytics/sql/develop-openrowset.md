@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4b0c5277fb826780ff0c103f011c26049282672
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201475"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591429"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET 'yi isteğe bağlı SQL ile kullanma (Önizleme)
 
@@ -48,7 +48,7 @@ Bu, önceden yapılandırma olmadan dosyaların içeriğini okumak için hızlı
     Bu seçenek, veri kaynağındaki depolama hesabının konumunu yapılandırmanıza ve depolamaya erişmek için kullanılması gereken kimlik doğrulama yöntemini belirtmenize olanak sağlar. 
     
     > [!IMPORTANT]
-    > `OPENROWSET`olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumlusu yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md#user-identity) kullanarak dosyalara erişebilir ve genel kullanıma açık dosyalara erişemez. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
+    > `OPENROWSET`olmadan `DATA_SOURCE` , depolama dosyalarına erişmek için hızlı ve kolay bir yol sağlar, ancak sınırlı kimlik doğrulama seçenekleri sunar. Örnek olarak, Azure AD sorumlusu yalnızca [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) kullanarak dosyalara erişebilir ve genel kullanıma açık dosyalara erişemez. Daha güçlü kimlik doğrulama seçeneklerine ihtiyacınız varsa, `DATA_SOURCE` seçeneğini kullanın ve depolama alanına erişmek için kullanmak istediğiniz kimlik bilgisini tanımlayın.
 
 ## <a name="security"></a>Güvenlik
 
@@ -58,13 +58,13 @@ Depolama Yöneticisi ayrıca, bir kullanıcının geçerli SAS belirteci sağlay
 
 `OPENROWSET`depolama alanının kimliğini nasıl doğrulayacağınızı öğrenmek için aşağıdaki kuralları kullanın:
 - `OPENROWSET`İle içinde `DATA_SOURCE` , kimlik doğrulama mekanizması arayan türüne bağlıdır.
-  - Azure depolama, Azure AD kullanıcısının temel dosyalara erişmesine izin veriyorsa (örneğin, arayan, depolama üzerinde depolama okuyucusu iznine sahipse) ve SYNAPSE SQL hizmetinde [Azure AD PASSTHROUGH kimlik doğrulamasını etkinleştirirseniz](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) , AAD oturum açmaları yalnızca kendı [Azure AD kimliklerini](develop-storage-files-storage-access-control.md#user-identity) kullanarak dosyalara erişebilir.
+  - Azure depolama, Azure AD kullanıcısının temel dosyalara erişmesine izin veriyorsa (örneğin, arayan, depolama üzerinde depolama okuyucusu iznine sahipse) ve SYNAPSE SQL hizmetinde [Azure AD PASSTHROUGH kimlik doğrulamasını etkinleştirirseniz](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) , AAD oturum açmaları yalnızca kendı [Azure AD kimliklerini](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) kullanarak dosyalara erişebilir.
   - SQL oturumları `OPENROWSET` `DATA_SOURCE` , genel kullanıma açık dosyalara erişmek için olmadan da KULLANABILIR, SAS belirteci kullanılarak korunan dosyalar veya SYNAPSE çalışma alanının yönetilen kimliği. Depolama dosyalarına erişim izni vermek için [sunucu kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) gerekir. 
-- İçindeki `OPENROWSET` `DATA_SOURCE` kimlik doğrulama mekanizması, başvurulan veri kaynağına atanan veritabanı kapsamlı kimlik bilgileri içinde tanımlanmıştır. Bu seçenek, genel olarak kullanılabilir depolamaya erişmenizi veya SAS belirtecini, çalışma alanının yönetilen kimliğini veya [arayanın Azure AD kimliğini](develop-storage-files-storage-access-control.md#user-identity) (arayan Azure AD sorumlusu ise) kullanarak depolamaya erişmenizi sağlar. `DATA_SOURCE`Ortak olmayan Azure Storage 'a başvuruyorsa, depolama dosyalarına erişime izin vermek için, [veritabanı kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) ve içinde başvurulmasına gerek duyarsınız `DATA SOURCE` .
+- İçinde `OPENROWSET` `DATA_SOURCE` , kimlik doğrulama mekanizması, başvurulan veri kaynağına atanan veritabanı kapsamlı kimlik bilgileri içinde tanımlanmıştır. Bu seçenek, genel olarak kullanılabilir depolamaya erişmenizi veya SAS belirtecini, çalışma alanının yönetilen kimliğini veya [arayanın Azure AD kimliğini](develop-storage-files-storage-access-control.md?tabs=user-identity#) (arayan Azure AD sorumlusu ise) kullanarak depolamaya erişmenizi sağlar. `DATA_SOURCE`Ortak olmayan Azure Storage 'a başvuruyorsa, depolama dosyalarına erişime izin vermek için, [veritabanı kapsamlı kimlik bilgileri oluşturmanız](develop-storage-files-storage-access-control.md#examples) ve içinde başvurulmasına gerek duyarsınız `DATA SOURCE` .
 
 Çağıranın, `REFERENCES` depolamada kimlik doğrulaması yapmak için kimlik bilgisi üzerinde izni olması gerekir.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Söz dizimi
 
 ```syntaxsql
 --OPENROWSET syntax for reading Parquet files

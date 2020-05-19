@@ -4,12 +4,12 @@ description: Bu öğreticide, LUSıS 'nin emin olduğu LUSıS HTTP uç noktası 
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548736"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592585"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Öğretici: uç nokta dıklarını inceleyerek, hariç tahminleri çözme
 Bu öğreticide, LUSıS HTTPS uç noktası aracılığıyla alınan ve bu LUSıS 'in eksik olduğu noktaları doğrulayarak veya düzelterek uygulama tahminlerini geliştirebilirsiniz. Zamanlanan LUSıS bakımın düzenli bir parçası olarak uç nokta utslerini incelemeniz gerekir.
@@ -22,7 +22,7 @@ Bu gözden geçirme işlemi, LUSıS 'in uygulama etki alanınızı öğrenmeye o
 
 Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğrular veya düzeltirsiniz.
 
-**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
+**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -33,11 +33,11 @@ Uç nokta ifadelerini gözden geçirerek, ifadenin tahmin edilen amacını doğr
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Örnek uygulamayı içeri aktar
+## <a name="download-json-file-for-app"></a>Uygulama için JSON dosyasını indirin
 
-Bir uygulamayı içeri aktarmak için aşağıdaki adımları kullanın.
+[Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) indirip kaydedin.
 
-1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) indirip kaydedin.
+## <a name="import-json-file-for-app"></a>Uygulama için JSON dosyasını içeri aktar
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -80,9 +80,9 @@ Doğru hizalanmış amaç için uç nokta utslerini gözden geçirin. Tüm sür�
     > [!div class="mx-imgBorder"]
     > ![Sol gezintideki uç nokta ifadelerini gözden geçir düğmesinin ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Bu utterance, `I'm looking for a job with Natural Language Processing`doğru amaç içinde değil.
+    Bu utterance, `I'm looking for a job with Natural Language Processing` doğru amaç içinde değil.
 
-1.  Bu söyleyeni hizalamak için, söylenişi satırında doğru **hizalanmış hedefini** seçin `GetJobInformation`. Onay işaretini seçerek değiştirilen söylenişi 'i uygulamaya ekleyin.
+1.  Bu söyleyeni hizalamak için, söylenişi satırında doğru **hizalanmış hedefini** seçin `GetJobInformation` . Onay işaretini seçerek değiştirilen söylenişi 'i uygulamaya ekleyin.
 
     > [!div class="mx-imgBorder"]
     > ![Sol gezintideki uç nokta ifadelerini gözden geçir düğmesinin ekran görüntüsü](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
@@ -101,7 +101,7 @@ Doğru hizalanmış örnek, uygulamanın tahmininin iyileştirildiklerini doğru
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile `Are there any natural language processing jobs in my department right now?`değiştirin.
+1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile değiştirin `Are there any natural language processing jobs in my department right now?` .
 
    ```json
     {

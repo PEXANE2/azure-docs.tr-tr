@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7831e554fcca20134d5cf8608481ff0c82eb8a0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184682"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592007"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştir
 
-Şu anda Azure Lab Services, bir laboratuvarda bir şablon sanal makinesi ayarlamanıza ve tek bir kopyayı kullanıcılarınızın her biri için kullanılabilir hale getirmenizi sağlar. Bir Profesör eğitim ağı, güvenlik veya BT sınıflarındaysanız, öğrencilerinizi her birini, birden fazla sanal makinenin bir ağ üzerinden birbirleriyle iletişim kurabilecek bir ortamla birlikte sağlamanız gerekebilir.
+Şu anda Azure Lab Services, bir laboratuvarda bir şablon sanal makinesi ayarlamanıza ve tek bir kopyayı kullanıcılarınızın her biri için kullanılabilir hale getirmenizi sağlar. Eğitim ağı, güvenlik veya BT sınıflarındaysanız, öğrencilerinizin her birini, birden çok sanal makinenin bir ağ üzerinden konuşabilecek bir ortamla birlikte sağlamanız gerekebilir.
 
 İç içe sanallaştırma, bir laboratuvarın şablon sanal makinesi içinde çoklu VM ortamı oluşturmanızı sağlar. Şablonu yayımlamak, her kullanıcıya, içindeki birden çok VM ile bir sanal makine oluşturacak şekilde laboratuvar sağlar.  Bu makalede, Azure Lab Services bir şablon makinesinde iç içe sanallaştırmanın nasıl ayarlanacağı ele alınmaktadır.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ce79674462f82e05cc07e9e470cb82ff8e47f672
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aef5cd13742c0265851f5ba2918d557b4e1026d0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118490"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592653"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini bağlama veya ayırma
 Bu makalede, paylaşılan bir görüntü galerisinin bir laboratuvar hesabına nasıl ekleneceği veya ayrılabilmesi gösterilmektedir. 
@@ -48,7 +48,7 @@ Laboratuvar hesabı oluşturulduktan sonra, aşağıdaki görevleri gerçekleşt
 - Laboratuvar hesabından paylaşılan görüntü galerisini ayır
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Paylaşılan görüntü galerisi oluşturma ve iliştirme
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol taraftaki menüden **tüm hizmetler** ' i seçin. **DevOps** bölümünde **Laboratuvar Hizmetleri** ' ni seçin. `*` **Laboratuvar Hizmetleri**' nin yanında Star () seçeneğini belirlerseniz Sol menüdeki **Sık Kullanılanlar** bölümüne eklenir. Sonraki zamanda, **Sık Kullanılanlar**altında **Laboratuvar Hizmetleri** ' ni seçersiniz.
 
     ![Tüm hizmetler-> Laboratuvar Hizmetleri](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -83,7 +83,7 @@ Aşağıdaki yordamda, var olan bir paylaşılan görüntü galerisinin bir labo
     
     Bu örnekte, paylaşılan görüntü galerisinde henüz görüntü yok.
 
-    Azure Lab Services kimlik, laboratuvara eklenmiş paylaşılan görüntü galerisine katkıda bulunan olarak eklenir. Öğretmenler/BT Yöneticisi 'nin sanal makine görüntülerini paylaşılan görüntü galerisine kaydetmesine izin verir. Bu laboratuvar hesabında oluşturulan tüm laboratuvarların ekli paylaşılan görüntü galerisine erişimi vardır. 
+    Azure Lab Services kimlik, laboratuvara eklenmiş paylaşılan görüntü galerisine katkıda bulunan olarak eklenir. Eğitimciler/IT yöneticilerinin sanal makine görüntülerini paylaşılan görüntü galerisine kaydetmesine izin verir. Bu laboratuvar hesabında oluşturulan tüm laboratuvarların ekli paylaşılan görüntü galerisine erişimi vardır. 
 
     Ekli paylaşılan görüntü galerisindeki tüm görüntüler varsayılan olarak etkindir. Seçili görüntüleri listede seçerek etkinleştirebilir veya devre dışı bırakabilir ve seçili görüntüleri **Etkinleştir** veya **Seçili görüntüleri devre dışı bırak** düğmesini kullanabilirsiniz. 
 

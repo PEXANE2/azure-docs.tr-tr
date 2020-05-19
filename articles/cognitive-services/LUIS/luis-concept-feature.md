@@ -1,90 +1,147 @@
 ---
 title: Özellikler-LUSıS
-titleSuffix: Azure Cognitive Services
 description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.author: diberry
-ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81531907"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591905"
 ---
-# <a name="machine-learned-features"></a>Makine tarafından öğrenilen Özellikler
+# <a name="machine-learning-ml-features"></a>Makine öğrenimi (ML) özellikleri
 
-Machine Learning 'de, bir _özellik_ , sistem engellerinizin öğrendiği & öğrendiği verilerin bir ayırt edici nitelik veya özniteliğidir. Language Understanding (LUSıS) ' de bir özellik, amaç ve varlıklarınız hakkında ne kadar önemli olduğunu açıklar ve açıklar.
+Machine Learning 'de, bir **özellik**   sistem engelinizdeki verilerin bir ayırt edici nitelik veya özniteliğidir.
 
-[ÖNIZLEME luın portalında](https://preview.luis.ai)özellikler, amacı veya varlığı _anlatmak_ için kullanıldıklarından _tanımlayıcılardır_ .
+Machine Learning özellikleri, bir kavramı ayırt edecek şeyleri aramak için lu, önemli ipuçları verir. Bu kişiler, LUıN tarafından kullanılabilecek ancak zor kuralları olmayan bir ipuçlardır.  Bu ipuçları, verileri bulmak için etiketlerle birlikte kullanılır.
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Language Understanding Özellikler (_tanımlayıcılar_)
+ LUSıS her iki ifade listesini destekler ve diğer varlıkları özellikler olarak kullanmaktır:
+* Tümcecik listesi özelliği
+* Özellik olarak model (amaç veya varlık)
 
-Tanımlayıcılar olarak da bilinen özellikler, örnek söylerinizi belirlemek Language Understanding yardım için ipuçlarına açıklama sağlar. Şu özellikler mevcuttur:
+Özellikler, şema tasarımınızın gerekli bir parçası olarak düşünülmelidir.
 
-* Amaçlar veya varlıklar için özellik olarak ifade listesi
-* Amaçlar veya varlıklara özellikler olarak varlıklar
+## <a name="a-phrase-list-for-a-particular-concept"></a>Belirli bir kavram için tümcecik listesi
 
-Özellikler, model ayrıştırma için şemanızın gerekli bir parçası olarak düşünülmelidir.
+Tümcecik listesi, belirli bir kavramı kapsülleyen sözcüklerin veya tümceciklerin listesidir.
 
-## <a name="what-is-a-phrase-list"></a>Tümcecik listesi nedir?
+Tümcecik listesi eklerken, özelliği şu şekilde ayarlayabilirsiniz:
+* **[Genel](#global-features)**. Genel bir özellik tüm uygulama için geçerlidir.
 
-Tümcecik listesi, belirlemeye çalıştığınız kavramı belirlemeye yardımcı olan sözcüklerin, deyimlerin, sayıların veya diğer karakterlerin bir listesidir. Liste büyük/küçük harfe duyarlıdır.
+### <a name="when-to-use-a-phrase-list"></a>Tümcecik listesi ne zaman kullanılır?
 
-## <a name="when-to-use-a-phrase-list"></a>Tümcecik listesi ne zaman kullanılır?
-
-Bir tümcecik listesi ile, LUSıS, bağlamı ve genelleştirir, ancak tam metin eşleşmesi değil, öğesine benzer öğeleri belirler. LUSıS uygulamanızın yeni öğeleri genelleştirabilmesi ve belirleyebilmesi gerekiyorsa, bir tümcecik listesi kullanın.
-
-Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi yeni örnekleri tanıyabilmek istediğinizde, makine tarafından öğrenilen bir varlıkla başlayın. Ardından, LUO 'NUN benzer anlamlara sahip sözcüklerin bulmasına yardımcı olan bir tümcecik listesi oluşturun. Bu tümcecik listesi, LUSıS 'in bu sözcüklerin değerine ek anlam ekleyerek örnekleri tanımasını sağlar.
-
-Tümcecik listeleri, hem amaçları hem de varlıkların anlaşılmasına yardımcı olan, etki alanına özgü sözlük gibidir.
-
-## <a name="considerations-when-using-a-phrase-list"></a>Tümcecik listesi kullanırken dikkat edilecek noktalar
-
-Bir tümcecik listesi, varsayılan olarak uygulamadaki tüm modellere uygulanır. Bu, tüm amaçları ve varlıkları çapraz bir şekilde ifade eden tümcecik listelerinde çalışacaktır. Ölülebilirlik için, yalnızca ilgili olduğu modellere bir tümcecik listesi uygulamanız gerekir.
-
-Bir tümcecik listesi oluşturur (varsayılan olarak genel olarak oluşturulur), daha sonra bunu belirli bir modele tanımlayıcı (özellik) olarak uygularsanız, diğer modellerden kaldırılır. Bu kaldırma, uygulandığı model için tümcecik listesine ilgi ekler ve modelin sağladığı doğruluğu artırmaya yardımcı olur.
-
-Bayrak `enabledForAllModels` , bu model kapsamını API 'de denetler.
-
-<a name="how-to-use-phrase-lists"></a>
+LUSıS uygulamanızın kavram için yeni öğeleri genelleştirabilmesi ve belirleyebilmesi gerektiğinde, bir tümcecik listesi kullanın. Tümcecik listeleri, hem amaçları hem de varlıkların anlaşılmasına yardımcı olan, etki alanına özgü sözlük gibidir.
 
 ### <a name="how-to-use-a-phrase-list"></a>Tümcecik listesi kullanma
 
-Amaç veya varlığınızda şu gibi önemli sözcükler ya da tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) :
+Bir tümcecik listesi ile, LUSıS, bağlamı ve genelleştirir, ancak tam metin eşleşmesi değil, öğesine benzer öğeleri belirler.
 
-* sektör koşulları
-* Argo
-* kısaltmaları
-* şirkete özgü dil
-* başka bir dilden, ancak uygulamanızda sık kullanılan dil
-* örneğinizdeki önemli sözcükler ve tümcecikler
+Tümcecik listesi kullanma adımları:
+* Makine tarafından öğrenilen bir varlıkla başlayın
+    * Örnek konuşmalar ekleme
+    * Makine tarafından öğrenilen bir varlıkla etiketle
+* Tümcecik listesi ekleme
+    * Benzer anlamlara sahip sözcükler ekleyin; olası her sözcük veya **tümceciği eklemeyin.** Bunun yerine, bir kerede birkaç sözcük veya tümce ekleyin, sonra yeniden eğitme ve yayımlama.
+    * Önerilen sözcükleri gözden geçirin ve ekleyin
 
-Olası her sözcük veya **tümceciği eklemeyin.** Bunun yerine, bir kerede birkaç sözcük veya tümce ekleyin, sonra yeniden eğitme ve yayımlama. Liste zamanla büyüdükçe, bazı terimlerin birçok formu (eş anlamlı) olduğunu fark edebilirsiniz. Bunları başka bir listeye bölün.
+### <a name="a-typical-scenario-for-a-phrase-list"></a>Tümcecik listesi için tipik bir senaryo
 
+Tümcecik listesi için tipik bir senaryo, belirli bir fikrle ilgili kelimeleri iyileştirmeniz olur.
+
+Anlamlarını artırmak için bir tümcecik listesi gerektirebilecek kelimelerin bir örneği tıbbi koşullardır. Şartlar belirli fiziksel, kimyasal, aleutik ya da soyut anlamı olabilir. LUO, konu etki alanınız için tümcecik listesi olmadan bu koşulların önemli olduğunu bilmez.
+
+Tıp şartlarını ayıklamak istiyorsanız:
+* İlk olarak bu söyleyler dahilinde örnek bir örnek oluşturun ve tıbbi terimleri etiketleyin.
+* Ardından, konu etki alanında yer alan koşullara örnek olarak bir tümcecik listesi oluşturun. Bu tümcecik listesi, etiketlediğiniz gerçek terimi ve aynı kavramı tanımlayan diğer terimleri içermelidir.
+* Tümcecik listesini, tümcecik listesinde kullanılan kavramı çıkaran varlığa veya alt varlığa ekleyin. En yaygın senaryo, makine tarafından öğrenilen bir varlığın bileşenidir (alt). Tümcecik listesinin tüm amaçlar veya varlıklar üzerinde uygulanması gerekiyorsa, tümcecik listesini genel ifade listesi olarak işaretleyin. `enabledForAllModels`Bayrak, bu model KAPSAMıNı API 'de denetler.
+
+<a name="how-to-use-phrase-lists"></a>
+<a name="how-to-use-a-phrase-lists"></a>
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Bir varlık özellik olarak ne zaman kullanılır?
+## <a name="a-model-as-a-feature-helps-another-model"></a>Özellik olarak bir model başka bir modele yardımcı olur
 
-Bir varlık, amaç veya varlık düzeyinde bir özellik olarak eklenebilir.
+Başka bir modele (amaç veya varlık) bir özellik olarak model (amaç veya varlık) ekleyebilirsiniz. Bir özellik olarak mevcut bir amacı veya varlığı ekleyerek, etiketli örneklerle iyi tanımlanmış bir kavram ekliyoruz.
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Amaç özelliği olarak varlık
+Bir model özellik olarak eklendiğinde, özelliği şu şekilde ayarlayabilirsiniz:
+* **[Gerekli](#required-features)**. Modelin tahmin uç noktasından döndürülmesi için gerekli bir özellik bulunması gerekir.
+* **[Genel](#global-features)**. Genel bir özellik tüm uygulama için geçerlidir.
 
-Varlığın algılanması amaç için önemli olduğunda bir amaca tanımlayıcı (özellik) olarak bir varlık ekleyin.
+### <a name="when-to-use-an-entity-as-a-feature-to-an-intent"></a>Bir varlık bir özellik olarak ne zaman kullanılır?
 
-Örneğin, amaç bir uçuş sağlamak için ise ve varlık bilet bilgileri (örneğin, bilgisayar sayısı, kaynak ve hedef) ise, Bilet bilgileri varlığının bulunması, kitap kolu hedefinin tahminiyle ilgili ağırlık eklemesi gerekir.
+Bu varlığın algılanması amaç için önemli olduğunda amaca bir özellik olarak bir varlık ekleyin.
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Başka bir varlığa özellik olarak varlık
+Örneğin, amaç bir uçuş kaydı için ise `BookFlight` ve varlık bilet bilgileri (örneğin, lisans sayısı, başlangıç ve hedef) ise, Bilet bilgileri varlığının bulunması, amaç tahmininde önemli bir ağırlık içermelidir `BookFlight` .
+
+### <a name="when-to-use-an-entity-as-a-feature-to-another-entity"></a>Bir varlığın başka bir varlığa özellik olarak ne zaman kullanılacağı
 
 Varlık (a), varlık (B) için önemli olduğunda bu varlığın (A) algılanabilmesi durumunda başka bir varlığa (B) bir özellik olarak eklenmelidir.
 
-Örneğin, sokak adresi varlığı (A) algılanırsa, sokak adresini bulma (A), sevkiyat adresi varlığı için tahmine ağırlık ekler (B).
+Örneğin, n sevkiyat adresi varlığı bir açık adres alt varlığı içeriyorsa, sokak adresi bulma alt varlık, sevkiyat adresi varlığı için tahmine göre önemli bir ağırlık ekler.
+
+* Sevkiyat Adresi (makine tarafından öğrenilen varlık)
+    * Cadde numarası (alt varlık)
+    * Sokak adresi (alt varlık)
+    * Şehir (alt varlık)
+    * Eyalet veya Il (alt varlık)
+    * Ülke (alt varlık)
+    * Posta kodu (alt varlık)
+
+## <a name="required-features"></a>Gerekli özellikler
+
+Modelin tahmin uç noktasından döndürülmesi için gerekli bir özellik bulunması gerekir. Gelen verilerinizin özelliği ile eşleşmesi gerektiğini bildiğiniz durumlarda gerekli bir özelliği kullanın.
+
+**Gerekli bir özellik makine tarafından öğrenilen bir varlık kullanır**:
+* Normal ifade varlığı
+* Liste varlığı
+* Önceden oluşturulmuş varlık
+
+Gerektiğinde işaretlemek için iyi özellikler nelerdir? Modelinize eminseniz, bu, özelliği gereken şekilde ayarlayın. Gerekli bir özellik, bulunamazsa hiçbir şey döndürmez.
+
+Sevkiyat Adresi örneğine devam ediliyor:
+* Sevkiyat Adresi (makine tarafından öğrenilen varlık)
+    * Cadde numarası (alt varlık)
+    * Sokak adresi (alt varlık)
+    * Cadde adı (alt varlık)
+    * Şehir (alt varlık)
+    * Eyalet veya Il (alt varlık)
+    * Ülke (alt varlık)
+    * Posta kodu (alt varlık)
+
+### <a name="required-feature-using-prebuilt-entities"></a>Önceden oluşturulmuş varlıklar kullanılarak gerekli özellik
+
+Şehir, eyalet ve ülke genellikle kapalı bir liste kümesidir ve bu, zaman içinde çok değiştirmeyeceği anlamına gelir. Bu varlıklar ilgili önerilen özelliklere sahip olabilir ve bu özellikler gerekli olarak işaretlenebilir. Bu, tüm sevkiyat adresinin döndürülmediği anlamına gelir, gerekli özelliklere sahip varlıklar bulunamadı.
+
+Şehir, eyalet veya ülke, deterance içinde, ancak bir konumda ya da lusıs 'in beklemediği argo durumunda ne olur? Bir kısmı çözmenize yardımcı olmak üzere bazı post işlemleri sağlamak istiyorsanız, LUSıS 'den düşük güvenilirlikli bir puan nedeniyle, özelliği gereken şekilde işaretlemeyin.
+
+Sevkiyat adresi için gerekli bir özelliğin başka bir örneği, sokak numarasını gerekli [önceden oluşturulmuş](luis-reference-prebuilt-entities.md) bir sayı yapmak içindir. Bu, bir kullanıcının "1 Microsoft Way" veya "bir Microsoft Way" girmesini sağlar. Her ikisi de cadde numarası alt varlığı için bir sayıda "1" olarak çözümlenir.
+
+### <a name="required-feature-using-list-entities"></a>Liste varlıklarını kullanan gerekli özellik
+
+Bir [liste varlığı](reference-entity-list.md) , kendi eş anlamlılarıyla birlikte kurallı adların bir listesi olarak kullanılır. Gerekli bir özellik olarak, söylenişi kurallı adı ya da bir eş anlamlıyı içermiyorsa, varlık tahmin uç noktasının bir parçası olarak döndürülmez.
+
+Sevkiyat Adresi örneğine devam etmek, şirketinizin yalnızca sınırlı bir ülke kümesine sevk edildiğini varsayalım. Müşterinizin ülkeye başvurmasına yönelik çeşitli yollar içeren bir liste varlığı oluşturabilirsiniz. LUSıS, utterance 'in metni içinde tam bir eşleşme bulamazsa, bu durumda varlık (liste varlığının gerekli özelliğine sahip olan) tahminde döndürülmez.
+
+|Kurallı ad|Eş anlamlılar|
+|--|--|
+|Birleşik Devletler|ABD<br>U. S. A<br>ABD<br>ABD<br>0|
+
+Bir sohbet botu gibi istemci uygulaması bir soru sorabilir, böylece müşteri Ülke seçiminin sınırlı ve _gerekli_olduğunu anlamıştır.
+
+### <a name="required-feature-using-regular-expression-entities"></a>Normal ifade varlıklarını kullanan gerekli özellik
+
+Gerekli özellik olarak kullanılan bir [normal ifade varlığı](reference-entity-regular-expression.md) , zengin metin eşleştirme özellikleri sağlar.
+
+Sevkiyat adresine devam ederek, ülke posta kodlarının sözdizimi kurallarını yakalayan bir normal ifade oluşturabilirsiniz.
+
+## <a name="global-features"></a>Genel Özellikler
+
+En yaygın kullanım, belirli bir modele bir özellik uygulamak olsa da, Özelliği uygulamanızın tamamına uygulamak için **genel bir özellik** olarak yapılandırabilirsiniz.
+
+Genel bir özellik için en yaygın kullanım, uygulamaya başka bir dilden sözcükler gibi ek bir sözlük eklemektir. Müşterileriniz birincil bir dil kullanıyorsa, ancak aynı utde başka bir dil kullanabiliyor olması beklendiğinde, ikincil dilden sözcükler içeren bir özellik ekleyebilirsiniz.
+
+Kullanıcı herhangi bir amaç veya varlık genelinde ikinci dili kullanması beklenen için, ifade listesi genel özellik olarak yapılandırılmış bir tümcecik listesine eklenmelidir.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.

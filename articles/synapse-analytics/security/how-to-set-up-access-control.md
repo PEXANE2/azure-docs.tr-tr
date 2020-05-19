@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006064"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591990"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
 
@@ -28,7 +28,7 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
 - SYNAPSE rolleri – bu roller SYNAPSE için benzersizdir ve Azure rollerine dayalı değildir. Şu rollerin üçü vardır:
   - SYNAPSE çalışma alanı Yöneticisi
   - SYNAPSE SQL Yöneticisi
-  - SYNAPSE Spark Yöneticisi
+  - Azure SYNAPSE Analytics Yöneticisi için Apache Spark
 - Azure Data Lake Storage Gen 2 ' deki veriler için erişim denetimi (ADLSGEN2).
 - SYNAPSE SQL ve Spark veritabanları için erişim denetimi
 
@@ -48,11 +48,11 @@ Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları
 
 Çalışma alanınız için üç güvenlik grubu oluşturun ve doldurun:
 
-- **WS1\_wsadmins** – çalışma alanı üzerinde tamamen denetim gerektiren kullanıcılar için
-- **WS1\_mini Yöneticiler** – çalışma alanının Spark yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
-- **WS1\_SQLAdmins** – çalışma alanının SQL yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
-- **WS1\_SQLAdmins** 'e **WS1\_wsadmins** ekleyin
-- **WS1\_wsadmins** 'yi **WS1\_mini Yöneticiler** 'e Ekle
+- **WS1 \_ WSAdmins** : çalışma alanı üzerinde tamamen denetim gerektiren kullanıcılar için
+- **WS1 \_ Mini Yöneticiler** – çalışma alanının Spark yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
+- **WS1 \_ SQLAdmins** – çalışma ALANıNıN SQL yönleri üzerinde tümüyle denetim gerektiren kullanıcılar için
+- **WS1 \_ SQLAdmins** 'e **WS1 \_ wsadmins** ekleyin
+- **WS1 \_ wsadmins** 'yi **WS1 \_ mini Yöneticiler** 'e Ekle
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. Adım: Data Lake Storage 2. hesabınızı hazırlama
 
@@ -65,9 +65,9 @@ Depolama bilgileriniz hakkında bu bilgileri tanımla:
 
 - Azure portal kullanarak, güvenlik gruplarını CNT1 üzerinde aşağıdaki rolleri atayın
 
-  - **Depolama Blobu veri katılımcısı** rolüne **WS1\_wsadmins** atama
-  - **Depolama Blobu veri katılımcısı** rolüne **\_WS1 mini Yöneticiler** atama
-  - **Depolama Blobu veri katılımcısı** rolüne **\_WS1 SQLAdmins** atama
+  - **Depolama Blobu veri katılımcısı** rolüne **WS1 \_ wsadmins** atama
+  - **Depolama Blobu veri katılımcısı** rolüne **WS1 \_ mini Yöneticiler** atama
+  - **Depolama Blobu veri katılımcısı** rolüne **WS1 \_ SQLAdmins** atama
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. Adım: SYNAPSE çalışma alanınızı oluşturma ve yapılandırma
 
@@ -77,10 +77,10 @@ Azure portal, bir Synapse çalışma alanı oluşturun:
 - Depolama hesabı için STG1 seçin
 - "FileSystem" olarak kullanılmakta olan kapsayıcı için CNT1 seçin.
 - WS1 'i SYNAPSE Studio 'da aç
-- Aşağıdaki SYNAPSE rollerine güvenlik grupları atamak**Access Control** **Yönet** > ' i seçin.
-  - SYNAPSE çalışma alanı yöneticilerine **WS1\_wsadmins** atama
-  - SYNAPSE Spark yöneticilerine **\_WS1 mini Yöneticiler** atama
-  - SYNAPSE SQL yöneticilerine **WS1\_SQLAdmins** atama
+- **Manage**  >  Aşağıdaki SYNAPSE rollerine güvenlik grupları atamak**Access Control** Yönet ' i seçin.
+  - SYNAPSE çalışma alanı yöneticilerine **WS1 \_ wsadmins** atama
+  - SYNAPSE Spark yöneticilerine **WS1 \_ mini Yöneticiler** atama
+  - SYNAPSE SQL yöneticilerine **WS1 \_ SQLAdmins** atama
 
 ## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. Adım: SYNAPSE çalışma alanı tarafından kullanılmak üzere Data Lake Storage 2. yapılandırma
 
@@ -91,14 +91,14 @@ SYNAPSE çalışma alanı, işlem hatlarını çalıştırmak ve sistem görevle
 - CNT1 adresine gidin
 - WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1 üzerinde **Depolama Blobu veri katılımcısı** rolüne atandığından emin olun
   - Atanmadığını görmüyorsanız, atayın.
-  - MSI, çalışma alanıyla aynı ada sahiptir. Bu durumda, &quot;WS1&quot;olacaktır.
+  - MSI, çalışma alanıyla aynı ada sahiptir. Bu durumda, &quot; WS1 olacaktır &quot; .
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. Adım: SQL havuzları için yönetici erişimini yapılandırma
 
 - Azure portal açın
 - WS1 adresine gidin
 - **Ayarlar**altında, **SQL Active Directory Yöneticisi** ' ne tıklayın.
-- **Yönetici ayarla** ' ya tıklayın ve\_WS1 SQLAdmins ' yi seçin
+- **Yönetici ayarla** ' ya tıklayın ve WS1 SQLAdmins ' yi seçin \_
 
 ## <a name="step-6-maintaining-access-control"></a>6. Adım: erişim denetimini koruma
 
@@ -119,7 +119,7 @@ Her roldeki kullanıcıların aşağıdaki adımları tamamlaması gerekir:
 | 3 | Spark havuzu oluşturma | EVET [1] | EVET [1] | NO  |
 | 4 | Parquet dosyasını bir not defteriyle okur | EVET | EVET | NO |
 | 5 | Not defterinden bir işlem hattı oluşturun ve ardışık düzeni şimdi çalışacak şekilde tetikleyin | EVET | NO | NO |
-| 6 | SQL havuzu oluşturun ve 1. &quot;Select gıbı bir SQL betiği çalıştırın&quot; | EVET [1] | NO | EVET [1] |
+| 6 | SQL havuzu oluşturun ve 1. Select gibi bir SQL betiği çalıştırın &quot;&quot; | EVET [1] | NO | EVET [1] |
 
 > [!NOTE]
 > [1] SQL veya Spark havuzları oluşturmak için kullanıcının SYNAPSE çalışma alanında en az katkıda bulunan rolüne sahip olması gerekir.

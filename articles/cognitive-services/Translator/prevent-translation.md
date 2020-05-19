@@ -1,7 +1,7 @@
 ---
-title: İçerik çevirisini önleme-Translator Metin Çevirisi API'si
+title: İçerik çevirisini engelleme-çevirmen
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si içerik çevirisini önleyin. Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar.
+description: Çevirmenle içerik çevirisini önleyin. Çevirmen, içeriği çevrilmeyecek şekilde etiketleyebilmenizi sağlar.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: c7be4a0ea1a9d24a8b262132632a0bbb63ae1b96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 33939976a0824ce8afeb2e6f6fb19e7033098683
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052479"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592704"
 ---
-# <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Translator Metin Çevirisi API'si içerik çevirisini önleme
+# <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Çevirmenle içerik çevirisini önleme
 
-Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleyebilmenizi sağlar. Örneğin, kod, marka adı veya yerelleştirmeden anlamlı olmayan bir sözcük/tümcecik etiketlemek isteyebilirsiniz.
+Çevirmen, içeriği çevrilmeyecek şekilde etiketleyebilmenizi sağlar. Örneğin, kod, marka adı veya yerelleştirmeden anlamlı olmayan bir sözcük/tümcecik etiketlemek isteyebilirsiniz.
 
 ## <a name="methods-for-preventing-translation"></a>Çeviriyi önlemek için Yöntemler
 
-1. İçeriğinizi ile `notranslate`etiketleyin. Bu, yalnızca Input textType 'ın HTML olarak ayarlandığı durumlarda çalıştığını tasarlayabilmesini sağlamaktır
+1. İçeriğinizi ile etiketleyin `notranslate` . Bu, yalnızca Input textType 'ın HTML olarak ayarlandığı durumlarda çalıştığını tasarlayabilmesini sağlamaktır
 
    Örnek:
 
@@ -39,11 +39,11 @@ Translator Metin Çevirisi API'si, içeriği çevrilemeyecek şekilde etiketleye
 
 2. Belirli bir çeviri yapmak için [dinamik sözlüğü](dynamic-dictionary.md) kullanın.
 
-3. Dizeyi çeviri için Translator Metin Çevirisi API'si iletmeyin.
+3. Dizeyi çeviri için çevirmene iletmeyin.
 
 4. Özel çevirici: bir tümceciği %100 olasılığa sahip bir ifadenin çevirisi yapmak için [özel çevirmende bir sözlük](custom-translator/what-is-dictionary.md) kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Translator API çağrısındaki çeviriyi önleyin](reference/v3-0-translate.md)
+> [Çevirici çağrın çevirisinde kaçının](reference/v3-0-translate.md)

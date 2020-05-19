@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE Spark sürüm desteği
+title: Azure SYNAPSE Analytics sürüm desteği için Apache Spark
 description: Desteklenen Spark, Scala, Python sürümleri
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 77f7ed5787a723b54fef38d12812b825e2c08813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77b838db2f39b0de1e209715432697f1f006029c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429245"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591582"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Apache Spark ve bağımlı bileşenler için desteklenen dil ve çalışma zamanı sürümleri  
 
@@ -42,11 +42,11 @@ Azure SYNAPSE Apache Spark .NET Core 3,0 içerir
 
 ## <a name="net-support-for-apache-spark"></a>Apache Spark için .NET desteği
 
-Azure SYNAPSE, Apache Spark 0.5.0 için .NET desteği içerir
+Azure SYNAPSE, Apache Spark 0.11.0 için .NET desteği içerir
 
 ## <a name="delta-lake"></a>Delta Lake
 
-SYNAPSE Analytics, Delta Gölü için destek içerir 0.5.0
+SYNAPSE Analytics, Delta Gölü için destek içerir 0.6.0
 
 ## <a name="python-version"></a>Python sürümü
 

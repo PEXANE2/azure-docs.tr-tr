@@ -8,20 +8,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21e1be094716ac1d43e1f4458b41e855315d1779
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192995"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591769"
 ---
 # <a name="whats-new-in-personalizer"></a>Kişiselleştirici 'daki yenilikler
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Videoları, blog gönderilerini ve diğer bilgi türlerini içerebilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="may-2020---build-conference"></a>Mayıs 2020-/sürümü Konferansı
+
+Aşağıdakiler **genel önizlemede**sunulmaktadır:
+
+ * Bir öğrenme davranışı olarak [Apprenlet modu](concept-apprentice-mode.md) .
 
 ### <a name="march-2020"></a>Mart 2020
 

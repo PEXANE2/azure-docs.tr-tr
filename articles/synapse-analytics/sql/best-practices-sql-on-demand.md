@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198895"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592942"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
@@ -86,7 +86,7 @@ EXEC sp_describe_first_result_set N'
 
 Sonuç kümesini burada bulabilirsiniz.
 
-|is_hidden|column_ordinal|ad|system_type_name|max_length|
+|is_hidden|column_ordinal|name|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
 |0|1|vendor_id|varchar (8000)|8000|
 |0|2|pickup_datetime|datetime2 (7)|8|
@@ -119,7 +119,7 @@ Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-f
 > Her zaman FilePath ve FileInfo işlevlerinin sonucunu uygun veri türlerine atayın. Karakter veri türleri kullanıyorsanız, uygun uzunluğun kullanıldığından emin olun.
 
 > [!NOTE]
-> Bölüm yok etme, FilePath ve FileInfo için kullanılan işlevler, SYNAPSE Spark içinde oluşturulan her tablo için otomatik olarak oluşturulanlardan farklı dış tablolarda Şu anda desteklenmemektedir.
+> Bölüm eliminasyon, FilePath ve FileInfo için kullanılan işlevler, Azure SYNAPSE Analytics için Apache Spark oluşturulan her tablo için otomatik olarak oluşturulanlardan farklı dış tablolarda desteklenmemektedir.
 
 Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmek üzere Bölümlendirmeyi düşünün. [Bölümlenmiş Spark TABLOLARıNı](develop-storage-files-spark-tables.md) SQL isteğe bağlı olarak sorgularken, sorgu yalnızca gerekli dosyaları hedefleyecek.
 

@@ -1,7 +1,7 @@
 ---
-title: Dil desteği-Translator Metin Çevirisi API'si
+title: Dil desteği-çevirici
 titleSuffix: Azure Cognitive Services
-description: Translator Metin Çevirisi API'si, sinir makine çevirisi (NMT) kullanarak metin çevirisi için aşağıdaki dilleri destekler.
+description: Bilişsel hizmetler çevirmeni, sinir makine çevirisi (NMT) kullanarak metin çevirisi için aşağıdaki dilleri destekler.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592738"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Metin Çevirisi API'si için dil ve bölge desteği
+# <a name="language-and-region-support-for-translator"></a>Çevirmen için dil ve bölge desteği
 
-Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri destekler. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda Translator Metin Çevirisi API'si v3 kullanılarak varsayılan olarak kullanılabilir.
+Çevirmen metin çevirisi için aşağıdaki dilleri destekler. Sinir makine çevirisi (NMT), yüksek kaliteli AI destekli makine çevirileri için yeni standarttır ve bir sinir sistemi kullanılabilir olduğunda varsayılan olarak v3 of Translator kullanılarak kullanılabilir.
 
 [Makine çevirisinin nasıl çalıştığı hakkında daha fazla bilgi edinin](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Çeviri
 
-**V2 Translator API 'SI**
+**V2 çevirmeni**
 
 > [!NOTE]
 > V2, 30 Nisan 2018 tarihinde kullanımdan kaldırılmıştır. Yalnızca v3 'de bulunan yeni işlevsellikten yararlanmak için uygulamalarınızı v3 'e geçirin.
 
 * Yalnızca istatistiksel: Bu dil için kullanılabilir sinir sistemi yok.
-* Sinir kullanılabilir: bir sinir sistemi kullanılabilir. Sinir sistemine erişmek `category=generalnn` için parametresini kullanın.
-* Sinir varsayılan: sinir, varsayılan çeviri sistemidir. Microsoft Translator hub `category=smt` 'ı ile kullanmak üzere istatistiksel sisteme erişmek için parametresini kullanın.
+* Sinir kullanılabilir: bir sinir sistemi kullanılabilir. `category=generalnn`Sinir sistemine erişmek için parametresini kullanın.
+* Sinir varsayılan: sinir, varsayılan çeviri sistemidir. `category=smt`Microsoft Translator hub 'ı ile kullanmak üzere istatistiksel sisteme erişmek için parametresini kullanın.
 * Yalnızca sinir: yalnızca sinir çeviri kullanılabilir.
 
-**V3 Translator API 'si** V3 Translator API 'SI varsayılan olarak sinir ve istatistiksel sistemler yalnızca sinir sistemi yoksa kullanılabilir.
+**V3 çevirmeni** V3 Translator varsayılan olarak sinir ve istatistiksel sistemler yalnızca sinir sistemi yoksa kullanılabilir.
 
 > [!NOTE]
 > Şu anda, sinir dillerinin bir alt kümesi özel çevirmende bulunabilir ve bunlar yavaş yavaş bir şekilde ekliyoruz. [Özel çevirmende mevcut olan dilleri görüntüleyin](#customization).
@@ -116,7 +116,7 @@ Translator Metin Çevirisi API'si metin çevirisi için aşağıdaki dilleri des
 |Yucatec Maya|  `yua`   |   Ki|
 
 > [!NOTE]
-> Dil kodu `pt` varsayılan olarak `pt-br`, Portekizce (Brezilya) olur.
+> Dil kodu `pt` Varsayılan olarak `pt-br` , Portekizce (Brezilya) olur.
 
 ## <a name="transliteration"></a>Alfabeye çevirme
 
@@ -126,10 +126,10 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça`Arab` | <--> | Tin`Latn` |
 |Bangla  | `bn` | Bengali`Beng` | <--> | Tin`Latn` |
-| Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Tin`Latn` |
-| Çince (Basitleştirilmiş) | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Geleneksel Çince`Hant`|
-| seçenekleri yerine | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Tin`Latn` |
-| seçenekleri yerine | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Basitleştirilmiş Çince`Hans` |
+| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Tin`Latn` |
+| Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince`Hans`| <--> | Geleneksel Çince`Hant`|
+| Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Tin`Latn` |
+| Geleneksel Çince | `zh-Hant` | Geleneksel Çince`Hant`| <--> | Basitleştirilmiş Çince`Hans` |
 | Gucerat dili | `gu`  | Gucerat dili`Gujr` | --> | Tin`Latn` |
 | İbranice | `he` | İbranice`Hebr` | <--> | Tin`Latn` |
 | Hintçe | `hi` | Devanagari`Deva` | <--> | Tin`Latn` |
@@ -204,12 +204,12 @@ Sözlük, arama ve örnekler yöntemlerini kullanarak Ingilizce 'ye veya Ingiliz
 
 ## <a name="detect"></a>Algılama
 
-Translator Metin Çevirisi API'si, çeviri ve alfabede kullanılabilen tüm dilleri algılar.
+Çevirmen, çeviri ve alfabede kullanılabilen tüm dilleri algılar.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Translator Metin Çevirisi API'si dil listesine programlı olarak erişin
+## <a name="access-the-translator-language-list-programmatically"></a>Çeviri dili listesine programlı olarak erişin
 
-Diller metodunu kullanarak Translator Metin Çevirisi API'si v 3.0 için desteklenen dillerin bir listesini alabilirsiniz. Liste özelliği, dil kodu ve dil adı ile Ingilizce veya desteklenen başka bir dilde görünüm görüntüleyebilirsiniz. Yeni diller kullanılabilir hale getirildiğinden bu liste Microsoft Translator hizmeti tarafından otomatik olarak güncelleştirilir.
+Diller metodunu kullanarak Translator v 3.0 için desteklenen dillerin bir listesini alabilirsiniz. Liste özelliği, dil kodu ve dil adı ile Ingilizce veya desteklenen başka bir dilde görünüm görüntüleyebilirsiniz. Yeni diller kullanılabilir hale getirildiğinden bu liste Microsoft Translator hizmeti tarafından otomatik olarak güncelleştirilir.
 
 [Dilleri görüntüle işlem başvurusu belgeleri](reference/v3-0-languages.md)
 
@@ -269,6 +269,6 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web sitesindeki listeye erişin
 
-Microsoft Translator Web sitesinde, dillere hızlı bir bakış için Translator Metin Çevirisi ve konuşma API 'Leri tarafından desteklenen tüm diller gösterilmektedir. Bu liste, dil kodları gibi geliştiriciye özgü bilgiler içermez.
+Dillere hızlı bir bakış için, Microsoft Translator Web sitesi, çevirmen ve konuşma API 'Leri tarafından desteklenen tüm dilleri gösterir. Bu liste, dil kodları gibi geliştiriciye özgü bilgiler içermez.
 
 [Dillerin listesine bakın](https://www.microsoft.com/translator/languages.aspx)

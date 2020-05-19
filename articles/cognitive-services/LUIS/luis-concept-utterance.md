@@ -2,13 +2,13 @@
 title: İyi örnek utterer-LUSıS
 description: İfadeler kullanıcının yaptığı ve uygulamanızın yorumlaması gereken girişlerdir. Kullanıcıların girecağı tümcecikleri toplayın. Aynı şeyi gösteren, ancak sözcük uzunluğu ve sözcük yerleşimi içinde farklı şekilde oluşturulan utterleri dahil edin.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382283"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592874"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUSıS uygulamanız için nelerin iyi olduğunu anlayın
 
@@ -68,11 +68,27 @@ Birkaç noktadır başlamak daha iyidir, ardından doğru amaç tahmini ve varl�
 
 ## <a name="utterance-normalization"></a>Utterance normalleştirmesi
 
-Utterance normalleştirme, eğitim ve tahmin sırasında noktalama ve aksanların etkilerini gözardı eden bir işlemdir. Söylenişi normalleştirmelerinin, söylenişi öngörülerini nasıl etkilediğini denetlemek için [uygulama ayarlarını](luis-reference-application-settings.md) kullanın.
+Utterance normalleştirme, eğitim ve tahmin sırasında metin türlerinin (noktalama ve aksan gibi) etkilerini yok saymakla oluşan bir işlemdir.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Aksanların ve noktalama işaretlerinin utterance normalleştirilmesi
+Söylenişi normalleştirme ayarları varsayılan olarak kapalıdır. Bu ayarlar şunlardır:
 
-Uygulama JSON dosyasında bir ayar olduğundan, uygulamayı oluşturduğunuzda veya içeri aktardığınızda utterance normalleştirmesi tanımlanmıştır. Söylenişi normalleştirme ayarları varsayılan olarak kapalıdır.
+* Sözcük formları
+* İşaretlerini
+* Noktalama işaretleri
+
+Bir normalleştirme ayarı açarsanız, **Test** bölmesi, toplu iş testleri ve uç nokta sorguları, bu normalleştirme ayarı için tüm söyleyenlerdeki puanlar değişir.
+
+LUU portalındaki bir sürümü kopyaladığınızda, sürüm ayarları yeni kopyalanmış sürüme devam eder.
+
+Sürüm ayarlarını,, **Yönetim** bölümünde, **uygulama ayarları** sayfasında veya [Sürüm AYARLARıNı Güncelleştir API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)aracılığıyla halan portalı aracılığıyla ayarlayın. Bu normalleştirmede bu değişiklikler hakkında daha fazla bilgi [edinin.](luis-reference-application-settings.md)
+
+### <a name="word-forms"></a>Sözcük formları
+
+**Sözcük biçimlerinin** normalleştirilmesi, kökün ötesinde görüntülenen sözcüklerdeki farkları yoksayar. Örneğin,, ve, `run` `running` `runs` fiil zaman hali temel alınarak değişir.
+
+<a name="utterance-normalization-for-diacritics-and-punctuation"></a>
+
+### <a name="diacritics"></a>İşaretlerini
 
 Aksanlar, metin içindeki işaretler veya işaretlerdir, örneğin:
 
@@ -80,24 +96,8 @@ Aksanlar, metin içindeki işaretler veya işaretlerdir, örneğin:
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Uygulamanız üzerinde normalleştirmeyi kapatırsa, **Test** bölmesi, toplu iş testleri ve uç nokta sorguları, vurgu veya noktalama kullanan tüm söyler için değişecektir.
-
-`settings` Parametresindeki lusıs JSON uygulama dosyanıza aksanlar veya noktalama işaretleri için söylenişi normalleştirmesini açın.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"},
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
-
-**Noktalama işareti** , modelleriniz eğitilen ve uç nokta sorgularınız tahmin etmeden önce, noktalama işaretlerinden kaldırılacak şekilde görünür.
-
-**Aksanların** normalleştirilmesi, karakterleri normal karakterlerle birlikte gelen aksan işaretleri ile değiştirir. Örneğin: `Je parle français` olur `Je parle francais`.
-
-Normalleştirme, örnek ifade veya tahmin yanıtlarınızda noktalama ve aksanlar görmeyecek ve yalnızca eğitim ve tahmin sırasında yoksayıladıklarından emin değildir.
-
 ### <a name="punctuation-marks"></a>Noktalama işaretleri
+**Noktalama işareti** , modelleriniz eğitilen ve uç nokta sorgularınız tahmin etmeden önce, noktalama işaretlerinden kaldırılacak şekilde görünür.
 
 Noktalama, LUSıS 'de ayrı bir belirteçtir. Uçta nokta içermeyen bir nokta ile sonunda bir nokta içeren bir söylenişi iki ayrı tanüler ve iki farklı tahmin elde edebilir.
 
@@ -109,12 +109,14 @@ Noktalama, istemci uygulamanızda belirli bir anlamı yoksa, noktalama işaretle
 
 ### <a name="ignoring-words-and-punctuation"></a>Sözcükler ve noktalama işaretleri yoksayılıyor
 
-Desenlerde belirli sözcükleri veya noktalama işaretlerini yoksaymak istiyorsanız köşeli ayraçın _Yoksay_ sözdizimi olan bir `[]` [desen](luis-concept-patterns.md#pattern-syntax) kullanın.
+Desenlerde belirli sözcükleri veya noktalama işaretlerini yoksaymak istiyorsanız köşeli ayraçın _Yoksay_ sözdizimi olan bir [desen](luis-concept-patterns.md#pattern-syntax) kullanın `[]` .
 
-## <a name="training-utterances"></a>Eğitim konuşmaları
+<a name="training-utterances"></a>
+
+## <a name="training-with-all-utterances"></a>Tüm dıklarla eğitim
 
 Eğitim genellikle belirleyici değildir: söylenişi tahmini sürümler veya uygulamalar arasında biraz farklılık gösterebilir.
-[Sürüm ayarları](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 'sini, tüm eğitim verilerini kullanacak şekilde `UseAllTrainingData` ad/değer çiftiyle güncelleştirerek, belirleyici olmayan eğitimi kaldırabilirsiniz.
+[Sürüm ayarları](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 'sini, `UseAllTrainingData` tüm eğitim verilerini kullanacak şekilde ad/değer çiftiyle güncelleştirerek, belirleyici olmayan eğitimi kaldırabilirsiniz.
 
 ## <a name="testing-utterances"></a>Söyleyceler test etme
 
@@ -139,7 +141,7 @@ Aşağıdaki söyleyde, sözcük `fair` hograf ' dır. Aynı şekilde yazılmı�
 |Bu yaz Seattle alanında ne tür bir ilçe FAIRS oluyor?|
 |Seattle incelemesi için geçerli derecelendirme mi?|
 
-Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, ilk utterde sözcüğü `fair` etiketleyip ikincinin.
+Tüm olay verilerini bulmak için bir olay varlığı istediyseniz, `fair` ilk utterde sözcüğü etiketleyip ikincinin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

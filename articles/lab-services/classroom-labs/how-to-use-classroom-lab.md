@@ -1,6 +1,6 @@
 ---
 title: Azure Lab Services’teki bir sınıf laboratuvarına erişme | Microsoft Docs
-description: Bu öğreticide, bir profesör tarafından ayarlanan sınıf laboratuvarındaki sanal makinelere erişirsiniz.
+description: Bu öğreticide, bir eğitimci tarafından ayarlanan bir sınıf laboratuvarında sanal makinelere erişirsiniz.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: ebda7ecec363abc1b58cdc3fc6c0799ca879adcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2430348a8bfbecda3f172361a40a96ef801f5bc4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118405"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592449"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
 
 ## <a name="register-to-the-lab"></a>Laboratuvara kaydolun
 
-1. Profesörden/eğitimciden aldığınız **kayıt URL’sine** gidin. Kayıt tamamlandıktan sonra kayıt URL 'sini kullanmanız gerekmez. Bunun yerine, URL 'YI kullanın: [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 henüz desteklenmiyor. 
+1. Eğitimci tarafından aldığınız **kayıt URL** 'sine gidin. Kayıt tamamlandıktan sonra kayıt URL 'sini kullanmanız gerekmez. Bunun yerine, URL 'YI kullanın: [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 henüz desteklenmiyor. 
 
     ![Laboratuvara kaydolun](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Kaydı tamamlamak için okul hesabınızı kullanarak hizmette oturum açın. 
@@ -60,7 +60,7 @@ Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm labora
 
     ![VM’ye bağlanma](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Aşağıdaki adımlardan birini yapın: 
-    1. **Windows** sanal makineleri için **RDP** dosyasını sabit diske kaydedin. Sanal makineye bağlanmak için RDP dosyasını açın. Makine üzerinde oturum açmak için eğitimci/Mesleme makinenizden aldığınız **Kullanıcı adı** ve **parolayı** kullanın. 
+    1. **Windows** sanal makineleri için **RDP** dosyasını sabit diske kaydedin. Sanal makineye bağlanmak için RDP dosyasını açın. Makine üzerinde oturum açmak için eğitimcinizden aldığınız **Kullanıcı adı** ve **parolayı** kullanın. 
     3. **Linux** sanal makinelerinde, bunlara bağlanmak için **SSH** veya **RDP** (etkinse) kullanabilirsiniz. Daha fazla bilgi için bkz. [Linux makineleri için Uzak Masaüstü bağlantısını etkinleştirme](how-to-enable-remote-desktop-linux.md). 
     1. Laboratuvar VM 'sine bağlanmak için bir **Mac** kullanıyorsanız, sonraki bölümdeki yönergeleri izleyin. 
 

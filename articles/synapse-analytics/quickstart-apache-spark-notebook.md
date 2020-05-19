@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Apache Spark Not defteri oluşturma'
+title: 'Hızlı başlangıç: Azure SYNAPSE Analytics Not defteri için Apache Spark oluşturma'
 description: Bu hızlı başlangıçta, Azure SYNAPSE Analytics 'te bir Apache Spark Havuzu (Önizleme) oluşturmak ve bir Spark SQL sorgusu çalıştırmak için web araçlarının nasıl kullanılacağı gösterilmektedir.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786677"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592959"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'de Apache
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE Analytics çalışma alanı](quickstart-create-workspace.md)
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
@@ -49,7 +49,7 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
 4. **Özellikler** penceresinde, Not defteri için bir ad sağlayın.
 5. Araç çubuğunda **Yayımla**' ya tıklayın.
 6. Çalışma alanınızda yalnızca bir Apache Spark havuzu varsa, varsayılan olarak seçilidir. Hiçbiri seçili değilse, doğru Apache Spark havuzunu seçmek için açılan eklentiyi kullanın.
-7. **Kod Ekle**' ye tıklayın. Varsayılan dil `Pyspark`. Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir.
+7. **Kod Ekle**' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir.
 8. Daha sonra, işlemek için basit bir Spark DataFrame nesnesi oluşturursunuz. Bu durumda, kodu koddan oluşturursunuz. Üç satır ve üç sütun vardır:
 
    ```python
@@ -79,7 +79,7 @@ Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamd
      demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
     ```
 
-    Depolama Gezgini 'ni kullanıyorsanız, yukarıda kullanılan bir dosyayı yazmanın iki farklı yolu hakkında etkisini görmek mümkündür. Hiçbir dosya sistemi belirtilmediğinde, bu durumda `default>user>trusted-service-user>demo_df`varsayılan olarak kullanılır. Veriler, belirtilen dosya sisteminin konumuna kaydedilir.
+    Depolama Gezgini 'ni kullanıyorsanız, yukarıda kullanılan bir dosyayı yazmanın iki farklı yolu hakkında etkisini görmek mümkündür. Hiçbir dosya sistemi belirtilmediğinde, bu durumda varsayılan olarak kullanılır `default>user>trusted-service-user>demo_df` . Veriler, belirtilen dosya sisteminin konumuna kaydedilir.
 
     Hem "CSV" hem de "Parquet" biçimlerinde, yazma işlemlerinde bir dizin oluşturan çok sayıda bölümlenmiş dosya ile dikkat edin.
 
@@ -98,7 +98,7 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
    SHOW TABLES
    ```
 
-   Azure SYNAPSE Apache Spark havuzunuzdaki bir not defteri kullanırken, Spark SQL kullanarak sorguları çalıştırmak için `sqlContext` kullanabileceğiniz bir önayar alırsınız. `%%sql`Not defterine sorguyu çalıştırmak için önceden belirlenmiş `sqlContext` ayarı kullanmasını söyler. Sorgu, varsayılan olarak tüm Azure SYNAPSE Apache Spark havuzlarıyla birlikte gelen bir sistem tablosundan ilk 10 satırı alır.
+   Azure SYNAPSE Apache Spark havuzunuzdaki bir not defteri kullanırken, `sqlContext` Spark SQL kullanarak sorguları çalıştırmak için kullanabileceğiniz bir önayar alırsınız. `%%sql`Not defterine sorguyu çalıştırmak için önceden belirlenmiş ayarı kullanmasını söyler `sqlContext` . Sorgu, varsayılan olarak tüm Azure SYNAPSE Apache Spark havuzlarıyla birlikte gelen bir sistem tablosundan ilk 10 satırı alır.
 
 2. `demo_df` komutundaki verileri görmek için başka bir sorgu çalıştırın.
 
@@ -119,7 +119,7 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
 6. X ekseni sütun alanında "durum" ı seçin.
 7. Y ekseni sütun alanında "ücret" i seçin.
 8. **Toplama** alanında "Ort" seçeneğini belirleyin.
-9. **Uygula**’yı seçin.
+9. **Apply** (Uygula) seçeneğini belirleyin.
 
    ![Azure SYNAPSE Spark 'da grafik çıkışı](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure SYNAPSE Spark 'da grafik çıkışı")
 

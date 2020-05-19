@@ -2,19 +2,17 @@
 title: LUSıS portalında test uygulaması
 description: Uygulamanızı iyileştirmek ve dilini anlamak için uygulamanızda sürekli çalışmak üzere Language Understanding (LUO) kullanın.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/07/2020
+ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219824"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591871"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Lusıs uygulamanızı Lua portalında test etme
 
 Bir uygulamayı [test etmek](luis-concept-test.md) , yinelemeli bir işlemdir. LUSıS uygulamanıza eğitim ettikten sonra, amaçları ve varlıkların doğru şekilde tanınıp tanınmadığını görmek için örnek bir şekilde test edin. Aksi takdirde, LUSıS uygulaması, eğit ve test güncelleştirmelerini yeniden yapın.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -24,13 +22,16 @@ Bir uygulamayı [test etmek](luis-concept-test.md) , yinelemeli bir işlemdir. L
 
 ## <a name="train-before-testing"></a>Sınamadan önce eğitme
 
-Etkin uygulamanın en son sürümüne karşı test etmek için, test etmeden önce üstteki menüden **eğitme** ' yi seçin.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
+1. Etkin uygulamanın en son sürümüne karşı test etmek için, test etmeden önce üstteki menüden **eğitme** ' yi seçin.
 
 ## <a name="test-an-utterance"></a>Bir söylenişi test etme
 
 Test utterine, uygulamadaki herhangi bir örnek ile tam olarak aynı olmamalıdır. Test utterine, bir kullanıcı için beklediğinizi kelime seçimi, tümcecik uzunluğu ve varlık kullanımını içermelidir.
 
-1. **Uygulamalarım** sayfasında adını seçerek uygulamanıza erişin.
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın.
 
 1. **Test** slayt paneli paneline erişmek için uygulamanızın üst panelinde **Test** ' i seçin.
 

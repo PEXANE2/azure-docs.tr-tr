@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6a1a743f313ca4159ce4ef03413a94ec25bb8fae
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199527"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591242"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme
 
@@ -90,7 +90,7 @@ Artık Google istemci KIMLIĞINI ve istemci gizli anahtarını Azure AD portalı
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Google Federasyonu 'ni Azure AD portalında yapılandırmak için 
 1. [Azure Portal](https://portal.azure.com)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcıları**' nı seçin ve ardından **Google** düğmesine tıklayın.
 4. Bir ad girin. Daha önce edindiğiniz istemci KIMLIĞINI ve istemci gizli anahtarını girin. **Kaydet**’i seçin. 
 
@@ -112,7 +112,7 @@ Google Federation kurulumunuzu silebilirsiniz. Bunu yaparsanız, davetini zaten 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Azure AD portalında Google Federasyonu 'ni silmek için: 
 1. [Azure Portal](https://portal.azure.com)gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
-2. **Kuruluş ilişkilerini** (veya **dış kimlikleri**) seçin.
+2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcılarını**seçin.
 4. **Google** satırında bağlam menüsünü (**...**) seçin ve **Sil**' i seçin. 
    

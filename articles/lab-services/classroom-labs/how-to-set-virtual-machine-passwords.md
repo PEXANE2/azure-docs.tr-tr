@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8479c00ed2129d5726421f576e1fffdb4506fb4b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78933829"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592483"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Sanal makine havuzunu ayarlama ve yönetme 
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -30,7 +30,7 @@ Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 ## <a name="update-the-lab-capacity"></a>Laboratuvar kapasitesini güncelleştirme
 Laboratuvar kapasitesini artırmak veya azaltmak için (bir laboratuvardaki sanal makinelerin sayısı), aşağıdaki adımları uygulayın:
 
-1. **Sanal makine havuzu** sayfasında, ** &lt;laboratuvar kapasitesi: numara&gt; makineleri**' ni seçin.
+1. **Sanal makine havuzu** sayfasında, **Laboratuvar kapasitesi: &lt; numara &gt; makineleri**' ni seçin.
 2. Laboratuvarda istediğiniz yeni **VM sayısını** girin. Bu sayı, laboratuvarda kayıtlı Kullanıcı sayısından büyük veya buna eşit olmalıdır. 
 3. Ardından **Kaydet**’i seçin. 
 
@@ -74,14 +74,14 @@ Bir veya daha fazla VM 'yi sıfırlamak için listeden bunları seçin ve ardın
 
 
 ## <a name="set-password-for-vms"></a>VM 'Ler için parola ayarlama
-Laboratuvar sahibi (öğretmen), Laboratuvar oluşturma (Laboratuvar oluşturma Sihirbazı) sırasında veya **şablon** sayfasında laboratuvar oluşturduktan sonra VM 'lerin parolasını ayarlayabilir/sıfırlayabilir. 
+Laboratuvar sahibi (eğiticator), Laboratuvar oluşturma (Laboratuvar oluşturma Sihirbazı) sırasında veya **şablon** sayfasında laboratuvar oluşturduktan sonra VM 'lerin parolasını ayarlayabilir/sıfırlayabilir. 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>Laboratuvar oluşturma sırasında parola ayarla
-Laboratuvar sahibi (öğretmen) Laboratuvar oluşturma sihirbazının **sanal makine kimlik bilgileri** sayfasında laboratuvardaki VM 'ler için bir parola ayarlayabilir.
+Laboratuvar sahibi (eğiticator) Laboratuvar oluşturma sihirbazının **sanal makine kimlik bilgileri** sayfasında laboratuvardaki VM 'ler için bir parola ayarlayabilir.
 
 ![Yeni laboratuvar penceresi](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-Bu sayfadaki **tüm sanal makineler için aynı parolayı kullan** seçeneğini etkinleştirip devre dışı bırakarak bir öğretmen, laboratuvardaki tüm VM 'ler için aynı parolayı kullanmayı seçebilir veya öğrencilerin VM 'leri için parola değiştirmesine izin verebilir. Varsayılan olarak, bu ayar Ubuntu hariç tüm Windows ve Linux işletim sistemi görüntüleri için etkinleştirilmiştir. Bu ayar devre dışı bırakıldığında, sanal makineye ilk kez bağlanmaya çalıştıklarında öğrencilerden bir parola ayarlaması istenir. 
+Bu sayfadaki **tüm sanal makineler için aynı parolayı kullan** seçeneğini etkinleştirip devre dışı bırakarak, bir eğitimci, laboratuvardaki tüm VM 'ler için aynı parolayı kullanmayı seçebilir veya öğrencilerin VM 'leri için parola değiştirmesine izin verebilir. Varsayılan olarak, bu ayar Ubuntu hariç tüm Windows ve Linux işletim sistemi görüntüleri için etkinleştirilmiştir. Bu ayar devre dışı bırakıldığında, sanal makineye ilk kez bağlanmaya çalıştıklarında öğrencilerden bir parola ayarlaması istenir. 
 
 ### <a name="reset-password-later"></a>Parolayı daha sonra Sıfırla
 
@@ -91,7 +91,7 @@ Bu sayfadaki **tüm sanal makineler için aynı parolayı kullan** seçeneğini 
     ![Parolayı ayarla iletişim kutusu](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="connect-to-student-vms"></a>Öğrenci VM 'lerine bağlanma
-Aşağıdaki koşullar karşılandığında laboratuvar Oluşturucu (eğitmen/mesleör. bir öğrenci VM 'sine bağlanabilir: 
+Aşağıdaki koşullar karşılandığında laboratuvar Oluşturucu (eğiticator) bir öğrenci VM 'sine bağlanabilir: 
 
 - Laboratuvar oluşturulurken **tüm sanal makineler için aynı parolayı kullan** seçeneği seçildi
 - VM çalışıyor 
@@ -101,7 +101,7 @@ Aşağıdaki koşullar karşılandığında laboratuvar Oluşturucu (eğitmen/me
 ![Öğrenci VM 'sine bağlanma düğmesi](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> Mesleme VM 'yi başlatır ve buna bağlanır, öğrenci kotası etkilenmez. 
+> Eğitimci VM 'yi başlatır ve buna bağlanır, öğrenci kotası bundan etkilenmez. 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Sanal makinelerin listesini bir CSV dosyasına aktar
 

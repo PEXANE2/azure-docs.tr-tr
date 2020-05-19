@@ -8,22 +8,22 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: a2f907384326aa887c12c293feb8c988f42bbaf1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210520"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591973"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure SYNAPSE Analytics Apache Spark havuzlarını otomatik olarak ölçeklendirme
 
-Azure SYNAPSE Spark havuzunun otomatik ölçeklendirme özelliği, bir küme örneğindeki düğümlerin sayısını yukarı ve aşağı otomatik olarak ölçeklendirir. Yeni bir Azure SYNAPSE Spark havuzunun oluşturulması sırasında, otomatik ölçeklendirme seçildiğinde en düşük ve en fazla düğüm sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, yükün kaynak gereksinimlerini izler ve düğüm sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
+Azure SYNAPSE Analytics havuzunun otomatik ölçeklendirme özelliği için Apache Spark, bir küme örneğindeki düğümlerin sayısını yukarı ve aşağı otomatik olarak ölçeklendirir. Azure SYNAPSE Analytics havuzu için yeni bir Apache Spark oluşturulması sırasında, otomatik ölçeklendirme seçildiğinde en düşük ve en fazla düğüm sayısı ayarlanabilir. Sonra otomatik ölçeklendirme, yükün kaynak gereksinimlerini izler ve düğüm sayısını yukarı veya aşağı ölçeklendirir. Bu özellik için ek ücret alınmaz.
 
 ## <a name="metrics-monitoring"></a>Ölçüm izleme
 
 Otomatik ölçeklendirme Spark örneğini sürekli izler ve aşağıdaki ölçümleri toplar:
 
-|Ölçüm|Açıklama|
+|Metric|Açıklama|
 |---|---|
 |Toplam bekleyen CPU|Tüm bekleyen düğümlerin yürütülmesini başlatmak için gereken toplam çekirdek sayısı.|
 |Toplam bekleyen bellek|Tüm bekleyen düğümlerin yürütülmesini başlatmak için gereken toplam bellek (MB cinsinden).|
@@ -46,7 +46,7 @@ Aşağıdaki koşullar algılandığında otomatik ölçeklendirme bir ölçek i
 
 Ölçek azaltma için, yürütme sayısına, düğüm başına uygulama ana bilgisayarlara ve geçerli CPU ve bellek gereksinimlerine göre otomatik ölçeklendirme, belirli sayıda düğümü kaldırma isteği verir. Hizmet ayrıca hangi düğümlerin geçerli iş yürütmeye göre kaldırılması gerektiğini de algılar. Ölçeği azaltma işlemi, önce düğümleri yeniden komisyonlar ve sonra kümeden kaldırır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 ### <a name="create-a-spark-pool-with-autoscaling"></a>Otomatik ölçeklendirme ile Spark havuzu oluşturma
 
