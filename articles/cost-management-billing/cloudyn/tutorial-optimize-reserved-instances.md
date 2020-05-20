@@ -171,7 +171,7 @@ Aşağıdaki resimde, rapordaki satın alma önerileri gösterilir.
 
 Bu örnekte, Cloudyn\_A hesabının 32 ayrılmış örnek satın alma önerisi vardır. Tüm satın alma önerilerine uyarsanız, yıllık 137.770 AMD Doları tasarruf etme potansiyeliniz olur. Cloudyn tarafından sağlanan satın alma önerilerinde, çalışan iş yüklerinizde kullanımın tutarlı kalacağının varsayıldığını unutmayın.
 
-Her satın almanın neden önerildiğini açıklayan ayrıntıları görüntülemek için, **Gerekçeler**'in altındaki artı simgesine ( **+** ) tıklayın. Aşağıda, listedeki ilk öneri için bir örnek verilmiştir.
+Her satın almanın neden önerildiğini açıklayan ayrıntıları görüntülemek için, **Gerekçeler**'in altındaki artı simgesine (**+**) tıklayın. Aşağıda, listedeki ilk öneri için bir örnek verilmiştir.
 
 ![Satın alma gerekçesinin ayrıntılarını gösteren örnek](./media/tutorial-optimize-reserved-instances/aws02.png)
 
