@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984019"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653308"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure sanal ağ için IPv6 nedir?
 
@@ -58,6 +58,7 @@ Azure VNet için IPv6 aşağıdaki özellikleri içerir:
     - Tek bir yük dengeleyicinin birden çok IPv6 genel IP adresi kullanmasını sağlayan isteğe bağlı birden çok ön uç yapılandırması-aynı ön uç Protokolü ve bağlantı noktası ön uç adresleri arasında yeniden kullanılabilir.
     - İsteğe bağlı IPv6 bağlantı noktaları, Yük Dengeleme kurallarının *kayan IP* özelliğini kullanarak arka uç örneklerinde yeniden kullanılabilir 
     - Not: Yük Dengeleme hiçbir protokol çevirisi gerçekleştirmez (NAT64 yok). 
+    - Note: IPv6 yalnızca Azure VM 'lerinde birincil ağ arabirimine (NIC) yük dengelemesi yapılabilir. 
 - Azure sanal ağları 'nda esnek çok katmanlı uygulamalar oluşturmak için [Standart IPv6 iç Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) desteği.   
 - Eski dağıtımlarla uyumluluk için temel IPv6 genel Load Balancer desteği
 - [Ayrılmış IPv6 genel IP adresleri ve adres aralıkları](ipv6-public-ip-address-prefix.md) , şirketiniz ve müşterileriniz için Azure 'da barındırılan uygulamalarınızın daha kolay bir şekilde listelenmesini sağlayan kararlı, öngörülebilir IPv6 adresleri sağlar.
@@ -73,10 +74,14 @@ Azure sanal ağ için IPv6, müşterilerin Azure 'da ikili yığın (IPv4 + IPv6
 
 ## <a name="limitations"></a>Sınırlamalar
 Azure sanal ağ sürümü için geçerli IPv6 aşağıdaki sınırlamalara sahiptir:
-- Azure sanal ağ için IPv6, tüm dağıtım yöntemlerini kullanan tüm küresel Azure ticari bölgelerde kullanılabilir.  ABD kamu bulutunda dağıtım, ARM (JSON) şablonu, komut satırı arabirimi (CLı) ve PowerShell ile geçici olarak sınırlıdır.  ABD kamu bulut portalındaki IPv6 desteği kısa bir süre içinde kullanıma sunulacaktır.  
+- Azure sanal ağ için IPv6, tüm dağıtım yöntemlerini kullanan tüm küresel Azure ticari ve ABD kamu bölgelerinde kullanılabilir.  
 - ExpressRoute ağ geçitleri, IPv6 'nın etkin olduğu bir VNET 'teki yalnızca IPv4 trafiği için kullanılabilir.  IPv6 trafiği desteği yol haritasında bulunur.   
 - VPN ağ geçitleri, doğrudan veya "UseRemoteGateway" ile birlikte IPv6 etkin olan VNET 'te kullanılamaz.
 - Azure platformu (AKS, vb.) kapsayıcılar için IPv6 iletişimini desteklemez.  
+- IPv6, yalnızca Azure VM 'lerinde birincil ağ arabirimine (NIC) yük dengelemesi yapılabilir. İkincil NIC 'lere IPv6 trafiğinin yük dengelemesi desteklenmez.    
+- Yalnızca IPv6 sanal makineler veya sanal makine ölçek kümeleri desteklenmez, her NIC en az bir IPv4 IP yapılandırması içermelidir. 
+- IPv6 aralıkları var olan IPv4 dağıtımlarına eklenirken, mevcut kaynak gezinti bağlantılarıyla birlikte bir sanal ağa IPv6 aralıkları eklenemez.  
+- IPv6 için iletme DNS, Azure genel DNS için bugün desteklenir, ancak ters DNS henüz desteklenmiyor.   
 
 ## <a name="pricing"></a>Fiyatlandırma
 

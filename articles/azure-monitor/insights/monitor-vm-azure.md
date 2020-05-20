@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: 2cb53d0c88d8c29da2bd8bf52d6536555d56c76e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283948"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654382"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -24,7 +24,7 @@ Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini 
 ## <a name="differences-from-other-azure-resources"></a>Diğer Azure kaynaklarından farklılıklar
 Azure [izleyici Ile Azure kaynaklarını izlemek](monitor-azure-resource.md) , Azure kaynakları tarafından oluşturulan izleme verilerini ve bu verileri çözümlemek ve uyarmak Için Azure izleyici 'nin özelliklerini nasıl kullanabileceğinizi açıklar. Azure sanal makinelerinizdeki aynı izleme verilerini aşağıdaki farklılıklarla toplayabilir ve üzerinde işlem yapabilirsiniz:
 
-- [Platform ölçümleri](../platform/data-platform-metrics.md) , sanal makineler için yalnızca [sanal makine Konağı](#monitoring-data)için otomatik olarak toplanır. Konuk işletim sisteminden performans verilerini toplamak için bir aracıya ihtiyacınız vardır. 
+-  [Platform ölçümleri](../platform/data-platform-metrics.md) , sanal makineler için yalnızca [sanal makine Konağı](#monitoring-data)için otomatik olarak toplanır. Konuk işletim sisteminden performans verilerini toplamak için bir aracıya ihtiyacınız vardır. 
 - Sanal makineler, bir Azure kaynağı içinde gerçekleştirilen işlemlere Öngörüler sağlayan [kaynak günlükleri](../platform/platform-logs-overview.md) oluşturmaz. Konuk işletim sisteminden günlük verilerini toplamak için bir aracı kullanırsınız.
 - Depolama ve Olay Hub 'ları gibi diğer hedeflere platform ölçümleri göndermek için bir sanal makine için [Tanılama ayarları](../platform/diagnostic-settings.md) oluşturabilirsiniz, ancak bu tanılama ayarlarını Azure Portal yapılandıramazsınız. 
 
@@ -121,7 +121,6 @@ az monitor diagnostic-settings create \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace
-
 ```
 
 ## <a name="monitoring-in-the-azure-portal"></a>Azure portal izleme 
@@ -149,12 +148,13 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 ## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
 Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kullanarak sanal makineler için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../platform/metrics-getting-started.md) kullanmaya başlama. 
 
-Ölçümler için sanal makineler tarafından kullanılan iki ad alanı vardır:
+Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Açıklama |
-|:---|:---|
-| Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. |
-| Sanal makine konuğu | Tanılama uzantısı yüklenmiş ve Azure Izleyici havuzuna gönderilmek üzere yapılandırılmış sanal makinelerden toplanan Konuk işletim sistemi ölçümleri. |
+| Ad Alanı | Açıklama | Gereksinim |
+|:---|:---|:---|
+| Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
+| Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |
+| Sanal makine konuğu | Konuk işletim sistemi ve uygulama performansı verileri, ölçümler kullanılarak tüm Azure Izleyici özellikleri için kullanılabilir. | Windows için [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) , Azure izleyici havuzu etkin olarak yüklendi. Linux için [telegraf Aracısı yüklenir](../platform/collect-custom-metrics-linux-telegraf.md). |
 
 ![Ölçümler](media/monitor-vm-azure/metrics.png)
 

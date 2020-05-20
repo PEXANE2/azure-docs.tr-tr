@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474859"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659552"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -64,7 +64,7 @@ HTTP POST isteğiyle GenerateAnswer öğesini çağırın. GenerateAnswer çağr
 POST isteği şunu kullanır:
 
 * Gerekli [URI parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Güvenlik için gerekli üst `Authorization`bilgi özelliği
+* Güvenlik için gerekli üst bilgi özelliği `Authorization`
 * Gerekli [gövde özellikleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 GenerateAnswer URL 'SI aşağıdaki biçime sahiptir:
@@ -73,7 +73,7 @@ GenerateAnswer URL 'SI aşağıdaki biçime sahiptir:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Öğesinin `Authorization` http üst bilgisi özelliğini, sonundaki boşluk ve sonra **Ayarlar** sayfasında bulunan uç `EndpointKey` nokta anahtarı ile birlikte dizenin bir değeriyle ayarlamayı unutmayın.
+Öğesinin HTTP üst bilgisi özelliğini, `Authorization` `EndpointKey` sonundaki boşluk ve sonra **Ayarlar** sayfasında bulunan uç nokta anahtarı ile birlikte dizenin bir değeriyle ayarlamayı unutmayın.
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -168,7 +168,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Özel meta veri etiketlerine göre yanıtları filtrelemek için meta verileri kullanma
 
-Meta veri eklemek, yanıtları bu meta veri etiketlerine göre filtrelemenize izin verir. **Görünüm seçenekleri** menüsünden meta veri sütununu ekleyin. Meta veri **+** simgesini seçerek, meta veri çifti eklemek için bilgi bankasından meta veriler ekleyin. Bu çift bir anahtar ve bir değer içerir.
+Meta veri eklemek, yanıtları bu meta veri etiketlerine göre filtrelemenize izin verir. **Görünüm seçenekleri** menüsünden meta veri sütununu ekleyin. Meta veri simgesini seçerek, meta veri çifti eklemek için bilgi bankasından meta veriler ekleyin **+** . Bu çift bir anahtar ve bir değer içerir.
 
 ![Meta veri ekleme ekran görüntüsü](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -226,9 +226,9 @@ GenerateAnswer yanıtı, eşleşen soru ve yanıt kümesi için karşılık gele
 
 ## <a name="match-questions-only-by-text"></a>Yalnızca soruları Eşleştir, metne göre
 
-Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için GenerateAnswer isteğinin GÖNDERI gövdesinde öğesini `RankerType=QuestionOnly` kullanın.
+Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için `RankerType=QuestionOnly` GenerateAnswer ISTEĞININ gönderi gövdesinde öğesini kullanın.
 
-Kullanarak `isTest=false` `isTest=true`, veya kullanarak, ile yayımlanan KB veya test KB içinde arama yapabilirsiniz.
+`isTest=false`Kullanarak, veya kullanarak, ile yayımlanan KB veya test KB içinde arama yapabilirsiniz `isTest=true` .
 
 ```json
 {
@@ -256,4 +256,4 @@ Kullanarak `isTest=false` `isTest=true`, veya kullanarak, ile yayımlanan KB vey
 **Yayımla** sayfası, Postman veya kıvrık [bir yanıt oluşturmak](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) için bilgi de sağlar.
 
 > [!div class="nextstepaction"]
-> [Bilgi Bankası bot oluştur](../tutorials/integrate-qnamaker-luis.md)
+> [Bilgi bankanız hakkında analizler alma](../how-to/get-analytics-knowledge-base.md)

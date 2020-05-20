@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 37a458aea659cb6215cf29e6abcbc3341c7e0b7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930582"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643266"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -105,7 +105,7 @@ Yeni bir yük dengeleme kuralı seçeneği ile giden bağlantılar için bir ön
       ]
 ```
 
-Normalde, `disableOutboundSnat` seçeneği _false_ olur ve bu kuralın, Yük Dengeleme kuralının arka uç havuzundaki ilişkili VM 'ler için giden SNAT programları olduğunu belirtir. Load Balancer `disableOutboundSnat` , bu yük dengeleme kuralının arka uç havuzundaki VM 'ler için giden bağlantılar için ilgili ön uç IP adresini kullanmasını engellemek üzere _true_ olarak değiştirilebilir.  Ayrıca, dış akışlar için de belirli bir IP adresini aynı zamanda [birden çok, Birleşik senaryolarda](#combinations) da açıklandığı gibi atayabilirsiniz.
+Normalde, `disableOutboundSnat` seçeneği _false_ olur ve bu kuralın, Yük Dengeleme kuralının arka uç havuzundaki ilişkili VM 'ler için giden SNAT programları olduğunu belirtir. `disableOutboundSnat`Load Balancer, bu yük dengeleme kuralının arka uç havuzundaki VM 'ler için giden bağlantılar için ilgili ön uç IP adresini kullanmasını engellemek üzere _true_ olarak değiştirilebilir.  Ayrıca, dış akışlar için de belirli bir IP adresini aynı zamanda [birden çok, Birleşik senaryolarda](#combinations) da açıklandığı gibi atayabilirsiniz.
 
 #### <a name="load-balancer-basic"></a>Load Balancer temel
 
@@ -257,6 +257,10 @@ Bazen bir VM 'nin giden akış oluşturmasına izin verilmesi istenmeyen bir hal
 Yük dengeli bir VM 'ye NSG uyguladığınızda, [hizmet etiketlerine](../virtual-network/security-overview.md#service-tags) ve [varsayılan güvenlik kurallarına](../virtual-network/security-overview.md#default-security-rules)dikkat edin. VM 'nin Azure Load Balancer durum araştırma isteklerini alabilmeniz gerekir. 
 
 Bir NSG AZURE_LOADBALANCER varsayılan etiketten durum araştırma isteklerini engelliyorsa, sanal makine sistem durumu araştırmanız başarısız olur ve VM aşağı işaretlenir. Load Balancer, bu VM 'ye yeni akış göndermeyi durduruyor.
+
+## <a name="connections-to-azure-storage-in-the-same-region"></a>Azure depolama ile aynı bölgedeki bağlantılar
+
+Yukarıdaki senaryolar aracılığıyla giden bağlantıların olması, VM ile aynı bölgedeki depolamaya bağlanmak için gerekli değildir. Bunu istemiyorsanız, yukarıda açıklandığı gibi ağ güvenlik gruplarını (NSG 'ler) kullanın. Diğer bölgelerdeki depolama bağlantısı için giden bağlantı gereklidir. Lütfen aynı bölgedeki bir VM 'den depolamaya bağlanırken, depolama tanılama günlüklerindeki kaynak IP adresinin, sanal makinenizin genel IP adresi değil, iç sağlayıcı adresi olacağını unutmayın. Depolama hesabınıza erişimi aynı bölgedeki bir veya daha fazla sanal ağ alt ağında bulunan VM 'Lerle kısıtlamak istiyorsanız, depolama hesabı güvenlik duvarını yapılandırırken ortak IP adresinizi değil [sanal ağ hizmet uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) kullanın. Hizmet uç noktaları yapılandırıldıktan sonra, sanal ağ özel IP adresinizi, iç sağlayıcı adresinde değil, depolama tanılama günlüklerinizin içinde görürsünüz.
 
 ## <a name="limitations"></a>Sınırlamalar
 - VNet ve diğer Microsoft Platformu Hizmetleri olmayan Web çalışanı rolleri, ön VNet Hizmetleri ve diğer platform hizmetleri işlevinin yan etkisi nedeniyle yalnızca bir iç Standart Load Balancer kullanıldığında erişilebilir. İlgili hizmetin kendisi veya temel alınan platform hiçbir bildirimde bulunmaksızın değişmeksizin, bu yan etkiye güvenmeyin. Yalnızca dahili Standart Load Balancer kullandığınızda istenirse, açıkça giden bağlantı oluşturmanız gerektiğini varsaymanız gerekir. Bu makalede açıklanan [varsayılan SNAT](#defaultsnat) senaryosu 3 kullanılabilir değildir.

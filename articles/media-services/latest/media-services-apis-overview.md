@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472093"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648546"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -54,7 +54,7 @@ Aşağıdaki şekilde, sayılar isteklerin akışını kronolojik sırada temsil
    * REST Media Services için kaynak URI 'SI.
    * Azure AD uygulama değerleri: istemci KIMLIĞI ve istemci parolası.
 
-   Gerekli tüm değerleri almak için bkz. [Azure CLI Ile erişim Azure Media Services API 'si](access-api-cli-how-to.md).
+   Gerekli tüm değerleri almak için bkz. [erişim Azure Media Services API 'si](access-api-cli-how-to.md).
 
 2. Azure AD erişim belirteci Orta katmana gönderilir.
 4. Orta katman Azure AD belirteci ile Azure Media REST API isteği gönderir.
@@ -84,7 +84,7 @@ Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksiniml
 
 ## <a name="long-running-operations"></a>Uzun süre çalışan işlemler
 
-Azure Media Services [Swagger dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) ile `x-ms-long-running-operation` işaretlenen işlemler uzun süren işlemlerdir. 
+`x-ms-long-running-operation`Azure Media Services [Swagger dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) ile işaretlenen işlemler uzun süren işlemlerdir. 
 
 Zaman uyumsuz Azure işlemlerini izlemeye ilişkin ayrıntılar için bkz. [Async Operations](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -96,7 +96,7 @@ Media Services, aşağıdaki uzun süren işlemlere sahiptir:
 * [Canlı etkinliği Başlat](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [LiveEvent 'i durdur](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  Olayı durdururken ilişkili tüm canlı çıkışları silmek için `removeOutputsOnStop` parametresini kullanın.  
+  `removeOutputsOnStop`Olayı durdururken ilişkili tüm canlı çıkışları silmek için parametresini kullanın.  
 * [LiveEvent 'i Sıfırla](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [LiveOutput oluştur](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [LiveOutput silme](https://docs.microsoft.com/rest/api/media/liveevents/delete)
@@ -113,7 +113,7 @@ Uzun bir işlemin başarılı gönderimi sırasında, ' 202 kabul edildi ' ve d�
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
-## <a name="sdks"></a>SDK’lar
+## <a name="sdks"></a>SDK
 
 > [!NOTE]
 > Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olduğu garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.
@@ -136,7 +136,7 @@ Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzu
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (amo), Media Services hakkında bilgi edinmek isteyen Windows müşterilerine sunulan bir araçtır. AMO, Media Services ile karşıya yükleme, indirme, kodlama, akış ve canlı içerik akışı yapan bir WinForms/C# uygulamasıdır. AMO Aracı, herhangi bir kod yazmadan Media Services test etmek isteyen istemcilere yöneliktir. AMI kodu, Media Services geliştirmek isteyen müşteriler için bir kaynak olarak sağlanır.
 
-AMO bir açık kaynak projem, topluluk tarafından destek sağlanır (sorunlar olarak https://github.com/Azure/Azure-Media-Services-Explorer/issues)bildirilebilir. Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya diğer soru opencode@microsoft.com veya açıklamalarla iletişim kurma.
+AMO bir açık kaynak projem, topluluk tarafından destek sağlanır (sorunlar olarak bildirilebilir https://github.com/Azure/Azure-Media-Services-Explorer/issues) . Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya opencode@microsoft.com diğer soru veya açıklamalarla iletişim kurma.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması, sayfalama
 
@@ -148,7 +148,7 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Gerekli tüm değerleri almak için bkz. [erişim Azure Media Services API 'si](access-api-cli-how-to.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

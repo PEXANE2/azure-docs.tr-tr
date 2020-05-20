@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/07/2020
+ms.date: 05/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 4fd01764c183098a8bd78d502eea7ab173fa22cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293908"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660165"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
@@ -154,7 +154,7 @@ Mimari şöyle görünür:
 4. Belirtilen genel uç noktalara giden bağlantılara izin vermek için Azure Güvenlik Duvarı kuralı oluşturun. Örnekte, Azure Yönetim API 'SI genel uç noktasına erişime nasıl izin verilecek gösterilmektedir.  
    1. Kurallar, ağ kuralı koleksiyonu ' nu seçin ve ardından ağ kuralı koleksiyonu Ekle ' ye tıklayın.  
    1. Ad: **mbir Boundrule**, öncelik girin, eylem **izin ver**' i seçin.  
-   1. Hizmet: adı **ToAzureAPI**.  Protokol: **herhangi bir**seçin. Kaynak adresi: VM 'Lerin ve Standart Load Balancer örneği için dağıtıldığı alt ağınız için aralığı girin: **11.97.0.0/24**. Hedef bağlantı noktaları: <b>*</b>girin.  
+   1. Hizmet: adı **ToAzureAPI**.  Protokol: **herhangi bir**seçin. Kaynak adresi: VM 'Lerin ve Standart Load Balancer örneği için dağıtıldığı alt ağınız için aralığı girin: **11.97.0.0/24**. Hedef bağlantı noktaları: girin <b>*</b> .  
    1. Kaydet
    1. Hala Azure Güvenlik duvarında konumlandırılmakta olduğunuz için genel bakış ' ı seçin. Azure Güvenlik duvarının özel IP adresini aklınızda edin.  
 5. Azure Güvenlik Duvarı 'na yol oluşturma  
@@ -162,7 +162,7 @@ Mimari şöyle görünür:
    1. MyRouteTable adını girin, abonelik, kaynak grubu ve konum ' u seçin (sanal ağınızın ve güvenlik duvarınızın konumuyla eşleşen).  
    1. Kaydet  
 
-   Güvenlik duvarı kuralı şöyle görünebilir: ![Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
+   Güvenlik duvarı kuralı şöyle görünebilir: ![ Azure Güvenlik Duvarı ile giden bağlantı](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. VM 'nizin alt ağından, **Myazurefirewall**özel IP 'Sinden Kullanıcı tanımlı yol oluşturun.
    1. Yol tablosuna yerleştirdiğiniz gibi rotalar ' ı tıklatın. Add (Ekle) seçeneğini belirleyin. 
@@ -176,7 +176,7 @@ Azure Yönetim API 'SI genel uç noktasına pacemaker çağrılarına izin verme
 ### <a name="important-considerations"></a>Önemli noktalar
 
   - Zaten şirket proxy 'si varsa, giden çağrıları ortak uç noktalarına yönlendirebilir. Genel uç noktalarına giden çağrılar, kurumsal denetim noktası üzerinden yapılır.  
-  - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun:`https://management.azure.com`  
+  - Proxy yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve`https://login.microsoftonline.com`  
   - VM 'lerden ara sunucuya bir yol olduğundan emin olun  
   - Proxy yalnızca HTTP/HTTPS çağrılarını işleymeyecektir. Genel uç noktasına giden çağrıları farklı protokoller üzerinden (RFC gibi) yapmak için ek bir gereksinim varsa, alternatif çözüm gerekecektir  
   - Pacemaker kümesinde kararsızlığa engel olmak için ara sunucu çözümü yüksek oranda kullanılabilir olmalıdır  
@@ -219,6 +219,10 @@ Pacemaker 'ın Azure Yönetim API 'siyle iletişim kurmasına izin vermek için 
      # Take the cluster out of maintenance mode
      sudo pcs property set maintenance-mode=false
      ```
+
+## <a name="other-solutions"></a>Diğer çözümler
+
+Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirildiğinden, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com` .  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

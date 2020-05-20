@@ -3,12 +3,12 @@ title: SharePoint dosyaları-Soru-Cevap Oluşturma
 description: Bilgi bankasını, Active Directory ile güvenliği sağlanabileceği sorular ve yanıtlar ile zenginleştirerek bilgi bankalarınıza güvenli SharePoint veri kaynakları ekleyin.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294871"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660297"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
@@ -18,7 +18,7 @@ Bilgi tabanınızı Soru-Cevap Oluşturma Yöneticisi olarak güvenli bir ShareP
 
 Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlaması için Active Directory Manager ile iletişim kurması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bulut tabanlı SharePoint-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
 * URL biçimi-Soru-Cevap Oluşturma yalnızca paylaşım için oluşturulan ve biçimdeki SharePoint URL 'lerini destekler`https://\*.sharepoint.com`
@@ -27,12 +27,12 @@ Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi de
 
 Soru-Cevap Oluşturma tarafından desteklenen tüm [dosya türlerini](../Concepts/content-types.md) , bir SharePoint sitesinden bilgi tabanınızdan ekleyebilirsiniz. Dosya kaynağının güvenliği varsa, [izin](#permissions) vermeniz gerekebilir.
 
-1. SharePoint sitesindeki kitaplıktan, dosyanın üç nokta menüsünü seçin `...`.
+1. SharePoint sitesindeki kitaplıktan, dosyanın üç nokta menüsünü seçin `...` .
 1. Dosyanın URL 'sini kopyalayın.
 
    ![Dosyanın üç nokta menüsünü seçip URL 'yi kopyalayarak SharePoint dosya URL 'sini alın.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. Soru-Cevap Oluşturma portalında, **Ayarlar** sayfasında, Bilgi Bankası 'na [URL 'yi ekleyin](manage-knowledge-bases.md#edit-knowledge-base) .
+1. Soru-Cevap Oluşturma portalında, **Ayarlar** sayfasında, Bilgi Bankası 'na URL 'yi ekleyin.
 
 ### <a name="images-with-sharepoint-files"></a>SharePoint dosyaları içeren görüntüler
 
@@ -44,7 +44,7 @@ Aşağıdaki markaşağı sözdizimi ile görüntüyü ekleyin:
 ![Explanation or description of image](URL of public image)
 ```
 
-Köşeli parantezdeki `[]`metin, görüntüyü açıklar. Parantez `()`içindeki URL, resmin doğrudan bağlantıdır.
+Köşeli parantezdeki metin, `[]` görüntüyü açıklar. Parantez içindeki URL, `()` resmin doğrudan bağlantıdır.
 
 Etkileşimli test panelinde QnA çiftini test ettiğinizde, Soru-Cevap Oluşturma portalında, görüntü, markı metni yerine görüntülenir. Bu, görüntünün istemci uygulamanızdan herkese açık bir şekilde alındığını doğrular.
 
@@ -113,7 +113,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Active Directory Yöneticisi Azure portal oturum açar ve **[Kurumsal uygulamaları](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)** açar.
 
-1. `QnAMakerPortalSharePoint` Soru-cevap oluşturma seçin uygulamasını arayın.
+1. `QnAMakerPortalSharePoint`Soru-cevap oluşturma seçin uygulamasını arayın.
 
     [![Kurumsal uygulamalar listesinde QnAMakerPortalSharePoint araması yapın](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 

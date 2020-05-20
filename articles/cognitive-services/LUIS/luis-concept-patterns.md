@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 86f4eab266aabccd25e1269e1942e535f6af5436
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591854"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683911"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Desenler tahmin doğruluğunu geliştirir
 Desenler, birkaç söylenme çok benzer olduğunda doğruluğu artırmak için tasarlanmıştır.  Bir desen, çok daha fazla sayıda daha fazla bilgi sağlamadan bir amaç için daha fazla doğruluk elde etmenizi sağlar.
@@ -36,16 +36,16 @@ Bir uygulama, farklı uzunluklara, farklı sözcük sıralarına ve hatta farkl�
 Desenler aşağıdaki durumları çözerek:
 
 * Amaç puanı düşük
-* Doğru amaç, en üst puan değildir ancak en üst puana çok yakın değildir. 
+* Doğru amaç, en üst puan değildir ancak en üst puana çok yakın değildir.
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Desenler amaç garantisi değildir
 Desenler bir tahmin teknolojileri karışımı kullanır. Bir düzende bir şablon için amaç ayarlamak, amaç tahminine dair garanti değildir ancak güçlü bir sinyaldir.
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Desenler makine tarafından öğrenilen varlık algılamayı iyileştirmez
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>Desenler makine öğrenimi varlığı algılamayı iyileştirmez
 
-Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlanmıştır. _Model. herhangi bir_ varlık, serbest biçimli varlıkları ayıklamak için kullanılır. Desenler varlıkları kullanırken, bir desen makine tarafından öğrenilen bir varlığı algılamaya yardımcı olmaz.
+Bir model öncelikle amaç ve rollerin tahminine yardımcı olmak için tasarlanmıştır. _Model. herhangi bir_ varlık, serbest biçimli varlıkları ayıklamak için kullanılır. Desenler varlıkları kullanırken, bir model bir makine öğrenimi varlığını algılamaya yardımcı olmaz.
 
 Birden çok kuralı tek bir düzende daraltarak, geliştirilmiş varlık tahminini görmeyi beklememeniz gerekmez. Basit varlıkların tetiklenmesi için, bu tür varlıkları eklemeniz veya liste varlıklarını kullanmanız gerekir, ancak sizin düzeniniz tetikleymeyecektir.
 
@@ -59,7 +59,7 @@ Yeterli sayıda örnek utterde verilince, LUSıS, desenler olmadan tahmin güven
 Bir düzen, öncelikle düzen içindeki varlıkların algılanması ve ardından düzenin sözcüklerin ve sözcük sırasının geri kalanının doğrulanması ile eşleştirilir. Bir düzenin eşleşmesi için düzende varlıklar gereklidir. Bu model, karakter düzeyinde değil, belirteç düzeyinde uygulanır.
 
 ## <a name="pattern-only-apps"></a>Yalnızca örüntü uygulamalar
-Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içeren bir uygulama oluşturabilirsiniz. Tek bir uygulama için, bu, örnek bir varlık gerektirdiğinden, bu model makine tarafından öğrenilen varlıklar içermemelidir.
+Her bir amaç için bir desen olduğu sürece, örnekleri olmayan amaçlar içeren bir uygulama oluşturabilirsiniz. Tek bir uygulama için, bu, örnek söylemeye ihtiyaç duyduğu için desen makine öğrenimi varlıkları içermemelidir.
 
 ## <a name="patternany-entity"></a>Pattern.any varlığı
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058456"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647430"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için temel taş OnDemand yapılandırma
 
@@ -30,7 +30,7 @@ Bu öğreticide, Azure AD 'yi, Kullanıcı veya grupları otomatik olarak sağla
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları öğrenmek için bkz. [Azure Active Directory ile hizmet olarak yazılım (SaaS) uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
 
@@ -39,7 +39,7 @@ Bu öğreticide özetlenen senaryo şunları olduğunu varsayar:
 * Temel bir kullanıcı hesabı ile birlikte yönetici izinleri.
 
 > [!NOTE]
-> Azure AD sağlama tümleştirmesi, temel bir [Stone OnDemand Web hizmetini](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf)kullanır. Bu hizmet, temel bir Stone Ondemandekipleri tarafından kullanılabilir.
+> Azure AD sağlama tümleştirmesi, temel bir [Stone OnDemand Web hizmetini](https://www.cornerstoneondemand.com/)kullanır. Bu hizmet, temel bir Stone Ondemandekipleri tarafından kullanılabilir.
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Azure Marketi 'nden temel pul OnDemand ekleme
 
@@ -81,7 +81,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 Azure AD 'de temel pul OnDemand için otomatik Kullanıcı sağlamayı yapılandırmak üzere aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar** > **tüm uygulamalar** > temel**taş OnDemand**' i seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**temel  >  **taş OnDemand**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -103,7 +103,7 @@ Azure AD 'de temel pul OnDemand için otomatik Kullanıcı sağlamayı yapıland
 
     * **Yönetici parolası** kutusuna yönetici kullanıcı adına karşılık gelen parolayı girin.
 
-    * **Etki alanı** kutusunda, temel bir kutucuğuna ait Web hizmeti URL 'sini girin. Örneğin, hizmet adresinde `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`bulunur ve contoso etki alanı için. `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` Web hizmeti URL 'sini alma hakkında daha fazla bilgi için [Bu PDF 'ye](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf)bakın.
+    * **Etki alanı** kutusunda, temel bir kutucuğuna ait Web hizmeti URL 'sini girin. Örneğin, hizmet adresinde bulunur `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` ve contoso etki alanı için `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` . Web hizmeti URL 'sini alma hakkında daha fazla bilgi için [Bu PDF 'ye](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf)bakın.
 
 6. Adım 5 ' te gösterilen kutuları doldurduktan sonra, Azure AD 'nin köşeli-açı OnDemand bağlantı kuramadığından emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, temel Stone OnDemand hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

@@ -5,33 +5,24 @@ keywords: Azure App Service, Web uygulaması, mobil uygulama, API uygulaması, i
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535664"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649041"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service güvenlik
 
 Bu makalede, [Azure App Service](overview.md) Web uygulamanızın, mobil uygulamanızın arka UCUNUN, API uygulamanızın ve [işlev uygulamanızın](/azure/azure-functions/)güvenliğinin sağlanmasına nasıl yardımcı olduğu gösterilmektedir. Ayrıca, yerleşik App Service özellikleriyle uygulamanızı nasıl daha güvenli hale kullanabileceğinizi gösterir.
 
-Azure VM 'Leri, depolama, ağ bağlantıları, Web çerçeveleri, yönetim ve tümleştirme özellikleri dahil olmak üzere App Service platform bileşenleri, etkin olarak güvenli ve sağlamlaştırılmış hale getirilir. App Service, şu emin olmak için sürekli olarak vinen uyumluluk denetimlerinden geçer:
-
-- Uygulama kaynaklarınızın diğer müşterilerin Azure kaynaklarından [güvenliği](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) sağlanır.
-- Yeni keşfedilen güvenlik açıklarını gidermek için [sanal makine örnekleri ve çalışma zamanı yazılımı düzenli olarak güncelleştirilir](overview-patch-os-runtime.md) . 
-- Uygulamanız ve diğer Azure kaynakları (örneğin, [SQL veritabanı](https://azure.microsoft.com/services/sql-database/)) arasındaki gizli dizileri (bağlantı dizeleri gibi) Iletişim, Azure 'da kalır ve herhangi bir ağ sınırları boyunca geçmez. Gizli diziler her zaman depolandığında şifrelenir.
-- [Karma bağlantı](app-service-hybrid-connections.md)gibi App Service bağlantısı özellikleri üzerinden tüm iletişimler şifrelenir. 
-- Azure PowerShell, Azure CLı, Azure SDK 'Ları, REST API 'Ler gibi uzak yönetim araçları ile kurulan bağlantılar, tümüyle şifrelenir.
-- 24 saatlik tehdit yönetimi, altyapıyı ve platformu kötü amaçlı yazılım, dağıtılmış hizmet reddi (DDoS), ortadaki adam (MITD) ve diğer tehditlere karşı korur.
-
-Azure 'da altyapı ve platform güvenliği hakkında daha fazla bilgi için bkz. [Azure Güven Merkezi](https://azure.microsoft.com/overview/trusted-cloud/).
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 Aşağıdaki bölümlerde App Service uygulamanızı tehditlere nasıl daha fazla koruyabileceğiniz gösterilmektedir.
 
 ## <a name="https-and-certificates"></a>HTTPS ve sertifikalar
 
-App Service, uygulamalarınızı [https](https://wikipedia.org/wiki/HTTPS)ile korumanıza olanak sağlar. Uygulamanız oluşturulduğunda, varsayılan etki alanı adı (\<app_name>. AZUREWEBSITES.net) HTTPS kullanılarak zaten erişilebilir. [Uygulamanız için özel bir etki alanı yapılandırırsanız](app-service-web-tutorial-custom-domain.md), istemci tarayıcılarının özel etki alanınız IÇIN güvenli HTTPS bağlantıları yapabilmesi için [bunu BIR TLS/SSL sertifikasıyla de güvenli](configure-ssl-bindings.md) hale getirin. App Service tarafından desteklenen çeşitli sertifika türleri vardır:
+App Service, uygulamalarınızı [https](https://wikipedia.org/wiki/HTTPS)ile korumanıza olanak sağlar. Uygulamanız oluşturulduğunda, varsayılan etki alanı adı ( \< app_name>. azurewebsites.net) HTTPS kullanılarak zaten erişilebilir. [Uygulamanız için özel bir etki alanı yapılandırırsanız](app-service-web-tutorial-custom-domain.md), istemci tarayıcılarının özel etki alanınız IÇIN güvenli HTTPS bağlantıları yapabilmesi için [bunu BIR TLS/SSL sertifikasıyla de güvenli](configure-ssl-bindings.md) hale getirin. App Service tarafından desteklenen çeşitli sertifika türleri vardır:
 
 - Ücretsiz App Service yönetilen sertifika
 - App Service sertifikası
@@ -52,7 +43,7 @@ App Service, dosyalarınızı dağıtmak için hem FTP hem de FTPS 'yi destekler
 
 Varsayılan olarak, App Service uygulamanız internet 'ten gelen tüm IP adreslerinden gelen istekleri kabul eder, ancak bu erişimi, IP adreslerinin küçük bir alt kümesiyle sınırlayabilirsiniz. Windows üzerinde App Service, uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı sağlar. İzin verilen liste, tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir IP adresi aralığını içerebilir. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](app-service-ip-restrictions.md).
 
-Windows üzerinde App Service için, _Web. config_'ı yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP \<güvenliği dynamicipsecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Windows üzerinde App Service için, _Web. config_'ı yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP güvenliği \< dynamicipsecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>İstemci kimlik doğrulaması ve yetkilendirme
 

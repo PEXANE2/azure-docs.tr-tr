@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 31b9d4d57e38adcd079082a4f32770c4cbc8fbb3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/13/2020
+ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736207"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642306"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Market ölçüm hizmeti kimlik doğrulama stratejileri
 
@@ -44,9 +44,9 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 #### <a name="http-method"></a>HTTP yöntemi
 
-**POST**
+**Yayınla**
 
-#### <a name="request-url"></a>*İstek URL'si*
+#### <a name="request-url"></a>*İstek URL’si*
 
 **`https://login.microsoftonline.com/*{tenantId}*/oauth2/token`**
 
@@ -112,13 +112,13 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 
 1. Yönetilen kimliğin yöntemlerden birini kullanarak yapılandırıldığından emin olun:
     * [Azure portal Kullanıcı arabirimi](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+    * [CLı](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
     * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager Şablonu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+    * [Azure Resource Manager şablonu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
     * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
     * [Azure SDK’ları](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
 
-1. Market ölçüm hizmeti uygulama KIMLIĞI (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`) için sistem KIMLIĞINI, VM 'nin RDP 'sini kullanarak bir erişim belirteci alın, PowerShell konsolunu açın ve aşağıdaki komutu çalıştırın
+1. Market ölçüm hizmeti uygulama KIMLIĞI ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) için sistem kimliğini, VM 'nın RDP 'sini kullanarak bir erişim belirteci alın, PowerShell konsolunu açın ve aşağıdaki komutu çalıştırın
 
     ```powershell
     # curl is an alias to Web-Invoke PowerShell command
@@ -141,7 +141,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
     $managedappId = $resourceGroupInfo.managedBy 
     ```
 
-1. Market ölçüm hizmeti, bir `resourceID`üzerinde kullanımı ve `resourceUsageId` yönetilen bir uygulamayı rapor etmek için gereklidir.
+1. Market ölçüm hizmeti, bir üzerinde kullanımı `resourceID` ve yönetilen bir uygulamayı rapor etmek için gereklidir `resourceUsageId` .
 
     ```powershell
     # Get resourceUsageId from the managed app
@@ -151,7 +151,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
     ```
 
-1. Kullanım için [Market ölçüm HIZMETI API](https://review.docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis?branch=pr-en-us-101847) 'sini kullanın.
+1. Kullanım için [Market ölçüm HIZMETI API](./marketplace-metering-service-apis.md) 'sini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

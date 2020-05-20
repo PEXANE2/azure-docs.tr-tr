@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 020c25dfb17f733359e596100cfd24cfa3f68036
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839173"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648553"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure depolama 'da statik bir Web sitesi barındırma
 
@@ -60,7 +60,7 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
    az account set --subscription <subscription-id>
    ```
 
-   `<subscription-id>` Yer tutucu DEĞERINI aboneliğinizin kimliğiyle değiştirin.
+   `<subscription-id>`Yer tutucu değerini ABONELIĞINIZIN kimliğiyle değiştirin.
 
 3. Statik Web sitesi barındırmayı etkinleştirin.
 
@@ -68,11 +68,11 @@ Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bi
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
    ```
 
-   * `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+   * `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-   * Yer tutucusunu `<error-document-name>` , sitenizde mevcut olmayan bir sayfa istediğinde, kullanıcılara görüntülenecek olan hata belgesinin adıyla değiştirin.
+   * `<error-document-name>`Yer tutucusunu, sitenizde mevcut olmayan bir sayfa istediğinde, kullanıcılara görüntülenecek olan hata belgesinin adıyla değiştirin.
 
-   * `<index-document-name>` Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index. html" dir.
+   * `<index-document-name>`Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index. html" dir.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -103,7 +103,7 @@ Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinl
    Set-AzContext $context
    ```
 
-   `<subscription-id>` Yer tutucu DEĞERINI aboneliğinizin kimliğiyle değiştirin.
+   `<subscription-id>`Yer tutucu değerini ABONELIĞINIZIN kimliğiyle değiştirin.
 
 5. Kullanmak istediğiniz depolama hesabını tanımlayan depolama hesabı bağlamını alın.
 
@@ -112,9 +112,9 @@ Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinl
    $ctx = $storageAccount.Context
    ```
 
-   * `<resource-group-name>` Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
+   * `<resource-group-name>`Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
 
-   * `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+   * `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
 6. Statik Web sitesi barındırmayı etkinleştirin.
 
@@ -122,9 +122,9 @@ Azure PowerShell modülünü kullanarak statik Web sitesi barındırmayı etkinl
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * Yer tutucusunu `<error-document-name>` , sitenizde mevcut olmayan bir sayfa istediğinde, kullanıcılara görüntülenecek olan hata belgesinin adıyla değiştirin.
+   * `<error-document-name>`Yer tutucusunu, sitenizde mevcut olmayan bir sayfa istediğinde, kullanıcılara görüntülenecek olan hata belgesinin adıyla değiştirin.
 
-   * `<index-document-name>` Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index. html" dir.
+   * `<index-document-name>`Yer tutucusunu Dizin belgesinin adıyla değiştirin. Bu belge genellikle "index. html" dir.
 
 ---
 
@@ -142,19 +142,19 @@ Bu yönergeler, Azure portal görüntülenen Depolama Gezgini sürümünü kulla
 
    ![Dosyaları karşıya yükleme](media/storage-blob-static-website/storage-blob-static-website-upload.png)
 
-4. Tarayıcının dosya içeriğini görüntülemesini istiyorsanız, bu dosyanın içerik türünün olarak `text/html`ayarlandığından emin olun. 
+4. Tarayıcının dosya içeriğini görüntülemesini istiyorsanız, bu dosyanın içerik türünün olarak ayarlandığından emin olun `text/html` . 
 
    ![İçerik türlerini denetle](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > Depolama Gezgini, bu özelliği, gibi `text/html` yaygın olarak tanınan uzantılar için otomatik `.html`olarak ayarlar. Ancak, bazı durumlarda bunu kendiniz ayarlamanız gerekecektir. Bu özelliği ' ye `text/html`ayarlamazsanız tarayıcı, kullanıcılardan içeriği işlemek yerine dosyayı indirmesini ister. Bu özelliği ayarlamak için, dosyaya sağ tıklayın ve ardından **Özellikler**' e tıklayın.
+   > Depolama Gezgini, bu özelliği, gibi `text/html` yaygın olarak tanınan uzantılar için otomatik olarak ayarlar `.html` . Ancak, bazı durumlarda bunu kendiniz ayarlamanız gerekecektir. Bu özelliği ' ye ayarlamazsanız tarayıcı, `text/html` kullanıcılardan içeriği işlemek yerine dosyayı indirmesini ister. Bu özelliği ayarlamak için, dosyaya sağ tıklayın ve ardından **Özellikler**' e tıklayın.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Nesneleri bir kaynak dizininden *$Web* kapsayıcısına yükleyin.
 
 > [!NOTE]
-> Azure Cloud Shell kullanıyorsanız, `\` `$web` kapsayıcıya başvururken bir kaçış karakteri eklediğinizden emin olun (örneğin: `\$web`). Azure CLı 'nın yerel bir yüklemesini kullanıyorsanız kaçış karakterini kullanmanız gerekmez.
+> Azure Cloud Shell kullanıyorsanız, kapsayıcıya başvururken bir kaçış karakteri eklediğinizden emin olun `\` `$web` (örneğin: `\$web` ). Azure CLı 'nın yerel bir yüklemesini kullanıyorsanız kaçış karakterini kullanmanız gerekmez.
 
 Bu örnekte Azure Cloud Shell oturumundan komut çalıştırdığınız varsayılır.
 
@@ -163,14 +163,14 @@ az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-a
 ```
 
 > [!NOTE] 
-> Tarayıcı, kullanıcıların içerikleri işlemek yerine dosyayı indirmesini isterse, komuta ekleyebilirsiniz `--content-type 'text/html; charset=utf-8'` . 
+> Tarayıcı, kullanıcıların içerikleri işlemek yerine dosyayı indirmesini isterse, `--content-type 'text/html; charset=utf-8'` komuta ekleyebilirsiniz. 
 
-* `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-* Yer tutucusunu `<source-path>` , karşıya yüklemek istediğiniz dosyaların konumunun bir yolu ile değiştirin.
+* `<source-path>`Yer tutucusunu, karşıya yüklemek istediğiniz dosyaların konumunun bir yolu ile değiştirin.
 
 > [!NOTE]
-> Azure CLı 'nin konum yüklemesini kullanıyorsanız, yerel bilgisayarınızdaki herhangi bir konumun yolunu kullanabilirsiniz (örneğin: `C:\myFolder`.
+> Azure CLı 'nin konum yüklemesini kullanıyorsanız, yerel bilgisayarınızdaki herhangi bir konumun yolunu kullanabilirsiniz (örneğin: `C:\myFolder` .
 >
 > Azure Cloud Shell kullanıyorsanız, Cloud Shell görünür bir dosya paylaşımıyla başvurulmalıdır. Bu konum, bulut paylaşımının kendisi veya Cloud Shell oluşturduğunuz var olan bir dosya paylaşımının dosya paylaşımıdır. Bunu nasıl yapacağınızı öğrenmek için bkz. [Azure Cloud Shell dosyaları kalıcı hale](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)getirme.
 
@@ -187,21 +187,21 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 ```
 
 > [!NOTE] 
-> Tarayıcı, kullanıcıların içerikleri işlemek yerine dosyayı indirmesini isterse, komuta ekleyebilirsiniz `-Properties @{ ContentType = "text/html; charset=utf-8";}` .
+> Tarayıcı, kullanıcıların içerikleri işlemek yerine dosyayı indirmesini isterse, `-Properties @{ ContentType = "text/html; charset=utf-8";}` komuta ekleyebilirsiniz.
 
-* Yer tutucu `<path-to-file>` değerini, karşıya yüklemek istediğiniz dosyanın tam yolu ile değiştirin (örneğin: `C:\temp\index.html`).
+* `<path-to-file>`Yer tutucu değerini, karşıya yüklemek istediğiniz dosyanın tam yolu ile değiştirin (örneğin: `C:\temp\index.html` ).
 
-* Yer tutucu `<blob-name>` değerini, sonuçta elde edilen Blobun vermek istediğiniz adla değiştirin (örneğin: `index.html`).
+* `<blob-name>`Yer tutucu değerini, sonuçta elde edilen Blobun vermek istediğiniz adla değiştirin (örneğin: `index.html` ).
 
 ---
 
-## <a name="find-the-website-url-by-using-the-azure-portal"></a>Azure portal kullanarak Web sitesi URL 'sini bulma
+<a id="portal-find-url" />
+
+## <a name="find-the-website-url"></a>Web sitesi URL 'sini bulma
 
 Sitenizin sayfalarını bir tarayıcıdan, Web sitesinin genel URL 'sini kullanarak görüntüleyebilirsiniz.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-<a id="portal-find-url" />
 
 Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen bölmede, **statik Web sitesi**' ni seçin. Sitenizin URL 'SI **birincil uç nokta** alanında görüntülenir.
 
@@ -209,21 +209,17 @@ Depolama hesabınızın firmaya Genel Bakış sayfasının yanında görünen b�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-<a id="cli-find-url" />
-
 Aşağıdaki komutu kullanarak statik Web sitenizin genel URL 'sini bulun:
 
 ```azurecli-interactive
 az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
 ```
 
-* `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-* `<resource-group-name>` Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
+* `<resource-group-name>`Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-<a id="powershell-find-url" />
 
 Aşağıdaki komutu kullanarak, kullanarak statik Web sitenizin genel URL 'sini bulun:
 
@@ -232,9 +228,9 @@ Aşağıdaki komutu kullanarak, kullanarak statik Web sitenizin genel URL 'sini 
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* `<resource-group-name>` Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
+* `<resource-group-name>`Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
 
-* `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+* `<storage-account-name>`Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
 ---
 

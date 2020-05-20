@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 74d1d44fdba5a6752a269863b2a68bd7022af18e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 270afa70ca281762d9efabcd7663bf7504a469bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115491"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654983"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -26,12 +26,12 @@ Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet
 
 ## <a name="azure-marketplace-offers-by-azure-networking-msp-partners"></a><a name="msp"></a>Azure ağ hizmeti MSP iş ortakları tarafından sunulan Azure Marketi
 
-Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. E-posta göndererek bizimle iletişim kurabilirler ManagedVirtualWAN@microsoft.com. 
+Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. E-posta göndererek bizimle iletişim kurabilirler ManagedVirtualWAN@microsoft.com . 
 
 | **MSP** | **Bulut ağı dönüştürme Hizmetleri** | **Yönetilen ExpressRoute** | **Yönetilen sanal WAN** |
 | ---| ---| ---| ---|
 |[ANS grubu UK](https://www.ans.co.uk/)|[Azure yönetilen svc + ANS cam 10wk uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
-|[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
+|[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure sanal WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Ağ dönüştürme danışmanlık: 1-hr değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [BT bulutu Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[BT bulutu Azure ExpressRoute 'a bağlanma](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT bulutu Azure VWAN Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[Cogelişme](https://www.coevolve.com/services/azure-networking-services/)|||[Yönetilen VMware SD-WAN sanal kenarı](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Azure 'da ağ optimizasyonu: 2-hr değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||

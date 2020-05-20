@@ -1,6 +1,6 @@
 ---
-title: GPT bölümü ile bir işletim sistemi diskini yeniden boyutlandırma | Microsoft Docs
-description: Bu makalede, GPT bölümüyle bir işletim sistemi diskini yeniden boyutlandırmayla ilgili yönergeler sağlanır.
+title: GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma | Microsoft Docs
+description: Bu makale, GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırmayla ilgili yönergeler sağlar.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: f863233f0a34271841cc8e973f9aa3ca9416ceeb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7c408e8e29b3f9ac423a6104c40242f11f93a171
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858996"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651098"
 ---
-# <a name="resize-an-os-disk-with-a-gpt-partition"></a>GPT bölümü ile bir işletim sistemi diskini yeniden boyutlandırma
+# <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma
 
 > [!NOTE]
-> Bu senaryo yalnızca GPT bölümü olan işletim sistemi diski için geçerlidir.
+> Bu senaryo yalnızca GUID bölümleme tablosu (GPT) bölümü olan işletim sistemi diskleri için geçerlidir.
 
-Bu makalede, Linux 'ta GPT bölümü ile işletim sistemi diskinin boyutunun nasıl yükseltileceği açıklanır.
+Bu makalede, Linux 'ta GPT bölümü olan bir işletim sistemi diskinin boyutunu artırma işlemi açıklanır. 
 
 ## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>İşletim sistemi diskinde MBR veya GPT bölümü olup olmadığını belirler
 
-Disk bölümünün ana önyükleme kaydı (MBR) bölümüyle veya bir GUID bölümleme tablosu (GPT) bölümüyle oluşturulup oluşturulmediğinin belirlemek için, **ayrıştıralınmış** komutunu kullanın.
+Disk bölümünün ana önyükleme kaydı (MBR) bölümüyle veya bir GPT bölümüyle oluşturulup oluşturulmediğinin belirlemek için, **ayrıştıreklenen** komutunu kullanın.
 
 ### <a name="mbr-partition"></a>MBR bölümü
 
-Aşağıdaki çıktıda, **bölüm tablosu** bir, bir **MBR** bölümünü tanımlayan bir **Msdos**değeri gösterir.
+Aşağıdaki çıktıda, **bölüm tablosunda** **Msdos**değeri gösterilmektedir. Bu değer bir MBR bölümünü tanımlar.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT bölümü
 
-Aşağıdaki çıktıda, **bölüm tablosu** GPT bir bölümü tanımlayarak bir **GPT**değeri gösterir.
+Aşağıdaki çıktıda, **bölüm tablosu** **GPT**değerini gösterir. Bu değer bir GPT bölümünü tanımlar.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -76,16 +76,16 @@ Aşağıdaki yönergeler, Linux onaylı dağıtımlar için geçerlidir.
 > [!NOTE]
 > Devam etmeden önce, VM 'nizin yedek bir kopyasını oluşturun veya işletim sistemi diskinizin bir anlık görüntüsünü alın.
 
-### <a name="ubuntu-16x-and-18x"></a>Ubuntu 16. x ve 18. x
+### <a name="ubuntu"></a>Ubuntu
 
 Ubuntu 16. x ve 18. x içindeki işletim sistemi diskinin boyutunu artırmak için:
 
 1. VM'yi durdurun.
-1. Portaldan OSDisk boyutunu artırın.
+1. Portaldan işletim sistemi diskinin boyutunu artırın.
 1. VM 'yi yeniden başlatın ve ardından VM 'de bir **kök** Kullanıcı olarak oturum açın.
-1. OSDisk artık daha fazla dosya sistemi boyutunu görüntüleyecek.
+1. İşletim sistemi diskinin artık daha fazla dosya sistemi boyutunu görüntülediğini doğrulayın.
 
-Aşağıdaki örnekte gösterildiği gibi, **/dev/sda1** dosya sistemi **/** artık 97 GB görüntülüyorsa, işletim sistemi DISKI portaldan 100 GB 'a yeniden boyutlandırılır.
+Aşağıdaki örnekte gösterildiği gibi, işletim sistemi diski portaldan 100 GB 'a yeniden boyutlandırıldı. **/Dev/sda1** dosya sistemi **/** artık 97 GB görüntülüyor.
 
 ```
 user@myvm:~# df -Th
@@ -102,17 +102,17 @@ tmpfs          tmpfs      65M     0   65M   0% /run/user/1000
 user@myvm:~#
 ```
 
-### <a name="suse-12-sp4suse-sles-12-for-sap-suse-sles-15-and-suse-sles-15-for-sap"></a>SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15 ve SAP için SUSE SLES 15
+### <a name="suse"></a>SUSE
 
-SUSE 12 SP4, SUSE SLES 15, ve SAP için SUSE SLES 15 ' te işletim sistemi diskinin boyutunu artırmak için:
+SUSE 12 SP4'TE işletim sistemi diskinin boyutunu artırmak için, SAP için SUSE SLES 12, SUSE SLES 15 ve SAP için SUSE SLES 15:
 
 1. VM'yi durdurun.
-1. Portaldan OSDisk boyutunu artırın.
+1. Portaldan işletim sistemi diskinin boyutunu artırın.
 1. VM’yi yeniden başlatın.
 
 VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
-   1. Aşağıdaki komutu kullanarak sanal makinenize **kök Kullanıcı** olarak erişin:
+   1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
    
       `#sudo su`
 
@@ -124,11 +124,11 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
       `#sgdisk -e /dev/sda`
 
-   1. Aşağıdaki komutu kullanarak bölümü silmeden bölümü yeniden boyutlandırın. **Genişletilmiş** komutun, Bölümü silmeden yeniden boyutlandırmak için **resizepart** adlı bir seçeneği vardır. Resizepart öğesinden sonraki 4 sayısı dördüncü (4) bölümün yeniden boyutlandırdığını gösterir.
+   1. Aşağıdaki komutu kullanarak silmeden bölümü yeniden boyutlandırın. **Genişletilmiş** komutun, Bölümü silmeden yeniden boyutlandırmak için **resizepart** adlı bir seçeneği vardır. **Resizepart** öğesinden sonraki 4 sayısı dördüncü bölümün yeniden boyutlandırdığını gösterir.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
 
-   1. Bölümün arttırılmadığını denetlemek için `#lsblk` komutunu çalıştırın.
+   1. Bölümün arttırılmadığını denetlemek için **#lsblk** komutunu çalıştırın.
 
       Aşağıdaki çıktı, **/dev/sda4** bölümünün 98,5 GB olarak yeniden boyutlandırıldığını gösterir.
 
@@ -143,7 +143,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       └─sdb1   8:17   0   20G  0 part /mnt/resource
       ```
       
-   1. Aşağıdaki komutu kullanarak OSDisk üzerindeki dosya sistemi türünü belirler:
+   1. Aşağıdaki komutu kullanarak işletim sistemi diskindeki dosya sisteminin türünü belirler:
 
       `blkid`
 
@@ -187,7 +187,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
       ```#resize2fs /dev/sda4```
 
-   1. Aşağıdaki komutu kullanarak **df**için daha önce dosya sistemi boyutunu doğrulayın:
+   1. Aşağıdaki komutu kullanarak **df**için daha fazla dosya sistemi boyutunu doğrulayın:
 
       `#df -Th`
 
@@ -208,17 +208,19 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       user@myvm:~ #
       ```
 
-Yukarıdaki örnekte gösterildiği gibi, OSDisk için dosya sistemi boyutunu daha fazla görebiliriz.
+Yukarıdaki örnekte, işletim sistemi diski için dosya sistemi boyutunun arttığını görebiliriz.
 
-### <a name="rhel-7x-with-lvm"></a>LVM ile RHEL 7. x
+### <a name="rhel"></a>RHEL
+
+RHEL 7. x içindeki işletim sistemi diskinin boyutunu LVM ile artırmak için:
 
 1. VM'yi durdurun.
-1. Portaldan OSDisk boyutunu artırın.
+1. Portaldan işletim sistemi diskinin boyutunu artırın.
 1. VM’yi başlatın.
 
 VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
-   1. Aşağıdaki komutu kullanarak sanal makinenize **kök Kullanıcı** olarak erişin:
+   1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
    
       `#sudo su`
 
@@ -230,7 +232,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
 
       `#sgdisk -e /dev/sda`
 
-   1. Aşağıdaki komutu kullanarak bölümü silmeden bölümü yeniden boyutlandırın. **Genişletilmiş** komutun, Bölümü silmeden yeniden boyutlandırmak için **resizepart** adlı bir seçeneği vardır. Resizepart öğesinden sonraki 4 sayısı dördüncü (4) bölümün yeniden boyutlandırdığını gösterir.
+   1. Aşağıdaki komutu kullanarak silmeden bölümü yeniden boyutlandırın. **Genişletilmiş** komutun, Bölümü silmeden yeniden boyutlandırmak için **resizepart** adlı bir seçeneği vardır. **Resizepart** öğesinden sonraki 4 sayısı dördüncü bölümün yeniden boyutlandırdığını gösterir.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
     
@@ -259,7 +261,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       └─sdb1              8:17   0   50G  0 part /mnt/resource
       ```
 
-   1. **Fiziksel birimi (BD)** yeniden boyutlandırmak için aşağıdaki komutu kullanın:
+   1. Fiziksel birimi (BD) yeniden boyutlandırmak için aşağıdaki komutu kullanın:
 
       `#pvresize /dev/sda4`
 
@@ -275,7 +277,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
       ```
 
-   1. Aşağıdaki örnekte, `/dev/mapper/rootvg-rootlv` aşağıdaki komutu kullanarak 2 GB 'den 12 GB 'A (10 GB 'lik bir artış) yeniden boyutlandırılıyor ve bu da dosya sistemini yeniden boyutlandıracaktır:
+   1. Aşağıdaki örnekte **/dev/mapper/rootvg-rootlv** , aşağıdaki KOMUTLA 2 GB Ila 12 GB (10 GB 'lık artış) olarak yeniden boyutlandırılıyor. Bu komut ayrıca dosya sistemini yeniden boyutlandıracaktır.
 
       `#lvresize -r -L +10G /dev/mapper/rootvg-rootlv`
 
@@ -297,7 +299,7 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       data blocks changed from 524288 to 3145728
       ```
          
-   1. Dosya sistemi `/dev/mapper/rootvg-rootlv` boyutunu arttırıp yükselmediğini veya aşağıdaki komutu kullanıp kullanmadığını doğrulayın:
+   1. Aşağıdaki komutu kullanarak **/dev/mapper/rootvg-rootlv** 'nin artırılmış bir dosya sistemi boyutuna sahip olup olmadığını doğrulayın:
 
       `#df -Th /`
 
@@ -310,9 +312,9 @@ VM yeniden başlatıldığında, aşağıdaki adımları gerçekleştirin:
       [user@myvm ~]#
       ```
 
-      > [!NOTE]
-      > Diğer mantıksal birimleri yeniden boyutlandırmak için aynı yordamı kullanmak için 7. adımda **LV** adını değiştirin
+   > [!NOTE]
+   > Diğer mantıksal birimleri yeniden boyutlandırmak için aynı yordamı kullanmak için 7. adımda **LV** adını değiştirin.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Diski yeniden boyutlandır](expand-disks.md)

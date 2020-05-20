@@ -10,18 +10,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
-ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870512"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660550"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 'da Oracle uygulamalarına ve çözümlerine genel bakış
 
-Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırmaya yönelik yetenekler açıklanır. Ayrıca bkz. Azure Marketi 'nde kullanılabilir [Oracle VM görüntülerine](oracle-vm-solutions.md) yönelik ayrıntılı tanıtımları ve [Oracle bulut altyapısı (OCI) ile Azure bağlantısı](oracle-oci-overview.md)yapma özelliği.
+Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırmaya yönelik yetenekler açıklanır. Ayrıca bkz. kullanılabilir [WebLogic Server Azure uygulamaları](oracle-weblogic.md), Azure Market 'TEKI [Oracle VM görüntüleri](oracle-vm-solutions.md) ve [Oracle bulut altyapısı (OCI) ile Azure bağlantısı](oracle-oci-overview.md)yapma özelliği.
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure altyapısında Oracle veritabanları
 
@@ -35,9 +35,13 @@ Ayrıca, Azure 'da bulunan Oracle Linux olmayan bir görüntüde Oracle Database
 
 İsteğe bağlı olarak birden çok bağlı disk ile yapılandırın ve Oracle otomatik depolama yönetimi (ASM) yükleyerek veritabanı performansını geliştirebilirsiniz.
 
+## <a name="weblogic-server-with-azure-service-integrations"></a>Azure hizmet tümleştirmelerine sahip WebLogic Server
+
+Bulut yolculuğunun hızlandırmanız için çeşitli WebLogic Server Azure uygulamaları arasından seçim yapın.  Veritabanı, Azure uygulama ağ geçidi ve Azure Active Directory dahil olmak üzere, önceden yapılandırılmış birkaç Azure hizmet tümleştirmeleri mevcuttur.
+
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux ve WebLogic Server 'daki uygulamalar
 
-Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çalıştırın. Aşağıdaki görüntüler Azure Marketi 'nde mevcuttur:
+Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çalıştırın. Aşağıdaki sanal makine görüntüleri Azure Marketi 'nde kullanılabilir:
 
 * Oracle WebLogic Server 12.1.2
 
@@ -55,7 +59,7 @@ Desteklenen Oracle işletim sistemlerinde Azure 'da kurumsal uygulamaları çal�
 
 * [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) kullanarak Oracle VM 'lerinizi yedekleme
 
-* Oracle Database Oracle RMAN kullanarak yedekleyin ve isteğe bağlı olarak [Azure Blob sigortası](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek oranda Redudant bir Azure Blob depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-redundancy) takın ve ek dayanıklılık için RMAN yedeklemelerinizi bu depoya yazın.
+* Oracle Database Oracle RMAN kullanarak yedekleyin ve isteğe bağlı olarak [Azure Blob sigortası](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek düzeyde yedekli bir Azure Blob depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-redundancy) takın ve ek dayanıklılık için RMAN yedeklemelerinizi bu depoya yazın.
 
 ## <a name="integration-of-azure-with-oci"></a>OCı ile Azure tümleştirmesi
 
@@ -89,6 +93,8 @@ Azure 'da çalışan Oracle uygulamalarıyla birlikte Oracle Database Cloud Serv
 Oracle uygulamalarının Azure 'da dağıtılması, "kendi lisansını getir" modelini temel alır. Oracle yazılımını kullanmak için doğru lisansa sahip olduğunuz ve Oracle ile geçerli bir destek sözleşmenizin olduğu varsayılır. Oracle 'ın Şirket içinden Azure 'a lisans taşınabilirlik garantisi vardır. Bkz. Oracle-Azure [SSS](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html).
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+* [Web Logic Server Azure uygulamaları](oracle-weblogic.md) ve destekledikleri Azure hizmet tümleştirmeleri hakkında daha fazla bilgi edinin.
 
 * Azure altyapısına [Oracle VM görüntülerini](oracle-vm-solutions.md) dağıtma hakkında daha fazla bilgi edinin.
 

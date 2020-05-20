@@ -3,12 +3,12 @@ title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480071"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660154"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
@@ -32,7 +32,7 @@ Bu portalda gördüğünüz işler veritabanı bulma ve kaydetme, yedekleme ve g
 
 Uyarılar SAP HANA veritabanlarının yedeklerini izlemenin kolay bir yöntemidir. Uyarılar, bir yedeklemenin oluşturduğu çok sayıda olayın kaybedilmesi gerekmeden en iyi şekilde ilgilendiğiniz olaylara odaklanmaya yardımcı olur. Azure Backup, uyarıları ayarlamanıza olanak sağlar ve aşağıdaki gibi izlenebilir:
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 * Kasa panosunda **yedekleme uyarıları**' nı seçin.
 
   ![Kasa panosunda yedekleme uyarıları](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -64,17 +64,25 @@ Yedeklemeler, ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı bir
 1. Kasa menüsünde, **yedekleme öğeleri**' ne tıklayın.
 2. **Yedekleme öğeleri**' nde, SAP HANA VERITABANıNı çalıştıran VM 'yi seçin ve **Şimdi Yedekle**' ye tıklayın.
 3. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Ardından **Tamam**'a tıklayın.
-4. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri** > **devam**ediyor. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
+4. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri**  >  **devam**ediyor. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
 ### <a name="hana-native-client-integration"></a>HANA yerel istemci tümleştirmesi
 
-Artık herhangi bir HANA yerel istemcisinden tetiklenen isteğe bağlı tam yedeklemeler, **yedekleme öğeleri** sayfasında tam yedekleme olarak görünür.
+#### <a name="backup"></a>Backup
+
+HANA yerel istemcilerinden ( **Backint**'e) tetiklenen isteğe bağlı yedeklemeler, **yedekleme öğeleri** sayfasındaki yedekleme listesinde görünür.
 
 ![Son yedeklemeler çalışma](./media/sap-hana-db-manage/last-backups.png)
 
-Bu geçici tam yedeklemeler Ayrıca geri yükleme için geri yükleme noktaları listesinde görünür.
+Ayrıca, [Bu yedeklemeleri](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) **yedekleme işleri** sayfasından da izleyebilirsiniz.
+
+Bu isteğe bağlı yedeklemeler Ayrıca geri yükleme için geri yükleme noktaları listesinde görünür.
 
 ![Geri yükleme noktalarının listesi](./media/sap-hana-db-manage/list-restore-points.png)
+
+#### <a name="restore"></a>Geri Yükleme
+
+Aynı makineye geri yüklemek için HANA yerel istemcilerinden ( **Backint**kullanılarak) tetiklenen geri yüklemeler, **yedekleme işleri** sayfasından [izlenebilir](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) .
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup etkin olan bir veritabanında SAP HANA yerel istemci yedeklemesi çalıştırma
 
@@ -82,7 +90,7 @@ Azure Backup yedeklenmekte olan bir veritabanının yerel yedeklemesini (HANA St
 
 1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio/Kokpit içindeki durumu denetleyin.
 2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
-3. Bunu yapmak için **SystemDB** > **yapılandırması** > **veritabanı** > **filtresi Seç (günlük)** öğesine çift tıklayın.
+3. Bunu yapmak için **SystemDB**  >  **yapılandırması**  >  **veritabanı**  >  **filtresi Seç (günlük)** öğesine çift tıklayın.
 4. **Enable_auto_log_backup** **Hayır**olarak ayarlayın.
 5. **Log_backup_using_backint** **false**olarak ayarlayın.
 6. Veritabanının isteğe bağlı tam yedeklemesini yapın.

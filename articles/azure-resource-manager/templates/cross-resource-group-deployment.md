@@ -2,120 +2,36 @@
 title: Kaynakları dağıtım & çapraz abonelik kaynak grubu
 description: Dağıtım sırasında birden fazla Azure aboneliğini ve kaynak grubunu nasıl hedefleyecek olduğunu gösterir.
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460356"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650631"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtın
+# <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>Azure kaynaklarını abonelikler veya kaynak grupları arasında dağıtma
 
-Genellikle, şablonunuzda bulunan tüm kaynakları tek bir [kaynak grubuna](../management/overview.md)dağıtırsınız. Ancak, bir kaynak kümesini birlikte dağıtmak ve bunları farklı kaynak gruplarına veya aboneliklerine yerleştirmek istediğiniz senaryolar vardır. Örneğin, Azure Site Recovery için yedekleme sanal makinesini ayrı bir kaynak grubuna ve konuma dağıtmak isteyebilirsiniz. Kaynak Yöneticisi, birden fazla aboneliği ve kaynak grubunu hedeflemek için iç içe geçmiş şablonlar kullanmanıza olanak sağlar.
+Kaynak Yöneticisi, tek bir dağıtımda birden fazla kaynak grubuna dağıtmanıza olanak sağlar. Dağıtım işlemindeki kaynak grubundan farklı kaynak gruplarını belirtmek için iç içe geçmiş şablonlar kullanın. Kaynak grupları farklı aboneliklerde bulunabilir.
 
 > [!NOTE]
-> Tek bir dağıtımda yalnızca beş kaynak grubuna dağıtım yapabilirsiniz. Genellikle, bu sınırlama, ana şablon için belirtilen bir kaynak grubuna ve iç içe veya bağlı dağıtımlardaki en fazla dört kaynak grubuna dağıtabileceğiniz anlamına gelir. Ancak, ana şablonunuz yalnızca iç içe veya bağlı şablonlar içeriyorsa ve herhangi bir kaynak dağıtmadığından, iç içe veya bağlı dağıtımlara en fazla beş kaynak grubu ekleyebilirsiniz.
+> Tek bir dağıtımda **800 kaynak grubuna** dağıtım yapabilirsiniz. Genellikle, bu sınırlama, üst şablon için belirtilen bir kaynak grubuna ve iç içe veya bağlı dağıtımlardaki 799 ' e kadar kaynak grubuna dağıtabileceğiniz anlamına gelir. Ancak, ana şablonunuz yalnızca iç içe veya bağlı şablonlar içeriyorsa ve herhangi bir kaynak dağıtmadığından, iç içe veya bağlı dağıtımlara en fazla 800 kaynak grubu ekleyebilirsiniz.
 
 ## <a name="specify-subscription-and-resource-group"></a>Abonelik ve kaynak grubu belirtin
 
-Farklı bir kaynak grubu veya aboneliği hedeflemek için, [iç içe veya bağlı bir şablon](linked-templates.md)kullanın. `Microsoft.Resources/deployments` Kaynak türü ve için `subscriptionId` parametreler sağlar ve `resourceGroup`bu, iç içe dağıtım için aboneliği ve kaynak grubunu belirtmenize olanak tanır. Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir.
+Üst şablon için olandan farklı bir kaynak grubunu hedeflemek için, [iç içe veya bağlı bir şablon](linked-templates.md)kullanın. Dağıtım kaynak türü içinde, iç içe şablonun dağıtılmasını istediğiniz abonelik KIMLIĞI ve kaynak grubu için değerleri belirtin.
 
-Şablonu dağıtmak için kullandığınız hesabın, belirtilen abonelik KIMLIĞINE dağıtım izinleri olmalıdır. Belirtilen abonelik farklı bir Azure Active Directory kiracısında varsa, [başka bir dizinden Konuk kullanıcılar eklemeniz](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)gerekir.
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json" range="38-43" highlight="5-6":::
 
-Farklı bir kaynak grubu ve abonelik belirtmek için şunu kullanın:
+Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir.
 
-```json
-"resources": [
-  {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "resourceGroup": "[parameters('secondResourceGroup')]",
-    "subscriptionId": "[parameters('secondSubscriptionID')]",
-    ...
-  }
-]
-```
+Şablonu dağıtan hesabın, belirtilen abonelik KIMLIĞINE dağıtım izni olması gerekir. Belirtilen abonelik farklı bir Azure Active Directory kiracısında varsa, [başka bir dizinden Konuk kullanıcılar eklemeniz](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)gerekir.
 
-Kaynak gruplarınız aynı abonelikte yer alıyorsa, **SubscriptionID** değerini kaldırabilirsiniz.
+Aşağıdaki örnek iki depolama hesabı dağıtır. İlk depolama hesabı, dağıtım işleminde belirtilen kaynak grubuna dağıtılır. İkinci depolama hesabı, ve parametrelerinde belirtilen kaynak grubuna dağıtılır `secondResourceGroup` `secondSubscriptionID` :
 
-Aşağıdaki örnek iki depolama hesabı dağıtır. İlk depolama hesabı, dağıtım sırasında belirtilen kaynak grubuna dağıtılır. İkinci depolama hesabı, `secondResourceGroup` ve `secondSubscriptionID` parametrelerinde belirtilen kaynak grubuna dağıtılır:
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "secondResourceGroup": {
-      "type": "string"
-    },
-    "secondSubscriptionID": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "secondStorageLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2017-06-01",
-      "name": "[variables('firstStorageName')]",
-      "location": "[resourceGroup().location]",
-      "sku":{
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('secondResourceGroup')]",
-      "subscriptionId": "[parameters('secondSubscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
-            "name": "[variables('secondStorageName')]",
-            "location": "[parameters('secondStorageLocation')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          }
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
-}
-```
-
-Mevcut olmayan bir `resourceGroup` kaynak grubunun adına ayarlarsanız, dağıtım başarısız olur.
+`resourceGroup`Mevcut olmayan bir kaynak grubunun adına ayarlarsanız, dağıtım başarısız olur.
 
 Önceki şablonu test etmek ve sonuçları görmek için PowerShell veya Azure CLı kullanın.
 
@@ -205,7 +121,7 @@ az deployment group create \
 
 ## <a name="use-functions"></a>İşlev kullanma
 
-[ResourceGroup ()](template-functions-resource.md#resourcegroup) ve [Subscription ()](template-functions-resource.md#subscription) işlevleri, şablonu nasıl belirtkullanılacağına göre farklı şekilde çözümlenir. Bir dış şablona bağlandığınızda işlevler her zaman ilgili şablonun kapsamına çözümlenir. Bir şablonu bir üst şablon içine yuvalandığınızda, işlevlerin ana şablon `expressionEvaluationOptions` veya iç içe şablon için kaynak grubuna ve aboneliğe çözümlenip çözümlenmediğini belirtmek için özelliğini kullanın. Özelliğini `inner` , iç içe geçmiş şablonun kapsamına çözülecek şekilde ayarlayın. Özelliğini `outer` , üst şablonun kapsamına çözülecek şekilde ayarlayın.
+[ResourceGroup ()](template-functions-resource.md#resourcegroup) ve [Subscription ()](template-functions-resource.md#subscription) işlevleri, şablonu nasıl belirtkullanılacağına göre farklı şekilde çözümlenir. Bir dış şablona bağlandığınızda işlevler her zaman ilgili şablonun kapsamına çözümlenir. Bir şablonu bir üst şablon içine yuvalandığınızda, `expressionEvaluationOptions` işlevlerin ana şablon veya iç içe şablon için kaynak grubuna ve aboneliğe çözümlenip çözümlenmediğini belirtmek için özelliğini kullanın. Özelliğini, `inner` iç içe geçmiş şablonun kapsamına çözülecek şekilde ayarlayın. Özelliğini, `outer` üst şablonun kapsamına çözülecek şekilde ayarlayın.
 
 Aşağıdaki tabloda, işlevlerin üst veya katıştırılmış kaynak grubuna ve aboneliğe çözümlenip çözümlenmediğini gösterir.
 
@@ -221,99 +137,7 @@ Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples
 * iç kapsama sahip iç içe şablon
 * bağlantılı şablon
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "defaultScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "innerScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "expressionEvaluationOptions": {
-          "scope": "inner"
-      },
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "resourceGroup": "linkedGroup",
-      "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "contentVersion": "1.0.0.0",
-          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-      },
-      "parameters": {}
-      }
-    }
-  ],
-  "outputs": {
-    "parentRG": {
-      "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-    },
-    "defaultScopeRG": {
-      "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "innerScopeRG": {
-      "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "linkedRG": {
-      "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crossresourcegroupproperties.json":::
 
 Önceki şablonu test etmek ve sonuçları görmek için PowerShell veya Azure CLı kullanın.
 

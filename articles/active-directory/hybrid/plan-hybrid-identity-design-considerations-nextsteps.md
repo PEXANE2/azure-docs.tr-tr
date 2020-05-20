@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f834924a564f92fe7050a1236701701af7f5229
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512972"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647260"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory karma kimlik tasarımı konuları-sonraki adımlar
 Artık gereksinimlerinizi tanımlamayı ve mobil cihaz yönetimi çözümünüz için tüm seçenekleri incelemeyi tamamladığınıza göre, sonraki adımlara geçip kendiniz ve kuruluşunuz için destekleyici altyapının dağıtımını yapmaya hazırsınız demektir.
@@ -37,8 +37,8 @@ Mobil cihaz yönetimi çözümünüzü hayata geçirirken, kavramların ve yorda
 Aşağıdaki kaynakların izlenmesi genellikle mobil cihaz yönetimi çözümlerinde en son haberleri ve güncelleştirmeleri sağlar:
 
 * [Microsoft Enterprise Mobility blogu](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Bulut blogunda Microsoft](https://blogs.technet.com/b/in_the_cloud/)
-* [Microsoft Intune blogu](https://blogs.technet.com/b/microsoftintune/)
+* [Bulut blogunda Microsoft](https://cloudblogs.microsoft.com/)
+* [Microsoft Intune blogu](https://techcommunity.microsoft.com/t5/intune-customer-success/welcome-to-the-new-intune-customer-success-blog/ba-p/281367)
 * [Microsoft uç nokta Configuration Manager blogu](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>Ayrıca bkz.

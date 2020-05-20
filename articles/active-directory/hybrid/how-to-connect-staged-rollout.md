@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/12/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112329"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644161"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -33,13 +33,13 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
 -   İki seçenekten birine taşımaya karar verdiniz:
-    - **Parola karması***eşitlemesi (eşitleme)* + *sorunsuz çoklu oturum açma (SSO) seçeneği*  - 
-    - **Seçenek B** - *geçişli kimlik doğrulaması* + *sorunsuz SSO*
+    - **Seçenek A**  -  *Parola karması eşitleme (eşitleme)*  +  *kesintisiz çoklu oturum açma (SSO)*
+    - **Seçenek B**  -  *geçişli kimlik doğrulaması*  +  *sorunsuz SSO*
     
     *Kusursuz SSO* isteğe bağlı olsa da, bir kurumsal ağın içinden etki alanına katılmış makineler çalıştıran kullanıcılar için sessiz oturum açma deneyimi elde etmenizi öneririz.
 
@@ -51,6 +51,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 -   Belirli bir Active Directory ormanında *sorunsuz SSO* 'yu etkinleştirmek için, bir etki alanı yöneticisi olmanız gerekir.
 
+
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
 Hazırlanan dağıtım için aşağıdaki senaryolar desteklenir. Özelliği yalnızca için geçerlidir:
@@ -58,6 +59,7 @@ Hazırlanan dağıtım için aşağıdaki senaryolar desteklenir. Özelliği yal
 - Azure AD Connect kullanılarak Azure AD 'ye sağlanan kullanıcılar. Yalnızca bulutta bulunan kullanıcılar için geçerlidir.
 
 - Tarayıcılarda ve *modern kimlik doğrulama* istemcilerinde Kullanıcı oturum açma trafiği. Eski kimlik doğrulaması kullanan uygulamalar veya bulut Hizmetleri, federal kimlik doğrulama akışlarına geri döner. Bir örnek, modern kimlik doğrulaması kapalı veya modern kimlik doğrulamayı desteklemeyen Outlook 2010 ile Exchange Online olabilir.
+- Grup boyutu şu anda 50.000 kullanıcıyla sınırlıdır.  Daha büyük ve 50.000 Kullanıcı gruplarınız varsa, bu grubu hazırlanmış dağıtım için birden çok gruba bölmeniz önerilir.
 
 ## <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
@@ -78,6 +80,9 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
 - Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
 
+>[!NOTE]
+> Kiracı uç noktaları, oturum açma ipuçları göndermediğinden, hazırlanan dağıtım için desteklenmez.  SAML uygulamaları kiralanan uç noktaları kullanır ve ayrıca, hazırlanan dağıtım için de destek vermez.
+
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama
 
 Hazırlanan dağıtım kullanarak *Parola karması eşitlemesini* test etmek için, sonraki bölümde yer aldığı ön iş yönergelerini izleyin.
@@ -86,7 +91,7 @@ Hangi PowerShell cmdlet 'lerinin kullanılacağı hakkında daha fazla bilgi iç
 
 ## <a name="pre-work-for-password-hash-sync"></a>Parola karması eşitleme için önceden çalışma
 
-1. Azure AD Connect 'de [isteğe bağlı özellikler](how-to-connect-install-custom.md#optional-features) sayfasından *Parola karması eşitlemesini* etkinleştirin. 
+1.  *password hash sync*   Azure AD Connect 'de [isteğe bağlı özellikler](how-to-connect-install-custom.md#optional-features)sayfasından Parola karması eşitlemesini etkinleştirin   . 
 
    ![Azure Active Directory Connect 'daki "Isteğe bağlı özellikler" sayfasının ekran görüntüsü](media/how-to-connect-staged-rollout/sr1.png)
 
@@ -112,27 +117,27 @@ Hazırlanan dağıtım için seçtiğiniz oturum açma yönteminden (*Parola kar
 
 ## <a name="pre-work-for-seamless-sso"></a>Sorunsuz SSO için önceden çalışma
 
-PowerShell kullanarak Active Directory ormanlarda *sorunsuz SSO* 'yu etkinleştirin. Birden fazla Active Directory ormanına sahipseniz, her orman için tek tek etkinleştirin.  *Sorunsuz SSO* yalnızca, hazırlanan dağıtım için seçilen kullanıcılar için tetiklenir. Mevcut Federasyon kurulumunuzu etkilemez.
+PowerShell kullanarak Active Directory ormanlarda *sorunsuz SSO*'yu etkinleştirin   . Birden fazla Active Directory ormanına sahipseniz, her orman için tek tek etkinleştirin.  *Sorunsuz SSO* yalnızca, hazırlanan dağıtım için seçilen kullanıcılar için tetiklenir. Mevcut Federasyon kurulumunuzu etkilemez.
 
 Aşağıdakileri yaparak *sorunsuz SSO* 'yu etkinleştirin:
 
 1. Azure AD Connect sunucuda oturum açın.
 
-2.  *% ProgramFiles%\\Microsoft Azure Active Directory Connect* klasörüne gidin.
+2.  *% ProgramFiles% \\ Microsoft Azure Active Directory Connect*   klasörüne gidin.
 
 3. Aşağıdaki komutu çalıştırarak *sorunsuz SSO* PowerShell modülünü içeri aktarın: 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir pencere açar.
+4. PowerShell'i yönetici olarak çalıştırın. PowerShell 'de, çağırın  `New-AzureADSSOAuthenticationContext` . Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir pencere açar.
 
-5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, Active Directory ormanlarının bir listesini görüntüler (Bu özelliğin etkinleştirildiği "etki alanları" listesine bakın). Varsayılan olarak, kiracı düzeyinde false olarak ayarlanır.
+5. Çağrısı yapın  `Get-AzureADSSOStatus | ConvertFrom-Json` . Bu komut, Active Directory ormanlarının bir listesini görüntüler (Bu özelliğin etkinleştirildiği "etki alanları" listesine bakın). Varsayılan olarak, kiracı düzeyinde false olarak ayarlanır.
 
    ![Windows PowerShell çıkışı örneği](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Çağrısı `$creds = Get-Credential`yapın. İstemde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
+6. Çağrısı yapın  `$creds = Get-Credential` . İstemde, hedeflenen Active Directory ormanın etki alanı yönetici kimlik bilgilerini girin.
 
-7. Çağrısı `Enable-AzureADSSOForest -OnPremCredentials $creds`yapın. Bu komut, *sorunsuz SSO*için gereken Active Directory ormanı için şirket içi etki alanı denetleyicisinden AZUREADSSOACC bilgisayar hesabını oluşturur.
+7. Çağrısı yapın `Enable-AzureADSSOForest -OnPremCredentials $creds` . Bu komut, *sorunsuz SSO*için gereken Active Directory ormanı için şirket içi etki alanı denetleyicisinden AZUREADSSOACC bilgisayar hesabını oluşturur.
 
 8. *Sorunsuz SSO* , URL 'lerin intranet bölgesinde olmasını gerektirir. Bu URL 'Leri Grup ilkeleri kullanarak dağıtmak için bkz. [hızlı başlangıç: Azure AD sorunsuz çoklu oturum açma](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature).
 
@@ -146,9 +151,9 @@ Belirli bir özelliği (*doğrudan kimlik doğrulama*, *Parola karması EŞITLEM
 
 Aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
-- **Parola karması***eşitleme* + *sorunsuz SSO seçeneği*  - 
-- **Seçenek B** - *geçişli kimlik doğrulaması* + *sorunsuz SSO*
-- **Desteklenmeyen** - *Parola karması eşitleme* + *geçişli kimlik doğrulaması* + *sorunsuz SSO*
+- **Seçenek A**  -  *Parola karması eşitleme*  +  *sorunsuz SSO*
+- **Seçenek B**  -  *geçişli kimlik doğrulaması*  +  *sorunsuz SSO*
+- **Desteklenmiyor**  -  *Parola karması eşitleme*  +  *geçişli kimlik doğrulaması*  +  *sorunsuz SSO*
 
 Şunları yapın:
 

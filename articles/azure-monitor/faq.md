@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/11/2020
-ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/15/2020
+ms.openlocfilehash: df3e107b111161284c697aa8f619eed96443a893
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117793"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651833"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -97,6 +97,11 @@ Birçok kaynak sağlayıcısı otomatik olarak kaydedilir, ancak bazı kaynak sa
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Bir VM 'den Log Analytics açarken neden erişim hatası mesajı alıyorum? 
 VM günlüklerini görüntülemek için, VM günlüklerini depolayan çalışma alanları için okuma izni verilmesi gerekir. Bu durumlarda yöneticinizin Azure 'daki izinleri size vermesi gerekir.
 
+## <a name="metrics"></a>Ölçümler
+
+### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Azure sanal makinelerimin Konuk işletim sistemindeki ölçümler, Ölçüm Gezgini ' nde görünmüyor mu?
+[Platform ölçümleri](insights/monitor-azure-resource.md#monitoring-data) , Azure kaynakları için otomatik olarak toplanır. Bir sanal makinenin Konuk IŞLETIM sisteminden ölçümleri toplamak için bazı yapılandırmalar gerçekleştirmeniz gerekir. Windows VM için, tanılama uzantısını yükleyip Azure Izleyici havuzunu [Windows Azure tanılama uzantısı 'nı (WAD) yükleyip yapılandırma](platform/diagnostics-extension-windows-install.md)bölümünde açıklandığı gibi yapılandırın. Linux için telegraf aracısını, [etkileyen bir Linux VM için özel ölçümleri toplama bölümünde açıklandığı gibi yükleyerek, etkileyen bir sanal makine telegraf aracısıdır](platform/collect-custom-metrics-linux-telegraf.md).
+
 ## <a name="alerts"></a>Uyarılar
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Azure Izleyici 'de uyarı nedir?
@@ -180,7 +185,7 @@ Mevcut veya yeni bir [eylem grubu](platform/action-groups.md) belirtin, böylece
 Güvenlik Duvarı gereksinimleriyle ilgili ayrıntılar için bkz. [ağ güvenlik duvarı gereksinimleri](platform/log-analytics-agent.md#network-requirements).
 
 
-## <a name="visualizations"></a>Görsel öğeler
+## <a name="visualizations"></a>Görselleştirmeler
 
 ### <a name="why-cant-i-see-view-designer"></a>Neden görünüm tasarımcısını göremiyorum?
 
@@ -508,6 +513,10 @@ Daha fazla bilgi için bkz. [defaultProxy](https://docs.microsoft.com/dotnet/fra
 ## <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 
 Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+
+### <a name="health-feature-is-in-private-preview"></a>Sistem durumu özelliği özel önizlemede
+
+İşlevselliği eklemek ve geri bildiriminizi gidermek için bir dizi değişiklik yapmayı planlıyoruz. Sistem durumu özelliği, Haziran 2020 ' nin sonunda özel önizlemeye geçiş yapmak ve ek bilgi edinmek için aşağıdaki [Azure güncelleştirmeleri duyurusunu](https://azure.microsoft.com/updates/ci-health-limited-preview/)inceleyin.
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Düğüm görünümü altında *diğer süreçler* ne gösterir?
 

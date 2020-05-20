@@ -11,27 +11,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro, has-adal-ref
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a649a6fab1fe85efc4edcfd2d3151ab85302101b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610284"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647226"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama
 
-Web uygulamaları yayımlamak için Azure Active Directory (Azure AD) uygulama proxy 'Si kullanabilirsiniz, ancak Azure AD kimlik doğrulama kitaplığı (ADAL) ile yapılandırılmış yerel istemci uygulamalarını yayımlamak için de kullanılabilir. Yerel istemci uygulamaları bir cihaza yüklendiğinden, Web uygulamalarına bir tarayıcıdan erişildiği için Web Apps 'ten farklıdır.
+Web uygulamaları yayımlamak için Azure Active Directory (Azure AD) uygulama proxy 'Si kullanabilirsiniz, ancak Microsoft kimlik doğrulama kitaplığı (MSAL) ile yapılandırılmış yerel istemci uygulamalarını yayımlamak için de kullanılabilir. Yerel istemci uygulamaları bir cihaza yüklendiğinden, Web uygulamalarına bir tarayıcıdan erişildiği için Web Apps 'ten farklıdır.
 
 Yerel istemci uygulamalarını desteklemek için, uygulama proxy 'Si, üst bilgide gönderilen Azure AD tarafından verilen belirteçleri kabul eder. Uygulama proxy hizmeti, kullanıcıların kimlik doğrulamasını yapar. Bu çözüm, kimlik doğrulaması için uygulama belirteçlerini kullanmaz.
 
 ![Son kullanıcılar, Azure AD ve yayımlanan uygulamalar arasındaki ilişki](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Yerel uygulamaları yayımlamak için, kimlik doğrulamasından geçen ve birçok istemci ortamını destekleyen Azure AD kimlik doğrulama kitaplığı 'nı kullanın. Uygulama proxy 'Si, [yerel uygulamaya Web API senaryosuna](../azuread-dev/native-app.md)uyar.
+Yerel uygulamaları yayımlamak için, kimlik doğrulamasından geçen ve birçok istemci ortamını destekleyen Microsoft kimlik doğrulama Kitaplığı ' nı kullanın. Uygulama proxy 'Si, [oturum açmış bir Kullanıcı senaryosu adına bir Web API 'si çağıran masaüstü uygulamasına](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#desktop-app-that-calls-a-web-api-on-behalf-of-a-signed-in-user) uyar.
 
 Bu makalede, uygulama proxy 'Si ve Azure AD kimlik doğrulama kitaplığı ile yerel bir uygulama yayımlamanın dört adımı anlatılmaktadır.
 
@@ -56,8 +56,7 @@ Artık uygulamanızı şu şekilde Azure AD 'ye kaydetmeniz gerekir:
    - Yalnızca kuruluşunuz için dahili olan hesapları hedeflemek için **yalnızca bu kuruluş dizininde hesaplar**' ı seçin.
    - Yalnızca iş veya Eğitim müşterilerini hedeflemek için **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
    - En geniş Microsoft kimlikleri kümesini hedeflemek için **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-
-1. **Yeniden yönlendirme URI 'si** başlığında **ortak istemci (mobil & Masaüstü)** öğesini seçin ve ardından uygulamanızın yeniden yönlendirme URI 'sini yazın.
+1. **Yeniden yönlendirme URI 'si**altında **ortak istemci ' yi (mobil & Masaüstü)** seçin ve ardından uygulamanızın yeniden yönlendirme URI 'sini yazın `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 1. **Microsoft Platformu ilkelerini**seçin ve okuyun ve ardından **Kaydet**' i seçin. Yeni uygulama kaydı için bir genel bakış sayfası oluşturulur ve görüntülenir.
 
 Yeni bir uygulama kaydı oluşturma hakkında daha ayrıntılı bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md).
@@ -69,39 +68,57 @@ Yerel uygulamanızı kaydettirdiğiniz için, bu durumda ara sunucu uygulamasın
 1. Yeni uygulama kaydı sayfasının kenar çubuğunda, **API izinleri**' ni seçin. Yeni uygulama kaydı için **API izinleri** sayfası görüntülenir.
 1. **Izin Ekle**' yi seçin. **İstek API 'si izinleri** sayfası görüntülenir.
 1. **BIR API seçin** ayarı altında **Kuruluşumun kullandığı API 'ler**' i seçin. Dizininizde API 'Leri kullanıma sunan uygulamaları içeren bir liste görüntülenir.
-1. [1. Adım: ara sunucu uygulamanızı yayımlama](#step-1-publish-your-proxy-application)bölümünde yayımladığınız proxy uygulamasını bulmak için arama kutusuna veya kaydırın, sonra da ara sunucu uygulamasını seçin.
+1. [1. Adım: ara sunucu uygulamanızı yayımlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-native-client-application#step-1-publish-your-proxy-application)bölümünde yayımladığınız proxy uygulamasını bulmak için arama kutusuna veya kaydırın, sonra da ara sunucu uygulamasını seçin.
 1. **Uygulamanızın ne tür izinler gerekiyor?** başlığına izin türünü seçin. Yerel uygulamanızın oturum açmış kullanıcı olarak proxy uygulama API 'sine erişmesi gerekiyorsa, **temsilci izinleri**' ni seçin.
 1. **Izinleri Seç** başlığında, istenen izni seçin ve **izin Ekle**' yi seçin. Yerel uygulamanız için **API izinleri** sayfası artık eklediğiniz proxy uygulamasını ve izin API 'sini gösterir.
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>4. Adım: Active Directory Authentication Library düzenleme
+## <a name="step-4-add-the-microsoft-authentication-library-to-your-code-net-c-sample"></a>4. Adım: Microsoft kimlik doğrulama kitaplığı 'nı kodunuza ekleme (.NET C# örneği)
 
-Aşağıdaki metni dahil etmek için Active Directory Authentication Library (ADAL) kimlik doğrulama bağlamındaki yerel uygulama kodunu düzenleyin:
+Microsoft kimlik doğrulama kitaplığı 'nın (MSAL) kimlik doğrulama bağlamındaki yerel uygulama kodunu aşağıdaki metni içerecek şekilde düzenleyin: 
 
-```
+```         
 // Acquire Access Token from AAD for Proxy Application
-AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<Tenant ID>");
-AuthenticationResult result = await authContext.AcquireTokenAsync("< External Url of Proxy App >",
-        "<App ID of the Native app>",
-        new Uri("<Redirect Uri of the Native App>"),
-        PromptBehavior.Never);
+IPublicClientApplication clientApp = PublicClientApplicationBuilder
+.Create(<App ID of the Native app>)
+.WithDefaultRedirectUri() // will automatically use the default Uri for native app
+.WithAuthority("https://login.microsoftonline.com/{<Tenant ID>}")
+.Build();
 
-//Use the Access Token to access the Proxy Application
-HttpClient httpClient = new HttpClient();
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
+AuthenticationResult authResult = null;
+var accounts = await clientApp.GetAccountsAsync();
+IAccount account = accounts.FirstOrDefault();
+
+IEnumerable<string> scopes = new string[] {"<Scope>"};
+
+try
+ {
+    authResult = await clientApp.AcquireTokenSilent(scopes, account).ExecuteAsync();
+ }
+    catch (MsalUiRequiredException ex)
+ {
+     authResult = await clientApp.AcquireTokenInteractive(scopes).ExecuteAsync();                
+ }
+
+if (authResult != null)
+ {
+  //Use the Access Token to access the Proxy Application
+
+  HttpClient httpClient = new HttpClient();
+  HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+  HttpResponseMessage response = await httpClient.GetAsync("<Proxy App Url>");
+ }
 ```
 
 Örnek kodda gerekli bilgiler, Azure AD portalında şu şekilde bulunabilir:
 
 | Bilgi gerekiyor | Azure AD portalında bulma |
 | --- | --- |
-| \<Kiracı KIMLIĞI> | **Azure Active Directory** > **Properties**özellikleri > **dizin kimliği** |
-| \<Proxy uygulama> dış URL 'Si | **Enterprise applications** > *Proxy*uygulama > **uygulamanızın**proxy > **dış URL** 'si olan kurumsal uygulamalar |
-| \<Yerel uygulamanın uygulama KIMLIĞI> | **Enterprise applications** > *Yerel*uygulama > **Properties**özellikleri > **Uygulama Kimliğiniz** kurumsal uygulamalar |
-| \<Yerel uygulamanın yeniden yönlendirme URI 'SI> | **Azure Active Directory** > **App registrations** > *Yerel*uygulama > **yeniden yönlendirme URI 'leri** uygulama kayıtları Azure Active Directory |
-| \<Proxy uygulama API 'Si> | **Azure Active Directory** > **App registrations** > *Yerel*uygulama > **API**'si izinleriniz > **API/izinleri adı** uygulama kayıtları Azure Active Directory |
+| \<Kiracı KIMLIĞI> | **Azure Active Directory**  >  **Özellikler**  >  **DIZIN kimliği** |
+| \<Yerel uygulamanın uygulama KIMLIĞI> | **Uygulama kaydı**  >  *Yerel uygulamanız*  >  **Genel bakış**  >  **Uygulama kimliği** |
+| \<Kapsam> | **Uygulama kaydı**  >  *Yerel uygulamanız*  >  **API izinleri** > izin API 'sine (User_impersonation) tıklayarak, sağ tarafta başlık **user_impersonation** olan bir panel >. Kapsam >, düzenleme kutusunda URL 'dir.
+| \<Proxy Uygulama URL 'Si> | Dış URL ve API yolu
 
-ADAL 'yi bu parametrelerle düzenledikten sonra, kullanıcılarınız şirket ağının dışında olduklarında bile yerel istemci uygulamalarında kimlik doğrulaması yapabilir.
+MSAL kodunu bu parametrelerle düzenledikten sonra, kullanıcılarınız şirket ağı dışında olsalar bile yerel istemci uygulamalarında kimlik doğrulaması yapabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

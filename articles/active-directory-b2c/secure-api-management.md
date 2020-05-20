@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186939"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638492"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C ile Azure API Management API 'sinin güvenliğini sağlama
 
 Azure API Management (APıM) API 'nize erişimi, Azure Active Directory B2C (Azure AD B2C) ile kimliği doğrulanan istemcilere nasıl kısıtlayacağınızı öğrenin. Bu makaledeki adımları izleyerek, erişimi yalnızca geçerli bir Azure AD B2C verilen erişim belirteci içeren isteklerle sınırlayan APıM 'de bir gelen ilke oluşturun ve test edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımlarla devam etmeden önce aşağıdaki kaynaklara sahip olmanız gerekir:
 
@@ -39,7 +39,7 @@ Uygulama KIMLIĞINI almak için geçerli **uygulamalar** deneyimini veya yeni Bi
 
 #### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Yönet**altında **uygulamalar**' ı seçin.
@@ -47,7 +47,7 @@ Uygulama KIMLIĞINI almak için geçerli **uygulamalar** deneyimini veya yeni Bi
 
 #### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
 1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından **sahip olunan uygulamalar** sekmesini seçin.
@@ -69,15 +69,15 @@ Sonra, Azure AD B2C Kullanıcı akışlarınızdan biri için iyi bilinen yapıl
 1. OpenID Connect iyi bilinen yapılandırma sayfasına gitmek için köprüyü seçin.
 1. Tarayıcınızda açılan sayfada `issuer` değeri kaydedin, örneğin:
 
-    `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
+    `https://<tenant-name>.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
     Bu değeri, API 'nizi Azure API Management yapılandırırken bir sonraki bölümde kullanırsınız.
 
-Artık bir sonraki bölümde kullanılmak üzere kaydedilmiş iki URL 'ye sahip olmanız gerekir: OpenID Connect iyi bilinen yapılandırma uç noktası URL 'SI ve veren URI. Örneğin:
+Artık bir sonraki bölümde kullanılmak üzere kaydedilmiş iki URL 'ye sahip olmanız gerekir: OpenID Connect iyi bilinen yapılandırma uç noktası URL 'SI ve veren URI. Örnek:
 
 ```
-https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
-https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration
+https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 ```
 
 ## <a name="configure-inbound-policy-in-azure-api-management"></a>Azure API Management gelen ilkesini yapılandırma
@@ -88,23 +88,23 @@ Artık, API çağrılarını doğrulayan Azure API Management gelen ilkesini ekl
 1. **API’ler** seçeneğini belirleyin.
 1. Azure AD B2C güvenliğini sağlamak istediğiniz API 'YI seçin.
 1. **Tasarım** sekmesini seçin.
-1. **Gelen işlem**altında, ilke ** \< / ** kodu düzenleyicisini açmak için seçin.
-1. Aşağıdaki `<validate-jwt>` etiketi `<inbound>` ilkenin içine yerleştirin.
+1. **Gelen işlem**altında, **\</\>** ilke kodu düzenleyicisini açmak için seçin.
+1. Aşağıdaki `<validate-jwt>` etiketi ilkenin içine yerleştirin `<inbound>` .
 
-    1. `<openid-config>` Öğesindeki `url` değeri ILKENIZIN tanınmış yapılandırma URL 'siyle güncelleştirin.
-    1. `<audience>` Öğesini daha önce B2C kiracınızda oluşturduğunuz UYGULAMANıN uygulama kimliğiyle güncelleştirin (örneğin, *WebApp1*).
-    1. `<issuer>` Öğesini daha önce kaydettiğiniz belirteç veren uç noktasıyla güncelleştirin.
+    1. `url` `<openid-config>` Öğesindeki değeri ilkenizin TANıNMıŞ yapılandırma URL 'siyle güncelleştirin.
+    1. `<audience>`Öğesini daha önce B2C kiracınızda oluşturduğunuz uygulamanın uygulama kimliğiyle güncelleştirin (örneğin, *WebApp1*).
+    1. `<issuer>`Öğesini daha önce kaydettiğiniz belirteç veren uç noktasıyla güncelleştirin.
 
     ```xml
     <policies>
         <inbound>
             <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-                <openid-config url="https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1" />
+                <openid-config url="https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration" />
                 <audiences>
                     <audience>44444444-0000-0000-0000-444444444444</audience>
                 </audiences>
                 <issuers>
-                    <issuer>https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
+                    <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
                 </issuers>
             </validate-jwt>
             <base />
@@ -123,18 +123,18 @@ API 'yi çağırmak için hem Azure AD B2C tarafından verilen bir erişim belir
 
 ### <a name="get-an-access-token"></a>Bir erişim belirteci alma
 
-İlk olarak, Postman 'daki `Authorization` üst bilgide kullanmak üzere Azure AD B2C tarafından verilen bir belirtece ihtiyacınız vardır. Kaydolma/oturum açma Kullanıcı akışınız için **Şimdi Çalıştır** özelliğini kullanarak bir tane, önkoşullardan biri olarak oluşturmuş olmanız gerekir.
+İlk olarak, `Authorization` Postman 'daki üst bilgide kullanmak üzere Azure AD B2C tarafından verilen bir belirtece ihtiyacınız vardır. Kaydolma/oturum açma Kullanıcı akışınız için **Şimdi Çalıştır** özelliğini kullanarak bir tane, önkoşullardan biri olarak oluşturmuş olmanız gerekir.
 
 1. [Azure portal](https://portal.azure.com)Azure AD B2C kiracınıza gidin.
 1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
 1. Mevcut bir kaydolma/oturum açma Kullanıcı akışı seçin, örneğin *B2C_1_signupsignin1*.
 1. **Uygulama**için *WebApp1*öğesini seçin.
-1. **Yanıt URL 'si**için öğesini `https://jwt.ms`seçin.
+1. **Yanıt URL 'si**için öğesini seçin `https://jwt.ms` .
 1. **Kullanıcı akışını Çalıştır**' ı seçin.
 
     ![Azure portal oturum açmak için Kullanıcı akış sayfasını Çalıştır](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
-1. Oturum açma işlemini tamamlayın. Uygulamasına `https://jwt.ms`yönlendirilmelisiniz.
+1. Oturum açma işlemini tamamlayın. Uygulamasına yönlendirilmelisiniz `https://jwt.ms` .
 1. Tarayıcınızda görünen kodlanmış belirteç değerini kaydedin. Bu belirteç değerini Postman 'daki yetkilendirme üst bilgisi için kullanırsınız.
 
     ![Jwt.ms üzerinde görünen kodlanmış belirteç değeri](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
@@ -146,7 +146,7 @@ Yayımlanmış bir API 'yi çağıran bir istemci uygulaması (Bu durumda Postma
 1. [Azure Portal](https://portal.azure.com)Azure API Management hizmet örneğinize gidin.
 1. **Abonelikler**' i seçin.
 1. **Ürün**için üç noktayı seçin ve ardından **anahtarları göster/gizle**' yi seçin.
-1. Ürünün **BIRINCIL anahtarını** kaydedin. Bu anahtarı Postman 'daki HTTP `Ocp-Apim-Subscription-Key` talebinizdeki üst bilgi için kullanırsınız.
+1. Ürünün **BIRINCIL anahtarını** kaydedin. Bu anahtarı `Ocp-Apim-Subscription-Key` Postman 'DAKI http talebinizdeki üst bilgi için kullanırsınız.
 
 ![Azure portal anahtarları göster/gizle seçiliyken abonelik anahtarı sayfası](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
@@ -154,7 +154,7 @@ Yayımlanmış bir API 'yi çağıran bir istemci uygulaması (Bu durumda Postma
 
 Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye güvenli erişimi doğru şekilde yapılandırıp yapılandırmadığınızı test etmeye hazırsınız demektir.
 
-1. [Postman](https://www.getpostman.com/)'da `GET` yeni bir istek oluşturun. İstek URL 'SI için, önkoşullardan biri olarak yayımladığınız API 'nin hoparlör listesi uç noktasını belirtin. Örneğin:
+1. `GET` [Postman](https://www.getpostman.com/)'da yeni bir istek oluşturun. İstek URL 'SI için, önkoşullardan biri olarak yayımladığınız API 'nin hoparlör listesi uç noktasını belirtin. Örnek:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
@@ -162,7 +162,7 @@ Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye g
 
     | Anahtar | Değer |
     | --- | ----- |
-    | `Authorization` | Daha önce kaydettiğiniz kodlanmış belirteç değeri, ön eki `Bearer ` eklenmiş ("taşıyıcı" den sonra boşluk dahil) |
+    | `Authorization` | Daha önce kaydettiğiniz kodlanmış belirteç değeri, ön eki eklenmiş `Bearer ` ("taşıyıcı" den sonra boşluk dahil) |
     | `Ocp-Apim-Subscription-Key` | Daha önce kaydettiğiniz APıM abonelik anahtarı |
 
     **Get** Request URL 'Si ve **başlıklarınız** şuna benzer görünmelidir:
@@ -198,13 +198,13 @@ Erişim belirteci ve APıM abonelik anahtarı kaydedildiğinde, artık API 'ye g
 
 ### <a name="test-an-insecure-api-call"></a>Güvenli olmayan bir API çağrısını test etme
 
-Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şekilde reddedildiğini sağlamak için hata durumunu test edin. Testi gerçekleştirmenin bir yolu, belirteç değerindeki birkaç karakteri eklemek veya değiştirmek, ardından aynı `GET` isteği daha sonra çalıştırmak.
+Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şekilde reddedildiğini sağlamak için hata durumunu test edin. Testi gerçekleştirmenin bir yolu, belirteç değerindeki birkaç karakteri eklemek veya değiştirmek, ardından aynı isteği daha sonra çalıştırmak `GET` .
 
 1. Geçersiz bir belirtecin benzetimini yapmak için belirteç değerine birkaç karakter ekleyin. Örneğin, belirteç değerine "GEÇERSIZ" ekleyin:
 
     ![Postman Kullanıcı arabiriminin üstbilgiler bölümü, GEÇERSIZ belirtece eklenmiş olarak gösteriliyor](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
 
-1. İsteği yürütmek için **Gönder** düğmesini seçin. Geçersiz bir belirteçle, beklenen sonuç yetkisiz bir `401` durum kodudur:
+1. İsteği yürütmek için **Gönder** düğmesini seçin. Geçersiz bir belirteçle, beklenen sonuç `401` yetkisiz bir durum kodudur:
 
     ```JSON
     {
@@ -213,11 +213,11 @@ Başarılı *bir istek* YAPTıK, API 'nize yapılan çağrıların beklenen şek
     }
     ```
 
-`401` Durum kodunu görürseniz, yalnızca Azure AD B2C tarafından verilen geçerli erişim belirtecine sahip çağıranların Azure API Management API 'nize başarılı istekler yapacadığını doğruladınız.
+`401`Durum kodunu görürseniz, yalnızca Azure AD B2C tarafından verilen geçerli erişim belirtecine sahip çağıranların Azure API Management API 'nize başarılı istekler yapacadığını doğruladınız.
 
 ## <a name="support-multiple-applications-and-issuers"></a>Birden çok uygulamayı ve verenler destekleme
 
-Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden çok uygulama için tasarlanan belirteçleri kabul etmesine olanak tanımak için, uygulama kimliklerini APıM `<audiences>` gelen ilkesindeki öğesine ekleyin.
+Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden çok uygulama için tasarlanan belirteçleri kabul etmesine olanak tanımak için, uygulama kimliklerini `<audiences>` APIM gelen ilkesindeki öğesine ekleyin.
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -227,19 +227,19 @@ Birçok uygulama genellikle tek bir REST API etkileşim kurar. API 'nizin birden
 </audiences>
 ```
 
-Benzer şekilde, birden çok belirteç verenler desteklemek için, APıM gelen ilkesindeki `<issuers>` öğesine kendi uç nokta URI 'lerini ekleyin.
+Benzer şekilde, birden çok belirteç verenler desteklemek için, `<issuers>` APIM gelen ilkesindeki öğesine kendi uç nokta URI 'lerini ekleyin.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
 <issuers>
-    <issuer>https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
+    <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
     <issuer>https://login.microsoftonline.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
 </issuers>
 ```
 
 ## <a name="migrate-to-b2clogincom"></a>B2clogin.com 'e geçiş
 
-Eski `login.microsoftonline.com` uç nokta tarafından verilen belirteçleri doğrulayan bir APıM API 'si varsa, API 'yi ve bunu çağıran uygulamaları [b2clogin.com](b2clogin.md)tarafından verilen belirteçleri kullanacak şekilde geçirmeniz gerekir.
+Eski uç nokta tarafından verilen belirteçleri doğrulayan bir APıM API 'SI varsa `login.microsoftonline.com` , API 'yi ve bunu çağıran uygulamaları [b2clogin.com](b2clogin.md)tarafından verilen belirteçleri kullanacak şekilde geçirmeniz gerekir.
 
 Aşamalı bir geçiş gerçekleştirmek için bu genel işlemi izleyebilirsiniz:
 
@@ -253,14 +253,14 @@ Aşağıdaki örnek APıM gelen ilkesi, hem b2clogin.com hem de login.microsofto
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-            <openid-config url="https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1" />
+            <openid-config url="https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration" />
             <audiences>
                 <audience>44444444-0000-0000-0000-444444444444</audience>
                 <audience>66666666-0000-0000-0000-666666666666</audience>
             </audiences>
             <issuers>
                 <issuer>https://login.microsoftonline.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
-                <issuer>https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
+                <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
             </issuers>
         </validate-jwt>
         <base />

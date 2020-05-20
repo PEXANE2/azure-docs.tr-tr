@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 4/3/2020
-ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/13/2020
+ms.openlocfilehash: 7c74829955085b3aa25043b25101fdaab10d7e6d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310117"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659584"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 
@@ -45,7 +45,7 @@ Daha fazla maliyet ayrıntısı için bkz. [faturalandırma](sql-database-server
 
 ## <a name="scenarios"></a>Senaryolar
 
-Sunucusuz, boşta kullanım dönemlerinden sonra işlem ısınma süresi boyunca zaman aralıklı, öngörülemeyen kullanım desenleriyle tek veritabanları için en iyi duruma getirilmiş fiyat performanslarıdır. Buna karşılık, sağlanan işlem katmanı, tek veritabanları veya esnek havuzlardaki birden çok veritabanı için en iyi duruma getirilmiş, işlem ısınma sırasında herhangi bir gecikmeyi karşılayamamakta olan bir gecikme süresi daha yüksektir.
+Sunucusuz model aralıklı, tahmin edilemez kullanım düzenleri olan ve boşta kullanım dönemlerinden sonra işlemin ısınması için biraz beklemeyi kaldırabilen tek veritabanları için fiyat-performans açısından iyileştirilmiştir. Buna karşılık sağlanan işlem katmanı, ortalama kullanımı yüksek olan ve işlem ısınması için beklemeyi kaldıramayan tek veritabanları veya elastik havuzlardaki birden çok veritabanı için fiyat-performans açısından iyileştirilmiştir.
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Daha az işlem için senaryolar iyi uygun
 
@@ -124,14 +124,15 @@ Veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmel
 
 Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeniden sürdürme tetiklenir:
 
-|Özellik|Oto özgeçmişi tetikleyicisi|
+|Öne çıkan özelliği|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulaması ve yetkilendirme|Oturum Aç|
+|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
 |Veri maskeleme|Veri maskeleme kuralları ekleme, değiştirme, silme veya görüntüleme|
 |Saydam veri şifrelemesi|Saydam veri şifrelemesinin durumunu veya durumunu görüntüleme|
+|Güvenlik açığı değerlendirmesi|Etkinse geçici taramalar ve düzenli taramalar|
 |Sorgu (performans) veri deposu|Sorgu deposu ayarlarını değiştirme veya görüntüleme|
 |Oto ayarlama|Otomatik Dizin oluşturma gibi otomatik ayarlama önerilerini uygulama ve doğrulama|
 |Veritabanı kopyalama|Kopya olarak veritabanı oluşturun.<br>BACPAC dosyasına dışarı aktarın.|
@@ -256,11 +257,11 @@ Bir sunucusuz veritabanı, sağlanan bir işlem veritabanını sunucusuz bir iş
 
 ### <a name="use-powershell"></a>PowerShell kullanma
 
-Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, `MinVcore`ve `AutoPauseDelayInMinutes` bağımsız değişkenleri kullanılarak `MaxVcore`PowerShell 'deki [set-azsqldatabase](/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
+Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, ve bağımsız değişkenleri kullanılarak PowerShell 'deki [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir `MaxVcore` `MinVcore` `AutoPauseDelayInMinutes` .
 
 ### <a name="use-azure-cli"></a>Azure CLI kullanma
 
-Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, `min-capacity`ve `auto-pause-delay` bağımsız değişkenlerini kullanarak `capacity`Azure CLI 'deki [az SQL DB Update](/cli/azure/sql/db#az-sql-db-update) komutu kullanılarak gerçekleştirilir.
+Maksimum veya en düşük sanal çekirdekleri ve oto duraklatma gecikmesini değiştirmek,, ve bağımsız değişkenlerini kullanarak Azure CLı 'deki [az SQL DB Update](/cli/azure/sql/db#az-sql-db-update) komutu kullanılarak gerçekleştirilir `capacity` `min-capacity` `auto-pause-delay` .
 
 
 ## <a name="monitoring"></a>İzleme
@@ -281,7 +282,7 @@ Kullanıcı kaynak havuzu, veritabanının sunucusuz veya sağlanmış bir işle
 
 Bir sunucusuz veritabanının uygulama paketinin ve Kullanıcı havuzunun kaynak kullanımını izlemeye yönelik ölçümler aşağıdaki tabloda listelenmiştir:
 
-|Varlık|Ölçüm|Açıklama|Birimler|
+|Varlık|Metric|Açıklama|Birimler|
 |---|---|---|---|
 |Uygulama paketi|app_cpu_percent|Uygulama tarafından, uygulama için izin verilen en fazla Vçekirdelere göre kullanılan sanal çekirdekler yüzdesi.|Yüzde|
 |Uygulama paketi|app_cpu_billed|Raporlama döneminde uygulama için faturalandırılan işlem miktarı. Bu süre boyunca ödenen miktar, bu ölçümün ve vCore birim fiyatının ürünüdür. <br><br>Bu ölçümün değerleri, en fazla CPU kullanımı ve her saniye kullanılan bellek için toplanan zamana göre belirlenir. Kullanılan miktar, en düşük sanal çekirdekler ve minimum bellek tarafından ayarlanan şekilde sağlanan minimum miktardan azsa, sağlanan minimum miktar faturalandırılır.İşlemci amacıyla CPU 'yu bellek ile karşılaştırmak için, bellek miktarı GB cinsinden vCore başına 5 GB olarak yeniden ayarlayarak sanal çekirdek birimlerine normalleştirilmelidir.|Sanal çekirdek Saniyeler|

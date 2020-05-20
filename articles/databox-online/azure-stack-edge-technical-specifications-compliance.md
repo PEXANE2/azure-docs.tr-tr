@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 054f1449d6f06225633bf0647cac93ca42f2b59b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929018"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652045"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge teknik özellikleri
 
-Microsoft Azure Stack Edge cihazınızın donanım bileşenleri, bu makalede açıklanan teknik belirtimlere ve mevzuata standartlarına bağlı kalmaktadır. Teknik belirtimler, güç kaynağı birimlerini (PSUs), depolama kapasitesini, kasaları ve çevresel standartları anlatmaktadır. 
+Microsoft Azure Stack Edge cihazınızın donanım bileşenleri, bu makalede açıklanan teknik belirtimlere ve mevzuata standartlarına bağlı kalmaktadır. Teknik belirtimler, güç kaynağı birimlerini (PSUs), depolama kapasitesini, kasaları ve çevresel standartları anlatmaktadır.
 
 ## <a name="compute-memory-specifications"></a>İşlem, bellek belirtimleri
 
@@ -28,15 +28,13 @@ Azure Stack Edge cihazının işlem ve bellek için aşağıdaki belirtimleri va
 | CPU    | 2 X 10 çekirdek CPU                     |
 | Bellek              | 128 GB RAM                  |
 
-
 ## <a name="fpga-specifications"></a>FPGA belirtimleri
 
-Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolarına izin veren her Azure Stack Edge cihazına dahildir. 
+Bir alan programlanabilir kapı dizisi (FPGA), Machine Learning (ML) senaryolarına izin veren her Azure Stack Edge cihazına dahildir.
 
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel vara 10 <br> Kullanılabilir derin sinir ağı (DNN) modelleri, [bulut FPGA örnekleri tarafından desteklenenlerle](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)aynıdır.| 
-
+| FPGA   | Intel vara 10 <br> Kullanılabilir derin sinir ağı (DNN) modelleri, [bulut FPGA örnekleri tarafından desteklenenlerle](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)aynıdır.|
 
 ## <a name="power-supply-unit-specifications"></a>Güç kaynağı birimi belirtimleri
 
@@ -45,9 +43,14 @@ Azure Stack Edge cihazında, yüksek performanslı fanlarla iki 100-240 V güç 
 | Belirtim           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksimum çıkış gücü    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Sıklık               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
 | Etkin takılabilir           | Yes                        |
+
+### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Bölgeye göre Azure Stack Edge güç kablosu belirtimleri
+
+Azure Stack Edge cihazınız, Azure bölgenize göre değişiklik gösteren bir güç kablosu gerektirir.
+Desteklenen tüm güç özelliklerinin teknik belirtimleri için, [bölgeye göre Azure Stack Edge güç kablosu belirtimlerini](azure-stack-edge-technical-specifications-power-cords-regional.md)inceleyin.
 
 <!--## Power consumption statistics
 
@@ -133,7 +136,6 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 |    Enerji             |    Komisyon Yönetmeliği (AB) No. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
-
 ### <a name="operating-temperature-de-rating-specifications"></a>İşletim sıcaklığı de derecelendirme belirtimleri
 
 |     İşletim sıcaklığı de derecelendirme     |     Çevresel sıcaklık aralığı                                                         |
@@ -141,7 +143,6 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 |    En fazla 35 °C (95 °F)                       |    Maksimum sıcaklık 950 (3.117 ft) üzerinde 1 °C/300 milyon (1 °F/547 ft) azaltılır.    |
 |    35 °C ila 40 °C (95 °F ila 104 °F)            |    Maksimum sıcaklık 1 °C/175 milyon (1 °F/319 ft) 950 (3.117 ft) üzerinde azaltılır.    |
 |    40 °C ila 45 °C (104 °F/113 °f)           |    Maksimum sıcaklık 1 °C/125 milyon (1 °F/228 ft) 950 (3.117 ft) üzerinde azaltılır.    |
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

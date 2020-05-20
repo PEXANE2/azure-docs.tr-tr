@@ -3,12 +3,12 @@ title: SAP HANA veritabanlarının yedekleme hatalarını giderme
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79459319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652071"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -22,7 +22,7 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 
 ### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
 
-| **Hata Iletisi**      | <span style="font-weight:normal">Azure Backup 'ın yedeklemeyi yürütmek için gerekli rol ayrıcalıkları yok</span>    |
+| **Hata İletisi**      | <span style="font-weight:normal">Azure Backup 'ın yedeklemeyi yürütmek için gerekli rol ayrıcalıkları yok</span>    |
 | ---------------------- | ------------------------------------------------------------ |
 | **Olası nedenler**    | Rolün üzerine yazılmış olabilir.                          |
 | **Önerilen eylem** | Sorunu çözmek için betiği **bul** bölmesinden çalıştırın veya [buradan](https://aka.ms/scriptforpermsonhana)indirin. Alternatif olarak, ' SAP_INTERNAL_HANA_SUPPORT ' rolünü Iş yükü yedekleme kullanıcısına (AZUREWLBACKUPHANAUSER) ekleyin. |
@@ -82,6 +82,13 @@ Yedeklemeleri yapılandırmadan önce [önkoşullara](tutorial-backup-sap-hana-d
 | ------------------ | ------------------------------------------------------------ |
 | **Olası nedenler**    | Azure Backup için yedekleme parametreleri yanlış belirtildi |
 | **Önerilen eylem** | Aşağıdaki (backınt) parametrelerinin ayarlanmış olup olmadığını denetleyin:<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: false]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>KONAKTA backınt tabanlı parametreler varsa, bunları kaldırın. Parametreler, ana bilgisayar düzeyinde mevcut değilse ancak bir veritabanı düzeyinde el ile değiştirilmişse, bunları daha önce açıklandığı gibi uygun değerlere dönüştürmeniz gerekir. Ya da, [korumayı durdurun ve Azure Portal yedekleme verilerini koruyun](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) ve sonra **yedeklemeyi devam ettirir**' ı seçin. |
+
+### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>Usererrorıncompatiblesrctargetsystemsforrestore
+
+|Hata İletisi  |Geri yükleme için kaynak ve hedef sistemler uyumsuz  |
+|---------|---------|
+|Olası nedenler   | Geri yükleme için seçilen kaynak ve hedef sistemler uyumsuz        |
+|Önerilen eylem   |   Geri yükleme senaryolarınızın aşağıdaki olası uyumsuz geri yüklemeler listesinde olmadığından emin olun: <br><br>   **Durum 1:** Restore sırasında SYSTEMDB yeniden adlandırılamaz.  <br><br> **Durum 2:** Source-SDC ve Target-MDC: kaynak veritabanı hedef üzerinde SYSTEMDB veya kiracı DB olarak geri yüklenemez. <br><br> **Durum 3:** Source-MDC ve Target-SDC: kaynak veritabanı (SYSTEMDB veya kiracı DB) hedefe geri yüklenemez. <br><br>  Daha fazla bilgi için, [sap desteği başlatma](https://launchpad.support.sap.com)çubuğu 'ndaki 1642148 notuna bakın. |
 
 ## <a name="restore-checks"></a>Geri yükleme denetimleri
 

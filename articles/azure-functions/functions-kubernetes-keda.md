@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: eab0a54d30f2cd2829779dbfc6081445f5be0a71
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121703"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648851"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA ile Kubernetes üzerinde Azure Işlevleri
 
@@ -28,7 +28,7 @@ Kubernetes kümenizdeki Işlevleri çalıştırmak için KEDA bileşenini yükle
 
 ### <a name="installing-with-helm"></a>Held ile yükleme
 
-Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeşitli yolları vardır.  Dağıtım seçenekleri [Keda sitesinde](https://keda.sh/docs/deploy/)belgelenmiştir.
+Helm dahil olmak üzere herhangi bir Kubernetes kümesine KEDA yüklemenin çeşitli yolları vardır.  Dağıtım seçenekleri [Keda sitesinde](https://keda.sh/docs/1.4/deploy/)belgelenmiştir.
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes 'e işlev uygulaması dağıtma
 
@@ -67,7 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Kubernetes 'ten KEDA kaldırma
 
-KEDA 'yı kaldırma adımları [Keda sitesinde](https://keda.sh/deploy/)belgelenmiştir.
+KEDA 'yı kaldırma adımları [Keda sitesinde](https://keda.sh/docs/1.4/deploy/)belgelenmiştir.
 
 ## <a name="supported-triggers-in-keda"></a>KEDA 'da desteklenen Tetikleyiciler
 

@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 12/19/2019
-ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418499"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674556"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory 'de görsel yazma
 
@@ -34,6 +34,14 @@ Azure Data Factory Kullanıcı arabirimi deneyimi (UX), herhangi bir kod yazmak 
 Burada, fabrikanızı oluşturan işlem hatları, Etkinlikler, veri kümeleri, bağlı hizmetler, veri akışları, Tetikleyiciler ve tümleştirme çalışma zamanları yazacaktır. Yazma tuvali 'ni kullanarak bir işlem hattı oluşturmaya başlamak için bkz. [kopyalama etkinliğini kullanarak verileri kopyalama](tutorial-copy-data-portal.md). 
 
 Varsayılan görsel yazma deneyimi, Data Factory hizmetiyle doğrudan çalışır. Veri Fabrikası işlem hatlarınız üzerinde çalışma için kaynak denetimi ve işbirliği yapmak üzere Azure Repos git veya GitHub tümleştirmesi de desteklenir. Bu yazma deneyimleri arasındaki farklar hakkında daha fazla bilgi edinmek için [Azure Data Factory Içindeki kaynak denetimi](source-control.md)konusuna bakın.
+
+### <a name="properties-pane"></a>Özellikler bölmesi
+
+İşlem hatları, veri kümeleri ve veri akışları gibi üst düzey kaynaklar için üst düzey özellikler, tuvalin sağ tarafındaki Özellikler bölmesinde düzenlenebilir. Özellikler bölmesi ad, açıklama, ek açıklamalar ve diğer üst düzey özellikler gibi özellikleri içerir. İşlem hattı etkinlikleri ve veri akışı dönüştürmeleri gibi alt kaynaklar, tuvalin alt kısmındaki panel kullanılarak düzenlenir. 
+
+![Yazı tuvali](media/author-visually/properties-pane.png)
+
+Özellikler bölmesi yalnızca kaynak oluşturma sırasında varsayılan olarak açılır. Düzenlemek için, tuvalin sağ üst köşesinde bulunan özellikler bölmesi simgesine tıklayın.
 
 ## <a name="expressions-and-functions"></a>İfadeler ve işlevler
 

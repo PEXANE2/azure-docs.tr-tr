@@ -1,7 +1,7 @@
 ---
 title: ML iş akışlarında olayları tetikleme
 titleSuffix: Azure Machine Learning
-description: ML yaşam döngüsünü basitleştirmek için Azure Machine Learning olaylarına göre olay odaklı uygulamaları, süreçleri veya CI/CD iş akışlarını nasıl tetikleyeceğinizi öğrenin.
+description: Azure Machine Learning 'de olay odaklı uygulamalar, süreçler veya CI/CD makine öğrenimi iş akışlarını ayarlayın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: 236cc46bb6f9e5ed95e4a49068ac41ae77a736f5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 79bea443ea576ba0c17c1a8150c305d7cd2320ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982879"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655806"
 ---
-# <a name="trigger-event-driven-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Olay odaklı uygulamalar, süreçler veya Azure Machine Learning olaylara göre CI/CD iş akışlarını tetikleyin (Önizleme)
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Uygulama, işlem veya CI/CD iş akışlarını Azure Machine Learning olaylara göre tetikleyin (Önizleme)
 
 Bu makalede, [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)tarafından bazı koşullar algılandığında hata bildirimi e-POSTALARı veya ml işlem hattı çalıştırmaları gibi Azure Machine Learning olaylara dayalı olay odaklı uygulamaları, süreçler veya CI/CD iş akışlarını ayarlamayı öğreneceksiniz. 
 
@@ -32,7 +32,7 @@ Olay odaklı eylemler için Event Grid ne zaman kullanılır:
 > [!NOTE] 
 > Şu anda runStatusChanged olayları yalnızca çalıştırma durumu **başarısız** olduğunda tetiklenir
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Event Grid kullanmak için, olaylarını oluşturacağınız Azure Machine Learning çalışma alanına katkıda bulunan veya Owner erişiminizin olması gerekir.
 
 ## <a name="the-event-model--types"></a>Olay modeli & türleri
@@ -241,7 +241,7 @@ Artık, Veri Fabrikası işlem hattı, DRT gerçekleştiğinde tetiklenir. [Yeni
 
 Azure Machine Learning model nesnesi model adı, sürüm, etiket ve özellik gibi bir Özet dağıtımı yaptığınız parametreler içerir. Model kayıt olayı bir uç nokta tetikleyebilir ve bu parametrelerin değerine göre bir modeli dağıtmak için bir Azure Işlevi kullanabilirsiniz.
 
-Bir örnek için, [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) depoya bakın ve **Benioku** dosyasındaki adımları izleyin.
+Bir örnek için, depoya bakın [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) ve **Benioku** dosyasındaki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

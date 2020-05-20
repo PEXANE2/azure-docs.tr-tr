@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562007"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653648"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
 Bu makalede, tek başına Windows kümenizin çeşitli düğümleri arasındaki iletişimin nasıl güvenliği sağlanacağı açıklanır. Ayrıca, X. 509.440 sertifikalarını kullanarak bu kümeye bağlanan istemcilerin kimliğini nasıl doğrulayacağınızı açıklar. Kimlik doğrulaması yalnızca yetkili kullanıcıların kümeye ve dağıtılan uygulamalara erişip yönetim görevlerini gerçekleştirmesini sağlar. Küme oluşturulduğunda, kümede sertifika güvenliği etkinleştirilmelidir.  
@@ -248,12 +248,24 @@ Verenin mağazalarını kullanıyorsanız, verenin sertifika geçişi için hiç
 ## <a name="acquire-the-x509-certificates"></a>X. 509.440 sertifikalarını alma
 Küme içindeki iletişimin güvenliğini sağlamak için, önce Küme düğümleriniz için X. 509.440 sertifikaları edinmeniz gerekir. Ayrıca, bu kümeyle olan bağlantıyı yetkili makinelerle/kullanıcılarla sınırlandırmak için, istemci makinelere yönelik sertifikalar edinmeniz ve yüklemeniz gerekir.
 
-Üretim iş yüklerini çalıştıran kümeler için, kümeyi güvenli hale getirmek için bir [sertifika yetkilisi (CA)](https://en.wikipedia.org/wiki/Certificate_authority)tarafından imzalanan X. 509.440 sertifikası kullanın. Bu sertifikaları edinme hakkında daha fazla bilgi için bkz. [sertifika edinme](https://msdn.microsoft.com/library/aa702761.aspx).
+Üretim iş yüklerini çalıştıran kümeler için, kümeyi güvenli hale getirmek için bir [sertifika yetkilisi (CA)](https://en.wikipedia.org/wiki/Certificate_authority)tarafından imzalanan X. 509.440 sertifikası kullanın. Bu sertifikaları edinme hakkında daha fazla bilgi için bkz. [sertifika edinme](https://msdn.microsoft.com/library/aa702761.aspx). 
+
+Sertifikanın düzgün çalışması için sahip olması gereken birçok özellik vardır:
+
+* Sertifikanın sağlayıcısı **Microsoft IYILEŞTIRILMIŞ RSA ve AES şifreleme sağlayıcısı** olmalıdır
+
+* Bir RSA anahtarı oluştururken, anahtarın **2048 bit**olduğundan emin olun.
+
+* Anahtar kullanımı uzantısının dijital Imzaya sahip bir değeri vardır **, anahtar şifreleme (a0)**
+
+* Gelişmiş anahtar kullanımı uzantısında **sunucu kimlik doğrulaması** (OID: 1.3.6.1.5.5.7.3.1) ve **istemci kimlik doğrulaması** (OID: 1.3.6.1.5.5.7.3.2) değerleri bulunur
 
 Test amaçları için kullandığınız kümeler için otomatik olarak imzalanan bir sertifika kullanmayı tercih edebilirsiniz.
 
+Diğer sorular için [sık sorulan sertifika sorularını](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)inceleyin.
+
 ## <a name="optional-create-a-self-signed-certificate"></a>İsteğe bağlı: otomatik olarak imzalanan sertifika oluşturma
-Doğru şekilde güvenliği sağlanabilen otomatik olarak imzalanan bir sertifika oluşturmanın bir yolu, C:\Program Files\Microsoft SDKs\Service Fabric\clustersetup\securedizinindeki Service Fabric SDK klasöründe CertSetup. ps1 betiğini kullanmaktır. Sertifikanın varsayılan adını değiştirmek için bu dosyayı düzenleyin. (CN = ServiceFabricDevClusterCert değerini arayın.) Bu betiği olarak `.\CertSetup.ps1 -Install`çalıştırın.
+Doğru şekilde güvenliği sağlanabilen otomatik olarak imzalanan bir sertifika oluşturmanın bir yolu, C:\Program Files\Microsoft SDKs\Service Fabric\clustersetup\securedizinindeki Service Fabric SDK klasöründe CertSetup. ps1 betiğini kullanmaktır. Sertifikanın varsayılan adını değiştirmek için bu dosyayı düzenleyin. (CN = ServiceFabricDevClusterCert değerini arayın.) Bu betiği olarak çalıştırın `.\CertSetup.ps1 -Install` .
 
 Şimdi sertifikayı korumalı bir parolayla bir. pfx dosyasına dışarı aktarın. İlk olarak, sertifikanın parmak izini alın. 
 1. **Başlat** menüsünde **bilgisayar sertifikalarını Yönet**' i çalıştırın. 
@@ -264,7 +276,7 @@ Doğru şekilde güvenliği sağlanabilen otomatik olarak imzalanan bir sertifik
 
 4. Alanları kaldırın ve parmak izi değerini aşağıdaki PowerShell komutuna kopyalayın. 
 
-5. Bunu korumak `String` için değeri uygun bir güvenli parolayla değiştirin ve PowerShell 'de aşağıdakileri çalıştırın:
+5. `String`Bunu korumak için değeri uygun bir güvenli parolayla değiştirin ve PowerShell 'de aşağıdakileri çalıştırın:
 
    ```powershell   
    $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
@@ -292,7 +304,7 @@ Sertifikalarınızın ardından bunları küme düğümlerine yükleyebilirsiniz
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Ağ hizmeti hesabı altında çalışan Service Fabric işlemin aşağıdaki betiği çalıştırarak kullanabilmesi için, bu sertifikadaki erişim denetimini ayarlayın. Hizmet hesabı için sertifika ve **ağ hizmetinin** parmak izini girin. Sertifika üzerindeki ACL 'lerin,**bilgisayar sertifikalarını Yönet** **' de sertifikayı** > açarak ve**özel anahtarları Yönet**' in **tüm görevlere** > bakarak doğru olup olmadığını kontrol edebilirsiniz.
+3. Ağ hizmeti hesabı altında çalışan Service Fabric işlemin aşağıdaki betiği çalıştırarak kullanabilmesi için, bu sertifikadaki erişim denetimini ayarlayın. Hizmet hesabı için sertifika ve **ağ hizmetinin** parmak izini girin. Sertifika üzerindeki ACL 'lerin, **Start**  >  **bilgisayar sertifikalarını Yönet** ' de sertifikayı açarak ve **All Tasks**  >  **özel anahtarları Yönet**' in tüm görevlere bakarak doğru olup olmadığını kontrol edebilirsiniz.
    
     ```powershell
     param
@@ -338,7 +350,7 @@ ClusterConfig. X509. MultiMachine. json dosyasının güvenlik bölümünü yap�
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örneğin:
+Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örnek:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
@@ -355,7 +367,7 @@ Kümeyi kaldırmak için, Service Fabric paketini indirdiğiniz kümedeki düğ�
 ```
 
 > [!NOTE]
-> Yanlış sertifika yapılandırması, kümenin dağıtım sırasında çalışmasını engelleyebilir. Güvenlik sorunlarını kendi kendine tanılamak için Olay Görüntüleyicisi grup **Uygulamaları ve Hizmetleri günlüklerine** > bakın**Microsoft-Service Fabric**.
+> Yanlış sertifika yapılandırması, kümenin dağıtım sırasında çalışmasını engelleyebilir. Güvenlik sorunlarını kendi kendine tanılamak için Olay Görüntüleyicisi grup **Uygulamaları ve Hizmetleri günlüklerine**bakın  >  **Microsoft-Service Fabric**.
 > 
 > 
 

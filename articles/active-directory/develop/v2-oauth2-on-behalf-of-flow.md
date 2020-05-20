@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9e1711bbb859d855d2490e49c21db5c654eca7f5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82689546"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643380"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform ve OAuth 2,0-adına akış
 
@@ -37,7 +37,7 @@ Aşağıdaki adımlar, OBO akışını oluşturur ve aşağıdaki diyagramın ya
 
 ![Şirket adına OAuth 2.0 akışını gösterir](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
-1. İstemci uygulaması, belirteç a ile API a 'ya bir istek yapar (bir API `aud` a talebi ile).
+1. İstemci uygulaması, belirteç a ile API a 'ya bir istek yapar (bir `aud` API a talebi ile).
 1. API A, Microsoft Identity platform belirteci verme uç noktasında kimlik doğrular ve API B 'ye erişmek için bir belirteç ister.
 1. Microsoft Identity platform belirteci verme uç noktası, API A 'nın kimlik bilgilerini ve A belirtecini doğrular ve API B 'nin (belirteç B) erişim belirtecini API A 'ya yayınlar.
 1. Belirteç B, API B 'ye yönelik isteğin yetkilendirme üstbilgisindeki API A tarafından ayarlanır.
@@ -62,16 +62,16 @@ Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci 
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| `grant_type` | Gerekli | Belirteç isteği türü. JWT kullanan bir istek için değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `grant_type` | Gerekli | Belirteç isteği türü. JWT kullanan bir istek için değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Gerekli | [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
 | `client_secret` | Gerekli | Azure portal Uygulama kayıtları sayfasında uygulamanız için oluşturduğunuz istemci gizli anahtarı. |
-| `assertion` | Gerekli | İstekte kullanılan belirtecin değeri.  Bu belirteç, bu OBO isteğini ( `client-id` alan tarafından belirtilen uygulama) yapan uygulamanın hedef kitlesi olmalıdır. |
+| `assertion` | Gerekli | İstekte kullanılan belirtecin değeri.  Bu belirteç, bu OBO isteğini (alan tarafından belirtilen uygulama) yapan uygulamanın hedef kitlesi olmalıdır `client-id` . |
 | `scope` | Gerekli | Belirteç isteği için bir alan ayrılmış kapsam listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md). |
-| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin olarak `on_behalf_of`ayarlanması gerekir. |
+| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin olarak ayarlanması gerekir `on_behalf_of` . |
 
 #### <a name="example"></a>Örnek
 
-Aşağıdaki HTTP POST, `user.read` https://graph.microsoft.com Web API 'si için bir erişim belirteci ve yenileme belirteci ister.
+Aşağıdaki HTTP POST, `user.read` Web API 'si için bir erişim belirteci ve yenileme belirteci ister https://graph.microsoft.com .
 
 ```HTTP
 //line breaks for legibility only
@@ -94,19 +94,19 @@ Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki p
 
 | Parametre |  | Açıklama |
 | --- | --- | --- |
-| `grant_type` | Gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `grant_type` | Gerekli | Belirteç isteğinin türü. JWT kullanan bir istek için değer olmalıdır `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Gerekli |  [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasının uygulamanıza atadığı uygulama (ISTEMCI) kimliği. |
-| `client_assertion_type` | Gerekli | Değer olmalıdır `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion_type` | Gerekli | Değer olmalıdır `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
 | `client_assertion` | Gerekli | Uygulamanız için kimlik bilgileri olarak kaydettiğiniz sertifikayı oluşturmanız ve oturum açmanız için gereken bir onaylama (JSON Web belirteci). Sertifikanızı ve onaylama biçiminizi nasıl kaydedeceğinizi öğrenmek için bkz. [sertifika kimlik bilgileri](active-directory-certificate-credentials.md). |
 | `assertion` | Gerekli | İstekte kullanılan belirtecin değeri. |
-| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin olarak `on_behalf_of`ayarlanması gerekir. |
+| `requested_token_use` | Gerekli | İsteğin nasıl işleneceğini belirtir. OBO akışında, değerin olarak ayarlanması gerekir `on_behalf_of` . |
 | `scope` | Gerekli | Belirteç isteğine yönelik kapsamların boşlukla ayrılmış listesi. Daha fazla bilgi için bkz. [kapsamlar](v2-permissions-and-consent.md).|
 
-Parametrelerin, paylaşılan gizli dizi tarafından, `client_secret` parametrenin iki parametre ile değiştirilmeleri dışında neredeyse, bu parametre, paylaşılan gizli anahtar ile aynı olduğunu fark ettiğini unutmayın: `client_assertion_type` a `client_assertion`ve.
+Parametrelerin, paylaşılan gizli dizi tarafından, parametrenin iki parametre ile değiştirilmeleri dışında neredeyse, bu parametre, paylaşılan gizli anahtar ile aynı olduğunu fark ettiğini unutmayın `client_secret` : a `client_assertion_type` ve `client_assertion` .
 
 #### <a name="example"></a>Örnek
 
-Aşağıdaki HTTP POST, bir sertifika ile `user.read` https://graph.microsoft.com Web API 'si için kapsama sahip bir erişim belirteci ister.
+Aşağıdaki HTTP POST, `user.read` https://graph.microsoft.com bir sertifika Ile Web API 'si için kapsama sahip bir erişim belirteci ister.
 
 ```HTTP
 // line breaks for legibility only
@@ -130,7 +130,7 @@ Başarı yanıtı, aşağıdaki parametrelere sahip bir JSON OAuth 2,0 yanıtdı
 
 | Parametre | Açıklama |
 | --- | --- |
-| `token_type` | Belirteç türü değerini gösterir. Microsoft Identity platformunun desteklediği tek tür `Bearer`. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `token_type` | Belirteç türü değerini gösterir. Microsoft Identity platformunun desteklediği tek tür `Bearer` . Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Belirteçte izin verilen erişim kapsamı. |
 | `expires_in` | Erişim belirtecinin geçerli olduğu sürenin saniye cinsinden uzunluğu. |
 | `access_token` | İstenen erişim belirteci. Çağıran hizmet, bu belirteci, alıcı hizmette kimlik doğrulaması yapmak için kullanabilir. |
@@ -138,7 +138,7 @@ Başarı yanıtı, aşağıdaki parametrelere sahip bir JSON OAuth 2,0 yanıtdı
 
 ### <a name="success-response-example"></a>Başarı yanıtı örneği
 
-Aşağıdaki örnek, https://graph.microsoft.com Web API 'si için bir erişim belirteci isteğine yönelik başarılı yanıtı gösterir.
+Aşağıdaki örnek, Web API 'SI için bir erişim belirteci isteğine yönelik başarılı yanıtı gösterir https://graph.microsoft.com .
 
 ```json
 {
@@ -172,14 +172,14 @@ Aşağı akış API 'sinde ayarlanmış bir koşullu erişim ilkesi (örneğin, 
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>Güvenli kaynağa erişmek için erişim belirtecini kullanma
 
-Artık orta katman hizmeti, `Authorization` üst bilgide belirteç ayarlayarak yukarı AKıŞ Web API 'sine kimliği doğrulanmış istekler yapmak için yukarıda alınan belirteci kullanabilir.
+Artık orta katman hizmeti, üst bilgide belirteç ayarlayarak yukarı akış Web API 'sine kimliği doğrulanmış istekler yapmak için yukarıda alınan belirteci kullanabilir `Authorization` .
 
 ### <a name="example"></a>Örnek
 
 ```HTTP
 GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Orta katmanlı uygulama için onay hakkı alma
@@ -191,7 +191,7 @@ Uygulamanızın mimarisine veya kullanımına bağlı olarak, OBO akışının b
 
 ### <a name="default-and-combined-consent"></a>/.exe varsayılan ve Birleşik onay
 
-Orta katman uygulaması, istemcisini, bildiriminde bilinen istemci uygulamalar listesine ekler ve ardından istemci hem kendisi hem de orta katman uygulaması için bir Birleşik onay akışı tetikleyebilir. Microsoft Identity platform uç noktasında, bu [ `/.default` kapsam](v2-permissions-and-consent.md#the-default-scope)kullanılarak yapılır. Bilinen istemci uygulamalarını kullanarak bir izin ekranını tetiklerken `/.default`, onay ekranı hem istemcinin **hem** de orta katman API 'sine yönelik izinleri gösterir ve ayrıca orta katman API 'si için gerekli izinleri ister. Kullanıcı her iki uygulama için de onay sağlar ve ardından OBO akışı işe yarar.
+Orta katman uygulaması, istemcisini, bildiriminde bilinen istemci uygulamalar listesine ekler ve ardından istemci hem kendisi hem de orta katman uygulaması için bir Birleşik onay akışı tetikleyebilir. Microsoft Identity platform uç noktasında, bu [ `/.default` kapsam](v2-permissions-and-consent.md#the-default-scope)kullanılarak yapılır. Bilinen istemci uygulamalarını kullanarak bir izin ekranını tetiklerken `/.default` , onay ekranı **hem istemcinin hem** de orta katman API 'sine yönelik izinleri gösterir ve ayrıca orta katman API 'si için gerekli izinleri ister. Kullanıcı her iki uygulama için de onay sağlar ve ardından OBO akışı işe yarar.
 
 ### <a name="pre-authorized-applications"></a>Önceden yetkilendirilmiş uygulamalar
 
@@ -215,4 +215,4 @@ OAuth 2,0 protokolü hakkında daha fazla bilgi edinin ve istemci kimlik bilgile
 
 * [OAuth 2,0 istemci kimlik bilgileri Microsoft Identity platformunda izin ver](v2-oauth2-client-creds-grant-flow.md)
 * [Microsoft Identity platformunda OAuth 2,0 kod akışı](v2-oauth2-auth-code-flow.md)
-* [`/.default` Kapsamı kullanma](v2-permissions-and-consent.md#the-default-scope)
+* [Kapsamı kullanma `/.default`](v2-permissions-and-consent.md#the-default-scope)

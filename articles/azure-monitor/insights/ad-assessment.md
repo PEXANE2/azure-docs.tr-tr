@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667236"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651848"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure İzleyici'de Active Directory Sistem Durumu Denetimi çözümüyle Active Directory ortamınızı iyileştirme
 
@@ -33,10 +33,10 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 
 ![AD sistem durumu denetimi panosunun görüntüsü](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Active Directory sistem durumu denetimi çözümü, Windows için Log Analytics aracısına sahip olan (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklü .NET Framework 4.6.2 veya üzeri bir sürümü gerektirir.  Aracı System Center 2016-Operations Manager, Operations Manager 2012 R2 ve Azure Izleyici tarafından kullanılır.
-* Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2 ve Windows Server 2016 çalıştıran etki alanı denetleyicilerini destekler.
+* Bu çözüm, Windows Server 2008 ve 2008 R2, Windows Server 2012 ve 2012 R2, Windows Server 2016 ve Windows Server 2019 çalıştıran etki alanı denetleyicilerini destekler.
 * Azure portal Azure Marketi 'nden Active Directory sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı. Ek yapılandırma gerekmez.
 
   > [!NOTE]

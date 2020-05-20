@@ -6,16 +6,16 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
-ms.date: 12/09/2019
-ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194912"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647566"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>HDInsight Hadoop kümelerinde Kurumsal Güvenlik Paketi ile Apache Oozie çalıştırma
+# <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Azure HDInsight kümelerinde Apache Oozie çalıştırma
 
 Apache Oozie, Apache Hadoop işlerini yöneten bir iş akışı ve düzenleme sistemidir. Oozie, Hadoop yığınında tümleşiktir ve aşağıdaki işleri destekler:
 
@@ -43,7 +43,7 @@ Secure Shell (SSH) hakkında daha fazla bilgi için bkz. [SSH kullanarak HDInsig
     ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     ```
 
-1. Başarılı Kerberos kimlik doğrulamasını doğrulamak için `klist` komutunu kullanın. Aksi takdirde, Kerberos `kinit` kimlik doğrulamasını başlatmak için kullanın.
+1. Başarılı Kerberos kimlik doğrulamasını doğrulamak için komutunu kullanın `klist` . Aksi takdirde, `kinit` Kerberos kimlik doğrulamasını başlatmak için kullanın.
 
 1. Azure Data Lake Storage erişmek için gereken OAuth belirtecini kaydetmek için HDInsight ağ geçidinde oturum açın:
 
@@ -67,9 +67,9 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
    hdfs dfs -put examples /user/<DomainUser>/
    ```
 
-   Etki `DomainUser` alanı kullanıcı adıyla değiştirin.
-   Etki `DomainUserPath` alanı kullanıcısının ana dizin yoluyla değiştirin.
-   Küme `ClusterVersion` veri platformu sürümünüz ile değiştirin.
+   `DomainUser`Etki alanı kullanıcı adıyla değiştirin.
+   `DomainUserPath`Etki alanı kullanıcısının ana dizin yoluyla değiştirin.
+   `ClusterVersion`Küme veri platformu sürümünüz ile değiştirin.
 
 2. Yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki ifadeyi kullanın:
 
@@ -176,7 +176,7 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
     </workflow-app>
     ```
 
-4. Kümenin `clustername` adıyla değiştirin.
+4. `clustername`Kümenin adıyla değiştirin.
 
 5. Dosyayı kaydetmek için **CTRL + X**' i seçin. **Y**girin. Ardından **ENTER**' ı seçin.
 
@@ -194,15 +194,15 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
 
      - Hive Server 2 ve Hive Server 1 eylemleri, HDInsight ile birlikte sunulan bir örnek Hive tablosunda bir sorgu çalıştırır.
 
-     Hive eylemleri, işlem öğesindeki anahtar sözcüğünü `cred` kullanarak kimlik doğrulaması için kimlik bilgileri bölümünde tanımlanan kimlik bilgilerini kullanır.
+     Hive eylemleri, işlem öğesindeki anahtar sözcüğünü kullanarak kimlik doğrulaması için kimlik bilgileri bölümünde tanımlanan kimlik bilgilerini kullanır `cred` .
 
-6. `workflow.xml` Dosyayı kopyalamak için aşağıdaki komutu kullanın `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
+6. Dosyayı kopyalamak için aşağıdaki komutu kullanın `workflow.xml` `/user/<domainuser>/examples/apps/map-reduce/workflow.xml` :
 
     ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
     ```
 
-7. Etki `domainuser` alanı için Kullanıcı adınızla değiştirin.
+7. `domainuser`Etki alanı için Kullanıcı adınızla değiştirin.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>Oozie işi için özellikler dosyasını tanımlayın
 
@@ -230,11 +230,11 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - Birincil küme `adl://home` depolama alanı olarak `nameNode` Azure Data Lake Storage 1. sahipseniz, özelliği için URI 'yi kullanın. Azure Blob depolamayı kullanıyorsanız bunu olarak `wasb://home`değiştirin. Azure Data Lake Storage 2. kullanıyorsanız bunu olarak `abfs://home`değiştirin.
-   - Etki `domainuser` alanı için Kullanıcı adınızla değiştirin.  
-   - Kümenin `ClusterShortName` kısa adıyla değiştirin. Örneğin, küme adı https:// *[örnek bağlantı]* sechadoopcontoso.azurehdisnight.net `clustershortname` ise, kümenin ilk altı karakteri: **sechad**.  
-   - Hive `jdbcurlvalue` YAPıLANDıRMASıNDAKI JDBC URL 'siyle değiştirin. Bir örnek: hive2://///
-   - Dosyayı kaydetmek için CTRL + X ' i seçin ve ENTER `Y`' u **seçin.**
+   - `adl://home` `nameNode` Birincil küme depolama alanı olarak Azure Data Lake Storage 1. sahipseniz, özelliği için URI 'yi kullanın. Azure Blob depolamayı kullanıyorsanız, olarak değiştirin `wasb://home` . Azure Data Lake Storage 2. kullanıyorsanız, öğesini olarak değiştirin `abfs://home` .
+   - `domainuser`Etki alanı için Kullanıcı adınızla değiştirin.  
+   - `ClusterShortName`Kümenin kısa adıyla değiştirin. Örneğin, küme adı https:// *[örnek bağlantı]* sechadoopcontoso.azurehdisnight.net ise, `clustershortname` kümenin ilk altı karakteri: **sechad**.  
+   - `jdbcurlvalue`Hive YAPıLANDıRMASıNDAKI JDBC URL 'siyle değiştirin. Bir örnek: hive2://///
+   - Dosyayı kaydetmek için CTRL + X ' i seçin ve ENTER `Y` ' u seçin. **Enter**
 
    Oozie işleri çalıştırılırken bu özellikler dosyasının yerel olarak mevcut olması gerekir.
 
@@ -331,7 +331,7 @@ Hive sunucu 2 eylemleri için Ranger denetim günlükleri Kullanıcı için eyle
 
 ## <a name="configure-user-authorization-in-oozie"></a>Oozie 'de Kullanıcı yetkilendirmesini yapılandırma
 
-Tek başına Oozie, kullanıcıların diğer kullanıcıların işlerini durdurmasını veya silmelerini engelleyebilen bir kullanıcı yetkilendirme yapılandırmasına sahiptir. Bu yapılandırmayı etkinleştirmek için öğesini `oozie.service.AuthorizationService.security.enabled` olarak `true`ayarlayın. 
+Tek başına Oozie, kullanıcıların diğer kullanıcıların işlerini durdurmasını veya silmelerini engelleyebilen bir kullanıcı yetkilendirme yapılandırmasına sahiptir. Bu yapılandırmayı etkinleştirmek için öğesini olarak ayarlayın `oozie.service.AuthorizationService.security.enabled` `true` . 
 
 Daha fazla bilgi için bkz. [Apache Oozie yükleme ve yapılandırma](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

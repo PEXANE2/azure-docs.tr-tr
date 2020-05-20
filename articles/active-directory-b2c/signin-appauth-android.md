@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183797"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638384"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Android uygulaması kullanarak oturum açma
 
@@ -70,12 +70,12 @@ Kullanıcı akışlarınızı oluşturduktan sonra uygulamanızı oluşturmaya h
 Azure AD B2C ile iletişimi, bulma URI 'sini belirterek veya hem yetkilendirme uç noktası hem de belirteç uç noktası URI 'Lerini belirterek yapılandırabilirsiniz. Her iki durumda da aşağıdaki bilgilere ihtiyacınız olacaktır:
 
 * Kiracı KIMLIĞI (ör. contoso.onmicrosoft.com)
-* Kullanıcı akış adı (ör. B2C\_1\_signupin)
+* Kullanıcı akış adı (ör. B2C \_ 1 \_ signupin)
 
-Yetkilendirme ve belirteç uç noktası URI 'Lerini otomatik olarak bulmayı seçerseniz, bulma URI 'sinden bilgi almanız gerekir. Aşağıdaki URL 'de kiracı\_kimliği ve ilke\_adı değiştirilerek bulma URI 'si oluşturulabilir:
+Yetkilendirme ve belirteç uç noktası URI 'Lerini otomatik olarak bulmayı seçerseniz, bulma URI 'sinden bilgi almanız gerekir. Bulma URI 'si, `<tenant-id>` ve `<policy-name>` aşağıdaki URL 'de değiştirilerek oluşturulabilir:
 
 ```java
-String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/v2.0/.well-known/openid-configuration";
 ```
 
 Daha sonra yetkilendirme ve belirteç uç noktası URI 'Lerini alabilir ve aşağıdakileri çalıştırarak bir AuthorizationServiceConfiguration nesnesi oluşturabilirsiniz:
@@ -99,12 +99,12 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Yetkilendirme ve belirteç uç noktası URI 'Lerini elde etmek için bulma kullanmak yerine, aşağıdaki URL 'deki kiracı\_kimliğini ve ilke\_adını değiştirerek açıkça de belirtebilirsiniz:
+Yetkilendirme ve belirteç uç noktası URI 'Lerini elde etmek için bulma kullanmak yerine, aşağıdaki URL 'lerde ve öğelerini değiştirerek açıkça de belirtebilirsiniz `<tenant-id>` `<policy-name>` :
 
 ```java
-String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/authorize";
 
-String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/token";
 ```
 
 AuthorizationServiceConfiguration nesneniz oluşturmak için aşağıdaki kodu çalıştırın:

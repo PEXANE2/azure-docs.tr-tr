@@ -8,186 +8,39 @@ ms.service: virtual-machines-linux
 ms.subservice: monitoring
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 03/30/2020
+ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0971b542065972a8f150083245e4ed31e42e2c67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce3463d39b17e7099f85945caa92d1f009b696c0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521620"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649858"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
 Azure Instance Metadata Service (IMDS), çalışmakta olan sanal makine örnekleri hakkında bilgi sağlar ve sanal makinelerinizi yönetmek ve yapılandırmak için kullanılabilir.
-Girilen bilgiler SKU, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Kullanılabilir verilerin tüm listesi için bkz. [metadata API 'leri](#metadata-apis).
+Bu, SKU, depolama, ağ yapılandırması ve yaklaşan bakım olaylarını içerir. Kullanılabilir verilerin tüm listesi için bkz. [metadata API 'leri](#metadata-apis). Instance Metadata Service hem VM hem de sanal makine ölçek kümesi örnekleri için kullanılabilir. Yalnızca [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)kullanılarak oluşturulan/yönetilen VM 'leri çalıştırmak için kullanılabilir. 
 
-Azure Instance Metadata Service, [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)kullanılarak oluşturulan tüm IaaS VM 'lerine ERIŞILEBILEN bir REST uç noktasıdır.
-Uç nokta, yalnızca VM içinden erişilebilen, iyi bilinen, yönlendirilemeyen bir IP`169.254.169.254`adresi () ile kullanılabilir.
+Azure Instance Metadata Service, iyi bilinen yönlendirilemeyen IP adresinde () bulunan bir REST uç noktasıdır `169.254.169.254` ve yalnızca VM 'nin içinden erişilebilir.
+
+## <a name="security"></a>Güvenlik
+
+Instance Metadata Service uç noktasına yalnızca, yönlendirilemeyen bir IP adresi üzerinde çalışan sanal makine örneği içinden erişilebilir. Ayrıca, üst bilgiyle bir istek `X-Forwarded-For` hizmet tarafından reddedilir.
+Ayrıca `Metadata: true` , gerçek isteğin istenmeden yeniden yönlendirmenin bir parçası olmamasını sağlamak için istekler bir üst bilgi içermelidir.
 
 > [!IMPORTANT]
-> Bu hizmet, tüm Azure bölgelerinde **genel kullanıma sunulmuştur** .  Sanal makine örnekleri hakkında yeni bilgileri kullanıma sunmak için düzenli olarak güncelleştirmeleri alır. Bu sayfa, kullanılabilir olan güncel [meta veri API 'lerini](#metadata-apis) yansıtır.
-
-## <a name="service-availability"></a>Hizmet kullanılabilirliği
-
-Hizmet genel kullanıma sunulan Azure bölgelerinde kullanılabilir. Tüm API sürümleri tüm Azure bölgelerinde kullanılabilir olmayabilir.
-
-Bölgeler                                        | Sonrası?                                 | Desteklenen Sürümler
------------------------------------------------|-----------------------------------------------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Çin 21Vianet](https://www.azure.cn/)                                            | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel olarak kullanılabilir | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-
-Sürüm 2019-11-01 Şu anda dağıtıldı ve tüm bölgelerde kullanılamayabilir.
-
-Bu tablo, hizmet güncelleştirmeleri olduğunda ve/veya yeni desteklenen sürümler varsa güncelleştirilir.
-
-Instance Metadata Service denemek için yukarıdaki bölgelerde [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) veya [Azure Portal](https://portal.azure.com) bir VM oluşturun ve aşağıdaki örnekleri izleyin.
-[Azure örnek meta verileri örneklerinde](https://github.com/microsoft/azureimds) , imds 'nin sorgulanme hakkında daha fazla örnek bulabilirsiniz
+> Instance Metadata Service hassas veriler için bir kanal değil. Uç noktası, sanal makine üzerindeki tüm işlemlere açıktır. Bu hizmet aracılığıyla sunulan bilgiler, sanal makine içinde çalışan tüm uygulamalara paylaşılan bilgiler olarak düşünülmelidir.
 
 ## <a name="usage"></a>Kullanım
 
-### <a name="versioning"></a>Sürüm Oluşturma
+### <a name="accessing-azure-instance-metadata-service"></a>Azure Instance Metadata Service erişme
 
-Instance Metadata Service sürümlenmiş ve HTTP isteğindeki API sürümünün belirtilmesi zorunludur.
+Instance Metadata Service erişmek için [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) veya [Azure Portal](https://portal.azure.com)bir VM oluşturun ve aşağıdaki örnekleri izleyin.
+[Azure örnek meta verileri örneklerinde](https://github.com/microsoft/azureimds), IMDS 'yi sorgulama hakkında daha fazla örnek bulabilirsiniz.
 
-Bu [kullanılabilirlik tablosunda](#service-availability)en yeni sürümlerin listelendiğini görebilirsiniz.
-
-Daha yeni sürümler eklendikçe, betiklerinizin belirli veri biçimlerinde bağımlılıkları varsa, daha eski sürümlere uyumluluk için yine de erişilebilir.
-
-Sürüm belirtilmediğinde, en yeni Desteklenen sürümlerin listesiyle birlikte bir hata döndürülür.
-
-> [!NOTE]
-> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
-
-**İstek**
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance"
-```
-
-**Yanıtıyla**
-
-```json
-{
-    "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
-    "newest-versions": [
-        "2018-10-01",
-        "2018-04-02",
-        "2018-02-01"
-    ]
-}
-```
-
-### <a name="using-headers"></a>Üst bilgileri kullanma
-
-Instance Metadata Service sorgulayıp, isteğin istem dışı olarak yeniden yönlendirilmediğinden `Metadata: true` emin olmak için üstbilgiyi sağlamanız gerekir.
-
-### <a name="retrieving-metadata"></a>Meta veriler alınıyor
-
-Örnek meta verileri, [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)kullanılarak oluşturulan/yönetilen VM 'leri çalıştırmak için kullanılabilir. Aşağıdaki isteği kullanarak bir sanal makine örneği için tüm veri kategorilerine erişin:
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
-```
-
-> [!NOTE]
-> Tüm örnek meta veri sorguları büyük/küçük harfe duyarlıdır.
-
-### <a name="data-output"></a>Veri çıkışı
-
-Varsayılan olarak, Instance Metadata Service JSON biçimindeki (`Content-Type: application/json`) verileri döndürür. Ancak, farklı API 'Ler isteniyorsa verileri farklı biçimlerde döndürür.
-Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir başvurusudur.
-
-API | Varsayılan veri biçimi | Diğer biçimler
---------|---------------------|--------------
-/Instance | json | metin
-/scheduledevents | json | yok
-/attested | json | yok
-
-Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örneğin:
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
-```
-
-> [!NOTE]
-> Yaprak düğümler `format=json` için çalışmaz. Varsayılan biçim JSON `format=text` ise bu sorguların açıkça belirtilmesi gerekir.
-
-### <a name="security"></a>Güvenlik
-
-Instance Metadata Service uç noktasına yalnızca, yönlendirilemeyen bir IP adresi üzerinde çalışan sanal makine örneği içinden erişilebilir. Ayrıca, üst bilgiyle bir `X-Forwarded-For` istek hizmet tarafından reddedilir.
-Ayrıca, gerçek isteğin istenmeden `Metadata: true` yeniden yönlendirmenin bir parçası olmamasını sağlamak için istekler bir üst bilgi içermelidir.
-
-### <a name="error"></a>Hata
-
-Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örneğin:
-
-HTTP durum kodu | Neden
-----------------|-------
-200 TAMAM |
-400 Hatalı Istek | Bir `Metadata: true` yaprak düğümü sorgularken başlık eksik veya biçim eksik
-404 Bulunamadı | İstenen öğe yok
-405 yöntemine Izin verilmiyor | Yalnızca `GET` istekler destekleniyor
-410 gitti | En fazla 70 saniye boyunca bir süre sonra yeniden deneyin
-429 Çok Fazla İstek Var | API Şu anda saniyede en çok 5 sorgu destekliyor
-500 hizmet hatası     | Bir süre sonra yeniden dene
-
-### <a name="examples"></a>Örnekler
-
-> [!NOTE]
-> Tüm API yanıtları JSON dizeleridir. Aşağıdaki örnek yanıtların hepsi okunabilirlik için oldukça yazdırılır.
-
-#### <a name="retrieving-network-information"></a>Ağ bilgileri alınıyor
-
-**İstek**
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
-```
-
-**Yanıtıyla**
-
-> [!NOTE]
-> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
-
-```json
-{
-  "interface": [
-    {
-      "ipv4": {
-        "ipAddress": [
-          {
-            "privateIpAddress": "10.1.0.4",
-            "publicIpAddress": "X.X.X.X"
-          }
-        ],
-        "subnet": [
-          {
-            "address": "10.1.0.0",
-            "prefix": "24"
-          }
-        ]
-      },
-      "ipv6": {
-        "ipAddress": []
-      },
-      "macAddress": "000D3AF806EC"
-    }
-  ]
-}
-
-```
-
-#### <a name="retrieving-public-ip-address"></a>Genel IP adresi alınıyor
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
-```
-
-#### <a name="retrieving-all-metadata-for-an-instance"></a>Örnek için tüm meta verileri alma
+Aşağıda, bir örneğin tüm meta verilerini almaya yönelik örnek kod, belirli veri kaynağına erişmek için, bkz. [metadata API](#metadata-apis) bölümü. 
 
 **İstek**
 
@@ -311,30 +164,80 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 }
 ```
 
-## <a name="metadata-apis"></a>Meta veri API 'Leri
+### <a name="data-output"></a>Veri çıkışı
 
-Meta veri uç noktası aracılığıyla aşağıdaki API 'Ler mevcuttur:
+Varsayılan olarak, Instance Metadata Service JSON biçimindeki () verileri döndürür `Content-Type: application/json` . Ancak, farklı API 'Ler isteniyorsa verileri farklı biçimlerde döndürür.
+Aşağıdaki tablo, API 'Lerin destekleyebileceği diğer veri biçimlerinin bir başvurusudur.
+
+API | Varsayılan veri biçimi | Diğer biçimler
+--------|---------------------|--------------
+/Instance | json | metin
+/scheduledevents | json | yok
+/attested | json | yok
+
+Varsayılan olmayan bir yanıt biçimine erişmek için istenen biçimi istekte bir sorgu dizesi parametresi olarak belirtin. Örnek:
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+```
+
+> [!NOTE]
+> Yaprak düğümler için `format=json` çalışmaz. `format=text`Varsayılan biçim JSON ise bu sorguların açıkça belirtilmesi gerekir.
+
+### <a name="versioning"></a>Sürüm Oluşturma
+
+Instance Metadata Service sürümlenmiş ve HTTP isteğindeki API sürümünün belirtilmesi zorunludur.
+
+Aşağıdaki desteklenen hizmet sürümleridir: 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15.
+
+Yeni sürüm yayınlandığında, tüm bölgelere dağıtım biraz zaman alabilir. Şu anda sürüm 2019-11-01 hala dağıtıldı ve tüm bölgelerde kullanılamayabilir.
+
+Daha yeni sürümler eklendikçe, betiklerinizin belirli veri biçimlerinde bağımlılıkları varsa, daha eski sürümlere uyumluluk için yine de erişilebilir.
+
+Sürüm belirtilmediğinde, en yeni Desteklenen sürümlerin listesiyle birlikte bir hata döndürülür.
+
+> [!NOTE]
+> Yanıt bir JSON dizesidir. Aşağıdaki örnek, sürüm belirtilmediğinde hata koşulunu gösterir, yanıt okunabilirlik için oldukça yazdırılır.
+
+**İstek**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance"
+```
+
+**Yanıtıyla**
+
+```json
+{
+    "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
+    "newest-versions": [
+        "2018-10-01",
+        "2018-04-02",
+        "2018-02-01"
+    ]
+}
+```
+
+## <a name="metadata-apis"></a>Meta veri API 'Leri
+IDS, farklı veri kaynaklarını temsil eden birden çok API arabirimi içerir. 
 
 Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
-kanıtlamak | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
-identity | Azure kaynakları için Yönetilen kimlikler. Bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 örnek | Bkz. [örnek API 'si](#instance-api) | 2017-04-02
+kanıtlamak | Bkz. [Atsınanan veriler](#attested-data) | 2018-10-01
+identity | Bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 scheduledevents | Bkz. [zamanlanan olaylar](scheduled-events.md) | 2017-08-01
 
-### <a name="instance-api"></a>Örnek API 'SI
+## <a name="instance-api"></a>Örnek API 'SI
 
-Aşağıdaki Işlem kategorileri örnek API aracılığıyla kullanılabilir:
-
-> [!NOTE]
-> Meta veri uç noktası aracılığıyla, örnek/işlem aracılığıyla aşağıdaki kategorilere erişilir
+Örnek API 'SI, sanal makine, ağ ve depolama dahil olmak üzere VM örnekleri için önemli meta verileri kullanıma sunar. Aşağıdaki kategorilere örnek/işlem aracılığıyla erişilebilir:
 
 Veriler | Açıklama | Sunulan sürüm
 -----|-------------|-----------------------
 azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 customData | Bu özellik şu anda devre dışı. Bu belge kullanılabilir hale geldiğinde güncelleştirilecek | 2019-02-01
 location | VM 'nin çalıştığı Azure bölgesi | 2017-04-02
-ad | VM adı | 2017-04-02
+name | VM adı | 2017-04-02
 teklif | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü Galerisi 'nden dağıtılan görüntülerde bulunur | 2017-04-02
 osType | Linux veya Windows | 2017-04-02
 Placementgroupıd | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
@@ -347,67 +250,19 @@ yayımcı | VM görüntüsünün yayımcısı | 2017-04-02
 resourceGroupName | Sanal makineniz için [kaynak grubu](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Kaynağın [tam](https://docs.microsoft.com/rest/api/resources/resources/getbyid) kimliği | 2019-03-11
 isteyin | VM görüntüsü için belirli SKU | 2017-04-02
-storageProfile | [Depolama profilini](#storage-profile) gör | 2019-06-01
+storageProfile | [Depolama profilini](#storage-metadata) gör | 2019-06-01
 subscriptionId | Sanal makine için Azure aboneliği | 2017-08-01
 etiketler | Sanal makineniz için [Etiketler](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Daha kolay programlı ayrıştırma için JSON dizisi olarak biçimlendirilen Etiketler  | 2019-06-04
-version | VM görüntüsünün sürümü | 2017-04-02
+sürüm | VM görüntüsünün sürümü | 2017-04-02
 Kimliği | VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | Sanal makine ölçek kümesinin [sanal makine ölçek kümesi adı](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [VM boyutu](sizes.md) | 2017-04-02
 bölge | Sanal makinenizin [kullanılabilirlik bölgesi](../../availability-zones/az-overview.md) | 2017-12-01
 
-Aşağıdaki ağ kategorileri örnek API 'SI aracılığıyla kullanılabilir:
+### <a name="sample-1-tracking-vm-running-on-azure"></a>Örnek 1: Azure 'da çalışan Izleme sanal makinesi
 
-> [!NOTE]
-> Meta veri uç noktası aracılığıyla, örnek/ağ/arabirim aracılığıyla aşağıdaki kategorilere erişilir
-
-Veriler | Açıklama | Sunulan sürüm
------|-------------|-----------------------
-IPv4/Privateıpaddress | VM 'nin yerel IPv4 adresi | 2017-04-02
-IPv4/Publicıpaddress | VM 'nin genel IPv4 adresi | 2017-04-02
-alt ağ/adres | VM 'nin alt ağ adresi | 2017-04-02
-alt ağ/ön ek | Alt ağ ön eki, örnek 24 | 2017-04-02
-IPv6/IPAddress | VM 'nin yerel IPv6 adresi | 2017-04-02
-macAddress | VM MAC adresi | 2017-04-02
-
-## <a name="attested-data"></a>Atsınanan veriler
-
-Instance Metadata Service tarafından sunulan senaryonun bir kısmı, belirtilen verilerin Azure 'dan geldiğini garanti etmek sağlamaktır. Market görüntülerinin Azure 'da çalıştığından emin olmak için bu bilgilerin bir parçasını imzalıyoruz.
-
-### <a name="example-attested-data"></a>Örnek Atsınanan veriler
-
-> [!NOTE]
-> Tüm API yanıtları JSON dizeleridir. Aşağıdaki örnek yanıtlar okunabilirlik için oldukça yazdırılır.
-
- **İstek**
-
- ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
-
-```
-
-Api sürümü zorunlu bir alandır. Desteklenen API sürümleri için [hizmet kullanılabilirliği bölümüne](#service-availability) bakın.
-Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UTC zaman damgasını yerinde döndürür. IDS 'nin önbelleğe alma mekanizması nedeniyle, önceden önbelleğe alınmış bir nonce değeri döndürülebilir.
-
- **Yanıtıyla**
-
-> [!NOTE]
-> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
-
- ```json
-{
- "encoding":"pkcs7","signature":"MIIEEgYJKoZIhvcNAQcCoIIEAzCCA/8CAQExDzANBgkqhkiG9w0BAQsFADCBugYJKoZIhvcNAQcBoIGsBIGpeyJub25jZSI6IjEyMzQ1NjY3NjYiLCJwbGFuIjp7Im5hbWUiOiIiLCJwcm9kdWN0IjoiIiwicHVibGlzaGVyIjoiIn0sInRpbWVTdGFtcCI6eyJjcmVhdGVkT24iOiIxMS8yMC8xOCAyMjowNzozOSAtMDAwMCIsImV4cGlyZXNPbiI6IjExLzIwLzE4IDIyOjA4OjI0IC0wMDAwIn0sInZtSWQiOiIifaCCAj8wggI7MIIBpKADAgECAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBBAUAMCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tMB4XDTE4MTEyMDIxNTc1N1oXDTE4MTIyMDIxNTc1NlowKzEpMCcGA1UEAxMgdGVzdHN1YmRvbWFpbi5tZXRhZGF0YS5henVyZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAML/tBo86ENWPzmXZ0kPkX5dY5QZ150mA8lommszE71x2sCLonzv4/UWk4H+jMMWRRwIea2CuQ5RhdWAHvKq6if4okKNt66fxm+YTVz9z0CTfCLmLT+nsdfOAsG1xZppEapC0Cd9vD6NCKyE8aYI1pliaeOnFjG0WvMY04uWz2MdAgMBAAGjYDBeMFwGA1UdAQRVMFOAENnYkHLa04Ut4Mpt7TkJFfyhLTArMSkwJwYDVQQDEyB0ZXN0c3ViZG9tYWluLm1ldGFkYXRhLmF6dXJlLmNvbYIQZ8VuSofHbJRAQNBNpiASdDANBgkqhkiG9w0BAQQFAAOBgQCLSM6aX5Bs1KHCJp4VQtxZPzXF71rVKCocHy3N9PTJQ9Fpnd+bYw2vSpQHg/AiG82WuDFpPReJvr7Pa938mZqW9HUOGjQKK2FYDTg6fXD8pkPdyghlX5boGWAMMrf7bFkup+lsT+n2tRw2wbNknO1tQ0wICtqy2VqzWwLi45RBwTGB6DCB5QIBATA/MCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBCwUAMA0GCSqGSIb3DQEBAQUABIGAld1BM/yYIqqv8SDE4kjQo3Ul/IKAVR8ETKcve5BAdGSNkTUooUGVniTXeuvDj5NkmazOaKZp9fEtByqqPOyw/nlXaZgOO44HDGiPUJ90xVYmfeK6p9RpJBu6kiKhnnYTelUk5u75phe5ZbMZfBhuPhXmYAdjc7Nmw97nx8NnprQ="
-}
-```
-
-İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market Place görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
-
-## <a name="example-scenarios-for-usage"></a>Örnek kullanım senaryoları  
-
-### <a name="tracking-vm-running-on-azure"></a>Azure üzerinde çalıştırılan VM'yi izleme
-
-Hizmet sağlayıcı olarak, yazılımınızı çalıştıran VM 'lerin sayısını izlemeniz veya VM 'nin benzersizliği izlemesi gereken aracılardan sahip olmanız gerekebilir. Bir VM 'nin benzersiz KIMLIĞINI alabilmesi için Instance Metadata Service `vmId` alanı kullanın.
+Hizmet sağlayıcı olarak, yazılımınızı çalıştıran VM 'lerin sayısını izlemeniz veya VM 'nin benzersizliği izlemesi gereken aracılardan sahip olmanız gerekebilir. Bir VM 'nin benzersiz KIMLIĞINI alabilmesi için `vmId` Instance Metadata Service alanı kullanın.
 
 **İstek**
 
@@ -421,9 +276,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Hata/güncelleştirme etki alanı temelinde kapsayıcıların, veri bölümlerinin yerleşimi
+### <a name="sample-2-placement-of-containers-data-partitions-based-faultupdate-domain"></a>Örnek 2: kapsayıcıların yerleştirilmesi, veri bölümleri tabanlı hata/güncelleştirme etki alanı
 
-Bazı senaryolarda, farklı veri çoğaltmalarının yerleştirilmesi önemli öneme sahiptir. Örneğin, bir [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) aracılığıyla yapılan `platformFaultDomain` [çoğaltma yerleşimi](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) veya kapsayıcı yerleştirmesi, ve `platformUpdateDomain` VM 'nin üzerinde çalışıp çalışmadığını bilmeniz gerekebilir.
+Bazı senaryolarda, farklı veri çoğaltmalarının yerleştirilmesi önemli öneme sahiptir. Örneğin, bir [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) aracılığıyla yapılan [çoğaltma yerleşimi](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) veya KAPSAYıCı yerleştirmesi, `platformFaultDomain` ve `platformUpdateDomain` VM 'nin üzerinde çalışıp çalışmadığını bilmeniz gerekebilir.
 Bu kararları vermek için örneklerin [kullanılabilirlik alanları](../../availability-zones/az-overview.md) de kullanabilirsiniz.
 Bu verileri doğrudan Instance Metadata Service aracılığıyla sorgulayabilirsiniz.
 
@@ -439,7 +294,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 0
 ```
 
-### <a name="getting-more-information-about-the-vm-during-support-case"></a>Destek olayı sırasında VM hakkında daha fazla bilgi alma
+### <a name="sample-3-getting-more-information-about-the-vm-during-support-case"></a>Örnek 3: destek talebi sırasında VM hakkında daha fazla bilgi edinme
 
 Hizmet sağlayıcı olarak, VM hakkında daha fazla bilgi edinmek istediğiniz bir destek çağrısı alabilirsiniz. Müşterinin işlem meta verilerinin paylaşılmasını sormak, destek uzmanı 'nın Azure 'daki sanal makine türü hakkında bilgi sahibi olmak için temel bilgiler sağlayabilir.
 
@@ -539,7 +394,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
-### <a name="getting-azure-environment-where-the-vm-is-running"></a>VM'nin çalıştırıldığı Azure Ortamını alma
+### <a name="sample-4-getting-azure-environment-where-the-vm-is-running"></a>Örnek 4: VM 'nin çalıştığı Azure ortamını alma
 
 Azure 'da [Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)gibi çeşitli bağımsız bulutlar vardır. Bazen bazı çalışma zamanı kararları almak için Azure ortamına ihtiyacınız vardır. Aşağıdaki örnekte, bu davranışı nasıl sağlayabileceğiniz gösterilmektedir.
 
@@ -560,148 +415,77 @@ Azure ortamının bulutu ve değerleri aşağıda listelenmiştir.
 ---------|-----------------
 [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
-### <a name="getting-the-tags-for-the-vm"></a>VM için Etiketler alınıyor
+## <a name="network-metadata"></a>Ağ meta verileri 
 
-Etiketler, bunları bir taksonomi halinde mantıksal olarak düzenlemek için Azure sanal makinenize uygulanmış olabilir. Bir VM 'ye atanan Etiketler aşağıdaki istek kullanılarak alınabilir.
+Ağ meta verileri, örnek API 'sinin bir parçasıdır. Aşağıdaki ağ kategorileri, örnek/ağ uç noktası üzerinden kullanılabilir.
 
-**İstek**
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
-```
-
-**Yanıtıyla**
-
-```text
-Department:IT;Environment:Test;Role:WebRole
-```
-
-`tags` Alan, etiketleri noktalı virgülle ayrılmış bir dizedir. Etiketlerde noktalı virgül kullanılırsa bu bir sorun olabilir. Etiketleri programlı olarak ayıklamak üzere yazılmışsa, sınırlandırıcı olmayan bir JSON dizisi olan `tagsList` alana ve sonuç olarak ayrıştırılmaya daha kolay.
-
-**İstek**
-
-```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
-```
-
-**Yanıtıyla**
-
-```json
-[
-  {
-    "name": "Department",
-    "value": "IT"
-  },
-  {
-    "name": "Environment",
-    "value": "Test"
-  },
-  {
-    "name": "Role",
-    "value": "WebRole"
-  }
-]
-```
-
-### <a name="validating-that-the-vm-is-running-in-azure"></a>VM'nin Azure'da çalıştırıldığını doğrulama
-
-Market satıcıları, yazılımlarının yalnızca Azure 'da çalışmak üzere lisanslanmasını sağlamak istiyor. Başka biri VHD 'yi şirket içine kopyalarsa, bu durumda bu, bunu tespit etme yeteneğine sahip olmalıdır. Instance Metadata Service çağırarak Market satıcıları yalnızca Azure 'dan gelen yanıtı garanti eden imzalı verileri alabilir.
+Veriler | Açıklama | Sunulan sürüm
+-----|-------------|-----------------------
+IPv4/Privateıpaddress | VM 'nin yerel IPv4 adresi | 2017-04-02
+IPv4/Publicıpaddress | VM 'nin genel IPv4 adresi | 2017-04-02
+alt ağ/adres | VM 'nin alt ağ adresi | 2017-04-02
+alt ağ/ön ek | Alt ağ ön eki, örnek 24 | 2017-04-02
+IPv6/IPAddress | VM 'nin yerel IPv6 adresi | 2017-04-02
+macAddress | VM MAC adresi | 2017-04-02
 
 > [!NOTE]
-> JQ 'ın yüklenmesini gerektirir.
+> Tüm API yanıtları JSON dizeleridir. Aşağıdaki örnek yanıtların hepsi okunabilirlik için oldukça yazdırılır.
 
-**İstek**
+#### <a name="sample-1-retrieving-network-information"></a>Örnek 1: ağ bilgilerini alma
 
- ```bash
-  # Get the signature
-   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
-  # Decode the signature
-  base64 -d signature > decodedsignature
-  #Get PKCS7 format
-  openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
-  # Get Public key out of pkc7
-  openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
-  #Get the intermediate certificate
-  wget -q -O intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
-  openssl x509 -inform der -in intermediate.cer -out intermediate.pem
-  #Verify the contents
-  openssl smime -verify -in sign.pk7 -inform pem -noverify
- ```
+***İstek***
 
- **Yanıtıyla**
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
+```
+
+***Yanıtıyla***
+
+> [!NOTE]
+> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
 
 ```json
-Verification successful
-{"nonce":"20181128-001617",
-  "plan":
+{
+  "interface": [
     {
-     "name":"",
-     "product":"",
-     "publisher":""
-    },
-"timeStamp":
-  {
-    "createdOn":"11/28/18 00:16:17 -0000",
-    "expiresOn":"11/28/18 06:16:17 -0000"
-  },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
-"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-"sku": "RS3-Pro"
+      "ipv4": {
+        "ipAddress": [
+          {
+            "privateIpAddress": "10.1.0.4",
+            "publicIpAddress": "X.X.X.X"
+          }
+        ],
+        "subnet": [
+          {
+            "address": "10.1.0.0",
+            "prefix": "24"
+          }
+        ]
+      },
+      "ipv6": {
+        "ipAddress": []
+      },
+      "macAddress": "000D3AF806EC"
+    }
+  ]
 }
+
 ```
 
-Veriler | Açıklama
------|------------
-nonce | Kullanıcı istek ile isteğe bağlı dize sağladı. İstekte hiçbir nonce sağlanmazsa, geçerli UTC zaman damgası döndürülür
-plan | Azure Market görüntüsündeki bir VM için [plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) yapın, ad, ürün ve yayımcı içerir
-zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu UTC zaman damgası
-zaman damgası/expiresOn | İmzalanan belgenin süresi dolan UTC zaman damgası
-Kimliği |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
-subscriptionId | Üzerinde sunulan sanal makine için Azure aboneliği`2019-04-30`
-isteyin | VM görüntüsü için özel SKU, ' de tanıtılan`2019-11-01`
-
-#### <a name="verifying-the-signature"></a>İmza doğrulanıyor
-
-Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulayabilirsiniz. Ayrıca ara sertifikayı ve sertifika zincirini doğrulayabilirsiniz. Son olarak, abonelik KIMLIĞININ doğru olduğunu doğrulayabilirsiniz.
-
-> [!NOTE]
-> Genel bulut ve bağımsız bulutu için sertifika farklı olacaktır.
-
- Bulut | Sertifika
----------|-----------------
-[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
-[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
-[Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
-[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
-
-İmzalanmak üzere kullanılan sertifika etrafında bilinen bir sorun var. Sertifikalar, genel bulut için tam olarak `metadata.azure.com` eşleşen bir eşleşmeyebilir. Bu nedenle, sertifika doğrulaması herhangi `.metadata.azure.com` bir alt etki alanından ortak bir ada izin verilmelidir.
+#### <a name="sample-2-retrieving-public-ip-address"></a>Örnek 2: genel IP adresi alınıyor
 
 ```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 
-# Verify the subject name for the main certificate
-openssl x509 -noout -subject -in signer.pem
-# Verify the issuer for the main certificate
-openssl x509 -noout -issuer -in signer.pem
-#Validate the subject name for intermediate certificate
-openssl x509 -noout -subject -in intermediate.pem
-# Verify the issuer for the intermediate certificate
-openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
-openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-Doğrulama sırasında ağ kısıtlamalarına bağlı olarak ara sertifikanın indirilebileceği durumlarda ara sertifika sabitlenebilir. Ancak, Azure Standart PKI uygulamasına göre sertifikaların üzerine alınır. Geçiş gerçekleştiğinde sabitlenmiş sertifikaların güncellenmesi gerekir. Ara sertifikayı güncelleştirme değişikliği planlandığı zaman, Azure bloguna güncelleştirilecek ve Azure müşterileri bilgilendirilir. Ara Sertifikalar [burada](https://www.microsoft.com/pki/mscorp/cps/default.htm)bulunabilir. Her bir bölgenin ara sertifikaları farklı olabilir.
+## <a name="storage-metadata"></a>Depolama meta verileri
 
-> [!NOTE]
->Azure Çin 21Vianet için ara sertifika, balya yerine DigiCert genel kök CA 'dan olacaktır.
-Ayrıca, kök zincir yetkilisinin bir parçası olarak Azure Çin ara sertifikalarını sabitlediğiniz takdirde, ara sertifikaların güncellenmesi gerekecektir.
-
-### <a name="storage-profile"></a>Depolama profili
-
-Instance Metadata Service, VM ile ilişkili depolama diskleri hakkında ayrıntılı bilgi sağlayabilir. Bu veriler, örnek/işlem/storageProfile uç noktasında bulunabilir.
+Depolama meta verileri örnek/işlem/storageProfile uç noktası altında örnek API 'sinin bir parçasıdır.
+VM ile ilişkili depolama disklerinin ayrıntılarını sağlar. 
 
 Bir sanal makinenin depolama profili üç kategoriye ayrılmıştır-görüntü başvurusu, işletim sistemi diski ve veri diskleri.
 
@@ -709,11 +493,11 @@ Görüntü başvurusu nesnesi, işletim sistemi görüntüsüyle ilgili aşağı
 
 Veriler    | Açıklama
 --------|-----------------
-id      | Kaynak kimliği
+kimlik      | Kaynak kimliği
 teklif   | Platform veya Market görüntüsü teklifi
 yayımcı | Görüntü yayımcısı
 isteyin     | Görüntü SKU 'su
-version | Platform veya Market görüntüsünün sürümü
+sürüm | Platform veya Market görüntüsünün sürümü
 
 İşletim sistemi diski nesnesi, VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
@@ -726,7 +510,7 @@ diskSizeGB | Diskin GB cinsinden boyutu
 image   | Kaynak Kullanıcı görüntüsü sanal sabit diski
 'yi     | Diskin mantıksal birim numarası
 managedDisk | Yönetilen disk parametreleri
-ad    | Disk adı
+name    | Disk adı
 sahip     | Sanal sabit disk
 Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
 
@@ -741,7 +525,7 @@ diskSizeGB | Diskin GB cinsinden boyutu
 encryptionSettings | Disk için şifreleme ayarları
 image   | Kaynak Kullanıcı görüntüsü sanal sabit diski
 managedDisk | Yönetilen disk parametreleri
-ad    | Disk adı
+name    | Disk adı
 osType  | Diske dahil edilen işletim sisteminin türü
 sahip     | Sanal sabit disk
 Writeivatorenabled | Diskte writeAccelerator etkin olup olmadığı
@@ -815,7 +599,193 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 }
 ```
 
-### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>VM içinde farklı diller kullanarak meta veri hizmeti çağırma örnekleri
+## <a name="vm-tags"></a>VM etiketleri
+
+VM etiketleri örnek/işlem/etiket uç noktası altına örnek API 'sini içerir.
+Etiketler, bunları bir taksonomi halinde mantıksal olarak düzenlemek için Azure sanal makinenize uygulanmış olabilir. Bir VM 'ye atanan Etiketler aşağıdaki istek kullanılarak alınabilir.
+
+**İstek**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**Yanıtıyla**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
+```
+
+`tags`Alan, etiketleri noktalı virgülle ayrılmış bir dizedir. Etiketlerde noktalı virgül kullanılırsa bu bir sorun olabilir. Etiketleri programlı olarak ayıklamak üzere yazılmışsa, `tagsList` sınırlandırıcı olmayan BIR JSON dizisi olan alana ve sonuç olarak ayrıştırılmaya daha kolay.
+
+**İstek**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
+```
+
+**Yanıtıyla**
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "Environment",
+    "value": "Test"
+  },
+  {
+    "name": "Role",
+    "value": "WebRole"
+  }
+]
+```
+
+## <a name="attested-data"></a>Atsınanan veriler
+
+Instance Metadata Service tarafından sunulan senaryonun bir kısmı, belirtilen verilerin Azure 'dan geldiğini garanti etmek sağlamaktır. Market görüntülerinin Azure 'da çalıştığından emin olmak için bu bilgilerin bir parçasını imzalıyoruz.
+
+### <a name="sample-1-getting-attested-data"></a>Örnek 1: atsınanan verileri alma
+
+> [!NOTE]
+> Tüm API yanıtları JSON dizeleridir. Aşağıdaki örnek yanıtlar okunabilirlik için oldukça yazdırılır.
+
+***İstek***
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+
+```
+
+Api sürümü zorunlu bir alandır. Desteklenen API sürümleri için [kullanım bölümüne](#usage) bakın.
+Nonce, isteğe bağlı 10 basamaklı bir dizedir. Sağlanmazsa, ıDS geçerli UTC zaman damgasını yerinde döndürür. IDS 'nin önbelleğe alma mekanizması nedeniyle, önceden önbelleğe alınmış bir nonce değeri döndürülebilir.
+
+ ***Yanıtıyla***
+
+> [!NOTE]
+> Yanıt bir JSON dizesidir. Aşağıdaki örnek yanıt, okunabilirlik için oldukça yazdırılır.
+
+```json
+{
+ "encoding":"pkcs7","signature":"MIIEEgYJKoZIhvcNAQcCoIIEAzCCA/8CAQExDzANBgkqhkiG9w0BAQsFADCBugYJKoZIhvcNAQcBoIGsBIGpeyJub25jZSI6IjEyMzQ1NjY3NjYiLCJwbGFuIjp7Im5hbWUiOiIiLCJwcm9kdWN0IjoiIiwicHVibGlzaGVyIjoiIn0sInRpbWVTdGFtcCI6eyJjcmVhdGVkT24iOiIxMS8yMC8xOCAyMjowNzozOSAtMDAwMCIsImV4cGlyZXNPbiI6IjExLzIwLzE4IDIyOjA4OjI0IC0wMDAwIn0sInZtSWQiOiIifaCCAj8wggI7MIIBpKADAgECAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBBAUAMCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tMB4XDTE4MTEyMDIxNTc1N1oXDTE4MTIyMDIxNTc1NlowKzEpMCcGA1UEAxMgdGVzdHN1YmRvbWFpbi5tZXRhZGF0YS5henVyZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAML/tBo86ENWPzmXZ0kPkX5dY5QZ150mA8lommszE71x2sCLonzv4/UWk4H+jMMWRRwIea2CuQ5RhdWAHvKq6if4okKNt66fxm+YTVz9z0CTfCLmLT+nsdfOAsG1xZppEapC0Cd9vD6NCKyE8aYI1pliaeOnFjG0WvMY04uWz2MdAgMBAAGjYDBeMFwGA1UdAQRVMFOAENnYkHLa04Ut4Mpt7TkJFfyhLTArMSkwJwYDVQQDEyB0ZXN0c3ViZG9tYWluLm1ldGFkYXRhLmF6dXJlLmNvbYIQZ8VuSofHbJRAQNBNpiASdDANBgkqhkiG9w0BAQQFAAOBgQCLSM6aX5Bs1KHCJp4VQtxZPzXF71rVKCocHy3N9PTJQ9Fpnd+bYw2vSpQHg/AiG82WuDFpPReJvr7Pa938mZqW9HUOGjQKK2FYDTg6fXD8pkPdyghlX5boGWAMMrf7bFkup+lsT+n2tRw2wbNknO1tQ0wICtqy2VqzWwLi45RBwTGB6DCB5QIBATA/MCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBCwUAMA0GCSqGSIb3DQEBAQUABIGAld1BM/yYIqqv8SDE4kjQo3Ul/IKAVR8ETKcve5BAdGSNkTUooUGVniTXeuvDj5NkmazOaKZp9fEtByqqPOyw/nlXaZgOO44HDGiPUJ90xVYmfeK6p9RpJBu6kiKhnnYTelUk5u75phe5ZbMZfBhuPhXmYAdjc7Nmw97nx8NnprQ="
+}
+```
+
+İmza blobu, belgenin [PKCS7](https://aka.ms/pkcs7) imzalı bir sürümüdür. Bu, belgenin oluşturulması ve süre sonu için zaman damgası ve görüntüyle ilgili plan bilgileri gibi VM ayrıntılarıyla birlikte oturum açmak için kullanılan sertifikayı içerir. Plan bilgileri yalnızca Azure Market görüntüleri için doldurulur. Sertifika yanıttan ayıklanabilir ve yanıtın geçerli olduğunu ve Azure 'dan geldiğini doğrulamak için kullanılır.
+
+### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>Örnek 2: VM 'nin Azure 'da çalıştığı doğrulanıyor
+
+Market satıcıları, yazılımlarının yalnızca Azure 'da çalışmak üzere lisanslanmasını sağlamak istiyor. Başka biri VHD 'yi şirket içine kopyalarsa, bu durumda bu, bunu tespit etme yeteneğine sahip olmalıdır. Instance Metadata Service çağırarak Market satıcıları yalnızca Azure 'dan gelen yanıtı garanti eden imzalı verileri alabilir.
+
+> [!NOTE]
+> JQ 'ın yüklenmesini gerektirir.
+
+***İstek***
+
+```bash
+  # Get the signature
+   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
+  # Decode the signature
+  base64 -d signature > decodedsignature
+  #Get PKCS7 format
+  openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
+  # Get Public key out of pkc7
+  openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
+  #Get the intermediate certificate
+  wget -q -O intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
+  openssl x509 -inform der -in intermediate.cer -out intermediate.pem
+  #Verify the contents
+  openssl smime -verify -in sign.pk7 -inform pem -noverify
+ ```
+
+ **Yanıtıyla**
+
+```json
+Verification successful
+{"nonce":"20181128-001617",
+  "plan":
+    {
+     "name":"",
+     "product":"",
+     "publisher":""
+    },
+"timeStamp":
+  {
+    "createdOn":"11/28/18 00:16:17 -0000",
+    "expiresOn":"11/28/18 06:16:17 -0000"
+  },
+"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+"sku": "RS3-Pro"
+}
+```
+
+Veriler | Açıklama
+-----|------------
+nonce | Kullanıcı istek ile isteğe bağlı dize sağladı. İstekte hiçbir nonce sağlanmazsa, geçerli UTC zaman damgası döndürülür
+plan | Azure Market görüntüsündeki bir VM için [plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) yapın, ad, ürün ve yayımcı içerir
+zaman damgası/createdOn | İlk imzalı belgenin oluşturulduğu UTC zaman damgası
+zaman damgası/expiresOn | İmzalanan belgenin süresi dolan UTC zaman damgası
+Kimliği |  VM için [benzersiz tanımlayıcı](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
+subscriptionId | Üzerinde sunulan sanal makine için Azure aboneliği`2019-04-30`
+isteyin | VM görüntüsü için özel SKU, ' de tanıtılan`2019-11-01`
+
+#### <a name="sample-3-verifying-the-signature"></a>Örnek 3: imzayı doğrulama
+
+Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft 'tan olduğunu doğrulayabilirsiniz. Ayrıca ara sertifikayı ve sertifika zincirini doğrulayabilirsiniz. Son olarak, abonelik KIMLIĞININ doğru olduğunu doğrulayabilirsiniz.
+
+> [!NOTE]
+> Genel bulut ve bağımsız bulutu için sertifika farklı olacaktır.
+
+ Bulut | Sertifika
+---------|-----------------
+[Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+İmzalanmak üzere kullanılan sertifika etrafında bilinen bir sorun var. Sertifikalar, genel bulut için tam olarak eşleşen bir eşleşmeyebilir `metadata.azure.com` . Bu nedenle, sertifika doğrulaması herhangi bir alt etki alanından ortak bir ada izin verilmelidir `.metadata.azure.com` .
+
+```bash
+
+# Verify the subject name for the main certificate
+openssl x509 -noout -subject -in signer.pem
+# Verify the issuer for the main certificate
+openssl x509 -noout -issuer -in signer.pem
+#Validate the subject name for intermediate certificate
+openssl x509 -noout -subject -in intermediate.pem
+# Verify the issuer for the intermediate certificate
+openssl x509 -noout -issuer -in intermediate.pem
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
+openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
+```
+
+Doğrulama sırasında ağ kısıtlamalarına bağlı olarak ara sertifikanın indirilebileceği durumlarda ara sertifika sabitlenebilir. Ancak, Azure Standart PKI uygulamasına göre sertifikaların üzerine alınır. Geçiş gerçekleştiğinde sabitlenmiş sertifikaların güncellenmesi gerekir. Ara sertifikayı güncelleştirme değişikliği planlandığı zaman, Azure bloguna güncelleştirilecek ve Azure müşterileri bilgilendirilir. Ara Sertifikalar [burada](https://www.microsoft.com/pki/mscorp/cps/default.htm)bulunabilir. Her bir bölgenin ara sertifikaları farklı olabilir.
+
+> [!NOTE]
+>Azure Çin 21Vianet için ara sertifika, balya yerine DigiCert genel kök CA 'dan olacaktır.
+Ayrıca, kök zincir yetkilisinin bir parçası olarak Azure Çin ara sertifikalarını sabitlediğiniz takdirde, ara sertifikaların güncellenmesi gerekecektir.
+
+## <a name="managed-identity-via-metadata-service"></a>Metadata Service aracılığıyla yönetilen kimlik
+Kullanıcı bir VM 'de yönetilen kimliği etkinleştirebilir ve sonra Azure hizmetlerine erişim belirtecini geçirmek için Instance Metadata Service yararlanabilir. VM üzerinde çalışan uygulamalar artık Azure örnek meta veri hizmeti uç noktasından bir belirteç isteyebilir ve ardından, Anahtar Kasası dahil olmak üzere bulut hizmetlerinde kimlik doğrulaması yapmak için belirteci kullanabilir.
+Bu özelliği etkinleştirmeye yönelik ayrıntılı adımlar için bkz. [erişim belirteci alma](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+
+## <a name="scheduled-events-via-metadata-service"></a>Metadata Service üzerinden Zamanlanan Olaylar
+Zamanlanmış olayların durumunu meta veri hizmeti aracılığıyla elde edebilirsiniz, ardından Kullanıcı bu olaylar üzerinde yürütülecek bir eylem kümesi belirtebilir.  Ayrıntılar için [zamanlanan olaylar](scheduled-events.md) bakın. 
+
+## <a name="regional-availability"></a>Bölgesel Kullanılabilirlik
+
+Hizmet, tüm Azure bölgelerinde **genel kullanıma sunulmuştur** . Buna aşağıdakiler dahildir: 
+1. [Tüm genel kullanıma açık Azure bölgeleri](https://azure.microsoft.com/regions/)
+2. [Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)  
+3. [Azure China 21Vianet](https://www.azure.cn/) 
+4. [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/) 
+
+## <a name="sample-code-in-different-languages"></a>Farklı dillerdeki örnek kod
+
+VM içinde farklı diller kullanarak meta veri hizmeti çağırma örnekleri:
 
 Dil | Örnek
 ---------|----------------
@@ -825,16 +795,28 @@ Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
-PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
-Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>SSS
+## <a name="error-and-debugging"></a>Hata ve hata ayıklama
 
-1. Hatayı `400 Bad Request, Required metadata header not specified`alıyorum. Bu ne anlama geliyor?
+Veri öğesi bulunamadı veya hatalı oluşturulmuş bir istek varsa, Instance Metadata Service standart HTTP hataları döndürür. Örnek:
+
+HTTP durum kodu | Nedeni
+----------------|-------
+200 TAMAM |
+400 Hatalı Istek | `Metadata: true`Bir yaprak düğümü sorgularken başlık eksik veya biçim eksik
+404 Bulunamadı | İstenen öğe yok
+405 yöntemine Izin verilmiyor | Yalnızca `GET` istekler destekleniyor
+410 gitti | En fazla 70 saniye boyunca bir süre sonra yeniden deneyin
+429 Çok Fazla İstek Var | API Şu anda saniyede en çok 5 sorgu destekliyor
+500 hizmet hatası     | Bir süre sonra yeniden dene
+
+### <a name="known-issues-and-faq"></a>Bilinen sorunlar ve SSS
+
+1. Hatayı alıyorum `400 Bad Request, Required metadata header not specified` . Bu ne anlama geliyor?
    * Instance Metadata Service, üstbilginin `Metadata: true` isteğe geçirilmesini istiyor. Bu üstbilginin REST çağrısına geçirilmesi Instance Metadata Service erişim sağlar.
 2. Neden Sanal makinem için işlem bilgilerini alamıyorum?
    * Şu anda Instance Metadata Service yalnızca Azure Resource Manager oluşturulan örnekleri destekliyor. Gelecekte, bulut hizmeti VM 'Leri için destek eklenebilir.
@@ -842,10 +824,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/management/tag-resources.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
 4. Yeni sürüm için doldurulmuş tüm verileri görmüyorum
    * Sep 2016 ' den sonra oluşturulan tüm VM 'Ler için, işlem meta verilerini görmeye başlamak üzere bir [etiket](../../azure-resource-manager/management/tag-resources.md) ekleyin. Eski VM 'Ler için (2016. sürümden önce oluşturulan) meta verileri yenilemek için VM 'lere uzantıları veya veri diskleri ekleyin/kaldırın.
-5. Hatayı `500 Internal Server Error`neden alıyorum?
+5. Hatayı neden alıyorum `500 Internal Server Error` ?
    * İsteğinizi üstel geri dönüş sistemine göre yeniden deneyin. Sorun devam ederse Azure desteği ile iletişime geçin.
 6. Ek soruları/açıklamaları nerede paylaşabilirim?
-   * Yorumlarınızı üzerine https://feedback.azure.comgönderin.
+   * Yorumlarınızı üzerine gönderin https://feedback.azure.com .
 7. Bu, sanal makine ölçek kümesi örneği için mi çalışıyor?
    * Evet meta veri hizmeti ölçek kümesi örnekleri için kullanılabilir.
 8. Nasıl yaparım? hizmet için destek almak mı istiyorsunuz?
@@ -855,8 +837,15 @@ Puppet | https://github.com/keirans/azuremetadata
 10. Sanal makine ölçek kümesinde etiketlerimi güncelleştirdim, ancak VM 'lerden farklı olarak örneklerde gözükmez mi?
     * Şu anda ScaleSets etiketleri için yalnızca bir yeniden başlatma/yeniden görüntü/veya örneğe bir disk değişikliği olan sanal makineye gösterilir.
 
-    ![Örnek meta veri desteği](./media/instance-metadata-service/InstanceMetadata-support.png)
+## <a name="support-and-feedback"></a>Destek ve geri bildirim
 
-## <a name="next-steps"></a>Sonraki adımlar
+Görüşlerinizi ve yorumlarınızı üzerine gönderin https://feedback.azure.com .
+Hizmete yönelik destek almak için, uzun süreden sonra meta veri yanıtını geçirebileceğiniz VM için Azure portal bir destek sorunu oluşturun.
 
-- [Zamanlanan olaylar](scheduled-events.md) hakkında daha fazla bilgi edinin
+![Örnek meta veri desteği](./media/instance-metadata-service/InstanceMetadata-support.png)
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+Aşağıdakiler hakkında daha fazla bilgi edinin:
+1.  [VM için bir erişim belirteci alın](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+2.  [Zamanlanan Olaylar](scheduled-events.md) 

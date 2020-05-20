@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/03/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: affdbfba125b7e9b3f3fe250a56af30e9efe816e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 04/03/2020
+ms.openlocfilehash: 9b5771197c3e2de109af1a3b3475ab28fcbd6453
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611015"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647763"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma
 
@@ -23,7 +23,7 @@ Kafka REST proxy, HTTP üzerinden bir REST API aracılığıyla Kafka kümeniz i
 
 Kafka REST API tarafından desteklenen işlemler için bkz. [HDInsight Kafka Rest Proxy API başvurusu](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 ![Kafka REST ara sunucu tasarımı](./media/rest-proxy/rest-proxy-architecture.png)
 
@@ -42,7 +42,7 @@ REST proxy uç noktası istekleri için, istemci uygulamaların bir OAuth belirt
 > [!NOTE]
 > AAD güvenlik grupları hakkında daha fazla bilgi için bkz. [Azure Active Directory grupları kullanarak uygulama ve kaynak erişimini yönetme](../../active-directory/fundamentals/active-directory-manage-groups.md). OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [oauth 2,0 kod verme akışını kullanarak Azure Active Directory Web uygulamalarına erişimi yetkilendirme](../../active-directory/develop/v1-protocols-oauth-code.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. Bir uygulamayı Azure AD'ye kaydedin. Kafka REST proxy ile etkileşimde bulunmak için yazdığınız istemci uygulamaları, Azure 'da kimlik doğrulaması yapmak için bu uygulamanın KIMLIĞINI ve parolasını kullanacaktır.
 
@@ -55,6 +55,8 @@ REST proxy uç noktası istekleri için, istemci uygulamaların bir OAuth belirt
     ![Üyeliği denetle](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST proxy etkinken bir Kafka kümesi oluşturma
+
+Aşağıdaki adımlar Azure portal kullanır. Azure CLı kullanan bir örnek için bkz. [Azure CLI kullanarak Apache Kafka Rest proxy kümesi oluşturma](tutorial-cli-rest-proxy.md).
 
 1. Kafka kümesi oluşturma iş akışı sırasında, **güvenlik + ağ** sekmesinde, **Kafka Rest proxy 'yi etkinleştir** seçeneğini işaretleyin.
 
@@ -75,7 +77,7 @@ REST proxy uç noktası istekleri için, istemci uygulamaların bir OAuth belirt
 Kafka kümenizdeki REST proxy ile etkileşim kurmak için aşağıdaki python kodunu kullanabilirsiniz. Kod örneğini kullanmak için şu adımları izleyin:
 
 1. Örnek kodu Python yüklü bir makineye kaydedin.
-1. Yürüterek `pip3 install msal`gerekli Python bağımlılıklarını yükler.
+1. Yürüterek gerekli Python bağımlılıklarını yükler `pip3 install msal` .
 1. Kod bölümünü değiştirin **Bu özellikleri yapılandırın** ve ortamınız için aşağıdaki özellikleri güncelleştirin:
 
     |Özellik |Açıklama |
@@ -92,7 +94,7 @@ Bu kod aşağıdaki eylemi yapar:
 1. Azure AD 'den bir OAuth belirteci getirir.
 1. Kafka REST proxy 'sine nasıl istek yapılacağını gösterir.
 
-Python 'da OAuth belirteçleri alma hakkında daha fazla bilgi için bkz. [Python AuthenticationContext sınıfı](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). Kafka REST proxy 'si aracılığıyla oluşturulmamış `topics` veya silinmediği sürece bir gecikme görebilirsiniz. Bu gecikme, önbellek yenileme nedeniyle oluşur.
+Python 'da OAuth belirteçleri alma hakkında daha fazla bilgi için bkz. [Python AuthenticationContext sınıfı](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). `topics`Kafka Rest proxy 'si aracılığıyla oluşturulmamış veya silinmediği sürece bir gecikme görebilirsiniz. Bu gecikme, önbellek yenileme nedeniyle oluşur.
 
 ```python
 #Required python packages
@@ -139,7 +141,7 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-Bir kıvrımlı komutu kullanarak REST proxy için Azure 'dan bir belirteç alma hakkında başka bir örnek aşağıda bulabilirsiniz. **Belirteç alınırken, belirtilen için `scope=https://hib.azurehdinsight.net/.default` gerekli olduğunu unutmayın.**
+Bir kıvrımlı komutu kullanarak REST proxy için Azure 'dan bir belirteç alma hakkında başka bir örnek aşağıda bulabilirsiniz. **Belirteç alınırken, belirtilen için gerekli olduğunu unutmayın `scope=https://hib.azurehdinsight.net/.default` .**
 
 ```cmd
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'

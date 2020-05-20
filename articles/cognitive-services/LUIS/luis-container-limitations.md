@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2f4751440d719a542d39f8d8e83260c8cb628de0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592908"
+ms.locfileid: "83659279"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUSıS) kapsayıcı sınırlamaları
 
@@ -35,7 +35,7 @@ Aşağıdaki bağımlılıklardan herhangi birini **içermiyorsa** bir Luo uygul
 
 Desteklenmeyen uygulama yapılandırması|Ayrıntılar|
 |--|--|
-|Desteklenmeyen kapsayıcı kültürleri| Felemenkçe ( `nl-NL` )<br>Japonca ( `ja-JP` )<br>Almanca yalnızca [1.0.2 belirteç ayırıcı](luis-language-support.md#custom-tokenizer-versions)ile desteklenir.|
+|Desteklenmeyen kapsayıcı kültürleri| Hollanda dili ( `nl-NL` ), Japonca () `ja-JP` ve Almanca ( `de-DE` ) dilleri yalnızca [1.0.2 belirteç ayırıcı](luis-language-support.md#custom-tokenizer-versions)ile desteklenir.|
 |Tüm kültürler için desteklenmeyen varlıklar|Tüm kültürler için [KeyPhrase](luis-reference-prebuilt-keyphrase.md) önceden oluşturulmuş varlık|
 |Ingilizce () kültürü için desteklenmeyen varlıklar `en-US`|[GeographyV2](luis-reference-prebuilt-geographyV2.md) önceden oluşturulmuş varlıklar|
 |Konuşma primi|Kapsayıcıda dış bağımlılıklar desteklenmiyor.|

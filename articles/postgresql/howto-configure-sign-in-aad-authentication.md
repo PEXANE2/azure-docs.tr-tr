@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804716"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652556"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
 Bu makale, PostgreSQL için Azure veritabanı ile Azure Active Directory erişimi yapılandırma ve Azure AD belirteci kullanarak bağlanma adımlarında size yol gösterecektir.
-
-> [!IMPORTANT]
-> PostgreSQL için Azure veritabanı Azure AD kimlik doğrulaması şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Azure AD yönetici kullanıcısını ayarlama
 
@@ -36,7 +31,7 @@ Azure AD yöneticisini ayarlamak için (bir kullanıcı veya grup kullanabilirsi
 3. Müşteri kiracısında Azure AD yöneticisi olacak geçerli bir Azure AD kullanıcısı seçin.
 
 > [!IMPORTANT]
-> Yönetici ayarlanırken, PostgreSQL için Azure veritabanı sunucusuna tam yönetici izinleriyle yeni bir Kullanıcı eklenir. PostgreSQL için Azure veritabanı 'nda Azure AD yönetici kullanıcısının rolü `azure_ad_admin`olacaktır.
+> Yönetici ayarlanırken, PostgreSQL için Azure veritabanı sunucusuna tam yönetici izinleriyle yeni bir Kullanıcı eklenir. PostgreSQL için Azure veritabanı 'nda Azure AD yönetici kullanıcısının rolü olacaktır `azure_ad_admin` .
 
 Her PostgreSQL sunucusu için yalnızca bir Azure AD yöneticisi oluşturulabilir ve başka bir tane seçilebilir, sunucu için yapılandırılmış mevcut Azure AD yöneticisinin üzerine yazılır. Tek bir kullanıcı yerine birden çok yönetici olmak üzere bir Azure AD grubu belirtebilirsiniz. Daha sonra yönetim amaçları için grup adıyla oturum açacaksınız.
 
@@ -73,7 +68,7 @@ Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başla
 
 > [!NOTE]
 > Bu adımları gerçekleştirmek için Azure Cloud Shell de kullanabilirsiniz.
-> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. `get-access-token` Komutun bu oturum açma işleminden sonra beklendiği gibi çalışacaktır.
+> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. Komutun bu oturum açma işleminden sonra `get-access-token` beklendiği gibi çalışacaktır.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirtecini alma
 
@@ -118,7 +113,7 @@ Belirteç, kimliği doğrulanmış kullanıcıyla ilgili tüm bilgileri kodlayan
 
 Bağlantı sırasında, PostgreSQL Kullanıcı parolası olarak erişim belirtecini kullanmanız gerekir.
 
-`psql` Komut satırı istemcisini kullanırken, erişim belirteci doğrudan kabul edebilecek parola uzunluğunu `psql` aştığından, erişim belirtecinin `PGPASSWORD` ortam değişkenine geçirilmesi gerekir:
+`psql`Komut satırı istemcisini kullanırken, erişim belirteci `PGPASSWORD` doğrudan kabul edebilecek parola uzunluğunu aştığından, erişim belirtecinin ortam değişkenine geçirilmesi gerekir `psql` :
 
 Windows örneği:
 
@@ -146,8 +141,8 @@ PostgreSQL için Azure veritabanı veritabanınıza bir Azure AD kullanıcısı 
 
 1. İlk olarak Azure AD kullanıcısının `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
 2. PostgreSQL için Azure veritabanı örneğiniz için Azure AD Yönetici kullanıcısı olarak oturum açın.
-3. PostgreSQL için Azure veritabanı 'nda rol `<user>@yourtenant.onmicrosoft.com` oluştur.
-4. Azure_ad_user `<user>@yourtenant.onmicrosoft.com` rolün bir üyesini oluşturun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
+3. `<user>@yourtenant.onmicrosoft.com`PostgreSQL Için Azure veritabanı 'nda rol oluştur.
+4. `<user>@yourtenant.onmicrosoft.com`Azure_ad_user rolün bir üyesini oluşturun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
 
 **Örneğinde**
 

@@ -1,22 +1,22 @@
 ---
-title: Ticari Market Yayımlama Kılavuzu
-description: Uygulama ve hizmet yayımcıları için ticari Market 'e genel bakış.
+title: Microsoft ticari Market Yayımlama Kılavuzu
+description: Microsoft AppSource ve Azure Market 'Te teklifler yayımlamak isteyen Microsoft iş ortakları için ticari Market 'e genel bakış.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262001"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657864"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Ticari Market Yayımlama Kılavuzu
 
-Market Yayımlama Kılavuzu, yeni ve mevcut yayımcıların [Azure Marketi](https://azuremarketplace.microsoft.com) 'nde storeronts 'yi nasıl kullanacağınızı öğrenmesine ve [Microsoft AppSource](https://appsource.microsoft.com) uygulamaları ve Hizmetleri listeleyerek Microsoft ile iş ortaklığımlarına nasıl büyütireceğinizi öğrenmesine yardımcı olmak için tasarlanmıştır.
+Bu Yayımlama Kılavuzu, yeni ve mevcut yayımcıların, Microsoft ile iş ortaklığına iş ortaklığı sağlamak için ticari Market stokörleri, [Azure Marketi](https://azuremarketplace.microsoft.com) ve [Microsoft AppSource](https://appsource.microsoft.com)uygulamaları ve hizmetleri nasıl listeleyeceğinizi öğrenmesine yardımcı olmak üzere tasarlanmıştır.
 
 >[!Note]
 >Burada Market, Azure Marketi ve AppSource 'a başvurur.  Daha fazla bilgi için bkz. [bir market, iki stotrefronts](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
@@ -30,7 +30,7 @@ Bu kılavuzda aşağıdaki konular ele alınmaktadır:
 
 Bu kılavuz, uygulamalarınızı ve hizmetlerinizi listeetmeden önce uygulamanız gereken adımlarla ilgili teknik ve iş bilgilerini içerir. Kılavuzun farklı bölümlerine gitmek ve doğrudan temel konulara gitmek için İçindekiler tablosunu kullanın.
 
-Azure Marketi ve appsource hakkında sorularınız için, **sorun türü** > **Market ekleme**altında bize bir ileti gönderin. Market Yayımcımız ekleme ekibi, yardım almak için mutluluk duyarız! 
+Azure Marketi ve appsource hakkında sorularınız için, **sorun türü**  >  **Market ekleme**altında bize bir ileti gönderin. Market Yayımcımız ekleme ekibi, yardım almak için mutluluk duyarız! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Market 'e katılımın avantajları 
 

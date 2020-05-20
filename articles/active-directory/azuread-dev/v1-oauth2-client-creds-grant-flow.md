@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: f2d1eaec80c8925eb7b38af848e29e944f1ebf69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c698b9381755f81303dc3adfa9422b82500bb208
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154551"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642219"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>İstemci kimlik bilgilerini kullanarak hizmet çağrıları (paylaşılan gizlilik veya sertifika)
 
@@ -60,7 +60,7 @@ Paylaşılan bir gizli dizi kullanılırken hizmetten hizmete erişim belirteci 
 | kaynak |gerekli |Alıcı Web hizmetinin uygulama KIMLIĞI URI 'sini girin. Uygulama KIMLIĞI URI 'sini bulmak için, Azure portal **Azure Active Directory**, **uygulama kayıtları**, hizmet uygulamasına tıklayın ve ardından **Ayarlar** ve **Özellikler**' e tıklayın. |
 
 #### <a name="example"></a>Örnek
-Aşağıdaki HTTP POST, `https://service.contoso.com/` Web hizmeti için bir [erişim belirteci](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ister. , `client_id` Erişim belirtecini isteyen Web hizmetini tanımlar.
+Aşağıdaki HTTP POST, Web hizmeti için bir [erişim belirteci](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ister `https://service.contoso.com/` . , `client_id` Erişim belirtecini isteyen Web hizmetini tanımlar.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -84,7 +84,7 @@ Bir sertifikaya sahip hizmetten hizmete erişim belirteci isteği aşağıdaki p
 Parametrelerin, client_secret parametresi iki parametre ile değiştirilmeleri dışında, paylaşılan gizliliğe göre istek durumuyla neredeyse aynı olduğuna dikkat edin: bir client_assertion_type ve client_assertion.
 
 #### <a name="example"></a>Örnek
-Aşağıdaki HTTP POST, bir sertifikayla `https://service.contoso.com/` Web hizmeti için bir erişim belirteci ister. , `client_id` Erişim belirtecini isteyen Web hizmetini tanımlar.
+Aşağıdaki HTTP POST, `https://service.contoso.com/` bir sertifikayla Web hizmeti için bir erişim belirteci ister. , `client_id` Erişim belirtecini isteyen Web hizmetini tanımlar.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -112,12 +112,23 @@ Aşağıdaki örnekte, bir Web hizmetine erişim belirteci isteğine yönelik bi
 
 ```
 {
-"access_token":"eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0ODI2NywibmJmIjoxMzg4NDQ4MjY3LCJleHAiOjEzODg0NTIxNjcsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6ImE5OTE5MTYyLTkyMTctNDlkYS1hZTIyLWYxMTM3YzI1Y2RlYSIsInN1YiI6ImE5OTE5MTYyLTkyMTctNDlkYS1hZTIyLWYxMTM3YzI1Y2RlYSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZS8iLCJhcHBpZCI6ImQxN2QxNWJjLWM1NzYtNDFlNS05MjdmLWRiNWYzMGRkNThmMSIsImFwcGlkYWNyIjoiMSJ9.aqtfJ7G37CpKV901Vm9sGiQhde0WMg6luYJR4wuNR2ffaQsVPPpKirM5rbc6o5CmW1OtmaAIdwDcL6i9ZT9ooIIicSRrjCYMYWHX08ip-tj-uWUihGztI02xKdWiycItpWiHxapQm0a8Ti1CWRjJghORC1B1-fah_yWx6Cjuf4QE8xJcu-ZHX0pVZNPX22PHYV5Km-vPTq2HtIqdboKyZy3Y4y3geOrRIFElZYoqjqSv5q9Jgtj5ERsNQIjefpyxW3EwPtFqMcDm4ebiAEpoEWRN4QYOMxnC9OUBeG9oLA0lTfmhgHLAtvJogJcYFzwngTsVo6HznsvPWy7UP3MINA",
+"access_token":"eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw",
 "token_type":"Bearer",
 "expires_in":"3599",
 "expires_on":"1388452167",
 "resource":"https://service.contoso.com/"
 }
+```
+## <a name="use-the-access-token-to-access-the-secured-resource"></a>Güvenli kaynağa erişmek için erişim belirtecini kullanma
+
+Hizmet, üstbilgideki belirteci ayarlayarak aşağı akış Web API 'sine kimliği doğrulanmış istekler yapmak için alınan erişim belirtecini kullanabilir `Authorization` .
+
+### <a name="example"></a>Örnek
+
+```
+GET /me?api-version=2013-11-08 HTTP/1.1
+Host: graph.microsoft.com
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.

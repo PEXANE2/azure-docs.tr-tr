@@ -8,18 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 258bddec85e4ab182ff0b07c49cdc93f92264f95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 1b72be91ee11ef7003e225fe830a59ea42310ac6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084473"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656691"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure’da genelleştirilmiş bir VM’nin yönetilen görüntüsünü oluşturma
 
 Yönetilen bir görüntü kaynağı, depolama hesabında yönetilen bir disk veya yönetilmeyen bir disk olarak depolanan genelleştirilmiş bir sanal makineden (VM) oluşturulabilir. Görüntü daha sonra birden çok VM oluşturmak için kullanılabilir. Yönetilen görüntülerin faturalandırılması hakkında daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
- 
+Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı yönetilen görüntüden 20 ' den fazla VM oluşturmaya çalışmak, tek bir VHD 'nin depolama performans sınırlamaları nedeniyle zaman aşımları sağlamaya neden olabilir. Aynı anda 20 ' den fazla VM oluşturmak için, her 20 eş zamanlı VM dağıtımı için 1 çoğaltma ile yapılandırılmış [paylaşılan görüntü galerileri](shared-image-galleries.md) görüntüsünü kullanın.
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep kullanarak Windows VM'sini genelleştirme
 
@@ -38,7 +39,7 @@ Windows VM 'nizi genelleştirmek için aşağıdaki adımları izleyin:
 
 1. Windows sanal makinenizde oturum açın.
    
-2. Yönetici olarak bir komut Istemi penceresi açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe`.
+2. Yönetici olarak bir komut Istemi penceresi açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe` .
    
 3. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimini (OOBE) girin** ve **generalize** onay kutusunu seçin.
    
@@ -60,7 +61,7 @@ Windows VM 'nizi genelleştirmek için aşağıdaki adımları izleyin:
 > ```
 > Burada D: bağlı VHD 'nin yoludur.
 >
-> Çalışan `DISM /optimize-image` , VHD 'niz üzerinde yaptığınız son değişiklik olmalıdır. Dağıtımdan önce VHD 'niz üzerinde herhangi bir değişiklik yaparsanız, yeniden çalıştırmanız `DISM /optimize-image` gerekir.
+> Çalışan `DISM /optimize-image` , VHD 'niz üzerinde yaptığınız son değişiklik olmalıdır. Dağıtımdan önce VHD 'niz üzerinde herhangi bir değişiklik yaparsanız, yeniden çalıştırmanız gerekir `DISM /optimize-image` .
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Portalda yönetilen bir görüntü oluşturma 
 
@@ -92,11 +93,11 @@ Görüntü oluşturulduktan sonra, kaynak grubundaki kaynaklar listesinde **gör
 
 Doğrudan VM 'den bir görüntü oluşturmak, görüntünün işletim sistemi diski ve veri diskleri dahil olmak üzere VM ile ilişkili tüm diskleri de kapsamasını sağlar. Bu örnek, yönetilen diskleri kullanan bir VM 'den yönetilen bir görüntünün nasıl oluşturulacağını gösterir.
 
-Başlamadan önce, Azure PowerShell modülünün en son sürümüne sahip olduğunuzdan emin olun. Sürümü bulmak için PowerShell 'de çalıştırın `Get-Module -ListAvailable Az` . Yükseltmeniz gerekiyorsa, bkz. [PowerShellGet Ile Windows üzerinde Azure PowerShell yüklemesi](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bağlantı `Connect-AzAccount` oluşturmak için öğesini çalıştırın.
+Başlamadan önce, Azure PowerShell modülünün en son sürümüne sahip olduğunuzdan emin olun. Sürümü bulmak için `Get-Module -ListAvailable Az` PowerShell 'de çalıştırın. Yükseltmeniz gerekiyorsa, bkz. [PowerShellGet Ile Windows üzerinde Azure PowerShell yüklemesi](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 
 > [!NOTE]
-> Görüntünüzü bölgesel olarak yedekli depolamada depolamak istiyorsanız, onu [kullanılabilirlik bölgelerini](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturmanız ve bu `-ZoneResilient` parametreyi görüntü yapılandırmasına (`New-AzImageConfig` komut) eklemeniz gerekir.
+> Görüntünüzü bölgesel olarak yedekli depolamada depolamak istiyorsanız, onu [kullanılabilirlik bölgelerini](../../availability-zones/az-overview.md) destekleyen bir bölgede oluşturmanız ve bu `-ZoneResilient` parametreyi görüntü yapılandırmasına ( `New-AzImageConfig` komut) eklemeniz gerekir.
 
 Bir VM görüntüsü oluşturmak için aşağıdaki adımları izleyin:
 
@@ -212,7 +213,7 @@ Aşağıdaki adımları izleyerek genelleştirilmiş bir VM 'nin anlık görünt
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Depolama hesabı kullanan bir VM 'den görüntü oluşturma
 
-Yönetilen diskler kullanmayan bir VM 'den yönetilen bir görüntü oluşturmak için, depolama hesabındaki işletim sistemi VHD 'sinin URI 'sine şu biçimde ihtiyacınız vardır: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer*/*vhdfilename. vhd*. Bu örnekte, VHD, *vhdcontainer*adlı bir kapsayıcıda *mystorageaccount*içinde ve VHD dosya adı, *vhdfilename. vhd*' dir.
+Yönetilen diskler kullanmayan bir VM 'den yönetilen bir görüntü oluşturmak için, depolama hesabındaki işletim sistemi VHD 'sinin URI 'sine şu biçimde ihtiyacınız vardır: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* / *vhdfilename. vhd*. Bu örnekte, VHD, *vhdcontainer*adlı bir kapsayıcıda *mystorageaccount*içinde ve VHD dosya adı, *vhdfilename. vhd*' dir.
 
 
 1.  Bazı değişkenler oluşturun.

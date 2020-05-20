@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585632"
+ms.locfileid: "83653917"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUSıS portalında yeni bir LUO uygulaması oluşturma
 Bir LUSıS uygulaması oluşturmanın birkaç yolu vardır. LUIS portalında veya LUıS yazma [API 'leri](developer-reference-resource.md)aracılığıyla bir LUIS uygulaması oluşturabilirsiniz.
@@ -45,10 +45,10 @@ Yazma API 'Leriyle birkaç yolla yeni bir uygulama oluşturabilirsiniz:
 
 ## <a name="create-new-app-in-luis"></a>LUSıS 'de yeni uygulama oluşturma
 
-1. **Uygulamalarım** sayfasında aboneliğinizi seçin ve kaynağı yazıp **+ Oluştur**' a tıklayın. Ücretsiz deneme anahtarı kullanıyorsanız, [yazma kaynağı oluşturmayı](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)öğrenin.
+1. **Uygulamalarım** sayfasında **aboneliğinizi**seçin ve **kaynağı** yazıp **+ Oluştur**' a tıklayın. Ücretsiz deneme anahtarı kullanıyorsanız, [yazma kaynağı oluşturmayı](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)öğrenin.
 
-    ![LUIS uygulamalarının listesi](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![LUIS uygulamalarının listesi](./media/create-app-in-portal.png)
 
 1. İletişim kutusuna uygulamanızın adını (gibi) girin `Pizza Tutorial` .
 
@@ -64,7 +64,7 @@ Yazma API 'Leriyle birkaç yolla yeni bir uygulama oluşturabilirsiniz:
     > [!div class="mx-imgBorder"]
     > ![Hiçbir örnek olmadan oluşturulan amaç listesi.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>Diğer eylemler kullanılabilir
+## <a name="other-actions-available-on-my-apps-page"></a>Uygulamalarım sayfasında kullanılabilir diğer eylemler
 
 Bağlam araç çubuğu diğer eylemleri sağlar:
 

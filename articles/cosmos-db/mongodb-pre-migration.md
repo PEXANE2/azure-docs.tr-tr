@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: 89cd1de3658c16fccdb70567641a68f5c1575507
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791757"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647284"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB 'den Azure Cosmos DB MongoDB için API 'sine veri geçişleri için geçiş öncesi adımlar
 
@@ -63,7 +63,7 @@ Aşağıdakiler, gerekli RUs sayısını etkileyen önemli faktörlerdir:
 
 - **Sorgu desenleri**: sorgunun karmaşıklığı, sorgu tarafından kaç istek biriminin tüketildiğini etkiler. 
 
-Sorguların maliyetini anlamanın en iyi yolu, Azure Cosmos DB örnek verileri kullanmak ve tüketilen ru sayısını çıkarmak için `getLastRequestStastistics` komut kullanarak [MongoDB kabuğundan örnek sorgular çalıştırmektir](connect-mongodb-account.md) :
+Sorguların maliyetini anlamanın en iyi yolu, Azure Cosmos DB örnek verileri kullanmak ve tüketilen ru sayısını çıkarmak için komut kullanarak [MongoDB kabuğundan örnek sorgular çalıştırmektir](connect-mongodb-account.md) `getLastRequestStastistics` :
 
 `db.runCommand({getLastRequestStatistics: 1})`
 
@@ -89,4 +89,4 @@ Varsayılan olarak Azure Cosmos DB, ekli tüm verilerde otomatik dizin oluşturm
 * [Azure Cosmos DB'de bölümleme](partition-data.md)
 * [Azure Cosmos DB genel dağıtım](distribute-data-globally.md)
 * [Azure Cosmos DB’de dizin oluşturma](index-overview.md)
-* [Azure Cosmos DB istek birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)

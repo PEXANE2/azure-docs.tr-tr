@@ -5,16 +5,17 @@ description: Verileri dönüştürmek için Azure Machine Learning tasarımcıs�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455800"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644463"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısında Python kodu yürütme
 
@@ -47,7 +48,7 @@ Bu makalede, **otomobil fiyat verileri (ham)** örnek veri kümesi kullanılmı�
     ![Veri kümelerini bağlama](media/how-to-designer-python/connect-dataset.png)
         
 
-1. Kullandığınız giriş bağlantı noktasını bir yere göz atın. Tasarımcı, sol giriş bağlantı noktasını değişkenine `dataset1` ve ortadaki giriş bağlantı noktasını öğesine `dataset2`atar. 
+1. Kullandığınız giriş bağlantı noktasını bir yere göz atın. Tasarımcı, sol giriş bağlantı noktasını değişkenine `dataset1` ve ortadaki giriş bağlantı noktasını öğesine atar `dataset2` . 
 
 Doğrudan **Python betik** modülünde veri oluşturabileceğiniz veya içeri aktarabileceğinden, giriş modülleri isteğe bağlıdır.
 
@@ -74,7 +75,7 @@ Bu örnekte, **her horseüs için dolar**, yeni bir sütun oluşturmak için, ot
     
     ![Python işlem hattını yürütme](media/how-to-designer-python/execute-python-pipeline.png)
 
-    Giriş noktası betiği işlevi `azureml_main`içermelidir. **Python betik modülünün yürütülmesi** için iki giriş bağlantı noktası ile eşlenen iki işlev parametresi vardır.
+    Giriş noktası betiği işlevi içermelidir `azureml_main` . **Python betik modülünün yürütülmesi** için iki giriş bağlantı noktası ile eşlenen iki işlev parametresi vardır.
 
     Dönüş değeri bir Pandas Dataframe olmalıdır. Modül çıkışları olarak en fazla iki veri çerçevesine döndürebilirsiniz.
     

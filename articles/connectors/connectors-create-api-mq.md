@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
-ms.reviewer: valthom, logicappspm
+ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410190"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652473"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps bir IBM MQ sunucusuna bağlanma
 
@@ -33,8 +33,9 @@ Resmi olarak desteklenen IBM WebSphere MQ sürümleri aşağıda verilmiştir:
   * MQ 7,5
   * MQ 8,0
   * MQ 9,0
+  * MQ 9,1
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yükleyebilirsiniz. Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ bağlayıcısının çalışması için .NET Framework 4,6 yüklü olmalıdır.
 
@@ -88,10 +89,10 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
 
   1. Şirket içi veri ağ geçidi hizmetinin çalıştığı bilgisayarda, Başlat menüsünü açın, **Kullanıcı sertifikalarını Yönet**' i bulun ve seçin.
 
-  1. Windows Sertifika Yöneticisi aracı açıldıktan sonra, **Sertifikalar-Yerel bilgisayar** >  **Güvenilen kök sertifika yetkilileri** klasörüne gidin ve sertifikayı yükler.
+  1. Windows Sertifika Yöneticisi aracı açıldıktan sonra, **Sertifikalar-Yerel bilgisayar**  >   **Güvenilen kök sertifika yetkilileri** klasörüne gidin ve sertifikayı yükler.
 
      > [!IMPORTANT]
-     > Sertifikayı **Sertifikalar-Yerel bilgisayar** > **Güvenilen kök sertifika yetkilileri** deposuna yüklediğinizden emin olun.
+     > Sertifikayı **Sertifikalar-Yerel bilgisayar**  >  **Güvenilen kök sertifika yetkilileri** deposuna yüklediğinizden emin olun.
 
 * MQ sunucusu, SSL bağlantıları için kullanmak istediğiniz şifre belirtimini tanımlamanızı gerektirir. Ancak, .NET 'teki SsLStream, şifre belirtimlerinin sırasını belirtmenize izin vermez. Bu sınırlamaya geçici bir çözüm için, MQ sunucu yapılandırmanızı, bağlayıcının SSL anlaşmasıyla gönderdiği paketteki ilk şifre belirtimiyle eşleşecek şekilde değiştirebilirsiniz.
 
@@ -101,7 +102,7 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
 
 1. Mantıksal uygulamanızda, tetikleyici veya başka bir eylem altında **yeni adım**' ı seçin.
 
-1. Arama kutusuna girin `mq`ve **iletiyi görüntüle** eylemini seçin.
+1. Arama kutusuna girin `mq` ve **iletiyi görüntüle** eylemini seçin.
 
    !["İletiye gözatıp" eylemini seçin](media/connectors-create-api-mq/browse-message.png)
 
@@ -117,7 +118,7 @@ Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu
    | **Aş** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
    |||
 
-   Örneğin:
+   Örnek:
 
    !["İletiye gözatamıyorum" eylemi için Özellikler](media/connectors-create-api-mq/browse-message-properties.png)
 

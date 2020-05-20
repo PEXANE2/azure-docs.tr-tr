@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372100"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653652"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi Soru-Cevap Oluşturma
 
@@ -37,7 +37,7 @@ Soru-Cevap Oluşturma hizmeti Azure Search hizmetinden CMK kullanır. CMKs 'i et
 
    ![Şifreleme ayarlarını görüntüle](../media/cognitive-services-encryption/qna-encryption-1.png)
 
-2. Bir Soru-Cevap Oluşturma kaynağı oluşturduğunuzda, otomatik olarak bir Azure Search örneğiyle ilişkilendirilir. Bu, CMK ile kullanılamaz. CMK 'yi kullanmak için, adım 1 ' de oluşturulan yeni oluşturulan Azure Search örneğini ilişkilendirmeniz gerekir. Özellikle, Soru-Cevap Oluşturma kaynağınız içinde `AzureSearchAdminKey` ve `AzureSearchName` ' ı güncelleştirmeniz gerekir.
+2. Bir Soru-Cevap Oluşturma kaynağı oluşturduğunuzda, otomatik olarak bir Azure Search örneğiyle ilişkilendirilir. Bu, CMK ile kullanılamaz. CMK 'yi kullanmak için, adım 1 ' de oluşturulan yeni oluşturulan Azure Search örneğini ilişkilendirmeniz gerekir. Özellikle, `AzureSearchAdminKey` soru-cevap oluşturma kaynağınız içinde ve ' ı güncelleştirmeniz gerekir `AzureSearchName` .
 
    ![Şifreleme ayarlarını görüntüle](../media/cognitive-services-encryption/qna-encryption-2.png)
 
@@ -52,6 +52,11 @@ Soru-Cevap Oluşturma hizmeti Azure Search hizmetinden CMK kullanır. CMKs 'i et
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
 Müşteri tarafından yönetilen anahtarlar tüm Azure Search bölgelerde kullanılabilir.
+
+## <a name="encryption-of-data-in-transit"></a>Yoldaki verilerin şifrelenmesi
+
+Soru-Cevap Oluşturma Portal kullanıcının tarayıcısında çalışır. Her eylem, ilgili bilişsel hizmet API 'sine doğrudan çağrı tetikler. Bu nedenle Soru-Cevap Oluşturma iletim verileri için uyumludur.
+Ancak, Soru-Cevap Oluşturma Portal hizmeti Batı ABD 'de barındırıldığından, bu, ABD dışı müşteriler için de ideal değildir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

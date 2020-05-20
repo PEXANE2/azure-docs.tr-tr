@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 954562f3f88276b5aef7dbd4e2237d180a4c2e40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585666"
+ms.locfileid: "83653935"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
 
@@ -57,7 +57,7 @@ Uygulama, **Manage**  ->  **[Azure kaynaklarını](luis-how-to-azure-subscriptio
 Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
 
 * Yaklaşım analizi
-* Yazım denetimi-yalnızca v2 tahmin uç noktası
+* [Yazım denetimi](luis-tutorial-bing-spellcheck.md) -yalnızca v2 tahmin uç noktası
 * Konuşma primi
 
 Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir.
@@ -78,7 +78,7 @@ Bir Metin Analizi anahtarı sağlamanız gerekmez ve Azure hesabınızda bu hizm
 
 Yaklaşım verileri, 1 ile 0 arasında pozitif (1 ' e yakın) veya negatif (0 ' a yakın) verilerin yaklaşımını belirten bir puandır. , Ve ' nin yaklaşım etiketi `positive` `neutral` `negative` desteklenen kültür başına. Şu anda yalnızca Ingilizce yaklaşım etiketlerini destekler.
 
-Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-concept-data-extraction.md#sentiment-analysis)
+Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi için bkz. yaklaşım [Analizi](luis-reference-prebuilt-sentiment.md)
 
 ## <a name="spelling-correction"></a>Yazım denetimi düzeltmesi
 

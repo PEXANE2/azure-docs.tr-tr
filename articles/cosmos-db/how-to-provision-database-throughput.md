@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0ba86d6955805fc97743a1a51aa586b179d82235
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869875"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655332"
 ---
-# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında üretilen iş sağlama
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında standart (el ile) aktarım hızı sağlama
 
-Bu makalede, Azure Cosmos DB bir veritabanında işleme sağlama açıklanmaktadır. Tek bir [kapsayıcıya](how-to-provision-container-throughput.md) aktarım hızı sağlayabilir veya aktarım hızını veritabanına sağlayıp içindeki kapsayıcılar arasında paylaştırabilirsiniz. Kapsayıcı düzeyi ve veritabanı düzeyi işleme ne zaman kullanacağınızı öğrenmek için bkz. [kapsayıcılar ve veritabanlarında üretilen iş sağlama Için kullanım örnekleri](set-throughput.md) makalesi. Azure portal veya Azure Cosmos DB SDK 'larını kullanarak veritabanı düzeyinde aktarım hızı sağlayabilirsiniz.
+Bu makalede, Azure Cosmos DB bir veritabanında standart (el ile) işleme sağlama açıklanır. Tek bir [kapsayıcıya](how-to-provision-container-throughput.md) aktarım hızı sağlayabilir veya aktarım hızını veritabanına sağlayıp içindeki kapsayıcılar arasında paylaştırabilirsiniz. Kapsayıcı düzeyi ve veritabanı düzeyi işleme ne zaman kullanacağınızı öğrenmek için bkz. [kapsayıcılar ve veritabanlarında üretilen iş sağlama Için kullanım örnekleri](set-throughput.md) makalesi. Azure portal veya Azure Cosmos DB SDK 'larını kullanarak veritabanı düzeyinde aktarım hızı sağlayabilirsiniz.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Azure portalını kullanarak aktarım hızı sağlama
 
-### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API
+### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API'si
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
@@ -84,5 +84,6 @@ Azure Cosmos DB ' de sağlanan aktarım hızı hakkında bilgi edinmek için aş
 
 * [Sağlanan aktarım hızını küresel olarak ölçeklendirme](scaling-throughput.md)
 * [Kapsayıcı ve veritabanlarına aktarım hızı sağlama](set-throughput.md)
-* [Kapsayıcı için aktarım hızı sağlama](how-to-provision-container-throughput.md)
+* [Bir kapsayıcı için standart (el ile) üretilen iş sağlama](how-to-provision-container-throughput.md)
+* [Bir kapsayıcı için otomatik ölçeklendirme üretilen işi sağlama](how-to-provision-autoscale-throughput.md)
 * [Azure Cosmos DB'deki istek birimleri ve aktarım hızı](request-units.md)

@@ -5,16 +5,17 @@ description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546748"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644563"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Verilerinizi Azure Machine Learning tasarımcı 'ya aktarma (Önizleme)
 
@@ -35,13 +36,13 @@ Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi o
 
 1. Kaydetmek istediğiniz verilerin çıkışı olan modülü seçin.
 
-1. Özellikler bölmesinde, **çıktılar** > **kayıt veri kümesi**' ni seçin.
+1. Özellikler bölmesinde, **çıktılar**  >  **kayıt veri kümesi**' ni seçin.
 
     ![Register DataSet seçeneğine nasıl gidebileceğiniz gösteren ekran görüntüsü](media/how-to-designer-import-data/register-dataset-designer.png)
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma
 
-Kayıtlı veri kümeleriniz **, veri kümeleri veri kümeleri altında** > bulunan modül paletinde**bulunabilir.** Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını paletteki diğer modüllere bağlayın.
+Kayıtlı veri kümeleriniz **, veri kümeleri veri kümeleri altında bulunan**modül paletinde bulunabilir  >  **My Datasets**. Bir veri kümesini kullanmak için sürükleyin ve ardışık düzen tuvaline bırakın. Ardından, veri kümesinin çıkış bağlantı noktasını paletteki diğer modüllere bağlayın.
 
 ![Tasarımcı paletindeki kaydedilen veri kümelerinin konumunu gösteren ekran görüntüsü](media/how-to-designer-import-data/use-datasets-designer.png)
 

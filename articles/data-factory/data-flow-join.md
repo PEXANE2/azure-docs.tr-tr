@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/02/2020
-ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233439"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683381"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürmeyi Birleştir
 
@@ -48,9 +48,9 @@ Tam dış birleşim, eşleşmeyen sütunlarda NULL değerler ile her iki tarafta
 
 Çapraz birle, iki akışın çapraz çarpımını bir koşula göre çıktı. Eşitlik olmayan bir koşul kullanıyorsanız, çapraz ekleme koşulunuz olarak bir özel ifade belirtin. Çıkış akışı, JOIN koşulunu karşılayan tüm satırlar olacaktır.
 
-Bu birleştirme türünü, eşlenmemiş birleşimler ve ```OR``` koşullar için kullanabilirsiniz.
+Bu birleştirme türünü, eşlenmemiş birleşimler ve koşullar için kullanabilirsiniz ```OR``` .
 
-Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapay bir anahtar oluşturmak için, birleştirmenin önüne iki bağımsız akışın her birinde türetilmiş sütun dönüşümünü kullanın. Örneğin, adlı ```SyntheticKey``` her akıştaki türetilmiş sütunda yeni bir sütun oluşturun ve eşit olarak ```1```ayarlayın. Ardından özel ```a.SyntheticKey == b.SyntheticKey``` JOIN ifadeniz olarak kullanın.
+Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapay bir anahtar oluşturmak için, birleştirmenin önüne iki bağımsız akışın her birinde türetilmiş sütun dönüşümünü kullanın. Örneğin, adlı her akıştaki türetilmiş sütunda yeni bir sütun oluşturun ```SyntheticKey``` ve eşit olarak ayarlayın ```1``` . Ardından ```a.SyntheticKey == b.SyntheticKey``` özel JOIN ifadeniz olarak kullanın.
 
 > [!NOTE]
 > Özel bir çapraz birleşimde sol ve sağ İlişkinizdeki her bir taraftan en az bir sütun eklediğinizden emin olun. Her bir taraftaki sütunlar yerine statik değerlerle çapraz birleştirmeleri yürütmek, veri akışlarınızın düzgün bir şekilde gerçekleştirmesini sağlamak için tüm veri kümesinin tam taramasına neden olur.
@@ -61,7 +61,13 @@ Açıkça tam bir Kartezyen ürün oluşturmak isterseniz, eşleştirilecek yapa
 1. **JOIN türünü** seçin
 1. JOIN Koşulunuz için hangi anahtar sütunlarını eşlemek istediğinizi seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
 
-![Dönüşümü Birleştir](media/data-flow/join.png "Birleştir")
+![Dönüşümü Birleştir](media/data-flow/join.png "Katılın")
+
+### <a name="non-equi-joins"></a>Eşit olmayan birleşimler
+
+JOIN koşullarınıza eşit (! =) veya büyüktür (>) gibi koşullu bir işleç kullanmak için iki sütun arasındaki operatör açılan listesini değiştirin. Eşitlenmiş olmayan birleşimler, **en iyileştirme** sekmesinde **sabit** yayınlama kullanılarak yayınlanamayacak iki akışdan en az birini gerektirir.
+
+![Eşlenmemiş birleşim](media/data-flow/non-equi-join.png "Eşlenmemiş birleşim")
 
 ## <a name="optimizing-join-performance"></a>JOIN performansını iyileştirme
 
@@ -85,7 +91,7 @@ Hata ayıklama modundaki veri önizlemesiyle JOIN dönüştürmelerinin test edi
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Söz dizimi
 
 ```
 <leftStream>, <rightStream>
@@ -98,7 +104,7 @@ Hata ayıklama modundaki veri önizlemesiyle JOIN dönüştürmelerinin test edi
 
 ### <a name="inner-join-example"></a>İç birleşim örneği
 
-Aşağıdaki örnek, sol akış `JoinMatchedData` `TripData` ve sağ Akış `TripFare`alan adlı bir JOIN dönüştürmedir.  JOIN `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` koşulu, her akıştaki `hack_license`, `medallion`, `vendor_id`, ve `pickup_datetime` sütunlarının eşleşmesi durumunda true döndüren ifadedir. `joinType` . `'inner'` Yayını yalnızca sol akışta etkinleştiriyoruz, bu yüzden `broadcast` değer `'left'`vardır.
+Aşağıdaki örnek, `JoinMatchedData` sol akış `TripData` ve sağ Akış alan adlı bir JOIN dönüştürmedir `TripFare` .  JOIN koşulu, `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` `hack_license` `medallion` her akıştaki,, `vendor_id` , ve `pickup_datetime` sütunlarının eşleşmesi durumunda true döndüren ifadedir. `joinType` `'inner'` . Yayını yalnızca sol akışta etkinleştiriyoruz, bu yüzden `broadcast` değer vardır `'left'` .
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
@@ -120,7 +126,7 @@ TripData, TripFare
 
 ### <a name="custom-cross-join-example"></a>Özel çapraz ekleme örneği
 
-Aşağıdaki örnek, sol akış `JoiningColumns` `LeftStream` ve sağ Akış `RightStream`alan adlı bir JOIN dönüştürmedir. Bu dönüşüm iki akış alır ve sütunun `leftstreamcolumn` sütundan `rightstreamcolumn`büyük olduğu tüm satırları birleştirir. `joinType` . `cross` Yayın etkin `broadcast` değil değeri `'none'`.
+Aşağıdaki örnek, `JoiningColumns` sol akış `LeftStream` ve sağ Akış alan adlı bir JOIN dönüştürmedir `RightStream` . Bu dönüşüm iki akış alır ve sütunun sütundan büyük olduğu tüm satırları birleştirir `leftstreamcolumn` `rightstreamcolumn` . `joinType` `cross` . Yayın etkin değil `broadcast` değeri `'none'` .
 
 Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 

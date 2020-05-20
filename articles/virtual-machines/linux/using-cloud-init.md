@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/18/2019
 ms.author: danis
-ms.openlocfilehash: 1f0395956fa6977be5d1d6f4f4faf06b84c094d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c591efeedc87926a0ed7b42de6c3267721cebab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79465048"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657433"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init yapılandırması, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalıştırılır.  
@@ -30,7 +30,7 @@ VM sağlama, Azure 'un konak adı, Kullanıcı adı, parola vb. gibi sanal makin
 Azure, [bulut-init](https://cloudinit.readthedocs.io)ve [Azure Linux Aracısı (wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)olmak üzere iki sağlama aracısını destekler.
 
 ## <a name="cloud-init-overview"></a>Cloud-init genel bakış
-[Cloud-init](https://cloudinit.readthedocs.io) , Linux VM 'yi ilk kez önyüklediğinde bir Linux sanal makinesini özelleştirmek için yaygın olarak kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. İlk önyükleme işlemi sırasında Cloud-init çağrıldığından, yapılandırmanızı uygulamak için başka bir adım veya gerekli aracı yoktur.  `#cloud-config` Dosyalarınızı veya diğer girdileri doğru şekilde biçimlendirme hakkında daha fazla bilgi için bkz. [Cloud-init belge sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`dosyalar, Base64 olarak kodlanmış metin dosyalarıdır.
+[Cloud-init](https://cloudinit.readthedocs.io) , Linux VM 'yi ilk kez önyüklediğinde bir Linux sanal makinesini özelleştirmek için yaygın olarak kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. İlk önyükleme işlemi sırasında Cloud-init çağrıldığından, yapılandırmanızı uygulamak için başka bir adım veya gerekli aracı yoktur.  Dosyalarınızı veya diğer girdileri doğru şekilde biçimlendirme hakkında daha fazla bilgi için `#cloud-config` bkz. [Cloud-init belge sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`dosyalar, Base64 olarak kodlanmış metin dosyalarıdır.
 
 Cloud-init Ayrıca dağıtımlar arasında da çalışmaktadır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz ayırıcı için yerel paket yönetim aracını otomatik olarak kullanır.
 
@@ -52,19 +52,22 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet | Evet-paket sürümünden destek: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu adım 2020 ' nin kaldırılmasına, bildirimin verildiğine dikkat edin. | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7-HAM | yok| 2020 Nisan sonunu tamamlamaya yönelik görüntü yok| Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7-LVM | yok| Nisan sonunu tamamlamaya yönelik resim olmayan güncelleştirme yok| Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL |7,7 | yok| Nisan sonunu tamamlamaya yönelik resim olmayan güncelleştirme yok | Evet-paket sürümünden destek: *18.5 -3. EL7*|
-|RedHat 7,7 |RHEL-byos | RHEL-lvm77 | yok|Nisan sonunu tamamlamaya yönelik resim olmayan güncelleştirme yok  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' den Itibaren kaldırılır) | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-LVM | yok| Mayıs işleminin bitmesini tamamlamaya yönelik görüntü yok| Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7,7 | yok| Mayıs işleminin bitmesini tamamlamaya yönelik görüntü yok | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 7,7 (Gen1) |RHEL-byos | RHEL-lvm77 | yok|Nisan sonunu tamamlamaya yönelik resim olmayan güncelleştirme yok  | Evet-paket sürümünden destek: *18.5 -3. EL7*|
+|RedHat 8,1 (Gen1) |RHEL |8,1-CI |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |7.7.2019081601 | Evet (Bu bir önizleme görüntüsüdür ve tüm RHEL 8,1 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Hayır, tam destek için ETA 2020 Haziran |
+
+RedHat: RHEL 7,8 ve 8,2 (gen1 ve Gen2) görüntüleri Cloud-init kullanılarak sağlanır.
 
 ### <a name="centos"></a>CentOS
 
 | Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Bu bir önizleme görüntüsüdür ve tüm CentOS 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu adım 2020 ' nin kaldırılmasına ve bu bildirimin verildiğine dikkat edin. | Evet-paket sürümünden destek: *18.5 -3. EL7. CentOS*|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Evet (Bu bir önizleme görüntüsüdür ve tüm CentOS 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu işlem 2020 ' de kaldırılır) | Evet-paket sürümünden destek: *18.5 -3. EL7. CentOS*|
 
-* Cloud-init etkin olacak CentOS 7,7 görüntüleri burada Mart 2020 ' de güncelleştirilecektir 
+* Cloud-init etkin olacak CentOS 7,7 görüntüleri, Haziran 2020 ' de burada güncelleştirilir 
 
 ### <a name="oracle"></a>Oracle
 
@@ -72,8 +75,15 @@ Cloud-init ' i Azure 'da, desteklenen Linux 'un Azure 'da, paket desteğinin ve 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| Önizleme resmi (Bu bir önizleme görüntüsüdür ve tüm Oracle 7,7 görüntüleri Cloud-init ' i destekledikten sonra, bu adım 2020 ' den kaldırılacağına dikkat edilecek) | Hayır, önizleme aşamasında paket: *18.5-3.0.1. EL7*
 
-### <a name="debian--suse-sles"></a>& SuSE SLES
-Şu anda Önizleme desteği için çalışıyoruz, Şubat ve Mart 2020 ' de güncelleştirmeler beklenir.
+### <a name="suse-sles"></a>SuSE SLES
+| Yayımcı/sürüm | Sunduğu | SKU | Sürüm | görüntü bulutu-init Ready | Azure 'da Cloud-init paketi desteği|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-temel |Cloud-init-Önizleme| Ayrıntılar için bkz. [SUSE Cloud-init blogu](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) | Hayır, önizleme aşamasında. |
+|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-temel |Gen2-Cloud-init-Önizleme| Ayrıntılar için bkz. [SUSE Cloud-init blogu](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) | Hayır, önizleme aşamasında. |
+
+
+### <a name="debian"></a>Debian
+Şu anda Önizleme desteği için çalışıyoruz, Haziran 2020 ' de güncelleştirmeler bekliyor.
 
 Şu anda Azure Stack, Cloud-init özellikli görüntülerin sağlanması destekleyecektir.
 
@@ -85,7 +95,7 @@ Mevcut Cloud-init müşterilerinin geçerli Cloud-init betiklerini kullanmasına
 
 Cloud-init, Azure uzantılarını işleyemez, bu nedenle, uzantıları işlemek için görüntüde hala wala gereklidir, ancak bulut-init tarafından sağlanmaya dönüştürülmekte olan, desteklenen Linux Distro 'lara görüntüleri için, wala yüklenir ve doğru şekilde ayarlanır.
 
-Bir VM oluştururken, sağlama zamanında Azure CLı `--custom-data` anahtarını eklemezseniz, Cloud-INIT veya wala VM 'yi sağlamak için gereken en düşük VM sağlama parametrelerini alır ve varsayılan olarak dağıtımı tamamlar.  `--custom-data` Anahtar ile Cloud-init yapılandırmasına başvuru YAPARSANıZ, VM önyüklendiğinde özel verilerinizde bulunan her şey Cloud-init ile kullanılabilir.
+Bir VM oluştururken, sağlama zamanında Azure CLı anahtarını eklemezseniz, `--custom-data` Cloud-init veya WALA VM 'yi sağlamak için gereken en düşük VM sağlama parametrelerini alır ve varsayılan olarak dağıtımı tamamlar.  Anahtar ile Cloud-init yapılandırmasına başvuru yaparsanız `--custom-data` , VM önyüklendiğinde özel verilerinizde bulunan her şey Cloud-init ile kullanılabilir.
 
 VM 'lere uygulanan Cloud init yapılandırmalarının zaman kısıtlamaları yoktur ve zaman aşımına uğraarak dağıtımın başarısız olmasına neden olmaz. Bu, WALA için geçerli değildir, WALA varsayılanlarını özel verileri işleyecek şekilde değiştirirseniz, bu, VM oluşturma süresi olan 40dakikalık toplam VM sağlama süresi süresini aşamaz.
 
@@ -107,7 +117,7 @@ package_upgrade: true
 packages:
   - httpd
 ```
-Dosyadan `ctrl-X` çıkmak için tuşuna basın, dosyayı `y` kaydetmek için yazın ve çıkışta dosya `enter` adını onaylamak için tuşuna basın.
+Dosyadan çıkmak için tuşuna basın `ctrl-X` , `y` dosyayı kaydetmek için yazın ve `enter` Çıkışta dosya adını onaylamak için tuşuna basın.
 
 Son adım [az VM Create](/cli/azure/vm) komutuyla bir VM oluşturmaktır. 
 
@@ -125,7 +135,7 @@ az vm create \
 VM oluşturulduğunda Azure CLı, dağıtımınıza özgü bilgileri gösterir. `publicIpAddress` değerini not edin. Bu adres, VM’ye erişmek için kullanılır.  VM 'nin oluşturulması, yüklenecek paketlerin ve başlatılacak uygulamayı biraz zaman alır. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. VM 'de SSH oluşturabilir ve Cloud-init günlüklerini görüntülemek için sorun giderme bölümünde özetlenen adımları kullanabilirsiniz. 
 
 ## <a name="troubleshooting-cloud-init"></a>Cloud-init sorunlarını giderme
-VM sağlandıktan sonra Cloud-init, sanal makineyi yapılandırmak için ' de `--custom-data` tanımlanan tüm modüller ve betiklerle çalışır.  Yapılandırmadan herhangi bir hata veya türlü sorunu gidermeniz gerekiyorsa, **/var/log/Cloud-init.log**dosyasında bulunan Cloud-`disk_setup` init `runcmd` günlüğünde modül adını (veya örneğin) aramanız gerekir.
+VM sağlandıktan sonra Cloud-init, `--custom-data` sanal makineyi yapılandırmak için ' de tanımlanan tüm modüller ve betiklerle çalışır.  Yapılandırmadan herhangi bir hata veya türlü sorunu gidermeniz gerekiyorsa, `disk_setup` `runcmd` **/var/log/Cloud-init.log**dosyasında bulunan Cloud-init günlüğünde modül adını (veya örneğin) aramanız gerekir.
 
 > [!NOTE]
 > Her modül hatası önemli bir Cloud-init genel yapılandırma hatasına neden olmaz. Örneğin, `runcmd` modülün kullanılması, komut dosyası başarısız olursa, runcmd modülü yürütüldüğü için Cloud-init hala sağlama başarılı olur.

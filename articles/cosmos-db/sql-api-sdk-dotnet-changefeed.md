@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB .NET değişiklik akışı Işlemcisi API 'SI, SDK sürüm notları
 description: Sürüm tarihleri, kullanımdan kaldırma tarihleri ve .NET değişiklik akışı Işlemci SDK 'sının her sürümü arasında yapılan değişiklikler dahil olmak üzere değişiklik akışı Işlemcisi API 'SI ve SDK 'Sı hakkında bilgi edinin.
-author: ealsur
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/30/2019
-ms.author: maquaran
-ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: e39cef33d8d402b6e04c6b9952cae21848e02424
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619435"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660417"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
 
@@ -23,8 +23,9 @@ ms.locfileid: "80619435"
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Zaman uyumsuz Java SDK v2](sql-api-sdk-async-java.md)
+> * [Zaman uyumlu Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -36,7 +37,7 @@ ms.locfileid: "80619435"
 |---|---|
 |**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API belgeleri**|[Akış Işlemcisi kitaplık API 'SI başvuru belgelerini değiştirme](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**başlarken**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
+|**Kullanmaya başlayın**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
 |**Desteklenen geçerli çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
@@ -47,22 +48,22 @@ ms.locfileid: "80619435"
 ### <a name="v2-builds"></a>v2 derlemeleri
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Yeni bir yöntem `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` ve karşılık gelen ortak arabirim `ICheckpointPartitionProcessorFactory`eklendi. Bu, `IPartitionProcessor` arabiriminin bir uygulamasının yerleşik checkişaretleme mekanizması kullanmasına izin verir. Yeni fabrika, `IPartitionProcessorFactory` `Create` yöntemi için de aynı zamanda `ILeaseCheckpointer` parametresini de alır.
-* Aynı `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder` örnek için ya `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`da iki yöntemden yalnızca biri kullanılabilir.
+* Yeni bir yöntem `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` ve karşılık gelen ortak arabirim eklendi `ICheckpointPartitionProcessorFactory` . Bu, arabiriminin bir uygulamasının `IPartitionProcessor` yerleşik checkişaretleme mekanizması kullanmasına izin verir. Yeni fabrika, `IPartitionProcessorFactory` `Create` yöntemi için de aynı zamanda parametresini de alır `ILeaseCheckpointer` .
+* `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory`Aynı örnek için ya da iki yöntemden yalnızca biri `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` kullanılabilir `ChangeFeedProcessorBuilder` .
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Kararlılık ve tanılama geliştirmeleri:
-  * Okuma değişikliği akışını algılamaya kadar uzun süren destek eklendi. `ChangeFeedProcessorOptions.ChangeFeedTimeout` Özelliği tarafından belirtilen değerden daha uzun sürerse, aşağıdaki adımlar alınır:
+  * Okuma değişikliği akışını algılamaya kadar uzun süren destek eklendi. Özelliği tarafından belirtilen değerden daha uzun sürerse `ChangeFeedProcessorOptions.ChangeFeedTimeout` , aşağıdaki adımlar alınır:
     * Sorunlu bölümdeki değişiklik akışını okuma işlemi iptal edildi.
     * Değişiklik akışı işlemcisi örneği, sorunlu kiralamanın sahipliğini bırakır. Bırakılan kira, aynı veya farklı değişiklik akışı işlemcisi örneği tarafından yapılacak bir sonraki kira alma adımı sırasında alınacaktır. Bu şekilde, değişiklik akışını okuma baştan başlayacaktır.
     * Durum izleyicisine bir sorun bildirilir. Varsayılan Hemi izleyici, bildirilen tüm sorunları izleme günlüğüne gönderir.
-  * Yeni bir ortak özellik eklendi: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Bu özelliğin varsayılan değeri 10 dakikadır.
-  * Yeni bir genel Enum değeri eklendi: `Monitoring.MonitoredOperation.ReadChangeFeed`. Değeri `HealthMonitoringRecord.Operation` olarak `Monitoring.MonitoredOperation.ReadChangeFeed`ayarlandığında, sistem durumu sorununun değişiklik akışını okumayla ilgili olduğunu gösterir.
+  * Yeni bir ortak özellik eklendi: `ChangeFeedProcessorOptions.ChangeFeedTimeout` . Bu özelliğin varsayılan değeri 10 dakikadır.
+  * Yeni bir genel Enum değeri eklendi: `Monitoring.MonitoredOperation.ReadChangeFeed` . Değeri `HealthMonitoringRecord.Operation` olarak ayarlandığında `Monitoring.MonitoredOperation.ReadChangeFeed` , sistem durumu sorununun değişiklik akışını okumayla ilgili olduğunu gösterir.
 
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
 * Tüm kiralamalar alınırken senaryo için Yük Dengeleme stratejisi, örneğin ağ sorunlarından dolayı kira süresi sonu aralığından daha uzun sürer:
   * Bu senaryoda yük dengeleme algoritması, kiraları süresi dolmak üzere, etkin sahiplerin kira çalmasını sağlamak için kullanılır. Bu, çok sayıda kiralamaların gereksiz şekilde yeniden dengelenmesini tetikleyebilir.
-  * Bu sorun, bu sürümde, sahibin değiştiği süre dolmadan ve bir sonraki yük dengeleme yinelemesine süresinin dolma süresini geri alırken çakışma durumunda yeniden denemeyi önleyerek, bu sürümde giderilmiştir.
+  * Bu sorun, bu sürümde, sahibin değiştiği süre dolmadan ve bir sonraki yük dengeleme yinelemesine süresinin dolma süresini erteleyerek, bu yayında giderilir.
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * Gözlemci özel durumlarının işlenmesi geliştirildi.
@@ -96,7 +97,7 @@ ms.locfileid: "80619435"
 * Küçük tanılama geliştirmeleri.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
-* Yeni API eklendi, görev&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Bu, her bölüm için tahmini çalışma almak üzere kullanılabilir.
+* Yeni API eklendi, görev &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Bu, her bölüm için tahmini çalışma almak üzere kullanılabilir.
 * Microsoft. Azure. DocumentDB SDK 2,0 'yi destekler. Microsoft. Azure. DocumentDB 2,0 veya üstünü gerektirir.
 
 ### <a name="206"></a><a name="2.0.6"/>2.0.6
@@ -158,7 +159,7 @@ ms.locfileid: "80619435"
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1,21 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
-* 2,0 .NET Standard için destek ekler. Paket artık ve `net451` Framework `netstandard2.0` takma adlarını destekler.
+* 2,0 .NET Standard için destek ekler. Paket artık `netstandard2.0` ve `net451` framework takma adlarını destekler.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 ve üzeri sürümleriyle uyumludur.
 * 1.5.1 ve üzeri [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) sürümleriyle uyumludur.
 

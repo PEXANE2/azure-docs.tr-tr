@@ -3,17 +3,17 @@ title: Azure Service Fabric kümesinde sertifikaları yönetme
 description: Yeni sertifikaların nasıl ekleneceğini, sertifikanın nasıl aktarılacağını ve bir Service Fabric kümesinden veya bir kümeden sertifika nasıl kaldırılacağını açıklar.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458358"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658378"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure'da Service Fabric kümesine sertifika ekleme veya kaldırma
 Service Fabric X. 509.440 sertifikalarını nasıl kullandığını ve [küme güvenliği senaryolarını](service-fabric-cluster-security.md)nasıl öğrendiğini öğrenmeniz önerilir. Devam etmeden önce, bir küme sertifikasının ne olduğunu ve ne kullanıldığını anlamalısınız.
 
-Azure hizmet dokuları SDK 'sının varsayılan sertifika yükleme davranışı, son tarihi gelecekte olan tanımlı sertifikayı dağıtmaktır ve kullanır; birincil veya ikincil yapılandırma tanımlarından bağımsız olarak. Klasik davranışa geri dönmek önerilmeyen bir Gelişmiş eylemdir ve `Fabric.Code` yapılandırmanız Içinde "Usesecondaryifdaha yeni" ayar parametre değerinin yanlış olarak ayarlanmasını gerektirir.
+Azure hizmet dokuları SDK 'sının varsayılan sertifika yükleme davranışı, son tarihi gelecekte olan tanımlı sertifikayı dağıtmaktır ve kullanır; birincil veya ikincil yapılandırma tanımlarından bağımsız olarak. Klasik davranışa geri dönmek önerilmeyen bir Gelişmiş eylemdir ve yapılandırmanız içinde "Usesecondaryifdaha yeni" ayar parametre değerinin yanlış olarak ayarlanmasını gerektirir `Fabric.Code` .
 
 Service Fabric, istemci sertifikalarına ek olarak, küme oluşturma sırasında sertifika güvenliğini yapılandırırken, birincil ve ikincil olmak üzere iki küme sertifikası belirtmenize olanak tanır. Oluşturma zamanında ayarlama hakkında ayrıntılar için [Portal aracılığıyla bir Azure kümesi oluşturma](service-fabric-cluster-creation-via-portal.md) veya [Azure Resource Manager aracılığıyla bir Azure kümesi oluşturma](service-fabric-cluster-creation-via-arm.md) bölümüne bakın. Oluşturma zamanında yalnızca bir küme sertifikası belirtirseniz, bu, birincil sertifika olarak kullanılır. Küme oluşturulduktan sonra, ikincil olarak yeni bir sertifika ekleyebilirsiniz.
 
@@ -35,9 +35,7 @@ Kullanılmayan bir küme güvenlik sertifikasını kaldırmak için Güvenlik b�
 
 Amaç, birincil olarak işaretlenmiş sertifikayı kaldırmaktır, sonra otomatik rollover davranışını etkinleştirerek, süresi dolan bir tarihi daha sonra birincil sertifikadan daha sonra dağıtmanız gerekir; otomatik geçiş tamamlandıktan sonra birincil sertifikayı silin.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Kaynak Yöneticisi PowerShell kullanarak ikincil sertifika ekleme
-> [!TIP]
-> Artık [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 'ini kullanarak ikincil sertifika eklemenin daha iyi ve kolay bir yolu vardır. Bu bölümdeki adımların geri kalanını izlemeniz gerekmez.  Ayrıca, [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 'ini kullanırken kümeyi oluşturmak ve dağıtmak için başlangıçta kullanılan şablona ihtiyacınız yoktur.
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Azure Resource Manager kullanarak ikincil sertifika ekleme
 
 Bu adımlarda, Kaynak Yöneticisi nasıl çalıştığını ve bir Kaynak Yöneticisi şablonu kullanarak en az bir Service Fabric kümesini nasıl dağıttığınızı ve kümeyi kullanışlı bir şekilde ayarlamak için kullandığınız şablona sahip olduğunuz varsayılır. Ayrıca, JSON kullanmaya rahat bir şekilde yararlanacağınız varsayılır.
 

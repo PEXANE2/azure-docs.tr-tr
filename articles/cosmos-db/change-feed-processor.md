@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982386"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655311"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB'deki değişiklik akışı işlemcisi
 
@@ -39,7 +39,7 @@ Bu dört öğelerin değişiklik akışı işlemcisi ile birlikte nasıl çalı�
 
 ## <a name="implementing-the-change-feed-processor"></a>Değişiklik akışı işlemcisini uygulama
 
-Giriş noktası her zaman izlenen kapsayıcıdır, çağrı `Container` `GetChangeFeedProcessorBuilder`yaptığınız bir örnekten:
+Giriş noktası her zaman izlenen kapsayıcıdır, `Container` çağrı yaptığınız bir örnekten `GetChangeFeedProcessorBuilder` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -50,16 +50,16 @@ Bir temsilci örneği şöyle olabilir:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Son olarak bu işlemci örneği için `WithInstanceName` ve ile kira durumunun bakımını yapılacak kapsayıcı olan bir ad tanımlarsınız. `WithLeaseContainer`
+Son olarak bu işlemci örneği için `WithInstanceName` ve ile kira durumunun bakımını yapılacak kapsayıcı olan bir ad tanımlarsınız `WithLeaseContainer` .
 
-Çağırmak `Build` size, çağırarak `StartAsync`başlayabilmeniz için kullanabileceğiniz işlemci örneğini sağlar.
+Çağırmak `Build` size, çağırarak başlayabilmeniz için kullanabileceğiniz işlemci örneğini sağlar `StartAsync` .
 
 ## <a name="processing-life-cycle"></a>İşlem yaşam döngüsü
 
 Bir konak örneğinin normal yaşam döngüsü şu şekilde olur:
 
 1. Değişiklik akışını okuyun.
-1. Değişiklik yoksa, önceden tanımlanmış bir süre (Oluşturucu `WithPollInterval` içinde özelleştirilebilir) için uyku moduna geçin ve #1 gidin.
+1. Değişiklik yoksa, önceden tanımlanmış bir süre (Oluşturucu içinde özelleştirilebilir) için uyku moduna `WithPollInterval` geçin ve #1 gidin.
 1. Değişiklikler varsa **temsilciyi temsilciye**gönderin.
 1. Temsilci değişiklikleri **başarıyla**işlemeyi tamamladığında, kira deposunu en son işlenen zaman noktasıyla güncelleştirin ve #1 gidin.
 
@@ -71,15 +71,21 @@ Değişiklik akışı işlemcinizin "takılmış" olarak aynı değişiklik küm
 
 Ek olarak, değişiklik akışını okurken değişiklik akışı işlemci örneklerinizin ilerlemesini izlemek için [akış tahmin aracı](how-to-use-change-feed-estimator.md) ' ı da kullanabilirsiniz. Değişiklik akışı işlemcisinin "takılı" olarak aynı değişiklik kümesini sürekli yeniden denemesinin ne olduğunu izlemeye ek olarak, değişiklik akışı işlemcinizin CPU, bellek ve ağ bant genişliği gibi kullanılabilir kaynaklar nedeniyle gerisinde olup olmadığını da anlayabilirsiniz.
 
+## <a name="deployment-unit"></a>Dağıtım birimi
+
+Tek bir değişiklik akışı işlemcisi dağıtım birimi, aynı `processorName` ve kira kapsayıcı yapılandırmasına sahip bir veya daha fazla örnek içerir. Her birinin değişiklikler için farklı bir iş akışı ve bir veya daha fazla örnek içeren her dağıtım birimi olduğu birçok dağıtım birimi olabilir. 
+
+Örneğin, kapsayıcıda bir değişiklik olduğu zaman bir dış API 'yi tetikleyen bir dağıtım biriminiz olabilir. Başka bir dağıtım birimi, her değişiklik olduğunda verileri gerçek zamanlı olarak taşıyabilir. İzlenen kapsayıcıda bir değişiklik olduğunda, tüm dağıtım birimleriniz bildirilir.
+
 ## <a name="dynamic-scaling"></a>Dinamik ölçeklendirme
 
-Giriş sırasında belirtildiği gibi, değişiklik akışı işlemcisi, işlem akışını otomatik olarak birden çok örneğe dağıtabilir. Değişiklik akışı işlemcisini kullanarak uygulamanızın birden çok örneğini dağıtabilir ve bundan faydalanabilirsiniz, tek önemli gereksinimler şunlardır:
+Daha önce belirtildiği gibi, bir dağıtım birimi içinde bir veya daha fazla örneğe sahip olabilirsiniz. Dağıtım birimi içindeki işlem dağıtımından faydalanmak için tek önemli gereksinimler şunlardır:
 
 1. Tüm örneklerin aynı kira kapsayıcı yapılandırmasına sahip olması gerekir.
-1. Tüm örneklerin aynı iş akışı adına sahip olması gerekir.
-1. Her örneğin farklı bir örnek adı (`WithInstanceName`) olması gerekir.
+1. Tüm örneklerin aynı olması gerekir `processorName` .
+1. Her örneğin farklı bir örnek adı () olması gerekir `WithInstanceName` .
 
-Bu üç koşul geçerliyse, değişiklik akışı işlemcisi, eşit bir dağıtım algoritması kullanarak, tüm çalışan örnekler ve paralel hale getirmek işlem genelindeki kira kapsayıcısındaki tüm kiraları dağıtır. Tek bir kiralamanın belirli bir zamanda yalnızca bir örneğe ait olması, en fazla örnek sayısının kira sayısına eşit olması için.
+Bu üç koşul geçerliyse, değişiklik akışı işlemcisi, eşit bir dağıtım algoritması kullanarak, bu dağıtım birimi ve paralel hale getirmek işlem örneklerinin tüm çalışan örnekleri genelinde kira kapsayıcısındaki tüm kiraları dağıtır. Tek bir kiralamanın belirli bir zamanda yalnızca bir örneğe ait olması, en fazla örnek sayısının kira sayısına eşit olması için.
 
 Örnek sayısı büyüyebilir ve küçülebilir ve değişiklik akışı işlemcisi, uygun şekilde yeniden dağıtarak yükü dinamik olarak ayarlar.
 
@@ -100,7 +106,7 @@ Cosmos kapsayıcılarının içindeki ve içindeki veri hareketleri her zaman RU
 Şimdi aşağıdaki makalelerde akış işlemcisini Değiştir hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Değişiklik akışına genel bakış](change-feed.md)
-* [Akış çekme modelini Değiştir](change-feed-pull-model.md)
+* [Değişiklik akışı çekme modeli](change-feed-pull-model.md)
 * [Değişiklik akışı işlemci kitaplığından geçiş yapma](how-to-migrate-from-change-feed-library.md)
 * [Değişiklik akışı tahmin aracını kullanma](how-to-use-change-feed-estimator.md)
 * [Değişiklik akışı işlemcisi başlangıç zamanı](how-to-configure-change-feed-start-time.md)

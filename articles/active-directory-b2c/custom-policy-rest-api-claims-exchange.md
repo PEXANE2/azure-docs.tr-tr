@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330713"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636088"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme
 
@@ -27,14 +27,14 @@ Bu senaryoda, kullanıcının belirteç verilerini kurumsal iş kolu iş akış�
 
 Etkileşimi bir doğrulama teknik profili olarak da tasarlayabilirsiniz. Bu, REST API ekranda verileri doğrularken ve talepler döndüren durumlarda uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep Değişimlerinizi tümleştirme](custom-policy-rest-api-claims-validation.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
 - [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.
 
 ## <a name="prepare-a-rest-api-endpoint"></a>REST API uç noktası hazırlama
 
-Bu izlenecek yol için, bir kullanıcının Azure AD B2C ObjectID 'nin arka uç sisteminizde kayıtlı olup olmadığını doğrulayan bir REST API olması gerekir. Kaydedilmişse, REST API Kullanıcı hesabı bakiyesini döndürür. Aksi takdirde, REST API yeni hesabı dizine kaydeder ve başlangıç bakiyesini `50.00`döndürür.
+Bu izlenecek yol için, bir kullanıcının Azure AD B2C ObjectID 'nin arka uç sisteminizde kayıtlı olup olmadığını doğrulayan bir REST API olması gerekir. Kaydedilmişse, REST API Kullanıcı hesabı bakiyesini döndürür. Aksi takdirde, REST API yeni hesabı dizine kaydeder ve başlangıç bakiyesini döndürür `50.00` .
 
 Aşağıdaki JSON kodu Azure AD B2C REST API uç noktanıza gönderilecek verileri gösterir. 
 
@@ -59,7 +59,7 @@ REST API uç noktasının kurulumu Bu makalenin kapsamı dışındadır. Bir [Az
 
 Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. Talepleri [talep şeması](claimsschema.md) bölümünde bildirebilirsiniz. 
 
-1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
 1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
 1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin.  
@@ -77,7 +77,7 @@ Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak 
 
 ## <a name="configure-the-restful-api-technical-profile"></a>Restsize API teknik profilini yapılandırma 
 
-Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi restsize hizmeti ile arabirim oluşturma desteği sağlar. Azure AD B2C, verileri bir `InputClaims` koleksiyondaki yeniden bir hizmete gönderir ve verileri bir `OutputClaims` koleksiyonda geri alır. <em>**`TrustFrameworkExtensions.xml`**</em> Dosyanızdaki **claimsproviders** öğesini bulun ve yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
+Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi restsize hizmeti ile arabirim oluşturma desteği sağlar. Azure AD B2C, verileri bir koleksiyondaki yeniden bir hizmete gönderir `InputClaims` ve verileri bir koleksiyonda geri alır `OutputClaims` . Dosyanızdaki **Claimsproviders** öğesini bulun <em>**`TrustFrameworkExtensions.xml`**</em> ve yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -109,19 +109,19 @@ Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi rest
 </ClaimsProvider>
 ```
 
-Bu örnekte `userLanguage` , JSON yükünün içinde olduğu gibi `lang` Rest hizmetine gönderilir. `userLanguage` Talebin değeri geçerli kullanıcı dili kimliğini içerir. Daha fazla bilgi için bkz. [talep çözümleyici](claim-resolver-overview.md).
+Bu örnekte, `userLanguage` JSON yükünün içinde olduğu gıbı Rest hizmetine gönderilir `lang` . `userLanguage`Talebin değeri geçerli kullanıcı DILI kimliğini içerir. Daha fazla bilgi için bkz. [talep çözümleyici](claim-resolver-overview.md).
 
-Yukarıdaki `AuthenticationType` açıklamalar ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Üretim için yeniden yapılan API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için bkz. [güvenli restsize API](secure-rest-api.md).
+Yukarıdaki açıklamalar `AuthenticationType` ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Üretim için yeniden yapılan API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için bkz. [güvenli restsize API](secure-rest-api.md).
 
 ## <a name="add-an-orchestration-step"></a>Düzenleme adımı ekleme
 
 [Kullanıcı yolculukları](userjourneys.md) , bir ilkenin bir kullanıcı için istenen talepleri elde etmesine izin veren bir ilke aracılığıyla açık yollar belirtmektir. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Düzenleme adımları ekleyebilir veya çıkarabilirsiniz. Bu durumda, Kullanıcı kaydolduktan veya REST API çağrısıyla oturum açtıktan sonra uygulamaya girilen bilgileri artırmak için kullanılan yeni bir düzenleme adımı ekleyeceksiniz.
 
-1. İlkenizin temel dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
-1. `<UserJourneys>` Öğesi için arama yapın. Tüm öğeyi kopyalayın ve silin.
-1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
-1. `<UserJourneys>` Öğesi kapatıldıktan sonra uzantı dosyasına `<ClaimsProviders>` yapıştırın.
-1. `<UserJourney Id="SignUpOrSignIn">`Öğesini bulun ve en son düzenlemeden önce aşağıdaki düzenleme adımını ekleyin.
+1. İlkenizin temel dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
+1. Öğesi için arama yapın `<UserJourneys>` . Tüm öğeyi kopyalayın ve silin.
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
+1. `<UserJourneys>`Öğesi kapatıldıktan sonra uzantı dosyasına yapıştırın `<ClaimsProviders>` .
+1. Öğesini bulun `<UserJourney Id="SignUpOrSignIn">` ve en son düzenlemeden önce aşağıdaki düzenleme adımını ekleyin.
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -131,7 +131,7 @@ Yukarıdaki `AuthenticationType` açıklamalar ve `AllowInsecureAuthInProduction
     </OrchestrationStep>
     ```
 
-1. ' İ ' `Order` ye `8`değiştirerek son düzenleme adımını yeniden düzenleyin. Son iki düzenleme adımlarınız aşağıdaki gibi görünmelidir:
+1. ' İ ' ye değiştirerek son düzenleme adımını yeniden düzenleyin `Order` `8` . Son iki düzenleme adımlarınız aşağıdaki gibi görünmelidir:
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -148,7 +148,7 @@ Yukarıdaki `AuthenticationType` açıklamalar ve `AllowInsecureAuthInProduction
 
 ## <a name="include-a-claim-in-the-token"></a>Belirtece bir talep ekleyin 
 
-`balance` Talebi bağlı olan taraf uygulamasına geri döndürmek için <em> `SocialAndLocalAccounts/` </em> dosyaya bir çıkış talebi ekleyin. Bir çıkış talebi eklendiğinde, başarılı bir Kullanıcı yolculuğuna sonra bu isteği belirtece dönüştürür ve uygulamaya gönderilir. Bağlı olan taraf bölümündeki teknik profil öğesini, çıkış talebi olarak eklemek `balance` üzere değiştirin.
+`balance`Talebi bağlı olan taraf uygulamasına geri döndürmek için dosyaya bir çıkış talebi ekleyin <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Bir çıkış talebi eklendiğinde, başarılı bir Kullanıcı yolculuğuna sonra bu isteği belirtece dönüştürür ve uygulamaya gönderilir. Bağlı olan taraf bölümündeki teknik profil öğesini, `balance` Çıkış talebi olarak eklemek üzere değiştirin.
  
 ```xml
 <RelyingParty>
@@ -177,7 +177,7 @@ Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase. xml*ve *TrustFramew
 
 ## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Kimlik deneyimi çerçevesini**seçin.
@@ -209,9 +209,6 @@ Değiştirdiğiniz dosyaları kaydedin: *TrustFrameworkBase. xml*ve *TrustFramew
   ...
 }
 ```
-
-## <a name="next-steps"></a>Sonraki adımlar
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 8dc0fa53423a4b181ab50cd4c1552115de175c89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133684"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652666"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 'da Visual Studio görüntüleri
 Visual Studio 'Yu önceden yapılandırılmış bir Azure sanal makinesinde (VM) kullanmak, herhangi bir şey için bir şeyi çalışır duruma getirmenin bir geliştirme ortamına hızlı ve kolay bir yoludur. Farklı Visual Studio yapılandırmalarına sahip sistem görüntüleri [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)'nde kullanılabilir.
@@ -31,10 +31,10 @@ En son ana sürümlere ait görüntüler, Visual Studio 2019, Visual Studio 2017
 | Yayın sürümü                                                                                                                                                | Sürümler              | Ürün sürümü   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019: en son (sürüm 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Kuruluş, topluluk | Sürüm 16.5.4    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise | Sürüm 16.0.13    |
-| [Visual Studio 2017: en son (sürüm 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Kuruluş, topluluk | Sürüm 15.9.22   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Kuruluş, topluluk | Sürüm 15.0.28  |
-| [Visual Studio 2015: latest (güncelleştirme 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Kuruluş, topluluk | Sürüm 14.0.25431.01 |
+| Visual Studio 2019: RTW                         | Kurumsal | Sürüm 16.0.13    |
+| Visual Studio 2017: en son (sürüm 15,9)           | Kuruluş, topluluk | Sürüm 15.9.22   |
+| Visual Studio 2017: RTW                             | Kuruluş, topluluk | Sürüm 15.0.28  |
+| Visual Studio 2015: latest (güncelleştirme 3)               | Kuruluş, topluluk | Sürüm 14.0.25431.01 |
 
 > [!NOTE]
 > Microsoft hizmet ilkesine uygun olarak, Visual Studio 2015 ' nin ilk olarak yayınlanan (RTW) sürümü bakım için sona ermiştir. Visual Studio 2015 güncelleştirme 3, Visual Studio 2015 ürün satırı için sunulan tek sürümdür.
@@ -92,7 +92,7 @@ Daha fazla bilgi için bkz. [Visual Studio 'Da oturum açma](/visualstudio/ide/s
 
 Geliştirme ortamlarının yelpazesi çok büyük ve daha karmaşık ortamları oluşturmaya ilişkin gerçek maliyet vardır. Ortamınızın yapılandırmasına bakılmaksızın, yapılandırılmış sanal makineyi gelecekte kullanılmak üzere veya takımınızın diğer üyeleri için "temel görüntü" olarak kaydedebilir veya yakalayabilirsiniz. Ardından, yeni bir VM 'yi önyüklerken Azure Market görüntüsü yerine temel görüntüden temin edersiniz.
 
-Hızlı Özet: Sistem Hazırlama Aracı 'nı (Sysprep) kullanın ve çalışan VM 'yi kapatın ve ardından Azure portal VM 'yi bir görüntü olarak *(Şekil 1)* sanal makine aracılığıyla yakalayın. Azure, görüntüyü `.vhd` içeren dosyayı seçtiğiniz depolama hesabına kaydeder. Yeni görüntü daha sonra, aboneliğinizin kaynak listesinde bir görüntü kaynağı olarak gösterilir.
+Hızlı Özet: Sistem Hazırlama Aracı 'nı (Sysprep) kullanın ve çalışan VM 'yi kapatın ve ardından Azure portal VM 'yi bir görüntü olarak *(Şekil 1)* sanal makine aracılığıyla yakalayın. Azure `.vhd` , görüntüyü içeren dosyayı seçtiğiniz depolama hesabına kaydeder. Yeni görüntü daha sonra, aboneliğinizin kaynak listesinde bir görüntü kaynağı olarak gösterilir.
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(Şekil 1) Azure portal kullanıcı arabiriminden bir görüntü yakalayın.*</center>
 

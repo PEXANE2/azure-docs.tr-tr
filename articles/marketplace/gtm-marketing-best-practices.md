@@ -1,27 +1,21 @@
 ---
-title: Go-to-market Services-pazarlama en iyi uygulamaları | Azure Marketi
-description: Go-to-market Services-Bu bölümde Azure Marketi yayımcıları için en iyi pazarlama uygulamaları açıklanmaktadır
+title: Pazarlama en iyi uygulamaları-Microsoft ticari Market
+description: Microsoft AppSource ve Azure Market 'te iş ortakları yayımlama teklifleri için pazarlama için en iyi uygulamalar hakkında kaynak alın.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: e874343b5bb38928ae2fc429d901d8f7ec163580
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1955dd9dda75906e52007958fe7b4385e657444c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684593"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658031"
 ---
 # <a name="marketing-best-practices"></a>En iyi pazarlama deneyimleri
 
-En iyi duruma getirilmiş bir market listesi ve pazara Alım kampanyaları, müşteri edinme büyümesini hızlandırmanıza yardımcı olabilir ve bu sayede bulut iş stratejinizde ve altyapısında önemli bir rol oynayabilir. Teklifleri listeleme, müşteri denemeleri sağlama, Microsoft müşterileri ve iş ortağı topluluğu ile bağlanma hakkında hazırlanın. Çevrimiçi Pazarlama çabalarınızın en iyi şekilde nasıl alınacağını öğrenmek için [Appsource & Azure Market Marketing en iyi yöntem kılavuzunu](https://aka.ms/marketplacebestpractices) indirin.
+Ticari Market 'teki teklifleri oluşturup liste, müşteri denemeleri sağlar ve Microsoft müşterileri ve iş ortağı topluluğu ile bağlantı kurmak için pazarlama en iyi uygulamalarını göz önünde bulundurun. Teklif listelerinizi ve pazara Alım kampanyalarınızı en uygun hale getirmeniz durumunda, müşteri kazanmanız hızlandırabilmenizi sağlayabilirsiniz. Çevrimiçi Pazarlama çabalarınızın en iyi şekilde nasıl alınacağını öğrenmek için [Azure marketi & AppSource en iyi Yöntem Kılavuzu ' nu](https://aka.ms/marketplacebestpractices) indirin.
 
-**Sonraki adımlar**
-
-Market GTM Hizmetleri hakkında daha fazla bilgi edinmek için bkz. [pazara yönelik hizmetler](https://partner.microsoft.com/reach-customers/gtm)'e gidin.
-
-Teklifinizi oluşturmak ve yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) ' nde oturum açın.
-
----
+Microsoft İş Ortağı Ağı işinizi büyütmenize nasıl yardımcı olabileceğini öğrenmek için bkz. [Microsoft ile pazara git](https://partner.microsoft.com/reach-customers/gtm). Teklifinizi oluşturmak ve yapılandırmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/) ' nde oturum açın.

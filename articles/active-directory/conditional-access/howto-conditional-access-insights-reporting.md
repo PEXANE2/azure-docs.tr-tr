@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4113328a5de02c36b7285c837bd5314d11e526b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690434"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641599"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Koşullu erişim öngörüleri ve raporlama
 
 Koşullu erişim öngörüleri ve raporlama çalışma kitabı, kuruluşunuzda koşullu erişim ilkelerinin zaman içinde etkisini anlamanıza olanak sağlar. Oturum açma sırasında, bir veya daha fazla koşullu erişim ilkesi uygulanabilir, bazı izin denetimleri karşılanmıyorsa veya erişimi reddettikten sonra erişim izni verebilir. Her oturum açma sırasında birden fazla koşullu erişim ilkesi değerlendirilebildiğinden, Öngörüler ve raporlama çalışma kitabı, tek bir ilkenin veya tüm ilkelerin bir alt kümesinin etkisini incelemenizi sağlar.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Öngörüler ve raporlama çalışma kitabını etkinleştirmek için, kiracınızın oturum açma günlüğü verilerini sürdürmek için bir Log Analytics çalışma alanına sahip olması gerekir. Kullanıcıların koşullu erişimi kullanabilmesi için Azure AD Premium P1 veya P2 Lisansı olmalıdır.
 
@@ -36,9 +36,6 @@ Aşağıdaki roller öngörülere ve raporlamaya erişebilir:
 
 Kullanıcılar ayrıca aşağıdaki Log Analytics çalışma alanı rollerinden birine de ihtiyaç duyar:  
 
-- Okuyucu 
-- İzleme okuyucusu 
-- Log Analytics okuyucu 
 - Katılımcı  
 - Sahip 
 
@@ -53,8 +50,8 @@ Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirdiyseniz, çal
 
 Öngörüler ve raporlama çalışma kitabına erişmek için:  
 
-1. **Azure Portal** oturum açın.
-1. **Azure Active Directory** > **Security**güvenlik > **koşullu**erişim > **öngörülerini ve raporlamayı**inceleyin.
+1. **Azure portalında** oturum açın.
+1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişim**  >  **öngörülerini ve raporlamayı**inceleyin.
 
 ### <a name="get-started-select-parameters"></a>Kullanmaya başlayın: parametreleri seçin 
 
@@ -112,11 +109,11 @@ Oturum açma birimi Log Analytics sorgu kapasitesini aşarsa çalışma kitabı 
 
 ### <a name="can-i-save-my-parameter-selections"></a>Parametre seçimlerimi kaydedebilir miyim?  
 
-**Azure Active Directory** > çalışma**kitaplarında** > **koşullu erişim öngörülerine ve raporlamaya**giderek, çalışma kitabının en üstündeki parametre seçimlerinizi kaydedebilirsiniz. Burada, çalışma kitabını düzenleyebileceğiniz ve parametre seçimleri de dahil olmak üzere çalışma alanınıza bir kopyayı, **raporlardaki** veya **paylaşılan raporlardaki**çalışma kitabında kaydedebileceğiniz çalışma kitabı şablonunu bulabilirsiniz. 
+**Azure Active Directory**çalışma  >  **kitaplarında**  >  **koşullu erişim öngörülerine ve raporlamaya**giderek, çalışma kitabının en üstündeki parametre seçimlerinizi kaydedebilirsiniz. Burada, çalışma kitabını düzenleyebileceğiniz ve parametre seçimleri de dahil olmak üzere çalışma alanınıza bir kopyayı, **raporlardaki** veya **paylaşılan raporlardaki**çalışma kitabında kaydedebileceğiniz çalışma kitabı şablonunu bulabilirsiniz. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Çalışma kitabını ek sorgularla düzenleyebilir ve özelleştirebilir miyim? 
 
-**Çalışma kitabı** > **koşullu erişim öngörülerini ve raporlamayı** **Azure Active Directory** > giderek çalışma kitabını düzenleyebilir ve özelleştirebilirsiniz. Burada, çalışma kitabını düzenleyebileceğiniz ve parametre seçimleri de dahil olmak üzere çalışma alanınıza bir kopyayı, **raporlardaki** veya **paylaşılan raporlardaki**çalışma kitabında kaydedebileceğiniz çalışma kitabı şablonunu bulabilirsiniz. Sorguları düzenlemeye başlamak için çalışma kitabının en üstünde **Düzenle** ' ye tıklayın.  
+Çalışma kitabı **Azure Active Directory**  >  **Workbooks**  >  **koşullu erişim öngörülerini ve raporlamayı**Azure Active Directory giderek çalışma kitabını düzenleyebilir ve özelleştirebilirsiniz. Burada, çalışma kitabını düzenleyebileceğiniz ve parametre seçimleri de dahil olmak üzere çalışma alanınıza bir kopyayı, **raporlardaki** veya **paylaşılan raporlardaki**çalışma kitabında kaydedebileceğiniz çalışma kitabı şablonunu bulabilirsiniz. Sorguları düzenlemeye başlamak için çalışma kitabının en üstünde **Düzenle** ' ye tıklayın.  
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

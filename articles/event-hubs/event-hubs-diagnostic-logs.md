@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691851"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649806"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
@@ -148,6 +148,16 @@ Otomatik ölçeklendirme günlüğü JSON, aşağıdaki tabloda listelenen öğe
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI. |
 | İleti | Otomatik Şişir eylemiyle ilgili ayrıntıları sağlayan bilgilendirici ileti. İleti, belirli bir ad alanı için önceki ve geçerli üretilen iş birimi değerini ve TU 'nın inmi tetikleneceğini içerir. |
 
+Örnek bir otomatik ölçeklendirme olayı aşağıda verilmiştir: 
+
+```json
+{
+    "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
+}
+```
+
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka Coordinator günlükleri şeması
 Kafka Coordinator log JSON, aşağıdaki tabloda listelenen öğeleri içerir:
 
@@ -200,7 +210,7 @@ Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelen
 | Uz | Ad alanı adı |
 | IPAddress | Event Hubs hizmetine bağlanan bir istemcinin IP adresi |
 | Eylem | Bağlantı istekleri değerlendirilirken Event Hubs hizmeti tarafından gerçekleştirilen eylem. Desteklenen eylemler **bağlantı kabul eder** ve **bağlantıyı reddedebilir**. |
-| Neden | Eylemin neden yapıldığını bir neden sağlar |
+| Nedeni | Eylemin neden yapıldığını bir neden sağlar |
 | Sayı | Verilen eylem için oluşum sayısı |
 | ResourceId | Azure Resource Manager kaynak KIMLIĞI. |
 

@@ -2,13 +2,13 @@
 title: Uygulamanızı planlayın-LUSıS
 description: İlgili uygulama amaçlarını ve varlıklarını ana hatlarıyla oluşturun ve ardından Language Understanding akıllı hizmetler (LUU) içinde uygulama planlarınızı oluşturun.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/14/2020
+ms.openlocfilehash: 3463078309978ae34918f27a9d75c1dabd59ae66
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382301"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654119"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>LUSıS uygulama şemanızı konu etki alanı ve veri ayıklama ile planlayın
 
@@ -25,14 +25,14 @@ Bir LUSıS uygulaması, konu etki alanı etrafında ortalanır. Örneğin, Bilet
 
 Uygulamanızın görevi için önemli olan [amaçları](luis-concept-intent.md) göz önünde bulundurun.
 
-Bir uçuş ve Kullanıcı hedefindeki hava durumunu denetlemek için işlevlerle bir seyahat uygulaması örneğini ele alalım. Bu eylemler için `BookFlight` ve `GetWeather` amaçlarını tanımlayabilirsiniz.
+Bir uçuş ve Kullanıcı hedefindeki hava durumunu denetlemek için işlevlerle bir seyahat uygulaması örneğini ele alalım. `BookFlight` `GetWeather` Bu eylemler için ve amaçlarını tanımlayabilirsiniz.
 
 Daha fazla işlev içeren daha karmaşık bir uygulamada, daha fazla amaç vardır ve bu amaçları dikkatle tanımlamanız gerekir, böylelikle amaçlar çok özgü değildir. Örneğin, `BookFlight` ve `BookHotel` ayrı amaçlar olması gerekebilir, ancak `BookInternationalFlight` `BookDomesticFlight` çok benzer olabilir.
 
 > [!NOTE]
 > Uygulamanızın işlevlerini gerçekleştirmek için ihtiyaç duyduğunuz kadar çok amaç kullanmak en iyi uygulamadır. Çok fazla amaç tanımlarsanız, YAĞıNLARı doğru şekilde sınıflandırılması zor olur. Çok az sayıda tanımlarsanız, bu durum örtüşeceğinden genel olabilir.
 
-Genel Kullanıcı `None` amacını belirlemeniz gerekmiyorsa, amaca yönelik tüm örnek Kullanıcı araslarını ekleyin. Uygulamanız daha fazla amaç gerektiren bir şekilde büyürse, daha sonra oluşturabilirsiniz.
+Genel Kullanıcı amacını belirlemeniz gerekmiyorsa, amaca yönelik tüm örnek Kullanıcı araslarını ekleyin `None` . Uygulamanız daha fazla amaç gerektiren bir şekilde büyürse, daha sonra oluşturabilirsiniz.
 
 ## <a name="create-example-utterances-for-each-intent"></a>Her amaç için örnek oluşturma
 
@@ -48,6 +48,30 @@ Uygulamanızda hangi varlıkların kullanılacağını belirlerken, nesne türle
 
 > [!TIP]
 > LUSıS, yaygın, konuşma Kullanıcı senaryolarında [önceden oluşturulmuş varlıklar](luis-prebuilt-entities.md) sunmaktadır. Önceden oluşturulmuş varlıkları, uygulama geliştirme için bir başlangıç noktası olarak kullanmayı düşünün.
+
+## <a name="resolution-with-intent-or-entity"></a>Amaç veya varlıkla ilgili çözüm mi var?
+
+Çoğu durumda, özellikle doğal konuşma ile çalışırken, kullanıcılar birden fazla işlev veya amaç içerebilen bir utterlik sağlar. Bunu ele almak için, bir Thumb genel kuralı, çıkışın gösteriminin hem amaçlar hem de varlıklarda yapılabileceğini anlamaktır. Bu gösterim, istemci uygulama eylemleriniz için eşlenebilir ve amaçlar ile sınırlı olması gerekmez.
+
+**Int-ENT** , eylemlerin (genellikle amaçlar olarak anlamış) varlık olarak yakalanabileceğini ve bu formda belirli bir eylemle eşleyebileceğiniz çıkış JSON ' de bu formda güvenebilmesini sağlayan kavramdır. _Olumsuzlama_ , tam ayıklama için hem amaç hem de varlık üzerinde bu güvenden yararlanmak için yaygın bir kullanımdır.
+
+Sözcük seçimini göz önünde bulundurarak ancak farklı sonuçlara sahip olan aşağıdaki iki kuralı göz önünde bulundurun:
+
+|İfade|
+|--|
+|`Please schedule my flight from Cairo to Seattle`|
+|`Cancel my flight from Cairo to Seattle`|
+
+İki ayrı amaç olması yerine, Machine Learning varlığıyla tek bir amaç oluşturun `FlightAction` . Machine Learning varlığı, eylemin ayrıntılarını hem zamanlama hem de iptal etme isteği ve kaynak ya da hedef konum için ayıklamalıdır.
+
+`FlightAction`Varlık, makine öğrenimi varlığı ve alt varlıkların aşağıdaki suedo şemasında yapılandırılır:
+
+* Fışıklı TAction
+    * Eylem
+    * Kaynak
+    * Hedef
+
+Ayıklamanın, alt varlıklara özellikler eklemesine yardımcı olmak. Kullanıcı arasları ' nda görmeyi düşündüğünüz sözlük ve tahmin yanıtında döndürülmesini istediğiniz değerler temelinde, özelliklerinizi seçersiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

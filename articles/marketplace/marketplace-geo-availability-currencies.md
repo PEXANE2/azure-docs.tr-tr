@@ -1,18 +1,18 @@
 ---
-title: Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği | Azure Marketi
-description: Ticari Market 'te coğrafi kullanılabilirlik
+title: Microsoft ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
+description: Ticari Market 'teki işlemlerin coğrafi kullanılabilirliği ve para birimi desteği
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16d41879321c7cbaa4f38bcba83d83d39f30ee13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687577"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657880"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -35,10 +35,10 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Barbados                            | BB        | USD          |
 | Belarus                             | BY        | USD          |
 | Belçika                             | BE        | EUR          |
-| Beliz                              | BZ        | USD          |
+| Belize                              | BZ        | USD          |
 | Bermuda                             | BM        | USD          |
 | Bolivya                             | BO        | USD          |
-| Bosna Hersek              | BA        | USD          |
+| Bosna-Hersek              | BA        | USD          |
 | Botsvana                            | BW        | USD          |
 | Brezilya                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
@@ -46,7 +46,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
 | Cabo Verde                          | CV        | USD          |
-| Kayman Adaları                      | KY        | USD          |
+| Cayman Adaları                      | KY        | USD          |
 | Şili                               | CL        | USD          |
 | Arasında\**                            | CN        | Yok          |
 | Kolombiya                            | CO        | USD          |
@@ -77,7 +77,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Macaristan                             | HU        | EUR          |
 | İzlanda                             | IS        | EUR          |
 | Hindistan                               | IN        | INR          |
-| Endonezya                           | Kimlik        | USD          |
+| Endonezya                           | ID        | USD          |
 | Irak                                | IQ        | USD          |
 | İrlanda                             | IE        | EUR          |
 | İsrail                              | IL        | USD          |
@@ -93,7 +93,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Letonya                              | LV        | EUR          |
 | Lübnan                             | LB        | USD          |
 | Libya                               | LY        | USD          |
-| Lihtenştayn                       | LI        | EUR          |
+| Liechtenstein                       | LI        | EUR          |
 | Litvanya                           | LT        | EUR          |
 | Lüksemburg                          | LU        | EUR          |
 | Makao ÖİB                           | MO        | USD          |
@@ -127,7 +127,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Katar                               | QA        | USD          |
 | Romanya                             | RO        | EUR          |
 | Rusya                              | RU        | RUB          |
-| Rwanda                              | RW        | USD          |
+| Ruanda                              | RW        | USD          |
 | Saint Kitts ve Nevis               | KN        | USD          |
 | Suudi Arabistan                        | SA        | USD          |
 | Senegal                             | SN        | USD          |
@@ -154,7 +154,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Ukrayna                             | UA        | USD          |
 | Birleşik Arap Emirlikleri                | AE        | USD          |
 | Birleşik Krallık                      | GB        | GBP          |
-| Amerika Birleşik Devletleri                       | ABD        | USD          |
+| Birleşik Devletler                       | ABD        | USD          |
 | Uruguay                             | UY        | USD          |
 | Özbekistan                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |

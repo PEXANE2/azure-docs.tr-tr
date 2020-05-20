@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyonu runbook hatalarıyla ilgili sorunları giderme
-description: Azure Otomasyonu runbook 'ları ile karşılaşabileceğiniz sorunları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+title: Azure Otomasyonu runbook sorunlarını giderme
+description: Bu makalede, Azure Otomasyonu runbook 'larında sorunları gidermeye ve gidermeye nasıl çözüm yapılacağı açıklanır.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 586e560f25d12ed8076fcc76810c5a5fb84736dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855100"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680897"
 ---
-# <a name="troubleshoot-runbook-errors"></a>Runbook hatalarında sorun giderme
+# <a name="troubleshoot-runbook-issues"></a>Runbook sorunlarını giderme
 
- Bu makalede oluşabilecek çeşitli runbook hataları ve bunların nasıl giderileceği açıklanmaktadır.
-
->[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Azure Otomasyonu hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+ Bu makalede oluşabilecek runbook sorunları ve bunların nasıl giderileceği açıklanmaktadır. Genel bilgiler için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
 
 ## <a name="diagnose-runbook-issues"></a>Runbook sorunlarını tanılama
 
@@ -73,7 +70,7 @@ Farklı Çalıştır hesabınızın betikte kullanılan [kaynaklara erişmek iç
 
 ### <a name="issue"></a>Sorun
 
-`Connect-AzAccount` Cmdlet 'le çalışırken aşağıdaki hatalardan birini alırsınız:
+Cmdlet 'le çalışırken aşağıdaki hatalardan birini alırsınız `Connect-AzAccount` :
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -91,7 +88,7 @@ Kimlik bilgisi varlık adı geçerli değilse bu hatalar oluşur. Ayrıca, Otoma
 
 Neyin yanlış olduğunu belirlemek için şu adımları izleyin:
 
-1. Özel karakter olmadığından emin olun. Bu karakterler, Azure `\@` 'a bağlanmak Için kullandığınız Otomasyon kimlik bilgileri varlık adındaki karakteri içerir.
+1. Özel karakter olmadığından emin olun. Bu karakterler, `\@` Azure 'a bağlanmak için kullandığınız Otomasyon kimlik bilgileri varlık adındaki karakteri içerir.
 1. Yerel PowerShell ıSE düzenleyicinizdeki Azure Otomasyonu kimlik bilgilerinde depolanan Kullanıcı adı ve parolasını kullanıp kullanabileceğini denetleyin. PowerShell ıSE 'de aşağıdaki cmdlet 'leri çalıştırın.
 
    ```powershell
@@ -167,7 +164,7 @@ Başka bir abonelikteki kaynaklara erişmeye çalışıyorsanız, izinleri yapı
 
 1. Aboneliğin adını kopyalayın.
 
-1. Artık Otomasyon hesabınızdaki izinleri diğer aboneliğe test etmek için aşağıdaki runbook kodunu kullanabilirsiniz. Adım `"\<CertificateThumbprint\>"` 1 ' de kopyalanmış değerle değiştirin. Adım `"\<SubscriptionName\>"` 4 ' te kopyalanmış değer ile değiştirin.
+1. Artık Otomasyon hesabınızdaki izinleri diğer aboneliğe test etmek için aşağıdaki runbook kodunu kullanabilirsiniz. `"\<CertificateThumbprint\>"`Adım 1 ' de kopyalanmış değerle değiştirin. `"\<SubscriptionName\>"`Adım 4 ' te kopyalanmış değer ile değiştirin.
 
     ```powershell
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -188,7 +185,7 @@ Başka bir abonelikteki kaynaklara erişmeye çalışıyorsanız, izinleri yapı
 
 ### <a name="issue"></a>Sorun
 
-`Select-AzureSubscription`, `Select-AzureRMSubscription`, Veya `Select-AzSubscription` cmdlet ile çalışırken aşağıdaki hatayı alırsınız:
+`Select-AzureSubscription`, `Select-AzureRMSubscription` , Veya cmdlet ile çalışırken aşağıdaki hatayı alırsınız `Select-AzSubscription` :
 
 ```error
 The subscription named <subscription name> cannot be found.
@@ -207,9 +204,9 @@ Bu hata şu durumlarda oluşabilir:
 Azure 'da kimlik doğrulaması yapılıp kalmadığını ve seçmek istediğiniz aboneliğe erişimi olup olmadığınızı belirlemek için aşağıdaki adımları izleyin:
 
 1. Betiğinizin tek başına çalıştığından emin olmak için, Azure Otomasyonu dışında test edin.
-1. Cmdlet 'ini çalıştırmadan önce betiğin [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 'ini çalıştırdığından emin olun. `Select-*`
-1. Runbook `Disable-AzContextAutosave –Scope Process` 'un başlangıcına ekleyin. Bu cmdlet, tüm kimlik bilgilerinin yalnızca geçerli runbook 'un yürütülmesine uygulanmasını sağlar.
-1. Hala hata iletisini görüyorsanız, için `AzContext` `Connect-AzAccount`parametresini ekleyerek kodunuzu değiştirin ve ardından kodu yürütün.
+1. Cmdlet 'ini çalıştırmadan önce betiğin [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) cmdlet 'ini çalıştırdığından emin olun `Select-*` .
+1. `Disable-AzContextAutosave –Scope Process`Runbook 'un başlangıcına ekleyin. Bu cmdlet, tüm kimlik bilgilerinin yalnızca geçerli runbook 'un yürütülmesine uygulanmasını sağlar.
+1. Hala hata iletisini görüyorsanız, için parametresini ekleyerek kodunuzu değiştirin `AzContext` `Connect-AzAccount` ve ardından kodu yürütün.
 
    ```powershell
    Disable-AzContextAutosave –Scope Process
@@ -234,7 +231,7 @@ Runbook çalışırken doğru bağlamı kullanmıyor.
 
 ### <a name="resolution"></a>Çözüm
 
-Runbook birden çok runbook 'u çağırdığında abonelik bağlamı kaybolabilir. Abonelik bağlamının runbook 'lara geçirildiğinden emin olmak için, istemci runbook 'unun bağlamı `Start-AzureRmAutomationRunbook` `AzureRmContext` parametresindeki cmdlet 'e iletmesini sağlayın. Belirtilen kimlik `Disable-AzureRmContextAutosave` bilgilerinin yalnızca geçerli `Scope` runbook için kullanıldığından `Process` emin olmak için cmdlet 'ini olarak ayarlanmış parametresiyle kullanın. Daha fazla bilgi için bkz. [abonelikler](../automation-runbook-execution.md#subscriptions).
+Runbook birden çok runbook 'u çağırdığında abonelik bağlamı kaybolabilir. Abonelik bağlamının runbook 'lara geçirildiğinden emin olmak için, istemci runbook 'unun bağlamı parametresindeki cmdlet 'e iletmesini sağlayın `Start-AzureRmAutomationRunbook` `AzureRmContext` . `Disable-AzureRmContextAutosave` `Scope` `Process` Belirtilen kimlik bilgilerinin yalnızca geçerli runbook için kullanıldığından emin olmak için cmdlet 'ini olarak ayarlanmış parametresiyle kullanın. Daha fazla bilgi için bkz. [abonelikler](../automation-runbook-execution.md#subscriptions).
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -334,7 +331,7 @@ Bir runbook, Azure Otomasyonu çıkışına doğrudan bir PnP PowerShell tarafı
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, en yaygın olarak, Azure Otomasyonu, PnP PowerShell cmdlet 'lerini çağıran runbook 'ları (örneğin `add-pnplistitem`, dönüş nesnelerini yakalamak zorunda kalmadan) işlediğinde oluşur.
+Bu sorun, en yaygın olarak, Azure Otomasyonu, PnP PowerShell cmdlet 'lerini çağıran runbook 'ları (örneğin, `add-pnplistitem` dönüş nesnelerini yakalamak zorunda kalmadan) işlediğinde oluşur.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -370,7 +367,7 @@ Bu hata, PowerShell motorunun runbook 'inizdeki kullanmakta olduğunuz cmdlet 'i
 Sorunu gidermek için aşağıdaki çözümlerden herhangi birini kullanın:
 
 * Cmdlet adını doğru girdiğinizden emin olun.
-* Cmdlet 'inin Otomasyon hesabınızda mevcut olduğundan ve çakışma olmadığından emin olun. Cmdlet 'in mevcut olup olmadığını doğrulamak için, düzenleme modunda bir runbook açın ve kitaplıkta bulmak istediğiniz cmdlet 'i arayın veya çalıştırın `Get-Command <CommandName>`. Cmdlet 'in hesapta kullanılabildiğini doğruladıktan ve diğer cmdlet 'ler veya Runbook 'larla ad çakışması yoksa, cmdlet 'ini tuvale ekleyin. Runbook 'da geçerli bir parametre kümesi kullandığınızdan emin olun.
+* Cmdlet 'inin Otomasyon hesabınızda mevcut olduğundan ve çakışma olmadığından emin olun. Cmdlet 'in mevcut olup olmadığını doğrulamak için, düzenleme modunda bir runbook açın ve kitaplıkta bulmak istediğiniz cmdlet 'i arayın veya çalıştırın `Get-Command <CommandName>` . Cmdlet 'in hesapta kullanılabildiğini doğruladıktan ve diğer cmdlet 'ler veya Runbook 'larla ad çakışması yoksa, cmdlet 'ini tuvale ekleyin. Runbook 'da geçerli bir parametre kümesi kullandığınızdan emin olun.
 * Ad çakışması varsa ve cmdlet iki farklı modülde kullanılabiliyorsa, cmdlet için tam adı kullanarak sorunu çözün. Örneğin `ModuleName\CmdletName` kullanabilirsiniz.
 * Bir karma çalışan grubunda runbook 'u şirket içinde yürütüyorsanız, modülün ve cmdlet 'inin karma çalışanı barındıran makinede yüklü olduğundan emin olun.
 
@@ -378,7 +375,7 @@ Sorunu gidermek için aşağıdaki çözümlerden herhangi birini kullanın:
 
 ### <a name="issue"></a>Sorun
 
-Cmdlet 'i için bir diğer ad olan ile `Add-AzAccount`çalışırken bu hatayı alırsınız: `Connect-AzAccount`
+`Add-AzAccount`Cmdlet 'i için bir diğer ad olan ile çalışırken bu hatayı alırsınız `Connect-AzAccount` :
 
 ```error
 Add-AzAccount : Object reference not set to an instance of an object
@@ -386,13 +383,13 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, runbook Otomasyon hesabını eklemek için çağrılmadan `Add-AzAccount` önce doğru adımları gerçekleştirmezse meydana gelebilir. Gerekli adımlardan birine örnek olarak bir farklı çalıştır hesabı ile oturum açma işlemi yapılır. Runbook 'unda kullanılacak doğru işlemler için bkz. [Azure Otomasyonu 'Nda runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
+Bu hata, runbook `Add-AzAccount` Otomasyon hesabını eklemek için çağrılmadan önce doğru adımları gerçekleştirmezse meydana gelebilir. Gerekli adımlardan birine örnek olarak bir farklı çalıştır hesabı ile oturum açma işlemi yapılır. Runbook 'unda kullanılacak doğru işlemler için bkz. [Azure Otomasyonu 'Nda runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Senaryo: nesne başvurusu bir nesnenin örneğine ayarlanmadı
 
 ### <a name="issue"></a>Sorun
 
-`Wait` Parametresi ile bir alt runbook 'u çağırdığınızda ve çıkış akışı bir nesne içeriyorsa aşağıdaki hatayı alırsınız:
+Parametresi ile bir alt runbook 'u çağırdığınızda `Wait` ve çıkış akışı bir nesne içeriyorsa aşağıdaki hatayı alırsınız:
 
 ```error
 Object reference not set to an instance of an object
@@ -400,7 +397,7 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Nedeni
 
-Akış nesneler içeriyorsa, `Start-AzAutomationRunbook` çıkış akışını doğru işlemez.
+Akış nesneler içeriyorsa, `Start-AzAutomationRunbook` Çıkış akışını doğru işlemez.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -448,11 +445,9 @@ Runbook 'ağınız bir PowerShell Iş akışıdır, iş akışı askıya alınm�
 
 Bu sorunu gidermek için aşağıdaki çözümlerden herhangi birini kullanın:
 
-* Karmaşık nesneleri bir cmdlet 'ten diğerine çevreleyorsanız, bu cmdlet 'leri bir `InlineScript` etkinlikte sarın.
+* Karmaşık nesneleri bir cmdlet 'ten diğerine çevreleyorsanız, bu cmdlet 'leri bir etkinlikte sarın `InlineScript` .
 * Tüm nesneyi geçirmek yerine, ihtiyacınız olan adı veya değeri karmaşık nesneden geçirin.
 * PowerShell Iş akışı runbook 'u yerine bir PowerShell runbook 'u kullanın.
-
-
 
 ## <a name="scenario-400-bad-request-status-when-calling-a-webhook"></a><a name="expired webhook"></a>Senaryo: Web kancasını çağırırken 400 Hatalı Istek durumu
 
@@ -476,7 +471,7 @@ Web kancası devre dışıysa, Azure portal aracılığıyla yeniden etkinleşti
 
 ### <a name="issue"></a>Sorun
 
-`Get-AzAutomationJobOutput` Cmdlet 'ini çalıştırırken aşağıdaki hata iletisini alırsınız:
+Cmdlet 'ini çalıştırırken aşağıdaki hata iletisini alırsınız `Get-AzAutomationJobOutput` :
 
 ```error
 429: The request rate is currently too large. Please try again
@@ -491,7 +486,7 @@ Bu hata, çok sayıda [ayrıntılı akışı](../automation-runbook-output-and-m
 Bu hatayı çözmek için aşağıdakilerden birini yapın:
 
 * Runbook 'u düzenleyin ve yaydığı iş akışlarının sayısını azaltın.
-* Cmdlet 'i çalıştırırken alınacak akış sayısını azaltın. Bunu yapmak için [Get-Azautomationjoi put](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet `Stream` 'Inin parametresinin değerini yalnızca çıkış akışlarını almak üzere ayarlayabilirsiniz. 
+* Cmdlet 'i çalıştırırken alınacak akış sayısını azaltın. Bunu yapmak için `Stream` [Get-Azautomationjoi put](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) cmdlet 'inin parametresinin değerini yalnızca çıkış akışlarını almak üzere ayarlayabilirsiniz. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Senaryo: ayrılan kota aşıldığı için Runbook işi başarısız oldu
 
@@ -538,13 +533,13 @@ Bu hata, aşağıdaki sorunlardan biri nedeniyle oluşur:
 
 ### <a name="resolution"></a>Çözüm
 
-* **Bellek sınırı, ağ yuvaları.** Bellek sınırları içinde çalışma için önerilen yollar, iş yükünü birden çok runbook arasında bölmek, bellekte daha az veri işlemek, runbook 'lerinizden gereksiz çıkış yazmaktan kaçınmamak ve PowerShell iş akışı runbook 'larınıza kaç denetim noktası yazılacağını göz önünde bulundurmaktır. Değişkenleri temizlemek ve çöp toplamayı hemen çalıştırmak `$myVar.clear`için kullanmak `[GC]::Collect` gibi Clear metodunu kullanın. Bu eylemler çalışma zamanı sırasında runbook 'larınızın bellek parmak izini azaltır.
+* **Bellek sınırı, ağ yuvaları.** Bellek sınırları içinde çalışma için önerilen yollar, iş yükünü birden çok runbook arasında bölmek, bellekte daha az veri işlemek, runbook 'lerinizden gereksiz çıkış yazmaktan kaçınmamak ve PowerShell iş akışı runbook 'larınıza kaç denetim noktası yazılacağını göz önünde bulundurmaktır. `$myVar.clear`Değişkenleri temizlemek ve `[GC]::Collect` çöp toplamayı hemen çalıştırmak için kullanmak gibi Clear metodunu kullanın. Bu eylemler çalışma zamanı sırasında runbook 'larınızın bellek parmak izini azaltır.
 * **Modül uyumsuz.** Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md)bölümündeki adımları izleyerek Azure modüllerinizi güncelleştirin.
 * **Korumalı alan için Active Directory kimlik doğrulaması yok.** Azure AD 'de bir runbook ile kimlik doğrulaması yaptığınızda, Azure AD modülünün Otomasyon hesabınızda kullanılabilir olduğundan emin olun. Farklı Çalıştır hesabına runbook 'un otomatikleştiren görevleri gerçekleştirmek için gerekli izinleri verdiğinizden emin olun.
 
   Runbook 'iniz bir Azure korumalı alanında çalışan bir yürütülebilir dosyayı veya alt işlemi çağıramıyorum, bir [karma runbook çalışanında](../automation-hrw-run-runbooks.md)runbook 'u kullanın. Hibrit çalışanlar, Azure sanal ağı 'nın sahip olduğu bellek ve ağ limitleriyle sınırlı değildir.
 
-* **Çok fazla özel durum verisi.** İş çıktı akışında 1 MB 'lik bir sınır vardır. Runbook 'larınızın, ve `try` `catch` blokları kullanarak bir çalıştırılabilir veya alt işleme çağrıları barındıraldığından emin olun. İşlemler bir özel durum oluştura, kodun özel durumdan bir Otomasyon değişkenine ileti yazmasını sağlayabilirsiniz. Bu teknik, iletinin iş çıkış akışına yazılmasını engeller.
+* **Çok fazla özel durum verisi.** İş çıktı akışında 1 MB 'lik bir sınır vardır. Runbook 'larınızın, ve blokları kullanarak bir çalıştırılabilir veya alt işleme çağrıları barındıraldığından emin olun `try` `catch` . İşlemler bir özel durum oluştura, kodun özel durumdan bir Otomasyon değişkenine ileti yazmasını sağlayabilirsiniz. Bu teknik, iletinin iş çıkış akışına yazılmasını engeller.
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>Senaryo: PowerShell işi "yöntem çağrılamaz" hata iletisiyle başarısız oluyor
 
@@ -620,7 +615,7 @@ Bu hata, büyük olasılıkla Azurere 'den, runbook 'inizdeki diğer modüllere 
 
 ### <a name="resolution"></a>Çözüm
 
-Aynı runbook 'ta az ve Azurerk cmdlet 'lerinin kullanılmasını önermiyoruz. Bu modüllerin doğru kullanımı hakkında daha fazla bilgi edinmek için, bkz. [az modules 'A geçme](../shared-resources/modules.md#migrating-to-az-modules).
+Aynı runbook 'ta az ve Azurerk cmdlet 'lerinin kullanılmasını önermiyoruz. Modüllerin doğru kullanımı hakkında daha fazla bilgi edinmek için, bkz. [az modules 'e geçirme](../shared-resources/modules.md#migrate-to-az-modules).
 
 ## <a name="scenario-access-denied-when-using-azure-sandbox-for-runbook-or-application"></a><a name="access-denied-azure-sandbox"></a>Senaryo: runbook veya uygulama için Azure korumalı alanı kullanılırken erişim reddedildi
 
@@ -670,7 +665,7 @@ Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu burada göremiyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu burada görmüyorsanız veya sorununuzu çözemezseniz daha fazla destek için aşağıdaki kanallardan birini deneyin:
 
 * Azure [forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabıyla bağlanın. Azure desteği, yanıtlar, destek ve uzmanlar için sizi Azure Community 'ye bağlar.

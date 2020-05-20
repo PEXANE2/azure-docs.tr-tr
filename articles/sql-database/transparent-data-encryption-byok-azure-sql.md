@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7c9cdf6ee671083420ae8d8fad393110353b8e1a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792046"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657024"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarla Azure SQL Saydam Veri Şifrelemesi
 
@@ -159,7 +159,7 @@ Key Vault bir TDE koruyucusu ile şifrelenmiş bir yedeklemeyi geri yüklemek i�
 > [!IMPORTANT]
 > Herhangi bir anda, bir sunucu için birden fazla TDE koruyucu kümesi olamaz. Bu, Azure portal dikey penceresindeki "anahtarı varsayılan TDE koruyucuyu yap" ile işaretlenen anahtardır. Ancak, birden fazla ek anahtar, bir TDE koruyucusu olarak işaretlenmeksizin bir sunucuya bağlanabilir. Bu anahtarlar DEK koruma için kullanılmaz, ancak yedekleme dosyası karşılık gelen parmak izine sahip anahtarla şifrelendiyse, yedekten geri yükleme sırasında kullanılabilir.
 
-Bir yedeklemeyi geri yüklemek için gerekli olan anahtar artık hedef sunucuda yoksa, geri yükleme denemeniz: "hedef sunucu `<Servername>` , \<zaman damgası #1> ve \<zaman DAMGASı #2> tarafından oluşturulan tüm akış URI 'lerinde erişime sahip değil. Lütfen tüm AKV URI 'Lerini geri yükledikten sonra işlemi yeniden deneyin. "
+Bir yedeklemeyi geri yüklemek için gerekli olan anahtar artık hedef sunucuda yoksa, geri yükleme denemeniz: "hedef sunucu, `<Servername>` \< zaman damgası #1> ve \< zaman damgası #2> tarafından oluşturulan tüm akış URI 'lerinde erişime sahip değil. Lütfen tüm AKV URI 'Lerini geri yükledikten sonra işlemi yeniden deneyin. "
 
 Bunu azaltmak için, hedef SQL veritabanı mantıksal sunucusu için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini veya hedef yönetilen örnek için [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ' i çalıştırarak kullanılabilir anahtarların listesini döndürün ve eksik olanları tespit edin. Tüm yedeklemelerin geri yüklenebildiğinden emin olmak için, geri yükleme için hedef sunucunun gerekli tüm anahtarlara erişebildiğinden emin olun. Bu anahtarların TDE koruyucusu olarak işaretlenmesi gerekmez.
 

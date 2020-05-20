@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: c03a7b89fee188d8a22cfb8ddcd73920ce43f43a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "82609910"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649161"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service veya Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma
 
@@ -125,9 +125,34 @@ Artık App Service uygulamanızda kimlik doğrulaması için Azure Active Direct
 1. Uygulama kaydı oluşturulduktan sonra, **uygulama (istemci) kimliği**değerini kopyalayın.
 1. **API izinleri**Seç  >  **Add a permission**  >  **API 'lerim**izin Ekle.
 1. Daha önce App Service uygulamanız için oluşturduğunuz uygulama kaydını seçin. Uygulama kaydını görmüyorsanız, [App Service uygulamanız Için Azure AD 'de uygulama kaydı oluşturma](#register)bölümüne **user_impersonation** kapsamını eklediğinizden emin olun.
-1. **User_impersonation**' yi seçin ve ardından **izin Ekle**' yi seçin.
+1. **Temsilci izinleri**altında **user_impersonation**' yi seçin ve ardından **izin Ekle**' yi seçin.
 
 Artık App Service uygulamanıza bir kullanıcı adına erişebilen bir yerel istemci uygulaması yapılandırdınız.
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Hizmetten hizmete çağrılar için bir Daemon istemci uygulaması yapılandırma
+
+Uygulamanız, App Service veya Işlev uygulamanızda barındırılan bir Web API 'sini kendi adına (Kullanıcı adına değil) çağırmak için bir belirteç alabilir. Bu senaryo, oturum açmış bir kullanıcı olmadan görevleri gerçekleştiren Etkileşimli olmayan Daemon uygulamaları için yararlıdır. Standart OAuth 2,0 [istemci kimlik bilgileri](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) izni ' nı kullanır.
+
+1. [Azure Portal] **Active Directory**  >  **App registrations**  >  **Yeni kayıt**uygulama kayıtları Active Directory seçin.
+1. **Uygulama kaydetme** sayfasında, Daemon uygulama kaydınız Için bir **ad** girin.
+1. Bir Daemon uygulaması için bir yeniden yönlendirme URI 'SI gerekmez, bu da boş bırakabilirsiniz.
+1. **Oluştur**’u seçin.
+1. Uygulama kaydı oluşturulduktan sonra, **uygulama (istemci) kimliği**değerini kopyalayın.
+1. **Sertifikalar & gizli**  >  **anahtar Ekle yeni istemci parolası**' nı seçin  >  **Add**. Sayfada gösterilen istemci gizli değerini kopyalayın. Yeniden gösterilmeyecektir.
+
+Artık, parametreyi hedef uygulamanın uygulama KIMLIĞI URI 'sine ayarlayarak [ISTEMCI kimliğini ve istemci gizli anahtarını kullanarak bir erişim belirteci isteyebilirsiniz](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) `resource` . **Application ID URI** Elde edilen erişim belirteci daha sonra, standart [OAuth 2,0 yetkilendirme üst bilgisi](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)kullanılarak hedef uygulamaya sunulabilir ve App Service kimlik doğrulaması/yetkilendirme, Şimdi çağıranın (Bu durumda bir kullanıcı değil) kimliğinin doğrulandığını göstermek için belirteci doğrular ve kullanır.
+
+Bu durumda, Azure AD kiracınızdaki _Tüm_ istemci uygulamalarının erişim belirteci istemesi ve hedef uygulamada kimlik doğrulaması yapmasına izin verir. Ayrıca, yalnızca belirli istemci uygulamalarına izin vermek için _Yetkilendirmeyi_ zorlamak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir.
+
+1. Korumak istediğiniz App Service veya Işlev uygulamasını temsil eden uygulama kaydının bildiriminde [bir uygulama rolü tanımlayın](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) .
+1. Yetkilendirilmiş olması gereken istemciyi temsil eden uygulama kaydında, **API izinleri**  >  **izin Ekle**  >  **API 'leri**seçin.
+1. Daha önce oluşturduğunuz uygulama kaydını seçin. Uygulama kaydını görmüyorsanız, [bir uygulama rolü](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)eklediğinizden emin olun.
+1. **Uygulama izinleri**altında, daha önce oluşturduğunuz uygulama rolünü seçin ve ardından **izin Ekle**' yi seçin.
+1. İstemci uygulamasını izin istemek üzere yetkilendirmek için **yönetici Izni ver** ' e tıkladığınızdan emin olun.
+1. Önceki senaryoya benzer şekilde (herhangi bir rol eklenmeden önce), artık aynı hedef için [bir erişim belirteci isteyebilirsiniz](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) `resource` ve erişim belirteci, `roles` Istemci uygulaması için yetkilendirilmiş uygulama rollerini içeren bir talep içerir.
+1. Hedef App Service veya Işlev uygulama kodu içinde, artık beklenen rollerin belirteçte bulunduğunu doğrulayabilirsiniz (Bu, App Service kimlik doğrulaması/yetkilendirme tarafından gerçekleştirilmemektedir). Daha fazla bilgi için bkz. [Kullanıcı taleplerine erişme](app-service-authentication-how-to.md#access-user-claims).
+
+Artık kendi kimliğini kullanarak App Service uygulamanıza erişebilen bir Daemon istemci uygulaması yapılandırdınız.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Sonraki adımlar
 

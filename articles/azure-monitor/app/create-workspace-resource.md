@@ -4,13 +4,13 @@ description: Yeni Azure Izleyici Application Insights çalışma alanı tabanlı
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65c2220bd3e9ea93e562b256e84796aed9046d00
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/18/2020
+ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211414"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647902"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Çalışma alanı tabanlı Application Insights kaynakları (Önizleme)
 
@@ -40,9 +40,7 @@ Mavi bağlantı metnine tıkladığınızda, yeni Birleşik çalışma alanı so
 
 ## <a name="copy-the-connection-string"></a>Bağlantı dizesini kopyalayın
 
-[Bağlantı dizesi]() , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
-
-![İzleme anahtarını tıklayın ve kopyalayın](./media/create-new-resource/instrumentation-key.png)
+[Bağlantı dizesi](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 
 ## <a name="monitoring-configuration"></a>İzleme yapılandırması
 
@@ -192,6 +190,10 @@ Bu komutla ilgili tam Azure CLı belgeleri için [Azure CLI belgelerine](https:/
 Çalışma alanı tabanlı bir Application Insights kaynağı oluşturulduktan sonra, ilişkili Log Analytics çalışma alanını değiştirebilirsiniz.
 
 Application Insights kaynak bölmesi içinden **Özellikler**  >  **çalışma alanını Değiştir**  >  **Log Analytics çalışma alanlarını** seçin
+
+## <a name="export-telemetry"></a>Telemetriyi dışarı aktarma
+
+Eski sürekli dışa aktarma işlevselliği, çalışma alanı tabanlı kaynaklar için desteklenmez. Bunun yerine, Application Insights kaynağınız içinden **Tanılama ayarları**  >  **Tanılama ayarını Ekle** ' yi seçin. Bir depolama hesabına arşivlemek veya bir Azure Olay Hub 'ına akış yapmak için tüm tabloları veya tabloların bir alt kümesini seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

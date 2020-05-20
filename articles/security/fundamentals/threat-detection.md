@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981460"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653627"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure gelişmiş tehdit algılama
 
@@ -268,7 +268,7 @@ SQL veritabanı tehdit algılayıcıları aşağıdaki algılama yöntemlerden b
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway Web uygulaması güvenlik duvarı
 
-[Web uygulaması güvenlik duvarı (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) , standart [uygulama teslim denetimi](https://kemptechnologies.com/in/application-delivery-controllers) işlevleri için bir Application Gateway kullanan Web uygulamalarına koruma sağlayan bir [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) özelliğidir. Web uygulaması güvenlik duvarı, bunu [Açık Web uygulaması güvenlik projesi (OWASP) en çok 10 genel Web güvenlik açığına](https://www.owasp.org/index.php/Top_10_2010-Main)karşı koruyarak yapar.
+[Web uygulaması güvenlik duvarı (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) , standart [uygulama teslim denetimi](https://kemptechnologies.com/in/application-delivery-controllers) işlevleri için bir Application Gateway kullanan Web uygulamalarına koruma sağlayan bir [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) özelliğidir. Web uygulaması güvenlik duvarı, bunu [Açık Web uygulaması güvenlik projesi (OWASP) en çok 10 genel Web güvenlik açığına](https://owasp.org/www-project-top-ten/)karşı koruyarak yapar.
 
 ![Application Gateway Web uygulaması güvenlik duvarı diyagramı](./media/threat-detection/azure-threat-detection-fig13.png)
 

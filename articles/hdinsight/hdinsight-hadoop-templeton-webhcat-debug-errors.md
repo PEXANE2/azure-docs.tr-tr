@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.date: 01/01/2020
-ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/14/2020
+ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638859"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651101"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight’ta WebHCat’ten alınan hataları anlama ve düzeltme
 
@@ -43,7 +43,7 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 | Nedeni | Çözüm |
 | --- | --- |
-| Web Hcat tarafından dakikada sunulan en fazla eşzamanlı istek sayısını aştık (varsayılan 20) |En fazla eşzamanlı istek sayısından daha fazla bilgi göndermemesini sağlamak için iş yükünüzü azaltın veya değiştirerek `templeton.exec.max-procs`eşzamanlı istek sınırını artırın. Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
+| Web Hcat tarafından dakikada sunulan en fazla eşzamanlı istek sayısını aştık (varsayılan 20) |En fazla eşzamanlı istek sayısından daha fazla bilgi göndermemesini sağlamak için iş yükünüzü azaltın veya değiştirerek eşzamanlı istek sınırını artırın `templeton.exec.max-procs` . Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>Sunucu kullanılamıyor
 
@@ -59,8 +59,8 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 
 | Nedeni | Çözüm |
 | --- | --- |
-| İş ayrıntıları, iş geçmişi temizleyici tarafından temizlendi |İş geçmişi için varsayılan saklama süresi 7 gündür. Varsayılan saklama süresi değiştirilerek `mapreduce.jobhistory.max-age-ms`değiştirilebilir. Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
-| İş, yük devretme nedeniyle sonlandırıldı |İş gönderimini iki dakikaya kadar yeniden deneyin |
+| İş ayrıntıları, iş geçmişi temizleyici tarafından temizlendi |İş geçmişi için varsayılan saklama süresi 7 gündür. Varsayılan saklama süresi değiştirilerek değiştirilebilir `mapreduce.jobhistory.max-age-ms` . Daha fazla bilgi için bkz. [yapılandırmayı değiştirme](#modifying-configuration) |
+| Yük devretme nedeniyle iş sonlandırıldı |İş gönderimini iki dakikaya kadar yeniden deneyin |
 | Geçersiz bir iş KIMLIĞI kullanıldı |İş KIMLIĞININ doğru olup olmadığını denetle |
 
 ## <a name="bad-gateway"></a>Hatalı ağ geçidi
@@ -70,10 +70,20 @@ Aşağıdaki varsayılan değerler aşılırsa, WebHCat performansını düşür
 | Nedeni | Çözüm |
 | --- | --- |
 | Web Hcat işleminde iç çöp toplama işlemi yapılıyor |Çöp toplamanın bitmesini bekleyin veya WebHCat hizmetini yeniden başlatın |
-| ResourceManager hizmetinden yanıt beklerken zaman aşımı. Etkin uygulama sayısı yapılandırılmış en yüksek değeri geçtiğinde bu hata oluşabilir (varsayılan 10.000) |Çalışmakta olan işlerin tamamlanmasını bekleyin veya değiştirerek `yarn.scheduler.capacity.maximum-applications`eşzamanlı iş sınırını artırın. Daha fazla bilgi için [yapılandırma değiştirme](#modifying-configuration) bölümüne bakın. |
-| Olarak ayarlandığında `Fields` , [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) çağrısı aracılığıyla tüm işleri alma girişimi`*` |*Tüm* iş ayrıntılarını alma. Bunun yerine `jobid` yalnızca belırlı iş kimliğinden daha büyük işlerin ayrıntılarını almak için kullanın. Veya kullanma`Fields` |
+| ResourceManager hizmetinden yanıt beklerken zaman aşımı. Etkin uygulama sayısı yapılandırılmış en yüksek değeri geçtiğinde bu hata oluşabilir (varsayılan 10.000) |Çalışmakta olan işlerin tamamlanmasını bekleyin veya değiştirerek eşzamanlı iş sınırını artırın `yarn.scheduler.capacity.maximum-applications` . Daha fazla bilgi için [yapılandırma değiştirme](#modifying-configuration) bölümüne bakın. |
+| Olarak ayarlandığında, [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) çağrısı aracılığıyla tüm işleri alma girişimi `Fields``*` |*Tüm* iş ayrıntılarını alma. Bunun yerine `jobid` yalnızca belirli Iş kimliğinden daha büyük işlerin ayrıntılarını almak için kullanın. Veya kullanma`Fields` |
 | WebHCat hizmeti, yayın düğümü yük devretmesi sırasında çalışmıyor |İki dakika bekleyip işlemi yeniden deneyin |
 | WebHCat aracılığıyla en çok 500 bekleyen iş gönderildi |Daha fazla iş göndermeden önce Şu anda bekleyen işlerin tamamlanmasını bekleyin |
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+
+* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

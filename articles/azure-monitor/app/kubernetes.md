@@ -5,25 +5,25 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 95c7205116808650c09f8b6fdd24844d9c0a6dbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119254"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647874"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Kubernetes barındırılan uygulamalar için, Istio-kullanım DıŞı olmadan sıfır izleme uygulaması izleme
 
 > [!IMPORTANT]
 > Bu işlevsellik şu anda kullanım dışıdır ve 1 Ağustos 2020 ' den sonra desteklenecek.
-> Şu anda önerilen sürüm yalnızca [tek başına aracı aracılığıyla Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)için geçerlidir.
+> Şu anda kodsuz kullanacaksınız izleme yalnızca [tek başına aracı aracılığıyla Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)için etkinleştirilebilir. Diğer diller için, AKS: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)ve [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)üzerinde uygulamalarınızı izlemek için SDK 'ları kullanın.
 
 Azure Izleyici, Kubernetes barındırılan uygulamalar için kullanıma hazır uygulama izlemeyi sağlamak üzere Kubernetes kümenizdeki hizmet ağı teknik ' i 'nden yararlanır. Bağımlılıklarınızı modellemek için [uygulama Haritası](../../azure-monitor/app/app-map.md) gibi varsayılan uygulama Insight özellikleriyle, gerçek zamanlı izleme için [canlı ölçüm akışı](../../azure-monitor/app/live-stream.md) , [varsayılan pano](../../azure-monitor/app/overview-dashboard.md), [Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)ve [çalışma kitapları](../../azure-monitor/app/usage-workbooks.md)ile güçlü görselleştirmeler elde edin. Bu özellik, kullanıcıların seçili bir Kubernetes ad alanı içindeki Kubernetes iş yüklerinin tamamında performans sorunlarını ve hata etkin noktalarını belirleyebilmenize yardımcı olur. Azure Izleyici, mevcut hizmet ağı yatırımlarınızı, Istio gibi teknolojilerle büyük harfle sunarak, uygulamanızın kodunda herhangi bir değişiklik yapılmadan otomatik olarak izlenen uygulama izlemeyi sağlar.
 
 > [!NOTE]
 > Bu, Kubernetes üzerinde uygulama izleme gerçekleştirmenin birçok yöntemlerinden biridir.Ayrıca, bir hizmet ağı gerekmeden [Application Insights SDK 'yı](../../azure-monitor/azure-monitor-app-hub.yml) kullanarak Kubernetes 'te barındırılan herhangi bir uygulamayı da denetleyebilirsiniz. Bir SDK ile uygulamayı işaretlemeden Kubernetes 'i izlemek için aşağıdaki yöntemi kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir [Kubernetes kümesi](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads).
 - *Kubectl*çalıştırmak için kümeye konsol erişimi.
@@ -130,7 +130,7 @@ Aşağıda, telemetri Azure portal beklendiği gibi görünmediği zaman, kullan
 
 Bu projedeki ilerleme durumu hakkında en son bilgiler için, [Istio karıştırıcı projesinin GitHub Application Insights bağdaştırıcısını](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq)ziyaret edin.
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
 Ürünü kaldırmak için *src/Kubernetes/* Run altında bulunan *her* bir YAML dosyası için:
 

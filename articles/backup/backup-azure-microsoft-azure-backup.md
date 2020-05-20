@@ -3,12 +3,12 @@ title: İş yüklerini yedeklemek için Azure Backup Sunucusu kullanma
 description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) kullanarak iş yüklerini korumak ve yedeklemek için ortamınızı nasıl hazırlayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a442cb094f87852c9d4f781d378f5886f3a4a42
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273416"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652121"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -40,6 +40,9 @@ Azure Backup Sunucusu, Data Protection Manager (DPM) iş yükü yedekleme işlev
 ## <a name="choose-an-installation-platform"></a>Yükleme platformu seçin
 
 Azure Backup Sunucusu çalışmaya ve çalıştırmaya yönelik ilk adım, bir Windows Server ayarlanalmaktır. Sunucunuz Azure 'da veya şirket içinde olabilir.
+
+* Şirket içi iş yüklerini korumak için, MABS sunucusu şirket içinde bulunmalıdır.
+* Azure VM 'lerde çalışan iş yüklerini korumak için, MABS sunucusu Azure 'da olmalıdır ve Azure VM olarak çalışır.
 
 ### <a name="using-a-server-in-azure"></a>Azure 'da sunucu kullanma
 
@@ -92,7 +95,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Bir kurtarma hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' a tıklayın.
 
    * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
@@ -183,9 +186,9 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
 
     SSRS yapılandırması için aşağıdaki değerleri kullanın:
     * Hizmet hesabı: ' yerleşik hesabı kullan ' ağ hizmeti olmalıdır
-    * Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_\<sqlınstancename olmalıdır>
-    * Veritabanı: DatabaseName ReportServer $\<sqlınstancename> olmalıdır
-    * Web portalı URL 'SI: ' sanal dizin ' Reports_\<sqlınstancename olmalıdır>
+    * Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_ \< SqlInstanceName olmalıdır>
+    * Veritabanı: DatabaseName ReportServer $ \< SqlInstanceName> olmalıdır
+    * Web portalı URL 'SI: ' sanal dizin ' Reports_ \< SqlInstanceName olmalıdır>
 
     SSRS yapılandırması hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
 
@@ -237,7 +240,7 @@ MABS, System Center Data Protection Manager koruma Aracısı 'nı kullanır. Kor
 
 Aşağıdaki bölümlerde, istemci bilgisayarlar için koruma aracılarının nasıl güncelleştirilmesi anlatılmaktadır.
 
-1. Yedekleme sunucusu yönetici konsolu, **Yönetim** > **aracıları**' nı seçin.
+1. Yedekleme sunucusu yönetici konsolu, **Yönetim**  >  **aracıları**' nı seçin.
 
 2. Görüntüleme bölmesinde, koruma aracısını güncelleştirmek istediğiniz istemci bilgisayarları seçin.
 
@@ -280,7 +283,7 @@ Depolama alanını korurken MABS 'i yeni bir sunucuya taşımanız gerekiyorsa b
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için Azure Backup Sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
+Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için ```Get-DPMCloudConnection``` Azure Backup sunucusu PowerShell konsolundaki cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
 
 Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Aboneliğinizin durumunu öğrenmek ve yönetmek için [abonelik portalında](https://account.windowsazure.com/Subscriptions)oturum açın.
 

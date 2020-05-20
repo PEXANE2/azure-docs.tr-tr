@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864454"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659511"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -93,7 +93,7 @@ Windows hizmeti **com+ sistem** uygulamasındaki bir sorun nedeniyle yedekleme i
 Hata kodu: Extensionfailedvsswriterınbadstate <br/>
 Hata iletisi: VSS yazarları hatalı durumda olduğundan anlık görüntü işlemi başarısız oldu.
 
-Hatalı durumda olan VSS yazıcılarını yeniden başlatın. Yükseltilmiş bir komut isteminden komutunu çalıştırın ```vssadmin list writers```. Çıktı tüm VSS yazıcılarını ve bunların durumlarını içerir. Her VSS yazıcı için, **[1] kararlı**olmayan bir durum ile VSS yazıcısını yeniden başlatmak için, yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
+Hatalı durumda olan VSS yazıcılarını yeniden başlatın. Yükseltilmiş bir komut isteminden komutunu çalıştırın ```vssadmin list writers``` . Çıktı tüm VSS yazıcılarını ve bunların durumlarını içerir. Her VSS yazıcı için, **[1] kararlı**olmayan bir durum ile VSS yazıcısını yeniden başlatmak için, yükseltilmiş bir komut isteminden aşağıdaki komutları çalıştırın:
 
 * ```net stop serviceName```
 * ```net start serviceName```
@@ -134,7 +134,7 @@ Varsayılan izinler aşağıdaki gibidir:
 2. ' A **verilen** tüm sertifikaları, klasik dağıtım modeli veya **Microsoft Azure CRP sertifika Oluşturucu**olarak silin:
 
    * [Sertifikaları yerel bir bilgisayar konsolunda açın](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
-   * **Kişisel** > **Sertifikalar**' ın altında, ' a **verilen** tüm sertifikaları, klasik dağıtım modeli veya **Microsoft Azure CRP sertifika Oluşturucu**olarak silin.
+   * **Kişisel**  >  **Sertifikalar**' ın altında, ' a **verilen** tüm sertifikaları, klasik dağıtım modeli veya **Microsoft Azure CRP sertifika Oluşturucu**olarak silin.
 3. Bir VM yedekleme işi tetikleyin.
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState-uzantı durumu yedekleme işlemi için destekmedi
@@ -145,7 +145,7 @@ Hata iletisi: uzantı durumu yedekleme işlemine destekmedi
 Yedekleme uzantısının tutarsız durumu nedeniyle yedekleme işlemi başarısız oldu. Bu sorunu çözmek için şu adımları izleyin:
 
 * Konuk Aracı'nın yüklü olduğundan ve yanıt verdiğinden emin olun
-* Azure Portal, **sanal makine** > **Tüm ayarlar** > **uzantıları** ' na git
+* Azure Portal, **sanal makine**  >  **Tüm ayarlar**  >  **uzantıları** ' na git
 * VmSnapshot veya VmSnapshotLinux yedekleme uzantısını seçin ve **Kaldır**'a tıklayın
 * Yedekleme uzantısını sildikten sonra yedekleme işlemini yeniden deneyin
 * Sonraki yedekleme işleminde yeni uzantı istenen durumda yüklenecektir
@@ -197,7 +197,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | **Hata kodu**: vmnotındesıralaması <br/> **Hata iletisi**: VM, yedeklemelere izin veren bir durumda değil. |<ul><li>VM, **çalıştırma** ve **kapatma**arasında geçici bir durumdaysa, durumun değiştirilmesini bekleyin. Ardından yedekleme işini tetikleyin. <li> VM bir Linux sanal makinesi ise ve Gelişmiş Güvenlik Özellikli Linux çekirdek modülünü kullanıyorsa, güvenlik ilkesinden Azure Linux Aracısı yolu **/var/lib/waagent** ' ı dışlayın ve yedekleme uzantısının yüklü olduğundan emin olun.  |
 | VM Aracısı sanal makinede yok: <br>Herhangi bir önkoşulu ve VM aracısını yükler. Sonra işlemi yeniden başlatın. |[VM Aracısı yüklemesi ve VM Aracısı yüklemesinin nasıl doğrulanacağı](#vm-agent)hakkında daha fazla bilgi edinin. |
 | **Hata kodu**: extensionsnapshotfailednosecurenetwork <br/> **Hata iletisi**: güvenli ağ iletişim kanalı oluşturma hatası nedeniyle anlık görüntü işlemi başarısız oldu. | <ol><li> **Regedit. exe** ' yi Yükseltilmiş modda çalıştırarak kayıt defteri düzenleyicisini açın. <li> Sisteminizde mevcut olan tüm .NET Framework sürümlerini belirler. Bunlar, kayıt defteri anahtarı **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**hiyerarşisinde mevcuttur. <li> Kayıt defteri anahtarında bulunan her bir .NET Framework için aşağıdaki anahtarı ekleyin: <br> **Schusestrongşifre "= DWORD: 00000001**. </ol>|
-| **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: 2012 Visual Studio için Visual C++ yeniden dağıtılabilir yüklenemediğinden anlık görüntü işlemi başarısız oldu. | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion adresine gidin ve vcredist2013_x64.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\Msiserver** içindeki **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın.  |
+| **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: 2012 Visual Studio için Visual C++ yeniden dağıtılabilir yüklenemediğinden anlık görüntü işlemi başarısız oldu. | <li> Vcredist2013_x64 gidin `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` ve bu yüklemeye erişin.<br/>Hizmet yüklemeye izin veren kayıt defteri anahtarı değerinin doğru değere ayarlandığından emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\Msiserver** içindeki **Başlangıç** değerini **4**değil **3** olarak ayarlayın. <br><br>Yükleme ile ilgili sorun yaşıyorsanız, **msiexec/Unregister** ' yi ve ardından yükseltilmiş bir komut isteminden **msiexec/Register** ' i çalıştırarak yükleme hizmetini yeniden başlatın. <br><br><li> İlgili sorunlar yaşıyorsanız erişip erişemediğinizi doğrulamak için olay günlüğünü denetleyin. Örneğin: *Ürün: Microsoft Visual C++ 2013 x64 en düşük çalışma zamanı-12.0.21005--hata 1401. Anahtar oluşturulamadı: Software\Classes.  Sistem hatası 5.  Bu anahtara yeterli erişiminizin olduğunu doğrulayın veya destek personelinize başvurun.* <br><br> Yönetici veya Kullanıcı hesabının kayıt defteri anahtarını güncelleştirmek için yeterli izinlere sahip olduğundan emin olun **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**. Yeterli izinleri sağlayın ve Windows Azure Konuk Aracısı 'nı yeniden başlatın.<br><br> <li> Virüsten koruma ürünleri varsa, yüklemeye izin vermek için doğru dışlama kurallarına sahip olduklarından emin olun.    |
 | **Hata kodu**: usererrorrequestdisallowedbypolicy <BR> **Hata iletisi**: VM 'de anlık görüntü işlemini önleyecek geçersiz bir ilke yapılandırıldı. | [Ortamınızdaki etiketleri yöneten](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)bir Azure ilkeniz varsa, Ilkeyi bir [reddetme etkisine](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) değiştirme [efektiyle](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)değiştirmeyi düşünün veya [Azure Backup için gereken adlandırma şemasına](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)göre kaynak grubunu el ile oluşturun.
 
 ## <a name="jobs"></a>İşler

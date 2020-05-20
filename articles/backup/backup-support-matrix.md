@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801272"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659391"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -28,7 +28,7 @@ Azure Backup yedeklemeleri düzenlemek ve yönetmek için kurtarma hizmetleri ka
 
 Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanmaktadır:
 
-**Özellik** | **Bilgileri**
+**Öne çıkan özelliği** | **Ayrıntılar**
 --- | ---
 **Abonelikte kasa** | Tek bir abonelikte en fazla 500 kurtarma hizmeti Kasası.
 **Kasadaki makineler** | Tek bir kasada en fazla 1.000 Azure VM.<br/><br/> 50 MABS sunucusuna kadar tek bir kasada kayıt yapılabilir.
@@ -54,9 +54,9 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 ### <a name="azure-vm-limits"></a>Azure VM sınırları
 
-**Sınırlı** | **Bilgileri**
+**Sınırlı** | **Ayrıntılar**
 --- | ---
-**Azure VM veri diskleri** | 16 sınırı <br> 16 + diskle (32 diske kadar) VM 'lerin sınırlı önizlemesine kaydolmak için, şurada bize yazın:AskAzureBackupTeam@microsoft.com
+**Azure VM veri diskleri** | Bkz. [Azure VM yedeklemesi için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM yedekleme seçenekleri
@@ -152,9 +152,9 @@ Azure Backup, veri kullanılabilirliği ve dayanıklılık özelliğini güçlen
 | Yedekleme yönetimi türü | Destekleniyor                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| MARS Aracısı/şirket içi | No                                                           | Yok               |
-| SQL/SAP HANA          | No                                                           | Yok               |
-| 'Nın                    | No                                                           | Yok               |
+| MARS Aracısı/şirket içi | Hayır                                                           | Yok               |
+| SQL/SAP HANA          | Hayır                                                           | Yok               |
+| 'Nın                    | Hayır                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

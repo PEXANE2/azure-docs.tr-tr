@@ -5,16 +5,17 @@ description: Kendi veri kümelerinizi oluşturmak için Azure Machine Learning t
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 05/04/2020
-ms.openlocfilehash: 5296ac54cab403ef78b3e8bd32fe5ebe6ea43119
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.custom: designer
+ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842883"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644297"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında veri dönüştürme (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +72,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **bölme modunu** **normal ifade**olarak ayarlayın.
 
-1. **Normal ifadeyi**girin: `\"native-country" United-States`.
+1. **Normal ifadeyi**girin: `\"native-country" United-States` .
 
     **Normal ifade** modu bir değer için tek bir sütunu sınar. Bölünmüş veri modülü hakkında daha fazla bilgi için, ilgili [algoritma modülü başvurusu sayfasına](algorithm-module-reference/split-data.md)bakın.
 
@@ -111,7 +112,7 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
     > [!NOTE]
     > Bu makalede, geçerli Azure Machine Learning çalışma alanına kayıtlı bir veri deposuna erişiminizin olduğu varsayılır. Bir veri deposu ayarlama hakkında yönergeler için bkz. [Azure Storage Services 'A bağlanma](how-to-access-data.md#azure-machine-learning-studio).
 
-    Bir veri deposu yoksa, şimdi bir tane oluşturabilirsiniz. Örneğin, bu makalede veri kümeleri, çalışma alanıyla ilişkili varsayılan BLOB depolama hesabına kaydedilir. Veri kümelerini, adlı `azureml` `data`yeni bir klasörde kapsayıcıya kaydeder.
+    Bir veri deposu yoksa, şimdi bir tane oluşturabilirsiniz. Örneğin, bu makalede veri kümeleri, çalışma alanıyla ilişkili varsayılan BLOB depolama hesabına kaydedilir. Veri kümelerini, `azureml` adlı yeni bir klasörde kapsayıcıya kaydeder `data` .
 
 1.  **Bölünmüş veri** modülünün en *sağ*bağlantı noktasına bağlı olan **verileri dışarı aktar** modülünü seçin.
 
@@ -125,9 +126,9 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
     **Dosya biçimi**: CSV
 
-1. **Bölünmüş verilerin** sol bağlantı noktasına bağlı **dışarı aktarma veri** modülünün **yolu** `/data/us-income`olduğunu doğrulayın.
+1. **Bölünmüş verilerin** sol bağlantı noktasına bağlı **dışarı aktarma veri** modülünün **yolu** olduğunu doğrulayın `/data/us-income` .
 
-1. Doğru bağlantı noktasına bağlı **dışarı aktarma verileri** modülünün **yolu** `/data/non-us-income`olduğunu doğrulayın.
+1. Doğru bağlantı noktasına bağlı **dışarı aktarma verileri** modülünün **yolu** olduğunu doğrulayın `/data/non-us-income` .
 
     Ardışık düzen ve ayarlarınız şöyle görünmelidir:
     
@@ -155,11 +156,11 @@ Bu bölümde, "yerel-ülke" sütununda "Birleşik Devletler" içeren satırları
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **çıktılar + Günlükler**' i seçin. 
 
-1. **Sonuçlar DataSet1**' ın ![yanındaki Görselleştir simgesini görselleştirin simgesini](media/how-to-designer-transform-data/visualize-icon.png) seçin. 
+1. Sonuçlar DataSet1 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) . **Results dataset1** 
 
 1. "Yerel-ülke" sütununun yalnızca "Amerika Birleşik Devletleri" değerini içerdiğini doğrulayın.
 
-1. **Sonuçlar DataSet2**' ın ![yanındaki Görselleştir simgesini görselleştirin simgesini](media/how-to-designer-transform-data/visualize-icon.png) seçin. 
+1. Sonuçlar DataSet2 ' ın yanındaki Görselleştir simgesini görselleştirin ![ simgesini seçin ](media/how-to-designer-transform-data/visualize-icon.png) . **Results dataset2** 
 
 1. "Yerel-ülke" sütununun "Amerika Birleşik Devletleri" değerini içermediğini doğrulayın.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598594"
+ms.locfileid: "83654428"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -49,7 +49,7 @@ Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangı�
  - Kendi Jupyter Notebook sunucunuz
 
     - [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)yükler.
-    - [Azure MACHINE LEARNING rl SDK 'sını](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - [Azure MACHINE LEARNING rl SDK 'sını](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)yükler:`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
     - Dağıtılmış pekiştirmeye dayalı öğrenimi için kullanılan ağ bağlantı noktalarını açmak için sanal ağ [Kurulum Not defterini](https://aka.ms/azure-rl-env-setup) çalıştırın.
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Pekiştirmeye dayalı Learning tahmin aracı oluşturma
 
-Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) ' ı nasıl kullanacağınızı öğreneceksiniz.
+Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) ' ı nasıl kullanacağınızı öğreneceksiniz.
 
 Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını kolayca belirlemenizi sağlar. Azure Machine Learning tahmin aracı modeli hakkında daha fazla bilgi için bkz. [Tahmini kullanarak modelleri eğitme](how-to-train-ml-models.md).
 

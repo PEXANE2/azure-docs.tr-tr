@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5d6cbf873ac1b76c24f5907a47038157b22e5680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120122"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634111"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 
@@ -105,7 +105,7 @@ Geçerli geçici silme bekletme ilkesini bulmak için aşağıdaki komutu kullan
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[CLI](#tab/azure-CLI)
+# <a name="cli"></a>[CLı](#tab/azure-CLI)
 
 Geçici silme özelliğini etkinleştirmek için bir blob istemcisinin hizmet özelliklerini güncelleştirin:
 
@@ -137,7 +137,21 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+Geçici silme özelliğini etkinleştirmek için bir blob istemcisinin hizmet özelliklerini güncelleştirin:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_EnableSoftDelete":::
+
+Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda geri alma işlemini çağırın. Hem etkin hem de geçici olarak silinen bloblarda **geri alma işlemini çağırmanın,** tüm ilişkili geçici silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıdaki tüm geçici silinen ve etkin bloblarda geri alma işlemini çağırır:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
+
+Belirli bir blob sürümüne kurtarmak için, ilk olarak bir Blobun çağrısını geri alın ve ardından istenen anlık görüntüyü blob üzerinden kopyalayın. Aşağıdaki örnek, Blok Blobu en son oluşturulan anlık görüntüye kurtarır:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 Geçici silme özelliğini etkinleştirmek için bir blob istemcisinin hizmet özelliklerini güncelleştirin:
 
@@ -153,7 +167,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda geri alma işlemini çağırın. **Geri alma blobu**çağırma, hem etkin hem de geçici olarak silinen bloblarda, ilişkili tüm yazılımla silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıdaki tüm geçici silinen ve etkin bloblarda geri alma işlemini çağırır:
+Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda geri alma işlemini çağırın. Hem etkin hem de geçici olarak silinen bloblarda **geri alma işlemini çağırmanın,** tüm ilişkili geçici silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıdaki tüm geçici silinen ve etkin bloblarda geri alma işlemini çağırır:
 
 ```csharp
 // Recover all blobs in a container
@@ -177,7 +191,7 @@ IEnumerable<IListBlobItem> allBlobVersions = container.ListBlobs(
 CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)version).IsSnapshot &&
     ((CloudBlockBlob)version).Name == blockBlob.Name) as CloudBlockBlob;
 blockBlob.StartCopy(copySource);
-```
+```  
 
 ---
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858788"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651124"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Depolama geçişi hakkında sık sorulan sorular
 
@@ -263,11 +263,11 @@ Diğer kişilere depolama kaynaklarına erişim sağlamak için:
 
 -   AzCopy komutunu Microsoft Azure Depolama komut satırından eriştiğinizde **AzCopy**yazın. Komut satırı AzCopy ile birlikte yüklenir.
 
--   32 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles (x86)%\\Microsoft SDK 'ları\\Azure\\AzCopy**.
+-   32 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles (x86)% \\ Microsoft SDK 'ları \\ Azure \\ AzCopy**.
 
--   64 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles%\\Microsoft SDK 'ları\\Azure\\AzCopy**.
+-   64 bitlik sürümü yüklediyseniz şu konumda bulunur: **% ProgramFiles% \\ Microsoft SDK 'ları \\ Azure \\ AzCopy**.
 
-**Depolama hesabımın bulunduğu HTTPS özel etki alanını kullanmak Nasıl yaparım? mı? Örneğin, "https:\//mystorageaccountname.blob.Core.Windows.net/images/image.gif" nasıl "https:\//www.contoso.com/images/image.gif" olarak görünirim?**
+**Depolama hesabımın bulunduğu HTTPS özel etki alanını kullanmak Nasıl yaparım? mı? Örneğin, "https: \/ /mystorageaccountname.blob.Core.Windows.net/images/image.gif" nasıl "https:/www.contoso.com/images/image.gif" olarak görünirim \/ ?**
 
 TLS/SSL Şu anda özel etki alanları olan depolama hesaplarında desteklenmemektedir.
 Ancak HTTPS olmayan özel etki alanlarını kullanabilirsiniz. Daha fazla bilgi için bkz. [BLOB depolama uç noktanız için özel bir etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).
@@ -288,9 +288,9 @@ Yedekli depolamaya erişmek için Okuma Erişimli Coğrafi olarak yedekli depola
 
 -   Okuma Erişimli Coğrafi olarak yedekli depolama kullanıyorsanız, verileri istediğiniz zaman ikincil bölgeden erişebilirsiniz. Aşağıdaki yöntemlerden birini kullanın:  
 
-    - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örneğin:  
+    - **AzCopy**: ikincil uç noktaya erışmek için URL 'deki depolama hesabı adına Append **-Secondary** . Örnek:  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
     - **SAS belirteci**: uç noktadan veriye erişmek IÇIN bir SAS belirteci kullanın. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma](storage-sas-overview.md).
 

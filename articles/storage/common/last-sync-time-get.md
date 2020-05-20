@@ -10,12 +10,12 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: afcadd55e87579b25f03176fa3227024863b90fb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 02f7d7e2735717a7a6e7a56273551197c16b77aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858515"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659255"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin
 
@@ -40,7 +40,7 @@ Coğrafi çoğaltma zaman uyumsuz olduğundan, birincil bölgeye yazılan verile
 PowerShell ile depolama hesabının son eşitleme zamanını almak için, coğrafi çoğaltma istatistiklerini almayı destekleyen az. Storage modülünün bir sürümünü yüklersiniz. Örneğin:
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.14.0 –AllowClobber –Force
 ```
 
 Ardından depolama hesabının **Georeplicationstats. LastSyncTime** özelliğini denetleyin. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:

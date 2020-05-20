@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186331"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647730"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 
@@ -208,8 +208,8 @@ Azure Cosmos DB ücretsiz katman sayesinde hesapta ücretsiz olarak ilk 400 RU/s
 - Şimdi aynı hesapta yer alalım, 1000 RU/s ve 10 GB depolama ile başka bir veritabanı ya da kapsayıcı ekleyeceğiz.
 - Faturanız artık 1000 RU/sn ve 10 GB depolama alanı için ücret gösterecektir. 
 
-### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>Faturalandırma örneği-otomatik ölçeklendirme üretilen iş kapsayıcısı veya veritabanı
-- Ücretsiz bir katman hesabında, ölçek etkin olan bir veritabanı ya da kapsayıcı, en fazla RU/sn 4000 RU/sn ile oluşturacağız. Bu kaynak, 400 RU/s-4000 RU/s arasında otomatik olarak ölçeklendirilir. 
+### <a name="billing-example---container-with-autoscale-throughput"></a>Faturalandırma örneği-otomatik ölçeklendirme işleme ile kapsayıcı
+- Ücretsiz bir katman hesabında, ölçek etkin olan bir kapsayıcı oluşturduğumuz ve 4000 RU/sn 'nin en fazla RU/sn olduğunu varsayalım. Bu kaynak, 400 RU/s-4000 RU/s arasında otomatik olarak ölçeklendirilir. 
 - Saat 1 ile saat 10 arasında, kaynağın en az 400 RU/sn olduğunu varsayalım. Saat 11 ' de, kaynak 1000 RU/sn 'ye kadar ölçeklenirken saat içinde 400 RU/s olarak yeniden açılır.
 - 1 ile 10 arasındaki saatlerde $0, 400 RU/s, ücretsiz katmanda ele alınmıştır. 
 - Saat 11 ' de, saat içinde en yüksek RU/sn olduğu için geçerli 1000 RU/s-400 RU/s = 600 RU/s için faturalandırılırsınız. Bu, saat boyunca 6 birimlik 100 RU/sn olacaktır, bu nedenle saat için toplam verimlilik maliyeti 6 birim * $0,012 = $0,072 olur. 
@@ -246,7 +246,7 @@ Daha sonra faturanızı ayın sonundan önce önceden tahmin etmek istediğiniz 
 
 |**Verimlilik maliyeti** | | | |
 |----|----|----|----|
-|İşlem Türü| İstek/sn| Ort. RU/istek| RUs gerekli|
+|İşlem türü| İstek/sn| Ort. RU/istek| RUs gerekli|
 |Yazma| 100 | 5 | 500|
 |Okuma| 400| 1| 400|
 
@@ -268,7 +268,7 @@ Azure Cosmos DB ayrılmış kapasite, tüm Azure bölgelerindeki tüm Azure Cosm
 
 Toplam faturanız (ayrılmış kapasite olmadan) olacaktır (30 gün veya 720 saat varsayılır): 
 
-|**Geli**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
+|**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**|**Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
 |Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |
@@ -282,7 +282,7 @@ Bunun yerine ayrılmış kapasite satın aldığınızı göz önünde bulunduru
 
 Kullanım dışı olarak satın almış olduğunuz miktar, $8 KB/sn 100 için saat başına, saat başına $6,40 fiyat üzerinden Doğu ABD. Daha sonra, aboneliğiniz için ayarlanan bölgesel liste fiyatlarındaki herhangi bir genel Azure bölgesindeki sağlanan aktarım hızı kapasitesi için saatlik olarak bu ön ödemeli üretilen iş hacmi üzerinden aşağı doğru çizebilirsiniz. Bu örnekte, Doğu ABD her biri için 50 K RU/sn sağladığınızda ve Japonya Doğu, saat başına sağlanan aktarım hızı $8,00 ' i çizecek ve saat başına $0,50 yaş (veya $360/ay) üzerinden faturalandırılırsınız. 
 
-|**Geli**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
+|**Bölge**| **100 RU/sn başına saatlik fiyat**|**Birimler (RU/s)**| **Faturalandırılan tutar (saatlik)**| **Faturalandırılan tutar (aylık)**|
 |----|----|----|----|----|
 |Doğu ABD|$0,008 |50 K|$4|$2.880 |
 |Doğu Japonya|$0,009 |50 K| $4,50 |$3.240 |

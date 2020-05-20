@@ -3,12 +3,12 @@ title: SSS - Azure VM’lerindeki SAP HANA veritabanlarını yedekleme
 description: Bu makalede, Azure Backup hizmetini kullanarak SAP HANA veritabanlarının yedeklenmesi hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155401"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660124"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Sık sorulan sorular – Azure VM 'lerinde SAP HANA veritabanlarını yedekleyin
 
@@ -60,6 +60,18 @@ Sorun giderme kılavuzunun [Bu bölümüne](https://docs.microsoft.com/azure/bac
 ### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>SAP HANA sistem çoğalttım var (HSR), bu kurulum için yedeklemeyi nasıl yapılandırmalıyım?
 
 HSR 'nin birincil ve ikincil düğümleri iki bireysel, ilişkili olmayan VM olarak değerlendirilir. Birincil düğümde yedeklemeyi yapılandırmanız gerekir ve yük devretme gerçekleştiğinde, ikincil düğümde (bundan böyle birincil düğüm haline gelir) yedeklemeyi yapılandırmanız gerekir. Diğer düğüme yedekleme için otomatik olarak ' yük devretme ' yok.
+
+### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>İsteğe bağlı bir yedeklemeyi Azure Kasası yerine yerel dosya sistemine nasıl taşıyabilirim?
+
+1. Şu anda çalışmakta olan yedeklemenin istenen veritabanında tamamlanmasını bekle (Studio 'nun tamamlanmasını denetle)
+1. Aşağıdaki adımları kullanarak, günlük yedeklemelerini devre dışı bırakın ve istenen VERITABANı için Katalog yedeklemesini **dosya sistemine** ayarlayın:
+1. **SystemDB**  ->  **yapılandırma**  ->  **veritabanı**  ->  **filtresi Seç (günlük)** öğesine çift tıklayın
+    1. Enable_auto_log_backup **Hayır** olarak ayarla
+    1. Log_backup_using_backint **false** olarak ayarla
+1. İstenen veritabanında isteğe bağlı bir yedekleme yapın ve yedeklemenin ve kataloğun yedeğinin tamamlanmasını bekleyin.
+1. Yedeklemelerin Azure kasasına akmasını sağlamak için önceki ayarlara geri dönün:
+    1. Enable_auto_log_backup **Evet** olarak ayarla
+    1. Log_backup_using_backint **true** olarak ayarla
 
 ## <a name="restore"></a>Geri Yükleme
 

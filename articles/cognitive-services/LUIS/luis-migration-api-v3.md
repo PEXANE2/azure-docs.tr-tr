@@ -2,14 +2,14 @@
 title: V3 API 'sindeki tahmin uç noktası değişiklikleri
 description: Sorgu tahmin uç noktası v3 API 'Leri değişti. Sürüm 3 uç nokta API 'Lerine nasıl geçiş yapılacağını anlamak için bu kılavuzu kullanın.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530394"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653857"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -39,11 +39,11 @@ V3, GA 'ya taşıma kapsamında aşağıdaki değişiklikleri yaptı:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * `units` İle ölçülebilir birim anahtar adı`unit`
+    * İle ölçülebilir birim anahtar adı `units``unit`
 
 * İstek gövdesi JSON değişikliği:
     * öğesinden `preferExternalEntities``preferExternalEntities`
-    * dış `score` varlıklar için isteğe bağlı parametre
+    * `score`dış varlıklar için isteğe bağlı parametre
 
 * Yanıt gövdesi JSON değişiklikleri:
     * `normalizedQuery`kaldırıldı
@@ -73,16 +73,9 @@ V2 tahmin API 'SI v3 önizlemesi sonrasında 8 Haziran 2020 ' den sonra en az 9 
 
 ### <a name="changes-by-slot-name-and-version-name"></a>Yuva adı ve sürüm adına göre değişiklikler
 
-V3 uç nokta HTTP çağrısının biçimi değişti.
+[V3 uç nokta http çağrısının biçimi](developer-reference-resource.md#rest-endpoints) değişti.
 
-Sürümüne göre sorgulamak istiyorsanız, önce ile `"directVersionPublish":true` [API aracılığıyla yayımlamanız](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) gerekir. Yuva adı yerine sürüm KIMLIĞINE başvuran uç noktayı sorgulayın.
-
-|TAHMIN APı SÜRÜMÜ|YÖNTEMIDIR|URL'si|
-|--|--|--|
-|Yüklemesinde|GET|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/tahmin? sorgu =<b>{Query}</b>|
-|Yüklemesinde|POST|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-adı}</b>/tahmin|
-|V2|GET|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{VERSION-ID}</b>/PREDICT? sorgu =<b>{Query}</b>|
-|V2|POST|https://<b>{REGION}</b>. api.Cognitive.Microsoft.com/Luis/<b>Tahmini</b>/<b>v 3.0</b>/Apps/<b>{app-id}</b>/Versions/<b>{sürüm-kimliği}</b>/tahmin|
+Sürümüne göre sorgulamak istiyorsanız, önce ile [API aracılığıyla yayımlamanız](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) gerekir `"directVersionPublish":true` . Yuva adı yerine sürüm KIMLIĞINE başvuran uç noktayı sorgulayın.
 
 |İçin geçerli değerler`SLOT-NAME`|
 |--|
@@ -99,10 +92,10 @@ V3 API 'sinde farklı sorgu dizesi parametreleri vardır.
 |--|--|--|--|--|
 |`log`|boole|V2 & V3|yanlış|Sorguyu günlük dosyasında sakla. Varsayılan değer false 'dur.|
 |`query`|string|Yalnızca v3|Varsayılan değer yok-GET isteğinde gerekli|**V2 'de**, tahmin edilecek olan söylenişi `q` parametresi. <br><br>**V3 'de**, işlev `query` parametreye geçirilir.|
-|`show-all-intents`|boole|Yalnızca v3|yanlış|**Tahmin. amaçlar** nesnesindeki karşılık gelen puanı içeren tüm hedefleri döndürün. Amaçlar bir üst `intents` nesnede nesneler olarak döndürülür. Bu, bir dizide amacı bulmaya gerek kalmadan programlı erişime izin verir: `prediction.intents.give`. V2 'de, bunlar bir dizide döndürülür. |
-|`verbose`|boole|V2 & V3|yanlış|**V2 sürümünde**, true olarak ayarlandığında, tüm tahmin edilen amaçlar döndürülür. Tahmin edilen `show-all-intents`tüm amaçlar için ihtiyaç duyuyorsanız, v3 param ' ı kullanın.<br><br>**V3 'de**, bu parametre yalnızca varlık tahmini varlık meta veri ayrıntılarını sağlar.  |
+|`show-all-intents`|boole|Yalnızca v3|yanlış|**Tahmin. amaçlar** nesnesindeki karşılık gelen puanı içeren tüm hedefleri döndürün. Amaçlar bir üst nesnede nesneler olarak döndürülür `intents` . Bu, bir dizide amacı bulmaya gerek kalmadan programlı erişime izin verir: `prediction.intents.give` . V2 'de, bunlar bir dizide döndürülür. |
+|`verbose`|boole|V2 & V3|yanlış|**V2 sürümünde**, true olarak ayarlandığında, tüm tahmin edilen amaçlar döndürülür. Tahmin edilen tüm amaçlar için ihtiyaç duyuyorsanız, v3 param ' ı kullanın `show-all-intents` .<br><br>**V3 'de**, bu parametre yalnızca varlık tahmini varlık meta veri ayrıntılarını sağlar.  |
 |`timezoneOffset`|string|V2|-|DatetimeV2 varlıklara uygulanan saat dilimi.|
-|`datetimeReference`|string|Yüklemesinde|-|DatetimeV2 varlıklara uygulanan [saat dilimi](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . V2 `timezoneOffset` 'den değiştirilir.|
+|`datetimeReference`|string|Yüklemesinde|-|DatetimeV2 varlıklara uygulanan [saat dilimi](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . `timezoneOffset`V2 'den değiştirilir.|
 
 
 ### <a name="v3-post-body"></a>V3 posta gövdesi
@@ -135,7 +128,7 @@ Sorgu yanıtı JSON, en sık kullanılan verilere daha fazla programlı erişim 
 
 
 
-V2 `verbose` için en üstteki JSON özellikleri, `intents` özelliği true olarak ayarlandığında, özelliğin tüm amaçlarını ve puanlarını döndürür:
+V2 için en üstteki JSON özellikleri, `verbose` özelliği true olarak ayarlandığında, özelliğin tüm amaçlarını ve puanlarını döndürür `intents` :
 
 ```JSON
 {
@@ -160,7 +153,7 @@ V3 için en üstteki JSON özellikleri şunlardır:
 }
 ```
 
-`intents` Nesne sıralanmamış bir liste. ' Deki ilk alt öğenin öğesine `intents` karşılık geldiğini varsayın. `topIntent` Bunun yerine, puanı `topIntent` bulmak için değerini kullanın:
+`intents`Nesne sıralanmamış bir liste. ' Deki ilk alt öğenin `intents` öğesine karşılık geldiğini varsayın `topIntent` . Bunun yerine, `topIntent` puanı bulmak için değerini kullanın:
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
@@ -169,26 +162,26 @@ const score = intents[topIntentName];
 
 Response JSON şeması değişiklikleri için izin ver:
 
-* Orijinal utterance, `query`ve döndürülen tahmin arasındaki ayrımı temizleyin `prediction`.
+* Orijinal utterance, `query` ve döndürülen tahmin arasındaki ayrımı temizleyin `prediction` .
 * Tahmin edilen verilere programlı erişim daha kolay. V2 'deki bir dizi aracılığıyla listelemek yerine, her iki amaç ve **varlık için değerlere** göre değerlere erişebilirsiniz. Tahmin edilen varlık rolleri için, rol adı tüm uygulama genelinde benzersiz olduğundan döndürülür.
 * Saptandığı takdirde veri türleri dikkate alınır. Numerics artık dizeler olarak döndürülmez.
-* `$instance` Nesne içinde döndürülen ilk öncelikli tahmin bilgileri ve ek meta veriler arasındaki ayrım.
+* Nesne içinde döndürülen ilk öncelikli tahmin bilgileri ve ek meta veriler arasındaki ayrım `$instance` .
 
 ### <a name="entity-response-changes"></a>Varlık yanıtı değişiklikleri
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Varlıkların, utterlerdeki yerleşimini işaretleme
 
-**V2 sürümünde**bir varlık `startIndex` ve `endIndex`ile bir utterlik olarak işaretlendi.
+**V2 sürümünde**bir varlık ve ile bir utterlik olarak işaretlendi `startIndex` `endIndex` .
 
-**V3 'de**varlık ve `startIndex` `entityLength`ile işaretlenir.
+**V3 'de**varlık ve ile işaretlenir `startIndex` `entityLength` .
 
-#### <a name="access-instance-for-entity-metadata"></a>Varlık `$instance` meta verileri erişimi
+#### <a name="access-instance-for-entity-metadata"></a>`$instance`Varlık meta verileri erişimi
 
-Varlık meta verileri gerekiyorsa, sorgu dizesinin `verbose=true` bayrağını kullanması gerekir ve yanıt `$instance` nesnedeki meta verileri içerir. Aşağıdaki bölümlerde JSON yanıtlarında örnekler gösterilmektedir.
+Varlık meta verileri gerekiyorsa, sorgu dizesinin bayrağını kullanması gerekir `verbose=true` ve yanıt nesnedeki meta verileri içerir `$instance` . Aşağıdaki bölümlerde JSON yanıtlarında örnekler gösterilmektedir.
 
 #### <a name="each-predicted-entity-is-represented-as-an-array"></a>Tahmin edilen her varlık bir dizi olarak temsil edilir
 
-Her `prediction.entities.<entity-name>` varlık, utterance 'de birden çok kez tahmin edilebileceği için nesne bir dizi içerir.
+`prediction.entities.<entity-name>`Her varlık, utterance 'de birden çok kez tahmin edilebileceği için nesne bir dizi içerir.
 
 <a name="prebuilt-entities-with-new-json"></a>
 
@@ -210,7 +203,7 @@ Bir liste varlık tahmini için JSON, dizi dizileri olacak şekilde değiştiril
 ```
 Her iç dizi, utterance içindeki metne karşılık gelir. Aynı metin bir liste varlığının birden fazla alt listesinde görünebildiğinden iç nesne bir dizidir.
 
-Nesneyle nesne arasında `entities` `$instance` eşleme yaparken, nesne sırası, liste varlık tahminleri için korunur.
+Nesneyle nesne arasında eşleme yaparken `entities` , nesne `$instance` sırası, liste varlık tahminleri için korunur.
 
 ```nodejs
 const item = 0; // order preserved, use same enumeration for both
@@ -220,9 +213,9 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 #### <a name="entity-role-name-instead-of-entity-name"></a>Varlık adı yerine varlık rolü adı
 
-V2 'de `entities` dizi, benzersiz tanımlayıcı olan varlık adına sahip tüm tahmin edilen varlıkları döndürdü. V3 'de, varlık roller kullanıyorsa ve tahmin bir varlık rolü için ise, birincil tanımlayıcı rol adıdır. Bu, varlık rolü adlarının diğer model (amaç, varlık) adları da dahil olmak üzere tüm uygulama genelinde benzersiz olması gerektiğinden mümkündür.
+V2 'de dizi, `entities` benzersiz tanımlayıcı olan varlık adına sahip tüm tahmin edilen varlıkları döndürdü. V3 'de, varlık roller kullanıyorsa ve tahmin bir varlık rolü için ise, birincil tanımlayıcı rol adıdır. Bu, varlık rolü adlarının diğer model (amaç, varlık) adları da dahil olmak üzere tüm uygulama genelinde benzersiz olması gerektiğinden mümkündür.
 
-Aşağıdaki örnekte: metnini içeren bir söylenişi düşünün `Yellow Bird Lane`. Bu metin, özel `Location` bir varlığın rolü olarak tahmin edilir. `Destination`
+Aşağıdaki örnekte: metnini içeren bir söylenişi düşünün `Yellow Bird Lane` . Bu metin, özel bir varlığın rolü olarak tahmin edilir `Location` `Destination` .
 
 |Utterance metni|Varlık adı|Rol adı|
 |--|--|--|
@@ -253,7 +246,7 @@ V3 'de, rolün tahmini rol için olması durumunda varlığa _varlık rolü_baş
 }
 ```
 
-V3 'de, varlık meta verilerini döndürme `verbose` bayrağıyla aynı sonuç:
+V3 'de, `verbose` varlık meta verilerini döndürme bayrağıyla aynı sonuç:
 
 ```JSON
 "entities":{

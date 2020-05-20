@@ -1,24 +1,24 @@
 ---
-title: Bulut çözümü sağlayıcıları | Azure Marketi
-description: Yayımcılar artık Microsoft Bulut çözüm sağlayıcısı (CSP) iş ortağı kanalı aracılığıyla teklifleri satın alabilir.
+title: Bulut çözümü sağlayıcısı-Microsoft ticari Market
+description: Tekliflerinizi ticari Market 'teki Microsoft Bulut çözüm sağlayıcısı (CSP) program iş ortağı kanalı aracılığıyla satma hakkında bilgi edinin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d7f14728f5acbcb76d3109d76b6de3c691e35543
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160656"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658099"
 ---
-# <a name="cloud-solution-providers"></a>Bulut Çözüm Sağlayıcıları
+# <a name="cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı
 
-Yazılım teklifleri, bulut çözümü sağlayıcısı (CSP) programında iş ortakları tarafından sunulan milyonlarca uygun Microsoft müşterilerine, [Microsoft Web storets](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)aracılığıyla sunulan tekliflerin genel kullanıma sunulmalarına ek olarak erişebilir.
+Bu makalede, teklifinizin bulut çözümü sağlayıcısı (CSP) programı için kullanılabilir olacak şekilde nasıl yapılandırılacağı açıklanmaktadır. [Ticari Market Web stokileri](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)aracılığıyla tekliflerinizi yayımlamaya ek olarak, programın sunduğu milyonlarca Microsoft müşterilerine ulaşmak için CSP programını da satın alabilirsiniz.
 
-Yayımcılar, CSP programında kullanılabilirlik için teklifleri, yeni bir teklif veya mevcut bir teklif için, iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlar.
+CSP iş ortaklarının ürünlerinizi satmasını ve müşteriler için paketlenmiş çözümler oluşturmasını sağlayan yeni veya mevcut teklifleri CSP programında kullanılabilir olarak yapılandırabilirsiniz.
 
 Yayımcılar, son müşterilere onarım desteği sağlamaktan ve CSP programındaki iş ortakları ve/veya müşterilerin destek için sizinle iletişim kurabilmesi için bir mekanizma sağlamaktan sorumludur. CSP programındaki iş ortaklarının, müşterilerden katman 1 destek taleplerini işlemesini sağlamak için, CSP programındaki iş ortaklarını Kullanıcı belgeleri, eğitim ve hizmet durumu/kesinti bildirimleri (geçerli olduğu şekilde) sağlamak en iyi uygulamadır.  
 

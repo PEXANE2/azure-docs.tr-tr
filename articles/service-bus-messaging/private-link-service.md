@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141940"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650956"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Service Bus Azure özel bağlantısıyla tümleştirin (Önizleme)
+# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus Azure özel bağlantısıyla tümleştirin
 
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Service Bus, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
@@ -38,13 +38,11 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 > [!IMPORTANT]
 > Bu özellik, Azure Service Bus **Premium** katmanıyla desteklenir. Premium katmanı hakkında daha fazla bilgi için, [Service Bus Premium ve standart mesajlaşma katmanları](service-bus-premium-messaging.md) makalesine bakın.
->
-> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bir Service Bus ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -59,11 +57,11 @@ Bir Service Bus ad alanını Azure özel bağlantısıyla bütünleştirmek içi
 
 Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bir uç nokta oluşturabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **Service Bus**yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
 4. **Ayarlar**altında **ağ** sekmesini seçin.
-5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları (Önizleme)** sekmesini seçin
+5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin
 6. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
     ![Özel uç nokta Ekle düğmesi](./media/private-link-service/private-link-service-3.png)
@@ -85,7 +83,7 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
-        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Service Bus ad alanına gitmeniz ve URI 'nin ' den `/subscriptions/`başlayarak olan kısmını kopyalamadır. Örnek için aşağıdaki resme bakın. 
+        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Service Bus ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek için aşağıdaki resme bakın. 
         2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür. 
         3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür. 
         4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
@@ -175,7 +173,7 @@ Dört sağlama durumu vardır:
 
 | Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Yok | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
 | Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedilen | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
 | Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
@@ -231,46 +229,33 @@ Dört sağlama durumu vardır:
 
 İlk olarak, [Azure Portal Windows sanal makinesi oluşturma](../virtual-machines/windows/quick-create-portal.md) bölümündeki adımları izleyerek bir sanal makine oluşturun
 
-**Ağ** sekmesinde:
+**Ağ** sekmesinde: 
 
-1. **Sanal ağ** ve **alt ağ**belirtin. Yeni bir sanal ağ oluşturabilir veya var olan bir sanal ağı seçebilirsiniz. Mevcut bir tane seçilirse, bölgenin eşleştiğinden emin olun.
-1. Genel bir **IP** kaynağı belirtin.
-1. **NIC ağ güvenlik grubu**için **hiçbiri**' ni seçin.
-1. **Yük Dengeleme**için **Hayır**' ı seçin.
+1. **Sanal ağ** ve **alt ağ**belirtin. Özel uç noktasını dağıttığınız sanal ağı seçmeniz gerekir.
+2. Genel bir **IP** kaynağı belirtin.
+3. **NIC ağ güvenlik grubu**için **hiçbiri**' ni seçin.
+4. **Yük Dengeleme**için **Hayır**' ı seçin.
 
-Komut satırını açın ve şu komutu çalıştırın:
+VM 'ye bağlanın, komut satırını açın ve şu komutu çalıştırın:
 
 ```console
-nslookup <your-service-bus-namespace-name>.servicebus.windows.net
+nslookup <service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Bir Service Bus ad alanının IP adresini ortak bir uç nokta üzerinden çözümlemek için NS arama komutunu çalıştırırsanız şuna benzer bir sonuç görürsünüz:
+Aşağıdakine benzer bir sonuç görmeniz gerekir. 
 
 ```console
-c:\ >nslookup <your-service-bus-namespace-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
-```
-
-Bir Service Bus ad alanının IP adresini özel bir uç nokta üzerinden çözümlemek için NS arama komutunu çalıştırırsanız şuna benzer bir sonuç görürsünüz:
-
-```console
-c:\ >nslookup your_service-bus-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
+Name:    <service-bus-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 
 **Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar**: Azure Service Bus Için özel uç nokta genel önizlemede. Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
+**Sınırlamalar**: Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
 
 **Service Bus ad alanı başına en fazla özel uç nokta sayısı**: 120.
 

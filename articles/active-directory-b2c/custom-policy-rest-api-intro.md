@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337421"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636992"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkenizde REST API talep alışverişlerini tümleştirin
 
@@ -162,7 +162,7 @@ Teknik bir teknik profilde, geçerli oturumun dilini/yerel ayarını göndermek 
 
 ## <a name="handling-error-messages"></a>Hata iletilerini işleme
 
-REST API, "kullanıcının CRM sisteminde bulunamamıştır" gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa REST API bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir. Daha fazla bilgi için bkz. [Restsize teknik profil](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message).
+REST API, "kullanıcının CRM sisteminde bulunamamıştır" gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa REST API bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir. Daha fazla bilgi için bkz. [Restsize teknik profil](restful-technical-profile.md#returning-error-message).
 
 Bu yalnızca bir doğrulama teknik profilinden REST API teknik bir profil çağırarak elde edilebilir. Bu, kullanıcının sayfadaki verileri düzeltmesini ve sayfa gönderimi sırasında doğrulamayı yeniden çalıştırmasını sağlar.
 

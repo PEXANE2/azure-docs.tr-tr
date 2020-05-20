@@ -3,12 +3,12 @@ title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930072"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653341"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Kiracı düzeyinde kaynaklar oluşturma
 
@@ -19,7 +19,7 @@ Kuruluşunuz geliştikçe, Azure AD kiracınızda [ilkeler](../../governance/pol
 Aşağıdaki kaynak türlerini kiracı düzeyinde dağıtabilirsiniz:
 
 * [dağıtımlar](/azure/templates/microsoft.resources/deployments) -yönetim gruplarına veya aboneliklerine dağıtan iç içe şablonlar için.
-* Yönetim grupları
+* [Yönetim grupları](/azure/templates/microsoft.management/managementgroups)
 * [Poliyasatamaları](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -44,7 +44,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 ## <a name="required-access"></a>Gerekli erişim
 
-Şablonu dağıtmanın asıl, kiracı kapsamında kaynak oluşturmak için izinlere sahip olmalıdır. Sorumlunun, dağıtım eylemlerini (`Microsoft.Resources/deployments/*`) yürütme ve şablonda tanımlanan kaynakları oluşturma izni olması gerekir. Örneğin, bir yönetim grubu oluşturmak için sorumlu, kiracı kapsamında katkıda bulunan iznine sahip olmalıdır. Rol atamaları oluşturmak için sorumlunun sahip iznine sahip olması gerekir.
+Şablonu dağıtmanın asıl, kiracı kapsamında kaynak oluşturmak için izinlere sahip olmalıdır. Sorumlunun, dağıtım eylemlerini ( `Microsoft.Resources/deployments/*` ) yürütme ve şablonda tanımlanan kaynakları oluşturma izni olması gerekir. Örneğin, bir yönetim grubu oluşturmak için sorumlu, kiracı kapsamında katkıda bulunan iznine sahip olmalıdır. Rol atamaları oluşturmak için sorumlunun sahip iznine sahip olması gerekir.
 
 Azure Active Directory genel yöneticisinin rol atama izni otomatik olarak yoktur. Şablon dağıtımlarını kiracı kapsamında etkinleştirmek için, genel yönetici aşağıdaki adımları vermelidir:
 
@@ -92,7 +92,7 @@ Kiracı düzeyinde dağıtımlar için dağıtım için bir konum sağlamanız g
 
 Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **azuredeploy. JSON** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
-Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu `InvalidDeploymentLocation`alırsanız, bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
+Her dağıtım adı için konum sabittir. Farklı bir konumda aynı ada sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. Hata kodunu alırsanız `InvalidDeploymentLocation` , bu ad için önceki dağıtımla farklı bir ad veya aynı konumu kullanın.
 
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 

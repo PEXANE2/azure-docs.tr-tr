@@ -16,4 +16,4 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75527068"
 ---
-**Uygulama hedefi:** ![Evet](media/aml-applies-to-skus/yes.png)temel sürüm ![Evet](media/aml-applies-to-skus/yes.png)Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Upgrade to Enterprise edition](../articles/machine-learning/how-to-manage-workspace.md#upgrade)(Enterprise Edition 'a yükseltme) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+**Uygulama hedefi:** ![ Evet ](media/aml-applies-to-skus/yes.png) Basic Edition ![ Yes ](media/aml-applies-to-skus/yes.png) Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ([Enterprise Edition 'a yükseltme](../articles/machine-learning/how-to-manage-workspace.md#upgrade))  

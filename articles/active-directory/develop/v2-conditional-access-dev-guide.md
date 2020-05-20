@@ -13,18 +13,18 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aaeb2ab6e22107d8c9edfbce45c4ae212e8649f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535902"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640434"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory için Geliştirici Kılavuzu
 
 Azure Active Directory (Azure AD) içindeki koşullu erişim özelliği, uygulamanızın güvenliğini sağlamak ve bir hizmeti korumak için kullanabileceğiniz çeşitli yollarla bir tane sunmaktadır. Koşullu erişim, geliştiricilerin ve kurumsal müşterilerin hizmetleri dahil etmek için çok sayıda şekilde korunmasını sağlar:
 
-* Çok faktörlü kimlik doğrulaması
+* Multi-factor authentication
 * Yalnızca Intune 'a kayıtlı cihazların belirli hizmetlere erişmesine izin verme
 * Kullanıcı konumlarını ve IP aralıklarını kısıtlama
 
@@ -80,7 +80,7 @@ Bir uygulama, kullanıcılarının, kayıtlar ve Exchange üzerinde ayarlanan t�
 
 Birçok farklı uygulama topolojisi için, oturum oluşturulduğunda koşullu erişim ilkesi değerlendirilir. Bir koşullu erişim ilkesi uygulama ve hizmetlerin ayrıntı düzeyi üzerinde çalışırken, çağrıldığı nokta, gerçekleştirmeye çalıştığınız senaryoya göre büyük ölçüde değişir.
 
-Uygulamanız koşullu erişim ilkesiyle bir hizmete erişmeye çalıştığında, koşullu erişim zorluğu ile karşılaşabilir. Bu zorluk, Azure AD 'den `claims` yanıt olarak gelen parametresinde kodlanır. Bu sınama parametresine bir örnek aşağıda verilmiştir:
+Uygulamanız koşullu erişim ilkesiyle bir hizmete erişmeye çalıştığında, koşullu erişim zorluğu ile karşılaşabilir. Bu zorluk, `claims` Azure AD 'den yanıt olarak gelen parametresinde kodlanır. Bu sınama parametresine bir örnek aşağıda verilmiştir:
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -90,7 +90,7 @@ Geliştiriciler bu zorluğu alabilir ve Azure AD 'ye yeni bir istek ekleyebilir.
 
 ## <a name="scenarios"></a>Senaryolar
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure AD koşullu erişimi, [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)eklenen bir özelliktir. [Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.
 
@@ -115,7 +115,7 @@ Web API 1 her zaman aşağı akış API 'sine ulaşmayamayacağından, Web API 1
 Azure AD bazı ilgi çekici verilerle HTTP yanıtı döndürür:
 
 > [!NOTE]
-> Bu örnekte, bir Multi-Factor Authentication hata açıklaması, ancak koşullu erişim için çok çeşitli bir `interaction_required` olası olabilir.
+> Bu örnekte, bir Multi-Factor Authentication hata açıklaması, ancak koşullu erişim için çok çeşitli bir olası olabilir `interaction_required` .
 
 ```
 HTTP 400; Bad Request
@@ -124,9 +124,9 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-Web API 1 ' de hatayı `error=interaction_required`yakalar ve `claims` sınamayı masaüstü uygulamasına geri gönderirsiniz. Bu noktada, masaüstü uygulaması yeni `acquireToken()` bir çağrı yapabilir ve `claims`sınamayı ek bir sorgu dizesi parametresi olarak ekleyebilir. Bu yeni istek, kullanıcının çok faktörlü kimlik doğrulamasını yapması ve ardından bu yeni belirteci Web API 1 ' e geri göndermesini ve şirket adına akışını tamamlamasını gerektirir.
+Web API 1 ' de hatayı yakalar `error=interaction_required` ve `claims` sınamayı masaüstü uygulamasına geri gönderirsiniz. Bu noktada, masaüstü uygulaması yeni bir `acquireToken()` çağrı yapabilir ve `claims` sınamayı ek bir sorgu dizesi parametresi olarak ekleyebilir. Bu yeni istek, kullanıcının çok faktörlü kimlik doğrulamasını yapması ve ardından bu yeni belirteci Web API 1 ' e geri göndermesini ve şirket adına akışını tamamlamasını gerektirir.
 
-Bu senaryoyu denemek için bkz. [.NET kod](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)örneğimiz. Talep sınamasını Web API 1 ' den yerel uygulamaya nasıl geçirebileceğinizi ve istemci uygulaması içinde yeni bir istek oluşturmayı gösterir.
+Bu senaryoyu denemek için bkz. [.NET kod](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph#handling-required-interactions-with-the-user-dynamic-consent-mfa-etc-)örneğimiz. Talep sınamasını Web API 1 ' den yerel uygulamaya nasıl geçirebileceğinizi ve istemci uygulaması içinde yeni bir istek oluşturmayı gösterir.
 
 ## <a name="scenario-app-accessing-multiple-services"></a>Senaryo: birden çok hizmete erişen uygulama
 
@@ -136,7 +136,7 @@ A ve B Web hizmeti ve B Web hizmeti, koşullu erişim ilkenizin uygulanmış old
 
 ![Birden çok hizmet akışı diyagramına erişen uygulama](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Alternatif olarak, uygulama başlangıçta Web hizmeti için bir belirteç isterse, Son Kullanıcı koşullu erişim ilkesini çağırmaz. Bu, uygulama geliştiricisinin Son Kullanıcı deneyimini denetlemesine izin verir ve koşullu erişim ilkesinin her durumda çağrılmasını zorlamaz. Karmaşık durum, uygulamanın daha sonra Web hizmeti B için bir belirteç istemesi durumunda olur. Bu noktada, son kullanıcının koşullu erişim ilkesiyle uyumlu olması gerekir. Uygulama `acquireToken`' ı denediğinde, aşağıdaki hatayı oluşturabilir (Aşağıdaki diyagramda gösterilmiştir):
+Alternatif olarak, uygulama başlangıçta Web hizmeti için bir belirteç isterse, Son Kullanıcı koşullu erişim ilkesini çağırmaz. Bu, uygulama geliştiricisinin Son Kullanıcı deneyimini denetlemesine izin verir ve koşullu erişim ilkesinin her durumda çağrılmasını zorlamaz. Karmaşık durum, uygulamanın daha sonra Web hizmeti B için bir belirteç istemesi durumunda olur. Bu noktada, son kullanıcının koşullu erişim ilkesiyle uyumlu olması gerekir. Uygulama `acquireToken` ' ı denediğinde, aşağıdaki hatayı oluşturabilir (Aşağıdaki diyagramda gösterilmiştir):
 
 ```
 HTTP 400; Bad Request
@@ -147,23 +147,23 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Yeni bir belirteç isteyen birden çok hizmete erişen uygulama](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Uygulama MSAL kitaplığını kullanıyorsa, belirteci alma hatası her zaman etkileşimli olarak yeniden denenir. Bu etkileşimli istek gerçekleştiğinde, son kullanıcının koşullu erişime uyum sağlamak için bir fırsat vardır. İstek bir `AcquireTokenSilentAsync` veya `PromptBehavior.Never` bu durumda, uygulamanın son kullanıcıya ilkeyle uyum sağlaması için etkileşimli ```AcquireToken``` bir istek gerçekleştirmesi gereken durumlar bu şekilde geçerlidir.
+Uygulama MSAL kitaplığını kullanıyorsa, belirteci alma hatası her zaman etkileşimli olarak yeniden denenir. Bu etkileşimli istek gerçekleştiğinde, son kullanıcının koşullu erişime uyum sağlamak için bir fırsat vardır. İstek bir `AcquireTokenSilentAsync` veya bu `PromptBehavior.Never` durumda, uygulamanın ```AcquireToken``` son kullanıcıya ilkeyle uyum sağlaması için etkileşimli bir istek gerçekleştirmesi gereken durumlar bu şekilde geçerlidir.
 
 ## <a name="scenario-single-page-app-spa-using-msaljs"></a>Senaryo: MSAL. js kullanan tek sayfalı uygulama (SPA)
 
 Bu senaryoda, koşullu erişim korumalı bir Web API 'SI çağırmak için MSAL. js ' yi kullanarak tek sayfalı bir uygulama (SPA) olduğunda büyük/küçük harfe kılavuzluk ederiz. Bu basit bir mimaridir, ancak koşullu erişim konusunda geliştirme yaparken dikkate alınması gereken bazı nuslar vardır.
 
-MSAL. js ' de, belirteçleri elde eden birkaç işlev vardır `loginPopup()`:, `acquireTokenSilent(...)` `acquireTokenPopup(…)`, ve. `acquireTokenRedirect(…)`
+MSAL. js ' de, belirteçleri elde eden birkaç işlev vardır: `loginPopup()` ,, `acquireTokenSilent(...)` `acquireTokenPopup(…)` ve `acquireTokenRedirect(…)` .
 
 * `loginPopup()`etkileşimli bir oturum açma isteği aracılığıyla bir KIMLIK belirteci edinir, ancak herhangi bir hizmet için (koşullu erişim korumalı Web API 'SI dahil) erişim belirteçleri almaz.
 * `acquireTokenSilent(…)`daha sonra, bir erişim belirtecini sessizce almak için kullanılabilir ve bu, herhangi bir koşulda Kullanıcı arabirimini göstermez.
 * `acquireTokenPopup(…)`ve `acquireTokenRedirect(…)` her ikisi de bir kaynak için, her zaman oturum açma kullanıcı arabirimini gösteren bir belirteç istemek için kullanılır.
 
-Bir uygulama, Web API 'sini çağırmak için bir erişim belirtecine ihtiyaç duyduğunda, çalışır `acquireTokenSilent(…)`. Belirteç oturumunun kullanım alanı dolmuşsa veya koşullu erişim ilkesiyle uyumlu olması gerekiyorsa, *Acquiretoken* işlevi başarısız olur ve uygulama veya `acquireTokenPopup()` `acquireTokenRedirect()`kullanır.
+Bir uygulama, Web API 'sini çağırmak için bir erişim belirtecine ihtiyaç duyduğunda, çalışır `acquireTokenSilent(…)` . Belirteç oturumunun kullanım alanı dolmuşsa veya koşullu erişim ilkesiyle uyumlu olması gerekiyorsa, *Acquiretoken* işlevi başarısız olur ve uygulama `acquireTokenPopup()` veya kullanır `acquireTokenRedirect()` .
 
 ![MSAL Flow diyagramı kullanan tek sayfalı uygulama](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
-Koşullu erişim senaryoümüzü kullanarak bir örnek yürülim. Son Kullanıcı siteye tam olarak sahiptir ve bir oturumu yoktur. Bir `loginPopup()` çağrı gerçekleştirdik, Multi-Factor Authentication olmadan bir kimlik belirteci alın. Daha sonra Kullanıcı, uygulamanın bir Web API 'sinden veri istemesini gerektiren bir düğmeye rastar. Uygulama bir `acquireTokenSilent()` çağrı gerçekleştirmeye çalışır, ancak Kullanıcı Multi-Factor Authentication 'ı henüz gerçekleştirmediğinden ve koşullu erişim ilkesiyle uyumlu olması gerektiğinden başarısız olur.
+Koşullu erişim senaryoümüzü kullanarak bir örnek yürülim. Son Kullanıcı siteye tam olarak sahiptir ve bir oturumu yoktur. Bir çağrı gerçekleştirdik `loginPopup()` , Multi-Factor Authentication olmadan BIR kimlik belirteci alın. Daha sonra Kullanıcı, uygulamanın bir Web API 'sinden veri istemesini gerektiren bir düğmeye rastar. Uygulama bir çağrı gerçekleştirmeye çalışır, `acquireTokenSilent()` ancak Kullanıcı Multi-Factor Authentication 'ı henüz gerçekleştirmediğinden ve koşullu erişim ilkesiyle uyumlu olması gerektiğinden başarısız olur.
 
 Azure AD aşağıdaki HTTP yanıtını geri gönderir:
 
@@ -173,7 +173,7 @@ error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 ```
 
-Uygulamamız için catch gerekmektedir `error=interaction_required`. Uygulama daha sonra aynı kaynakta ya `acquireTokenPopup()` da `acquireTokenRedirect()` kullanabilir. Kullanıcı çok faktörlü kimlik doğrulaması yapmak için zorlanır. Kullanıcı Multi-Factor Authentication 'ı tamamladıktan sonra, uygulama istenen kaynak için yeni bir erişim belirteci vermiş olur.
+Uygulamamız için catch gerekmektedir `error=interaction_required` . Uygulama daha sonra aynı kaynakta ya da kullanabilir `acquireTokenPopup()` `acquireTokenRedirect()` . Kullanıcı çok faktörlü kimlik doğrulaması yapmak için zorlanır. Kullanıcı Multi-Factor Authentication 'ı tamamladıktan sonra, uygulama istenen kaynak için yeni bir erişim belirteci vermiş olur.
 
 Bu senaryoyu denemek için, bkz. [js Spa-adına sahip kod örneği](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA ile kaydettiğiniz koşullu erişim ilkesini ve Web API 'sini kullanır. Talep sınamasını nasıl doğru bir şekilde işleyeceğinizi ve Web API 'niz için kullanılabilecek bir erişim belirteci nasıl alınacağını gösterir. Alternatif olarak, angular SPA ile ilgili yönergeler için genel [angular. js kod örneğini](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) kullanıma alın
 

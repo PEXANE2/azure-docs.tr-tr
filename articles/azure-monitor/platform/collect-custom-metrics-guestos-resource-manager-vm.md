@@ -1,32 +1,29 @@
 ---
 title: Azure Izleyici 'de şablon ile Windows VM ölçümleri toplama
-description: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+description: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm veritabanı deposuna Konuk işletim sistemi ölçümleri gönderme
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657376"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650552"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için bir Azure Resource Manager şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+Azure sanal makinelerinin Konuk işletim sistemindeki performans verileri, diğer [Platform ölçümleri](../insights/monitor-azure-resource.md#monitoring-data)gibi otomatik olarak toplanmaz. Bir REST API neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim de dahil olmak üzere Azure Izleyici ölçümlerinin tüm özellikleriyle kullanılabilmesi için, Azure Izleyici [Tanılama uzantısı](diagnostics-extension-overview.md) ' nı ölçüm veritabanına toplayın. Bu makalede, bir Windows sanal makinesi için bir Kaynak Yöneticisi şablonu kullanarak ölçüm veritabanına Konuk işletim sistemi performans ölçümleri gönderme işlemi açıklanır. 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> Azure portal kullanarak Konuk işletim sistemi ölçümleri toplamak üzere tanılama uzantısını yapılandırma hakkında ayrıntılı bilgi için, bkz. [Windows Azure tanılama uzantısı 'nı (WAD) yüklemek ve yapılandırmak](diagnostics-extension-windows-install.md).
 
-Azure Izleyici [Tanılama uzantısını](diagnostics-extension-overview.md)kullanarak, sanal makine, bulut hizmeti veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplayabilirsiniz. Uzantı [birçok farklı konuma](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
-
-Bu makalede, bir Windows sanal makinesine yönelik Konuk işletim sistemi performans ölçümlerini Azure Izleyici veri deposuna gönderme işlemi açıklanır. Tanılama sürüm 1,11 ' den başlayarak, ölçümleri doğrudan Azure Izleyici ölçümleri deposuna yazabilirsiniz; burada standart platform ölçümleri zaten toplanır.
-
-Bu konumda depolamak, platform ölçümleri için aynı eylemlere erişmenize olanak tanır. Eylemler, bir REST API ve daha fazlasını içeren neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim içerir. Geçmişte, tanılama uzantısı Azure depolama 'ya yazdı, ancak Azure Izleyici veri deposuna değil.
 
 Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir.
 
@@ -39,7 +36,7 @@ Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımlar�
 Azure Tanılama uzantısı, ölçümleri ve günlükleri farklı konumlara yönlendirmek için "veri havuzları" adlı bir özellik kullanır. Aşağıdaki adımlarda, yeni "Azure Izleyici" veri havuzunu kullanarak bir VM dağıtmak için Kaynak Yöneticisi şablonu ve PowerShell 'in nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="author-resource-manager-template"></a>Kaynak Yöneticisi şablonu yaz
-Bu örnekte, genel kullanıma açık bir örnek şablon kullanabilirsiniz. Başlangıç şablonları https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
+Bu örnekte, genel kullanıma açık bir örnek şablon kullanabilirsiniz. Başlangıç şablonları https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows .
 
 - **Azuredeploy. JSON** , bir sanal makinenin dağıtımı için önceden yapılandırılmış bir kaynak yöneticisi şablonudur.
 
@@ -125,7 +122,7 @@ Azure 'un MSI uzantısına bir sistem kimliği atamasını sağlamak için **kim
     ...
 ```
 
-Windows sanal makinesinde tanılama uzantısını etkinleştirmek için aşağıdaki yapılandırmayı ekleyin. Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmasını, sanal makine için kaynaklar dizisine ekleyebiliriz. Bölümünün&mdash; &mdash;devamındaki "" azmonsink "satırı ve karşılık gelen" sinksconfig "satırı, uzantının ölçümleri doğrudan Azure izleyici 'ye yaymalıdır. Gerektiğinde performans sayaçlarını ekleme veya kaldırma ücretsizdir.
+Windows sanal makinesinde tanılama uzantısını etkinleştirmek için aşağıdaki yapılandırmayı ekleyin. Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmasını, sanal makine için kaynaklar dizisine ekleyebiliriz. &mdash;Bölümünün devamındaki "" azmonsink "satırı ve karşılık gelen" SinksConfig "satırı, &mdash; uzantının ölçümleri doğrudan Azure izleyici 'ye yaymalıdır. Gerektiğinde performans sayaçlarını ekleme veya kaldırma ücretsizdir.
 
 
 ```json
@@ -240,8 +237,8 @@ Her iki dosyayı da kaydedin ve kapatın.
 Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
 1. PowerShell’i başlatın.
-1. Kullanarak `Login-AzAccount`Azure 'da oturum açın.
-1. Kullanarak `Get-AzSubscription`abonelik listenizi alın.
+1. Kullanarak Azure 'da oturum açın `Login-AzAccount` .
+1. Kullanarak abonelik listenizi alın `Get-AzSubscription` .
 1. ' De sanal makineyi oluşturmak/güncelleştirmek için kullandığınız aboneliği ayarlayın:
 
    ```powershell
@@ -284,7 +281,7 @@ Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
 
 6. Ad alanları açılan menüsünde **Azure. VM. Windows. Guest** ' i seçin.
 
-7. Ölçümler açılan menüsünde, **Kullanımdaki bellek\%kaydedilmiş bayt**' ı seçin.
+7. Ölçümler açılan menüsünde, ** \% Kullanımdaki bellek kaydedilmiş bayt**' ı seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

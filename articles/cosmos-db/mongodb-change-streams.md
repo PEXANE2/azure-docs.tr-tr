@@ -1,32 +1,32 @@
 ---
 title: MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
-description: Verilerinize yapılan değişiklikleri almak için Azure Cosmos DB, MongoDB için API 'sindeki değişiklik akışlarını nasıl kullanacağınızı öğrenin.
-author: timsander1
+description: Verilerinize yapılan değişiklikleri almak için MongoDB için akış değiştirme n Azure Cosmos DB API 'sini nasıl kullanacağınızı öğrenin.
+author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.author: tisande
-ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.date: 11/16/2019
+ms.author: srchi
+ms.openlocfilehash: cc6b74a56d2a538d35e324090832e6c7e03e609f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872148"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647298"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sindeki akışları değiştirme
 
 Azure Cosmos DB, MongoDB için API 'sinde bulunan [akış](change-feed.md) desteğini değiştirme, akışları değiştirme API 'si kullanılarak kullanılabilir. Uygulamalarınız, değişiklik akışları API 'sini kullanarak koleksiyonda veya tek bir parçadaki öğelerde yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla işlem yapabilirsiniz. Koleksiyondaki öğelerde yapılan değişiklikler, değişiklik zamanının sırasına göre yakalanır ve sıralama düzeni parça anahtarı başına garanti edilir.
 
-> [!NOTE]
-> Değişiklik akışlarını kullanmak için, Azure Cosmos DB MongoDB için API 'sinin veya sonraki bir sürümünün 3,6 sürümünü içeren hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme karşı çalıştırırsanız, `Unrecognized pipeline stage name: $changeStream` hatayı görebilirsiniz.
+[!NOTE]
+Değişiklik akışlarını kullanmak için, Azure Cosmos DB MongoDB için API 'sinin veya sonraki bir sürümünün 3,6 sürümünü içeren hesabı oluşturun. Değişiklik akışı örneklerini önceki bir sürüme karşı çalıştırırsanız, `Unrecognized pipeline stage name: $changeStream` hatayı görebilirsiniz.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
 Değişiklik akışları kullanılırken aşağıdaki sınırlamalar geçerlidir:
 
-* `operationType` Ve `updateDescription` özellikleri çıkış belgesinde henüz desteklenmiyor.
-* `insert`, `update`Ve `replace` işlemler türleri şu anda destekleniyor. 
+* `operationType`Ve `updateDescription` özellikleri çıkış belgesinde henüz desteklenmiyor.
+* `insert`, `update` Ve `replace` işlemler türleri şu anda destekleniyor. 
 * Silme işlemi veya diğer olaylar henüz desteklenmiyor.
 
 Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match Stage, $project Stage ve fullDocument seçenekleri gereklidir.
@@ -39,11 +39,11 @@ Değişiklik akışları kullanılırken aşağıdaki hata kodları ve iletileri
 
 * **Http hata kodu 16500** -değişiklik akışı kısıtlandığından boş bir sayfa döndürülür.
 
-* **NamespaceNotFound (OperationType geçersiz kıl)** -değişiklik akışını varolmayan koleksiyonda çalıştırırsanız veya koleksiyon bırakıldıysanız bir `NamespaceNotFound` hata döndürülür. `operationType` Özelliği, çıkış belgesinde `operationType Invalidate` hata yerine döndürülmediğinden `NamespaceNotFound` hata döndürülür.
+* **NamespaceNotFound (OperationType geçersiz kıl)** -değişiklik akışını varolmayan koleksiyonda çalıştırırsanız veya koleksiyon bırakıldıysanız bir `NamespaceNotFound` hata döndürülür. Özelliği, `operationType` Çıkış belgesinde hata yerine döndürülmediğinden `operationType Invalidate` `NamespaceNotFound` hata döndürülür.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, koleksiyondaki tüm öğelerde değişiklik akışlarının nasıl alınacağını gösterir. Bu örnek, öğeleri yerleştirildiğinde, güncelleştirilirken veya değiştirildiğinde izlemek için bir imleç oluşturur. Değişiklik `$match` akışlarını almak `$project` için aşama, `fullDocument` aşama ve seçenek gereklidir. Değişiklik akışlarını kullanarak silme işlemleri için izleme şu anda desteklenmiyor. Geçici bir çözüm olarak, silinmekte olan öğelere bir yumuşak işaret ekleyebilirsiniz. Örneğin, "Deleted" adlı öğeye bir öznitelik ekleyebilirsiniz. Öğeyi silmek istediğinizde, ' Deleted ' olarak `true` ayarlayabilir ve öğe ÜZERINDE bir TTL ayarlayabilirsiniz. "Deleted" güncelleştirmesi bir güncelleştirme `true` olduğundan, bu değişiklik akış değişikliğini görünür hale görünecektir.
+Aşağıdaki örnek, koleksiyondaki tüm öğelerde değişiklik akışlarının nasıl alınacağını gösterir. Bu örnek, öğeleri yerleştirildiğinde, güncelleştirilirken veya değiştirildiğinde izlemek için bir imleç oluşturur. `$match` `$project` `fullDocument` Değişiklik akışlarını almak için aşama, aşama ve seçenek gereklidir. Değişiklik akışlarını kullanarak silme işlemleri için izleme şu anda desteklenmiyor. Geçici bir çözüm olarak, silinmekte olan öğelere bir yumuşak işaret ekleyebilirsiniz. Örneğin, "Deleted" adlı öğeye bir öznitelik ekleyebilirsiniz. Öğeyi silmek istediğinizde, ' Deleted ' olarak ayarlayabilir `true` ve öğe üzerinde BIR TTL ayarlayabilirsiniz. "Deleted" `true` güncelleştirmesi bir güncelleştirme olduğundan, bu değişiklik akış değişikliğini görünür hale görünecektir.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -61,7 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-# <a name="c"></a>[, #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()
@@ -89,8 +89,8 @@ Aşağıdaki örnek, tek bir parça içindeki öğelerde yapılan değişiklikle
 ```javascript
 var cursor = db.coll.watch(
     [
-        {
-            $match: {
+        { 
+            $match: { 
                 $and: [
                     { "fullDocument.a": 1 }, 
                     { "operationType": { $in: ["insert", "update", "replace"] } }
@@ -102,6 +102,23 @@ var cursor = db.coll.watch(
     { fullDocument: "updateLookup" });
 
 ```
+
+## <a name="current-limitations"></a>Geçerli sınırlamalar
+
+Değişiklik akışları kullanılırken aşağıdaki sınırlamalar geçerlidir:
+
+* `operationType`Ve `updateDescription` özellikleri çıkış belgesinde henüz desteklenmiyor.
+* `insert`, `update` Ve `replace` işlemler türleri şu anda destekleniyor. Silme işlemi veya diğer olaylar henüz desteklenmiyor.
+
+Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match Stage, $project Stage ve fullDocument seçenekleri gereklidir.
+
+## <a name="error-handling"></a>Hata işleme
+
+Değişiklik akışları kullanılırken aşağıdaki hata kodları ve iletileri desteklenir:
+
+* **Http hata kodu 429** -değişiklik akışı kısıtlandığından boş bir sayfa döndürülür.
+
+* **NamespaceNotFound (OperationType geçersiz kıl)** -değişiklik akışını varolmayan koleksiyonda çalıştırırsanız veya koleksiyon bırakıldıysanız bir `NamespaceNotFound` hata döndürülür. Özelliği, `operationType` Çıkış belgesinde hata yerine döndürülmediğinden `operationType Invalidate` `NamespaceNotFound` hata döndürülür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
