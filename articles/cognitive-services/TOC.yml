@@ -9,6 +9,8 @@
       href: cognitive-services-and-machine-learning.md
     - name: Bilişsel Hizmetler’e yönelik özel alt etki alanları
       href: cognitive-services-custom-subdomains.md
+    - name: Bilişsel Hizmetler’i sınırlama işlemi
+      href: cognitive-services-gating-process.md
     - name: Dil desteği
       href: language-support.md
 - name: Hızlı Başlangıçlar

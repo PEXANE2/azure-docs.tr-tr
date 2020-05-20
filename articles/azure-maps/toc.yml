@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: REST API Öğreticileri
       items:
+        - name: İç mekan haritası oluşturma
+          href: tutorial-creator-indoor-maps.md
         - name: Bölge sınırı ayarlama
           href: tutorial-geofence.md
         - name: Uzamsal analiz
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: Doğru fiyatlandırma katmanını seçin
       href: choose-pricing-tier.md
+    - name: İç mekan haritaları için Creator
+      items:
+        - name: İç mekan haritası kavramları
+          href: creator-indoor-maps.md
+        - name: Çizim dönüştürme hataları ve uyarıları
+          href: drawing-conversion-error-codes.md
     - name: Kapsam
       items:
         - name: Coğrafi kodlama kapsamı
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: Fiyatlandırma katmanını yönetme
           href: how-to-manage-pricing-tier.md
+        - name: Creator’u yönetme
+          href: how-to-manage-creator.md
         - name: Kullanım ölçümlerini görüntüleme
           href: how-to-view-api-usage.md
     - name: REST API'lerinden harita verilerini alma
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Trafik verilerini gösterme
           href: how-to-show-traffic-android.md
+    - name: Creator iç mekan haritaları ile geliştirme
+      items:
+        - name: İç Mekan Haritaları modülü
+          href: how-to-use-indoor-module.md
+        - name: İç mekan haritalarında dinamik stilleme
+          href: indoor-map-dynamic-styling.md
+        - name: Çizim hatası görselleştiricisi
+          href: drawing-error-visualizer.md
     - name: Verilerle ilgili geri bildirim sağlama
       href: how-to-use-feedback-tool.md
 - name: Başvuru
   items:
     - name: API ve parametre uzantıları
       items:
+        - name: Çizim paketi gereksinimleri
+          href: drawing-requirements.md
         - name: Araç kullanım modeli
           href: consumption-model.md
         - name: GeoJSON biçimini genişletme
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: Uzamsal GÇ modülü
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: İç mekan modülü
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.maps/accounts
 - name: Kaynaklar

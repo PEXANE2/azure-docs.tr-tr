@@ -1,0 +1,61 @@
+- name: Azure Statik Web Uygulamaları Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Statik Web Uygulamaları hakkında
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: İlk statik web uygulamanızı oluşturma
+      href: getting-started.md
+- name: Kavramlar
+  items:
+    - name: Azure İşlevleri'yle API desteği
+      href: apis.md
+    - name: Yollar
+      href: routes.md
+    - name: Kimlik doğrulama ve yetkilendirme
+      href: authentication-authorization.md
+    - name: Kullanıcı bilgilerine erişme
+      href: user-information.md
+    - name: Üretim öncesi ortamlarında çekme isteklerini inceleme
+      href: review-publish-pull-requests.md
+    - name: Özel etki alanı
+      href: custom-domain.md
+    - name: Derleme ve iş akışı yapılandırması
+      href: github-actions-workflow.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Yerel geliştirme ayarlama
+      href: local-development.md
+    - name: API ekleme
+      href: add-api.md
+    - name: Uygulama ayarlarını yapılandırma
+      href: application-settings.md
+- name: Öğreticiler
+  items:
+    - name: Statik bir site oluşturucusundan yayımlama
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: Çerçeveden dağıtma
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      items:
+        - name: 'Angular, React, Svelte veya Vue JavaScript uygulaması ve API’si yayımlama'
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Gatsby ile statik web uygulaması oluşturma ve yayımlama
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: Kotalar
+      href: quotas.md

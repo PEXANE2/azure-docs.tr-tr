@@ -1,10 +1,10 @@
-- name: Translator Metin Çevirisi Belgeleri
+- name: Translator Belgeleri
   href: index.yml
-- name: Translator Metin Çevirisi API’si
+- name: Çevirmen
   items:
     - name: Genel Bakış
       items:
-        - name: Translator Metin Çevirisi API’si nedir?
+        - name: Translator nedir?
           href: translator-info-overview.md
     - name: Hızlı Başlangıçlar
       items:
@@ -22,7 +22,7 @@
           href: quickstart-sentences.md
     - name: Öğreticiler
       items:
-        - name: 'Translator Metin Çevirisi için WPF uygulaması oluşturma, C#'
+        - name: 'Translator için WPF uygulaması oluşturma, C#'
           href: tutorial-wpf-translation-csharp.md
         - name: 'Flask çeviri uygulaması oluşturma, Python'
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,7 +34,7 @@
           href: character-counts.md
     - name: Nasıl yapılır kılavuzları
       items:
-        - name: Translator Metin Çevirisi API’sine kaydolma
+        - name: Translator’a kaydolma
           href: translator-text-how-to-signup.md
         - name: V3 Metin API’sine geçiş
           href: migrate-to-v3.md
@@ -66,7 +66,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: Başvuru
       items:
-        - name: v3 Translator Metin Çevirisi API’si başvurusu
+        - name: v3 Translator başvurusu
           href: reference/v3-0-reference.md
           items:
             - name: Diller
@@ -83,7 +83,7 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: Sözlük Örnekleri
               href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator Metin Çevirisi API’si başvurusu (Kullanım dışı)
+        - name: v2 Translator başvurusu (Kullanım dışı)
           href: reference/v2-0-reference.md
           items:
             - name: Metin dönüştürme

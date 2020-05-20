@@ -58,6 +58,7 @@
       items:
         - name: Çıkışlara genel bakış
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Cosmos DB çıkışı
           href: stream-analytics-documentdb-output.md
         - name: Azure SQL DB’ye çıkış
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: Güvenilirlik için işleri eşleştirme
           href: stream-analytics-job-reliability.md
-        - name: Yönetilen kimlikle kimlik doğrulaması - ADLS 1. Nesil çıkışı
-          href: stream-analytics-managed-identities-adls.md
         - name: SQL başvuru verisi kullanma
           href: sql-reference-data.md
-        - name: Yönetilen kimlikle kimlik doğrulaması - Blob çıkışı
-          href: blob-output-managed-identity.md
-        - name: Yönetilen kimlikle kimlik doğrulaması - Power BI
-          href: powerbi-output-managed-identity.md
+        - name: Yönetilen kimlikle kimlik doğrulaması
+          items:
+            - name: ADLS 1. Nesil
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Blob depolama
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL DB
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: Verilerinizi şifreleme
           href: data-protection.md
     - name: Çözüm oluşturma
@@ -226,6 +235,18 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: Veri hataları
           href: data-errors.md
+        - name: Hata kodları
+          items:
+            - name: Yapılandırma hataları
+              href: configuration-error-codes.md
+            - name: Veri hataları
+              href: data-error-codes.md
+            - name: Dış kullanılabilirlik hataları
+              href: external-availability-error-codes.md
+            - name: Dış hatalar
+              href: external-error-codes.md
+            - name: İç hatalar
+              href: internal-error-codes.md
     - name: Makine öğrenimiyle tümleştirme
       items:
         - name: ML modelleriyle yaklaşım analizi

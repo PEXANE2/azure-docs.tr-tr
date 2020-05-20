@@ -41,21 +41,9 @@
           href: tutorial-intents-only.md
         - name: 2. Kullanıcı verilerini ayıklama
           href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
         - name: 3. Kullanıcı sözlerinden yaklaşımı alma
           href: tutorial-publish-settings.md
-    - name: Varlıkları oluşturma ve kullanma
-      items:
-        - name: Normal ifade varlıkları
-          href: tutorial-regex-entity.md
-        - name: Liste varlıkları
-          href: tutorial-list-entity.md
-        - name: Varlık rolleri
-          href: tutorial-entity-roles.md
-          displayName: 'roles, geographyV2, context'
-        - name: Bileşik varlıklarla ilişkili verileri gruplandırma ve ayıklama
-          href: luis-tutorial-composite-entity.md
-          displayName: roles
     - name: Uygulama geliştirme
       items:
         - name: Emin olunmayan tahminleri düzeltme
@@ -79,17 +67,19 @@
     - name: Uygulamanızı planlama
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
+    - name: Veri toplama
+      href: data-collection.md
     - name: Uygulama modelleri
       items:
         - name: Türler
           href: luis-concept-model.md
-        - name: Hedefler
+        - name: Amaçlar ifadeleri sınıflandırır
           href: luis-concept-intent.md
-        - name: Konuşmalar
-          href: luis-concept-utterance.md
-        - name: Varlıklar
+        - name: Varlıklar verileri ayıklar
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Örnek konuşmalar
+          href: luis-concept-utterance.md
         - name: Önceden oluşturulmuş modeller
           href: luis-concept-prebuilt-model.md
         - name: Desenler
@@ -97,7 +87,7 @@
           displayName: roles
         - name: Özellikler
           href: luis-concept-feature.md
-          displayName: 'descriptor, phrase list'
+          displayName: 'descriptor, phrase list, feature'
         - name: Uygulama çalışma zamanını genişletme
           href: schema-change-prediction-runtime.md
     - name: Tahmin puanı
@@ -153,15 +143,13 @@
           href: howto-add-prebuilt-models.md
         - name: İfadedeki varlığı etiketleme
           href: label-entity-example-utterance.md
-        - name: Tanımlayıcı ekleme
-          displayName: 'synonym, interchange, phrase list, descriptor'
+        - name: Özellik ekleme
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
         - name: REST API’ler ile
           items:
             - name: Node.js kullanarak program aracılığıyla uygulama derleme
               href: luis-tutorial-node-import-utterances-csv.md
-            - name: Node.js kullanarak tam metin eşleştirmek için liste varlığı kullanma
-              href: luis-tutorial-list-entity.md
     - name: Tümleştirme
       items:
         - name: Bing Yazım Denetimi v7 ile
@@ -193,11 +181,25 @@
       href: luis-how-to-publish-app.md
     - name: Sorgu tahmini çalışma zamanı
       href: luis-get-started-get-intent-from-browser.md
+    - name: Geçiş
+      items:
+        - name: Bileşik varlıktan geçirme
+          href: migrate-from-composite-entity.md
+        - name: Yazma kaynağına geçirme
+          items:
+            - name: Genel Bakış
+              href: luis-migration-authoring.md
+            - name: Geçiş yapma
+              href: luis-migration-authoring-steps.md
+        - name: V3 API'ye geçiş
+          href: luis-migration-api-v3.md
     - name: Uygulama yönetme
       items:
         - name: Azure kaynakları
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
+        - name: Uygulama ve sürüm ayarları
+          href: how-to-application-settings-portal.md
         - name: Yazma kaynağına geçirme
           items:
             - name: Genel Bakış
@@ -216,6 +218,8 @@
       items:
         - name: Geliştiriciler için
           href: developer-reference-resource.md
+        - name: Uygulama şeması
+          href: app-schema-definition.md
         - name: V3 Yazma API’lerine geçme
           href: luis-migration-authoring-entities.md
         - name: V3 Tahmin API’lerine geçme
@@ -259,6 +263,8 @@
         - name: Genel Bakış
           href: developer-reference-resource.md
           displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
+        - name: Uygulama şeması
+          href: app-schema-definition.md
         - name: Azure CLI
           href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
         - name: Azure RM PowerShell
@@ -329,7 +335,7 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Sınırlar
       href: luis-limits.md
-    - name: Uygulama ayarları
+    - name: Uygulama ve sürüm ayarları
       href: luis-reference-application-settings.md
     - name: Önceden derlenmiş varlık başvurusu
       items:
@@ -387,7 +393,7 @@
           href: reference-entity-simple.md
     - name: Desen söz dizimi
       href: reference-pattern-syntax.md
-    - name: Yaklaşım
+    - name: Yaklaşım başvurusu
       href: luis-reference-prebuilt-sentiment.md
 - name: Kaynaklar
   items:

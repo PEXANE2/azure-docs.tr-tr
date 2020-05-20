@@ -141,8 +141,21 @@
         - name: Bulut olay şeması
           href: cloud-event-schema.md
     - name: Olay işleyicileri
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
       href: event-handlers.md
+      items:
+        - name: Web Kancaları
+          displayName: 'Azure Automation, Webhooks, Logic Apps'
+          href: handler-webhooks.md
+        - name: Azure İşlevleri
+          href: handler-functions.md
+        - name: Event Hubs
+          href: handler-event-hubs.md
+        - name: Service Bus
+          href: handler-service-bus.md
+        - name: Hibrit bağlantılarının geçişi
+          href: handler-relay-hybrid-connections.md
+        - name: Depolama kuyrukları
+          href: handler-storage-queues.md
     - name: Olay teslimi
       items:
         - name: Olay filtreleme
@@ -227,6 +240,8 @@
       href: /python/api/overview/azure/event-grid
     - name: Node.js
       href: /javascript/api/overview/azure/eventgrid
+    - name: Kotalar ve sınırlar
+      href: quotas-limits.md
     - name: Abonelik şeması
       href: subscription-creation-schema.md
     - name: Şablon kaynakları

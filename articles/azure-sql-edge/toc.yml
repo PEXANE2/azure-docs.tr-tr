@@ -1,0 +1,75 @@
+- name: SQL Edge Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: SQL Edge nedir?
+      href: overview.md
+    - name: Desteklenen sürümler ve özellikler
+      href: features.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: SQL Edge dağıtma
+      href: deploy-portal.md
+    - name: SQL Edge’de ONNX Modelleri dağıtma
+      href: deploy-onnx.md
+- name: Öğreticiler
+  items:
+    - name: Azure Data Factory ile verileri eşitleme
+      href: tutorial-sync-data-factory.md
+    - name: SQL Data Sync ile verileri eşitleme
+      href: tutorial-sync-data-sync.md
+    - name: SQL Edge ile uçtan uca IoT çözümü oluşturma
+      items:
+        - name: Azure kaynakları ayarlama
+          href: tutorial-deploy-azure-resources.md
+        - name: IoT Edge Modülleri ayarlama
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: SQL Edge’e model dağıtma
+          href: tutorial-run-ml-model-on-sql-edge.md
+- name: Nasıl yapılır
+  items:
+    - name: DAC paketleri ve Stream Analytics işleri
+      href: stream-analytics.md
+    - name: Çoğaltmayı yapılandırma
+      href: configure-replication.md
+    - name: Veri değişikliklerini izleme
+      href: track-data-changes.md
+    - name: T-SQL akış işlerini yönetme
+      href: create-stream-analytics-job.md
+    - name: SQL Edge’e bağlanma
+      href: connect.md
+    - name: SQL Edge’i yapılandırma
+      href: configure.md
+    - name: DAC paketi dağıtma
+      href: deploy-dacpac.md
+- name: Kavramlar
+  items:
+    - name: ONNX ile makine öğrenmesi ve yapay zeka
+      href: onnx-overview.md
+    - name: Yedekleme ve geri yükleme
+      href: backup-restore.md
+    - name: SQL Edge’de Veri Akışı
+      items:
+        - name: Veri akışı yapma
+          href: stream-data.md
+        - name: Dış Akış Oluşturma (Transact-SQL)
+          href: create-external-stream-transact-sql.md
+        - name: Dış Akışı Değiştirme (Transact-SQL)
+          href: alter-external-stream-transact-sql.md
+        - name: Dış Akışı Bırakma (Transact-SQL)
+          href: drop-external-stream-transact-sql.md
+        - name: Akış görünümleri ve DMV’ler
+          items:
+            - name: Akış görünümleri ve DMV’ler
+              href: streaming-catalog-views.md
+            - name: sys.external_job_streams (Transact-SQL)
+              href: sys-external-job-streams.md
+            - name: sys.external-streaming_jobs (Transact-SQL)
+              href: sys-external-streaming-jobs.md
+            - name: sys.external_streams (Transact-SQL)
+              href: sys-external-streams.md
+    - name: Zaman serisi verilerini işleme
+      items:
+        - name: Date_Bucket (Transact-SQL)
+          href: date-bucket-tsql.md

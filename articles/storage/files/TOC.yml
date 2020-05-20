@@ -48,6 +48,8 @@
       items:
         - name: Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
           href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Ağ yönlendirme tercihini yapılandırma
+      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Uyumluluk teklifleri
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Geliştirme

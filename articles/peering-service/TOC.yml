@@ -4,6 +4,14 @@
   items:
     - name: Eşleme Hizmeti hakkında
       href: about.md
+- name: Öğreticiler
+  items:
+    - name: Eşleme Hizmeti bağlantısını kaydetme
+      href: azure-portal.md
+    - name: Eşleme Hizmeti Bağlantısı oluşturma
+      href: create-connection.md
+    - name: Eşleme Hizmeti bağlantısının telemetrisini ölçme
+      href: measure-connection-telemetry.md
 - name: Kavramlar
   items:
     - name: Konumlar ve iş ortakları
@@ -18,14 +26,10 @@
   items:
     - name: Eşleme Hizmeti'ni kaydetme
       items:
-        - name: Azure portalı
-          href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: Bağlantısı telemetrisini ölçme
-      href: measure-connection-telemetry.md
 - name: Başvurular
   items:
     - name: Azure PowerShell

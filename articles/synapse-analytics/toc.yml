@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: İsteğe bağlı SQL kullanma
       href: quickstart-sql-on-demand.md
+    - name: Cosmos DB için Synapse Link’e bağlanma
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Öğreticiler
   items:
     - name: Spark havuzları için Apache Spark uygulamalarını çalıştırma
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Kaynak sınıfları
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: Desteklenen Synapse Link özellikleri
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: 'Araç tümleştirmesi (AI, ETL, BI)'
       items:
         - name: Synapse Analytics Studio sorunlarını giderme
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: Verileri dönüştürme ve analiz etme
       items:
+        - name: Synapse Link
+          items:
+            - name: Cosmos DB için Azure Synapse Link’e bağlanma
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: Azure Synapse Analytics için Apache Spark ile Azure Cosmos DB analizleri mağazasında sorgu yapma
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: Depolama alanındaki verileri sorgulama

@@ -39,6 +39,8 @@
         - name: Öğrenme ilkesi
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Acemi modu
+          href: concept-apprentice-mode.md
         - name: Etkin olan ve olmayan olaylar
           href: concept-active-inactive-events.md
         - name: Ödüller
@@ -62,9 +64,11 @@
   items:
     - name: Kişiselleştirme Kaynağı Oluşturma
       href: how-to-create-resource.md
-    - name: Öğrenme döngüsü yapılandırma
+    - name: Kişiselleştirme’yi yapılandırma
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Acemi modunu kullanma
+      href: how-to-learning-behavior.md
     - name: Model ve öğrenme ayarlarını yönetme
       href: how-to-manage-model.md
     - name: Çevrimdışı değerlendirme ile analiz etme
@@ -73,7 +77,7 @@
   items:
     - name: Örnekler
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
-    - name: REST API’si Başvurusu
+    - name: REST API Başvurusu
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: SDK’lar
       items:

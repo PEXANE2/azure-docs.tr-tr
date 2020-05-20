@@ -3,7 +3,7 @@ title: Kişiselleştirme belgeleri
 summary: Uygulamanızın, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilen en iyi deneyimin seçilmesini sağlamak için Kişiselleştirme’yi kullanmayı öğrenin.
 metadata:
   ms.topic: landing-page
-  ms.date: 10/03/2019
+  ms.date: 05/01/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Kişiselleştirme belgeleri
   titleSuffix: Azure Cognitive Services
   description: Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilebilecek en iyi deneyimi seçmenizi sağlayan bulut tabanlı bir API’dir.
-  ms.openlocfilehash: c703673ec85cadb57e2cc69d1ee1a0d023d53436
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ef18921e9211bb1a3659fffc84bde922d500d0b0
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77525032"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83586329"
 landingContent:
 - title: Kişiselleştirme hakkında
   linkLists:
@@ -101,6 +101,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
+    - text: Acemi modunu kullanma
+      url: how-to-learning-behavior.md
     - text: Çevrimdışı değerlendirmelerle döngüyü geliştirme
       url: concepts-offline-evaluation.md
     - text: Etkin olan ve olmayan olaylar

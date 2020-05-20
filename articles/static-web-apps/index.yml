@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Azure Statik Web Uygulamaları belgeleri
+summary: Azure Statik Web Uygulamaları, GitHub’da yapılan değişikliklerden otomatik olarak yayımlanan JavaScript web uygulamaları oluşturmanıza olanak tanır.
+metadata:
+  title: Azure Statik Web Uygulamaları belgeleri
+  description: Azure Statik Web Uygulamaları, GitHub’da yapılan değişikliklerden otomatik olarak yayımlanan JavaScript web uygulamaları oluşturmanıza olanak tanır.
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593078"
+landingContent:
+- title: Statik Web Uygulamaları hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Statik Web Uygulamaları nedir?
+      url: overview.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: İlk Angular uygulamanızı oluşturma
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: İlk React uygulamanızı oluşturma
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: İlk Vue uygulamanızı oluşturma
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: İlk uygulamanızı oluşturma (çerçeve olmadan)
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Angular, React, Svelte veya Vue JavaScript uygulaması ve API’si yayımlama
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: Önemli kavramlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yollar
+      url: routes.md
+    - text: Genel API’ler
+      url: apis.md
+    - text: Hazırlama
+      url: review-publish-pull-requests.md
+    - text: Erişimi kısıtlama
+      url: authentication-authorization.md
+- title: Senaryo yayımlama
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Gatsby’den yayımlama
+      url: publish-gatsby.md
+    - text: Hugo’dan yayımlama
+      url: publish-hugo.md
+    - text: VuePress’ten yayımlama
+      url: publish-vuepress.md
+    - text: Next.js’den dağıtma
+      url: deploy-nextjs.md
+    - text: Nuxt.js’den dağıtma
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Gatsby ile statik web uygulaması yayımlama
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

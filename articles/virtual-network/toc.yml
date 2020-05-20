@@ -88,6 +88,8 @@
           href: ipv6-overview.md
         - name: Genel IPv6 adresi ön eki
           href: ipv6-public-ip-address-prefix.md
+        - name: Yönlendirme tercihi
+          href: routing-preference-overview.md
     - name: Güvenlik
       items:
         - name: Ağ güvenlik grupları
@@ -222,6 +224,24 @@
               href: manage-public-ip-address-prefix.md
             - name: NIC’lerden IP adresi ekleme veya kaldırma
               href: virtual-network-network-interface-addresses.md
+            - name: Yönlendirme tercihi
+              items:
+                - name: Ortak IP adresi oluşturma
+                  items:
+                    - name: Azure portal
+                      href: routing-preference-portal.md
+                    - name: Azure PowerShell
+                      href: routing-preference-powershell.md
+                    - name: Azure CLI
+                      href: routing-preference-cli.md
+                - name: İnternet yönlendirme tercihiyle VM yapılandırma
+                  items:
+                    - name: Azure portal
+                      href: tutorial-routing-preference-virtual-machine-portal.md
+                    - name: Azure PowerShell
+                      href: configure-routing-preference-virtual-machine-powershell.md
+                    - name: Azure CLI
+                      href: configure-routing-preference-virtual-machine-cli.md
     - name: Güvenlik
       items:
         - name: Ağ trafiğini filtreleme

@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Azure SQL Edge (Önizleme) belgeleri
+summary: Uç Cihazlar için Azure SQL, IoT ve uç dağıtımları için ayarlanan, iyileştirilmiş bir ilişkisel veritabanı altyapısıdır.
+metadata:
+  title: Azure SQL Edge (Önizleme) belgeleri
+  meta.description: Learn how to use Azure SQL Edge (Preview).
+  services: sql-database-edge
+  ms.service: sql-database-edge
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
+  ms.date: 05/19/2020
+  ms.openlocfilehash: a2e26d4bfbec3a139987e2a7a0fe21c429c740a5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593146"
+landingContent:
+- title: SQL Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Edge nedir?
+      url: overview.md
+  - linkListType: deploy
+    links:
+    - text: SQL Edge dağıtma
+      url: deploy-portal.md
+- title: Veri eşitleme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uç Cihazlar için SQL verilerini Azure Data Factory ile eşitleme
+      url: tutorial-sync-data-factory.md
+    - text: Uç Cihazlar için SQL verilerini SQL Veritabanı ile eşitleme
+      url: tutorial-sync-data-sync.md
+- title: Veri akışı
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Veri akışı
+      url: stream-data.md
+    - text: Sistem kataloğu akışı
+      url: streaming-catalog-views.md
+- title: Makine öğrenimi
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Makine öğrenmesi ve yapay zeka
+      url: onnx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: SQL Edge’de ONNX dağıtma
+      url: deploy-onnx.md

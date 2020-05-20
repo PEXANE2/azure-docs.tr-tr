@@ -1,28 +1,30 @@
 ### YamlMime:Landing
-title: Azure Active Directory B2B belgeleri
-summary: Şirketinizin uygulamalarını ve hizmetlerini sizinki haricinde herhangi bir kuruluştaki konuk kullanıcılar ve iş ortakları ile güvenli bir şekilde paylaşmak, bunu yaparken de kurumsal verilerinize yönelik denetiminizi sürdürmek için Azure AD işletmeden işletmeye (B2B) işbirliğini kullanmayı öğrenin.
+title: Dış Kimlikler belgeleri
+summary: Dış Kimlikler, kuruluşların müşteriler ve iş ortakları dahil olmak üzere tüm dış kullanıcılarını korumasına ve yönetmesine olanak tanıyan özellikler bütünüdür. B2B işbirliğini geliştiren Dış Kimlikler, kuruluşunuzun dışındaki kullanıcılarla etkileşim ve bağlantı kurmaya yönelik ek olanaklar sunar.
 metadata:
-  title: Uygulama Yönetimi Belgeleri
-  description: Şirketinizin uygulamalarını ve hizmetlerini sizinki haricinde herhangi bir kuruluştaki konuk kullanıcılar ve iş ortakları ile güvenli bir şekilde paylaşmak, bunu yaparken de kurumsal verilerinize yönelik denetiminizi sürdürmek için Azure AD işletmeden işletmeye (B2B) işbirliğini kullanmayı öğrenin.
+  title: Dış Kimlikler belgeleri
+  description: Dış Kimlikler, kuruluşların müşteriler ve iş ortakları dahil olmak üzere tüm dış kullanıcılarını korumasına ve yönetmesine olanak tanıyan özellikler bütünüdür. B2B işbirliğini geliştiren Dış Kimlikler, kuruluşunuzun dışındaki kullanıcılarla etkileşim ve bağlantı kurmaya yönelik ek olanaklar sunar.
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/27/2019
+  ms.date: 05/19/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74272692"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83587485"
 landingContent:
-- title: Azure B2B işbirliği hakkında
+- title: Dış Kimlikler Hakkında
   linkLists:
   - linkListType: overview
     links:
+    - text: Dış Kimlikler çözümlerini karşılaştırma
+      url: compare-with-b2c.md
     - text: B2B konuk kullanıcı erişimi nedir?
       url: what-is-b2b.md
 - title: B2B konuk kullanıcılarını davet etme

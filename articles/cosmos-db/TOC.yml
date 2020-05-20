@@ -119,8 +119,6 @@
           href: global-dist-under-the-hood.md
         - name: Bölgesel varlık
           href: regional-presence.md
-        - name: İşlem ve analitik depolama
-          href: globally-distributed-transactional-analytical-storage.md
     - name: Bölümleme
       items:
         - name: Bölümlemeye genel bakış
@@ -494,14 +492,16 @@
           href: change-feed-functions.md
         - name: Değişiklik akışı çekme modeli
           href: change-feed-pull-model.md
-    - name: Küresel olarak dağıtılan analiz ve AI
+    - name: Synapse Link ile analiz
       items:
-        - name: Analiz kullanım örnekleri
-          href: analytics-usecases.md
-        - name: Analiz - çözüm mimarileri
-          href: analytics-solution-architectures.md
-        - name: Lambda mimarisi
-          href: lambda-architecture.md
+        - name: Azure Cosmos DB için Synapse Link
+          href: synapse-link.md
+        - name: Analiz mağazası - Genel bakış
+          href: analytical-store-introduction.md
+        - name: Synapse Link hakkında SSS
+          href: synapse-link-frequently-asked-questions.md
+        - name: Synapse Link kullanım örnekleri
+          href: synapse-link-use-cases.md
     - name: Yerleşik Jupyter not defterleri
       items:
         - name: Jupyter not defterlerine genel bakış
@@ -1020,6 +1020,10 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Değişiklik akışı - Zaman uyumsuz Java örneği
           href: create-sql-api-java-changefeed.md
+    - name: Synapse Link ile analiz
+      items:
+        - name: Synapse Link’i yapılandırma
+          href: configure-synapse-link.md
     - name: Apache Spark ile yerleşik analiz
       items:
         - name: Azure Databricks Spark bağlayıcısı

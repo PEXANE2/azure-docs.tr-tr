@@ -28,6 +28,24 @@
       items:
         - name: Sınıfları yönetmek için laboratuvarları kullanma
           href: classroom-labs-scenarios.md
+        - name: Sınıf laboratuvarları - sınıf türleri
+          items:
+            - name: Sınıf türlerine genel bakış
+              href: class-types.md
+            - name: Doğal dilde işleme içinde derin öğrenme
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Linux üzerinde kabuk betiği oluşturma
+              href: class-type-shell-scripting-linux.md
+            - name: Etik korsanlık
+              href: class-type-ethical-hacking.md
+            - name: Veritabanı yönetimi
+              href: class-type-database-management.md
+            - name: Python ve Jupyter Notebook’ları
+              href: class-type-jupyter-notebook.md
+            - name: Android Studio ile mobil uygulama geliştirme
+              href: class-type-mobile-dev-android-studio.md
+            - name: Büyük veri analizi
+              href: class-type-big-data-analytics.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Yönetici kılavuzu
@@ -36,29 +54,13 @@
       href: account-setup-guide.md
     - name: Hızlandırılmış laboratuvar kurulum kılavuzu
       href: setup-guide.md
-    - name: Sınıf laboratuvarları - sınıf türleri
-      items:
-        - name: Sınıf türlerine genel bakış
-          href: class-types.md
-        - name: Doğal dilde işleme içinde derin öğrenme
-          href: class-type-deep-learning-natural-language-processing.md
-        - name: Linux üzerinde kabuk betiği oluşturma
-          href: class-type-shell-scripting-linux.md
-        - name: Etik korsanlık
-          href: class-type-ethical-hacking.md
-        - name: Veritabanı yönetimi
-          href: class-type-database-management.md
-        - name: Python ve Jupyter Notebook’ları
-          href: class-type-jupyter-notebook.md
-        - name: Android Studio ile mobil uygulama geliştirme
-          href: class-type-mobile-dev-android-studio.md
-        - name: Büyük veri analizi
-          href: class-type-big-data-analytics.md
     - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)
       items:
         - name: Laboratuvar hesabı oluşturma ve yönetme
           href: how-to-manage-lab-accounts.md
-        - name: Laboratuvar hesaplarını yapılandırma
+        - name: Laboratuvar hesabında laboratuvarları yönetme
+          href: manage-labs.md
+        - name: VM’lerin otomatik kapatılmasını yapılandırma
           href: how-to-configure-lab-accounts.md
         - name: Laboratuvar oluşturucusu ekleme
           href: add-lab-creator.md
@@ -76,7 +78,7 @@
           href: specify-marketplace-images.md
         - name: Destek bilgilerini belirtme (laboratuvar hesabı sahibi)
           href: lab-account-owner-support-information.md
-    - name: Sınıf laboratuvarı oluşturma ve yapılandırma (eğitmen)
+    - name: Sınıf laboratuvarlarını oluşturma ve yapılandırma (eğitimci)
       items:
         - name: Sınıf laboratuvarları oluşturma ve yönetme
           href: how-to-manage-classroom-labs.md
@@ -108,9 +110,9 @@
           href: how-to-prepare-windows-template.md
         - name: Windows’un kapatılma davranışını denetleme
           href: how-to-windows-shutdown.md
-        - name: Destek bilgilerini görüntüleme (eğitmen)
+        - name: Destek bilgilerini görüntüleme (eğitimci)
           href: lab-creator-support-information.md
-        - name: Eğitmen görünümünden öğrenci VM’lerine erişme
+        - name: Eğitimci görünümünden öğrenci VM’lerine erişme
           href: instructor-access-virtual-machines.md
     - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)
       items:
